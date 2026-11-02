@@ -128,10 +128,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/layer/unit/UnitLayer.h"
+        #include "org/allbinary/game/layer/unit/UnitWaypointStrings.h"
+#include "org/allbinary/game/layer/unit/UnitLayer.h"
 
 
-UnitWaypointBehavior::UnitWaypointBehavior(UnitLayer* associatedAdvancedRTSGameLayer, CollidableDestroyableDamageableLayer* fakeWaypoint) : commonSeps(CommonSeps::getInstance()), sensorAction(SensorActionFactory::getInstance()->ATTACK), lastPathGeographicMapCellPosition(SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION), currentPathGeographicMapCellPosition(SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION), waypointPathsListP(BasicArrayListUtil::getInstance()->getImmutableInstance()), currentTargetDistance(Integer.MAX_VALUE), currentTargetLayerInterfaceP(CollidableDestroyableDamageableLayer::getNullInstance()), repeatedToLong(new TimeDelayHelper(22000)){
+UnitWaypointBehavior::UnitWaypointBehavior(UnitLayer* associatedAdvancedRTSGameLayer, CollidableDestroyableDamageableLayer* fakeWaypoint) : commonSeps(CommonSeps::getInstance()), unitWaypointStrings(UnitWaypointStrings::getInstance()), sensorAction(SensorActionFactory::getInstance()->ATTACK), lastPathGeographicMapCellPosition(SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION), currentPathGeographicMapCellPosition(SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION), waypointPathsListP(BasicArrayListUtil::getInstance()->getImmutableInstance()), currentTargetDistance(Integer.MAX_VALUE), currentTargetLayerInterfaceP(CollidableDestroyableDamageableLayer::getNullInstance()), repeatedToLong(new TimeDelayHelper(22000)){
 this->associatedAdvancedRTSGameLayer= associatedAdvancedRTSGameLayer;
     
 this->completeTimeDelayHelper= new TimeDelayHelper(30000);
@@ -340,7 +341,7 @@ this->lastPathGeographicMapCellPosition= SimpleGeographicMapCellPositionFactory:
                         if(this->associatedAdvancedRTSGameLayer->showMoreCaptionStates)
                         
                                     {
-                                    this->associatedAdvancedRTSGameLayer->getCaptionAnimationHelper()->update(UnitWaypointBehavior::PATHING, BasicColorFactory::getInstance()->GREEN);
+                                    this->associatedAdvancedRTSGameLayer->getCaptionAnimationHelper()->update(this->unitWaypointStrings->PATHING, BasicColorFactory::getInstance()->GREEN);
     
 
                                     }

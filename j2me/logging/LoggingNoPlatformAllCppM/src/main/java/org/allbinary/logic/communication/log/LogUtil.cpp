@@ -105,7 +105,7 @@ LogUtil::LogUtil(){
 }
 
 
-    auto LogUtil::putF(std::string specialMessage, std::string className, std::string functionName) -> void{
+    auto LogUtil::putFS(std::string specialMessage, std::string className, std::string functionName) -> void{
 
 
 

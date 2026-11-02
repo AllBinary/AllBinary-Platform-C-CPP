@@ -85,7 +85,7 @@ StringUtil* StringUtil::instance = StringUtil::instance_owner();
 StringUtil::StringUtil() : INIT_STRING(""), ONE_EMPTY_STRING_ARRAY(
                                                         {
                                                             this->EMPTY_STRING
-                                                        }), stringArray({}){
+                                                        }), ONE_EMPTY_STRING_ARRAY_OF_ARRAYS(std::vector<std::vector<std::string>>(0, std::vector<std::string>(0))), stringArray({}){
 }
 
 

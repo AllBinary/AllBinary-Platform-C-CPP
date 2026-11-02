@@ -40,14 +40,9 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        //J2SE to J2ME compatibility
-class JsFunction
-            : public virtual Object
-         {
+        
+//Annotation - declared in the header
 
-};
-
-            
 
 
         #endif //JSINTEROP_ANNOTATIONS_JSFUNCTION_CPP

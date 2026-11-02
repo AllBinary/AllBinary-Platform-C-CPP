@@ -65,7 +65,7 @@ class CapitalEventHandlerFactory
             : public virtual Object
          {
 
-    private: static inline std::vector<CapitalEventHandler*> capitalEventHandlerArray;
+    private: static std::vector<CapitalEventHandler*> capitalEventHandlerArray;
 
                     static int32_t initResult;
                 static int32_t init();

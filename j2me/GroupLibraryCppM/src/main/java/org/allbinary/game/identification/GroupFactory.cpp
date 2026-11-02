@@ -10,7 +10,7 @@
                 *  You may obtain the AllBinary Open License Version 1 legal agreement from
                 *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
                 *  
-                *  Created By: Travis Berthelot  
+                *  Created By: Travis Berthelot   
         */
         
         /* Generated Code Do Not Modify */
@@ -137,10 +137,12 @@ this->index= 0;
     int32_t size = this->list->size();;
     
 
+    std::string name;;
+    
+
         while(size < groups)
         {
-
-    std::string name = stringUtil->EMPTY_STRING;;
+name= stringUtil->EMPTY_STRING;
     
 
                         if(size < nameArray.size())

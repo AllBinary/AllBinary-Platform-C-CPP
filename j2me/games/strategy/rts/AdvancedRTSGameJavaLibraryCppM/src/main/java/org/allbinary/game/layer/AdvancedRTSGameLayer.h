@@ -55,7 +55,6 @@ class GameKeyEventFactory;
 class NullRTSFormInputFactory;
 class RTSFormInput;
 class BuildingEventHandler;
-class UnitLayer;
 class Waypoint2LogHelper;
 class Waypoint2SelectedLogHelper;
 class WaypointBase;
@@ -239,9 +238,6 @@ public: AdvancedRTSGameLayer(RemoteInfo* remoteInfo, PathFindingLayerInterface* 
 #endif
 #if __has_include(<org/allbinary/game/layer/building/event/BuildingEventHandler.h>)
 #include <org/allbinary/game/layer/building/event/BuildingEventHandler.h>
-#endif
-#if __has_include(<org/allbinary/game/layer/unit/UnitLayer.h>)
-#include <org/allbinary/game/layer/unit/UnitLayer.h>
 #endif
 #if __has_include(<org/allbinary/game/layer/waypoint/Waypoint2LogHelper.h>)
 #include <org/allbinary/game/layer/waypoint/Waypoint2LogHelper.h>

@@ -145,7 +145,7 @@ this->put(specialMessage, anyType, functionName, exception);
 }
 
 
-    /*actual*/ auto LogUtil::putF(std::string specialMessage, std::string className, std::string functionName) -> void{
+    /*actual*/ auto LogUtil::putFS(std::string specialMessage, std::string className, std::string functionName) -> void{
 }
 
 

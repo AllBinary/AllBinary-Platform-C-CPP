@@ -40,8 +40,6 @@
         
             #include "java/lang/RuntimeException.h"
         
-#include <java/util/HashSet.h>
-#include <java/util/PriorityQueue.h>
 class AllBinaryTiledLayer;
 class NullUtil;
 class LogUtil;
@@ -52,6 +50,8 @@ class BasicGeographicMapCellPositionFactory;
 class GeographicMapCellPosition;
 class GeographicMapCellType;
 class RaceTrackGeographicMapCellType;
+template<typename T1> class ABHashSet;
+template<typename T1> class ABPriorityQueue;
 class BasicArrayList;
 class BasicArrayListD;
 class BasicArrayListUtil;
@@ -95,9 +95,9 @@ class PathFinder: public GeographicPathFinderBase {
 
     private: MathUtil* mathUtil;
 
-    private: PriorityQueue<PathFindingNodeCost*>* openPriorityQueue;
+    private: ABPriorityQueue<PathFindingNodeCost*>* openPriorityQueue;
 
-    private: HashSet<PathFindingNodeCost*>* closedSet;
+    private: ABHashSet<PathFindingNodeCost*>* closedSet;
 
     private: Object* geographicMapInterface;
 
@@ -149,13 +149,7 @@ class PathFinder: public GeographicPathFinderBase {
         
         #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDER_H_COMPLETE)
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDER_H_COMPLETE
-        #if __has_include(<java/util/HashSet.h>)
-#include <java/util/HashSet.h>
-#endif
-#if __has_include(<java/util/PriorityQueue.h>)
-#include <java/util/PriorityQueue.h>
-#endif
-#if __has_include(<org/allbinary/game/layer/AllBinaryTiledLayer.h>)
+        #if __has_include(<org/allbinary/game/layer/AllBinaryTiledLayer.h>)
 #include <org/allbinary/game/layer/AllBinaryTiledLayer.h>
 #endif
 #if __has_include(<org/allbinary/logic/NullUtil.h>)
@@ -184,6 +178,12 @@ class PathFinder: public GeographicPathFinderBase {
 #endif
 #if __has_include(<org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellType.h>)
 #include <org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellType.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashSet.h>)
+#include <org/allbinary/util/ABHashSet.h>
+#endif
+#if __has_include(<org/allbinary/util/ABPriorityQueue.h>)
+#include <org/allbinary/util/ABPriorityQueue.h>
 #endif
 #if __has_include(<org/allbinary/util/BasicArrayList.h>)
 #include <org/allbinary/util/BasicArrayList.h>

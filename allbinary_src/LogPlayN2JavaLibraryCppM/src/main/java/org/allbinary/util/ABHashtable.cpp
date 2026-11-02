@@ -38,12 +38,6 @@
 #include <java/util/Hashtable.h>
 
       
-#include <java/util/Map.h>
-
-      
-#include <java/util/Set.h>
-
-      
 #include <jsinterop/annotations/JsType.h>
 
       

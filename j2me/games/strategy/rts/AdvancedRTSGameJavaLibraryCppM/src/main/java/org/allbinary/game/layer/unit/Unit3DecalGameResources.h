@@ -34,12 +34,15 @@
             #include "java/lang/String.h"
 
         
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/resources/BasicGameResources.h>
 class GameGraphicsResourceUtil;
 class AndroidUtil;
 class GraphicsFeatureFactory;
+class NullUtil;
 
 
 
@@ -65,8 +68,7 @@ class GraphicsFeatureFactory;
         
 class Unit3DecalGameResources: public BasicGameResources {
 
-    private: static Unit3DecalGameResources* instance_owner();
-    private: static Unit3DecalGameResources* instance;
+    private: static Object* instance;
 
     public: static BasicGameResources* getInstance();
 
@@ -101,6 +103,9 @@ private: Unit3DecalGameResources();
 #endif
 #if __has_include(<org/allbinary/game/configuration/feature/GraphicsFeatureFactory.h>)
 #include <org/allbinary/game/configuration/feature/GraphicsFeatureFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
 #endif
 
         #endif

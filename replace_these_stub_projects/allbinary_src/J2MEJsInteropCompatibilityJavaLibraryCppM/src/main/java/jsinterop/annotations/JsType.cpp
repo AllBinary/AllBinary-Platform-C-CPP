@@ -40,20 +40,9 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        //J2SE to J2ME compatibility
-class JsType
-            : public virtual Object
-         {
+        
+//Annotation - declared in the header
 
-                //Otherwise - member - AnnotationMemberDeclaration
-
-                //Otherwise - member - AnnotationMemberDeclaration
-
-                //Otherwise - member - AnnotationMemberDeclaration
-
-};
-
-            
 
 
         #endif //JSINTEROP_ANNOTATIONS_JSTYPE_CPP

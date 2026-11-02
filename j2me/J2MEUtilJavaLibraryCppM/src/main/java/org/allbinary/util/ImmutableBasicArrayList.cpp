@@ -36,6 +36,9 @@
         
             #include "java/lang/Object.h"
         
+#include <jsinterop/annotations/JsType.h>
+
+      
 #include <org/allbinary/logic/communication/log/ForcedLogUtil.h>
 
       

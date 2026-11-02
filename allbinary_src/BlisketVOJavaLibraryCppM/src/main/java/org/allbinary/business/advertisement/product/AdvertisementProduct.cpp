@@ -18,7 +18,23 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+        #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_PRODUCT_ADVERTISEMENTPRODUCT_CPP
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_PRODUCT_ADVERTISEMENTPRODUCT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/advertisement/product/AdvertisementProduct.h"
+        
+
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/control/contraints/size/TwoDimensionalConstraintInterface.h>
 
@@ -41,25 +57,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AdvertisementProductInterface.h"
+        #include "org/allbinary/business/advertisement/product/AdvertisementProductInterface.h"
 
-class AdvertisementProduct
-            : public Object
-        : public AdvertisementProductInterface {
 
-    private: std::string type;
-
-    private: std::string link;
-
-    private: int32_t number= 0;
-
-    private: TwoDimensionalConstraintInterface constraint;
-
-public: AdvertisementProduct(){
+AdvertisementProduct::AdvertisementProduct(){
 }
 
 
-    public: std::string getType(){
+    auto AdvertisementProduct::getType() -> std::string{
 
 
 
@@ -69,7 +74,7 @@ public: AdvertisementProduct(){
 }
 
 
-    public: std::string getLink(){
+    auto AdvertisementProduct::getLink() -> std::string{
 
 
 
@@ -79,7 +84,7 @@ public: AdvertisementProduct(){
 }
 
 
-    public: int32_t getNumber(){
+    auto AdvertisementProduct::getNumber() -> int32_t{
 
 
 
@@ -89,7 +94,7 @@ public: AdvertisementProduct(){
 }
 
 
-    public: TwoDimensionalConstraintInterface getTwoDimensionalConstraint(){
+    auto AdvertisementProduct::getTwoDimensionalConstraint() -> TwoDimensionalConstraintInterface*{
 
 
 
@@ -99,7 +104,6 @@ public: AdvertisementProduct(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_PRODUCT_ADVERTISEMENTPRODUCT_CPP

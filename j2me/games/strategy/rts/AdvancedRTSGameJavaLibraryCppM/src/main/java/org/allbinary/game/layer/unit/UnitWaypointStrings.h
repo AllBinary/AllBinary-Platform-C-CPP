@@ -71,6 +71,8 @@ class UnitWaypointStrings
             
     public: UnitWaypointStrings();
         
+    public: const std::string PATHING = "Pathing";
+
     public: const std::string WANDERING = "Order?";
 
     public: const std::string THINKING = "Thinking";
@@ -96,6 +98,14 @@ class UnitWaypointStrings
     public: const std::string ALREADY_THERE = "Already There";
 
     public: const std::string NEXT_PATH_NODE;
+
+    public: const std::string _ALL_VISITED_SHORT = " Arrived";
+
+    public: const std::string _ALREADY_THERE_SHORT = " Again?";
+
+    public: const std::string VISITED_MOST_OF_THE_PATH = " visited most of the path";
+
+    public: const std::string RETURNING_AS_WAYPOINT_PATH_LIST = " returning as waypointPathsList was runningWaypointPathList";
 
 };
 

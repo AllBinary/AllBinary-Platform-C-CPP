@@ -41,15 +41,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class JsPackage
-            : public virtual Object
-         {
+//Annotation - declared in the header
 
-    std::string GLOBAL = "<global>";
-
-};
-
-            
 
 
         #endif //JSINTEROP_ANNOTATIONS_JSPACKAGE_CPP

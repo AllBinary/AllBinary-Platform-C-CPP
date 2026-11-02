@@ -71,10 +71,13 @@ WaypointEventHandlerFactory::WaypointEventHandlerFactory() {
 
     auto WaypointEventHandlerFactory::getInstance(Group* groupInterface) -> WaypointEventHandler*{
 
+    int32_t groupId = static_cast<int32_t>(groupInterface->getGroupId());;
+    
+
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WaypointEventHandlerFactory::eventHandlerArray[static_cast<int32_t>(groupInterface->getGroupId();)];
+                        return WaypointEventHandlerFactory::eventHandlerArray[groupId];
     
 }
 

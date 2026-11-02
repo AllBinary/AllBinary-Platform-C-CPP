@@ -73,8 +73,9 @@ class LogUtil
     public: void putL(Log* log);
 
     public: void putF(std::string specialMessage, Object* anyType, std::string functionName);
+    public: void putF(std::string specialMessage, const std::string& anyType, std::string functionName) { return putF(specialMessage, JavaString::box(anyType), functionName); }
 
-    public: void putF(std::string specialMessage, std::string className, std::string functionName);
+    public: void putFS(std::string specialMessage, std::string className, std::string functionName);
 
     public: void put(std::string specialMessage, Object* anyType, std::string functionName, Object* exception);
 

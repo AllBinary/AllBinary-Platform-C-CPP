@@ -18,7 +18,23 @@
 
 
 
-            #include "../../../../../../../../../../../../java/lang/Object.h"
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_MODULES_PROCESSOR_ECHO_RESPONSE_ECHORESPONSETYPETHREEDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_MODULES_PROCESSOR_ECHO_RESPONSE_ECHORESPONSETYPETHREEDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/payment/gateway/modules/processor/echo/response/EchoResponseTypeThreeData.h"
+        
+
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
         
 
 
@@ -39,17 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class EchoResponseTypeThreeData
-            : public Object
-         {
 
-    public: static std::string NAME = "ECHOTYPE3";
-
-private: EchoResponseTypeThreeData(){
+EchoResponseTypeThreeData::EchoResponseTypeThreeData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_MODULES_PROCESSOR_ECHO_RESPONSE_ECHORESPONSETYPETHREEDATA_CPP

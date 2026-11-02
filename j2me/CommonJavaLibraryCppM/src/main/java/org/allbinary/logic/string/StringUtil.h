@@ -80,6 +80,8 @@ class StringUtil
 
     public: std::vector<std::string> ONE_EMPTY_STRING_ARRAY;
 
+    public: std::vector<std::vector<std::string>> ONE_EMPTY_STRING_ARRAY_OF_ARRAYS;
+
     private: std::vector<std::string> stringArray;
 
 private: StringUtil();

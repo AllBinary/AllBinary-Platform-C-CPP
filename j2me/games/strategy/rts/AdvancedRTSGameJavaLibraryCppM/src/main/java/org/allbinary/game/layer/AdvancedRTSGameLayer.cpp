@@ -95,9 +95,6 @@
 #include <org/allbinary/game/layer/building/event/BuildingEventHandler.h>
 
       
-#include <org/allbinary/game/layer/unit/UnitLayer.h>
-
-      
 #include <org/allbinary/game/layer/waypoint/Waypoint2LogHelper.h>
 
       
@@ -376,7 +373,7 @@ this->waypointBehaviorBase= unitWaypointHelper;
     AdvancedRTSGameLayer* parentAdvancedRTSGameLayer = dynamic_cast<AdvancedRTSGameLayer*>(this->parentLayer);;
     
 
-                        if(parentAdvancedRTSGameLayer->getType() != UnitLayer::getStaticType())
+                        if(parentAdvancedRTSGameLayer->getType() != 1)
                         
                                     {
                                     
@@ -402,7 +399,7 @@ this->waypointBehaviorBase= unitWaypointHelper;
 
     auto AdvancedRTSGameLayer::isWaypointListEmptyOrOnlyTargets() -> bool{
 
-                        if(this->getType() != UnitLayer::getStaticType())
+                        if(this->getType() != 1)
                         
                                     {
                                     

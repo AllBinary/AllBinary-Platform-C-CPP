@@ -52,6 +52,9 @@
 #include <javax/xml/parsers/DocumentBuilderFactory.h>
 
       
+#include <org/allbinary/string/CommonPhoneStrings.h>
+
+      
 #include <org/w3c/dom/Document.h>
 
       
@@ -80,11 +83,14 @@ DomDocumentHelper::DomDocumentHelper(){
 
 
     auto DomDocumentHelper::init() -> void{
-System.setProperty("jdk.xml.maxElementDepth", "0");
+
+    CommonPhoneStrings* commonPhoneStrings = CommonPhoneStrings::getInstance();;
     
-System.setProperty("jdk.xml.xpathExprOpLimit", "0");
+System.setProperty("jdk.xml.maxElementDepth", commonPhoneStrings->ZERO);
     
-System.setProperty("jdk.xml.xpathTotalOpLimit", "0");
+System.setProperty("jdk.xml.xpathExprOpLimit", commonPhoneStrings->ZERO);
+    
+System.setProperty("jdk.xml.xpathTotalOpLimit", commonPhoneStrings->ZERO);
     
 
     std::string LIMIT = "500000";;

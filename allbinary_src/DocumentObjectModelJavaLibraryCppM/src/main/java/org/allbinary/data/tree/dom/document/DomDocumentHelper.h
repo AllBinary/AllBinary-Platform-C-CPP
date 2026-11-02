@@ -42,6 +42,7 @@
 #include <java/io/StringBufferInputStream.h>
 class DocumentBuilder;
 class DocumentBuilderFactory;
+class CommonPhoneStrings;
 class Document;
 
 
@@ -105,6 +106,9 @@ private: DomDocumentHelper();
 #endif
 #if __has_include(<javax/xml/parsers/DocumentBuilderFactory.h>)
 #include <javax/xml/parsers/DocumentBuilderFactory.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonPhoneStrings.h>)
+#include <org/allbinary/string/CommonPhoneStrings.h>
 #endif
 #if __has_include(<org/w3c/dom/Document.h>)
 #include <org/w3c/dom/Document.h>

@@ -21,23 +21,24 @@
         #ifndef ADMIN_TAGHELPERS_PAYMENTPROCESSHELPER_H
         #define ADMIN_TAGHELPERS_PAYMENTPROCESSHELPER_H
 
-            #include "../../java/lang/Exception.h"
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <javax/servlet/jsp/PageContext.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/TransformInfoHttpFactory.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/TransformInfoHttpInterface.h>
-
-      
-#include <views/admin/payment/PaymentProcessorComponent.h>
-
-      
+class PageContext;
+class TransformInfoHttpFactory;
+class TransformInfoHttpInterface;
+class PaymentProcessorComponent;
 
 
 
@@ -56,13 +57,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TagHelper.h"
+        #include "admin/taghelpers/TagHelper.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PaymentProcessHelper: public TagHelper {
 
-    private: PaymentProcessorComponent paymentProcessorComponent;
+    private: PaymentProcessorComponent* paymentProcessorComponent;
 
-public: PaymentProcessHelper(HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: PaymentProcessHelper(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext);
 
                 //@Throws(Exception.constructor)
             
@@ -74,3 +79,28 @@ public: PaymentProcessHelper(HashMap<any, any> propertiesHashMap, PageContext pa
 
 
         #endif //ADMIN_TAGHELPERS_PAYMENTPROCESSHELPER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ADMIN_TAGHELPERS_PAYMENTPROCESSHELPER_H_COMPLETE)
+        #define ADMIN_TAGHELPERS_PAYMENTPROCESSHELPER_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<javax/servlet/jsp/PageContext.h>)
+#include <javax/servlet/jsp/PageContext.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfoHttpFactory.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfoHttpFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfoHttpInterface.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfoHttpInterface.h>
+#endif
+#if __has_include(<views/admin/payment/PaymentProcessorComponent.h>)
+#include <views/admin/payment/PaymentProcessorComponent.h>
+#endif
+#if __has_include("admin/taghelpers/TagHelper.h")
+#include "admin/taghelpers/TagHelper.h"
+#endif
+
+        #endif
+    

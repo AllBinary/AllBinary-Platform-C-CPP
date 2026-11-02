@@ -34,6 +34,7 @@
         
             #include "java/lang/Object.h"
         
+class JsType;
 class ForcedLogUtil;
 
 
@@ -83,7 +84,10 @@ public: ImmutableBasicArrayList(std::string name, int32_t size);
         
         #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_UTIL_IMMUTABLEBASICARRAYLIST_H_COMPLETE)
         #define ORG_ALLBINARY_UTIL_IMMUTABLEBASICARRAYLIST_H_COMPLETE
-        #if __has_include(<org/allbinary/logic/communication/log/ForcedLogUtil.h>)
+        #if __has_include(<jsinterop/annotations/JsType.h>)
+#include <jsinterop/annotations/JsType.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/ForcedLogUtil.h>)
 #include <org/allbinary/logic/communication/log/ForcedLogUtil.h>
 #endif
 #if __has_include("org/allbinary/util/BasicArrayListS.h")

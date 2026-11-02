@@ -1970,7 +1970,7 @@ rtsLayerHudPaintable->setRtsLayer(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UnitLayer::getStaticType();;
+                        return 1;
     
 }
 

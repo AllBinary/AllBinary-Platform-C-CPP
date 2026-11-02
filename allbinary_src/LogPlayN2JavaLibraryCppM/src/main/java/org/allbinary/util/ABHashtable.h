@@ -36,8 +36,6 @@
         
 #include <java/util/Enumeration.h>
 #include <java/util/Hashtable.h>
-#include <java/util/Map.h>
-#include <java/util/Set.h>
 class JsType;
 
 
@@ -113,12 +111,6 @@ public: ABHashtable();
 #endif
 #if __has_include(<java/util/Hashtable.h>)
 #include <java/util/Hashtable.h>
-#endif
-#if __has_include(<java/util/Map.h>)
-#include <java/util/Map.h>
-#endif
-#if __has_include(<java/util/Set.h>)
-#include <java/util/Set.h>
 #endif
 #if __has_include(<jsinterop/annotations/JsType.h>)
 #include <jsinterop/annotations/JsType.h>

@@ -18,7 +18,23 @@
 
 
 
-            #include "../../java/lang/Exception.h"
+        #ifndef ADMIN_TAGHELPERS_PAYMENTPROCESSHELPER_CPP
+        #define ADMIN_TAGHELPERS_PAYMENTPROCESSHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/PaymentProcessHelper.h"
+        
+
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -53,34 +69,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TagHelper.h"
+        #include "admin/taghelpers/TagHelper.h"
 
-class PaymentProcessHelper: public TagHelper {
 
-    private: PaymentProcessorComponent paymentProcessorComponent;
+PaymentProcessHelper::PaymentProcessHelper(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext){
 
-public: PaymentProcessHelper(HashMap<any, any> propertiesHashMap, PageContext pageContext){
-
-    TransformInfoHttpInterface transformInfoInterface = TransformInfoHttpFactory::getInstance(propertiesHashMap, pageContext) as TransformInfoHttpInterface;;
+    TransformInfoHttpInterface* transformInfoInterface = dynamic_cast<TransformInfoHttpInterface*>(TransformInfoHttpFactory::getInstance(propertiesHashMap, pageContext));;
     
-this->paymentProcessorComponent= PaymentProcessorComponent(transformInfoInterface);
+this->paymentProcessorComponent= new PaymentProcessorComponent(transformInfoInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: std::string process(){
+    auto PaymentProcessHelper::process() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->paymentProcessorComponent.view();;
+                        return this->paymentProcessorComponent->view();;
     
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_PAYMENTPROCESSHELPER_CPP

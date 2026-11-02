@@ -21,7 +21,18 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_MODULES_PROCESSOR_ECHO_RESPONSE_ECHORESPONSETYPETHREEDATA_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_MODULES_PROCESSOR_ECHO_RESPONSE_ECHORESPONSETYPETHREEDATA_H
 
-            #include "../../../../../../../../../../../../java/lang/Object.h"
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
         
 
 
@@ -42,11 +53,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class EchoResponseTypeThreeData
-            : public Object
+            : public virtual Object
          {
 
-    public: static std::string NAME = "ECHOTYPE3";
+    public: static inline std::string NAME = "ECHOTYPE3";
 
 private: EchoResponseTypeThreeData();
 
@@ -56,3 +71,10 @@ private: EchoResponseTypeThreeData();
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_MODULES_PROCESSOR_ECHO_RESPONSE_ECHORESPONSETYPETHREEDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_MODULES_PROCESSOR_ECHO_RESPONSE_ECHORESPONSETYPETHREEDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_MODULES_PROCESSOR_ECHO_RESPONSE_ECHORESPONSETYPETHREEDATA_H_COMPLETE
+        
+        #endif
+    

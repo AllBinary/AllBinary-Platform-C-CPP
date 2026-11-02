@@ -41,13 +41,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class Override
-            : public virtual Object
-         {
+//Annotation - declared in the header
 
-};
-
-            
 
 
         #endif //JAVA_LANG_OVERRIDE_CPP

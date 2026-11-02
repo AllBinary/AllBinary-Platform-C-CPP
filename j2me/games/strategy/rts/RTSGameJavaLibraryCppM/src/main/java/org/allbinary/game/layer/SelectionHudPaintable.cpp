@@ -99,7 +99,7 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 
-SelectionHudPaintable::SelectionHudPaintable() : y(CommonButtons::getInstance()->STANDARD_BUTTON_SIZE +17), updateMyFontProcessor(new UpdateMyFontProcessor(this)), myFontProcessor(updateMyFontProcessor), basicColor(BasicColorFactory::getInstance()->BLACK), name(StringUtil::getInstance()->EMPTY_STRING), animationInterface(NullAnimationFactory::getFactoryInstance()->getInstance(0)), backgroundColor(BasicColorFactory::getInstance()->GREY->intValue()){
+SelectionHudPaintable::SelectionHudPaintable() : y(CommonButtons::getInstance()->STANDARD_BUTTON_SIZE +17), updateMyFontProcessor(new UpdateMyFontProcessor(this)), myFontProcessor(this->updateMyFontProcessor), basicColor(BasicColorFactory::getInstance()->BLACK), name(StringUtil::getInstance()->EMPTY_STRING), animationInterface(NullAnimationFactory::getFactoryInstance()->getInstance(0)), backgroundColor(BasicColorFactory::getInstance()->GREY->intValue()){
 this->update();
     
 this->primitiveLongUtil= PrimitiveLongUtil::createPowerOfTen(10000);

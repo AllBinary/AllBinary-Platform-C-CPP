@@ -34,6 +34,7 @@
         
             #include "java/lang/Object.h"
         
+class JsType;
 class FilePathData;
 class StringUtil;
 class CommonSeps;
@@ -59,7 +60,7 @@ class CommonSeps;
                                 
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
-        
+        //Used to correct user input for paths
 class AbPathData
             : public virtual Object
          {
@@ -97,7 +98,10 @@ private: AbPathData();
         
         #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_IO_PATH_ABPATHDATA_H_COMPLETE)
         #define ORG_ALLBINARY_LOGIC_IO_PATH_ABPATHDATA_H_COMPLETE
-        #if __has_include(<org/allbinary/logic/io/file/FilePathData.h>)
+        #if __has_include(<jsinterop/annotations/JsType.h>)
+#include <jsinterop/annotations/JsType.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/FilePathData.h>)
 #include <org/allbinary/logic/io/file/FilePathData.h>
 #endif
 #if __has_include(<org/allbinary/logic/string/StringUtil.h>)

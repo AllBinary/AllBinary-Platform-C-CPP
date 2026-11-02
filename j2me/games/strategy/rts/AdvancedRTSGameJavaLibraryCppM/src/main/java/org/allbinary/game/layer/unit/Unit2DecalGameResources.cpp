@@ -36,6 +36,8 @@
             #include "java/lang/String.h"
 
         
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/resources/BasicGameResources.h>
@@ -48,6 +50,9 @@
 
       
 #include <org/allbinary/game/configuration/feature/GraphicsFeatureFactory.h>
+
+      
+#include <org/allbinary/logic/NullUtil.h>
 
       
 
@@ -69,8 +74,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-auto Unit2DecalGameResources::instance_owner() -> Unit2DecalGameResources* { static std::unique_ptr<Unit2DecalGameResources> value(new Unit2DecalGameResources()); return value.get(); }
-Unit2DecalGameResources* Unit2DecalGameResources::instance = Unit2DecalGameResources::instance_owner();
+Object* Unit2DecalGameResources::instance = NullUtil::getInstance()->NULL_OBJECT;
+
+    auto Unit2DecalGameResources::getInstance() -> BasicGameResources*{
+
+                        if(Unit2DecalGameResources::instance == NullUtil::getInstance()->NULL_OBJECT)
+                        
+                                    {
+                                    Unit2DecalGameResources::instance= new Unit2DecalGameResources();
+    
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return dynamic_cast<Unit2DecalGameResources*>(Unit2DecalGameResources::instance);
+    
+}
+
 
 Unit2DecalGameResources::Unit2DecalGameResources(){
 
@@ -136,16 +159,6 @@ BasicGameResources::append(ROOT, sizeString);
 
                         }
                             
-}
-
-
-    auto Unit2DecalGameResources::getInstance() -> BasicGameResources*{
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return Unit2DecalGameResources::instance;
-    
 }
 
 

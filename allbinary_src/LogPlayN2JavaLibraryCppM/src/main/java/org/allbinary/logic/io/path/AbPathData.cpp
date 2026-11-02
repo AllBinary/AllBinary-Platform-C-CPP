@@ -36,6 +36,9 @@
         
             #include "java/lang/Object.h"
         
+#include <jsinterop/annotations/JsType.h>
+
+      
 #include <org/allbinary/logic/io/file/FilePathData.h>
 
       
@@ -63,7 +66,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        
+        //Used to correct user input for paths
 auto AbPathData::instance_owner() -> AbPathData* { static std::unique_ptr<AbPathData> value(new AbPathData()); return value.get(); }
 AbPathData* AbPathData::instance = AbPathData::instance_owner();
 

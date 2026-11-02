@@ -64,11 +64,10 @@
 
 CapitalEventHandlerFactory::CapitalEventHandlerFactory() {
         }
-        int32_t CapitalEventHandlerFactory::initResult = CapitalEventHandlerFactory::init();
+        std::vector<CapitalEventHandler*> CapitalEventHandlerFactory::capitalEventHandlerArray = std::vector<CapitalEventHandler*>(10);
+int32_t CapitalEventHandlerFactory::initResult = CapitalEventHandlerFactory::init();
         auto CapitalEventHandlerFactory::init() -> int32_t {
                     
-capitalEventHandlerArray= std::vector<CapitalEventHandler*>(10);
-    
 
 
 
@@ -87,10 +86,13 @@ CapitalEventHandlerFactory::capitalEventHandlerArray[index]= new CapitalEventHan
                 
     auto CapitalEventHandlerFactory::getInstance(Group* groupInterface) -> CapitalEventHandler*{
 
+    int32_t groupId = static_cast<int32_t>(groupInterface->getGroupId());;
+    
+
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CapitalEventHandlerFactory::capitalEventHandlerArray[static_cast<int32_t>(groupInterface->getGroupId();)];
+                        return CapitalEventHandlerFactory::capitalEventHandlerArray[groupId];
     
 }
 

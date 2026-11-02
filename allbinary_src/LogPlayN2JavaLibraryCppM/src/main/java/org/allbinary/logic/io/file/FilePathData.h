@@ -34,6 +34,7 @@
         
             #include "java/lang/Object.h"
         
+class JsType;
 
 
 
@@ -82,6 +83,9 @@ private: FilePathData();
         
         #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_IO_FILE_FILEPATHDATA_H_COMPLETE)
         #define ORG_ALLBINARY_LOGIC_IO_FILE_FILEPATHDATA_H_COMPLETE
-        
+        #if __has_include(<jsinterop/annotations/JsType.h>)
+#include <jsinterop/annotations/JsType.h>
+#endif
+
         #endif
     

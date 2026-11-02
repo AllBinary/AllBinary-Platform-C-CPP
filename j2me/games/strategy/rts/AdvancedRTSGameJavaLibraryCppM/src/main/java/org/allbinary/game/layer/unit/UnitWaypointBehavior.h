@@ -78,7 +78,8 @@ class BasicArrayListUtil;
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        class UnitLayer;
+        class UnitWaypointStrings;
+class UnitLayer;
 
                                 
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
@@ -86,9 +87,9 @@ class BasicArrayListUtil;
         
 class UnitWaypointBehavior: public WaypointBehaviorBase, public WaypointEventListenerInterface {
 
-    private: static inline const std::string PATHING = "Pathing";
-
     /*protected*/ public: CommonSeps* commonSeps;
+
+    private: UnitWaypointStrings* unitWaypointStrings;
 
     private: int32_t longWeaponRange = 0;
 
@@ -295,6 +296,9 @@ class UnitWaypointBehavior: public WaypointBehaviorBase, public WaypointEventLis
 #endif
 #if __has_include(<org/allbinary/util/BasicArrayListUtil.h>)
 #include <org/allbinary/util/BasicArrayListUtil.h>
+#endif
+#if __has_include("org/allbinary/game/layer/unit/UnitWaypointStrings.h")
+#include "org/allbinary/game/layer/unit/UnitWaypointStrings.h"
 #endif
 #if __has_include("org/allbinary/game/layer/unit/UnitLayer.h")
 #include "org/allbinary/game/layer/unit/UnitLayer.h"

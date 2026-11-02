@@ -31,10 +31,10 @@
         <module>../j2me/HTMLForJ2MEJavaLibraryCppM</module>
         -->
         
-        <module>../../../games/PreGameJ2MEJavaLibraryP</module>
-        <module>../../GameJ2MELibraryP</module>
-        <module>../../CombatGameJavaLibraryPOCppM</module>
-        <module>../../AdvancedCombatGameJavaLibraryP</module>
+        <module>../../../games/PreGameJ2MEJavaLibraryCppP</module>
+        <module>../../GameJ2MELibraryCppP</module>
+        <module>../../CombatGameJavaLibraryPOM</module>
+        <module>../../AdvancedCombatGameJavaLibraryCppP</module>
         
         <module>../j2me/AllBinaryOnJ2MEBasePlatformJavaLibraryCppM</module>
         

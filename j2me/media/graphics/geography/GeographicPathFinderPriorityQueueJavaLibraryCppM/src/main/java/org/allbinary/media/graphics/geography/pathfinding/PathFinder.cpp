@@ -42,12 +42,6 @@
         
             #include "java/lang/RuntimeException.h"
         
-#include <java/util/HashSet.h>
-
-      
-#include <java/util/PriorityQueue.h>
-
-      
 #include <org/allbinary/game/layer/AllBinaryTiledLayer.h>
 
       
@@ -76,6 +70,12 @@
 
       
 #include <org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellType.h>
+
+      
+#include <org/allbinary/util/ABHashSet.h>
+
+      
+#include <org/allbinary/util/ABPriorityQueue.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -112,7 +112,7 @@
 #include "org/allbinary/media/graphics/geography/pathfinding/MultipassState.h"
 
 
-PathFinder::PathFinder() : logUtil(LogUtil::getInstance()), basicArrayListUtil(BasicArrayListUtil::getInstance()), mathUtil(MathUtil::getInstance()), openPriorityQueue(new PriorityQueue<PathFindingNodeCost*>()), closedSet(new HashSet<PathFindingNodeCost*>()), geographicMapInterface(NullUtil::getInstance()->NULL_OBJECT), costArray(PathFindingNodeCost::NULL_PATH_FINDING_NODE_COST_ARRAY_ARRAY) {
+PathFinder::PathFinder() : logUtil(LogUtil::getInstance()), basicArrayListUtil(BasicArrayListUtil::getInstance()), mathUtil(MathUtil::getInstance()), openPriorityQueue(new ABPriorityQueue<PathFindingNodeCost*>()), closedSet(new ABHashSet<PathFindingNodeCost*>()), geographicMapInterface(NullUtil::getInstance()->NULL_OBJECT), costArray(PathFindingNodeCost::NULL_PATH_FINDING_NODE_COST_ARRAY_ARRAY) {
         }
         
                 //@Throws(Exception.constructor)
