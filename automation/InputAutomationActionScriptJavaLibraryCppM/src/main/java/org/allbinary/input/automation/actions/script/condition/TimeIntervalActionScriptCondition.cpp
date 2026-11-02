@@ -193,7 +193,7 @@ this->timeIntervalActionScriptConditionJPanel->getTimeIntervalActionJDialog()->s
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap->put(TimeIntervalActionScriptConditionData::TIME, std::to_string(delay));
+hashMap->put(TimeIntervalActionScriptConditionData::TIME, std::to_string(this->timeHelper->delay));
     
 this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(hashMap->toString()), this, "toHashMap()");
     

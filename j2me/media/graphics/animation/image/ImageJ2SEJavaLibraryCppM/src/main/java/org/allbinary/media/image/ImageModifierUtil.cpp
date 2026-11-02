@@ -314,7 +314,7 @@ raster->setPixel(index, index2, this->colorArray);
 
         try {
             
-    std::vector<Image*> newImageArray = std::vector<Image*>(originalImageArray.length);;
+    std::vector<Image*> newImageArray = std::vector<Image*>(originalImageArray.size());;
     
 
     int32_t size = newImageArray.size();;

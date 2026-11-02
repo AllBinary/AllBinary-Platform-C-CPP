@@ -216,7 +216,7 @@ backupFile->createNewFile();
     int64_t timeLong = int64_t(calendar->getTimeInMillis());;
     
 
-    std::string time = timeLong.toString();;
+    std::string time = JavaString::valueOf(timeLong);;
     
 
     StringMaker* stringBuffer = new StringMaker();;

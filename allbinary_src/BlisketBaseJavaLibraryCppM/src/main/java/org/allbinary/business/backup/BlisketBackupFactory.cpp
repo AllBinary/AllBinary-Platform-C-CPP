@@ -216,7 +216,7 @@ stringBuffer->append(PATH_GLOBALS::getInstance()->BACKUP_PATH);
                         for (
     int32_t index = 0;index < size; index++)
         {
-nextStore= storeFrontNamesBasicArrayList->get(index);
+nextStore= JavaBoxes::unbox<std::string>(storeFrontNamesBasicArrayList->get(index));
     
 stringBuffer->delete_(0, stringBuffer->length());
     
@@ -303,7 +303,7 @@ stringBuffer->append(PATH_GLOBALS::getInstance()->BACKUP_PATH);
                         for (
     int32_t index = 0;index < size; index++)
         {
-nextStore= storeFrontNamesBasicArrayList->get(index);
+nextStore= JavaBoxes::unbox<std::string>(storeFrontNamesBasicArrayList->get(index));
     
 storeFrontInterface= storeFrontsEntity->getStoreFrontInterface(nextStore);
     
@@ -386,7 +386,7 @@ stringBuffer->append(PATH_GLOBALS::getInstance()->BACKUP_PATH);
                         for (
     int32_t index = 0;index < size; index++)
         {
-nextStore= storeFrontNamesBasicArrayList->get(index);
+nextStore= JavaBoxes::unbox<std::string>(storeFrontNamesBasicArrayList->get(index));
     
 PreLogUtil::put(JavaString::valueOf("Backup Store Jsps: ") +JavaString::valueOf(nextStore), this, "backupJsps()");
     

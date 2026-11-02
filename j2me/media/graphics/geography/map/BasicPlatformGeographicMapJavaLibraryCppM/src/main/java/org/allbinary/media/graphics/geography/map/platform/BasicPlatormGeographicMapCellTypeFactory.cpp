@@ -121,7 +121,7 @@ new GeographicMapCellType(0, 0);
 
         while(this->enumerationUtil->hasMoreElements(enumeration))
         {
-key= this->enumerationUtil->nextElement(enumeration);
+key= JavaBoxes::unbox<std::string>(this->enumerationUtil->nextElement(enumeration));
     
 this->logUtil->putF(key, this, commonStrings->INIT);
     
@@ -130,7 +130,7 @@ idsWithTypeList= dynamic_cast<BasicArrayList*>(tileTypeToTileIdsMap->get(key));
 basicPlatormGeographicMapCellType= new BasicPlatormGeographicMapCellType(idsWithTypeList);
     
 
-                        if(JavaString::equals(key, PLATFORM))
+                        if(JavaObjects::equals(key, PLATFORM))
                         
                                     {
                                     BLOCK_CELL_TYPE= basicPlatormGeographicMapCellType;
@@ -139,7 +139,7 @@ basicPlatormGeographicMapCellType= new BasicPlatormGeographicMapCellType(idsWith
                                     }
                                 
 
-                        if(JavaString::equals(key, JUMP_TRHU))
+                        if(JavaObjects::equals(key, JUMP_TRHU))
                         
                                     {
                                     JUMP_THRU_CELL_TYPE= basicPlatormGeographicMapCellType;
@@ -148,7 +148,7 @@ basicPlatormGeographicMapCellType= new BasicPlatormGeographicMapCellType(idsWith
                                     }
                                 
 
-                        if(JavaString::equals(key, LADDER))
+                        if(JavaObjects::equals(key, LADDER))
                         
                                     {
                                     LADDER_CELL_TYPE= basicPlatormGeographicMapCellType;

@@ -231,7 +231,7 @@ keysAndValues->put(transformInfoData->NAME, name);
                         
                                     {
                                     
-    std::string string = anyType;;
+    std::string string = JavaBoxes::unbox<std::string>(anyType);;
     
 hashMap->put(transformInfoData->OBJECTCONFIG, decode.toCharArray());
     
@@ -248,7 +248,7 @@ hashMap->put(transformInfoData->OBJECTCONFIG, decode.toCharArray());
                         
                                     {
                                     
-    std::string string = objectData;;
+    std::string string = JavaBoxes::unbox<std::string>(objectData);;
     
 hashMap->put(transformInfoData->DATA, decode.toCharArray());
     
@@ -297,7 +297,7 @@ hashMap->put(transformInfoData->DATA, decode.toCharArray());
     int32_t i = 0;i < size; i++)
         {
 
-    std::string objectConfigString = objectConfigColumnVector->get(i);;
+    std::string objectConfigString = JavaBoxes::unbox<std::string>(objectConfigColumnVector->get(i));;
     
 objectConfigString= decode.toCharArray();
     
@@ -334,7 +334,7 @@ objectConfigVector->add(this->transformInfoObjectConfigAndManipulatorFactoryInte
     int32_t i = 0;i < size; i++)
         {
 
-    std::string viewNameString = columnVector->get(i);;
+    std::string viewNameString = JavaBoxes::unbox<std::string>(columnVector->get(i));;
     
 viewNameVector->add(viewNameString);
     
@@ -434,7 +434,7 @@ stringBuffer->append(this->sqlStrings->END);
 
 
     auto TransformInfoEntity::update(HashMap<Object*, Object*>* updatedValues) -> void{
-AbSqlBean::updateWhere(TransformInfoData::getInstance()->NAME, updatedValues->get(TransformInfoData::getInstance()->NAME), updatedValues);
+AbSqlBean::updateWhere(TransformInfoData::getInstance()->NAME, JavaBoxes::unbox<std::string>(updatedValues->get(TransformInfoData::getInstance()->NAME)), updatedValues);
     
 }
 

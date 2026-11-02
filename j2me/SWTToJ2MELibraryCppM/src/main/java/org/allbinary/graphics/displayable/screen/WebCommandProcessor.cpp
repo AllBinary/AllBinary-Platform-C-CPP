@@ -108,7 +108,7 @@ WebCommandProcessor* WebCommandProcessor::instance = WebCommandProcessor::instan
                         if(Desktop::isDesktopSupported() && Desktop::getDesktop()->isSupported(Desktop::Action->BROWSE))
                         
                                     {
-                                    Desktop::getDesktop()->browse(new URI(this->list->removeAt(0)));
+                                    Desktop::getDesktop()->browse(new URI(JavaBoxes::unbox<std::string>(this->list->removeAt(0))));
     
 
                                     }

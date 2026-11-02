@@ -102,7 +102,7 @@ this->keys= std::vector<int32_t>(hashtable->size());
                         for (
     int32_t index = 0;index < size; index++)
         {
-this->keys[index]= hashtable->get(objectArray[index]);
+this->keys[index]= JavaBoxes::unbox<int32_t>(hashtable->get(objectArray[index]));
     
 }
 

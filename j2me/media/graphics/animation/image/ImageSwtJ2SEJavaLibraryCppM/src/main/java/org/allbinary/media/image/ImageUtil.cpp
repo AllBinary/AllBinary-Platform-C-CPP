@@ -388,9 +388,29 @@ gc->dispose();
 
     Canvas* imageCanvas = new Canvas(parent, SWT::NONE);;
     
-imageCanvas->addPaintListener(class extends PaintListener
-                                {
-                                
+imageCanvas->addPaintListener([&]() {
+    static thread_local ImageUtil* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    static thread_local org::eclipse::swt::graphics::Image* anonymous0_image{};
+    anonymous0_image = image;
+    static thread_local int32_t anonymous0_dx{};
+    anonymous0_dx = dx;
+    static thread_local int32_t anonymous0_dy{};
+    anonymous0_dy = dy;
+    static thread_local int32_t anonymous0_width{};
+    anonymous0_width = width;
+    static thread_local int32_t anonymous0_height{};
+    anonymous0_height = height;
+    class Anonymous0 : public PaintListener {
+    public:
+    using PaintListener::PaintListener;
+    ImageUtil* outer = anonymousOuter0;
+    org::eclipse::swt::graphics::Image* image = anonymous0_image;
+    int32_t dx = anonymous0_dx;
+    int32_t dy = anonymous0_dy;
+    int32_t width = anonymous0_width;
+    int32_t height = anonymous0_height;
+
     public: void paintControl(PaintEvent* event){
 
     GC* gc = event->gc;;
@@ -408,8 +428,9 @@ gc->drawImage(image, 0, 0, image->getBounds()->width, image->getBounds()->height
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 
 

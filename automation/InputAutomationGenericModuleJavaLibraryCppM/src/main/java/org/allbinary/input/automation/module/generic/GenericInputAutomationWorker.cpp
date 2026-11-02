@@ -194,7 +194,7 @@ this->waitForDataWorkers();
                                     {
                                     this->logUtil->putF("Image Available", this, this->PROCESS_DATA_WORKER_RESULTS);
     
-this->setFrame(keyArray[keyArray.size() -1]);
+this->setFrame(JavaBoxes::unbox<int64_t>(keyArray[keyArray.size() -1]));
     
 
                         if(getFrame() > this->lastFrame)
@@ -224,7 +224,7 @@ this->logUtil->putF(JavaString::valueOf(JavaString::valueOf("Processing ") +Java
     int32_t index = 0;index < size; index++)
         {
 
-    std::string actionNameString = actionNameArray[index];;
+    std::string actionNameString = JavaBoxes::unbox<std::string>(actionNameArray[index]);;
     
 this->logUtil->putF(JavaString::valueOf("Processing Action: ") +JavaString::valueOf(actionNameString), this, this->PROCESS_DATA_WORKER_RESULTS);
     

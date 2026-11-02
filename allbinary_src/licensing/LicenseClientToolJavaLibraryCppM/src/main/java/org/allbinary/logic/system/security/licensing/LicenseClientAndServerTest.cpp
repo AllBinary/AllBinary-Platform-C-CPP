@@ -187,7 +187,7 @@ this->vector->add(options[index]);
 stringBuffer->append(TESTING);
     
 
-    std::string serverName = this->vector->get(index);;
+    std::string serverName = JavaBoxes::unbox<std::string>(this->vector->get(index));;
     
 
         try {

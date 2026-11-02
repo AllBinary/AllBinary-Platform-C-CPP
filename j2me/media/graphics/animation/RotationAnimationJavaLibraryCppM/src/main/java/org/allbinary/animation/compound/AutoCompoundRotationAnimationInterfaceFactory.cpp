@@ -95,7 +95,7 @@ AutoCompoundRotationAnimationInterfaceFactory::AutoCompoundRotationAnimationInte
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AutoCompoundRotationAnimation(animationInterfaceArray as RotationAnimation[], this->animationBehaviorFactory->getOrCreateInstance());
+                        return new AutoCompoundRotationAnimation(JavaBoxes::unbox<std::vector<RotationAnimation*>>(animationInterfaceArray), this->animationBehaviorFactory->getOrCreateInstance());
     
 }
 

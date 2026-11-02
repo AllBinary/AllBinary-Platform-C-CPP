@@ -73,14 +73,20 @@ NullAnimationFactory* NullAnimationFactory::NULL_NOT_FOR_USE_ANIMATION_FACTORY =
 auto NullAnimationFactory::NULL_ANIMATION_FACTORY_owner() -> NullAnimationFactory* { static std::unique_ptr<NullAnimationFactory> value(new NullAnimationFactory()); return value.get(); }
 NullAnimationFactory* NullAnimationFactory::NULL_ANIMATION_FACTORY = NullAnimationFactory::NULL_ANIMATION_FACTORY_owner();
 
-NullAnimationFactory::NullAnimationFactory() : NULL_ANIMATION(class extends Animation
-                                {
-                                
+NullAnimationFactory::NullAnimationFactory() : NULL_ANIMATION([&]() {
+    static thread_local NullAnimationFactory* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public Animation {
+    public:
+    using Animation::Animation;
+    NullAnimationFactory* outer = anonymousOuter0;
+
     public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
 }
 
-                                }
-                            ), EMPTY_ARRAY({}){
+    };
+    return new Anonymous0();
+}()), EMPTY_ARRAY({}){
 }
 
 

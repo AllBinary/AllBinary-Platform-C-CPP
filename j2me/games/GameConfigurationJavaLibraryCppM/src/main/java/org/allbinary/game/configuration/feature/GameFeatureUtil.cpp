@@ -347,7 +347,7 @@ this->updateExclusive(selectedChoiceLabel);
 
         while(this->enumerationUtil->hasMoreElements(enumeration))
         {
-name= this->enumerationUtil->nextElement(enumeration);
+name= JavaBoxes::unbox<std::string>(this->enumerationUtil->nextElement(enumeration));
     
 
                         if(this->tsUtil->compareTo(itemLabel, name) == 0)

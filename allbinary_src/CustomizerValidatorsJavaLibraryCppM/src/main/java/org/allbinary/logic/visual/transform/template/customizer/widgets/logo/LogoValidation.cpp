@@ -143,7 +143,7 @@ this->getFormData(hashMap);
     auto LogoValidation::getFormData(HashMap<Object*, Object*>* hashMap) -> void{
 this->logoFileItem= dynamic_cast<FileItem*>(hashMap->get(LogoData::getInstance()->IMAGE));
     
-this->logoAbPath= new AbPath(hashMap->get(LogoData::getInstance()->IMAGEPATH), StringUtil::getInstance()->EMPTY_STRING);
+this->logoAbPath= new AbPath(JavaBoxes::unbox<std::string>(hashMap->get(LogoData::getInstance()->IMAGEPATH)), StringUtil::getInstance()->EMPTY_STRING);
     
 
                         if(this->logoFileItem != 

@@ -96,7 +96,7 @@ endIndex= this->string.indexOf(end);
                         
                                     {
                                     
-    std::string text = this->string.substring(endIndex, string.size());;
+    std::string text = this->string.substring(endIndex, this->string.size());;
     
 
     FileOutputStream* idFile = new FileOutputStream(this->fileName);;
@@ -163,7 +163,7 @@ endIndex= this->string.indexOf(end);
     std::string newStart = this->string.substring(0, beginIndex);;
     
 
-    std::string text = this->string.substring(endIndex +end.size(), string.size());;
+    std::string text = this->string.substring(endIndex +end.size(), this->string.size());;
     
 
     FileOutputStream* idFile = new FileOutputStream(this->fileName);;

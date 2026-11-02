@@ -34,9 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/util/ABHashtable.h>
-#include <org/allbinary/util/ABStack.h>
-#include <org/allbinary/util/ABVector.h>
+template<typename T1, typename T2> class ABHashtable;
+template<typename T1> class ABStack;
+template<typename T1> class ABVector;
 
 
 

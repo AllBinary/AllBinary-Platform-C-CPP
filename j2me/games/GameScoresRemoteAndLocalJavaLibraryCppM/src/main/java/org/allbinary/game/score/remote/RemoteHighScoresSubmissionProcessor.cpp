@@ -133,7 +133,7 @@ hashtable->put(displayInfoSingleton->ORIENTATION, BooleanFactory::getInstance()-
     
 hashtable->put(RemoteHighScoresData::getInstance()->GAME_CONFIGURATION, GameConfigurationCentral::getInstance()->toString());
     
-hashtable->put(RemoteHighScoresData::getInstance()->SCORE, std::to_string(getScore));
+hashtable->put(RemoteHighScoresData::getInstance()->SCORE, std::to_string(highScore->getScore()));
     
 
                         if(XmlRpcAbeClient::isOnline)

@@ -147,19 +147,19 @@ this->storeName= weblisketSession->getStoreName();
 
     HashMap<Object*, Object*>* requestHashMap = (new RequestParams(pageContext))->toHashMap();;
     
-this->workFlowName= requestHashMap->get(WorkFlowData::getInstance()->NAME);
+this->workFlowName= JavaBoxes::unbox<std::string>(requestHashMap->get(WorkFlowData::getInstance()->NAME));
     
-this->workFlowDoc= DomDocumentHelper::create(requestHashMap->get(WorkFlowData::getInstance()->DATA));
+this->workFlowDoc= DomDocumentHelper::create(JavaBoxes::unbox<std::string>(requestHashMap->get(WorkFlowData::getInstance()->DATA)));
     
 }
 
 
 BasicWorkFlow::BasicWorkFlow(HashMap<Object*, Object*>* hashMap) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
-this->workFlowName= hashMap->get(WorkFlowData::getInstance()->NAME);
+this->workFlowName= JavaBoxes::unbox<std::string>(hashMap->get(WorkFlowData::getInstance()->NAME));
     
-this->storeName= hashMap->get(StoreFrontData::getInstance()->NAME);
+this->storeName= JavaBoxes::unbox<std::string>(hashMap->get(StoreFrontData::getInstance()->NAME));
     
-this->workFlowDoc= DomDocumentHelper::create(hashMap->get(WorkFlowData::getInstance()->DATA));
+this->workFlowDoc= DomDocumentHelper::create(JavaBoxes::unbox<std::string>(hashMap->get(WorkFlowData::getInstance()->DATA)));
     
 }
 
@@ -280,10 +280,10 @@ hashMap->put(EntryData::getInstance()->LASTMODIFIED, time);
     int32_t index = 0;index < size; index++)
         {
 
-    std::string name = nameArray[index];;
+    std::string name = JavaBoxes::unbox<std::string>(nameArray[index]);;
     
 
-    std::string value = hashMap->get(name);;
+    std::string value = JavaBoxes::unbox<std::string>(hashMap->get(name));;
     
 node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
     

@@ -250,7 +250,7 @@ index++;
                         for (
     int32_t index = 0;index < size; index++)
         {
-textArray[index]= list->get(index);
+textArray[index]= JavaBoxes::unbox<std::string>(list->get(index));
     
 }
 

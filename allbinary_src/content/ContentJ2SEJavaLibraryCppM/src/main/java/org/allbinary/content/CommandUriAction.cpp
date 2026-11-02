@@ -111,7 +111,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->PR
 
     auto CommandUriAction::getIntent(Command* command) -> Intent*{
 
-    std::string url = this->hashtable->get(command);;
+    std::string url = JavaBoxes::unbox<std::string>(this->hashtable->get(command));;
     
 
 

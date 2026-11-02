@@ -135,7 +135,7 @@ ImageArrayRotationUtil* ImageArrayRotationUtil::instance = ImageArrayRotationUti
         {
 this->logUtil->putF(this->TOTAL_ANGLE +totalAngle, this, this->commonStrings->RUN);
     
-generatedBufferedImage= ImageJ2SERotationUtil::getInstance()->getRotatedImage(bufferedImageArray[index], totalAngle.intValue());
+generatedBufferedImage= ImageJ2SERotationUtil::getInstance()->getRotatedImage(bufferedImageArray[index], totalAngle);
     
 visitor->visit(generatedBufferedImage, input, index);
     

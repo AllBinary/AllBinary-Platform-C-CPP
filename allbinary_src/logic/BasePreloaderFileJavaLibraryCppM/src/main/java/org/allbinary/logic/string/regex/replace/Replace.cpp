@@ -155,9 +155,9 @@ this->hashMap= hashMap;
                         for (
     int32_t index2 = 0;index2 < size; index2++)
         {
-keys= keyArray[index2] as string[];
+keys= JavaBoxes::unbox<std::vector<std::string>>(keyArray[index2]);
     
-values= this->hashMap->get(keys) as string[];
+values= JavaBoxes::unbox<std::vector<std::string>>(this->hashMap->get(keys));
     
 
     int64_t foundTotal = 0;;
@@ -178,7 +178,7 @@ values= this->hashMap->get(keys) as string[];
     int32_t begin2= 0;;
     
 
-        while(index < replace.size())
+        while(index < replace->size())
         {
 
     int32_t begin = JavaString::indexOf(replace, keys[0], index);;
@@ -210,7 +210,7 @@ newStringBuffer->append(values[0]);
     
 index= newStringBuffer->length();
     
-newStringBuffer->append(JavaString::substring(replace, end, replace.size()));
+newStringBuffer->append(JavaString::substring(replace, end, replace->size()));
     
 replace= newStringBuffer->toString();
     
@@ -237,7 +237,7 @@ newStringBuffer->append(values[1]);
     
 index= newStringBuffer->length();
     
-newStringBuffer->append(JavaString::substring(replace, end2, replace.size()));
+newStringBuffer->append(JavaString::substring(replace, end2, replace->size()));
     
 replace= newStringBuffer->toString();
     
@@ -324,15 +324,15 @@ totalNumberOfReplaces++;
                         for (
     int32_t index2 = 0;index2 < size; index2++)
         {
-key= keyArray[index2];
+key= JavaBoxes::unbox<std::string>(keyArray[index2]);
     
-value= this->hashMap->get(key);
+value= JavaBoxes::unbox<std::string>(this->hashMap->get(key));
     
 
     int32_t index = 0;;
     
 
-        while(index < replace.size())
+        while(index < replace->size())
         {
 newStringBuffer->delete_(0, newStringBuffer->length());
     
@@ -356,7 +356,7 @@ newStringBuffer->delete_(0, newStringBuffer->length());
     
 index= newStringBuffer->length();
     
-newStringBuffer->append(JavaString::substring(replace, end, replace.size()));
+newStringBuffer->append(JavaString::substring(replace, end, replace->size()));
     
 replace= newStringBuffer->toString();
     

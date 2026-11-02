@@ -123,16 +123,22 @@ this->newProfileActionJLabel->setText("New Action Name");
     
 this->okNewProfileActionJButton->setText("Ok");
     
-this->okNewProfileActionJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->okNewProfileActionJButton->addActionListener([&]() {
+    static thread_local GenericProfileActionsJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    GenericProfileActionsJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-okNewProfileActionJButtonActionPerformed(evt);
+outer->okNewProfileActionJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 
     javax::swing::GroupLayout* newProfileActionJDialogLayout = new javax::swing::GroupLayout(this->newProfileActionJDialog->getContentPane());;
@@ -145,57 +151,81 @@ newProfileActionJDialogLayout->setVerticalGroup(newProfileActionJDialogLayout->c
     
 this->genericProfileActionsJPanel->setPreferredSize(new java::awt::Dimension(10000, 10000));
     
-this->genericProfileActionsJList->addListSelectionListener(class extends javax::swing::event::ListSelectionListener
-                                {
-                                
+this->genericProfileActionsJList->addListSelectionListener([&]() {
+    static thread_local GenericProfileActionsJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public javax::swing::event::ListSelectionListener {
+    public:
+    using javax::swing::event::ListSelectionListener::ListSelectionListener;
+    GenericProfileActionsJPanel* outer = anonymousOuter0;
+
     public: void valueChanged(javax::swing::event::ListSelectionEvent* evt){
-genericProfileActionsJListValueChanged(evt);
+outer->genericProfileActionsJListValueChanged(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->genericProfileActionsJScrollPane->setViewportView(this->genericProfileActionsJList);
     
 this->newActionJButton->setText("New");
     
-this->newActionJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->newActionJButton->addActionListener([&]() {
+    static thread_local GenericProfileActionsJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    GenericProfileActionsJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-newActionJButtonActionPerformed(evt);
+outer->newActionJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->deleteActionJButton->setText("Delete");
     
-this->deleteActionJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->deleteActionJButton->addActionListener([&]() {
+    static thread_local GenericProfileActionsJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    GenericProfileActionsJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-deleteActionJButtonActionPerformed(evt);
+outer->deleteActionJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->saveJButton->setText("Save");
     
-this->saveJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->saveJButton->addActionListener([&]() {
+    static thread_local GenericProfileActionsJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    GenericProfileActionsJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-saveJButtonActionPerformed(evt);
+outer->saveJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->blankGenericProfileActionJPanel->setMinimumSize(new java::awt::Dimension(500, 300));
     
@@ -296,7 +326,7 @@ this->logUtil->putF("Setting Configuration Profile Actions JPanel", this, "gener
 
         try {
             
-    std::string profileActionNameString = this->genericProfileActionsJList->getSelectedValue();;
+    std::string profileActionNameString = JavaBoxes::unbox<std::string>(this->genericProfileActionsJList->getSelectedValue());;
     
 this->updateProfileActionUI(profileActionNameString);
     
@@ -352,7 +382,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "okNewProfileActionJBut
     int32_t index = 0;index < anyType.size(); index++)
         {
 
-    std::string nextSelectedValueString = anyType[index];;
+    std::string nextSelectedValueString = JavaBoxes::unbox<std::string>(anyType[index]);;
     
 this->getGenericProfileActions()->remove(nextSelectedValueString);
     
@@ -382,7 +412,7 @@ this->setModel();
                                     {
                                     this->genericProfileActionsJList->setSelectedValue(this->genericProfileActionsJList->getModel()->getElementAt(0), true);
     
-this->updateProfileActionUI(this->genericProfileActionsJList->getModel()->getElementAt(0));
+this->updateProfileActionUI(JavaBoxes::unbox<std::string>(this->genericProfileActionsJList->getModel()->getElementAt(0)));
     
 
                                     }

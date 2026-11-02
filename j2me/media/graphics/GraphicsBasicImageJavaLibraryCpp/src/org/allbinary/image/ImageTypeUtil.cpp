@@ -83,7 +83,7 @@ mediaFileType= JavaString::toLowerCase(mediaFileType);
     int32_t index = this->list->size() -1;index >= 0; index--)
         {
 
-    std::string name = this->list->objectArray[index];;
+    std::string name = JavaBoxes::unbox<std::string>(this->list->objectArray[index]);;
     
 
                         if(mediaFileType.compare(name) == 0)

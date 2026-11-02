@@ -143,7 +143,7 @@ this->name= name;
     int64_t idLong = this->idGeneratorEntity->get(this->name);;
     
 
-    int64_t newValue = (idLong.longValue() +1).toLong();;
+    int64_t newValue = (idLong +1).toLong();;
     
 this->idGeneratorEntity->update(this->name, newValue);
     
@@ -151,7 +151,7 @@ this->idGeneratorEntity->update(this->name, newValue);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return idLong.toString();;
+                        return JavaString::valueOf(idLong);;
     
 
                 //: 

@@ -107,7 +107,7 @@ CompoundRotationAnimationInterfaceFactory::CompoundRotationAnimationInterfaceFac
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new CompoundRotationAnimation(animationInterfaceArray as RotationAnimation[], this->animationBehaviorFactory->getOrCreateInstance());
+                        return new CompoundRotationAnimation(JavaBoxes::unbox<std::vector<RotationAnimation*>>(animationInterfaceArray), this->animationBehaviorFactory->getOrCreateInstance());
     
 }
 

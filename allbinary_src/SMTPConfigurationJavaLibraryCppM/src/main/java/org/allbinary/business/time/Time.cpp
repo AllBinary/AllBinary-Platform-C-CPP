@@ -85,7 +85,7 @@ this->timeLong= int64_t(time);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->timeLong.longValue();;
+                        return this->timeLong;;
     
 }
 

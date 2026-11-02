@@ -84,7 +84,7 @@ ImageJ2MEScaleUtil::ImageJ2MEScaleUtil(){
             
     auto ImageJ2MEScaleUtil::scaleArray(std::vector<Image*> images, int32_t width, int32_t height) -> std::vector<Image*>{
 
-    std::vector<Image*> scaledImages = std::vector<Image*>(images.length);;
+    std::vector<Image*> scaledImages = std::vector<Image*>(images.size());;
     
 
 

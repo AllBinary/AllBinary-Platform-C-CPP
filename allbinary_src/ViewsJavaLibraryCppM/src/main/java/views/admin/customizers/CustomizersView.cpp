@@ -155,7 +155,7 @@ this->customizersVector= TransformInfoEntityBuilder::getInstance()->getNames(thi
     int32_t index = 0;index < size; index++)
         {
 
-    std::string viewName = this->customizersVector->get(index);;
+    std::string viewName = JavaBoxes::unbox<std::string>(this->customizersVector->get(index));;
     
 
                         if(JavaString::indexOf(viewName, CustomizerTransformInfoData::NAME) > 0 && JavaString::indexOf(viewName, GLOBALS2::EDIT) > 0 && JavaString::indexOf(viewName, BodyData::getInstance()->VIEWNAMEKEY) > 0 && JavaString::indexOf(viewName, TitleData::getInstance()->VIEWNAMEKEY) > 0)
@@ -169,7 +169,7 @@ this->customizersVector= TransformInfoEntityBuilder::getInstance()->getNames(thi
 }
 
 
-    std::vector<Object*> objectArray = unsortedCustomizerViewVector->toArray() as any[];;
+    std::vector<Object*> objectArray = JavaBoxes::unbox<std::vector<Object*>>(unsortedCustomizerViewVector->toArray());;
     
 Arrays::sort(objectArray, new StringComparator());
     
@@ -181,7 +181,7 @@ Arrays::sort(objectArray, new StringComparator());
     int32_t index = 0;index < objectArray.size(); index++)
         {
 
-    std::string viewName = objectArray[index];;
+    std::string viewName = JavaBoxes::unbox<std::string>(objectArray[index]);;
     
 
     Node* viewNameNode = ModDomHelper::createNameValueNodes(document, TransformTemplateCustomizerData::NAME, viewName, TransformTemplateCustomizerUtil::getInstance()->getPageNameHack(viewName, this->getWeblisketSession()->getStoreName()));;

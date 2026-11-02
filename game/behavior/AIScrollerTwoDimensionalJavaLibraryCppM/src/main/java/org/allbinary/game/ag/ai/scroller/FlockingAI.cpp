@@ -102,9 +102,9 @@ FlockingAI::FlockingAI(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer*
                             //For kotlin this is before the body of the constructor.
                     
 
-    int32_t allowedDistance = hashtable->get(BasePatrolAI::MAX_DISTANCE);;
+    int32_t allowedDistance = JavaBoxes::unbox<int32_t>(hashtable->get(BasePatrolAI::MAX_DISTANCE));;
     
-this->allowedDistance= allowedDistance.intValue();
+this->allowedDistance= allowedDistance;
     
 }
 

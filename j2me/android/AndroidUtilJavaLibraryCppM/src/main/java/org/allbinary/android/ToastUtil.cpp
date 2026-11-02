@@ -14,8 +14,6 @@
         #include "org/allbinary/android/ToastUtil.h"
         
 
-            #include <hilog/log.h>
-        
             #include <cstdint>
             #include <memory>
             #include <string>

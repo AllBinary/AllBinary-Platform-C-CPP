@@ -181,7 +181,7 @@ keyValuePersistance->loadAll(abeClientInformation);
     Object* anyType = this->SCALE->getName();;
     
 
-    std::string value = hashtable->get(anyType);;
+    std::string value = JavaBoxes::unbox<std::string>(hashtable->get(anyType));;
     
 this->SCALE->setValue(smallIntegerSingletonFactory->getAt(Integer.valueOf(value)->intValue()));
     

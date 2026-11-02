@@ -95,7 +95,7 @@ KeyCharDefaultComboBoxModelFactory::KeyCharDefaultComboBoxModelFactory(){
     int32_t nextKey = keyArray[index];;
     
 
-    KeyStroke* keyStroke = KeyStroke::getKeyStroke(nextKey.intValue(), 0);;
+    KeyStroke* keyStroke = KeyStroke::getKeyStroke(nextKey, 0);;
     
 
     char keyChar = KeyStrokeMap::getChar(keyStroke);;

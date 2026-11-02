@@ -44,7 +44,7 @@ class CryptServiceFactory;
 class StdUtil;
 class LogUtil;
 class CommonStrings;
-#include <org/allbinary/util/ABHashtable.h>
+template<typename T1, typename T2> class ABHashtable;
 
 
 

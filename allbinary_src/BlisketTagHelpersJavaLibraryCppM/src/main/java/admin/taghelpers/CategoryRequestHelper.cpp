@@ -189,7 +189,7 @@ const std::string CategoryRequestHelper::categoryRequest = (new StringMaker())->
                         
                                     {
                                     
-    std::string xmlRequest = keyArray[0];;
+    std::string xmlRequest = JavaBoxes::unbox<std::string>(keyArray[0]);;
     
 
     int32_t index = 1;;
@@ -197,7 +197,7 @@ const std::string CategoryRequestHelper::categoryRequest = (new StringMaker())->
 
         while(index < size && !JavaString::startsWith(xmlRequest, CategoryRequestHelper::categoryRequest))
         {
-xmlRequest= keyArray[index];
+xmlRequest= JavaBoxes::unbox<std::string>(keyArray[index]);
     
 
                         if(JavaString::startsWith(xmlRequest, CategoryRequestHelper::categoryRequest))

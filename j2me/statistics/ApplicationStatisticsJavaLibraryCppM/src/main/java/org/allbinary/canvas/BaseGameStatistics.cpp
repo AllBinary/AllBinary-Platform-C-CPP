@@ -281,13 +281,13 @@ totalTime= (totalTime /10000);
                                     {
                                     this->STRING_ARRAY[1]= std::to_string(totalTime);
     
-this->STRING_ARRAY[3]= std::to_string(totalFrames);
+this->STRING_ARRAY[3]= std::to_string(this->totalFrames);
     
-this->STRING_ARRAY[5]= std::to_string();
+this->STRING_ARRAY[5]= std::to_string(this->totalFrames /totalTime);
     
-this->STRING_ARRAY[7]= std::to_string(totalRefreshes);
+this->STRING_ARRAY[7]= std::to_string(this->totalRefreshes);
     
-this->STRING_ARRAY[9]= std::to_string();
+this->STRING_ARRAY[9]= std::to_string(this->totalRefreshes /totalTime);
     
 
                                     }

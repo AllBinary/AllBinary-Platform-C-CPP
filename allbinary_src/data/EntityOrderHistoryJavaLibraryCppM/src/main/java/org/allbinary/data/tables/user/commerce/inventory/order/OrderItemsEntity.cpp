@@ -192,7 +192,7 @@ this->setTableName(this->tableName);
     int32_t i = 0;i < itemsSize; i++)
         {
 
-    std::string item = itemsArray[i];;
+    std::string item = JavaBoxes::unbox<std::string>(itemsArray[i]);;
     
 
     ItemInterface* itemInterface = inventoryEntity->getItem(item);;
@@ -285,7 +285,7 @@ vector->add(ZERO_STRING);
     
 vector->add(ZERO_STRING);
     
-this->insert(vector);
+this->AbSqlBean::insert(vector);
     
 }
 
@@ -368,7 +368,7 @@ AbSqlBean::updateWhere(whereHashMap, updateHashMap);
     int32_t index = 0;index < size; index++)
         {
 
-    std::string status = itemStatusVector->get(index);;
+    std::string status = JavaBoxes::unbox<std::string>(itemStatusVector->get(index));;
     
 
                         if(status.compare(OrderHistoryData::SHIPPED) != 0)

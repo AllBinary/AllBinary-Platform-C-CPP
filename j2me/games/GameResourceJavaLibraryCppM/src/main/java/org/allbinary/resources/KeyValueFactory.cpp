@@ -79,7 +79,7 @@ KeyValueFactory* KeyValueFactory::instance = KeyValueFactory::instance_owner();
 
     auto KeyValueFactory::get(std::string key) -> std::string{
 
-    std::string value = this->MAP->get(key);;
+    std::string value = JavaBoxes::unbox<std::string>(this->MAP->get(key));;
     
 
                         if(false)

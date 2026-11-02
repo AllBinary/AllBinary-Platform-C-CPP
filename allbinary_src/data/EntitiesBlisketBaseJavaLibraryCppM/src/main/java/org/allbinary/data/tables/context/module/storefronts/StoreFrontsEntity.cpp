@@ -219,7 +219,7 @@ keysAndValues->put(StoreFrontData::getInstance()->NAME, name);
 
 
     auto StoreFrontsEntity::update(HashMap<Object*, Object*>* updatedValues) -> void{
-AbSqlBean::updateWhere(StoreFrontData::getInstance()->NAME, updatedValues->get(StoreFrontData::getInstance()->NAME), updatedValues);
+AbSqlBean::updateWhere(StoreFrontData::getInstance()->NAME, JavaBoxes::unbox<std::string>(updatedValues->get(StoreFrontData::getInstance()->NAME)), updatedValues);
     
 }
 

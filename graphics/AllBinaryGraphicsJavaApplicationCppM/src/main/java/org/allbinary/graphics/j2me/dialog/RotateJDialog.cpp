@@ -131,16 +131,22 @@ this->jLabel2->setText("Total Angular Rotation:");
     
 this->jButton1->setText("OK");
     
-this->jButton1->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->jButton1->addActionListener([&]() {
+    static thread_local RotateJDialog* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    RotateJDialog* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-jButton1ActionPerformed(evt);
+outer->jButton1ActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 
     javax::swing::GroupLayout* jPanel1Layout = new javax::swing::GroupLayout(this->jPanel1);;
@@ -193,30 +199,39 @@ this->logUtil->putF(commonStrings->EXCEPTION, this, "jButton1ActionPerformed");
 
 
     auto RotateJDialog::main(std::vector<std::string> args) -> void{
-java.awt->EventQueue->invokeLater(class extends ARunnable
-                                {
-                                
+java.awt->EventQueue->invokeLater([]() {
+    class Anonymous0 : public ARunnable {
+    public:
+    using ARunnable::ARunnable;
+
     public: void run(){
 
     RotateJDialog* dialog = new RotateJDialog(new javax::swing::JFrame(), true);;
     
-dialog->addWindowListener(class extends java::awt::event::WindowAdapter
-                                {
-                                
+dialog->addWindowListener([&]() {
+    static thread_local Anonymous0* anonymousOuter1 = nullptr;
+    anonymousOuter1 = this;
+    class Anonymous1 : public java::awt::event::WindowAdapter {
+    public:
+    using java::awt::event::WindowAdapter::WindowAdapter;
+    Anonymous0* outer = anonymousOuter1;
+
     public: void windowClosing(java::awt::event::WindowEvent* e){
 System.exit(0);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous1();
+}());
     
 dialog->setVisible(true);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 }
 

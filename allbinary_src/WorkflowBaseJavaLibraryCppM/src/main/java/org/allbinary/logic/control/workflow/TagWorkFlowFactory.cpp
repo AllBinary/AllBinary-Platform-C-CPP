@@ -112,7 +112,7 @@ TagWorkFlowFactory::TagWorkFlowFactory() : logUtil(LogUtil::getInstance()){
 
         try {
             
-    std::string workFlowClassName = propertiesHashMap->get(DynamicObjectData::NAME);;
+    std::string workFlowClassName = JavaBoxes::unbox<std::string>(propertiesHashMap->get(DynamicObjectData::NAME));;
     
 
     std::vector<Object*> params = std::vector<Object*>(2);;
@@ -143,7 +143,7 @@ params[1]= pageContext;
                         
                                     {
                                     
-    std::string workFlowClassName = propertiesHashMap->get(DynamicObjectData::NAME);;
+    std::string workFlowClassName = JavaBoxes::unbox<std::string>(propertiesHashMap->get(DynamicObjectData::NAME));;
     
 
     StringMaker* stringBuffer = new StringMaker();;
@@ -179,7 +179,7 @@ this->logUtil->put(stringBuffer->toString(), this, commonStrings->GET_INSTANCE, 
                         
                                     {
                                     
-    std::string workFlowClassName = propertiesHashMap->get(DynamicObjectData::NAME);;
+    std::string workFlowClassName = JavaBoxes::unbox<std::string>(propertiesHashMap->get(DynamicObjectData::NAME));;
     
 
     StringMaker* stringBuffer = new StringMaker();;

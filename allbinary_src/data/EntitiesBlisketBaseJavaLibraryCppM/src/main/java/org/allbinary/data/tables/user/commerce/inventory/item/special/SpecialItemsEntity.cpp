@@ -189,7 +189,7 @@ stringBuffer->append(this->sqlStrings->CREATE_TABLE)->append(tableName)->append(
 
 
     auto SpecialItemsEntity::update(HashMap<Object*, Object*>* updatedValues) -> void{
-AbSqlBean::updateWhere(basicItemData->ID, updatedValues->get(basicItemData->ID), updatedValues);
+AbSqlBean::updateWhere(basicItemData->ID, JavaBoxes::unbox<std::string>(updatedValues->get(basicItemData->ID)), updatedValues);
     
 }
 

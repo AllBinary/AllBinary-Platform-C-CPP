@@ -130,9 +130,14 @@ this->imageProcessorInput= imageProcessorInput;
 
 
     auto RotationSpriteImageJPanel::process() -> void{
-(class extends Thread
-                                {
-                                
+([&]() {
+    static thread_local RotationSpriteImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public Thread {
+    public:
+    using Thread::Thread;
+    RotationSpriteImageJPanel* outer = anonymousOuter0;
+
     public: void run(){
 
     LogUtil* logUtil = LogUtil::getInstance();;
@@ -143,7 +148,7 @@ this->imageProcessorInput= imageProcessorInput;
     std::vector<BufferedImage*> generatedBufferedImageArray;;
     
 
-    ImageProcessorInput* imageProcessorInput = this->getImageProcessorInput();;
+    ImageProcessorInput* imageProcessorInput = outer->getImageProcessorInput();;
     
 
     std::vector<BufferedImage*> bufferedImageArray = imageProcessorInput->getBufferedImageArray();;
@@ -156,33 +161,33 @@ this->imageProcessorInput= imageProcessorInput;
     int32_t index = 0;index < bufferedImageArray.size(); index++)
         {
 
-    int32_t totalFrames = Integer.valueOf(this->totalFramesJComboBox->getSelectedItem());;
+    int32_t totalFrames = Integer.valueOf(JavaBoxes::unbox<std::string>(outer->totalFramesJComboBox->getSelectedItem()));;
     
 
-    int32_t totalAngle = Integer.valueOf(this->totalAngleJComboBox->getSelectedItem());;
+    int32_t totalAngle = Integer.valueOf(JavaBoxes::unbox<std::string>(outer->totalAngleJComboBox->getSelectedItem()));;
     
 generatedBufferedImageArray= ImageJ2SERotationUtil::getInstance()->getRotatedImages(bufferedImageArray[index], totalFrames, totalAngle);
     
-this->result= ImageJ2SERotationUtil::getInstance()->createSpriteImage(generatedBufferedImageArray);
+outer->result= ImageJ2SERotationUtil::getInstance()->createSpriteImage(generatedBufferedImageArray);
     
-this->getParent()->repaint();
+outer->getParent()->repaint();
     
 
     File* file = imageProcessorInput->getFiles()[index];;
     
 
-                        if(!this->writeOverOriginalJCheckBox->isSelected())
+                        if(!outer->writeOverOriginalJCheckBox->isSelected())
                         
                                     {
                                     
     std::string filePath = file->getAbsolutePath();;
     
 
-    int32_t extensionIndex = JavaString::indexOf(filePath, imageStrings->PNG_EXTENSION);;
+    int32_t extensionIndex = JavaString::indexOf(filePath, outer->imageStrings->PNG_EXTENSION);;
     
-filePath= (new StringMaker())->append(JavaString::substring(filePath, 0, extensionIndex))->append(CommonSeps::getInstance()->UNDERSCORE)->append("sprite")->append(imageStrings->PNG_EXTENSION)->toString();
+filePath= (new StringMaker())->append(JavaString::substring(filePath, 0, extensionIndex))->append(CommonSeps::getInstance()->UNDERSCORE)->append("sprite")->append(outer->imageStrings->PNG_EXTENSION)->toString();
     
-logUtil->putF(JavaString::valueOf("New File Path: ") +JavaString::valueOf(filePath), this, commonStrings->RUN);
+logUtil->putF(JavaString::valueOf("New File Path: ") +JavaString::valueOf(filePath), this, outer->commonStrings->RUN);
     
 file= new File(filePath);
     
@@ -190,9 +195,9 @@ file= new File(filePath);
                                     }
                                 
 
-    bool isWritten = ImageIO::write(dynamic_cast<RenderedImage*>(this->result), imageStrings->PNG, file);;
+    bool isWritten = ImageIO::write(dynamic_cast<RenderedImage*>(outer->result), outer->imageStrings->PNG, file);;
     
-logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("File: ") +JavaString::valueOf(file)) +JavaString::valueOf(" Wrote: ")) +JavaString::valueOf(isWritten), this, commonStrings->RUN);
+logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("File: ") +JavaString::valueOf(file)) +JavaString::valueOf(" Wrote: ")) +JavaString::valueOf(isWritten), this, outer->commonStrings->RUN);
     
 }
 
@@ -200,31 +205,37 @@ logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("File:
                 //: 
 } catch(Exception& e) 
             {
-logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
+logUtil->put(outer->commonStrings->EXCEPTION, this, outer->commonStrings->RUN, &e);
     
 }
 
 }
 
-                                }
-                            )->start();
+    };
+    return new Anonymous0();
+}())->start();
     
 }
 
 
     auto RotationSpriteImageJPanel::initComponents() -> void{
-this->jPanel1= class extends javax::swing::JPanel
-                                {
-                                
+this->jPanel1= [&]() {
+    static thread_local RotationSpriteImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public javax::swing::JPanel {
+    public:
+    using javax::swing::JPanel::JPanel;
+    RotationSpriteImageJPanel* outer = anonymousOuter0;
+
     public: void paint(Graphics* graphics){
 
-                        if(this->result != 
+                        if(outer->result != 
                                     nullptr
                                 )
                         
                                     {
-                                    graphics->drawImage(this->result, 0, 0, this->result->getWidth(
-                            nullptr), this->result->getHeight(
+                                    graphics->drawImage(outer->result, 0, 0, outer->result->getWidth(
+                            nullptr), outer->result->getHeight(
                             nullptr), 
                             nullptr);
     
@@ -233,8 +244,9 @@ this->jPanel1= class extends javax::swing::JPanel
                                 
 }
 
-                                }
-                            ;
+    };
+    return new Anonymous0();
+}();
     
 this->jPanel2= new javax::swing::JPanel();
     
@@ -272,32 +284,44 @@ this->jLabel1->setText("Total Frames:");
     
 this->generateJButton->setText("Generate");
     
-this->generateJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->generateJButton->addActionListener([&]() {
+    static thread_local RotationSpriteImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    RotationSpriteImageJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-generateJButtonActionPerformed(evt);
+outer->generateJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->totalAngleJComboBox->setModel(new javax::swing::DefaultComboBoxModel(
                                                 {
                                                     "360","90"
                                                 }));
     
-this->totalAngleJComboBox->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->totalAngleJComboBox->addActionListener([&]() {
+    static thread_local RotationSpriteImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    RotationSpriteImageJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-totalAngleJComboBoxActionPerformed(evt);
+outer->totalAngleJComboBoxActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jLabel3->setText("Total Angle:");
     

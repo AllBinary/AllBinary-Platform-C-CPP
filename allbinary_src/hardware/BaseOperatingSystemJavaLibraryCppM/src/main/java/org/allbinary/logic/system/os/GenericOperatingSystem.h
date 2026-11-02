@@ -68,11 +68,11 @@ class GenericOperatingSystem
             : public virtual Object
         , public OperatingSystemInterface {
 
-    private: const std::string osName;
+    private: std::string osName;
 
-    private: const std::string osArch;
+    private: std::string osArch;
 
-    private: const std::string osVersion;
+    private: std::string osVersion;
 
     private: CharacterSet* characterSet;
 

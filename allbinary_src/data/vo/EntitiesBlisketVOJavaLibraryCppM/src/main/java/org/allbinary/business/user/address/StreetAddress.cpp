@@ -204,22 +204,22 @@ this->log();
 
 
 StreetAddress::StreetAddress(HashMap<Object*, Object*>* address) : logUtil(LogUtil::getInstance()){
-this->id= address->get(StreetAddressData::ID);
+this->id= JavaBoxes::unbox<std::string>(address->get(StreetAddressData::ID));
     
-this->name= address->get(StreetAddressData::NAME);
+this->name= JavaBoxes::unbox<std::string>(address->get(StreetAddressData::NAME));
     
-this->street= address->get(StreetAddressData::STREET);
+this->street= JavaBoxes::unbox<std::string>(address->get(StreetAddressData::STREET));
     
-this->city= address->get(StreetAddressData::CITY);
+this->city= JavaBoxes::unbox<std::string>(address->get(StreetAddressData::CITY));
     
-this->state= address->get(StreetAddressData::STATE);
+this->state= JavaBoxes::unbox<std::string>(address->get(StreetAddressData::STATE));
     
-this->code= address->get(StreetAddressData::CODE);
+this->code= JavaBoxes::unbox<std::string>(address->get(StreetAddressData::CODE));
     
-this->country= address->get(StreetAddressData::COUNTRY);
+this->country= JavaBoxes::unbox<std::string>(address->get(StreetAddressData::COUNTRY));
     
 
-    std::string def = address->get(StreetAddressData::DEFAULT);;
+    std::string def = JavaBoxes::unbox<std::string>(address->get(StreetAddressData::DEFAULT));;
     
 
                         if(true && def.compare(StreetAddressData::DEFAULT) == 0)
@@ -381,7 +381,7 @@ this->country= value;
     std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;;
     
 
-                        if(false && this->getName().compareTo(EMPTY_STRING) == 0 && this->getStreet() == 
+                        if(false && this->getName().compare(EMPTY_STRING) == 0 && this->getStreet() == 
                                     nullptr
                                  && this->getStreet().compareTo(EMPTY_STRING) == 0 && this->getCity() == 
                                     nullptr
@@ -417,7 +417,7 @@ this->country= value;
     std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;;
     
 
-                        if(false || this->getName().compareTo(EMPTY_STRING) == 0 || this->getStreet() == 
+                        if(false || this->getName().compare(EMPTY_STRING) == 0 || this->getStreet() == 
                                     nullptr
                                  || this->getStreet().compareTo(EMPTY_STRING) == 0 || this->getCity() == 
                                     nullptr
@@ -639,10 +639,10 @@ hashMap->put(StreetAddressData::COUNTRY, this->country);
     int32_t i = 0;i < size; i++)
         {
 
-    std::string name = keyArray[i];;
+    std::string name = JavaBoxes::unbox<std::string>(keyArray[i]);;
     
 
-    std::string value = stringUtil->getNonNull(hashMap->get(name));;
+    std::string value = stringUtil->getNonNull(JavaBoxes::unbox<std::string>(hashMap->get(name)));;
     
 node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
     

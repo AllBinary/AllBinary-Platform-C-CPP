@@ -70,14 +70,20 @@
 #include "org/allbinary/graphics/threed/RatioProcessor.h"
 //SWTWithoutJOGL
 
-SWTJOGLProcessor::SWTJOGLProcessor() : glHolder(class extends GLHolder
-                                {
-                                
+SWTJOGLProcessor::SWTJOGLProcessor() : glHolder([&]() {
+    static thread_local SWTJOGLProcessor* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public GLHolder {
+    public:
+    using GLHolder::GLHolder;
+    SWTJOGLProcessor* outer = anonymousOuter0;
+
     public: void run(Object* renderer){
 }
 
-                                }
-                            ) {
+    };
+    return new Anonymous0();
+}()) {
         }
         auto SWTJOGLProcessor::instance_owner() -> SWTJOGLProcessor* { static std::unique_ptr<SWTJOGLProcessor> value(new SWTJOGLProcessor()); return value.get(); }
 SWTJOGLProcessor* SWTJOGLProcessor::instance = SWTJOGLProcessor::instance_owner();

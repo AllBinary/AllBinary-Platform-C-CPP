@@ -412,7 +412,7 @@ this->setCollidableInferface(new CollidableUnitBehavior(true));
     
 this->waypointLayerInterfaceFactoryInterface= waypointLayerInterfaceFactoryInterface;
     
-this->maxResourceLoad= maxResourceLoad.toShort();
+this->maxResourceLoad= maxResourceLoad;
     
 this->moveSoundInterface= moveSoundInterface;
     

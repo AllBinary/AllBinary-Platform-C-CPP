@@ -99,6 +99,8 @@ public: class ReleaseHelper
             : public virtual Object
          {
 
+    public: TouchButtonRecognizer* outer = nullptr;
+
     /*protected*/ public: TouchButtonRecognizer* touchButtonRecognizer;
 
 public: ReleaseHelper(TouchButtonRecognizer* touchButtonRecognizer);
@@ -112,6 +114,8 @@ public: ReleaseHelper(TouchButtonRecognizer* touchButtonRecognizer);
             
 //inner= member=true isStatic=
 public: class MultitouchReleaseHelper: public ReleaseHelper {
+
+    public: TouchButtonRecognizer* outer = nullptr;
 
 public: MultitouchReleaseHelper(TouchButtonRecognizer* touchButtonRecognizer);
 

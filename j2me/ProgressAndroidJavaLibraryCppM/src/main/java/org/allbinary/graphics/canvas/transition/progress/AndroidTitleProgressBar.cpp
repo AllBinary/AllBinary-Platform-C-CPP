@@ -202,7 +202,7 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 }
 
 
-AndroidTitleProgressBar::AndroidTitleProgressBar(std::string title, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : ProgressCanvas(title, backgroundBasicColor, foregroundBasicColor), showTitleProgressBarRunnable(new ShowTitleProgressBarRunnable(this)), dismissTitleProgressBarRunnable(new DismissTitleProgressBarRunnable(this)), progressDialogPortionSetProgressRunnable(new TitleProgressBarPortionSetProgressRunnable(this)), progressDialogSetProgressRunnable(new TitleProgressBarSetProgressRunnable(this)), progressActivity(NullProgressActivity::NULL_PROGRESS_ACTIVITY){
+AndroidTitleProgressBar::AndroidTitleProgressBar(std::string title, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : ProgressCanvas(title, backgroundBasicColor, foregroundBasicColor), showTitleProgressBarRunnable(javaInner(new ShowTitleProgressBarRunnable(this), this)), dismissTitleProgressBarRunnable(javaInner(new DismissTitleProgressBarRunnable(this), this)), progressDialogPortionSetProgressRunnable(javaInner(new TitleProgressBarPortionSetProgressRunnable(this), this)), progressDialogSetProgressRunnable(javaInner(new TitleProgressBarSetProgressRunnable(this), this)), progressActivity(NullProgressActivity::NULL_PROGRESS_ACTIVITY){
 
                         //super/this constructor call is in the constructor initializer list.
                     

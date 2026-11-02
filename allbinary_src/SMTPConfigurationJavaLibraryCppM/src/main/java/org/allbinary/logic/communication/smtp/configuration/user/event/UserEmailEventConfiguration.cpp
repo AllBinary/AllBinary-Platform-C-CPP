@@ -85,9 +85,9 @@ this->setEventListenerClassPath(StringUtil::getInstance()->EMPTY_STRING);
 
 
 UserEmailEventConfiguration::UserEmailEventConfiguration(HashMap<Object*, Object*>* hashMap) : logUtil(LogUtil::getInstance()){
-this->setName(hashMap->get(UserEmailEventConfigurationData::NAME));
+this->setName(JavaBoxes::unbox<std::string>(hashMap->get(UserEmailEventConfigurationData::NAME)));
     
-this->setEventListenerClassPath(hashMap->get(UserEmailEventConfigurationData::LISTENER_CLASSPATH));
+this->setEventListenerClassPath(JavaBoxes::unbox<std::string>(hashMap->get(UserEmailEventConfigurationData::LISTENER_CLASSPATH)));
     
 
                         if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))

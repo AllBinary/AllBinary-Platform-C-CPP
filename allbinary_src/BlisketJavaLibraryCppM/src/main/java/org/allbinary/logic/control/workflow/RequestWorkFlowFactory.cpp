@@ -128,7 +128,7 @@ RequestWorkFlowFactory::RequestWorkFlowFactory(){
             
     auto RequestWorkFlowFactory::getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) -> WorkFlowInterface*{
 
-    std::string workFlowName = pageContext->getRequest()->getParameter(WorkFlowData::getInstance()->NAME);;
+    std::string workFlowName = JavaBoxes::unbox<std::string>(pageContext->getRequest()->getParameter(WorkFlowData::getInstance()->NAME));;
     
 
     WeblisketSession* weblisketSession = new WeblisketSession(hashMap, pageContext);;

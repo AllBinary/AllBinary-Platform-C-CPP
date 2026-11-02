@@ -109,7 +109,7 @@ keysAndValues->put(this->NAME, name);
     HashMap<Object*, Object*>* hashMap = AbSqlBean::getRow(keysAndValues);;
     
 
-                        if((get).compareTo(name) != 0)
+                        if((get)).compareTo(name) != 0)
                         
                                     {
                                     
@@ -121,7 +121,7 @@ keysAndValues->put(this->NAME, name);
                                     }
                                 
 
-    std::string value = hashMap->get(this->VALUE);;
+    std::string value = JavaBoxes::unbox<std::string>(hashMap->get(this->VALUE));;
     
 
 
@@ -182,7 +182,7 @@ this->update(map);
 
 
     auto IdGeneratorEntity::update(HashMap<Object*, Object*>* hashMap) -> void{
-AbSqlBean::updateWhere(this->NAME, hashMap->get(this->NAME), hashMap);
+AbSqlBean::updateWhere(this->NAME, JavaBoxes::unbox<std::string>(hashMap->get(this->NAME)), hashMap);
     
 }
 

@@ -314,7 +314,7 @@ this->save();
     int32_t index = 0;index < size; index++)
         {
 
-    GenericProfile* genericProfile = dynamic_cast<GenericProfile*>(this->hashMap->get(nameArray[index]));;
+    GenericProfile* genericProfile = dynamic_cast<GenericProfile*>(this->hashMap->get(JavaBoxes::unbox<std::string>(nameArray[index])));;
     
 node->appendChild(genericProfile->toXmlNode(document));
     

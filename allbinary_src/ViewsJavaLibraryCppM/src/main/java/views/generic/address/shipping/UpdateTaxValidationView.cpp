@@ -162,7 +162,7 @@ this->streetAddress= new StreetAddress(this->getRequest());
     StreetAddress* aStreetAddress = dynamic_cast<StreetAddress*>(streetAddressList->get(index));;
     
 
-                        if(aStreetAddress->getName().compareTo(ShippingAddressData::TAX) == 0)
+                        if(aStreetAddress->getName().compare(ShippingAddressData::TAX) == 0)
                         
                                     {
                                     count++;

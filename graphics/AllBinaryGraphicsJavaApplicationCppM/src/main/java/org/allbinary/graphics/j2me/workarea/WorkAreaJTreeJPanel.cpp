@@ -138,16 +138,22 @@ this->rootTreeNode->add(treeNode);
     auto WorkAreaJTreeJPanel::updateTree() -> void{
 this->workAreaJTree= new JTree(this->rootTreeNode);
     
-this->workAreaJTree->addMouseListener(class extends java::awt::event::MouseAdapter
-                                {
-                                
+this->workAreaJTree->addMouseListener([&]() {
+    static thread_local WorkAreaJTreeJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::MouseAdapter {
+    public:
+    using java::awt::event::MouseAdapter::MouseAdapter;
+    WorkAreaJTreeJPanel* outer = anonymousOuter0;
+
     public: void mousePressed(java::awt::event::MouseEvent* evt){
-workAreaJTreeMousePressed(evt);
+outer->workAreaJTreeMousePressed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->workAreaPropertiesJPanel->removeAll();
     
@@ -442,82 +448,112 @@ this->itemJScrollPane1= new javax::swing::JScrollPane();
     
 this->workAreaPropertiesJPanel= new javax::swing::JPanel();
     
-itemJPopupMenu->addPopupMenuListener(class extends javax::swing::event::PopupMenuListener
-                                {
-                                
+itemJPopupMenu->addPopupMenuListener([&]() {
+    static thread_local WorkAreaJTreeJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public javax::swing::event::PopupMenuListener {
+    public:
+    using javax::swing::event::PopupMenuListener::PopupMenuListener;
+    WorkAreaJTreeJPanel* outer = anonymousOuter0;
+
     public: void popupMenuCanceled(javax::swing::event::PopupMenuEvent* evt){
 }
 
     public: void popupMenuWillBecomeInvisible(javax::swing::event::PopupMenuEvent* evt){
-itemJPopupMenuPopupMenuWillBecomeInvisible(evt);
+outer->itemJPopupMenuPopupMenuWillBecomeInvisible(evt);
     
 }
 
     public: void popupMenuWillBecomeVisible(javax::swing::event::PopupMenuEvent* evt){
-itemJPopupMenuPopupMenuWillBecomeVisible(evt);
+outer->itemJPopupMenuPopupMenuWillBecomeVisible(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->deleteJMenuItem->setText("Delete");
     
-this->deleteJMenuItem->addMouseListener(class extends java::awt::event::MouseAdapter
-                                {
-                                
+this->deleteJMenuItem->addMouseListener([&]() {
+    static thread_local WorkAreaJTreeJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::MouseAdapter {
+    public:
+    using java::awt::event::MouseAdapter::MouseAdapter;
+    WorkAreaJTreeJPanel* outer = anonymousOuter0;
+
     public: void mousePressed(java::awt::event::MouseEvent* evt){
-deleteJMenuItemMousePressed(evt);
+outer->deleteJMenuItemMousePressed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->itemJPopupMenu->add(this->deleteJMenuItem);
     
 this->copyJMenuItem->setText("Copy");
     
-this->copyJMenuItem->addMouseListener(class extends java::awt::event::MouseAdapter
-                                {
-                                
+this->copyJMenuItem->addMouseListener([&]() {
+    static thread_local WorkAreaJTreeJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::MouseAdapter {
+    public:
+    using java::awt::event::MouseAdapter::MouseAdapter;
+    WorkAreaJTreeJPanel* outer = anonymousOuter0;
+
     public: void mousePressed(java::awt::event::MouseEvent* evt){
-copyJMenuItemMousePressed(evt);
+outer->copyJMenuItemMousePressed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->itemJPopupMenu->add(this->copyJMenuItem);
     
 this->rotateJMenuItem->setText("Rotate 45*");
     
-this->rotateJMenuItem->addMouseListener(class extends java::awt::event::MouseAdapter
-                                {
-                                
+this->rotateJMenuItem->addMouseListener([&]() {
+    static thread_local WorkAreaJTreeJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::MouseAdapter {
+    public:
+    using java::awt::event::MouseAdapter::MouseAdapter;
+    WorkAreaJTreeJPanel* outer = anonymousOuter0;
+
     public: void mousePressed(java::awt::event::MouseEvent* evt){
-rotateJMenuItemMousePressed(evt);
+outer->rotateJMenuItemMousePressed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->itemJPopupMenu->add(this->rotateJMenuItem);
     
 setLayout(new java::awt::GridLayout(1, 1));
     
-this->workAreaPropertiesJPanel->addMouseListener(class extends java::awt::event::MouseAdapter
-                                {
-                                
+this->workAreaPropertiesJPanel->addMouseListener([&]() {
+    static thread_local WorkAreaJTreeJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::MouseAdapter {
+    public:
+    using java::awt::event::MouseAdapter::MouseAdapter;
+    WorkAreaJTreeJPanel* outer = anonymousOuter0;
+
     public: void mousePressed(java::awt::event::MouseEvent* evt){
-workAreaPropertiesJPanelMousePressed(evt);
+outer->workAreaPropertiesJPanelMousePressed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->workAreaPropertiesJPanel->setLayout(new java::awt::GridLayout(1, 0));
     

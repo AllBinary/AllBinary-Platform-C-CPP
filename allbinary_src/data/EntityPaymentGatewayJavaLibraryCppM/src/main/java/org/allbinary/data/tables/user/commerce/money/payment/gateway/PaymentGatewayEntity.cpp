@@ -287,37 +287,37 @@ paymentGatewayHashMap= AbSqlBean::getRow(whereKeyAndValue);
                         
                                     {
                                     
-    std::string userName = paymentGatewayHashMap->get(UserData::USERNAME->toString());;
+    std::string userName = JavaBoxes::unbox<std::string>(paymentGatewayHashMap->get(UserData::USERNAME->toString()));;
     
 
-    std::string password = paymentGatewayHashMap->get(UserData::PASSWORD->toString());;
+    std::string password = JavaBoxes::unbox<std::string>(paymentGatewayHashMap->get(UserData::PASSWORD->toString()));;
     
 
-    std::string special1 = paymentGatewayHashMap->get(PaymentGatewayData::SPECIAL1->toString());;
+    std::string special1 = JavaBoxes::unbox<std::string>(paymentGatewayHashMap->get(PaymentGatewayData::SPECIAL1->toString()));;
     
 
-    std::string special2 = paymentGatewayHashMap->get(PaymentGatewayData::SPECIAL2->toString());;
+    std::string special2 = JavaBoxes::unbox<std::string>(paymentGatewayHashMap->get(PaymentGatewayData::SPECIAL2->toString()));;
     
 
-    std::string special3 = paymentGatewayHashMap->get(PaymentGatewayData::SPECIAL3->toString());;
+    std::string special3 = JavaBoxes::unbox<std::string>(paymentGatewayHashMap->get(PaymentGatewayData::SPECIAL3->toString()));;
     
 
-    std::string special4 = paymentGatewayHashMap->get(PaymentGatewayData::SPECIAL4->toString());;
+    std::string special4 = JavaBoxes::unbox<std::string>(paymentGatewayHashMap->get(PaymentGatewayData::SPECIAL4->toString()));;
     
 
-    std::string special5 = paymentGatewayHashMap->get(PaymentGatewayData::SPECIAL5->toString());;
+    std::string special5 = JavaBoxes::unbox<std::string>(paymentGatewayHashMap->get(PaymentGatewayData::SPECIAL5->toString()));;
     
 
-    std::string special6 = paymentGatewayHashMap->get(PaymentGatewayData::SPECIAL6->toString());;
+    std::string special6 = JavaBoxes::unbox<std::string>(paymentGatewayHashMap->get(PaymentGatewayData::SPECIAL6->toString()));;
     
 
-    std::string special7 = paymentGatewayHashMap->get(PaymentGatewayData::SPECIAL7->toString());;
+    std::string special7 = JavaBoxes::unbox<std::string>(paymentGatewayHashMap->get(PaymentGatewayData::SPECIAL7->toString()));;
     
 
-    std::string special8 = paymentGatewayHashMap->get(PaymentGatewayData::SPECIAL8->toString());;
+    std::string special8 = JavaBoxes::unbox<std::string>(paymentGatewayHashMap->get(PaymentGatewayData::SPECIAL8->toString()));;
     
 
-    std::string special9 = paymentGatewayHashMap->get(PaymentGatewayData::SPECIAL9->toString());;
+    std::string special9 = JavaBoxes::unbox<std::string>(paymentGatewayHashMap->get(PaymentGatewayData::SPECIAL9->toString()));;
     
 
     SuperCrypt* superCrypt = new SuperCrypt(PaymentGatewayData::CRYPTNUM);;
@@ -427,7 +427,7 @@ paymentGatewayNameVector= AbSqlBean::getColumnWhere(PaymentGatewayData::NAME->to
     int32_t i = 0;i < size; i++)
         {
 
-    std::string paymentTypeString = paymentGatewayNameVector->get(i);;
+    std::string paymentTypeString = JavaBoxes::unbox<std::string>(paymentGatewayNameVector->get(i));;
     
 
     BasicPaymentType* paymentType = BasicPaymentTypeUtil::getInstance()->get(paymentTypeString);;

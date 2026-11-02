@@ -91,61 +91,61 @@ BasicStoreFront::BasicStoreFront(HashMap<Object*, Object*>* storeHashMap){
 
     StoreFrontData* storeFrontData = StoreFrontData::getInstance();;
     
-this->name= storeHashMap->get(storeFrontData->NAME);
+this->name= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->NAME));
     
-this->userName= storeHashMap->get(UserData::USERNAME);
+this->userName= JavaBoxes::unbox<std::string>(storeHashMap->get(UserData::USERNAME));
     
-this->basketName= storeHashMap->get(storeFrontData->NAME);
+this->basketName= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->NAME));
     
-this->homeHostName= storeHashMap->get(storeFrontData->HOMEHOSTNAME);
+this->homeHostName= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->HOMEHOSTNAME));
     
-this->homeHostNamePath= storeHashMap->get(storeFrontData->HOMEHOSTNAMEPATH);
+this->homeHostNamePath= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->HOMEHOSTNAMEPATH));
     
-this->hostName= storeHashMap->get(storeFrontData->HOSTNAME);
+this->hostName= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->HOSTNAME));
     
-this->hostNamePath= storeHashMap->get(storeFrontData->HOSTNAMEPATH);
+this->hostNamePath= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->HOSTNAMEPATH));
     
-this->testHomeHostName= storeHashMap->get(storeFrontData->TESTHOMEHOSTNAME);
+this->testHomeHostName= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->TESTHOMEHOSTNAME));
     
-this->testHomeHostNamePath= storeHashMap->get(storeFrontData->TESTHOMEHOSTNAMEPATH);
+this->testHomeHostNamePath= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->TESTHOMEHOSTNAMEPATH));
     
-this->testHostName= storeHashMap->get(storeFrontData->TESTHOSTNAME);
+this->testHostName= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->TESTHOSTNAME));
     
-this->testHostNamePath= storeHashMap->get(storeFrontData->TESTHOSTNAMEPATH);
+this->testHostNamePath= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->TESTHOSTNAMEPATH));
     
-this->imagePath= storeHashMap->get(storeFrontData->IMAGEPATH);
+this->imagePath= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->IMAGEPATH));
     
-this->staticPath= storeHashMap->get(storeFrontData->STATICPATH);
+this->staticPath= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->STATICPATH));
     
-this->categoryPath= storeHashMap->get(storeFrontData->CATEGORYPATH);
+this->categoryPath= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->CATEGORYPATH));
     
-this->inventoryControl= storeHashMap->get(storeFrontData->INVENTORYCONTROL);
+this->inventoryControl= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->INVENTORYCONTROL));
     
-this->subStores= storeHashMap->get(storeFrontData->SUBSTORES);
+this->subStores= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->SUBSTORES));
     
-this->tagLocation= storeHashMap->get(storeFrontData->TAGLOCATION);
+this->tagLocation= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->TAGLOCATION));
     
-this->packageLocation= storeHashMap->get(storeFrontData->PACKAGELOCATION);
+this->packageLocation= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->PACKAGELOCATION));
     
-this->ftp= storeHashMap->get(storeFrontData->FTP);
+this->ftp= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->FTP));
     
-this->ftpPath= storeHashMap->get(storeFrontData->FTPPATH);
+this->ftpPath= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->FTPPATH));
     
-this->ftpUserName= storeHashMap->get(storeFrontData->FTPUSERNAME);
+this->ftpUserName= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->FTPUSERNAME));
     
-this->ftpPassword= storeHashMap->get(storeFrontData->FTPPASSWORD);
+this->ftpPassword= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->FTPPASSWORD));
     
-this->testFtp= storeHashMap->get(storeFrontData->TESTFTP);
+this->testFtp= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->TESTFTP));
     
-this->testFtpPath= storeHashMap->get(storeFrontData->TESTFTPPATH);
+this->testFtpPath= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->TESTFTPPATH));
     
-this->testFtpUserName= storeHashMap->get(storeFrontData->TESTFTPUSERNAME);
+this->testFtpUserName= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->TESTFTPUSERNAME));
     
-this->testFtpPassword= storeHashMap->get(storeFrontData->TESTFTPPASSWORD);
+this->testFtpPassword= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->TESTFTPPASSWORD));
     
-this->timeCreated= storeHashMap->get(EntryData::getInstance()->TIMECREATED);
+this->timeCreated= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::getInstance()->TIMECREATED));
     
-this->lastModified= storeHashMap->get(EntryData::getInstance()->LASTMODIFIED);
+this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::getInstance()->LASTMODIFIED));
     
 }
 

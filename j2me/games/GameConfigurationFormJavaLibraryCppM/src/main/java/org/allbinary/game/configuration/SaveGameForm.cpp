@@ -114,7 +114,7 @@ SaveGameForm::SaveGameForm(CommandListener* commandListener, std::string title, 
 this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 
-    std::string timeString = std::to_string(currentTimeMillis);;
+    std::string timeString = std::to_string(ABSystemWrapper::getInstance()->currentTimeMillis());;
     
 this->meUtil->appendItem(this, new TextField("Name: ", timeString, 30, TextField::ANY));
     

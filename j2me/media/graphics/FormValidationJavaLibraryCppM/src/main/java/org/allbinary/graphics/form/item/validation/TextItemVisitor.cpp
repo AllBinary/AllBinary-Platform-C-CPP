@@ -68,7 +68,7 @@ TextItemVisitor::TextItemVisitor(){
 
     auto TextItemVisitor::visit(Object* anyType) -> Object*{
 
-    std::string value = anyType;;
+    std::string value = JavaBoxes::unbox<std::string>(anyType);;
     
 
                         if(value.size() < 2)

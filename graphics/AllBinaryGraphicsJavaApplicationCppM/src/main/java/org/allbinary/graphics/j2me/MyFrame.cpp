@@ -279,74 +279,104 @@ this->autoShrinkJMenuItem= new javax::swing::JMenuItem();
     
 this->jMenu1= new javax::swing::JMenu();
     
-addWindowListener(class extends java::awt::event::WindowAdapter
-                                {
-                                
+addWindowListener([&]() {
+    static thread_local MyFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::WindowAdapter {
+    public:
+    using java::awt::event::WindowAdapter::WindowAdapter;
+    MyFrame* outer = anonymousOuter0;
+
     public: void windowClosing(java::awt::event::WindowEvent* evt){
-exitForm(evt);
+outer->exitForm(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jButton2->setText("New");
     
-this->jButton2->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->jButton2->addActionListener([&]() {
+    static thread_local MyFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    MyFrame* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-jButton2ActionPerformed(evt);
+outer->jButton2ActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jToolBar1->add(this->jButton2);
     
 this->saveJButton->setText("Save");
     
-this->saveJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->saveJButton->addActionListener([&]() {
+    static thread_local MyFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    MyFrame* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-saveJButtonActionPerformed(evt);
+outer->saveJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jToolBar1->add(this->saveJButton);
     
 this->jButton1->setText("Export");
     
-this->jButton1->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->jButton1->addActionListener([&]() {
+    static thread_local MyFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    MyFrame* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-jButton1ActionPerformed(evt);
+outer->jButton1ActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jToolBar1->add(this->jButton1);
     
 this->openJButton->setText("Open");
     
-this->openJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->openJButton->addActionListener([&]() {
+    static thread_local MyFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    MyFrame* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-openJButtonActionPerformed(evt);
+outer->openJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jToolBar1->add(this->openJButton);
     
@@ -372,31 +402,43 @@ this->jToolBar1->add(this->animateJButton);
     
 this->playJButton->setText("Play");
     
-this->playJButton->addMouseListener(class extends java::awt::event::MouseAdapter
-                                {
-                                
+this->playJButton->addMouseListener([&]() {
+    static thread_local MyFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::MouseAdapter {
+    public:
+    using java::awt::event::MouseAdapter::MouseAdapter;
+    MyFrame* outer = anonymousOuter0;
+
     public: void mousePressed(java::awt::event::MouseEvent* evt){
-playJButtonMousePressed(evt);
+outer->playJButtonMousePressed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jToolBar1->add(this->playJButton);
     
 this->stopJjButton->setText("Stop");
     
-this->stopJjButton->addMouseListener(class extends java::awt::event::MouseAdapter
-                                {
-                                
+this->stopJjButton->addMouseListener([&]() {
+    static thread_local MyFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::MouseAdapter {
+    public:
+    using java::awt::event::MouseAdapter::MouseAdapter;
+    MyFrame* outer = anonymousOuter0;
+
     public: void mousePressed(java::awt::event::MouseEvent* evt){
-stopJjButtonMousePressed(evt);
+outer->stopJjButtonMousePressed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jToolBar1->add(this->stopJjButton);
     
@@ -408,16 +450,22 @@ this->mainJPanel->setLayout(new java::awt::GridLayout(1, 0));
     
 this->jTabbedPane->setMinimumSize(new java::awt::Dimension(550, 400));
     
-this->jTabbedPane->addChangeListener(class extends javax::swing::event::ChangeListener
-                                {
-                                
+this->jTabbedPane->addChangeListener([&]() {
+    static thread_local MyFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public javax::swing::event::ChangeListener {
+    public:
+    using javax::swing::event::ChangeListener::ChangeListener;
+    MyFrame* outer = anonymousOuter0;
+
     public: void stateChanged(javax::swing::event::ChangeEvent* evt){
-jTabbedPaneStateChanged(evt);
+outer->jTabbedPaneStateChanged(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->mainJPanel->add(this->jTabbedPane);
     
@@ -435,59 +483,83 @@ getContentPane()->add(this->statusJPanel, java.awt->BorderLayout->SOUTH);
     
 this->fileJMenu->setText("File");
     
-this->fileJMenu->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->fileJMenu->addActionListener([&]() {
+    static thread_local MyFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    MyFrame* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-fileJMenuActionPerformed(evt);
+outer->fileJMenuActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->newJMenuItem->setText("New");
     
-this->newJMenuItem->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->newJMenuItem->addActionListener([&]() {
+    static thread_local MyFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    MyFrame* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-newJMenuItemActionPerformed(evt);
+outer->newJMenuItemActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->fileJMenu->add(this->newJMenuItem);
     
 this->openJMenuItem->setText("Open");
     
-this->openJMenuItem->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->openJMenuItem->addActionListener([&]() {
+    static thread_local MyFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    MyFrame* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-openJMenuItemActionPerformed(evt);
+outer->openJMenuItemActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->fileJMenu->add(this->openJMenuItem);
     
 this->saveJMenuItem->setText("Save");
     
-this->saveJMenuItem->addMouseListener(class extends java::awt::event::MouseAdapter
-                                {
-                                
+this->saveJMenuItem->addMouseListener([&]() {
+    static thread_local MyFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::MouseAdapter {
+    public:
+    using java::awt::event::MouseAdapter::MouseAdapter;
+    MyFrame* outer = anonymousOuter0;
+
     public: void mousePressed(java::awt::event::MouseEvent* evt){
-saveJMenuItemMousePressed(evt);
+outer->saveJMenuItemMousePressed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->fileJMenu->add(this->saveJMenuItem);
     
@@ -497,31 +569,43 @@ this->fileJMenu->add(this->saveAsJMenuItem);
     
 this->exportJMenuItem1->setText("Export");
     
-this->exportJMenuItem1->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->exportJMenuItem1->addActionListener([&]() {
+    static thread_local MyFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    MyFrame* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-exportJMenuItem1ActionPerformed(evt);
+outer->exportJMenuItem1ActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->fileJMenu->add(this->exportJMenuItem1);
     
 this->exitJMenuItem->setText("Exit");
     
-this->exitJMenuItem->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->exitJMenuItem->addActionListener([&]() {
+    static thread_local MyFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    MyFrame* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-exitJMenuItemActionPerformed(evt);
+outer->exitJMenuItemActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->fileJMenu->add(this->exitJMenuItem);
     
@@ -531,31 +615,43 @@ this->viewJMenu->setText("View");
     
 this->zoomInJMenuItem->setText("Zoom In");
     
-this->zoomInJMenuItem->addMouseListener(class extends java::awt::event::MouseAdapter
-                                {
-                                
+this->zoomInJMenuItem->addMouseListener([&]() {
+    static thread_local MyFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::MouseAdapter {
+    public:
+    using java::awt::event::MouseAdapter::MouseAdapter;
+    MyFrame* outer = anonymousOuter0;
+
     public: void mousePressed(java::awt::event::MouseEvent* evt){
-zoomInJMenuItemMousePressed(evt);
+outer->zoomInJMenuItemMousePressed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->viewJMenu->add(this->zoomInJMenuItem);
     
 this->zoomOutJMenuItem->setText("Zoom Out");
     
-this->zoomOutJMenuItem->addMouseListener(class extends java::awt::event::MouseAdapter
-                                {
-                                
+this->zoomOutJMenuItem->addMouseListener([&]() {
+    static thread_local MyFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::MouseAdapter {
+    public:
+    using java::awt::event::MouseAdapter::MouseAdapter;
+    MyFrame* outer = anonymousOuter0;
+
     public: void mousePressed(java::awt::event::MouseEvent* evt){
-zoomOutJMenuItemMousePressed(evt);
+outer->zoomOutJMenuItemMousePressed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->viewJMenu->add(this->zoomOutJMenuItem);
     
@@ -565,16 +661,22 @@ this->objectJMenu->setText("Objects");
     
 this->explodeAllJMenuItem->setText("Explode All");
     
-this->explodeAllJMenuItem->addMouseListener(class extends java::awt::event::MouseAdapter
-                                {
-                                
+this->explodeAllJMenuItem->addMouseListener([&]() {
+    static thread_local MyFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::MouseAdapter {
+    public:
+    using java::awt::event::MouseAdapter::MouseAdapter;
+    MyFrame* outer = anonymousOuter0;
+
     public: void mousePressed(java::awt::event::MouseEvent* evt){
-explodeAllJMenuItemMousePressed(evt);
+outer->explodeAllJMenuItemMousePressed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->objectJMenu->add(this->explodeAllJMenuItem);
     
@@ -582,16 +684,22 @@ this->menuJMenuBar->add(this->objectJMenu);
     
 this->frameJMenu->setText("Frame");
     
-this->frameJMenu->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->frameJMenu->addActionListener([&]() {
+    static thread_local MyFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    MyFrame* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-frameJMenuActionPerformed(evt);
+outer->frameJMenuActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->previousFrameJMenuItem->setText("Previous");
     
@@ -623,16 +731,22 @@ this->generateJMenu->setText("Generate");
     
 this->centerJMenuItem->setText("Center");
     
-this->centerJMenuItem->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->centerJMenuItem->addActionListener([&]() {
+    static thread_local MyFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    MyFrame* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-centerJMenuItemActionPerformed(evt);
+outer->centerJMenuItemActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->generateJMenu->add(this->centerJMenuItem);
     
@@ -642,16 +756,22 @@ this->generateJMenu->add(this->autoDamageJMenuItem);
     
 this->autoExplodeJMenuItem->setText("Explode");
     
-this->autoExplodeJMenuItem->addMouseListener(class extends java::awt::event::MouseAdapter
-                                {
-                                
+this->autoExplodeJMenuItem->addMouseListener([&]() {
+    static thread_local MyFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::MouseAdapter {
+    public:
+    using java::awt::event::MouseAdapter::MouseAdapter;
+    MyFrame* outer = anonymousOuter0;
+
     public: void mousePressed(java::awt::event::MouseEvent* evt){
-autoExplodeJMenuItemMousePressed(evt);
+outer->autoExplodeJMenuItemMousePressed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->generateJMenu->add(this->autoExplodeJMenuItem);
     
@@ -661,31 +781,43 @@ this->generateJMenu->add(this->autoGrowJMenuItem);
     
 this->jMenuItem1->setText("Mirror");
     
-this->jMenuItem1->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->jMenuItem1->addActionListener([&]() {
+    static thread_local MyFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    MyFrame* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-jMenuItem1ActionPerformed(evt);
+outer->jMenuItem1ActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->generateJMenu->add(this->jMenuItem1);
     
 this->autoRotateGenerationJMenuItem->setText("Rotate");
     
-this->autoRotateGenerationJMenuItem->addMouseListener(class extends java::awt::event::MouseAdapter
-                                {
-                                
+this->autoRotateGenerationJMenuItem->addMouseListener([&]() {
+    static thread_local MyFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::MouseAdapter {
+    public:
+    using java::awt::event::MouseAdapter::MouseAdapter;
+    MyFrame* outer = anonymousOuter0;
+
     public: void mousePressed(java::awt::event::MouseEvent* evt){
-autoRotateGenerationJMenuItemMousePressed(evt);
+outer->autoRotateGenerationJMenuItemMousePressed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->generateJMenu->add(this->autoRotateGenerationJMenuItem);
     
@@ -1037,12 +1169,12 @@ DomHelper::getInstance()->save(new File(JavaString::valueOf(JavaString::valueOf(
             
     auto MyFrame::onHashMap(HashMap<Object*, Object*>* hashMap) -> void{
 
-    int32_t angleIncrementInteger = hashMap->get(Integer.valueOf(0));;
+    int32_t angleIncrementInteger = JavaBoxes::unbox<int32_t>(hashMap->get(Integer.valueOf(0)));;
     
 
-    int32_t totalRotationInteger = hashMap->get(Integer.valueOf(1));;
+    int32_t totalRotationInteger = JavaBoxes::unbox<int32_t>(hashMap->get(Integer.valueOf(1)));;
     
-this->getSelectedWorkArea()->autoRotate(angleIncrementInteger.intValue(), totalRotationInteger.intValue());
+this->getSelectedWorkArea()->autoRotate(angleIncrementInteger, totalRotationInteger);
     
 }
 

@@ -491,10 +491,10 @@ this->select(this->canvasJPanelList->size() -1);
                         
                                     {
                                     
-    int32_t frameInteger = canvasJPanelHashMap->get(treeNode);;
+    int32_t frameInteger = JavaBoxes::unbox<int32_t>(canvasJPanelHashMap->get(treeNode));;
     
 
-    CanvasJPanel* canvasJPanel = dynamic_cast<CanvasJPanel*>(this->canvasJPanelList->get(frameInteger.intValue()));;
+    CanvasJPanel* canvasJPanel = dynamic_cast<CanvasJPanel*>(this->canvasJPanelList->get(frameInteger));;
     
 this->initDuplicate(canvasJPanel->duplicate());
     
@@ -623,13 +623,13 @@ canvasJPanel->repaint();
     HashMap<Object*, Object*>* canvasJPanelHashMap = this->getCanvasHashMap();;
     
 
-    int32_t frameInteger = canvasJPanelHashMap->get(treeNode);;
+    int32_t frameInteger = JavaBoxes::unbox<int32_t>(canvasJPanelHashMap->get(treeNode));;
     
 
                         if(true)
                         
                                     {
-                                    this->select(frameInteger.intValue());
+                                    this->select(frameInteger);
     
 
                                     }
@@ -703,26 +703,32 @@ this->innerJPanel= new javax::swing::JPanel();
     
 setLayout(new java::awt::GridLayout(1, 1));
     
-this->innerJPanel->addKeyListener(class extends java::awt::event::KeyAdapter
-                                {
-                                
+this->innerJPanel->addKeyListener([&]() {
+    static thread_local WorkAreaJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::KeyAdapter {
+    public:
+    using java::awt::event::KeyAdapter::KeyAdapter;
+    WorkAreaJPanel* outer = anonymousOuter0;
+
     public: void keyTyped(java::awt::event::KeyEvent* evt){
-innerJPanelKeyTyped(evt);
+outer->innerJPanelKeyTyped(evt);
     
 }
 
     public: void keyPressed(java::awt::event::KeyEvent* evt){
-innerJPanelKeyPressed(evt);
+outer->innerJPanelKeyPressed(evt);
     
 }
 
     public: void keyReleased(java::awt::event::KeyEvent* evt){
-innerJPanelKeyReleased(evt);
+outer->innerJPanelKeyReleased(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 add(this->innerJPanel);
     
@@ -772,11 +778,11 @@ this->getCurrentFrame()->keyPressed(keyEvent);
                                     this->canvasHolderJPanel->removeAll();
     
 
-    int32_t frameInt = canvasJPanelHashMap->get(evt->getTreeNode());;
+    int32_t frameInt = JavaBoxes::unbox<int32_t>(canvasJPanelHashMap->get(evt->getTreeNode()));;
     
-this->canvasJPanelList->remove(frameInt.intValue());
+this->canvasJPanelList->remove(frameInt);
     
-this->select(frameInt.intValue());
+this->select(frameInt);
     
 
                                     }
@@ -808,10 +814,10 @@ StatusFactory::getInstance()->setStatus("Frame Selected");
     MutableTreeNode* treeNode = evt->getTreeNode();;
     
 
-    int32_t frameInt = canvasJPanelHashMap->get(evt->getTreeNode());;
+    int32_t frameInt = JavaBoxes::unbox<int32_t>(canvasJPanelHashMap->get(evt->getTreeNode()));;
     
 
-    CanvasJPanel* canvasJPanel = dynamic_cast<CanvasJPanel*>(this->canvasJPanelList->get(frameInt.intValue()));;
+    CanvasJPanel* canvasJPanel = dynamic_cast<CanvasJPanel*>(this->canvasJPanelList->get(frameInt));;
     
 
                         if(canvasJPanel != 
@@ -821,7 +827,7 @@ StatusFactory::getInstance()->setStatus("Frame Selected");
                                     {
                                     canvasJPanel->addAngle(evt->getAngle());
     
-this->select(frameInt.intValue());
+this->select(frameInt);
     
 
                                     }

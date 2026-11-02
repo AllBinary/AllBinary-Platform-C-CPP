@@ -143,10 +143,10 @@ command= dynamic_cast<Command*>(vectorUtil->elementAt(vector, index));
                         
                                     {
                                     
-    bool aBoolean = this->visitorInterface->visit(command);;
+    bool aBoolean = JavaBoxes::unbox<bool>(this->visitorInterface->visit(command));;
     
 
-                        if(aBoolean.valueOf())
+                        if(aBoolean)
                         
                                     {
                                     textItem= new CommandTextItem(command, ImageItem::LAYOUT_DEFAULT, StringUtil::getInstance().EMPTY_STRING, backgroundBasicColor, foregroundBasicColor);

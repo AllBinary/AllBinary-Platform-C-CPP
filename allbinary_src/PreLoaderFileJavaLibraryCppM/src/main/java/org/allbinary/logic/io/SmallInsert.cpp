@@ -151,7 +151,7 @@ index= index +after.size();
     std::string start = this->string.substring(0, index);;
     
 
-    std::string end = this->string.substring(index +1, string.size());;
+    std::string end = this->string.substring(index +1, this->string.size());;
     
 
     FileOutputStream* idFile = new FileOutputStream(this->fileName);;

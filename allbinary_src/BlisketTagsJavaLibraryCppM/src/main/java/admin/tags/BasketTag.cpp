@@ -123,14 +123,14 @@ this->storeName= value;
                             nullptr);;
     
 
-    bool emptyBoolean = method->invoke(anyType, 
-                            nullptr);;
+    bool emptyBoolean = JavaBoxes::unbox<bool>(method->invoke(anyType, 
+                            nullptr));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return emptyBoolean.valueOf();;
+                        return emptyBoolean;;
     
 
                 //: 
@@ -179,14 +179,14 @@ this->storeName= value;
                             nullptr);;
     
 
-    bool emptyBoolean = method->invoke(anyType, 
-                            nullptr);;
+    bool emptyBoolean = JavaBoxes::unbox<bool>(method->invoke(anyType, 
+                            nullptr));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return emptyBoolean.valueOf();;
+                        return emptyBoolean;;
     
 
                 //: 
@@ -238,14 +238,14 @@ this->storeName= value;
                             nullptr);;
     
 
-    bool emptyBoolean = method->invoke(anyType, 
-                            nullptr);;
+    bool emptyBoolean = JavaBoxes::unbox<bool>(method->invoke(anyType, 
+                            nullptr));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return emptyBoolean.valueOf();;
+                        return emptyBoolean;;
     
 
                 //: 
@@ -297,14 +297,14 @@ this->storeName= value;
                             nullptr);;
     
 
-    bool emptyBoolean = method->invoke(anyType, 
-                            nullptr);;
+    bool emptyBoolean = JavaBoxes::unbox<bool>(method->invoke(anyType, 
+                            nullptr));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return emptyBoolean.valueOf();;
+                        return emptyBoolean;;
     
 
                 //: 

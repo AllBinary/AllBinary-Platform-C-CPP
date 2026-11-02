@@ -74,7 +74,7 @@ FileWrapperUtil::FileWrapperUtil() {
 
         try {
             
-    std::vector<AbFile*> abFileArray = std::vector<AbFile*>(files.length);;
+    std::vector<AbFile*> abFileArray = std::vector<AbFile*>(files.size());;
     
 
 

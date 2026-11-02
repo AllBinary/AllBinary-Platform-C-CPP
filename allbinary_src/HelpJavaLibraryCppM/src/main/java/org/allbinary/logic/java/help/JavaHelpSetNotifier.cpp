@@ -109,7 +109,7 @@ JavaHelpSetNotifier::JavaHelpSetNotifier(){
     URL* nextURL = dynamic_cast<URL*>(urlArray[i]);;
     
 
-                        if(url->toString().compareTo(nextURL->toString()) == 0)
+                        if(url->toString().compare(nextURL->toString()) == 0)
                         
                                     {
                                     isNotified= true;

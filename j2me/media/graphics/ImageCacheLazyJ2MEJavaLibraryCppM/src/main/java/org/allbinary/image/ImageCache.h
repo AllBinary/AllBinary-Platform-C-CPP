@@ -141,6 +141,8 @@ private: class FirstProcessor;
 
 //inner= member=true isStatic=
 private: class NotHTMLProcessor: public Processor {
+
+    public: ImageCache* outer = nullptr;
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
@@ -155,6 +157,8 @@ private: class NotHTMLProcessor: public Processor {
             
 //inner= member=true isStatic=
 private: class NotHTMLEndProcessor: public Processor {
+
+    public: ImageCache* outer = nullptr;
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
@@ -169,6 +173,8 @@ private: class NotHTMLEndProcessor: public Processor {
             
 //inner= member=true isStatic=
 private: class HTMLEndProcessor: public Processor {
+
+    public: ImageCache* outer = nullptr;
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
@@ -183,6 +189,8 @@ private: class HTMLEndProcessor: public Processor {
             
 //inner= member=true isStatic=
 private: class FirstProcessor: public Processor {
+
+    public: ImageCache* outer = nullptr;
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 

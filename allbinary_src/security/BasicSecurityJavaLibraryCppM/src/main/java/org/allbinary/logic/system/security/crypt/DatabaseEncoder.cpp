@@ -171,7 +171,7 @@ PreLogUtil::putOE(commonStrings->EXCEPTION, "DatabaseEncoder", "decode", &e);
                         for (
     int32_t index = 0;index < size; index++)
         {
-byteOfData= vector->objectArray[index];
+byteOfData= JavaBoxes::unbox<std::string>(vector->objectArray[index]);
     
 byteVector->add(Number(byteOfData));
     
@@ -193,7 +193,7 @@ byteVector->add(Number(byteOfData));
                         for (
     int32_t index = 0;index < size; index++)
         {
-aByte= byteVector->objectArray[index];
+aByte= JavaBoxes::unbox<int8_t>(byteVector->objectArray[index]);
     
 decode[decodeIndex]= aByte;
     

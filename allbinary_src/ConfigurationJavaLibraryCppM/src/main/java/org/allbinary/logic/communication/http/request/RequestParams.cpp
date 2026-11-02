@@ -161,10 +161,10 @@ this->map= map;
     int32_t i = 0;i < size; i++)
         {
 
-    std::string key = keyArray[i];;
+    std::string key = JavaBoxes::unbox<std::string>(keyArray[i]);;
     
 
-    std::vector<std::string> values = this->map->get(key) as string[];;
+    std::vector<std::string> values = JavaBoxes::unbox<std::vector<std::string>>(this->map->get(key));;
     
 stringBuffer->delete_(0, stringBuffer->length());
     
@@ -231,10 +231,10 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "toXmlNode(document)", 
     int32_t i = 0;i < size; i++)
         {
 
-    std::string key = keyArray[i];;
+    std::string key = JavaBoxes::unbox<std::string>(keyArray[i]);;
     
 
-    std::vector<std::string> values = this->map->get(key) as string[];;
+    std::vector<std::string> values = JavaBoxes::unbox<std::vector<std::string>>(this->map->get(key));;
     
 hashMap->put(std::string(key), .toCharArray());
     

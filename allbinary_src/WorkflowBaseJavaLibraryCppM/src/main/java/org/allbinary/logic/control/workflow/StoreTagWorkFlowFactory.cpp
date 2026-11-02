@@ -112,7 +112,7 @@ StoreTagWorkFlowFactory::StoreTagWorkFlowFactory() : logUtil(LogUtil::getInstanc
 
         try {
             
-    std::string workFlowClassName = propertiesHashMap->get(DynamicObjectData::NAME);;
+    std::string workFlowClassName = JavaBoxes::unbox<std::string>(propertiesHashMap->get(DynamicObjectData::NAME));;
     
 
                         if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORY))
@@ -166,7 +166,7 @@ params[1]= pageContext;
                         
                                     {
                                     
-    std::string workFlowClassName = propertiesHashMap->get(DynamicObjectData::NAME);;
+    std::string workFlowClassName = JavaBoxes::unbox<std::string>(propertiesHashMap->get(DynamicObjectData::NAME));;
     
 
     StringMaker* stringBuffer = new StringMaker();;
@@ -202,7 +202,7 @@ this->logUtil->put(stringBuffer->toString(), this, commonStrings->GET_INSTANCE, 
                         
                                     {
                                     
-    std::string workFlowClassName = propertiesHashMap->get(DynamicObjectData::NAME);;
+    std::string workFlowClassName = JavaBoxes::unbox<std::string>(propertiesHashMap->get(DynamicObjectData::NAME));;
     
 
     StringMaker* stringBuffer = new StringMaker();;

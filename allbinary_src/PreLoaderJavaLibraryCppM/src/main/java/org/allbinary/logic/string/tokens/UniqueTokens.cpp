@@ -154,7 +154,7 @@ this->specialCharacters->add("`");
         while(index < stringVector->size())
         {
 
-    std::string keywords = stringVector->get(index);;
+    std::string keywords = JavaBoxes::unbox<std::string>(stringVector->get(index));;
     
 
     Tokenizer* tokenizer = new Tokenizer(commonSeps->COMMA);;
@@ -170,7 +170,7 @@ this->specialCharacters->add("`");
     int32_t forIndex = 0;forIndex < keywordVector->size(); forIndex++)
         {
 
-    std::string cleanString = keywordVector->get(forIndex);;
+    std::string cleanString = JavaBoxes::unbox<std::string>(keywordVector->get(forIndex));;
     
 cleanString= JavaString::trim(cleanString);
     
@@ -198,7 +198,7 @@ hashSet->add(cleanString);
     int32_t spaceIndex = 0;spaceIndex < subKeywordVector->size(); spaceIndex++)
         {
 
-    std::string subCleanString = subKeywordVector->get(spaceIndex);;
+    std::string subCleanString = JavaBoxes::unbox<std::string>(subKeywordVector->get(spaceIndex));;
     
 
                         if(!isSpecialCharacter(subCleanString) && !numberOnly(subCleanString))
@@ -275,7 +275,7 @@ index++;
     int32_t index = 0;index < this->specialCharacters->size(); index++)
         {
 
-                        if(subCleaningString.compare(this->specialCharacters->get(index)) == 0)
+                        if(subCleaningString.compare(JavaBoxes::unbox<std::string>(this->specialCharacters->get(index))) == 0)
                         
 
 

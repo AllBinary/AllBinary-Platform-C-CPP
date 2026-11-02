@@ -82,7 +82,7 @@ NotificationBuilderAPI23::NotificationBuilderAPI23() {
         
     auto NotificationBuilderAPI23::build(Context* context, Command* command, std::string message, int32_t integer, PendingIntent* pendingIntent) -> Parcelable*{
 
-    Notification* notification = (new Builder(context))->setSmallIcon(integer.intValue())->setTicker(message)->setWhen(System.currentTimeMillis())->setContentTitle(command->getLabel())->setContentText(message)->setContentIntent(pendingIntent)->build();;
+    Notification* notification = (new Builder(context))->setSmallIcon(integer)->setTicker(message)->setWhen(System.currentTimeMillis())->setContentTitle(command->getLabel())->setContentText(message)->setContentIntent(pendingIntent)->build();;
     
 
 

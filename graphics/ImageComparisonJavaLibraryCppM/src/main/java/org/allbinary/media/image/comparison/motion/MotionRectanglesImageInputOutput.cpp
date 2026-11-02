@@ -187,7 +187,7 @@ this->save(motionRectangles, frame);
     
 filePathStringBuffer->append(ImageOutputData::SAVE_PATH);
     
-filePathStringBuffer->append(LongUtil::fillIn(frame.toString()));
+filePathStringBuffer->append(LongUtil::fillIn(JavaString::valueOf(frame)));
     
 filePathStringBuffer->append("_");
     

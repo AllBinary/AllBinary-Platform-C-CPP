@@ -209,7 +209,7 @@ InventorySearchUtil* InventorySearchUtil::instance = InventorySearchUtil::instan
     int32_t index = 0;index < size; index++)
         {
 
-    std::string subStore = subStoreVector->get(index);;
+    std::string subStore = JavaBoxes::unbox<std::string>(subStoreVector->get(index));;
     
 
     BasicArrayList* substoreIdColumn = inventorySearchUtil->getColumnWhereLike(inventoryEntityInterface, subStore, basicItemData->ID);;
@@ -289,7 +289,7 @@ inventoryNode->appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterf
     HashMap<Object*, Object*>* columnValueHashMap = searchParams->get();;
     
 
-    std::string keyword = (new Replace("-", CommonSeps::getInstance()->SPACE))->all(columnValueHashMap->get(basicItemData->KEYWORDS));;
+    std::string keyword = (new Replace("-", CommonSeps::getInstance()->SPACE))->all(JavaBoxes::unbox<std::string>(columnValueHashMap->get(basicItemData->KEYWORDS)));;
     
 
                         if(StringValidationUtil::getInstance()->isEmpty(keyword))

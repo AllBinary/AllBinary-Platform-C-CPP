@@ -103,6 +103,8 @@ private: class NextUnremoveableProcessor;
 //inner= member=true isStatic=
 private: class SetAndRemoveProcessor: public Processor {
 
+    public: PlayerGameNotificationHud* outer = nullptr;
+
     private: PlayerGameNotificationHud* updateMeasurementProcessor;
 
 public: SetAndRemoveProcessor(PlayerGameNotificationHud* updateMeasurementProcessor);
@@ -116,6 +118,8 @@ public: SetAndRemoveProcessor(PlayerGameNotificationHud* updateMeasurementProces
             
 //inner= member=true isStatic=
 private: class NextUnremoveableProcessor: public Processor {
+
+    public: PlayerGameNotificationHud* outer = nullptr;
 
     private: PlayerGameNotificationHud* updateMeasurementProcessor;
 

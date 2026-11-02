@@ -40,7 +40,7 @@
 #include <java/io/FileInputStream.h>
 #include <java/util/List.h>
 class JAXBContext;
-#include <javax/xml/bind/JAXBElement.h>
+template<typename T1> class JAXBElement;
 class Unmarshaller;
 class StreamSource;
 class InputAutomationModuleConfiguration;

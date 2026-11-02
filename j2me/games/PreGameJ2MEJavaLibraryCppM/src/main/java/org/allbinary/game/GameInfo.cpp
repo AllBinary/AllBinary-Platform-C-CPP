@@ -225,9 +225,9 @@ hashtable->put(this->gameInfoData->GAME_MODE, this->gameMode->toString());
     
 hashtable->put(this->gameInfoData->PLAYER_TYPE, this->playerType->toString());
     
-hashtable->put(this->gameInfoData->HIGHEST_LEVEL, std::to_string(getHighestLevel));
+hashtable->put(this->gameInfoData->HIGHEST_LEVEL, std::to_string(this->getHighestLevel()));
     
-hashtable->put(this->gameInfoData->CURRENT_LEVEL, std::to_string(currentLevel));
+hashtable->put(this->gameInfoData->CURRENT_LEVEL, std::to_string(this->currentLevel));
     
 
 

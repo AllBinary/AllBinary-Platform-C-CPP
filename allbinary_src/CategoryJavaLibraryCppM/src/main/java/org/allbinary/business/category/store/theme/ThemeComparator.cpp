@@ -65,10 +65,10 @@ ThemeComparator::ThemeComparator(){
 
     auto ThemeComparator::compare(Object* anyType, Object* object2) -> int32_t{
 
-    std::string string = anyType;;
+    std::string string = JavaBoxes::unbox<std::string>(anyType);;
     
 
-    std::string string2 = object2;;
+    std::string string2 = JavaBoxes::unbox<std::string>(object2);;
     
 
 

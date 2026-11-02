@@ -118,9 +118,9 @@ LevelLayersFinder* LevelLayersFinder::instance = LevelLayersFinder::instance_own
         {
 layerHashtableCanBeNull= dynamic_cast<ABHashtable<Object*, Object*>*>(hashtable->get(this->enumerationUtil->nextElement(enumeration)));
     
-integerCanBeNull= layerHashtableCanBeNull->get(Layer::ID);
+integerCanBeNull= JavaBoxes::unbox<int32_t>(layerHashtableCanBeNull->get(Layer::ID));
     
-cachedIntegerCanBeNull= smallIntegerSingletonFactory->getAt(integerCanBeNull.intValue());
+cachedIntegerCanBeNull= smallIntegerSingletonFactory->getAt(integerCanBeNull);
     
 
                         if(!list->contains(cachedIntegerCanBeNull))

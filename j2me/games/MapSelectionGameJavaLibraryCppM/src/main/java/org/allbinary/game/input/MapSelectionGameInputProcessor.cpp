@@ -116,9 +116,14 @@
 #include "org/allbinary/game/input/GameInputProcessorComposite.h"
 
 
-MapSelectionGameInputProcessor::MapSelectionGameInputProcessor(AllBinaryGameCanvas* gameCanvas, MultiLevelRaceTrackGeographicMapInterfaceFactoryInterface* raceTrackGeographicMapInterfaceFactoryInterface, PreGameSelectorPaintable* mapSelectorPaintable, int32_t lockedIndex) : logUtil(LogUtil::getInstance()), inputTimeHelper(new TimeDelayHelper(650)), abRunnable(class extends ABRunnable
-                                {
-                                
+MapSelectionGameInputProcessor::MapSelectionGameInputProcessor(AllBinaryGameCanvas* gameCanvas, MultiLevelRaceTrackGeographicMapInterfaceFactoryInterface* raceTrackGeographicMapInterfaceFactoryInterface, PreGameSelectorPaintable* mapSelectorPaintable, int32_t lockedIndex) : logUtil(LogUtil::getInstance()), inputTimeHelper(new TimeDelayHelper(650)), abRunnable([&]() {
+    static thread_local MapSelectionGameInputProcessor* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public ABRunnable {
+    public:
+    using ABRunnable::ABRunnable;
+    MapSelectionGameInputProcessor* outer = anonymousOuter0;
+
     public: void run(){
 
         try {
@@ -127,16 +132,16 @@ MapSelectionGameInputProcessor::MapSelectionGameInputProcessor(AllBinaryGameCanv
 SecondaryPlayerQueueFactory::getInstance()->add(SelectSound::getInstance());
     
 
-    int32_t track = preGameSelectorPaintable->getPreGameSelectionForm()->getSelectedIndex() +1;;
+    int32_t track = outer->preGameSelectorPaintable->getPreGameSelectionForm()->getSelectedIndex() +1;;
     
 
-    int32_t wave = raceTrackGeographicMapInterfaceFactoryInterface->getFirstWaveWithTrack(track);;
+    int32_t wave = outer->raceTrackGeographicMapInterfaceFactoryInterface->getFirstWaveWithTrack(track);;
     
-gameCanvas->getLayerManager()->getGameInfo()->setCurrentLevel(wave);
+outer->gameCanvas->getLayerManager()->getGameInfo()->setCurrentLevel(wave);
     
-gameCanvas->buildGameInit(false);
+outer->gameCanvas->buildGameInit(false);
     
-GameKeyEventHandler::getInstance()->removeListener(getPlayerGameInput());
+GameKeyEventHandler::getInstance()->removeListener(outer->getPlayerGameInput());
     
 this->setRunning(false);
     
@@ -158,8 +163,9 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 
 }
 
-                                }
-                            ){
+    };
+    return new Anonymous0();
+}()){
 this->gameCanvas= gameCanvas;
     
 this->raceTrackGeographicMapInterfaceFactoryInterface= raceTrackGeographicMapInterfaceFactoryInterface;

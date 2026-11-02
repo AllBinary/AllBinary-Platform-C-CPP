@@ -126,7 +126,7 @@ this->getFormData();
                         
                                     throw Exception("No Request Params Found");
                                 
-this->id= hashMap->get(basicItemData.ID);
+this->id= JavaBoxes::unbox<std::string>(hashMap->get(basicItemData.ID));
     
 }
 

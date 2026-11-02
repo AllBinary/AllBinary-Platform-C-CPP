@@ -116,18 +116,32 @@ this->fetchHighScoresPreload(gameInfo, highScoresResultsListener, true);
 
 
     auto BasicHighScoresFactory::fetchHighScoresPreload(GameInfo* gameInfo, HighScoresResultsListener* highScoresResultsListener, bool preload) -> void{
-SecondaryThreadPool::getInstance()->runTask(class extends ARunnable
-                                {
-                                
+SecondaryThreadPool::getInstance()->runTask([&]() {
+    static thread_local BasicHighScoresFactory* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    static thread_local GameInfo* anonymous0_gameInfo{};
+    anonymous0_gameInfo = gameInfo;
+    static thread_local HighScoresResultsListener* anonymous0_highScoresResultsListener{};
+    anonymous0_highScoresResultsListener = highScoresResultsListener;
+    static thread_local bool anonymous0_preload{};
+    anonymous0_preload = preload;
+    class Anonymous0 : public ARunnable {
+    public:
+    using ARunnable::ARunnable;
+    BasicHighScoresFactory* outer = anonymousOuter0;
+    GameInfo* gameInfo = anonymous0_gameInfo;
+    HighScoresResultsListener* highScoresResultsListener = anonymous0_highScoresResultsListener;
+    bool preload = anonymous0_preload;
+
     public: void run(){
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
 
         try {
-            logUtil->putF(this->commonStrings->START, this, FETCH);
+            logUtil->putF(outer->commonStrings->START, this, FETCH);
     
-highScoresArray[0]= RecordStoreHighScores::getInstance(abeClientInformation, gameInfo, TOP, PERSONAL_HIGH_SCORES, SCORES, new ScoreComparator(true));
+outer->highScoresArray[0]= RecordStoreHighScores::getInstance(outer->abeClientInformation, gameInfo, TOP, PERSONAL_HIGH_SCORES, SCORES, new ScoreComparator(true));
     
 
     GameType* gameType = gameInfo->getGameType();;
@@ -156,26 +170,27 @@ highScoresArray[0]= RecordStoreHighScores::getInstance(abeClientInformation, gam
 
                                     }
                                 
-highScoresArray[1]= RemoteHighScores::getInstancePreload(abeClientInformation, softwareInformation, gameInfo2, WORLD_TOP_SCORES, SCORES, BooleanFactory::getInstance()->FALSE, preload);
+outer->highScoresArray[1]= RemoteHighScores::getInstancePreload(outer->abeClientInformation, outer->softwareInformation, gameInfo2, WORLD_TOP_SCORES, SCORES, BooleanFactory::getInstance()->FALSE, preload);
     
-logUtil->putF(this->commonStrings->END, this, FETCH);
+logUtil->putF(outer->commonStrings->END, this, FETCH);
     
-LastFetchHighScoresFactory::getInstance()->highScoresArray= highScoresArray;
+LastFetchHighScoresFactory::getInstance()->highScoresArray= outer->highScoresArray;
     
-highScoresResultsListener->setHighScoresArray(highScoresArray);
+highScoresResultsListener->setHighScoresArray(outer->highScoresArray);
     
 
                 //: 
 } catch(Exception& e) 
             {
-logUtil->put(commonStrings.EXCEPTION, this, FETCH, &e);
+logUtil->put(outer->commonStrings.EXCEPTION, this, FETCH, &e);
     
 }
 
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 }
 

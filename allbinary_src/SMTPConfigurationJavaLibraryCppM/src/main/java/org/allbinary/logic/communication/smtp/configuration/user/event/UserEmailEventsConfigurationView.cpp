@@ -186,7 +186,7 @@ this->userEmailEventsConfigurationInterface= userEmailEventsConfigurationInterfa
     int32_t index = 0;index < size; index++)
         {
 
-    std::string eventName = eventNameArray[index];;
+    std::string eventName = JavaBoxes::unbox<std::string>(eventNameArray[index]);;
     
 
     UserEmailEventConfigurationInterface* userEmailEventsConfigurationInterface = dynamic_cast<UserEmailEventConfigurationInterface*>(emailEventHashMap->get(eventName));;

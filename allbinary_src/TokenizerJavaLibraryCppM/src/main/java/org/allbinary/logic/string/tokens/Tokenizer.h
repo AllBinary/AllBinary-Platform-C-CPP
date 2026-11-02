@@ -39,7 +39,7 @@
 class TsUtil;
 class StdUtil;
 class StringUtil;
-#include <org/allbinary/util/ABHashtable.h>
+template<typename T1, typename T2> class ABHashtable;
 class BasicArrayList;
 class BasicArrayListD;
 

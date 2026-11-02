@@ -397,7 +397,7 @@ this->file->deleteOnExit();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->file->listFiles() as any[];
+                        return JavaBoxes::unbox<std::vector<Object*>>(this->file->listFiles());
     
 }
 
@@ -407,7 +407,7 @@ this->file->deleteOnExit();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->file->listFiles(filter) as any[];
+                        return JavaBoxes::unbox<std::vector<Object*>>(this->file->listFiles(filter));
     
 }
 
@@ -417,7 +417,7 @@ this->file->deleteOnExit();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->file->listFiles(filter) as any[];
+                        return JavaBoxes::unbox<std::vector<Object*>>(this->file->listFiles(filter));
     
 }
 

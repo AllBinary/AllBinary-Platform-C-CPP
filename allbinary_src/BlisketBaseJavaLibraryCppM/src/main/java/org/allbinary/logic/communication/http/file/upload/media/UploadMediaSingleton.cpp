@@ -110,7 +110,7 @@ this->writerFileTypesHashMap= StdUtil::getInstance()->createHashMap();
     int32_t index = 0;index < size; index++)
         {
 
-    std::string mediaDataName = mediaDataNameArray[index];;
+    std::string mediaDataName = JavaBoxes::unbox<std::string>(mediaDataNameArray[index]);;
     
 
     MediaData* mediaData = dynamic_cast<MediaData*>(hashMap->get(mediaDataName));;
@@ -264,7 +264,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->CONSTRU
                         
                                     {
                                     
-    std::string mediaType = hashMap->get(mediaFileType);;
+    std::string mediaType = JavaBoxes::unbox<std::string>(hashMap->get(mediaFileType));;
     
 
                         if(mediaType.compare(aMediaType) == 0)

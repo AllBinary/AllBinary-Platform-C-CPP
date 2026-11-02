@@ -107,7 +107,7 @@ DbWorkFlowFactory::DbWorkFlowFactory() : logUtil(LogUtil::getInstance()){
 
         try {
             
-    std::string className = hashMap->get(DynamicObjectData::NAME);;
+    std::string className = JavaBoxes::unbox<std::string>(hashMap->get(DynamicObjectData::NAME));;
     
 
     std::vector<Object*> params = std::vector<Object*>(1);;

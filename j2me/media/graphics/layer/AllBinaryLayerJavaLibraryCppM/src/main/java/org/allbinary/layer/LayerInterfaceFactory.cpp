@@ -117,10 +117,10 @@ this->list= new BasicArrayListD();
 this->logUtil->putF((new StringMaker())->append(this->HASHTABLE_LABEL)->append(StringUtil::getInstance()->toString(hashtable))->toString(), this, commonStrings->GET_INSTANCE);
     
 
-    int32_t typeInteger = hashtable->get(Layer::ID);;
+    int32_t typeInteger = JavaBoxes::unbox<int32_t>(hashtable->get(Layer::ID));;
     
 
-    LayerInterfaceFactoryInterface* layerInterfaceFactoryInterface = dynamic_cast<LayerInterfaceFactoryInterface*>(this->list->objectArray[typeInteger.intValue() -1]);;
+    LayerInterfaceFactoryInterface* layerInterfaceFactoryInterface = dynamic_cast<LayerInterfaceFactoryInterface*>(this->list->objectArray[typeInteger -1]);;
     
 
 

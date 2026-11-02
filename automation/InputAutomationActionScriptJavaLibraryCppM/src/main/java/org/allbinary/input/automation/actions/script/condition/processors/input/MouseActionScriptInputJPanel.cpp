@@ -181,7 +181,7 @@ this->mouseActionScriptInputInterface->log();
     ComboBoxModel* comboBoxModel = this->inputAutomationTypeJComboBox->getModel();;
     
 
-    std::string selectedItem = comboBoxModel->getSelectedItem();;
+    std::string selectedItem = JavaBoxes::unbox<std::string>(comboBoxModel->getSelectedItem());;
     
 
                         if(!StringValidationUtil::getInstance()->isEmpty(selectedItem))
@@ -356,16 +356,22 @@ this->titleJLabel->setText("Mouse Input Options");
     
 this->okJButton->setText("OK");
     
-this->okJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->okJButton->addActionListener([&]() {
+    static thread_local MouseActionScriptInputJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    MouseActionScriptInputJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-okJButtonActionPerformed(evt);
+outer->okJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jLabel2->setText("Buttons:");
     
@@ -383,16 +389,22 @@ this->button2JCheckBox->setBorder(javax.swing->BorderFactory->createEmptyBorder(
     
 this->button2JCheckBox->setMargin(new java::awt::Insets(0, 0, 0, 0));
     
-this->button2JCheckBox->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->button2JCheckBox->addActionListener([&]() {
+    static thread_local MouseActionScriptInputJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    MouseActionScriptInputJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-button2JCheckBoxActionPerformed(evt);
+outer->button2JCheckBoxActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jLabel4->setText("x:");
     
@@ -421,16 +433,22 @@ setMinimumSize(new java::awt::Dimension(100, 0));
     
 this->mouseActionJButton->setText("Edit");
     
-this->mouseActionJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->mouseActionJButton->addActionListener([&]() {
+    static thread_local MouseActionScriptInputJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    MouseActionScriptInputJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-mouseActionJButtonActionPerformed(evt);
+outer->mouseActionJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jLabel1->setText("Mouse:");
     

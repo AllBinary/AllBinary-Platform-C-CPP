@@ -79,7 +79,7 @@ ThreedObjResources* ThreedObjResources::instance = ThreedObjResources::instance_
 
     auto ThreedObjResources::get(std::string resourceName) -> std::string{
 
-    std::string resourceName2 = this->hashtable->get(resourceName);;
+    std::string resourceName2 = JavaBoxes::unbox<std::string>(this->hashtable->get(resourceName));;
     
 
                         if(true)

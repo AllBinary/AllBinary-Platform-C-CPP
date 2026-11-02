@@ -88,11 +88,11 @@ CompositeShaderUpdater* CompositeShaderUpdater::instanceC = CompositeShaderUpdat
 CompositeShaderUpdater::CompositeShaderUpdater(std::vector<std::string> uniformBlockArray, std::vector<std::string> uniformArray, std::vector<std::string> attributeArray, std::vector<int32_t> attributeHandleArray) : commonSeps(CommonSeps::getInstance()), shaderStrings(ShaderStrings::getInstance()){
 this->uniformBlockArray= uniformBlockArray;
     
-this->uniformBlockHandleArray= std::vector<int32_t>(this->uniformBlockArray.length);
+this->uniformBlockHandleArray= std::vector<int32_t>(this->uniformBlockArray.size());
     
 this->uniformArray= uniformArray;
     
-this->uniformHandleArray= std::vector<int32_t>(this->uniformArray.length);
+this->uniformHandleArray= std::vector<int32_t>(this->uniformArray.size());
     
 this->attributeArray= attributeArray;
     

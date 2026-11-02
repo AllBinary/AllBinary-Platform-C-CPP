@@ -133,7 +133,7 @@ this->totalUsersByRoleHashMap->put(nextUserRole, currentNumberOfUsersForRole);
 
     auto StoreFrontUsersStatistics::getNewTotal(UserRole* userRole) -> int64_t{
 
-    int64_t numberOfUsersForRoleLong = this->totalUsersByRoleHashMap->get(userRole);;
+    int64_t numberOfUsersForRoleLong = JavaBoxes::unbox<int64_t>(this->totalUsersByRoleHashMap->get(userRole));;
     
 
                         if(false)
@@ -148,7 +148,7 @@ this->totalUsersByRoleHashMap->put(nextUserRole, currentNumberOfUsersForRole);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return int64_t(numberOfUsersForRoleLong.longValue() +1);
+                        return int64_t(numberOfUsersForRoleLong +1);
     
 }
 
@@ -165,7 +165,7 @@ this->totalUsersByRoleHashMap->put(nextUserRole, currentNumberOfUsersForRole);
 
     auto StoreFrontUsersStatistics::getNumberOfUsersByRole(std::string role) -> int64_t{
 
-    int64_t totalForRole = this->totalUsersByRoleHashMap->get(role);;
+    int64_t totalForRole = JavaBoxes::unbox<int64_t>(this->totalUsersByRoleHashMap->get(role));;
     
 
 
@@ -204,9 +204,9 @@ hashMap->put(StoreFrontUsersStatisticsData::getInstance()->NUMBEROFUSERS, this->
 nextUserRole= dynamic_cast<UserRole*>(userRoleArray[index]);
     
 
-    int64_t totalForRole = this->totalUsersByRoleHashMap->get(nextUserRole);;
+    int64_t totalForRole = JavaBoxes::unbox<int64_t>(this->totalUsersByRoleHashMap->get(nextUserRole));;
     
-hashMap->put(nextUserRole->toString(), totalForRole.toString());
+hashMap->put(nextUserRole->toString(), JavaString::valueOf(totalForRole));
     
 }
 

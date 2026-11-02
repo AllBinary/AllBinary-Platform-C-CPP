@@ -141,7 +141,7 @@ this->soundsFactoryInterface->init();
                                     {
                                     indexInteger= smallIntegerSingletonFactory->getAt(i);
     
-indexString= indexInteger.toString();
+indexString= JavaString::valueOf(indexInteger);
     
 stringBuffer->delete_(0, stringBuffer->length());
     

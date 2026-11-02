@@ -133,7 +133,7 @@ TaxValidationView::TaxValidationView(TransformInfoInterface* transformInfoInterf
     StreetAddress* aStreetAddress = dynamic_cast<StreetAddress*>(streetAddressList->get(index));;
     
 
-                        if(aStreetAddress->getName().compareTo(ShippingAddressData::TAX) == 0)
+                        if(aStreetAddress->getName().compare(ShippingAddressData::TAX) == 0)
                         
                                     {
                                     this->streetAddress= aStreetAddress;

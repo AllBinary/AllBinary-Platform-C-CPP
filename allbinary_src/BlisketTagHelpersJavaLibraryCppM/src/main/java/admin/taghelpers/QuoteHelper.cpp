@@ -145,7 +145,7 @@
 
 QuoteHelper::QuoteHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) : logUtil(LogUtil::getInstance()), abeClientInformation(ServiceClientInformationInterfaceFactory::getInstance()){
 
-    std::string storeName = hashMap->get(StoreFrontData::getInstance()->NAME);;
+    std::string storeName = JavaBoxes::unbox<std::string>(hashMap->get(StoreFrontData::getInstance()->NAME));;
     
 
                         if(true)
@@ -287,7 +287,9 @@ adminUserEmailEventHandler->receiveEmailInfo(UserEmailEventNameData::QUOTEREQUES
     int32_t index = 0;index < size; index++)
         {
 
-    int32_t nextId = (get).intValue();;
+    int32_t nextId = get = JavaBoxes::unbox<int32_t>(vector->get(index)get)
+get.
+                    ;;
     
 
                         if(id < nextId)

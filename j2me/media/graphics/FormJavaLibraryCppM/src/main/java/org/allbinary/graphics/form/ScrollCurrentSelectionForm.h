@@ -91,6 +91,8 @@ public: class VerticalItemIndexDx;
 //inner= member=true isStatic=
 public: class TempHorizontalFormProcessor: public Processor {
 
+    public: ScrollCurrentSelectionForm* outer = nullptr;
+
     private: ScrollCurrentSelectionForm* scrollCurrentSelectionForm;
 
 public: TempHorizontalFormProcessor(ScrollCurrentSelectionForm* scrollCurrentSelectionForm);
@@ -104,6 +106,8 @@ public: TempHorizontalFormProcessor(ScrollCurrentSelectionForm* scrollCurrentSel
             
 //inner= member=true isStatic=
 public: class HorizontalFormProcessor: public Processor {
+
+    public: ScrollCurrentSelectionForm* outer = nullptr;
 
     private: ScrollCurrentSelectionForm* scrollCurrentSelectionForm;
 
@@ -119,6 +123,8 @@ public: HorizontalFormProcessor(ScrollCurrentSelectionForm* scrollCurrentSelecti
 //inner= member=true isStatic=
 public: class VerticalFormProcessor: public Processor {
 
+    public: ScrollCurrentSelectionForm* outer = nullptr;
+
     private: ScrollCurrentSelectionForm* scrollCurrentSelectionForm;
 
 public: VerticalFormProcessor(ScrollCurrentSelectionForm* scrollCurrentSelectionForm);
@@ -132,6 +138,8 @@ public: VerticalFormProcessor(ScrollCurrentSelectionForm* scrollCurrentSelection
             
 //inner= member=true isStatic=
 public: class TempHorizontalItemIndexDx: public ItemIndexDx {
+
+    public: ScrollCurrentSelectionForm* outer = nullptr;
 
     private: ScrollCurrentSelectionForm* scrollCurrentSelectionForm;
 
@@ -147,6 +155,8 @@ public: TempHorizontalItemIndexDx(ScrollCurrentSelectionForm* scrollCurrentSelec
 //inner= member=true isStatic=
 public: class HorizontalItemIndexDx: public ItemIndexDx {
 
+    public: ScrollCurrentSelectionForm* outer = nullptr;
+
     private: ScrollCurrentSelectionForm* scrollCurrentSelectionForm;
 
 public: HorizontalItemIndexDx(ScrollCurrentSelectionForm* scrollCurrentSelectionForm);
@@ -160,6 +170,8 @@ public: HorizontalItemIndexDx(ScrollCurrentSelectionForm* scrollCurrentSelection
             
 //inner= member=true isStatic=
 public: class VerticalItemIndexDx: public ItemIndexDx {
+
+    public: ScrollCurrentSelectionForm* outer = nullptr;
 
     private: ScrollCurrentSelectionForm* scrollCurrentSelectionForm;
 

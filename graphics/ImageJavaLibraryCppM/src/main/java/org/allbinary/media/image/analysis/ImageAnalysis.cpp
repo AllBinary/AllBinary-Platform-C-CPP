@@ -113,7 +113,7 @@ ImageAnalysis::ImageAnalysis() : logUtil(LogUtil::getInstance()){
 this->logUtil->putF(CommonLabels::getInstance()->START +colorRangeInterface->toString(), this, commonStrings->PROCESS);
     
 
-    std::vector<ImageAnalysisResults*> imageAnalysisResultsArray = std::vector<ImageAnalysisResults*>(bufferedImageArray.length);;
+    std::vector<ImageAnalysisResults*> imageAnalysisResultsArray = std::vector<ImageAnalysisResults*>(bufferedImageArray.size());;
     
 
 

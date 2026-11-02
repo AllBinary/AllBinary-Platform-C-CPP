@@ -94,7 +94,7 @@ FakeLayerManager::FakeLayerManager(GameInfo* gameInfo) : AllBinaryGameLayerManag
     auto FakeLayerManager::setGeographicMapInterface(std::vector<BasicGeographicMap*> geographicMapInterfaceArray) -> void{
 this->geographicMapInterfaceArray= geographicMapInterfaceArray;
     
-this->geographicMapCellTypeArray_= std::vector<GeographicMapCellType*>(this->geographicMapInterfaceArray.length);
+this->geographicMapCellTypeArray_= std::vector<GeographicMapCellType*>(this->geographicMapInterfaceArray.size());
     
 }
 

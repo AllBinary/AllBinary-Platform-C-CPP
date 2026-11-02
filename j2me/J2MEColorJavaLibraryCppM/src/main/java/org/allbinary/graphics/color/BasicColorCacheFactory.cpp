@@ -99,7 +99,7 @@ this->hashtable->put(int32_t(basicDefaultColor->intValue()), basicDefaultColor);
                                 )
                         
                                     {
-                                    basicColor= BasicColorFactory::getInstance()->createInstance(integer.intValue());
+                                    basicColor= BasicColorFactory::getInstance()->createInstance(integer);
     
 this->hashtable->put(integer, basicColor);
     

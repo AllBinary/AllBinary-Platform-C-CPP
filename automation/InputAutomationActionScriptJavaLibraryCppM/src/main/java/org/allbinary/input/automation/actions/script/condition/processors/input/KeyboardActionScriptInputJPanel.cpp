@@ -191,7 +191,7 @@ this->keyActionScriptInputInterface->log();
     ComboBoxModel* comboBoxModel = this->inputAutomationTypeJComboBox->getModel();;
     
 
-    std::string selectedItem = comboBoxModel->getSelectedItem();;
+    std::string selectedItem = JavaBoxes::unbox<std::string>(comboBoxModel->getSelectedItem());;
     
 
                         if(!StringValidationUtil::getInstance()->isEmpty(selectedItem))
@@ -210,7 +210,7 @@ this->keyActionScriptInputInterface->log();
     ComboBoxModel* comboBoxModel = this->keyNameJComboBox->getModel();;
     
 
-    std::string selectedItem = comboBoxModel->getSelectedItem();;
+    std::string selectedItem = JavaBoxes::unbox<std::string>(comboBoxModel->getSelectedItem());;
     
 
                         if(!StringValidationUtil::getInstance()->isEmpty(selectedItem))
@@ -220,7 +220,7 @@ this->keyActionScriptInputInterface->log();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return KeySingletonFactory::getHashtable()->get(selectedItem);
+                        return JavaBoxes::unbox<int32_t>(KeySingletonFactory::getHashtable()->get(selectedItem));
     
 
                                     }
@@ -326,16 +326,22 @@ this->titleJLabel->setText("Keyboard Input Options");
     
 this->addKeyJLabel->setText("Add Key:");
     
-this->keyNameJComboBox->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->keyNameJComboBox->addActionListener([&]() {
+    static thread_local KeyboardActionScriptInputJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    KeyboardActionScriptInputJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-keyNameJComboBoxActionPerformed(evt);
+outer->keyNameJComboBoxActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->timeJTextField->setText(CommonPhoneStrings::getInstance()->ZERO);
     
@@ -357,16 +363,22 @@ this->pressJRadioButton->setBorder(javax.swing->BorderFactory->createEmptyBorder
     
 this->pressJRadioButton->setMargin(new java::awt::Insets(0, 0, 0, 0));
     
-this->pressJRadioButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->pressJRadioButton->addActionListener([&]() {
+    static thread_local KeyboardActionScriptInputJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    KeyboardActionScriptInputJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-pressJRadioButtonActionPerformed(evt);
+outer->pressJRadioButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->releaseJRadioButton->setText("Release");
     
@@ -374,16 +386,22 @@ this->releaseJRadioButton->setBorder(javax.swing->BorderFactory->createEmptyBord
     
 this->releaseJRadioButton->setMargin(new java::awt::Insets(0, 0, 0, 0));
     
-this->releaseJRadioButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->releaseJRadioButton->addActionListener([&]() {
+    static thread_local KeyboardActionScriptInputJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    KeyboardActionScriptInputJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-releaseJRadioButtonActionPerformed(evt);
+outer->releaseJRadioButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->normalJRadioButton->setSelected(true);
     
@@ -393,16 +411,22 @@ this->normalJRadioButton->setBorder(javax.swing->BorderFactory->createEmptyBorde
     
 this->normalJRadioButton->setMargin(new java::awt::Insets(0, 0, 0, 0));
     
-this->normalJRadioButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->normalJRadioButton->addActionListener([&]() {
+    static thread_local KeyboardActionScriptInputJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    KeyboardActionScriptInputJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-normalJRadioButtonActionPerformed(evt);
+outer->normalJRadioButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->simultaneousJRadioButton->setSelected(true);
     
@@ -412,16 +436,22 @@ this->simultaneousJRadioButton->setBorder(javax.swing->BorderFactory->createEmpt
     
 this->simultaneousJRadioButton->setMargin(new java::awt::Insets(0, 0, 0, 0));
     
-this->simultaneousJRadioButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->simultaneousJRadioButton->addActionListener([&]() {
+    static thread_local KeyboardActionScriptInputJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    KeyboardActionScriptInputJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-simultaneousJRadioButtonActionPerformed(evt);
+outer->simultaneousJRadioButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->sequenceJRadioButton->setText("Sequence");
     
@@ -429,44 +459,62 @@ this->sequenceJRadioButton->setBorder(javax.swing->BorderFactory->createEmptyBor
     
 this->sequenceJRadioButton->setMargin(new java::awt::Insets(0, 0, 0, 0));
     
-this->sequenceJRadioButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->sequenceJRadioButton->addActionListener([&]() {
+    static thread_local KeyboardActionScriptInputJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    KeyboardActionScriptInputJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-sequenceJRadioButtonActionPerformed(evt);
+outer->sequenceJRadioButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->okJButton->setText("OK");
     
 this->okJButton->setHorizontalTextPosition(javax.swing->SwingConstants->CENTER);
     
-this->okJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->okJButton->addActionListener([&]() {
+    static thread_local KeyboardActionScriptInputJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    KeyboardActionScriptInputJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-okJButtonActionPerformed(evt);
+outer->okJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jPanel1->add(this->okJButton);
     
-this->keyIntegerJComboBox->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->keyIntegerJComboBox->addActionListener([&]() {
+    static thread_local KeyboardActionScriptInputJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    KeyboardActionScriptInputJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-keyIntegerJComboBoxActionPerformed(evt);
+outer->keyIntegerJComboBoxActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 
     javax::swing::GroupLayout* keyActionJDialogLayout = new javax::swing::GroupLayout(this->keyActionJDialog->getContentPane());;
@@ -481,16 +529,22 @@ setMinimumSize(new java::awt::Dimension(100, 0));
     
 this->keyActionJButton->setText("Edit");
     
-this->keyActionJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->keyActionJButton->addActionListener([&]() {
+    static thread_local KeyboardActionScriptInputJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    KeyboardActionScriptInputJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-keyActionJButtonActionPerformed(evt);
+outer->keyActionJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jLabel1->setText("Key:");
     
@@ -512,7 +566,7 @@ layout->setVerticalGroup(layout->createParallelGroup(javax.swing->GroupLayout->A
                         
                                     {
                                     
-    std::string newKey = JavaString::valueOf(JavaString::valueOf("&#") +JavaString::valueOf(integer.toString())) +JavaString::valueOf(";");;
+    std::string newKey = JavaString::valueOf(JavaString::valueOf("&#") +JavaString::valueOf(JavaString::valueOf(integer))) +JavaString::valueOf(";");;
     
 this->textJTextField->setText(JavaString::valueOf(newKey) +JavaString::valueOf(this->textJTextField->getText()));
     

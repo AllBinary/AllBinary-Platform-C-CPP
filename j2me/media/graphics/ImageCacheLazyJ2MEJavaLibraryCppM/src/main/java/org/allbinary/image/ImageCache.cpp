@@ -157,7 +157,7 @@ ImageCache::NotHTMLProcessor::NotHTMLProcessor() {
         }
         
     auto ImageCache::NotHTMLProcessor::process() -> void{
-concurrentImageLoadingProcessor->runTask();
+outer->concurrentImageLoadingProcessor->runTask();
     
 }
 
@@ -179,7 +179,7 @@ ImageCache::HTMLEndProcessor::HTMLEndProcessor() {
         
     auto ImageCache::HTMLEndProcessor::process() -> void{
 
-    int32_t size = gdResources->currentLayoutRequiredTotal;;
+    int32_t size = outer->gdResources->currentLayoutRequiredTotal;;
     
 
                     //Otherwise - statement - EmptyStmt
@@ -197,7 +197,7 @@ progressCanvas->endIfPaintedSinceStart();
                                     }
                                 
                              else 
-                        if(totalLoaded > size /12)
+                        if(outer->totalLoaded > size /12)
                         
                                     {
                                     
@@ -205,7 +205,7 @@ progressCanvas->endIfPaintedSinceStart();
     
 progressCanvas->endIfPaintedSinceStart();
     
-endProcessor= new NotHTMLEndProcessor();
+outer->endProcessor= javaInner(new NotHTMLEndProcessor(), outer);
     
 
                                     }
@@ -217,12 +217,12 @@ ImageCache::FirstProcessor::FirstProcessor() {
         }
         
     auto ImageCache::FirstProcessor::process() -> void{
-this->firstProcess();
+outer->firstProcess();
     
 }
 
 
-ImageCache::ImageCache() : tsUtil(TsUtil::getInstance()), concurrentImageLoadingProcessor(new ConcurrentImageLoadingProcessor(this)), commonStrings(CommonStrings::getInstance()), commonSeps(CommonSeps::getInstance()), resourceUtil(ResourceUtil::getInstance()), gameGlobalsFactory(GameGlobalsFactory::getInstance()), gdResources(GDResources::getInstance()), loadNowList(new BasicArrayListD()), loadSoonList(new BasicArrayListD()), loadList(new BasicArrayListD()), loadAfterList(new BasicArrayListD()), lock(new SynchObject()), processor(new FirstProcessor()), endProcessor(Processor::getInstance()){
+ImageCache::ImageCache() : tsUtil(TsUtil::getInstance()), concurrentImageLoadingProcessor(new ConcurrentImageLoadingProcessor(this)), commonStrings(CommonStrings::getInstance()), commonSeps(CommonSeps::getInstance()), resourceUtil(ResourceUtil::getInstance()), gameGlobalsFactory(GameGlobalsFactory::getInstance()), gdResources(GDResources::getInstance()), loadNowList(new BasicArrayListD()), loadSoonList(new BasicArrayListD()), loadList(new BasicArrayListD()), loadAfterList(new BasicArrayListD()), lock(new SynchObject()), processor(javaInner(new FirstProcessor(), this)), endProcessor(Processor::getInstance()){
 }
 
 
@@ -239,15 +239,15 @@ ImageCache::ImageCache() : tsUtil(TsUtil::getInstance()), concurrentImageLoading
                                     {
                                     this->processor= Processor::getInstance();
     
-this->endProcessor= new HTMLEndProcessor();
+this->endProcessor= javaInner(new HTMLEndProcessor(), this);
     
 
                                     }
                                 
                         else {
-                            this->processor= new NotHTMLProcessor();
+                            this->processor= javaInner(new NotHTMLProcessor(), this);
     
-this->endProcessor= new NotHTMLEndProcessor();
+this->endProcessor= javaInner(new NotHTMLEndProcessor(), this);
     
 
         try {
@@ -930,7 +930,7 @@ this->logUtil->putF((new StringMaker())->append("unable to find key: ")->append(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->creatImage(key);;
+                        return this->creatImage(JavaBoxes::unbox<std::string>(key));;
     
 
                                     }
@@ -949,7 +949,7 @@ this->runTask();
     int32_t height = gdLazyResources->imageResourceHeightArray[index];;
     
 
-    Image* image = this->createImageLater(key, width, height);;
+    Image* image = this->createImageLater(JavaBoxes::unbox<std::string>(key), width, height);;
     
 
         

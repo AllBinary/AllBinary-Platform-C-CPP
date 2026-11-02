@@ -200,10 +200,10 @@ NameSpaceRequestParams::NameSpaceRequestParams(PageContext* pageContext) : Reque
     int32_t index = 0;index < size; index++)
         {
 
-    std::string propertyName = propertyKeySetArray[index];;
+    std::string propertyName = JavaBoxes::unbox<std::string>(propertyKeySetArray[index]);;
     
 
-    std::string propertyValue = packagePropertiesHashMap->get(propertyName);;
+    std::string propertyValue = JavaBoxes::unbox<std::string>(packagePropertiesHashMap->get(propertyName));;
     
 
     Node* propertyNode = ModDomHelper::createTextNode(document, propertyName, propertyValue);;
@@ -237,7 +237,7 @@ node->appendChild(propertyNode);
     std::string selectedValue = nameSpaceRequestParam->getValue();;
     
 
-    std::string propertyValue = packagePropertiesHashMap->get(DomData::VALUE);;
+    std::string propertyValue = JavaBoxes::unbox<std::string>(packagePropertiesHashMap->get(DomData::VALUE));;
     
 
                         if(propertyValue.compare(NameSpaceRequestParamData::VALUE) != 0)
@@ -369,10 +369,10 @@ document->appendChild(node);
     int32_t index = 0;index < size; index++)
         {
 
-    std::string nextPropertyName = propertyNameSetArray[index];;
+    std::string nextPropertyName = JavaBoxes::unbox<std::string>(propertyNameSetArray[index]);;
     
 
-    std::string propertyValue = StringUtil::getInstance()->getNonNull(nextPackagePropertiesHashMap->get(nextPropertyName));;
+    std::string propertyValue = StringUtil::getInstance()->getNonNull(JavaBoxes::unbox<std::string>(nextPackagePropertiesHashMap->get(nextPropertyName)));;
     
 
     Node* valueNode = DomSearchHelper::getNodeNoThrow(nextPropertyName, node->getChildNodes());;
@@ -461,7 +461,7 @@ node->appendChild(newPropertyNode);
                                     }
                                 
 
-    std::string propertyValue = nextPackagePropertiesHashMap->get(DomData::VALUE);;
+    std::string propertyValue = JavaBoxes::unbox<std::string>(nextPackagePropertiesHashMap->get(DomData::VALUE));;
     
 
     Node* valueNode = DomSearchHelper::getNodeNoThrow(DomData::VALUE, node->getChildNodes());;
@@ -588,7 +588,7 @@ node->appendChild(newPropertyNode);
     int32_t index = 1;index < size; index++)
         {
 
-    std::string nextPackageName = packageVector->get(index);;
+    std::string nextPackageName = JavaBoxes::unbox<std::string>(packageVector->get(index));;
     
 
                         if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
@@ -741,7 +741,7 @@ node= this->addNewProperties(document, nodeNameDuplicateNode, nextPackagePropert
     int32_t index = 0;index < size; index++)
         {
 
-    std::string packageName = packageVector->get(index);;
+    std::string packageName = JavaBoxes::unbox<std::string>(packageVector->get(index));;
     
 
     HashMap<Object*, Object*>* packagePropertiesHashMap = nameSpaceRequestParam->getPackageProperties(packageVector->indexOf(packageName));;
@@ -808,13 +808,13 @@ node= this->addNewProperties(document, nodeNameDuplicateNode, nextPackagePropert
     int32_t i = 0;i < keySize; i++)
         {
 
-    std::string key = keyArray[i];;
+    std::string key = JavaBoxes::unbox<std::string>(keyArray[i]);;
     
 
     Object* anyType = this->getMap()->get(key);;
     
 
-    std::string className = anyType->getClass()->getName();;
+    std::string className = JavaBoxes::unbox<std::string>(anyType->getClass()->getName());;
     
 
                         if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
@@ -832,7 +832,7 @@ node= this->addNewProperties(document, nodeNameDuplicateNode, nextPackagePropert
                         
                                     {
                                     
-    std::string value = this->getMap()->get(key);;
+    std::string value = JavaBoxes::unbox<std::string>(this->getMap()->get(key));;
     
 
                         if(JavaString::indexOf(key, NameSpaceRequestParamData::NAME) < 0)
@@ -868,7 +868,7 @@ hashMap->put(std::string(key), std::string(value));
                         
                                     {
                                     
-    std::vector<std::string> values = this->getMap()->get(key) as string[];;
+    std::vector<std::string> values = JavaBoxes::unbox<std::vector<std::string>>(this->getMap()->get(key));;
     
 
                         if(JavaString::indexOf(key, NameSpaceRequestParamData::NAME) < 0)

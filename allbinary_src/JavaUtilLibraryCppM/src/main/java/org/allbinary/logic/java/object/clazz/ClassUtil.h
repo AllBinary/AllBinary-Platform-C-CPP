@@ -70,6 +70,7 @@ class ClassUtil
          {
 
     public: static std::string viewAll(Object* anyType, std::string lineBreak);
+    public: static std::string viewAll(const std::string& anyType, std::string lineBreak) { return viewAll(JavaString::box(anyType), lineBreak); }
 
     public: static std::string viewAll(Class* myClass, std::string lineBreak);
 

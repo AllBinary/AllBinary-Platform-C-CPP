@@ -344,7 +344,7 @@ this->setRotate(this->theta +Math::toRadians(angle));
     int32_t yInteger = int32_t(yTextNode->getNodeValue());;
     
 
-    GPoint* point = PointFactory::getInstance()->createXY(xInteger.intValue(), yInteger.intValue());;
+    GPoint* point = PointFactory::getInstance()->createXY(xInteger, yInteger);;
     
 this->addPoint(point);
     

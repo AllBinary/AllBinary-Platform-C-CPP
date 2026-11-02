@@ -98,7 +98,7 @@ TsUtil::getInstance()->hashCode(AcceptableResponseFactory::getInstance()->HTML);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->candidateVector->get(index);
+                        return JavaBoxes::unbox<std::string>(this->candidateVector->get(index));
     
 }
 
@@ -108,7 +108,7 @@ TsUtil::getInstance()->hashCode(AcceptableResponseFactory::getInstance()->HTML);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->tagNameVector->get(index);
+                        return JavaBoxes::unbox<std::string>(this->tagNameVector->get(index));
     
 }
 

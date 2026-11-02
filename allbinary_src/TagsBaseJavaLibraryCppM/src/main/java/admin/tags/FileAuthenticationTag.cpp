@@ -181,10 +181,10 @@ this->timeout= this->weblisketSession->getTimeout();
 
                         if(this->attemptsInteger != 
                                     nullptr
-                                 && this->attemptsInteger.intValue() > 0)
+                                 && this->attemptsInteger > 0)
                         
                                     {
-                                    this->weblisketSession->setAttempts(int32_t(this->attemptsInteger.intValue() +1));
+                                    this->weblisketSession->setAttempts(int32_t(this->attemptsInteger +1));
     
 
                                     }
@@ -654,7 +654,7 @@ stringBuffer->append("Trying New login<p>");
     BasicUserRole* mustBeOfRole = dynamic_cast<BasicUserRole*>(this->roles->get(index));;
     
 
-                        if(true && this->role->->equals(mustBeOfRole))
+                        if(true && JavaObjects::equals(this->role, mustBeOfRole))
                         
                                     {
                                     

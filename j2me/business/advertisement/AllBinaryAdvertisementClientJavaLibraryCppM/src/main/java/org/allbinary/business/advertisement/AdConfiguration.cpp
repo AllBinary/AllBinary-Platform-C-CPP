@@ -65,11 +65,11 @@
         
 
 AdConfiguration::AdConfiguration(std::vector<Object*> advertIdArray){
-this->INNERACTIVE= advertIdArray[0];
+this->INNERACTIVE= JavaBoxes::unbox<std::string>(advertIdArray[0]);
     
-this->ADMOB= advertIdArray[1];
+this->ADMOB= JavaBoxes::unbox<std::string>(advertIdArray[1]);
     
-this->LEADBOLT= advertIdArray[2];
+this->LEADBOLT= JavaBoxes::unbox<std::string>(advertIdArray[2]);
     
 }
 

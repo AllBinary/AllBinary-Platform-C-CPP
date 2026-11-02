@@ -88,10 +88,10 @@ ImageFileFilter::ImageFileFilter() {
                         
                                     {
                                     
-    std::string ext = s.substring(i +1).toLowerCase();;
+    std::string ext = JavaString::toLowerCase(s.substring(i +1));;
     
 
-                        if(JavaString::equals(ext, "jpg") || JavaString::equals(ext, "jpeg"))
+                        if(JavaObjects::equals(ext, "jpg") || JavaObjects::equals(ext, "jpeg"))
                         
 
 

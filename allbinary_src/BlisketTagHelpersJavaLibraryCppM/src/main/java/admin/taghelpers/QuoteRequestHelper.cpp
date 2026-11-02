@@ -102,7 +102,7 @@ this->weblisketSession= new WeblisketSession(hashMap, pageContext);
 this->quoteRequest= new QuoteRequest(this->weblisketSession->getUserName(), request);
     
 
-    std::string storeName = hashMap->get(StoreFrontData::getInstance()->NAME);;
+    std::string storeName = JavaBoxes::unbox<std::string>(hashMap->get(StoreFrontData::getInstance()->NAME));;
     
 
                         if(true)

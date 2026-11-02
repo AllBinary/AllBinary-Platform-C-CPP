@@ -146,10 +146,10 @@ hashMap->put(this->basicItemData->IMAGE, EMPTY_STRING);
     int32_t index = 0;index < size2; index++)
         {
 
-    std::string name = nameArray[index];;
+    std::string name = JavaBoxes::unbox<std::string>(nameArray[index]);;
     
 
-    std::string value = hashMap->get(name);;
+    std::string value = JavaBoxes::unbox<std::string>(hashMap->get(name));;
     
 value= stringUtil->getNonNull(value);
     

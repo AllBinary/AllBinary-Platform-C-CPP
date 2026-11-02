@@ -115,6 +115,8 @@ public: class ScrollSelectionFormTempHorizontalDx;
 
 //inner= member=true isStatic=
 public: class ScrollSelectionFormHorizontalPaintable: public ItemIndexPaintable {
+
+    public: ScrollSelectionForm* outer = nullptr;
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
@@ -131,6 +133,8 @@ public: ScrollSelectionFormHorizontalPaintable(ScrollSelectionForm* scrollSelect
             
 //inner= member=true isStatic=
 public: class ScrollSelectionFormVerticalPaintable: public ItemIndexPaintable {
+
+    public: ScrollSelectionForm* outer = nullptr;
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
@@ -147,6 +151,8 @@ public: ScrollSelectionFormVerticalPaintable(ScrollSelectionForm* scrollSelectio
             
 //inner= member=true isStatic=
 public: class ScrollSelectionFormTempHorizontalPaintable: public ItemIndexPaintable {
+
+    public: ScrollSelectionForm* outer = nullptr;
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
@@ -163,6 +169,8 @@ public: ScrollSelectionFormTempHorizontalPaintable(ScrollSelectionForm* scrollSe
             
 //inner= member=true isStatic=
 public: class ScrollSelectionFormHorizontalDx: public ItemIndexDx {
+
+    public: ScrollSelectionForm* outer = nullptr;
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
@@ -179,6 +187,8 @@ public: ScrollSelectionFormHorizontalDx(ScrollSelectionForm* multipleScrollSelec
             
 //inner= member=true isStatic=
 public: class ScrollSelectionFormVericalDx: public ItemIndexDx {
+
+    public: ScrollSelectionForm* outer = nullptr;
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
@@ -195,6 +205,8 @@ public: ScrollSelectionFormVericalDx(ScrollSelectionForm* multipleScrollSelectio
             
 //inner= member=true isStatic=
 public: class ScrollSelectionFormTempHorizontalDx: public ItemIndexDx {
+
+    public: ScrollSelectionForm* outer = nullptr;
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 

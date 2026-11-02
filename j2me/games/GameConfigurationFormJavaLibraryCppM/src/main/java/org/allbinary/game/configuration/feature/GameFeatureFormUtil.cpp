@@ -201,7 +201,7 @@ choiceGroup->append(gameFeature->toString(), NullImage::NULL_IMAGE);
                         for (
     int32_t index = 0;index < size; index++)
         {
-name= objectArray[index];
+name= JavaBoxes::unbox<std::string>(objectArray[index]);
     
 stringMaker->delete_(0, stringMaker->length());
     

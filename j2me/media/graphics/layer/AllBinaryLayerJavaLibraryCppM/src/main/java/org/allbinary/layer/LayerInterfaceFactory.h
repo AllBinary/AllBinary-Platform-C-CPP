@@ -42,7 +42,7 @@ class LogUtil;
 class StringMaker;
 class StringUtil;
 class CommonStrings;
-#include <org/allbinary/util/ABHashtable.h>
+template<typename T1, typename T2> class ABHashtable;
 class BasicArrayList;
 class BasicArrayListD;
 class BasicArrayListUtil;

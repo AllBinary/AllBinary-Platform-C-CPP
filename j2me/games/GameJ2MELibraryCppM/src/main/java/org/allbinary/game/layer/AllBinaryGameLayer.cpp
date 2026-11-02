@@ -120,9 +120,14 @@
 
 AllBinaryGameLayer::AllBinaryGameLayer(std::string name, Rectangle* layerInfo, ViewPositionBase* viewPosition) : AllBinaryLayer(name, layerInfo, viewPosition), commonStrings(CommonStrings::getInstance()), basicSetColorUtil(BasicColorSetUtil::getInstance()), RED(BasicColorFactory::getInstance()->RED), paintable(SWTUtil::isSWT
                         ?       
-                                class extends Paintable
-                                {
-                                
+                                [&]() {
+    static thread_local AllBinaryGameLayer* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public Paintable {
+    public:
+    using Paintable::Paintable;
+    AllBinaryGameLayer* outer = anonymousOuter0;
+
     BasicColorSetUtil* basicSetColorUtil = BasicColorSetUtil::getInstance();
     BasicColor* BLACK = BasicColorFactory::getInstance()->BLACK;
     public: void paint(Graphics* graphics){
@@ -130,8 +135,9 @@ this->basicSetColorUtil->setBasicColorP(graphics, this->BLACK);
     
 }
 
-                                }
-                            
+    };
+    return new Anonymous0();
+}()
                                 :
 
                             NullPaintable::getInstance();

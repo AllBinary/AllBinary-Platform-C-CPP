@@ -275,16 +275,22 @@ this->titleJLabel->setText("Image Output Options");
     
 this->okJButton->setText("OK");
     
-this->okJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->okJButton->addActionListener([&]() {
+    static thread_local ImageActionScriptOutputJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    ImageActionScriptOutputJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-okJButtonActionPerformed(evt);
+outer->okJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->saveJCheckBox->setText("Save To File");
     
@@ -298,20 +304,31 @@ this->displayJCheckBox->setBorder(javax.swing->BorderFactory->createEmptyBorder(
     
 this->displayJCheckBox->setMargin(new java::awt::Insets(0, 0, 0, 0));
     
-this->displayJCheckBox->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->displayJCheckBox->addActionListener([&]() {
+    static thread_local ImageActionScriptOutputJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    ImageActionScriptOutputJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-displayJCheckBoxActionPerformed(evt);
+outer->displayJCheckBoxActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
-this->itemTypesJList->setModel(class extends javax::swing::AbstractListModel
-                                {
-                                
+this->itemTypesJList->setModel([&]() {
+    static thread_local ImageActionScriptOutputJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public javax::swing::AbstractListModel {
+    public:
+    using javax::swing::AbstractListModel::AbstractListModel;
+    ImageActionScriptOutputJPanel* outer = anonymousOuter0;
+
     std::vector<std::string> strings = 
                                                         {
                                                             "Item 1","Item 2","Item 3","Item 4","Item 5"
@@ -334,8 +351,9 @@ this->itemTypesJList->setModel(class extends javax::swing::AbstractListModel
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jScrollPane1->setViewportView(this->itemTypesJList);
     
@@ -352,16 +370,22 @@ setMinimumSize(new java::awt::Dimension(100, 0));
     
 this->capturedImageActionJButton->setText("Edit");
     
-this->capturedImageActionJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->capturedImageActionJButton->addActionListener([&]() {
+    static thread_local ImageActionScriptOutputJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    ImageActionScriptOutputJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-capturedImageActionJButtonActionPerformed(evt);
+outer->capturedImageActionJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jLabel1->setText("Capture Image:");
     

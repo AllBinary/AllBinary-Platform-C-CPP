@@ -66,6 +66,7 @@ class ForcedLogUtil
          {
 
     public: static void log(std::string message, Object* anyType);
+    public: static void log(std::string message, const std::string& anyType) { return log(message, JavaString::box(anyType)); }
 
 
             

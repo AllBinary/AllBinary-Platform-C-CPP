@@ -154,21 +154,27 @@ setLayout(new java::awt::GridLayout(1, 0));
     
 this->actionScriptJTree->setPreferredSize(new java::awt::Dimension(500, 500));
     
-this->actionScriptJTree->addMouseListener(class extends java::awt::event::MouseAdapter
-                                {
-                                
+this->actionScriptJTree->addMouseListener([&]() {
+    static thread_local GenericProfileActionScriptJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::MouseAdapter {
+    public:
+    using java::awt::event::MouseAdapter::MouseAdapter;
+    GenericProfileActionScriptJPanel* outer = anonymousOuter0;
+
     public: void mouseClicked(java::awt::event::MouseEvent* evt){
-actionScriptJTreeMouseClicked(evt);
+outer->actionScriptJTreeMouseClicked(evt);
     
 }
 
     public: void mouseReleased(java::awt::event::MouseEvent* evt){
-actionScriptJTreeMouseReleased(evt);
+outer->actionScriptJTreeMouseReleased(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jScrollPane1->setViewportView(this->actionScriptJTree);
     

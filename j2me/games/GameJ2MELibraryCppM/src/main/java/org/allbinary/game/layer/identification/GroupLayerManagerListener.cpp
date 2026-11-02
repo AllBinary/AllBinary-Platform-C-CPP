@@ -282,7 +282,7 @@ groupList->clear();
                         for (
     int32_t index = size -1;index >= 0; index--)
         {
-groupInterfaceArray= excludeGroupList->objectArray[index] as Group[];
+groupInterfaceArray= JavaBoxes::unbox<std::vector<Group*>>(excludeGroupList->objectArray[index]);
     
 
     int32_t size2 = groupInterfaceArray.size();;

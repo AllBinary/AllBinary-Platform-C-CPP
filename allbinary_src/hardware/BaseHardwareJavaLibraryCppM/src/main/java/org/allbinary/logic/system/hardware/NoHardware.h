@@ -37,7 +37,7 @@
 class StdUtil;
 class HardwareComponentInterface;
 class NoHardwareComponent;
-#include <org/allbinary/util/ABHashtable.h>
+template<typename T1, typename T2> class ABHashtable;
 
 
 

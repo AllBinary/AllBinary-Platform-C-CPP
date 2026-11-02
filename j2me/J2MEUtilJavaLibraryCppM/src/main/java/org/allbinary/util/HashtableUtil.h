@@ -57,7 +57,7 @@ class JsType;
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         class EnumerationUtil;
-#include "org/allbinary/util/ABHashtable.h"
+template<typename T1, typename T2> class ABHashtable;
 class BasicArrayListS;
 class BasicArrayList;
 

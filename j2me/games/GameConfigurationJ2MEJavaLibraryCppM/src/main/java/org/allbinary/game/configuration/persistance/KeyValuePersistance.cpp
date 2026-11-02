@@ -283,13 +283,13 @@ recordStore= RecordStore::openRecordStore(this->getRecordId(abeClientInformation
                         for (
     int32_t index = 0;index < size; index++)
         {
-outputStream->writeUTF(objectArray[index]);
+outputStream->writeUTF(JavaBoxes::unbox<std::string>(objectArray[index]));
     
 outputStream->writeUTF(commonSeps->EQUALS);
     
 anyType= objectArray[index];
     
-value= hashtable->get(anyType);
+value= JavaBoxes::unbox<std::string>(hashtable->get(anyType));
     
 outputStream->writeUTF(value);
     

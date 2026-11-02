@@ -94,7 +94,7 @@ this->defaultListModel= new DefaultListModel();
     int32_t index = 0;index < size; index++)
         {
 
-    std::string moduleName = this->vector->get(index);;
+    std::string moduleName = JavaBoxes::unbox<std::string>(this->vector->get(index));;
     
 this->defaultListModel->addElement(moduleName);
     

@@ -128,28 +128,28 @@ this->retries= EMPTY_STRING;
 
 
 DownloadableItem::DownloadableItem(HashMap<Object*, Object*>* hashMap){
-this->id= hashMap->get(DownloadItemData::ID);
+this->id= JavaBoxes::unbox<std::string>(hashMap->get(DownloadItemData::ID));
     
-this->basicItemId= hashMap->get(BasicItemData::getInstance()->ID);
+this->basicItemId= JavaBoxes::unbox<std::string>(hashMap->get(BasicItemData::getInstance()->ID));
     
-this->enabled= hashMap->get(EntryData::getInstance()->ENABLE);
+this->enabled= JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInstance()->ENABLE));
     
-this->system= hashMap->get(DownloadItemData::SYSTEM);
+this->system= JavaBoxes::unbox<std::string>(hashMap->get(DownloadItemData::SYSTEM));
     
-this->platform= hashMap->get(DownloadItemData::PLATFORM);
+this->platform= JavaBoxes::unbox<std::string>(hashMap->get(DownloadItemData::PLATFORM));
     
-this->specialName= hashMap->get(DownloadItemData::SPECIAL_NAME);
+this->specialName= JavaBoxes::unbox<std::string>(hashMap->get(DownloadItemData::SPECIAL_NAME));
     
-this->version= hashMap->get(DownloadItemData::VERSION);
+this->version= JavaBoxes::unbox<std::string>(hashMap->get(DownloadItemData::VERSION));
     
-this->changes= hashMap->get(DownloadItemData::CHANGES);
+this->changes= JavaBoxes::unbox<std::string>(hashMap->get(DownloadItemData::CHANGES));
     
-this->licenseFile= hashMap->get(DownloadItemData::LICENSE_FILE);
+this->licenseFile= JavaBoxes::unbox<std::string>(hashMap->get(DownloadItemData::LICENSE_FILE));
     
-this->file= hashMap->get(DownloadItemData::FILE);
+this->file= JavaBoxes::unbox<std::string>(hashMap->get(DownloadItemData::FILE));
     
 
-    std::string value = hashMap->get(DownloadItemData::SIZE);;
+    std::string value = JavaBoxes::unbox<std::string>(hashMap->get(DownloadItemData::SIZE));;
     
 
                         if(!StringValidationUtil::getInstance()->isEmpty(value))
@@ -167,7 +167,7 @@ this->file= hashMap->get(DownloadItemData::FILE);
                         }
                             
 
-    std::string validTime = hashMap->get(DownloadItemData::VALID_TIME);;
+    std::string validTime = JavaBoxes::unbox<std::string>(hashMap->get(DownloadItemData::VALID_TIME));;
     
 
                         if(!StringValidationUtil::getInstance()->isEmpty(validTime))
@@ -180,22 +180,22 @@ this->file= hashMap->get(DownloadItemData::FILE);
                                 
                         else {
                             
-    std::string totalYears = hashMap->get(DownloadItemData::VALID_TIME_YEARS);;
+    std::string totalYears = JavaBoxes::unbox<std::string>(hashMap->get(DownloadItemData::VALID_TIME_YEARS));;
     
 
-    std::string totalMonths = hashMap->get(DownloadItemData::VALID_TIME_MONTHS);;
+    std::string totalMonths = JavaBoxes::unbox<std::string>(hashMap->get(DownloadItemData::VALID_TIME_MONTHS));;
     
 
-    std::string totalDays = hashMap->get(DownloadItemData::VALID_TIME_DAYS);;
+    std::string totalDays = JavaBoxes::unbox<std::string>(hashMap->get(DownloadItemData::VALID_TIME_DAYS));;
     
 
-    std::string totalHours = hashMap->get(DownloadItemData::VALID_TIME_HOURS);;
+    std::string totalHours = JavaBoxes::unbox<std::string>(hashMap->get(DownloadItemData::VALID_TIME_HOURS));;
     
 
-    std::string totalMinutes = hashMap->get(DownloadItemData::VALID_TIME_MINUTES);;
+    std::string totalMinutes = JavaBoxes::unbox<std::string>(hashMap->get(DownloadItemData::VALID_TIME_MINUTES));;
     
 
-    std::string totalSeconds = hashMap->get(DownloadItemData::VALID_TIME_SECONDS);;
+    std::string totalSeconds = JavaBoxes::unbox<std::string>(hashMap->get(DownloadItemData::VALID_TIME_SECONDS));;
     
 
     int64_t totalTime = TimeUtil::getInstance()->getTotalTime(totalYears, totalMonths, totalDays, totalHours, totalMinutes, totalSeconds);;
@@ -205,7 +205,7 @@ this->validTime= int64_t(totalTime);
 
                         }
                             
-this->retries= hashMap->get(DownloadItemData::RETRIES);
+this->retries= JavaBoxes::unbox<std::string>(hashMap->get(DownloadItemData::RETRIES));
     
 }
 

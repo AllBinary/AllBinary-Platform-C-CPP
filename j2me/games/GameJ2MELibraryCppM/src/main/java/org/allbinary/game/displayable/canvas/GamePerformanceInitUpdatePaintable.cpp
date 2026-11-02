@@ -83,7 +83,7 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 
-GamePerformanceInitUpdatePaintable::GamePerformanceInitUpdatePaintable() : halfHeight(DisplayInfoSingleton::getInstance()->getLastHalfHeight()), yArray({this->halfHeight +30,this->halfHeight +30,this->halfHeight +30 +15,this->halfHeight +30 +15,this->halfHeight +30 +30,this->halfHeight +30 +30,this->halfHeight +30 +45,this->halfHeight +30 +45}), myFontProcessor(new UpdateMyFontProcessor(this)), baseRefreshHelperCharArray(std::vector<std::vector<char>>(0, std::vector<char>(0))), RED(BasicColorFactory::getInstance()->RED.intValue()) {
+GamePerformanceInitUpdatePaintable::GamePerformanceInitUpdatePaintable() : halfHeight(DisplayInfoSingleton::getInstance()->getLastHalfHeight()), yArray({this->halfHeight +30,this->halfHeight +30,this->halfHeight +30 +15,this->halfHeight +30 +15,this->halfHeight +30 +30,this->halfHeight +30 +30,this->halfHeight +30 +45,this->halfHeight +30 +45}), myFontProcessor(new UpdateMyFontProcessor(this)), baseRefreshHelperCharArray(std::vector<std::vector<char>>(0, std::vector<char>(0))), RED(BasicColorFactory::getInstance()->RED) {
         }
         
     auto GamePerformanceInitUpdatePaintable::updateMeasurement(Graphics* graphics) -> void{

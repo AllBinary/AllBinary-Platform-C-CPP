@@ -120,7 +120,7 @@ stringBuffer->append(lineBreak);
     int32_t index = 0;index < interfaces.size(); index++)
         {
 
-                        if(interfaces[index]->getName().indexOf(interfaceName) >= 0)
+                        if(JavaString::indexOf(interfaces[index]->getName(), interfaceName) >= 0)
                         
                                     {
                                     
@@ -158,7 +158,7 @@ stringBuffer->append(lineBreak);
     int32_t index = 0;index < classes.size(); index++)
         {
 
-                        if(clazz->getName().compareTo(classes[index]->getName()) == 0)
+                        if(clazz->getName().compare(classes[index]->getName()) == 0)
                         
 
 
@@ -188,7 +188,7 @@ stringBuffer->append(lineBreak);
     int32_t index = 0;index < classes.size(); index++)
         {
 
-                        if(classes[index]->getName().indexOf(className) == 0)
+                        if(JavaString::indexOf(classes[index]->getName(), className) == 0)
                         
                                     {
                                     

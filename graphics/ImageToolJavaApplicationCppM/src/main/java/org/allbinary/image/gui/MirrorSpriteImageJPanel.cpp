@@ -123,9 +123,14 @@ this->imageProcessorInput= imageProcessorInput;
 
 
     auto MirrorSpriteImageJPanel::process() -> void{
-(class extends Thread
-                                {
-                                
+([&]() {
+    static thread_local MirrorSpriteImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public Thread {
+    public:
+    using Thread::Thread;
+    MirrorSpriteImageJPanel* outer = anonymousOuter0;
+
     public: void run(){
 
     LogUtil* logUtil = LogUtil::getInstance();;
@@ -136,7 +141,7 @@ this->imageProcessorInput= imageProcessorInput;
     std::vector<BufferedImage*> generatedBufferedImageArray;;
     
 
-    ImageProcessorInput* imageProcessorInput = this->getImageProcessorInput();;
+    ImageProcessorInput* imageProcessorInput = outer->getImageProcessorInput();;
     
 
     std::vector<BufferedImage*> bufferedImageArray = imageProcessorInput->getBufferedImageArray();;
@@ -148,28 +153,28 @@ this->imageProcessorInput= imageProcessorInput;
                         for (
     int32_t index = 0;index < bufferedImageArray.size(); index++)
         {
-generatedBufferedImageArray= MirrorImageUtil::getInstance()->getImages(bufferedImageArray[index], this->verticleJCheckBox->isSelected(), this->horizontalJCheckBox->isSelected());
+generatedBufferedImageArray= MirrorImageUtil::getInstance()->getImages(bufferedImageArray[index], outer->verticleJCheckBox->isSelected(), outer->horizontalJCheckBox->isSelected());
     
-this->result= BufferedImageUtil2::getInstance()->createSpriteImage(generatedBufferedImageArray);
+outer->result= BufferedImageUtil2::getInstance()->createSpriteImage(generatedBufferedImageArray);
     
-this->getParent()->repaint();
+outer->getParent()->repaint();
     
 
     File* file = imageProcessorInput->getFiles()[index];;
     
 
-                        if(!this->writeOverOriginalJCheckBox->isSelected())
+                        if(!outer->writeOverOriginalJCheckBox->isSelected())
                         
                                     {
                                     
     std::string filePath = file->getAbsolutePath();;
     
 
-    int32_t extensionIndex = JavaString::indexOf(filePath, imageStrings->PNG_EXTENSION);;
+    int32_t extensionIndex = JavaString::indexOf(filePath, outer->imageStrings->PNG_EXTENSION);;
     
-filePath= JavaString::valueOf(JavaString::valueOf(JavaString::substring(filePath, 0, extensionIndex)) +JavaString::valueOf("_mirror")) +JavaString::valueOf(imageStrings->PNG_EXTENSION);
+filePath= JavaString::valueOf(JavaString::valueOf(JavaString::substring(filePath, 0, extensionIndex)) +JavaString::valueOf("_mirror")) +JavaString::valueOf(outer->imageStrings->PNG_EXTENSION);
     
-logUtil->putF(JavaString::valueOf("Renamed File: ") +JavaString::valueOf(filePath), this, commonStrings->RUN);
+logUtil->putF(JavaString::valueOf("Renamed File: ") +JavaString::valueOf(filePath), this, outer->commonStrings->RUN);
     
 file= new File(filePath);
     
@@ -177,9 +182,9 @@ file= new File(filePath);
                                     }
                                 
 
-    bool isWritten = ImageIO::write(dynamic_cast<RenderedImage*>(this->result), imageStrings->PNG, file);;
+    bool isWritten = ImageIO::write(dynamic_cast<RenderedImage*>(outer->result), outer->imageStrings->PNG, file);;
     
-logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("File: ") +JavaString::valueOf(file)) +JavaString::valueOf(" Wrote: ")) +JavaString::valueOf(isWritten), this, commonStrings->RUN);
+logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("File: ") +JavaString::valueOf(file)) +JavaString::valueOf(" Wrote: ")) +JavaString::valueOf(isWritten), this, outer->commonStrings->RUN);
     
 }
 
@@ -187,14 +192,15 @@ logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("File:
                 //: 
 } catch(Exception& e) 
             {
-logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
+logUtil->put(outer->commonStrings->EXCEPTION, this, outer->commonStrings->RUN, &e);
     
 }
 
 }
 
-                                }
-                            )->start();
+    };
+    return new Anonymous0();
+}())->start();
     
 }
 
@@ -202,18 +208,23 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
     auto MirrorSpriteImageJPanel::initComponents() -> void{
 jLayeredPane1= new javax::swing::JLayeredPane();
     
-this->jPanel1= class extends javax::swing::JPanel
-                                {
-                                
+this->jPanel1= [&]() {
+    static thread_local MirrorSpriteImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public javax::swing::JPanel {
+    public:
+    using javax::swing::JPanel::JPanel;
+    MirrorSpriteImageJPanel* outer = anonymousOuter0;
+
     public: void paint(Graphics* graphics){
 
-                        if(this->result != 
+                        if(outer->result != 
                                     nullptr
                                 )
                         
                                     {
-                                    graphics->drawImage(this->result, 0, 0, this->result->getWidth(
-                            nullptr), this->result->getHeight(
+                                    graphics->drawImage(outer->result, 0, 0, outer->result->getWidth(
+                            nullptr), outer->result->getHeight(
                             nullptr), 
                             nullptr);
     
@@ -222,8 +233,9 @@ this->jPanel1= class extends javax::swing::JPanel
                                 
 }
 
-                                }
-                            ;
+    };
+    return new Anonymous0();
+}();
     
 this->jPanel2= new javax::swing::JPanel();
     
@@ -256,16 +268,22 @@ this->imageHeightIsFrameSizeJCheckBox->setText("Image Height Is Frame Size");
     
 this->imageHeightIsFrameSizeJCheckBox->setEnabled(false);
     
-this->imageHeightIsFrameSizeJCheckBox->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->imageHeightIsFrameSizeJCheckBox->addActionListener([&]() {
+    static thread_local MirrorSpriteImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    MirrorSpriteImageJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-imageHeightIsFrameSizeJCheckBoxActionPerformed(evt);
+outer->imageHeightIsFrameSizeJCheckBoxActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->horizontalJCheckBox->setSelected(true);
     
@@ -281,16 +299,22 @@ this->writeOverOriginalJCheckBox->setText("Write Over Original");
     
 this->generateJButton->setText("Generate");
     
-this->generateJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->generateJButton->addActionListener([&]() {
+    static thread_local MirrorSpriteImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    MirrorSpriteImageJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-generateJButtonActionPerformed(evt);
+outer->generateJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 
     org::jdesktop::layout::GroupLayout* jPanel2Layout = new org::jdesktop::layout::GroupLayout(this->jPanel2);;

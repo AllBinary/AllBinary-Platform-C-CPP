@@ -96,7 +96,7 @@ HardwareFactory::HardwareFactory(){
     OperatingSystems* operatingSystems = OperatingSystems::getInstance();;
     
 
-                        if(os->getName().compareTo(operatingSystems->LINUX) == 0)
+                        if(os->getName().compare(operatingSystems->LINUX) == 0)
                         
                                     {
                                     
@@ -109,7 +109,7 @@ HardwareFactory::HardwareFactory(){
                                     }
                                 
                              else 
-                        if(os->getName().indexOf(operatingSystems->WINDOWS) >= 0)
+                        if(JavaString::indexOf(os->getName(), operatingSystems->WINDOWS) >= 0)
                         
                                     {
                                     

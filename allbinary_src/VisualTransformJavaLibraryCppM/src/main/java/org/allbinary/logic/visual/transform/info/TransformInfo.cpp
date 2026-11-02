@@ -192,7 +192,7 @@ this->setDataFile(dataFileName);
     StringValidationUtil* stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-    std::string aName = hashMap->get(transformInfoData->NAME);;
+    std::string aName = JavaBoxes::unbox<std::string>(hashMap->get(transformInfoData->NAME));;
     
 
                         if(!stringValidationUtil->isEmpty(aName))
@@ -224,7 +224,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "override(HashMap hashMap)")
                                     }
                                 
 
-    std::string aStoreName = hashMap->get(StoreFrontData::getInstance()->NAME);;
+    std::string aStoreName = JavaBoxes::unbox<std::string>(hashMap->get(StoreFrontData::getInstance()->NAME));;
     
 
                         if(!stringValidationUtil->isEmpty(aStoreName))
@@ -236,7 +236,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "override(HashMap hashMap)")
                                     }
                                 
 
-    std::string aObjectFileName = hashMap->get(transformInfoData->OBJECTFILENAME);;
+    std::string aObjectFileName = JavaBoxes::unbox<std::string>(hashMap->get(transformInfoData->OBJECTFILENAME));;
     
 
                         if(!stringValidationUtil->isEmpty(aObjectFileName))
@@ -262,7 +262,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
     AbPath* fileAbPath = new AbPath(stringBuffer->toString(), StringUtil::getInstance()->EMPTY_STRING);;
     
 
-    std::string aObject = hashMap->get(transformInfoData->OBJECT);;
+    std::string aObject = JavaBoxes::unbox<std::string>(hashMap->get(transformInfoData->OBJECT));;
     
 
                         if(!stringValidationUtil->isEmpty(aObject))
@@ -293,7 +293,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
                                     }
                                 
 
-                        if(!stringValidationUtil->isEmpty(hashMap->get(transformInfoData->OBJECTCONFIG)))
+                        if(!stringValidationUtil->isEmpty(JavaBoxes::unbox<std::string>(hashMap->get(transformInfoData->OBJECTCONFIG))))
                         
                                     {
                                     
@@ -305,13 +305,13 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
 
                                     }
                                 
-this->setObjectConfig(hashMap->get(transformInfoData->OBJECTCONFIG));
+this->setObjectConfig(JavaBoxes::unbox<std::string>(hashMap->get(transformInfoData->OBJECTCONFIG)));
     
 
                                     }
                                 
 
-    std::string objectConfigFileName = hashMap->get(transformInfoData->OBJECTCONFIGFILENAME);;
+    std::string objectConfigFileName = JavaBoxes::unbox<std::string>(hashMap->get(transformInfoData->OBJECTCONFIGFILENAME));;
     
 
                         if(!stringValidationUtil->isEmpty(objectConfigFileName))
@@ -332,7 +332,7 @@ this->setObjectConfigFile(objectConfigFileName);
                                     }
                                 
 
-    std::string type = hashMap->get(OutputTypeData::getInstance()->NAME);;
+    std::string type = JavaBoxes::unbox<std::string>(hashMap->get(OutputTypeData::getInstance()->NAME));;
     
 
                         if(!stringValidationUtil->isEmpty(type))
@@ -355,7 +355,7 @@ this->getObjectConfigInterface()->setOutputTypeName(type);
                                     }
                                 
 
-    std::string aTemplateFileName = hashMap->get(transformInfoData->TEMPLATEFILENAME);;
+    std::string aTemplateFileName = JavaBoxes::unbox<std::string>(hashMap->get(transformInfoData->TEMPLATEFILENAME));;
     
 
                         if(!stringValidationUtil->isEmpty(aTemplateFileName))
@@ -367,7 +367,7 @@ this->getObjectConfigInterface()->setOutputTypeName(type);
                                     }
                                 
 
-    std::string aTemplate = hashMap->get(transformInfoData->TEMPLATE);;
+    std::string aTemplate = JavaBoxes::unbox<std::string>(hashMap->get(transformInfoData->TEMPLATE));;
     
 
                         if(!stringValidationUtil->isEmpty(aTemplate))
@@ -398,7 +398,7 @@ this->getObjectConfigInterface()->setOutputTypeName(type);
                                     }
                                 
 
-    std::string aDataFileName = hashMap->get(transformInfoData->DATAFILENAME);;
+    std::string aDataFileName = JavaBoxes::unbox<std::string>(hashMap->get(transformInfoData->DATAFILENAME));;
     
 
                         if(!stringValidationUtil->isEmpty(aDataFileName))
@@ -410,7 +410,7 @@ this->getObjectConfigInterface()->setOutputTypeName(type);
                                     }
                                 
 
-    std::string aData = hashMap->get(transformInfoData->DATA);;
+    std::string aData = JavaBoxes::unbox<std::string>(hashMap->get(transformInfoData->DATA));;
     
 
                         if(!stringValidationUtil->isEmpty(aData))
@@ -924,7 +924,7 @@ hashMap->put(transformInfoData->OBJECT, this->anyType);
     
 hashMap->put(transformInfoData->OBJECTCONFIGFILENAME, this->getObjectConfigFile());
     
-hashMap->put(transformInfoData->OBJECTCONFIG, Encoder::encode(this->getObjectConfigInterface()->toString().getBytes()));
+hashMap->put(transformInfoData->OBJECTCONFIG, Encoder::encode(JavaString::getBytes(this->getObjectConfigInterface()->toString())));
     
 hashMap->put(transformInfoData->TEMPLATEFILENAME, this->templateFileName);
     
@@ -965,7 +965,7 @@ vector->add(this->anyType);
     
 vector->add(this->getObjectConfigFile());
     
-vector->add(Encoder::encode(this->getObjectConfigInterface()->toString().getBytes()));
+vector->add(Encoder::encode(JavaString::getBytes(this->getObjectConfigInterface()->toString())));
     
 vector->add(this->templateFileName);
     

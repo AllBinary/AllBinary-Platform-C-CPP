@@ -72,14 +72,20 @@
 #include "org/allbinary/graphics/opengles/shader/ShaderInitializer.h"
 #include "org/allbinary/graphics/opengles/shader/ModelViewProjection.h"
 
-NullShaderComposite* NullShaderComposite::instance = class extends NullShaderComposite
-                                {
-                                
+NullShaderComposite* NullShaderComposite::instance = []() {
+    class Anonymous0 : public NullShaderComposite {
+    public:
+    using NullShaderComposite::NullShaderComposite;
+
     public: void init(GL10* gl){
 }
 
-                                }
-                            ;
+    };
+    return new Anonymous0(OpenGLCapabilities::getInstance()->VERSION_2_0, 
+                                                {
+                                                    new Shader(),new Shader()
+                                                }, CompositeShaderUpdater::getInstance(), ShaderInitializer::getInstance(), ModelViewProjection::getInstance(), NullOpenGLProcessorFactory::getInstance(), NullOpenGLProcessorFactory::getInstance(), NullOpenGLProcessorFactory::getInstance());
+}();
 
     auto NullShaderComposite::getInstance() -> ShaderComposite*{
 

@@ -88,7 +88,7 @@ CreateUserFactory::CreateUserFactory(){
                         
                                     {
                                     
-    std::string roleString = hashMap->get(UserRoleData::NAME->toString());;
+    std::string roleString = JavaBoxes::unbox<std::string>(hashMap->get(UserRoleData::NAME->toString()));;
     
 
                         if(!StringValidationUtil::getInstance()->isEmpty(roleString))

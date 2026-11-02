@@ -171,7 +171,7 @@ stringBuffer->append(columnName);
 stringBuffer->append(this->EQUAL_QUOTE);
     
 
-    std::string columnValue = updatedKeyValuePairs->get(columnName);;
+    std::string columnValue = JavaBoxes::unbox<std::string>(updatedKeyValuePairs->get(columnName));;
     
 
                         if(false)
@@ -292,7 +292,7 @@ stringBuffer->append(this->EQUAL_QUOTE);
                                     }
                                 
 
-    std::string columnValue = updatedKeyValuePairs->get(columnName);;
+    std::string columnValue = JavaBoxes::unbox<std::string>(updatedKeyValuePairs->get(columnName));;
     
 
                         if(false)
@@ -343,10 +343,10 @@ stringBuffer->append(this->sqlStrings->WHERE);
     int32_t i = 0;i < size2; i++)
         {
 
-    std::string key = keyArray2[i];;
+    std::string key = JavaBoxes::unbox<std::string>(keyArray2[i]);;
     
 
-    std::string value = whereKeyValuePairs->get(key);;
+    std::string value = JavaBoxes::unbox<std::string>(whereKeyValuePairs->get(key));;
     
 
 
@@ -497,7 +497,7 @@ stringBuffer->append(this->sqlStrings->WHERE);
     int32_t i = 0;i < size; i++)
         {
 
-    std::string key = keyArray[i];;
+    std::string key = JavaBoxes::unbox<std::string>(keyArray[i]);;
     
 
     std::string value = .toCharArray();;
@@ -573,7 +573,7 @@ stringBuffer->append(this->sqlStrings->VALUES);
     int32_t i = 0;i < values->size() -1; i++)
         {
 
-    std::string value = this->getValue(values->get(i));;
+    std::string value = this->getValue(JavaBoxes::unbox<std::string>(values->get(i)));;
     
 value= (new Replace(this->sqlStrings->ESCAPE, this->sqlStrings->DOUBLE_ESCAPE))->all(value);
     
@@ -584,7 +584,7 @@ stringBuffer->append(this->sqlStrings->SINGLE_QUOTE_COMMA_SEP);
 }
 
 
-    std::string value = this->getValue(values->get(values->size() -1));;
+    std::string value = this->getValue(JavaBoxes::unbox<std::string>(values->get(values->size() -1)));;
     
 value= (new Replace(this->sqlStrings->ESCAPE, this->sqlStrings->DOUBLE_ESCAPE))->all(value);
     
@@ -658,7 +658,7 @@ stringBuffer->append(this->sqlStrings->WHERE);
     int32_t index = 0;index < size; index++)
         {
 
-    std::string key = keyArray[index];;
+    std::string key = JavaBoxes::unbox<std::string>(keyArray[index]);;
     
 
     std::string value = .toCharArray();;
@@ -823,7 +823,7 @@ stringBuffer->append(this->sqlStrings->WHERE);
     int32_t index = 0;index < size; index++)
         {
 
-    std::string key = keyArray[index];;
+    std::string key = JavaBoxes::unbox<std::string>(keyArray[index]);;
     
 
     std::string value = .toCharArray();;
@@ -1076,9 +1076,9 @@ stringBuffer->append(this->sqlStrings->WHERE);
                         for (
     int32_t index = 0;index < size; index++)
         {
-key= keyArray[index];
+key= JavaBoxes::unbox<std::string>(keyArray[index]);
     
-value= whereKeyValuePairs->get(key);
+value= JavaBoxes::unbox<std::string>(whereKeyValuePairs->get(key));
     
 stringBuffer->append(key);
     

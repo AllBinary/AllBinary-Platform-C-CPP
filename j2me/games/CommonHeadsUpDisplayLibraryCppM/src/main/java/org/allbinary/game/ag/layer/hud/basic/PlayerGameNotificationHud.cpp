@@ -151,7 +151,7 @@ this->updateMeasurementProcessor->setNextUnremoveableProcess();
 }
 
 
-PlayerGameNotificationHud::PlayerGameNotificationHud(int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor) : GameNotificationHud(location, direction, bufferZone, basicColor), gameTickTimeDelayHelper(GameTickTimeDelayHelperFactory::getInstance()), EMPTY_STRING(StringUtil::getInstance()->EMPTY_STRING), displayInfo(DisplayInfoSingleton::getInstance()), timeDelayHelper(new TimeDelayHelper(0)), gameNotification(new GameNotification()), permanentGameNotification(new GameNotification()), setAndRemoveProcessor(new SetAndRemoveProcessor(this)), nextUnremoveableProcessor(new NextUnremoveableProcessor(this)), processor(Processor::getInstance()), lastString(StringUtil::getInstance()->EMPTY_STRING), string(this->EMPTY_STRING), point(CustomGPoint::NULL_CUSTOM_POINT){
+PlayerGameNotificationHud::PlayerGameNotificationHud(int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor) : GameNotificationHud(location, direction, bufferZone, basicColor), gameTickTimeDelayHelper(GameTickTimeDelayHelperFactory::getInstance()), EMPTY_STRING(StringUtil::getInstance()->EMPTY_STRING), displayInfo(DisplayInfoSingleton::getInstance()), timeDelayHelper(new TimeDelayHelper(0)), gameNotification(new GameNotification()), permanentGameNotification(new GameNotification()), setAndRemoveProcessor(javaInner(new SetAndRemoveProcessor(this), this)), nextUnremoveableProcessor(javaInner(new NextUnremoveableProcessor(this), this)), processor(Processor::getInstance()), lastString(StringUtil::getInstance()->EMPTY_STRING), string(this->EMPTY_STRING), point(CustomGPoint::NULL_CUSTOM_POINT){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -219,7 +219,7 @@ this->point->setY(y);
 
     auto PlayerGameNotificationHud::add(std::string string, int32_t seconds, BasicColor* basicColor, bool permanent) -> void{
 
-                        if(permanent.valueOf())
+                        if(permanent)
                         
                                     {
                                     
@@ -307,7 +307,7 @@ this->circularIndexUtil->setSize(this->permanentGameNotification->getSize());
                 //@Throws(Exception.constructor)
             
     auto PlayerGameNotificationHud::setAndRemove() -> void{
-this->string= this->gameNotification->stringList->removeAt(0);
+this->string= JavaBoxes::unbox<std::string>(this->gameNotification->stringList->removeAt(0));
     
 this->processor= this->setAndRemoveProcessor;
     
@@ -324,10 +324,10 @@ this->point->setX(this->getX());
 this->point->setY(this->getY());
     
 
-    int32_t time = this->gameNotification->timeList->removeAt(0);;
+    int32_t time = JavaBoxes::unbox<int32_t>(this->gameNotification->timeList->removeAt(0));;
     
 
-    int32_t iTime = time.intValue() *1000;;
+    int32_t iTime = time *1000;;
     
 
                         if(iTime == 0)
@@ -351,7 +351,7 @@ this->setBasicColorP(dynamic_cast<BasicColor*>(this->gameNotification->colorList
 
     int32_t index = this->circularIndexUtil->getIndex();;
     
-this->string= this->permanentGameNotification->stringList->objectArray[index];
+this->string= JavaBoxes::unbox<std::string>(this->permanentGameNotification->stringList->objectArray[index]);
     
 this->processor= this->nextUnremoveableProcessor;
     
@@ -371,9 +371,9 @@ this->point->setX(this->getX());
 this->point->setY(this->getY());
     
 
-    int32_t time = this->permanentGameNotification->timeList->objectArray[index];;
+    int32_t time = JavaBoxes::unbox<int32_t>(this->permanentGameNotification->timeList->objectArray[index]);;
     
-this->timeDelayHelper->delay= time.intValue() *1000;
+this->timeDelayHelper->delay= time *1000;
     
 this->setBasicColorP(dynamic_cast<BasicColor*>(this->permanentGameNotification->colorList->objectArray[index]));
     

@@ -113,16 +113,22 @@ setDefaultCloseOperation(javax.swing->WindowConstants->DISPOSE_ON_CLOSE);
     
 this->jButton1->setText("OK");
     
-jButton1->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+jButton1->addActionListener([&]() {
+    static thread_local BasicTextJDialog* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    BasicTextJDialog* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-jButton1ActionPerformed(evt);
+outer->jButton1ActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->textJLabel->setText("No Text Set");
     
@@ -158,16 +164,19 @@ this->setVisible(false);
 
 
     auto BasicTextJDialog::main(std::vector<std::string> args) -> void{
-java.awt->EventQueue->invokeLater(class extends ARunnable
-                                {
-                                
+java.awt->EventQueue->invokeLater([]() {
+    class Anonymous0 : public ARunnable {
+    public:
+    using ARunnable::ARunnable;
+
     public: void run(){
 (new BasicTextJDialog(new javax::swing::JFrame(), true, "Test"))->setVisible(true);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 }
 

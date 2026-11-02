@@ -113,10 +113,10 @@ result += " ";
     int32_t i = 0;i < attributeSize; i++)
         {
 
-    std::string key = attributeKeys[i];;
+    std::string key = JavaBoxes::unbox<std::string>(attributeKeys[i]);;
     
 
-    std::string value = otherAttributes.get(key);;
+    std::string value = JavaBoxes::unbox<std::string>(otherAttributes.get(key));;
     
 
                         if(true && value.compare(stringUtil->EMPTY_STRING) != 0)

@@ -137,9 +137,14 @@ this->imageProcessorInput= imageProcessorInput;
 
 
     auto SpriteSplitterImageJPanel::process() -> void{
-(class extends Thread
-                                {
-                                
+([&]() {
+    static thread_local SpriteSplitterImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public Thread {
+    public:
+    using Thread::Thread;
+    SpriteSplitterImageJPanel* outer = anonymousOuter0;
+
     public: void run(){
 
     LogUtil* logUtil = LogUtil::getInstance();;
@@ -150,40 +155,41 @@ this->imageProcessorInput= imageProcessorInput;
     SpriteSplitterUtil* spriteSplitterUtil = SpriteSplitterUtil::getInstance();;
     
 
-    std::string spriteType = spriteTypeJComboBox->getSelectedItem();;
+    std::string spriteType = JavaBoxes::unbox<std::string>(outer->spriteTypeJComboBox->getSelectedItem());;
     
 
-    int32_t totalFrames = Integer.valueOf(totalFramesJComboBox->getSelectedItem());;
+    int32_t totalFrames = Integer.valueOf(JavaBoxes::unbox<std::string>(outer->totalFramesJComboBox->getSelectedItem()));;
     
 
-    int32_t totalAnimations = Integer.valueOf(totalAnimationsJComboBox->getSelectedItem());;
+    int32_t totalAnimations = Integer.valueOf(JavaBoxes::unbox<std::string>(outer->totalAnimationsJComboBox->getSelectedItem()));;
     
 
-    int32_t widthReduction = Integer.valueOf(widthReductionTextField->getText());;
+    int32_t widthReduction = Integer.valueOf(outer->widthReductionTextField->getText());;
     
 
-    int32_t heightReduction = Integer.valueOf(heightReductionTextField->getText());;
+    int32_t heightReduction = Integer.valueOf(outer->heightReductionTextField->getText());;
     
 
-    int32_t increaseWidth = Integer.valueOf(increaseWidthTextField->getText());;
+    int32_t increaseWidth = Integer.valueOf(outer->increaseWidthTextField->getText());;
     
 
-    int32_t increaseHeight = Integer.valueOf(increaseHeightTextField->getText());;
+    int32_t increaseHeight = Integer.valueOf(outer->increaseHeightTextField->getText());;
     
-spriteSplitterUtil->process(this->getImageProcessorInput(), totalFrames, totalAnimations, widthReduction, heightReduction, increaseWidth, increaseHeight, spriteType, this);
+spriteSplitterUtil->process(outer->getImageProcessorInput(), totalFrames, totalAnimations, widthReduction, heightReduction, increaseWidth, increaseHeight, spriteType, outer);
     
 
                 //: 
 } catch(Exception& e) 
             {
-logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
+logUtil->put(outer->commonStrings->EXCEPTION, this, outer->commonStrings->RUN, &e);
     
 }
 
 }
 
-                                }
-                            )->start();
+    };
+    return new Anonymous0();
+}())->start();
     
 }
 
@@ -195,18 +201,23 @@ this->widthReductionTextField= new javax::swing::JTextField();
     
 this->jLabel5= new javax::swing::JLabel();
     
-this->jPanel1= class extends javax::swing::JPanel
-                                {
-                                
+this->jPanel1= [&]() {
+    static thread_local SpriteSplitterImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public javax::swing::JPanel {
+    public:
+    using javax::swing::JPanel::JPanel;
+    SpriteSplitterImageJPanel* outer = anonymousOuter0;
+
     public: void paint(Graphics* graphics){
 
-                        if(this->result != 
+                        if(outer->result != 
                                     nullptr
                                 )
                         
                                     {
-                                    graphics->drawImage(this->result, 0, 0, this->result->getWidth(
-                            nullptr), this->result->getHeight(
+                                    graphics->drawImage(outer->result, 0, 0, outer->result->getWidth(
+                            nullptr), outer->result->getHeight(
                             nullptr), 
                             nullptr);
     
@@ -215,8 +226,9 @@ this->jPanel1= class extends javax::swing::JPanel
                                 
 }
 
-                                }
-                            ;
+    };
+    return new Anonymous0();
+}();
     
 this->jLabel4= new javax::swing::JLabel();
     
@@ -290,29 +302,41 @@ this->increaseHeightTextField= new javax::swing::JTextField();
     
 this->writeOverOriginalJCheckBox->setText("Write Over Original");
     
-this->writeOverOriginalJCheckBox->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->writeOverOriginalJCheckBox->addActionListener([&]() {
+    static thread_local SpriteSplitterImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    SpriteSplitterImageJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-writeOverOriginalJCheckBoxActionPerformed(evt);
+outer->writeOverOriginalJCheckBoxActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->widthReductionTextField->setText(CommonPhoneStrings::getInstance()->ZERO);
     
-this->widthReductionTextField->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->widthReductionTextField->addActionListener([&]() {
+    static thread_local SpriteSplitterImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    SpriteSplitterImageJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-widthReductionTextFieldActionPerformed(evt);
+outer->widthReductionTextFieldActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jLabel5->setText("Less Width:");
     
@@ -333,59 +357,83 @@ this->heightReductionTextField->setText(CommonPhoneStrings::getInstance()->ZERO)
     
 this->generateJButton->setText("Generate");
     
-this->generateJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->generateJButton->addActionListener([&]() {
+    static thread_local SpriteSplitterImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    SpriteSplitterImageJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-generateJButtonActionPerformed(evt);
+outer->generateJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jLabel1->setText("Row Total:");
     
 this->totalFramesJComboBox->setSelectedIndex(1);
     
-this->totalFramesJComboBox->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->totalFramesJComboBox->addActionListener([&]() {
+    static thread_local SpriteSplitterImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    SpriteSplitterImageJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-totalFramesJComboBoxActionPerformed(evt);
+outer->totalFramesJComboBoxActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jLabel2->setText("Column Total :");
     
 this->totalAnimationsJComboBox->setSelectedIndex(3);
     
-this->totalAnimationsJComboBox->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->totalAnimationsJComboBox->addActionListener([&]() {
+    static thread_local SpriteSplitterImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    SpriteSplitterImageJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-totalAnimationsJComboBoxActionPerformed(evt);
+outer->totalAnimationsJComboBoxActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jLabel3->setText("Type:");
     
-this->spriteTypeJComboBox->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->spriteTypeJComboBox->addActionListener([&]() {
+    static thread_local SpriteSplitterImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    SpriteSplitterImageJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-spriteTypeJComboBoxActionPerformed(evt);
+outer->spriteTypeJComboBoxActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 
     javax::swing::GroupLayout* jPanel2Layout = new javax::swing::GroupLayout(this->jPanel2);;
@@ -400,16 +448,22 @@ this->jLabel7->setText("More Width:");
     
 this->increaseWidthTextField->setText(CommonPhoneStrings::getInstance()->ZERO);
     
-this->increaseWidthTextField->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->increaseWidthTextField->addActionListener([&]() {
+    static thread_local SpriteSplitterImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    SpriteSplitterImageJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-increaseWidthTextFieldActionPerformed(evt);
+outer->increaseWidthTextFieldActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jLabel8->setText("More Height:");
     

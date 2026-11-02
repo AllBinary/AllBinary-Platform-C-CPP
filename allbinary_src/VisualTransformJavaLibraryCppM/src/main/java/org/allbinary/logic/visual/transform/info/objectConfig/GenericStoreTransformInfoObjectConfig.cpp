@@ -248,7 +248,7 @@ hashMap->put(transformInfoObjectConfigData->VARKEY +TransformInfoData::getInstan
     HashMap<Object*, Object*>* propertiesHashMap = transformInfoHttpStoreInterface->getPropertiesHashMap();;
     
 
-    std::string templateNameOverride = StringUtil::getInstance()->getNonNull(propertiesHashMap->get(TransformInfoData::getInstance()->PARTIAL));;
+    std::string templateNameOverride = StringUtil::getInstance()->getNonNull(JavaBoxes::unbox<std::string>(propertiesHashMap->get(TransformInfoData::getInstance()->PARTIAL)));;
     
 
                         if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))

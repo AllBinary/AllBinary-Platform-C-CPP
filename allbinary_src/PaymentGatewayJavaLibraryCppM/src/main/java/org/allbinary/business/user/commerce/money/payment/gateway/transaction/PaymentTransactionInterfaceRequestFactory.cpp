@@ -280,7 +280,7 @@ orderReview->setPaymentInfo(orderPaymentInfo);
     HttpServletRequest* httpServletRequest = dynamic_cast<HttpServletRequest*>(pageContext->getRequest());;
     
 
-    std::string gatewayName = weblisketSession->getPaymentMethod();;
+    std::string gatewayName = JavaBoxes::unbox<std::string>(weblisketSession->getPaymentMethod());;
     
 
                         if(StringValidationUtil::getInstance()->isEmpty(gatewayName))

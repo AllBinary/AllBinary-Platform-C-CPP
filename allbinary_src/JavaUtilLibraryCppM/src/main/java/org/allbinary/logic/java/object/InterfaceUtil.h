@@ -72,8 +72,10 @@ class InterfaceUtil
     public: static Class* getClass()(std::string interfaceName, std::vector<Class*> interfaces);
 
     public: static bool isImplemented(Class* clazz, Object* anyType);
+    public: static bool isImplemented(Class* clazz, const std::string& anyType) { return isImplemented(clazz, JavaString::box(anyType)); }
 
     public: static bool isImplemented(std::string className, Object* anyType);
+    public: static bool isImplemented(std::string className, const std::string& anyType) { return isImplemented(className, JavaString::box(anyType)); }
 
     public: static std::string isImplementedView(Class* clazz, Object* anyType);
     public: static std::string isImplementedView(Class* clazz, const std::string& anyType) { return isImplementedView(clazz, JavaString::box(anyType)); }

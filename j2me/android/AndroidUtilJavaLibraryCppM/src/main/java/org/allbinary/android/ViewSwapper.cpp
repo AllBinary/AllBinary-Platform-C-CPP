@@ -14,8 +14,6 @@
         #include "org/allbinary/android/ViewSwapper.h"
         
 
-            #include <hilog/log.h>
-        
             #include <vector>
         
             #include <cstdint>

@@ -81,7 +81,7 @@
 
     auto VectorAnimation::createVectorAnimation(std::vector<std::vector<int32_t>> currentPoints2, BasicColor* basicColor, AnimationBehavior* animationBehavior) -> VectorAnimation*{
 
-    std::vector<std::vector<std::vector<int32_t>>> currentPoints = std::vector<std::vector<std::vector<int32_t>>>(1, std::vector<std::vector<int32_t>>(currentPoints2.length, std::vector<int32_t>(2)));;
+    std::vector<std::vector<std::vector<int32_t>>> currentPoints = std::vector<std::vector<std::vector<int32_t>>>(1, std::vector<std::vector<int32_t>>(currentPoints2.size(), std::vector<int32_t>(2)));;
     
 
     int32_t size = currentPoints2.size();;

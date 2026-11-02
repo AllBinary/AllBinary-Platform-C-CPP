@@ -119,7 +119,7 @@ this->setTableName(this->tableName);
             
     HashMap<Object*, Object*>* whereHashMap = StdUtil::getInstance()->createHashMap();;
     
-whereHashMap->put(OrderData::ID, orderNumber);
+whereHashMap->put(OrderData::ID, JavaBoxes::unbox<std::string>(orderNumber));
     
 whereHashMap->put(UserData::USERNAME, userName);
     

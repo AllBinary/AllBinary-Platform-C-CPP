@@ -41,7 +41,7 @@ class CommandListener;
 #include <org/allbinary/game/state/GameStateCompositeInterface.h>
 #include <org/allbinary/graphics/paint/PaintableInterface.h>
 #include <org/allbinary/thread/RunnableInterface.h>
-#include <org/allbinary/util/ABHashtable.h>
+template<typename T1, typename T2> class ABHashtable;
 
 
 

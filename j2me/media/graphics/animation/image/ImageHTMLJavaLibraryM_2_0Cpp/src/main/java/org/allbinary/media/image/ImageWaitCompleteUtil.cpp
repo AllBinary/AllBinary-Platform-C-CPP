@@ -181,7 +181,7 @@ PreLogUtil::put(JavaString::valueOf("Image Total: ") +JavaString::valueOf(size),
                         for (
     int32_t index = 0;index < size; index++)
         {
-this->waitForATime(dynamic_cast<Image*>(hashtable->get(objectArray[index])), objectArray[index], this->allTimeDelayHelper);
+this->waitForATime(dynamic_cast<Image*>(hashtable->get(objectArray[index])), JavaBoxes::unbox<std::string>(objectArray[index]), this->allTimeDelayHelper);
     
 }
 

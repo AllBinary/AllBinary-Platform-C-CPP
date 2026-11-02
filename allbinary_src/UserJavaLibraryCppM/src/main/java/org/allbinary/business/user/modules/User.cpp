@@ -177,7 +177,7 @@ this->userName= (new UserName(userHashMap))->get();
     StringUtil* stringUtil = StringUtil::getInstance();;
     
 
-    std::string passwordString = stringUtil->getNonNull(userHashMap->get(UserData::PASSWORD));;
+    std::string passwordString = stringUtil->getNonNull(JavaBoxes::unbox<std::string>(userHashMap->get(UserData::PASSWORD)));;
     
 
     StringValidationUtil* stringValidationUtil = StringValidationUtil::getInstance();;
@@ -186,58 +186,58 @@ this->userName= (new UserName(userHashMap))->get();
                         if(stringValidationUtil->isEmpty(this->userName) && stringValidationUtil->isEmpty(passwordString))
                         
                                     {
-                                    this->userName= stringUtil->getNonNull(userHashMap->get(WeblisketSessionData::REMOVABLEUSERNAME));
+                                    this->userName= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(userHashMap->get(WeblisketSessionData::REMOVABLEUSERNAME)));
     
-passwordString= stringUtil->getNonNull(userHashMap->get(WeblisketSessionData::REMOVABLEPASSWORD));
+passwordString= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(userHashMap->get(WeblisketSessionData::REMOVABLEPASSWORD)));
     
 
                                     }
                                 
 
-    std::string encryption = stringUtil->getNonNull(userHashMap->get(EntryData::getInstance()->ENCRYPTION));;
+    std::string encryption = stringUtil->getNonNull(JavaBoxes::unbox<std::string>(userHashMap->get(EntryData::getInstance()->ENCRYPTION)));;
     
 
-    std::string secret = stringUtil->getNonNull(userHashMap->get(UserData::SECRET));;
+    std::string secret = stringUtil->getNonNull(JavaBoxes::unbox<std::string>(userHashMap->get(UserData::SECRET)));;
     
 this->password= new Password(passwordString);
     
-this->prefixName= stringUtil->getNonNull(userHashMap->get(UserData::PREFIXNAME));
+this->prefixName= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(userHashMap->get(UserData::PREFIXNAME)));
     
-this->firstName= stringUtil->getNonNull(userHashMap->get(UserData::FIRSTNAME));
+this->firstName= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(userHashMap->get(UserData::FIRSTNAME)));
     
-this->lastName= stringUtil->getNonNull(userHashMap->get(UserData::LASTNAME));
+this->lastName= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(userHashMap->get(UserData::LASTNAME)));
     
-this->middleName= stringUtil->getNonNull(userHashMap->get(UserData::MIDDLENAME));
+this->middleName= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(userHashMap->get(UserData::MIDDLENAME)));
     
-this->suffixName= stringUtil->getNonNull(userHashMap->get(UserData::SUFFIXNAME));
+this->suffixName= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(userHashMap->get(UserData::SUFFIXNAME)));
     
-this->company= stringUtil->getNonNull(userHashMap->get(UserData::COMPANY));
+this->company= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(userHashMap->get(UserData::COMPANY)));
     
-this->positionAtCompany= stringUtil->getNonNull(userHashMap->get(UserData::POSITIONATCOMPANY));
+this->positionAtCompany= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(userHashMap->get(UserData::POSITIONATCOMPANY)));
     
-this->mainEmail= stringUtil->getNonNull(userHashMap->get(UserData::MAINEMAIL));
+this->mainEmail= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(userHashMap->get(UserData::MAINEMAIL)));
     
-this->secondaryEmail= stringUtil->getNonNull(userHashMap->get(UserData::SECONDARYEMAIL));
+this->secondaryEmail= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(userHashMap->get(UserData::SECONDARYEMAIL)));
     
-this->homePhone= stringUtil->getNonNull(userHashMap->get(UserData::HOMEPHONE));
+this->homePhone= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(userHashMap->get(UserData::HOMEPHONE)));
     
-this->cellPhone= stringUtil->getNonNull(userHashMap->get(UserData::CELLPHONE));
+this->cellPhone= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(userHashMap->get(UserData::CELLPHONE)));
     
-this->workPhone= stringUtil->getNonNull(userHashMap->get(UserData::WORKPHONE));
+this->workPhone= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(userHashMap->get(UserData::WORKPHONE)));
     
-this->otherContact= stringUtil->getNonNull(userHashMap->get(UserData::OTHERCONTACT));
+this->otherContact= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(userHashMap->get(UserData::OTHERCONTACT)));
     
-this->electronicDevice= stringUtil->getNonNull(userHashMap->get(UserData::ELECTRONICDEVICE));
+this->electronicDevice= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(userHashMap->get(UserData::ELECTRONICDEVICE)));
     
-this->fax= stringUtil->getNonNull(userHashMap->get(UserData::FAX));
+this->fax= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(userHashMap->get(UserData::FAX)));
     
-this->role= UserRoleB::getRole(userHashMap->get(UserRoleData::NAME->toString()));
+this->role= UserRoleB::getRole(JavaBoxes::unbox<std::string>(userHashMap->get(UserRoleData::NAME->toString())));
     
-this->permissions= stringUtil->getNonNull(userHashMap->get(UserData::PERMISSIONS));
+this->permissions= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(userHashMap->get(UserData::PERMISSIONS)));
     
 
                         if(!stringValidationUtil->isEmpty(this->permissions) && this->permissions.compare(StoreFrontData::getInstance()->NAME) == 0)
-                        this->permissions= stringUtil->getNonNull(userHashMap->get(StoreFrontData::getInstance()->NAME));
+                        this->permissions= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(userHashMap->get(StoreFrontData::getInstance()->NAME)));
                                 
                              else 
                         if(false)
@@ -248,7 +248,7 @@ this->permissions= stringUtil->getNonNull(userHashMap->get(UserData::PERMISSIONS
 
                                     }
                                 
-this->enable_= stringUtil->getNonNull(userHashMap->get(EntryData::getInstance()->ENABLE));
+this->enable_= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(userHashMap->get(EntryData::getInstance()->ENABLE)));
     
 }
 

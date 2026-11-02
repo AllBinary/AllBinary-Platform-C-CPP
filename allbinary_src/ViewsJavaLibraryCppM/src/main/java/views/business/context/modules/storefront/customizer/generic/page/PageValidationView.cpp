@@ -228,7 +228,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "insert()");
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
 
-    std::string title = specifiedTransformInfoInterface->getName().substring(this->getTransformInfoInterface()->getStoreName()->length());;
+    std::string title = JavaString::substring(specifiedTransformInfoInterface->getName(), this->getTransformInfoInterface()->getStoreName()->length());;
     
 
                         if(title.compare("index") == 0)
@@ -369,7 +369,7 @@ CustomizerUtil::getInstance()->write(specifiedTransformInfoInterface, documentSt
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
 
-    std::string title = specifiedTransformInfoInterface->getName().substring(this->getTransformInfoInterface()->getStoreName()->length());;
+    std::string title = JavaString::substring(specifiedTransformInfoInterface->getName(), this->getTransformInfoInterface()->getStoreName()->length());;
     
 
                         if(title.compare("index") == 0)

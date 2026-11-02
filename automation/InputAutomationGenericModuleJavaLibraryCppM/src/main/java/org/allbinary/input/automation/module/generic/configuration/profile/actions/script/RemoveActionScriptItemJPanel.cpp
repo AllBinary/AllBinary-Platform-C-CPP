@@ -88,16 +88,22 @@ setLayout(new java::awt::GridLayout());
     
 this->removeJButton->setText("Remove");
     
-this->removeJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->removeJButton->addActionListener([&]() {
+    static thread_local RemoveActionScriptItemJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    RemoveActionScriptItemJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-removeJButtonActionPerformed(evt);
+outer->removeJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 add(this->removeJButton);
     

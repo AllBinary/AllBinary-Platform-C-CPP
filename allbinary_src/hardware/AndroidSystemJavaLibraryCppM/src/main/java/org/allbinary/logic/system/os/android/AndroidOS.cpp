@@ -28,8 +28,6 @@
         #include "org/allbinary/logic/system/os/android/AndroidOS.h"
         
 
-            #include <hilog/log.h>
-        
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -218,7 +216,7 @@ this->stringBuffer->append(commonStrings->SPACE);
     AndroidSystemProperties* properties = AndroidSystemProperties::getInstance();;
     
 
-                        if(properties->getDevice()->toLowerCase().indexOf(this->OUYA) >= 0)
+                        if(JavaString::indexOf(properties->getDevice()->toLowerCase(), this->OUYA) >= 0)
                         
                                     {
                                     

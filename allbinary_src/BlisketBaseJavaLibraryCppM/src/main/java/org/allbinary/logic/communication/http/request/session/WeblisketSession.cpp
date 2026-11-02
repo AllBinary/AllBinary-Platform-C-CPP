@@ -138,7 +138,7 @@ this->session= request->getSession(true);
                                 )
                         
                                     {
-                                    this->setStoreName(propertiesHashMap->get(StoreFrontData::getInstance()->NAME));
+                                    this->setStoreName(JavaBoxes::unbox<std::string>(propertiesHashMap->get(StoreFrontData::getInstance()->NAME)));
     
 
                                     }
@@ -209,7 +209,7 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session->getAttribute(org.allbinary->globals->GLOBALS2->WEBAPPPATH);
+                        return JavaBoxes::unbox<std::string>(this->session->getAttribute(org.allbinary->globals->GLOBALS2->WEBAPPPATH));
     
 }
 
@@ -219,7 +219,7 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session->getAttribute(UserData::USERNAME);
+                        return JavaBoxes::unbox<std::string>(this->session->getAttribute(UserData::USERNAME));
     
 }
 
@@ -229,7 +229,7 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session->getAttribute(UserData::PASSWORD);
+                        return JavaBoxes::unbox<std::string>(this->session->getAttribute(UserData::PASSWORD));
     
 }
 
@@ -239,7 +239,7 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session->getAttribute(PaymentGatewayData::NAME->toString());
+                        return JavaBoxes::unbox<std::string>(this->session->getAttribute(PaymentGatewayData::NAME->toString()));
     
 }
 
@@ -249,7 +249,7 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session->getAttribute(WeblisketSessionData::AUTHENTICATED);
+                        return JavaBoxes::unbox<std::string>(this->session->getAttribute(WeblisketSessionData::AUTHENTICATED));
     
 }
 
@@ -259,7 +259,7 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session->getAttribute(WeblisketSessionData::ATTEMPTS);
+                        return JavaBoxes::unbox<int32_t>(this->session->getAttribute(WeblisketSessionData::ATTEMPTS));
     
 }
 
@@ -269,7 +269,7 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session->getAttribute(WeblisketSessionData::TIMEOUT);
+                        return JavaBoxes::unbox<std::string>(this->session->getAttribute(WeblisketSessionData::TIMEOUT));
     
 }
 
@@ -279,7 +279,7 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session->getAttribute(StoreFrontData::getInstance()->NAME);
+                        return JavaBoxes::unbox<std::string>(this->session->getAttribute(StoreFrontData::getInstance()->NAME));
     
 }
 

@@ -136,11 +136,11 @@ totalTime= (totalTime /10000);
     
 this->ANDROID_STRING_ARRAY[10]= this->TOTAL_ONDRAWS;
     
-this->ANDROID_STRING_ARRAY[11]= std::to_string(totalOnDraws);
+this->ANDROID_STRING_ARRAY[11]= std::to_string(this->totalOnDraws);
     
 this->ANDROID_STRING_ARRAY[12]= this->ONDRAWS_RATE;
     
-this->ANDROID_STRING_ARRAY[13]= std::to_string();
+this->ANDROID_STRING_ARRAY[13]= std::to_string(this->totalOnDraws /totalTime);
     
 
 
@@ -177,7 +177,7 @@ stringBuffer->append(std::to_string(totalOnDraws));
 stringBuffer->append(this->ONDRAWS_RATE);
     
 
-    std::string drawsOverTime = std::to_string();;
+    std::string drawsOverTime = std::to_string(this->totalOnDraws /totalTime);;
     
 stringBuffer->append(drawsOverTime);
     

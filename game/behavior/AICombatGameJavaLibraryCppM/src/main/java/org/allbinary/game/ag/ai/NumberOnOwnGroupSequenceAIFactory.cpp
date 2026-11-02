@@ -181,7 +181,7 @@ this->logUtil->putF(stringBuffer->toString(), this, commonStrings->GET_INSTANCE)
                         for (
     int32_t index = 0;index < numberOnSameTeam.size(); index++)
         {
-numberOnSameTeam[index]= list->objectArray[index];
+numberOnSameTeam[index]= JavaBoxes::unbox<int32_t>(list->objectArray[index]);
     
 }
 

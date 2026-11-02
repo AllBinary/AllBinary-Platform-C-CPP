@@ -225,7 +225,7 @@ stringBuffer->append(this->sqlStrings->WHERE);
                         for (
     int32_t i = 0;i < size; i++)
         {
-key= keyArray[i];
+key= JavaBoxes::unbox<std::string>(keyArray[i]);
     
 value= .toCharArray();
     
@@ -397,7 +397,7 @@ columnName= keyArray2[i]->toString();
 field= rset->getObject(columnName)->toString();
     
 
-                        if(field.compare(columnsAndValues->get(columnName)) != 0)
+                        if(field.compare(JavaBoxes::unbox<std::string>(columnsAndValues->get(columnName))) != 0)
                         
                                     {
                                     

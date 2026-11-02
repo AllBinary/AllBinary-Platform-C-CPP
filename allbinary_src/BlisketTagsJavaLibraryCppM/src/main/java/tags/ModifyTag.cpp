@@ -118,8 +118,8 @@ ModifyTag::ModifyTag(TagHelperFactoryInterface* tagHelperFactoryInterface) : Hel
                             nullptr);;
     
 
-    std::string result = method->invoke(this->getHelper(), 
-                            nullptr);;
+    std::string result = JavaBoxes::unbox<std::string>(method->invoke(this->getHelper(), 
+                            nullptr));;
     
 
 
@@ -167,8 +167,8 @@ ModifyTag::ModifyTag(TagHelperFactoryInterface* tagHelperFactoryInterface) : Hel
                             nullptr);;
     
 
-    std::string result = method->invoke(this->getHelper(), 
-                            nullptr);;
+    std::string result = JavaBoxes::unbox<std::string>(method->invoke(this->getHelper(), 
+                            nullptr));;
     
 
 
@@ -216,8 +216,8 @@ ModifyTag::ModifyTag(TagHelperFactoryInterface* tagHelperFactoryInterface) : Hel
                             nullptr);;
     
 
-    std::string result = method->invoke(this->getHelper(), 
-                            nullptr);;
+    std::string result = JavaBoxes::unbox<std::string>(method->invoke(this->getHelper(), 
+                            nullptr));;
     
 
 

@@ -87,7 +87,7 @@ this->propertiesHashMap= hashMap;
 this->pageContext= pageContext;
     
 
-    std::string storeName = this->propertiesHashMap->get(StoreFrontData::getInstance()->NAME);;
+    std::string storeName = JavaBoxes::unbox<std::string>(this->propertiesHashMap->get(StoreFrontData::getInstance()->NAME));;
     
 
                         if(true)

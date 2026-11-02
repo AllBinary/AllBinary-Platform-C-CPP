@@ -83,7 +83,7 @@ this->labelX= x;
 
     auto KeyValueDrawCharArray::updateMeasurement(Graphics* graphics) -> void{
 
-    int32_t labelWidth = graphics->getFont()->stringWidth(this->LABEL) -LABEL.size();;
+    int32_t labelWidth = graphics->getFont()->stringWidth(this->LABEL) -this->LABEL.size();;
     
 this->valueX= labelWidth +this->labelX;
     

@@ -319,21 +319,21 @@ this->colorAtActionScriptConditionJPanel->getColorAtActionJDialog()->setVisible(
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap->put(ColorAtActionScriptConditionData::LOCATION_X, std::to_string(x));
+hashMap->put(ColorAtActionScriptConditionData::LOCATION_X, std::to_string(this->getPoint()->x));
     
-hashMap->put(ColorAtActionScriptConditionData::LOCATION_Y, std::to_string(y));
+hashMap->put(ColorAtActionScriptConditionData::LOCATION_Y, std::to_string(this->getPoint()->y));
     
-hashMap->put(ColorAtActionScriptConditionData::MIN_RED, std::to_string(getMinRed));
+hashMap->put(ColorAtActionScriptConditionData::MIN_RED, std::to_string(this->getColorRangeInterface()->getMinRed()));
     
-hashMap->put(ColorAtActionScriptConditionData::MAX_RED, std::to_string(getMaxRed));
+hashMap->put(ColorAtActionScriptConditionData::MAX_RED, std::to_string(this->getColorRangeInterface()->getMaxRed()));
     
-hashMap->put(ColorAtActionScriptConditionData::MIN_GREEN, std::to_string(getMinGreen));
+hashMap->put(ColorAtActionScriptConditionData::MIN_GREEN, std::to_string(this->getColorRangeInterface()->getMinGreen()));
     
-hashMap->put(ColorAtActionScriptConditionData::MAX_GREEN, std::to_string(getMaxGreen));
+hashMap->put(ColorAtActionScriptConditionData::MAX_GREEN, std::to_string(this->getColorRangeInterface()->getMaxGreen()));
     
-hashMap->put(ColorAtActionScriptConditionData::MIN_BLUE, std::to_string(getMinBlue));
+hashMap->put(ColorAtActionScriptConditionData::MIN_BLUE, std::to_string(this->getColorRangeInterface()->getMinBlue()));
     
-hashMap->put(ColorAtActionScriptConditionData::MAX_BLUE, std::to_string(getMaxBlue));
+hashMap->put(ColorAtActionScriptConditionData::MAX_BLUE, std::to_string(this->getColorRangeInterface()->getMaxBlue()));
     
 this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(hashMap->toString()), this, "toHashMap()");
     

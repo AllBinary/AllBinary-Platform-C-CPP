@@ -76,7 +76,7 @@ ByteUtil::ByteUtil(){
 
     auto ByteUtil::xor_(std::vector<int8_t> array, int8_t mask) -> std::vector<int8_t>{
 
-    std::vector<int8_t> bytes = std::vector<int8_t>(array.length);;
+    std::vector<int8_t> bytes = std::vector<int8_t>(array.size());;
     
 
     int32_t size = array.size();;
@@ -109,7 +109,7 @@ index++;
 
     auto ByteUtil::not_(std::vector<int8_t> array) -> std::vector<int8_t>{
 
-    std::vector<int8_t> bytes = std::vector<int8_t>(array.length);;
+    std::vector<int8_t> bytes = std::vector<int8_t>(array.size());;
     
 
     int32_t size = array.size();;

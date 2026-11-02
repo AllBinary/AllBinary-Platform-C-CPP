@@ -177,7 +177,7 @@ AbSqlBean::deleteWhere(basicItemData->KEYWORDS, keywords);
 
 
     auto StaticPagesEntity::update(HashMap<Object*, Object*>* updatedValues) -> void{
-AbSqlBean::updateWhere(basicItemData->KEYWORDS, updatedValues->get(basicItemData->KEYWORDS), updatedValues);
+AbSqlBean::updateWhere(basicItemData->KEYWORDS, JavaBoxes::unbox<std::string>(updatedValues->get(basicItemData->KEYWORDS)), updatedValues);
     
 }
 

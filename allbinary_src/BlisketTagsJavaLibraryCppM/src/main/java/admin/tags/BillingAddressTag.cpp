@@ -112,8 +112,8 @@ this->value= value;
                             nullptr);;
     
 
-    std::string result = method->invoke(anyType, 
-                            nullptr);;
+    std::string result = JavaBoxes::unbox<std::string>(method->invoke(anyType, 
+                            nullptr));;
     
 
 
@@ -174,8 +174,8 @@ this->value= value;
                             nullptr);;
     
 
-    std::string result = method->invoke(anyType, 
-                            nullptr);;
+    std::string result = JavaBoxes::unbox<std::string>(method->invoke(anyType, 
+                            nullptr));;
     
 
 

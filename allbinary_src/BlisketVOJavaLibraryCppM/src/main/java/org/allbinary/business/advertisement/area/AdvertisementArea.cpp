@@ -78,21 +78,21 @@
 
 
 AdvertisementArea::AdvertisementArea(HashMap<Object*, Object*>* hashMap){
-this->name= hashMap->get(AdvertisementAreaData::getInstance()->NAME);
+this->name= JavaBoxes::unbox<std::string>(hashMap->get(AdvertisementAreaData::getInstance()->NAME));
     
-this->storeName= hashMap->get(StoreFrontData::getInstance()->NAME);
+this->storeName= JavaBoxes::unbox<std::string>(hashMap->get(StoreFrontData::getInstance()->NAME));
     
-this->description= hashMap->get(AdvertisementAreaData::getInstance()->DESCRIPTION);
+this->description= JavaBoxes::unbox<std::string>(hashMap->get(AdvertisementAreaData::getInstance()->DESCRIPTION));
     
 
-    std::string constraintsDomString = hashMap->get(AdvertisementAreaData::getInstance()->CONSTRAINTS);;
+    std::string constraintsDomString = JavaBoxes::unbox<std::string>(hashMap->get(AdvertisementAreaData::getInstance()->CONSTRAINTS));;
     
 
     Document* document = DomDocumentHelper::create(constraintsDomString);;
     
 this->advertisementAreaConstraintsInterface= new AdvertisementAreaConstraints(document);
     
-this->campaign= hashMap->get(AdvertisementCampaignData::getInstance()->NAME);
+this->campaign= JavaBoxes::unbox<std::string>(hashMap->get(AdvertisementCampaignData::getInstance()->NAME));
     
 }
 

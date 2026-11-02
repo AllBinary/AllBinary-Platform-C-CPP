@@ -88,7 +88,7 @@ class ShippingMethodsFactory
             : public virtual Object
          {
 
-    private: static inline const std::string SHIPPINGMETHODSFILEPATHSTRING;
+    private: static inline std::string SHIPPINGMETHODSFILEPATHSTRING;
 
                     static int32_t initResult;
                 static int32_t init();

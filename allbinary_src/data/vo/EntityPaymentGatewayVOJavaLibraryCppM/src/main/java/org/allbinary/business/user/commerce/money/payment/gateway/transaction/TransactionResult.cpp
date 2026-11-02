@@ -226,7 +226,7 @@ verisignResponseKeys->add(paymentTransactionKeysFactory->EXCEPTION7->toString())
     int32_t i = 0;i < size; i++)
         {
 
-    std::string key = keyVector->get(i);;
+    std::string key = JavaBoxes::unbox<std::string>(keyVector->get(i));;
     
 
                         if(this->keyValuePairs->containsKey(key))
@@ -262,7 +262,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->PNREF->toString());
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->PNREF->toString()));
     
 }
 
@@ -272,7 +272,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->RESPMSG->toString());
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->RESPMSG->toString()));
     
 }
 
@@ -282,7 +282,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->RESULT->toString());
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->RESULT->toString()));
     
 }
 
@@ -292,7 +292,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->SCORE->toString());
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->SCORE->toString()));
     
 }
 
@@ -302,7 +302,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->STATUS->toString());
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->STATUS->toString()));
     
 }
 
@@ -312,7 +312,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->FRAUDCODE->toString());
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->FRAUDCODE->toString()));
     
 }
 
@@ -322,7 +322,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->FRAUDMSG->toString());
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->FRAUDMSG->toString()));
     
 }
 
@@ -332,7 +332,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->ORIGRESULT->toString());
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->ORIGRESULT->toString()));
     
 }
 
@@ -342,7 +342,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->AVSADDR->toString());
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->AVSADDR->toString()));
     
 }
 
@@ -352,7 +352,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->AVSZIP->toString());
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->AVSZIP->toString()));
     
 }
 
@@ -362,7 +362,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->ERRCODE->toString());
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->ERRCODE->toString()));
     
 }
 
@@ -372,7 +372,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION1->toString());
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION1->toString()));
     
 }
 
@@ -382,7 +382,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION2->toString());
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION2->toString()));
     
 }
 
@@ -392,7 +392,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION3->toString());
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION3->toString()));
     
 }
 
@@ -402,7 +402,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION4->toString());
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION4->toString()));
     
 }
 
@@ -412,7 +412,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION5->toString());
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION5->toString()));
     
 }
 
@@ -422,7 +422,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION6->toString());
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION6->toString()));
     
 }
 
@@ -432,7 +432,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION7->toString());
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION7->toString()));
     
 }
 
@@ -442,7 +442,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->REASON1->toString());
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->REASON1->toString()));
     
 }
 
@@ -452,7 +452,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->REASON2->toString());
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->REASON2->toString()));
     
 }
 
@@ -462,7 +462,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->REASON3->toString());
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->REASON3->toString()));
     
 }
 

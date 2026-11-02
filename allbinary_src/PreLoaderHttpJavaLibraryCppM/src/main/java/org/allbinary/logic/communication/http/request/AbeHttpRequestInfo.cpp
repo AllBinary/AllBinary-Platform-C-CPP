@@ -90,17 +90,17 @@ AbeHttpRequestInfo::AbeHttpRequestInfo(HashMap<Object*, Object*>* hashMap) : abe
 
     StringUtil* stringUtil = StringUtil::getInstance();;
     
-this->httpUserAgent= stringUtil->getNonNull(hashMap->get(this->abeHttpRequestInfoData->HTTP_USER_AGENT));
+this->httpUserAgent= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(hashMap->get(this->abeHttpRequestInfoData->HTTP_USER_AGENT)));
     
-this->remoteAddress= stringUtil->getNonNull(hashMap->get(this->abeHttpRequestInfoData->REMOTE_ADDRESS));
+this->remoteAddress= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(hashMap->get(this->abeHttpRequestInfoData->REMOTE_ADDRESS)));
     
-this->remoteHost= stringUtil->getNonNull(hashMap->get(this->abeHttpRequestInfoData->REMOTE_HOST));
+this->remoteHost= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(hashMap->get(this->abeHttpRequestInfoData->REMOTE_HOST)));
     
-this->remoteHostByAddr= stringUtil->getNonNull(hashMap->get(this->abeHttpRequestInfoData->REMOTE_HOST_BY_ADDRESS));
+this->remoteHostByAddr= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(hashMap->get(this->abeHttpRequestInfoData->REMOTE_HOST_BY_ADDRESS)));
     
-this->remotePort= stringUtil->getNonNull(hashMap->get(this->abeHttpRequestInfoData->REMOTE_PORT));
+this->remotePort= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(hashMap->get(this->abeHttpRequestInfoData->REMOTE_PORT)));
     
-this->requestedFilePath= stringUtil->getNonNull(hashMap->get(this->abeHttpRequestInfoData->REQUEST_FILE_PATH));
+this->requestedFilePath= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(hashMap->get(this->abeHttpRequestInfoData->REQUEST_FILE_PATH)));
     
 }
 
@@ -118,7 +118,7 @@ this->httpUserAgent= stringUtil->EMPTY_STRING;
         while(enumuration->hasMoreElements())
         {
 
-    std::string key = enumuration->nextElement();;
+    std::string key = JavaBoxes::unbox<std::string>(enumuration->nextElement());;
     
 
     std::string value = httpServletRequest->getHeader(key);;
@@ -137,7 +137,7 @@ this->remoteHost= httpServletRequest->getRemoteHost();
     
 this->requestedFilePath= httpServletRequest->getServletPath();
     
-this->remotePort= std::to_string(getRemotePort);
+this->remotePort= std::to_string(httpServletRequest->getRemotePort());
     
 }
 

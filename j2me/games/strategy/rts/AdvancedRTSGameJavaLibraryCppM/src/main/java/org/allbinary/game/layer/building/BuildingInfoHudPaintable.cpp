@@ -148,7 +148,7 @@ BuildingInfoHudPaintable::BuildingInfoHudPaintable() : logUtil(LogUtil::getInsta
 //inner=true member= isStatic=
 class ProductivityNumberStringHud: public NumberStringHud {
 
-: ProductivityNumberStringHud() : SelectionHudPaintable("Productivity:", 999, basicHudFactory->ABSOLUTE, basicHudFactory->HORIZONTAL, 0, basicColor){
+: ProductivityNumberStringHud() : NumberStringHud("Productivity:", 999, basicHudFactory->ABSOLUTE, basicHudFactory->HORIZONTAL, 0, basicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -166,7 +166,7 @@ this->updateMaxWidth= textX;
     
 this->updateMaxHeight= y +((firstIndex +1) *font->getHeight());
     
-SelectionHudPaintable::updateMeasurement(graphics);
+NumberStringHud::updateMeasurement(graphics);
     
 }
 
@@ -188,7 +188,7 @@ index++;
 //inner=true member= isStatic=
 class EfficiencyNumberStringHud: public NumberStringHud {
 
-: EfficiencyNumberStringHud() : SelectionHudPaintable("Efficiency:", 999, basicHudFactory->ABSOLUTE, basicHudFactory->HORIZONTAL, 0, basicColor){
+: EfficiencyNumberStringHud() : NumberStringHud("Efficiency:", 999, basicHudFactory->ABSOLUTE, basicHudFactory->HORIZONTAL, 0, basicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -199,7 +199,7 @@ class EfficiencyNumberStringHud: public NumberStringHud {
 
 
     public: void updateMeasurement(Graphics* graphics){
-SelectionHudPaintable::updateMeasurement(graphics);
+NumberStringHud::updateMeasurement(graphics);
     
 
     Font* font = graphics->getFont();;
@@ -231,7 +231,7 @@ index++;
 //inner=true member= isStatic=
 class HealthNumberStringHud: public NumberStringHud {
 
-: HealthNumberStringHud() : SelectionHudPaintable(HEALTH, 99999, basicHudFactory->ABSOLUTE, basicHudFactory->HORIZONTAL, 0, basicColor){
+: HealthNumberStringHud() : NumberStringHud(HEALTH, 99999, basicHudFactory->ABSOLUTE, basicHudFactory->HORIZONTAL, 0, basicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -249,7 +249,7 @@ this->updateMaxWidth= textX;
     
 this->updateMaxHeight= y +((thirdIndex +1) *font->getHeight());
     
-SelectionHudPaintable::updateMeasurement(graphics);
+NumberStringHud::updateMeasurement(graphics);
     
 }
 
@@ -261,7 +261,7 @@ SelectionHudPaintable::updateMeasurement(graphics);
                     //Otherwise - statement - EmptyStmt
 
 
-    int32_t totalLength = HEALTH.size() +1;;
+    int32_t totalLength = HEALTH::size() +1;;
     
 healthHud= new HealthNumberStringHud();
     
@@ -272,7 +272,7 @@ healthHud= new HealthNumberStringHud();
 //inner=true member= isStatic=
 class MaxHealthNumberStringHud: public NumberStringHud {
 
-: MaxHealthNumberStringHud() : SelectionHudPaintable("/ ", 99999, basicHudFactory->ABSOLUTE, basicHudFactory->HORIZONTAL, 0, basicColor){
+: MaxHealthNumberStringHud() : NumberStringHud("/ ", 99999, basicHudFactory->ABSOLUTE, basicHudFactory->HORIZONTAL, 0, basicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -283,7 +283,7 @@ class MaxHealthNumberStringHud: public NumberStringHud {
 
 
     public: void updateMeasurement(Graphics* graphics){
-SelectionHudPaintable::updateMeasurement(graphics);
+NumberStringHud::updateMeasurement(graphics);
     
 
     Font* font = graphics->getFont();;
@@ -330,7 +330,7 @@ this->maxHealthHud= maxHealthHud;
     Font* font = graphics->getFont();;
     
 
-    int32_t totalLength = HEALTH.size() +MathUtil::getInstance()->getTotalDigits(this->currentHealth);;
+    int32_t totalLength = this->HEALTH.size() +MathUtil::getInstance()->getTotalDigits(this->currentHealth);;
     
 this->maxHealthHud->setX(this->textX +MyFontProcessor::defaultStringWidth(font, totalLength));
     

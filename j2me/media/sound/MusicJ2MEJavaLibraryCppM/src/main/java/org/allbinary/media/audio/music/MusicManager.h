@@ -90,11 +90,14 @@ private: class MusicManagerPlayerListener
             : public virtual Object
         , public PlayerListener {
 
+    public: MusicManager* outer = nullptr;
+
 
             
     public: MusicManagerPlayerListener();
         
     public: void playerUpdate(Player* player, std::string event, Object* eventData);
+    public: void playerUpdate(Player* player, std::string event, const std::string& eventData) { return playerUpdate(player, event, JavaString::box(eventData)); }
 
 };
 

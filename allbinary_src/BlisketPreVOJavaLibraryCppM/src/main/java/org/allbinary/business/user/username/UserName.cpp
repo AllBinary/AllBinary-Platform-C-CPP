@@ -96,7 +96,7 @@ UserName::UserName() : logUtil(LogUtil::getInstance()){
 
 
 UserName::UserName(HashMap<Object*, Object*>* hashMap) : logUtil(LogUtil::getInstance()){
-this->userName= hashMap->get(UserData::USERNAME);
+this->userName= JavaBoxes::unbox<std::string>(hashMap->get(UserData::USERNAME));
     
 }
 

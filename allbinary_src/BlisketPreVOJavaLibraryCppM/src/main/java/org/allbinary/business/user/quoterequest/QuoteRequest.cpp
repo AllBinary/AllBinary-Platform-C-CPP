@@ -113,15 +113,15 @@ this->id= (new QuoteRequestIdGenerator())->getNext();
     
 this->setUserName(userName);
     
-this->setProjectInfo(request->getParameter(quoteRequestData->PROJECT_INFO));
+this->setProjectInfo(JavaBoxes::unbox<std::string>(request->getParameter(quoteRequestData->PROJECT_INFO)));
     
-this->setUserComments(request->getParameter(quoteRequestData->CUSTOMER_COMMENTS));
+this->setUserComments(JavaBoxes::unbox<std::string>(request->getParameter(quoteRequestData->CUSTOMER_COMMENTS)));
     
-this->setBudget(request->getParameter(quoteRequestData->BUDGET));
+this->setBudget(JavaBoxes::unbox<std::string>(request->getParameter(quoteRequestData->BUDGET)));
     
-this->setTimeFrame(request->getParameter(quoteRequestData->TIMEFRAME));
+this->setTimeFrame(JavaBoxes::unbox<std::string>(request->getParameter(quoteRequestData->TIMEFRAME)));
     
-this->setComments(request->getParameter(quoteRequestData->COMMENTS));
+this->setComments(JavaBoxes::unbox<std::string>(request->getParameter(quoteRequestData->COMMENTS)));
     
 
                         if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPER))
@@ -139,19 +139,19 @@ QuoteRequest::QuoteRequest(HashMap<Object*, Object*>* hashMap) : logUtil(LogUtil
 
     QuoteRequestData* quoteRequestData = QuoteRequestData::getInstance();;
     
-this->id= hashMap->get(quoteRequestData->ID);
+this->id= JavaBoxes::unbox<std::string>(hashMap->get(quoteRequestData->ID));
     
-this->setUserName(hashMap->get(UserData::USERNAME));
+this->setUserName(JavaBoxes::unbox<std::string>(hashMap->get(UserData::USERNAME)));
     
-this->setProjectInfo(hashMap->get(quoteRequestData->PROJECT_INFO));
+this->setProjectInfo(JavaBoxes::unbox<std::string>(hashMap->get(quoteRequestData->PROJECT_INFO)));
     
-this->setUserComments(hashMap->get(quoteRequestData->CUSTOMER_COMMENTS));
+this->setUserComments(JavaBoxes::unbox<std::string>(hashMap->get(quoteRequestData->CUSTOMER_COMMENTS)));
     
-this->setBudget(hashMap->get(quoteRequestData->BUDGET));
+this->setBudget(JavaBoxes::unbox<std::string>(hashMap->get(quoteRequestData->BUDGET)));
     
-this->setTimeFrame(hashMap->get(quoteRequestData->TIMEFRAME));
+this->setTimeFrame(JavaBoxes::unbox<std::string>(hashMap->get(quoteRequestData->TIMEFRAME)));
     
-this->setComments(hashMap->get(quoteRequestData->COMMENTS));
+this->setComments(JavaBoxes::unbox<std::string>(hashMap->get(quoteRequestData->COMMENTS)));
     
 
                         if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPER))
@@ -172,7 +172,7 @@ this->setComments(hashMap->get(quoteRequestData->COMMENTS));
     bool valid = Boolean::TRUE;;
     
 
-                        if(false || userName.size() < 4 || userName.size() > 250)
+                        if(false || this->userName.size() < 4 || this->userName.size() > 250)
                         
                                     {
                                     valid= Boolean::FALSE;
@@ -181,7 +181,7 @@ this->setComments(hashMap->get(quoteRequestData->COMMENTS));
                                     }
                                 
 
-                        if(false || projectInfo.size() < 0 || projectInfo.size() > AbSqlData::MAXBLOB)
+                        if(false || this->projectInfo.size() < 0 || this->projectInfo.size() > AbSqlData::MAXBLOB)
                         
                                     {
                                     valid= Boolean::FALSE;
@@ -190,7 +190,7 @@ this->setComments(hashMap->get(quoteRequestData->COMMENTS));
                                     }
                                 
 
-                        if(false || userComments.size() < 0 || userComments.size() > AbSqlData::MAXBLOB)
+                        if(false || this->userComments.size() < 0 || this->userComments.size() > AbSqlData::MAXBLOB)
                         
                                     {
                                     valid= Boolean::FALSE;
@@ -199,7 +199,7 @@ this->setComments(hashMap->get(quoteRequestData->COMMENTS));
                                     }
                                 
 
-                        if(false || budget.size() < 0 || budget.size() > AbSqlData::MAXBLOB)
+                        if(false || this->budget.size() < 0 || this->budget.size() > AbSqlData::MAXBLOB)
                         
                                     {
                                     valid= Boolean::FALSE;
@@ -208,7 +208,7 @@ this->setComments(hashMap->get(quoteRequestData->COMMENTS));
                                     }
                                 
 
-                        if(false || timeFrame.size() < 0 || timeFrame.size() > AbSqlData::MAXBLOB)
+                        if(false || this->timeFrame.size() < 0 || this->timeFrame.size() > AbSqlData::MAXBLOB)
                         
                                     {
                                     valid= Boolean::FALSE;
@@ -217,7 +217,7 @@ this->setComments(hashMap->get(quoteRequestData->COMMENTS));
                                     }
                                 
 
-                        if(false || comments.size() < 0 || comments.size() > AbSqlData::MAXBLOB)
+                        if(false || this->comments.size() < 0 || this->comments.size() > AbSqlData::MAXBLOB)
                         
                                     {
                                     valid= Boolean::FALSE;
@@ -262,7 +262,7 @@ this->setComments(hashMap->get(quoteRequestData->COMMENTS));
     StringMaker* stringBuffer = new StringMaker();;
     
 
-                        if(false || userName.size() < 4 || userName.size() > 250)
+                        if(false || this->userName.size() < 4 || this->userName.size() > 250)
                         
                                     {
                                     stringBuffer->append("Please enter a User Name with more than 4 characters.<br>");
@@ -271,7 +271,7 @@ this->setComments(hashMap->get(quoteRequestData->COMMENTS));
                                     }
                                 
 
-                        if(false || projectInfo.size() < 0 || projectInfo.size() > AbSqlData::MAXBLOB)
+                        if(false || this->projectInfo.size() < 0 || this->projectInfo.size() > AbSqlData::MAXBLOB)
                         
                                     {
                                     stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Please enter Project Info with less than ") +JavaString::valueOf(AbSqlData::MAXBLOB)) +JavaString::valueOf(" characters.<br>"));
@@ -280,7 +280,7 @@ this->setComments(hashMap->get(quoteRequestData->COMMENTS));
                                     }
                                 
 
-                        if(false || userComments.size() < 0 || userComments.size() > AbSqlData::MAXBLOB)
+                        if(false || this->userComments.size() < 0 || this->userComments.size() > AbSqlData::MAXBLOB)
                         
                                     {
                                     stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Please enter User Comments with less than ") +JavaString::valueOf(AbSqlData::MAXBLOB)) +JavaString::valueOf(" characters.<br>"));
@@ -289,7 +289,7 @@ this->setComments(hashMap->get(quoteRequestData->COMMENTS));
                                     }
                                 
 
-                        if(false || budget.size() < 0 || budget.size() > AbSqlData::MAXBLOB)
+                        if(false || this->budget.size() < 0 || this->budget.size() > AbSqlData::MAXBLOB)
                         
                                     {
                                     stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Please enter Budget with less than ") +JavaString::valueOf(AbSqlData::MAXBLOB)) +JavaString::valueOf(" characters.<br>"));
@@ -298,7 +298,7 @@ this->setComments(hashMap->get(quoteRequestData->COMMENTS));
                                     }
                                 
 
-                        if(false || timeFrame.size() < 0 || timeFrame.size() > AbSqlData::MAXBLOB)
+                        if(false || this->timeFrame.size() < 0 || this->timeFrame.size() > AbSqlData::MAXBLOB)
                         
                                     {
                                     stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Please enter time frame with less than ") +JavaString::valueOf(AbSqlData::MAXBLOB)) +JavaString::valueOf(" characters.<br>"));
@@ -307,7 +307,7 @@ this->setComments(hashMap->get(quoteRequestData->COMMENTS));
                                     }
                                 
 
-                        if(false || comments.size() < 0 || comments.size() > AbSqlData::MAXBLOB)
+                        if(false || this->comments.size() < 0 || this->comments.size() > AbSqlData::MAXBLOB)
                         
                                     {
                                     stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Please enter comments with less than ") +JavaString::valueOf(AbSqlData::MAXBLOB)) +JavaString::valueOf(" characters.<br>"));

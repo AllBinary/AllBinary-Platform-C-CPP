@@ -62,7 +62,7 @@
 #include "org/allbinary/graphics/OpenGLBitmap.h"
 
 
-OpenGLBitmapFactory::OpenGLBitmapFactory() : ARGB_8888(new Config(NullUtil::getInstance()->NULL_OBJECT)) {
+OpenGLBitmapFactory::OpenGLBitmapFactory() : ARGB_8888(javaInner(new Config(NullUtil::getInstance()->NULL_OBJECT), this)) {
         }
         auto OpenGLBitmapFactory::instance_owner() -> OpenGLBitmapFactory* { static std::unique_ptr<OpenGLBitmapFactory> value(new OpenGLBitmapFactory()); return value.get(); }
 OpenGLBitmapFactory* OpenGLBitmapFactory::instance = OpenGLBitmapFactory::instance_owner();

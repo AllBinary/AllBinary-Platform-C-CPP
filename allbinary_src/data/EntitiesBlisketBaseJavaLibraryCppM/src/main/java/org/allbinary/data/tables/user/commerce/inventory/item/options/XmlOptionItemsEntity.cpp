@@ -191,7 +191,7 @@ stringBuffer->append(XmlOptionItemData::XML_FILE_STATUS)->append(this->sqlTypeSt
 
 
     auto XmlOptionItemsEntity::update(HashMap<Object*, Object*>* updatedValues) -> void{
-AbSqlBean::updateWhere(basicItemData->ID, updatedValues->get(basicItemData->ID), updatedValues);
+AbSqlBean::updateWhere(basicItemData->ID, JavaBoxes::unbox<std::string>(updatedValues->get(basicItemData->ID)), updatedValues);
     
 }
 

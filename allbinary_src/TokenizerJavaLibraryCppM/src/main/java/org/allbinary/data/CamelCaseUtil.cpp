@@ -138,14 +138,14 @@ tokenizer->getTokensFromString(string, list);
                         for (
     int32_t i = 0;i < size; i++)
         {
-word= list->get(i);
+word= JavaBoxes::unbox<std::string>(list->get(i));
     
 word= stringValidationUtil->isEmpty(word)
                         ?       
                                 word
                                 :
 
-                            (new StringMaker())->appendchar(Character::toUpperCase(word[0]))->append(word.substring(1).toLowerCase())->toString();
+                            (new StringMaker())->appendchar(Character::toUpperCase(word[0]))->append(JavaString::toLowerCase(word.substring(1)))->toString();
 
     ;
     

@@ -182,7 +182,7 @@ recordStore->getRecord(recordId, data, 0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return anyType->equals(object2);;
+                        return JavaObjects::equals(anyType, object2);;
     
 }
 

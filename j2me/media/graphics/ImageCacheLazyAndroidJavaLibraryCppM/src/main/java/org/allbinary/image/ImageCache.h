@@ -102,6 +102,7 @@ public: ImageCache();
                 //@Throws(Exception.constructor)
             
     public: Image* get(Object* key);
+    public: Image* get(const std::string& key) { return get(JavaString::box(key)); }
 
     public: int32_t getIndex(Object* key);
     public: int32_t getIndex(const std::string& key) { return getIndex(JavaString::box(key)); }

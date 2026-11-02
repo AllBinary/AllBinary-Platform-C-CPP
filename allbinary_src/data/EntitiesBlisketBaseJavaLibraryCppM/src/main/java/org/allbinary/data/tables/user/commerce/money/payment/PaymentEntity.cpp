@@ -168,7 +168,7 @@ AbSqlBean::updateWhere(whereKeyAndValue, updateKeyAndValue);
                                 
 updateKeyAndValue->put(EntryData::getInstance()->DEFAULT, EntryData::getInstance()->DEFAULT);
     
-whereKeyAndValue->put(PaymentData::ID, std::to_string(index));
+whereKeyAndValue->put(PaymentData::ID, JavaString::valueOf(index));
     
 AbSqlBean::updateWhere(whereKeyAndValue, updateKeyAndValue);
     
@@ -356,7 +356,7 @@ paymentHashMap= AbSqlBean::getRow(updateKeyAndValue);
     
 whereHashMap->put(UserData::USERNAME, userName);
     
-whereHashMap->put(PaymentData::ID, std::to_string(index));
+whereHashMap->put(PaymentData::ID, JavaBoxes::unbox<std::string>(JavaString::valueOf(index)));
     
 AbSqlBean::deleteWhere(whereHashMap);
     

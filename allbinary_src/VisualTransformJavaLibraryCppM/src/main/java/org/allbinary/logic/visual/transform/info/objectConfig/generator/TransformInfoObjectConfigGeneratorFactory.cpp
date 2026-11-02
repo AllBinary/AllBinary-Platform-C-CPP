@@ -94,7 +94,7 @@ TransformInfoObjectConfigGeneratorFactory::TransformInfoObjectConfigGeneratorFac
             
     auto TransformInfoObjectConfigGeneratorFactory::getInstance(TransformInfoInterface* transformInfoInterface) -> TransformInfoObjectConfigGenerator*{
 
-    std::string type = transformInfoInterface->getObjectConfigInterface()->getOutputTypeName();;
+    std::string type = JavaBoxes::unbox<std::string>(transformInfoInterface->getObjectConfigInterface()->getOutputTypeName());;
     
 
                         if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEW))

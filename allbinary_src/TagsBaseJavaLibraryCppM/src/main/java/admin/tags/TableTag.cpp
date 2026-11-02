@@ -229,8 +229,8 @@ this->total= total;
                             nullptr);;
     
 
-    std::string result = method->invoke(anyType, 
-                            nullptr);;
+    std::string result = JavaBoxes::unbox<std::string>(method->invoke(anyType, 
+                            nullptr));;
     
 
 
@@ -281,8 +281,8 @@ this->total= total;
                             nullptr);;
     
 
-    std::string result = method->invoke(anyType, 
-                            nullptr);;
+    std::string result = JavaBoxes::unbox<std::string>(method->invoke(anyType, 
+                            nullptr));;
     
 
 
@@ -333,8 +333,8 @@ this->total= total;
                             nullptr);;
     
 
-    std::string result = method->invoke(anyType, 
-                            nullptr);;
+    std::string result = JavaBoxes::unbox<std::string>(method->invoke(anyType, 
+                            nullptr));;
     
 
 
@@ -385,8 +385,8 @@ this->total= total;
                             nullptr);;
     
 
-    std::string result = method->invoke(anyType, 
-                            nullptr);;
+    std::string result = JavaBoxes::unbox<std::string>(method->invoke(anyType, 
+                            nullptr));;
     
 
 
@@ -434,8 +434,8 @@ this->total= total;
                             nullptr);;
     
 
-    std::string result = method->invoke(this->requestObject, 
-                            nullptr);;
+    std::string result = JavaBoxes::unbox<std::string>(method->invoke(this->requestObject, 
+                            nullptr));;
     
 
 
@@ -483,8 +483,8 @@ this->total= total;
                             nullptr);;
     
 
-    std::string result = method->invoke(this->requestObject, 
-                            nullptr);;
+    std::string result = JavaBoxes::unbox<std::string>(method->invoke(this->requestObject, 
+                            nullptr));;
     
 
 
@@ -532,8 +532,8 @@ this->total= total;
                             nullptr);;
     
 
-    std::string result = method->invoke(this->requestObject, 
-                            nullptr);;
+    std::string result = JavaBoxes::unbox<std::string>(method->invoke(this->requestObject, 
+                            nullptr));;
     
 
 

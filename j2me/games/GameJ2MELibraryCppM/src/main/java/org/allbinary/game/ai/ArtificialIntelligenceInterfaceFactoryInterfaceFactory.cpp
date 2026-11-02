@@ -95,10 +95,10 @@ this->list= new BasicArrayListD();
 
     auto ArtificialIntelligenceInterfaceFactoryInterfaceFactory::getInstanceFromCollection(ABHashtable<Object*, Object*>* hashtable) -> ArtificialIntelligenceInterfaceFactoryInterface*{
 
-    int32_t typeInteger = hashtable->get(BasicAI::ID);;
+    int32_t typeInteger = JavaBoxes::unbox<int32_t>(hashtable->get(BasicAI::ID));;
     
 
-    int32_t type = typeInteger.intValue();;
+    int32_t type = typeInteger;;
     
 
     ArtificialIntelligenceInterfaceFactoryInterface* artificialIntelligenceInterfaceFactoryInterface = dynamic_cast<ArtificialIntelligenceInterfaceFactoryInterface*>(this->list->objectArray[type -1]);;

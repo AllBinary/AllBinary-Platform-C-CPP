@@ -133,7 +133,7 @@ this->RIGHT_FRAME= smallIntegerSingletonFactory->getAt(angleFactory->RIGHT->getV
     int32_t closestDirection = SmallIntegerSingletonFactory::getInstance()->getAt(360);;
     
 
-                        if(this->UP_FRAME.intValue() -angle < closestDirection.intValue() -angle)
+                        if(this->UP_FRAME -angle < closestDirection -angle)
                         
                                     {
                                     closestDirection= this->UP_FRAME;
@@ -142,7 +142,7 @@ this->RIGHT_FRAME= smallIntegerSingletonFactory->getAt(angleFactory->RIGHT->getV
                                     }
                                 
 
-                        if(this->DOWN_FRAME.intValue() -angle < closestDirection.intValue() -angle)
+                        if(this->DOWN_FRAME -angle < closestDirection -angle)
                         
                                     {
                                     closestDirection= this->DOWN_FRAME;
@@ -151,7 +151,7 @@ this->RIGHT_FRAME= smallIntegerSingletonFactory->getAt(angleFactory->RIGHT->getV
                                     }
                                 
 
-                        if(this->LEFT_FRAME.intValue() -angle < closestDirection.intValue() -angle)
+                        if(this->LEFT_FRAME -angle < closestDirection -angle)
                         
                                     {
                                     closestDirection= this->LEFT_FRAME;
@@ -160,7 +160,7 @@ this->RIGHT_FRAME= smallIntegerSingletonFactory->getAt(angleFactory->RIGHT->getV
                                     }
                                 
 
-                        if(this->RIGHT_FRAME.intValue() -angle < closestDirection.intValue() -angle)
+                        if(this->RIGHT_FRAME -angle < closestDirection -angle)
                         
                                     {
                                     closestDirection= this->RIGHT_FRAME;
@@ -172,7 +172,7 @@ this->RIGHT_FRAME= smallIntegerSingletonFactory->getAt(angleFactory->RIGHT->getV
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return closestDirection.intValue();;
+                        return closestDirection;;
     
 }
 

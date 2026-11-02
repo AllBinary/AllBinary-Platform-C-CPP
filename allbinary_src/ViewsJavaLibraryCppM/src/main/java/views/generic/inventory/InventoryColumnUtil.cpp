@@ -115,7 +115,7 @@ this->logUtil->putF(JavaString::valueOf("Start Category: ") +JavaString::valueOf
     HashMap<Object*, Object*>* hashMap = dynamic_cast<HashMap*>(vectorOfHashMaps->get(index));;
     
 
-    std::string categoryName = hashMap->get(basicItemData->CATEGORY);;
+    std::string categoryName = JavaBoxes::unbox<std::string>(hashMap->get(basicItemData->CATEGORY));;
     
 
                         if(!StringValidationUtil::getInstance()->isEmpty(categoryName) && JavaString::startsWith(categoryName, category))

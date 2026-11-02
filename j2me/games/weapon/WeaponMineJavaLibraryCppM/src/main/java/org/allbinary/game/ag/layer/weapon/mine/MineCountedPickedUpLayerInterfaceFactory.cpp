@@ -141,7 +141,7 @@ MineCountedPickedUpLayerInterfaceFactory::MineCountedPickedUpLayerInterfaceFacto
     AllBinaryLayer* sourceLayerInterface = dynamic_cast<AllBinaryLayer*>(hashtable->get(this->smallIntegerSingletonFactory->getAt(0)));;
     
 
-    int32_t angle = hashtable->get(this->smallIntegerSingletonFactory->getAt(1));;
+    int32_t angle = JavaBoxes::unbox<int32_t>(hashtable->get(this->smallIntegerSingletonFactory->getAt(1)));;
     
 
     ScoreableInterface* scoreableInterface = dynamic_cast<ScoreableInterface*>(sourceLayerInterface as unknown);;
@@ -150,7 +150,7 @@ MineCountedPickedUpLayerInterfaceFactory::MineCountedPickedUpLayerInterfaceFacto
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->weaponLayerCircularStaticPool->getInstanceWeaponLayer(sourceLayerInterface, x, y, z, static_cast<int32_t>(angle.intValue()), 0, this->weaponProperties, scoreableInterface);;
+                        return this->weaponLayerCircularStaticPool->getInstanceWeaponLayer(sourceLayerInterface, x, y, z, static_cast<int32_t>(angle), 0, this->weaponProperties, scoreableInterface);;
     
 }
 

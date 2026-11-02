@@ -232,7 +232,7 @@ stringBuffer->append(this->sqlStrings->END);
 
 
     auto CategoryEntity::update(HashMap<Object*, Object*>* updatedValues) -> void{
-AbSqlBean::updateWhere(CategoryData::getInstance()->NAME, updatedValues->get(CategoryData::getInstance()->NAME), updatedValues);
+AbSqlBean::updateWhere(CategoryData::getInstance()->NAME, JavaBoxes::unbox<std::string>(updatedValues->get(CategoryData::getInstance()->NAME)), updatedValues);
     
 }
 

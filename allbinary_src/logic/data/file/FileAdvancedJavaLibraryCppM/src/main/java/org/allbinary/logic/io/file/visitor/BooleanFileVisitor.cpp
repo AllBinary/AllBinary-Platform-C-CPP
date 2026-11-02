@@ -106,7 +106,7 @@ PreLogUtil::put(JavaString::valueOf("Filter BasicArrayList: ") +JavaString::valu
                         for (
     int32_t index = 0;index < size; index++)
         {
-nextFileFilterString= list->get(index);
+nextFileFilterString= JavaBoxes::unbox<std::string>(list->get(index));
     
 
                         if(this->visit(file, nextFileFilterString).valueOf())

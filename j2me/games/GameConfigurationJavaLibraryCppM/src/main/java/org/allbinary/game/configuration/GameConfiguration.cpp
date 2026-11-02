@@ -108,7 +108,7 @@ GameConfigurationSingleton::getInstance()->getHashtable()->put(this->getName(), 
     
 this->value= value;
     
-GameFeatureEventHandler::getInstance()->fireEvent(new GameFeatureEvent(this, (new StringMaker())->append(this->name)->append(" value: from: ")->appendint(oldValue.intValue())->append(" to ")->appendint(this->value.intValue())->toString()));
+GameFeatureEventHandler::getInstance()->fireEvent(new GameFeatureEvent(this, (new StringMaker())->append(this->name)->append(" value: from: ")->appendint(oldValue)->append(" to ")->appendint(this->value)->toString()));
     
 
                                     }

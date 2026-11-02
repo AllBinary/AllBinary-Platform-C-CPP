@@ -143,7 +143,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
     AbPath* abPath = new AbPath(stringBuffer->toString(), StringUtil::getInstance()->EMPTY_STRING);;
     
 
-    std::string fileName = httpTransformInfoInterface->getPropertiesHashMap()->get(InputOutputTypeData::getInstance()->FILE);;
+    std::string fileName = JavaBoxes::unbox<std::string>(httpTransformInfoInterface->getPropertiesHashMap()->get(InputOutputTypeData::getInstance()->FILE));;
     
 
     StringValidationUtil* stringValidationUtil = StringValidationUtil::getInstance();;
@@ -155,7 +155,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
                                     
     TransformInfoHttpStoreInterface* transformInfoHttpStoreInterface = dynamic_cast<TransformInfoHttpStoreInterface*>(transformInfoInterface);;
     
-fileName= transformInfoInterface->getName().substring(transformInfoHttpStoreInterface->getStoreName()->length() +1);
+fileName= JavaString::substring(transformInfoInterface->getName(), transformInfoHttpStoreInterface->getStoreName()->length() +1);
     
 
     HashMap<Object*, Object*>* outputMappingHashMap = StdUtil::getInstance()->createHashMap();;
@@ -187,7 +187,7 @@ fileName= replace->all(fileName);
                                     }
                                 
 
-    std::string tempOutput = httpTransformInfoInterface->getPropertiesHashMap()->get(InputOutputTypeData::getInstance()->NAME);;
+    std::string tempOutput = JavaBoxes::unbox<std::string>(httpTransformInfoInterface->getPropertiesHashMap()->get(InputOutputTypeData::getInstance()->NAME));;
     
 
                         if(stringValidationUtil->isEmpty(tempOutput))

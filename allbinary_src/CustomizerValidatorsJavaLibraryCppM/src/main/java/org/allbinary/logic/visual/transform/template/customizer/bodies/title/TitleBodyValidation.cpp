@@ -202,7 +202,7 @@ this->getFormData(hashMap);
                 //@Throws(Exception.constructor)
             
     auto TitleBodyValidation::getFormData(HashMap<Object*, Object*>* hashMap) -> void{
-this->body= hashMap->get(BodyData::getInstance()->NAME);
+this->body= JavaBoxes::unbox<std::string>(hashMap->get(BodyData::getInstance()->NAME));
     
 this->titleValidation= new TitleNotRequiredValidation(hashMap);
     

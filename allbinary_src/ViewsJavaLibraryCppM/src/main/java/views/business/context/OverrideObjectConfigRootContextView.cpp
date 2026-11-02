@@ -148,7 +148,7 @@ stringBuffer->append(CommonSeps::getInstance()->SPACE);
     std::string nameStart = stringBuffer->toString();;
     
 
-                        if(this->getTransformInfoInterface()->getName().indexOf(GeneratorTransformInfoData::NAME) > 0)
+                        if(JavaString::indexOf(this->getTransformInfoInterface()->getName(), GeneratorTransformInfoData::NAME) > 0)
                         
                                     {
                                     rootTransformInfoInterface->setName(JavaString::valueOf(nameStart) +JavaString::valueOf(GeneratorTransformInfoData::NAME));
@@ -157,7 +157,7 @@ stringBuffer->append(CommonSeps::getInstance()->SPACE);
                                     }
                                 
                              else 
-                        if(this->getTransformInfoInterface()->getName().indexOf(RootTransformInfoData::NAME) > 0)
+                        if(JavaString::indexOf(this->getTransformInfoInterface()->getName(), RootTransformInfoData::NAME) > 0)
                         
                                     {
                                     rootTransformInfoInterface->setName(JavaString::valueOf(nameStart) +JavaString::valueOf(RootTransformInfoData::NAME));

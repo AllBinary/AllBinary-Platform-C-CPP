@@ -130,9 +130,14 @@ this->multipassWaypointPathRunnable->processEndRunnable();
 }
 
 
-MultipassWaypointPathRunnable::MultipassWaypointPathRunnable() : logUtil(LogUtil::getInstance()), basicArrayListUtil(BasicArrayListUtil::getInstance()), multipassState(new MultipassState()), list(this->basicArrayListUtil->getImmutableInstance()), pathFindingInfo(NullUtil::getInstance()->NULL_OBJECT), FIRST_RUNNABLE(new FirstRunnable(this)), SECOND_RUNNABLE(new SecondRunnable(this)), END_RUNNABLE(new EndRunnable(this)), ALREADY_ENDED_RUNNABLE(class extends ARunnable
-                                {
-                                
+MultipassWaypointPathRunnable::MultipassWaypointPathRunnable() : logUtil(LogUtil::getInstance()), basicArrayListUtil(BasicArrayListUtil::getInstance()), multipassState(new MultipassState()), list(this->basicArrayListUtil->getImmutableInstance()), pathFindingInfo(NullUtil::getInstance()->NULL_OBJECT), FIRST_RUNNABLE(javaInner(new FirstRunnable(this), this)), SECOND_RUNNABLE(javaInner(new SecondRunnable(this), this)), END_RUNNABLE(javaInner(new EndRunnable(this), this)), ALREADY_ENDED_RUNNABLE([&]() {
+    static thread_local MultipassWaypointPathRunnable* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public ARunnable {
+    public:
+    using ARunnable::ARunnable;
+    MultipassWaypointPathRunnable* outer = anonymousOuter0;
+
     public: void run(){
 
 
@@ -141,8 +146,9 @@ MultipassWaypointPathRunnable::MultipassWaypointPathRunnable() : logUtil(LogUtil
                     
 }
 
-                                }
-                            ), currentPassRunnable(this->FIRST_RUNNABLE){
+    };
+    return new Anonymous0();
+}()), currentPassRunnable(this->FIRST_RUNNABLE){
 }
 
 

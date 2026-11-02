@@ -271,7 +271,7 @@ stringBuffer->append(advertisementAreaData->NAME)->append(this->sqlTypeStrings->
 
 
     auto AdvertisementAreasEntity::update(HashMap<Object*, Object*>* updatedValues) -> void{
-AbSqlBean::updateWhere(AdvertisementAreaData::getInstance()->NAME, updatedValues->get(AdvertisementAreaData::getInstance()->NAME), updatedValues);
+AbSqlBean::updateWhere(AdvertisementAreaData::getInstance()->NAME, JavaBoxes::unbox<std::string>(updatedValues->get(AdvertisementAreaData::getInstance()->NAME)), updatedValues);
     
 }
 

@@ -38,7 +38,7 @@
 class CommonStrings;
 class GeographicMapCellType;
 #include <org/allbinary/media/graphics/geography/map/GeographicMapCellTypeFactory.h>
-#include <org/allbinary/util/ABHashtable.h>
+template<typename T1, typename T2> class ABHashtable;
 class BasicArrayList;
 class EnumerationUtil;
 

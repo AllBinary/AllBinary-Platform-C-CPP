@@ -60,6 +60,7 @@ class BundleContext
     public: virtual Bundle* installBundle(std::string location) = 0;
 
     public: virtual ServiceRegistration* registerService(std::string clazz, Object* service, Dictionary* properties) = 0;
+    public: ServiceRegistration* registerService(std::string clazz, const std::string& service, Dictionary* properties) { return registerService(clazz, JavaString::box(service), properties); }
 
     public: virtual Object* getService(ServiceReference* reference) = 0;
 

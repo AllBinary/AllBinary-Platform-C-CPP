@@ -69,9 +69,9 @@ class StoreFrontHelper: public TagHelper {
 
     private: StoreFrontInterface* storeFrontInterface;
 
-    private: const std::string currentLocation;
+    private: std::string currentLocation;
 
-    private: const std::string currentHomeLocation;
+    private: std::string currentHomeLocation;
 
 public: StoreFrontHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext);
 

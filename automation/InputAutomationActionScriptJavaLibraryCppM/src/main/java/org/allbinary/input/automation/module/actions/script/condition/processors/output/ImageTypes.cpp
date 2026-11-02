@@ -147,7 +147,7 @@ this->getVector()->add(InputImageType::getInstance(nextImageTypeString));
     int32_t index = 0;index < anyType.size(); index++)
         {
 
-    InputImageType* imageType = InputImageType::getInstance(anyType[index]);;
+    InputImageType* imageType = InputImageType::getInstance(JavaBoxes::unbox<std::string>(anyType[index]));;
     
 imageTypes->getVector()->add(imageType);
     

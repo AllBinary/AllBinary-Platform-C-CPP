@@ -238,7 +238,7 @@ MetasValidation::MetasValidation(Document* document) : logUtil(LogUtil::getInsta
     Node* node = document->createElement(HtmlMetasData::getInstance()->NAME);;
     
 
-    std::vector<MetaValidation*> metaArray = this->metaValidationVector->toArrayType(std::vector<MetaValidation*>(this->metaValidationVector->size())) as MetaValidation[];;
+    std::vector<MetaValidation*> metaArray = JavaBoxes::unbox<std::vector<MetaValidation*>>(this->metaValidationVector->toArrayType(std::vector<MetaValidation*>(this->metaValidationVector->size())));;
     
 
     int32_t size = metaArray.size();;

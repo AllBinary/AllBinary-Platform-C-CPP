@@ -87,6 +87,8 @@ public: class NullRotationAnimation2;
 
 //inner= member=true isStatic=
 public: class NullRotationAnimation2: public NullRotationAnimation {
+
+    public: NullRotationAnimationFactory* outer = nullptr;
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 

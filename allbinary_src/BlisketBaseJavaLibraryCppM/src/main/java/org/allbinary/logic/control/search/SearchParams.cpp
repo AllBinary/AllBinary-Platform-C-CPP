@@ -330,10 +330,10 @@ paramsNode->appendChild(this->getLengthNode(document));
     int32_t index = 0;index < size; index++)
         {
 
-    std::string key = searchValueArray[index];;
+    std::string key = JavaBoxes::unbox<std::string>(searchValueArray[index]);;
     
 
-    std::string searchValue = this->columnsAndSearchValues->get(key);;
+    std::string searchValue = JavaBoxes::unbox<std::string>(this->columnsAndSearchValues->get(key));;
     
 fieldsNode->appendChild(ModDomHelper::createNameValueNodes(document, SearchData::FIELD, key, ToDomHelper::convertNull(searchValue)));
     

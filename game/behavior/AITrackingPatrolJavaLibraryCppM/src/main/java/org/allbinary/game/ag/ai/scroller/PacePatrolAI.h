@@ -52,7 +52,7 @@ class LayerInterface;
 class ForcedLogUtil;
 class AllBinaryEventObject;
 class EventStrings;
-#include <org/allbinary/util/ABHashtable.h>
+template<typename T1, typename T2> class ABHashtable;
 class BasicArrayList;
 class BasicArrayListD;
 

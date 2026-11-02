@@ -174,11 +174,11 @@ this->hasRead= false;
     auto InitInfo::set(HashMap<Object*, Object*>* hashMap) -> void{
 
         try {
-            this->testing= hashMap->get(this->TESTING);
+            this->testing= JavaBoxes::unbox<std::string>(hashMap->get(this->TESTING));
     
-this->mainPath= new AbPath(hashMap->get(this->MAINPATH), StringUtil::getInstance()->EMPTY_STRING);
+this->mainPath= new AbPath(JavaBoxes::unbox<std::string>(hashMap->get(this->MAINPATH)), StringUtil::getInstance()->EMPTY_STRING);
     
-this->testHtmlPath= new AbPath(hashMap->get(this->TESTHTMLPATH), StringUtil::getInstance()->EMPTY_STRING);
+this->testHtmlPath= new AbPath(JavaBoxes::unbox<std::string>(hashMap->get(this->TESTHTMLPATH)), StringUtil::getInstance()->EMPTY_STRING);
     
 
                 //: 

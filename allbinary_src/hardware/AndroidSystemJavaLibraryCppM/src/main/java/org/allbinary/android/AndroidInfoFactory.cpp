@@ -28,8 +28,6 @@
         #include "org/allbinary/android/AndroidInfoFactory.h"
         
 
-            #include <hilog/log.h>
-        
             #include <cstdint>
             #include <memory>
             #include <string>

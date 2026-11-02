@@ -236,7 +236,7 @@ keysAndValues->put(AdvertisementCampaignData::getInstance()->NAME, name);
 
 
     auto AdvertisementCampaignInternalEntity::update(HashMap<Object*, Object*>* updatedValues) -> void{
-AbSqlBean::updateWhere(EntryData::getInstance()->getInstance()->ID, updatedValues->get(EntryData::getInstance()->getInstance()->ID), updatedValues);
+AbSqlBean::updateWhere(EntryData::getInstance()->getInstance()->ID, JavaBoxes::unbox<std::string>(updatedValues->get(EntryData::getInstance()->getInstance()->ID)), updatedValues);
     
 }
 

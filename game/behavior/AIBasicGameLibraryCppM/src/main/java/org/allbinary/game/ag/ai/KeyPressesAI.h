@@ -45,7 +45,7 @@ class AllBinaryLayer;
 class AllBinaryLayerManager;
 class HashtableUtil;
 #include <org/allbinary/game/ai/BasicAI.h>
-#include <org/allbinary/util/ABHashtable.h>
+template<typename T1, typename T2> class ABHashtable;
 
 
 

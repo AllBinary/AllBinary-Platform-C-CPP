@@ -162,7 +162,7 @@ DownloadFileServlet::DownloadFileServlet() : logUtil(LogUtil::getInstance()), co
                         if(beginIndex >= 0)
                         
                                     {
-                                    filePath= JavaString::substring(requestPath, beginIndex +DOWNLOAD.size());
+                                    filePath= JavaString::substring(requestPath, beginIndex +this->DOWNLOAD.size());
     
 
                                     }

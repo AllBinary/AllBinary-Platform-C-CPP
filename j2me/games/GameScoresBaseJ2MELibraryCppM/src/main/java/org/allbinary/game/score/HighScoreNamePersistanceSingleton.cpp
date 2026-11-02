@@ -166,9 +166,9 @@ this->name= StringUtil::getInstance()->EMPTY_STRING;
     int32_t index = 0;index < size; index++)
         {
 
-    int32_t integer = this->nameBasicArrayList->objectArray[index];;
+    int32_t integer = JavaBoxes::unbox<int32_t>(this->nameBasicArrayList->objectArray[index]);;
     
-this->delete_(abeClientInformation, gameInfo, integer.intValue());
+this->delete_(abeClientInformation, gameInfo, integer);
     
 }
 

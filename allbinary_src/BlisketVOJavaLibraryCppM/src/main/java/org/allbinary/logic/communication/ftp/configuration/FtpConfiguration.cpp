@@ -66,13 +66,13 @@ FtpConfiguration::FtpConfiguration(){
 
 
 FtpConfiguration::FtpConfiguration(HashMap<Object*, Object*>* hashMap){
-this->ftpServer= hashMap->get(FtpConfigurationData::SERVER);
+this->ftpServer= JavaBoxes::unbox<std::string>(hashMap->get(FtpConfigurationData::SERVER));
     
-this->ftpPath= hashMap->get(FtpConfigurationData::PATH);
+this->ftpPath= JavaBoxes::unbox<std::string>(hashMap->get(FtpConfigurationData::PATH));
     
-this->ftpUserName= hashMap->get(FtpConfigurationData::USERNAME);
+this->ftpUserName= JavaBoxes::unbox<std::string>(hashMap->get(FtpConfigurationData::USERNAME));
     
-this->ftpPassword= hashMap->get(FtpConfigurationData::PASSWORD);
+this->ftpPassword= JavaBoxes::unbox<std::string>(hashMap->get(FtpConfigurationData::PASSWORD));
     
 }
 

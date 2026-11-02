@@ -151,7 +151,7 @@ UploadFileServlet::UploadFileServlet() : logUtil(LogUtil::getInstance()), common
 this->requestHashMap= (new MultipartRequestParams(request))->toHashMap();
     
 
-    std::string filePath = this->requestHashMap->get(FileUploadData::getInstance()->UPLOAD_TO_FILE_PATH);;
+    std::string filePath = JavaBoxes::unbox<std::string>(this->requestHashMap->get(FileUploadData::getInstance()->UPLOAD_TO_FILE_PATH));;
     
 
                         if(false)

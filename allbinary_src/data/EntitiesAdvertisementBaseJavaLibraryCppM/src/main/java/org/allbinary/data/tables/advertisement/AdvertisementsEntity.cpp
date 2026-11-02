@@ -232,7 +232,7 @@ stringBuffer->append(DynamicObjectData::NAME)->append(this->sqlTypeStrings->MAX_
 
 
     auto AdvertisementsEntity::update(HashMap<Object*, Object*>* updatedValues) -> void{
-AbSqlBean::updateWhere(EntryData::getInstance()->ID, updatedValues->get(EntryData::getInstance()->ID), updatedValues);
+AbSqlBean::updateWhere(EntryData::getInstance()->ID, JavaBoxes::unbox<std::string>(updatedValues->get(EntryData::getInstance()->ID)), updatedValues);
     
 }
 

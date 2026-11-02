@@ -100,7 +100,7 @@ NewView::NewView(TransformInfoInterface* transformInfoInterface) : WorkFlowView(
 
     TransformInfoHttpInterface* httpTransformInfoInterface = dynamic_cast<TransformInfoHttpInterface*>(this->getTransformInfoInterface());;
     
-this->workFlowInterface= NewWorkFlowFactory::getInstance()->getInstance(this->abeClientInformation, httpTransformInfoInterface->getPropertiesHashMap()->get(DynamicObjectData::NAME));
+this->workFlowInterface= NewWorkFlowFactory::getInstance()->getInstance(this->abeClientInformation, JavaBoxes::unbox<std::string>(httpTransformInfoInterface->getPropertiesHashMap()->get(DynamicObjectData::NAME)));
     
 }
 

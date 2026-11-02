@@ -289,7 +289,7 @@ this->logUtil->putF(this->commonStrings->START, this, "getJarModuleFileBasicArra
                         if(JavaString::startsWith(baseJarPath, InputAutomationNewBundleRunnable::FILE))
                         
                                     {
-                                    baseJarPath= JavaString::substring(baseJarPath, FILE.size());
+                                    baseJarPath= JavaString::substring(baseJarPath, InputAutomationNewBundleRunnable::FILE.size());
     
 
                                     }
@@ -383,7 +383,7 @@ this->logUtil->putF(JavaString::valueOf(CommonLabels::getInstance()->START) +Jav
                         for (
     int32_t index = 0;index < size; index++)
         {
-nextSymbolicName= list->get(index);
+nextSymbolicName= JavaBoxes::unbox<std::string>(list->get(index));
     
 
                         if(nextSymbolicName.compare(symbolicName) == 0)
@@ -439,7 +439,7 @@ this->logUtil->putF(JavaString::valueOf("All: ") +JavaString::valueOf(hashMap), 
     int32_t index = 0;index < size; index++)
         {
 
-    std::string symbolicName = symbolicNameArray[index];;
+    std::string symbolicName = JavaBoxes::unbox<std::string>(symbolicNameArray[index]);;
     
 
                         if(!this->isInstalled(symbolicName))

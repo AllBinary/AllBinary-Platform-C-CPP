@@ -355,9 +355,9 @@ PaintableForm::init(rectangle, formType);
                         if(formType == formTypeFactory->HORIZONTAL_FORM)
                         
                                     {
-                                    this->scrollSelectionFormFormTypeItemIndexPaintable= new ScrollSelectionFormHorizontalPaintable(this);
+                                    this->scrollSelectionFormFormTypeItemIndexPaintable= javaInner(new ScrollSelectionFormHorizontalPaintable(this), this);
     
-this->formTypeItemIndexDx= new ScrollSelectionFormHorizontalDx(this);
+this->formTypeItemIndexDx= javaInner(new ScrollSelectionFormHorizontalDx(this), this);
     
 
                                     }
@@ -366,9 +366,9 @@ this->formTypeItemIndexDx= new ScrollSelectionFormHorizontalDx(this);
                         if(formType == formTypeFactory->VERTICAL_CENTER_FORM)
                         
                                     {
-                                    this->scrollSelectionFormFormTypeItemIndexPaintable= new ScrollSelectionFormVerticalPaintable(this);
+                                    this->scrollSelectionFormFormTypeItemIndexPaintable= javaInner(new ScrollSelectionFormVerticalPaintable(this), this);
     
-this->formTypeItemIndexDx= new ScrollSelectionFormVericalDx(this);
+this->formTypeItemIndexDx= javaInner(new ScrollSelectionFormVericalDx(this), this);
     
 
                                     }
@@ -377,9 +377,9 @@ this->formTypeItemIndexDx= new ScrollSelectionFormVericalDx(this);
                         if(formType == formTypeFactory->TEMP_HORIZONTAL_FORM)
                         
                                     {
-                                    this->scrollSelectionFormFormTypeItemIndexPaintable= new ScrollSelectionFormTempHorizontalPaintable(this);
+                                    this->scrollSelectionFormFormTypeItemIndexPaintable= javaInner(new ScrollSelectionFormTempHorizontalPaintable(this), this);
     
-this->formTypeItemIndexDx= new ScrollSelectionFormTempHorizontalDx(this);
+this->formTypeItemIndexDx= javaInner(new ScrollSelectionFormTempHorizontalDx(this), this);
     
 
                                     }

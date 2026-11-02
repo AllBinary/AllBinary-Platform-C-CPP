@@ -162,7 +162,7 @@ this->setDocument(this->generate(this->toXmlDoc()));
     TransformInfoHttpInterface* httpTransformInfoInterface = dynamic_cast<TransformInfoHttpInterface*>(this->getTransformInfoInterface());;
     
 
-    std::string templateNameOverride = StringUtil::getInstance()->getNonNull(httpTransformInfoInterface->getPropertiesHashMap()->get(TransformInfoData::getInstance()->PARTIAL));;
+    std::string templateNameOverride = StringUtil::getInstance()->getNonNull(JavaBoxes::unbox<std::string>(httpTransformInfoInterface->getPropertiesHashMap()->get(TransformInfoData::getInstance()->PARTIAL)));;
     
 
     StringMaker* stringBuffer = new StringMaker();;

@@ -190,7 +190,7 @@ this->init(server, dynamic_cast<Authenticator*>(nullptr),
                                                 }, 
                                                 {
                                                     new InternetAddress(to)
-                                                }, nullptr as InternetAddress[], nullptr as InternetAddress[], subject, mimeBodyParts);
+                                                }, JavaBoxes::unbox<std::vector<InternetAddress*>>(nullptr), JavaBoxes::unbox<std::vector<InternetAddress*>>(nullptr), subject, mimeBodyParts);
     
 
                 //: 
@@ -383,7 +383,7 @@ this->msg->setContent(mimeMultipart);
             
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap->put(EmailData::SERVER, this->properties->get(Email::SMTP_HOST));
+hashMap->put(EmailData::SERVER, JavaBoxes::unbox<std::string>(this->properties->get(Email::SMTP_HOST)));
     
 
     std::vector<Address*> addresses = this->msg->getFrom();;
@@ -485,7 +485,7 @@ hashMap->put(EmailData::SUBJECT, this->msg->getSubject());
     int32_t index = 0;index < mimeMultipart->getCount(); index++)
         {
 
-    std::string content = mimeMultipart->getBodyPart(index)->getContent();;
+    std::string content = JavaBoxes::unbox<std::string>(mimeMultipart->getBodyPart(index)->getContent());;
     
 hashMap->put(EmailData::CONTENT, content);
     

@@ -582,7 +582,7 @@ this->toDate= (int64_t(calendar->getTimeInMillis())).toString();
                                     }
                                 
 
-                        if(StringValidationUtil::getInstance()->isEmpty(this->toDate) || toDate.size() > this->MAXLEN)
+                        if(StringValidationUtil::getInstance()->isEmpty(this->toDate) || this->toDate.size() > this->MAXLEN)
                         
                                     {
                                     isValid= Boolean::FALSE;
@@ -591,7 +591,7 @@ this->toDate= (int64_t(calendar->getTimeInMillis())).toString();
                                     }
                                 
 
-                        if(StringValidationUtil::getInstance()->isEmpty(this->fromDate) || fromDate.size() > this->MAXLEN)
+                        if(StringValidationUtil::getInstance()->isEmpty(this->fromDate) || this->fromDate.size() > this->MAXLEN)
                         
                                     {
                                     isValid= Boolean::FALSE;
@@ -692,7 +692,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALI
                                     }
                                 
 
-                        if(StringValidationUtil::getInstance()->isEmpty(this->toDate) || toDate.size() > this->MAXLEN)
+                        if(StringValidationUtil::getInstance()->isEmpty(this->toDate) || this->toDate.size() > this->MAXLEN)
                         
                                     {
                                     result->append("Invalid To Date");
@@ -701,7 +701,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALI
                                     }
                                 
 
-                        if(StringValidationUtil::getInstance()->isEmpty(this->fromDate) || fromDate.size() > this->MAXLEN)
+                        if(StringValidationUtil::getInstance()->isEmpty(this->fromDate) || this->fromDate.size() > this->MAXLEN)
                         
                                     {
                                     result->append("Invalid From Date");

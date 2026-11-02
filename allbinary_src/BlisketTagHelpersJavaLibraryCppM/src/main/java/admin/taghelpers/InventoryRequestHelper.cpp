@@ -174,7 +174,7 @@ InventoryEntityFactory::getInstance()->getInventoryEntityInstance()->insert(valu
     TableMappingInterface* dataMappingInterface = dynamic_cast<TableMappingInterface*>(this->getItemInterface());;
     
 
-    std::string id = dataMappingInterface->getKey();;
+    std::string id = JavaBoxes::unbox<std::string>(dataMappingInterface->getKey());;
     
 InventoryEntityFactory::getInstance()->getInventoryEntityInstance()->deleteWhere(basicItemData->ID, id);
     

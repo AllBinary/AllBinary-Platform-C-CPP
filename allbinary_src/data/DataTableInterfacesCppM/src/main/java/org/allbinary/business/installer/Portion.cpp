@@ -62,9 +62,9 @@
         
 
 Portion::Portion(HashMap<Object*, Object*>* hashMap){
-this->current= hashMap->get("current");
+this->current= JavaBoxes::unbox<int32_t>(hashMap->get("current"));
     
-this->total= hashMap->get("total");
+this->total= JavaBoxes::unbox<int32_t>(hashMap->get("total"));
     
 }
 

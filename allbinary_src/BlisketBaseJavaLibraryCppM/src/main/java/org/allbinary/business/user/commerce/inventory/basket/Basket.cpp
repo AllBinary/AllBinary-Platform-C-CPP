@@ -109,9 +109,9 @@ Basket::Basket() : items(StdUtil::getInstance()->createHashMap()){
     int32_t numInt = Integer.valueOf(num);;
     
 
-    int32_t newNumInt = int32_t(oldNumInt.intValue() +numInt.intValue());;
+    int32_t newNumInt = int32_t(oldNumInt +numInt);;
     
-this->items->put(id, newNumInt.toString());
+this->items->put(id, JavaString::valueOf(newNumInt));
     
 
                                     }
@@ -189,7 +189,7 @@ weightFloat= float((new InventoryEntity())->getWeight(product));
     
 weightFloat= float(getNumberOf(product) *weightFloat);
     
-totalWeight->add(weightFloat.toString());
+totalWeight->add(JavaString::valueOf(weightFloat));
     
 }
 
@@ -240,7 +240,7 @@ totalWeight->add(weightFloat.toString());
 
     auto Basket::getNumberOf(std::string product) -> int32_t{
 
-    std::string numStr = this->items->get(product);;
+    std::string numStr = JavaBoxes::unbox<std::string>(this->items->get(product));;
     
 
 

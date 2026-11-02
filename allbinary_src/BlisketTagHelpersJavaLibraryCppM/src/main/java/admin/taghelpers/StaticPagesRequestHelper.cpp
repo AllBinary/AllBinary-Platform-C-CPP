@@ -150,7 +150,7 @@ StaticPagesRequestHelper::StaticPagesRequestHelper(HashMap<Object*, Object*>* pr
                     
 this->request= dynamic_cast<HttpServletRequest*>(pageContext->getRequest());
     
-this->xslFile= propertiesHashMap->get(TransformInfoData::getInstance()->TEMPLATEFILENAME);
+this->xslFile= JavaBoxes::unbox<std::string>(propertiesHashMap->get(TransformInfoData::getInstance()->TEMPLATEFILENAME));
     
 this->getFormData();
     

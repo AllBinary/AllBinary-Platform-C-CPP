@@ -397,9 +397,9 @@ keyValuePersistance->save(abeClientInformation, hashtable);
                         for (
     int32_t index = 0;index < size2; index++)
         {
-integer= list->objectArray[index];
+integer= JavaBoxes::unbox<int32_t>(list->objectArray[index]);
     
-keyValuePersistance->delete_(abeClientInformation, integer.intValue());
+keyValuePersistance->delete_(abeClientInformation, integer);
     
 }
 

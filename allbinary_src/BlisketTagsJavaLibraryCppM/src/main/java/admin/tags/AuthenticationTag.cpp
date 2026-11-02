@@ -172,14 +172,14 @@ this->roles= values;
                             nullptr);;
     
 
-    bool result = method->invoke(anyType, 
-                            nullptr);;
+    bool result = JavaBoxes::unbox<bool>(method->invoke(anyType, 
+                            nullptr));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return result.valueOf();;
+                        return result;;
     
 
                 //: 
@@ -231,14 +231,14 @@ this->roles= values;
                             nullptr);;
     
 
-    bool result = method->invoke(anyType, 
-                            nullptr);;
+    bool result = JavaBoxes::unbox<bool>(method->invoke(anyType, 
+                            nullptr));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return result.valueOf();;
+                        return result;;
     
 
                 //: 
@@ -290,14 +290,14 @@ this->roles= values;
                             nullptr);;
     
 
-    int32_t resultInteger = method->invoke(anyType, 
-                            nullptr);;
+    int32_t resultInteger = JavaBoxes::unbox<int32_t>(method->invoke(anyType, 
+                            nullptr));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return resultInteger.intValue();;
+                        return resultInteger;;
     
 
                 //: 
@@ -349,14 +349,14 @@ this->roles= values;
                             nullptr);;
     
 
-    bool resultBoolean = method->invoke(anyType, 
-                            nullptr);;
+    bool resultBoolean = JavaBoxes::unbox<bool>(method->invoke(anyType, 
+                            nullptr));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return resultBoolean.valueOf();;
+                        return resultBoolean;;
     
 
                 //: 
@@ -419,13 +419,13 @@ this->roles= values;
                                                         };;
     
 
-    bool resultBoolean = method->invoke(anyType, methodArgs);;
+    bool resultBoolean = JavaBoxes::unbox<bool>(method->invoke(anyType, methodArgs));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return resultBoolean.valueOf();;
+                        return resultBoolean;;
     
 
                 //: 
@@ -477,8 +477,8 @@ this->roles= values;
                             nullptr);;
     
 
-    std::string result = method->invoke(anyType, 
-                            nullptr);;
+    std::string result = JavaBoxes::unbox<std::string>(method->invoke(anyType, 
+                            nullptr));;
     
 
 
@@ -539,8 +539,8 @@ this->roles= values;
                             nullptr);;
     
 
-    std::string result = method->invoke(anyType, 
-                            nullptr);;
+    std::string result = JavaBoxes::unbox<std::string>(method->invoke(anyType, 
+                            nullptr));;
     
 
 
@@ -612,13 +612,13 @@ this->roles= values;
                                                         };;
     
 
-    bool resultBoolean = method->invoke(anyType, methodArgs);;
+    bool resultBoolean = JavaBoxes::unbox<bool>(method->invoke(anyType, methodArgs));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return resultBoolean.valueOf();;
+                        return resultBoolean;;
     
 
                 //: 
@@ -681,13 +681,13 @@ this->roles= values;
                                                         };;
     
 
-    bool resultBoolean = method->invoke(anyType, methodArgs);;
+    bool resultBoolean = JavaBoxes::unbox<bool>(method->invoke(anyType, methodArgs));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return resultBoolean.valueOf();;
+                        return resultBoolean;;
     
 
                 //: 
@@ -739,14 +739,14 @@ this->roles= values;
                             nullptr);;
     
 
-    bool resultBoolean = method->invoke(anyType, 
-                            nullptr);;
+    bool resultBoolean = JavaBoxes::unbox<bool>(method->invoke(anyType, 
+                            nullptr));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return resultBoolean.valueOf();;
+                        return resultBoolean;;
     
 
                 //: 

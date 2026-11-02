@@ -124,9 +124,9 @@ TransformTag::TransformTag(TagHelperFactoryInterface* tagHelperFactoryInterface)
 
         try {
             
-    std::string result = this->getHelper()->getClass()->getMethod("view", 
+    std::string result = JavaBoxes::unbox<std::string>(this->getHelper()->getClass()->getMethod("view", 
                             nullptr)->invoke(this->getHelper(), 
-                            nullptr);;
+                            nullptr));;
     
 
 

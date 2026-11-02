@@ -98,6 +98,7 @@ class TimeStampUtil;
 private: LogFormatUtil();
 
     /*actual*/ public: std::string get(std::string className, std::string functionName, std::string specialMessage, Object* exception);
+    public: std::string get(std::string className, std::string functionName, std::string specialMessage, const std::string& exception) { return get(className, functionName, specialMessage, JavaString::box(exception)); }
 
     /*actual*/ public: std::string getS(std::string className, std::string functionName, std::string specialMessage);
 

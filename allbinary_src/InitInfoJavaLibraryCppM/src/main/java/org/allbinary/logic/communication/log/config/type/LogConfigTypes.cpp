@@ -172,7 +172,7 @@ PreLogUtil::putSE("Unable to initialize LogConfigTypes", "LogConfigTypes", "init
 logConfigType= dynamic_cast<LogConfigType*>(availableLogConfigTypes->get(index));
     
 
-                        if(logConfigType->getName().compareTo(name) == 0)
+                        if(logConfigType->getName().compare(name) == 0)
                         
                                     {
                                     

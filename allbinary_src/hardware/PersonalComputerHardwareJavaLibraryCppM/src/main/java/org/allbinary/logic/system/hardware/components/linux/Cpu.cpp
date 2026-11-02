@@ -293,7 +293,7 @@ nextLine= lineNumberReader->readLine();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->cpuHashMap->get(CpuInfo::PROCESSOR);
+                        return JavaBoxes::unbox<std::string>(this->cpuHashMap->get(CpuInfo::PROCESSOR));
     
 }
 
@@ -303,7 +303,7 @@ nextLine= lineNumberReader->readLine();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->cpuHashMap->get(CpuInfo::VENDORID);
+                        return JavaBoxes::unbox<std::string>(this->cpuHashMap->get(CpuInfo::VENDORID));
     
 }
 
@@ -313,7 +313,7 @@ nextLine= lineNumberReader->readLine();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->cpuHashMap->get(CpuInfo::CPUFAMILY);
+                        return JavaBoxes::unbox<std::string>(this->cpuHashMap->get(CpuInfo::CPUFAMILY));
     
 }
 
@@ -323,7 +323,7 @@ nextLine= lineNumberReader->readLine();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->cpuHashMap->get(CpuInfo::MODEL);
+                        return JavaBoxes::unbox<std::string>(this->cpuHashMap->get(CpuInfo::MODEL));
     
 }
 
@@ -333,7 +333,7 @@ nextLine= lineNumberReader->readLine();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->cpuHashMap->get(CpuInfo::MODELNAME);
+                        return JavaBoxes::unbox<std::string>(this->cpuHashMap->get(CpuInfo::MODELNAME));
     
 }
 
@@ -343,7 +343,7 @@ nextLine= lineNumberReader->readLine();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->cpuHashMap->get(CpuInfo::STEPPING);
+                        return JavaBoxes::unbox<std::string>(this->cpuHashMap->get(CpuInfo::STEPPING));
     
 }
 
@@ -353,7 +353,7 @@ nextLine= lineNumberReader->readLine();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->cpuHashMap->get(CpuInfo::CPUMHZ);
+                        return JavaBoxes::unbox<std::string>(this->cpuHashMap->get(CpuInfo::CPUMHZ));
     
 }
 
@@ -363,7 +363,7 @@ nextLine= lineNumberReader->readLine();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->cpuHashMap->get(CpuInfo::CACHESIZE);
+                        return JavaBoxes::unbox<std::string>(this->cpuHashMap->get(CpuInfo::CACHESIZE));
     
 }
 

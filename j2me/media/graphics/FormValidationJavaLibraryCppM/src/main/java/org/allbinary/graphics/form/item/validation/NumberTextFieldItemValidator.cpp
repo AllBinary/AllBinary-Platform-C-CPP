@@ -203,7 +203,7 @@ result= BooleanFactory::getInstance()->FALSE;
     int32_t number = smallIntegerSingletonFactory->createInstance(Integer.parseInt(this->textFieldItem->getString()));;
     
 
-                        if(number.intValue() > this->min)
+                        if(number > this->min)
                         
                                     {
                                     stringMaker->delete_(0, stringMaker->length());
@@ -214,7 +214,7 @@ list->add(stringMaker->append(name)->append(" is to small")->toString());
                                     }
                                 
                              else 
-                        if(number.intValue() > this->max)
+                        if(number > this->max)
                         
                                     {
                                     stringMaker->delete_(0, stringMaker->length());

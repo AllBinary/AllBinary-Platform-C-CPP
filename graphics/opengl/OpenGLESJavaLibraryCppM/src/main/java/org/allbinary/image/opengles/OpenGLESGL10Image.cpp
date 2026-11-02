@@ -93,12 +93,17 @@
 #include "org/allbinary/image/opengles/OpenGLESImageProcessor.h"
 
 
-OpenGLESGL10Image::OpenGLESGL10Image(Image* image, PlatformBitmapBaseFactory* bitmapFactory, PlatformTextureBaseFactory* textureFactory) : OpenGLESImage(image, bitmapFactory, textureFactory), textureVertexFloatBuffer(ByteBuffer::allocateDirect(4 *4 *2)->order(ByteOrder::nativeOrder())->asFloatBuffer()), realOpenGLESImageDraw(class extends OpenGLESImageDraw
-                                {
-                                
+OpenGLESGL10Image::OpenGLESGL10Image(Image* image, PlatformBitmapBaseFactory* bitmapFactory, PlatformTextureBaseFactory* textureFactory) : OpenGLESImage(image, bitmapFactory, textureFactory), textureVertexFloatBuffer(ByteBuffer::allocateDirect(4 *4 *2)->order(ByteOrder::nativeOrder())->asFloatBuffer()), realOpenGLESImageDraw([&]() {
+    static thread_local OpenGLESGL10Image* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public OpenGLESImageDraw {
+    public:
+    using OpenGLESImageDraw::OpenGLESImageDraw;
+    OpenGLESGL10Image* outer = anonymousOuter0;
+
     GLUtil* glUtil = GLUtil::getInstance();
     DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();
-    FloatBuffer* textureVertexFloatBuffer = this->textureVertexFloatBuffer;
+    FloatBuffer* textureVertexFloatBuffer = outer->textureVertexFloatBuffer;
     std::vector<float> regionTextureRectangleFloatArray = std::vector<float>(8);
     FloatBuffer* regionTextureVertexFloatBuffer = ByteBuffer::allocateDirect(4 *4 *2)->order(ByteOrder::nativeOrder())->asFloatBuffer();
     std::vector<float> regionRectangleFloatArray = {
@@ -127,13 +132,13 @@ OpenGLESGL10Image::OpenGLESGL10Image(Image* image, PlatformBitmapBaseFactory* bi
                                 //Otherwise - values - DoubleLiteralExpr
 };
     FloatBuffer* regionRectangleVertexFloatBuffer = ByteBuffer::allocateDirect(4 *4 *3)->order(ByteOrder::nativeOrder())->asFloatBuffer();
-    OpenGLESImageProperties* openGLESImageProperties = this->openGLESImageProperties;
+    OpenGLESImageProperties* openGLESImageProperties = outer->openGLESImageProperties;
     public: void drawRegion(GL10* gl, int32_t viewHeight, float x_src, float y_src, float width, float height, int32_t x, int32_t y, int32_t z){
 
-    int32_t imageWidth = this->getWidth();;
+    int32_t imageWidth = outer->getWidth();;
     
 
-    int32_t imageHeight = this->getHeight();;
+    int32_t imageHeight = outer->getHeight();;
     
 this->regionRectangleFloatArray[7]= viewHeight;
     
@@ -174,15 +179,15 @@ this->glUtil->rotateUVs(this->regionTextureRectangleFloatArray,  -this->openGLES
 gl->glPushMatrix();
     
 
-    OpenGLESImageProcessor* imageProcessor = this->imageProcessor;;
+    OpenGLESImageProcessor* imageProcessor = outer->imageProcessor;;
     
-this->openGLESImageTranslate->translate(gl, this, x,  -y);
+outer->openGLESImageTranslate->translate(gl, outer, x,  -y);
     
 imageProcessor->scale(gl, this->openGLESImageProperties->scaleX, this->openGLESImageProperties->scaleY);
     
 imageProcessor->colorMask(gl, this->openGLESImageProperties->redf, this->openGLESImageProperties->greenf, this->openGLESImageProperties->bluef, this->openGLESImageProperties->alphaf);
     
-this->openGLESImageTranslate->translate2(gl, this);
+outer->openGLESImageTranslate->translate2(gl, outer);
     
 this->regionRectangleVertexFloatBuffer->put(this->regionRectangleFloatArray);
     
@@ -218,10 +223,10 @@ gl->glPopMatrix();
 
     public: void draw(GL10* gl, int32_t x, int32_t y, int32_t z){
 
-    int32_t width = this->getWidth();;
+    int32_t width = outer->getWidth();;
     
 
-    int32_t height = this->getHeight();;
+    int32_t height = outer->getHeight();;
     
 this->regionRectangleFloatArray[7]= this->displayInfoSingleton->getLastHeight();
     
@@ -253,16 +258,16 @@ this->regionTextureRectangleFloatArray[7]= 0;
     
 gl->glPushMatrix();
     
-this->openGLESImageTranslate->translate(gl, this, x,  -y);
+outer->openGLESImageTranslate->translate(gl, outer, x,  -y);
     
 
-    OpenGLESImageProcessor* imageProcessor = this->imageProcessor;;
+    OpenGLESImageProcessor* imageProcessor = outer->imageProcessor;;
     
 imageProcessor->scale(gl, this->openGLESImageProperties->scaleX, this->openGLESImageProperties->scaleY);
     
 imageProcessor->colorMask(gl, this->openGLESImageProperties->redf, this->openGLESImageProperties->greenf, this->openGLESImageProperties->bluef, this->openGLESImageProperties->alphaf);
     
-this->openGLESImageTranslate->translate2(gl, this);
+outer->openGLESImageTranslate->translate2(gl, outer);
     
 this->regionRectangleVertexFloatBuffer->put(this->regionRectangleFloatArray);
     
@@ -300,8 +305,9 @@ gl->glPopMatrix();
     
 }
 
-                                }
-                            ), openGLESImageDraw(OpenGLESImageDraw::getInstance()){
+    };
+    return new Anonymous0();
+}()), openGLESImageDraw(OpenGLESImageDraw::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     

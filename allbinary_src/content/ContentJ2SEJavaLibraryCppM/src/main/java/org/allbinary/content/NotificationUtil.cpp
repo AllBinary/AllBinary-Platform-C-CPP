@@ -101,7 +101,7 @@ NotificationUtil* NotificationUtil::SINGLETON = NotificationUtil::SINGLETON_owne
     int32_t integer = ResourceUtil::getInstance()->getResourceId(resource);;
     
 
-    Notification* notification = new Notification(integer.intValue(), message, System.currentTimeMillis());;
+    Notification* notification = new Notification(integer, message, System.currentTimeMillis());;
     
 
     PendingIntent* pendingIntent = PendingIntent::getActivity(context, 0, intent, 0);;

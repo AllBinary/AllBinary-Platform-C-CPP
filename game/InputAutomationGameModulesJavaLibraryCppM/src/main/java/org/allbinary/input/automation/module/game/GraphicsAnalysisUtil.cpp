@@ -88,10 +88,10 @@ GraphicsAnalysisUtil::GraphicsAnalysisUtil(){
 
 
                         for (
-    int32_t index = max_x.intValue();index > min_x.intValue(); )
+    int32_t index = max_x;index > min_x; )
         {
 
-    int32_t colorInteger = Integer.valueOf(bufferedImage->getRGB(index, y.intValue()));;
+    int32_t colorInteger = Integer.valueOf(bufferedImage->getRGB(index, y));;
     
 
     AutomaticCacheInterface* automaticCacheInterface = ColorCacheFactory::getInstance();;
@@ -114,7 +114,7 @@ GraphicsAnalysisUtil::GraphicsAnalysisUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return index -min_x.intValue();
+                        return index -min_x;
     
 
                         }

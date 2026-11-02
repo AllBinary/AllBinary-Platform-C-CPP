@@ -184,10 +184,10 @@ this->pageContext->forward(stringBuffer->toString());
     int32_t index = 0;index < size; index++)
         {
 
-    std::string key = this->paramVector->get(index);;
+    std::string key = JavaBoxes::unbox<std::string>(this->paramVector->get(index));;
     
 
-    std::string value = hashMap->get(key);;
+    std::string value = JavaBoxes::unbox<std::string>(hashMap->get(key));;
     
 
                         if(index != 0)
@@ -226,7 +226,7 @@ stringBuffer->append(value);
     HashMap<Object*, Object*>* hashMap = this->requestMapInterface->getRequestHashMap();;
     
 
-    std::string requestCommand = hashMap->get(GLOBALS2::ADMINCOMMAND);;
+    std::string requestCommand = JavaBoxes::unbox<std::string>(hashMap->get(GLOBALS2::ADMINCOMMAND));;
     
 
                         if(StringValidationUtil::getInstance()->isEmpty(this->command) || (!StringValidationUtil::getInstance()->isEmpty(requestCommand) && this->command.compare(requestCommand) == 0))

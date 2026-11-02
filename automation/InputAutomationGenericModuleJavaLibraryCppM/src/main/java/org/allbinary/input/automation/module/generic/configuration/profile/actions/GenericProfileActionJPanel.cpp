@@ -185,42 +185,60 @@ this->ifJLabel->setText("Conditions:");
     
 this->newColorAtJButton->setText("Color Range At");
     
-this->newColorAtJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->newColorAtJButton->addActionListener([&]() {
+    static thread_local GenericProfileActionJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    GenericProfileActionJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-newColorAtJButtonActionPerformed(evt);
+outer->newColorAtJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->newTimeIntervalJButton->setText("Time Interval");
     
-this->newTimeIntervalJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->newTimeIntervalJButton->addActionListener([&]() {
+    static thread_local GenericProfileActionJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    GenericProfileActionJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-newTimeIntervalJButtonActionPerformed(evt);
+outer->newTimeIntervalJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->newAlwaysJButton->setText("Always On/Off");
     
-this->newAlwaysJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->newAlwaysJButton->addActionListener([&]() {
+    static thread_local GenericProfileActionJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    GenericProfileActionJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-newAlwaysJButtonActionPerformed(evt);
+outer->newAlwaysJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 
     javax::swing::GroupLayout* layout = new javax::swing::GroupLayout(this);;

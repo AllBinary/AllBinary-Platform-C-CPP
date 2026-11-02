@@ -115,15 +115,15 @@ this->shippingAddress= new StreetAddress();
 
 
     auto Item::setData(HashMap<Object*, Object*>* itemHashMap) -> void{
-this->group= itemHashMap->get(ShippingMethodData::GROUP);
+this->group= JavaBoxes::unbox<std::string>(itemHashMap->get(ShippingMethodData::GROUP));
     
-this->tax= itemHashMap->get(OrderHistoryData::TAX);
+this->tax= JavaBoxes::unbox<std::string>(itemHashMap->get(OrderHistoryData::TAX));
     
-this->shippingType= itemHashMap->get(ShippingMethodData::NAME);
+this->shippingType= JavaBoxes::unbox<std::string>(itemHashMap->get(ShippingMethodData::NAME));
     
-this->shippingCost= itemHashMap->get(ShippingMethodData::COST);
+this->shippingCost= JavaBoxes::unbox<std::string>(itemHashMap->get(ShippingMethodData::COST));
     
-this->shippedDate= itemHashMap->get(OrderHistoryData::SHIPPEDDATE);
+this->shippedDate= JavaBoxes::unbox<std::string>(itemHashMap->get(OrderHistoryData::SHIPPEDDATE));
     
 itemHashMap->put(StreetAddressData::NAME, itemHashMap->get(ShippingAddressData::NAME));
     

@@ -127,7 +127,7 @@ this->myFontProcessor= MyFontProcessor::getInstance();
     auto HelpPaintable::setInputInfoP(std::vector<std::string> inputInfo) -> void{
 this->inputInfo= inputInfo;
     
-this->beginWidthArray= std::vector<int32_t>(this->inputInfo.length);
+this->beginWidthArray= std::vector<int32_t>(this->inputInfo.size());
     
 this->myFontProcessor= this->updateMyFontProcessor;
     

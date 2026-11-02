@@ -117,9 +117,9 @@ RecordStore::deleteRecordStore(this->getRecordId(abeClientInformation));
     int32_t index = 0;index < size; index++)
         {
 
-    int32_t integer = this->idList->objectArray[index];;
+    int32_t integer = JavaBoxes::unbox<int32_t>(this->idList->objectArray[index]);;
     
-this->delete_(abeClientInformation, integer.intValue());
+this->delete_(abeClientInformation, integer);
     
 }
 

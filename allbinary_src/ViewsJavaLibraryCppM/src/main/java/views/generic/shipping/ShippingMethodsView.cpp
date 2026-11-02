@@ -209,7 +209,7 @@ total->add(tax->toString());
     
 shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodsData::SHIPPINGCOST, shippingCost->toString()));
     
-shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodsData::TAXRATE, taxRate.toString()));
+shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodsData::TAXRATE, JavaString::valueOf(taxRate)));
     
 shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodsData::SUBTOTAL, subTotal->toString()));
     

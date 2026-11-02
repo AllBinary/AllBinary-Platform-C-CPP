@@ -159,7 +159,7 @@ this->save(imageComparisonResult, imageComparisonResultFrameCacheable->getFrame(
     
 filePathStringBuffer->append(ImageOutputData::SAVE_PATH);
     
-filePathStringBuffer->append(LongUtil::fillIn(frame.toString()));
+filePathStringBuffer->append(LongUtil::fillIn(JavaString::valueOf(frame)));
     
 filePathStringBuffer->append(ComparisonImageInputOutput::ROOT_NAME);
     

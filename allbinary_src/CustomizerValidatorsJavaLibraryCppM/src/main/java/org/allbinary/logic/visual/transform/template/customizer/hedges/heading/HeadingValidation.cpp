@@ -183,7 +183,7 @@ this->logo= new LogoValidation(hashMap);
                         }
                             
 
-                        if(!titleValid.valueOf() && !logoValid.valueOf())
+                        if(!titleValid && !logoValid)
                         
                                     {
                                     valid= Boolean::FALSE;
@@ -264,7 +264,7 @@ this->logo= new LogoValidation(hashMap);
                                     }
                                 
 
-                        if(!titleValid.valueOf() && !logoValid.valueOf())
+                        if(!titleValid && !logoValid)
                         
                                     {
                                     valid= Boolean::FALSE;
@@ -273,7 +273,7 @@ this->logo= new LogoValidation(hashMap);
                                     }
                                 
 
-                        if(!valid.valueOf())
+                        if(!valid)
                         
                                     {
                                     stringBuffer->append("Include a title and/or logo for the header.");

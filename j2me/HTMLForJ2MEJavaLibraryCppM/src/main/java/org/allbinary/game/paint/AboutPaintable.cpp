@@ -99,11 +99,11 @@ AboutPaintable::AboutPaintable(std::vector<std::string> info, std::vector<std::s
                                                         }), myFontProcessor(new UpdateMyFontProcessor(this)), anchor(Anchor::TOP_LEFT){
 this->info= info;
     
-this->infoBeginWidth= std::vector<int32_t>(this->info.length);
+this->infoBeginWidth= std::vector<int32_t>(this->info.size());
     
 this->developers= developers;
     
-this->developersBeginWidth= std::vector<int32_t>(this->developers.length);
+this->developersBeginWidth= std::vector<int32_t>(this->developers.size());
     
 }
 

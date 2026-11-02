@@ -267,7 +267,7 @@ pathStringBuffer->append(abPathData->SEPARATOR)->append(this->getValue());
                         for (
     int32_t index = 0;index < size; index++)
         {
-pathStringBuffer->append(list->get(index));
+pathStringBuffer->append(JavaBoxes::unbox<std::string>(list->get(index)));
     
 }
 

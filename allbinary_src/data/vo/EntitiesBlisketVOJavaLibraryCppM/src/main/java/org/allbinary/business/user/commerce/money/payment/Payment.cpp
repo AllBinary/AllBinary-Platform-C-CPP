@@ -94,20 +94,20 @@
 
 
 Payment::Payment(HashMap<Object*, Object*>* payment){
-this->name= payment->get(PaymentData::NAME);
+this->name= JavaBoxes::unbox<std::string>(payment->get(PaymentData::NAME));
     
-this->type= payment->get(PaymentData::TYPE);
+this->type= JavaBoxes::unbox<std::string>(payment->get(PaymentData::TYPE));
     
-this->expiration= payment->get(PaymentData::EXPIRATION);
+this->expiration= JavaBoxes::unbox<std::string>(payment->get(PaymentData::EXPIRATION));
     
-this->encryption= payment->get(EntryData::getInstance()->ENCRYPTION);
+this->encryption= JavaBoxes::unbox<std::string>(payment->get(EntryData::getInstance()->ENCRYPTION));
     
-this->number= (new SuperCrypt((int32_t(this->encryption)).intValue()))->decrypt(payment->get(PaymentData::NUMBER));
+this->number= JavaBoxes::unbox<std::string>((new SuperCrypt((int32_t(this->encryption)).intValue()))->decrypt(JavaBoxes::unbox<std::string>(payment->get(PaymentData::NUMBER))));
     
-this->id= payment->get(PaymentData::ID);
+this->id= JavaBoxes::unbox<std::string>(payment->get(PaymentData::ID));
     
 
-    std::string def = payment->get(EntryData::getInstance()->DEFAULT);;
+    std::string def = JavaBoxes::unbox<std::string>(payment->get(EntryData::getInstance()->DEFAULT));;
     
 
                         if(true && def.compare(EntryData::getInstance()->DEFAULT) == 0)
@@ -124,25 +124,25 @@ this->id= payment->get(PaymentData::ID);
 
                         }
                             
-this->tenderType= payment->get(PaymentData::TENDERTYPE);
+this->tenderType= JavaBoxes::unbox<std::string>(payment->get(PaymentData::TENDERTYPE));
     
-this->transactionType= payment->get(PaymentData::TRANSACTIONTYPE);
+this->transactionType= JavaBoxes::unbox<std::string>(payment->get(PaymentData::TRANSACTIONTYPE));
     
-this->aba= payment->get(PaymentData::ABA);
+this->aba= JavaBoxes::unbox<std::string>(payment->get(PaymentData::ABA));
     
-this->account= payment->get(PaymentData::ACCOUNT);
+this->account= JavaBoxes::unbox<std::string>(payment->get(PaymentData::ACCOUNT));
     
-this->accountType= payment->get(PaymentData::ACCOUNTTYPE);
+this->accountType= JavaBoxes::unbox<std::string>(payment->get(PaymentData::ACCOUNTTYPE));
     
-this->authorizationCode= payment->get(PaymentData::AUTHORIZATIONCODE);
+this->authorizationCode= JavaBoxes::unbox<std::string>(payment->get(PaymentData::AUTHORIZATIONCODE));
     
-this->checkNumber= payment->get(PaymentData::CHECKNUMBER);
+this->checkNumber= JavaBoxes::unbox<std::string>(payment->get(PaymentData::CHECKNUMBER));
     
-this->checkType= payment->get(PaymentData::CHECKTYPE);
+this->checkType= JavaBoxes::unbox<std::string>(payment->get(PaymentData::CHECKTYPE));
     
-this->driversLicense= payment->get(PaymentData::DRIVERSLICENSE);
+this->driversLicense= JavaBoxes::unbox<std::string>(payment->get(PaymentData::DRIVERSLICENSE));
     
-this->magneticInkCheckReader= payment->get(PaymentData::MAGNETICINKCHECKREADER);
+this->magneticInkCheckReader= JavaBoxes::unbox<std::string>(payment->get(PaymentData::MAGNETICINKCHECKREADER));
     
 }
 
@@ -243,7 +243,7 @@ Payment::Payment(){
                                     }
                                 
 
-                        if(number.size() > org.allbinary->business->user->commerce->money->payment->types->CreditCardType->MAXLEN)
+                        if(this->number.size() > org.allbinary->business->user->commerce->money->payment->types->CreditCardType->MAXLEN)
                         
                                     {
                                     
@@ -504,14 +504,14 @@ this->number= value;
 
     auto Payment::getLastFour() -> std::string{
 
-                        if(number.size() > PaymentData::MIN && number.size() <= PaymentData::MAX)
+                        if(this->number.size() > PaymentData::MIN && this->number.size() <= PaymentData::MAX)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->number.substring(number.size() -4);;
+                        return this->number.substring(this->number.size() -4);;
     
 
                                     }

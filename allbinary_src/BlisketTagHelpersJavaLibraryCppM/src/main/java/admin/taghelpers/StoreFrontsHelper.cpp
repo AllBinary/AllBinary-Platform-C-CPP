@@ -325,7 +325,7 @@ storeSelect->addAttribute(StoreFrontsHelper::CLASS, StoreFrontsHelper::TEXT);
     int32_t index = 0;index < size; index++)
         {
 
-    std::string storeName = storeNamesVector->get(index);;
+    std::string storeName = JavaBoxes::unbox<std::string>(storeNamesVector->get(index));;
     
 storeSelect->addOption(storeName);
     

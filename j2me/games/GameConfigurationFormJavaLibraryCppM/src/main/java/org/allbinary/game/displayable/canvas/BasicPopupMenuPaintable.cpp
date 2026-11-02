@@ -190,7 +190,7 @@ this->drawStringUtil->updateMeasurement(graphics, this->label);
                             
 this->BORDER= BORDER;
     
-this->heightOffset= this->rectangle->getHeight() -(font->getHeight() *NAME.size());
+this->heightOffset= this->rectangle->getHeight() -(font->getHeight() *BasicPopupMenuPaintable::NAME.size());
     
 
                         if(OpenGLFeatureUtil::getInstance()->isAnyThreed())

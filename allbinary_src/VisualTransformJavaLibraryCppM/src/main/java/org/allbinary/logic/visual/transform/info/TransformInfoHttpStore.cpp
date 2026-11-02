@@ -134,7 +134,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "Constructor(HashMap, HashMa
 
                                     }
                                 
-this->setStoreName(databaseHashMap->get(StoreFrontData::getInstance()->NAME));
+this->setStoreName(JavaBoxes::unbox<std::string>(databaseHashMap->get(StoreFrontData::getInstance()->NAME)));
     
 }
 

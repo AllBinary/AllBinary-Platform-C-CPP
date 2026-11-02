@@ -131,14 +131,14 @@ this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->NAME, this->
                             nullptr);;
     
 
-    int32_t result = method->invoke(this->getHelper(), 
-                            nullptr);;
+    int32_t result = JavaBoxes::unbox<int32_t>(method->invoke(this->getHelper(), 
+                            nullptr));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return result.intValue();;
+                        return result;;
     
 
                 //: 

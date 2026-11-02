@@ -89,6 +89,8 @@ private: class MediaPlayerOnBufferingUpdateListener
             : public virtual Object
         , public MediaPlayer::OnBufferingUpdateListener {
 
+    public: AndroidMediaPlayerWrapperListener* outer = nullptr;
+
 
             
     public: MediaPlayerOnBufferingUpdateListener();
@@ -102,6 +104,8 @@ private: class MediaPlayerOnBufferingUpdateListener
 private: class MediaPlayerOnPreparedListener
             : public virtual Object
         , public MediaPlayer::OnPreparedListener {
+
+    public: AndroidMediaPlayerWrapperListener* outer = nullptr;
 
 
             
@@ -117,6 +121,8 @@ private: class MediaPlayerOnErrorListener
             : public virtual Object
         , public MediaPlayer::OnErrorListener {
 
+    public: AndroidMediaPlayerWrapperListener* outer = nullptr;
+
 
             
     public: MediaPlayerOnErrorListener();
@@ -131,6 +137,8 @@ private: class MediaPlayerOnCompletionListener
             : public virtual Object
         , public MediaPlayer::OnCompletionListener {
 
+    public: AndroidMediaPlayerWrapperListener* outer = nullptr;
+
 
             
     public: MediaPlayerOnCompletionListener();
@@ -142,6 +150,8 @@ private: class MediaPlayerOnCompletionListener
             
 //inner= member=true isStatic=
 private: class AndroidMediaPlayerOnBufferingUpdateListener: public MediaPlayerOnBufferingUpdateListener {
+
+    public: AndroidMediaPlayerWrapperListener* outer = nullptr;
 
     private: const std::string ON_BUFFERING_UPDATE = "onBufferingUpdate()";
 
@@ -159,6 +169,8 @@ public: AndroidMediaPlayerOnBufferingUpdateListener(AndroidMediaPlayerWrapperLis
 //inner= member=true isStatic=
 private: class AndroidMediaPlayerOnPreparedListener: public MediaPlayerOnPreparedListener {
 
+    public: AndroidMediaPlayerWrapperListener* outer = nullptr;
+
     private: const std::string ON_PREPARE = "onPrepare()";
 
     private: AndroidMediaPlayerWrapperListener* androidMediaPlayerWrapperListener;
@@ -175,6 +187,8 @@ public: AndroidMediaPlayerOnPreparedListener(AndroidMediaPlayerWrapperListener* 
 //inner= member=true isStatic=
 private: class AndroidMediaPlayerOnErrorListener: public MediaPlayerOnErrorListener {
 
+    public: AndroidMediaPlayerWrapperListener* outer = nullptr;
+
     private: const std::string ON_ERROR = "onError()";
 
     private: AndroidMediaPlayerWrapperListener* androidMediaPlayerWrapperListener;
@@ -190,6 +204,8 @@ public: AndroidMediaPlayerOnErrorListener(AndroidMediaPlayerWrapperListener* and
 
 //inner= member=true isStatic=
 private: class AndroidMediaPlayerOnCompletionListener: public MediaPlayerOnCompletionListener {
+
+    public: AndroidMediaPlayerWrapperListener* outer = nullptr;
 
     private: const std::string ON_COMPLETE = "onComplete()";
 

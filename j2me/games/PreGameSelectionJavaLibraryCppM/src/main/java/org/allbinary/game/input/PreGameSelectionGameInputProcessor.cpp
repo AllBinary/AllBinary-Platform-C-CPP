@@ -116,9 +116,14 @@
 #include "org/allbinary/game/input/GameInputProcessorComposite.h"
 
 
-PreGameSelectionGameInputProcessor::PreGameSelectionGameInputProcessor(AllBinaryGameCanvas* gameCanvas, PreGameSelectorPaintable* preGameSelectorPaintable, GameState* nextGameState, int32_t lockedIndex) : logUtil(LogUtil::getInstance()), inputTimeHelper(new TimeDelayHelper(650)), abRunnable(class extends ABRunnable
-                                {
-                                
+PreGameSelectionGameInputProcessor::PreGameSelectionGameInputProcessor(AllBinaryGameCanvas* gameCanvas, PreGameSelectorPaintable* preGameSelectorPaintable, GameState* nextGameState, int32_t lockedIndex) : logUtil(LogUtil::getInstance()), inputTimeHelper(new TimeDelayHelper(650)), abRunnable([&]() {
+    static thread_local PreGameSelectionGameInputProcessor* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public ABRunnable {
+    public:
+    using ABRunnable::ABRunnable;
+    PreGameSelectionGameInputProcessor* outer = anonymousOuter0;
+
     public: void run(){
 
         try {
@@ -126,9 +131,9 @@ PreGameSelectionGameInputProcessor::PreGameSelectionGameInputProcessor(AllBinary
     
 SecondaryPlayerQueueFactory::getInstance()->add(SelectSound::getInstance());
     
-gameCanvas->setGameState(nextGameState);
+outer->gameCanvas->setGameState(outer->nextGameState);
     
-GameKeyEventHandler::getInstance()->removeListener(getPlayerGameInput());
+GameKeyEventHandler::getInstance()->removeListener(outer->getPlayerGameInput());
     
 this->setRunning(false);
     
@@ -150,8 +155,9 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 
 }
 
-                                }
-                            ){
+    };
+    return new Anonymous0();
+}()){
 this->gameCanvas= gameCanvas;
     
 this->preGameSelectorPaintable= preGameSelectorPaintable;

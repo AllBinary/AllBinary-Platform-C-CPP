@@ -1908,7 +1908,7 @@ this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->LOAD)
                         
                                     {
                                     
-    std::string levelAsString = hashtable->get(GameInfo::LEVEL_NAME);;
+    std::string levelAsString = JavaBoxes::unbox<std::string>(hashtable->get(GameInfo::LEVEL_NAME));;
     
 
     int32_t level = Integer.valueOf(levelAsString)->intValue();;

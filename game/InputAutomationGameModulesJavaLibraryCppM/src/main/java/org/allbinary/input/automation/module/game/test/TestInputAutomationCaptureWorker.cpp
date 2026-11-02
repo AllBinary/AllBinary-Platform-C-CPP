@@ -151,7 +151,7 @@ this->setGenericProfileActions(genericProfileActions);
     int32_t index = 0;index < size; index++)
         {
 
-    std::string actionNameString = actionNameArray[index];;
+    std::string actionNameString = JavaBoxes::unbox<std::string>(actionNameArray[index]);;
     
 
     GenericProfileAction* genericProfileAction = dynamic_cast<GenericProfileAction*>(hashMap->get(actionNameString));;

@@ -302,7 +302,7 @@ auto ABVector<E>::equals(Object* obj) -> bool{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Vector<E>::->equals(obj);;
+                        return JavaObjects::equals(Vector<E>::, obj);;
     
 }
 

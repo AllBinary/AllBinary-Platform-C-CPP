@@ -104,8 +104,8 @@ this->anyType= anyType;
                             nullptr);;
     
 
-    std::string result = method->invoke(this->anyType, 
-                            nullptr);;
+    std::string result = JavaBoxes::unbox<std::string>(method->invoke(this->anyType, 
+                            nullptr));;
     
 
 
@@ -139,8 +139,8 @@ this->anyType= anyType;
                             nullptr);;
     
 
-    bool result = method->invoke(this->anyType, 
-                            nullptr);;
+    bool result = JavaBoxes::unbox<bool>(method->invoke(this->anyType, 
+                            nullptr));;
     
 
 
@@ -174,8 +174,8 @@ this->anyType= anyType;
                             nullptr);;
     
 
-    bool result = method->invoke(this->anyType, 
-                            nullptr);;
+    bool result = JavaBoxes::unbox<bool>(method->invoke(this->anyType, 
+                            nullptr));;
     
 
 
@@ -209,8 +209,8 @@ this->anyType= anyType;
                             nullptr);;
     
 
-    bool result = method->invoke(this->anyType, 
-                            nullptr);;
+    bool result = JavaBoxes::unbox<bool>(method->invoke(this->anyType, 
+                            nullptr));;
     
 
 
@@ -244,8 +244,8 @@ this->anyType= anyType;
                             nullptr);;
     
 
-    bool result = method->invoke(this->anyType, 
-                            nullptr);;
+    bool result = JavaBoxes::unbox<bool>(method->invoke(this->anyType, 
+                            nullptr));;
     
 
 
@@ -279,8 +279,8 @@ this->anyType= anyType;
                             nullptr);;
     
 
-    bool result = method->invoke(this->anyType, 
-                            nullptr);;
+    bool result = JavaBoxes::unbox<bool>(method->invoke(this->anyType, 
+                            nullptr));;
     
 
 

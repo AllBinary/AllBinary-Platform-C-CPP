@@ -144,7 +144,7 @@ this->value= value;
         while(index < size)
         {
 
-    std::string nameSpaceWithProperties = nameSpaceWithPropertiesVector->get(index++);;
+    std::string nameSpaceWithProperties = JavaBoxes::unbox<std::string>(nameSpaceWithPropertiesVector->get(index++));;
     
 list->clear();
     
@@ -165,7 +165,7 @@ list->clear();
                         
                                     {
                                     
-    std::string packageName = nameSpaceAndPropertiesVector->get(0);;
+    std::string packageName = JavaBoxes::unbox<std::string>(nameSpaceAndPropertiesVector->get(0));;
     
 
                         if(false)
@@ -186,7 +186,7 @@ this->nameSpaceVector->add(packageName);
                         
                                     {
                                     
-    std::string properties = nameSpaceAndPropertiesVector->get(1);;
+    std::string properties = JavaBoxes::unbox<std::string>(nameSpaceAndPropertiesVector->get(1));;
     
 
     HashMap<Object*, Object*>* packagePropertiesHashMap = this->generatePackagePropertiesHashMap(properties);;
@@ -314,7 +314,7 @@ packageIndex++;
         while(index < size)
         {
 
-    std::string property = propertyVector->get(index);;
+    std::string property = JavaBoxes::unbox<std::string>(propertyVector->get(index));;
     
 list->clear();
     
@@ -328,14 +328,14 @@ list->clear();
         while(index2 < propertyNameValueVector->size())
         {
 
-    std::string propertyName = propertyNameValueVector->get(index2++);;
+    std::string propertyName = JavaBoxes::unbox<std::string>(propertyNameValueVector->get(index2++));;
     
 
                         if(propertyNameValueVector->size() > 1)
                         
                                     {
                                     
-    std::string propertyValue = propertyNameValueVector->get(index2++);;
+    std::string propertyValue = JavaBoxes::unbox<std::string>(propertyNameValueVector->get(index2++));;
     
 
                         if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))

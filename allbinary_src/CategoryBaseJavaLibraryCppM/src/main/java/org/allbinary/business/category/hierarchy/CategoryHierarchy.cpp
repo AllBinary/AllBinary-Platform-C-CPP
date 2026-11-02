@@ -93,7 +93,7 @@ this->setParent(parentCategoryInterface);
 
 CategoryHierarchy::CategoryHierarchy(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, HashMap<Object*, Object*>* categoryPropertiesHashMap){
 
-    std::string levelString = StringUtil::getInstance()->getNonNull(categoryPropertiesHashMap->get(CategoryData::getInstance()->LEVEL));;
+    std::string levelString = StringUtil::getInstance()->getNonNull(JavaBoxes::unbox<std::string>(categoryPropertiesHashMap->get(CategoryData::getInstance()->LEVEL)));;
     
 this->level= Integer.valueOf(levelString)->intValue();
     
@@ -119,7 +119,7 @@ this->setParent(parentCategoryInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return std::to_string(level);;
+                        return std::to_string(this->level);;
     
 }
 

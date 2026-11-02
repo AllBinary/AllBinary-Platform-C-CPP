@@ -206,7 +206,7 @@ index++;
     Node* xNode = dynamic_cast<Node*>(document->createElement(PositionStrings::getInstance()->X));;
     
 
-    Node* xTextNode = dynamic_cast<Node*>(document->createTextNode(std::to_string(getX)));;
+    Node* xTextNode = dynamic_cast<Node*>(document->createTextNode(std::to_string(point->getX())));;
     
 xNode->appendChild(xTextNode);
     
@@ -214,7 +214,7 @@ xNode->appendChild(xTextNode);
     Node* yNode = dynamic_cast<Node*>(document->createElement(PositionStrings::getInstance()->Y));;
     
 
-    Node* yTextNode = dynamic_cast<Node*>(document->createTextNode(std::to_string(getY)));;
+    Node* yTextNode = dynamic_cast<Node*>(document->createTextNode(std::to_string(point->getY())));;
     
 yNode->appendChild(yTextNode);
     

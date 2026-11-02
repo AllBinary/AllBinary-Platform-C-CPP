@@ -76,7 +76,7 @@
 
 
 MeteredGameObject::MeteredGameObject(std::vector<BufferedImage*> bufferedImage, int32_t minX, int32_t maxX, int32_t y){
-this->setRatios(std::vector<double>(bufferedImage.length));
+this->setRatios(std::vector<double>(bufferedImage.size()));
     
 this->setMinX(minX);
     

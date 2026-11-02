@@ -88,9 +88,9 @@ this->timeLastModified= new TimeLastModified(0);
 UserConfiguration::UserConfiguration(HashMap<Object*, Object*>* hashMap){
 this->userEmailConfigurationInterface= dynamic_cast<UserEmailConfigurationInterface*>(new UserEmailConfiguration(hashMap));
     
-this->timeCreated= new TimeCreated(hashMap->get(EntryData::getInstance()->TIMECREATED));
+this->timeCreated= new TimeCreated(JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInstance()->TIMECREATED)));
     
-this->timeLastModified= new TimeLastModified(hashMap->get(EntryData::getInstance()->LASTMODIFIED));
+this->timeLastModified= new TimeLastModified(JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInstance()->LASTMODIFIED)));
     
 }
 

@@ -132,7 +132,7 @@ this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->PROCE
     int32_t index = 0;index < size; index++)
         {
 
-    std::string inputTypeNameString = inputTypeNameArray[index];;
+    std::string inputTypeNameString = JavaBoxes::unbox<std::string>(inputTypeNameArray[index]);;
     
 
     InputRobotInterface* robot = dynamic_cast<InputRobotInterface*>(hashtable->get(inputTypeNameString));;

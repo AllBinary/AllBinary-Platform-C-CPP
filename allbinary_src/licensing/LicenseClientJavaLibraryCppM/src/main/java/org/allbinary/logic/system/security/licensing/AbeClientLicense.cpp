@@ -110,7 +110,7 @@ this->hashtable= StdUtil::getInstance()->createHashtable();
 
                                     }
                                 
-this->id= hashtable->get(abeClientInformationData->LICENSEID);
+this->id= JavaBoxes::unbox<std::string>(hashtable->get(abeClientInformationData->LICENSEID));
     
 
     BasicArrayList* vector = dynamic_cast<BasicArrayList*>(hashtable->get(abeClientInformationData->LICENSESERVERS));;
@@ -134,10 +134,10 @@ this->servers->add(vector->get(index));
 
     StringUtil* stringUtil = StringUtil::getInstance();;
     
-this->setSpecial(stringUtil->getNonNull(hashtable->get(abeClientInformationData->SPECIAL)));
+this->setSpecial(stringUtil->getNonNull(JavaBoxes::unbox<std::string>(hashtable->get(abeClientInformationData->SPECIAL))));
     
 
-    std::string licenseTypeString = stringUtil->getNonNull(hashtable->get(abeClientInformationData->LICENSE_TYPE));;
+    std::string licenseTypeString = stringUtil->getNonNull(JavaBoxes::unbox<std::string>(hashtable->get(abeClientInformationData->LICENSE_TYPE)));;
     
 this->licenseType= LicenseTypeFactory::getInstance()->getInstance(licenseTypeString);
     
@@ -189,7 +189,7 @@ this->licenseType= LicenseTypeFactory::getInstance()->getInstance(licenseTypeStr
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->hashtable->get(keyName);
+                        return JavaBoxes::unbox<std::string>(this->hashtable->get(keyName));
     
 }
 
@@ -279,7 +279,7 @@ stringBuffer->append(BREAK);
     int32_t index = 0;index < size; index++)
         {
 
-    std::string nextServerString = serverVector->get(index);;
+    std::string nextServerString = JavaBoxes::unbox<std::string>(serverVector->get(index));;
     
 stringBuffer->append("Server: ");
     

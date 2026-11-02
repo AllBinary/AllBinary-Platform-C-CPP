@@ -126,15 +126,15 @@ index= JavaString::indexOf(string, this->sep, index);
                         
                                     {
                                     
-    int32_t end = JavaString::indexOf(string, this->endSep, index +sep.size());;
+    int32_t end = JavaString::indexOf(string, this->endSep, index +this->sep.size());;
     
 
                         if(end !=  -1)
                         
                                     {
-                                    tokenList->add(JavaString::substring(string, index +sep.size(), end -(endSep.size() -1)));
+                                    tokenList->add(JavaString::substring(string, index +this->sep.size(), end -(this->endSep.size() -1)));
     
-index= end +endSep.size();
+index= end +this->endSep.size();
     
 
                                     }
@@ -182,7 +182,7 @@ end= JavaString::indexOf(string, this->sep, index);
                                     {
                                     tokenVector->add(JavaString::substring(string, index, end));
     
-index= end +sep.size();
+index= end +this->sep.size();
     
 
                                     }
@@ -227,7 +227,7 @@ break;
                         for (
     int32_t index = 0;index < size; index++)
         {
-string= stringVector->objectArray[index];
+string= JavaBoxes::unbox<std::string>(stringVector->objectArray[index]);
     
 end= JavaString::indexOf(string, this->sep);
     

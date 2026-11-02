@@ -78,9 +78,11 @@ ImageTool::ImageTool() : logUtil(LogUtil::getInstance()){
 
 
     auto ImageTool::main(std::vector<std::string> args) -> void{
-java.awt->EventQueue->invokeLater(class extends ARunnable
-                                {
-                                
+java.awt->EventQueue->invokeLater([]() {
+    class Anonymous0 : public ARunnable {
+    public:
+    using ARunnable::ARunnable;
+
     public: void run(){
 
     LogUtil* logUtil = LogUtil::getInstance();;
@@ -104,8 +106,9 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 }
 

@@ -415,7 +415,7 @@ this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(hashMa
     int32_t index = 0;index < size; index++)
         {
 
-    std::string nextActionName = actionNameArray[index];;
+    std::string nextActionName = JavaBoxes::unbox<std::string>(actionNameArray[index]);;
     
 
     GenericProfileAction* nextGenericProfileAction = dynamic_cast<GenericProfileAction*>(this->getAction(nextActionName));;

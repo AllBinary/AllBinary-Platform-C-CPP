@@ -114,7 +114,7 @@
 
 std::vector<GeographicMapCellHistory*> GeographicMapCellHistory::NULL_GEOGRPAHIC_MAP_HISTORY_ARRAY = {};
 
-GeographicMapCellHistory::GeographicMapCellHistory() : logUtil(LogUtil::getInstance()), booleanFactory(BooleanFactory::getInstance()), animation(new TextAnimation(this->MISSED_INFO, AnimationBehavior::getInstance())), myFontProcessor(new UpdateMyFontProcessor(this)), RED(BasicColorFactory::getInstance()->RED.intValue()){
+GeographicMapCellHistory::GeographicMapCellHistory() : logUtil(LogUtil::getInstance()), booleanFactory(BooleanFactory::getInstance()), animation(new TextAnimation(this->MISSED_INFO, AnimationBehavior::getInstance())), myFontProcessor(new UpdateMyFontProcessor(this)), RED(BasicColorFactory::getInstance()->RED){
 this->list= new BasicArrayListD();
     
 this->visitedList= new BasicArrayListD();
@@ -276,7 +276,7 @@ this->visitedList->add(this->booleanFactory->FALSE);
                         for (
     int32_t index = 0;index < size; index++)
         {
-value= this->visitedList->get(index);
+value= JavaBoxes::unbox<bool>(this->visitedList->get(index));
     
 
                         if(value == this->booleanFactory->FALSE)
@@ -319,7 +319,7 @@ value= this->visitedList->get(index);
                         for (
     int32_t index = 0;index < size; index++)
         {
-value= this->visitedList->get(index);
+value= JavaBoxes::unbox<bool>(this->visitedList->get(index));
     
 
                         if(value == this->booleanFactory->FALSE)
@@ -396,7 +396,7 @@ geographicMapCellPosition= dynamic_cast<GeographicMapCellPosition*>(pathList->ge
                         
                                     {
                                     
-    bool value = this->visitedList->get(index);;
+    bool value = JavaBoxes::unbox<bool>(this->visitedList->get(index));;
     
 
                         if(value == this->booleanFactory->TRUE)
@@ -438,7 +438,7 @@ geographicMapCellPosition= dynamic_cast<GeographicMapCellPosition*>(pathList->ge
                         if(index !=  -1)
                         
                                     {
-                                    value= this->visitedList->get(index);
+                                    value= JavaBoxes::unbox<bool>(this->visitedList->get(index));
     
 
     bool TRUE = this->booleanFactory->TRUE;;
@@ -652,10 +652,10 @@ graphics->setColor(this->RED);
         {
 geographicMapCellPosition= dynamic_cast<GeographicMapCellPosition*>(this->list->get(index));
     
-isCellVisitedBoolean= localVisitedList->get(index);
+isCellVisitedBoolean= JavaBoxes::unbox<bool>(localVisitedList->get(index));
     
 
-                        if(!isCellVisitedBoolean.valueOf())
+                        if(!isCellVisitedBoolean)
                         
                                     {
                                     this->paintNotVisitedRelativeToPoint(graphics, geographicMapInterface->getAllBinaryTiledLayer(), geographicMapCellPosition->getPoint());

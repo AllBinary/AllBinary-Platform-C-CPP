@@ -82,9 +82,9 @@ class ImageComparisonResult
 
     public: std::string name;
 
-    public: const bool isSameHeight= false;
+    public: bool isSameHeight= false;
 
-    public: const bool isSameWidth= false;
+    public: bool isSameWidth= false;
 
     public: int32_t imageHeight;
 

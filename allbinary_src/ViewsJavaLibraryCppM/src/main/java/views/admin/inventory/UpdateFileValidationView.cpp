@@ -140,7 +140,7 @@ UpdateFileValidationView::UpdateFileValidationView(TransformInfoInterface* trans
 
         try {
             
-    std::string command = this->getRequestHashMap()->get(GLOBALS2::ADMINCOMMAND);;
+    std::string command = JavaBoxes::unbox<std::string>(this->getRequestHashMap()->get(GLOBALS2::ADMINCOMMAND));;
     
 
                         if(false || command.compare(UpdateFileValidationView::UPDATEPRODUCT) != 0)
@@ -335,7 +335,7 @@ HttpFileUploadUtil::log(fileItem);
     StringMaker* stringBuffer = new StringMaker();;
     
 
-    std::string command = this->getRequestHashMap()->get(GLOBALS2::ADMINCOMMAND);;
+    std::string command = JavaBoxes::unbox<std::string>(this->getRequestHashMap()->get(GLOBALS2::ADMINCOMMAND));;
     
 
                         if(false || command.compare(UpdateFileValidationView::UPDATEPRODUCT) != 0)
@@ -356,7 +356,7 @@ stringBuffer->append((new BasicItemValidation(this->itemInterface))->validationI
     StoreFrontInterface* storeFrontInterface = StoreFrontFactory::getInstance(this->getWeblisketSession()->getStoreName());;
     
 
-    std::string fullCategory = URLGLOBALS::getWebappPath() +storeFrontInterface->getCurrentHostNamePath() +this->itemInterface->getCategory();;
+    std::string fullCategory = JavaBoxes::unbox<std::string>(URLGLOBALS::getWebappPath()) +storeFrontInterface->getCurrentHostNamePath() +this->itemInterface->getCategory();;
     
 
                         if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))

@@ -141,7 +141,7 @@ InsertCustomizerValidationView::InsertCustomizerValidationView(TransformInfoInte
 
     HashMap<Object*, Object*>* requestHashMap = (new RequestParams(this->getPageContext()))->toHashMap();;
     
-this->viewName= requestHashMap->get(TransformInfoData::getInstance()->NAME);
+this->viewName= JavaBoxes::unbox<std::string>(requestHashMap->get(TransformInfoData::getInstance()->NAME));
     
 }
 
@@ -236,7 +236,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALI
     std::string storePrepend = this->viewName.substring(0, endIndex);;
     
 
-    std::string viewNamePostfix = this->viewName.substring(endIndex, viewName.size());;
+    std::string viewNamePostfix = this->viewName.substring(endIndex, this->viewName.size());;
     
 
     StringMaker* newViewNameStringBuffer = new StringMaker();;

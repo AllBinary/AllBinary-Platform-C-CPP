@@ -73,9 +73,9 @@ class CommonStrings;
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/image/gui/JPanel.h"
-#include "org/allbinary/image/gui/DefaultComboBoxModel.h"
+template<> class DefaultComboBoxModel;
 class JLabel;
-#include "org/allbinary/image/gui/JComboBox.h"
+template<> class JComboBox;
 class JButton;
 class JTextField;
 class ActionListener;

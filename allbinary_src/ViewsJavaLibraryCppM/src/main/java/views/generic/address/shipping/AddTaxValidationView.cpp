@@ -188,7 +188,7 @@ AddTaxValidationView::AddTaxValidationView(TransformInfoInterface* transformInfo
     StreetAddress* aStreetAddress = dynamic_cast<StreetAddress*>(streetAddressList->get(index));;
     
 
-                        if(aStreetAddress->getName().compareTo(ShippingAddressData::TAX) == 0)
+                        if(aStreetAddress->getName().compare(ShippingAddressData::TAX) == 0)
                         
                                     {
                                     
@@ -290,7 +290,7 @@ AddTaxValidationView::AddTaxValidationView(TransformInfoInterface* transformInfo
     StreetAddress* aStreetAddress = dynamic_cast<StreetAddress*>(streetAddressList->get(index));;
     
 
-                        if(aStreetAddress->getName().compareTo(ShippingAddressData::TAX) == 0)
+                        if(aStreetAddress->getName().compare(ShippingAddressData::TAX) == 0)
                         
                                     {
                                     stringBuffer->append("Not a valid tax location<br/>");

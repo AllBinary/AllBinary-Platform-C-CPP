@@ -237,7 +237,7 @@ this->objectArray[--this->currentIndex]=
     int32_t index = 0;index < this->currentIndex; index++)
         {
 
-                        if(anyType == this->objectArray[index] || anyType->equals(this->objectArray[index]))
+                        if(anyType == this->objectArray[index] || JavaObjects::equals(anyType, this->objectArray[index]))
                         
                                     {
                                     
@@ -462,7 +462,7 @@ this->objectArray= this->arrayUtil->copyOf(this->objectArray, newCapacity);
     int32_t i = 0;i < this->currentIndex; i++)
         {
 
-                        if(anyType->equals(this->objectArray[i]))
+                        if(JavaObjects::equals(anyType, this->objectArray[i]))
                         
                                     {
                                     
@@ -531,7 +531,7 @@ this->objectArray= this->arrayUtil->copyOf(this->objectArray, newCapacity);
     int32_t i = this->currentIndex -1;i >= 0; i--)
         {
 
-                        if(anyType->equals(this->objectArray[i]))
+                        if(JavaObjects::equals(anyType, this->objectArray[i]))
                         
                                     {
                                     

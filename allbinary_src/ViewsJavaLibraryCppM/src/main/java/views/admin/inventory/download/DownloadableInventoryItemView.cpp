@@ -174,7 +174,7 @@ this->request= dynamic_cast<HttpServletRequest*>(this->getPageContext()->getRequ
     auto DownloadableInventoryItemView::getFormData() -> void{
 this->setRequestHashMap((new MultipartRequestParams(this->request))->toHashMap());
     
-this->id= this->getRequestHashMap()->get(basicItemData->ID);
+this->id= JavaBoxes::unbox<std::string>(this->getRequestHashMap()->get(basicItemData->ID));
     
 }
 

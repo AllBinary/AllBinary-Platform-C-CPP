@@ -135,7 +135,7 @@ this->volume= 0;
 
                                     }
                                 
-image= this->createImage(caller, width, height);
+image= this->ImageCacheBase::createImage(caller, width, height);
     
 
                         if(foundIndex ==  -1)
@@ -173,7 +173,7 @@ this->listOfList[foundIndex].add(image);
     ResourceUtil* resourceUtil = ResourceUtil::getInstance();;
     
 
-    int32_t resourceId = resourceUtil->getResourceId(key);;
+    int32_t resourceId = resourceUtil->getResourceId(JavaBoxes::unbox<std::string>(key));;
     
 
     Image* image = this->getImage(resourceId);;
@@ -276,7 +276,7 @@ this->logUtil->putF((new StringMaker())->append("unable to find key: ")->append(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Image::createImageLater(key,  -1,  -1);;
+                        return Image::createImageLater(JavaBoxes::unbox<std::string>(key),  -1,  -1);;
     
 }
 

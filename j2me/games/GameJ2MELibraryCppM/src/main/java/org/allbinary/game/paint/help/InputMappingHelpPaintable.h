@@ -115,6 +115,8 @@ private: class UpdateMyFontProperties;
 private: class UpdateMyFontProperties
             : public virtual Object
          {
+
+    public: InputMappingHelpPaintable* outer = nullptr;
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 

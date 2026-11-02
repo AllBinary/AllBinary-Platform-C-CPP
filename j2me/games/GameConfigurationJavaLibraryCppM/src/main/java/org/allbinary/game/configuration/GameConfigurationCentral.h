@@ -47,7 +47,7 @@ class StringMaker;
 class AbeClientInformationInterface;
 class CommonSeps;
 class CommonStrings;
-#include <org/allbinary/util/ABHashtable.h>
+template<typename T1, typename T2> class ABHashtable;
 class BasicArrayList;
 
 

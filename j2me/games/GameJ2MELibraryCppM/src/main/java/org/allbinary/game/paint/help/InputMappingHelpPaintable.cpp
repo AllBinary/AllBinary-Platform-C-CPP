@@ -118,7 +118,7 @@
 InputMappingHelpPaintable::UpdateMyFontProperties::UpdateMyFontProperties() : actionStringArray(StringUtil::getInstance()->getArrayInstance()), keymappingBeginWidthArray(NullUtil::getInstance()->NULL_INT_ARRAY), actionStringDeltaXArray(NullUtil::getInstance()->NULL_INT_ARRAY), inputDeltaXArray(NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY), sepArray(std::vector<std::vector<std::string>>(0, std::vector<std::string>(0))), sepWidthArray(NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY) {
         }
         
-InputMappingHelpPaintable::InputMappingHelpPaintable(std::vector<GameInputMapping*> gameInputMappingArray, BasicColor* backgroundBasicColor, BasicColor* basicColor) : HelpPaintable("Input Mapping", backgroundBasicColor, basicColor), logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), commonSeps(CommonSeps::getInstance()), stringUtil(StringUtil::getInstance()), basicColorFactory(BasicColorFactory::getInstance()), NONE(GameKeyFactory::getInstance()->NONE), EMPTY_STRING(StringUtil::getInstance()->EMPTY_STRING), keyMappingArray({}), actionBasicColor(BasicColorUtil::getInstance()->ZERO_ARRAY), inputBasicColorArray(std::vector<std::vector<BasicColor*>>(0, std::vector<BasicColor*>(0))), updateMyFontProperties(new UpdateMyFontProperties()){
+InputMappingHelpPaintable::InputMappingHelpPaintable(std::vector<GameInputMapping*> gameInputMappingArray, BasicColor* backgroundBasicColor, BasicColor* basicColor) : HelpPaintable("Input Mapping", backgroundBasicColor, basicColor), logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), commonSeps(CommonSeps::getInstance()), stringUtil(StringUtil::getInstance()), basicColorFactory(BasicColorFactory::getInstance()), NONE(GameKeyFactory::getInstance()->NONE), EMPTY_STRING(StringUtil::getInstance()->EMPTY_STRING), keyMappingArray({}), actionBasicColor(BasicColorUtil::getInstance()->ZERO_ARRAY), inputBasicColorArray(std::vector<std::vector<BasicColor*>>(0, std::vector<BasicColor*>(0))), updateMyFontProperties(javaInner(new UpdateMyFontProperties(), this)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -152,7 +152,7 @@ this->update(this->NONE, this->NONE);
     Font* font = graphics->getFont();;
     
 
-    UpdateMyFontProperties* updateMyFontProperties = new UpdateMyFontProperties();;
+    UpdateMyFontProperties* updateMyFontProperties = javaInner(new UpdateMyFontProperties(), this);;
     
 updateMyFontProperties->charHeight= font->getHeight();
     

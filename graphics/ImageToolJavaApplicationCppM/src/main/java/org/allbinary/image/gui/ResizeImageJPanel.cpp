@@ -121,7 +121,7 @@ this->imageProcessorInput= imageProcessorInput;
 
     std::vector<std::string> numberStringArray = std::vector<std::string>(101);;
     
-numberStringArray[0]= std::to_string();
+numberStringArray[0]= std::to_string( -1);
     
 
 
@@ -160,9 +160,14 @@ this->jComboBox1->setModel(new javax::swing::DefaultComboBoxModel(numberStringAr
 
 
     auto ResizeImageJPanel::process() -> void{
-(class extends Thread
-                                {
-                                
+([&]() {
+    static thread_local ResizeImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public Thread {
+    public:
+    using Thread::Thread;
+    ResizeImageJPanel* outer = anonymousOuter0;
+
     public: void run(){
 
     LogUtil* logUtil = LogUtil::getInstance();;
@@ -173,13 +178,13 @@ this->jComboBox1->setModel(new javax::swing::DefaultComboBoxModel(numberStringAr
     ImageUtil* imageUtil = ImageUtil::getInstance();;
     
 
-    int32_t percent = Integer.valueOf(this->jComboBox1->getSelectedItem());;
+    int32_t percent = Integer.valueOf(JavaBoxes::unbox<std::string>(outer->jComboBox1->getSelectedItem()));;
     
 
-    float percentAsFloat = Float.parseFloat(this->floatPercentJTextField->getText());;
+    float percentAsFloat = Float.parseFloat(outer->floatPercentJTextField->getText());;
     
 
-    ImageProcessorInput* imageProcessorInput = this->getImageProcessorInput();;
+    ImageProcessorInput* imageProcessorInput = outer->getImageProcessorInput();;
     
 
     std::vector<File*> files = imageProcessorInput->getFiles();;
@@ -190,7 +195,7 @@ this->jComboBox1->setModel(new javax::swing::DefaultComboBoxModel(numberStringAr
             ;;
     
 
-                        if(percentAsFloat.intValue() !=  -1)
+                        if(percentAsFloat !=  -1)
                         
                                     {
                                     generatedBufferedImageArray= imageUtil->createBufferedImage2(imageProcessorInput->getBufferedImageArray(), percentAsFloat, true);
@@ -199,7 +204,7 @@ this->jComboBox1->setModel(new javax::swing::DefaultComboBoxModel(numberStringAr
                                     }
                                 
                              else 
-                        if(percent.intValue() !=  -1)
+                        if(percent !=  -1)
                         
                                     {
                                     generatedBufferedImageArray= imageUtil->createBufferedImageForResize(imageProcessorInput->getBufferedImageArray(), percent, true);
@@ -209,10 +214,10 @@ this->jComboBox1->setModel(new javax::swing::DefaultComboBoxModel(numberStringAr
                                 
                         else {
                             
-    int32_t width = Integer.valueOf(this->jTextField1->getText());;
+    int32_t width = Integer.valueOf(JavaBoxes::unbox<std::string>(outer->jTextField1->getText()));;
     
 
-    int32_t height = Integer.valueOf(this->jTextField2->getText());;
+    int32_t height = Integer.valueOf(JavaBoxes::unbox<std::string>(outer->jTextField2->getText()));;
     
 generatedBufferedImageArray= imageUtil->createBufferedImage3(imageProcessorInput->getBufferedImageArray(), width, height, true);
     
@@ -253,28 +258,34 @@ imagePersistanceUtil->saveWithBatik(FileWrapperUtil::wrapFile(files[index]), gen
     
 }
 
-this->getParent()->repaint();
+outer->getParent()->repaint();
     
 
                 //: 
 } catch(Exception& e) 
             {
-logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
+logUtil->put(outer->commonStrings->EXCEPTION, this, outer->commonStrings->RUN, &e);
     
 }
 
 }
 
-                                }
-                            )->start();
+    };
+    return new Anonymous0();
+}())->start();
     
 }
 
 
     auto ResizeImageJPanel::update() -> void{
-(class extends Thread
-                                {
-                                
+([&]() {
+    static thread_local ResizeImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public Thread {
+    public:
+    using Thread::Thread;
+    ResizeImageJPanel* outer = anonymousOuter0;
+
     public: void run(){
 
     LogUtil* logUtil = LogUtil::getInstance();;
@@ -282,7 +293,7 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 
         try {
             
-    ImageProcessorInput* imageProcessorInput = this->getImageProcessorInput();;
+    ImageProcessorInput* imageProcessorInput = outer->getImageProcessorInput();;
     
 
     int32_t size = imageProcessorInput->getBufferedImageArray()->length;;
@@ -302,34 +313,40 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
         {
 bufferedImage= bufferedImageArray[0];
     
-this->jTextField1->setText(std::to_string(getWidth));
+outer->jTextField1->setText(std::to_string(getWidth));
     
-this->jTextField2->setText(std::to_string(getHeight));
+outer->jTextField2->setText(std::to_string(getHeight));
     
 }
 
-this->getParent()->repaint();
+outer->getParent()->repaint();
     
 
                 //: 
 } catch(Exception& e) 
             {
-logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
+logUtil->put(outer->commonStrings->EXCEPTION, this, outer->commonStrings->RUN, &e);
     
 }
 
 }
 
-                                }
-                            )->start();
+    };
+    return new Anonymous0();
+}())->start();
     
 }
 
 
     auto ResizeImageJPanel::updateFor16Above() -> void{
-(class extends Thread
-                                {
-                                
+([&]() {
+    static thread_local ResizeImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public Thread {
+    public:
+    using Thread::Thread;
+    ResizeImageJPanel* outer = anonymousOuter0;
+
     public: void run(){
 
     LogUtil* logUtil = LogUtil::getInstance();;
@@ -337,7 +354,7 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 
         try {
             
-    ImageProcessorInput* imageProcessorInput = this->getImageProcessorInput();;
+    ImageProcessorInput* imageProcessorInput = outer->getImageProcessorInput();;
     
 
     int32_t size = imageProcessorInput->getBufferedImageArray()->length;;
@@ -357,34 +374,40 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
         {
 bufferedImage= bufferedImageArray[0];
     
-this->jTextField1->setText(std::to_string());
+outer->jTextField1->setText(std::to_string());
     
-this->jTextField2->setText(std::to_string());
+outer->jTextField2->setText(std::to_string());
     
 }
 
-this->getParent()->repaint();
+outer->getParent()->repaint();
     
 
                 //: 
 } catch(Exception& e) 
             {
-logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
+logUtil->put(outer->commonStrings->EXCEPTION, this, outer->commonStrings->RUN, &e);
     
 }
 
 }
 
-                                }
-                            )->start();
+    };
+    return new Anonymous0();
+}())->start();
     
 }
 
 
     auto ResizeImageJPanel::updateFor16Below() -> void{
-(class extends Thread
-                                {
-                                
+([&]() {
+    static thread_local ResizeImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public Thread {
+    public:
+    using Thread::Thread;
+    ResizeImageJPanel* outer = anonymousOuter0;
+
     public: void run(){
 
     LogUtil* logUtil = LogUtil::getInstance();;
@@ -392,7 +415,7 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 
         try {
             
-    ImageProcessorInput* imageProcessorInput = this->getImageProcessorInput();;
+    ImageProcessorInput* imageProcessorInput = outer->getImageProcessorInput();;
     
 
     int32_t size = imageProcessorInput->getBufferedImageArray()->length;;
@@ -412,26 +435,27 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
         {
 bufferedImage= bufferedImageArray[0];
     
-this->jTextField1->setText(std::to_string());
+outer->jTextField1->setText(std::to_string());
     
-this->jTextField2->setText(std::to_string());
+outer->jTextField2->setText(std::to_string());
     
 }
 
-this->getParent()->repaint();
+outer->getParent()->repaint();
     
 
                 //: 
 } catch(Exception& e) 
             {
-logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
+logUtil->put(outer->commonStrings->EXCEPTION, this, outer->commonStrings->RUN, &e);
     
 }
 
 }
 
-                                }
-                            )->start();
+    };
+    return new Anonymous0();
+}())->start();
     
 }
 
@@ -484,16 +508,22 @@ this->jComboBox1->setModel(new javax::swing::DefaultComboBoxModel<>(
     
 this->aboveJButton->setText("Process");
     
-this->aboveJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->aboveJButton->addActionListener([&]() {
+    static thread_local ResizeImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    ResizeImageJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-aboveJButtonActionPerformed(evt);
+outer->aboveJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jLabel2->setText("Width:");
     
@@ -501,16 +531,22 @@ this->jLabel3->setText("Height:");
     
 this->updateJButton->setText("Update");
     
-this->updateJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->updateJButton->addActionListener([&]() {
+    static thread_local ResizeImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    ResizeImageJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-updateJButtonActionPerformed(evt);
+outer->updateJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->floatPercentJTextField->setText("-1.000000");
     
@@ -518,29 +554,41 @@ this->floatPercentJTextField->setMinimumSize(new java::awt::Dimension(120, 22));
     
 this->adjustFor16AboveJButton->setText("Adjust for 16 Above");
     
-this->adjustFor16AboveJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->adjustFor16AboveJButton->addActionListener([&]() {
+    static thread_local ResizeImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    ResizeImageJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-adjustFor16AboveJButtonActionPerformed(evt);
+outer->adjustFor16AboveJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->adjustFor16BelowJButton->setText("Adjust for 16 Below");
     
-this->adjustFor16BelowJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->adjustFor16BelowJButton->addActionListener([&]() {
+    static thread_local ResizeImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    ResizeImageJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-adjustFor16BelowJButtonActionPerformed(evt);
+outer->adjustFor16BelowJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 
     javax::swing::GroupLayout* layout = new javax::swing::GroupLayout(this);;

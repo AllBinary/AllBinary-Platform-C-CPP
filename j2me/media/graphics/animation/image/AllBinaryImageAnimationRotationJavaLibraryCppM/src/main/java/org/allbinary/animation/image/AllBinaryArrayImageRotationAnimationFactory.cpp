@@ -160,7 +160,7 @@ this->animationFactoryInitializationVisitor->originalDy= dy;
             
     auto AllBinaryArrayImageRotationAnimationFactory::getInstance(int32_t instanceId) -> Animation*{
 
-    std::vector<Image*> scaledImageArray = std::vector<Image*>(this->imageArray.length);;
+    std::vector<Image*> scaledImageArray = std::vector<Image*>(this->imageArray.size());;
     
 
     int32_t size = scaledImageArray.size();;

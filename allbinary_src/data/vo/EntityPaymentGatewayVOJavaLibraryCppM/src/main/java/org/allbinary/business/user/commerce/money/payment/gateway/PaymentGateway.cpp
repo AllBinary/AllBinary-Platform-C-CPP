@@ -104,173 +104,173 @@ this->getFormData(hashMap);
 
     std::string empty = stringUtil->EMPTY_STRING;;
     
-this->storeName= hashMap->get(StoreFrontData::getInstance()->NAME->toString());
+this->storeName= JavaBoxes::unbox<std::string>(hashMap->get(StoreFrontData::getInstance()->NAME->toString()));
     
-this->name= hashMap->get(PaymentGatewayData::NAME->toString());
+this->name= JavaBoxes::unbox<std::string>(hashMap->get(PaymentGatewayData::NAME->toString()));
     
-this->enable= stringUtil->getNonNull(hashMap->get(EntryData::getInstance()->ENABLE->toString()));
+this->enable= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInstance()->ENABLE->toString())));
     
-this->paymentMethod= stringUtil->getNonNull(hashMap->get(PaymentData::METHOD->toString()));
+this->paymentMethod= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(hashMap->get(PaymentData::METHOD->toString())));
     
-this->mode= stringUtil->getNonNull(hashMap->get(PaymentGatewayData::MODE->toString()));
+this->mode= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(hashMap->get(PaymentGatewayData::MODE->toString())));
     
-this->testProtocol= stringUtil->getNonNull(hashMap->get(PaymentGatewayData::TESTPROTOCOL->toString()));
+this->testProtocol= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(hashMap->get(PaymentGatewayData::TESTPROTOCOL->toString())));
     
-this->testServer= stringUtil->getNonNull(hashMap->get(PaymentGatewayData::TESTSERVER->toString()));
+this->testServer= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(hashMap->get(PaymentGatewayData::TESTSERVER->toString())));
     
-this->testPort= stringUtil->getNonNull(hashMap->get(PaymentGatewayData::TESTPORT->toString()));
+this->testPort= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(hashMap->get(PaymentGatewayData::TESTPORT->toString())));
     
-this->testPath= hashMap->get(PaymentGatewayData::TESTPATH->toString());
+this->testPath= JavaBoxes::unbox<std::string>(hashMap->get(PaymentGatewayData::TESTPATH->toString()));
     
 
                         if(false)
                         this->testPath= empty;
                                 
-this->serverProtocol= hashMap->get(PaymentGatewayData::SERVERPROTOCOL->toString());
+this->serverProtocol= JavaBoxes::unbox<std::string>(hashMap->get(PaymentGatewayData::SERVERPROTOCOL->toString()));
     
 
                         if(false)
                         this->serverProtocol= empty;
                                 
-this->server= hashMap->get(PaymentGatewayData::SERVER->toString());
+this->server= JavaBoxes::unbox<std::string>(hashMap->get(PaymentGatewayData::SERVER->toString()));
     
 
                         if(false)
                         this->server= empty;
                                 
-this->serverPort= hashMap->get(PaymentGatewayData::SERVERPORT->toString());
+this->serverPort= JavaBoxes::unbox<std::string>(hashMap->get(PaymentGatewayData::SERVERPORT->toString()));
     
 
                         if(false)
                         this->serverPort= empty;
                                 
-this->serverPath= hashMap->get(PaymentGatewayData::SERVERPATH->toString());
+this->serverPath= JavaBoxes::unbox<std::string>(hashMap->get(PaymentGatewayData::SERVERPATH->toString()));
     
 
                         if(false)
                         this->serverPath= empty;
                                 
-this->userName= hashMap->get(UserData::USERNAME->toString());
+this->userName= JavaBoxes::unbox<std::string>(hashMap->get(UserData::USERNAME->toString()));
     
 
                         if(false)
                         this->userName= empty;
                                 
-this->password= hashMap->get(UserData::PASSWORD->toString());
+this->password= JavaBoxes::unbox<std::string>(hashMap->get(UserData::PASSWORD->toString()));
     
 
                         if(false)
                         this->password= empty;
                                 
-this->timeout= hashMap->get(PaymentGatewayData::TIMEOUT->toString());
+this->timeout= JavaBoxes::unbox<std::string>(hashMap->get(PaymentGatewayData::TIMEOUT->toString()));
     
 
                         if(false)
                         this->timeout= empty;
                                 
-this->proxyProtocol= hashMap->get(PaymentGatewayData::PROXYPROTOCOL->toString());
+this->proxyProtocol= JavaBoxes::unbox<std::string>(hashMap->get(PaymentGatewayData::PROXYPROTOCOL->toString()));
     
 
                         if(false)
                         this->proxyProtocol= empty;
                                 
-this->proxyServer= hashMap->get(PaymentGatewayData::PROXYSERVER->toString());
+this->proxyServer= JavaBoxes::unbox<std::string>(hashMap->get(PaymentGatewayData::PROXYSERVER->toString()));
     
 
                         if(false)
                         this->proxyServer= empty;
                                 
-this->proxyPort= hashMap->get(PaymentGatewayData::PROXYPORT->toString());
+this->proxyPort= JavaBoxes::unbox<std::string>(hashMap->get(PaymentGatewayData::PROXYPORT->toString()));
     
 
                         if(false)
                         this->proxyPort= empty;
                                 
-this->proxyPath= hashMap->get(PaymentGatewayData::PROXYPATH->toString());
+this->proxyPath= JavaBoxes::unbox<std::string>(hashMap->get(PaymentGatewayData::PROXYPATH->toString()));
     
 
                         if(false)
                         this->proxyPath= empty;
                                 
-this->proxyUserName= hashMap->get(PaymentGatewayData::PROXYUSERNAME->toString());
+this->proxyUserName= JavaBoxes::unbox<std::string>(hashMap->get(PaymentGatewayData::PROXYUSERNAME->toString()));
     
 
                         if(false)
                         this->proxyUserName= empty;
                                 
-this->proxyPassword= hashMap->get(PaymentGatewayData::PROXYPASSWORD->toString());
+this->proxyPassword= JavaBoxes::unbox<std::string>(hashMap->get(PaymentGatewayData::PROXYPASSWORD->toString()));
     
 
                         if(false)
                         this->proxyPassword= empty;
                                 
-this->proxyTimeout= hashMap->get(PaymentGatewayData::PROXYTIMEOUT->toString());
+this->proxyTimeout= JavaBoxes::unbox<std::string>(hashMap->get(PaymentGatewayData::PROXYTIMEOUT->toString()));
     
 
                         if(false)
                         this->proxyTimeout= empty;
                                 
-this->special1= hashMap->get(PaymentGatewayData::SPECIAL1->toString());
+this->special1= JavaBoxes::unbox<std::string>(hashMap->get(PaymentGatewayData::SPECIAL1->toString()));
     
 
                         if(false)
                         this->special1= empty;
                                 
-this->special2= hashMap->get(PaymentGatewayData::SPECIAL2->toString());
+this->special2= JavaBoxes::unbox<std::string>(hashMap->get(PaymentGatewayData::SPECIAL2->toString()));
     
 
                         if(false)
                         this->special2= empty;
                                 
-this->special3= hashMap->get(PaymentGatewayData::SPECIAL3->toString());
+this->special3= JavaBoxes::unbox<std::string>(hashMap->get(PaymentGatewayData::SPECIAL3->toString()));
     
 
                         if(false)
                         this->special3= empty;
                                 
-this->special4= hashMap->get(PaymentGatewayData::SPECIAL4->toString());
+this->special4= JavaBoxes::unbox<std::string>(hashMap->get(PaymentGatewayData::SPECIAL4->toString()));
     
 
                         if(false)
                         this->special4= empty;
                                 
-this->special5= hashMap->get(PaymentGatewayData::SPECIAL5->toString());
+this->special5= JavaBoxes::unbox<std::string>(hashMap->get(PaymentGatewayData::SPECIAL5->toString()));
     
 
                         if(false)
                         this->special5= empty;
                                 
-this->special6= hashMap->get(PaymentGatewayData::SPECIAL6->toString());
+this->special6= JavaBoxes::unbox<std::string>(hashMap->get(PaymentGatewayData::SPECIAL6->toString()));
     
 
                         if(false)
                         this->special6= empty;
                                 
-this->special7= hashMap->get(PaymentGatewayData::SPECIAL7->toString());
+this->special7= JavaBoxes::unbox<std::string>(hashMap->get(PaymentGatewayData::SPECIAL7->toString()));
     
 
                         if(false)
                         this->special7= empty;
                                 
-this->special8= hashMap->get(PaymentGatewayData::SPECIAL8->toString());
+this->special8= JavaBoxes::unbox<std::string>(hashMap->get(PaymentGatewayData::SPECIAL8->toString()));
     
 
                         if(false)
                         this->special8= empty;
                                 
-this->special9= hashMap->get(PaymentGatewayData::SPECIAL9->toString());
+this->special9= JavaBoxes::unbox<std::string>(hashMap->get(PaymentGatewayData::SPECIAL9->toString()));
     
 
                         if(false)
                         this->special9= empty;
                                 
-this->lastModified= hashMap->get(EntryData::getInstance()->LASTMODIFIED->toString());
+this->lastModified= JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInstance()->LASTMODIFIED->toString()));
     
 
                         if(false)
                         this->lastModified= empty;
                                 
-this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED->toString());
+this->timeEntered= JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInstance()->TIMECREATED->toString()));
     
 
                         if(false)

@@ -205,7 +205,7 @@ ScrollSelectionForm::init(rectangle, formType);
                         if(formType == formTypeFactory->HORIZONTAL_FORM)
                         
                                     {
-                                    this->multipleScrollSelectionHorizontalFormTypeItemIndexPaintable= new MultipleScrollSelectionFormHorizontalPaintable(this);
+                                    this->multipleScrollSelectionHorizontalFormTypeItemIndexPaintable= javaInner(new MultipleScrollSelectionFormHorizontalPaintable(this), this);
     
 
                                     }
@@ -214,7 +214,7 @@ ScrollSelectionForm::init(rectangle, formType);
                         if(formType == formTypeFactory->VERTICAL_CENTER_FORM)
                         
                                     {
-                                    this->multipleScrollSelectionHorizontalFormTypeItemIndexPaintable= new MultipleScrollSelectionFormVerticalPaintable(this);
+                                    this->multipleScrollSelectionHorizontalFormTypeItemIndexPaintable= javaInner(new MultipleScrollSelectionFormVerticalPaintable(this), this);
     
 
                                     }

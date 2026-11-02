@@ -61,7 +61,7 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 
-TableDataFactory::TableDataFactory() : INTEGER_MAX_VALUE_STRING(std::to_string(MAX_VALUE)), ZERO_STRING(CommonPhoneStrings::getInstance()->ZERO) {
+TableDataFactory::TableDataFactory() : INTEGER_MAX_VALUE_STRING(std::to_string(Integer.MAX_VALUE)), ZERO_STRING(CommonPhoneStrings::getInstance()->ZERO) {
         }
         auto TableDataFactory::instance_owner() -> TableDataFactory* { static std::unique_ptr<TableDataFactory> value(new TableDataFactory()); return value.get(); }
 TableDataFactory* TableDataFactory::instance = TableDataFactory::instance_owner();

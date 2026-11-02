@@ -145,9 +145,9 @@ this->getFormData();
 
                                     }
                                 
-this->id= hashMap->get(basicItemData.ID);
+this->id= JavaBoxes::unbox<std::string>(hashMap->get(basicItemData.ID));
     
-this->downloadItemId= hashMap->get(DownloadItemData::ID);
+this->downloadItemId= JavaBoxes::unbox<std::string>(hashMap->get(DownloadItemData::ID));
     
 }
 

@@ -154,16 +154,22 @@ this->titleJLabel->setText("Time Interval Condition Options");
     
 this->okJButton->setText("OK");
     
-this->okJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->okJButton->addActionListener([&]() {
+    static thread_local TimeIntervalActionScriptConditionJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    TimeIntervalActionScriptConditionJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-okJButtonActionPerformed(evt);
+outer->okJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jLabel2->setText("Time (ms):");
     
@@ -180,16 +186,22 @@ setMinimumSize(new java::awt::Dimension(100, 0));
     
 this->timeIntervalActionJButton->setText("Edit");
     
-this->timeIntervalActionJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->timeIntervalActionJButton->addActionListener([&]() {
+    static thread_local TimeIntervalActionScriptConditionJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    TimeIntervalActionScriptConditionJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-timeIntervalActionJButtonActionPerformed(evt);
+outer->timeIntervalActionJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jLabel1->setText("Time Interval:");
     

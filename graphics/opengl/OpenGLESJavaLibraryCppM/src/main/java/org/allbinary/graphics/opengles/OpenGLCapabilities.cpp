@@ -256,7 +256,7 @@ this->glExtensions= gl->glGetString(GL10::GL_EXTENSIONS);
                                     }
                                 
 
-                        if(this->glRenderer.toLowerCase().indexOf("pixelflinger") >= 0)
+                        if(JavaString::indexOf(this->glRenderer.toLowerCase(), "pixelflinger") >= 0)
                         
                                     {
                                     this->acceleratedString= JavaString::valueOf("Probably Not for ") +JavaString::valueOf(this->glRenderer);

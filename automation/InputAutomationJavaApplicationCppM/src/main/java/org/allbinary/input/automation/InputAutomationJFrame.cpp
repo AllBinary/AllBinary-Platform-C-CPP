@@ -315,52 +315,70 @@ this->setMinimumSize(new java::awt::Dimension(325, 215));
     
 setResizable(false);
     
-addWindowFocusListener(class extends java::awt::event::WindowFocusListener
-                                {
-                                
+addWindowFocusListener([&]() {
+    static thread_local InputAutomationJFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::WindowFocusListener {
+    public:
+    using java::awt::event::WindowFocusListener::WindowFocusListener;
+    InputAutomationJFrame* outer = anonymousOuter0;
+
     public: void windowGainedFocus(java::awt::event::WindowEvent* evt){
-formWindowGainedFocus(evt);
+outer->formWindowGainedFocus(evt);
     
 }
 
     public: void windowLostFocus(java::awt::event::WindowEvent* evt){
-formWindowLostFocus(evt);
+outer->formWindowLostFocus(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
-addFocusListener(class extends java::awt::event::FocusAdapter
-                                {
-                                
+addFocusListener([&]() {
+    static thread_local InputAutomationJFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::FocusAdapter {
+    public:
+    using java::awt::event::FocusAdapter::FocusAdapter;
+    InputAutomationJFrame* outer = anonymousOuter0;
+
     public: void focusGained(java::awt::event::FocusEvent* evt){
-formFocusGained(evt);
+outer->formFocusGained(evt);
     
 }
 
     public: void focusLost(java::awt::event::FocusEvent* evt){
-formFocusLost(evt);
+outer->formFocusLost(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->gameRobotJTabbedPane->setMinimumSize(new java::awt::Dimension(320, 200));
     
 this->inputAutomationModuleJList->setMinimumSize(new java::awt::Dimension(200, 0));
     
-this->inputAutomationModuleJList->addListSelectionListener(class extends javax::swing::event::ListSelectionListener
-                                {
-                                
+this->inputAutomationModuleJList->addListSelectionListener([&]() {
+    static thread_local InputAutomationJFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public javax::swing::event::ListSelectionListener {
+    public:
+    using javax::swing::event::ListSelectionListener::ListSelectionListener;
+    InputAutomationJFrame* outer = anonymousOuter0;
+
     public: void valueChanged(javax::swing::event::ListSelectionEvent* evt){
-inputAutomationModuleJListValueChanged(evt);
+outer->inputAutomationModuleJListValueChanged(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jScrollPane1->setViewportView(this->inputAutomationModuleJList);
     
@@ -392,31 +410,43 @@ this->processingJMenu->setToolTipText("Set module processing state");
     
 this->startJMenuItem->setText(this->commonStrings->START);
     
-this->startJMenuItem->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->startJMenuItem->addActionListener([&]() {
+    static thread_local InputAutomationJFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    InputAutomationJFrame* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-startJMenuItemActionPerformed(evt);
+outer->startJMenuItemActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->processingJMenu->add(this->startJMenuItem);
     
 this->stopJMenuItem->setText("Stop");
     
-this->stopJMenuItem->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->stopJMenuItem->addActionListener([&]() {
+    static thread_local InputAutomationJFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    InputAutomationJFrame* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-stopJMenuItemActionPerformed(evt);
+outer->stopJMenuItemActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->processingJMenu->add(this->stopJMenuItem);
     
@@ -424,16 +454,22 @@ this->mainJMenuBar->add(this->processingJMenu);
     
 this->optionsJMenu->setText("Options");
     
-this->optionsJMenu->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->optionsJMenu->addActionListener([&]() {
+    static thread_local InputAutomationJFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    InputAutomationJFrame* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-optionsJMenuActionPerformed(evt);
+outer->optionsJMenuActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->stopOnFocusJCheckBoxMenuItem->setSelected(true);
     
@@ -441,16 +477,22 @@ this->stopOnFocusJCheckBoxMenuItem->setEnabled(false);
     
 this->stopOnFocusJCheckBoxMenuItem->setLabel("Stop Module On Focus");
     
-this->stopOnFocusJCheckBoxMenuItem->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->stopOnFocusJCheckBoxMenuItem->addActionListener([&]() {
+    static thread_local InputAutomationJFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    InputAutomationJFrame* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-stopOnFocusJCheckBoxMenuItemActionPerformed(evt);
+outer->stopOnFocusJCheckBoxMenuItemActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->optionsJMenu->add(this->stopOnFocusJCheckBoxMenuItem);
     
@@ -460,76 +502,106 @@ this->toolsJMenu->setText("Help");
     
 this->helpJMenuItem->setText("Help");
     
-this->helpJMenuItem->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->helpJMenuItem->addActionListener([&]() {
+    static thread_local InputAutomationJFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    InputAutomationJFrame* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-helpJMenuItemActionPerformed(evt);
+outer->helpJMenuItemActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->toolsJMenu->add(this->helpJMenuItem);
     
 this->updatesJMenuItem->setText("Updates");
     
-this->updatesJMenuItem->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->updatesJMenuItem->addActionListener([&]() {
+    static thread_local InputAutomationJFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    InputAutomationJFrame* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-updatesJMenuItemActionPerformed(evt);
+outer->updatesJMenuItemActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->toolsJMenu->add(this->updatesJMenuItem);
     
 this->subscriptionJMenuItem->setText("Subscription");
     
-this->subscriptionJMenuItem->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->subscriptionJMenuItem->addActionListener([&]() {
+    static thread_local InputAutomationJFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    InputAutomationJFrame* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-subscriptionJMenuItemActionPerformed(evt);
+outer->subscriptionJMenuItemActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->toolsJMenu->add(this->subscriptionJMenuItem);
     
 this->modulesJMenuItem->setText("Module Manager");
     
-this->modulesJMenuItem->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->modulesJMenuItem->addActionListener([&]() {
+    static thread_local InputAutomationJFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    InputAutomationJFrame* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-modulesJMenuItemActionPerformed(evt);
+outer->modulesJMenuItemActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->toolsJMenu->add(this->modulesJMenuItem);
     
 this->aboutJMenuItem->setText("About");
     
-this->aboutJMenuItem->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->aboutJMenuItem->addActionListener([&]() {
+    static thread_local InputAutomationJFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    InputAutomationJFrame* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-aboutJMenuItemActionPerformed(evt);
+outer->aboutJMenuItemActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->toolsJMenu->add(this->aboutJMenuItem);
     
@@ -666,7 +738,7 @@ this->logUtil->putF("Nothing", this, "focusLost");
 
         try {
             
-    std::string gameAutomationRobotModuleNameString = this->inputAutomationModuleJList->getSelectedValue();;
+    std::string gameAutomationRobotModuleNameString = JavaBoxes::unbox<std::string>(this->inputAutomationModuleJList->getSelectedValue());;
     
 
                         if(true)
@@ -822,9 +894,14 @@ URLGLOBALS::init(appUrlGlobals);
     
 WebappClassLoaderInfo::setLoader(appUrlGlobals->getClass()getClassLoader());
     
-java.awt->EventQueue->invokeLater(class extends ARunnable
-                                {
-                                
+java.awt->EventQueue->invokeLater([&]() {
+    static thread_local InputAutomationBundleActivatorListenerInterface* anonymous0_inputAutomationBundleActivatorListenerInterface{};
+    anonymous0_inputAutomationBundleActivatorListenerInterface = inputAutomationBundleActivatorListenerInterface;
+    class Anonymous0 : public ARunnable {
+    public:
+    using ARunnable::ARunnable;
+    InputAutomationBundleActivatorListenerInterface* inputAutomationBundleActivatorListenerInterface = anonymous0_inputAutomationBundleActivatorListenerInterface;
+
     public: void run(){
 
     LogUtil* logUtil = LogUtil::getInstance();;
@@ -865,8 +942,9 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 }
 

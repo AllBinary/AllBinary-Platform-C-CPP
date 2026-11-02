@@ -53,6 +53,7 @@ class BouncyCastleProvider: public Provider {
 public: BouncyCastleProvider();
 
     public: void setParameter(std::string parameterName, Object* parameter);
+    public: void setParameter(std::string parameterName, const std::string& parameter) { return setParameter(parameterName, JavaString::box(parameter)); }
 
 };
 

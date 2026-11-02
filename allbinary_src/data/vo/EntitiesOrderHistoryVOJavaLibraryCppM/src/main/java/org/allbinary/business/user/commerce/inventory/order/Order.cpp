@@ -440,10 +440,10 @@ hashMap->put(OrderData::STORECANCELCOMMENT, this->storeCancelComment);
     int32_t i = 0;i < size; i++)
         {
 
-    std::string name = keyArray[i];;
+    std::string name = JavaBoxes::unbox<std::string>(keyArray[i]);;
     
 
-    std::string value = hashMap->get(name);;
+    std::string value = JavaBoxes::unbox<std::string>(hashMap->get(name));;
     
 value= StringUtil::getInstance()->getNonNull(value);
     

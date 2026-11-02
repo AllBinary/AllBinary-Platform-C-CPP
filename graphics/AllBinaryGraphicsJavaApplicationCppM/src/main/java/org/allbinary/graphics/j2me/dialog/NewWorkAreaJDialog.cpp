@@ -117,13 +117,18 @@ this->dimension= dimension;
 
     JButton* submitButton = new JButton("Ok");;
     
-submitButton->addActionListener(class extends ActionListener
-                                {
-                                
+submitButton->addActionListener([&]() {
+    static thread_local NewWorkAreaJDialog* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public ActionListener {
+    public:
+    using ActionListener::ActionListener;
+    NewWorkAreaJDialog* outer = anonymousOuter0;
+
     public: void actionPerformed(ActionEvent* evt){
 
         try {
-            disposeNewDialog();
+            outer->disposeNewDialog();
     
 
                 //: 
@@ -133,8 +138,9 @@ submitButton->addActionListener(class extends ActionListener
 
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->setSize(150, 100);
     
@@ -194,7 +200,7 @@ this->show();
                                     throw GraphicsException("No Name", this, "disposeNewDialog");
                                 
 
-    WorkAreaJPanel* workAreaJPanel = new WorkAreaJPanel(newName, this->dimension, canvasWidth.intValue(), canvasHeight.intValue());;
+    WorkAreaJPanel* workAreaJPanel = new WorkAreaJPanel(newName, this->dimension, canvasWidth, canvasHeight);;
     
 workAreaJPanel->setLayout(new GridLayout(1, 1));
     
@@ -217,16 +223,22 @@ this->dispose();
 
 
     auto NewWorkAreaJDialog::initComponents() -> void{
-addWindowListener(class extends java::awt::event::WindowAdapter
-                                {
-                                
+addWindowListener([&]() {
+    static thread_local NewWorkAreaJDialog* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::WindowAdapter {
+    public:
+    using java::awt::event::WindowAdapter::WindowAdapter;
+    NewWorkAreaJDialog* outer = anonymousOuter0;
+
     public: void windowClosing(java::awt::event::WindowEvent* evt){
-closeDialog(evt);
+outer->closeDialog(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 pack();
     

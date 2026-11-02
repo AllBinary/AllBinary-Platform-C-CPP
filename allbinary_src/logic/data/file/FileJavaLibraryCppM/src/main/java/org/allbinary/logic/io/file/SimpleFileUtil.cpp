@@ -124,9 +124,11 @@ SimpleFileUtil* SimpleFileUtil::instance = SimpleFileUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return class extends OutputStream
-                                {
-                                
+                        return []() {
+    class Anonymous0 : public OutputStream {
+    public:
+    using OutputStream::OutputStream;
+
                 //@Throws(IOException.constructor)
             
     public: void write(int32_t b){
@@ -140,8 +142,9 @@ SimpleFileUtil* SimpleFileUtil::instance = SimpleFileUtil::instance_owner();
     public: void close(){
 }
 
-                                }
-                            ;
+    };
+    return new Anonymous0();
+}();
     
 }
 
@@ -151,9 +154,11 @@ SimpleFileUtil* SimpleFileUtil::instance = SimpleFileUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return class extends Writer
-                                {
-                                
+                        return []() {
+    class Anonymous0 : public Writer {
+    public:
+    using Writer::Writer;
+
     bool closed= false;
                 //@Throws(IOException.constructor)
             
@@ -216,8 +221,9 @@ SimpleFileUtil* SimpleFileUtil::instance = SimpleFileUtil::instance_owner();
     public: void close(){
 }
 
-                                }
-                            ;
+    };
+    return new Anonymous0();
+}();
     
 }
 
@@ -227,9 +233,11 @@ SimpleFileUtil* SimpleFileUtil::instance = SimpleFileUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return class extends Reader
-                                {
-                                
+                        return []() {
+    class Anonymous0 : public Reader {
+    public:
+    using Reader::Reader;
+
                 //@Throws(IOException.constructor)
             
     public: int32_t read(){
@@ -288,8 +296,9 @@ SimpleFileUtil* SimpleFileUtil::instance = SimpleFileUtil::instance_owner();
     public: void close(){
 }
 
-                                }
-                            ;
+    };
+    return new Anonymous0();
+}();
     
 }
 

@@ -73,6 +73,7 @@ class BooleanFileVisitor
 public: BooleanFileVisitor(BasicArrayList* filterStringBasicArrayList);
 
     public: Object* visit(Object* anyType);
+    public: Object* visit(const std::string& anyType) { return visit(JavaString::box(anyType)); }
 
     public: bool visit(AbFile* file);
 

@@ -126,9 +126,14 @@ this->imageProcessorInput= imageProcessorInput;
 
 
     auto RotationImageJPanel::process() -> void{
-(class extends Thread
-                                {
-                                
+([&]() {
+    static thread_local RotationImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public Thread {
+    public:
+    using Thread::Thread;
+    RotationImageJPanel* outer = anonymousOuter0;
+
     public: void run(){
 
     LogUtil* logUtil = LogUtil::getInstance();;
@@ -136,39 +141,45 @@ this->imageProcessorInput= imageProcessorInput;
 
         try {
             
-    std::string angleAsString = this->totalAngleJComboBox->getSelectedItem();;
+    std::string angleAsString = JavaBoxes::unbox<std::string>(outer->totalAngleJComboBox->getSelectedItem());;
     
-ImageArrayRotationUtil::getInstance()->process(this->getImageProcessorInput(), angleAsString, this);
+ImageArrayRotationUtil::getInstance()->process(outer->getImageProcessorInput(), angleAsString, outer);
     
 
                 //: 
 } catch(Exception& e) 
             {
-logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
+logUtil->put(outer->commonStrings->EXCEPTION, this, outer->commonStrings->RUN, &e);
     
 }
 
 }
 
-                                }
-                            )->start();
+    };
+    return new Anonymous0();
+}())->start();
     
 }
 
 
     auto RotationImageJPanel::initComponents() -> void{
-this->jPanel1= class extends javax::swing::JPanel
-                                {
-                                
+this->jPanel1= [&]() {
+    static thread_local RotationImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public javax::swing::JPanel {
+    public:
+    using javax::swing::JPanel::JPanel;
+    RotationImageJPanel* outer = anonymousOuter0;
+
     public: void paint(Graphics* graphics){
 
-                        if(this->result != 
+                        if(outer->result != 
                                     nullptr
                                 )
                         
                                     {
-                                    graphics->drawImage(this->result, 0, 0, this->result->getWidth(
-                            nullptr), this->result->getHeight(
+                                    graphics->drawImage(outer->result, 0, 0, outer->result->getWidth(
+                            nullptr), outer->result->getHeight(
                             nullptr), 
                             nullptr);
     
@@ -177,8 +188,9 @@ this->jPanel1= class extends javax::swing::JPanel
                                 
 }
 
-                                }
-                            ;
+    };
+    return new Anonymous0();
+}();
     
 this->jPanel2= new javax::swing::JPanel();
     
@@ -207,32 +219,44 @@ jPanel1Layout->setVerticalGroup(jPanel1Layout->createParallelGroup(org.jdesktop-
     
 this->generateJButton->setText("Generate");
     
-this->generateJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->generateJButton->addActionListener([&]() {
+    static thread_local RotationImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    RotationImageJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-generateJButtonActionPerformed(evt);
+outer->generateJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->totalAngleJComboBox->setModel(new javax::swing::DefaultComboBoxModel(
                                                 {
                                                     this->commonStrings->UP,this->commonStrings->DOWN,"-90","90"
                                                 }));
     
-this->totalAngleJComboBox->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->totalAngleJComboBox->addActionListener([&]() {
+    static thread_local RotationImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    RotationImageJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-totalAngleJComboBoxActionPerformed(evt);
+outer->totalAngleJComboBoxActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jLabel3->setText("Total Angle:");
     

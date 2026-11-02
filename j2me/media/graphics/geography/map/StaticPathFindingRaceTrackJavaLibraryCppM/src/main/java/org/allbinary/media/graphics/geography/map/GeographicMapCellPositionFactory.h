@@ -41,7 +41,7 @@ class AllBinaryTiledLayer;
 class StdUtil;
 class LogUtil;
 class StringMaker;
-#include <org/allbinary/util/ABHashtable.h>
+template<typename T1, typename T2> class ABHashtable;
 
 
 

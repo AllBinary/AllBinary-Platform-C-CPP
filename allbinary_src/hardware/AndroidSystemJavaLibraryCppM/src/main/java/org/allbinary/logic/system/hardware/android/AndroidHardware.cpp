@@ -28,8 +28,6 @@
         #include "org/allbinary/logic/system/hardware/android/AndroidHardware.h"
         
 
-            #include <hilog/log.h>
-        
             #include <cstdint>
             #include <memory>
             #include <string>

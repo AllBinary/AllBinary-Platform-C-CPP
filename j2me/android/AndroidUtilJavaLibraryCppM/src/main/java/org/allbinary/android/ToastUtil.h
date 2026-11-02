@@ -12,8 +12,6 @@
         #undef JAVA_COMPLETE_TYPES
         
 
-            #include <hilog/log.h>
-        
             #include <cstdint>
             #include <memory>
             #include <string>

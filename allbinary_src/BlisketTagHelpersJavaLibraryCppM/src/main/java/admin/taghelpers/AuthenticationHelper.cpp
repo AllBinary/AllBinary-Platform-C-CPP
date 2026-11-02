@@ -507,11 +507,11 @@ stringBuffer->append("Trying New login<p/>");
     BasicUserRole* mustBeOfRole = dynamic_cast<BasicUserRole*>(basicUserRoleArray[index]);;
     
 
-                        if(basicUserRole->equals(mustBeOfRole))
+                        if(JavaObjects::equals(basicUserRole, mustBeOfRole))
                         
                                     {
                                     
-                        if(basicUserRole->equals(UserRoleFactory::getInstance()->CUSTOMER))
+                        if(JavaObjects::equals(basicUserRole, UserRoleFactory::getInstance()->CUSTOMER))
                         
                                     {
                                     
@@ -609,10 +609,10 @@ stringBuffer->append("Trying New login<p/>");
 
                         if(this->attemptsInteger != 
                                     nullptr
-                                 && this->attemptsInteger.intValue() > 0)
+                                 && this->attemptsInteger > 0)
                         
                                     {
-                                    this->weblisketSession->setAttempts(int32_t(this->attemptsInteger.intValue() +1));
+                                    this->weblisketSession->setAttempts(int32_t(this->attemptsInteger +1));
     
 
                                     }

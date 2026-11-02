@@ -180,7 +180,7 @@ indexPropertyValueHashMap->put(indexValue, propertyValue);
     int32_t indexInt = int32_t(index);;
     
 
-    std::string propertyValue = indexPropertyValueHashMap->get(indexInt.toString());;
+    std::string propertyValue = JavaBoxes::unbox<std::string>(indexPropertyValueHashMap->get(JavaString::valueOf(indexInt)));;
     
 this->propertyValueVector->add(propertyValue);
     
@@ -213,7 +213,7 @@ this->propertyValueVector->add(propertyValue);
     int32_t index = 0;index < size; index++)
         {
 
-    std::string value = this->propertyValueVector->get(index);;
+    std::string value = JavaBoxes::unbox<std::string>(this->propertyValueVector->get(index));;
     
 stringBuffer->delete_(0, stringBuffer->length());
     

@@ -28,8 +28,6 @@
         #include "org/allbinary/logic/communication/log/PreLogUtil.h"
         
 
-            #include <hilog/log.h>
-        
             #include <cstdint>
             #include <memory>
             #include <string>

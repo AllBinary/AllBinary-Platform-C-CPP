@@ -163,16 +163,22 @@ this->titleJLabel->setText("Always Condition Options");
     
 this->okJButton->setText("OK");
     
-this->okJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->okJButton->addActionListener([&]() {
+    static thread_local AlwaysActionScriptConditionJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    AlwaysActionScriptConditionJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-okJButtonActionPerformed(evt);
+outer->okJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jLabel2->setText("On:");
     
@@ -194,16 +200,22 @@ setMinimumSize(new java::awt::Dimension(100, 0));
     
 this->alwaysActionJButton->setText("Edit");
     
-this->alwaysActionJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->alwaysActionJButton->addActionListener([&]() {
+    static thread_local AlwaysActionScriptConditionJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    AlwaysActionScriptConditionJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-alwaysActionJButtonActionPerformed(evt);
+outer->alwaysActionJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jLabel1->setText("Always:");
     

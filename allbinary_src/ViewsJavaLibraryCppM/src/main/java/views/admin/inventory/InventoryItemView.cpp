@@ -333,7 +333,7 @@ this->addDomNodeInterface(new BasicItemView(this->itemInterface, vector));
     int32_t index = 0;index < size; index++)
         {
 
-    std::string fieldName = fieldNameArray[index];;
+    std::string fieldName = JavaBoxes::unbox<std::string>(fieldNameArray[index]);;
     
 
                         if(fieldName.compare(basicItemData->IMAGE) == 0)

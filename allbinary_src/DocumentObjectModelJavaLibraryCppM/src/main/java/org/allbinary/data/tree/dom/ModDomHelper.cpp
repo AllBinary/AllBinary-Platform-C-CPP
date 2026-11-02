@@ -242,7 +242,7 @@ newNode->appendChild(ModDomHelper::createIndexNode(document, index));
     Object* objectKey = keyArray[i];;
     
 
-    std::string name = objectKey;;
+    std::string name = JavaBoxes::unbox<std::string>(objectKey);;
     
 
     Object* anyType = hashMap->get(objectKey);;
@@ -268,7 +268,7 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
                         
                                     {
                                     
-    std::string value = stringUtil->getNonNull(anyType);;
+    std::string value = stringUtil->getNonNull(JavaBoxes::unbox<std::string>(anyType));;
     
 node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
     
@@ -326,7 +326,7 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
     int32_t i = 0;i < size; i++)
         {
 
-    std::string value = stringUtil->getNonNull(valueVector->get(i));;
+    std::string value = stringUtil->getNonNull(JavaBoxes::unbox<std::string>(valueVector->get(i)));;
     
 node->appendChild(ModDomHelper::createNameValueNodes(document, duplicateNodeName, value));
     
@@ -361,7 +361,7 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, duplicateNodeName
     int32_t index = 0;index < size; index++)
         {
 
-    std::string value = stringUtil->getNonNull(valueVector->get(index));;
+    std::string value = stringUtil->getNonNull(JavaBoxes::unbox<std::string>(valueVector->get(index)));;
     
 node->appendChild(ModDomHelper::createNameValueIndexNodes(document, duplicateNodeName, index, value));
     
@@ -414,13 +414,13 @@ node->appendChild(ModDomHelper::createNameValueIndexNodes(document, duplicateNod
     int32_t i = 0;i < size; i++)
         {
 
-    std::string name = keyArray[i];;
+    std::string name = JavaBoxes::unbox<std::string>(keyArray[i]);;
     
 
     Object* anyType = hashMap->get(name);;
     
 
-    std::string value = stringUtil->getNonNull(anyType);;
+    std::string value = stringUtil->getNonNull(JavaBoxes::unbox<std::string>(anyType));;
     
 node->appendChild(ModDomHelper::createTextNode(document, name, value));
     

@@ -38,7 +38,7 @@
         
 class GraphPath;
 class DefaultWeightedEdge;
-#include <org/jgrapht/graph/SimpleWeightedGraph.h>
+template<typename T1, typename T2> class SimpleWeightedGraph;
 class BasicArrayList;
 class LogUtil;
 class AllBinaryTiledLayer;

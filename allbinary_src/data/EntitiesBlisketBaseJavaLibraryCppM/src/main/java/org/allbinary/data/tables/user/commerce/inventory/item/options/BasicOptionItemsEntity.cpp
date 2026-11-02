@@ -193,7 +193,7 @@ stringBuffer->append(BasicOptionItemData::OPTION_ONE_ONE_ITEM)->append(this->sql
 
 
     auto BasicOptionItemsEntity::update(HashMap<Object*, Object*>* updatedValues) -> void{
-AbSqlBean::updateWhere(basicItemData->ID, updatedValues->get(basicItemData->ID), updatedValues);
+AbSqlBean::updateWhere(basicItemData->ID, JavaBoxes::unbox<std::string>(updatedValues->get(basicItemData->ID)), updatedValues);
     
 }
 

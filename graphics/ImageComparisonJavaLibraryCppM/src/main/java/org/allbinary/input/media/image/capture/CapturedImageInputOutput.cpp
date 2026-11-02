@@ -128,7 +128,7 @@ this->save(capturedBufferedImageCacheable->getBufferedImage(), frame);
     
 filePathStringBuffer->append(ImageOutputData::SAVE_PATH);
     
-filePathStringBuffer->append(LongUtil::fillIn(frame.toString()));
+filePathStringBuffer->append(LongUtil::fillIn(JavaString::valueOf(frame)));
     
 filePathStringBuffer->append(MediaDataFactory::getInstance()->JPG->getExtension());
     

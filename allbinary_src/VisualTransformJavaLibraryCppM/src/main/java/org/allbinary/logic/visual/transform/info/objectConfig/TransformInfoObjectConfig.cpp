@@ -342,7 +342,7 @@ this->document= document;
     Attr* attrNode = dynamic_cast<Attr*>(viewAttributes->getNamedItem(TransformInfoData::getInstance()->NAME));;
     
 
-                        if(transformInfoInterface->getName().compareTo(attrNode->getValue()) == 0)
+                        if(transformInfoInterface->getName().compare(attrNode->getValue()) == 0)
                         
                                     {
                                     

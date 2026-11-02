@@ -99,7 +99,7 @@ MetaValidation::MetaValidation(HtmlMetaAttributeData* htmlMetaAttributeData, std
 this->label= label;
     
 
-                        if(htmlMetaAttributeData->equals(HtmlMetaAttributeDataFactory::getInstance()->HTTP_EQUIV))
+                        if(JavaObjects::equals(htmlMetaAttributeData, HtmlMetaAttributeDataFactory::getInstance()->HTTP_EQUIV))
                         
                                     {
                                     this->httpEquiv= attributeValue;
@@ -108,7 +108,7 @@ this->label= label;
                                     }
                                 
                              else 
-                        if(htmlMetaAttributeData->equals(HtmlMetaAttributeDataFactory::getInstance()->NAME))
+                        if(JavaObjects::equals(htmlMetaAttributeData, HtmlMetaAttributeDataFactory::getInstance()->NAME))
                         
                                     {
                                     this->name= attributeValue;

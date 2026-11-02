@@ -230,7 +230,7 @@ this->scaled= static_cast<int32_t>((this->units /this->factorValue));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return std::to_string(units);;
+                        return std::to_string(this->units);;
     
 }
 

@@ -37,7 +37,7 @@
             #include "java/lang/Exception.h"
         
 class StdUtil;
-#include <org/allbinary/util/ABHashtable.h>
+template<typename T1, typename T2> class ABHashtable;
 class BundleContext;
 class NullServiceReferenceFactory;
 class ServiceReference;
@@ -72,10 +72,12 @@ class OSGIActivatorUtil
                 //@Throws(Exception.constructor)
             
     public: static void registerAsService(BundleContext* bundleContext, Object* anyType, std::string serviceName);
+    public: static void registerAsService(BundleContext* bundleContext, const std::string& anyType, std::string serviceName) { return registerAsService(bundleContext, JavaString::box(anyType), serviceName); }
 
                 //@Throws(Exception.constructor)
             
     public: static void registerAsService(BundleContext* bundleContext, Object* anyType, std::string serviceName, ABHashtable<Object*, Object*>* properties);
+    public: static void registerAsService(BundleContext* bundleContext, const std::string& anyType, std::string serviceName, ABHashtable<Object*, Object*>* properties) { return registerAsService(bundleContext, JavaString::box(anyType), serviceName, properties); }
 
 private: OSGIActivatorUtil();
 

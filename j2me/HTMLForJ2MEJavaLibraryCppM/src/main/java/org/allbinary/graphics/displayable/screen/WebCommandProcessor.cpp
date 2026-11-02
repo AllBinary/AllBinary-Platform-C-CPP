@@ -101,7 +101,7 @@ WebCommandProcessor* WebCommandProcessor::instance = WebCommandProcessor::instan
     auto WebCommandProcessor::process(CommandListener* midletCommandListener, Command* command, Canvas* canvas) -> void{
 
         try {
-            PlayN::openURL(this->list->removeAt(0));
+            PlayN::openURL(JavaBoxes::unbox<std::string>(this->list->removeAt(0)));
     
 
                 //: 

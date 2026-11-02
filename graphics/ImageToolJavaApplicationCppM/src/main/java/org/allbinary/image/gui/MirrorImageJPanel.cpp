@@ -122,9 +122,14 @@ this->imageProcessorInput= imageProcessorInput;
 
 
     auto MirrorImageJPanel::process() -> void{
-(class extends Thread
-                                {
-                                
+([&]() {
+    static thread_local MirrorImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public Thread {
+    public:
+    using Thread::Thread;
+    MirrorImageJPanel* outer = anonymousOuter0;
+
     public: void run(){
 
     LogUtil* logUtil = LogUtil::getInstance();;
@@ -132,7 +137,7 @@ this->imageProcessorInput= imageProcessorInput;
 
         try {
             
-    ImageProcessorInput* imageProcessorInput = this->getImageProcessorInput();;
+    ImageProcessorInput* imageProcessorInput = outer->getImageProcessorInput();;
     
 
     std::vector<BufferedImage*> bufferedImageArray = imageProcessorInput->getBufferedImageArray();;
@@ -144,31 +149,31 @@ this->imageProcessorInput= imageProcessorInput;
                         for (
     int32_t index = 0;index < bufferedImageArray.size(); index++)
         {
-this->result= MirrorImageUtil::getInstance()->getImage(bufferedImageArray[index], this->verticleJCheckBox->isSelected(), this->horizontalJCheckBox->isSelected());
+outer->result= MirrorImageUtil::getInstance()->getImage(bufferedImageArray[index], outer->verticleJCheckBox->isSelected(), outer->horizontalJCheckBox->isSelected());
     
 
     File* file = imageProcessorInput->getFiles()[index];;
     
 
-                        if(this->writeOverOriginalJRadioButton->isSelected())
+                        if(outer->writeOverOriginalJRadioButton->isSelected())
                         
                                     {
                                     
                                     }
                                 
                              else 
-                        if(this->renameJRadioButton->isSelected())
+                        if(outer->renameJRadioButton->isSelected())
                         
                                     {
                                     
     std::string filePath = file->getAbsolutePath();;
     
 
-    int32_t extensionIndex = JavaString::indexOf(filePath, imageStrings->PNG_EXTENSION);;
+    int32_t extensionIndex = JavaString::indexOf(filePath, outer->imageStrings->PNG_EXTENSION);;
     
-filePath= JavaString::valueOf(JavaString::valueOf(JavaString::substring(filePath, 0, extensionIndex)) +JavaString::valueOf("_mirror")) +JavaString::valueOf(imageStrings->PNG_EXTENSION);
+filePath= JavaString::valueOf(JavaString::valueOf(JavaString::substring(filePath, 0, extensionIndex)) +JavaString::valueOf("_mirror")) +JavaString::valueOf(outer->imageStrings->PNG_EXTENSION);
     
-logUtil->putF(JavaString::valueOf("Renamed File: ") +JavaString::valueOf(filePath), this, commonStrings->RUN);
+logUtil->putF(JavaString::valueOf("Renamed File: ") +JavaString::valueOf(filePath), this, outer->commonStrings->RUN);
     
 file= new File(filePath);
     
@@ -176,11 +181,11 @@ file= new File(filePath);
                                     }
                                 
 
-    bool isWritten = ImageIO::write(dynamic_cast<RenderedImage*>(this->result), imageStrings->PNG, file);;
+    bool isWritten = ImageIO::write(dynamic_cast<RenderedImage*>(outer->result), outer->imageStrings->PNG, file);;
     
-logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("File: ") +JavaString::valueOf(file)) +JavaString::valueOf(" Wrote: ")) +JavaString::valueOf(isWritten), this, commonStrings->RUN);
+logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("File: ") +JavaString::valueOf(file)) +JavaString::valueOf(" Wrote: ")) +JavaString::valueOf(isWritten), this, outer->commonStrings->RUN);
     
-this->getParent()->repaint();
+outer->getParent()->repaint();
     
 }
 
@@ -188,14 +193,15 @@ this->getParent()->repaint();
                 //: 
 } catch(Exception& e) 
             {
-logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
+logUtil->put(outer->commonStrings->EXCEPTION, this, outer->commonStrings->RUN, &e);
     
 }
 
 }
 
-                                }
-                            )->start();
+    };
+    return new Anonymous0();
+}())->start();
     
 }
 
@@ -205,18 +211,23 @@ jLayeredPane1= new javax::swing::JLayeredPane();
     
 this->buttonGroup= new javax::swing::ButtonGroup();
     
-this->jPanel1= class extends javax::swing::JPanel
-                                {
-                                
+this->jPanel1= [&]() {
+    static thread_local MirrorImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public javax::swing::JPanel {
+    public:
+    using javax::swing::JPanel::JPanel;
+    MirrorImageJPanel* outer = anonymousOuter0;
+
     public: void paint(Graphics* graphics){
 
-                        if(this->result != 
+                        if(outer->result != 
                                     nullptr
                                 )
                         
                                     {
-                                    graphics->drawImage(this->result, 0, 0, this->result->getWidth(
-                            nullptr), this->result->getHeight(
+                                    graphics->drawImage(outer->result, 0, 0, outer->result->getWidth(
+                            nullptr), outer->result->getHeight(
                             nullptr), 
                             nullptr);
     
@@ -225,8 +236,9 @@ this->jPanel1= class extends javax::swing::JPanel
                                 
 }
 
-                                }
-                            ;
+    };
+    return new Anonymous0();
+}();
     
 this->jPanel2= new javax::swing::JPanel();
     
@@ -265,29 +277,41 @@ this->verticleJCheckBox->setEnabled(false);
     
 this->generateJButton->setText("Generate");
     
-this->generateJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->generateJButton->addActionListener([&]() {
+    static thread_local MirrorImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    MirrorImageJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-generateJButtonActionPerformed(evt);
+outer->generateJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->renameJRadioButton->setText("Save As filename_mirror");
     
-this->renameJRadioButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->renameJRadioButton->addActionListener([&]() {
+    static thread_local MirrorImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    MirrorImageJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-renameJRadioButtonActionPerformed(evt);
+outer->renameJRadioButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->writeOverOriginalJRadioButton->setText("Write Over Original");
     

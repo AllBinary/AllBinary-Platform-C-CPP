@@ -211,7 +211,7 @@ this->setRelease(value.slice(, ).join(''));
                             
 }
 
-this->setKeyArray(vector->toArrayType(std::vector<int32_t>(vector->size())) as Integer[]);
+this->setKeyArray(JavaBoxes::unbox<std::vector<int32_t>>(vector->toArrayType(std::vector<int32_t>(vector->size()))));
     
 
                                     }
@@ -482,7 +482,7 @@ index++;
 }
 
 
-    std::vector<int32_t> integerArray = vector->toArrayType(std::vector<int32_t>(vector->size())) as Integer[];;
+    std::vector<int32_t> integerArray = JavaBoxes::unbox<std::vector<int32_t>>(vector->toArrayType(std::vector<int32_t>(vector->size())));;
     
 
 
@@ -504,11 +504,11 @@ index++;
                         for (
     int32_t index = 0;index < this->getKeyArray().length; index++)
         {
-hashMap->put(KeyboardActionScriptInputData::KEY +index, std::to_string());
+hashMap->put(KeyboardActionScriptInputData::KEY +index, std::to_string(this->getKeyArray()[index]));
     
 }
 
-hashMap->put(KeyboardActionScriptInputData::DELAY_BETWEEN_KEYS, std::to_string(getDelayBetweenKeys));
+hashMap->put(KeyboardActionScriptInputData::DELAY_BETWEEN_KEYS, std::to_string(this->getDelayBetweenKeys()));
     
 hashMap->put(KeyboardActionScriptInputData::PRESS, Boolean::toString(this->isPress()));
     

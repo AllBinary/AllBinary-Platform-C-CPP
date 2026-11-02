@@ -120,7 +120,7 @@ TouchButtonAndroidResources::TouchButtonAndroidResources() {
                                                         };;
     
 
-    std::vector<int32_t> RESOURCE_ARRAY = std::vector<int32_t>(RESOURCE_STRING_ARRAY::length);;
+    std::vector<int32_t> RESOURCE_ARRAY = std::vector<int32_t>(RESOURCE_STRING_ARRAY::size());;
     
 
                         if(CommonButtons::getInstance()->STANDARD_BUTTON_SIZE == 128)

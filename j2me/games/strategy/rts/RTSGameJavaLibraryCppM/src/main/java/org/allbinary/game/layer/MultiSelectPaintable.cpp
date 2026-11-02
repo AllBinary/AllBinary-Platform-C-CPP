@@ -145,7 +145,7 @@ this->totalCharArray= this->getPrimitiveLongUtil()->getCharArray(size);
     int32_t index = this->rootNameList->size() -1;index >= 0; index--)
         {
 
-    std::string rootName = this->rootNameList->get(index);;
+    std::string rootName = JavaBoxes::unbox<std::string>(this->rootNameList->get(index));;
     
 stringBuffer->append(rootName);
     

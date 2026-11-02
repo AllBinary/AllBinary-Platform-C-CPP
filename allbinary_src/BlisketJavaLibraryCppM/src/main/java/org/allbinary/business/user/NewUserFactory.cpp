@@ -110,7 +110,7 @@ NewUserFactory::NewUserFactory(){
     HashMap<Object*, Object*>* hashMap = (new RequestParams(httpServletRequest))->toHashMap();;
     
 
-    std::string role = httpTransformInfoInterface->getPropertiesHashMap()->get(UserRoleData::NAME->toString());;
+    std::string role = JavaBoxes::unbox<std::string>(httpTransformInfoInterface->getPropertiesHashMap()->get(UserRoleData::NAME->toString()));;
     
 hashMap->put(UserRoleData::NAME->toString(), role);
     
@@ -136,7 +136,7 @@ hashMap->put(UserRoleData::NAME->toString(), role);
     HashMap<Object*, Object*>* requestHashMap = (new RequestParams(httpServletRequest))->toHashMap();;
     
 
-    std::string roleString = propertiesHashMap->get(UserRoleData::NAME->toString());;
+    std::string roleString = JavaBoxes::unbox<std::string>(propertiesHashMap->get(UserRoleData::NAME->toString()));;
     
 requestHashMap->put(UserRoleData::NAME->toString(), roleString);
     

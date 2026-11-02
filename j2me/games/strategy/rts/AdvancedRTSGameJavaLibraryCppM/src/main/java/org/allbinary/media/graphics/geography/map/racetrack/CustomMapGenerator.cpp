@@ -92,7 +92,7 @@ this->geographicMapCellTypeFactory= this->raceTrackGeographicMap->getGeographicM
 
     int32_t size2 = mapArray[0].size();;
     
-this->customMapArray= std::vector<std::vector<int32_t>>(mapArray.length, std::vector<int32_t>(size2));
+this->customMapArray= std::vector<std::vector<int32_t>>(mapArray.size(), std::vector<int32_t>(size2));
     
 
                         if(mapArray.size() != this->customMapArray.size() || mapArray[0].size() != this->customMapArray[0].size())

@@ -330,9 +330,9 @@ keysAndValues->put(StoreFrontData::getInstance()->NAME, storeName);
             
     HashMap<Object*, Object*>* wherekeysAndValues = StdUtil::getInstance()->createHashMap();;
     
-wherekeysAndValues->put(WorkFlowData::getInstance()->NAME, updatedValues->get(WorkFlowData::getInstance()->NAME));
+wherekeysAndValues->put(WorkFlowData::getInstance()->NAME, JavaBoxes::unbox<std::string>(updatedValues->get(WorkFlowData::getInstance()->NAME)));
     
-wherekeysAndValues->put(StoreFrontData::getInstance()->NAME, updatedValues->get(StoreFrontData::getInstance()->NAME));
+wherekeysAndValues->put(StoreFrontData::getInstance()->NAME, JavaBoxes::unbox<std::string>(updatedValues->get(StoreFrontData::getInstance()->NAME)));
     
 AbSqlBean::updateWhere(wherekeysAndValues, updatedValues);
     

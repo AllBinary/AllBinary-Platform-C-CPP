@@ -136,7 +136,7 @@ this->userName= userName;
     
 whereHashMap->put(UserData::USERNAME, this->userName);
     
-whereHashMap->put(StreetAddressData::ID, std::to_string(index));
+whereHashMap->put(StreetAddressData::ID, JavaBoxes::unbox<std::string>(JavaString::valueOf(index)));
     
 AbSqlBean::deleteWhere(whereHashMap);
     
@@ -371,7 +371,7 @@ keyAndValue->put(UserData::USERNAME, this->userName);
     
 keyAndValue->put(UserData::USERNAME, this->userName);
     
-keyAndValue->put(StreetAddressData::ID, std::to_string(index));
+keyAndValue->put(StreetAddressData::ID, JavaString::valueOf(index));
     
 
     HashMap<Object*, Object*>* addressHashMap = AbSqlBean::getRow(keyAndValue);;

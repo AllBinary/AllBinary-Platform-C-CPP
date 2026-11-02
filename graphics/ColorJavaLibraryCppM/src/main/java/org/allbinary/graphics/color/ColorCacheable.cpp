@@ -68,7 +68,9 @@
 ColorCacheable::ColorCacheable(Object* key){
 this->key= key;
     
-this->color= new Color((key).intValue());
+this->color= new Color(key = JavaBoxes::unbox<int32_t>(keykey)
+key.
+                    );
     
 }
 

@@ -239,16 +239,22 @@ this->blueJLabel->setText("Blue:");
     
 this->okJButton->setText("OK");
     
-this->okJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->okJButton->addActionListener([&]() {
+    static thread_local ImageToolJFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    ImageToolJFrame* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-okJButtonActionPerformed(evt);
+outer->okJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 
     org::jdesktop::layout::GroupLayout* analysisActionJDialogLayout = new org::jdesktop::layout::GroupLayout(this->analysisActionJDialog->getContentPane());;
@@ -269,29 +275,41 @@ getContentPane()->add(this->jPanel1);
     
 this->fileJMenu->setText("File");
     
-this->fileJMenu->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->fileJMenu->addActionListener([&]() {
+    static thread_local ImageToolJFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    ImageToolJFrame* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-fileJMenuActionPerformed(evt);
+outer->fileJMenuActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->openImageJMenuItem->setText("Open");
     
-this->openImageJMenuItem->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->openImageJMenuItem->addActionListener([&]() {
+    static thread_local ImageToolJFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    ImageToolJFrame* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-openImageJMenuItemActionPerformed(evt);
+outer->openImageJMenuItemActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->fileJMenu->add(this->openImageJMenuItem);
     
@@ -299,164 +317,230 @@ this->mainJMenuBar->add(this->fileJMenu);
     
 this->processingJMenu->setText("Processing");
     
-this->processingJMenu->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->processingJMenu->addActionListener([&]() {
+    static thread_local ImageToolJFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    ImageToolJFrame* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-processingJMenuActionPerformed(evt);
+outer->processingJMenuActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->analyzeJMenuItem->setText("Image Analyze");
     
-this->analyzeJMenuItem->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->analyzeJMenuItem->addActionListener([&]() {
+    static thread_local ImageToolJFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    ImageToolJFrame* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-analyzeJMenuItemActionPerformed(evt);
+outer->analyzeJMenuItemActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->processingJMenu->add(this->analyzeJMenuItem);
     
 this->generateMirrorSpriteMenuItem->setText("Mirror Sprite Generator");
     
-this->generateMirrorSpriteMenuItem->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->generateMirrorSpriteMenuItem->addActionListener([&]() {
+    static thread_local ImageToolJFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    ImageToolJFrame* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-generateMirrorSpriteMenuItemActionPerformed(evt);
+outer->generateMirrorSpriteMenuItemActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->processingJMenu->add(this->generateMirrorSpriteMenuItem);
     
 this->generateRotationSpriteJMenuItem->setText("Rotation Sprite Generator");
     
-this->generateRotationSpriteJMenuItem->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->generateRotationSpriteJMenuItem->addActionListener([&]() {
+    static thread_local ImageToolJFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    ImageToolJFrame* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-generateRotationSpriteJMenuItemActionPerformed(evt);
+outer->generateRotationSpriteJMenuItemActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->processingJMenu->add(this->generateRotationSpriteJMenuItem);
     
 this->generateSpriteSplitterMenuItem->setText("Sprite Splitter Generator");
     
-this->generateSpriteSplitterMenuItem->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->generateSpriteSplitterMenuItem->addActionListener([&]() {
+    static thread_local ImageToolJFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    ImageToolJFrame* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-generateSpriteSplitterMenuItemActionPerformed(evt);
+outer->generateSpriteSplitterMenuItemActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->processingJMenu->add(this->generateSpriteSplitterMenuItem);
     
 this->generateRotationMenuItem->setText("Rotate Image Generator");
     
-this->generateRotationMenuItem->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->generateRotationMenuItem->addActionListener([&]() {
+    static thread_local ImageToolJFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    ImageToolJFrame* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-generateRotationMenuItemActionPerformed(evt);
+outer->generateRotationMenuItemActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->processingJMenu->add(this->generateRotationMenuItem);
     
 this->createStripImageJMenuItem->setText("Multi Image Unifier");
     
-this->createStripImageJMenuItem->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->createStripImageJMenuItem->addActionListener([&]() {
+    static thread_local ImageToolJFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    ImageToolJFrame* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-createStripImageJMenuItemActionPerformed(evt);
+outer->createStripImageJMenuItemActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->processingJMenu->add(this->createStripImageJMenuItem);
     
 this->mirrorJMenuItem->setText("Mirror Image(s)");
     
-this->mirrorJMenuItem->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->mirrorJMenuItem->addActionListener([&]() {
+    static thread_local ImageToolJFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    ImageToolJFrame* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-mirrorJMenuItemActionPerformed(evt);
+outer->mirrorJMenuItemActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->processingJMenu->add(this->mirrorJMenuItem);
     
 this->scaleImagesJMenuItem->setText("Scale Image(s)");
     
-this->scaleImagesJMenuItem->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->scaleImagesJMenuItem->addActionListener([&]() {
+    static thread_local ImageToolJFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    ImageToolJFrame* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-scaleImagesJMenuItemActionPerformed(evt);
+outer->scaleImagesJMenuItemActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->processingJMenu->add(this->scaleImagesJMenuItem);
     
 this->canvasImagesJMenuItem->setText("Canvas Image(s)");
     
-this->canvasImagesJMenuItem->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->canvasImagesJMenuItem->addActionListener([&]() {
+    static thread_local ImageToolJFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    ImageToolJFrame* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-canvasImagesJMenuItemActionPerformed(evt);
+outer->canvasImagesJMenuItemActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->processingJMenu->add(this->canvasImagesJMenuItem);
     
 this->createIconImagesJMenuItem->setText("Create Icon Image(s)");
     
-this->createIconImagesJMenuItem->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->createIconImagesJMenuItem->addActionListener([&]() {
+    static thread_local ImageToolJFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    ImageToolJFrame* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-createIconsJMenuItemActionPerformed(evt);
+outer->createIconsJMenuItemActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->processingJMenu->add(this->createIconImagesJMenuItem);
     
@@ -552,9 +636,14 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "openImageJMenuItemActi
         try {
             this->logUtil->putF(JavaString::valueOf(JavaString::valueOf("Reading ") +JavaString::valueOf(files.size())) +JavaString::valueOf(" files."), this, "onFiles");
     
-Arrays::sort(files, class extends Comparator<File*>
-                                {
-                                
+Arrays::sort(files, [&]() {
+    static thread_local ImageToolJFrame* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public Comparator<File*> {
+    public:
+    using Comparator<File*>::Comparator;
+    ImageToolJFrame* outer = anonymousOuter0;
+
     public: int32_t compare(File* file1, File* file2){
 
     int32_t fileNameIndexValue1 = extractIndexNumberIfAnyFromFileName(file1->getName());;
@@ -603,11 +692,12 @@ i= 0;
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 
-    std::vector<BufferedImage*> bufferedImageArray = std::vector<BufferedImage*>(files.length);;
+    std::vector<BufferedImage*> bufferedImageArray = std::vector<BufferedImage*>(files.size());;
     
 
 

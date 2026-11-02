@@ -70,6 +70,7 @@ class StringUtil;
     /*actual*/ public: static Log* getInstance(std::string specialMessage, Object* anyType, std::string functionName, Object* exception);
 
     /*actual*/ public: static Log* getInstanceF(std::string specialMessage, Object* anyType, std::string functionName);
+    public: static Log* getInstanceF(std::string specialMessage, const std::string& anyType, std::string functionName) { return getInstanceF(specialMessage, JavaString::box(anyType), functionName); }
 
 
             

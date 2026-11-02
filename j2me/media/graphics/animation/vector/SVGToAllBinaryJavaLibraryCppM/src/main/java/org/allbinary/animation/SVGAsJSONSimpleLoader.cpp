@@ -165,13 +165,13 @@ SVGAsJSONSimpleLoader* SVGAsJSONSimpleLoader::instance = SVGAsJSONSimpleLoader::
         while(keys->hasMoreElements())
         {
 
-    std::string key = keys->nextElement();;
+    std::string key = JavaBoxes::unbox<std::string>(keys->nextElement());;
     
 
     Object* value = svg->opt(key);;
     
 
-                        if(this->shapeTypeFactory->KEY_LINE->->equals(key))
+                        if(JavaObjects::equals(this->shapeTypeFactory->KEY_LINE, key))
                         
                                     {
                                     this->addShapes(pointVector, value, this->shapeTypeFactory->LINE);
@@ -180,7 +180,7 @@ SVGAsJSONSimpleLoader* SVGAsJSONSimpleLoader::instance = SVGAsJSONSimpleLoader::
                                     }
                                 
                              else 
-                        if(this->shapeTypeFactory->->equals(key))
+                        if(JavaObjects::equals(this->shapeTypeFactory, key))
                         
                                     {
                                     this->addShapes(pointVector, value, this->shapeTypeFactory->CIRCLE);
@@ -189,7 +189,7 @@ SVGAsJSONSimpleLoader* SVGAsJSONSimpleLoader::instance = SVGAsJSONSimpleLoader::
                                     }
                                 
                              else 
-                        if(this->shapeTypeFactory->KEY_RECT->->equals(key) || this->shapeTypeFactory->KEY_RECTANGLE->->equals(key))
+                        if(JavaObjects::equals(this->shapeTypeFactory->KEY_RECT, key) || JavaObjects::equals(this->shapeTypeFactory->KEY_RECTANGLE, key))
                         
                                     {
                                     this->addShapes(pointVector, value, this->shapeTypeFactory->RECTANGLE);
@@ -457,7 +457,9 @@ e.printStackTrace();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return static_cast<int32_t>(Math::round((value).doubleValue()));
+                        return static_cast<int32_t>(Math::round(value = valuevalue
+value.
+                    ));
     
 
                                     }
@@ -472,7 +474,7 @@ e.printStackTrace();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return static_cast<int32_t>(Math::round(Double.parseDouble(value)));
+                        return static_cast<int32_t>(Math::round(Double.parseDouble(JavaBoxes::unbox<std::string>(value))));
     
 
                                     }
@@ -534,11 +536,11 @@ e.printStackTrace();
     int32_t index = 0;index < pointVector->size(); index++)
         {
 
-    std::vector<int32_t> point = 
+    std::vector<int32_t> point = JavaBoxes::unbox<std::vector<int32_t>>(
                         //Otherwise - castExpression - ArrayType - INT
 pointVector->get(index)
                         //Otherwise - castExpression - ArrayType - INT
-;;
+);;
     
 points[index]= point;
     

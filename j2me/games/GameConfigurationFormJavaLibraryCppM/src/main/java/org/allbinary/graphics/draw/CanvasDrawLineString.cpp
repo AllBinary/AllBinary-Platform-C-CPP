@@ -96,7 +96,7 @@ this->myFontProcessor= MyFontProcessor::getInstance();
     auto CanvasDrawLineString::paint(Graphics* graphics, std::string string, int32_t line) -> void{
 this->myFontProcessor->process(graphics);
     
-this->drawStringUtil->drawCenterString(graphics, string, 0, string.size()this->x, this->y +(line *this->fontHeight));
+this->drawStringUtil->drawCenterString(graphics, string, 0, string.size(), this->x, this->y +(line *this->fontHeight));
     
 }
 

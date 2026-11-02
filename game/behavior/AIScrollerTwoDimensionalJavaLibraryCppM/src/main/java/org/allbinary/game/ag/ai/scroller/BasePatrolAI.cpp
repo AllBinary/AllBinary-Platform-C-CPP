@@ -98,9 +98,9 @@ BasePatrolAI::BasePatrolAI(ABHashtable<Object*, Object*>* hashtable, AllBinaryLa
 
                             //For kotlin this is before the body of the constructor.
                     
-this->maxDistance= hashtable->get(BasePatrolAI::MAX_DISTANCE);
+this->maxDistance= JavaBoxes::unbox<int32_t>(hashtable->get(BasePatrolAI::MAX_DISTANCE));
     
-this->currentDistance= this->maxDistance.intValue();
+this->currentDistance= this->maxDistance;
     
 }
 

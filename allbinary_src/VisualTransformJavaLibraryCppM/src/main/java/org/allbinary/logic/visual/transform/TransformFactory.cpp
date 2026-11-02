@@ -215,7 +215,7 @@ transformInfoInterface->setChild();
     TransformInfoEntity* transformInfoEntity = TransformInfoEntityBuilder::getInstance();;
     
 
-    TransformInfoInterface* transformInfoInterface = transformInfoEntity->get(propertiesHashMap->get(transformInfoData->NAME), propertiesHashMap, pageContext);;
+    TransformInfoInterface* transformInfoInterface = transformInfoEntity->get(JavaBoxes::unbox<std::string>(propertiesHashMap->get(transformInfoData->NAME)), propertiesHashMap, pageContext);;
     
 
                         if(transformInfoInterface != 
@@ -265,7 +265,7 @@ transformInfoInterface->setChild();
     
 stringBuffer->append("Failed To Get Instance: ");
     
-stringBuffer->append(propertiesHashMap->get(TransformInfoData::getInstance()->NAME));
+stringBuffer->append(JavaBoxes::unbox<std::string>(propertiesHashMap->get(TransformInfoData::getInstance()->NAME)));
     
 stringBuffer->append("->TransformFactory");
     

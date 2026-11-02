@@ -124,10 +124,10 @@ InitializerDatabase::InitializerDatabase(AbeClientInformationInterface* abeClien
     int32_t index = 0;index < size; index++)
         {
 
-    std::string key = keyArray[index];;
+    std::string key = JavaBoxes::unbox<std::string>(keyArray[index]);;
     
 
-    std::vector<std::string> values = map->get(key) as string[];;
+    std::vector<std::string> values = JavaBoxes::unbox<std::vector<std::string>>(map->get(key));;
     
 hashMap->put(std::string(key), .toCharArray());
     
@@ -162,17 +162,17 @@ this->getFormData(abeClientInformation, initHashMap);
             
     InitializerData* initializerData = InitializerData::getInstance();;
     
-this->setAdminDbUserName(hashMap->get(initializerData->DBUSER));
+this->setAdminDbUserName(JavaBoxes::unbox<std::string>(hashMap->get(initializerData->DBUSER)));
     
-this->setAdminDbPassword(hashMap->get(initializerData->DBPASSWORD));
+this->setAdminDbPassword(JavaBoxes::unbox<std::string>(hashMap->get(initializerData->DBPASSWORD)));
     
-this->setAdminJdbcDriver(hashMap->get(initializerData->ADMINJDBCDRIVER));
+this->setAdminJdbcDriver(JavaBoxes::unbox<std::string>(hashMap->get(initializerData->ADMINJDBCDRIVER)));
     
-this->setAdminSchema(hashMap->get(initializerData->ADMINSCHEMA));
+this->setAdminSchema(JavaBoxes::unbox<std::string>(hashMap->get(initializerData->ADMINSCHEMA)));
     
-this->setAdminServer(hashMap->get(initializerData->ADMINSERVER));
+this->setAdminServer(JavaBoxes::unbox<std::string>(hashMap->get(initializerData->ADMINSERVER)));
     
-this->setAdminPort(hashMap->get(initializerData->ADMINPORT));
+this->setAdminPort(JavaBoxes::unbox<std::string>(hashMap->get(initializerData->ADMINPORT)));
     
 
     DbConnectionInfo* dbConnectionInfo = new DbConnectionInfo();;

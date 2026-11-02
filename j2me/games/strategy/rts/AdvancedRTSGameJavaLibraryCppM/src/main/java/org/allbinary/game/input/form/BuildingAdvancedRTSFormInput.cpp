@@ -192,7 +192,7 @@ this->atLeastOneHouseGameNotificationEvent->setBasicColorP(geographicMapInterfac
     int32_t totalHouses = advancedPlayerOwnedRTSLayers->getHouseList()->size();;
     
 
-                        if(totalHouses < 1 && layerInterface->getName().indexOf(" House") < 0)
+                        if(totalHouses < 1 && JavaString::indexOf(layerInterface->getName(), " House") < 0)
                         
                                     {
                                     rtsPlayerLayerInterface->add(ErrorSound::getInstance());

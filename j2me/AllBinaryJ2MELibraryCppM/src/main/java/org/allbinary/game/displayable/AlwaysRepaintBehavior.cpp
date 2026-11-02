@@ -116,9 +116,17 @@ AlwaysRepaintBehavior* AlwaysRepaintBehavior::instanceC = AlwaysRepaintBehavior:
                                 
                         else {
                             
-    Thread* thread = new Thread(class extends ARunnable
-                                {
-                                
+    Thread* thread = new Thread([&]() {
+    static thread_local AlwaysRepaintBehavior* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    static thread_local Canvas* anonymous0_canvas{};
+    anonymous0_canvas = canvas;
+    class Anonymous0 : public ARunnable {
+    public:
+    using ARunnable::ARunnable;
+    AlwaysRepaintBehavior* outer = anonymousOuter0;
+    Canvas* canvas = anonymous0_canvas;
+
     public: void run(){
 
         try {
@@ -142,8 +150,9 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 
 }
 
-                                }
-                            , this->NAME);;
+    };
+    return new Anonymous0();
+}(), this->NAME);;
     
 thread->start();
     

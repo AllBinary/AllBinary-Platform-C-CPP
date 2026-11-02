@@ -124,7 +124,7 @@ this->offsetY= offsetY;
     
 velocityProperties->limitXYToForwardAndReverseMaxVelocity();
     
-this->gravity();
+this->GeographicMapTopViewLayerBehavior::gravity();
     
 
                                     }

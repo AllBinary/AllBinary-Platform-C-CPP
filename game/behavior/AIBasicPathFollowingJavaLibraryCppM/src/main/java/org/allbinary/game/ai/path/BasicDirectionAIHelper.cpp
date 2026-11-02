@@ -154,7 +154,7 @@ this->angleInfo= angleInfo;
 
     auto BasicDirectionAIHelper::getAIKeyPressed(int32_t frame) -> int32_t{
 
-    int16_t angle = this->angleInfo->getAngleIncrementInfo()->getFrameAngle(frame.intValue());;
+    int16_t angle = this->angleInfo->getAngleIncrementInfo()->getFrameAngle(frame);;
     
 
                         if(this->angleInfo->getAngle() != angle)
@@ -164,7 +164,7 @@ this->angleInfo= angleInfo;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->turnAI(frame.intValue());;
+                        return this->turnAI(frame);;
     
 
                                     }

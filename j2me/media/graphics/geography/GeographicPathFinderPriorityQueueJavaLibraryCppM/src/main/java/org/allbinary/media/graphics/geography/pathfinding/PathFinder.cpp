@@ -386,7 +386,7 @@ current= this->openPriorityQueue->poll();
 this->closedSet->add(current);
     
 
-                        if(current->equals(targetNode))
+                        if(JavaObjects::equals(current, targetNode))
                         
                                     {
                                     
@@ -578,7 +578,7 @@ current= this->openPriorityQueue->poll();
 this->closedSet->add(current);
     
 
-                        if(current->equals(targetNode))
+                        if(JavaObjects::equals(current, targetNode))
                         
                                     {
                                     

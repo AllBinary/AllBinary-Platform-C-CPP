@@ -28,8 +28,6 @@
         #include "org/allbinary/media/image/AndroidImageUtil.h"
         
 
-            #include <hilog/log.h>
-        
             #include <cstdint>
             #include <memory>
             #include <string>

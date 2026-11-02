@@ -47,7 +47,7 @@ class WeaponLayer;
 class AllBinaryLayer;
 class AllBinaryLayerManager;
 class MathUtil;
-#include <org/allbinary/util/ABHashtable.h>
+template<typename T1, typename T2> class ABHashtable;
 class BasicArrayList;
 
 

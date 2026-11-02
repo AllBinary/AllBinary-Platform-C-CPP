@@ -81,6 +81,8 @@ public: class TitleProgressBarSetProgressRunnable
             : public virtual Object
         , public Runnable {
 
+    public: AndroidTitleProgressBar* outer = nullptr;
+
     private: AndroidTitleProgressBar* androidTitleProgressBar;
 
 public: TitleProgressBarSetProgressRunnable(AndroidTitleProgressBar* androidTitleProgressBar);
@@ -94,6 +96,8 @@ public: TitleProgressBarSetProgressRunnable(AndroidTitleProgressBar* androidTitl
 public: class TitleProgressBarPortionSetProgressRunnable
             : public virtual Object
         , public Runnable {
+
+    public: AndroidTitleProgressBar* outer = nullptr;
 
     private: AndroidTitleProgressBar* androidTitleProgressBar;
 
@@ -109,6 +113,8 @@ public: class ShowTitleProgressBarRunnable
             : public virtual Object
         , public Runnable {
 
+    public: AndroidTitleProgressBar* outer = nullptr;
+
     private: AndroidTitleProgressBar* androidTitleProgressBar;
 
 public: ShowTitleProgressBarRunnable(AndroidTitleProgressBar* androidTitleProgressBar);
@@ -122,6 +128,8 @@ public: ShowTitleProgressBarRunnable(AndroidTitleProgressBar* androidTitleProgre
 public: class DismissTitleProgressBarRunnable
             : public virtual Object
         , public Runnable {
+
+    public: AndroidTitleProgressBar* outer = nullptr;
 
     private: AndroidTitleProgressBar* androidTitleProgressBar;
 

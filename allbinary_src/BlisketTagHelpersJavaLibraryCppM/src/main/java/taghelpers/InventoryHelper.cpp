@@ -119,10 +119,10 @@ this->response= dynamic_cast<HttpServletResponse*>(pageContext->getResponse());
 this->request= dynamic_cast<HttpServletRequest*>(pageContext->getRequest());
     
 
-    std::string storeName = propertiesHashMap->get(StoreFrontData::getInstance()->NAME);;
+    std::string storeName = JavaBoxes::unbox<std::string>(propertiesHashMap->get(StoreFrontData::getInstance()->NAME));;
     
 
-    std::string xslFile = propertiesHashMap->get(TransformInfoData::getInstance()->TEMPLATEFILENAME);;
+    std::string xslFile = JavaBoxes::unbox<std::string>(propertiesHashMap->get(TransformInfoData::getInstance()->TEMPLATEFILENAME));;
     
 
                         if(true)
@@ -211,7 +211,7 @@ this->id= this->request->getParameter(basicItemData->ID);
     StringUtil* stringUtil = StringUtil::getInstance();;
     
 
-    std::string keywords = this->searchRequest->getParams()->get()->get(basicItemData->KEYWORDS);;
+    std::string keywords = JavaBoxes::unbox<std::string>(this->searchRequest->getParams()->get()->get(basicItemData->KEYWORDS));;
     
 
                         if(false || keywords.compare(stringUtil->EMPTY_STRING) == 0)

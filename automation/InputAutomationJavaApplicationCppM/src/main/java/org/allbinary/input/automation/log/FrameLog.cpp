@@ -112,7 +112,7 @@ this->infoStringBuffer->append(infoString);
                         for (
     int32_t index = 0;index < size; index++)
         {
-this->addAction(vectorOfStrings->get(index));
+this->addAction(JavaBoxes::unbox<std::string>(vectorOfStrings->get(index)));
     
 }
 
@@ -135,7 +135,7 @@ this->actionsStringBuffer->append(CommonSeps::getInstance()->NEW_LINE);
     
 filePathStringBuffer->append(ImageOutputData::SAVE_PATH);
     
-filePathStringBuffer->append(LongUtil::fillIn(this->frame.toString()));
+filePathStringBuffer->append(LongUtil::fillIn(JavaString::valueOf(this->frame)));
     
 filePathStringBuffer->append(".txt");
     
@@ -147,19 +147,19 @@ filePathStringBuffer->append(".txt");
     
 fileOutputStream->write(FrameLog::frameBytes);
     
-fileOutputStream->write(getFrame().toString().getBytes());
+fileOutputStream->write(JavaString::getBytes(getFrame().toString()));
     
 fileOutputStream->write('\n');
     
 fileOutputStream->write(FrameLog::info);
     
-fileOutputStream->write(this->infoStringBuffer->toString().getBytes());
+fileOutputStream->write(JavaString::getBytes(this->infoStringBuffer->toString()));
     
 fileOutputStream->write('\n');
     
 fileOutputStream->write(FrameLog::actions);
     
-fileOutputStream->write(this->actionsStringBuffer->toString().getBytes());
+fileOutputStream->write(JavaString::getBytes(this->actionsStringBuffer->toString()));
     
 fileOutputStream->close();
     

@@ -93,8 +93,8 @@ StoreWorkFlowWrapper::StoreWorkFlowWrapper(Object* anyType) : WorkFlowWrapper(an
                             nullptr);;
     
 
-    std::string result = method->invoke(this->getWorkFlowObject(), 
-                            nullptr);;
+    std::string result = JavaBoxes::unbox<std::string>(method->invoke(this->getWorkFlowObject(), 
+                            nullptr));;
     
 
 

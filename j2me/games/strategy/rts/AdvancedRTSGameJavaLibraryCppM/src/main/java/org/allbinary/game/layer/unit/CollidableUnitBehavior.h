@@ -93,6 +93,8 @@ public: CollidableUnitBehavior(bool collidable);
 //inner= member=true isStatic=
 private: class SimpleSteeringVisitor: public SteeringVisitor {
 
+    public: CollidableUnitBehavior* outer = nullptr;
+
 
             
     public: SimpleSteeringVisitor();

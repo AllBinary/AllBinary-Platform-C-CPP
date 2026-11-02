@@ -70,7 +70,7 @@ this->init();
 
 
     auto GeographicMapCellHistoryProgress::init() -> void{
-this->totalVisitedArray= std::vector<int32_t>(this->geographicMapCellHistoryArray.length);
+this->totalVisitedArray= std::vector<int32_t>(this->geographicMapCellHistoryArray.size());
     
 }
 

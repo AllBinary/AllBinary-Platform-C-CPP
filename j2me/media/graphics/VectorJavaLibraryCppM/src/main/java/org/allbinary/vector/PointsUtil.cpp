@@ -143,7 +143,7 @@ newPoints[index][index2][1]= 1000;
 
     auto PointsUtil::adjust(std::vector<std::vector<int32_t>> points, int32_t x, int32_t y) -> std::vector<std::vector<int32_t>>{
 
-    std::vector<std::vector<int32_t>> newPoints = std::vector<std::vector<int32_t>>(points.length, std::vector<int32_t>(2));;
+    std::vector<std::vector<int32_t>> newPoints = std::vector<std::vector<int32_t>>(points.size(), std::vector<int32_t>(2));;
     
 
 

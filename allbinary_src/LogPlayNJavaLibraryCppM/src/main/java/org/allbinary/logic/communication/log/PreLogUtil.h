@@ -70,6 +70,7 @@ class PlayN;
          {
 
     /*actual*/ public: static void put(std::string specialMessage, Object* anyType, std::string functionName);
+    public: static void put(std::string specialMessage, const std::string& anyType, std::string functionName) { return put(specialMessage, JavaString::box(anyType), functionName); }
 
     private: static inline const std::string LOG_SUCCESS = "org.allbinary: ";
 
@@ -78,6 +79,7 @@ class PlayN;
     /*actual*/ public: static void putS(std::string specialMessage, std::string className, std::string functionName);
 
     /*actual*/ public: static void putSE(std::string specialMessage, std::string className, std::string functionName, Object* exception);
+    public: static void putSE(std::string specialMessage, std::string className, std::string functionName, const std::string& exception) { return putSE(specialMessage, className, functionName, JavaString::box(exception)); }
 
     /*actual*/ public: static std::string getClassName(Object* anyType);
     public: static std::string getClassName(const std::string& anyType) { return getClassName(JavaString::box(anyType)); }

@@ -101,11 +101,11 @@ this->logUtil->putF(commonStrings->START, this, "EmailServerConfiguration(HashMa
 
                                     }
                                 
-this->setAccountName(hashMap->get(EmailServerConfigurationData::ACCOUNT));
+this->setAccountName(JavaBoxes::unbox<std::string>(hashMap->get(EmailServerConfigurationData::ACCOUNT)));
     
-this->setPassword(hashMap->get(EmailServerConfigurationData::PASSWORD));
+this->setPassword(JavaBoxes::unbox<std::string>(hashMap->get(EmailServerConfigurationData::PASSWORD)));
     
-this->setSmtpServer(hashMap->get(EmailServerConfigurationData::SERVER));
+this->setSmtpServer(JavaBoxes::unbox<std::string>(hashMap->get(EmailServerConfigurationData::SERVER)));
     
 this->log();
     

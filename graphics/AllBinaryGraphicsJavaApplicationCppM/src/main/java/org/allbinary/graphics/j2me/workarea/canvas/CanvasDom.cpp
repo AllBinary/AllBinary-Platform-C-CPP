@@ -303,7 +303,7 @@ this->grid->grid= PointFactory::getInstance()->createXY(gridX, gridY);
     Node* xNode = dynamic_cast<Node*>(document->createElement(this->X));;
     
 
-    Node* xTextNode = dynamic_cast<Node*>(document->createTextNode(std::to_string(getX)));;
+    Node* xTextNode = dynamic_cast<Node*>(document->createTextNode(std::to_string(point->getX())));;
     
 xNode->appendChild(xTextNode);
     
@@ -311,7 +311,7 @@ xNode->appendChild(xTextNode);
     Node* yNode = dynamic_cast<Node*>(document->createElement(this->Y));;
     
 
-    Node* yTextNode = dynamic_cast<Node*>(document->createTextNode(std::to_string(getY)));;
+    Node* yTextNode = dynamic_cast<Node*>(document->createTextNode(std::to_string(point->getY())));;
     
 yNode->appendChild(yTextNode);
     
@@ -396,7 +396,7 @@ vectorCenterGenerator->calculate(this->getGraphicItemHashMap());
     Node* widthNode = dynamic_cast<Node*>(document->createElement(this->graphicsStrings->WIDTH));;
     
 
-    Node* widthTextNode = dynamic_cast<Node*>(document->createTextNode(std::to_string(getWidth)));;
+    Node* widthTextNode = dynamic_cast<Node*>(document->createTextNode(std::to_string(vectorCenterGenerator->getWidth())));;
     
 widthNode->appendChild(widthTextNode);
     
@@ -406,7 +406,7 @@ realSizeNode->appendChild(widthNode);
     Node* heightNode = dynamic_cast<Node*>(document->createElement(this->graphicsStrings->HEIGHT));;
     
 
-    Node* heightTextNode = dynamic_cast<Node*>(document->createTextNode(std::to_string(getHeight)));;
+    Node* heightTextNode = dynamic_cast<Node*>(document->createTextNode(std::to_string(vectorCenterGenerator->getHeight())));;
     
 heightNode->appendChild(heightTextNode);
     

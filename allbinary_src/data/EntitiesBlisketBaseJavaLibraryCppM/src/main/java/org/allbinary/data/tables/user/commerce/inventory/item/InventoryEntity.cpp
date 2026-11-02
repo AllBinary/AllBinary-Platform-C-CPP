@@ -219,7 +219,7 @@ this->setTableName(this->tableName);
                         
                                     {
                                     
-    std::string category = itemHashMap->get(basicItemData->CATEGORY);;
+    std::string category = JavaBoxes::unbox<std::string>(itemHashMap->get(basicItemData->CATEGORY));;
     
 
                         if(!StringValidationUtil::getInstance()->isEmpty(category) && JavaString::startsWith(category, storeFrontInterface->getCategoryPath()))
@@ -445,7 +445,7 @@ stringBuffer->append(this->sqlStrings->END);
 
 
     auto InventoryEntity::update(HashMap<Object*, Object*>* updatedValues) -> void{
-AbSqlBean::updateWhere(basicItemData->ID, updatedValues->get(basicItemData->ID), updatedValues);
+AbSqlBean::updateWhere(basicItemData->ID, JavaBoxes::unbox<std::string>(updatedValues->get(basicItemData->ID)), updatedValues);
     
 }
 

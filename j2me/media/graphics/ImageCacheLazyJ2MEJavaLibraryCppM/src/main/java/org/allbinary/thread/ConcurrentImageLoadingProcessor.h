@@ -74,6 +74,8 @@ public: class ImageCacheRunnable;
 //inner= member=true isStatic=
 public: class ImageCacheRunnable: public ABRunnable {
 
+    public: ConcurrentImageLoadingProcessor* outer = nullptr;
+
     private: ImageCache* imageCache;
 
 public: ImageCacheRunnable(ImageCache* imageCache);

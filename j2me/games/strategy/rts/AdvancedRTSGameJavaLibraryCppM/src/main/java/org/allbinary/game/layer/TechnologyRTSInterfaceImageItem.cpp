@@ -132,11 +132,11 @@ this->adjustedCostLabelY=  -this->yOffset +imageHeight -(3 *fontHeight);
     
 this->adjustedCostY=  -this->yOffset +imageHeight -(2 *fontHeight);
     
-this->adjustedCostX= 2 +(DOLLAR.size() *(fontHeight -1));
+this->adjustedCostX= 2 +(this->DOLLAR.size() *(fontHeight -1));
     
 this->adjustedLevelY=  -this->yOffset +imageHeight -fontHeight;
     
-this->adjustedLevelX= 2 +(LEVEL.size() *(fontHeight -1));
+this->adjustedLevelX= 2 +(this->LEVEL.size() *(fontHeight -1));
     
 this->myFontProcessor= MyFontProcessor::getInstance();
     

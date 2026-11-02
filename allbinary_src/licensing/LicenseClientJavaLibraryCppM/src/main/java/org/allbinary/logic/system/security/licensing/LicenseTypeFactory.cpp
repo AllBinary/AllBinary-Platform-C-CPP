@@ -77,7 +77,7 @@ LicenseTypeFactory* LicenseTypeFactory::instance = LicenseTypeFactory::instance_
 
     auto LicenseTypeFactory::getInstance(std::string name) -> LicenseType*{
 
-                        if(this->DEMO->getName().compareTo(name) == 0)
+                        if(this->DEMO->getName().compare(name) == 0)
                         
                                     {
                                     
@@ -90,7 +90,7 @@ LicenseTypeFactory* LicenseTypeFactory::instance = LicenseTypeFactory::instance_
                                     }
                                 
                              else 
-                        if(this->NORMAL->getName().compareTo(name) == 0)
+                        if(this->NORMAL->getName().compare(name) == 0)
                         
                                     {
                                     

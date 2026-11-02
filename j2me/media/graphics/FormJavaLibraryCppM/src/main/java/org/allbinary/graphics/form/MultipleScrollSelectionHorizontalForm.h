@@ -76,6 +76,8 @@ public: class MultipleScrollSelectionFormVerticalPaintable;
 
 //inner= member=true isStatic=
 public: class MultipleScrollSelectionFormHorizontalPaintable: public ItemIndexPaintable {
+
+    public: MultipleScrollSelectionHorizontalForm* outer = nullptr;
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
@@ -92,6 +94,8 @@ public: MultipleScrollSelectionFormHorizontalPaintable(MultipleScrollSelectionHo
             
 //inner= member=true isStatic=
 public: class MultipleScrollSelectionFormVerticalPaintable: public ItemIndexPaintable {
+
+    public: MultipleScrollSelectionHorizontalForm* outer = nullptr;
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 

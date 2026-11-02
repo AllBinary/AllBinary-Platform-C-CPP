@@ -496,7 +496,7 @@ UserEntityFactory::getInstance()->update(userName, newPasswordHashMap);
     BasicUserRole* nextRole = dynamic_cast<BasicUserRole*>(basicUserRoleArray[index]);;
     
 
-                        if(userInterface->getRole()->getBasicUserRole()->equals(nextRole))
+                        if(JavaObjects::equals(userInterface->getRole()->getBasicUserRole(), nextRole))
                         
                                     {
                                     userInterface->validateSession(dynamic_cast<WeblisketSessionInterface*>(this->weblisketSession));

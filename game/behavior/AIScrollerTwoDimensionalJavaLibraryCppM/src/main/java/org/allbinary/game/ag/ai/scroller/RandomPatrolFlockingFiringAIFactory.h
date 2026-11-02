@@ -43,7 +43,7 @@ class ArrayAI;
 #include <org/allbinary/game/ai/ArtificialIntelligenceInterfaceFactoryInterface.h>
 class GameInput;
 class AllBinaryLayer;
-#include <org/allbinary/util/ABHashtable.h>
+template<typename T1, typename T2> class ABHashtable;
 
 
 

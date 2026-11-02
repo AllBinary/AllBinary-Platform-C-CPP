@@ -141,7 +141,7 @@ this->getFormData(hashMap);
                 //@Throws(Exception.constructor)
             
     auto GenericBodyValidation::getFormData(HashMap<Object*, Object*>* hashMap) -> void{
-this->body= hashMap->get(BodyData::getInstance()->NAME);
+this->body= JavaBoxes::unbox<std::string>(hashMap->get(BodyData::getInstance()->NAME));
     
 }
 

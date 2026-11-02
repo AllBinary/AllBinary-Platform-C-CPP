@@ -112,16 +112,22 @@ lineJButton->setFont(new java::awt::Font("Dialog", 0, 10));
     
 lineJButton->setText(LinesGraphicItem::getStaticName());
     
-lineJButton->addMouseListener(class extends java::awt::event::MouseAdapter
-                                {
-                                
+lineJButton->addMouseListener([&]() {
+    static thread_local ToolJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::MouseAdapter {
+    public:
+    using java::awt::event::MouseAdapter::MouseAdapter;
+    ToolJPanel* outer = anonymousOuter0;
+
     public: void mouseClicked(java::awt::event::MouseEvent* evt){
-lineJButtonMouseClicked(evt);
+outer->lineJButtonMouseClicked(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 add(this->lineJButton);
     
@@ -129,16 +135,22 @@ this->rectJButton->setFont(new java::awt::Font("Dialog", 0, 10));
     
 this->rectJButton->setText("Rect");
     
-this->rectJButton->addMouseListener(class extends java::awt::event::MouseAdapter
-                                {
-                                
+this->rectJButton->addMouseListener([&]() {
+    static thread_local ToolJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::MouseAdapter {
+    public:
+    using java::awt::event::MouseAdapter::MouseAdapter;
+    ToolJPanel* outer = anonymousOuter0;
+
     public: void mouseClicked(java::awt::event::MouseEvent* evt){
-rectJButtonMouseClicked(evt);
+outer->rectJButtonMouseClicked(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 add(this->rectJButton);
     
@@ -146,16 +158,22 @@ this->arcJButton->setFont(new java::awt::Font("Dialog", 0, 10));
     
 this->arcJButton->setText("Arc");
     
-this->arcJButton->addMouseListener(class extends java::awt::event::MouseAdapter
-                                {
-                                
+this->arcJButton->addMouseListener([&]() {
+    static thread_local ToolJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::MouseAdapter {
+    public:
+    using java::awt::event::MouseAdapter::MouseAdapter;
+    ToolJPanel* outer = anonymousOuter0;
+
     public: void mousePressed(java::awt::event::MouseEvent* evt){
-arcJButtonMousePressed(evt);
+outer->arcJButtonMousePressed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 add(this->arcJButton);
     
@@ -163,16 +181,22 @@ this->stringJButton->setFont(new java::awt::Font("Dialog", 0, 10));
     
 this->stringJButton->setText("String");
     
-this->stringJButton->addMouseListener(class extends java::awt::event::MouseAdapter
-                                {
-                                
+this->stringJButton->addMouseListener([&]() {
+    static thread_local ToolJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::MouseAdapter {
+    public:
+    using java::awt::event::MouseAdapter::MouseAdapter;
+    ToolJPanel* outer = anonymousOuter0;
+
     public: void mousePressed(java::awt::event::MouseEvent* evt){
-stringJButtonMousePressed(evt);
+outer->stringJButtonMousePressed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 add(this->stringJButton);
     
@@ -180,16 +204,22 @@ this->charJButton->setFont(new java::awt::Font("Dialog", 0, 10));
     
 this->charJButton->setText("Char");
     
-this->charJButton->addMouseListener(class extends java::awt::event::MouseAdapter
-                                {
-                                
+this->charJButton->addMouseListener([&]() {
+    static thread_local ToolJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::MouseAdapter {
+    public:
+    using java::awt::event::MouseAdapter::MouseAdapter;
+    ToolJPanel* outer = anonymousOuter0;
+
     public: void mousePressed(java::awt::event::MouseEvent* evt){
-charJButtonMousePressed(evt);
+outer->charJButtonMousePressed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 add(this->charJButton);
     
@@ -197,16 +227,22 @@ this->roundRectJButton->setFont(new java::awt::Font("Dialog", 0, 10));
     
 this->roundRectJButton->setText("Round Rect");
     
-this->roundRectJButton->addMouseListener(class extends java::awt::event::MouseAdapter
-                                {
-                                
+this->roundRectJButton->addMouseListener([&]() {
+    static thread_local ToolJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::MouseAdapter {
+    public:
+    using java::awt::event::MouseAdapter::MouseAdapter;
+    ToolJPanel* outer = anonymousOuter0;
+
     public: void mousePressed(java::awt::event::MouseEvent* evt){
-roundRectJButtonMousePressed(evt);
+outer->roundRectJButtonMousePressed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 add(this->roundRectJButton);
     
@@ -214,16 +250,22 @@ this->imageJButton->setFont(new java::awt::Font("Dialog", 0, 10));
     
 this->imageJButton->setText("Image");
     
-this->imageJButton->addMouseListener(class extends java::awt::event::MouseAdapter
-                                {
-                                
+this->imageJButton->addMouseListener([&]() {
+    static thread_local ToolJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::MouseAdapter {
+    public:
+    using java::awt::event::MouseAdapter::MouseAdapter;
+    ToolJPanel* outer = anonymousOuter0;
+
     public: void mousePressed(java::awt::event::MouseEvent* evt){
-imageJButtonMousePressed(evt);
+outer->imageJButtonMousePressed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 add(this->imageJButton);
     
@@ -231,16 +273,22 @@ this->fillArcJButton->setFont(new java::awt::Font("Dialog", 0, 10));
     
 this->fillArcJButton->setText("Fill Arc");
     
-this->fillArcJButton->addMouseListener(class extends java::awt::event::MouseAdapter
-                                {
-                                
+this->fillArcJButton->addMouseListener([&]() {
+    static thread_local ToolJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::MouseAdapter {
+    public:
+    using java::awt::event::MouseAdapter::MouseAdapter;
+    ToolJPanel* outer = anonymousOuter0;
+
     public: void mousePressed(java::awt::event::MouseEvent* evt){
-fillArcJButtonMousePressed(evt);
+outer->fillArcJButtonMousePressed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 add(this->fillArcJButton);
     
@@ -248,16 +296,22 @@ this->fillRectJButton->setFont(new java::awt::Font("Dialog", 0, 10));
     
 this->fillRectJButton->setText("Fill Rect");
     
-this->fillRectJButton->addMouseListener(class extends java::awt::event::MouseAdapter
-                                {
-                                
+this->fillRectJButton->addMouseListener([&]() {
+    static thread_local ToolJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::MouseAdapter {
+    public:
+    using java::awt::event::MouseAdapter::MouseAdapter;
+    ToolJPanel* outer = anonymousOuter0;
+
     public: void mousePressed(java::awt::event::MouseEvent* evt){
-fillRectJButtonMousePressed(evt);
+outer->fillRectJButtonMousePressed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 add(this->fillRectJButton);
     
@@ -265,16 +319,22 @@ this->fillRoundRectJButton->setFont(new java::awt::Font("Dialog", 0, 10));
     
 this->fillRoundRectJButton->setText("Fill Rnd Rect");
     
-this->fillRoundRectJButton->addMouseListener(class extends java::awt::event::MouseAdapter
-                                {
-                                
+this->fillRoundRectJButton->addMouseListener([&]() {
+    static thread_local ToolJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::MouseAdapter {
+    public:
+    using java::awt::event::MouseAdapter::MouseAdapter;
+    ToolJPanel* outer = anonymousOuter0;
+
     public: void mousePressed(java::awt::event::MouseEvent* evt){
-fillRoundRectJButtonMousePressed(evt);
+outer->fillRoundRectJButtonMousePressed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 add(this->fillRoundRectJButton);
     
@@ -282,16 +342,22 @@ this->dottedLineJButton->setFont(new java::awt::Font("Dialog", 0, 10));
     
 this->dottedLineJButton->setText("Dot Line");
     
-this->dottedLineJButton->addMouseListener(class extends java::awt::event::MouseAdapter
-                                {
-                                
+this->dottedLineJButton->addMouseListener([&]() {
+    static thread_local ToolJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::MouseAdapter {
+    public:
+    using java::awt::event::MouseAdapter::MouseAdapter;
+    ToolJPanel* outer = anonymousOuter0;
+
     public: void mousePressed(java::awt::event::MouseEvent* evt){
-dottedLineJButtonMousePressed(evt);
+outer->dottedLineJButtonMousePressed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 add(this->dottedLineJButton);
     
@@ -299,16 +365,22 @@ this->dottedRectButton->setFont(new java::awt::Font("Dialog", 0, 10));
     
 this->dottedRectButton->setText("Dot Rect");
     
-this->dottedRectButton->addMouseListener(class extends java::awt::event::MouseAdapter
-                                {
-                                
+this->dottedRectButton->addMouseListener([&]() {
+    static thread_local ToolJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::MouseAdapter {
+    public:
+    using java::awt::event::MouseAdapter::MouseAdapter;
+    ToolJPanel* outer = anonymousOuter0;
+
     public: void mousePressed(java::awt::event::MouseEvent* evt){
-dottedRectButtonMousePressed(evt);
+outer->dottedRectButtonMousePressed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 add(this->dottedRectButton);
     
@@ -316,16 +388,22 @@ this->dottedArcJButton->setFont(new java::awt::Font("Dialog", 0, 10));
     
 this->dottedArcJButton->setText("Dot Arc");
     
-this->dottedArcJButton->addMouseListener(class extends java::awt::event::MouseAdapter
-                                {
-                                
+this->dottedArcJButton->addMouseListener([&]() {
+    static thread_local ToolJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::MouseAdapter {
+    public:
+    using java::awt::event::MouseAdapter::MouseAdapter;
+    ToolJPanel* outer = anonymousOuter0;
+
     public: void mousePressed(java::awt::event::MouseEvent* evt){
-dottedArcJButtonMousePressed(evt);
+outer->dottedArcJButtonMousePressed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 add(this->dottedArcJButton);
     
@@ -333,16 +411,22 @@ this->dottedFillRectJButton->setFont(new java::awt::Font("Dialog", 0, 10));
     
 this->dottedFillRectJButton->setText("Dot Fill Rect");
     
-this->dottedFillRectJButton->addMouseListener(class extends java::awt::event::MouseAdapter
-                                {
-                                
+this->dottedFillRectJButton->addMouseListener([&]() {
+    static thread_local ToolJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::MouseAdapter {
+    public:
+    using java::awt::event::MouseAdapter::MouseAdapter;
+    ToolJPanel* outer = anonymousOuter0;
+
     public: void mousePressed(java::awt::event::MouseEvent* evt){
-dottedFillRectJButtonMousePressed(evt);
+outer->dottedFillRectJButtonMousePressed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 add(this->dottedFillRectJButton);
     
@@ -350,16 +434,22 @@ this->dottedFillArcJButton->setFont(new java::awt::Font("Dialog", 0, 10));
     
 this->dottedFillArcJButton->setText("Dot Fill Arc");
     
-this->dottedFillArcJButton->addMouseListener(class extends java::awt::event::MouseAdapter
-                                {
-                                
+this->dottedFillArcJButton->addMouseListener([&]() {
+    static thread_local ToolJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::MouseAdapter {
+    public:
+    using java::awt::event::MouseAdapter::MouseAdapter;
+    ToolJPanel* outer = anonymousOuter0;
+
     public: void mousePressed(java::awt::event::MouseEvent* evt){
-dottedFillArcJButtonMousePressed(evt);
+outer->dottedFillArcJButtonMousePressed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 add(this->dottedFillArcJButton);
     
@@ -367,16 +457,22 @@ this->dottedFillRountRectJButton->setFont(new java::awt::Font("Dialog", 0, 10));
     
 this->dottedFillRountRectJButton->setText("Dot Fill Rnd Rect");
     
-this->dottedFillRountRectJButton->addMouseListener(class extends java::awt::event::MouseAdapter
-                                {
-                                
+this->dottedFillRountRectJButton->addMouseListener([&]() {
+    static thread_local ToolJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::MouseAdapter {
+    public:
+    using java::awt::event::MouseAdapter::MouseAdapter;
+    ToolJPanel* outer = anonymousOuter0;
+
     public: void mousePressed(java::awt::event::MouseEvent* evt){
-dottedFillRountRectJButtonMousePressed(evt);
+outer->dottedFillRountRectJButtonMousePressed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 add(this->dottedFillRountRectJButton);
     

@@ -48,7 +48,7 @@ class LogUtil;
 #include <org/allbinary/logic/communication/xmlrpc/XmlRpcAbeClient.h>
 class ExceptionUtil;
 class AbeClientInformationInterface;
-#include <org/allbinary/util/ABHashtable.h>
+template<typename T1, typename T2> class ABHashtable;
 
 
 

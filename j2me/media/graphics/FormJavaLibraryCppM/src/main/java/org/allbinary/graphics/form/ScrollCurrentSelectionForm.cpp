@@ -219,9 +219,9 @@ ScrollSelectionForm::init(rectangle, formType);
                         if(formType == formTypeFactory->TEMP_HORIZONTAL_FORM)
                         
                                     {
-                                    this->processor= new TempHorizontalFormProcessor(this);
+                                    this->processor= javaInner(new TempHorizontalFormProcessor(this), this);
     
-this->preItemIndexDx= new TempHorizontalItemIndexDx(this);
+this->preItemIndexDx= javaInner(new TempHorizontalItemIndexDx(this), this);
     
 
                                     }
@@ -230,9 +230,9 @@ this->preItemIndexDx= new TempHorizontalItemIndexDx(this);
                         if(formType == formTypeFactory->HORIZONTAL_FORM)
                         
                                     {
-                                    this->processor= new HorizontalFormProcessor(this);
+                                    this->processor= javaInner(new HorizontalFormProcessor(this), this);
     
-this->preItemIndexDx= new HorizontalItemIndexDx(this);
+this->preItemIndexDx= javaInner(new HorizontalItemIndexDx(this), this);
     
 
                                     }
@@ -241,9 +241,9 @@ this->preItemIndexDx= new HorizontalItemIndexDx(this);
                         if(formType == formTypeFactory->VERTICAL_CENTER_FORM)
                         
                                     {
-                                    this->processor= new VerticalFormProcessor(this);
+                                    this->processor= javaInner(new VerticalFormProcessor(this), this);
     
-this->preItemIndexDx= new VerticalItemIndexDx(this);
+this->preItemIndexDx= javaInner(new VerticalItemIndexDx(this), this);
     
 
                                     }

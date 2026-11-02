@@ -155,7 +155,7 @@ this->setImageProcessorInput(imageProcessorInput);
 
     std::vector<BufferedImage*> bufferedImageArray = imageProcessorInput->getBufferedImageArray();;
     
-this->icon= std::vector<ImageIconUnique*>(bufferedImageArray.length);
+this->icon= std::vector<ImageIconUnique*>(bufferedImageArray.size());
     
 
     DefaultListModel* defaultListModel = new DefaultListModel();;
@@ -213,7 +213,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->IN
     std::vector<BufferedImage*> bufferedImageArray = this->getImageProcessorInput()->getBufferedImageArray();;
     
 
-    std::vector<BufferedImage*> tempBufferedImageArray = std::vector<BufferedImage*>(bufferedImageArray.length);;
+    std::vector<BufferedImage*> tempBufferedImageArray = std::vector<BufferedImage*>(bufferedImageArray.size());;
     
 
 
@@ -290,7 +290,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "updateImage", &e);
     std::vector<BufferedImage*> bufferedImageArray = this->getImageProcessorInput()->getBufferedImageArray();;
     
 
-    std::vector<BufferedImage*> tempBufferedImageArray = std::vector<BufferedImage*>(bufferedImageArray.length);;
+    std::vector<BufferedImage*> tempBufferedImageArray = std::vector<BufferedImage*>(bufferedImageArray.size());;
     
 
 
@@ -446,142 +446,202 @@ this->jScrollPane1->setViewportView(this->imageJList);
     
 this->jButton1->setText("Save");
     
-this->jButton1->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->jButton1->addActionListener([&]() {
+    static thread_local ImageUnifierJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    ImageUnifierJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-jButton1ActionPerformed(evt);
+outer->jButton1ActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->upJButton->setText("Up");
     
-this->upJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->upJButton->addActionListener([&]() {
+    static thread_local ImageUnifierJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    ImageUnifierJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-upJButtonActionPerformed(evt);
+outer->upJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->downJButton->setText("Down");
     
-this->downJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->downJButton->addActionListener([&]() {
+    static thread_local ImageUnifierJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    ImageUnifierJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-downJButtonActionPerformed(evt);
+outer->downJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->fudgeItJButton->setText("Fudge It!");
     
-this->fudgeItJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->fudgeItJButton->addActionListener([&]() {
+    static thread_local ImageUnifierJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    ImageUnifierJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-fudgeItJButtonActionPerformed(evt);
+outer->fudgeItJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jLabel2->setText("Columns:");
     
 this->columnsJTextField->setText(commonPhoneStrings->TWO);
     
-this->columnsJTextField->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->columnsJTextField->addActionListener([&]() {
+    static thread_local ImageUnifierJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    ImageUnifierJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-columnsJTextFieldActionPerformed(evt);
+outer->columnsJTextFieldActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
-this->columnsJTextField->addPropertyChangeListener(class extends java::beans::PropertyChangeListener
-                                {
-                                
+this->columnsJTextField->addPropertyChangeListener([&]() {
+    static thread_local ImageUnifierJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::beans::PropertyChangeListener {
+    public:
+    using java::beans::PropertyChangeListener::PropertyChangeListener;
+    ImageUnifierJPanel* outer = anonymousOuter0;
+
     public: void propertyChange(java::beans::PropertyChangeEvent* evt){
-columnsJTextFieldPropertyChange(evt);
+outer->columnsJTextFieldPropertyChange(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
-this->columnsJTextField->addKeyListener(class extends java::awt::event::KeyAdapter
-                                {
-                                
+this->columnsJTextField->addKeyListener([&]() {
+    static thread_local ImageUnifierJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::KeyAdapter {
+    public:
+    using java::awt::event::KeyAdapter::KeyAdapter;
+    ImageUnifierJPanel* outer = anonymousOuter0;
+
     public: void keyPressed(java::awt::event::KeyEvent* evt){
-columnsJTextFieldKeyPressed(evt);
+outer->columnsJTextFieldKeyPressed(evt);
     
 }
 
     public: void keyTyped(java::awt::event::KeyEvent* evt){
-columnsJTextFieldKeyTyped(evt);
+outer->columnsJTextFieldKeyTyped(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jLabel1->setText("Rows:");
     
 this->rowsJTextField->setText(commonPhoneStrings->TWO);
     
-this->rowsJTextField->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->rowsJTextField->addActionListener([&]() {
+    static thread_local ImageUnifierJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    ImageUnifierJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-rowsJTextFieldActionPerformed(evt);
+outer->rowsJTextFieldActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jLabel3->setText("Cell Width:");
     
 this->cellWidthJTextField->setText("200");
     
-this->cellWidthJTextField->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->cellWidthJTextField->addActionListener([&]() {
+    static thread_local ImageUnifierJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    ImageUnifierJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-cellWidthJTextFieldActionPerformed(evt);
+outer->cellWidthJTextFieldActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jLabel4->setText("Cell Height:");
     
 this->cellHeightJTextField->setText("150");
     
-this->cellHeightJTextField->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->cellHeightJTextField->addActionListener([&]() {
+    static thread_local ImageUnifierJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    ImageUnifierJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-cellHeightJTextFieldActionPerformed(evt);
+outer->cellHeightJTextFieldActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jLabel5->setText("Cell Ratio:");
     
@@ -593,29 +653,41 @@ this->avgRatioJTextField->setEditable(false);
     
 this->jButton2->setText(this->commonStrings->UPDATE);
     
-this->jButton2->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->jButton2->addActionListener([&]() {
+    static thread_local ImageUnifierJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    ImageUnifierJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-jButton2ActionPerformed(evt);
+outer->jButton2ActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jButtonOrder->setText("Order");
     
-this->jButtonOrder->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->jButtonOrder->addActionListener([&]() {
+    static thread_local ImageUnifierJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    ImageUnifierJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-jButtonOrderActionPerformed(evt);
+outer->jButtonOrderActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 
     javax::swing::GroupLayout* jPanel1Layout = new javax::swing::GroupLayout(this->jPanel1);;

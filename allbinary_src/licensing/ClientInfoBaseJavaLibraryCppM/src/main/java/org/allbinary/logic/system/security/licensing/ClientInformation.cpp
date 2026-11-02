@@ -177,7 +177,7 @@ this->init();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->licenseServers->objectArray[index];
+                        return JavaBoxes::unbox<std::string>(this->licenseServers->objectArray[index]);
     
 }
 
@@ -290,7 +290,7 @@ clientInfoHashtable->put(abeClientInformationData->HARDWARE, hardwareString);
     int32_t index = size;index >= 0; index--)
         {
 
-    std::string newServerName = list->objectArray[index];;
+    std::string newServerName = JavaBoxes::unbox<std::string>(list->objectArray[index]);;
     
 
 
@@ -300,7 +300,7 @@ clientInfoHashtable->put(abeClientInformationData->HARDWARE, hardwareString);
     int32_t index2 = currentSize;index2 >= 0; index2--)
         {
 
-    std::string nextOldServerName = this->licenseServers->objectArray[index];;
+    std::string nextOldServerName = JavaBoxes::unbox<std::string>(this->licenseServers->objectArray[index]);;
     
 
                         if(this->tsUtil->compareTo(newServerName, nextOldServerName) != 0)

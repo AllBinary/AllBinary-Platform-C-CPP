@@ -75,7 +75,7 @@
 //#include "org/allbinary/media/audio/AndroidMediaPlayerOnCompletionListener.h"
 
 
-AndroidMediaPlayerWrapperListener::AndroidMediaPlayerWrapperListener(AndroidMediaPlayerWrapper* androidMediaPlayerWrapper) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), androidMediaPlayerWrapper(AndroidMediaPlayerWrapper::NULL_ANDROID_MEDIA_PLAYER_WRAPPER), mOnBufferingUpdateListener(new AndroidMediaPlayerOnBufferingUpdateListener(this)), mOnPreparedListener(new AndroidMediaPlayerOnPreparedListener(this)), mOnErrorListener(new AndroidMediaPlayerOnErrorListener(this)), mOnCompletionListener(new AndroidMediaPlayerOnCompletionListener(this)){
+AndroidMediaPlayerWrapperListener::AndroidMediaPlayerWrapperListener(AndroidMediaPlayerWrapper* androidMediaPlayerWrapper) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), androidMediaPlayerWrapper(AndroidMediaPlayerWrapper::NULL_ANDROID_MEDIA_PLAYER_WRAPPER), mOnBufferingUpdateListener(javaInner(new AndroidMediaPlayerOnBufferingUpdateListener(this), this)), mOnPreparedListener(javaInner(new AndroidMediaPlayerOnPreparedListener(this), this)), mOnErrorListener(javaInner(new AndroidMediaPlayerOnErrorListener(this), this)), mOnCompletionListener(javaInner(new AndroidMediaPlayerOnCompletionListener(this), this)){
 
         try {
             this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);

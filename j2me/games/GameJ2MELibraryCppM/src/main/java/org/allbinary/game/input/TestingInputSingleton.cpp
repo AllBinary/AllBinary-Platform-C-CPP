@@ -130,9 +130,17 @@ GameInputProcessorUtil::init(this->inputProcessorArray);
     
 this->paintable= testInputInterface;
     
-this->inputProcessorArray[Canvas::UP]= class extends GameInputProcessor
-                                {
-                                
+this->inputProcessorArray[Canvas::UP]= [&]() {
+    static thread_local TestingInputSingleton* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    static thread_local TestInputInterface* anonymous0_testInputInterface{};
+    anonymous0_testInputInterface = testInputInterface;
+    class Anonymous0 : public GameInputProcessor {
+    public:
+    using GameInputProcessor::GameInputProcessor;
+    TestingInputSingleton* outer = anonymousOuter0;
+    TestInputInterface* testInputInterface = anonymous0_testInputInterface;
+
                 //@Throws(Exception.constructor)
             
     public: void processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent){
@@ -140,12 +148,21 @@ testInputInterface->up();
     
 }
 
-                                }
-                            ;
+    };
+    return new Anonymous0();
+}();
     
-this->inputProcessorArray[Canvas::DOWN]= class extends GameInputProcessor
-                                {
-                                
+this->inputProcessorArray[Canvas::DOWN]= [&]() {
+    static thread_local TestingInputSingleton* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    static thread_local TestInputInterface* anonymous0_testInputInterface{};
+    anonymous0_testInputInterface = testInputInterface;
+    class Anonymous0 : public GameInputProcessor {
+    public:
+    using GameInputProcessor::GameInputProcessor;
+    TestingInputSingleton* outer = anonymousOuter0;
+    TestInputInterface* testInputInterface = anonymous0_testInputInterface;
+
                 //@Throws(Exception.constructor)
             
     public: void processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent){
@@ -153,12 +170,21 @@ testInputInterface->down();
     
 }
 
-                                }
-                            ;
+    };
+    return new Anonymous0();
+}();
     
-this->inputProcessorArray[Canvas::LEFT]= class extends GameInputProcessor
-                                {
-                                
+this->inputProcessorArray[Canvas::LEFT]= [&]() {
+    static thread_local TestingInputSingleton* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    static thread_local TestInputInterface* anonymous0_testInputInterface{};
+    anonymous0_testInputInterface = testInputInterface;
+    class Anonymous0 : public GameInputProcessor {
+    public:
+    using GameInputProcessor::GameInputProcessor;
+    TestingInputSingleton* outer = anonymousOuter0;
+    TestInputInterface* testInputInterface = anonymous0_testInputInterface;
+
                 //@Throws(Exception.constructor)
             
     public: void processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent){
@@ -166,12 +192,21 @@ testInputInterface->left();
     
 }
 
-                                }
-                            ;
+    };
+    return new Anonymous0();
+}();
     
-this->inputProcessorArray[Canvas::RIGHT]= class extends GameInputProcessor
-                                {
-                                
+this->inputProcessorArray[Canvas::RIGHT]= [&]() {
+    static thread_local TestingInputSingleton* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    static thread_local TestInputInterface* anonymous0_testInputInterface{};
+    anonymous0_testInputInterface = testInputInterface;
+    class Anonymous0 : public GameInputProcessor {
+    public:
+    using GameInputProcessor::GameInputProcessor;
+    TestingInputSingleton* outer = anonymousOuter0;
+    TestInputInterface* testInputInterface = anonymous0_testInputInterface;
+
                 //@Throws(Exception.constructor)
             
     public: void processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent){
@@ -179,12 +214,21 @@ testInputInterface->right();
     
 }
 
-                                }
-                            ;
+    };
+    return new Anonymous0();
+}();
     
-this->inputProcessorArray[Canvas::KEY_NUM7]= class extends GameInputProcessor
-                                {
-                                
+this->inputProcessorArray[Canvas::KEY_NUM7]= [&]() {
+    static thread_local TestingInputSingleton* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    static thread_local TestInputInterface* anonymous0_testInputInterface{};
+    anonymous0_testInputInterface = testInputInterface;
+    class Anonymous0 : public GameInputProcessor {
+    public:
+    using GameInputProcessor::GameInputProcessor;
+    TestingInputSingleton* outer = anonymousOuter0;
+    TestInputInterface* testInputInterface = anonymous0_testInputInterface;
+
                 //@Throws(Exception.constructor)
             
     public: void processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent){
@@ -192,12 +236,21 @@ testInputInterface->strafeLeft();
     
 }
 
-                                }
-                            ;
+    };
+    return new Anonymous0();
+}();
     
-this->inputProcessorArray[Canvas::KEY_NUM9]= class extends GameInputProcessor
-                                {
-                                
+this->inputProcessorArray[Canvas::KEY_NUM9]= [&]() {
+    static thread_local TestingInputSingleton* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    static thread_local TestInputInterface* anonymous0_testInputInterface{};
+    anonymous0_testInputInterface = testInputInterface;
+    class Anonymous0 : public GameInputProcessor {
+    public:
+    using GameInputProcessor::GameInputProcessor;
+    TestingInputSingleton* outer = anonymousOuter0;
+    TestInputInterface* testInputInterface = anonymous0_testInputInterface;
+
                 //@Throws(Exception.constructor)
             
     public: void processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent){
@@ -205,8 +258,9 @@ testInputInterface->strafeRight();
     
 }
 
-                                }
-                            ;
+    };
+    return new Anonymous0();
+}();
     
 GameInputProcessorUtil::init(this->inputProcessorArray);
     

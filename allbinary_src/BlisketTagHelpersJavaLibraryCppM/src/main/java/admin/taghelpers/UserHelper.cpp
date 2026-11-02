@@ -206,7 +206,7 @@ stringBuffer->append(" from to the user table");
     UserInterface* userInterface = NewUserFactory::getInstance(this->request, hashMap);;
     
 
-    std::string enable = this->hashMap->get(EntryData::getInstance()->ENABLE);;
+    std::string enable = JavaBoxes::unbox<std::string>(this->hashMap->get(EntryData::getInstance()->ENABLE));;
     
 
                         if(!StringValidationUtil::getInstance()->isEmpty(enable))

@@ -107,13 +107,13 @@ MusicManager::MusicManagerPlayerListener::MusicManagerPlayerListener() {
         }
         
     auto MusicManager::MusicManagerPlayerListener::playerUpdate(Player* player, std::string event, Object* eventData) -> void{
-PreLogUtil::put(event, this, commonStrings->PROCESS);
+PreLogUtil::put(event, this, outer->commonStrings->PROCESS);
     
 
                         if(event == PlayerListener::END_OF_MEDIA || event == PlayerListener::STOPPED || event == PlayerListener::CLOSED)
                         
                                     {
-                                    reset();
+                                    outer->reset();
     
 
                                     }
@@ -121,7 +121,7 @@ PreLogUtil::put(event, this, commonStrings->PROCESS);
 }
 
 
-MusicManager::MusicManager(Class* musicServiceClass, BasicArrayList* songList) : commonStrings(CommonStrings::getInstance()), commonSeps(CommonSeps::getInstance()), basicArrayListUtil(BasicArrayListUtil::getInstance()), gameTickTimeDelayHelper(GameTickTimeDelayHelperFactory::getInstance()), playerStateUtil(PlayerStateUtil::getInstance()), timeDelayHelper(new TimeDelayHelper(0)), playerListener(new MusicManagerPlayerListener()), NEXT_SONG(JavaString::valueOf(CommonLabels::getInstance()->NEXT) +JavaString::valueOf(" Song: ")), currentSongSound(NoSound::getInstance()), nextSongSound(NoSound::getInstance()){
+MusicManager::MusicManager(Class* musicServiceClass, BasicArrayList* songList) : commonStrings(CommonStrings::getInstance()), commonSeps(CommonSeps::getInstance()), basicArrayListUtil(BasicArrayListUtil::getInstance()), gameTickTimeDelayHelper(GameTickTimeDelayHelperFactory::getInstance()), playerStateUtil(PlayerStateUtil::getInstance()), timeDelayHelper(new TimeDelayHelper(0)), playerListener(javaInner(new MusicManagerPlayerListener(), this)), NEXT_SONG(JavaString::valueOf(CommonLabels::getInstance()->NEXT) +JavaString::valueOf(" Song: ")), currentSongSound(NoSound::getInstance()), nextSongSound(NoSound::getInstance()){
 this->songList= songList;
     
 }

@@ -115,7 +115,7 @@ OpenGLESImageExclusionUtil::OpenGLESImageExclusionUtil() : list(new BasicArrayLi
                         for (
     int32_t index = 0;index < size; index++)
         {
-name= this->list->get(index);
+name= JavaBoxes::unbox<std::string>(this->list->get(index));
     
 
                         if(JavaString::startsWith(imageName, name))

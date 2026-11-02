@@ -172,7 +172,7 @@ this->save(newChildCategoryInterface);
 
     AbPath* directoryToBeDeletedAbPath = new AbPath(existingChildCategoryInterface->getRootFilePath()->toString() +existingChildCategoryInterface->getPath()->toString(), StringUtil::getInstance()->EMPTY_STRING);;
     
-this->delete_(existingChildCategoryInterface);
+this->CategoryPrivateTree::delete_(existingChildCategoryInterface);
     
 parentCategoryInterface->removeChild(existingChildCategoryInterface);
     

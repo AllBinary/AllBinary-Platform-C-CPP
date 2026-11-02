@@ -126,10 +126,10 @@ Initializer::Initializer(Map* map) : logUtil(LogUtil::getInstance()){
     int32_t index = 0;index < size; index++)
         {
 
-    std::string key = keyArray[index];;
+    std::string key = JavaBoxes::unbox<std::string>(keyArray[index]);;
     
 
-    std::vector<std::string> values = map->get(key) as string[];;
+    std::vector<std::string> values = JavaBoxes::unbox<std::vector<std::string>>(map->get(key));;
     
 hashMap->put(std::string(key), .toCharArray());
     
@@ -164,75 +164,75 @@ this->getFormData(initHashMap);
             
     InitializerData* initializerData = InitializerData::getInstance();;
     
-this->userJdbcDriver= hashMap->get(initializerData->CUSTOMERJDBCDRIVER);
+this->userJdbcDriver= JavaBoxes::unbox<std::string>(hashMap->get(initializerData->CUSTOMERJDBCDRIVER));
     
-this->userName= hashMap->get(initializerData->CUSTOMERNAME);
+this->userName= JavaBoxes::unbox<std::string>(hashMap->get(initializerData->CUSTOMERNAME));
     
-this->userUserName= hashMap->get(initializerData->CUSTOMERUSERNAME);
+this->userUserName= JavaBoxes::unbox<std::string>(hashMap->get(initializerData->CUSTOMERUSERNAME));
     
-this->userPassword= hashMap->get(initializerData->CUSTOMERPASSWORD);
+this->userPassword= JavaBoxes::unbox<std::string>(hashMap->get(initializerData->CUSTOMERPASSWORD));
     
-this->userSchema= hashMap->get(initializerData->CUSTOMERSCHEMA);
+this->userSchema= JavaBoxes::unbox<std::string>(hashMap->get(initializerData->CUSTOMERSCHEMA));
     
-this->userServer= hashMap->get(initializerData->CUSTOMERSERVER);
+this->userServer= JavaBoxes::unbox<std::string>(hashMap->get(initializerData->CUSTOMERSERVER));
     
-this->userPort= hashMap->get(initializerData->CUSTOMERPORT);
+this->userPort= JavaBoxes::unbox<std::string>(hashMap->get(initializerData->CUSTOMERPORT));
     
-this->historyJdbcDriver= hashMap->get(initializerData->HISTORYJDBCDRIVER);
+this->historyJdbcDriver= JavaBoxes::unbox<std::string>(hashMap->get(initializerData->HISTORYJDBCDRIVER));
     
-this->historyName= hashMap->get(initializerData->HISTORYNAME);
+this->historyName= JavaBoxes::unbox<std::string>(hashMap->get(initializerData->HISTORYNAME));
     
-this->historyUserName= hashMap->get(initializerData->HISTORYUSERNAME);
+this->historyUserName= JavaBoxes::unbox<std::string>(hashMap->get(initializerData->HISTORYUSERNAME));
     
-this->historyPassword= hashMap->get(initializerData->HISTORYPASSWORD);
+this->historyPassword= JavaBoxes::unbox<std::string>(hashMap->get(initializerData->HISTORYPASSWORD));
     
-this->historySchema= hashMap->get(initializerData->HISTORYSCHEMA);
+this->historySchema= JavaBoxes::unbox<std::string>(hashMap->get(initializerData->HISTORYSCHEMA));
     
-this->historyServer= hashMap->get(initializerData->HISTORYSERVER);
+this->historyServer= JavaBoxes::unbox<std::string>(hashMap->get(initializerData->HISTORYSERVER));
     
-this->historyPort= hashMap->get(initializerData->HISTORYPORT);
+this->historyPort= JavaBoxes::unbox<std::string>(hashMap->get(initializerData->HISTORYPORT));
     
-this->logJdbcDriver= hashMap->get(initializerData->LOGJDBCDRIVER);
+this->logJdbcDriver= JavaBoxes::unbox<std::string>(hashMap->get(initializerData->LOGJDBCDRIVER));
     
-this->logName= hashMap->get(initializerData->LOGNAME);
+this->logName= JavaBoxes::unbox<std::string>(hashMap->get(initializerData->LOGNAME));
     
-this->logUserName= hashMap->get(initializerData->LOGUSERNAME);
+this->logUserName= JavaBoxes::unbox<std::string>(hashMap->get(initializerData->LOGUSERNAME));
     
-this->logPassword= hashMap->get(initializerData->LOGPASSWORD);
+this->logPassword= JavaBoxes::unbox<std::string>(hashMap->get(initializerData->LOGPASSWORD));
     
-this->logSchema= hashMap->get(initializerData->LOGSCHEMA);
+this->logSchema= JavaBoxes::unbox<std::string>(hashMap->get(initializerData->LOGSCHEMA));
     
-this->logServer= hashMap->get(initializerData->LOGSERVER);
+this->logServer= JavaBoxes::unbox<std::string>(hashMap->get(initializerData->LOGSERVER));
     
-this->logPort= hashMap->get(initializerData->LOGPORT);
+this->logPort= JavaBoxes::unbox<std::string>(hashMap->get(initializerData->LOGPORT));
     
-this->inventoryJdbcDriver= hashMap->get(initializerData->INVENTORYJDBCDRIVER);
+this->inventoryJdbcDriver= JavaBoxes::unbox<std::string>(hashMap->get(initializerData->INVENTORYJDBCDRIVER));
     
-this->inventoryName= hashMap->get(initializerData->INVENTORYNAME);
+this->inventoryName= JavaBoxes::unbox<std::string>(hashMap->get(initializerData->INVENTORYNAME));
     
-this->inventoryUserName= hashMap->get(initializerData->INVENTORYUSERNAME);
+this->inventoryUserName= JavaBoxes::unbox<std::string>(hashMap->get(initializerData->INVENTORYUSERNAME));
     
-this->inventoryPassword= hashMap->get(initializerData->INVENTORYPASSWORD);
+this->inventoryPassword= JavaBoxes::unbox<std::string>(hashMap->get(initializerData->INVENTORYPASSWORD));
     
-this->inventorySchema= hashMap->get(initializerData->INVENTORYSCHEMA);
+this->inventorySchema= JavaBoxes::unbox<std::string>(hashMap->get(initializerData->INVENTORYSCHEMA));
     
-this->inventoryServer= hashMap->get(initializerData->INVENTORYSERVER);
+this->inventoryServer= JavaBoxes::unbox<std::string>(hashMap->get(initializerData->INVENTORYSERVER));
     
-this->inventoryPort= hashMap->get(initializerData->INVENTORYPORT);
+this->inventoryPort= JavaBoxes::unbox<std::string>(hashMap->get(initializerData->INVENTORYPORT));
     
-this->staticPagesJdbcDriver= hashMap->get(initializerData->STATICPAGESJDBCDRIVER);
+this->staticPagesJdbcDriver= JavaBoxes::unbox<std::string>(hashMap->get(initializerData->STATICPAGESJDBCDRIVER));
     
-this->staticPagesName= hashMap->get(initializerData->STATICPAGESNAME);
+this->staticPagesName= JavaBoxes::unbox<std::string>(hashMap->get(initializerData->STATICPAGESNAME));
     
-this->staticPagesUserName= hashMap->get(initializerData->STATICPAGESUSERNAME);
+this->staticPagesUserName= JavaBoxes::unbox<std::string>(hashMap->get(initializerData->STATICPAGESUSERNAME));
     
-this->staticPagesPassword= hashMap->get(initializerData->STATICPAGESPASSWORD);
+this->staticPagesPassword= JavaBoxes::unbox<std::string>(hashMap->get(initializerData->STATICPAGESPASSWORD));
     
-this->staticPagesSchema= hashMap->get(initializerData->STATICPAGESSCHEMA);
+this->staticPagesSchema= JavaBoxes::unbox<std::string>(hashMap->get(initializerData->STATICPAGESSCHEMA));
     
-this->staticPagesServer= hashMap->get(initializerData->STATICPAGESSERVER);
+this->staticPagesServer= JavaBoxes::unbox<std::string>(hashMap->get(initializerData->STATICPAGESSERVER));
     
-this->staticPagesPort= hashMap->get(initializerData->STATICPAGESPORT);
+this->staticPagesPort= JavaBoxes::unbox<std::string>(hashMap->get(initializerData->STATICPAGESPORT));
     
 
                 //: 

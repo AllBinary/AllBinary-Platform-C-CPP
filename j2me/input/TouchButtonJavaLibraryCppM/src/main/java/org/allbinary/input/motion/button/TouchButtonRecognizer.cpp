@@ -128,7 +128,7 @@ this->touchButtonRecognizer->currentlyPressedTouchButtonSingleton->removeAt(inde
 }
 
 
-TouchButtonRecognizer::MultitouchReleaseHelper::MultitouchReleaseHelper(TouchButtonRecognizer* touchButtonRecognizer){
+TouchButtonRecognizer::MultitouchReleaseHelper::MultitouchReleaseHelper(TouchButtonRecognizer* touchButtonRecognizer) : ReleaseHelper(touchButtonRecognizer){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -184,13 +184,13 @@ TouchButtonRecognizer::TouchButtonRecognizer() : logUtil(LogUtil::getInstance())
                         if(TouchScreenFactory::getInstance()->isMultiTouch())
                         
                                     {
-                                    this->releaseHelper= new MultitouchReleaseHelper(this);
+                                    this->releaseHelper= javaInner(new MultitouchReleaseHelper(this), this);
     
 
                                     }
                                 
                         else {
-                            this->releaseHelper= new ReleaseHelper(this);
+                            this->releaseHelper= javaInner(new ReleaseHelper(this), this);
     
 
                         }

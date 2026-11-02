@@ -107,7 +107,7 @@ this->gameCanvas= gameCanvas;
     
 this->stringArray= stringArray;
     
-this->lastWidth= std::vector<int32_t>(this->stringArray.length);
+this->lastWidth= std::vector<int32_t>(this->stringArray.size());
     
 this->setBasicColorP(basicColor);
     

@@ -115,9 +115,9 @@ this->pageContext= pageContext;
 this->request= dynamic_cast<HttpServletRequest*>(pageContext->getRequest());
     
 
-    std::string storeName = propertiesHashMap->get(StoreFrontData::getInstance()->NAME);;
+    std::string storeName = JavaBoxes::unbox<std::string>(propertiesHashMap->get(StoreFrontData::getInstance()->NAME));;
     
-this->newStatus= propertiesHashMap->get(OrderHistoryData::STATUS);
+this->newStatus= JavaBoxes::unbox<std::string>(propertiesHashMap->get(OrderHistoryData::STATUS));
     
 
                         if(true)

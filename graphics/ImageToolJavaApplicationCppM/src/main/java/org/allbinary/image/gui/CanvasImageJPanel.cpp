@@ -136,9 +136,14 @@ this->imageProcessorInput= imageProcessorInput;
 
 
     auto CanvasImageJPanel::process() -> void{
-(class extends Thread
-                                {
-                                
+([&]() {
+    static thread_local CanvasImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public Thread {
+    public:
+    using Thread::Thread;
+    CanvasImageJPanel* outer = anonymousOuter0;
+
     public: void run(){
 
     LogUtil* logUtil = LogUtil::getInstance();;
@@ -152,28 +157,28 @@ this->imageProcessorInput= imageProcessorInput;
     CanvasExpandUtil* canvasExpandUtil = CanvasExpandUtil::getInstance();;
     
 
-    int32_t leftReduction = Integer.valueOf(widthReductionTextField1->getText());;
+    int32_t leftReduction = Integer.valueOf(outer->widthReductionTextField1->getText());;
     
 
-    int32_t topReduction = Integer.valueOf(heightReductionTextField1->getText());;
+    int32_t topReduction = Integer.valueOf(outer->heightReductionTextField1->getText());;
     
 
-    int32_t widthReduction = Integer.valueOf(widthReductionTextField->getText());;
+    int32_t widthReduction = Integer.valueOf(outer->widthReductionTextField->getText());;
     
 
-    int32_t heightReduction = Integer.valueOf(heightReductionTextField->getText());;
+    int32_t heightReduction = Integer.valueOf(outer->heightReductionTextField->getText());;
     
 
                         if(leftReduction <= 0 || topReduction <= 0 || widthReduction <= 0 || heightReduction <= 0)
                         
                                     {
-                                    canvasTrimUtil->process(this->getImageProcessorInput(),  -leftReduction,  -topReduction,  -widthReduction,  -heightReduction, this);
+                                    canvasTrimUtil->process(outer->getImageProcessorInput(),  -leftReduction,  -topReduction,  -widthReduction,  -heightReduction, outer);
     
 
                                     }
                                 
                         else {
-                            canvasExpandUtil->process(this->getImageProcessorInput(), leftReduction, topReduction, this);
+                            canvasExpandUtil->process(outer->getImageProcessorInput(), leftReduction, topReduction, outer);
     
 
                         }
@@ -182,14 +187,15 @@ this->imageProcessorInput= imageProcessorInput;
                 //: 
 } catch(Exception& e) 
             {
-logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
+logUtil->put(outer->commonStrings->EXCEPTION, this, outer->commonStrings->RUN, &e);
     
 }
 
 }
 
-                                }
-                            )->start();
+    };
+    return new Anonymous0();
+}())->start();
     
 }
 
@@ -197,18 +203,23 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
     auto CanvasImageJPanel::initComponents() -> void{
 this->writeOverOriginalJCheckBox= new javax::swing::JCheckBox();
     
-this->jPanel1= class extends javax::swing::JPanel
-                                {
-                                
+this->jPanel1= [&]() {
+    static thread_local CanvasImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public javax::swing::JPanel {
+    public:
+    using javax::swing::JPanel::JPanel;
+    CanvasImageJPanel* outer = anonymousOuter0;
+
     public: void paint(Graphics* graphics){
 
-                        if(this->result != 
+                        if(outer->result != 
                                     nullptr
                                 )
                         
                                     {
-                                    graphics->drawImage(this->result, 0, 0, this->result->getWidth(
-                            nullptr), this->result->getHeight(
+                                    graphics->drawImage(outer->result, 0, 0, outer->result->getWidth(
+                            nullptr), outer->result->getHeight(
                             nullptr), 
                             nullptr);
     
@@ -217,8 +228,9 @@ this->jPanel1= class extends javax::swing::JPanel
                                 
 }
 
-                                }
-                            ;
+    };
+    return new Anonymous0();
+}();
     
 this->generateJButton= new javax::swing::JButton();
     
@@ -246,16 +258,22 @@ this->writeOverOriginalJCheckBox->setSelected(true);
     
 this->writeOverOriginalJCheckBox->setText("Write Over Original");
     
-this->writeOverOriginalJCheckBox->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->writeOverOriginalJCheckBox->addActionListener([&]() {
+    static thread_local CanvasImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    CanvasImageJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-writeOverOriginalJCheckBoxActionPerformed(evt);
+outer->writeOverOriginalJCheckBoxActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 
     javax::swing::GroupLayout* jPanel1Layout = new javax::swing::GroupLayout(this->jPanel1);;
@@ -268,16 +286,22 @@ jPanel1Layout->setVerticalGroup(jPanel1Layout->createParallelGroup(javax.swing->
     
 this->generateJButton->setText("Generate");
     
-this->generateJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->generateJButton->addActionListener([&]() {
+    static thread_local CanvasImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    CanvasImageJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-generateJButtonActionPerformed(evt);
+outer->generateJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jLabel4->setText("Results:");
     
@@ -285,16 +309,22 @@ this->jLabel5->setText("Right:");
     
 this->widthReductionTextField->setText(CommonPhoneStrings::getInstance()->ZERO);
     
-this->widthReductionTextField->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->widthReductionTextField->addActionListener([&]() {
+    static thread_local CanvasImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    CanvasImageJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-widthReductionTextFieldActionPerformed(evt);
+outer->widthReductionTextFieldActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jLabel6->setText("Bottom");
     
@@ -302,16 +332,22 @@ this->heightReductionTextField->setText(CommonPhoneStrings::getInstance()->ZERO)
     
 this->widthReductionTextField1->setText(CommonPhoneStrings::getInstance()->ZERO);
     
-this->widthReductionTextField1->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->widthReductionTextField1->addActionListener([&]() {
+    static thread_local CanvasImageJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    CanvasImageJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-widthReductionTextField1ActionPerformed(evt);
+outer->widthReductionTextField1ActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jLabel7->setText("Top");
     

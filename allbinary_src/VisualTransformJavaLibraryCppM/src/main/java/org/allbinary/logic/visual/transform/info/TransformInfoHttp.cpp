@@ -222,19 +222,19 @@ this->abContext= new AbContext(parentViewOfThisTransformInfoInterface->getProper
 
     TransformInfoData* transformInfoData = TransformInfoData::getInstance();;
     
-this->setName(hashMap->get(transformInfoData->NAME));
+this->setName(JavaBoxes::unbox<std::string>(hashMap->get(transformInfoData->NAME)));
     
-this->setStoreName(hashMap->get(StoreFrontData::getInstance()->NAME));
+this->setStoreName(JavaBoxes::unbox<std::string>(hashMap->get(StoreFrontData::getInstance()->NAME)));
     
-this->setObjectFile(hashMap->get(transformInfoData->OBJECTFILENAME));
+this->setObjectFile(JavaBoxes::unbox<std::string>(hashMap->get(transformInfoData->OBJECTFILENAME)));
     
-this->setObject(hashMap->get(transformInfoData->OBJECT));
+this->setObject(JavaBoxes::unbox<std::string>(hashMap->get(transformInfoData->OBJECT)));
     
 
     StringValidationUtil* stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-    std::string objectConfigString = hashMap->get(transformInfoData->OBJECTCONFIG);;
+    std::string objectConfigString = JavaBoxes::unbox<std::string>(hashMap->get(transformInfoData->OBJECTCONFIG));;
     
 
                         if(stringValidationUtil->isValidRequired(objectConfigString, 10, AbSqlData::MAXBLOB))
@@ -252,21 +252,21 @@ this->setObject(hashMap->get(transformInfoData->OBJECT));
                         }
                             
 
-                        if(!stringValidationUtil->isEmpty(hashMap->get(transformInfoData->OBJECTCONFIGFILENAME)))
+                        if(!stringValidationUtil->isEmpty(JavaBoxes::unbox<std::string>(hashMap->get(transformInfoData->OBJECTCONFIGFILENAME))))
                         
                                     {
-                                    this->setObjectConfigFile(hashMap->get(transformInfoData->OBJECTCONFIGFILENAME));
+                                    this->setObjectConfigFile(JavaBoxes::unbox<std::string>(hashMap->get(transformInfoData->OBJECTCONFIGFILENAME)));
     
 
                                     }
                                 
-this->setTemplateFile(hashMap->get(transformInfoData->TEMPLATEFILENAME));
+this->setTemplateFile(JavaBoxes::unbox<std::string>(hashMap->get(transformInfoData->TEMPLATEFILENAME)));
     
-this->setTemplate(hashMap->get(transformInfoData->TEMPLATE));
+this->setTemplate(JavaBoxes::unbox<std::string>(hashMap->get(transformInfoData->TEMPLATE)));
     
-this->setDataFile(hashMap->get(transformInfoData->DATAFILENAME));
+this->setDataFile(JavaBoxes::unbox<std::string>(hashMap->get(transformInfoData->DATAFILENAME)));
     
-this->setData(hashMap->get(transformInfoData->DATA));
+this->setData(JavaBoxes::unbox<std::string>(hashMap->get(transformInfoData->DATA)));
     
 
                         if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORY))

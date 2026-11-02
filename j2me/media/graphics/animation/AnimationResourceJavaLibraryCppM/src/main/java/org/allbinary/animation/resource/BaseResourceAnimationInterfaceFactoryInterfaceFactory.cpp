@@ -236,7 +236,7 @@ this->rectangleHashtable->put(resource, rectangle);
                         
                                     {
                                     
-    std::vector<std::vector<Rectangle*>> rectangleArrayOfArrays = valueCanBeNull as std::vector<Rectangle*>[];;
+    std::vector<std::vector<Rectangle*>> rectangleArrayOfArrays = JavaBoxes::unbox<std::vector<std::vector<Rectangle*>>>(valueCanBeNull);;
     
 
 

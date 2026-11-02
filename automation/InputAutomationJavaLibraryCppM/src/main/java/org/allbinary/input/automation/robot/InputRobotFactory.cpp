@@ -244,7 +244,7 @@ this->logUtil->putF("Loading Libraries", this, "loadLibraries");
     int32_t index = 0;index < size; index++)
         {
 
-    InputRobotInterface* inputRobotInterface = InputRobotFactory::getInstance()->get(nameArray[index]);;
+    InputRobotInterface* inputRobotInterface = InputRobotFactory::getInstance()->get(JavaBoxes::unbox<std::string>(nameArray[index]));;
     
 InputRobotFactory::loadLibrary(inputRobotInterface);
     
@@ -322,7 +322,7 @@ this->logUtil->putF("Unloading Libraries", this, "unloadLibraries");
                         for (
     int32_t index = 0;index < size; index++)
         {
-inputRobotInterface= this->get(inputRobotArray[index]);
+inputRobotInterface= this->get(JavaBoxes::unbox<std::string>(inputRobotArray[index]));
     
 
                         if(InterfaceUtil::isImplemented(

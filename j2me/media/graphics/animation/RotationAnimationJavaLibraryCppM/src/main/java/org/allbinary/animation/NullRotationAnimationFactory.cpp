@@ -84,7 +84,7 @@
 auto NullRotationAnimationFactory::NULL_ROTATION_ANIMATION_FACTORY_owner() -> NullRotationAnimationFactory* { static std::unique_ptr<NullRotationAnimationFactory> value(new NullRotationAnimationFactory()); return value.get(); }
 NullRotationAnimationFactory* NullRotationAnimationFactory::NULL_ROTATION_ANIMATION_FACTORY = NullRotationAnimationFactory::NULL_ROTATION_ANIMATION_FACTORY_owner();
 
-NullRotationAnimationFactory::NullRotationAnimation2::NullRotationAnimation2(){
+NullRotationAnimationFactory::NullRotationAnimation2::NullRotationAnimation2() : NullRotationAnimation(AngleInfo::getInstance(AngleFactory::getInstance()->QUARTER_TOTAL_ANGLE), CircularIndexUtil::createInstance(4), new IndexedAnimationBehavior(1, 250)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -98,7 +98,7 @@ NullRotationAnimationFactory::NullRotationAnimation2::NullRotationAnimation2(){
 }
 
 
-NullRotationAnimationFactory::NullRotationAnimationFactory() : NULL_ROTATION_ANIMATION_ARRAY({}), NULL_ANIMATION(new NullRotationAnimation2()){
+NullRotationAnimationFactory::NullRotationAnimationFactory() : NULL_ROTATION_ANIMATION_ARRAY({}), NULL_ANIMATION(javaInner(new NullRotationAnimation2(), this)){
 }
 
 

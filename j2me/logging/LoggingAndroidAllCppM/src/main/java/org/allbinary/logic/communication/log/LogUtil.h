@@ -26,8 +26,6 @@
         #undef JAVA_COMPLETE_TYPES
         
 
-            #include <hilog/log.h>
-        
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -71,9 +69,6 @@ class Log;
             : public virtual Object
          {
 
-            static const char* PUBLIC = "%{public}s";
-            
-
     private: static LogUtil* instance_owner();
     private: static LogUtil* instance;
 
@@ -90,12 +85,14 @@ private: LogUtil();
     /*actual*/ public: void putL(Log* log);
 
     /*actual*/ public: void putF(std::string specialMessage, Object* anyType, std::string functionName);
+    public: void putF(std::string specialMessage, const std::string& anyType, std::string functionName) { return putF(specialMessage, JavaString::box(anyType), functionName); }
 
     public: void putFS(std::string specialMessage, std::string string, std::string functionName);
 
     /*actual*/ public: void put(std::string specialMessage, Object* anyType, std::string functionName, Object* exception);
 
     /*actual*/ public: void putS(std::string specialMessage, std::string string, std::string functionName, Object* exception);
+    public: void putS(std::string specialMessage, std::string string, std::string functionName, const std::string& exception) { return putS(specialMessage, string, functionName, JavaString::box(exception)); }
 
 };
 

@@ -161,7 +161,7 @@ hashMap->put(PaymentGatewayData::NAME->toString(), paymentType->getName());
 
         try {
             
-    std::string gatewayName = hashMap->get(PaymentGatewayData::NAME->toString());;
+    std::string gatewayName = JavaBoxes::unbox<std::string>(hashMap->get(PaymentGatewayData::NAME->toString()));;
     
 
     BasicPaymentType* paymentType = BasicPaymentTypeUtil::getInstance()->get(gatewayName);;

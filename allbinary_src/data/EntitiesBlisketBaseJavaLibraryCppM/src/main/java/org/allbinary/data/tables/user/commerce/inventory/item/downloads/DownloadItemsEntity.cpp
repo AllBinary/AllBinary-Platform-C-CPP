@@ -170,7 +170,7 @@ this->setTableName(this->tableName);
 
 
     auto DownloadItemsEntity::update(HashMap<Object*, Object*>* updatedValues) -> void{
-AbSqlBean::updateWhere(DownloadItemData::ID, updatedValues->get(DownloadItemData::ID), updatedValues);
+AbSqlBean::updateWhere(DownloadItemData::ID, JavaBoxes::unbox<std::string>(updatedValues->get(DownloadItemData::ID)), updatedValues);
     
 }
 

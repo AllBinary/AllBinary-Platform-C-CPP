@@ -73,14 +73,7 @@ this->charArray= std::vector<char>(20);
     
 this->ensureCapacity(this->currentLength +stringLength);
     
-
-
-
-        for (int32_t i = 0; i < stringLength; i++) {
-            this->charArray[this->currentLength + i - 0] = 
-    string[i];
-        }
-                                    ;
+JavaString::getChars(string, 0, stringLength, this->charArray, this->currentLength);
     
 this->currentLength += stringLength;
     

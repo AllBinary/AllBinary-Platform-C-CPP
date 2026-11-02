@@ -65,10 +65,12 @@ class PreLogUtil
          {
 
     public: static void put(std::string specialMessage, Object* anyType, std::string functionName);
+    public: static void put(std::string specialMessage, const std::string& anyType, std::string functionName) { return put(specialMessage, JavaString::box(anyType), functionName); }
 
     public: static void putOE(std::string specialMessage, Object* anyType, std::string functionName, Object* exception);
 
     public: static void putSE(std::string specialMessage, std::string className, std::string functionName, Object* exception);
+    public: static void putSE(std::string specialMessage, std::string className, std::string functionName, const std::string& exception) { return putSE(specialMessage, className, functionName, JavaString::box(exception)); }
 
 public: PreLogUtil();
 

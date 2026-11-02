@@ -164,26 +164,32 @@ this->clip= clip;
 
 
     auto PCClipWavPlayer::close() -> void{
-MusicThreadPool::getInstance()->runTask(class extends ARunnable
-                                {
-                                
+MusicThreadPool::getInstance()->runTask([&]() {
+    static thread_local PCClipWavPlayer* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public ARunnable {
+    public:
+    using ARunnable::ARunnable;
+    PCClipWavPlayer* outer = anonymousOuter0;
+
     public: void run(){
 
         try {
-            close2();
+            outer->close2();
     
 
                 //: 
 } catch(Exception& e) 
             {
-PreLogUtil::putOE(commonStrings.EXCEPTION, this, commonStrings.PROCESS, &e);
+PreLogUtil::putOE(outer->commonStrings.EXCEPTION, this, outer->commonStrings.PROCESS, &e);
     
 }
 
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 }
 
@@ -214,26 +220,32 @@ this->clip->close();
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     auto PCClipWavPlayer::start() -> void{
-MusicThreadPool::getInstance()->runTask(class extends ARunnable
-                                {
-                                
+MusicThreadPool::getInstance()->runTask([&]() {
+    static thread_local PCClipWavPlayer* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public ARunnable {
+    public:
+    using ARunnable::ARunnable;
+    PCClipWavPlayer* outer = anonymousOuter0;
+
     public: void run(){
 
         try {
-            start2();
+            outer->start2();
     
 
                 //: 
 } catch(Exception& e) 
             {
-PreLogUtil::putOE(commonStrings.EXCEPTION, this, commonStrings.PROCESS, &e);
+PreLogUtil::putOE(outer->commonStrings.EXCEPTION, this, outer->commonStrings.PROCESS, &e);
     
 }
 
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 }
 
@@ -275,26 +287,32 @@ clip->open(audioInputStream);
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     auto PCClipWavPlayer::stop() -> void{
-MusicThreadPool::getInstance()->runTask(class extends ARunnable
-                                {
-                                
+MusicThreadPool::getInstance()->runTask([&]() {
+    static thread_local PCClipWavPlayer* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public ARunnable {
+    public:
+    using ARunnable::ARunnable;
+    PCClipWavPlayer* outer = anonymousOuter0;
+
     public: void run(){
 
         try {
-            stop2();
+            outer->stop2();
     
 
                 //: 
 } catch(Exception& e) 
             {
-PreLogUtil::putOE(commonStrings.EXCEPTION, this, commonStrings.PROCESS, &e);
+PreLogUtil::putOE(outer->commonStrings.EXCEPTION, this, outer->commonStrings.PROCESS, &e);
     
 }
 
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 }
 
@@ -381,7 +399,7 @@ masterGainFloatControl->setValue(20 *Math::log10(volume));
 
     auto PCClipWavPlayer::update(LineEvent* event) -> void{
 
-                        if(event->getType()->equals(LineEvent::Type->STOP))
+                        if(JavaObjects::equals(event->getType(), LineEvent::Type->STOP))
                         
                                     {
                                     

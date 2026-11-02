@@ -93,7 +93,7 @@ AdvertisementAreaView::AdvertisementAreaView(TransformInfoInterface* transformIn
 
                             //For kotlin this is before the body of the constructor.
                     
-this->advertisementAreaName= this->getPropertiesHashMap()->get(AdvertisementAreaData::getInstance()->NAME);
+this->advertisementAreaName= JavaBoxes::unbox<std::string>(this->getPropertiesHashMap()->get(AdvertisementAreaData::getInstance()->NAME));
     
 }
 

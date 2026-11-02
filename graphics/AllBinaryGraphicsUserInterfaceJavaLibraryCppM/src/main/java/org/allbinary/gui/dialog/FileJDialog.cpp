@@ -114,16 +114,22 @@ this->jFileChooser1= new javax::swing::JFileChooser();
     
 setDefaultCloseOperation(javax.swing->WindowConstants->DISPOSE_ON_CLOSE);
     
-this->jFileChooser1->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->jFileChooser1->addActionListener([&]() {
+    static thread_local FileJDialog* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    FileJDialog* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-jFileChooser1ActionPerformed(evt);
+outer->jFileChooser1ActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 
     org::jdesktop::layout::GroupLayout* layout = new org::jdesktop::layout::GroupLayout(getContentPane());;
@@ -174,16 +180,19 @@ this->logUtil->putF(JavaString::valueOf("Starting Action Command: ") +JavaString
 
 
     auto FileJDialog::main(std::vector<std::string> args) -> void{
-java.awt->EventQueue->invokeLater(class extends ARunnable
-                                {
-                                
+java.awt->EventQueue->invokeLater([]() {
+    class Anonymous0 : public ARunnable {
+    public:
+    using ARunnable::ARunnable;
+
     public: void run(){
 (new FileJDialog(new javax::swing::JFrame(), true))->setVisible(true);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 }
 

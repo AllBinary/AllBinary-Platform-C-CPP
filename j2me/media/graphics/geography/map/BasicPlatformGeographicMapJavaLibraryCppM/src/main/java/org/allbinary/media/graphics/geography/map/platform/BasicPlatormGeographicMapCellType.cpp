@@ -110,9 +110,9 @@ BasicPlatormGeographicMapCellType::BasicPlatormGeographicMapCellType(BasicArrayL
                         for (
     int32_t index = 0;index < size; index++)
         {
-typeAsInteger= (types->get(index));
+typeAsInteger= (JavaBoxes::unbox<int32_t>(types->get(index)));
     
-type= typeAsInteger.intValue();
+type= typeAsInteger;
     
 new GeographicMapCellType(type, 0);
     

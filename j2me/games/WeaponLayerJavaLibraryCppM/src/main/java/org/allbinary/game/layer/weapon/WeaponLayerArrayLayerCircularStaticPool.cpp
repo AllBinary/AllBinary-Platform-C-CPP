@@ -118,7 +118,7 @@ this->ALL_WEAPONLAYER_ARRAY[3]= THREE_WEAPONLAYER_ARRAY;
 
     auto WeaponLayerArrayLayerCircularStaticPool::getInstanceArray(int32_t size) -> std::vector<WeaponLayer*>{
 
-    std::vector<WeaponLayer*> weaponLayerArray = this->ALL_WEAPONLAYER_ARRAY[size][this->circularIndexUtil->getIndex()] as WeaponLayer[];;
+    std::vector<WeaponLayer*> weaponLayerArray = JavaBoxes::unbox<std::vector<WeaponLayer*>>(this->ALL_WEAPONLAYER_ARRAY[size][this->circularIndexUtil->getIndex()]);;
     
 this->circularIndexUtil->next();
     

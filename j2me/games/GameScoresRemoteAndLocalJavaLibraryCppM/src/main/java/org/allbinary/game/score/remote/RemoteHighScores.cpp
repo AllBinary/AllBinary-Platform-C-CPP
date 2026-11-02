@@ -226,10 +226,10 @@ this->getList()->clear();
     BasicArrayList* highScoreVector = dynamic_cast<BasicArrayList*>(vector->get(index));;
     
 
-    std::string displayName = highScoreVector->get(0);;
+    std::string displayName = JavaBoxes::unbox<std::string>(highScoreVector->get(0));;
     
 
-    std::string score = highScoreVector->get(1);;
+    std::string score = JavaBoxes::unbox<std::string>(highScoreVector->get(1));;
     
 
     int64_t longScore = Long.parseLong(score);;

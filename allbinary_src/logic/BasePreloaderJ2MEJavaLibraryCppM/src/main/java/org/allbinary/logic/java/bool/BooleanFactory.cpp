@@ -56,7 +56,7 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 
-BooleanFactory::BooleanFactory() : TRUE(true), FALSE(false), TRUE_STRING(this->TRUE.toString()), FALSE_STRING(this->FALSE.toString()) {
+BooleanFactory::BooleanFactory() : TRUE(true), FALSE(false), TRUE_STRING(JavaString::valueOf(this->TRUE)), FALSE_STRING(JavaString::valueOf(this->FALSE)) {
         }
         auto BooleanFactory::instance_owner() -> BooleanFactory* { static std::unique_ptr<BooleanFactory> value(new BooleanFactory()); return value.get(); }
 BooleanFactory* BooleanFactory::instance = BooleanFactory::instance_owner();

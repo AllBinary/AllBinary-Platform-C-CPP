@@ -116,63 +116,63 @@ BasicItem::BasicItem(HashMap<Object*, Object*>* itemHashMap) : logUtil(LogUtil::
 
                                     }
                                 
-this->itemId= itemHashMap->get(basicItemData->ID);
+this->itemId= JavaBoxes::unbox<std::string>(itemHashMap->get(basicItemData->ID));
     
-this->number= itemHashMap->get(basicItemData->NUMBER);
+this->number= JavaBoxes::unbox<std::string>(itemHashMap->get(basicItemData->NUMBER));
     
-this->inBaskets= itemHashMap->get(basicItemData->INBASKETS);
+this->inBaskets= JavaBoxes::unbox<std::string>(itemHashMap->get(basicItemData->INBASKETS));
     
-this->weight= itemHashMap->get(basicItemData->WEIGHT);
+this->weight= JavaBoxes::unbox<std::string>(itemHashMap->get(basicItemData->WEIGHT));
     
-this->enabled= itemHashMap->get(EntryData::getInstance()->ENABLE);
+this->enabled= JavaBoxes::unbox<std::string>(itemHashMap->get(EntryData::getInstance()->ENABLE));
     
-this->newOrUsed= itemHashMap->get(basicItemData->NEWORUSED);
+this->newOrUsed= JavaBoxes::unbox<std::string>(itemHashMap->get(basicItemData->NEWORUSED));
     
-this->summary= itemHashMap->get(basicItemData->SUMMARY);
+this->summary= JavaBoxes::unbox<std::string>(itemHashMap->get(basicItemData->SUMMARY));
     
-this->distributor= itemHashMap->get(basicItemData->DISTRIBUTOR);
+this->distributor= JavaBoxes::unbox<std::string>(itemHashMap->get(basicItemData->DISTRIBUTOR));
     
-this->idUsedByDistributor= itemHashMap->get(basicItemData->IDUSEDBYDISTRIBUTOR);
+this->idUsedByDistributor= JavaBoxes::unbox<std::string>(itemHashMap->get(basicItemData->IDUSEDBYDISTRIBUTOR));
     
-this->producedBy= itemHashMap->get(basicItemData->PRODUCEDBY);
+this->producedBy= JavaBoxes::unbox<std::string>(itemHashMap->get(basicItemData->PRODUCEDBY));
     
-this->productionDate= itemHashMap->get(basicItemData->PRODUCTIONDATE);
+this->productionDate= JavaBoxes::unbox<std::string>(itemHashMap->get(basicItemData->PRODUCTIONDATE));
     
-this->startProductionDate= itemHashMap->get(basicItemData->STARTPRODUCTIONDATE);
+this->startProductionDate= JavaBoxes::unbox<std::string>(itemHashMap->get(basicItemData->STARTPRODUCTIONDATE));
     
-this->description= itemHashMap->get(basicItemData->DESCRIPTION);
+this->description= JavaBoxes::unbox<std::string>(itemHashMap->get(basicItemData->DESCRIPTION));
     
-this->keywords= itemHashMap->get(basicItemData->KEYWORDS);
+this->keywords= JavaBoxes::unbox<std::string>(itemHashMap->get(basicItemData->KEYWORDS));
     
-this->category= itemHashMap->get(basicItemData->CATEGORY);
+this->category= JavaBoxes::unbox<std::string>(itemHashMap->get(basicItemData->CATEGORY));
     
-this->type= itemHashMap->get(basicItemData->TYPE);
+this->type= JavaBoxes::unbox<std::string>(itemHashMap->get(basicItemData->TYPE));
     
-this->smallImage= itemHashMap->get(basicItemData->SMALLIMAGE);
+this->smallImage= JavaBoxes::unbox<std::string>(itemHashMap->get(basicItemData->SMALLIMAGE));
     
-this->mediumImage= itemHashMap->get(basicItemData->MEDIUMIMAGE);
+this->mediumImage= JavaBoxes::unbox<std::string>(itemHashMap->get(basicItemData->MEDIUMIMAGE));
     
-this->largeImage= itemHashMap->get(basicItemData->LARGEIMAGE);
+this->largeImage= JavaBoxes::unbox<std::string>(itemHashMap->get(basicItemData->LARGEIMAGE));
     
-this->timeEntered= itemHashMap->get(EntryData::getInstance()->TIMECREATED);
+this->timeEntered= JavaBoxes::unbox<std::string>(itemHashMap->get(EntryData::getInstance()->TIMECREATED));
     
-this->lastModified= itemHashMap->get(EntryData::getInstance()->LASTMODIFIED);
+this->lastModified= JavaBoxes::unbox<std::string>(itemHashMap->get(EntryData::getInstance()->LASTMODIFIED));
     
-this->price= new Money(itemHashMap->get(basicItemData->PRICE));
+this->price= new Money(JavaBoxes::unbox<std::string>(itemHashMap->get(basicItemData->PRICE)));
     
-this->comment= itemHashMap->get(basicItemData->COMMENT);
+this->comment= JavaBoxes::unbox<std::string>(itemHashMap->get(basicItemData->COMMENT));
     
-this->customs= itemHashMap->get(basicItemData->CUSTOMS);
+this->customs= JavaBoxes::unbox<std::string>(itemHashMap->get(basicItemData->CUSTOMS));
     
-this->setDownloads(itemHashMap->get(basicItemData->DOWNLOADS));
+this->setDownloads(JavaBoxes::unbox<std::string>(itemHashMap->get(basicItemData->DOWNLOADS)));
     
-this->groups= itemHashMap->get(basicItemData->GROUPS);
+this->groups= JavaBoxes::unbox<std::string>(itemHashMap->get(basicItemData->GROUPS));
     
-this->options= itemHashMap->get(basicItemData->OPTIONS);
+this->options= JavaBoxes::unbox<std::string>(itemHashMap->get(basicItemData->OPTIONS));
     
-this->permissions= itemHashMap->get(basicItemData->PERMISSIONS);
+this->permissions= JavaBoxes::unbox<std::string>(itemHashMap->get(basicItemData->PERMISSIONS));
     
-this->specials= itemHashMap->get(basicItemData->SPECIALS);
+this->specials= JavaBoxes::unbox<std::string>(itemHashMap->get(basicItemData->SPECIALS));
     
 }
 
@@ -400,7 +400,7 @@ this->downloads= value;
     int32_t downloadInteger = Integer.valueOf(this->downloads);;
     
 
-                        if(downloadInteger.intValue() != 0)
+                        if(downloadInteger != 0)
                         
                                     {
                                     this->setDownloadable(true);

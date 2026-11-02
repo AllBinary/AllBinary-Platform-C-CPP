@@ -99,10 +99,10 @@ this->hashMap= hashMap;
             
     auto BasicTextEmailHelper::send() -> void{
 
-    std::string adminEmailSubject = this->hashMap->get("Subject");;
+    std::string adminEmailSubject = JavaBoxes::unbox<std::string>(this->hashMap->get("Subject"));;
     
 
-    std::string adminEmailTextBody = this->hashMap->get("Body");;
+    std::string adminEmailTextBody = JavaBoxes::unbox<std::string>(this->hashMap->get("Body"));;
     
 
     BasicEmailInfo* adminBasicEmailInfo = dynamic_cast<BasicEmailInfo*>(new AdminEmailInfo(adminEmailSubject, adminEmailTextBody));;

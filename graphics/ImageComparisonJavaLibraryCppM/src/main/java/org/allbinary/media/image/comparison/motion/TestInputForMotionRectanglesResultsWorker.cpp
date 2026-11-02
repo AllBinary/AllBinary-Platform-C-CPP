@@ -197,7 +197,7 @@ timeHelper->setStartTimeTNT();
     int32_t index = 0;index < size; index++)
         {
 
-    std::string inputTypeNameString = inputTypeNameArray[index];;
+    std::string inputTypeNameString = JavaBoxes::unbox<std::string>(inputTypeNameArray[index]);;
     
 
     InputRobotInterface* inputRobotInterface = dynamic_cast<InputRobotInterface*>(robotHashtable->get(inputTypeNameString));;
@@ -205,7 +205,7 @@ timeHelper->setStartTimeTNT();
 inputRobotInterface->mouseMoveToTarget(rectangle);
     
 
-                        if(inputRobotInterface->getName().compareTo(TempInputRobotNames::DX_NAME) == 0)
+                        if(inputRobotInterface->getName().compare(TempInputRobotNames::DX_NAME) == 0)
                         
                                     {
                                     inputRobotInterface->mousePress(InputEvent::BUTTON1_MASK);

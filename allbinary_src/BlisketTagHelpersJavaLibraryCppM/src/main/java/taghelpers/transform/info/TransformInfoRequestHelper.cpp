@@ -201,7 +201,7 @@ TransformInfoEntityBuilder::getInstance()->insert(values);
             
     std::string success = "Delete Successfully";;
     
-TransformInfoEntityBuilder::getInstance()->delete_(this->transformInfoInterface->getKey());
+TransformInfoEntityBuilder::getInstance()->delete_(JavaBoxes::unbox<std::string>(this->transformInfoInterface->getKey()));
     
 
                         if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))

@@ -76,7 +76,7 @@ std::vector<IndexedAnimation*> NullIndexedAnimationFactory::NULL_INDEXED_ANIMATI
 auto NullIndexedAnimationFactory::NULL_INDEXED_ANIMATION_FACTORY_owner() -> NullIndexedAnimationFactory* { static std::unique_ptr<NullIndexedAnimationFactory> value(new NullIndexedAnimationFactory()); return value.get(); }
 NullIndexedAnimationFactory* NullIndexedAnimationFactory::NULL_INDEXED_ANIMATION_FACTORY = NullIndexedAnimationFactory::NULL_INDEXED_ANIMATION_FACTORY_owner();
 
-NullIndexedAnimationFactory::NullIndexedAnimationInner::NullIndexedAnimationInner(){
+NullIndexedAnimationFactory::NullIndexedAnimationInner::NullIndexedAnimationInner() : NullIndexedAnimation(new IndexedAnimationBehavior(1, 250)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -90,7 +90,7 @@ NullIndexedAnimationFactory::NullIndexedAnimationInner::NullIndexedAnimationInne
 }
 
 
-NullIndexedAnimationFactory::NullIndexedAnimationFactory() : NULL_ANIMATION(new NullIndexedAnimationInner()){
+NullIndexedAnimationFactory::NullIndexedAnimationFactory() : NULL_ANIMATION(javaInner(new NullIndexedAnimationInner(), this)){
 }
 
 

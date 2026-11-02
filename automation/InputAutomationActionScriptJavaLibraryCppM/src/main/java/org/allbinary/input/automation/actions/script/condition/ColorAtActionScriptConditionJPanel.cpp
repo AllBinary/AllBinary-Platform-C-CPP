@@ -390,16 +390,22 @@ this->blueJLabel->setText("Blue:");
     
 this->okJButton->setText("OK");
     
-this->okJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->okJButton->addActionListener([&]() {
+    static thread_local ColorAtActionScriptConditionJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    ColorAtActionScriptConditionJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-okJButtonActionPerformed(evt);
+outer->okJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 
     javax::swing::GroupLayout* colorAtActionJDialogLayout = new javax::swing::GroupLayout(this->colorAtActionJDialog->getContentPane());;
@@ -414,16 +420,22 @@ setPreferredSize(new java::awt::Dimension(100, 0));
     
 this->colorAtActionJButton->setText("Edit");
     
-this->colorAtActionJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->colorAtActionJButton->addActionListener([&]() {
+    static thread_local ColorAtActionScriptConditionJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    ColorAtActionScriptConditionJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-colorAtActionJButtonActionPerformed(evt);
+outer->colorAtActionJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jLabel1->setText("Color At:");
     

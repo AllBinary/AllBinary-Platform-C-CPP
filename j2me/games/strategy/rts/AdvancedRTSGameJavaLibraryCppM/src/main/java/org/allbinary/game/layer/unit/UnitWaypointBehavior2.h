@@ -219,6 +219,8 @@ public: UnitWaypointBehavior2(UnitLayer* ownerAdvancedRTSGameLayer, AdvancedRTSG
 
 //inner= member=true isStatic=
 private: class BuildingSteeringVisitor: public SteeringVisitor {
+
+    public: UnitWaypointBehavior2* outer = nullptr;
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 

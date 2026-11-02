@@ -74,10 +74,10 @@ StupidTimer::StupidTimer() : logUtil(LogUtil::getInstance()), commonStrings(Comm
         
     auto StupidTimer::visitBool(Visitor* visitorInterface) -> bool{
 
-    bool result = visitorInterface->visit(this->nullUtil->NULL_OBJECT);;
+    bool result = JavaBoxes::unbox<bool>(visitorInterface->visit(this->nullUtil->NULL_OBJECT));;
     
 
-    bool result2 = result.valueOf();;
+    bool result2 = result;;
     
 
 

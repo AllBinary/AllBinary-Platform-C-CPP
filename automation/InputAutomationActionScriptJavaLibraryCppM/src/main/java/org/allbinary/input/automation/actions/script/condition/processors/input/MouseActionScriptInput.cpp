@@ -173,7 +173,7 @@ this->setButtonClicks(Integer.valueOf(buttons)->intValue());
     int32_t mouseYInteger = Integer.valueOf(mouseYString);;
     
 
-    Point* newPoint = new Point(mouseXInteger.intValue(), mouseYInteger.intValue());;
+    Point* newPoint = new Point(mouseXInteger, mouseYInteger);;
     
 this->setPoint(newPoint);
     
@@ -268,7 +268,7 @@ this->mouseActionScriptInputJPanel->getMouseActionJDialog()->setVisible(true);
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap->put(MouseActionScriptInputData::BUTTONS, std::to_string(getButtonClicks));
+hashMap->put(MouseActionScriptInputData::BUTTONS, std::to_string(this->getButtonClicks()));
     
 this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(hashMap->toString()), this, "toHashMap()");
     
@@ -295,9 +295,9 @@ node->appendChild(mouseNode);
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap->put(MouseActionScriptInputData::MOVE_X, std::to_string(x));
+hashMap->put(MouseActionScriptInputData::MOVE_X, std::to_string(this->getPoint()->x));
     
-hashMap->put(MouseActionScriptInputData::MOVE_Y, std::to_string(y));
+hashMap->put(MouseActionScriptInputData::MOVE_Y, std::to_string(this->getPoint()->y));
     
 mouseNode->appendChild(ModDomHelper::createNodeWithValueNodes(document, MouseActionScriptInputData::MOVE, hashMap));
     

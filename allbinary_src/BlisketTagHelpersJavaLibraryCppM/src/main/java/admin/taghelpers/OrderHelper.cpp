@@ -125,7 +125,7 @@ this->pageContext= pageContext;
 this->request= dynamic_cast<HttpServletRequest*>(pageContext->getRequest());
     
 
-    std::string storeName = propertiesHashMap->get(StoreFrontData::getInstance()->NAME);;
+    std::string storeName = JavaBoxes::unbox<std::string>(propertiesHashMap->get(StoreFrontData::getInstance()->NAME));;
     
 
                         if(!StringValidationUtil::getInstance()->isEmpty(storeName))
@@ -151,7 +151,7 @@ this->weblisketSession= new WeblisketSession(this->propertiesHashMap, this->page
     OrderInterface* orderInterface = this->weblisketSession->getOrder();;
     
 
-    std::string requestPaymentGateway = this->request->getParameter(PaymentGatewayData::NAME->toString());;
+    std::string requestPaymentGateway = JavaBoxes::unbox<std::string>(this->request->getParameter(PaymentGatewayData::NAME->toString()));;
     
 
                         if(!StringValidationUtil::getInstance()->isEmpty(requestPaymentGateway))

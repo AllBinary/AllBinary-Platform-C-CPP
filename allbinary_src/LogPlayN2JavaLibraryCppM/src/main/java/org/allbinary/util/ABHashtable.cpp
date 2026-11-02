@@ -190,7 +190,7 @@ auto ABHashtable<K, V>::equals(Object* obj) -> bool{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Hashtable<K, V>::->equals(obj);;
+                        return JavaObjects::equals(Hashtable<K, V>::, obj);;
     
 }
 

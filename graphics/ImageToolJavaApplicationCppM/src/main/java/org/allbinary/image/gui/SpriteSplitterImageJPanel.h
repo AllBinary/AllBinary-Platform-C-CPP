@@ -80,7 +80,7 @@ class JTextField;
 class JLabel;
 class Graphics;
 class JButton;
-#include "org/allbinary/image/gui/JComboBox.h"
+template<> class JComboBox;
 class DefaultComboBoxModel;
 class ActionListener;
 class ActionEvent;

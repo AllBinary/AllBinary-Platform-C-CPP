@@ -94,7 +94,7 @@ CanvasTrimUtil* CanvasTrimUtil::instance = CanvasTrimUtil::instance_owner();
     std::vector<BufferedImage*> bufferedImageArray = imageProcessorInput->getBufferedImageArray();;
     
 
-    std::vector<BufferedImage*> subBufferedImageArray = std::vector<BufferedImage*>(bufferedImageArray.length);;
+    std::vector<BufferedImage*> subBufferedImageArray = std::vector<BufferedImage*>(bufferedImageArray.size());;
     
 
     int32_t size = bufferedImageArray.size();;

@@ -202,7 +202,7 @@ this->paymentTypeVector->add(paymentType);
     PaymentType* paymentType = dynamic_cast<PaymentType*>(this->paymentTypeVector->get(i));;
     
 
-                        if(paymentType->getBasicPaymentType()->getName().compareTo(paymentTypeString) == 0)
+                        if(paymentType->getBasicPaymentType()->getName().compare(paymentTypeString) == 0)
                         
                                     {
                                     

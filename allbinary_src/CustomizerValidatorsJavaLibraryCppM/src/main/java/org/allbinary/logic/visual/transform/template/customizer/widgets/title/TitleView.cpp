@@ -157,7 +157,7 @@ this->getFormData(hashMap);
 
 
     auto TitleView::getFormData(HashMap<Object*, Object*>* hashMap) -> void{
-this->title= hashMap->get(TitleData::getInstance()->TEXT);
+this->title= JavaBoxes::unbox<std::string>(hashMap->get(TitleData::getInstance()->TEXT));
     
 
                         if(StringValidationUtil::getInstance()->isEmpty(this->title))

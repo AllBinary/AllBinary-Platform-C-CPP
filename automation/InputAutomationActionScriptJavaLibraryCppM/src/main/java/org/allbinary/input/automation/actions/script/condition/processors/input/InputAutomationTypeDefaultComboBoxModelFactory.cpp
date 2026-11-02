@@ -96,7 +96,7 @@ InputAutomationTypeDefaultComboBoxModelFactory::InputAutomationTypeDefaultComboB
                         for (
     int32_t index = 0;index < size; index++)
         {
-defaultComboBoxModel->addElement(nameArray[index]);
+defaultComboBoxModel->addElement(JavaBoxes::unbox<std::string>(nameArray[index]));
     
 }
 

@@ -50,7 +50,7 @@ class LogUtil;
 class StringUtil;
 class CommonStrings;
 class StdUtil;
-#include <org/allbinary/util/ABStack.h>
+template<typename T1> class ABStack;
 
 
 

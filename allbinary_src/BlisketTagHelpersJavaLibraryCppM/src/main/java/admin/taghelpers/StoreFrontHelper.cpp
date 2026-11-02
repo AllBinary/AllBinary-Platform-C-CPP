@@ -84,7 +84,7 @@
 
 StoreFrontHelper::StoreFrontHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
 
-    std::string storeName = hashMap->get(StoreFrontData::getInstance()->NAME);;
+    std::string storeName = JavaBoxes::unbox<std::string>(hashMap->get(StoreFrontData::getInstance()->NAME));;
     
 
                         if(true)

@@ -93,7 +93,7 @@ this->pageContext= pageContext;
 this->request= dynamic_cast<HttpServletRequest*>(pageContext->getRequest());
     
 
-    std::string storeName = hashMap->get(StoreFrontData::getInstance()->NAME);;
+    std::string storeName = JavaBoxes::unbox<std::string>(hashMap->get(StoreFrontData::getInstance()->NAME));;
     
 
                         if(true)

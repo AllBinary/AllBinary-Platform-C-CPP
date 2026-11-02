@@ -171,7 +171,7 @@ timeHelper->setStartTimeTNT();
     
 filePathStringBuffer->append(this->savedCaptureGenericProfileDataWorkerType->getPath());
     
-filePathStringBuffer->append(LongUtil::fillIn(frame.toString()));
+filePathStringBuffer->append(LongUtil::fillIn(JavaString::valueOf(frame)));
     
 filePathStringBuffer->append(MediaDataFactory::getInstance()->JPG->getExtension());
     

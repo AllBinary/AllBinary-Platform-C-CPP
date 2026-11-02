@@ -241,16 +241,33 @@ this->handleImage(imageArray, index, originalImageArray[index]);
                                 
                         else {
                             
-    Callback* callback = class extends Callback
-                                {
-                                
+    Callback* callback = [&]() {
+    static thread_local ImageModifierUtil* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    static thread_local playn::core::Image* anonymous0_image3{};
+    anonymous0_image3 = image3;
+    static thread_local std::vector<Image*> anonymous0_imageArray{};
+    anonymous0_imageArray = imageArray;
+    static thread_local int32_t anonymous0_index{};
+    anonymous0_index = index;
+    static thread_local Image* anonymous0_image{};
+    anonymous0_image = image;
+    class Anonymous0 : public Callback {
+    public:
+    using Callback::Callback;
+    ImageModifierUtil* outer = anonymousOuter0;
+    playn::core::Image* image3 = anonymous0_image3;
+    std::vector<Image*> imageArray = anonymous0_imageArray;
+    int32_t index = anonymous0_index;
+    Image* image = anonymous0_image;
+
     public: void onSuccess(Object* resource){
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
-logUtil->putF(resourceCallbackStrings->DONE +image->getName(), this, resourceCallbackStrings->HANDLE_IMAGE);
+logUtil->putF(outer->resourceCallbackStrings->DONE +image->getName(), this, outer->resourceCallbackStrings->HANDLE_IMAGE);
     
-copy(imageArray, index, image, image3);
+outer->copy(imageArray, index, image, image3);
     
 }
 
@@ -258,12 +275,13 @@ copy(imageArray, index, image, image3);
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
-logUtil->putF((new StringMaker())->append(commonStrings->EXCEPTION_LABEL)->append(resourceCallbackStrings->ERROR)->append(image->getName())->toString(), this, resourceCallbackStrings->HANDLE_IMAGE);
+logUtil->putF((new StringMaker())->append(outer->commonStrings->EXCEPTION_LABEL)->append(outer->resourceCallbackStrings->ERROR)->append(image->getName())->toString(), this, outer->resourceCallbackStrings->HANDLE_IMAGE);
     
 }
 
-                                }
-                            ;;
+    };
+    return new Anonymous0();
+}();;
     
 image3->addCallback(callback);
     

@@ -12,8 +12,6 @@
         #undef JAVA_COMPLETE_TYPES
         
 
-            #include <hilog/log.h>
-        
             #include <vector>
         
             #include <cstdint>

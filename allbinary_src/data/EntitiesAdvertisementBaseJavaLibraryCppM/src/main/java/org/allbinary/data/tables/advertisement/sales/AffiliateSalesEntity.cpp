@@ -166,7 +166,7 @@ stringBuffer->append(entryData->ID)->append(this->sqlTypeStrings->MAX_BIG_INT_UN
 
 
     auto AffiliateSalesEntity::update(HashMap<Object*, Object*>* updatedValues) -> void{
-AbSqlBean::updateWhere(EntryData::getInstance()->ID, updatedValues->get(EntryData::getInstance()->ID), updatedValues);
+AbSqlBean::updateWhere(EntryData::getInstance()->ID, JavaBoxes::unbox<std::string>(updatedValues->get(EntryData::getInstance()->ID)), updatedValues);
     
 }
 

@@ -180,7 +180,7 @@ ThemeValidation::ThemeValidation(TransformInfoInterface* transformInfoInterface,
 this->transformInfoInterface= transformInfoInterface;
     
 
-    AbPath* categoryThemeAbPath = new AbPath(hashMap->get(ThemeData::getInstance()->PATH), StringUtil::getInstance()->EMPTY_STRING);;
+    AbPath* categoryThemeAbPath = new AbPath(JavaBoxes::unbox<std::string>(hashMap->get(ThemeData::getInstance()->PATH)), StringUtil::getInstance()->EMPTY_STRING);;
     
 
     AbPathData* pathData = AbPathData::getInstance();;

@@ -65,8 +65,10 @@
     /*actual*/ public: static Log* getInstance(std::string specialMessage, Object* anyType, std::string functionName, Object* exception);
 
     /*actual*/ public: static Log* getInstanceF(std::string specialMessage, Object* anyType, std::string functionName);
+    public: static Log* getInstanceF(std::string specialMessage, const std::string& anyType, std::string functionName) { return getInstanceF(specialMessage, JavaString::box(anyType), functionName); }
 
     /*actual*/ public: static Log* getInstanceSE(std::string specialMessage, std::string className, std::string functionName, Object* exception);
+    public: static Log* getInstanceSE(std::string specialMessage, std::string className, std::string functionName, const std::string& exception) { return getInstanceSE(specialMessage, className, functionName, JavaString::box(exception)); }
 
 
             

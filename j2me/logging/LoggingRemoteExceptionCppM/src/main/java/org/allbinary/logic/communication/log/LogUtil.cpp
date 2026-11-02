@@ -157,7 +157,7 @@ this->put(specialMessage, anyType, functionName, exception);
                         
                                     {
                                     
-                        if(exception->getClass()->getName().compareTo(Class::forType(typeid(XmlRpcException))->getName()) == 0)
+                        if(exception->getClass()->getName().compare(Class::forType(typeid(XmlRpcException))->getName()) == 0)
                         
                                     {
                                     
@@ -170,7 +170,7 @@ this->put(specialMessage, anyType, functionName, exception);
                                     }
                                 
 
-                        if(exception->getClass()->getName().compareTo(Class::forType(typeid(IOException))->getName()) == 0)
+                        if(exception->getClass()->getName().compare(Class::forType(typeid(IOException))->getName()) == 0)
                         
                                     {
                                     

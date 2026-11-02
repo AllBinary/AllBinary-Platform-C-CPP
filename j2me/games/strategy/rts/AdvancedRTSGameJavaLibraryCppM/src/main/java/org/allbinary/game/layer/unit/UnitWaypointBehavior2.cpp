@@ -151,7 +151,7 @@
 //#include "org/allbinary/game/layer/unit/BuildingSteeringVisitor.h"
 
 
-UnitWaypointBehavior2::UnitWaypointBehavior2(UnitLayer* ownerAdvancedRTSGameLayer, AdvancedRTSGameLayer* fakeWaypoint) : UnitWaypointBehavior(ownerAdvancedRTSGameLayer, fakeWaypoint), logUtil(LogUtil::getInstance()), unitWaypointStrings(UnitWaypointStrings::getInstance()), basicColorFactory(BasicColorFactory::getInstance()), layerDistanceUtil(LayerDistanceUtil::getInstance()), pathFindingThreadPool(PathFindingThreadPool::getInstance()), nextUnvisitedPathGeographicMapCellPosition(SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION), afterNextUnvisitedPathGeographicMapCellPosition(SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION), targetWithoutCachedPathLayerInterface(CollidableDestroyableDamageableLayer::getNullInstance()), buildingSteeringVisitor(new BuildingSteeringVisitor()){
+UnitWaypointBehavior2::UnitWaypointBehavior2(UnitLayer* ownerAdvancedRTSGameLayer, AdvancedRTSGameLayer* fakeWaypoint) : UnitWaypointBehavior(ownerAdvancedRTSGameLayer, fakeWaypoint), logUtil(LogUtil::getInstance()), unitWaypointStrings(UnitWaypointStrings::getInstance()), basicColorFactory(BasicColorFactory::getInstance()), layerDistanceUtil(LayerDistanceUtil::getInstance()), pathFindingThreadPool(PathFindingThreadPool::getInstance()), nextUnvisitedPathGeographicMapCellPosition(SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION), afterNextUnvisitedPathGeographicMapCellPosition(SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION), targetWithoutCachedPathLayerInterface(CollidableDestroyableDamageableLayer::getNullInstance()), buildingSteeringVisitor(javaInner(new BuildingSteeringVisitor(), this)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -1230,7 +1230,7 @@ UnitWaypointBehavior2::BuildingSteeringVisitor::BuildingSteeringVisitor() : posi
     GeographicMapCellPosition* cellPosition = dynamic_cast<GeographicMapCellPosition*>(this->getPositionList()->get(0));;
     
 
-    bool clear = this->buildingChase(allbinaryLayer, cellPosition);;
+    bool clear = outer->buildingChase(allbinaryLayer, cellPosition);;
     
 
                         if(clear)

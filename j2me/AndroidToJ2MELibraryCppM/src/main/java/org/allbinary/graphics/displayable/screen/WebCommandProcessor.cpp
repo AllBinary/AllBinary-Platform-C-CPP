@@ -113,7 +113,7 @@ WebCommandProcessor* WebCommandProcessor::instance = WebCommandProcessor::instan
 
     Intent* intent = new Intent(context, TsUtil::getInstance()->getClassClassLoader(this)->loadClass(this->WEB_VIEW_ACTIVITY));;
     
-intent->putExtra(this->aboutCommandProcessor->URL, this->list->removeAt(0));
+intent->putExtra(this->aboutCommandProcessor->URL, JavaBoxes::unbox<std::string>(this->list->removeAt(0)));
     
 intent->setFlags(Intent::FLAG_ACTIVITY_NEW_TASK);
     

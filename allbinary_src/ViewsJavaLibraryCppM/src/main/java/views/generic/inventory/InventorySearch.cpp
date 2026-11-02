@@ -146,7 +146,7 @@ this->searchRequest= searchRequest;
     HashMap<Object*, Object*>* columnValueHashMap = searchParams->get();;
     
 
-    std::string file = (new StaticPagesEntity())->getFile(storeFront->getName(), (new Replace("-", CommonSeps::getInstance()->SPACE))->all(columnValueHashMap->get(basicItemData->KEYWORDS)));;
+    std::string file = (new StaticPagesEntity())->getFile(storeFront->getName(), (new Replace("-", CommonSeps::getInstance()->SPACE))->all(JavaBoxes::unbox<std::string>(columnValueHashMap->get(basicItemData->KEYWORDS))));;
     
 
                         if(StringValidationUtil::getInstance()->isEmpty(file))

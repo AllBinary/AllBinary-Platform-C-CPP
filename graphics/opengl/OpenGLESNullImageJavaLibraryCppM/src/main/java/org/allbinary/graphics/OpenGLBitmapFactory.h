@@ -67,6 +67,8 @@ public: class Config;
 public: class Config
             : public virtual Object
          {
+
+    public: OpenGLBitmapFactory* outer = nullptr;
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 

@@ -116,10 +116,10 @@ ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
 
     auto VirtualKeyboardAPI3::onVirtualKeyboardEvent(VirtualKeyboardEvent* virtualKeyboardEvent) -> void{
 
-    bool isShow = virtualKeyboardEvent->getSource();;
+    bool isShow = JavaBoxes::unbox<bool>(virtualKeyboardEvent->getSource());;
     
 
-                        if(isShow.valueOf())
+                        if(isShow)
                         
                                     {
                                     this->showVirtualKeyboard();

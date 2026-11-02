@@ -174,7 +174,7 @@ this->logUtil->putF(JavaString::valueOf(this->commonStrings->START) +JavaString:
 
     Iterator* iterator = set->iterator();;
     
-this->setInputRobotInterface(inputRobotFactory->get(iterator->next()));
+this->setInputRobotInterface(inputRobotFactory->get(JavaBoxes::unbox<std::string>(iterator->next())));
     
 this->setTime(0);
     
@@ -203,7 +203,7 @@ this->time= time;
     
 hashMap->put(GenericProfileActionScriptInputData::TYPE, this->getInputRobotInterface()->getName());
     
-hashMap->put(GenericProfileActionScriptInputData::DELAY, std::to_string(getTime));
+hashMap->put(GenericProfileActionScriptInputData::DELAY, std::to_string(this->getTime()));
     
 this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(hashMap->toString()), this, "toHashMap()");
     

@@ -93,6 +93,8 @@ public: class ProgressPaintable;
 //inner= member=true isStatic=
 public: class ProgressPaintable: public Paintable {
 
+    public: ProgressCanvas* outer = nullptr;
+
     public: ProgressCanvas* progressCanvas;
 
 public: ProgressPaintable(ProgressCanvas* progressCanvas);

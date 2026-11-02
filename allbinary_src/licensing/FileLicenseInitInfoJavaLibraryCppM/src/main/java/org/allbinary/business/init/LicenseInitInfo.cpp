@@ -90,7 +90,7 @@ LicenseInitInfo::LicenseInitInfo() : id(StringUtil::getInstance()->EMPTY_STRING)
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->serverVector->objectArray[index];
+                        return JavaBoxes::unbox<std::string>(this->serverVector->objectArray[index]);
     
 }
 

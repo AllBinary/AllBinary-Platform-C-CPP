@@ -122,14 +122,14 @@ this->logic= logic;
                             nullptr);;
     
 
-    bool result = method->invoke(this->getHelper(), 
-                            nullptr);;
+    bool result = JavaBoxes::unbox<bool>(method->invoke(this->getHelper(), 
+                            nullptr));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return result.valueOf();;
+                        return result;;
     
 
                 //: 
@@ -167,8 +167,8 @@ this->logic= logic;
                             nullptr);;
     
 
-    std::string result = method->invoke(this->getHelper(), 
-                            nullptr);;
+    std::string result = JavaBoxes::unbox<std::string>(method->invoke(this->getHelper(), 
+                            nullptr));;
     
 
 

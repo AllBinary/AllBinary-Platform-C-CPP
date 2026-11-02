@@ -234,7 +234,7 @@ this->listOfList[foundIndex].add(image);
     ResourceUtil* resourceUtil = ResourceUtil::getInstance();;
     
 
-    InputStream* resourceInputStream = resourceUtil->getResourceAsStream(key);;
+    InputStream* resourceInputStream = resourceUtil->getResourceAsStream(JavaBoxes::unbox<std::string>(key));;
     
 
                         if(resourceInputStream == 

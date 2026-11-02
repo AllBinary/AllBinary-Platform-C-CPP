@@ -99,7 +99,7 @@ httpTransformInfoInterface->getPropertiesHashMap()->put(TransformInfoData::getIn
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->view(TransformInfosData::getInstance()->PREVIEW);;
+                        return this->GeneratorStoreFrontContextView::view(TransformInfosData::getInstance()->PREVIEW);;
     
 
                 //: 

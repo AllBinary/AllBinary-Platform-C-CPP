@@ -84,6 +84,8 @@ public: class NullIndexedAnimationInner;
 
 //inner= member=true isStatic=
 public: class NullIndexedAnimationInner: public NullIndexedAnimation {
+
+    public: NullIndexedAnimationFactory* outer = nullptr;
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 

@@ -156,13 +156,13 @@ this->context= aContext;
 
     auto ResourceUtil::getResourceId(std::string resource) -> int32_t{
 
-    int32_t value = this->hashMap->get(resource);;
+    int32_t value = JavaBoxes::unbox<int32_t>(this->hashMap->get(resource));;
     
 
                         if(DebugFactory::getInstance() != NoDebug::getInstance())
                         
                                     {
-                                    PreLogUtil::put((new StringMaker())->append(resource)->append(CommonSeps::getInstance()->COLON)->append(value.toString())->toString(), this, "getResourceId");
+                                    PreLogUtil::put((new StringMaker())->append(resource)->append(CommonSeps::getInstance()->COLON)->append(JavaString::valueOf(value))->toString(), this, "getResourceId");
     
 
                                     }
@@ -181,7 +181,7 @@ this->context= aContext;
                         if(DebugFactory::getInstance() != NoDebug::getInstance())
                         
                                     {
-                                    PreLogUtil::put((new StringMaker())->append(resource)->append(CommonSeps::getInstance()->COLON)->append(value.toString())->toString(), this, "addResource");
+                                    PreLogUtil::put((new StringMaker())->append(resource)->append(CommonSeps::getInstance()->COLON)->append(JavaString::valueOf(value))->toString(), this, "addResource");
     
 
                         if(this->containsDuplicate(resource, value))
@@ -212,7 +212,7 @@ this->hashMap->put(resource, value);
     int32_t index = objectArray.size();--index >= 0; )
         {
 
-    int32_t integer = this->hashMap->get(objectArray[index]);;
+    int32_t integer = JavaBoxes::unbox<int32_t>(this->hashMap->get(objectArray[index]));;
     
 
                         if(resource != objectArray[index])
@@ -223,7 +223,7 @@ this->hashMap->put(resource, value);
                         
                                     {
                                     
-                        if(value.intValue() == integer.intValue())
+                        if(value == integer)
                         
                                     {
                                     
@@ -264,10 +264,10 @@ this->resources= resources;
             
     auto ResourceUtil::getResourceAsStream(std::string resource) -> InputStream*{
 
-    int32_t integer = this->hashMap->get(resource);;
+    int32_t integer = JavaBoxes::unbox<int32_t>(this->hashMap->get(resource));;
     
 
-    int32_t id = integer.intValue();;
+    int32_t id = integer;;
     
 
     Resources* resources = (dynamic_cast<Resources*>(this->resources));;

@@ -114,7 +114,7 @@
 //#include "org/allbinary/game/layer/unit/SimpleSteeringVisitor.h"
 
 
-CollidableUnitBehavior::CollidableUnitBehavior(bool collidable) : CollidableRTSBehavior(collidable), layerPartialCellPositionsUtil(LayerPartialCellPositionsUtil::getInstance()), simpleSteeringVisitor(new SimpleSteeringVisitor()){
+CollidableUnitBehavior::CollidableUnitBehavior(bool collidable) : CollidableRTSBehavior(collidable), layerPartialCellPositionsUtil(LayerPartialCellPositionsUtil::getInstance()), simpleSteeringVisitor(javaInner(new SimpleSteeringVisitor(), this)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -164,7 +164,7 @@ CollidableUnitBehavior::SimpleSteeringVisitor::SimpleSteeringVisitor() {
     CollidableCompositeLayer* allbinaryLayer = dynamic_cast<CollidableCompositeLayer*>(this->getList()->get(0));;
     
 
-    bool clear = this->steer(ownerLayer, allbinaryLayer);;
+    bool clear = outer->steer(ownerLayer, allbinaryLayer);;
     
 
                         if(clear)

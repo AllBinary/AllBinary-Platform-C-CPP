@@ -139,7 +139,7 @@ stringBuffer->appendint(gameConfiguration->getValue()->intValue());
     
 stringBuffer->append(this->TO);
     
-stringBuffer->appendint(value.intValue());
+stringBuffer->appendint(value);
     
 this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->UPDATE);
     

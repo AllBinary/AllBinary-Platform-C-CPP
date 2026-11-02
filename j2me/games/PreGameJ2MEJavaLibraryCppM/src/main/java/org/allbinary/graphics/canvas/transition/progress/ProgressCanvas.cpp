@@ -142,9 +142,14 @@ this->progressCanvas->paint2(graphics);
 }
 
 
-ProgressCanvas::ProgressCanvas(std::string title, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : RunnableCanvas(NullCommandListener::NULL_COMMAND_LISTENER, CanvasStrings::getInstance()->EMPTY_CHILD_NAME_LIST, false), GAUGE_PAINTABLE(new ProgressPaintable(this)), TEXT(this->commonStrings->LOADING), updateMyFontProcessor(new UpdateMyFontProcessor(this)), myFontProcessor(this->updateMyFontProcessor), allbinaryMidlet(AllBinaryMidlet::getNullInstance()), text(this->TEXT), paintable(this->GAUGE_PAINTABLE), IN_GAME_PROCESSOR(class extends Processor
-                                {
-                                
+ProgressCanvas::ProgressCanvas(std::string title, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : RunnableCanvas(NullCommandListener::NULL_COMMAND_LISTENER, CanvasStrings::getInstance()->EMPTY_CHILD_NAME_LIST, false), GAUGE_PAINTABLE(javaInner(new ProgressPaintable(this), this)), TEXT(this->commonStrings->LOADING), updateMyFontProcessor(new UpdateMyFontProcessor(this)), myFontProcessor(this->updateMyFontProcessor), allbinaryMidlet(AllBinaryMidlet::getNullInstance()), text(this->TEXT), paintable(this->GAUGE_PAINTABLE), IN_GAME_PROCESSOR([&]() {
+    static thread_local ProgressCanvas* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public Processor {
+    public:
+    using Processor::Processor;
+    ProgressCanvas* outer = anonymousOuter0;
+
     ThreadPool* pathFindingThreadPool = PathFindingThreadPool::getInstance();
                 //@Throws(Exception.constructor)
             
@@ -153,8 +158,9 @@ this->pathFindingThreadPool->runAPriorityTask();
     
 }
 
-                                }
-                            ), inGameProcessor(Processor::getInstance()), progressEndListener(ProgressEndListener::instance){
+    };
+    return new Anonymous0();
+}()), inGameProcessor(Processor::getInstance()), progressEndListener(ProgressEndListener::instance){
 
                         //super/this constructor call is in the constructor initializer list.
                     

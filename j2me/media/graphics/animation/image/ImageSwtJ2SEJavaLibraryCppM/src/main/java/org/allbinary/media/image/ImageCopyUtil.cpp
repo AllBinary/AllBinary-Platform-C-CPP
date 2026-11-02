@@ -475,7 +475,7 @@ openGLESImageProperties->scaleX= openGLESImageProperties->scaleX2= ((width) /ope
 openGLESImageProperties->scaleY= openGLESImageProperties->scaleY2= ((height) /openGLESImage->getHeight());
     
 
-                        if(image->getName().startsWith(this->INFORMATION))
+                        if(JavaString::startsWith(image->getName(), this->INFORMATION))
                         
                                     {
                                     openGLESImage->openGLESImageTranslate= new OpenGLESDeviceImageTranslate();
@@ -500,7 +500,7 @@ openGLESImageProperties->scaleY= openGLESImageProperties->scaleY *0.25;
 openGLESImageProperties->scaleY= openGLESImageProperties->scaleY *0.75;
     
 
-                        if(image->getName().startsWith(this->LEADERBOARD))
+                        if(JavaString::startsWith(image->getName(), this->LEADERBOARD))
                         
                                     {
                                     openGLESImage->openGLESImageTranslate= new OpenGLESDeviceImageTranslate();
@@ -514,7 +514,7 @@ openGLESDeviceImageTranslate->translateX=  -displayInfoSingleton->getLastWidth()
                                     }
                                 
 
-                        if(image->getName().startsWith(this->LEADERBOARD))
+                        if(JavaString::startsWith(image->getName(), this->LEADERBOARD))
                         
                                     {
                                     

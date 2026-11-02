@@ -152,7 +152,7 @@ nextBasicArrayList= dynamic_cast<BasicArrayList*>(vector->objectArray[index]);
     
 framePoints= this->toFrameArrayFromPointBasicArrayList(nextBasicArrayList);
     
-points[index]= std::vector<std::vector<int32_t>>(framePoints.length, std::vector<int32_t>(2));
+points[index]= std::vector<std::vector<int32_t>>(framePoints.size(), std::vector<int32_t>(2));
     
 
 

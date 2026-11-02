@@ -228,7 +228,7 @@ default: {
 
     auto BasicGeographicMapUtil::createAllBinaryTiledLayerArray(std::vector<BasicGeographicMap*> geographicMapInterfaceArray) -> std::vector<Layer*>{
 
-    std::vector<Layer*> tiledLayerArray = std::vector<Layer*>(geographicMapInterfaceArray.length);;
+    std::vector<Layer*> tiledLayerArray = std::vector<Layer*>(geographicMapInterfaceArray.size());;
     
 
 

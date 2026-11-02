@@ -175,8 +175,10 @@ class SVGAsJSONSimpleLoader
     private: int32_t readInt(JSONObject* anyType, std::string key, int32_t defaultValue);
 
     private: int32_t toInt(Object* value, std::string key);
+    private: int32_t toInt(const std::string& value, std::string key) { return toInt(JavaString::box(value), key); }
 
     private: JSONObject* asObject(Object* value, std::string name);
+    private: JSONObject* asObject(const std::string& value, std::string name) { return asObject(JavaString::box(value), name); }
 
     private: std::vector<std::vector<int32_t>> toPoints(BasicArrayList* pointVector);
 

@@ -110,7 +110,7 @@ this->units= int64_t(units);
 
                         if(this->units != 
                                     nullptr
-                                 && this->units.longValue() > 0 && this->units.longValue() < Long.MAX_VALUE)
+                                 && this->units > 0 && this->units < Long.MAX_VALUE)
                         
                                     {
                                     
@@ -142,25 +142,25 @@ this->add(moreMoney->toString());
 
 
     auto Money::add(std::string usDollarStr) -> void{
-this->units= int64_t(this->units.longValue() +convertUsdToUnits(usDollarStr));
+this->units= int64_t(this->units +convertUsdToUnits(usDollarStr));
     
 }
 
 
     auto Money::subtract(std::string usDollarStr) -> void{
-this->units= int64_t(this->units.longValue() -convertUsdToUnits(usDollarStr));
+this->units= int64_t(this->units -convertUsdToUnits(usDollarStr));
     
 }
 
 
     auto Money::multiply(float multiplier) -> void{
-this->units= int64_t((float(this->units.longValue() *multiplier)).longValue());
+this->units= int64_t((float(this->units *multiplier)).longValue());
     
 }
 
 
     auto Money::multiply(int32_t multiplier) -> void{
-this->units= int64_t(this->units.longValue() *multiplier);
+this->units= int64_t(this->units *multiplier);
     
 }
 
@@ -174,10 +174,10 @@ this->units= int64_t(this->units.longValue() *multiplier);
                         
                                     {
                                     
-    int64_t dollar = this->units.longValue() /100;;
+    int64_t dollar = this->units /100;;
     
 
-    int64_t cents = this->units.longValue() -(dollar *100);;
+    int64_t cents = this->units -(dollar *100);;
     
 stringBuffer->append((int64_t(dollar)).toString());
     
@@ -259,7 +259,7 @@ localUnit += (int64_t(centsStr)).longValue();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->units.longValue();;
+                        return this->units;;
     
 }
 

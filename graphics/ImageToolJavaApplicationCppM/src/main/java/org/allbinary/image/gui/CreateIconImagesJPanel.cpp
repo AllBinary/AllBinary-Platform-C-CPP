@@ -126,7 +126,7 @@ this->imageProcessorInput= imageProcessorInput;
 
     std::vector<std::string> numberStringArray = std::vector<std::string>(101);;
     
-numberStringArray[0]= std::to_string();
+numberStringArray[0]= std::to_string( -1);
     
 
 
@@ -163,9 +163,14 @@ numberStringArray[index]= std::to_string(index);
 
 
     auto CreateIconImagesJPanel::process() -> void{
-(class extends Thread
-                                {
-                                
+([&]() {
+    static thread_local CreateIconImagesJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public Thread {
+    public:
+    using Thread::Thread;
+    CreateIconImagesJPanel* outer = anonymousOuter0;
+
     public: void run(){
 
     LogUtil* logUtil = LogUtil::getInstance();;
@@ -179,7 +184,7 @@ numberStringArray[index]= std::to_string(index);
     StringMaker* stringMaker = new StringMaker();;
     
 
-    ImageProcessorInput* imageProcessorInput = this->getImageProcessorInput();;
+    ImageProcessorInput* imageProcessorInput = outer->getImageProcessorInput();;
     
 
     std::vector<File*> files = imageProcessorInput->getFiles();;
@@ -216,9 +221,13 @@ iconHeightList->add(864);
                         for (
     int32_t index2 = 0;index2 < size; index2++)
         {
-width= (get).intValue();
+width= get = JavaBoxes::unbox<int32_t>(iconWidthList->get(index2)get)
+get.
+                    ;
     
-height= (get).intValue();
+height= get = JavaBoxes::unbox<int32_t>(iconHeightList->get(index2)get)
+get.
+                    ;
     
 
     std::vector<BufferedImage*> generatedBufferedImageArray = imageUtil->createBufferedImage3(imageProcessorInput->getBufferedImageArray(), width, height, true);;
@@ -263,20 +272,21 @@ imagePersistanceUtil->saveWithBatik(AbFile::createAbFile(newFilePath), generated
 
 }
 
-this->getParent()->repaint();
+outer->getParent()->repaint();
     
 
                 //: 
 } catch(Exception& e) 
             {
-logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
+logUtil->put(outer->commonStrings->EXCEPTION, this, outer->commonStrings->RUN, &e);
     
 }
 
 }
 
-                                }
-                            )->start();
+    };
+    return new Anonymous0();
+}())->start();
     
 }
 
@@ -302,16 +312,22 @@ this->aboveJButton= new javax::swing::JButton();
     
 this->aboveJButton->setText("Process");
     
-this->aboveJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->aboveJButton->addActionListener([&]() {
+    static thread_local CreateIconImagesJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    CreateIconImagesJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-aboveJButtonActionPerformed(evt);
+outer->aboveJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 
     javax::swing::GroupLayout* layout = new javax::swing::GroupLayout(this);;

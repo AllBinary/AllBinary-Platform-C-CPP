@@ -126,7 +126,7 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 
 
 ConcurrentImageLoadingProcessor::ConcurrentImageLoadingProcessor(ImageCache* imageCache) : logUtil(LogUtil::getInstance()){
-this->runnable= new ImageCacheRunnable(imageCache);
+this->runnable= javaInner(new ImageCacheRunnable(imageCache), this);
     
 }
 

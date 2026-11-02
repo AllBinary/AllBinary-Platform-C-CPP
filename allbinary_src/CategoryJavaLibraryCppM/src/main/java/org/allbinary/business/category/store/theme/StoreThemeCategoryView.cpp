@@ -98,7 +98,7 @@ StoreThemeCategoryView::StoreThemeCategoryView(StoreThemeCategoryInterface* cate
     StoreThemeCategoryInterface* storeThemeCategoryInterface = dynamic_cast<StoreThemeCategoryInterface*>(this->getCategoryInterface());;
     
 
-    std::vector<ThemeValidation*> themeValidationArray = storeThemeCategoryInterface->getThemes()->toArray() as ThemeValidation[];;
+    std::vector<ThemeValidation*> themeValidationArray = JavaBoxes::unbox<std::vector<ThemeValidation*>>(storeThemeCategoryInterface->getThemes()->toArray());;
     
 Arrays::sort(themeValidationArray, new ThemeComparator());
     

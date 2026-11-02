@@ -197,7 +197,7 @@ StoreFront::StoreFront(HashMap<Object*, Object*>* hashMap) : logUtil(LogUtil::ge
 this->getFormData(hashMap);
     
 
-    std::string domDocumentString = hashMap->get(StoreFrontData::getInstance()->CONFIGURATION);;
+    std::string domDocumentString = JavaBoxes::unbox<std::string>(hashMap->get(StoreFrontData::getInstance()->CONFIGURATION));;
     
 
                         if(false)
@@ -277,7 +277,7 @@ this->setContextConfigurationInterface(ContextConfigurationInterfaceFactory::get
 
     auto StoreFront::create(std::string append, std::string key, HashMap<Object*, Object*>* hashMap) -> std::string{
 
-    std::string path = hashMap->get(key);;
+    std::string path = JavaBoxes::unbox<std::string>(hashMap->get(key));;
     
 
                         if(StringValidationUtil::getInstance()->isEmpty(path))
@@ -301,7 +301,7 @@ this->setContextConfigurationInterface(ContextConfigurationInterfaceFactory::get
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return JavaString::valueOf(hashMap->get(path)) +JavaString::valueOf(append);
+                        return JavaString::valueOf(JavaBoxes::unbox<std::string>(hashMap->get(path))) +JavaString::valueOf(append);
     
 
                                     }
@@ -328,23 +328,23 @@ this->setContextConfigurationInterface(ContextConfigurationInterfaceFactory::get
 
     StoreFrontData* storeFrontData = StoreFrontData::getInstance();;
     
-this->name= storeHashMap->get(storeFrontData->NAME);
+this->name= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->NAME));
     
-this->basketName= storeHashMap->get(storeFrontData->NAME);
+this->basketName= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->NAME));
     
-this->homeHostName= storeHashMap->get(storeFrontData->HOMEHOSTNAME);
+this->homeHostName= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->HOMEHOSTNAME));
     
 this->homeHostNamePath= this->createPath(storeFrontData->HOMEHOSTNAMEPATH, storeHashMap);
     
-this->hostName= storeHashMap->get(storeFrontData->HOSTNAME);
+this->hostName= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->HOSTNAME));
     
 this->hostNamePath= this->createPath(storeFrontData->HOSTNAMEPATH, storeHashMap);
     
-this->testHomeHostName= storeHashMap->get(storeFrontData->TESTHOMEHOSTNAME);
+this->testHomeHostName= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->TESTHOMEHOSTNAME));
     
 this->testHomeHostNamePath= this->createPath(storeFrontData->TESTHOMEHOSTNAMEPATH, storeHashMap);
     
-this->testHostName= storeHashMap->get(storeFrontData->TESTHOSTNAME);
+this->testHostName= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->TESTHOSTNAME));
     
 this->testHostNamePath= this->createPath(storeFrontData->TESTHOSTNAMEPATH, storeHashMap);
     
@@ -354,33 +354,33 @@ this->staticPath= this->createPath(JavaString::valueOf(" Products") +JavaString:
     
 this->categoryPath= this->createPath(StoreFront::RESOURCES, storeFrontData->CATEGORYPATH, storeHashMap);
     
-this->inventoryControl= storeHashMap->get(storeFrontData->INVENTORYCONTROL);
+this->inventoryControl= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->INVENTORYCONTROL));
     
-this->subStores= storeHashMap->get(storeFrontData->SUBSTORES);
+this->subStores= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->SUBSTORES));
     
-this->tagLocation= storeHashMap->get(storeFrontData->TAGLOCATION);
+this->tagLocation= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->TAGLOCATION));
     
-this->packageLocation= storeHashMap->get(storeFrontData->PACKAGELOCATION);
+this->packageLocation= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->PACKAGELOCATION));
     
-this->ftp= storeHashMap->get(storeFrontData->FTP);
+this->ftp= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->FTP));
     
 this->ftpPath= this->createPath(storeFrontData->FTPPATH, storeHashMap);
     
-this->ftpUserName= storeHashMap->get(storeFrontData->FTPUSERNAME);
+this->ftpUserName= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->FTPUSERNAME));
     
-this->ftpPassword= storeHashMap->get(storeFrontData->FTPPASSWORD);
+this->ftpPassword= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->FTPPASSWORD));
     
-this->testFtp= storeHashMap->get(storeFrontData->TESTFTP);
+this->testFtp= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->TESTFTP));
     
 this->testFtpPath= this->createPath(storeFrontData->TESTFTPPATH, storeHashMap);
     
-this->testFtpUserName= storeHashMap->get(storeFrontData->TESTFTPUSERNAME);
+this->testFtpUserName= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->TESTFTPUSERNAME));
     
-this->testFtpPassword= storeHashMap->get(storeFrontData->TESTFTPPASSWORD);
+this->testFtpPassword= JavaBoxes::unbox<std::string>(storeHashMap->get(storeFrontData->TESTFTPPASSWORD));
     
-this->timeCreated= storeHashMap->get(EntryData::getInstance()->TIMECREATED);
+this->timeCreated= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::getInstance()->TIMECREATED));
     
-this->lastModified= storeHashMap->get(EntryData::getInstance()->LASTMODIFIED);
+this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::getInstance()->LASTMODIFIED));
     
 }
 
@@ -685,7 +685,7 @@ valid= this->isNameValid();
                                     }
                                 
 
-                        if(valid.valueOf() == true)
+                        if(valid == true)
                         
                                     {
                                     

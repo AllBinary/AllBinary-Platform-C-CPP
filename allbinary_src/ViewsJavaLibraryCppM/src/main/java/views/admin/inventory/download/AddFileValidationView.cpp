@@ -150,7 +150,7 @@ AddFileValidationView::AddFileValidationView(TransformInfoInterface* transformIn
 
         try {
             
-    std::string command = this->getRequestHashMap()->get(GLOBALS2::ADMINCOMMAND);;
+    std::string command = JavaBoxes::unbox<std::string>(this->getRequestHashMap()->get(GLOBALS2::ADMINCOMMAND));;
     
 
                         if(StringValidationUtil::getInstance()->isEmpty(command) || (command.compare(AddFileValidationView::ADDPRODUCT) != 0 && command.compare(ADDANOTHERDOWNLOADABLE) != 0))
@@ -532,7 +532,7 @@ this->downloadableItem= new DownloadableItem(hashMap);
     StringMaker* stringBuffer = new StringMaker();;
     
 
-    std::string command = this->getRequestHashMap()->get(GLOBALS2::ADMINCOMMAND);;
+    std::string command = JavaBoxes::unbox<std::string>(this->getRequestHashMap()->get(GLOBALS2::ADMINCOMMAND));;
     
 
                         if(StringValidationUtil::getInstance()->isEmpty(command) || (command.compare(AddFileValidationView::ADDPRODUCT) != 0 && command.compare(ADDANOTHERDOWNLOADABLE) != 0))

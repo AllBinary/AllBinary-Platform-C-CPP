@@ -169,57 +169,57 @@ this->taxes= orderHistory->getTaxes();
     
 this->total= orderHistory->getTotal();
     
-Order::setUserComments(orderHistory->getUserComments());
+Order::setUserComments(JavaBoxes::unbox<std::string>(orderHistory->getUserComments()));
     
-Order::setUserCancelComments(orderHistory->getUserCancelComments());
+Order::setUserCancelComments(JavaBoxes::unbox<std::string>(orderHistory->getUserCancelComments()));
     
-Order::setStoreComments(orderHistory->getStoreComments());
+Order::setStoreComments(JavaBoxes::unbox<std::string>(orderHistory->getStoreComments()));
     
-Order::setStoreCancelComments(orderHistory->getStoreCancelComments());
+Order::setStoreCancelComments(JavaBoxes::unbox<std::string>(orderHistory->getStoreCancelComments()));
     
 }
 
 
-OrderHistory::OrderHistory(BasketInterface* basketInterface, HashMap<Object*, Object*>* orderHistoryHashMap) : Order(orderHistoryHashMap->get(StoreFrontData::getInstance()->NAME), basketInterface, orderHistoryHashMap->get(OrderData::ID), orderHistoryHashMap->get(ShippingMethodData::NAME), orderHistoryHashMap->get(EntryData::getInstance()->SPECIAL), orderHistoryHashMap->get(PaymentData::METHOD)){
+OrderHistory::OrderHistory(BasketInterface* basketInterface, HashMap<Object*, Object*>* orderHistoryHashMap) : Order(JavaBoxes::unbox<std::string>(orderHistoryHashMap->get(StoreFrontData::getInstance()->NAME)), basketInterface, JavaBoxes::unbox<std::string>(orderHistoryHashMap->get(OrderData::ID)), JavaBoxes::unbox<std::string>(orderHistoryHashMap->get(ShippingMethodData::NAME)), JavaBoxes::unbox<std::string>(orderHistoryHashMap->get(EntryData::getInstance()->SPECIAL)), JavaBoxes::unbox<std::string>(orderHistoryHashMap->get(PaymentData::METHOD))){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->shippingAddress= new StreetAddress(orderHistoryHashMap->get(ShippingAddressData::NAME), orderHistoryHashMap->get(ShippingAddressData::STREET), orderHistoryHashMap->get(ShippingAddressData::CITY), orderHistoryHashMap->get(ShippingAddressData::STATE), orderHistoryHashMap->get(ShippingAddressData::CODE), orderHistoryHashMap->get(ShippingAddressData::COUNTRY));
+this->shippingAddress= new StreetAddress(JavaBoxes::unbox<std::string>(orderHistoryHashMap->get(ShippingAddressData::NAME)), JavaBoxes::unbox<std::string>(orderHistoryHashMap->get(ShippingAddressData::STREET)), JavaBoxes::unbox<std::string>(orderHistoryHashMap->get(ShippingAddressData::CITY)), JavaBoxes::unbox<std::string>(orderHistoryHashMap->get(ShippingAddressData::STATE)), JavaBoxes::unbox<std::string>(orderHistoryHashMap->get(ShippingAddressData::CODE)), JavaBoxes::unbox<std::string>(orderHistoryHashMap->get(ShippingAddressData::COUNTRY)));
     
-this->billingAddress= new StreetAddress(orderHistoryHashMap->get(BillingAddressData::NAME), orderHistoryHashMap->get(BillingAddressData::STREET), orderHistoryHashMap->get(BillingAddressData::CITY), orderHistoryHashMap->get(BillingAddressData::STATE), orderHistoryHashMap->get(BillingAddressData::CODE), orderHistoryHashMap->get(BillingAddressData::COUNTRY));
+this->billingAddress= new StreetAddress(JavaBoxes::unbox<std::string>(orderHistoryHashMap->get(BillingAddressData::NAME)), JavaBoxes::unbox<std::string>(orderHistoryHashMap->get(BillingAddressData::STREET)), JavaBoxes::unbox<std::string>(orderHistoryHashMap->get(BillingAddressData::CITY)), JavaBoxes::unbox<std::string>(orderHistoryHashMap->get(BillingAddressData::STATE)), JavaBoxes::unbox<std::string>(orderHistoryHashMap->get(BillingAddressData::CODE)), JavaBoxes::unbox<std::string>(orderHistoryHashMap->get(BillingAddressData::COUNTRY)));
     
 this->payment= new Payment(orderHistoryHashMap);
     
-this->userName= orderHistoryHashMap->get(UserData::USERNAME);
+this->userName= JavaBoxes::unbox<std::string>(orderHistoryHashMap->get(UserData::USERNAME));
     
-this->orderDate= orderHistoryHashMap->get(OrderHistoryData::ORDERDATE);
+this->orderDate= JavaBoxes::unbox<std::string>(orderHistoryHashMap->get(OrderHistoryData::ORDERDATE));
     
-this->shipDate= orderHistoryHashMap->get(OrderHistoryData::SHIPPEDDATE);
+this->shipDate= JavaBoxes::unbox<std::string>(orderHistoryHashMap->get(OrderHistoryData::SHIPPEDDATE));
     
-this->transDate= orderHistoryHashMap->get(OrderHistoryData::TRANSDATE);
+this->transDate= JavaBoxes::unbox<std::string>(orderHistoryHashMap->get(OrderHistoryData::TRANSDATE));
     
-this->cancelDate= orderHistoryHashMap->get(OrderHistoryData::CANCELDATE);
+this->cancelDate= JavaBoxes::unbox<std::string>(orderHistoryHashMap->get(OrderHistoryData::CANCELDATE));
     
-this->status= orderHistoryHashMap->get(OrderHistoryData::STATUS);
+this->status= JavaBoxes::unbox<std::string>(orderHistoryHashMap->get(OrderHistoryData::STATUS));
     
-this->subTotal= new Money(orderHistoryHashMap->get(OrderHistoryData::SUBTOTAL));
+this->subTotal= new Money(JavaBoxes::unbox<std::string>(orderHistoryHashMap->get(OrderHistoryData::SUBTOTAL)));
     
-this->total= new Money(orderHistoryHashMap->get(OrderHistoryData::TOTAL));
+this->total= new Money(JavaBoxes::unbox<std::string>(orderHistoryHashMap->get(OrderHistoryData::TOTAL)));
     
-this->shippingCost= new Money(orderHistoryHashMap->get(OrderHistoryData::SHIPPINGCOST));
+this->shippingCost= new Money(JavaBoxes::unbox<std::string>(orderHistoryHashMap->get(OrderHistoryData::SHIPPINGCOST)));
     
-this->taxes= new Money(orderHistoryHashMap->get(OrderHistoryData::TAX));
+this->taxes= new Money(JavaBoxes::unbox<std::string>(orderHistoryHashMap->get(OrderHistoryData::TAX)));
     
-Order::setUserComments(orderHistoryHashMap->get(OrderData::CUSTOMERCOMMENT));
+Order::setUserComments(JavaBoxes::unbox<std::string>(orderHistoryHashMap->get(OrderData::CUSTOMERCOMMENT)));
     
-Order::setUserCancelComments(orderHistoryHashMap->get(OrderData::CUSTOMERCANCELCOMMENT));
+Order::setUserCancelComments(JavaBoxes::unbox<std::string>(orderHistoryHashMap->get(OrderData::CUSTOMERCANCELCOMMENT)));
     
-Order::setStoreComments(orderHistoryHashMap->get(OrderData::STORECOMMENT));
+Order::setStoreComments(JavaBoxes::unbox<std::string>(orderHistoryHashMap->get(OrderData::STORECOMMENT)));
     
-Order::setStoreCancelComments(orderHistoryHashMap->get(OrderData::STORECANCELCOMMENT));
+Order::setStoreCancelComments(JavaBoxes::unbox<std::string>(orderHistoryHashMap->get(OrderData::STORECANCELCOMMENT)));
     
 }
 
@@ -517,10 +517,10 @@ node->appendChild(this->payment->toXmlNode(document));
     int32_t i = 0;i < size; i++)
         {
 
-    std::string name = keyArray[i];;
+    std::string name = JavaBoxes::unbox<std::string>(keyArray[i]);;
     
 
-    std::string value = hashMap->get(name);;
+    std::string value = JavaBoxes::unbox<std::string>(hashMap->get(name));;
     
 value= StringUtil::getInstance()->getNonNull(value);
     

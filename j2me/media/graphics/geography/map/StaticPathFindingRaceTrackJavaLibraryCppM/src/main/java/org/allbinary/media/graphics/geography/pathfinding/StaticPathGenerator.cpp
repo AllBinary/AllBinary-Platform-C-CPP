@@ -189,7 +189,7 @@ list->add(geographicMapCellPosition);
     BasicGeographicMapCellPositionFactory* geographicMapCellPositionFactory = geographicMapInterface->getGeographicMapCellPositionFactory();;
     
 
-    int32_t id = PathData::getInstance()->OFFSET +mapIdInteger.intValue();;
+    int32_t id = PathData::getInstance()->OFFSET +mapIdInteger;;
     
 
     BasicArrayList* basicList = pathCacheFactory->getOrCreate(smallIntegerSingletonFactory->getAt(id));;

@@ -168,16 +168,22 @@ this->newProfileJDialog->setResizable(false);
     
 this->okNewProfileJButton->setText("Ok");
     
-this->okNewProfileJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->okNewProfileJButton->addActionListener([&]() {
+    static thread_local GenericModuleConfigurationJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    GenericModuleConfigurationJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-okNewProfileJButtonActionPerformed(evt);
+outer->okNewProfileJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->newProfileNameJLabel->setText("New Profile Name");
     
@@ -204,16 +210,22 @@ this->genericProfilesJPanel->setMinimumSize(new java::awt::Dimension(400, 300));
     
 this->genericProfilesJPanel->setPreferredSize(new java::awt::Dimension(0, 0));
     
-this->genericProfilesJList->addListSelectionListener(class extends javax::swing::event::ListSelectionListener
-                                {
-                                
+this->genericProfilesJList->addListSelectionListener([&]() {
+    static thread_local GenericModuleConfigurationJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public javax::swing::event::ListSelectionListener {
+    public:
+    using javax::swing::event::ListSelectionListener::ListSelectionListener;
+    GenericModuleConfigurationJPanel* outer = anonymousOuter0;
+
     public: void valueChanged(javax::swing::event::ListSelectionEvent* evt){
-genericProfilesJListValueChanged(evt);
+outer->genericProfilesJListValueChanged(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->genericProfilesJScrollPane->setViewportView(this->genericProfilesJList);
     
@@ -221,31 +233,43 @@ this->newProfileJButton->setText("New");
     
 this->newProfileJButton->setToolTipText("Creates a new profile");
     
-this->newProfileJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->newProfileJButton->addActionListener([&]() {
+    static thread_local GenericModuleConfigurationJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    GenericModuleConfigurationJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-newProfileJButtonActionPerformed(evt);
+outer->newProfileJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->deleteProfileJButton->setText("Delete");
     
 this->deleteProfileJButton->setToolTipText("Deletes the selected profile");
     
-this->deleteProfileJButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->deleteProfileJButton->addActionListener([&]() {
+    static thread_local GenericModuleConfigurationJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    GenericModuleConfigurationJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-deleteProfileJButtonActionPerformed(evt);
+outer->deleteProfileJButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jPanel1->setPreferredSize(new java::awt::Dimension(1000, 100));
     
@@ -257,16 +281,22 @@ this->screenCaptureJRadioButton->setBorder(javax.swing->BorderFactory->createEmp
     
 this->screenCaptureJRadioButton->setMargin(new java::awt::Insets(0, 0, 0, 0));
     
-this->screenCaptureJRadioButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->screenCaptureJRadioButton->addActionListener([&]() {
+    static thread_local GenericModuleConfigurationJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    GenericModuleConfigurationJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-screenCaptureJRadioButtonActionPerformed(evt);
+outer->screenCaptureJRadioButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jLabel1->setText("Profile Options");
     
@@ -280,16 +310,22 @@ this->savedCaptureJRadioButton->setBorder(javax.swing->BorderFactory->createEmpt
     
 this->savedCaptureJRadioButton->setMargin(new java::awt::Insets(0, 0, 0, 0));
     
-this->savedCaptureJRadioButton->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->savedCaptureJRadioButton->addActionListener([&]() {
+    static thread_local GenericModuleConfigurationJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    GenericModuleConfigurationJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-savedCaptureJRadioButtonActionPerformed(evt);
+outer->savedCaptureJRadioButtonActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->captureMotionAnalysisJCheckBox->setText("Motion Analysis");
     
@@ -299,16 +335,22 @@ this->captureMotionAnalysisJCheckBox->setBorder(javax.swing->BorderFactory->crea
     
 this->captureMotionAnalysisJCheckBox->setMargin(new java::awt::Insets(0, 0, 0, 0));
     
-this->captureMotionAnalysisJCheckBox->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->captureMotionAnalysisJCheckBox->addActionListener([&]() {
+    static thread_local GenericModuleConfigurationJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    GenericModuleConfigurationJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-captureMotionAnalysisJCheckBoxActionPerformed(evt);
+outer->captureMotionAnalysisJCheckBoxActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->captureComparisonJCheckBox->setText("Comparison");
     
@@ -318,16 +360,22 @@ this->captureComparisonJCheckBox->setBorder(javax.swing->BorderFactory->createEm
     
 this->captureComparisonJCheckBox->setMargin(new java::awt::Insets(0, 0, 0, 0));
     
-this->captureComparisonJCheckBox->addActionListener(class extends java::awt::event::ActionListener
-                                {
-                                
+this->captureComparisonJCheckBox->addActionListener([&]() {
+    static thread_local GenericModuleConfigurationJPanel* anonymousOuter0 = nullptr;
+    anonymousOuter0 = this;
+    class Anonymous0 : public java::awt::event::ActionListener {
+    public:
+    using java::awt::event::ActionListener::ActionListener;
+    GenericModuleConfigurationJPanel* outer = anonymousOuter0;
+
     public: void actionPerformed(java::awt::event::ActionEvent* evt){
-captureComparisonJCheckBoxActionPerformed(evt);
+outer->captureComparisonJCheckBoxActionPerformed(evt);
     
 }
 
-                                }
-                            );
+    };
+    return new Anonymous0();
+}());
     
 this->jLabel3->setText("Image Processing:");
     
@@ -547,7 +595,7 @@ this->genericProfilesJList->setModel(this->getGenericProfiles()->getDefaultListM
                                     {
                                     this->genericProfilesJList->setSelectedValue(this->genericProfilesJList->getModel()->getElementAt(0), true);
     
-this->updateProfileUI(this->genericProfilesJList->getModel()->getElementAt(0));
+this->updateProfileUI(JavaBoxes::unbox<std::string>(this->genericProfilesJList->getModel()->getElementAt(0)));
     
 
                                     }
@@ -703,7 +751,7 @@ this->selectedGenericProfile= selectedGenericProfile;
 
         try {
             
-    std::string profileNameString = this->genericProfilesJList->getSelectedValue();;
+    std::string profileNameString = JavaBoxes::unbox<std::string>(this->genericProfilesJList->getSelectedValue());;
     
 this->updateProfileUI(profileNameString);
     
@@ -732,7 +780,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "genericProfilesJListVa
     int32_t index = 0;index < anyType.size(); index++)
         {
 
-    std::string nextSelectedValueString = anyType[index];;
+    std::string nextSelectedValueString = JavaBoxes::unbox<std::string>(anyType[index]);;
     
 this->getGenericProfiles()->remove(nextSelectedValueString);
     

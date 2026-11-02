@@ -97,6 +97,8 @@ private: class EndRunnable;
 //inner= member=true isStatic=
 private: class FirstRunnable: public ARunnable {
 
+    public: MultipassWaypointPathRunnable* outer = nullptr;
+
     private: MultipassWaypointPathRunnable* multipassWaypointPathRunnable;
 
 public: FirstRunnable(MultipassWaypointPathRunnable* multipassWaypointPathRunnable);
@@ -111,6 +113,8 @@ public: FirstRunnable(MultipassWaypointPathRunnable* multipassWaypointPathRunnab
 //inner= member=true isStatic=
 private: class SecondRunnable: public ARunnable {
 
+    public: MultipassWaypointPathRunnable* outer = nullptr;
+
     private: MultipassWaypointPathRunnable* multipassWaypointPathRunnable;
 
 public: SecondRunnable(MultipassWaypointPathRunnable* multipassWaypointPathRunnable);
@@ -124,6 +128,8 @@ public: SecondRunnable(MultipassWaypointPathRunnable* multipassWaypointPathRunna
 
 //inner= member=true isStatic=
 private: class EndRunnable: public ARunnable {
+
+    public: MultipassWaypointPathRunnable* outer = nullptr;
 
     private: MultipassWaypointPathRunnable* multipassWaypointPathRunnable;
 

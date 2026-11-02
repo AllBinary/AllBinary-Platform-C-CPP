@@ -86,7 +86,7 @@ this->gameInfo= gameInfo;
     
 this->score= score;
     
-this->scoreString= std::to_string(score);
+this->scoreString= std::to_string(this->score);
     
 }
 

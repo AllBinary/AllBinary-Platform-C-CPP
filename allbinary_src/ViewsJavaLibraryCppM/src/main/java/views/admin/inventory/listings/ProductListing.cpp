@@ -206,7 +206,7 @@ this->inventory= new InventoryEntity();
     int32_t index = 0;index < size; index++)
         {
 
-    std::string subStore = subStoreVector->get(index);;
+    std::string subStore = JavaBoxes::unbox<std::string>(subStoreVector->get(index));;
     
 
     BasicArrayList* substoreKeywords = inventoryColumnUtil->getColumnWhereLike(this->inventory, JavaString::valueOf(AbPathData::getInstance()->SEPARATOR) +JavaString::valueOf(subStore), basicItemData->CATEGORY);;
@@ -422,10 +422,10 @@ this->savePage(file, productListingPages[index]);
     BasicArrayList* insertVector = new BasicArrayListD();;
     
 
-    std::string keywordData = keywordArray[index];;
+    std::string keywordData = JavaBoxes::unbox<std::string>(keywordArray[index]);;
     
 
-    std::string fileName = keywordFilenameHashMap->get(keywordData);;
+    std::string fileName = JavaBoxes::unbox<std::string>(keywordFilenameHashMap->get(keywordData));;
     
 insertVector->add(storeFront->getName());
     
@@ -518,7 +518,7 @@ stringBuffer->append(" Store Not Found");
     int32_t index = 0;index < size; index++)
         {
 
-    std::string keywordData = keywordArray[index];;
+    std::string keywordData = JavaBoxes::unbox<std::string>(keywordArray[index]);;
     
 
                         if(keywordData.size() > 1)
@@ -604,7 +604,7 @@ stringBuffer->append("<br />");
                         for (
     int32_t index = 0;index < size; index++)
         {
-storeName= storeFrontVector->get(index);
+storeName= JavaBoxes::unbox<std::string>(storeFrontVector->get(index));
     
 this->searchRequest->setStoreFront(this->storeFronts->getStoreFrontInterface(storeName));
     

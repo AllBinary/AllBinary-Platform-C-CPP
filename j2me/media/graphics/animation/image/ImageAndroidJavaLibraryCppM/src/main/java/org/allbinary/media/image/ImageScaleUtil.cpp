@@ -168,13 +168,13 @@ ImageScaleUtil::ImageScaleUtil() : logUtil(LogUtil::getInstance()), commonString
                         
                                     {
                                     
-    float scaleX2Float = this->scaleXBasicArrayList->get(index);;
+    float scaleX2Float = JavaBoxes::unbox<float>(this->scaleXBasicArrayList->get(index));;
     
 
     float scaleX2 = scaleX2Float;;
     
 
-    float scaleY2Float = this->scaleYBasicArrayList->get(index);;
+    float scaleY2Float = JavaBoxes::unbox<float>(this->scaleYBasicArrayList->get(index));;
     
 
     float scaleY2 = scaleY2Float;;
