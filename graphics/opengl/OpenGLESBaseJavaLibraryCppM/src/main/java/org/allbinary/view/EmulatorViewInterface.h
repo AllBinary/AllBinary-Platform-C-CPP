@@ -53,6 +53,7 @@ class EmulatorViewInterface
 
     public: virtual void onEmulatorInitComplete(Object* midletActivity) = 0;
     public: void onEmulatorInitComplete(const std::string& midletActivity) { return onEmulatorInitComplete(JavaString::box(midletActivity)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void onEmulatorInitComplete(BoxValue midletActivity) { return onEmulatorInitComplete(JavaBoxes::toObject(midletActivity)); }
 
     public: virtual void onSetDisplayable(Displayable* displayable) = 0;
 

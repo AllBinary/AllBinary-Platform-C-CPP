@@ -139,6 +139,16 @@ outputStream->write(buffer, 0, len);
     ByteArrayOutputStream* outputStream = outputStream2;;
     
 
+        {
+        
+        auto finallyFunction_N66271 = [&]() {
+            this->close(outputStream);
+    
+
+        };
+        
+        struct FinallyGuard_N66271 { decltype(finallyFunction_N66271)& function; ~FinallyGuard_N66271() { function(); } } finallyGuard_N66271{finallyFunction_N66271};
+        
         try {
             this->get(inputStream, outputStream, byteArray);
     
@@ -159,12 +169,8 @@ outputStream->write(buffer, 0, len);
                     
 }
 
-         finally {
-            this->close(outputStream);
-    
+        }
 
-         }
-        
 }
 
 

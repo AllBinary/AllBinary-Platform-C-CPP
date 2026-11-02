@@ -72,9 +72,11 @@ class ThirdPartyInApplicationPurchaseInterface
 
     public: virtual void onActivityResult(int32_t requestCode, int32_t resultCode, Object* dataObject) = 0;
     public: void onActivityResult(int32_t requestCode, int32_t resultCode, const std::string& dataObject) { return onActivityResult(requestCode, resultCode, JavaString::box(dataObject)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void onActivityResult(int32_t requestCode, int32_t resultCode, BoxValue dataObject) { return onActivityResult(requestCode, resultCode, JavaBoxes::toObject(dataObject)); }
 
     public: virtual void onSaveInstanceState(Object* anyType) = 0;
     public: void onSaveInstanceState(const std::string& anyType) { return onSaveInstanceState(JavaString::box(anyType)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void onSaveInstanceState(BoxValue anyType) { return onSaveInstanceState(JavaBoxes::toObject(anyType)); }
 
     public: virtual void onStop() = 0;
 

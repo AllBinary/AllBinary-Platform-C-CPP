@@ -100,7 +100,7 @@ this->setTagRequestHelperFactory(new StoreFrontsRequestHelperFactory());
 
         try {
             
-    Object* anyType = this->getTagHelperFactoryInterface()->getInstance(this->getPropertiesHashMap(), pageContext);;
+    Object* anyType = JavaBoxes::toObject(this->getTagHelperFactoryInterface()->getInstance(this->getPropertiesHashMap(), pageContext));;
     
 
     Method* method = anyType->getClass()->getMethod("generateSelect", 
@@ -159,7 +159,7 @@ this->setTagRequestHelperFactory(new StoreFrontsRequestHelperFactory());
 
         try {
             
-    Object* anyType = this->getTagRequestHelperFactoryInterface()->getInstance(this->getPropertiesHashMap(), pageContext);;
+    Object* anyType = JavaBoxes::toObject(this->getTagRequestHelperFactoryInterface()->getInstance(this->getPropertiesHashMap(), pageContext));;
     
 
     Method* method = anyType->getClass()->getMethod("install", 
@@ -218,7 +218,7 @@ this->setTagRequestHelperFactory(new StoreFrontsRequestHelperFactory());
 
         try {
             
-    Object* anyType = this->getTagRequestHelperFactoryInterface()->getInstance(this->getPropertiesHashMap(), pageContext);;
+    Object* anyType = JavaBoxes::toObject(this->getTagRequestHelperFactoryInterface()->getInstance(this->getPropertiesHashMap(), pageContext));;
     
 
     Method* method = anyType->getClass()->getMethod("sendStoreCreatedEmails", 
@@ -307,7 +307,7 @@ this->setTagRequestHelperFactory(new StoreFrontsRequestHelperFactory());
 this->getPropertiesHashMap()->put("total", this->getTotal());
     
 
-                        if(this->getCurrent()->intValue() == this->getTotal()->intValue())
+                        if(JavaBoxes::value<int32_t>(this->getCurrent()) == JavaBoxes::value<int32_t>(this->getTotal()))
                         
                                     {
                                     

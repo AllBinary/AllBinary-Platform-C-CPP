@@ -131,6 +131,25 @@ this->init(this->DEVICES);
     Closeable* lineNumberReader = NullCloseable::NULL_CLOSEABLE;;
     
 
+        {
+        
+        auto finallyFunction_N66530 = [&]() {
+            
+                        if(lineNumberReader != 
+                                    nullptr
+                                )
+                        
+                                    {
+                                    lineNumberReader->close();
+    
+
+                                    }
+                                
+
+        };
+        
+        struct FinallyGuard_N66530 { decltype(finallyFunction_N66530)& function; ~FinallyGuard_N66530() { function(); } } finallyGuard_N66530{finallyFunction_N66530};
+        
         try {
             lineNumberReader= this->get(filePath);
     
@@ -147,21 +166,8 @@ this->logUtil->put(JavaString::valueOf("Hardware Data: ") +JavaString::valueOf(t
                     
 }
 
-         finally {
-            
-                        if(lineNumberReader != 
-                                    nullptr
-                                )
-                        
-                                    {
-                                    lineNumberReader->close();
-    
+        }
 
-                                    }
-                                
-
-         }
-        
 }
 
 

@@ -274,7 +274,7 @@ this->itemInterface= inventoryEntity->getItem(this->id);
                                     }
                                 
 
-    Object* downloadableFileObject = this->getRequestHashMap()->get(DownloadItemData::FILE);;
+    Object* downloadableFileObject = JavaBoxes::toObject(this->getRequestHashMap()->get(DownloadItemData::FILE));;
     
 
                         if(HttpFileUploadUtil::getInstance()->isValid(downloadableFileObject))
@@ -322,7 +322,7 @@ this->getRequestHashMap()->put(DownloadItemData::SIZE, std::to_string(size));
                         }
                             
 
-    Object* licenseFileObject = this->getRequestHashMap()->get(DownloadItemData::LICENSE_FILE);;
+    Object* licenseFileObject = JavaBoxes::toObject(this->getRequestHashMap()->get(DownloadItemData::LICENSE_FILE));;
     
 
                         if(HttpFileUploadUtil::getInstance()->isValid(licenseFileObject))
@@ -362,7 +362,7 @@ HttpFileUploadUtil::log(fileItem);
                         }
                             
 
-    Object* extraFilesObject = this->getRequestHashMap()->get(DownloadItemData::EXTRA_FILES);;
+    Object* extraFilesObject = JavaBoxes::toObject(this->getRequestHashMap()->get(DownloadItemData::EXTRA_FILES));;
     
 
                         if(HttpFileUploadUtil::getInstance()->isValid(extraFilesObject))
@@ -409,7 +409,7 @@ this->unzip(fileItem);
 hashMap->put(basicItemData->ID, this->itemInterface->getId());
     
 
-    Object* licenseObject = hashMap->get(DownloadItemData::LICENSE_FILE);;
+    Object* licenseObject = JavaBoxes::toObject(hashMap->get(DownloadItemData::LICENSE_FILE));;
     
 
                         if(licenseObject != 
@@ -429,7 +429,7 @@ hashMap->put(basicItemData->ID, this->itemInterface->getId());
                         }
                             
 
-    Object* fileObject = hashMap->get(DownloadItemData::FILE);;
+    Object* fileObject = JavaBoxes::toObject(hashMap->get(DownloadItemData::FILE));;
     
 
                         if(fileObject != 
@@ -622,7 +622,7 @@ stringBuffer->append("<br />");
                                     }
                                 
 
-    Object* downloadableFileObject = this->getRequestHashMap()->get(DownloadItemData::FILE);;
+    Object* downloadableFileObject = JavaBoxes::toObject(this->getRequestHashMap()->get(DownloadItemData::FILE));;
     
 
                         if(HttpFileUploadUtil::getInstance()->isValid(downloadableFileObject))
@@ -651,7 +651,7 @@ stringBuffer->append("<br/>");
                         }
                             
 
-    Object* licenseFileObject = this->getRequestHashMap()->get(DownloadItemData::LICENSE_FILE);;
+    Object* licenseFileObject = JavaBoxes::toObject(this->getRequestHashMap()->get(DownloadItemData::LICENSE_FILE));;
     
 
                         if(HttpFileUploadUtil::getInstance()->isValid(licenseFileObject))
@@ -676,7 +676,7 @@ this->validationInfo(stringBuffer, fileName, size);
                         }
                             
 
-    Object* extraFilesObject = this->getRequestHashMap()->get(DownloadItemData::EXTRA_FILES);;
+    Object* extraFilesObject = JavaBoxes::toObject(this->getRequestHashMap()->get(DownloadItemData::EXTRA_FILES));;
     
 
                         if(HttpFileUploadUtil::getInstance()->isValid(extraFilesObject))

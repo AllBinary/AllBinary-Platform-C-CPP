@@ -93,13 +93,13 @@ LogUtil::LogUtil() : commonSeps(CommonSeps::getInstance()), logFormatUtil(LogFor
     std::string specialMessage = log->getSpecialMessage();;
     
 
-    Object* anyType = log->getObject();;
+    Object* anyType = JavaBoxes::toObject(log->getObject());;
     
 
     std::string functionName = log->getFunctionName();;
     
 
-    Object* exception = log->getThrowable();;
+    Object* exception = JavaBoxes::toObject(log->getThrowable());;
     
 this->put(specialMessage, anyType, functionName, exception);
     

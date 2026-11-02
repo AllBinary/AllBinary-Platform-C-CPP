@@ -208,23 +208,23 @@ stringBuffer->append(this->name);
     
 stringBuffer->append(" Min: ");
     
-stringBuffer->appendint(this->getMinValue().intValue());
+stringBuffer->appendint(this->getMinValue());
     
 stringBuffer->append(" Max: ");
     
-stringBuffer->appendint(this->getMaxValue().intValue());
+stringBuffer->appendint(this->getMaxValue());
     
 stringBuffer->append(" Value: ");
     
-stringBuffer->appendint(this->getValue().intValue());
+stringBuffer->appendint(this->getValue());
     
 stringBuffer->append(" Default: ");
     
-stringBuffer->appendint(this->getDefaultValue().intValue());
+stringBuffer->appendint(this->getDefaultValue());
     
 stringBuffer->append(" Modifiable: ");
     
-stringBuffer->appendboolean(this->isModifiable().valueOf());
+stringBuffer->appendboolean(this->isModifiable());
     
 
 

@@ -158,18 +158,26 @@ this->write(inputStream, dataOutputStream);
             
     auto FileUtil::write(InputStream* inputStream, AbDataOutputStream* dataOutputStream) -> void{
 
-        try {
+        {
+        
+        auto finallyFunction_N66784 = [&]() {
+            StreamUtil::getInstance()->close(dataOutputStream);
+    
+
+        };
+        
+        struct FinallyGuard_N66784 { decltype(finallyFunction_N66784)& function; ~FinallyGuard_N66784() { function(); } } finallyGuard_N66784{finallyFunction_N66784};
+        
+        {
             dataOutputStream= dynamic_cast<AbDataOutputStream*>(StreamUtil::getInstance()->get(inputStream, dataOutputStream, std::vector<int8_t>(16384)));
     
 dataOutputStream->flush();
     
 
-         finally {
-            StreamUtil::getInstance()->close(dataOutputStream);
-    
+        }
 
-         }
-        
+        }
+
 }
 
 
@@ -177,18 +185,26 @@ dataOutputStream->flush();
             
     auto FileUtil::write(InputStream* inputStream, AbDataOutputStream* dataOutputStream, std::vector<int8_t> buffer) -> void{
 
-        try {
+        {
+        
+        auto finallyFunction_N67025 = [&]() {
+            StreamUtil::getInstance()->close(dataOutputStream);
+    
+
+        };
+        
+        struct FinallyGuard_N67025 { decltype(finallyFunction_N67025)& function; ~FinallyGuard_N67025() { function(); } } finallyGuard_N67025{finallyFunction_N67025};
+        
+        {
             dataOutputStream= dynamic_cast<AbDataOutputStream*>(StreamUtil::getInstance()->get(inputStream, dataOutputStream, buffer));
     
 dataOutputStream->flush();
     
 
-         finally {
-            StreamUtil::getInstance()->close(dataOutputStream);
-    
+        }
 
-         }
-        
+        }
+
 }
 
 
@@ -196,20 +212,28 @@ dataOutputStream->flush();
             
     auto FileUtil::copy(AbFileInputStream* dataInputStream, AbDataOutputStream* dataOutputStream) -> void{
 
-        try {
-            dataOutputStream= dynamic_cast<AbDataOutputStream*>(StreamUtil::getInstance()->get(dataInputStream, dataOutputStream, std::vector<int8_t>(16384)));
-    
-dataOutputStream->flush();
-    
-
-         finally {
+        {
+        
+        auto finallyFunction_N67273 = [&]() {
             StreamUtil::getInstance()->close(dataOutputStream);
     
 StreamUtil::getInstance()->close(dataInputStream);
     
 
-         }
+        };
         
+        struct FinallyGuard_N67273 { decltype(finallyFunction_N67273)& function; ~FinallyGuard_N67273() { function(); } } finallyGuard_N67273{finallyFunction_N67273};
+        
+        {
+            dataOutputStream= dynamic_cast<AbDataOutputStream*>(StreamUtil::getInstance()->get(dataInputStream, dataOutputStream, std::vector<int8_t>(16384)));
+    
+dataOutputStream->flush();
+    
+
+        }
+
+        }
+
 }
 
 
@@ -1298,7 +1322,17 @@ skipFile= skipFiles[index];
             ;;
     
 
-        try {
+        {
+        
+        auto finallyFunction_N81711 = [&]() {
+            StreamUtil::getInstance()->close(dataOutputStream);
+    
+
+        };
+        
+        struct FinallyGuard_N81711 { decltype(finallyFunction_N81711)& function; ~FinallyGuard_N81711() { function(); } } finallyGuard_N81711{finallyFunction_N81711};
+        
+        {
             PreLogUtil::put((new StringMaker())->append(this->WRITE_LABEL)->append(filePath)->append(this->DATA_LABEL)->append(string)->toString(), this, this->WRITE_METHOD);
     
 
@@ -1314,12 +1348,10 @@ dataOutputStream->write(JavaString::getBytes(string), 0, string.size());
 dataOutputStream->flush();
     
 
-         finally {
-            StreamUtil::getInstance()->close(dataOutputStream);
-    
+        }
 
-         }
-        
+        }
+
 }
 
 

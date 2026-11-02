@@ -111,7 +111,7 @@ this->storeName= value;
 
         try {
             
-    Object* anyType = (new PaymentHelperFactory())->getInstance(this->getPropertiesHashMap(), pageContext);;
+    Object* anyType = JavaBoxes::toObject((new PaymentHelperFactory())->getInstance(this->getPropertiesHashMap(), pageContext));;
     
 
     Class* addressHelperClass = anyType->getClass();;

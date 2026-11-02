@@ -158,7 +158,7 @@ this->logUtil->putF(CLIENT_INFO +hashtable->toString(), this, this->commonString
 param->add(hashtable);
     
 
-    Object* result = xmlRpcClient->execute(this->getRemoteMethod(), param, cryptInterface);;
+    Object* result = JavaBoxes::toObject(xmlRpcClient->execute(this->getRemoteMethod(), param, cryptInterface));;
     
 this->logUtil->putF(RESULT +result->toString(), this, this->commonStrings->GET);
     

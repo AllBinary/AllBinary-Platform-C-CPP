@@ -145,7 +145,7 @@ this->cssStyleElementVector= StylesValidationFactory::getInstance(hashMap);
     ValidationInterface* styleValidationInterface = dynamic_cast<ValidationInterface*>(this->cssStyleElementVector->get(i));;
     
 
-                        if(!styleValidationInterface->isValid().valueOf())
+                        if(!styleValidationInterface->isValid())
                         
                                     {
                                     isValid= Boolean::FALSE;

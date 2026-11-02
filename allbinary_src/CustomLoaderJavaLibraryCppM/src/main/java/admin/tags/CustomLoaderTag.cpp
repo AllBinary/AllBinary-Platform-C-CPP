@@ -111,7 +111,7 @@ this->webappPath= value;
 
         try {
             
-    Object* anyType = (new CustomLoaderHelperFactory())->getInstance(this->propertiesHashMap, pageContext);;
+    Object* anyType = JavaBoxes::toObject((new CustomLoaderHelperFactory())->getInstance(this->propertiesHashMap, pageContext));;
     
 
     Class* helperClass = anyType->getClass();;

@@ -97,6 +97,7 @@ private: OpenGLCapabilities();
 
     public: void initCapabilities(Object* gl);
     public: void initCapabilities(const std::string& gl) { return initCapabilities(JavaString::box(gl)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void initCapabilities(BoxValue gl) { return initCapabilities(JavaBoxes::toObject(gl)); }
 
     public: bool isGlExtensionDrawTexture();
 

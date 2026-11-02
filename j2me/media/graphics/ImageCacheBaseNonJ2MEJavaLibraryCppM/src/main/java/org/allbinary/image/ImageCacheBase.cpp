@@ -124,7 +124,7 @@ this->availableListOfList[index]= new BasicArrayListD();
 
     auto ImageCacheBase::getImage(Object* resourceId) -> Image*{
 
-    Object* imageCanBeNull = this->hashtable->get(resourceId);;
+    Object* imageCanBeNull = JavaBoxes::toObject(this->hashtable->get(resourceId));;
     
 
                         if(imageCanBeNull == 

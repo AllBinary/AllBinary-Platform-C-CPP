@@ -83,6 +83,7 @@ private: PathGenerator();
             
     public: void init(Object* geographicMapInterface, int32_t totalPaths);
     public: void init(const std::string& geographicMapInterface, int32_t totalPaths) { return init(JavaString::box(geographicMapInterface), totalPaths); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void init(BoxValue geographicMapInterface, int32_t totalPaths) { return init(JavaBoxes::toObject(geographicMapInterface), totalPaths); }
 
                 //@Throws(Exception.constructor)
             

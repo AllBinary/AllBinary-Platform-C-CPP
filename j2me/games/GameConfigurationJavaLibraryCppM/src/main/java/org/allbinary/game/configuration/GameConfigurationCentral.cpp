@@ -178,12 +178,12 @@ keyValuePersistance->loadAll(abeClientInformation);
     ABHashtable<Object*, Object*>* hashtable = keyValuePersistance->get(0);;
     
 
-    Object* anyType = this->SCALE->getName();;
+    Object* anyType = JavaBoxes::toObject(this->SCALE->getName());;
     
 
     std::string value = JavaBoxes::unbox<std::string>(hashtable->get(anyType));;
     
-this->SCALE->setValue(smallIntegerSingletonFactory->getAt(Integer.valueOf(value)->intValue()));
+this->SCALE->setValue(smallIntegerSingletonFactory->getAt(JavaBoxes::value<int32_t>(Integer.valueOf(value))));
     
 
                                     }
@@ -234,7 +234,7 @@ stringBuffer->append(this->SCALE->getName());
     
 stringBuffer->append(commonStrings->EQUALS);
     
-stringBuffer->appendint(this->SCALE->getValue()->intValue());
+stringBuffer->appendint(JavaBoxes::value<int32_t>(this->SCALE->getValue()));
     
 stringBuffer->append(commonStrings->COMMA_SEP);
     
@@ -242,7 +242,7 @@ stringBuffer->append(this->ORIENTATION->getName());
     
 stringBuffer->append(commonStrings->EQUALS);
     
-stringBuffer->appendint(this->ORIENTATION->getValue()->intValue());
+stringBuffer->appendint(JavaBoxes::value<int32_t>(this->ORIENTATION->getValue()));
     
 stringBuffer->append(commonStrings->COMMA_SEP);
     
@@ -250,7 +250,7 @@ stringBuffer->append(this->SENSOR_UPDATE_RATE->getName());
     
 stringBuffer->append(commonStrings->EQUALS);
     
-stringBuffer->appendint(this->SENSOR_UPDATE_RATE->getValue()->intValue());
+stringBuffer->appendint(JavaBoxes::value<int32_t>(this->SENSOR_UPDATE_RATE->getValue()));
     
 stringBuffer->append(commonStrings->COMMA_SEP);
     
@@ -258,7 +258,7 @@ stringBuffer->append(this->VIBRATION->getName());
     
 stringBuffer->append(commonStrings->EQUALS);
     
-stringBuffer->appendint(this->VIBRATION->getValue()->intValue());
+stringBuffer->appendint(JavaBoxes::value<int32_t>(this->VIBRATION->getValue()));
     
 stringBuffer->append(commonStrings->COMMA_SEP);
     
@@ -266,7 +266,7 @@ stringBuffer->append(this->CHALLENGE_LEVEL->getName());
     
 stringBuffer->append(commonStrings->EQUALS);
     
-stringBuffer->appendint(this->CHALLENGE_LEVEL->getValue()->intValue());
+stringBuffer->appendint(JavaBoxes::value<int32_t>(this->CHALLENGE_LEVEL->getValue()));
     
 stringBuffer->append(commonStrings->COMMA_SEP);
     
@@ -274,7 +274,7 @@ stringBuffer->append(this->COLLIDE_DAMAGE->getName());
     
 stringBuffer->append(commonStrings->EQUALS);
     
-stringBuffer->appendint(this->COLLIDE_DAMAGE->getValue()->intValue());
+stringBuffer->appendint(JavaBoxes::value<int32_t>(this->COLLIDE_DAMAGE->getValue()));
     
 stringBuffer->append(commonStrings->COMMA_SEP);
     
@@ -282,7 +282,7 @@ stringBuffer->append(this->DURABILITY_CHALLENGE_LEVEL->getName());
     
 stringBuffer->append(commonStrings->EQUALS);
     
-stringBuffer->appendint(this->DURABILITY_CHALLENGE_LEVEL->getValue()->intValue());
+stringBuffer->appendint(JavaBoxes::value<int32_t>(this->DURABILITY_CHALLENGE_LEVEL->getValue()));
     
 stringBuffer->append(commonStrings->COMMA_SEP);
     
@@ -290,7 +290,7 @@ stringBuffer->append(this->SPEED_CHALLENGE_LEVEL->getName());
     
 stringBuffer->append(commonStrings->EQUALS);
     
-stringBuffer->appendint(this->SPEED_CHALLENGE_LEVEL->getValue()->intValue());
+stringBuffer->appendint(JavaBoxes::value<int32_t>(this->SPEED_CHALLENGE_LEVEL->getValue()));
     
 stringBuffer->append(commonStrings->COMMA_SEP);
     
@@ -298,7 +298,7 @@ stringBuffer->append(this->ATTACK_CHALLENGE_LEVEL->getName());
     
 stringBuffer->append(commonStrings->EQUALS);
     
-stringBuffer->appendint(this->ATTACK_CHALLENGE_LEVEL->getValue()->intValue());
+stringBuffer->appendint(JavaBoxes::value<int32_t>(this->ATTACK_CHALLENGE_LEVEL->getValue()));
     
 stringBuffer->append(commonStrings->COMMA_SEP);
     
@@ -306,7 +306,7 @@ stringBuffer->append(this->CONTROL_LEVEL->getName());
     
 stringBuffer->append(commonStrings->EQUALS);
     
-stringBuffer->appendint(this->CONTROL_LEVEL->getValue()->intValue());
+stringBuffer->appendint(JavaBoxes::value<int32_t>(this->CONTROL_LEVEL->getValue()));
     
 stringBuffer->append(commonStrings->COMMA_SEP);
     
@@ -314,7 +314,7 @@ stringBuffer->append(this->SPEED->getName());
     
 stringBuffer->append(commonStrings->EQUALS);
     
-stringBuffer->appendint(this->SPEED->getValue()->intValue());
+stringBuffer->appendint(JavaBoxes::value<int32_t>(this->SPEED->getValue()));
     
 stringBuffer->append(commonStrings->COMMA_SEP);
     
@@ -322,7 +322,7 @@ stringBuffer->append(this->MAX_GAME_OBJECTS->getName());
     
 stringBuffer->append(commonStrings->EQUALS);
     
-stringBuffer->appendint(this->MAX_GAME_OBJECTS->getValue()->intValue());
+stringBuffer->appendint(JavaBoxes::value<int32_t>(this->MAX_GAME_OBJECTS->getValue()));
     
 stringBuffer->append(commonStrings->COMMA_SEP);
     
@@ -330,7 +330,7 @@ stringBuffer->append(this->MAX_LAYERS->getName());
     
 stringBuffer->append(commonStrings->EQUALS);
     
-stringBuffer->appendint(this->MAX_LAYERS->getValue()->intValue());
+stringBuffer->appendint(JavaBoxes::value<int32_t>(this->MAX_LAYERS->getValue()));
     
 
 

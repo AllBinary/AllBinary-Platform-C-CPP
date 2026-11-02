@@ -134,7 +134,7 @@ this->hashtable->clear();
             
     auto PathCacheFactory::getOrCreate(int32_t pathIdInteger) -> BasicArrayList*{
 
-    Object* listCanBeNull = this->hashtable->get(pathIdInteger);;
+    Object* listCanBeNull = JavaBoxes::toObject(this->hashtable->get(pathIdInteger));;
     
 
                         if(listCanBeNull == 

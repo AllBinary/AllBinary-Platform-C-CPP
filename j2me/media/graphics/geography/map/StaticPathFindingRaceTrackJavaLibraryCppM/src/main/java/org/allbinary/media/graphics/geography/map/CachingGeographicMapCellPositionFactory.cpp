@@ -88,7 +88,7 @@ CachingGeographicMapCellPositionFactory::CachingGeographicMapCellPositionFactory
     std::string cellPositionKey = CellPosition::toStringColRow(i_column, i_row);;
     
 
-    Object* cellPositionCanBeNull = hashtable->get(cellPositionKey);;
+    Object* cellPositionCanBeNull = JavaBoxes::toObject(hashtable->get(cellPositionKey));;
     
 
                         if(cellPositionCanBeNull == 

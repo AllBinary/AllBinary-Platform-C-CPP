@@ -131,7 +131,7 @@ FeaturedAnimationInterfaceFactoryInterfaceFactory::FeaturedAnimationInterfaceFac
     BasicArrayList* list = this->getList();;
     
 
-    int32_t scale = GameConfigurationCentral::getInstance()->SCALE->getValue()->intValue();;
+    int32_t scale = JavaBoxes::value<int32_t>(GameConfigurationCentral::getInstance()->SCALE->getValue());;
     
 
     int32_t size = this->getList()->size();;

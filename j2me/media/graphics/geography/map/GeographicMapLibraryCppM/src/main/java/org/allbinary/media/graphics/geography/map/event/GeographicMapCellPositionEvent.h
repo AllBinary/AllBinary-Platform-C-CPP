@@ -71,6 +71,7 @@ public: GeographicMapCellPositionEvent(Object* anyType, CellPosition* geographic
 
     public: void init(Object* anyType);
     public: void init(const std::string& anyType) { return init(JavaString::box(anyType)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void init(BoxValue anyType) { return init(JavaBoxes::toObject(anyType)); }
 
     public: void setGeographicMapCellPosition(GeographicMapCellPosition* geographicMapCellPosition);
 

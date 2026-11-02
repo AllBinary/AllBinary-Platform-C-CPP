@@ -110,7 +110,7 @@ this->storeName= value;
 
         try {
             
-    Object* anyType = (new StoreFrontHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext);;
+    Object* anyType = JavaBoxes::toObject((new StoreFrontHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext));;
     
 
     Method* method = anyType->getClass()->getMethod("getCurrentLocation", 
@@ -169,7 +169,7 @@ this->storeName= value;
 
         try {
             
-    Object* anyType = (new StoreFrontHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext);;
+    Object* anyType = JavaBoxes::toObject((new StoreFrontHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext));;
     
 
     Method* method = anyType->getClass()->getMethod("getCurrentHomeLocation", 

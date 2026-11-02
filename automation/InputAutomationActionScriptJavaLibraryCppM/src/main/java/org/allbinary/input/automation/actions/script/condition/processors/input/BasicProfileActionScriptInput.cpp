@@ -137,7 +137,7 @@ this->logUtil->putF(JavaString::valueOf(this->commonStrings->START) +JavaString:
                                     
     std::string delayString = DomNodeHelper::getTextNodeValue(timeNode);;
     
-this->setTime(Integer.valueOf(delayString)->intValue());
+this->setTime(JavaBoxes::value<int32_t>(Integer.valueOf(delayString)));
     
 
                                     }

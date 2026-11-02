@@ -74,9 +74,11 @@ class VectorUtil
         
     public: int32_t getSize(Object* anyType);
     public: int32_t getSize(const std::string& anyType) { return getSize(JavaString::box(anyType)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> int32_t getSize(BoxValue anyType) { return getSize(JavaBoxes::toObject(anyType)); }
 
     public: Object* elementAt(Object* anyType, int32_t index);
     public: Object* elementAt(const std::string& anyType, int32_t index) { return elementAt(JavaString::box(anyType), index); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> Object* elementAt(BoxValue anyType, int32_t index) { return elementAt(JavaBoxes::toObject(anyType), index); }
 
 };
 

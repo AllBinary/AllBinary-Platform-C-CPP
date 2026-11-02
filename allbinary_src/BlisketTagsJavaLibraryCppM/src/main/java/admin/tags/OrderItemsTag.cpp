@@ -107,7 +107,7 @@ this->status= value;
 
         try {
             
-    Object* anyType = (new OrderItemsRequestHelperFactory())->getInstance(this->getPropertiesHashMap(), this->pageContext);;
+    Object* anyType = JavaBoxes::toObject((new OrderItemsRequestHelperFactory())->getInstance(this->getPropertiesHashMap(), this->pageContext));;
     
 
                         if(false)

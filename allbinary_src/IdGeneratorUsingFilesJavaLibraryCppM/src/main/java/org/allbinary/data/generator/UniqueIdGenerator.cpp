@@ -150,6 +150,18 @@ this->newFile= AbFile::createAbFile(filePathName);
             ;;
     
 
+        {
+        
+        auto finallyFunction_N66770 = [&]() {
+            StreamUtil::getInstance()->close(idData);
+    
+StreamUtil::getInstance()->close(idOutData);
+    
+
+        };
+        
+        struct FinallyGuard_N66770 { decltype(finallyFunction_N66770)& function; ~FinallyGuard_N66770() { function(); } } finallyGuard_N66770{finallyFunction_N66770};
+        
         try {
             
     AbFileInputStream* idFile = new AbFileInputStream(this->newFile);;
@@ -198,14 +210,8 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "getNext", &e);
     
 }
 
-         finally {
-            StreamUtil::getInstance()->close(idData);
-    
-StreamUtil::getInstance()->close(idOutData);
-    
+        }
 
-         }
-        
 }
 
 

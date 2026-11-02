@@ -91,7 +91,7 @@ PaymentProcessTag::PaymentProcessTag() : logUtil(LogUtil::getInstance()){
 
         try {
             
-    Object* anyType = (new PaymentProcessHelperFactory())->getInstance(this->getPropertiesHashMap(), this->pageContext);;
+    Object* anyType = JavaBoxes::toObject((new PaymentProcessHelperFactory())->getInstance(this->getPropertiesHashMap(), this->pageContext));;
     
 
     Class* helperClass = anyType->getClass();;

@@ -108,7 +108,7 @@ this->xslFile= value;
 
         try {
             
-    Object* anyType = (new StaticPagesRequestHelperFactory())->getInstance(this->getPropertiesHashMap(), this->pageContext);;
+    Object* anyType = JavaBoxes::toObject((new StaticPagesRequestHelperFactory())->getInstance(this->getPropertiesHashMap(), this->pageContext));;
     
 
     Class* helperClass = anyType->getClass();;
@@ -170,7 +170,7 @@ this->xslFile= value;
 
         try {
             
-    Object* anyType = (new StaticPagesRequestHelperFactory())->getInstance(this->getPropertiesHashMap(), this->pageContext);;
+    Object* anyType = JavaBoxes::toObject((new StaticPagesRequestHelperFactory())->getInstance(this->getPropertiesHashMap(), this->pageContext));;
     
 
     Class* helperClass = anyType->getClass();;

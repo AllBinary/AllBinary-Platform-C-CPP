@@ -134,18 +134,18 @@ this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(
     int32_t index = 0;index < bufferedImageArray.size(); index++)
         {
 
-    int32_t x = imageUnifierProperties->getImageUnifierCell()->getWidth()->intValue() *columnIndex++;;
+    int32_t x = JavaBoxes::value<int32_t>(imageUnifierProperties->getImageUnifierCell()->getWidth()) *columnIndex++;;
     
 
-    int32_t y = imageUnifierProperties->getImageUnifierCell()->getHeight()->intValue() *rowIndex;;
+    int32_t y = JavaBoxes::value<int32_t>(imageUnifierProperties->getImageUnifierCell()->getHeight()) *rowIndex;;
     
 this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Adding Image: ") +JavaString::valueOf(index)) +JavaString::valueOf(" x: ")) +JavaString::valueOf(x)) +JavaString::valueOf(" y: ")) +JavaString::valueOf(y), this, "getImage");
     
-g->drawImage(bufferedImageArray[index], x, y, imageUnifierProperties->getImageUnifierCell()->getWidth()->intValue(), imageUnifierProperties->getImageUnifierCell()->getHeight()->intValue(), 
+g->drawImage(bufferedImageArray[index], x, y, JavaBoxes::value<int32_t>(imageUnifierProperties->getImageUnifierCell()->getWidth()), JavaBoxes::value<int32_t>(imageUnifierProperties->getImageUnifierCell()->getHeight()), 
                             nullptr);
     
 
-    int32_t totalColumnsMinusOne = (imageUnifierProperties->getColumns()->intValue() -1);;
+    int32_t totalColumnsMinusOne = (JavaBoxes::value<int32_t>(imageUnifierProperties->getColumns()) -1);;
     
 
                         if(columnIndex > totalColumnsMinusOne)

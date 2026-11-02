@@ -201,7 +201,7 @@ add(this->jScrollPane1);
                         
                                     {
                                     
-    Object* anyType = treePath->getLastPathComponent();;
+    Object* anyType = JavaBoxes::toObject(treePath->getLastPathComponent());;
     
 
                         if(

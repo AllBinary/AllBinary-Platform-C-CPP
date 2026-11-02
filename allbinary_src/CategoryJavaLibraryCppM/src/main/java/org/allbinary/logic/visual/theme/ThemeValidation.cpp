@@ -394,7 +394,7 @@ this->styleValidationInterface= new CssStyleValidation(document);
                                     }
                                 
 
-                        if(!this->getCssStyleValidation()->isValid().valueOf())
+                        if(!this->getCssStyleValidation()->isValid())
                         
                                     {
                                     isValid= Boolean::FALSE;

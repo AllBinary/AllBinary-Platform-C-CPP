@@ -124,7 +124,7 @@ this->updateChallange(gameOptionsForm, gameConfiguration);
     SmallIntegerSingletonFactory* smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
     
 
-    int32_t value = smallIntegerSingletonFactory->getAt(gauge->getValue() +gameConfiguration->getMinValue()->intValue());;
+    int32_t value = smallIntegerSingletonFactory->getAt(gauge->getValue() +JavaBoxes::value<int32_t>(gameConfiguration->getMinValue()));;
     
 
     StringMaker* stringBuffer = new StringMaker();;
@@ -135,7 +135,7 @@ stringBuffer->append(gameConfiguration->getName());
     
 stringBuffer->append(this->FROM);
     
-stringBuffer->appendint(gameConfiguration->getValue()->intValue());
+stringBuffer->appendint(JavaBoxes::value<int32_t>(gameConfiguration->getValue()));
     
 stringBuffer->append(this->TO);
     
@@ -166,11 +166,11 @@ stringBuffer->append(gameConfiguration->getName());
     
 stringBuffer->append(this->TO);
     
-stringBuffer->appendint(gameConfiguration->getDefaultValue()->intValue());
+stringBuffer->appendint(JavaBoxes::value<int32_t>(gameConfiguration->getDefaultValue()));
     
 this->logUtil->putF(stringBuffer->toString(), this, "setDefault");
     
-gauge->setValue(gameConfiguration->getDefaultValue()->intValue() -gameConfiguration->getMinValue()->intValue());
+gauge->setValue(JavaBoxes::value<int32_t>(gameConfiguration->getDefaultValue()) -JavaBoxes::value<int32_t>(gameConfiguration->getMinValue()));
     
 gameConfiguration->setValue(gameConfiguration->getDefaultValue());
     
@@ -232,7 +232,7 @@ gameConfigurationCentral->SPEED_CHALLENGE_LEVEL->setValue(gameConfiguration->get
                         if(nextGameConfiguration == gameConfigurationCentral->COLLIDE_DAMAGE)
                         
                                     {
-                                    gauge->setValue(gameConfigurationCentral->COLLIDE_DAMAGE->getValue()->intValue() -gameConfiguration->getMinValue()->intValue());
+                                    gauge->setValue(JavaBoxes::value<int32_t>(gameConfigurationCentral->COLLIDE_DAMAGE->getValue()) -JavaBoxes::value<int32_t>(gameConfiguration->getMinValue()));
     
 
                                     }
@@ -241,7 +241,7 @@ gameConfigurationCentral->SPEED_CHALLENGE_LEVEL->setValue(gameConfiguration->get
                         if(nextGameConfiguration == gameConfigurationCentral->DURABILITY_CHALLENGE_LEVEL)
                         
                                     {
-                                    gauge->setValue(gameConfigurationCentral->DURABILITY_CHALLENGE_LEVEL->getValue()->intValue() -gameConfiguration->getMinValue()->intValue());
+                                    gauge->setValue(JavaBoxes::value<int32_t>(gameConfigurationCentral->DURABILITY_CHALLENGE_LEVEL->getValue()) -JavaBoxes::value<int32_t>(gameConfiguration->getMinValue()));
     
 
                                     }
@@ -250,7 +250,7 @@ gameConfigurationCentral->SPEED_CHALLENGE_LEVEL->setValue(gameConfiguration->get
                         if(nextGameConfiguration == gameConfigurationCentral->ATTACK_CHALLENGE_LEVEL)
                         
                                     {
-                                    gauge->setValue(gameConfigurationCentral->ATTACK_CHALLENGE_LEVEL->getValue()->intValue() -gameConfiguration->getMinValue()->intValue());
+                                    gauge->setValue(JavaBoxes::value<int32_t>(gameConfigurationCentral->ATTACK_CHALLENGE_LEVEL->getValue()) -JavaBoxes::value<int32_t>(gameConfiguration->getMinValue()));
     
 
                                     }
@@ -259,7 +259,7 @@ gameConfigurationCentral->SPEED_CHALLENGE_LEVEL->setValue(gameConfiguration->get
                         if(nextGameConfiguration == gameConfigurationCentral->SPEED_CHALLENGE_LEVEL)
                         
                                     {
-                                    gauge->setValue(gameConfigurationCentral->SPEED_CHALLENGE_LEVEL->getValue()->intValue() -gameConfiguration->getMinValue()->intValue());
+                                    gauge->setValue(JavaBoxes::value<int32_t>(gameConfigurationCentral->SPEED_CHALLENGE_LEVEL->getValue()) -JavaBoxes::value<int32_t>(gameConfiguration->getMinValue()));
     
 
                                     }
@@ -281,7 +281,7 @@ this->logUtil->putF(this->commonStrings->START, this, "updateCompetitionValue");
 
     GameConfigurationCentral* gameConfigurationCentral = GameConfigurationCentral::getInstance();;
     
-this->COMPETITION_VALUE= gameConfigurationCentral->COLLIDE_DAMAGE->getValue()->intValue() +gameConfigurationCentral->ATTACK_CHALLENGE_LEVEL->getValue()->intValue() +gameConfigurationCentral->DURABILITY_CHALLENGE_LEVEL->getValue()->intValue() +gameConfigurationCentral->SPEED_CHALLENGE_LEVEL->getValue()->intValue();
+this->COMPETITION_VALUE= JavaBoxes::value<int32_t>(gameConfigurationCentral->COLLIDE_DAMAGE->getValue()) +JavaBoxes::value<int32_t>(gameConfigurationCentral->ATTACK_CHALLENGE_LEVEL->getValue()) +JavaBoxes::value<int32_t>(gameConfigurationCentral->DURABILITY_CHALLENGE_LEVEL->getValue()) +JavaBoxes::value<int32_t>(gameConfigurationCentral->SPEED_CHALLENGE_LEVEL->getValue());
     
 this->COMPETITION_VALUE= (this->COMPETITION_VALUE>>2);
     

@@ -62,6 +62,7 @@ class FontDebugBase
 
     public: void debugMetrics(Font* currentFont, float convertedTextSize, Object* displayMetrics, StringMaker* stringBuffer);
     public: void debugMetrics(Font* currentFont, float convertedTextSize, const std::string& displayMetrics, StringMaker* stringBuffer) { return debugMetrics(currentFont, convertedTextSize, JavaString::box(displayMetrics), stringBuffer); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void debugMetrics(Font* currentFont, float convertedTextSize, BoxValue displayMetrics, StringMaker* stringBuffer) { return debugMetrics(currentFont, convertedTextSize, JavaBoxes::toObject(displayMetrics), stringBuffer); }
 
     public: void debugDpi(int32_t densityDpi, StringMaker* stringBuffer);
 

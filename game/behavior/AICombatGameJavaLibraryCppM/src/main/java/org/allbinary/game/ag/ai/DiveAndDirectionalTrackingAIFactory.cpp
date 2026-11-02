@@ -93,7 +93,7 @@ DiveAndDirectionalTrackingAIFactory::DiveAndDirectionalTrackingAIFactory() {
             
     auto DiveAndDirectionalTrackingAIFactory::getInstance(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) -> ArtificialIntelligenceInterface*{
 
-    Object* visitorCanBeNull = hashtable->get(BasicAI::AI_VISITOR);;
+    Object* visitorCanBeNull = JavaBoxes::toObject(hashtable->get(BasicAI::AI_VISITOR));;
     
 
                         if(visitorCanBeNull == 

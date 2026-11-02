@@ -124,7 +124,7 @@ this->twoImages[1]= ImageCopyUtil::getInstance()->createImageForRotation(image);
 
                         if(this->getBasicColorP() == 
                                     nullptr
-                                 || this->getBasicColorP()->intValue() != basicColor->intValue())
+                                 || JavaBoxes::value<int32_t>(this->getBasicColorP()) != basicColor->intValue())
                         
                                     {
                                     changed= true;
@@ -155,7 +155,7 @@ this->updateImage();
 
                         if(this->getChangeBasicColor() == 
                                     nullptr
-                                 || this->getChangeBasicColor()->intValue() != basicColor->intValue())
+                                 || JavaBoxes::value<int32_t>(this->getChangeBasicColor()) != basicColor->intValue())
                         
                                     {
                                     changed= true;

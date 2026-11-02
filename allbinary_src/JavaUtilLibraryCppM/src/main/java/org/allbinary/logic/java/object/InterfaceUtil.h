@@ -73,12 +73,15 @@ class InterfaceUtil
 
     public: static bool isImplemented(Class* clazz, Object* anyType);
     public: static bool isImplemented(Class* clazz, const std::string& anyType) { return isImplemented(clazz, JavaString::box(anyType)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> static bool isImplemented(Class* clazz, BoxValue anyType) { return isImplemented(clazz, JavaBoxes::toObject(anyType)); }
 
     public: static bool isImplemented(std::string className, Object* anyType);
     public: static bool isImplemented(std::string className, const std::string& anyType) { return isImplemented(className, JavaString::box(anyType)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> static bool isImplemented(std::string className, BoxValue anyType) { return isImplemented(className, JavaBoxes::toObject(anyType)); }
 
     public: static std::string isImplementedView(Class* clazz, Object* anyType);
     public: static std::string isImplementedView(Class* clazz, const std::string& anyType) { return isImplementedView(clazz, JavaString::box(anyType)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> static std::string isImplementedView(Class* clazz, BoxValue anyType) { return isImplementedView(clazz, JavaBoxes::toObject(anyType)); }
 
 private: InterfaceUtil();
 

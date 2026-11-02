@@ -1092,7 +1092,7 @@ AdvancedRTSGameLayer::initInputProcessors();
     int32_t index = 0;index < size; index++)
         {
 
-    Object* anyType = list->get(index);;
+    Object* anyType = JavaBoxes::toObject(list->get(index));;
     
 
     int32_t key = GameKeyEventUtil::getKey(anyType);;
@@ -1513,7 +1513,7 @@ this->rtsLogHelper->handle(this, this->movementAngle);
     SteeringVisitor* steeringVisitor = dynamic_cast<SteeringVisitor*>(list->get(index));;
     
 
-    Object* anyType = steeringVisitor->visit(this);;
+    Object* anyType = JavaBoxes::toObject(steeringVisitor->visit(this));;
     
 
                         if(anyType == 

@@ -108,7 +108,7 @@ this->xsl= value;
 
         try {
             
-    Object* anyType = (new CategoryRequestHelperFactory())->getInstance(this->getPropertiesHashMap(), this->pageContext);;
+    Object* anyType = JavaBoxes::toObject((new CategoryRequestHelperFactory())->getInstance(this->getPropertiesHashMap(), this->pageContext));;
     
 
     Class* helperClass = anyType->getClass();;
@@ -170,7 +170,7 @@ this->xsl= value;
 
         try {
             
-    Object* anyType = (new CategoryRequestHelperFactory())->getInstance(this->getPropertiesHashMap(), this->pageContext);;
+    Object* anyType = JavaBoxes::toObject((new CategoryRequestHelperFactory())->getInstance(this->getPropertiesHashMap(), this->pageContext));;
     
 
     Class* helperClass = anyType->getClass();;

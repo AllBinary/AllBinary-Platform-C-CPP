@@ -103,6 +103,7 @@ public: ImageCacheBase();
 
     /*protected*/ public: Image* getImage(Object* resourceId);
     /*protected*/ public: Image* getImage(const std::string& resourceId) { return getImage(JavaString::box(resourceId)); }
+    /*protected*/ public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> Image* getImage(BoxValue resourceId) { return getImage(JavaBoxes::toObject(resourceId)); }
 
     public: void releaseAll();
 
@@ -118,6 +119,7 @@ public: ImageCacheBase();
             
     public: Image* getWithKey(Object* key);
     public: Image* getWithKey(const std::string& key) { return getWithKey(JavaString::box(key)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> Image* getWithKey(BoxValue key) { return getWithKey(JavaBoxes::toObject(key)); }
 
                 //@Throws(Exception.constructor)
             
@@ -127,6 +129,7 @@ public: ImageCacheBase();
             
     /*protected*/ public: Image* createImageFromInputStream(Object* key, InputStream* inputStream);
     /*protected*/ public: Image* createImageFromInputStream(const std::string& key, InputStream* inputStream) { return createImageFromInputStream(JavaString::box(key), inputStream); }
+    /*protected*/ public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> Image* createImageFromInputStream(BoxValue key, InputStream* inputStream) { return createImageFromInputStream(JavaBoxes::toObject(key), inputStream); }
 
     public: std::string toString();
 

@@ -94,7 +94,7 @@ this->myFontProcessor->process(graphics);
                                 )
                         
                                     {
-                                    graphics->setColor(stringComponent->getForegroundBasicColor()->intValue());
+                                    graphics->setColor(JavaBoxes::value<int32_t>(stringComponent->getForegroundBasicColor()));
     
 
                                     }

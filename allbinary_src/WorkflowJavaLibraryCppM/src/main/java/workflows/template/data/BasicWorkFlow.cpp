@@ -157,7 +157,7 @@ this->validationDomNodeInterface= dynamic_cast<ValidationComponentInterface*>(Tr
                                     }
                                 
 
-                        if(this->validationDomNodeInterface->isValid().valueOf())
+                        if(JavaBoxes::value<bool>(this->validationDomNodeInterface->isValid()))
                         
                                     {
                                     this->pageContext->getOut()->print(this->validationDomNodeInterface->view());

@@ -135,6 +135,27 @@ this->clear();
     RecordStore* recordStore = NullRecordStore::NULL_RECORD_STORE;;
     
 
+        {
+        
+        auto finallyFunction_N66725 = [&]() {
+            
+                        if(recordStore != 
+                                    nullptr
+                                )
+                        
+                                    {
+                                    PreLogUtil::put(this->persistanceStrings->CLOSING_RECORDSTORE, this, this->commonStrings->delete_);
+    
+recordStore->closeRecordStore();
+    
+
+                                    }
+                                
+
+        };
+        
+        struct FinallyGuard_N66725 { decltype(finallyFunction_N66725)& function; ~FinallyGuard_N66725() { function(); } } finallyGuard_N66725{finallyFunction_N66725};
+        
         try {
             this->logUtil->putF((new StringMaker())->append(this->persistanceStrings->DELETING_WITH_ID)->appendint(deleteId)->toString(), this, this->commonStrings->delete_);
     
@@ -153,23 +174,8 @@ recordStore->deleteRecord(deleteId);
                     
 }
 
-         finally {
-            
-                        if(recordStore != 
-                                    nullptr
-                                )
-                        
-                                    {
-                                    PreLogUtil::put(this->persistanceStrings->CLOSING_RECORDSTORE, this, this->commonStrings->delete_);
-    
-recordStore->closeRecordStore();
-    
+        }
 
-                                    }
-                                
-
-         }
-        
 }
 
 

@@ -811,7 +811,7 @@ node= this->addNewProperties(document, nodeNameDuplicateNode, nextPackagePropert
     std::string key = JavaBoxes::unbox<std::string>(keyArray[i]);;
     
 
-    Object* anyType = this->getMap()->get(key);;
+    Object* anyType = JavaBoxes::toObject(this->getMap()->get(key));;
     
 
     std::string className = JavaBoxes::unbox<std::string>(anyType->getClass()->getName());;

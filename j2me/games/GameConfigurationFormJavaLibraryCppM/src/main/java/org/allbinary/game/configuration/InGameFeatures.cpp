@@ -106,7 +106,7 @@ InGameFeatures::InGameFeatures() {
                         
                                     {
                                     
-    Object* inGameExclusiveOrientationSensorVectorCanBeNull = inGameFeatureChoiceGroups->get()->get(orientationData->ORIENTATION_SENSOR_INPUT);;
+    Object* inGameExclusiveOrientationSensorVectorCanBeNull = JavaBoxes::toObject(inGameFeatureChoiceGroups->get()->get(orientationData->ORIENTATION_SENSOR_INPUT));;
     
 
                         if(inGameExclusiveOrientationSensorVectorCanBeNull == 

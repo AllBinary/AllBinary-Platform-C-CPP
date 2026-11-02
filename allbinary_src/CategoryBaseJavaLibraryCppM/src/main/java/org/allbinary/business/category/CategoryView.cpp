@@ -135,7 +135,7 @@ this->categoryInterface= categoryInterface;
     int32_t i = 0;i < size; i++)
         {
 
-    Object* anyType = childCategoryVector->get(i);;
+    Object* anyType = JavaBoxes::toObject(childCategoryVector->get(i));;
     
 
     CategoryPropertiesInterface* categoryPropertiesInterface = 

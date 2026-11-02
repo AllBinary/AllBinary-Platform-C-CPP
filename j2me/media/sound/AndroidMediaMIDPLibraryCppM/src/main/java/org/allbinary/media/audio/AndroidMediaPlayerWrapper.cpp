@@ -128,7 +128,7 @@ AndroidMediaPlayerWrapper::AndroidMediaPlayerWrapper(std::string resource) : log
     ResourceUtil* resourceUtil = ResourceUtil::getInstance();;
     
 
-    MediaPlayer* mediaPlayer = MediaPlayer::create(resourceUtil->getContext(), resourceUtil->getResourceId(resource)->intValue());;
+    MediaPlayer* mediaPlayer = MediaPlayer::create(resourceUtil->getContext(), JavaBoxes::value<int32_t>(resourceUtil->getResourceId(resource)));;
     
 
                         if(mediaPlayer == 

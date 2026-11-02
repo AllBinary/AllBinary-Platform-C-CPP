@@ -71,7 +71,7 @@ GameSpeed* GameSpeed::instance = GameSpeed::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return (speedGameConfiguration->getMaxValue()->intValue() -speedGameConfiguration->getValue()->intValue() +1);
+                        return (JavaBoxes::value<int32_t>(speedGameConfiguration->getMaxValue()) -JavaBoxes::value<int32_t>(speedGameConfiguration->getValue()) +1);
     
 }
 
@@ -84,7 +84,7 @@ GameSpeed* GameSpeed::instance = GameSpeed::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return 19 *(speedGameConfiguration->getMaxValue()->intValue() -speedGameConfiguration->getValue()->intValue());
+                        return 19 *(JavaBoxes::value<int32_t>(speedGameConfiguration->getMaxValue()) -JavaBoxes::value<int32_t>(speedGameConfiguration->getValue()));
     
 }
 

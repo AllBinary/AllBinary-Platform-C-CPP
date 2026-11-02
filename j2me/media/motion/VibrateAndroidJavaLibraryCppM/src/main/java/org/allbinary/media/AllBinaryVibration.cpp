@@ -85,7 +85,7 @@ AllBinaryVibration::AllBinaryVibration() : vibrator(dynamic_cast<Vibrator*>(Reso
 
     auto AllBinaryVibration::init() -> void{
 
-                        if(GameConfigurationCentral::getInstance()->VIBRATION->getValue()->intValue() == 0)
+                        if(JavaBoxes::value<int32_t>(GameConfigurationCentral::getInstance()->VIBRATION->getValue()) == 0)
                         
                                     {
                                     AllBinaryVibration::VIBRATION= AllBinaryNoVibration::NO_VIBRATION;

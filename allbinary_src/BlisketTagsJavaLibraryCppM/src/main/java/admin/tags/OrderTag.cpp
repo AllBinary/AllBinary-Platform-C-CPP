@@ -118,7 +118,7 @@ this->storeName= value;
 
         try {
             
-    Object* anyType = (new OrderHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext);;
+    Object* anyType = JavaBoxes::toObject((new OrderHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext));;
     
 
     Class* helperClass = anyType->getClass();;
@@ -180,7 +180,7 @@ this->storeName= value;
 
         try {
             
-    Object* anyType = (new OrderHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext);;
+    Object* anyType = JavaBoxes::toObject((new OrderHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext));;
     
 
     Class* addressHelperClass = anyType->getClass();;

@@ -58,7 +58,7 @@
         #include "org/allbinary/game/configuration/GameConfiguration.h"
 
 
-GameConfigurationGauge::GameConfigurationGauge(GameConfiguration* gameConfiguration) : Gauge(gameConfiguration->getName(), gameConfiguration->isModifiable().valueOf(), gameConfiguration->getMaxValue()->intValue() -gameConfiguration->getMinValue()->intValue(), gameConfiguration->getValue()->intValue() -gameConfiguration->getMinValue()->intValue()){
+GameConfigurationGauge::GameConfigurationGauge(GameConfiguration* gameConfiguration) : Gauge(gameConfiguration->getName(), JavaBoxes::value<bool>(gameConfiguration->isModifiable()), JavaBoxes::value<int32_t>(gameConfiguration->getMaxValue()) -JavaBoxes::value<int32_t>(gameConfiguration->getMinValue()), JavaBoxes::value<int32_t>(gameConfiguration->getValue()) -JavaBoxes::value<int32_t>(gameConfiguration->getMinValue())){
 
                         //super/this constructor call is in the constructor initializer list.
                     

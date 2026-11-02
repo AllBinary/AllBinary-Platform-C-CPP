@@ -364,6 +364,16 @@ PreLogUtil::put(JavaString::valueOf("Read Configuration: ") +JavaString::valueOf
     Closeable* closeable = NullCloseable::NULL_CLOSEABLE;;
     
 
+        {
+        
+        auto finallyFunction_N69039 = [&]() {
+            StreamUtil::getInstance()->close(closeable);
+    
+
+        };
+        
+        struct FinallyGuard_N69039 { decltype(finallyFunction_N69039)& function; ~FinallyGuard_N69039() { function(); } } finallyGuard_N69039{finallyFunction_N69039};
+        
         try {
             PreLogUtil::put(JavaString::valueOf("Write Configuration: ") +JavaString::valueOf(this->toString()), this, "write");
     
@@ -414,12 +424,8 @@ dataOutputStream->flush();
                     
 }
 
-         finally {
-            StreamUtil::getInstance()->close(closeable);
-    
+        }
 
-         }
-        
 }
 
 

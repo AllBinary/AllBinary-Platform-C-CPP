@@ -407,7 +407,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "isSessionOld()");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->isRarelyUsedSession().valueOf();;
+                        return this->isRarelyUsedSession();;
     
 
                 //: 

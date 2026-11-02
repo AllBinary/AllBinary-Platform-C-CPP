@@ -78,7 +78,7 @@ this->setBasicColorP(basicColor);
     auto ColorFillBasePaintable::setBasicColorP(BasicColor* basicColor) -> void{
 this->basicColor= basicColor;
     
-this->setColor(this->getBasicColorP()->intValue());
+this->setColor(JavaBoxes::value<int32_t>(this->getBasicColorP()));
     
 }
 

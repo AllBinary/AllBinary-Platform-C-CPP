@@ -132,7 +132,7 @@ this->myFontProcessor->process(graphics);
 
     int32_t height = this->displayInfoSingleton->getLastHeight();;
     
-graphics->setColor(this->getBasicColorP()->intValue());
+graphics->setColor(JavaBoxes::value<int32_t>(this->getBasicColorP()));
     
 
     std::string heading = this->highScores->getHeading();;

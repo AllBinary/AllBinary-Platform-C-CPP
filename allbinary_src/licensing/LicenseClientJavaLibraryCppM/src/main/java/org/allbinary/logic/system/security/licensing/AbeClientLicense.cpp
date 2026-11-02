@@ -88,7 +88,7 @@ this->hashtable= StdUtil::getInstance()->createHashtable();
     AbeClientInformationData* abeClientInformationData = AbeClientInformationData::getInstance();;
     
 
-    Object* keyValue = hashtable->get(abeClientInformationData->KEY);;
+    Object* keyValue = JavaBoxes::toObject(hashtable->get(abeClientInformationData->KEY));;
     
 
                         if(keyValue != 

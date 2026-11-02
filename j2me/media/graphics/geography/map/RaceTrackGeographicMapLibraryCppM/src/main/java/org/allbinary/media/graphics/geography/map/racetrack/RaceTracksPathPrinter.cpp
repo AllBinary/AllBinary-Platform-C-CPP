@@ -85,7 +85,7 @@ RaceTracksPathPrinter::RaceTracksPathPrinter() {
     int32_t index = 0;index < size; index++)
         {
 
-    Object* anyType = list->get(index);;
+    Object* anyType = JavaBoxes::toObject(list->get(index));;
     
 PreLogUtil::put((new StringMaker())->append("pathList.add(cellPositionFactory.getInstance")->append(anyType->toString())->append(");")->toString(), this, "printPath");
     

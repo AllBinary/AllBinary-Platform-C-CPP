@@ -58,6 +58,7 @@ class OpenGLThreadUtil
         
     public: void set(Object* glSurfaceView);
     public: void set(const std::string& glSurfaceView) { return set(JavaString::box(glSurfaceView)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void set(BoxValue glSurfaceView) { return set(JavaBoxes::toObject(glSurfaceView)); }
 
     public: void onPause();
 

@@ -184,7 +184,17 @@ newFile->createNewFile();
     AbDataOutputStream* dataOutputStream = DataOutputStreamFactory::getInstance()->getInstanceForAbFile(newFile);;
     
 
-        try {
+        {
+        
+        auto finallyFunction_N67289 = [&]() {
+            StreamUtil::getInstance()->close(dataOutputStream);
+    
+
+        };
+        
+        struct FinallyGuard_N67289 { decltype(finallyFunction_N67289)& function; ~FinallyGuard_N67289() { function(); } } finallyGuard_N67289{finallyFunction_N67289};
+        
+        {
             
     std::vector<int8_t> cryptedJdbcDriver = (new WeakCrypt(1))->encrypt(this->getJdbcDriver())->getBytes();;
     
@@ -223,12 +233,10 @@ dataOutputStream->writeUTF(DatabaseEncoder::encode(cryptedPort));
 this->hasRead= false;
     
 
-         finally {
-            StreamUtil::getInstance()->close(dataOutputStream);
-    
+        }
 
-         }
-        
+        }
+
 
                 //: 
 } catch(Exception& e) 
@@ -269,7 +277,17 @@ this->hasRead= false;
     AbDataInputStream* iData = new AbDataInputStream(iFile);;
     
 
-        try {
+        {
+        
+        auto finallyFunction_N68965 = [&]() {
+            StreamUtil::getInstance()->close(iData);
+    
+
+        };
+        
+        struct FinallyGuard_N68965 { decltype(finallyFunction_N68965)& function; ~FinallyGuard_N68965() { function(); } } finallyGuard_N68965{finallyFunction_N68965};
+        
+        {
             
     std::string decryptedJdbcDriver = decode.toCharArray();;
     
@@ -309,12 +327,10 @@ this->setPort((new WeakCrypt(7))->decrypt(decryptedPort));
     StringUtil* stringUtil = StringUtil::getInstance();;
     
 
-         finally {
-            StreamUtil::getInstance()->close(iData);
-    
+        }
 
-         }
-        
+        }
+
 
                                     }
                                 

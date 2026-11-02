@@ -134,6 +134,27 @@ this->loadAllSize(abeClientInformation, 1);
     RecordStore* recordStore = NullRecordStore::NULL_RECORD_STORE;;
     
 
+        {
+        
+        auto finallyFunction_N66248 = [&]() {
+            
+                        if(recordStore != 
+                                    nullptr
+                                )
+                        
+                                    {
+                                    PreLogUtil::put(this->persistanceStrings->CLOSING_RECORDSTORE, this, this->persistanceStrings->LOAD_ALL);
+    
+recordStore->closeRecordStore();
+    
+
+                                    }
+                                
+
+        };
+        
+        struct FinallyGuard_N66248 { decltype(finallyFunction_N66248)& function; ~FinallyGuard_N66248() { function(); } } finallyGuard_N66248{finallyFunction_N66248};
+        
         try {
             recordStore= RecordStore::openRecordStore(this->getRecordId(abeClientInformation), true);
     
@@ -223,23 +244,8 @@ this->idList->add(smallIntegerSingletonFactory->getAt(id));
                     
 }
 
-         finally {
-            
-                        if(recordStore != 
-                                    nullptr
-                                )
-                        
-                                    {
-                                    PreLogUtil::put(this->persistanceStrings->CLOSING_RECORDSTORE, this, this->persistanceStrings->LOAD_ALL);
-    
-recordStore->closeRecordStore();
-    
+        }
 
-                                    }
-                                
-
-         }
-        
 }
 
 
@@ -250,6 +256,27 @@ recordStore->closeRecordStore();
     RecordStore* recordStore = NullRecordStore::NULL_RECORD_STORE;;
     
 
+        {
+        
+        auto finallyFunction_N67693 = [&]() {
+            
+                        if(recordStore != 
+                                    nullptr
+                                )
+                        
+                                    {
+                                    PreLogUtil::put(this->persistanceStrings->CLOSING_RECORDSTORE, this, this->commonStrings->SAVE);
+    
+recordStore->closeRecordStore();
+    
+
+                                    }
+                                
+
+        };
+        
+        struct FinallyGuard_N67693 { decltype(finallyFunction_N67693)& function; ~FinallyGuard_N67693() { function(); } } finallyGuard_N67693{finallyFunction_N67693};
+        
         try {
             this->logUtil->putF((new StringMaker())->append(this->persistanceStrings->SAVING)->append(StringUtil::getInstance()->toString(hashtable))->toString(), this, this->commonStrings->SAVE);
     
@@ -314,23 +341,8 @@ recordStore->addRecord(savedGameBytes, 0, savedGameBytes.size());
                     
 }
 
-         finally {
-            
-                        if(recordStore != 
-                                    nullptr
-                                )
-                        
-                                    {
-                                    PreLogUtil::put(this->persistanceStrings->CLOSING_RECORDSTORE, this, this->commonStrings->SAVE);
-    
-recordStore->closeRecordStore();
-    
+        }
 
-                                    }
-                                
-
-         }
-        
 }
 
 

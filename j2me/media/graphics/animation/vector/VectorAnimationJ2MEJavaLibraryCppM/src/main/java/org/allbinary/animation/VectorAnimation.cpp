@@ -129,7 +129,7 @@ this->setBasicColorP(basicColor);
 
                         if(this->getBasicColorP() == 
                                     nullptr
-                                 || this->getBasicColorP()->intValue() != basicColor->intValue())
+                                 || JavaBoxes::value<int32_t>(this->getBasicColorP()) != basicColor->intValue())
                         
                                     {
                                     changed= true;
@@ -158,7 +158,7 @@ IndexedAnimation::setBasicColorP(basicColor);
 
                         if(this->getChangeBasicColor() == 
                                     nullptr
-                                 || this->getChangeBasicColor()->intValue() != basicColor->intValue())
+                                 || JavaBoxes::value<int32_t>(this->getChangeBasicColor()) != basicColor->intValue())
                         
                                     {
                                     changed= true;

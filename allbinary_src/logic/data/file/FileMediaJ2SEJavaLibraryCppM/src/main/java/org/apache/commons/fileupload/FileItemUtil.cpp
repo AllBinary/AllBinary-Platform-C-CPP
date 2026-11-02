@@ -125,7 +125,19 @@ FileItemUtil* FileItemUtil::instance = FileItemUtil::instance_owner();
             ;;
     
 
-        try {
+        {
+        
+        auto finallyFunction_N66308 = [&]() {
+            streamUtil->close(outputStream);
+    
+streamUtil->close(inputStream);
+    
+
+        };
+        
+        struct FinallyGuard_N66308 { decltype(finallyFunction_N66308)& function; ~FinallyGuard_N66308() { function(); } } finallyGuard_N66308{finallyFunction_N66308};
+        
+        {
             inputStream= fileItem->openStream();
     
 outputStream= new ByteArrayOutputStream();
@@ -165,14 +177,10 @@ outputStream= dynamic_cast<ByteArrayOutputStream*>(streamUtil->get(inputStream, 
                         return outputStream->toByteArray();;
     
 
-         finally {
-            streamUtil->close(outputStream);
-    
-streamUtil->close(inputStream);
-    
+        }
 
-         }
-        
+        }
+
 }
 
 

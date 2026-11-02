@@ -93,7 +93,7 @@ this->queueVector->remove(anyType);
 
     auto BasicQueue::removeLast() -> Object*{
 
-    Object* anyType = this->queueVector->get(this->queueVector->size() -1);;
+    Object* anyType = JavaBoxes::toObject(this->queueVector->get(this->queueVector->size() -1));;
     
 this->queueVector->remove(anyType);
     

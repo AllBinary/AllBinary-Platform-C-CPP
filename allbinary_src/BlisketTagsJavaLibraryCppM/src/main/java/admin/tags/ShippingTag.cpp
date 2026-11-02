@@ -112,7 +112,7 @@ this->storeName= value;
 
         try {
             
-    Object* anyType = (new ShippingHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext);;
+    Object* anyType = JavaBoxes::toObject((new ShippingHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext));;
     
 
     Class* addressHelperClass = anyType->getClass();;

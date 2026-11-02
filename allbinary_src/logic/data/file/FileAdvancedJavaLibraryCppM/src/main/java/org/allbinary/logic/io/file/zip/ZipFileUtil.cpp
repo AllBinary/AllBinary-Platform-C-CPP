@@ -238,7 +238,17 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "create", &e);
             ;;
     
 
-        try {
+        {
+        
+        auto finallyFunction_N67637 = [&]() {
+            StreamUtil::getInstance()->close(inputStream);
+    
+
+        };
+        
+        struct FinallyGuard_N67637 { decltype(finallyFunction_N67637)& function; ~FinallyGuard_N67637() { function(); } } finallyGuard_N67637{finallyFunction_N67637};
+        
+        {
             inputStream= new ZipInputStream(new AbFileInputStream(zipFile));
     
 
@@ -302,12 +312,10 @@ inputStream->closeEntry();
 }
 
 
-         finally {
-            StreamUtil::getInstance()->close(inputStream);
-    
+        }
 
-         }
-        
+        }
+
 }
 
 

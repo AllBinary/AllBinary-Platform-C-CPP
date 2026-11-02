@@ -82,11 +82,13 @@ class TsUtil
 
     public: int32_t hashCode(Object* anyType);
     public: int32_t hashCode(const std::string& anyType) { return hashCode(JavaString::box(anyType)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> int32_t hashCode(BoxValue anyType) { return hashCode(JavaBoxes::toObject(anyType)); }
 
                 //@Throws(InterruptedException.constructor)
             
     public: void waitFor(Object* any, int64_t timeoutMillis);
     public: void waitFor(const std::string& any, int64_t timeoutMillis) { return waitFor(JavaString::box(any), timeoutMillis); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void waitFor(BoxValue any, int64_t timeoutMillis) { return waitFor(JavaBoxes::toObject(any), timeoutMillis); }
 
     public: int32_t compareTo(std::string a, std::string b);
 

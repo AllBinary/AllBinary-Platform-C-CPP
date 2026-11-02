@@ -238,7 +238,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "saveImageFile()");
     int32_t index = 0;index < propertyStringArray.size(); index++)
         {
 
-    Object* propertyObject = bufferedImage->getProperty(propertyStringArray[index]);;
+    Object* propertyObject = JavaBoxes::toObject(bufferedImage->getProperty(propertyStringArray[index]));;
     
 hashMap->put(propertyStringArray[index], propertyObject->toString());
     

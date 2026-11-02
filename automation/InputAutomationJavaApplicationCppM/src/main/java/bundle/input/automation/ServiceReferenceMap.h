@@ -80,17 +80,21 @@ public: ServiceReferenceMap(ServiceReference* serviceReference);
 
     public: bool containsKey(Object* key);
     public: bool containsKey(const std::string& key) { return containsKey(JavaString::box(key)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> bool containsKey(BoxValue key) { return containsKey(JavaBoxes::toObject(key)); }
 
     public: bool containsValue(Object* value);
     public: bool containsValue(const std::string& value) { return containsValue(JavaString::box(value)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> bool containsValue(BoxValue value) { return containsValue(JavaBoxes::toObject(value)); }
 
     public: Object* get(Object* key);
     public: Object* get(const std::string& key) { return get(JavaString::box(key)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> Object* get(BoxValue key) { return get(JavaBoxes::toObject(key)); }
 
     public: Object* put(Object* key, Object* value);
 
     public: Object* remove(Object* key);
     public: Object* remove(const std::string& key) { return remove(JavaString::box(key)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> Object* remove(BoxValue key) { return remove(JavaBoxes::toObject(key)); }
 
     public: void putAll(Map* m);
 

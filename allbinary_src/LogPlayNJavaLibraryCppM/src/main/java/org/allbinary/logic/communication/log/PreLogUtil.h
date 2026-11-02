@@ -71,6 +71,7 @@ class PlayN;
 
     /*actual*/ public: static void put(std::string specialMessage, Object* anyType, std::string functionName);
     public: static void put(std::string specialMessage, const std::string& anyType, std::string functionName) { return put(specialMessage, JavaString::box(anyType), functionName); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> static void put(std::string specialMessage, BoxValue anyType, std::string functionName) { return put(specialMessage, JavaBoxes::toObject(anyType), functionName); }
 
     private: static inline const std::string LOG_SUCCESS = "org.allbinary: ";
 
@@ -80,9 +81,11 @@ class PlayN;
 
     /*actual*/ public: static void putSE(std::string specialMessage, std::string className, std::string functionName, Object* exception);
     public: static void putSE(std::string specialMessage, std::string className, std::string functionName, const std::string& exception) { return putSE(specialMessage, className, functionName, JavaString::box(exception)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> static void putSE(std::string specialMessage, std::string className, std::string functionName, BoxValue exception) { return putSE(specialMessage, className, functionName, JavaBoxes::toObject(exception)); }
 
     /*actual*/ public: static std::string getClassName(Object* anyType);
     public: static std::string getClassName(const std::string& anyType) { return getClassName(JavaString::box(anyType)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> static std::string getClassName(BoxValue anyType) { return getClassName(JavaBoxes::toObject(anyType)); }
 
 public: PreLogUtil();
 

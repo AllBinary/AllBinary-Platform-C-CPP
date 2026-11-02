@@ -234,7 +234,7 @@ this->mappedList->add(mappedToInput);
 
     auto InputMapping::getMappedInput(Input* id) -> BasicArrayList*{
 
-    Object* mappingInputCanBeNullList = this->hashtable->get(id);;
+    Object* mappingInputCanBeNullList = JavaBoxes::toObject(this->hashtable->get(id));;
     
 
                         if(mappingInputCanBeNullList == 

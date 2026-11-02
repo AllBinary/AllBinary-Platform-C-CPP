@@ -73,15 +73,19 @@ public: ABHashtable();
 
     public: bool contains(Object* value);
     public: bool contains(const std::string& value) { return contains(JavaString::box(value)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> bool contains(BoxValue value) { return contains(JavaBoxes::toObject(value)); }
 
     public: bool containsValue(Object* value);
     public: bool containsValue(const std::string& value) { return containsValue(JavaString::box(value)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> bool containsValue(BoxValue value) { return containsValue(JavaBoxes::toObject(value)); }
 
     public: bool containsKey(Object* key);
     public: bool containsKey(const std::string& key) { return containsKey(JavaString::box(key)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> bool containsKey(BoxValue key) { return containsKey(JavaBoxes::toObject(key)); }
 
     public: V get(Object* key);
     public: V get(const std::string& key) { return get(JavaString::box(key)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> V get(BoxValue key) { return get(JavaBoxes::toObject(key)); }
 
     public: void clear();
 
@@ -91,6 +95,7 @@ public: ABHashtable();
 
     public: bool equals(Object* obj);
     public: bool equals(const std::string& obj) { return equals(JavaString::box(obj)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> bool equals(BoxValue obj) { return equals(JavaBoxes::toObject(obj)); }
 
     public: int32_t hashCode();
 

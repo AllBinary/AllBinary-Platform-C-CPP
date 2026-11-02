@@ -169,6 +169,16 @@ AbFileSystem* AbFileSystem::instance = AbFileSystem::instance_owner();
     Object* closeable = NullUtil::getInstance()->NULL_OBJECT;;
     
 
+        {
+        
+        auto finallyFunction_N66615 = [&]() {
+            this->close(closeable);
+    
+
+        };
+        
+        struct FinallyGuard_N66615 { decltype(finallyFunction_N66615)& function; ~FinallyGuard_N66615() { function(); } } finallyGuard_N66615{finallyFunction_N66615};
+        
         try {
             
     InputStream* idFile = new FileInputStream(fileName);;
@@ -199,12 +209,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "readAsString", &e);
     
 }
 
-         finally {
-            this->close(closeable);
-    
+        }
 
-         }
-        
 
 
 

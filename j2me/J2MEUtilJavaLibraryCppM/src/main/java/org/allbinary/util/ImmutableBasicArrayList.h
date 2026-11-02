@@ -68,9 +68,11 @@ public: ImmutableBasicArrayList(std::string name, int32_t size);
 
     public: bool add(Object* e);
     public: bool add(const std::string& e) { return add(JavaString::box(e)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> bool add(BoxValue e) { return add(JavaBoxes::toObject(e)); }
 
     public: void addAt(int32_t index, Object* element);
     public: void addAt(int32_t index, const std::string& element) { return addAt(index, JavaString::box(element)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void addAt(int32_t index, BoxValue element) { return addAt(index, JavaBoxes::toObject(element)); }
 
     public: std::string toString();
 

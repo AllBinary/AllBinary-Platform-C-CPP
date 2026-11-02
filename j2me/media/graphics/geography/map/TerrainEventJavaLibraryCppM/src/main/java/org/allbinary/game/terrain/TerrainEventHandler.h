@@ -78,6 +78,7 @@ class TerrainEventHandler: public BasicEventHandler {
 
     public: static TerrainEventHandler* getInstance(Object* anyType);
     public: static TerrainEventHandler* getInstance(const std::string& anyType) { return getInstance(JavaString::box(anyType)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> static TerrainEventHandler* getInstance(BoxValue anyType) { return getInstance(JavaBoxes::toObject(anyType)); }
 
     private: BasicArrayList* list;
 

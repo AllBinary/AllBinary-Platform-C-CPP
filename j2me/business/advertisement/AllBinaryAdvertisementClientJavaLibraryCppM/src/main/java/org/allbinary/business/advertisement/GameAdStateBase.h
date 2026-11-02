@@ -84,6 +84,7 @@ public: GameAdStateBase(AdConfiguration* adConfiguration);
 
     public: void onStart(Object* anyType);
     public: void onStart(const std::string& anyType) { return onStart(JavaString::box(anyType)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void onStart(BoxValue anyType) { return onStart(JavaBoxes::toObject(anyType)); }
 
     public: void init();
 

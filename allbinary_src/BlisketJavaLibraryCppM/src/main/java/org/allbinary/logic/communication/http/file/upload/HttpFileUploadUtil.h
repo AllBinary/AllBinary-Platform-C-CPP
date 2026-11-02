@@ -88,6 +88,7 @@ private: HttpFileUploadUtil();
             
     public: bool isValid(Object* anyType);
     public: bool isValid(const std::string& anyType) { return isValid(JavaString::box(anyType)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> bool isValid(BoxValue anyType) { return isValid(JavaBoxes::toObject(anyType)); }
 
 };
 

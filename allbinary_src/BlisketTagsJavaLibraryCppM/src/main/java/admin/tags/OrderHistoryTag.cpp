@@ -113,7 +113,7 @@ this->status= value;
     HttpServletRequest* request = dynamic_cast<HttpServletRequest*>(this->pageContext->getRequest());;
     
 
-    Object* anyType = (new OrderHistoryRequestHelperFactory())->getInstance(this->getPropertiesHashMap(), pageContext);;
+    Object* anyType = JavaBoxes::toObject((new OrderHistoryRequestHelperFactory())->getInstance(this->getPropertiesHashMap(), pageContext));;
     
 
                         if(false)

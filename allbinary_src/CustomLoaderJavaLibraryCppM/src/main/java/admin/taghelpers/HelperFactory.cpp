@@ -116,7 +116,7 @@ params[0]= hashMap;
 params[1]= httpServletRequest;
     
 
-    Object* anyType = abeFactory->getInstance(abeClientInformation, className, classes, params);;
+    Object* anyType = JavaBoxes::toObject(abeFactory->getInstance(abeClientInformation, className, classes, params));;
     
 
 
@@ -199,7 +199,7 @@ params[0]= hashMap;
 params[1]= pageContext;
     
 
-    Object* anyType = abeFactory->getInstance(abeClientInformation, className, classes, params);;
+    Object* anyType = JavaBoxes::toObject(abeFactory->getInstance(abeClientInformation, className, classes, params));;
     
 
 
@@ -286,7 +286,7 @@ params[1]= specialhashMap;
 params[2]= pageContext;
     
 
-    Object* anyType = abeFactory->getInstance(abeClientInformation, className, classes, params);;
+    Object* anyType = JavaBoxes::toObject(abeFactory->getInstance(abeClientInformation, className, classes, params));;
     
 
 
@@ -352,7 +352,7 @@ logUtil->put(commonStrings->EXCEPTION, JavaString::valueOf(factoryName) +JavaStr
 
         try {
             
-    Object* anyType = AbeFactory::getInstance()->getInstance(abeClientInformation, className);;
+    Object* anyType = JavaBoxes::toObject(AbeFactory::getInstance()->getInstance(abeClientInformation, className));;
     
 
 

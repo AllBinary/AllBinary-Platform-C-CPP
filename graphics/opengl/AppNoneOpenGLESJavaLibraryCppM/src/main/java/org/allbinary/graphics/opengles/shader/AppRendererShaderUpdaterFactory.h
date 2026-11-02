@@ -83,6 +83,7 @@ class AppRendererShaderUpdaterFactory: public ShaderUpdater {
 
     public: void setShaderComposite(Object* object3d);
     public: void setShaderComposite(const std::string& object3d) { return setShaderComposite(JavaString::box(object3d)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void setShaderComposite(BoxValue object3d) { return setShaderComposite(JavaBoxes::toObject(object3d)); }
 
 };
 

@@ -79,6 +79,7 @@ private: LogUtil();
 
     /*actual*/ public: void putF(std::string specialMessage, Object* anyType, std::string functionName);
     public: void putF(std::string specialMessage, const std::string& anyType, std::string functionName) { return putF(specialMessage, JavaString::box(anyType), functionName); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void putF(std::string specialMessage, BoxValue anyType, std::string functionName) { return putF(specialMessage, JavaBoxes::toObject(anyType), functionName); }
 
     /*actual*/ public: void putFS(std::string specialMessage, std::string className, std::string functionName);
 

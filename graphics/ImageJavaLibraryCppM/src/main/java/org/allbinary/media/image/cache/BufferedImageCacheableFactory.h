@@ -69,6 +69,7 @@ public: BufferedImageCacheableFactory();
 
     public: CacheableInterface* getInstance(Object* key);
     public: CacheableInterface* getInstance(const std::string& key) { return getInstance(JavaString::box(key)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> CacheableInterface* getInstance(BoxValue key) { return getInstance(JavaBoxes::toObject(key)); }
 
 };
 

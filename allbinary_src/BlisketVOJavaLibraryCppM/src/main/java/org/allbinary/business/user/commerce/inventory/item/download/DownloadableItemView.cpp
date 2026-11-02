@@ -116,7 +116,7 @@ this->downloadableItem= downloadableItem;
     HashMap<Object*, Object*>* hashMap = this->downloadableItem->toHashMap();;
     
 
-    int64_t totalTime = this->downloadableItem->getValidTime()->longValue();;
+    int64_t totalTime = JavaBoxes::value<int64_t>(this->downloadableItem->getValidTime());;
     
 
     Calendar* calendar = Calendar::getInstance();;

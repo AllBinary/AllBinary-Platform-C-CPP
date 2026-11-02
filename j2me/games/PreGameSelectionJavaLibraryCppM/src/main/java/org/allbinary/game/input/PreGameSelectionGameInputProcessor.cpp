@@ -193,7 +193,7 @@ this->getPlayerGameInput()->update();
     int32_t index = 0;index < size; index++)
         {
 
-    Object* anyType = list->get(index);;
+    Object* anyType = JavaBoxes::toObject(list->get(index));;
     
 
     int32_t key = GameKeyEventUtil::getKey(anyType);;

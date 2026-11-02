@@ -78,12 +78,15 @@ class ABVector: public Vector<E> {
 
     public: bool contains(Object* obj);
     public: bool contains(const std::string& obj) { return contains(JavaString::box(obj)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> bool contains(BoxValue obj) { return contains(JavaBoxes::toObject(obj)); }
 
     public: int32_t indexOf(Object* obj);
     public: int32_t indexOf(const std::string& obj) { return indexOf(JavaString::box(obj)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> int32_t indexOf(BoxValue obj) { return indexOf(JavaBoxes::toObject(obj)); }
 
     public: int32_t lastIndexOf(Object* obj);
     public: int32_t lastIndexOf(const std::string& obj) { return lastIndexOf(JavaString::box(obj)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> int32_t lastIndexOf(BoxValue obj) { return lastIndexOf(JavaBoxes::toObject(obj)); }
 
     public: E elementAt(int32_t index);
 
@@ -101,6 +104,7 @@ class ABVector: public Vector<E> {
 
     public: bool removeElement(Object* obj);
     public: bool removeElement(const std::string& obj) { return removeElement(JavaString::box(obj)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> bool removeElement(BoxValue obj) { return removeElement(JavaBoxes::toObject(obj)); }
 
     public: void removeAllElements();
 
@@ -114,6 +118,7 @@ class ABVector: public Vector<E> {
 
     public: bool remove(Object* obj);
     public: bool remove(const std::string& obj) { return remove(JavaString::box(obj)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> bool remove(BoxValue obj) { return remove(JavaBoxes::toObject(obj)); }
 
     public: void add(int32_t index, E element);
 
@@ -123,6 +128,7 @@ class ABVector: public Vector<E> {
 
     public: bool equals(Object* obj);
     public: bool equals(const std::string& obj) { return equals(JavaString::box(obj)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> bool equals(BoxValue obj) { return equals(JavaBoxes::toObject(obj)); }
 
     public: int32_t hashCode();
 

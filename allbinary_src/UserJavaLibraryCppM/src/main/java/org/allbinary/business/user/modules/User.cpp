@@ -260,7 +260,7 @@ this->enable_= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(userHashMap-
     bool valid = Boolean::TRUE;;
     
 
-                        if(!UserName::getInstance()->isValid(this->userName).valueOf())
+                        if(!UserName::getInstance()->isValid(this->userName))
                         
                                     {
                                     valid= Boolean::FALSE;
@@ -269,7 +269,7 @@ this->enable_= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(userHashMap-
                                     }
                                 
 
-                        if(!this->password->isValid().valueOf())
+                        if(!this->password->isValid())
                         
                                     {
                                     valid= Boolean::FALSE;

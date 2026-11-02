@@ -250,7 +250,7 @@ this->updateInputType();
     
 this->updateKeys();
     
-this->keyActionScriptInputInterface->setTime(Integer.valueOf(this->timeJTextField->getText())->intValue());
+this->keyActionScriptInputInterface->setTime(JavaBoxes::value<int32_t>(Integer.valueOf(this->timeJTextField->getText())));
     
 this->keyActionScriptInputInterface->log();
     

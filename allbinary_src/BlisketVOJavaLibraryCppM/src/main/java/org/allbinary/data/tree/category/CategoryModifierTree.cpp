@@ -112,7 +112,7 @@ CategoryModifierTree::CategoryModifierTree(CategoryFactoryInterface* categoryFac
                                     }
                                 
 
-                        if(parentCategoryInterface->isValid().valueOf())
+                        if(JavaBoxes::value<bool>(parentCategoryInterface->isValid()))
                         
                                     {
                                     parentCategoryInterface->addChild(newChildCategoryInterface);
@@ -164,7 +164,7 @@ this->save(newChildCategoryInterface);
 
         try {
             
-                        if(parentCategoryInterface->isValid().valueOf())
+                        if(JavaBoxes::value<bool>(parentCategoryInterface->isValid()))
                         
                                     {
                                     parentCategoryInterface->addChild(existingChildCategoryInterface);

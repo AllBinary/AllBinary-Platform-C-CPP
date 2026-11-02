@@ -93,7 +93,7 @@ this->setTagRequestHelperFactory(new PaymentGatewayHelperFactory());
 
         try {
             
-    Object* anyType = (new PaymentGatewayHelperFactory())->getInstance(this->getPropertiesHashMap(), this->pageContext);;
+    Object* anyType = JavaBoxes::toObject((new PaymentGatewayHelperFactory())->getInstance(this->getPropertiesHashMap(), this->pageContext));;
     
 
     Class* helperClass = anyType->getClass();;

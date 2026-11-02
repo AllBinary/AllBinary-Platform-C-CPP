@@ -92,7 +92,7 @@ this->setInitialized(true);
             
     auto ResourceRelativeRelationshipFactory::getResourceRelativeRelationshipList(std::string resource) -> BasicArrayList*{
 
-    Object* listCanBeNull = this->hashtable->get(resource);;
+    Object* listCanBeNull = JavaBoxes::toObject(this->hashtable->get(resource));;
     
 
                         if(listCanBeNull == 

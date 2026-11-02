@@ -64,6 +64,7 @@ class GameKeyEvent: public AllBinaryEventObject {
 
     public: static GameKeyEvent* createEvent(Object* anyType, int32_t sourceId, int32_t key);
     public: static GameKeyEvent* createEvent(const std::string& anyType, int32_t sourceId, int32_t key) { return createEvent(JavaString::box(anyType), sourceId, key); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> static GameKeyEvent* createEvent(BoxValue anyType, int32_t sourceId, int32_t key) { return createEvent(JavaBoxes::toObject(anyType), sourceId, key); }
 
     private: static GameKeyEvent* NONE_owner();
     public: static GameKeyEvent* NONE;
@@ -82,6 +83,7 @@ public: GameKeyEvent(Object* anyType, int32_t sourceId, int32_t originalKey, int
 
     public: void init(Object* anyType);
     public: void init(const std::string& anyType) { return init(JavaString::box(anyType)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void init(BoxValue anyType) { return init(JavaBoxes::toObject(anyType)); }
 
     private: void setRepeatEvents(bool repeated);
 

@@ -191,7 +191,7 @@ this->save(abeClientInformation);
                         
                                     {
                                     
-    Object* listCanBeNull = hashtable->get(key);;
+    Object* listCanBeNull = JavaBoxes::toObject(hashtable->get(key));;
     
 
                         if(listCanBeNull != 

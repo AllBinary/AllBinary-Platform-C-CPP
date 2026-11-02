@@ -234,7 +234,7 @@ this->titleValidation= new TitleNotRequiredValidation(hashMap);
                                     }
                                 
 
-                        if(!this->titleValidation->isValid().valueOf())
+                        if(!this->titleValidation->isValid())
                         
                                     {
                                     isValid= Boolean::FALSE;

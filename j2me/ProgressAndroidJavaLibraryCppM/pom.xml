@@ -145,7 +145,7 @@
         
         <dependency>
             <groupId>org.microemu</groupId>
-            <artifactId>microemu-midpCpp</artifactId>
+            <artifactId>microemu-midp-for-polyglotCpp</artifactId>
             <version>2.0.4</version>
             <optional>true</optional>
         </dependency>
@@ -161,7 +161,7 @@
                     <groupId>org.microemu</groupId>
                 </exclusion>
                 <exclusion>
-                    <artifactId>microemu-midpCpp</artifactId>
+                    <artifactId>microemu-midp-for-polyglotCpp</artifactId>
                     <groupId>org.microemu</groupId>
                 </exclusion>
                 <exclusion>
@@ -183,7 +183,7 @@
                     <groupId>org.microemu</groupId>
                 </exclusion>
                 <exclusion>
-                    <artifactId>microemu-midpCpp</artifactId>
+                    <artifactId>microemu-midp-for-polyglotCpp</artifactId>
                     <groupId>org.microemu</groupId>
                 </exclusion>
                 <exclusion>
@@ -204,7 +204,7 @@
                     <groupId>org.microemu</groupId>
                 </exclusion>
                 <exclusion>
-                    <artifactId>microemu-midpCpp</artifactId>
+                    <artifactId>microemu-midp-for-polyglotCpp</artifactId>
                     <groupId>org.microemu</groupId>
                 </exclusion>
                 <exclusion>

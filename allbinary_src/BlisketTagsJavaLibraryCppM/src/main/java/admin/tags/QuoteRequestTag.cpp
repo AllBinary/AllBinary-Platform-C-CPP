@@ -105,7 +105,7 @@ this->storeName= storeName;
 
         try {
             
-    Object* anyType = (new QuoteHelperFactory())->getInstance(this->getPropertiesHashMap(), pageContext);;
+    Object* anyType = JavaBoxes::toObject((new QuoteHelperFactory())->getInstance(this->getPropertiesHashMap(), pageContext));;
     
 
     Class* helperClass = anyType->getClass();;

@@ -103,14 +103,17 @@ public: ImageCache();
             
     public: Image* get(Object* key);
     public: Image* get(const std::string& key) { return get(JavaString::box(key)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> Image* get(BoxValue key) { return get(JavaBoxes::toObject(key)); }
 
     public: int32_t getIndex(Object* key);
     public: int32_t getIndex(const std::string& key) { return getIndex(JavaString::box(key)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> int32_t getIndex(BoxValue key) { return getIndex(JavaBoxes::toObject(key)); }
 
                 //@Throws(Exception.constructor)
             
     /*protected*/ public: Image* createImage(Object* key, InputStream* inputStream);
     /*protected*/ public: Image* createImage(const std::string& key, InputStream* inputStream) { return createImage(JavaString::box(key), inputStream); }
+    /*protected*/ public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> Image* createImage(BoxValue key, InputStream* inputStream) { return createImage(JavaBoxes::toObject(key), inputStream); }
 
     public: bool isLazy();
 

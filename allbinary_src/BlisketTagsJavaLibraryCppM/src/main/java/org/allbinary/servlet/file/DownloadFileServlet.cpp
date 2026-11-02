@@ -131,6 +131,23 @@ DownloadFileServlet::DownloadFileServlet() : logUtil(LogUtil::getInstance()), co
             ;;
     
 
+        {
+        
+        auto finallyFunction_N66338 = [&]() {
+            StreamUtil::getInstance()->close(response->getOutputStream());
+    
+
+                        if(!StreamUtil::getInstance()->close(inputStream))
+                        
+                                    {
+                                    
+                                    }
+                                
+
+        };
+        
+        struct FinallyGuard_N66338 { decltype(finallyFunction_N66338)& function; ~FinallyGuard_N66338() { function(); } } finallyGuard_N66338{finallyFunction_N66338};
+        
         try {
             BlisketServletUtil::getInstance()->init(request);
     
@@ -275,19 +292,8 @@ response->sendError(HttpServletResponse::SC_NOT_FOUND);
     
 }
 
-         finally {
-            StreamUtil::getInstance()->close(response->getOutputStream());
-    
+        }
 
-                        if(!StreamUtil::getInstance()->close(inputStream))
-                        
-                                    {
-                                    
-                                    }
-                                
-
-         }
-        
 }
 
 

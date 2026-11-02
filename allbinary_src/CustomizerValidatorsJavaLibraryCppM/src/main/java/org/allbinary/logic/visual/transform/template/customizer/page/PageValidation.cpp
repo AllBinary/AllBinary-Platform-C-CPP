@@ -132,7 +132,7 @@ this->title= new TitleValidation(hashMap);
                                     }
                                 
 
-                        if(!this->title->isValid().valueOf())
+                        if(!this->title->isValid())
                         
                                     {
                                     valid= Boolean::FALSE;
@@ -186,7 +186,7 @@ this->title= new TitleValidation(hashMap);
     StringMaker* stringBuffer = new StringMaker();;
     
 
-                        if(!this->title->isValid().valueOf())
+                        if(!this->title->isValid())
                         
                                     {
                                     stringBuffer->append(this->title->validationInfo());

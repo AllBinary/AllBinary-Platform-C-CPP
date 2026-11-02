@@ -133,6 +133,16 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->IN
     OutputStream* fileOutputStream = this->NULL_OUTPUT_STREAM;;
     
 
+        {
+        
+        auto finallyFunction_N66496 = [&]() {
+            StreamUtil::getInstance()->close(fileOutputStream);
+    
+
+        };
+        
+        struct FinallyGuard_N66496 { decltype(finallyFunction_N66496)& function; ~FinallyGuard_N66496() { function(); } } finallyGuard_N66496{finallyFunction_N66496};
+        
         try {
             
     ResourceUtil* resourceUtil = ResourceUtil::getInstance();;
@@ -189,12 +199,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->IN
     
 }
 
-         finally {
-            StreamUtil::getInstance()->close(fileOutputStream);
-    
+        }
 
-         }
-        
 }
 
 

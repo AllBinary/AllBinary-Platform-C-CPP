@@ -130,7 +130,7 @@ params[0]= hashMap;
 params[1]= pageContext;
     
 
-    Object* anyType = AbeFactory::getInstance()->getInstance(abeClientInformation, className, classes, params);;
+    Object* anyType = JavaBoxes::toObject(AbeFactory::getInstance()->getInstance(abeClientInformation, className, classes, params));;
     
 
 
@@ -199,9 +199,9 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "getInstance(HashMap)", &e);
                         
                                     {
                                     
-    Object* anyType = AbeFactory::getInstance()->getInstance(abeClientInformation, className, 
+    Object* anyType = JavaBoxes::toObject(AbeFactory::getInstance()->getInstance(abeClientInformation, className, 
                             nullptr, 
-                            nullptr);;
+                            nullptr));;
     
 
 

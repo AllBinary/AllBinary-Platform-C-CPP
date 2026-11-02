@@ -84,6 +84,7 @@ public: XmlRpcRemoteLicenseRegistrationClient(AbeClientInformationInterface* cli
             
     public: Object* get(Object* anyType, CryptInterface* cryptInterface);
     public: Object* get(const std::string& anyType, CryptInterface* cryptInterface) { return get(JavaString::box(anyType), cryptInterface); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> Object* get(BoxValue anyType, CryptInterface* cryptInterface) { return get(JavaBoxes::toObject(anyType), cryptInterface); }
 
 };
 

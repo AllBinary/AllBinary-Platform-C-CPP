@@ -145,7 +145,7 @@ this->point= new Point();
                                     
     std::string buttons = DomNodeHelper::getTextNodeValue(childNode);;
     
-this->setButtonClicks(Integer.valueOf(buttons)->intValue());
+this->setButtonClicks(JavaBoxes::value<int32_t>(Integer.valueOf(buttons)));
     
 
                                     }

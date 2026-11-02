@@ -73,11 +73,13 @@ class OSGIActivatorUtil
             
     public: static void registerAsService(BundleContext* bundleContext, Object* anyType, std::string serviceName);
     public: static void registerAsService(BundleContext* bundleContext, const std::string& anyType, std::string serviceName) { return registerAsService(bundleContext, JavaString::box(anyType), serviceName); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> static void registerAsService(BundleContext* bundleContext, BoxValue anyType, std::string serviceName) { return registerAsService(bundleContext, JavaBoxes::toObject(anyType), serviceName); }
 
                 //@Throws(Exception.constructor)
             
     public: static void registerAsService(BundleContext* bundleContext, Object* anyType, std::string serviceName, ABHashtable<Object*, Object*>* properties);
     public: static void registerAsService(BundleContext* bundleContext, const std::string& anyType, std::string serviceName, ABHashtable<Object*, Object*>* properties) { return registerAsService(bundleContext, JavaString::box(anyType), serviceName, properties); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> static void registerAsService(BundleContext* bundleContext, BoxValue anyType, std::string serviceName, ABHashtable<Object*, Object*>* properties) { return registerAsService(bundleContext, JavaBoxes::toObject(anyType), serviceName, properties); }
 
 private: OSGIActivatorUtil();
 

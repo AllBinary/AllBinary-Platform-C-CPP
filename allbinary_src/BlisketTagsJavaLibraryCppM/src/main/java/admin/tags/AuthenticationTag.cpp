@@ -162,7 +162,7 @@ this->roles= values;
 
         try {
             
-    Object* anyType = (new AuthenticationRequestHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext);;
+    Object* anyType = JavaBoxes::toObject((new AuthenticationRequestHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext));;
     
 
     Class* addressHelperClass = anyType->getClass();;
@@ -221,7 +221,7 @@ this->roles= values;
 
         try {
             
-    Object* anyType = (new AuthenticationRequestHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext);;
+    Object* anyType = JavaBoxes::toObject((new AuthenticationRequestHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext));;
     
 
     Class* addressHelperClass = anyType->getClass();;
@@ -280,7 +280,7 @@ this->roles= values;
 
         try {
             
-    Object* anyType = (new AuthenticationHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext);;
+    Object* anyType = JavaBoxes::toObject((new AuthenticationHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext));;
     
 
     Class* addressHelperClass = anyType->getClass();;
@@ -339,7 +339,7 @@ this->roles= values;
 
         try {
             
-    Object* anyType = (new AuthenticationHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext);;
+    Object* anyType = JavaBoxes::toObject((new AuthenticationHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext));;
     
 
     Class* helperClass = anyType->getClass();;
@@ -398,7 +398,7 @@ this->roles= values;
 
         try {
             
-    Object* anyType = (new AuthenticationRequestHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext);;
+    Object* anyType = JavaBoxes::toObject((new AuthenticationRequestHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext));;
     
 
     Class* addressHelperClass = anyType->getClass();;
@@ -467,7 +467,7 @@ this->roles= values;
 
         try {
             
-    Object* anyType = (new AuthenticationHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext);;
+    Object* anyType = JavaBoxes::toObject((new AuthenticationHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext));;
     
 
     Class* addressHelperClass = anyType->getClass();;
@@ -529,7 +529,7 @@ this->roles= values;
 
         try {
             
-    Object* anyType = (new AuthenticationHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext);;
+    Object* anyType = JavaBoxes::toObject((new AuthenticationHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext));;
     
 
     Class* addressHelperClass = anyType->getClass();;
@@ -591,7 +591,7 @@ this->roles= values;
 
         try {
             
-    Object* anyType = (new AuthenticationHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext);;
+    Object* anyType = JavaBoxes::toObject((new AuthenticationHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext));;
     
 
     Class* addressHelperClass = anyType->getClass();;
@@ -660,7 +660,7 @@ this->roles= values;
 
         try {
             
-    Object* anyType = (new AuthenticationHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext);;
+    Object* anyType = JavaBoxes::toObject((new AuthenticationHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext));;
     
 
     Class* helperClass = anyType->getClass();;
@@ -729,7 +729,7 @@ this->roles= values;
 
         try {
             
-    Object* anyType = (new AuthenticationHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext);;
+    Object* anyType = JavaBoxes::toObject((new AuthenticationHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext));;
     
 
     Class* addressHelperClass = anyType->getClass();;

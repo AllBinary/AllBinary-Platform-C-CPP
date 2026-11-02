@@ -127,6 +127,16 @@ DomDocumentFileHelper::DomDocumentFileHelper(){
             ;;
     
 
+        {
+        
+        auto finallyFunction_N66116 = [&]() {
+            StreamUtil::getInstance()->close(dataOutputStream);
+    
+
+        };
+        
+        struct FinallyGuard_N66116 { decltype(finallyFunction_N66116)& function; ~FinallyGuard_N66116() { function(); } } finallyGuard_N66116{finallyFunction_N66116};
+        
         try {
             
     TransformerFactory* copyTransformerFactory = TransformerFactory::newInstance();;
@@ -168,12 +178,8 @@ dataOutputStream->flush();
                     
 }
 
-         finally {
-            StreamUtil::getInstance()->close(dataOutputStream);
-    
+        }
 
-         }
-        
 }
 
 

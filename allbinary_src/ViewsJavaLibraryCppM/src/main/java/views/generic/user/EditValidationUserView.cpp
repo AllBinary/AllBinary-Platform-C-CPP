@@ -160,7 +160,7 @@ this->userName= this->getWeblisketSession()->getUserName();
     StringMaker* stringBuffer = new StringMaker();;
     
 
-                        if(UserName::getInstance()->isValid(this->userName).valueOf())
+                        if(UserName::getInstance()->isValid(this->userName))
                         
                                     {
                                     

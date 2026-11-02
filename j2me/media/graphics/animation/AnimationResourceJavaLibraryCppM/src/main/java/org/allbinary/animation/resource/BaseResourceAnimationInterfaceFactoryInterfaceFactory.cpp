@@ -159,7 +159,7 @@ this->hashtable->put(resource, animationInterfaceFactoryInterface);
             
     auto BaseResourceAnimationInterfaceFactoryInterfaceFactory::getBasicAnimationInterfaceFactoryInstance(std::string resource) -> BasicAnimationInterfaceFactoryInterface*{
 
-    Object* basicAnimationInterfaceFactoryInterfaceCanBeNull = this->hashtable->get(resource);;
+    Object* basicAnimationInterfaceFactoryInterfaceCanBeNull = JavaBoxes::toObject(this->hashtable->get(resource));;
     
 
                         if(basicAnimationInterfaceFactoryInterfaceCanBeNull == 
@@ -189,7 +189,7 @@ this->hashtable->put(resource, animationInterfaceFactoryInterface);
             
     auto BaseResourceAnimationInterfaceFactoryInterfaceFactory::getRectangle(std::string resource) -> Rectangle*{
 
-    Object* rectangleCanBeNull = this->rectangleHashtable->get(resource);;
+    Object* rectangleCanBeNull = JavaBoxes::toObject(this->rectangleHashtable->get(resource));;
     
 
                         if(rectangleCanBeNull == 
@@ -227,7 +227,7 @@ this->rectangleHashtable->put(resource, rectangle);
             
     auto BaseResourceAnimationInterfaceFactoryInterfaceFactory::getRectangleArrayOfArrays(std::string resource) -> std::vector<std::vector<Rectangle*>>{
 
-    Object* valueCanBeNull = this->rectangleArrayOfArraysHashtable->get(resource);;
+    Object* valueCanBeNull = JavaBoxes::toObject(this->rectangleArrayOfArraysHashtable->get(resource));;
     
 
                         if(valueCanBeNull != 

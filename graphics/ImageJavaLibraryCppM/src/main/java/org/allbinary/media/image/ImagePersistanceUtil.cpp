@@ -120,18 +120,26 @@ ImagePersistanceUtil* ImagePersistanceUtil::instance = ImagePersistanceUtil::ins
     AbFileOutputStream* fileOutputStream = AbFileOutputStream::createFromAbFile(file);;
     
 
-        try {
-            batikPNGImageWriter->writeImage(bufferedImage, fileOutputStream);
-    
-
-         finally {
+        {
+        
+        auto finallyFunction_N66301 = [&]() {
             fileOutputStream->flush();
     
 StreamUtil::getInstance()->close(fileOutputStream);
     
 
-         }
+        };
         
+        struct FinallyGuard_N66301 { decltype(finallyFunction_N66301)& function; ~FinallyGuard_N66301() { function(); } } finallyGuard_N66301{finallyFunction_N66301};
+        
+        {
+            batikPNGImageWriter->writeImage(bufferedImage, fileOutputStream);
+    
+
+        }
+
+        }
+
 this->logUtil->putF(JavaString::valueOf("Wrote Image: ") +JavaString::valueOf(file->getAbsolutePath()), this, this->commonStrings->SAVE);
     
 }
@@ -155,54 +163,9 @@ this->saveWithImageIO(new File(filePath), bufferedImage);
             ;;
     
 
-        try {
-            
-    Iterator* iter = ImageIO::getImageWritersByFormatName("jpeg");;
-    
-
-                        if(!iter->hasNext())
-                        
-                                    {
-                                    this->logUtil->putF("Unable to save image to jpeg file type.", this, this->commonStrings->SAVE);
-    
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ;
-    
-
-                                    }
-                                
-writer= dynamic_cast<ImageWriter*>(iter->next());
-    
-ios= ImageIO::createImageOutputStream(file);
-    
-writer->setOutput(ios);
-    
-
-    ImageWriteParam* iwp = writer->getDefaultWriteParam();;
-    
-iwp->setCompressionMode(ImageWriteParam::MODE_EXPLICIT);
-    
-iwp->setCompressionQuality(0.95);
-    
-writer->write(
-                            nullptr, new IIOImage(bufferedImage, 
-                            nullptr, 
-                            nullptr), iwp);
-    
-this->logUtil->putF(JavaString::valueOf("Wrote Image: ") +JavaString::valueOf(file->getAbsolutePath()), this, this->commonStrings->SAVE);
-    
-
-                //: 
-} catch(Exception& e) 
-            {
-this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->SAVE, &e);
-    
-}
-
-         finally {
+        {
+        
+        auto finallyFunction_N66766 = [&]() {
             
         try {
             
@@ -259,8 +222,59 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->SA
 }
 
 
-         }
+        };
         
+        struct FinallyGuard_N66766 { decltype(finallyFunction_N66766)& function; ~FinallyGuard_N66766() { function(); } } finallyGuard_N66766{finallyFunction_N66766};
+        
+        try {
+            
+    Iterator* iter = ImageIO::getImageWritersByFormatName("jpeg");;
+    
+
+                        if(!iter->hasNext())
+                        
+                                    {
+                                    this->logUtil->putF("Unable to save image to jpeg file type.", this, this->commonStrings->SAVE);
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return ;
+    
+
+                                    }
+                                
+writer= dynamic_cast<ImageWriter*>(iter->next());
+    
+ios= ImageIO::createImageOutputStream(file);
+    
+writer->setOutput(ios);
+    
+
+    ImageWriteParam* iwp = writer->getDefaultWriteParam();;
+    
+iwp->setCompressionMode(ImageWriteParam::MODE_EXPLICIT);
+    
+iwp->setCompressionQuality(0.95);
+    
+writer->write(
+                            nullptr, new IIOImage(bufferedImage, 
+                            nullptr, 
+                            nullptr), iwp);
+    
+this->logUtil->putF(JavaString::valueOf("Wrote Image: ") +JavaString::valueOf(file->getAbsolutePath()), this, this->commonStrings->SAVE);
+    
+
+                //: 
+} catch(Exception& e) 
+            {
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->SAVE, &e);
+    
+}
+
+        }
+
 }
 
 

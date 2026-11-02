@@ -86,6 +86,7 @@ class ImageFactory
             
     public: Image* createImageFromInputStream(Object* key, InputStream* inputStream);
     public: Image* createImageFromInputStream(const std::string& key, InputStream* inputStream) { return createImageFromInputStream(JavaString::box(key), inputStream); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> Image* createImageFromInputStream(BoxValue key, InputStream* inputStream) { return createImageFromInputStream(JavaBoxes::toObject(key), inputStream); }
 
                 //@Throws(Exception.constructor)
             

@@ -69,6 +69,7 @@ class ComparableObject
         
     public: int32_t compareTo(Object* anyType);
     public: int32_t compareTo(const std::string& anyType) { return compareTo(JavaString::box(anyType)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> int32_t compareTo(BoxValue anyType) { return compareTo(JavaBoxes::toObject(anyType)); }
 
 };
 

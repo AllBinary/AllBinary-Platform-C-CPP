@@ -106,7 +106,7 @@ this->myFontProcessor->process(graphics);
 
     int32_t width = this->displayInfoSingleton->getLast()[this->displayInfoSingleton->WIDTH];;
     
-graphics->setColor(this->getBasicColorP()->intValue());
+graphics->setColor(JavaBoxes::value<int32_t>(this->getBasicColorP()));
     
 graphics->drawString(this->text, (width>>1) -this->topScoresWidth, this->fontHeight, this->anchor);
     

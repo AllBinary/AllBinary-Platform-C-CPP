@@ -95,7 +95,7 @@ CategoryHierarchy::CategoryHierarchy(CategoryInterface* rootCategoryInterface, C
 
     std::string levelString = StringUtil::getInstance()->getNonNull(JavaBoxes::unbox<std::string>(categoryPropertiesHashMap->get(CategoryData::getInstance()->LEVEL)));;
     
-this->level= Integer.valueOf(levelString)->intValue();
+this->level= JavaBoxes::value<int32_t>(Integer.valueOf(levelString));
     
 this->setRoot(rootCategoryInterface);
     

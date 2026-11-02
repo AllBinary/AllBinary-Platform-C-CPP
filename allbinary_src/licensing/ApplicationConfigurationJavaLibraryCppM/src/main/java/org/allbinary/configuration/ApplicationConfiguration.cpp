@@ -261,6 +261,16 @@ this->logUtil->putF(JavaString::valueOf("Read Configuration: ") +JavaString::val
     Closeable* closeable = NullCloseable::NULL_CLOSEABLE;;
     
 
+        {
+        
+        auto finallyFunction_N67597 = [&]() {
+            StreamUtil::getInstance()->close(closeable);
+    
+
+        };
+        
+        struct FinallyGuard_N67597 { decltype(finallyFunction_N67597)& function; ~FinallyGuard_N67597() { function(); } } finallyGuard_N67597{finallyFunction_N67597};
+        
         try {
             this->logUtil->putF(JavaString::valueOf("Write Configuration: ") +JavaString::valueOf(this->toString()), this, "write");
     
@@ -333,12 +343,8 @@ dataOutputStream->flush();
                     
 }
 
-         finally {
-            StreamUtil::getInstance()->close(closeable);
-    
+        }
 
-         }
-        
 }
 
 

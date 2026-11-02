@@ -90,7 +90,7 @@ classes[0]=
 params[0]= databaseConnectionInfoInterface;
     
 
-    Object* anyType = AbeFactory::getInstance()->getInstance(abeClientInformation, CLASSNAME, classes, params);;
+    Object* anyType = JavaBoxes::toObject(AbeFactory::getInstance()->getInstance(abeClientInformation, CLASSNAME, classes, params));;
     
 
 
@@ -105,9 +105,9 @@ params[0]= databaseConnectionInfoInterface;
             
     auto InitDbHelperFactory::getInstance(AbeClientInformationInterface* abeClientInformation) -> Object*{
 
-    Object* anyType = AbeFactory::getInstance()->getInstance(abeClientInformation, CLASSNAME, 
+    Object* anyType = JavaBoxes::toObject(AbeFactory::getInstance()->getInstance(abeClientInformation, CLASSNAME, 
                             nullptr, 
-                            nullptr);;
+                            nullptr));;
     
 
 

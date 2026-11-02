@@ -106,6 +106,7 @@ class TransformInfoInterface: public TableMappingInterface {
 
     public: virtual void setObject(Object* anyType) = 0;
     public: void setObject(const std::string& anyType) { return setObject(JavaString::box(anyType)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void setObject(BoxValue anyType) { return setObject(JavaBoxes::toObject(anyType)); }
 
                 //@Throws(Exception.constructor)
             

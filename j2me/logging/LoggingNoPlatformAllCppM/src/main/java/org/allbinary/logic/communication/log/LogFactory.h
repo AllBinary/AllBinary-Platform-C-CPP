@@ -70,6 +70,7 @@ class LogFactory
 
     public: static Log* getInstanceF(std::string specialMessage, Object* anyType, std::string functionName);
     public: static Log* getInstanceF(std::string specialMessage, const std::string& anyType, std::string functionName) { return getInstanceF(specialMessage, JavaString::box(anyType), functionName); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> static Log* getInstanceF(std::string specialMessage, BoxValue anyType, std::string functionName) { return getInstanceF(specialMessage, JavaBoxes::toObject(anyType), functionName); }
 
 };
 

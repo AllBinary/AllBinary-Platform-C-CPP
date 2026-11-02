@@ -78,11 +78,13 @@ class LogFormatUtil
 
     public: std::string get(std::string className, std::string functionName, std::string specialMessage, Object* exception);
     public: std::string get(std::string className, std::string functionName, std::string specialMessage, const std::string& exception) { return get(className, functionName, specialMessage, JavaString::box(exception)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> std::string get(std::string className, std::string functionName, std::string specialMessage, BoxValue exception) { return get(className, functionName, specialMessage, JavaBoxes::toObject(exception)); }
 
     public: std::string getS(std::string className, std::string functionName, std::string specialMessage);
 
     public: std::string getO(Object* exception);
     public: std::string getO(const std::string& exception) { return getO(JavaString::box(exception)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> std::string getO(BoxValue exception) { return getO(JavaBoxes::toObject(exception)); }
 
 };
 

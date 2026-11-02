@@ -308,7 +308,7 @@ this->typeVector->add(this->CATEGORY);
                         
                                     {
                                     
-    Object* anyType = this->childCategoryVector->get(index);;
+    Object* anyType = JavaBoxes::toObject(this->childCategoryVector->get(index));;
     
 
     CategoryInterface* currentCategoryInterface = dynamic_cast<CategoryInterface*>(anyType);;
@@ -352,7 +352,7 @@ this->removal(removalVector);
     int32_t index = 0;index < removalSize; index++)
         {
 
-    Object* anyType = removalVector->get(index);;
+    Object* anyType = JavaBoxes::toObject(removalVector->get(index));;
     
 
     int32_t objectIndex = this->childCategoryVector->indexOf(anyType);;
@@ -385,7 +385,7 @@ this->childCategoryVector->remove(objectIndex);
     int32_t index = 0;index < size; index++)
         {
 
-    Object* anyType = this->childCategoryVector->get(index);;
+    Object* anyType = JavaBoxes::toObject(this->childCategoryVector->get(index));;
     
 
                         if(this->PROPERTIES == this->typeVector->get(index))
@@ -531,7 +531,7 @@ this->categoryHierarchyInterface= categoryHierarchyInterface;
 
     auto Category::isValid() -> bool{
 
-                        if(!this->categoryPropertiesInterface->isValid().valueOf())
+                        if(!this->categoryPropertiesInterface->isValid())
                         
                                     {
                                     
@@ -554,7 +554,7 @@ this->categoryHierarchyInterface= categoryHierarchyInterface;
     int32_t index = 0;index < size; index++)
         {
 
-    Object* anyType = this->childCategoryVector->get(index);;
+    Object* anyType = JavaBoxes::toObject(this->childCategoryVector->get(index));;
     
 
                         if(this->PROPERTIES == this->typeVector->get(index))
@@ -564,7 +564,7 @@ this->categoryHierarchyInterface= categoryHierarchyInterface;
     CategoryPropertiesInterface* categoryPropertiesInterface = dynamic_cast<CategoryPropertiesInterface*>(anyType);;
     
 
-                        if(!categoryPropertiesInterface->isValid().valueOf())
+                        if(!categoryPropertiesInterface->isValid())
                         
                                     {
                                     
@@ -587,7 +587,7 @@ this->categoryHierarchyInterface= categoryHierarchyInterface;
     CategoryInterface* categoryInterface = dynamic_cast<CategoryInterface*>(anyType);;
     
 
-                        if(!categoryInterface->isValid().valueOf())
+                        if(!categoryInterface->isValid())
                         
                                     {
                                     

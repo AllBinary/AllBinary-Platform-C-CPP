@@ -134,7 +134,7 @@ xmlRpcClient->setBasicAuthentication(
 param->add(hashtable);
     
 
-    Object* result = xmlRpcClient->execute(this->getRemoteMethod(), param, this->noCrypt);;
+    Object* result = JavaBoxes::toObject(xmlRpcClient->execute(this->getRemoteMethod(), param, this->noCrypt));;
     
 System.out.println(CommonLabels::getInstance()->RESULT_ +CommonSeps::getInstance()->NEW_LINE +result->toString());
     

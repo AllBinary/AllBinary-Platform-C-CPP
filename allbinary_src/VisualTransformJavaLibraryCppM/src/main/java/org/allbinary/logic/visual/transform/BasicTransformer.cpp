@@ -141,6 +141,18 @@ this->setTemplateAsInputStream();
             ;;
     
 
+        {
+        
+        auto finallyFunction_N66538 = [&]() {
+            this->streamUtil->close(outputStream);
+    
+this->streamUtil->close(inputStream);
+    
+
+        };
+        
+        struct FinallyGuard_N66538 { decltype(finallyFunction_N66538)& function; ~FinallyGuard_N66538() { function(); } } finallyGuard_N66538{finallyFunction_N66538};
+        
         try {
             outputStream= new ByteArrayOutputStream();
     
@@ -200,14 +212,8 @@ this->logUtil->put(stringBuffer->toString(), this, "setEncryptedTemplateFileAsIn
                     
 }
 
-         finally {
-            this->streamUtil->close(outputStream);
-    
-this->streamUtil->close(inputStream);
-    
+        }
 
-         }
-        
 }
 
 
@@ -225,6 +231,18 @@ this->streamUtil->close(inputStream);
             ;;
     
 
+        {
+        
+        auto finallyFunction_N67901 = [&]() {
+            this->streamUtil->close(outputStream);
+    
+this->streamUtil->close(inputStream);
+    
+
+        };
+        
+        struct FinallyGuard_N67901 { decltype(finallyFunction_N67901)& function; ~FinallyGuard_N67901() { function(); } } finallyGuard_N67901{finallyFunction_N67901};
+        
         try {
             outputStream= new ByteArrayOutputStream();
     
@@ -271,14 +289,8 @@ this->setURIResolver(dynamic_cast<URIResolver*>(new BasicUriResolver(TransformIn
                     
 }
 
-         finally {
-            this->streamUtil->close(outputStream);
-    
-this->streamUtil->close(inputStream);
-    
+        }
 
-         }
-        
 }
 
 
@@ -296,6 +308,18 @@ this->streamUtil->close(inputStream);
             ;;
     
 
+        {
+        
+        auto finallyFunction_N69089 = [&]() {
+            this->streamUtil->close(outputStream);
+    
+this->streamUtil->close(inputStream);
+    
+
+        };
+        
+        struct FinallyGuard_N69089 { decltype(finallyFunction_N69089)& function; ~FinallyGuard_N69089() { function(); } } finallyGuard_N69089{finallyFunction_N69089};
+        
         try {
             
                         if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORY))
@@ -518,14 +542,8 @@ stringBuffer->append(transformInfoTemplateData->ENCRYPTED_EXTENSION);
                     
 }
 
-         finally {
-            this->streamUtil->close(outputStream);
-    
-this->streamUtil->close(inputStream);
-    
+        }
 
-         }
-        
 
 
 

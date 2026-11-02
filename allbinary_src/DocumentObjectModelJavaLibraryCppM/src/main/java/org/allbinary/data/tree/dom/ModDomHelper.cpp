@@ -245,7 +245,7 @@ newNode->appendChild(ModDomHelper::createIndexNode(document, index));
     std::string name = JavaBoxes::unbox<std::string>(objectKey);;
     
 
-    Object* anyType = hashMap->get(objectKey);;
+    Object* anyType = JavaBoxes::toObject(hashMap->get(objectKey));;
     
 
                         if(anyType == 
@@ -417,7 +417,7 @@ node->appendChild(ModDomHelper::createNameValueIndexNodes(document, duplicateNod
     std::string name = JavaBoxes::unbox<std::string>(keyArray[i]);;
     
 
-    Object* anyType = hashMap->get(name);;
+    Object* anyType = JavaBoxes::toObject(hashMap->get(name));;
     
 
     std::string value = stringUtil->getNonNull(JavaBoxes::unbox<std::string>(anyType));;

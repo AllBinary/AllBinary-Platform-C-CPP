@@ -878,7 +878,7 @@ item->paintXY(graphics, x, y);
 
     int32_t height = item->getMinimumHeight();;
     
-graphics->setColor(this->getButtonBasicColor()->intValue());
+graphics->setColor(JavaBoxes::value<int32_t>(this->getButtonBasicColor()));
     
 
     int32_t adjustedBorder = 3;;
@@ -897,7 +897,7 @@ graphics->drawRect(x -this->halfBorder -adjustedBorder, y -this->halfBorder -adj
                 //@Throws(Exception.constructor)
             
     auto ScrollSelectionForm::paintUnselectedItem(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t x, int32_t y) -> int32_t{
-graphics->setColor(this->getButtonBasicColor()->intValue());
+graphics->setColor(JavaBoxes::value<int32_t>(this->getButtonBasicColor()));
     
 item->paintUnselected(graphics, x, y);
     

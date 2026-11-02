@@ -194,6 +194,27 @@ this->clear();
     RecordStore* recordStore = NullRecordStore::NULL_RECORD_STORE;;
     
 
+        {
+        
+        auto finallyFunction_N67232 = [&]() {
+            
+                        if(recordStore != 
+                                    nullptr
+                                )
+                        
+                                    {
+                                    PreLogUtil::put("Closing RecordStore", this, this->commonStrings->delete_);
+    
+recordStore->closeRecordStore();
+    
+
+                                    }
+                                
+
+        };
+        
+        struct FinallyGuard_N67232 { decltype(finallyFunction_N67232)& function; ~FinallyGuard_N67232() { function(); } } finallyGuard_N67232{finallyFunction_N67232};
+        
         try {
             this->logUtil->putF((new StringMaker())->append("Deleting: ")->appendint(deleteId)->toString(), this, this->commonStrings->delete_);
     
@@ -212,23 +233,8 @@ recordStore->deleteRecord(deleteId);
                     
 }
 
-         finally {
-            
-                        if(recordStore != 
-                                    nullptr
-                                )
-                        
-                                    {
-                                    PreLogUtil::put("Closing RecordStore", this, this->commonStrings->delete_);
-    
-recordStore->closeRecordStore();
-    
+        }
 
-                                    }
-                                
-
-         }
-        
 }
 
 
@@ -247,6 +253,37 @@ recordStore->closeRecordStore();
     RecordStore* recordStore = NullRecordStore::NULL_RECORD_STORE;;
     
 
+        {
+        
+        auto finallyFunction_N67779 = [&]() {
+            
+        try {
+            
+                        if(recordStore != 
+                                    nullptr
+                                )
+                        
+                                    {
+                                    PreLogUtil::put("Closing RecordStore", this, this->commonStrings->LOAD);
+    
+recordStore->closeRecordStore();
+    
+
+                                    }
+                                
+
+                //: 
+} catch(RecordStoreException& e) 
+            {
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->LOAD, &e);
+    
+}
+
+
+        };
+        
+        struct FinallyGuard_N67779 { decltype(finallyFunction_N67779)& function; ~FinallyGuard_N67779() { function(); } } finallyGuard_N67779{finallyFunction_N67779};
+        
         try {
             
                         if(this->name == StringUtil::getInstance()->EMPTY_STRING)
@@ -310,33 +347,8 @@ this->logUtil->putF((new StringMaker())->append(this->commonStrings->EXCEPTION_L
     
 }
 
-         finally {
-            
-        try {
-            
-                        if(recordStore != 
-                                    nullptr
-                                )
-                        
-                                    {
-                                    PreLogUtil::put("Closing RecordStore", this, this->commonStrings->LOAD);
-    
-recordStore->closeRecordStore();
-    
+        }
 
-                                    }
-                                
-
-                //: 
-} catch(RecordStoreException& e) 
-            {
-this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->LOAD, &e);
-    
-}
-
-
-         }
-        
 
 
 
@@ -351,6 +363,37 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->LO
     RecordStore* recordStore = NullRecordStore::NULL_RECORD_STORE;;
     
 
+        {
+        
+        auto finallyFunction_N69188 = [&]() {
+            
+        try {
+            
+                        if(recordStore != 
+                                    nullptr
+                                )
+                        
+                                    {
+                                    PreLogUtil::put("Closing RecordStore", this, this->commonStrings->SAVE);
+    
+recordStore->closeRecordStore();
+    
+
+                                    }
+                                
+
+                //: 
+} catch(RecordStoreException& e) 
+            {
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->SAVE, &e);
+    
+}
+
+
+        };
+        
+        struct FinallyGuard_N69188 { decltype(finallyFunction_N69188)& function; ~FinallyGuard_N69188() { function(); } } finallyGuard_N69188{finallyFunction_N69188};
+        
         try {
             this->logUtil->putF((new StringMaker())->append("Saving: ")->append(name)->toString(), this, this->commonStrings->SAVE);
     
@@ -379,33 +422,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->SA
     
 }
 
-         finally {
-            
-        try {
-            
-                        if(recordStore != 
-                                    nullptr
-                                )
-                        
-                                    {
-                                    PreLogUtil::put("Closing RecordStore", this, this->commonStrings->SAVE);
-    
-recordStore->closeRecordStore();
-    
+        }
 
-                                    }
-                                
-
-                //: 
-} catch(RecordStoreException& e) 
-            {
-this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->SAVE, &e);
-    
-}
-
-
-         }
-        
 }
 
 

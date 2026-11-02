@@ -222,7 +222,7 @@ keysAndValues->put(transformInfoData->NAME, name);
                         
                                     {
                                     
-    Object* anyType = hashMap->get(transformInfoData->OBJECTCONFIG);;
+    Object* anyType = JavaBoxes::toObject(hashMap->get(transformInfoData->OBJECTCONFIG));;
     
 
                         if(anyType != 
@@ -239,7 +239,7 @@ hashMap->put(transformInfoData->OBJECTCONFIG, decode.toCharArray());
                                     }
                                 
 
-    Object* objectData = hashMap->get(transformInfoData->DATA);;
+    Object* objectData = JavaBoxes::toObject(hashMap->get(transformInfoData->DATA));;
     
 
                         if(objectData != 

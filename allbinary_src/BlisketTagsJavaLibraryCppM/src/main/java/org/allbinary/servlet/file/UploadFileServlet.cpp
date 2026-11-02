@@ -145,6 +145,30 @@ UploadFileServlet::UploadFileServlet() : logUtil(LogUtil::getInstance()), common
             ;;
     
 
+        {
+        
+        auto finallyFunction_N66502 = [&]() {
+            
+                        if(!isError)
+                        
+                                    {
+                                    StreamUtil::getInstance()->close(response->getOutputStream());
+    
+
+                                    }
+                                
+
+                        if(!StreamUtil::getInstance()->close(inputStream))
+                        
+                                    {
+                                    
+                                    }
+                                
+
+        };
+        
+        struct FinallyGuard_N66502 { decltype(finallyFunction_N66502)& function; ~FinallyGuard_N66502() { function(); } } finallyGuard_N66502{finallyFunction_N66502};
+        
         try {
             BlisketServletUtil::getInstance()->init(request);
     
@@ -231,26 +255,8 @@ response->sendError(HttpServletResponse::SC_NOT_FOUND);
     
 }
 
-         finally {
-            
-                        if(!isError)
-                        
-                                    {
-                                    StreamUtil::getInstance()->close(response->getOutputStream());
-    
+        }
 
-                                    }
-                                
-
-                        if(!StreamUtil::getInstance()->close(inputStream))
-                        
-                                    {
-                                    
-                                    }
-                                
-
-         }
-        
 }
 
 
@@ -263,7 +269,26 @@ response->sendError(HttpServletResponse::SC_NOT_FOUND);
             ;;
     
 
-        try {
+        {
+        
+        auto finallyFunction_N67807 = [&]() {
+            
+                        if(fileOutputStream != 
+                                    nullptr
+                                )
+                        
+                                    {
+                                    fileOutputStream->close();
+    
+
+                                    }
+                                
+
+        };
+        
+        struct FinallyGuard_N67807 { decltype(finallyFunction_N67807)& function; ~FinallyGuard_N67807() { function(); } } finallyGuard_N67807{finallyFunction_N67807};
+        
+        {
             
     FileItem* fileItem = dynamic_cast<FileItem*>(this->requestHashMap->get(FileUploadData::getInstance()->FILE_DATA));;
     
@@ -331,21 +356,10 @@ fileOutputStream->write(byteArray);
                                     }
                                 
 
-         finally {
-            
-                        if(fileOutputStream != 
-                                    nullptr
-                                )
-                        
-                                    {
-                                    fileOutputStream->close();
-    
+        }
 
-                                    }
-                                
+        }
 
-         }
-        
 }
 
 

@@ -109,7 +109,7 @@ propertiesHashMap->put("Subject", this->subject);
 propertiesHashMap->put("Body", this->body);
     
 
-    Object* anyType = (new BasicTextEmailHelperFactory())->getInstance(propertiesHashMap, this->pageContext);;
+    Object* anyType = JavaBoxes::toObject((new BasicTextEmailHelperFactory())->getInstance(propertiesHashMap, this->pageContext));;
     
 
     Method* method = anyType->getClass()->getMethod("send", 

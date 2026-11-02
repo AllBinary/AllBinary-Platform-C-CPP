@@ -79,13 +79,13 @@ LogUtil::LogUtil() : logFormatUtil(LogFormatUtil::getInstance()){
     std::string specialMessage = log->getSpecialMessage();;
     
 
-    Object* anyType = log->getObject();;
+    Object* anyType = JavaBoxes::toObject(log->getObject());;
     
 
     std::string functionName = log->getFunctionName();;
     
 
-    Object* exception = log->getThrowable();;
+    Object* exception = JavaBoxes::toObject(log->getThrowable());;
     
 
                         if(log != 

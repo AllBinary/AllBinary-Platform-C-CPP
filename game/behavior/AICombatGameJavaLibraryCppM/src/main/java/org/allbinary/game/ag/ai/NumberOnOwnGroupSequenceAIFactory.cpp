@@ -111,7 +111,7 @@ NumberOnOwnGroupSequenceAIFactory::NumberOnOwnGroupSequenceAIFactory() : logUtil
     int32_t index = 0;index < integerArray.size(); index++)
         {
 
-    Object* integerCanBeNull = hashtable->get(integerArray[index]);;
+    Object* integerCanBeNull = JavaBoxes::toObject(hashtable->get(integerArray[index]));;
     
 
                         if(integerCanBeNull == 

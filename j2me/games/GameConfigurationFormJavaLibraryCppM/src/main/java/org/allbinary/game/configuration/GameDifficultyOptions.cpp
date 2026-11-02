@@ -254,7 +254,7 @@ choiceGroup->setSelectedIndex(id, true);
     ChoiceGroup* choiceGroup = dynamic_cast<ChoiceGroup*>(this->get(0));;
     
 
-    int32_t value = Integer.valueOf(choiceGroup->getString(choiceGroup->getSelectedIndex()))->intValue();;
+    int32_t value = JavaBoxes::value<int32_t>(Integer.valueOf(choiceGroup->getString(choiceGroup->getSelectedIndex())));;
     
 
 

@@ -97,7 +97,7 @@ InventoryTag::InventoryTag() : StoreValidationTransformTag(), logUtil(LogUtil::g
 
         try {
             
-    Object* anyType = (new InventoryHelperFactory())->getInstance(this->getPropertiesHashMap(), this->pageContext);;
+    Object* anyType = JavaBoxes::toObject((new InventoryHelperFactory())->getInstance(this->getPropertiesHashMap(), this->pageContext));;
     
 
     Class* addressHelperClass = anyType->getClass();;
@@ -170,7 +170,7 @@ pageContext.getOut()->print(JavaString::valueOf(JavaString::valueOf("Exception: 
 
         try {
             
-    Object* anyType = (new InventoryHelperFactory())->getInstance(this->getPropertiesHashMap(), this->pageContext);;
+    Object* anyType = JavaBoxes::toObject((new InventoryHelperFactory())->getInstance(this->getPropertiesHashMap(), this->pageContext));;
     
 
     Class* helperClass = anyType->getClass();;

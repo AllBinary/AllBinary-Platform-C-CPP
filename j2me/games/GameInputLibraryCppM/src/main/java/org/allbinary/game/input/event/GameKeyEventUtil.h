@@ -64,6 +64,7 @@ class GameKeyEventUtil
 
     public: static int32_t getKey(Object* anyType);
     public: static int32_t getKey(const std::string& anyType) { return getKey(JavaString::box(anyType)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> static int32_t getKey(BoxValue anyType) { return getKey(JavaBoxes::toObject(anyType)); }
 
 private: GameKeyEventUtil();
 

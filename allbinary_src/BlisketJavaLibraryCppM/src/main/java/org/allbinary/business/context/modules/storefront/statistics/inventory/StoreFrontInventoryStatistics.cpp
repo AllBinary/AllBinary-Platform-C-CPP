@@ -114,7 +114,7 @@ this->totalInventorySaleValueMoney= new Money();
     ItemInterface* itemInterface = dynamic_cast<ItemInterface*>(itemVector->get(index));;
     
 
-    int32_t numberInStock = Integer.valueOf(itemInterface->getNumber())->intValue();;
+    int32_t numberInStock = JavaBoxes::value<int32_t>(Integer.valueOf(itemInterface->getNumber()));;
     
 this->totalNumberOfItems= this->totalNumberOfItems +numberInStock;
     

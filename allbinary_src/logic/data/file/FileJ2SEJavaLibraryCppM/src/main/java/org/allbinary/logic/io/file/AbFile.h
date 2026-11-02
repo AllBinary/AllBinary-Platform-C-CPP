@@ -192,6 +192,7 @@ public: AbFile(File* file);
 
     public: bool equals(Object* obj);
     public: bool equals(const std::string& obj) { return equals(JavaString::box(obj)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> bool equals(BoxValue obj) { return equals(JavaBoxes::toObject(obj)); }
 
     public: int32_t hashCode();
 

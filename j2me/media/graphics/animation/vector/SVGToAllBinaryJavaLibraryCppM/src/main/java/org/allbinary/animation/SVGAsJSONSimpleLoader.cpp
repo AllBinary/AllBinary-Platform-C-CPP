@@ -141,7 +141,7 @@ SVGAsJSONSimpleLoader* SVGAsJSONSimpleLoader::instance = SVGAsJSONSimpleLoader::
     JSONObject* root = new JSONObject(svgAsJson);;
     
 
-    Object* svgValue = root->opt(KEY_SVG);;
+    Object* svgValue = JavaBoxes::toObject(root->opt(KEY_SVG));;
     
 
     JSONObject* svg = svgValue == 
@@ -168,7 +168,7 @@ SVGAsJSONSimpleLoader* SVGAsJSONSimpleLoader::instance = SVGAsJSONSimpleLoader::
     std::string key = JavaBoxes::unbox<std::string>(keys->nextElement());;
     
 
-    Object* value = svg->opt(key);;
+    Object* value = JavaBoxes::toObject(svg->opt(key));;
     
 
                         if(JavaObjects::equals(this->shapeTypeFactory->KEY_LINE, key))
@@ -385,7 +385,7 @@ pointVector->add({SHAPE_SEPARATOR[0],SHAPE_SEPARATOR[1]});
             
     auto SVGAsJSONSimpleLoader::readInt(JSONObject* anyType, std::string key) -> int32_t{
 
-    Object* value = anyType->get(key);;
+    Object* value = JavaBoxes::toObject(anyType->get(key));;
     
 
                         if(value == 
@@ -418,7 +418,7 @@ pointVector->add({SHAPE_SEPARATOR[0],SHAPE_SEPARATOR[1]});
                         
                                     {
                                     
-    Object* value = anyType->get(key);;
+    Object* value = JavaBoxes::toObject(anyType->get(key));;
     
 
 

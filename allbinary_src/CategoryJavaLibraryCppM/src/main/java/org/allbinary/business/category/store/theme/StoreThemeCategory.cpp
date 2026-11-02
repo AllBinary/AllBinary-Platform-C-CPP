@@ -222,7 +222,7 @@ this->themeVector->add(themeValidation);
             
     auto StoreThemeCategory::isValid() -> bool{
 
-                        if(!Category::isValid().valueOf())
+                        if(!Category::isValid())
                         
                                     {
                                     

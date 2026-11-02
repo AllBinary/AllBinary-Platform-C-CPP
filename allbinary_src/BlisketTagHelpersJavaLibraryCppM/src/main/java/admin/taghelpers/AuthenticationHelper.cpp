@@ -521,7 +521,7 @@ stringBuffer->append("Trying New login<p/>");
     UserInterface* userInterface = userEntityInterface->getUser(this->sessionUserName);;
     
 
-                        if(!userInterface->isSessionValid().valueOf())
+                        if(!JavaBoxes::value<bool>(userInterface->isSessionValid()))
                         
                                     {
                                     
@@ -658,7 +658,7 @@ login= userEntityInterface->login(userName, password);
     UserInterface* userInterface = userEntityInterface->getUser(userName);;
     
 
-                        if(userInterface->isSessionValid().valueOf())
+                        if(JavaBoxes::value<bool>(userInterface->isSessionValid()))
                         
                                     {
                                     this->weblisketSession->setAttempts(int32_t(0));

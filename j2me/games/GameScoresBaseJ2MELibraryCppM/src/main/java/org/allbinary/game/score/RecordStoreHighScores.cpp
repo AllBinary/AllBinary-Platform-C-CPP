@@ -160,7 +160,7 @@ this->load();
 
     auto RecordStoreHighScores::getInstance(AbeClientInformationInterface* abeClientInformation, GameInfo* gameInfo, std::string highScoreName, std::string heading, std::string columnTwoHeading, RecordComparator* recordComparatorInterface) -> HighScores*{
 
-    Object* highScoresCanBeNull = RecordStoreHighScores::hashTable->get(highScoreName);;
+    Object* highScoresCanBeNull = JavaBoxes::toObject(RecordStoreHighScores::hashTable->get(highScoreName));;
     
 
                         if(highScoresCanBeNull == 
@@ -207,6 +207,37 @@ RecordStoreHighScores::hashTable->put(highScores->getName(), highScores);
     RecordStore* recordStore = NullRecordStore::NULL_RECORD_STORE;;
     
 
+        {
+        
+        auto finallyFunction_N67757 = [&]() {
+            
+        try {
+            
+                        if(recordStore != 
+                                    nullptr
+                                )
+                        
+                                    {
+                                    PreLogUtil::put("Closing RecordStore", this, this->commonStrings->ADD);
+    
+recordStore->closeRecordStore();
+    
+
+                                    }
+                                
+
+                //: 
+} catch(RecordStoreException& e) 
+            {
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->ADD, &e);
+    
+}
+
+
+        };
+        
+        struct FinallyGuard_N67757 { decltype(finallyFunction_N67757)& function; ~FinallyGuard_N67757() { function(); } } finallyGuard_N67757{finallyFunction_N67757};
+        
         try {
             this->logUtil->putF((new StringMaker())->append("Adding HighScore: ")->appendlong(newHighScore->getScore())->toString(), this, this->commonStrings->ADD);
     
@@ -253,7 +284,19 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->AD
     
 }
 
-         finally {
+        }
+
+}
+
+
+    auto RecordStoreHighScores::removeLowestHighScore() -> void{
+
+    RecordStore* recordStore = NullRecordStore::NULL_RECORD_STORE;;
+    
+
+        {
+        
+        auto finallyFunction_N68839 = [&]() {
             
         try {
             
@@ -262,7 +305,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->AD
                                 )
                         
                                     {
-                                    PreLogUtil::put("Closing RecordStore", this, this->commonStrings->ADD);
+                                    PreLogUtil::put("Closing RecordStore", this, "removeLowestHighScore");
     
 recordStore->closeRecordStore();
     
@@ -273,21 +316,15 @@ recordStore->closeRecordStore();
                 //: 
 } catch(RecordStoreException& e) 
             {
-this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->ADD, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "removeLowestHighScore", &e);
     
 }
 
 
-         }
+        };
         
-}
-
-
-    auto RecordStoreHighScores::removeLowestHighScore() -> void{
-
-    RecordStore* recordStore = NullRecordStore::NULL_RECORD_STORE;;
-    
-
+        struct FinallyGuard_N68839 { decltype(finallyFunction_N68839)& function; ~FinallyGuard_N68839() { function(); } } finallyGuard_N68839{finallyFunction_N68839};
+        
         try {
             recordStore= RecordStore::openRecordStore(this->getRecordId(this->abeClientInformation), true);
     
@@ -374,7 +411,19 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "removeLowestHighScore"
     
 }
 
-         finally {
+        }
+
+}
+
+
+    auto RecordStoreHighScores::load() -> void{
+
+    RecordStore* recordStore = NullRecordStore::NULL_RECORD_STORE;;
+    
+
+        {
+        
+        auto finallyFunction_N70402 = [&]() {
             
         try {
             
@@ -383,7 +432,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "removeLowestHighScore"
                                 )
                         
                                     {
-                                    PreLogUtil::put("Closing RecordStore", this, "removeLowestHighScore");
+                                    PreLogUtil::put("Closing RecordStore", this, this->commonStrings->LOAD);
     
 recordStore->closeRecordStore();
     
@@ -394,21 +443,15 @@ recordStore->closeRecordStore();
                 //: 
 } catch(RecordStoreException& e) 
             {
-this->logUtil->put(this->commonStrings->EXCEPTION, this, "removeLowestHighScore", &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->LOAD, &e);
     
 }
 
 
-         }
+        };
         
-}
-
-
-    auto RecordStoreHighScores::load() -> void{
-
-    RecordStore* recordStore = NullRecordStore::NULL_RECORD_STORE;;
-    
-
+        struct FinallyGuard_N70402 { decltype(finallyFunction_N70402)& function; ~FinallyGuard_N70402() { function(); } } finallyGuard_N70402{finallyFunction_N70402};
+        
         try {
             recordStore= RecordStore::openRecordStore(this->getRecordId(this->abeClientInformation), true);
     
@@ -535,33 +578,8 @@ this->logUtil->put(this->commonStrings->UNKNOWN, this, this->commonStrings->LOAD
     
 }
 
-         finally {
-            
-        try {
-            
-                        if(recordStore != 
-                                    nullptr
-                                )
-                        
-                                    {
-                                    PreLogUtil::put("Closing RecordStore", this, this->commonStrings->LOAD);
-    
-recordStore->closeRecordStore();
-    
+        }
 
-                                    }
-                                
-
-                //: 
-} catch(RecordStoreException& e) 
-            {
-this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->LOAD, &e);
-    
-}
-
-
-         }
-        
 }
 
 

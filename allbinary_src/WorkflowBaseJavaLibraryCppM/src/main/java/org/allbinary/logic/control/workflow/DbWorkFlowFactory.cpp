@@ -120,7 +120,7 @@ classes[0]= hashMap->getClass();
 params[0]= hashMap;
     
 
-    Object* anyType = AbeFactory::getInstance()->getInstance(abeClientInformation, className, classes, params);;
+    Object* anyType = JavaBoxes::toObject(AbeFactory::getInstance()->getInstance(abeClientInformation, className, classes, params));;
     
 
 

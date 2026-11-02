@@ -154,7 +154,7 @@ TransformFactory::TransformFactory() : logUtil(LogUtil::getInstance()), commonSt
 transformInfoInterface->setChild();
     
 
-    Object* anyType = TransformInfoObjectFactory::getInstance()->getInstance(abeClientInformation, transformInfoInterface);;
+    Object* anyType = JavaBoxes::toObject(TransformInfoObjectFactory::getInstance()->getInstance(abeClientInformation, transformInfoInterface));;
     
 
                         if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORY))
@@ -235,7 +235,7 @@ transformInfoInterface->setChild();
                         }
                             
 
-    Object* anyType = TransformInfoObjectFactory::getInstance()->getInstance(abeClientInformation, transformInfoInterface);;
+    Object* anyType = JavaBoxes::toObject(TransformInfoObjectFactory::getInstance()->getInstance(abeClientInformation, transformInfoInterface));;
     
 
                         if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORY))
@@ -299,7 +299,7 @@ this->logUtil->put(stringBuffer->toString(), this, this->commonStrings->GET_INST
                                     }
                                 
 
-    Object* anyType = TransformInfoObjectFactory::getInstance()->getInstance(abeClientInformation, transformInfoInterface);;
+    Object* anyType = JavaBoxes::toObject(TransformInfoObjectFactory::getInstance()->getInstance(abeClientInformation, transformInfoInterface));;
     
 
                         if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORY))

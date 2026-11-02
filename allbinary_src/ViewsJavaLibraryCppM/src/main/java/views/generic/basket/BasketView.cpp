@@ -197,7 +197,7 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, BasketData::ITEMT
 
     Money* itemTotal = new Money(itemPrice);;
     
-itemTotal->multiply(basketInterface->getNumberOf(product)->intValue());
+itemTotal->multiply(JavaBoxes::value<int32_t>(basketInterface->getNumberOf(product)));
     
 node->appendChild(ModDomHelper::createNameValueNodes(document, BasketData::ITEMTOTAL, itemTotal->toString()));
     

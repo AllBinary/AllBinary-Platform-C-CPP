@@ -95,6 +95,7 @@ class InventoryItemViewParentTagHelper
             
     public: void checkForValidationViewHelper(Object* helperObject);
     public: void checkForValidationViewHelper(const std::string& helperObject) { return checkForValidationViewHelper(JavaString::box(helperObject)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void checkForValidationViewHelper(BoxValue helperObject) { return checkForValidationViewHelper(JavaBoxes::toObject(helperObject)); }
 
 };
 

@@ -75,12 +75,15 @@ class PlatformImage
         
     public: Object* getImage(Object* graphicsSurface2);
     public: Object* getImage(const std::string& graphicsSurface2) { return getImage(JavaString::box(graphicsSurface2)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> Object* getImage(BoxValue graphicsSurface2) { return getImage(JavaBoxes::toObject(graphicsSurface2)); }
 
     public: int32_t getSurfaceWidth(Object* graphicsSurface2, int32_t width);
     public: int32_t getSurfaceWidth(const std::string& graphicsSurface2, int32_t width) { return getSurfaceWidth(JavaString::box(graphicsSurface2), width); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> int32_t getSurfaceWidth(BoxValue graphicsSurface2, int32_t width) { return getSurfaceWidth(JavaBoxes::toObject(graphicsSurface2), width); }
 
     public: int32_t getSurfaceHeight(Object* graphicsSurface2, int32_t height);
     public: int32_t getSurfaceHeight(const std::string& graphicsSurface2, int32_t height) { return getSurfaceHeight(JavaString::box(graphicsSurface2), height); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> int32_t getSurfaceHeight(BoxValue graphicsSurface2, int32_t height) { return getSurfaceHeight(JavaBoxes::toObject(graphicsSurface2), height); }
 
     public: int32_t getWidth(Image* image, int32_t width);
 
@@ -88,9 +91,11 @@ class PlatformImage
 
     public: javax::microedition::lcdui::Graphics* getGraphics(Object* graphicsSurface, int32_t width, int32_t height, Image* image);
     public: javax::microedition::lcdui::Graphics* getGraphics(const std::string& graphicsSurface, int32_t width, int32_t height, Image* image) { return getGraphics(JavaString::box(graphicsSurface), width, height, image); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> javax::microedition::lcdui::Graphics* getGraphics(BoxValue graphicsSurface, int32_t width, int32_t height, Image* image) { return getGraphics(JavaBoxes::toObject(graphicsSurface), width, height, image); }
 
     public: void drawImage(Image* image, int32_t x, int32_t y, int32_t anchor, javax::microedition::lcdui::Graphics* g2, Object* g);
     public: void drawImage(Image* image, int32_t x, int32_t y, int32_t anchor, javax::microedition::lcdui::Graphics* g2, const std::string& g) { return drawImage(image, x, y, anchor, g2, JavaString::box(g)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void drawImage(Image* image, int32_t x, int32_t y, int32_t anchor, javax::microedition::lcdui::Graphics* g2, BoxValue g) { return drawImage(image, x, y, anchor, g2, JavaBoxes::toObject(g)); }
 
     public: void drawRegion(Image* image, int32_t x_src, int32_t y_src, int32_t width, int32_t height, int32_t transform, int32_t x_dst, int32_t y_dst, int32_t anchor, javax::microedition::lcdui::Graphics* g);
 

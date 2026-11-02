@@ -258,7 +258,7 @@ RaceTrackDropCellPositionGenerator::update(allBinaryGameLayerManager, geographic
     Direction* direction = this->geographicMapDirectionUtil->getDirectionFromCellPositionToAdjacentCellPosition(randomGeographicMapCellPosition, geographicMapCellPosition);;
     
 
-    Object* objectCanBeNull = this->hashtable->get(this->groupCommonFactory->ID);;
+    Object* objectCanBeNull = JavaBoxes::toObject(this->hashtable->get(this->groupCommonFactory->ID));;
     
 
                         if(objectCanBeNull != 

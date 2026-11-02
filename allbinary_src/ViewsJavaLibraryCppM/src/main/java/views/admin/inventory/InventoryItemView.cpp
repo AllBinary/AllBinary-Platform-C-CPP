@@ -181,7 +181,7 @@ this->request= dynamic_cast<HttpServletRequest*>(this->getPageContext()->getRequ
 this->setRequestHashMap((new MultipartRequestParams(this->request))->toHashMap());
     
 
-    Object* imageFileItemObject = this->getRequestHashMap()->get(basicItemData->IMAGE);;
+    Object* imageFileItemObject = JavaBoxes::toObject(this->getRequestHashMap()->get(basicItemData->IMAGE));;
     
 
                         if(HttpFileUploadUtil::getInstance()->isValid(imageFileItemObject))

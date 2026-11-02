@@ -120,17 +120,17 @@ this->colorAtActionScriptConditionInterface->log();
 
     ColorRangeInterface* colorRangeInterface = this->colorAtActionScriptConditionInterface->getColorRangeInterface();;
     
-colorRangeInterface->setMinRed(Integer.valueOf(this->getMinRedJTextField()->getText())->intValue());
+colorRangeInterface->setMinRed(JavaBoxes::value<int32_t>(Integer.valueOf(this->getMinRedJTextField()->getText())));
     
-colorRangeInterface->setMaxRed(Integer.valueOf(this->getMaxRedJTextField()->getText())->intValue());
+colorRangeInterface->setMaxRed(JavaBoxes::value<int32_t>(Integer.valueOf(this->getMaxRedJTextField()->getText())));
     
-colorRangeInterface->setMinGreen(Integer.valueOf(this->getMinGreenJTextField()->getText())->intValue());
+colorRangeInterface->setMinGreen(JavaBoxes::value<int32_t>(Integer.valueOf(this->getMinGreenJTextField()->getText())));
     
-colorRangeInterface->setMaxGreen(Integer.valueOf(this->getMaxGreenJTextField()->getText())->intValue());
+colorRangeInterface->setMaxGreen(JavaBoxes::value<int32_t>(Integer.valueOf(this->getMaxGreenJTextField()->getText())));
     
-colorRangeInterface->setMinBlue(Integer.valueOf(this->getMinBlueJTextField()->getText())->intValue());
+colorRangeInterface->setMinBlue(JavaBoxes::value<int32_t>(Integer.valueOf(this->getMinBlueJTextField()->getText())));
     
-colorRangeInterface->setMaxBlue(Integer.valueOf(this->getMaxBlueJTextField()->getText())->intValue());
+colorRangeInterface->setMaxBlue(JavaBoxes::value<int32_t>(Integer.valueOf(this->getMaxBlueJTextField()->getText())));
     
 
     std::string xString = this->getColorAtXJTextField()->getText();;

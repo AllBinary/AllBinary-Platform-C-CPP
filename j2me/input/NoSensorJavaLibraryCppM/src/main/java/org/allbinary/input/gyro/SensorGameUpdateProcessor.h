@@ -79,11 +79,13 @@ class SensorGameUpdateProcessor
             
     public: void process(Object* anyType);
     public: void process(const std::string& anyType) { return process(JavaString::box(anyType)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void process(BoxValue anyType) { return process(JavaBoxes::toObject(anyType)); }
 
                 //@Throws(Exception.constructor)
             
     public: void sendNotifications(Object* anyType);
     public: void sendNotifications(const std::string& anyType) { return sendNotifications(JavaString::box(anyType)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void sendNotifications(BoxValue anyType) { return sendNotifications(JavaBoxes::toObject(anyType)); }
 
     public: bool isAnySensor();
 

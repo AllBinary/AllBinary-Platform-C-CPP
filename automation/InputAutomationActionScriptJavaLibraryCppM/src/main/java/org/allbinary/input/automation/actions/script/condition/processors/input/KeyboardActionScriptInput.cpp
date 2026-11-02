@@ -171,7 +171,7 @@ vector->add(keyString.valueOf());
                                     
     std::string time = DomNodeHelper::getTextNodeValue(childNode);;
     
-this->setDelayBetweenKeys(Integer.valueOf(time)->intValue());
+this->setDelayBetweenKeys(JavaBoxes::value<int32_t>(Integer.valueOf(time)));
     
 
                                     }

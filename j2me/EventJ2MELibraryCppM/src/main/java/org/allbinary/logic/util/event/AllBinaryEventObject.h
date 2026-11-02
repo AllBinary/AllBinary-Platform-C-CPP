@@ -77,6 +77,7 @@ public: AllBinaryEventObject(Object* anyType);
 
     /*protected*/ public: void setSource(Object* source);
     /*protected*/ public: void setSource(const std::string& source) { return setSource(JavaString::box(source)); }
+    /*protected*/ public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void setSource(BoxValue source) { return setSource(JavaBoxes::toObject(source)); }
 
 };
 

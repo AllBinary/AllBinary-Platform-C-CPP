@@ -100,7 +100,19 @@ AbCryptUtil::AbCryptUtil() : streamUtil(StreamUtil::getInstance()){
             ;;
     
 
-        try {
+        {
+        
+        auto finallyFunction_N65958 = [&]() {
+            this->streamUtil->close(outputStream);
+    
+this->streamUtil->close(inputStream);
+    
+
+        };
+        
+        struct FinallyGuard_N65958 { decltype(finallyFunction_N65958)& function; ~FinallyGuard_N65958() { function(); } } finallyGuard_N65958{finallyFunction_N65958};
+        
+        {
             outputStream= dynamic_cast<ByteArrayOutputStream*>(this->streamUtil->get(inputStream, new ByteArrayOutputStream(), std::vector<int8_t>(16384)));
     
 
@@ -115,14 +127,10 @@ abCrypt->init(key);
                         return abCrypt->decrypt(outputStream->toByteArray());;
     
 
-         finally {
-            this->streamUtil->close(outputStream);
-    
-this->streamUtil->close(inputStream);
-    
+        }
 
-         }
-        
+        }
+
 }
 
 

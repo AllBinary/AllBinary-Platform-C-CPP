@@ -241,7 +241,7 @@ PreLogUtil::put((new StringMaker())->append(this->PLAY)->append(this->currentSon
     
 this->timeDelayHelper->delay= static_cast<int32_t>(duration);
     
-this->currentIntent->putExtra(this->musicStrings->SONG_EXTRA, this->resourceUtil->getResourceId(this->currentSongSound->getResource())->intValue());
+this->currentIntent->putExtra(this->musicStrings->SONG_EXTRA, JavaBoxes::value<int32_t>(this->resourceUtil->getResourceId(this->currentSongSound->getResource())));
     
 this->currentIntent->putExtra(this->musicStrings->LEFT_VOLUME, this->leftVolume);
     

@@ -71,6 +71,7 @@ class ClassUtil
 
     public: static std::string viewAll(Object* anyType, std::string lineBreak);
     public: static std::string viewAll(const std::string& anyType, std::string lineBreak) { return viewAll(JavaString::box(anyType), lineBreak); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> static std::string viewAll(BoxValue anyType, std::string lineBreak) { return viewAll(JavaBoxes::toObject(anyType), lineBreak); }
 
     public: static std::string viewAll(Class* myClass, std::string lineBreak);
 

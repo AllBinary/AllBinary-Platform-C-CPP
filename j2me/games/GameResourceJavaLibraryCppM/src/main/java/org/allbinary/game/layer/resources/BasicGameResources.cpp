@@ -86,7 +86,7 @@ BasicGameResources::BasicGameResources() : logUtil(LogUtil::getInstance()), RESO
 
         try {
             
-    int32_t scale = GameConfigurationCentral::getInstance()->SCALE->getValue()->intValue();;
+    int32_t scale = JavaBoxes::value<int32_t>(GameConfigurationCentral::getInstance()->SCALE->getValue());;
     
 
                         if(scale > 1 && scale -1 < SIZE::size())

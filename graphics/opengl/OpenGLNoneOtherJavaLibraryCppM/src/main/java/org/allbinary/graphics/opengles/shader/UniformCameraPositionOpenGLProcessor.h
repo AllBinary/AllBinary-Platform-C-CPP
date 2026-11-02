@@ -66,6 +66,7 @@ public: UniformCameraPositionOpenGLProcessor(ShaderComposite* shaderComposite, i
 
     public: void process(GL10* gl, Object* anyType);
     public: void process(GL10* gl, const std::string& anyType) { return process(gl, JavaString::box(anyType)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void process(GL10* gl, BoxValue anyType) { return process(gl, JavaBoxes::toObject(anyType)); }
 
 };
 

@@ -116,7 +116,7 @@ allbinaryTiledLayer->setCells(raceTrackData->getMapArray());
     TiledLayer* tiledLayer = (new TiledLayerFactory())->getMiniInstance(raceTrackData);;
     
 
-    AllBinaryTiledLayer* allbinaryTiledLayer = new AllBinaryJ2METiledLayer(smallIntegerSingletonFactory->getAt(raceTrackData->getId()->intValue() +100 +1), tiledLayer, raceTrackData->getMapArray(), BasicColorFactory::getInstance()->RED->intValue());;
+    AllBinaryTiledLayer* allbinaryTiledLayer = new AllBinaryJ2METiledLayer(smallIntegerSingletonFactory->getAt(JavaBoxes::value<int32_t>(raceTrackData->getId()) +100 +1), tiledLayer, raceTrackData->getMapArray(), BasicColorFactory::getInstance()->RED->intValue());;
     
 allbinaryTiledLayer->setCells(raceTrackData->getMapArray());
     

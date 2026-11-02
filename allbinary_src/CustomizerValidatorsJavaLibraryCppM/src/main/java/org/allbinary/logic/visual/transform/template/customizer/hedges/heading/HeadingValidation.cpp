@@ -159,7 +159,7 @@ this->logo= new LogoValidation(hashMap);
                                     }
                                 
 
-                        if(!this->title->isValid().valueOf())
+                        if(!this->title->isValid())
                         
                                     {
                                     titleValid= Boolean::FALSE;
@@ -168,7 +168,7 @@ this->logo= new LogoValidation(hashMap);
                                     }
                                 
 
-                        if(!this->logo->isValid().valueOf())
+                        if(!this->logo->isValid())
                         
                                     {
                                     logoValid= Boolean::FALSE;
@@ -246,7 +246,7 @@ this->logo= new LogoValidation(hashMap);
     StringMaker* stringBuffer = new StringMaker();;
     
 
-                        if(!this->title->isValid().valueOf())
+                        if(!this->title->isValid())
                         
                                     {
                                     titleValid= Boolean::FALSE;
@@ -255,7 +255,7 @@ this->logo= new LogoValidation(hashMap);
                                     }
                                 
 
-                        if(!this->logo->isValid().valueOf())
+                        if(!this->logo->isValid())
                         
                                     {
                                     logoValid= Boolean::FALSE;

@@ -133,7 +133,7 @@ this->items->remove(id);
 
     auto Basket::adjustItem(std::string id, std::string num) -> void{
 
-                        if(Integer.valueOf(num)->intValue() > 0)
+                        if(JavaBoxes::value<int32_t>(Integer.valueOf(num)) > 0)
                         
                                     {
                                     this->items->put(id, num);
@@ -295,7 +295,7 @@ totalWeight->add(JavaString::valueOf(weightFloat));
 
     Money* productTotal = itemInterface->getPrice();;
     
-productTotal->multiply(getNumberOf(product).intValue());
+productTotal->multiply(getNumberOf(product));
     
 subTotal->add(productTotal->toString());
     

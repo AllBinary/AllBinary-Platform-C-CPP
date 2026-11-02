@@ -110,7 +110,7 @@ this->weblisketSession= new WeblisketSession(hashMap, pageContext);
     BasketInterface* basket = this->weblisketSession->getOrder()->getBasket();;
     
 
-                        if(basket->getNumberOfItems()->intValue() <= 0)
+                        if(JavaBoxes::value<int32_t>(basket->getNumberOfItems()) <= 0)
                         
                                     {
                                     

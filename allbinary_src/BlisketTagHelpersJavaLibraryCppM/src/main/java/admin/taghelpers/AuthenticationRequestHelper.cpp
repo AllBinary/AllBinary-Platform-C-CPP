@@ -322,7 +322,7 @@ UserEntityFactory::getInstance()->update(userName, newPasswordHashMap);
     Password* password = new Password(newPassword);;
     
 
-                        if(!password->isValid().valueOf())
+                        if(!JavaBoxes::value<bool>(password->isValid()))
                         
                                     {
                                     

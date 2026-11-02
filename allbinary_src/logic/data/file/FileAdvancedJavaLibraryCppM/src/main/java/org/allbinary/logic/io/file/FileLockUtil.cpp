@@ -210,6 +210,14 @@ this->logUtil->putF(JavaString::valueOf("Total Locks Obtained: ") +JavaString::v
             
     auto FileLockUtil::getLock(AbFile* file) -> FileLock*{
 
+        {
+        
+        auto finallyFunction_N66899 = [&]() {
+            
+        };
+        
+        struct FinallyGuard_N66899 { decltype(finallyFunction_N66899)& function; ~FinallyGuard_N66899() { function(); } } finallyGuard_N66899{finallyFunction_N66899};
+        
         try {
             
 
@@ -231,10 +239,8 @@ this->logUtil->put("Exception returns null", this, "getLock", &e);
     
 }
 
-         finally {
-            
-         }
-        
+        }
+
 }
 
 
@@ -242,6 +248,18 @@ this->logUtil->put("Exception returns null", this, "getLock", &e);
             
     auto FileLockUtil::getLock(AbFileOutputStream* fileOutputStream) -> FileLock*{
 
+        {
+        
+        auto finallyFunction_N67106 = [&]() {
+            this->logUtil->putF("Finally - Closing FileOutputStream", this, "getLock");
+    
+StreamUtil::getInstance()->close(fileOutputStream);
+    
+
+        };
+        
+        struct FinallyGuard_N67106 { decltype(finallyFunction_N67106)& function; ~FinallyGuard_N67106() { function(); } } finallyGuard_N67106{finallyFunction_N67106};
+        
         try {
             
     FileLock* fileLock = this->getLock(fileOutputStream->getChannel());;
@@ -266,14 +284,8 @@ this->logUtil->put("Exception returns null", this, "getLock", &e);
     
 }
 
-         finally {
-            this->logUtil->putF("Finally - Closing FileOutputStream", this, "getLock");
-    
-StreamUtil::getInstance()->close(fileOutputStream);
-    
+        }
 
-         }
-        
 }
 
 
@@ -281,6 +293,18 @@ StreamUtil::getInstance()->close(fileOutputStream);
             
     auto FileLockUtil::getLock(FileChannel* fileChannel) -> FileLock*{
 
+        {
+        
+        auto finallyFunction_N67413 = [&]() {
+            this->logUtil->putF("Finally - Closing FileChannel", this, "getLock");
+    
+fileChannel->close();
+    
+
+        };
+        
+        struct FinallyGuard_N67413 { decltype(finallyFunction_N67413)& function; ~FinallyGuard_N67413() { function(); } } finallyGuard_N67413{finallyFunction_N67413};
+        
         try {
             
     FileLock* fileLock = fileChannel->tryLock();;
@@ -305,14 +329,8 @@ this->logUtil->put("Exception returns null", this, "getLock", &e);
     
 }
 
-         finally {
-            this->logUtil->putF("Finally - Closing FileChannel", this, "getLock");
-    
-fileChannel->close();
-    
+        }
 
-         }
-        
 }
 
 

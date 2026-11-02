@@ -74,10 +74,12 @@ class BasicQueue
 
     /*protected*/ public: bool offer(Object* anyType);
     /*protected*/ public: bool offer(const std::string& anyType) { return offer(JavaString::box(anyType)); }
+    /*protected*/ public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> bool offer(BoxValue anyType) { return offer(JavaBoxes::toObject(anyType)); }
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     /*protected*/ public: void remove(Object* anyType);
     /*protected*/ public: void remove(const std::string& anyType) { return remove(JavaString::box(anyType)); }
+    /*protected*/ public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void remove(BoxValue anyType) { return remove(JavaBoxes::toObject(anyType)); }
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     /*protected*/ public: Object* removeLast();

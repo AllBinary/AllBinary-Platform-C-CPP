@@ -100,7 +100,7 @@ this->status= value;
 
         try {
             
-    Object* anyType = (new OrderHistoryHelperFactory())->getInstance(this->getPropertiesHashMap(), pageContext);;
+    Object* anyType = JavaBoxes::toObject((new OrderHistoryHelperFactory())->getInstance(this->getPropertiesHashMap(), pageContext));;
     
 
     Class* helperClass = anyType->getClass();;

@@ -274,13 +274,13 @@ inventoryNode->appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterf
     SearchParams* searchParams = searchRequest->getParams();;
     
 
-    int32_t startPage = searchParams->getStartPageInt()->intValue();;
+    int32_t startPage = JavaBoxes::value<int32_t>(searchParams->getStartPageInt());;
     
 
-    int32_t endPage = searchParams->getEndPageInt()->intValue();;
+    int32_t endPage = JavaBoxes::value<int32_t>(searchParams->getEndPageInt());;
     
 
-    int32_t pageLength = searchParams->getLengthInt()->intValue();;
+    int32_t pageLength = JavaBoxes::value<int32_t>(searchParams->getLengthInt());;
     
 
     int32_t savedPagesInRange = 0;;

@@ -116,7 +116,7 @@ this->storeName= value;
 
         try {
             
-    Object* anyType = (new BasketHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext);;
+    Object* anyType = JavaBoxes::toObject((new BasketHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext));;
     
 
     Method* method = anyType->getClass()->getMethod("isBasketEmpty", 
@@ -172,7 +172,7 @@ this->storeName= value;
 
         try {
             
-    Object* anyType = (new BasketRequestHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext);;
+    Object* anyType = JavaBoxes::toObject((new BasketRequestHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext));;
     
 
     Method* method = anyType->getClass()->getMethod("addItemToBasket", 
@@ -231,7 +231,7 @@ this->storeName= value;
 
         try {
             
-    Object* anyType = (new BasketRequestHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext);;
+    Object* anyType = JavaBoxes::toObject((new BasketRequestHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext));;
     
 
     Method* method = anyType->getClass()->getMethod("removeItemFromBasket", 
@@ -290,7 +290,7 @@ this->storeName= value;
 
         try {
             
-    Object* anyType = (new BasketRequestHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext);;
+    Object* anyType = JavaBoxes::toObject((new BasketRequestHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext));;
     
 
     Method* method = anyType->getClass()->getMethod("adjustBasket", 

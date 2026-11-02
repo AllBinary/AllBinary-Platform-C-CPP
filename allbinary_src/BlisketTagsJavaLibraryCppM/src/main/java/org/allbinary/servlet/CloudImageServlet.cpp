@@ -110,6 +110,25 @@ CloudImageServlet::CloudImageServlet() : logUtil(LogUtil::getInstance()), common
             ;;
     
 
+        {
+        
+        auto finallyFunction_N66066 = [&]() {
+            StreamUtil::getInstance()->close(response->getOutputStream());
+    
+
+                        if(!StreamUtil::getInstance()->close(inputStream))
+                        
+                                    {
+                                    response->sendError(HttpServletResponse::SC_NOT_FOUND);
+    
+
+                                    }
+                                
+
+        };
+        
+        struct FinallyGuard_N66066 { decltype(finallyFunction_N66066)& function; ~FinallyGuard_N66066() { function(); } } finallyGuard_N66066{finallyFunction_N66066};
+        
         try {
             BlisketServletUtil::getInstance()->init(request);
     
@@ -146,21 +165,8 @@ response->getOutputStream()->write(byteArray);
                                 
 }
 
-         finally {
-            StreamUtil::getInstance()->close(response->getOutputStream());
-    
+        }
 
-                        if(!StreamUtil::getInstance()->close(inputStream))
-                        
-                                    {
-                                    response->sendError(HttpServletResponse::SC_NOT_FOUND);
-    
-
-                                    }
-                                
-
-         }
-        
 }
 
 

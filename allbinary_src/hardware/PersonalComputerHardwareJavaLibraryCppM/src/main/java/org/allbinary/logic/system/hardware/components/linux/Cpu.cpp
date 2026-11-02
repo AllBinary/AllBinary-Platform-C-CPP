@@ -161,7 +161,21 @@ this->init(this->CPUFILE);
             
     auto Cpu::init(LineNumberReader* lineNumberReader, std::string filePath) -> void{
 
-        try {
+        {
+        
+        auto finallyFunction_N66823 = [&]() {
+            
+                        if(lineNumberReader != 
+                                    nullptr
+                                )
+                        lineNumberReader->close();
+                                
+
+        };
+        
+        struct FinallyGuard_N66823 { decltype(finallyFunction_N66823)& function; ~FinallyGuard_N66823() { function(); } } finallyGuard_N66823{finallyFunction_N66823};
+        
+        {
             
     FileReader* fileReader = new FileReader(filePath);;
     
@@ -275,16 +289,10 @@ nextLine= lineNumberReader->readLine();
                                     }
                                 
 
-         finally {
-            
-                        if(lineNumberReader != 
-                                    nullptr
-                                )
-                        lineNumberReader->close();
-                                
+        }
 
-         }
-        
+        }
+
 }
 
 

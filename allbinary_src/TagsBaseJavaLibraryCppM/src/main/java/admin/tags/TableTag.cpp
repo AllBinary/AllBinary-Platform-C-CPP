@@ -219,7 +219,7 @@ this->total= total;
 
         try {
             
-    Object* anyType = this->getTagHelperFactoryInterface()->getInstance(this->getPropertiesHashMap(), pageContext);;
+    Object* anyType = JavaBoxes::toObject(this->getTagHelperFactoryInterface()->getInstance(this->getPropertiesHashMap(), pageContext));;
     
 
     Class* addressHelperClass = anyType->getClass();;
@@ -271,7 +271,7 @@ this->total= total;
 
         try {
             
-    Object* anyType = this->getTagHelperFactoryInterface()->getInstance(this->getPropertiesHashMap(), pageContext);;
+    Object* anyType = JavaBoxes::toObject(this->getTagHelperFactoryInterface()->getInstance(this->getPropertiesHashMap(), pageContext));;
     
 
     Class* addressHelperClass = anyType->getClass();;
@@ -323,7 +323,7 @@ this->total= total;
 
         try {
             
-    Object* anyType = this->getTagHelperFactoryInterface()->getInstance(this->getPropertiesHashMap(), pageContext);;
+    Object* anyType = JavaBoxes::toObject(this->getTagHelperFactoryInterface()->getInstance(this->getPropertiesHashMap(), pageContext));;
     
 
     Class* addressHelperClass = anyType->getClass();;
@@ -375,7 +375,7 @@ this->total= total;
 
         try {
             
-    Object* anyType = this->getTagHelperFactoryInterface()->getInstance(this->getPropertiesHashMap(), pageContext);;
+    Object* anyType = JavaBoxes::toObject(this->getTagHelperFactoryInterface()->getInstance(this->getPropertiesHashMap(), pageContext));;
     
 
     Class* addressHelperClass = anyType->getClass();;

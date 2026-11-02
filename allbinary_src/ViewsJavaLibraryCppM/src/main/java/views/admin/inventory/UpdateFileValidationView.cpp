@@ -245,7 +245,7 @@ stringBuffer->append(this->itemInterface->getCategory());
                                     }
                                 
 
-    Object* anyType = this->getRequestHashMap()->get(basicItemData.IMAGE);;
+    Object* anyType = JavaBoxes::toObject(this->getRequestHashMap()->get(basicItemData.IMAGE));;
     
 
                         if(HttpFileUploadUtil::getInstance()->isValid(anyType))
@@ -396,7 +396,7 @@ stringBuffer->append((new BasicItemValidation(this->itemInterface))->validationI
 }
 
 
-    Object* anyType = this->getRequestHashMap()->get(basicItemData.IMAGE);;
+    Object* anyType = JavaBoxes::toObject(this->getRequestHashMap()->get(basicItemData.IMAGE));;
     
 
                         if(HttpFileUploadUtil::getInstance()->isValid(anyType))

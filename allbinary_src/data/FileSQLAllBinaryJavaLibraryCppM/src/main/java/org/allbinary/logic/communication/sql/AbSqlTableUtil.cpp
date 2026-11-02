@@ -485,7 +485,7 @@ StreamUtil::getInstance()->close(outputStream);
     std::string path = org.allbinary->globals->URLGLOBALS->getMainPath() +PATH_GLOBALS::getInstance()->BACKUP_PATH;;
     
 
-    int32_t current = portion->getCurrent()->intValue();;
+    int32_t current = JavaBoxes::value<int32_t>(portion->getCurrent());;
     
 
                         if(current == 0)
@@ -520,7 +520,7 @@ StreamUtil::getInstance()->close(outputStream);
     int64_t size = bufferedLineReader->getSize();;
     
 
-    int64_t section = size /portion->getTotal()->intValue() +1;;
+    int64_t section = size /JavaBoxes::value<int32_t>(portion->getTotal()) +1;;
     
 
     int64_t start = section *current;;

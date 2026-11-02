@@ -1911,7 +1911,7 @@ this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->LOAD)
     std::string levelAsString = JavaBoxes::unbox<std::string>(hashtable->get(GameInfo::LEVEL_NAME));;
     
 
-    int32_t level = Integer.valueOf(levelAsString)->intValue();;
+    int32_t level = JavaBoxes::value<int32_t>(Integer.valueOf(levelAsString));;
     
 
     GameInfo* gameInfo = this->gameLayerManager->getGameInfo();;

@@ -85,7 +85,7 @@ GameConfigurationTextInput::hashtable->put(this->getLabel(), this);
 
     auto GameConfigurationTextInput::update(TextField* textField) -> void{
 
-    Object* anyType = textField->getLabel();;
+    Object* anyType = JavaBoxes::toObject(textField->getLabel());;
     
 
     GameConfigurationTextInput* gameConfigurationTextInput = dynamic_cast<GameConfigurationTextInput*>(GameConfigurationTextInput::hashtable->get(anyType));;

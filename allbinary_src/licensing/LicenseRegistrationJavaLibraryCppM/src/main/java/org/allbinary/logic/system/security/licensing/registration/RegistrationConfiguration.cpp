@@ -166,7 +166,17 @@ PreLogUtil::put((new StringMaker())->append("Read Configuration: ")->append(this
             ;;
     
 
-        try {
+        {
+        
+        auto finallyFunction_N66840 = [&]() {
+            StreamUtil::getInstance()->close(dataOutputStream);
+    
+
+        };
+        
+        struct FinallyGuard_N66840 { decltype(finallyFunction_N66840)& function; ~FinallyGuard_N66840() { function(); } } finallyGuard_N66840{finallyFunction_N66840};
+        
+        {
             this->logUtil->putF((new StringMaker())->append("Write Configuration: ")->append(this->toString())->toString(), this, "write");
     
 
@@ -182,12 +192,10 @@ dataOutputStream->writeUTF(this->getRegistrationCode());
 dataOutputStream->flush();
     
 
-         finally {
-            StreamUtil::getInstance()->close(dataOutputStream);
-    
+        }
 
-         }
-        
+        }
+
 }
 
 

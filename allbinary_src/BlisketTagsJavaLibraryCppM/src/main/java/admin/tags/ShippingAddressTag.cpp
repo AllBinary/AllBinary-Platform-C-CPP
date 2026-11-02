@@ -102,7 +102,7 @@ this->value= value;
 
         try {
             
-    Object* anyType = (new ShippingAddressHelperFactory())->getInstance(this->getPropertiesHashMap(), this->pageContext);;
+    Object* anyType = JavaBoxes::toObject((new ShippingAddressHelperFactory())->getInstance(this->getPropertiesHashMap(), this->pageContext));;
     
 
     Class* addressHelperClass = anyType->getClass();;
@@ -164,7 +164,7 @@ this->value= value;
 
         try {
             
-    Object* anyType = (new ShippingAddressHelperFactory())->getInstance(this->getPropertiesHashMap(), this->pageContext);;
+    Object* anyType = JavaBoxes::toObject((new ShippingAddressHelperFactory())->getInstance(this->getPropertiesHashMap(), this->pageContext));;
     
 
     Class* addressHelperClass = anyType->getClass();;

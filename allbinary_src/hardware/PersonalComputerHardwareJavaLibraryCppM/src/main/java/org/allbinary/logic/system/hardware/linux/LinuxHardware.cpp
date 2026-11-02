@@ -234,7 +234,21 @@ this->componentInterfaceVector->add(cpu);
             
     auto LinuxHardware::init(LineNumberReader* lineNumberReader, std::string filePath) -> void{
 
-        try {
+        {
+        
+        auto finallyFunction_N68048 = [&]() {
+            
+                        if(lineNumberReader != 
+                                    nullptr
+                                )
+                        lineNumberReader->close();
+                                
+
+        };
+        
+        struct FinallyGuard_N68048 { decltype(finallyFunction_N68048)& function; ~FinallyGuard_N68048() { function(); } } finallyGuard_N68048{finallyFunction_N68048};
+        
+        {
             this->componentInterfaceVector= new BasicArrayListD();
     
 this->videoInterfaceVector= new BasicArrayListD();
@@ -421,16 +435,10 @@ nextLine= lineNumberReader->readLine();
 lineNumberReader->close();
     
 
-         finally {
-            
-                        if(lineNumberReader != 
-                                    nullptr
-                                )
-                        lineNumberReader->close();
-                                
+        }
 
-         }
-        
+        }
+
 }
 
 

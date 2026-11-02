@@ -265,7 +265,7 @@ this->itemInterface->setCategory(storeFrontInterface->getCategoryPath() +this->i
                                     }
                                 
 
-    Object* imageFileItemObject = this->getRequestHashMap()->get(basicItemData->IMAGE);;
+    Object* imageFileItemObject = JavaBoxes::toObject(this->getRequestHashMap()->get(basicItemData->IMAGE));;
     
 
                         if(HttpFileUploadUtil::getInstance()->isValid(imageFileItemObject))
@@ -444,7 +444,7 @@ stringBuffer->append(" does not exist.<br />");
 }
 
 
-    Object* anyType = this->getRequestHashMap()->get(basicItemData->IMAGE);;
+    Object* anyType = JavaBoxes::toObject(this->getRequestHashMap()->get(basicItemData->IMAGE));;
     
 
                         if(HttpFileUploadUtil::getInstance()->isValid(anyType))

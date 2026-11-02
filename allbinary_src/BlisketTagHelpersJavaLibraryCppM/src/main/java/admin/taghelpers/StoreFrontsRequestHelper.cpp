@@ -275,16 +275,16 @@ adminUserEmailEventHandler->receiveEmailInfo(UserEmailEventNameData::STORECREATE
     
 stringBuffer->append("Intall StoreFront Successfully: ");
     
-stringBuffer->appendint(this->portion->getCurrent()->intValue());
+stringBuffer->appendint(JavaBoxes::value<int32_t>(this->portion->getCurrent()));
     
 stringBuffer->append(" of ");
     
-stringBuffer->appendint(this->portion->getTotal()->intValue());
+stringBuffer->appendint(JavaBoxes::value<int32_t>(this->portion->getTotal()));
     
 
     std::string success = stringBuffer->toString();;
     
-this->modifyingStoreFrontInterface->install(this->portion->getCurrent()->intValue(), this->portion->getTotal()->intValue());
+this->modifyingStoreFrontInterface->install(JavaBoxes::value<int32_t>(this->portion->getCurrent()), JavaBoxes::value<int32_t>(this->portion->getTotal()));
     
 
                         if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))

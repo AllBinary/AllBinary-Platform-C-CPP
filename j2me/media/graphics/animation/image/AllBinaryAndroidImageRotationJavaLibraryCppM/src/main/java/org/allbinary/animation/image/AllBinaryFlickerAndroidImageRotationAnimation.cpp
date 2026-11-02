@@ -103,7 +103,7 @@ this->increment= (this->angleInfo->getAngleIncrementInfo()->getAngleIncrement())
 
                         if(this->getBasicColorP() == 
                                     nullptr
-                                 || this->getBasicColorP()->intValue() != basicColor->intValue())
+                                 || JavaBoxes::value<int32_t>(this->getBasicColorP()) != basicColor->intValue())
                         
                                     {
                                     this->imageModifierUtil->setColor(this->originalImage, this->getImage(), 0, basicColor);

@@ -69,16 +69,19 @@ class ThreadObjectUtil
 
     public: void notifyObject(Object* anyType);
     public: void notifyObject(const std::string& anyType) { return notifyObject(JavaString::box(anyType)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void notifyObject(BoxValue anyType) { return notifyObject(JavaBoxes::toObject(anyType)); }
 
                 //@Throws(Exception.constructor)
             
     public: void waitObject(Object* anyType);
     public: void waitObject(const std::string& anyType) { return waitObject(JavaString::box(anyType)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void waitObject(BoxValue anyType) { return waitObject(JavaBoxes::toObject(anyType)); }
 
                 //@Throws(Exception.constructor)
             
     public: void waitObjectFor(Object* anyType, int64_t delay);
     public: void waitObjectFor(const std::string& anyType, int64_t delay) { return waitObjectFor(JavaString::box(anyType), delay); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void waitObjectFor(BoxValue anyType, int64_t delay) { return waitObjectFor(JavaBoxes::toObject(anyType), delay); }
 
     public: void processThread(Runnable* runnable);
 

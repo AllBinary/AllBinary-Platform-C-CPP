@@ -117,7 +117,7 @@ this->twoImages[1]= ImageCopyUtil::getInstance()->createImage(image);
 
                         if(this->getBasicColorP() == 
                                     nullptr
-                                 || this->getBasicColorP()->intValue() != basicColor->intValue())
+                                 || JavaBoxes::value<int32_t>(this->getBasicColorP()) != basicColor->intValue())
                         
                                     {
                                     this->imageModifierUtil->setColor(this->originalImage, this->imageToShow, 0, basicColor);

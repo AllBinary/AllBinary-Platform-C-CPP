@@ -99,7 +99,7 @@ PreLogUtil::put("Loggin Initialized", this, "init()");
 
     /*actual*/ auto LogUtil::putL(Log* log) -> void{
 
-    Object* exception = log->getThrowable();;
+    Object* exception = JavaBoxes::toObject(log->getThrowable());;
     
 
         try {
@@ -113,7 +113,7 @@ PreLogUtil::put("Loggin Initialized", this, "init()");
     std::string specialMessage = log->getSpecialMessage();;
     
 
-    Object* anyType = log->getObject();;
+    Object* anyType = JavaBoxes::toObject(log->getObject());;
     
 
     std::string functionName = log->getFunctionName();;

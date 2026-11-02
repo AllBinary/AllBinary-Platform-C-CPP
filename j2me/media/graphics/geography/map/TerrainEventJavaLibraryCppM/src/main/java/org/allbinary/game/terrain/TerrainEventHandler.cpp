@@ -94,7 +94,7 @@ TerrainEventHandler::hashtable= StdUtil::getInstance()->createHashtable();
 
     auto TerrainEventHandler::getInstance(Object* anyType) -> TerrainEventHandler*{
 
-    Object* eventHandlerCanBeNull = TerrainEventHandler::hashtable->get(anyType);;
+    Object* eventHandlerCanBeNull = JavaBoxes::toObject(TerrainEventHandler::hashtable->get(anyType));;
     
 
                         if(eventHandlerCanBeNull == 
