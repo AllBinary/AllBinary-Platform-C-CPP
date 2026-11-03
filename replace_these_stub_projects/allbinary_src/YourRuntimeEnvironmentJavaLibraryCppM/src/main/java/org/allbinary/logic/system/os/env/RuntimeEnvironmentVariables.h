@@ -20,6 +20,8 @@
         
             #include "java/lang/Object.h"
         
+            #include "java/lang/ProcessBuilder.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Runtime.h"
@@ -52,8 +54,7 @@ class CommonStrings;
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        class Process;
-
+        
                                 
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
@@ -123,9 +124,6 @@ public: RuntimeEnvironmentVariables();
 #endif
 #if __has_include(<org/allbinary/string/CommonStrings.h>)
 #include <org/allbinary/string/CommonStrings.h>
-#endif
-#if __has_include("org/allbinary/logic/system/os/env/Process.h")
-#include "org/allbinary/logic/system/os/env/Process.h"
 #endif
 
         #endif

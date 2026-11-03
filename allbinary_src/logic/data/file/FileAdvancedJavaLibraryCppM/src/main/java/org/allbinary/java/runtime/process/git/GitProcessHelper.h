@@ -36,6 +36,8 @@
         
             #include "java/lang/Object.h"
         
+            #include "java/lang/ProcessBuilder.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/IllegalStateException.h"
@@ -71,9 +73,7 @@ class CommonStrings;
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        class ProcessBuilder;
-class Process;
-
+        
                                 
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
@@ -143,12 +143,6 @@ private: GitProcessHelper();
 #endif
 #if __has_include(<org/allbinary/string/CommonStrings.h>)
 #include <org/allbinary/string/CommonStrings.h>
-#endif
-#if __has_include("org/allbinary/java/runtime/process/git/ProcessBuilder.h")
-#include "org/allbinary/java/runtime/process/git/ProcessBuilder.h"
-#endif
-#if __has_include("org/allbinary/java/runtime/process/git/Process.h")
-#include "org/allbinary/java/runtime/process/git/Process.h"
 #endif
 
         #endif

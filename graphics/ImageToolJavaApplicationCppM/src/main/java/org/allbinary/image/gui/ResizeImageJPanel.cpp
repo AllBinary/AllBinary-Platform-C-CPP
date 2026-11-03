@@ -543,7 +543,7 @@ this->imageProcessorInput= imageProcessorInput;
     auto ResizeImageJPanel::initComponents() -> void{
 this->jLabel1= new javax::swing::JLabel();
     
-this->jComboBox1= new javax::swing::JComboBox<>();
+this->jComboBox1= new javax::swing::JComboBox();
     
 this->aboveJButton= new javax::swing::JButton();
     
@@ -565,7 +565,7 @@ this->adjustFor16BelowJButton= new javax::swing::JButton();
     
 this->jLabel1->setText("Percent:");
     
-this->jComboBox1->setModel(new javax::swing::DefaultComboBoxModel<>(std::vector<std::string>
+this->jComboBox1->setModel(new javax::swing::DefaultComboBoxModel(std::vector<std::string>
                                                 {
                                                     "Item 1","Item 2","Item 3","Item 4"
                                                 }));

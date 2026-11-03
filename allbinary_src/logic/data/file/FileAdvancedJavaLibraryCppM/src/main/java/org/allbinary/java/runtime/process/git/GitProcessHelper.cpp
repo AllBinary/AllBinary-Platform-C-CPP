@@ -38,6 +38,8 @@
         
             #include "java/lang/Object.h"
         
+            #include "java/lang/ProcessBuilder.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/IllegalStateException.h"
@@ -95,9 +97,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/java/runtime/process/git/ProcessBuilder.h"
-#include "org/allbinary/java/runtime/process/git/Process.h"
-//Do not use this instead just skip target, build, Application paths.
+        //Do not use this instead just skip target, build, Application paths.
 auto GitProcessHelper::instance_owner() -> GitProcessHelper* { static std::unique_ptr<GitProcessHelper> value(new GitProcessHelper()); return value.get(); }
 GitProcessHelper* GitProcessHelper::instance = GitProcessHelper::instance_owner();
 
@@ -167,7 +167,7 @@ logUtil->putF(THIS_IS_SLOW, this, commonStrings->CONSTRUCTOR);
                                     }
                                 
 
-    List<std::string>* files = new ArrayList<>();;
+    List<std::string>* files = new ArrayList<std::string>();;
     
 
     int32_t start = 0;;

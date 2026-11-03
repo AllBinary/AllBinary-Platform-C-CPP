@@ -60,7 +60,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        
+        #include "org/allbinary/globals/PATH_GLOBALS.h"
+
 auto FREEBLISKET_PATH_GLOBALS::instance_owner() -> FREEBLISKET_PATH_GLOBALS* { static std::unique_ptr<FREEBLISKET_PATH_GLOBALS> value(new FREEBLISKET_PATH_GLOBALS()); return value.get(); }
 FREEBLISKET_PATH_GLOBALS* FREEBLISKET_PATH_GLOBALS::instance = FREEBLISKET_PATH_GLOBALS::instance_owner();
 

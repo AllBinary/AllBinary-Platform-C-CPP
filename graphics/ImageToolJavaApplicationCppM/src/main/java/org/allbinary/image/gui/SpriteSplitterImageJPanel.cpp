@@ -394,7 +394,7 @@ this->jPanel2= new javax::swing::JPanel();
     
 this->jLabel1= new javax::swing::JLabel();
     
-this->totalFramesJComboBox= new javax::swing::JComboBox<>();
+this->totalFramesJComboBox= new javax::swing::JComboBox();
     
 
     int32_t size = 70;;
@@ -417,7 +417,7 @@ this->totalFramesJComboBox->setModel(new javax::swing::DefaultComboBoxModel(anim
     
 this->jLabel2= new javax::swing::JLabel();
     
-this->totalAnimationsJComboBox= new javax::swing::JComboBox<>();
+this->totalAnimationsJComboBox= new javax::swing::JComboBox();
     
 
     std::vector<std::string> animationStringArray = std::vector<std::string>(size -1);;
@@ -437,7 +437,7 @@ this->totalAnimationsJComboBox->setModel(new javax::swing::DefaultComboBoxModel(
     
 this->jLabel3= new javax::swing::JLabel();
     
-this->spriteTypeJComboBox= new javax::swing::JComboBox<>();
+this->spriteTypeJComboBox= new javax::swing::JComboBox();
     
 this->spriteTypeJComboBox->setModel(new javax::swing::DefaultComboBoxModel(std::vector<std::string>
                                                 {

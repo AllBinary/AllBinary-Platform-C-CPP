@@ -22,6 +22,8 @@
         
             #include "java/lang/Object.h"
         
+            #include "java/lang/ProcessBuilder.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Runtime.h"
@@ -106,8 +108,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/system/os/env/Process.h"
-
+        
 
 RuntimeEnvironmentVariables::RuntimeEnvironmentVariables() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 }
