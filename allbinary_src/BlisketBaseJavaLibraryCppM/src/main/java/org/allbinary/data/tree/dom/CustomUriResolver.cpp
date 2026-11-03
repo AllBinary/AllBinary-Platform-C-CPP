@@ -125,7 +125,7 @@ stringBuffer->append(href);
     AbPath* fileAbPath = dynamic_cast<AbPath*>(new AbFilePath(stringBuffer->toString()));;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->XMLLOGGING))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->XMLLOGGING))
                         
                                     {
                                     stringBuffer->delete_(0, stringBuffer->length());

@@ -62,6 +62,7 @@ class BundleContext
     public: virtual ServiceRegistration* registerService(std::string clazz, Object* service, Dictionary* properties) = 0;
     public: ServiceRegistration* registerService(std::string clazz, const std::string& service, Dictionary* properties) { return registerService(clazz, JavaString::box(service), properties); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> ServiceRegistration* registerService(std::string clazz, BoxValue service, Dictionary* properties) { return registerService(clazz, JavaBoxes::toObject(service), properties); }
+    public: template<typename BoxElement> ServiceRegistration* registerService(std::string clazz, const std::vector<BoxElement>& service, Dictionary* properties) { return registerService(clazz, JavaBoxes::toObject(service), properties); }
 
     public: virtual Object* getService(ServiceReference* reference) = 0;
 

@@ -74,7 +74,7 @@
 
 AbEmail::AbEmail(std::string server, std::string from, std::string to, std::string subject, std::string textBody, std::string htmlAttachment, std::string contentBase){
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGINGERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGINGERROR))
                         
                                     {
                                     this->email= new Email(from, to, subject, server, textBody, htmlAttachment, contentBase, true);

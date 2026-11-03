@@ -153,7 +153,7 @@ this->body= JavaBoxes::unbox<std::string>(hashMap->get(BodyData::getInstance()->
     bool isValid = Boolean::TRUE;;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->IS_VALID);
@@ -171,7 +171,7 @@ this->body= JavaBoxes::unbox<std::string>(hashMap->get(BodyData::getInstance()->
                                     }
                                 
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("BodyValidation: ") +JavaString::valueOf(isValid), this, this->commonStrings->IS_VALID);
@@ -192,7 +192,7 @@ this->body= JavaBoxes::unbox<std::string>(hashMap->get(BodyData::getInstance()->
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put("Failed to validate form", this, this->commonStrings->IS_VALID, &e);
@@ -246,7 +246,7 @@ stringBuffer->appendint(AbSqlData::MAXBLOB);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);

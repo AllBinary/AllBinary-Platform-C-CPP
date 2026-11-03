@@ -68,6 +68,7 @@ class AutomaticCacheInterface: public virtual CacheInterface {
     public: virtual CacheableInterface* get(Object* key) = 0;
     public: CacheableInterface* get(const std::string& key) { return get(JavaString::box(key)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> CacheableInterface* get(BoxValue key) { return get(JavaBoxes::toObject(key)); }
+    public: template<typename BoxElement> CacheableInterface* get(const std::vector<BoxElement>& key) { return get(JavaBoxes::toObject(key)); }
 
 };
 

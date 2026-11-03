@@ -104,7 +104,7 @@ AcceptableResponseGenerator::AcceptableResponseGenerator() : logUtil(LogUtil::ge
     std::string result = acceptableResponseUtil->getTagName(0);;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTP))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTP))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Request Type: ") +JavaString::valueOf(acceptable), this, commonStrings->GET);
@@ -141,7 +141,7 @@ AcceptableResponseGenerator::AcceptableResponseGenerator() : logUtil(LogUtil::ge
                                     }
                                 
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTP))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTP))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Response Type: ") +JavaString::valueOf(result), this, commonStrings->GET);
@@ -162,7 +162,7 @@ AcceptableResponseGenerator::AcceptableResponseGenerator() : logUtil(LogUtil::ge
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPERROR))
                         
                                     {
                                     this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET, &e);

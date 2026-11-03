@@ -119,7 +119,7 @@ this->setDocument(this->generate(this->toXmlDoc()));
             
     auto InsertTemplateCustomizerTransformInfoObjectConfig::set(std::string aParentViewName) -> void{
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Setting: ") +JavaString::valueOf(aParentViewName), this, "set()");
@@ -140,7 +140,7 @@ this->setDocument(this->generate(this->toXmlDoc()));
                         
                                     {
                                     
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("Replacing", this, "set()");
@@ -169,7 +169,7 @@ parentComponentsNodeList->item(0)->appendChild((new TransformInfoDomNodeView(aPa
                                 
                         else {
                             
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("Setting", this, "set()");

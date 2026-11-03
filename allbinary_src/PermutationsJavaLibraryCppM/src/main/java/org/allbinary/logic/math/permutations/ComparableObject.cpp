@@ -36,6 +36,8 @@
         
             #include "java/lang/Object.h"
         
+            #include "java/lang/Comparable.h"
+        
 #include <org/allbinary/TsUtil.h>
 
       
@@ -57,8 +59,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/math/permutations/Comparable.h"
-
+        
 
 ComparableObject::ComparableObject() {
         }

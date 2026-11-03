@@ -223,7 +223,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
                                 
                         else {
                             
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAX))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAX))
                         
                                     {
                                     this->logUtil->putF("Class Node Null", this, this->commonStrings->GET_INSTANCE);
@@ -239,7 +239,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
                                 
                         else {
                             
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAX))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAX))
                         
                                     {
                                     this->logUtil->putF("Tax Name Node Node Children", this, this->commonStrings->GET_INSTANCE);

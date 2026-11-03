@@ -58,10 +58,12 @@ class OpenGLObject3dProcessor
     public: void process(GL10* gl, Object* object3d);
     public: void process(GL10* gl, const std::string& object3d) { return process(gl, JavaString::box(object3d)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void process(GL10* gl, BoxValue object3d) { return process(gl, JavaBoxes::toObject(object3d)); }
+    public: template<typename BoxElement> void process(GL10* gl, const std::vector<BoxElement>& object3d) { return process(gl, JavaBoxes::toObject(object3d)); }
 
     public: void process(GL10* gl, Object* object3d, int32_t index);
     public: void process(GL10* gl, const std::string& object3d, int32_t index) { return process(gl, JavaString::box(object3d), index); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void process(GL10* gl, BoxValue object3d, int32_t index) { return process(gl, JavaBoxes::toObject(object3d), index); }
+    public: template<typename BoxElement> void process(GL10* gl, const std::vector<BoxElement>& object3d, int32_t index) { return process(gl, JavaBoxes::toObject(object3d), index); }
 
 };
 

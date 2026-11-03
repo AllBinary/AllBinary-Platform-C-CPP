@@ -109,7 +109,7 @@ this->jButton1= new javax::swing::JButton();
     
 this->textJLabel= new javax::swing::JLabel();
     
-setDefaultCloseOperation(javax.swing->WindowConstants->DISPOSE_ON_CLOSE);
+setDefaultCloseOperation(swing->WindowConstants->DISPOSE_ON_CLOSE);
     
 this->jButton1->setText("OK");
     
@@ -137,9 +137,9 @@ this->textJLabel->setText("No Text Set");
     
 getContentPane()->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addGap(80, 80, 80)->addComponent(jButton1))->addGroup(layout->createSequentialGroup()->addContainerGap()->addComponent(textJLabel, javax.swing->GroupLayout->DEFAULT_SIZE, 184, Short::MAX_VALUE)))->addContainerGap()));
+layout->setHorizontalGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addGap(80, 80, 80)->addComponent(jButton1))->addGroup(layout->createSequentialGroup()->addContainerGap()->addComponent(textJLabel, swing->GroupLayout->DEFAULT_SIZE, 184, Short::MAX_VALUE)))->addContainerGap()));
     
-layout->setVerticalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addGap(20, 20, 20)->addComponent(textJLabel, javax.swing->GroupLayout->PREFERRED_SIZE, 20, javax.swing->GroupLayout->PREFERRED_SIZE)->addGap(30, 30, 30)->addComponent(jButton1)));
+layout->setVerticalGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addGap(20, 20, 20)->addComponent(textJLabel, swing->GroupLayout->PREFERRED_SIZE, 20, swing->GroupLayout->PREFERRED_SIZE)->addGap(30, 30, 30)->addComponent(jButton1)));
     
 pack();
     
@@ -164,7 +164,7 @@ this->setVisible(false);
 
 
     auto BasicTextJDialog::main(std::vector<std::string> args) -> void{
-java.awt->EventQueue->invokeLater([]() {
+awt->EventQueue->invokeLater([]() {
     class Anonymous0 : public ARunnable {
     public:
     using ARunnable::ARunnable;

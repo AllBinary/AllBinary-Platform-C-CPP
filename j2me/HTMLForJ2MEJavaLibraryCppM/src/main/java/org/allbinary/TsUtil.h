@@ -94,18 +94,21 @@ class TsUtil
     public: int32_t hashCode(Object* anyType);
     public: int32_t hashCode(const std::string& anyType) { return hashCode(JavaString::box(anyType)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> int32_t hashCode(BoxValue anyType) { return hashCode(JavaBoxes::toObject(anyType)); }
+    public: template<typename BoxElement> int32_t hashCode(const std::vector<BoxElement>& anyType) { return hashCode(JavaBoxes::toObject(anyType)); }
 
                 //@Throws(InterruptedException.constructor)
             
     public: void waitFor(Object* any, int64_t timeoutMillis);
     public: void waitFor(const std::string& any, int64_t timeoutMillis) { return waitFor(JavaString::box(any), timeoutMillis); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void waitFor(BoxValue any, int64_t timeoutMillis) { return waitFor(JavaBoxes::toObject(any), timeoutMillis); }
+    public: template<typename BoxElement> void waitFor(const std::vector<BoxElement>& any, int64_t timeoutMillis) { return waitFor(JavaBoxes::toObject(any), timeoutMillis); }
 
                 //@Throws(RecordStoreNotOpenException.constructor, InvalidRecordIDException.constructor, RecordStoreException.constructor)
             
     public: std::vector<int8_t> getRecord(Object* anyType, int32_t recordId);
     public: std::vector<int8_t> getRecord(const std::string& anyType, int32_t recordId) { return getRecord(JavaString::box(anyType), recordId); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> std::vector<int8_t> getRecord(BoxValue anyType, int32_t recordId) { return getRecord(JavaBoxes::toObject(anyType), recordId); }
+    public: template<typename BoxElement> std::vector<int8_t> getRecord(const std::vector<BoxElement>& anyType, int32_t recordId) { return getRecord(JavaBoxes::toObject(anyType), recordId); }
 
     public: int32_t compareTo(std::string a, std::string b);
 

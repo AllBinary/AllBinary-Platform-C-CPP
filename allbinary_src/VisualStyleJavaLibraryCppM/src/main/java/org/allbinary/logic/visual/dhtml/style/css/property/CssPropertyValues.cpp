@@ -120,7 +120,7 @@ this->propertyValueVector= new BasicArrayListD();
     BasicArrayList* cssPropertyNodeVector = DomSearchHelper::getAllNodes(CssPropertyValueData::getInstance()->NAME, node->getChildNodes());;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->STYLE))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->STYLE))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Number Of Properties: ") +JavaString::valueOf(cssPropertyNodeVector->size()), this, "CssProperties()");
@@ -148,7 +148,7 @@ this->propertyValueVector= new BasicArrayListD();
     std::string propertyValue = DomNodeHelper::getTextNodeValue(valueNode);;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->STYLE))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->STYLE))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Property Value: ") +JavaString::valueOf(propertyValue), this, "CssProperties()");
@@ -246,7 +246,7 @@ index++;
             
     auto CssPropertyValues::toXmlNode(Document* document) -> Node*{
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     

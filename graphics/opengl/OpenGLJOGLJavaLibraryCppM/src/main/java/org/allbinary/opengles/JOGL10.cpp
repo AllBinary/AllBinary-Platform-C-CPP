@@ -72,9 +72,9 @@ this->gl10= gl2;
     
 this->glu= GLU::createGLU(this->gl10);
     
-this->GL_LINE= com.jogamp->opengl->GL2->GL_LINE;
+this->GL_LINE= jogamp->opengl->GL2->GL_LINE;
     
-this->GL_QUAD_STRIP= com.jogamp->opengl->GL2->GL_QUAD_STRIP;
+this->GL_QUAD_STRIP= jogamp->opengl->GL2->GL_QUAD_STRIP;
     
 }
 

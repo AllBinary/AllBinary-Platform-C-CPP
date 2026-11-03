@@ -75,7 +75,7 @@ LogUserEmailEventListenerModule::LogUserEmailEventListenerModule() : logUtil(Log
             
     auto LogUserEmailEventListenerModule::onEmailSendRequest(EmailEvent* userEmailInfoEvent) -> void{
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
                                     

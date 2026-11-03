@@ -75,10 +75,12 @@ class ABHashMap: public HashMap<K, V> {
     public: V get(Object* key);
     public: V get(const std::string& key) { return get(JavaString::box(key)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> V get(BoxValue key) { return get(JavaBoxes::toObject(key)); }
+    public: template<typename BoxElement> V get(const std::vector<BoxElement>& key) { return get(JavaBoxes::toObject(key)); }
 
     public: bool containsKey(Object* key);
     public: bool containsKey(const std::string& key) { return containsKey(JavaString::box(key)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> bool containsKey(BoxValue key) { return containsKey(JavaBoxes::toObject(key)); }
+    public: template<typename BoxElement> bool containsKey(const std::vector<BoxElement>& key) { return containsKey(JavaBoxes::toObject(key)); }
 
     public: V put(K key, V value);
 
@@ -91,12 +93,14 @@ class ABHashMap: public HashMap<K, V> {
     public: V remove(Object* key);
     public: V remove(const std::string& key) { return remove(JavaString::box(key)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> V remove(BoxValue key) { return remove(JavaBoxes::toObject(key)); }
+    public: template<typename BoxElement> V remove(const std::vector<BoxElement>& key) { return remove(JavaBoxes::toObject(key)); }
 
     public: void clear();
 
     public: bool containsValue(Object* value);
     public: bool containsValue(const std::string& value) { return containsValue(JavaString::box(value)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> bool containsValue(BoxValue value) { return containsValue(JavaBoxes::toObject(value)); }
+    public: template<typename BoxElement> bool containsValue(const std::vector<BoxElement>& value) { return containsValue(JavaBoxes::toObject(value)); }
 
     public: Set<K>* keySet();
 
@@ -105,6 +109,7 @@ class ABHashMap: public HashMap<K, V> {
     public: V getOrDefault(Object* key, V defaultValue);
     public: V getOrDefault(const std::string& key, V defaultValue) { return getOrDefault(JavaString::box(key), defaultValue); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> V getOrDefault(BoxValue key, V defaultValue) { return getOrDefault(JavaBoxes::toObject(key), defaultValue); }
+    public: template<typename BoxElement> V getOrDefault(const std::vector<BoxElement>& key, V defaultValue) { return getOrDefault(JavaBoxes::toObject(key), defaultValue); }
 
     public: V putIfAbsent(K key, V value);
 

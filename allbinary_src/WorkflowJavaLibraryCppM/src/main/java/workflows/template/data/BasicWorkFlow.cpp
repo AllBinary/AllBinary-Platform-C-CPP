@@ -95,7 +95,7 @@
 
 BasicWorkFlow::BasicWorkFlow(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), abeClientInformation(ServiceClientInformationInterfaceFactory::getInstance()){
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->WORKFLOW))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->WORKFLOW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Properties: ") +JavaString::valueOf(propertiesHashMap->toString()), this, "BasicWorkFlow()");
@@ -154,7 +154,7 @@ this->validationDomNodeInterface= dynamic_cast<ValidationComponentInterface*>(Tr
             
     auto BasicWorkFlow::process() -> int32_t{
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->WORKFLOW))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->WORKFLOW))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->PROCESS);

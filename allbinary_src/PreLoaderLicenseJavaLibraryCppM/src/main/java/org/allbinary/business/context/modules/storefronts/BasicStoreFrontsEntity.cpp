@@ -107,7 +107,7 @@ keysAndValues->put(StoreFrontData::getInstance()->NAME, name);
                                     throw Exception(JavaString::valueOf("No Such Store: ") +JavaString::valueOf(name));
                                 
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->FACTORYERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->FACTORYERROR))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("StoreFront: ") +JavaString::valueOf(storeHashMap->toString()), this, "getStore()");

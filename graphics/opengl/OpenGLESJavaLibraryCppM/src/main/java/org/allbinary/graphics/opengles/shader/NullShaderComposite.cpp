@@ -81,7 +81,7 @@ NullShaderComposite* NullShaderComposite::instance = []() {
 }
 
     };
-    return new Anonymous0(OpenGLCapabilities::getInstance()->VERSION_2_0, 
+    return new Anonymous0(OpenGLCapabilities::getInstance()->VERSION_2_0, std::vector<Shader*>
                                                 {
                                                     new Shader(),new Shader()
                                                 }, CompositeShaderUpdater::getInstance(), ShaderInitializer::getInstance(), ModelViewProjection::getInstance(), NullOpenGLProcessorFactory::getInstance(), NullOpenGLProcessorFactory::getInstance(), NullOpenGLProcessorFactory::getInstance());

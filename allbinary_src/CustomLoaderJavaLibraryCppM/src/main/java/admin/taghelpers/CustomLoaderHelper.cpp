@@ -95,7 +95,7 @@ CustomLoaderHelper::CustomLoaderHelper() : logUtil(LogUtil::getInstance()), comm
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return org.allbinary->globals->URLGLOBALS->getWebappPath();;
+                        return allbinary->globals->URLGLOBALS->getWebappPath();;
     
 
                 //: 
@@ -131,7 +131,7 @@ URLGLOBALS::init(urlGlobals);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "setWebappPath()", &e);

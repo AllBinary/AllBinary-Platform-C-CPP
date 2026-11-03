@@ -91,7 +91,7 @@ DeleteValidationView::DeleteValidationView(TransformInfoInterface* transformInfo
 this->workFlowName= this->getPageContext()->getRequest()->getParameter(WorkFlowData::getInstance()->NAME);
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Name: ") +JavaString::valueOf(this->workFlowName), this, this->commonStrings->CONSTRUCTOR);
@@ -127,7 +127,7 @@ this->workFlowName= this->getPageContext()->getRequest()->getParameter(WorkFlowD
                         
                                     {
                                     
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("WorkFlow does not exist.", this, this->commonStrings->IS_VALID);
@@ -159,7 +159,7 @@ this->workFlowName= this->getPageContext()->getRequest()->getParameter(WorkFlowD
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to validate form", this, this->commonStrings->IS_VALID, &e);
@@ -202,7 +202,7 @@ this->workFlowName= this->getPageContext()->getRequest()->getParameter(WorkFlowD
                         
                                     {
                                     
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("WorkFlow does not exist.", this, "validationInfo()");
@@ -228,7 +228,7 @@ stringBuffer->append("WorkFlow does not exist<br />");
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);

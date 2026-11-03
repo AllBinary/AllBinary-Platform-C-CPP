@@ -178,7 +178,7 @@ this->title= stringUtil->EMPTY_STRING;
                         }
                             
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF((new StringMaker())->append("Value: ")->append(this->value)->append("\nTitle: ")->append(this->title)->append("\nDescription: ")->append(this->description)->toString(), this, this->commonStrings->CONSTRUCTOR);
@@ -190,7 +190,7 @@ this->title= stringUtil->EMPTY_STRING;
     BasicArrayList* cssElementStyleNodeVector = DomSearchHelper::getAllNodes(CssElementData::getInstance()->NAME, node->getChildNodes());;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Child Css Elements: ") +JavaString::valueOf(cssElementStyleNodeVector->size()), this, "CssElementView()");
@@ -210,7 +210,7 @@ this->cssPropertyVector= CssPropertiesValidationFactory::getInstance(nodeList);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put((new StringMaker())->append("Value: ")->append(this->value)->append("\nTitle: ")->append(this->title)->append("\nDescription: ")->append(this->description)->toString(), this, this->commonStrings->CONSTRUCTOR, &e);
@@ -268,7 +268,7 @@ hashMap->put(this->DESCRIPTION, this->description);
     HashMap<Object*, Object*>* hashMap = this->toHashMap();;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("CssView HashMap: ") +JavaString::valueOf(hashMap->toString()), this, "toXmlNode");

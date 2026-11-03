@@ -73,6 +73,7 @@ class ImageArrayRotationAnimation: public ImageArrayBaseRotationAnimation {
     /*protected*/ public: static ImageArrayRotationAnimation* createAnimation(Object* anyType, AnimationBehavior* animationBehavior);
     /*protected*/ public: static ImageArrayRotationAnimation* createAnimation(const std::string& anyType, AnimationBehavior* animationBehavior) { return createAnimation(JavaString::box(anyType), animationBehavior); }
     /*protected*/ public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> static ImageArrayRotationAnimation* createAnimation(BoxValue anyType, AnimationBehavior* animationBehavior) { return createAnimation(JavaBoxes::toObject(anyType), animationBehavior); }
+    /*protected*/ public: template<typename BoxElement> static ImageArrayRotationAnimation* createAnimation(const std::vector<BoxElement>& anyType, AnimationBehavior* animationBehavior) { return createAnimation(JavaBoxes::toObject(anyType), animationBehavior); }
 
     private: int32_t expectedTotalFrames= 0;
 

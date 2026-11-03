@@ -67,6 +67,7 @@ public: UniformLightColorOpenGLProcessor(ShaderComposite* shaderComposite, int32
     public: void process(GL10* gl, Object* unused);
     public: void process(GL10* gl, const std::string& unused) { return process(gl, JavaString::box(unused)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void process(GL10* gl, BoxValue unused) { return process(gl, JavaBoxes::toObject(unused)); }
+    public: template<typename BoxElement> void process(GL10* gl, const std::vector<BoxElement>& unused) { return process(gl, JavaBoxes::toObject(unused)); }
 
 };
 

@@ -127,7 +127,7 @@ StylesValidationFactory::StylesValidationFactory() : logUtil(LogUtil::getInstanc
     NodeList* nodeList = document->getElementsByTagName(StylesData::getInstance()->NAME);;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Style Present: ") +JavaString::valueOf(XmlDocumentHelper::toString(document)), this, commonStrings->GET_INSTANCE);
@@ -136,7 +136,7 @@ StylesValidationFactory::StylesValidationFactory() : logUtil(LogUtil::getInstanc
                                     }
                                 
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Styles Present: ") +JavaString::valueOf(nodeList->getLength()), this, commonStrings->GET_INSTANCE);
@@ -158,7 +158,7 @@ StylesValidationFactory::StylesValidationFactory() : logUtil(LogUtil::getInstanc
     BasicArrayList* styleNodeList = DomSearchHelper::getAllNodes(StyleData::getInstance()->NAME, stylesNode->getChildNodes());;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Number Of Style Nodes Present: ") +JavaString::valueOf(styleNodeList->size()), this, commonStrings->GET_INSTANCE);
@@ -180,7 +180,7 @@ StylesValidationFactory::StylesValidationFactory() : logUtil(LogUtil::getInstanc
     BasicArrayList* cssElementStyleNodeList = DomSearchHelper::getAllNodes(CssElementData::getInstance()->NAME, styleNode->getChildNodes());;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Number Of Element Nodes Present: ") +JavaString::valueOf(cssElementStyleNodeList->size()), this, commonStrings->GET_INSTANCE);
@@ -201,7 +201,7 @@ StylesValidationFactory::StylesValidationFactory() : logUtil(LogUtil::getInstanc
 }
 
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("No Style Present", this, commonStrings->GET_INSTANCE);

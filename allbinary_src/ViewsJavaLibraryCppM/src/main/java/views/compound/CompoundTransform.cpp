@@ -99,7 +99,7 @@ this->setURIResolver(dynamic_cast<URIResolver*>(new StoreUriResolver(this->getTr
     CompoundContextTransformInfoObjectConfig* objectConfig = new CompoundContextTransformInfoObjectConfig(this->abeClientInformation, this->getTransformInfoInterface(), this->getTransformInfoInterface()->getObjectConfigInterface()->toXmlDoc());;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("\nObjectConfig: \n") +JavaString::valueOf(objectConfig->toString()), this, this->commonStrings->CONSTRUCTOR);

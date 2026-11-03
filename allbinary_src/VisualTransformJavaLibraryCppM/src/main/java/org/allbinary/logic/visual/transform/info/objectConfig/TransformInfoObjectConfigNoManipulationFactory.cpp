@@ -124,7 +124,7 @@ TransformInfoObjectConfigNoManipulationFactory::TransformInfoObjectConfigNoManip
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Could Not Load Object Config", this, commonStrings->GET_INSTANCE, &e);

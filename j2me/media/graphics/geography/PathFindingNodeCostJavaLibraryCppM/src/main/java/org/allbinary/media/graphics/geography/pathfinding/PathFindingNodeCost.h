@@ -36,6 +36,8 @@
         
             #include "java/lang/Object.h"
         
+            #include "java/lang/Comparable.h"
+        
             #include "java/lang/Exception.h"
         
 class StringMaker;
@@ -61,7 +63,6 @@ class CommonLabels;
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNode.h"
-#include "org/allbinary/media/graphics/geography/pathfinding/Comparable.h"
 class PathFindingNodeCostInfo;
 
                                 
@@ -110,9 +111,6 @@ public: PathFindingNodeCost(Object* parent, GeographicMapCellPosition* geographi
 #endif
 #if __has_include("org/allbinary/media/graphics/geography/pathfinding/PathFindingNode.h")
 #include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNode.h"
-#endif
-#if __has_include("org/allbinary/media/graphics/geography/pathfinding/Comparable.h")
-#include "org/allbinary/media/graphics/geography/pathfinding/Comparable.h"
 #endif
 #if __has_include("org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCostInfo.h")
 #include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCostInfo.h"

@@ -94,10 +94,10 @@
 Replace::Replace(std::string key, std::string value) : logUtil(LogUtil::getInstance()), j2seUtil(J2SEUtil::getInstance()){
 this->hashMap= StdUtil::getInstance()->createHashMap();
     
-this->hashMap->put(
+this->hashMap->put(std::vector<std::string>
                                                 {
                                                     key
-                                                }, 
+                                                }, std::vector<std::string>
                                                 {
                                                     value
                                                 });
@@ -180,7 +180,7 @@ values= JavaBoxes::unbox<std::vector<std::string>>(this->hashMap->get(keys));
     int32_t begin2= 0;;
     
 
-        while(index < replace->size())
+        while(index < replace.size())
         {
 
     int32_t begin = JavaString::indexOf(replace, keys[0], index);;
@@ -212,7 +212,7 @@ newStringBuffer->append(values[0]);
     
 index= newStringBuffer->length();
     
-newStringBuffer->append(JavaString::substring(replace, end, replace->size()));
+newStringBuffer->append(JavaString::substring(replace, end, replace.size()));
     
 replace= newStringBuffer->toString();
     
@@ -239,7 +239,7 @@ newStringBuffer->append(values[1]);
     
 index= newStringBuffer->length();
     
-newStringBuffer->append(JavaString::substring(replace, end2, replace->size()));
+newStringBuffer->append(JavaString::substring(replace, end2, replace.size()));
     
 replace= newStringBuffer->toString();
     
@@ -280,7 +280,7 @@ totalNumberOfReplaces++;
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->REPLACE))
+                        if(LogConfigTypes::LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->REPLACE))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Total Number Of Replaces: ") +JavaString::valueOf(totalNumberOfReplaces), this, this->ALL);
@@ -336,7 +336,7 @@ value= JavaBoxes::unbox<std::string>(this->hashMap->get(key));
     int32_t index = 0;;
     
 
-        while(index < replace->size())
+        while(index < replace.size())
         {
 newStringBuffer->delete_(0, newStringBuffer->length());
     
@@ -360,7 +360,7 @@ newStringBuffer->delete_(0, newStringBuffer->length());
     
 index= newStringBuffer->length();
     
-newStringBuffer->append(JavaString::substring(replace, end, replace->size()));
+newStringBuffer->append(JavaString::substring(replace, end, replace.size()));
     
 replace= newStringBuffer->toString();
     
@@ -384,7 +384,7 @@ totalNumberOfReplaces++;
 }
 
 
-                        if(LogConfigTypes::LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->REPLACE))
+                        if(LogConfigTypes::LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->REPLACE))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Total Number Of Replaces: ") +JavaString::valueOf(totalNumberOfReplaces), this, this->ALL);

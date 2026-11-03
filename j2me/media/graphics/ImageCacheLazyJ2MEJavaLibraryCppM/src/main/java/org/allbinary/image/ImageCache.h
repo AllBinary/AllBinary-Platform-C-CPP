@@ -214,6 +214,7 @@ public: ImageCache();
     public: void addListener(Object* renderer);
     public: void addListener(const std::string& renderer) { return addListener(JavaString::box(renderer)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void addListener(BoxValue renderer) { return addListener(JavaBoxes::toObject(renderer)); }
+    public: template<typename BoxElement> void addListener(const std::vector<BoxElement>& renderer) { return addListener(JavaBoxes::toObject(renderer)); }
 
                 //@Throws(Exception.constructor)
             
@@ -266,16 +267,19 @@ public: ImageCache();
     public: Image* getWithKey(Object* key);
     public: Image* getWithKey(const std::string& key) { return getWithKey(JavaString::box(key)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> Image* getWithKey(BoxValue key) { return getWithKey(JavaBoxes::toObject(key)); }
+    public: template<typename BoxElement> Image* getWithKey(const std::vector<BoxElement>& key) { return getWithKey(JavaBoxes::toObject(key)); }
 
     public: int32_t getIndex(Object* key);
     public: int32_t getIndex(const std::string& key) { return getIndex(JavaString::box(key)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> int32_t getIndex(BoxValue key) { return getIndex(JavaBoxes::toObject(key)); }
+    public: template<typename BoxElement> int32_t getIndex(const std::vector<BoxElement>& key) { return getIndex(JavaBoxes::toObject(key)); }
 
                 //@Throws(Exception.constructor)
             
     /*protected*/ public: Image* createImageFromInputStream(Object* key, InputStream* inputStream);
     /*protected*/ public: Image* createImageFromInputStream(const std::string& key, InputStream* inputStream) { return createImageFromInputStream(JavaString::box(key), inputStream); }
     /*protected*/ public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> Image* createImageFromInputStream(BoxValue key, InputStream* inputStream) { return createImageFromInputStream(JavaBoxes::toObject(key), inputStream); }
+    /*protected*/ public: template<typename BoxElement> Image* createImageFromInputStream(const std::vector<BoxElement>& key, InputStream* inputStream) { return createImageFromInputStream(JavaBoxes::toObject(key), inputStream); }
 
                 //@Throws(Exception.constructor)
             

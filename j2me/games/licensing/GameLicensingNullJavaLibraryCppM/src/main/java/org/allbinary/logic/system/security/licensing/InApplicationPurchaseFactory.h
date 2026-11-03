@@ -79,10 +79,12 @@ private: InApplicationPurchaseFactory();
     public: void onResult(int32_t requestCode, int32_t resultCode, Object* data);
     public: void onResult(int32_t requestCode, int32_t resultCode, const std::string& data) { return onResult(requestCode, resultCode, JavaString::box(data)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void onResult(int32_t requestCode, int32_t resultCode, BoxValue data) { return onResult(requestCode, resultCode, JavaBoxes::toObject(data)); }
+    public: template<typename BoxElement> void onResult(int32_t requestCode, int32_t resultCode, const std::vector<BoxElement>& data) { return onResult(requestCode, resultCode, JavaBoxes::toObject(data)); }
 
     public: void onSaveState(Object* anyType);
     public: void onSaveState(const std::string& anyType) { return onSaveState(JavaString::box(anyType)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void onSaveState(BoxValue anyType) { return onSaveState(JavaBoxes::toObject(anyType)); }
+    public: template<typename BoxElement> void onSaveState(const std::vector<BoxElement>& anyType) { return onSaveState(JavaBoxes::toObject(anyType)); }
 
     public: void onStop();
 

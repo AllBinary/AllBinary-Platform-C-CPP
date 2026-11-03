@@ -68,6 +68,7 @@ class ForcedLogUtil
     public: static void log(std::string message, Object* anyType);
     public: static void log(std::string message, const std::string& anyType) { return log(message, JavaString::box(anyType)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> static void log(std::string message, BoxValue anyType) { return log(message, JavaBoxes::toObject(anyType)); }
+    public: template<typename BoxElement> static void log(std::string message, const std::vector<BoxElement>& anyType) { return log(message, JavaBoxes::toObject(anyType)); }
 
 
             

@@ -77,10 +77,12 @@ class ABStack: public Stack<E> {
     public: int32_t search(Object* obj);
     public: int32_t search(const std::string& obj) { return search(JavaString::box(obj)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> int32_t search(BoxValue obj) { return search(JavaBoxes::toObject(obj)); }
+    public: template<typename BoxElement> int32_t search(const std::vector<BoxElement>& obj) { return search(JavaBoxes::toObject(obj)); }
 
     public: bool removeElement(Object* obj);
     public: bool removeElement(const std::string& obj) { return removeElement(JavaString::box(obj)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> bool removeElement(BoxValue obj) { return removeElement(JavaBoxes::toObject(obj)); }
+    public: template<typename BoxElement> bool removeElement(const std::vector<BoxElement>& obj) { return removeElement(JavaBoxes::toObject(obj)); }
 
 };
 

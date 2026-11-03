@@ -112,7 +112,7 @@ this->finishedListenerInterface= finishedListenerInterface;
     auto FileJDialog::initComponents() -> void{
 this->jFileChooser1= new javax::swing::JFileChooser();
     
-setDefaultCloseOperation(javax.swing->WindowConstants->DISPOSE_ON_CLOSE);
+setDefaultCloseOperation(swing->WindowConstants->DISPOSE_ON_CLOSE);
     
 this->jFileChooser1->addActionListener([&]() {
     static thread_local FileJDialog* anonymousOuter0 = nullptr;
@@ -136,9 +136,9 @@ outer->jFileChooser1ActionPerformed(evt);
     
 getContentPane()->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(org.jdesktop->layout->GroupLayout->LEADING)->add(org.jdesktop->layout->GroupLayout->TRAILING, layout->createSequentialGroup()->addContainerGap(org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)->add(jFileChooser1, org.jdesktop->layout->GroupLayout->PREFERRED_SIZE, org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, org.jdesktop->layout->GroupLayout->PREFERRED_SIZE)->addContainerGap()));
+layout->setHorizontalGroup(layout->createParallelGroup(jdesktop->layout->GroupLayout->LEADING)->add(jdesktop->layout->GroupLayout->TRAILING, layout->createSequentialGroup()->addContainerGap(jdesktop->layout->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)->add(jFileChooser1, jdesktop->layout->GroupLayout->PREFERRED_SIZE, jdesktop->layout->GroupLayout->DEFAULT_SIZE, jdesktop->layout->GroupLayout->PREFERRED_SIZE)->addContainerGap()));
     
-layout->setVerticalGroup(layout->createParallelGroup(org.jdesktop->layout->GroupLayout->LEADING)->add(layout->createSequentialGroup()->addContainerGap()->add(jFileChooser1, org.jdesktop->layout->GroupLayout->PREFERRED_SIZE, 357, org.jdesktop->layout->GroupLayout->PREFERRED_SIZE)->addContainerGap(org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)));
+layout->setVerticalGroup(layout->createParallelGroup(jdesktop->layout->GroupLayout->LEADING)->add(layout->createSequentialGroup()->addContainerGap()->add(jFileChooser1, jdesktop->layout->GroupLayout->PREFERRED_SIZE, 357, jdesktop->layout->GroupLayout->PREFERRED_SIZE)->addContainerGap(jdesktop->layout->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)));
     
 pack();
     
@@ -180,7 +180,7 @@ this->logUtil->putF(JavaString::valueOf("Starting Action Command: ") +JavaString
 
 
     auto FileJDialog::main(std::vector<std::string> args) -> void{
-java.awt->EventQueue->invokeLater([]() {
+awt->EventQueue->invokeLater([]() {
     class Anonymous0 : public ARunnable {
     public:
     using ARunnable::ARunnable;

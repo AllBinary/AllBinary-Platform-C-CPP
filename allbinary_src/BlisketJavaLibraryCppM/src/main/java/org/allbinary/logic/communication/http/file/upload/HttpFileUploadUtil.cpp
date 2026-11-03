@@ -182,7 +182,7 @@ stringBuffer->append("Size:");
 stringBuffer->append(" Not Calculated Yet");
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTP))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTP))
                         
                                     {
                                     logUtil->putF(stringBuffer->toString(), getInstance(), "log()");
@@ -230,7 +230,7 @@ stringBuffer->append("Size:");
 stringBuffer->appendlong(fileItem->getSize());
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
                         
                                     {
                                     logUtil->putF(stringBuffer->toString(), getInstance(), "log()");

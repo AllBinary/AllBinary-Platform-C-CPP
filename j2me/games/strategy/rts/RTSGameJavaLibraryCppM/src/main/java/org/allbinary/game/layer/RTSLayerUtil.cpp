@@ -432,7 +432,7 @@ list->clear();
 
     FakeLayerManager* layerManager = new FakeLayerManager(GameInfo::NONE);;
     
-layerManager->setGeographicMapInterface(
+layerManager->setGeographicMapInterface(std::vector<BasicGeographicMap*>
                                                 {
                                                     baseRaceTrackGeographicMap
                                                 });

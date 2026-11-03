@@ -74,6 +74,7 @@ class ViewPositionBase: public GPoint {
     public: void setAllbinaryLayer(Object* allbinaryLayer);
     public: void setAllbinaryLayer(const std::string& allbinaryLayer) { return setAllbinaryLayer(JavaString::box(allbinaryLayer)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void setAllbinaryLayer(BoxValue allbinaryLayer) { return setAllbinaryLayer(JavaBoxes::toObject(allbinaryLayer)); }
+    public: template<typename BoxElement> void setAllbinaryLayer(const std::vector<BoxElement>& allbinaryLayer) { return setAllbinaryLayer(JavaBoxes::toObject(allbinaryLayer)); }
 
 };
 

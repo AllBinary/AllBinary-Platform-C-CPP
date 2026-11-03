@@ -103,7 +103,7 @@ EmailQueueFactory::getInstance()->offer(dynamic_cast<EmailInterface*>(email->get
             
     auto UserEmailEventListenerModule::onEmailSendRequest(EmailEvent* emailEvent) -> void{
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Add Email To Que For Sending: ") +JavaString::valueOf(emailEvent->toString()), this, "onEmailSendRequest");

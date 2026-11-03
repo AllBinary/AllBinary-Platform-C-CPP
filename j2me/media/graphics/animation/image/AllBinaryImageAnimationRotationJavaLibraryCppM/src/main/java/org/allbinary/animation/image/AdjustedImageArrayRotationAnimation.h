@@ -74,6 +74,7 @@ class AdjustedImageArrayRotationAnimation: public ImageArrayRotationAnimation {
     public: static AdjustedImageArrayRotationAnimation* createAdjustedImageArrayRotationAnimationInfo(Object* anyType, AnimationBehavior* animationBehavior);
     public: static AdjustedImageArrayRotationAnimation* createAdjustedImageArrayRotationAnimationInfo(const std::string& anyType, AnimationBehavior* animationBehavior) { return createAdjustedImageArrayRotationAnimationInfo(JavaString::box(anyType), animationBehavior); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> static AdjustedImageArrayRotationAnimation* createAdjustedImageArrayRotationAnimationInfo(BoxValue anyType, AnimationBehavior* animationBehavior) { return createAdjustedImageArrayRotationAnimationInfo(JavaBoxes::toObject(anyType), animationBehavior); }
+    public: template<typename BoxElement> static AdjustedImageArrayRotationAnimation* createAdjustedImageArrayRotationAnimationInfo(const std::vector<BoxElement>& anyType, AnimationBehavior* animationBehavior) { return createAdjustedImageArrayRotationAnimationInfo(JavaBoxes::toObject(anyType), animationBehavior); }
 
                 //@Throws(Exception.constructor)
             

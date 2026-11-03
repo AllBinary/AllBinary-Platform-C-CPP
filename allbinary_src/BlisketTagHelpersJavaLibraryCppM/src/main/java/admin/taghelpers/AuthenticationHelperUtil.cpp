@@ -113,7 +113,7 @@ AuthenticationHelperUtil* AuthenticationHelperUtil::instance = AuthenticationHel
             
     auto AuthenticationHelperUtil::isAuthorized(AuthenticationHelper* authenticationHelper, std::string filePath) -> bool{
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf(CommonLabels::getInstance()->START) +JavaString::valueOf(filePath), this, "isAuthorized()");
@@ -144,7 +144,7 @@ AuthenticationHelperUtil* AuthenticationHelperUtil::instance = AuthenticationHel
                         
                                     {
                                     
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("Authorized", this, "isAuthorized()");
@@ -165,7 +165,7 @@ AuthenticationHelperUtil* AuthenticationHelperUtil::instance = AuthenticationHel
                                 
                         else {
                             
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Not Authorized: ") +JavaString::valueOf(basicUserRole->toString()), this, "isAuthorized()");

@@ -71,24 +71,28 @@ public: PathFinderGraphHackVisitor(BasicGeographicMap* geographicMapInterface, i
     public: void visit(Object* graph, BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList);
     public: void visit(const std::string& graph, BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList) { return visit(JavaString::box(graph), startPathFindingNodeList, endPathFindingNodeList); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void visit(BoxValue graph, BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList) { return visit(JavaBoxes::toObject(graph), startPathFindingNodeList, endPathFindingNodeList); }
+    public: template<typename BoxElement> void visit(const std::vector<BoxElement>& graph, BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList) { return visit(JavaBoxes::toObject(graph), startPathFindingNodeList, endPathFindingNodeList); }
 
                 //@Throws(Exception.constructor)
             
     private: void fixStart(Object* graph, BasicArrayList* startPathFindingNodeList);
     private: void fixStart(const std::string& graph, BasicArrayList* startPathFindingNodeList) { return fixStart(JavaString::box(graph), startPathFindingNodeList); }
     private: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void fixStart(BoxValue graph, BasicArrayList* startPathFindingNodeList) { return fixStart(JavaBoxes::toObject(graph), startPathFindingNodeList); }
+    private: template<typename BoxElement> void fixStart(const std::vector<BoxElement>& graph, BasicArrayList* startPathFindingNodeList) { return fixStart(JavaBoxes::toObject(graph), startPathFindingNodeList); }
 
                 //@Throws(Exception.constructor)
             
     private: void fixEnd(Object* graph, BasicArrayList* endPathFindingNodeList);
     private: void fixEnd(const std::string& graph, BasicArrayList* endPathFindingNodeList) { return fixEnd(JavaString::box(graph), endPathFindingNodeList); }
     private: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void fixEnd(BoxValue graph, BasicArrayList* endPathFindingNodeList) { return fixEnd(JavaBoxes::toObject(graph), endPathFindingNodeList); }
+    private: template<typename BoxElement> void fixEnd(const std::vector<BoxElement>& graph, BasicArrayList* endPathFindingNodeList) { return fixEnd(JavaBoxes::toObject(graph), endPathFindingNodeList); }
 
                 //@Throws(Exception.constructor)
             
     private: void fixOverPassEdges(Object* graph);
     private: void fixOverPassEdges(const std::string& graph) { return fixOverPassEdges(JavaString::box(graph)); }
     private: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void fixOverPassEdges(BoxValue graph) { return fixOverPassEdges(JavaBoxes::toObject(graph)); }
+    private: template<typename BoxElement> void fixOverPassEdges(const std::vector<BoxElement>& graph) { return fixOverPassEdges(JavaBoxes::toObject(graph)); }
 
                 //@Throws(Exception.constructor)
             
@@ -101,6 +105,7 @@ public: PathFinderGraphHackVisitor(BasicGeographicMap* geographicMapInterface, i
     public: bool isValid(Object* graphPath);
     public: bool isValid(const std::string& graphPath) { return isValid(JavaString::box(graphPath)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> bool isValid(BoxValue graphPath) { return isValid(JavaBoxes::toObject(graphPath)); }
+    public: template<typename BoxElement> bool isValid(const std::vector<BoxElement>& graphPath) { return isValid(JavaBoxes::toObject(graphPath)); }
 
 };
 

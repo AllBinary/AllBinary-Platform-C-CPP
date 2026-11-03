@@ -92,7 +92,7 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/combat/damage/DamageFloaters.h"
 
-auto PtsDamageFloaters::basicColorArrayIndexer_owner() -> BasicColorArrayIndexer* { static std::unique_ptr<BasicColorArrayIndexer> value(new BasicColorArrayIndexer(
+auto PtsDamageFloaters::basicColorArrayIndexer_owner() -> BasicColorArrayIndexer* { static std::unique_ptr<BasicColorArrayIndexer> value(new BasicColorArrayIndexer(std::vector<BasicColor*>
                                                 {
                                                     BasicColorFactory::getInstance()->WHITE,BasicColorFactory::getInstance()->RED,BasicColorFactory::getInstance()->YELLOW,BasicColorFactory::getInstance()->BLUE
                                                 })); return value.get(); }

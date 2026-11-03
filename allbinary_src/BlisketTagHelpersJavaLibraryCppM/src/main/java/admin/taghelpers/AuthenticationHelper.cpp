@@ -139,7 +139,7 @@ this->weblisketSession= new WeblisketSession(hashMap, httpServletRequest);
 this->getFormData();
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATION))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATION))
                         
                                     {
                                     this->logUtil->putF(this->outputSessionInfo(), this, this->commonStrings->CONSTRUCTOR);
@@ -186,7 +186,7 @@ this->timeout= this->weblisketSession->getTimeout();
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATIONERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATIONERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "invalidateSession()", &e);
@@ -231,7 +231,7 @@ this->timeout= this->weblisketSession->getTimeout();
                         
                                     {
                                     
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATION))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATION))
                         
                                     {
                                     
@@ -270,7 +270,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "isSessionOld()");
                                 
                         else {
                             
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATION))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATION))
                         
                                     {
                                     this->logUtil->putF("Role Is Not In Session", this, "isSessionOld()");
@@ -315,7 +315,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "isSessionOld()");
     int64_t timeFirst = calendar->getTimeInMillis() -lastAccess;;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATION))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATION))
                         
                                     {
                                     
@@ -343,7 +343,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "isRarelyUsedSession()");
                                 
                         else {
                             
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATION))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATION))
                         
                                     {
                                     this->logUtil->putF("Role Is Not In Session", this, "isRarelyUsedSession()");
@@ -389,7 +389,7 @@ stringBuffer->append("Trying New login<p/>");
     std::string error = "Failed to set valid role";;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATIONERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATIONERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "validRole()", &e);
@@ -438,7 +438,7 @@ stringBuffer->append("Trying New login<p/>");
     std::string error = "Failed to set role invalid";;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATIONERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATIONERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "invalidRole()", &e);
@@ -592,7 +592,7 @@ stringBuffer->append("Trying New login<p/>");
                                 
                         else {
                             
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATION))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATION))
                         
                                     {
                                     this->logUtil->putF("Role Is Not In Session", this, "isAuthenticationSessionValid()");
@@ -616,7 +616,7 @@ stringBuffer->append("Trying New login<p/>");
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATIONERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATIONERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "isAuthenticatedSessionValid()", &e);
@@ -662,7 +662,7 @@ stringBuffer->append("Trying New login<p/>");
 
         try {
             
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATIONERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATIONERROR))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Starting: ") +JavaString::valueOf(userName), this, "processIfNewLogin()");
@@ -737,7 +737,7 @@ this->nextAttempt();
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATIONERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATIONERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "processIfNewLogin()", &e);
@@ -799,7 +799,7 @@ this->nextAttempt();
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATIONERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATIONERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "processInvalidation()", &e);

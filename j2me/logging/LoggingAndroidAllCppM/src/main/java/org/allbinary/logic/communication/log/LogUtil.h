@@ -87,6 +87,7 @@ private: LogUtil();
     /*actual*/ public: void putF(std::string specialMessage, Object* anyType, std::string functionName);
     public: void putF(std::string specialMessage, const std::string& anyType, std::string functionName) { return putF(specialMessage, JavaString::box(anyType), functionName); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void putF(std::string specialMessage, BoxValue anyType, std::string functionName) { return putF(specialMessage, JavaBoxes::toObject(anyType), functionName); }
+    public: template<typename BoxElement> void putF(std::string specialMessage, const std::vector<BoxElement>& anyType, std::string functionName) { return putF(specialMessage, JavaBoxes::toObject(anyType), functionName); }
 
     public: void putFS(std::string specialMessage, std::string string, std::string functionName);
 
@@ -95,6 +96,7 @@ private: LogUtil();
     /*actual*/ public: void putS(std::string specialMessage, std::string string, std::string functionName, Object* exception);
     public: void putS(std::string specialMessage, std::string string, std::string functionName, const std::string& exception) { return putS(specialMessage, string, functionName, JavaString::box(exception)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void putS(std::string specialMessage, std::string string, std::string functionName, BoxValue exception) { return putS(specialMessage, string, functionName, JavaBoxes::toObject(exception)); }
+    public: template<typename BoxElement> void putS(std::string specialMessage, std::string string, std::string functionName, const std::vector<BoxElement>& exception) { return putS(specialMessage, string, functionName, JavaBoxes::toObject(exception)); }
 
 };
 

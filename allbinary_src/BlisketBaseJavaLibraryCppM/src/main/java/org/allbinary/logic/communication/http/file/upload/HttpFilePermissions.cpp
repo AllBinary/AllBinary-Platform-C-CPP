@@ -87,7 +87,7 @@ HttpFilePermissions::HttpFilePermissions(AbPath* fullPath) : logUtil(LogUtil::ge
 this->file= AbFile::createAbFileFromAbPath(new AbPath(fullPath->toFileSystemString(), FileUploadData::getInstance()->FILE));
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Loading Privileges: ") +JavaString::valueOf(fullPath->toFileSystemString()), this, this->commonStrings->CONSTRUCTOR);
@@ -105,7 +105,7 @@ this->file= AbFile::createAbFileFromAbPath(new AbPath(fullPath->toFileSystemStri
                                     }
                                 
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("User Roles: ") +JavaString::valueOf(this->userRoles), this, this->commonStrings->CONSTRUCTOR);

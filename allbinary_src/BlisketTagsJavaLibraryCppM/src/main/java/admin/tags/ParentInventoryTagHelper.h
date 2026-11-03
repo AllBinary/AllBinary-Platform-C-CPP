@@ -80,6 +80,7 @@ class ParentInventoryTagHelper
     public: void isValid(Object* tagClass, Tag* parentTag);
     public: void isValid(const std::string& tagClass, Tag* parentTag) { return isValid(JavaString::box(tagClass), parentTag); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void isValid(BoxValue tagClass, Tag* parentTag) { return isValid(JavaBoxes::toObject(tagClass), parentTag); }
+    public: template<typename BoxElement> void isValid(const std::vector<BoxElement>& tagClass, Tag* parentTag) { return isValid(JavaBoxes::toObject(tagClass), parentTag); }
 
 };
 

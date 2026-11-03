@@ -105,7 +105,7 @@ CssProperty::CssProperty(Node* node) : logUtil(LogUtil::getInstance()){
 this->propertyName= DomNodeHelper::getTextNodeValue(propertyNode);
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->STYLE))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->STYLE))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Name: ") +JavaString::valueOf(this->getName()), this, "CssProperty()");
@@ -157,7 +157,7 @@ hashMap->put(CssPropertyData::getInstance()->NAME, this->propertyName);
     HashMap<Object*, Object*>* hashMap = this->toHashMap();;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("CssView HashMap: ") +JavaString::valueOf(hashMap->toString()), this, "toXmlNode()");

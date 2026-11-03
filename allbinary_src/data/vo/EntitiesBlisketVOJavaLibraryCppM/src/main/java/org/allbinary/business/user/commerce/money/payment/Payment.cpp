@@ -251,7 +251,7 @@ Payment::Payment(){
                                     }
                                 
 
-                        if(this->number.size() > org.allbinary->business->user->commerce->money->payment->types->CreditCardType->MAXLEN)
+                        if(this->number.size() > allbinary->business->user->commerce->money->payment->types->CreditCardType->MAXLEN)
                         
                                     {
                                     

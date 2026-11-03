@@ -111,7 +111,7 @@ TransformInfoHttp::TransformInfoHttp(HashMap<Object*, Object*>* propertiesHashMa
 this->abContext= new AbContext(propertiesHashMap, pageContext);
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Properties HashMap: ") +JavaString::valueOf(propertiesHashMap->toString()), this, "Constructor(HashMap, PageContext, boolean)");
@@ -134,7 +134,7 @@ TransformInfoHttp::TransformInfoHttp(HttpServletRequest* request, HashMap<Object
 this->abContext= new AbContext(propertiesHashMap, pageContext);
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Properties HashMap: ") +JavaString::valueOf(propertiesHashMap->toString()), this, "Constructor(HttpServletRequest, HashMap, PageContext)");
@@ -159,7 +159,7 @@ TransformInfoHttp::TransformInfoHttp(HashMap<Object*, Object*>* databaseHashMap,
 this->abContext= new AbContext(propertiesHashMap, pageContext);
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Properties HashMap: ") +JavaString::valueOf(propertiesHashMap->toString()), this, "Constructor(HashMap, HashMap, PageContext)");
@@ -182,7 +182,7 @@ TransformInfoHttp::TransformInfoHttp(HashMap<Object*, Object*>* propertiesHashMa
 this->abContext= new AbContext(propertiesHashMap, pageContext);
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Properties HashMap: ") +JavaString::valueOf(propertiesHashMap->toString()), this, "Constructor(HashMap, PageContext)");
@@ -211,7 +211,7 @@ this->abContext= new AbContext(parentViewOfThisTransformInfoInterface->getProper
             
     auto TransformInfoHttp::set(HashMap<Object*, Object*>* hashMap) -> void{
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Properties HashMap: ") +JavaString::valueOf(hashMap->toString()), this, "set()");
@@ -269,7 +269,7 @@ this->setDataFile(JavaBoxes::unbox<std::string>(hashMap->get(transformInfoData->
 this->setData(JavaBoxes::unbox<std::string>(hashMap->get(transformInfoData->DATA)));
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORY))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORY))
                         
                                     {
                                     this->logUtil->putF(this->log(), this, "set()");

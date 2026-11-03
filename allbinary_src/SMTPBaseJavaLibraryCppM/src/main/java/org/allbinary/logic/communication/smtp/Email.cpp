@@ -184,10 +184,10 @@ mimeBodyParts[1]= new MimeBodyPart(internetHeaders, JavaString::getBytes(htmlAtt
 
                                     }
                                 
-this->init(server, dynamic_cast<Authenticator*>(nullptr), 
+this->init(server, dynamic_cast<Authenticator*>(nullptr), std::vector<InternetAddress*>
                                                 {
                                                     new InternetAddress(from)
-                                                }, 
+                                                }, std::vector<InternetAddress*>
                                                 {
                                                     new InternetAddress(to)
                                                 }, JavaBoxes::unbox<std::vector<InternetAddress*>>(nullptr), JavaBoxes::unbox<std::vector<InternetAddress*>>(nullptr), subject, mimeBodyParts);
@@ -197,7 +197,7 @@ this->init(server, dynamic_cast<Authenticator*>(nullptr),
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGINGERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGINGERROR))
                         
                                     {
                                     
@@ -235,7 +235,7 @@ this->properties->put(Email::SMTP_HOST, server);
                         
                                     {
                                     
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGINGERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGINGERROR))
                         
                                     {
                                     this->logUtil->putF("Unable to get HostName so using fake", this, "init()");
@@ -253,7 +253,7 @@ this->properties->put(Email::SMTP_LOCAL_HOST, "FakeHostName");
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGINGERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGINGERROR))
                         
                                     {
                                     this->logUtil->put("Continuing on Exception: Unable to get HostName", this, "init()", &e);
@@ -515,7 +515,7 @@ hashMap->put(EmailData::CONTENT, content);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGINGERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGINGERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "toHashMap()", &e);

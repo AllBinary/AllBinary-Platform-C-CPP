@@ -64,6 +64,7 @@ class VisitorInterface
     public: virtual Object* visit(Object* anyType) = 0;
     public: Object* visit(const std::string& anyType) { return visit(JavaString::box(anyType)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> Object* visit(BoxValue anyType) { return visit(JavaBoxes::toObject(anyType)); }
+    public: template<typename BoxElement> Object* visit(const std::vector<BoxElement>& anyType) { return visit(JavaBoxes::toObject(anyType)); }
 
 };
 

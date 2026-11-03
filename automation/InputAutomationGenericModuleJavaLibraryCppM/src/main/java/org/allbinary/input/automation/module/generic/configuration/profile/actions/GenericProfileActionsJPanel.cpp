@@ -145,9 +145,9 @@ outer->okNewProfileActionJButtonActionPerformed(evt);
     
 this->newProfileActionJDialog->getContentPane()->setLayout(newProfileActionJDialogLayout);
     
-newProfileActionJDialogLayout->setHorizontalGroup(newProfileActionJDialogLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(newProfileActionJDialogLayout->createSequentialGroup()->addGroup(newProfileActionJDialogLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(newProfileActionJDialogLayout->createSequentialGroup()->addGap(93, 93, 93)->addComponent(okNewProfileActionJButton))->addGroup(newProfileActionJDialogLayout->createSequentialGroup()->addGap(75, 75, 75)->addComponent(newProfileActionJLabel))->addGroup(newProfileActionJDialogLayout->createSequentialGroup()->addGap(29, 29, 29)->addComponent(newProfileActionJTextField, javax.swing->GroupLayout->PREFERRED_SIZE, 178, javax.swing->GroupLayout->PREFERRED_SIZE)))->addContainerGap(34, Short::MAX_VALUE)));
+newProfileActionJDialogLayout->setHorizontalGroup(newProfileActionJDialogLayout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(newProfileActionJDialogLayout->createSequentialGroup()->addGroup(newProfileActionJDialogLayout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(newProfileActionJDialogLayout->createSequentialGroup()->addGap(93, 93, 93)->addComponent(okNewProfileActionJButton))->addGroup(newProfileActionJDialogLayout->createSequentialGroup()->addGap(75, 75, 75)->addComponent(newProfileActionJLabel))->addGroup(newProfileActionJDialogLayout->createSequentialGroup()->addGap(29, 29, 29)->addComponent(newProfileActionJTextField, swing->GroupLayout->PREFERRED_SIZE, 178, swing->GroupLayout->PREFERRED_SIZE)))->addContainerGap(34, Short::MAX_VALUE)));
     
-newProfileActionJDialogLayout->setVerticalGroup(newProfileActionJDialogLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(javax.swing->GroupLayout->Alignment->TRAILING, newProfileActionJDialogLayout->createSequentialGroup()->addContainerGap()->addComponent(newProfileActionJLabel)->addGap(21, 21, 21)->addComponent(newProfileActionJTextField, javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED, 20, Short::MAX_VALUE)->addComponent(okNewProfileActionJButton)->addContainerGap()));
+newProfileActionJDialogLayout->setVerticalGroup(newProfileActionJDialogLayout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(swing->GroupLayout->Alignment->TRAILING, newProfileActionJDialogLayout->createSequentialGroup()->addContainerGap()->addComponent(newProfileActionJLabel)->addGap(21, 21, 21)->addComponent(newProfileActionJTextField, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED, 20, Short::MAX_VALUE)->addComponent(okNewProfileActionJButton)->addContainerGap()));
     
 this->genericProfileActionsJPanel->setPreferredSize(new java::awt::Dimension(10000, 10000));
     
@@ -234,27 +234,27 @@ this->blankGenericProfileActionJPanel->setMinimumSize(new java::awt::Dimension(5
     
 this->blankGenericProfileActionJPanel->setLayout(blankGenericProfileActionJPanelLayout);
     
-blankGenericProfileActionJPanelLayout->setHorizontalGroup(blankGenericProfileActionJPanelLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGap(0, 500, Short::MAX_VALUE));
+blankGenericProfileActionJPanelLayout->setHorizontalGroup(blankGenericProfileActionJPanelLayout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGap(0, 500, Short::MAX_VALUE));
     
-blankGenericProfileActionJPanelLayout->setVerticalGroup(blankGenericProfileActionJPanelLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGap(0, 296, Short::MAX_VALUE));
+blankGenericProfileActionJPanelLayout->setVerticalGroup(blankGenericProfileActionJPanelLayout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGap(0, 296, Short::MAX_VALUE));
     
 
     javax::swing::GroupLayout* genericProfileActionsJPanelLayout = new javax::swing::GroupLayout(this->genericProfileActionsJPanel);;
     
 this->genericProfileActionsJPanel->setLayout(genericProfileActionsJPanelLayout);
     
-genericProfileActionsJPanelLayout->setHorizontalGroup(genericProfileActionsJPanelLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(genericProfileActionsJPanelLayout->createSequentialGroup()->addComponent(genericProfileActionsJScrollPane, javax.swing->GroupLayout->PREFERRED_SIZE, 95, javax.swing->GroupLayout->PREFERRED_SIZE)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(blankGenericProfileActionJPanel, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE))->addGroup(genericProfileActionsJPanelLayout->createSequentialGroup()->addComponent(newActionJButton)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(deleteActionJButton)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(saveJButton)->addContainerGap()));
+genericProfileActionsJPanelLayout->setHorizontalGroup(genericProfileActionsJPanelLayout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(genericProfileActionsJPanelLayout->createSequentialGroup()->addComponent(genericProfileActionsJScrollPane, swing->GroupLayout->PREFERRED_SIZE, 95, swing->GroupLayout->PREFERRED_SIZE)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(blankGenericProfileActionJPanel, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE))->addGroup(genericProfileActionsJPanelLayout->createSequentialGroup()->addComponent(newActionJButton)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(deleteActionJButton)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(saveJButton)->addContainerGap()));
     
-genericProfileActionsJPanelLayout->setVerticalGroup(genericProfileActionsJPanelLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(genericProfileActionsJPanelLayout->createSequentialGroup()->addGroup(genericProfileActionsJPanelLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->BASELINE)->addComponent(newActionJButton)->addComponent(deleteActionJButton)->addComponent(saveJButton))->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(genericProfileActionsJPanelLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING, false)->addComponent(blankGenericProfileActionJPanel, 0, 296, Short::MAX_VALUE)->addComponent(genericProfileActionsJScrollPane, javax.swing->GroupLayout->DEFAULT_SIZE, 296, Short::MAX_VALUE))->addContainerGap(javax.swing->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)));
+genericProfileActionsJPanelLayout->setVerticalGroup(genericProfileActionsJPanelLayout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(genericProfileActionsJPanelLayout->createSequentialGroup()->addGroup(genericProfileActionsJPanelLayout->createParallelGroup(swing->GroupLayout->Alignment->BASELINE)->addComponent(newActionJButton)->addComponent(deleteActionJButton)->addComponent(saveJButton))->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(genericProfileActionsJPanelLayout->createParallelGroup(swing->GroupLayout->Alignment->LEADING, false)->addComponent(blankGenericProfileActionJPanel, 0, 296, Short::MAX_VALUE)->addComponent(genericProfileActionsJScrollPane, swing->GroupLayout->DEFAULT_SIZE, 296, Short::MAX_VALUE))->addContainerGap(swing->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)));
     
 
     javax::swing::GroupLayout* layout = new javax::swing::GroupLayout(this);;
     
 this->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addComponent(genericProfileActionsJPanel, javax.swing->GroupLayout->PREFERRED_SIZE, 596, javax.swing->GroupLayout->PREFERRED_SIZE)->addContainerGap(javax.swing->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)));
+layout->setHorizontalGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addComponent(genericProfileActionsJPanel, swing->GroupLayout->PREFERRED_SIZE, 596, swing->GroupLayout->PREFERRED_SIZE)->addContainerGap(swing->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)));
     
-layout->setVerticalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addComponent(genericProfileActionsJPanel, javax.swing->GroupLayout->PREFERRED_SIZE, 336, javax.swing->GroupLayout->PREFERRED_SIZE));
+layout->setVerticalGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addComponent(genericProfileActionsJPanel, swing->GroupLayout->PREFERRED_SIZE, 336, swing->GroupLayout->PREFERRED_SIZE));
     
 }
 
@@ -310,9 +310,9 @@ this->getGenericProfileActionJPanel()->updateProfileActionUI();
 
     javax::swing::GroupLayout* layout = dynamic_cast<javax::swing::GroupLayout*>(this->blankGenericProfileActionJPanel->getLayout());;
     
-layout->setHorizontalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGap(0, 395, Short::MAX_VALUE)->addComponent(this->getGenericProfileActionJPanel(), javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE));
+layout->setHorizontalGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGap(0, 395, Short::MAX_VALUE)->addComponent(this->getGenericProfileActionJPanel(), swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE));
     
-layout->setVerticalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGap(0, 256, Short::MAX_VALUE)->addComponent(this->getGenericProfileActionJPanel(), javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE));
+layout->setVerticalGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGap(0, 256, Short::MAX_VALUE)->addComponent(this->getGenericProfileActionJPanel(), swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE));
     
 this->logUtil->putF("Setting Configuration Profile Actions JPanel", this, "genericProfileActionsJListValueChanged");
     

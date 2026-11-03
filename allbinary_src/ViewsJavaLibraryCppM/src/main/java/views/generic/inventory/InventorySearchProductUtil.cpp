@@ -176,7 +176,7 @@ viewDocumentInterface->getBaseNode()->appendChild((new BasicItemView(itemInterfa
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PRODUCTSEARCHLOGGINGERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PRODUCTSEARCHLOGGINGERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->FAILURE, this, "getProduct", &e);

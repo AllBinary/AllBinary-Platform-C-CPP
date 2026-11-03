@@ -128,12 +128,14 @@ public: XmlRpcAbeClient(AbeClientInformationInterface* clientInfo, std::string r
     public: Object* get(Object* anyType);
     public: Object* get(const std::string& anyType) { return get(JavaString::box(anyType)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> Object* get(BoxValue anyType) { return get(JavaBoxes::toObject(anyType)); }
+    public: template<typename BoxElement> Object* get(const std::vector<BoxElement>& anyType) { return get(JavaBoxes::toObject(anyType)); }
 
                 //@Throws(Exception.constructor)
             
     /*protected*/ public: Object* tryAnother(Object* anyType);
     /*protected*/ public: Object* tryAnother(const std::string& anyType) { return tryAnother(JavaString::box(anyType)); }
     /*protected*/ public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> Object* tryAnother(BoxValue anyType) { return tryAnother(JavaBoxes::toObject(anyType)); }
+    /*protected*/ public: template<typename BoxElement> Object* tryAnother(const std::vector<BoxElement>& anyType) { return tryAnother(JavaBoxes::toObject(anyType)); }
 
     /*protected*/ public: AbeClientInformationInterface* getClientInfo();
 

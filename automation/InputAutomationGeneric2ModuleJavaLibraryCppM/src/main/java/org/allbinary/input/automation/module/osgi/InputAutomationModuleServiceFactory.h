@@ -83,6 +83,7 @@ public: InputAutomationModuleServiceFactory();
     public: void ungetService(Bundle* bundle, ServiceRegistration* registration, Object* service);
     public: void ungetService(Bundle* bundle, ServiceRegistration* registration, const std::string& service) { return ungetService(bundle, registration, JavaString::box(service)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void ungetService(Bundle* bundle, ServiceRegistration* registration, BoxValue service) { return ungetService(bundle, registration, JavaBoxes::toObject(service)); }
+    public: template<typename BoxElement> void ungetService(Bundle* bundle, ServiceRegistration* registration, const std::vector<BoxElement>& service) { return ungetService(bundle, registration, JavaBoxes::toObject(service)); }
 
     public: std::vector<InputAutomationModuleFactoryInterface*> getInputAutomationModuleInterfaceArray();
 

@@ -147,12 +147,14 @@ class SVGAsJSONSimpleLoader
     private: void addShapes(BasicArrayList* pointVector, Object* value, ShapeType* shapeType);
     private: void addShapes(BasicArrayList* pointVector, const std::string& value, ShapeType* shapeType) { return addShapes(pointVector, JavaString::box(value), shapeType); }
     private: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void addShapes(BasicArrayList* pointVector, BoxValue value, ShapeType* shapeType) { return addShapes(pointVector, JavaBoxes::toObject(value), shapeType); }
+    private: template<typename BoxElement> void addShapes(BasicArrayList* pointVector, const std::vector<BoxElement>& value, ShapeType* shapeType) { return addShapes(pointVector, JavaBoxes::toObject(value), shapeType); }
 
                 //@Throws(Exception.constructor)
             
     private: void addShape(BasicArrayList* pointVector, Object* value, ShapeType* shapeType);
     private: void addShape(BasicArrayList* pointVector, const std::string& value, ShapeType* shapeType) { return addShape(pointVector, JavaString::box(value), shapeType); }
     private: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void addShape(BasicArrayList* pointVector, BoxValue value, ShapeType* shapeType) { return addShape(pointVector, JavaBoxes::toObject(value), shapeType); }
+    private: template<typename BoxElement> void addShape(BasicArrayList* pointVector, const std::vector<BoxElement>& value, ShapeType* shapeType) { return addShape(pointVector, JavaBoxes::toObject(value), shapeType); }
 
                 //@Throws(Exception.constructor)
             
@@ -179,10 +181,12 @@ class SVGAsJSONSimpleLoader
     private: int32_t toInt(Object* value, std::string key);
     private: int32_t toInt(const std::string& value, std::string key) { return toInt(JavaString::box(value), key); }
     private: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> int32_t toInt(BoxValue value, std::string key) { return toInt(JavaBoxes::toObject(value), key); }
+    private: template<typename BoxElement> int32_t toInt(const std::vector<BoxElement>& value, std::string key) { return toInt(JavaBoxes::toObject(value), key); }
 
     private: JSONObject* asObject(Object* value, std::string name);
     private: JSONObject* asObject(const std::string& value, std::string name) { return asObject(JavaString::box(value), name); }
     private: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> JSONObject* asObject(BoxValue value, std::string name) { return asObject(JavaBoxes::toObject(value), name); }
+    private: template<typename BoxElement> JSONObject* asObject(const std::vector<BoxElement>& value, std::string name) { return asObject(JavaBoxes::toObject(value), name); }
 
     private: std::vector<std::vector<int32_t>> toPoints(BasicArrayList* pointVector);
 

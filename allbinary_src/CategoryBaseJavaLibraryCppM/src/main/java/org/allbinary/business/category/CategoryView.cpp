@@ -118,7 +118,7 @@ this->categoryInterface= categoryInterface;
     BasicArrayList* childCategoryVector = this->categoryInterface->getChildNodes();;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->CATEGORY))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->CATEGORY))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Number Of Children: ") +JavaString::valueOf(childCategoryVector->size()), this, "toXmlNode");

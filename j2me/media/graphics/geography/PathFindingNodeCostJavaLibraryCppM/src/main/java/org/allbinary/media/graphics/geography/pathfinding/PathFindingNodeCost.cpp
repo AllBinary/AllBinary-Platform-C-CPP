@@ -38,6 +38,8 @@
         
             #include "java/lang/Object.h"
         
+            #include "java/lang/Comparable.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -71,7 +73,6 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNode.h"
-#include "org/allbinary/media/graphics/geography/pathfinding/Comparable.h"
 #include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCostInfo.h"
 
 std::vector<std::vector<PathFindingNodeCost*>> PathFindingNodeCost::NULL_PATH_FINDING_NODE_COST_ARRAY_ARRAY = std::vector<std::vector<PathFindingNodeCost*>>(0, std::vector<PathFindingNodeCost*>(0));

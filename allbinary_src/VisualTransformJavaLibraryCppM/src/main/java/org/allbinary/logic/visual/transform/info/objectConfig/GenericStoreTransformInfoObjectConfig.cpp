@@ -159,7 +159,7 @@ this->setDocument(this->generate(this->toXmlDoc()));
             
     auto GenericStoreTransformInfoObjectConfig::generate(Document* objectConfigDocument) -> Document*{
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     
@@ -255,7 +255,7 @@ hashMap->put(transformInfoObjectConfigData->VARKEY +TransformInfoData::getInstan
     std::string templateNameOverride = StringUtil::getInstance()->getNonNull(JavaBoxes::unbox<std::string>(propertiesHashMap->get(TransformInfoData::getInstance()->PARTIAL)));;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("TemplateNameOverride: ") +JavaString::valueOf(templateNameOverride), this, "generate()");
@@ -313,7 +313,7 @@ hashMap->put(templateNameKey, selectedTemplate);
     Document* newObjectConfigDocument = DomDocumentHelper::create(replace->all(objectConfigDocumentString));;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Final ObjectConfig: ") +JavaString::valueOf(XmlDocumentHelper::toString(newObjectConfigDocument)), this, "generate()");

@@ -68,14 +68,17 @@ public: GLHolder();
     public: void runOnSurfaceCreated(Object* renderer);
     public: void runOnSurfaceCreated(const std::string& renderer) { return runOnSurfaceCreated(JavaString::box(renderer)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void runOnSurfaceCreated(BoxValue renderer) { return runOnSurfaceCreated(JavaBoxes::toObject(renderer)); }
+    public: template<typename BoxElement> void runOnSurfaceCreated(const std::vector<BoxElement>& renderer) { return runOnSurfaceCreated(JavaBoxes::toObject(renderer)); }
 
     public: void runOnSurfaceChanged(Object* renderer, int32_t width, int32_t height);
     public: void runOnSurfaceChanged(const std::string& renderer, int32_t width, int32_t height) { return runOnSurfaceChanged(JavaString::box(renderer), width, height); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void runOnSurfaceChanged(BoxValue renderer, int32_t width, int32_t height) { return runOnSurfaceChanged(JavaBoxes::toObject(renderer), width, height); }
+    public: template<typename BoxElement> void runOnSurfaceChanged(const std::vector<BoxElement>& renderer, int32_t width, int32_t height) { return runOnSurfaceChanged(JavaBoxes::toObject(renderer), width, height); }
 
     public: void run(Object* renderer);
     public: void run(const std::string& renderer) { return run(JavaString::box(renderer)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void run(BoxValue renderer) { return run(JavaBoxes::toObject(renderer)); }
+    public: template<typename BoxElement> void run(const std::vector<BoxElement>& renderer) { return run(JavaBoxes::toObject(renderer)); }
 
 };
 

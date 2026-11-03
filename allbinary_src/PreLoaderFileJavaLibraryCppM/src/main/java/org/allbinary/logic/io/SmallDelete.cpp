@@ -130,7 +130,7 @@ idOutData->writeBytes(text);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->IDLOGGING))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->IDLOGGING))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "deleteAtStart", &e);
@@ -203,7 +203,7 @@ idOutData->writeBytes(JavaString::valueOf(JavaString::valueOf(newStart) +JavaStr
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->IDLOGGING))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->IDLOGGING))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "deleteAtStart", &e);

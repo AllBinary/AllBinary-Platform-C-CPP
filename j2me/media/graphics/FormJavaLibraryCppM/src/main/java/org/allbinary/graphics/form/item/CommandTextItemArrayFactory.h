@@ -84,6 +84,7 @@ public: CommandTextItemArrayFactory(Visitor* visitorInterface);
     public: std::vector<ABCustomItem*> getInstance(Object* vector, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
     public: std::vector<ABCustomItem*> getInstance(const std::string& vector, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) { return getInstance(JavaString::box(vector), backgroundBasicColor, foregroundBasicColor); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> std::vector<ABCustomItem*> getInstance(BoxValue vector, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) { return getInstance(JavaBoxes::toObject(vector), backgroundBasicColor, foregroundBasicColor); }
+    public: template<typename BoxElement> std::vector<ABCustomItem*> getInstance(const std::vector<BoxElement>& vector, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) { return getInstance(JavaBoxes::toObject(vector), backgroundBasicColor, foregroundBasicColor); }
 
 };
 

@@ -46,7 +46,7 @@
         #include "org/allbinary/business/advertisement/AdConfiguration.h"
 
 
-AppNameLicensingAdConfiguration::AppNameLicensingAdConfiguration() : AdConfiguration(
+AppNameLicensingAdConfiguration::AppNameLicensingAdConfiguration() : AdConfiguration(std::vector<Object*>
                                                 {
                                                     StringUtil::getInstance()->EMPTY_STRING,StringUtil::getInstance()->EMPTY_STRING,StringUtil::getInstance()->EMPTY_STRING
                                                 }){

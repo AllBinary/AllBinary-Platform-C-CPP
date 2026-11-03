@@ -89,7 +89,7 @@ this->inputAutomationTypeJComboBox= new javax::swing::JComboBox();
     
 this->jLabel1= new javax::swing::JLabel();
     
-this->inputAutomationTypeJComboBox->setModel(new javax::swing::DefaultComboBoxModel(
+this->inputAutomationTypeJComboBox->setModel(new javax::swing::DefaultComboBoxModel(std::vector<std::string>
                                                 {
                                                     "DirectX","DirectX 8","Low Level","Java Robot"
                                                 }));
@@ -101,9 +101,9 @@ this->jLabel1->setText("Input Type:");
     
 this->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addComponent(jLabel1)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(inputAutomationTypeJComboBox, 0, 98, Short::MAX_VALUE)));
+layout->setHorizontalGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addComponent(jLabel1)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(inputAutomationTypeJComboBox, 0, 98, Short::MAX_VALUE)));
     
-layout->setVerticalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->BASELINE)->addComponent(jLabel1)->addComponent(inputAutomationTypeJComboBox, javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE)));
+layout->setVerticalGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->BASELINE)->addComponent(jLabel1)->addComponent(inputAutomationTypeJComboBox, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE)));
     
 }
 

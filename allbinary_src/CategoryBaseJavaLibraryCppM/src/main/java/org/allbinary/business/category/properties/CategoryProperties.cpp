@@ -282,7 +282,7 @@ pathStringBuffer->append(JavaBoxes::unbox<std::string>(list->get(index)));
 pathStringBuffer->append(abPathData->SEPARATOR);
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->CATEGORY))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->CATEGORY))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("path = ") +JavaString::valueOf(pathStringBuffer->toString()), this, "getPath");

@@ -99,6 +99,7 @@ private: class MusicManagerPlayerListener
     public: void playerUpdate(Player* player, std::string event, Object* eventData);
     public: void playerUpdate(Player* player, std::string event, const std::string& eventData) { return playerUpdate(player, event, JavaString::box(eventData)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void playerUpdate(Player* player, std::string event, BoxValue eventData) { return playerUpdate(player, event, JavaBoxes::toObject(eventData)); }
+    public: template<typename BoxElement> void playerUpdate(Player* player, std::string event, const std::vector<BoxElement>& eventData) { return playerUpdate(player, event, JavaBoxes::toObject(eventData)); }
 
 };
 

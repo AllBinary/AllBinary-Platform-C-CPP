@@ -107,7 +107,7 @@ this->vector= vector;
             
     auto BasicItemView::toXmlNode(Document* document) -> Node*{
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PRODUCTSEARCHLOGGING))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PRODUCTSEARCHLOGGING))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, "toXmlNode");

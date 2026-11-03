@@ -34,6 +34,8 @@
         
             #include "java/lang/Object.h"
         
+            #include "java/lang/Comparable.h"
+        
 class TsUtil;
 
 
@@ -53,8 +55,7 @@ class TsUtil;
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/math/permutations/Comparable.h"
-
+        
                                 
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
@@ -70,6 +71,7 @@ class ComparableObject
     public: int32_t compareTo(Object* anyType);
     public: int32_t compareTo(const std::string& anyType) { return compareTo(JavaString::box(anyType)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> int32_t compareTo(BoxValue anyType) { return compareTo(JavaBoxes::toObject(anyType)); }
+    public: template<typename BoxElement> int32_t compareTo(const std::vector<BoxElement>& anyType) { return compareTo(JavaBoxes::toObject(anyType)); }
 
 };
 
@@ -83,9 +85,6 @@ class ComparableObject
         #define ORG_ALLBINARY_LOGIC_MATH_PERMUTATIONS_COMPARABLEOBJECT_H_COMPLETE
         #if __has_include(<org/allbinary/TsUtil.h>)
 #include <org/allbinary/TsUtil.h>
-#endif
-#if __has_include("org/allbinary/logic/math/permutations/Comparable.h")
-#include "org/allbinary/logic/math/permutations/Comparable.h"
 #endif
 
         #endif

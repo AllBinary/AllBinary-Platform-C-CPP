@@ -76,6 +76,7 @@ class NullEmulatorView
     public: void onEmulatorInitComplete(Object* midletActivity);
     public: void onEmulatorInitComplete(const std::string& midletActivity) { return onEmulatorInitComplete(JavaString::box(midletActivity)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void onEmulatorInitComplete(BoxValue midletActivity) { return onEmulatorInitComplete(JavaBoxes::toObject(midletActivity)); }
+    public: template<typename BoxElement> void onEmulatorInitComplete(const std::vector<BoxElement>& midletActivity) { return onEmulatorInitComplete(JavaBoxes::toObject(midletActivity)); }
 
     public: void onSetDisplayable(Displayable* displayable);
 

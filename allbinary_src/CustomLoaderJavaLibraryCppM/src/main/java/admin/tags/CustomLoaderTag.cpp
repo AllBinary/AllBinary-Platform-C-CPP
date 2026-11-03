@@ -148,7 +148,7 @@ setMethod->invoke(anyType, methodArgs);
  catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAGERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAGERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "setCustomLoaderWebappPath()", &e);
@@ -167,7 +167,7 @@ setMethod->invoke(anyType, methodArgs);
 
         try {
             
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, tagStrings.DO_START_TAG);
@@ -182,7 +182,7 @@ setMethod->invoke(anyType, methodArgs);
                                     this->propertiesHashMap= StdUtil::getInstance()->createHashMap();
     
 
-                        if(this->command.compare(org.allbinary->globals->GLOBALS2->SET) == 0)
+                        if(this->command.compare(allbinary->globals->GLOBALS2->SET) == 0)
                         
                                     {
                                     this->setCustomLoaderWebappPath();

@@ -59,6 +59,7 @@ private: MultiPlayerGameFeatureFactory();
     public: void addCommands(Object* anyType);
     public: void addCommands(const std::string& anyType) { return addCommands(JavaString::box(anyType)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void addCommands(BoxValue anyType) { return addCommands(JavaBoxes::toObject(anyType)); }
+    public: template<typename BoxElement> void addCommands(const std::vector<BoxElement>& anyType) { return addCommands(JavaBoxes::toObject(anyType)); }
 
 };
 

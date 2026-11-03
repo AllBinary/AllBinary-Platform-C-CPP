@@ -34,6 +34,8 @@
         
             #include "java/lang/Object.h"
         
+            #include "java/lang/Comparable.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Long.h"
@@ -58,8 +60,7 @@ class CommonLabels;
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/graphics/geography/pathfinding/Comparable.h"
-class PathFindingNodeCostInfoData;
+        class PathFindingNodeCostInfoData;
 
                                 
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
@@ -110,9 +111,6 @@ public: PathFindingNodeCostInfo(int64_t costFromStart, int64_t costToGoal);
 #endif
 #if __has_include(<org/allbinary/string/CommonLabels.h>)
 #include <org/allbinary/string/CommonLabels.h>
-#endif
-#if __has_include("org/allbinary/media/graphics/geography/pathfinding/Comparable.h")
-#include "org/allbinary/media/graphics/geography/pathfinding/Comparable.h"
 #endif
 #if __has_include("org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCostInfoData.h")
 #include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCostInfoData.h"

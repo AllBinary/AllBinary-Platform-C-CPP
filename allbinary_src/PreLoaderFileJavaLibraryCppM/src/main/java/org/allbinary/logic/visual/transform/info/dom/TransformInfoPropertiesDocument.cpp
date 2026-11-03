@@ -131,7 +131,7 @@ this->document= DomDocumentFileHelper::createDocument(xmlFile);
     BasicArrayList* transformInfoNodeVector = DomSearchHelper::getAllNodes(TransformInfoData::getInstance()->NAME, transformInfosChildNodeList);;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Size: ") +JavaString::valueOf(transformInfoNodeVector->size()), this, "toTransformInfoPropertiesHashMap()");
@@ -176,7 +176,7 @@ transformInfoPropertiesHashMap->put(transformInfoProperties->getName(), transfor
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     

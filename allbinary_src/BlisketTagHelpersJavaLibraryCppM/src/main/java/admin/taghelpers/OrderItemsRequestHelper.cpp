@@ -112,7 +112,7 @@ this->status= this->request->getParameter(OrderHistoryData::STATUS);
 OrderItemsEntityFactory::getInstance()->setStatus(this->id, this->groupId, newStatus);
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "setOrderStatus(newStatus)");
@@ -136,7 +136,7 @@ OrderItemsEntityFactory::getInstance()->setStatus(this->id, this->groupId, newSt
     std::string error = "Failed to view order table";;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "setOrderStatus(newStatus)", &e);
@@ -166,7 +166,7 @@ OrderItemsEntityFactory::getInstance()->setStatus(this->id, this->groupId, newSt
 OrderItemsEntityFactory::getInstance()->setStatus(this->id, this->groupId, this->status);
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "setOrderStatus(newStatus)");
@@ -190,7 +190,7 @@ OrderItemsEntityFactory::getInstance()->setStatus(this->id, this->groupId, this-
     std::string error = "Failed to view order table";;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "setOrderStatus(newStatus)", &e);

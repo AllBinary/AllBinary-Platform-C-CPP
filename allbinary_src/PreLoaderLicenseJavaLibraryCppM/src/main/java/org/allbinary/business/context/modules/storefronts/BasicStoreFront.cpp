@@ -157,7 +157,7 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return org.allbinary->globals->URLGLOBALS->getTestHtmlPath() +this->getCurrentHostNamePath();
+                        return allbinary->globals->URLGLOBALS->getTestHtmlPath() +this->getCurrentHostNamePath();
     
 }
 
@@ -169,7 +169,7 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
             ;;
     
 
-                        if(org.allbinary->globals->URLGLOBALS->isTestingMode())
+                        if(allbinary->globals->URLGLOBALS->isTestingMode())
                         
                                     {
                                     location= this->getTestHostName();
@@ -201,7 +201,7 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
             ;;
     
 
-                        if(org.allbinary->globals->URLGLOBALS->isTestingMode())
+                        if(allbinary->globals->URLGLOBALS->isTestingMode())
                         
                                     {
                                     location= this->getTestHostNamePath();
@@ -233,7 +233,7 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
             ;;
     
 
-                        if(org.allbinary->globals->URLGLOBALS->isTestingMode())
+                        if(allbinary->globals->URLGLOBALS->isTestingMode())
                         
                                     {
                                     location= this->getTestHomeHostName();
@@ -265,7 +265,7 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
             ;;
     
 
-                        if(org.allbinary->globals->URLGLOBALS->isTestingMode())
+                        if(allbinary->globals->URLGLOBALS->isTestingMode())
                         
                                     {
                                     location= this->getTestHomeHostNamePath();

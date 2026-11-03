@@ -135,7 +135,7 @@ out->close();
 } catch(LicensingException& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SERVLETERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SERVLETERROR))
                         
                                     {
                                     this->logUtil->put("Servlet LicensingException", this, "processRequest()", &e);
@@ -151,7 +151,7 @@ response->sendRedirect(abcs.globals->URLGLOBALS->LICENSEERRORPAGE);
  catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SERVLETERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SERVLETERROR))
                         
                                     {
                                     this->logUtil->put("Servlet Exception", this, "processRequest()", &e);

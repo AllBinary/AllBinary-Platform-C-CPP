@@ -180,7 +180,7 @@ StoreFront::StoreFront(HttpServletRequest* request) : logUtil(LogUtil::getInstan
 this->getFormData((new RequestParams(request))->toHashMap());
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->putF("TWB- needs update for adding and updating context configuration - currently defaults to admin context config", this, "StoreFront");
@@ -455,7 +455,7 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
                                     
     HashMap<Object*, Object*>* hashMap = SpecialCharacterUtil::getHashMap();;
     
-hashMap->put(
+hashMap->put(std::vector<std::string>
                                                 {
                                                     CommonSeps::getInstance()->SPACE
                                                 }, this->ONE_EMPTY_STRING_ARRAY);
@@ -1033,7 +1033,7 @@ stringBuffer->append(" and > 0 characters.<br>");
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -1061,7 +1061,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return org.allbinary->globals->URLGLOBALS->getTestHtmlPath() +this->getCurrentHostNamePath();
+                        return allbinary->globals->URLGLOBALS->getTestHtmlPath() +this->getCurrentHostNamePath();
     
 }
 
@@ -1071,7 +1071,7 @@ stringBuffer->append(" and > 0 characters.<br>");
     std::string location = this->EMPTY_STRING;;
     
 
-                        if(org.allbinary->globals->URLGLOBALS->isTestingMode())
+                        if(allbinary->globals->URLGLOBALS->isTestingMode())
                         
                                     {
                                     location= this->getTestHostName();
@@ -1101,7 +1101,7 @@ stringBuffer->append(" and > 0 characters.<br>");
     std::string location = this->EMPTY_STRING;;
     
 
-                        if(org.allbinary->globals->URLGLOBALS->isTestingMode())
+                        if(allbinary->globals->URLGLOBALS->isTestingMode())
                         
                                     {
                                     location= this->getTestHostNamePath();
@@ -1131,7 +1131,7 @@ stringBuffer->append(" and > 0 characters.<br>");
     std::string location = this->EMPTY_STRING;;
     
 
-                        if(org.allbinary->globals->URLGLOBALS->isTestingMode())
+                        if(allbinary->globals->URLGLOBALS->isTestingMode())
                         
                                     {
                                     location= this->getTestHomeHostName();
@@ -1161,7 +1161,7 @@ stringBuffer->append(" and > 0 characters.<br>");
     std::string location = this->EMPTY_STRING;;
     
 
-                        if(org.allbinary->globals->URLGLOBALS->isTestingMode())
+                        if(allbinary->globals->URLGLOBALS->isTestingMode())
                         
                                     {
                                     location= this->getTestHomeHostNamePath();
@@ -1916,7 +1916,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "install()", &e);

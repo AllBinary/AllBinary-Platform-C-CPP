@@ -104,6 +104,7 @@ class AbFileSystem
     public: bool close(Object* closeable);
     public: bool close(const std::string& closeable) { return close(JavaString::box(closeable)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> bool close(BoxValue closeable) { return close(JavaBoxes::toObject(closeable)); }
+    public: template<typename BoxElement> bool close(const std::vector<BoxElement>& closeable) { return close(JavaBoxes::toObject(closeable)); }
 
 };
 

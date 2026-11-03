@@ -151,7 +151,7 @@ this->storeName= value;
     std::string error = "Failed to view Shipping Type";;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "setShippingType()", &e);
@@ -186,7 +186,7 @@ this->storeName= value;
 this->propertiesHashMap->put(StoreFrontData::getInstance()->NAME, this->storeName);
     
 
-                        if(this->command.compare(org.allbinary->globals->GLOBALS2->SETSHIPPINGTYPE) == 0)
+                        if(this->command.compare(allbinary->globals->GLOBALS2->SETSHIPPINGTYPE) == 0)
                         
                                     {
                                     this->setShippingType();

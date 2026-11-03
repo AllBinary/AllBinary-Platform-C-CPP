@@ -67,6 +67,7 @@ public: UniformTextureOpenGLProcessor(ShaderComposite* shaderComposite, int32_t 
     public: void process(GL10* gl, Object* unused, int32_t index);
     public: void process(GL10* gl, const std::string& unused, int32_t index) { return process(gl, JavaString::box(unused), index); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void process(GL10* gl, BoxValue unused, int32_t index) { return process(gl, JavaBoxes::toObject(unused), index); }
+    public: template<typename BoxElement> void process(GL10* gl, const std::vector<BoxElement>& unused, int32_t index) { return process(gl, JavaBoxes::toObject(unused), index); }
 
 };
 

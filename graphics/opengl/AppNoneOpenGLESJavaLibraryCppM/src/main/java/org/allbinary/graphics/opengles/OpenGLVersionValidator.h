@@ -78,6 +78,7 @@ class OpenGLVersionValidator
     public: void setShaderComposite(ShaderComposite* shaderComposite, Object* anyType);
     public: void setShaderComposite(ShaderComposite* shaderComposite, const std::string& anyType) { return setShaderComposite(shaderComposite, JavaString::box(anyType)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void setShaderComposite(ShaderComposite* shaderComposite, BoxValue anyType) { return setShaderComposite(shaderComposite, JavaBoxes::toObject(anyType)); }
+    public: template<typename BoxElement> void setShaderComposite(ShaderComposite* shaderComposite, const std::vector<BoxElement>& anyType) { return setShaderComposite(shaderComposite, JavaBoxes::toObject(anyType)); }
 
     public: int32_t EGL_CONTEXT_CLIENT_VERSION_VALUE =  -1;
 

@@ -261,9 +261,9 @@ this->jLabel2= new javax::swing::JLabel();
     
 this->jPanel1->setLayout(jPanel1Layout);
     
-jPanel1Layout->setHorizontalGroup(jPanel1Layout->createParallelGroup(org.jdesktop->layout->GroupLayout->LEADING)->add(0, 522, Short::MAX_VALUE));
+jPanel1Layout->setHorizontalGroup(jPanel1Layout->createParallelGroup(jdesktop->layout->GroupLayout->LEADING)->add(0, 522, Short::MAX_VALUE));
     
-jPanel1Layout->setVerticalGroup(jPanel1Layout->createParallelGroup(org.jdesktop->layout->GroupLayout->LEADING)->add(0, 230, Short::MAX_VALUE));
+jPanel1Layout->setVerticalGroup(jPanel1Layout->createParallelGroup(jdesktop->layout->GroupLayout->LEADING)->add(0, 230, Short::MAX_VALUE));
     
 this->horizontalJCheckBox->setSelected(true);
     
@@ -320,9 +320,9 @@ this->writeOverOriginalJRadioButton->setText("Write Over Original");
     
 this->jPanel2->setLayout(jPanel2Layout);
     
-jPanel2Layout->setHorizontalGroup(jPanel2Layout->createParallelGroup(org.jdesktop->layout->GroupLayout->LEADING)->add(jPanel2Layout->createSequentialGroup()->addContainerGap(org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)->add(verticleJCheckBox)->addPreferredGap(org.jdesktop->layout->LayoutStyle->UNRELATED)->add(horizontalJCheckBox)->addPreferredGap(org.jdesktop->layout->LayoutStyle->RELATED)->add(writeOverOriginalJRadioButton)->addPreferredGap(org.jdesktop->layout->LayoutStyle->UNRELATED)->add(renameJRadioButton)->addPreferredGap(org.jdesktop->layout->LayoutStyle->RELATED)->add(generateJButton)->add(37, 37, 37)));
+jPanel2Layout->setHorizontalGroup(jPanel2Layout->createParallelGroup(jdesktop->layout->GroupLayout->LEADING)->add(jPanel2Layout->createSequentialGroup()->addContainerGap(jdesktop->layout->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)->add(verticleJCheckBox)->addPreferredGap(jdesktop->layout->LayoutStyle->UNRELATED)->add(horizontalJCheckBox)->addPreferredGap(jdesktop->layout->LayoutStyle->RELATED)->add(writeOverOriginalJRadioButton)->addPreferredGap(jdesktop->layout->LayoutStyle->UNRELATED)->add(renameJRadioButton)->addPreferredGap(jdesktop->layout->LayoutStyle->RELATED)->add(generateJButton)->add(37, 37, 37)));
     
-jPanel2Layout->setVerticalGroup(jPanel2Layout->createParallelGroup(org.jdesktop->layout->GroupLayout->LEADING)->add(jPanel2Layout->createSequentialGroup()->add(jPanel2Layout->createParallelGroup(org.jdesktop->layout->GroupLayout->BASELINE)->add(horizontalJCheckBox)->add(verticleJCheckBox)->add(writeOverOriginalJRadioButton)->add(renameJRadioButton)->add(generateJButton))->addContainerGap()));
+jPanel2Layout->setVerticalGroup(jPanel2Layout->createParallelGroup(jdesktop->layout->GroupLayout->LEADING)->add(jPanel2Layout->createSequentialGroup()->add(jPanel2Layout->createParallelGroup(jdesktop->layout->GroupLayout->BASELINE)->add(horizontalJCheckBox)->add(verticleJCheckBox)->add(writeOverOriginalJRadioButton)->add(renameJRadioButton)->add(generateJButton))->addContainerGap()));
     
 this->jLabel2->setText("Results:");
     
@@ -331,18 +331,18 @@ this->jLabel2->setText("Results:");
     
 this->jPanel3->setLayout(jPanel3Layout);
     
-jPanel3Layout->setHorizontalGroup(jPanel3Layout->createParallelGroup(org.jdesktop->layout->GroupLayout->LEADING)->add(jPanel3Layout->createSequentialGroup()->add(jLabel2)->addContainerGap(433, Short::MAX_VALUE)));
+jPanel3Layout->setHorizontalGroup(jPanel3Layout->createParallelGroup(jdesktop->layout->GroupLayout->LEADING)->add(jPanel3Layout->createSequentialGroup()->add(jLabel2)->addContainerGap(433, Short::MAX_VALUE)));
     
-jPanel3Layout->setVerticalGroup(jPanel3Layout->createParallelGroup(org.jdesktop->layout->GroupLayout->LEADING)->add(jLabel2));
+jPanel3Layout->setVerticalGroup(jPanel3Layout->createParallelGroup(jdesktop->layout->GroupLayout->LEADING)->add(jLabel2));
     
 
     org::jdesktop::layout::GroupLayout* layout = new org::jdesktop::layout::GroupLayout(this);;
     
 this->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(org.jdesktop->layout->GroupLayout->LEADING)->add(org.jdesktop->layout->GroupLayout->TRAILING, layout->createSequentialGroup()->addContainerGap()->add(jPanel3, org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)->addContainerGap())->add(jPanel1, org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)->add(layout->createSequentialGroup()->add(jPanel2, org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)->addContainerGap(org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)));
+layout->setHorizontalGroup(layout->createParallelGroup(jdesktop->layout->GroupLayout->LEADING)->add(jdesktop->layout->GroupLayout->TRAILING, layout->createSequentialGroup()->addContainerGap()->add(jPanel3, jdesktop->layout->GroupLayout->DEFAULT_SIZE, jdesktop->layout->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)->addContainerGap())->add(jPanel1, jdesktop->layout->GroupLayout->DEFAULT_SIZE, jdesktop->layout->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)->add(layout->createSequentialGroup()->add(jPanel2, jdesktop->layout->GroupLayout->DEFAULT_SIZE, jdesktop->layout->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)->addContainerGap(jdesktop->layout->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)));
     
-layout->setVerticalGroup(layout->createParallelGroup(org.jdesktop->layout->GroupLayout->LEADING)->add(layout->createSequentialGroup()->add(jPanel2, org.jdesktop->layout->GroupLayout->PREFERRED_SIZE, 25, org.jdesktop->layout->GroupLayout->PREFERRED_SIZE)->addPreferredGap(org.jdesktop->layout->LayoutStyle->RELATED)->add(jPanel3, org.jdesktop->layout->GroupLayout->PREFERRED_SIZE, org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, org.jdesktop->layout->GroupLayout->PREFERRED_SIZE)->addPreferredGap(org.jdesktop->layout->LayoutStyle->RELATED)->add(jPanel1, org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)));
+layout->setVerticalGroup(layout->createParallelGroup(jdesktop->layout->GroupLayout->LEADING)->add(layout->createSequentialGroup()->add(jPanel2, jdesktop->layout->GroupLayout->PREFERRED_SIZE, 25, jdesktop->layout->GroupLayout->PREFERRED_SIZE)->addPreferredGap(jdesktop->layout->LayoutStyle->RELATED)->add(jPanel3, jdesktop->layout->GroupLayout->PREFERRED_SIZE, jdesktop->layout->GroupLayout->DEFAULT_SIZE, jdesktop->layout->GroupLayout->PREFERRED_SIZE)->addPreferredGap(jdesktop->layout->LayoutStyle->RELATED)->add(jPanel1, jdesktop->layout->GroupLayout->DEFAULT_SIZE, jdesktop->layout->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)));
     
 }
 

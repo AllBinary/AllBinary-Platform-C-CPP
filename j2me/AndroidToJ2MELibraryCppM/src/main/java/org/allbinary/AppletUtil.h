@@ -64,6 +64,7 @@ class AppletUtil
     public: static bool isAppletLoader(Object* anyType);
     public: static bool isAppletLoader(const std::string& anyType) { return isAppletLoader(JavaString::box(anyType)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> static bool isAppletLoader(BoxValue anyType) { return isAppletLoader(JavaBoxes::toObject(anyType)); }
+    public: template<typename BoxElement> static bool isAppletLoader(const std::vector<BoxElement>& anyType) { return isAppletLoader(JavaBoxes::toObject(anyType)); }
 
 private: AppletUtil();
 

@@ -111,9 +111,9 @@ this->isDrawn= true;
     
 this->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGap(0, 400, Short::MAX_VALUE));
+layout->setHorizontalGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGap(0, 400, Short::MAX_VALUE));
     
-layout->setVerticalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGap(0, 300, Short::MAX_VALUE));
+layout->setVerticalGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGap(0, 300, Short::MAX_VALUE));
     
 }
 

@@ -114,6 +114,7 @@ public: TransformInfoBasic(StoreFrontInterface* storeFrontInterface, HashMap<Obj
     public: void setObject(Object* anyType);
     public: void setObject(const std::string& anyType) { return setObject(JavaString::box(anyType)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void setObject(BoxValue anyType) { return setObject(JavaBoxes::toObject(anyType)); }
+    public: template<typename BoxElement> void setObject(const std::vector<BoxElement>& anyType) { return setObject(JavaBoxes::toObject(anyType)); }
 
     public: void setObjectConfigFile(std::string value);
 

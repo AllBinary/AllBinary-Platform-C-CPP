@@ -89,6 +89,7 @@ class SWTJOGLProcessor
     public: void setRenderer(Object* renderer);
     public: void setRenderer(const std::string& renderer) { return setRenderer(JavaString::box(renderer)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void setRenderer(BoxValue renderer) { return setRenderer(JavaBoxes::toObject(renderer)); }
+    public: template<typename BoxElement> void setRenderer(const std::vector<BoxElement>& renderer) { return setRenderer(JavaBoxes::toObject(renderer)); }
 
     public: bool isJOGL();
 
@@ -99,6 +100,7 @@ class SWTJOGLProcessor
     public: void onSurfaceChangedForEvent(Object* event);
     public: void onSurfaceChangedForEvent(const std::string& event) { return onSurfaceChangedForEvent(JavaString::box(event)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void onSurfaceChangedForEvent(BoxValue event) { return onSurfaceChangedForEvent(JavaBoxes::toObject(event)); }
+    public: template<typename BoxElement> void onSurfaceChangedForEvent(const std::vector<BoxElement>& event) { return onSurfaceChangedForEvent(JavaBoxes::toObject(event)); }
 
     public: void onSurfaceChanged();
 

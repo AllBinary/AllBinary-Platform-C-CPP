@@ -83,6 +83,7 @@ public: XmlRpcRemoteLogClient(AbeClientInformationInterface* clientInfo);
     public: Object* get(Object* anyType);
     public: Object* get(const std::string& anyType) { return get(JavaString::box(anyType)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> Object* get(BoxValue anyType) { return get(JavaBoxes::toObject(anyType)); }
+    public: template<typename BoxElement> Object* get(const std::vector<BoxElement>& anyType) { return get(JavaBoxes::toObject(anyType)); }
 
 };
 

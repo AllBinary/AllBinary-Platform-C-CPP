@@ -130,7 +130,7 @@ this->password= value;
     bool valid = Boolean::TRUE;;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VALIDATION))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VALIDATION))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Password: ") +JavaString::valueOf(this->password), this, commonStrings->IS_VALID);
@@ -143,7 +143,7 @@ this->password= value;
                         
                                     {
                                     
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VALIDATION))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VALIDATION))
                         
                                     {
                                     this->logUtil->putF("Password is invalid", this, commonStrings->IS_VALID);
@@ -169,7 +169,7 @@ valid= Boolean::FALSE;
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VALIDATIONERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VALIDATIONERROR))
                         
                                     {
                                     this->logUtil->put("Failed to validate form", "Password", commonStrings->IS_VALID, &e);

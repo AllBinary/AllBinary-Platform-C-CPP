@@ -119,7 +119,7 @@ this->userName= JavaBoxes::unbox<std::string>(hashMap->get(UserData::USERNAME));
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put("Failed to validate form", this, "isUserNameValid()", &e);
@@ -165,7 +165,7 @@ this->userName= JavaBoxes::unbox<std::string>(hashMap->get(UserData::USERNAME));
     bool valid = booleanFactory->TRUE;;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VALIDATION))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VALIDATION))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("UserName: ") +JavaString::valueOf(aUserName), this, commonStrings->IS_VALID);
@@ -178,7 +178,7 @@ this->userName= JavaBoxes::unbox<std::string>(hashMap->get(UserData::USERNAME));
                         
                                     {
                                     
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VALIDATION))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VALIDATION))
                         
                                     {
                                     this->logUtil->putF("UserName is invalid", this, commonStrings->IS_VALID);
@@ -204,7 +204,7 @@ valid= booleanFactory->FALSE;
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put("Failed to validate form", this, commonStrings->IS_VALID, &e);

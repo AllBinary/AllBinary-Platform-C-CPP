@@ -71,6 +71,7 @@ class InterfaceCastProxy
     public: static Object* newInstance(Object* anyType);
     public: static Object* newInstance(const std::string& anyType) { return newInstance(JavaString::box(anyType)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> static Object* newInstance(BoxValue anyType) { return newInstance(JavaBoxes::toObject(anyType)); }
+    public: template<typename BoxElement> static Object* newInstance(const std::vector<BoxElement>& anyType) { return newInstance(JavaBoxes::toObject(anyType)); }
 
     private: Object* anyType;
 
@@ -81,6 +82,7 @@ private: InterfaceCastProxy(Object* anyType);
     public: Object* invoke(Object* proxyObject, Method* proxyMethod, std::vector<Object*> proxyArgs);
     public: Object* invoke(const std::string& proxyObject, Method* proxyMethod, std::vector<Object*> proxyArgs) { return invoke(JavaString::box(proxyObject), proxyMethod, proxyArgs); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> Object* invoke(BoxValue proxyObject, Method* proxyMethod, std::vector<Object*> proxyArgs) { return invoke(JavaBoxes::toObject(proxyObject), proxyMethod, proxyArgs); }
+    public: template<typename BoxElement> Object* invoke(const std::vector<BoxElement>& proxyObject, Method* proxyMethod, std::vector<Object*> proxyArgs) { return invoke(JavaBoxes::toObject(proxyObject), proxyMethod, proxyArgs); }
 
 };
 

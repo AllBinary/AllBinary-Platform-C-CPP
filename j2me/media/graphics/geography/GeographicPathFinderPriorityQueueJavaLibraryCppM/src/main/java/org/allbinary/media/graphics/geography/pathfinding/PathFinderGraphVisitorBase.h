@@ -75,6 +75,7 @@ class PathFinderGraphVisitorBase
     public: void visit(Object* graph, BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList);
     public: void visit(const std::string& graph, BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList) { return visit(JavaString::box(graph), startPathFindingNodeList, endPathFindingNodeList); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void visit(BoxValue graph, BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList) { return visit(JavaBoxes::toObject(graph), startPathFindingNodeList, endPathFindingNodeList); }
+    public: template<typename BoxElement> void visit(const std::vector<BoxElement>& graph, BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList) { return visit(JavaBoxes::toObject(graph), startPathFindingNodeList, endPathFindingNodeList); }
 
                 //@Throws(Exception.constructor)
             
@@ -83,10 +84,12 @@ class PathFinderGraphVisitorBase
     public: bool isValid(Object* graphPath);
     public: bool isValid(const std::string& graphPath) { return isValid(JavaString::box(graphPath)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> bool isValid(BoxValue graphPath) { return isValid(JavaBoxes::toObject(graphPath)); }
+    public: template<typename BoxElement> bool isValid(const std::vector<BoxElement>& graphPath) { return isValid(JavaBoxes::toObject(graphPath)); }
 
     public: std::string getInvalidReason(Object* graphPath);
     public: std::string getInvalidReason(const std::string& graphPath) { return getInvalidReason(JavaString::box(graphPath)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> std::string getInvalidReason(BoxValue graphPath) { return getInvalidReason(JavaBoxes::toObject(graphPath)); }
+    public: template<typename BoxElement> std::string getInvalidReason(const std::vector<BoxElement>& graphPath) { return getInvalidReason(JavaBoxes::toObject(graphPath)); }
 
 };
 

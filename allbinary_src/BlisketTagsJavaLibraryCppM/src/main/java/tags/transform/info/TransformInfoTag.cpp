@@ -189,7 +189,7 @@ this->type= value;
 this->getPropertiesHashMap()->put(OutputTypeData::getInstance()->NAME, this->type);
     
 
-                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->JSPTAG))
+                        if(allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("TransformInfoTag type set: ") +JavaString::valueOf(this->type), this, "setType");

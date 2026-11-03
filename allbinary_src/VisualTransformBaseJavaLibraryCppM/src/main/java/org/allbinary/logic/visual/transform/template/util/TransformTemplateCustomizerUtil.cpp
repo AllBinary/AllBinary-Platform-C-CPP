@@ -141,52 +141,52 @@ this->GLOBALS_UPDATE= JavaString::valueOf(commonStrings->UPDATE) +JavaString::va
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap->put(
+hashMap->put(std::vector<std::string>
                                                 {
                                                     JavaString::valueOf(viewName) +JavaString::valueOf(SPACE)
                                                 }, ONE_EMPTY_STRING_ARRAY);
     
-hashMap->put(
+hashMap->put(std::vector<std::string>
                                                 {
                                                     JavaString::valueOf(storeName) +JavaString::valueOf(SPACE)
                                                 }, ONE_EMPTY_STRING_ARRAY);
     
-hashMap->put(
+hashMap->put(std::vector<std::string>
                                                 {
                                                     this->CUSTOMIZER_NAME
                                                 }, ONE_EMPTY_STRING_ARRAY);
     
-hashMap->put(
+hashMap->put(std::vector<std::string>
                                                 {
                                                     this->BODY_VIEWNAMEKEY
                                                 }, ONE_EMPTY_STRING_ARRAY);
     
-hashMap->put(
+hashMap->put(std::vector<std::string>
                                                 {
                                                     this->TITLE_VIEWNAMEKEY
                                                 }, ONE_EMPTY_STRING_ARRAY);
     
-hashMap->put(
+hashMap->put(std::vector<std::string>
                                                 {
                                                     this->GLOBALS_NEW
                                                 }, ONE_EMPTY_STRING_ARRAY);
     
-hashMap->put(
+hashMap->put(std::vector<std::string>
                                                 {
                                                     this->GLOBALS_INSERT
                                                 }, ONE_EMPTY_STRING_ARRAY);
     
-hashMap->put(
+hashMap->put(std::vector<std::string>
                                                 {
                                                     this->GLOBALS_DELETE
                                                 }, ONE_EMPTY_STRING_ARRAY);
     
-hashMap->put(
+hashMap->put(std::vector<std::string>
                                                 {
                                                     this->GLOBALS_EDIT
                                                 }, ONE_EMPTY_STRING_ARRAY);
     
-hashMap->put(
+hashMap->put(std::vector<std::string>
                                                 {
                                                     this->GLOBALS_UPDATE
                                                 }, ONE_EMPTY_STRING_ARRAY);
@@ -200,7 +200,7 @@ hashMap->put(
     std::string rootViewName = replace->all(viewName);;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("RootViewName for ObjectConfig: ") +JavaString::valueOf(rootViewName), this, "getPageNameHack");

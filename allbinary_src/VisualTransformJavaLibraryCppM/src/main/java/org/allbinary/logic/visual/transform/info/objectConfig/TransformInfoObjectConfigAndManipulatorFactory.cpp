@@ -124,7 +124,7 @@ TransformInfoObjectConfigAndManipulatorFactory::TransformInfoObjectConfigAndMani
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Could Not Load Object Config", getInstance(), this->commonStrings->GET_INSTANCE, &e);
@@ -198,7 +198,7 @@ TransformInfoObjectConfigAndManipulatorFactory::TransformInfoObjectConfigAndMani
                                     }
                                 
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     this->logUtil->put(commonStrings.EXCEPTION, getInstance(), commonStrings.GET_INSTANCE, &e);
@@ -272,7 +272,7 @@ TransformInfoObjectConfigAndManipulatorFactory::TransformInfoObjectConfigAndMani
                                     }
                                 
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     this->logUtil->put(commonStrings.EXCEPTION, getInstance(), "getInstance(document)", &e);

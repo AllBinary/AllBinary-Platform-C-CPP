@@ -69,6 +69,7 @@ class ArtificialIntelligenceFactoryInterface
     public: virtual ArtificialIntelligence* getInstance(Object* anyType) = 0;
     public: ArtificialIntelligence* getInstance(const std::string& anyType) { return getInstance(JavaString::box(anyType)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> ArtificialIntelligence* getInstance(BoxValue anyType) { return getInstance(JavaBoxes::toObject(anyType)); }
+    public: template<typename BoxElement> ArtificialIntelligence* getInstance(const std::vector<BoxElement>& anyType) { return getInstance(JavaBoxes::toObject(anyType)); }
 
 };
 

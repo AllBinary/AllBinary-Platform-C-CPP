@@ -263,7 +263,7 @@ NumberStringHud::updateMeasurement(graphics);
                     //Otherwise - statement - EmptyStmt
 
 
-    int32_t totalLength = HEALTH::size() +1;;
+    int32_t totalLength = HEALTH.size() +1;;
     
 healthHud= new HealthNumberStringHud();
     

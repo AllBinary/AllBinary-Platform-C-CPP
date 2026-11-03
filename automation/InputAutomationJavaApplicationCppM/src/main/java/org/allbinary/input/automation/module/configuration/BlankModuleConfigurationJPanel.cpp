@@ -74,9 +74,9 @@ this->jLabel1->setText("No Configuration Available");
     
 this->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(javax.swing->GroupLayout->Alignment->TRAILING, layout->createSequentialGroup()->addContainerGap(231, Short::MAX_VALUE)->addComponent(jLabel1)->addGap(225, 225, 225)));
+layout->setHorizontalGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(swing->GroupLayout->Alignment->TRAILING, layout->createSequentialGroup()->addContainerGap(231, Short::MAX_VALUE)->addComponent(jLabel1)->addGap(225, 225, 225)));
     
-layout->setVerticalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addContainerGap()->addComponent(jLabel1)->addContainerGap(362, Short::MAX_VALUE)));
+layout->setVerticalGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addContainerGap()->addComponent(jLabel1)->addContainerGap(362, Short::MAX_VALUE)));
     
 }
 

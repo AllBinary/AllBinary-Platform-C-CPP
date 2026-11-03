@@ -117,7 +117,7 @@ PaymentProcessTag::PaymentProcessTag() : logUtil(LogUtil::getInstance()){
 } catch(LicensingException& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->LICENSINGERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->LICENSINGERROR))
                         
                                     {
                                     this->logUtil->put("LicensingException", this, this->commonStrings->PROCESS, &e);
@@ -136,7 +136,7 @@ PaymentProcessTag::PaymentProcessTag() : logUtil(LogUtil::getInstance()){
  catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAGERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAGERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->PROCESS, &e);
@@ -160,13 +160,13 @@ PaymentProcessTag::PaymentProcessTag() : logUtil(LogUtil::getInstance()){
 
         try {
             
-                        if(this->getCommand()->compareTo(org.allbinary->globals->GLOBALS2->AUTHORIZEORDEREVALBODYONERROR) == 0 || this->getCommand()->compareTo(org.allbinary->globals->GLOBALS2->AUTHORIZEORDERANDEVALBODY) == 0 || this->getCommand()->compareTo(org.allbinary->globals->GLOBALS2->AUTHORIZEFORMEVALBODYONERROR) == 0)
+                        if(this->getCommand()->compareTo(allbinary->globals->GLOBALS2->AUTHORIZEORDEREVALBODYONERROR) == 0 || this->getCommand()->compareTo(allbinary->globals->GLOBALS2->AUTHORIZEORDERANDEVALBODY) == 0 || this->getCommand()->compareTo(allbinary->globals->GLOBALS2->AUTHORIZEFORMEVALBODYONERROR) == 0)
                         
                                     {
                                     this->pageContext->getOut()->print(JavaString::valueOf(this->process()) +JavaString::valueOf("<br />"));
     
 
-                        if(this->getCommand()->compareTo(org.allbinary->globals->GLOBALS2->AUTHORIZEORDEREVALBODYONERROR) == 0)
+                        if(this->getCommand()->compareTo(allbinary->globals->GLOBALS2->AUTHORIZEORDEREVALBODYONERROR) == 0)
                         
 
 

@@ -374,13 +374,13 @@ this->addSeparator(pointVector);
 
 
     auto SVGAsJSONSimpleLoader::addPoint(BasicArrayList* pointVector, int32_t x, int32_t y) -> void{
-pointVector->add({x,y});
+pointVector->add(std::vector<int32_t>{x,y});
     
 }
 
 
     auto SVGAsJSONSimpleLoader::addSeparator(BasicArrayList* pointVector) -> void{
-pointVector->add({SHAPE_SEPARATOR[0],SHAPE_SEPARATOR[1]});
+pointVector->add(std::vector<int32_t>{SHAPE_SEPARATOR[0],SHAPE_SEPARATOR[1]});
     
 }
 

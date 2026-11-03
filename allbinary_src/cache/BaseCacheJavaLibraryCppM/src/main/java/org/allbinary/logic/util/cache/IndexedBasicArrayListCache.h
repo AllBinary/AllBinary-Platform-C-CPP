@@ -98,6 +98,7 @@ public: IndexedBasicArrayListCache();
     public: void addObject(Object* anyType);
     public: void addObject(const std::string& anyType) { return addObject(JavaString::box(anyType)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void addObject(BoxValue anyType) { return addObject(JavaBoxes::toObject(anyType)); }
+    public: template<typename BoxElement> void addObject(const std::vector<BoxElement>& anyType) { return addObject(JavaBoxes::toObject(anyType)); }
 
                 //@Throws(Exception.constructor)
             

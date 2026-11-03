@@ -275,7 +275,7 @@ whereHashMap->put(OrderData::ID, orderId);
 OrderHistoryEntityFactory::getInstance()->update(whereHashMap, orderHashMap);
     
 
-                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->SQLTAGS))
+                        if(allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "update()");
@@ -299,7 +299,7 @@ OrderHistoryEntityFactory::getInstance()->update(whereHashMap, orderHashMap);
     std::string error = "Failed to update order table";;
     
 
-                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
+                        if(allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "update()", &e);

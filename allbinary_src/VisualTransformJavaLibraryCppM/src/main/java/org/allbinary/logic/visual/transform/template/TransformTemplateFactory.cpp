@@ -128,7 +128,7 @@ TransformTemplateFactory::TransformTemplateFactory() : logUtil(LogUtil::getInsta
     std::string error = "Failed To Get Instance";;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     this->logUtil->put(JavaString::valueOf(JavaString::valueOf(error) +JavaString::valueOf(templateName)) +JavaString::valueOf("->TemplateFactory"), this, "getInstance(viewName, HashMap, PageContext)", &e);

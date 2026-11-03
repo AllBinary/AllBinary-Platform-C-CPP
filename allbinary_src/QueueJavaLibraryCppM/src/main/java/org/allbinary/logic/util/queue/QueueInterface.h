@@ -68,12 +68,14 @@ class QueueInterface
     public: virtual bool offer(Object* anyType) = 0;
     public: bool offer(const std::string& anyType) { return offer(JavaString::box(anyType)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> bool offer(BoxValue anyType) { return offer(JavaBoxes::toObject(anyType)); }
+    public: template<typename BoxElement> bool offer(const std::vector<BoxElement>& anyType) { return offer(JavaBoxes::toObject(anyType)); }
 
                 //@Throws(Exception.constructor)
             
     public: virtual void remove(Object* anyType) = 0;
     public: void remove(const std::string& anyType) { return remove(JavaString::box(anyType)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void remove(BoxValue anyType) { return remove(JavaBoxes::toObject(anyType)); }
+    public: template<typename BoxElement> void remove(const std::vector<BoxElement>& anyType) { return remove(JavaBoxes::toObject(anyType)); }
 
                 //@Throws(Exception.constructor)
             

@@ -101,7 +101,7 @@ this->init();
 this->emailEventHashMap= StdUtil::getInstance()->createHashMap();
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->CONSTRUCTOR, this, " Constructor");
@@ -126,7 +126,7 @@ this->emailEventHashMap= StdUtil::getInstance()->createHashMap();
 
     auto UserEmailEventsConfiguration::addUserEmailEventConfiguration(UserEmailEventConfigurationInterface* userEmailEventConfigurationInterface) -> void{
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Adding: ") +JavaString::valueOf(userEmailEventConfigurationInterface->log()), this, "addUserEmailEventConfiguration");

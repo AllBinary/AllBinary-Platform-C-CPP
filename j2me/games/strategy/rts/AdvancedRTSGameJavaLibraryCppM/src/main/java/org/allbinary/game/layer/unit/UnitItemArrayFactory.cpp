@@ -157,7 +157,7 @@ this->resources= resources;
     Image* image = IMAGE_CACHE->getWithKey(flagResources->RESOURCE_ICON);;
     
 
-    ABCustomItem* item = new LayerInterfaceFactoryImageItem(name, image, ImageItem::LAYOUT_DEFAULT, flagResources->NAME, this->basicColor, 
+    ABCustomItem* item = new LayerInterfaceFactoryImageItem(name, image, ImageItem::LAYOUT_DEFAULT, flagResources->NAME, this->basicColor, std::vector<Animation*>
                                                 {
                                                     new RTSLayerTextAnimation(RTSGameStrings::getInstance()->DRAGGABLE, image)
                                                 }, layerInterfaceFactoryInterface);;

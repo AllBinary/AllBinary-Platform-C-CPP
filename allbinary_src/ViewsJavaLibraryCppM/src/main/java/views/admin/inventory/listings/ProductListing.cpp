@@ -236,7 +236,7 @@ keywords->addAllList(substoreKeywords);
             
     auto ProductListing::savePage(std::string file, std::string data) -> void{
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->STATICPAGEGENERATIONLOGGING))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->STATICPAGEGENERATIONLOGGING))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Creating File: ") +JavaString::valueOf(file), this, "generateAll()");
@@ -272,7 +272,7 @@ idOutData->flush();
 StreamUtil::getInstance()->close(idOutData);
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->STATICPAGEGENERATIONLOGGING))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->STATICPAGEGENERATIONLOGGING))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Wrote Total Bytes: ") +JavaString::valueOf(newFile->length()), this, "generateAll()");
@@ -347,7 +347,7 @@ this->searchRequest->setFileBaseName(pageName);
                                     }
                                 
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->STATICPAGEGENERATIONLOGGING))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->STATICPAGEGENERATIONLOGGING))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Saving Listing: ") +JavaString::valueOf(index), this, "generateAll()");
@@ -465,7 +465,7 @@ stringBuffer->append(storeFront->getStaticPath());
     AbPath* staticPath = new AbPath(stringBuffer->toString(), StringUtil::getInstance()->EMPTY_STRING);;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->STATICPAGEGENERATIONLOGGING))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->STATICPAGEGENERATIONLOGGING))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Store Static Pages Path: ") +JavaString::valueOf(staticPath), this, "generateAll()");

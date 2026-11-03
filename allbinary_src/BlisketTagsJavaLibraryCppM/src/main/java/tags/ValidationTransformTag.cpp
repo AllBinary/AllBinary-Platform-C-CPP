@@ -138,7 +138,7 @@ this->logic= logic;
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic.communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic.communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
+                        if(allbinary->logic.communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic.communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->IS_VALID, &e);
@@ -185,7 +185,7 @@ this->logic= logic;
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic.communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic.communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
+                        if(allbinary->logic.communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic.communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "validationInfo()", &e);
@@ -209,7 +209,7 @@ this->logic= logic;
 
         try {
             
-                        if(org.allbinary->logic.communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic.communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
+                        if(allbinary->logic.communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic.communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
                                     
@@ -244,7 +244,7 @@ this->setHelper();
                                     TransformTag::doStartTag();
     
 
-                        if(org.allbinary->logic.communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic.communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
+                        if(allbinary->logic.communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic.communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
                                     
@@ -297,7 +297,7 @@ this->logUtil->putF(stringBuffer->toString(), this, tagStrings.DO_START_TAG);
                             pageContext.getOut()->print(this->validationInfo());
     
 
-                        if(org.allbinary->logic.communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic.communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
+                        if(allbinary->logic.communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic.communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
                                     
@@ -384,7 +384,7 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 
     auto ValidationTransformTag::doEndTag() -> int32_t{
 
-                        if(org.allbinary->logic.communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic.communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
+                        if(allbinary->logic.communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic.communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
                                     this->logUtil->putF("Tag Ended", this, "doEndTag");

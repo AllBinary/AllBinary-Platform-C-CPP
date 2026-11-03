@@ -93,6 +93,7 @@ public: OpenGLImageCache();
     public: void addListener(Object* renderer);
     public: void addListener(const std::string& renderer) { return addListener(JavaString::box(renderer)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void addListener(BoxValue renderer) { return addListener(JavaBoxes::toObject(renderer)); }
+    public: template<typename BoxElement> void addListener(const std::vector<BoxElement>& renderer) { return addListener(JavaBoxes::toObject(renderer)); }
 
                 //@Throws(Exception.constructor)
             
@@ -107,6 +108,7 @@ public: OpenGLImageCache();
     /*protected*/ public: Image* createImageFromInputStream(Object* key, InputStream* inputStream);
     /*protected*/ public: Image* createImageFromInputStream(const std::string& key, InputStream* inputStream) { return createImageFromInputStream(JavaString::box(key), inputStream); }
     /*protected*/ public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> Image* createImageFromInputStream(BoxValue key, InputStream* inputStream) { return createImageFromInputStream(JavaBoxes::toObject(key), inputStream); }
+    /*protected*/ public: template<typename BoxElement> Image* createImageFromInputStream(const std::vector<BoxElement>& key, InputStream* inputStream) { return createImageFromInputStream(JavaBoxes::toObject(key), inputStream); }
 
     public: GL10* getGlP();
 

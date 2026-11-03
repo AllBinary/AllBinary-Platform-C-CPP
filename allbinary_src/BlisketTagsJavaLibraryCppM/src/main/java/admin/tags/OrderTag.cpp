@@ -157,7 +157,7 @@ this->storeName= value;
     std::string error = "Failed to Process Order: ";;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->PROCESS, &e);
@@ -223,7 +223,7 @@ this->storeName= value;
     std::string error = "Failed to setPaymentGateway for Order";;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "setPaymentGateway()", &e);
@@ -258,7 +258,7 @@ this->storeName= value;
 this->propertiesHashMap->put(StoreFrontData::getInstance()->NAME, this->storeName);
     
 
-                        if(this->command.compare(org.allbinary->globals->GLOBALS2->PROCESS) == 0)
+                        if(this->command.compare(allbinary->globals->GLOBALS2->PROCESS) == 0)
                         
                                     {
                                     this->process();

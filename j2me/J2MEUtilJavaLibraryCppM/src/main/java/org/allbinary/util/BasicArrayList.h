@@ -75,16 +75,19 @@ public: BasicArrayList(std::vector<Object*> objectArray);
     public: void addAt(int32_t index, Object* element);
     public: void addAt(int32_t index, const std::string& element) { return addAt(index, JavaString::box(element)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void addAt(int32_t index, BoxValue element) { return addAt(index, JavaBoxes::toObject(element)); }
+    public: template<typename BoxElement> void addAt(int32_t index, const std::vector<BoxElement>& element) { return addAt(index, JavaBoxes::toObject(element)); }
 
     public: bool add(Object* anyType);
     public: bool add(const std::string& anyType) { return add(JavaString::box(anyType)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> bool add(BoxValue anyType) { return add(JavaBoxes::toObject(anyType)); }
+    public: template<typename BoxElement> bool add(const std::vector<BoxElement>& anyType) { return add(JavaBoxes::toObject(anyType)); }
 
     public: Object* removeAt(int32_t index);
 
     public: bool remove(Object* anyType);
     public: bool remove(const std::string& anyType) { return remove(JavaString::box(anyType)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> bool remove(BoxValue anyType) { return remove(JavaBoxes::toObject(anyType)); }
+    public: template<typename BoxElement> bool remove(const std::vector<BoxElement>& anyType) { return remove(JavaBoxes::toObject(anyType)); }
 
     public: bool removeAll2(BasicArrayList* list);
 
@@ -101,16 +104,19 @@ public: BasicArrayList(std::vector<Object*> objectArray);
     public: int32_t indexOf(Object* anyType);
     public: int32_t indexOf(const std::string& anyType) { return indexOf(JavaString::box(anyType)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> int32_t indexOf(BoxValue anyType) { return indexOf(JavaBoxes::toObject(anyType)); }
+    public: template<typename BoxElement> int32_t indexOf(const std::vector<BoxElement>& anyType) { return indexOf(JavaBoxes::toObject(anyType)); }
 
     public: int32_t lastIndexOf(Object* anyType);
     public: int32_t lastIndexOf(const std::string& anyType) { return lastIndexOf(JavaString::box(anyType)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> int32_t lastIndexOf(BoxValue anyType) { return lastIndexOf(JavaBoxes::toObject(anyType)); }
+    public: template<typename BoxElement> int32_t lastIndexOf(const std::vector<BoxElement>& anyType) { return lastIndexOf(JavaBoxes::toObject(anyType)); }
 
     public: Object* get(int32_t index);
 
     public: Object* set(int32_t index, Object* element);
     public: Object* set(int32_t index, const std::string& element) { return set(index, JavaString::box(element)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> Object* set(int32_t index, BoxValue element) { return set(index, JavaBoxes::toObject(element)); }
+    public: template<typename BoxElement> Object* set(int32_t index, const std::vector<BoxElement>& element) { return set(index, JavaBoxes::toObject(element)); }
 
     public: void clear();
 
@@ -121,6 +127,7 @@ public: BasicArrayList(std::vector<Object*> objectArray);
     public: bool contains(Object* anyType);
     public: bool contains(const std::string& anyType) { return contains(JavaString::box(anyType)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> bool contains(BoxValue anyType) { return contains(JavaBoxes::toObject(anyType)); }
+    public: template<typename BoxElement> bool contains(const std::vector<BoxElement>& anyType) { return contains(JavaBoxes::toObject(anyType)); }
 
     public: std::vector<Object*> toArray();
 

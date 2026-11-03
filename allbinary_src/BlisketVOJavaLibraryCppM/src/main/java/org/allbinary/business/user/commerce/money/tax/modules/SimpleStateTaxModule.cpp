@@ -144,7 +144,7 @@ this->storeFrontInterface= storeFrontInterface;
 this->document= DomDocumentHelper::create(data);
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAX))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAX))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Tax Doc: ") +JavaString::valueOf(XmlDocumentHelper::toString(this->document)), this, "getTaxRate");
@@ -247,7 +247,7 @@ this->storeFrontInterface= storeFrontInterface;
 this->document= DomDocumentHelper::create(data);
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAX))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAX))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Tax Doc: ") +JavaString::valueOf(XmlDocumentHelper::toString(this->document)), this, this->commonStrings->IS_VALID);
@@ -281,7 +281,7 @@ this->document= DomDocumentHelper::create(data);
     Node* streetAddressNode = DomSearchHelper::getNode(StreetAddressData::NAME, taxNodeChildren);;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAX))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAX))
                         
                                     {
                                     
@@ -365,7 +365,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALI
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to validate", this, this->commonStrings->IS_VALID, &e);

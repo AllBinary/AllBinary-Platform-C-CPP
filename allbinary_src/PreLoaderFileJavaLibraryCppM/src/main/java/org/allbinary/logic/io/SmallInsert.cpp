@@ -107,7 +107,7 @@ idOutData->writeBytes(JavaString::valueOf(text) +JavaString::valueOf(this->strin
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->IDLOGGING))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->IDLOGGING))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "insertAtBeginning", &e);
@@ -184,7 +184,7 @@ idFile->close();
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->IDLOGGING))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->IDLOGGING))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "after", &e);
@@ -229,7 +229,7 @@ idOutData->writeBytes(JavaString::valueOf(this->string) +JavaString::valueOf(tex
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->IDLOGGING))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->IDLOGGING))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "insertAtEnd", &e);

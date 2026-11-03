@@ -95,6 +95,7 @@ private: StringUtil();
     public: std::string toString(Object* anyType);
     public: std::string toString(const std::string& anyType) { return toString(JavaString::box(anyType)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> std::string toString(BoxValue anyType) { return toString(JavaBoxes::toObject(anyType)); }
+    public: template<typename BoxElement> std::string toString(const std::vector<BoxElement>& anyType) { return toString(JavaBoxes::toObject(anyType)); }
 
 };
 

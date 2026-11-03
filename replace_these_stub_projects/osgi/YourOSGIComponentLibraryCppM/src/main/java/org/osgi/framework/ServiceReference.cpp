@@ -24,6 +24,8 @@
         
             #include "java/lang/Object.h"
         
+            #include "java/lang/Comparable.h"
+        
 
 
 
@@ -42,8 +44,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/osgi/framework/Comparable.h"
-
+        
 //Interface - declared in the header
 
 

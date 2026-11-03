@@ -88,6 +88,7 @@ public: AbstractArrayListPool(CacheableInterfaceFactoryInterface* cacheableInter
     public: CacheableInterface* remove(Object* key);
     public: CacheableInterface* remove(const std::string& key) { return remove(JavaString::box(key)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> CacheableInterface* remove(BoxValue key) { return remove(JavaBoxes::toObject(key)); }
+    public: template<typename BoxElement> CacheableInterface* remove(const std::vector<BoxElement>& key) { return remove(JavaBoxes::toObject(key)); }
 
                 //@Throws(Exception.constructor)
             

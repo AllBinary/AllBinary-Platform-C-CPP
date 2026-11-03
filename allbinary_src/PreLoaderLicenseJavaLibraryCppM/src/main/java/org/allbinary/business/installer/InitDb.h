@@ -89,6 +89,7 @@ public: InitDb(DbConnectionInfo* dbConnectionInfo);
     /*protected*/ public: void setHelper(Object* anyType);
     /*protected*/ public: void setHelper(const std::string& anyType) { return setHelper(JavaString::box(anyType)); }
     /*protected*/ public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void setHelper(BoxValue anyType) { return setHelper(JavaBoxes::toObject(anyType)); }
+    /*protected*/ public: template<typename BoxElement> void setHelper(const std::vector<BoxElement>& anyType) { return setHelper(JavaBoxes::toObject(anyType)); }
 
     /*protected*/ public: Object* getHelper();
 

@@ -128,7 +128,7 @@ stringBuffer->append(this->sqlStrings->CLOSE_QUOTE);
 field= rset->getString(requestedField);
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
                                     stringBuffer->delete_(0, stringBuffer->length());
@@ -169,7 +169,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET_FIELD);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGINGERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGINGERROR))
                         
                                     {
                                     this->logUtil->put(JavaString::valueOf(this->FAILED_SQL_STATEMENT) +JavaString::valueOf(sqlStatement), this, METHOD_GET_FIELD, &e);
@@ -266,7 +266,7 @@ stringBuffer->append(this->sqlStrings->CLOSE_QUOTE);
 field= rset->getString(requestedField);
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
                                     stringBuffer->delete_(0, stringBuffer->length());
@@ -310,7 +310,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET_FIELD);
     std::string sqlStatement = stringBuffer->toString();;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGINGERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGINGERROR))
                         
                                     {
                                     this->logUtil->put(JavaString::valueOf(this->FAILED_SQL_STATEMENT) +JavaString::valueOf(sqlStatement), this, METHOD_GET_FIELD, &e);
@@ -418,7 +418,7 @@ field= rset->getObject(columnName)->toString();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return org.allbinary->globals->GLOBALS2->NOTASUBSET;
+                        return allbinary->globals->GLOBALS2->NOTASUBSET;
     
 
                                     }
@@ -437,7 +437,7 @@ field= rset->getObject(columnName)->toString();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return org.allbinary->globals->GLOBALS2->NOTASUBSET;
+                        return allbinary->globals->GLOBALS2->NOTASUBSET;
     
 
                                     }
@@ -449,7 +449,7 @@ field= rset->getObject(columnName)->toString();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return org.allbinary->globals->GLOBALS2->ISASUBSET;
+                        return allbinary->globals->GLOBALS2->ISASUBSET;
     
 
                         }
@@ -462,7 +462,7 @@ field= rset->getObject(columnName)->toString();
     std::string sqlStatement = stringBuffer->toString();;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGINGERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGINGERROR))
                         
                                     {
                                     this->logUtil->put(JavaString::valueOf(this->FAILED_SQL_STATEMENT) +JavaString::valueOf(sqlStatement), this, METHOD_IS_SUBSET_OF_ENTRY, &e);

@@ -36,7 +36,7 @@
         
         <!--
         -->
-<!--        <module>./j2me/AllBinaryBaseLibraryPOM</module>-->
+        <module>./j2me/AllBinaryBaseLibraryPOM</module>
         <module>./j2me/AllBinaryJ2MELibraryCppP</module>
         <module>./AllBinaryPersistenceLibraryCppP</module>
 

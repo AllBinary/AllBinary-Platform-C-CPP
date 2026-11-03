@@ -121,7 +121,7 @@ TransformInfoPropertiesFactory::TransformInfoPropertiesFactory() : logUtil(LogUt
     std::string name = attrNode->getValue();;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(CommonLabels::getInstance()->NEXT) +JavaString::valueOf(" View Name: ")) +JavaString::valueOf(name), this, "toTransformInfoPropertiesHashMap()");

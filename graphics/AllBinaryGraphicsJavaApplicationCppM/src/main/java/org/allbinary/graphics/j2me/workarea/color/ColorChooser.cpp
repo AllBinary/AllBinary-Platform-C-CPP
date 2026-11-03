@@ -68,7 +68,7 @@ this->jColorChooser1= new javax::swing::JColorChooser();
     
 setLayout(new java::awt::BorderLayout());
     
-add(this->jColorChooser1, java.awt->BorderLayout->CENTER);
+add(this->jColorChooser1, awt->BorderLayout->CENTER);
     
 }
 

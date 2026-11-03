@@ -146,7 +146,7 @@ this->storeName= value;
     std::string error = "Failed to retrieve current location";;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "getCurrentLocation()", &e);
@@ -209,7 +209,7 @@ this->storeName= value;
     std::string error = "Failed to retrieve current home location";;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "getCurrentHomeLocation()", &e);
@@ -244,7 +244,7 @@ this->storeName= value;
 this->propertiesHashMap->put(StoreFrontData::getInstance()->NAME, this->storeName);
     
 
-                        if(this->command.compare(org.allbinary->globals->GLOBALS2->GETCURRENTLOCATION) == 0)
+                        if(this->command.compare(allbinary->globals->GLOBALS2->GETCURRENTLOCATION) == 0)
                         
                                     {
                                     pageContext.getOut()->print(this->getCurrentLocation());
@@ -253,7 +253,7 @@ this->propertiesHashMap->put(StoreFrontData::getInstance()->NAME, this->storeNam
                                     }
                                 
                              else 
-                        if(this->command.compare(org.allbinary->globals->GLOBALS2->GETCURRENTHOMELOCATION) == 0)
+                        if(this->command.compare(allbinary->globals->GLOBALS2->GETCURRENTHOMELOCATION) == 0)
                         
                                     {
                                     pageContext.getOut()->print(this->getCurrentHomeLocation());

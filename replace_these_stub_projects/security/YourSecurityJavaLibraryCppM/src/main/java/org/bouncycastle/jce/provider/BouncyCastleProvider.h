@@ -55,6 +55,7 @@ public: BouncyCastleProvider();
     public: void setParameter(std::string parameterName, Object* parameter);
     public: void setParameter(std::string parameterName, const std::string& parameter) { return setParameter(parameterName, JavaString::box(parameter)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void setParameter(std::string parameterName, BoxValue parameter) { return setParameter(parameterName, JavaBoxes::toObject(parameter)); }
+    public: template<typename BoxElement> void setParameter(std::string parameterName, const std::vector<BoxElement>& parameter) { return setParameter(parameterName, JavaBoxes::toObject(parameter)); }
 
 };
 

@@ -36,6 +36,8 @@
         
             #include "java/lang/Object.h"
         
+            #include "java/lang/Comparable.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Long.h"
@@ -64,8 +66,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/graphics/geography/pathfinding/Comparable.h"
-#include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCostInfoData.h"
+        #include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCostInfoData.h"
 
 
 PathFindingNodeCostInfo::PathFindingNodeCostInfo(int64_t costFromStart, int64_t costToGoal) : pathFindingNodeCostInfoData(PathFindingNodeCostInfoData::getInstance()){

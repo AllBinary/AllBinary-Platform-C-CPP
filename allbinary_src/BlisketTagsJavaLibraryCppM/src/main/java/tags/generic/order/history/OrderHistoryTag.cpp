@@ -139,7 +139,7 @@ this->status= value;
     std::string error = "Failed to view order table";;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "setOrderStatus()", &e);
@@ -187,7 +187,7 @@ pageContext.getOut()->print(this->setOrderStatus());
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(org.allbinary->globals->GLOBALS2->VIEW) == 0)
+                        if(this->getCommand()->compareTo(allbinary->globals->GLOBALS2->VIEW) == 0)
                         
                                     {
                                     

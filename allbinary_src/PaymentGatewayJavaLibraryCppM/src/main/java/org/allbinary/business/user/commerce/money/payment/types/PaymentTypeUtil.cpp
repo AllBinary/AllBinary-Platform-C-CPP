@@ -232,7 +232,7 @@ this->paymentTypeVector->add(paymentType);
             
     auto PaymentTypeUtil::initDefault(std::string storeName) -> void{
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PAYMENT))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PAYMENT))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("initDefault Payment: ") +JavaString::valueOf(this->defaultName), this, "initDefault");
@@ -286,7 +286,7 @@ stringBuffer->append(this->PAYMENTGATEWAYFILEPATHSTRING);
     std::string defaultPaymentGatewayNodeValue = DomNodeHelper::getTextNodeValue(defaultPaymentGatewayNode);;
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PAYMENT))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PAYMENT))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("DefaultPaymentGatewayNodeValue: ") +JavaString::valueOf(defaultPaymentGatewayNodeValue), this, "initDefault");
@@ -315,7 +315,7 @@ stringBuffer->append(this->PAYMENTGATEWAYFILEPATHSTRING);
             
     auto PaymentTypeUtil::getDefault(std::string storeName) -> PaymentType*{
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PAYMENT))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PAYMENT))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, "getDefault");

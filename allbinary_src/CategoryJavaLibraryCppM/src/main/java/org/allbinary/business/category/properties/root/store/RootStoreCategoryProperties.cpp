@@ -452,7 +452,7 @@ categoryVector->add(this->getValue());
 
     auto RootStoreCategoryProperties::log() -> void{
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->CATEGORY))
+                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->CATEGORY))
                         
                                     {
                                     this->logUtil->putF((new StringMaker())->append("filePath = ")->append(this->fileAbPath->toString())->append("\npath = ")->append(this->abPath->toString())->append("\ncategory = ")->append(this->category)->toString(), this, "log()");

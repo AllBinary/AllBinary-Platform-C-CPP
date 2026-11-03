@@ -70,6 +70,7 @@ class ClassLoaderUtil
     public: static std::string getName(Object* anyType);
     public: static std::string getName(const std::string& anyType) { return getName(JavaString::box(anyType)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> static std::string getName(BoxValue anyType) { return getName(JavaBoxes::toObject(anyType)); }
+    public: template<typename BoxElement> static std::string getName(const std::vector<BoxElement>& anyType) { return getName(JavaBoxes::toObject(anyType)); }
 
 private: ClassLoaderUtil();
 

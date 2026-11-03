@@ -73,7 +73,7 @@ HighScoreCommandsFactory* HighScoreCommandsFactory::instance = HighScoreCommands
 }
 
 
-HighScoreCommandsFactory::HighScoreCommandsFactory() : HighScoreCommandsBaseFactory(
+HighScoreCommandsFactory::HighScoreCommandsFactory() : HighScoreCommandsBaseFactory(std::vector<Command*>
                                                 {
                                                     HighScoreCommands::getInstance()->PERSONAL,HighScoreCommands::getInstance()->WORLD
                                                 }){

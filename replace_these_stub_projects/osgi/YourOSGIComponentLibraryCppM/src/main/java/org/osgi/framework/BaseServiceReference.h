@@ -77,6 +77,7 @@ class BaseServiceReference
     public: int32_t compareTo(Object* o);
     public: int32_t compareTo(const std::string& o) { return compareTo(JavaString::box(o)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> int32_t compareTo(BoxValue o) { return compareTo(JavaBoxes::toObject(o)); }
+    public: template<typename BoxElement> int32_t compareTo(const std::vector<BoxElement>& o) { return compareTo(JavaBoxes::toObject(o)); }
 
 };
 

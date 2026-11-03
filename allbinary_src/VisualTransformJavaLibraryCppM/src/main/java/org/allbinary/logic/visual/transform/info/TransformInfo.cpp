@@ -204,7 +204,7 @@ this->setDataFile(dataFileName);
                                     }
                                 
 
-                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     
@@ -269,7 +269,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
                         
                                     {
                                     
-                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("TransformInfo override view Object for: ") +JavaString::valueOf(this->getName()), this, "override(HashMap hashMap)");
@@ -297,7 +297,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
                         
                                     {
                                     
-                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("TransformInfo override ObjectConfig for: ") +JavaString::valueOf(this->getName()), this, "override(HashMap hashMap)");
@@ -318,7 +318,7 @@ this->setObjectConfig(JavaBoxes::unbox<std::string>(hashMap->get(transformInfoDa
                         
                                     {
                                     
-                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("TransformInfo override ObjectConfig File for: ") +JavaString::valueOf(this->getName()), this, "override(HashMap hashMap)");
@@ -374,7 +374,7 @@ this->getObjectConfigInterface()->setOutputTypeName(type);
                         
                                     {
                                     
-                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("TransformInfo override Template for: ") +JavaString::valueOf(this->getName()), this, "override(HashMap hashMap)");
@@ -417,7 +417,7 @@ this->getObjectConfigInterface()->setOutputTypeName(type);
                         
                                     {
                                     
-                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("TransformInfo override Data for: ") +JavaString::valueOf(this->getName()), this, "override(HashMap hashMap)");
@@ -441,7 +441,7 @@ this->getObjectConfigInterface()->setOutputTypeName(type);
                                     }
                                 
 
-                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     stringBuffer= new StringMaker();
@@ -482,7 +482,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "TransformInfoInterface(Hash
                                     }
                                 
 
-                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->TAGHELPERFACTORY))
+                        if(allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->TAGHELPERFACTORY))
                         
                                     {
                                     this->logUtil->putF(this->log(), this, "override");
@@ -764,7 +764,7 @@ this->data= value;
                         
                                     {
                                     
-                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEW))
+                        if(allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Data File overriding existing data: ") +JavaString::valueOf(this->getDataFilePath()), this, "getData()");
@@ -782,7 +782,7 @@ this->data= fileData;
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEWERROR))
+                        if(allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put(JavaString::valueOf("Could Not Load Data from: ") +JavaString::valueOf(this->getDataFile()), this, "getData()", &e);
@@ -802,7 +802,7 @@ this->data= fileData;
                         
                                     {
                                     
-                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEWERROR))
+                        if(allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Data: ") +JavaString::valueOf(XmlDocumentHelper::toString(DomDocumentHelper::create(data))), this, "getData()");
@@ -815,7 +815,7 @@ this->data= fileData;
                                 
                         else {
                             
-                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEWERROR))
+                        if(allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     
@@ -834,7 +834,7 @@ stringBuffer->append("\nPath: ");
 stringBuffer->append(this->getDataFilePath()->toFileSystemString());
     
 
-                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEWERROR))
+                        if(allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->putF(stringBuffer->toString(), this, "getData()");
@@ -853,7 +853,7 @@ stringBuffer->append(this->getDataFilePath()->toFileSystemString());
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEWERROR))
+                        if(allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put(JavaString::valueOf("Could Not Preview Data: ") +JavaString::valueOf(this->data), this, "getData()", &e);
@@ -888,7 +888,7 @@ stringBuffer->append(this->getDataFilePath()->toFileSystemString());
                         
                                     {
                                     
-                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEWERROR))
+                        if(allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->putF("No Data So Creating New Document", this, "getDataDocument()");

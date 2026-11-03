@@ -73,6 +73,7 @@ public: WithNormalAttributePointerOpenGLProcessor();
     public: void process(GL10* gl, Object* aObject3d);
     public: void process(GL10* gl, const std::string& aObject3d) { return process(gl, JavaString::box(aObject3d)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void process(GL10* gl, BoxValue aObject3d) { return process(gl, JavaBoxes::toObject(aObject3d)); }
+    public: template<typename BoxElement> void process(GL10* gl, const std::vector<BoxElement>& aObject3d) { return process(gl, JavaBoxes::toObject(aObject3d)); }
 
 };
 

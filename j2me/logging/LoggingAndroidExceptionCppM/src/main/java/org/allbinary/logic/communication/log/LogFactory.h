@@ -67,10 +67,12 @@
     /*actual*/ public: static Log* getInstanceF(std::string specialMessage, Object* anyType, std::string functionName);
     public: static Log* getInstanceF(std::string specialMessage, const std::string& anyType, std::string functionName) { return getInstanceF(specialMessage, JavaString::box(anyType), functionName); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> static Log* getInstanceF(std::string specialMessage, BoxValue anyType, std::string functionName) { return getInstanceF(specialMessage, JavaBoxes::toObject(anyType), functionName); }
+    public: template<typename BoxElement> static Log* getInstanceF(std::string specialMessage, const std::vector<BoxElement>& anyType, std::string functionName) { return getInstanceF(specialMessage, JavaBoxes::toObject(anyType), functionName); }
 
     /*actual*/ public: static Log* getInstanceSE(std::string specialMessage, std::string className, std::string functionName, Object* exception);
     public: static Log* getInstanceSE(std::string specialMessage, std::string className, std::string functionName, const std::string& exception) { return getInstanceSE(specialMessage, className, functionName, JavaString::box(exception)); }
     public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> static Log* getInstanceSE(std::string specialMessage, std::string className, std::string functionName, BoxValue exception) { return getInstanceSE(specialMessage, className, functionName, JavaBoxes::toObject(exception)); }
+    public: template<typename BoxElement> static Log* getInstanceSE(std::string specialMessage, std::string className, std::string functionName, const std::vector<BoxElement>& exception) { return getInstanceSE(specialMessage, className, functionName, JavaBoxes::toObject(exception)); }
 
 
             
