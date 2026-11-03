@@ -81,7 +81,7 @@ ToastUtil* ToastUtil::instance = ToastUtil::instance_owner();
 //inner=true member= isStatic=
 class MakeToast
             : public virtual Object
-        , public Runnable {
+        , public virtual Runnable {
 
     std::string string;
 

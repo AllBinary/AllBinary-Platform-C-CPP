@@ -90,7 +90,7 @@ AppUrlGlobals* AppUrlGlobals::NULL_APP_URL_GLOBALS = AppUrlGlobals::NULL_APP_URL
 this->path= path;
     
 
-                        if(!(this->path.endsWith("\\") || this->path.endsWith("/")))
+                        if(!(JavaString::endsWith(this->path, "\\") || JavaString::endsWith(this->path, "/")))
                         
                                     {
                                     this->path= JavaString::valueOf(this->path) +JavaString::valueOf("\\");

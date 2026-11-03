@@ -64,7 +64,7 @@ class StringMaker;
         
 class MotionRectanglesResultsFrameCacheable
             : public virtual Object
-        , public CacheableInterface {
+        , public virtual CacheableInterface {
 
     private: MotionRectangles* motionRectangles;
 

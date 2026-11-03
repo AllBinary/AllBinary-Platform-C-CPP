@@ -81,7 +81,7 @@ template<typename T1, typename T2> class ABHashtable;
         
 class WindowsHardware
             : public virtual Object
-        , public HardwareInterface {
+        , public virtual HardwareInterface {
 
     private: BasicArrayList* componentInterfaceVector;
 

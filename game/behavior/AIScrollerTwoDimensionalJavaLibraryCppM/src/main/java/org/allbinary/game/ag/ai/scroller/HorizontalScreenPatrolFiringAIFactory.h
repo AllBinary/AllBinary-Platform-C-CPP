@@ -67,7 +67,7 @@ template<typename T1, typename T2> class ABHashtable;
         
 class HorizontalScreenPatrolFiringAIFactory
             : public virtual Object
-        , public ArtificialIntelligenceInterfaceFactoryInterface {
+        , public virtual ArtificialIntelligenceInterfaceFactoryInterface {
 
 
             

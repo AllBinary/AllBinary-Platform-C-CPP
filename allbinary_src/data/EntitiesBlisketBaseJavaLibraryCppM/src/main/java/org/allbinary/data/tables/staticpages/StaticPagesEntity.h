@@ -70,7 +70,7 @@ class CommonSeps;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class StaticPagesEntity: public AbSqlBean, public StaticPagesEntityInterface {
+class StaticPagesEntity: public AbSqlBean, public virtual StaticPagesEntityInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

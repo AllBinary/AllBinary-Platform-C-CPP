@@ -61,7 +61,7 @@ class StreamSource;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class BasicTransformerInterface: public CompositeTransformInfoInterface {
+class BasicTransformerInterface: public virtual CompositeTransformInfoInterface {
 
     public: virtual void setInputStream(InputStream* inputStream) = 0;
 

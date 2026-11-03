@@ -74,7 +74,7 @@ class TransformInfoData;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class TransformInfoHttp: public TransformInfo, public TransformInfoHttpInterface {
+class TransformInfoHttp: public TransformInfo, public virtual TransformInfoHttpInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

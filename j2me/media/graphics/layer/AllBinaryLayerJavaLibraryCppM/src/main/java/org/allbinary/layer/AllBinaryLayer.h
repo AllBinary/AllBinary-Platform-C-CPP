@@ -78,7 +78,7 @@ class ViewPositionEvent;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class AllBinaryLayer: public Layer, public LayerInterface {
+class AllBinaryLayer: public Layer, public virtual LayerInterface {
 
     private: static AllBinaryLayer* NULL_ALLBINARY_LAYER_owner();
     public: static AllBinaryLayer* NULL_ALLBINARY_LAYER;

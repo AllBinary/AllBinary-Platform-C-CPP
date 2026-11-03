@@ -82,7 +82,7 @@ class GameInputMappingInstructionsCanvas;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class GameInputMappingCanvas: public GameCommandCanvas, public InputMappingInterface {
+class GameInputMappingCanvas: public GameCommandCanvas, public virtual InputMappingInterface {
 
     public: static inline const std::string NAME = "GameInputMappingCanvas";
 

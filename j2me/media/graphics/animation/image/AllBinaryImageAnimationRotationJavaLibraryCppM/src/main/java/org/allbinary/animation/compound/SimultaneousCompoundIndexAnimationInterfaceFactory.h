@@ -70,7 +70,7 @@ class ScaleProperties;
         
 class SimultaneousCompoundIndexAnimationInterfaceFactory
             : public virtual Object
-        , public AnimationInterfaceFactoryInterface {
+        , public virtual AnimationInterfaceFactoryInterface {
 
     private: std::vector<AnimationInterfaceFactoryInterface*> basicAnimationInterfaceFactoryInterfaceArray;
 

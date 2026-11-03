@@ -65,7 +65,7 @@ class UpdateMyFontProcessor;
         
 class CanvasDrawLineString
             : public virtual Object
-        , public UpdateMyFontInterface {
+        , public virtual UpdateMyFontInterface {
 
     private: static CanvasDrawLineString* NULL_CANVAS_DRAW_LINE_STRING_owner();
     public: static CanvasDrawLineString* NULL_CANVAS_DRAW_LINE_STRING;

@@ -99,9 +99,7 @@ this->isHighestBest= isHighestBest;
                                 Long.MAX_VALUE
                                 :
 
-                            0;
-
-    ;
+                            0;;
     
 }
 

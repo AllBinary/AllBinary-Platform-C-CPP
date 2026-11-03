@@ -63,7 +63,7 @@ class ProfileActionScriptProcessorInterface;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class ProfileActionScriptConditionInterface: public ProfileActionScriptNodeInterface, public CustomTreeNodeInterface, public ProfileActionScriptItemInterface {
+class ProfileActionScriptConditionInterface: public virtual ProfileActionScriptNodeInterface, public virtual CustomTreeNodeInterface, public virtual ProfileActionScriptItemInterface {
 
     public: virtual void addProcessor(ProfileActionScriptProcessorInterface* profileActionProcessorInterface) = 0;
 

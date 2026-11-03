@@ -59,7 +59,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class GameNotificationListenerInterface: public EventListenerInterface {
+class GameNotificationListenerInterface: public virtual EventListenerInterface {
 
                 //@Throws(Exception.constructor)
             

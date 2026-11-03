@@ -70,7 +70,7 @@ class CommonSeps;
         
 class BasicVelocityProperties
             : public virtual Object
-        , public BasicVelocityInterface {
+        , public virtual BasicVelocityInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

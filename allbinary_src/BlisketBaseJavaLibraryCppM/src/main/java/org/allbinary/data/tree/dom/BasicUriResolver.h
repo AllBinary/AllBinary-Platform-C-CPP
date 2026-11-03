@@ -74,7 +74,7 @@ class TransformInfoTemplateData;
         
 class BasicUriResolver
             : public virtual Object
-        , public URIResolver {
+        , public virtual URIResolver {
 
     /*protected*/ public: LogUtil* logUtil;
 

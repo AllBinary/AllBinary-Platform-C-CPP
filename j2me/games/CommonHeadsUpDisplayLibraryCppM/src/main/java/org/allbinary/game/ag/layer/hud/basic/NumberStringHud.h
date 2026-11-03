@@ -68,7 +68,7 @@ class PrimitiveLongUtil;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class NumberStringHud: public BasicHud, public PaintableInterface {
+class NumberStringHud: public BasicHud, public virtual PaintableInterface {
 
     private: PrimitiveLongUtil* primitiveLongUtil;
 

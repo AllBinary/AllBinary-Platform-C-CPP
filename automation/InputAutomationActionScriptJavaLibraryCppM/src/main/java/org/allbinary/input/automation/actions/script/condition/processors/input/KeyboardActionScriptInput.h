@@ -84,7 +84,7 @@ class KeyboardInputAutomationProcessor;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class KeyboardActionScriptInput: public BasicProfileActionScriptInput, public KeyboardActionScriptInputInterface {
+class KeyboardActionScriptInput: public BasicProfileActionScriptInput, public virtual KeyboardActionScriptInputInterface {
 
     private: static inline const std::string NAME = "Keyboard";
 

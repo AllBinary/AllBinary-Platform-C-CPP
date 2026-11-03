@@ -64,7 +64,7 @@ class BasicDecimal;
         
 class Movement
             : public virtual Object
-        , public MovementInterface {
+        , public virtual MovementInterface {
 
 public: Movement();
 

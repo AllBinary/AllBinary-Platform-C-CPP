@@ -69,7 +69,7 @@ class CommonStrings;
         
 class WorkFlowWrapper
             : public virtual Object
-        , public WorkFlowInterface {
+        , public virtual WorkFlowInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

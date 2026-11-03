@@ -218,7 +218,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class GL11: public GL10 {
+class GL11: public virtual GL10 {
 
     public: static inline const int32_t GL_ACTIVE_TEXTURE = 34016;
 

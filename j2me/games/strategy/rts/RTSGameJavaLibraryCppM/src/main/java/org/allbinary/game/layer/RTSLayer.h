@@ -119,7 +119,7 @@ class SelectionHudPaintable;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class RTSLayer: public MultiPlayerGameLayer, public TickableInterface, public GameInputInterface, public GameKeyEventSourceInterface, public RTSInterface, public PathFindingLayerInterface {
+class RTSLayer: public MultiPlayerGameLayer, public virtual TickableInterface, public virtual GameInputInterface, public virtual GameKeyEventSourceInterface, public virtual RTSInterface, public virtual PathFindingLayerInterface {
 
                 //@Throws(Exception.constructor)
             

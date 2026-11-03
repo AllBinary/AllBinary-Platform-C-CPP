@@ -224,7 +224,7 @@ class FormInputProcessor;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class AllBinaryGameCanvas: public RunnableCanvas, public AllBinaryGameCanvasInterface, public GameCanvasRunnableInterface, public MenuListener, public IntermissionCompositeInterface, public IntermissionEnableListenerInterface, public PopupMenuInterface, public DisplayChangeEventListener, public UpdateMyFontInterface {
+class AllBinaryGameCanvas: public RunnableCanvas, public virtual AllBinaryGameCanvasInterface, public virtual GameCanvasRunnableInterface, public virtual MenuListener, public virtual IntermissionCompositeInterface, public virtual IntermissionEnableListenerInterface, public virtual PopupMenuInterface, public virtual DisplayChangeEventListener, public virtual UpdateMyFontInterface {
 
     private: static inline const int32_t id = 0;
 

@@ -63,7 +63,7 @@ class Node;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class UpdateValidationView: public BillingAddressView, public ValidationComponentInterface {
+class UpdateValidationView: public BillingAddressView, public virtual ValidationComponentInterface {
 
 public: UpdateValidationView(TransformInfoInterface* transformInfoInterface);
 

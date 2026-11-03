@@ -65,7 +65,7 @@ class CommonStrings;
         
 class InputAutomationServiceFactory
             : public virtual Object
-        , public ServiceFactory {
+        , public virtual ServiceFactory {
 
     private: static InputAutomationServiceFactory* inputAutomationServiceFactory_owner();
     private: static InputAutomationServiceFactory* inputAutomationServiceFactory;

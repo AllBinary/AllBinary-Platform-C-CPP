@@ -66,7 +66,7 @@ class Node;
         
 class CssPropertyView
             : public virtual Object
-        , public DomNodeInterface {
+        , public virtual DomNodeInterface {
 
     /*protected*/ public: CommonStrings* commonStrings;
 

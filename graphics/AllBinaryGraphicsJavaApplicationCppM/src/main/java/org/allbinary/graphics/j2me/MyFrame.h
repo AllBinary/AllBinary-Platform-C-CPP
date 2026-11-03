@@ -115,7 +115,7 @@ class KeyEvent;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class MyFrame: public javax::swing::JFrame, public FileJDialogListenerInterface, public HashMapJDialogListenerInterface, public java::awt::event::KeyListener {
+class MyFrame: public javax::swing::JFrame, public virtual FileJDialogListenerInterface, public virtual HashMapJDialogListenerInterface, public virtual java::awt::event::KeyListener {
 
     private: static inline const int32_t MAXWORKAREAS = 10;
 

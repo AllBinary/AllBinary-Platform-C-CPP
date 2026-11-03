@@ -64,7 +64,7 @@ class LayerManagerEvent;
         
 class LayerManagerEventListener
             : public virtual Object
-        , public LayerManagerEventListenerInterface {
+        , public virtual LayerManagerEventListenerInterface {
 
 
             

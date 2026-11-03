@@ -70,7 +70,7 @@ class CommonStrings;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class DirectionalAnalogLocationInputProcessor: public AnalogLocationInputProcessor, public GameKeyEventSourceInterface {
+class DirectionalAnalogLocationInputProcessor: public AnalogLocationInputProcessor, public virtual GameKeyEventSourceInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

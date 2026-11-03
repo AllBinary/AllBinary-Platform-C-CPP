@@ -106,7 +106,7 @@ BasePathFindingInfoFactory::BasePathFindingInfoFactory() : logUtil(LogUtil::getI
 //inner=true member= isStatic=
 class RaceTrackGeographicMapCellPositionFactoryInitVisitor
             : public virtual Object
-        , public GeographicMapCellPositionFactoryInitVisitorInterface {
+        , public virtual GeographicMapCellPositionFactoryInitVisitorInterface {
 
     private: int32_t startLineId;
 

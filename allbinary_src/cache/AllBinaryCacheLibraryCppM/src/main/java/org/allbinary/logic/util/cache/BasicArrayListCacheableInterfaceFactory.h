@@ -64,7 +64,7 @@ class CacheableInterface;
         
 class BasicArrayListCacheableInterfaceFactory
             : public virtual Object
-        , public CacheableInterfaceFactoryInterface {
+        , public virtual CacheableInterfaceFactoryInterface {
 
 
             

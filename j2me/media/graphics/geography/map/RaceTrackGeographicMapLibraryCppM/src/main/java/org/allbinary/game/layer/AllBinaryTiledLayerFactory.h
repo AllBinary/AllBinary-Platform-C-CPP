@@ -70,7 +70,7 @@ class AllBinaryJ2METiledLayer;
         
 class AllBinaryTiledLayerFactory
             : public virtual Object
-        , public AllBinaryTiledLayerFactoryInterface {
+        , public virtual AllBinaryTiledLayerFactoryInterface {
 
 
             

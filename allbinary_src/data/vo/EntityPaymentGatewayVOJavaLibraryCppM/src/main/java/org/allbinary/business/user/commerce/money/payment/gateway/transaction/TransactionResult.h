@@ -72,7 +72,7 @@ class PaymentTransactionKeysFactory;
         
 class TransactionResult
             : public virtual Object
-        , public TransactionResultInterface {
+        , public virtual TransactionResultInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

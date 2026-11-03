@@ -70,7 +70,7 @@ class BasicArrayList;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class HighScoresCanvasLevelChangeInputProcessor: public HighScoresCanvasInputProcessor, public UpdateMyFontInterface {
+class HighScoresCanvasLevelChangeInputProcessor: public HighScoresCanvasInputProcessor, public virtual UpdateMyFontInterface {
 
     private: DisplayInfoSingleton* displayInfoSingleton;
 

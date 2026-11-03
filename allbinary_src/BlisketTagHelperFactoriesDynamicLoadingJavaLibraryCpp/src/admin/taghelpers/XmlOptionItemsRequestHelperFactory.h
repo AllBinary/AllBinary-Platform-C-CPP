@@ -64,7 +64,7 @@ class HelperFactory;
         
 class XmlOptionItemsRequestHelperFactory
             : public virtual Object
-        , public TagHelperFactoryInterface {
+        , public virtual TagHelperFactoryInterface {
 
     private: static inline const std::string CLASSNAME = "admin.taghelpers.XmlOptionItemsRequestHelper";
 

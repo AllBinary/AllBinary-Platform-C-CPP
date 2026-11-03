@@ -76,7 +76,7 @@ this->topViewArray= topViewArray;
 
     auto ViewSwapper::setMainView(int32_t id) -> void{
 
-    ViewGroup* viewGroup = dynamic_cast<ViewGroup*>(this->activity->findViewById(this->rootViewId) as unknown);;
+    ViewGroup* viewGroup = dynamic_cast<ViewGroup*>(this->activity->findViewById(this->rootViewId));;
     
 
                         if(id != this->currentMainViewId)

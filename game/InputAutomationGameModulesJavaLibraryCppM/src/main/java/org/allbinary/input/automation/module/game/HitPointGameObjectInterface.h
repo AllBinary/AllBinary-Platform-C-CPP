@@ -56,7 +56,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class HitPointGameObjectInterface: public MeteredGameObjectInterface {
+class HitPointGameObjectInterface: public virtual MeteredGameObjectInterface {
 
     public: virtual bool isMoreThan(float aFloat) = 0;
 

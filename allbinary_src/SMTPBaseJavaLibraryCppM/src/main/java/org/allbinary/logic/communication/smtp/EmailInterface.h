@@ -60,7 +60,7 @@ class MimeMessage;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class EmailInterface: public DomNodeInterface, public DomDocumentMappingInterface {
+class EmailInterface: public virtual DomNodeInterface, public virtual DomDocumentMappingInterface {
 
     public: virtual std::string getDebugInfo() = 0;
 

@@ -72,7 +72,7 @@ class Animation;
         
 class NullIndexedAnimationFactory
             : public virtual Object
-        , public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
+        , public virtual AnimationInterfaceFactoryInterface, public virtual ProceduralAnimationInterfaceFactoryInterface {
 public: class NullIndexedAnimationInner;
 
     public: static std::vector<IndexedAnimation*> NULL_INDEXED_ANIMATION_ARRAY;

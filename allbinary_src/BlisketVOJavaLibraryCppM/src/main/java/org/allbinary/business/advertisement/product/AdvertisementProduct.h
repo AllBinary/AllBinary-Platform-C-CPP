@@ -61,7 +61,7 @@ class TwoDimensionalConstraintInterface;
         
 class AdvertisementProduct
             : public virtual Object
-        , public AdvertisementProductInterface {
+        , public virtual AdvertisementProductInterface {
 
     private: std::string type;
 

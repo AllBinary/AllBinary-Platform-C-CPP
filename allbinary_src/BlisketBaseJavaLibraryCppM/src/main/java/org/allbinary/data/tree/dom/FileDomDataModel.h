@@ -69,7 +69,7 @@ class ModDomHelper;
         
 class FileDomDataModel
             : public virtual Object
-        , public DomNodeInterface {
+        , public virtual DomNodeInterface {
 
     private: AbFile* file;
 

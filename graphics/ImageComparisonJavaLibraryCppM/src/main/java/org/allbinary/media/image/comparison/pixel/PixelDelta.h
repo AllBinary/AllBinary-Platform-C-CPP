@@ -65,7 +65,7 @@ class CommonSeps;
         
 class PixelDelta
             : public virtual Object
-        , public CacheableInterface {
+        , public virtual CacheableInterface {
 
     public: static Object* getKey(GPoint* point, ColorDelta* colorDelta);
 

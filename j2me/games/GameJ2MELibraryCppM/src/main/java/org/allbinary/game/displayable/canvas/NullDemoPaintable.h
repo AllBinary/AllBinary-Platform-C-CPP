@@ -60,7 +60,7 @@
         
 class NullDemoPaintable
             : public virtual Object
-        , public DemoPaintableInterface {
+        , public virtual DemoPaintableInterface {
 
     private: static NullDemoPaintable* NULL_DEMO_PAINTABLE_owner();
     public: static NullDemoPaintable* NULL_DEMO_PAINTABLE;

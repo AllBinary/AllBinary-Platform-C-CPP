@@ -67,7 +67,7 @@ class TimeDelayHelper;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class ImageArraySpecialAnimation: public ImageArrayAnimation, public SpecialAnimationInterface {
+class ImageArraySpecialAnimation: public ImageArrayAnimation, public virtual SpecialAnimationInterface {
 
     private: TimeDelayHelper* timeDelayHelper;
 

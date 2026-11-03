@@ -56,7 +56,7 @@ class AllBinaryEventObject;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class TechEventListenerInterface: public EventListenerInterface {
+class TechEventListenerInterface: public virtual EventListenerInterface {
 
     public: virtual void onTechEvent(AllBinaryEventObject* event) = 0;
 

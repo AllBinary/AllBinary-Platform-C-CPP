@@ -66,7 +66,7 @@ class CommonSeps;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class HitPointGameObject: public MeteredGameObject, public HitPointGameObjectInterface {
+class HitPointGameObject: public MeteredGameObject, public virtual HitPointGameObjectInterface {
 
     private: bool damaged = false;
 

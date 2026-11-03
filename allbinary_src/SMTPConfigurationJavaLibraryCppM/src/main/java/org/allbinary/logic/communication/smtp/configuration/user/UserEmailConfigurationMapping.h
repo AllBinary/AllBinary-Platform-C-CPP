@@ -68,7 +68,7 @@ class UserEmailConfigurationData;
         
 class UserEmailConfigurationMapping
             : public virtual Object
-        , public TableMappingInterface {
+        , public virtual TableMappingInterface {
 
     private: UserEmailConfigurationInterface* userEmailConfigurationInterface;
 

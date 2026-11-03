@@ -59,7 +59,7 @@ class BasicArrayList;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class AdvertisementCampaignInternalEntityInterface: public BasicDataTableInterface {
+class AdvertisementCampaignInternalEntityInterface: public virtual BasicDataTableInterface {
 
     public: virtual void delete_(std::string value) = 0;
 

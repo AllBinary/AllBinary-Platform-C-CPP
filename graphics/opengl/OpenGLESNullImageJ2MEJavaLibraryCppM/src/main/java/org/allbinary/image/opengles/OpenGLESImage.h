@@ -73,7 +73,7 @@ class OpenGLESImageProperties;
         //OpenGLESNullImageJ2MEJavaLibrary
 class OpenGLESImage
             : public virtual Object
-        , public OpenGLSurfaceChangedInterface {
+        , public virtual OpenGLSurfaceChangedInterface {
 
     private: static OpenGLESImage* NULL_OPENGL_IMAGE_owner();
     public: static OpenGLESImage* NULL_OPENGL_IMAGE;

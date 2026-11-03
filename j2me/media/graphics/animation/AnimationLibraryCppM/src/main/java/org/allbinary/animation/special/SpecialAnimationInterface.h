@@ -56,7 +56,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class SpecialAnimationInterface: public IndexedAnimationInterface {
+class SpecialAnimationInterface: public virtual IndexedAnimationInterface {
 
     public: virtual void setLastFrame() = 0;
 

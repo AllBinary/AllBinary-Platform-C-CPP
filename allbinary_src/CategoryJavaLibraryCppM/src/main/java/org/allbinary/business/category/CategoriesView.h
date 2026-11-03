@@ -68,7 +68,7 @@ class CategoryView;
         
 class CategoriesView
             : public virtual Object
-        , public DomNodeInterface {
+        , public virtual DomNodeInterface {
 
     private: CategoryInterface* categoryInterface;
 

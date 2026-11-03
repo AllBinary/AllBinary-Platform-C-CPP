@@ -46,7 +46,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class ServiceReference: public Comparable {
+class ServiceReference: public virtual Comparable {
 
     public: virtual Object* getProperty(std::string key) = 0;
 

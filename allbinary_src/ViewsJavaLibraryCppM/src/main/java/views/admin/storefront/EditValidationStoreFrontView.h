@@ -65,7 +65,7 @@ class Node;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class EditValidationStoreFrontView: public StoreFrontComponent, public ValidationComponentInterface {
+class EditValidationStoreFrontView: public StoreFrontComponent, public virtual ValidationComponentInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

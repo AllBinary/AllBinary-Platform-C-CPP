@@ -62,7 +62,7 @@ class StoreThemeCategoryInterface;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class StoreThemeCategoryValidationView: public StoreThemeCategoryView, public ValidationInterface {
+class StoreThemeCategoryValidationView: public StoreThemeCategoryView, public virtual ValidationInterface {
 
 public: StoreThemeCategoryValidationView(StoreThemeCategoryInterface* categoryInterface);
 

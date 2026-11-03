@@ -354,7 +354,7 @@ rectangleAdjustedAnimation->setBasicColorP(buttonColor);
     int32_t index = ScrollCurrentSelectionForm::getSelectedIndex();;
     
 
-    CommandTextItem* commandTextItem = dynamic_cast<CommandTextItem*>(this->get(index) as unknown);;
+    CommandTextItem* commandTextItem = dynamic_cast<CommandTextItem*>(this->get(index));;
     
 
 

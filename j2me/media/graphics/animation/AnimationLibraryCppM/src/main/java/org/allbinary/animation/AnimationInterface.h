@@ -59,7 +59,7 @@ class Graphics;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class AnimationInterface: public LocationPaintableInterface {
+class AnimationInterface: public virtual LocationPaintableInterface {
 
                 //@Throws(Exception.constructor)
             

@@ -75,7 +75,7 @@ class ImageActionScriptOutputProcessor;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class ImageActionScriptOutput: public BasicProfileActionScriptOutput, public ImageActionScriptOutputInterface {
+class ImageActionScriptOutput: public BasicProfileActionScriptOutput, public virtual ImageActionScriptOutputInterface {
 
     private: static inline const std::string NAME = "Captures";
 

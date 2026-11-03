@@ -58,7 +58,7 @@ class RTSLayerEvent;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class WaypointEventListenerInterface: public EventListenerInterface {
+class WaypointEventListenerInterface: public virtual EventListenerInterface {
 
                 //@Throws(Exception.constructor)
             

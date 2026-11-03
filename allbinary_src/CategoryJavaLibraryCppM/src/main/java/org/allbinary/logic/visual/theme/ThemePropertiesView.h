@@ -67,7 +67,7 @@ class ThemeData;
         
 class ThemePropertiesView
             : public virtual Object
-        , public DomNodeInterface {
+        , public virtual DomNodeInterface {
 
     private: ThemeInterface* themeInterface;
 

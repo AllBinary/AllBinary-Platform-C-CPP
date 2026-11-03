@@ -108,7 +108,7 @@ this->logUtil->put(JavaString::valueOf("File: ") +JavaString::valueOf(fileName),
 
         try {
             
-    int32_t nextIndex = this->string.indexOf(CommonSeps::getInstance()->NEW_LINE, index);;
+    int32_t nextIndex = JavaString::indexOf(this->string, CommonSeps::getInstance()->NEW_LINE, index);;
     
 
                         if(nextIndex ==  -1)
@@ -158,7 +158,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "hasNext", &e);
 
         try {
             
-    int32_t nextIndex = this->string.indexOf(CommonSeps::getInstance()->NEW_LINE, index);;
+    int32_t nextIndex = JavaString::indexOf(this->string, CommonSeps::getInstance()->NEW_LINE, index);;
     
 
                         if(nextIndex ==  -1)
@@ -173,7 +173,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "hasNext", &e);
                                     }
                                 
 
-    std::string temp = this->string.substring(index, nextIndex);;
+    std::string temp = JavaString::substring(this->string, index, nextIndex);;
     
 index= nextIndex +1;
     

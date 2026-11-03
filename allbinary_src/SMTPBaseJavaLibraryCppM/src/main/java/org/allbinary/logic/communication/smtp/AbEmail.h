@@ -67,7 +67,7 @@ class Email;
         
 class AbEmail
             : public virtual Object
-        , public EmailInterface {
+        , public virtual EmailInterface {
 
     private: Email* email;
 

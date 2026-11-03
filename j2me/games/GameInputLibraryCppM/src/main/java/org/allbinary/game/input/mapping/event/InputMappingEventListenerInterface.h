@@ -59,7 +59,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class InputMappingEventListenerInterface: public EventListenerInterface {
+class InputMappingEventListenerInterface: public virtual EventListenerInterface {
 
                 //@Throws(Exception.constructor)
             

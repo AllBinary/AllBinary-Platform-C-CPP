@@ -57,7 +57,7 @@ class AllBinaryEventObject;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class GameMidletEventListener: public EventListenerInterface {
+class GameMidletEventListener: public virtual EventListenerInterface {
 
     public: virtual void onGameEnd(AllBinaryEventObject* eventObject) = 0;
 

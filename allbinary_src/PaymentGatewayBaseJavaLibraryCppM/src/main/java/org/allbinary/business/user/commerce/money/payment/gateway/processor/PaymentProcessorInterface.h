@@ -59,7 +59,7 @@ class PaymentException;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class PaymentProcessorInterface: public DomNodeInterface {
+class PaymentProcessorInterface: public virtual DomNodeInterface {
 
                 //@Throws(PaymentException.constructor, Exception.constructor)
             

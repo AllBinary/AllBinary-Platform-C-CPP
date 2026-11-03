@@ -66,7 +66,7 @@ class TimeDelayHelper;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class AllBinaryVisualDebugVibration: public AllBinaryVibrationME, public UpdateMyFontInterface {
+class AllBinaryVisualDebugVibration: public AllBinaryVibrationME, public virtual UpdateMyFontInterface {
 
 
             

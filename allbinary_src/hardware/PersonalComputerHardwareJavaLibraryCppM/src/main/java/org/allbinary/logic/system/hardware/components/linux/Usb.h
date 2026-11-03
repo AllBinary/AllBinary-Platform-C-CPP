@@ -61,7 +61,7 @@
         
 class Usb
             : public virtual Object
-        , public HardwareComponentInterface, public UsbInterface {
+        , public virtual HardwareComponentInterface, public virtual UsbInterface {
 
     private: std::string data;
 

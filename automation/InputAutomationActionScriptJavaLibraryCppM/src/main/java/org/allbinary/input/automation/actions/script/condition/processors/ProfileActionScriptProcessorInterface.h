@@ -59,7 +59,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class ProfileActionScriptProcessorInterface: public CustomTreeNodeInterface, public DomNodeInterface, public MutableTreeNode, public ProfileActionScriptItemInterface {
+class ProfileActionScriptProcessorInterface: public virtual CustomTreeNodeInterface, public virtual DomNodeInterface, public virtual MutableTreeNode, public virtual ProfileActionScriptItemInterface {
 
 };
 

@@ -64,7 +64,7 @@ class Node;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class EditMetaValidationView: public MetaView, public ValidationComponentInterface {
+class EditMetaValidationView: public MetaView, public virtual ValidationComponentInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

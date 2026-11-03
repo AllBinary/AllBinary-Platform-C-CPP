@@ -69,7 +69,7 @@ class TerrainPatrolAI;
         
 class TerrainPatrolAIFactory
             : public virtual Object
-        , public ArtificialIntelligenceInterfaceFactoryInterface {
+        , public virtual ArtificialIntelligenceInterfaceFactoryInterface {
 
 
             

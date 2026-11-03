@@ -69,7 +69,7 @@ class Node;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class DeleteValidationUserView: public UserView, public ValidationComponentInterface {
+class DeleteValidationUserView: public UserView, public virtual ValidationComponentInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

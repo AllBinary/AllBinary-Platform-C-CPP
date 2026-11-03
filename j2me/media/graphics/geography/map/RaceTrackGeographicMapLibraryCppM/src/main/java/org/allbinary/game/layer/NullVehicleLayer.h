@@ -74,7 +74,7 @@ class VehicleProperties;
         
 class NullVehicleLayer
             : public virtual Object
-        , public VehicleLayerInterface {
+        , public virtual VehicleLayerInterface {
 
     private: static NullVehicleLayer* NULL_VEHICLE_LAYER_owner();
     public: static NullVehicleLayer* NULL_VEHICLE_LAYER;

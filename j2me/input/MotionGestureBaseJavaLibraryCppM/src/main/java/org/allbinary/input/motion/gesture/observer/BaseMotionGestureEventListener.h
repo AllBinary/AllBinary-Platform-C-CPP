@@ -57,7 +57,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class BaseMotionGestureEventListener: public EventListenerInterface {
+class BaseMotionGestureEventListener: public virtual EventListenerInterface {
 
     public: virtual void onMotionGestureEvent(MotionGestureEvent* motionGestureEvent) = 0;
 

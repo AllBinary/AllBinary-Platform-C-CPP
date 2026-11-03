@@ -64,7 +64,7 @@ class HelperFactory;
         
 class TransformInfoRequestHelperFactory
             : public virtual Object
-        , public TagHelperFactoryInterface {
+        , public virtual TagHelperFactoryInterface {
 
     private: static inline const std::string CLASSNAME = "taghelpers.transform.info.TransformInfoRequestHelper";
 

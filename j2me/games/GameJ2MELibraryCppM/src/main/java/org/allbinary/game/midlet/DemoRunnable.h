@@ -73,7 +73,7 @@ class DemoGameMidletEventHandler;
         
 class DemoRunnable
             : public virtual Object
-        , public Runnable {
+        , public virtual Runnable {
 
     /*protected*/ public: LogUtil* logUtil;
 

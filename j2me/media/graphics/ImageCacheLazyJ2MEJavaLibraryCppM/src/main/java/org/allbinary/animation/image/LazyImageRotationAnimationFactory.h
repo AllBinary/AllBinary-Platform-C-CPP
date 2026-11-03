@@ -69,7 +69,7 @@ class LazyImageRotationAnimation;
         
 class LazyImageRotationAnimationFactory
             : public virtual Object
-        , public AnimationInterfaceFactoryInterface {
+        , public virtual AnimationInterfaceFactoryInterface {
 
     private: int32_t layoutIndex;
 

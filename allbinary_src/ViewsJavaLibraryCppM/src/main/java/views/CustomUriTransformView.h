@@ -73,7 +73,7 @@ class Node;
         
 class CustomUriTransformView
             : public virtual Object
-        , public TransformInterface {
+        , public virtual TransformInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

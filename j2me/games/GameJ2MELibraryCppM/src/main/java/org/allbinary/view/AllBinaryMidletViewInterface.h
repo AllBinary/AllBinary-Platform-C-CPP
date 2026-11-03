@@ -45,7 +45,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class AllBinaryMidletViewInterface: public MidletCompositeInterface, public EmulatorViewInterface, public DemoGameMidletEventListener, public GameInitializedListenerInterface {
+class AllBinaryMidletViewInterface: public virtual MidletCompositeInterface, public virtual EmulatorViewInterface, public virtual DemoGameMidletEventListener, public virtual GameInitializedListenerInterface {
 
     public: virtual void onResume() = 0;
 

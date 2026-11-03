@@ -59,7 +59,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class CustomTransformInfo: public TransformInfo, public TransformInfoInterface {
+class CustomTransformInfo: public TransformInfo, public virtual TransformInfoInterface {
 
 public: CustomTransformInfo(std::string outputTypeName, std::string inputOutputTypeName, std::string inputOutputTypeFile, std::string name, std::string objectFileName, std::string objectConfigFileName, std::string templateFileName, std::string dataFileName);
 

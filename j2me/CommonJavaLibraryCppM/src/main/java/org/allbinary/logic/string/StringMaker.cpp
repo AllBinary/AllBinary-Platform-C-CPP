@@ -267,9 +267,7 @@ this->charArray= copy;
                                 value
                                 :
 
-                            value2;
-
-    ;
+                            value2;;
     
 }
 

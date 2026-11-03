@@ -62,7 +62,7 @@
         
 class RunAtEndAnimationListener
             : public virtual Object
-        , public AnimationListenerInterface {
+        , public virtual AnimationListenerInterface {
 
     /*protected*/ public: Runnable* runnable;
 

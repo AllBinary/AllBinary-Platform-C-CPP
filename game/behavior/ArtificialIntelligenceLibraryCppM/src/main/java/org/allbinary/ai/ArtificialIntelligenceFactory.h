@@ -65,7 +65,7 @@ class ArtificialIntelligence;
         
 class ArtificialIntelligenceFactory
             : public virtual Object
-        , public ArtificialIntelligenceFactoryInterface {
+        , public virtual ArtificialIntelligenceFactoryInterface {
 
 
             

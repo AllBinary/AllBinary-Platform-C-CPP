@@ -75,7 +75,7 @@ class StdUtil;
         
 class Basket
             : public virtual Object
-        , public BasketInterface, public Serializable {
+        , public virtual BasketInterface, public virtual Serializable {
 
     private: HashMap<Object*, Object*>* items;
 

@@ -63,7 +63,7 @@ class Node;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class FontFamilyValidation: public FontFamilyView, public ValidationInterface {
+class FontFamilyValidation: public FontFamilyView, public virtual ValidationInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

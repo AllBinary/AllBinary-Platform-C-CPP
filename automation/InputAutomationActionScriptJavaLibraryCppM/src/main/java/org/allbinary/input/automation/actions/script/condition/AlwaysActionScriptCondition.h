@@ -72,7 +72,7 @@ class AlwaysActionScriptConditionData;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class AlwaysActionScriptCondition: public BasicProfileActionScriptCondition, public AlwaysActionScriptConditionInterface {
+class AlwaysActionScriptCondition: public BasicProfileActionScriptCondition, public virtual AlwaysActionScriptConditionInterface {
 
     private: static inline const std::string NAME = "Always On/Off";
 

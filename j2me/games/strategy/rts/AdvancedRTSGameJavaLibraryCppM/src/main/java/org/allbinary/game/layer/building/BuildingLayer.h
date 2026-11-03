@@ -110,7 +110,7 @@ class BuildingInfoHudPaintable;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class BuildingLayer: public AdvancedRTSGameLayer, public RotationAnimationInterfaceCompositeInterface, public TrackingEventListenerInterface {
+class BuildingLayer: public AdvancedRTSGameLayer, public virtual RotationAnimationInterfaceCompositeInterface, public virtual TrackingEventListenerInterface {
 
                 //@Throws(Exception.constructor)
             

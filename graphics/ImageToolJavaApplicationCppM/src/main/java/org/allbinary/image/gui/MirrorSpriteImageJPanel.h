@@ -83,7 +83,7 @@ class ActionEvent;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class MirrorSpriteImageJPanel: public javax::swing::JPanel, public ImageProcessorInputCompositeInterface {
+class MirrorSpriteImageJPanel: public javax::swing::JPanel, public virtual ImageProcessorInputCompositeInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

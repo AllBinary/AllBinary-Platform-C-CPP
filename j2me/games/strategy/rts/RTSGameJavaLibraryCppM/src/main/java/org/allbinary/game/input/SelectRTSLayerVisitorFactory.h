@@ -63,7 +63,7 @@ class SelectedRTSLayersPlayerGameInput;
         
 class SelectRTSLayerVisitorFactory
             : public virtual Object
-        , public SelectRTSLayerVisitorFactoryInterface {
+        , public virtual SelectRTSLayerVisitorFactoryInterface {
 
     private: static SelectRTSLayerVisitorFactory* instance_owner();
     private: static SelectRTSLayerVisitorFactory* instance;

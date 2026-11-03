@@ -73,7 +73,7 @@ class NodeList;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class GenericProfileActionScript: public DefaultMutableTreeNode, public ProfileActionScriptNodeInterface {
+class GenericProfileActionScript: public DefaultMutableTreeNode, public virtual ProfileActionScriptNodeInterface {
 
     private: static inline const std::string NAME = "Root";
 

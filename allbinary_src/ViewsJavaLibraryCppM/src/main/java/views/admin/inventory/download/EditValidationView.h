@@ -78,7 +78,7 @@ class Node;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class EditValidationView: public DownloadableInventoryItemView, public ValidationComponentInterface {
+class EditValidationView: public DownloadableInventoryItemView, public virtual ValidationComponentInterface {
 
     private: std::string downloadItemId;
 

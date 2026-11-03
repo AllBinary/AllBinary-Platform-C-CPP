@@ -61,7 +61,7 @@ class LockableFeature;
         
 class LockedUtil
             : public virtual Object
-        , public LockedUtilInterface {
+        , public virtual LockedUtilInterface {
 
     private: static LockedUtil* instance_owner();
     private: static LockedUtil* instance;

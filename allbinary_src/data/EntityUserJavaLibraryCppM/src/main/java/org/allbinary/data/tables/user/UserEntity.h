@@ -81,7 +81,7 @@ class CommonSeps;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class UserEntity: public AbSqlBean, public UserEntityInterface {
+class UserEntity: public AbSqlBean, public virtual UserEntityInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

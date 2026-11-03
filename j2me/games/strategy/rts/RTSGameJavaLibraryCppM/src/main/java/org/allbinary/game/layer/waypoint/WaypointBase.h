@@ -76,7 +76,7 @@ class BasicArrayListD;
         
 class WaypointBase
             : public virtual Object
-        , public EventListenerInterface {
+        , public virtual EventListenerInterface {
 
     private: static WaypointBase* NULL_WAYPOINT_BASE_owner();
     public: static WaypointBase* NULL_WAYPOINT_BASE;

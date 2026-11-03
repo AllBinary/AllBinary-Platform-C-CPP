@@ -58,7 +58,7 @@ class RaceTrackData;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class RaceTrackGeographicMapInterface: public GeographicMapInterface {
+class RaceTrackGeographicMapInterface: public virtual GeographicMapInterface {
 
     public: virtual RaceTrackInfo* getRaceTrackInfo() = 0;
 

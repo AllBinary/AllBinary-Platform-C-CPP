@@ -77,7 +77,7 @@ class CommonStrings;
         
 class InputAutomationModuleBundleActivator
             : public virtual Object
-        , public BundleActivator {
+        , public virtual BundleActivator {
 
     /*protected*/ public: LogUtil* logUtil;
 

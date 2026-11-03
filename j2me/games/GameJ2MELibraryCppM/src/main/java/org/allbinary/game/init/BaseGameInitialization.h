@@ -82,7 +82,7 @@ class AbeClientInformationInterface;
         
 class BaseGameInitialization
             : public virtual Object
-        , public GameInitializationInterface {
+        , public virtual GameInitializationInterface {
 
     private: static BaseGameInitialization* NULL_BASE_GAME_INITIALIZATION_owner();
     public: static BaseGameInitialization* NULL_BASE_GAME_INITIALIZATION;

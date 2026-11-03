@@ -65,7 +65,7 @@ class CommonStrings;
         
 class AllBinarySensor
             : public virtual Object
-        , public AllBinarySensorListener {
+        , public virtual AllBinarySensorListener {
 
     private: static AllBinarySensor* NULL_ALLBINARY_SENSOR_owner();
     public: static AllBinarySensor* NULL_ALLBINARY_SENSOR;

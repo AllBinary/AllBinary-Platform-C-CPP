@@ -70,7 +70,7 @@ template<typename T1, typename T2> class ABHashtable;
         
 class BasicRandomAIFactory
             : public virtual Object
-        , public ArtificialIntelligenceInterfaceFactoryInterface {
+        , public virtual ArtificialIntelligenceInterfaceFactoryInterface {
 
 
             

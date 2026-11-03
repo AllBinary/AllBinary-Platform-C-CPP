@@ -57,7 +57,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class VelocityProperties: public BasicVelocityProperties, public VelocityInterface {
+class VelocityProperties: public BasicVelocityProperties, public virtual VelocityInterface {
 
     private: static VelocityProperties* NULL_VELOCITY_PROPERTIES_owner();
     public: static VelocityProperties* NULL_VELOCITY_PROPERTIES;

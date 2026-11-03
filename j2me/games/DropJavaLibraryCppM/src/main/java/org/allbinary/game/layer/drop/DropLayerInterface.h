@@ -59,7 +59,7 @@ class PickedUpLayerInterface;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class DropLayerInterface: public LayerInterface {
+class DropLayerInterface: public virtual LayerInterface {
 
                 //@Throws(Exception.constructor)
             

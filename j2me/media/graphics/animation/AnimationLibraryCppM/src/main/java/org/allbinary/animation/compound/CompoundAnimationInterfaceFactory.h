@@ -69,7 +69,7 @@ class ScaleProperties;
         
 class CompoundAnimationInterfaceFactory
             : public virtual Object
-        , public AnimationInterfaceFactoryInterface {
+        , public virtual AnimationInterfaceFactoryInterface {
 
     /*protected*/ public: std::vector<AnimationInterfaceFactoryInterface*> basicAnimationInterfaceFactoryInterfaceArrayP;
 

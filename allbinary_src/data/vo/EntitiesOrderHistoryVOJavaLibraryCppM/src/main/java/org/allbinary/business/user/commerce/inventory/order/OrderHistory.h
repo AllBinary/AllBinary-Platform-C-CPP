@@ -87,7 +87,7 @@ class OrderHistoryData;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class OrderHistory: public Order, public OrderHistoryInterface {
+class OrderHistory: public Order, public virtual OrderHistoryInterface {
 
     private: std::string userName;
 

@@ -61,7 +61,7 @@ class AllBinaryLayer;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class CollidableInterface: public NamedInterface {
+class CollidableInterface: public virtual NamedInterface {
 
                 //@Throws(Exception.constructor)
             

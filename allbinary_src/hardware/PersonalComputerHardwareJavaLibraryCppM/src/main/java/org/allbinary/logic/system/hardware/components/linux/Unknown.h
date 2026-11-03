@@ -60,7 +60,7 @@
         //import org.allbinary.logic.system.hardware.components.interfaces.MediaInterface;
 class Unknown
             : public virtual Object
-        , public HardwareComponentInterface {
+        , public virtual HardwareComponentInterface {
 
     private: std::string data;
 

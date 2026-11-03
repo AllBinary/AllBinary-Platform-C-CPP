@@ -70,7 +70,7 @@ class MultipassState;
         
 class PathGenerator
             : public virtual Object
-        , public PathGeneratorInterface {
+        , public virtual PathGeneratorInterface {
 
     private: static PathGenerator* SINGLETON_owner();
     private: static PathGenerator* SINGLETON;

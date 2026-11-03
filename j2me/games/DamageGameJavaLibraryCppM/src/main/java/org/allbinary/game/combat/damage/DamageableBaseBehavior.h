@@ -62,7 +62,7 @@
         
 class DamageableBaseBehavior
             : public virtual Object
-        , public DamageableInterface {
+        , public virtual DamageableInterface {
 
     private: static DamageableBaseBehavior* instance_owner();
     private: static DamageableBaseBehavior* instance;

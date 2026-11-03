@@ -383,7 +383,7 @@ class FloatBuffer;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class GL10: public javax::microedition::khronos::opengles::GL {
+class GL10: public virtual javax::microedition::khronos::opengles::GL {
 
     public: static inline const int32_t GL_ADD = 260;
 

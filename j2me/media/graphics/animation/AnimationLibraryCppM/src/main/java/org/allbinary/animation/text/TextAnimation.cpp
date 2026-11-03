@@ -124,9 +124,7 @@ this->offsetY= SWTJOGLProcessor::getInstance()->isJOGL()
                                 adjustedFontHeight
                                 :
 
-                            0;
-
-    ;
+                            0;;
     
 this->textChangeListener->onMeasure();
     

@@ -101,7 +101,7 @@ class Short;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class ImageUnifierJPanel: public javax::swing::JPanel, public ImageProcessorInputCompositeInterface {
+class ImageUnifierJPanel: public javax::swing::JPanel, public virtual ImageProcessorInputCompositeInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

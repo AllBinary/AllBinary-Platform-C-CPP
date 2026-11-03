@@ -71,7 +71,7 @@ class Node;
         
 class StatesView
             : public virtual Object
-        , public DomNodeInterface {
+        , public virtual DomNodeInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

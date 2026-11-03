@@ -69,7 +69,7 @@ class Document;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         //Hack class should not exist
-class TransformInfoBasic: public AbContext, public TransformInfoHttpInterface {
+class TransformInfoBasic: public AbContext, public virtual TransformInfoHttpInterface {
 
     private: StoreFrontInterface* storeFrontInterface;
 

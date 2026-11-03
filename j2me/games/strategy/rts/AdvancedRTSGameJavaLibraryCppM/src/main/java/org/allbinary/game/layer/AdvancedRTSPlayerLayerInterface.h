@@ -59,7 +59,7 @@ class AdvancedPlayerOwnedRTSLayers;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class AdvancedRTSPlayerLayerInterface: public RTSPlayerLayerInterface {
+class AdvancedRTSPlayerLayerInterface: public virtual RTSPlayerLayerInterface {
 
     public: virtual AdvancedPlayerOwnedRTSLayers* getAdvancedPlayerOwnedRTSLayers() = 0;
 

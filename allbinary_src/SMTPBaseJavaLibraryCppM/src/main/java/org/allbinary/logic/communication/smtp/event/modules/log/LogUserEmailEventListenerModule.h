@@ -64,7 +64,7 @@ class EmailEvent;
         
 class LogUserEmailEventListenerModule
             : public virtual Object
-        , public UserEmailEventListenerInterface {
+        , public virtual UserEmailEventListenerInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

@@ -60,7 +60,7 @@ class AngleFactory;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class CircleAnimation: public Animation, public ColorCompositeInterface {
+class CircleAnimation: public Animation, public virtual ColorCompositeInterface {
 
     /*protected*/ public: const int32_t TOTAL_ANGLE;
 

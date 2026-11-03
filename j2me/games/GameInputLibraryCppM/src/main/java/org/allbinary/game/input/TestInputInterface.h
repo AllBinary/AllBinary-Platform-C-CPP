@@ -56,7 +56,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class TestInputInterface: public PaintableInterface {
+class TestInputInterface: public virtual PaintableInterface {
 
     public: virtual void up() = 0;
 

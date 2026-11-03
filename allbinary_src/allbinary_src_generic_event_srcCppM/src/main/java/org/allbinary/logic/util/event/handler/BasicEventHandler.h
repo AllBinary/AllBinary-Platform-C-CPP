@@ -71,7 +71,7 @@ class BasicArrayListD;
         
 class BasicEventHandler
             : public virtual Object
-        , public BasicEventHandlerInterface {
+        , public virtual BasicEventHandlerInterface {
 
     public: static inline const std::string PERFORMANCE_MESSAGE = "Use Custom onEvent Methods for needed optimization";
 

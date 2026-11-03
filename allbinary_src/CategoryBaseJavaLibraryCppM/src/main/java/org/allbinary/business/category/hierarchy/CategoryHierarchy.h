@@ -66,7 +66,7 @@ class StringUtil;
         
 class CategoryHierarchy
             : public virtual Object
-        , public CategoryHierarchyInterface {
+        , public virtual CategoryHierarchyInterface {
 
     private: CategoryInterface* rootCategoryInterface;
 

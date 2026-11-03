@@ -60,7 +60,7 @@
         
 class NullHealthListener
             : public virtual Object
-        , public HealthListenerInterface {
+        , public virtual HealthListenerInterface {
 
     private: static NullHealthListener* NULL_HEALTH_LISTENER_owner();
     public: static NullHealthListener* NULL_HEALTH_LISTENER;

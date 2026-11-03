@@ -61,7 +61,7 @@ class TwoDimensionalConstraintInterface;
         
 class AdvertisementImage
             : public virtual Object
-        , public AdvertisementImageInterface {
+        , public virtual AdvertisementImageInterface {
 
     private: std::string imageFileName;
 

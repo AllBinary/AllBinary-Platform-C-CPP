@@ -88,7 +88,7 @@ class ViewPositionBase;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class CollidableDestroyableDamageableLayer: public CollidableCompositeLayer, public DestroyableInterface, public DamageableInterface, public PickupCompositeInterface, public SpecialGameInputInterface {
+class CollidableDestroyableDamageableLayer: public CollidableCompositeLayer, public virtual DestroyableInterface, public virtual DamageableInterface, public virtual PickupCompositeInterface, public virtual SpecialGameInputInterface {
 
     private: static Object* NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER;
 

@@ -63,7 +63,7 @@ class Node;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class CssElementValidation: public CssElementView, public ValidationInterface {
+class CssElementValidation: public CssElementView, public virtual ValidationInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

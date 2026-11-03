@@ -68,7 +68,7 @@ class BasicArrayListUtil;
         
 class ResourceRelativeRelationshipFactory
             : public virtual Object
-        , public ResourceRelativeRelationshipFactoryInterface {
+        , public virtual ResourceRelativeRelationshipFactoryInterface {
 
 
             

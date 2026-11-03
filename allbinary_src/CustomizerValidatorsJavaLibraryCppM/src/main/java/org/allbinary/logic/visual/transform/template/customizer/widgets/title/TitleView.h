@@ -74,7 +74,7 @@ class Node;
         
 class TitleView
             : public virtual Object
-        , public DomNodeInterface {
+        , public virtual DomNodeInterface {
 
     private: static inline const std::string NAME = "None";
 

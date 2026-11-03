@@ -71,7 +71,7 @@ class CommonStrings;
         
 class InputAutomationModuleOSGIServiceVisitor
             : public virtual Object
-        , public OSGIServiceVisitorInterface {
+        , public virtual OSGIServiceVisitorInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

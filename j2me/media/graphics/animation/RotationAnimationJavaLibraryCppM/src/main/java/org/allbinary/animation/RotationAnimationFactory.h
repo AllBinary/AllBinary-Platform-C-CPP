@@ -70,7 +70,7 @@ class Animation;
         
 class RotationAnimationFactory
             : public virtual Object
-        , public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
+        , public virtual AnimationInterfaceFactoryInterface, public virtual ProceduralAnimationInterfaceFactoryInterface {
 
     public: static RotationAnimationFactory* createFactory();
 

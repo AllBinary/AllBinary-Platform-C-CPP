@@ -328,7 +328,7 @@ stringBuffer->append(this->sqlStrings->SELECT);
 
         try {
             
-    std::vector<Object*> keyArray = columnsAndValues->keySet()->();;
+    std::vector<Object*> keyArray = columnsAndValues->keySet()->toArray();;
     
 
     int32_t size = keyArray.size();;
@@ -380,7 +380,7 @@ stringBuffer->append(this->sqlStrings->CLOSE_QUOTE);
         while(rset->next())
         {
 
-    std::vector<Object*> keyArray2 = columnsAndValues->keySet()->();;
+    std::vector<Object*> keyArray2 = columnsAndValues->keySet()->toArray();;
     
 
     int32_t size2 = keyArray2.size();;

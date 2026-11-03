@@ -61,7 +61,7 @@ class AbFile;
         
 class DirectoryBooleanFileVisitor
             : public virtual Object
-        , public VisitorInterface {
+        , public virtual VisitorInterface {
 
 public: DirectoryBooleanFileVisitor();
 

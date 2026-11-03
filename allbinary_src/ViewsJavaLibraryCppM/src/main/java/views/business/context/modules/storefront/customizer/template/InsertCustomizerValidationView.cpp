@@ -230,13 +230,13 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALI
     std::string storeName = this->getTransformInfoInterface()->getStoreName();;
     
 
-    int32_t endIndex = this->viewName.indexOf(storeName) +storeName.size();;
+    int32_t endIndex = JavaString::indexOf(this->viewName, storeName) +storeName.size();;
     
 
-    std::string storePrepend = this->viewName.substring(0, endIndex);;
+    std::string storePrepend = JavaString::substring(this->viewName, 0, endIndex);;
     
 
-    std::string viewNamePostfix = this->viewName.substring(endIndex, this->viewName.size());;
+    std::string viewNamePostfix = JavaString::substring(this->viewName, endIndex, this->viewName.size());;
     
 
     StringMaker* newViewNameStringBuffer = new StringMaker();;

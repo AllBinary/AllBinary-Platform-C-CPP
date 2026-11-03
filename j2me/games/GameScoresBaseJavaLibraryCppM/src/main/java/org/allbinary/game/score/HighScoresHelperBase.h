@@ -70,7 +70,7 @@ class NullHighScoresSingletonFactory;
         
 class HighScoresHelperBase
             : public virtual Object
-        , public HighScoresHelperBaseInterface {
+        , public virtual HighScoresHelperBaseInterface {
 
 
             

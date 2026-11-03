@@ -154,7 +154,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->gameInputStrings-
     GameKey* gameKey = GameKeyFactory::getInstance()->KEY_NUM0;;
     
 
-    GameKeyEventSourceInterface* gameKeyEventSourceInterface = dynamic_cast<GameKeyEventSourceInterface*>(canvas as unknown);;
+    GameKeyEventSourceInterface* gameKeyEventSourceInterface = dynamic_cast<GameKeyEventSourceInterface*>(canvas);;
     
 
     GameKeyEvent* gameKeyEvent = this->gameKeyEventFactory->getInstanceForInput(gameKeyEventSourceInterface, gameKey);;

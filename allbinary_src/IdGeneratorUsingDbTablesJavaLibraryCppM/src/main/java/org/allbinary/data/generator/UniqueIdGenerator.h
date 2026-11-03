@@ -72,7 +72,7 @@ class LogUtil;
         
 class UniqueIdGenerator
             : public virtual Object
-        , public IdGeneratorInterface {
+        , public virtual IdGeneratorInterface {
 
     public: static inline const std::string EXT = ".unq";
 

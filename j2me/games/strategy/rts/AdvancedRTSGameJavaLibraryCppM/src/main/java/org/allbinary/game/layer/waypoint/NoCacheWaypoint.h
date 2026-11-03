@@ -81,7 +81,7 @@ class BasicArrayListUtil;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class NoCacheWaypoint: public WaypointBase, public BuildingEventListenerInterface {
+class NoCacheWaypoint: public WaypointBase, public virtual BuildingEventListenerInterface {
 
     /*protected*/ public: PathFindingLayerInterface* ownerLayer;
 

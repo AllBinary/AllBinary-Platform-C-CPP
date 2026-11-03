@@ -90,7 +90,7 @@ class Buffer;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class GL11Ext: public javax::microedition::khronos::opengles::GL {
+class GL11Ext: public virtual javax::microedition::khronos::opengles::GL {
 
     public: static inline const int32_t GL_MATRIX_INDEX_ARRAY_BUFFER_BINDING_OES = 35742;
 

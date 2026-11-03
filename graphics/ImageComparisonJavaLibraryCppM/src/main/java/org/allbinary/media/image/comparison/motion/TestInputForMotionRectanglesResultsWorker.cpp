@@ -184,7 +184,7 @@ timeHelper->setStartTimeTNT();
     ABHashtable<Object*, Object*>* robotHashtable = InputRobotFactory::getInstance()->get();;
     
 
-    std::vector<Object*> inputTypeNameArray = robotHashtable->keys().();;
+    std::vector<Object*> inputTypeNameArray = robotHashtable->keys().toArray();;
     
 
     int32_t size = inputTypeNameArray.size();;

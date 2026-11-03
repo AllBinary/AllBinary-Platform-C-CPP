@@ -60,7 +60,7 @@
         
 class StringComparator
             : public virtual Object
-        , public Comparator {
+        , public virtual Comparator {
 
 public: StringComparator();
 

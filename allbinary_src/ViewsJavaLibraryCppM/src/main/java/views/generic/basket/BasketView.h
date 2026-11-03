@@ -81,7 +81,7 @@ class Node;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class BasketView: public HttpStoreComponentView, public DomNodeInterface {
+class BasketView: public HttpStoreComponentView, public virtual DomNodeInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

@@ -69,7 +69,7 @@ class PacePatrolAI;
         
 class PacePatrolAIFactory
             : public virtual Object
-        , public ArtificialIntelligenceInterfaceFactoryInterface {
+        , public virtual ArtificialIntelligenceInterfaceFactoryInterface {
 
 
             

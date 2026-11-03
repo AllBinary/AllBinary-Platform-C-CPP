@@ -79,7 +79,7 @@ class GameLayerUtil;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class AllBinaryGameLayer: public AllBinaryLayer, public ViewPositionEventListenerInterface, public OpenGLSurfaceChangedInterface {
+class AllBinaryGameLayer: public AllBinaryLayer, public virtual ViewPositionEventListenerInterface, public virtual OpenGLSurfaceChangedInterface {
 
     /*protected*/ public: CommonStrings* commonStrings;
 

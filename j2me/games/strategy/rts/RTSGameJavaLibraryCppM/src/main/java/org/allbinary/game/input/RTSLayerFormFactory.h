@@ -64,7 +64,7 @@ class ScrollSelectionForm;
         
 class RTSLayerFormFactory
             : public virtual Object
-        , public RTSLayerFormFactoryInterface {
+        , public virtual RTSLayerFormFactoryInterface {
 
 
             

@@ -62,7 +62,7 @@ class CacheableInterface;
         
 class IIOImageCacheableFactory
             : public virtual Object
-        , public CacheableInterfaceFactoryInterface {
+        , public virtual CacheableInterfaceFactoryInterface {
 
 public: IIOImageCacheableFactory();
 

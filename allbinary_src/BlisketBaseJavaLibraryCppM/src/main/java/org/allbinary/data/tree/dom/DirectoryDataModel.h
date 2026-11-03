@@ -73,7 +73,7 @@ class FileDomDataModel;
         
 class DirectoryDataModel
             : public virtual Object
-        , public DomNodeInterface, public TransformInterface {
+        , public virtual DomNodeInterface, public virtual TransformInterface {
 
     private: BasicArrayList* fileBasicArrayList;
 

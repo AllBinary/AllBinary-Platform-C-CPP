@@ -58,7 +58,7 @@ class Point;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class MouseActionScriptInputInterface: public ProfileActionScriptInputInterface {
+class MouseActionScriptInputInterface: public virtual ProfileActionScriptInputInterface {
 
     public: virtual void setPoint(Point* point) = 0;
 

@@ -77,7 +77,7 @@ class DisplayInfoSingleton;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class MyCanvas: public Canvas, public DisplayableInterface, public MyCommandInterface {
+class MyCanvas: public Canvas, public virtual DisplayableInterface, public virtual MyCommandInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

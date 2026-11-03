@@ -68,7 +68,7 @@ class Node;
         
 class UrlGlobalsView
             : public virtual Object
-        , public DomNodeInterface {
+        , public virtual DomNodeInterface {
 
 public: UrlGlobalsView();
 

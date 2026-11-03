@@ -73,7 +73,7 @@ class NodeList;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class CategoryLoader: public CategoryModifierTree, public CategoryLoaderInterface {
+class CategoryLoader: public CategoryModifierTree, public virtual CategoryLoaderInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

@@ -59,7 +59,7 @@ class Money;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class StoreFrontInventoryStatisticsInterface: public TableMappingInterface {
+class StoreFrontInventoryStatisticsInterface: public virtual TableMappingInterface {
 
     public: virtual int64_t getNumber() = 0;
 

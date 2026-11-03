@@ -65,7 +65,7 @@ class AnimationBehavior;
         
 class VectorAnimationFactory
             : public virtual Object
-        , public VectorAnimationFactoryInterface {
+        , public virtual VectorAnimationFactoryInterface {
 
 
             

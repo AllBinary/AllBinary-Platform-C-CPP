@@ -72,7 +72,7 @@ class Animation;
         
 class IndependentVectorExplosionRotationAnimationFactory
             : public virtual Object
-        , public ProceduralAnimationInterfaceFactoryInterface {
+        , public virtual ProceduralAnimationInterfaceFactoryInterface {
 
     private: std::vector<std::vector<std::vector<int32_t>>> framePoints;
 

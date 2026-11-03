@@ -98,7 +98,7 @@ class KeyEvent;
         
 class LinesGraphicItem
             : public virtual Object
-        , public GraphicItemInterface {
+        , public virtual GraphicItemInterface {
 
     private: static inline const std::string RECT = "rect";
 

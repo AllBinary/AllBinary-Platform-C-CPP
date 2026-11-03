@@ -68,7 +68,7 @@ class CommonStrings;
         
 class ExitRunnable
             : public virtual Object
-        , public Runnable {
+        , public virtual Runnable {
 
     /*protected*/ public: LogUtil* logUtil;
 

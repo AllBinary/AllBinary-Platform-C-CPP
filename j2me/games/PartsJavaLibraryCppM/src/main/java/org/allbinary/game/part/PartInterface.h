@@ -57,7 +57,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class PartInterface: public PaintableInterface, public AnimationInterfaceCompositeInterface {
+class PartInterface: public virtual PaintableInterface, public virtual AnimationInterfaceCompositeInterface {
 
 };
 

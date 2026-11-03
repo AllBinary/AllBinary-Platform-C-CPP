@@ -66,7 +66,7 @@ class DisplayInfoSingleton;
         
 class GameRunnable
             : public virtual Object
-        , public Runnable {
+        , public virtual Runnable {
 
     public: const int32_t WAIT = 240;
 

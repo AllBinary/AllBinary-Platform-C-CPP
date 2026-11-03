@@ -60,7 +60,7 @@ class BasicColorFactory;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class ColorFillBasePaintable: public Paintable, public ColorCompositeInterface {
+class ColorFillBasePaintable: public Paintable, public virtual ColorCompositeInterface {
 
     /*protected*/ public: BasicColor* basicColor;
 

@@ -64,7 +64,7 @@ class LogUtil;
         
 class ReverseVelocityBoundsVisitor
             : public virtual Object
-        , public BoundsVisitorInterface {
+        , public virtual BoundsVisitorInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

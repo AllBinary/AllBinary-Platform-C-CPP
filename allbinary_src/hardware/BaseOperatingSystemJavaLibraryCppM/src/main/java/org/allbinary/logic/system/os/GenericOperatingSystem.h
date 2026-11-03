@@ -66,7 +66,7 @@ class SystemProperties;
         
 class GenericOperatingSystem
             : public virtual Object
-        , public OperatingSystemInterface {
+        , public virtual OperatingSystemInterface {
 
     private: std::string osName;
 

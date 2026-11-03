@@ -69,7 +69,7 @@ class StoreThemeCategoryView;
         
 class StoreThemeCategoriesView
             : public virtual Object
-        , public DomNodeInterface {
+        , public virtual DomNodeInterface {
 
     private: StoreThemeCategoryInterface* categoryInterface;
 

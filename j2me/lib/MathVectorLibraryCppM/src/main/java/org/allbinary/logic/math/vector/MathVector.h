@@ -61,7 +61,7 @@ class BasicDecimal;
         
 class MathVector
             : public virtual Object
-        , public MathVectorInterface {
+        , public virtual MathVectorInterface {
 
     private: BasicDecimal* magnitudeBasicDecimal;
 

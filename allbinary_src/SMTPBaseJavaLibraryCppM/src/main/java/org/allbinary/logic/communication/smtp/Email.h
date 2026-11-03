@@ -87,7 +87,7 @@ class EmailData;
         
 class Email
             : public virtual Object
-        , public EmailInterface {
+        , public virtual EmailInterface {
 
     private: static inline const std::string DEBUG = "mail.debug";
 

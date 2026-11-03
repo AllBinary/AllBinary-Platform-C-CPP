@@ -74,7 +74,7 @@ class Node;
         
 class TransformHttpRequestDocument
             : public virtual Object
-        , public TransformDocumentInterface {
+        , public virtual TransformDocumentInterface {
 
     private: static inline const std::string language = "en";
 

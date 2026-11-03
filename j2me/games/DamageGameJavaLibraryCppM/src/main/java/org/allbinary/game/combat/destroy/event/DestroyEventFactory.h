@@ -63,7 +63,7 @@ class AllBinaryEventObject;
         
 class DestroyEventFactory
             : public virtual Object
-        , public AllBinaryEventObjectFactoryInterface {
+        , public virtual AllBinaryEventObjectFactoryInterface {
 
     private: AllBinaryGameCanvas* combatGameCanvas;
 

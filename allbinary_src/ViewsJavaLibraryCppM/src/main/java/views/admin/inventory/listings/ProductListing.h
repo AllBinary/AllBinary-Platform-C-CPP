@@ -102,7 +102,7 @@ class InventorySearchUtil;
         
 class ProductListing
             : public virtual Object
-        , public ProductListingInterface {
+        , public virtual ProductListingInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

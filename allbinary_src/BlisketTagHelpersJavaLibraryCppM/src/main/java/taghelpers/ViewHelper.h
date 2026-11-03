@@ -72,7 +72,7 @@ class Document;
         
 class ViewHelper
             : public virtual Object
-        , public TransformInterface {
+        , public virtual TransformInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

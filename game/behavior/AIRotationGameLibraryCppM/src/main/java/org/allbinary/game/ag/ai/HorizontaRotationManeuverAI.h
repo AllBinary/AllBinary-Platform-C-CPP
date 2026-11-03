@@ -75,7 +75,7 @@ class CircularIndexUtil;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class HorizontaRotationManeuverAI: public BasicAI, public ArtificialIntelligenceTransitionInterface {
+class HorizontaRotationManeuverAI: public BasicAI, public virtual ArtificialIntelligenceTransitionInterface {
 
     private: CircularIndexUtil* circularIndexUtil;
 

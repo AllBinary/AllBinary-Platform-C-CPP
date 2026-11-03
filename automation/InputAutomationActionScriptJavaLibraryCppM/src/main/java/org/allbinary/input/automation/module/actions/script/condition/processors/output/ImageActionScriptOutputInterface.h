@@ -57,7 +57,7 @@ class ImageTypes;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class ImageActionScriptOutputInterface: public ProfileActionScriptOutputInterface {
+class ImageActionScriptOutputInterface: public virtual ProfileActionScriptOutputInterface {
 
     public: virtual ImageTypes* getImageTypes() = 0;
 

@@ -81,7 +81,7 @@ class OrderData;
         
 class Order
             : public virtual Object
-        , public OrderInterface, public Serializable {
+        , public virtual OrderInterface, public virtual Serializable {
 
     private: BasketInterface* basket;
 

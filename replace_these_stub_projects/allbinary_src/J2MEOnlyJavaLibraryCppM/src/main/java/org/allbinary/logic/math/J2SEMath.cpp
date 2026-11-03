@@ -91,9 +91,7 @@ J2SEMath* J2SEMath::instance = J2SEMath::instance_owner();
                                  -value
                                 :
 
-                            value;
-
-    ;
+                            value;;
     
 }
 
@@ -108,9 +106,7 @@ J2SEMath* J2SEMath::instance = J2SEMath::instance_owner();
                                  -value
                                 :
 
-                            value;
-
-    ;
+                            value;;
     
 }
 

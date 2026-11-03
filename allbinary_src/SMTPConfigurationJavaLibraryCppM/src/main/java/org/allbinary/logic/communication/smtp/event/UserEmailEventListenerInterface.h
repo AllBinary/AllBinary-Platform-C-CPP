@@ -59,7 +59,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class UserEmailEventListenerInterface: public EventListener {
+class UserEmailEventListenerInterface: public virtual EventListener {
 
                 //@Throws(Exception.constructor)
             

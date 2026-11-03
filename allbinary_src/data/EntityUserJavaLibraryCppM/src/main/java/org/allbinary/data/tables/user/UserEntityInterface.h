@@ -64,7 +64,7 @@ class UserRole;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class UserEntityInterface: public BasicDataTableInterface {
+class UserEntityInterface: public virtual BasicDataTableInterface {
 
                 //@Throws(Exception.constructor)
             

@@ -68,7 +68,7 @@ class AnimationBehavior;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class VectorBaseRotationAnimation: public RotationAnimation, public VectorAnimationInterface {
+class VectorBaseRotationAnimation: public RotationAnimation, public virtual VectorAnimationInterface {
 
     private: std::vector<std::vector<std::vector<int32_t>>> currentPoints;
 

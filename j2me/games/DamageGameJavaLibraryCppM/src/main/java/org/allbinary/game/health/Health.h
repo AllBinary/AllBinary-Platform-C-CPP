@@ -65,7 +65,7 @@ class HealthListenerInterface;
         
 class Health
             : public virtual Object
-        , public HealthInterface {
+        , public virtual HealthInterface {
 
     private: static Health* NULL_HEALTH_owner();
     public: static Health* NULL_HEALTH;

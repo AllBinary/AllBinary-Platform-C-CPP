@@ -77,7 +77,7 @@ class StoreFrontUsersStatisticsData;
         
 class StoreFrontUsersStatistics
             : public virtual Object
-        , public StoreFrontUsersStatisticsInterface {
+        , public virtual StoreFrontUsersStatisticsInterface {
 
     private: int64_t totalNumberOfUsers;
 

@@ -72,7 +72,7 @@ class CountedLayerInterfaceFactoryPart;
         
 class CountedLayersHudPaintable
             : public virtual Object
-        , public PaintableInterface, public UpdateMyFontInterface {
+        , public virtual PaintableInterface, public virtual UpdateMyFontInterface {
 
     private: static inline int32_t XXStringWidth = 0;
 

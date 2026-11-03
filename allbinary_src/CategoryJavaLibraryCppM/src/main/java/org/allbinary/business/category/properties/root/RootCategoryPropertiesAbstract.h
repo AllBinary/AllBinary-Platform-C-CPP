@@ -74,7 +74,7 @@ class Node;
         
 class RootCategoryPropertiesAbstract
             : public virtual Object
-        , public RootCategoryPropertiesInterface {
+        , public virtual RootCategoryPropertiesInterface {
 
     private: const std::string category;
 

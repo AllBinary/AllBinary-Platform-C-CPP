@@ -61,7 +61,7 @@ class MotionGestureInput;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class GameKeyCompleteMotionGestureInputEvent: public CompleteMotionGestureInputEvent, public GameKeyEventSourceInterface {
+class GameKeyCompleteMotionGestureInputEvent: public CompleteMotionGestureInputEvent, public virtual GameKeyEventSourceInterface {
 
     private: GameKey* gameKey;
 

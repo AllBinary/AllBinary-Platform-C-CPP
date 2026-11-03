@@ -64,7 +64,7 @@ class CommonStrings;
         
 class BasicWeightShippingModule
             : public virtual Object
-        , public ShippingInterface {
+        , public virtual ShippingInterface {
 
     /*protected*/ public: CommonStrings* commonStrings;
 

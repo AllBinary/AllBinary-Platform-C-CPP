@@ -56,7 +56,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class TransformInfoHttpStoreInterface: public TransformInfoHttpInterface {
+class TransformInfoHttpStoreInterface: public virtual TransformInfoHttpInterface {
 
     public: virtual void setStoreName(std::string value) = 0;
 

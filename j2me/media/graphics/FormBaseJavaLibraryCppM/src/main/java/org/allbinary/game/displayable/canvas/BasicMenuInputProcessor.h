@@ -65,7 +65,7 @@ class BasicArrayListD;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class BasicMenuInputProcessor: public PlayerGameInput, public BaseMotionGestureEventListener {
+class BasicMenuInputProcessor: public PlayerGameInput, public virtual BaseMotionGestureEventListener {
 
     public: BasicArrayList* motionGestureEventList;
 

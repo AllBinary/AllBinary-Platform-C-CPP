@@ -70,7 +70,7 @@ class CapturedImageInputOutput;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class SaveCapturedImageWorker: public BasicEventHandler, public CapturedImageWorkerResultsListener {
+class SaveCapturedImageWorker: public BasicEventHandler, public virtual CapturedImageWorkerResultsListener {
 
     /*protected*/ public: LogUtil* logUtil;
 

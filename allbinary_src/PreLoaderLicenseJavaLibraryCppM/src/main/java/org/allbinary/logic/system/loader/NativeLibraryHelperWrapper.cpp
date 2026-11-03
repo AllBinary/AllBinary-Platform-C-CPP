@@ -95,7 +95,7 @@ params[0]= this->getLibraryName();
     
 classes[0]= this->getLibraryName().getClass();
     
-this->loader= new NativeLibraryClassLoader(this->getClass()getClassLoader());
+this->loader= new NativeLibraryClassLoader(this->getClass()->getClassLoader());
     
 
     Class* myClass = this->loader->loadClass("dynamic.NativeLibraryHelper");;

@@ -60,7 +60,7 @@ class BasicArrayList;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class StoreFrontInterface: public TableMappingInterface {
+class StoreFrontInterface: public virtual TableMappingInterface {
 
     public: virtual bool isNameValid() = 0;
 

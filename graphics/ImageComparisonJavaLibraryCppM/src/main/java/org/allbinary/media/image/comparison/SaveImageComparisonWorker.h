@@ -73,7 +73,7 @@ class ComparisonImageInputOutput;
         
 class SaveImageComparisonWorker
             : public virtual Object
-        , public ImageComparisonResultsListener {
+        , public virtual ImageComparisonResultsListener {
 
     /*protected*/ public: LogUtil* logUtil;
 

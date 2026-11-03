@@ -72,7 +72,7 @@ class Node;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class PaymentGatewaysView: public HttpStoreComponentView, public DomNodeInterface {
+class PaymentGatewaysView: public HttpStoreComponentView, public virtual DomNodeInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

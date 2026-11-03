@@ -66,7 +66,7 @@ class CommonStrings;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class CategoryModifierTree: public CategoryPrivateTree, public CategoryModifierTreeInterface {
+class CategoryModifierTree: public CategoryPrivateTree, public virtual CategoryModifierTreeInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

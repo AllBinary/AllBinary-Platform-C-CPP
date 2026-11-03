@@ -77,7 +77,7 @@ class Color;
         
 class InputRobot
             : public virtual Object
-        , public InputRobotInterface {
+        , public virtual InputRobotInterface {
 
     public: static inline const std::string NAME = "Java Robot";
 

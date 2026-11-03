@@ -149,7 +149,7 @@ stringBuffer->append(this->sqlStrings->SET);
 
         try {
             
-    std::vector<Object*> keyArray = updatedKeyValuePairs->keySet()->();;
+    std::vector<Object*> keyArray = updatedKeyValuePairs->keySet()->toArray();;
     
 
     int32_t size = keyArray.size();;
@@ -261,7 +261,7 @@ stringBuffer->append(this->sqlStrings->SET);
 
         try {
             
-    std::vector<Object*> keyArray = updatedKeyValuePairs->keySet()->();;
+    std::vector<Object*> keyArray = updatedKeyValuePairs->keySet()->toArray();;
     
 
     int32_t size = keyArray.size();;

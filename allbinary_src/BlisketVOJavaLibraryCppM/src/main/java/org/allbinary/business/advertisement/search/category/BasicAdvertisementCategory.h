@@ -60,7 +60,7 @@
         
 class BasicAdvertisementCategory
             : public virtual Object
-        , public AdvertisementCategoryInterface {
+        , public virtual AdvertisementCategoryInterface {
 
     private: std::string categoryId;
 

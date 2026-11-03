@@ -72,7 +72,7 @@ class StringUtil;
         
 class AbFile
             : public virtual Object
-        , public AbFileInterface {
+        , public virtual AbFileInterface {
 
     public: static AbFile* NULL_FILE;
 

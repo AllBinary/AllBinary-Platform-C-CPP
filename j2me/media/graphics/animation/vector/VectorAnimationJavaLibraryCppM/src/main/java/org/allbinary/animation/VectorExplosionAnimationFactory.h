@@ -71,7 +71,7 @@ class Animation;
         
 class VectorExplosionAnimationFactory
             : public virtual Object
-        , public ProceduralAnimationInterfaceFactoryInterface {
+        , public virtual ProceduralAnimationInterfaceFactoryInterface {
 
     private: VectorExplosionGenerator* vectorExplosionGenerator;
 

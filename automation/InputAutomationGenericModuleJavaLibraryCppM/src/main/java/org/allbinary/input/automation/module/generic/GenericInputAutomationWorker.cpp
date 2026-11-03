@@ -186,7 +186,7 @@ this->waitForDataWorkers();
     J2SECacheInterface* cacheInterface = dynamic_cast<J2SECacheInterface*>(CapturedBufferedImagesCacheSingleton::getInstance());;
     
 
-    std::vector<Object*> keyArray = cacheInterface->keySet()->();;
+    std::vector<Object*> keyArray = cacheInterface->keySet()->toArray();;
     
 
                         if(keyArray.size() > 0)

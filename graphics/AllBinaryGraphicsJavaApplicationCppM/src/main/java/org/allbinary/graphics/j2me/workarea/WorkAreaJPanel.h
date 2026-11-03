@@ -95,7 +95,7 @@ class KeyEvent;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class WorkAreaJPanel: public JPanel, public WorkAreaJPanelInterface, public MyCanvasEventListener, public EventListener, public Runnable {
+class WorkAreaJPanel: public JPanel, public virtual WorkAreaJPanelInterface, public virtual MyCanvasEventListener, public virtual EventListener, public virtual Runnable {
 
     private: static inline org::w3c::dom::Document* document;
 

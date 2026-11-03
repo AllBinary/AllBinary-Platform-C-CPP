@@ -623,7 +623,7 @@ hashMap->put(StreetAddressData::COUNTRY, this->country);
     Set* keySet = hashMap->keys();;
     
 
-    std::vector<Object*> keyArray = keySet->();;
+    std::vector<Object*> keyArray = keySet->toArray();;
     
 
     int32_t size = keyArray.size();;

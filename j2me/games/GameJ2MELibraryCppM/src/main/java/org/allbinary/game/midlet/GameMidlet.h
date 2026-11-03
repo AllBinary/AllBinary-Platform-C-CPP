@@ -154,7 +154,7 @@ class DemoGameMidletStateFactory;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class GameMidlet: public ProgressMidlet, public CommandListener {
+class GameMidlet: public ProgressMidlet, public virtual CommandListener {
 
     private: EnumerationUtil* enumerationUtil;
 

@@ -83,7 +83,7 @@ class Node;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class AddFileValidationView: public InventoryItemView, public ValidationComponentInterface {
+class AddFileValidationView: public InventoryItemView, public virtual ValidationComponentInterface {
 
     private: static inline const std::string ADDPRODUCT = "Add Product";
 

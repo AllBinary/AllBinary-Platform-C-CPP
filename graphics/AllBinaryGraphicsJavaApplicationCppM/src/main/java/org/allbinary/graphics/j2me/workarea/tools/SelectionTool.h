@@ -88,7 +88,7 @@ class KeyEvent;
         
 class SelectionTool
             : public virtual Object
-        , public GraphicItemInterface {
+        , public virtual GraphicItemInterface {
 
     private: static inline const std::string NAME = "Selection Tool";
 

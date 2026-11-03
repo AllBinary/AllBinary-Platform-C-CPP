@@ -85,7 +85,7 @@ class Short;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class CreateIconImagesJPanel: public javax::swing::JPanel, public ImageProcessorInputCompositeInterface {
+class CreateIconImagesJPanel: public javax::swing::JPanel, public virtual ImageProcessorInputCompositeInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

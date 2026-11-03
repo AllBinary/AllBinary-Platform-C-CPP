@@ -127,7 +127,7 @@ this->countedIndex= countedIndex;
 
         try {
             
-    HealthInterfaceCompositeInterface* healthInterfaceCompositeInterface = dynamic_cast<HealthInterfaceCompositeInterface*>(this->ownerLayerInterface as unknown );;
+    HealthInterfaceCompositeInterface* healthInterfaceCompositeInterface = dynamic_cast<HealthInterfaceCompositeInterface*>(this->ownerLayerInterface);;
     
 
                         if(healthInterfaceCompositeInterface->getHealthInterface()->isAlive())
@@ -194,7 +194,7 @@ collidableDestroyableDamageableLayer->addPart(pickedUpLayerInterfaceFactoryInter
                                 
                         else {
                             
-    PickupProcessorInterface* pickupProcessorInterface = dynamic_cast<PickupProcessorInterface*>(pickedUpLayerInterfaceFactoryInterface as unknown );;
+    PickupProcessorInterface* pickupProcessorInterface = dynamic_cast<PickupProcessorInterface*>(pickedUpLayerInterfaceFactoryInterface);;
     
 this->doPickup(pickupProcessorInterface);
     

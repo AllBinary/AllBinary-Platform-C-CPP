@@ -511,7 +511,7 @@ this->number= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->number.substring(this->number.size() -4);;
+                        return JavaString::substring(this->number, this->number.size() -4);;
     
 
                                     }

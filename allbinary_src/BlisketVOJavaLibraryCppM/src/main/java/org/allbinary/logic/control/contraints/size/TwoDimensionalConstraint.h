@@ -62,7 +62,7 @@ class SizeConstraintInterface;
         
 class TwoDimensionalConstraint
             : public virtual Object
-        , public TwoDimensionalConstraintInterface {
+        , public virtual TwoDimensionalConstraintInterface {
 
     private: SizeConstraintInterface* widthSizeConstraintInterface;
 

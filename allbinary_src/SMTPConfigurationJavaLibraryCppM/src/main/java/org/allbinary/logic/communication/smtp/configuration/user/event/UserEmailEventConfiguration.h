@@ -64,7 +64,7 @@ class UserEmailEventConfigurationData;
         
 class UserEmailEventConfiguration
             : public virtual Object
-        , public UserEmailEventConfigurationInterface {
+        , public virtual UserEmailEventConfigurationInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

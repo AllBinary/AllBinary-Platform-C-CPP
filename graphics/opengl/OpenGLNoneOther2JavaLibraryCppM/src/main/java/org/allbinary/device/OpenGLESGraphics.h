@@ -54,7 +54,7 @@ class NullGL10;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class OpenGLESGraphics: public Graphics, public OpenGLSurfaceChangedInterface, public GraphicsInterface {
+class OpenGLESGraphics: public Graphics, public virtual OpenGLSurfaceChangedInterface, public virtual GraphicsInterface {
 
     /*protected*/ public: CommonStrings* commonStrings;
 

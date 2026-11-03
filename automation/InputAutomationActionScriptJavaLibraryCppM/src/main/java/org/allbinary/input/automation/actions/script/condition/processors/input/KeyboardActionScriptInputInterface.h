@@ -60,7 +60,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class KeyboardActionScriptInputInterface: public ProfileActionScriptInputInterface {
+class KeyboardActionScriptInputInterface: public virtual ProfileActionScriptInputInterface {
 
     public: virtual int32_t getDelayBetweenKeys() = 0;
 

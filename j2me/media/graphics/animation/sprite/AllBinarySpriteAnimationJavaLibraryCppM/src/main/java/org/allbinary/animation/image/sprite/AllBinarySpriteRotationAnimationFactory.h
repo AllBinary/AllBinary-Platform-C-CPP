@@ -70,7 +70,7 @@ class AllBinaryAdjustedSpriteRotationAnimation;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class AllBinarySpriteRotationAnimationFactory: public BaseImageAnimationFactory, public ProceduralAnimationInterfaceFactoryInterface {
+class AllBinarySpriteRotationAnimationFactory: public BaseImageAnimationFactory, public virtual ProceduralAnimationInterfaceFactoryInterface {
 
                 //@Throws(Exception.constructor)
             

@@ -57,7 +57,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class CaptureWorkerInterface: public RunnableInterface, public BasicEventHandlerInterface {
+class CaptureWorkerInterface: public virtual RunnableInterface, public virtual BasicEventHandlerInterface {
 
 };
 

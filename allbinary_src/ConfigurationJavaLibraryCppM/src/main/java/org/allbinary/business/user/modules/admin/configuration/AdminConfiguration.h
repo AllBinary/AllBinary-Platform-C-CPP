@@ -75,7 +75,7 @@ class AdminConfigurationData;
         
 class AdminConfiguration
             : public virtual Object
-        , public AdminConfigurationInterface {
+        , public virtual AdminConfigurationInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

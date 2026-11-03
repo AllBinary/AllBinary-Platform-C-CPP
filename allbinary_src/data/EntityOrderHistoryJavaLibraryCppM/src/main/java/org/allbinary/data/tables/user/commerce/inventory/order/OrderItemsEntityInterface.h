@@ -60,7 +60,7 @@ class OrderInterface;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class OrderItemsEntityInterface: public BasicDataTableInterface {
+class OrderItemsEntityInterface: public virtual BasicDataTableInterface {
 
     public: virtual void setStatus(std::string orderId, std::string groupId, std::string status) = 0;
 

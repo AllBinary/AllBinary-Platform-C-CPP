@@ -61,7 +61,7 @@ class TsUtil;
         
 class ComparableObject
             : public virtual Object
-        , public Comparable<Object*> {
+        , public virtual Comparable<Object*> {
 
 
             

@@ -81,7 +81,7 @@ class BasicItemData;
         
 class BasicItem
             : public virtual Object
-        , public ItemInterface {
+        , public virtual ItemInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

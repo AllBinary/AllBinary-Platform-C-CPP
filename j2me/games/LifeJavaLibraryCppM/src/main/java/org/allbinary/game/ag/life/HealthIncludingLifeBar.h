@@ -66,7 +66,7 @@ class AllBinaryLayer;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class HealthIncludingLifeBar: public Paintable, public HealthListenerInterface {
+class HealthIncludingLifeBar: public Paintable, public virtual HealthListenerInterface {
 
                 //@Throws(Exception.constructor)
             

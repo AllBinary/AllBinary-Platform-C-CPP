@@ -226,7 +226,7 @@ newNode->appendChild(ModDomHelper::createIndexNode(document, index));
     Set* keySet = hashMap->keys();;
     
 
-    std::vector<Object*> keyArray = keySet->();;
+    std::vector<Object*> keyArray = keySet->toArray();;
     
 
     int32_t size = keyArray.size();;
@@ -401,7 +401,7 @@ node->appendChild(ModDomHelper::createNameValueIndexNodes(document, duplicateNod
     Set* keySet = hashMap->keys();;
     
 
-    std::vector<Object*> keyArray = keySet->();;
+    std::vector<Object*> keyArray = keySet->toArray();;
     
 
     int32_t size = keyArray.size();;

@@ -66,7 +66,7 @@ class TextChangeListener;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class CustomTextBoxIndexedAnimation: public IndexedAnimation, public RawKeyEventListener, public UpdateMyFontInterface, public TextInterface {
+class CustomTextBoxIndexedAnimation: public IndexedAnimation, public virtual RawKeyEventListener, public virtual UpdateMyFontInterface, public virtual TextInterface {
 
     private: CustomTextBox* customTextBox;
 

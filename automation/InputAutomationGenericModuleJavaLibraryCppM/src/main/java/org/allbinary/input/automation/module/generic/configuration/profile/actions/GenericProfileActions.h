@@ -86,7 +86,7 @@ class GenericProfileAction;
         
 class GenericProfileActions
             : public virtual Object
-        , public DomNodeInterface, public DomDocumentMappingInterface {
+        , public virtual DomNodeInterface, public virtual DomDocumentMappingInterface {
 
     public: static const std::string DEFAULT_PROFILE_ACTIONS_PATH;
 

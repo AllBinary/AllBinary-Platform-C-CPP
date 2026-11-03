@@ -71,7 +71,7 @@ class CommonStrings;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class BasicAI: public ArtificialIntelligence, public GameKeyEventSourceInterface {
+class BasicAI: public ArtificialIntelligence, public virtual GameKeyEventSourceInterface {
 
     public: static int32_t AI_VISITOR;
 

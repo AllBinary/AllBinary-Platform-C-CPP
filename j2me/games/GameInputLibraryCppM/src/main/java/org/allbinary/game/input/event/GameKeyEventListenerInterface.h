@@ -58,7 +58,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class GameKeyEventListenerInterface: public DownGameKeyEventListenerInterface, public UpGameKeyEventListenerInterface, public PressGameKeyEventListenerInterface {
+class GameKeyEventListenerInterface: public virtual DownGameKeyEventListenerInterface, public virtual UpGameKeyEventListenerInterface, public virtual PressGameKeyEventListenerInterface {
 
 };
 

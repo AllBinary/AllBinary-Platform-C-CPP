@@ -59,7 +59,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class GeographicMapCellPositionEventListenerInterface: public EventListenerInterface {
+class GeographicMapCellPositionEventListenerInterface: public virtual EventListenerInterface {
 
                 //@Throws(Exception.constructor)
             

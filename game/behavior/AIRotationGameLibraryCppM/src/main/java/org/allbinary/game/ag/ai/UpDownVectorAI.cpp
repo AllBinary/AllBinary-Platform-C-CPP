@@ -85,7 +85,7 @@ UpDownVectorAI::UpDownVectorAI(AllBinaryLayer* ownerLayerInterface, GameInput* g
                             //For kotlin this is before the body of the constructor.
                     
 
-    VelocityInterfaceCompositeInterface* velocityInterfaceCompositeInterface = dynamic_cast<VelocityInterfaceCompositeInterface*>(this->getOwnerLayerInterface() as unknown);;
+    VelocityInterfaceCompositeInterface* velocityInterfaceCompositeInterface = dynamic_cast<VelocityInterfaceCompositeInterface*>(this->getOwnerLayerInterface());;
     
 this->velocityInterface= velocityInterfaceCompositeInterface->getVelocityProperties();
     

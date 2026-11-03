@@ -94,7 +94,7 @@ AndroidServicesUtil* AndroidServicesUtil::instance = AndroidServicesUtil::instan
 
     auto AndroidServicesUtil::isServiceRunning(std::string name) -> bool{
 
-    ActivityManager* activityManager = dynamic_cast<ActivityManager*>(this->resourceUtil->getContext()->getSystemService(Context::ACTIVITY_SERVICE) as unknown);;
+    ActivityManager* activityManager = dynamic_cast<ActivityManager*>(this->resourceUtil->getContext()->getSystemService(Context::ACTIVITY_SERVICE));;
     
 
     List<RunningServiceInfo*>* runningServicesList = activityManager->getRunningServices(this->SERVICE_LIMIT_MAX);;

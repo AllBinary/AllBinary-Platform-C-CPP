@@ -59,7 +59,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class StoreAppClientInformation: public AbeClientInformation, public LongArrayIdentifierInterface {
+class StoreAppClientInformation: public AbeClientInformation, public virtual LongArrayIdentifierInterface {
 
     private: std::vector<int64_t> longArrayIdentifier;
 

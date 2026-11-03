@@ -57,7 +57,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class StatePaintable: public Paintable, public StateControlledInterface {
+class StatePaintable: public Paintable, public virtual StateControlledInterface {
 
 public: StatePaintable();
 

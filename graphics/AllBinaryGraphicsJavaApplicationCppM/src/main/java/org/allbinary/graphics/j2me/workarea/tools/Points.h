@@ -62,7 +62,7 @@ class BasicArrayListD;
         
 class Points
             : public virtual Object
-        , public PointsInterface {
+        , public virtual PointsInterface {
 
     private: BasicArrayList* pointVector;
 

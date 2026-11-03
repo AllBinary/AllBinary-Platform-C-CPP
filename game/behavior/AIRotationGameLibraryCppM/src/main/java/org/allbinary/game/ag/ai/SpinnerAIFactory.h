@@ -68,7 +68,7 @@ template<typename T1, typename T2> class ABHashtable;
         
 class SpinnerAIFactory
             : public virtual Object
-        , public ArtificialIntelligenceInterfaceFactoryInterface {
+        , public virtual ArtificialIntelligenceInterfaceFactoryInterface {
 
 
             

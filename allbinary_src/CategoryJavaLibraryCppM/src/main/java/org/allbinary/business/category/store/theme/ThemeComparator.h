@@ -60,7 +60,7 @@
         
 class ThemeComparator
             : public virtual Object
-        , public Comparator {
+        , public virtual Comparator {
 
 public: ThemeComparator();
 

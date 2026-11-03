@@ -57,7 +57,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class DemoGameMidletEventListener: public EventListenerInterface {
+class DemoGameMidletEventListener: public virtual EventListenerInterface {
 
     public: virtual void onDemoStart() = 0;
 

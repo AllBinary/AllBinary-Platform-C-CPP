@@ -79,7 +79,7 @@ class Node;
         
 class CategoryProperties
             : public virtual Object
-        , public CategoryPropertiesInterface {
+        , public virtual CategoryPropertiesInterface {
 
     private: static inline const int32_t MAXDEPTH = 100;
 

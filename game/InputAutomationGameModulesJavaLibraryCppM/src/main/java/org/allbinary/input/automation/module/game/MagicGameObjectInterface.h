@@ -56,7 +56,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class MagicGameObjectInterface: public MeteredGameObjectInterface {
+class MagicGameObjectInterface: public virtual MeteredGameObjectInterface {
 
 };
 

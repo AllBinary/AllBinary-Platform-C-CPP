@@ -84,7 +84,7 @@ class GenericProfile;
         
 class GenericProfiles
             : public virtual Object
-        , public DomNodeInterface, public DomDocumentMappingInterface {
+        , public virtual DomNodeInterface, public virtual DomDocumentMappingInterface {
 
     public: static inline const std::string DEFAULT_PROFILES_PATH = "./modules/configs/profiles/";
 

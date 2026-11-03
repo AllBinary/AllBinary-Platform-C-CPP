@@ -64,7 +64,7 @@ class CommonStrings;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class CompleteMotionGestureInputEvent: public AllBinaryEventObject, public CompleteMotionGestureInputInterface {
+class CompleteMotionGestureInputEvent: public AllBinaryEventObject, public virtual CompleteMotionGestureInputInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

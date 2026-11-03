@@ -102,7 +102,7 @@ class StoreFrontData;
         
 class StoreFront
             : public virtual Object
-        , public StoreFrontInterface {
+        , public virtual StoreFrontInterface {
 
     private: static const std::string RESOURCES;
 

@@ -90,7 +90,7 @@ class StringUtil;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class OrderItemsEntity: public AbSqlBean, public OrderItemsEntityInterface {
+class OrderItemsEntity: public AbSqlBean, public virtual OrderItemsEntityInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

@@ -57,7 +57,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class TableInterface: public BasicTableInterface, public ModifyTableInterface {
+class TableInterface: public virtual BasicTableInterface, public virtual ModifyTableInterface {
 
 };
 

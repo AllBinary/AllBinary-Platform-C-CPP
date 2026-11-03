@@ -59,7 +59,7 @@ class BasicArrayList;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class PermissionItemsEntityInterface: public BasicDataTableInterface {
+class PermissionItemsEntityInterface: public virtual BasicDataTableInterface {
 
     public: virtual void delete_(std::string value) = 0;
 

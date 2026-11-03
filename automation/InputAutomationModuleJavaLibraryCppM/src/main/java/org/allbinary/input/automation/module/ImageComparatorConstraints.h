@@ -72,7 +72,7 @@ class LogUtil;
         
 class ImageComparatorConstraints
             : public virtual Object
-        , public ImageComparatorConstraintsInterface {
+        , public virtual ImageComparatorConstraintsInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

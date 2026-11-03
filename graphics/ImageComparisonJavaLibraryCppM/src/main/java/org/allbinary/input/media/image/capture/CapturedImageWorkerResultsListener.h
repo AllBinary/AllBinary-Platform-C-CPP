@@ -57,7 +57,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class CapturedImageWorkerResultsListener: public BasicEventListenerInterface {
+class CapturedImageWorkerResultsListener: public virtual BasicEventListenerInterface {
 
     public: virtual void onCaptureEvent(CapturedImageWorkerResultsEvent* capturedimageworkerresultsevent) = 0;
 

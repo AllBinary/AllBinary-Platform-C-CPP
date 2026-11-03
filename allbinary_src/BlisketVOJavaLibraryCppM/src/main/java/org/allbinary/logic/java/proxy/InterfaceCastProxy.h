@@ -66,7 +66,7 @@
         
 class InterfaceCastProxy
             : public virtual Object
-        , public java::lang::reflect::InvocationHandler {
+        , public virtual java::lang::reflect::InvocationHandler {
 
     public: static Object* newInstance(Object* anyType);
     public: static Object* newInstance(const std::string& anyType) { return newInstance(JavaString::box(anyType)); }

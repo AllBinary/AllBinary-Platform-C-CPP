@@ -62,7 +62,7 @@ class UpdateMyFontProcessor;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class RTSLayerTextAnimation: public Animation, public UpdateMyFontInterface {
+class RTSLayerTextAnimation: public Animation, public virtual UpdateMyFontInterface {
 
     private: Image* image;
 

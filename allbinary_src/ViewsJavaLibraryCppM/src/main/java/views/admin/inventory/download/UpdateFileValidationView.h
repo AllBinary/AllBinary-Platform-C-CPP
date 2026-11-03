@@ -88,7 +88,7 @@ class Node;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class UpdateFileValidationView: public DownloadableInventoryItemView, public ValidationComponentInterface {
+class UpdateFileValidationView: public DownloadableInventoryItemView, public virtual ValidationComponentInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

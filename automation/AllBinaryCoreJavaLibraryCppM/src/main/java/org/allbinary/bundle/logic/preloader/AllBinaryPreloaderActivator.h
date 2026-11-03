@@ -70,7 +70,7 @@ template<typename T1, typename T2> class ABHashtable;
         
 class AllBinaryPreloaderActivator
             : public virtual Object
-        , public BundleActivator {
+        , public virtual BundleActivator {
 
     private: static inline BundleContext* context;
 

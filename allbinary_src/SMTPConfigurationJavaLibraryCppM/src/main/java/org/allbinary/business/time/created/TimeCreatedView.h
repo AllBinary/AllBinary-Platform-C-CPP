@@ -68,7 +68,7 @@ class Node;
         
 class TimeCreatedView
             : public virtual Object
-        , public DomNodeInterface {
+        , public virtual DomNodeInterface {
 
     private: TimeCreated* timeCreated;
 

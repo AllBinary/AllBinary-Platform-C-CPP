@@ -95,7 +95,7 @@ class ThemeData;
         
 class ThemeValidation
             : public virtual Object
-        , public ThemeInterface, public ValidationInterface, public DomNodeInterface, public CompositeTransformInfoInterface {
+        , public virtual ThemeInterface, public virtual ValidationInterface, public virtual DomNodeInterface, public virtual CompositeTransformInfoInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

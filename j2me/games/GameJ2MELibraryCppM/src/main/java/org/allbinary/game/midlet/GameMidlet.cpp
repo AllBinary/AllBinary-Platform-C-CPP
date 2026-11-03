@@ -679,7 +679,7 @@ this->unPauseAppBackground(false);
                         
                                     {
                                     
-    MenuListener* menuListener = dynamic_cast<MenuListener*>(displayable as unknown);;
+    MenuListener* menuListener = dynamic_cast<MenuListener*>(displayable);;
     
 menuListener->close();
     
@@ -815,7 +815,7 @@ this->gameMidletStateFactory->setCurrentGameState(this->gameStateFactory->PLAYIN
                         
                                     {
                                     
-    MenuListener* menuListener = dynamic_cast<MenuListener*>(displayable as unknown);;
+    MenuListener* menuListener = dynamic_cast<MenuListener*>(displayable);;
     
 menuListener->close();
     
@@ -870,7 +870,7 @@ this->setDisplay(displayable);
                                     this->pauseAppBackground(false);
     
 
-    MenuListener* menuListener = dynamic_cast<MenuListener*>(displayable as unknown);;
+    MenuListener* menuListener = dynamic_cast<MenuListener*>(displayable);;
     
 menuListener->open();
     
@@ -1000,7 +1000,7 @@ highScoresCanvas->updateCommand(command);
                         
                                     {
                                     
-    MenuListener* menuListener = dynamic_cast<MenuListener*>(displayable as unknown);;
+    MenuListener* menuListener = dynamic_cast<MenuListener*>(displayable);;
     
 menuListener->close();
     
@@ -1283,7 +1283,7 @@ this->unPauseAppBackground(false);
                         
                                     {
                                     
-    HighScoreTextBox* highScoreTextBox = dynamic_cast<HighScoreTextBox*>(displayable as unknown);;
+    HighScoreTextBox* highScoreTextBox = dynamic_cast<HighScoreTextBox*>(displayable);;
     
 highScoreTextBox->submitted= true;
     
@@ -1394,7 +1394,7 @@ this->logUtil->put((new StringMaker())->append(this->commonStrings->EXCEPTION_LA
                         
                                     {
                                     
-    Canvas* canvas = dynamic_cast<Canvas*>(displayable as unknown);;
+    Canvas* canvas = dynamic_cast<Canvas*>(displayable);;
     
 canvas->setFullScreenMode(isFullScreen);
     
@@ -1694,7 +1694,7 @@ this->resized= resized;
                         
                                     {
                                     
-    DemoCanvas* demoCanvas = dynamic_cast<DemoCanvas*>(displayable as unknown);;
+    DemoCanvas* demoCanvas = dynamic_cast<DemoCanvas*>(displayable);;
     
 
                         if(demoCanvas->isDemoLoading())

@@ -66,7 +66,7 @@ class CustomizerUtil;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class EditCssValidationView: public CssCustomizerView, public ValidationComponentInterface {
+class EditCssValidationView: public CssCustomizerView, public virtual ValidationComponentInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

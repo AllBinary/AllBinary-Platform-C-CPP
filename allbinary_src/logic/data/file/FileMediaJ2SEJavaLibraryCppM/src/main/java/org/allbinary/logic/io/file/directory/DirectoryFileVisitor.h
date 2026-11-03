@@ -62,7 +62,7 @@
         
 class DirectoryFileVisitor
             : public virtual Object
-        , public VisitorInterface, public FileFilter {
+        , public virtual VisitorInterface, public virtual FileFilter {
 
 public: DirectoryFileVisitor();
 

@@ -62,7 +62,7 @@
         
 class NullRecordComparator
             : public virtual Object
-        , public RecordComparator {
+        , public virtual RecordComparator {
 
     private: static NullRecordComparator* NULL_RECORD_COMPARATOR_owner();
     public: static NullRecordComparator* NULL_RECORD_COMPARATOR;

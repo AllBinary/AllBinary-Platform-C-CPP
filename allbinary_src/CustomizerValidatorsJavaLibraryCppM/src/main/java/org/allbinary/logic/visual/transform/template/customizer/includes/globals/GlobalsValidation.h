@@ -68,7 +68,7 @@ class Node;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class GlobalsValidation: public Validation, public DomNodeInterface {
+class GlobalsValidation: public Validation, public virtual DomNodeInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

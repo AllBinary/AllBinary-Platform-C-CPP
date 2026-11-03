@@ -56,7 +56,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class AnimationListener: public EventListenerInterface {
+class AnimationListener: public virtual EventListenerInterface {
 
     public: virtual void onEnd() = 0;
 

@@ -61,7 +61,7 @@ class AbPath;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class CategoryPropertiesInterface: public TableMappingInterface, public ValidationInterface {
+class CategoryPropertiesInterface: public virtual TableMappingInterface, public virtual ValidationInterface {
 
     public: virtual void setValue(std::string value) = 0;
 

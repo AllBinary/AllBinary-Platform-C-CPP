@@ -67,7 +67,7 @@ class Node;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class AddValidationUserView: public HttpContextView, public ValidationComponentInterface {
+class AddValidationUserView: public HttpContextView, public virtual ValidationComponentInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

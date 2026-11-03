@@ -71,7 +71,7 @@ class Animation;
         
 class VectorRotationAnimationInterfaceFactory
             : public virtual Object
-        , public AnimationInterfaceFactoryInterface {
+        , public virtual AnimationInterfaceFactoryInterface {
 
     private: std::vector<std::vector<std::vector<int32_t>>> currentPoints;
 

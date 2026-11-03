@@ -66,7 +66,7 @@ class StringMaker;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class AllBinaryTiledLayer: public Layer, public NamedInterface, public PaintableInterface {
+class AllBinaryTiledLayer: public Layer, public virtual NamedInterface, public virtual PaintableInterface {
 
     private: int32_t cellWidth;
 

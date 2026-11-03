@@ -61,7 +61,7 @@ class Orientation;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class NoGyroSensor: public AllBinaryOrientationSensor, public AllBinarySensorListener {
+class NoGyroSensor: public AllBinaryOrientationSensor, public virtual AllBinarySensorListener {
 
 public: NoGyroSensor();
 

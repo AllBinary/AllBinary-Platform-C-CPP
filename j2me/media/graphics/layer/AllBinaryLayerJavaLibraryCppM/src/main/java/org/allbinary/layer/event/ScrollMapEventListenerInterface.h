@@ -59,7 +59,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class ScrollMapEventListenerInterface: public EventListenerInterface {
+class ScrollMapEventListenerInterface: public virtual EventListenerInterface {
 
                 //@Throws(Exception.constructor)
             

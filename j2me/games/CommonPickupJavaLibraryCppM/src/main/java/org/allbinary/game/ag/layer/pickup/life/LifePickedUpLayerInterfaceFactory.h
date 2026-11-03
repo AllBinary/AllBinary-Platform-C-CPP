@@ -68,7 +68,7 @@ class LifeResources;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class LifePickedUpLayerInterfaceFactory: public PickedUpLayerInterfaceFactory, public PickupProcessorInterface {
+class LifePickedUpLayerInterfaceFactory: public PickedUpLayerInterfaceFactory, public virtual PickupProcessorInterface {
 
     private: static PickedUpLayerInterfaceFactoryInterface* pickedUpLayerInterfaceFactoryInterface;
 

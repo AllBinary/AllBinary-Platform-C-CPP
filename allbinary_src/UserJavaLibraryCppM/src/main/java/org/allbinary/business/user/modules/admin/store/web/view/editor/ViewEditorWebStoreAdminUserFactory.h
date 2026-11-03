@@ -65,7 +65,7 @@ class UserInterface;
         
 class ViewEditorWebStoreAdminUserFactory
             : public virtual Object
-        , public UserFactoryInterface {
+        , public virtual UserFactoryInterface {
 
 public: ViewEditorWebStoreAdminUserFactory();
 

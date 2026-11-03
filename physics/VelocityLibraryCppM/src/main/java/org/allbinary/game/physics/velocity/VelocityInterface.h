@@ -56,7 +56,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class VelocityInterface: public BasicVelocityInterface {
+class VelocityInterface: public virtual BasicVelocityInterface {
 
     public: virtual int32_t getMaxForwardVelocity() = 0;
 

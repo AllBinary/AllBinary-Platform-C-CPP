@@ -57,7 +57,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class OSGIServiceVisitorInterface: public VisitorInterface {
+class OSGIServiceVisitorInterface: public virtual VisitorInterface {
 
     public: virtual bool visit(OSGIServiceInterface* osgiServiceInterface) = 0;
 

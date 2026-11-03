@@ -72,7 +72,7 @@ class NullUtil;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class CollidableCompositeLayer: public AllBinaryGameLayer, public CollidableInterfaceCompositeInterface {
+class CollidableCompositeLayer: public AllBinaryGameLayer, public virtual CollidableInterfaceCompositeInterface {
 
     private: static Object* NULL_COLLIDABLE_COMPOSITE_LAYER;
 

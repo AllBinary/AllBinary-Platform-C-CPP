@@ -66,7 +66,7 @@ class DisplayChangeEvent;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class LivesHudWidget: public BasicHud, public PaintableInterface {
+class LivesHudWidget: public BasicHud, public virtual PaintableInterface {
 
     private: Life* lifeInterface;
 

@@ -73,7 +73,7 @@ class BasicArrayListD;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class TextAnimation: public IndexedAnimation, public UpdateMyFontInterface {
+class TextAnimation: public IndexedAnimation, public virtual UpdateMyFontInterface {
 
     private: MyFontProcessor* updateMyFontProcessor;
 

@@ -68,7 +68,7 @@ class BasicColorSetUtil;
         
 class Animation
             : public virtual Object
-        , public AnimationInterface, public OpenGLSurfaceChangedInterface {
+        , public virtual AnimationInterface, public virtual OpenGLSurfaceChangedInterface {
 
     /*protected*/ public: BasicColorSetUtil* basicSetColorUtil;
 

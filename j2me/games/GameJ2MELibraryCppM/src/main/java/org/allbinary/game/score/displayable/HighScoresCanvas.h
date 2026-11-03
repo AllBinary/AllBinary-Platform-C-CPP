@@ -89,7 +89,7 @@ class ABSystemWrapper;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class HighScoresCanvas: public GameCommandCanvas, public HighScoresResultsListener {
+class HighScoresCanvas: public GameCommandCanvas, public virtual HighScoresResultsListener {
 
     public: static inline const std::string NAME = "HighScoresCanvas";
 

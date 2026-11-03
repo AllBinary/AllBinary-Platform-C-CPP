@@ -70,7 +70,7 @@ class StoreCustomizerComponentUtil;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class InsertTitleBodyValidationView: public TitleBodyCustomizerView, public ValidationComponentInterface {
+class InsertTitleBodyValidationView: public TitleBodyCustomizerView, public virtual ValidationComponentInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

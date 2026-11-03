@@ -69,7 +69,7 @@ class Node;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class StoreCategoryFactory: public CategoryAbstractFactory, public CategoryFactoryInterface {
+class StoreCategoryFactory: public CategoryAbstractFactory, public virtual CategoryFactoryInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

@@ -63,7 +63,7 @@ class CommonSeps;
         
 class DbConnectionInfo
             : public virtual Object
-        , public DatabaseConnectionInfoInterface {
+        , public virtual DatabaseConnectionInfoInterface {
 
     private: std::string jdbcDriver;
 

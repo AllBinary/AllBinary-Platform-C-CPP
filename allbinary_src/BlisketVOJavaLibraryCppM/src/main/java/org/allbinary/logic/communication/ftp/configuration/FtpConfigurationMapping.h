@@ -68,7 +68,7 @@ class FtpConfigurationData;
         
 class FtpConfigurationMapping
             : public virtual Object
-        , public TableMappingInterface {
+        , public virtual TableMappingInterface {
 
     private: FtpConfigurationInterface* ftpConfigurationInterface;
 

@@ -77,7 +77,7 @@ class InputAutomationRobotChangeEvent;
         
 class InputAutomationRobotBundleActivator
             : public virtual Object
-        , public BundleActivator {
+        , public virtual BundleActivator {
 
     /*protected*/ public: LogUtil* logUtil;
 

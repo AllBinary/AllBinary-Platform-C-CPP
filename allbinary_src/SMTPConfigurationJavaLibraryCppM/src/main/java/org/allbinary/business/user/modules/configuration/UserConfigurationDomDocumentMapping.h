@@ -68,7 +68,7 @@ class UserConfigurationView;
         
 class UserConfigurationDomDocumentMapping
             : public virtual Object
-        , public DomDocumentMappingInterface {
+        , public virtual DomDocumentMappingInterface {
 
     private: UserConfigurationInterface* userConfigurationInterface;
 

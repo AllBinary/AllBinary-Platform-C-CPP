@@ -59,7 +59,7 @@ class BasicColor;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class CircleFilledAnimation: public Animation, public ColorCompositeInterface {
+class CircleFilledAnimation: public Animation, public virtual ColorCompositeInterface {
 
     private: int32_t width;
 

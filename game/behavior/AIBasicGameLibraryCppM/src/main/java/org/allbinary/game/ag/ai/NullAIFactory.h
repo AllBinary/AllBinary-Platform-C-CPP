@@ -65,7 +65,7 @@ template<typename T1, typename T2> class ABHashtable;
         
 class NullAIFactory
             : public virtual Object
-        , public ArtificialIntelligenceInterfaceFactoryInterface {
+        , public virtual ArtificialIntelligenceInterfaceFactoryInterface {
 
     private: static NullAI* NULL_AI_owner();
     private: static NullAI* NULL_AI;

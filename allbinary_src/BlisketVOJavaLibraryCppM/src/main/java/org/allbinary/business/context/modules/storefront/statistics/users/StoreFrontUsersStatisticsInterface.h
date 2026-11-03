@@ -58,7 +58,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         //import org.allbinary.business.user.commerce.money.Money;
-class StoreFrontUsersStatisticsInterface: public TableMappingInterface {
+class StoreFrontUsersStatisticsInterface: public virtual TableMappingInterface {
 
     public: virtual int64_t getNumberOfUsers() = 0;
 

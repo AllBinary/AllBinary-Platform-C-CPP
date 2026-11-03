@@ -62,7 +62,7 @@ class GenericProfileActionScriptOutputData;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class BasicProfileActionScriptOutput: public BasicProfileActionScriptProcessor, public ProfileActionScriptOutputInterface {
+class BasicProfileActionScriptOutput: public BasicProfileActionScriptProcessor, public virtual ProfileActionScriptOutputInterface {
 
 public: BasicProfileActionScriptOutput(std::string label, Node* node);
 

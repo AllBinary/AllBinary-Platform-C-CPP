@@ -59,7 +59,7 @@ class BasicArrayList;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class StaticPagesEntityInterface: public BasicDataTableInterface {
+class StaticPagesEntityInterface: public virtual BasicDataTableInterface {
 
     public: virtual std::string getFile(std::string store, std::string keywords) = 0;
 

@@ -61,7 +61,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class RunnableInterface: public Runnable {
+class RunnableInterface: public virtual Runnable {
 
     public: virtual bool isRunning() = 0;
 

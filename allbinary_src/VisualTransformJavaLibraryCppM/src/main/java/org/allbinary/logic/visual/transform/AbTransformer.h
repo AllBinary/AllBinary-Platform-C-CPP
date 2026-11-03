@@ -72,7 +72,7 @@ class CommonStrings;
         
 class AbTransformer
             : public virtual Object
-        , public BasicTransformerInterface {
+        , public virtual BasicTransformerInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

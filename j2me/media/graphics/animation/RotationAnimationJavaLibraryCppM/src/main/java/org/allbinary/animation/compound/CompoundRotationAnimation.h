@@ -71,7 +71,7 @@ class CircularIndexUtil;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class CompoundRotationAnimation: public RotationAnimation, public CompoundAnimationInterface {
+class CompoundRotationAnimation: public RotationAnimation, public virtual CompoundAnimationInterface {
 
     private: std::vector<RotationAnimation*> animationInterfaceArray;
 

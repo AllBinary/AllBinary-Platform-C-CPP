@@ -99,9 +99,7 @@ TimeTypeUtil* TimeTypeUtil::instance = TimeTypeUtil::instance_owner();
                                 this->NIGHT
                                 :
 
-                            this->DAY;
-
-    ;
+                            this->DAY;;
     
 }
 
@@ -144,9 +142,7 @@ calendar->setTimeInMillis(timeInMillis);
                                 this->NIGHT
                                 :
 
-                            this->DAY;
-
-    ;
+                            this->DAY;;
     
 }
 

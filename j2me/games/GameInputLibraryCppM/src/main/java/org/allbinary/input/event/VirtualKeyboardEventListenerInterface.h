@@ -59,7 +59,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class VirtualKeyboardEventListenerInterface: public EventListenerInterface {
+class VirtualKeyboardEventListenerInterface: public virtual EventListenerInterface {
 
                 //@Throws(Exception.constructor)
             

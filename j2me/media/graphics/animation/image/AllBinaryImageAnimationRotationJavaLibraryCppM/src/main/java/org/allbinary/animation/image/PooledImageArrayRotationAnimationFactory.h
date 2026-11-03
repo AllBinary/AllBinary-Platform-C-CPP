@@ -74,7 +74,7 @@ class AdjustedImageArrayRotationAnimation;
         //TWB - Adjustments should be done in the resource creation and not at the animation level
 class PooledImageArrayRotationAnimationFactory
             : public virtual Object
-        , public AnimationInterfaceFactoryInterface {
+        , public virtual AnimationInterfaceFactoryInterface {
 
                 //@Throws(Exception.constructor)
             

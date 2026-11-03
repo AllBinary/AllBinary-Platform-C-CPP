@@ -73,7 +73,7 @@ class DiveAndDirectionalTrackingAI;
         
 class DiveAndDirectionalTrackingAIFactory
             : public virtual Object
-        , public ArtificialIntelligenceInterfaceFactoryInterface {
+        , public virtual ArtificialIntelligenceInterfaceFactoryInterface {
 
 
             

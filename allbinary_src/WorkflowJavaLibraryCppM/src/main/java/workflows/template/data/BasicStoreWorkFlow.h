@@ -62,7 +62,7 @@ class StoreFrontData;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class BasicStoreWorkFlow: public BasicWorkFlow, public StoreWorkFlowInterface {
+class BasicStoreWorkFlow: public BasicWorkFlow, public virtual StoreWorkFlowInterface {
 
 public: BasicStoreWorkFlow(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext);
 

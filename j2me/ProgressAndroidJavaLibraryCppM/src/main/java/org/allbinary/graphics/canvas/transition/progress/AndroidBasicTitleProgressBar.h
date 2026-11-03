@@ -95,7 +95,7 @@ class TitleProgressBarPortionSetProgressRunnable;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class AndroidBasicTitleProgressBar: public ProgressCanvas, public DisplayChangeEventListener {
+class AndroidBasicTitleProgressBar: public ProgressCanvas, public virtual DisplayChangeEventListener {
 
     public: static inline const std::string RESOURCE = "ProgressImage";
 

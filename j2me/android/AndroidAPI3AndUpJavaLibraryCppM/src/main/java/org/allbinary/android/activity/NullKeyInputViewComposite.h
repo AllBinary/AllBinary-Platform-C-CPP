@@ -65,7 +65,7 @@ class View;
         
 class NullKeyInputViewComposite
             : public virtual Object
-        , public KeyInputViewCompositeInterface {
+        , public virtual KeyInputViewCompositeInterface {
 
     private: static NullKeyInputViewComposite* NULL_KEY_INPUT_VIEW_COMPOSITE_owner();
     public: static NullKeyInputViewComposite* NULL_KEY_INPUT_VIEW_COMPOSITE;

@@ -68,7 +68,7 @@ class PathFindingNodeCostInfo;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class PathFindingNodeCost: public PathFindingNode, public Comparable<PathFindingNodeCost*> {
+class PathFindingNodeCost: public PathFindingNode, public virtual Comparable<PathFindingNodeCost*> {
 
     public: static std::vector<std::vector<PathFindingNodeCost*>> NULL_PATH_FINDING_NODE_COST_ARRAY_ARRAY;
 

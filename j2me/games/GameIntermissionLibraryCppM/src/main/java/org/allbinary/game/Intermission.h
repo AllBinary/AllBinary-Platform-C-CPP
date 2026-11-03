@@ -63,7 +63,7 @@ class IntermissionEnableListenerInterface;
         
 class Intermission
             : public virtual Object
-        , public IntermissionInterface {
+        , public virtual IntermissionInterface {
 
     private: bool enabled= false;
 

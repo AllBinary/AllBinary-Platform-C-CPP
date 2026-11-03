@@ -72,7 +72,7 @@ class EmailServerConfigurationMapping;
         
 class EmailServerConfigurationView
             : public virtual Object
-        , public DomNodeInterface {
+        , public virtual DomNodeInterface {
 
     private: EmailServerConfigurationInterface* emailServerConfigurationInterface;
 

@@ -66,7 +66,7 @@ class TitleData;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class TitleNotRequiredValidation: public TitleView, public ValidationInterface {
+class TitleNotRequiredValidation: public TitleView, public virtual ValidationInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

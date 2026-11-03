@@ -128,7 +128,7 @@ idOutData->writeBytes(JavaString::valueOf(text) +JavaString::valueOf(this->strin
 
         try {
             
-    int32_t index = this->string.indexOf(after);;
+    int32_t index = JavaString::indexOf(this->string, after);;
     
 
                         if(index < 0)
@@ -148,10 +148,10 @@ idOutData->writeBytes(JavaString::valueOf(text) +JavaString::valueOf(this->strin
 index= index +after.size();
     
 
-    std::string start = this->string.substring(0, index);;
+    std::string start = JavaString::substring(this->string, 0, index);;
     
 
-    std::string end = this->string.substring(index +1, this->string.size());;
+    std::string end = JavaString::substring(this->string, index +1, this->string.size());;
     
 
     FileOutputStream* idFile = new FileOutputStream(this->fileName);;

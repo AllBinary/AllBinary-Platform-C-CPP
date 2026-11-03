@@ -75,7 +75,7 @@ class Node;
         
 class StoreThemeCategoryFactory
             : public virtual Object
-        , public CategoryFactoryInterface {
+        , public virtual CategoryFactoryInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

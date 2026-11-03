@@ -65,7 +65,7 @@ class GenericProfileActionScriptProcessorData;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class BasicProfileActionScriptProcessor: public ProfileActionScriptItem, public ProfileActionScriptProcessorInterface {
+class BasicProfileActionScriptProcessor: public ProfileActionScriptItem, public virtual ProfileActionScriptProcessorInterface {
 
 public: BasicProfileActionScriptProcessor(std::string label, Node* node);
 

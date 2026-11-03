@@ -61,7 +61,7 @@
         
 class Monitor
             : public virtual Object
-        , public HardwareComponentInterface, public MonitorInterface {
+        , public virtual HardwareComponentInterface, public virtual MonitorInterface {
 
     private: std::string data;
 

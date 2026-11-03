@@ -60,7 +60,7 @@
         
 class ScreenEmptyListener
             : public virtual Object
-        , public ScreenListenerInterface {
+        , public virtual ScreenListenerInterface {
 
 
             

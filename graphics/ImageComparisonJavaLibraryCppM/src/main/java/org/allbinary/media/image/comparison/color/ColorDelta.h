@@ -65,7 +65,7 @@ class CommonSeps;
         
 class ColorDelta
             : public virtual Object
-        , public CacheableInterface {
+        , public virtual CacheableInterface {
 
     public: static Object* getKey(int32_t rgb1, int32_t rgb2);
 

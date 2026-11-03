@@ -59,7 +59,7 @@ class AllBinaryLayerManager;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class ArtificialIntelligenceInterface: public IdentifierInterface {
+class ArtificialIntelligenceInterface: public virtual IdentifierInterface {
 
                 //@Throws(Exception.constructor)
             

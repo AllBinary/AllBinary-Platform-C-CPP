@@ -62,7 +62,7 @@ class BasicColor;
         
 class Paintable
             : public virtual Object
-        , public PaintableInterface {
+        , public virtual PaintableInterface {
 
 
             

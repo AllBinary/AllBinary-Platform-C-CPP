@@ -67,7 +67,7 @@ class EventStrings;
         
 class LayerBounds
             : public virtual Object
-        , public BoundsChangeEventListener {
+        , public virtual BoundsChangeEventListener {
 
     /*protected*/ public: LogUtil* logUtil;
 

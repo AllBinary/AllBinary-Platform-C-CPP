@@ -73,7 +73,7 @@ class GenericProfileActionData;
         
 class GenericProfileAction
             : public virtual Object
-        , public DomNodeInterface {
+        , public virtual DomNodeInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

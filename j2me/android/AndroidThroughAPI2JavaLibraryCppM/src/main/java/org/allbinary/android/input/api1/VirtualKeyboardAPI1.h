@@ -58,7 +58,7 @@ class Activity;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class VirtualKeyboardAPI1: public VirtualKeyboard, public VirtualKeyboardEventListenerInterface {
+class VirtualKeyboardAPI1: public VirtualKeyboard, public virtual VirtualKeyboardEventListenerInterface {
 
     public: static inline int32_t MIN_API = 1;
 

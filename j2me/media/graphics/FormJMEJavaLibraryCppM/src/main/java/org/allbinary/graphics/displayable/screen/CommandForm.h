@@ -75,7 +75,7 @@ template<typename T1> class ABStack;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class CommandForm: public Form, public MyCommandInterface, public MenuListener {
+class CommandForm: public Form, public virtual MyCommandInterface, public virtual MenuListener {
 
     private: static Object* NULL_COMMAND_FORM;
 

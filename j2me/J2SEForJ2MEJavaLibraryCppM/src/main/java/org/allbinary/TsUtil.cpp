@@ -176,9 +176,7 @@ recordStore->getRecord(recordId, data, 0);
                                 NullUtil::getInstance()->NULL_BYTE_ARRAY
                                 :
 
-                            data;
-
-    ;
+                            data;;
     
 }
 
@@ -218,7 +216,7 @@ recordStore->getRecord(recordId, data, 0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return anyType->getClass()getClassLoader();;
+                        return anyType->getClass()->getClassLoader();;
     
 }
 

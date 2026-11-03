@@ -66,7 +66,7 @@ class HighScoresHelperBaseInterface;
         
 class HighScoresBase
             : public virtual Object
-        , public HighScoresFactoryInterface {
+        , public virtual HighScoresFactoryInterface {
 
     /*protected*/ public: CommonStrings* commonStrings;
 

@@ -68,7 +68,7 @@ class StringMaker;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class IdGeneratorEntity: public AbSqlBean, public IdGeneratorEntityInterface {
+class IdGeneratorEntity: public AbSqlBean, public virtual IdGeneratorEntityInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

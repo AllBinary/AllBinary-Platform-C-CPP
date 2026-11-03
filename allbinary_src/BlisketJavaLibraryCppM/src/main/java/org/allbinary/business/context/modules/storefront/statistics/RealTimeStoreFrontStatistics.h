@@ -71,7 +71,7 @@ class StoreFrontUsersStatisticsInterface;
         
 class RealTimeStoreFrontStatistics
             : public virtual Object
-        , public StoreFrontStatisticsInterface {
+        , public virtual StoreFrontStatisticsInterface {
 
     private: StoreFrontAdvertisementsStatisticsInterface* storeFrontAdvertisementsStatisticsInterface;
 

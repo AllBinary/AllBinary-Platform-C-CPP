@@ -63,7 +63,7 @@ class TransformInfoInterface;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class TransformInfoEntityInterface: public BasicDataTableInterface {
+class TransformInfoEntityInterface: public virtual BasicDataTableInterface {
 
                 //@Throws(Exception.constructor)
             

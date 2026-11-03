@@ -61,7 +61,7 @@ class BasicArrayList;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class PaymentGatewayInterface: public TableMappingInterface {
+class PaymentGatewayInterface: public virtual TableMappingInterface {
 
     public: virtual std::string getEnable() = 0;
 

@@ -62,7 +62,7 @@ class AdvertisementAreaInterface;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class AdvertisementAreasEntityInterface: public BasicDataTableInterface {
+class AdvertisementAreasEntityInterface: public virtual BasicDataTableInterface {
 
                 //@Throws(Exception.constructor)
             

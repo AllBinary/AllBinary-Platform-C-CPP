@@ -58,7 +58,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class CustomTreeNodeInterface: public MutableTreeNode {
+class CustomTreeNodeInterface: public virtual MutableTreeNode {
 
     public: virtual JPopupMenu* getJPopupMenu() = 0;
 

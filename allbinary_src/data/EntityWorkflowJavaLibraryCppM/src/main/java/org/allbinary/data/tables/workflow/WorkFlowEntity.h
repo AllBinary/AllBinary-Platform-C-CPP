@@ -75,7 +75,7 @@ class ServiceClientInformationInterfaceFactory;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class WorkFlowEntity: public AbSqlBean, public WorkFlowEntityInterface {
+class WorkFlowEntity: public AbSqlBean, public virtual WorkFlowEntityInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

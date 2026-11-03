@@ -72,7 +72,7 @@ class CommonSeps;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class CustomTextBox: public GameCommandCanvas, public RawKeyEventListener {
+class CustomTextBox: public GameCommandCanvas, public virtual RawKeyEventListener {
 
     private: ABTextFieldItem* textFieldItem;
 

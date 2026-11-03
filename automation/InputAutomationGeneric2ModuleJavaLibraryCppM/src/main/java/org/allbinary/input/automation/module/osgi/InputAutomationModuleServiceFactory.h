@@ -68,7 +68,7 @@ class CommonStrings;
         
 class InputAutomationModuleServiceFactory
             : public virtual Object
-        , public ServiceFactory {
+        , public virtual ServiceFactory {
 
     /*protected*/ public: LogUtil* logUtil;
 

@@ -66,7 +66,7 @@ class TagStrings;
         
 class ModifyTable
             : public virtual Object
-        , public ModifyTableInterface {
+        , public virtual ModifyTableInterface {
 
 
             

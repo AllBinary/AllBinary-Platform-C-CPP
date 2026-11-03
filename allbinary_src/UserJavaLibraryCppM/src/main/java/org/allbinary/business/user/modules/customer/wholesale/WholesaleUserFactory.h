@@ -65,7 +65,7 @@ class UserInterface;
         
 class WholesaleUserFactory
             : public virtual Object
-        , public UserFactoryInterface {
+        , public virtual UserFactoryInterface {
 
 public: WholesaleUserFactory();
 

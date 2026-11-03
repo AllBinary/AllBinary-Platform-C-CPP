@@ -60,7 +60,7 @@
         
 class NoDebug
             : public virtual Object
-        , public DebugInterface {
+        , public virtual DebugInterface {
 
     private: static DebugInterface* SINGLETON;
 

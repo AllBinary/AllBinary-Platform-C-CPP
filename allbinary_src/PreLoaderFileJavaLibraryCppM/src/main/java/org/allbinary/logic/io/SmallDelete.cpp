@@ -87,16 +87,16 @@ this->string= AbFileSystem::getInstance()->readAsString(fileName);
             
     int32_t beginIndex= 0;int32_t endIndex= 0;;
     
-beginIndex= this->string.indexOf(start);
+beginIndex= JavaString::indexOf(this->string, start);
     
-endIndex= this->string.indexOf(end);
+endIndex= JavaString::indexOf(this->string, end);
     
 
                         if(endIndex > beginIndex && beginIndex >= 0 && endIndex >= 0 && beginIndex < 10 && endIndex < 525)
                         
                                     {
                                     
-    std::string text = this->string.substring(endIndex, this->string.size());;
+    std::string text = JavaString::substring(this->string, endIndex, this->string.size());;
     
 
     FileOutputStream* idFile = new FileOutputStream(this->fileName);;
@@ -151,19 +151,19 @@ idOutData->writeBytes(text);
             
     int32_t beginIndex= 0;int32_t endIndex= 0;;
     
-beginIndex= this->string.indexOf(start);
+beginIndex= JavaString::indexOf(this->string, start);
     
-endIndex= this->string.indexOf(end);
+endIndex= JavaString::indexOf(this->string, end);
     
 
                         if(endIndex > beginIndex && beginIndex >= 0 && endIndex >= 0 && beginIndex < 50 && endIndex < 425)
                         
                                     {
                                     
-    std::string newStart = this->string.substring(0, beginIndex);;
+    std::string newStart = JavaString::substring(this->string, 0, beginIndex);;
     
 
-    std::string text = this->string.substring(endIndex +end.size(), this->string.size());;
+    std::string text = JavaString::substring(this->string, endIndex +end.size(), this->string.size());;
     
 
     FileOutputStream* idFile = new FileOutputStream(this->fileName);;

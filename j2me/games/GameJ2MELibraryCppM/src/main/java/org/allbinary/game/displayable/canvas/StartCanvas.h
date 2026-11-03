@@ -154,7 +154,7 @@ class GameInputMappingCanvas;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class StartCanvas: public RunnableCanvas, public GameCanvasRunnableInterface, public MenuListener, public DisplayChangeEventListener {
+class StartCanvas: public RunnableCanvas, public virtual GameCanvasRunnableInterface, public virtual MenuListener, public virtual DisplayChangeEventListener {
 
     private: static inline const int32_t id = 0;
 

@@ -65,7 +65,7 @@ class AdvertisementCampaignData;
         
 class AdvertisementCampaign
             : public virtual Object
-        , public AdvertisementCampaignInterface {
+        , public virtual AdvertisementCampaignInterface {
 
     private: HashMap<Object*, Object*>* hashMap;
 

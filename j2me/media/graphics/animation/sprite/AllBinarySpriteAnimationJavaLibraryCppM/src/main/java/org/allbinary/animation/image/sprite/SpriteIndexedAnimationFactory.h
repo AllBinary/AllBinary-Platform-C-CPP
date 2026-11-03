@@ -72,7 +72,7 @@ class AdjustedSpriteIndexedAnimation;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class SpriteIndexedAnimationFactory: public BaseImageAnimationFactory, public ProceduralAnimationInterfaceFactoryInterface {
+class SpriteIndexedAnimationFactory: public BaseImageAnimationFactory, public virtual ProceduralAnimationInterfaceFactoryInterface {
 
                 //@Throws(Exception.constructor)
             

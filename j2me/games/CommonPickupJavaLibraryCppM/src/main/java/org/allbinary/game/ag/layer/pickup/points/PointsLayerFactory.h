@@ -64,7 +64,7 @@ class AllBinaryLayer;
         
 class PointsLayerFactory
             : public virtual Object
-        , public AllBinaryLayerFactoryInterface {
+        , public virtual AllBinaryLayerFactoryInterface {
 
     private: int32_t points;
 

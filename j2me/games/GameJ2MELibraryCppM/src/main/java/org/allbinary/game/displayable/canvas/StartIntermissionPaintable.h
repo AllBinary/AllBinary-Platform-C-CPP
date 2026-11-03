@@ -73,7 +73,7 @@ class StringUtil;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class StartIntermissionPaintable: public InitUpdatePaintable, public UpdateMyFontInterface {
+class StartIntermissionPaintable: public InitUpdatePaintable, public virtual UpdateMyFontInterface {
 
     /*protected*/ public: FontDebugFactory* fontDebugFactory;
 

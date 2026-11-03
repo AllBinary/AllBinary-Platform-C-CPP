@@ -2507,7 +2507,7 @@ this->gameBehavior->setHighScore(abeClientInformation, this, name, score, autoSu
 //inner=true member= isStatic=
 class SaveHighScoreRunnable
             : public virtual Object
-        , public Runnable {
+        , public virtual Runnable {
 
     private: ProgressCanvas* progressCanvas = ProgressCanvasFactory::getInstance();
 

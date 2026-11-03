@@ -64,7 +64,7 @@ class AllBinaryLayer;
         
 class AllBinaryLayerFactory
             : public virtual Object
-        , public AllBinaryLayerFactoryInterface {
+        , public virtual AllBinaryLayerFactoryInterface {
 
     private: Rectangle* rectangle;
 

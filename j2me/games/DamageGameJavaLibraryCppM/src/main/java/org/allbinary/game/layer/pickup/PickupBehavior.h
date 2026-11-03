@@ -80,7 +80,7 @@ class CountedPickedUpLayerInterfaceFactory;
         
 class PickupBehavior
             : public virtual Object
-        , public PickupBehaviorInterface {
+        , public virtual PickupBehaviorInterface {
 
     public: static Object* NULL_PICKUP_BEHAVIOR;
 

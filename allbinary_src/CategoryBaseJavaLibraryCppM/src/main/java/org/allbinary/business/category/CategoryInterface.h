@@ -64,7 +64,7 @@ class AbPath;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class CategoryInterface: public TableMappingInterface, public ValidationInterface {
+class CategoryInterface: public virtual TableMappingInterface, public virtual ValidationInterface {
 
     public: virtual BasicArrayList* getChildNodes() = 0;
 

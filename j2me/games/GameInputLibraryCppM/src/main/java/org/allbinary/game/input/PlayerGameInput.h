@@ -68,7 +68,7 @@ class GameInputStrings;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class PlayerGameInput: public GameInput, public GameKeyEventListenerInterface {
+class PlayerGameInput: public GameInput, public virtual GameKeyEventListenerInterface {
 
     /*protected*/ public: GameInputStrings* gameInputStrings;
 

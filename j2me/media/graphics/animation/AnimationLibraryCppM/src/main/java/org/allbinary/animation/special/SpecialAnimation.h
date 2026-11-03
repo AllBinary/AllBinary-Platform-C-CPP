@@ -59,7 +59,7 @@ class IndexedAnimationBehavior;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class SpecialAnimation: public IndexedAnimation, public SpecialAnimationInterface {
+class SpecialAnimation: public IndexedAnimation, public virtual SpecialAnimationInterface {
 
     private: static SpecialAnimation* NULL_SPECIAL_ANIMATION_owner();
     private: static SpecialAnimation* NULL_SPECIAL_ANIMATION;

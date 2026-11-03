@@ -76,7 +76,7 @@ class BasicUriResolver;
         
 class ContextUriResolver
             : public virtual Object
-        , public URIResolver {
+        , public virtual URIResolver {
 
     /*protected*/ public: LogUtil* logUtil;
 

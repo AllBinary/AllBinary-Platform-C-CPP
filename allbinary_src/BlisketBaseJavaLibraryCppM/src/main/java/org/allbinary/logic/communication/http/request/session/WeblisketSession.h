@@ -82,7 +82,7 @@ class WeblisketSessionData;
         
 class WeblisketSession
             : public virtual Object
-        , public WeblisketSessionInterface {
+        , public virtual WeblisketSessionInterface {
 
     private: HttpSession* session;
 

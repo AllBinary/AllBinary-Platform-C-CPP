@@ -424,7 +424,7 @@ hashMap->put(OrderData::STORECANCELCOMMENT, this->storeCancelComment);
     Set* keySet = hashMap->keys();;
     
 
-    std::vector<Object*> keyArray = keySet->();;
+    std::vector<Object*> keyArray = keySet->toArray();;
     
 
     int32_t size = keyArray.size();;

@@ -73,7 +73,7 @@ class Node;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class HttpComponentView: public TransformInfoHttpComposite, public TransformInterface {
+class HttpComponentView: public TransformInfoHttpComposite, public virtual TransformInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

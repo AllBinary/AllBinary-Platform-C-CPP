@@ -73,7 +73,7 @@ class BasicArrayListS;
         
 class WaypointBehaviorBase
             : public virtual Object
-        , public TickableInterface {
+        , public virtual TickableInterface {
 
     private: BasicArrayList* ownedWaypointList;
 

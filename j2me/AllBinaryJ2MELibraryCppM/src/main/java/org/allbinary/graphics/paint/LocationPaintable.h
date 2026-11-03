@@ -61,7 +61,7 @@ class Graphics;
         
 class LocationPaintable
             : public virtual Object
-        , public LocationPaintableInterface {
+        , public virtual LocationPaintableInterface {
 
     private: static LocationPaintable* instance_owner();
     private: static LocationPaintable* instance;

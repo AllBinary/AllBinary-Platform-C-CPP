@@ -65,7 +65,7 @@ class AllBinaryGameLayerManager;
         
 class NullAllBinaryGameCanvas
             : public virtual Object
-        , public AllBinaryGameCanvasInterface {
+        , public virtual AllBinaryGameCanvasInterface {
 
     private: static NullAllBinaryGameCanvas* NULL_ALLBINARY_GAME_CANVAS_owner();
     public: static NullAllBinaryGameCanvas* NULL_ALLBINARY_GAME_CANVAS;

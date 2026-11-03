@@ -64,7 +64,7 @@ class OrderHistory;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class OrderHistoryEntityInterface: public BasicDataTableInterface {
+class OrderHistoryEntityInterface: public virtual BasicDataTableInterface {
 
     public: virtual void insert(std::string userName, Order* order) = 0;
 

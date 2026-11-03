@@ -66,7 +66,7 @@ class UpdateMyFontProcessor;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         //HTMLForJ2ME
-class OwnershipPaintable: public Paintable, public UpdateMyFontInterface {
+class OwnershipPaintable: public Paintable, public virtual UpdateMyFontInterface {
 
     public: static OwnershipPaintable* getInstance();
 

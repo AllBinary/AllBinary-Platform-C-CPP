@@ -67,7 +67,7 @@ class Animation;
         
 class AnimationInterfaceFactoryInterfaceComposite
             : public virtual Object
-        , public AnimationInterfaceFactoryInterface {
+        , public virtual AnimationInterfaceFactoryInterface {
 
     private: std::vector<AnimationInterfaceFactoryInterface*> animationInterfaceFactoryInterfaceArray;
 

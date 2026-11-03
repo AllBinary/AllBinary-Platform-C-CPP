@@ -65,7 +65,7 @@ class CommonStrings;
         
 class ContextConfiguration
             : public virtual Object
-        , public ContextConfigurationInterface {
+        , public virtual ContextConfigurationInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

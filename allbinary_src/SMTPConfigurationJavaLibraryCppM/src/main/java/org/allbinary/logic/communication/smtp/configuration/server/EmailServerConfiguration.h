@@ -65,7 +65,7 @@ class EmailServerConfigurationData;
         
 class EmailServerConfiguration
             : public virtual Object
-        , public EmailServerConfigurationInterface {
+        , public virtual EmailServerConfigurationInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

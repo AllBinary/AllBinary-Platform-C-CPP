@@ -114,19 +114,19 @@ HorizontaRotationManeuverAI::HorizontaRotationManeuverAI(AllBinaryLayer* ownerLa
                             //For kotlin this is before the body of the constructor.
                     
 
-    RotationAnimationInterfaceCompositeInterface* rotationAnimationInterfaceCompositeInterface = dynamic_cast<RotationAnimationInterfaceCompositeInterface*>(this->getOwnerLayerInterface() as unknown);;
+    RotationAnimationInterfaceCompositeInterface* rotationAnimationInterfaceCompositeInterface = dynamic_cast<RotationAnimationInterfaceCompositeInterface*>(this->getOwnerLayerInterface());;
     
 this->rotationAnimationInterface= rotationAnimationInterfaceCompositeInterface->getRotationAnimationInterface();
     
 
-    VelocityInterfaceCompositeInterface* velocityInterfaceCompositeInterface = dynamic_cast<VelocityInterfaceCompositeInterface*>(this->getOwnerLayerInterface() as unknown);;
+    VelocityInterfaceCompositeInterface* velocityInterfaceCompositeInterface = dynamic_cast<VelocityInterfaceCompositeInterface*>(this->getOwnerLayerInterface());;
     
 this->baseVelocityInterface= velocityInterfaceCompositeInterface->getVelocityProperties();
     
-this->velocityInterface= dynamic_cast<VelocityInterface*>(this->baseVelocityInterface as unknown);
+this->velocityInterface= dynamic_cast<VelocityInterface*>(this->baseVelocityInterface);
     
 
-    RotationAnimationInterface* rotationAnimationInterface = dynamic_cast<RotationAnimationInterface*>(this->rotationAnimationInterface as unknown);;
+    RotationAnimationInterface* rotationAnimationInterface = dynamic_cast<RotationAnimationInterface*>(this->rotationAnimationInterface);;
     
 
     AngleIncrementInfo* angleIncrementInfo = rotationAnimationInterface->getAngleInfoP()->getAngleIncrementInfo();;
@@ -138,13 +138,13 @@ rotationAnimationInterfaceCompositeInterface->setFrame(angleIncrementInfo->RIGHT
 
     auto HorizontaRotationManeuverAI::transition() -> void{
 
-    RotationAnimationInterface* rotationAnimationInterface = dynamic_cast<RotationAnimationInterface*>(this->rotationAnimationInterface as unknown);;
+    RotationAnimationInterface* rotationAnimationInterface = dynamic_cast<RotationAnimationInterface*>(this->rotationAnimationInterface);;
     
 
     AngleIncrementInfo* angleIncrementInfo = rotationAnimationInterface->getAngleInfoP()->getAngleIncrementInfo();;
     
 
-    RotationAnimationInterfaceCompositeInterface* rotationAnimationInterfaceCompositeInterface = dynamic_cast<RotationAnimationInterfaceCompositeInterface*>(this->getOwnerLayerInterface() as unknown);;
+    RotationAnimationInterfaceCompositeInterface* rotationAnimationInterfaceCompositeInterface = dynamic_cast<RotationAnimationInterfaceCompositeInterface*>(this->getOwnerLayerInterface());;
     
 rotationAnimationInterfaceCompositeInterface->setFrame(angleIncrementInfo->RIGHT_FRAME->intValue());
     
@@ -160,7 +160,7 @@ allbinaryLayer->setPosition(allbinaryLayer->getXP(), 1, allbinaryLayer->getZP())
             
     auto HorizontaRotationManeuverAI::processAI(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 
-    RotationAnimationInterface* rotationAnimationInterface = (dynamic_cast<RotationAnimationInterface*>(this->rotationAnimationInterface as unknown));;
+    RotationAnimationInterface* rotationAnimationInterface = (dynamic_cast<RotationAnimationInterface*>(this->rotationAnimationInterface));;
     
 
     AngleIncrementInfo* angleIncrementInfo = rotationAnimationInterface->getAngleInfoP()->getAngleIncrementInfo();;
@@ -237,7 +237,7 @@ this->circularIndexUtil->next();
 
     auto HorizontaRotationManeuverAI::reverse() -> void{
 
-    RotationAnimationInterface* rotationAnimationInterface = dynamic_cast<RotationAnimationInterface*>(this->rotationAnimationInterface as unknown);;
+    RotationAnimationInterface* rotationAnimationInterface = dynamic_cast<RotationAnimationInterface*>(this->rotationAnimationInterface);;
     
 
     AngleIncrementInfo* angleIncrementInfo = rotationAnimationInterface->getAngleInfoP()->getAngleIncrementInfo();;
@@ -250,7 +250,7 @@ this->circularIndexUtil->next();
                         
                                     {
                                     
-    RotationAnimationInterfaceCompositeInterface* rotationAnimationInterfaceCompositeInterface = dynamic_cast<RotationAnimationInterfaceCompositeInterface*>(this->getOwnerLayerInterface() as unknown);;
+    RotationAnimationInterfaceCompositeInterface* rotationAnimationInterfaceCompositeInterface = dynamic_cast<RotationAnimationInterfaceCompositeInterface*>(this->getOwnerLayerInterface());;
     
 rotationAnimationInterfaceCompositeInterface->setFrame(angleIncrementInfo->RIGHT_FRAME->intValue());
     
@@ -264,7 +264,7 @@ this->baseVelocityInterface->zero();
                         
                                     {
                                     
-    RotationAnimationInterfaceCompositeInterface* rotationAnimationInterfaceCompositeInterface = dynamic_cast<RotationAnimationInterfaceCompositeInterface*>(this->getOwnerLayerInterface() as unknown);;
+    RotationAnimationInterfaceCompositeInterface* rotationAnimationInterfaceCompositeInterface = dynamic_cast<RotationAnimationInterfaceCompositeInterface*>(this->getOwnerLayerInterface());;
     
 rotationAnimationInterfaceCompositeInterface->setFrame(angleIncrementInfo->LEFT_FRAME->intValue());
     

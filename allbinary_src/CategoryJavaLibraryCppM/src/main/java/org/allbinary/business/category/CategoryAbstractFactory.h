@@ -73,7 +73,7 @@ class Category;
         
 class CategoryAbstractFactory
             : public virtual Object
-        , public CategoryFactoryInterface {
+        , public virtual CategoryFactoryInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

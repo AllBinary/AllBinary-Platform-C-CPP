@@ -58,7 +58,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         //extends ValidationComponentInterface, ValidationInterface, ComponentInterface, DomNodeInterface, DataMappingInterface
-class StoreWorkFlowInterface: public WorkFlowInterface {
+class StoreWorkFlowInterface: public virtual WorkFlowInterface {
 
                 //@Throws(Exception.constructor)
             

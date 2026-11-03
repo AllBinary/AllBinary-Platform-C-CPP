@@ -64,7 +64,7 @@
         
 class ColorCacheable
             : public virtual Object
-        , public CacheableInterface {
+        , public virtual CacheableInterface {
 
     private: Object* key;
 

@@ -82,7 +82,7 @@ class MotionRectangles;
         
 class TestInputForMotionRectanglesResultsWorker
             : public virtual Object
-        , public MotionRectanglesResultsListener {
+        , public virtual MotionRectanglesResultsListener {
 
     /*protected*/ public: LogUtil* logUtil;
 

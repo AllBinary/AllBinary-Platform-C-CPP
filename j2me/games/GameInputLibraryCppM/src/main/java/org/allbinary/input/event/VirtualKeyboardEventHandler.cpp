@@ -92,7 +92,7 @@ VirtualKeyboardEventHandler::VirtualKeyboardEventHandler() : SHOW_EVENT(new Virt
             
     auto VirtualKeyboardEventHandler::process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface) -> void{
 
-    VirtualKeyboardEventListenerInterface* virtualKeyboardEventListenerInterface = dynamic_cast<VirtualKeyboardEventListenerInterface*>(eventListenerInterface as unknown);;
+    VirtualKeyboardEventListenerInterface* virtualKeyboardEventListenerInterface = dynamic_cast<VirtualKeyboardEventListenerInterface*>(eventListenerInterface);;
     
 virtualKeyboardEventListenerInterface->onVirtualKeyboardEvent(dynamic_cast<VirtualKeyboardEvent*>(eventObject));
     

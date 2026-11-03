@@ -62,7 +62,7 @@ class VirtualKeyboardEventHandler;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class GameAdState: public GameAdStateBase, public VirtualKeyboardEventListenerInterface {
+class GameAdState: public GameAdStateBase, public virtual VirtualKeyboardEventListenerInterface {
 
 public: GameAdState(AdConfiguration* adConfiguration);
 

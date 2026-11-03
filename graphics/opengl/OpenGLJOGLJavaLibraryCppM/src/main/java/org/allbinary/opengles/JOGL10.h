@@ -68,7 +68,7 @@ class FloatBuffer;
         //JOGLEToKhronosGL10
 class JOGL10
             : public virtual Object
-        , public javax::microedition::khronos::opengles::GL10 {
+        , public virtual javax::microedition::khronos::opengles::GL10 {
 
     /*protected*/ public: const std::string RED = "red: ";
 

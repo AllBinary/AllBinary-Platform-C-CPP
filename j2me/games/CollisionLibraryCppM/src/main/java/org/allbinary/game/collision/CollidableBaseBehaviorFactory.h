@@ -63,7 +63,7 @@ class CollidableBaseBehavior;
         
 class CollidableBaseBehaviorFactory
             : public virtual Object
-        , public CollidableBaseBehaviorFactoryInterface {
+        , public virtual CollidableBaseBehaviorFactoryInterface {
 
 
             

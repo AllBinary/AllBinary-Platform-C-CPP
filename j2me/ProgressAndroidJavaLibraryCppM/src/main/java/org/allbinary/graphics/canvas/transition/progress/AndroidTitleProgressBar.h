@@ -79,7 +79,7 @@ public: class DismissTitleProgressBarRunnable;
 //inner= member=true isStatic=
 public: class TitleProgressBarSetProgressRunnable
             : public virtual Object
-        , public Runnable {
+        , public virtual Runnable {
 
     public: AndroidTitleProgressBar* outer = nullptr;
 
@@ -95,7 +95,7 @@ public: TitleProgressBarSetProgressRunnable(AndroidTitleProgressBar* androidTitl
 //inner= member=true isStatic=
 public: class TitleProgressBarPortionSetProgressRunnable
             : public virtual Object
-        , public Runnable {
+        , public virtual Runnable {
 
     public: AndroidTitleProgressBar* outer = nullptr;
 
@@ -111,7 +111,7 @@ public: TitleProgressBarPortionSetProgressRunnable(AndroidTitleProgressBar* andr
 //inner= member=true isStatic=
 public: class ShowTitleProgressBarRunnable
             : public virtual Object
-        , public Runnable {
+        , public virtual Runnable {
 
     public: AndroidTitleProgressBar* outer = nullptr;
 
@@ -127,7 +127,7 @@ public: ShowTitleProgressBarRunnable(AndroidTitleProgressBar* androidTitleProgre
 //inner= member=true isStatic=
 public: class DismissTitleProgressBarRunnable
             : public virtual Object
-        , public Runnable {
+        , public virtual Runnable {
 
     public: AndroidTitleProgressBar* outer = nullptr;
 

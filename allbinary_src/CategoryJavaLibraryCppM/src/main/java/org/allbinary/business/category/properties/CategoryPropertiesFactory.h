@@ -68,7 +68,7 @@ class CategoryProperties;
         
 class CategoryPropertiesFactory
             : public virtual Object
-        , public CategoryPropertiesFactoryInterface {
+        , public virtual CategoryPropertiesFactoryInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

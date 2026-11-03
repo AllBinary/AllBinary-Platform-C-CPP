@@ -69,7 +69,7 @@ class CommonStrings;
         
 class BasicCrypt
             : public virtual Object
-        , public CryptInterface {
+        , public virtual CryptInterface {
 
     private: ByteUtil* byteUtil;
 

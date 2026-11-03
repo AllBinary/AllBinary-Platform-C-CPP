@@ -63,7 +63,7 @@ class IntBuffer;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         //JOGLEToKhronosGL11
-class JOGL11: public JOGL10, public javax::microedition::khronos::opengles::GL11 {
+class JOGL11: public JOGL10, public virtual javax::microedition::khronos::opengles::GL11 {
 
     private: GL2* gl11;
 

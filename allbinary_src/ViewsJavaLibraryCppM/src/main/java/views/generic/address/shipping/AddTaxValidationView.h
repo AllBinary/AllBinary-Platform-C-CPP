@@ -73,7 +73,7 @@ class Node;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class AddTaxValidationView: public ShippingAddressView, public ValidationComponentInterface {
+class AddTaxValidationView: public ShippingAddressView, public virtual ValidationComponentInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

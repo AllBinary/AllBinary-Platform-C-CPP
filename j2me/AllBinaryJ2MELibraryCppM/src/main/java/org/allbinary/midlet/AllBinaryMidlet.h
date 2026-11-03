@@ -78,7 +78,7 @@ template<typename T1, typename T2> class ABHashtable;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class AllBinaryMidlet: public MIDlet, public CommandListener {
+class AllBinaryMidlet: public MIDlet, public virtual CommandListener {
 
     private: static Object* NULL_ALLBINARY_MIDLET;
 

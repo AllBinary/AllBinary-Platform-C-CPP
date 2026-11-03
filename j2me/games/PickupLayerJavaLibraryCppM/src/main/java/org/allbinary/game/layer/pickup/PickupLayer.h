@@ -73,7 +73,7 @@ class PickedUpLayerInterfaceFactoryInterface;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class PickupLayer: public MultiPlayerGameLayer, public PickedUpLayerInterface, public PickupableInterface {
+class PickupLayer: public MultiPlayerGameLayer, public virtual PickedUpLayerInterface, public virtual PickupableInterface {
 
     private: PickedUpLayerInterfaceFactoryInterface* pickedUpLayerInterfaceFactoryInterface;
 

@@ -63,7 +63,7 @@ class StringMaker;
         
 class IIOImageCacheable
             : public virtual Object
-        , public CacheableInterface {
+        , public virtual CacheableInterface {
 
     private: std::string key;
 

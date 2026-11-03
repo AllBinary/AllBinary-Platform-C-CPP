@@ -70,7 +70,7 @@ class AdvertisementAreaData;
         
 class AdvertisementAreaConstraints
             : public virtual Object
-        , public AdvertisementAreaConstraintsInterface {
+        , public virtual AdvertisementAreaConstraintsInterface {
 
     private: DisplayInBrowserContraintsInterface* displayInBrowserContraintsInterface;
 

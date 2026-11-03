@@ -65,7 +65,7 @@ class PathFindingNode;
         
 class PathFindingInfo
             : public virtual Object
-        , public PathFindingInfoInterface {
+        , public virtual PathFindingInfoInterface {
 
     private: static PathFindingInfo* NULL_PATH_FINDING_INFO_owner();
     public: static PathFindingInfo* NULL_PATH_FINDING_INFO;

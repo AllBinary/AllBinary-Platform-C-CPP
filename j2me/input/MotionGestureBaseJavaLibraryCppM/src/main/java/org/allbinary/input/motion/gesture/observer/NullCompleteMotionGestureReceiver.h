@@ -65,7 +65,7 @@ class BasicArrayList;
         
 class NullCompleteMotionGestureReceiver
             : public virtual Object
-        , public CompleteMotionGestureListenerInterface {
+        , public virtual CompleteMotionGestureListenerInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

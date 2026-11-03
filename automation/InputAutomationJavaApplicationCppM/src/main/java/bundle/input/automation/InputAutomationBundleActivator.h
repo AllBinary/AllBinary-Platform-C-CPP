@@ -76,7 +76,7 @@ class CommonStrings;
         
 class InputAutomationBundleActivator
             : public virtual Object
-        , public BundleActivator, public InputAutomationBundleActivatorListenerInterface {
+        , public virtual BundleActivator, public virtual InputAutomationBundleActivatorListenerInterface {
 
     private: static inline Thread* moduleManagementThread;
 

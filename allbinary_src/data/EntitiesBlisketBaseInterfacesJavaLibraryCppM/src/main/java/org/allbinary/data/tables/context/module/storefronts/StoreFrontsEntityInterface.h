@@ -62,7 +62,7 @@ class StoreFrontInterface;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class StoreFrontsEntityInterface: public BasicDataTableInterface {
+class StoreFrontsEntityInterface: public virtual BasicDataTableInterface {
 
                 //@Throws(Exception.constructor)
             

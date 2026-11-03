@@ -71,7 +71,7 @@ class PrimitiveLongUtil;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class TechnologyRTSInterfaceImageItem: public ABCustomImageItem, public UpdateMyFontInterface {
+class TechnologyRTSInterfaceImageItem: public ABCustomImageItem, public virtual UpdateMyFontInterface {
 
     private: RTSInterface* rtsInterface;
 

@@ -66,7 +66,7 @@ class UpdateMyFontProcessor;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         //J2SEForJ2ME
-class AboutPaintable: public Paintable, public UpdateMyFontInterface {
+class AboutPaintable: public Paintable, public virtual UpdateMyFontInterface {
 
     public: static AboutPaintable* getInstance(std::vector<std::string> info, std::vector<std::string> developers);
 

@@ -62,7 +62,7 @@ class ThemeValidation;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class StoreThemeCategoryInterface: public CategoryInterface, public TableMappingInterface, public ValidationInterface, public CompositeTransformInfoInterface {
+class StoreThemeCategoryInterface: public virtual CategoryInterface, public virtual TableMappingInterface, public virtual ValidationInterface, public virtual CompositeTransformInfoInterface {
 
     public: virtual void addTheme(ThemeValidation* themeValidation) = 0;
 

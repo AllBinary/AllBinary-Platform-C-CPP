@@ -57,7 +57,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class SequentialAnimationInterface: public AnimationInterface, public SequenceInterface {
+class SequentialAnimationInterface: public virtual AnimationInterface, public virtual SequenceInterface {
 
     public: virtual int32_t getSize() = 0;
 

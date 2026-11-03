@@ -64,7 +64,7 @@ class Node;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class TopBarView: public HttpStoreComponentView, public DomNodeInterface {
+class TopBarView: public HttpStoreComponentView, public virtual DomNodeInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

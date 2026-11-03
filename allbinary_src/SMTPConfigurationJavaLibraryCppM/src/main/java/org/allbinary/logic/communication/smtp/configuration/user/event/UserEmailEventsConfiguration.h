@@ -72,7 +72,7 @@ class UserEmailEventListenerFactory;
         
 class UserEmailEventsConfiguration
             : public virtual Object
-        , public UserEmailEventsConfigurationInterface {
+        , public virtual UserEmailEventsConfigurationInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

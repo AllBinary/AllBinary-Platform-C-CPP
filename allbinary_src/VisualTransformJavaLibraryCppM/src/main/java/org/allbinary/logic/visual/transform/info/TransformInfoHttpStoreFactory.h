@@ -66,7 +66,7 @@ class TransformInfoInterface;
         
 class TransformInfoHttpStoreFactory
             : public virtual Object
-        , public TransformInfoFactoryInterface {
+        , public virtual TransformInfoFactoryInterface {
 
     private: static TransformInfoHttpStoreFactory* instance_owner();
     private: static TransformInfoHttpStoreFactory* instance;

@@ -65,7 +65,7 @@ class LicenseType;
         
 class AbeNoLicense
             : public virtual Object
-        , public AbeLicenseInterface {
+        , public virtual AbeLicenseInterface {
 
     private: static AbeNoLicense* abeNoLicense_owner();
     private: static AbeNoLicense* abeNoLicense;

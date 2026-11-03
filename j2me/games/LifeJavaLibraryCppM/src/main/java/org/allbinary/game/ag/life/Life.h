@@ -64,7 +64,7 @@
         
 class Life
             : public virtual Object
-        , public LifeInterface {
+        , public virtual LifeInterface {
 
     public: static Life* createLife();
 

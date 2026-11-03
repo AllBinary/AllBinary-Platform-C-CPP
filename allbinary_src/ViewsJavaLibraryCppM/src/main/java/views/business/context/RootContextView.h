@@ -68,7 +68,7 @@ class NoTemplateTransformInfoObjectConfig;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class RootContextView: public HttpStoreComponentView, public TransformTemplateInterface {
+class RootContextView: public HttpStoreComponentView, public virtual TransformTemplateInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

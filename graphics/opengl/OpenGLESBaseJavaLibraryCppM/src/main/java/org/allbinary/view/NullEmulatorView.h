@@ -62,7 +62,7 @@ class MIDlet;
         
 class NullEmulatorView
             : public virtual Object
-        , public EmulatorViewInterface {
+        , public virtual EmulatorViewInterface {
 
     private: static NullEmulatorView* NULL_EMULATOR_VIEW_owner();
     public: static NullEmulatorView* NULL_EMULATOR_VIEW;

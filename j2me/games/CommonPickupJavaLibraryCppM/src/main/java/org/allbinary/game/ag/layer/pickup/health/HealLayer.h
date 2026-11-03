@@ -65,7 +65,7 @@ class ViewPosition;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class HealLayer: public AllBinaryLayer, public HealthVisitorInterface {
+class HealLayer: public AllBinaryLayer, public virtual HealthVisitorInterface {
 
 public: HealLayer();
 

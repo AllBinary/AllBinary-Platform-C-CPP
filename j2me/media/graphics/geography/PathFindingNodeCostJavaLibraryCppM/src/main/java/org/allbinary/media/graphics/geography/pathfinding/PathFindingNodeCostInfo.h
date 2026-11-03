@@ -67,7 +67,7 @@ class PathFindingNodeCostInfoData;
         
 class PathFindingNodeCostInfo
             : public virtual Object
-        , public Comparable<PathFindingNodeCostInfo*> {
+        , public virtual Comparable<PathFindingNodeCostInfo*> {
 
     private: PathFindingNodeCostInfoData* pathFindingNodeCostInfoData;
 

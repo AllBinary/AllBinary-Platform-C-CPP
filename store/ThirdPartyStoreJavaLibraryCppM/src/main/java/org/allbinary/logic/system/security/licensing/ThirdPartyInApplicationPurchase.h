@@ -62,7 +62,7 @@ class LockableFeature;
         
 class ThirdPartyInApplicationPurchase
             : public virtual Object
-        , public ThirdPartyInApplicationPurchaseInterface {
+        , public virtual ThirdPartyInApplicationPurchaseInterface {
 
 
             

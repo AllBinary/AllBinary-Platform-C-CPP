@@ -61,7 +61,7 @@ class StringMaker;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class LogTableEntity: public AbSqlBean, public LogTableEntityInterface {
+class LogTableEntity: public AbSqlBean, public virtual LogTableEntityInterface {
 
     private: const std::string tableName = "log";
 

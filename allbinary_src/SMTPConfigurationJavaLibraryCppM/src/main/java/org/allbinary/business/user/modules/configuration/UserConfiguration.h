@@ -66,7 +66,7 @@ class UserEmailConfigurationInterface;
         
 class UserConfiguration
             : public virtual Object
-        , public UserConfigurationInterface {
+        , public virtual UserConfigurationInterface {
 
     private: UserEmailConfigurationInterface* userEmailConfigurationInterface;
 

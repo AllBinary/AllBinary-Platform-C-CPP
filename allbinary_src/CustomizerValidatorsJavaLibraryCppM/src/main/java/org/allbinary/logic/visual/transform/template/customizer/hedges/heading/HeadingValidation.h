@@ -71,7 +71,7 @@ class NodeList;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class HeadingValidation: public Validation, public DomNodeInterface {
+class HeadingValidation: public Validation, public virtual DomNodeInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

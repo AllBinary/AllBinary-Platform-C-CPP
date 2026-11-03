@@ -70,7 +70,7 @@ class PrimitiveLongUtil;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class SelectionHudPaintable: public InitUpdatePaintable, public UpdateMyFontInterface {
+class SelectionHudPaintable: public InitUpdatePaintable, public virtual UpdateMyFontInterface {
 
     /*protected*/ public: const int32_t y;
 

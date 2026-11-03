@@ -62,7 +62,7 @@ class HighScoresCanvasInputProcessor;
         
 class HighScoresCanvasNoInputProcessorFactory
             : public virtual Object
-        , public HighScoresCanvasInputProcessorFactoryInterface {
+        , public virtual HighScoresCanvasInputProcessorFactoryInterface {
 
 
             

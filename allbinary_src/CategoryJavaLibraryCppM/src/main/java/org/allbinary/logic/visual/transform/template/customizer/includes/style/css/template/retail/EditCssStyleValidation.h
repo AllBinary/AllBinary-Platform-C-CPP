@@ -66,7 +66,7 @@ class Node;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class EditCssStyleValidation: public CssStyleValidation, public ValidationInterface, public DomNodeInterface {
+class EditCssStyleValidation: public CssStyleValidation, public virtual ValidationInterface, public virtual DomNodeInterface {
 
 public: EditCssStyleValidation();
 

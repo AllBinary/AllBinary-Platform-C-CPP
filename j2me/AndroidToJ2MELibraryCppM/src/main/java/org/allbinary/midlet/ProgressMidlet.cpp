@@ -127,7 +127,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "exit", &e);
                 //: 
 } catch(Exception& e2) 
             {
-this->logUtil->put(this->commonStrings->EXCEPTION, this, "exit", e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "exit", &e);
     
 }
 

@@ -57,7 +57,7 @@ class IndexedAnimation;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class CompoundAnimationInterface: public AnimationInterface {
+class CompoundAnimationInterface: public virtual AnimationInterface {
 
     public: virtual void nextAnimation() = 0;
 

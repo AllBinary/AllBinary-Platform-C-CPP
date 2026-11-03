@@ -59,7 +59,7 @@ class AllBinaryLayerManager;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class TickableInterface: public NamedInterface {
+class TickableInterface: public virtual NamedInterface {
 
                 //@Throws(Exception.constructor)
             

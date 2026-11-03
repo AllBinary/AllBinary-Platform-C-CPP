@@ -85,7 +85,7 @@ class NodeList;
         
 class SimpleStateTaxModule
             : public virtual Object
-        , public TaxModuleInterface {
+        , public virtual TaxModuleInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

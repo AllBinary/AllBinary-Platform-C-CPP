@@ -58,7 +58,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class MenuListener: public GameKeyEventSourceInterface {
+class MenuListener: public virtual GameKeyEventSourceInterface {
 
     public: virtual void open() = 0;
 

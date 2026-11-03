@@ -78,7 +78,7 @@ class CommonStrings;
         
 class HighScoreUtil
             : public virtual Object
-        , public HighScoresResultsListener {
+        , public virtual HighScoresResultsListener {
 
     private: static Command* SUBMIT_TEXTBOX_COMMAND_owner();
     public: static Command* SUBMIT_TEXTBOX_COMMAND;

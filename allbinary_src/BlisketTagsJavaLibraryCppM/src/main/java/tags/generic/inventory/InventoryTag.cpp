@@ -152,7 +152,7 @@ pageContext.getOut()->print(JavaString::valueOf(JavaString::valueOf("Exception: 
                         if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->LICENSINGERROR))
                         
                                     {
-                                    this->logUtil->put("Exception in Exception Handling", this, "search()", e);
+                                    this->logUtil->put("Exception in Exception Handling", this, "search()", &e);
     
 
                                     }
@@ -225,7 +225,7 @@ pageContext.getOut()->print(JavaString::valueOf(JavaString::valueOf("Exception: 
                         if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->LICENSINGERROR))
                         
                                     {
-                                    this->logUtil->put("Exception in Exception Handling", this, "viewSummary())", e);
+                                    this->logUtil->put("Exception in Exception Handling", this, "viewSummary())", &e);
     
 
                                     }

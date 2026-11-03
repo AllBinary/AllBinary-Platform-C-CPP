@@ -74,7 +74,7 @@ class MotionGestureEvent;
         
 class ReleaseControlledMotionGestureListener
             : public virtual Object
-        , public MotionGestureEventListener {
+        , public virtual MotionGestureEventListener {
 
     /*protected*/ public: LogUtil* logUtil;
 

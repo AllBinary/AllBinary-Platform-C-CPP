@@ -66,7 +66,7 @@ class EventStrings;
         
 class MotionInputMappingEventListener
             : public virtual Object
-        , public InputMappingEventListenerInterface {
+        , public virtual InputMappingEventListenerInterface {
 
 
             

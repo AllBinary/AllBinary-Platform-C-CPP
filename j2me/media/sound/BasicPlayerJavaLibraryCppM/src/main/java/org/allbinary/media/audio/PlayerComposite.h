@@ -75,7 +75,7 @@ class TimeDelayHelper;
         //BasicPlayer
 class PlayerComposite
             : public virtual Object
-        , public Controllable, public Player {
+        , public virtual Controllable, public virtual Player {
 
     /*protected*/ public: LogUtil* logUtil;
 

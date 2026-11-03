@@ -61,7 +61,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class DownKeyEventListenerInterface: public EventListenerInterface {
+class DownKeyEventListenerInterface: public virtual EventListenerInterface {
 
                 //@Throws(Exception.constructor)
             

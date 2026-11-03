@@ -71,7 +71,7 @@ class OpenGLESImageTranslate;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         //OpenGLESNullImageJavaLibrary
-class OpenGLESImage: public Image, public OpenGLSurfaceChangedInterface {
+class OpenGLESImage: public Image, public virtual OpenGLSurfaceChangedInterface {
 
     private: static OpenGLESImage* NULL_OPENGL_IMAGE_owner();
     public: static OpenGLESImage* NULL_OPENGL_IMAGE;

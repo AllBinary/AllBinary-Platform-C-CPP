@@ -73,7 +73,7 @@ class MotionRectanglesImageInputOutput;
         
 class SaveMotionRectanglesResultsWorker
             : public virtual Object
-        , public MotionRectanglesResultsListener {
+        , public virtual MotionRectanglesResultsListener {
 
     /*protected*/ public: LogUtil* logUtil;
 

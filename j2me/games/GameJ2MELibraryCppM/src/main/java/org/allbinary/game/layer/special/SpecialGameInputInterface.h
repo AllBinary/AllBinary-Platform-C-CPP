@@ -60,7 +60,7 @@ class AllBinaryLayerManager;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class SpecialGameInputInterface: public PaintableInterface {
+class SpecialGameInputInterface: public virtual PaintableInterface {
 
                 //@Throws(Exception.constructor)
             

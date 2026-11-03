@@ -72,7 +72,7 @@ template<typename T1, typename T2> class ABHashtable;
         
 class NullGameCanvasRunnable
             : public virtual Object
-        , public GameCanvasRunnableInterface {
+        , public virtual GameCanvasRunnableInterface {
 
     private: static NullGameCanvasRunnable* NULL_GAME_CANVAS_RUNNABLE_owner();
     public: static NullGameCanvasRunnable* NULL_GAME_CANVAS_RUNNABLE;

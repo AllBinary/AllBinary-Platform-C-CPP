@@ -147,9 +147,7 @@ NotificationUtil::NotificationUtil() : logUtil(LogUtil::getInstance()), notifica
                                 FLAG_IMMUTABLE
                                 :
 
-                            0;
-
-    );;
+                            0);;
     
 
                         if(this->notificationBuilder == 

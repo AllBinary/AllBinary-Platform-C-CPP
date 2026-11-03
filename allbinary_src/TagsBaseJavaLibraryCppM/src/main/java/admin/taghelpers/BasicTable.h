@@ -65,7 +65,7 @@ class CommonStrings;
         
 class BasicTable
             : public virtual Object
-        , public BasicTableInterface {
+        , public virtual BasicTableInterface {
 
 
             

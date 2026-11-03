@@ -57,7 +57,7 @@ class TransactionResultInterface;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class TransactionResultEntityInterface: public BasicDataTableInterface {
+class TransactionResultEntityInterface: public virtual BasicDataTableInterface {
 
     public: virtual TransactionResultInterface* getTransactionResultInterface(std::string orderNumber) = 0;
 

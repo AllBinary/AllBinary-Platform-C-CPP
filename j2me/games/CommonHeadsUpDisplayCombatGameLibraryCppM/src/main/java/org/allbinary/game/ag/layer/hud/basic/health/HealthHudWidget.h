@@ -70,7 +70,7 @@ class TimeDelayHelper;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class HealthHudWidget: public BasicHud, public PaintableInterface, public HealthListenerInterface {
+class HealthHudWidget: public BasicHud, public virtual PaintableInterface, public virtual HealthListenerInterface {
 
     private: int32_t healthScale;
 

@@ -60,7 +60,7 @@
         
 class NullControl
             : public virtual Object
-        , public Control {
+        , public virtual Control {
 
 
             

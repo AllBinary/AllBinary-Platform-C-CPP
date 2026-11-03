@@ -81,7 +81,7 @@ class GameInputProcessorComposite;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class MapSelectionGameInputProcessor: public Processor, public GameInputProcessorInterface, public PlayerGameInputCompositeInterface {
+class MapSelectionGameInputProcessor: public Processor, public virtual GameInputProcessorInterface, public virtual PlayerGameInputCompositeInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

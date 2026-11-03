@@ -65,7 +65,7 @@ class CommonStrings;
         
 class UserEmailConfiguration
             : public virtual Object
-        , public UserEmailConfigurationInterface {
+        , public virtual UserEmailConfigurationInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

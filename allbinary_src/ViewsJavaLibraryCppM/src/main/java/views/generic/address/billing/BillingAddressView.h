@@ -67,7 +67,7 @@ class StatesView;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class BillingAddressView: public HttpStoreComponentView, public DomNodeInterface {
+class BillingAddressView: public HttpStoreComponentView, public virtual DomNodeInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

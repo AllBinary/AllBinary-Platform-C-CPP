@@ -63,7 +63,7 @@ class CommonStrings;
         
 class DestroyableBaseBehavior
             : public virtual Object
-        , public DestroyableInterface {
+        , public virtual DestroyableInterface {
 
     private: static DestroyableBaseBehavior* instance_owner();
     private: static DestroyableBaseBehavior* instance;

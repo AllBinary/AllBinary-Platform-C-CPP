@@ -66,7 +66,7 @@ class UpdateMyFontProcessor;
         
 class KeyValueDrawCharArray
             : public virtual Object
-        , public UpdateMyFontInterface {
+        , public virtual UpdateMyFontInterface {
 
     private: MyFontProcessor* myFontProcessor;
 

@@ -80,7 +80,7 @@ class LayerInterfaceFactoryInterface;
         
 class UnitItemArrayFactory
             : public virtual Object
-        , public ItemArraySingletonFactoryInterface {
+        , public virtual ItemArraySingletonFactoryInterface {
 
     private: static std::vector<ABCustomItem*> ITEMS;
 

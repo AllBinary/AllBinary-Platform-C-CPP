@@ -65,7 +65,7 @@ class AdvertisementSearchInterface;
         
 class AdvertisementCampaigns
             : public virtual Object
-        , public AdvertisementCampaignsInterface {
+        , public virtual AdvertisementCampaignsInterface {
 
     private: BasicArrayList* advertisementsVector;
 

@@ -74,7 +74,7 @@ class ViewPositionBase;
         
 class BasicWeaponPart
             : public virtual Object
-        , public PartInterface, public SalvoInterface {
+        , public virtual PartInterface, public virtual SalvoInterface {
 
     public: static BasicWeaponPart* createBasicWeaponPart(Animation* animationInterface);
 

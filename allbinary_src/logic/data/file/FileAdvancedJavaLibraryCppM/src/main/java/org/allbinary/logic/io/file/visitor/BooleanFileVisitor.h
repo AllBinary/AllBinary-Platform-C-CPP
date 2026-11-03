@@ -64,7 +64,7 @@ class BasicArrayList;
         
 class BooleanFileVisitor
             : public virtual Object
-        , public VisitorInterface {
+        , public virtual VisitorInterface {
 
     /*protected*/ public: CommonStrings* commonStrings;
 

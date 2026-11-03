@@ -66,7 +66,7 @@ class PlayerGameInput;
         
 class NullPlayerGameInputComposite
             : public virtual Object
-        , public PlayerGameInputCompositeInterface {
+        , public virtual PlayerGameInputCompositeInterface {
 
     private: static NullPlayerGameInputComposite* NULL_PLAYER_GAME_INPUT_COMPOSITE_owner();
     public: static NullPlayerGameInputComposite* NULL_PLAYER_GAME_INPUT_COMPOSITE;

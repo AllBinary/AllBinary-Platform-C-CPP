@@ -64,7 +64,7 @@ template<typename T1, typename T2> class ABHashtable;
         
 class NoHardware
             : public virtual Object
-        , public HardwareInterface {
+        , public virtual HardwareInterface {
 
     private: static HardwareInterface* instance;
 

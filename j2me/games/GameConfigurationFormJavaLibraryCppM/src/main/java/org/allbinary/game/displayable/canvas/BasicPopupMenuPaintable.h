@@ -79,7 +79,7 @@ class SWTJOGLProcessor;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class BasicPopupMenuPaintable: public Paintable, public UpdateMyFontInterface {
+class BasicPopupMenuPaintable: public Paintable, public virtual UpdateMyFontInterface {
 
     private: static inline const std::string NAME = "MENU";
 

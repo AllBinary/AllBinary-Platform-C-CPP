@@ -383,7 +383,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class GL10: public GL {
+class GL10: public virtual GL {
 
     public: static inline const int32_t GL_ADD = 260;
 

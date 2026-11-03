@@ -62,7 +62,7 @@ class StringUtil;
         
 class MachineAccessControlAddress
             : public virtual Object
-        , public HardwareComponentInterface, public MachineAccessControlAddressInterface {
+        , public virtual HardwareComponentInterface, public virtual MachineAccessControlAddressInterface {
 
 public: MachineAccessControlAddress();
 

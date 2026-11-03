@@ -60,7 +60,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class BasicGameInputAutomationActionInterface: public InputAutomationActionInterface {
+class BasicGameInputAutomationActionInterface: public virtual InputAutomationActionInterface {
 
                 //@Throws(Exception.constructor)
             

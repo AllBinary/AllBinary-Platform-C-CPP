@@ -80,7 +80,7 @@ class TransformInfoObjectConfigGeneratorFactoryInterface;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class TransformInfoEntity: public AbSqlBean, public TransformInfoEntityInterface {
+class TransformInfoEntity: public AbSqlBean, public virtual TransformInfoEntityInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

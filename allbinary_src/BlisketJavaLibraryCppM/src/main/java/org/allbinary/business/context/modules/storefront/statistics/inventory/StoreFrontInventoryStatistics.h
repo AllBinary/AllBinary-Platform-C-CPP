@@ -76,7 +76,7 @@ class StoreFrontInventoryStatisticsData;
         
 class StoreFrontInventoryStatistics
             : public virtual Object
-        , public StoreFrontInventoryStatisticsInterface {
+        , public virtual StoreFrontInventoryStatisticsInterface {
 
     private: int64_t totalNumberOfItems= 0;
 

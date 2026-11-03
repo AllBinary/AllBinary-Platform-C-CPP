@@ -61,7 +61,7 @@
         
 class DamageTechnology
             : public virtual Object
-        , public RTSInterface {
+        , public virtual RTSInterface {
 
     private: int32_t level= 0;
 

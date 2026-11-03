@@ -92,7 +92,7 @@ class Insets;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class GenericModuleConfigurationJPanel: public javax::swing::JPanel, public GenericModuleConfigurationInterface {
+class GenericModuleConfigurationJPanel: public javax::swing::JPanel, public virtual GenericModuleConfigurationInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

@@ -178,7 +178,7 @@ this->collided= true;
                         
                                     {
                                     
-    AllBinaryLayer* layerInterface = dynamic_cast<AllBinaryLayer*>(collidableInterfaceCompositeInterface as unknown);;
+    AllBinaryLayer* layerInterface = dynamic_cast<AllBinaryLayer*>(collidableInterfaceCompositeInterface);;
     
 
                         if(ownerLayer->getGroupInterface()[0] != layerInterface->getGroupInterface()[0])
@@ -216,10 +216,10 @@ this->collided= true;
             
     auto CollidableWeaponBehavior::collideInterface(CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface) -> void{
 
-    DamageableInterface* ownerDamageableInterface = dynamic_cast<DamageableInterface*>(ownerLayer as unknown);;
+    DamageableInterface* ownerDamageableInterface = dynamic_cast<DamageableInterface*>(ownerLayer);;
     
 
-    DamageableInterface* damageableInterface = dynamic_cast<DamageableInterface*>(collidableInterfaceCompositeInterface as unknown);;
+    DamageableInterface* damageableInterface = dynamic_cast<DamageableInterface*>(collidableInterfaceCompositeInterface);;
     
 this->damageUtil->process(ownerDamageableInterface, damageableInterface);
     

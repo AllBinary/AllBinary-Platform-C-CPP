@@ -64,7 +64,7 @@ class Document;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class PickUpShippingModuleView: public PickUpShippingModule, public DomNodeInterface {
+class PickUpShippingModuleView: public PickUpShippingModule, public virtual DomNodeInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

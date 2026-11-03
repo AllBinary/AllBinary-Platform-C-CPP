@@ -68,7 +68,7 @@ class StringMaker;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class XmlOptionItemsEntity: public AbSqlBean, public XmlOptionItemsEntityInterface {
+class XmlOptionItemsEntity: public AbSqlBean, public virtual XmlOptionItemsEntityInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

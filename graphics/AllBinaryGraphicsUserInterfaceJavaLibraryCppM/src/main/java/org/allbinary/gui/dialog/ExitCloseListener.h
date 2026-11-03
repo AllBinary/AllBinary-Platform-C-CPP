@@ -62,7 +62,7 @@
         
 class ExitCloseListener
             : public virtual Object
-        , public CloseJDialogListenerInterface {
+        , public virtual CloseJDialogListenerInterface {
 
 public: ExitCloseListener();
 

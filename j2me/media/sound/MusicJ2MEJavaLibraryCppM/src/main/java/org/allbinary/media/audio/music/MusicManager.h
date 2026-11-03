@@ -88,7 +88,7 @@ private: class MusicManagerPlayerListener;
 //inner= member=true isStatic=
 private: class MusicManagerPlayerListener
             : public virtual Object
-        , public PlayerListener {
+        , public virtual PlayerListener {
 
     public: MusicManager* outer = nullptr;
 

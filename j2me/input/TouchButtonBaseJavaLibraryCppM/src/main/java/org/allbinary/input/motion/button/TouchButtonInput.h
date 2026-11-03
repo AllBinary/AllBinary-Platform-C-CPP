@@ -66,7 +66,7 @@ class CommonStrings;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class TouchButtonInput: public Input, public GameKeyEventSourceInterface {
+class TouchButtonInput: public Input, public virtual GameKeyEventSourceInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

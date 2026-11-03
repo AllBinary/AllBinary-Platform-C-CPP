@@ -71,7 +71,7 @@ class BasicArrayList;
         
 class ResolveCompleteMotionGestureListener
             : public virtual Object
-        , public CompleteMotionGestureListenerInterface {
+        , public virtual CompleteMotionGestureListenerInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

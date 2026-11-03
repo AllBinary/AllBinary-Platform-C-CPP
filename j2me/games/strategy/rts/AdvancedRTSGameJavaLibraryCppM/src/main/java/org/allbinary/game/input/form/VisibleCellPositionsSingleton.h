@@ -77,7 +77,7 @@ class EventStrings;
         
 class VisibleCellPositionsSingleton
             : public virtual Object
-        , public BuildingEventListenerInterface, public ScrollMapEventListenerInterface {
+        , public virtual BuildingEventListenerInterface, public virtual ScrollMapEventListenerInterface {
 
     private: static VisibleCellPositionsSingleton* instance_owner();
     private: static VisibleCellPositionsSingleton* instance;

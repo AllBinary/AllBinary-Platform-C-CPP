@@ -73,7 +73,7 @@ class CategoryData;
         
 class CategoryView
             : public virtual Object
-        , public DomNodeInterface {
+        , public virtual DomNodeInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

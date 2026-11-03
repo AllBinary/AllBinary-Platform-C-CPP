@@ -71,7 +71,7 @@ class PathFindingLayerInterface;
         
 class WaypointPathRunnableBase
             : public virtual Object
-        , public RunnableInterface, public PriorityRunnable {
+        , public virtual RunnableInterface, public virtual PriorityRunnable {
 
 
             

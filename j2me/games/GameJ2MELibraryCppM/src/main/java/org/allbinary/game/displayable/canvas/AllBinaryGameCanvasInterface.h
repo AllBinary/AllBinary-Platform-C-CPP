@@ -57,7 +57,7 @@ class AllBinaryGameLayerManager;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class AllBinaryGameCanvasInterface: public DisplayableInterface {
+class AllBinaryGameCanvasInterface: public virtual DisplayableInterface {
 
     public: virtual AllBinaryGameLayerManager* getLayerManager() = 0;
 

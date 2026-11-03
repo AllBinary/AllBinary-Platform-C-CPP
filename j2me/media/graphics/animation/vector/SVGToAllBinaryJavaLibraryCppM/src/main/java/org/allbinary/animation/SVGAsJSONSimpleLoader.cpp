@@ -151,9 +151,7 @@ SVGAsJSONSimpleLoader* SVGAsJSONSimpleLoader::instance = SVGAsJSONSimpleLoader::
                                 root
                                 :
 
-                            this->asObject(svgValue, KEY_SVG);
-
-    ;;
+                            this->asObject(svgValue, KEY_SVG);;;
     
 
     BasicArrayList* pointVector = new BasicArrayListD();;

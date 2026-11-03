@@ -70,7 +70,7 @@ class Node;
         
 class UserDomNode
             : public virtual Object
-        , public DomNodeInterface {
+        , public virtual DomNodeInterface {
 
     private: TableMappingInterface* dataMappingInterface;
 

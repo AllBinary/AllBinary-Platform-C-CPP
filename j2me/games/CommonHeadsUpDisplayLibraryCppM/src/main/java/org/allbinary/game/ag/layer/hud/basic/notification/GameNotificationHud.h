@@ -70,7 +70,7 @@ class EventStrings;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class GameNotificationHud: public BasicHud, public GameNotificationListenerInterface {
+class GameNotificationHud: public BasicHud, public virtual GameNotificationListenerInterface {
 
     private: static GameNotificationHud* NULL_GAME_NOTIFICATION_owner();
     public: static GameNotificationHud* NULL_GAME_NOTIFICATION;

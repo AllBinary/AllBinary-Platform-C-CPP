@@ -84,7 +84,7 @@ class BasicArrayListUtil;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class MultipassNoCacheWaypoint: public WaypointBase, public BuildingEventListenerInterface {
+class MultipassNoCacheWaypoint: public WaypointBase, public virtual BuildingEventListenerInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

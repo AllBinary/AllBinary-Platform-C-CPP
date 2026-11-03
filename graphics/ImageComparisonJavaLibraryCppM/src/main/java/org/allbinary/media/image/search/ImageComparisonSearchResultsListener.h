@@ -57,7 +57,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class ImageComparisonSearchResultsListener: public BasicEventListenerInterface {
+class ImageComparisonSearchResultsListener: public virtual BasicEventListenerInterface {
 
     public: virtual void onImageComparisonResultsEvent(ImageComparisonSearchResultsEvent* imageComparisonSearchResultsEvent) = 0;
 

@@ -68,7 +68,7 @@ class StoreFrontOrdersHistoryStatisticsData;
         
 class StoreFrontOrdersHistoryStatisticsView
             : public virtual Object
-        , public DomNodeInterface {
+        , public virtual DomNodeInterface {
 
     private: StoreFrontOrdersHistoryStatisticsInterface* storeFrontOrdersHistoryStatisticsInterface;
 

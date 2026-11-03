@@ -64,7 +64,7 @@ class EventStrings;
         
 class NoCompleteMotionGestureInputEventListener
             : public virtual Object
-        , public CompleteMotionGestureInputEventListenerInterface {
+        , public virtual CompleteMotionGestureInputEventListenerInterface {
 
     private: static NoCompleteMotionGestureInputEventListener* instance_owner();
     private: static NoCompleteMotionGestureInputEventListener* instance;

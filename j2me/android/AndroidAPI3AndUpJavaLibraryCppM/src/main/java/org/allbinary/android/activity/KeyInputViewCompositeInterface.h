@@ -57,7 +57,7 @@ class View;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class KeyInputViewCompositeInterface: public ViewCompositeInterface {
+class KeyInputViewCompositeInterface: public virtual ViewCompositeInterface {
 
     public: virtual void setKeyInputView(View* keyInputView) = 0;
 

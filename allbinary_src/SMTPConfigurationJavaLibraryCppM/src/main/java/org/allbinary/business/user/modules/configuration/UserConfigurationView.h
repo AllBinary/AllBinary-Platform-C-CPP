@@ -75,7 +75,7 @@ class UserConfigurationData;
         
 class UserConfigurationView
             : public virtual Object
-        , public DomNodeInterface {
+        , public virtual DomNodeInterface {
 
     private: UserConfigurationInterface* userConfigurationInterface;
 

@@ -84,7 +84,7 @@ class InventorySearchProductUtil;
         
 class InventorySearch
             : public virtual Object
-        , public InventoryViewSearchInterface {
+        , public virtual InventoryViewSearchInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

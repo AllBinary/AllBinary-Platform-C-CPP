@@ -68,7 +68,7 @@ class HealthResources;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class HealPickedUpLayerInterfaceFactory: public PickedUpLayerInterfaceFactory, public PickupProcessorInterface {
+class HealPickedUpLayerInterfaceFactory: public PickedUpLayerInterfaceFactory, public virtual PickupProcessorInterface {
 
     private: static PickedUpLayerInterfaceFactoryInterface* pickedUpLayerInterfaceFactoryInterface;
 

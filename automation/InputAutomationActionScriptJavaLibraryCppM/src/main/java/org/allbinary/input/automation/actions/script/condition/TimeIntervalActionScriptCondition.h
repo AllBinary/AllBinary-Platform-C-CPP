@@ -75,7 +75,7 @@ class TimeIntervalActionScriptConditionData;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class TimeIntervalActionScriptCondition: public BasicProfileActionScriptCondition, public TimeIntervalActionScriptConditionInterface {
+class TimeIntervalActionScriptCondition: public BasicProfileActionScriptCondition, public virtual TimeIntervalActionScriptConditionInterface {
 
     private: static inline const std::string NAME = "Time Interval";
 

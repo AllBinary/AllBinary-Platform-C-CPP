@@ -71,7 +71,7 @@ class Node;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class CssStyleValidation: public Validation, public DomNodeInterface {
+class CssStyleValidation: public Validation, public virtual DomNodeInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

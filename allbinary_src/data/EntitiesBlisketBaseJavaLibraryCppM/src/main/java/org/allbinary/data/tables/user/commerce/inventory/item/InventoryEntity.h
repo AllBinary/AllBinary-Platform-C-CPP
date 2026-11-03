@@ -73,7 +73,7 @@ class StringValidationUtil;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class InventoryEntity: public AbSqlBean, public InventoryEntityInterface {
+class InventoryEntity: public AbSqlBean, public virtual InventoryEntityInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

@@ -61,7 +61,7 @@ class WeblisketSessionInterface;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class UserInterface: public TableMappingInterface, public ValidationInterface {
+class UserInterface: public virtual TableMappingInterface, public virtual ValidationInterface {
 
     public: virtual void setUserName(std::string value) = 0;
 

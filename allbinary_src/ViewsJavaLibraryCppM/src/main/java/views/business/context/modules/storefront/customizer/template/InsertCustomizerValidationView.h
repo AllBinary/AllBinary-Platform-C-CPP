@@ -79,7 +79,7 @@ class NoTemplateTransformInfoObjectConfig;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         //Sets Template Type
-class InsertCustomizerValidationView: public HttpStoreComponentView, public ValidationComponentInterface {
+class InsertCustomizerValidationView: public HttpStoreComponentView, public virtual ValidationComponentInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

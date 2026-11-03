@@ -56,7 +56,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class SequentialAnimationInterfaceCompositeInterface: public IndexedAnimationInterfaceCompositeInterface {
+class SequentialAnimationInterfaceCompositeInterface: public virtual IndexedAnimationInterfaceCompositeInterface {
 
 };
 

@@ -287,7 +287,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "stop", &e);
 
     auto PlayerComposite::setVolume(int32_t leftVolume, int32_t rightVolume) -> void{
 
-    Controllable2* controllable2 = (dynamic_cast<Controllable2*>(this->player as unknown));;
+    Controllable2* controllable2 = (dynamic_cast<Controllable2*>(this->player));;
     
 controllable2->setVolume(leftVolume, rightVolume);
     

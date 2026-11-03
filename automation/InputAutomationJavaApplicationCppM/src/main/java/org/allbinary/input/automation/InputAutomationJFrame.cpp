@@ -892,7 +892,7 @@ appUrlGlobals->setWebappPath("G:/mnt/bc/mydev/work_automation/automation/run/");
     
 URLGLOBALS::init(appUrlGlobals);
     
-WebappClassLoaderInfo::setLoader(appUrlGlobals->getClass()getClassLoader());
+WebappClassLoaderInfo::setLoader(appUrlGlobals->getClass()->getClassLoader());
     
 java.awt->EventQueue->invokeLater([&]() {
     static thread_local InputAutomationBundleActivatorListenerInterface* anonymous0_inputAutomationBundleActivatorListenerInterface{};

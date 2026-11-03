@@ -63,7 +63,7 @@ class BufferedImageInfo;
         
 class BufferedImageCacheableFactory
             : public virtual Object
-        , public CacheableInterfaceFactoryInterface {
+        , public virtual CacheableInterfaceFactoryInterface {
 
 public: BufferedImageCacheableFactory();
 

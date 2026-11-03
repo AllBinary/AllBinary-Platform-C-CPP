@@ -81,7 +81,7 @@ class PathFindingInfo;
         
 class StaticPathGenerator
             : public virtual Object
-        , public PathGeneratorInterface {
+        , public virtual PathGeneratorInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

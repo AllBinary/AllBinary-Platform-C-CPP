@@ -65,7 +65,7 @@ class Sound;
         
 class BaseSoundsFactory
             : public virtual Object
-        , public SoundsFactoryInterface {
+        , public virtual SoundsFactoryInterface {
 
 
             

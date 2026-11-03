@@ -60,7 +60,7 @@ class PathFindingNodeCostInfo;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class PathFindingNodeCostInfoFactoryInterface: public PathFindingNodeCostInfoFactoryBaseInterface {
+class PathFindingNodeCostInfoFactoryInterface: public virtual PathFindingNodeCostInfoFactoryBaseInterface {
 
                 //@Throws(Exception.constructor)
             

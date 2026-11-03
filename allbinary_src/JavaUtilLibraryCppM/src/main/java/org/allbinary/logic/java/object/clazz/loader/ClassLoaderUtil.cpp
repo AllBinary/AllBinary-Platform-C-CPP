@@ -68,7 +68,7 @@ ClassLoaderUtil::ClassLoaderUtil(){
             
     auto ClassLoaderUtil::getName(Object* anyType) -> std::string{
 
-    ClassLoader* classLoader = anyType->getClass()getClassLoader();;
+    ClassLoader* classLoader = anyType->getClass()->getClassLoader();;
     
 
                         if(classLoader != 

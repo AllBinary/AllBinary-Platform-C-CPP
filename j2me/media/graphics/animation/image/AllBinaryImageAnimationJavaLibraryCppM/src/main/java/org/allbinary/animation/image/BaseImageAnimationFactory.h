@@ -75,7 +75,7 @@ class CommonSeps;
         
 class BaseImageAnimationFactory
             : public virtual Object
-        , public AnimationInterfaceFactoryInterface {
+        , public virtual AnimationInterfaceFactoryInterface {
 
                 //@Throws(Exception.constructor)
             

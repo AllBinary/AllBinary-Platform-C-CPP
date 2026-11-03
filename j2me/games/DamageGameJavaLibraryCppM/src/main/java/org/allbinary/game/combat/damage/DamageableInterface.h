@@ -58,7 +58,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class DamageableInterface: public NamedInterface {
+class DamageableInterface: public virtual NamedInterface {
 
                 //@Throws(Exception.constructor)
             

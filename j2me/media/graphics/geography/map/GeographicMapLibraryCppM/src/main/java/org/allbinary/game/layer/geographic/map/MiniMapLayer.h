@@ -80,7 +80,7 @@ class ViewPositionBase;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class MiniMapLayer: public AllBinaryLayer, public GeographicMapCellPositionEventListenerInterface {
+class MiniMapLayer: public AllBinaryLayer, public virtual GeographicMapCellPositionEventListenerInterface {
 
     /*protected*/ public: AllBinaryTiledLayer* allBinaryTiledLayer;
 

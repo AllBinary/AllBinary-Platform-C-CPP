@@ -84,7 +84,7 @@ class TransformInfoObjectConfigData;
         
 class TransformInfoObjectConfig
             : public virtual Object
-        , public TransformInfoObjectConfigInterface {
+        , public virtual TransformInfoObjectConfigInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

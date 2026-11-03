@@ -141,7 +141,7 @@ ViewPosition::ViewPosition(int32_t x, int32_t y, int32_t z) : ViewPositionBase(x
 
 
     auto ViewPosition::setAllbinaryLayer(Object* allbinaryLayer) -> void{
-this->allbinaryLayer= dynamic_cast<AllBinaryLayer*>(allbinaryLayer as unknown);
+this->allbinaryLayer= dynamic_cast<AllBinaryLayer*>(allbinaryLayer);
     
 }
 

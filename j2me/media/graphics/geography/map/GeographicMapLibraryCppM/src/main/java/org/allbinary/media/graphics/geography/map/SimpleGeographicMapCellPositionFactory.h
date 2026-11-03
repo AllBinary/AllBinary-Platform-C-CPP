@@ -62,7 +62,7 @@ class BasicGeographicMap;
         
 class SimpleGeographicMapCellPositionFactory
             : public virtual Object
-        , public GeographicMapCellPositionFactoryInterface {
+        , public virtual GeographicMapCellPositionFactoryInterface {
 
     private: static GeographicMapCellPosition* NULL_GEOGRAPHIC_MAP_CELL_POSITION_owner();
     public: static GeographicMapCellPosition* NULL_GEOGRAPHIC_MAP_CELL_POSITION;

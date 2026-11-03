@@ -219,7 +219,7 @@ class IntBuffer;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class GL11: public javax::microedition::khronos::opengles::GL10 {
+class GL11: public virtual javax::microedition::khronos::opengles::GL10 {
 
     public: static inline const int32_t GL_ACTIVE_TEXTURE = 34016;
 

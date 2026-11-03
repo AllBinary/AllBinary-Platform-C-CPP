@@ -60,7 +60,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class UserFactoryInterface: public Serializable {
+class UserFactoryInterface: public virtual Serializable {
 
                 //@Throws(Exception.constructor)
             

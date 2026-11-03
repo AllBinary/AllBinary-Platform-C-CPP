@@ -60,7 +60,7 @@
         
 class NullPriorityRunnable
             : public virtual Object
-        , public PriorityRunnable {
+        , public virtual PriorityRunnable {
 
 
             

@@ -932,7 +932,7 @@ hashMap->put(transformInfoData->TEMPLATE, this->template_);
     
 hashMap->put(transformInfoData->DATAFILENAME, this->dataFileName);
     
-hashMap->put(transformInfoData->DATA, Encoder::encode(this->data.getBytes()));
+hashMap->put(transformInfoData->DATA, Encoder::encode(JavaString::getBytes(this->data)));
     
 
     Calendar* calendar = Calendar::getInstance();;
@@ -973,7 +973,7 @@ vector->add(this->template_);
     
 vector->add(this->dataFileName);
     
-vector->add(Encoder::encode(this->data.getBytes()));
+vector->add(Encoder::encode(JavaString::getBytes(this->data)));
     
 
     Calendar* calendar = Calendar::getInstance();;

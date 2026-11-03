@@ -104,7 +104,7 @@ class ServiceClientInformationInterfaceFactory;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class OrderHistoryEntity: public AbSqlBean, public OrderHistoryEntityInterface {
+class OrderHistoryEntity: public AbSqlBean, public virtual OrderHistoryEntityInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

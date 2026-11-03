@@ -66,7 +66,7 @@ class BasicGeographicMap;
         
 class BaseDropCellPositionGenerator
             : public virtual Object
-        , public DropCellPositionGeneratorInterface {
+        , public virtual DropCellPositionGeneratorInterface {
 
 
             

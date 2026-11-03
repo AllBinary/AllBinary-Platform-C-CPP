@@ -63,7 +63,7 @@ class AllBinaryLayerManager;
         
 class ArtificialIntelligence
             : public virtual Object
-        , public ArtificialIntelligenceInterface {
+        , public virtual ArtificialIntelligenceInterface {
 
     public: static inline const int32_t AI_ID = 2;
 

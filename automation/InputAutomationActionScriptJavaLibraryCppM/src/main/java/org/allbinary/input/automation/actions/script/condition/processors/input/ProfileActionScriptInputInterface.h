@@ -57,7 +57,7 @@ class InputRobotInterface;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class ProfileActionScriptInputInterface: public ProfileActionScriptProcessorInterface {
+class ProfileActionScriptInputInterface: public virtual ProfileActionScriptProcessorInterface {
 
     public: virtual void setInputRobotInterface(InputRobotInterface* inputRobotInterface) = 0;
 

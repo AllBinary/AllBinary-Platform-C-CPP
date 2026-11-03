@@ -81,7 +81,7 @@ class StringMaker;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class PaymentGatewayEntity: public AbSqlBean, public PaymentGatewayEntityInterface {
+class PaymentGatewayEntity: public AbSqlBean, public virtual PaymentGatewayEntityInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

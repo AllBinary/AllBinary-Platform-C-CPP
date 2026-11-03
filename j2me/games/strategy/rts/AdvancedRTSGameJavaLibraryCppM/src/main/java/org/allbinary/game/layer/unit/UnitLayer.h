@@ -179,7 +179,7 @@ class UnitWaypointBehavior;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class UnitLayer: public AdvancedRTSGameLayer, public BuildingEventListenerInterface, public TrackingEventListenerInterface {
+class UnitLayer: public AdvancedRTSGameLayer, public virtual BuildingEventListenerInterface, public virtual TrackingEventListenerInterface {
 
     private: static BasicArrayList* partialPositionList;
 

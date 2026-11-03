@@ -60,7 +60,7 @@ class Animation;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class AnimationInterfaceFactoryInterface: public BasicAnimationInterfaceFactoryInterface {
+class AnimationInterfaceFactoryInterface: public virtual BasicAnimationInterfaceFactoryInterface {
 
                 //@Throws(Exception.constructor)
             

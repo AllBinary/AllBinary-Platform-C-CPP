@@ -72,7 +72,7 @@ class GameFeatureEvent;
         
 class BaseChangedGameFeatureListener
             : public virtual Object
-        , public GameFeatureListenerInterface {
+        , public virtual GameFeatureListenerInterface {
 
 
             

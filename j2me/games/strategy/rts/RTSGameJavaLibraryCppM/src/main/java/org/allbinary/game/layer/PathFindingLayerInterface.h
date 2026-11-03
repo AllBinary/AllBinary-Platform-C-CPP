@@ -65,7 +65,7 @@ class RTSLayer2LogHelper;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class PathFindingLayerInterface: public WaypointLayerInterface, public GameKeyEventSourceInterface, public GroupInterfaceCompositeInterface, public DestroyableInterface {
+class PathFindingLayerInterface: public virtual WaypointLayerInterface, public virtual GameKeyEventSourceInterface, public virtual GroupInterfaceCompositeInterface, public virtual DestroyableInterface {
 
                 //@Throws(Exception.constructor)
             

@@ -71,7 +71,7 @@ class JMenuItem;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class ProfileActionScriptItem: public DefaultMutableTreeNode, public ProfileActionScriptItemInterface, public ActionListener {
+class ProfileActionScriptItem: public DefaultMutableTreeNode, public virtual ProfileActionScriptItemInterface, public virtual ActionListener {
 
     private: static inline const std::string EDIT = "Edit";
 

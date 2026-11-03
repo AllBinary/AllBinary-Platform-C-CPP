@@ -66,7 +66,7 @@ class MainGameDemoStatePaintable;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class GameScrollMenuPaintable: public BasicGameDemoPaintable, public ColorChangeListener {
+class GameScrollMenuPaintable: public BasicGameDemoPaintable, public virtual ColorChangeListener {
 
 public: GameScrollMenuPaintable(Paintable* mainDemoStatePaintable, Paintable* ownershipPaintable, Paintable* helpPaintableInterface, BasicColor* basicColor);
 

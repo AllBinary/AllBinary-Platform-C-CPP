@@ -267,7 +267,7 @@ hashMap->put(EntryData::getInstance()->LASTMODIFIED, time);
     Node* node = document->createElement(WorkFlowData::getInstance()->WORKFLOW);;
     
 
-    std::vector<Object*> nameArray = keySet->();;
+    std::vector<Object*> nameArray = keySet->toArray();;
     
 
     int32_t size = nameArray.size();;

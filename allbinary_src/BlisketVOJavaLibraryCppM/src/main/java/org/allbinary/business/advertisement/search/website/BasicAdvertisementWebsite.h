@@ -60,7 +60,7 @@
         
 class BasicAdvertisementWebsite
             : public virtual Object
-        , public AdvertisementWebsiteInterface {
+        , public virtual AdvertisementWebsiteInterface {
 
     private: std::string websiteId;
 

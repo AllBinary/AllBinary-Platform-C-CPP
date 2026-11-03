@@ -57,7 +57,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class CountedPickedUpLayerInterfaceFactoryInterface: public PickedUpLayerInterfaceFactoryInterface, public LayerInterfaceFactoryInterface {
+class CountedPickedUpLayerInterfaceFactoryInterface: public virtual PickedUpLayerInterfaceFactoryInterface, public virtual LayerInterfaceFactoryInterface {
 
     public: virtual int32_t getId() = 0;
 

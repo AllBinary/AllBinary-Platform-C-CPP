@@ -63,7 +63,7 @@ class Parcel;
         
 class NullParcelable
             : public virtual Object
-        , public Parcelable {
+        , public virtual Parcelable {
 
     private: static NullParcelable* NULL_PARCELABLE_owner();
     public: static NullParcelable* NULL_PARCELABLE;

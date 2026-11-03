@@ -76,7 +76,7 @@ class StoreFrontStatisticsData;
         
 class RealTimeStoreFrontStatisticsView
             : public virtual Object
-        , public DomNodeInterface {
+        , public virtual DomNodeInterface {
 
     private: StoreFrontStatisticsInterface* storeFrontStatisticsInterface;
 

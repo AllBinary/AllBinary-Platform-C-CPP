@@ -77,7 +77,7 @@ class RaceTrackData;
         
 class NullRaceTrackGeographicMap
             : public virtual Object
-        , public RaceTrackGeographicMapInterface {
+        , public virtual RaceTrackGeographicMapInterface {
 
     private: static NullRaceTrackGeographicMap* NULL_RACE_TRACK_GEOGRAPHIC_MAP_owner();
     public: static NullRaceTrackGeographicMap* NULL_RACE_TRACK_GEOGRAPHIC_MAP;

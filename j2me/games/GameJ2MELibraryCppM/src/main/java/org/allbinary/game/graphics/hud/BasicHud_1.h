@@ -84,7 +84,7 @@ class BasicHudFactory;
         
 class BasicHud_1
             : public virtual Object
-        , public UpdateMyFontInterface {
+        , public virtual UpdateMyFontInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

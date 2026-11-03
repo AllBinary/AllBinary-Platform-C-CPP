@@ -72,7 +72,7 @@ class CommonStrings;
         
 class GameFeatureItemCommandListener
             : public virtual Object
-        , public ItemCommandListener {
+        , public virtual ItemCommandListener {
 
     /*protected*/ public: LogUtil* logUtil;
 

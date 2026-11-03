@@ -63,7 +63,7 @@ class GraphicItemInterface;
         
 class LinesGraphicItemFactory
             : public virtual Object
-        , public GraphicsItemInterfaceFactoryInterface {
+        , public virtual GraphicsItemInterfaceFactoryInterface {
 
 
             

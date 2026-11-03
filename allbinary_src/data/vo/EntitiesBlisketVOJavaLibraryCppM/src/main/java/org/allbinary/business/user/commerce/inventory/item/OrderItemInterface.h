@@ -57,7 +57,7 @@ class StreetAddress;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class OrderItemInterface: public ItemInterface {
+class OrderItemInterface: public virtual ItemInterface {
 
     public: virtual void setGroup(std::string value) = 0;
 

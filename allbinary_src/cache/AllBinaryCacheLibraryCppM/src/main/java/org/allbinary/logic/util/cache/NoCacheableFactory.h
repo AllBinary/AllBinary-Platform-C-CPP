@@ -63,7 +63,7 @@ class CacheableInterface;
         
 class NoCacheableFactory
             : public virtual Object
-        , public CacheableInterfaceFactoryInterface {
+        , public virtual CacheableInterfaceFactoryInterface {
 
 public: NoCacheableFactory();
 

@@ -68,7 +68,7 @@ class ContextConfigurationView;
         
 class ContextConfigurationDomDocumentMapping
             : public virtual Object
-        , public DomDocumentMappingInterface {
+        , public virtual DomDocumentMappingInterface {
 
     private: ContextConfigurationInterface* contextConfigurationInterface;
 

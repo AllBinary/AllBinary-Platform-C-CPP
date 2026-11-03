@@ -106,7 +106,7 @@
         
 
 CryptService::CryptService() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), abCryptUtil(AbCryptUtil::getInstance()){
-Globals::getInstance()->init(this->getClass()getClassLoader(), "./");
+Globals::getInstance()->init(this->getClass()->getClassLoader(), "./");
     
 this->logUtil->putF(JavaString::valueOf("Set Globals: ") +JavaString::valueOf(URLGLOBALS::getWebappPath()), this, this->commonStrings->CONSTRUCTOR);
     

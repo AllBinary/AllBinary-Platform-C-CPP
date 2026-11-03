@@ -144,7 +144,7 @@ MineCountedPickedUpLayerInterfaceFactory::MineCountedPickedUpLayerInterfaceFacto
     int32_t angle = JavaBoxes::unbox<int32_t>(hashtable->get(this->smallIntegerSingletonFactory->getAt(1)));;
     
 
-    ScoreableInterface* scoreableInterface = dynamic_cast<ScoreableInterface*>(sourceLayerInterface as unknown);;
+    ScoreableInterface* scoreableInterface = dynamic_cast<ScoreableInterface*>(sourceLayerInterface);;
     
 
 

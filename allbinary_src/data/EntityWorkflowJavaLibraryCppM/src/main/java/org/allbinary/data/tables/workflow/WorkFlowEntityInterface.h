@@ -63,7 +63,7 @@ class LicensingException;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class WorkFlowEntityInterface: public BasicDataTableInterface {
+class WorkFlowEntityInterface: public virtual BasicDataTableInterface {
 
     public: virtual BasicArrayList* get(std::string storeName) = 0;
 

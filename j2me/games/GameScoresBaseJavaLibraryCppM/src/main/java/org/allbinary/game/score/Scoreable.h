@@ -63,7 +63,7 @@ class SmallIntegerSingletonFactory;
         
 class Scoreable
             : public virtual Object
-        , public ScoreableInterface {
+        , public virtual ScoreableInterface {
 
     public: static int32_t ID;
 

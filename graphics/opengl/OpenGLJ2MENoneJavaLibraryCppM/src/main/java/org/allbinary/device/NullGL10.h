@@ -60,7 +60,7 @@
         
 class NullGL10
             : public virtual Object
-        , public GL10 {
+        , public virtual GL10 {
 
     private: static NullGL10* NULL_GL10_owner();
     public: static NullGL10* NULL_GL10;

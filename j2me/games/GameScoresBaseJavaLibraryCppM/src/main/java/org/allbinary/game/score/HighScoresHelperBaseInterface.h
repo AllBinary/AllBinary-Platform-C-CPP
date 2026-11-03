@@ -59,7 +59,7 @@ class HighScores;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class HighScoresHelperBaseInterface: public HighScoresResultsListener {
+class HighScoresHelperBaseInterface: public virtual HighScoresResultsListener {
 
     public: virtual void setSelectedHighScores(HighScores* selectedHighScores) = 0;
 

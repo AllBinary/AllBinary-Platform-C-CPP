@@ -64,7 +64,7 @@ class JvmStatisticsData;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class JvmStatisticsView: public JvmStatisticsMapping, public DomNodeInterface {
+class JvmStatisticsView: public JvmStatisticsMapping, public virtual DomNodeInterface {
 
 public: JvmStatisticsView();
 

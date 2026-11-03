@@ -74,7 +74,7 @@ class PaymentGatewayPrimaryKey;
         
 class PaymentGateway
             : public virtual Object
-        , public PaymentGatewayInterface {
+        , public virtual PaymentGatewayInterface {
 
     private: std::string storeName;
 

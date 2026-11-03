@@ -62,7 +62,7 @@
         
 class NullRecordFilter
             : public virtual Object
-        , public RecordFilter {
+        , public virtual RecordFilter {
 
     private: static NullRecordFilter* NULL_RECORD_FILTER_owner();
     public: static NullRecordFilter* NULL_RECORD_FILTER;

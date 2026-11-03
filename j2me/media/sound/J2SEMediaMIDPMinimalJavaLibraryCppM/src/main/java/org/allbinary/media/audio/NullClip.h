@@ -73,7 +73,7 @@ class NullAudioFormat;
         
 class NullClip
             : public virtual Object
-        , public Clip {
+        , public virtual Clip {
 
     private: static NullJ2SEControl* NULL_CONTROL_owner();
     public: static NullJ2SEControl* NULL_CONTROL;

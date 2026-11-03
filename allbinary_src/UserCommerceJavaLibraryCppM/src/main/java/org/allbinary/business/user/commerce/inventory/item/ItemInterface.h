@@ -57,7 +57,7 @@ class Money;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class ItemInterface: public TableMappingInterface {
+class ItemInterface: public virtual TableMappingInterface {
 
     public: virtual void setId(std::string itemId) = 0;
 

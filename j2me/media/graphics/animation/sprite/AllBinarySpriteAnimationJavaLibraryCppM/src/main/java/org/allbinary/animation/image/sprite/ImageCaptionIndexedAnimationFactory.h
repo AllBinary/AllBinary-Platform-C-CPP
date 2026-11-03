@@ -77,7 +77,7 @@ class Sound;
         
 class ImageCaptionIndexedAnimationFactory
             : public virtual Object
-        , public AnimationInterfaceFactoryInterface {
+        , public virtual AnimationInterfaceFactoryInterface {
 
     /*protected*/ public: AnimationFactoryImageScaleUtil* animationFactoryImageScaleUtil;
 

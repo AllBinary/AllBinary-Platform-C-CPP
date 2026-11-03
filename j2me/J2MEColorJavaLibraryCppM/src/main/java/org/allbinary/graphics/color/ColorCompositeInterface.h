@@ -59,7 +59,7 @@ class BasicColor;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class ColorCompositeInterface: public BasicColorCompositeSetterInterface {
+class ColorCompositeInterface: public virtual BasicColorCompositeSetterInterface {
 
     public: virtual BasicColor* getBasicColorP() = 0;
 

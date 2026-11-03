@@ -82,7 +82,7 @@ class CircularIndexUtil;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class PlayerGameNotificationHud: public GameNotificationHud, public UpdateMyFontInterface {
+class PlayerGameNotificationHud: public GameNotificationHud, public virtual UpdateMyFontInterface {
 private: class SetAndRemoveProcessor;
 private: class NextUnremoveableProcessor;
 

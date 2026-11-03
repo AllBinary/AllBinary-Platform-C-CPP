@@ -66,7 +66,7 @@ class LogUtil;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         //J2SEForJ2ME
-class OwnershipPaintable: public Paintable, public UpdateMyFontInterface {
+class OwnershipPaintable: public Paintable, public virtual UpdateMyFontInterface {
 
     public: static OwnershipPaintable* getInstance();
 

@@ -426,7 +426,7 @@ frameNode->appendChild(realSizeNode);
     Node* graphicItemNode = dynamic_cast<Node*>(document->createElement(this->GRAPHICITEMS));;
     
 
-    std::vector<Object*> graphicItemArray = this->getGraphicItemHashMap()->keys().();;
+    std::vector<Object*> graphicItemArray = this->getGraphicItemHashMap()->keys().toArray();;
     
 
     int32_t size = graphicItemArray.size();;

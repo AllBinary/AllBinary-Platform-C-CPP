@@ -67,7 +67,7 @@ class ThemeComparator;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class StoreThemeCategoryView: public CategoryView, public DomNodeInterface {
+class StoreThemeCategoryView: public CategoryView, public virtual DomNodeInterface {
 
 public: StoreThemeCategoryView(StoreThemeCategoryInterface* categoryInterface);
 

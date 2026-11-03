@@ -117,7 +117,7 @@ this->htmlRowsVector->add(htmlRow);
     std::string result = stringUtil->EMPTY_STRING;;
     
 
-    std::vector<Object*> attributeKeys = this->otherAttributes->keySet()->();;
+    std::vector<Object*> attributeKeys = this->otherAttributes->keySet()->toArray();;
     
 result= this->before;
     

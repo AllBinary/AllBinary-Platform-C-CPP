@@ -63,7 +63,7 @@ class InputAutomationModuleFactoryInterface;
         
 class InputAutomationModuleService
             : public virtual Object
-        , public InputAutomationModuleServiceInterface {
+        , public virtual InputAutomationModuleServiceInterface {
 
     private: std::vector<InputAutomationModuleFactoryInterface*> inputAutomationModuleInterfaceArray;
 

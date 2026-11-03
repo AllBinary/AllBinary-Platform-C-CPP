@@ -77,7 +77,7 @@ class RunnableCanvasRefreshHelper;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class RunnableCanvas: public MyCanvas, public RunnableInterface {
+class RunnableCanvas: public MyCanvas, public virtual RunnableInterface {
 
     /*protected*/ public: NullUtil* nullUtil;
 

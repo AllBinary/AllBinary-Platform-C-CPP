@@ -112,7 +112,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->RU
                 //: 
 } catch(Exception& e2) 
             {
-this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->RUN, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->RUN, &e);
     
 }
 

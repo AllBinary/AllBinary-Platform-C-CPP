@@ -79,7 +79,7 @@ class GenericProfileActionScriptInputData;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class BasicProfileActionScriptInput: public BasicProfileActionScriptProcessor, public ProfileActionScriptInputInterface {
+class BasicProfileActionScriptInput: public BasicProfileActionScriptProcessor, public virtual ProfileActionScriptInputInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

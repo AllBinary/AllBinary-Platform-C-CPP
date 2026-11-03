@@ -74,7 +74,7 @@ class TimeDelayHelper;
         
 class AbstractInputAutomationWorker
             : public virtual Object
-        , public RunnableInterface {
+        , public virtual RunnableInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

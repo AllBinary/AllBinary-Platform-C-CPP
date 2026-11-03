@@ -61,7 +61,7 @@ class AllBinaryEventObject;
         
 class NullEventListener
             : public virtual Object
-        , public EventListenerInterface {
+        , public virtual EventListenerInterface {
 
     private: static NullEventListener* NULL_EVENT_LISTENER_owner();
     public: static NullEventListener* NULL_EVENT_LISTENER;

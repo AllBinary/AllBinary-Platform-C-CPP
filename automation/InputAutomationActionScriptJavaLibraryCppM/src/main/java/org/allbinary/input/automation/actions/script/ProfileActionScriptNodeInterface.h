@@ -57,7 +57,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class ProfileActionScriptNodeInterface: public DomNodeInterface, public MutableTreeNode {
+class ProfileActionScriptNodeInterface: public virtual DomNodeInterface, public virtual MutableTreeNode {
 
     public: virtual void addCondition(ProfileActionScriptNodeInterface* profileActionConditionInterface) = 0;
 

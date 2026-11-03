@@ -86,7 +86,7 @@ class BasicArrayListUtil;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class Waypoint: public WaypointBase, public BuildingEventListenerInterface {
+class Waypoint: public WaypointBase, public virtual BuildingEventListenerInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

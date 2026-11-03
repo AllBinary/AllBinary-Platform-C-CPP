@@ -60,7 +60,7 @@ class StringUtil;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class BasicArrayListCacheable: public BasicArrayListD, public CacheableInterface {
+class BasicArrayListCacheable: public BasicArrayListD, public virtual CacheableInterface {
 
 
             

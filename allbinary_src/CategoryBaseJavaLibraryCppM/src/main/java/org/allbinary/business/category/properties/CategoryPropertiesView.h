@@ -67,7 +67,7 @@ class Node;
         
 class CategoryPropertiesView
             : public virtual Object
-        , public DomNodeInterface {
+        , public virtual DomNodeInterface {
 
     /*protected*/ public: CategoryPropertiesInterface* categoryPropertiesInterface;
 

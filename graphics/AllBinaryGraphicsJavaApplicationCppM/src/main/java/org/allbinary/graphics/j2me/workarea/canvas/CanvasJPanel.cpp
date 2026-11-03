@@ -238,7 +238,7 @@ this->setCanvasSize(canvasDom->getDimension()->getWidth(), canvasDom->getDimensi
 this->graphicItemHashMap= canvasDom->getGraphicItemHashMap();
     
 
-    std::vector<Object*> graphicItemArray = this->graphicItemHashMap->keys().();;
+    std::vector<Object*> graphicItemArray = this->graphicItemHashMap->keys().toArray();;
     
 
     int32_t size = graphicItemArray.size();;
@@ -480,7 +480,7 @@ this->setAngle(this->angle +angle);
     BasicArrayList* newPoints = new BasicArrayListD();;
     
 
-    std::vector<Object*> graphicItemArray = this->getGraphicItemHashMap()->keys().();;
+    std::vector<Object*> graphicItemArray = this->getGraphicItemHashMap()->keys().toArray();;
     
 
     int32_t size = graphicItemArray.size();;
@@ -570,7 +570,7 @@ this->workAreaJTreeJPanel->repaint();
             
     auto CanvasJPanel::explode(int32_t howMuch, int32_t explosionType) -> void{
 
-    std::vector<Object*> graphicItemArray = this->getGraphicItemHashMap()->keys().();;
+    std::vector<Object*> graphicItemArray = this->getGraphicItemHashMap()->keys().toArray();;
     
 
     int32_t size = graphicItemArray.size();;
@@ -614,7 +614,7 @@ this->repaint();
     int32_t width = this->getCanvasDimension()->getWidth();;
     
 
-    std::vector<Object*> graphicItemArray = this->getGraphicItemHashMap()->keys().();;
+    std::vector<Object*> graphicItemArray = this->getGraphicItemHashMap()->keys().toArray();;
     
 
     int32_t size = graphicItemArray.size();;
@@ -710,7 +710,7 @@ this->canvasTreeNode->add(graphicItemClone->getTreeNode());
             
     auto CanvasJPanel::duplicateGraphicItemHashMap(HashMap<Object*, Object*>* hashMap) -> void{
 
-    std::vector<Object*> mutableTreeNodeArray = hashMap->keys().();;
+    std::vector<Object*> mutableTreeNodeArray = hashMap->keys().toArray();;
     
 
     int32_t size = mutableTreeNodeArray.size();;
@@ -820,7 +820,7 @@ this->duplicateGraphicItem(graphicItem);
     double angleDouble = double(this->angle);;
     
 
-    std::vector<Object*> graphicItemArray = this->getGraphicItemHashMap()->keys().();;
+    std::vector<Object*> graphicItemArray = this->getGraphicItemHashMap()->keys().toArray();;
     
 
     int32_t size = graphicItemArray.size();;
@@ -1158,7 +1158,7 @@ StatusFactory::getInstance()->setStatus("Key Pressed");
 
         try {
             
-    std::vector<Object*> graphicItemArray = this->graphicItemHashMap->keys().();;
+    std::vector<Object*> graphicItemArray = this->graphicItemHashMap->keys().toArray();;
     
 
     int32_t size = graphicItemArray.size();;

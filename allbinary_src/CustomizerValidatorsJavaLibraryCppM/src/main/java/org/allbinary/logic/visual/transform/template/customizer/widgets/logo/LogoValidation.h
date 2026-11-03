@@ -75,7 +75,7 @@ class LogoImageFileUtil;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class LogoValidation: public Validation, public DomNodeInterface {
+class LogoValidation: public Validation, public virtual DomNodeInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

@@ -64,7 +64,7 @@ class MoneyException;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class InventoryEntityInterface: public BasicDataTableInterface {
+class InventoryEntityInterface: public virtual BasicDataTableInterface {
 
                 //@Throws(MoneyException.constructor)
             

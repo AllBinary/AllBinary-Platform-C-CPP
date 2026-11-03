@@ -66,7 +66,7 @@ template<typename T1, typename T2> class ABHashtable;
         
 class ValidatorBase
             : public virtual Object
-        , public ValidatorBaseInterface {
+        , public virtual ValidatorBaseInterface {
 
     private: static ValidatorBase* instance_owner();
     private: static ValidatorBase* instance;

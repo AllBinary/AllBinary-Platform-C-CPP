@@ -70,7 +70,7 @@ class BasicArrayListD;
         
 class BasicStoreFront
             : public virtual Object
-        , public BasicStoreFrontInterface {
+        , public virtual BasicStoreFrontInterface {
 
     private: std::string name;
 

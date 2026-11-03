@@ -86,7 +86,7 @@ class ColorAtActionScriptConditionData;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class ColorAtActionScriptCondition: public BasicProfileActionScriptCondition, public ColorAtActionScriptConditionInterface {
+class ColorAtActionScriptCondition: public BasicProfileActionScriptCondition, public virtual ColorAtActionScriptConditionInterface {
 
     private: static inline const std::string NAME = "If Color At";
 

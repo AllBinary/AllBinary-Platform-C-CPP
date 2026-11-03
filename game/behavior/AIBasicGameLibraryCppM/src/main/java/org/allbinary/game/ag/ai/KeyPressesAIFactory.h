@@ -69,7 +69,7 @@ class KeyPressesAI;
         
 class KeyPressesAIFactory
             : public virtual Object
-        , public ArtificialIntelligenceInterfaceFactoryInterface {
+        , public virtual ArtificialIntelligenceInterfaceFactoryInterface {
 
 
             

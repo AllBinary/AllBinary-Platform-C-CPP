@@ -60,7 +60,7 @@ class Orientation;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class NoMagneticFieldSensor: public AllBinaryMagneticFieldSensor, public AllBinarySensorListener {
+class NoMagneticFieldSensor: public AllBinaryMagneticFieldSensor, public virtual AllBinarySensorListener {
 
 
             

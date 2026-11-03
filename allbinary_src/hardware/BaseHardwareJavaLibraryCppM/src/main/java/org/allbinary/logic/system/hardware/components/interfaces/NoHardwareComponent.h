@@ -61,7 +61,7 @@ class StringUtil;
         
 class NoHardwareComponent
             : public virtual Object
-        , public HardwareComponentInterface {
+        , public virtual HardwareComponentInterface {
 
     private: static NoHardwareComponent* instance_owner();
     private: static NoHardwareComponent* instance;

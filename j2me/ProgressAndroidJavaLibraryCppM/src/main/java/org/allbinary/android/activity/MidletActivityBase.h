@@ -72,7 +72,7 @@ class AllBinaryEventObject;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class MidletActivityBase: public Activity, public GameFeatureListenerInterface, public GameInitializedListenerInterface, public SimpleProgressActivityInterface, public KeyInputViewCompositeInterface, public GenericMotionEventVerifyInterface {
+class MidletActivityBase: public Activity, public virtual GameFeatureListenerInterface, public virtual GameInitializedListenerInterface, public virtual SimpleProgressActivityInterface, public virtual KeyInputViewCompositeInterface, public virtual GenericMotionEventVerifyInterface {
 
 
             

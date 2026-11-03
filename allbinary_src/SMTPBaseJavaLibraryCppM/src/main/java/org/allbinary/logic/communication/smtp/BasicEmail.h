@@ -70,7 +70,7 @@ class Email;
         
 class BasicEmail
             : public virtual Object
-        , public EmailInterface {
+        , public virtual EmailInterface {
 
     private: AbEmail* email;
 

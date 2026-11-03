@@ -64,7 +64,7 @@ class CategoryPropertiesInterface;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class CategoryPropertiesValidationView: public CategoryPropertiesView, public ValidationInterface {
+class CategoryPropertiesValidationView: public CategoryPropertiesView, public virtual ValidationInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

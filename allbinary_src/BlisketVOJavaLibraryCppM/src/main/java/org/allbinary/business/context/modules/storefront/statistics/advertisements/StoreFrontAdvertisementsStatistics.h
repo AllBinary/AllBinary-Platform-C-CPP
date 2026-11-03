@@ -67,7 +67,7 @@ class StdUtil;
         
 class StoreFrontAdvertisementsStatistics
             : public virtual Object
-        , public StoreFrontAdvertisementsStatisticsInterface {
+        , public virtual StoreFrontAdvertisementsStatisticsInterface {
 
 public: StoreFrontAdvertisementsStatistics(StoreFrontInterface* storeFrontInterface);
 

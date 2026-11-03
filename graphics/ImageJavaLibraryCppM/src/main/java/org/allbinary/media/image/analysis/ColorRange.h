@@ -64,7 +64,7 @@ class Color;
         
 class ColorRange
             : public virtual Object
-        , public ColorRangeInterface {
+        , public virtual ColorRangeInterface {
 
     private: int32_t minRed;
 

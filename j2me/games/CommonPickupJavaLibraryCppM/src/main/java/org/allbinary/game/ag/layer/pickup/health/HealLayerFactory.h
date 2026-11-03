@@ -64,7 +64,7 @@ class AllBinaryLayer;
         
 class HealLayerFactory
             : public virtual Object
-        , public AllBinaryLayerFactoryInterface {
+        , public virtual AllBinaryLayerFactoryInterface {
 
 
             

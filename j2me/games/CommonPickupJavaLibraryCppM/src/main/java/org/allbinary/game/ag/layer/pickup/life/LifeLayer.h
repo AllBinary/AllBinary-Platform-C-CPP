@@ -65,7 +65,7 @@ class ViewPosition;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class LifeLayer: public AllBinaryLayer, public LifeVisitorInterface {
+class LifeLayer: public AllBinaryLayer, public virtual LifeVisitorInterface {
 
 public: LifeLayer();
 

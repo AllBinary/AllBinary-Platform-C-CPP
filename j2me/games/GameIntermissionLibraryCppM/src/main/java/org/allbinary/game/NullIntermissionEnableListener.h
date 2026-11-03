@@ -60,7 +60,7 @@
         
 class NullIntermissionEnableListener
             : public virtual Object
-        , public IntermissionEnableListenerInterface {
+        , public virtual IntermissionEnableListenerInterface {
 
     private: static IntermissionEnableListenerInterface* SINGLETON;
 

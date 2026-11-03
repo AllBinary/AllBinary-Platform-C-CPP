@@ -59,7 +59,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class VectorAnimationInterface: public IndexedAnimationInterface, public ColorCompositeInterface {
+class VectorAnimationInterface: public virtual IndexedAnimationInterface, public virtual ColorCompositeInterface {
 
     public: virtual std::vector<std::vector<int32_t>> getPoints(int32_t frame) = 0;
 

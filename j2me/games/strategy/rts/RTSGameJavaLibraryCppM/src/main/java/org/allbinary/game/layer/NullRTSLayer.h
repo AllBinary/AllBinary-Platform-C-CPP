@@ -72,7 +72,7 @@ class PlayerOwnedRTSLayers;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class NullRTSLayer: public NullPathFindingLayer, public RTSPlayerLayerInterface {
+class NullRTSLayer: public NullPathFindingLayer, public virtual RTSPlayerLayerInterface {
 
     private: static NullRTSLayer* NULL_RTS_LAYER_owner();
     public: static NullRTSLayer* NULL_RTS_LAYER;

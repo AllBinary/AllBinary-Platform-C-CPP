@@ -62,7 +62,7 @@ class GameInitializationInterface;
         
 class BasicBuildGameInitializerFactory
             : public virtual Object
-        , public GameInitializationInterfaceFactoryInterface {
+        , public virtual GameInitializationInterfaceFactoryInterface {
 
     private: static BasicBuildGameInitializerFactory* NULL_BASE_BUILD_GMAE_INITIALIZER_FACTORY_owner();
     public: static BasicBuildGameInitializerFactory* NULL_BASE_BUILD_GMAE_INITIALIZER_FACTORY;

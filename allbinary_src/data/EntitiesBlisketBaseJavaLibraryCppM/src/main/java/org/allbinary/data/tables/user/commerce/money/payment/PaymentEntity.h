@@ -80,7 +80,7 @@ class StringUtil;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class PaymentEntity: public AbSqlBean, public PaymentEntityInterface {
+class PaymentEntity: public AbSqlBean, public virtual PaymentEntityInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

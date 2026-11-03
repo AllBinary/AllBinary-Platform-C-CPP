@@ -58,7 +58,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class MultiLevelRaceTrackGeographicMapInterfaceFactoryInterface: public RaceTrackGeographicMapInterfaceFactoryInterface {
+class MultiLevelRaceTrackGeographicMapInterfaceFactoryInterface: public virtual RaceTrackGeographicMapInterfaceFactoryInterface {
 
                 //@Throws(Exception.constructor)
             

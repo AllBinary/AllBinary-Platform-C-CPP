@@ -69,7 +69,7 @@ class PrimitiveIntUtil;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class ColorCompositeSpriteIndexedAnimationFactory: public BaseImageAnimationFactory, public ProceduralAnimationInterfaceFactoryInterface {
+class ColorCompositeSpriteIndexedAnimationFactory: public BaseImageAnimationFactory, public virtual ProceduralAnimationInterfaceFactoryInterface {
 
     private: AnimationFactorySpriteScaleUtil* animationFactorySpriteScaleUtil;
 

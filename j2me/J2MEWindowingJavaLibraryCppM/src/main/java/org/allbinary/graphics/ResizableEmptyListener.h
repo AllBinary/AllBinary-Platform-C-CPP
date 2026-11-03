@@ -60,7 +60,7 @@
         
 class ResizableEmptyListener
             : public virtual Object
-        , public ResizableListenerInterface {
+        , public virtual ResizableListenerInterface {
 
 
             

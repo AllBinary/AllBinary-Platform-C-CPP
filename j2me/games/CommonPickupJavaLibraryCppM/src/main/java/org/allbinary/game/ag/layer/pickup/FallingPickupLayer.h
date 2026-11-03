@@ -66,7 +66,7 @@ class ViewPosition;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class FallingPickupLayer: public PickupLayer, public TickableInterface {
+class FallingPickupLayer: public PickupLayer, public virtual TickableInterface {
 
     private: static inline const std::string NAME = "FallingPickupLayer";
 

@@ -695,9 +695,7 @@ stringBuffer->append(this->isPortrait()
                                 this->PORTRAIT
                                 :
 
-                            this->LANDSCAPE;
-
-    );
+                            this->LANDSCAPE);
     
 
 

@@ -584,9 +584,7 @@ this->widthScale= (this->scale == 2)
 
                             
                                         //Otherwise - expression - elseExpr - DoubleLiteralExpr
-;
-
-    ;
+;;
     
 }
 

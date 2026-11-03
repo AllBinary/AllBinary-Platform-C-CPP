@@ -57,7 +57,7 @@ class PlayerGameInput;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class PlayerGameInputCompositeInterface: public GameInputInterface {
+class PlayerGameInputCompositeInterface: public virtual GameInputInterface {
 
     public: virtual PlayerGameInput* getPlayerGameInput() = 0;
 

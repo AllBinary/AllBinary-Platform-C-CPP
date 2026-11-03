@@ -58,7 +58,7 @@ class OrderHistory;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class PaymentTransactionInterface: public TableMappingInterface, public DomNodeInterface {
+class PaymentTransactionInterface: public virtual TableMappingInterface, public virtual DomNodeInterface {
 
     public: virtual OrderHistory* getOrderHistory() = 0;
 

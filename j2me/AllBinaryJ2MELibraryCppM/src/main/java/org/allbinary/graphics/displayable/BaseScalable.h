@@ -60,7 +60,7 @@
         
 class BaseScalable
             : public virtual Object
-        , public ScalableListener {
+        , public virtual ScalableListener {
 
 
             

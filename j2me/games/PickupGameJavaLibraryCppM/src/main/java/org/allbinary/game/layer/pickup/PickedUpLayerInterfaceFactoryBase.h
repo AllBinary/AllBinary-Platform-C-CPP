@@ -65,7 +65,7 @@ class PickedUpLayerType;
         
 class PickedUpLayerInterfaceFactoryBase
             : public virtual Object
-        , public PickedUpLayerInterfaceFactoryInterface {
+        , public virtual PickedUpLayerInterfaceFactoryInterface {
 
     private: static PickedUpLayerInterfaceFactoryBase* NULL_PICKED_UP_LAYER_FACTORY_BASE_owner();
     public: static PickedUpLayerInterfaceFactoryBase* NULL_PICKED_UP_LAYER_FACTORY_BASE;

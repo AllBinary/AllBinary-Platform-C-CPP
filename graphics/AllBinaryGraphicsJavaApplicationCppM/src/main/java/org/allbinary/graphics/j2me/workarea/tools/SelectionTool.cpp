@@ -226,7 +226,7 @@ this->canvasJPanel= canvasJPanel;
     HashMap<Object*, Object*>* hashMap = this->canvasJPanel->getGraphicItemHashMap();;
     
 
-    std::vector<Object*> graphicItemArray = hashMap->keys().();;
+    std::vector<Object*> graphicItemArray = hashMap->keys().toArray();;
     
 
     int32_t size = graphicItemArray.size();;

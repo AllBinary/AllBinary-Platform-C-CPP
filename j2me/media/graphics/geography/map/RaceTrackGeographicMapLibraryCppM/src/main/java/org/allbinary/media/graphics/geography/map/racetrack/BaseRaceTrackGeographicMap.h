@@ -68,7 +68,7 @@ class RaceTrackData;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class BaseRaceTrackGeographicMap: public BasicGeographicMap, public RaceTrackGeographicMapInterface {
+class BaseRaceTrackGeographicMap: public BasicGeographicMap, public virtual RaceTrackGeographicMapInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

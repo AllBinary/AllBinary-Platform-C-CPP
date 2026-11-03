@@ -68,7 +68,7 @@ class CommonStrings;
         
 class TagHelperFactory
             : public virtual Object
-        , public TagHelperFactoryInterface {
+        , public virtual TagHelperFactoryInterface {
 
 
             

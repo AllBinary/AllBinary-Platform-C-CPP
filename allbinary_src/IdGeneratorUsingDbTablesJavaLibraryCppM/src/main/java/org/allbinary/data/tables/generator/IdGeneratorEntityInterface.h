@@ -63,7 +63,7 @@ class BasicArrayList;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class IdGeneratorEntityInterface: public BasicDataTableInterface {
+class IdGeneratorEntityInterface: public virtual BasicDataTableInterface {
 
                 //@Throws(Exception.constructor)
             

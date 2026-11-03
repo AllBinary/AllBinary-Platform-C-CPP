@@ -66,7 +66,7 @@ class GeographicMapCellPositionTracking;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class VehicleLayerInterface: public LayerInterface, public VehiclePropertiesCompositeInterface {
+class VehicleLayerInterface: public virtual LayerInterface, public virtual VehiclePropertiesCompositeInterface {
 
     public: virtual BasicArrayList* getGameKeyEventList() = 0;
 

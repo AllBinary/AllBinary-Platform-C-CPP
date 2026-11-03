@@ -182,9 +182,7 @@ result= (result +(x /result)) /2;
                                  -value
                                 :
 
-                            value;
-
-    ;
+                            value;;
     
 }
 
@@ -199,9 +197,7 @@ result= (result +(x /result)) /2;
                                  -value
                                 :
 
-                            value;
-
-    ;
+                            value;;
     
 }
 
@@ -216,9 +212,7 @@ result= (result +(x /result)) /2;
                                 value
                                 :
 
-                            value2;
-
-    ;
+                            value2;;
     
 }
 
@@ -233,9 +227,7 @@ result= (result +(x /result)) /2;
                                 value
                                 :
 
-                            value2;
-
-    ;
+                            value2;;
     
 }
 

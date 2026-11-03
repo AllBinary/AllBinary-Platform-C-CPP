@@ -47,7 +47,7 @@ class UpdateMyFontProcessor;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class CustomCustomItem: public ABCustomItem, public UpdateMyFontInterface {
+class CustomCustomItem: public ABCustomItem, public virtual UpdateMyFontInterface {
 
     /*protected*/ public: MyFontProcessor* updateMyFontProcessor;
 

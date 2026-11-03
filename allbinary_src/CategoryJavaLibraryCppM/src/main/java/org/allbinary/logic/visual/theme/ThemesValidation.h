@@ -66,7 +66,7 @@ class Node;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class ThemesValidation: public Validation, public DomNodeInterface {
+class ThemesValidation: public Validation, public virtual DomNodeInterface {
 
     private: BasicArrayList* themeVector;
 

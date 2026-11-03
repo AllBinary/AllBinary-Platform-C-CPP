@@ -61,7 +61,7 @@
         
 class Bridge
             : public virtual Object
-        , public HardwareComponentInterface, public BridgeInterface {
+        , public virtual HardwareComponentInterface, public virtual BridgeInterface {
 
     private: std::string data;
 

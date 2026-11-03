@@ -84,7 +84,7 @@ class FileItem;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class DownloadableInventoryItemView: public HttpStoreComponentView, public RequestMapInterface {
+class DownloadableInventoryItemView: public HttpStoreComponentView, public virtual RequestMapInterface {
 
     public: static inline int32_t TYPE_ID = 11;
 

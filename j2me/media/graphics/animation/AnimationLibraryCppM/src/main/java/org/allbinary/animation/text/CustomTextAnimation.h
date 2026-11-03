@@ -64,7 +64,7 @@ class StringUtil;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class CustomTextAnimation: public TextAnimation, public TextInterface {
+class CustomTextAnimation: public TextAnimation, public virtual TextInterface {
 
     /*protected*/ public: FontDebugFactory* fontDebugFactory;
 

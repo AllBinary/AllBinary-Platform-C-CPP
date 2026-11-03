@@ -63,7 +63,7 @@ class DropCellPositionHistory;
         
 class RTSGameLayerPositionFinder
             : public virtual Object
-        , public LayerPositionFinderInterface {
+        , public virtual LayerPositionFinderInterface {
 
     private: static RTSGameLayerPositionFinder* instance_owner();
     private: static RTSGameLayerPositionFinder* instance;

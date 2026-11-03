@@ -67,7 +67,7 @@ class BasicArrayList;
         
 class GeographicMapCellPositionAreaBase
             : public virtual Object
-        , public GeographicMapCellPositionAreaInterface {
+        , public virtual GeographicMapCellPositionAreaInterface {
 
     private: static GeographicMapCellPositionAreaBase* NULL_GEOGRPAHIC_MAP_POSITION_AREA_BASE_owner();
     public: static GeographicMapCellPositionAreaBase* NULL_GEOGRPAHIC_MAP_POSITION_AREA_BASE;

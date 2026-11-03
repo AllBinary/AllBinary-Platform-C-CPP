@@ -63,7 +63,7 @@ class NullUtil;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class LineAnimation: public Animation, public ColorCompositeInterface, public PositionInterface {
+class LineAnimation: public Animation, public virtual ColorCompositeInterface, public virtual PositionInterface {
 
     private: std::vector<std::vector<int32_t>> newLine;
 

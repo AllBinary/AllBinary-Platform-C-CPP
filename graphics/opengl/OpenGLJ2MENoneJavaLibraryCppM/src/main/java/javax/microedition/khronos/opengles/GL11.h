@@ -42,7 +42,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class GL11: public GL10 {
+class GL11: public virtual GL10 {
 
 };
 

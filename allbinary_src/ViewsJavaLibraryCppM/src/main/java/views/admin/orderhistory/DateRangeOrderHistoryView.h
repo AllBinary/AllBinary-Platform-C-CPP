@@ -80,7 +80,7 @@ class Node;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class DateRangeOrderHistoryView: public HttpStoreComponentView, public ValidationComponentInterface, public DomNodeInterface {
+class DateRangeOrderHistoryView: public HttpStoreComponentView, public virtual ValidationComponentInterface, public virtual DomNodeInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

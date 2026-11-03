@@ -73,7 +73,7 @@ class CustomizerUtil;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class InsertHeaderValidationView: public TopBarView, public ValidationComponentInterface {
+class InsertHeaderValidationView: public TopBarView, public virtual ValidationComponentInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

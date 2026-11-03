@@ -71,7 +71,7 @@ class ColorsData;
         
 class ColorsView
             : public virtual Object
-        , public DomNodeInterface {
+        , public virtual DomNodeInterface {
 
     private: CommonPhoneStrings* commonPhoneStrings;
 

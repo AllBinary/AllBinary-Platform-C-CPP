@@ -65,7 +65,7 @@ class CommonStrings;
         
 class CryptServiceFactory
             : public virtual Object
-        , public ServiceFactory {
+        , public virtual ServiceFactory {
 
     /*protected*/ public: LogUtil* logUtil;
 

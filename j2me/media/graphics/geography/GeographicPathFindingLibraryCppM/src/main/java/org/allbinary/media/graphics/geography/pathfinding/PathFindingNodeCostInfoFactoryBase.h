@@ -66,7 +66,7 @@ class GeographicMapCellPosition;
         
 class PathFindingNodeCostInfoFactoryBase
             : public virtual Object
-        , public PathFindingNodeCostInfoFactoryBaseInterface {
+        , public virtual PathFindingNodeCostInfoFactoryBaseInterface {
 
     private: static PathFindingNodeCostInfoFactoryBase* NULL_PATH_FINDING_NODE_COST_INFO_FACTORY_BASE_owner();
     public: static PathFindingNodeCostInfoFactoryBase* NULL_PATH_FINDING_NODE_COST_INFO_FACTORY_BASE;

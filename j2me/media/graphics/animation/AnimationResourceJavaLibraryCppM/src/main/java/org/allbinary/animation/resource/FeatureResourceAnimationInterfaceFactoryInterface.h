@@ -61,7 +61,7 @@ template<typename T1, typename T2> class ABHashtable;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class FeatureResourceAnimationInterfaceFactoryInterface: public ResourceAnimationInterfaceFactoryInterface, public RectangleResourceFactoryInterface, public GameFeatureControlledInterface {
+class FeatureResourceAnimationInterfaceFactoryInterface: public virtual ResourceAnimationInterfaceFactoryInterface, public virtual RectangleResourceFactoryInterface, public virtual GameFeatureControlledInterface {
 
     public: virtual ABHashtable<Object*, Object*>* getHashtable() = 0;
 

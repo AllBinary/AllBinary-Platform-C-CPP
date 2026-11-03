@@ -65,7 +65,7 @@ class ViewPositionFactoryInterface;
         
 class MineLayerFactory
             : public virtual Object
-        , public AllBinaryLayerFactoryInterface {
+        , public virtual AllBinaryLayerFactoryInterface {
 
     private: ViewPositionFactoryInterface* viewPositionFactoryInterface;
 

@@ -66,7 +66,7 @@ class AllBinaryLayer;
         
 class LayerProcessor
             : public virtual Object
-        , public LayerProcessorInterface {
+        , public virtual LayerProcessorInterface {
 
     /*protected*/ public: CommonStrings* commonStrings;
 

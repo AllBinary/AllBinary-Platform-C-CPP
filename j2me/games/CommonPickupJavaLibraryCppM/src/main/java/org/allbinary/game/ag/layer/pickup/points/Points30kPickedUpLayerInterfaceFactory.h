@@ -69,7 +69,7 @@ class PointsResources;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class Points30kPickedUpLayerInterfaceFactory: public PickedUpLayerInterfaceFactory, public PickupProcessorInterface {
+class Points30kPickedUpLayerInterfaceFactory: public PickedUpLayerInterfaceFactory, public virtual PickupProcessorInterface {
 
     private: static PickedUpLayerInterfaceFactoryInterface* pickedUpLayerInterfaceFactoryInterface;
 

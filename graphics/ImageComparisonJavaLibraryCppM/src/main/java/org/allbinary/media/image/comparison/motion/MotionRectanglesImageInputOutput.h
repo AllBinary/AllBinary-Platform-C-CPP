@@ -93,7 +93,7 @@ class Color;
         
 class MotionRectanglesImageInputOutput
             : public virtual Object
-        , public ImageIOInterface {
+        , public virtual ImageIOInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

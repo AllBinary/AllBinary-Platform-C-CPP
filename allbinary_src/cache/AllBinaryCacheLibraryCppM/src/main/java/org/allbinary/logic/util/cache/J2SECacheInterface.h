@@ -59,7 +59,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class J2SECacheInterface: public AutomaticCacheInterface {
+class J2SECacheInterface: public virtual AutomaticCacheInterface {
 
     public: virtual Set<Object*>* keySet() = 0;
 

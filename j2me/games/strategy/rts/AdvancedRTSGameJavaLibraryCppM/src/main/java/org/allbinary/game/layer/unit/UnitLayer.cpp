@@ -506,9 +506,7 @@ this->setWaypointBehavior(new UnitWaypointBehavior2(this, dynamic_cast<AdvancedR
                                 new MultipassNoCacheWaypoint(this, AttackSound::getInstance())
                                 :
 
-                            new NoCacheWaypoint(this, AttackSound::getInstance());
-
-    ;;
+                            new NoCacheWaypoint(this, AttackSound::getInstance());;;
     
 this->getWaypointBehavior()->setWaypoint(waypoint);
     

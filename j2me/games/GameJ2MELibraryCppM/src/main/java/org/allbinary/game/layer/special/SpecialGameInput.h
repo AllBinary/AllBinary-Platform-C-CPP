@@ -65,7 +65,7 @@ class AllBinaryLayerManager;
         
 class SpecialGameInput
             : public virtual Object
-        , public SpecialGameInputInterface {
+        , public virtual SpecialGameInputInterface {
 
 
             

@@ -66,7 +66,7 @@ class ScaleProperties;
         
 class LineAnimationFactory
             : public virtual Object
-        , public AnimationInterfaceFactoryInterface {
+        , public virtual AnimationInterfaceFactoryInterface {
 
     private: BasicColor* basicColor;
 

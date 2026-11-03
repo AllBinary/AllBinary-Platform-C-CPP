@@ -80,7 +80,7 @@ class MouseInputAutomationProcessor;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class MouseActionScriptInput: public BasicProfileActionScriptInput, public MouseActionScriptInputInterface {
+class MouseActionScriptInput: public BasicProfileActionScriptInput, public virtual MouseActionScriptInputInterface {
 
     private: static inline const std::string NAME = "Mouse";
 

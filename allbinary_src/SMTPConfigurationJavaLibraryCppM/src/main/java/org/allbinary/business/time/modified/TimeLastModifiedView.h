@@ -68,7 +68,7 @@ class Node;
         
 class TimeLastModifiedView
             : public virtual Object
-        , public DomNodeInterface {
+        , public virtual DomNodeInterface {
 
     private: TimeLastModified* timeLastModified;
 

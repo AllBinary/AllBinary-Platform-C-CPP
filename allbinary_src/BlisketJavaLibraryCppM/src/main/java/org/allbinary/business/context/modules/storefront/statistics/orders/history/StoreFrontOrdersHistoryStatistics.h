@@ -74,7 +74,7 @@ class StoreFrontOrdersHistoryStatisticsData;
         
 class StoreFrontOrdersHistoryStatistics
             : public virtual Object
-        , public StoreFrontOrdersHistoryStatisticsInterface {
+        , public virtual StoreFrontOrdersHistoryStatisticsInterface {
 
     private: int64_t numberOfOrdersLong;
 

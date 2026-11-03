@@ -69,7 +69,7 @@
 
 AllBinaryVibrationME* AllBinaryVibration::VIBRATION = AllBinaryNoVibration::NO_VIBRATION;
 
-AllBinaryVibration::AllBinaryVibration() : vibrator(dynamic_cast<Vibrator*>(ResourceUtil::getInstance()->getContext()->getSystemService(Context::VIBRATOR_SERVICE) as unknown)){
+AllBinaryVibration::AllBinaryVibration() : vibrator(dynamic_cast<Vibrator*>(ResourceUtil::getInstance()->getContext()->getSystemService(Context::VIBRATOR_SERVICE))){
 }
 
 

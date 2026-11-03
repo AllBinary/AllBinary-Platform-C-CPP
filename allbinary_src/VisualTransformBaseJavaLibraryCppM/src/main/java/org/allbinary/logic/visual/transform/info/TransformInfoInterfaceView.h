@@ -67,7 +67,7 @@ class TransformInfoData;
         
 class TransformInfoInterfaceView
             : public virtual Object
-        , public DomNodeInterface {
+        , public virtual DomNodeInterface {
 
     private: TransformInfoInterface* transformInfoInterface;
 

@@ -61,7 +61,7 @@ class Graphics;
         
 class TestInputExample
             : public virtual Object
-        , public TestInputInterface {
+        , public virtual TestInputInterface {
 
 
             

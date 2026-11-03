@@ -57,7 +57,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class GameInitializedListenerInterface: public EventListenerInterface {
+class GameInitializedListenerInterface: public virtual EventListenerInterface {
 
     public: virtual void onGameInitialized(GameInitializedEvent* gameInitializedEvent) = 0;
 

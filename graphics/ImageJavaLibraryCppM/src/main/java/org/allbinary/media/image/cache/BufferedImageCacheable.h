@@ -63,7 +63,7 @@ class StringMaker;
         
 class BufferedImageCacheable
             : public virtual Object
-        , public CacheableInterface {
+        , public virtual CacheableInterface {
 
     private: BufferedImageInfo* key;
 

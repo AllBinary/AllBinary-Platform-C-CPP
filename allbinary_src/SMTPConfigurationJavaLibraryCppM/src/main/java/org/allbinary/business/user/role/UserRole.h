@@ -64,7 +64,7 @@ class UserFactoryInterface;
         
 class UserRole
             : public virtual Object
-        , public Serializable {
+        , public virtual Serializable {
 
     private: BasicUserRole* basicUserRole;
 

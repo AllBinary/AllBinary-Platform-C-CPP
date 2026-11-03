@@ -65,7 +65,7 @@ class AnimationBehavior;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class IndexedAnimation: public Animation, public IndexedAnimationInterface {
+class IndexedAnimation: public Animation, public virtual IndexedAnimationInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

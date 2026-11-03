@@ -66,7 +66,7 @@ class StringMaker;
         
 class ServiceReferenceMap
             : public virtual Object
-        , public Map {
+        , public virtual Map {
 
     public: static std::string toString(Map* map);
 

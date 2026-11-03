@@ -72,7 +72,7 @@ class PaymentGatewayData;
         
 class PaymentGatewayInterfaceFactory
             : public virtual Object
-        , public PaymentGatewayInterfaceFactoryInterface {
+        , public virtual PaymentGatewayInterfaceFactoryInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

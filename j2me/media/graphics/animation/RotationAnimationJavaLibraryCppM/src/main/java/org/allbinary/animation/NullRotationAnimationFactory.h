@@ -75,7 +75,7 @@ class Animation;
         
 class NullRotationAnimationFactory
             : public virtual Object
-        , public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
+        , public virtual AnimationInterfaceFactoryInterface, public virtual ProceduralAnimationInterfaceFactoryInterface {
 public: class NullRotationAnimation2;
 
     private: static NullRotationAnimationFactory* NULL_ROTATION_ANIMATION_FACTORY_owner();

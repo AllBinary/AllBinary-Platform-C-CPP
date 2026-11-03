@@ -61,7 +61,7 @@ class CacheableInterface;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class AutomaticCacheInterface: public CacheInterface {
+class AutomaticCacheInterface: public virtual CacheInterface {
 
                 //@Throws(Exception.constructor)
             

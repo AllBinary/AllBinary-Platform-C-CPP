@@ -76,7 +76,7 @@ class BasicArrayListD;
         
 class AndroidHardware
             : public virtual Object
-        , public HardwareInterface {
+        , public virtual HardwareInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

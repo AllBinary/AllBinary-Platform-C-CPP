@@ -82,7 +82,7 @@ class BasicGeographicMap;
         
 class GeographicMapCellHistory
             : public virtual Object
-        , public UpdateMyFontInterface {
+        , public virtual UpdateMyFontInterface {
 
     public: static std::vector<GeographicMapCellHistory*> NULL_GEOGRPAHIC_MAP_HISTORY_ARRAY;
 

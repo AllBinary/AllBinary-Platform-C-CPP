@@ -66,7 +66,7 @@ class CommonSeps;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class MagicGameObject: public MeteredGameObject, public MagicGameObjectInterface {
+class MagicGameObject: public MeteredGameObject, public virtual MagicGameObjectInterface {
 
     private: const std::string MP_LABEL = "MP:";
 

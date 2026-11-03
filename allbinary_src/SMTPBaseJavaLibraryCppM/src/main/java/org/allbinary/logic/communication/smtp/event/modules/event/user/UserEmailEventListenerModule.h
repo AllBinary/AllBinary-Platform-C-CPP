@@ -68,7 +68,7 @@ class EmailQueueFactory;
         
 class UserEmailEventListenerModule
             : public virtual Object
-        , public UserEmailEventListenerInterface {
+        , public virtual UserEmailEventListenerInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

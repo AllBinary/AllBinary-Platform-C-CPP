@@ -72,7 +72,7 @@ class GraphicsAnalysisUtil;
         
 class MeteredGameObject
             : public virtual Object
-        , public MeteredGameObjectInterface {
+        , public virtual MeteredGameObjectInterface {
 
     private: std::vector<double> ratios;
 

@@ -65,7 +65,7 @@ class DisplayInBrowserContraintsInterface;
         
 class Advertisement
             : public virtual Object
-        , public AdvertisementInterface {
+        , public virtual AdvertisementInterface {
 
     private: std::string artist;
 

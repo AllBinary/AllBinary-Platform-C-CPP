@@ -77,7 +77,7 @@ class RemoteHighScores;
         
 class RemoteHighScoresProcessor
             : public virtual Object
-        , public RemoteHighScoresProcessorInterface {
+        , public virtual RemoteHighScoresProcessorInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

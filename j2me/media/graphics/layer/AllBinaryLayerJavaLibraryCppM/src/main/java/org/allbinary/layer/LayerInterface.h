@@ -59,7 +59,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class LayerInterface: public NamedInterface, public PaintableInterface, public GroupInterfaceCompositeInterface, public PositionInterface {
+class LayerInterface: public virtual NamedInterface, public virtual PaintableInterface, public virtual GroupInterfaceCompositeInterface, public virtual PositionInterface {
 
     public: virtual int32_t getHeight() = 0;
 

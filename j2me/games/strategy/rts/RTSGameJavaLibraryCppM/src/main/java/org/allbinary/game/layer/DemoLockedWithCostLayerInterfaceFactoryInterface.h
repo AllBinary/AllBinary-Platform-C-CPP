@@ -56,7 +56,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class DemoLockedWithCostLayerInterfaceFactoryInterface: public CostLayerInterfaceFactoryInterface {
+class DemoLockedWithCostLayerInterfaceFactoryInterface: public virtual CostLayerInterfaceFactoryInterface {
 
     public: virtual bool isDemoLocked() = 0;
 

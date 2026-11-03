@@ -65,7 +65,7 @@ class UserInterface;
         
 class WizardWebStoreAdminUserFactory
             : public virtual Object
-        , public UserFactoryInterface {
+        , public virtual UserFactoryInterface {
 
 public: WizardWebStoreAdminUserFactory();
 

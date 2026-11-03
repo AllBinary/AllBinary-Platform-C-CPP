@@ -117,7 +117,7 @@ class EventQueue;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class InputAutomationJFrame: public javax::swing::JFrame, public InputAutomationConfigurationModuleChangeListener, public InputAutomationRobotChangeListener, public HelpSetListener {
+class InputAutomationJFrame: public javax::swing::JFrame, public virtual InputAutomationConfigurationModuleChangeListener, public virtual InputAutomationRobotChangeListener, public virtual HelpSetListener {
 
     private: static inline InputAutomationJFrame* INPUTAUTOMATION_JFRAME;
 

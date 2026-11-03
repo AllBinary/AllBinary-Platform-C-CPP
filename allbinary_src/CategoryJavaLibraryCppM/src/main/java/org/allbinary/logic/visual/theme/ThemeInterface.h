@@ -56,7 +56,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class ThemeInterface: public TableMappingInterface {
+class ThemeInterface: public virtual TableMappingInterface {
 
     public: virtual std::string getName() = 0;
 

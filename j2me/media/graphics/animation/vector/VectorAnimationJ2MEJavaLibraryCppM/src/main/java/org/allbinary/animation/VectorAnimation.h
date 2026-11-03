@@ -68,7 +68,7 @@ class AnimationBehavior;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class VectorAnimation: public IndexedAnimation, public VectorAnimationInterface {
+class VectorAnimation: public IndexedAnimation, public virtual VectorAnimationInterface {
 
     public: static VectorAnimation* createVectorAnimation(std::vector<std::vector<int32_t>> currentPoints2, BasicColor* basicColor, AnimationBehavior* animationBehavior);
 

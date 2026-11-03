@@ -70,7 +70,7 @@ class PathUtil;
         
 class FileTableMapping
             : public virtual Object
-        , public TableMappingInterface {
+        , public virtual TableMappingInterface {
 
     private: AbFile* file;
 

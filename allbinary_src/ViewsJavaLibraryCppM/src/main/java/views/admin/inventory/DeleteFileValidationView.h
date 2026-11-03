@@ -69,7 +69,7 @@ class Node;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class DeleteFileValidationView: public InventoryItemView, public ValidationComponentInterface {
+class DeleteFileValidationView: public InventoryItemView, public virtual ValidationComponentInterface {
 
     private: std::string id;
 

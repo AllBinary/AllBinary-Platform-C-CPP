@@ -66,7 +66,7 @@ class CustomizerUtil;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class NewMetaValidationView: public MetaView, public ValidationComponentInterface {
+class NewMetaValidationView: public MetaView, public virtual ValidationComponentInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

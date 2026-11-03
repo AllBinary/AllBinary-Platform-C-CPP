@@ -110,7 +110,7 @@ class RTSLayerUtil;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class AdvancedRTSGameLayer: public RTSLayer, public DestroyedEventListenerInterface {
+class AdvancedRTSGameLayer: public RTSLayer, public virtual DestroyedEventListenerInterface {
 
                 //@Throws(Exception.constructor)
             

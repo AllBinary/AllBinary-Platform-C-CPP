@@ -46,7 +46,7 @@ class ABStringComponent;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class ABTextItem: public CustomCustomItem, public ABCustomItemInterface {
+class ABTextItem: public CustomCustomItem, public virtual ABCustomItemInterface {
 
 public: ABTextItem(std::string label, int32_t layout, std::string altText, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
 

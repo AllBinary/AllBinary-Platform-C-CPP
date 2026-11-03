@@ -73,7 +73,7 @@ class UserEmailEventConfigurationMapping;
         
 class UserEmailEventConfigurationView
             : public virtual Object
-        , public DomNodeInterface {
+        , public virtual DomNodeInterface {
 
     private: UserEmailEventConfigurationInterface* userEmailEventConfigurationInterface;
 

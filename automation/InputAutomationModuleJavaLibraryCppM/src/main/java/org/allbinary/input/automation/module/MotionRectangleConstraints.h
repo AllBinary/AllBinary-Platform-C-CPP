@@ -70,7 +70,7 @@ class Rectangle;
         
 class MotionRectangleConstraints
             : public virtual Object
-        , public MotionRectangleConstraintsInterface {
+        , public virtual MotionRectangleConstraintsInterface {
 
     private: Dimension* minDimension;
 

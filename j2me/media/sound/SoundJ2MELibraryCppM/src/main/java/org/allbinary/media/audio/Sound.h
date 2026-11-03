@@ -68,7 +68,7 @@ class NoPlayer;
         
 class Sound
             : public virtual Object
-        , public SoundInterface, public Runnable {
+        , public virtual SoundInterface, public virtual Runnable {
 
     private: std::string resource;
 

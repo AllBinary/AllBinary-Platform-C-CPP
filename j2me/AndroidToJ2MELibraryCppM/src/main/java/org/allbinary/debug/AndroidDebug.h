@@ -65,7 +65,7 @@ class Debug;
         
 class AndroidDebug
             : public virtual Object
-        , public DebugInterface {
+        , public virtual DebugInterface {
 
 
             

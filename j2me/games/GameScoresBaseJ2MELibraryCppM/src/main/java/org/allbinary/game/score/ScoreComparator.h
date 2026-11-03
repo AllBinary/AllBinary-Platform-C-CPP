@@ -72,7 +72,7 @@ class CommonStrings;
         
 class ScoreComparator
             : public virtual Object
-        , public RecordComparator {
+        , public virtual RecordComparator {
 
     /*protected*/ public: LogUtil* logUtil;
 

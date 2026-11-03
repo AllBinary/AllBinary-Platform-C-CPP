@@ -68,7 +68,7 @@ class HealthBarAnimation;
         
 class HealthBarAnimationInterfaceFactory
             : public virtual Object
-        , public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
+        , public virtual AnimationInterfaceFactoryInterface, public virtual ProceduralAnimationInterfaceFactoryInterface {
 
 public: HealthBarAnimationInterfaceFactory();
 

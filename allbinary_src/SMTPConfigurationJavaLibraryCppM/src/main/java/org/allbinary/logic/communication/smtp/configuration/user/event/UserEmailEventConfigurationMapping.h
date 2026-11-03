@@ -68,7 +68,7 @@ class UserEmailEventConfigurationData;
         
 class UserEmailEventConfigurationMapping
             : public virtual Object
-        , public TableMappingInterface {
+        , public virtual TableMappingInterface {
 
     private: UserEmailEventConfigurationInterface* userEmailEventConfigurationInterface;
 

@@ -59,7 +59,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class AnalogControllerConfigurationEventListenerInterface: public EventListenerInterface {
+class AnalogControllerConfigurationEventListenerInterface: public virtual EventListenerInterface {
 
                 //@Throws(Exception.constructor)
             

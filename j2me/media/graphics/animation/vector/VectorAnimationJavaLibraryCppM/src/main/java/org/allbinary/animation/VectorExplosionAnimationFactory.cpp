@@ -84,7 +84,7 @@ this->setBasicColorP(basicColor);
             
     auto VectorExplosionAnimationFactory::getInstanceAnimation(Animation* animationInterface) -> Animation*{
 
-    VectorAnimationInterface* vectorRotationAnimationInterface = dynamic_cast<VectorAnimationInterface*>(animationInterface as unknown);;
+    VectorAnimationInterface* vectorRotationAnimationInterface = dynamic_cast<VectorAnimationInterface*>(animationInterface);;
     
 
     int32_t frame = vectorRotationAnimationInterface->getFrame();;

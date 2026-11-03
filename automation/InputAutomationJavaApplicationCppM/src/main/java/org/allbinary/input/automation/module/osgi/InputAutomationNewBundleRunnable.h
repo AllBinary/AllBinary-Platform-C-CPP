@@ -90,7 +90,7 @@ class BasicArrayListD;
         
 class InputAutomationNewBundleRunnable
             : public virtual Object
-        , public RunnableInterface {
+        , public virtual RunnableInterface {
 
     private: static inline const std::string FILE = "file:";
 

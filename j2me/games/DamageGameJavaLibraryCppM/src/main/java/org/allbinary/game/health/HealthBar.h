@@ -64,7 +64,7 @@ class Health;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class HealthBar: public Paintable, public HealthListenerInterface {
+class HealthBar: public Paintable, public virtual HealthListenerInterface {
 
     private: HealthBarAnimation* animationInterface;
 

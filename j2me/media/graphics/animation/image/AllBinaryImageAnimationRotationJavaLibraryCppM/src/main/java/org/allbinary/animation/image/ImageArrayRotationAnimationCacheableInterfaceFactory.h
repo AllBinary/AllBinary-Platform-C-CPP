@@ -65,7 +65,7 @@ class CacheableInterface;
         
 class ImageArrayRotationAnimationCacheableInterfaceFactory
             : public virtual Object
-        , public CacheableInterfaceFactoryInterface {
+        , public virtual CacheableInterfaceFactoryInterface {
 
 
             

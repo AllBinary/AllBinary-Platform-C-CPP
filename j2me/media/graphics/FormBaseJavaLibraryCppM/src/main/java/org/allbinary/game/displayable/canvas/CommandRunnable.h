@@ -69,7 +69,7 @@ class CommonStrings;
         
 class CommandRunnable
             : public virtual Object
-        , public Runnable {
+        , public virtual Runnable {
 
     /*protected*/ public: LogUtil* logUtil;
 

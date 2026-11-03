@@ -58,7 +58,7 @@ class BasicArrayList;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class LogTableEntityInterface: public BasicDataTableInterface {
+class LogTableEntityInterface: public virtual BasicDataTableInterface {
 
     public: virtual void deleteWhere(std::string key, std::string value) = 0;
 

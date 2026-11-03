@@ -71,7 +71,7 @@ class PickedUpLayerType;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class CountedPickedUpLayerInterfaceFactory: public PickedUpLayerInterfaceFactory, public CountedPickedUpLayerInterfaceFactoryInterface {
+class CountedPickedUpLayerInterfaceFactory: public PickedUpLayerInterfaceFactory, public virtual CountedPickedUpLayerInterfaceFactoryInterface {
 
     private: static CountedPickedUpLayerInterfaceFactory* NULL_COUNTED_PICKUP_LAYER_FACTORY_owner();
     public: static CountedPickedUpLayerInterfaceFactory* NULL_COUNTED_PICKUP_LAYER_FACTORY;

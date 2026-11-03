@@ -76,7 +76,7 @@ class CreditCardType;
         
 class Payment
             : public virtual Object
-        , public PaymentInterface, public DomNodeInterface {
+        , public virtual PaymentInterface, public virtual DomNodeInterface {
 
     private: std::string name;
 

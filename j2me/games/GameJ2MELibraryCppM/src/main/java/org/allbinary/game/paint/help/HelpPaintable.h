@@ -68,7 +68,7 @@ class StringUtil;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class HelpPaintable: public Paintable, public UpdateMyFontInterface {
+class HelpPaintable: public Paintable, public virtual UpdateMyFontInterface {
 
     /*protected*/ public: DisplayInfoSingleton* displayInfo;
 

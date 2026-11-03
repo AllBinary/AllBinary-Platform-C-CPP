@@ -56,7 +56,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class AdvertisementThumbnailInterface: public AdvertisementImageInterface {
+class AdvertisementThumbnailInterface: public virtual AdvertisementImageInterface {
 
 };
 

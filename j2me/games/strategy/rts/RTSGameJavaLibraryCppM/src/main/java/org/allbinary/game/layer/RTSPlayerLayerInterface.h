@@ -65,7 +65,7 @@ class PlayerOwnedRTSLayers;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class RTSPlayerLayerInterface: public GameNotificationHudCompositeInterface, public BuildMenuCompositeInterface, public PlayerGameInputCompositeInterface, public DestroyedEventListenerInterface, public TickableInterface, public PathFindingLayerInterface {
+class RTSPlayerLayerInterface: public virtual GameNotificationHudCompositeInterface, public virtual BuildMenuCompositeInterface, public virtual PlayerGameInputCompositeInterface, public virtual DestroyedEventListenerInterface, public virtual TickableInterface, public virtual PathFindingLayerInterface {
 
     public: virtual Capital* getCapital() = 0;
 

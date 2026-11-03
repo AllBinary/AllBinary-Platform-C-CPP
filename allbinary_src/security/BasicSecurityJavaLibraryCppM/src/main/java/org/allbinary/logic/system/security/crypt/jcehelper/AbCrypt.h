@@ -77,7 +77,7 @@ class SecretComposite;
         
 class AbCrypt
             : public virtual Object
-        , public CryptInterface {
+        , public virtual CryptInterface {
 
     private: TsUtil* tsUtil;
 

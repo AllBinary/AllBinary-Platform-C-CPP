@@ -68,7 +68,7 @@ class HighScore;
         
 class HighScores
             : public virtual Object
-        , public HighScoresInterface {
+        , public virtual HighScoresInterface {
 
     private: BasicArrayList* orderedHighScoresList;
 

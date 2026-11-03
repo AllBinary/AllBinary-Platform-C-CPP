@@ -64,7 +64,7 @@ class GeographicMapCellPosition;
         
 class NoGeographicMapCellPositionFactoryInitVisitor
             : public virtual Object
-        , public GeographicMapCellPositionFactoryInitVisitorInterface {
+        , public virtual GeographicMapCellPositionFactoryInitVisitorInterface {
 
 
             

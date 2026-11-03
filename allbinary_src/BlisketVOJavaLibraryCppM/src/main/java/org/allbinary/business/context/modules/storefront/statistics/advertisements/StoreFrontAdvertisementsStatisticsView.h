@@ -68,7 +68,7 @@ class StoreFrontAdvertisementsStatisticsData;
         
 class StoreFrontAdvertisementsStatisticsView
             : public virtual Object
-        , public DomNodeInterface {
+        , public virtual DomNodeInterface {
 
     private: StoreFrontAdvertisementsStatisticsInterface* storeFrontAdvertisementsStatisticsInterface;
 

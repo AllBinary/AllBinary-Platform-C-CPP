@@ -79,7 +79,7 @@ class BasicArrayList;
         
 class Cpu
             : public virtual Object
-        , public CpuInterface, public HardwareComponentInterface {
+        , public virtual CpuInterface, public virtual HardwareComponentInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

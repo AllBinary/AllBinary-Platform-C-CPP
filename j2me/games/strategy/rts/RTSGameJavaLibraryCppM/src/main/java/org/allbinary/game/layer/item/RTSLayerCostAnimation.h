@@ -75,7 +75,7 @@ class EventStrings;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class RTSLayerCostAnimation: public Animation, public TechEventListenerInterface, public UpdateMyFontInterface {
+class RTSLayerCostAnimation: public Animation, public virtual TechEventListenerInterface, public virtual UpdateMyFontInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

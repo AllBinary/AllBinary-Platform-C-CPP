@@ -72,7 +72,7 @@ class NodeList;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class StoreThemeCategory: public Category, public StoreThemeCategoryInterface {
+class StoreThemeCategory: public Category, public virtual StoreThemeCategoryInterface {
 
     private: TransformInfoInterface* transformInfoInterface;
 

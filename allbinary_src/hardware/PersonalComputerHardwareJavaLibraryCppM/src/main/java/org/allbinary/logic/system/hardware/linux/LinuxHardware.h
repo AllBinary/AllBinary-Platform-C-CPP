@@ -91,7 +91,7 @@ class BasicArrayList;
         
 class LinuxHardware
             : public virtual Object
-        , public HardwareInterface {
+        , public virtual HardwareInterface {
 
     private: static inline const std::string PCIFILE = "/proc/pci";
 

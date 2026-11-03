@@ -71,7 +71,7 @@ class GenericProfileDataWorkerData;
         
 class GenericProfileDataWorkerType
             : public virtual Object
-        , public GenericProfileDataWorkerTypeInterface {
+        , public virtual GenericProfileDataWorkerTypeInterface {
 
     private: static HashMap<Object*, Object*>* hashMap;
 

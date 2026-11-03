@@ -85,7 +85,7 @@ class UnitLayer;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class UnitWaypointBehavior: public WaypointBehaviorBase, public WaypointEventListenerInterface {
+class UnitWaypointBehavior: public WaypointBehaviorBase, public virtual WaypointEventListenerInterface {
 
     /*protected*/ public: CommonSeps* commonSeps;
 

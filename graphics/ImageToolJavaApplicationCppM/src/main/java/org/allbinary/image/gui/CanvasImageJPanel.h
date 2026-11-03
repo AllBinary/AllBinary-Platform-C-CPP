@@ -88,7 +88,7 @@ class Short;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class CanvasImageJPanel: public javax::swing::JPanel, public ImageProcessedVisitor {
+class CanvasImageJPanel: public javax::swing::JPanel, public virtual ImageProcessedVisitor {
 
     /*protected*/ public: LogUtil* logUtil;
 

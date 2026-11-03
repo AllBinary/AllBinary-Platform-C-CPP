@@ -65,7 +65,7 @@ class TransformInfoData;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class TransformInfoDomNodeView: public TransformInfoDomNode, public DomNodeInterface {
+class TransformInfoDomNodeView: public TransformInfoDomNode, public virtual DomNodeInterface {
 
 public: TransformInfoDomNodeView(TransformInfoInterface* transformInfoInterface, std::string mapping);
 

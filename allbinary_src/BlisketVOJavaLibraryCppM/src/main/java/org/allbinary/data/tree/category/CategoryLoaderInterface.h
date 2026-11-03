@@ -58,7 +58,7 @@ class Document;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class CategoryLoaderInterface: public CategoryModifierTreeInterface {
+class CategoryLoaderInterface: public virtual CategoryModifierTreeInterface {
 
     public: virtual Document* getDoc(CategoryInterface* categoryInterface) = 0;
 

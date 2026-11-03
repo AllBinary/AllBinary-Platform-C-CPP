@@ -57,7 +57,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class ValidationComponentInterface: public TransformInterface, public ValidationInterface {
+class ValidationComponentInterface: public virtual TransformInterface, public virtual ValidationInterface {
 
 };
 

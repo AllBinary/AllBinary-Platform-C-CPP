@@ -173,7 +173,7 @@ this->removeGameKeyEvent(canvas, keyCode, deviceId, false);
                         
                                     {
                                     
-    GameKeyEventSourceInterface* gameKeyEventSourceInterface = dynamic_cast<GameKeyEventSourceInterface*>(canvas as unknown);;
+    GameKeyEventSourceInterface* gameKeyEventSourceInterface = dynamic_cast<GameKeyEventSourceInterface*>(canvas);;
     
 
     GameKeyEvent* gameKeyEvent = this->gameKeyEventFactory->getInstanceForInput(gameKeyEventSourceInterface, gameKey);;

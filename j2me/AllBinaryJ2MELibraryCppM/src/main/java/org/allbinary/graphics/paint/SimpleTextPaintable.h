@@ -64,7 +64,7 @@ class UpdateMyFontProcessor;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class SimpleTextPaintable: public Paintable, public UpdateMyFontInterface {
+class SimpleTextPaintable: public Paintable, public virtual UpdateMyFontInterface {
 
     private: DisplayInfoSingleton* displayInfoSingleton;
 

@@ -67,7 +67,7 @@ class Node;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class DeleteValidationView: public BillingAddressView, public ValidationComponentInterface {
+class DeleteValidationView: public BillingAddressView, public virtual ValidationComponentInterface {
 
     private: std::string value;
 

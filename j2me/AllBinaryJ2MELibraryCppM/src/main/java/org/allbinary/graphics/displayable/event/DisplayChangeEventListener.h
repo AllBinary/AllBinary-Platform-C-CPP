@@ -59,7 +59,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class DisplayChangeEventListener: public EventListenerInterface {
+class DisplayChangeEventListener: public virtual EventListenerInterface {
 
                 //@Throws(Exception.constructor)
             

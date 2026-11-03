@@ -64,7 +64,7 @@ class VisitorInterface;
         
 class VisitorFileFilter
             : public virtual Object
-        , public FileFilter {
+        , public virtual FileFilter {
 
     private: VisitorInterface* booleanVisitorInterface;
 

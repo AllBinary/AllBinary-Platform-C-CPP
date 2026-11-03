@@ -103,7 +103,7 @@ VectorCenterGenerator::VectorCenterGenerator() : logUtil(LogUtil::getInstance())
             
     auto VectorCenterGenerator::calculate(HashMap<Object*, Object*>* hashMap) -> void{
 
-    std::vector<Object*> graphicItemArray = hashMap->keys().();;
+    std::vector<Object*> graphicItemArray = hashMap->keys().toArray();;
     
 
     int32_t size = graphicItemArray.size();;
@@ -179,7 +179,7 @@ this->calculate(hashMap);
 this->logUtil->putF((new StringMaker())->append(" dx: ")->appendint(this->dx)->append(" dy: ")->appendint(this->dy)->toString(), this, this->commonStrings->GET_INSTANCE);
     
 
-    std::vector<Object*> graphicItemArray = hashMap->keys().();;
+    std::vector<Object*> graphicItemArray = hashMap->keys().toArray();;
     
 
     int32_t size = graphicItemArray.size();;

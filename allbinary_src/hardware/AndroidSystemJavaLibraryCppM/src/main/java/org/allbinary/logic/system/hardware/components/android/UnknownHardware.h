@@ -60,7 +60,7 @@
         
 class UnknownHardware
             : public virtual Object
-        , public HardwareComponentInterface {
+        , public virtual HardwareComponentInterface {
 
     private: std::string data;
 

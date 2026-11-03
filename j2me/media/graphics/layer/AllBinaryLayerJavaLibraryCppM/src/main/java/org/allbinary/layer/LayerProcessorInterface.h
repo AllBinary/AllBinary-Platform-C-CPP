@@ -61,7 +61,7 @@ class AllBinaryLayer;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class LayerProcessorInterface: public BasicLayerProcessorInterface {
+class LayerProcessorInterface: public virtual BasicLayerProcessorInterface {
 
     public: virtual LayerManager* getLayerManager() = 0;
 

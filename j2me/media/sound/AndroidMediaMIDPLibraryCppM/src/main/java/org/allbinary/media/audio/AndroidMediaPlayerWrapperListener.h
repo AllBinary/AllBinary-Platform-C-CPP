@@ -87,7 +87,7 @@ public: AndroidMediaPlayerWrapperListener(AndroidMediaPlayerWrapper* androidMedi
 //inner= member=true isStatic=
 private: class MediaPlayerOnBufferingUpdateListener
             : public virtual Object
-        , public MediaPlayer::OnBufferingUpdateListener {
+        , public virtual MediaPlayer::OnBufferingUpdateListener {
 
     public: AndroidMediaPlayerWrapperListener* outer = nullptr;
 
@@ -103,7 +103,7 @@ private: class MediaPlayerOnBufferingUpdateListener
 //inner= member=true isStatic=
 private: class MediaPlayerOnPreparedListener
             : public virtual Object
-        , public MediaPlayer::OnPreparedListener {
+        , public virtual MediaPlayer::OnPreparedListener {
 
     public: AndroidMediaPlayerWrapperListener* outer = nullptr;
 
@@ -119,7 +119,7 @@ private: class MediaPlayerOnPreparedListener
 //inner= member=true isStatic=
 private: class MediaPlayerOnErrorListener
             : public virtual Object
-        , public MediaPlayer::OnErrorListener {
+        , public virtual MediaPlayer::OnErrorListener {
 
     public: AndroidMediaPlayerWrapperListener* outer = nullptr;
 
@@ -135,7 +135,7 @@ private: class MediaPlayerOnErrorListener
 //inner= member=true isStatic=
 private: class MediaPlayerOnCompletionListener
             : public virtual Object
-        , public MediaPlayer::OnCompletionListener {
+        , public virtual MediaPlayer::OnCompletionListener {
 
     public: AndroidMediaPlayerWrapperListener* outer = nullptr;
 

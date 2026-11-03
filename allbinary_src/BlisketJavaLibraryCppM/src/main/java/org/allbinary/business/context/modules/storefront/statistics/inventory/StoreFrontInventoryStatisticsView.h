@@ -68,7 +68,7 @@ class StoreFrontInventoryStatisticsData;
         
 class StoreFrontInventoryStatisticsView
             : public virtual Object
-        , public DomNodeInterface {
+        , public virtual DomNodeInterface {
 
     private: StoreFrontInventoryStatisticsInterface* storeFrontInventoryStatisticsInterface;
 

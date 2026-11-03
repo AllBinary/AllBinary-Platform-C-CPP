@@ -66,7 +66,7 @@ class PrimitiveLongUtil;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class LevelHudWidget: public BasicHud, public PaintableInterface {
+class LevelHudWidget: public BasicHud, public virtual PaintableInterface {
 
                 //@Throws(Exception.constructor)
             

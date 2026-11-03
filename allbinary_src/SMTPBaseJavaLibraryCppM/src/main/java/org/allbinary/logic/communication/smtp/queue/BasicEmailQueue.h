@@ -64,7 +64,7 @@ class EmailInterface;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class BasicEmailQueue: public BasicQueue, public EmailQueueInterface {
+class BasicEmailQueue: public BasicQueue, public virtual EmailQueueInterface {
 
     private: static BasicEmailQueue* instance_owner();
     private: static BasicEmailQueue* instance;

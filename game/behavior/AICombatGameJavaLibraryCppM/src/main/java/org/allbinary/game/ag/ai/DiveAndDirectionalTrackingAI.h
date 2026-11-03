@@ -89,7 +89,7 @@ class BasicArrayListD;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class DiveAndDirectionalTrackingAI: public BasicAI, public TrackingEventListenerInterface, public DestroyedEventListenerInterface {
+class DiveAndDirectionalTrackingAI: public BasicAI, public virtual TrackingEventListenerInterface, public virtual DestroyedEventListenerInterface {
 
     private: MathUtil* mathUtil;
 

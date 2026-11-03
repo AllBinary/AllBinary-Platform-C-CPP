@@ -61,7 +61,7 @@ class PaymentInterface;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class PaymentEntityInterface: public BasicDataTableInterface {
+class PaymentEntityInterface: public virtual BasicDataTableInterface {
 
     public: virtual std::string getLastId(std::string userName) = 0;
 

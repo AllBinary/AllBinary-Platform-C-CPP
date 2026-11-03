@@ -56,7 +56,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class IndexedAnimationInterface: public SequentialAnimationInterface {
+class IndexedAnimationInterface: public virtual SequentialAnimationInterface {
 
     public: virtual void reset() = 0;
 

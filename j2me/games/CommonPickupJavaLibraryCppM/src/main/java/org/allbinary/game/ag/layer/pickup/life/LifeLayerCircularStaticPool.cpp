@@ -85,7 +85,7 @@ AllBinaryLayerCircularPool::initAllBinaryLayerCircularPool(allbinaryLayerFactory
     LifeLayer* lifeLayer = dynamic_cast<LifeLayer*>(this->getNextInstance());;
     
 
-    LifeInterfaceCompositeInterface* lifeInterfaceCompositeInterface = dynamic_cast<LifeInterfaceCompositeInterface*>(sourceLayerInterface as unknown);;
+    LifeInterfaceCompositeInterface* lifeInterfaceCompositeInterface = dynamic_cast<LifeInterfaceCompositeInterface*>(sourceLayerInterface);;
     
 
     Life* lifeInterface = lifeInterfaceCompositeInterface->getLifeInterface();;

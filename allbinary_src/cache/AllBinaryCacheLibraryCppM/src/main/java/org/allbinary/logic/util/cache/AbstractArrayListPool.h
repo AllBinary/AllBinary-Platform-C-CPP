@@ -69,7 +69,7 @@ class CacheableInterface;
         
 class AbstractArrayListPool
             : public virtual Object
-        , public PoolInterface {
+        , public virtual PoolInterface {
 
     /*protected*/ public: CommonStrings* commonStrings;
 

@@ -402,7 +402,7 @@ stringBuffer->append(this->sqlStrings->SET);
 
         try {
             
-    std::vector<Object*> columnArray = updatedKeyValuePairs->keySet()->();;
+    std::vector<Object*> columnArray = updatedKeyValuePairs->keySet()->toArray();;
     
 
     int32_t size = columnArray.size();;

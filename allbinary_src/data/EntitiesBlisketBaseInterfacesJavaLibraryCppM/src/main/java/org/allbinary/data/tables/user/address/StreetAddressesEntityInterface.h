@@ -59,7 +59,7 @@ class StreetAddress;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class StreetAddressesEntityInterface: public BasicDataTableInterface {
+class StreetAddressesEntityInterface: public virtual BasicDataTableInterface {
 
     public: virtual void remove(int32_t index) = 0;
 

@@ -80,7 +80,7 @@ class WaypointBehaviorBase;
         
 class NullPathFindingLayer
             : public virtual Object
-        , public PathFindingLayerInterface {
+        , public virtual PathFindingLayerInterface {
 
     private: static NullPathFindingLayer* NULL_PATH_FINDING_LAYER_owner();
     public: static NullPathFindingLayer* NULL_PATH_FINDING_LAYER;

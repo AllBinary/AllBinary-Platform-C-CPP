@@ -64,7 +64,7 @@ class HelperFactory;
         
 class WorkFlowHelperFactory
             : public virtual Object
-        , public TagHelperFactoryInterface {
+        , public virtual TagHelperFactoryInterface {
 
     private: static inline const std::string CLASSNAME = "admin.taghelpers.WorkFlowHelper";
 

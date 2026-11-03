@@ -61,7 +61,7 @@
         
 class NullCloseable
             : public virtual Object
-        , public Closeable {
+        , public virtual Closeable {
 
     private: static NullCloseable* NULL_CLOSEABLE_owner();
     public: static NullCloseable* NULL_CLOSEABLE;

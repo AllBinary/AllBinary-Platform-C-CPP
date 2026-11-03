@@ -71,7 +71,7 @@ class Node;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class TitleBodyCustomizerView: public HttpStoreComponentView, public DomNodeInterface {
+class TitleBodyCustomizerView: public HttpStoreComponentView, public virtual DomNodeInterface {
 
     private: static inline const std::string NAME = "None";
 

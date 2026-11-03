@@ -73,7 +73,7 @@ class NodeList;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class GenericBodyValidation: public Validation, public DomNodeInterface {
+class GenericBodyValidation: public Validation, public virtual DomNodeInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

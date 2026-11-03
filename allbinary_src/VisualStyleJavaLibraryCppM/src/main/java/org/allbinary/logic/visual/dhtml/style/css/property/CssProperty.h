@@ -73,7 +73,7 @@ class CssPropertyData;
         
 class CssProperty
             : public virtual Object
-        , public DomNodeInterface {
+        , public virtual DomNodeInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

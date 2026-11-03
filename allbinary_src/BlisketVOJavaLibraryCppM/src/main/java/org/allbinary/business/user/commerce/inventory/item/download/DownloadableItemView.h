@@ -77,7 +77,7 @@ class DownloadItemData;
         
 class DownloadableItemView
             : public virtual Object
-        , public DomNodeInterface {
+        , public virtual DomNodeInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

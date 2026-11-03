@@ -72,7 +72,7 @@ class ContextConfigurationData;
         
 class ContextConfigurationView
             : public virtual Object
-        , public DomNodeInterface {
+        , public virtual DomNodeInterface {
 
     private: ContextConfigurationInterface* contextConfigurationInterface;
 

@@ -63,7 +63,7 @@ class GroupCommonFactory;
         
 class Group
             : public virtual Object
-        , public GroupInterface {
+        , public virtual GroupInterface {
 
     private: std::string name;
 

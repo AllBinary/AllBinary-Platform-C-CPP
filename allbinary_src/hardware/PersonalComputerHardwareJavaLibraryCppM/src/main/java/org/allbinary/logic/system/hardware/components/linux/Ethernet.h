@@ -61,7 +61,7 @@
         
 class Ethernet
             : public virtual Object
-        , public HardwareComponentInterface, public EthernetInterface {
+        , public virtual HardwareComponentInterface, public virtual EthernetInterface {
 
     private: std::string data;
 

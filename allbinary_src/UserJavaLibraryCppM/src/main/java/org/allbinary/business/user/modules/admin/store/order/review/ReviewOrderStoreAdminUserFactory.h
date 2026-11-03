@@ -65,7 +65,7 @@ class UserInterface;
         
 class ReviewOrderStoreAdminUserFactory
             : public virtual Object
-        , public UserFactoryInterface {
+        , public virtual UserFactoryInterface {
 
 public: ReviewOrderStoreAdminUserFactory();
 

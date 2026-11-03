@@ -70,7 +70,7 @@ class TransformInfoObjectConfigInterface;
         
 class TransformInfoObjectConfigAndManipulatorFactoryBase
             : public virtual Object
-        , public TransformInfoObjectConfigAndManipulatorFactoryInterface {
+        , public virtual TransformInfoObjectConfigAndManipulatorFactoryInterface {
 
 
             

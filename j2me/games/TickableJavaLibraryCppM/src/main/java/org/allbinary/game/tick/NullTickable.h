@@ -63,7 +63,7 @@ class AllBinaryLayerManager;
         
 class NullTickable
             : public virtual Object
-        , public TickableInterface {
+        , public virtual TickableInterface {
 
     private: static NullTickable* SINGLETON_owner();
     private: static NullTickable* SINGLETON;

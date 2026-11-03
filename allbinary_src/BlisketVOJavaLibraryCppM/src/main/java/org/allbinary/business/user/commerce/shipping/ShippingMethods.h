@@ -70,7 +70,7 @@ class ShippingMethodsFactory;
         
 class ShippingMethods
             : public virtual Object
-        , public ShippingMethodsInterface {
+        , public virtual ShippingMethodsInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

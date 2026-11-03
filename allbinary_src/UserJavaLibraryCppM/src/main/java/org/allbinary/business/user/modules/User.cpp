@@ -299,7 +299,7 @@ this->enable_= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(userHashMap-
                                     }
                                 
 
-                        if(!stringValidationUtil->isValidRequired(this->mainEmail, 1, UserData::MAXLEN) || this->mainEmail.indexOf("@") ==  -1)
+                        if(!stringValidationUtil->isValidRequired(this->mainEmail, 1, UserData::MAXLEN) || JavaString::indexOf(this->mainEmail, "@") ==  -1)
                         
                                     {
                                     valid= Boolean::FALSE;
@@ -372,7 +372,7 @@ stringBuffer->append(this->password->getValidationInfo());
                                     }
                                 
 
-                        if(!stringValidationUtil->isValidRequired(this->mainEmail, 1, UserData::MAXLEN) || this->mainEmail.indexOf("@") ==  -1)
+                        if(!stringValidationUtil->isValidRequired(this->mainEmail, 1, UserData::MAXLEN) || JavaString::indexOf(this->mainEmail, "@") ==  -1)
                         
                                     {
                                     stringBuffer->append("Please enter a valid email address.<br />");

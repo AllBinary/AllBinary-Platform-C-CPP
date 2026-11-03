@@ -129,7 +129,7 @@ this->setGenericProfileActions(genericProfileActions);
                                     this->logUtil->putF(this->IMAGE_AVAILABLE_SO_PROCESSING, this, this->PROCESS_DATA_WORKER_RESULTS);
     
 
-    Object* anyType = cacheInterface->keySet()->()[0];;
+    Object* anyType = cacheInterface->keySet()->toArray()[0];;
     
 
     HashMap<Object*, Object*>* hashMap = this->getGenericProfileActions()->getHashMap();;

@@ -72,7 +72,7 @@ class NullControl;
         //BasicPlayerMIDP2JavaLibrary
 class BasicPlayer
             : public virtual Object
-        , public Player, public TimeBaseInterface, public Controllable2 {
+        , public virtual Player, public virtual TimeBaseInterface, public virtual Controllable2 {
 
     public: static inline std::string CONTROL_TYPE = "ToneControl";
 

@@ -68,7 +68,7 @@
 
 
 TestRemoteLogUtil::TestRemoteLogUtil(){
-Globals::getInstance()->init(this->getClass()getClassLoader(), TestRemoteLogUtil::PATH);
+Globals::getInstance()->init(this->getClass()->getClassLoader(), TestRemoteLogUtil::PATH);
     
 
     LogUtil* logUtil = LogUtil::getInstance();;

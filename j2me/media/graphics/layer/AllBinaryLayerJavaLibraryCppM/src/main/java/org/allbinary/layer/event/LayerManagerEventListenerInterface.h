@@ -59,7 +59,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class LayerManagerEventListenerInterface: public EventListenerInterface {
+class LayerManagerEventListenerInterface: public virtual EventListenerInterface {
 
                 //@Throws(Exception.constructor)
             

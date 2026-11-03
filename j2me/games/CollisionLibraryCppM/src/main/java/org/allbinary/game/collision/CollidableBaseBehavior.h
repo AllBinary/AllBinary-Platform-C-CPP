@@ -73,7 +73,7 @@ class CollisionType;
         
 class CollidableBaseBehavior
             : public virtual Object
-        , public CollidableInterface {
+        , public virtual CollidableInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

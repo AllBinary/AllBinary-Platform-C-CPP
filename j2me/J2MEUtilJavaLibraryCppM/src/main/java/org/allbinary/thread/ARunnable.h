@@ -63,7 +63,7 @@ class JsMethod;
         
 class ARunnable
             : public virtual Object
-        , public Runnable {
+        , public virtual Runnable {
 
 
             

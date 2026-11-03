@@ -61,7 +61,7 @@ class NullUtil;
         
 class Visitor
             : public virtual Object
-        , public VisitorInterface {
+        , public virtual VisitorInterface {
 
     private: static Visitor* instance_owner();
     private: static Visitor* instance;

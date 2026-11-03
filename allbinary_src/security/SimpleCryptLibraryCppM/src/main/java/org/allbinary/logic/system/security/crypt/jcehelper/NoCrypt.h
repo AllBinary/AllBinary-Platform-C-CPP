@@ -62,7 +62,7 @@
         
 class NoCrypt
             : public virtual Object
-        , public CryptInterface {
+        , public virtual CryptInterface {
 
 
             

@@ -66,7 +66,7 @@ class UpdateMyFontProcessor;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class GamePerformanceInitUpdatePaintable: public InitUpdatePaintable, public UpdateMyFontInterface {
+class GamePerformanceInitUpdatePaintable: public InitUpdatePaintable, public virtual UpdateMyFontInterface {
 
 
             

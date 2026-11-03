@@ -76,7 +76,7 @@ class TimeDelayHelper;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class TouchButtonsPaintableComposite: public ProcessPaintable, public CompleteMotionGestureInputEventListenerInterface {
+class TouchButtonsPaintableComposite: public ProcessPaintable, public virtual CompleteMotionGestureInputEventListenerInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

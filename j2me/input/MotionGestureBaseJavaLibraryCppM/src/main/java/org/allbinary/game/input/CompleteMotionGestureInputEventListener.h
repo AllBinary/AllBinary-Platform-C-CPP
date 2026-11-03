@@ -48,7 +48,7 @@ class CompleteMotionGestureInputEvent;
         
 class CompleteMotionGestureInputEventListener
             : public virtual Object
-        , public CompleteMotionGestureInputEventListenerInterface {
+        , public virtual CompleteMotionGestureInputEventListenerInterface {
 
 
             

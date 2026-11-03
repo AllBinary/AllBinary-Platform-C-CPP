@@ -73,7 +73,7 @@ class CommonStrings;
         
 class DefaultGameInitializationListener
             : public virtual Object
-        , public GameInitializedListenerInterface {
+        , public virtual GameInitializedListenerInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

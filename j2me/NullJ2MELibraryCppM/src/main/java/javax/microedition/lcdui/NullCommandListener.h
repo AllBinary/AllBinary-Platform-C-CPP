@@ -48,7 +48,7 @@ class Displayable;
         
 class NullCommandListener
             : public virtual Object
-        , public CommandListener {
+        , public virtual CommandListener {
 
     private: static NullCommandListener* NULL_COMMAND_LISTENER_owner();
     public: static NullCommandListener* NULL_COMMAND_LISTENER;

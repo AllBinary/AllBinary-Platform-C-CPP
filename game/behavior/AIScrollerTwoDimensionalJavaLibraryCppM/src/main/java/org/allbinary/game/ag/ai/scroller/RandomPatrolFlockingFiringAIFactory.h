@@ -71,7 +71,7 @@ class TimedFireAI;
         
 class RandomPatrolFlockingFiringAIFactory
             : public virtual Object
-        , public ArtificialIntelligenceInterfaceFactoryInterface {
+        , public virtual ArtificialIntelligenceInterfaceFactoryInterface {
 
 
             

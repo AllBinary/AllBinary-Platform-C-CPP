@@ -73,7 +73,7 @@ class CapturedImageWorkerResultsEvent;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class ScreenCaptureImagesWorker: public BasicEventHandler, public CaptureWorkerInterface {
+class ScreenCaptureImagesWorker: public BasicEventHandler, public virtual CaptureWorkerInterface {
 
     private: static inline int64_t index;
 

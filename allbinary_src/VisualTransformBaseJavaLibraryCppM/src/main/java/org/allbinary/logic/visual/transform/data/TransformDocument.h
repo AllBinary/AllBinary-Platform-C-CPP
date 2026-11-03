@@ -69,7 +69,7 @@ class Node;
         
 class TransformDocument
             : public virtual Object
-        , public TransformDocumentInterface {
+        , public virtual TransformDocumentInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

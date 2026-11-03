@@ -80,7 +80,7 @@ class ChangedPixelsUtil;
         
 class ComparisonImageInputOutput
             : public virtual Object
-        , public ImageIOInterface {
+        , public virtual ImageIOInterface {
 
     private: static inline const std::string ROOT_NAME = "_Changed_";
 

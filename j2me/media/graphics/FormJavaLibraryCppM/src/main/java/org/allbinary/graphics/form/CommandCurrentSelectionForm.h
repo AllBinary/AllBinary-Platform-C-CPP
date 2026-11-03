@@ -73,7 +73,7 @@ class ItemPaintableFactory;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class CommandCurrentSelectionForm: public ScrollCurrentSelectionForm, public UpdateMyFontInterface {
+class CommandCurrentSelectionForm: public ScrollCurrentSelectionForm, public virtual UpdateMyFontInterface {
 
     /*protected*/ public: std::vector<Animation*> selectedAnimationArray;
 

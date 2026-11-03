@@ -73,7 +73,7 @@ class AbeClientInformationData;
         // This is the information sent to the license server
 class ClientInformation
             : public virtual Object
-        , public AbeClientInformationInterface {
+        , public virtual AbeClientInformationInterface {
 
     private: GenericOperatingSystem* operatingSystemInterface;
 

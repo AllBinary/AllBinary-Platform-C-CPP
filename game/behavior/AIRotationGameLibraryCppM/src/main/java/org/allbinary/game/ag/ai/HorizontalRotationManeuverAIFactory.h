@@ -65,7 +65,7 @@ template<typename T1, typename T2> class ABHashtable;
         
 class HorizontalRotationManeuverAIFactory
             : public virtual Object
-        , public ArtificialIntelligenceInterfaceFactoryInterface {
+        , public virtual ArtificialIntelligenceInterfaceFactoryInterface {
 
 
             

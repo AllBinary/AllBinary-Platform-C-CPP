@@ -94,7 +94,7 @@ this->body= body;
     std::string result = stringUtil->EMPTY_STRING;;
     
 
-    std::vector<Object*> attributeKeys = this->otherAttributes->keySet()->();;
+    std::vector<Object*> attributeKeys = this->otherAttributes->keySet()->toArray();;
     
 
     int32_t attributeSize = attributeKeys.size();;

@@ -65,7 +65,7 @@ template<typename T1, typename T2> class ABHashtable;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class GameCanvasRunnableInterface: public RunnableInterface, public PaintableInterface, public ItemStateListener, public GameStateCompositeInterface {
+class GameCanvasRunnableInterface: public virtual RunnableInterface, public virtual PaintableInterface, public virtual ItemStateListener, public virtual GameStateCompositeInterface {
 
     public: virtual std::string getTitle() = 0;
 

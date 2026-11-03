@@ -64,7 +64,7 @@ class CategoryInterface;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class CategoryComponent: public CategoryView, public TransformInterface {
+class CategoryComponent: public CategoryView, public virtual TransformInterface {
 
 public: CategoryComponent(CategoryInterface* categoryInterface);
 

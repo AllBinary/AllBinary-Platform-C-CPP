@@ -68,7 +68,7 @@ class StaticViewPosition;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class PlayerGameInputGameLayer: public AllBinaryGameLayer, public PlayerGameInputCompositeInterface {
+class PlayerGameInputGameLayer: public AllBinaryGameLayer, public virtual PlayerGameInputCompositeInterface {
 
     private: PlayerGameInput* playerGameInput;
 

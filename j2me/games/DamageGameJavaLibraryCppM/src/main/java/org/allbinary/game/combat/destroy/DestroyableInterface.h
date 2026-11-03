@@ -58,7 +58,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class DestroyableInterface: public NamedInterface {
+class DestroyableInterface: public virtual NamedInterface {
 
                 //@Throws(Exception.constructor)
             

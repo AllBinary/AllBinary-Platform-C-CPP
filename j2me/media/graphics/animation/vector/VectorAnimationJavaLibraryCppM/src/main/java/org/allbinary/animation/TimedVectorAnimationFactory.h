@@ -66,7 +66,7 @@ class VectorAnimation;
         
 class TimedVectorAnimationFactory
             : public virtual Object
-        , public VectorAnimationFactoryInterface {
+        , public virtual VectorAnimationFactoryInterface {
 
 
             

@@ -54,7 +54,7 @@ class GameAdStateBase;
         
 class GameAdStateFactory
             : public virtual Object
-        , public GameAdStateFactoryInterface {
+        , public virtual GameAdStateFactoryInterface {
 
     private: static GameAdStateFactory* instance_owner();
     private: static GameAdStateFactory* instance;

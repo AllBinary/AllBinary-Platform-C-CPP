@@ -68,7 +68,7 @@ class ContextConfigurationData;
         
 class ContextConfigurationTableMapping
             : public virtual Object
-        , public TableMappingInterface {
+        , public virtual TableMappingInterface {
 
     private: ContextConfigurationInterface* contextConfigurationInterface;
 

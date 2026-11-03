@@ -74,7 +74,7 @@ class StringMaker;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class TransactionEntity: public AbSqlBean, public TransactionEntityInterface {
+class TransactionEntity: public AbSqlBean, public virtual TransactionEntityInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

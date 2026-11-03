@@ -78,7 +78,7 @@ this->anyType= anyType;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Proxy::newProxyInstance(anyType->getClass()getClassLoader(), anyType->getClass()->getInterfaces(), new InterfaceCastProxy(anyType));;
+                        return Proxy::newProxyInstance(anyType->getClass()->getClassLoader(), anyType->getClass()->getInterfaces(), new InterfaceCastProxy(anyType));;
     
 }
 

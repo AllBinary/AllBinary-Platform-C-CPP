@@ -100,10 +100,10 @@ this->activity= activity;
 
         try {
             
-    InputMethodManager* inputMethodManager = dynamic_cast<InputMethodManager*>(this->activity->getSystemService(Context::INPUT_METHOD_SERVICE) as unknown);;
+    InputMethodManager* inputMethodManager = dynamic_cast<InputMethodManager*>(this->activity->getSystemService(Context::INPUT_METHOD_SERVICE));;
     
 
-    ViewCompositeInterface* viewCompositeInterface = dynamic_cast<ViewCompositeInterface*>(this->activity as unknown);;
+    ViewCompositeInterface* viewCompositeInterface = dynamic_cast<ViewCompositeInterface*>(this->activity);;
     
 
                         if(viewCompositeInterface == 

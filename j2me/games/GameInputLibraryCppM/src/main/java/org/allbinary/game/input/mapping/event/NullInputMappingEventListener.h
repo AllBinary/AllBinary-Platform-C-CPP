@@ -64,7 +64,7 @@ class InputMappingEvent;
         
 class NullInputMappingEventListener
             : public virtual Object
-        , public InputMappingEventListenerInterface {
+        , public virtual InputMappingEventListenerInterface {
 
     private: static NullInputMappingEventListener* NULL_INPUT_MAPPING_EVENT_LISTENER_owner();
     public: static NullInputMappingEventListener* NULL_INPUT_MAPPING_EVENT_LISTENER;

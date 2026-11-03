@@ -65,7 +65,7 @@ class UserInterface;
         
 class SubscriberUserFactory
             : public virtual Object
-        , public UserFactoryInterface {
+        , public virtual UserFactoryInterface {
 
 public: SubscriberUserFactory();
 

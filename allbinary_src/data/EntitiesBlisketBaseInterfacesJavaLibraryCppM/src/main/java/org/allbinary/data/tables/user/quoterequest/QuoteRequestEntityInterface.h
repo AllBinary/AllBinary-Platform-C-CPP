@@ -62,7 +62,7 @@ class QuoteRequest;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class QuoteRequestEntityInterface: public BasicDataTableInterface {
+class QuoteRequestEntityInterface: public virtual BasicDataTableInterface {
 
                 //@Throws(Exception.constructor)
             

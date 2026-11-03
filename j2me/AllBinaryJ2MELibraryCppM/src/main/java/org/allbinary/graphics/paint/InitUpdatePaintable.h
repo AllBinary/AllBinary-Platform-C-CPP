@@ -59,7 +59,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class InitUpdatePaintable: public Paintable, public InitUpdatePaintableInterface {
+class InitUpdatePaintable: public Paintable, public virtual InitUpdatePaintableInterface {
 
 /*protected*/ public: InitUpdatePaintable();
 

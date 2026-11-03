@@ -75,7 +75,7 @@ class GeographicMapCellType;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class BasicGeographicMap: public SimpleGeographicMap, public GeographicMapInterface {
+class BasicGeographicMap: public SimpleGeographicMap, public virtual GeographicMapInterface {
 
     public: static std::vector<BasicGeographicMap*> NULL_BASIC_GEOGRAPHIC_MAP_ARRAY;
 

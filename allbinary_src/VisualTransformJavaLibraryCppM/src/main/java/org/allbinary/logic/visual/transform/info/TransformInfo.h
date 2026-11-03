@@ -97,7 +97,7 @@ class TransformInfoData;
         
 class TransformInfo
             : public virtual Object
-        , public TransformInfoInterface {
+        , public virtual TransformInfoInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

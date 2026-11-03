@@ -102,7 +102,7 @@ class MirrorImageJPanel;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class ImageToolJFrame: public javax::swing::JFrame, public FileJDialogListenerInterface {
+class ImageToolJFrame: public javax::swing::JFrame, public virtual FileJDialogListenerInterface {
 
     private: static inline ImageProcessorInputCompositeInterface* imageProcessorInputCompositeInterface;
 

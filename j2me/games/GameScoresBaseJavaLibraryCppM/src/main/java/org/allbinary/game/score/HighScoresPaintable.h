@@ -72,7 +72,7 @@ class HighScore;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class HighScoresPaintable: public Paintable, public ColorChangeListener, public UpdateMyFontInterface {
+class HighScoresPaintable: public Paintable, public virtual ColorChangeListener, public virtual UpdateMyFontInterface {
 
     private: DisplayInfoSingleton* displayInfoSingleton;
 

@@ -63,7 +63,7 @@ class UpdateMyFontProcessor;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         //SwtToJ2ME
-class FullScreenPaintable: public Paintable, public UpdateMyFontInterface {
+class FullScreenPaintable: public Paintable, public virtual UpdateMyFontInterface {
 
     public: static FullScreenPaintable* getInstance();
 

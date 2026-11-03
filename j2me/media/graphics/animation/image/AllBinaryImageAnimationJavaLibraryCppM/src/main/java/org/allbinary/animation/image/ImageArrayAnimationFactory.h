@@ -72,7 +72,7 @@ class AdjustedImageArrayAnimation;
         
 class ImageArrayAnimationFactory
             : public virtual Object
-        , public AnimationInterfaceFactoryInterface {
+        , public virtual AnimationInterfaceFactoryInterface {
 
     private: int32_t dx = 0;
 

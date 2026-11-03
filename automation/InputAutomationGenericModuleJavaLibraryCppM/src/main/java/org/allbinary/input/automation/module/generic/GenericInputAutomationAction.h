@@ -65,7 +65,7 @@ class InputRobotInterface;
         
 class GenericInputAutomationAction
             : public virtual Object
-        , public InputAutomationActionInterface {
+        , public virtual InputAutomationActionInterface {
 
 public: GenericInputAutomationAction();
 

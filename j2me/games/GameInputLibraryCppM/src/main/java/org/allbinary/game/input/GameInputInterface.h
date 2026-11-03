@@ -59,7 +59,7 @@ class AllBinaryLayerManager;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class GameInputInterface: public NamedInterface {
+class GameInputInterface: public virtual NamedInterface {
 
                 //@Throws(Exception.constructor)
             

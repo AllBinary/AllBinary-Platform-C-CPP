@@ -63,7 +63,7 @@ class AllBinaryEventObject;
         
 class TerrainEventFactory
             : public virtual Object
-        , public AllBinaryEventObjectFactoryInterface {
+        , public virtual AllBinaryEventObjectFactoryInterface {
 
 public: TerrainEventFactory();
 

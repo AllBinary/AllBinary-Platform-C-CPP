@@ -56,7 +56,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class BasicEventListenerInterface: public EventListenerInterface {
+class BasicEventListenerInterface: public virtual EventListenerInterface {
 
 };
 

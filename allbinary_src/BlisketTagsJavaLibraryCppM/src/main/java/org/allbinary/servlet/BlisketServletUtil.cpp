@@ -94,7 +94,7 @@ urlGlobals->setWebappPath(request->getServletContext()->getRealPath(AbPathData::
     
 URLGLOBALS::init(urlGlobals);
     
-WebappClassLoaderInfo::setLoader(getClass()getClassLoader());
+WebappClassLoaderInfo::setLoader(getClass()->getClassLoader());
     
 }
 

@@ -179,22 +179,22 @@ this->glShaderVersionString= gl->glGetString(GL_SHADING_LANGUAGE_VERSION);
 
         try {
             
-                        if(true && this->glShaderVersionString.indexOf('.') >= 0)
+                        if(true && JavaString::indexOf(this->glShaderVersionString, '.') >= 0)
                         
                                     {
                                     
-    int32_t startIndex = this->glShaderVersionString.lastIndexOf(' ');;
+    int32_t startIndex = JavaString::lastIndexOf(this->glShaderVersionString, ' ');;
     
 
                         if(startIndex >= 0)
                         
                                     {
-                                    this->glShaderVersionString= this->glShaderVersionString.substring(startIndex +1);
+                                    this->glShaderVersionString= JavaString::substring(this->glShaderVersionString, startIndex +1);
     
 
                                     }
                                 
-this->shaderVersion= Integer.parseInt(this->glShaderVersionString.replace(CommonSeps::getInstance()->PERIOD, StringUtil::getInstance()->EMPTY_STRING));
+this->shaderVersion= Integer.parseInt(JavaString::replace(this->glShaderVersionString, CommonSeps::getInstance()->PERIOD, StringUtil::getInstance()->EMPTY_STRING));
     
 
                                     }
@@ -217,7 +217,7 @@ this->glVendor= gl->glGetString(GL10::GL_VENDOR);
 this->glExtensions= gl->glGetString(GL10::GL_EXTENSIONS);
     
 
-                        if(this->glExtensions.indexOf(this->GL_EXT_GPU_SHADER_100) >= 0)
+                        if(JavaString::indexOf(this->glExtensions, this->GL_EXT_GPU_SHADER_100) >= 0)
                         
                                     {
                                     this->glExtensionGPUShader100= true;
@@ -232,7 +232,7 @@ this->glExtensions= gl->glGetString(GL10::GL_EXTENSIONS);
                         }
                             
 
-                        if(this->glExtensions.indexOf(this->GL_EXT_GPU_SHADER4) >= 0)
+                        if(JavaString::indexOf(this->glExtensions, this->GL_EXT_GPU_SHADER4) >= 0)
                         
                                     {
                                     this->glExtensionGPUShader4= true;
@@ -291,7 +291,7 @@ this->glVersion= this->VERSION_UNK;
                                     }
                                 
                              else 
-                        if(this->glVersionString.indexOf(" 1.0") >= 0)
+                        if(JavaString::indexOf(this->glVersionString, " 1.0") >= 0)
                         
                                     {
                                     this->glVersion= this->VERSION_1_0;
@@ -300,7 +300,7 @@ this->glVersion= this->VERSION_UNK;
                                     }
                                 
                              else 
-                        if(this->glVersionString.indexOf(" 1.1") >= 0)
+                        if(JavaString::indexOf(this->glVersionString, " 1.1") >= 0)
                         
                                     {
                                     this->glVersion= this->VERSION_1_1;
@@ -455,7 +455,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, METHOD_NAME, &e);
 
     auto OpenGLCapabilities::isExtension(OpenGLFeature* gameFeature) -> bool{
 
-    int32_t index = this->glExtensions.indexOf(gameFeature->getName());;
+    int32_t index = JavaString::indexOf(this->glExtensions, gameFeature->getName());;
     
 
                         if(index >= 0)

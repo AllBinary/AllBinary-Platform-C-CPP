@@ -88,7 +88,7 @@ class ColorAtActionScriptCondition;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class BasicProfileActionScriptCondition: public ProfileActionScriptItem, public ProfileActionScriptConditionInterface {
+class BasicProfileActionScriptCondition: public ProfileActionScriptItem, public virtual ProfileActionScriptConditionInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

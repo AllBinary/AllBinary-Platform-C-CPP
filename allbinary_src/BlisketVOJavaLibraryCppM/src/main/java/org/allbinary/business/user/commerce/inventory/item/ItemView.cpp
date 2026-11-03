@@ -119,7 +119,7 @@ node->appendChild(basicItemView->toXmlNode(document));
     StringUtil* stringUtil = StringUtil::getInstance();;
     
 
-    std::vector<Object*> nameArray = keySet->();;
+    std::vector<Object*> nameArray = keySet->toArray();;
     
 
     int32_t size = nameArray.size();;

@@ -79,7 +79,7 @@ class ImageComparisonResultsEvent;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class ImageComparisonWorker: public BasicEventHandler, public CapturedImageWorkerResultsListener {
+class ImageComparisonWorker: public BasicEventHandler, public virtual CapturedImageWorkerResultsListener {
 
     /*protected*/ public: LogUtil* logUtil;
 

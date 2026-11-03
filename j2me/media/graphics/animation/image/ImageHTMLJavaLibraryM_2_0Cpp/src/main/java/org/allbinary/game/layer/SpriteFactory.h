@@ -66,7 +66,7 @@ class LogUtil;
         
 class SpriteFactory
             : public virtual Object
-        , public SpriteFactoryInterface {
+        , public virtual SpriteFactoryInterface {
 
     private: static SpriteFactory* instance_owner();
     private: static SpriteFactory* instance;

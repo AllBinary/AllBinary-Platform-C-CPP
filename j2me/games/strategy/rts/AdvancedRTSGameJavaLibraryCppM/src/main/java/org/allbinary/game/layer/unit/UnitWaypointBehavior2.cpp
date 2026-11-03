@@ -170,9 +170,7 @@ this->waypointPathRunnable= J2MEUtil::isHTML()
                                 new MultipassWaypointPathRunnable()
                                 :
 
-                            new WaypointPathRunnable();
-
-    ;
+                            new WaypointPathRunnable();;
     
 }
 

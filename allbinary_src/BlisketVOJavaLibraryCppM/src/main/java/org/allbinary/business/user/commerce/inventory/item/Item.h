@@ -68,7 +68,7 @@ class StringUtil;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class Item: public BasicItem, public OrderItemInterface {
+class Item: public BasicItem, public virtual OrderItemInterface {
 
     private: std::string group;
 

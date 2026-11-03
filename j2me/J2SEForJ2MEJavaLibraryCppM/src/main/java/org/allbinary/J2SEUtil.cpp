@@ -84,7 +84,7 @@ J2SEUtil* J2SEUtil::instance = J2SEUtil::instance_owner();
 
     auto J2SEUtil::getHashMapAsArray(HashMap<Object*, Object*>* hashMap) -> std::vector<Object*>{
 
-    std::vector<Object*> objectArray = hashMap->keys().();;
+    std::vector<Object*> objectArray = hashMap->keys().toArray();;
     
 
 
@@ -97,7 +97,7 @@ J2SEUtil* J2SEUtil::instance = J2SEUtil::instance_owner();
 
     auto J2SEUtil::getMapAsArray(Map<Object*, Object*>* map) -> std::vector<Object*>{
 
-    std::vector<Object*> objectArray = map->keySet()->();;
+    std::vector<Object*> objectArray = map->keySet()->toArray();;
     
 
 

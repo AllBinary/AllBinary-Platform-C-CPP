@@ -65,7 +65,7 @@ class AnimationBehavior;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class RotationAnimation: public IndexedAnimation, public RotationAnimationInterface {
+class RotationAnimation: public IndexedAnimation, public virtual RotationAnimationInterface {
 
     /*protected*/ public: FrameUtil* frameUtil;
 

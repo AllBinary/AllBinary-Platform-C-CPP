@@ -72,7 +72,7 @@ class ScaleProperties;
         
 class AllBinaryFlickerAndroidImageRotationAnimationFactory
             : public virtual Object
-        , public AnimationInterfaceFactoryInterface {
+        , public virtual AnimationInterfaceFactoryInterface {
 
     private: Image* image;
 

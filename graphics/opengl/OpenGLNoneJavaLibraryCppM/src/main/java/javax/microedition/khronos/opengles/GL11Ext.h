@@ -90,7 +90,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class GL11Ext: public GL {
+class GL11Ext: public virtual GL {
 
     public: static inline const int32_t GL_MATRIX_INDEX_ARRAY_BUFFER_BINDING_OES = 35742;
 

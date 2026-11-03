@@ -71,7 +71,7 @@ class AdjustCustomTextAnimation;
         
 class CustomTextAnimationFactory
             : public virtual Object
-        , public AnimationInterfaceFactoryInterface {
+        , public virtual AnimationInterfaceFactoryInterface {
 
     public: static CustomTextAnimationFactory* createDXY(std::string text, int32_t fontSize, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory);
 

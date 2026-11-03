@@ -57,7 +57,7 @@ class NullGL10;
         
 class OpenGLESGraphics
             : public virtual Object
-        , public OpenGLSurfaceChangedInterface, public GraphicsInterface {
+        , public virtual OpenGLSurfaceChangedInterface, public virtual GraphicsInterface {
 
     /*protected*/ public: CommonStrings* commonStrings;
 

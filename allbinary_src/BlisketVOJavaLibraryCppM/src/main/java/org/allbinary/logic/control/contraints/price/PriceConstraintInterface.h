@@ -56,7 +56,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class PriceConstraintInterface: public MinMaxDoubleConstraintInterface {
+class PriceConstraintInterface: public virtual MinMaxDoubleConstraintInterface {
 
 };
 

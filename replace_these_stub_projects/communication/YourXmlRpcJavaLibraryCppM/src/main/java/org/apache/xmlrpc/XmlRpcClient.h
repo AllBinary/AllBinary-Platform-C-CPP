@@ -53,7 +53,7 @@ class NullUtil;
         
 class XmlRpcClient
             : public virtual Object
-        , public XmlRpcHandler {
+        , public virtual XmlRpcHandler {
 
     private: URL* url;
 

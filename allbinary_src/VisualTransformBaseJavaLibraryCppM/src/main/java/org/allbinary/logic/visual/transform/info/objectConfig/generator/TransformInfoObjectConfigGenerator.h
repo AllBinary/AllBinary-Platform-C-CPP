@@ -65,7 +65,7 @@ class CommonStrings;
         
 class TransformInfoObjectConfigGenerator
             : public virtual Object
-        , public TransformInfoObjectConfigGeneratorInterface {
+        , public virtual TransformInfoObjectConfigGeneratorInterface {
 
 
             

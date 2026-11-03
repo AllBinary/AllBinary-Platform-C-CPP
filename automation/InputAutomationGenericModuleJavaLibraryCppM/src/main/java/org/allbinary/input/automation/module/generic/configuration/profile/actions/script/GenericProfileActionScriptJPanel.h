@@ -75,7 +75,7 @@ class JComponent;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class GenericProfileActionScriptJPanel: public javax::swing::JPanel, public JTreeInterface {
+class GenericProfileActionScriptJPanel: public javax::swing::JPanel, public virtual JTreeInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

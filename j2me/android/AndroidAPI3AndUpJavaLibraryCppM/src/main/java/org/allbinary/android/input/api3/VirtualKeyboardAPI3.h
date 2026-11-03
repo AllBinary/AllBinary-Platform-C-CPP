@@ -69,7 +69,7 @@ class HideVirtualKeyboardRunnable;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class VirtualKeyboardAPI3: public VirtualKeyboard, public VirtualKeyboardEventListenerInterface {
+class VirtualKeyboardAPI3: public VirtualKeyboard, public virtual VirtualKeyboardEventListenerInterface {
 
     public: static int32_t MAX_API;
 

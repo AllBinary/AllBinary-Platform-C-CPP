@@ -79,7 +79,7 @@ class BasicArrayListD;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class PacePatrolAI: public BasePatrolAI, public TrackingEventListenerInterface {
+class PacePatrolAI: public BasePatrolAI, public virtual TrackingEventListenerInterface {
 
     private: BasicArrayList* trackingList;
 

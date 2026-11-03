@@ -91,7 +91,7 @@ class Node;
         
 class User
             : public virtual Object
-        , public UserInterface {
+        , public virtual UserInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

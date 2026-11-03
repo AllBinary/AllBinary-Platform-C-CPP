@@ -65,7 +65,7 @@ class NullUtil;
         
 class NullXmlRpcHandler
             : public virtual Object
-        , public XmlRpcHandler {
+        , public virtual XmlRpcHandler {
 
     private: static NullXmlRpcHandler* NULL_XML_RPC_HANDLER_owner();
     public: static NullXmlRpcHandler* NULL_XML_RPC_HANDLER;

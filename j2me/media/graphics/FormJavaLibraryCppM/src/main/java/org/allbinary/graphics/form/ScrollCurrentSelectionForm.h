@@ -78,7 +78,7 @@ class FormType;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class ScrollCurrentSelectionForm: public ScrollSelectionForm, public UpdateMyFontInterface {
+class ScrollCurrentSelectionForm: public ScrollSelectionForm, public virtual UpdateMyFontInterface {
 public: class TempHorizontalFormProcessor;
 public: class HorizontalFormProcessor;
 public: class VerticalFormProcessor;

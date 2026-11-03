@@ -61,7 +61,7 @@ class BasicColor;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class TileLayerItem: public ABCustomItem, public ABCustomItemInterface {
+class TileLayerItem: public ABCustomItem, public virtual ABCustomItemInterface {
 
     private: AllBinaryTiledLayer* tiledLayer;
 

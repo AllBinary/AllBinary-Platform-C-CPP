@@ -67,7 +67,7 @@ class CircularIndexUtil;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class CompoundIndexedAnimation: public IndexedAnimation, public CompoundAnimationInterface {
+class CompoundIndexedAnimation: public IndexedAnimation, public virtual CompoundAnimationInterface {
 
     private: CircularIndexUtil* circularIndexUtil;
 

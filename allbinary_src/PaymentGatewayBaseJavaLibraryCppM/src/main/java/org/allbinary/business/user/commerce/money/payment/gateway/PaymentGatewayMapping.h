@@ -66,7 +66,7 @@ class BasicArrayList;
         
 class PaymentGatewayMapping
             : public virtual Object
-        , public TableMappingInterface {
+        , public virtual TableMappingInterface {
 
     private: PaymentGatewayInterface* paymentGatewayInterface;
 

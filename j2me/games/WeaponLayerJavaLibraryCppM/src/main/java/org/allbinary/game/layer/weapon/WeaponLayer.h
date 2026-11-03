@@ -79,7 +79,7 @@ class ViewPositionBase;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class WeaponLayer: public MultiPlayerGameLayer, public TickableInterface {
+class WeaponLayer: public MultiPlayerGameLayer, public virtual TickableInterface {
 
     public: static int32_t getStaticType();
 

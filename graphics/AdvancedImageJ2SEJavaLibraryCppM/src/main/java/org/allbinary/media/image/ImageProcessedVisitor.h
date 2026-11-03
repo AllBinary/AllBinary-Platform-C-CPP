@@ -58,7 +58,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class ImageProcessedVisitor: public ImageProcessorInputCompositeInterface {
+class ImageProcessedVisitor: public virtual ImageProcessorInputCompositeInterface {
 
                 //@Throws(IOException.constructor)
             

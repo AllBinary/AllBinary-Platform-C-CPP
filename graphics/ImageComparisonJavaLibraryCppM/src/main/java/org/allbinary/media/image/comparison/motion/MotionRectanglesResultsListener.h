@@ -57,7 +57,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class MotionRectanglesResultsListener: public BasicEventListenerInterface {
+class MotionRectanglesResultsListener: public virtual BasicEventListenerInterface {
 
     public: virtual void onMotionRectanglesImageComparisonResultsEvent(MotionRectanglesResultsEvent* motionRectanglesImageComparisonResultsEvent) = 0;
 

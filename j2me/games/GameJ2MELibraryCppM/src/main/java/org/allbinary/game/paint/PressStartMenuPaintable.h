@@ -67,7 +67,7 @@ class TimeDelayHelper;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class PressStartMenuPaintable: public Paintable, public UpdateMyFontInterface {
+class PressStartMenuPaintable: public Paintable, public virtual UpdateMyFontInterface {
 
     private: DisplayInfoSingleton* displayInfo;
 

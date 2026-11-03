@@ -64,7 +64,7 @@ class StringMaker;
         
 class BufferedImageFrameCacheable
             : public virtual Object
-        , public CacheableInterface {
+        , public virtual CacheableInterface {
 
     private: int64_t frame;
 

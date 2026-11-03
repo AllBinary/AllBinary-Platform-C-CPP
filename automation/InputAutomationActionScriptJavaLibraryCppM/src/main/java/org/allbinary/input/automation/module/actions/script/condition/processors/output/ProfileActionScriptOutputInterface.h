@@ -56,7 +56,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class ProfileActionScriptOutputInterface: public ProfileActionScriptProcessorInterface {
+class ProfileActionScriptOutputInterface: public virtual ProfileActionScriptProcessorInterface {
 
 };
 

@@ -76,7 +76,7 @@ class GameFeatureUtil;
         
 class GameFeatureItemStateListener
             : public virtual Object
-        , public ItemStateListener {
+        , public virtual ItemStateListener {
 
     private: static BasicArrayList* toggleList;
 

@@ -76,7 +76,7 @@ class CommonStrings;
         
 class CapturedImageInputOutput
             : public virtual Object
-        , public ImageIOInterface {
+        , public virtual ImageIOInterface {
 
 
             

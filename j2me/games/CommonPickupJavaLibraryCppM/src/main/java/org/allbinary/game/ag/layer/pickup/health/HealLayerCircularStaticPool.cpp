@@ -85,7 +85,7 @@ AllBinaryLayerCircularPool::initAllBinaryLayerCircularPool(allbinaryLayerFactory
     HealLayer* healLayer = dynamic_cast<HealLayer*>(this->getNextInstance());;
     
 
-    HealthInterfaceCompositeInterface* healthInterfaceCompositeInterface = dynamic_cast<HealthInterfaceCompositeInterface*>(sourceLayerInterface as unknown);;
+    HealthInterfaceCompositeInterface* healthInterfaceCompositeInterface = dynamic_cast<HealthInterfaceCompositeInterface*>(sourceLayerInterface);;
     
 
     HealthInterface* healthInterface = healthInterfaceCompositeInterface->getHealthInterface();;

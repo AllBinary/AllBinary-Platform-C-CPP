@@ -72,7 +72,7 @@ class CommonLabels;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class SpriteIndexedAnimation: public IndexedAnimation, public ColorCompositeInterface {
+class SpriteIndexedAnimation: public IndexedAnimation, public virtual ColorCompositeInterface {
 
     /*protected*/ public: Sprite* sprite;
 

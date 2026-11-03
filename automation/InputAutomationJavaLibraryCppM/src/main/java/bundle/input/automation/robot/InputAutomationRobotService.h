@@ -63,7 +63,7 @@ class InputRobotInterface;
         
 class InputAutomationRobotService
             : public virtual Object
-        , public InputAutomationRobotServiceInterface {
+        , public virtual InputAutomationRobotServiceInterface {
 
     private: std::vector<InputRobotInterface*> inputRobotInterfaceArray;
 

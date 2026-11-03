@@ -178,7 +178,7 @@ class DemoGameRunnable;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class DemoCanvas: public RunnableCanvas, public GameCanvasRunnableInterface, public MenuListener, public DisplayChangeEventListener, public DemoPaintableInterface {
+class DemoCanvas: public RunnableCanvas, public virtual GameCanvasRunnableInterface, public virtual MenuListener, public virtual DisplayChangeEventListener, public virtual DemoPaintableInterface {
 
     private: static inline const int32_t id = 0;
 

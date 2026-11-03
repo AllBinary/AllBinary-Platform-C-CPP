@@ -70,7 +70,7 @@ class LicenseTypeFactory;
         
 class AbeClientLicense
             : public virtual Object
-        , public AbeLicenseInterface {
+        , public virtual AbeLicenseInterface {
 
     public: static bool hasRequiredKeys(ABHashtable<Object*, Object*>* resultHashtable);
 

@@ -116,7 +116,7 @@ class ImmediateCommandFormInputProcessor;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class GameCommandCanvas: public MyCanvas, public MenuListener, public DisplayChangeEventListener, public UpdateMyFontInterface {
+class GameCommandCanvas: public MyCanvas, public virtual MenuListener, public virtual DisplayChangeEventListener, public virtual UpdateMyFontInterface {
 
     private: static inline const int32_t id = 0;
 

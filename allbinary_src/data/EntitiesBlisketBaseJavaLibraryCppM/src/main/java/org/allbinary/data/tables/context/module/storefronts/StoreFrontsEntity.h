@@ -69,7 +69,7 @@ class StringMaker;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class StoreFrontsEntity: public AbSqlBean, public StoreFrontsEntityInterface {
+class StoreFrontsEntity: public AbSqlBean, public virtual StoreFrontsEntityInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

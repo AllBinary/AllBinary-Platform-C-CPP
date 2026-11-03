@@ -75,7 +75,7 @@ template<typename T1, typename T2> class ABHashtable;
         
 class BaseResourceAnimationInterfaceFactoryInterfaceFactory
             : public virtual Object
-        , public FeatureResourceAnimationInterfaceFactoryInterface {
+        , public virtual FeatureResourceAnimationInterfaceFactoryInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

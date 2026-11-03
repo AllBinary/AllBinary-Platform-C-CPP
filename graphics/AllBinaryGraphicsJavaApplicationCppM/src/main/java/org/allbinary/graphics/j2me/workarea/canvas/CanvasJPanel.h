@@ -114,7 +114,7 @@ class KeyEvent;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class CanvasJPanel: public javax::swing::JPanel, public java::awt::event::MouseListener, public java::awt::event::MouseMotionListener, public java::awt::event::KeyListener, public MyGraphicItemEventListener {
+class CanvasJPanel: public javax::swing::JPanel, public virtual java::awt::event::MouseListener, public virtual java::awt::event::MouseMotionListener, public virtual java::awt::event::KeyListener, public virtual MyGraphicItemEventListener {
 
     private: static inline int32_t frame = 0;
 

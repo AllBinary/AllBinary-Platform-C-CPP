@@ -59,7 +59,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class TerrainEventListenerInterface: public EventListenerInterface {
+class TerrainEventListenerInterface: public virtual EventListenerInterface {
 
                 //@Throws(Exception.constructor)
             

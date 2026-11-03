@@ -77,7 +77,7 @@ class UserEmailConfigurationData;
         
 class UserEmailConfigurationView
             : public virtual Object
-        , public DomNodeInterface {
+        , public virtual DomNodeInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

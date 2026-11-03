@@ -58,7 +58,7 @@ class AngleInfo;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class RotationAnimationInterface: public IndexedAnimationInterface, public DirectionalInterface {
+class RotationAnimationInterface: public virtual IndexedAnimationInterface, public virtual DirectionalInterface {
 
     public: virtual AngleInfo* getAngleInfoP() = 0;
 

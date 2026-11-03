@@ -60,7 +60,7 @@ class BasicPaymentType;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class PaymentGatewayEntityInterface: public BasicDataTableInterface {
+class PaymentGatewayEntityInterface: public virtual BasicDataTableInterface {
 
     public: virtual PaymentGatewayInterface* getPaymentGatewayInterface(std::string storeName, BasicPaymentType* paymentType) = 0;
 

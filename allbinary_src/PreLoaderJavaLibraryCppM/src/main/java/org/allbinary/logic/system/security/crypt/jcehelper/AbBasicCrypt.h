@@ -74,7 +74,7 @@ class KeySpecFactory;
         
 class AbBasicCrypt
             : public virtual Object
-        , public CryptInterface {
+        , public virtual CryptInterface {
 
     private: Cipher* cipher;
 

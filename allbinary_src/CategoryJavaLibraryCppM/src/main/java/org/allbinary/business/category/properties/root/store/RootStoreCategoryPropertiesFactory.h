@@ -70,7 +70,7 @@ class Node;
         
 class RootStoreCategoryPropertiesFactory
             : public virtual Object
-        , public CategoryPropertiesFactoryInterface {
+        , public virtual CategoryPropertiesFactoryInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

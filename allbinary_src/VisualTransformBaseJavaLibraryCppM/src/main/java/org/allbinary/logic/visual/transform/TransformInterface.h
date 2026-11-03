@@ -60,7 +60,7 @@ class TransformDocumentInterface;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class TransformInterface: public DomDocumentMappingInterface, public CompositeTransformInfoInterface {
+class TransformInterface: public virtual DomDocumentMappingInterface, public virtual CompositeTransformInfoInterface {
 
     public: virtual int32_t getTypeId() = 0;
 

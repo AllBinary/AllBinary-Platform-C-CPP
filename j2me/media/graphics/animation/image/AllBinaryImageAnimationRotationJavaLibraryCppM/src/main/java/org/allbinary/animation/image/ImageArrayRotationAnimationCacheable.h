@@ -65,7 +65,7 @@ class ImageArrayRotationAnimationInfo;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class ImageArrayRotationAnimationCacheable: public AdjustedImageArrayRotationAnimation, public CacheableInterface {
+class ImageArrayRotationAnimationCacheable: public AdjustedImageArrayRotationAnimation, public virtual CacheableInterface {
 
 public: ImageArrayRotationAnimationCacheable(Object* anyType, AnimationBehavior* animationBehavior);
 

@@ -69,7 +69,7 @@ class StringMaker;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class TransformInfoHttpStore: public TransformInfoHttp, public TransformInfoHttpStoreInterface {
+class TransformInfoHttpStore: public TransformInfoHttp, public virtual TransformInfoHttpStoreInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

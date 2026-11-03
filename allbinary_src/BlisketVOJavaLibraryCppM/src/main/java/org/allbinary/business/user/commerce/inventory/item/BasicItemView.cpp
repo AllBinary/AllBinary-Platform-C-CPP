@@ -133,7 +133,7 @@ hashMap->put(this->basicItemData->IMAGE, EMPTY_STRING);
     Node* node = document->createElement(this->basicItemData->ITEM);;
     
 
-    std::vector<Object*> nameArray = keySet->();;
+    std::vector<Object*> nameArray = keySet->toArray();;
     
 
     int32_t size2 = nameArray.size();;

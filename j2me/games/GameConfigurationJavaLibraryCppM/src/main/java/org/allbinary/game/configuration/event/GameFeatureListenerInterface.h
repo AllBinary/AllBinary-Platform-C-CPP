@@ -57,7 +57,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class GameFeatureListenerInterface: public EventListenerInterface {
+class GameFeatureListenerInterface: public virtual EventListenerInterface {
 
     public: virtual void onGameFeatureChange(GameFeatureEvent* gameFeatureEvent) = 0;
 

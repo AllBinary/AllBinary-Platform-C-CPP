@@ -75,7 +75,7 @@ class TestInputInterface;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class TestingInputSingleton: public AllBinaryGameLayer, public GameInputInterface {
+class TestingInputSingleton: public AllBinaryGameLayer, public virtual GameInputInterface {
 
     private: static TestingInputSingleton* instance_owner();
     private: static TestingInputSingleton* instance;

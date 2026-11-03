@@ -69,7 +69,7 @@ class CacheableInterface;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class IndexedBasicArrayListCache: public BaseBasicArrayListCache, public CacheInterface {
+class IndexedBasicArrayListCache: public BaseBasicArrayListCache, public virtual CacheInterface {
 
                 //@Throws(Exception.constructor)
             

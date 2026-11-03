@@ -83,7 +83,7 @@ class ProgressEndListener;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class ProgressCanvas: public RunnableCanvas, public PaintableInterface, public UpdateMyFontInterface {
+class ProgressCanvas: public RunnableCanvas, public virtual PaintableInterface, public virtual UpdateMyFontInterface {
 public: class ProgressPaintable;
 
     /*protected*/ public: bool hasPainted= false;

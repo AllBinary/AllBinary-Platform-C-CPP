@@ -86,7 +86,7 @@ class NullControl;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class PCClipWavPlayer: public BasicPlayer, public LineListener {
+class PCClipWavPlayer: public BasicPlayer, public virtual LineListener {
 
     /*protected*/ public: LogUtil* logUtil;
 

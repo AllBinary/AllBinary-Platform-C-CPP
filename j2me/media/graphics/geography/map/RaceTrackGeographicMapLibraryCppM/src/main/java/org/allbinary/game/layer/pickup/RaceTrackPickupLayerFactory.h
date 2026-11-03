@@ -64,7 +64,7 @@ class AllBinaryLayer;
         
 class RaceTrackPickupLayerFactory
             : public virtual Object
-        , public AllBinaryLayerFactoryInterface {
+        , public virtual AllBinaryLayerFactoryInterface {
 
 
             

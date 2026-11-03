@@ -69,7 +69,7 @@ class Node;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class StoreThemeCategoryPathView: public CategoryView, public DomNodeInterface {
+class StoreThemeCategoryPathView: public CategoryView, public virtual DomNodeInterface {
 
 public: StoreThemeCategoryPathView(StoreThemeCategoryInterface* categoryInterface);
 

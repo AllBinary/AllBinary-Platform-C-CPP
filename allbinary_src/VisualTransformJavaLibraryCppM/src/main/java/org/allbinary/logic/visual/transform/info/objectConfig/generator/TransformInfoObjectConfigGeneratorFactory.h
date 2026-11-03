@@ -69,7 +69,7 @@ class TransformInfoObjectConfigGenerator;
         
 class TransformInfoObjectConfigGeneratorFactory
             : public virtual Object
-        , public TransformInfoObjectConfigGeneratorFactoryInterface {
+        , public virtual TransformInfoObjectConfigGeneratorFactoryInterface {
 
     private: static TransformInfoObjectConfigGeneratorFactory* instance_owner();
     private: static TransformInfoObjectConfigGeneratorFactory* instance;

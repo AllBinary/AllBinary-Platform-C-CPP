@@ -64,7 +64,7 @@ class MultiplayerBehavior;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class MultiPlayerGameLayer: public CollidableDestroyableDamageableLayer, public MultiPlayerGameLayerInterface {
+class MultiPlayerGameLayer: public CollidableDestroyableDamageableLayer, public virtual MultiPlayerGameLayerInterface {
 
 public: MultiPlayerGameLayer(RemoteInfo* remoteInfo, std::vector<Group*> groupInterface, std::string name, Rectangle* layerInfo, ViewPositionBase* viewPosition);
 

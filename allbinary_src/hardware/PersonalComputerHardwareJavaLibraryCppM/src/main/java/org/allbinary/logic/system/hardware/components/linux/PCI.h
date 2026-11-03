@@ -61,7 +61,7 @@
         
 class PCI
             : public virtual Object
-        , public HardwareComponentInterface, public VideoInterface {
+        , public virtual HardwareComponentInterface, public virtual VideoInterface {
 
     private: std::string data;
 

@@ -61,7 +61,7 @@
         
 class Media
             : public virtual Object
-        , public HardwareComponentInterface, public MediaInterface {
+        , public virtual HardwareComponentInterface, public virtual MediaInterface {
 
     private: std::string data;
 

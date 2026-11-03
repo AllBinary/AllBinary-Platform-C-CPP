@@ -80,7 +80,7 @@ class Node;
         
 class Category
             : public virtual Object
-        , public CategoryInterface {
+        , public virtual CategoryInterface {
 
     private: static inline const std::string NOT_ROOT = "This is not the root so it has no file path.";
 

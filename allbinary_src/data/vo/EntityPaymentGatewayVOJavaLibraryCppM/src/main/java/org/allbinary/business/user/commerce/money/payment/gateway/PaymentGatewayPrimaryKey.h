@@ -64,7 +64,7 @@ class PaymentGateway;
         
 class PaymentGatewayPrimaryKey
             : public virtual Object
-        , public java::io::Serializable {
+        , public virtual java::io::Serializable {
 
     private: std::string storeName;
 

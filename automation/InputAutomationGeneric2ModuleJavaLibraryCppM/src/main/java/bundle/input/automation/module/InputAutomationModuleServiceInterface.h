@@ -59,7 +59,7 @@ class InputAutomationModuleFactoryInterface;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class InputAutomationModuleServiceInterface: public OSGIServiceInterface {
+class InputAutomationModuleServiceInterface: public virtual OSGIServiceInterface {
 
     public: virtual std::vector<InputAutomationModuleFactoryInterface*> getInputAutomationModuleInterfaceArray() = 0;
 

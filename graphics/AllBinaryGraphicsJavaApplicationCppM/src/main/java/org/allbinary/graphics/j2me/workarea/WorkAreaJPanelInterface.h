@@ -59,7 +59,7 @@ class Document;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class WorkAreaJPanelInterface: public java::awt::event::KeyListener {
+class WorkAreaJPanelInterface: public virtual java::awt::event::KeyListener {
 
     public: virtual std::string getName() = 0;
 

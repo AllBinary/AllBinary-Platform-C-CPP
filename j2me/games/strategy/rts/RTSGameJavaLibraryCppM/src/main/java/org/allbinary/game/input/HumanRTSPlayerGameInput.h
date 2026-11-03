@@ -105,7 +105,7 @@ class SelectRTSLayerVisitorFactoryInterface;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class HumanRTSPlayerGameInput: public RTSPlayerGameInput, public BaseMotionGestureEventListener {
+class HumanRTSPlayerGameInput: public RTSPlayerGameInput, public virtual BaseMotionGestureEventListener {
 
     private: bool isDragging = false;
 

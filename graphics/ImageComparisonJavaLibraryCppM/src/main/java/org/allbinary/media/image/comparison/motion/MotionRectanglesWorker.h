@@ -79,7 +79,7 @@ class MotionRectangles;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class MotionRectanglesWorker: public BasicEventHandler, public ImageComparisonResultsListener {
+class MotionRectanglesWorker: public BasicEventHandler, public virtual ImageComparisonResultsListener {
 
     /*protected*/ public: LogUtil* logUtil;
 

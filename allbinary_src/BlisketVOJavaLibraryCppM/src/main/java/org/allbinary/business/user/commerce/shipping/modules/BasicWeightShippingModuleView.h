@@ -65,7 +65,7 @@ class Node;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class BasicWeightShippingModuleView: public BasicWeightShippingModule, public DomNodeInterface {
+class BasicWeightShippingModuleView: public BasicWeightShippingModule, public virtual DomNodeInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

@@ -57,7 +57,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class PriorityRunnable: public Runnable {
+class PriorityRunnable: public virtual Runnable {
 
     public: virtual int32_t getPriority() = 0;
 

@@ -86,7 +86,7 @@ class ProductListingFactory;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class StaticPagesRequestHelper: public AbContext, public TagHelperInterface {
+class StaticPagesRequestHelper: public AbContext, public virtual TagHelperInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

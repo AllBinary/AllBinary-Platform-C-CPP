@@ -79,7 +79,7 @@ class FileItemUtil;
         
 class AbFileItem
             : public virtual Object
-        , public FileItem {
+        , public virtual FileItem {
 
     /*protected*/ public: LogUtil* logUtil;
 

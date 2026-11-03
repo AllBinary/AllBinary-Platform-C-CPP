@@ -79,7 +79,7 @@ class TimeDelayHelper;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class SavedCaptureImagesWorker: public BasicEventHandler, public CaptureWorkerInterface {
+class SavedCaptureImagesWorker: public BasicEventHandler, public virtual CaptureWorkerInterface {
 
     private: static inline int64_t index;
 

@@ -150,9 +150,7 @@ recordStore->getRecord(recordId, data, 0);
                                 NullUtil::getInstance()->NULL_BYTE_ARRAY
                                 :
 
-                            data;
-
-    ;
+                            data;;
     
 }
 

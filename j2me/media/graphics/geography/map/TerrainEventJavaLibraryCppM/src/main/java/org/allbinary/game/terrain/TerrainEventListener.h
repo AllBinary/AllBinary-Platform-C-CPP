@@ -52,7 +52,7 @@ class TerrainEvent;
         
 class TerrainEventListener
             : public virtual Object
-        , public TerrainEventListenerInterface {
+        , public virtual TerrainEventListenerInterface {
 
 
             

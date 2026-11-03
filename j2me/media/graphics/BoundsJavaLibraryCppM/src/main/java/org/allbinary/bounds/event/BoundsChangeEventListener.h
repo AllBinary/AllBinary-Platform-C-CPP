@@ -57,7 +57,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class BoundsChangeEventListener: public EventListenerInterface {
+class BoundsChangeEventListener: public virtual EventListenerInterface {
 
     public: virtual void onBoundsChangeEvent(BoundsChangeEvent* boundsChangeEvent) = 0;
 

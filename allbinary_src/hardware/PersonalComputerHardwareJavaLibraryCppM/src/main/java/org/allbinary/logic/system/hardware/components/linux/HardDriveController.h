@@ -61,7 +61,7 @@
         
 class HardDriveController
             : public virtual Object
-        , public HardwareComponentInterface, public HardDriveControllerInterface {
+        , public virtual HardwareComponentInterface, public virtual HardDriveControllerInterface {
 
     private: std::string data;
 

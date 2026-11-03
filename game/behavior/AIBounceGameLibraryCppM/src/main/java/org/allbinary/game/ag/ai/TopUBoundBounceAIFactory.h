@@ -75,7 +75,7 @@ class ReverseVelocityBoundsVisitor;
         
 class TopUBoundBounceAIFactory
             : public virtual Object
-        , public ArtificialIntelligenceInterfaceFactoryInterface {
+        , public virtual ArtificialIntelligenceInterfaceFactoryInterface {
 
 
             

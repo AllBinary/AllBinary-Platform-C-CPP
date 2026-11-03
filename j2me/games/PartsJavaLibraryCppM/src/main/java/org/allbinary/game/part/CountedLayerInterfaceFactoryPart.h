@@ -76,7 +76,7 @@ template<typename T1, typename T2> class ABHashtable;
         
 class CountedLayerInterfaceFactoryPart
             : public virtual Object
-        , public PartInterface, public UpdateMyFontInterface {
+        , public virtual PartInterface, public virtual UpdateMyFontInterface {
 
     private: static CountedLayerInterfaceFactoryPart* NULL_COUNTED_LAYER_INTERFACE_FACTORY_owner();
     public: static CountedLayerInterfaceFactoryPart* NULL_COUNTED_LAYER_INTERFACE_FACTORY;

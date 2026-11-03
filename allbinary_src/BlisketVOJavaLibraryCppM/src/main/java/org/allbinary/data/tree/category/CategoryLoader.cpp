@@ -205,7 +205,7 @@ this->save(categoryInterface);
                 //: 
 } catch(Exception& e2) 
             {
-this->logUtil->put("Could Not Log Category", this, "getDoc", e);
+this->logUtil->put("Could Not Log Category", this, "getDoc", &e);
     
 }
 

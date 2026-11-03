@@ -114,7 +114,7 @@ this->index++;
                         
                                     {
                                     
-    ArtificialIntelligenceTransitionInterface* artificialIntelligenceTransitionInterface = dynamic_cast<ArtificialIntelligenceTransitionInterface*>(artificialIntelligenceInterface as unknown);;
+    ArtificialIntelligenceTransitionInterface* artificialIntelligenceTransitionInterface = dynamic_cast<ArtificialIntelligenceTransitionInterface*>(artificialIntelligenceInterface);;
     
 artificialIntelligenceTransitionInterface->transition();
     

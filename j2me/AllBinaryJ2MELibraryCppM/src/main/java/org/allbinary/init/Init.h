@@ -63,7 +63,7 @@ class CommonStrings;
         
 class Init
             : public virtual Object
-        , public InitInterface {
+        , public virtual InitInterface {
 
 
             

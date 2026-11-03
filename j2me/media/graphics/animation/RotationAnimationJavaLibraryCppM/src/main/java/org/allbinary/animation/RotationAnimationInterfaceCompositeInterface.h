@@ -57,7 +57,7 @@ class RotationAnimation;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class RotationAnimationInterfaceCompositeInterface: public IndexedAnimationInterfaceCompositeInterface {
+class RotationAnimationInterfaceCompositeInterface: public virtual IndexedAnimationInterfaceCompositeInterface {
 
     public: virtual RotationAnimation* getRotationAnimationInterface() = 0;
 

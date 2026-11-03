@@ -108,9 +108,9 @@ DropLayerProcessor::DropLayerProcessor(){
         {
 layerInterface= dynamic_cast<AllBinaryLayer*>(list->objectArray[index]);
     
-dropLayerInterface= dynamic_cast<DropLayerInterface*>(layerInterface as unknown);
+dropLayerInterface= dynamic_cast<DropLayerInterface*>(layerInterface);
     
-layerInterface= dynamic_cast<AllBinaryLayer*>(dropLayerInterface->getDroppedLayer() as unknown);
+layerInterface= dynamic_cast<AllBinaryLayer*>(dropLayerInterface->getDroppedLayer());
     
 allBinaryLayerManager->append(layerInterface);
     

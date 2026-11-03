@@ -64,7 +64,7 @@ class ViewPositionBase;
         
 class StaticTileLayerViewPositionFactory
             : public virtual Object
-        , public ViewPositionFactoryInterface {
+        , public virtual ViewPositionFactoryInterface {
 
 
             

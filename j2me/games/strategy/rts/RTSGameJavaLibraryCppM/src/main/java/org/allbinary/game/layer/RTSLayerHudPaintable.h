@@ -66,7 +66,7 @@ class RTSLayer;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class RTSLayerHudPaintable: public SelectionHudPaintable, public UpdateMyFontInterface {
+class RTSLayerHudPaintable: public SelectionHudPaintable, public virtual UpdateMyFontInterface {
 
     private: static RTSLayerHudPaintable* instance_owner();
     private: static RTSLayerHudPaintable* instance;

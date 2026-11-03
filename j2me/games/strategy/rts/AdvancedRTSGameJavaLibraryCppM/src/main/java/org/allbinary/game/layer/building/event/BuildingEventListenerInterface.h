@@ -58,7 +58,7 @@ class RTSLayerEvent;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class BuildingEventListenerInterface: public EventListenerInterface {
+class BuildingEventListenerInterface: public virtual EventListenerInterface {
 
                 //@Throws(Exception.constructor)
             

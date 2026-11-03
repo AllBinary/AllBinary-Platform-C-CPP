@@ -64,7 +64,7 @@
         
 class BaseServiceReference
             : public virtual Object
-        , public ServiceReference {
+        , public virtual ServiceReference {
 
 
             

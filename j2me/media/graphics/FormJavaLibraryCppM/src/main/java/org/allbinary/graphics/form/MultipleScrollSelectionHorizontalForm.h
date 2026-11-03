@@ -66,7 +66,7 @@ class FormTypeFactory;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class MultipleScrollSelectionHorizontalForm: public ScrollSelectionForm, public UpdateMyFontInterface {
+class MultipleScrollSelectionHorizontalForm: public ScrollSelectionForm, public virtual UpdateMyFontInterface {
 public: class MultipleScrollSelectionFormHorizontalPaintable;
 public: class MultipleScrollSelectionFormVerticalPaintable;
 

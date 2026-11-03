@@ -62,7 +62,7 @@ class FtpConfigurationData;
         
 class FtpConfiguration
             : public virtual Object
-        , public FtpConfigurationInterface {
+        , public virtual FtpConfigurationInterface {
 
     private: std::string ftpServer;
 

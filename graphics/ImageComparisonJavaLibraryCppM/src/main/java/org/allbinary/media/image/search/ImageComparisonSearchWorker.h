@@ -71,7 +71,7 @@ class TimeDelayHelper;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class ImageComparisonSearchWorker: public BasicEventHandler, public ImageComparisonResultsListener {
+class ImageComparisonSearchWorker: public BasicEventHandler, public virtual ImageComparisonResultsListener {
 
     /*protected*/ public: LogUtil* logUtil;
 

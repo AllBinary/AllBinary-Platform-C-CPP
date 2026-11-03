@@ -63,7 +63,7 @@ class TrackingEventHandler;
         
 class TrackingEventFactory
             : public virtual Object
-        , public AllBinaryEventObjectFactoryInterface {
+        , public virtual AllBinaryEventObjectFactoryInterface {
 
 public: TrackingEventFactory();
 

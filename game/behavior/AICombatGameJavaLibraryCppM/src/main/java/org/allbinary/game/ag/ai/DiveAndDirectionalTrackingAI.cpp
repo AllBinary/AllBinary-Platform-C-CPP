@@ -160,12 +160,12 @@ this->aiVistor= visitor;
 this->artificialIntelligenceInterface= artificialIntelligenceInterface;
     
 
-    DirectionalCompositeInterface* directionalCompositeInterface = dynamic_cast<DirectionalCompositeInterface*>(this->getOwnerLayerInterface() as unknown);;
+    DirectionalCompositeInterface* directionalCompositeInterface = dynamic_cast<DirectionalCompositeInterface*>(this->getOwnerLayerInterface());;
     
 this->directionalInterface= directionalCompositeInterface->getDirectionalInterface();
     
 
-    VelocityInterfaceCompositeInterface* velocityInterfaceCompositeInterface = dynamic_cast<VelocityInterfaceCompositeInterface*>(this->getOwnerLayerInterface() as unknown);;
+    VelocityInterfaceCompositeInterface* velocityInterfaceCompositeInterface = dynamic_cast<VelocityInterfaceCompositeInterface*>(this->getOwnerLayerInterface());;
     
 this->velocityInterface= velocityInterfaceCompositeInterface->getVelocityProperties();
     

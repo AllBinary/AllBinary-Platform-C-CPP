@@ -68,7 +68,7 @@ class MIDlet;
         //OpenGLNone
 class SWTJOGLProcessor
             : public virtual Object
-        , public Runnable {
+        , public virtual Runnable {
 
     private: static SWTJOGLProcessor* instance_owner();
     private: static SWTJOGLProcessor* instance;

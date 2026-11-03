@@ -65,7 +65,7 @@ class Animation;
         
 class SingletonAnimationInterfaceFactory
             : public virtual Object
-        , public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
+        , public virtual AnimationInterfaceFactoryInterface, public virtual ProceduralAnimationInterfaceFactoryInterface {
 
     private: Animation* animationInterface;
 

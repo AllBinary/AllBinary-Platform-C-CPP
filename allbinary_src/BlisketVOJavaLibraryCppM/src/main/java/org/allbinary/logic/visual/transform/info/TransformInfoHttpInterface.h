@@ -59,7 +59,7 @@ class WeblisketSessionInterface;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class TransformInfoHttpInterface: public TransformInfoInterface {
+class TransformInfoHttpInterface: public virtual TransformInfoInterface {
 
     public: virtual WeblisketSessionInterface* getWeblisketSession() = 0;
 

@@ -61,7 +61,7 @@
         
 class BasicUserRole
             : public virtual Object
-        , public Serializable {
+        , public virtual Serializable {
 
     private: int32_t m_int_RoleId;
 

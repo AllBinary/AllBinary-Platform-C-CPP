@@ -60,7 +60,7 @@ class BasicArrayList;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class ResourceRelativeRelationshipFactoryInterface: public GameFeatureControlledInterface {
+class ResourceRelativeRelationshipFactoryInterface: public virtual GameFeatureControlledInterface {
 
                 //@Throws(Exception.constructor)
             

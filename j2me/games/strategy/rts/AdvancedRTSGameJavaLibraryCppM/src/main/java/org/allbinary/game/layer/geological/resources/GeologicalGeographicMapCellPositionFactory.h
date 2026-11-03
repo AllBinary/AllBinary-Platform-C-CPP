@@ -70,7 +70,7 @@ class GeologicalResource;
         
 class GeologicalGeographicMapCellPositionFactory
             : public virtual Object
-        , public GeographicMapCellPositionFactoryInterface {
+        , public virtual GeographicMapCellPositionFactoryInterface {
 
     private: std::vector<int32_t> resourcePerMapCellType;
 

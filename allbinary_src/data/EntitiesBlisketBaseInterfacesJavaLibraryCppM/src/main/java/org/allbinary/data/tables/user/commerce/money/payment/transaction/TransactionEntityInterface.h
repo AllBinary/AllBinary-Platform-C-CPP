@@ -57,7 +57,7 @@ class PaymentTransactionInterface;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class TransactionEntityInterface: public BasicDataTableInterface {
+class TransactionEntityInterface: public virtual BasicDataTableInterface {
 
     public: virtual void remove(std::string userName, std::string orderNumber) = 0;
 

@@ -62,7 +62,7 @@ class ViewPositionBase;
         
 class ViewPositionFactory
             : public virtual Object
-        , public ViewPositionFactoryInterface {
+        , public virtual ViewPositionFactoryInterface {
 
 
             

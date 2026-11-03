@@ -62,7 +62,7 @@
         
 class ABRunnable
             : public virtual Object
-        , public RunnableInterface {
+        , public virtual RunnableInterface {
 
 
             

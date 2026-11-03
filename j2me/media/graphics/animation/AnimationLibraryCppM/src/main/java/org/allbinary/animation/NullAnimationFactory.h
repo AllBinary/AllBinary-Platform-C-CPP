@@ -68,7 +68,7 @@ class Animation;
         
 class NullAnimationFactory
             : public virtual Object
-        , public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
+        , public virtual AnimationInterfaceFactoryInterface, public virtual ProceduralAnimationInterfaceFactoryInterface {
 
     private: static NullAnimationFactory* NULL_NOT_FOR_USE_ANIMATION_FACTORY_owner();
     public: static NullAnimationFactory* NULL_NOT_FOR_USE_ANIMATION_FACTORY;

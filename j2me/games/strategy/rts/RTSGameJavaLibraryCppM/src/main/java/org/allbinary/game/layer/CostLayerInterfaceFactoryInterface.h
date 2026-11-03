@@ -58,7 +58,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class CostLayerInterfaceFactoryInterface: public LayerInterfaceFactoryInterface {
+class CostLayerInterfaceFactoryInterface: public virtual LayerInterfaceFactoryInterface {
 
                 //@Throws(Exception.constructor)
             

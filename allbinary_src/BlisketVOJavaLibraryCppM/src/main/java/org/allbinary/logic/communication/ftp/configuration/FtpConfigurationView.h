@@ -72,7 +72,7 @@ class FtpConfigurationMapping;
         
 class FtpConfigurationView
             : public virtual Object
-        , public DomNodeInterface {
+        , public virtual DomNodeInterface {
 
     private: FtpConfigurationInterface* ftpConfigurationInterface;
 

@@ -74,7 +74,7 @@ class JsProperty;
         
 class BasicEventHandler
             : public virtual Object
-        , public BasicEventHandlerInterface {
+        , public virtual BasicEventHandlerInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

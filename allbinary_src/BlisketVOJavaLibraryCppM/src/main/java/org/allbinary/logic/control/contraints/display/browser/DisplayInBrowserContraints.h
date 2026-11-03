@@ -61,7 +61,7 @@ class Node;
         
 class DisplayInBrowserContraints
             : public virtual Object
-        , public DisplayInBrowserContraintsInterface {
+        , public virtual DisplayInBrowserContraintsInterface {
 
     private: bool frameable= false;
 

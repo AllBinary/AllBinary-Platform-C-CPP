@@ -65,7 +65,7 @@ class AngleFactory;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class BasicConstantVelocityMovement: public Movement, public VelocityInterfaceCompositeInterface {
+class BasicConstantVelocityMovement: public Movement, public virtual VelocityInterfaceCompositeInterface {
 
     private: BasicVelocityProperties* velocityProperties;
 

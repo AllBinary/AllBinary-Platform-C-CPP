@@ -62,7 +62,7 @@ class Money;
         
 class UspsShippingModule
             : public virtual Object
-        , public ShippingInterface {
+        , public virtual ShippingInterface {
 
     private: const std::string name = "USPS";
 

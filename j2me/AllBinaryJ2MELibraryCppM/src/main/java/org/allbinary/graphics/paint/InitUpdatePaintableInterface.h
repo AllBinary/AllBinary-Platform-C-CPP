@@ -58,7 +58,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class InitUpdatePaintableInterface: public InitInterface, public UpdateInterface, public PaintableInterface {
+class InitUpdatePaintableInterface: public virtual InitInterface, public virtual UpdateInterface, public virtual PaintableInterface {
 
 };
 

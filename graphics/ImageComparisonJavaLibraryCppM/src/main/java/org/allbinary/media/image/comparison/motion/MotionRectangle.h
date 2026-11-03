@@ -65,7 +65,7 @@ class BasicArrayListD;
         
 class MotionRectangle
             : public virtual Object
-        , public Cloneable {
+        , public virtual Cloneable {
 
     private: Rectangle* rectangle;
 

@@ -69,7 +69,7 @@ class Color;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class NullInputRobot: public AbstractInputRobot, public InputRobotInterface {
+class NullInputRobot: public AbstractInputRobot, public virtual InputRobotInterface {
 
     public: static inline const std::string LIBRARY_NAME = "null";
 

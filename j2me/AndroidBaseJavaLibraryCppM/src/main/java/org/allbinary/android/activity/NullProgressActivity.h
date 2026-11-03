@@ -62,7 +62,7 @@
         
 class NullProgressActivity
             : public virtual Object
-        , public ProgressActivityInterface {
+        , public virtual ProgressActivityInterface {
 
     private: static NullProgressActivity* NULL_PROGRESS_ACTIVITY_owner();
     public: static NullProgressActivity* NULL_PROGRESS_ACTIVITY;

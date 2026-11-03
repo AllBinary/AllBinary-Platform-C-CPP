@@ -63,7 +63,7 @@ class CommonStrings;
         
 class PickUpShippingModule
             : public virtual Object
-        , public ShippingInterface {
+        , public virtual ShippingInterface {
 
     /*protected*/ public: CommonStrings* commonStrings;
 

@@ -57,7 +57,7 @@ class JsType;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class ColorChangeListener: public EventListenerInterface {
+class ColorChangeListener: public virtual EventListenerInterface {
 
 };
 

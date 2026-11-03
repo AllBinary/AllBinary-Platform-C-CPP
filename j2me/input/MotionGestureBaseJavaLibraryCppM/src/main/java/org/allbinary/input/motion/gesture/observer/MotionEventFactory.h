@@ -66,7 +66,7 @@ class AllBinaryEventObject;
         
 class MotionEventFactory
             : public virtual Object
-        , public AllBinaryEventObjectFactoryInterface {
+        , public virtual AllBinaryEventObjectFactoryInterface {
 
     private: static inline int32_t index = 0;
 

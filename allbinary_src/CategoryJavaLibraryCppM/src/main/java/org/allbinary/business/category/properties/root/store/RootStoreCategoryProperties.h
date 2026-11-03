@@ -84,7 +84,7 @@ class Node;
         
 class RootStoreCategoryProperties
             : public virtual Object
-        , public RootCategoryPropertiesInterface, public CategoryPropertiesInterface {
+        , public virtual RootCategoryPropertiesInterface, public virtual CategoryPropertiesInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

@@ -56,7 +56,7 @@
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class CompleteMotionGestureInputInterface: public NamedInterface {
+class CompleteMotionGestureInputInterface: public virtual NamedInterface {
 
 };
 

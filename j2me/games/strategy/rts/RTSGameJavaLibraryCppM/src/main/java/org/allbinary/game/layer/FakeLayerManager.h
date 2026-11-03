@@ -62,7 +62,7 @@ class GeographicMapCellType;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class FakeLayerManager: public AllBinaryGameLayerManager, public GeographicMapCompositeInterface {
+class FakeLayerManager: public AllBinaryGameLayerManager, public virtual GeographicMapCompositeInterface {
 
     private: std::vector<BasicGeographicMap*> geographicMapInterfaceArray;
 

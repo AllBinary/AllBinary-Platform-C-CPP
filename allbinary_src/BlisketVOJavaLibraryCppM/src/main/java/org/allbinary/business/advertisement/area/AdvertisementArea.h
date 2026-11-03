@@ -70,7 +70,7 @@ class AdvertisementAreaConstraints;
         
 class AdvertisementArea
             : public virtual Object
-        , public AdvertisementAreaInterface {
+        , public virtual AdvertisementAreaInterface {
 
     private: std::string name;
 

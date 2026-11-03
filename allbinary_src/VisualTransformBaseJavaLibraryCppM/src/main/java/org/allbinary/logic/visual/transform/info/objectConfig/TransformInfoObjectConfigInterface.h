@@ -61,7 +61,7 @@ class TransformInfoInterface;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class TransformInfoObjectConfigInterface: public DomDocumentMappingInterface {
+class TransformInfoObjectConfigInterface: public virtual DomDocumentMappingInterface {
 
     public: virtual bool containsView(TransformInfoInterface* transformInfoInterface) = 0;
 

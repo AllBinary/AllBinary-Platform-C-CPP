@@ -73,7 +73,7 @@ class Node;
         
 class BasicComponentView
             : public virtual Object
-        , public TransformInterface {
+        , public virtual TransformInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

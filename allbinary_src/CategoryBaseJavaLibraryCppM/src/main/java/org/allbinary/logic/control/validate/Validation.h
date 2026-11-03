@@ -67,7 +67,7 @@ class Node;
         
 class Validation
             : public virtual Object
-        , public ValidationInterface {
+        , public virtual ValidationInterface {
 
 
             

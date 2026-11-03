@@ -62,7 +62,7 @@ class CacheableInterface;
         
 class ColorCacheableFactory
             : public virtual Object
-        , public CacheableInterfaceFactoryInterface {
+        , public virtual CacheableInterfaceFactoryInterface {
 
 public: ColorCacheableFactory();
 
