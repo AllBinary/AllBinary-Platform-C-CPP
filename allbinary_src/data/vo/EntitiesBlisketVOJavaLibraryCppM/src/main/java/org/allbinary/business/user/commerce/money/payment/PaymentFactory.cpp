@@ -48,6 +48,10 @@
 
       
 
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
 
 
 
@@ -95,7 +99,7 @@ PaymentFactory::PaymentFactory(){
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->FACTORYERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->FACTORYERROR))
                         
                                     {
                                     logUtil->put(commonStrings->EXCEPTION, "PaymentFactory", commonStrings->GET_INSTANCE, &e);

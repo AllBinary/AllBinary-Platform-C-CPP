@@ -92,6 +92,110 @@
 
       
 
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
 
 
 
@@ -280,9 +384,9 @@ outer->writeOverOriginalJCheckBoxActionPerformed(evt);
     
 this->jPanel1->setLayout(jPanel1Layout);
     
-jPanel1Layout->setHorizontalGroup(jPanel1Layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGap(0, 0, Short::MAX_VALUE));
+jPanel1Layout->setHorizontalGroup(jPanel1Layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGap(0, 0, Short::MAX_VALUE));
     
-jPanel1Layout->setVerticalGroup(jPanel1Layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGap(0, 196, Short::MAX_VALUE));
+jPanel1Layout->setVerticalGroup(jPanel1Layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGap(0, 196, Short::MAX_VALUE));
     
 this->generateJButton->setText("Generate");
     
@@ -360,18 +464,18 @@ this->heightReductionTextField1->setText(CommonPhoneStrings::getInstance()->ZERO
     
 this->jPanel2->setLayout(jPanel2Layout);
     
-jPanel2Layout->setHorizontalGroup(jPanel2Layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(jPanel2Layout->createSequentialGroup()->addContainerGap()->addComponent(jLabel8)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(widthReductionTextField1, swing->GroupLayout->PREFERRED_SIZE, 41, swing->GroupLayout->PREFERRED_SIZE)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(jLabel5)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(widthReductionTextField, swing->GroupLayout->PREFERRED_SIZE, 41, swing->GroupLayout->PREFERRED_SIZE)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(jLabel7)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(heightReductionTextField1, swing->GroupLayout->PREFERRED_SIZE, 46, swing->GroupLayout->PREFERRED_SIZE)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(jLabel6)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(heightReductionTextField, swing->GroupLayout->PREFERRED_SIZE, 46, swing->GroupLayout->PREFERRED_SIZE)->addContainerGap(140, Short::MAX_VALUE)));
+jPanel2Layout->setHorizontalGroup(jPanel2Layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(jPanel2Layout->createSequentialGroup()->addContainerGap()->addComponent(jLabel8)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(widthReductionTextField1, GroupLayout::PREFERRED_SIZE, 41, GroupLayout::PREFERRED_SIZE)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(jLabel5)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(widthReductionTextField, GroupLayout::PREFERRED_SIZE, 41, GroupLayout::PREFERRED_SIZE)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(jLabel7)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(heightReductionTextField1, GroupLayout::PREFERRED_SIZE, 46, GroupLayout::PREFERRED_SIZE)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(jLabel6)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(heightReductionTextField, GroupLayout::PREFERRED_SIZE, 46, GroupLayout::PREFERRED_SIZE)->addContainerGap(140, Short::MAX_VALUE)));
     
-jPanel2Layout->setVerticalGroup(jPanel2Layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(swing->GroupLayout->Alignment->TRAILING, jPanel2Layout->createSequentialGroup()->addGap(0, 16, Short::MAX_VALUE)->addGroup(jPanel2Layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(jPanel2Layout->createParallelGroup(swing->GroupLayout->Alignment->BASELINE)->addComponent(jLabel6)->addComponent(heightReductionTextField, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE))->addGroup(jPanel2Layout->createParallelGroup(swing->GroupLayout->Alignment->BASELINE)->addComponent(jLabel8)->addComponent(widthReductionTextField1, swing->GroupLayout->PREFERRED_SIZE, 22, swing->GroupLayout->PREFERRED_SIZE)->addComponent(jLabel7)->addComponent(heightReductionTextField1, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE))->addGroup(jPanel2Layout->createParallelGroup(swing->GroupLayout->Alignment->BASELINE)->addComponent(jLabel5)->addComponent(widthReductionTextField, swing->GroupLayout->PREFERRED_SIZE, 22, swing->GroupLayout->PREFERRED_SIZE)))));
+jPanel2Layout->setVerticalGroup(jPanel2Layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(GroupLayout::Alignment::TRAILING, jPanel2Layout->createSequentialGroup()->addGap(0, 16, Short::MAX_VALUE)->addGroup(jPanel2Layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(jPanel2Layout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(jLabel6)->addComponent(heightReductionTextField, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE))->addGroup(jPanel2Layout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(jLabel8)->addComponent(widthReductionTextField1, GroupLayout::PREFERRED_SIZE, 22, GroupLayout::PREFERRED_SIZE)->addComponent(jLabel7)->addComponent(heightReductionTextField1, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE))->addGroup(jPanel2Layout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(jLabel5)->addComponent(widthReductionTextField, GroupLayout::PREFERRED_SIZE, 22, GroupLayout::PREFERRED_SIZE)))));
     
 
     javax::swing::GroupLayout* layout = new javax::swing::GroupLayout(this);;
     
 this->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addComponent(jPanel2, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)->addGap(78, 78, 78))->addGroup(layout->createSequentialGroup()->addGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addContainerGap()->addComponent(jPanel1, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE))->addGroup(layout->createSequentialGroup()->addGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addComponent(jLabel4)->addGroup(layout->createSequentialGroup()->addComponent(writeOverOriginalJCheckBox)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(generateJButton)))->addGap(0, 0, Short::MAX_VALUE)))->addContainerGap()));
+layout->setHorizontalGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(layout->createSequentialGroup()->addComponent(jPanel2, GroupLayout::DEFAULT_SIZE, GroupLayout::DEFAULT_SIZE, Short::MAX_VALUE)->addGap(78, 78, 78))->addGroup(layout->createSequentialGroup()->addGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(layout->createSequentialGroup()->addContainerGap()->addComponent(jPanel1, GroupLayout::DEFAULT_SIZE, GroupLayout::DEFAULT_SIZE, Short::MAX_VALUE))->addGroup(layout->createSequentialGroup()->addGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addComponent(jLabel4)->addGroup(layout->createSequentialGroup()->addComponent(writeOverOriginalJCheckBox)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(generateJButton)))->addGap(0, 0, Short::MAX_VALUE)))->addContainerGap()));
     
-layout->setVerticalGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addComponent(jPanel2, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addComponent(generateJButton)->addComponent(writeOverOriginalJCheckBox))->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(jLabel4)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(jPanel1, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)));
+layout->setVerticalGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(layout->createSequentialGroup()->addComponent(jPanel2, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addComponent(generateJButton)->addComponent(writeOverOriginalJCheckBox))->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(jLabel4)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(jPanel1, GroupLayout::DEFAULT_SIZE, GroupLayout::DEFAULT_SIZE, Short::MAX_VALUE)));
     
 }
 

@@ -48,6 +48,10 @@
 
       
 
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
 
 
 
@@ -75,7 +79,7 @@ LogUserEmailEventListenerModule::LogUserEmailEventListenerModule() : logUtil(Log
             
     auto LogUserEmailEventListenerModule::onEmailSendRequest(EmailEvent* userEmailInfoEvent) -> void{
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
                         
                                     {
                                     

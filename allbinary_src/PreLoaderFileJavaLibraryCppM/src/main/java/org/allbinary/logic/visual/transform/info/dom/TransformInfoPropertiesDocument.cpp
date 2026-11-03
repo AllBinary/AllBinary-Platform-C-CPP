@@ -87,6 +87,14 @@
 
       
 
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
 
 
 
@@ -131,7 +139,7 @@ this->document= DomDocumentFileHelper::createDocument(xmlFile);
     BasicArrayList* transformInfoNodeVector = DomSearchHelper::getAllNodes(TransformInfoData::getInstance()->NAME, transformInfosChildNodeList);;
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Size: ") +JavaString::valueOf(transformInfoNodeVector->size()), this, "toTransformInfoPropertiesHashMap()");
@@ -176,7 +184,7 @@ transformInfoPropertiesHashMap->put(transformInfoProperties->getName(), transfor
 } catch(Exception& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
                         
                                     {
                                     

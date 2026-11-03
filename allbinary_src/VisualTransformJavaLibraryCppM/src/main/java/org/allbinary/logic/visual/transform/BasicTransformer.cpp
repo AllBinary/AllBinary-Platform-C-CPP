@@ -93,6 +93,54 @@
 
       
 
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
 
 
 
@@ -167,7 +215,7 @@ outputStream= dynamic_cast<ByteArrayOutputStream*>(this->streamUtil->get(inputSt
     std::vector<int8_t> decrypted = abCrypt->decrypt(outputStream->toByteArray());;
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORY))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORY))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Decrypted Template: \n") +JavaString::valueOf(
@@ -186,7 +234,7 @@ this->setURIResolver(dynamic_cast<URIResolver*>(new BasicUriResolver(TransformIn
 } catch(Exception& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     
@@ -257,7 +305,7 @@ outputStream= dynamic_cast<ByteArrayOutputStream*>(this->streamUtil->get(inputSt
     std::vector<int8_t> decrypted = abCrypt->decrypt(outputStream->toByteArray());;
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORY))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORY))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Decrypted Template: \n") +JavaString::valueOf(decrypted.toString()), this, "setEncryptedTemplateAsInputStream()");
@@ -274,7 +322,7 @@ this->setURIResolver(dynamic_cast<URIResolver*>(new BasicUriResolver(TransformIn
 } catch(Exception& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     this->logUtil->put(JavaString::valueOf("Failed to set with template: ") +JavaString::valueOf(this->getTransformInfoInterface()->getTemplateFilePath()), this, "setEncryptedTemplateFileAsInputStream()", &e);
@@ -322,7 +370,7 @@ this->streamUtil->close(inputStream);
         
         try {
             
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORY))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORY))
                         
                                     {
                                     this->logUtil->putF(this->getTransformInfoInterface()->log(), this, "setTemplateAsInputStream()");
@@ -349,7 +397,7 @@ this->streamUtil->close(inputStream);
     std::string filePath = pathUtil->getWithoutExtensionWithAbPath(this->getTransformInfoInterface()->getTemplateFilePath());;
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORY))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORY))
                         
                                     {
                                     this->logUtil->putF(this->getTransformInfoInterface()->log(), this, "setTemplateAsInputStream()");
@@ -374,7 +422,7 @@ stringBuffer->append(transformInfoTemplateData->ENCRYPTED_EXTENSION);
     AbFile* encFile = AbFile::createAbFile(stringBuffer->toString());;
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORY))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORY))
                         
                                     {
                                     this->logUtil->putF(this->getTransformInfoInterface()->log(), this, "setTemplateAsInputStream()");
@@ -383,7 +431,7 @@ stringBuffer->append(transformInfoTemplateData->ENCRYPTED_EXTENSION);
                                     }
                                 
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORY))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORY))
                         
                                     {
                                     stringBuffer= new StringMaker();
@@ -423,7 +471,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "setTemplateAsInputStream()"
     AbFile* file = AbFile::createAbFileFromAbPath(this->getTransformInfoInterface()->getTemplateFilePath());;
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORY))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORY))
                         
                                     {
                                     this->logUtil->putF(this->getTransformInfoInterface()->log(), this, "setTemplateAsInputStream()");
@@ -432,7 +480,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "setTemplateAsInputStream()"
                                     }
                                 
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORY))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORY))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Template File isFile=") +JavaString::valueOf(file->isFile()), this, "setTemplateAsInputStream()");
@@ -451,7 +499,7 @@ outputStream= new ByteArrayOutputStream();
 outputStream= dynamic_cast<ByteArrayOutputStream*>(this->streamUtil->get(inputStream, outputStream, std::vector<int8_t>(16384)));
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORY))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORY))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Template: ") +JavaString::valueOf(outputStream->toString()), this, "getTemplateAsInputStream()");
@@ -531,7 +579,7 @@ stringBuffer->append(transformInfoTemplateData->ENCRYPTED_EXTENSION);
 } catch(Exception& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     this->logUtil->put("Failed to get Template Data", this, "setTemplateAsInputStream()", &e);

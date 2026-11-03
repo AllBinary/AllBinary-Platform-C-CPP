@@ -158,7 +158,7 @@ this->units= int64_t(this->units -convertUsdToUnits(usDollarStr));
 
 
     auto Money::multiply(float multiplier) -> void{
-this->units= int64_t((float(this->units *multiplier)).longValue());
+this->units= int64_t((float(this->units *multiplier)));
     
 }
 
@@ -247,9 +247,9 @@ centsStr= substring.toCharArray();
 
                         }
                             
-localUnit= (int64_t((int64_t(dollarStr)).longValue() *100)).longValue();
+localUnit= (int64_t((Long.valueOf(dollarStr)) *100));
     
-localUnit += (int64_t(centsStr)).longValue();
+localUnit += (Long.valueOf(centsStr));
     
 
 

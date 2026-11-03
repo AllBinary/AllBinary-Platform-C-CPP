@@ -415,7 +415,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->AD
 startIndex= index;
     
 
-        while(index < size -1 && byteArray[index] != .code'\n'.code)
+        while(index < size -1 && byteArray[index] != '\n')
         {
 index++;
     
@@ -426,7 +426,7 @@ index++;
                         
                                     {
                                     
-                        if(index > 0 && byteArray[index -1] == .code'\r'.code)
+                        if(index > 0 && byteArray[index -1] == '\r')
                         
                                     {
                                     returnLine= 1;

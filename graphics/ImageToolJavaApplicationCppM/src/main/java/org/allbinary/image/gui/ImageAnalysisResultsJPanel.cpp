@@ -53,6 +53,168 @@
 
       
 
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
 
 
 
@@ -205,9 +367,9 @@ this->maxBlueJTextField->setEditable(false);
     
 this->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addContainerGap()->addGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addComponent(jLabel3)->addComponent(jLabel2)->addComponent(jLabel1)->addComponent(jLabel5)->addComponent(jLabel6)->addComponent(jLabel7)->addComponent(jLabel4))->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addComponent(jComboBox1, swing->GroupLayout->PREFERRED_SIZE, 81, swing->GroupLayout->PREFERRED_SIZE)->addComponent(avgBlueJTextField, swing->GroupLayout->DEFAULT_SIZE, 81, Short::MAX_VALUE)->addComponent(avgGreenJTextField, swing->GroupLayout->DEFAULT_SIZE, 81, Short::MAX_VALUE)->addComponent(avgRedJTextField, swing->GroupLayout->DEFAULT_SIZE, 81, Short::MAX_VALUE)->addComponent(totalPixelsJTextField, swing->GroupLayout->DEFAULT_SIZE, 81, Short::MAX_VALUE)->addComponent(percentMatchingJTextField, swing->GroupLayout->DEFAULT_SIZE, 81, Short::MAX_VALUE)->addComponent(matchingPixelsJTextField, swing->GroupLayout->DEFAULT_SIZE, 81, Short::MAX_VALUE))->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addComponent(jLabel12)->addComponent(jLabel13)->addComponent(jLabel8)->addComponent(jLabel9)->addComponent(jLabel10)->addComponent(jLabel11))->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addComponent(minRedJTextField, swing->GroupLayout->PREFERRED_SIZE, 82, swing->GroupLayout->PREFERRED_SIZE)->addComponent(maxGreenJTextField, swing->GroupLayout->PREFERRED_SIZE, 82, swing->GroupLayout->PREFERRED_SIZE)->addComponent(minGreenJTextField, swing->GroupLayout->PREFERRED_SIZE, 82, swing->GroupLayout->PREFERRED_SIZE)->addComponent(minBlueJTextField, swing->GroupLayout->PREFERRED_SIZE, 82, swing->GroupLayout->PREFERRED_SIZE)->addComponent(maxRedJTextField, swing->GroupLayout->PREFERRED_SIZE, 82, swing->GroupLayout->PREFERRED_SIZE)->addComponent(maxBlueJTextField, swing->GroupLayout->PREFERRED_SIZE, 82, swing->GroupLayout->PREFERRED_SIZE))->addContainerGap(18, Short::MAX_VALUE)));
+layout->setHorizontalGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(layout->createSequentialGroup()->addContainerGap()->addGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addComponent(jLabel3)->addComponent(jLabel2)->addComponent(jLabel1)->addComponent(jLabel5)->addComponent(jLabel6)->addComponent(jLabel7)->addComponent(jLabel4))->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addComponent(jComboBox1, GroupLayout::PREFERRED_SIZE, 81, GroupLayout::PREFERRED_SIZE)->addComponent(avgBlueJTextField, GroupLayout::DEFAULT_SIZE, 81, Short::MAX_VALUE)->addComponent(avgGreenJTextField, GroupLayout::DEFAULT_SIZE, 81, Short::MAX_VALUE)->addComponent(avgRedJTextField, GroupLayout::DEFAULT_SIZE, 81, Short::MAX_VALUE)->addComponent(totalPixelsJTextField, GroupLayout::DEFAULT_SIZE, 81, Short::MAX_VALUE)->addComponent(percentMatchingJTextField, GroupLayout::DEFAULT_SIZE, 81, Short::MAX_VALUE)->addComponent(matchingPixelsJTextField, GroupLayout::DEFAULT_SIZE, 81, Short::MAX_VALUE))->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addComponent(jLabel12)->addComponent(jLabel13)->addComponent(jLabel8)->addComponent(jLabel9)->addComponent(jLabel10)->addComponent(jLabel11))->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addComponent(minRedJTextField, GroupLayout::PREFERRED_SIZE, 82, GroupLayout::PREFERRED_SIZE)->addComponent(maxGreenJTextField, GroupLayout::PREFERRED_SIZE, 82, GroupLayout::PREFERRED_SIZE)->addComponent(minGreenJTextField, GroupLayout::PREFERRED_SIZE, 82, GroupLayout::PREFERRED_SIZE)->addComponent(minBlueJTextField, GroupLayout::PREFERRED_SIZE, 82, GroupLayout::PREFERRED_SIZE)->addComponent(maxRedJTextField, GroupLayout::PREFERRED_SIZE, 82, GroupLayout::PREFERRED_SIZE)->addComponent(maxBlueJTextField, GroupLayout::PREFERRED_SIZE, 82, GroupLayout::PREFERRED_SIZE))->addContainerGap(18, Short::MAX_VALUE)));
     
-layout->setVerticalGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->BASELINE)->addComponent(jLabel4)->addComponent(jComboBox1, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE))->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->BASELINE)->addComponent(jLabel1)->addComponent(matchingPixelsJTextField, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE)->addComponent(jLabel8)->addComponent(minRedJTextField, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE))->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->BASELINE)->addComponent(jLabel2)->addComponent(totalPixelsJTextField, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE)->addComponent(jLabel9)->addComponent(minGreenJTextField, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE))->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->BASELINE)->addComponent(jLabel3)->addComponent(percentMatchingJTextField, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE)->addComponent(jLabel10)->addComponent(minBlueJTextField, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE))->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->BASELINE)->addComponent(jLabel5)->addComponent(avgRedJTextField, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE)->addComponent(jLabel11)->addComponent(maxRedJTextField, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE))->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->BASELINE)->addComponent(jLabel6)->addComponent(avgGreenJTextField, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE)->addComponent(maxGreenJTextField, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE)->addComponent(jLabel12))->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->BASELINE)->addComponent(jLabel7)->addComponent(avgBlueJTextField, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE)->addComponent(jLabel13)->addComponent(maxBlueJTextField, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE))));
+layout->setVerticalGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(layout->createSequentialGroup()->addGroup(layout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(jLabel4)->addComponent(jComboBox1, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE))->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addGroup(layout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(jLabel1)->addComponent(matchingPixelsJTextField, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->addComponent(jLabel8)->addComponent(minRedJTextField, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE))->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addGroup(layout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(jLabel2)->addComponent(totalPixelsJTextField, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->addComponent(jLabel9)->addComponent(minGreenJTextField, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE))->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addGroup(layout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(jLabel3)->addComponent(percentMatchingJTextField, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->addComponent(jLabel10)->addComponent(minBlueJTextField, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE))->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addGroup(layout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(jLabel5)->addComponent(avgRedJTextField, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->addComponent(jLabel11)->addComponent(maxRedJTextField, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE))->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addGroup(layout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(jLabel6)->addComponent(avgGreenJTextField, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->addComponent(maxGreenJTextField, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->addComponent(jLabel12))->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addGroup(layout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(jLabel7)->addComponent(avgBlueJTextField, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->addComponent(jLabel13)->addComponent(maxBlueJTextField, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE))));
     
 }
 

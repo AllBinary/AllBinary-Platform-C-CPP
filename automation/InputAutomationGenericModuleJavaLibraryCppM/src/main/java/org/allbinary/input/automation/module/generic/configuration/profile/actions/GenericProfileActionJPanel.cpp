@@ -56,6 +56,48 @@
 
       
 
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
 
 
 
@@ -108,9 +150,9 @@ this->getGenericProfileActionScriptJPanel()->updateJTree();
 
     javax::swing::GroupLayout* layout = dynamic_cast<javax::swing::GroupLayout*>(this->blankProfileActionScriptJPanel->getLayout());;
     
-layout->setHorizontalGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGap(0, 395, Short::MAX_VALUE)->addComponent(this->getGenericProfileActionScriptJPanel(), swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE));
+layout->setHorizontalGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGap(0, 395, Short::MAX_VALUE)->addComponent(this->getGenericProfileActionScriptJPanel(), GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE));
     
-layout->setVerticalGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGap(0, 256, Short::MAX_VALUE)->addComponent(this->getGenericProfileActionScriptJPanel(), swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE));
+layout->setVerticalGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGap(0, 256, Short::MAX_VALUE)->addComponent(this->getGenericProfileActionScriptJPanel(), GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE));
     
 this->logUtil->putF("Updated UI", this, "updateUI");
     
@@ -179,9 +221,9 @@ this->blankProfileActionScriptJPanel->setMinimumSize(new java::awt::Dimension(40
     
 this->blankProfileActionScriptJPanel->setLayout(blankProfileActionScriptJPanelLayout);
     
-blankProfileActionScriptJPanelLayout->setHorizontalGroup(blankProfileActionScriptJPanelLayout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGap(0, 9996, Short::MAX_VALUE));
+blankProfileActionScriptJPanelLayout->setHorizontalGroup(blankProfileActionScriptJPanelLayout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGap(0, 9996, Short::MAX_VALUE));
     
-blankProfileActionScriptJPanelLayout->setVerticalGroup(blankProfileActionScriptJPanelLayout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGap(0, 9967, Short::MAX_VALUE));
+blankProfileActionScriptJPanelLayout->setVerticalGroup(blankProfileActionScriptJPanelLayout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGap(0, 9967, Short::MAX_VALUE));
     
 this->genericProfileActionScriptJScrollPane->setViewportView(this->blankProfileActionScriptJPanel);
     
@@ -249,9 +291,9 @@ outer->newAlwaysJButtonActionPerformed(evt);
     
 this->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addComponent(ifJLabel)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(newColorAtJButton)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(newTimeIntervalJButton)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(newAlwaysJButton)->addContainerGap(61, Short::MAX_VALUE))->addComponent(genericProfileActionScriptJScrollPane, swing->GroupLayout->DEFAULT_SIZE, 440, Short::MAX_VALUE));
+layout->setHorizontalGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(layout->createSequentialGroup()->addComponent(ifJLabel)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(newColorAtJButton)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(newTimeIntervalJButton)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(newAlwaysJButton)->addContainerGap(61, Short::MAX_VALUE))->addComponent(genericProfileActionScriptJScrollPane, GroupLayout::DEFAULT_SIZE, 440, Short::MAX_VALUE));
     
-layout->setVerticalGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->BASELINE)->addComponent(ifJLabel, swing->GroupLayout->PREFERRED_SIZE, 14, swing->GroupLayout->PREFERRED_SIZE)->addComponent(newColorAtJButton)->addComponent(newTimeIntervalJButton)->addComponent(newAlwaysJButton))->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(genericProfileActionScriptJScrollPane, swing->GroupLayout->DEFAULT_SIZE, 246, Short::MAX_VALUE)));
+layout->setVerticalGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(layout->createSequentialGroup()->addGroup(layout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(ifJLabel, GroupLayout::PREFERRED_SIZE, 14, GroupLayout::PREFERRED_SIZE)->addComponent(newColorAtJButton)->addComponent(newTimeIntervalJButton)->addComponent(newAlwaysJButton))->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(genericProfileActionScriptJScrollPane, GroupLayout::DEFAULT_SIZE, 246, Short::MAX_VALUE)));
     
 }
 

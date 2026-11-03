@@ -77,6 +77,18 @@
 
       
 
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
 
 
 
@@ -130,7 +142,7 @@ this->password= value;
     bool valid = Boolean::TRUE;;
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VALIDATION))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VALIDATION))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Password: ") +JavaString::valueOf(this->password), this, commonStrings->IS_VALID);
@@ -143,7 +155,7 @@ this->password= value;
                         
                                     {
                                     
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VALIDATION))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VALIDATION))
                         
                                     {
                                     this->logUtil->putF("Password is invalid", this, commonStrings->IS_VALID);
@@ -169,7 +181,7 @@ valid= Boolean::FALSE;
 } catch(Exception& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VALIDATIONERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VALIDATIONERROR))
                         
                                     {
                                     this->logUtil->put("Failed to validate form", "Password", commonStrings->IS_VALID, &e);

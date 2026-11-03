@@ -61,6 +61,14 @@
 
       
 
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
 
 
 
@@ -135,7 +143,7 @@ out->close();
 } catch(LicensingException& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SERVLETERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SERVLETERROR))
                         
                                     {
                                     this->logUtil->put("Servlet LicensingException", this, "processRequest()", &e);
@@ -151,7 +159,7 @@ response->sendRedirect(abcs.globals->URLGLOBALS->LICENSEERRORPAGE);
  catch(Exception& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SERVLETERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SERVLETERROR))
                         
                                     {
                                     this->logUtil->put("Servlet Exception", this, "processRequest()", &e);

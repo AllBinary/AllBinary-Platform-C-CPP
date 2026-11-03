@@ -52,6 +52,16 @@
 
       
 
+#include <org/allbinary/globals/GLOBALS2.h>
+
+#include <org/allbinary/globals/GLOBALS2.h>
+
+#include <org/allbinary/globals/GLOBALS2.h>
+
+#include <org/allbinary/globals/GLOBALS2.h>
+
+#include <org/allbinary/globals/GLOBALS2.h>
+
 
 
 
@@ -95,7 +105,7 @@ this->getPropertiesHashMap()->put(UserRoleData::NAME, this->role);
                         
                                     {
                                     
-                        if(this->getCommand()->compareTo(allbinary->globals->GLOBALS2->NEW) == 0)
+                        if(this->getCommand()->compareTo(GLOBALS2::NEW) == 0)
                         
                                     {
                                     this->setName("New User View");
@@ -117,7 +127,7 @@ this->setObjectFile("views.admin.user.AddValidationUserView");
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(allbinary->globals->GLOBALS2->VIEW) == 0)
+                        if(this->getCommand()->compareTo(GLOBALS2::VIEW) == 0)
                         
                                     {
                                     this->setName("Validation User View");
@@ -128,7 +138,7 @@ this->setObjectFile("views.admin.user.ViewValidationUserView");
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(allbinary->globals->GLOBALS2->EDIT) == 0)
+                        if(this->getCommand()->compareTo(GLOBALS2::EDIT) == 0)
                         
                                     {
                                     this->setName("Validation User View");
@@ -161,7 +171,7 @@ this->setObjectFile("views.admin.user.DeleteValidationUserView");
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(allbinary->globals->GLOBALS2->BACKUP) == 0)
+                        if(this->getCommand()->compareTo(GLOBALS2::BACKUP) == 0)
                         
                                     {
                                     
@@ -173,7 +183,7 @@ this->setObjectFile("views.admin.user.DeleteValidationUserView");
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(allbinary->globals->GLOBALS2->RESTORE) == 0)
+                        if(this->getCommand()->compareTo(GLOBALS2::RESTORE) == 0)
                         
                                     {
                                     

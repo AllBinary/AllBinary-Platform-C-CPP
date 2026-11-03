@@ -77,6 +77,68 @@
 
       
 
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
 
 
 
@@ -597,9 +659,9 @@ outer->adjustFor16BelowJButtonActionPerformed(evt);
     
 this->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addContainerGap()->addGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addComponent(jLabel1)->addComponent(jLabel2)->addComponent(jLabel3))->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING, false)->addComponent(jComboBox1, 0, swing->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)->addComponent(jTextField1)->addComponent(jTextField2))->addPreferredGap(swing->LayoutStyle->ComponentPlacement->UNRELATED)->addGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addComponent(floatPercentJTextField, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE)->addComponent(adjustFor16AboveJButton)->addComponent(adjustFor16BelowJButton))->addContainerGap(swing->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE))->addGroup(layout->createSequentialGroup()->addComponent(updateJButton)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(aboveJButton)->addGap(0, 250, Short::MAX_VALUE)));
+layout->setHorizontalGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(layout->createSequentialGroup()->addContainerGap()->addGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addComponent(jLabel1)->addComponent(jLabel2)->addComponent(jLabel3))->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING, false)->addComponent(jComboBox1, 0, GroupLayout::DEFAULT_SIZE, Short::MAX_VALUE)->addComponent(jTextField1)->addComponent(jTextField2))->addPreferredGap(LayoutStyle::ComponentPlacement::UNRELATED)->addGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addComponent(floatPercentJTextField, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->addComponent(adjustFor16AboveJButton)->addComponent(adjustFor16BelowJButton))->addContainerGap(GroupLayout::DEFAULT_SIZE, Short::MAX_VALUE))->addGroup(layout->createSequentialGroup()->addComponent(updateJButton)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(aboveJButton)->addGap(0, 250, Short::MAX_VALUE)));
     
-layout->setVerticalGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addContainerGap()->addGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->BASELINE)->addComponent(jLabel1)->addComponent(jComboBox1, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE)->addComponent(floatPercentJTextField, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE))->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->BASELINE)->addComponent(jTextField1, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE)->addComponent(jLabel2)->addComponent(adjustFor16AboveJButton))->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->BASELINE)->addComponent(jLabel3)->addComponent(jTextField2, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE)->addComponent(adjustFor16BelowJButton))->addGap(18, 18, 18)->addGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->BASELINE)->addComponent(aboveJButton)->addComponent(updateJButton))->addContainerGap(175, Short::MAX_VALUE)));
+layout->setVerticalGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(layout->createSequentialGroup()->addContainerGap()->addGroup(layout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(jLabel1)->addComponent(jComboBox1, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->addComponent(floatPercentJTextField, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE))->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addGroup(layout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(jTextField1, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->addComponent(jLabel2)->addComponent(adjustFor16AboveJButton))->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addGroup(layout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(jLabel3)->addComponent(jTextField2, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->addComponent(adjustFor16BelowJButton))->addGap(18, 18, 18)->addGroup(layout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(aboveJButton)->addComponent(updateJButton))->addContainerGap(175, Short::MAX_VALUE)));
     
 }
 

@@ -63,6 +63,10 @@
 
       
 
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
 
 
 
@@ -128,7 +132,7 @@ TransformTemplateFactory::TransformTemplateFactory() : logUtil(LogUtil::getInsta
     std::string error = "Failed To Get Instance";;
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     this->logUtil->put(JavaString::valueOf(JavaString::valueOf(error) +JavaString::valueOf(templateName)) +JavaString::valueOf("->TemplateFactory"), this, "getInstance(viewName, HashMap, PageContext)", &e);

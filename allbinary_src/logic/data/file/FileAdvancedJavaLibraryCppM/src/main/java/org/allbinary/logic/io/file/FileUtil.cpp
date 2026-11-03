@@ -104,6 +104,50 @@
 
       
 
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
 
 
 
@@ -260,7 +304,7 @@ this->directory->create(fixedPath);
     std::string string = fixedPath->toFileSystemString();;
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILE))
+                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     this->logUtil->putF(string, this, "fixPath");
@@ -318,7 +362,7 @@ this->copyToCloud(file, path, realPath, cloud, false, false);
                                 
                         else {
                             
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILE))
+                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     
@@ -355,7 +399,7 @@ this->copy(fileInputStream, dataOutputStream);
 } catch(Exception& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILEERROR))
+                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILEERROR))
                         
                                     {
                                     
@@ -415,7 +459,7 @@ this->copyToCloud(file, outFile, false, false);
                                 
                         else {
                             
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILE))
+                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     stringBuffer->delete_(0, stringBuffer->length());
@@ -451,7 +495,7 @@ this->copy(fileInputStream, dataOutputStream);
 } catch(Exception& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILEERROR))
+                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILEERROR))
                         
                                     {
                                     
@@ -493,7 +537,7 @@ this->logUtil->put(stringBuffer->toString(), getInstance(), "copyToCloud", &e);
                         
                                     {
                                     
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILE))
+                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     stringBuffer->delete_(0, stringBuffer->length());
@@ -519,7 +563,7 @@ toFile->createNewFile();
                         
                                     {
                                     
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILE))
+                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     stringBuffer->delete_(0, stringBuffer->length());
@@ -548,7 +592,7 @@ toFile->createNewFile();
                                 
                         else {
                             
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILE))
+                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     stringBuffer->delete_(0, stringBuffer->length());
@@ -624,7 +668,7 @@ this->copyFile(fromFile, toFile, false, false);
 
         try {
             
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILE))
+                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     
@@ -675,7 +719,7 @@ this->copy(fileInputStream, dataOutputStream);
 } catch(Exception& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILEERROR))
+                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILEERROR))
                         
                                     {
                                     
@@ -807,7 +851,7 @@ stringBuffer->append(" - ");
 stringBuffer->appendint(end);
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILE))
+                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     this->logUtil->putF(stringBuffer->toString(), getInstance(), "copySomeFilesToDirectory()");
@@ -872,7 +916,7 @@ this->copyFile(nextFile, toFile, overwriteNewer, overwriteAll);
 
         try {
             
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILE))
+                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     
@@ -916,7 +960,7 @@ this->logUtil->putF(stringBuffer->toString(), getInstance(), "copyDirectory");
     int32_t size = fileArray.size();;
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILE))
+                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     
@@ -985,7 +1029,7 @@ file= fileArray[index];
 } catch(Exception& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILEERROR))
+                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILEERROR))
                         
                                     {
                                     
@@ -1024,7 +1068,7 @@ this->logUtil->put(stringBuffer->toString(), getInstance(), "copyDirectory", &e)
 
         try {
             
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILE))
+                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     
@@ -1091,7 +1135,7 @@ this->logUtil->putF(stringBuffer->toString(), getInstance(), COPY);
 this->copyFile(fromLocationFile, file);
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILE))
+                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     
@@ -1121,7 +1165,7 @@ this->logUtil->putF(stringBuffer->toString(), getInstance(), COPY);
                             this->copyFile(fromLocationFile, toLocationFile);
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILE))
+                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     
@@ -1153,11 +1197,11 @@ this->logUtil->putF(stringBuffer->toString(), getInstance(), COPY);
                         
                                     {
                                     
-                        if(fromAbPath->toFileSystemString()[fromAbPath->toFileSystemString()->length() -1] == io->File->separatorChar)
+                        if(fromAbPath->toFileSystemString()[fromAbPath->toFileSystemString()->length() -1] == File::separatorChar)
                         
                                     {
                                     
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILE))
+                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     this->logUtil->putF("Copying subdirectories", getInstance(), COPY);
@@ -1211,7 +1255,7 @@ this->copyFile(file, aFile);
 }
 
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILE))
+                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     this->logUtil->putF("Copied subdirectories", getInstance(), COPY);
@@ -1224,7 +1268,7 @@ this->copyFile(file, aFile);
                                 
                         else {
                             
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILE))
+                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     this->logUtil->putF("Copyinhg directory", getInstance(), COPY);
@@ -1235,7 +1279,7 @@ this->copyFile(file, aFile);
 this->copyDirectory(fromLocationFile, toLocationFile);
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILE))
+                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     this->logUtil->putF("Copied directory", getInstance(), COPY);
@@ -1262,7 +1306,7 @@ this->copyDirectory(fromLocationFile, toLocationFile);
 } catch(Exception& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILEERROR))
+                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILEERROR))
                         
                                     {
                                     

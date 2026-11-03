@@ -65,6 +65,14 @@
 
       
 
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
 
 
 
@@ -108,7 +116,7 @@ this->idGeneratorEntity->insert(vector);
 } catch(Exception& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->IDLOGGING))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->IDLOGGING))
                         
                                     {
                                     
@@ -160,7 +168,7 @@ this->idGeneratorEntity->update(this->name, newValue);
 } catch(Exception& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->IDLOGGING))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->IDLOGGING))
                         
                                     {
                                     

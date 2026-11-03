@@ -87,6 +87,10 @@
 
       
 
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
 
 
 
@@ -336,9 +340,9 @@ outer->aboveJButtonActionPerformed(evt);
     
 this->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addComponent(aboveJButton)->addGap(0, 335, Short::MAX_VALUE)));
+layout->setHorizontalGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(layout->createSequentialGroup()->addComponent(aboveJButton)->addGap(0, 335, Short::MAX_VALUE)));
     
-layout->setVerticalGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addContainerGap()->addComponent(aboveJButton)->addContainerGap(286, Short::MAX_VALUE)));
+layout->setVerticalGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(layout->createSequentialGroup()->addContainerGap()->addComponent(aboveJButton)->addContainerGap(286, Short::MAX_VALUE)));
     
 }
 

@@ -49,6 +49,8 @@
 
       
 
+#include <org/allbinary/globals/GLOBALS2.h>
+
 
 
 
@@ -84,7 +86,7 @@ StoreFrontStatisticsTag::StoreFrontStatisticsTag(){
                         
                                     {
                                     
-                        if(this->getCommand()->compareTo(allbinary->globals->GLOBALS2->VIEW) == 0)
+                        if(this->getCommand()->compareTo(GLOBALS2::VIEW) == 0)
                         
                                     {
                                     this->setName("Validation StoreFrontStatistics View");

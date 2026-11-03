@@ -46,6 +46,14 @@
 
       
 
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
 
 
 
@@ -73,7 +81,7 @@ this->setName(StringUtil::getInstance()->EMPTY_STRING);
 this->setEventListenerClassPath(StringUtil::getInstance()->EMPTY_STRING);
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->putF("New", this, " Constructor");
@@ -90,7 +98,7 @@ this->setName(JavaBoxes::unbox<std::string>(hashMap->get(UserEmailEventConfigura
 this->setEventListenerClassPath(JavaBoxes::unbox<std::string>(hashMap->get(UserEmailEventConfigurationData::LISTENER_CLASSPATH)));
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Log: ") +JavaString::valueOf(this->log()), this, " Constructor");

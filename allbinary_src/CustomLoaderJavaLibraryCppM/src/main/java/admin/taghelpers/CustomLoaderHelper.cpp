@@ -57,6 +57,12 @@
 
       
 
+#include <org/allbinary/globals/URLGLOBALS.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
 
 
 
@@ -95,7 +101,7 @@ CustomLoaderHelper::CustomLoaderHelper() : logUtil(LogUtil::getInstance()), comm
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return allbinary->globals->URLGLOBALS->getWebappPath();;
+                        return URLGLOBALS::getWebappPath();;
     
 
                 //: 
@@ -131,7 +137,7 @@ URLGLOBALS::init(urlGlobals);
 } catch(Exception& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "setWebappPath()", &e);

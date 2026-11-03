@@ -55,6 +55,18 @@
 
       
 
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
 
 
 
@@ -82,7 +94,7 @@ GeneratorStoreFrontContextView::GeneratorStoreFrontContextView(TransformInfoInte
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("View Name: ") +JavaString::valueOf(transformInfoInterface->getName()), this, this->commonStrings->CONSTRUCTOR);
@@ -100,7 +112,7 @@ GeneratorStoreFrontContextView::GeneratorStoreFrontContextView(TransformInfoInte
     std::string result = TransformsGeneratorUtil::getInstance()->generateComponentsFromObjectConfig(this->abeClientInformation, this->getTransformInfoInterface(), group);;
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPEXTRAOUTPUT))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPEXTRAOUTPUT))
                         
                                     {
                                     
@@ -147,7 +159,7 @@ GeneratorStoreFrontContextView::GeneratorStoreFrontContextView(TransformInfoInte
 } catch(Exception& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);

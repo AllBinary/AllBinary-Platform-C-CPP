@@ -100,6 +100,50 @@
 
       
 
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/globals/URLGLOBALS.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/globals/URLGLOBALS.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
 
 
 
@@ -147,7 +191,7 @@ AbSqlTableUtil* AbSqlTableUtil::instance = AbSqlTableUtil::instance_owner();
     std::string fileName = JavaString::valueOf(tableName) +JavaString::valueOf(this->EXTENSION);;
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf(this->SAVING) +JavaString::valueOf(tableName), this, this->METHOD_GET_OUTPUT_STREAM);
@@ -190,7 +234,7 @@ backupFile->createNewFile();
 } catch(Exception& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGINGERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
                         
                                     {
                                     this->logUtil->put("Create File", this, this->METHOD_GET_OUTPUT_STREAM, &e);
@@ -240,7 +284,7 @@ stringBuffer->append(time);
     AbPath* backupAbPath = new AbPath(stringBuffer->toString());;
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
                         
                                     {
                                     stringBuffer->delete_(0, stringBuffer->length());
@@ -280,7 +324,7 @@ FileUtil::getInstance()->copy(path, backupAbPath);
 } catch(Exception& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGINGERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, this->METHOD_BACKUP_FILE, &e);
@@ -375,14 +419,14 @@ lastIndex= index +1;
     std::string sqlStatement = JavaString::valueOf(this->sqlStrings->SELECT_ALL_FROM) +JavaString::valueOf(tableName);;
     
 
-    std::string path = allbinary->globals->URLGLOBALS->getMainPath() +PATH_GLOBALS::getInstance()->BACKUP_PATH;;
+    std::string path = URLGLOBALS::getMainPath() +PATH_GLOBALS::getInstance()->BACKUP_PATH;;
     
 
                         if(!Directory::create(new AbPath(path)))
                         
                                     {
                                     
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf(ERROR_CREATING) +JavaString::valueOf(path), this, this->METHOD_BACKUP_TABLE);
@@ -442,7 +486,7 @@ stringBuffer->append(this->END);
     std::string sqlStatementLine = stringBuffer->toString();;
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf(this->APPENDING) +JavaString::valueOf(sqlStatementLine), this, this->METHOD_BACKUP_TABLE);
@@ -469,7 +513,7 @@ StreamUtil::getInstance()->close(outputStream);
 } catch(Exception& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGINGERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
                         
                                     {
                                     this->logUtil->put("Backup Table Failed\nSQL Statement", this, this->METHOD_BACKUP_TABLE, &e);
@@ -498,7 +542,7 @@ StreamUtil::getInstance()->close(outputStream);
 
         try {
             
-    std::string path = allbinary->globals->URLGLOBALS->getMainPath() +PATH_GLOBALS::getInstance()->BACKUP_PATH;;
+    std::string path = URLGLOBALS::getMainPath() +PATH_GLOBALS::getInstance()->BACKUP_PATH;;
     
 
     int32_t current = JavaBoxes::value<int32_t>(portion->getCurrent());;
@@ -512,7 +556,7 @@ StreamUtil::getInstance()->close(outputStream);
                         
                                     {
                                     
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
                         
                                     {
                                     this->logUtil->putF(this->ERROR_CREATING +path, this, this->METHOD_RESTORE_TABLE);
@@ -569,7 +613,7 @@ stringBuffer->append(this->DASH);
 stringBuffer->append(end);
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
                         
                                     {
                                     this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_RESTORE_TABLE);
@@ -619,7 +663,7 @@ stringBuffer->append(this->PORTION_RESTORED);
 } catch(Exception& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGINGERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
                         
                                     {
                                     this->logUtil->put("Restore Table Failed\nSQL Statement", this, this->METHOD_RESTORE_TABLE, &e);

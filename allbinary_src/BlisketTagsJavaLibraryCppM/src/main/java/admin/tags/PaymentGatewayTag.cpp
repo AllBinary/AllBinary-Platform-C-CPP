@@ -59,6 +59,18 @@
 
       
 
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/globals/GLOBALS2.h>
+
+#include <org/allbinary/globals/GLOBALS2.h>
+
+#include <org/allbinary/globals/GLOBALS2.h>
+
+#include <org/allbinary/globals/GLOBALS2.h>
+
 
 
 
@@ -131,7 +143,7 @@ this->logUtil->put("LicensingException", this, this->commonStrings->PROCESS, &e)
  catch(Exception& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->PROCESS, &e);
@@ -159,7 +171,7 @@ this->logUtil->put("LicensingException", this, this->commonStrings->PROCESS, &e)
                         
                                     {
                                     
-                        if(this->getCommand()->compareTo(allbinary->globals->GLOBALS2->AUTHORIZEORDEREVALBODYONERROR) == 0 || this->getCommand()->compareTo(allbinary->globals->GLOBALS2->AUTHORIZEORDERANDEVALBODY) == 0 || this->getCommand()->compareTo(allbinary->globals->GLOBALS2->AUTHORIZEFORMEVALBODYONERROR) == 0)
+                        if(this->getCommand()->compareTo(GLOBALS2::AUTHORIZEORDEREVALBODYONERROR) == 0 || this->getCommand()->compareTo(GLOBALS2::AUTHORIZEORDERANDEVALBODY) == 0 || this->getCommand()->compareTo(GLOBALS2::AUTHORIZEFORMEVALBODYONERROR) == 0)
                         
                                     {
                                     
@@ -174,7 +186,7 @@ this->logUtil->put("LicensingException", this, this->commonStrings->PROCESS, &e)
                             }
                     
 
-                        if(this->getCommand()->compareTo(allbinary->globals->GLOBALS2->AUTHORIZEORDEREVALBODYONERROR) == 0)
+                        if(this->getCommand()->compareTo(GLOBALS2::AUTHORIZEORDEREVALBODYONERROR) == 0)
                         
                                     {
                                     

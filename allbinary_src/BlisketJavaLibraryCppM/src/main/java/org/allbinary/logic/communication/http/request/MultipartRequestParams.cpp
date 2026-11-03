@@ -71,6 +71,22 @@
 
       
 
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
 
 
 
@@ -137,7 +153,7 @@ this->special= true;
                         
                                     {
                                     
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("FileItem List Size: ") +JavaString::valueOf(multipartRequestList->size), this, "processMultipartRequest()");
@@ -182,7 +198,7 @@ this->special= true;
 }
 
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Special Request Data: ") +JavaString::valueOf(specialRequest->toString()), this, "processMultipartRequest()");
@@ -202,7 +218,7 @@ this->setMap(specialRequest);
 } catch(InvalidContentTypeException& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
                         
                                     {
                                     this->logUtil->putF("Using Normal RequestParams", this, "processMultipartRequest()");
@@ -218,7 +234,7 @@ RequestParams::setMap(request->getParameterMap());
  catch(Exception& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUESTERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->HTTPREQUESTERROR))
                         
                                     {
                                     this->logUtil->putF("Should Not Occur", this, "processMultipartRequest()");

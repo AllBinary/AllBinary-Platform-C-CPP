@@ -60,6 +60,10 @@
 
       
 
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
 
 
 
@@ -135,7 +139,7 @@ shipping= dynamic_cast<ShippingInterface*>(this->shippingVector->get(index));
     std::string error = JavaString::valueOf("Error Finding Shipping: ") +JavaString::valueOf(name);;
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SHIPPINGERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SHIPPINGERROR))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->EXCEPTION, this, "getShippingInterface(String name)");

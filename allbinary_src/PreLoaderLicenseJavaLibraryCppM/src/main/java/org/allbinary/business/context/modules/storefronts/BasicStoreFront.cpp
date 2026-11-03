@@ -63,6 +63,16 @@
 
       
 
+#include <org/allbinary/globals/URLGLOBALS.h>
+
+#include <org/allbinary/globals/URLGLOBALS.h>
+
+#include <org/allbinary/globals/URLGLOBALS.h>
+
+#include <org/allbinary/globals/URLGLOBALS.h>
+
+#include <org/allbinary/globals/URLGLOBALS.h>
+
 
 
 
@@ -157,7 +167,7 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return allbinary->globals->URLGLOBALS->getTestHtmlPath() +this->getCurrentHostNamePath();
+                        return URLGLOBALS::getTestHtmlPath() +this->getCurrentHostNamePath();
     
 }
 
@@ -169,7 +179,7 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
             ;;
     
 
-                        if(allbinary->globals->URLGLOBALS->isTestingMode())
+                        if(URLGLOBALS::isTestingMode())
                         
                                     {
                                     location= this->getTestHostName();
@@ -201,7 +211,7 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
             ;;
     
 
-                        if(allbinary->globals->URLGLOBALS->isTestingMode())
+                        if(URLGLOBALS::isTestingMode())
                         
                                     {
                                     location= this->getTestHostNamePath();
@@ -233,7 +243,7 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
             ;;
     
 
-                        if(allbinary->globals->URLGLOBALS->isTestingMode())
+                        if(URLGLOBALS::isTestingMode())
                         
                                     {
                                     location= this->getTestHomeHostName();
@@ -265,7 +275,7 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
             ;;
     
 
-                        if(allbinary->globals->URLGLOBALS->isTestingMode())
+                        if(URLGLOBALS::isTestingMode())
                         
                                     {
                                     location= this->getTestHomeHostNamePath();

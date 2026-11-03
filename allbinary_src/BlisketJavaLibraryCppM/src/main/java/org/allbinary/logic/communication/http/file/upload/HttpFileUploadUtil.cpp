@@ -57,6 +57,14 @@
 
       
 
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
 
 
 
@@ -182,7 +190,7 @@ stringBuffer->append("Size:");
 stringBuffer->append(" Not Calculated Yet");
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTP))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->HTTP))
                         
                                     {
                                     logUtil->putF(stringBuffer->toString(), getInstance(), "log()");
@@ -230,7 +238,7 @@ stringBuffer->append("Size:");
 stringBuffer->appendlong(fileItem->getSize());
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
                         
                                     {
                                     logUtil->putF(stringBuffer->toString(), getInstance(), "log()");

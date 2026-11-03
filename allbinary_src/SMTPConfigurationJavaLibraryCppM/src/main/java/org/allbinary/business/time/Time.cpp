@@ -59,13 +59,13 @@
         
 
 Time::Time(std::string time){
-this->timeLong= int64_t(time);
+this->timeLong= Long.valueOf(time);
     
 }
 
 
 Time::Time(int64_t time){
-this->timeLong= int64_t(time);
+this->timeLong= Long.valueOf(time);
     
 }
 

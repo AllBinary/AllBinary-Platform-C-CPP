@@ -48,6 +48,10 @@
 
       
 
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
 
 
 
@@ -97,7 +101,7 @@ OrderHistoryFactory::OrderHistoryFactory() : logUtil(LogUtil::getInstance()){
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->FACTORYERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->FACTORYERROR))
                         
                                     {
                                     logUtil->put(commonStrings->EXCEPTION, "OrderHistoryFactory", commonStrings->GET_INSTANCE, &e);

@@ -55,6 +55,10 @@
 
       
 
+#include <org/allbinary/globals/GLOBALS2.h>
+
+#include <org/allbinary/globals/GLOBALS2.h>
+
 
 
 
@@ -113,7 +117,7 @@ this->storeName= value;
                         
                                     {
                                     
-                        if(this->getCommand()->compareTo(allbinary->globals->GLOBALS2->BACKUP) != 0 && this->getCommand()->compareTo(allbinary->globals->GLOBALS2->RESTORE) != 0 && this->getCommand()->compareTo(this->commonStrings->CREATE) != 0 && this->getCommand()->compareTo(this->commonStrings->DROP) != 0)
+                        if(this->getCommand()->compareTo(GLOBALS2::BACKUP) != 0 && this->getCommand()->compareTo(GLOBALS2::RESTORE) != 0 && this->getCommand()->compareTo(this->commonStrings->CREATE) != 0 && this->getCommand()->compareTo(this->commonStrings->DROP) != 0)
                         
                                     {
                                     

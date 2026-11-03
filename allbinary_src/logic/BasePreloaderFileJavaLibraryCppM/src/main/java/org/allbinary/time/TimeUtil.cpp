@@ -80,16 +80,16 @@ TimeUtil* TimeUtil::instance = TimeUtil::instance_owner();
 
     auto TimeUtil::setCalendar(Calendar* calendar, std::string yearString, std::string monthString, std::string dayString, std::string hourString) -> void{
 
-    int32_t year = (int32_t(yearString)).intValue();;
+    int32_t year = (Integer.valueOf(yearString));;
     
 
-    int32_t month = (int32_t(monthString)).intValue();;
+    int32_t month = (Integer.valueOf(monthString));;
     
 
-    int32_t day = (int32_t(dayString)).intValue();;
+    int32_t day = (Integer.valueOf(dayString));;
     
 
-    int32_t hour = (int32_t(hourString)).intValue();;
+    int32_t hour = (Integer.valueOf(hourString));;
     
 calendar->set(year, month, day, hour, 0);
     
@@ -98,22 +98,22 @@ calendar->set(year, month, day, hour, 0);
 
     auto TimeUtil::setCalendar(Calendar* calendar, std::string yearString, std::string monthString, std::string dayString, std::string hourString, std::string minuteString, std::string secondString) -> void{
 
-    int32_t year = (int32_t(yearString)).intValue();;
+    int32_t year = (Integer.valueOf(yearString));;
     
 
-    int32_t month = (int32_t(monthString)).intValue();;
+    int32_t month = (Integer.valueOf(monthString));;
     
 
-    int32_t day = (int32_t(dayString)).intValue();;
+    int32_t day = (Integer.valueOf(dayString));;
     
 
-    int32_t hour = (int32_t(hourString)).intValue();;
+    int32_t hour = (Integer.valueOf(hourString));;
     
 
-    int32_t minute = (int32_t(minuteString)).intValue();;
+    int32_t minute = (Integer.valueOf(minuteString));;
     
 
-    int32_t second = (int32_t(secondString)).intValue();;
+    int32_t second = (Integer.valueOf(secondString));;
     
 calendar->set(year, month, day, hour, minute, second);
     
@@ -122,22 +122,22 @@ calendar->set(year, month, day, hour, minute, second);
 
     auto TimeUtil::setExpirationCalendar(Calendar* calendar, std::string yearsString, std::string monthsString, std::string daysString, std::string hoursString, std::string minutesString, std::string secondsString) -> void{
 
-    int32_t year = calendar->get(Calendar::YEAR) +(int32_t(yearsString)).intValue();;
+    int32_t year = calendar->get(Calendar::YEAR) +(Integer.valueOf(yearsString));;
     
 
-    int32_t month = calendar->get(Calendar::MONTH) +(int32_t(monthsString)).intValue();;
+    int32_t month = calendar->get(Calendar::MONTH) +(Integer.valueOf(monthsString));;
     
 
-    int32_t day = calendar->get(Calendar::DAY_OF_MONTH) +(int32_t(daysString)).intValue();;
+    int32_t day = calendar->get(Calendar::DAY_OF_MONTH) +(Integer.valueOf(daysString));;
     
 
-    int32_t hour = calendar->get(Calendar::HOUR) +(int32_t(hoursString)).intValue();;
+    int32_t hour = calendar->get(Calendar::HOUR) +(Integer.valueOf(hoursString));;
     
 
-    int32_t minute = calendar->get(Calendar::MINUTE) +(int32_t(minutesString)).intValue();;
+    int32_t minute = calendar->get(Calendar::MINUTE) +(Integer.valueOf(minutesString));;
     
 
-    int32_t second = calendar->get(Calendar::SECOND) +(int32_t(secondsString)).intValue();;
+    int32_t second = calendar->get(Calendar::SECOND) +(Integer.valueOf(secondsString));;
     
 calendar->set(year, month, day, hour, minute, second);
     

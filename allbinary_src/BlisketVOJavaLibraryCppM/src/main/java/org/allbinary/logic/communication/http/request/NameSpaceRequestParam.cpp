@@ -65,6 +65,34 @@
 
       
 
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
 
 
 
@@ -117,7 +145,7 @@ this->value= value;
     BasicArrayList* nameSpaceWithPropertiesVector = sepTokenizer->getTokensFromString(packages, new BasicArrayListD());;
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("\nSep Tokens: ") +JavaString::valueOf(nameSpaceWithPropertiesVector->toString()), this, "NameSpaceRequestParam()");
@@ -152,7 +180,7 @@ list->clear();
     BasicArrayList* nameSpaceAndPropertiesVector = nameSpaceAndPropertiesTokenizer->getTokensFromString(nameSpaceWithProperties, list);;
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("\nPackageName and PackageName Properties Tokens: ") +JavaString::valueOf(nameSpaceAndPropertiesVector->toString()), this, "NameSpaceRequestParam()");
@@ -204,7 +232,7 @@ packageIndex++;
 }
 
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("NameSpace: ") +JavaString::valueOf(this->nameSpaceVector->toString()), this, "NameSpaceRequestParam()");
@@ -217,7 +245,7 @@ packageIndex++;
 
     auto NameSpaceRequestParam::getPackages() -> BasicArrayList*{
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("NameSpace: ") +JavaString::valueOf(this->nameSpaceVector->toString()), this, "getPackages()");
@@ -252,7 +280,7 @@ packageIndex++;
                                     }
                                 
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Package Properties: ") +JavaString::valueOf(packagePropertiesHashMap->toString()), this, "getPackagesProperties()");
@@ -273,7 +301,7 @@ packageIndex++;
 
     auto NameSpaceRequestParam::getValue() -> std::string{
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("\nValue: ") +JavaString::valueOf(this->value), this, "getValue()");
@@ -344,7 +372,7 @@ list->clear();
     std::string propertyValue = JavaBoxes::unbox<std::string>(propertyNameValueVector->get(index2++));;
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("\nProperty Name: ") +JavaString::valueOf(propertyName)) +JavaString::valueOf("\nProperty Value: ")) +JavaString::valueOf(propertyValue), this, "generatePackagePropertiesHashMap()");

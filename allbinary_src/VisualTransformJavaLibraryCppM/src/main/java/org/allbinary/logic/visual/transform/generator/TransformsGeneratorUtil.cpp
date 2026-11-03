@@ -63,6 +63,26 @@
 
       
 
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
 
 
 
@@ -105,7 +125,7 @@ TransformsGeneratorUtil::TransformsGeneratorUtil() : logUtil(LogUtil::getInstanc
             
     auto TransformsGeneratorUtil::generateComponentsFromObjectConfig(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface, std::string group) -> std::string{
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Started Group: ") +JavaString::valueOf(group), this, "generateComponentsFromObjectConfig(2)");
@@ -120,7 +140,7 @@ TransformsGeneratorUtil::TransformsGeneratorUtil() : logUtil(LogUtil::getInstanc
     std::string result = this->generateComponentsFromObjectConfig(abeClientInformation, transformInfoObjectConfigInterface, transformInfoInterface, group);;
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("End Group: ") +JavaString::valueOf(group), this, "generateComponentsFromObjectConfig(2)");
@@ -143,7 +163,7 @@ TransformsGeneratorUtil::TransformsGeneratorUtil() : logUtil(LogUtil::getInstanc
             
     auto TransformsGeneratorUtil::generateComponentsFromObjectConfig(AbeClientInformationInterface* abeClientInformation, TransformInfoObjectConfigInterface* transformInfoObjectConfigInterface, TransformInfoInterface* transformInfoInterface, std::string group) -> std::string{
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Started Group: ") +JavaString::valueOf(group), this, "generateComponentsFromObjectConfig()");
@@ -155,7 +175,7 @@ TransformsGeneratorUtil::TransformsGeneratorUtil() : logUtil(LogUtil::getInstanc
     BasicArrayList* transformInfoObjectConfigComponentVector = transformInfoObjectConfigInterface->getTransformsGroup(group);;
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     
@@ -204,7 +224,7 @@ TransformGeneratorUtil::getInstance()->generate(abeClientInformation, transformI
 }
 
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Done Group: ") +JavaString::valueOf(group), this, "generateComponentsFromObjectConfig()");

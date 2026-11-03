@@ -71,6 +71,8 @@
 
       
 
+#include <org/allbinary/business/user/commerce/money/payment/types/CreditCardType.h>
+
 
 
 
@@ -102,7 +104,7 @@ this->expiration= JavaBoxes::unbox<std::string>(payment->get(PaymentData::EXPIRA
     
 this->encryption= JavaBoxes::unbox<std::string>(payment->get(EntryData::getInstance()->ENCRYPTION));
     
-this->number= JavaBoxes::unbox<std::string>((new SuperCrypt((int32_t(this->encryption)).intValue()))->decrypt(JavaBoxes::unbox<std::string>(payment->get(PaymentData::NUMBER))));
+this->number= JavaBoxes::unbox<std::string>((new SuperCrypt((int32_t(this->encryption))))->decrypt(JavaBoxes::unbox<std::string>(payment->get(PaymentData::NUMBER))));
     
 this->id= JavaBoxes::unbox<std::string>(payment->get(PaymentData::ID));
     
@@ -251,7 +253,7 @@ Payment::Payment(){
                                     }
                                 
 
-                        if(this->number.size() > allbinary->business->user->commerce->money->payment->types->CreditCardType->MAXLEN)
+                        if(this->number.size() > CreditCardType::MAXLEN)
                         
                                     {
                                     

@@ -78,6 +78,44 @@
 
       
 
+#include <org/allbinary/globals/URLGLOBALS.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
 
 
 
@@ -108,7 +146,7 @@ AbeClassLoader::AbeClassLoader(ClassLoader* parent, std::string key) : ClassLoad
                     
 this->key= key;
     
-AbeClassLoader::PATH= JavaString::valueOf(allbinary->globals->URLGLOBALS->getWebappPath()) +JavaString::valueOf("WEB-INF/classes/");
+AbeClassLoader::PATH= JavaString::valueOf(URLGLOBALS::getWebappPath()) +JavaString::valueOf("WEB-INF/classes/");
     
 }
 
@@ -264,7 +302,7 @@ resolveClass(myClass);
 } catch(Exception& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->LOADERERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->LOADERERROR))
                         
                                     {
                                     logBuffer->logAll();
@@ -318,7 +356,7 @@ in= new FileInputStream(cname);
 } catch(IOException& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->LOADERERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->LOADERERROR))
                         
                                     {
                                     this->logUtil->put(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("(Before LogBuffer Output) Failure loading Encrypted: ") +JavaString::valueOf(name)) +JavaString::valueOf(" File: ")) +JavaString::valueOf(cname), "AbeClassLoader", "loadClassBytes", &e);
@@ -337,7 +375,7 @@ StreamUtil::getInstance()->close(in);
     std::string loadedWith = "loadClassBytes";;
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->LOADERERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->LOADERERROR))
                         
                                     {
                                     this->logUtil->put(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("(Before LogBuffer Output) Failed to Loaded Class: ") +JavaString::valueOf(name)) +JavaString::valueOf(" File: ")) +JavaString::valueOf(cname)) +JavaString::valueOf("\nwith: ")) +JavaString::valueOf(loadedWith), this, "loadClassBytes", &e);
@@ -354,7 +392,7 @@ StreamUtil::getInstance()->close(in);
     std::string loadedWith = "loadClassBytes";;
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->LOADERERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->LOADERERROR))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("(Before LogBuffer Output) NoClassDefFoundError Failed Loaded Class: ") +JavaString::valueOf(name)) +JavaString::valueOf(" File: ")) +JavaString::valueOf(cname)) +JavaString::valueOf("\nwith: ")) +JavaString::valueOf(loadedWith), this, "loadClassBytes");
@@ -422,7 +460,7 @@ StreamUtil::getInstance()->close(in);
 } catch(ClassNotFoundException& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->LOADER))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->LOADER))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Failed Loaded Class: ") +JavaString::valueOf(name)) +JavaString::valueOf(" with: ")) +JavaString::valueOf(loadedWith), this, this->LOAD_CLASS);
@@ -436,7 +474,7 @@ StreamUtil::getInstance()->close(in);
  catch(Exception& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->LOADER))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->LOADER))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Failed Loaded Class: ") +JavaString::valueOf(name)) +JavaString::valueOf(" with: ")) +JavaString::valueOf(loadedWith), this, this->LOAD_CLASS);
@@ -450,7 +488,7 @@ StreamUtil::getInstance()->close(in);
  catch(NoClassDefFoundError& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->LOADER))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->LOADER))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Failed Loaded Class: ") +JavaString::valueOf(name)) +JavaString::valueOf(" with: ")) +JavaString::valueOf(loadedWith), this, this->LOAD_CLASS);
@@ -500,7 +538,7 @@ AbeClassLoader::classes->put(name, myClass);
                                 
                         else {
                             
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->LOADER))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->LOADER))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Already Loaded: ") +JavaString::valueOf(name)) +JavaString::valueOf(" with: ")) +JavaString::valueOf(loadedWith), this, this->LOAD_CLASS);
@@ -526,7 +564,7 @@ resolveClass(myClass);
 } catch(Exception& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->LOADERERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->LOADERERROR))
                         
                                     {
                                     this->logUtil->put(JavaString::valueOf("Failure loading: ") +JavaString::valueOf(name), "AbeClassLoader", this->LOAD_CLASS, &e);

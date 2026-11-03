@@ -114,6 +114,22 @@
 
       
 
+#include <org/allbinary/globals/GLOBALS2.h>
+
+#include <org/allbinary/globals/GLOBALS2.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
 
 
 
@@ -168,10 +184,10 @@ PaymentTransactionInterfaceRequestFactory::PaymentTransactionInterfaceRequestFac
     HttpServletRequest* httpServletRequest = dynamic_cast<HttpServletRequest*>(pageContext->getRequest());;
     
 
-    std::string command = httpServletRequest->getParameter(allbinary->globals->GLOBALS2->ADMINCOMMAND);;
+    std::string command = httpServletRequest->getParameter(GLOBALS2::ADMINCOMMAND);;
     
 
-                        if(true && command.compare(allbinary->globals->GLOBALS2->AUTHORIZEFORMEVALBODYONERROR) == 0)
+                        if(true && command.compare(GLOBALS2::AUTHORIZEFORMEVALBODYONERROR) == 0)
                         
                                     {
                                     
@@ -217,7 +233,7 @@ orderPaymentInfo->setTenderType(TenderTypeFactory::getInstance()->CREDITCARD->to
 orderReview->setPaymentInfo(orderPaymentInfo);
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PAYMENT))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->PAYMENT))
                         
                                     {
                                     this->logUtil->putF(orderReview->getId(), this, "getPaymentTransactionInterface()");
@@ -244,7 +260,7 @@ orderReview->setPaymentInfo(orderPaymentInfo);
 } catch(Exception& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PAYMENTERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->PAYMENTERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "getPaymentTransactionInterface()", &e);
@@ -432,7 +448,7 @@ orderReview->setPaymentInfo(payment);
 } catch(Exception& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PAYMENTERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->PAYMENTERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "generatePaymentTransactionInterfaceFromTestData()", &e);

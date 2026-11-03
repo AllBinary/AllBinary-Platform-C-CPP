@@ -69,6 +69,30 @@
 
       
 
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
 
 
 
@@ -127,7 +151,7 @@ AbeFactory::AbeFactory() : logUtil(LogUtil::getInstance()){
 } catch(LicensingException& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->LOADERERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->LOADERERROR))
                         
                                     {
                                     this->logUtil->put(JavaString::valueOf("Failure for: ") +JavaString::valueOf(className), this, "getInstance(classname)", &e);
@@ -146,7 +170,7 @@ AbeFactory::AbeFactory() : logUtil(LogUtil::getInstance()){
  catch(Exception& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->LOADERERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->LOADERERROR))
                         
                                     {
                                     this->logUtil->put(JavaString::valueOf("Failure for: ") +JavaString::valueOf(className), this, "getInstance(classname)", &e);
@@ -226,7 +250,7 @@ constructor= myClass->getConstructor(classes);
 } catch(LicensingException& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->LOADERERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->LOADERERROR))
                         
                                     {
                                     
@@ -256,7 +280,7 @@ this->logUtil->put(stringBuffer->toString(), this, "getInstance(className,params
  catch(Exception& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->LOADERERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->LOADERERROR))
                         
                                     {
                                     
@@ -338,7 +362,7 @@ this->logUtil->put(stringBuffer->toString(), this, "getInstance(className,params
 } catch(LicensingException& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->LOADERERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->LOADERERROR))
                         
                                     {
                                     this->logUtil->put(JavaString::valueOf("Failure for: ") +JavaString::valueOf(className), this, "getClass(className)", &e);
@@ -357,7 +381,7 @@ this->logUtil->put(stringBuffer->toString(), this, "getInstance(className,params
  catch(Exception& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->LOADERERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->LOADERERROR))
                         
                                     {
                                     this->logUtil->put(JavaString::valueOf("Failure for: ") +JavaString::valueOf(className), this, "getClass(className)", &e);

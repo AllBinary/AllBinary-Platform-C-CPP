@@ -130,7 +130,7 @@ this->dimension= new IntegerDimension(0, 0);
     Node* angleTextNode = angleNode->getFirstChild();;
     
 
-    double angle = (double(angleTextNode->getNodeValue())).doubleValue();;
+    double angle = (double(angleTextNode->getNodeValue()));;
     
 this->setAngle(angle);
     
@@ -144,7 +144,7 @@ this->setAngle(angle);
     Node* xTextNode = xNode->getFirstChild();;
     
 
-    int32_t x = (int32_t(xTextNode->getNodeValue())).intValue();;
+    int32_t x = (int32_t(xTextNode->getNodeValue()));;
     
 
     Node* yNode = DomHelper::getInstance()->searchNodeList(this->Y, sizeNode->getChildNodes());;
@@ -153,7 +153,7 @@ this->setAngle(angle);
     Node* yTextNode = yNode->getFirstChild();;
     
 
-    int32_t y = (int32_t(yTextNode->getNodeValue())).intValue();;
+    int32_t y = (int32_t(yTextNode->getNodeValue()));;
     
 this->setWorkArea(x, y);
     
@@ -163,7 +163,7 @@ this->setWorkArea(x, y);
 
     Node* zoomTextNode = zoomNode->getFirstChild();;
     
-this->grid->setZoom((int32_t(zoomTextNode->getNodeValue())).intValue());
+this->grid->setZoom((int32_t(zoomTextNode->getNodeValue())));
     
 
     Node* gridNode = DomHelper::getInstance()->searchNodeList(this->GRID, canvasNode->getChildNodes());;
@@ -178,7 +178,7 @@ this->grid->setZoom((int32_t(zoomTextNode->getNodeValue())).intValue());
     Node* gridXTextNode = gridXNode->getFirstChild();;
     
 
-    int32_t gridX = (int32_t(gridXTextNode->getNodeValue())).intValue();;
+    int32_t gridX = (int32_t(gridXTextNode->getNodeValue()));;
     
 
     Node* gridYNode = DomHelper::getInstance()->searchNodeList(this->Y, gridSizeNode->getChildNodes());;
@@ -187,7 +187,7 @@ this->grid->setZoom((int32_t(zoomTextNode->getNodeValue())).intValue());
     Node* gridYTextNode = gridYNode->getFirstChild();;
     
 
-    int32_t gridY = (int32_t(gridYTextNode->getNodeValue())).intValue();;
+    int32_t gridY = (int32_t(gridYTextNode->getNodeValue()));;
     
 this->setGrid(gridX, gridY);
     
@@ -197,7 +197,7 @@ this->setGrid(gridX, gridY);
 
     Node* enableTextNode = enableNode->getFirstChild();;
     
-this->grid->showGrid(().valueOf());
+this->grid->showGrid(());
     
 
     Node* possibleNode = DomHelper::getInstance()->searchNodeList(this->POSSIBLE, gridNode->getChildNodes());;
@@ -205,7 +205,7 @@ this->grid->showGrid(().valueOf());
 
     Node* possibleTextNode = possibleNode->getFirstChild();;
     
-this->grid->isGridPossible= ().valueOf();
+this->grid->isGridPossible= ();
     
 
     BasicArrayList* graphicItemNodeList = DomHelper::getInstance()->getChildrenWithoutTextNodes(this->GRAPHICITEMS, canvasNode->getChildNodes());;

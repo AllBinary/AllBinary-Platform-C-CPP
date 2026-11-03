@@ -105,6 +105,14 @@
 
       
 
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
 
 
 
@@ -223,7 +231,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
                                 
                         else {
                             
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAX))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAX))
                         
                                     {
                                     this->logUtil->putF("Class Node Null", this, this->commonStrings->GET_INSTANCE);
@@ -239,7 +247,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
                                 
                         else {
                             
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAX))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAX))
                         
                                     {
                                     this->logUtil->putF("Tax Name Node Node Children", this, this->commonStrings->GET_INSTANCE);

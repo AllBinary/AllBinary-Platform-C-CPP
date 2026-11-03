@@ -71,6 +71,92 @@
 
       
 
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/BorderFactory.h>
+
+#include <javax/swing/BorderFactory.h>
+
+#include <javax/swing/BorderFactory.h>
+
+#include <javax/swing/BorderFactory.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
 
 
 
@@ -192,9 +278,9 @@ this->newProfileNameJLabel->setText("New Profile Name");
     
 this->newProfileJDialog->getContentPane()->setLayout(newProfileJDialogLayout);
     
-newProfileJDialogLayout->setHorizontalGroup(newProfileJDialogLayout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(newProfileJDialogLayout->createSequentialGroup()->addGroup(newProfileJDialogLayout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(newProfileJDialogLayout->createSequentialGroup()->addGap(80, 80, 80)->addComponent(newProfileNameJLabel))->addGroup(newProfileJDialogLayout->createSequentialGroup()->addGap(30, 30, 30)->addComponent(newProfileNameJTextField, swing->GroupLayout->PREFERRED_SIZE, 180, swing->GroupLayout->PREFERRED_SIZE))->addGroup(newProfileJDialogLayout->createSequentialGroup()->addGap(100, 100, 100)->addComponent(okNewProfileJButton)))->addContainerGap(35, Short::MAX_VALUE)));
+newProfileJDialogLayout->setHorizontalGroup(newProfileJDialogLayout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(newProfileJDialogLayout->createSequentialGroup()->addGroup(newProfileJDialogLayout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(newProfileJDialogLayout->createSequentialGroup()->addGap(80, 80, 80)->addComponent(newProfileNameJLabel))->addGroup(newProfileJDialogLayout->createSequentialGroup()->addGap(30, 30, 30)->addComponent(newProfileNameJTextField, GroupLayout::PREFERRED_SIZE, 180, GroupLayout::PREFERRED_SIZE))->addGroup(newProfileJDialogLayout->createSequentialGroup()->addGap(100, 100, 100)->addComponent(okNewProfileJButton)))->addContainerGap(35, Short::MAX_VALUE)));
     
-newProfileJDialogLayout->setVerticalGroup(newProfileJDialogLayout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(newProfileJDialogLayout->createSequentialGroup()->addGap(10, 10, 10)->addComponent(newProfileNameJLabel)->addGap(16, 16, 16)->addComponent(newProfileNameJTextField, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE)->addGap(20, 20, 20)->addComponent(okNewProfileJButton)));
+newProfileJDialogLayout->setVerticalGroup(newProfileJDialogLayout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(newProfileJDialogLayout->createSequentialGroup()->addGap(10, 10, 10)->addComponent(newProfileNameJLabel)->addGap(16, 16, 16)->addComponent(newProfileNameJTextField, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->addGap(20, 20, 20)->addComponent(okNewProfileJButton)));
     
 setLayout(new java::awt::GridLayout(1, 0));
     
@@ -277,7 +363,7 @@ this->screenCaptureJRadioButton->setText("Screen Captures");
     
 this->screenCaptureJRadioButton->setToolTipText("Records the screen into memory for logical processing");
     
-this->screenCaptureJRadioButton->setBorder(swing->BorderFactory->createEmptyBorder(0, 0, 0, 0));
+this->screenCaptureJRadioButton->setBorder(BorderFactory::createEmptyBorder(0, 0, 0, 0));
     
 this->screenCaptureJRadioButton->setMargin(new java::awt::Insets(0, 0, 0, 0));
     
@@ -306,7 +392,7 @@ this->savedCaptureJRadioButton->setText("Saved Images");
     
 this->savedCaptureJRadioButton->setToolTipText("Loads images from files for logical processing.  Usually for debugging your profile actions");
     
-this->savedCaptureJRadioButton->setBorder(swing->BorderFactory->createEmptyBorder(0, 0, 0, 0));
+this->savedCaptureJRadioButton->setBorder(BorderFactory::createEmptyBorder(0, 0, 0, 0));
     
 this->savedCaptureJRadioButton->setMargin(new java::awt::Insets(0, 0, 0, 0));
     
@@ -331,7 +417,7 @@ this->captureMotionAnalysisJCheckBox->setText("Motion Analysis");
     
 this->captureMotionAnalysisJCheckBox->setToolTipText("Uses image comparison and contraints to locate moving objects");
     
-this->captureMotionAnalysisJCheckBox->setBorder(swing->BorderFactory->createEmptyBorder(0, 0, 0, 0));
+this->captureMotionAnalysisJCheckBox->setBorder(BorderFactory::createEmptyBorder(0, 0, 0, 0));
     
 this->captureMotionAnalysisJCheckBox->setMargin(new java::awt::Insets(0, 0, 0, 0));
     
@@ -356,7 +442,7 @@ this->captureComparisonJCheckBox->setText("Comparison");
     
 this->captureComparisonJCheckBox->setToolTipText("Compares the last two input images for multi image logic");
     
-this->captureComparisonJCheckBox->setBorder(swing->BorderFactory->createEmptyBorder(0, 0, 0, 0));
+this->captureComparisonJCheckBox->setBorder(BorderFactory::createEmptyBorder(0, 0, 0, 0));
     
 this->captureComparisonJCheckBox->setMargin(new java::awt::Insets(0, 0, 0, 0));
     
@@ -386,18 +472,18 @@ this->jLabel3->setToolTipText("Turns on/off various extended image processing");
     
 this->jPanel1->setLayout(jPanel1Layout);
     
-jPanel1Layout->setHorizontalGroup(jPanel1Layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(jPanel1Layout->createSequentialGroup()->addGroup(jPanel1Layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addComponent(screenCaptureJRadioButton)->addComponent(jLabel1)->addComponent(jLabel2)->addComponent(savedCaptureJRadioButton)->addComponent(captureMotionAnalysisJCheckBox)->addComponent(captureComparisonJCheckBox)->addComponent(jLabel3))->addContainerGap(22, Short::MAX_VALUE)));
+jPanel1Layout->setHorizontalGroup(jPanel1Layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(jPanel1Layout->createSequentialGroup()->addGroup(jPanel1Layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addComponent(screenCaptureJRadioButton)->addComponent(jLabel1)->addComponent(jLabel2)->addComponent(savedCaptureJRadioButton)->addComponent(captureMotionAnalysisJCheckBox)->addComponent(captureComparisonJCheckBox)->addComponent(jLabel3))->addContainerGap(22, Short::MAX_VALUE)));
     
-jPanel1Layout->setVerticalGroup(jPanel1Layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(jPanel1Layout->createSequentialGroup()->addComponent(jLabel1)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(jLabel2)->addGap(7, 7, 7)->addComponent(screenCaptureJRadioButton)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(savedCaptureJRadioButton)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(jLabel3)->addGap(7, 7, 7)->addComponent(captureComparisonJCheckBox)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(captureMotionAnalysisJCheckBox)->addContainerGap(106, Short::MAX_VALUE)));
+jPanel1Layout->setVerticalGroup(jPanel1Layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(jPanel1Layout->createSequentialGroup()->addComponent(jLabel1)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(jLabel2)->addGap(7, 7, 7)->addComponent(screenCaptureJRadioButton)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(savedCaptureJRadioButton)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(jLabel3)->addGap(7, 7, 7)->addComponent(captureComparisonJCheckBox)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(captureMotionAnalysisJCheckBox)->addContainerGap(106, Short::MAX_VALUE)));
     
 
     javax::swing::GroupLayout* genericProfilesJPanelLayout = new javax::swing::GroupLayout(this->genericProfilesJPanel);;
     
 this->genericProfilesJPanel->setLayout(genericProfilesJPanelLayout);
     
-genericProfilesJPanelLayout->setHorizontalGroup(genericProfilesJPanelLayout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(genericProfilesJPanelLayout->createSequentialGroup()->addGroup(genericProfilesJPanelLayout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(genericProfilesJPanelLayout->createSequentialGroup()->addComponent(newProfileJButton)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(deleteProfileJButton))->addGroup(genericProfilesJPanelLayout->createSequentialGroup()->addComponent(genericProfilesJScrollPane, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(jPanel1, swing->GroupLayout->DEFAULT_SIZE, 119, Short::MAX_VALUE)))->addContainerGap()));
+genericProfilesJPanelLayout->setHorizontalGroup(genericProfilesJPanelLayout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(genericProfilesJPanelLayout->createSequentialGroup()->addGroup(genericProfilesJPanelLayout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(genericProfilesJPanelLayout->createSequentialGroup()->addComponent(newProfileJButton)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(deleteProfileJButton))->addGroup(genericProfilesJPanelLayout->createSequentialGroup()->addComponent(genericProfilesJScrollPane, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(jPanel1, GroupLayout::DEFAULT_SIZE, 119, Short::MAX_VALUE)))->addContainerGap()));
     
-genericProfilesJPanelLayout->setVerticalGroup(genericProfilesJPanelLayout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(genericProfilesJPanelLayout->createSequentialGroup()->addGroup(genericProfilesJPanelLayout->createParallelGroup(swing->GroupLayout->Alignment->BASELINE)->addComponent(newProfileJButton)->addComponent(deleteProfileJButton))->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(genericProfilesJPanelLayout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addComponent(jPanel1, swing->GroupLayout->DEFAULT_SIZE, 246, Short::MAX_VALUE)->addComponent(genericProfilesJScrollPane, swing->GroupLayout->DEFAULT_SIZE, 246, Short::MAX_VALUE))));
+genericProfilesJPanelLayout->setVerticalGroup(genericProfilesJPanelLayout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(genericProfilesJPanelLayout->createSequentialGroup()->addGroup(genericProfilesJPanelLayout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(newProfileJButton)->addComponent(deleteProfileJButton))->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addGroup(genericProfilesJPanelLayout->createParallelGroup(GroupLayout::Alignment::LEADING)->addComponent(jPanel1, GroupLayout::DEFAULT_SIZE, 246, Short::MAX_VALUE)->addComponent(genericProfilesJScrollPane, GroupLayout::DEFAULT_SIZE, 246, Short::MAX_VALUE))));
     
 this->genericJTabbedPane->addTab("Profiles", genericProfilesJPanel);
     
@@ -406,9 +492,9 @@ this->genericJTabbedPane->addTab("Profiles", genericProfilesJPanel);
     
 this->blankGenericProfileActionsJPanel->setLayout(blankGenericProfileActionsJPanelLayout);
     
-blankGenericProfileActionsJPanelLayout->setHorizontalGroup(blankGenericProfileActionsJPanelLayout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGap(0, 395, Short::MAX_VALUE));
+blankGenericProfileActionsJPanelLayout->setHorizontalGroup(blankGenericProfileActionsJPanelLayout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGap(0, 395, Short::MAX_VALUE));
     
-blankGenericProfileActionsJPanelLayout->setVerticalGroup(blankGenericProfileActionsJPanelLayout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGap(0, 275, Short::MAX_VALUE));
+blankGenericProfileActionsJPanelLayout->setVerticalGroup(blankGenericProfileActionsJPanelLayout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGap(0, 275, Short::MAX_VALUE));
     
 this->genericJTabbedPane->addTab("Actions", blankGenericProfileActionsJPanel);
     
@@ -564,9 +650,9 @@ genericProfileActionsJPanel->selectFirstElement();
 
     javax::swing::GroupLayout* layout = dynamic_cast<javax::swing::GroupLayout*>(this->getBlankGenericProfileActionsJPanel()->getLayout());;
     
-layout->setHorizontalGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGap(0, 395, Short::MAX_VALUE)->addComponent(genericProfileActionsJPanel, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE));
+layout->setHorizontalGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGap(0, 395, Short::MAX_VALUE)->addComponent(genericProfileActionsJPanel, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE));
     
-layout->setVerticalGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGap(0, 256, Short::MAX_VALUE)->addComponent(genericProfileActionsJPanel, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE));
+layout->setVerticalGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGap(0, 256, Short::MAX_VALUE)->addComponent(genericProfileActionsJPanel, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE));
     
 this->updateProfileOptions();
     

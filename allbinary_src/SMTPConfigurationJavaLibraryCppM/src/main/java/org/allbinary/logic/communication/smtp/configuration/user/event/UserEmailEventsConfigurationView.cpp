@@ -74,6 +74,10 @@
 
       
 
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
 
 
 
@@ -166,7 +170,7 @@ this->userEmailEventsConfigurationInterface= userEmailEventsConfigurationInterfa
     Set* set = emailEventHashMap->keys();;
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Number Of Email Events Specified in file: ") +JavaString::valueOf(set->size()), this, this->commonStrings->CONSTRUCTOR);

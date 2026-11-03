@@ -64,6 +64,34 @@
 
       
 
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
 
 
 
@@ -114,7 +142,7 @@ SqlConnectionPool::SqlConnectionPool() : logUtil(LogUtil::getInstance()), stdUti
                                     this->connectionHashMap= this->stdUtil->createHashMap();
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGINGPOOL))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGPOOL))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf(this->FIRST_NEW_CONNECTION_CREATED) +JavaString::valueOf(url), this, METHOD_GET);
@@ -146,7 +174,7 @@ SqlConnectionPool::SqlConnectionPool() : logUtil(LogUtil::getInstance()), stdUti
                                     connectionVector= new BasicArrayListD();
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGINGPOOL))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGPOOL))
                         
                                     {
                                     
@@ -181,7 +209,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET);
                         
                                     {
                                     
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGINGPOOL))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGPOOL))
                         
                                     {
                                     this->logUtil->putF((new StringMaker())->append(this->NEW_CONNECTION_FOR)->append(url)->append(this->CREATED)->toString(), this, METHOD_GET);
@@ -226,7 +254,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET);
 this->connectionHashMap->put(url, connectionVector);
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGINGPOOL))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGPOOL))
                         
                                     {
                                     stringBuffer->delete_(0, stringBuffer->length());
@@ -266,7 +294,7 @@ this->logUtil->putF(stringBuffer->toString(), this, METHOD_GET);
                         }
                             
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGINGPOOL))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGPOOL))
                         
                                     {
                                     
@@ -342,7 +370,7 @@ this->connectionHashMap->put(url, connectionVector);
                         }
                             
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGINGPOOL))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGPOOL))
                         
                                     {
                                     
@@ -367,7 +395,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_ADD);
                                     }
                                 
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGINGPOOL))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGPOOL))
                         
                                     {
                                     this->logUtil->putF(this->CONNECTION_ALLREADY_CLOSED, this, METHOD_ADD);

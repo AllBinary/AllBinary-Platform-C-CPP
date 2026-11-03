@@ -77,6 +77,78 @@
 
       
 
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/LayoutStyle.h>
+
+#include <org/jdesktop/layout/LayoutStyle.h>
+
+#include <org/jdesktop/layout/LayoutStyle.h>
+
+#include <org/jdesktop/layout/LayoutStyle.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/LayoutStyle.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/LayoutStyle.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
 
 
 
@@ -258,9 +330,9 @@ this->jLabel2= new javax::swing::JLabel();
     
 this->jPanel1->setLayout(jPanel1Layout);
     
-jPanel1Layout->setHorizontalGroup(jPanel1Layout->createParallelGroup(jdesktop->layout->GroupLayout->LEADING)->add(0, 507, Short::MAX_VALUE));
+jPanel1Layout->setHorizontalGroup(jPanel1Layout->createParallelGroup(GroupLayout::LEADING)->add(0, 507, Short::MAX_VALUE));
     
-jPanel1Layout->setVerticalGroup(jPanel1Layout->createParallelGroup(jdesktop->layout->GroupLayout->LEADING)->add(0, 230, Short::MAX_VALUE));
+jPanel1Layout->setVerticalGroup(jPanel1Layout->createParallelGroup(GroupLayout::LEADING)->add(0, 230, Short::MAX_VALUE));
     
 this->imageHeightIsFrameSizeJCheckBox->setSelected(true);
     
@@ -321,9 +393,9 @@ outer->generateJButtonActionPerformed(evt);
     
 this->jPanel2->setLayout(jPanel2Layout);
     
-jPanel2Layout->setHorizontalGroup(jPanel2Layout->createParallelGroup(jdesktop->layout->GroupLayout->LEADING)->add(jPanel2Layout->createSequentialGroup()->addContainerGap(jdesktop->layout->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)->add(verticleJCheckBox)->addPreferredGap(jdesktop->layout->LayoutStyle->UNRELATED)->add(horizontalJCheckBox)->addPreferredGap(jdesktop->layout->LayoutStyle->RELATED)->add(imageHeightIsFrameSizeJCheckBox)->addPreferredGap(jdesktop->layout->LayoutStyle->RELATED)->add(writeOverOriginalJCheckBox)->addPreferredGap(jdesktop->layout->LayoutStyle->RELATED)->add(generateJButton)));
+jPanel2Layout->setHorizontalGroup(jPanel2Layout->createParallelGroup(GroupLayout::LEADING)->add(jPanel2Layout->createSequentialGroup()->addContainerGap(GroupLayout::DEFAULT_SIZE, Short::MAX_VALUE)->add(verticleJCheckBox)->addPreferredGap(LayoutStyle::UNRELATED)->add(horizontalJCheckBox)->addPreferredGap(LayoutStyle::RELATED)->add(imageHeightIsFrameSizeJCheckBox)->addPreferredGap(LayoutStyle::RELATED)->add(writeOverOriginalJCheckBox)->addPreferredGap(LayoutStyle::RELATED)->add(generateJButton)));
     
-jPanel2Layout->setVerticalGroup(jPanel2Layout->createParallelGroup(jdesktop->layout->GroupLayout->LEADING)->add(jPanel2Layout->createSequentialGroup()->add(jPanel2Layout->createParallelGroup(jdesktop->layout->GroupLayout->BASELINE)->add(imageHeightIsFrameSizeJCheckBox, jdesktop->layout->GroupLayout->DEFAULT_SIZE, jdesktop->layout->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)->add(horizontalJCheckBox)->add(verticleJCheckBox)->add(writeOverOriginalJCheckBox)->add(generateJButton, jdesktop->layout->GroupLayout->PREFERRED_SIZE, 25, jdesktop->layout->GroupLayout->PREFERRED_SIZE))->addContainerGap()));
+jPanel2Layout->setVerticalGroup(jPanel2Layout->createParallelGroup(GroupLayout::LEADING)->add(jPanel2Layout->createSequentialGroup()->add(jPanel2Layout->createParallelGroup(GroupLayout::BASELINE)->add(imageHeightIsFrameSizeJCheckBox, GroupLayout::DEFAULT_SIZE, GroupLayout::DEFAULT_SIZE, Short::MAX_VALUE)->add(horizontalJCheckBox)->add(verticleJCheckBox)->add(writeOverOriginalJCheckBox)->add(generateJButton, GroupLayout::PREFERRED_SIZE, 25, GroupLayout::PREFERRED_SIZE))->addContainerGap()));
     
 this->jLabel2->setText("Results:");
     
@@ -332,18 +404,18 @@ this->jLabel2->setText("Results:");
     
 this->jPanel3->setLayout(jPanel3Layout);
     
-jPanel3Layout->setHorizontalGroup(jPanel3Layout->createParallelGroup(jdesktop->layout->GroupLayout->LEADING)->add(jPanel3Layout->createSequentialGroup()->add(jLabel2)->addContainerGap(448, Short::MAX_VALUE)));
+jPanel3Layout->setHorizontalGroup(jPanel3Layout->createParallelGroup(GroupLayout::LEADING)->add(jPanel3Layout->createSequentialGroup()->add(jLabel2)->addContainerGap(448, Short::MAX_VALUE)));
     
-jPanel3Layout->setVerticalGroup(jPanel3Layout->createParallelGroup(jdesktop->layout->GroupLayout->LEADING)->add(jLabel2));
+jPanel3Layout->setVerticalGroup(jPanel3Layout->createParallelGroup(GroupLayout::LEADING)->add(jLabel2));
     
 
     org::jdesktop::layout::GroupLayout* layout = new org::jdesktop::layout::GroupLayout(this);;
     
 this->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(jdesktop->layout->GroupLayout->LEADING)->add(jdesktop->layout->GroupLayout->TRAILING, layout->createSequentialGroup()->addContainerGap()->add(jPanel3, jdesktop->layout->GroupLayout->DEFAULT_SIZE, jdesktop->layout->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)->addContainerGap())->add(jPanel1, jdesktop->layout->GroupLayout->DEFAULT_SIZE, jdesktop->layout->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)->add(layout->createSequentialGroup()->add(jPanel2, jdesktop->layout->GroupLayout->PREFERRED_SIZE, jdesktop->layout->GroupLayout->DEFAULT_SIZE, jdesktop->layout->GroupLayout->PREFERRED_SIZE)->addContainerGap(jdesktop->layout->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)));
+layout->setHorizontalGroup(layout->createParallelGroup(GroupLayout::LEADING)->add(GroupLayout::TRAILING, layout->createSequentialGroup()->addContainerGap()->add(jPanel3, GroupLayout::DEFAULT_SIZE, GroupLayout::DEFAULT_SIZE, Short::MAX_VALUE)->addContainerGap())->add(jPanel1, GroupLayout::DEFAULT_SIZE, GroupLayout::DEFAULT_SIZE, Short::MAX_VALUE)->add(layout->createSequentialGroup()->add(jPanel2, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->addContainerGap(GroupLayout::DEFAULT_SIZE, Short::MAX_VALUE)));
     
-layout->setVerticalGroup(layout->createParallelGroup(jdesktop->layout->GroupLayout->LEADING)->add(layout->createSequentialGroup()->add(jPanel2, jdesktop->layout->GroupLayout->PREFERRED_SIZE, 25, jdesktop->layout->GroupLayout->PREFERRED_SIZE)->addPreferredGap(jdesktop->layout->LayoutStyle->RELATED)->add(jPanel3, jdesktop->layout->GroupLayout->PREFERRED_SIZE, jdesktop->layout->GroupLayout->DEFAULT_SIZE, jdesktop->layout->GroupLayout->PREFERRED_SIZE)->addPreferredGap(jdesktop->layout->LayoutStyle->RELATED)->add(jPanel1, jdesktop->layout->GroupLayout->DEFAULT_SIZE, jdesktop->layout->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)));
+layout->setVerticalGroup(layout->createParallelGroup(GroupLayout::LEADING)->add(layout->createSequentialGroup()->add(jPanel2, GroupLayout::PREFERRED_SIZE, 25, GroupLayout::PREFERRED_SIZE)->addPreferredGap(LayoutStyle::RELATED)->add(jPanel3, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->addPreferredGap(LayoutStyle::RELATED)->add(jPanel1, GroupLayout::DEFAULT_SIZE, GroupLayout::DEFAULT_SIZE, Short::MAX_VALUE)));
     
 }
 

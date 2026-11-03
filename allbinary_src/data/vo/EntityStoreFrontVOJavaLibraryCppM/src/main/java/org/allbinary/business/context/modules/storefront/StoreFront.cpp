@@ -148,6 +148,28 @@
 
       
 
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/globals/URLGLOBALS.h>
+
+#include <org/allbinary/globals/URLGLOBALS.h>
+
+#include <org/allbinary/globals/URLGLOBALS.h>
+
+#include <org/allbinary/globals/URLGLOBALS.h>
+
+#include <org/allbinary/globals/URLGLOBALS.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
 
 
 
@@ -180,7 +202,7 @@ StoreFront::StoreFront(HttpServletRequest* request) : logUtil(LogUtil::getInstan
 this->getFormData((new RequestParams(request))->toHashMap());
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->putF("TWB- needs update for adding and updating context configuration - currently defaults to admin context config", this, "StoreFront");
@@ -1033,7 +1055,7 @@ stringBuffer->append(" and > 0 characters.<br>");
 } catch(Exception& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -1061,7 +1083,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return allbinary->globals->URLGLOBALS->getTestHtmlPath() +this->getCurrentHostNamePath();
+                        return URLGLOBALS::getTestHtmlPath() +this->getCurrentHostNamePath();
     
 }
 
@@ -1071,7 +1093,7 @@ stringBuffer->append(" and > 0 characters.<br>");
     std::string location = this->EMPTY_STRING;;
     
 
-                        if(allbinary->globals->URLGLOBALS->isTestingMode())
+                        if(URLGLOBALS::isTestingMode())
                         
                                     {
                                     location= this->getTestHostName();
@@ -1101,7 +1123,7 @@ stringBuffer->append(" and > 0 characters.<br>");
     std::string location = this->EMPTY_STRING;;
     
 
-                        if(allbinary->globals->URLGLOBALS->isTestingMode())
+                        if(URLGLOBALS::isTestingMode())
                         
                                     {
                                     location= this->getTestHostNamePath();
@@ -1131,7 +1153,7 @@ stringBuffer->append(" and > 0 characters.<br>");
     std::string location = this->EMPTY_STRING;;
     
 
-                        if(allbinary->globals->URLGLOBALS->isTestingMode())
+                        if(URLGLOBALS::isTestingMode())
                         
                                     {
                                     location= this->getTestHomeHostName();
@@ -1161,7 +1183,7 @@ stringBuffer->append(" and > 0 characters.<br>");
     std::string location = this->EMPTY_STRING;;
     
 
-                        if(allbinary->globals->URLGLOBALS->isTestingMode())
+                        if(URLGLOBALS::isTestingMode())
                         
                                     {
                                     location= this->getTestHomeHostNamePath();
@@ -1916,7 +1938,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
 } catch(Exception& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "install()", &e);

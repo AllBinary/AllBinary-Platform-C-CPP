@@ -59,6 +59,40 @@
 
       
 
+#include <javax/swing/BorderFactory.h>
+
+#include <javax/swing/BorderFactory.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
 
 
 
@@ -296,13 +330,13 @@ outer->okJButtonActionPerformed(evt);
     
 this->saveJCheckBox->setText("Save To File");
     
-this->saveJCheckBox->setBorder(swing->BorderFactory->createEmptyBorder(0, 0, 0, 0));
+this->saveJCheckBox->setBorder(BorderFactory::createEmptyBorder(0, 0, 0, 0));
     
 this->saveJCheckBox->setMargin(new java::awt::Insets(0, 0, 0, 0));
     
 this->displayJCheckBox->setText("Display");
     
-this->displayJCheckBox->setBorder(swing->BorderFactory->createEmptyBorder(0, 0, 0, 0));
+this->displayJCheckBox->setBorder(BorderFactory::createEmptyBorder(0, 0, 0, 0));
     
 this->displayJCheckBox->setMargin(new java::awt::Insets(0, 0, 0, 0));
     
@@ -368,9 +402,9 @@ this->jScrollPane1->setViewportView(this->itemTypesJList);
     
 this->capturedImageActionJDialog->getContentPane()->setLayout(capturedImageActionJDialogLayout);
     
-capturedImageActionJDialogLayout->setHorizontalGroup(capturedImageActionJDialogLayout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(capturedImageActionJDialogLayout->createSequentialGroup()->addGroup(capturedImageActionJDialogLayout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(capturedImageActionJDialogLayout->createSequentialGroup()->addGap(61, 61, 61)->addComponent(titleJLabel))->addGroup(capturedImageActionJDialogLayout->createSequentialGroup()->addContainerGap()->addGroup(capturedImageActionJDialogLayout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(capturedImageActionJDialogLayout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addComponent(displayJCheckBox)->addComponent(saveJCheckBox, swing->GroupLayout->Alignment->TRAILING))->addGroup(capturedImageActionJDialogLayout->createSequentialGroup()->addGap(84, 84, 84)->addComponent(okJButton))))->addGroup(capturedImageActionJDialogLayout->createSequentialGroup()->addContainerGap()->addComponent(jScrollPane1, swing->GroupLayout->DEFAULT_SIZE, 216, Short::MAX_VALUE)))->addContainerGap()));
+capturedImageActionJDialogLayout->setHorizontalGroup(capturedImageActionJDialogLayout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(capturedImageActionJDialogLayout->createSequentialGroup()->addGroup(capturedImageActionJDialogLayout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(capturedImageActionJDialogLayout->createSequentialGroup()->addGap(61, 61, 61)->addComponent(titleJLabel))->addGroup(capturedImageActionJDialogLayout->createSequentialGroup()->addContainerGap()->addGroup(capturedImageActionJDialogLayout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(capturedImageActionJDialogLayout->createParallelGroup(GroupLayout::Alignment::LEADING)->addComponent(displayJCheckBox)->addComponent(saveJCheckBox, GroupLayout::Alignment::TRAILING))->addGroup(capturedImageActionJDialogLayout->createSequentialGroup()->addGap(84, 84, 84)->addComponent(okJButton))))->addGroup(capturedImageActionJDialogLayout->createSequentialGroup()->addContainerGap()->addComponent(jScrollPane1, GroupLayout::DEFAULT_SIZE, 216, Short::MAX_VALUE)))->addContainerGap()));
     
-capturedImageActionJDialogLayout->setVerticalGroup(capturedImageActionJDialogLayout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(capturedImageActionJDialogLayout->createSequentialGroup()->addComponent(titleJLabel)->addGap(5, 5, 5)->addComponent(jScrollPane1, swing->GroupLayout->DEFAULT_SIZE, 105, Short::MAX_VALUE)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(saveJCheckBox)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(displayJCheckBox)->addGap(9, 9, 9)->addComponent(okJButton)->addContainerGap()));
+capturedImageActionJDialogLayout->setVerticalGroup(capturedImageActionJDialogLayout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(capturedImageActionJDialogLayout->createSequentialGroup()->addComponent(titleJLabel)->addGap(5, 5, 5)->addComponent(jScrollPane1, GroupLayout::DEFAULT_SIZE, 105, Short::MAX_VALUE)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(saveJCheckBox)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(displayJCheckBox)->addGap(9, 9, 9)->addComponent(okJButton)->addContainerGap()));
     
 setMinimumSize(new java::awt::Dimension(100, 0));
     
@@ -400,9 +434,9 @@ this->jLabel1->setText("Capture Image:");
     
 this->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addComponent(jLabel1)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED, swing->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)->addComponent(capturedImageActionJButton)));
+layout->setHorizontalGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(layout->createSequentialGroup()->addComponent(jLabel1)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED, GroupLayout::DEFAULT_SIZE, Short::MAX_VALUE)->addComponent(capturedImageActionJButton)));
     
-layout->setVerticalGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->BASELINE)->addComponent(jLabel1)->addComponent(capturedImageActionJButton)));
+layout->setVerticalGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(layout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(jLabel1)->addComponent(capturedImageActionJButton)));
     
 }
 

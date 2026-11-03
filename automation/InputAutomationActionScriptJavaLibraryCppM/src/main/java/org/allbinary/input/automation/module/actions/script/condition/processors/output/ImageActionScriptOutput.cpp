@@ -132,7 +132,7 @@ this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONST
                                     
     std::string booleanString = DomNodeHelper::getTextNodeValue(childNode);;
     
-this->setSaved(().valueOf());
+this->setSaved(());
     
 
                                     }
@@ -144,7 +144,7 @@ this->setSaved(().valueOf());
                                     
     std::string booleanString = DomNodeHelper::getTextNodeValue(childNode);;
     
-this->setSaved(().valueOf());
+this->setSaved(());
     
 
                                     }

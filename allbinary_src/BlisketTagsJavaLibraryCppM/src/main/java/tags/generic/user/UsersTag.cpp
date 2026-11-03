@@ -49,6 +49,8 @@
 
       
 
+#include <org/allbinary/globals/GLOBALS2.h>
+
 
 
 
@@ -96,7 +98,7 @@ this->setObjectFile("views.generic.user.UsersValidationView");
                                     this->getPropertiesHashMap()->put(UserRoleData::NAME, this->role);
     
 
-                        if(this->getCommand()->compareTo(allbinary->globals->GLOBALS2->VIEW) == 0)
+                        if(this->getCommand()->compareTo(GLOBALS2::VIEW) == 0)
                         
                                     {
                                     

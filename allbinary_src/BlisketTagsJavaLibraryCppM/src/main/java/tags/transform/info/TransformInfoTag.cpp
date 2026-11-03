@@ -64,6 +64,10 @@
 
       
 
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
 
 
 
@@ -189,7 +193,7 @@ this->type= value;
 this->getPropertiesHashMap()->put(OutputTypeData::getInstance()->NAME, this->type);
     
 
-                        if(allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->JSPTAG))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAG))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("TransformInfoTag type set: ") +JavaString::valueOf(this->type), this, "setType");

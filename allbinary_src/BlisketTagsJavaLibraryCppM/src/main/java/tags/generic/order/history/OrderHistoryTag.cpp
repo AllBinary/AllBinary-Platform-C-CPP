@@ -65,6 +65,12 @@
 
       
 
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/globals/GLOBALS2.h>
+
 
 
 
@@ -139,7 +145,7 @@ this->status= value;
     std::string error = "Failed to view order table";;
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "setOrderStatus()", &e);
@@ -187,7 +193,7 @@ pageContext.getOut()->print(this->setOrderStatus());
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(allbinary->globals->GLOBALS2->VIEW) == 0)
+                        if(this->getCommand()->compareTo(GLOBALS2::VIEW) == 0)
                         
                                     {
                                     

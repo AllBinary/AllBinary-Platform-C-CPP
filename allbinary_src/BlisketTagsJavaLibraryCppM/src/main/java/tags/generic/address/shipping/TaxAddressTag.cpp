@@ -49,6 +49,10 @@
 
       
 
+#include <org/allbinary/globals/GLOBALS2.h>
+
+#include <org/allbinary/globals/GLOBALS2.h>
+
 
 
 
@@ -84,7 +88,7 @@ TaxAddressTag::TaxAddressTag(){
                         
                                     {
                                     
-                        if(this->getCommand()->compareTo(allbinary->globals->GLOBALS2->VIEW) == 0)
+                        if(this->getCommand()->compareTo(GLOBALS2::VIEW) == 0)
                         
                                     {
                                     this->setName("Basic Shipping Address View");
@@ -95,7 +99,7 @@ this->setObjectFile("views.generic.address.shipping.TaxValidationView");
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(allbinary->globals->GLOBALS2->NEW) == 0)
+                        if(this->getCommand()->compareTo(GLOBALS2::NEW) == 0)
                         
                                     {
                                     this->setName("Basic Shipping Address View");

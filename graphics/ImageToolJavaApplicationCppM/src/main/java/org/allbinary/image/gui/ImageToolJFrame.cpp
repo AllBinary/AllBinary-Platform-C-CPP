@@ -89,6 +89,120 @@
 
       
 
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/LayoutStyle.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/LayoutStyle.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/LayoutStyle.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/LayoutStyle.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/LayoutStyle.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/LayoutStyle.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <org/jdesktop/layout/GroupLayout.h>
+
+#include <javax/swing/WindowConstants.h>
+
 
 
 
@@ -261,11 +375,11 @@ outer->okJButtonActionPerformed(evt);
     
 this->analysisActionJDialog->getContentPane()->setLayout(analysisActionJDialogLayout);
     
-analysisActionJDialogLayout->setHorizontalGroup(analysisActionJDialogLayout->createParallelGroup(jdesktop->layout->GroupLayout->LEADING)->add(analysisActionJDialogLayout->createSequentialGroup()->addContainerGap()->add(analysisActionJDialogLayout->createParallelGroup(jdesktop->layout->GroupLayout->LEADING)->add(analysisActionJDialogLayout->createSequentialGroup()->add(analysisActionJDialogLayout->createParallelGroup(jdesktop->layout->GroupLayout->LEADING)->add(blueJLabel)->add(greenJLabel)->add(redJLabel)->add(colorRangeJLabel))->add(29, 29, 29)->add(analysisActionJDialogLayout->createParallelGroup(jdesktop->layout->GroupLayout->LEADING)->add(jdesktop->layout->GroupLayout->TRAILING, minJLabel, jdesktop->layout->GroupLayout->DEFAULT_SIZE, 58, Short::MAX_VALUE)->add(analysisActionJDialogLayout->createParallelGroup(jdesktop->layout->GroupLayout->TRAILING, false)->add(jdesktop->layout->GroupLayout->LEADING, minBlueJTextField)->add(jdesktop->layout->GroupLayout->LEADING, minGreenJTextField)->add(jdesktop->layout->GroupLayout->LEADING, minRedJTextField, jdesktop->layout->GroupLayout->DEFAULT_SIZE, 42, Short::MAX_VALUE)->add(jdesktop->layout->GroupLayout->LEADING, okJButton)))->addPreferredGap(jdesktop->layout->LayoutStyle->RELATED)->add(analysisActionJDialogLayout->createParallelGroup(jdesktop->layout->GroupLayout->TRAILING)->add(jdesktop->layout->GroupLayout->LEADING, analysisActionJDialogLayout->createSequentialGroup()->add(analysisActionJDialogLayout->createParallelGroup(jdesktop->layout->GroupLayout->TRAILING, false)->add(jdesktop->layout->GroupLayout->LEADING, maxRedJTextField)->add(jdesktop->layout->GroupLayout->LEADING, analysisActionJDialogLayout->createSequentialGroup()->add(1, 1, 1)->add(analysisActionJDialogLayout->createParallelGroup(jdesktop->layout->GroupLayout->LEADING)->add(maxBlueJTextField)->add(maxGreenJTextField, jdesktop->layout->GroupLayout->PREFERRED_SIZE, 43, jdesktop->layout->GroupLayout->PREFERRED_SIZE))))->addPreferredGap(jdesktop->layout->LayoutStyle->RELATED, 17, Short::MAX_VALUE))->add(jdesktop->layout->GroupLayout->LEADING, maxJLabel, jdesktop->layout->GroupLayout->DEFAULT_SIZE, 61, Short::MAX_VALUE))->addContainerGap())->add(jdesktop->layout->GroupLayout->TRAILING, analysisActionJDialogLayout->createSequentialGroup()->add(titleJLabel)->add(25, 25, 25)))));
+analysisActionJDialogLayout->setHorizontalGroup(analysisActionJDialogLayout->createParallelGroup(GroupLayout::LEADING)->add(analysisActionJDialogLayout->createSequentialGroup()->addContainerGap()->add(analysisActionJDialogLayout->createParallelGroup(GroupLayout::LEADING)->add(analysisActionJDialogLayout->createSequentialGroup()->add(analysisActionJDialogLayout->createParallelGroup(GroupLayout::LEADING)->add(blueJLabel)->add(greenJLabel)->add(redJLabel)->add(colorRangeJLabel))->add(29, 29, 29)->add(analysisActionJDialogLayout->createParallelGroup(GroupLayout::LEADING)->add(GroupLayout::TRAILING, minJLabel, GroupLayout::DEFAULT_SIZE, 58, Short::MAX_VALUE)->add(analysisActionJDialogLayout->createParallelGroup(GroupLayout::TRAILING, false)->add(GroupLayout::LEADING, minBlueJTextField)->add(GroupLayout::LEADING, minGreenJTextField)->add(GroupLayout::LEADING, minRedJTextField, GroupLayout::DEFAULT_SIZE, 42, Short::MAX_VALUE)->add(GroupLayout::LEADING, okJButton)))->addPreferredGap(LayoutStyle::RELATED)->add(analysisActionJDialogLayout->createParallelGroup(GroupLayout::TRAILING)->add(GroupLayout::LEADING, analysisActionJDialogLayout->createSequentialGroup()->add(analysisActionJDialogLayout->createParallelGroup(GroupLayout::TRAILING, false)->add(GroupLayout::LEADING, maxRedJTextField)->add(GroupLayout::LEADING, analysisActionJDialogLayout->createSequentialGroup()->add(1, 1, 1)->add(analysisActionJDialogLayout->createParallelGroup(GroupLayout::LEADING)->add(maxBlueJTextField)->add(maxGreenJTextField, GroupLayout::PREFERRED_SIZE, 43, GroupLayout::PREFERRED_SIZE))))->addPreferredGap(LayoutStyle::RELATED, 17, Short::MAX_VALUE))->add(GroupLayout::LEADING, maxJLabel, GroupLayout::DEFAULT_SIZE, 61, Short::MAX_VALUE))->addContainerGap())->add(GroupLayout::TRAILING, analysisActionJDialogLayout->createSequentialGroup()->add(titleJLabel)->add(25, 25, 25)))));
     
-analysisActionJDialogLayout->setVerticalGroup(analysisActionJDialogLayout->createParallelGroup(jdesktop->layout->GroupLayout->LEADING)->add(analysisActionJDialogLayout->createSequentialGroup()->add(titleJLabel)->addPreferredGap(jdesktop->layout->LayoutStyle->RELATED)->add(analysisActionJDialogLayout->createParallelGroup(jdesktop->layout->GroupLayout->BASELINE)->add(minJLabel)->add(colorRangeJLabel)->add(maxJLabel))->addPreferredGap(jdesktop->layout->LayoutStyle->RELATED)->add(analysisActionJDialogLayout->createParallelGroup(jdesktop->layout->GroupLayout->TRAILING)->add(redJLabel)->add(analysisActionJDialogLayout->createParallelGroup(jdesktop->layout->GroupLayout->BASELINE)->add(minRedJTextField, jdesktop->layout->GroupLayout->PREFERRED_SIZE, jdesktop->layout->GroupLayout->DEFAULT_SIZE, jdesktop->layout->GroupLayout->PREFERRED_SIZE)->add(maxRedJTextField, jdesktop->layout->GroupLayout->PREFERRED_SIZE, jdesktop->layout->GroupLayout->DEFAULT_SIZE, jdesktop->layout->GroupLayout->PREFERRED_SIZE)))->addPreferredGap(jdesktop->layout->LayoutStyle->RELATED)->add(analysisActionJDialogLayout->createParallelGroup(jdesktop->layout->GroupLayout->TRAILING)->add(greenJLabel)->add(analysisActionJDialogLayout->createParallelGroup(jdesktop->layout->GroupLayout->BASELINE)->add(minGreenJTextField, jdesktop->layout->GroupLayout->PREFERRED_SIZE, jdesktop->layout->GroupLayout->DEFAULT_SIZE, jdesktop->layout->GroupLayout->PREFERRED_SIZE)->add(maxGreenJTextField, jdesktop->layout->GroupLayout->PREFERRED_SIZE, jdesktop->layout->GroupLayout->DEFAULT_SIZE, jdesktop->layout->GroupLayout->PREFERRED_SIZE)))->addPreferredGap(jdesktop->layout->LayoutStyle->RELATED)->add(analysisActionJDialogLayout->createParallelGroup(jdesktop->layout->GroupLayout->TRAILING)->add(blueJLabel)->add(analysisActionJDialogLayout->createParallelGroup(jdesktop->layout->GroupLayout->BASELINE)->add(minBlueJTextField, jdesktop->layout->GroupLayout->PREFERRED_SIZE, jdesktop->layout->GroupLayout->DEFAULT_SIZE, jdesktop->layout->GroupLayout->PREFERRED_SIZE)->add(maxBlueJTextField, jdesktop->layout->GroupLayout->PREFERRED_SIZE, jdesktop->layout->GroupLayout->DEFAULT_SIZE, jdesktop->layout->GroupLayout->PREFERRED_SIZE)))->add(16, 16, 16)->add(okJButton)->addContainerGap(jdesktop->layout->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)));
+analysisActionJDialogLayout->setVerticalGroup(analysisActionJDialogLayout->createParallelGroup(GroupLayout::LEADING)->add(analysisActionJDialogLayout->createSequentialGroup()->add(titleJLabel)->addPreferredGap(LayoutStyle::RELATED)->add(analysisActionJDialogLayout->createParallelGroup(GroupLayout::BASELINE)->add(minJLabel)->add(colorRangeJLabel)->add(maxJLabel))->addPreferredGap(LayoutStyle::RELATED)->add(analysisActionJDialogLayout->createParallelGroup(GroupLayout::TRAILING)->add(redJLabel)->add(analysisActionJDialogLayout->createParallelGroup(GroupLayout::BASELINE)->add(minRedJTextField, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->add(maxRedJTextField, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)))->addPreferredGap(LayoutStyle::RELATED)->add(analysisActionJDialogLayout->createParallelGroup(GroupLayout::TRAILING)->add(greenJLabel)->add(analysisActionJDialogLayout->createParallelGroup(GroupLayout::BASELINE)->add(minGreenJTextField, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->add(maxGreenJTextField, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)))->addPreferredGap(LayoutStyle::RELATED)->add(analysisActionJDialogLayout->createParallelGroup(GroupLayout::TRAILING)->add(blueJLabel)->add(analysisActionJDialogLayout->createParallelGroup(GroupLayout::BASELINE)->add(minBlueJTextField, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->add(maxBlueJTextField, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)))->add(16, 16, 16)->add(okJButton)->addContainerGap(GroupLayout::DEFAULT_SIZE, Short::MAX_VALUE)));
     
-setDefaultCloseOperation(swing->WindowConstants->EXIT_ON_CLOSE);
+setDefaultCloseOperation(WindowConstants::EXIT_ON_CLOSE);
     
 getContentPane()->setLayout(new java::awt::GridLayout(1, 0));
     
@@ -996,17 +1110,17 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "generateMirrorJMenuIte
 
     ColorRangeInterface* colorRangeInterface = dynamic_cast<ColorRangeInterface*>(new ColorRange());;
     
-colorRangeInterface->setMinRed((int32_t(this->getMinRedJTextField()->getText())).intValue());
+colorRangeInterface->setMinRed((int32_t(this->getMinRedJTextField()->getText())));
     
-colorRangeInterface->setMaxRed((int32_t(this->getMaxRedJTextField()->getText())).intValue());
+colorRangeInterface->setMaxRed((int32_t(this->getMaxRedJTextField()->getText())));
     
-colorRangeInterface->setMinGreen((int32_t(this->getMinGreenJTextField()->getText())).intValue());
+colorRangeInterface->setMinGreen((int32_t(this->getMinGreenJTextField()->getText())));
     
-colorRangeInterface->setMaxGreen((int32_t(this->getMaxGreenJTextField()->getText())).intValue());
+colorRangeInterface->setMaxGreen((int32_t(this->getMaxGreenJTextField()->getText())));
     
-colorRangeInterface->setMinBlue((int32_t(this->getMinBlueJTextField()->getText())).intValue());
+colorRangeInterface->setMinBlue((int32_t(this->getMinBlueJTextField()->getText())));
     
-colorRangeInterface->setMaxBlue((int32_t(this->getMaxBlueJTextField()->getText())).intValue());
+colorRangeInterface->setMaxBlue((int32_t(this->getMaxBlueJTextField()->getText())));
     
 
 

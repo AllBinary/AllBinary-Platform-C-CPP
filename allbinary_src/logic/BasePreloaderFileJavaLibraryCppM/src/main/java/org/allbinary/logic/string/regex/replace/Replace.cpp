@@ -72,6 +72,10 @@
 
       
 
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
 
 
 
@@ -280,7 +284,7 @@ totalNumberOfReplaces++;
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->REPLACE))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->REPLACE))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Total Number Of Replaces: ") +JavaString::valueOf(totalNumberOfReplaces), this, this->ALL);
@@ -384,7 +388,7 @@ totalNumberOfReplaces++;
 }
 
 
-                        if(LogConfigTypes::LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->REPLACE))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->REPLACE))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Total Number Of Replaces: ") +JavaString::valueOf(totalNumberOfReplaces), this, this->ALL);

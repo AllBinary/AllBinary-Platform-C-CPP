@@ -62,6 +62,28 @@
 
       
 
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/globals/GLOBALS2.h>
+
+#include <org/allbinary/globals/GLOBALS2.h>
+
+#include <org/allbinary/globals/GLOBALS2.h>
+
 
 
 
@@ -130,7 +152,7 @@ pageContext.getOut()->print(result);
     std::string error = "Failed to search Inventory by keyword";;
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "search()", &e);
@@ -149,7 +171,7 @@ pageContext.getOut()->print(JavaString::valueOf(JavaString::valueOf("Exception: 
 } catch(Exception& e2) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->LICENSINGERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->LICENSINGERROR))
                         
                                     {
                                     this->logUtil->put("Exception in Exception Handling", this, "search()", &e);
@@ -203,7 +225,7 @@ pageContext.getOut()->print(result);
     std::string error = "Failed to View Summary";;
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "viewSummary()", &e);
@@ -222,7 +244,7 @@ pageContext.getOut()->print(JavaString::valueOf(JavaString::valueOf("Exception: 
 } catch(Exception& e2) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->LICENSINGERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->LICENSINGERROR))
                         
                                     {
                                     this->logUtil->put("Exception in Exception Handling", this, "viewSummary())", &e);
@@ -249,7 +271,7 @@ pageContext.getOut()->print(JavaString::valueOf(JavaString::valueOf("Exception: 
                         
                                     {
                                     
-                        if(this->getCommand()->compareTo(allbinary->globals->GLOBALS2->SEARCH) == 0)
+                        if(this->getCommand()->compareTo(GLOBALS2::SEARCH) == 0)
                         
                                     {
                                     this->setName("Basic Search Inventory View");
@@ -270,7 +292,7 @@ this->search();
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(allbinary->globals->GLOBALS2->VIEWSUMMARY) == 0)
+                        if(this->getCommand()->compareTo(GLOBALS2::VIEWSUMMARY) == 0)
                         
                                     {
                                     this->setName("Basic Inventory View");
@@ -291,7 +313,7 @@ this->viewSummary();
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(allbinary->globals->GLOBALS2->VIEW) == 0)
+                        if(this->getCommand()->compareTo(GLOBALS2::VIEW) == 0)
                         
                                     {
                                     this->setName("Basic Inventory View");

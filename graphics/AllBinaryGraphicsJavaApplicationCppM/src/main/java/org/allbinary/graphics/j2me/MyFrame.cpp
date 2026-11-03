@@ -442,7 +442,7 @@ outer->stopJjButtonMousePressed(evt);
     
 this->jToolBar1->add(this->stopJjButton);
     
-getContentPane()->add(this->jToolBar1, awt->BorderLayout->NORTH);
+getContentPane()->add(this->jToolBar1, BorderLayout::NORTH);
     
 this->jPanel1->setLayout(new java::awt::GridLayout(1, 0));
     
@@ -471,7 +471,7 @@ this->mainJPanel->add(this->jTabbedPane);
     
 this->jPanel1->add(this->mainJPanel);
     
-getContentPane()->add(this->jPanel1, awt->BorderLayout->CENTER);
+getContentPane()->add(this->jPanel1, BorderLayout::CENTER);
     
 this->statusJPanel->setLayout(new java::awt::GridLayout(1, 0));
     
@@ -479,7 +479,7 @@ MyFrame::statusJLabel->setText("Status Bar");
     
 this->statusJPanel->add(MyFrame::statusJLabel);
     
-getContentPane()->add(this->statusJPanel, awt->BorderLayout->SOUTH);
+getContentPane()->add(this->statusJPanel, BorderLayout::SOUTH);
     
 this->fileJMenu->setText("File");
     

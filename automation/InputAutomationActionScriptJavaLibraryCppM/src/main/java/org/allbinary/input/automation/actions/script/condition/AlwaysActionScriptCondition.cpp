@@ -125,7 +125,7 @@ AlwaysActionScriptCondition::AlwaysActionScriptCondition(Node* node) : BasicProf
                                     
     std::string booleanString = DomNodeHelper::getTextNodeValue(childNode);;
     
-this->setIsOn(().valueOf());
+this->setIsOn(());
     
 
                                     }

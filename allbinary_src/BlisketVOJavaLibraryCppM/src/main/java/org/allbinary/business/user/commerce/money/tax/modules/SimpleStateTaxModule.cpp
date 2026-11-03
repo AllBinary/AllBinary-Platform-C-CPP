@@ -104,6 +104,22 @@
 
       
 
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
 
 
 
@@ -144,7 +160,7 @@ this->storeFrontInterface= storeFrontInterface;
 this->document= DomDocumentHelper::create(data);
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAX))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAX))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Tax Doc: ") +JavaString::valueOf(XmlDocumentHelper::toString(this->document)), this, "getTaxRate");
@@ -202,7 +218,7 @@ state= JavaString::toUpperCase(state);
     std::string taxRate = DomNodeHelper::getTextNodeValue(rateNode);;
     
 
-    float taxRateFloat = float((float(taxRate)) *.01);;
+    float taxRateFloat = float((Float.valueOf(taxRate)) *.01);;
     
 
 
@@ -247,7 +263,7 @@ this->storeFrontInterface= storeFrontInterface;
 this->document= DomDocumentHelper::create(data);
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAX))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAX))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Tax Doc: ") +JavaString::valueOf(XmlDocumentHelper::toString(this->document)), this, this->commonStrings->IS_VALID);
@@ -281,7 +297,7 @@ this->document= DomDocumentHelper::create(data);
     Node* streetAddressNode = DomSearchHelper::getNode(StreetAddressData::NAME, taxNodeChildren);;
     
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAX))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAX))
                         
                                     {
                                     
@@ -365,7 +381,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALI
 } catch(Exception& e) 
             {
 
-                        if(allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to validate", this, this->commonStrings->IS_VALID, &e);

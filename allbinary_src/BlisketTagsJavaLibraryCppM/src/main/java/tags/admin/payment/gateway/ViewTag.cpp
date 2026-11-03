@@ -46,6 +46,8 @@
 
       
 
+#include <org/allbinary/globals/GLOBALS2.h>
+
 
 
 
@@ -81,7 +83,7 @@ ViewTag::ViewTag(){
                         
                                     {
                                     
-                        if(this->getCommand()->compareTo(allbinary->globals->GLOBALS2->VIEW) == 0)
+                        if(this->getCommand()->compareTo(GLOBALS2::VIEW) == 0)
                         
                                     {
                                     this->setName("Validation Gateway View");

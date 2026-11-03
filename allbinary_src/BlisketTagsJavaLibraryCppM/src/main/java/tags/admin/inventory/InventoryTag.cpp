@@ -49,6 +49,12 @@
 
       
 
+#include <org/allbinary/globals/GLOBALS2.h>
+
+#include <org/allbinary/globals/GLOBALS2.h>
+
+#include <org/allbinary/globals/GLOBALS2.h>
+
 
 
 
@@ -84,7 +90,7 @@ InventoryTag::InventoryTag(){
                         
                                     {
                                     
-                        if(this->getCommand()->compareTo(allbinary->globals->GLOBALS2->VIEW) == 0)
+                        if(this->getCommand()->compareTo(GLOBALS2::VIEW) == 0)
                         
                                     {
                                     
@@ -118,7 +124,7 @@ this->setObjectFile("views.admin.inventory.DeleteFileValidationView");
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(allbinary->globals->GLOBALS2->EDIT) == 0)
+                        if(this->getCommand()->compareTo(GLOBALS2::EDIT) == 0)
                         
                                     {
                                     this->setName("Edit Inventory Item Validation View");
@@ -129,7 +135,7 @@ this->setObjectFile("views.admin.inventory.EditValidationView");
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(allbinary->globals->GLOBALS2->NEW) == 0)
+                        if(this->getCommand()->compareTo(GLOBALS2::NEW) == 0)
                         
                                     {
                                     this->setName("New Inventory Item Validation View");

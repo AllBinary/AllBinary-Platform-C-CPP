@@ -92,6 +92,8 @@
 
       
 
+#include <org/allbinary/globals/GLOBALS2.h>
+
 
 
 
@@ -213,7 +215,7 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return JavaBoxes::unbox<std::string>(this->session->getAttribute(allbinary->globals->GLOBALS2->WEBAPPPATH));
+                        return JavaBoxes::unbox<std::string>(this->session->getAttribute(GLOBALS2::WEBAPPPATH));
     
 }
 

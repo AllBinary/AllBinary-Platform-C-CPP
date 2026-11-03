@@ -69,6 +69,112 @@
 
       
 
+#include <javax/swing/BorderFactory.h>
+
+#include <javax/swing/BorderFactory.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
 
 
 
@@ -381,13 +487,13 @@ this->jLabel3->setText("Move To:");
     
 this->button1JCheckBox->setText(CommonPhoneStrings::getInstance()->ONE);
     
-this->button1JCheckBox->setBorder(swing->BorderFactory->createEmptyBorder(0, 0, 0, 0));
+this->button1JCheckBox->setBorder(BorderFactory::createEmptyBorder(0, 0, 0, 0));
     
 this->button1JCheckBox->setMargin(new java::awt::Insets(0, 0, 0, 0));
     
 this->button2JCheckBox->setText(CommonPhoneStrings::getInstance()->TWO);
     
-this->button2JCheckBox->setBorder(swing->BorderFactory->createEmptyBorder(0, 0, 0, 0));
+this->button2JCheckBox->setBorder(BorderFactory::createEmptyBorder(0, 0, 0, 0));
     
 this->button2JCheckBox->setMargin(new java::awt::Insets(0, 0, 0, 0));
     
@@ -427,9 +533,9 @@ this->mouseDelayJTextField->setText("100");
     
 this->mouseActionJDialog->getContentPane()->setLayout(mouseActionJDialogLayout);
     
-mouseActionJDialogLayout->setHorizontalGroup(mouseActionJDialogLayout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(mouseActionJDialogLayout->createSequentialGroup()->addContainerGap()->addGroup(mouseActionJDialogLayout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addComponent(inputTypeJLabel)->addGroup(swing->GroupLayout->Alignment->TRAILING, mouseActionJDialogLayout->createSequentialGroup()->addGroup(mouseActionJDialogLayout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(swing->GroupLayout->Alignment->TRAILING, mouseActionJDialogLayout->createSequentialGroup()->addComponent(jLabel2)->addGap(25, 25, 25))->addGroup(mouseActionJDialogLayout->createSequentialGroup()->addGroup(mouseActionJDialogLayout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addComponent(jLabel3)->addComponent(jLabel6))->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)))->addGroup(mouseActionJDialogLayout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addComponent(mouseDelayJTextField, swing->GroupLayout->Alignment->TRAILING, swing->GroupLayout->DEFAULT_SIZE, 154, Short::MAX_VALUE)->addGroup(mouseActionJDialogLayout->createSequentialGroup()->addComponent(titleJLabel)->addGap(45, 45, 45))->addGroup(swing->GroupLayout->Alignment->TRAILING, mouseActionJDialogLayout->createSequentialGroup()->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(inputAutomationTypeJComboBox, 0, 154, Short::MAX_VALUE))->addGroup(mouseActionJDialogLayout->createSequentialGroup()->addComponent(button1JCheckBox)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(button2JCheckBox))->addGroup(mouseActionJDialogLayout->createSequentialGroup()->addGroup(mouseActionJDialogLayout->createParallelGroup(swing->GroupLayout->Alignment->TRAILING)->addGroup(mouseActionJDialogLayout->createSequentialGroup()->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(okJButton))->addGroup(mouseActionJDialogLayout->createSequentialGroup()->addComponent(jLabel4)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED, 5, Short::MAX_VALUE)->addComponent(mouseXJTextField, swing->GroupLayout->PREFERRED_SIZE, 59, swing->GroupLayout->PREFERRED_SIZE)))->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(jLabel5)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(mouseYJTextField, swing->GroupLayout->DEFAULT_SIZE, 62, Short::MAX_VALUE)))))->addContainerGap()));
+mouseActionJDialogLayout->setHorizontalGroup(mouseActionJDialogLayout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(mouseActionJDialogLayout->createSequentialGroup()->addContainerGap()->addGroup(mouseActionJDialogLayout->createParallelGroup(GroupLayout::Alignment::LEADING)->addComponent(inputTypeJLabel)->addGroup(GroupLayout::Alignment::TRAILING, mouseActionJDialogLayout->createSequentialGroup()->addGroup(mouseActionJDialogLayout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(GroupLayout::Alignment::TRAILING, mouseActionJDialogLayout->createSequentialGroup()->addComponent(jLabel2)->addGap(25, 25, 25))->addGroup(mouseActionJDialogLayout->createSequentialGroup()->addGroup(mouseActionJDialogLayout->createParallelGroup(GroupLayout::Alignment::LEADING)->addComponent(jLabel3)->addComponent(jLabel6))->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)))->addGroup(mouseActionJDialogLayout->createParallelGroup(GroupLayout::Alignment::LEADING)->addComponent(mouseDelayJTextField, GroupLayout::Alignment::TRAILING, GroupLayout::DEFAULT_SIZE, 154, Short::MAX_VALUE)->addGroup(mouseActionJDialogLayout->createSequentialGroup()->addComponent(titleJLabel)->addGap(45, 45, 45))->addGroup(GroupLayout::Alignment::TRAILING, mouseActionJDialogLayout->createSequentialGroup()->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(inputAutomationTypeJComboBox, 0, 154, Short::MAX_VALUE))->addGroup(mouseActionJDialogLayout->createSequentialGroup()->addComponent(button1JCheckBox)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(button2JCheckBox))->addGroup(mouseActionJDialogLayout->createSequentialGroup()->addGroup(mouseActionJDialogLayout->createParallelGroup(GroupLayout::Alignment::TRAILING)->addGroup(mouseActionJDialogLayout->createSequentialGroup()->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(okJButton))->addGroup(mouseActionJDialogLayout->createSequentialGroup()->addComponent(jLabel4)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED, 5, Short::MAX_VALUE)->addComponent(mouseXJTextField, GroupLayout::PREFERRED_SIZE, 59, GroupLayout::PREFERRED_SIZE)))->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(jLabel5)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(mouseYJTextField, GroupLayout::DEFAULT_SIZE, 62, Short::MAX_VALUE)))))->addContainerGap()));
     
-mouseActionJDialogLayout->setVerticalGroup(mouseActionJDialogLayout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(mouseActionJDialogLayout->createSequentialGroup()->addComponent(titleJLabel)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(mouseActionJDialogLayout->createParallelGroup(swing->GroupLayout->Alignment->BASELINE)->addComponent(inputTypeJLabel)->addComponent(inputAutomationTypeJComboBox, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE))->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(mouseActionJDialogLayout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addComponent(jLabel2, swing->GroupLayout->PREFERRED_SIZE, 15, swing->GroupLayout->PREFERRED_SIZE)->addGroup(mouseActionJDialogLayout->createParallelGroup(swing->GroupLayout->Alignment->BASELINE)->addComponent(button1JCheckBox)->addComponent(button2JCheckBox)))->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(mouseActionJDialogLayout->createParallelGroup(swing->GroupLayout->Alignment->BASELINE)->addComponent(jLabel6)->addComponent(mouseDelayJTextField, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE))->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(mouseActionJDialogLayout->createParallelGroup(swing->GroupLayout->Alignment->BASELINE)->addComponent(jLabel3)->addComponent(jLabel4)->addComponent(jLabel5)->addComponent(mouseYJTextField, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE)->addComponent(mouseXJTextField, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE))->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED, swing->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)->addComponent(okJButton)->addContainerGap()));
+mouseActionJDialogLayout->setVerticalGroup(mouseActionJDialogLayout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(mouseActionJDialogLayout->createSequentialGroup()->addComponent(titleJLabel)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addGroup(mouseActionJDialogLayout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(inputTypeJLabel)->addComponent(inputAutomationTypeJComboBox, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE))->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addGroup(mouseActionJDialogLayout->createParallelGroup(GroupLayout::Alignment::LEADING)->addComponent(jLabel2, GroupLayout::PREFERRED_SIZE, 15, GroupLayout::PREFERRED_SIZE)->addGroup(mouseActionJDialogLayout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(button1JCheckBox)->addComponent(button2JCheckBox)))->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addGroup(mouseActionJDialogLayout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(jLabel6)->addComponent(mouseDelayJTextField, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE))->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addGroup(mouseActionJDialogLayout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(jLabel3)->addComponent(jLabel4)->addComponent(jLabel5)->addComponent(mouseYJTextField, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->addComponent(mouseXJTextField, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE))->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED, GroupLayout::DEFAULT_SIZE, Short::MAX_VALUE)->addComponent(okJButton)->addContainerGap()));
     
 setMinimumSize(new java::awt::Dimension(100, 0));
     
@@ -459,9 +565,9 @@ this->jLabel1->setText("Mouse:");
     
 this->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addComponent(jLabel1)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED, 36, Short::MAX_VALUE)->addComponent(mouseActionJButton)));
+layout->setHorizontalGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(layout->createSequentialGroup()->addComponent(jLabel1)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED, 36, Short::MAX_VALUE)->addComponent(mouseActionJButton)));
     
-layout->setVerticalGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->BASELINE)->addComponent(jLabel1)->addComponent(mouseActionJButton)));
+layout->setVerticalGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(layout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(jLabel1)->addComponent(mouseActionJButton)));
     
 }
 

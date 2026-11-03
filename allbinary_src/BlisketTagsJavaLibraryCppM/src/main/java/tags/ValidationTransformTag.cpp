@@ -63,6 +63,30 @@
 
       
 
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
 
 
 
@@ -138,7 +162,7 @@ this->logic= logic;
 } catch(Exception& e) 
             {
 
-                        if(allbinary->logic.communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic.communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->IS_VALID, &e);
@@ -185,7 +209,7 @@ this->logic= logic;
 } catch(Exception& e) 
             {
 
-                        if(allbinary->logic.communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic.communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "validationInfo()", &e);
@@ -209,7 +233,7 @@ this->logic= logic;
 
         try {
             
-                        if(allbinary->logic.communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic.communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAG))
                         
                                     {
                                     
@@ -244,7 +268,7 @@ this->setHelper();
                                     TransformTag::doStartTag();
     
 
-                        if(allbinary->logic.communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic.communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAG))
                         
                                     {
                                     
@@ -297,7 +321,7 @@ this->logUtil->putF(stringBuffer->toString(), this, tagStrings.DO_START_TAG);
                             pageContext.getOut()->print(this->validationInfo());
     
 
-                        if(allbinary->logic.communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic.communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAG))
                         
                                     {
                                     
@@ -384,7 +408,7 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 
     auto ValidationTransformTag::doEndTag() -> int32_t{
 
-                        if(allbinary->logic.communication->log->config->type->LogConfigTypes->LOGGING->contains(allbinary->logic.communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
+                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAG))
                         
                                     {
                                     this->logUtil->putF("Tag Ended", this, "doEndTag");

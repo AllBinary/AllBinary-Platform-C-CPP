@@ -472,13 +472,13 @@ hashMap->put(OrderHistoryData::TRANSDATE, this->transDate);
     
 hashMap->put(OrderHistoryData::CANCELDATE, this->cancelDate);
     
-hashMap->put(OrderHistoryData::ORDERDATEFORMATTED, (new Date((int64_t(this->orderDate)).longValue()))->toString());
+hashMap->put(OrderHistoryData::ORDERDATEFORMATTED, (new Date((int64_t(this->orderDate))))->toString());
     
-hashMap->put(OrderHistoryData::SHIPPEDDATEFORMATTED, (new Date((int64_t(this->shipDate)).longValue()))->toString());
+hashMap->put(OrderHistoryData::SHIPPEDDATEFORMATTED, (new Date((int64_t(this->shipDate))))->toString());
     
-hashMap->put(OrderHistoryData::TRANSDATEFORMATTED, (new Date((int64_t(this->transDate)).longValue()))->toString());
+hashMap->put(OrderHistoryData::TRANSDATEFORMATTED, (new Date((int64_t(this->transDate))))->toString());
     
-hashMap->put(OrderHistoryData::CANCELDATEFORMATTED, (new Date((int64_t(this->cancelDate)).longValue()))->toString());
+hashMap->put(OrderHistoryData::CANCELDATEFORMATTED, (new Date((int64_t(this->cancelDate))))->toString());
     
 hashMap->put(OrderHistoryData::STATUS, this->status);
     

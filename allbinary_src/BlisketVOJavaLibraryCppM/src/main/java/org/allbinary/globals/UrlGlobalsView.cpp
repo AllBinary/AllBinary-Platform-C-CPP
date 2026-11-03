@@ -57,6 +57,8 @@
 
       
 
+#include <org/allbinary/globals/URLGLOBALS.h>
+
 
 
 
@@ -87,7 +89,7 @@ UrlGlobalsView::UrlGlobalsView(){
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap->put(UrlGlobalsData::WEBAPPPATH, allbinary->globals->URLGLOBALS->getWebappPath());
+hashMap->put(UrlGlobalsData::WEBAPPPATH, URLGLOBALS::getWebappPath());
     
 
     Node* node = ModDomHelper::createNameValueNodes(document, UrlGlobalsData::NAME, hashMap);;

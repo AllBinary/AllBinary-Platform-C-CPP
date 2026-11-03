@@ -260,7 +260,7 @@ gridBagConstraints->gridy= 0;
     
 gridBagConstraints->gridwidth= 1;
     
-gridBagConstraints->fill= awt->GridBagConstraints->BOTH;
+gridBagConstraints->fill= GridBagConstraints::BOTH;
     
 gridBagConstraints->weightx= .05;
     
@@ -281,7 +281,7 @@ gridBagConstraints->gridy= 0;
     
 gridBagConstraints->gridwidth= 6;
     
-gridBagConstraints->fill= awt->GridBagConstraints->BOTH;
+gridBagConstraints->fill= GridBagConstraints::BOTH;
     
 gridBagConstraints->weightx= 1;
     
@@ -297,9 +297,9 @@ gridBagConstraints->gridx= 8;
     
 gridBagConstraints->gridy= 0;
     
-gridBagConstraints->gridwidth= awt->GridBagConstraints->REMAINDER;
+gridBagConstraints->gridwidth= GridBagConstraints::REMAINDER;
     
-gridBagConstraints->fill= awt->GridBagConstraints->BOTH;
+gridBagConstraints->fill= GridBagConstraints::BOTH;
     
 gridBagConstraints->weightx= .1;
     

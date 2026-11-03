@@ -66,6 +66,160 @@
 
       
 
+#include <javax/swing/SwingConstants.h>
+
+#include <javax/swing/BorderFactory.h>
+
+#include <javax/swing/BorderFactory.h>
+
+#include <javax/swing/BorderFactory.h>
+
+#include <javax/swing/BorderFactory.h>
+
+#include <javax/swing/BorderFactory.h>
+
+#include <javax/swing/SwingConstants.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/LayoutStyle.h>
+
+#include <javax/swing/GroupLayout.h>
+
+#include <javax/swing/GroupLayout.h>
+
 
 
 
@@ -326,7 +480,7 @@ this->jLabel1= new javax::swing::JLabel();
     
 this->keyActionJDialog->setMinimumSize(new java::awt::Dimension(255, 280));
     
-this->titleJLabel->setHorizontalAlignment(swing->SwingConstants->CENTER);
+this->titleJLabel->setHorizontalAlignment(SwingConstants::CENTER);
     
 this->titleJLabel->setText("Keyboard Input Options");
     
@@ -365,7 +519,7 @@ this->textJTextField->setText(CommonPhoneStrings::getInstance()->ZERO);
     
 this->pressJRadioButton->setText("Press");
     
-this->pressJRadioButton->setBorder(swing->BorderFactory->createEmptyBorder(0, 0, 0, 0));
+this->pressJRadioButton->setBorder(BorderFactory::createEmptyBorder(0, 0, 0, 0));
     
 this->pressJRadioButton->setMargin(new java::awt::Insets(0, 0, 0, 0));
     
@@ -388,7 +542,7 @@ outer->pressJRadioButtonActionPerformed(evt);
     
 this->releaseJRadioButton->setText("Release");
     
-this->releaseJRadioButton->setBorder(swing->BorderFactory->createEmptyBorder(0, 0, 0, 0));
+this->releaseJRadioButton->setBorder(BorderFactory::createEmptyBorder(0, 0, 0, 0));
     
 this->releaseJRadioButton->setMargin(new java::awt::Insets(0, 0, 0, 0));
     
@@ -413,7 +567,7 @@ this->normalJRadioButton->setSelected(true);
     
 this->normalJRadioButton->setText("Normal");
     
-this->normalJRadioButton->setBorder(swing->BorderFactory->createEmptyBorder(0, 0, 0, 0));
+this->normalJRadioButton->setBorder(BorderFactory::createEmptyBorder(0, 0, 0, 0));
     
 this->normalJRadioButton->setMargin(new java::awt::Insets(0, 0, 0, 0));
     
@@ -438,7 +592,7 @@ this->simultaneousJRadioButton->setSelected(true);
     
 this->simultaneousJRadioButton->setText("Simultaneous");
     
-this->simultaneousJRadioButton->setBorder(swing->BorderFactory->createEmptyBorder(0, 0, 0, 0));
+this->simultaneousJRadioButton->setBorder(BorderFactory::createEmptyBorder(0, 0, 0, 0));
     
 this->simultaneousJRadioButton->setMargin(new java::awt::Insets(0, 0, 0, 0));
     
@@ -461,7 +615,7 @@ outer->simultaneousJRadioButtonActionPerformed(evt);
     
 this->sequenceJRadioButton->setText("Sequence");
     
-this->sequenceJRadioButton->setBorder(swing->BorderFactory->createEmptyBorder(0, 0, 0, 0));
+this->sequenceJRadioButton->setBorder(BorderFactory::createEmptyBorder(0, 0, 0, 0));
     
 this->sequenceJRadioButton->setMargin(new java::awt::Insets(0, 0, 0, 0));
     
@@ -484,7 +638,7 @@ outer->sequenceJRadioButtonActionPerformed(evt);
     
 this->okJButton->setText("OK");
     
-this->okJButton->setHorizontalTextPosition(swing->SwingConstants->CENTER);
+this->okJButton->setHorizontalTextPosition(SwingConstants::CENTER);
     
 this->okJButton->addActionListener([&]() {
     static thread_local KeyboardActionScriptInputJPanel* anonymousOuter0 = nullptr;
@@ -527,9 +681,9 @@ outer->keyIntegerJComboBoxActionPerformed(evt);
     
 this->keyActionJDialog->getContentPane()->setLayout(keyActionJDialogLayout);
     
-keyActionJDialogLayout->setHorizontalGroup(keyActionJDialogLayout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(keyActionJDialogLayout->createSequentialGroup()->addContainerGap()->addGroup(keyActionJDialogLayout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(keyActionJDialogLayout->createSequentialGroup()->addGroup(keyActionJDialogLayout->createParallelGroup(swing->GroupLayout->Alignment->LEADING, false)->addComponent(addKeyJLabel, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)->addComponent(inputTypeJLabel, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE))->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(keyActionJDialogLayout->createParallelGroup(swing->GroupLayout->Alignment->TRAILING)->addComponent(inputAutomationTypeJComboBox, 0, 148, Short::MAX_VALUE)->addComponent(textJTextField, swing->GroupLayout->Alignment->LEADING, swing->GroupLayout->DEFAULT_SIZE, 148, Short::MAX_VALUE)->addGroup(keyActionJDialogLayout->createSequentialGroup()->addComponent(keyNameJComboBox, 0, 101, Short::MAX_VALUE)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(keyIntegerJComboBox, swing->GroupLayout->PREFERRED_SIZE, 41, swing->GroupLayout->PREFERRED_SIZE))))->addComponent(testJLabel, swing->GroupLayout->PREFERRED_SIZE, 60, swing->GroupLayout->PREFERRED_SIZE)->addGroup(keyActionJDialogLayout->createSequentialGroup()->addComponent(normalJRadioButton)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(pressJRadioButton)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(releaseJRadioButton)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED, 48, swing->GroupLayout->PREFERRED_SIZE))->addGroup(swing->GroupLayout->Alignment->TRAILING, keyActionJDialogLayout->createSequentialGroup()->addComponent(holdTimeJLabel)->addGap(22, 22, 22)->addComponent(timeJTextField, swing->GroupLayout->DEFAULT_SIZE, 113, Short::MAX_VALUE))->addGroup(keyActionJDialogLayout->createSequentialGroup()->addComponent(delayBetweenJLabel)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED, 15, Short::MAX_VALUE)->addComponent(delayJTextField, swing->GroupLayout->PREFERRED_SIZE, 68, swing->GroupLayout->PREFERRED_SIZE))->addGroup(keyActionJDialogLayout->createSequentialGroup()->addComponent(simultaneousJRadioButton)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(sequenceJRadioButton)))->addContainerGap())->addComponent(titleJLabel, swing->GroupLayout->Alignment->TRAILING, swing->GroupLayout->DEFAULT_SIZE, 229, Short::MAX_VALUE)->addComponent(jPanel1, swing->GroupLayout->DEFAULT_SIZE, 229, Short::MAX_VALUE));
+keyActionJDialogLayout->setHorizontalGroup(keyActionJDialogLayout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(keyActionJDialogLayout->createSequentialGroup()->addContainerGap()->addGroup(keyActionJDialogLayout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(keyActionJDialogLayout->createSequentialGroup()->addGroup(keyActionJDialogLayout->createParallelGroup(GroupLayout::Alignment::LEADING, false)->addComponent(addKeyJLabel, GroupLayout::DEFAULT_SIZE, GroupLayout::DEFAULT_SIZE, Short::MAX_VALUE)->addComponent(inputTypeJLabel, GroupLayout::DEFAULT_SIZE, GroupLayout::DEFAULT_SIZE, Short::MAX_VALUE))->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addGroup(keyActionJDialogLayout->createParallelGroup(GroupLayout::Alignment::TRAILING)->addComponent(inputAutomationTypeJComboBox, 0, 148, Short::MAX_VALUE)->addComponent(textJTextField, GroupLayout::Alignment::LEADING, GroupLayout::DEFAULT_SIZE, 148, Short::MAX_VALUE)->addGroup(keyActionJDialogLayout->createSequentialGroup()->addComponent(keyNameJComboBox, 0, 101, Short::MAX_VALUE)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(keyIntegerJComboBox, GroupLayout::PREFERRED_SIZE, 41, GroupLayout::PREFERRED_SIZE))))->addComponent(testJLabel, GroupLayout::PREFERRED_SIZE, 60, GroupLayout::PREFERRED_SIZE)->addGroup(keyActionJDialogLayout->createSequentialGroup()->addComponent(normalJRadioButton)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(pressJRadioButton)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(releaseJRadioButton)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED, 48, GroupLayout::PREFERRED_SIZE))->addGroup(GroupLayout::Alignment::TRAILING, keyActionJDialogLayout->createSequentialGroup()->addComponent(holdTimeJLabel)->addGap(22, 22, 22)->addComponent(timeJTextField, GroupLayout::DEFAULT_SIZE, 113, Short::MAX_VALUE))->addGroup(keyActionJDialogLayout->createSequentialGroup()->addComponent(delayBetweenJLabel)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED, 15, Short::MAX_VALUE)->addComponent(delayJTextField, GroupLayout::PREFERRED_SIZE, 68, GroupLayout::PREFERRED_SIZE))->addGroup(keyActionJDialogLayout->createSequentialGroup()->addComponent(simultaneousJRadioButton)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(sequenceJRadioButton)))->addContainerGap())->addComponent(titleJLabel, GroupLayout::Alignment::TRAILING, GroupLayout::DEFAULT_SIZE, 229, Short::MAX_VALUE)->addComponent(jPanel1, GroupLayout::DEFAULT_SIZE, 229, Short::MAX_VALUE));
     
-keyActionJDialogLayout->setVerticalGroup(keyActionJDialogLayout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(keyActionJDialogLayout->createSequentialGroup()->addComponent(titleJLabel)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(keyActionJDialogLayout->createParallelGroup(swing->GroupLayout->Alignment->BASELINE)->addComponent(inputTypeJLabel)->addComponent(inputAutomationTypeJComboBox, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE))->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(keyActionJDialogLayout->createParallelGroup(swing->GroupLayout->Alignment->BASELINE)->addComponent(addKeyJLabel)->addComponent(keyIntegerJComboBox, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE)->addComponent(keyNameJComboBox, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE))->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(keyActionJDialogLayout->createParallelGroup(swing->GroupLayout->Alignment->BASELINE)->addComponent(testJLabel)->addComponent(textJTextField, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE))->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(keyActionJDialogLayout->createParallelGroup(swing->GroupLayout->Alignment->BASELINE)->addComponent(pressJRadioButton)->addComponent(normalJRadioButton)->addComponent(releaseJRadioButton))->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(keyActionJDialogLayout->createParallelGroup(swing->GroupLayout->Alignment->BASELINE)->addComponent(holdTimeJLabel)->addComponent(timeJTextField, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE))->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(keyActionJDialogLayout->createParallelGroup(swing->GroupLayout->Alignment->BASELINE)->addComponent(delayBetweenJLabel)->addComponent(delayJTextField, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE))->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(keyActionJDialogLayout->createParallelGroup(swing->GroupLayout->Alignment->BASELINE)->addComponent(simultaneousJRadioButton)->addComponent(sequenceJRadioButton))->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(jPanel1, swing->GroupLayout->PREFERRED_SIZE, swing->GroupLayout->DEFAULT_SIZE, swing->GroupLayout->PREFERRED_SIZE)->addContainerGap()));
+keyActionJDialogLayout->setVerticalGroup(keyActionJDialogLayout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(keyActionJDialogLayout->createSequentialGroup()->addComponent(titleJLabel)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addGroup(keyActionJDialogLayout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(inputTypeJLabel)->addComponent(inputAutomationTypeJComboBox, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE))->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addGroup(keyActionJDialogLayout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(addKeyJLabel)->addComponent(keyIntegerJComboBox, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->addComponent(keyNameJComboBox, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE))->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addGroup(keyActionJDialogLayout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(testJLabel)->addComponent(textJTextField, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE))->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addGroup(keyActionJDialogLayout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(pressJRadioButton)->addComponent(normalJRadioButton)->addComponent(releaseJRadioButton))->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addGroup(keyActionJDialogLayout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(holdTimeJLabel)->addComponent(timeJTextField, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE))->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addGroup(keyActionJDialogLayout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(delayBetweenJLabel)->addComponent(delayJTextField, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE))->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addGroup(keyActionJDialogLayout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(simultaneousJRadioButton)->addComponent(sequenceJRadioButton))->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(jPanel1, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->addContainerGap()));
     
 setMinimumSize(new java::awt::Dimension(100, 0));
     
@@ -559,9 +713,9 @@ this->jLabel1->setText("Key:");
     
 this->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addComponent(jLabel1)->addPreferredGap(swing->LayoutStyle->ComponentPlacement->RELATED, 49, Short::MAX_VALUE)->addComponent(keyActionJButton)));
+layout->setHorizontalGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(layout->createSequentialGroup()->addComponent(jLabel1)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED, 49, Short::MAX_VALUE)->addComponent(keyActionJButton)));
     
-layout->setVerticalGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createParallelGroup(swing->GroupLayout->Alignment->BASELINE)->addComponent(jLabel1)->addComponent(keyActionJButton)));
+layout->setVerticalGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(layout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(jLabel1)->addComponent(keyActionJButton)));
     
 }
 

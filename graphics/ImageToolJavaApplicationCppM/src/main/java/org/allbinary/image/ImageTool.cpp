@@ -78,7 +78,7 @@ ImageTool::ImageTool() : logUtil(LogUtil::getInstance()){
 
 
     auto ImageTool::main(std::vector<std::string> args) -> void{
-awt->EventQueue->invokeLater([]() {
+EventQueue::invokeLater([]() {
     class Anonymous0 : public ARunnable {
     public:
     using ARunnable::ARunnable;
