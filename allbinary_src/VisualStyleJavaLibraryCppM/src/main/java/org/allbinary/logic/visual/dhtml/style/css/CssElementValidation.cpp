@@ -120,6 +120,8 @@ CssElementValidation::CssElementValidation(Node* node) : CssElementView(node), l
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return valid;
     
 
@@ -139,6 +141,8 @@ CssElementValidation::CssElementValidation(Node* node) : CssElementView(node), l
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -160,6 +164,8 @@ stringBuffer->append(" Css Style is not valid.");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -179,6 +185,8 @@ stringBuffer->append(" Css Style is not valid.");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Validating Data";
     
 }
@@ -191,6 +199,8 @@ stringBuffer->append(" Css Style is not valid.");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -201,6 +211,8 @@ stringBuffer->append(" Css Style is not valid.");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

@@ -73,6 +73,8 @@ this->font= font;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 }
@@ -87,6 +89,8 @@ this->font= font;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 }
@@ -105,6 +109,8 @@ this->font= font;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->font->getHeight();;
     
 }

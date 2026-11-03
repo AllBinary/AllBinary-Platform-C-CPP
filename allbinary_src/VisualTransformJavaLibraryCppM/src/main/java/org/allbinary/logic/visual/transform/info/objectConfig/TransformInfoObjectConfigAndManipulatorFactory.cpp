@@ -92,6 +92,8 @@ TransformInfoObjectConfigAndManipulatorFactory* TransformInfoObjectConfigAndMani
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TransformInfoObjectConfigAndManipulatorFactory::instance;
     
 }
@@ -113,6 +115,8 @@ TransformInfoObjectConfigAndManipulatorFactory::TransformInfoObjectConfigAndMani
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getInstance(abeClientInformation, transformInfoInterface, DomDocumentHelper::create(data));;
     
 
@@ -156,6 +160,8 @@ TransformInfoObjectConfigAndManipulatorFactory::TransformInfoObjectConfigAndMani
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<TransformInfoObjectConfigInterface*>(new GenericStoreTransformInfoObjectConfig(abeClientInformation, transformInfoInterface));
     
 
@@ -166,6 +172,8 @@ TransformInfoObjectConfigAndManipulatorFactory::TransformInfoObjectConfigAndMani
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<TransformInfoObjectConfigInterface*>(new TransformInfoObjectConfig(transformInfoInterface));
     
 
@@ -226,6 +234,8 @@ TransformInfoObjectConfigAndManipulatorFactory::TransformInfoObjectConfigAndMani
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<TransformInfoObjectConfigInterface*>(new GenericStoreTransformInfoObjectConfig(abeClientInformation, transformInfoInterface, document));
     
 
@@ -236,6 +246,8 @@ TransformInfoObjectConfigAndManipulatorFactory::TransformInfoObjectConfigAndMani
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<TransformInfoObjectConfigInterface*>(new TransformInfoObjectConfig(transformInfoInterface, document));
     
 

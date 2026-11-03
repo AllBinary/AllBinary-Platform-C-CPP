@@ -100,6 +100,8 @@ arrayImageRotationAnimationFactory->initDXY(dx, dy);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return arrayImageRotationAnimationFactory;
     
 }
@@ -117,6 +119,8 @@ arrayImageRotationAnimationFactory->initDXY(dx, dy);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return arrayImageRotationAnimationFactory;
     
 }
@@ -189,6 +193,8 @@ scaledImageArray[index]= this->animationFactoryImageScaleUtil->createImage(image
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AdjustedImageArrayRotationAnimation(scaledImageArray, AngleInfo::getInstance(this->getAngleIncrement()), static_cast<int32_t>(AngleFactory::getInstance()->TOTAL_ANGLE), this->animationFactoryInitializationVisitor->dx, this->animationFactoryInitializationVisitor->dy, this->animationBehaviorFactory->getOrCreateInstance());
     
 
@@ -199,6 +205,8 @@ scaledImageArray[index]= this->animationFactoryImageScaleUtil->createImage(image
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new ImageArrayRotationAnimation(scaledImageArray, AngleInfo::getInstance(this->getAngleIncrement()), static_cast<int32_t>(AngleFactory::getInstance()->TOTAL_ANGLE), this->animationBehaviorFactory->getOrCreateInstance());
     
 
@@ -218,6 +226,8 @@ this->imageArray= imageArray;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->angleIncrement;
     
 }

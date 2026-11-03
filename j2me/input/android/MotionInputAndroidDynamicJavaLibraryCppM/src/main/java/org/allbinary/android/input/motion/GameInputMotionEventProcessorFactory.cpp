@@ -81,6 +81,8 @@ GameInputMotionEventProcessorFactory::GameInputMotionEventProcessorFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return GameInputMotionEventProcessorAPI1::getInstance();;
     
 
@@ -91,6 +93,8 @@ GameInputMotionEventProcessorFactory::GameInputMotionEventProcessorFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return GameInputMotionEventProcessorAPI5::getInstance();;
     
 

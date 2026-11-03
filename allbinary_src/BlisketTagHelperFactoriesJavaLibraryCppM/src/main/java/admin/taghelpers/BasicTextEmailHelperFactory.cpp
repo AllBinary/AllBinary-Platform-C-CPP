@@ -85,6 +85,8 @@ BasicTextEmailHelperFactory::BasicTextEmailHelperFactory() : logUtil(LogUtil::ge
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new BasicTextEmailHelper(hashMap, pageContext);
     
 
@@ -104,6 +106,8 @@ BasicTextEmailHelperFactory::BasicTextEmailHelperFactory() : logUtil(LogUtil::ge
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

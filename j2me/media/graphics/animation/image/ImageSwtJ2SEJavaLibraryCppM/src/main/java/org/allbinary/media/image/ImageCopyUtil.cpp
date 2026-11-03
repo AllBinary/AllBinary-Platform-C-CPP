@@ -121,6 +121,8 @@ ImageCopyUtil* ImageCopyUtil::instance = ImageCopyUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ImageCopyUtil::instance;
     
 }
@@ -146,6 +148,8 @@ image= this->openGLUtil->addImage(image);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return image;
     
 
@@ -156,6 +160,8 @@ image= this->openGLUtil->addImage(image);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->createImage(originalImage);;
     
 
@@ -177,6 +183,8 @@ image= this->openGLUtil->addImage(image);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return originalImage;
     
 
@@ -236,6 +244,8 @@ image= this->openGLUtil->addImage(image);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return image;
     
 }
@@ -257,6 +267,8 @@ image= this->openGLUtil->addImage(image);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return originalImage;
     
 
@@ -274,6 +286,8 @@ image= this->openGLUtil->addImage(image);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->createImage2(originalImage, width, height, mutable_);;
     
 
@@ -383,6 +397,8 @@ image= this->openGLUtil->addImage(image);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return image;
     
 }
@@ -404,6 +420,8 @@ image= this->openGLUtil->addImage(image);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return originalImage;
     
 
@@ -612,6 +630,8 @@ image= this->openGLUtil->addImage(image);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return image;
     
 }
@@ -630,6 +650,8 @@ image= this->openGLUtil->addImage(image);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return originalImage;
     
 
@@ -736,6 +758,8 @@ getImage.
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return image;
     
 
@@ -805,6 +829,8 @@ getImage.
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return image;
     
 

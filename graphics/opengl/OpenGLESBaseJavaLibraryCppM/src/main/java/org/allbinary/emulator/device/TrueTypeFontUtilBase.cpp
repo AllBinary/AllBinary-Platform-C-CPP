@@ -161,6 +161,8 @@ this->actualCellsPerRow= this->textureSize /this->cellSize;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return textureSize;
     
 }
@@ -216,6 +218,8 @@ this->actualCellsPerRow= this->textureSize /this->cellSize;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return cellSize;
     
 }
@@ -226,6 +230,8 @@ this->actualCellsPerRow= this->textureSize /this->cellSize;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ((this->scale -1) *this->cellSize);
     
 }

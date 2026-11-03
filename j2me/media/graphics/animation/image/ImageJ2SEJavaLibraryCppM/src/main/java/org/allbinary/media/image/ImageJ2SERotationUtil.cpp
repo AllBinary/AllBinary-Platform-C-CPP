@@ -78,6 +78,8 @@ ImageJ2SERotationUtil* ImageJ2SERotationUtil::instance = ImageJ2SERotationUtil::
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ImageJ2SERotationUtil::instance;
     
 }
@@ -92,6 +94,8 @@ ImageJ2SERotationUtil::ImageJ2SERotationUtil() : imageUtil(ImageUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getRotatedImageRadians(bufferedImage, TWO_PIE *totalAngle /360);;
     
 }
@@ -107,6 +111,8 @@ ImageJ2SERotationUtil::ImageJ2SERotationUtil() : imageUtil(ImageUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->drawRotatedImageRadians(bufferedImage, newBufferedImage, newBufferedImage->createGraphics(), radians);;
     
 }
@@ -128,6 +134,8 @@ g->dispose();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return newBufferedImage;
     
 }
@@ -145,6 +153,8 @@ g->clearRect(0, 0, newBufferedImage->getWidth(), newBufferedImage->getHeight());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->drawRotatedImageRadians(bufferedImage, newBufferedImage, g, TWO_PIE *totalAngle /360);;
     
 }
@@ -158,6 +168,8 @@ g->clearRect(0, 0, newBufferedImage->getWidth(), newBufferedImage->getHeight());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->drawRotatedImageRadians(bufferedImage, newBufferedImage, g, TWO_PIE *totalAngle /360);;
     
 }
@@ -191,6 +203,8 @@ bufferedImageArray[index]= this->getRotatedImageRadians(bufferedImage, radians);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return bufferedImageArray;
     
 }
@@ -283,6 +297,8 @@ g->dispose();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return bufferedImage;
     
 }

@@ -130,6 +130,8 @@ Object* AllBinaryMidlet::NULL_ALLBINARY_MIDLET = NullUtil::getInstance()->NULL_O
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<AllBinaryMidlet*>(AllBinaryMidlet::NULL_ALLBINARY_MIDLET);
     
 }
@@ -182,6 +184,8 @@ display->setCurrent(newDisplay);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Display::getDisplay(this);;
     
 }
@@ -192,6 +196,8 @@ display->setCurrent(newDisplay);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Display::getDisplay(this)->getCurrent();;
     
 }
@@ -208,6 +214,8 @@ this->midletDestroyed= destroyed;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->midletDestroyed;
     
 }
@@ -273,6 +281,8 @@ this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->STA
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->hashtable;
     
 }
@@ -287,6 +297,8 @@ this->logUtil->putF(this->commonStrings->START, this, "getStateHashtable");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StdUtil::getInstance()->NULL_TABLE;
     
 }

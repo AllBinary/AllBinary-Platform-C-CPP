@@ -78,6 +78,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new ScoreHudWidget(maxscore, location, direction, 2, BasicColorFactory::getInstance()->GREY);
     
 }

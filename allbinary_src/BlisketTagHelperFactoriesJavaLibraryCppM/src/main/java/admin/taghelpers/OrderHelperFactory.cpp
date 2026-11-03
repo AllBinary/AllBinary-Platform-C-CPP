@@ -85,6 +85,8 @@ OrderHelperFactory::OrderHelperFactory() : logUtil(LogUtil::getInstance()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new OrderHelper(hashMap, pageContext);
     
 
@@ -104,6 +106,8 @@ OrderHelperFactory::OrderHelperFactory() : logUtil(LogUtil::getInstance()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

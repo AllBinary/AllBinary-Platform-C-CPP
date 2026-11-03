@@ -88,6 +88,8 @@ this->setColor(JavaBoxes::value<int32_t>(this->getBasicColorP()));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->basicColor;
     
 }
@@ -98,6 +100,8 @@ this->setColor(JavaBoxes::value<int32_t>(this->getBasicColorP()));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->colorP;
     
 }

@@ -116,6 +116,8 @@ InputRobotFactory* InputRobotFactory::inputRobotFactory = InputRobotFactory::inp
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return InputRobotFactory::inputRobotFactory;
     
 }
@@ -351,6 +353,8 @@ securedNativeLibraryInterface->unload();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->hashtable;
     
 }
@@ -363,6 +367,8 @@ this->logUtil->putF(JavaString::valueOf("Getting Robot: ") +JavaString::valueOf(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<InputRobotInterface*>(this->hashtable->get(name));
     
 }

@@ -132,6 +132,8 @@ AbSqlTableUtil* AbSqlTableUtil::instance = AbSqlTableUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbSqlTableUtil::instance;
     
 }
@@ -179,6 +181,8 @@ backupFile->createNewFile();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return outputStream;
     
 
@@ -198,6 +202,8 @@ backupFile->createNewFile();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -265,6 +271,8 @@ FileUtil::getInstance()->copy(path, backupAbPath);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -284,6 +292,8 @@ FileUtil::getInstance()->copy(path, backupAbPath);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -344,6 +354,8 @@ lastIndex= index +1;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -448,6 +460,8 @@ StreamUtil::getInstance()->close(outputStream);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::valueOf(JavaString::valueOf(this->TABLE_LABEL) +JavaString::valueOf(tableName)) +JavaString::valueOf(this->BACKUP_SUCCESS);
     
 
@@ -467,6 +481,8 @@ StreamUtil::getInstance()->close(outputStream);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::valueOf(JavaString::valueOf(this->TABLE_LABEL) +JavaString::valueOf(tableName)) +JavaString::valueOf(" Backup Failed");
     
 }
@@ -594,6 +610,8 @@ stringBuffer->append(this->PORTION_RESTORED);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -622,6 +640,8 @@ stringBuffer->append(" Restoration Failed");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

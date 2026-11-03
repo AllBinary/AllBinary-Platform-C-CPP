@@ -72,6 +72,8 @@ RTSLayer2SelectedLogHelper* RTSLayer2SelectedLogHelper::instanceC = RTSLayer2Sel
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return RTSLayer2SelectedLogHelper::instanceC;
     
 }

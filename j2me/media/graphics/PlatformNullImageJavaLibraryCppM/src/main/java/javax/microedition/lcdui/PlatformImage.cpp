@@ -74,7 +74,9 @@ PlatformImage::PlatformImage() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullImage::NULL_IMAGE;
+                        
+                        
+                        return JavaBoxes::toObject(NullImage::NULL_IMAGE);
     
 }
 
@@ -84,6 +86,8 @@ PlatformImage::PlatformImage() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return width;
     
 }
@@ -94,6 +98,8 @@ PlatformImage::PlatformImage() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return height;
     
 }
@@ -104,6 +110,8 @@ PlatformImage::PlatformImage() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return width;
     
 }
@@ -114,6 +122,8 @@ PlatformImage::PlatformImage() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return height;
     
 }
@@ -149,6 +159,8 @@ PlatformImage::PlatformImage() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NullUtil::getInstance()->NULL_INT_ARRAY;
     
 }

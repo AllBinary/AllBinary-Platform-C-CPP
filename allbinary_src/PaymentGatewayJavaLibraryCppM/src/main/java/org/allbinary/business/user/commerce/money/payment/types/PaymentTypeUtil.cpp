@@ -136,6 +136,8 @@ int32_t PaymentTypeUtil::initResult = PaymentTypeUtil::init();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PaymentTypeUtil::instance;
     
 }
@@ -209,6 +211,8 @@ this->paymentTypeVector->add(paymentType);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return paymentType;
     
 
@@ -329,6 +333,8 @@ this->initDefault(storeName);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->get(this->defaultName);;
     
 
@@ -347,6 +353,8 @@ this->initDefault(storeName);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->paymentTypeVector->contains(paymentType);;
     
 }
@@ -379,6 +387,8 @@ this->initDefault(storeName);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return diff;
     
 }

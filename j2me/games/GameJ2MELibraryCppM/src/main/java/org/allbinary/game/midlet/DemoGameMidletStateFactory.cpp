@@ -68,6 +68,8 @@ DemoGameMidletStateFactory::DemoGameMidletStateFactory() : NONE(new DemoGameMidl
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return DemoGameMidletStateFactory::STATE;
     
 }

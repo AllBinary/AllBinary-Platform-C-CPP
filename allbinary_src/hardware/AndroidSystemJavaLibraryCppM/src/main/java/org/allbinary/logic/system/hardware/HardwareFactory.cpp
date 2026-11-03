@@ -85,6 +85,8 @@ HardwareFactory* HardwareFactory::instance = HardwareFactory::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return HardwareFactory::instance;
     
 }
@@ -110,6 +112,8 @@ HardwareFactory::HardwareFactory() : logUtil(LogUtil::getInstance()), tsUtil(TsU
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AndroidHardware();
     
 
@@ -123,6 +127,8 @@ HardwareFactory::HardwareFactory() : logUtil(LogUtil::getInstance()), tsUtil(TsU
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AndroidHardware();
     
 
@@ -146,6 +152,8 @@ this->logUtil->put("Ignoring Exception Returning NoHardware", this, commonString
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new NoHardware();
     
 }

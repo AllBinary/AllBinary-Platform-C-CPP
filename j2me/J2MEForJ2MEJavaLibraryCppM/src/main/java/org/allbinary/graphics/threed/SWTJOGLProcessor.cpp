@@ -79,6 +79,8 @@ SWTJOGLProcessor* SWTJOGLProcessor::instance = SWTJOGLProcessor::instance_owner(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SWTJOGLProcessor::instance;
     
 }
@@ -93,6 +95,8 @@ SWTJOGLProcessor* SWTJOGLProcessor::instance = SWTJOGLProcessor::instance_owner(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -107,6 +111,8 @@ SWTJOGLProcessor* SWTJOGLProcessor::instance = SWTJOGLProcessor::instance_owner(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -161,6 +167,8 @@ SWTJOGLProcessor* SWTJOGLProcessor::instance = SWTJOGLProcessor::instance_owner(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }

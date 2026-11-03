@@ -156,6 +156,8 @@ this->searchRequest= searchRequest;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 
@@ -186,6 +188,8 @@ stringBuffer->append(InputOutputTypeData::getInstance()->DEFAULT);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return filePath;
     
 
@@ -226,6 +230,8 @@ stringBuffer->append(InputOutputTypeData::getInstance()->DEFAULT);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return str[JavaBoxes::value<int32_t>(this->searchRequest->getParams()->getStartPageInt())];
     
 
@@ -267,6 +273,8 @@ stringBuffer->append(InputOutputTypeData::getInstance()->DEFAULT);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return inventorySearchUtil->search(abeClientInformation, searchRequest, vector);;
     
 }
@@ -282,6 +290,8 @@ stringBuffer->append(InputOutputTypeData::getInstance()->DEFAULT);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return InventorySearchProductUtil::getInstance()->getProduct(abeClientInformation, this->searchRequest, product);;
     
 }

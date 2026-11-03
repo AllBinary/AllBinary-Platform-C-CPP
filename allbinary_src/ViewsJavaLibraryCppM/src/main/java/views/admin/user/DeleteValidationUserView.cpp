@@ -136,6 +136,8 @@ this->userName= (new UserName(hashMap))->get();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -149,6 +151,8 @@ this->userName= (new UserName(hashMap))->get();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -158,6 +162,8 @@ this->userName= (new UserName(hashMap))->get();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -177,6 +183,8 @@ this->userName= (new UserName(hashMap))->get();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -215,6 +223,8 @@ this->userName= (new UserName(hashMap))->get();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -234,6 +244,8 @@ this->userName= (new UserName(hashMap))->get();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Validating Form";
     
 }
@@ -246,6 +258,8 @@ this->userName= (new UserName(hashMap))->get();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -256,6 +270,8 @@ this->userName= (new UserName(hashMap))->get();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

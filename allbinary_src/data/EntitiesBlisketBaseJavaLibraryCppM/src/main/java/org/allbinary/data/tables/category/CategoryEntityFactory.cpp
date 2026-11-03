@@ -72,6 +72,8 @@ CategoryEntityFactory* CategoryEntityFactory::instance = CategoryEntityFactory::
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return CategoryEntityFactory::instance;
     
 }
@@ -88,6 +90,8 @@ CategoryEntityFactory::CategoryEntityFactory() : logUtil(LogUtil::getInstance())
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new org::allbinary::data::tables::category::CategoryEntity();
     
 
@@ -110,6 +114,8 @@ CategoryEntityFactory::CategoryEntityFactory() : logUtil(LogUtil::getInstance())
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

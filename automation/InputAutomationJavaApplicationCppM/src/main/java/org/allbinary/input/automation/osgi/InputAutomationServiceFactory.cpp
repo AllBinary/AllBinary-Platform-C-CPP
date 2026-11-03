@@ -85,6 +85,8 @@ InputAutomationServiceFactory::InputAutomationServiceFactory() : logUtil(LogUtil
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return InputAutomationServiceFactory::inputAutomationServiceFactory;
     
 }
@@ -97,6 +99,8 @@ this->logUtil->putF(this->commonStrings->START, this, "getService");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return InputAutomationJFrame::getInstance();;
     
 }

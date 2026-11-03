@@ -165,6 +165,8 @@ this->animationInterface->paintThreedXYZ(graphics, viewX, viewY, 3);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->pickedUpLayerInterfaceFactoryInterface;
     
 }
@@ -181,6 +183,8 @@ this->setDestroyed(true);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->destroyed;
     
 }
@@ -210,6 +214,8 @@ this->destroyed= destroyed;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }

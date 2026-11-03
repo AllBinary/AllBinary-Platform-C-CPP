@@ -149,6 +149,8 @@ this->GeographicMapTopViewLayerBehavior::gravity();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return geographicMapInterfaceArray[0]->getCellPositionAtXYNoThrow(xCellPosition, yCellPosition);;
     
 }
@@ -167,6 +169,8 @@ this->GeographicMapTopViewLayerBehavior::gravity();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return geographicMapInterfaceArray[0]->getCellPositionAtXYNoThrow(xCellPosition, yCellPosition);;
     
 }
@@ -185,6 +189,8 @@ this->GeographicMapTopViewLayerBehavior::gravity();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return geographicMapInterfaceArray[0]->getCellPositionAtXYNoThrow(xCellPosition, yCellPosition);;
     
 }
@@ -203,6 +209,8 @@ this->GeographicMapTopViewLayerBehavior::gravity();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return geographicMapInterfaceArray[0]->getCellPositionAtXYNoThrow(xCellPosition, yCellPosition);;
     
 }
@@ -221,6 +229,8 @@ this->GeographicMapTopViewLayerBehavior::gravity();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return geographicMapInterfaceArray[0]->getCellPositionAtXYNoThrow(xCellPosition, yCellPosition);;
     
 }
@@ -239,6 +249,8 @@ this->GeographicMapTopViewLayerBehavior::gravity();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return geographicMapInterfaceArray[0]->getCellPositionAtXYNoThrow(xCellPosition, yCellPosition);;
     
 }
@@ -263,6 +275,8 @@ geographicMapCellPosition= this->getGeographicMapCellPositionIfNotSolidBlockOrOf
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     
 
@@ -281,6 +295,8 @@ geographicMapCellPosition= this->getGeographicMapCellPositionIfNotSolidBlockOrOf
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     
 
@@ -299,6 +315,8 @@ geographicMapCellPosition= this->getGeographicMapCellPositionIfNotSolidBlockOrOf
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     
 
@@ -324,6 +342,8 @@ geographicMapCellPosition= this->getGeographicMapCellPositionIfNotSolidBlockOrOf
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return geographicMapCellPosition;
     
 }
@@ -364,6 +384,8 @@ geographicMapCellPosition= this->getGeographicMapCellPositionIfNotSolidBlockOrOf
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     
 
@@ -376,6 +398,8 @@ geographicMapCellPosition= this->getGeographicMapCellPositionIfNotSolidBlockOrOf
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return possibleStepGeographicMapCellPosition;
     
 
@@ -397,6 +421,8 @@ this->previousGeographicMapCellPosition= SimpleGeographicMapCellPositionFactory:
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     
 }
@@ -440,6 +466,8 @@ this->moveAndLand(geographicMapInterfaceArray, geographicMapCellTypeArray, geogr
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -450,6 +478,8 @@ this->moveAndLand(geographicMapInterfaceArray, geographicMapCellTypeArray, geogr
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 

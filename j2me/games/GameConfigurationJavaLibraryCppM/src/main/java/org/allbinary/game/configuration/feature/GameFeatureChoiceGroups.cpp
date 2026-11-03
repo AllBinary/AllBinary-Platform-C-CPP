@@ -78,6 +78,8 @@ GameFeatureChoiceGroups::GameFeatureChoiceGroups() : hashtable(StdUtil::getInsta
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return GameFeatureChoiceGroups::gameFeatureChoiceGroupsExclusive;
     
 }
@@ -88,6 +90,8 @@ GameFeatureChoiceGroups::GameFeatureChoiceGroups() : hashtable(StdUtil::getInsta
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return GameFeatureChoiceGroups::gameFeatureChoiceGroupsMultiple;
     
 }
@@ -98,6 +102,8 @@ GameFeatureChoiceGroups::GameFeatureChoiceGroups() : hashtable(StdUtil::getInsta
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->hashtable;
     
 }

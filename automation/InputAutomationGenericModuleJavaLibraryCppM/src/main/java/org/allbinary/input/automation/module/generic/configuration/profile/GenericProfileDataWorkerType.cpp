@@ -103,6 +103,8 @@ GenericProfileDataWorkerType::hashMap->put(this->getName(), this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }
@@ -124,6 +126,8 @@ this->name= name;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }
@@ -134,6 +138,8 @@ this->name= name;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::valueOf("GenericProfileDataWorkerType: ") +JavaString::valueOf(this->getName());
     
 }
@@ -147,6 +153,8 @@ this->name= name;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<GenericProfileDataWorkerType*>(GenericProfileDataWorkerType::hashMap->get(name));
     
 }

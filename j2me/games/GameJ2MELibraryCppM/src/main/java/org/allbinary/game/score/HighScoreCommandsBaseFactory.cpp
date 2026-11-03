@@ -91,6 +91,8 @@ this->HIGH_SCORE_COMMANDS= HIGH_SCORE_COMMANDS;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -102,6 +104,8 @@ this->HIGH_SCORE_COMMANDS= HIGH_SCORE_COMMANDS;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -125,6 +129,8 @@ this->HIGH_SCORE_COMMANDS= HIGH_SCORE_COMMANDS;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return index;
     
 

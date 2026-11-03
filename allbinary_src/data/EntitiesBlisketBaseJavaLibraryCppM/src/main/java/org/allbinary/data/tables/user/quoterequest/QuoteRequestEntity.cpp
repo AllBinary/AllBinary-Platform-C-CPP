@@ -162,6 +162,8 @@ row->put(QuoteRequestData::getInstance()->ID, std::to_string(id));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new org::allbinary::business::user::quoterequest::QuoteRequest(quoteRequestHashMap);
     
 
@@ -172,6 +174,8 @@ row->put(QuoteRequestData::getInstance()->ID, std::to_string(id));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 
@@ -185,6 +189,8 @@ row->put(QuoteRequestData::getInstance()->ID, std::to_string(id));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbSqlBean::getColumnWhere(QuoteRequestData::getInstance()->ID, UserData::USERNAME, userName);;
     
 }
@@ -275,6 +281,8 @@ stringBuffer->append(this->sqlStrings->END);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -285,6 +293,8 @@ stringBuffer->append(this->sqlStrings->END);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbSqlBean::createTable(this->createTableStatement());;
     
 }
@@ -298,6 +308,8 @@ stringBuffer->append(this->sqlStrings->END);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 }

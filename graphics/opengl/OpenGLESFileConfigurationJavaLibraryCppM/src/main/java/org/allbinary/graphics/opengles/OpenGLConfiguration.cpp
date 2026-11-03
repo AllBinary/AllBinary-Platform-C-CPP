@@ -135,6 +135,8 @@ Object* OpenGLConfiguration::instance = NullUtil::getInstance()->NULL_OBJECT;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<OpenGLConfiguration*>(OpenGLConfiguration::instance);
     
 }
@@ -718,6 +720,8 @@ this->opengl= opengl;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->opengl;
     
 }
@@ -734,6 +738,8 @@ this->imageColor= imageColor;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->imageColor;
     
 }
@@ -750,6 +756,8 @@ this->color= color;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->color;
     
 }
@@ -766,6 +774,8 @@ this->versionSelector= versionSelector;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->versionSelector;
     
 }
@@ -782,6 +792,8 @@ this->type= type;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->type;
     
 }
@@ -818,6 +830,8 @@ stringBuffer->append(stringUtil->toString(this->getColor()));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

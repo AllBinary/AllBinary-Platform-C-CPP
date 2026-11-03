@@ -119,6 +119,8 @@ this->validationDomNodeInterface= dynamic_cast<ValidationComponentInterface*>(Tr
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaBoxes::unbox<std::string>(this->getPropertiesHashMap()->get(WorkFlowData::getInstance()->NAME));
     
 }
@@ -129,6 +131,8 @@ this->validationDomNodeInterface= dynamic_cast<ValidationComponentInterface*>(Tr
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->propertiesHashMap;
     
 }
@@ -139,6 +143,8 @@ this->validationDomNodeInterface= dynamic_cast<ValidationComponentInterface*>(Tr
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->pageContext;
     
 }
@@ -166,6 +172,8 @@ this->validationDomNodeInterface= dynamic_cast<ValidationComponentInterface*>(Tr
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Integer.valueOf(TagSupport::EVAL_BODY_INCLUDE);;
     
 
@@ -178,6 +186,8 @@ this->validationDomNodeInterface= dynamic_cast<ValidationComponentInterface*>(Tr
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Integer.valueOf(TagSupport::SKIP_BODY);;
     
 

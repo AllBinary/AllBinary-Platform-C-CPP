@@ -78,6 +78,8 @@ this->id= (row *columns) +column;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->column;
     
 }
@@ -88,6 +90,8 @@ this->id= (row *columns) +column;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->row;
     
 }
@@ -98,6 +102,8 @@ this->id= (row *columns) +column;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return CellPosition::toStringColRow(this->getColumn(), this->getRow());;
     
 }
@@ -108,6 +114,8 @@ this->id= (row *columns) +column;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return CellPosition::toStringColRow(basicGeographicMapCellPosition->getColumn(), basicGeographicMapCellPosition->getRow());;
     
 }
@@ -134,6 +142,8 @@ stringBuffer->append(commonSeps->PARENTHESIS_CLOSE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -144,6 +154,8 @@ stringBuffer->append(commonSeps->PARENTHESIS_CLOSE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->id;
     
 }

@@ -79,6 +79,8 @@ this->LEADBOLT= JavaBoxes::unbox<std::string>(advertIdArray[2]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return {};
     
 }
@@ -105,6 +107,8 @@ this->LEADBOLT= JavaBoxes::unbox<std::string>(advertIdArray[2]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }

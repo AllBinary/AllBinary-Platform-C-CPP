@@ -67,6 +67,8 @@ RTSLayer2LogHelper* RTSLayer2LogHelper::instance = RTSLayer2LogHelper::instance_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return RTSLayer2LogHelper::instance;
     
 }

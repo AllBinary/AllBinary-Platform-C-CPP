@@ -117,6 +117,8 @@ this->getCurrentStatePaintable()->paint(graphics);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->helpPaintableInterface;
     
 }
@@ -133,6 +135,8 @@ this->currentStatePaintable= currentStatePaintable;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->currentStatePaintable;
     
 }
@@ -143,6 +147,8 @@ this->currentStatePaintable= currentStatePaintable;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->mainDemoStatePaintable;
     
 }

@@ -371,6 +371,8 @@ this->logUtil->putF(commonStrings->END, this, "saveFiles()");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->itemInterface;
     
 }

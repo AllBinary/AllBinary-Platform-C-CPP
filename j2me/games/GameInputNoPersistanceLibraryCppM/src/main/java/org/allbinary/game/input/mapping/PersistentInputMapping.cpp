@@ -122,6 +122,8 @@ Object* PersistentInputMapping::instance = NullUtil::getInstance()->NULL_OBJECT;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<PersistentInputMapping*>(PersistentInputMapping::instance);
     
 }
@@ -138,6 +140,8 @@ this->inputPersistance= new InputPersistance(name);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getInputMapping()->getHashtable()->size();;
     
 }
@@ -148,6 +152,8 @@ this->inputPersistance= new InputPersistance(name);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -158,6 +164,8 @@ this->inputPersistance= new InputPersistance(name);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return InputToGameKeyMapping::getNullInstance();;
     
 }
@@ -303,6 +311,8 @@ this->inputMappingEventListenerInterface= inputMappingEventListenerInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->inputMappingEventListenerInterface;
     
 }
@@ -313,6 +323,8 @@ this->inputMappingEventListenerInterface= inputMappingEventListenerInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->inputMapping;
     
 }

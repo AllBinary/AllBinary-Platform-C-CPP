@@ -135,6 +135,8 @@ ImageCache::ImageCache() : commonStrings(CommonStrings::getInstance()), systemWr
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return index;
     
 
@@ -204,6 +206,8 @@ this->listOfList[foundIndex].add(image);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return image;
     
 }
@@ -265,6 +269,8 @@ this->hashtable->put(resourceId, image);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return image;
     
 }
@@ -279,6 +285,8 @@ this->hashtable->put(resourceId, image);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

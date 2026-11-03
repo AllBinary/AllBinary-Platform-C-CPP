@@ -155,6 +155,8 @@ PreLogUtil::putOE("init Failed", this, commonStrings->INIT, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->secretComposite->encrypt(array);;
     
 
@@ -167,6 +169,8 @@ PreLogUtil::putOE("Encrypt Failed", this, "encrypt", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NullUtil::getInstance()->NULL_BYTE_ARRAY;
     
 }
@@ -181,6 +185,8 @@ PreLogUtil::putOE("Encrypt Failed", this, "encrypt", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->secretComposite->decrypt(array);;
     
 
@@ -193,6 +199,8 @@ PreLogUtil::putOE("decrypt Failed", this, "decrypt", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NullUtil::getInstance()->NULL_BYTE_ARRAY;
     
 }

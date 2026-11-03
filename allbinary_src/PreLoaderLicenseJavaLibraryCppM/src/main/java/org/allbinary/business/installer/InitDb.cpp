@@ -88,7 +88,9 @@ this->anyType= anyType;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->anyType;
+                        
+                        
+                        return JavaBoxes::toObject(this->anyType);
     
 }
 
@@ -111,6 +113,8 @@ this->anyType= anyType;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 
@@ -121,6 +125,8 @@ this->anyType= anyType;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -146,6 +152,8 @@ this->anyType= anyType;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result.valueOf();;
     
 
@@ -156,6 +164,8 @@ this->anyType= anyType;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -181,6 +191,8 @@ this->anyType= anyType;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result.valueOf();;
     
 
@@ -191,6 +203,8 @@ this->anyType= anyType;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -216,6 +230,8 @@ this->anyType= anyType;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result.valueOf();;
     
 
@@ -226,6 +242,8 @@ this->anyType= anyType;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -251,6 +269,8 @@ this->anyType= anyType;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result.valueOf();;
     
 
@@ -261,6 +281,8 @@ this->anyType= anyType;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -286,6 +308,8 @@ this->anyType= anyType;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result.valueOf();;
     
 
@@ -296,6 +320,8 @@ this->anyType= anyType;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

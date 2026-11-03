@@ -75,6 +75,8 @@ Object* GameStateFactory::instance = NullUtil::getInstance()->NULL_OBJECT;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<GameStateFactory*>(GameStateFactory::instance);
     
 }
@@ -89,6 +91,8 @@ GameStateFactory::GameStateFactory() : NO_GAME_STATE(this->createGameState("NO_G
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new GameState(name, this->index++);
     
 }

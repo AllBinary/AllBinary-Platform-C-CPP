@@ -98,6 +98,8 @@ CollidableRTSBehavior::CollidableRTSBehavior(bool collidable) : CollidableDestro
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return CollidableDestroyableDamageableBehavior::isCollision(ownerLayer, collidableInterfaceCompositeInterface);;
     
 
@@ -112,6 +114,8 @@ CollidableRTSBehavior::CollidableRTSBehavior(bool collidable) : CollidableDestro
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -122,6 +126,8 @@ CollidableRTSBehavior::CollidableRTSBehavior(bool collidable) : CollidableDestro
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -134,6 +140,8 @@ CollidableRTSBehavior::CollidableRTSBehavior(bool collidable) : CollidableDestro
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

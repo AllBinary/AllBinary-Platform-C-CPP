@@ -96,6 +96,8 @@ NullInputRobot::NullInputRobot() : AbstractInputRobot(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NullInputRobot::NAME;
     
 }
@@ -106,6 +108,8 @@ NullInputRobot::NullInputRobot() : AbstractInputRobot(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -116,6 +120,8 @@ NullInputRobot::NullInputRobot() : AbstractInputRobot(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PointFactory::getInstance(0, 0);;
     
 }
@@ -156,6 +162,8 @@ this->logUtil->putF(JavaString::valueOf("Buttons: ") +JavaString::valueOf(button
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -170,6 +178,8 @@ this->logUtil->putF(JavaString::valueOf("Buttons: ") +JavaString::valueOf(button
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 }
@@ -180,6 +190,8 @@ this->logUtil->putF(JavaString::valueOf("Buttons: ") +JavaString::valueOf(button
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -190,6 +202,8 @@ this->logUtil->putF(JavaString::valueOf("Buttons: ") +JavaString::valueOf(button
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -212,6 +226,8 @@ this->logUtil->putF(JavaString::valueOf("Buttons: ") +JavaString::valueOf(button
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "DirectXWindowsInputRobot";
     
 }

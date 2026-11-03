@@ -86,6 +86,8 @@ DecalAnimationInterfaceFactory* DecalAnimationInterfaceFactory::instance = Decal
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return DecalAnimationInterfaceFactory::instance;
     
 }
@@ -116,6 +118,8 @@ DecalAnimationInterfaceFactory* DecalAnimationInterfaceFactory::instance = Decal
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return animationInterfaceFactoryInterface;
     
 }

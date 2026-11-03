@@ -91,6 +91,8 @@ HealthBarFactory::HealthBarFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new HealthBar(layerInterface, healthInterface, healthBarAnimationInterfaceFactory->getInstanceByLocation(layerInterface, location), direction);
     
 
@@ -101,6 +103,8 @@ HealthBarFactory::HealthBarFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new HealthBar(layerInterface, healthInterface, new HealthBarTwodAnimation(layerInterface, location), direction);
     
 

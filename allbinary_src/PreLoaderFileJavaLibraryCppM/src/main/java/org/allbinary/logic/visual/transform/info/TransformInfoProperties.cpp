@@ -109,6 +109,8 @@ this->objectConfigFileName= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }
@@ -119,6 +121,8 @@ this->objectConfigFileName= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->label;
     
 }
@@ -129,6 +133,8 @@ this->objectConfigFileName= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->description;
     
 }
@@ -139,6 +145,8 @@ this->objectConfigFileName= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->objectFileName;
     
 }
@@ -149,6 +157,8 @@ this->objectConfigFileName= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->templateFileName;
     
 }
@@ -159,6 +169,8 @@ this->objectConfigFileName= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->objectConfigFileName;
     
 }

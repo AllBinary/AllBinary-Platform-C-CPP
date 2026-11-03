@@ -82,6 +82,8 @@ CanvasExpandUtil* CanvasExpandUtil::instance = CanvasExpandUtil::instance_owner(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return CanvasExpandUtil::instance;
     
 }

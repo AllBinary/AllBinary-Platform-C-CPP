@@ -103,6 +103,8 @@ SelectExistingView::SelectExistingView(TransformInfoInterface* transformInfoInte
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (new PaymentGatewaysView(this->getTransformInfoInterface(), existingGateways))->view();;
     
 

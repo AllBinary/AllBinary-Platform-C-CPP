@@ -112,6 +112,8 @@ NullJ2SEControl* NullClip::NULL_CONTROL = NullClip::NULL_CONTROL_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -122,6 +124,8 @@ NullJ2SEControl* NullClip::NULL_CONTROL = NullClip::NULL_CONTROL_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -164,6 +168,8 @@ NullJ2SEControl* NullClip::NULL_CONTROL = NullClip::NULL_CONTROL_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -174,6 +180,8 @@ NullJ2SEControl* NullClip::NULL_CONTROL = NullClip::NULL_CONTROL_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -184,6 +192,8 @@ NullJ2SEControl* NullClip::NULL_CONTROL = NullClip::NULL_CONTROL_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NullAudioFormat::NULL_AUDIO_FORMAT;
     
 }
@@ -194,6 +204,8 @@ NullJ2SEControl* NullClip::NULL_CONTROL = NullClip::NULL_CONTROL_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -204,6 +216,8 @@ NullJ2SEControl* NullClip::NULL_CONTROL = NullClip::NULL_CONTROL_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -214,6 +228,8 @@ NullJ2SEControl* NullClip::NULL_CONTROL = NullClip::NULL_CONTROL_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -224,6 +240,8 @@ NullJ2SEControl* NullClip::NULL_CONTROL = NullClip::NULL_CONTROL_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -234,6 +252,8 @@ NullJ2SEControl* NullClip::NULL_CONTROL = NullClip::NULL_CONTROL_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -244,6 +264,8 @@ NullJ2SEControl* NullClip::NULL_CONTROL = NullClip::NULL_CONTROL_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0.0;
     
 }
@@ -254,6 +276,8 @@ NullJ2SEControl* NullClip::NULL_CONTROL = NullClip::NULL_CONTROL_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new Info(this->getClass(), NullAudioFormat::NULL_AUDIO_FORMAT);
     
 }
@@ -274,6 +298,8 @@ NullJ2SEControl* NullClip::NULL_CONTROL = NullClip::NULL_CONTROL_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -284,6 +310,8 @@ NullJ2SEControl* NullClip::NULL_CONTROL = NullClip::NULL_CONTROL_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return {};
     
 }
@@ -294,6 +322,8 @@ NullJ2SEControl* NullClip::NULL_CONTROL = NullClip::NULL_CONTROL_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -304,6 +334,8 @@ NullJ2SEControl* NullClip::NULL_CONTROL = NullClip::NULL_CONTROL_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NullClip::NULL_CONTROL;
     
 }

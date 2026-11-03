@@ -83,6 +83,8 @@ PaymentFactory::PaymentFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<PaymentInterface*>(new org::allbinary::business::user::commerce::money::payment::Payment(request));
     
 
@@ -105,6 +107,8 @@ PaymentFactory::PaymentFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

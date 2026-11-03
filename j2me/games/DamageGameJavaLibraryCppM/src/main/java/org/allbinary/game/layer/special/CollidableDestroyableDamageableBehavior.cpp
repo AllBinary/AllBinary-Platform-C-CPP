@@ -91,6 +91,8 @@ CollidableDestroyableDamageableBehavior::CollidableDestroyableDamageableBehavior
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return CollidableBaseBehavior::isCollision(ownerLayer, collisionLayer);;
     
 
@@ -100,6 +102,8 @@ CollidableDestroyableDamageableBehavior::CollidableDestroyableDamageableBehavior
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -126,6 +130,8 @@ ForcedLogUtil::log("No Longer Used", this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

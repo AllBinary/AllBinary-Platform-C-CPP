@@ -72,6 +72,8 @@ TsUtil* TsUtil::instance = TsUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TsUtil::instance;
     
 }
@@ -82,6 +84,8 @@ TsUtil* TsUtil::instance = TsUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return anyType->hashCode();;
     
 }
@@ -103,6 +107,8 @@ anyType->wait(timeoutMillis);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return std::vector<int8_t>(0);
     
 }
@@ -113,6 +119,8 @@ anyType->wait(timeoutMillis);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return a.compare(b);;
     
 }
@@ -123,6 +131,8 @@ anyType->wait(timeoutMillis);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::equalsIgnoreCase(a, b);;
     
 }
@@ -133,6 +143,8 @@ anyType->wait(timeoutMillis);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaObjects::equals(anyType, object2);;
     
 }
@@ -143,6 +155,8 @@ anyType->wait(timeoutMillis);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return static_cast<int32_t>(value);
     
 }
@@ -153,6 +167,8 @@ anyType->wait(timeoutMillis);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return value;
     
 }
@@ -163,6 +179,8 @@ anyType->wait(timeoutMillis);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::getBytes(string);;
     
 }
@@ -173,6 +191,8 @@ anyType->wait(timeoutMillis);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

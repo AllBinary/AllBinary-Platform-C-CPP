@@ -103,6 +103,8 @@ this->storeFrontOrderHistoryStatisticsInterface= dynamic_cast<StoreFrontOrdersHi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->storeFrontAdvertisementsStatisticsInterface;
     
 }
@@ -113,6 +115,8 @@ this->storeFrontOrderHistoryStatisticsInterface= dynamic_cast<StoreFrontOrdersHi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->storeFrontUsersStatisticsInterface;
     
 }
@@ -123,6 +127,8 @@ this->storeFrontOrderHistoryStatisticsInterface= dynamic_cast<StoreFrontOrdersHi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->storeFrontInventoryStatisticsInterface;
     
 }
@@ -133,6 +139,8 @@ this->storeFrontOrderHistoryStatisticsInterface= dynamic_cast<StoreFrontOrdersHi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->storeFrontOrderHistoryStatisticsInterface;
     
 }

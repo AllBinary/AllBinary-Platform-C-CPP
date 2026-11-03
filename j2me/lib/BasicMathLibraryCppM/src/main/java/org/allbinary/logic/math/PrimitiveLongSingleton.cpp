@@ -79,6 +79,8 @@ PrimitiveLongSingleton* PrimitiveLongSingleton::instance = PrimitiveLongSingleto
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PrimitiveLongSingleton::instance;
     
 }
@@ -105,6 +107,8 @@ PrimitiveLongSingleton* PrimitiveLongSingleton::instance = PrimitiveLongSingleto
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->NUMBER_ARRAY[index];
     
 

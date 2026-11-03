@@ -85,6 +85,8 @@ AdminConfigurationHelperFactory::AdminConfigurationHelperFactory() : logUtil(Log
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AdminConfigurationHelper(hashMap, pageContext);
     
 
@@ -104,6 +106,8 @@ AdminConfigurationHelperFactory::AdminConfigurationHelperFactory() : logUtil(Log
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

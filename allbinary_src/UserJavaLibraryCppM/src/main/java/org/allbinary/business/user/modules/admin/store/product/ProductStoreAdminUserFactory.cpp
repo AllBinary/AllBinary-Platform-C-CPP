@@ -79,6 +79,8 @@ ProductStoreAdminUserFactory::ProductStoreAdminUserFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new ProductStoreAdminUser();
     
 }
@@ -91,6 +93,8 @@ ProductStoreAdminUserFactory::ProductStoreAdminUserFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new ProductStoreAdminUser(hashMap);
     
 }

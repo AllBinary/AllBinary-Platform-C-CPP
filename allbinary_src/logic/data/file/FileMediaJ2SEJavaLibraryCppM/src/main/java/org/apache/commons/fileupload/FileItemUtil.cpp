@@ -79,6 +79,8 @@ FileItemUtil* FileItemUtil::instance = FileItemUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return FileItemUtil::instance;
     
 }
@@ -91,6 +93,8 @@ FileItemUtil* FileItemUtil::instance = FileItemUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::fromChars(byteArray, this->DEFAULT_CHARSET);
     
 }
@@ -103,6 +107,8 @@ FileItemUtil* FileItemUtil::instance = FileItemUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this.getBytes.toCharArray().slice(0, ).join('');
     
 }
@@ -174,6 +180,8 @@ outputStream= dynamic_cast<ByteArrayOutputStream*>(streamUtil->get(inputStream, 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return outputStream->toByteArray();;
     
 

@@ -175,6 +175,8 @@ stringBuffer->append(PermissionItemData::WHO)->append(this->sqlTypeStrings->MAX_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -185,6 +187,8 @@ stringBuffer->append(PermissionItemData::WHO)->append(this->sqlTypeStrings->MAX_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbSqlBean::createTable(this->createTableStatement());;
     
 }
@@ -201,6 +205,8 @@ AbSqlBean::updateWhere(basicItemData->ID, JavaBoxes::unbox<std::string>(updatedV
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbSqlBean::dropTable();;
     
 }

@@ -96,6 +96,8 @@ this->helpSet= JavaHelpUtil::getInstance()->getHelpSet(url);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }
@@ -106,6 +108,8 @@ this->helpSet= JavaHelpUtil::getInstance()->getHelpSet(url);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->jPanel;
     
 }
@@ -116,6 +120,8 @@ this->helpSet= JavaHelpUtil::getInstance()->getHelpSet(url);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->helpSet;
     
 }

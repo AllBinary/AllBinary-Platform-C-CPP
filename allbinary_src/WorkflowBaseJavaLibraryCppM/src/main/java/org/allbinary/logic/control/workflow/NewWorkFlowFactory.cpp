@@ -98,6 +98,8 @@ NewWorkFlowFactory* NewWorkFlowFactory::instance = NewWorkFlowFactory::instance_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NewWorkFlowFactory::instance;
     
 }
@@ -136,6 +138,8 @@ params[1]= pageContext;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<WorkFlowInterface*>(new WorkFlowWrapper(anyType));
     
 
@@ -207,6 +211,8 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "getInstance(HashMap)", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<WorkFlowInterface*>(new WorkFlowWrapper(anyType));
     
 

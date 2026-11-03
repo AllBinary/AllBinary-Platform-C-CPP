@@ -87,6 +87,8 @@ DisplaysUtil::DisplaysUtil() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return DisplaysUtil::instance;
     
 }
@@ -102,6 +104,8 @@ DisplaysUtil* DisplaysUtil::instance = DisplaysUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new Rectangle(PointFactory::getInstance()->ZERO_ZERO, dimension->width, dimension->height);
     
 }
@@ -150,6 +154,8 @@ rectangleArray[index]= rectangle;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return rectangleArray;
     
 }

@@ -165,6 +165,8 @@ this->downloadItemId= JavaBoxes::unbox<std::string>(hashMap->get(DownloadItemDat
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -182,6 +184,8 @@ this->itemInterface= InventoryEntityFactory::getInstance()->getInventoryEntityIn
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -208,6 +212,8 @@ this->itemInterface= InventoryEntityFactory::getInstance()->getInventoryEntityIn
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -223,6 +229,8 @@ this->downloadableItem= dynamic_cast<DownloadableItem*>(vector->get(0));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -232,6 +240,8 @@ this->downloadableItem= dynamic_cast<DownloadableItem*>(vector->get(0));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 }
@@ -242,6 +252,8 @@ this->downloadableItem= dynamic_cast<DownloadableItem*>(vector->get(0));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -252,6 +264,8 @@ this->downloadableItem= dynamic_cast<DownloadableItem*>(vector->get(0));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -316,6 +330,8 @@ this->downloadableItem= dynamic_cast<DownloadableItem*>(vector->get(0));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

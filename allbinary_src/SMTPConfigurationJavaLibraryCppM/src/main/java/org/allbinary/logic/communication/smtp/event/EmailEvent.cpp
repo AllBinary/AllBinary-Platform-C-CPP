@@ -85,6 +85,8 @@ this->emailInfo= emailInfo;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->emailInfo;
     
 }
@@ -95,6 +97,8 @@ this->emailInfo= emailInfo;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->attempts;
     
 }
@@ -126,6 +130,8 @@ stringBuffer->appendint(this->getAttempts());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

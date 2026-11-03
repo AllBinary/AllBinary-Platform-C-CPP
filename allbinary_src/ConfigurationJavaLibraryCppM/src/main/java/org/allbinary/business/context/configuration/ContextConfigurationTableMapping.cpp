@@ -89,6 +89,8 @@ this->contextConfigurationInterface= contextConfigurationInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }
@@ -101,7 +103,9 @@ this->contextConfigurationInterface= contextConfigurationInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ContextConfigurationData::getInstance()->NAME;
+                        
+                        
+                        return JavaBoxes::toObject(ContextConfigurationData::getInstance()->NAME);
     
 }
 
@@ -116,6 +120,8 @@ this->contextConfigurationInterface= contextConfigurationInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return vector;
     
 }

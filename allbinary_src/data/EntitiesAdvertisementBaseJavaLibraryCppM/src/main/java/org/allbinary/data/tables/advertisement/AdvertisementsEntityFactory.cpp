@@ -80,6 +80,8 @@ AdvertisementsEntityFactory::AdvertisementsEntityFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<AdvertisementsEntityInterface*>(new AdvertisementsEntity());
     
 
@@ -102,6 +104,8 @@ logUtil->put(commonStrings->EXCEPTION, "AdvertisementEntityFactory", commonStrin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

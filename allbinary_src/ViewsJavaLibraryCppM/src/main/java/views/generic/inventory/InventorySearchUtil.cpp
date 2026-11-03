@@ -166,6 +166,8 @@ InventorySearchUtil* InventorySearchUtil::instance = InventorySearchUtil::instan
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return InventorySearchUtil::instance;
     
 }
@@ -231,6 +233,8 @@ column->addAllList(substoreIdColumn);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return column;
     
 }
@@ -259,6 +263,8 @@ inventoryNode->appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterf
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 }
@@ -299,6 +305,8 @@ inventoryNode->appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterf
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 
@@ -586,6 +594,8 @@ productListingPages[0]= (new StoreTransformer(abeClientInformation, new Transfor
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return productListingPages;
     
 
@@ -596,6 +606,8 @@ productListingPages[0]= (new StoreTransformer(abeClientInformation, new Transfor
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 
@@ -618,6 +630,8 @@ productListingPages[0]= (new StoreTransformer(abeClientInformation, new Transfor
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

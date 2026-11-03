@@ -151,6 +151,8 @@ this->getFormData(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->title;
     
 }
@@ -181,6 +183,8 @@ hashMap->put(TitleData::getInstance()->TEXT, this->getTitle());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }
@@ -205,6 +209,8 @@ hashMap->put(TitleData::getInstance()->TEXT, this->getTitle());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ModDomHelper::createNameValueNodes(document, TitleData::getInstance()->NAME, hashMap);;
     
 }

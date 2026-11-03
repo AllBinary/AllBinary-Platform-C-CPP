@@ -82,6 +82,8 @@ PointsUtil* PointsUtil::instance = PointsUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PointsUtil::instance;
     
 }
@@ -94,6 +96,8 @@ PointsUtil* PointsUtil::instance = PointsUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return VectorRotationGenerator::getInstance()->getListAtAngle(fulcrumPoint->getX(), fulcrumPoint->getY(), pointVector, AngleFactory::getInstance()->getAt(angle));;
     
 }

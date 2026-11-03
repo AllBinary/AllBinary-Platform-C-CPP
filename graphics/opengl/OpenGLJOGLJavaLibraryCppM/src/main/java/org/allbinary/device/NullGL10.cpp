@@ -83,6 +83,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -93,6 +95,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -103,6 +107,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -113,6 +119,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -123,6 +131,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -133,6 +143,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -143,6 +155,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -153,6 +167,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -163,6 +179,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -173,6 +191,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -183,6 +203,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -193,6 +215,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -203,6 +227,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -213,6 +239,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -223,6 +251,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -233,6 +263,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -243,6 +275,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -253,6 +287,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -263,6 +299,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -273,6 +311,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -283,6 +323,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -293,6 +335,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -303,6 +347,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -313,6 +359,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -323,6 +371,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -333,6 +383,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -343,6 +395,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -353,6 +407,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -363,6 +419,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -373,6 +431,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -383,6 +443,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -393,6 +455,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -403,6 +467,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -413,6 +479,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -423,6 +491,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -433,6 +503,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -443,6 +515,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -453,6 +527,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -463,6 +539,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -473,6 +551,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -483,6 +563,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 }
@@ -493,6 +575,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -503,6 +587,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -513,6 +599,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -523,6 +611,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -533,6 +623,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -543,6 +635,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -553,6 +647,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -563,6 +659,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -573,6 +671,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -583,6 +683,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -593,6 +695,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -603,6 +707,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -613,6 +719,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -623,6 +731,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -633,6 +743,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -643,6 +755,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -653,6 +767,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -663,6 +779,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -673,6 +791,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -683,6 +803,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -693,6 +815,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -703,6 +827,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -713,6 +839,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -723,6 +851,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -733,6 +863,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -743,6 +875,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -753,6 +887,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -763,6 +899,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -773,6 +911,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -783,6 +923,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -793,6 +935,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -803,6 +947,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -813,6 +959,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -823,6 +971,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -833,6 +983,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -843,6 +995,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -853,6 +1007,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -863,6 +1019,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -873,6 +1031,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -883,6 +1043,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -893,6 +1055,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -903,6 +1067,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -913,6 +1079,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -923,6 +1091,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -933,6 +1103,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -943,6 +1115,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -953,6 +1127,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -963,6 +1139,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -973,6 +1151,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -983,6 +1163,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -993,6 +1175,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -1003,6 +1187,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -1013,6 +1199,8 @@ NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }

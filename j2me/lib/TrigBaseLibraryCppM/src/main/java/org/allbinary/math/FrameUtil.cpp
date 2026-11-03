@@ -73,6 +73,8 @@ FrameUtil* FrameUtil::instance = FrameUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return FrameUtil::instance;
     
 }
@@ -87,6 +89,8 @@ FrameUtil::FrameUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->adjustAngleToFrameAngle(static_cast<int32_t>(angle)) /angleIncrement;
     
 }
@@ -100,6 +104,8 @@ FrameUtil::FrameUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->adjustAngleToFrameAngle(frameAngle);;
     
 }
@@ -145,6 +151,8 @@ currentAngle= (currentAngle +angleFactory->TOTAL_ANGLE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return currentAngle;
     
 }

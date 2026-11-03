@@ -72,6 +72,8 @@ ColorUtil* ColorUtil::instance = ColorUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ColorUtil::instance;
     
 }
@@ -86,6 +88,8 @@ ColorUtil* ColorUtil::instance = ColorUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -95,6 +99,8 @@ ColorUtil* ColorUtil::instance = ColorUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -109,6 +115,8 @@ ColorUtil* ColorUtil::instance = ColorUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -118,6 +126,8 @@ ColorUtil* ColorUtil::instance = ColorUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

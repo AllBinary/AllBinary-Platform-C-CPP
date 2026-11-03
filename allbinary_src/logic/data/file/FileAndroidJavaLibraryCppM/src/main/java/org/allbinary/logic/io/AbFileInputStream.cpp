@@ -88,6 +88,8 @@ this->fileInputStream->mark(readlimit);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->fileInputStream->markSupported();;
     
 }
@@ -109,6 +111,8 @@ this->fileInputStream->reset();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->fileInputStream->available();;
     
 }
@@ -125,6 +129,8 @@ this->fileInputStream->close();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->fileInputStream->getChannel();;
     
 }
@@ -137,6 +143,8 @@ this->fileInputStream->close();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->fileInputStream->read();;
     
 }
@@ -149,6 +157,8 @@ this->fileInputStream->close();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->fileInputStream->read(b);;
     
 }
@@ -161,6 +171,8 @@ this->fileInputStream->close();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->fileInputStream->read(buffer, offset, count);;
     
 }
@@ -173,6 +185,8 @@ this->fileInputStream->close();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->fileInputStream->skip(n);;
     
 }

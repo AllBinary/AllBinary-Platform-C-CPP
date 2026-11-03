@@ -108,6 +108,8 @@ this->basicSetColorUtil->setBasicColorP3(graphics, this->getBasicColorP(), this-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -118,6 +120,8 @@ this->basicSetColorUtil->setBasicColorP3(graphics, this->getBasicColorP(), this-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->basicColor;
     
 }
@@ -140,6 +144,8 @@ this->colorP= this->basicColor->intValue();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->changeBasicColorP;
     
 }
@@ -158,6 +164,8 @@ this->changeColorP= this->changeBasicColorP->intValue();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->changeColorP;
     
 }
@@ -168,6 +176,8 @@ this->changeColorP= this->changeBasicColorP->intValue();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->colorP;
     
 }
@@ -196,6 +206,8 @@ this->changeColorP= this->changeBasicColorP->intValue();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -210,6 +222,8 @@ this->changeColorP= this->changeBasicColorP->intValue();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }

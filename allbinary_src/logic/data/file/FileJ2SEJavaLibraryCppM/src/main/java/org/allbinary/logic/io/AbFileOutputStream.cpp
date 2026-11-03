@@ -73,6 +73,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AbFileOutputStream(file->getPath(), false);
     
 }
@@ -85,6 +87,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AbFileOutputStream(file->getPath(), append);
     
 }
@@ -97,6 +101,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AbFileOutputStream(name, false);
     
 }
@@ -109,6 +115,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AbFileOutputStream(name, append);
     
 }

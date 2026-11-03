@@ -106,6 +106,8 @@ ThreadFactoryUtil* ThreadFactoryUtil::instance = ThreadFactoryUtil::instance_own
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ThreadFactoryUtil::instance;
     
 }
@@ -116,6 +118,8 @@ ThreadFactoryUtil* ThreadFactoryUtil::instance = ThreadFactoryUtil::instance_own
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getInstanceType(runnable, runnable->getType());;
     
 }
@@ -126,6 +130,8 @@ ThreadFactoryUtil* ThreadFactoryUtil::instance = ThreadFactoryUtil::instance_own
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getInstanceType(runnable, runnable->getType());;
     
 }
@@ -179,6 +185,8 @@ this->logUtil->putF(thread->toString(), this, commonStrings->CONSTRUCTOR);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return thread;
     
 }

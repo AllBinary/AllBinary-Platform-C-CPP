@@ -66,6 +66,8 @@ NoDebug::NoDebug() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NoDebug::SINGLETON;
     
 }
@@ -84,6 +86,8 @@ NoDebug::NoDebug() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 10000;
     
 }
@@ -94,6 +98,8 @@ NoDebug::NoDebug() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -104,6 +110,8 @@ NoDebug::NoDebug() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

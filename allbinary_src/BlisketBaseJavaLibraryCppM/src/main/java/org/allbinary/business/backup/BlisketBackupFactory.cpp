@@ -116,6 +116,8 @@ BlisketBackupFactory* BlisketBackupFactory::instance = BlisketBackupFactory::ins
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BlisketBackupFactory::instance;
     
 }
@@ -134,6 +136,8 @@ BlisketBackupFactory* BlisketBackupFactory::instance = BlisketBackupFactory::ins
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->directory->search(file, true);;
     
 }

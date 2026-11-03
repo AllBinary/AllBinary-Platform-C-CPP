@@ -81,6 +81,8 @@ this->currentLength += stringLength;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this;
     
 }
@@ -95,6 +97,8 @@ this->charArray[this->currentLength++]= c;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this;
     
 }
@@ -118,6 +122,8 @@ this->charArray[this->currentLength++]= charArray[index];
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this;
     
 }
@@ -130,6 +136,8 @@ this->append(std::to_string(b));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this;
     
 }
@@ -142,6 +150,8 @@ this->append(std::to_string(b));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this;
     
 }
@@ -154,6 +164,8 @@ this->append(std::to_string(i));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this;
     
 }
@@ -166,6 +178,8 @@ this->append(std::to_string(l));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this;
     
 }
@@ -178,6 +192,8 @@ this->append(std::to_string(f));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this;
     
 }
@@ -221,6 +237,8 @@ this->charArray[this->currentLength++]= 'e';
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this;
     
 }
@@ -262,6 +280,8 @@ this->charArray= copy;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (value <= value2)
                         ?       
                                 value
@@ -279,6 +299,8 @@ this->currentLength -= (end -start);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this;
     
 }
@@ -289,6 +311,8 @@ this->currentLength -= (end -start);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->currentLength;
     
 }
@@ -299,6 +323,8 @@ this->currentLength -= (end -start);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return std::string(this->charArray.begin() + 0, this->charArray.begin() + 0 + this->currentLength);
     
 }

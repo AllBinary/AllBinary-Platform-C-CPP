@@ -76,6 +76,8 @@ NumberLayersSequenceAIFactory::NumberLayersSequenceAIFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new NumberLayersSequenceAI(numberOfEnemiesLeft, artificialIntelligenceInterface, ownerLayerInterface, gameInput);
     
 }

@@ -119,6 +119,8 @@ Object* CommandForm::NULL_COMMAND_FORM = NullUtil::getInstance()->NULL_OBJECT;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<CommandForm*>(CommandForm::NULL_COMMAND_FORM);
     
 }
@@ -177,6 +179,8 @@ this->repaintProcessor->process();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }

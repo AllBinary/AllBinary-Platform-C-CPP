@@ -84,6 +84,8 @@ this->serviceReference= serviceReference;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 }
@@ -94,6 +96,8 @@ this->serviceReference= serviceReference;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -104,6 +108,8 @@ this->serviceReference= serviceReference;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -114,6 +120,8 @@ this->serviceReference= serviceReference;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -124,6 +132,8 @@ this->serviceReference= serviceReference;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->serviceReference->getProperty(JavaBoxes::unbox<std::string>(key));;
     
 }
@@ -134,6 +144,8 @@ this->serviceReference= serviceReference;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -144,6 +156,8 @@ this->serviceReference= serviceReference;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -165,6 +179,8 @@ this->serviceReference= serviceReference;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -175,6 +191,8 @@ this->serviceReference= serviceReference;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -185,6 +203,8 @@ this->serviceReference= serviceReference;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -198,6 +218,8 @@ this->serviceReference= serviceReference;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

@@ -141,6 +141,8 @@ this->userConfigurationInterface= userConfigurationInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->userConfigurationInterface;
     
 }
@@ -171,6 +173,8 @@ node->appendChild(timeLastModifiedView->toXmlNode(document));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }

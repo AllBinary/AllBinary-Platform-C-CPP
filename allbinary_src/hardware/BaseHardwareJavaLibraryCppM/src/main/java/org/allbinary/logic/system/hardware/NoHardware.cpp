@@ -78,6 +78,8 @@ NoHardware::NoHardware() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NoHardware::instance;
     
 }
@@ -88,6 +90,8 @@ NoHardware::NoHardware() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NoHardwareComponent::getInstance();;
     
 }
@@ -98,6 +102,8 @@ NoHardware::NoHardware() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "No Hardware";
     
 }
@@ -108,6 +114,8 @@ NoHardware::NoHardware() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -118,6 +126,8 @@ NoHardware::NoHardware() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StdUtil::getInstance()->NULL_TABLE;
     
 }

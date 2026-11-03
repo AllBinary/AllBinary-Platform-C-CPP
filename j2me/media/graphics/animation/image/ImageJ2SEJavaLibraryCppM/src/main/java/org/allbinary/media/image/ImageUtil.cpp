@@ -109,6 +109,8 @@ ImageUtil* ImageUtil::instance = ImageUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ImageUtil::instance;
     
 }
@@ -129,6 +131,8 @@ ImageUtil::ImageUtil() : commonStrings(CommonStrings::getInstance()), commonSeps
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return gd->getDefaultConfiguration();;
     
 }
@@ -142,6 +146,8 @@ ImageUtil::ImageUtil() : commonStrings(CommonStrings::getInstance()), commonSeps
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return graphicsConfiguration->createCompatibleImage(width, height, Transparency::TRANSLUCENT);;
     
 }
@@ -182,6 +188,8 @@ scaledBufferedImageArray[index]= this->createBufferedImage(bufferedImage, newWid
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return scaledBufferedImageArray;
     
 }
@@ -222,6 +230,8 @@ scaledBufferedImageArray[index]= this->createBufferedImage(bufferedImage, newWid
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return scaledBufferedImageArray;
     
 }
@@ -251,6 +261,8 @@ scaledBufferedImageArray[index]= this->createBufferedImage(bufferedImageArray[in
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return scaledBufferedImageArray;
     
 }
@@ -263,6 +275,8 @@ scaledBufferedImageArray[index]= this->createBufferedImage(bufferedImageArray[in
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->createBufferedImage(bufferedImage, newWidth, newHeight, true);;
     
 }
@@ -275,6 +289,8 @@ scaledBufferedImageArray[index]= this->createBufferedImage(bufferedImageArray[in
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->createBufferedImageAllowTranslate(bufferedImage, newWidth, newHeight, scale, false);;
     
 }
@@ -348,6 +364,8 @@ graphics->drawRenderedImage(bufferedImage, affineTransform);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return newBufferedImage;
     
 }
@@ -405,6 +423,8 @@ graphics->drawImage(bufferedImage, dx4, dy4,
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return newBufferedImage;
     
 }
@@ -421,6 +441,8 @@ graphics->drawImage(bufferedImage, dx4, dy4,
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 
@@ -443,6 +465,8 @@ g2d->dispose();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return bufferedImage;
     
 }
@@ -477,6 +501,8 @@ bufferedImage= dynamic_cast<BufferedImage*>(j2seImage->getImage());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return bufferedImage;
     
 }
@@ -507,6 +533,8 @@ stringBuffer->appendint(bufferedImage->getType());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

@@ -67,6 +67,8 @@ GameStatisticsFactory::GameStatisticsFactory() : stringBuffer(new StringMaker())
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return GameStatisticsFactory::SINGLETON;
     
 }
@@ -94,6 +96,8 @@ this->stringBuffer->append(string);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (new StringMaker())->append(AndroidGameStatistics::toString())->append(this->stringBuffer->toString())->toString();;
     
 }

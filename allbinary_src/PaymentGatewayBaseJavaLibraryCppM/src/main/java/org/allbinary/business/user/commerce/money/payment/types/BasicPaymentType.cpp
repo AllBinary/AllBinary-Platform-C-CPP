@@ -135,6 +135,8 @@ BasicPaymentTypeUtil::getInstance()->add(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }
@@ -145,6 +147,8 @@ BasicPaymentTypeUtil::getInstance()->add(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->value;
     
 }
@@ -171,6 +175,8 @@ BasicPaymentTypeUtil::getInstance()->add(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->paymentGatewayInterfaceFactoryInterface;
     
 }
@@ -197,6 +203,8 @@ BasicPaymentTypeUtil::getInstance()->add(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->paymentGatewayDomNodeFactoryInterface;
     
 }
@@ -207,6 +215,8 @@ BasicPaymentTypeUtil::getInstance()->add(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getName();;
     
 }
@@ -224,6 +234,8 @@ vector->add(this->value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return vector;
     
 }
@@ -241,6 +253,8 @@ hashMap->put(PaymentGatewayData::VALUE->toString(), this->value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }
@@ -251,6 +265,8 @@ hashMap->put(PaymentGatewayData::VALUE->toString(), this->value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }

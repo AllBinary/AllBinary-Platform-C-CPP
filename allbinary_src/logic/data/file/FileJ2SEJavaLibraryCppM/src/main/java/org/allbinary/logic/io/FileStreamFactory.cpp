@@ -84,6 +84,8 @@ Object* FileStreamFactory::SINGLETON = NullUtil::getInstance()->NULL_OBJECT;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<FileStreamFactory*>(FileStreamFactory::SINGLETON);
     
 }
@@ -106,6 +108,8 @@ FileStreamFactory::FileStreamFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AbFileInputStream(file);
     
 }
@@ -135,6 +139,8 @@ file->createNewFile();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbFileOutputStream::createFromAbFile(file);;
     
 }

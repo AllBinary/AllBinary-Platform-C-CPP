@@ -70,6 +70,8 @@ AngleIncrementInfoFactory* AngleIncrementInfoFactory::instance = AngleIncrementI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AngleIncrementInfoFactory::instance;
     
 }
@@ -99,6 +101,8 @@ this->angleIncrementInfo[halfAngleIncrement]= angleIncrementInfo;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return angleIncrementInfo;
     
 
@@ -114,6 +118,8 @@ this->angleIncrementInfo[halfAngleIncrement]= angleIncrementInfo;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return angleIncrementInfo;
     
 }

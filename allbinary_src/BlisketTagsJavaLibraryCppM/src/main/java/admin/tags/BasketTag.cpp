@@ -130,6 +130,8 @@ this->storeName= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return emptyBoolean;;
     
 
@@ -159,6 +161,8 @@ this->storeName= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -186,6 +190,8 @@ this->storeName= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return emptyBoolean;;
     
 
@@ -218,6 +224,8 @@ this->storeName= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -245,6 +253,8 @@ this->storeName= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return emptyBoolean;;
     
 
@@ -277,6 +287,8 @@ this->storeName= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -304,6 +316,8 @@ this->storeName= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return emptyBoolean;;
     
 
@@ -336,6 +350,8 @@ this->storeName= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -400,6 +416,8 @@ this->propertiesHashMap->put(StoreFrontData::getInstance()->NAME, this->storeNam
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->EVAL_BODY_INCLUDE;
     
                              else 
@@ -415,6 +433,8 @@ this->propertiesHashMap->put(StoreFrontData::getInstance()->NAME, this->storeNam
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SKIP_BODY;
     
 
@@ -427,6 +447,8 @@ AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SKIP_BODY;
     
 }
@@ -440,6 +462,8 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SKIP_BODY;
     
 }

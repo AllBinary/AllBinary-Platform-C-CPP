@@ -97,6 +97,8 @@ AbeFactory* AbeFactory::instance = AbeFactory::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbeFactory::instance;
     
 }
@@ -116,6 +118,8 @@ AbeFactory::AbeFactory() : logUtil(LogUtil::getInstance()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new (this->getClass() as any)();;
     
 
@@ -154,6 +158,8 @@ AbeFactory::AbeFactory() : logUtil(LogUtil::getInstance()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -191,6 +197,8 @@ constructor= myClass->getConstructor(classes);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return constructor->newInstance(params);;
     
 
@@ -206,6 +214,8 @@ constructor= myClass->getConstructor(classes);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return constructor->newInstance(params);;
     
 
@@ -269,6 +279,8 @@ this->logUtil->put(stringBuffer->toString(), this, "getInstance(className,params
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -299,6 +311,8 @@ this->logUtil->put(stringBuffer->toString(), this, "getInstance(className,params
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return c;
     
 
@@ -312,6 +326,8 @@ this->logUtil->put(stringBuffer->toString(), this, "getInstance(className,params
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return c;
     
 
@@ -353,6 +369,8 @@ this->logUtil->put(stringBuffer->toString(), this, "getInstance(className,params
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

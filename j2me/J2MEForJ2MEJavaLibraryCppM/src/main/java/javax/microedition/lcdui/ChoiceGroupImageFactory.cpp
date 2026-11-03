@@ -72,6 +72,8 @@ ChoiceGroupImageFactory* ChoiceGroupImageFactory::instance = ChoiceGroupImageFac
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ChoiceGroupImageFactory::instance;
     
 }
@@ -82,6 +84,8 @@ ChoiceGroupImageFactory* ChoiceGroupImageFactory::instance = ChoiceGroupImageFac
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->imageArray;
     
 }

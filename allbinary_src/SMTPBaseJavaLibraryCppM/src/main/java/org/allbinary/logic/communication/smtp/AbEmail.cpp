@@ -96,6 +96,8 @@ AbEmail::AbEmail(std::string server, std::string from, std::string to, std::stri
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->email->getMimeMessage();;
     
 }
@@ -106,6 +108,8 @@ AbEmail::AbEmail(std::string server, std::string from, std::string to, std::stri
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->email->getDebugInfo();;
     
 }
@@ -118,6 +122,8 @@ AbEmail::AbEmail(std::string server, std::string from, std::string to, std::stri
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->email->log();;
     
 }
@@ -130,6 +136,8 @@ AbEmail::AbEmail(std::string server, std::string from, std::string to, std::stri
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->email->toHashMap();;
     
 }
@@ -142,6 +150,8 @@ AbEmail::AbEmail(std::string server, std::string from, std::string to, std::stri
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->email->toXmlNode(document);;
     
 }
@@ -152,6 +162,8 @@ AbEmail::AbEmail(std::string server, std::string from, std::string to, std::stri
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<Email*>(this->email);
     
 }
@@ -164,6 +176,8 @@ AbEmail::AbEmail(std::string server, std::string from, std::string to, std::stri
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->email->toXmlDoc();;
     
 }

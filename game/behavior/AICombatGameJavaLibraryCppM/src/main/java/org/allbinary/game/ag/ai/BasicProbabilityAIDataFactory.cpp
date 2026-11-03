@@ -135,6 +135,8 @@ repeatLikelyhoodIntegerArray[Canvas::KEY_NUM1]= smallIntegerSingletonFactory->ge
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return inputProbability->toHashtable();;
     
 }

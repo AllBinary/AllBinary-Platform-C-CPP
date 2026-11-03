@@ -101,6 +101,8 @@ this->categoryInterface= categoryInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->categoryInterface;
     
 }
@@ -186,6 +188,8 @@ node->appendChild(childCategoryNode);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }

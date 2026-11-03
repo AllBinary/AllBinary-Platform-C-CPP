@@ -118,6 +118,8 @@ hashtable2->put(BasicAI::AI_VISITOR, LastKeyAIVisitorFactory::getInstance());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new DiveAndDirectionalTrackingAI(ownerLayerInterface, artificialIntelligenceInterface, gameInput, dynamic_cast<Visitor*>(visitorCanBeNull));
     
 }

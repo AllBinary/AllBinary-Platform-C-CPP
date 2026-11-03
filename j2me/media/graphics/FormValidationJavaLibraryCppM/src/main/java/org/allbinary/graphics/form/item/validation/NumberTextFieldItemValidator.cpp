@@ -96,6 +96,8 @@ this->maxChars= maxChars;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BooleanFactory::getInstance()->TRUE;
     
 }
@@ -106,6 +108,8 @@ this->maxChars= maxChars;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new BasicArrayListD();
     
 }
@@ -166,6 +170,8 @@ result= BooleanFactory::getInstance()->FALSE;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 }
@@ -267,6 +273,8 @@ list->add(stringMaker->append(name)->append(" is to long")->toString());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return list;
     
 }

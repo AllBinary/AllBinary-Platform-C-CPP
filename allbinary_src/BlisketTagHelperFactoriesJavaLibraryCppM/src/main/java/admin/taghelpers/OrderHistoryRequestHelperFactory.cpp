@@ -85,6 +85,8 @@ OrderHistoryRequestHelperFactory::OrderHistoryRequestHelperFactory() : logUtil(L
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new OrderHistoryRequestHelper(hashMap, pageContext);
     
 
@@ -104,6 +106,8 @@ OrderHistoryRequestHelperFactory::OrderHistoryRequestHelperFactory() : logUtil(L
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

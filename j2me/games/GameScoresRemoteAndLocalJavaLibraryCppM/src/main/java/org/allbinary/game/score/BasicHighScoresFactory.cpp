@@ -200,6 +200,8 @@ logUtil->put(outer->commonStrings.EXCEPTION, this, FETCH, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new HighScoresHelper2();
     
 }
@@ -214,6 +216,8 @@ logUtil->put(outer->commonStrings.EXCEPTION, this, FETCH, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -223,6 +227,8 @@ logUtil->put(outer->commonStrings.EXCEPTION, this, FETCH, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

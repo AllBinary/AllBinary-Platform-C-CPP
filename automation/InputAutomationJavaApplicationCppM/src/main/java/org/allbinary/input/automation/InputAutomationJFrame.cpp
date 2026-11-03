@@ -871,6 +871,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "startJMenuItemActionPe
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return InputAutomationJFrame::INPUTAUTOMATION_JFRAME;
     
 }
@@ -963,6 +965,8 @@ InputAutomationJFrame::create(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->automationModuleConfigurationJPanel;
     
 }

@@ -295,6 +295,8 @@ this->totalDamage += this->weaponProperties->getDissipation();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->destroyed;
     
 }
@@ -321,6 +323,8 @@ this->scoreableInterface->addPoints(GameConfigurationUtil::getInstance()->getCom
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -331,6 +335,8 @@ this->scoreableInterface->addPoints(GameConfigurationUtil::getInstance()->getCom
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -353,6 +359,8 @@ this->givePoints(total);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return total;
     
 
@@ -362,6 +370,8 @@ this->givePoints(total);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -389,6 +399,8 @@ DestroyedLayerProcessor::getInstance()->add(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->initDamage;
     
 }
@@ -405,6 +417,8 @@ this->animationInterface= animationInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->animationInterface;
     
 }
@@ -415,6 +429,8 @@ this->animationInterface= animationInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->initAnimationInterface;
     
 }
@@ -431,6 +447,8 @@ this->initAnimationInterface= initAnimationInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->destroyedAnimationInterface;
     
 }
@@ -441,6 +459,8 @@ this->initAnimationInterface= initAnimationInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->sourceLayerInterface;
     
 }
@@ -475,6 +495,8 @@ this->animationInterface->paintThreedXYZ(graphics, viewPosition->getX() -this->g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->movement;
     
 }
@@ -491,6 +513,8 @@ this->movement= movement;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return WeaponLayer::getStaticType();;
     
 }
@@ -501,6 +525,8 @@ this->movement= movement;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -511,6 +537,8 @@ this->movement= movement;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->multiPlayerType;
     
 }
@@ -527,6 +555,8 @@ this->weaponProperties= weaponProperties;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->weaponProperties;
     
 }
@@ -537,6 +567,8 @@ this->weaponProperties= weaponProperties;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }

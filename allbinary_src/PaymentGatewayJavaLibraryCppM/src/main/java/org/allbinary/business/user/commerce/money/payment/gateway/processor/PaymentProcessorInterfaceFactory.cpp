@@ -91,6 +91,8 @@ PaymentProcessorInterfaceFactory* PaymentProcessorInterfaceFactory::instance = P
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PaymentProcessorInterfaceFactory::instance;
     
 }
@@ -126,6 +128,8 @@ PaymentProcessorInterfaceFactory::PaymentProcessorInterfaceFactory() : logUtil(L
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<PaymentProcessorInterface*>(paymentProcessorInterfaceFactoryInterface->getInstance(transformInfoInterface, paymentTransactionInterface));
     
 

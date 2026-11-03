@@ -79,6 +79,8 @@ CloudStreamUtil* CloudStreamUtil::instance = CloudStreamUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return CloudStreamUtil::instance;
     
 }
@@ -113,6 +115,8 @@ CloudStreamUtil* CloudStreamUtil::instance = CloudStreamUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return inputStream;
     
 }
@@ -171,6 +175,8 @@ available= inputStream->available();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return inputStream;
     
 }
@@ -205,6 +211,8 @@ available= inputStream->available();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return inputStream;
     
 }

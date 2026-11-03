@@ -139,6 +139,8 @@ this->displayInfo->update(this, this->canvasStrings->SIZE_CHANGED);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->commandStack;
     
 }
@@ -150,6 +152,8 @@ this->displayInfo->update(this, this->canvasStrings->SIZE_CHANGED);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->commandStack->contains(command);;
     
 }
@@ -212,6 +216,8 @@ this->commandListener= l;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->commandListener;
     
 }
@@ -223,6 +229,8 @@ this->commandListener= l;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->paused;
     
 }
@@ -281,6 +289,8 @@ this->displayInfo->process();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->childNameList->contains(displayable->name);;
     
 }

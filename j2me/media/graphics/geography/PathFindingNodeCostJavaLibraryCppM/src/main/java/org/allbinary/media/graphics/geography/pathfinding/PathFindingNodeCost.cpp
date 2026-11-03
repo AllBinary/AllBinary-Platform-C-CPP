@@ -121,6 +121,8 @@ this->pathFindingNodeCostInfoP= pathFindingNodeCostInfo;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->pathFindingNodeCostInfoP;
     
 }
@@ -137,6 +139,8 @@ this->pathFindingNodeCostInfoP= pathFindingNodeCostInfo;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->pathFindingNodeCostInfoP->compareTo(pathFindingNodeCost->pathFindingNodeCostInfoP);;
     
 }
@@ -176,6 +180,8 @@ pathFindingNode= dynamic_cast<PathFindingNode*>(pathFindingNode->parent);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

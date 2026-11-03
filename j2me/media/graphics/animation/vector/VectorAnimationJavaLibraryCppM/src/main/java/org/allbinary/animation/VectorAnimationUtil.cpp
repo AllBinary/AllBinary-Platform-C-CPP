@@ -71,6 +71,8 @@ VectorAnimationUtil* VectorAnimationUtil::instance = VectorAnimationUtil::instan
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return VectorAnimationUtil::instance;
     
 }
@@ -123,6 +125,8 @@ points[index][pointIndex][1]= framePoints[pointIndex][1];
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return points;
     
 }
@@ -173,6 +177,8 @@ points[index][pointIndex][1]= framePoints[pointIndex][1];
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return points;
     
 }
@@ -205,6 +211,8 @@ points[index][1]= nextPoint->getY();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return points;
     
 }

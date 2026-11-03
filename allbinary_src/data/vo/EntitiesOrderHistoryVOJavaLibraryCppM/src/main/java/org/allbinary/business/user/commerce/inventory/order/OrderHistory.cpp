@@ -307,6 +307,8 @@ this->total= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->userName;
     
 }
@@ -317,6 +319,8 @@ this->total= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->shippingAddress;
     
 }
@@ -327,6 +331,8 @@ this->total= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->billingAddress;
     
 }
@@ -337,6 +343,8 @@ this->total= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->payment;
     
 }
@@ -347,6 +355,8 @@ this->total= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->shipDate;
     
 }
@@ -357,6 +367,8 @@ this->total= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->orderDate;
     
 }
@@ -367,6 +379,8 @@ this->total= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->transDate;
     
 }
@@ -377,6 +391,8 @@ this->total= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->cancelDate;
     
 }
@@ -387,6 +403,8 @@ this->total= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->status;
     
 }
@@ -397,6 +415,8 @@ this->total= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->subTotal;
     
 }
@@ -407,6 +427,8 @@ this->total= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->shippingCost;
     
 }
@@ -417,6 +439,8 @@ this->total= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->taxes;
     
 }
@@ -427,6 +451,8 @@ this->total= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->total;
     
 }
@@ -468,6 +494,8 @@ hashMap->put(OrderHistoryData::TAX, this->taxes->toString());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }
@@ -532,6 +560,8 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }

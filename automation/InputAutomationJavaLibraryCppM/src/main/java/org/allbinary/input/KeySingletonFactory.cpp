@@ -131,6 +131,8 @@ KeySingletonFactory::KeySingletonFactory() : logUtil(LogUtil::getInstance()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return KeySingletonFactory::keyStringHashtable;
     
 }
@@ -141,6 +143,8 @@ KeySingletonFactory::KeySingletonFactory() : logUtil(LogUtil::getInstance()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Integer.valueOf(index);;
     
 }
@@ -151,6 +155,8 @@ KeySingletonFactory::KeySingletonFactory() : logUtil(LogUtil::getInstance()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return KeySingletonFactory::keyArray;
     
 }

@@ -94,6 +94,8 @@ BasicArrayListUtil* BasicArrayListUtil::instance = BasicArrayListUtil::instance_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BasicArrayListUtil::instance;
     
 }
@@ -107,6 +109,8 @@ BasicArrayListUtil* BasicArrayListUtil::instance = BasicArrayListUtil::instance_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return list->objectArray[i_random];
     
 }
@@ -117,6 +121,8 @@ BasicArrayListUtil* BasicArrayListUtil::instance = BasicArrayListUtil::instance_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->myRandomFactory->getAbsoluteNextInt(list->size());;
     
 }
@@ -189,6 +195,8 @@ stringBuffer->appendint(usedList->size());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -199,6 +207,8 @@ stringBuffer->appendint(usedList->size());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->immutableInstance;
     
 }

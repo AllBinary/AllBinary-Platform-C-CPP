@@ -73,6 +73,8 @@ ThreadUtil* ThreadUtil::instance = ThreadUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ThreadUtil::instance;
     
 }
@@ -89,6 +91,8 @@ ThreadUtil* ThreadUtil::instance = ThreadUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -99,6 +103,8 @@ ThreadUtil* ThreadUtil::instance = ThreadUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 

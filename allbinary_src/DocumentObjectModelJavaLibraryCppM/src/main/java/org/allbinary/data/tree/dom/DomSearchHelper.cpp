@@ -96,6 +96,8 @@ DomSearchHelper::DomSearchHelper(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 
@@ -107,6 +109,8 @@ DomSearchHelper::DomSearchHelper(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -128,6 +132,8 @@ DomSearchHelper::DomSearchHelper(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 
@@ -155,6 +161,8 @@ DomSearchHelper::DomSearchHelper(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node->getChildNodes();;
     
 }
@@ -185,6 +193,8 @@ DomSearchHelper::DomSearchHelper(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return vector;
     
 
@@ -225,6 +235,8 @@ DomSearchHelper::DomSearchHelper(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nodeVector;
     
 }

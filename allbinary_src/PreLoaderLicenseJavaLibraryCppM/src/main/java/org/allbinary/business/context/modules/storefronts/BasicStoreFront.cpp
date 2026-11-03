@@ -155,6 +155,8 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return org.allbinary->globals->URLGLOBALS->getTestHtmlPath() +this->getCurrentHostNamePath();
     
 }
@@ -185,6 +187,8 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return location;
     
 }
@@ -215,6 +219,8 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return location;
     
 }
@@ -245,6 +251,8 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return location;
     
 }
@@ -275,6 +283,8 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return location;
     
 }
@@ -285,6 +295,8 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }
@@ -295,6 +307,8 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->userName;
     
 }
@@ -305,6 +319,8 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->basketName;
     
 }
@@ -315,6 +331,8 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->homeHostName;
     
 }
@@ -325,6 +343,8 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->homeHostNamePath;
     
 }
@@ -335,6 +355,8 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->hostName;
     
 }
@@ -345,6 +367,8 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->hostNamePath;
     
 }
@@ -355,6 +379,8 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->testHomeHostName;
     
 }
@@ -365,6 +391,8 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->testHomeHostNamePath;
     
 }
@@ -375,6 +403,8 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->testHostName;
     
 }
@@ -385,6 +415,8 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->testHostNamePath;
     
 }
@@ -395,6 +427,8 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->staticPath;
     
 }
@@ -405,6 +439,8 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->categoryPath;
     
 }
@@ -415,6 +451,8 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->inventoryControl;
     
 }
@@ -435,6 +473,8 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return subStoreVector;
     
 
@@ -456,6 +496,8 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->tagLocation;
     
 }
@@ -466,6 +508,8 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->packageLocation;
     
 }
@@ -476,6 +520,8 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->ftp;
     
 }
@@ -486,6 +532,8 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->ftpUserName;
     
 }
@@ -496,6 +544,8 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->ftpPassword;
     
 }
@@ -506,6 +556,8 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->testFtp;
     
 }
@@ -516,6 +568,8 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->testFtpUserName;
     
 }
@@ -526,6 +580,8 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->testFtpPassword;
     
 }
@@ -536,6 +592,8 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->ftpPath;
     
 }
@@ -546,6 +604,8 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->testFtpPath;
     
 }
@@ -556,6 +616,8 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->timeCreated;
     
 }
@@ -566,6 +628,8 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->lastModified;
     
 }

@@ -75,6 +75,8 @@ Object* ABCustomItem::NULL_CUSTOM_ITEM = NullUtil::getInstance()->NULL_OBJECT;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<ABCustomItem*>(ABCustomItem::NULL_CUSTOM_ITEM);
     
 }
@@ -101,6 +103,8 @@ ABCustomItem::ABCustomItem(std::string label, BasicColor* backgroundBasicColor, 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -111,6 +115,8 @@ ABCustomItem::ABCustomItem(std::string label, BasicColor* backgroundBasicColor, 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 }
@@ -125,6 +131,8 @@ ABCustomItem::ABCustomItem(std::string label, BasicColor* backgroundBasicColor, 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -139,6 +147,8 @@ ABCustomItem::ABCustomItem(std::string label, BasicColor* backgroundBasicColor, 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0.0;
     
 }
@@ -153,6 +163,8 @@ ABCustomItem::ABCustomItem(std::string label, BasicColor* backgroundBasicColor, 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -163,6 +175,8 @@ ABCustomItem::ABCustomItem(std::string label, BasicColor* backgroundBasicColor, 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }

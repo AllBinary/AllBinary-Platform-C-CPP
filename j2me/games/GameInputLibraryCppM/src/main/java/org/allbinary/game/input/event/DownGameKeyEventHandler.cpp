@@ -74,6 +74,8 @@ std::vector<DownGameKeyEventHandlerBase*> DownGameKeyEventHandler::instanceArray
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return DownGameKeyEventHandler::instance;
     
 }
@@ -87,6 +89,8 @@ std::vector<DownGameKeyEventHandlerBase*> DownGameKeyEventHandler::instanceArray
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return DownGameKeyEventHandler::instanceArray[playerInputId];
     
 }
@@ -97,6 +101,8 @@ std::vector<DownGameKeyEventHandlerBase*> DownGameKeyEventHandler::instanceArray
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return DownGameKeyEventHandler::instanceArray[playerInputId];
     
 }

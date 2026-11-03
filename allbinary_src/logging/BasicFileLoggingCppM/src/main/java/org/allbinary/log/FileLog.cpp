@@ -137,6 +137,8 @@ FileLog::fileOut= new BufferedWriter(new FileWriter(raFile->getFD()));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return canWrite;
     
 
@@ -149,6 +151,8 @@ System.out.println(JavaString::valueOf("Error Creating Log: ") +JavaString::valu
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -208,6 +212,8 @@ FileLog::logFile->delete_();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -220,6 +226,8 @@ System.out.println(JavaString::valueOf("Error Creating Backup: ") +JavaString::v
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -233,6 +241,8 @@ System.out.println(JavaString::valueOf("Error Creating Backup: ") +JavaString::v
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return FileLog::put(specialMessage, anyType, functionName, 
                             nullptr);;
     
@@ -257,6 +267,8 @@ System.out.println(JavaString::valueOf("Error Creating Backup: ") +JavaString::v
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Log File Creation Error";
     
 
@@ -280,6 +292,8 @@ System.out.println(JavaString::valueOf("Error Creating Backup: ") +JavaString::v
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Couldn't Create a Backup file";
     
 
@@ -316,6 +330,8 @@ FileLog::fileOut->flush();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return .toCharArray();
     
 
@@ -326,6 +342,8 @@ FileLog::fileOut->flush();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return .toCharArray();
     
 }
@@ -339,6 +357,8 @@ FileLog::fileOut->flush();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return FileLog::put(specialMessage, className, functionName, 
                             nullptr);;
     
@@ -363,6 +383,8 @@ FileLog::fileOut->flush();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Log File Creation Error";
     
 
@@ -386,6 +408,8 @@ FileLog::fileOut->flush();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Couldn't Create a Backup file";
     
 
@@ -415,6 +439,8 @@ FileLog::fileOut->flush();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return .toCharArray();
     
 
@@ -425,6 +451,8 @@ FileLog::fileOut->flush();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return .toCharArray();
     
 }
@@ -437,6 +465,8 @@ FileLog::fileOut->flush();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return FileLog::logPath +FileLog::fileName;
     
 }

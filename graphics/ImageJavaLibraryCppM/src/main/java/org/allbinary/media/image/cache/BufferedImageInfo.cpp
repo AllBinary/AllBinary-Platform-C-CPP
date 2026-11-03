@@ -77,6 +77,8 @@ this->type= type;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->width;
     
 }
@@ -93,6 +95,8 @@ this->width= width;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->height;
     
 }
@@ -109,6 +113,8 @@ this->height= height;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->type;
     
 }
@@ -145,6 +151,8 @@ stringBuffer->appendint(this->getType());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

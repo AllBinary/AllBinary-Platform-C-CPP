@@ -166,6 +166,8 @@ this->colorAtActionScriptConditionInterface->log();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->colorAtXJTextField;
     
 }
@@ -182,6 +184,8 @@ this->colorAtXJTextField= colorAtXJTextField;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->colorAtYJTextField;
     
 }
@@ -198,6 +202,8 @@ this->colorAtYJTextField= colorAtYJTextField;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->maxBlueJTextField;
     
 }
@@ -214,6 +220,8 @@ this->maxBlueJTextField= maxBlueJTextField;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->maxGreenJTextField;
     
 }
@@ -230,6 +238,8 @@ this->maxGreenJTextField= maxGreenJTextField;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->maxRedJTextField;
     
 }
@@ -246,6 +256,8 @@ this->maxRedJTextField= maxRedJTextField;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->minBlueJTextField;
     
 }
@@ -262,6 +274,8 @@ this->minBlueJTextField= minBlueJTextField;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->minGreenJTextField;
     
 }
@@ -278,6 +292,8 @@ this->minGreenJTextField= minGreenJTextField;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->minRedJTextField;
     
 }
@@ -294,6 +310,8 @@ this->minRedJTextField= minRedJTextField;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->yJLabel;
     
 }
@@ -310,6 +328,8 @@ this->yJLabel= yJLabel;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->colorAtActionJDialog;
     
 }

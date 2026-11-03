@@ -66,6 +66,8 @@ GameInputMotionInfoAPI5* GameInputMotionInfoAPI5::instance = GameInputMotionInfo
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return GameInputMotionInfoAPI5::instance;
     
 }

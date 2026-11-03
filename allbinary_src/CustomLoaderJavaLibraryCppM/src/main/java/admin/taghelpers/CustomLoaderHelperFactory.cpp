@@ -87,6 +87,8 @@ CustomLoaderHelperFactory::CustomLoaderHelperFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return HelperFactory::getInstance(abeClientInformation, FACTORYNAME, CLASSNAME, hashMap, pageContext);;
     
 }
@@ -99,6 +101,8 @@ CustomLoaderHelperFactory::CustomLoaderHelperFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return HelperFactory::getInstance(abeClientInformation, FACTORYNAME, CustomLoaderHelperFactory::CLASSNAME);;
     
 }

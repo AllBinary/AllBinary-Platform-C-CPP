@@ -72,6 +72,8 @@ TimeStampUtil* TimeStampUtil::instance = TimeStampUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TimeStampUtil::instance;
     
 }
@@ -92,6 +94,8 @@ TimeStampUtil::TimeStampUtil() : simpleDataFormat(new SimpleDateFormat("yyyy-MM-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->simpleDataFormat->format(date);;
     
 }

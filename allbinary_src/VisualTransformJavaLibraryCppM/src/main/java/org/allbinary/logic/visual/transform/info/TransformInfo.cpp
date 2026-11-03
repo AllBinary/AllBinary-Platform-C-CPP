@@ -533,6 +533,8 @@ stringBuffer->append("TransformInfoInterface(HashMap)");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -555,6 +557,8 @@ this->storeName= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->storeName;
     
 }
@@ -630,6 +634,8 @@ this->data= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }
@@ -640,7 +646,9 @@ this->data= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->anyType;
+                        
+                        
+                        return JavaBoxes::toObject(this->anyType);
     
 }
 
@@ -650,6 +658,8 @@ this->data= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->objectFileName;
     
 }
@@ -660,6 +670,8 @@ this->data= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->template_;
     
 }
@@ -670,6 +682,8 @@ this->data= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->templateFileName;
     
 }
@@ -682,6 +696,8 @@ this->data= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AbFilePath(this->getTemplateFile());
     
 }
@@ -694,6 +710,8 @@ this->data= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AbFilePath(this->getObjectConfigFile());
     
 }
@@ -706,6 +724,8 @@ this->data= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AbFilePath(this->getDataFile());
     
 }
@@ -716,6 +736,8 @@ this->data= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->objectConfigFileName;
     
 }
@@ -845,6 +867,8 @@ stringBuffer->append(this->getDataFilePath()->toFileSystemString());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->data;
     
 }
@@ -876,6 +900,8 @@ stringBuffer->append(this->getDataFilePath()->toFileSystemString());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return DomDocumentHelper::create();;
     
 
@@ -889,6 +915,8 @@ stringBuffer->append(this->getDataFilePath()->toFileSystemString());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return document;
     
 
@@ -902,6 +930,8 @@ stringBuffer->append(this->getDataFilePath()->toFileSystemString());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->dataFileName;
     
 }
@@ -946,6 +976,8 @@ hashMap->put(EntryData::getInstance()->LASTMODIFIED, time);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }
@@ -989,6 +1021,8 @@ vector->add(time);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return vector;
     
 }
@@ -999,6 +1033,8 @@ vector->add(time);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getName();
     
 }
@@ -1015,6 +1051,8 @@ this->isChild_= true;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->isChild_;
     
 }
@@ -1025,6 +1063,8 @@ this->isChild_= true;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->objectConfigInterface;
     
 }

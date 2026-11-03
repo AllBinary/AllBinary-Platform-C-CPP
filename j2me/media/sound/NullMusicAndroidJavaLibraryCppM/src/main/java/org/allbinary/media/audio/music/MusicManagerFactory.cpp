@@ -69,6 +69,8 @@ MusicManagerFactory::MusicManagerFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new MusicManager(
                             Class::forType(typeid(MusicService)), soundList);
     

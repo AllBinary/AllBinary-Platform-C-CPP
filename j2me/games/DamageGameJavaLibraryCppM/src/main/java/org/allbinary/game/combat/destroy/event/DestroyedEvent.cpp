@@ -90,6 +90,8 @@ this->setAllBinaryGameCanvas(combatGameCanvas);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->allBinaryGameCanvas;
     
 }
@@ -100,6 +102,8 @@ this->setAllBinaryGameCanvas(combatGameCanvas);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->allBinaryLayerInterface;
     
 }
@@ -135,6 +139,8 @@ stringBuffer->append(StringUtil::getInstance()->toString(this->getAllBinaryGameC
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

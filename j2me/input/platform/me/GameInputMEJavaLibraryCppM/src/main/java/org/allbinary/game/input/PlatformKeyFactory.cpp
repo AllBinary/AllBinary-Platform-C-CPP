@@ -80,6 +80,8 @@ PlatformKeyFactory::PlatformKeyFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<PlatformKeyFactory*>(PlatformKeyFactory::instance);
     
 }
@@ -90,6 +92,8 @@ PlatformKeyFactory::PlatformKeyFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return J2MEGameKey::getString(keyCode);;
     
 }
@@ -100,6 +104,8 @@ PlatformKeyFactory::PlatformKeyFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return J2MEKeyFactory::getInstance()->isSubmission(input);;
     
 }
@@ -110,6 +116,8 @@ PlatformKeyFactory::PlatformKeyFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return J2MEKeyFactory::getInstance()->isDelete(input);;
     
 }
@@ -120,6 +128,8 @@ PlatformKeyFactory::PlatformKeyFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return J2MEKeyFactory::getInstance()->isBackSpace(input);;
     
 }
@@ -130,6 +140,8 @@ PlatformKeyFactory::PlatformKeyFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return J2MEKeyFactory::getInstance()->isLeft(input);;
     
 }
@@ -140,6 +152,8 @@ PlatformKeyFactory::PlatformKeyFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return J2MEKeyFactory::getInstance()->isRight(input);;
     
 }
@@ -150,6 +164,8 @@ PlatformKeyFactory::PlatformKeyFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return J2MEKeyFactory::getInstance()->isUp(input);;
     
 }
@@ -160,6 +176,8 @@ PlatformKeyFactory::PlatformKeyFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return J2MEKeyFactory::getInstance()->isDown(input);;
     
 }
@@ -170,6 +188,8 @@ PlatformKeyFactory::PlatformKeyFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return J2MEKeyFactory::getInstance()->isEnter(input);;
     
 }

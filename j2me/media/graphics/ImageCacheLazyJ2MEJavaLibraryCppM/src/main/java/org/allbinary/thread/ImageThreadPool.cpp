@@ -75,6 +75,8 @@ ThreadPool* ImageThreadPool::instance = new ImageThreadPool("ImageLoader", 1, Th
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ImageThreadPool::instance;
     
 }

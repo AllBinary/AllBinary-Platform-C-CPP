@@ -233,6 +233,8 @@ this->cssPropertyVector= CssPropertiesValidationFactory::getInstance(nodeList);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->value;
     
 }
@@ -252,6 +254,8 @@ hashMap->put(this->DESCRIPTION, this->description);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }
@@ -313,6 +317,8 @@ node->appendChild(cssElementDomNodeInterface->toXmlNode(document));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }

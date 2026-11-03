@@ -135,6 +135,8 @@ this->canvasNodeList= DomHelper::getInstance()->getChildrenWithoutTextNodes(Work
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }
@@ -145,6 +147,8 @@ this->canvasNodeList= DomHelper::getInstance()->getChildrenWithoutTextNodes(Work
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->canvasNodeList;
     
 }

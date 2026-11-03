@@ -92,6 +92,8 @@ DbWorkFlowFactory* DbWorkFlowFactory::instance = DbWorkFlowFactory::instance_own
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return DbWorkFlowFactory::instance;
     
 }
@@ -126,6 +128,8 @@ params[0]= hashMap;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<WorkFlowInterface*>(new WorkFlowWrapper(anyType));
     
 

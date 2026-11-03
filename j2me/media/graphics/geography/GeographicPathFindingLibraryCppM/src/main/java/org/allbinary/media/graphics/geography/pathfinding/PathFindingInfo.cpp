@@ -83,6 +83,8 @@ this->endPathFindingNodeList= endPathFindingNodeList;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->startPathFindingNodeList;
     
 }
@@ -93,6 +95,8 @@ this->endPathFindingNodeList= endPathFindingNodeList;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->endPathFindingNodeList;
     
 }
@@ -103,6 +107,8 @@ this->endPathFindingNodeList= endPathFindingNodeList;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->pathFinder;
     
 }
@@ -131,6 +137,8 @@ this->pathFinder= pathFinder;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->pathFindingNodeCostInfoFactoryInterface;
     
 }

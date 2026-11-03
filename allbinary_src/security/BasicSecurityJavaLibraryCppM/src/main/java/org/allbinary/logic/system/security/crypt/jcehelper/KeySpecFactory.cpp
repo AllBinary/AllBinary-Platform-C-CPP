@@ -87,6 +87,8 @@ KeySpecFactory* KeySpecFactory::instance = KeySpecFactory::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return KeySpecFactory::instance;
     
 }
@@ -110,6 +112,8 @@ KeySpecFactory::KeySpecFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new DESKeySpec(keyData);
     
 
@@ -123,6 +127,8 @@ KeySpecFactory::KeySpecFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new DESedeKeySpec(keyData);
     
 

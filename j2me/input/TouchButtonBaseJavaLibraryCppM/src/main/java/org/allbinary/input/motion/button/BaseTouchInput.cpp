@@ -74,6 +74,8 @@ BaseTouchInput::BaseTouchInput() : commonStrings(CommonStrings::getInstance()), 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->basicArrayListUtil->getImmutableInstance();;
     
 }
@@ -84,6 +86,8 @@ BaseTouchInput::BaseTouchInput() : commonStrings(CommonStrings::getInstance()), 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getClass()->getName();;
     
 }

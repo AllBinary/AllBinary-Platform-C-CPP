@@ -106,6 +106,8 @@ this->timeIntervalActionScriptConditionInterface->log();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->timeIntervalJTextField;
     
 }
@@ -122,6 +124,8 @@ this->timeIntervalJTextField= timeIntervalJTextField;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->timeIntervalActionJDialog;
     
 }

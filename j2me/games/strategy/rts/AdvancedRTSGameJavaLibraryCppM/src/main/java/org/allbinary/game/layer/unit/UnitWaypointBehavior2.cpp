@@ -192,6 +192,8 @@ this->associatedAdvancedRTSGameLayer->waypoint2LogHelperP->initRange(this->assoc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->nextUnvisitedPathGeographicMapCellPosition;
     
 }
@@ -206,6 +208,8 @@ this->associatedAdvancedRTSGameLayer->waypoint2LogHelperP->initRange(this->assoc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -216,6 +220,8 @@ this->associatedAdvancedRTSGameLayer->waypoint2LogHelperP->initRange(this->assoc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -272,6 +278,8 @@ this->associatedAdvancedRTSGameLayer->waypoint2LogHelperP->initRange(this->assoc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -296,6 +304,8 @@ this->processTargetList();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -315,6 +325,8 @@ this->processTargetList();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -334,6 +346,8 @@ this->processTargetList();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -518,6 +532,8 @@ this->clearTarget();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -645,6 +661,8 @@ this->runWaypointPathTask(targetLayer);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -790,6 +808,8 @@ this->associatedAdvancedRTSGameLayer->trackTo(this->unitWaypointStrings->NEXT_PA
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->currentGeographicMapCellHistoryP->visit(geographicMapCellPosition);;
     
 
@@ -802,6 +822,8 @@ this->associatedAdvancedRTSGameLayer->trackTo(this->unitWaypointStrings->NEXT_PA
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -878,6 +900,8 @@ this->clearTarget();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -1089,6 +1113,8 @@ TrackingEventHandler::getInstance()->fireEvent(this->associatedAdvancedRTSGameLa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -1112,6 +1138,8 @@ TrackingEventHandler::getInstance()->fireEvent(this->associatedAdvancedRTSGameLa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -1123,6 +1151,8 @@ TrackingEventHandler::getInstance()->fireEvent(this->associatedAdvancedRTSGameLa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -1133,6 +1163,8 @@ TrackingEventHandler::getInstance()->fireEvent(this->associatedAdvancedRTSGameLa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return targetDistance < this->closeRange +layerInterface->getHalfHeight();
     
 }
@@ -1143,6 +1175,8 @@ TrackingEventHandler::getInstance()->fireEvent(this->associatedAdvancedRTSGameLa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return targetDistance < this->sensorRange +layerInterface->getHalfHeight();
     
 }
@@ -1177,6 +1211,8 @@ stringBuffer->appendint(this->getCurrentTargetDistance());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -1242,7 +1278,9 @@ this->positionList->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil::getInstance()->NULL_OBJECT;
+                        
+                        
+                        return JavaBoxes::toObject(NullUtil::getInstance()->NULL_OBJECT);
     
 
                                     }
@@ -1251,7 +1289,9 @@ this->positionList->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BooleanFactory::getInstance()->FALSE;
+                        
+                        
+                        return JavaBoxes::toObject(BooleanFactory::getInstance()->FALSE);
     
 
                                     }
@@ -1260,7 +1300,9 @@ this->positionList->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil::getInstance()->NULL_OBJECT;
+                        
+                        
+                        return JavaBoxes::toObject(NullUtil::getInstance()->NULL_OBJECT);
     
 
                 //: 
@@ -1275,7 +1317,9 @@ logUtil->put(commonStrings->EXCEPTION, this, "visit", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil::getInstance()->NULL_OBJECT;
+                        
+                        
+                        return JavaBoxes::toObject(NullUtil::getInstance()->NULL_OBJECT);
     
 }
 
@@ -1287,6 +1331,8 @@ logUtil->put(commonStrings->EXCEPTION, this, "visit", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->positionList;
     
 }
@@ -1325,6 +1371,8 @@ this->buildingSteeringVisitor->getPositionList()->add(cellPosition);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->associatedAdvancedRTSGameLayer->buildingChase(allbinaryLayer, cellPosition);;
     
 }

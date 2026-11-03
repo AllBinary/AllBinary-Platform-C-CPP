@@ -189,6 +189,8 @@ response->sendError(HttpServletResponse::SC_NOT_FOUND);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -384,6 +386,8 @@ this->processRequest(request, response);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Upload Cloud Files";
     
 }

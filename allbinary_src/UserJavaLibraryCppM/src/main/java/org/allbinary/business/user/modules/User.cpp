@@ -311,6 +311,8 @@ this->enable_= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(userHashMap-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return valid;
     
 
@@ -333,6 +335,8 @@ this->logUtil->put("Failed to validate form", this, commonStrings->IS_VALID, &e)
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -384,6 +388,8 @@ stringBuffer->append(this->password->getValidationInfo());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -403,6 +409,8 @@ stringBuffer->append(this->password->getValidationInfo());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Validating Form";
     
 }
@@ -559,6 +567,8 @@ this->enable_= enable_;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->userName;
     
 }
@@ -569,6 +579,8 @@ this->enable_= enable_;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->prefixName;
     
 }
@@ -579,6 +591,8 @@ this->enable_= enable_;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->firstName;
     
 }
@@ -589,6 +603,8 @@ this->enable_= enable_;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->lastName;
     
 }
@@ -599,6 +615,8 @@ this->enable_= enable_;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->middleName;
     
 }
@@ -609,6 +627,8 @@ this->enable_= enable_;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->suffixName;
     
 }
@@ -619,6 +639,8 @@ this->enable_= enable_;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->company;
     
 }
@@ -629,6 +651,8 @@ this->enable_= enable_;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->positionAtCompany;
     
 }
@@ -639,6 +663,8 @@ this->enable_= enable_;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->mainEmail;
     
 }
@@ -649,6 +675,8 @@ this->enable_= enable_;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->secondaryEmail;
     
 }
@@ -659,6 +687,8 @@ this->enable_= enable_;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->homePhone;
     
 }
@@ -669,6 +699,8 @@ this->enable_= enable_;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->cellPhone;
     
 }
@@ -679,6 +711,8 @@ this->enable_= enable_;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->workPhone;
     
 }
@@ -689,6 +723,8 @@ this->enable_= enable_;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->otherContact;
     
 }
@@ -699,6 +735,8 @@ this->enable_= enable_;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->electronicDevice;
     
 }
@@ -709,6 +747,8 @@ this->enable_= enable_;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->fax;
     
 }
@@ -719,6 +759,8 @@ this->enable_= enable_;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->role;
     
 }
@@ -729,6 +771,8 @@ this->enable_= enable_;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->permissions;
     
 }
@@ -739,6 +783,8 @@ this->enable_= enable_;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->encryption;
     
 }
@@ -749,6 +795,8 @@ this->enable_= enable_;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->secret;
     
 }
@@ -759,6 +807,8 @@ this->enable_= enable_;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->password->get();;
     
 }
@@ -829,6 +879,8 @@ values->add(time);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return values;
     
 }
@@ -906,6 +958,8 @@ values->put(EntryData::getInstance()->LASTMODIFIED, time);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return values;
     
 }
@@ -916,6 +970,8 @@ values->put(EntryData::getInstance()->LASTMODIFIED, time);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->password->toHashMap(this->secret);;
     
 }
@@ -940,6 +996,8 @@ weblisketSession->setUserName(this->getUserName());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 }
@@ -952,6 +1010,8 @@ weblisketSession->setUserName(this->getUserName());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->userName;
     
 }
@@ -962,6 +1022,8 @@ weblisketSession->setUserName(this->getUserName());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -972,6 +1034,8 @@ weblisketSession->setUserName(this->getUserName());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -982,6 +1046,8 @@ weblisketSession->setUserName(this->getUserName());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->userConfigurationInterface;
     
 }

@@ -78,6 +78,8 @@ GeographicMapDirectionUtil* GeographicMapDirectionUtil::instance = GeographicMap
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return GeographicMapDirectionUtil::instance;
     
 }
@@ -113,6 +115,8 @@ GeographicMapDirectionUtil::GeographicMapDirectionUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return directionFactory->LEFT;
     
 
@@ -126,6 +130,8 @@ GeographicMapDirectionUtil::GeographicMapDirectionUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return directionFactory->RIGHT;
     
 
@@ -139,6 +145,8 @@ GeographicMapDirectionUtil::GeographicMapDirectionUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return directionFactory->UP;
     
 
@@ -152,6 +160,8 @@ GeographicMapDirectionUtil::GeographicMapDirectionUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return directionFactory->DOWN;
     
 
@@ -165,6 +175,8 @@ GeographicMapDirectionUtil::GeographicMapDirectionUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return directionFactory->NO_DIRECTION;
     
 
@@ -186,6 +198,8 @@ GeographicMapDirectionUtil::GeographicMapDirectionUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return directionFactory->NOT_BORDERED_WITH;
     
 }
@@ -221,6 +235,8 @@ GeographicMapDirectionUtil::GeographicMapDirectionUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return directionFactory->LEFT;
     
 
@@ -234,6 +250,8 @@ GeographicMapDirectionUtil::GeographicMapDirectionUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return directionFactory->RIGHT;
     
 
@@ -254,6 +272,8 @@ GeographicMapDirectionUtil::GeographicMapDirectionUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return directionFactory->UP;
     
 
@@ -267,6 +287,8 @@ GeographicMapDirectionUtil::GeographicMapDirectionUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return directionFactory->UP_LEFT;
     
 
@@ -280,6 +302,8 @@ GeographicMapDirectionUtil::GeographicMapDirectionUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return directionFactory->UP_RIGHT;
     
 
@@ -300,6 +324,8 @@ GeographicMapDirectionUtil::GeographicMapDirectionUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return directionFactory->DOWN;
     
 
@@ -313,6 +339,8 @@ GeographicMapDirectionUtil::GeographicMapDirectionUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return directionFactory->DOWN_LEFT;
     
 
@@ -326,6 +354,8 @@ GeographicMapDirectionUtil::GeographicMapDirectionUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return directionFactory->DOWN_RIGHT;
     
 
@@ -342,6 +372,8 @@ GeographicMapDirectionUtil::GeographicMapDirectionUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return directionFactory->NO_DIRECTION;
     
 
@@ -363,6 +395,8 @@ GeographicMapDirectionUtil::GeographicMapDirectionUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return directionFactory->NOT_BORDERED_WITH;
     
 }
@@ -394,6 +428,8 @@ GeographicMapDirectionUtil::GeographicMapDirectionUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return directionFactory->LEFT;
     
 
@@ -407,6 +443,8 @@ GeographicMapDirectionUtil::GeographicMapDirectionUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return directionFactory->RIGHT;
     
 
@@ -420,6 +458,8 @@ GeographicMapDirectionUtil::GeographicMapDirectionUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return directionFactory->UP;
     
 
@@ -433,6 +473,8 @@ GeographicMapDirectionUtil::GeographicMapDirectionUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return directionFactory->DOWN;
     
 
@@ -480,6 +522,8 @@ stringMaker->delete_(0, stringMaker->length());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return directionFactory->NO_DIRECTION;
     
 
@@ -497,6 +541,8 @@ stringMaker->delete_(0, stringMaker->length());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return directionFactory->LEFT;
     
 
@@ -510,6 +556,8 @@ stringMaker->delete_(0, stringMaker->length());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return directionFactory->RIGHT;
     
 
@@ -530,6 +578,8 @@ stringMaker->delete_(0, stringMaker->length());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return directionFactory->UP_LEFT;
     
 
@@ -543,6 +593,8 @@ stringMaker->delete_(0, stringMaker->length());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return directionFactory->UP_RIGHT;
     
 
@@ -556,6 +608,8 @@ stringMaker->delete_(0, stringMaker->length());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return directionFactory->UP;
     
 
@@ -576,6 +630,8 @@ stringMaker->delete_(0, stringMaker->length());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return directionFactory->DOWN_LEFT;
     
 
@@ -589,6 +645,8 @@ stringMaker->delete_(0, stringMaker->length());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return directionFactory->DOWN_RIGHT;
     
 
@@ -602,6 +660,8 @@ stringMaker->delete_(0, stringMaker->length());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return directionFactory->DOWN;
     
 

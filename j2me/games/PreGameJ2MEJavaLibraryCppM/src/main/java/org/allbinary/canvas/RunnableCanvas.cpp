@@ -159,6 +159,8 @@ this->logUtil->putF(this->commonStrings->NOT_IMPLEMENTED, this, "initCommands");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -169,6 +171,8 @@ this->logUtil->putF(this->commonStrings->NOT_IMPLEMENTED, this, "initCommands");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -221,6 +225,8 @@ this->logUtil->putF((new StringMaker())->append(this->IS_RUNNING)->appendboolean
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->running;
     
 
@@ -262,6 +268,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->IS_RUNNING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -275,6 +283,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->IS_RUNNING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->loopTimeHelper;
     
 }
@@ -295,6 +305,8 @@ this->logUtil->putF((new StringMaker())->append("setWait - delay: ")->appendint(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->loopTimeHelper->delay;
     
 }
@@ -391,6 +403,8 @@ Thread::sleep(this->pauseWait);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -444,6 +458,8 @@ this->logUtil->putF(stringMaker->append(this->END_PAUSE)->appendlong(currentTime
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -486,6 +502,8 @@ this->logUtil->putF(stringMaker->append(this->END_PAUSE)->appendlong(currentTime
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -508,6 +526,8 @@ this->setCurrentThread();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 }

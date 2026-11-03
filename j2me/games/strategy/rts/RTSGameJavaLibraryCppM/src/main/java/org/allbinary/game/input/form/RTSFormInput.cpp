@@ -171,6 +171,8 @@ this->hashtable->put(DirectionFactory::getInstance()->NAME, DirectionFactory::ge
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -192,6 +194,8 @@ this->hashtable->put(DirectionFactory::getInstance()->NAME, DirectionFactory::ge
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -230,6 +234,8 @@ this->setAllBinaryGameLayerManager(dynamic_cast<AllBinaryGameLayerManager*>(laye
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -251,6 +257,8 @@ this->setAllBinaryGameLayerManager(dynamic_cast<AllBinaryGameLayerManager*>(laye
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -262,6 +270,8 @@ this->processStickyGameSpecific(associatedRtsLayer, rtsPlayerLayerInterface, lay
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -285,6 +295,8 @@ this->logUtil->putF((new StringMaker())->append("Point: ")->append(StringUtil::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return scrollSelectionForm->getSelectedItem(point);;
     
 }
@@ -302,6 +314,8 @@ this->logUtil->putF((new StringMaker())->append("Point: ")->append(StringUtil::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return scrollSelectionForm->getSelectedIndexForPoint(point);;
     
 }
@@ -331,6 +345,8 @@ this->logUtil->putF((new StringMaker())->append("Point: ")->append(StringUtil::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<RTSLayer*>(layerInterfaceFactoryInterface->getNextInstance(this->getHashtable(), cellPoint->getX(), cellPoint->getY(), cellPoint->getZ()));
     
 
@@ -340,6 +356,8 @@ this->logUtil->putF((new StringMaker())->append("Point: ")->append(StringUtil::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return CollidableDestroyableDamageableLayer::getNullInstance();;
     
 }
@@ -350,6 +368,8 @@ this->logUtil->putF((new StringMaker())->append("Point: ")->append(StringUtil::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->selectedGeographicCellPosition;
     
 }
@@ -368,6 +388,8 @@ this->selectedGeographicCellPosition= selectedGeographicCellPosition;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->stickyItemSelected;
     
 }
@@ -384,6 +406,8 @@ this->stickyItemSelected= stickyItemSelected;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->selectedStickyItem;
     
 }
@@ -400,6 +424,8 @@ this->selectedStickyItem= selectedStickyItem;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->selectedStickyItemIndex;
     
 }
@@ -416,6 +442,8 @@ this->selectedStickyItemIndex= selectedStickyItemIndex;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->hashtable;
     
 }

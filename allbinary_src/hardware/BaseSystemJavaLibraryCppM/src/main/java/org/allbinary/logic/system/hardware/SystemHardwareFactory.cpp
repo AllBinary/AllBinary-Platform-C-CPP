@@ -83,6 +83,8 @@ SystemHardwareFactory* SystemHardwareFactory::instance = SystemHardwareFactory::
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SystemHardwareFactory::instance;
     
 }
@@ -118,6 +120,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CO
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->hardwareInterface;
     
 }
@@ -153,6 +157,8 @@ osBuffer->append("Hardware Info: \n");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return osBuffer->toString();;
     
 }

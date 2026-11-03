@@ -92,6 +92,8 @@ this->setRunning(false);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 120000;
     
 }
@@ -108,6 +110,8 @@ this->startTime= startTime;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->startTime;
     
 }
@@ -124,6 +128,8 @@ this->running= running;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->running;
     
 }

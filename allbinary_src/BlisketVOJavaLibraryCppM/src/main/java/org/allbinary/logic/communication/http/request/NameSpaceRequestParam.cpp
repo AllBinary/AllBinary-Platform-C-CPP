@@ -229,6 +229,8 @@ packageIndex++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->nameSpaceVector;
     
 }
@@ -262,6 +264,8 @@ packageIndex++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return packagePropertiesHashMap;
     
 }
@@ -281,6 +285,8 @@ packageIndex++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->value;
     
 }
@@ -365,6 +371,8 @@ packagePropertiesHashMap->put(propertyName, propertyValue);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return packagePropertiesHashMap;
     
 }

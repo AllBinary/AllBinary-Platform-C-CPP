@@ -214,6 +214,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new BuildingLayer(RemoteInfo::REMOTE_INFO, SimulatedBuildingPropertiesFactory::getInstance(), AdvancedRTSProperties::createPropertiesSimulated(), GroupFactory::getInstance()->NULL_GROUP_ARRAY, StringUtil::getInstance()->EMPTY_STRING, StringUtil::getInstance()->EMPTY_STRING, Health::NULL_HEALTH, NullRTSFormInputFactory::getInstance(), nullAnimationInterfaceFactoryInterface, nullIndexedAnimationInterfaceFactoryInterface, nullAnimationInterfaceFactoryInterface, nullAnimationInterfaceFactoryInterface, nullIndexedAnimationInterfaceFactoryInterface, NullIndexedAnimationFactory::getFactoryInstance(), RectangleFactory::SINGLETON, 0, 0);
     
 }
@@ -403,6 +405,8 @@ this->indexedButShouldBeRotationAnimationInterface->nextFrame();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->efficiencyPerLevel;
     
 }
@@ -416,6 +420,8 @@ this->indexedButShouldBeRotationAnimationInterface->nextFrame();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return static_cast<int32_t>(total);
     
 }
@@ -431,6 +437,8 @@ this->logUtil->putF(JavaString::valueOf("Cost: ") +JavaString::valueOf(downgrade
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return static_cast<int32_t>(downgradeCost) *9 /10;
     
 }
@@ -444,6 +452,8 @@ this->logUtil->putF(JavaString::valueOf("Cost: ") +JavaString::valueOf(downgrade
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return static_cast<int32_t>(upgradeCost);
     
 }
@@ -478,6 +488,8 @@ this->getHealthInterface()->setMaxHealth(this->getHealthInterface()->getMaxHealt
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->buildingLevelCost;
     
 }
@@ -494,6 +506,8 @@ this->buildingLevelCost= buildingLevelCost;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->productivity;
     
 }
@@ -510,6 +524,8 @@ this->productivity= productivity;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->efficiency;
     
 }
@@ -598,6 +614,8 @@ this->pathsHashtable->put(occupyGeographicMapCellPosition, pathsList);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return pathsList;
     
 }
@@ -608,6 +626,8 @@ this->pathsHashtable->put(occupyGeographicMapCellPosition, pathsList);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->geographicMapCellPositionAreaBase->getSurroundingGeographicMapCellPositionList();;
     
 }
@@ -618,6 +638,8 @@ this->pathsHashtable->put(occupyGeographicMapCellPosition, pathsList);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -661,6 +683,8 @@ this->damageFloaters->add(damage);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -789,6 +813,8 @@ buildingInfoHudPaintable->setRtsLayer(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return buildingInfoHudPaintable;
     
 }
@@ -802,6 +828,8 @@ buildingInfoHudPaintable->setRtsLayer(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return buildingInfoHudPaintable;
     
 }
@@ -812,6 +840,8 @@ buildingInfoHudPaintable->setRtsLayer(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BuildingLayer::getStaticType();;
     
 }
@@ -822,6 +852,8 @@ buildingInfoHudPaintable->setRtsLayer(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 2;
     
 }

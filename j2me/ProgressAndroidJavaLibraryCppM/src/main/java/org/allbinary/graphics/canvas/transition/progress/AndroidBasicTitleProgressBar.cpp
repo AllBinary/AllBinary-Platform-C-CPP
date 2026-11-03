@@ -390,6 +390,8 @@ this->animation= NullAnimationFactory::getFactoryInstance()->getInstance(0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -400,6 +402,8 @@ this->animation= NullAnimationFactory::getFactoryInstance()->getInstance(0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -682,6 +686,8 @@ this->image= GameFeatureImageCacheFactory::getInstance()->getWithKey(AndroidBasi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return image;
     
 }
@@ -730,6 +736,8 @@ this->portion= portion;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->portion;
     
 }

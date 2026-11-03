@@ -105,6 +105,8 @@ ImagePersistanceUtil* ImagePersistanceUtil::instance = ImagePersistanceUtil::ins
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ImagePersistanceUtil::instance;
     
 }
@@ -240,6 +242,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->SA
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 

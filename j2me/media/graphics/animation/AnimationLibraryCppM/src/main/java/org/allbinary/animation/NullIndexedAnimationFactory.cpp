@@ -99,6 +99,8 @@ NullIndexedAnimationFactory::NullIndexedAnimationFactory() : NULL_ANIMATION(java
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NullIndexedAnimationFactory::NULL_INDEXED_ANIMATION_FACTORY;
     
 }
@@ -111,6 +113,8 @@ NullIndexedAnimationFactory::NullIndexedAnimationFactory() : NULL_ANIMATION(java
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->NULL_ANIMATION;
     
 }
@@ -123,6 +127,8 @@ NullIndexedAnimationFactory::NullIndexedAnimationFactory() : NULL_ANIMATION(java
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->NULL_ANIMATION;
     
 }

@@ -96,6 +96,8 @@ GameSkill::hashMap->put((new StringMaker())->append(this->getGameSkillType()->ge
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->gameSkillType;
     
 }
@@ -112,6 +114,8 @@ this->gameSkillType= gameSkillType;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->extra;
     
 }
@@ -128,6 +132,8 @@ this->extra= extra;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->time;
     
 }
@@ -150,6 +156,8 @@ this->vector->add(gameSkillPropertyInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->vector;
     
 }
@@ -160,6 +168,8 @@ this->vector->add(gameSkillPropertyInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<GameSkill*>(GameSkill::hashMap->get((new StringMaker())->append(gameSkillType->getName())->append(CommonSeps::getInstance()->SPACE)->append(extra)->toString()));
     
 }
@@ -192,6 +202,8 @@ stringBuffer->appendlong(this->getTime());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

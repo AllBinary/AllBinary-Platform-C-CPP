@@ -97,6 +97,8 @@ this->setState(Player::UNREALIZED);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 }
@@ -107,6 +109,8 @@ this->setState(Player::UNREALIZED);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new NullControl();
     
 }
@@ -117,6 +121,8 @@ this->setState(Player::UNREALIZED);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return {};
     
 }
@@ -151,6 +157,8 @@ this->listenersList->remove(playerListener);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->stateP;
     
 }
@@ -168,6 +176,8 @@ this->stateP= state;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -178,6 +188,8 @@ this->stateP= state;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -211,6 +223,8 @@ this->loopCountP= count;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->loopCountP;
     
 }
@@ -224,6 +238,8 @@ this->loopCountP= count;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }

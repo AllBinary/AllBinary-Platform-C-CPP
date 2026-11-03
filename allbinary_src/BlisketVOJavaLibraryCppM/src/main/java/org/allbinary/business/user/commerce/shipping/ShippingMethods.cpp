@@ -94,6 +94,8 @@ this->shippingVector= (new ShippingMethodsFactory(abeClientInformation, storeFro
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->shippingVector;
     
 }
@@ -123,6 +125,8 @@ shipping= dynamic_cast<ShippingInterface*>(this->shippingVector->get(index));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return shipping;
     
 }
@@ -154,6 +158,8 @@ shipping= dynamic_cast<ShippingInterface*>(this->shippingVector->get(index));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->defaultShippingMethodInterface;
     
 }

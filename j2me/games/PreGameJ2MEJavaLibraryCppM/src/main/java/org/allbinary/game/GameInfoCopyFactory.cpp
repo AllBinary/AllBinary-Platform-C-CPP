@@ -65,6 +65,8 @@ GameInfoCopyFactory::GameInfoCopyFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new GameInfo(gameInfo->getGameType(), gameInfo->getGameMode(), gameInfo->getPlayerType(), maxLevel, gameInfo->getCurrentLevel());
     
 }
@@ -75,6 +77,8 @@ GameInfoCopyFactory::GameInfoCopyFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new GameInfo(gameInfo->getGameType(), gameInfo->getGameMode(), gameInfo->getPlayerType(), gameInfo->getHighestLevel(), gameInfo->getCurrentLevel());
     
 }

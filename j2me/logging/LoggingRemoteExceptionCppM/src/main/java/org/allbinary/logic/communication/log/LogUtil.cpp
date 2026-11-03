@@ -99,6 +99,8 @@ LogUtil* LogUtil::instance = LogUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return LogUtil::instance;
     
 }
@@ -119,6 +121,8 @@ LogUtil::LogUtil() : timeDelayHelper(new TimeDelayHelper(200000)), stringBuffer(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -164,6 +168,8 @@ this->put(specialMessage, anyType, functionName, exception);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -177,6 +183,8 @@ this->put(specialMessage, anyType, functionName, exception);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 

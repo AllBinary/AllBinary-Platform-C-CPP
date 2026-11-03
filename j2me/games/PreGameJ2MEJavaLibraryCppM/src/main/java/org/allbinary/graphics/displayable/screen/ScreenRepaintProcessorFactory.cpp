@@ -73,6 +73,8 @@ ScreenRepaintProcessorFactory* ScreenRepaintProcessorFactory::instance = ScreenR
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ScreenRepaintProcessorFactory::instance;
     
 }
@@ -91,6 +93,8 @@ ScreenRepaintProcessorFactory::ScreenRepaintProcessorFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new ScreenRepaintProcessor(displayable);
     
 
@@ -101,6 +105,8 @@ ScreenRepaintProcessorFactory::ScreenRepaintProcessorFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Processor::getInstance();;
     
 

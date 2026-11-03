@@ -108,6 +108,8 @@ BuildingPropertiesFactory* BuildingPropertiesFactory::instance = BuildingPropert
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BuildingPropertiesFactory::instance;
     
 }
@@ -118,6 +120,8 @@ BuildingPropertiesFactory* BuildingPropertiesFactory::instance = BuildingPropert
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 10000 /buildingLayer->getMaxLevel() +10000 % buildingLayer->getMaxLevel();
     
 }
@@ -148,6 +152,8 @@ this->damageFloatersPaintableInterface= damageFloaters;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return damageFloaters;
     
 }
@@ -172,6 +178,8 @@ this->damageFloatersPaintableInterface= damageFloaters;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return healthBar;
     
 }
@@ -182,6 +190,8 @@ this->damageFloatersPaintableInterface= damageFloaters;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StdUtil::getInstance()->createHashtable();;
     
 }
@@ -192,6 +202,8 @@ this->damageFloatersPaintableInterface= damageFloaters;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new TrackingEvent(buildingLayer);
     
 }

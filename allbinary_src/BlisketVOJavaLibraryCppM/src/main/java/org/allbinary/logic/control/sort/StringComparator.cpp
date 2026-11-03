@@ -74,6 +74,8 @@ StringComparator::StringComparator(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return string.compare(string2);;
     
 }

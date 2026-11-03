@@ -404,6 +404,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->gameInputStrings-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return terrainTiledLayer->getHeight() -displayInfo->getLastHeight();
     
 
@@ -414,6 +416,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->gameInputStrings-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return displayInfo->getLastHeight() -terrainTiledLayer->getHeight() +terrainTiledLayer->getCellHeight();
     
 
@@ -437,6 +441,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->gameInputStrings-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return terrainTiledLayer->getWidth() -displayInfo->getLastWidth();
     
 
@@ -447,6 +453,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->gameInputStrings-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return displayInfo->getLastWidth() -terrainTiledLayer->getWidth() +terrainTiledLayer->getCellWidth();
     
 
@@ -467,6 +475,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->gameInputStrings-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -477,6 +487,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->gameInputStrings-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -497,6 +509,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->gameInputStrings-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -507,6 +521,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->gameInputStrings-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -527,6 +543,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->gameInputStrings-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -537,6 +555,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->gameInputStrings-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -557,6 +577,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->gameInputStrings-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -567,6 +589,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->gameInputStrings-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 

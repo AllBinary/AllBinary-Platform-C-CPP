@@ -101,6 +101,8 @@ BasketReview::BasketReview() : items(new BasicArrayListD()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 }
@@ -117,6 +119,8 @@ this->items->add(item);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->items;
     
 }
@@ -212,6 +216,8 @@ weightFloat += (float(item->getWeight()));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (float(weightFloat)).toString();;
     
 }
@@ -222,6 +228,8 @@ weightFloat += (float(item->getWeight()));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return int32_t(this->items->size());
     
 }
@@ -255,6 +263,8 @@ idSet->add(item->getId());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<Set*>(idSet);
     
 }
@@ -285,6 +295,8 @@ idSet->add(item->getId());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return int32_t(item->getNumber());
     
 
@@ -296,6 +308,8 @@ idSet->add(item->getId());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return int32_t(0);
     
 }
@@ -331,6 +345,8 @@ node->appendChild((new ItemView(item, new BasicArrayListD()))->toXmlNode(documen
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }

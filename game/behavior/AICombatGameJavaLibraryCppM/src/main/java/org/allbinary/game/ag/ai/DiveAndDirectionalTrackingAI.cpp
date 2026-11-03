@@ -233,6 +233,8 @@ TrackingEventHandler::getInstance()->addListenerInterface(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -257,6 +259,8 @@ this->lastTrackingLayerInterface= lastTrackingEvent->getLayerInterface();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -545,6 +549,8 @@ this->aiVistor->visit(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -555,6 +561,8 @@ this->aiVistor->visit(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -575,6 +583,8 @@ this->aiVistor->visit(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -585,6 +595,8 @@ this->aiVistor->visit(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -605,6 +617,8 @@ this->aiVistor->visit(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -615,6 +629,8 @@ this->aiVistor->visit(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -635,6 +651,8 @@ this->aiVistor->visit(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -645,6 +663,8 @@ this->aiVistor->visit(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -658,6 +678,8 @@ this->aiVistor->visit(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -758,6 +780,8 @@ BasicAI::setLastKey(lastKey);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->lastDirection;
     
 }
@@ -777,6 +801,8 @@ stringBuffer->append(StringUtil::getInstance()->toString(this->getLastDirection(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

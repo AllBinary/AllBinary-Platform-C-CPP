@@ -78,6 +78,8 @@ OperatingSystemFactory* OperatingSystemFactory::instance = OperatingSystemFactor
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return OperatingSystemFactory::instance;
     
 }
@@ -113,6 +115,8 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->genericOperatingSystem;
     
 }

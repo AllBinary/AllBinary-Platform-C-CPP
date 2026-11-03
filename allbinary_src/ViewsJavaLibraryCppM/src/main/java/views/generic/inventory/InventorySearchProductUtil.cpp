@@ -113,6 +113,8 @@ InventorySearchProductUtil* InventorySearchProductUtil::instance = InventorySear
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return InventorySearchProductUtil::instance;
     
 }
@@ -150,6 +152,8 @@ viewDocumentInterface->getBaseNode()->appendChild((new BasicItemView(itemInterfa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return outputStr;
     
 
@@ -160,6 +164,8 @@ viewDocumentInterface->getBaseNode()->appendChild((new BasicItemView(itemInterfa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->ITEM_NOT_FOUND;
     
 

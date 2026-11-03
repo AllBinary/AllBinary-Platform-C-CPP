@@ -121,6 +121,8 @@ this->file= AbFile::createAbFileFromAbPath(new AbPath(fullPath->toFileSystemStri
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->isFile();;
     
 }
@@ -131,6 +133,8 @@ this->file= AbFile::createAbFileFromAbPath(new AbPath(fullPath->toFileSystemStri
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->userRoles;
     
 }

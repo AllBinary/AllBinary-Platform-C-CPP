@@ -151,6 +151,8 @@ this->idGeneratorEntity->update(this->name, newValue);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::valueOf(idLong);;
     
 
@@ -173,6 +175,8 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "getNext", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error";
     
 }

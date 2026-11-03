@@ -157,6 +157,8 @@ this->myFontProcessor= this->updateMyFontProcessor;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->primitiveLongUtil;
     
 }
@@ -173,6 +175,8 @@ this->animationInterface= animationInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->animationInterface;
     
 }
@@ -189,6 +193,8 @@ this->name= name;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }
@@ -207,6 +213,8 @@ this->setColor(basicColor->intValue());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->basicColor;
     
 }
@@ -223,6 +231,8 @@ this->color= color;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->color;
     
 }
@@ -233,6 +243,8 @@ this->color= color;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->width;
     
 }
@@ -249,6 +261,8 @@ this->height= height;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->height;
     
 }
@@ -259,6 +273,8 @@ this->height= height;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->x;
     
 }

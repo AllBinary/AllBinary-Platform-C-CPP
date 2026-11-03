@@ -69,6 +69,8 @@ TouchScreenFactory::TouchScreenFactory() : touchScreenType(TouchScreenTypesFacto
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TouchScreenFactory::SINGLETON;
     
 }
@@ -79,6 +81,8 @@ TouchScreenFactory::TouchScreenFactory() : touchScreenType(TouchScreenTypesFacto
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->multiTouch;
     
 }
@@ -93,6 +97,8 @@ TouchScreenFactory::TouchScreenFactory() : touchScreenType(TouchScreenTypesFacto
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->touch;
     
 }
@@ -103,6 +109,8 @@ TouchScreenFactory::TouchScreenFactory() : touchScreenType(TouchScreenTypesFacto
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->touchScreenType;
     
 }

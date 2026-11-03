@@ -354,6 +354,8 @@ this->repaintBehavior->onChangeRepaint(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return CommandCurrentSelectionFormFactory::getInstance(StringUtil::getInstance()->EMPTY_STRING, items, rectangle, FormTypeFactory::getInstance()->VERTICAL_CENTER_FORM, 15, false, this->backgroundBasicColor, this->foregroundBasicColor);;
     
 }
@@ -376,6 +378,8 @@ this->repaintBehavior->onChangeRepaint(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return rectangle;
     
 }
@@ -418,6 +422,8 @@ this->repaintProcessor->process();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return GameCommandCanvas::id;
     
 }
@@ -563,6 +569,8 @@ this->menuInputProcessor= menuInputProcessor;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->menuInputProcessor;
     
 }

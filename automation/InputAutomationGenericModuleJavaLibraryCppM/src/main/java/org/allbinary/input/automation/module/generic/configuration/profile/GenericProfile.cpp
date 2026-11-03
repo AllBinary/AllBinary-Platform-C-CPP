@@ -143,6 +143,8 @@ this->vector= new BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->vector;
     
 }
@@ -189,6 +191,8 @@ node->appendChild(genericProfileDataWorkerType->toXmlNode(document));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }
@@ -199,6 +203,8 @@ node->appendChild(genericProfileDataWorkerType->toXmlNode(document));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }
@@ -215,6 +221,8 @@ this->name= name;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->genericProfileActions;
     
 }

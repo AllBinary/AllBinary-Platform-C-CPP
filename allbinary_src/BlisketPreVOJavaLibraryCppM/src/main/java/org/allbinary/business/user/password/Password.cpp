@@ -113,6 +113,8 @@ this->password= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->password;
     
 }
@@ -158,6 +160,8 @@ valid= Boolean::FALSE;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return valid;
     
 
@@ -177,6 +181,8 @@ valid= Boolean::FALSE;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -193,6 +199,8 @@ valid= Boolean::FALSE;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Please enter a Password with more than 6 characters.<br />";
     
 
@@ -205,6 +213,8 @@ valid= Boolean::FALSE;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringUtil->EMPTY_STRING;
     
 }
@@ -229,6 +239,8 @@ vector->add((new SuperCrypt(random))->encrypt(this->password));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return vector;
     
 }
@@ -253,6 +265,8 @@ values->put(UserData::PASSWORD, (new SuperCrypt(random))->encrypt(this->password
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return values;
     
 }

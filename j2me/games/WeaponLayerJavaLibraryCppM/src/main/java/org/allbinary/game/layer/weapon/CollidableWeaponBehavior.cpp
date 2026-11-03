@@ -103,6 +103,8 @@ Object* CollidableWeaponBehavior::NULL_COLLIDABLE_WEAPON_BEHAVIOR = NullUtil::ge
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<CollidableWeaponBehavior*>(CollidableWeaponBehavior::NULL_COLLIDABLE_WEAPON_BEHAVIOR);
     
 }
@@ -145,6 +147,8 @@ this->collisionHelper->setOwnerLayerInterface(sourceLayerInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return CollidableDestroyableDamageableBehavior::isCollision(ownerLayer, collisionLayer);;
     
 
@@ -157,6 +161,8 @@ this->collisionHelper->setOwnerLayerInterface(sourceLayerInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -192,6 +198,8 @@ this->collided= true;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -207,6 +215,8 @@ this->collided= true;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -233,6 +243,8 @@ this->collided= true;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return CollisionTypeFactory::getInstance()->COLLISION;
     
 }
@@ -243,6 +255,8 @@ this->collided= true;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->collided;
     
 }

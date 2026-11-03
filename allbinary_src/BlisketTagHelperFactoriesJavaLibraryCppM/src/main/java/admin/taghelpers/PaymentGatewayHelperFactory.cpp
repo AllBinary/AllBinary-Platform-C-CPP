@@ -85,6 +85,8 @@ PaymentGatewayHelperFactory::PaymentGatewayHelperFactory() : logUtil(LogUtil::ge
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new PaymentGatewayHelper(hashMap, pageContext);
     
 
@@ -104,6 +106,8 @@ PaymentGatewayHelperFactory::PaymentGatewayHelperFactory() : logUtil(LogUtil::ge
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

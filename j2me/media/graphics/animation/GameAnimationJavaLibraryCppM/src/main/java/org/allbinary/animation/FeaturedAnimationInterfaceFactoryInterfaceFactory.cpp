@@ -104,6 +104,8 @@ FeaturedAnimationInterfaceFactoryInterfaceFactory::FeaturedAnimationInterfaceFac
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return FeaturedAnimationInterfaceFactoryInterfaceFactory::INSTANCE;
     
 }
@@ -116,6 +118,8 @@ FeaturedAnimationInterfaceFactoryInterfaceFactory::FeaturedAnimationInterfaceFac
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getRectangleXY(resource, 0, 0);;
     
 }
@@ -161,6 +165,8 @@ FeaturedAnimationInterfaceFactoryInterfaceFactory::FeaturedAnimationInterfaceFac
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new Rectangle(pointFactory->createXY(x, y), ((rectangle->getWidth() *scale)>>1), ((rectangle->getHeight() *scale)>>1));
     
 
@@ -186,6 +192,8 @@ FeaturedAnimationInterfaceFactoryInterfaceFactory::FeaturedAnimationInterfaceFac
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<ProceduralAnimationInterfaceFactoryInterface*>(this->getBasicAnimationInterfaceFactoryInstance(resource));
     
 }
@@ -198,6 +206,8 @@ FeaturedAnimationInterfaceFactoryInterfaceFactory::FeaturedAnimationInterfaceFac
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<AnimationInterfaceFactoryInterface*>(this->getBasicAnimationInterfaceFactoryInstance(resource));
     
 }
@@ -246,6 +256,8 @@ animationInterfaceFactoryInterface= featureInterface->getBasicAnimationInterface
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return animationInterfaceFactoryInterface;
     
 

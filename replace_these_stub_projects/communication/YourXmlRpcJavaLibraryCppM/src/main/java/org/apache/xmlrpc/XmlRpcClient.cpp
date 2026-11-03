@@ -75,6 +75,8 @@ this->url= new URL(url);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->url;
     
 }
@@ -91,7 +93,9 @@ this->url= new URL(url);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil::getInstance()->NULL_OBJECT;
+                        
+                        
+                        return JavaBoxes::toObject(NullUtil::getInstance()->NULL_OBJECT);
     
 }
 
@@ -103,7 +107,9 @@ this->url= new URL(url);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil::getInstance()->NULL_OBJECT;
+                        
+                        
+                        return JavaBoxes::toObject(NullUtil::getInstance()->NULL_OBJECT);
     
 }
 

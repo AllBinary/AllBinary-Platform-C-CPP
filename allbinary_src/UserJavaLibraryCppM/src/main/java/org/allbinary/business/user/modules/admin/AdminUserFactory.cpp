@@ -79,6 +79,8 @@ AdminUserFactory::AdminUserFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AdminUser();
     
 }
@@ -91,6 +93,8 @@ AdminUserFactory::AdminUserFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AdminUser(hashMap);
     
 }

@@ -77,6 +77,8 @@ this->destroyableBaseBehavior= destroyableBaseBehavior;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->damageableBaseBehavior;
     
 }
@@ -87,6 +89,8 @@ this->destroyableBaseBehavior= destroyableBaseBehavior;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->destroyableBaseBehavior;
     
 }
@@ -97,6 +101,8 @@ this->destroyableBaseBehavior= destroyableBaseBehavior;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->readyForExplosion;
     
 }

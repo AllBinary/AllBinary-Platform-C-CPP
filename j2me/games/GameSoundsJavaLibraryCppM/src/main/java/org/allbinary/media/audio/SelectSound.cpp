@@ -72,6 +72,8 @@ SelectSound::SelectSound() : CompositeSound("resource:/wav/select.wav"){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SelectSound::soundInterface;
     
 }

@@ -109,6 +109,8 @@ newValueNode->appendChild(newValueTextNode);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return newValueNode;
     
 }
@@ -121,6 +123,8 @@ newValueNode->appendChild(newValueTextNode);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ModDomHelper::createTextNode(document, DomData::VALUE, text);;
     
 }
@@ -133,6 +137,8 @@ newValueNode->appendChild(newValueTextNode);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ModDomHelper::createTextNode(document, DomData::NAME, text);;
     
 }
@@ -145,6 +151,8 @@ newValueNode->appendChild(newValueTextNode);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ModDomHelper::createTextNode(document, DomData::INDEX, (int32_t(index)).toString());;
     
 }
@@ -164,6 +172,8 @@ newNode->appendChild(ModDomHelper::createValueNode(document, valueText));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return newNode;
     
 }
@@ -179,6 +189,8 @@ newNode->appendChild(ModDomHelper::createValueNode(document, valueText));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return newNode;
     
 }
@@ -196,6 +208,8 @@ newNode->appendChild(ModDomHelper::createIndexNode(document, index));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return newNode;
     
 }
@@ -211,6 +225,8 @@ newNode->appendChild(ModDomHelper::createIndexNode(document, index));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ModDomHelper::createNameValueNodes(document, node, hashMap);;
     
 }
@@ -301,6 +317,8 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }
@@ -336,6 +354,8 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, duplicateNodeName
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }
@@ -371,6 +391,8 @@ node->appendChild(ModDomHelper::createNameValueIndexNodes(document, duplicateNod
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }
@@ -386,6 +408,8 @@ node->appendChild(ModDomHelper::createNameValueIndexNodes(document, duplicateNod
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ModDomHelper::createNodeWithValueNodes(document, node, hashMap);;
     
 }
@@ -430,6 +454,8 @@ node->appendChild(ModDomHelper::createTextNode(document, name, value));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }

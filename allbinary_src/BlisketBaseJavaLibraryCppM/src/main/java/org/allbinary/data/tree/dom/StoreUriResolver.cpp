@@ -166,6 +166,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->uriResolverStrings->RE
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new StreamSource((new CryptFileReader(TransformInfoTemplateData::getInstance()->UNCRYPTED_EXTENSION, TransformInfoTemplateData::getInstance()->ENCRYPTED_EXTENSION))->getInputStream(fileAbPath));
     
 
@@ -199,6 +201,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->uriResolverStrings->RE
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::valueOf(URLGLOBALS::getMainPath() +FREEBLISKET_PATH_GLOBALS::getInstance()->XSLPATH) +JavaString::valueOf("{Store Name if Any}/{import url}");
     
 
@@ -209,6 +213,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->uriResolverStrings->RE
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "StoreUriResolver - Does not work without webapp path should be changed";
     
 }

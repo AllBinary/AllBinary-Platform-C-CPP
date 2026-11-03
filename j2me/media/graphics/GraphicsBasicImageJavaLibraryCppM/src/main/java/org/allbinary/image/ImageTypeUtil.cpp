@@ -95,6 +95,8 @@ mediaFileType= JavaString::toLowerCase(mediaFileType);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -106,6 +108,8 @@ mediaFileType= JavaString::toLowerCase(mediaFileType);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -116,6 +120,8 @@ mediaFileType= JavaString::toLowerCase(mediaFileType);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ImageTypeUtil::SINGLETON;
     
 }

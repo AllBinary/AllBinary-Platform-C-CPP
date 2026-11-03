@@ -106,6 +106,8 @@ AllBinaryMediaManager::AllBinaryMediaManager(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -120,6 +122,8 @@ AllBinaryMediaManager::AllBinaryMediaManager(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -170,6 +174,8 @@ TsUtil::getInstance()->gc();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Manager::createPlayer(resource);;
     
 
@@ -183,6 +189,8 @@ TsUtil::getInstance()->gc();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Manager::createPlayer(inputStream, AudioContentTypeDataFactory::getInstance()->MIME_AUDIO_WAV->getName());;
     
 
@@ -196,6 +204,8 @@ TsUtil::getInstance()->gc();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NoPlayer::NO_PLAYER;
     
 

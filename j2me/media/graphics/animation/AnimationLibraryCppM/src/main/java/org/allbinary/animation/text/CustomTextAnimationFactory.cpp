@@ -96,6 +96,8 @@ customTextAnimationFactory->dy= dy;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return customTextAnimationFactory;
     
 }
@@ -144,6 +146,8 @@ customTextAnimation->setBasicColorP(this->basicColor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return customTextAnimation;
     
 }
@@ -158,6 +162,8 @@ customTextAnimation->setBasicColorP(this->basicColor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->font->stringWidth(this->text);;
     
 }
@@ -168,6 +174,8 @@ customTextAnimation->setBasicColorP(this->basicColor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->font->getHeight();;
     
 }

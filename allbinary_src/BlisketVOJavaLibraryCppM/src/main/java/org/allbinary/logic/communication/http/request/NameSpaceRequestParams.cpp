@@ -216,6 +216,8 @@ node->appendChild(propertyNode);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }
@@ -269,6 +271,8 @@ nextNode->appendChild(indexNode);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nextNode;
     
 }
@@ -313,6 +317,8 @@ document->appendChild(node);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 
@@ -332,6 +338,8 @@ document->appendChild(node);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return rootNode;
     
 
@@ -443,6 +451,8 @@ node->appendChild(newPropertyNode);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }
@@ -492,6 +502,8 @@ node->appendChild(newPropertyNode);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -505,6 +517,8 @@ node->appendChild(newPropertyNode);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -514,6 +528,8 @@ node->appendChild(newPropertyNode);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -552,6 +568,8 @@ node->appendChild(newPropertyNode);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return index;
     
 
@@ -563,6 +581,8 @@ node->appendChild(newPropertyNode);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 }
@@ -707,6 +727,8 @@ node= this->addNewProperties(document, nodeNameDuplicateNode, nextPackagePropert
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return document;
     
 }
@@ -757,6 +779,8 @@ node= this->addNewProperties(document, nodeNameDuplicateNode, nextPackagePropert
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->addChildren(document, dynamic_cast<Node*>(rootNode), nameSpaceRequestParam);;
     
 
@@ -768,6 +792,8 @@ node= this->addNewProperties(document, nodeNameDuplicateNode, nextPackagePropert
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return document;
     
 }
@@ -914,6 +940,8 @@ hashMap->put(NameSpaceRequestParamData::DOCUMENT, document);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }

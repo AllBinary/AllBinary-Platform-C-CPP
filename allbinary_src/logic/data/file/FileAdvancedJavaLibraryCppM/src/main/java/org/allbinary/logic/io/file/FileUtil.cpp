@@ -134,6 +134,8 @@ FileUtil* FileUtil::instance = FileUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return FileUtil::instance;
     
 }
@@ -273,6 +275,8 @@ this->directory->create(fixedPath);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return outPath;
     
 }
@@ -305,6 +309,8 @@ this->copyToCloud(file, path, realPath, cloud, false, false);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -400,6 +406,8 @@ this->copyToCloud(file, outFile, false, false);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -575,6 +583,8 @@ this->logUtil->putF(stringBuffer->toString(), getInstance(), "copyFile");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -593,6 +603,8 @@ this->logUtil->putF(stringBuffer->toString(), getInstance(), "copyFile");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -643,6 +655,8 @@ this->logUtil->putF(stringBuffer->toString(), getInstance(), "copyFile");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -724,6 +738,8 @@ lastIndex= JavaString::lastIndexOf(newDirectory, separatorChar);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::substring(newDirectory, lastIndex, newDirectory.size());;
     
 }
@@ -1237,6 +1253,8 @@ this->copyDirectory(fromLocationFile, toLocationFile);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -1297,6 +1315,8 @@ skipFile= skipFiles[index];
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -1308,6 +1328,8 @@ skipFile= skipFiles[index];
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -1360,6 +1382,8 @@ dataOutputStream->flush();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return FileUtil2::getInstance()->loadFileAsList(file, max, byteArray1);;
     
 }

@@ -74,6 +74,8 @@ auto ABHashMap<K, V>::size() -> int32_t{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return HashMap<K, V>::size();;
     
 }
@@ -85,6 +87,8 @@ auto ABHashMap<K, V>::isEmpty() -> bool{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return HashMap<K, V>::isEmpty();;
     
 }
@@ -96,6 +100,8 @@ auto ABHashMap<K, V>::get(Object* key) -> V{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return HashMap<K, V>::get(key);;
     
 }
@@ -107,6 +113,8 @@ auto ABHashMap<K, V>::containsKey(Object* key) -> bool{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return HashMap<K, V>::containsKey(key);;
     
 }
@@ -118,6 +126,8 @@ auto ABHashMap<K, V>::put(K key, V value) -> V{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return HashMap<K, V>::put(key, value);;
     
 }
@@ -140,6 +150,8 @@ auto ABHashMap<K, V>::remove(Object* key) -> V{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return HashMap<K, V>::remove(key);;
     
 }
@@ -158,6 +170,8 @@ auto ABHashMap<K, V>::containsValue(Object* value) -> bool{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return HashMap<K, V>::containsValue(value);;
     
 }
@@ -169,6 +183,8 @@ auto ABHashMap<K, V>::keySet() -> Set<K>*{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return HashMap<K, V>::keySet();;
     
 }
@@ -180,6 +196,8 @@ auto ABHashMap<K, V>::entrySet() -> Set<Entry<K, V>*>*{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return HashMap<K, V>::entrySet();;
     
 }
@@ -191,6 +209,8 @@ auto ABHashMap<K, V>::getOrDefault(Object* key, V defaultValue) -> V{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return HashMap<K, V>::getOrDefault(key, defaultValue);;
     
 }
@@ -202,6 +222,8 @@ auto ABHashMap<K, V>::putIfAbsent(K key, V value) -> V{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return HashMap<K, V>::putIfAbsent(key, value);;
     
 }
@@ -213,6 +235,8 @@ auto ABHashMap<K, V>::clone() -> Object*{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return HashMap<K, V>::clone();;
     
 }

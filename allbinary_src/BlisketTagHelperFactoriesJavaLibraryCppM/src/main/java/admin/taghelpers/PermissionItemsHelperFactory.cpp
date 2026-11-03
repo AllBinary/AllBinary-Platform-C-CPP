@@ -85,6 +85,8 @@ PermissionItemsHelperFactory::PermissionItemsHelperFactory() : logUtil(LogUtil::
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new PermissionItemsHelper(hashMap, pageContext);
     
 
@@ -104,6 +106,8 @@ PermissionItemsHelperFactory::PermissionItemsHelperFactory() : logUtil(LogUtil::
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

@@ -93,6 +93,8 @@ this->email= new AbEmail(basicEmailInfo->getEmailServerConfigurationInterface()-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<Email*>(this->email->getEmail());
     
 }
@@ -103,6 +105,8 @@ this->email= new AbEmail(basicEmailInfo->getEmailServerConfigurationInterface()-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->email->getMimeMessage();;
     
 }
@@ -113,6 +117,8 @@ this->email= new AbEmail(basicEmailInfo->getEmailServerConfigurationInterface()-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->email->getDebugInfo();;
     
 }
@@ -125,6 +131,8 @@ this->email= new AbEmail(basicEmailInfo->getEmailServerConfigurationInterface()-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->email->log();;
     
 }
@@ -137,6 +145,8 @@ this->email= new AbEmail(basicEmailInfo->getEmailServerConfigurationInterface()-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->email->toHashMap();;
     
 }
@@ -149,6 +159,8 @@ this->email= new AbEmail(basicEmailInfo->getEmailServerConfigurationInterface()-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->email->toXmlNode(document);;
     
 }
@@ -161,6 +173,8 @@ this->email= new AbEmail(basicEmailInfo->getEmailServerConfigurationInterface()-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->email->toXmlDoc();;
     
 }

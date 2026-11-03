@@ -89,6 +89,8 @@ InventoryItemViewParentTagHelper* InventoryItemViewParentTagHelper::instance = I
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return InventoryItemViewParentTagHelper::instance;
     
 }
@@ -136,6 +138,8 @@ stringBuffer->append(inventoryTag->getHelper()->getClass()->getName());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<InventoryItemView*>(viewObject);
     
 
@@ -195,6 +199,8 @@ stringBuffer->append(inventoryTag->getHelper()->getClass()->getName());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<DownloadableInventoryItemView*>(viewObject);
     
 
@@ -254,6 +260,8 @@ stringBuffer->append(inventoryTag->getHelper()->getClass()->getName());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<RequestMapInterface*>(viewObject);
     
 

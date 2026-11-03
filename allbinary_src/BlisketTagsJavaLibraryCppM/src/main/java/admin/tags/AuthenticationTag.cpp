@@ -179,6 +179,8 @@ this->roles= values;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;;
     
 
@@ -208,6 +210,8 @@ this->roles= values;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -238,6 +242,8 @@ this->roles= values;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;;
     
 
@@ -267,6 +273,8 @@ this->roles= values;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -297,6 +305,8 @@ this->roles= values;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return resultInteger;;
     
 
@@ -326,6 +336,8 @@ this->roles= values;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TagSupport::SKIP_BODY;
     
 }
@@ -356,6 +368,8 @@ this->roles= values;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return resultBoolean;;
     
 
@@ -385,6 +399,8 @@ this->roles= values;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -425,6 +441,8 @@ this->roles= values;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return resultBoolean;;
     
 
@@ -454,6 +472,8 @@ this->roles= values;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -484,6 +504,8 @@ this->roles= values;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 
@@ -516,6 +538,8 @@ this->roles= values;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -546,6 +570,8 @@ this->roles= values;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 
@@ -578,6 +604,8 @@ this->roles= values;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -618,6 +646,8 @@ this->roles= values;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return resultBoolean;;
     
 
@@ -647,6 +677,8 @@ this->roles= values;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -687,6 +719,8 @@ this->roles= values;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return resultBoolean;;
     
 
@@ -716,6 +750,8 @@ this->roles= values;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -746,6 +782,8 @@ this->roles= values;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return resultBoolean;;
     
 
@@ -775,6 +813,8 @@ this->roles= values;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -838,6 +878,8 @@ this->logUtil->putF(stringBuffer->toString(), this, tagStrings.DO_START_TAG);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return EVAL_BODY_INCLUDE;
     
 
@@ -850,6 +892,8 @@ this->logUtil->putF(stringBuffer->toString(), this, tagStrings.DO_START_TAG);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SKIP_BODY;
     
 
@@ -881,6 +925,8 @@ this->logUtil->putF(stringBuffer->toString(), this, tagStrings.DO_START_TAG);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return EVAL_BODY_INCLUDE;
     
 
@@ -893,6 +939,8 @@ this->logUtil->putF(stringBuffer->toString(), this, tagStrings.DO_START_TAG);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SKIP_BODY;
     
 
@@ -918,6 +966,8 @@ this->logUtil->putF(stringBuffer->toString(), this, tagStrings.DO_START_TAG);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->invalidateSession();;
     
 
@@ -951,6 +1001,8 @@ pageContext.getOut()->print("Please login again.<p>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TagSupport::SKIP_BODY;
     
 
@@ -961,6 +1013,8 @@ pageContext.getOut()->print("Please login again.<p>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TagSupport::EVAL_BODY_INCLUDE;
     
 
@@ -987,6 +1041,8 @@ pageContext.getOut()->print("Please login again.<p>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TagSupport::SKIP_BODY;
     
 
@@ -997,6 +1053,8 @@ pageContext.getOut()->print("Please login again.<p>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TagSupport::EVAL_BODY_INCLUDE;
     
 
@@ -1031,6 +1089,8 @@ pageContext.getOut()->print("Please login again.<p>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TagSupport::EVAL_BODY_INCLUDE;
     
 
@@ -1041,6 +1101,8 @@ pageContext.getOut()->print("Please login again.<p>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TagSupport::SKIP_BODY;
     
 
@@ -1085,6 +1147,8 @@ pageContext.getOut()->print(validRole());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return EVAL_BODY_INCLUDE;
     
 
@@ -1095,6 +1159,8 @@ pageContext.getOut()->print(validRole());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SKIP_BODY;
     
 
@@ -1123,6 +1189,8 @@ pageContext.getOut()->print(invalidRole());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SKIP_BODY;
     
 
@@ -1133,6 +1201,8 @@ pageContext.getOut()->print(invalidRole());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return EVAL_BODY_INCLUDE;
     
 
@@ -1183,6 +1253,8 @@ pageContext.getOut()->print(invalidRole());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TagSupport::SKIP_BODY;
     
 
@@ -1193,6 +1265,8 @@ pageContext.getOut()->print(invalidRole());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TagSupport::EVAL_BODY_INCLUDE;
     
 
@@ -1208,6 +1282,8 @@ pageContext.getOut()->print(invalidRole());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SKIP_BODY;
     
 
@@ -1220,6 +1296,8 @@ AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SKIP_BODY;
     
 }
@@ -1233,6 +1311,8 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SKIP_BODY;
     
 }

@@ -86,6 +86,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AdvancedRTSProperties(NoShakeAnimationListener::NO_SHAKE_ANIMATION_LISTENER, AllBinaryNoVibration::NO_VIBRATION, 0, new WaypointBehaviorBase());
     
 }
@@ -96,6 +98,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AdvancedRTSProperties(ShakeAnimationListenerFactory::getInstance(), AllBinaryVibration::getInstance(), JavaBoxes::value<int32_t>(GameConfigurationCentral::getInstance()->VIBRATION->getValue()) *100, new WaypointBehaviorBase());
     
 }

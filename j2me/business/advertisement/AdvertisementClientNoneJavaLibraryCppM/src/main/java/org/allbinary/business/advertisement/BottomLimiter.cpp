@@ -70,6 +70,8 @@ BottomLimiter* BottomLimiter::instance = BottomLimiter::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BottomLimiter::instance;
     
 }
@@ -119,6 +121,8 @@ this->bottom= displayInfo->getLastHeight() -this->deltaY;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->deltaY;
     
 }
@@ -129,6 +133,8 @@ this->bottom= displayInfo->getLastHeight() -this->deltaY;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->bottom;
     
 }

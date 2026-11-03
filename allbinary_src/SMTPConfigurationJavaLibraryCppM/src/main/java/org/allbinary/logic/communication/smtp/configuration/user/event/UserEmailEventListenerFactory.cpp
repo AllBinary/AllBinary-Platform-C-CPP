@@ -98,6 +98,8 @@ params[0]= userInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<UserEmailEventListenerInterface*>(AbeFactory::getInstance()->getInstance(abeClientInformation, userEmailEventConfigurationInterface->getEventListenerClassPath(), classes, params));
     
 }

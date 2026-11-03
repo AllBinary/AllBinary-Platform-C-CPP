@@ -103,6 +103,8 @@ Object* GameInputMotionEventProcessorAPI5::instance = NullUtil::getInstance()->N
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<GameInputMotionEventProcessorAPI5*>(GameInputMotionEventProcessorAPI5::instance);
     
 }
@@ -144,6 +146,8 @@ ForcedLogUtil::log(JavaString::valueOf(message) +JavaString::valueOf(pointerId),
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -154,6 +158,8 @@ ForcedLogUtil::log(JavaString::valueOf(message) +JavaString::valueOf(pointerId),
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 

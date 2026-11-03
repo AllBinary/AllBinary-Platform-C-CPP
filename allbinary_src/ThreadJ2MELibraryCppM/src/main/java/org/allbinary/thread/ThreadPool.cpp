@@ -282,6 +282,8 @@ this->notify();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->NULL_RUNNABLE;
     
 
@@ -298,6 +300,8 @@ this->wait();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return runnable;
     
 
@@ -379,6 +383,8 @@ this->notifyAll();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -392,6 +398,8 @@ this->notifyAll();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -405,6 +413,8 @@ this->notifyAll();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -414,6 +424,8 @@ this->notifyAll();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -451,6 +463,8 @@ this->taskQueue->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (new StringMaker())->append(this->poolName)->append(ThreadPool::ROOT_NAME)->appendint(this->threadID++)->toString();;
     
 }

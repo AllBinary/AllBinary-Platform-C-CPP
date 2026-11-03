@@ -93,6 +93,8 @@ CustomizersValidationView::CustomizersValidationView(TransformInfoInterface* tra
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -118,6 +120,8 @@ CustomizersValidationView::CustomizersValidationView(TransformInfoInterface* tra
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -132,6 +136,8 @@ CustomizersValidationView::CustomizersValidationView(TransformInfoInterface* tra
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "No Customizers";
     
 
@@ -151,6 +157,8 @@ CustomizersValidationView::CustomizersValidationView(TransformInfoInterface* tra
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Getting Validation Info";
     
 }
@@ -163,6 +171,8 @@ CustomizersValidationView::CustomizersValidationView(TransformInfoInterface* tra
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -173,6 +183,8 @@ CustomizersValidationView::CustomizersValidationView(TransformInfoInterface* tra
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

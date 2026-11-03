@@ -89,6 +89,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new BasicProjectileWeaponPart(animationInterface, AllBinaryLayer::NULL_ALLBINARY_LAYER, weaponLayerCircularStaticPool, WeaponProperties::NULL_WEAPON_PROPERTIES, NoScoreable::getInstance(), RelativeRelationship::NULL_RELATIVE_RELATIONSHIP);
     
 }

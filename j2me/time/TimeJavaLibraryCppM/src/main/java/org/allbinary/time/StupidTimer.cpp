@@ -83,6 +83,8 @@ StupidTimer::StupidTimer() : logUtil(LogUtil::getInstance()), commonStrings(Comm
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result2;
     
 }

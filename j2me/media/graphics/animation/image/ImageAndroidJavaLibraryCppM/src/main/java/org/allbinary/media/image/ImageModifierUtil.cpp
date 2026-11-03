@@ -81,6 +81,8 @@ ImageModifierUtil::ImageModifierUtil() : paint(new Paint(Paint::ANTI_ALIAS_FLAG)
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new ImageModifierUtil();
     
 }
@@ -116,6 +118,8 @@ this->paint->setColorFilter(new PorterDuffColorFilter(basicColor->intValue(), Po
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return originalImageArray;
     
 }

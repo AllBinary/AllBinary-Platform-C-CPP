@@ -78,7 +78,9 @@ this->frame= frame;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->frame;
+                        
+                        
+                        return JavaBoxes::toObject(this->frame);
     
 }
 
@@ -88,6 +90,8 @@ this->frame= frame;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->frame;
     
 }
@@ -104,6 +108,8 @@ this->frame= frame;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->imageComparisonResult;
     
 }
@@ -129,6 +135,8 @@ stringBuffer->appendlong(this->getFrame());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

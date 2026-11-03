@@ -121,6 +121,8 @@ this->quoteRequest= new QuoteRequest(this->weblisketSession->getUserName(), requ
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->quoteRequest->isValid();;
     
 }
@@ -131,6 +133,8 @@ this->quoteRequest= new QuoteRequest(this->weblisketSession->getUserName(), requ
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->quoteRequest->validationInfo();;
     
 }
@@ -160,6 +164,8 @@ QuoteRequestEntityFactory::getInstance()->getQuoteRequestEntityInstance()->inser
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -182,6 +188,8 @@ QuoteRequestEntityFactory::getInstance()->getQuoteRequestEntityInstance()->inser
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -213,6 +221,8 @@ QuoteRequestEntityFactory::getInstance()->getQuoteRequestEntityInstance()->updat
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -235,6 +245,8 @@ QuoteRequestEntityFactory::getInstance()->getQuoteRequestEntityInstance()->updat
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -247,6 +259,8 @@ QuoteRequestEntityFactory::getInstance()->getQuoteRequestEntityInstance()->updat
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return commonStrings.NOT_IMPLEMENTED;
     
 }

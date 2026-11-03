@@ -58,6 +58,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new NullRotationAnimation(angleInfo, CircularIndexUtil::createInstance(totalAngle /angleInfo->getAngleIncrementInfo()->getAngleIncrement()), animationBehavior);
     
 }
@@ -68,6 +70,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new NullRotationAnimation(AngleInfo::getInstance(AngleFactory::getInstance()->QUARTER_TOTAL_ANGLE), CircularIndexUtil::createInstance(4), animationBehavior);
     
 }
@@ -90,6 +94,8 @@ NullRotationAnimation::NullRotationAnimation(AngleInfo* angleInfo, CircularIndex
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }

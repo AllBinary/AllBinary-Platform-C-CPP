@@ -130,6 +130,8 @@ this->map= map;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->map;
     
 }
@@ -186,6 +188,8 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, RequestData::PARA
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 
@@ -198,6 +202,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "toXmlNode(document)", 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -256,6 +262,8 @@ this->logUtil->putF(stringBuffer->toString(), this, "toHashMap()");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }

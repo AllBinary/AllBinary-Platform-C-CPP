@@ -118,6 +118,8 @@ basicGeographicMapUtil->setPosition(geographicMapInterfaceArray, x, y);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (terrainTiledLayer->getXP() +DisplayInfoSingleton::getInstance()->getLastWidth() < terrainTiledLayer->getWidth() || x < 0) && (terrainTiledLayer->getXP() > 0 || x > 0);
     
 }

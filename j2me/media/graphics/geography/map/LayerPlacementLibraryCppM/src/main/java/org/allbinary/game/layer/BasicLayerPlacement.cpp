@@ -72,6 +72,8 @@ this->height= height;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->width;
     
 }
@@ -82,6 +84,8 @@ this->height= height;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->height;
     
 }
@@ -92,6 +96,8 @@ this->height= height;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->layerType;
     
 }

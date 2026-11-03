@@ -100,6 +100,8 @@ RootCategoryPropertiesAbstract::RootCategoryPropertiesAbstract() : category(Cate
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getValue();
     
 }
@@ -110,6 +112,8 @@ RootCategoryPropertiesAbstract::RootCategoryPropertiesAbstract() : category(Cate
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->category;
     
 }
@@ -197,6 +201,8 @@ RootCategoryPropertiesAbstract::RootCategoryPropertiesAbstract() : category(Cate
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbPath::createAbPath();;
     
 }
@@ -207,6 +213,8 @@ RootCategoryPropertiesAbstract::RootCategoryPropertiesAbstract() : category(Cate
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->fileName;
     
 }
@@ -217,6 +225,8 @@ RootCategoryPropertiesAbstract::RootCategoryPropertiesAbstract() : category(Cate
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 }
@@ -232,6 +242,8 @@ categoryHashMap->put(CategoryData::getInstance()->NAME, this->category);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return categoryHashMap;
     
 }
@@ -247,6 +259,8 @@ categoryVector->add(this->category);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return categoryVector;
     
 }
@@ -259,6 +273,8 @@ categoryVector->add(this->category);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -271,6 +287,8 @@ categoryVector->add(this->category);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -283,6 +301,8 @@ categoryVector->add(this->category);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

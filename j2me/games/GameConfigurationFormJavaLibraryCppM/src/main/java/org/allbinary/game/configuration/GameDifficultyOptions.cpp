@@ -222,6 +222,8 @@ choiceGroup->append(anyType->toString(), NullImage::NULL_IMAGE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return choiceGroup;
     
 }
@@ -244,6 +246,8 @@ choiceGroup->setSelectedIndex(id, true);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return choiceGroup->getSelectedIndex();;
     
 }
@@ -260,6 +264,8 @@ choiceGroup->setSelectedIndex(id, true);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return value;
     
 }

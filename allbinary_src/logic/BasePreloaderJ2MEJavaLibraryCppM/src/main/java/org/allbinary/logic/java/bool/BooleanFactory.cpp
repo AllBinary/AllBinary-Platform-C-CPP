@@ -66,6 +66,8 @@ BooleanFactory* BooleanFactory::instance = BooleanFactory::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BooleanFactory::instance;
     
 }
@@ -80,6 +82,8 @@ BooleanFactory* BooleanFactory::instance = BooleanFactory::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->TRUE_STRING;
     
 
@@ -90,6 +94,8 @@ BooleanFactory* BooleanFactory::instance = BooleanFactory::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->FALSE_STRING;
     
 

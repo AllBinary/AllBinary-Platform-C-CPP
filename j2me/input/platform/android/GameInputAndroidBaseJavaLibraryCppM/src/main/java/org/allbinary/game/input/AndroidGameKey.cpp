@@ -65,6 +65,8 @@ inputFactory->inputIntegerArray[this->getId()]= this;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::valueOf("AndroidGameKey: ") +JavaString::valueOf(Input::toString());
     
 }
@@ -84,6 +86,8 @@ inputFactory->inputIntegerArray[this->getId()]= this;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return input->getName();;
     
 
@@ -94,6 +98,8 @@ inputFactory->inputIntegerArray[this->getId()]= this;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 

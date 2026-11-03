@@ -87,6 +87,8 @@ this->totalLaps= totalLaps;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->id;
     
 }
@@ -103,6 +105,8 @@ this->id= id;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }
@@ -119,6 +123,8 @@ this->name= name;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->qualifyTime;
     
 }
@@ -135,6 +141,8 @@ this->qualifyTime= qualifyTime;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->worstContinuePosition;
     
 }
@@ -151,6 +159,8 @@ this->worstContinuePosition= worstContinuePosition;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->totalLaps;
     
 }
@@ -167,6 +177,8 @@ this->totalLaps= totalLaps;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->foregroundBasicColor;
     
 }
@@ -183,6 +195,8 @@ this->foregroundBasicColor= foregroundBasicColor;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->backgroundBasicColor;
     
 }
@@ -199,6 +213,8 @@ this->backgroundBasicColor= backgroundBasicColor;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->raceTrackFrictionProperties;
     
 }

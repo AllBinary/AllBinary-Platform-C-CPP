@@ -66,6 +66,8 @@ OpenGLCapabilities* OpenGLCapabilities::instance = OpenGLCapabilities::instance_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return OpenGLCapabilities::instance;
     
 }
@@ -80,6 +82,8 @@ OpenGLCapabilities::OpenGLCapabilities() : glVersion(StringUtil::getInstance()->
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -94,6 +98,8 @@ OpenGLCapabilities::OpenGLCapabilities() : glVersion(StringUtil::getInstance()->
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -104,6 +110,8 @@ OpenGLCapabilities::OpenGLCapabilities() : glVersion(StringUtil::getInstance()->
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->glVersion;
     
 }
@@ -114,6 +122,8 @@ OpenGLCapabilities::OpenGLCapabilities() : glVersion(StringUtil::getInstance()->
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -124,6 +134,8 @@ OpenGLCapabilities::OpenGLCapabilities() : glVersion(StringUtil::getInstance()->
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }

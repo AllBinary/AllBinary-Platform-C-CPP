@@ -72,6 +72,8 @@ InventoryEntityFactory* InventoryEntityFactory::instance = InventoryEntityFactor
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return InventoryEntityFactory::instance;
     
 }
@@ -88,6 +90,8 @@ InventoryEntityFactory::InventoryEntityFactory() : logUtil(LogUtil::getInstance(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntity();
     
 
@@ -110,6 +114,8 @@ InventoryEntityFactory::InventoryEntityFactory() : logUtil(LogUtil::getInstance(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

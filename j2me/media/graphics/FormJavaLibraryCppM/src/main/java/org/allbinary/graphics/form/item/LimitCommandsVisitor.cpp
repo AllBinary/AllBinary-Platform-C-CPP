@@ -98,7 +98,9 @@ this->isNotSmallDisplay= (displayInfo->isPortrait() && displayInfo->getLastHeigh
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return booleanFactory->TRUE;
+                        
+                        
+                        return JavaBoxes::toObject(booleanFactory->TRUE);
     
 
                                     }
@@ -108,7 +110,9 @@ this->isNotSmallDisplay= (displayInfo->isPortrait() && displayInfo->getLastHeigh
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return booleanFactory->FALSE;
+                        
+                        
+                        return JavaBoxes::toObject(booleanFactory->FALSE);
     
 
                         }

@@ -142,6 +142,8 @@ paymentEntity->setDefault(this->weblisketSession->getUserName(), int32_t(payment
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -164,6 +166,8 @@ paymentEntity->setDefault(this->weblisketSession->getUserName(), int32_t(payment
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -195,6 +199,8 @@ paymentEntity->setDefault(this->weblisketSession->getUserName(), int32_t(this->v
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -217,6 +223,8 @@ paymentEntity->setDefault(this->weblisketSession->getUserName(), int32_t(this->v
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -262,6 +270,8 @@ paymentEntity->remove(this->weblisketSession->getUserName(), int32_t(this->value
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -284,6 +294,8 @@ paymentEntity->remove(this->weblisketSession->getUserName(), int32_t(this->value
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -313,6 +325,8 @@ paymentEntity->remove(this->weblisketSession->getUserName(), int32_t(this->value
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -335,6 +349,8 @@ paymentEntity->remove(this->weblisketSession->getUserName(), int32_t(this->value
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -364,6 +380,8 @@ paymentEntity->remove(this->weblisketSession->getUserName(), int32_t(this->value
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -386,6 +404,8 @@ paymentEntity->remove(this->weblisketSession->getUserName(), int32_t(this->value
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -415,6 +435,8 @@ paymentEntity->remove(this->weblisketSession->getUserName(), int32_t(this->value
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 
@@ -437,6 +459,8 @@ paymentEntity->remove(this->weblisketSession->getUserName(), int32_t(this->value
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -466,6 +490,8 @@ paymentEntity->remove(this->weblisketSession->getUserName(), int32_t(this->value
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 
@@ -488,6 +514,8 @@ paymentEntity->remove(this->weblisketSession->getUserName(), int32_t(this->value
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -502,6 +530,8 @@ paymentEntity->remove(this->weblisketSession->getUserName(), int32_t(this->value
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return commonStrings.NOT_IMPLEMENTED;
     
 }

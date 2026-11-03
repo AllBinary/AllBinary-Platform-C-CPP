@@ -164,6 +164,8 @@ this->motionGesturesHandler->fireEvent(event);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -185,6 +187,8 @@ this->motionGesturesHandler->fireEvent(event);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -205,6 +209,8 @@ this->intermediate= current;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -227,6 +233,8 @@ this->line->setP2(current);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -374,6 +382,8 @@ this->motionGesturesHandler->fireEvent(event);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -395,6 +405,8 @@ this->movedMotionGesturesHandler->fireEvent(event);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -440,6 +452,8 @@ this->scrolledMotionGesturesHandler->fireEvent(event);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -450,6 +464,8 @@ this->scrolledMotionGesturesHandler->fireEvent(event);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->motionGesturesHandler;
     
 }

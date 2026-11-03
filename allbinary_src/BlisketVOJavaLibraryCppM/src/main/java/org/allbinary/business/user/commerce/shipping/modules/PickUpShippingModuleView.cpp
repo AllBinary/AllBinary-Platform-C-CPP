@@ -82,6 +82,8 @@ PickUpShippingModuleView::PickUpShippingModuleView() : logUtil(LogUtil::getInsta
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -92,6 +94,8 @@ PickUpShippingModuleView::PickUpShippingModuleView() : logUtil(LogUtil::getInsta
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -102,6 +106,8 @@ PickUpShippingModuleView::PickUpShippingModuleView() : logUtil(LogUtil::getInsta
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -112,6 +118,8 @@ PickUpShippingModuleView::PickUpShippingModuleView() : logUtil(LogUtil::getInsta
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -131,6 +139,8 @@ shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, Shi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return shippingMethodNode;
     
 
@@ -150,6 +160,8 @@ shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, Shi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -162,6 +174,8 @@ shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, Shi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -172,6 +186,8 @@ shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, Shi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

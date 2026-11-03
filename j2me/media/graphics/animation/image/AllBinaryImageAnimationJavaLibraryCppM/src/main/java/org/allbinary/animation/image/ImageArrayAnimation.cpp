@@ -101,6 +101,8 @@ this->setImageArray(imageArray);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getSize();;
     
 }
@@ -129,6 +131,8 @@ this->circularIndexUtil->setIndex(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->circularIndexUtil->getIndex();;
     
 }
@@ -139,6 +143,8 @@ this->circularIndexUtil->setIndex(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->totalFrames;
     
 }
@@ -153,6 +159,8 @@ this->circularIndexUtil->setIndex(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PrimitiveIntUtil::getArrayInstance();;
     
 }
@@ -163,6 +171,8 @@ this->circularIndexUtil->setIndex(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->imageArray[index];
     
 }
@@ -173,6 +183,8 @@ this->circularIndexUtil->setIndex(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->imageArray;
     
 }

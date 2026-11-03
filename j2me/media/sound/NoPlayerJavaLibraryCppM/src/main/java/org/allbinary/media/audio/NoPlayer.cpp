@@ -79,6 +79,8 @@ NoPlayer::NoPlayer(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->NULL_STRING;
     
 }
@@ -89,6 +91,8 @@ NoPlayer::NoPlayer(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new NullControl();
     
 }
@@ -99,6 +103,8 @@ NoPlayer::NoPlayer(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return {};
     
 }

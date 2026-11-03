@@ -141,6 +141,8 @@ this->lastKey= lastKey;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->lastKey;
     
 }
@@ -151,6 +153,8 @@ this->lastKey= lastKey;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->ownerLayerInterface;
     
 }
@@ -161,6 +165,8 @@ this->lastKey= lastKey;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->gameInput;
     
 }
@@ -171,6 +177,8 @@ this->lastKey= lastKey;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getClass()->getName();;
     
 }
@@ -192,6 +200,8 @@ stringBuffer->append(CanvasUtil::getKeyName(this->getLastKey()));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -202,6 +212,8 @@ stringBuffer->append(CanvasUtil::getKeyName(this->getLastKey()));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 1;
     
 }

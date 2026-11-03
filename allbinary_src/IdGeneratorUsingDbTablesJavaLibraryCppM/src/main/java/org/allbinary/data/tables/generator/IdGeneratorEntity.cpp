@@ -127,6 +127,8 @@ keysAndValues->put(this->NAME, name);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Long.parseLong(value);;
     
 }
@@ -195,6 +197,8 @@ AbSqlBean::updateWhere(this->NAME, JavaBoxes::unbox<std::string>(hashMap->get(th
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return returnStr;
     
 }
@@ -205,6 +209,8 @@ AbSqlBean::updateWhere(this->NAME, JavaBoxes::unbox<std::string>(hashMap->get(th
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbSqlBean::dropTable();;
     
 }

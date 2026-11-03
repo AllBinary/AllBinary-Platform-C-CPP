@@ -55,6 +55,8 @@ ABStringComponent* ABStringComponent::NULL_STRING_COMPONENT = ABStringComponent:
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BasicColorFactory::getInstance()->WHITE;
     
 }
@@ -69,6 +71,8 @@ ABStringComponent::ABStringComponent(BasicColor* backgroundBasicColor, BasicColo
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BasicColorFactory::getInstance()->WHITE;
     
 }

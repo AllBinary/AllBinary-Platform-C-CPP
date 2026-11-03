@@ -78,6 +78,8 @@ LayerCollisionUtil* LayerCollisionUtil::instance = LayerCollisionUtil::instance_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return LayerCollisionUtil::instance;
     
 }
@@ -113,6 +115,8 @@ LayerCollisionUtil::LayerCollisionUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->collisionProcessor->isCollision(myLayer, myLayer2);;
     
 }

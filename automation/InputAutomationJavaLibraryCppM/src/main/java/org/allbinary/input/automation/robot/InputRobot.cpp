@@ -99,6 +99,8 @@ this->robot= new Robot(graphicsDevice);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return InputRobot::NAME;
     
 }
@@ -109,6 +111,8 @@ this->robot= new Robot(graphicsDevice);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -122,6 +126,8 @@ this->robot= new Robot(graphicsDevice);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return point;
     
 }
@@ -173,6 +179,8 @@ this->mouseMoveToTarget(rectangle, 0, 0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->robot->createScreenCapture(screenRect);;
     
 }
@@ -189,6 +197,8 @@ this->robot->delay(ms);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->robot->getAutoDelay();;
     
 }
@@ -199,6 +209,8 @@ this->robot->delay(ms);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->robot->getPixelColor(x, y);;
     
 }
@@ -209,6 +221,8 @@ this->robot->delay(ms);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->robot->isAutoWaitForIdle();;
     
 }
@@ -267,6 +281,8 @@ this->robot->setAutoWaitForIdle(isOn);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->robot->toString();;
     
 }

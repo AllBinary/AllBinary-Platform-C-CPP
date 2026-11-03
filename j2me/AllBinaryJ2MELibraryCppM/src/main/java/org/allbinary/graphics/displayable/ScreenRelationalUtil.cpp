@@ -58,6 +58,8 @@ ScreenRelationalUtil* ScreenRelationalUtil::instance = ScreenRelationalUtil::ins
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ScreenRelationalUtil::instance;
     
 }
@@ -68,6 +70,8 @@ ScreenRelationalUtil* ScreenRelationalUtil::instance = ScreenRelationalUtil::ins
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getScaleWH(image->getWidth(), image->getHeight());;
     
 }
@@ -78,6 +82,8 @@ ScreenRelationalUtil* ScreenRelationalUtil::instance = ScreenRelationalUtil::ins
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getScaleWHA(aWidth, aHeight, 20);;
     
 }
@@ -115,6 +121,8 @@ ScreenRelationalUtil* ScreenRelationalUtil::instance = ScreenRelationalUtil::ins
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return scale;
     
 }
@@ -125,6 +133,8 @@ ScreenRelationalUtil* ScreenRelationalUtil::instance = ScreenRelationalUtil::ins
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return static_cast<int32_t>((this->getScaleWH(aWidth, aHeight) *aHeight));
     
 }
@@ -135,6 +145,8 @@ ScreenRelationalUtil* ScreenRelationalUtil::instance = ScreenRelationalUtil::ins
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return static_cast<int32_t>((this->getScaleWHA(aWidth, aHeight, add) *aHeight));
     
 }

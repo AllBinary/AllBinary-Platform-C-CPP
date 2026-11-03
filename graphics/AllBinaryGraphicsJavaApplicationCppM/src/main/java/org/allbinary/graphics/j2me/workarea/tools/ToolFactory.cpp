@@ -79,6 +79,8 @@ ToolFactory* ToolFactory::instance = ToolFactory::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ToolFactory::instance;
     
 }
@@ -117,6 +119,8 @@ this->logUtil->putF(JavaString::valueOf("New Tool: ") +JavaString::valueOf(this-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->selectedTool;
     
 
@@ -127,6 +131,8 @@ this->logUtil->putF(JavaString::valueOf("New Tool: ") +JavaString::valueOf(this-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 

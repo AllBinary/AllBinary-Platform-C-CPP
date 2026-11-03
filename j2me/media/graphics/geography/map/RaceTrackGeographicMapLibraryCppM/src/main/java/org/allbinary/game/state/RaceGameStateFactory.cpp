@@ -79,6 +79,8 @@ RaceGameStateFactory::RaceGameStateFactory() : START_GAME_STATE(GameStateFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<RaceGameStateFactory*>(RaceGameStateFactory::instance);
     
 }

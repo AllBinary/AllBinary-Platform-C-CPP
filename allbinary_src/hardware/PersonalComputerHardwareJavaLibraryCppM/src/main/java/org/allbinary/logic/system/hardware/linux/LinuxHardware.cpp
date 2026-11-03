@@ -447,6 +447,8 @@ lineNumberReader->close();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<MediaInterface*>(this->multimediaInterfaceVector->get(index));
     
 }
@@ -457,6 +459,8 @@ lineNumberReader->close();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<BridgeInterface*>(this->bridgeInterfaceVector->get(index));
     
 }
@@ -467,6 +471,8 @@ lineNumberReader->close();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<CpuInterface*>(this->cpuInterfaceVector->get(index));
     
 }
@@ -477,6 +483,8 @@ lineNumberReader->close();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<EthernetInterface*>(this->ethernetInterfaceVector->get(index));
     
 }
@@ -487,6 +495,8 @@ lineNumberReader->close();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<FireWireInterface*>(this->fireWireInterfaceVector->get(index));
     
 }
@@ -497,6 +507,8 @@ lineNumberReader->close();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<HardDriveControllerInterface*>(this->hardDriveControllerInterfaceVector->get(index));
     
 }
@@ -507,6 +519,8 @@ lineNumberReader->close();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<HardDriveInterface*>(this->hardDriveInterfaceVector->get(index));
     
 }
@@ -517,6 +531,8 @@ lineNumberReader->close();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<MachineAccessControlAddressInterface*>(this->macInterfaceVector->get(index));
     
 }
@@ -527,6 +543,8 @@ lineNumberReader->close();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<MonitorInterface*>(this->monitorInterfaceVector->get(index));
     
 }
@@ -537,6 +555,8 @@ lineNumberReader->close();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<UsbInterface*>(this->usbInterfaceVector->get(index));
     
 }
@@ -547,6 +567,8 @@ lineNumberReader->close();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<VideoInterface*>(this->videoInterfaceVector->get(index));
     
 }
@@ -557,6 +579,8 @@ lineNumberReader->close();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<HardwareComponentInterface*>(this->componentInterfaceVector->get(index));
     
 }
@@ -595,6 +619,8 @@ hardwareBuffer->append(CommonSeps::getInstance()->NEW_LINE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hardwareBuffer->toString();;
     
 }
@@ -605,6 +631,8 @@ hardwareBuffer->append(CommonSeps::getInstance()->NEW_LINE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -615,6 +643,8 @@ hardwareBuffer->append(CommonSeps::getInstance()->NEW_LINE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StdUtil::getInstance()->NULL_TABLE;
     
 }
@@ -636,6 +666,8 @@ hardwareBuffer->append(CommonSeps::getInstance()->NEW_LINE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -648,6 +680,8 @@ hardwareBuffer->append(CommonSeps::getInstance()->NEW_LINE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

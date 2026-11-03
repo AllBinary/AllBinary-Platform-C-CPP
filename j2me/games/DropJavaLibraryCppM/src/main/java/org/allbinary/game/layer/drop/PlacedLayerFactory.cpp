@@ -71,6 +71,8 @@ this->list->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PlacedLayerFactory::instance;
     
 }
@@ -81,6 +83,8 @@ this->list->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->list->size();;
     
 }
@@ -91,6 +95,8 @@ this->list->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<AllBinaryLayerFactoryInterface*>(this->basicArrayListUtil->getRandom(this->list));
     
 }

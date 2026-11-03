@@ -72,6 +72,8 @@ TsUtil* TsUtil::instance = TsUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TsUtil::instance;
     
 }
@@ -82,6 +84,8 @@ TsUtil* TsUtil::instance = TsUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Double.longBitsToDouble(bits);;
     
 }
@@ -92,6 +96,8 @@ TsUtil* TsUtil::instance = TsUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Float.intBitsToFloat(bits);;
     
 }
@@ -102,6 +108,8 @@ TsUtil* TsUtil::instance = TsUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return anyType->hashCode();;
     
 }
@@ -123,6 +131,8 @@ anyType->wait(timeoutMillis);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return a.compare(b);;
     
 }

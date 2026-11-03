@@ -93,6 +93,8 @@ PlatformFormInputMappingFactory::PlatformFormInputMappingFactory() : logUtil(Log
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<PlatformFormInputMappingFactory*>(PlatformFormInputMappingFactory::instance);
     
 }
@@ -155,6 +157,8 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->inputToGameKeyMapping;
     
 }

@@ -237,6 +237,8 @@ eventListenerInterface->onEvent(eventObject);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->eventListenerInterfaceList;
     
 }
@@ -283,6 +285,8 @@ index++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

@@ -95,6 +95,8 @@ ImageAnalysis* ImageAnalysis::instance = ImageAnalysis::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ImageAnalysis::instance;
     
 }
@@ -130,6 +132,8 @@ imageAnalysisResultsArray[index]= ImageAnalysis::process(bufferedImageArray[inde
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return imageAnalysisResultsArray;
     
 }
@@ -203,6 +207,8 @@ colorAverage->setAvgBlue(blueTotal /totalPixels);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return imageAnalysisResults;
     
 }

@@ -72,6 +72,8 @@ StoreFrontsEntityFactory* StoreFrontsEntityFactory::instance = StoreFrontsEntity
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StoreFrontsEntityFactory::instance;
     
 }
@@ -88,6 +90,8 @@ StoreFrontsEntityFactory::StoreFrontsEntityFactory() : logUtil(LogUtil::getInsta
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new org::allbinary::data::tables::context::module::storefronts::StoreFrontsEntity();
     
 
@@ -110,6 +114,8 @@ StoreFrontsEntityFactory::StoreFrontsEntityFactory() : logUtil(LogUtil::getInsta
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

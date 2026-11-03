@@ -190,6 +190,8 @@ this->logDbInitInfo= new LogDbInitInfo();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -214,6 +216,8 @@ this->logDbInitInfo= new LogDbInitInfo();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -238,6 +242,8 @@ this->logDbInitInfo= new LogDbInitInfo();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -262,6 +268,8 @@ this->logDbInitInfo= new LogDbInitInfo();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -286,6 +294,8 @@ this->logDbInitInfo= new LogDbInitInfo();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -297,6 +307,8 @@ this->logUtil->putF(this->commonStrings->END, this, this->METHOD_ADD_USERS);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -309,6 +321,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->METHOD_ADD_USERS,
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 }
@@ -344,6 +358,8 @@ this->logDbInitInfo= new LogDbInitInfo();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -362,6 +378,8 @@ this->logDbInitInfo= new LogDbInitInfo();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -380,6 +398,8 @@ this->logDbInitInfo= new LogDbInitInfo();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -398,6 +418,8 @@ this->logDbInitInfo= new LogDbInitInfo();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -416,6 +438,8 @@ this->logDbInitInfo= new LogDbInitInfo();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -435,6 +459,8 @@ idOutData->writeBytes(this->sqlCommandLog->toString());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -447,6 +473,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->METHOD_ADD_DATABA
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 }
@@ -500,6 +528,8 @@ this->logUtil->putF(ADD_TABLES_RESULTS_LABEL +stringBuffer->toString(), this, th
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -512,6 +542,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->METHOD_ADD_TABLES
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }

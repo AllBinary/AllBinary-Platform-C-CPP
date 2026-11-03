@@ -79,6 +79,8 @@ BaseDropCellPositionGenerator::BaseDropCellPositionGenerator() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getClass()->getName();;
     
 }
@@ -97,6 +99,8 @@ BaseDropCellPositionGenerator::BaseDropCellPositionGenerator() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }

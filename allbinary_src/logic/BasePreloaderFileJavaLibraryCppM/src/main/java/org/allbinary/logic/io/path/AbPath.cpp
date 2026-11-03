@@ -90,6 +90,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AbPath(EMPTY_STRING, EMPTY_STRING);
     
 
@@ -165,6 +167,8 @@ this->nameP= this->EMPTY_STRING;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::substring(aPath, 0, beginIndex);;
     
 
@@ -176,6 +180,8 @@ this->hasSchemaP= false;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->EMPTY_STRING;
     
 }
@@ -186,6 +192,8 @@ this->hasSchemaP= false;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->hasSchemaP;
     
 }
@@ -252,6 +260,8 @@ tempPath= JavaString::substring(tempPath, beginIndex, tempPath.size());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return tempPath;
     
 }
@@ -268,6 +278,8 @@ this->nameP= name;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->nameP;
     
 }
@@ -296,6 +308,8 @@ stringBuffer->append(this->nameP);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -326,6 +340,8 @@ stringBuffer->append(this->nameP);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -336,6 +352,8 @@ stringBuffer->append(this->nameP);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return FilePathUtil::adjust(this->getPath()) +this->nameP;
     
 
@@ -349,6 +367,8 @@ stringBuffer->append(this->nameP);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->path;
     
 }

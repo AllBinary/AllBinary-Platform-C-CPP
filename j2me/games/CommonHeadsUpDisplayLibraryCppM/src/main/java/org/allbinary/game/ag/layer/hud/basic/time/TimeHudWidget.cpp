@@ -84,6 +84,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new TimeHudWidget(location, direction, 2, basicColor, timer);
     
 }
@@ -139,6 +141,8 @@ this->totalDigits= this->timer->getCurrentTotalDigits();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->timer;
     
 }

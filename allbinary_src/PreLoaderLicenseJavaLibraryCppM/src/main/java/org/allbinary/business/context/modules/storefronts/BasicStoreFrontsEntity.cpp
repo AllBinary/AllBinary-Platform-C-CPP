@@ -119,6 +119,8 @@ keysAndValues->put(StoreFrontData::getInstance()->NAME, name);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<BasicStoreFrontInterface*>(new BasicStoreFront(storeHashMap));
     
 }

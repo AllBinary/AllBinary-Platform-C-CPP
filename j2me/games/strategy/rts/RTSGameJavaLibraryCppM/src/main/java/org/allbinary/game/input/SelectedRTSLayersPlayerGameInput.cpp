@@ -204,6 +204,8 @@ this->downgradeGameNotificationEvent->setBasicColorP(geographicMapInterface->get
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -214,6 +216,8 @@ this->downgradeGameNotificationEvent->setBasicColorP(geographicMapInterface->get
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -455,6 +459,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->gameInputStrings-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->selectedRTSLayersList;
     
 }
@@ -558,6 +564,8 @@ this->paintSelectedRTSLayersList= this->selectedRTSLayersList;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<CollidableDestroyableDamageableLayer*>(this->selectedRTSLayersList->get(this->selectedRTSLayersList->size() -1));
     
 
@@ -568,6 +576,8 @@ this->paintSelectedRTSLayersList= this->selectedRTSLayersList;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return CollidableDestroyableDamageableLayer::getNullInstance();;
     
 
@@ -659,6 +669,8 @@ rtsLayer->deselect();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -668,6 +680,8 @@ rtsLayer->deselect();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -678,6 +692,8 @@ rtsLayer->deselect();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->paintSelectedRTSLayersList;
     
 }
@@ -688,6 +704,8 @@ rtsLayer->deselect();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->preSelectedRTSLayersList;
     
 }

@@ -110,6 +110,8 @@ PaymentGatewayInterfaceFactory::PaymentGatewayInterfaceFactory() : logUtil(LogUt
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getInstance((new RequestParams(httpServletRequest))->toHashMap());;
     
 
@@ -147,6 +149,8 @@ hashMap->put(PaymentGatewayData::NAME->toString(), paymentType->getName());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getInstance(hashMap);;
     
 }
@@ -182,6 +186,8 @@ hashMap->put(PaymentGatewayData::NAME->toString(), paymentType->getName());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return paymentGatewayInterfaceFactoryInterface->getInstance(hashMap);;
     
 

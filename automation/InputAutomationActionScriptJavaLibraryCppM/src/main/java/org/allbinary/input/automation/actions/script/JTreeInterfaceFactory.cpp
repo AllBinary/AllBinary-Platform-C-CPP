@@ -59,6 +59,8 @@ JTreeInterfaceFactory* JTreeInterfaceFactory::instance = JTreeInterfaceFactory::
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JTreeInterfaceFactory::instance;
     
 }
@@ -75,6 +77,8 @@ this->jTreeInterface= jTreeInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->jTreeInterface;
     
 }

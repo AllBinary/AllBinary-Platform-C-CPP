@@ -136,6 +136,8 @@ this->availableListOfList[index]= new BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NullImage::NULL_IMAGE;
     
 
@@ -145,6 +147,8 @@ this->availableListOfList[index]= new BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<Image*>(imageCanBeNull);
     
 }
@@ -193,6 +197,8 @@ this->logUtil->putF((new StringMaker())->append("ImageCache: ")->append(this->to
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return foundIndex;
     
 
@@ -204,6 +210,8 @@ this->logUtil->putF((new StringMaker())->append("ImageCache: ")->append(this->to
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return foundIndex;
     
 }
@@ -225,6 +233,8 @@ this->logUtil->putF((new StringMaker())->append("ImageCache: ")->append(this->to
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<Image*>(list->removeAt(list->size() -1));
     
 
@@ -237,6 +247,8 @@ this->logUtil->putF((new StringMaker())->append("ImageCache: ")->append(this->to
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NullImage::NULL_IMAGE;
     
 }
@@ -271,6 +283,8 @@ this->logUtil->putF((new StringMaker())->append("ImageCache: ")->append(this->to
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->imageFactory->createImage(caller, width, height);;
     
 }
@@ -283,6 +297,8 @@ this->logUtil->putF((new StringMaker())->append("ImageCache: ")->append(this->to
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->imageFactory->createImageFromInputStream(key, inputStream);;
     
 }
@@ -335,6 +351,8 @@ stringBuffer->appendint(totalAvailable);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -345,6 +363,8 @@ stringBuffer->appendint(totalAvailable);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->hashtable;
     
 }

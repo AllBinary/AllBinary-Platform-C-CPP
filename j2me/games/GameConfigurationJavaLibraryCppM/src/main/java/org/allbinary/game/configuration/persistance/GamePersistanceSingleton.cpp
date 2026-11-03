@@ -63,6 +63,8 @@ GamePersistanceSingleton* GamePersistanceSingleton::GAME_PERSISTANCE = GamePersi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return GamePersistanceSingleton::GAME_PERSISTANCE;
     
 }

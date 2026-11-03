@@ -241,6 +241,8 @@ resultHashMap= AbSqlBean::getRow(updateKeyAndValue);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<TransactionResultInterface*>(transactionResult);
     
 
@@ -251,6 +253,8 @@ resultHashMap= AbSqlBean::getRow(updateKeyAndValue);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 
@@ -273,6 +277,8 @@ resultHashMap= AbSqlBean::getRow(updateKeyAndValue);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -311,6 +317,8 @@ stringBuffer->append(this->sqlTypeStrings->FOUR_INT_NOT_NULL)->append(paymentTra
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -321,6 +329,8 @@ stringBuffer->append(this->sqlTypeStrings->FOUR_INT_NOT_NULL)->append(paymentTra
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbSqlBean::createTable(this->createTableStatement());;
     
 }
@@ -331,6 +341,8 @@ stringBuffer->append(this->sqlTypeStrings->FOUR_INT_NOT_NULL)->append(paymentTra
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbSqlBean::dropTable();;
     
 }

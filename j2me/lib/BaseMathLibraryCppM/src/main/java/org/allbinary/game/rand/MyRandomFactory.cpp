@@ -92,6 +92,8 @@ MyRandomFactory* MyRandomFactory::instance = MyRandomFactory::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return MyRandomFactory::instance;
     
 }
@@ -117,6 +119,8 @@ this->rand= new Random(seed);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return static_cast<int32_t>((this->rand->nextInt() /div));
     
 }
@@ -127,6 +131,8 @@ this->rand= new Random(seed);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->mathUtil->abs(this->getNextInt(range));;
     
 }
@@ -141,6 +147,8 @@ this->rand= new Random(seed);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 
@@ -151,6 +159,8 @@ this->rand= new Random(seed);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->mathUtil->abs(this->getNextInt(range));;
     
 

@@ -360,6 +360,8 @@ paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL9->toString(), superCrypt-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return paymentGatewayInterface;
     
 
@@ -370,6 +372,8 @@ paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL9->toString(), superCrypt-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (new PaymentGatewayInterfaceFactory())->getInstance(paymentType);;
     
 
@@ -392,6 +396,8 @@ paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL9->toString(), superCrypt-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -449,6 +455,8 @@ paymentGatewayVector->add(paymentType);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return paymentGatewayVector;
     
 
@@ -459,6 +467,8 @@ paymentGatewayVector->add(paymentType);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new BasicArrayListD();
     
 
@@ -481,6 +491,8 @@ paymentGatewayVector->add(paymentType);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -687,6 +699,8 @@ stringBuffer->append(this->sqlStrings->END);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -697,6 +711,8 @@ stringBuffer->append(this->sqlStrings->END);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbSqlBean::createTable(this->createTableStatement());;
     
 }
@@ -707,6 +723,8 @@ stringBuffer->append(this->sqlStrings->END);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbSqlBean::dropTable();;
     
 }

@@ -118,6 +118,8 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, StreetAddressData
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 
@@ -137,6 +139,8 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, StreetAddressData
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

@@ -239,6 +239,8 @@ this->setTableName(this->tableName);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return itemVector;
     
 }
@@ -265,6 +267,8 @@ keysAndValues->put(basicItemData->ID, id);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new BasicItem(itemHashMap);
     
 
@@ -275,6 +279,8 @@ keysAndValues->put(basicItemData->ID, id);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 
@@ -288,6 +294,8 @@ keysAndValues->put(basicItemData->ID, id);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbSqlBean::getField(basicItemData->ID, id, basicItemData->WEIGHT);;
     
 }
@@ -429,6 +437,8 @@ stringBuffer->append(this->sqlStrings->END);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -439,6 +449,8 @@ stringBuffer->append(this->sqlStrings->END);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbSqlBean::createTable(this->createTableStatement());;
     
 }
@@ -455,6 +467,8 @@ AbSqlBean::updateWhere(basicItemData->ID, JavaBoxes::unbox<std::string>(updatedV
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbSqlBean::dropTable();;
     
 }

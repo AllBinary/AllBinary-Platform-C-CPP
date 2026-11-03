@@ -110,6 +110,8 @@ EditCssStyleValidation::EditCssStyleValidation(HashMap<Object*, Object*>* hashMa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return CssStyleValidation::isValid();;
     
 }
@@ -120,6 +122,8 @@ EditCssStyleValidation::EditCssStyleValidation(HashMap<Object*, Object*>* hashMa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return CssStyleValidation::validationInfo();;
     
 }
@@ -130,6 +134,8 @@ EditCssStyleValidation::EditCssStyleValidation(HashMap<Object*, Object*>* hashMa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -140,6 +146,8 @@ EditCssStyleValidation::EditCssStyleValidation(HashMap<Object*, Object*>* hashMa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -179,6 +187,8 @@ styleNode->appendChild(styleDomNodeInterface->toXmlNode(document));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }

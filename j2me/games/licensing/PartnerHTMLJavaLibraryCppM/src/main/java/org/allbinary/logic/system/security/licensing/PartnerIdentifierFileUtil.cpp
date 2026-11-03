@@ -80,6 +80,8 @@ PartnerIdentifierFileUtil* PartnerIdentifierFileUtil::instance = PartnerIdentifi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PartnerIdentifierFileUtil::instance;
     
 }
@@ -98,6 +100,8 @@ PartnerIdentifierFileUtil* PartnerIdentifierFileUtil::instance = PartnerIdentifi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return partnerString;
     
 
@@ -113,6 +117,8 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->NULL_STRING;
     
 }

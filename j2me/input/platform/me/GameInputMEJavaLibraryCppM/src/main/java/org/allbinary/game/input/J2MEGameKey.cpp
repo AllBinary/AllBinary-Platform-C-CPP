@@ -92,6 +92,8 @@ inputFactory->add(id, this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (new StringMaker())->append("J2MEGameKey: ")->append(Input::toString())->toString();;
     
 }
@@ -111,6 +113,8 @@ inputFactory->add(id, this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return input->getName();;
     
 
@@ -121,6 +125,8 @@ inputFactory->add(id, this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 

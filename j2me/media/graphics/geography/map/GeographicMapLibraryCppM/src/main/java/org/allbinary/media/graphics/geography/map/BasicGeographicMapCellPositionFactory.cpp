@@ -200,6 +200,8 @@ this->logUtil->put((new StringMaker())->append(commonSeps->BRACKET_OPEN)->append
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->geographicMapCellPositionArray[i_row][i_column];
     
 }
@@ -212,6 +214,8 @@ this->logUtil->put((new StringMaker())->append(commonSeps->BRACKET_OPEN)->append
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getAt(anotherMapGeographicMapCellPosition->getColumn(), anotherMapGeographicMapCellPosition->getRow());;
     
 }
@@ -240,6 +244,8 @@ this->geographicMapCellPositionArray[i_row][i_column]= dynamic_cast<GeographicMa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<GeographicMapCellPosition*>(cellPositionCanBeNull);
     
 }
@@ -250,6 +256,8 @@ this->geographicMapCellPositionArray[i_row][i_column]= dynamic_cast<GeographicMa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->columns;
     
 }
@@ -260,6 +268,8 @@ this->geographicMapCellPositionArray[i_row][i_column]= dynamic_cast<GeographicMa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->rows;
     
 }

@@ -114,6 +114,8 @@ SimpleFileUtil* SimpleFileUtil::instance = SimpleFileUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SimpleFileUtil::instance;
     
 }
@@ -124,6 +126,8 @@ SimpleFileUtil* SimpleFileUtil::instance = SimpleFileUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return []() {
     class Anonymous0 : public OutputStream {
     public:
@@ -154,6 +158,8 @@ SimpleFileUtil* SimpleFileUtil::instance = SimpleFileUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return []() {
     class Anonymous0 : public Writer {
     public:
@@ -167,6 +173,8 @@ SimpleFileUtil* SimpleFileUtil::instance = SimpleFileUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this;
     
 }
@@ -178,6 +186,8 @@ SimpleFileUtil* SimpleFileUtil::instance = SimpleFileUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this;
     
 }
@@ -189,6 +199,8 @@ SimpleFileUtil* SimpleFileUtil::instance = SimpleFileUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this;
     
 }
@@ -233,6 +245,8 @@ SimpleFileUtil* SimpleFileUtil::instance = SimpleFileUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return []() {
     class Anonymous0 : public Reader {
     public:
@@ -245,6 +259,8 @@ SimpleFileUtil* SimpleFileUtil::instance = SimpleFileUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 }
@@ -256,6 +272,8 @@ SimpleFileUtil* SimpleFileUtil::instance = SimpleFileUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 }
@@ -267,6 +285,8 @@ SimpleFileUtil* SimpleFileUtil::instance = SimpleFileUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 }
@@ -278,6 +298,8 @@ SimpleFileUtil* SimpleFileUtil::instance = SimpleFileUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -289,6 +311,8 @@ SimpleFileUtil* SimpleFileUtil::instance = SimpleFileUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -308,6 +332,8 @@ SimpleFileUtil* SimpleFileUtil::instance = SimpleFileUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->loadFileAsListReturnLine(inputStream, max, byteArray1, 0);;
     
 }
@@ -327,6 +353,8 @@ SimpleFileUtil* SimpleFileUtil::instance = SimpleFileUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringList;
     
 
@@ -362,6 +390,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->AD
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringList;
     
 
@@ -426,6 +456,8 @@ index++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringList;
     
 }
@@ -453,6 +485,8 @@ stringMaker->append(stringArray[index]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringMaker->toString();;
     
 }

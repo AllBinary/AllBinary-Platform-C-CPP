@@ -77,6 +77,8 @@ this->CRASH_FRICTION_NOMINATOR= FrictionData::getFrictionDenominator() -crashFri
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->TIRE_FRICTION_NOMINATOR;
     
 }
@@ -87,6 +89,8 @@ this->CRASH_FRICTION_NOMINATOR= FrictionData::getFrictionDenominator() -crashFri
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->BRAKE_FRICTION_NOMINATOR;
     
 }
@@ -97,6 +101,8 @@ this->CRASH_FRICTION_NOMINATOR= FrictionData::getFrictionDenominator() -crashFri
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->AIR_FRICTION_NOMINATOR;
     
 }
@@ -107,6 +113,8 @@ this->CRASH_FRICTION_NOMINATOR= FrictionData::getFrictionDenominator() -crashFri
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->CRASH_FRICTION_NOMINATOR;
     
 }

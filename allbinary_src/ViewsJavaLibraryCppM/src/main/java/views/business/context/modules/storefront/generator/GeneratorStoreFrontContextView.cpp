@@ -107,6 +107,8 @@ GeneratorStoreFrontContextView::GeneratorStoreFrontContextView(TransformInfoInte
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 
@@ -117,6 +119,8 @@ GeneratorStoreFrontContextView::GeneratorStoreFrontContextView(TransformInfoInte
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 
@@ -134,6 +138,8 @@ GeneratorStoreFrontContextView::GeneratorStoreFrontContextView(TransformInfoInte
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->view(TransformInfosData::getInstance()->ALL);;
     
 

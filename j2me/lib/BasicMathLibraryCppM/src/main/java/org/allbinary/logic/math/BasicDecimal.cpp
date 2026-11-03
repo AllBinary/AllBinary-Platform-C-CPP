@@ -66,6 +66,8 @@ BasicDecimal* BasicDecimal::ZERO_BIGDECIMAL = BasicDecimal::ZERO_BIGDECIMAL_owne
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new BasicDecimal(bigDecimal->getUnscaled());
     
 }
@@ -204,6 +206,8 @@ this->updateScaled();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->units;
     
 }
@@ -220,6 +224,8 @@ this->scaled= static_cast<int32_t>((this->units /this->factorValue));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->scaled;
     
 }
@@ -230,6 +236,8 @@ this->scaled= static_cast<int32_t>((this->units /this->factorValue));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return std::to_string(this->units);;
     
 }
@@ -240,6 +248,8 @@ this->scaled= static_cast<int32_t>((this->units /this->factorValue));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->factor;
     
 }
@@ -250,6 +260,8 @@ this->scaled= static_cast<int32_t>((this->units /this->factorValue));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->factorValue;
     
 }

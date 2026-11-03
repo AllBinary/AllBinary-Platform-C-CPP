@@ -73,6 +73,8 @@ RTSGameLayerPositionFinder* RTSGameLayerPositionFinder::instance = RTSGameLayerP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return RTSGameLayerPositionFinder::instance;
     
 }
@@ -87,6 +89,8 @@ RTSGameLayerPositionFinder::RTSGameLayerPositionFinder(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return DropCellPositionHistory::getInstance()->getLayerInterface(geographicMapCellPosition);;
     
 }

@@ -83,6 +83,8 @@ this->layer= layer;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->layer->getXP() +RelativeRelationship::getX();
     
 }
@@ -93,6 +95,8 @@ this->layer= layer;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->layer->getYP() +RelativeRelationship::getY();
     
 }
@@ -103,6 +107,8 @@ this->layer= layer;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->layer->getZP() +RelativeRelationship::getZ();
     
 }

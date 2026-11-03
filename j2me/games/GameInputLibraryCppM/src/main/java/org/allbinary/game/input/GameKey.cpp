@@ -78,6 +78,8 @@ GameKey::GameKey(int32_t key, std::string name) : Input(key, name){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (new StringMaker())->append("GameKey ")->append(Input::toString())->toString();;
     
 }

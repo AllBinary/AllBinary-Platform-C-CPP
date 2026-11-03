@@ -105,6 +105,8 @@ this->animationInterfaceArray[index]->setFrame(frameIndex);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->animationInterfaceArray[0]->getFrame();;
     
 }
@@ -117,6 +119,8 @@ this->animationInterfaceArray[index]->setFrame(frameIndex);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->animationInterfaceArray[0]->getAnimationSize();;
     
 }
@@ -127,6 +131,8 @@ this->animationInterfaceArray[index]->setFrame(frameIndex);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->animationInterfaceArray[0]->getSize();;
     
 }
@@ -173,6 +179,8 @@ this->animationInterfaceArray[index]->nextFrame();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PrimitiveIntUtil::getArrayInstance();;
     
 }
@@ -230,6 +238,8 @@ this->animationInterfaceArray[index]->set(gl);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->animationInterfaceArray;
     
 }

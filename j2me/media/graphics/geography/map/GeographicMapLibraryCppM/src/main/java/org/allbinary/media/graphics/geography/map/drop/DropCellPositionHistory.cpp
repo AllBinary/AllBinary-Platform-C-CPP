@@ -81,6 +81,8 @@ DropCellPositionHistory* DropCellPositionHistory::SINGLETON = DropCellPositionHi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return DropCellPositionHistory::SINGLETON;
     
 }
@@ -165,6 +167,8 @@ this->layerList->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->positionList->contains(cellPosition);;
     
 }
@@ -186,6 +190,8 @@ this->layerList->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -197,6 +203,8 @@ this->layerList->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -223,6 +231,8 @@ cellPosition= dynamic_cast<CellPosition*>(list->get(index));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return cellPosition;
     
 
@@ -234,6 +244,8 @@ cellPosition= dynamic_cast<CellPosition*>(list->get(index));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->cellPositionFactory->NONE;
     
 }
@@ -251,6 +263,8 @@ cellPosition= dynamic_cast<CellPosition*>(list->get(index));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<AllBinaryLayer*>(this->layerList->get(index));
     
 
@@ -261,6 +275,8 @@ cellPosition= dynamic_cast<CellPosition*>(list->get(index));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AllBinaryLayer::NULL_ALLBINARY_LAYER;
     
 

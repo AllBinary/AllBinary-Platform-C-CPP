@@ -95,6 +95,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new NullGameCanvas(AllBinaryGameLayerManager::getNullInstance());
     
 
@@ -128,6 +130,8 @@ Object* NullGameCanvas::instance = NullUtil::getInstance()->NULL_OBJECT;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<NullGameCanvas*>(NullGameCanvas::instance);
     
 }
@@ -147,6 +151,8 @@ nullGameCanvas->setTitle(NullGameCanvas::NO_GAME);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullGameCanvas;
     
 }
@@ -170,6 +176,8 @@ AllBinaryGameCanvas::setWait(1200);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -187,6 +195,8 @@ this->runningNull= running;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->runningNull;
     
 }
@@ -247,6 +257,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->RU
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NullGameCanvas::TYPE;
     
 }

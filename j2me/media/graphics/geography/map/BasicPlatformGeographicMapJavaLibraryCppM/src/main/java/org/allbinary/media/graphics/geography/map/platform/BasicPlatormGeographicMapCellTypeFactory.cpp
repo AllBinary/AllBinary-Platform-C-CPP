@@ -176,6 +176,8 @@ new GeographicMapCellType(this->maxTileId -2, 0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->maxTileId -1;
     
 }
@@ -186,6 +188,8 @@ new GeographicMapCellType(this->maxTileId -2, 0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->maxTileId -2;
     
 }
@@ -196,6 +200,8 @@ new GeographicMapCellType(this->maxTileId -2, 0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -210,6 +216,8 @@ new GeographicMapCellType(this->maxTileId -2, 0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -219,6 +227,8 @@ new GeographicMapCellType(this->maxTileId -2, 0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

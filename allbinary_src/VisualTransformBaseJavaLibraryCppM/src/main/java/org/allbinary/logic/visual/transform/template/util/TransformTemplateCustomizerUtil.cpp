@@ -98,6 +98,8 @@ TransformTemplateCustomizerUtil* TransformTemplateCustomizerUtil::instance = Tra
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TransformTemplateCustomizerUtil::instance;
     
 }
@@ -210,6 +212,8 @@ hashMap->put(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return rootViewName;
     
 }

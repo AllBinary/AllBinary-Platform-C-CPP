@@ -159,6 +159,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "updateRectangle", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->cellPosition;
     
 }
@@ -169,6 +171,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "updateRectangle", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->rectangle;
     
 }
@@ -179,6 +183,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "updateRectangle", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->touchButtonInput;
     
 }
@@ -211,6 +217,8 @@ stringBuffer->appendint(this->yBorder);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

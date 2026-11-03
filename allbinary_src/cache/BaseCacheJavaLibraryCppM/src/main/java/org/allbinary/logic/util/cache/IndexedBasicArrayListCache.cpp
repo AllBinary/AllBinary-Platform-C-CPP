@@ -90,6 +90,8 @@ indexedBasicArrayListCache->init(size);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return indexedBasicArrayListCache;
     
 }
@@ -132,6 +134,8 @@ this->size= size;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->list->objectArray[index];
     
 }

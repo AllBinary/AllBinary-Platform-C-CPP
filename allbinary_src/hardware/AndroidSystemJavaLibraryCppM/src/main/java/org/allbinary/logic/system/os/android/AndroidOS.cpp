@@ -223,6 +223,8 @@ this->stringBuffer->append(commonStrings->SPACE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -232,6 +234,8 @@ this->stringBuffer->append(commonStrings->SPACE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -242,6 +246,8 @@ this->stringBuffer->append(commonStrings->SPACE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 90;
     
 }
@@ -252,6 +258,8 @@ this->stringBuffer->append(commonStrings->SPACE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 90;
     
 }
@@ -273,6 +281,8 @@ osBuffer->append(this->stringBuffer->toString());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return osBuffer->toString();;
     
 }

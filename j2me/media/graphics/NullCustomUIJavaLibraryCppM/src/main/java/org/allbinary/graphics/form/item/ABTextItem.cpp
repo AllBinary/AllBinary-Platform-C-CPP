@@ -72,6 +72,8 @@ ABTextItem::ABTextItem(std::string label, int32_t layout, std::string altText, B
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ABStringComponent::NULL_STRING_COMPONENT;
     
 }

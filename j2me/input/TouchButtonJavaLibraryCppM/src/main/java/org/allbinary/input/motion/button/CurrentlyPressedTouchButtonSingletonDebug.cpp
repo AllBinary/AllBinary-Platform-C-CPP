@@ -78,6 +78,8 @@ CurrentlyPressedTouchButtonSingletonDebug* CurrentlyPressedTouchButtonSingletonD
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return CurrentlyPressedTouchButtonSingletonDebug::instanceC;
     
 }
@@ -164,6 +166,8 @@ this->string= (new StringMaker())->append(this->listString).append(this->append_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return touchButtonInput;
     
 }
@@ -181,6 +185,8 @@ this->string= (new StringMaker())->append(this->listString).append(this->append_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return isRemoved;
     
 }
@@ -201,6 +207,8 @@ this->string= (new StringMaker())->append(this->listString).append(this->append_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->string;
     
 }

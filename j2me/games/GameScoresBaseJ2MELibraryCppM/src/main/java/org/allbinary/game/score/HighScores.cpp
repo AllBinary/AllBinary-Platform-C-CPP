@@ -96,6 +96,8 @@ this->orderedHighScoresList= orderedHighScoresList;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->orderedHighScoresList;
     
 }
@@ -106,6 +108,8 @@ this->orderedHighScoresList= orderedHighScoresList;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }
@@ -116,6 +120,8 @@ this->orderedHighScoresList= orderedHighScoresList;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getList()->size();;
     
 }
@@ -132,6 +138,8 @@ this->orderedHighScoresList->add(newHighScore);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->heading;
     
 }
@@ -142,6 +150,8 @@ this->orderedHighScoresList->add(newHighScore);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->columnOneHeading;
     
 }
@@ -152,6 +162,8 @@ this->orderedHighScoresList->add(newHighScore);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->columnTwoHeading;
     
 }
@@ -164,6 +176,8 @@ this->orderedHighScoresList->add(newHighScore);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -187,6 +201,8 @@ stringBuffer->appendint(this->orderedHighScoresList->size());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

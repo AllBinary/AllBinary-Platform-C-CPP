@@ -75,6 +75,8 @@ LayerDistanceUtil* LayerDistanceUtil::instance = LayerDistanceUtil::instance_own
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return LayerDistanceUtil::instance;
     
 }
@@ -91,6 +93,8 @@ LayerDistanceUtil* LayerDistanceUtil::instance = LayerDistanceUtil::instance_own
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return static_cast<int32_t>(this->mathUtil->sqrt((dx *dx) +(dy *dy)));
     
 }
@@ -110,6 +114,8 @@ LayerDistanceUtil* LayerDistanceUtil::instance = LayerDistanceUtil::instance_own
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return static_cast<int32_t>(this->mathUtil->sqrt((dx *dx) +(dy *dy) +(dz *dz)));
     
 }
@@ -126,6 +132,8 @@ LayerDistanceUtil* LayerDistanceUtil::instance = LayerDistanceUtil::instance_own
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return static_cast<int32_t>(this->mathUtil->sqrt((dx *dx) +(dy *dy)));
     
 }

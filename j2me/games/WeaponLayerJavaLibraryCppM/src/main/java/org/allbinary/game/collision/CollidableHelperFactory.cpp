@@ -79,6 +79,8 @@ CollidableHelperFactory::CollidableHelperFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new CollisionHelper(AllBinaryLayer::NULL_ALLBINARY_LAYER);
     
 
@@ -89,6 +91,8 @@ CollidableHelperFactory::CollidableHelperFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new SourceCollisionHelper(AllBinaryLayer::NULL_ALLBINARY_LAYER);
     
 

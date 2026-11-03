@@ -75,6 +75,8 @@ ThreadPool* MusicThreadPool::THREAD_POOL = MusicThreadPool::THREAD_POOL_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return MusicThreadPool::THREAD_POOL;
     
 }

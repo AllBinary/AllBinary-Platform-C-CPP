@@ -80,6 +80,8 @@ JavaHelpSetNotifier::JavaHelpSetNotifier(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaHelpSetNotifier::vector;
     
 }
@@ -125,6 +127,8 @@ JavaHelpSetNotifier::vector->add(url);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return isNotified;
     
 }

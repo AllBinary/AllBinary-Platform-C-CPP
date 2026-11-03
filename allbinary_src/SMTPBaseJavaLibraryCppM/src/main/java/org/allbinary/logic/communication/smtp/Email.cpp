@@ -329,6 +329,8 @@ this->msg->setContent(mimeMultipart);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->msg;
     
 }
@@ -343,6 +345,8 @@ this->msg->setContent(mimeMultipart);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::valueOf("More Logging Before This To Standard Out: ") +JavaString::valueOf(
                                     //Otherwise - right - ObjectCreationExpr
 );
@@ -355,6 +359,8 @@ this->msg->setContent(mimeMultipart);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Debugging Is Off";
     
 
@@ -370,6 +376,8 @@ this->msg->setContent(mimeMultipart);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::valueOf("\nHashMap: ") +JavaString::valueOf(this->toHashMap()->toString());
     
 }
@@ -498,6 +506,8 @@ hashMap->put(EmailData::CONTENT, content);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 
@@ -533,6 +543,8 @@ hashMap->put(EmailData::CONTENT, content);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }

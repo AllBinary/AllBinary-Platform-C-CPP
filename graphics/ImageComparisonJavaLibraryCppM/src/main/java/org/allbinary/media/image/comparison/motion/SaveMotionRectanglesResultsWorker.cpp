@@ -97,6 +97,8 @@ this->motionRectanglesVector= new BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->motionRectanglesVector;
     
 }
@@ -122,6 +124,8 @@ this->onMotionRectanglesImageComparisonResultsEvent(dynamic_cast<MotionRectangle
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->running;
     
 }

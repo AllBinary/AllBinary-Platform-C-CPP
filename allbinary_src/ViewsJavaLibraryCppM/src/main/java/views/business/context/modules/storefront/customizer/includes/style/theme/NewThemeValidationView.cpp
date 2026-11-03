@@ -105,6 +105,8 @@ this->styleValidationInterface= new CssStyleValidation();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -119,6 +121,8 @@ this->styleValidationInterface= new CssStyleValidation();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -138,6 +142,8 @@ this->styleValidationInterface= new CssStyleValidation();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -157,6 +163,8 @@ stringBuffer->append(this->styleValidationInterface->validationInfo());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -176,6 +184,8 @@ stringBuffer->append(this->styleValidationInterface->validationInfo());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Getting Validation Info";
     
 }
@@ -188,6 +198,8 @@ stringBuffer->append(this->styleValidationInterface->validationInfo());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -198,6 +210,8 @@ stringBuffer->append(this->styleValidationInterface->validationInfo());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -210,6 +224,8 @@ stringBuffer->append(this->styleValidationInterface->validationInfo());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return views.ValidationOnlyTempUtil->getInstance()->view(this);;
     
 }

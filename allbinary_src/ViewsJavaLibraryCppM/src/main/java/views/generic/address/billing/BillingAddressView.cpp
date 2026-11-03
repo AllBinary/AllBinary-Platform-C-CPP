@@ -103,6 +103,8 @@ this->request= dynamic_cast<HttpServletRequest*>(this->getPageContext()->getRequ
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->request;
     
 }
@@ -122,6 +124,8 @@ formNode->appendChild(this->streetAddress->toXmlNode(document));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return formNode;
     
 
@@ -166,6 +170,8 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(new StatesView()));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return HttpStoreComponentView::view();;
     
 

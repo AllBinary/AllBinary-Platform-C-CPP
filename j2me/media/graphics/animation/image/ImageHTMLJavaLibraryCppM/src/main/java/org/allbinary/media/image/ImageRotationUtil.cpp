@@ -83,6 +83,8 @@ ImageRotationUtil* ImageRotationUtil::instance = ImageRotationUtil::instance_own
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ImageRotationUtil::instance;
     
 }
@@ -147,6 +149,8 @@ canvasSurface->drawImage(originalPlayNImage,  -originalPlayNImage->width() /2,  
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return image;
     
 

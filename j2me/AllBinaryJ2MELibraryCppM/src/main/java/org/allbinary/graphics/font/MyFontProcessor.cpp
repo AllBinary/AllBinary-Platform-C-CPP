@@ -70,6 +70,8 @@ MyFontProcessor::MyFontProcessor() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return font->charWidth('C');;
     
 }
@@ -80,6 +82,8 @@ MyFontProcessor::MyFontProcessor() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return MyFontProcessor::defaultCharWidth(font) *size;
     
 }
@@ -92,6 +96,8 @@ MyFontProcessor* MyFontProcessor::instance = MyFontProcessor::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return MyFontProcessor::instance;
     
 }

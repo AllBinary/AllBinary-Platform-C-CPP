@@ -134,6 +134,8 @@ hashtable->put(registrationConfiguration->NAME, registrationConfiguration->getRe
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashtable;
     
 }

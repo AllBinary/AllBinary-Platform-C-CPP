@@ -72,6 +72,8 @@ CustomItemsEntityFactory* CustomItemsEntityFactory::instance = CustomItemsEntity
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return CustomItemsEntityFactory::instance;
     
 }
@@ -88,6 +90,8 @@ CustomItemsEntityFactory::CustomItemsEntityFactory() : logUtil(LogUtil::getInsta
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new org::allbinary::data::tables::user::commerce::inventory::item::customs::CustomItemsEntity();
     
 
@@ -110,6 +114,8 @@ CustomItemsEntityFactory::CustomItemsEntityFactory() : logUtil(LogUtil::getInsta
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

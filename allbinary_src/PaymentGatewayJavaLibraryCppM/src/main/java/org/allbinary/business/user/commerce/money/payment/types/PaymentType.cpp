@@ -130,6 +130,8 @@ PaymentTypeUtil::getInstance()->add(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->paymentTransactionInterfaceFactoryInterface;
     
 }
@@ -156,6 +158,8 @@ PaymentTypeUtil::getInstance()->add(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->paymentProcessorInterfaceFactoryInterface;
     
 }
@@ -193,6 +197,8 @@ vector->addAllList(this->getBasicPaymentType()->toVector());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return vector;
     
 }
@@ -230,6 +236,8 @@ hashMap->putAll(this->getBasicPaymentType()->toHashMap());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }
@@ -240,6 +248,8 @@ hashMap->putAll(this->getBasicPaymentType()->toHashMap());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->basicPaymentType;
     
 }

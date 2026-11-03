@@ -99,7 +99,9 @@ TextItemNumberVisitor::TextItemNumberVisitor() : logUtil(LogUtil::getInstance())
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BooleanFactory::getInstance()->TRUE;
+                        
+                        
+                        return JavaBoxes::toObject(BooleanFactory::getInstance()->TRUE);
     
 
                                     }
@@ -124,7 +126,9 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->VISIT, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BooleanFactory::getInstance()->FALSE;
+                        
+                        
+                        return JavaBoxes::toObject(BooleanFactory::getInstance()->FALSE);
     
 
                         }
@@ -137,7 +141,9 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->VISIT, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BooleanFactory::getInstance()->FALSE;
+                        
+                        
+                        return JavaBoxes::toObject(BooleanFactory::getInstance()->FALSE);
     
 
                         }

@@ -78,6 +78,8 @@ PlatformBitmapBase* PlatformBitmapBase::NULL_PLATFORM_BITMAP_BASE = PlatformBitm
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -88,6 +90,8 @@ PlatformBitmapBase* PlatformBitmapBase::NULL_PLATFORM_BITMAP_BASE = PlatformBitm
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -98,6 +102,8 @@ PlatformBitmapBase* PlatformBitmapBase::NULL_PLATFORM_BITMAP_BASE = PlatformBitm
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NullImage::NULL_IMAGE;
     
 }

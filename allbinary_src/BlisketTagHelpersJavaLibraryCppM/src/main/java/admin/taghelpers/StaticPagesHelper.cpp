@@ -100,6 +100,8 @@ this->portion= new Portion(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -122,6 +124,8 @@ this->portion= new Portion(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -148,6 +152,8 @@ this->portion= new Portion(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -170,6 +176,8 @@ this->portion= new Portion(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -199,6 +207,8 @@ this->portion= new Portion(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 
@@ -221,6 +231,8 @@ this->portion= new Portion(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -250,6 +262,8 @@ this->portion= new Portion(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 
@@ -272,6 +286,8 @@ this->portion= new Portion(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }

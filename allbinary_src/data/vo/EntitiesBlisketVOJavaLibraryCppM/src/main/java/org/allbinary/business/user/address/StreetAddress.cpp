@@ -301,6 +301,8 @@ this->country= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }
@@ -311,6 +313,8 @@ this->country= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->street;
     
 }
@@ -321,6 +325,8 @@ this->country= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->city;
     
 }
@@ -331,6 +337,8 @@ this->country= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->state;
     
 }
@@ -341,6 +349,8 @@ this->country= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->code;
     
 }
@@ -351,6 +361,8 @@ this->country= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->country;
     
 }
@@ -361,6 +373,8 @@ this->country= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->id;
     
 }
@@ -371,6 +385,8 @@ this->country= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->isDefault_;
     
 }
@@ -398,6 +414,8 @@ this->country= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -407,6 +425,8 @@ this->country= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -434,6 +454,8 @@ this->country= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -443,6 +465,8 @@ this->country= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 }
@@ -527,6 +551,8 @@ stringBuffer->append("<br></br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -537,6 +563,8 @@ stringBuffer->append("<br></br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -554,6 +582,8 @@ node->appendChild(this->toXmlNode(document));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 
@@ -576,6 +606,8 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "toValidationInfoNode", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -605,6 +637,8 @@ hashMap->put(StreetAddressData::COUNTRY, this->country);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }
@@ -652,6 +686,8 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }

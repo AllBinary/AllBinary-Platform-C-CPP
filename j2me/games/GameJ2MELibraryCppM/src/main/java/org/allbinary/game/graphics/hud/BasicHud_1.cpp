@@ -165,6 +165,8 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->location;
     
 }
@@ -175,6 +177,8 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->direction;
     
 }
@@ -290,6 +294,8 @@ anchor= 0;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new HudGraphicsPosition(this->getPoint(x, y), anchor);
     
 }
@@ -312,6 +318,8 @@ this->myFontProcessor= this->updateMyFontProcessor;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PointFactory::getInstance()->createXY(x, y);;
     
 }
@@ -322,6 +330,8 @@ this->myFontProcessor= this->updateMyFontProcessor;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->bufferZone;
     
 }
@@ -350,6 +360,8 @@ this->direction= direction;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->hudGraphicsPosition;
     
 }
@@ -360,6 +372,8 @@ this->direction= direction;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->color;
     
 }
@@ -370,6 +384,8 @@ this->direction= direction;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->x;
     
 }
@@ -392,6 +408,8 @@ this->basicColor= basicColor;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->basicColor;
     
 }
@@ -408,6 +426,8 @@ this->y= y;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->y;
     
 }

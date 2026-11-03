@@ -72,6 +72,8 @@ this->type= type;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->vendor;
     
 }
@@ -82,6 +84,8 @@ this->type= type;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->type;
     
 }
@@ -103,6 +107,8 @@ stringBuffer->append(this->getType());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

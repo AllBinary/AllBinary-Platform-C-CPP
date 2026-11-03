@@ -225,6 +225,8 @@ WindowsHardware::WindowsHardware(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 }
@@ -235,6 +237,8 @@ WindowsHardware::WindowsHardware(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -245,6 +249,8 @@ WindowsHardware::WindowsHardware(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StdUtil::getInstance()->NULL_TABLE;
     
 }

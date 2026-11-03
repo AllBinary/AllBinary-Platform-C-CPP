@@ -71,6 +71,8 @@ TouchButtonFactory* TouchButtonFactory::SINGLETON = TouchButtonFactory::SINGLETO
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TouchButtonFactory::SINGLETON;
     
 }
@@ -174,6 +176,8 @@ this->list= list;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->list;
     
 }

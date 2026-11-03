@@ -91,6 +91,8 @@ abFileArray[index]= new AbFile(dynamic_cast<File*>(files[index]));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return abFileArray;
     
 
@@ -103,6 +105,8 @@ PreLogUtil::putSE("Exception Wrapping Files", "FileWrapperUtil", "wrapFiles", &e
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return {};
     
 }
@@ -117,6 +121,8 @@ PreLogUtil::putSE("Exception Wrapping Files", "FileWrapperUtil", "wrapFiles", &e
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AbFile(file);
     
 
@@ -129,6 +135,8 @@ PreLogUtil::putSE("Exception Wrapping File", "FileWrapperUtil", "wrapFile", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbFile::NULL_FILE;
     
 }

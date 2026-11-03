@@ -189,6 +189,8 @@ numberOnSameTeam[index]= JavaBoxes::unbox<int32_t>(list->objectArray[index]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new NumberOnOwnGroupSequenceAI(numberOnSameTeam, artificialIntelligenceInterface, ownerLayerInterface, gameInput);
     
 }

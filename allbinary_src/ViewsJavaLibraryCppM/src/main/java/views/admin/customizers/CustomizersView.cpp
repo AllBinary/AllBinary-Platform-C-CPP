@@ -194,6 +194,8 @@ node->appendChild(viewNameNode);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 
@@ -213,6 +215,8 @@ node->appendChild(viewNameNode);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -237,6 +241,8 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return HttpStoreComponentView::view();;
     
 

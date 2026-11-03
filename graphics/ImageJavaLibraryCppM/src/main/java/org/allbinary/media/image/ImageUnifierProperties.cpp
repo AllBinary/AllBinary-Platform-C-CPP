@@ -68,6 +68,8 @@ ImageUnifierProperties::ImageUnifierProperties(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getColumns() *JavaBoxes::value<int32_t>(this->getImageUnifierCell()->getWidth());
     
 }
@@ -78,6 +80,8 @@ ImageUnifierProperties::ImageUnifierProperties(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getRows() *JavaBoxes::value<int32_t>(this->getImageUnifierCell()->getHeight());
     
 }
@@ -88,6 +92,8 @@ ImageUnifierProperties::ImageUnifierProperties(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->rows;
     
 }
@@ -104,6 +110,8 @@ this->rows= rows;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->columns;
     
 }
@@ -120,6 +128,8 @@ this->columns= columns;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->imageUnifierCell;
     
 }

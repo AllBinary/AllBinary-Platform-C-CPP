@@ -71,7 +71,9 @@ AllCommandsVisitor::AllCommandsVisitor(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BooleanFactory::getInstance()->TRUE;
+                        
+                        
+                        return JavaBoxes::toObject(BooleanFactory::getInstance()->TRUE);
     
 }
 

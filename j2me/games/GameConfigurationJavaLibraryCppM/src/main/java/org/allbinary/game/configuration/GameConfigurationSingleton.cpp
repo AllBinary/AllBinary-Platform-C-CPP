@@ -76,6 +76,8 @@ GameConfigurationSingleton* GameConfigurationSingleton::SINGLETON = GameConfigur
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return GameConfigurationSingleton::SINGLETON;
     
 }
@@ -94,6 +96,8 @@ this->hashtable= StdUtil::getInstance()->createHashtable();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<GameConfiguration*>(this->hashtable->get(name));
     
 }
@@ -104,6 +108,8 @@ this->hashtable= StdUtil::getInstance()->createHashtable();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->list;
     
 }
@@ -120,6 +126,8 @@ this->list->add(gameConfiguration);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->hashtable;
     
 }

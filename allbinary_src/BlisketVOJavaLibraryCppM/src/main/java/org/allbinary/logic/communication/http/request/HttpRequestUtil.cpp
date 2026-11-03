@@ -68,6 +68,8 @@ HttpRequestUtil* HttpRequestUtil::instance = HttpRequestUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return HttpRequestUtil::instance;
     
 }
@@ -94,6 +96,8 @@ HttpRequestUtil::HttpRequestUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return beginIndex;
     
 }
@@ -113,6 +117,8 @@ HttpRequestUtil::HttpRequestUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return requestPath;
     
 
@@ -123,6 +129,8 @@ HttpRequestUtil::HttpRequestUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::substring(requestPath, beginIndex +1);;
     
 

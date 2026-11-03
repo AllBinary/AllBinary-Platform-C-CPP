@@ -78,6 +78,8 @@ Object* TouchMotionGestureFactory::instance = NullUtil::getInstance()->NULL_OBJE
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<TouchMotionGestureFactory*>(TouchMotionGestureFactory::instance);
     
 }

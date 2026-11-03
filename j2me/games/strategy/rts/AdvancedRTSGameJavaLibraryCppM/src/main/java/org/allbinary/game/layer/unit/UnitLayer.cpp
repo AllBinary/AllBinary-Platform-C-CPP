@@ -664,6 +664,8 @@ this->sensorGeographicMapCellPositionList->add(currentGeographicMapCellPosition)
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->sensorGeographicMapCellPositionList;
     
 }
@@ -973,6 +975,8 @@ this->setPosition(point->getX() -this->getHalfWidth(), point->getY() -this->getH
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return geographicMapCellPosition;
     
 }
@@ -1245,6 +1249,8 @@ this->rtsLogHelper->turnTo(this, dx, dy, angleInfo, angle, this->movementAngle, 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -1264,6 +1270,8 @@ this->rtsLogHelper->turnTo(this, dx, dy, angleInfo, angle, this->movementAngle, 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -1279,6 +1287,8 @@ this->rtsLogHelper->turnTo(this, dx, dy, angleInfo, angle, this->movementAngle, 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -1294,6 +1304,8 @@ this->rtsLogHelper->turnTo(this, dx, dy, angleInfo, angle, this->movementAngle, 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -1309,6 +1321,8 @@ this->rtsLogHelper->turnTo(this, dx, dy, angleInfo, angle, this->movementAngle, 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -1338,6 +1352,8 @@ this->rtsLogHelper->currentMoveEnded(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -1405,6 +1421,8 @@ this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Ca
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -1420,6 +1438,8 @@ this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Ca
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -1756,6 +1776,8 @@ this->getUnitWaypointBehavior()->moveAwayFromBuilding(buildingLayer);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->vehicleProperties;
     
 }
@@ -1787,6 +1809,8 @@ this->damageFloaters->add(damage);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -1872,6 +1896,8 @@ this->vibration->vibrate(this->duration *4, 0, 0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->resourceLoad;
     
 }
@@ -1945,6 +1971,8 @@ rtsLayerHudPaintable->setRtsLayer(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return rtsLayerHudPaintable;
     
 }
@@ -1958,6 +1986,8 @@ rtsLayerHudPaintable->setRtsLayer(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return rtsLayerHudPaintable;
     
 }
@@ -1968,6 +1998,8 @@ rtsLayerHudPaintable->setRtsLayer(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 1;
     
 }
@@ -1978,6 +2010,8 @@ rtsLayerHudPaintable->setRtsLayer(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 1;
     
 }
@@ -1988,6 +2022,8 @@ rtsLayerHudPaintable->setRtsLayer(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<UnitWaypointBehavior*>(this->getWaypointBehavior());
     
 }
@@ -1998,6 +2034,8 @@ rtsLayerHudPaintable->setRtsLayer(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->trackingEvent;
     
 }
@@ -2008,6 +2046,8 @@ rtsLayerHudPaintable->setRtsLayer(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->captionAnimationHelper;
     
 }
@@ -2018,6 +2058,8 @@ rtsLayerHudPaintable->setRtsLayer(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -2028,6 +2070,8 @@ rtsLayerHudPaintable->setRtsLayer(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->maxResourceLoad;
     
 }
@@ -2038,6 +2082,8 @@ rtsLayerHudPaintable->setRtsLayer(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return UnitLayer::partialPositionList;
     
 }

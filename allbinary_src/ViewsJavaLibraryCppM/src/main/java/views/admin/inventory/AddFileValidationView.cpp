@@ -177,6 +177,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -202,6 +204,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -235,6 +239,8 @@ this->itemInterface->setCategory(storeFrontInterface->getCategoryPath() +this->i
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -259,6 +265,8 @@ this->itemInterface->setCategory(storeFrontInterface->getCategoryPath() +this->i
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -290,6 +298,8 @@ HttpFileUploadUtil::log(fileItem);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -302,6 +312,8 @@ HttpFileUploadUtil::log(fileItem);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -321,6 +333,8 @@ HttpFileUploadUtil::log(fileItem);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -333,6 +347,8 @@ HttpFileUploadUtil::log(fileItem);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -343,6 +359,8 @@ HttpFileUploadUtil::log(fileItem);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -365,6 +383,8 @@ HttpFileUploadUtil::log(fileItem);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 
@@ -471,6 +491,8 @@ this->validationInfo(stringBuffer, fileName, fileItemFieldName, size);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -490,6 +512,8 @@ this->validationInfo(stringBuffer, fileName, fileItemFieldName, size);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Getting Validation Info";
     
 }
@@ -519,6 +543,8 @@ this->validationInfo(stringBuffer, fileName, fileItemFieldName, size);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -542,6 +568,8 @@ this->validationInfo(stringBuffer, fileName, fileItemFieldName, size);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -578,6 +606,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -613,6 +643,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -622,6 +654,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 }

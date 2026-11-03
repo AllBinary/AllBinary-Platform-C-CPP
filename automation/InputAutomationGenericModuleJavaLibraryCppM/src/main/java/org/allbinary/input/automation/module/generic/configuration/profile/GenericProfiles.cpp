@@ -229,6 +229,8 @@ this->getDefaultListModelHelper()->add(genericProfile->getName());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->profilesDefaultListModelHelper;
     
 }
@@ -258,6 +260,8 @@ this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return genericProfile;
     
 }
@@ -324,6 +328,8 @@ node->appendChild(genericProfile->toXmlNode(document));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }
@@ -344,6 +350,8 @@ document->appendChild(node);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return document;
     
 }

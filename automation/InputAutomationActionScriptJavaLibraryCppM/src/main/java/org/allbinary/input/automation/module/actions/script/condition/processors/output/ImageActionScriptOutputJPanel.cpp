@@ -239,6 +239,8 @@ this->itemTypesJList->setModel(defaultListModel);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->capturedImageActionJDialog;
     
 }
@@ -338,6 +340,8 @@ this->itemTypesJList->setModel([&]() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return strings.size();
     
 }
@@ -347,6 +351,8 @@ this->itemTypesJList->setModel([&]() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return strings[i];
     
 }

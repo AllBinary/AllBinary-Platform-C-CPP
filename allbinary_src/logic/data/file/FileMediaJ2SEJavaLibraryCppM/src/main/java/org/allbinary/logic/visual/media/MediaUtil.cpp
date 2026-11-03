@@ -88,6 +88,8 @@ MediaUtil* MediaUtil::instance = MediaUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return MediaUtil::instance;
     
 }
@@ -251,6 +253,8 @@ hashMap->put(propertyStringArray[index], propertyObject->toString());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }

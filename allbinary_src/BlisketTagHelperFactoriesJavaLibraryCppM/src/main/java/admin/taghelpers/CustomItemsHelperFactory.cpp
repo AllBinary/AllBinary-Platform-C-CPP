@@ -85,6 +85,8 @@ CustomItemsHelperFactory::CustomItemsHelperFactory() : logUtil(LogUtil::getInsta
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new CustomItemsHelper(hashMap, pageContext);
     
 
@@ -104,6 +106,8 @@ CustomItemsHelperFactory::CustomItemsHelperFactory() : logUtil(LogUtil::getInsta
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

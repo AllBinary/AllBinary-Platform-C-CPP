@@ -122,6 +122,8 @@ this->logUtil->putF("Updated UI", this, "updateUI");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->genericProfileAction;
     
 }
@@ -138,6 +140,8 @@ this->genericProfileAction= genericProfileAction;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->genericProfileActionScriptJPanel;
     
 }

@@ -79,6 +79,8 @@ EnumerationUtil* EnumerationUtil::instance = EnumerationUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return EnumerationUtil::instance;
     
 }
@@ -89,6 +91,8 @@ EnumerationUtil* EnumerationUtil::instance = EnumerationUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return enumeration->hasMoreElements();;
     
 }
@@ -99,6 +103,8 @@ EnumerationUtil* EnumerationUtil::instance = EnumerationUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return enumeration->nextElement();;
     
 }
@@ -119,6 +125,8 @@ basicArrayList->add(this->nextElement(enumeration));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return basicArrayList->toArray();;
     
 }

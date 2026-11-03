@@ -411,6 +411,8 @@ this->logUtil->putF(stringBuffer->toString(), this, "setTemplateAsInputStream()"
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -465,6 +467,8 @@ this->setURIResolver(dynamic_cast<URIResolver*>(new BasicUriResolver(transformIn
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 

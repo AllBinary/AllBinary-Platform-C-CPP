@@ -156,6 +156,8 @@ this->licenseType= LicenseTypeFactory::getInstance()->getInstance(licenseTypeStr
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -166,6 +168,8 @@ this->licenseType= LicenseTypeFactory::getInstance()->getInstance(licenseTypeStr
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -179,6 +183,8 @@ this->licenseType= LicenseTypeFactory::getInstance()->getInstance(licenseTypeStr
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->isValid();;
     
 }
@@ -189,6 +195,8 @@ this->licenseType= LicenseTypeFactory::getInstance()->getInstance(licenseTypeStr
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaBoxes::unbox<std::string>(this->hashtable->get(keyName));
     
 }
@@ -199,6 +207,8 @@ this->licenseType= LicenseTypeFactory::getInstance()->getInstance(licenseTypeStr
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->id;
     
 }
@@ -209,6 +219,8 @@ this->licenseType= LicenseTypeFactory::getInstance()->getInstance(licenseTypeStr
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->servers;
     
 }
@@ -226,6 +238,8 @@ this->licenseType= LicenseTypeFactory::getInstance()->getInstance(licenseTypeStr
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -235,6 +249,8 @@ this->licenseType= LicenseTypeFactory::getInstance()->getInstance(licenseTypeStr
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -293,6 +309,8 @@ stringBuffer->append(BREAK);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -309,6 +327,8 @@ this->special= special;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->special;
     
 }
@@ -319,6 +339,8 @@ this->special= special;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->licenseType;
     
 }

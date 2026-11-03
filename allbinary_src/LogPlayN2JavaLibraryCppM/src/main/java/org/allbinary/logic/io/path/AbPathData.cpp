@@ -75,6 +75,8 @@ AbPathData* AbPathData::instance = AbPathData::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbPathData::instance;
     
 }
@@ -99,6 +101,8 @@ AbPathData::AbPathData() : EXTENSION_SEP(CommonSeps::getInstance()->PERIOD), SEP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 
@@ -112,6 +116,8 @@ AbPathData::AbPathData() : EXTENSION_SEP(CommonSeps::getInstance()->PERIOD), SEP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 
@@ -121,6 +127,8 @@ AbPathData::AbPathData() : EXTENSION_SEP(CommonSeps::getInstance()->PERIOD), SEP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return indexOfFileExtensionDelmiter;
     
 }
@@ -146,6 +154,8 @@ AbPathData::AbPathData() : EXTENSION_SEP(CommonSeps::getInstance()->PERIOD), SEP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return extension;
     
 }
@@ -171,6 +181,8 @@ AbPathData::AbPathData() : EXTENSION_SEP(CommonSeps::getInstance()->PERIOD), SEP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return extension;
     
 }
@@ -197,6 +209,8 @@ AbPathData::AbPathData() : EXTENSION_SEP(CommonSeps::getInstance()->PERIOD), SEP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return path;
     
 
@@ -213,6 +227,8 @@ AbPathData::AbPathData() : EXTENSION_SEP(CommonSeps::getInstance()->PERIOD), SEP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getNameFromPath(categoryName);;
     
 
@@ -226,6 +242,8 @@ AbPathData::AbPathData() : EXTENSION_SEP(CommonSeps::getInstance()->PERIOD), SEP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return categoryName;
     
 
@@ -255,6 +273,8 @@ AbPathData::AbPathData() : EXTENSION_SEP(CommonSeps::getInstance()->PERIOD), SEP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 
@@ -268,6 +288,8 @@ AbPathData::AbPathData() : EXTENSION_SEP(CommonSeps::getInstance()->PERIOD), SEP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->removeNameFromPath(JavaString::substring(path, 0, endIndex -1));;
     
 
@@ -281,6 +303,8 @@ AbPathData::AbPathData() : EXTENSION_SEP(CommonSeps::getInstance()->PERIOD), SEP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return pathWithoutName;
     
 

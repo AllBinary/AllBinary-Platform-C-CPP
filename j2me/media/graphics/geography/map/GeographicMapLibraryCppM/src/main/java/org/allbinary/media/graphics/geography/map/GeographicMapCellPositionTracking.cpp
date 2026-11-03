@@ -92,6 +92,8 @@ GeographicMapCellPositionTracking::GeographicMapCellPositionTracking() : current
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->currentCellType;
     
 }
@@ -122,6 +124,8 @@ this->newGeographicMapCellPosition= geographicMapInterface->getCellPositionAtXY(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -134,6 +138,8 @@ this->newGeographicMapCellPosition= geographicMapInterface->getCellPositionAtXY(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -150,6 +156,8 @@ this->newGeographicMapCellPosition= geographicMapInterface->getCellPositionAtXY(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -159,6 +167,8 @@ this->newGeographicMapCellPosition= geographicMapInterface->getCellPositionAtXY(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -169,6 +179,8 @@ this->newGeographicMapCellPosition= geographicMapInterface->getCellPositionAtXY(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->previousGeographicMapCellPosition;
     
 }
@@ -179,6 +191,8 @@ this->newGeographicMapCellPosition= geographicMapInterface->getCellPositionAtXY(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->currentGeographicMapCellPosition;
     
 }

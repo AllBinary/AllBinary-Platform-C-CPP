@@ -106,6 +106,8 @@ this->workFlowInterface= NewWorkFlowFactory::getInstance()->getInstance(this->ab
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -125,6 +127,8 @@ this->workFlowInterface= NewWorkFlowFactory::getInstance()->getInstance(this->ab
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -162,6 +166,8 @@ stringBuffer->append("The WorkFlow name you selected is already in use.<br/>  Pl
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -181,6 +187,8 @@ stringBuffer->append("The WorkFlow name you selected is already in use.<br/>  Pl
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Getting Validation Info";
     
 }
@@ -193,6 +201,8 @@ stringBuffer->append("The WorkFlow name you selected is already in use.<br/>  Pl
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -203,6 +213,8 @@ stringBuffer->append("The WorkFlow name you selected is already in use.<br/>  Pl
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

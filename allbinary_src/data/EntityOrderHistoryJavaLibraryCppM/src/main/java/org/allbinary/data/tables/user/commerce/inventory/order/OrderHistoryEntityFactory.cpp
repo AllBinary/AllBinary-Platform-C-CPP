@@ -79,6 +79,8 @@ OrderHistoryEntityFactory::OrderHistoryEntityFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntity();
     
 
@@ -101,6 +103,8 @@ OrderHistoryEntityFactory::OrderHistoryEntityFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

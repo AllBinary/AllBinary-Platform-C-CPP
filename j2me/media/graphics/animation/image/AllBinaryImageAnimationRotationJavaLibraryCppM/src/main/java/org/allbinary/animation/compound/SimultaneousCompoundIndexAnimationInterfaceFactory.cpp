@@ -111,6 +111,8 @@ animationInterfaceArray[index]= dynamic_cast<IndexedAnimation*>(this->basicAnima
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getOrCreate(animationInterfaceArray);;
     
 }
@@ -121,6 +123,8 @@ animationInterfaceArray[index]= dynamic_cast<IndexedAnimation*>(this->basicAnima
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new SimultaneousCompoundIndexAnimation(animationInterfaceArray, this->animationBehaviorFactory->getOrCreateInstance());
     
 }
@@ -131,6 +135,8 @@ animationInterfaceArray[index]= dynamic_cast<IndexedAnimation*>(this->basicAnima
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->basicAnimationInterfaceFactoryInterfaceArray;
     
 }

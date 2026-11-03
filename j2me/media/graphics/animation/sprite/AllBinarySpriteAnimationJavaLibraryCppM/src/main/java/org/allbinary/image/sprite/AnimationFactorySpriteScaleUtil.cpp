@@ -107,6 +107,8 @@ AnimationFactorySpriteScaleUtil* AnimationFactorySpriteScaleUtil::instance = Ani
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AnimationFactorySpriteScaleUtil::instance;
     
 }
@@ -215,6 +217,8 @@ sprite= spriteFactory->createSprite(scaledImage, width, height);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return sprite;
     
 }

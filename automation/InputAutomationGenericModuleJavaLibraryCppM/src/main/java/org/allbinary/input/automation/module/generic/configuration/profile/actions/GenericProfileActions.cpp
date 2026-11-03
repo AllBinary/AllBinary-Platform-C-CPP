@@ -186,6 +186,8 @@ idOutData->writeBytes(XmlDocumentHelper::toString(this->toXmlDoc()));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new File(fileName);
     
 }
@@ -331,6 +333,8 @@ this->getDefaultListModelHelper()->add(genericConfigurationProfileAction->getNam
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->actionsDefaultListModelHelper;
     
 }
@@ -341,6 +345,8 @@ this->getDefaultListModelHelper()->add(genericConfigurationProfileAction->getNam
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<GenericProfileAction*>(this->getHashMap()->get(string));
     
 }
@@ -387,6 +393,8 @@ this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(hashMa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }
@@ -428,6 +436,8 @@ node->appendChild(nextGenericProfileAction->toXmlNode(document));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }
@@ -448,6 +458,8 @@ document->appendChild(node);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return document;
     
 }
@@ -458,6 +470,8 @@ document->appendChild(node);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->genericProfileActionsJPanel;
     
 }
@@ -474,6 +488,8 @@ this->genericProfileActionsJPanel= genericProfileActionsJPanel;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->hashMap;
     
 }
@@ -490,6 +506,8 @@ this->hashMap= hashMap;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }

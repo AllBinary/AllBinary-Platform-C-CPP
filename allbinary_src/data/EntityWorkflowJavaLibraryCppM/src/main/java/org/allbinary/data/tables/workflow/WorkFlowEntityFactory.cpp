@@ -72,6 +72,8 @@ WorkFlowEntityFactory* WorkFlowEntityFactory::instance = WorkFlowEntityFactory::
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return WorkFlowEntityFactory::instance;
     
 }
@@ -88,6 +90,8 @@ WorkFlowEntityFactory::WorkFlowEntityFactory() : logUtil(LogUtil::getInstance())
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new org::allbinary::data::tables::workflow::WorkFlowEntity();
     
 
@@ -110,6 +114,8 @@ WorkFlowEntityFactory::WorkFlowEntityFactory() : logUtil(LogUtil::getInstance())
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

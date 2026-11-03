@@ -144,6 +144,8 @@ osgiServiceInterface= dynamic_cast<OSGIServiceInterface*>(vector->get(index));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getBundleContext()->getServiceReferences(this->getRegistryName(), 
                             nullptr);;
     
@@ -155,6 +157,8 @@ osgiServiceInterface= dynamic_cast<OSGIServiceInterface*>(vector->get(index));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->bundleContext;
     
 }
@@ -171,6 +175,8 @@ this->bundleContext= aBundleContext;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->registryName;
     
 }
@@ -187,6 +193,8 @@ this->registryName= registryName;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->osgiServiceVisitorInterface;
     
 }

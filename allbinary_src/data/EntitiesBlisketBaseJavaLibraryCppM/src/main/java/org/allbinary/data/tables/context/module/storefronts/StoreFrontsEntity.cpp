@@ -187,6 +187,8 @@ keysAndValues->put(StoreFrontData::getInstance()->NAME, name);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new StoreFront(storeHashMap);
     
 
@@ -197,6 +199,8 @@ keysAndValues->put(StoreFrontData::getInstance()->NAME, name);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new StoreFront();
     
 
@@ -213,6 +217,8 @@ keysAndValues->put(StoreFrontData::getInstance()->NAME, name);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return storeFrontNames;
     
 }
@@ -355,6 +361,8 @@ stringBuffer->append(this->sqlStrings->END);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -365,6 +373,8 @@ stringBuffer->append(this->sqlStrings->END);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbSqlBean::createTable(this->createTableStatement());;
     
 }
@@ -375,6 +385,8 @@ stringBuffer->append(this->sqlStrings->END);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbSqlBean::dropTable();;
     
 }

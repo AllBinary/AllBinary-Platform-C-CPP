@@ -71,6 +71,8 @@ ImageRotationUtil* ImageRotationUtil::instance = ImageRotationUtil::instance_own
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ImageRotationUtil::instance;
     
 }
@@ -87,6 +89,8 @@ ImageRotationUtil::ImageRotationUtil() : anchor(Anchor::TOP_LEFT){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return originalImage;
     
 }

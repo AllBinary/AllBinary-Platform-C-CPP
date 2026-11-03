@@ -90,6 +90,8 @@ ImageScaleUtil* ImageScaleUtil::instance = ImageScaleUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ImageScaleUtil::instance;
     
 }
@@ -106,6 +108,8 @@ ImageScaleUtil::ImageScaleUtil() : playnUtil(HTMLPlaynUtil::getInstance()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->createImage3(imageCache, originalImage, scaleNominatorX, scaleDenominatorX, scaleNominatorY, scaleDenominatorY, cached, true);;
     
 }
@@ -124,6 +128,8 @@ ImageScaleUtil::ImageScaleUtil() : playnUtil(HTMLPlaynUtil::getInstance()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->createImage(imageCache, originalImage, scaleX, scaleY, cached);;
     
 }
@@ -136,6 +142,8 @@ ImageScaleUtil::ImageScaleUtil() : playnUtil(HTMLPlaynUtil::getInstance()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->createImageInternal(originalImage, scaleX, scaleY);;
     
 }
@@ -192,6 +200,8 @@ canvas->drawScale(originalPlayNImage, 0, 0, image->getWidth(), image->getHeight(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return image;
     
 

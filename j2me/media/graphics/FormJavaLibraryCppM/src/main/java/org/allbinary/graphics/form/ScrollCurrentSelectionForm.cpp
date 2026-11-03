@@ -154,6 +154,8 @@ this->scrollCurrentSelectionForm= scrollCurrentSelectionForm;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->scrollCurrentSelectionForm->getXTempHorizontalForm(index, item, dx, dy);;
     
 }
@@ -172,6 +174,8 @@ this->scrollCurrentSelectionForm= scrollCurrentSelectionForm;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->scrollCurrentSelectionForm->getXHorizontalForm(index, item, dx, dy);;
     
 }
@@ -190,6 +194,8 @@ this->scrollCurrentSelectionForm= scrollCurrentSelectionForm;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->scrollCurrentSelectionForm->getXVerticalForm(index, item, dx, dy);;
     
 }
@@ -405,6 +411,8 @@ this->dx= ((this->rectangle->getWidth() -this->maxWidth) /2);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getDiffX(item);;
     
 }
@@ -415,6 +423,8 @@ this->dx= ((this->rectangle->getWidth() -this->maxWidth) /2);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -425,6 +435,8 @@ this->dx= ((this->rectangle->getWidth() -this->maxWidth) /2);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getDiffX(item) +this->halfBorder;
     
 }
@@ -435,6 +447,8 @@ this->dx= ((this->rectangle->getWidth() -this->maxWidth) /2);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ((this->maxWidth -item->getMinimumWidth())>>1);
     
 }
@@ -445,6 +459,8 @@ this->dx= ((this->rectangle->getWidth() -this->maxWidth) /2);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->dx;
     
 }
@@ -455,6 +471,8 @@ this->dx= ((this->rectangle->getWidth() -this->maxWidth) /2);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->dy;
     
 }

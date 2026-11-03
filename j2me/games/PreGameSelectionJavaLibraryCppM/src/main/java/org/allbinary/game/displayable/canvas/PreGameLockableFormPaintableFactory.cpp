@@ -82,6 +82,8 @@ this->lockedIndex= lockedIndex;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new PreGameLockablePaintable(dynamic_cast<ScrollCurrentSelectionForm*>(paintableForm), this->lockedIndex);
     
 }

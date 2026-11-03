@@ -96,6 +96,8 @@ this->paymentGatewayInterface= paymentGatewayInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->paymentGatewayInterface;
     
 }
@@ -111,6 +113,8 @@ this->paymentGatewayInterface= paymentGatewayInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }
@@ -142,6 +146,8 @@ hashMap->putAll(this->toHashMap());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return paymentGatewayNode;
     
 

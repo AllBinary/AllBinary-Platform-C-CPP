@@ -122,7 +122,9 @@ params[1]= httpServletRequest;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return anyType;
+                        
+                        
+                        return JavaBoxes::toObject(anyType);
     
 
                 //: 
@@ -166,6 +168,8 @@ params[1]= httpServletRequest;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -205,7 +209,9 @@ params[1]= pageContext;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return anyType;
+                        
+                        
+                        return JavaBoxes::toObject(anyType);
     
 
                 //: 
@@ -249,6 +255,8 @@ logUtil->put(commonStrings->EXCEPTION, JavaString::valueOf(factoryName) +JavaStr
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -292,7 +300,9 @@ params[2]= pageContext;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return anyType;
+                        
+                        
+                        return JavaBoxes::toObject(anyType);
     
 
                 //: 
@@ -336,6 +346,8 @@ logUtil->put(commonStrings->EXCEPTION, JavaString::valueOf(factoryName) +JavaStr
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -358,7 +370,9 @@ logUtil->put(commonStrings->EXCEPTION, JavaString::valueOf(factoryName) +JavaStr
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return anyType;
+                        
+                        
+                        return JavaBoxes::toObject(anyType);
     
 
                 //: 
@@ -402,6 +416,8 @@ logUtil->put(commonStrings->EXCEPTION, JavaString::valueOf(factoryName) +JavaStr
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

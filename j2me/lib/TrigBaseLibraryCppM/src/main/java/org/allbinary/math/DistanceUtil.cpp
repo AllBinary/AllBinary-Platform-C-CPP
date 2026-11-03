@@ -69,6 +69,8 @@ DistanceUtil* DistanceUtil::instance = DistanceUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return DistanceUtil::instance;
     
 }
@@ -85,6 +87,8 @@ DistanceUtil* DistanceUtil::instance = DistanceUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return static_cast<int32_t>(this->mathUtil->sqrt((dx *dx) +(dy *dy)));
     
 }

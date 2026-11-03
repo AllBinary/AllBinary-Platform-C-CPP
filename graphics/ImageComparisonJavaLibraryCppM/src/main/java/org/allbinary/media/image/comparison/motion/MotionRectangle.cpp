@@ -83,6 +83,8 @@ this->setPixelDeltaVector(new BasicArrayListD());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->rectangle;
     
 }
@@ -99,6 +101,8 @@ this->rectangle= rectangle;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->pixelDeltaVector;
     
 }
@@ -120,7 +124,9 @@ motionRectangle->setPixelDeltaVector(dynamic_cast<BasicArrayList*>(this->getPixe
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return motionRectangle;
+                        
+                        
+                        return JavaBoxes::toObject(motionRectangle);
     
 }
 

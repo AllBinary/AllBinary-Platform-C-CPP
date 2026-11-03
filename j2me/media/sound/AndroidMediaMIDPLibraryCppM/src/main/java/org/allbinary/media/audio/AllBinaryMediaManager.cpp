@@ -112,6 +112,8 @@ AllBinaryMediaManager::AllBinaryMediaManager(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -126,6 +128,8 @@ AllBinaryMediaManager::AllBinaryMediaManager(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -271,6 +275,8 @@ AllBinaryMediaManager::mostUsedTotal++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AndroidMediaPlayerWrapper(resource);
     
 
@@ -283,6 +289,8 @@ logUtil->put(JavaString::valueOf(JavaString::valueOf("Could not create AndroidMe
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NoPlayer::NO_PLAYER;
     
 }
@@ -295,6 +303,8 @@ logUtil->put(JavaString::valueOf(JavaString::valueOf("Could not create AndroidMe
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NoPlayer::NO_PLAYER;
     
 
@@ -331,6 +341,8 @@ logUtil->put(JavaString::valueOf(JavaString::valueOf("Could not create AndroidMe
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }

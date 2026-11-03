@@ -73,6 +73,8 @@ TiledLayerFactory::TiledLayerFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new TiledLayer(mapArray[0].size(), mapArray.size(), raceTrackData->getTileSetImage(), raceTrackData->getCellWidth(), raceTrackData->getCellHeight());
     
 }
@@ -86,6 +88,8 @@ TiledLayerFactory::TiledLayerFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new TiledLayer(mapArray[0].size(), mapArray.size(), raceTrackData->getMiniTileSetImage(), raceTrackData->getMiniCellWidth(), raceTrackData->getMiniCellHeight());
     
 }

@@ -126,6 +126,8 @@ this->canvasJPanel= canvasJPanel;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -136,6 +138,8 @@ this->canvasJPanel= canvasJPanel;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -150,6 +154,8 @@ this->canvasJPanel= canvasJPanel;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -160,6 +166,8 @@ this->canvasJPanel= canvasJPanel;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->active;
     
 }
@@ -204,6 +212,8 @@ this->canvasJPanel= canvasJPanel;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -295,6 +305,8 @@ item->deactivate();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return xRect;
     
 }
@@ -320,6 +332,8 @@ item->deactivate();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return yRect;
     
 }
@@ -352,6 +366,8 @@ g->drawRect(xRect, yRect, width, height);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -362,6 +378,8 @@ g->drawRect(xRect, yRect, width, height);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -376,6 +394,8 @@ g->drawRect(xRect, yRect, width, height);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SelectionTool::NAME;
     
 }
@@ -386,6 +406,8 @@ g->drawRect(xRect, yRect, width, height);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SelectionTool::NAME;
     
 }
@@ -472,6 +494,8 @@ this->endPoint= PointFactory::getInstance()->createXY(mouseEvent->getX(), mouseE
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

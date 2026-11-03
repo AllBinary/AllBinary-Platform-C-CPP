@@ -84,6 +84,8 @@ AbXslHelper* AbXslHelper::instance = AbXslHelper::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbXslHelper::instance;
     
 }
@@ -96,6 +98,8 @@ AbXslHelper* AbXslHelper::instance = AbXslHelper::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->translate(xslFile->getAbsolutePath(), xmlFile->getAbsolutePath());;
     
 }
@@ -108,6 +112,8 @@ AbXslHelper* AbXslHelper::instance = AbXslHelper::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->translate(xslPath->getPath(), xmlPath->getPath());;
     
 }
@@ -125,6 +131,8 @@ AbXslHelper* AbXslHelper::instance = AbXslHelper::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return XslHelper::getInstance()->translate(new StreamSource(xsltFilePath), new StreamSource(xmlFilePath), new StreamResult(outputStream)).toString();;
     
 

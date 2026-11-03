@@ -109,6 +109,8 @@ this->animationBehaviorFactory= animationBehaviorFactory;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AllBinaryFlickerAndroidImageRotationAnimation(this->getImage(), image, AngleInfo::getInstance(this->angleIncrement), AngleFactory::getInstance()->TOTAL_ANGLE, this->animationBehaviorFactory->getOrCreateInstance());
     
 }
@@ -119,6 +121,8 @@ this->animationBehaviorFactory= animationBehaviorFactory;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->angleIncrement;
     
 }
@@ -135,6 +139,8 @@ this->image= image;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->image;
     
 }

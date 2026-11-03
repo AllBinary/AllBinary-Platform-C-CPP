@@ -75,6 +75,8 @@ this->WATER_FRICTION_NOMINATOR= FrictionData::getFrictionDenominator() -waterFri
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->WATER_FRICTION_NOMINATOR;
     
 }
@@ -85,6 +87,8 @@ this->WATER_FRICTION_NOMINATOR= FrictionData::getFrictionDenominator() -waterFri
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->AIR_FRICTION_NOMINATOR;
     
 }
@@ -95,6 +99,8 @@ this->WATER_FRICTION_NOMINATOR= FrictionData::getFrictionDenominator() -waterFri
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->COLLISION_FRICTION_NOMINATOR;
     
 }

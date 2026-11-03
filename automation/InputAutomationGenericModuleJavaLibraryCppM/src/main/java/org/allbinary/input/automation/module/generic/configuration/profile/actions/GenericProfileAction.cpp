@@ -132,6 +132,8 @@ this->setGenericProfileActionScript(new GenericProfileActionScript(this->generic
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }
@@ -155,6 +157,8 @@ this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(hashMa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }
@@ -172,6 +176,8 @@ node->appendChild(getGenericProfileActionScript()->toXmlNode(document));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }
@@ -182,6 +188,8 @@ node->appendChild(getGenericProfileActionScript()->toXmlNode(document));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->genericProfileActionScript;
     
 }

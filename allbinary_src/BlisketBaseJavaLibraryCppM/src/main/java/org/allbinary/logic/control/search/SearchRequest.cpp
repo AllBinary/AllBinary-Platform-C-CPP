@@ -134,6 +134,8 @@ this->contentType= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->storeFront;
     
 }
@@ -144,6 +146,8 @@ this->contentType= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->searchParams;
     
 }
@@ -154,6 +158,8 @@ this->contentType= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->xslFile;
     
 }
@@ -164,6 +170,8 @@ this->contentType= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->pageName;
     
 }
@@ -174,6 +182,8 @@ this->contentType= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->contentType;
     
 }
@@ -186,6 +196,8 @@ this->contentType= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ModDomHelper::createNameValueNodes(document, SearchData::FILENAME, this->getFileBaseName());;
     
 }

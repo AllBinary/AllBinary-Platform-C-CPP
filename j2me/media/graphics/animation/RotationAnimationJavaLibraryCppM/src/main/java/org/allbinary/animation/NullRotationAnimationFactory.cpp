@@ -107,6 +107,8 @@ NullRotationAnimationFactory::NullRotationAnimationFactory() : NULL_ROTATION_ANI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NullRotationAnimationFactory::NULL_ROTATION_ANIMATION_FACTORY;
     
 }
@@ -117,6 +119,8 @@ NullRotationAnimationFactory::NullRotationAnimationFactory() : NULL_ROTATION_ANI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->NULL_ANIMATION;
     
 }
@@ -129,6 +133,8 @@ NullRotationAnimationFactory::NullRotationAnimationFactory() : NULL_ROTATION_ANI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->NULL_ANIMATION;
     
 }

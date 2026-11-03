@@ -78,6 +78,8 @@ Activity* AndroidUtil::NULL_ACTIVITY = AndroidUtil::NULL_ACTIVITY_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -87,6 +89,8 @@ Activity* AndroidUtil::NULL_ACTIVITY = AndroidUtil::NULL_ACTIVITY_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -97,6 +101,8 @@ Activity* AndroidUtil::NULL_ACTIVITY = AndroidUtil::NULL_ACTIVITY_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }

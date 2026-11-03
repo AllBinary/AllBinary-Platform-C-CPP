@@ -167,6 +167,8 @@ this->viewPosition->setAllbinaryLayer(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getXP() +this->getWidth();
     
 }
@@ -177,6 +179,8 @@ this->viewPosition->setAllbinaryLayer(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getYP() +this->getHeight();
     
 }
@@ -187,6 +191,8 @@ this->viewPosition->setAllbinaryLayer(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return static_cast<int32_t>((this->getZP() +this->getDepth()));
     
 }
@@ -197,6 +203,8 @@ this->viewPosition->setAllbinaryLayer(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }
@@ -213,6 +221,8 @@ this->halfWidth= halfWidth;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->halfWidth;
     
 }
@@ -229,6 +239,8 @@ this->halfHeight= halfHeight;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->halfHeight;
     
 }
@@ -239,6 +251,8 @@ this->halfHeight= halfHeight;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return static_cast<int32_t>(this->getDepth()) /2;
     
 }
@@ -249,6 +263,8 @@ this->halfHeight= halfHeight;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->viewPosition;
     
 }
@@ -265,6 +281,8 @@ this->viewPosition= viewPosition;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BasicGroupFactory::getInstance()->NONE_ARRAY;
     
 }
@@ -275,6 +293,8 @@ this->viewPosition= viewPosition;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -285,6 +305,8 @@ this->viewPosition= viewPosition;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -295,6 +317,8 @@ this->viewPosition= viewPosition;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -305,6 +329,8 @@ this->viewPosition= viewPosition;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -315,6 +341,8 @@ this->viewPosition= viewPosition;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return OpenGLFeatureUtil::getInstance()->isAnyThreed();;
     
 }
@@ -325,6 +353,8 @@ this->viewPosition= viewPosition;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 }
@@ -335,6 +365,8 @@ this->viewPosition= viewPosition;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 }
@@ -401,6 +433,8 @@ this->toStringAppend(stringBuffer);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

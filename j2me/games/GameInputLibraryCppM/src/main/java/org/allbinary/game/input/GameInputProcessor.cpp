@@ -73,6 +73,8 @@ GameInputProcessor* GameInputProcessor::instance = GameInputProcessor::instance_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return GameInputProcessor::instance;
     
 }

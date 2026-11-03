@@ -85,6 +85,8 @@ logUtil->putF(commonStrings->NOT_IMPLEMENTED, this, commonStrings->GET_INSTANCE)
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new ClientInformation(stringUtil->NULL_STRING, stringUtil->NULL_STRING, stringUtil->NULL_STRING, stringUtil->NULL_STRING);
     
 }

@@ -142,6 +142,8 @@ this->RESOURCE_ICON_BUILD= BasicGameResources::stringBuffer->toString();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return GameGraphicsResourceUtil::getInstance()->getStringForFeature(GraphicsFeatureFactory::getInstance()->SPRITE_QUARTER_ROTATION_GRAPHICS);;
     
 
@@ -152,6 +154,8 @@ this->RESOURCE_ICON_BUILD= BasicGameResources::stringBuffer->toString();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BasicGameResources::getString();;
     
 

@@ -86,6 +86,8 @@ TransformInfoObjectConfigNoManipulationFactory* TransformInfoObjectConfigNoManip
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TransformInfoObjectConfigNoManipulationFactory::instance;
     
 }
@@ -110,6 +112,8 @@ TransformInfoObjectConfigNoManipulationFactory::TransformInfoObjectConfigNoManip
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new TransformInfoObjectConfig(transformInfoInterface, DomDocumentHelper::create(data));
     
 

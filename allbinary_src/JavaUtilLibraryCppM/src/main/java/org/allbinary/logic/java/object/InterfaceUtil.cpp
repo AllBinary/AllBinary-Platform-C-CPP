@@ -102,6 +102,8 @@ stringBuffer->append(lineBreak);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -127,6 +129,8 @@ stringBuffer->append(lineBreak);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return interfaces[index];
     
 
@@ -141,6 +145,8 @@ stringBuffer->append(lineBreak);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -163,6 +169,8 @@ stringBuffer->append(lineBreak);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -171,6 +179,8 @@ stringBuffer->append(lineBreak);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -195,6 +205,8 @@ stringBuffer->append(lineBreak);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -206,6 +218,8 @@ stringBuffer->append(lineBreak);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -243,6 +257,8 @@ stringBuffer->append(CommonSeps::getInstance()->NEW_LINE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

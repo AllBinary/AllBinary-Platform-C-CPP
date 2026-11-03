@@ -100,6 +100,8 @@ GeographicMapTopViewLayerBehavior::GeographicMapTopViewLayerBehavior(int32_t max
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     
 }
@@ -112,6 +114,8 @@ GeographicMapTopViewLayerBehavior::GeographicMapTopViewLayerBehavior(int32_t max
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     
 }
@@ -124,6 +128,8 @@ GeographicMapTopViewLayerBehavior::GeographicMapTopViewLayerBehavior(int32_t max
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     
 }
@@ -148,6 +154,8 @@ GeographicMapTopViewLayerBehavior::GeographicMapTopViewLayerBehavior(int32_t max
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -189,6 +197,8 @@ basicTopViewGeographicMapCellTypeFactory= dynamic_cast<BasicTopViewGeographicMap
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -200,6 +210,8 @@ basicTopViewGeographicMapCellTypeFactory= dynamic_cast<BasicTopViewGeographicMap
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -229,6 +241,8 @@ basicTopViewGeographicMapCellTypeFactory= dynamic_cast<BasicTopViewGeographicMap
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -240,6 +254,8 @@ basicTopViewGeographicMapCellTypeFactory= dynamic_cast<BasicTopViewGeographicMap
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

@@ -148,6 +148,8 @@ this->customTextBox->getTextFieldItem()->setString(text);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->customTextBox->getTextFieldItem()->getString();;
     
 }
@@ -164,6 +166,8 @@ this->customTextBox->onEventRaw(keyCode, deviceId, repeated);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->customTextBox->getTextFieldItem()->getFontHeight();;
     
 }

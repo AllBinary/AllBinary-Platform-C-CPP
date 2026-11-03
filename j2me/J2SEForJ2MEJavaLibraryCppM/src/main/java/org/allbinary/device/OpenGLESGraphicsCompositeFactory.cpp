@@ -67,6 +67,8 @@ OpenGLESGraphicsCompositeFactory* OpenGLESGraphicsCompositeFactory::instance = O
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return OpenGLESGraphicsCompositeFactory::instance;
     
 }
@@ -83,6 +85,8 @@ this->openGLESGraphicsFactory= openGLESGraphicsFactory;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->openGLESGraphicsFactory;
     
 }

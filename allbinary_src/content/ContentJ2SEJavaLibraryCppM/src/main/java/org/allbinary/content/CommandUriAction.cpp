@@ -84,6 +84,8 @@ CommandUriAction* CommandUriAction::instance = CommandUriAction::instance_owner(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return CommandUriAction::instance;
     
 }
@@ -117,6 +119,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->PR
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return intent;
     
 }

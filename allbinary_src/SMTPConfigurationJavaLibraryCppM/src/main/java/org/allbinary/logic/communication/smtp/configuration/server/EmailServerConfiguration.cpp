@@ -147,6 +147,8 @@ this->smtpServer= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->smtpServer;
     
 }
@@ -157,6 +159,8 @@ this->smtpServer= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->accountName;
     
 }
@@ -173,6 +177,8 @@ this->accountName= accountName;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->password;
     
 }
@@ -202,6 +208,8 @@ this->password= password;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Email Server Configuration:\n") +JavaString::valueOf("Smtp Server: \n")) +JavaString::valueOf(this->getSmtpServer())) +JavaString::valueOf("\nAccount Name: ")) +JavaString::valueOf(this->getAccountName())) +JavaString::valueOf("\nPassword: ")) +JavaString::valueOf(this->getPassword());
     
 }

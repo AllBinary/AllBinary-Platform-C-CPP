@@ -132,6 +132,8 @@ this->setTransformDocumentInterface(TransformHttpRequestDocumentFactory::getInst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->NO_TYPE;
     
 }
@@ -142,6 +144,8 @@ this->setTransformDocumentInterface(TransformHttpRequestDocumentFactory::getInst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->transformDocumentInterface;
     
 }
@@ -185,6 +189,8 @@ this->transformDocumentInterface->getBaseNode()->appendChild(domNodeInterface->t
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getTransformDocumentInterface()->getDoc();;
     
 
@@ -246,6 +252,8 @@ this->transformDocumentInterface->getBaseNode()->appendChild(domNodeInterface->t
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getTransformDocumentInterface()->getDoc();;
     
 }
@@ -268,6 +276,8 @@ this->transformDocumentInterface->getBaseNode()->appendChild(domNodeInterface->t
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 

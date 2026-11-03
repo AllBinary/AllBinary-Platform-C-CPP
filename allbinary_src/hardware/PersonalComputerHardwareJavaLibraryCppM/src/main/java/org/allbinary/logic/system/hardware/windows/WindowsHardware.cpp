@@ -173,6 +173,8 @@ this->monitorInterfaceVector= new BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->componentFactory->ETHERNET->toString();;
     
 
@@ -186,6 +188,8 @@ this->monitorInterfaceVector= new BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->componentFactory->BRIDGE->toString();;
     
 
@@ -199,6 +203,8 @@ this->monitorInterfaceVector= new BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->componentFactory->IDE->toString();;
     
 
@@ -212,6 +218,8 @@ this->monitorInterfaceVector= new BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->componentFactory->MULTIMEDIA->toString();;
     
 
@@ -225,6 +233,8 @@ this->monitorInterfaceVector= new BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->componentFactory->SCSI->toString();;
     
 
@@ -238,6 +248,8 @@ this->monitorInterfaceVector= new BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->componentFactory->USB->toString();;
     
 
@@ -251,6 +263,8 @@ this->monitorInterfaceVector= new BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->componentFactory->VGA->toString();;
     
 
@@ -267,6 +281,8 @@ this->monitorInterfaceVector= new BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<MediaInterface*>(this->multimediaInterfaceVector->get(index));
     
 }
@@ -277,6 +293,8 @@ this->monitorInterfaceVector= new BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<BridgeInterface*>(this->bridgeInterfaceVector->get(index));
     
 }
@@ -287,6 +305,8 @@ this->monitorInterfaceVector= new BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<CpuInterface*>(this->cpuInterfaceVector->get(index));
     
 }
@@ -297,6 +317,8 @@ this->monitorInterfaceVector= new BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<EthernetInterface*>(this->ethernetInterfaceVector->get(index));
     
 }
@@ -307,6 +329,8 @@ this->monitorInterfaceVector= new BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<FireWireInterface*>(this->fireWireInterfaceVector->get(index));
     
 }
@@ -317,6 +341,8 @@ this->monitorInterfaceVector= new BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<HardDriveControllerInterface*>(this->hardDriveControllerInterfaceVector->get(index));
     
 }
@@ -327,6 +353,8 @@ this->monitorInterfaceVector= new BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<HardDriveInterface*>(this->hardDriveInterfaceVector->get(index));
     
 }
@@ -337,6 +365,8 @@ this->monitorInterfaceVector= new BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<MachineAccessControlAddressInterface*>(this->macInterfaceVector->get(index));
     
 }
@@ -347,6 +377,8 @@ this->monitorInterfaceVector= new BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<MonitorInterface*>(this->monitorInterfaceVector->get(index));
     
 }
@@ -357,6 +389,8 @@ this->monitorInterfaceVector= new BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<UsbInterface*>(this->usbInterfaceVector->get(index));
     
 }
@@ -367,6 +401,8 @@ this->monitorInterfaceVector= new BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<VideoInterface*>(this->videoInterfaceVector->get(index));
     
 }
@@ -377,6 +413,8 @@ this->monitorInterfaceVector= new BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<HardwareComponentInterface*>(this->componentInterfaceVector->get(index));
     
 }
@@ -409,6 +447,8 @@ hardwareBuffer->append(CommonSeps::getInstance()->NEW_LINE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hardwareBuffer->toString();;
     
 }
@@ -419,6 +459,8 @@ hardwareBuffer->append(CommonSeps::getInstance()->NEW_LINE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -429,6 +471,8 @@ hardwareBuffer->append(CommonSeps::getInstance()->NEW_LINE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StdUtil::getInstance()->NULL_TABLE;
     
 }

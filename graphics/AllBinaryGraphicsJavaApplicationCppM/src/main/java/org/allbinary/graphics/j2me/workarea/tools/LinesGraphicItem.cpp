@@ -293,6 +293,8 @@ this->setRotate(this->theta +Math::toRadians(angle));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<MutableTreeNode*>(this->treeNode);
     
 }
@@ -303,6 +305,8 @@ this->setRotate(this->theta +Math::toRadians(angle));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return LinesGraphicItem::NAME;
     
 }
@@ -313,6 +317,8 @@ this->setRotate(this->theta +Math::toRadians(angle));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return LinesGraphicItem::NAME;
     
 }
@@ -401,6 +407,8 @@ this->pointTreeNodeVector->remove(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return point;
     
 }
@@ -411,6 +419,8 @@ this->pointTreeNodeVector->remove(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->active;
     
 }
@@ -478,6 +488,8 @@ linesGraphicItem->deactivate();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return linesGraphicItem;
     
 }
@@ -488,6 +500,8 @@ linesGraphicItem->deactivate();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Math::toDegrees(this->theta);;
     
 }
@@ -585,6 +599,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "mouseMoved", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PointsDomUtil::getInstance()->toDom(canvasDom, this->points->getPoints());;
     
 }
@@ -595,6 +611,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "mouseMoved", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->points->isValid();;
     
 }
@@ -605,6 +623,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "mouseMoved", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->points;
     
 }
@@ -621,6 +641,8 @@ this->points= points;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->color;
     
 }

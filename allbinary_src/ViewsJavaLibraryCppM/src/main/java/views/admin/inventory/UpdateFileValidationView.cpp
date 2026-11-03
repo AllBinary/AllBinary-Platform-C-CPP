@@ -159,6 +159,8 @@ UpdateFileValidationView::UpdateFileValidationView(TransformInfoInterface* trans
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -181,6 +183,8 @@ UpdateFileValidationView::UpdateFileValidationView(TransformInfoInterface* trans
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -221,6 +225,8 @@ stringBuffer->append(this->itemInterface->getCategory());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -239,6 +245,8 @@ stringBuffer->append(this->itemInterface->getCategory());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -270,6 +278,8 @@ HttpFileUploadUtil::log(fileItem);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -282,6 +292,8 @@ HttpFileUploadUtil::log(fileItem);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -301,6 +313,8 @@ HttpFileUploadUtil::log(fileItem);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -313,6 +327,8 @@ HttpFileUploadUtil::log(fileItem);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -323,6 +339,8 @@ HttpFileUploadUtil::log(fileItem);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -345,6 +363,8 @@ HttpFileUploadUtil::log(fileItem);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return CommonSeps::getInstance()->SPACE;
     
 
@@ -423,6 +443,8 @@ this->validationInfo(stringBuffer, fileName, fileItemFieldName, size);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -450,6 +472,8 @@ this->validationInfo(stringBuffer, fileName, fileItemFieldName, size);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -483,6 +507,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -497,6 +523,8 @@ this->processImageFiles();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 }

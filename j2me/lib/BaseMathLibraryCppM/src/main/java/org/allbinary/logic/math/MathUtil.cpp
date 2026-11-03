@@ -55,6 +55,8 @@ MathUtil* MathUtil::instance = MathUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return MathUtil::instance;
     
 }
@@ -77,6 +79,8 @@ total++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return total;
     
 }
@@ -91,6 +95,8 @@ total++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return value;
     
 
@@ -117,6 +123,8 @@ result= (accumulated +(value /accumulated))>>1;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return accumulated;
     
 }
@@ -131,6 +139,8 @@ result= (accumulated +(value /accumulated))>>1;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0.0;
     
 
@@ -144,6 +154,8 @@ result= (accumulated +(value /accumulated))>>1;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1.0;
     
 
@@ -167,6 +179,8 @@ result= (result +(x /result)) /2;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 }
@@ -177,6 +191,8 @@ result= (result +(x /result)) /2;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (value < 0)
                         ?       
                                  -value
@@ -192,6 +208,8 @@ result= (result +(x /result)) /2;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (value < 0)
                         ?       
                                  -value
@@ -207,6 +225,8 @@ result= (result +(x /result)) /2;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (value <= value2)
                         ?       
                                 value
@@ -222,6 +242,8 @@ result= (result +(x /result)) /2;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (value >= value2)
                         ?       
                                 value

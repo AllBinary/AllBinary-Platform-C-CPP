@@ -221,6 +221,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new RTSLayer(RemoteInfo::REMOTE_INFO, GroupFactory::getInstance()->NULL_GROUP_ARRAY, StringUtil::getInstance()->EMPTY_STRING, StringUtil::getInstance()->EMPTY_STRING, Health::NULL_HEALTH, NullRTSFormInputFactory::getInstance(), nullAnimationInterfaceFactoryInterface, nullIndexedAnimationInterfaceFactoryInterface, nullAnimationInterfaceFactoryInterface, nullAnimationInterfaceFactoryInterface, nullIndexedAnimationInterfaceFactoryInterface, NullIndexedAnimationFactory::getFactoryInstance(), RectangleFactory::SINGLETON, 0, 0, new TileLayerPositionIntoViewPosition());
     
 }
@@ -353,6 +355,8 @@ this->selected= selected;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->selected;
     
 }
@@ -363,6 +367,8 @@ this->selected= selected;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->percentCompleteP;
     
 }
@@ -373,6 +379,8 @@ this->selected= selected;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ScrollSelectionForm::getNullScrollSelectionForm();;
     
 }
@@ -469,6 +477,8 @@ this->getAnimationInterface()->paintXY(graphics, viewX, viewY);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return RTSLayer::id;
     
 }
@@ -495,6 +505,8 @@ this->rtsLayerUtil->upgrade(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -505,6 +517,8 @@ this->rtsLayerUtil->upgrade(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -541,6 +555,8 @@ this->getHudPaintable()->updateInfo();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -551,6 +567,8 @@ this->getHudPaintable()->updateInfo();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->rtsLayerUtil->getCost(this);;
     
 }
@@ -561,6 +579,8 @@ this->getHudPaintable()->updateInfo();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->rtsLayerUtil->getDowngradeCost(this);;
     
 }
@@ -571,6 +591,8 @@ this->getHudPaintable()->updateInfo();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->rtsLayerUtil->getUpgradeCost(this);;
     
 }
@@ -585,6 +607,8 @@ this->getHudPaintable()->updateInfo();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -595,6 +619,8 @@ this->getHudPaintable()->updateInfo();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -612,6 +638,8 @@ this->getHudPaintable()->updateInfo();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -622,6 +650,8 @@ this->getHudPaintable()->updateInfo();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -635,6 +665,8 @@ this->getHudPaintable()->updateInfo();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->level;
     
 }
@@ -651,6 +683,8 @@ this->level= level;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->verticleBuildAnimationInterface;
     
 }
@@ -661,6 +695,8 @@ this->level= level;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->animationInterface;
     
 }
@@ -709,6 +745,8 @@ waypointBehaviorBase->setTargetWithDistance(dynamic_cast<PathFindingLayerInterfa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->maxLevel;
     
 }
@@ -725,6 +763,8 @@ this->maxLevel= maxLevel;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->healthInterface;
     
 }
@@ -741,6 +781,8 @@ this->healthInterface= healthInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->rtsFormInput;
     
 }
@@ -753,6 +795,8 @@ this->healthInterface= healthInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->destroyed;
     
 }
@@ -782,6 +826,8 @@ ViewPositionEventHandler::getInstance()->removeListener(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->geographicMapCellPositionAreaBase->getOccupyingGeographicMapCellPositionList();;
     
 }
@@ -792,6 +838,8 @@ ViewPositionEventHandler::getInstance()->removeListener(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->geographicMapCellPositionAreaBase;
     
 }
@@ -802,6 +850,8 @@ ViewPositionEventHandler::getInstance()->removeListener(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -836,6 +886,8 @@ ViewPositionEventHandler::getInstance()->removeListener(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->rtsLayer2LogHelper;
     
 }
@@ -846,6 +898,8 @@ ViewPositionEventHandler::getInstance()->removeListener(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->waypointLogHelperP;
     
 }
@@ -856,6 +910,8 @@ ViewPositionEventHandler::getInstance()->removeListener(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->waypoint2LogHelperP;
     
 }
@@ -866,6 +922,8 @@ ViewPositionEventHandler::getInstance()->removeListener(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->waypointRunnableLogHelperP;
     
 }
@@ -876,6 +934,8 @@ ViewPositionEventHandler::getInstance()->removeListener(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -895,6 +955,8 @@ ViewPositionEventHandler::getInstance()->removeListener(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->showMoreCaptionStates;
     
 }
@@ -981,6 +1043,8 @@ ViewPositionEventHandler::getInstance()->removeListener(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -1002,6 +1066,8 @@ ViewPositionEventHandler::getInstance()->removeListener(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -1016,6 +1082,8 @@ ViewPositionEventHandler::getInstance()->removeListener(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 1;
     
 }
@@ -1026,6 +1094,8 @@ ViewPositionEventHandler::getInstance()->removeListener(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 4;
     
 }
@@ -1040,6 +1110,8 @@ ViewPositionEventHandler::getInstance()->removeListener(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -1049,6 +1121,8 @@ ViewPositionEventHandler::getInstance()->removeListener(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -1059,6 +1133,8 @@ ViewPositionEventHandler::getInstance()->removeListener(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -1069,6 +1145,8 @@ ViewPositionEventHandler::getInstance()->removeListener(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -1079,6 +1157,8 @@ ViewPositionEventHandler::getInstance()->removeListener(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->rootName;
     
 }
@@ -1089,6 +1169,8 @@ ViewPositionEventHandler::getInstance()->removeListener(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<RotationAnimation*>(this->indexedButShouldBeRotationAnimationInterface);
     
 }

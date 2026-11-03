@@ -98,6 +98,8 @@ NotificationUtil* NotificationUtil::SINGLETON = NotificationUtil::SINGLETON_owne
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NotificationUtil::SINGLETON;
     
 }
@@ -164,6 +166,8 @@ this->logUtil->putF(commonStrings->EXCEPTION, this, commonStrings->NOT_IMPLEMENT
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 

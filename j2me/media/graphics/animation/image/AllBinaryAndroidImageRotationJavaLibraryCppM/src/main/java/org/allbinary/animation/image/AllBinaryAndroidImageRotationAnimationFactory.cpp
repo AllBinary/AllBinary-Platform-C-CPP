@@ -96,6 +96,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AllBinaryAndroidImageRotationAnimationFactory(image, width, height, (AngleFactory::getInstance()->TOTAL_ANGLE /GameConfigurationCentral::getInstance()->getGameControlFidelity()), animationBehaviorFactory, false);
     
 }
@@ -108,6 +110,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AllBinaryAndroidImageRotationAnimationFactory(image, width, height, angleIncrement, animationBehaviorFactory, false);
     
 }
@@ -125,6 +129,8 @@ androidImageRotationAnimationFactory->init( -(image->getWidth()>>2),  -(image->g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return androidImageRotationAnimationFactory;
     
 }
@@ -142,6 +148,8 @@ androidImageRotationAnimationFactory->init(dx, dy);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return androidImageRotationAnimationFactory;
     
 }
@@ -159,6 +167,8 @@ androidImageRotationAnimationFactory->init(dx, dy);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return androidImageRotationAnimationFactory;
     
 }
@@ -204,6 +214,8 @@ this->resizeCanvasForRotation= resizeCanvasForRotation;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ImageCopyUtil::getInstance()->createImageScale(this->getImage(), 1.44, false);;
     
 
@@ -214,6 +226,8 @@ this->resizeCanvasForRotation= resizeCanvasForRotation;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getImage();;
     
 
@@ -244,6 +258,8 @@ this->resizeCanvasForRotation= resizeCanvasForRotation;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AllBinaryAdjustedAndroidImageRotationAnimation(scaledImage, copyOfScaledImage, AngleInfo::getInstance(this->angleIncrement), AngleFactory::getInstance()->TOTAL_ANGLE, this->animationFactoryInitializationVisitor->dx, this->animationFactoryInitializationVisitor->dy, animationBehaviorFactory->getOrCreateInstance());
     
 
@@ -254,6 +270,8 @@ this->resizeCanvasForRotation= resizeCanvasForRotation;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AllBinaryFlickerAndroidImageRotationAnimation(scaledImage, copyOfScaledImage, AngleInfo::getInstance(this->angleIncrement), AngleFactory::getInstance()->TOTAL_ANGLE, this->animationBehaviorFactory->getOrCreateInstance());
     
 

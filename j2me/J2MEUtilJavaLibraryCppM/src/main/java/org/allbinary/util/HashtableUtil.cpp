@@ -78,6 +78,8 @@ HashtableUtil* HashtableUtil::instance = HashtableUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return HashtableUtil::instance;
     
 }
@@ -141,6 +143,8 @@ objectArray[index++]= this->enumerationUtil->nextElement(enumeration);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return objectArray;
     
 }
@@ -164,6 +168,8 @@ list->add(this->enumerationUtil->nextElement(enumeration));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return list;
     
 }

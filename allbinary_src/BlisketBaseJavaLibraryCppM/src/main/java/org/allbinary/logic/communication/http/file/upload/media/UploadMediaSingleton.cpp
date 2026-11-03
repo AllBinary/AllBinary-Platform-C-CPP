@@ -193,6 +193,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->CONSTRU
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return UploadMediaSingleton::uploadMedia;
     
 }
@@ -203,6 +205,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->CONSTRU
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->readerFileTypesHashMap->containsKey(mediaFileType);;
     
 }
@@ -213,6 +217,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->CONSTRU
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->readerFileTypesHashMap->containsKey(mediaFileType);;
     
 }
@@ -223,6 +229,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->CONSTRU
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->isReaderSupported(mediaFileType) && this->isWriterSupported(mediaFileType);
     
 }
@@ -233,6 +241,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->CONSTRU
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->isReaderMedia(mediaFileType, aMediaType) && this->isWriterMedia(mediaFileType, aMediaType);
     
 }
@@ -243,6 +253,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->CONSTRU
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->isMedia(mediaFileType, aMediaType, this->readerFileTypesHashMap);;
     
 }
@@ -253,6 +265,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->CONSTRU
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->isMedia(mediaFileType, aMediaType, this->writerFileTypesHashMap);;
     
 }
@@ -274,6 +288,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->CONSTRU
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -284,6 +300,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->CONSTRU
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -297,6 +315,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->CONSTRU
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 

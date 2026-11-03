@@ -231,6 +231,8 @@ node->appendChild(classNameNode);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }
@@ -241,6 +243,8 @@ node->appendChild(classNameNode);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }
@@ -259,6 +263,8 @@ this->name= name;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->className;
     
 }
@@ -277,6 +283,8 @@ this->className= className;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->inputAutomationModuleInterface;
     
 }

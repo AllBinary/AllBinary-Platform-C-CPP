@@ -87,6 +87,8 @@ StdUtil* StdUtil::instance = StdUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StdUtil::instance;
     
 }
@@ -97,6 +99,8 @@ StdUtil* StdUtil::instance = StdUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new ABStack<Object*>();
     
 }
@@ -107,6 +111,8 @@ StdUtil* StdUtil::instance = StdUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new ABVector<Object*>();
     
 }
@@ -117,6 +123,8 @@ StdUtil* StdUtil::instance = StdUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new ABHashtable<Object*, Object*>();
     
 }
@@ -127,6 +135,8 @@ StdUtil* StdUtil::instance = StdUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new ABHashMap<Object*, Object*>();
     
 }

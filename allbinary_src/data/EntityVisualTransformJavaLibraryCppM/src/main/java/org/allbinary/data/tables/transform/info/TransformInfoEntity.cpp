@@ -259,6 +259,8 @@ hashMap->put(transformInfoData->DATA, decode.toCharArray());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->transformInfoFactoryInterface->getInstance(hashMap, propertiesHashMap, pageContext);;
     
 
@@ -269,6 +271,8 @@ hashMap->put(transformInfoData->DATA, decode.toCharArray());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 
@@ -309,6 +313,8 @@ objectConfigVector->add(this->transformInfoObjectConfigAndManipulatorFactoryInte
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return objectConfigVector;
     
 }
@@ -344,6 +350,8 @@ viewNameVector->add(viewNameString);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return viewNameVector;
     
 }
@@ -418,6 +426,8 @@ stringBuffer->append(this->sqlStrings->END);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -428,6 +438,8 @@ stringBuffer->append(this->sqlStrings->END);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbSqlBean::createTable(this->createTableStatement());;
     
 }
@@ -444,6 +456,8 @@ AbSqlBean::updateWhere(TransformInfoData::getInstance()->NAME, JavaBoxes::unbox<
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbSqlBean::dropTable();;
     
 }

@@ -141,6 +141,8 @@ this->init();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return inputAutomationConfigurationModuleChangeListener;
     
 
@@ -153,6 +155,8 @@ this->init();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 
@@ -280,6 +284,8 @@ this->removeModules(context);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->inputAutomationModuleInterface;
     
 }
@@ -296,7 +302,9 @@ this->inputAutomationModuleInterface= inputAutomationModuleInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->serviceFactory;
+                        
+                        
+                        return JavaBoxes::toObject(this->serviceFactory);
     
 }
 

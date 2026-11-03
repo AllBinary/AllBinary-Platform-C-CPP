@@ -168,6 +168,8 @@ this->cssStyleElementVector= StylesValidationFactory::getInstance(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return isValid;
     
 
@@ -187,6 +189,8 @@ this->cssStyleElementVector= StylesValidationFactory::getInstance(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -204,6 +208,8 @@ this->cssStyleElementVector= StylesValidationFactory::getInstance(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -223,6 +229,8 @@ this->cssStyleElementVector= StylesValidationFactory::getInstance(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Validating Form";
     
 }
@@ -235,6 +243,8 @@ this->cssStyleElementVector= StylesValidationFactory::getInstance(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -245,6 +255,8 @@ this->cssStyleElementVector= StylesValidationFactory::getInstance(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -282,6 +294,8 @@ styleNode->appendChild(styleDomNodeInterface->toXmlNode(document));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }

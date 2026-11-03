@@ -216,6 +216,8 @@ this->logUtil->put("Unable to get form data", this, "getFormData()", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -238,6 +240,8 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->IS_VALID, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -283,6 +287,8 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->IS_VALID, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return isValid;
     
 }
@@ -302,6 +308,8 @@ stringBuffer->append(") you have provided is not valid.<br/>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -362,6 +370,8 @@ stringBuffer->append(this->getJdbcDriverValidationInfo(this->getAdminJdbcDriver(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -376,6 +386,8 @@ stringBuffer->append(this->getJdbcDriverValidationInfo(this->getAdminJdbcDriver(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -388,6 +400,8 @@ this->logUtil->put("Unable to Create Users", this, "createUsers()", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -404,6 +418,8 @@ this->logUtil->put("Unable to Create Users", this, "createUsers()", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -416,6 +432,8 @@ this->logUtil->put("Unable to Create Databases", this, "createDatabases()", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -432,6 +450,8 @@ this->logUtil->put("Unable to Create Databases", this, "createDatabases()", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -444,6 +464,8 @@ this->logUtil->put("Unable to Create Tables", this, "createTables()", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -456,6 +478,8 @@ this->logUtil->put("Unable to Create Tables", this, "createTables()", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->adminDbUserName;
     
 }
@@ -472,6 +496,8 @@ this->adminDbUserName= adminDbUserName;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->adminDbPassword;
     
 }
@@ -488,6 +514,8 @@ this->adminDbPassword= adminDbPassword;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->adminJdbcDriver;
     
 }
@@ -504,6 +532,8 @@ this->adminJdbcDriver= adminJdbcDriver;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->adminSchema;
     
 }
@@ -520,6 +550,8 @@ this->adminSchema= adminSchema;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->adminServer;
     
 }
@@ -536,6 +568,8 @@ this->adminServer= adminServer;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->adminPort;
     
 }

@@ -112,6 +112,8 @@ this->includesString= includesString;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -125,6 +127,8 @@ this->includesString= includesString;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return IncludeFileExtensionsBooleanFileVisitor::visit(file);;
     
 
@@ -135,6 +139,8 @@ this->includesString= includesString;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -167,6 +173,8 @@ this->includesString= includesString;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -197,6 +205,8 @@ this->includesString= includesString;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }

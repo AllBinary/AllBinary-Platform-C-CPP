@@ -70,6 +70,8 @@ this->initComponents();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->newActionScriptInputJPanel;
     
 }
@@ -86,6 +88,8 @@ this->newActionScriptInputJPanel= newActionScriptInputJPanel;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->removeJPanel;
     
 }
@@ -102,6 +106,8 @@ this->removeJPanel= removeJPanel;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->scriptItemJPanel;
     
 }
@@ -118,6 +124,8 @@ this->scriptItemJPanel= scriptItemJPanel;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->newActionScriptConditionJPanel;
     
 }
@@ -134,6 +142,8 @@ this->newActionScriptConditionJPanel= newActionScriptConditionJPanel;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->childActionScriptConditionJPanel;
     
 }

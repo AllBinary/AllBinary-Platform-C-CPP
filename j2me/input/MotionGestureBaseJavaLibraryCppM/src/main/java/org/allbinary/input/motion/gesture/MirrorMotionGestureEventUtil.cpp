@@ -109,6 +109,8 @@ event->setCurrentPoint(mirroredCurrentPoint);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return event;
     
 }
@@ -137,6 +139,8 @@ event->setCurrentPoint(mirroredCurrentPoint);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return newX;
     
 }
@@ -147,6 +151,8 @@ event->setCurrentPoint(mirroredCurrentPoint);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return MirrorMotionGestureEventUtil::instance;
     
 }

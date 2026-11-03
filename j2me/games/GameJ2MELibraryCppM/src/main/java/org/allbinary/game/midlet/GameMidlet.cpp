@@ -1417,6 +1417,8 @@ ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new GameInputMappingInstructionsCanvas(this, this->createGameLayerManager());
     
 }
@@ -1429,6 +1431,8 @@ ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new GameInputMappingCanvas(this->abeClientInformation, this, this->createGameLayerManager(), this->getHelpPaintable());
     
 }
@@ -1441,6 +1445,8 @@ ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new BasicPaintablesCanvas(this, CanvasStrings::getInstance()->ABOUT, this->createGameLayerManager(), AboutPaintableFactory::getInstance()->paintableArray);
     
 }
@@ -1546,6 +1552,8 @@ this->logUtil->putF(this->commonStrings->END, this, this->gameStrings->STOP_GAME
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->allbinaryGameCanvasRunnableInterface;
     
 }
@@ -1565,6 +1573,8 @@ this->allbinaryGameCanvasRunnableInterface= gameCanvasRunnableInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AllBinaryGameLayerManager(this->basicColorFactory->BLACK, this->basicColorFactory->WHITE, gameInfo);
     
 }
@@ -1578,6 +1588,8 @@ this->allbinaryGameCanvasRunnableInterface= gameCanvasRunnableInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return GameOptionsFormFactory::getInstance()->init(this, "Game Options", layerManager->getBackgroundBasicColor(), layerManager->getForegroundBasicColor());;
     
 }
@@ -1633,6 +1645,8 @@ hashtable->put(key, currentHashtable->get(key));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashtable;
     
 }
@@ -1649,6 +1663,8 @@ this->loadGameForm= loadGameForm;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->loadGameForm;
     
 }
@@ -1665,6 +1681,8 @@ this->resized= resized;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->resized;
     
 }
@@ -1679,6 +1697,8 @@ this->resized= resized;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -1704,6 +1724,8 @@ this->resized= resized;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -1716,6 +1738,8 @@ this->resized= resized;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

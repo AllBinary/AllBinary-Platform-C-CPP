@@ -115,6 +115,8 @@ Object* Features::SINGLETON = NullUtil::getInstance()->NULL_OBJECT;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<Features*>(Features::SINGLETON);
     
 }
@@ -272,6 +274,8 @@ PreLogUtil::putOE(this->commonStrings->EXCEPTION, this, this->commonStrings->INI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->defaultList->contains(gameFeature);;
     
 }
@@ -282,6 +286,8 @@ PreLogUtil::putOE(this->commonStrings->EXCEPTION, this, this->commonStrings->INI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->list->contains(gameFeature);;
     
 }

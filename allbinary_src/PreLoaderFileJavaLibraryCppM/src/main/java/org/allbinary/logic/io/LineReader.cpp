@@ -118,6 +118,8 @@ this->logUtil->put(JavaString::valueOf("File: ") +JavaString::valueOf(fileName),
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -127,6 +129,8 @@ this->logUtil->put(JavaString::valueOf("File: ") +JavaString::valueOf(fileName),
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -145,6 +149,8 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "hasNext", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -181,6 +187,8 @@ index= nextIndex +1;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return temp;
     
 

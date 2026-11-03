@@ -74,6 +74,8 @@ ResourceLoadingLevelFactory* ResourceLoadingLevelFactory::instance = ResourceLoa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ResourceLoadingLevelFactory::instance;
     
 }
@@ -95,6 +97,8 @@ ResourceLoadingLevelFactory* ResourceLoadingLevelFactory::instance = ResourceLoa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->RESOURCE_LOADING_LEVEL_ARRAY[index]->getName();;
     
 
@@ -106,6 +110,8 @@ ResourceLoadingLevelFactory* ResourceLoadingLevelFactory::instance = ResourceLoa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return std::to_string(level);;
     
 }

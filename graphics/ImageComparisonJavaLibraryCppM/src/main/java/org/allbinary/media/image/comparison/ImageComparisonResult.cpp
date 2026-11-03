@@ -193,6 +193,8 @@ this->logUtil->putF(JavaString::valueOf("2: ") +JavaString::valueOf(imageUtil->t
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->matchingPercent;
     
 }
@@ -209,6 +211,8 @@ this->nonMatchingPixelVector->add(pixel);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->nonMatchingPixelVector;
     
 }
@@ -219,6 +223,8 @@ this->nonMatchingPixelVector->add(pixel);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (new StringMaker())->append("ImageComparisonInfo: ")->append(this->name)->append(" Number Of Matching Pixels: ")->appendint(this->pixelsThatMatch)->append("\nNumber Of Non-Matching Pixels: ")->appendint(this->getNonMatchingPixelVector()->size())->append("\nNumber Of Pixels Ignored: ")->appendint(this->pixelsIgnored)->append("\nMatching Percentage: ")->appendfloat(this->getMatchingPercent())->toString();;
     
 }
@@ -229,6 +235,8 @@ this->nonMatchingPixelVector->add(pixel);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->bufferedImages;
     
 }
@@ -239,6 +247,8 @@ this->nonMatchingPixelVector->add(pixel);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->tolerance;
     
 }
@@ -255,6 +265,8 @@ this->tolerance= tolerance;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->frameOne;
     
 }
@@ -265,6 +277,8 @@ this->tolerance= tolerance;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->frameTwo;
     
 }

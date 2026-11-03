@@ -100,6 +100,8 @@ this->image= image;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getSize();;
     
 }
@@ -122,6 +124,8 @@ this->image= image;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -132,6 +136,8 @@ this->image= image;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 1;
     
 }
@@ -146,6 +152,8 @@ this->image= image;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PrimitiveIntUtil::getArrayInstance();;
     
 }
@@ -162,6 +170,8 @@ graphics->drawImage(this->image, x, y, this->anchor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->image;
     
 }

@@ -429,6 +429,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->canvasStrings->ON
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return commandArray;
     
 
@@ -506,6 +508,8 @@ commandList->add(gameCommandsFactory->DISPLAY_ABOUT);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return commandArray;
     
 
@@ -592,6 +596,8 @@ GameKeyEventHandler::getInstance()->removeListener(this->getMenuInputProcessor()
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StartCanvas::id;
     
 }
@@ -737,6 +743,8 @@ this->setPaused(false);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -747,6 +755,8 @@ this->setPaused(false);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -762,6 +772,8 @@ this->logUtil->putF((new StringMaker())->append(this->commonStrings->NOT_IMPLEME
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -784,6 +796,8 @@ this->logUtil->putF("Trying to continue a demo lol - only continue a game canvas
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->stdUtil->NULL_TABLE;
     
 }
@@ -798,6 +812,8 @@ this->logUtil->putF("Trying to save the AI lol", this, "getCurrentStateHashtable
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->stdUtil->NULL_TABLE;
     
 }
@@ -1196,6 +1212,8 @@ DisplayChangeEventHandler::getInstance()->removeListener(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->gameStateFactory->PLAYING_GAME_STATE;
     
 }
@@ -1206,6 +1224,8 @@ DisplayChangeEventHandler::getInstance()->removeListener(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->state;
     
 }
@@ -1224,6 +1244,8 @@ this->logUtil->putF("Wow the AI got a high score!", this, "isHighScoreSubmitted"
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -1234,6 +1256,8 @@ this->logUtil->putF("Wow the AI got a high score!", this, "isHighScoreSubmitted"
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->realHighScoresPaintable;
     
 }
@@ -1252,6 +1276,8 @@ this->specialAnimationInterface= specialAnimationInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->specialAnimationInterface;
     
 }
@@ -1268,6 +1294,8 @@ this->paintableInterface= paintableInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->paintableInterface;
     
 }
@@ -1284,6 +1312,8 @@ this->defaultPaintableInterface= defaultPaintableInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->defaultPaintableInterface;
     
 }
@@ -1294,6 +1324,8 @@ this->defaultPaintableInterface= defaultPaintableInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->highScoresFactoryInterface;
     
 }
@@ -1310,6 +1342,8 @@ this->menuInputProcessor= menuInputProcessor;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->menuInputProcessor;
     
 }
@@ -1320,6 +1354,8 @@ this->menuInputProcessor= menuInputProcessor;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->menuForm;
     
 }
@@ -1336,6 +1372,8 @@ this->menuForm= menuForm;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->initialized;
     
 }
@@ -1346,6 +1384,8 @@ this->menuForm= menuForm;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->overlayPaintable;
     
 }
@@ -1362,6 +1402,8 @@ this->basicGameDemoPaintable= basicGameDemoPaintable;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->basicGameDemoPaintable;
     
 }
@@ -1378,6 +1420,8 @@ this->tempWait= tempWait;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->tempWait;
     
 }
@@ -1388,6 +1432,8 @@ this->tempWait= tempWait;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return OpenGLFeatureUtil::getInstance()->isAnyThreed() || SWTUtil::isSWT;
     
 }
@@ -1408,6 +1454,8 @@ this->tempWait= tempWait;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -1418,6 +1466,8 @@ this->tempWait= tempWait;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->isRunning();;
     
 
@@ -1431,6 +1481,8 @@ this->tempWait= tempWait;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->gameInitializationInterfaceFactoryInterface;
     
 }

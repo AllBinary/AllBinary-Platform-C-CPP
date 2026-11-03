@@ -82,6 +82,8 @@ SpecialMessageUtil* SpecialMessageUtil::SINGLETON = SpecialMessageUtil::SINGLETO
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SpecialMessageUtil::SINGLETON;
     
 }
@@ -120,6 +122,8 @@ stringBuffer->append(" Option: ");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

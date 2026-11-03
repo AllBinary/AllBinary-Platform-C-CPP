@@ -112,6 +112,8 @@ ImageModifierUtil::ImageModifierUtil() : logUtil(LogUtil::getInstance()), common
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new ImageModifierUtil();
     
 }
@@ -221,6 +223,8 @@ this->handleImage(imageArray, index, originalImageArray[index]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return imageArray;
     
 }

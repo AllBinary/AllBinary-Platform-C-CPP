@@ -62,6 +62,8 @@ CustomGPoint* CustomGPoint::NULL_CUSTOM_POINT = CustomGPoint::NULL_CUSTOM_POINT_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new CustomGPoint(point->getX(), point->getY(), point->getZ());
     
 }
@@ -72,6 +74,8 @@ CustomGPoint* CustomGPoint::NULL_CUSTOM_POINT = CustomGPoint::NULL_CUSTOM_POINT_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new CustomGPoint(x, y, 3);
     
 }
@@ -98,6 +102,8 @@ this->cx= x;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->cx;
     
 }
@@ -114,6 +120,8 @@ this->cy= y;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->cy;
     
 }
@@ -130,6 +138,8 @@ this->cz= z;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->cz;
     
 }

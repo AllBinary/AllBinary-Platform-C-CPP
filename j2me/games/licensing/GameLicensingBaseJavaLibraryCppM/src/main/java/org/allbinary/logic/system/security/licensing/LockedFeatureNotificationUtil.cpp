@@ -93,6 +93,8 @@ LockedFeatureNotificationUtil* LockedFeatureNotificationUtil::instance = LockedF
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return LockedFeatureNotificationUtil::instance;
     
 }

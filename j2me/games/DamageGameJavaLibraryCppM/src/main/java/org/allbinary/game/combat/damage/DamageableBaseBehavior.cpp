@@ -69,6 +69,8 @@ DamageableBaseBehavior* DamageableBaseBehavior::instance = DamageableBaseBehavio
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return DamageableBaseBehavior::instance;
     
 }
@@ -79,6 +81,8 @@ DamageableBaseBehavior* DamageableBaseBehavior::instance = DamageableBaseBehavio
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getClass()->getName();;
     
 }
@@ -97,6 +101,8 @@ DamageableBaseBehavior* DamageableBaseBehavior::instance = DamageableBaseBehavio
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 6000;
     
 }

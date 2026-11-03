@@ -100,6 +100,8 @@ this->textBody= textBody;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->subject;
     
 }
@@ -110,6 +112,8 @@ this->textBody= textBody;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->textBody;
     
 }
@@ -120,6 +124,8 @@ this->textBody= textBody;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->emailServerConfigurationInterface;
     
 }
@@ -151,6 +157,8 @@ stringBuffer->append(this->getTextBody());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

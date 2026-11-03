@@ -80,6 +80,8 @@ BasicColorFactory* BasicColorFactory::instance = BasicColorFactory::instance_own
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BasicColorFactory::instance;
     
 }
@@ -90,6 +92,8 @@ BasicColorFactory* BasicColorFactory::instance = BasicColorFactory::instance_own
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new BasicColor(BasicColorUtil::getInstance()->ALPHA, value, StringUtil::getInstance()->EMPTY_STRING);
     
 }
@@ -100,6 +104,8 @@ BasicColorFactory* BasicColorFactory::instance = BasicColorFactory::instance_own
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new BasicColor(alphaValue, value, StringUtil::getInstance()->EMPTY_STRING);
     
 }
@@ -110,6 +116,8 @@ BasicColorFactory* BasicColorFactory::instance = BasicColorFactory::instance_own
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new BasicColor(alphaValue, value, name);
     
 }
@@ -123,6 +131,8 @@ BasicColorFactory* BasicColorFactory::instance = BasicColorFactory::instance_own
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new BasicColor(alphaValue, ((alphaValue<<24)&ALPHA_MASK) +((r<<16)&0x00FF0000) +((g<<8)&0x0000FF00) +(b&0x000000FF), StringUtil::getInstance()->EMPTY_STRING);
     
 }

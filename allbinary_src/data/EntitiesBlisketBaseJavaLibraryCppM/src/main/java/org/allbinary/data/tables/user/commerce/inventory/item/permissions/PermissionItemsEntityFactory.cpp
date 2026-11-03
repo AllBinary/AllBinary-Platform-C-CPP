@@ -72,6 +72,8 @@ PermissionItemsEntityFactory* PermissionItemsEntityFactory::instance = Permissio
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PermissionItemsEntityFactory::instance;
     
 }
@@ -91,6 +93,8 @@ PermissionItemsEntityFactory::PermissionItemsEntityFactory() : logUtil(LogUtil::
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new org::allbinary::data::tables::user::commerce::inventory::item::permissions::PermissionItemsEntity();
     
 
@@ -113,6 +117,8 @@ PermissionItemsEntityFactory::PermissionItemsEntityFactory() : logUtil(LogUtil::
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

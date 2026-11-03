@@ -109,6 +109,8 @@ SelectNewView::SelectNewView(TransformInfoInterface* transformInfoInterface) : P
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (new PaymentGatewaysView(this->getTransformInfoInterface(), allGatewaysLessExisting))->view();;
     
 

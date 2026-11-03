@@ -127,6 +127,8 @@ list->add(RIGHT);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return list;
     
 
@@ -139,6 +141,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->GE
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BasicArrayListUtil::getInstance()->getImmutableInstance();;
     
 }

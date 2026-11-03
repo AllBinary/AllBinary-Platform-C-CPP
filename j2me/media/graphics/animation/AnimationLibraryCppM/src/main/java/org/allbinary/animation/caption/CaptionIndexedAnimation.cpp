@@ -156,6 +156,8 @@ this->player->start();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -166,6 +168,8 @@ this->player->start();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -191,6 +195,8 @@ this->movieIndexedAnimationInterface->setFrame(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->movieIndexedAnimationInterface->getFrame();;
     
 }
@@ -201,6 +207,8 @@ this->movieIndexedAnimationInterface->setFrame(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->movieIndexedAnimationInterface->getSize();;
     
 }
@@ -215,6 +223,8 @@ this->movieIndexedAnimationInterface->setFrame(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PrimitiveIntUtil::getArrayInstance();;
     
 }

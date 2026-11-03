@@ -76,6 +76,8 @@ RectangleCollisionUtil::RectangleCollisionUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -86,6 +88,8 @@ RectangleCollisionUtil::RectangleCollisionUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -99,6 +103,8 @@ RectangleCollisionUtil::RectangleCollisionUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return RectangleCollisionUtil::isCollision(rectangle1->x, rectangle1->y, rectangle1->x +rectangle1->width, rectangle1->y +rectangle1->height, rectangle2->x, rectangle2->y, rectangle2->x +rectangle2->width, rectangle2->y +rectangle2->height);;
     
 }
@@ -113,6 +119,8 @@ RectangleCollisionUtil::RectangleCollisionUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -123,6 +131,8 @@ RectangleCollisionUtil::RectangleCollisionUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 

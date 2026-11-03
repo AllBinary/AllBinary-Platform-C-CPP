@@ -67,6 +67,8 @@ PlatformKeyFactory::PlatformKeyFactory() : androidKeyFactory(ActivityFractureCon
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<PlatformKeyFactory*>(PlatformKeyFactory::instance);
     
 }
@@ -77,6 +79,8 @@ PlatformKeyFactory::PlatformKeyFactory() : androidKeyFactory(ActivityFractureCon
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AndroidGameKey::getString(keyCode);;
     
 }
@@ -87,6 +91,8 @@ PlatformKeyFactory::PlatformKeyFactory() : androidKeyFactory(ActivityFractureCon
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->androidKeyFactory->isSubmission(input);;
     
 }
@@ -97,6 +103,8 @@ PlatformKeyFactory::PlatformKeyFactory() : androidKeyFactory(ActivityFractureCon
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->androidKeyFactory->isDelete(input);;
     
 }
@@ -107,6 +115,8 @@ PlatformKeyFactory::PlatformKeyFactory() : androidKeyFactory(ActivityFractureCon
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->androidKeyFactory->isBackSpace(input);;
     
 }
@@ -117,6 +127,8 @@ PlatformKeyFactory::PlatformKeyFactory() : androidKeyFactory(ActivityFractureCon
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->androidKeyFactory->isLeft(input);;
     
 }
@@ -127,6 +139,8 @@ PlatformKeyFactory::PlatformKeyFactory() : androidKeyFactory(ActivityFractureCon
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->androidKeyFactory->isRight(input);;
     
 }
@@ -137,6 +151,8 @@ PlatformKeyFactory::PlatformKeyFactory() : androidKeyFactory(ActivityFractureCon
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->androidKeyFactory->isUp(input);;
     
 }
@@ -147,6 +163,8 @@ PlatformKeyFactory::PlatformKeyFactory() : androidKeyFactory(ActivityFractureCon
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->androidKeyFactory->isDown(input);;
     
 }
@@ -157,6 +175,8 @@ PlatformKeyFactory::PlatformKeyFactory() : androidKeyFactory(ActivityFractureCon
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->androidKeyFactory->isEnter(input);;
     
 }

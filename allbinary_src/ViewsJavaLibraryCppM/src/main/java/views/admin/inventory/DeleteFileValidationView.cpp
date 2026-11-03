@@ -131,6 +131,8 @@ this->id= JavaBoxes::unbox<std::string>(hashMap->get(basicItemData.ID));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -146,12 +148,16 @@ this->itemInterface= InventoryEntityFactory::getInstance()->getInventoryEntityIn
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -162,6 +168,8 @@ this->itemInterface= InventoryEntityFactory::getInstance()->getInventoryEntityIn
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -174,6 +182,8 @@ this->itemInterface= InventoryEntityFactory::getInstance()->getInventoryEntityIn
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -184,6 +194,8 @@ this->itemInterface= InventoryEntityFactory::getInstance()->getInventoryEntityIn
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -219,6 +231,8 @@ this->itemInterface= InventoryEntityFactory::getInstance()->getInventoryEntityIn
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -229,6 +243,8 @@ this->itemInterface= InventoryEntityFactory::getInstance()->getInventoryEntityIn
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Unkown Validation Error.<br />";
     
 }

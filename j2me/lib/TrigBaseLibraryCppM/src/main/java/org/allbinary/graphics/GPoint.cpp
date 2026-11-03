@@ -79,6 +79,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new GPoint(point->getX(), point->getY(), point->getZ());
     
 }
@@ -99,6 +101,8 @@ this->z= z;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->x;
     
 }
@@ -109,6 +113,8 @@ this->z= z;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->y;
     
 }
@@ -119,6 +125,8 @@ this->z= z;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->z;
     
 }
@@ -129,6 +137,8 @@ this->z= z;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->x;
     
 }
@@ -139,6 +149,8 @@ this->z= z;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->y;
     
 }
@@ -149,6 +161,8 @@ this->z= z;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->z;
     
 }
@@ -159,6 +173,8 @@ this->z= z;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return GPoint::toStringStatic(this->getX(), this->getY(), this->getZ());;
     
 }
@@ -193,6 +209,8 @@ stringBuffer->appendint(z);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

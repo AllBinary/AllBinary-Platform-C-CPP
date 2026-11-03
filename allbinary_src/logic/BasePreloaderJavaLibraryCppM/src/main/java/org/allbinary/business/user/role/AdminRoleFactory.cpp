@@ -70,6 +70,8 @@ AdminRoleFactory* AdminRoleFactory::instance = AdminRoleFactory::instance_owner(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AdminRoleFactory::instance;
     
 }
@@ -157,6 +159,8 @@ this->webManagementRoles->add(basicUserRoleFactory->VIEWEDITOR);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->productManagementRoles;
     
 }
@@ -167,6 +171,8 @@ this->webManagementRoles->add(basicUserRoleFactory->VIEWEDITOR);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->adminRoles;
     
 }
@@ -177,6 +183,8 @@ this->webManagementRoles->add(basicUserRoleFactory->VIEWEDITOR);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->storeAdminRoles;
     
 }
@@ -187,6 +195,8 @@ this->webManagementRoles->add(basicUserRoleFactory->VIEWEDITOR);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->storeManagementRoles;
     
 }
@@ -197,6 +207,8 @@ this->webManagementRoles->add(basicUserRoleFactory->VIEWEDITOR);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->reviewManagementRoles;
     
 }
@@ -207,6 +219,8 @@ this->webManagementRoles->add(basicUserRoleFactory->VIEWEDITOR);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->customerManagementRoles;
     
 }
@@ -217,6 +231,8 @@ this->webManagementRoles->add(basicUserRoleFactory->VIEWEDITOR);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->workflowManagementRoles;
     
 }
@@ -227,6 +243,8 @@ this->webManagementRoles->add(basicUserRoleFactory->VIEWEDITOR);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->webManagementRoles;
     
 }
@@ -237,6 +255,8 @@ this->webManagementRoles->add(basicUserRoleFactory->VIEWEDITOR);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->shippingManagementRoles;
     
 }
@@ -247,6 +267,8 @@ this->webManagementRoles->add(basicUserRoleFactory->VIEWEDITOR);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->adjusterManagementRoles;
     
 }
@@ -257,6 +279,8 @@ this->webManagementRoles->add(basicUserRoleFactory->VIEWEDITOR);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->orderManagementRoles;
     
 }

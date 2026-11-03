@@ -81,6 +81,8 @@ this->height= height;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->point;
     
 }
@@ -97,6 +99,8 @@ this->point= point;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->point->getX() +this->width;
     
 }
@@ -107,6 +111,8 @@ this->point= point;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->point->getY() +this->height;
     
 }
@@ -117,6 +123,8 @@ this->point= point;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->width;
     
 }
@@ -133,6 +141,8 @@ this->width= width;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->height;
     
 }
@@ -174,6 +184,8 @@ stringBuffer->appendint(this->getMaxY());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

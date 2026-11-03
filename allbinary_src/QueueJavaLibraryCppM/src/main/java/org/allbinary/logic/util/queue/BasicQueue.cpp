@@ -78,6 +78,8 @@ this->queueVector->add(anyType);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -101,7 +103,9 @@ this->queueVector->remove(anyType);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return anyType;
+                        
+                        
+                        return JavaBoxes::toObject(anyType);
     
 }
 

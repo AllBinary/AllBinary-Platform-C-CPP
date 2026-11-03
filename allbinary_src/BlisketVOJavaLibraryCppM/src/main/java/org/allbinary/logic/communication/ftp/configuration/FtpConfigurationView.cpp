@@ -134,6 +134,8 @@ this->setFtpConfigurationInterface(ftpConfigurationInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }
@@ -144,6 +146,8 @@ this->setFtpConfigurationInterface(ftpConfigurationInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->ftpConfigurationInterface;
     
 }

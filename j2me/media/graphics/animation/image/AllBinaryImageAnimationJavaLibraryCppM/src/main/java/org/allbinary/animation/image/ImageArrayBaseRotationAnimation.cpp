@@ -116,6 +116,8 @@ this->currentImage= this->imageArray[this->circularIndexUtil->getIndex()];
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getSize();;
     
 }
@@ -189,6 +191,8 @@ this->currentImage= this->imageArray[index];
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PrimitiveIntUtil::getArrayInstance();;
     
 }

@@ -120,6 +120,8 @@ this->contentBase= contentBase;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->basicEmailInfo;
     
 }
@@ -130,6 +132,8 @@ this->contentBase= contentBase;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->htmlAttachment;
     
 }
@@ -140,6 +144,8 @@ this->contentBase= contentBase;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->contentBase;
     
 }
@@ -150,6 +156,8 @@ this->contentBase= contentBase;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::valueOf("Email Info: \n ") +JavaString::valueOf(this->getBasicEmailInfo()->toString());
     
 }

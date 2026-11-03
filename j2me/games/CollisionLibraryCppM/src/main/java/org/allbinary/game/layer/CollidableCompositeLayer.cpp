@@ -114,6 +114,8 @@ Object* CollidableCompositeLayer::NULL_COLLIDABLE_COMPOSITE_LAYER = NullUtil::ge
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<CollidableCompositeLayer*>(CollidableCompositeLayer::NULL_COLLIDABLE_COMPOSITE_LAYER);
     
 }
@@ -145,6 +147,8 @@ ForcedLogUtil::log(this->commonStrings->NOT_IMPLEMENTED, this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ArtificialIntelligence::getInstance();;
     
 }
@@ -155,6 +159,8 @@ ForcedLogUtil::log(this->commonStrings->NOT_IMPLEMENTED, this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->collidableInferface;
     
 }
@@ -171,6 +177,8 @@ this->collidableInferface= collidableInferface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -199,6 +207,8 @@ this->toStringAppend(stringBuffer);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

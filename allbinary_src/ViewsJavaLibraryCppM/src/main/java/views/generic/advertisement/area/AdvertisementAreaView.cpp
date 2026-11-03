@@ -113,6 +113,8 @@ this->advertisementAreaName= JavaBoxes::unbox<std::string>(this->getPropertiesHa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 
@@ -155,6 +157,8 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return HttpStoreComponentView::view();;
     
 

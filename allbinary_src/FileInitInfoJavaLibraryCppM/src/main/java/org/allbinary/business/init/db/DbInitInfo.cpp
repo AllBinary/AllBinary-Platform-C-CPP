@@ -157,6 +157,8 @@ this->initFileName= initFileName;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return url;
     
 }
@@ -421,6 +423,8 @@ this->updateIfNeeded();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return DbConnectionInfo::getName();;
     
 }
@@ -442,6 +446,8 @@ this->updateIfNeeded();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return DbConnectionInfo::getUserName();;
     
 }
@@ -454,6 +460,8 @@ this->updateIfNeeded();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return DbConnectionInfo::getPassword();;
     
 }
@@ -466,6 +474,8 @@ this->updateIfNeeded();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return DbConnectionInfo::getSchema();;
     
 }
@@ -478,6 +488,8 @@ this->updateIfNeeded();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return DbConnectionInfo::getServer();;
     
 }
@@ -490,6 +502,8 @@ this->updateIfNeeded();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return DbConnectionInfo::getPort();;
     
 }

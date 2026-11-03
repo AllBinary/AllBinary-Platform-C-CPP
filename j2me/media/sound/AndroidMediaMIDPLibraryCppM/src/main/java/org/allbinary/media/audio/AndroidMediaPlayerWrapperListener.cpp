@@ -126,6 +126,8 @@ AndroidMediaPlayerWrapperListener::MediaPlayerOnErrorListener::MediaPlayerOnErro
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -193,6 +195,8 @@ this->androidMediaPlayerWrapperListener->androidMediaPlayerWrapper->update(Playe
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }

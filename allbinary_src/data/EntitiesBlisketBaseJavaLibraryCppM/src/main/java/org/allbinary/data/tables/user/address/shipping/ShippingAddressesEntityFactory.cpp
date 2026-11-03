@@ -75,6 +75,8 @@ ShippingAddressesEntityFactory* ShippingAddressesEntityFactory::instance = Shipp
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ShippingAddressesEntityFactory::instance;
     
 }
@@ -91,6 +93,8 @@ ShippingAddressesEntityFactory::ShippingAddressesEntityFactory() : logUtil(LogUt
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new ShippingAddressesEntity(userName);
     
 
@@ -113,6 +117,8 @@ ShippingAddressesEntityFactory::ShippingAddressesEntityFactory() : logUtil(LogUt
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

@@ -106,6 +106,8 @@ this->dy= dy;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AdjustedImageArrayAnimation(this->imageArray, this->dx, this->dy, this->animationBehaviorFactory->getOrCreateInstance());
     
 
@@ -116,6 +118,8 @@ this->dy= dy;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new ImageArrayAnimation(this->imageArray, AnimationBehavior::getInstance());
     
 

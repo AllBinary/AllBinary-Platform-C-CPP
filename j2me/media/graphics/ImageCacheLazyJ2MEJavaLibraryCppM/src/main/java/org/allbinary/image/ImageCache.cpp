@@ -352,6 +352,8 @@ this->firstTime= false;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -394,6 +396,8 @@ this->firstTime= false;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -574,6 +578,8 @@ this->loadImageForAnimation();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -583,6 +589,8 @@ this->loadImageForAnimation();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -611,6 +619,8 @@ this->loadImageForAnimation();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -636,6 +646,8 @@ this->loadImage(image);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -662,6 +674,8 @@ this->loadImage(image);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -690,6 +704,8 @@ this->loadImage(image);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -711,6 +727,8 @@ this->loadImage(image);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -739,6 +757,8 @@ image->setName(key);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return image;
     
 }
@@ -803,6 +823,8 @@ this->listOfList[foundIndex].add(image);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return image;
     
 }
@@ -856,6 +878,8 @@ this->hashtable->put(key, image);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return image;
     
 }
@@ -886,6 +910,8 @@ this->hashtable->put(key, image);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return index;
     
 
@@ -930,6 +956,8 @@ this->logUtil->putF((new StringMaker())->append("unable to find key: ")->append(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->creatImage(JavaBoxes::unbox<std::string>(key));;
     
 
@@ -966,6 +994,8 @@ this->loadList->add(image);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return image;
     
 }
@@ -978,6 +1008,8 @@ this->loadList->add(image);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Image::createImageLater(key, width, height);;
     
 }
@@ -1042,6 +1074,8 @@ this->loadAfterList->remove(list->get(index));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return list;
     
 }
@@ -1126,6 +1160,8 @@ this->processor->process();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }

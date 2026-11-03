@@ -91,6 +91,8 @@ CamelCaseUtil* CamelCaseUtil::instance = CamelCaseUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return CamelCaseUtil::instance;
     
 }
@@ -107,6 +109,8 @@ CamelCaseUtil* CamelCaseUtil::instance = CamelCaseUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 
@@ -155,6 +159,8 @@ stringBuilder->append(word);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuilder->toString();;
     
 }

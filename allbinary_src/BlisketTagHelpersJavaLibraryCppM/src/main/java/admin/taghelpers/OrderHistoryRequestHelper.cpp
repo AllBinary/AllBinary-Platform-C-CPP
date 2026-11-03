@@ -160,6 +160,8 @@ OrderHistoryEntityFactory::getInstance()->setStatus(this->id, this->status);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -182,6 +184,8 @@ OrderHistoryEntityFactory::getInstance()->setStatus(this->id, this->status);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -219,6 +223,8 @@ OrderHistoryEntityFactory::getInstance()->setStatus(this->id, newStatus);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -241,6 +247,8 @@ OrderHistoryEntityFactory::getInstance()->setStatus(this->id, newStatus);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }

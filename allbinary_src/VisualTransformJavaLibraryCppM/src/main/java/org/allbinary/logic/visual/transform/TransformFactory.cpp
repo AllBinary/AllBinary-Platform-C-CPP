@@ -105,6 +105,8 @@ TransformFactory* TransformFactory::instance = TransformFactory::instance_owner(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TransformFactory::instance;
     
 }
@@ -169,6 +171,8 @@ transformInfoInterface->setChild();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<TransformInterface*>(anyType);
     
 
@@ -250,6 +254,8 @@ transformInfoInterface->setChild();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<TransformInterface*>(anyType);
     
 
@@ -314,6 +320,8 @@ this->logUtil->put(stringBuffer->toString(), this, this->commonStrings->GET_INST
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<TransformInterface*>(anyType);
     
 

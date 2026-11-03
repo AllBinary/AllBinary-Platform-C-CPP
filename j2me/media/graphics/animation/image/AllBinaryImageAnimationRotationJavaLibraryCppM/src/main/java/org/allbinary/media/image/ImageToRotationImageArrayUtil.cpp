@@ -71,6 +71,8 @@ ImageToRotationImageArrayUtil* ImageToRotationImageArrayUtil::instance = ImageTo
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ImageToRotationImageArrayUtil::instance;
     
 }
@@ -109,6 +111,8 @@ imageArray[index]= imageRotationUtil->createRotatedImage(image, index *angleIncr
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return imageArray;
     
 }

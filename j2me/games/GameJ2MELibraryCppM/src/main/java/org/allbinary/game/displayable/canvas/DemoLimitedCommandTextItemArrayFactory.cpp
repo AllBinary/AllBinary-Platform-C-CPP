@@ -72,6 +72,8 @@ DemoLimitedCommandTextItemArrayFactory* DemoLimitedCommandTextItemArrayFactory::
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return DemoLimitedCommandTextItemArrayFactory::instance;
     
 }
@@ -82,6 +84,8 @@ DemoLimitedCommandTextItemArrayFactory* DemoLimitedCommandTextItemArrayFactory::
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->commandTextItemArrayFactory;
     
 }

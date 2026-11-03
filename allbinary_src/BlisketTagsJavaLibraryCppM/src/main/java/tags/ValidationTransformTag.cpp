@@ -129,6 +129,8 @@ this->logic= logic;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;;
     
 
@@ -174,6 +176,8 @@ this->logic= logic;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 
@@ -267,6 +271,8 @@ this->logUtil->putF(stringBuffer->toString(), this, tagStrings.DO_START_TAG);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return EVAL_BODY_INCLUDE;
     
 
@@ -277,6 +283,8 @@ this->logUtil->putF(stringBuffer->toString(), this, tagStrings.DO_START_TAG);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SKIP_BODY;
     
 
@@ -318,6 +326,8 @@ this->logUtil->putF(stringBuffer->toString(), this, tagStrings.DO_START_TAG);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SKIP_BODY;
     
 
@@ -328,6 +338,8 @@ this->logUtil->putF(stringBuffer->toString(), this, tagStrings.DO_START_TAG);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return EVAL_BODY_INCLUDE;
     
 
@@ -346,6 +358,8 @@ AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SKIP_BODY;
     
 }
@@ -359,6 +373,8 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SKIP_BODY;
     
 }
@@ -382,6 +398,8 @@ this->logic= true;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TransformTag::doEndTag();;
     
 }

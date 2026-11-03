@@ -245,6 +245,8 @@ this->mappedName= mappedName;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->transformInfoInterface;
     
 }
@@ -255,6 +257,8 @@ this->mappedName= mappedName;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->mappedName;
     
 }
@@ -286,6 +290,8 @@ stringBuffer->append("\"/>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return key;
     
 }

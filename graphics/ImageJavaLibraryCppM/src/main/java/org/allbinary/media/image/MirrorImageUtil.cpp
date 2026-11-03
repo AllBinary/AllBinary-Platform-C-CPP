@@ -82,6 +82,8 @@ MirrorImageUtil* MirrorImageUtil::instance = MirrorImageUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return MirrorImageUtil::instance;
     
 }
@@ -151,6 +153,8 @@ g->dispose();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return newBufferedImage;
     
 }
@@ -220,6 +224,8 @@ bufferedImageArray[index +numberOfFramesPerOrientation]= this->getImage(buffered
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return bufferedImageArray;
     
 }

@@ -109,6 +109,8 @@ this->setParent(parentCategoryInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->level;
     
 }
@@ -119,6 +121,8 @@ this->setParent(parentCategoryInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return std::to_string(this->level);;
     
 }
@@ -147,6 +151,8 @@ this->rootCategoryInterface= categoryInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->rootCategoryInterface;
     
 }
@@ -157,6 +163,8 @@ this->rootCategoryInterface= categoryInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->parentCategoryInterface;
     
 }

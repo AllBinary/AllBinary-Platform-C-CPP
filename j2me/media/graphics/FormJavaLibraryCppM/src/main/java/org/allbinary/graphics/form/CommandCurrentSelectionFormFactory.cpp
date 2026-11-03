@@ -98,6 +98,8 @@ scrollSelectionForm->init(rectangle, formType);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return scrollSelectionForm;
     
 
@@ -108,6 +110,8 @@ scrollSelectionForm->init(rectangle, formType);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ScrollSelectionFormNoneFactory::getInstance();;
     
 

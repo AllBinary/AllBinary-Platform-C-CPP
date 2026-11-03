@@ -72,6 +72,8 @@ ImageFileFilter::ImageFileFilter() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -96,6 +98,8 @@ ImageFileFilter::ImageFileFilter() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -105,6 +109,8 @@ ImageFileFilter::ImageFileFilter() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -115,6 +121,8 @@ ImageFileFilter::ImageFileFilter() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Accepts .jpg and .jpeg files";
     
 }

@@ -85,6 +85,8 @@ XmlOptionItemsHelperFactory::XmlOptionItemsHelperFactory() : logUtil(LogUtil::ge
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new XmlOptionItemsHelper(hashMap, pageContext);
     
 
@@ -104,6 +106,8 @@ XmlOptionItemsHelperFactory::XmlOptionItemsHelperFactory() : logUtil(LogUtil::ge
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

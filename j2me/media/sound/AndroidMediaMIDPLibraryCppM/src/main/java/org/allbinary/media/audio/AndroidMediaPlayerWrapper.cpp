@@ -96,6 +96,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AndroidMediaPlayerWrapper(StringUtil::getInstance()->EMPTY_STRING);
     
 
@@ -217,6 +219,8 @@ BasicPlayer::removePlayerListener(playerListener);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Player::STARTED;
     
 
@@ -227,6 +231,8 @@ BasicPlayer::removePlayerListener(playerListener);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Player::PREFETCHED;
     
 
@@ -342,6 +348,8 @@ this->mediaPlayer->setVolume((leftVolume) /100.0, (rightVolume) /100.0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->mediaPlayer->getDuration();
     
 }
@@ -358,6 +366,8 @@ this->mediaPlayer= mediaPlayer;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->mediaPlayer;
     
 }

@@ -83,6 +83,8 @@ this->typesAllowedList= typesAllowedList;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->x;
     
 }
@@ -93,6 +95,8 @@ this->typesAllowedList= typesAllowedList;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->y;
     
 }
@@ -103,6 +107,8 @@ this->typesAllowedList= typesAllowedList;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->z;
     
 }
@@ -113,6 +119,8 @@ this->typesAllowedList= typesAllowedList;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->typesAllowedList;
     
 }

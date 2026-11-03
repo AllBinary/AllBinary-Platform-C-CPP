@@ -81,6 +81,8 @@ TileLayerPositionIntoViewPosition::TileLayerPositionIntoViewPosition() : ViewPos
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ViewPosition::getX() -this->tiledLayer->getXP();
     
 }
@@ -91,6 +93,8 @@ TileLayerPositionIntoViewPosition::TileLayerPositionIntoViewPosition() : ViewPos
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ViewPosition::getY() -this->tiledLayer->getYP();
     
 }
@@ -101,6 +105,8 @@ TileLayerPositionIntoViewPosition::TileLayerPositionIntoViewPosition() : ViewPos
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ViewPosition::getZ() -this->tiledLayer->getZP();
     
 }

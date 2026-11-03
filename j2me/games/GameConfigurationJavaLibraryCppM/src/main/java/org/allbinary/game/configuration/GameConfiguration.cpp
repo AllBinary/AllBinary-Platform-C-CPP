@@ -121,6 +121,8 @@ GameFeatureEventHandler::getInstance()->fireEvent(new GameFeatureEvent(this, (ne
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->value;
     
 }
@@ -137,6 +139,8 @@ this->maxValue= maxValue;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->maxValue;
     
 }
@@ -153,6 +157,8 @@ this->minValue= minValue;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->minValue;
     
 }
@@ -169,6 +175,8 @@ this->name= name;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }
@@ -185,6 +193,8 @@ this->defaultValue= defaultValue;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->defaultValue;
     
 }
@@ -230,6 +240,8 @@ stringBuffer->appendboolean(this->isModifiable());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -246,6 +258,8 @@ this->modifiable= modifiable;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->modifiable;
     
 }

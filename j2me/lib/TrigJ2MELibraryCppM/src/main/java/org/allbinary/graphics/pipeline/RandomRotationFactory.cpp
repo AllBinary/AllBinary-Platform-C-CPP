@@ -78,6 +78,8 @@ RandomRotationFactory* RandomRotationFactory::instance = RandomRotationFactory::
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return RandomRotationFactory::instance;
     
 }
@@ -97,6 +99,8 @@ graphicsPipe->rotateToAngle(this->angleFactory->getAt(this->getNextRandomAngle(h
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return graphicsPipe->getMatrix();;
     
 }
@@ -107,6 +111,8 @@ graphicsPipe->rotateToAngle(this->angleFactory->getAt(this->getNextRandomAngle(h
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->myRandomFactory->getNextInt(howMuch *10);;
     
 }

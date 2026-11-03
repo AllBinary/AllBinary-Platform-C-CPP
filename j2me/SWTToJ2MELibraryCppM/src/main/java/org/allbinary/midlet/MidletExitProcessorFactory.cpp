@@ -79,6 +79,8 @@ MidletExitProcessorFactory* MidletExitProcessorFactory::instance = MidletExitPro
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return MidletExitProcessorFactory::instance;
     
 }
@@ -93,6 +95,8 @@ MidletExitProcessorFactory* MidletExitProcessorFactory::instance = MidletExitPro
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Processor::getInstance();;
     
 
@@ -103,6 +107,8 @@ MidletExitProcessorFactory* MidletExitProcessorFactory::instance = MidletExitPro
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new MidletExitProcessor(midlet);
     
 

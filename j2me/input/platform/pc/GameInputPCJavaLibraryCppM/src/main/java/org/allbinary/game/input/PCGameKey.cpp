@@ -86,6 +86,8 @@ PCGameKey::PCGameKey(int32_t keyCode, std::string name) : Input(keyCode, name){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::valueOf("PCGameKey: ") +JavaString::valueOf(Input::toString());
     
 }
@@ -105,6 +107,8 @@ PCGameKey::PCGameKey(int32_t keyCode, std::string name) : Input(keyCode, name){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return input->getName();;
     
 
@@ -115,6 +119,8 @@ PCGameKey::PCGameKey(int32_t keyCode, std::string name) : Input(keyCode, name){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 

@@ -68,6 +68,8 @@ AllBinaryRenderer* AllBinaryRenderer::instance = AllBinaryRenderer::instance_own
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AllBinaryRenderer::instance;
     
 }

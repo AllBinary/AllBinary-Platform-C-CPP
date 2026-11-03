@@ -112,6 +112,8 @@ GameFeatureFormUtil* GameFeatureFormUtil::instance = GameFeatureFormUtil::instan
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return GameFeatureFormUtil::instance;
     
 }
@@ -170,6 +172,8 @@ choiceGroup->append(gameFeature->toString(), NullImage::NULL_IMAGE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return choiceGroup;
     
 }

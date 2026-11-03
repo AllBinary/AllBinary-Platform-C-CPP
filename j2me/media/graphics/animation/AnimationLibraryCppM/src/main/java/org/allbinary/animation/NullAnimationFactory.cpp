@@ -95,6 +95,8 @@ NullAnimationFactory::NullAnimationFactory() : NULL_ANIMATION([&]() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NullAnimationFactory::NULL_ANIMATION_FACTORY;
     
 }
@@ -105,6 +107,8 @@ NullAnimationFactory::NullAnimationFactory() : NULL_ANIMATION([&]() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->NULL_ANIMATION;
     
 }
@@ -117,6 +121,8 @@ NullAnimationFactory::NullAnimationFactory() : NULL_ANIMATION([&]() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->NULL_ANIMATION;
     
 }

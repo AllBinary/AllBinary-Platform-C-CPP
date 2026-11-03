@@ -112,6 +112,8 @@ this->velocityZBasicDecimal->setint(0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->velocityXBasicDecimal;
     
 }
@@ -122,6 +124,8 @@ this->velocityZBasicDecimal->setint(0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->velocityYBasicDecimal;
     
 }
@@ -132,6 +136,8 @@ this->velocityZBasicDecimal->setint(0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->velocityZBasicDecimal;
     
 }
@@ -288,6 +294,8 @@ stringBuffer->append(stringUtil->toString(this->velocityZBasicDecimal));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

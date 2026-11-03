@@ -120,6 +120,8 @@ this->user= NewUserFactory::getInstance(transformInfoInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -133,6 +135,8 @@ this->user= NewUserFactory::getInstance(transformInfoInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -142,6 +146,8 @@ this->user= NewUserFactory::getInstance(transformInfoInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -161,6 +167,8 @@ this->user= NewUserFactory::getInstance(transformInfoInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -207,6 +215,8 @@ stringBuffer->append("The User Name you selected is already in use.<br/>  Please
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -226,6 +236,8 @@ stringBuffer->append("The User Name you selected is already in use.<br/>  Please
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Getting Validation Info";
     
 }
@@ -238,6 +250,8 @@ stringBuffer->append("The User Name you selected is already in use.<br/>  Please
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -248,6 +262,8 @@ stringBuffer->append("The User Name you selected is already in use.<br/>  Please
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -260,6 +276,8 @@ stringBuffer->append("The User Name you selected is already in use.<br/>  Please
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return views.ValidationOnlyTempUtil->getInstance()->view(this);;
     
 }

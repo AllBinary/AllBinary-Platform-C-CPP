@@ -65,6 +65,8 @@ CharacterSet::CharacterSet(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Default Character Set: Empty Implementation";
     
 }

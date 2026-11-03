@@ -210,6 +210,8 @@ keysAndValues->put(StoreFrontData::getInstance()->NAME, storeName);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<WorkFlowInterface*>(DbWorkFlowFactory::getInstance()->getInstance(this->abeClientInformation, hashMap));
     
 
@@ -298,6 +300,8 @@ keysAndValues->put(StoreFrontData::getInstance()->NAME, storeName);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return workFlowsVector;
     
 
@@ -317,6 +321,8 @@ keysAndValues->put(StoreFrontData::getInstance()->NAME, storeName);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -367,6 +373,8 @@ stringBuffer->append(this->sqlStrings->CREATE_TABLE)->append(tableName)->append(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -377,6 +385,8 @@ stringBuffer->append(this->sqlStrings->CREATE_TABLE)->append(tableName)->append(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbSqlBean::createTable(this->createTableStatement());;
     
 }
@@ -387,6 +397,8 @@ stringBuffer->append(this->sqlStrings->CREATE_TABLE)->append(tableName)->append(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbSqlBean::dropTable();;
     
 }

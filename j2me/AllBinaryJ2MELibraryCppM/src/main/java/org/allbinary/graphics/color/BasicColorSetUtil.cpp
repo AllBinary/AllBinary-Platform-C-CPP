@@ -67,6 +67,8 @@ BasicColorSetUtil* BasicColorSetUtil::instance = BasicColorSetUtil::instance_own
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BasicColorSetUtil::instance;
     
 }

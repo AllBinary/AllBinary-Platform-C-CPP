@@ -85,6 +85,8 @@ AbeLicenseInterfaceFactory* AbeLicenseInterfaceFactory::SINGLETON = AbeLicenseIn
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbeLicenseInterfaceFactory::SINGLETON;
     
 }
@@ -105,6 +107,8 @@ AbeLicenseInterfaceFactory::AbeLicenseInterfaceFactory() : logUtil(LogUtil::getI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->get(abeClientInformation);;
     
 
@@ -115,6 +119,8 @@ AbeLicenseInterfaceFactory::AbeLicenseInterfaceFactory() : logUtil(LogUtil::getI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->abeLicenseInterface;
     
 
@@ -152,6 +158,8 @@ this->abeLicenseInterface= licenseClient->get(abeClientInformation);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->abeLicenseInterface;
     
 
@@ -205,6 +213,8 @@ this->time= currentTime;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -227,6 +237,8 @@ this->check= check;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->check;
     
 }

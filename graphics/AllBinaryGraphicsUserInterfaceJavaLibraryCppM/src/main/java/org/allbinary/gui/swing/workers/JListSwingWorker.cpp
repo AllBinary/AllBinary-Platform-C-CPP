@@ -75,6 +75,8 @@ this->setListModel(listModel);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -91,6 +93,8 @@ this->getJList()->setModel(this->getListModel());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->jList;
     
 }
@@ -107,6 +111,8 @@ this->jList= jList;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->listModel;
     
 }

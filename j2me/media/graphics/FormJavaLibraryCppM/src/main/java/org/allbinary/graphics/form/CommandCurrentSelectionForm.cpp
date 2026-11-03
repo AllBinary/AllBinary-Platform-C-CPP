@@ -360,6 +360,8 @@ rectangleAdjustedAnimation->setBasicColorP(buttonColor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return commandTextItem->getCommand();;
     
 }
@@ -375,6 +377,8 @@ this->addAt(result, item);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 }
@@ -423,6 +427,8 @@ this->selectedAnimationArray[index]->paintXY(graphics, x, y);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ScrollCurrentSelectionForm::paintItem(graphics, index, item, x, y);;
     
 }
@@ -437,6 +443,8 @@ this->unSelectedAnimationArray[index]->paintXY(graphics, x, y);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ScrollCurrentSelectionForm::paintUnselectedItem(graphics, index, item, x, y);;
     
 }

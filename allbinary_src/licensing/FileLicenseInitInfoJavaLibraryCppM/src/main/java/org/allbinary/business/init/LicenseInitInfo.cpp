@@ -80,6 +80,8 @@ LicenseInitInfo::LicenseInitInfo() : id(StringUtil::getInstance()->EMPTY_STRING)
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->id;
     
 }
@@ -90,6 +92,8 @@ LicenseInitInfo::LicenseInitInfo() : id(StringUtil::getInstance()->EMPTY_STRING)
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaBoxes::unbox<std::string>(this->serverVector->objectArray[index]);
     
 }
@@ -100,6 +104,8 @@ LicenseInitInfo::LicenseInitInfo() : id(StringUtil::getInstance()->EMPTY_STRING)
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->serverVector->size();;
     
 }
@@ -134,6 +140,8 @@ this->serverVector->add(value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->serverVector;
     
 }

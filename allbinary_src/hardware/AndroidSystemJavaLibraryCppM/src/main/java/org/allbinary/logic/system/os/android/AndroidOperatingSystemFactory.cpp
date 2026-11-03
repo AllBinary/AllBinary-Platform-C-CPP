@@ -87,6 +87,8 @@ AndroidOperatingSystemFactory* AndroidOperatingSystemFactory::instance = Android
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AndroidOperatingSystemFactory::instance;
     
 }
@@ -145,6 +147,8 @@ AndroidOperatingSystemFactory::AndroidOperatingSystemFactory() : logUtil(LogUtil
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return GenericOperatingSystem;
     
 
@@ -160,6 +164,8 @@ this->logUtil->put("Failed to get OperatingSystem returning NoOperatingSystem", 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NoOperatingSystem::NO_OPERATING_SYSTEM;
     
 }

@@ -89,6 +89,8 @@ ActivityFractureInputUtilFactory::ActivityFractureInputUtilFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ActivityFractureUtilAPI1::getInstance();;
     
 
@@ -102,6 +104,8 @@ ActivityFractureInputUtilFactory::ActivityFractureInputUtilFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ActivityFractureUtilAPI5::getInstance();;
     
 
@@ -115,6 +119,8 @@ ActivityFractureInputUtilFactory::ActivityFractureInputUtilFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ActivityFractureUtilAPI16::getInstance();;
     
 
@@ -125,6 +131,8 @@ ActivityFractureInputUtilFactory::ActivityFractureInputUtilFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ActivityFractureUtilAPI19::getInstance();;
     
 

@@ -105,6 +105,8 @@ scrollSelectionForm->init(rectangle, formType);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return scrollSelectionForm;
     
 }
@@ -123,6 +125,8 @@ this->multipleScrollSelectionForm= multipleScrollSelectionForm;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->multipleScrollSelectionForm->paintHorizontal(graphics, index, item, dx, dy);;
     
 }
@@ -141,6 +145,8 @@ this->multipleScrollSelectionForm= multipleScrollSelectionForm;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->multipleScrollSelectionForm->paintVertical(graphics, index, item, dx, dy);;
     
 }
@@ -263,6 +269,8 @@ dx= dx2;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dx;
     
 }
@@ -279,6 +287,8 @@ this->paintable->paint(graphics, index, dx, dy);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dx;
     
 }
@@ -289,6 +299,8 @@ this->paintable->paint(graphics, index, dx, dy);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getSelectedIndex();;
     
 }

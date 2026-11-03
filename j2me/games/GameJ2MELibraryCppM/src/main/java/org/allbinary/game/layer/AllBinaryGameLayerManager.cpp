@@ -108,6 +108,8 @@ Object* AllBinaryGameLayerManager::NULL_ALLBINARY_LAYER_MANAGER = NullUtil::getI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<AllBinaryGameLayerManager*>(AllBinaryGameLayerManager::NULL_ALLBINARY_LAYER_MANAGER);
     
 }
@@ -136,6 +138,8 @@ this->gameInfo= gameInfo;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this;
     
 }
@@ -150,6 +154,8 @@ this->gameInfo= gameInfo;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->backgroundBasicColor;
     
 }
@@ -168,6 +174,8 @@ ItemColorFactory::getInstance()->INVERT_PAINT= this->backgroundBasicColor->intVa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->foregroundBasicColor;
     
 }
@@ -186,6 +194,8 @@ ItemColorFactory::getInstance()->PAINT= this->foregroundBasicColor->intValue();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->gameInfo;
     
 }
@@ -231,6 +241,8 @@ this->playerGameInputCompositeInterface= playerGameInputCompositeInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->playerGameInputCompositeInterface;
     
 }

@@ -132,6 +132,8 @@ this->enabled= enabled;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -144,6 +146,8 @@ this->enabled= enabled;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -160,6 +164,8 @@ this->tagHelperFactoryInterface= tagHelperFactoryInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->tagHelperFactoryInterface;
     
 }
@@ -176,6 +182,8 @@ this->tagRequestHelperFactoryInterface= tagHelperFactoryInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->tagRequestHelperFactoryInterface;
     
 }
@@ -192,6 +200,8 @@ this->current= current;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->current;
     
 }
@@ -208,6 +218,8 @@ this->total= total;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->total;
     
 }
@@ -236,6 +248,8 @@ this->total= total;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 
@@ -258,6 +272,8 @@ this->total= total;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -288,6 +304,8 @@ this->total= total;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 
@@ -310,6 +328,8 @@ this->total= total;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -340,6 +360,8 @@ this->total= total;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 
@@ -362,6 +384,8 @@ this->total= total;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -392,6 +416,8 @@ this->total= total;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 
@@ -414,6 +440,8 @@ this->total= total;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -441,6 +469,8 @@ this->total= total;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 
@@ -463,6 +493,8 @@ this->total= total;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -490,6 +522,8 @@ this->total= total;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 
@@ -512,6 +546,8 @@ this->total= total;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -539,6 +575,8 @@ this->total= total;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 
@@ -561,6 +599,8 @@ this->total= total;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -702,6 +742,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->tagStrings->DO_START_T
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SKIP_BODY;
     
 
@@ -731,6 +773,8 @@ this->getPropertiesHashMap()->put("total", this->getTotal());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SKIP_BODY;
     
 
@@ -756,6 +800,8 @@ this->getPropertiesHashMap()->put("total", this->getTotal());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SKIP_BODY;
     
 
@@ -781,6 +827,8 @@ this->getPropertiesHashMap()->put("total", this->getTotal());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SKIP_BODY;
     
 
@@ -853,6 +901,8 @@ this->getPropertiesHashMap()->put("total", this->getTotal());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return EVAL_BODY_INCLUDE;
     
 
@@ -865,6 +915,8 @@ AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SKIP_BODY;
     
 }
@@ -878,6 +930,8 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SKIP_BODY;
     
 }

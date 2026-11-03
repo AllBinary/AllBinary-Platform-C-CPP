@@ -79,6 +79,8 @@ UserEntityFactory::UserEntityFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<UserEntity*>(new org::allbinary::data::tables::user::UserEntity());
     
 
@@ -101,6 +103,8 @@ UserEntityFactory::UserEntityFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

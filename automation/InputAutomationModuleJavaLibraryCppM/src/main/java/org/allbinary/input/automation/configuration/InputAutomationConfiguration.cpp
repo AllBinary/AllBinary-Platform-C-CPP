@@ -121,6 +121,8 @@ InputAutomationConfiguration::InputAutomationConfiguration() : logUtil(LogUtil::
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new File(FILENAME);
     
 }
@@ -131,6 +133,8 @@ InputAutomationConfiguration::InputAutomationConfiguration() : logUtil(LogUtil::
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->installed;
     
 }
@@ -149,6 +153,8 @@ this->logUtil->putF(JavaString::valueOf("Installed: ") +JavaString::valueOf(inst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->inputAutomationModuleConfigurationList;
     
 }

@@ -119,6 +119,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory("TouchButton Animations");
     
 }
@@ -153,6 +155,8 @@ this->initImageCache(ImageCacheFactory::getInstance(), level);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -348,6 +352,8 @@ BaseResourceAnimationInterfaceFactoryInterfaceFactory::init(level);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -358,6 +364,8 @@ BaseResourceAnimationInterfaceFactoryInterfaceFactory::init(level);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BaseResourceAnimationInterfaceFactoryInterfaceFactory::isLoadingLevel(level);;
     
 
@@ -375,6 +383,8 @@ BaseResourceAnimationInterfaceFactoryInterfaceFactory::init(level);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -385,6 +395,8 @@ BaseResourceAnimationInterfaceFactoryInterfaceFactory::init(level);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 

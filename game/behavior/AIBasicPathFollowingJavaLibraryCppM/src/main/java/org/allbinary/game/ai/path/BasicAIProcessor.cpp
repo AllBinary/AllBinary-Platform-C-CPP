@@ -153,6 +153,8 @@ keyDirection= this->basicAI->getAIKeyPressedFromDirection(geographicMapDirection
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return keyDirection;
     
 }
@@ -195,6 +197,8 @@ this->geographicMapCellPathHistoryInfo->setPreviousOnPathGeographicMapCellPositi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return keyDirection;
     
 }
@@ -205,6 +209,8 @@ this->geographicMapCellPathHistoryInfo->setPreviousOnPathGeographicMapCellPositi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }
@@ -221,6 +227,8 @@ this->name= name;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->geographicMapCellPathHistoryInfo;
     
 }
@@ -237,6 +245,8 @@ this->geographicMapCellPathHistoryInfo= geographicMapCellPathHistoryInfo;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->geographicMapCellHistory;
     
 }

@@ -68,6 +68,8 @@ GameStatisticsFactory* GameStatisticsFactory::instance = GameStatisticsFactory::
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return GameStatisticsFactory::instance;
     
 }
@@ -95,6 +97,8 @@ this->stringBuffer->append(string);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (new StringMaker())->append(BaseGameStatistics::toString())->append(this->stringBuffer->toString())->toString();;
     
 }

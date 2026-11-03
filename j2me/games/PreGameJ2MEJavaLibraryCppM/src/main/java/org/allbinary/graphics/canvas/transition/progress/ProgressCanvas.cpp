@@ -206,6 +206,8 @@ this->allbinaryMidlet= gameMidlet;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->maxValue;
     
 }
@@ -302,6 +304,8 @@ this->inGameProcessor= this->IN_GAME_PROCESSOR;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -311,6 +315,8 @@ this->inGameProcessor= this->IN_GAME_PROCESSOR;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -392,6 +398,8 @@ this->hasPainted= true;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->value;
     
 }
@@ -408,6 +416,8 @@ this->text= text;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->text;
     
 }
@@ -424,6 +434,8 @@ this->background= background;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->background;
     
 }

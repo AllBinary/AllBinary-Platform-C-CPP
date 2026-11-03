@@ -176,7 +176,9 @@ CollidableUnitBehavior::SimpleSteeringVisitor::SimpleSteeringVisitor() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil::getInstance()->NULL_OBJECT;
+                        
+                        
+                        return JavaBoxes::toObject(NullUtil::getInstance()->NULL_OBJECT);
     
 
                                     }
@@ -185,7 +187,9 @@ CollidableUnitBehavior::SimpleSteeringVisitor::SimpleSteeringVisitor() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BooleanFactory::getInstance()->TRUE;
+                        
+                        
+                        return JavaBoxes::toObject(BooleanFactory::getInstance()->TRUE);
     
 
                                     }
@@ -194,7 +198,9 @@ CollidableUnitBehavior::SimpleSteeringVisitor::SimpleSteeringVisitor() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil::getInstance()->NULL_OBJECT;
+                        
+                        
+                        return JavaBoxes::toObject(NullUtil::getInstance()->NULL_OBJECT);
     
 
                 //: 
@@ -209,7 +215,9 @@ logUtil->put(commonStrings->EXCEPTION, this, "visit", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil::getInstance()->NULL_OBJECT;
+                        
+                        
+                        return JavaBoxes::toObject(NullUtil::getInstance()->NULL_OBJECT);
     
 }
 
@@ -242,6 +250,8 @@ logUtil->put(commonStrings->EXCEPTION, this, "visit", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -257,6 +267,8 @@ logUtil->put(commonStrings->EXCEPTION, this, "visit", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 

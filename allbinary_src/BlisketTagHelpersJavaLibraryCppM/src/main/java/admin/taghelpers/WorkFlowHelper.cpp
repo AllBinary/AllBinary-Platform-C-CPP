@@ -92,6 +92,8 @@ this->portion= new Portion(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return WorkFlowEntityFactory::getInstance()->create2()->dropTable();;
     
 
@@ -114,6 +116,8 @@ this->portion= new Portion(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -128,6 +132,8 @@ this->portion= new Portion(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return WorkFlowEntityFactory::getInstance()->create2()->createTable();;
     
 
@@ -150,6 +156,8 @@ this->portion= new Portion(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -179,6 +187,8 @@ this->portion= new Portion(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 
@@ -201,6 +211,8 @@ this->portion= new Portion(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -230,6 +242,8 @@ this->portion= new Portion(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 
@@ -252,6 +266,8 @@ this->portion= new Portion(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }

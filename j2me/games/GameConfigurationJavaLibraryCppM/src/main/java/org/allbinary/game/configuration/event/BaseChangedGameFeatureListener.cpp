@@ -162,6 +162,8 @@ this->logUtil->putF(stringBuffer->toString(), this, "isChanged");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return isChanged;
     
 }
@@ -172,6 +174,8 @@ this->logUtil->putF(stringBuffer->toString(), this, "isChanged");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->changed;
     
 }

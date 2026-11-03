@@ -134,6 +134,8 @@ this->reloadTime= reloadTime;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->reloadTime;
     
 }
@@ -150,6 +152,8 @@ this->targetingTime= targetingTime;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->targetingTime;
     
 }
@@ -160,6 +164,8 @@ this->targetingTime= targetingTime;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->speed;
     
 }
@@ -176,6 +182,8 @@ this->speed= speed;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getDamage() -((this->getDissipation() *range) /this->speed->getScaled());
     
 }
@@ -205,6 +213,8 @@ stringArray[index++]= stringBuffer->append(WeaponProperties::RELOAD)->appendlong
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringArray;
     
 }
@@ -228,6 +238,8 @@ stringBuffer->append(WeaponProperties::RELOAD)->appendlong(this->getReloadTime()
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

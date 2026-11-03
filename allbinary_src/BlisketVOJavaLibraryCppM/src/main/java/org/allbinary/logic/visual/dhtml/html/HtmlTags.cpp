@@ -77,6 +77,8 @@ this->htmlTagVector= new BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<HtmlTag*>(this->htmlTagVector->get(index));
     
 }
@@ -93,6 +95,8 @@ this->htmlTagVector->add(htmlTag);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->htmlTagVector->size();;
     
 }

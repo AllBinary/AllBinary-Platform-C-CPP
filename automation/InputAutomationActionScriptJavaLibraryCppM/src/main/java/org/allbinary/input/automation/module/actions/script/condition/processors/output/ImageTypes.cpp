@@ -157,6 +157,8 @@ imageTypes->getVector()->add(imageType);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return imageTypes;
     
 }
@@ -167,6 +169,8 @@ imageTypes->getVector()->add(imageType);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->vector;
     
 }
@@ -199,6 +203,8 @@ newNode->appendChild(ModDomHelper::createTextNode(document, ImageActionScriptOut
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return newNode;
     
 }
@@ -235,6 +241,8 @@ stringBuffer->append(imageType->getName());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

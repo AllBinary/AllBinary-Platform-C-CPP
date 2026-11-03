@@ -91,6 +91,8 @@ BasicUserRoles::getInstance()->roleVector->add(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->m_int_RoleId;
     
 }
@@ -101,6 +103,8 @@ BasicUserRoles::getInstance()->roleVector->add(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->role;
     
 }
@@ -111,6 +115,8 @@ BasicUserRoles::getInstance()->roleVector->add(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->sessionTimeout;
     
 }
@@ -121,6 +127,8 @@ BasicUserRoles::getInstance()->roleVector->add(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->sessionInactivityTimeout;
     
 }
@@ -135,6 +143,8 @@ BasicUserRoles::getInstance()->roleVector->add(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -144,6 +154,8 @@ BasicUserRoles::getInstance()->roleVector->add(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -154,6 +166,8 @@ BasicUserRoles::getInstance()->roleVector->add(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getRole();;
     
 }

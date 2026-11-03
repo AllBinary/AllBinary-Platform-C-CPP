@@ -80,6 +80,8 @@ GameLayerUtil::GameLayerUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return GameLayerUtil::isInside(viewPosition->getX(), viewPosition->getY(), viewPosition->getX2(), viewPosition->getY2(), 0, 0, displayInfo->getLastWidth(), displayInfo->getLastHeight());;
     
 }
@@ -94,6 +96,8 @@ GameLayerUtil::GameLayerUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -104,6 +108,8 @@ GameLayerUtil::GameLayerUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 

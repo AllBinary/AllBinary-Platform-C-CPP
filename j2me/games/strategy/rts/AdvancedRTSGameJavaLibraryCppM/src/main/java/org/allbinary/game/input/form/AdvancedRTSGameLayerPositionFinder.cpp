@@ -78,6 +78,8 @@ AdvancedRTSGameLayerPositionFinder* AdvancedRTSGameLayerPositionFinder::instance
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AdvancedRTSGameLayerPositionFinder::instance;
     
 }
@@ -104,6 +106,8 @@ AdvancedRTSGameLayerPositionFinder::AdvancedRTSGameLayerPositionFinder(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return layerInterface;
     
 }

@@ -91,6 +91,8 @@ this->propertiesHashMap= StdUtil::getInstance()->createHashMap();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->propertiesHashMap;
     
 }
@@ -112,6 +114,8 @@ this->propertiesHashMap= StdUtil::getInstance()->createHashMap();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TagSupport::EVAL_PAGE;
     
 }

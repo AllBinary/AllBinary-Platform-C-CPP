@@ -105,6 +105,8 @@ EmailEventHandlerUtil* EmailEventHandlerUtil::instance = EmailEventHandlerUtil::
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return EmailEventHandlerUtil::instance;
     
 }
@@ -164,6 +166,8 @@ userEmailEventHandler->addListener(vector);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return userEmailEventHandler;
     
 }
@@ -193,6 +197,8 @@ vector->add(userEmailEventListenerInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return vector;
     
 }

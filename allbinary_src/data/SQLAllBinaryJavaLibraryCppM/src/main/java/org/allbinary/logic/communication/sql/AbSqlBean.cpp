@@ -150,6 +150,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET_FIELD);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return field;
     
 }
@@ -158,6 +160,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET_FIELD);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 
@@ -177,6 +181,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET_FIELD);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::valueOf(this->FAILED_SQL_STATEMENT) +JavaString::valueOf(sqlStatement);
     
 }
@@ -282,6 +288,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET_FIELD);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return field;
     
 }
@@ -290,6 +298,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET_FIELD);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 
@@ -312,6 +322,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET_FIELD);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::valueOf(this->FAILED_SQL_STATEMENT) +JavaString::valueOf(sqlStatement);
     
 }
@@ -404,6 +416,8 @@ field= rset->getObject(columnName)->toString();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return org.allbinary->globals->GLOBALS2->NOTASUBSET;
     
 
@@ -421,6 +435,8 @@ field= rset->getObject(columnName)->toString();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return org.allbinary->globals->GLOBALS2->NOTASUBSET;
     
 
@@ -431,6 +447,8 @@ field= rset->getObject(columnName)->toString();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return org.allbinary->globals->GLOBALS2->ISASUBSET;
     
 
@@ -456,6 +474,8 @@ field= rset->getObject(columnName)->toString();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::valueOf(this->FAILED_SQL_STATEMENT) +JavaString::valueOf(sqlStatement);
     
 }

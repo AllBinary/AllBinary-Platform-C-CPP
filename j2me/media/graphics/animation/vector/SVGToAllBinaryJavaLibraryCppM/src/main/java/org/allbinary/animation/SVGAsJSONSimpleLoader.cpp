@@ -114,6 +114,8 @@ SVGAsJSONSimpleLoader* SVGAsJSONSimpleLoader::instance = SVGAsJSONSimpleLoader::
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SVGAsJSONSimpleLoader::instance;
     
 }
@@ -130,6 +132,8 @@ SVGAsJSONSimpleLoader* SVGAsJSONSimpleLoader::instance = SVGAsJSONSimpleLoader::
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return EMPTY_POINTS;
     
 
@@ -201,6 +205,8 @@ SVGAsJSONSimpleLoader* SVGAsJSONSimpleLoader::instance = SVGAsJSONSimpleLoader::
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->toPoints(pointVector);;
     
 
@@ -403,6 +409,8 @@ pointVector->add({SHAPE_SEPARATOR[0],SHAPE_SEPARATOR[1]});
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->toInt(value, key);;
     
 }
@@ -422,6 +430,8 @@ pointVector->add({SHAPE_SEPARATOR[0],SHAPE_SEPARATOR[1]});
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->toInt(value, key);;
     
 
@@ -439,6 +449,8 @@ e.printStackTrace();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return defaultValue;
     
 }
@@ -455,6 +467,8 @@ e.printStackTrace();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return static_cast<int32_t>(Math::round(value = valuevalue
 value.
                     ));
@@ -472,6 +486,8 @@ value.
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return static_cast<int32_t>(Math::round(Double.parseDouble(JavaBoxes::unbox<std::string>(value))));
     
 
@@ -496,6 +512,8 @@ value.
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<JSONObject*>(value);
     
 
@@ -518,6 +536,8 @@ value.
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return EMPTY_POINTS;
     
 
@@ -548,6 +568,8 @@ points[index]= point;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return points;
     
 }

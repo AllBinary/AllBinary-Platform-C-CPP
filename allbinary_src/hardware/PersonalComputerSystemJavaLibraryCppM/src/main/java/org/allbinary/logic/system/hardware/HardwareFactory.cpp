@@ -78,6 +78,8 @@ HardwareFactory* HardwareFactory::instance = HardwareFactory::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return HardwareFactory::instance;
     
 }
@@ -103,6 +105,8 @@ HardwareFactory::HardwareFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<HardwareInterface*>(new LinuxHardware());
     
 
@@ -116,6 +120,8 @@ HardwareFactory::HardwareFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<HardwareInterface*>(new WindowsHardware());
     
 

@@ -67,6 +67,8 @@ OperatingSystems::OperatingSystems() : ANDROID(this->LINUX){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->unknownSpecificOSAllowed;
     
 }
@@ -83,6 +85,8 @@ this->unknownSpecificOSAllowed= aUnknownSpecificOSAllowed;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return OperatingSystems::instance;
     
 }

@@ -80,6 +80,8 @@ PreLogUtil::put(JavaString::valueOf("Url: ") +JavaString::valueOf(url), this, "g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return url;
     
 }

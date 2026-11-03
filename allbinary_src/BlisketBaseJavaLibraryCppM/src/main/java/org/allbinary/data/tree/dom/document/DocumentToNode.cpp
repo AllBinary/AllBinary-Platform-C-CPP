@@ -82,6 +82,8 @@ documentString= DocumentToNode::remove(documentString, DocumentToNode::XMLJSPROO
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return replaceXmlRoot->all(documentString);;
     
 }
@@ -92,6 +94,8 @@ documentString= DocumentToNode::remove(documentString, DocumentToNode::XMLJSPROO
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return DocumentToNode::remove(documentString, XMLROOTSTART, XMLROOTEND);;
     
 }
@@ -125,6 +129,8 @@ documentString= DocumentToNode::remove(documentString, DocumentToNode::XMLJSPROO
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::valueOf(startString) +JavaString::valueOf(resultString);
     
 
@@ -139,6 +145,8 @@ documentString= DocumentToNode::remove(documentString, DocumentToNode::XMLJSPROO
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return documentString;
     
 }

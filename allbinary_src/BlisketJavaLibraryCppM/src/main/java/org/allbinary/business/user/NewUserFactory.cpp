@@ -92,6 +92,8 @@ NewUserFactory::NewUserFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new User();
     
 }
@@ -118,6 +120,8 @@ hashMap->put(UserRoleData::NAME->toString(), role);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return CreateUserFactory::getInstance(hashMap);;
     
 }
@@ -144,6 +148,8 @@ requestHashMap->put(UserRoleData::NAME->toString(), roleString);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return CreateUserFactory::getInstance(requestHashMap);;
     
 

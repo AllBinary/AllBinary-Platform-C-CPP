@@ -73,6 +73,8 @@ BasicColorCacheFactory* BasicColorCacheFactory::instance = BasicColorCacheFactor
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BasicColorCacheFactory::instance;
     
 }
@@ -110,6 +112,8 @@ this->hashtable->put(integer, basicColor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return basicColor;
     
 }

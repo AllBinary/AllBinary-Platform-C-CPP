@@ -82,6 +82,8 @@ this->ftpPassword= JavaBoxes::unbox<std::string>(hashMap->get(FtpConfigurationDa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->ftpServer;
     
 }
@@ -92,6 +94,8 @@ this->ftpPassword= JavaBoxes::unbox<std::string>(hashMap->get(FtpConfigurationDa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->ftpPath;
     
 }
@@ -102,6 +106,8 @@ this->ftpPassword= JavaBoxes::unbox<std::string>(hashMap->get(FtpConfigurationDa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->ftpUserName;
     
 }
@@ -112,6 +118,8 @@ this->ftpPassword= JavaBoxes::unbox<std::string>(hashMap->get(FtpConfigurationDa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->ftpPassword;
     
 }

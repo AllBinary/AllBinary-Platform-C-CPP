@@ -89,6 +89,8 @@ this->imageArray= imageArray;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->imageArray;
     
 }
@@ -99,6 +101,8 @@ this->imageArray= imageArray;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AngleInfo::getInstance(this->angleIncrement);;
     
 }
@@ -115,6 +119,8 @@ this->totalAngle= totalAngle;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->totalAngle;
     
 }
@@ -131,6 +137,8 @@ this->dx= dx;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->dx;
     
 }
@@ -147,6 +155,8 @@ this->dy= dy;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->dy;
     
 }

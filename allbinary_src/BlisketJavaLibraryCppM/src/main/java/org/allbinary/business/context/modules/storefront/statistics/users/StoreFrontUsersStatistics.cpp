@@ -148,6 +148,8 @@ this->totalUsersByRoleHashMap->put(nextUserRole, currentNumberOfUsersForRole);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return int64_t(numberOfUsersForRoleLong +1);
     
 }
@@ -158,6 +160,8 @@ this->totalUsersByRoleHashMap->put(nextUserRole, currentNumberOfUsersForRole);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->totalNumberOfUsers;
     
 }
@@ -171,6 +175,8 @@ this->totalUsersByRoleHashMap->put(nextUserRole, currentNumberOfUsersForRole);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return totalForRole;
     
 }
@@ -214,6 +220,8 @@ hashMap->put(nextUserRole->toString(), JavaString::valueOf(totalForRole));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }
@@ -224,6 +232,8 @@ hashMap->put(nextUserRole->toString(), JavaString::valueOf(totalForRole));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -234,6 +244,8 @@ hashMap->put(nextUserRole->toString(), JavaString::valueOf(totalForRole));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

@@ -95,6 +95,8 @@ NullGameCanvasRunnable* NullGameCanvasRunnable::NULL_GAME_CANVAS_RUNNABLE = Null
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 }
@@ -105,6 +107,8 @@ NullGameCanvasRunnable* NullGameCanvasRunnable::NULL_GAME_CANVAS_RUNNABLE = Null
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -115,6 +119,8 @@ NullGameCanvasRunnable* NullGameCanvasRunnable::NULL_GAME_CANVAS_RUNNABLE = Null
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -133,6 +139,8 @@ NullGameCanvasRunnable* NullGameCanvasRunnable::NULL_GAME_CANVAS_RUNNABLE = Null
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -155,6 +163,8 @@ NullGameCanvasRunnable* NullGameCanvasRunnable::NULL_GAME_CANVAS_RUNNABLE = Null
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -171,6 +181,8 @@ NullGameCanvasRunnable* NullGameCanvasRunnable::NULL_GAME_CANVAS_RUNNABLE = Null
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StdUtil::getInstance()->NULL_TABLE;
     
 }
@@ -183,6 +195,8 @@ NullGameCanvasRunnable* NullGameCanvasRunnable::NULL_GAME_CANVAS_RUNNABLE = Null
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StdUtil::getInstance()->NULL_TABLE;
     
 }
@@ -199,6 +213,8 @@ NullGameCanvasRunnable* NullGameCanvasRunnable::NULL_GAME_CANVAS_RUNNABLE = Null
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 }
@@ -215,6 +231,8 @@ NullGameCanvasRunnable* NullGameCanvasRunnable::NULL_GAME_CANVAS_RUNNABLE = Null
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->gameStateFactory->NO_GAME_STATE;
     
 }
@@ -237,6 +255,8 @@ NullGameCanvasRunnable* NullGameCanvasRunnable::NULL_GAME_CANVAS_RUNNABLE = Null
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

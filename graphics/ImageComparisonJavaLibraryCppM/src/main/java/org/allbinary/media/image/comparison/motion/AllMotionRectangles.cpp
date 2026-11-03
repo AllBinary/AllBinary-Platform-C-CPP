@@ -165,6 +165,8 @@ motionRectangle->getRectangle()->setSize(newWidth, newHeight);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -176,6 +178,8 @@ motionRectangle->getRectangle()->setSize(newWidth, newHeight);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -239,6 +243,8 @@ this->getVector()->add(motionRectangle);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->isPixelDeltaLikelyPartOfMotionRectangle(motionRectangle, pixelDelta);;
     
 
@@ -248,6 +254,8 @@ this->getVector()->add(motionRectangle);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -276,6 +284,8 @@ this->getVector()->add(motionRectangle);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -285,6 +295,8 @@ this->getVector()->add(motionRectangle);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

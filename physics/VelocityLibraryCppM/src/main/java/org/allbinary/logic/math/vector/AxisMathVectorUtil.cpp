@@ -69,6 +69,8 @@ AxisMathVectorUtil* AxisMathVectorUtil::instance = AxisMathVectorUtil::instance_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AxisMathVectorUtil::instance;
     
 }
@@ -79,6 +81,8 @@ AxisMathVectorUtil* AxisMathVectorUtil::instance = AxisMathVectorUtil::instance_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return magnitude *this->noDecimalTrigTable->cos(angle) /10;
     
 }
@@ -89,6 +93,8 @@ AxisMathVectorUtil* AxisMathVectorUtil::instance = AxisMathVectorUtil::instance_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return magnitude *this->noDecimalTrigTable->sin(angle) /10;
     
 }
@@ -99,6 +105,8 @@ AxisMathVectorUtil* AxisMathVectorUtil::instance = AxisMathVectorUtil::instance_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return magnitude *this->noDecimalTrigTable->sin(otherAngle) /10;
     
 }

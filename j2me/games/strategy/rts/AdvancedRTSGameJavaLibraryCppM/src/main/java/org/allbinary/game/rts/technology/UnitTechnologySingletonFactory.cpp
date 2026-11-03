@@ -63,6 +63,8 @@ UnitTechnologySingletonFactory* UnitTechnologySingletonFactory::instance = UnitT
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return UnitTechnologySingletonFactory::instance;
     
 }
@@ -91,6 +93,8 @@ this->setSpeed(0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->damage;
     
 }
@@ -107,6 +111,8 @@ this->damage= damage;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->health;
     
 }
@@ -123,6 +129,8 @@ this->health= health;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->reload;
     
 }
@@ -139,6 +147,8 @@ this->reload= reload;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->repair;
     
 }
@@ -155,6 +165,8 @@ this->repair= repair;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->speed;
     
 }

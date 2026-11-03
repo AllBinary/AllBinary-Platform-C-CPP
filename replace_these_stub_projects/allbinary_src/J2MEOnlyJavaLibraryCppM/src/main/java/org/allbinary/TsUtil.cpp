@@ -93,6 +93,8 @@ TsUtil* TsUtil::instance = TsUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TsUtil::instance;
     
 }
@@ -103,6 +105,8 @@ TsUtil* TsUtil::instance = TsUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return anyType->hashCode();;
     
 }
@@ -145,6 +149,8 @@ recordStore->getRecord(recordId, data, 0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return data.size() < 1
                         ?       
                                 NullUtil::getInstance()->NULL_BYTE_ARRAY
@@ -160,6 +166,8 @@ recordStore->getRecord(recordId, data, 0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return a.compare(b);;
     
 }
@@ -170,6 +178,8 @@ recordStore->getRecord(recordId, data, 0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::equalsIgnoreCase(a, b);;
     
 }
@@ -180,6 +190,8 @@ recordStore->getRecord(recordId, data, 0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaObjects::equals(anyType, object2);;
     
 }
@@ -190,6 +202,8 @@ recordStore->getRecord(recordId, data, 0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return static_cast<int32_t>(value);
     
 }
@@ -200,6 +214,8 @@ recordStore->getRecord(recordId, data, 0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return value;
     
 }
@@ -210,6 +226,8 @@ recordStore->getRecord(recordId, data, 0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::getBytes(string);;
     
 }
@@ -226,6 +244,8 @@ recordStore->getRecord(recordId, data, 0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -236,6 +256,8 @@ recordStore->getRecord(recordId, data, 0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 

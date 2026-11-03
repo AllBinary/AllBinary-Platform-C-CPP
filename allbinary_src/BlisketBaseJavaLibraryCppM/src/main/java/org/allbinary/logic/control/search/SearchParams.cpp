@@ -169,6 +169,8 @@ this->endPage= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->columnsAndSearchValues;
     
 }
@@ -179,6 +181,8 @@ this->endPage= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->order;
     
 }
@@ -189,6 +193,8 @@ this->endPage= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->sortBy;
     
 }
@@ -199,6 +205,8 @@ this->endPage= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->listLength;
     
 }
@@ -213,6 +221,8 @@ this->endPage= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return int32_t(this->listLength);
     
 
@@ -229,6 +239,8 @@ this->endPage= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->startPage;
     
 }
@@ -239,6 +251,8 @@ this->endPage= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->endPage;
     
 }
@@ -253,6 +267,8 @@ this->endPage= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return int32_t(this->startPage);
     
 
@@ -273,6 +289,8 @@ this->endPage= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return int32_t(this->endPage);
     
 
@@ -302,6 +320,8 @@ paramsNode->appendChild(this->getLengthNode(document));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return paramsNode;
     
 }
@@ -343,6 +363,8 @@ fieldsNode->appendChild(ModDomHelper::createNameValueNodes(document, SearchData:
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return fieldsNode;
     
 }
@@ -355,6 +377,8 @@ fieldsNode->appendChild(ModDomHelper::createNameValueNodes(document, SearchData:
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ModDomHelper::createNameValueNodes(document, SearchData::ORDER, ToDomHelper::convertNull(this->getOrder()));;
     
 }
@@ -367,6 +391,8 @@ fieldsNode->appendChild(ModDomHelper::createNameValueNodes(document, SearchData:
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ModDomHelper::createNameValueNodes(document, SearchData::SORTBY, ToDomHelper::convertNull(this->getSortBy()));;
     
 }
@@ -379,6 +405,8 @@ fieldsNode->appendChild(ModDomHelper::createNameValueNodes(document, SearchData:
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ModDomHelper::createNameValueNodes(document, SearchData::LENGTH, ToDomHelper::convertNull(this->getLength()));;
     
 }

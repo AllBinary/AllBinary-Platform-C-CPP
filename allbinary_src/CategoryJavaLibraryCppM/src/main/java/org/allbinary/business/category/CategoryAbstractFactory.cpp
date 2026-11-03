@@ -134,6 +134,8 @@ CategoryAbstractFactory::CategoryAbstractFactory() : logUtil(LogUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<CategoryInterface*>(new Category(categoryPropertiesFactoryInterface));
     
 
@@ -153,6 +155,8 @@ CategoryAbstractFactory::CategoryAbstractFactory() : logUtil(LogUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -179,6 +183,8 @@ CategoryAbstractFactory::CategoryAbstractFactory() : logUtil(LogUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<CategoryInterface*>(new Category(rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface));
     
 
@@ -198,6 +204,8 @@ CategoryAbstractFactory::CategoryAbstractFactory() : logUtil(LogUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -224,6 +232,8 @@ CategoryAbstractFactory::CategoryAbstractFactory() : logUtil(LogUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<CategoryInterface*>(new Category(categoryPropertiesFactoryInterface));
     
 
@@ -243,6 +253,8 @@ CategoryAbstractFactory::CategoryAbstractFactory() : logUtil(LogUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -269,6 +281,8 @@ CategoryAbstractFactory::CategoryAbstractFactory() : logUtil(LogUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<CategoryInterface*>(new Category(rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface));
     
 
@@ -288,6 +302,8 @@ CategoryAbstractFactory::CategoryAbstractFactory() : logUtil(LogUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -314,6 +330,8 @@ CategoryAbstractFactory::CategoryAbstractFactory() : logUtil(LogUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<CategoryInterface*>(new Category(rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface));
     
 
@@ -333,6 +351,8 @@ CategoryAbstractFactory::CategoryAbstractFactory() : logUtil(LogUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

@@ -91,6 +91,8 @@ this->setStartTimeTNT();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -100,6 +102,8 @@ this->setStartTimeTNT();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -119,6 +123,8 @@ this->setStartTimeTNT();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -128,6 +134,8 @@ this->setStartTimeTNT();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -144,6 +152,8 @@ this->setStartTimeTNT();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -153,6 +163,8 @@ this->setStartTimeTNT();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -167,6 +179,8 @@ this->setStartTimeTNT();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -176,6 +190,8 @@ this->setStartTimeTNT();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -192,6 +208,8 @@ this->setStartTimeTNT();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -201,6 +219,8 @@ this->setStartTimeTNT();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -211,6 +231,8 @@ this->setStartTimeTNT();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return System.currentTimeMillis() -this->startTime;
     
 }
@@ -221,6 +243,8 @@ this->setStartTimeTNT();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return currentTime -this->startTime;
     
 }
@@ -235,6 +259,8 @@ this->setStartTimeTNT();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -245,6 +271,8 @@ this->setStartTimeTNT();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -262,6 +290,8 @@ this->setStartTimeTNT();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -272,6 +302,8 @@ this->setStartTimeTNT();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -291,6 +323,8 @@ this->startTime= startTime;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->startTime;
     
 }
@@ -325,6 +359,8 @@ this->setStartTimeTNT();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -334,6 +370,8 @@ this->setStartTimeTNT();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -357,6 +395,8 @@ this->setStartTimeTNT();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (new StringMaker())->append(commonLabels->START)->appendlong(this->startTime)->append(commonLabels->CURRENT)->appendlong(currentTime)->append(commonLabels->ELAPSED)->append(elapsedAsString)->toString();;
     
 
@@ -367,6 +407,8 @@ this->setStartTimeTNT();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 
@@ -396,6 +438,8 @@ this->setStartTimeTNT();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (new StringMaker())->append(commonLabels->START)->appendlong(this->startTime)->append(commonLabels->CURRENT)->appendlong(currentTime)->append(commonLabels->ELAPSED)->append(elapsedAsString)->toString();;
     
 
@@ -406,6 +450,8 @@ this->setStartTimeTNT();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 

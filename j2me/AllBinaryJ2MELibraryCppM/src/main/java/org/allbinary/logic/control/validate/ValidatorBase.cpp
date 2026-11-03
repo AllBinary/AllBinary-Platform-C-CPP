@@ -82,6 +82,8 @@ ValidatorBase* ValidatorBase::instance = ValidatorBase::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ValidatorBase::instance;
     
 }
@@ -96,6 +98,8 @@ ValidatorBase::ValidatorBase(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BooleanFactory::getInstance()->TRUE;
     
 }
@@ -106,6 +110,8 @@ ValidatorBase::ValidatorBase(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 }
@@ -116,6 +122,8 @@ ValidatorBase::ValidatorBase(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StdUtil::getInstance()->NULL_TABLE;
     
 }
@@ -126,6 +134,8 @@ ValidatorBase::ValidatorBase(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BasicArrayListUtil::getInstance()->getImmutableInstance();;
     
 }

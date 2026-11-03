@@ -93,6 +93,8 @@ InputAutomationModuleOSGIServiceVisitor::InputAutomationModuleOSGIServiceVisitor
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->visit(dynamic_cast<OSGIServiceInterface*>(anyType));;
     
 }
@@ -122,6 +124,8 @@ InputAutomationJFrame::getInstance()->onAdd(InputAutomationConfigurationUtil::ge
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -134,6 +138,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "visit", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }

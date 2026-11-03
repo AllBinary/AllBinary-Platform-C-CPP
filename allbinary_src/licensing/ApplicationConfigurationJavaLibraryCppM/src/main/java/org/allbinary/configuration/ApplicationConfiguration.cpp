@@ -110,6 +110,8 @@ Object* ApplicationConfiguration::instance = NullUtil::getInstance()->NULL_OBJEC
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<ApplicationConfiguration*>(ApplicationConfiguration::instance);
     
 }
@@ -408,6 +410,8 @@ this->fullscreen= fullscreen;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->fullscreen;
     
 }
@@ -424,6 +428,8 @@ this->showTitleBar= showTitleBar;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->showTitleBar;
     
 }
@@ -440,6 +446,8 @@ this->progressBarView= progressBarView;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->progressBarView;
     
 }
@@ -465,6 +473,8 @@ stringBuffer->appendboolean(this->isShowTitleBar());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

@@ -181,6 +181,8 @@ this->alwaysActionScriptConditionJPanel= new AlwaysActionScriptConditionJPanel(t
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->isOn;
     
 }
@@ -210,6 +212,8 @@ this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(hashMa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }
@@ -227,6 +231,8 @@ node->appendChild(ModDomHelper::createNodeWithValueNodes(document, AlwaysActionS
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }
@@ -243,6 +249,8 @@ node->appendChild(ModDomHelper::createNodeWithValueNodes(document, AlwaysActionS
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BasicProfileActionScriptCondition::shouldProcess(frame);;
     
 
@@ -252,6 +260,8 @@ node->appendChild(ModDomHelper::createNodeWithValueNodes(document, AlwaysActionS
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

@@ -72,6 +72,8 @@ XmlOptionItemsEntityFactory* XmlOptionItemsEntityFactory::instance = XmlOptionIt
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return XmlOptionItemsEntityFactory::instance;
     
 }
@@ -88,6 +90,8 @@ XmlOptionItemsEntityFactory::XmlOptionItemsEntityFactory() : logUtil(LogUtil::ge
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new org::allbinary::data::tables::user::commerce::inventory::item::options::XmlOptionItemsEntity();
     
 
@@ -110,6 +114,8 @@ XmlOptionItemsEntityFactory::XmlOptionItemsEntityFactory() : logUtil(LogUtil::ge
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

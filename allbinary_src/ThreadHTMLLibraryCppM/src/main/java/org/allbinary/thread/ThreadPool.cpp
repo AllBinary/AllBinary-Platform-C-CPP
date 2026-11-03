@@ -106,6 +106,8 @@ ThreadPool::ThreadPool(std::string poolName, int32_t numThreads, int32_t priorit
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -275,6 +277,8 @@ this->taskQueue->addAt(index, task);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->NULL_RUNNABLE;
     
 
@@ -284,6 +288,8 @@ this->taskQueue->addAt(index, task);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<Runnable*>(this->taskQueue->removeAt(0));
     
 }
@@ -333,6 +339,8 @@ this->currentPriorityRunnable= this->threadObjectUtil->NULL_PRIORITY_RUNNABLE;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -346,6 +354,8 @@ this->currentPriorityRunnable= this->threadObjectUtil->NULL_PRIORITY_RUNNABLE;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -359,6 +369,8 @@ this->currentPriorityRunnable= this->threadObjectUtil->NULL_PRIORITY_RUNNABLE;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -368,6 +380,8 @@ this->currentPriorityRunnable= this->threadObjectUtil->NULL_PRIORITY_RUNNABLE;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

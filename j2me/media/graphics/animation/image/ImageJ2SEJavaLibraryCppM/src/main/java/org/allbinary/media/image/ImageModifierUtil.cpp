@@ -96,6 +96,8 @@ ImageModifierUtil* ImageModifierUtil::instance = ImageModifierUtil::instance_own
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ImageModifierUtil::instance;
     
 }
@@ -344,6 +346,8 @@ newImageArray[index]= image;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return newImageArray;
     
 
@@ -359,6 +363,8 @@ PreLogUtil::putOE(commonStrings->EXCEPTION, this, "getImageArray", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return originalImageArray;
     
 }

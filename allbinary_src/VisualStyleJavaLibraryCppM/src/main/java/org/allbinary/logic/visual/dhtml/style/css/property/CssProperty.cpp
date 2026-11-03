@@ -126,6 +126,8 @@ this->cssPropertyValues= new CssPropertyValues(propertyValuesNode);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->propertyName;
     
 }
@@ -141,6 +143,8 @@ hashMap->put(CssPropertyData::getInstance()->NAME, this->propertyName);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }
@@ -170,6 +174,8 @@ node->appendChild(this->cssPropertyValues->toXmlNode(document));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }

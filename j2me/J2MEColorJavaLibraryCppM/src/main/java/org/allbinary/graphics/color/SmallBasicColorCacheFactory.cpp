@@ -70,6 +70,8 @@ SmallBasicColorCacheFactory* SmallBasicColorCacheFactory::instance = SmallBasicC
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SmallBasicColorCacheFactory::instance;
     
 }
@@ -108,6 +110,8 @@ this->colorIndex++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->BASIC_COLOR_ARRAY[index];
     
 
@@ -126,6 +130,8 @@ this->add(basicColor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return basicColor;
     
 }

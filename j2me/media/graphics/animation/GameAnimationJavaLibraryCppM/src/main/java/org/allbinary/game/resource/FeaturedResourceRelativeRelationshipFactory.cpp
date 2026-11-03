@@ -93,6 +93,8 @@ FeaturedResourceRelativeRelationshipFactory::FeaturedResourceRelativeRelationshi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return FeaturedResourceRelativeRelationshipFactory::INSTANCE;
     
 }
@@ -132,6 +134,8 @@ FeaturedResourceRelativeRelationshipFactory::FeaturedResourceRelativeRelationshi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->duplicate(list, layer);;
     
 
@@ -180,6 +184,8 @@ newList->add(new RelativeLayerRelationship(layer, pointFactory->createXY(relativ
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return newList;
     
 }

@@ -71,6 +71,8 @@ TimeUtil* TimeUtil::instance = TimeUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TimeUtil::instance;
     
 }
@@ -156,6 +158,8 @@ this->setExpirationCalendar(TimeUtil::calendar, yearString, monthString, dayStri
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return timeDelta -time;
     
 }

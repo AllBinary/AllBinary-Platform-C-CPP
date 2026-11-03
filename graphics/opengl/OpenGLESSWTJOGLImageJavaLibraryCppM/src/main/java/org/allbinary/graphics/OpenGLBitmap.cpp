@@ -70,6 +70,8 @@ this->image= dynamic_cast<Image*>(bitmap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->image;
     
 }
@@ -87,6 +89,8 @@ this->image= dynamic_cast<Image*>(bitmap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return mutableImage->getDepth();;
     
 
@@ -100,6 +104,8 @@ this->image= dynamic_cast<Image*>(bitmap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return immutableImage->getDepth();;
     
 
@@ -144,6 +150,8 @@ this->image->setRGB2(pixels, offset, height, x, y, width, height);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->image->getWidth();;
     
 }
@@ -154,6 +162,8 @@ this->image->setRGB2(pixels, offset, height, x, y, width, height);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->image->getHeight();;
     
 }

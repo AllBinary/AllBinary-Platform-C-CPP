@@ -119,6 +119,8 @@ WorkFlowEntityFactory::getInstance()->create2()->delete_(this->workFlowInterface
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -164,6 +166,8 @@ WorkFlowEntityFactory::getInstance()->create2()->delete_(this->workFlowInterface
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -192,6 +196,8 @@ WorkFlowEntityFactory::getInstance()->create2()->delete_(this->workFlowInterface
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -214,6 +220,8 @@ WorkFlowEntityFactory::getInstance()->create2()->delete_(this->workFlowInterface
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -240,6 +248,8 @@ WorkFlowEntityFactory::getInstance()->create2()->delete_(this->workFlowInterface
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -262,6 +272,8 @@ WorkFlowEntityFactory::getInstance()->create2()->delete_(this->workFlowInterface
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }

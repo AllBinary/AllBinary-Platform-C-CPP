@@ -285,6 +285,8 @@ this->setData(JavaBoxes::unbox<std::string>(hashMap->get(transformInfoData->DATA
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->abContext->getWeblisketSession();;
     
 }
@@ -295,6 +297,8 @@ this->setData(JavaBoxes::unbox<std::string>(hashMap->get(transformInfoData->DATA
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->abContext->getPageContext();;
     
 }
@@ -305,6 +309,8 @@ this->setData(JavaBoxes::unbox<std::string>(hashMap->get(transformInfoData->DATA
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->abContext->getPropertiesHashMap();;
     
 }
@@ -317,6 +323,8 @@ this->setData(JavaBoxes::unbox<std::string>(hashMap->get(transformInfoData->DATA
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AbPath(URLGLOBALS::getMainPath() +FREEBLISKET_PATH_GLOBALS::getInstance()->XSLPATH, this->getTemplateFile());
     
 }
@@ -329,6 +337,8 @@ this->setData(JavaBoxes::unbox<std::string>(hashMap->get(transformInfoData->DATA
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AbPath(URLGLOBALS::getMainPath() +FREEBLISKET_PATH_GLOBALS::getInstance()->XSLPATH, this->getObjectConfigFile());
     
 }
@@ -341,6 +351,8 @@ this->setData(JavaBoxes::unbox<std::string>(hashMap->get(transformInfoData->DATA
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AbPath(URLGLOBALS::getMainPath() +FREEBLISKET_PATH_GLOBALS::getInstance()->XSLPATH, this->getDataFile());
     
 }

@@ -147,6 +147,8 @@ this->angleInfo= angleInfo;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return keyDirection;
     
 }
@@ -164,6 +166,8 @@ this->angleInfo= angleInfo;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->turnAI(frame);;
     
 
@@ -174,6 +178,8 @@ this->angleInfo= angleInfo;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Canvas::UP;
     
 
@@ -232,6 +238,8 @@ this->angleInfo= angleInfo;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return keyDirection;
     
 }
@@ -242,6 +250,8 @@ this->angleInfo= angleInfo;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->angleInfo;
     
 }
@@ -252,6 +262,8 @@ this->angleInfo= angleInfo;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }

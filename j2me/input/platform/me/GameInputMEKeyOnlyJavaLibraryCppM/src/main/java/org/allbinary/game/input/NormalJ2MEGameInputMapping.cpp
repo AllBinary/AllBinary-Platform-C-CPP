@@ -67,6 +67,8 @@ NormalJ2MEGameInputMapping::NormalJ2MEGameInputMapping() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (new NormalJ2MEDefaultGameInputMapping())->getInputMapping();;
     
 }

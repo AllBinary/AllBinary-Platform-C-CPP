@@ -169,6 +169,8 @@ AddFileValidationView::AddFileValidationView(TransformInfoInterface* transformIn
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -215,6 +217,8 @@ this->itemInterface= inventoryEntity->getItem(this->id);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -237,6 +241,8 @@ this->itemInterface= inventoryEntity->getItem(this->id);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -268,6 +274,8 @@ this->itemInterface= inventoryEntity->getItem(this->id);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -299,6 +307,8 @@ HttpFileUploadUtil::log(fileItem);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -470,6 +480,8 @@ this->downloadableItem= new DownloadableItem(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -479,6 +491,8 @@ this->downloadableItem= new DownloadableItem(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -498,6 +512,8 @@ this->downloadableItem= new DownloadableItem(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -510,6 +526,8 @@ this->downloadableItem= new DownloadableItem(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -520,6 +538,8 @@ this->downloadableItem= new DownloadableItem(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -542,6 +562,8 @@ this->downloadableItem= new DownloadableItem(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 
@@ -569,6 +591,8 @@ this->downloadableItem= new DownloadableItem(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ITEM_NOT_FOUND;
     
 
@@ -739,6 +763,8 @@ stringBuffer->append("<br/>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -758,6 +784,8 @@ stringBuffer->append("<br/>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Getting Validation Info";
     
 }
@@ -803,6 +831,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -840,6 +870,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -873,6 +905,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -882,6 +916,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 }

@@ -204,6 +204,8 @@ this->logo= new LogoValidation(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return valid;
     
 
@@ -223,6 +225,8 @@ this->logo= new LogoValidation(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -285,6 +289,8 @@ this->logo= new LogoValidation(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -304,6 +310,8 @@ this->logo= new LogoValidation(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Validating Form";
     
 }
@@ -316,6 +324,8 @@ this->logo= new LogoValidation(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -326,6 +336,8 @@ this->logo= new LogoValidation(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -345,6 +357,8 @@ node->appendChild(this->title->toXmlNode(document));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }

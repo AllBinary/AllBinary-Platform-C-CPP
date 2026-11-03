@@ -75,6 +75,8 @@ ShaderInitializer* ShaderInitializer::instance = ShaderInitializer::instance_own
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ShaderInitializer::instance;
     
 }
@@ -85,6 +87,8 @@ ShaderInitializer* ShaderInitializer::instance = ShaderInitializer::instance_own
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 }

@@ -67,6 +67,8 @@ ABCustomImageItem::ABCustomImageItem(std::string label, Image* image, int32_t la
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NullImage::NULL_IMAGE;
     
 }

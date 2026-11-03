@@ -130,6 +130,8 @@ this->requestHashMap= (new NameSpaceRequestParams(this->getPageContext()))->toHa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -179,6 +181,8 @@ isValid= this->validationInterface->isValid();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return isValid;
     
 
@@ -198,6 +202,8 @@ isValid= this->validationInterface->isValid();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -215,6 +221,8 @@ isValid= this->validationInterface->isValid();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -234,6 +242,8 @@ isValid= this->validationInterface->isValid();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Getting Validation Info";
     
 }
@@ -246,6 +256,8 @@ isValid= this->validationInterface->isValid();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -256,6 +268,8 @@ isValid= this->validationInterface->isValid();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -270,6 +284,8 @@ isValid= this->validationInterface->isValid();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StoreCustomizerComponentUtil::getInstance()->generate(this->abeClientInformation, this->getTransformInfoInterface());;
     
 

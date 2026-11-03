@@ -123,6 +123,8 @@ DisplayInfoSingleton* DisplayInfoSingleton::SINGLETON = DisplayInfoSingleton::SI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return DisplayInfoSingleton::SINGLETON;
     
 }
@@ -170,6 +172,8 @@ this->full[index]= 0;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->lastHalf;
     
 }
@@ -180,6 +184,8 @@ this->full[index]= 0;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->last;
     
 }
@@ -190,6 +196,8 @@ this->full[index]= 0;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->full;
     
 }
@@ -200,6 +208,8 @@ this->full[index]= 0;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->scaleLargestTo;
     
 }
@@ -370,6 +380,8 @@ this->add(this->SET_LAST_SIZE_METHOD_NAME);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -380,6 +392,8 @@ this->add(this->SET_LAST_SIZE_METHOD_NAME);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -393,6 +407,8 @@ this->add(this->SET_LAST_SIZE_METHOD_NAME);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->isPortraitWH(this->last[this->WIDTH], this->last[this->HEIGHT]);;
     
 }
@@ -634,6 +650,8 @@ this->add(this->commonStrings->UPDATE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->toStringAppend(stringBuffer);;
     
 }
@@ -701,6 +719,8 @@ stringBuffer->append(this->isPortrait()
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -711,6 +731,8 @@ stringBuffer->append(this->isPortrait()
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->top;
     
 }
@@ -721,6 +743,8 @@ stringBuffer->append(this->isPortrait()
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->left;
     
 }
@@ -731,6 +755,8 @@ stringBuffer->append(this->isPortrait()
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->last[this->WIDTH];
     
 }
@@ -741,6 +767,8 @@ stringBuffer->append(this->isPortrait()
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->last[this->HEIGHT];
     
 }
@@ -751,6 +779,8 @@ stringBuffer->append(this->isPortrait()
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->lastHalf[this->WIDTH];
     
 }
@@ -761,6 +791,8 @@ stringBuffer->append(this->isPortrait()
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->lastHalf[this->HEIGHT];
     
 }
@@ -771,6 +803,8 @@ stringBuffer->append(this->isPortrait()
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->last[this->CUSTOM_WIDTH];
     
 }
@@ -781,6 +815,8 @@ stringBuffer->append(this->isPortrait()
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->last[this->CUSTOM_HEIGHT];
     
 }
@@ -791,6 +827,8 @@ stringBuffer->append(this->isPortrait()
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->last[this->WIDTH];
     
 }
@@ -801,6 +839,8 @@ stringBuffer->append(this->isPortrait()
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->last[this->HEIGHT];
     
 }
@@ -829,6 +869,8 @@ this->scalableListener= scalableListener;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->scalableListener;
     
 }
@@ -839,6 +881,8 @@ this->scalableListener= scalableListener;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->ratio;
     
 }
@@ -849,6 +893,8 @@ this->scalableListener= scalableListener;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->displayRatio;
     
 }
@@ -865,6 +911,8 @@ this->left= left;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->xOffset;
     
 }
@@ -875,6 +923,8 @@ this->left= left;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->yOffset;
     
 }

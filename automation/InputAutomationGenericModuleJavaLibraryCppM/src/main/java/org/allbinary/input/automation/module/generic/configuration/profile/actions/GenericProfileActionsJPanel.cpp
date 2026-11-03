@@ -433,6 +433,8 @@ this->blankGenericProfileActionJPanel->repaint();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->genericProfileActionJPanel;
     
 }
@@ -449,6 +451,8 @@ this->genericProfileActionJPanel= genericProfileActionJPanel;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->genericProfileActions;
     
 }

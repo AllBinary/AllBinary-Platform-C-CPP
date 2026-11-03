@@ -89,6 +89,8 @@ SaveGameForm::FORM= new SaveGameForm(commandListener, title, backgrounBasicColor
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SaveGameForm::FORM;
     
 }
@@ -99,6 +101,8 @@ SaveGameForm::FORM= new SaveGameForm(commandListener, title, backgrounBasicColor
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SaveGameForm::FORM;
     
 }

@@ -65,6 +65,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new ViewPosition(0, 0, 0);
     
 }
@@ -85,6 +87,8 @@ ViewPosition::ViewPosition(int32_t x, int32_t y, int32_t z) : ViewPositionBase(x
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->allbinaryLayer->getXP();;
     
 }
@@ -95,6 +99,8 @@ ViewPosition::ViewPosition(int32_t x, int32_t y, int32_t z) : ViewPositionBase(x
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->allbinaryLayer->getYP();;
     
 }
@@ -105,6 +111,8 @@ ViewPosition::ViewPosition(int32_t x, int32_t y, int32_t z) : ViewPositionBase(x
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->allbinaryLayer->getZP();;
     
 }
@@ -115,6 +123,8 @@ ViewPosition::ViewPosition(int32_t x, int32_t y, int32_t z) : ViewPositionBase(x
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getX() +this->allbinaryLayer->getWidth();
     
 }
@@ -125,6 +135,8 @@ ViewPosition::ViewPosition(int32_t x, int32_t y, int32_t z) : ViewPositionBase(x
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getY() +this->allbinaryLayer->getHeight();
     
 }
@@ -135,6 +147,8 @@ ViewPosition::ViewPosition(int32_t x, int32_t y, int32_t z) : ViewPositionBase(x
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return static_cast<int32_t>((this->getZ() +this->allbinaryLayer->getDepth()));
     
 }

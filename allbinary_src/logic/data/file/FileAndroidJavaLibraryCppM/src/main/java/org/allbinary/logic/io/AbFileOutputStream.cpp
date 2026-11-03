@@ -84,6 +84,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AbFileOutputStream(new FileOutputStream(AbFileNativeUtil::get(file)));
     
 }
@@ -96,6 +98,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AbFileOutputStream(new FileOutputStream(file->getPath()));
     
 }
@@ -108,6 +112,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AbFileOutputStream(new FileOutputStream(name));
     
 }
@@ -120,6 +126,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AbFileOutputStream(new FileOutputStream(name));
     
 }
@@ -142,6 +150,8 @@ this->fileOutputStream->close();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->fileOutputStream->getChannel();;
     
 }

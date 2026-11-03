@@ -88,6 +88,8 @@ UpgradableRTSLayerHudPaintable* UpgradableRTSLayerHudPaintable::instance = Upgra
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return UpgradableRTSLayerHudPaintable::instance;
     
 }
@@ -218,6 +220,8 @@ this->rtsLayer= rtsLayer;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->rtsLayer;
     
 }

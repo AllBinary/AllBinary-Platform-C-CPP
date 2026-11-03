@@ -84,6 +84,8 @@ AutoValidationInventoryView::AutoValidationInventoryView(TransformInfoInterface*
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 }
@@ -94,6 +96,8 @@ AutoValidationInventoryView::AutoValidationInventoryView(TransformInfoInterface*
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -104,6 +108,8 @@ AutoValidationInventoryView::AutoValidationInventoryView(TransformInfoInterface*
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -114,6 +120,8 @@ AutoValidationInventoryView::AutoValidationInventoryView(TransformInfoInterface*
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

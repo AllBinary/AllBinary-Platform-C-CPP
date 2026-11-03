@@ -102,6 +102,8 @@ this->update();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->SOURCE_ID;
     
 }
@@ -139,6 +141,8 @@ this->gameKeyEvent= gameKeyEvent;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->gameKeyEvent;
     
 }
@@ -155,6 +159,8 @@ this->gameKey= gameKey;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->gameKey;
     
 }

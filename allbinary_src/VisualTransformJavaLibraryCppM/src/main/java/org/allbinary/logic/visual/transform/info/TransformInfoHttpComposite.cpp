@@ -97,6 +97,8 @@ this->transformInfoInterface= dynamic_cast<TransformInfoHttpInterface*>(transfor
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->transformInfoInterface;
     
 }
@@ -107,6 +109,8 @@ this->transformInfoInterface= dynamic_cast<TransformInfoHttpInterface*>(transfor
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new WeblisketSession(this->getPropertiesHashMap(), this->getPageContext());
     
 }
@@ -117,6 +121,8 @@ this->transformInfoInterface= dynamic_cast<TransformInfoHttpInterface*>(transfor
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->transformInfoInterface->getPageContext();;
     
 }
@@ -127,6 +133,8 @@ this->transformInfoInterface= dynamic_cast<TransformInfoHttpInterface*>(transfor
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->transformInfoInterface->getPropertiesHashMap();;
     
 }

@@ -49,6 +49,8 @@ BasicGameInfoFactory* BasicGameInfoFactory::SINGLETON = BasicGameInfoFactory::SI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BasicGameInfoFactory::SINGLETON;
     
 }
@@ -77,6 +79,8 @@ this->total= total;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -87,6 +91,8 @@ this->total= total;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -100,6 +106,8 @@ this->total= total;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->total -this->currentDestroyIndex;
     
 }

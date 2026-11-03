@@ -155,6 +155,8 @@ this->log();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->categoryPropertiesInterface->getKey();;
     
 }
@@ -185,6 +187,8 @@ rootAbPath= rootCategoryPropertiesInterface->getRootFilePath();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return rootAbPath;
     
 }
@@ -197,6 +201,8 @@ rootAbPath= rootCategoryPropertiesInterface->getRootFilePath();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AbPath(this->getRootFilePath()->toString() +this->getProperties()->getPath(this->getHierarchy())->toString(), this->getProperties()->getFileName());
     
 }
@@ -212,6 +218,8 @@ rootAbPath= rootCategoryPropertiesInterface->getRootFilePath();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return categoryInterface->getProperties()->getWebAppPath();;
     
 }
@@ -224,6 +232,8 @@ rootAbPath= rootCategoryPropertiesInterface->getRootFilePath();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->categoryPropertiesInterface->getPath(this->categoryHierarchyInterface);;
     
 }
@@ -237,6 +247,8 @@ this->typeVector->add(this->PROPERTIES);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->childCategoryVector->add(categoryPropertiesInterface);;
     
 }
@@ -270,6 +282,8 @@ this->typeVector->add(this->CATEGORY);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->childCategoryVector->add(categoryInterface);;
     
 }
@@ -280,6 +294,8 @@ this->typeVector->add(this->CATEGORY);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->childCategoryVector;
     
 }
@@ -335,6 +351,8 @@ this->removal(removalVector);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return bool_return;
     
 }
@@ -446,6 +464,8 @@ this->removal(removalVector);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return bool_return;
     
 }
@@ -476,6 +496,8 @@ this->removal(removalVector);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -486,6 +508,8 @@ this->removal(removalVector);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -499,6 +523,8 @@ this->removal(removalVector);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->categoryPropertiesInterface;
     
 }
@@ -515,6 +541,8 @@ this->categoryPropertiesInterface= categoryPropertiesInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->categoryHierarchyInterface;
     
 }
@@ -538,6 +566,8 @@ this->categoryHierarchyInterface= categoryHierarchyInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -571,6 +601,8 @@ this->categoryHierarchyInterface= categoryHierarchyInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -594,6 +626,8 @@ this->categoryHierarchyInterface= categoryHierarchyInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -608,6 +642,8 @@ this->categoryHierarchyInterface= categoryHierarchyInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 }
@@ -620,6 +656,8 @@ this->categoryHierarchyInterface= categoryHierarchyInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -632,6 +670,8 @@ this->categoryHierarchyInterface= categoryHierarchyInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -644,6 +684,8 @@ this->categoryHierarchyInterface= categoryHierarchyInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -659,6 +701,8 @@ this->categoryHierarchyInterface= categoryHierarchyInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return categoryHashMap;
     
 }
@@ -676,6 +720,8 @@ categoryVector->add(this->childCategoryVector);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return categoryVector;
     
 }

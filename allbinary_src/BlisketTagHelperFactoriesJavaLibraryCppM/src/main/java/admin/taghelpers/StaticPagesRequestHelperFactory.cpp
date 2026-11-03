@@ -85,6 +85,8 @@ StaticPagesRequestHelperFactory::StaticPagesRequestHelperFactory() : logUtil(Log
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new StaticPagesRequestHelper(hashMap, pageContext);
     
 
@@ -104,6 +106,8 @@ StaticPagesRequestHelperFactory::StaticPagesRequestHelperFactory() : logUtil(Log
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

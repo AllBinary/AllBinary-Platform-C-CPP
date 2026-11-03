@@ -82,6 +82,8 @@ this->resource= resource;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->resource;
     
 }
@@ -92,6 +94,8 @@ this->resource= resource;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->player;
     
 }
@@ -114,6 +118,8 @@ this->player= player;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 }

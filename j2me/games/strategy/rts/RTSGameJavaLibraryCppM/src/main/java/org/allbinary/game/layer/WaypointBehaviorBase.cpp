@@ -99,6 +99,8 @@ this->ownedWaypointList= new BasicArrayListS(1);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getClass()->getName();;
     
 }
@@ -109,6 +111,8 @@ this->ownedWaypointList= new BasicArrayListS(1);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -125,6 +129,8 @@ this->ownedWaypointList= new BasicArrayListS(1);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->ownedWaypointList;
     
 }
@@ -135,6 +141,8 @@ this->ownedWaypointList= new BasicArrayListS(1);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->waypoint;
     
 }
@@ -151,6 +159,8 @@ this->waypoint= waypoint;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->steeringVisitorList;
     
 }
@@ -233,6 +243,8 @@ this->waypoint= waypoint;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->waypointOverridesAttacking;
     
 }

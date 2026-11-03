@@ -78,6 +78,8 @@ this->rectangle= rectangle;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AllBinaryLayer(StringUtil::getInstance()->EMPTY_STRING, this->rectangle, ViewPosition::getInstanceD());
     
 }

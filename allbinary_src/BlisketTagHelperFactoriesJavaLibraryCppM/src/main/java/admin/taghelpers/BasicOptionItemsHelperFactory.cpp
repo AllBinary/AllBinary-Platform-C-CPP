@@ -85,6 +85,8 @@ BasicOptionItemsHelperFactory::BasicOptionItemsHelperFactory() : logUtil(LogUtil
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new BasicOptionItemsHelper(hashMap, pageContext);
     
 
@@ -104,6 +106,8 @@ BasicOptionItemsHelperFactory::BasicOptionItemsHelperFactory() : logUtil(LogUtil
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

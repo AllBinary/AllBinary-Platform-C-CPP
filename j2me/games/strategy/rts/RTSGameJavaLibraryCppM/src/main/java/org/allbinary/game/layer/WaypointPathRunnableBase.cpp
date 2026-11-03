@@ -84,6 +84,8 @@ WaypointPathRunnableBase::WaypointPathRunnableBase() : layerDistanceUtil(LayerDi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->runningP;
     
 }
@@ -141,6 +143,8 @@ this->priorityP= distanceCategory;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->targetPathFindingLayer;
     
 }
@@ -157,6 +161,8 @@ this->pathFindingLayer= unitLayer;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->priorityP;
     
 }
@@ -167,6 +173,8 @@ this->pathFindingLayer= unitLayer;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }

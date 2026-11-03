@@ -113,6 +113,8 @@ hashMap->put(JvmStatisticsData::TOTAL_MEMORY_MEGABYTES, this->getTotalMemoryMega
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }
@@ -125,7 +127,9 @@ hashMap->put(JvmStatisticsData::TOTAL_MEMORY_MEGABYTES, this->getTotalMemoryMega
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return JvmStatisticsData::NAME;
+                        
+                        
+                        return JavaBoxes::toObject(JvmStatisticsData::NAME);
     
 }
 
@@ -160,6 +164,8 @@ vector->add(this->getTotalMemoryMegabytesString());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return vector;
     
 }

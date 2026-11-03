@@ -97,6 +97,8 @@ LayerInterfaceFactory* LayerInterfaceFactory::SINGLETON = LayerInterfaceFactory:
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return LayerInterfaceFactory::SINGLETON;
     
 }
@@ -126,6 +128,8 @@ this->logUtil->putF((new StringMaker())->append(this->HASHTABLE_LABEL)->append(S
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return layerInterfaceFactoryInterface->getNextInstance(hashtable, x, y, z);;
     
 }

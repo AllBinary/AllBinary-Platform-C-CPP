@@ -74,6 +74,8 @@ DirectoryFileVisitor::DirectoryFileVisitor(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return visit = JavaBoxes::unbox<bool>(this->visit(arg0)visit)
 visit.
                     ;;
@@ -108,7 +110,9 @@ index++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean::TRUE;
+                        
+                        
+                        return JavaBoxes::toObject(Boolean::TRUE);
     
 
                                     }
@@ -117,7 +121,9 @@ index++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean::FALSE;
+                        
+                        
+                        return JavaBoxes::toObject(Boolean::FALSE);
     
 }
 

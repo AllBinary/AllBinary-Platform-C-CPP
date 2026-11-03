@@ -64,6 +64,8 @@ ActivityFractureControllerUtilFactory::ActivityFractureControllerUtilFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AndroidAPI1KeyFactory::getInstance();;
     
 
@@ -77,6 +79,8 @@ ActivityFractureControllerUtilFactory::ActivityFractureControllerUtilFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AndroidAPI9KeyFactory::getInstance();;
     
 
@@ -87,6 +91,8 @@ ActivityFractureControllerUtilFactory::ActivityFractureControllerUtilFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AndroidAPI12KeyFactory::getAPI12Instance();;
     
 

@@ -106,6 +106,8 @@ this->value= httpTransformInfoInterface->getPageContext()->getRequest()->getPara
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -126,6 +128,8 @@ this->streetAddress= billingAddressesEntity->get(int32_t(this->value));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -135,6 +139,8 @@ this->streetAddress= billingAddressesEntity->get(int32_t(this->value));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->streetAddress->isValid();;
     
 }
@@ -145,6 +151,8 @@ this->streetAddress= billingAddressesEntity->get(int32_t(this->value));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->streetAddress->validationInfo();;
     
 }
@@ -155,6 +163,8 @@ this->streetAddress= billingAddressesEntity->get(int32_t(this->value));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -165,6 +175,8 @@ this->streetAddress= billingAddressesEntity->get(int32_t(this->value));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

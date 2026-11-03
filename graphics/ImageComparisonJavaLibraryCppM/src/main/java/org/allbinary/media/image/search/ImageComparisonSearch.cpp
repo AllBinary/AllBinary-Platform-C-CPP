@@ -176,6 +176,8 @@ this->logUtil->putF(JavaString::valueOf("2: ") +JavaString::valueOf(imageUtil->t
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->matchingPercent;
     
 }
@@ -192,6 +194,8 @@ this->nonMatchingPixelVector->add(pixel);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->nonMatchingPixelVector;
     
 }
@@ -202,6 +206,8 @@ this->nonMatchingPixelVector->add(pixel);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("ImageComparisonInfo: ") +JavaString::valueOf(" Number Of Matching Pixels: ")) +JavaString::valueOf(this->pixelsThatMatch)) +JavaString::valueOf("\nNumber Of Non-Matching Pixels: ")) +JavaString::valueOf(this->getNonMatchingPixelVector()->size())) +JavaString::valueOf("\nNumber Of Pixels Ignored: ")) +JavaString::valueOf(this->pixelsIgnored)) +JavaString::valueOf("\nMatching Percentage: ")) +JavaString::valueOf(this->getMatchingPercent());
     
 }
@@ -212,6 +218,8 @@ this->nonMatchingPixelVector->add(pixel);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->bufferedImages;
     
 }
@@ -228,6 +236,8 @@ this->bufferedImages= bufferedImages;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->tolerance;
     
 }

@@ -152,6 +152,8 @@ this->GeographicMapTopViewLayerBehavior::gravity();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return geographicMapInterfaceArray[0]->getCellPositionAtXYNoThrow(xCellPosition, yCellPosition);;
     
 }
@@ -170,6 +172,8 @@ this->GeographicMapTopViewLayerBehavior::gravity();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return geographicMapInterfaceArray[0]->getCellPositionAtXYNoThrow(xCellPosition, yCellPosition);;
     
 }
@@ -188,6 +192,8 @@ this->GeographicMapTopViewLayerBehavior::gravity();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return geographicMapInterfaceArray[0]->getCellPositionAtXYNoThrow(xCellPosition, yCellPosition);;
     
 }
@@ -230,6 +236,8 @@ this->previousGeographicMapCellPosition= SimpleGeographicMapCellPositionFactory:
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     
 
@@ -242,6 +250,8 @@ this->previousGeographicMapCellPosition= SimpleGeographicMapCellPositionFactory:
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return possibleStepGeographicMapCellPosition;
     
 
@@ -259,6 +269,8 @@ this->previousGeographicMapCellPosition= SimpleGeographicMapCellPositionFactory:
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     
 }
@@ -302,6 +314,8 @@ this->moveAndLand(geographicMapInterfaceArray, geographicMapCellTypeArray, geogr
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -312,6 +326,8 @@ this->moveAndLand(geographicMapInterfaceArray, geographicMapCellTypeArray, geogr
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 

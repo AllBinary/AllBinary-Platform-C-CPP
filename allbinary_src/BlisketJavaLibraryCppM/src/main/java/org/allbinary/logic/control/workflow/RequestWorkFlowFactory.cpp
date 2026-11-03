@@ -119,6 +119,8 @@ RequestWorkFlowFactory::RequestWorkFlowFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return WorkFlowEntityFactory::getInstance()->create2()->get(requestName, storeName);;
     
 }
@@ -140,6 +142,8 @@ RequestWorkFlowFactory::RequestWorkFlowFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return WorkFlowEntityFactory::getInstance()->create2()->get(workFlowName, storeName);;
     
 }

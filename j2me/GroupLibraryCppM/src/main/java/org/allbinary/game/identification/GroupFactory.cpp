@@ -84,6 +84,8 @@ GroupFactory* GroupFactory::instance = GroupFactory::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return GroupFactory::instance;
     
 }
@@ -99,6 +101,8 @@ this->index++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return group;
     
 }
@@ -114,6 +118,8 @@ group->setName(name);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return group;
     
 }

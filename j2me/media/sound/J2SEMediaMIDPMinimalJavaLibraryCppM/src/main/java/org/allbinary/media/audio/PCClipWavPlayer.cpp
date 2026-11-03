@@ -211,6 +211,8 @@ this->clip->close();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 }
@@ -278,6 +280,8 @@ clip->open(audioInputStream);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return clip;
     
 }
@@ -332,6 +336,8 @@ BasicPlayer::stop();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new NullControl();
     
 }
@@ -342,6 +348,8 @@ BasicPlayer::stop();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return {};
     
 }
@@ -361,6 +369,8 @@ this->setVolumeF((leftVolume) /100.0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Math::pow(10, masterGainFloatControl->getValue() /20);
     
 }
@@ -392,6 +402,8 @@ masterGainFloatControl->setValue(20 *Math::log10(volume));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->clip->getMicrosecondLength() /1000;
     
 }

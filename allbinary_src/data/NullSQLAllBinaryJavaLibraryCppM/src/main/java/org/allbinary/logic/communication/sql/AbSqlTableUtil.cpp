@@ -83,6 +83,8 @@ AbSqlTableUtil* AbSqlTableUtil::instance = AbSqlTableUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbSqlTableUtil::instance;
     
 }
@@ -97,6 +99,8 @@ AbSqlTableUtil* AbSqlTableUtil::instance = AbSqlTableUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::valueOf(JavaString::valueOf(this->TABLE_LABEL) +JavaString::valueOf(tableName)) +JavaString::valueOf(" Backup Failed");
     
 }
@@ -120,6 +124,8 @@ stringBuffer->append(" Restoration Failed");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

@@ -68,6 +68,8 @@ GameAdStateFactory* GameAdStateFactory::instance = GameAdStateFactory::instance_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return GameAdStateFactory::instance;
     
 }
@@ -78,6 +80,8 @@ GameAdStateFactory* GameAdStateFactory::instance = GameAdStateFactory::instance_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->gameAdState;
     
 }
@@ -92,6 +96,8 @@ this->gameAdState= this->gameAdStateArray[0];
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->gameAdStateArray[0];
     
 }
@@ -102,6 +108,8 @@ this->gameAdState= this->gameAdStateArray[0];
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

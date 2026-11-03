@@ -117,6 +117,8 @@ RTSLayerUtil* RTSLayerUtil::instance = RTSLayerUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return RTSLayerUtil::instance;
     
 }
@@ -151,6 +153,8 @@ RTSLayerUtil* RTSLayerUtil::instance = RTSLayerUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return newWeaponProperties;
     
 }
@@ -221,6 +225,8 @@ rtsLayer->select();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ((cost *cost *cost) /(cost *1000));
     
 }
@@ -236,6 +242,8 @@ cost= this->getCostExponential(cost);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return static_cast<int32_t>(cost);
     
 }
@@ -276,6 +284,8 @@ total += this->getWeaponPropertiesCost(weaponProperties);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return total;
     
 }
@@ -330,6 +340,8 @@ this->logUtil->putF((new StringMaker())->append("Total Cost: ")->appendint(downg
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return downgradeCost;
     
 }
@@ -382,6 +394,8 @@ this->logUtil->putF((new StringMaker())->append("Total Cost: ")->appendint(upgra
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return upgradeCost;
     
 }
@@ -433,6 +447,8 @@ hashtable->put(this->groupCommonFactory->ID, BasicGroupFactory::getInstance()->N
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashtable;
     
 }

@@ -107,6 +107,8 @@ this->surroundingCircularIndexUtil->setSize(this->surroundingGeographicMapCellPo
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->occupyingGeographicMapCellPositionList;
     
 }
@@ -117,6 +119,8 @@ this->surroundingCircularIndexUtil->setSize(this->surroundingGeographicMapCellPo
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->surroundingGeographicMapCellPositionList;
     
 }
@@ -132,6 +136,8 @@ this->surroundingCircularIndexUtil->next();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return geographicMapCellPosition;
     
 }

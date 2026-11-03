@@ -523,6 +523,8 @@ this->jLabel2->setText(spriteSplitterUtil->ANIMATIONS_LABELS[this->spriteTypeJCo
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->imageProcessorInput;
     
 }

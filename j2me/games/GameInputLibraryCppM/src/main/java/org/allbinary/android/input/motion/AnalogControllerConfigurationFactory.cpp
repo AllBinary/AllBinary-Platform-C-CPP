@@ -74,6 +74,8 @@ AnalogControllerConfigurationFactory* AnalogControllerConfigurationFactory::inst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AnalogControllerConfigurationFactory::instance;
     
 }
@@ -88,6 +90,8 @@ AnalogControllerConfigurationFactory::AnalogControllerConfigurationFactory() : S
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->available;
     
 }

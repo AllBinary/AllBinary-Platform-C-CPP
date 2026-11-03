@@ -98,6 +98,8 @@ NewGlobalsValidationView::NewGlobalsValidationView(TransformInfoInterface* trans
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -118,6 +120,8 @@ NewGlobalsValidationView::NewGlobalsValidationView(TransformInfoInterface* trans
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -137,6 +141,8 @@ NewGlobalsValidationView::NewGlobalsValidationView(TransformInfoInterface* trans
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -154,6 +160,8 @@ NewGlobalsValidationView::NewGlobalsValidationView(TransformInfoInterface* trans
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -173,6 +181,8 @@ NewGlobalsValidationView::NewGlobalsValidationView(TransformInfoInterface* trans
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Getting Validation Info";
     
 }
@@ -185,6 +195,8 @@ NewGlobalsValidationView::NewGlobalsValidationView(TransformInfoInterface* trans
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -195,6 +207,8 @@ NewGlobalsValidationView::NewGlobalsValidationView(TransformInfoInterface* trans
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -207,6 +221,8 @@ NewGlobalsValidationView::NewGlobalsValidationView(TransformInfoInterface* trans
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return views.ValidationOnlyTempUtil->getInstance()->view(this);;
     
 }

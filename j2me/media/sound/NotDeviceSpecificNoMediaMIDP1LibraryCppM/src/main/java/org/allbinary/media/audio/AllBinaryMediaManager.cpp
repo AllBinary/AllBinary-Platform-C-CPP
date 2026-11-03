@@ -93,6 +93,8 @@ AllBinaryMediaManager::AllBinaryMediaManager(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -107,6 +109,8 @@ AllBinaryMediaManager::AllBinaryMediaManager(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -155,6 +159,8 @@ logUtil->putF(commonString->START, AllBinaryMediaManager::THIS, "creatPlayer(Inp
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<Player*>(NoPlayer::NO_PLAYER);
     
 }
@@ -173,6 +179,8 @@ logUtil->putF(commonString->START, AllBinaryMediaManager::THIS, "creatPlayer(loc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<Player*>(NoPlayer::NO_PLAYER);
     
 }
@@ -188,6 +196,8 @@ logUtil->putF(commonString->START, AllBinaryMediaManager::THIS, "creatPlayer(loc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->getArrayInstance();;
     
 }
@@ -198,6 +208,8 @@ logUtil->putF(commonString->START, AllBinaryMediaManager::THIS, "creatPlayer(loc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->getArrayInstance();;
     
 }

@@ -91,6 +91,8 @@ Directory* Directory::instance = Directory::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Directory::instance;
     
 }
@@ -105,6 +107,8 @@ Directory::Directory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->create(directoryAbPath->toFileSystemString());;
     
 }
@@ -138,6 +142,8 @@ this->remove(existingDirectoryAbPath->toFileSystemString());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -150,6 +156,8 @@ this->remove(existingDirectoryAbPath->toFileSystemString());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -162,6 +170,8 @@ PreLogUtil::putOE(JavaString::valueOf("Error Creating Directories: ") +JavaStrin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -220,6 +230,8 @@ PreLogUtil::putOE(JavaString::valueOf("Error Creating Directories: ") +JavaStrin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->search(fileFilter, file, false);;
     
 }
@@ -247,6 +259,8 @@ PreLogUtil::putOE(JavaString::valueOf("Error Creating Directories: ") +JavaStrin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return fileList;
     
 
@@ -263,6 +277,8 @@ PreLogUtil::putOE(JavaString::valueOf("Error Creating Directories: ") +JavaStrin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return fileList;
     
 
@@ -300,6 +316,8 @@ fileList->addAllList(recursiveFileList);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return fileList;
     
 }
@@ -310,6 +328,8 @@ fileList->addAllList(recursiveFileList);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->search(file, false);;
     
 }
@@ -337,6 +357,8 @@ fileList->addAllList(recursiveFileList);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return fileList;
     
 
@@ -353,6 +375,8 @@ fileList->addAllList(recursiveFileList);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return fileList;
     
 
@@ -387,6 +411,8 @@ fileList->addAllList(recursiveFileList);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return fileList;
     
 }
@@ -397,6 +423,8 @@ fileList->addAllList(recursiveFileList);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->search(searchValue, file, false);;
     
 }
@@ -424,6 +452,8 @@ fileList->addAllList(recursiveFileList);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return fileList;
     
 
@@ -440,6 +470,8 @@ fileList->addAllList(recursiveFileList);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return fileList;
     
 
@@ -481,6 +513,8 @@ fileList->addAllList(recursiveFileList);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return fileList;
     
 }
@@ -491,6 +525,8 @@ fileList->addAllList(recursiveFileList);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->search(level, file, false);;
     
 }
@@ -518,6 +554,8 @@ fileList->addAllList(recursiveFileList);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return fileList;
     
 
@@ -534,6 +572,8 @@ fileList->addAllList(recursiveFileList);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return fileList;
     
 
@@ -556,6 +596,8 @@ fileList->add(files[index]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return fileList;
     
 
@@ -574,6 +616,8 @@ fileList->addAllList(recursiveFileList);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return fileList;
     
 }

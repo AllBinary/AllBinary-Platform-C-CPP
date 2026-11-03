@@ -80,6 +80,8 @@ AdvertisementCampaignInternalEntityFactory::AdvertisementCampaignInternalEntityF
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<AdvertisementCampaignInternalEntityInterface*>(new AdvertisementCampaignInternalEntity());
     
 
@@ -102,6 +104,8 @@ logUtil->put(commonStrings->EXCEPTION, "AdvertisementCampaignEntityFactory", com
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

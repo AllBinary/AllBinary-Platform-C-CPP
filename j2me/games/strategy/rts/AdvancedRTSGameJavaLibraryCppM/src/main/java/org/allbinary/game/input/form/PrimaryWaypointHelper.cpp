@@ -72,6 +72,8 @@ PrimaryWaypointHelper* PrimaryWaypointHelper::instance = PrimaryWaypointHelper::
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PrimaryWaypointHelper::instance;
     
 }
@@ -86,6 +88,8 @@ PrimaryWaypointHelper::PrimaryWaypointHelper() : waypointLayer(NullPathFindingLa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->waypointLayer;
     
 }

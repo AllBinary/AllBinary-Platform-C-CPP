@@ -104,6 +104,8 @@ this->setPosition(this->x, this->y +1, this->z);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }

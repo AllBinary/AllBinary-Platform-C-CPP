@@ -107,6 +107,8 @@ PCComponentFactory* PCComponentFactory::instance = PCComponentFactory::instance_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PCComponentFactory::instance;
     
 }
@@ -131,6 +133,8 @@ PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), comp
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<HardwareComponentInterface*>(new Ethernet(componentData));
     
 
@@ -144,6 +148,8 @@ PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), comp
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<HardwareComponentInterface*>(new Bridge(componentData));
     
 
@@ -157,6 +163,8 @@ PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), comp
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<HardwareComponentInterface*>(new HardDriveController(componentData));
     
 
@@ -170,6 +178,8 @@ PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), comp
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<HardwareComponentInterface*>(new Media(componentData));
     
 
@@ -183,6 +193,8 @@ PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), comp
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<HardwareComponentInterface*>(new HardDriveController(componentData));
     
 
@@ -196,6 +208,8 @@ PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), comp
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<HardwareComponentInterface*>(new Usb(componentData));
     
 
@@ -209,6 +223,8 @@ PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), comp
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<HardwareComponentInterface*>(new Video(componentData));
     
 
@@ -222,6 +238,8 @@ PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), comp
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<HardwareComponentInterface*>(new PCI(componentData));
     
 
@@ -234,6 +252,8 @@ PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), comp
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<HardwareComponentInterface*>(new Unknown(componentData));
     
 
@@ -256,6 +276,8 @@ PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), comp
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new Unknown(commonStrings->EXCEPTION);
     
 }
@@ -272,6 +294,8 @@ PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), comp
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->componentFactory->ETHERNET->toString();;
     
 
@@ -285,6 +309,8 @@ PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), comp
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->componentFactory->BRIDGE->toString();;
     
 
@@ -298,6 +324,8 @@ PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), comp
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->componentFactory->IDE->toString();;
     
 
@@ -311,6 +339,8 @@ PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), comp
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->componentFactory->MULTIMEDIA->toString();;
     
 
@@ -324,6 +354,8 @@ PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), comp
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->componentFactory->SCSI->toString();;
     
 
@@ -337,6 +369,8 @@ PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), comp
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->componentFactory->USB->toString();;
     
 
@@ -350,6 +384,8 @@ PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), comp
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->componentFactory->VGA->toString();;
     
 
@@ -363,6 +399,8 @@ PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), comp
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->componentFactory->PCI->toString();;
     
 
@@ -372,6 +410,8 @@ PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), comp
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->componentFactory->UNKNOWN->toString();;
     
 }

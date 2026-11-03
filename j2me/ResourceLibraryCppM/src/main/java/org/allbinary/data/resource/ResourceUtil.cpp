@@ -90,6 +90,8 @@ ResourceUtil* ResourceUtil::instance = ResourceUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ResourceUtil::instance;
     
 }
@@ -148,6 +150,8 @@ ResourceUtil::classLoader= classLoader;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return inputStream;
     
 }
@@ -178,6 +182,8 @@ ResourceUtil::classLoader= classLoader;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return inputStream;
     
 
@@ -198,6 +204,8 @@ inputStream= classLoader->getResourceAsStream(resourcePath);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return inputStream;
     
 
@@ -215,6 +223,8 @@ inputStream= Thread::currentThread()->getContextClassLoader()->getResourceAsStre
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return inputStream;
     
 
@@ -224,6 +234,8 @@ inputStream= Thread::currentThread()->getContextClassLoader()->getResourceAsStre
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return inputStream;
     
 }

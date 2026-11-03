@@ -112,6 +112,8 @@ this->titleBody= new TitleBodyValidation();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -141,6 +143,8 @@ this->titleBody= new TitleBodyValidation();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -160,6 +164,8 @@ this->titleBody= new TitleBodyValidation();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -179,6 +185,8 @@ stringBuffer->append(this->titleBody->validationInfo());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -198,6 +206,8 @@ stringBuffer->append(this->titleBody->validationInfo());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Getting Validation Info";
     
 }
@@ -210,6 +220,8 @@ stringBuffer->append(this->titleBody->validationInfo());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -220,6 +232,8 @@ stringBuffer->append(this->titleBody->validationInfo());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -232,6 +246,8 @@ stringBuffer->append(this->titleBody->validationInfo());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return views.ValidationOnlyTempUtil->getInstance()->view(this);;
     
 }

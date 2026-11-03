@@ -70,6 +70,8 @@ PlatformBitmapBaseFactory* PlatformBitmapBaseFactory::NULL_PLATFORM_BITMAP_BASE_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PlatformBitmapBase::NULL_PLATFORM_BITMAP_BASE;
     
 }

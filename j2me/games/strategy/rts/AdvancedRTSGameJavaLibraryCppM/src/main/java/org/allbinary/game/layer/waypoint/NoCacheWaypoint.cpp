@@ -153,6 +153,8 @@ WaypointBase::setAllBinaryGameLayerManager(allBinaryGameLayerManager);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BasicArrayListUtil::getInstance()->getImmutableInstance();;
     
 }
@@ -165,6 +167,8 @@ WaypointBase::setAllBinaryGameLayerManager(allBinaryGameLayerManager);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->createPaths(geographicMapCellPosition);;
     
 }
@@ -211,6 +215,8 @@ endGeographicMapCellPosition= dynamic_cast<GeographicMapCellPosition*>(endList->
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return endGeographicMapCellPosition;
     
 }
@@ -232,6 +238,8 @@ endGeographicMapCellPosition= dynamic_cast<GeographicMapCellPosition*>(endList->
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BasicArrayListUtil::getInstance()->getImmutableInstance();;
     
 
@@ -249,6 +257,8 @@ endGeographicMapCellPosition= dynamic_cast<GeographicMapCellPosition*>(endList->
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BasicArrayListUtil::getInstance()->getImmutableInstance();;
     
 
@@ -312,6 +322,8 @@ customMapArray[endGeographicMapCellPosition->getRow()][endGeographicMapCellPosit
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return list;
     
 }
@@ -346,6 +358,8 @@ this->getConnectedWaypointList()->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 

@@ -68,6 +68,8 @@ PointsUtil* PointsUtil::instance = PointsUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PointsUtil::instance;
     
 }
@@ -126,6 +128,8 @@ newPoints[index][index2][1]= 1000;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return newPoints;
     
 }
@@ -136,6 +140,8 @@ newPoints[index][index2][1]= 1000;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->adjust(points, both, both);;
     
 }
@@ -177,6 +183,8 @@ newPoints[index2][1]= 1000;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return newPoints;
     
 }

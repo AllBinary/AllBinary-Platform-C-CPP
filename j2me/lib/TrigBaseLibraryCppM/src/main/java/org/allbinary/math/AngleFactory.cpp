@@ -97,6 +97,8 @@ AngleFactory* AngleFactory::instance = AngleFactory::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AngleFactory::instance;
     
 }
@@ -180,6 +182,8 @@ this->angleArray[index]= new Angle(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->angleArray[adjustedIndex];
     
 }
@@ -194,6 +198,8 @@ this->angleArray[index]= new Angle(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->UP;
     
 
@@ -207,6 +213,8 @@ this->angleArray[index]= new Angle(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->RIGHT;
     
 
@@ -220,6 +228,8 @@ this->angleArray[index]= new Angle(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->DOWN;
     
 
@@ -233,6 +243,8 @@ this->angleArray[index]= new Angle(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->LEFT;
     
 
@@ -251,6 +263,8 @@ this->angleArray[index]= new Angle(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->NOT_ANGLE;
     
 }

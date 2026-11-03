@@ -97,6 +97,8 @@ RightToLeftImageAnimationFactory::RightToLeftImageAnimationFactory(Image* image,
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AdjustedRightToLeftImageAnimation(scaledImage, this->animationFactoryInitializationVisitor->dx, this->animationFactoryInitializationVisitor->dy, this->animationBehaviorFactory->getOrCreateInstance());
     
 
@@ -107,6 +109,8 @@ RightToLeftImageAnimationFactory::RightToLeftImageAnimationFactory(Image* image,
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new RightToLeftImageAnimation(scaledImage, this->animationBehaviorFactory->getOrCreateInstance());
     
 

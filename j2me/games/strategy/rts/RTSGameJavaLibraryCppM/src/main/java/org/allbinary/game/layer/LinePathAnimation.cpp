@@ -75,6 +75,8 @@ LinePathAnimation* LinePathAnimation::instance = LinePathAnimation::instance_own
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return LinePathAnimation::instance;
     
 }

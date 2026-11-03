@@ -106,6 +106,8 @@ GitProcessHelper* GitProcessHelper::instance = GitProcessHelper::instance_owner(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return GitProcessHelper::instance;
     
 }
@@ -133,6 +135,8 @@ logUtil->putF(THIS_IS_SLOW, this, commonStrings->CONSTRUCTOR);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->trackedFiles(rootAsString, pathspec, ".java");;
     
 }
@@ -204,6 +208,8 @@ start= index +1;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return files;
     
 }
@@ -227,6 +233,8 @@ process->getInputStream()->readAllBytes();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return process->waitFor() == 0;
     
 
@@ -237,6 +245,8 @@ process->getInputStream()->readAllBytes();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

@@ -82,6 +82,8 @@ this->setAngle(angle);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->command;
     
 }
@@ -92,6 +94,8 @@ this->setAngle(angle);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->treeNode;
     
 }
@@ -102,6 +106,8 @@ this->setAngle(angle);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->angle;
     
 }

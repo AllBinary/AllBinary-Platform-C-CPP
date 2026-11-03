@@ -146,6 +146,8 @@ this->ANDROID_STRING_ARRAY[13]= std::to_string(this->totalOnDraws /totalTime);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->ANDROID_STRING_ARRAY;
     
 }
@@ -188,6 +190,8 @@ stringBuffer->append(drawsOverTime);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -198,6 +202,8 @@ stringBuffer->append(drawsOverTime);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->NOT;
     
 

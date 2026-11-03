@@ -145,6 +145,8 @@ OSGIActivatorUtil::registerAsService(bundleContext, getServiceFactory(), Class::
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return inputAutomationRobotChangeListener;
     
 
@@ -157,6 +159,8 @@ OSGIActivatorUtil::registerAsService(bundleContext, getServiceFactory(), Class::
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 
@@ -276,7 +280,9 @@ this->removeRobots(context);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->serviceFactory;
+                        
+                        
+                        return JavaBoxes::toObject(this->serviceFactory);
     
 }
 
@@ -292,6 +298,8 @@ this->serviceFactory= serviceObject;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->inputRobotInterface;
     
 }

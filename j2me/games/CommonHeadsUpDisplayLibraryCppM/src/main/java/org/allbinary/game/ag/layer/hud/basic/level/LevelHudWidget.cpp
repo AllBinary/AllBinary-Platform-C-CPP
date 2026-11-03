@@ -86,6 +86,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new LevelHudWidget(maxlevel, location, direction);
     
 }
@@ -179,6 +181,8 @@ this->update();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -189,6 +193,8 @@ this->update();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 

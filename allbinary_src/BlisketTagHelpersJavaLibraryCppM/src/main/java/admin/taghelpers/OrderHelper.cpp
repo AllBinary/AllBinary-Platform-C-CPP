@@ -218,6 +218,8 @@ this->logUtil->putF(stringBuffer->toString(), this, "setPaymentGateway()");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return paymentGatewayBoolean;
     
 
@@ -270,6 +272,8 @@ this->logUtil->put(stringBuffer->toString(), this, "setPaymentGateway()", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -301,6 +305,8 @@ order->setStoreName(this->storeFrontInterface->getName());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 
@@ -340,6 +346,8 @@ stringBuffer->append(" Exception Getting Id");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }

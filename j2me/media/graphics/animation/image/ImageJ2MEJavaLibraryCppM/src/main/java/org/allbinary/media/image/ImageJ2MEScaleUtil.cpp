@@ -70,6 +70,8 @@ ImageJ2MEScaleUtil* ImageJ2MEScaleUtil::instance = ImageJ2MEScaleUtil::instance_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ImageJ2MEScaleUtil::instance;
     
 }
@@ -100,6 +102,8 @@ scaledImages[index]= this->scale(images[index], width, height);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return scaledImages;
     
 }
@@ -168,6 +172,8 @@ scaledData[scaledIndex--]= originalData[(sourceWidth *dy) +dx];
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return scaledImage;
     
 }

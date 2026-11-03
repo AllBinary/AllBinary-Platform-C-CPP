@@ -160,6 +160,8 @@ this->downloadItemId= JavaBoxes::unbox<std::string>(hashMap->get(DownloadItemDat
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -180,6 +182,8 @@ this->itemInterface= inventoryEntity->getItem(this->id);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -199,6 +203,8 @@ this->itemInterface= inventoryEntity->getItem(this->id);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -208,6 +214,8 @@ this->itemInterface= inventoryEntity->getItem(this->id);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -218,6 +226,8 @@ this->itemInterface= inventoryEntity->getItem(this->id);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -230,6 +240,8 @@ this->itemInterface= inventoryEntity->getItem(this->id);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -240,6 +252,8 @@ this->itemInterface= inventoryEntity->getItem(this->id);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -301,6 +315,8 @@ this->itemInterface= inventoryEntity->getItem(this->id);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -311,6 +327,8 @@ this->itemInterface= inventoryEntity->getItem(this->id);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Unkown Validation Error.<br />";
     
 }

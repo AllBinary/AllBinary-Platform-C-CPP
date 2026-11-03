@@ -102,6 +102,8 @@ this->componentInterface= TransformFactory::getInstance()->getInstance(this->abe
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->NO_TYPE;
     
 }
@@ -116,6 +118,8 @@ this->componentInterface= TransformFactory::getInstance()->getInstance(this->abe
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->componentInterface->view();;
     
 
@@ -203,6 +207,8 @@ this->componentInterface= TransformFactory::getInstance()->getInstance(this->abe
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->componentInterface;
     
 }
@@ -215,6 +221,8 @@ this->componentInterface= TransformFactory::getInstance()->getInstance(this->abe
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->componentInterface->getTransformInfoInterface();;
     
 }
@@ -225,6 +233,8 @@ this->componentInterface= TransformFactory::getInstance()->getInstance(this->abe
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -235,6 +245,8 @@ this->componentInterface= TransformFactory::getInstance()->getInstance(this->abe
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }

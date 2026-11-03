@@ -154,6 +154,8 @@ list->add(geographicMapCellPosition);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return list;
     
 }
@@ -226,6 +228,8 @@ this->logUtil->putF((new StringMaker())->append("Using Cached Path(s): ")->appen
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return list;
     
 
@@ -238,6 +242,8 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new BasicArrayListD();
     
 }

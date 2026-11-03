@@ -69,6 +69,8 @@ TimeStampUtil* TimeStampUtil::instance = TimeStampUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TimeStampUtil::instance;
     
 }
@@ -89,6 +91,8 @@ TimeStampUtil::TimeStampUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return date->toString();;
     
 }

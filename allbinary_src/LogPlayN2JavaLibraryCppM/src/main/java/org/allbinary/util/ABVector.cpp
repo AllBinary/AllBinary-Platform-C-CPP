@@ -77,6 +77,8 @@ auto ABVector<E>::capacity() -> int32_t{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Vector<E>::capacity();;
     
 }
@@ -88,6 +90,8 @@ auto ABVector<E>::size() -> int32_t{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Vector<E>::size();;
     
 }
@@ -99,6 +103,8 @@ auto ABVector<E>::isEmpty() -> bool{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Vector<E>::isEmpty();;
     
 }
@@ -110,6 +116,8 @@ auto ABVector<E>::contains(Object* obj) -> bool{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Vector<E>::contains(obj);;
     
 }
@@ -121,6 +129,8 @@ auto ABVector<E>::indexOf(Object* obj) -> int32_t{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Vector<E>::indexOf(obj);;
     
 }
@@ -132,6 +142,8 @@ auto ABVector<E>::lastIndexOf(Object* obj) -> int32_t{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Vector<E>::lastIndexOf(obj);;
     
 }
@@ -143,6 +155,8 @@ auto ABVector<E>::elementAt(int32_t index) -> E{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Vector<E>::elementAt(index);;
     
 }
@@ -154,6 +168,8 @@ auto ABVector<E>::firstElement() -> E{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Vector<E>::firstElement();;
     
 }
@@ -165,6 +181,8 @@ auto ABVector<E>::lastElement() -> E{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Vector<E>::lastElement();;
     
 }
@@ -204,6 +222,8 @@ auto ABVector<E>::removeElement(Object* obj) -> bool{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Vector<E>::removeElement(obj);;
     
 }
@@ -222,6 +242,8 @@ auto ABVector<E>::clone() -> Object*{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Vector<E>::clone();;
     
 }
@@ -233,6 +255,8 @@ auto ABVector<E>::toArray() -> std::vector<Object*>{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Vector<E>::toArray();;
     
 }
@@ -244,6 +268,8 @@ auto ABVector<E>::set(int32_t index, E element) -> E{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Vector<E>::set(index, element);;
     
 }
@@ -255,6 +281,8 @@ auto ABVector<E>::add(E element) -> bool{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Vector<E>::add(element);;
     
 }
@@ -266,6 +294,8 @@ auto ABVector<E>::remove(Object* obj) -> bool{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Vector<E>::remove(obj);;
     
 }
@@ -284,6 +314,8 @@ auto ABVector<E>::remove(int32_t index) -> E{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Vector<E>::remove(index);;
     
 }
@@ -302,6 +334,8 @@ auto ABVector<E>::equals(Object* obj) -> bool{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaObjects::equals(Vector<E>::, obj);;
     
 }
@@ -313,6 +347,8 @@ auto ABVector<E>::hashCode() -> int32_t{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Vector<E>::hashCode();;
     
 }
@@ -324,6 +360,8 @@ auto ABVector<E>::toString() -> std::string{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Vector<E>::toString();;
     
 }

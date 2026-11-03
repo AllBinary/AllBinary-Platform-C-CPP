@@ -79,6 +79,8 @@ this->setLastFrame(lastFrame);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->path;
     
 }
@@ -95,6 +97,8 @@ this->path= path;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->lastFrame;
     
 }

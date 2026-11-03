@@ -76,6 +76,8 @@ this->whatChanged= whatChanged;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->whatChanged;
     
 }
@@ -86,6 +88,8 @@ this->whatChanged= whatChanged;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getSource();;
     
 }

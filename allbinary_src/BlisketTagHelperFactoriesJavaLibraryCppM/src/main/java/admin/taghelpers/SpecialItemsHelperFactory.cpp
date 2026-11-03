@@ -85,6 +85,8 @@ SpecialItemsHelperFactory::SpecialItemsHelperFactory() : logUtil(LogUtil::getIns
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new SpecialItemsHelper(hashMap, pageContext);
     
 
@@ -104,6 +106,8 @@ SpecialItemsHelperFactory::SpecialItemsHelperFactory() : logUtil(LogUtil::getIns
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

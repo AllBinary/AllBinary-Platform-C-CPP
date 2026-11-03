@@ -221,6 +221,8 @@ this->clearPaths();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->paths[geographicMapCellPosition->getColumn()][geographicMapCellPosition->getRow()];
     
 }
@@ -247,6 +249,8 @@ this->paths[geographicMapCellPosition->getColumn()][geographicMapCellPosition->g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return pathsList;
     
 }
@@ -288,6 +292,8 @@ endGeographicMapCellPosition= dynamic_cast<GeographicMapCellPosition*>(this->end
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return endGeographicMapCellPosition;
     
 }
@@ -304,6 +310,8 @@ endGeographicMapCellPosition= dynamic_cast<GeographicMapCellPosition*>(this->end
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->basicArrayListUtil->getImmutableInstance();;
     
 
@@ -322,6 +330,8 @@ endGeographicMapCellPosition= dynamic_cast<GeographicMapCellPosition*>(this->end
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->basicArrayListUtil->getImmutableInstance();;
     
 
@@ -339,6 +349,8 @@ endGeographicMapCellPosition= dynamic_cast<GeographicMapCellPosition*>(this->end
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->basicArrayListUtil->getImmutableInstance();;
     
 
@@ -402,6 +414,8 @@ customMapArray[endGeographicMapCellPosition->getRow()][endGeographicMapCellPosit
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return list;
     
 }
@@ -464,6 +478,8 @@ this->releaseCachedPaths();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 

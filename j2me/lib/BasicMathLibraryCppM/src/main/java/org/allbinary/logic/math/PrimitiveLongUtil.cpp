@@ -94,6 +94,8 @@ logUtil->put(commonStrings->EXCEPTION, primitiveLongUtil, commonStrings->CONSTRU
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return primitiveLongUtil;
     
 }
@@ -122,6 +124,8 @@ this->charArray= std::vector<char>(this->maxDigits);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->primitiveLongSingleton->NUMBER_CHAR_ARRAYS[value];
     
 
@@ -137,6 +141,8 @@ this->charArray= std::vector<char>(this->maxDigits);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->primitiveLongSingleton->UNK;
     
 
@@ -189,6 +195,8 @@ this->setCurrentTotalDigits(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->charArray;
     
 }
@@ -205,6 +213,8 @@ this->currentTotalDigits= currentTotalDigits;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->currentTotalDigits;
     
 }
@@ -215,6 +225,8 @@ this->currentTotalDigits= currentTotalDigits;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->maxDigits;
     
 }

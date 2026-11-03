@@ -66,6 +66,8 @@ LicenseInitInfoUtil* LicenseInitInfoUtil::instance = LicenseInitInfoUtil::instan
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return LicenseInitInfoUtil::instance;
     
 }
@@ -95,6 +97,8 @@ LicenseInitInfoUtil::LicenseInitInfoUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->readAgain(0);;
     
 }
@@ -115,6 +119,8 @@ licenseInitInfo->addServer(this->OFFICIAL_ALLBINARY_SERVICES_SERVER);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return licenseInitInfo;
     
 }

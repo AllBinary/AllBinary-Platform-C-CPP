@@ -69,6 +69,8 @@ DisplayInBrowserContraints::DisplayInBrowserContraints(Node* node){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->mountable;
     
 }
@@ -85,6 +87,8 @@ this->mountable= mountable;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->frameable;
     
 }
@@ -101,6 +105,8 @@ this->frameable= frameable;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->quickFrameable;
     
 }
@@ -117,6 +123,8 @@ this->quickFrameable= quickFrameable;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->mountedLink;
     
 }

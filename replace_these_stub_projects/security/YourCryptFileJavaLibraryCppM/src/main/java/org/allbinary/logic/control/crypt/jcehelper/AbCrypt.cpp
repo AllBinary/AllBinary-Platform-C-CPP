@@ -67,6 +67,8 @@ AbCrypt::AbCrypt(std::string algorithm, std::string key){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -77,6 +79,8 @@ AbCrypt::AbCrypt(std::string algorithm, std::string key){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -87,6 +91,8 @@ AbCrypt::AbCrypt(std::string algorithm, std::string key){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

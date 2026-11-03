@@ -72,6 +72,8 @@ IntermissionFactory* IntermissionFactory::instance = IntermissionFactory::instan
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return IntermissionFactory::instance;
     
 }

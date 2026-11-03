@@ -201,6 +201,8 @@ this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(hashMa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }
@@ -211,6 +213,8 @@ this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(hashMa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->profileActionConditionInterfaceVector;
     
 }
@@ -252,6 +256,8 @@ node->appendChild(profileActionConditionInterface->toXmlNode(document));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }

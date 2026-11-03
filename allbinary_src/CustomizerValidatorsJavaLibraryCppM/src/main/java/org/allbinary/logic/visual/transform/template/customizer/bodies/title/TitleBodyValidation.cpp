@@ -255,6 +255,8 @@ this->titleValidation= new TitleNotRequiredValidation(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return isValid;
     
 
@@ -274,6 +276,8 @@ this->titleValidation= new TitleNotRequiredValidation(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -305,6 +309,8 @@ stringBuffer->appendint(AbSqlData::MAXBLOB);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -324,6 +330,8 @@ stringBuffer->appendint(AbSqlData::MAXBLOB);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Validating Form";
     
 }
@@ -336,6 +344,8 @@ stringBuffer->appendint(AbSqlData::MAXBLOB);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -346,6 +356,8 @@ stringBuffer->appendint(AbSqlData::MAXBLOB);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -372,6 +384,8 @@ node->appendChild(this->titleValidation->toXmlNode(document));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }

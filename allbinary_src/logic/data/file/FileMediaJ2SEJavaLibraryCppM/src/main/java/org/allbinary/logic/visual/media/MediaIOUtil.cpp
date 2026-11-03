@@ -57,6 +57,8 @@ MediaIOUtil* MediaIOUtil::instance = MediaIOUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return MediaIOUtil::instance;
     
 }
@@ -67,6 +69,8 @@ MediaIOUtil* MediaIOUtil::instance = MediaIOUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ImageIO::getReaderFormatNames();;
     
 }
@@ -77,6 +81,8 @@ MediaIOUtil* MediaIOUtil::instance = MediaIOUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ImageIO::getWriterFormatNames();;
     
 }

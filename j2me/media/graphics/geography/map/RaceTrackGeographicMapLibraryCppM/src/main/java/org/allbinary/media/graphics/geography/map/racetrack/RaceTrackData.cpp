@@ -101,6 +101,8 @@ this->mapArray= mapArray;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->mapArray;
     
 }
@@ -117,6 +119,8 @@ this->cellTypeIdToGeographicMapCellTypeArray= cellTypeIdToGeographicMapCellTypeA
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->cellTypeIdToGeographicMapCellTypeArray;
     
 }
@@ -133,6 +137,8 @@ this->cellWidth= cellWidth;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->cellWidth;
     
 }
@@ -149,6 +155,8 @@ this->cellHeight= cellHeight;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->cellHeight;
     
 }
@@ -159,6 +167,8 @@ this->cellHeight= cellHeight;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->overPassGeographicMapCellPositionArray;
     
 }
@@ -175,6 +185,8 @@ this->overPassGeographicMapCellPositionArray= overPassGeographicMapCellPositionA
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->tileSetImage;
     
 }
@@ -191,6 +203,8 @@ this->tileSetImage= tileSetImage;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->miniTileSetImage;
     
 }
@@ -207,6 +221,8 @@ this->miniTileSetImage= miniTileSetImage;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->miniCellWidth;
     
 }
@@ -223,6 +239,8 @@ this->miniCellWidth= miniCellWidth;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->miniCellHeight;
     
 }
@@ -245,6 +263,8 @@ this->id= id;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->id;
     
 }

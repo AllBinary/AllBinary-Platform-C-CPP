@@ -140,6 +140,8 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->totalVisited;
     
 }
@@ -150,6 +152,8 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getSize() -this->totalVisited;
     
 }
@@ -160,6 +164,8 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->list->size();;
     
 }
@@ -212,6 +218,8 @@ this->visitedList->add(this->booleanFactory->FALSE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->list;
     
 }
@@ -222,6 +230,8 @@ this->visitedList->add(this->booleanFactory->FALSE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->visitedList;
     
 }
@@ -242,6 +252,8 @@ this->visitedList->add(this->booleanFactory->FALSE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<GeographicMapCellPosition*>(localList->get(index +1));
     
 
@@ -251,6 +263,8 @@ this->visitedList->add(this->booleanFactory->FALSE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return geographicMapCellPosition;
     
 }
@@ -286,6 +300,8 @@ value= JavaBoxes::unbox<bool>(this->visitedList->get(index));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<GeographicMapCellPosition*>(localList->get(index));
     
 
@@ -297,6 +313,8 @@ value= JavaBoxes::unbox<bool>(this->visitedList->get(index));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<GeographicMapCellPosition*>(localList->get(0));
     
 }
@@ -329,6 +347,8 @@ value= JavaBoxes::unbox<bool>(this->visitedList->get(index));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return index;
     
 
@@ -340,6 +360,8 @@ value= JavaBoxes::unbox<bool>(this->visitedList->get(index));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -382,6 +404,8 @@ geographicMapCellPosition= dynamic_cast<GeographicMapCellPosition*>(pathList->ge
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return inPathButNotTrackedList;
     
 }
@@ -406,6 +430,8 @@ geographicMapCellPosition= dynamic_cast<GeographicMapCellPosition*>(pathList->ge
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -422,6 +448,8 @@ geographicMapCellPosition= dynamic_cast<GeographicMapCellPosition*>(pathList->ge
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -455,6 +483,8 @@ this->totalVisited++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -471,6 +501,8 @@ this->totalVisited++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -487,6 +519,8 @@ this->totalVisited++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -497,6 +531,8 @@ this->totalVisited++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -516,6 +552,8 @@ this->totalVisited++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -526,6 +564,8 @@ this->totalVisited++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -554,6 +594,8 @@ this->totalVisited++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -564,6 +606,8 @@ this->totalVisited++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 

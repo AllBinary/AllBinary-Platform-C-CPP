@@ -81,6 +81,8 @@ SmallIntegerSingletonFactory* SmallIntegerSingletonFactory::instance = SmallInte
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SmallIntegerSingletonFactory::instance;
     
 }
@@ -145,6 +147,8 @@ logUtil->put("This means you loaded the InputFactory before determining the plat
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->MIN;
     
 }
@@ -159,6 +163,8 @@ logUtil->put("This means you loaded the InputFactory before determining the plat
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 
@@ -173,6 +179,8 @@ logUtil->put("This means you loaded the InputFactory before determining the plat
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0x101;
     
 
@@ -183,6 +191,8 @@ logUtil->put("This means you loaded the InputFactory before determining the plat
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 23;
     
 
@@ -290,6 +300,8 @@ this->initWithRange(23, 0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->INTEGER_ARRAY[index +this->NEGATIVE_MAX];
     
 }
@@ -304,6 +316,8 @@ this->initWithRange(23, 0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->INTEGER_ARRAY[ -1 +this->NEGATIVE_MAX];
     
 
@@ -313,6 +327,8 @@ this->initWithRange(23, 0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->INTEGER_ARRAY[index +this->NEGATIVE_MAX];
     
 }
@@ -335,6 +351,8 @@ this->initWithRange(23, 0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return integer;
     
 }
@@ -357,6 +375,8 @@ this->initWithRange(23, 0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->STRING_ARRAY[i];
     
 }

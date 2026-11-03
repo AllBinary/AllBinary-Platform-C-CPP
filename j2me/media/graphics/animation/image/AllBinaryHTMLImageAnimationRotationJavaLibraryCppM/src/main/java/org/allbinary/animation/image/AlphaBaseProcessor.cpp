@@ -72,6 +72,8 @@ AlphaBaseProcessor* AlphaBaseProcessor::instance = AlphaBaseProcessor::instance_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AlphaBaseProcessor::instance;
     
 }

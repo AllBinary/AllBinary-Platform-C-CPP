@@ -298,6 +298,8 @@ this->colorAtActionScriptConditionJPanel= new ColorAtActionScriptConditionJPanel
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->point;
     
 }
@@ -341,6 +343,8 @@ this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(hashMa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }
@@ -358,6 +362,8 @@ node->appendChild(ModDomHelper::createNodeWithValueNodes(document, ColorAtAction
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }
@@ -392,6 +398,8 @@ node->appendChild(ModDomHelper::createNodeWithValueNodes(document, ColorAtAction
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BasicProfileActionScriptCondition::shouldProcess(frame);;
     
 
@@ -401,6 +409,8 @@ node->appendChild(ModDomHelper::createNodeWithValueNodes(document, ColorAtAction
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -420,6 +430,8 @@ this->logUtil->putF(message, this, "log");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->colorRangeInterface;
     
 }

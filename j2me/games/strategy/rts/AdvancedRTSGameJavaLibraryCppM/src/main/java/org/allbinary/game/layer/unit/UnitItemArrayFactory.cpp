@@ -140,6 +140,8 @@ this->resources= resources;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->createNamedFlagItem(flagResources, name, layerInterfaceFactoryInterface);;
     
 }
@@ -164,6 +166,8 @@ this->resources= resources;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return item;
     
 }
@@ -176,6 +180,8 @@ this->resources= resources;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return UnitItemArrayFactory::ITEMS;
     
 }
@@ -186,6 +192,8 @@ this->resources= resources;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->resources;
     
 }
@@ -207,6 +215,8 @@ this->resources= resources;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return index;
     
 
@@ -218,6 +228,8 @@ this->resources= resources;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 }

@@ -237,6 +237,8 @@ this->point= point;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->point;
     
 }
@@ -247,6 +249,8 @@ this->point= point;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->buttons;
     
 }
@@ -276,6 +280,8 @@ this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(hashMa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }
@@ -305,6 +311,8 @@ mouseNode->appendChild(ModDomHelper::createNodeWithValueNodes(document, MouseAct
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }

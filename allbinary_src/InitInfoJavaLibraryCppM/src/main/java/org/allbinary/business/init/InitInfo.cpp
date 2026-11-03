@@ -90,6 +90,8 @@ InitInfo* InitInfo::instance = InitInfo::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return InitInfo::instance;
     
 }
@@ -236,6 +238,8 @@ initInfoEntity->get();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -282,6 +286,8 @@ this->get();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 }
@@ -298,6 +304,8 @@ this->get();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BooleanUtil::getInstance()->getFromString(this->testing);;
     
 
@@ -317,6 +325,8 @@ this->get();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -331,6 +341,8 @@ this->updateIfNeeded();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->testing;
     
 }
@@ -349,6 +361,8 @@ this->updateIfNeeded();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->testHtmlPath->toString();;
     
 
@@ -359,6 +373,8 @@ this->updateIfNeeded();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 
@@ -380,6 +396,8 @@ this->updateIfNeeded();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->mainPath->toString();;
     
 
@@ -390,6 +408,8 @@ this->updateIfNeeded();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 
@@ -421,6 +441,8 @@ this->mainPath= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -431,6 +453,8 @@ this->mainPath= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -443,6 +467,8 @@ this->mainPath= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BooleanUtil::getInstance()->isStringBoolean(testing);;
     
 }
@@ -462,6 +488,8 @@ hashMap->put(this->TESTHTMLPATH, this->getTestHtmlPath());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }

@@ -69,6 +69,8 @@ FileUnamedUtil* FileUnamedUtil::instance = FileUnamedUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return FileUnamedUtil::instance;
     
 }
@@ -86,6 +88,8 @@ simplifiedString= JavaString::replace(simplifiedString, this->commonSeps->DASH, 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return simplifiedString;
     
 }

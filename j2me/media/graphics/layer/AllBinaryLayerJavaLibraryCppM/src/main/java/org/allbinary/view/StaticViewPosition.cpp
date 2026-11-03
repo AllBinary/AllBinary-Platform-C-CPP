@@ -70,6 +70,8 @@ StaticViewPosition::StaticViewPosition(int32_t x, int32_t y, int32_t z) : ViewPo
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getRawX();;
     
 }
@@ -80,6 +82,8 @@ StaticViewPosition::StaticViewPosition(int32_t x, int32_t y, int32_t z) : ViewPo
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getRawY();;
     
 }
@@ -90,6 +94,8 @@ StaticViewPosition::StaticViewPosition(int32_t x, int32_t y, int32_t z) : ViewPo
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getRawZ();;
     
 }

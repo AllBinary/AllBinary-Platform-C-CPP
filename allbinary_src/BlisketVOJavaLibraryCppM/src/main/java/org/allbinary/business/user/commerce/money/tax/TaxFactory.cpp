@@ -131,6 +131,8 @@ TaxFactory* TaxFactory::instance = TaxFactory::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TaxFactory::instance;
     
 }
@@ -212,6 +214,8 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<TaxModuleInterface*>(AbeFactory::getInstance()->getInstance(abeClientInformation, className));
     
 
@@ -252,6 +256,8 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<TaxModuleInterface*>(new SimpleStateTaxModule());
     
 }

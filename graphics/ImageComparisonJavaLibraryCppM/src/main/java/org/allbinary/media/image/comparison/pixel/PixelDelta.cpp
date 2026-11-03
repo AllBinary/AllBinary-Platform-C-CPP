@@ -89,7 +89,9 @@ this->key= PixelDelta::getKey(this->getPoint(), this->getColorDelta());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->key;
+                        
+                        
+                        return JavaBoxes::toObject(this->key);
     
 }
 
@@ -99,6 +101,8 @@ this->key= PixelDelta::getKey(this->getPoint(), this->getColorDelta());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (new StringMaker())->appendint(TsUtil::getInstance()->hashCode(point))->append(CommonSeps::getInstance()->UNDERSCORE)->append(colorDelta->getKey()->toString())->toString();;
     
 }
@@ -109,6 +113,8 @@ this->key= PixelDelta::getKey(this->getPoint(), this->getColorDelta());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->point;
     
 }
@@ -125,6 +131,8 @@ this->point= point;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->colorDelta;
     
 }
@@ -141,6 +149,8 @@ this->colorDelta= colorDelta;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (new StringMaker())->append("PixelDelta: Point: ")->append(this->point->toString())->append(CommonSeps::getInstance()->SPACE)->append(this->colorDelta->toString())->toString();;
     
 }

@@ -186,6 +186,8 @@ result[index +ivArray.size()]= encrypted[index];
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 
@@ -198,6 +200,8 @@ PreLogUtil::putOE("Encrypt Failed", this, "encrypt", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -247,6 +251,8 @@ result[index -ivArray.size()]= array[index];
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 
@@ -259,6 +265,8 @@ PreLogUtil::putOE("decrypt Failed", this, "decrypt", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

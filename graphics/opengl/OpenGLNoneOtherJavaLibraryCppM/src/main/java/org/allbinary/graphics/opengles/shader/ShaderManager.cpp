@@ -74,6 +74,8 @@ ShaderManager* ShaderManager::instance = ShaderManager::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ShaderManager::instance;
     
 }
@@ -92,6 +94,8 @@ this->GL_FRAGMENT_SHADER= GL_FRAGMENT_SHADER;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 }
@@ -102,6 +106,8 @@ this->GL_FRAGMENT_SHADER= GL_FRAGMENT_SHADER;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 }

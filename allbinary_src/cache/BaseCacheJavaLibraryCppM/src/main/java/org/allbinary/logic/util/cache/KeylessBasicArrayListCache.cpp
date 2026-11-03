@@ -92,6 +92,8 @@ KeylessBasicArrayListCache::KeylessBasicArrayListCache() : logUtil(LogUtil::getI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return list;
     
 
@@ -104,6 +106,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->GE
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->basicArrayListUtil->getImmutableInstance();;
     
 }
@@ -166,6 +170,8 @@ stringBuffer->appendint(basicArrayList->size());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

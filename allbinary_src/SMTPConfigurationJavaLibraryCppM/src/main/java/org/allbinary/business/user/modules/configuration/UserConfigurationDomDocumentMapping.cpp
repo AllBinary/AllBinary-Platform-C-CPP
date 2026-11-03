@@ -96,6 +96,8 @@ document->appendChild(node);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return document;
     
 }
@@ -108,6 +110,8 @@ document->appendChild(node);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return XmlDocumentHelper::toString(this->toXmlDoc());;
     
 }

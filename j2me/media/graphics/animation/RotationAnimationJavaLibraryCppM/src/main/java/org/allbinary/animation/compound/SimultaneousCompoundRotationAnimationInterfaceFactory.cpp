@@ -97,6 +97,8 @@ SimultaneousCompoundRotationAnimationInterfaceFactory::SimultaneousCompoundRotat
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return std::vector<RotationAnimation*>(size);
     
 }
@@ -107,6 +109,8 @@ SimultaneousCompoundRotationAnimationInterfaceFactory::SimultaneousCompoundRotat
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new SimultaneousCompoundRotationAnimation(JavaBoxes::unbox<std::vector<RotationAnimation*>>(animationInterfaceArray), this->animationBehaviorFactory->getOrCreateInstance());
     
 }

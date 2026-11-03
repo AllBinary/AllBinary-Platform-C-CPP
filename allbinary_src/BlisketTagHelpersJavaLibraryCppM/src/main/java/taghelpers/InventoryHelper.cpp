@@ -175,6 +175,8 @@ this->id= this->request->getParameter(basicItemData->ID);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 
@@ -197,6 +199,8 @@ this->id= this->request->getParameter(basicItemData->ID);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(error) +JavaString::valueOf("<br>")) +JavaString::valueOf("Exception: ")) +JavaString::valueOf(e)) +JavaString::valueOf("<br>");
     
 }
@@ -221,6 +225,8 @@ this->id= this->request->getParameter(basicItemData->ID);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Please enter a keyword in the search field above the Search button.";
     
 
@@ -245,6 +251,8 @@ this->id= this->request->getParameter(basicItemData->ID);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 
@@ -267,6 +275,8 @@ this->id= this->request->getParameter(basicItemData->ID);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(error) +JavaString::valueOf("<br>")) +JavaString::valueOf("Exception: ")) +JavaString::valueOf(e)) +JavaString::valueOf("<br>");
     
 }

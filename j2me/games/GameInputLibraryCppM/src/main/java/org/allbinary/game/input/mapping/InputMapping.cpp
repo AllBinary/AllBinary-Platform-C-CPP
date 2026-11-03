@@ -98,6 +98,8 @@ InputMapping::InputMapping() : logUtil(LogUtil::getInstance()), commonStrings(Co
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->hashtable->size();;
     
 }
@@ -108,6 +110,8 @@ InputMapping::InputMapping() : logUtil(LogUtil::getInstance()), commonStrings(Co
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -118,6 +122,8 @@ InputMapping::InputMapping() : logUtil(LogUtil::getInstance()), commonStrings(Co
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return InputToGameKeyMapping::getNullInstance();;
     
 }
@@ -227,6 +233,8 @@ this->mappedList->add(mappedToInput);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->mappedList->contains(input);;
     
 }
@@ -251,6 +259,8 @@ this->hashtable->put(id, list);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return list;
     
 
@@ -260,6 +270,8 @@ this->hashtable->put(id, list);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<BasicArrayList*>(mappingInputCanBeNullList);
     
 }
@@ -270,6 +282,8 @@ this->hashtable->put(id, list);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->hashtable;
     
 }

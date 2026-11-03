@@ -66,6 +66,8 @@ InitEmulatorFactory* InitEmulatorFactory::instance = InitEmulatorFactory::instan
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return InitEmulatorFactory::instance;
     
 }
@@ -82,6 +84,8 @@ this->initEmulator= initEmulator;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->initEmulator;
     
 }

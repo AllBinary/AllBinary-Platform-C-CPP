@@ -90,6 +90,8 @@ GameConfigurationUtil* GameConfigurationUtil::instance = GameConfigurationUtil::
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return GameConfigurationUtil::instance;
     
 }
@@ -293,6 +295,8 @@ this->COMPETITION_VALUE= (this->COMPETITION_VALUE>>2);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->COMPETITION_VALUE;
     
 }

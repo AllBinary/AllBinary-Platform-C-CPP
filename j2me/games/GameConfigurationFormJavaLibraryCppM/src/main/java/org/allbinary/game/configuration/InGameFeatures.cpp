@@ -196,6 +196,8 @@ InGameFeatureChoiceGroups::getExclusiveInstance()->add(orientationData->ORIENTAT
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -214,6 +216,8 @@ InGameFeatureChoiceGroups::getExclusiveInstance()->add(orientationData->ORIENTAT
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -223,6 +227,8 @@ InGameFeatureChoiceGroups::getExclusiveInstance()->add(orientationData->ORIENTAT
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

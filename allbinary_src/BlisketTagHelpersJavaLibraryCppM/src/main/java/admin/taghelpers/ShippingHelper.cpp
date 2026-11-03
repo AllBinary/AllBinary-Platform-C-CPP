@@ -141,6 +141,8 @@ order->setShippingMethod(this->shippingType);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -163,6 +165,8 @@ order->setShippingMethod(this->shippingType);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }

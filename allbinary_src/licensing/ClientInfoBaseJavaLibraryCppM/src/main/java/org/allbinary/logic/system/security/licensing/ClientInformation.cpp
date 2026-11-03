@@ -117,6 +117,8 @@ this->init();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->operatingSystemInterface;
     
 }
@@ -127,6 +129,8 @@ this->init();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }
@@ -137,6 +141,8 @@ this->init();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->specialName;
     
 }
@@ -147,6 +153,8 @@ this->init();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->version;
     
 }
@@ -157,6 +165,8 @@ this->init();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->licenseId;
     
 }
@@ -167,6 +177,8 @@ this->init();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->licenseServers;
     
 }
@@ -177,6 +189,8 @@ this->init();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaBoxes::unbox<std::string>(this->licenseServers->objectArray[index]);
     
 }
@@ -187,6 +201,8 @@ this->init();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->licenseServers->size();;
     
 }
@@ -230,6 +246,8 @@ clientInfoHashtable->put(abeClientInformationData->HARDWARE, hardwareString);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return clientInfoHashtable;
     
 }
@@ -244,6 +262,8 @@ clientInfoHashtable->put(abeClientInformationData->HARDWARE, hardwareString);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -254,6 +274,8 @@ clientInfoHashtable->put(abeClientInformationData->HARDWARE, hardwareString);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -277,6 +299,8 @@ clientInfoHashtable->put(abeClientInformationData->HARDWARE, hardwareString);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -310,6 +334,8 @@ clientInfoHashtable->put(abeClientInformationData->HARDWARE, hardwareString);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -323,6 +349,8 @@ clientInfoHashtable->put(abeClientInformationData->HARDWARE, hardwareString);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -339,6 +367,8 @@ this->hardSale= hardSale;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->hardSale;
     
 }
@@ -367,6 +397,8 @@ this->licenseServers= licenseServers;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->shortName;
     
 }

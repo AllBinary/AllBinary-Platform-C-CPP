@@ -93,6 +93,8 @@ hashMap->put(UserEmailEventConfigurationData::LISTENER_CLASSPATH, this->userEmai
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }
@@ -105,7 +107,9 @@ hashMap->put(UserEmailEventConfigurationData::LISTENER_CLASSPATH, this->userEmai
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UserEmailEventConfigurationData::NAME;
+                        
+                        
+                        return JavaBoxes::toObject(UserEmailEventConfigurationData::NAME);
     
 }
 
@@ -124,6 +128,8 @@ vector->add(this->userEmailEventConfigurationInterface->getEventListenerClassPat
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return vector;
     
 }

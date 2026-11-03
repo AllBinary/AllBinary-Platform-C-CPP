@@ -89,6 +89,8 @@ this->advertisementsVector->add(advertisementInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<AdvertisementInterface*>(this->advertisementsVector->get(index));
     
 }
@@ -99,6 +101,8 @@ this->advertisementsVector->add(advertisementInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->advertisementsVector->size();;
     
 }
@@ -109,6 +113,8 @@ this->advertisementsVector->add(advertisementInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -119,6 +125,8 @@ this->advertisementsVector->add(advertisementInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

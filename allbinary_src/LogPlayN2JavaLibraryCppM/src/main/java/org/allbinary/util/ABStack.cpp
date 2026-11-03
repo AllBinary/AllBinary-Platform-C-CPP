@@ -68,6 +68,8 @@ auto ABStack<E>::push(E item) -> E{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Stack<E>::push(item);;
     
 }
@@ -79,6 +81,8 @@ auto ABStack<E>::pop() -> E{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Stack<E>::pop();;
     
 }
@@ -90,6 +94,8 @@ auto ABStack<E>::peek() -> E{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Stack<E>::peek();;
     
 }
@@ -101,6 +107,8 @@ auto ABStack<E>::empty() -> bool{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Stack<E>::empty();;
     
 }
@@ -112,6 +120,8 @@ auto ABStack<E>::search(Object* obj) -> int32_t{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Stack<E>::search(obj);;
     
 }
@@ -123,6 +133,8 @@ auto ABStack<E>::removeElement(Object* obj) -> bool{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Stack<E>::removeElement(obj);;
     
 }

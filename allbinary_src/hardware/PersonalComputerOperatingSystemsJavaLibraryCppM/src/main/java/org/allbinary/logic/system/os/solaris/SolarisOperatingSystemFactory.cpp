@@ -90,6 +90,8 @@ SolarisOperatingSystemFactory* SolarisOperatingSystemFactory::instance = Solaris
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SolarisOperatingSystemFactory::instance;
     
 }
@@ -146,6 +148,8 @@ SolarisOperatingSystemFactory::SolarisOperatingSystemFactory() : logUtil(LogUtil
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return operatingSystemInterface;
     
 
@@ -168,6 +172,8 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NoOperatingSystem::NO_OPERATING_SYSTEM;
     
 }

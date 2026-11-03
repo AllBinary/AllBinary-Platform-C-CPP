@@ -133,6 +133,8 @@ CurrentDisplayableFactory* CurrentDisplayableFactory::instance = CurrentDisplaya
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return CurrentDisplayableFactory::instance;
     
 }
@@ -169,6 +171,8 @@ this->DEFAULT_CHILD_NAME_LIST->add(HighScoresCanvas::NAME);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -203,6 +207,8 @@ this->update();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->openGlReadydisplayable;
     
 }
@@ -313,6 +319,8 @@ this->setUsedRunnable(NullWaitGameRunnable::getInstance());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->displayable;
     
 }
@@ -323,6 +331,8 @@ this->setUsedRunnable(NullWaitGameRunnable::getInstance());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->usedRunnable;
     
 }

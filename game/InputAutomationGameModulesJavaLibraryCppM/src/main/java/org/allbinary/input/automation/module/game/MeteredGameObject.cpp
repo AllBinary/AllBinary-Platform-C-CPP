@@ -138,6 +138,8 @@ this->getRatios()[index]= double(nominator /this->getSize());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->good;
     
 }
@@ -154,6 +156,8 @@ this->good= good;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->dropping;
     
 }
@@ -170,6 +174,8 @@ this->dropping= dropping;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->ratios;
     
 }
@@ -222,6 +228,8 @@ stringBuffer->appendboolean(this->isDropping());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -238,6 +246,8 @@ this->ratios= ratios;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->minX;
     
 }
@@ -254,6 +264,8 @@ this->minX= minX;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->maxX;
     
 }
@@ -270,6 +282,8 @@ this->maxX= maxX;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->y;
     
 }
@@ -286,6 +300,8 @@ this->y= y;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->size;
     
 }

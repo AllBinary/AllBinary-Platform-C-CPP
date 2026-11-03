@@ -208,6 +208,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AdvancedRTSGameLayer(RemoteInfo::REMOTE_INFO, NullPathFindingLayer::NULL_PATH_FINDING_LAYER, AdvancedRTSProperties::createPropertiesSimulated(), GroupFactory::getInstance()->NULL_GROUP_ARRAY, StringUtil::getInstance()->EMPTY_STRING, StringUtil::getInstance()->EMPTY_STRING, Health::NULL_HEALTH, NullRTSFormInputFactory::getInstance(), nullAnimationInterfaceFactoryInterface, nullIndexedAnimationInterfaceFactoryInterface, nullAnimationInterfaceFactoryInterface, nullAnimationInterfaceFactoryInterface, nullIndexedAnimationInterfaceFactoryInterface, NullIndexedAnimationFactory::getFactoryInstance(), RectangleFactory::SINGLETON, 0, 0, new TileLayerPositionIntoViewPosition());
     
 }
@@ -307,6 +309,8 @@ RTSLayerUtil::getInstance()->destroyAndClear(this->getWaypointBehavior()->getOwn
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->parentLayer;
     
 }
@@ -323,6 +327,8 @@ this->parentLayer= parentLayer;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<WaypointBehaviorBase*>(this->waypointBehaviorBase);
     
 }
@@ -339,6 +345,8 @@ this->waypointBehaviorBase= unitWaypointHelper;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->waypointLogHelperP;
     
 }
@@ -349,6 +357,8 @@ this->waypointBehaviorBase= unitWaypointHelper;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->waypoint2LogHelperP;
     
 }
@@ -359,6 +369,8 @@ this->waypointBehaviorBase= unitWaypointHelper;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->waypointRunnableLogHelperP;
     
 }
@@ -380,6 +392,8 @@ this->waypointBehaviorBase= unitWaypointHelper;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -392,6 +406,8 @@ this->waypointBehaviorBase= unitWaypointHelper;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -406,6 +422,8 @@ this->waypointBehaviorBase= unitWaypointHelper;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -415,6 +433,8 @@ this->waypointBehaviorBase= unitWaypointHelper;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -460,6 +480,8 @@ this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Ca
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -481,6 +503,8 @@ this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Ca
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -514,6 +538,8 @@ this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Ca
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -535,6 +561,8 @@ this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Ca
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -568,6 +596,8 @@ this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Ca
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -589,6 +619,8 @@ this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Ca
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -622,6 +654,8 @@ this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Ca
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -643,6 +677,8 @@ this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Ca
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -659,6 +695,8 @@ this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Ca
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -668,6 +706,8 @@ this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Ca
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -688,6 +728,8 @@ this->geographicMapCellPositionAreaBase->update(geographicMapInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->geographicMapCellPositionAreaBase->getSurroundingGeographicMapCellPositionList();;
     
 }

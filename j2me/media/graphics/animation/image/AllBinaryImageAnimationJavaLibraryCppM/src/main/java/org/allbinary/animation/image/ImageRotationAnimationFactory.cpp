@@ -109,6 +109,8 @@ this->animationFactoryInitializationVisitor->dy= dy;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AdjustedImageBaseRotationAnimation(this->getImage(), AngleInfo::getInstance(this->angleIncrement), AngleFactory::getInstance()->TOTAL_ANGLE, this->animationFactoryInitializationVisitor->dx, this->animationFactoryInitializationVisitor->dy, this->animationBehaviorFactory->getOrCreateInstance());
     
 
@@ -119,6 +121,8 @@ this->animationFactoryInitializationVisitor->dy= dy;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new ImageBaseRotationAnimation(this->getImage(), AngleInfo::getInstance(this->angleIncrement), AngleFactory::getInstance()->TOTAL_ANGLE, this->animationBehaviorFactory->getOrCreateInstance());
     
 
@@ -132,6 +136,8 @@ this->animationFactoryInitializationVisitor->dy= dy;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->angleIncrement;
     
 }

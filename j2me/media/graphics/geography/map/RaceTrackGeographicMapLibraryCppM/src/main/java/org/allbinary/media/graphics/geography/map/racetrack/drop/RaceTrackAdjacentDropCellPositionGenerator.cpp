@@ -141,6 +141,8 @@ RaceTrackAdjacentDropCellPositionGenerator* RaceTrackAdjacentDropCellPositionGen
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return RaceTrackAdjacentDropCellPositionGenerator::SINGLETON;
     
 }
@@ -208,6 +210,8 @@ break;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nonRoadGeographicMapCellPosition;
     
 }
@@ -242,6 +246,8 @@ RaceTrackDropCellPositionGenerator::update(allBinaryGameLayerManager, geographic
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -306,6 +312,8 @@ this->hashtable->put(DirectionFactory::getInstance()->NAME, direction);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -331,6 +339,8 @@ geographicMapCellType= this->raceTrackGeographicMap->getCellTypeAt(dynamic_cast<
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 

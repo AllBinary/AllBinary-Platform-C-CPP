@@ -507,6 +507,8 @@ graphics->drawRect(point->getX() -allBinaryTiledLayer->getXP(), point->getY() -a
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->selectedRTSLayerPlayerGameInput;
     
 }
@@ -517,6 +519,8 @@ graphics->drawRect(point->getX() -allBinaryTiledLayer->getXP(), point->getY() -a
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->selectedRtsFormInput;
     
 }
@@ -535,6 +539,8 @@ this->selectedRtsFormInput= selectedRtsFormInput;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->rtsPlayerLayerInterface;
     
 }
@@ -545,6 +551,8 @@ this->selectedRtsFormInput= selectedRtsFormInput;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->towerInfoPaintable;
     
 }
@@ -555,6 +563,8 @@ this->selectedRtsFormInput= selectedRtsFormInput;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->motionGestureInputList;
     
 }
@@ -565,6 +575,8 @@ this->selectedRtsFormInput= selectedRtsFormInput;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->gameCanvas;
     
 }
@@ -575,6 +587,8 @@ this->selectedRtsFormInput= selectedRtsFormInput;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->isSingleKeyProcessing;
     
 }
@@ -585,6 +599,8 @@ this->selectedRtsFormInput= selectedRtsFormInput;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->scrollPlayerGameInput;
     
 }

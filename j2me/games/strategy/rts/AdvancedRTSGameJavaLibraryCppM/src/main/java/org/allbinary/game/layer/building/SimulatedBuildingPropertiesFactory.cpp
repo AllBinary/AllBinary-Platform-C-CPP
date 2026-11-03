@@ -91,6 +91,8 @@ SimulatedBuildingPropertiesFactory* SimulatedBuildingPropertiesFactory::instance
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SimulatedBuildingPropertiesFactory::instanceC;
     
 }
@@ -101,6 +103,8 @@ SimulatedBuildingPropertiesFactory* SimulatedBuildingPropertiesFactory::instance
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -116,6 +120,8 @@ this->damageFloatersPaintableInterface= damageFloaters;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return damageFloaters;
     
 }
@@ -128,6 +134,8 @@ this->damageFloatersPaintableInterface= damageFloaters;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NullPaintable::getInstance();;
     
 }
@@ -138,6 +146,8 @@ this->damageFloatersPaintableInterface= damageFloaters;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StdUtil::getInstance()->NULL_TABLE;
     
 }
@@ -148,6 +158,8 @@ this->damageFloatersPaintableInterface= damageFloaters;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new TrackingEvent(TrackingEventHandler::getInstance());
     
 }

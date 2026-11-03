@@ -89,6 +89,8 @@ ImageArrayRotationAnimationPool::ImageArrayRotationAnimationPool(CacheableInterf
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ImageArrayRotationAnimationPool::IMAGE_ROTATION_ANIMATION_POOL;
     
 }
@@ -112,6 +114,8 @@ imageArrayRotationAnimationCacheable->setImageArray(allBinaryImageRotationAnimat
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return cacheableInterface;
     
 }

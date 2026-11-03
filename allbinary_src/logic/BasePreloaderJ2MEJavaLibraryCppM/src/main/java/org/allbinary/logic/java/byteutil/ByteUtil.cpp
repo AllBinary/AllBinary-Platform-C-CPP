@@ -65,6 +65,8 @@ ByteUtil* ByteUtil::instance = ByteUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ByteUtil::instance;
     
 }
@@ -102,6 +104,8 @@ index++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return bytes;
     
 }
@@ -130,6 +134,8 @@ index++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return bytes;
     
 }
@@ -175,6 +181,8 @@ index++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->xor_(array, mask);;
     
 }
@@ -189,6 +197,8 @@ index++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -216,6 +226,8 @@ index++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -227,6 +239,8 @@ index++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -247,6 +261,8 @@ stats[3]= oldByteArray.size();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -278,6 +294,8 @@ stats[1]= 0;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -291,6 +309,8 @@ stats[1]++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }

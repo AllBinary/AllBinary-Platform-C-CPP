@@ -79,6 +79,8 @@ Object* GameKeyMappingFactory::instance = NullUtil::getInstance()->NULL_OBJECT;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<GameKeyMappingFactory*>(GameKeyMappingFactory::instance);
     
 }
@@ -144,6 +146,8 @@ this->setGameKey(gameKeyFactory->LEVEL_UP);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->intKeyToGameKey[key];
     
 }

@@ -117,6 +117,8 @@ this->weblisketSession= new WeblisketSession(hashMap, pageContext);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -127,6 +129,8 @@ this->weblisketSession= new WeblisketSession(hashMap, pageContext);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -149,6 +153,8 @@ this->weblisketSession= new WeblisketSession(hashMap, pageContext);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 }

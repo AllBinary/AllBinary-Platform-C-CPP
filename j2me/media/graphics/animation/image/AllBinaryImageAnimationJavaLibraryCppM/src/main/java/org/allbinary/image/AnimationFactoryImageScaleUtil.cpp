@@ -95,6 +95,8 @@ AnimationFactoryImageScaleUtil* AnimationFactoryImageScaleUtil::instance = Anima
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AnimationFactoryImageScaleUtil::instance;
     
 }
@@ -150,6 +152,8 @@ scaledImage= this->imageScaleUtil->scale(image, scaledWidth, scaledHeight);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return scaledImage;
     
 }

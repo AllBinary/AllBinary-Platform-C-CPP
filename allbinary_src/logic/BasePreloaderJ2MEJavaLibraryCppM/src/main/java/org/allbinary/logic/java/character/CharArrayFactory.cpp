@@ -68,6 +68,8 @@ CharArrayFactory* CharArrayFactory::instance = CharArrayFactory::instance_owner(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return CharArrayFactory::instance;
     
 }
@@ -78,6 +80,8 @@ CharArrayFactory* CharArrayFactory::instance = CharArrayFactory::instance_owner(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->zeroCharArray;
     
 }

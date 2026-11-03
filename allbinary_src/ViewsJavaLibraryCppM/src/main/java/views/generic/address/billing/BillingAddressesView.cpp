@@ -120,6 +120,8 @@ this->request= dynamic_cast<HttpServletRequest*>(httpTransformInfoInterface->get
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->request;
     
 }
@@ -154,6 +156,8 @@ billingAddressesNode->appendChild(ModDomHelper::createNameValueNodes(document, S
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return billingAddressesNode;
     
 
@@ -173,6 +177,8 @@ billingAddressesNode->appendChild(ModDomHelper::createNameValueNodes(document, S
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -197,6 +203,8 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return HttpStoreComponentView::view();;
     
 

@@ -292,6 +292,8 @@ this->document->appendChild(objectConfigNode);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->ownerTransformInfoInterface;
     
 }
@@ -304,6 +306,8 @@ this->document->appendChild(objectConfigNode);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->document;
     
 }
@@ -349,6 +353,8 @@ this->document= document;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -360,6 +366,8 @@ this->document= document;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -375,6 +383,8 @@ this->document= document;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return componentNode->getAttributes();;
     
 }
@@ -390,6 +400,8 @@ this->document= document;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return attrNode->getValue();;
     
 }
@@ -448,6 +460,8 @@ this->logUtil->putF(stringBuffer->toString(), this, "getNodeVector(nodename)");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return viewNodeVector;
     
 
@@ -457,6 +471,8 @@ this->logUtil->putF(stringBuffer->toString(), this, "getNodeVector(nodename)");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new BasicArrayListD();
     
 }
@@ -492,6 +508,8 @@ viewVector->add(new TransformInfoDomNode(viewNode));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return viewVector;
     
 }
@@ -527,6 +545,8 @@ viewVector->add((new TransformInfoDomNode(viewNode))->getTransformInfoInterface(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return viewVector;
     
 }
@@ -665,6 +685,8 @@ viewVector->add(new TransformInfoDomNode(viewNode));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return viewVector;
     
 }
@@ -677,6 +699,8 @@ viewVector->add(new TransformInfoDomNode(viewNode));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getTransformDomNodes(TransformInfosData::getInstance()->GROUP);;
     
 }
@@ -689,6 +713,8 @@ viewVector->add(new TransformInfoDomNode(viewNode));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getTransforms(TransformInfosData::getInstance()->NAME);;
     
 }
@@ -701,6 +727,8 @@ viewVector->add(new TransformInfoDomNode(viewNode));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getTransforms(TransformInfosData::getInstance()->GROUP);;
     
 }
@@ -713,6 +741,8 @@ viewVector->add(new TransformInfoDomNode(viewNode));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getTransforms(TransformInfoData::getInstance()->PARENT);;
     
 }
@@ -723,6 +753,8 @@ viewVector->add(new TransformInfoDomNode(viewNode));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->document->getElementsByTagName(TransformInfoObjectConfigData::getInstance()->NAME)->item(0);;
     
 }
@@ -741,6 +773,8 @@ this->outputTypeName= outputTypeName;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->outputTypeName;
     
 }
@@ -756,6 +790,8 @@ this->outputTypeName= outputTypeName;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return DomNodeHelper::getTextNodeValue(node);;
     
 }
@@ -771,6 +807,8 @@ this->outputTypeName= outputTypeName;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return DomNodeHelper::getTextNodeValue(node);;
     
 }
@@ -786,6 +824,8 @@ this->outputTypeName= outputTypeName;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return DomNodeHelper::getTextNodeValue(node);;
     
 }
@@ -804,6 +844,8 @@ this->outputTypeName= outputTypeName;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return XmlDocumentHelper::toString(this->document);;
     
 
@@ -814,6 +856,8 @@ this->outputTypeName= outputTypeName;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 
@@ -836,6 +880,8 @@ this->outputTypeName= outputTypeName;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

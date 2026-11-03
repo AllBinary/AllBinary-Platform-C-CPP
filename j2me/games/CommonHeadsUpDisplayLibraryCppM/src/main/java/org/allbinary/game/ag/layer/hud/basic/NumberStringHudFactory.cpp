@@ -97,6 +97,8 @@ NumberStringHudFactory::NumberStringHudFactory() : NULL_NUMBER_STRING_HUD(this->
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<NumberStringHudFactory*>(NumberStringHudFactory::instance);
     
 }
@@ -109,6 +111,8 @@ NumberStringHudFactory::NumberStringHudFactory() : NULL_NUMBER_STRING_HUD(this->
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new NumberStringHud(StringUtil::getInstance()->EMPTY_STRING, 9, BasicHudFactory::getInstance()->ABSOLUTE, 1, 0, BasicColorFactory::getInstance()->NULL_COLOR);
     
 

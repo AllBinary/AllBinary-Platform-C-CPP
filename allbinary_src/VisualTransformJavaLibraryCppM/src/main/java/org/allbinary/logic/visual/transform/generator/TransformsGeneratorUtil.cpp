@@ -90,6 +90,8 @@ TransformsGeneratorUtil* TransformsGeneratorUtil::instance = TransformsGenerator
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TransformsGeneratorUtil::instance;
     
 }
@@ -130,6 +132,8 @@ TransformsGeneratorUtil::TransformsGeneratorUtil() : logUtil(LogUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 }
@@ -221,6 +225,8 @@ stringBuffer->append("-->");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

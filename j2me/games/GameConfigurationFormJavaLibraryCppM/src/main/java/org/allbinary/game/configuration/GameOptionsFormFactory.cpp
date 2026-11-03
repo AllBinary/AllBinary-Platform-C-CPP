@@ -85,6 +85,8 @@ GameOptionsFormFactory::GameOptionsFormFactory() : logUtil(LogUtil::getInstance(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return GameOptionsFormFactory::instance;
     
 }
@@ -97,6 +99,8 @@ GameOptionsFormFactory::GameOptionsFormFactory() : logUtil(LogUtil::getInstance(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new GameOptionsForm(commandListener, title, backgrounBasicColor, foregroundBasicColor);
     
 
@@ -112,6 +116,8 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->INIT, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return CommandForm::getNullCommandForm();;
     
 }

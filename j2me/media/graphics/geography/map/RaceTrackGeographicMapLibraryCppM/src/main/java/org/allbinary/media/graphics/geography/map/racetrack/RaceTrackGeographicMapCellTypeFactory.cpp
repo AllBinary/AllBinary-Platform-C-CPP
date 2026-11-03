@@ -69,6 +69,8 @@ RaceTrackGeographicMapCellTypeFactory* RaceTrackGeographicMapCellTypeFactory::in
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return RaceTrackGeographicMapCellTypeFactory::instanceC;
     
 }
@@ -102,6 +104,8 @@ this->DEFAULT_FINISH_LINE_ROAD_CELL_TYPE= raceTrackGeographicMapCellTypes->DEFAU
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->START_LINE_ROAD_CELL_TYPE->getType();;
     
 }
@@ -112,6 +116,8 @@ this->DEFAULT_FINISH_LINE_ROAD_CELL_TYPE= raceTrackGeographicMapCellTypes->DEFAU
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->FINISH_LINE_ROAD_CELL_TYPE->getType();;
     
 }
@@ -122,6 +128,8 @@ this->DEFAULT_FINISH_LINE_ROAD_CELL_TYPE= raceTrackGeographicMapCellTypes->DEFAU
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->EMPTY_CELL_TYPE->getType();;
     
 }
@@ -136,6 +144,8 @@ this->DEFAULT_FINISH_LINE_ROAD_CELL_TYPE= raceTrackGeographicMapCellTypes->DEFAU
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -145,6 +155,8 @@ this->DEFAULT_FINISH_LINE_ROAD_CELL_TYPE= raceTrackGeographicMapCellTypes->DEFAU
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

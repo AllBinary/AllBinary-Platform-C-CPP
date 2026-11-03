@@ -91,6 +91,8 @@ TransformInfoPropertiesFactory* TransformInfoPropertiesFactory::instance = Trans
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TransformInfoPropertiesFactory::instance;
     
 }
@@ -173,6 +175,8 @@ TransformInfoPropertiesFactory::TransformInfoPropertiesFactory() : logUtil(LogUt
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return transformInfoProperties;
     
 }

@@ -74,6 +74,8 @@ this->total= JavaBoxes::unbox<int32_t>(hashMap->get("total"));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->current;
     
 }
@@ -84,6 +86,8 @@ this->total= JavaBoxes::unbox<int32_t>(hashMap->get("total"));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->total;
     
 }

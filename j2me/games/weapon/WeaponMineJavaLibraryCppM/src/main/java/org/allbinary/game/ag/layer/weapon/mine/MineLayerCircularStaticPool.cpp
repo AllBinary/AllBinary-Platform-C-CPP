@@ -86,6 +86,8 @@ MineLayerCircularStaticPool::WEAPON_LAYER_CIRCULAR_STATIC_POOL->initAllBinaryLay
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return MineLayerCircularStaticPool::WEAPON_LAYER_CIRCULAR_STATIC_POOL;
     
 }

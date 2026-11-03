@@ -113,6 +113,8 @@ XmlDocumentHelper* XmlDocumentHelper::instance = XmlDocumentHelper::instance_own
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return XmlDocumentHelper::instance;
     
 }
@@ -180,6 +182,8 @@ this->transformer->transform(new DOMSource(document), new StreamResult(out));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return out->toString();;
     
 }
@@ -211,6 +215,8 @@ copyTransformer->transform(domSource, streamResult);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return byteArrayOutputStream->toString();;
     
 

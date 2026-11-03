@@ -78,6 +78,8 @@ BasicGeographicMapUtil* BasicGeographicMapUtil::instance = BasicGeographicMapUti
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BasicGeographicMapUtil::instance;
     
 }
@@ -97,6 +99,8 @@ BasicGeographicMapUtil* BasicGeographicMapUtil::instance = BasicGeographicMapUti
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return oldGeographicMapCellPosition->getRow();;
     
 }
@@ -104,6 +108,8 @@ case 1: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return oldGeographicMapCellPosition->getRow();;
     
 }
@@ -111,6 +117,8 @@ case 2: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return oldGeographicMapCellPosition->getRow() +LOCATION_CHANGE;
     
 }
@@ -118,6 +126,8 @@ case 3: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return oldGeographicMapCellPosition->getRow() -LOCATION_CHANGE;
     
 }
@@ -148,6 +158,8 @@ default: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return oldGeographicMapCellPosition->getColumn() -LOCATION_CHANGE;
     
 }
@@ -155,6 +167,8 @@ case 1: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return oldGeographicMapCellPosition->getColumn() +LOCATION_CHANGE;
     
 }
@@ -162,6 +176,8 @@ case 2: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return oldGeographicMapCellPosition->getColumn();;
     
 }
@@ -169,6 +185,8 @@ case 3: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return oldGeographicMapCellPosition->getColumn();;
     
 }
@@ -208,6 +226,8 @@ default: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -218,6 +238,8 @@ default: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -234,6 +256,8 @@ default: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getAllBinaryTiledLayerArray(geographicMapInterfaceArray, tiledLayerArray, 0);;
     
 }
@@ -266,6 +290,8 @@ tiledLayerArray[count++]= geographicMapInterface->getAllBinaryTiledLayer();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return tiledLayerArray;
     
 }

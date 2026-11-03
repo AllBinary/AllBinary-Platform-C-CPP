@@ -108,6 +108,8 @@ this->session->setAttribute(BasicUserRoleData::NAME->toString(), aRole);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<BasicUserRole*>(this->session->getAttribute(BasicUserRoleData::NAME->toString()));
     
 }
@@ -160,6 +162,8 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaBoxes::unbox<std::string>(this->session->getAttribute(org.allbinary->globals->GLOBALS2->WEBAPPPATH));
     
 }
@@ -170,6 +174,8 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaBoxes::unbox<std::string>(this->session->getAttribute(UserData::USERNAME));
     
 }
@@ -180,6 +186,8 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaBoxes::unbox<std::string>(this->session->getAttribute(UserData::PASSWORD));
     
 }
@@ -190,6 +198,8 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaBoxes::unbox<std::string>(this->session->getAttribute(PaymentGatewayData::NAME->toString()));
     
 }
@@ -200,6 +210,8 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaBoxes::unbox<std::string>(this->session->getAttribute(WeblisketSessionData::AUTHENTICATED));
     
 }
@@ -210,6 +222,8 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaBoxes::unbox<int32_t>(this->session->getAttribute(WeblisketSessionData::ATTEMPTS));
     
 }
@@ -220,6 +234,8 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaBoxes::unbox<std::string>(this->session->getAttribute(WeblisketSessionData::TIMEOUT));
     
 }
@@ -230,6 +246,8 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaBoxes::unbox<std::string>(this->session->getAttribute(StoreFrontData::getInstance()->NAME));
     
 }
@@ -258,6 +276,8 @@ this->session->removeAttribute(UserData::USERNAME);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->session->getCreationTime();;
     
 }
@@ -271,6 +291,8 @@ this->session->removeAttribute(UserData::USERNAME);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return lastAccessedTime;
     
 }

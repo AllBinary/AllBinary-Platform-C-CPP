@@ -66,6 +66,8 @@ TouchButtonResource* TouchButtonDowngradeResource::instance = new TouchButtonDow
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TouchButtonDowngradeResource::instance;
     
 }

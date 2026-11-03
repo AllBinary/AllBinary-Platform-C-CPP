@@ -225,6 +225,8 @@ keywords->addAllList(substoreKeywords);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return keywordHashSet;
     
 }
@@ -499,6 +501,8 @@ stringBuffer->append(" Store Not Found");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -549,6 +553,8 @@ stringBuffer->append(this->INVENTORY);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -625,6 +631,8 @@ stringBuffer->append("<br />");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Generation Failed No Store Specified<br/>";
     
 
@@ -636,6 +644,8 @@ stringBuffer->append("All Static Pages Generated<br/>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 

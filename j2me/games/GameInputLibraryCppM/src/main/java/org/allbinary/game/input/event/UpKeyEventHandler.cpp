@@ -74,6 +74,8 @@ std::vector<UpKeyEventHandlerBase*> UpKeyEventHandler::instanceArray =
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return UpKeyEventHandler::instance;
     
 }
@@ -87,6 +89,8 @@ std::vector<UpKeyEventHandlerBase*> UpKeyEventHandler::instanceArray =
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return UpKeyEventHandler::instanceArray[playerInputId];
     
 }
@@ -97,6 +101,8 @@ std::vector<UpKeyEventHandlerBase*> UpKeyEventHandler::instanceArray =
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return UpKeyEventHandler::instanceArray[playerInputId];
     
 }

@@ -85,6 +85,8 @@ AndroidServicesUtil::AndroidServicesUtil() : logUtil(LogUtil::getInstance()), re
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AndroidServicesUtil::instance;
     
 }
@@ -132,6 +134,8 @@ serviceName= serviceComponent->toString();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -145,6 +149,8 @@ this->logUtil->putF(JavaString::valueOf(this->SERVICE_NOT_FOUND_RUNNING) +JavaSt
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

@@ -137,6 +137,8 @@ gameCanvas->toggleMenu();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 1;
     
 
@@ -146,6 +148,8 @@ gameCanvas->toggleMenu();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -213,6 +217,8 @@ this->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 1;
     
 
@@ -223,6 +229,8 @@ this->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 
@@ -238,6 +246,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, GameInputStrings::getIn
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 }
@@ -269,6 +279,8 @@ this->motionGestureEventList->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return lastIndex;
     
 }
@@ -289,6 +301,8 @@ this->motionGestureEventList->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 

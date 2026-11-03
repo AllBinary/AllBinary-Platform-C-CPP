@@ -296,6 +296,8 @@ logUtil->put(outer->commonStrings->EXCEPTION, this, outer->commonStrings->RUN, &
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->imageProcessorInput;
     
 }

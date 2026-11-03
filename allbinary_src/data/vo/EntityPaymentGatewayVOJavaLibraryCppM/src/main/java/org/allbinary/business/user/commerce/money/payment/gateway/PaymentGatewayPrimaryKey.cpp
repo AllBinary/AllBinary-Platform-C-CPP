@@ -80,6 +80,8 @@ this->setName(gatewayName);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->storeName;
     
 }
@@ -96,6 +98,8 @@ this->storeName= storeName;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }
@@ -131,6 +135,8 @@ stringBuffer->append(this->getName());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

@@ -91,6 +91,8 @@ this->midPoint= pointFactory->createXY(x +(width>>1), y +(height>>1));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->point;
     
 }
@@ -101,6 +103,8 @@ this->midPoint= pointFactory->createXY(x +(width>>1), y +(height>>1));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->midPoint;
     
 }

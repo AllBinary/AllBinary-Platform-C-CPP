@@ -85,6 +85,8 @@ ShippingHelperFactory::ShippingHelperFactory() : logUtil(LogUtil::getInstance())
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new ShippingHelper(hashMap, pageContext);
     
 
@@ -104,6 +106,8 @@ ShippingHelperFactory::ShippingHelperFactory() : logUtil(LogUtil::getInstance())
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

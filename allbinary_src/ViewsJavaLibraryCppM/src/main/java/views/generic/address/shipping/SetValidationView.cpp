@@ -87,6 +87,8 @@ SetValidationView::SetValidationView(TransformInfoInterface* transformInfoInterf
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 }
@@ -97,6 +99,8 @@ SetValidationView::SetValidationView(TransformInfoInterface* transformInfoInterf
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return MESSAGES::CONTACTADMIN;
     
 }
@@ -107,6 +111,8 @@ SetValidationView::SetValidationView(TransformInfoInterface* transformInfoInterf
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -117,6 +123,8 @@ SetValidationView::SetValidationView(TransformInfoInterface* transformInfoInterf
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

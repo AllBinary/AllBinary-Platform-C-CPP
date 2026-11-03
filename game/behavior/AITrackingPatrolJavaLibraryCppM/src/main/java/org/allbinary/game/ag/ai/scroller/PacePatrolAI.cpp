@@ -285,6 +285,8 @@ lastTrackingLayerInterface= lastTrackingEvent->getLayerInterface();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return direction;
     
 }
@@ -313,6 +315,8 @@ this->trackingList->add(trackingEvent);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->firingDistance;
     
 }

@@ -79,6 +79,8 @@ AffiliateUserFactory::AffiliateUserFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AffiliateUser();
     
 }
@@ -91,6 +93,8 @@ AffiliateUserFactory::AffiliateUserFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AffiliateUser(hashMap);
     
 }

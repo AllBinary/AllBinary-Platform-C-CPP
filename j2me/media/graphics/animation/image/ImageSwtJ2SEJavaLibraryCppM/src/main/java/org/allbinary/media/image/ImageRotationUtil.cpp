@@ -90,6 +90,8 @@ ImageRotationUtil* ImageRotationUtil::instance = ImageRotationUtil::instance_own
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ImageRotationUtil::instance;
     
 }
@@ -120,6 +122,8 @@ openGLESImage->openGLESImageProperties->angle= totalAngle;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -179,6 +183,8 @@ this->imageSwtRotationUtil->rotateImage(originalSwtImage, copySwtImage, gc, tota
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return originalImage;
     
 }

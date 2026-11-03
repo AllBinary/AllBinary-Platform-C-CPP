@@ -69,6 +69,8 @@ ImageJ2SEUtil* ImageJ2SEUtil::instance = ImageJ2SEUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ImageJ2SEUtil::instance;
     
 }

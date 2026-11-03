@@ -163,6 +163,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->uriResolverStrings->RE
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new StreamSource((new CryptFileReader(TransformInfoTemplateData::getInstance()->UNCRYPTED_EXTENSION, TransformInfoTemplateData::getInstance()->ENCRYPTED_EXTENSION))->getInputStream(fileAbPath));
     
 
@@ -196,6 +198,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->uriResolverStrings->RE
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return URLGLOBALS::getMainPath() +FREEBLISKET_PATH_GLOBALS::getInstance()->INSTALLPATH +this->uriResolverStrings->IMPORT_URL;
     
 
@@ -206,6 +210,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->uriResolverStrings->RE
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "ContextUriResolver - Does not work without webapp path should be changed";
     
 }

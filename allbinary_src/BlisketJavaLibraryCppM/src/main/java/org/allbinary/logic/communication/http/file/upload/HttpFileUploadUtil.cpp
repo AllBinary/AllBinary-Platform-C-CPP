@@ -83,6 +83,8 @@ HttpFileUploadUtil* HttpFileUploadUtil::instance = HttpFileUploadUtil::instance_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return HttpFileUploadUtil::instance;
     
 }
@@ -111,6 +113,8 @@ HttpFileUploadUtil::HttpFileUploadUtil() : logUtil(LogUtil::getInstance()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -132,6 +136,8 @@ HttpFileUploadUtil::HttpFileUploadUtil() : logUtil(LogUtil::getInstance()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

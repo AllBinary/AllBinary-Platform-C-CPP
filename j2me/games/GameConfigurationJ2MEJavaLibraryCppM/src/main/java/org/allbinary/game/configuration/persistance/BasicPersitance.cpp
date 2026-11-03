@@ -184,6 +184,8 @@ recordStore->deleteRecord(deleteId);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->platformRecordIdUtil->getRecordId(abeClientInformation, this->recordId);;
     
 }
@@ -194,6 +196,8 @@ recordStore->deleteRecord(deleteId);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->valueList;
     
 }
@@ -204,6 +208,8 @@ recordStore->deleteRecord(deleteId);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->idList;
     
 }

@@ -71,6 +71,8 @@ this->imageColorResults= new ImageColorResults();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->imageColorRangeResults;
     
 }
@@ -87,6 +89,8 @@ this->imageColorRangeResults= imageColorRangeResults;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->averageAmbientLevel;
     
 }
@@ -103,6 +107,8 @@ this->averageAmbientLevel= averageAmbientLevel;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->imageColorResults;
     
 }

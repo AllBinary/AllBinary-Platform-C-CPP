@@ -220,6 +220,8 @@ this->keyActionScriptInputInterface->log();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaBoxes::unbox<int32_t>(KeySingletonFactory::getHashtable()->get(selectedItem));
     
 
@@ -229,6 +231,8 @@ this->keyActionScriptInputInterface->log();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -262,6 +266,8 @@ this->keyActionScriptInputInterface->log();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->keyActionJDialog;
     
 }

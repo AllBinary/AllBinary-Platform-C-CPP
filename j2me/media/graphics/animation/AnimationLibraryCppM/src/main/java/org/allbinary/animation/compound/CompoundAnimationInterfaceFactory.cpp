@@ -110,6 +110,8 @@ animationInterfaceArray[index]= this->basicAnimationInterfaceFactoryInterfaceArr
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->createAnimation(animationInterfaceArray);;
     
 }
@@ -120,6 +122,8 @@ animationInterfaceArray[index]= this->basicAnimationInterfaceFactoryInterfaceArr
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NullAnimationFactory::getFactoryInstance()->EMPTY_ARRAY;
     
 }
@@ -130,6 +134,8 @@ animationInterfaceArray[index]= this->basicAnimationInterfaceFactoryInterfaceArr
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NullAnimationFactory::getFactoryInstance()->getInstance(0);;
     
 }
@@ -140,6 +146,8 @@ animationInterfaceArray[index]= this->basicAnimationInterfaceFactoryInterfaceArr
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->basicAnimationInterfaceFactoryInterfaceArrayP;
     
 }

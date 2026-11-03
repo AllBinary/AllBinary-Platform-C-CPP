@@ -201,6 +201,8 @@ this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(hashMa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }
@@ -218,6 +220,8 @@ node->appendChild(ModDomHelper::createNodeWithValueNodes(document, TimeIntervalA
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }
@@ -234,6 +238,8 @@ this->logUtil->putF(JavaString::valueOf("Time Interval: ") +JavaString::valueOf(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->timeHelper;
     
 }
@@ -261,6 +267,8 @@ this->timeHelper= timeHelper;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BasicProfileActionScriptCondition::shouldProcess(frame);;
     
 
@@ -270,6 +278,8 @@ this->timeHelper= timeHelper;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

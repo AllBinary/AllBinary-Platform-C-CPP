@@ -112,6 +112,8 @@ this->userName= this->getWeblisketSession()->getUserName();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -127,6 +129,8 @@ this->userName= this->getWeblisketSession()->getUserName();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->user->isValid();;
     
 
@@ -146,6 +150,8 @@ this->userName= this->getWeblisketSession()->getUserName();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -186,6 +192,8 @@ this->user= UserEntityFactory::getInstance()->getUser(this->userName);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -201,6 +209,8 @@ this->user= UserEntityFactory::getInstance()->getUser(this->userName);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -230,6 +240,8 @@ stringBuffer->append(this->user->validationInfo());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -249,6 +261,8 @@ stringBuffer->append(this->user->validationInfo());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Validating Form";
     
 }
@@ -261,6 +275,8 @@ stringBuffer->append(this->user->validationInfo());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -271,6 +287,8 @@ stringBuffer->append(this->user->validationInfo());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

@@ -73,6 +73,8 @@ GameKeyUtil* GameKeyUtil::instance = GameKeyUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -83,6 +85,8 @@ GameKeyUtil* GameKeyUtil::instance = GameKeyUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -96,6 +100,8 @@ GameKeyUtil* GameKeyUtil::instance = GameKeyUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return GameKeyUtil::instance;
     
 }

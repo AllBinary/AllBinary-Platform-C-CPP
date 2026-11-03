@@ -85,6 +85,8 @@ this->displayInBrowserContraintsInterface=
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->artist;
     
 }
@@ -101,6 +103,8 @@ this->artist= artist;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->artistLink;
     
 }
@@ -117,6 +121,8 @@ this->artistLink= artistLink;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->title;
     
 }
@@ -133,6 +139,8 @@ this->title= title;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->dateAdded;
     
 }
@@ -149,6 +157,8 @@ this->dateAdded= dateAdded;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->directory;
     
 }
@@ -165,6 +175,8 @@ this->directory= directory;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->framedLink;
     
 }
@@ -181,6 +193,8 @@ this->framedLink= framedLink;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->listPrice;
     
 }
@@ -197,6 +211,8 @@ this->listPrice= listPrice;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->ourPrice;
     
 }
@@ -213,6 +229,8 @@ this->ourPrice= ourPrice;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->rank;
     
 }
@@ -229,6 +247,8 @@ this->rank= rank;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->image;
     
 }
@@ -245,6 +265,8 @@ this->image= image;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->product;
     
 }
@@ -261,6 +283,8 @@ this->product= product;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->thumbnail;
     
 }
@@ -277,6 +301,8 @@ this->thumbnail= thumbnail;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->displayInBrowserContraintsInterface;
     
 }

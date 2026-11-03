@@ -117,6 +117,8 @@ AbSqlRow::AbSqlRow(DbConnectionInfo* databaseConnectionInfoInterface) : AbSqlCol
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->stringUtil->EMPTY_STRING;
     
 
@@ -127,6 +129,8 @@ AbSqlRow::AbSqlRow(DbConnectionInfo* databaseConnectionInfoInterface) : AbSqlCol
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return value;
     
 
@@ -738,6 +742,8 @@ result->put(columnName, field);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 }
@@ -755,6 +761,8 @@ result->put(columnName, field);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 
@@ -774,6 +782,8 @@ result->put(columnName, field);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -786,6 +796,8 @@ result->put(columnName, field);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getRows(keysAndValues, StringUtil::getInstance()->EMPTY_STRING);;
     
 }
@@ -913,6 +925,8 @@ rows->add(result);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return rows;
     
 
@@ -932,6 +946,8 @@ rows->add(result);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -1013,6 +1029,8 @@ rows->add(result);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return rows;
     
 
@@ -1032,6 +1050,8 @@ rows->add(result);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -1184,6 +1204,8 @@ rows->add(result);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return rows;
     
 
@@ -1203,6 +1225,8 @@ rows->add(result);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -1317,6 +1341,8 @@ rows->add(result);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return rows;
     
 
@@ -1336,6 +1362,8 @@ rows->add(result);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

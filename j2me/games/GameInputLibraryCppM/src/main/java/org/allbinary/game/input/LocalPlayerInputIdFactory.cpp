@@ -89,6 +89,8 @@ this->deviceIdToplayerId[index]=  -1;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return LocalPlayerInputIdFactory::instance;
     
 }
@@ -99,6 +101,8 @@ this->deviceIdToplayerId[index]=  -1;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->playerIdToDeviceId[playerInputId];
     
 }
@@ -123,6 +127,8 @@ this->deviceIdToplayerId[index]=  -1;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return playerInputId;
     
 
@@ -147,6 +153,8 @@ this->deviceIdToplayerId[index]=  -1;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return index;
     
 
@@ -186,6 +194,8 @@ this->logUtil->putF((new StringMaker())->append("Added DeviceId: ")->appendint(d
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return index;
     
 }
@@ -217,6 +227,8 @@ this->logUtil->putF((new StringMaker())->append("Added DeviceId: ")->appendint(d
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return total;
     
 }
@@ -227,6 +239,8 @@ this->logUtil->putF((new StringMaker())->append("Added DeviceId: ")->appendint(d
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->playersInPlay[playerInputId];
     
 }
@@ -253,6 +267,8 @@ this->playersInPlay[playerInputId]= false;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->playersInPlay;
     
 }

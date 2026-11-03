@@ -75,6 +75,8 @@ NullRTSGameLayerPositionFinder* NullRTSGameLayerPositionFinder::instance = NullR
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NullRTSGameLayerPositionFinder::instance;
     
 }
@@ -92,6 +94,8 @@ NullRTSGameLayerPositionFinder::NullRTSGameLayerPositionFinder(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return layerInterface;
     
 }

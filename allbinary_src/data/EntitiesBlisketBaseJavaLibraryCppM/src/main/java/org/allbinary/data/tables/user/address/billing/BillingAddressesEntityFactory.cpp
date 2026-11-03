@@ -75,6 +75,8 @@ BillingAddressesEntityFactory* BillingAddressesEntityFactory::instance = Billing
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BillingAddressesEntityFactory::instance;
     
 }
@@ -91,6 +93,8 @@ BillingAddressesEntityFactory::BillingAddressesEntityFactory() : logUtil(LogUtil
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new BillingAddressesEntity(userName);
     
 
@@ -113,6 +117,8 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

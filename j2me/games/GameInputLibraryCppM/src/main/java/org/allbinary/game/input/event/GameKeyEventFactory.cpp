@@ -91,6 +91,8 @@ Object* GameKeyEventFactory::instance = NullUtil::getInstance()->NULL_OBJECT;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<GameKeyEventFactory*>(GameKeyEventFactory::instance);
     
 }
@@ -140,6 +142,8 @@ this->ARRAY[index][index2]= GameKeyEvent::createEvent(nullUtil->NULL_OBJECT, ind
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return gameKeyEvent;
     
 }
@@ -155,6 +159,8 @@ this->ARRAY[index][index2]= GameKeyEvent::createEvent(nullUtil->NULL_OBJECT, ind
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return gameKeyEvent;
     
 }

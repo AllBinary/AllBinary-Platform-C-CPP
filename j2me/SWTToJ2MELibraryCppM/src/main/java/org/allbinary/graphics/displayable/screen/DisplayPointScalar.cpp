@@ -75,6 +75,8 @@ DisplayPointScalar* DisplayPointScalar::instance = DisplayPointScalar::instance_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return DisplayPointScalar::instance;
     
 }
@@ -89,6 +91,8 @@ DisplayPointScalar::DisplayPointScalar(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return value;
     
 }
@@ -99,6 +103,8 @@ DisplayPointScalar::DisplayPointScalar(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return value;
     
 }
@@ -109,6 +115,8 @@ DisplayPointScalar::DisplayPointScalar(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return point;
     
 }

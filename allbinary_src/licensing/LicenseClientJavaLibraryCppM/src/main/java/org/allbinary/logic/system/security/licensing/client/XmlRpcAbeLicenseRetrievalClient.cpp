@@ -171,6 +171,8 @@ this->logUtil->putF(RESULT +result->toString(), this, this->commonStrings->GET);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->tryAnother(anyType);;
     
 
@@ -187,7 +189,9 @@ isOnline= true;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return abeLicenseInterface;
+                        
+                        
+                        return JavaBoxes::toObject(abeLicenseInterface);
     
 
                 //: 
@@ -205,6 +209,8 @@ this->logUtil->putF(TRYING_OTHER_SERVERS +ExceptionUtil::getInstance()->getStack
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->tryAnother(anyType);;
     
 
@@ -232,6 +238,8 @@ this->logUtil->put(SERVER_REPORTED_ERROR, this, this->commonStrings->GET, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->tryAnother(anyType);;
     
 }
@@ -245,6 +253,8 @@ this->logUtil->put(UNKNOWN_ERROR, this, this->commonStrings->GET, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->tryAnother(anyType);;
     
 }

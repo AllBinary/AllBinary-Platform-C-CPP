@@ -68,6 +68,8 @@ J2SEMath* J2SEMath::instance = J2SEMath::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return J2SEMath::instance;
     
 }
@@ -78,6 +80,8 @@ J2SEMath* J2SEMath::instance = J2SEMath::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Math::round(value);;
     
 }
@@ -88,6 +92,8 @@ J2SEMath* J2SEMath::instance = J2SEMath::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (value < 0)
                         ?       
                                  -value
@@ -103,6 +109,8 @@ J2SEMath* J2SEMath::instance = J2SEMath::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (value < 0)
                         ?       
                                  -value

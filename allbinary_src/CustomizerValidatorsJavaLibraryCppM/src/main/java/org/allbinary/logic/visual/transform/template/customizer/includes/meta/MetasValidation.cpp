@@ -149,6 +149,8 @@ MetasValidation::MetasValidation(Document* document) : logUtil(LogUtil::getInsta
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return valid;
     
 
@@ -168,6 +170,8 @@ MetasValidation::MetasValidation(Document* document) : logUtil(LogUtil::getInsta
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -185,6 +189,8 @@ MetasValidation::MetasValidation(Document* document) : logUtil(LogUtil::getInsta
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -204,6 +210,8 @@ MetasValidation::MetasValidation(Document* document) : logUtil(LogUtil::getInsta
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Validating Form";
     
 }
@@ -216,6 +224,8 @@ MetasValidation::MetasValidation(Document* document) : logUtil(LogUtil::getInsta
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -226,6 +236,8 @@ MetasValidation::MetasValidation(Document* document) : logUtil(LogUtil::getInsta
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -261,6 +273,8 @@ node->appendChild(metaValidation->toXmlNode(document));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }

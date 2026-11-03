@@ -79,6 +79,8 @@ ShipOrderStoreAdminUserFactory::ShipOrderStoreAdminUserFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new ShipOrderStoreAdminUser();
     
 }
@@ -91,6 +93,8 @@ ShipOrderStoreAdminUserFactory::ShipOrderStoreAdminUserFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new ShipOrderStoreAdminUser(hashMap);
     
 }

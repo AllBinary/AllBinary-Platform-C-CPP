@@ -68,6 +68,8 @@ ColorTemperatureUtil* ColorTemperatureUtil::instance = ColorTemperatureUtil::ins
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ColorTemperatureUtil::instance;
     
 }
@@ -144,6 +146,8 @@ ColorTemperatureUtil* ColorTemperatureUtil::instance = ColorTemperatureUtil::ins
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return basicColor;
     
 }

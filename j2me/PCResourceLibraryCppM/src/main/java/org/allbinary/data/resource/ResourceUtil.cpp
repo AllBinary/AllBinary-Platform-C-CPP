@@ -95,6 +95,8 @@ ResourceUtil* ResourceUtil::instance = ResourceUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ResourceUtil::instance;
     
 }
@@ -151,6 +153,8 @@ this->ext= ext;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return inputStream;
     
 }
@@ -177,6 +181,8 @@ StreamUtil::getInstance()->getByteArray(inputStream, new ByteArrayOutputStream()
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new ByteArrayInputStream(byteArray);
     
 
@@ -186,6 +192,8 @@ StreamUtil::getInstance()->getByteArray(inputStream, new ByteArrayOutputStream()
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return inputStream;
     
 }

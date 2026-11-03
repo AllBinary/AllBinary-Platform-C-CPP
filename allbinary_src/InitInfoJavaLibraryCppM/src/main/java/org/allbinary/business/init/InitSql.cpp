@@ -167,6 +167,8 @@ this->executeSQLStatement(tableData);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -186,6 +188,8 @@ this->executeSQLStatement(tableData);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -205,6 +209,8 @@ this->executeSQLStatement(tableData);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -224,6 +230,8 @@ this->executeSQLStatement(tableData);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -345,6 +353,8 @@ result->put(columnName, field);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 }
@@ -362,6 +372,8 @@ result->put(columnName, field);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 
@@ -381,6 +393,8 @@ result->put(columnName, field);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -576,6 +590,8 @@ this->executeSQLStatement(sqlStatement);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->stringUtil->EMPTY_STRING;
     
 
@@ -586,6 +602,8 @@ this->executeSQLStatement(sqlStatement);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return value;
     
 
@@ -624,6 +642,8 @@ stmt->close();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return rset;
     
 
@@ -777,6 +797,8 @@ this->createConnection();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->databaseConnectionInfoInterface;
     
 }

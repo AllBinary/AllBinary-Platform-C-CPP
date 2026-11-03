@@ -89,6 +89,8 @@ this->streetAddress= new StreetAddress();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 }
@@ -99,6 +101,8 @@ this->streetAddress= new StreetAddress();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Please contact the administrator.";
     
 }
@@ -109,6 +113,8 @@ this->streetAddress= new StreetAddress();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -119,6 +125,8 @@ this->streetAddress= new StreetAddress();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

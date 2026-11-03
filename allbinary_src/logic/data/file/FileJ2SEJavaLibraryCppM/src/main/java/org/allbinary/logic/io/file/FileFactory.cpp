@@ -69,6 +69,8 @@ FileFactory* FileFactory::instance = FileFactory::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return FileFactory::instance;
     
 }
@@ -81,6 +83,8 @@ FileFactory* FileFactory::instance = FileFactory::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbFile::createAbFileFromRawPath(filePath);;
     
 }
@@ -93,6 +97,8 @@ FileFactory* FileFactory::instance = FileFactory::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbFile::createAbFileWithChild(file, childFilePath);;
     
 }
@@ -112,6 +118,8 @@ FileFactory* FileFactory::instance = FileFactory::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -122,6 +130,8 @@ FileFactory* FileFactory::instance = FileFactory::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 

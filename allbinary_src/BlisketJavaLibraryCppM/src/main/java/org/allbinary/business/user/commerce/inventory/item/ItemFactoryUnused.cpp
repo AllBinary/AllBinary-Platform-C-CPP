@@ -85,6 +85,8 @@ ItemFactoryUnused::ItemFactoryUnused(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<TableMappingInterface*>(new Item(hashMap));
     
 }
@@ -97,6 +99,8 @@ ItemFactoryUnused::ItemFactoryUnused(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<TableMappingInterface*>(new Item((new RequestParams(request))->toHashMap()));
     
 }

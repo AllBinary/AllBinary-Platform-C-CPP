@@ -113,6 +113,8 @@ indexedAnimation->setFrame(frameIndex);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return indexedAnimation->getFrame();;
     
 }
@@ -126,6 +128,8 @@ indexedAnimation->setFrame(frameIndex);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return indexedAnimation->getSize();;
     
 }
@@ -160,6 +164,8 @@ indexedAnimation->previousFrame();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PrimitiveIntUtil::getArrayInstance();;
     
 }
@@ -223,6 +229,8 @@ this->animationInterfaceArray[index]->paintThreedXYZ(graphics, x, y, z);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->animationInterfaceArray;
     
 }

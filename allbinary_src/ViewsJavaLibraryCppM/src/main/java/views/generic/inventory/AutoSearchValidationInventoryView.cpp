@@ -79,6 +79,8 @@ AutoSearchValidationInventoryView::AutoSearchValidationInventoryView(SearchReque
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 }
@@ -89,6 +91,8 @@ AutoSearchValidationInventoryView::AutoSearchValidationInventoryView(SearchReque
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -99,6 +103,8 @@ AutoSearchValidationInventoryView::AutoSearchValidationInventoryView(SearchReque
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -109,6 +115,8 @@ AutoSearchValidationInventoryView::AutoSearchValidationInventoryView(SearchReque
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

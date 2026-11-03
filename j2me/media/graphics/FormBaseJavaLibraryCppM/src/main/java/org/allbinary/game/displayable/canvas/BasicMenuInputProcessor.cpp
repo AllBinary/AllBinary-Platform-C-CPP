@@ -113,6 +113,8 @@ this->canvas= canvas;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<MyCanvas*>(this->canvas);
     
 }
@@ -125,6 +127,8 @@ this->canvas= canvas;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 }

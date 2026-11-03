@@ -87,6 +87,8 @@ SelectNewValidationView::SelectNewValidationView(TransformInfoInterface* transfo
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 }
@@ -97,6 +99,8 @@ SelectNewValidationView::SelectNewValidationView(TransformInfoInterface* transfo
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -107,6 +111,8 @@ SelectNewValidationView::SelectNewValidationView(TransformInfoInterface* transfo
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -128,6 +134,8 @@ SelectNewValidationView::SelectNewValidationView(TransformInfoInterface* transfo
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -138,6 +146,8 @@ SelectNewValidationView::SelectNewValidationView(TransformInfoInterface* transfo
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -150,6 +160,8 @@ SelectNewValidationView::SelectNewValidationView(TransformInfoInterface* transfo
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (new SelectNewView(this->getTransformInfoInterface()))->view();;
     
 }

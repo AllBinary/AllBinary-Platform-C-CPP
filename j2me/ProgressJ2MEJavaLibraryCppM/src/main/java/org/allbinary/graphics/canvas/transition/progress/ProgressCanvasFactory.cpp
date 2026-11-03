@@ -90,6 +90,8 @@ ProgressCanvasFactory::ProgressCanvasFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<ProgressCanvas*>(ProgressCanvasFactory::PROGRESS_FORM_SCREEN);
     
 }
@@ -100,6 +102,8 @@ ProgressCanvasFactory::ProgressCanvasFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NullPaintable::getInstance();;
     
 }

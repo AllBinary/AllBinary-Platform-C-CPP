@@ -82,6 +82,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AngleInfo(AngleIncrementInfoFactory::getInstance()->getAt(angleIncrement));
     
 }
@@ -107,6 +109,8 @@ this->setAngle(this->frameUtil->adjustAngleToFrameAngle(newAngle));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->angle;
     
 }
@@ -123,6 +127,8 @@ this->angle= angle;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->angleIncrementInfo;
     
 }
@@ -144,6 +150,8 @@ stringBuffer->append(StringUtil::getInstance()->toString(this->getAngleIncrement
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

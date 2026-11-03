@@ -110,6 +110,8 @@ idOutData->writeBytes(text);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -119,6 +121,8 @@ idOutData->writeBytes(text);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -138,6 +142,8 @@ idOutData->writeBytes(text);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -177,6 +183,8 @@ idOutData->writeBytes(JavaString::valueOf(JavaString::valueOf(newStart) +JavaStr
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -186,6 +194,8 @@ idOutData->writeBytes(JavaString::valueOf(JavaString::valueOf(newStart) +JavaStr
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -205,6 +215,8 @@ idOutData->writeBytes(JavaString::valueOf(JavaString::valueOf(newStart) +JavaStr
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

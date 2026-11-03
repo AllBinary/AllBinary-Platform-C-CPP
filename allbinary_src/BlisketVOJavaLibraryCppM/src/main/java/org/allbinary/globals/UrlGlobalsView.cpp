@@ -96,6 +96,8 @@ hashMap->put(UrlGlobalsData::WEBAPPPATH, org.allbinary->globals->URLGLOBALS->get
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }

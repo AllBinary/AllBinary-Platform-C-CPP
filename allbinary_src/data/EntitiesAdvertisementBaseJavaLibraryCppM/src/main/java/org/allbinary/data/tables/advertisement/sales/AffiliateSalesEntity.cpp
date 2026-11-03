@@ -147,6 +147,8 @@ stringBuffer->append(entryData->ID)->append(this->sqlTypeStrings->MAX_BIG_INT_UN
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -160,6 +162,8 @@ stringBuffer->append(entryData->ID)->append(this->sqlTypeStrings->MAX_BIG_INT_UN
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return returnStr;
     
 }
@@ -176,6 +180,8 @@ AbSqlBean::updateWhere(EntryData::getInstance()->ID, JavaBoxes::unbox<std::strin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbSqlBean::dropTable();;
     
 }

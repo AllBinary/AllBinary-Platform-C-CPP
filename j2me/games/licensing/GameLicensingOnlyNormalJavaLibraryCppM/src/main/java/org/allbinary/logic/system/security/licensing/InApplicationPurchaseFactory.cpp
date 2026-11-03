@@ -59,6 +59,8 @@ InApplicationPurchaseFactory* InApplicationPurchaseFactory::instance = InApplica
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return InApplicationPurchaseFactory::instance;
     
 }
@@ -105,6 +107,8 @@ InApplicationPurchaseFactory::InApplicationPurchaseFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -119,6 +123,8 @@ InApplicationPurchaseFactory::InApplicationPurchaseFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 }
@@ -129,6 +135,8 @@ InApplicationPurchaseFactory::InApplicationPurchaseFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

@@ -90,6 +90,8 @@ this->animationBehaviorFactory= animationBehaviorFactory;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new VectorAnimation(this->currentPoints, this->getBasicColorP(), this->animationBehaviorFactory->getOrCreateInstance());
     
 }
@@ -106,6 +108,8 @@ this->basicColor= basicColor;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->basicColor;
     
 }

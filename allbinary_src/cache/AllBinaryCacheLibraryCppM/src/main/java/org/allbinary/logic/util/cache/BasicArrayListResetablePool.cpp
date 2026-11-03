@@ -89,6 +89,8 @@ BasicArrayListResetablePool::BasicArrayListResetablePool(CacheableInterfaceFacto
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<CacheableInterface*>(this->buffers->removeAt(size -1));
     
 
@@ -99,6 +101,8 @@ BasicArrayListResetablePool::BasicArrayListResetablePool(CacheableInterfaceFacto
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->cacheableInterfaceFactoryInterface->getInstance(key);;
     
 

@@ -124,6 +124,8 @@ this->storeName= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 
@@ -156,6 +158,8 @@ this->storeName= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -183,6 +187,8 @@ this->storeName= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 
@@ -215,6 +221,8 @@ this->storeName= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -260,6 +268,8 @@ this->propertiesHashMap->put(StoreFrontData::getInstance()->NAME, this->storeNam
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SKIP_BODY;
     
 
@@ -272,6 +282,8 @@ AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SKIP_BODY;
     
 }
@@ -285,6 +297,8 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SKIP_BODY;
     
 }

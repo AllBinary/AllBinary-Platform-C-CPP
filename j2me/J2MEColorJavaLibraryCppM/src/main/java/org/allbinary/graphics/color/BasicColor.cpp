@@ -147,6 +147,8 @@ this->value= tempValue;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->value;
     
 }
@@ -157,6 +159,8 @@ this->value= tempValue;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->value;
     
 }
@@ -192,6 +196,8 @@ stringBuffer->appendint(this->value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -202,6 +208,8 @@ stringBuffer->appendint(this->value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }
@@ -212,6 +220,8 @@ stringBuffer->appendint(this->value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->redComponent;
     
 }
@@ -222,6 +232,8 @@ stringBuffer->appendint(this->value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->greenComponent;
     
 }
@@ -232,6 +244,8 @@ stringBuffer->appendint(this->value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->blueComponent;
     
 }
@@ -242,6 +256,8 @@ stringBuffer->appendint(this->value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->alphaComponent;
     
 }

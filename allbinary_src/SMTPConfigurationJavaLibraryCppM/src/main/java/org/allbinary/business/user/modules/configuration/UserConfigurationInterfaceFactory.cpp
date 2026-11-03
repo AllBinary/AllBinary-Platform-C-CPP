@@ -106,6 +106,8 @@ UserConfigurationInterfaceFactory::UserConfigurationInterfaceFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<UserConfigurationInterface*>((new UserConfigurationView(configurationNode))->getUserConfigurationInterface());
     
 }
@@ -127,6 +129,8 @@ UserConfigurationInterfaceFactory::UserConfigurationInterfaceFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return UserConfigurationInterfaceFactory::getInstance(document);;
     
 }
@@ -139,6 +143,8 @@ UserConfigurationInterfaceFactory::UserConfigurationInterfaceFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new UserConfiguration();
     
 }

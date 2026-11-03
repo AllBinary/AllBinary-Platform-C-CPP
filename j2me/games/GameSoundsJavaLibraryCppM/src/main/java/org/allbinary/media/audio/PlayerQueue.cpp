@@ -149,6 +149,8 @@ played= true;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return played;
     
 
@@ -175,6 +177,8 @@ PreLogUtil::put((new StringMaker())->append(this->commonStrings->EXCEPTION_LABEL
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -193,6 +197,8 @@ this->list->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (new StringMaker())->append(PlayerQueue::TOTAL)->appendint(this->list->size())->toString();;
     
 }

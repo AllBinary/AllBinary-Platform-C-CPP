@@ -85,6 +85,8 @@ FilePathUtil::FilePathUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return filePathData->PATH_START;
     
 
@@ -96,6 +98,8 @@ path= JavaString::replace(path, abPathData->SEPARATORCHAR, filePathData->SEPARAT
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return path;
     
 }

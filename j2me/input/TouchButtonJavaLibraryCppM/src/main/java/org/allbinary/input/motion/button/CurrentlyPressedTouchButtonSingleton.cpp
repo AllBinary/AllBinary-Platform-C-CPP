@@ -70,6 +70,8 @@ CurrentlyPressedTouchButtonSingleton* CurrentlyPressedTouchButtonSingleton::inst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return CurrentlyPressedTouchButtonSingleton::instance;
     
 }
@@ -84,6 +86,8 @@ CurrentlyPressedTouchButtonSingleton::CurrentlyPressedTouchButtonSingleton() : l
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->list->size();;
     
 }
@@ -94,6 +98,8 @@ CurrentlyPressedTouchButtonSingleton::CurrentlyPressedTouchButtonSingleton() : l
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<TouchButtonInput*>(this->list->removeAt(index));
     
 }
@@ -104,6 +110,8 @@ CurrentlyPressedTouchButtonSingleton::CurrentlyPressedTouchButtonSingleton() : l
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->list->remove(touchButtonInput);;
     
 }
@@ -114,6 +122,8 @@ CurrentlyPressedTouchButtonSingleton::CurrentlyPressedTouchButtonSingleton() : l
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<TouchButtonInput*>(this->list->objectArray[index]);
     
 }
@@ -124,6 +134,8 @@ CurrentlyPressedTouchButtonSingleton::CurrentlyPressedTouchButtonSingleton() : l
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->list->contains(touchButtonInput);;
     
 }

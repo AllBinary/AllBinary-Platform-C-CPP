@@ -86,6 +86,8 @@ ImageCompleteUtil* ImageCompleteUtil::instance = ImageCompleteUtil::instance_own
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ImageCompleteUtil::instance;
     
 }
@@ -116,6 +118,8 @@ ImageCompleteUtil* ImageCompleteUtil::instance = ImageCompleteUtil::instance_own
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -148,6 +152,8 @@ PreLogUtil::put(this->COMPLETE +image->getName(), this, commonStrings->SUCCESS);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }

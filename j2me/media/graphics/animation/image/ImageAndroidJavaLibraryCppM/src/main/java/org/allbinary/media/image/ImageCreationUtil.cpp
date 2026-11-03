@@ -71,6 +71,8 @@ ImageCreationUtil* ImageCreationUtil::instance = ImageCreationUtil::instance_own
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ImageCreationUtil::instance;
     
 }
@@ -90,6 +92,8 @@ ImageCreationUtil::ImageCreationUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return image;
     
 }
@@ -105,6 +109,8 @@ ImageCreationUtil::ImageCreationUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return image;
     
 }

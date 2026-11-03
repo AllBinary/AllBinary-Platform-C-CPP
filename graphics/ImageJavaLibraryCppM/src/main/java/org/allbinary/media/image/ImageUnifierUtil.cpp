@@ -83,6 +83,8 @@ ImageUnifierUtil* ImageUnifierUtil::instance = ImageUnifierUtil::instance_owner(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ImageUnifierUtil::instance;
     
 }
@@ -103,6 +105,8 @@ ImageUnifierUtil::ImageUnifierUtil() : logUtil(LogUtil::getInstance()), imageUti
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return gd->getDefaultConfiguration();;
     
 }
@@ -166,6 +170,8 @@ g->dispose();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return newBufferedImage;
     
 }

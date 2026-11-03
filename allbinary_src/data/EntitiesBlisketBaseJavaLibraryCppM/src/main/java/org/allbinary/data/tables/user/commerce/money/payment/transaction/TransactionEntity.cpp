@@ -222,6 +222,8 @@ stringBuffer->append(OrderData::ID)->append(this->sqlTypeStrings->MAX_CHAR_COLUM
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -232,6 +234,8 @@ stringBuffer->append(OrderData::ID)->append(this->sqlTypeStrings->MAX_CHAR_COLUM
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbSqlBean::createTable(this->createTableStatement());;
     
 }
@@ -242,6 +246,8 @@ stringBuffer->append(OrderData::ID)->append(this->sqlTypeStrings->MAX_CHAR_COLUM
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbSqlBean::dropTable();;
     
 }

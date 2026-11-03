@@ -84,6 +84,8 @@ UpDownVectorAIFactory::UpDownVectorAIFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new UpDownVectorAI(ownerLayerInterface, gameInput);
     
 }

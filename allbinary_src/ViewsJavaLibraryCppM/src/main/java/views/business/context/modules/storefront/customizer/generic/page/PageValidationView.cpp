@@ -302,6 +302,8 @@ CustomizerUtil::getInstance()->write(specifiedTransformInfoInterface, documentSt
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return isValid;
     
 
@@ -321,6 +323,8 @@ CustomizerUtil::getInstance()->write(specifiedTransformInfoInterface, documentSt
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -408,6 +412,8 @@ stringBuffer->append(JavaString::valueOf("PageValidation Info:") +JavaString::va
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -427,6 +433,8 @@ stringBuffer->append(JavaString::valueOf("PageValidation Info:") +JavaString::va
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "An auto generated page name was invalid.";
     
 }
@@ -439,6 +447,8 @@ stringBuffer->append(JavaString::valueOf("PageValidation Info:") +JavaString::va
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -449,6 +459,8 @@ stringBuffer->append(JavaString::valueOf("PageValidation Info:") +JavaString::va
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

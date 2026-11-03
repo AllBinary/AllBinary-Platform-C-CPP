@@ -117,6 +117,8 @@ this->emailEventHashMap= StdUtil::getInstance()->createHashMap();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->emailEventHashMap;
     
 }
@@ -147,6 +149,8 @@ this->emailEventHashMap->put(userEmailEventConfigurationInterface->getName(), us
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return UserEmailEventListenerFactory::getInstance(abeClientInformation, userEmailEventConfigurationInterface, userInterface);;
     
 }

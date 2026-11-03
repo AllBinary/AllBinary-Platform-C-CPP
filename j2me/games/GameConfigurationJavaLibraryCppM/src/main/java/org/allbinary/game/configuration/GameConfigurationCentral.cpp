@@ -109,6 +109,8 @@ Object* GameConfigurationCentral::SINGLETON = NullUtil::getInstance()->NULL_OBJE
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<GameConfigurationCentral*>(GameConfigurationCentral::SINGLETON);
     
 }
@@ -216,6 +218,8 @@ this->gameControlFidelity= gameControlFidelity;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->gameControlFidelity;
     
 }
@@ -336,6 +340,8 @@ stringBuffer->appendint(JavaBoxes::value<int32_t>(this->MAX_LAYERS->getValue()))
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

@@ -73,6 +73,8 @@ DirectionUtil* DirectionUtil::instance = DirectionUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return DirectionUtil::instance;
     
 }
@@ -109,6 +111,8 @@ this->directionArray2[directionFactory->DOWN->getValue()]= angleFactory->DOWN;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->directionArray2[direction->getValue()];
     
 }
@@ -119,6 +123,8 @@ this->directionArray2[directionFactory->DOWN->getValue()]= angleFactory->DOWN;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->directionArray[direction->getValue()];
     
 }

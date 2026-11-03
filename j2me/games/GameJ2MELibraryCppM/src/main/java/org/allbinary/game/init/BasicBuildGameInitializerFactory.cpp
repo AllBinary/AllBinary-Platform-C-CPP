@@ -69,6 +69,8 @@ BasicBuildGameInitializerFactory* BasicBuildGameInitializerFactory::NULL_BASE_BU
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BaseGameInitialization::NULL_BASE_GAME_INITIALIZATION;
     
 }

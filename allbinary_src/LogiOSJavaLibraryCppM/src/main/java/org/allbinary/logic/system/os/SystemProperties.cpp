@@ -67,6 +67,8 @@ SystemProperties* SystemProperties::instance = SystemProperties::instance_owner(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SystemProperties::instance;
     
 }
@@ -81,6 +83,8 @@ SystemProperties::SystemProperties(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return System.getProperty(this->OS_NAME);;
     
 }
@@ -91,6 +95,8 @@ SystemProperties::SystemProperties(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return System.getProperty(this->OS_ARCH);;
     
 }
@@ -101,6 +107,8 @@ SystemProperties::SystemProperties(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return System.getProperty(this->OS_VERSION);;
     
 }

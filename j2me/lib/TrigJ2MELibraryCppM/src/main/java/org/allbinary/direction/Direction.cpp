@@ -81,6 +81,8 @@ Direction::directionArray[value]= this;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Direction::directionArray[direction];
     
 }
@@ -91,6 +93,8 @@ Direction::directionArray[value]= this;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->value;
     
 }
@@ -101,6 +105,8 @@ Direction::directionArray[value]= this;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->frameFactor;
     
 }
@@ -111,6 +117,8 @@ Direction::directionArray[value]= this;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->otherName;
     
 }
@@ -121,6 +129,8 @@ Direction::directionArray[value]= this;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }
@@ -146,6 +156,8 @@ stringBuffer->appendint(this->value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

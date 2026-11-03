@@ -373,6 +373,8 @@ this->logUtil->putF(JavaString::valueOf("Layer: ") +JavaString::valueOf(layerInt
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -403,6 +405,8 @@ this->logUtil->putF(JavaString::valueOf("Layer: ") +JavaString::valueOf(layerInt
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -448,6 +452,8 @@ geographicMapCellType= geographicMapInterface->getCellTypeAt(dynamic_cast<Geogra
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -528,6 +534,8 @@ rtsPlayerLayerInterface->add(waypointAvancedRTSGameLayer->getWaypointBehavior()-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -549,6 +557,8 @@ rtsPlayerLayerInterface->add(waypointAvancedRTSGameLayer->getWaypointBehavior()-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 

@@ -70,6 +70,8 @@ HardwareFactory* HardwareFactory::instance = HardwareFactory::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return HardwareFactory::instance;
     
 }
@@ -88,6 +90,8 @@ HardwareFactory::HardwareFactory() : SINGLETON(NoHardware::getInstance()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->SINGLETON;
     
 

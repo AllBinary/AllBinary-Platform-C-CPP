@@ -67,6 +67,8 @@ RemoteHighScoresSubmissionProcessorFactory::RemoteHighScoresSubmissionProcessorF
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return RemoteHighScoresSubmissionProcessorFactory::SINGLETON;
     
 }

@@ -77,6 +77,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new MotionEventCircularPool(id);
     
 }
@@ -96,6 +98,8 @@ this->eventPool->initAllBinaryEventCircularPool(new MotionEventFactory(this->eve
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<MotionGestureEvent*>(this->eventPool->getInstance(motionGestureInput->getId() -this->MIN));
     
 }

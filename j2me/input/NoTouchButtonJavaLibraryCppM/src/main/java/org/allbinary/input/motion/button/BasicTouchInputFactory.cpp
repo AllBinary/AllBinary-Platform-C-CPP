@@ -99,6 +99,8 @@ BasicTouchInputFactory::BasicTouchInputFactory() : logUtil(LogUtil::getInstance(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<BasicTouchInputFactory*>(BasicTouchInputFactory::instance);
     
 }
@@ -171,6 +173,8 @@ touchButtonInput->update(inputToGameKeyMapping);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->list;
     
 }

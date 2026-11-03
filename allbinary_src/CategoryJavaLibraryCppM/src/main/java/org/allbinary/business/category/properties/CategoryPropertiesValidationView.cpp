@@ -90,6 +90,8 @@ CategoryPropertiesValidationView::CategoryPropertiesValidationView(CategoryPrope
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->categoryPropertiesInterface->isValid();;
     
 }
@@ -109,6 +111,8 @@ stringBuffer->append(this->categoryPropertiesInterface->validationInfo());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -128,6 +132,8 @@ stringBuffer->append(this->categoryPropertiesInterface->validationInfo());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Validating Data";
     
 }
@@ -142,6 +148,8 @@ stringBuffer->append(this->categoryPropertiesInterface->validationInfo());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -154,6 +162,8 @@ stringBuffer->append(this->categoryPropertiesInterface->validationInfo());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

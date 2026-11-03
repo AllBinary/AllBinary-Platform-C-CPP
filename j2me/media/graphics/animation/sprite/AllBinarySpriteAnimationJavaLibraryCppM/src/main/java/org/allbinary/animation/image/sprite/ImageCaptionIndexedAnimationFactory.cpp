@@ -175,6 +175,8 @@ this->animationBehaviorFactory= animationBehaviorFactory;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new CaptionIndexedAnimation(animationInterface, movieIndexedAnimationInterface, player, this->captionDx, this->captionDy, this->dx, this->dy, this->time, this->animationBehaviorFactory->getOrCreateInstance());
     
 }

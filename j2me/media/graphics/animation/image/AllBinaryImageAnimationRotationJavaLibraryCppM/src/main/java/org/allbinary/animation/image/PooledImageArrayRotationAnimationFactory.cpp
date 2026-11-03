@@ -102,6 +102,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new PooledImageArrayRotationAnimationFactory(image, image->getWidth(), image->getHeight(),  -(image->getWidth()>>2),  -(image->getHeight()>>2), angleIncrement, animationBehaviorFactory);
     
 }
@@ -120,6 +122,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new PooledImageArrayRotationAnimationFactory(image, image->getWidth(), image->getHeight(), dx, dy, angleIncrement, animationBehaviorFactory);
     
 }
@@ -146,6 +150,8 @@ this->allBinaryImageRotationAnimationInfo= new ImageArrayRotationAnimationInfo(i
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AdjustedImageArrayRotationAnimation::createAdjustedImageArrayRotationAnimationInfo(this->allBinaryImageRotationAnimationInfo, this->animationBehaviorFactory->getOrCreateInstance());;
     
 }

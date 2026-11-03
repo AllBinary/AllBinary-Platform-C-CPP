@@ -66,6 +66,8 @@ RendererStateFactory* RendererStateFactory::instance = RendererStateFactory::ins
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return RendererStateFactory::instance;
     
 }
@@ -82,6 +84,8 @@ this->loaded= loaded;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->loaded;
     
 }
@@ -98,6 +102,8 @@ this->surfaceChanged= initialized;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->surfaceChanged;
     
 }

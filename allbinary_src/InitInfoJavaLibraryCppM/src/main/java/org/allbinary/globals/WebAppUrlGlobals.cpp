@@ -71,6 +71,8 @@ WebAppUrlGlobals::WebAppUrlGlobals() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return InitInfo::getInstance()->isTesting();;
     
 }
@@ -81,6 +83,8 @@ WebAppUrlGlobals::WebAppUrlGlobals() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->path;
     
 }
@@ -100,6 +104,8 @@ this->isWebappPathSet= true;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return InitInfo::getInstance()->getTestHtmlPath();;
     
 }
@@ -119,6 +125,8 @@ this->isWebappPathSet= true;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return mainPath;
     
 
@@ -132,6 +140,8 @@ this->isWebappPathSet= true;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getWebappPath();;
     
 

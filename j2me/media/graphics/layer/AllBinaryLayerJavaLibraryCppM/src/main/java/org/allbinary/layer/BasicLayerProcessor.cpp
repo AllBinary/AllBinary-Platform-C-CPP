@@ -107,6 +107,8 @@ BasicLayerProcessor::BasicLayerProcessor() : logUtil(LogUtil::getInstance()), li
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->list;
     
 }

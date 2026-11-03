@@ -116,6 +116,8 @@ node= nodeList->item(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }
@@ -135,6 +137,8 @@ node= nodeList->item(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nodeTextNode->getNodeValue();;
     
 
@@ -145,6 +149,8 @@ node= nodeList->item(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 
@@ -163,6 +169,8 @@ node= nodeList->item(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return DomNodeHelper::getTextNodeValue(node);;
     
 }
@@ -209,6 +217,8 @@ node= nodeList->item(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

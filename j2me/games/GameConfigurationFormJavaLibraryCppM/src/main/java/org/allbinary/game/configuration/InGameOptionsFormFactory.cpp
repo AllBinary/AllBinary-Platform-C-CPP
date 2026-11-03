@@ -98,6 +98,8 @@ InGameOptionsFormFactory::InGameOptionsFormFactory() : logUtil(LogUtil::getInsta
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<InGameOptionsFormFactory*>(InGameOptionsFormFactory::instance);
     
 }
@@ -136,6 +138,8 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->INIT, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->SINGLETON;
     
 }

@@ -78,6 +78,8 @@ InGameFeatureChoiceGroups::InGameFeatureChoiceGroups() : hashtable(StdUtil::getI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return InGameFeatureChoiceGroups::gameFeatureChoiceGroupsExclusive;
     
 }
@@ -88,6 +90,8 @@ InGameFeatureChoiceGroups::InGameFeatureChoiceGroups() : hashtable(StdUtil::getI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return InGameFeatureChoiceGroups::gameFeatureChoiceGroupsMultiple;
     
 }
@@ -98,6 +102,8 @@ InGameFeatureChoiceGroups::InGameFeatureChoiceGroups() : hashtable(StdUtil::getI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->hashtable;
     
 }

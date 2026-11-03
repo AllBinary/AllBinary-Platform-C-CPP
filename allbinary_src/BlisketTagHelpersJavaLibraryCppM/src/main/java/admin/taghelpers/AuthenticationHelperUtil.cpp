@@ -102,6 +102,8 @@ AuthenticationHelperUtil* AuthenticationHelperUtil::instance = AuthenticationHel
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AuthenticationHelperUtil::instance;
     
 }
@@ -154,6 +156,8 @@ AuthenticationHelperUtil* AuthenticationHelperUtil::instance = AuthenticationHel
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -173,6 +177,8 @@ AuthenticationHelperUtil* AuthenticationHelperUtil::instance = AuthenticationHel
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 

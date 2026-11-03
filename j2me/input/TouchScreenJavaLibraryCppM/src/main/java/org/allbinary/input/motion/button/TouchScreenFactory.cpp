@@ -100,6 +100,8 @@ this->logUtil->put(commonStrings->EXCEPTION, TouchScreenFactory::SINGLETON, comm
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TouchScreenFactory::SINGLETON;
     
 }
@@ -116,6 +118,8 @@ this->multiTouch= multiTouch;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->multiTouch;
     
 }
@@ -132,6 +136,8 @@ this->touch= touch;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->touch;
     
 }
@@ -148,6 +154,8 @@ this->multiTouchDistinct= multiTouchDistinct;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->multiTouchDistinct;
     
 }
@@ -164,6 +172,8 @@ this->touchScreenType= touchScreenType;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->touchScreenType;
     
 }
@@ -193,6 +203,8 @@ stringBuffer->append(StringUtil::getInstance()->toString(this->getTouchScreenTyp
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

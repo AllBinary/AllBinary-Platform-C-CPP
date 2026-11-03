@@ -78,6 +78,8 @@ this->iconLayer= iconLayer;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->iconLayer;
     
 }
@@ -88,6 +90,8 @@ this->iconLayer= iconLayer;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->animationInterface;
     
 }
@@ -98,6 +102,8 @@ this->iconLayer= iconLayer;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->pickedUpLayerType;
     
 }

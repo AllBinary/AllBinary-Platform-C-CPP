@@ -98,6 +98,8 @@ InsertMetaValidationView::InsertMetaValidationView(TransformInfoInterface* trans
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -115,6 +117,8 @@ CustomizerUtil::getInstance()->insert(this->getTransformInfoInterface(), dynamic
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return isValid;
     
 
@@ -134,6 +138,8 @@ CustomizerUtil::getInstance()->insert(this->getTransformInfoInterface(), dynamic
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -151,6 +157,8 @@ CustomizerUtil::getInstance()->insert(this->getTransformInfoInterface(), dynamic
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -170,6 +178,8 @@ CustomizerUtil::getInstance()->insert(this->getTransformInfoInterface(), dynamic
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Getting Validation Info";
     
 }
@@ -182,6 +192,8 @@ CustomizerUtil::getInstance()->insert(this->getTransformInfoInterface(), dynamic
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -192,6 +204,8 @@ CustomizerUtil::getInstance()->insert(this->getTransformInfoInterface(), dynamic
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

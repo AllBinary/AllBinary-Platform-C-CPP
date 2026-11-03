@@ -78,6 +78,8 @@ CanvasUtil::CanvasUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return commonPhoneStrings->UP;
     
 
@@ -91,6 +93,8 @@ CanvasUtil::CanvasUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return commonPhoneStrings->DOWN;
     
 
@@ -104,6 +108,8 @@ CanvasUtil::CanvasUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return commonPhoneStrings->RIGHT;
     
 
@@ -117,6 +123,8 @@ CanvasUtil::CanvasUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return commonPhoneStrings->LEFT;
     
 
@@ -130,6 +138,8 @@ CanvasUtil::CanvasUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return commonPhoneStrings->FIRE;
     
 
@@ -139,6 +149,8 @@ CanvasUtil::CanvasUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "UNKNOWN KEY";
     
 }

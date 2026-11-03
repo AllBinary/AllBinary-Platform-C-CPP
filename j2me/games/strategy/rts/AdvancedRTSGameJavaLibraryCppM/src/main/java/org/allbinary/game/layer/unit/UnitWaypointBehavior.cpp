@@ -240,6 +240,8 @@ this->associatedAdvancedRTSGameLayer->waypointLogHelperP->addWaypointFromBuildin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -274,6 +276,8 @@ this->associatedAdvancedRTSGameLayer->waypointLogHelperP->insertWaypointList(thi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -283,6 +287,8 @@ this->associatedAdvancedRTSGameLayer->waypointLogHelperP->insertWaypointList(thi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -377,6 +383,8 @@ this->getCompleteTimeDelayHelper()->setStartTimeTNT();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -386,6 +394,8 @@ this->getCompleteTimeDelayHelper()->setStartTimeTNT();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -445,6 +455,8 @@ this->associatedAdvancedRTSGameLayer->waypointLogHelperP->needToMove(this->assoc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -466,6 +478,8 @@ ForcedLogUtil::log(message, this->associatedAdvancedRTSGameLayer);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -506,6 +520,8 @@ stringBuffer->appendint(this->longWeaponRange +this->currentTargetLayerInterface
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -516,6 +532,8 @@ stringBuffer->appendint(this->longWeaponRange +this->currentTargetLayerInterface
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->movingFromStopped;
     
 }
@@ -538,6 +556,8 @@ this->waypointPathsListP= waypointPathsList;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->waypointPathsListP;
     
 }
@@ -548,6 +568,8 @@ this->waypointPathsListP= waypointPathsList;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->moving;
     
 }
@@ -564,6 +586,8 @@ this->moving= moving;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->trackingWaypoint;
     
 }
@@ -574,6 +598,8 @@ this->moving= moving;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->possibleTargetList;
     
 }
@@ -590,6 +616,8 @@ this->lastPathGeographicMapCellPosition= lastPathGeographicMapCellPosition;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->lastPathGeographicMapCellPosition;
     
 }
@@ -606,6 +634,8 @@ this->currentPathGeographicMapCellPosition= currentPathGeographicMapCellPosition
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->currentPathGeographicMapCellPosition;
     
 }
@@ -622,6 +652,8 @@ this->sensorAction= sensorAction;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->sensorAction;
     
 }
@@ -638,6 +670,8 @@ this->currentTargetLayerInterfaceP= currentTargetLayerInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->currentTargetLayerInterfaceP;
     
 }
@@ -654,6 +688,8 @@ this->currentTargetDistance= currentTargetDistance;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->currentTargetDistance;
     
 }
@@ -664,6 +700,8 @@ this->currentTargetDistance= currentTargetDistance;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->completeTimeDelayHelper;
     
 }
@@ -674,6 +712,8 @@ this->currentTargetDistance= currentTargetDistance;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->currentGeographicMapCellHistoryP;
     
 }

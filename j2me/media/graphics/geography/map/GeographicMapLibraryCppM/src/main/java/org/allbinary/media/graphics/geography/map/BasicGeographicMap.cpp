@@ -112,6 +112,8 @@ this->geographicMapCellTypeFactory= geographicMapCellTypeFactory;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->geographicMapCellPositionFactory->getAt(oldGeographicMapCellPosition->getColumn() -1, oldGeographicMapCellPosition->getRow());;
     
 }
@@ -119,6 +121,8 @@ case 1: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->geographicMapCellPositionFactory->getAt(oldGeographicMapCellPosition->getColumn() +1, oldGeographicMapCellPosition->getRow());;
     
 }
@@ -126,6 +130,8 @@ case 2: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->geographicMapCellPositionFactory->getAt(oldGeographicMapCellPosition->getColumn(), oldGeographicMapCellPosition->getRow() -1);;
     
 }
@@ -133,6 +139,8 @@ case 3: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->geographicMapCellPositionFactory->getAt(oldGeographicMapCellPosition->getColumn(), oldGeographicMapCellPosition->getRow() +1);;
     
 }
@@ -164,6 +172,8 @@ default: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->geographicMapCellPositionFactory->getAt(oldGeographicMapCellPosition->getColumn() -1, oldGeographicMapCellPosition->getRow());;
     
 
@@ -174,6 +184,8 @@ default: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     
 
@@ -188,6 +200,8 @@ case 1: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->geographicMapCellPositionFactory->getAt(oldGeographicMapCellPosition->getColumn() +1, oldGeographicMapCellPosition->getRow());;
     
 
@@ -198,6 +212,8 @@ case 1: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     
 
@@ -212,6 +228,8 @@ case 2: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->geographicMapCellPositionFactory->getAt(oldGeographicMapCellPosition->getColumn(), oldGeographicMapCellPosition->getRow() -1);;
     
 
@@ -222,6 +240,8 @@ case 2: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     
 
@@ -236,6 +256,8 @@ case 3: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->geographicMapCellPositionFactory->getAt(oldGeographicMapCellPosition->getColumn(), oldGeographicMapCellPosition->getRow() +1);;
     
 
@@ -246,6 +268,8 @@ case 3: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     
 
@@ -256,6 +280,8 @@ default: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     
 }
@@ -284,6 +310,8 @@ default: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -295,6 +323,8 @@ default: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -316,6 +346,8 @@ default: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->geographicMapCellPositionFactory->getAt(i_column, i_row);;
     
 }
@@ -341,6 +373,8 @@ default: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->geographicMapCellPositionFactory->getAt(i_column, i_row);;
     
 
@@ -351,6 +385,8 @@ default: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     
 }
@@ -363,6 +399,8 @@ default: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     
 
@@ -391,6 +429,8 @@ default: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -401,6 +441,8 @@ default: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -460,6 +502,8 @@ geographicMapCellPositionList->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return geographicMapCellPositionList;
     
 }
@@ -522,6 +566,8 @@ cellPositionArray[index][index2]= this->getCellPositionAtXY(x, y);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hasChanged;
     
 }
@@ -537,6 +583,8 @@ cellPositionArray[index][index2]= this->getCellPositionAtXY(x, y);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getCellTypeAt(cellPosition);;
     
 }
@@ -547,6 +595,8 @@ cellPositionArray[index][index2]= this->getCellPositionAtXY(x, y);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->geographicMapCellPositionFactory;
     
 }
@@ -557,6 +607,8 @@ cellPositionArray[index][index2]= this->getCellPositionAtXY(x, y);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->geographicMapCellPositionFactoryInterface;
     
 }
@@ -567,6 +619,8 @@ cellPositionArray[index][index2]= this->getCellPositionAtXY(x, y);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->geographicMapCellTypeFactory;
     
 }

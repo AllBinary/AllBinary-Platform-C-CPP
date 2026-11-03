@@ -72,6 +72,8 @@ ThreadPool* PrimaryThreadPool::THREAD_POOL = PrimaryThreadPool::THREAD_POOL_owne
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PrimaryThreadPool::THREAD_POOL;
     
 }

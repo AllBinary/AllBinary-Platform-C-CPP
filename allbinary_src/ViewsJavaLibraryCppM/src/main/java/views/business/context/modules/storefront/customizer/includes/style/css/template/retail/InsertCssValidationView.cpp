@@ -117,6 +117,8 @@ this->styleValidationInterface= new CssStyleValidation(requestHashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -150,6 +152,8 @@ this->styleValidationInterface= new CssStyleValidation(requestHashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return isValid;
     
 
@@ -169,6 +173,8 @@ this->styleValidationInterface= new CssStyleValidation(requestHashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -186,6 +192,8 @@ this->styleValidationInterface= new CssStyleValidation(requestHashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -205,6 +213,8 @@ this->styleValidationInterface= new CssStyleValidation(requestHashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Getting Validation Info";
     
 }
@@ -217,6 +227,8 @@ this->styleValidationInterface= new CssStyleValidation(requestHashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -227,6 +239,8 @@ this->styleValidationInterface= new CssStyleValidation(requestHashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -241,6 +255,8 @@ this->styleValidationInterface= new CssStyleValidation(requestHashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StoreCustomizerComponentUtil::getInstance()->generate(this->abeClientInformation, this->getTransformInfoInterface());;
     
 

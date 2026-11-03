@@ -72,6 +72,8 @@ InitInfo2* InitInfo2::instance = InitInfo2::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return InitInfo2::instance;
     
 }
@@ -82,6 +84,8 @@ InitInfo2* InitInfo2::instance = InitInfo2::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->directory->create(value);;
     
 }
@@ -92,6 +96,8 @@ InitInfo2* InitInfo2::instance = InitInfo2::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->directory->create(value);;
     
 }

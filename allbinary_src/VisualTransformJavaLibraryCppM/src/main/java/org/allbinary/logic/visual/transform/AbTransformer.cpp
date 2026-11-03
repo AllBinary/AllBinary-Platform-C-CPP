@@ -100,6 +100,8 @@ this->transformInfoInterface= transformInfoInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->transformInfoInterface;
     
 }
@@ -122,6 +124,8 @@ this->uriResolver= uriResolver;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->inputStream;
     
 }
@@ -132,6 +136,8 @@ this->uriResolver= uriResolver;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->uriResolver;
     
 }
@@ -142,6 +148,8 @@ this->uriResolver= uriResolver;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new StreamSource(this->getInputStream());
     
 }
@@ -194,6 +202,8 @@ this->uriResolver= uriResolver;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return transformInfoObjectConfigGeneratorInterface->process(result);;
     
 

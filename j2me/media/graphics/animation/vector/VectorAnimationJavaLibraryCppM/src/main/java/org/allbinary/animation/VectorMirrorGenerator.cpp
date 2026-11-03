@@ -89,6 +89,8 @@ VectorMirrorGenerator* VectorMirrorGenerator::instance = VectorMirrorGenerator::
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return VectorMirrorGenerator::instance;
     
 }
@@ -165,6 +167,8 @@ pointsBasicArrayList->add(this->getInstance(dynamic_cast<BasicArrayList*>(points
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return newPoints;
     
 
@@ -180,6 +184,8 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY_ARRAY;
     
 }
@@ -201,6 +207,8 @@ graphicsPipe->mirror(width);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return graphicsPipe->getMatrix();;
     
 }

@@ -150,7 +150,9 @@ ForcedLogUtil::log(this->commonStrings->NOT_IMPLEMENTED, this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil::getInstance()->NULL_OBJECT;
+                        
+                        
+                        return JavaBoxes::toObject(NullUtil::getInstance()->NULL_OBJECT);
     
 }
 
@@ -181,6 +183,8 @@ ForcedLogUtil::log(this->commonStrings->NOT_IMPLEMENTED, this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->get(anyType);;
     
 
@@ -205,6 +209,8 @@ ForcedLogUtil::log(this->commonStrings->NOT_IMPLEMENTED, this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->clientInfo;
     
 }
@@ -215,6 +221,8 @@ ForcedLogUtil::log(this->commonStrings->NOT_IMPLEMENTED, this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->client;
     
 }
@@ -231,6 +239,8 @@ this->client= client;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->server;
     
 }
@@ -247,6 +257,8 @@ this->server= server;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->start;
     
 }
@@ -263,6 +275,8 @@ this->start= start;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->maxServers;
     
 }
@@ -279,6 +293,8 @@ this->maxServers= maxServers;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->isDone;
     
 }
@@ -295,6 +311,8 @@ this->isDone= isDone;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->remoteMethod;
     
 }

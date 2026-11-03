@@ -61,6 +61,8 @@ Object* AndroidAPI1KeyFactory::instance = NullUtil::getInstance()->NULL_OBJECT;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<AndroidAPI1KeyFactory*>(AndroidAPI1KeyFactory::instance);
     
 }

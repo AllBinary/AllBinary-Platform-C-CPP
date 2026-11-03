@@ -225,6 +225,8 @@ this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(CommonLabels::getIns
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->rtsFormInputArray[0]->processSticky(associatedRtsLayer, rtsPlayerLayerInterface, layerManager, point);;
     
 }
@@ -243,6 +245,8 @@ this->rtsFormInputArray[0]->processStickyGameSpecific(associatedRtsLayer, rtsPla
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->rtsFormInputArray[0]->getSelectedStickyItemIndex();;
     
 }
@@ -253,6 +257,8 @@ this->rtsFormInputArray[0]->processStickyGameSpecific(associatedRtsLayer, rtsPla
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->rtsFormInputArray[0]->isStickyItemSelected();;
     
 }
@@ -269,6 +275,8 @@ this->rtsFormInputArray[0]->setStickyItemSelected(stickyItemSelected);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->rtsFormInputArray[0]->getSelectedStickyItem();;
     
 }

@@ -136,6 +136,8 @@ this->selected= selected;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->isMultipleSelect;
     
 }
@@ -191,6 +193,8 @@ result += this->ENDOPTION;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 }
@@ -271,6 +275,8 @@ result += this->after;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 }

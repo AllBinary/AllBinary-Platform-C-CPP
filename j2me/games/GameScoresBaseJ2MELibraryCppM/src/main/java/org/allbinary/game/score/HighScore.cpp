@@ -96,6 +96,8 @@ this->scoreString= std::to_string(this->score);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->id;
     
 }
@@ -106,6 +108,8 @@ this->scoreString= std::to_string(this->score);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }
@@ -116,6 +120,8 @@ this->scoreString= std::to_string(this->score);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->score;
     
 }
@@ -138,6 +144,8 @@ outputStream->writeLong(this->getScore());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return byteArrayOutputStream->toByteArray();;
     
 }
@@ -148,6 +156,8 @@ outputStream->writeLong(this->getScore());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->gameInfo;
     
 }
@@ -158,6 +168,8 @@ outputStream->writeLong(this->getScore());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->scoreString;
     
 }
@@ -177,6 +189,8 @@ this->name= name;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (new StringMaker())->append(this->name)->append(commonSeps->COLON)->appendlong(this->score)->append(commonSeps->FORWARD_SLASH)->append(this->scoreString)->toString();;
     
 }

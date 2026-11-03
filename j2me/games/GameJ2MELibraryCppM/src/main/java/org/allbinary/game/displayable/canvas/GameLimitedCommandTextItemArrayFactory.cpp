@@ -72,6 +72,8 @@ GameLimitedCommandTextItemArrayFactory* GameLimitedCommandTextItemArrayFactory::
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return GameLimitedCommandTextItemArrayFactory::instance;
     
 }
@@ -82,6 +84,8 @@ GameLimitedCommandTextItemArrayFactory* GameLimitedCommandTextItemArrayFactory::
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->commandTextItemArrayFactory;
     
 }

@@ -70,6 +70,8 @@ GeographicMapCellPathHistoryInfo::GeographicMapCellPathHistoryInfo() : previousG
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->previousGeographicMapCellPosition;
     
 }
@@ -86,6 +88,8 @@ this->previousGeographicMapCellPosition= previousGeographicMapCellPosition;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->previousOnPathGeographicMapCellPosition;
     
 }
@@ -102,6 +106,8 @@ this->previousOnPathGeographicMapCellPosition= previousOnPathGeographicMapCellPo
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->nextUnvisitedOnPathGeographicMapCellPosition;
     
 }
@@ -118,6 +124,8 @@ this->nextUnvisitedOnPathGeographicMapCellPosition= nextUnvisitedOnPathGeographi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->nextOnPathGeographicMapCellPosition;
     
 }
@@ -134,6 +142,8 @@ this->nextOnPathGeographicMapCellPosition= nextOnPathGeographicMapCellPosition;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->nextChosenOnPathGeographicMapCellPosition;
     
 }

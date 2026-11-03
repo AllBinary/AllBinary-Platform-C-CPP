@@ -80,6 +80,8 @@ ClassLoaderUtil::ClassLoaderUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::valueOf("ClassLoader: ") +JavaString::valueOf(classLoader->getClass()->getName());
     
 

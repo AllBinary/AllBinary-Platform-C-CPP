@@ -78,6 +78,8 @@ auto ABHashtable<K, V>::size() -> int32_t{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Hashtable<K, V>::size();;
     
 }
@@ -89,6 +91,8 @@ auto ABHashtable<K, V>::isEmpty() -> bool{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Hashtable<K, V>::isEmpty();;
     
 }
@@ -100,6 +104,8 @@ auto ABHashtable<K, V>::elements() -> Enumeration<V>*{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Hashtable<K, V>::elements();;
     
 }
@@ -111,6 +117,8 @@ auto ABHashtable<K, V>::contains(Object* value) -> bool{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Hashtable<K, V>::contains(value);;
     
 }
@@ -122,6 +130,8 @@ auto ABHashtable<K, V>::containsValue(Object* value) -> bool{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Hashtable<K, V>::containsValue(value);;
     
 }
@@ -133,6 +143,8 @@ auto ABHashtable<K, V>::containsKey(Object* key) -> bool{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Hashtable<K, V>::containsKey(key);;
     
 }
@@ -144,6 +156,8 @@ auto ABHashtable<K, V>::get(Object* key) -> V{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Hashtable<K, V>::get(key);;
     
 }
@@ -162,6 +176,8 @@ auto ABHashtable<K, V>::clone() -> Object*{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Hashtable<K, V>::clone();;
     
 }
@@ -173,6 +189,8 @@ auto ABHashtable<K, V>::toString() -> std::string{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Hashtable<K, V>::toString();;
     
 }
@@ -184,6 +202,8 @@ auto ABHashtable<K, V>::equals(Object* obj) -> bool{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaObjects::equals(Hashtable<K, V>::, obj);;
     
 }
@@ -195,6 +215,8 @@ auto ABHashtable<K, V>::hashCode() -> int32_t{
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Hashtable<K, V>::hashCode();;
     
 }

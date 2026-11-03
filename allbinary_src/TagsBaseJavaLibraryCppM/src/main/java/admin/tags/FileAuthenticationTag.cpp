@@ -223,6 +223,8 @@ this->timeout= this->weblisketSession->getTimeout();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -247,6 +249,8 @@ this->weblisketSession->setPassword(newPassword);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -256,6 +260,8 @@ this->weblisketSession->setPassword(newPassword);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -285,6 +291,8 @@ this->weblisketSession->setPassword(newPassword);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -301,6 +309,8 @@ this->weblisketSession->setPassword(newPassword);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (int32_t(TagSupport::EVAL_BODY_INCLUDE)).intValue();;
     
 
@@ -320,6 +330,8 @@ this->weblisketSession->setPassword(newPassword);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TagSupport::SKIP_BODY;
     
 }
@@ -382,6 +394,8 @@ this->logUtil->putF(stringBuffer->toString(), this, "isSessionOld()");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE.valueOf();;
     
 
@@ -407,6 +421,8 @@ this->logUtil->putF(stringBuffer->toString(), this, "isSessionOld()");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->isRarelyUsedSession();;
     
 
@@ -426,6 +442,8 @@ this->logUtil->putF(stringBuffer->toString(), this, "isSessionOld()");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -499,6 +517,8 @@ this->logUtil->putF(stringBuffer->toString(), this, "isRarelyUsedSession()");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -515,6 +535,8 @@ this->logUtil->putF(stringBuffer->toString(), this, "isRarelyUsedSession()");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE.valueOf();;
     
 
@@ -534,6 +556,8 @@ this->logUtil->putF(stringBuffer->toString(), this, "isRarelyUsedSession()");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -555,6 +579,8 @@ stringBuffer->append("Trying New login<p>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -577,6 +603,8 @@ stringBuffer->append("Trying New login<p>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -602,6 +630,8 @@ stringBuffer->append("Trying New login<p>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -624,6 +654,8 @@ stringBuffer->append("Trying New login<p>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -661,6 +693,8 @@ stringBuffer->append("Trying New login<p>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE.valueOf();;
     
 
@@ -672,6 +706,8 @@ stringBuffer->append("Trying New login<p>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE.valueOf();;
     
 
@@ -681,6 +717,8 @@ stringBuffer->append("Trying New login<p>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE.valueOf();;
     
 
@@ -700,6 +738,8 @@ stringBuffer->append("Trying New login<p>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -756,6 +796,8 @@ stringBuffer->append("Trying New login<p>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE.valueOf();;
     
 
@@ -767,6 +809,8 @@ this->nextAttempt();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE.valueOf();;
     
 
@@ -778,6 +822,8 @@ this->nextAttempt();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE.valueOf();;
     
 
@@ -797,6 +843,8 @@ this->nextAttempt();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -819,6 +867,8 @@ this->nextAttempt();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE.valueOf();;
     
 
@@ -833,6 +883,8 @@ this->nextAttempt();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE.valueOf();;
     
 
@@ -855,6 +907,8 @@ this->nextAttempt();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -912,6 +966,8 @@ this->getFormData();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return EVAL_BODY_INCLUDE;
     
 
@@ -924,6 +980,8 @@ this->getFormData();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SKIP_BODY;
     
 
@@ -949,6 +1007,8 @@ this->getFormData();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->invalidateSession();;
     
 
@@ -982,6 +1042,8 @@ pageContext.getOut()->print("Please login again.<p>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TagSupport::SKIP_BODY;
     
 
@@ -992,6 +1054,8 @@ pageContext.getOut()->print("Please login again.<p>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TagSupport::EVAL_BODY_INCLUDE;
     
 
@@ -1018,6 +1082,8 @@ pageContext.getOut()->print("Please login again.<p>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TagSupport::SKIP_BODY;
     
 
@@ -1028,6 +1094,8 @@ pageContext.getOut()->print("Please login again.<p>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TagSupport::EVAL_BODY_INCLUDE;
     
 
@@ -1062,6 +1130,8 @@ pageContext.getOut()->print("Please login again.<p>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TagSupport::EVAL_BODY_INCLUDE;
     
 
@@ -1072,6 +1142,8 @@ pageContext.getOut()->print("Please login again.<p>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TagSupport::SKIP_BODY;
     
 
@@ -1116,6 +1188,8 @@ pageContext.getOut()->print(validRole());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return EVAL_BODY_INCLUDE;
     
 
@@ -1126,6 +1200,8 @@ pageContext.getOut()->print(validRole());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SKIP_BODY;
     
 
@@ -1154,6 +1230,8 @@ pageContext.getOut()->print(invalidRole());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SKIP_BODY;
     
 
@@ -1164,6 +1242,8 @@ pageContext.getOut()->print(invalidRole());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return EVAL_BODY_INCLUDE;
     
 
@@ -1229,6 +1309,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->tagStrings->DO_START_T
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TagSupport::SKIP_BODY;
     
 
@@ -1239,6 +1321,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->tagStrings->DO_START_T
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TagSupport::EVAL_BODY_INCLUDE;
     
 
@@ -1254,6 +1338,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->tagStrings->DO_START_T
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SKIP_BODY;
     
 
@@ -1266,6 +1352,8 @@ AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SKIP_BODY;
     
 }
@@ -1279,6 +1367,8 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SKIP_BODY;
     
 }

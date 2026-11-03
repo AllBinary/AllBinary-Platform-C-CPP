@@ -151,6 +151,8 @@ this->session= request->getSession(true);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->session->getId();;
     
 }
@@ -209,6 +211,8 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaBoxes::unbox<std::string>(this->session->getAttribute(org.allbinary->globals->GLOBALS2->WEBAPPPATH));
     
 }
@@ -219,6 +223,8 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaBoxes::unbox<std::string>(this->session->getAttribute(UserData::USERNAME));
     
 }
@@ -229,6 +235,8 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaBoxes::unbox<std::string>(this->session->getAttribute(UserData::PASSWORD));
     
 }
@@ -239,6 +247,8 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaBoxes::unbox<std::string>(this->session->getAttribute(PaymentGatewayData::NAME->toString()));
     
 }
@@ -249,6 +259,8 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaBoxes::unbox<std::string>(this->session->getAttribute(WeblisketSessionData::AUTHENTICATED));
     
 }
@@ -259,6 +271,8 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaBoxes::unbox<int32_t>(this->session->getAttribute(WeblisketSessionData::ATTEMPTS));
     
 }
@@ -269,6 +283,8 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaBoxes::unbox<std::string>(this->session->getAttribute(WeblisketSessionData::TIMEOUT));
     
 }
@@ -279,6 +295,8 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaBoxes::unbox<std::string>(this->session->getAttribute(StoreFrontData::getInstance()->NAME));
     
 }
@@ -300,6 +318,8 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return UserRoleB::getRole(userRole->getBasicUserRole()->getRole());;
     
 
@@ -310,6 +330,8 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 
@@ -351,6 +373,8 @@ this->session->setAttribute(basketName, orderInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return orderInterface;
     
 
@@ -391,6 +415,8 @@ this->session->removeAttribute(UserData::USERNAME);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->session->getCreationTime();;
     
 }
@@ -401,6 +427,8 @@ this->session->removeAttribute(UserData::USERNAME);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->session->getLastAccessedTime();;
     
 }

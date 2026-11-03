@@ -101,6 +101,8 @@ this->setGeographicMapCellPositionP(geographicMapCellPosition);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<PathFindingNode*>(this->parent);
     
 }
@@ -144,6 +146,8 @@ pathFindingNode= pathFindingNode->getParentP();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

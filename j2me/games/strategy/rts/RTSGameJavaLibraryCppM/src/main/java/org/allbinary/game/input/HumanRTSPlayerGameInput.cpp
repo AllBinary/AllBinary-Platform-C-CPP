@@ -308,6 +308,8 @@ rtsFormInput->setSelectedStickyItemIndex( -1);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -317,6 +319,8 @@ rtsFormInput->setSelectedStickyItemIndex( -1);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -616,6 +620,8 @@ GameNotificationEventHandler::getInstance()->fireEvent(this->notYoursGameNotific
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -842,6 +848,8 @@ this->getMotionGestureInputList()->add(motionGestureEvent);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->selectedRtsLayer;
     
 }

@@ -103,6 +103,8 @@ Object* GameGraphicsResourceUtil::instance = NullUtil::getInstance()->NULL_OBJEC
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<GameGraphicsResourceUtil*>(GameGraphicsResourceUtil::instance);
     
 }
@@ -179,6 +181,8 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->CONSTRUCTOR, &
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getStringForFeature(graphicsFeature);;
     
 }
@@ -270,6 +274,8 @@ stringBuffer->append(this->SPRITE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -280,6 +286,8 @@ stringBuffer->append(this->SPRITE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }

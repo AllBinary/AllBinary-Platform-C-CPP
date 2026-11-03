@@ -71,6 +71,8 @@ AppRendererShaderUpdaterFactory* AppRendererShaderUpdaterFactory::instanceC = Ap
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AppRendererShaderUpdaterFactory::instanceC;
     
 }
@@ -81,6 +83,8 @@ AppRendererShaderUpdaterFactory* AppRendererShaderUpdaterFactory::instanceC = Ap
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->shaderOpenGLProcessorArray;
     
 }

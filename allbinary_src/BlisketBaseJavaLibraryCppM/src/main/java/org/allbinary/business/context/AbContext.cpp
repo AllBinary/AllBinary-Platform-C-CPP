@@ -96,6 +96,8 @@ this->pageContext= pageContext;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new WeblisketSession(this->propertiesHashMap, pageContext);
     
 }
@@ -106,6 +108,8 @@ this->pageContext= pageContext;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->pageContext;
     
 }
@@ -116,6 +120,8 @@ this->pageContext= pageContext;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->propertiesHashMap;
     
 }

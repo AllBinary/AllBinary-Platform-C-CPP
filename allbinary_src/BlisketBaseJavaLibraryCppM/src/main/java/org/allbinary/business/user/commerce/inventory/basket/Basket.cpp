@@ -200,6 +200,8 @@ totalWeight->add(JavaString::valueOf(weightFloat));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return totalWeight->toString();;
     
 }
@@ -210,6 +212,8 @@ totalWeight->add(JavaString::valueOf(weightFloat));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return int32_t(this->items->size());
     
 }
@@ -223,6 +227,8 @@ totalWeight->add(JavaString::valueOf(weightFloat));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return set;
     
 }
@@ -233,6 +239,8 @@ totalWeight->add(JavaString::valueOf(weightFloat));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->items;
     
 }
@@ -246,6 +254,8 @@ totalWeight->add(JavaString::valueOf(weightFloat));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Integer.valueOf(numStr);;
     
 }
@@ -308,6 +318,8 @@ subTotal->add(productTotal->toString());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return subTotal;
     
 }

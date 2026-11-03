@@ -75,6 +75,8 @@ OpenGLESImageExclusionUtil* OpenGLESImageExclusionUtil::instance = OpenGLESImage
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return OpenGLESImageExclusionUtil::instance;
     
 }
@@ -85,6 +87,8 @@ OpenGLESImageExclusionUtil* OpenGLESImageExclusionUtil::instance = OpenGLESImage
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

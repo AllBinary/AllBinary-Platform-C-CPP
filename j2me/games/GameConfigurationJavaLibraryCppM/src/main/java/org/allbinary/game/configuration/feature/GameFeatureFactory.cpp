@@ -65,6 +65,8 @@ GameFeatureFactory* GameFeatureFactory::instance = GameFeatureFactory::instance_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return GameFeatureFactory::instance;
     
 }

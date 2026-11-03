@@ -153,6 +153,8 @@ this->fileBasicArrayList= new BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->running;
     
 }
@@ -274,6 +276,8 @@ file= dynamic_cast<File*>(jarFileBasicArrayList->get(index));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }
@@ -311,6 +315,8 @@ this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SubDirectory::getInstance()->search(jarFileFilter, FileWrapperUtil::wrapFile(file));;
     
 }
@@ -357,6 +363,8 @@ vector->add(bundle->getSymbolicName());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return vector;
     
 }
@@ -393,6 +401,8 @@ nextSymbolicName= JavaBoxes::unbox<std::string>(list->get(index));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -404,6 +414,8 @@ nextSymbolicName= JavaBoxes::unbox<std::string>(list->get(index));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -456,6 +468,8 @@ this->logUtil->putF(JavaString::valueOf("All: ") +JavaString::valueOf(hashMap), 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return vector;
     
 }
@@ -473,6 +487,8 @@ this->logUtil->putF(CommonLabels::getInstance()->START +url, this, "install");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return bundleContext->installBundle(url->toString());;
     
 }

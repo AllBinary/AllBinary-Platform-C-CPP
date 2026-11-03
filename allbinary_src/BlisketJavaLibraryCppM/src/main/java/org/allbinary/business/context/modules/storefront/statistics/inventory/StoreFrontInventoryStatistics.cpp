@@ -135,6 +135,8 @@ this->totalInventorySaleValueMoney->add(itemPriceMoney->toString());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return int64_t(this->totalNumberOfItems);
     
 }
@@ -145,6 +147,8 @@ this->totalInventorySaleValueMoney->add(itemPriceMoney->toString());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->totalInventorySaleValueMoney;
     
 }
@@ -162,6 +166,8 @@ hashMap->put(StoreFrontInventoryStatisticsData::getInstance()->TOTALVALUE, this-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }
@@ -172,6 +178,8 @@ hashMap->put(StoreFrontInventoryStatisticsData::getInstance()->TOTALVALUE, this-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -182,6 +190,8 @@ hashMap->put(StoreFrontInventoryStatisticsData::getInstance()->TOTALVALUE, this-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

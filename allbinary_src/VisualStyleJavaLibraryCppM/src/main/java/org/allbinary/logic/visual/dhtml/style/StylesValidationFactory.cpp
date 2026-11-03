@@ -106,6 +106,8 @@ StylesValidationFactory* StylesValidationFactory::instance = StylesValidationFac
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StylesValidationFactory::instance;
     
 }
@@ -190,6 +192,8 @@ StylesValidationFactory::StylesValidationFactory() : logUtil(LogUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return CssElementsValidationFactory::getInstance(cssElementStyleNodeList);;
     
 }
@@ -209,6 +213,8 @@ StylesValidationFactory::StylesValidationFactory() : logUtil(LogUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new BasicArrayListD();
     
 }
@@ -224,6 +230,8 @@ StylesValidationFactory::StylesValidationFactory() : logUtil(LogUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StylesValidationFactory::getInstance()->getInstance(stylesDocument);;
     
 }

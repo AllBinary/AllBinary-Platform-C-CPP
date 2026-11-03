@@ -116,6 +116,8 @@ this->setTransformDocumentInterface(TransformDocumentFactory::getInstance());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->NO_TYPE;
     
 }
@@ -126,6 +128,8 @@ this->setTransformDocumentInterface(TransformDocumentFactory::getInstance());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->transformInfoInterface;
     
 }
@@ -142,6 +146,8 @@ this->transformInfoInterface= transformInfoInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->transformDocumentInterface;
     
 }
@@ -158,6 +164,8 @@ this->transformDocumentInterface= transformDocumentInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->transformDocumentInterface->getDoc();;
     
 }
@@ -187,6 +195,8 @@ this->transformDocumentInterface= transformDocumentInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getTransformDocumentInterface()->getDoc();;
     
 }
@@ -207,6 +217,8 @@ this->transformDocumentInterface= transformDocumentInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 

@@ -81,6 +81,8 @@ AuthenticationRequestHelperFactory::AuthenticationRequestHelperFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return HelperFactory::getInstance(AuthenticationRequestHelperFactory::FACTORYNAME, AuthenticationRequestHelperFactory::CLASSNAME, hashMap, pageContext);;
     
 }
@@ -93,6 +95,8 @@ AuthenticationRequestHelperFactory::AuthenticationRequestHelperFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return HelperFactory::getInstance(AuthenticationRequestHelperFactory::FACTORYNAME, AuthenticationRequestHelperFactory::CLASSNAME, hashMap, httpServletRequest);;
     
 }

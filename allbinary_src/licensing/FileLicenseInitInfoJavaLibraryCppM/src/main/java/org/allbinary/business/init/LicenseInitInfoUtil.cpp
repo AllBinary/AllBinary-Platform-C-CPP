@@ -113,6 +113,8 @@ LicenseInitInfoUtil* LicenseInitInfoUtil::instance = LicenseInitInfoUtil::instan
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return LicenseInitInfoUtil::instance;
     
 }
@@ -198,6 +200,8 @@ FileStreamFactory::getInstance()->delete_(this->filePath, this->INITFILENAME);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->readAgain(0);;
     
 }
@@ -279,6 +283,8 @@ this->logUtil->putF(JavaString::valueOf(NEXT_FILE) +JavaString::valueOf(initInfo
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return initInfo;
     
 
@@ -324,6 +330,8 @@ this->logUtil->put(JavaString::valueOf("LicenseInitInfo Read Retry: ") +JavaStri
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->filePath;
     
 }

@@ -78,6 +78,8 @@ PCKeyFactory* PCKeyFactory::SINGLETON = PCKeyFactory::SINGLETON_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PCKeyFactory::SINGLETON;
     
 }
@@ -92,6 +94,8 @@ PCKeyFactory* PCKeyFactory::SINGLETON = PCKeyFactory::SINGLETON_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -101,6 +105,8 @@ PCKeyFactory* PCKeyFactory::SINGLETON = PCKeyFactory::SINGLETON_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -115,6 +121,8 @@ PCKeyFactory* PCKeyFactory::SINGLETON = PCKeyFactory::SINGLETON_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -124,6 +132,8 @@ PCKeyFactory* PCKeyFactory::SINGLETON = PCKeyFactory::SINGLETON_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -138,6 +148,8 @@ PCKeyFactory* PCKeyFactory::SINGLETON = PCKeyFactory::SINGLETON_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -147,6 +159,8 @@ PCKeyFactory* PCKeyFactory::SINGLETON = PCKeyFactory::SINGLETON_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -161,6 +175,8 @@ PCKeyFactory* PCKeyFactory::SINGLETON = PCKeyFactory::SINGLETON_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -170,6 +186,8 @@ PCKeyFactory* PCKeyFactory::SINGLETON = PCKeyFactory::SINGLETON_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -184,6 +202,8 @@ PCKeyFactory* PCKeyFactory::SINGLETON = PCKeyFactory::SINGLETON_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -193,6 +213,8 @@ PCKeyFactory* PCKeyFactory::SINGLETON = PCKeyFactory::SINGLETON_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -207,6 +229,8 @@ PCKeyFactory* PCKeyFactory::SINGLETON = PCKeyFactory::SINGLETON_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -216,6 +240,8 @@ PCKeyFactory* PCKeyFactory::SINGLETON = PCKeyFactory::SINGLETON_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -230,6 +256,8 @@ PCKeyFactory* PCKeyFactory::SINGLETON = PCKeyFactory::SINGLETON_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -239,6 +267,8 @@ PCKeyFactory* PCKeyFactory::SINGLETON = PCKeyFactory::SINGLETON_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -253,6 +283,8 @@ PCKeyFactory* PCKeyFactory::SINGLETON = PCKeyFactory::SINGLETON_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -262,6 +294,8 @@ PCKeyFactory* PCKeyFactory::SINGLETON = PCKeyFactory::SINGLETON_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

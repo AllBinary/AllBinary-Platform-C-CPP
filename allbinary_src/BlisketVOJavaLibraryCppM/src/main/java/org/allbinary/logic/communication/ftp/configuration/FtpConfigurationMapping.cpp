@@ -97,6 +97,8 @@ hashMap->put(FtpConfigurationData::PATH, this->ftpConfigurationInterface->getPat
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }
@@ -109,7 +111,9 @@ hashMap->put(FtpConfigurationData::PATH, this->ftpConfigurationInterface->getPat
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FtpConfigurationData::NAME;
+                        
+                        
+                        return JavaBoxes::toObject(FtpConfigurationData::NAME);
     
 }
 
@@ -132,6 +136,8 @@ vector->add(this->ftpConfigurationInterface->getPath());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return vector;
     
 }

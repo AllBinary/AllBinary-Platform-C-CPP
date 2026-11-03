@@ -120,6 +120,8 @@ this->newStoreFrontInterface= StoreFrontFactory::getInstance(this->newStoreFront
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return valid;
     
 
@@ -139,6 +141,8 @@ this->newStoreFrontInterface= StoreFrontFactory::getInstance(this->newStoreFront
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -176,6 +180,8 @@ this->newStoreFrontInterface= StoreFrontFactory::getInstance(this->newStoreFront
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Unkown Error";
     
 
@@ -195,6 +201,8 @@ this->newStoreFrontInterface= StoreFrontFactory::getInstance(this->newStoreFront
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Validating Form";
     
 }
@@ -207,6 +215,8 @@ this->newStoreFrontInterface= StoreFrontFactory::getInstance(this->newStoreFront
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -217,6 +227,8 @@ this->newStoreFrontInterface= StoreFrontFactory::getInstance(this->newStoreFront
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

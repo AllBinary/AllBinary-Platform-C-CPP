@@ -106,6 +106,8 @@ this->playerType= playerType;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->gameType;
     
 }
@@ -116,6 +118,8 @@ this->playerType= playerType;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->gameMode;
     
 }
@@ -126,6 +130,8 @@ this->playerType= playerType;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->playerType;
     
 }
@@ -136,6 +142,8 @@ this->playerType= playerType;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->highestLevel;
     
 }
@@ -152,6 +160,8 @@ this->highestLevel= highestLevel;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->currentLevel;
     
 }
@@ -197,6 +207,8 @@ this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->NEX
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -207,6 +219,8 @@ this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->NEX
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -233,6 +247,8 @@ hashtable->put(this->gameInfoData->CURRENT_LEVEL, std::to_string(this->currentLe
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashtable;
     
 }
@@ -287,6 +303,8 @@ stringBuffer->appendint(this->currentLevel);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

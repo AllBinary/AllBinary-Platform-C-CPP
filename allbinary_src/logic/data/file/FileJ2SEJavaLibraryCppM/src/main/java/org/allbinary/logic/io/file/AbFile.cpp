@@ -93,6 +93,8 @@ AbFile* AbFile::NULL_FILE = AbFile::createAbFileFromRawPath(StringUtil::getInsta
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AbFile(new File(file->getFile(), childPathName));
     
 }
@@ -105,6 +107,8 @@ AbFile* AbFile::NULL_FILE = AbFile::createAbFileFromRawPath(StringUtil::getInsta
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AbFile(new File((new AbPath(filePath, StringUtil::getInstance()->EMPTY_STRING))->toFileSystemString()));
     
 }
@@ -117,6 +121,8 @@ AbFile* AbFile::NULL_FILE = AbFile::createAbFileFromRawPath(StringUtil::getInsta
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AbFile(new File((new AbPath(filePath, StringUtil::getInstance()->EMPTY_STRING))->toFileSystemString(), fileName));
     
 }
@@ -127,6 +133,8 @@ AbFile* AbFile::NULL_FILE = AbFile::createAbFileFromRawPath(StringUtil::getInsta
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AbFile(new File(abPath->toFileSystemString()));
     
 }
@@ -137,6 +145,8 @@ AbFile* AbFile::NULL_FILE = AbFile::createAbFileFromRawPath(StringUtil::getInsta
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AbFile(new File(filePath));
     
 }
@@ -153,6 +163,8 @@ this->file= file;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file;
     
 }
@@ -163,6 +175,8 @@ this->file= file;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->getName();;
     
 }
@@ -173,6 +187,8 @@ this->file= file;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->getParent();;
     
 }
@@ -183,6 +199,8 @@ this->file= file;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->getParentFile();;
     
 }
@@ -193,6 +211,8 @@ this->file= file;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->getPath();;
     
 }
@@ -203,6 +223,8 @@ this->file= file;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->isAbsolute();;
     
 }
@@ -213,6 +235,8 @@ this->file= file;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->getAbsolutePath();;
     
 }
@@ -223,6 +247,8 @@ this->file= file;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->getAbsoluteFile();;
     
 }
@@ -235,6 +261,8 @@ this->file= file;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->getCanonicalPath();;
     
 }
@@ -247,6 +275,8 @@ this->file= file;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->getCanonicalFile();;
     
 }
@@ -257,6 +287,8 @@ this->file= file;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->toURI();;
     
 }
@@ -267,6 +299,8 @@ this->file= file;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->canRead();;
     
 }
@@ -277,6 +311,8 @@ this->file= file;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->canWrite();;
     
 }
@@ -287,6 +323,8 @@ this->file= file;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->exists();;
     
 }
@@ -297,6 +335,8 @@ this->file= file;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->isDirectory();;
     
 }
@@ -307,6 +347,8 @@ this->file= file;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->isFile();;
     
 }
@@ -317,6 +359,8 @@ this->file= file;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->isHidden();;
     
 }
@@ -327,6 +371,8 @@ this->file= file;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->lastModified();;
     
 }
@@ -337,6 +383,8 @@ this->file= file;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->length();;
     
 }
@@ -349,6 +397,8 @@ this->file= file;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->createNewFile();;
     
 }
@@ -361,6 +411,8 @@ this->file= file;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->delete_();;
     
 }
@@ -377,6 +429,8 @@ this->file->deleteOnExit();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->list();;
     
 }
@@ -387,6 +441,8 @@ this->file->deleteOnExit();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->list(filter);;
     
 }
@@ -397,6 +453,8 @@ this->file->deleteOnExit();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaBoxes::unbox<std::vector<Object*>>(this->file->listFiles());
     
 }
@@ -407,6 +465,8 @@ this->file->deleteOnExit();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaBoxes::unbox<std::vector<Object*>>(this->file->listFiles(filter));
     
 }
@@ -417,6 +477,8 @@ this->file->deleteOnExit();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaBoxes::unbox<std::vector<Object*>>(this->file->listFiles(filter));
     
 }
@@ -427,6 +489,8 @@ this->file->deleteOnExit();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->mkdir();;
     
 }
@@ -437,6 +501,8 @@ this->file->deleteOnExit();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->mkdirs();;
     
 }
@@ -447,6 +513,8 @@ this->file->deleteOnExit();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->renameTo(dest->getFile());;
     
 }
@@ -457,6 +525,8 @@ this->file->deleteOnExit();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->setLastModified(time);;
     
 }
@@ -467,6 +537,8 @@ this->file->deleteOnExit();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->setReadOnly();;
     
 }
@@ -477,6 +549,8 @@ this->file->deleteOnExit();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->setExecutable(writable, ownerOnly);;
     
 }
@@ -487,6 +561,8 @@ this->file->deleteOnExit();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->setWritable(writable);;
     
 }
@@ -497,6 +573,8 @@ this->file->deleteOnExit();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->setReadable(readable, ownerOnly);;
     
 }
@@ -507,6 +585,8 @@ this->file->deleteOnExit();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->setReadable(readable);;
     
 }
@@ -517,6 +597,8 @@ this->file->deleteOnExit();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->setExecutable(executable, ownerOnly);;
     
 }
@@ -527,6 +609,8 @@ this->file->deleteOnExit();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->setExecutable(executable);;
     
 }
@@ -537,6 +621,8 @@ this->file->deleteOnExit();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->canExecute();;
     
 }
@@ -547,6 +633,8 @@ this->file->deleteOnExit();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->getTotalSpace();;
     
 }
@@ -557,6 +645,8 @@ this->file->deleteOnExit();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->getFreeSpace();;
     
 }
@@ -567,6 +657,8 @@ this->file->deleteOnExit();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->getUsableSpace();;
     
 }
@@ -577,6 +669,8 @@ this->file->deleteOnExit();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->compareTo(pathname);;
     
 }
@@ -587,6 +681,8 @@ this->file->deleteOnExit();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TsUtil::getInstance()->equalsNotstring(this->file, obj);;
     
 }
@@ -597,6 +693,8 @@ this->file->deleteOnExit();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->hashCode();;
     
 }
@@ -607,6 +705,8 @@ this->file->deleteOnExit();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->file->toString();;
     
 }

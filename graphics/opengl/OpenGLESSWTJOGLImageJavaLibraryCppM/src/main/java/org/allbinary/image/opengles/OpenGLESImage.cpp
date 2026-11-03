@@ -134,6 +134,8 @@ this->platformImage= OpenGLESPostLoadPlatformImage::getInstance();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return static_cast<int32_t>((this->openGLBitmap->getHeight() *this->openGLESImageProperties->scaleY2));
     
 }
@@ -144,6 +146,8 @@ this->platformImage= OpenGLESPostLoadPlatformImage::getInstance();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return static_cast<int32_t>((this->openGLBitmap->getWidth() *this->openGLESImageProperties->scaleX2));
     
 }
@@ -199,6 +203,8 @@ gl->glTexParameterf(GL10::GL_TEXTURE_2D, GL10::GL_TEXTURE_WRAP_T, GL10::GL_CLAMP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -208,6 +214,8 @@ gl->glTexParameterf(GL10::GL_TEXTURE_2D, GL10::GL_TEXTURE_WRAP_T, GL10::GL_CLAMP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -226,6 +234,8 @@ gl->glTexParameterf(GL10::GL_TEXTURE_2D, GL10::GL_TEXTURE_WRAP_T, GL10::GL_CLAMP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return OpenGLESImage::TYPE;
     
 }
@@ -239,6 +249,8 @@ gl->glTexParameterf(GL10::GL_TEXTURE_2D, GL10::GL_TEXTURE_WRAP_T, GL10::GL_CLAMP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (new StringMaker())->append(this->getName())->append(Image::toString())->append(graphicsStrings->OPACITY)->appendfloat(this->openGLESImageProperties->alphaf)->toString();;
     
 }

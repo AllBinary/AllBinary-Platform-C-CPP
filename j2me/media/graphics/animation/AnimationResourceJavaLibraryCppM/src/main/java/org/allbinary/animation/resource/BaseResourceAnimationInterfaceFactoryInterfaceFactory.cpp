@@ -111,6 +111,8 @@ this->name= name;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }
@@ -171,6 +173,8 @@ this->hashtable->put(resource, animationInterfaceFactoryInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NullAnimationFactory::NULL_NOT_FOR_USE_ANIMATION_FACTORY;
     
 
@@ -180,6 +184,8 @@ this->hashtable->put(resource, animationInterfaceFactoryInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<BasicAnimationInterfaceFactoryInterface*>(basicAnimationInterfaceFactoryInterfaceCanBeNull);
     
 }
@@ -201,6 +207,8 @@ this->hashtable->put(resource, animationInterfaceFactoryInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return RectangleFactory::SINGLETON;
     
 
@@ -210,6 +218,8 @@ this->hashtable->put(resource, animationInterfaceFactoryInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<Rectangle*>(rectangleCanBeNull);
     
 }
@@ -242,6 +252,8 @@ this->rectangleHashtable->put(resource, rectangle);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return rectangleArrayOfArrays;
     
 
@@ -252,6 +264,8 @@ this->rectangleHashtable->put(resource, rectangle);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return RectangleFactory::ARRAY_OF_ARRAYS;
     
 
@@ -273,6 +287,8 @@ this->rectangleArrayOfArraysHashtable->put(resource, rectangleArrayOfArrays);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -290,6 +306,8 @@ this->rectangleArrayOfArraysHashtable->put(resource, rectangleArrayOfArrays);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -300,6 +318,8 @@ this->rectangleArrayOfArraysHashtable->put(resource, rectangleArrayOfArrays);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -313,6 +333,8 @@ this->rectangleArrayOfArraysHashtable->put(resource, rectangleArrayOfArrays);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (new StringMaker())->append(this->getClass()->getName())->append(CommonSeps::getInstance()->SEMICOLON)->append(CommonSeps::getInstance()->SPACE)->append(this->name)->toString();;
     
 }
@@ -323,6 +345,8 @@ this->rectangleArrayOfArraysHashtable->put(resource, rectangleArrayOfArrays);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->hashtable;
     
 }
@@ -333,6 +357,8 @@ this->rectangleArrayOfArraysHashtable->put(resource, rectangleArrayOfArrays);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->rectangleHashtable;
     
 }
@@ -343,6 +369,8 @@ this->rectangleArrayOfArraysHashtable->put(resource, rectangleArrayOfArrays);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->rectangleArrayOfArraysHashtable;
     
 }
@@ -359,6 +387,8 @@ this->initialized= initialized;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->initialized;
     
 }

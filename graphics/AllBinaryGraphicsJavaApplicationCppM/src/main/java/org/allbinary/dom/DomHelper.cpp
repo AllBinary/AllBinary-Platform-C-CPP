@@ -107,6 +107,8 @@ DomHelper* DomHelper::instance = DomHelper::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return DomHelper::instance;
     
 }
@@ -132,6 +134,8 @@ DomHelper::DomHelper() : logUtil(LogUtil::getInstance()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return document;
     
 
@@ -142,6 +146,8 @@ DomHelper::DomHelper() : logUtil(LogUtil::getInstance()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -167,6 +173,8 @@ DomHelper::DomHelper() : logUtil(LogUtil::getInstance()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return document;
     
 
@@ -209,6 +217,8 @@ copyTransformer->transform(domSource, streamResult);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return byteArrayOutputStream->toString();;
     
 
@@ -284,6 +294,8 @@ copyTransformer->transform(domSource, streamResult);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node->getChildNodes();;
     
 
@@ -336,6 +348,8 @@ copyTransformer->transform(domSource, streamResult);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return list;
     
 }
@@ -375,6 +389,8 @@ copyTransformer->transform(domSource, streamResult);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return list;
     
 }
@@ -406,6 +422,8 @@ this->logUtil->putF(JavaString::valueOf("NodeName: ") +JavaString::valueOf(node-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 
@@ -447,6 +465,8 @@ this->logUtil->putF(JavaString::valueOf("NodeName: ") +JavaString::valueOf(node-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 

@@ -111,6 +111,8 @@ this->circularIndexUtil= CircularIndexUtil::createInstance(this->totalFrames);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getSize();;
     
 }
@@ -139,6 +141,8 @@ this->circularIndexUtil->setIndex(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->circularIndexUtil->getIndex();;
     
 }
@@ -149,6 +153,8 @@ this->circularIndexUtil->setIndex(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->totalFrames;
     
 }
@@ -163,6 +169,8 @@ this->circularIndexUtil->setIndex(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PrimitiveIntUtil::getArrayInstance();;
     
 }

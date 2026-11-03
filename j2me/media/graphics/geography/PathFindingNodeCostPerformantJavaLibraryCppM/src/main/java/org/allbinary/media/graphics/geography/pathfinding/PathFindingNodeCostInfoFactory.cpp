@@ -98,6 +98,8 @@ PathFindingNodeCostInfoFactory::PathFindingNodeCostInfoFactory(int32_t max){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return raceTrackGeographicMapCellType->getTravelCost() +raceTrackGeographicMapCellType2->getTravelCost();
     
 }

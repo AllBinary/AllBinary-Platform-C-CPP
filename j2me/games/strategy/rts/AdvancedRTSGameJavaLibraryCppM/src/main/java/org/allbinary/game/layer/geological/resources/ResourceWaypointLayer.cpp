@@ -106,6 +106,8 @@ rtsLayerHudPaintable->setRtsLayer(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return rtsLayerHudPaintable;
     
 }
@@ -119,6 +121,8 @@ rtsLayerHudPaintable->setRtsLayer(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return rtsLayerHudPaintable;
     
 }

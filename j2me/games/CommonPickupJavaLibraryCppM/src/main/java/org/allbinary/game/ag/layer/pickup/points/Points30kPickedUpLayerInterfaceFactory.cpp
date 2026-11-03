@@ -110,6 +110,8 @@ Points30kPickedUpLayerInterfaceFactory::Points30kPickedUpLayerInterfaceFactory()
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 1;
     
 }
@@ -120,6 +122,8 @@ Points30kPickedUpLayerInterfaceFactory::Points30kPickedUpLayerInterfaceFactory()
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Points30kPickedUpLayerInterfaceFactory::pickedUpLayerInterfaceFactoryInterface;
     
 }

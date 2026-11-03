@@ -71,6 +71,8 @@ this->setMaxSize(maxSize);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->maxTime;
     
 }
@@ -87,6 +89,8 @@ this->maxTime= maxTime;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->maxSize;
     
 }
@@ -103,6 +107,8 @@ this->maxSize= maxSize;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }

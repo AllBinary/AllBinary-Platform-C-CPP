@@ -69,6 +69,8 @@ LicenseUtil* LicenseUtil::instance = LicenseUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return LicenseUtil::instance;
     
 }
@@ -84,6 +86,8 @@ LicenseUtil* LicenseUtil::instance = LicenseUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -99,6 +103,8 @@ LicenseUtil* LicenseUtil::instance = LicenseUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->isRunning();;
     
 }

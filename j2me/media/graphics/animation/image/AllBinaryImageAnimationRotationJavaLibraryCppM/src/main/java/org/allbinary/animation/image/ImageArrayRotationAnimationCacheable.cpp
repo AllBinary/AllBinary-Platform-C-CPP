@@ -87,7 +87,9 @@ ImageArrayRotationAnimationCacheable::ImageArrayRotationAnimationCacheable(Objec
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil::getInstance()->NULL_OBJECT;
+                        
+                        
+                        return JavaBoxes::toObject(NullUtil::getInstance()->NULL_OBJECT);
     
 }
 
@@ -97,6 +99,8 @@ ImageArrayRotationAnimationCacheable::ImageArrayRotationAnimationCacheable(Objec
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 }

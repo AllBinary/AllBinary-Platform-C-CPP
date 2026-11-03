@@ -163,6 +163,8 @@ this->setFrame(this->frameUtil->getFrameForAngle(angle, static_cast<int32_t>(thi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->circularIndexUtil->getIndex();;
     
 }
@@ -173,6 +175,8 @@ this->setFrame(this->frameUtil->getFrameForAngle(angle, static_cast<int32_t>(thi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->circularIndexUtil->getSize();;
     
 }
@@ -183,6 +187,8 @@ this->setFrame(this->frameUtil->getFrameForAngle(angle, static_cast<int32_t>(thi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->angleInfo;
     
 }
@@ -193,6 +199,8 @@ this->setFrame(this->frameUtil->getFrameForAngle(angle, static_cast<int32_t>(thi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (new StringMaker())->append(IndexedAnimation::toString())->append("circularIndexUtil: ")->append(this->circularIndexUtil->toString())->append("angleInfo: ")->append(this->angleInfo->toString())->toString();;
     
 }

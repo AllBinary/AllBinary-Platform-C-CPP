@@ -52,6 +52,8 @@ FixedPoint* FixedPoint::instance = FixedPoint::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return FixedPoint::instance;
     
 }
@@ -62,6 +64,8 @@ FixedPoint* FixedPoint::instance = FixedPoint::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return static_cast<int32_t>((val *65536.0));
     
 }
@@ -72,6 +76,8 @@ FixedPoint* FixedPoint::instance = FixedPoint::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return static_cast<int32_t>((val *65536.0));
     
 }
@@ -82,6 +88,8 @@ FixedPoint* FixedPoint::instance = FixedPoint::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return static_cast<int32_t>(((a *b)>>16));
     
 }
@@ -92,6 +100,8 @@ FixedPoint* FixedPoint::instance = FixedPoint::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return static_cast<int32_t>((((a)<<16) /b));
     
 }
@@ -102,6 +112,8 @@ FixedPoint* FixedPoint::instance = FixedPoint::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return fixed>>16;
     
 }

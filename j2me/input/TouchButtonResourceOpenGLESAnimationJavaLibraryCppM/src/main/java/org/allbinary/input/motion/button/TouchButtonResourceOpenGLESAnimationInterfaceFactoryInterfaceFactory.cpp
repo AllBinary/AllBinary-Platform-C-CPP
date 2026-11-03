@@ -93,6 +93,8 @@ TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory::initImageCache(Ope
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -103,6 +105,8 @@ TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory::initImageCache(Ope
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 

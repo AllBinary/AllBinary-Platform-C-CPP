@@ -175,6 +175,8 @@ this->save(categoryInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return document;
     
 
@@ -218,6 +220,8 @@ this->logUtil->put(this->commonStrings->FAILURE, this, "getDoc", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -239,6 +243,8 @@ this->logUtil->put(this->commonStrings->FAILURE, this, "getDoc", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->addProperties(categoryInterface, categoryNode->getChildNodes());;
     
 
@@ -258,6 +264,8 @@ this->logUtil->put(this->commonStrings->FAILURE, this, "getDoc", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -279,6 +287,8 @@ this->logUtil->put(this->commonStrings->FAILURE, this, "getDoc", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->addProperties(loadedCategoryInterface, categoryNode->getChildNodes());;
     
 
@@ -298,6 +308,8 @@ this->logUtil->put(this->commonStrings->FAILURE, this, "getDoc", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -316,6 +328,8 @@ this->logUtil->put(this->commonStrings->FAILURE, this, "getDoc", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getAll(document);;
     
 
@@ -335,6 +349,8 @@ this->logUtil->put(this->commonStrings->FAILURE, this, "getDoc", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -356,6 +372,8 @@ this->logUtil->put(this->commonStrings->FAILURE, this, "getDoc", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->addProperties(loadedCategoryInterface, categoryNode->getChildNodes());;
     
 
@@ -375,6 +393,8 @@ this->logUtil->put(this->commonStrings->FAILURE, this, "getDoc", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -425,6 +445,8 @@ parentCategoryInterface->addChild(categoryInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return parentCategoryInterface;
     
 
@@ -444,6 +466,8 @@ parentCategoryInterface->addChild(categoryInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -494,6 +518,8 @@ loadedCategoryInterface->addChildProperty(categoryPropertiesInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return loadedCategoryInterface;
     
 
@@ -513,6 +539,8 @@ loadedCategoryInterface->addChildProperty(categoryPropertiesInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

@@ -75,6 +75,8 @@ this->motionGestureAction= commandAction;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->list;
     
 }
@@ -91,6 +93,8 @@ this->list= list;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->motionGestureAction;
     
 }
@@ -114,6 +118,8 @@ this->motionGestureAction= commandAction;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -134,6 +140,8 @@ this->motionGestureAction= commandAction;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -145,6 +153,8 @@ this->motionGestureAction= commandAction;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }

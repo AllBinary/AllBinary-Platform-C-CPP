@@ -405,6 +405,8 @@ this->categoryLoaderInterface->insert(this->categoryInterface, this->childCatego
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -427,6 +429,8 @@ this->categoryLoaderInterface->insert(this->categoryInterface, this->childCatego
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -464,6 +468,8 @@ this->categoryLoaderInterface->delete_(this->categoryInterface, this->childCateg
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -488,6 +494,8 @@ this->categoryLoaderInterface->delete_(this->categoryInterface, this->childCateg
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 
@@ -510,6 +518,8 @@ this->categoryLoaderInterface->delete_(this->categoryInterface, this->childCateg
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -541,6 +551,8 @@ this->categoryLoaderInterface->delete_(this->categoryInterface, this->childCateg
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return xmlString;
     
 
@@ -563,6 +575,8 @@ this->categoryLoaderInterface->delete_(this->categoryInterface, this->childCateg
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -589,6 +603,8 @@ this->categoryLoaderInterface->delete_(this->categoryInterface, this->childCateg
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -611,6 +627,8 @@ this->categoryLoaderInterface->delete_(this->categoryInterface, this->childCateg
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -637,6 +655,8 @@ this->categoryLoaderInterface->delete_(this->categoryInterface, this->childCateg
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -659,6 +679,8 @@ this->categoryLoaderInterface->delete_(this->categoryInterface, this->childCateg
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }

@@ -109,6 +109,8 @@ WorkWaypoint::WorkWaypoint(PathFindingLayerInterface* ownerLayer) : Waypoint(own
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -223,6 +225,8 @@ break;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 2;
     
 }

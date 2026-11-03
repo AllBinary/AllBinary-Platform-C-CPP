@@ -196,6 +196,8 @@ this->logUtil->putF("Deleted Files From Cloud", this, "initialize()");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -208,6 +210,8 @@ this->logUtil->put("Unable to copy installer files into cloud", this, "initializ
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

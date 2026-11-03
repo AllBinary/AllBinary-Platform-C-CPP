@@ -76,6 +76,8 @@ ViewPositionBase::ViewPositionBase(int32_t x, int32_t y, int32_t z) : GPoint(x, 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getX();;
     
 }
@@ -86,6 +88,8 @@ ViewPositionBase::ViewPositionBase(int32_t x, int32_t y, int32_t z) : GPoint(x, 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getY();;
     
 }
@@ -96,6 +100,8 @@ ViewPositionBase::ViewPositionBase(int32_t x, int32_t y, int32_t z) : GPoint(x, 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getZ();;
     
 }

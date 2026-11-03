@@ -87,6 +87,8 @@ ClassUtil::ClassUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ClassUtil::viewAll(anyType->getClass(), lineBreak);;
     
 
@@ -160,6 +162,8 @@ stringBuffer->append(MethodUtil::viewAll(myClass, lineBreak));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 

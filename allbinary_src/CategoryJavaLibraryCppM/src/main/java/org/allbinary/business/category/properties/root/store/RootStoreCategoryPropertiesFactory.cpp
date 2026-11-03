@@ -114,6 +114,8 @@ this->categoryPropertiesInterface= dynamic_cast<CategoryPropertiesInterface*>(ne
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<CategoryPropertiesInterface*>(this->categoryPropertiesInterface);
     
 
@@ -136,6 +138,8 @@ this->categoryPropertiesInterface= dynamic_cast<CategoryPropertiesInterface*>(ne
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

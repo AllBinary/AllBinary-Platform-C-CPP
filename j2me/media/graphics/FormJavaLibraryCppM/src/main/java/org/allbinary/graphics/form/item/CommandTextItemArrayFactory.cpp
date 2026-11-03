@@ -182,6 +182,8 @@ textItemArray[index]= dynamic_cast<ABCustomItem*>(this->list->objectArray[index]
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return textItemArray;
     
 }

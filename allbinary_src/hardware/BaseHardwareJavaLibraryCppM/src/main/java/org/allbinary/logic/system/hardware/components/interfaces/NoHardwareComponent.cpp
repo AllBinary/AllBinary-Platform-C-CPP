@@ -70,6 +70,8 @@ NoHardwareComponent* NoHardwareComponent::instance = NoHardwareComponent::instan
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NoHardwareComponent::instance;
     
 }
@@ -84,6 +86,8 @@ NoHardwareComponent* NoHardwareComponent::instance = NoHardwareComponent::instan
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -93,6 +97,8 @@ NoHardwareComponent* NoHardwareComponent::instance = NoHardwareComponent::instan
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -103,6 +109,8 @@ NoHardwareComponent* NoHardwareComponent::instance = NoHardwareComponent::instan
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->NULL_STRING;
     
 }

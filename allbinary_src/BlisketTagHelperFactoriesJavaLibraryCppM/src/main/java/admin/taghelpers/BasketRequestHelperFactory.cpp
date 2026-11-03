@@ -85,6 +85,8 @@ BasketRequestHelperFactory::BasketRequestHelperFactory() : logUtil(LogUtil::getI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new BasketRequestHelper(hashMap, pageContext);
     
 
@@ -104,6 +106,8 @@ BasketRequestHelperFactory::BasketRequestHelperFactory() : logUtil(LogUtil::getI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

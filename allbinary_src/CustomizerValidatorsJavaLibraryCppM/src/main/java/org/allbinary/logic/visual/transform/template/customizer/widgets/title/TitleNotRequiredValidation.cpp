@@ -157,6 +157,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return valid;
     
 
@@ -176,6 +178,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -195,6 +199,8 @@ stringBuffer->append("Title is not valid.");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -214,6 +220,8 @@ stringBuffer->append("Title is not valid.");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Validating Form";
     
 }
@@ -226,6 +234,8 @@ stringBuffer->append("Title is not valid.");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -236,6 +246,8 @@ stringBuffer->append("Title is not valid.");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

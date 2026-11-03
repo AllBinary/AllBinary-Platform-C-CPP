@@ -101,6 +101,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new BaseImageAnimationFactory(image, sequenceArray, width, height, 0, 0, animationBehaviorFactory);
     
 }
@@ -133,6 +135,8 @@ this->animationFactoryInitializationVisitor->dy= dy;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NullAnimationFactory::getFactoryInstance()->getInstance(instanceId);;
     
 }
@@ -143,6 +147,8 @@ this->animationFactoryInitializationVisitor->dy= dy;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->image;
     
 }
@@ -153,6 +159,8 @@ this->animationFactoryInitializationVisitor->dy= dy;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->sequenceArray;
     
 }
@@ -184,6 +192,8 @@ this->scaleProperties->scaleHeight= static_cast<int32_t>((this->animationFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->animationFactoryInitializationVisitor;
     
 }
@@ -194,6 +204,8 @@ this->scaleProperties->scaleHeight= static_cast<int32_t>((this->animationFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->scaleProperties;
     
 }
@@ -223,6 +235,8 @@ stringBuffer->append(this->animationFactoryInitializationVisitor->toString());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

@@ -173,6 +173,8 @@ this->setTableName(this->tableName);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getUsersWithRole(UserRoleFactory::getInstance()->ADMINISTRATOR);;
     
 }
@@ -219,6 +221,8 @@ keysAndValues->put(UserData::PERMISSIONS, storeFrontInterface->getName());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return usersVector;
     
 }
@@ -231,6 +235,8 @@ keysAndValues->put(UserData::PERMISSIONS, storeFrontInterface->getName());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getUsersWithRole(UserRoleFactory::getInstance()->CUSTOMER);;
     
 }
@@ -275,6 +281,8 @@ keysAndValues->put(UserRoleData::NAME->toString(), userRole->toString());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return usersVector;
     
 }
@@ -319,6 +327,8 @@ keysAndValues->put(StoreFrontData::getInstance()->NAME, storeFrontInterface->get
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return usersVector;
     
 }
@@ -345,6 +355,8 @@ row->put(UserData::USERNAME, userName);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return CreateUserFactory::getInstance(userHashMap);;
     
 
@@ -355,6 +367,8 @@ row->put(UserData::USERNAME, userName);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 
@@ -425,6 +439,8 @@ row->put(UserData::USERNAME, userName);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return GLOBALS2::LOGINFAILED;
     
 
@@ -462,6 +478,8 @@ this->logUtil->putF(stringBuffer->toString(), this, "login");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return GLOBALS2::LOGINSUCCESS;
     
 
@@ -498,6 +516,8 @@ this->logUtil->putF(stringBuffer->toString(), this, "login");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return GLOBALS2::LOGINFAILED;
     
 
@@ -520,6 +540,8 @@ this->logUtil->putF(stringBuffer->toString(), this, "login");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error";
     
 }
@@ -538,6 +560,8 @@ AbSqlBean::updateWhere(UserData::USERNAME, userName, updatedValues);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbSqlBean::dropTable();;
     
 }
@@ -556,6 +580,8 @@ stringBuffer->append(this->sqlStrings->CREATE_TABLE)->append(tableName)->append(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -566,6 +592,8 @@ stringBuffer->append(this->sqlStrings->CREATE_TABLE)->append(tableName)->append(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbSqlBean::createTable(this->createTableStatement());;
     
 }

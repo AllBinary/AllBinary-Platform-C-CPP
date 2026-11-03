@@ -98,6 +98,8 @@ VectorRotationGenerator* VectorRotationGenerator::instance = VectorRotationGener
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return VectorRotationGenerator::instance;
     
 }
@@ -112,6 +114,8 @@ VectorRotationGenerator::VectorRotationGenerator() : logUtil(LogUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getInstanceFrames(vectorRotationInfo->getWidth(), vectorRotationInfo->getHeight(), vectorRotationInfo->getPoints(), vectorRotationInfo->getTotalFrames());;
     
 }
@@ -168,6 +172,8 @@ index += angleIncrement;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return newPoints;
     
 
@@ -183,6 +189,8 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY_ARRAY;
     
 }
@@ -208,6 +216,8 @@ graphicsPipe->translate((width>>1), (height>>1));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return graphicsPipe->getMatrix();;
     
 }

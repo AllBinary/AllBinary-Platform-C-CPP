@@ -67,6 +67,8 @@ StringValidationUtil* StringValidationUtil::instance = StringValidationUtil::ins
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringValidationUtil::instance;
     
 }
@@ -85,6 +87,8 @@ StringValidationUtil::StringValidationUtil() : stringUtil(StringUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -94,6 +98,8 @@ StringValidationUtil::StringValidationUtil() : stringUtil(StringUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -121,6 +127,8 @@ StringValidationUtil::StringValidationUtil() : stringUtil(StringUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -140,6 +148,8 @@ StringValidationUtil::StringValidationUtil() : stringUtil(StringUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -154,6 +164,8 @@ StringValidationUtil::StringValidationUtil() : stringUtil(StringUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -168,6 +180,8 @@ StringValidationUtil::StringValidationUtil() : stringUtil(StringUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -177,6 +191,8 @@ StringValidationUtil::StringValidationUtil() : stringUtil(StringUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -191,6 +207,8 @@ StringValidationUtil::StringValidationUtil() : stringUtil(StringUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -200,6 +218,8 @@ StringValidationUtil::StringValidationUtil() : stringUtil(StringUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -214,6 +234,8 @@ StringValidationUtil::StringValidationUtil() : stringUtil(StringUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -227,6 +249,8 @@ StringValidationUtil::StringValidationUtil() : stringUtil(StringUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -236,6 +260,8 @@ StringValidationUtil::StringValidationUtil() : stringUtil(StringUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -254,6 +280,8 @@ StringValidationUtil::StringValidationUtil() : stringUtil(StringUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -266,6 +294,8 @@ StringValidationUtil::StringValidationUtil() : stringUtil(StringUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -284,6 +314,8 @@ StringValidationUtil::StringValidationUtil() : stringUtil(StringUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -297,6 +329,8 @@ StringValidationUtil::StringValidationUtil() : stringUtil(StringUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -309,6 +343,8 @@ StringValidationUtil::StringValidationUtil() : stringUtil(StringUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -323,6 +359,8 @@ StringValidationUtil::StringValidationUtil() : stringUtil(StringUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -333,6 +371,8 @@ StringValidationUtil::StringValidationUtil() : stringUtil(StringUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 

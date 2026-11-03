@@ -138,6 +138,8 @@ this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->NAME, this->
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;;
     
 
@@ -183,6 +185,8 @@ this->setHelper();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->process();;
     
 
@@ -195,6 +199,8 @@ AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SKIP_BODY;
     
 }
@@ -208,6 +214,8 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SKIP_BODY;
     
 }

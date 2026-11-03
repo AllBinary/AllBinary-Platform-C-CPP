@@ -129,6 +129,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new ScrollSelectionForm(title, items, formPaintableFactory, border,  -3, backgroundBasicColor, foregroundBasicColor);
     
 
@@ -147,6 +149,8 @@ logUtil->putF(commonStrings->EXCEPTION, logUtil, commonStrings->EXCEPTION);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PaintableForm::getNullPaintableForm();;
     
 
@@ -168,6 +172,8 @@ logUtil->put(commonStrings->EXCEPTION, logUtil, commonStrings->EXCEPTION, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PaintableForm::getNullPaintableForm();;
     
 }
@@ -190,6 +196,8 @@ Object* ScrollSelectionForm::NULL_SCROLL_SELECTION_FORM = NullUtil::getInstance(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<ScrollSelectionForm*>(ScrollSelectionForm::NULL_SCROLL_SELECTION_FORM);
     
 }
@@ -210,6 +218,8 @@ Object* ScrollSelectionForm::NULL_SCROLL_SELECTION_HORIZONTAL_FORM = NullUtil::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<ScrollSelectionForm*>(ScrollSelectionForm::NULL_SCROLL_SELECTION_HORIZONTAL_FORM);
     
 }
@@ -228,6 +238,8 @@ this->scrollSelectionForm= scrollSelectionForm;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->scrollSelectionForm->paintItemHorizontal(graphics, index, item, dx, dy);;
     
 }
@@ -246,6 +258,8 @@ this->scrollSelectionForm= scrollSelectionForm;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->scrollSelectionForm->paintItemVertical(graphics, index, item, dx, dy);;
     
 }
@@ -264,6 +278,8 @@ this->scrollSelectionForm= scrollSelectionForm;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->scrollSelectionForm->paintItemTempHorizontal(graphics, index, item, dx, dy);;
     
 }
@@ -282,6 +298,8 @@ this->scrollSelectionForm= multipleScrollSelectionForm;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->scrollSelectionForm->getSelectedIndexForPointHorizontalDx(index, item, dx, dy);;
     
 }
@@ -300,6 +318,8 @@ this->scrollSelectionForm= multipleScrollSelectionForm;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->scrollSelectionForm->getSelectedIndexForPointVerticalDx(index, item, dx, dy);;
     
 }
@@ -318,6 +338,8 @@ this->scrollSelectionForm= multipleScrollSelectionForm;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->scrollSelectionForm->getSelectedIndexForPointTempHorizontalDx(index, item, dx, dy);;
     
 }
@@ -411,6 +433,8 @@ this->formTypeItemIndexDx= javaInner(new ScrollSelectionFormTempHorizontalDx(thi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return x +width +this->border;
     
 }
@@ -424,6 +448,8 @@ this->formTypeItemIndexDx= javaInner(new ScrollSelectionFormTempHorizontalDx(thi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return y +height +this->border;
     
 }
@@ -434,6 +460,8 @@ this->formTypeItemIndexDx= javaInner(new ScrollSelectionFormTempHorizontalDx(thi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -444,6 +472,8 @@ this->formTypeItemIndexDx= javaInner(new ScrollSelectionFormTempHorizontalDx(thi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dx -this->halfBorder;
     
 }
@@ -454,6 +484,8 @@ this->formTypeItemIndexDx= javaInner(new ScrollSelectionFormTempHorizontalDx(thi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dx +this->getDiffX(item);
     
 }
@@ -464,6 +496,8 @@ this->formTypeItemIndexDx= javaInner(new ScrollSelectionFormTempHorizontalDx(thi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dx +this->getDiffX(item);
     
 }
@@ -474,6 +508,8 @@ this->formTypeItemIndexDx= javaInner(new ScrollSelectionFormTempHorizontalDx(thi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PaintableForm::append(item);;
     
 }
@@ -493,6 +529,8 @@ this->formTypeItemIndexDx= javaInner(new ScrollSelectionFormTempHorizontalDx(thi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->get(index);;
     
 
@@ -503,6 +541,8 @@ this->formTypeItemIndexDx= javaInner(new ScrollSelectionFormTempHorizontalDx(thi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ABCustomItem::getNullInstance();;
     
 
@@ -537,6 +577,8 @@ nextItem= dynamic_cast<ABCustomItem*>(this->get(index));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return index;
     
 
@@ -548,6 +590,8 @@ nextItem= dynamic_cast<ABCustomItem*>(this->get(index));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 }
@@ -558,6 +602,8 @@ nextItem= dynamic_cast<ABCustomItem*>(this->get(index));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -648,6 +694,8 @@ this->logUtil->putF(stringBuffer->toString(), this, ScrollSelectionForm::GET_SEL
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return index;
     
 
@@ -713,6 +761,8 @@ this->logUtil->putF(stringBuffer->toString(), this, ScrollSelectionForm::GET_SEL
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 }
@@ -732,6 +782,8 @@ this->logUtil->putF(stringBuffer->toString(), this, ScrollSelectionForm::GET_SEL
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 
@@ -837,6 +889,8 @@ this->logUtil->putF(stringBuffer->toString(), this, ScrollSelectionForm::GET_SEL
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 }
@@ -853,6 +907,8 @@ this->logUtil->putF(stringBuffer->toString(), this, ScrollSelectionForm::GET_SEL
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -862,6 +918,8 @@ this->logUtil->putF(stringBuffer->toString(), this, ScrollSelectionForm::GET_SEL
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -889,6 +947,8 @@ graphics->drawRect(x -this->halfBorder -adjustedBorder, y -this->halfBorder -adj
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->scrollSelectionFormFormTypeItemIndexPaintable->paint(graphics, index, item, x, y);;
     
 }
@@ -905,6 +965,8 @@ item->paintUnselected(graphics, x, y);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->scrollSelectionFormFormTypeItemIndexPaintable->paint(graphics, index, item, x, y);;
     
 }
@@ -915,6 +977,8 @@ item->paintUnselected(graphics, x, y);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -925,6 +989,8 @@ item->paintUnselected(graphics, x, y);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->x;
     
 }
@@ -935,6 +1001,8 @@ item->paintUnselected(graphics, x, y);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->y;
     
 }
@@ -951,6 +1019,8 @@ this->buttonBasicColor= buttonBasicColor;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->buttonBasicColor;
     
 }

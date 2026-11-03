@@ -109,6 +109,8 @@ this->animationInterface->paintThreedXYZ(graphics, this->x, this->y, this->z);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->animationInterface;
     
 }

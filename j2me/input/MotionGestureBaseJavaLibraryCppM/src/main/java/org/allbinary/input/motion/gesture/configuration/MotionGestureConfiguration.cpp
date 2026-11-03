@@ -98,6 +98,8 @@ this->activeCommands->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->activeCommands;
     
 }
@@ -108,6 +110,8 @@ this->activeCommands->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->diagonalMotionGestureAllowed;
     
 }
@@ -118,6 +122,8 @@ this->activeCommands->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->executingActions;
     
 }
@@ -140,6 +146,8 @@ this->diagonalMotionGestureAllowed= diagonalMotionGestureAllowed;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->diagonalTolerance;
     
 }
@@ -156,6 +164,8 @@ this->diagonalTolerance= diagonalTolerance;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->minimumMotionGesture;
     
 }
@@ -172,6 +182,8 @@ this->minimumMotionGesture= minimumMotionGesture;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->button;
     
 }
@@ -188,6 +200,8 @@ this->button= button;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->color;
     
 }
@@ -204,6 +218,8 @@ this->color= color;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->mouseButtonMask;
     
 }

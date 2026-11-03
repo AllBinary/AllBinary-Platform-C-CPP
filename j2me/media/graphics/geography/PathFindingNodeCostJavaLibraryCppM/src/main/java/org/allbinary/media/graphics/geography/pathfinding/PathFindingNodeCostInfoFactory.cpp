@@ -115,6 +115,8 @@ pathFindingNodeCostInfo->setCalculatedTotalCost();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return pathFindingNodeCostInfo;
     
 }
@@ -125,6 +127,8 @@ pathFindingNodeCostInfo->setCalculatedTotalCost();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->pathFindingNodeCostInfoAdjacencyList[geographicMapCellPosition->getId()][goingToFromGeographicMapCellPosition->getId()];
     
 }
@@ -135,6 +139,8 @@ pathFindingNodeCostInfo->setCalculatedTotalCost();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getInstance(comingFromGeographicMapCellPosition, geographicMapCellPosition)->totalCostP;
     
 }

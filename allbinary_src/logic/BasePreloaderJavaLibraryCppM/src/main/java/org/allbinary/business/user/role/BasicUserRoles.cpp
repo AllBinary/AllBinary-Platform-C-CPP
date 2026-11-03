@@ -75,6 +75,8 @@ BasicUserRoles* BasicUserRoles::instance = BasicUserRoles::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BasicUserRoles::instance;
     
 }
@@ -107,6 +109,8 @@ BasicUserRoles* BasicUserRoles::instance = BasicUserRoles::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return userRole;
     
 
@@ -127,6 +131,8 @@ BasicUserRoles* BasicUserRoles::instance = BasicUserRoles::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->roleVector;
     
 }

@@ -136,6 +136,8 @@ GenericOperatingSystem::GenericOperatingSystem() : characterSet(new CharacterSet
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->osName;
     
 }
@@ -146,6 +148,8 @@ GenericOperatingSystem::GenericOperatingSystem() : characterSet(new CharacterSet
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->osVersion;
     
 }
@@ -156,6 +160,8 @@ GenericOperatingSystem::GenericOperatingSystem() : characterSet(new CharacterSet
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->osArch;
     
 }
@@ -166,6 +172,8 @@ GenericOperatingSystem::GenericOperatingSystem() : characterSet(new CharacterSet
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->characterSet;
     
 }
@@ -176,6 +184,8 @@ GenericOperatingSystem::GenericOperatingSystem() : characterSet(new CharacterSet
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -186,6 +196,8 @@ GenericOperatingSystem::GenericOperatingSystem() : characterSet(new CharacterSet
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 100;
     
 }
@@ -196,6 +208,8 @@ GenericOperatingSystem::GenericOperatingSystem() : characterSet(new CharacterSet
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 100;
     
 }
@@ -206,6 +220,8 @@ GenericOperatingSystem::GenericOperatingSystem() : characterSet(new CharacterSet
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->scalable;
     
 }
@@ -216,6 +232,8 @@ GenericOperatingSystem::GenericOperatingSystem() : characterSet(new CharacterSet
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -250,6 +268,8 @@ osBuffer->append(NEW_LINE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return osBuffer->toString();;
     
 }

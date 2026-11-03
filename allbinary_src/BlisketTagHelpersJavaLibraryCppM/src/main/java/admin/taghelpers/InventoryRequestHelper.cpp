@@ -138,6 +138,8 @@ InventoryEntityFactory::getInstance()->getInventoryEntityInstance()->insert(valu
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -160,6 +162,8 @@ InventoryEntityFactory::getInstance()->getInventoryEntityInstance()->insert(valu
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -207,6 +211,8 @@ stringBuffer->append(" from to the Inventory table");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -229,6 +235,8 @@ stringBuffer->append(" from to the Inventory table");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -259,6 +267,8 @@ this->insert();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -281,6 +291,8 @@ this->insert();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -293,6 +305,8 @@ this->insert();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->itemInterface;
     
 }

@@ -142,6 +142,8 @@ PaymentTransactionInterfaceRequestFactory* PaymentTransactionInterfaceRequestFac
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PaymentTransactionInterfaceRequestFactory::instance;
     
 }
@@ -176,6 +178,8 @@ PaymentTransactionInterfaceRequestFactory::PaymentTransactionInterfaceRequestFac
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->generateFromTestData(transformInfoInterface);;
     
 
@@ -228,6 +232,8 @@ orderReview->setPaymentInfo(orderPaymentInfo);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return paymentTransactionInterface;
     
 
@@ -417,6 +423,8 @@ orderReview->setPaymentInfo(payment);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return paymentTransactionInterface;
     
 

@@ -82,6 +82,8 @@ MotionRectangleConstraints::MotionRectangleConstraints(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->minDimension;
     
 }
@@ -92,6 +94,8 @@ MotionRectangleConstraints::MotionRectangleConstraints(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->maxDimension;
     
 }
@@ -106,6 +110,8 @@ MotionRectangleConstraints::MotionRectangleConstraints(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -116,6 +122,8 @@ MotionRectangleConstraints::MotionRectangleConstraints(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -133,6 +141,8 @@ MotionRectangleConstraints::MotionRectangleConstraints(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -143,6 +153,8 @@ MotionRectangleConstraints::MotionRectangleConstraints(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -160,6 +172,8 @@ MotionRectangleConstraints::MotionRectangleConstraints(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -170,6 +184,8 @@ MotionRectangleConstraints::MotionRectangleConstraints(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -206,6 +222,8 @@ this->maxDimension= maxDimension;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->maxMotionRectangles;
     
 }
@@ -222,6 +240,8 @@ this->maxMotionRectangles= maxMotionRectangles;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->minArea;
     
 }

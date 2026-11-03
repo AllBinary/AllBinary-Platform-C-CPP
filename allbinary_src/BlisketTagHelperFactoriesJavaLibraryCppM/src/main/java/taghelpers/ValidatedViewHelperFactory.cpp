@@ -87,6 +87,8 @@ ValidatedViewHelperFactory::ValidatedViewHelperFactory() : logUtil(LogUtil::getI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new ValidationViewHelper(hashMap, pageContext);
     
 
@@ -106,6 +108,8 @@ ValidatedViewHelperFactory::ValidatedViewHelperFactory() : logUtil(LogUtil::getI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

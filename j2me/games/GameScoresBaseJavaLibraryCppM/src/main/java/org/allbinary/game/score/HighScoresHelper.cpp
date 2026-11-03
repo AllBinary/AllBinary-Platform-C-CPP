@@ -96,6 +96,8 @@ this->lastIndex= this->circularIndexUtil->getIndex();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return highScores;
     
 }
@@ -110,6 +112,8 @@ this->lastIndex= this->circularIndexUtil->getIndex();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -145,6 +149,8 @@ highScores= this->highScoresArrayP[index];
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return anyScores;
     
 }

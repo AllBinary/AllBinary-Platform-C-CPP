@@ -105,6 +105,8 @@ ValidationView::ValidationView(TransformInfoInterface* transformInfoInterface) :
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -123,6 +125,8 @@ ValidationView::ValidationView(TransformInfoInterface* transformInfoInterface) :
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -143,6 +147,8 @@ this->basketReview= orderItems->getBasketReview(this->order->getId());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -155,6 +161,8 @@ this->basketReview= orderItems->getBasketReview(this->order->getId());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return valid;
     
 
@@ -174,6 +182,8 @@ this->basketReview= orderItems->getBasketReview(this->order->getId());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -254,6 +264,8 @@ stringBuffer->append("<br />");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -273,6 +285,8 @@ stringBuffer->append("<br />");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Validating Form";
     
 }
@@ -285,6 +299,8 @@ stringBuffer->append("<br />");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -295,6 +311,8 @@ stringBuffer->append("<br />");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

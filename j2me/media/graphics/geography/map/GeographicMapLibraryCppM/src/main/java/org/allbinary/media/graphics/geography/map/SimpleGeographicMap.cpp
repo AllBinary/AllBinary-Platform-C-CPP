@@ -98,6 +98,8 @@ this->setForegroundBasicColor(foregroundBasicColor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->id;
     
 }
@@ -108,6 +110,8 @@ this->setForegroundBasicColor(foregroundBasicColor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }
@@ -122,6 +126,8 @@ this->setForegroundBasicColor(foregroundBasicColor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->tiledLayer;
     
 }
@@ -152,6 +158,8 @@ this->setForegroundBasicColor(foregroundBasicColor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->geographicMapCellTypeFactory->get(this->cellTypeIdToGeographicMapCellType[cellTypeId]);;
     
 }
@@ -162,6 +170,8 @@ this->setForegroundBasicColor(foregroundBasicColor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->cellTypeIdToGeographicMapCellType[cellTypeId];
     
 }
@@ -172,6 +182,8 @@ this->setForegroundBasicColor(foregroundBasicColor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->foregroundBasicColor;
     
 }
@@ -188,6 +200,8 @@ this->foregroundBasicColor= foregroundBasicColor;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->backgroundBasicColor;
     
 }

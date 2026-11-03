@@ -99,6 +99,8 @@ this->collidable= collidable;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getClass()->getName();;
     
 }
@@ -115,6 +117,8 @@ this->collidable= collidable;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->collidable;
     
 }
@@ -136,6 +140,8 @@ this->collidable= collidable;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->layerCollisionUtil->isCollision(ownerLayer, collisionLayer);;
     
 }
@@ -146,6 +152,8 @@ this->collidable= collidable;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->layerCollisionUtil->isCollision(ownerLayer, dynamic_cast<AllBinaryLayer*>(collidableInterfaceCompositeInterface));;
     
 }
@@ -171,6 +179,8 @@ this->collidable= collidable;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return CollisionTypeFactory::getInstance()->NONE;
     
 }

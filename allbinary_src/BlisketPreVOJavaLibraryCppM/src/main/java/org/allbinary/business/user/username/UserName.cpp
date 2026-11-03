@@ -86,6 +86,8 @@ UserName* UserName::instance = UserName::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return UserName::instance;
     
 }
@@ -108,6 +110,8 @@ this->userName= JavaBoxes::unbox<std::string>(hashMap->get(UserData::USERNAME));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->isValid(this->userName);;
     
 
@@ -127,6 +131,8 @@ this->userName= JavaBoxes::unbox<std::string>(hashMap->get(UserData::USERNAME));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -139,6 +145,8 @@ this->userName= JavaBoxes::unbox<std::string>(hashMap->get(UserData::USERNAME));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->userName;
     
 }
@@ -187,6 +195,8 @@ valid= booleanFactory->FALSE;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return valid;
     
 
@@ -206,6 +216,8 @@ valid= booleanFactory->FALSE;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -222,6 +234,8 @@ valid= booleanFactory->FALSE;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Please enter a User Name with more than 5 characters.<br/>";
     
 
@@ -231,6 +245,8 @@ valid= booleanFactory->FALSE;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 }

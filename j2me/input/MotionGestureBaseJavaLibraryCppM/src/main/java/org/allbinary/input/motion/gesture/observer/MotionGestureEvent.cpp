@@ -102,6 +102,8 @@ this->setMotionGesture(motionGesture);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->motionGesture;
     
 }
@@ -118,6 +120,8 @@ this->motionGesture= motionGesture;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->previousPoint;
     
 }
@@ -134,6 +138,8 @@ this->previousPoint= previousPoint;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->currentPoint;
     
 }
@@ -170,6 +176,8 @@ stringBuffer->appendint(TsUtil::getInstance()->hashCode(this));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -180,6 +188,8 @@ stringBuffer->appendint(TsUtil::getInstance()->hashCode(this));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->id;
     
 }

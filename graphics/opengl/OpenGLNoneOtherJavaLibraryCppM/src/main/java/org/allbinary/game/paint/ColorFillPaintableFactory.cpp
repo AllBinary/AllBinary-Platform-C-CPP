@@ -78,6 +78,8 @@ ColorFillPaintableFactory* ColorFillPaintableFactory::instance = ColorFillPainta
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ColorFillPaintableFactory::instance;
     
 }
@@ -95,6 +97,8 @@ ColorFillPaintableFactory* ColorFillPaintableFactory::instance = ColorFillPainta
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new OverScanColorFillPaintable(basicColor);
     
 
@@ -105,6 +109,8 @@ ColorFillPaintableFactory* ColorFillPaintableFactory::instance = ColorFillPainta
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new ColorFillPaintable(basicColor);
     
 

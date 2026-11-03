@@ -96,6 +96,8 @@ MakeCountedPartsSingletonArrayFactory* MakeCountedPartsSingletonArrayFactory::in
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return MakeCountedPartsSingletonArrayFactory::instance;
     
 }
@@ -176,6 +178,8 @@ newPartInterfaceArray[index]= dynamic_cast<PartInterface*>(this->list->get(index
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return newPartInterfaceArray;
     
 }

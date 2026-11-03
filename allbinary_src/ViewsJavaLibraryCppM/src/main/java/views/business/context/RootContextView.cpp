@@ -132,6 +132,8 @@ RootContextView::RootContextView(TransformInfoInterface* transformInfoInterface)
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return componentInterface->view();;
     
 
@@ -223,6 +225,8 @@ RootContextView::RootContextView(TransformInfoInterface* transformInfoInterface)
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return viewName;
     
 

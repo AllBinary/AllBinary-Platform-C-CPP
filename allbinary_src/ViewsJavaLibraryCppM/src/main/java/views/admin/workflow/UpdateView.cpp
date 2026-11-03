@@ -92,6 +92,8 @@ UpdateView::UpdateView(TransformInfoInterface* transformInfoInterface) : WorkFlo
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -111,6 +113,8 @@ UpdateView::UpdateView(TransformInfoInterface* transformInfoInterface) : WorkFlo
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -128,6 +132,8 @@ UpdateView::UpdateView(TransformInfoInterface* transformInfoInterface) : WorkFlo
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -147,6 +153,8 @@ UpdateView::UpdateView(TransformInfoInterface* transformInfoInterface) : WorkFlo
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Getting Validation Info";
     
 }
@@ -159,6 +167,8 @@ UpdateView::UpdateView(TransformInfoInterface* transformInfoInterface) : WorkFlo
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -169,6 +179,8 @@ UpdateView::UpdateView(TransformInfoInterface* transformInfoInterface) : WorkFlo
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

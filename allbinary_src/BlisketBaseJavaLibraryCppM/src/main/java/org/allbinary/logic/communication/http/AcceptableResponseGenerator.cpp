@@ -75,6 +75,8 @@ AcceptableResponseGenerator* AcceptableResponseGenerator::instance = AcceptableR
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AcceptableResponseGenerator::instance;
     
 }
@@ -151,6 +153,8 @@ AcceptableResponseGenerator::AcceptableResponseGenerator() : logUtil(LogUtil::ge
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 

@@ -120,6 +120,8 @@ this->z += dz;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->x;
     
 }
@@ -130,6 +132,8 @@ this->z += dz;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->y;
     
 }
@@ -140,6 +144,8 @@ this->z += dz;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->z;
     
 }
@@ -150,6 +156,8 @@ this->z += dz;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->width;
     
 }
@@ -160,6 +168,8 @@ this->z += dz;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->height;
     
 }
@@ -170,6 +180,8 @@ this->z += dz;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -186,6 +198,8 @@ this->visible= visible;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->visible;
     
 }

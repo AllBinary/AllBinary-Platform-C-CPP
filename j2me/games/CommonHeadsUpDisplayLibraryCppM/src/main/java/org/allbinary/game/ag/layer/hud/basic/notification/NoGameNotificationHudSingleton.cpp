@@ -78,6 +78,8 @@ NoGameNotificationHudSingleton* NoGameNotificationHudSingleton::instance = NoGam
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NoGameNotificationHudSingleton::instance;
     
 }
@@ -134,6 +136,8 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->CONSTRUCTOR, &
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->gameNotificationHud;
     
 }

@@ -103,6 +103,8 @@ currentPoints[0][index][1]= currentPoints2[index][1];
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new VectorAnimation(currentPoints, basicColor, animationBehavior);
     
 }
@@ -226,6 +228,8 @@ IndexedAnimation::setAlpha(alpha);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getSize();;
     
 }
@@ -236,6 +240,8 @@ IndexedAnimation::setAlpha(alpha);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->currentPoints.size();
     
 }
@@ -250,6 +256,8 @@ IndexedAnimation::setAlpha(alpha);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PrimitiveIntUtil::getArrayInstance();;
     
 }
@@ -343,6 +351,8 @@ this->paintVectors(graphics, x, y);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->circularIndexUtil->getIndex();;
     
 }
@@ -359,6 +369,8 @@ this->circularIndexUtil->setIndex(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->currentPoints[frame];
     
 }

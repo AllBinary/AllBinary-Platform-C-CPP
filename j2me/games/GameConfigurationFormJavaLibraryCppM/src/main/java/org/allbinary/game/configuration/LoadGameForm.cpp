@@ -218,6 +218,8 @@ choiceGroup->append(anyType->toString(), NullImage::NULL_IMAGE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return choiceGroup;
     
 }
@@ -235,6 +237,8 @@ choiceGroup->append(anyType->toString(), NullImage::NULL_IMAGE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return choiceGroup->getSelectedIndex();;
     
 
@@ -245,6 +249,8 @@ choiceGroup->append(anyType->toString(), NullImage::NULL_IMAGE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 
@@ -268,6 +274,8 @@ choiceGroup->append(anyType->toString(), NullImage::NULL_IMAGE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return value;
     
 
@@ -278,6 +286,8 @@ choiceGroup->append(anyType->toString(), NullImage::NULL_IMAGE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 

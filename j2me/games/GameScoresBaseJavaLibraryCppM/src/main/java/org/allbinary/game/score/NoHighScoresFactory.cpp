@@ -74,6 +74,8 @@ NoHighScoresFactory* NoHighScoresFactory::instance = NoHighScoresFactory::instan
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NoHighScoresFactory::instance;
     
 }
@@ -96,6 +98,8 @@ highScoresResultsListener->setHighScoresArray(this->NO_HIGH_SCORES);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new HighScoresHelperBase();
     
 }

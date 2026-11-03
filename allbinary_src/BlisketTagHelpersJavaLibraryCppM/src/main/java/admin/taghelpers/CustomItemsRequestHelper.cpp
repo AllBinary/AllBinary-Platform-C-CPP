@@ -148,6 +148,8 @@ values->put(EntryData::getInstance()->LASTMODIFIED, time);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return values;
     
 }
@@ -193,6 +195,8 @@ CustomItemsEntityFactory::getInstance()->getCustomItemsEntityInstance()->insert(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -215,6 +219,8 @@ CustomItemsEntityFactory::getInstance()->getCustomItemsEntityInstance()->insert(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -243,6 +249,8 @@ CustomItemsEntityFactory::getInstance()->getCustomItemsEntityInstance()->insert(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -265,6 +273,8 @@ CustomItemsEntityFactory::getInstance()->getCustomItemsEntityInstance()->insert(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -296,6 +306,8 @@ CustomItemsEntityFactory::getInstance()->getCustomItemsEntityInstance()->update(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -318,6 +330,8 @@ CustomItemsEntityFactory::getInstance()->getCustomItemsEntityInstance()->update(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }

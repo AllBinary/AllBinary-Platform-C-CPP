@@ -84,6 +84,8 @@ this->layerManagerLogging= layerManagerLogging;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->list->contains(layerInterface);;
     
 }
@@ -124,6 +126,8 @@ nextLayerInterface= dynamic_cast<AllBinaryLayer*>(this->list->get(index));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -167,6 +171,8 @@ nextLayerInterface= dynamic_cast<AllBinaryLayer*>(this->list->get(index));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -226,6 +232,8 @@ this->layerManagerLogging->removeResult(this, layerInterface, result);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<Layer*>(this->list->objectArray[index]);
     
 }
@@ -236,6 +244,8 @@ this->layerManagerLogging->removeResult(this, layerInterface, result);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->list->size();;
     
 }

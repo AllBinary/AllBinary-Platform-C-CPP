@@ -103,6 +103,8 @@ GameFeatureUtil* GameFeatureUtil::instance = GameFeatureUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return GameFeatureUtil::instance;
     
 }
@@ -357,6 +359,8 @@ name= JavaBoxes::unbox<std::string>(this->enumerationUtil->nextElement(enumerati
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -368,6 +372,8 @@ name= JavaBoxes::unbox<std::string>(this->enumerationUtil->nextElement(enumerati
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

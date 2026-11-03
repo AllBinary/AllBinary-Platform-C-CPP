@@ -69,6 +69,8 @@ ImageIOUtil::ImageIOUtil() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ImageIO::read(AbFileNativeUtil::get(file));;
     
 }
@@ -81,6 +83,8 @@ ImageIOUtil::ImageIOUtil() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ImageIO::write(renderedImage, name, AbFileNativeUtil::get(file));;
     
 }

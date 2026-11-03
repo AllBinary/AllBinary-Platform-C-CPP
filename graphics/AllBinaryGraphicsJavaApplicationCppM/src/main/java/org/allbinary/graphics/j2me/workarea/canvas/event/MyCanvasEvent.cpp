@@ -76,6 +76,8 @@ MyCanvasEvent::MyCanvasEvent(Object* source) : java::util::EventObject(source){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return java::util::EventObject::getSource();;
     
 }
@@ -86,6 +88,8 @@ MyCanvasEvent::MyCanvasEvent(Object* source) : java::util::EventObject(source){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return java::util::EventObject::toString();;
     
 }
@@ -99,6 +103,8 @@ MyCanvasEvent::MyCanvasEvent(Object* source) : java::util::EventObject(source){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return myEventSource->getCommand();;
     
 }
@@ -112,6 +118,8 @@ MyCanvasEvent::MyCanvasEvent(Object* source) : java::util::EventObject(source){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return myEventSource->getTreeNode();;
     
 }
@@ -125,6 +133,8 @@ MyCanvasEvent::MyCanvasEvent(Object* source) : java::util::EventObject(source){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return myEventSource->getAngle();;
     
 }

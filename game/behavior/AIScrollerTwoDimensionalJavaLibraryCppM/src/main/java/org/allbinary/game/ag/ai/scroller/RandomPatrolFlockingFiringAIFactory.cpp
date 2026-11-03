@@ -97,6 +97,8 @@ artificialIntelligenceInterface[1]= new TimedFireAI(1800, ownerLayerInterface, g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new ArrayAI(artificialIntelligenceInterface, ownerLayerInterface, gameInput);
     
 }

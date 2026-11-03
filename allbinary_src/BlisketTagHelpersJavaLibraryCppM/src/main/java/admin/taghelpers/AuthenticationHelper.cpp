@@ -177,6 +177,8 @@ this->timeout= this->weblisketSession->getTimeout();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return int32_t(TagSupport::EVAL_BODY_INCLUDE);
     
 
@@ -196,6 +198,8 @@ this->timeout= this->weblisketSession->getTimeout();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -254,6 +258,8 @@ this->logUtil->putF(stringBuffer->toString(), this, "isSessionOld()");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -279,6 +285,8 @@ this->logUtil->putF(stringBuffer->toString(), this, "isSessionOld()");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->isRarelyUsedSession();;
     
 }
@@ -350,6 +358,8 @@ this->logUtil->putF(stringBuffer->toString(), this, "isRarelyUsedSession()");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -367,6 +377,8 @@ stringBuffer->append("Trying New login<p/>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -389,6 +401,8 @@ stringBuffer->append("Trying New login<p/>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -412,6 +426,8 @@ stringBuffer->append("Trying New login<p/>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -434,6 +450,8 @@ stringBuffer->append("Trying New login<p/>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -452,6 +470,8 @@ stringBuffer->append("Trying New login<p/>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -462,6 +482,8 @@ stringBuffer->append("Trying New login<p/>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -528,6 +550,8 @@ stringBuffer->append("Trying New login<p/>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -540,6 +564,8 @@ stringBuffer->append("Trying New login<p/>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -554,6 +580,8 @@ stringBuffer->append("Trying New login<p/>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -579,6 +607,8 @@ stringBuffer->append("Trying New login<p/>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -598,6 +628,8 @@ stringBuffer->append("Trying New login<p/>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -667,6 +699,8 @@ login= userEntityInterface->login(userName, password);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -681,6 +715,8 @@ this->nextAttempt();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -692,6 +728,8 @@ this->nextAttempt();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -711,6 +749,8 @@ this->nextAttempt();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -731,6 +771,8 @@ this->nextAttempt();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -745,6 +787,8 @@ this->nextAttempt();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -767,6 +811,8 @@ this->nextAttempt();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -842,6 +888,8 @@ stringBuffer->append("<br/>\n");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -852,6 +900,8 @@ stringBuffer->append("<br/>\n");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error";
     
 }
@@ -864,6 +914,8 @@ stringBuffer->append("<br/>\n");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->role;
     
 }

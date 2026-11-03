@@ -90,6 +90,8 @@ money->add("3.50");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return money;
     
 }
@@ -100,6 +102,8 @@ money->add("3.50");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->description;
     
 }
@@ -110,6 +114,8 @@ money->add("3.50");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }

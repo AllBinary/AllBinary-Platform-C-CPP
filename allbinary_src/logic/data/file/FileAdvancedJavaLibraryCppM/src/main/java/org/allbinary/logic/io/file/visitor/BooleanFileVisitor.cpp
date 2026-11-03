@@ -84,6 +84,8 @@ PreLogUtil::put(JavaString::valueOf("Filter BasicArrayList: ") +JavaString::valu
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->visit(dynamic_cast<AbFile*>(anyType));
     
 }
@@ -116,6 +118,8 @@ nextFileFilterString= JavaBoxes::unbox<std::string>(list->get(index));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -127,6 +131,8 @@ nextFileFilterString= JavaBoxes::unbox<std::string>(list->get(index));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -137,6 +143,8 @@ nextFileFilterString= JavaBoxes::unbox<std::string>(list->get(index));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->filterStringBasicArrayList;
     
 }
@@ -153,6 +161,8 @@ this->filterStringBasicArrayList= filterStringBasicArrayList;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }

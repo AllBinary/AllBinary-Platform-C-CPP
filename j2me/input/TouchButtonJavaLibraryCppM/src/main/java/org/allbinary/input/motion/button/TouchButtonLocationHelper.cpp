@@ -92,6 +92,8 @@ this->rowsRemainderHalf= (this->rowsRemainder>>1);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->totalColumns;
     
 }
@@ -102,6 +104,8 @@ this->rowsRemainderHalf= (this->rowsRemainder>>1);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->totalRows;
     
 }
@@ -112,6 +116,8 @@ this->rowsRemainderHalf= (this->rowsRemainder>>1);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->columnsRemainder;
     
 }
@@ -122,6 +128,8 @@ this->rowsRemainderHalf= (this->rowsRemainder>>1);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->rowsRemainder;
     
 }
@@ -132,6 +140,8 @@ this->rowsRemainderHalf= (this->rowsRemainder>>1);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->columnsRemainderHalf;
     
 }
@@ -142,6 +152,8 @@ this->rowsRemainderHalf= (this->rowsRemainder>>1);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->rowsRemainderHalf;
     
 }
@@ -179,6 +191,8 @@ stringBuffer->appendint(this->rowsRemainderHalf);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

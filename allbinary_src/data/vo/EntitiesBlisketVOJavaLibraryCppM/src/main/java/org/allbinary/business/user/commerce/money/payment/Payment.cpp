@@ -198,6 +198,8 @@ Payment::Payment(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return aFalse;
     
 
@@ -211,6 +213,8 @@ Payment::Payment(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return aFalse;
     
 
@@ -224,6 +228,8 @@ Payment::Payment(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return aFalse;
     
 
@@ -237,6 +243,8 @@ Payment::Payment(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return aFalse;
     
 
@@ -250,6 +258,8 @@ Payment::Payment(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return aFalse;
     
 
@@ -259,6 +269,8 @@ Payment::Payment(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 }
@@ -347,6 +359,8 @@ this->number= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->id;
     
 }
@@ -357,6 +371,8 @@ this->number= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }
@@ -367,6 +383,8 @@ this->number= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->type;
     
 }
@@ -377,6 +395,8 @@ this->number= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->expiration;
     
 }
@@ -387,6 +407,8 @@ this->number= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->encryption;
     
 }
@@ -397,6 +419,8 @@ this->number= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->number;
     
 }
@@ -407,6 +431,8 @@ this->number= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->tenderType;
     
 }
@@ -417,6 +443,8 @@ this->number= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->transactionType;
     
 }
@@ -427,6 +455,8 @@ this->number= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->aba;
     
 }
@@ -437,6 +467,8 @@ this->number= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->account;
     
 }
@@ -447,6 +479,8 @@ this->number= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->accountType;
     
 }
@@ -457,6 +491,8 @@ this->number= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->authorizationCode;
     
 }
@@ -467,6 +503,8 @@ this->number= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->checkNumber;
     
 }
@@ -477,6 +515,8 @@ this->number= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->checkType;
     
 }
@@ -487,6 +527,8 @@ this->number= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->driversLicense;
     
 }
@@ -497,6 +539,8 @@ this->number= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->magneticInkCheckReader;
     
 }
@@ -511,6 +555,8 @@ this->number= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::substring(this->number, this->number.size() -4);;
     
 
@@ -521,6 +567,8 @@ this->number= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Invalid #";
     
 
@@ -534,6 +582,8 @@ this->number= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->isDefault_;
     
 }
@@ -588,6 +638,8 @@ hashMap->put(PaymentData::MAGNETICINKCHECKREADER, this->magneticInkCheckReader);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }
@@ -606,6 +658,8 @@ hashMap->put(PaymentData::MAGNETICINKCHECKREADER, this->magneticInkCheckReader);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }
@@ -616,6 +670,8 @@ hashMap->put(PaymentData::MAGNETICINKCHECKREADER, this->magneticInkCheckReader);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -626,6 +682,8 @@ hashMap->put(PaymentData::MAGNETICINKCHECKREADER, this->magneticInkCheckReader);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -636,6 +694,8 @@ hashMap->put(PaymentData::MAGNETICINKCHECKREADER, this->magneticInkCheckReader);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -646,6 +706,8 @@ hashMap->put(PaymentData::MAGNETICINKCHECKREADER, this->magneticInkCheckReader);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -656,6 +718,8 @@ hashMap->put(PaymentData::MAGNETICINKCHECKREADER, this->magneticInkCheckReader);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

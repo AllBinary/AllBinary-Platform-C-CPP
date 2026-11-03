@@ -70,6 +70,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new GameKeyEvent(anyType, sourceId, 0, 0, key, false);
     
 }
@@ -114,6 +116,8 @@ this->repeated= repeated;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->repeated;
     
 }
@@ -124,6 +128,8 @@ this->repeated= repeated;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->key;
     
 }
@@ -141,6 +147,8 @@ stringBuffer->appendint(this->getKey());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -151,6 +159,8 @@ stringBuffer->appendint(this->getKey());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->originalKey;
     
 }
@@ -167,6 +177,8 @@ this->originalKey= originalKey;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->gameActionKey;
     
 }
@@ -183,6 +195,8 @@ this->gameActionKey= gameActionKey;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->sourceId;
     
 }

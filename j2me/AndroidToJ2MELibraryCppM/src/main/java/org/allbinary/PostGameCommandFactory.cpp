@@ -81,6 +81,8 @@ PostGameCommandFactory* PostGameCommandFactory::instance = PostGameCommandFactor
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PostGameCommandFactory::instance;
     
 }

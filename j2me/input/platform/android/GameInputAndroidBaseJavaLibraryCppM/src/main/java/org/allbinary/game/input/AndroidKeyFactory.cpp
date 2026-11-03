@@ -81,6 +81,8 @@ this->logUtil->putF("Start/End", this, commonStrings->INIT);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -94,6 +96,8 @@ this->logUtil->putF("Start/End", this, commonStrings->INIT);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -103,6 +107,8 @@ this->logUtil->putF("Start/End", this, commonStrings->INIT);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -113,6 +119,8 @@ this->logUtil->putF("Start/End", this, commonStrings->INIT);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -127,6 +135,8 @@ this->logUtil->putF("Start/End", this, commonStrings->INIT);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -136,6 +146,8 @@ this->logUtil->putF("Start/End", this, commonStrings->INIT);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -150,6 +162,8 @@ this->logUtil->putF("Start/End", this, commonStrings->INIT);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -159,6 +173,8 @@ this->logUtil->putF("Start/End", this, commonStrings->INIT);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -173,6 +189,8 @@ this->logUtil->putF("Start/End", this, commonStrings->INIT);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -182,6 +200,8 @@ this->logUtil->putF("Start/End", this, commonStrings->INIT);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -196,6 +216,8 @@ this->logUtil->putF("Start/End", this, commonStrings->INIT);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -205,6 +227,8 @@ this->logUtil->putF("Start/End", this, commonStrings->INIT);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -219,6 +243,8 @@ this->logUtil->putF("Start/End", this, commonStrings->INIT);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -228,6 +254,8 @@ this->logUtil->putF("Start/End", this, commonStrings->INIT);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -242,6 +270,8 @@ this->logUtil->putF("Start/End", this, commonStrings->INIT);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -255,6 +285,8 @@ this->logUtil->putF("Start/End", this, commonStrings->INIT);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -268,6 +300,8 @@ this->logUtil->putF("Start/End", this, commonStrings->INIT);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -277,6 +311,8 @@ this->logUtil->putF("Start/End", this, commonStrings->INIT);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

@@ -91,6 +91,8 @@ AbFileSystem* AbFileSystem::instance = AbFileSystem::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbFileSystem::instance;
     
 }
@@ -104,6 +106,8 @@ AbFileSystem* AbFileSystem::instance = AbFileSystem::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return file->isDirectory() || file->isFile();
     
 }
@@ -114,6 +118,8 @@ AbFileSystem* AbFileSystem::instance = AbFileSystem::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (new File(path))->isDirectory();;
     
 }
@@ -131,6 +137,8 @@ AbFileSystem* AbFileSystem::instance = AbFileSystem::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return file->list();;
     
 
@@ -141,6 +149,8 @@ AbFileSystem* AbFileSystem::instance = AbFileSystem::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->getArrayInstance();;
     
 
@@ -157,6 +167,8 @@ AbFileSystem* AbFileSystem::instance = AbFileSystem::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->readAsString(fileName, bytes);;
     
 }
@@ -194,6 +206,8 @@ closeable= idFile;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::fromChars(bytes, 0, size);
     
 
@@ -213,6 +227,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "readAsString", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 }
@@ -239,6 +255,8 @@ inputStream->close();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -251,6 +269,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CL
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

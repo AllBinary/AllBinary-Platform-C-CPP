@@ -86,6 +86,8 @@ BasicStoreWorkFlow::BasicStoreWorkFlow(HashMap<Object*, Object*>* propertiesHash
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaBoxes::unbox<std::string>(this->getPropertiesHashMap()->get(StoreFrontData::getInstance()->NAME));
     
 }

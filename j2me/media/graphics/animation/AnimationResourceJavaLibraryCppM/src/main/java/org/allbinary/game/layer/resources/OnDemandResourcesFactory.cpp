@@ -65,6 +65,8 @@ OnDemandResourcesFactory::OnDemandResourcesFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -75,6 +77,8 @@ OnDemandResourcesFactory::OnDemandResourcesFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return OnDemandResources::NULL_ON_DEMAND_RESOURCES;
     
 }

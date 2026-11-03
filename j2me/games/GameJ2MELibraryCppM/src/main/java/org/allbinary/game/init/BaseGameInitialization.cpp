@@ -271,6 +271,8 @@ this->allLoaded= true;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -284,6 +286,8 @@ this->allLoaded= true;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -293,6 +297,8 @@ this->allLoaded= true;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -324,6 +330,8 @@ this->gameInitialized= gameInitialized;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->gameInitialized;
     
 }
@@ -334,6 +342,8 @@ this->gameInitialized= gameInitialized;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->portion;
     
 }
@@ -350,6 +360,8 @@ this->initialized= initialized;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->initialized;
     
 }

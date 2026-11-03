@@ -76,6 +76,8 @@ OpenGLImageSpecificFactory* OpenGLImageSpecificFactory::instance = OpenGLImageSp
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return OpenGLImageSpecificFactory::instance;
     
 }
@@ -94,6 +96,8 @@ PreLogUtil::put((new StringMaker())->append("Selected Image Factory: ")->append(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->imageFactory;
     
 }

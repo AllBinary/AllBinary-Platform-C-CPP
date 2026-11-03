@@ -84,6 +84,8 @@ RawKeyEventHandler* RawKeyEventHandler::instance = RawKeyEventHandler::instance_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return RawKeyEventHandler::instance;
     
 }
@@ -211,6 +213,8 @@ eventListenerInterface->onEventRaw(keyCode, deviceId, repeated);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->eventListenerInterfaceList;
     
 }
@@ -260,6 +264,8 @@ index++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

@@ -117,6 +117,8 @@ this->animationInterfaceArray[this->circularIndexUtil->getIndex()]->setFrame(ind
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->animationInterfaceArray[this->circularIndexUtil->getIndex()]->getFrame();;
     
 }
@@ -129,6 +131,8 @@ this->animationInterfaceArray[this->circularIndexUtil->getIndex()]->setFrame(ind
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->animationInterfaceArray[this->circularIndexUtil->getIndex()]->getAnimationSize();;
     
 }
@@ -139,6 +143,8 @@ this->animationInterfaceArray[this->circularIndexUtil->getIndex()]->setFrame(ind
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->animationInterfaceArray[this->circularIndexUtil->getIndex()]->getSize();;
     
 }
@@ -179,6 +185,8 @@ this->animationInterfaceArray[this->circularIndexUtil->getIndex()]->nextRotation
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PrimitiveIntUtil::getArrayInstance();;
     
 }
@@ -201,6 +209,8 @@ this->animationInterfaceArray[this->circularIndexUtil->getIndex()]->paintThreedX
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->animationInterfaceArray[this->circularIndexUtil->getIndex()];
     
 }
@@ -268,6 +278,8 @@ this->animationInterfaceArray[this->circularIndexUtil->getIndex()]->adjustFrame(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->animationInterfaceArray[this->circularIndexUtil->getIndex()]->getAngleInfoP();;
     
 }
@@ -278,6 +290,8 @@ this->animationInterfaceArray[this->circularIndexUtil->getIndex()]->adjustFrame(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->animationInterfaceArray;
     
 }

@@ -78,6 +78,8 @@ Waypoint2LogHelper* Waypoint2LogHelper::instance = Waypoint2LogHelper::instance_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Waypoint2LogHelper::instance;
     
 }

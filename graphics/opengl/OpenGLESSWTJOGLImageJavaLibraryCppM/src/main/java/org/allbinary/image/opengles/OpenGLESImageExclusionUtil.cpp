@@ -72,6 +72,8 @@ OpenGLESImageExclusionUtil* OpenGLESImageExclusionUtil::instance = OpenGLESImage
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return OpenGLESImageExclusionUtil::instance;
     
 }
@@ -96,6 +98,8 @@ OpenGLESImageExclusionUtil::OpenGLESImageExclusionUtil() : list(new BasicArrayLi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -139,6 +143,8 @@ name= JavaBoxes::unbox<std::string>(this->list->get(index));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -149,6 +155,8 @@ name= JavaBoxes::unbox<std::string>(this->list->get(index));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 

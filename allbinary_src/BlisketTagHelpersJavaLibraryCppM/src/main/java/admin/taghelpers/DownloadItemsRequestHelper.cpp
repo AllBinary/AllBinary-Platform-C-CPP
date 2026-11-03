@@ -130,6 +130,8 @@ DownloadItemsEntityFactory::getInstance()->getDownloadItemsEntityInstance()->ins
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -152,6 +154,8 @@ DownloadItemsEntityFactory::getInstance()->getDownloadItemsEntityInstance()->ins
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -180,6 +184,8 @@ DownloadItemsEntityFactory::getInstance()->getDownloadItemsEntityInstance()->ins
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -202,6 +208,8 @@ DownloadItemsEntityFactory::getInstance()->getDownloadItemsEntityInstance()->ins
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -233,6 +241,8 @@ DownloadItemsEntityFactory::getInstance()->getDownloadItemsEntityInstance()->upd
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -255,6 +265,8 @@ DownloadItemsEntityFactory::getInstance()->getDownloadItemsEntityInstance()->upd
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }

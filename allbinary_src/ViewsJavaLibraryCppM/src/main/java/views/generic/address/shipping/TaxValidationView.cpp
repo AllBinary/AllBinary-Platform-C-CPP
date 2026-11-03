@@ -114,6 +114,8 @@ TaxValidationView::TaxValidationView(TransformInfoInterface* transformInfoInterf
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -142,6 +144,8 @@ TaxValidationView::TaxValidationView(TransformInfoInterface* transformInfoInterf
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -153,6 +157,8 @@ TaxValidationView::TaxValidationView(TransformInfoInterface* transformInfoInterf
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -163,6 +169,8 @@ TaxValidationView::TaxValidationView(TransformInfoInterface* transformInfoInterf
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 }
@@ -173,6 +181,8 @@ TaxValidationView::TaxValidationView(TransformInfoInterface* transformInfoInterf
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -183,6 +193,8 @@ TaxValidationView::TaxValidationView(TransformInfoInterface* transformInfoInterf
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

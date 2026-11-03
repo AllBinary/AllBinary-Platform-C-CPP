@@ -175,6 +175,8 @@ this->costArray[column][row]= node;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->search(dynamic_cast<PathFindingNode*>(startPathFindingNodeList->get(0)), dynamic_cast<PathFindingNode*>(endPathFindingNodeList->get(0)));;
     
 
@@ -190,6 +192,8 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "search", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->basicArrayListUtil->getImmutableInstance();;
     
 }
@@ -226,6 +230,8 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "search", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->searchN(dynamic_cast<PathFindingNode*>(startPathFindingNodeList->get(0)), dynamic_cast<PathFindingNode*>(endPathFindingNodeList->get(0)), multipassState);;
     
 
@@ -235,6 +241,8 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "search", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->basicArrayListUtil->getImmutableInstance();;
     
 }
@@ -255,6 +263,8 @@ pathList->add(list);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return pathList;
     
 }
@@ -284,6 +294,8 @@ this->findPathStart(startPathFindingNode->geographicMapCellPosition, endPathFind
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->basicArrayListUtil->getImmutableInstance();;
     
 
@@ -302,6 +314,8 @@ multipassState->step= 0;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return pathList;
     
 }
@@ -393,6 +407,8 @@ this->closedSet->add(current);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->extractPath(start, current);;
     
 
@@ -585,6 +601,8 @@ this->closedSet->add(current);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->extractPath(start, current);;
     
 
@@ -678,6 +696,8 @@ total++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->basicArrayListUtil->getImmutableInstance();;
     
 
@@ -716,6 +736,8 @@ this->basicArrayListUtil->reverse(path);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return path;
     
 }

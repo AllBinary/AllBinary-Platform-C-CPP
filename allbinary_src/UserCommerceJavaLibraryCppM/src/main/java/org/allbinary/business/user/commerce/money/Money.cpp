@@ -117,6 +117,8 @@ this->units= int64_t(units);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -127,6 +129,8 @@ this->units= int64_t(units);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -201,6 +205,8 @@ stringBuffer->append((int64_t(cents)).toString());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -249,6 +255,8 @@ localUnit += (int64_t(centsStr)).longValue();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return localUnit;
     
 }
@@ -259,6 +267,8 @@ localUnit += (int64_t(centsStr)).longValue();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->units;;
     
 }
@@ -269,6 +279,8 @@ localUnit += (int64_t(centsStr)).longValue();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->units;
     
 }
@@ -279,6 +291,8 @@ localUnit += (int64_t(centsStr)).longValue();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return convertUnitsTo.toCharArray();
     
 }

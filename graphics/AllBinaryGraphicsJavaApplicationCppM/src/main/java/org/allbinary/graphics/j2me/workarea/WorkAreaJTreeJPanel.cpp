@@ -188,6 +188,8 @@ basicArrayList->add(this->getNode(treePathArray[index]));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return basicArrayList;
     
 }
@@ -214,6 +216,8 @@ basicArrayList->add(this->getNode(treePathArray[index]));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 
@@ -226,6 +230,8 @@ basicArrayList->add(this->getNode(treePathArray[index]));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -416,6 +422,8 @@ this->repaint();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->rootTreeNode;
     
 }

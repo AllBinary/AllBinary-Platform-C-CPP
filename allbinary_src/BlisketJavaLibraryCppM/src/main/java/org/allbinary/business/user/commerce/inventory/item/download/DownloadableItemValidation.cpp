@@ -97,6 +97,8 @@ this->downloadableItem= downloadableItem;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -112,6 +114,8 @@ this->downloadableItem= downloadableItem;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -127,6 +131,8 @@ this->downloadableItem= downloadableItem;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -142,6 +148,8 @@ this->downloadableItem= downloadableItem;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -157,6 +165,8 @@ this->downloadableItem= downloadableItem;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -172,6 +182,8 @@ this->downloadableItem= downloadableItem;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -187,6 +199,8 @@ this->downloadableItem= downloadableItem;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -202,6 +216,8 @@ this->downloadableItem= downloadableItem;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -219,6 +235,8 @@ this->downloadableItem= downloadableItem;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -237,6 +255,8 @@ this->downloadableItem= downloadableItem;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -254,6 +274,8 @@ this->downloadableItem= downloadableItem;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -272,6 +294,8 @@ this->downloadableItem= downloadableItem;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -289,6 +313,8 @@ this->downloadableItem= downloadableItem;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -301,6 +327,8 @@ this->downloadableItem= downloadableItem;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -320,6 +348,8 @@ this->downloadableItem= downloadableItem;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -531,6 +561,8 @@ stringBuffer->append(" and > 0 digits.<br/>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -550,6 +582,8 @@ stringBuffer->append(" and > 0 digits.<br/>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Validating Form";
     
 }
@@ -562,6 +596,8 @@ stringBuffer->append(" and > 0 digits.<br/>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -572,6 +608,8 @@ stringBuffer->append(" and > 0 digits.<br/>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

@@ -91,6 +91,8 @@ Object* GameInputMotionEventProcessorAPI1::instance = NullUtil::getInstance()->N
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<GameInputMotionEventProcessorAPI1*>(GameInputMotionEventProcessorAPI1::instance);
     
 }

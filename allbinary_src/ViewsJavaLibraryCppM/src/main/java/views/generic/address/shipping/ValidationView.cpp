@@ -101,6 +101,8 @@ this->streetAddressList= billingAddressesEntity->get();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -138,6 +140,8 @@ this->streetAddressList= billingAddressesEntity->get();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -147,6 +151,8 @@ this->streetAddressList= billingAddressesEntity->get();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 }
@@ -157,6 +163,8 @@ this->streetAddressList= billingAddressesEntity->get();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "No Shipping Addresses to display.<br />";
     
 }
@@ -167,6 +175,8 @@ this->streetAddressList= billingAddressesEntity->get();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -177,6 +187,8 @@ this->streetAddressList= billingAddressesEntity->get();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

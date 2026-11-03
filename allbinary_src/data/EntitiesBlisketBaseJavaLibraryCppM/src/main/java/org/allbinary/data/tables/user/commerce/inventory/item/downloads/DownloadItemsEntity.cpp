@@ -217,6 +217,8 @@ returnVector->add(new DownloadableItem(hashMap));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return returnVector;
     
 }
@@ -266,6 +268,8 @@ returnVector->add(new DownloadableItem(hashMap));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return returnVector;
     
 }
@@ -283,6 +287,8 @@ stringBuffer->append(DownloadItemData::FILE)->append(this->sqlTypeStrings->MAX_C
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -293,6 +299,8 @@ stringBuffer->append(DownloadItemData::FILE)->append(this->sqlTypeStrings->MAX_C
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbSqlBean::createTable(this->createTableStatement());;
     
 }
@@ -303,6 +311,8 @@ stringBuffer->append(DownloadItemData::FILE)->append(this->sqlTypeStrings->MAX_C
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbSqlBean::dropTable();;
     
 }

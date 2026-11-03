@@ -156,6 +156,8 @@ keyAndValue->put(this->NOTHING, this->NOTHING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -175,6 +177,8 @@ keyAndValue->put(this->NOTHING, this->NOTHING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -197,6 +201,8 @@ keyAndValue->put(this->NOTHING, this->NOTHING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -225,6 +231,8 @@ keyAndValue->put(this->NOTHING, this->NOTHING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -244,6 +252,8 @@ keyAndValue->put(this->NOTHING, this->NOTHING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -266,6 +276,8 @@ keyAndValue->put(this->NOTHING, this->NOTHING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -322,6 +334,8 @@ insert(values);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->tableName +this->CREATED_SUCCESS;
     
 
@@ -341,6 +355,8 @@ stringBuffer->append(AbPathData::getInstance()->EXTENSION_SEP);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 

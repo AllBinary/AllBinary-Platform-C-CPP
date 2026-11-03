@@ -176,6 +176,8 @@ this->onMotionGestureEvent(ev);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 this->isMouseGestureOccurring= false;
@@ -202,6 +204,8 @@ this->logUtil->put((new StringMaker())->append(this->commonStrings->EXCEPTION_LA
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 

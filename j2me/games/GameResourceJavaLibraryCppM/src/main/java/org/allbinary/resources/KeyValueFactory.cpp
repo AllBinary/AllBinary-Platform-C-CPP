@@ -72,6 +72,8 @@ KeyValueFactory* KeyValueFactory::instance = KeyValueFactory::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return KeyValueFactory::instance;
     
 }
@@ -89,6 +91,8 @@ KeyValueFactory* KeyValueFactory::instance = KeyValueFactory::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return key;
     
 
@@ -98,6 +102,8 @@ KeyValueFactory* KeyValueFactory::instance = KeyValueFactory::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return value;
     
 }

@@ -85,6 +85,8 @@ AbFileSystem* AbFileSystem::instance = AbFileSystem::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbFileSystem::instance;
     
 }
@@ -95,6 +97,8 @@ AbFileSystem* AbFileSystem::instance = AbFileSystem::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -105,6 +109,8 @@ AbFileSystem* AbFileSystem::instance = AbFileSystem::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -115,6 +121,8 @@ AbFileSystem* AbFileSystem::instance = AbFileSystem::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->getArrayInstance();;
     
 }
@@ -128,6 +136,8 @@ AbFileSystem* AbFileSystem::instance = AbFileSystem::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->readAsString(fileName, bytes);;
     
 }
@@ -138,6 +148,8 @@ AbFileSystem* AbFileSystem::instance = AbFileSystem::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 }
@@ -164,6 +176,8 @@ inputStream->close();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -176,6 +190,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CL
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

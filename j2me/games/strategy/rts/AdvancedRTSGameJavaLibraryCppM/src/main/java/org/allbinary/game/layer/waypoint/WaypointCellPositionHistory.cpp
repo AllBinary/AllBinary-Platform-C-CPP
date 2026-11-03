@@ -78,6 +78,8 @@ WaypointCellPositionHistory* WaypointCellPositionHistory::SINGLETON = WaypointCe
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return WaypointCellPositionHistory::SINGLETON;
     
 }
@@ -162,6 +164,8 @@ this->layerList->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->positionList->contains(cellPosition);;
     
 }
@@ -183,6 +187,8 @@ this->layerList->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -194,6 +200,8 @@ this->layerList->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -211,6 +219,8 @@ this->layerList->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<AllBinaryLayer*>(this->layerList->get(index));
     
 
@@ -221,6 +231,8 @@ this->layerList->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AllBinaryLayer::NULL_ALLBINARY_LAYER;
     
 

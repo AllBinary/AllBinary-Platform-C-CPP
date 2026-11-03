@@ -77,6 +77,8 @@ BooleanUtil* BooleanUtil::instance = BooleanUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BooleanUtil::instance;
     
 }
@@ -103,6 +105,8 @@ BooleanUtil::BooleanUtil() : tsUtil(TsUtil::getInstance()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -119,6 +123,8 @@ BooleanUtil::BooleanUtil() : tsUtil(TsUtil::getInstance()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -132,6 +138,8 @@ BooleanUtil::BooleanUtil() : tsUtil(TsUtil::getInstance()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -166,6 +174,8 @@ BooleanUtil::BooleanUtil() : tsUtil(TsUtil::getInstance()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -175,6 +185,8 @@ BooleanUtil::BooleanUtil() : tsUtil(TsUtil::getInstance()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -202,6 +214,8 @@ stringMaker->appendboolean(booleanArray[index]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringMaker->toString();;
     
 }

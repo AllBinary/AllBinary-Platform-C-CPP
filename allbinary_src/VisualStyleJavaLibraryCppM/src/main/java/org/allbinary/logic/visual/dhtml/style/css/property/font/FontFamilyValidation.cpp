@@ -122,6 +122,8 @@ FontFamilyValidation::FontFamilyValidation(Node* node) : FontFamilyView(node), l
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return valid;
     
 
@@ -141,6 +143,8 @@ FontFamilyValidation::FontFamilyValidation(Node* node) : FontFamilyView(node), l
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -162,6 +166,8 @@ stringBuffer->append("Css Font Family Property Validation Error");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -181,6 +187,8 @@ stringBuffer->append("Css Font Family Property Validation Error");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Validating Data";
     
 }
@@ -195,6 +203,8 @@ stringBuffer->append("Css Font Family Property Validation Error");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -207,6 +217,8 @@ stringBuffer->append("Css Font Family Property Validation Error");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

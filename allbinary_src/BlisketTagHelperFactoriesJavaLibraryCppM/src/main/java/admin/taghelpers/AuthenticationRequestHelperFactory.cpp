@@ -88,6 +88,8 @@ AuthenticationRequestHelperFactory::AuthenticationRequestHelperFactory() : logUt
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AuthenticationRequestHelper(hashMap, pageContext);
     
 
@@ -107,6 +109,8 @@ AuthenticationRequestHelperFactory::AuthenticationRequestHelperFactory() : logUt
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -123,6 +127,8 @@ AuthenticationRequestHelperFactory::AuthenticationRequestHelperFactory() : logUt
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AuthenticationRequestHelper(hashMap, httpServletRequest);
     
 
@@ -142,6 +148,8 @@ AuthenticationRequestHelperFactory::AuthenticationRequestHelperFactory() : logUt
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

@@ -86,6 +86,8 @@ AbPathUtilOld* AbPathUtilOld::instance = AbPathUtilOld::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbPathUtilOld::instance;
     
 }
@@ -102,6 +104,8 @@ AbPathUtilOld::AbPathUtilOld() : logUtil(LogUtil::getInstance()), abPathData(AbP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getExtension(abFilePath->toString());;
     
 }
@@ -114,6 +118,8 @@ AbPathUtilOld::AbPathUtilOld() : logUtil(LogUtil::getInstance()), abPathData(AbP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getExtension(abPath->toString());;
     
 }
@@ -153,6 +159,8 @@ AbPathUtilOld::AbPathUtilOld() : logUtil(LogUtil::getInstance()), abPathData(AbP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return extension;
     
 }
@@ -165,6 +173,8 @@ AbPathUtilOld::AbPathUtilOld() : logUtil(LogUtil::getInstance()), abPathData(AbP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getWithoutExtension(abFilePath->toString());;
     
 }
@@ -177,6 +187,8 @@ AbPathUtilOld::AbPathUtilOld() : logUtil(LogUtil::getInstance()), abPathData(AbP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getWithoutExtension(abPath->toString());;
     
 }
@@ -216,6 +228,8 @@ AbPathUtilOld::AbPathUtilOld() : logUtil(LogUtil::getInstance()), abPathData(AbP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return pathWithoutExtension;
     
 }
@@ -234,6 +248,8 @@ AbPathUtilOld::AbPathUtilOld() : logUtil(LogUtil::getInstance()), abPathData(AbP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -246,6 +262,8 @@ AbPathUtilOld::AbPathUtilOld() : logUtil(LogUtil::getInstance()), abPathData(AbP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -260,6 +278,8 @@ AbPathUtilOld::AbPathUtilOld() : logUtil(LogUtil::getInstance()), abPathData(AbP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -270,6 +290,8 @@ AbPathUtilOld::AbPathUtilOld() : logUtil(LogUtil::getInstance()), abPathData(AbP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -287,6 +309,8 @@ AbPathUtilOld::AbPathUtilOld() : logUtil(LogUtil::getInstance()), abPathData(AbP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -300,6 +324,8 @@ AbPathUtilOld::AbPathUtilOld() : logUtil(LogUtil::getInstance()), abPathData(AbP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -310,6 +336,8 @@ AbPathUtilOld::AbPathUtilOld() : logUtil(LogUtil::getInstance()), abPathData(AbP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -332,6 +360,8 @@ AbPathUtilOld::AbPathUtilOld() : logUtil(LogUtil::getInstance()), abPathData(AbP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return path;
     
 }
@@ -351,6 +381,8 @@ AbPathUtilOld::AbPathUtilOld() : logUtil(LogUtil::getInstance()), abPathData(AbP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return path;
     
 }
@@ -365,6 +397,8 @@ AbPathUtilOld::AbPathUtilOld() : logUtil(LogUtil::getInstance()), abPathData(AbP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->abPathData->SEPARATOR;
     
 
@@ -383,6 +417,8 @@ AbPathUtilOld::AbPathUtilOld() : logUtil(LogUtil::getInstance()), abPathData(AbP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return path;
     
 }
@@ -408,6 +444,8 @@ AbPathUtilOld::AbPathUtilOld() : logUtil(LogUtil::getInstance()), abPathData(AbP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return categoryPath;
     
 
@@ -421,6 +459,8 @@ AbPathUtilOld::AbPathUtilOld() : logUtil(LogUtil::getInstance()), abPathData(AbP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getNameFromPath(categoryName);;
     
 
@@ -434,6 +474,8 @@ AbPathUtilOld::AbPathUtilOld() : logUtil(LogUtil::getInstance()), abPathData(AbP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return categoryName;
     
 
@@ -466,6 +508,8 @@ AbPathUtilOld::AbPathUtilOld() : logUtil(LogUtil::getInstance()), abPathData(AbP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbPath::createAbPath();;
     
 
@@ -479,6 +523,8 @@ AbPathUtilOld::AbPathUtilOld() : logUtil(LogUtil::getInstance()), abPathData(AbP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->removeNameFromPath(JavaString::substring(categoryPath, 0, endIndex -1));;
     
 
@@ -492,6 +538,8 @@ AbPathUtilOld::AbPathUtilOld() : logUtil(LogUtil::getInstance()), abPathData(AbP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AbPath(categoryName, StringUtil::getInstance()->EMPTY_STRING);
     
 

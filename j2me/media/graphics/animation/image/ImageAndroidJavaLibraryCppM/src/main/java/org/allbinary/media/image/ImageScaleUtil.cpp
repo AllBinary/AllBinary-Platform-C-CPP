@@ -103,6 +103,8 @@ ImageScaleUtil* ImageScaleUtil::instance = ImageScaleUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ImageScaleUtil::instance;
     
 }
@@ -119,6 +121,8 @@ ImageScaleUtil::ImageScaleUtil() : logUtil(LogUtil::getInstance()), commonString
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->createImage3(imageCache, originalImage, scaleNominatorX, scaleDenominatorX, scaleNominatorY, scaleDenominatorY, cached, true);;
     
 }
@@ -137,6 +141,8 @@ ImageScaleUtil::ImageScaleUtil() : logUtil(LogUtil::getInstance()), commonString
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->createImage(imageCache, originalImage, scaleX, scaleY, cached);;
     
 }
@@ -199,6 +205,8 @@ ImageScaleUtil::ImageScaleUtil() : logUtil(LogUtil::getInstance()), commonString
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<Image*>(this->scaledImageBasicArrayList->get(index));
     
 
@@ -220,6 +228,8 @@ this->scaleYBasicArrayList->add(scaleY);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return scaledImage;
     
 
@@ -264,6 +274,8 @@ image->getGraphics()->drawImage(originalImage, 0, 0, this->anchor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return image;
     
 

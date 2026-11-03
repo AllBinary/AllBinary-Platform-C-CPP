@@ -82,6 +82,8 @@ ImageCopyUtil* ImageCopyUtil::instance = ImageCopyUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ImageCopyUtil::instance;
     
 }
@@ -98,6 +100,8 @@ ImageCopyUtil::ImageCopyUtil() : logUtil(LogUtil::getInstance()), imageUtil(Imag
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->createImage(originalImage);;
     
 }
@@ -119,6 +123,8 @@ ImageCopyUtil::ImageCopyUtil() : logUtil(LogUtil::getInstance()), imageUtil(Imag
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return image;
     
 
@@ -183,6 +189,8 @@ ImageCopyUtil::ImageCopyUtil() : logUtil(LogUtil::getInstance()), imageUtil(Imag
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return image;
     
 }

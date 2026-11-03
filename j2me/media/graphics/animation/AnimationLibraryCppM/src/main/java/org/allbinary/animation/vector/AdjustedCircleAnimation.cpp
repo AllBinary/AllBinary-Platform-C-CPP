@@ -74,6 +74,8 @@ adjustedCircleAnimation->initXY(xAdjustment, yAdjustment);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return adjustedCircleAnimation;
     
 }
@@ -89,6 +91,8 @@ adjustedCircleAnimation->init(innerWidth);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return adjustedCircleAnimation;
     
 }

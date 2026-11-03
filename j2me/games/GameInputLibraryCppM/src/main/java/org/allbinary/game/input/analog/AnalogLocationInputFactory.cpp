@@ -56,6 +56,8 @@ AnalogLocationInputFactory* AnalogLocationInputFactory::instance = AnalogLocatio
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AnalogLocationInputFactory::instance;
     
 }
@@ -97,6 +99,8 @@ this->list->add(analogLocationInput);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<AnalogLocationInput*>(this->list->get(playerInputId));
     
 }
@@ -107,6 +111,8 @@ this->list->add(analogLocationInput);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->list;
     
 }

@@ -128,6 +128,8 @@ this->basicColorArray= basicColorArray;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getSize();;
     
 }
@@ -167,6 +169,8 @@ break;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->basicColorArray[this->getFrame()];
     
 
@@ -177,6 +181,8 @@ break;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BasicColorFactory::getInstance()->WHITE;
     
 
@@ -226,6 +232,8 @@ this->sprite->prevFrame();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->sprite->getRawFrameCount();;
     
 }
@@ -242,6 +250,8 @@ this->sprite->setFrame(frame);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->sprite->getFrame();;
     
 }
@@ -256,6 +266,8 @@ this->sprite->setFrame(frame);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -266,6 +278,8 @@ this->sprite->setFrame(frame);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -279,6 +293,8 @@ this->sprite->setFrame(frame);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getSize();;
     
 }
@@ -293,6 +309,8 @@ this->sprite->setFrame(frame);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PrimitiveIntUtil::getArrayInstance();;
     
 }

@@ -133,6 +133,8 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->CONSTRUCTOR, &
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return RegistrationConfiguration::SINGLETON;
     
 }
@@ -204,6 +206,8 @@ dataOutputStream->flush();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (new StringMaker())->append("Registration Code: ")->append(this->getRegistrationCode())->toString();;
     
 }
@@ -220,6 +224,8 @@ this->registrationCode= registrationCode;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->registrationCode;
     
 }

@@ -149,6 +149,8 @@ this->streetAddress= new StreetAddress(this->request);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -171,6 +173,8 @@ this->streetAddress= new StreetAddress(this->request);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -197,6 +201,8 @@ this->streetAddress= new StreetAddress(this->request);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -219,6 +225,8 @@ this->streetAddress= new StreetAddress(this->request);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -251,6 +259,8 @@ this->streetAddress= new StreetAddress(this->request);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 
@@ -273,6 +283,8 @@ this->streetAddress= new StreetAddress(this->request);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -302,6 +314,8 @@ this->streetAddress= new StreetAddress(this->request);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 
@@ -324,6 +338,8 @@ this->streetAddress= new StreetAddress(this->request);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -352,6 +368,8 @@ BillingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSession
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -374,6 +392,8 @@ BillingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSession
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -402,6 +422,8 @@ BillingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSession
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -424,6 +446,8 @@ BillingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSession
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -456,6 +480,8 @@ BillingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSession
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "No Shipping Address";
     
 
@@ -465,6 +491,8 @@ BillingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSession
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 
@@ -487,6 +515,8 @@ BillingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSession
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -515,6 +545,8 @@ BillingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSession
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -537,6 +569,8 @@ BillingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSession
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -565,6 +599,8 @@ BillingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSession
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -587,6 +623,8 @@ BillingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSession
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }

@@ -117,6 +117,8 @@ ResourceUtil* ResourceUtil::instance = ResourceUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ResourceUtil::instance;
     
 }
@@ -137,6 +139,8 @@ this->logUtil->putF(CommonStrings::getInstance()->NOT_IMPLEMENTED, this, "setLoa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<Context*>(this->context);
     
 }
@@ -171,6 +175,8 @@ this->context= aContext;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return value;
     
 }
@@ -230,6 +236,8 @@ this->hashMap->put(resource, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -247,6 +255,8 @@ this->hashMap->put(resource, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -285,6 +295,8 @@ this->resources= resources;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return inputStream;
     
 
@@ -294,6 +306,8 @@ this->resources= resources;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return inputStream;
     
 }

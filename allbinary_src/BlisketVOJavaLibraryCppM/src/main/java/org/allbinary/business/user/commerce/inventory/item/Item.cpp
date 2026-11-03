@@ -183,6 +183,8 @@ this->special= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->group;
     
 }
@@ -193,6 +195,8 @@ this->special= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->tax;
     
 }
@@ -203,6 +207,8 @@ this->special= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->shippingType;
     
 }
@@ -213,6 +219,8 @@ this->special= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->shippingCost;
     
 }
@@ -223,6 +231,8 @@ this->special= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->shippingAddress;
     
 }
@@ -233,6 +243,8 @@ this->special= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->special;
     
 }
@@ -258,6 +270,8 @@ hashMap->put(EntryData::getInstance()->SPECIAL, this->special);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }

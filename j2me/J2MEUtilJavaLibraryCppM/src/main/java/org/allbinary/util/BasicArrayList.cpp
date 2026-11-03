@@ -121,6 +121,8 @@ this->objectArray[this->currentIndex++]= anyType;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -173,7 +175,9 @@ this->objectArray[--this->currentIndex]=
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return oldValue;
+                        
+                        
+                        return JavaBoxes::toObject(oldValue);
     
 }
 
@@ -218,6 +222,8 @@ this->objectArray[--this->currentIndex]=
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -260,6 +266,8 @@ this->objectArray[--this->currentIndex]=
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -274,6 +282,8 @@ this->objectArray[--this->currentIndex]=
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -312,6 +322,8 @@ this->objectArray[--this->currentIndex]=
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 }
@@ -338,6 +350,8 @@ this->objectArray[this->currentIndex++]= list->objectArray[index];
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -351,6 +365,8 @@ this->objectArray[this->currentIndex++]= list->objectArray[index];
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->addAll(newObjectArray);;
     
 }
@@ -370,6 +386,8 @@ this->currentIndex += numSize;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return numSize != 0;
     
 }
@@ -443,6 +461,8 @@ this->objectArray= this->arrayUtil->copyOf(this->objectArray, newCapacity);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return i;
     
 
@@ -469,6 +489,8 @@ this->objectArray= this->arrayUtil->copyOf(this->objectArray, newCapacity);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return i;
     
 
@@ -483,6 +505,8 @@ this->objectArray= this->arrayUtil->copyOf(this->objectArray, newCapacity);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 }
@@ -512,6 +536,8 @@ this->objectArray= this->arrayUtil->copyOf(this->objectArray, newCapacity);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return i;
     
 
@@ -538,6 +564,8 @@ this->objectArray= this->arrayUtil->copyOf(this->objectArray, newCapacity);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return i;
     
 
@@ -552,6 +580,8 @@ this->objectArray= this->arrayUtil->copyOf(this->objectArray, newCapacity);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 }
@@ -585,6 +615,8 @@ stringBuffer->appendint(this->currentIndex);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->objectArray[index];
     
 }
@@ -623,7 +655,9 @@ this->objectArray[index]= element;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return oldValue;
+                        
+                        
+                        return JavaBoxes::toObject(oldValue);
     
 }
 
@@ -652,6 +686,8 @@ this->currentIndex= 0;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->currentIndex;
     
 }
@@ -662,6 +698,8 @@ this->currentIndex= 0;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->currentIndex == 0;
     
 }
@@ -672,6 +710,8 @@ this->currentIndex= 0;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->indexOf(anyType) >= 0;
     
 }
@@ -682,6 +722,8 @@ this->currentIndex= 0;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->arrayUtil->copyOf(this->objectArray, this->currentIndex);;
     
 }
@@ -696,6 +738,8 @@ this->currentIndex= 0;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->arrayUtil->copyOfType(this->objectArray, this->currentIndex, Class::forType(typeid(objectArray)));;
     
 
@@ -718,6 +762,8 @@ System.arraycopy(this->objectArray, 0, objectArray, 0, this->currentIndex);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return objectArray;
     
 }
@@ -750,7 +796,9 @@ list->add(anyType);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return list;
+                        
+                        
+                        return JavaBoxes::toObject(list);
     
 }
 
@@ -779,6 +827,8 @@ stringBuffer->append(COMMA_SEP);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

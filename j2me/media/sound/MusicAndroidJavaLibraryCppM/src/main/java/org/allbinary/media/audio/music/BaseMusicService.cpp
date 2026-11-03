@@ -91,6 +91,8 @@ this->logUtil->putF(this->commonStrings->START, this, this->commonStateStrings->
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -180,6 +182,8 @@ this->onStartCommandIntent(intent);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Service::START_STICKY;
     
 }
@@ -212,6 +216,8 @@ this->logUtil->putF(CommonLabels::getInstance()->COMMAND_LABEL +command, this, t
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -227,6 +233,8 @@ this->logUtil->putF(CommonLabels::getInstance()->COMMAND_LABEL +command, this, t
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -333,6 +341,8 @@ thread->start();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 

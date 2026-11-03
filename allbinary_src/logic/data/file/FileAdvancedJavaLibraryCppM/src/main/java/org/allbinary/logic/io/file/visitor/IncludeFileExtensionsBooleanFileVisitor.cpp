@@ -80,6 +80,8 @@ IncludeFileExtensionsBooleanFileVisitor::IncludeFileExtensionsBooleanFileVisitor
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -89,6 +91,8 @@ IncludeFileExtensionsBooleanFileVisitor::IncludeFileExtensionsBooleanFileVisitor
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BooleanFileVisitor::visit(file);;
     
 }
@@ -116,6 +120,8 @@ IncludeFileExtensionsBooleanFileVisitor::IncludeFileExtensionsBooleanFileVisitor
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -128,6 +134,8 @@ IncludeFileExtensionsBooleanFileVisitor::IncludeFileExtensionsBooleanFileVisitor
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }

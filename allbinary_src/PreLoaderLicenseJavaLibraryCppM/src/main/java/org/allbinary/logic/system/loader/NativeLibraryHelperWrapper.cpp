@@ -139,6 +139,8 @@ System.gc();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::valueOf("Library: ") +JavaString::valueOf(this->getLibraryName());
     
 }
@@ -149,6 +151,8 @@ System.gc();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->libraryName;
     
 }

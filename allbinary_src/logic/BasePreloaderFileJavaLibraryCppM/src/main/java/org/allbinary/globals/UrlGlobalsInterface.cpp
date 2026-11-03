@@ -71,6 +71,8 @@ UrlGlobalsInterface::UrlGlobalsInterface() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 }
@@ -81,6 +83,8 @@ UrlGlobalsInterface::UrlGlobalsInterface() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 }
@@ -91,6 +95,8 @@ UrlGlobalsInterface::UrlGlobalsInterface() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 }
@@ -101,6 +107,8 @@ UrlGlobalsInterface::UrlGlobalsInterface() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

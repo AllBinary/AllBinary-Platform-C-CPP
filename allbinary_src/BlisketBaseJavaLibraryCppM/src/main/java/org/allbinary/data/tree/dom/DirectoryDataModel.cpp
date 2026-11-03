@@ -103,6 +103,8 @@ this->transformDocumentInterface= dynamic_cast<TransformDocumentInterface*>(Tran
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->NO_TYPE;
     
 }
@@ -115,6 +117,8 @@ this->transformDocumentInterface= dynamic_cast<TransformDocumentInterface*>(Tran
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -131,6 +135,8 @@ this->transformDocumentInterface= transformDocumentInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->transformDocumentInterface;
     
 }
@@ -170,6 +176,8 @@ dirNode->appendChild(fileNode);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dirNode;
     
 }
@@ -182,6 +190,8 @@ dirNode->appendChild(fileNode);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getTransformDocumentInterface()->getDoc();;
     
 }
@@ -199,6 +209,8 @@ this->getTransformDocumentInterface()->getBaseNode()->appendChild(node);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return XmlDocumentHelper::toString(this->getTransformDocumentInterface()->getDoc());;
     
 }

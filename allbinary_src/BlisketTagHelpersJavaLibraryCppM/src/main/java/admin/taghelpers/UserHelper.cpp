@@ -168,6 +168,8 @@ stringBuffer->append(" from to the user table");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -190,6 +192,8 @@ stringBuffer->append(" from to the user table");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -238,6 +242,8 @@ UserEntityFactory::getInstance()->insert(values);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -260,6 +266,8 @@ UserEntityFactory::getInstance()->insert(values);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -294,6 +302,8 @@ UserEntityFactory::getInstance()->update(user->getUserName(), values);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -316,6 +326,8 @@ UserEntityFactory::getInstance()->update(user->getUserName(), values);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -342,6 +354,8 @@ UserEntityFactory::getInstance()->update(user->getUserName(), values);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -364,6 +378,8 @@ UserEntityFactory::getInstance()->update(user->getUserName(), values);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -390,6 +406,8 @@ UserEntityFactory::getInstance()->update(user->getUserName(), values);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -412,6 +430,8 @@ UserEntityFactory::getInstance()->update(user->getUserName(), values);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -441,6 +461,8 @@ UserEntityFactory::getInstance()->update(user->getUserName(), values);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 
@@ -463,6 +485,8 @@ UserEntityFactory::getInstance()->update(user->getUserName(), values);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -492,6 +516,8 @@ UserEntityFactory::getInstance()->update(user->getUserName(), values);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 
@@ -514,6 +540,8 @@ UserEntityFactory::getInstance()->update(user->getUserName(), values);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }

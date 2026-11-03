@@ -89,6 +89,8 @@ LevelLayersFinder* LevelLayersFinder::instance = LevelLayersFinder::instance_own
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return LevelLayersFinder::instance;
     
 }
@@ -137,6 +139,8 @@ cachedIntegerCanBeNull= smallIntegerSingletonFactory->getAt(integerCanBeNull);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return list;
     
 }

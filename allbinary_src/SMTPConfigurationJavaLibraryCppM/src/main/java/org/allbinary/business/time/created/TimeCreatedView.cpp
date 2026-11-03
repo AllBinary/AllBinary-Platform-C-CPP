@@ -96,6 +96,8 @@ this->setTimeCreated(new TimeCreated(DomNodeHelper::getTextNodeValue(node)));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ModDomHelper::createTextNode(document, EntryData::getInstance()->TIMECREATED, this->getTimeCreated()->toString());;
     
 }
@@ -106,6 +108,8 @@ this->setTimeCreated(new TimeCreated(DomNodeHelper::getTextNodeValue(node)));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->timeCreated;
     
 }

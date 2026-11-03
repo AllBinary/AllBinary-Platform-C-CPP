@@ -86,6 +86,8 @@ RTSLayerHudPaintable* RTSLayerHudPaintable::instance = RTSLayerHudPaintable::ins
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return RTSLayerHudPaintable::instance;
     
 }
@@ -167,6 +169,8 @@ this->rtsLayer= rtsLayer;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->rtsLayer;
     
 }

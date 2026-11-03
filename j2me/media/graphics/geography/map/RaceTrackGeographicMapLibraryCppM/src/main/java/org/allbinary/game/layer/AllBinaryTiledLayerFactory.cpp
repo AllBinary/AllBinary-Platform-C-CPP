@@ -101,6 +101,8 @@ allbinaryTiledLayer->setCells(raceTrackData->getMapArray());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return allbinaryTiledLayer;
     
 }
@@ -124,6 +126,8 @@ allbinaryTiledLayer->setCells(raceTrackData->getMapArray());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return allbinaryTiledLayer;
     
 }

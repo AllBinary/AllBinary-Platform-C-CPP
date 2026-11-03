@@ -107,6 +107,8 @@ imageRotationAnimationFactory->animationFactoryInitializationVisitor->originalDy
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return imageRotationAnimationFactory;
     
 }
@@ -140,6 +142,8 @@ this->resizeCanvasForRotation= resizeCanvasForRotation;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ImageCopyUtil::getInstance()->createImageScale(this->getImage(), 1.44, false);;
     
 
@@ -150,6 +154,8 @@ this->resizeCanvasForRotation= resizeCanvasForRotation;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getImage();;
     
 
@@ -188,6 +194,8 @@ scaledImage= openGLUtil->addImage(scaledImage);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AllBinaryAdjustedJ2SEImageRotationAnimation(scaledImage, copyOfScaledImage, AngleInfo::getInstance(this->angleIncrementP), AngleFactory::getInstance()->TOTAL_ANGLE, this->animationFactoryInitializationVisitor->dx, this->animationFactoryInitializationVisitor->dy, this->animationBehaviorFactory->getOrCreateInstance());
     
 
@@ -198,6 +206,8 @@ scaledImage= openGLUtil->addImage(scaledImage);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AllBinaryJ2SEImageRotationAnimation(scaledImage, copyOfScaledImage, AngleInfo::getInstance(this->angleIncrementP), AngleFactory::getInstance()->TOTAL_ANGLE, this->animationBehaviorFactory->getOrCreateInstance());
     
 
@@ -211,6 +221,8 @@ scaledImage= openGLUtil->addImage(scaledImage);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->angleIncrementP;
     
 }

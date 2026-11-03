@@ -132,6 +132,8 @@ this->heading= new HeadingValidation(multipartRequestHashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -165,6 +167,8 @@ this->heading= new HeadingValidation(multipartRequestHashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return isValid;
     
 
@@ -184,6 +188,8 @@ this->heading= new HeadingValidation(multipartRequestHashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -203,6 +209,8 @@ stringBuffer->append(this->heading->validationInfo());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -222,6 +230,8 @@ stringBuffer->append(this->heading->validationInfo());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Getting Validation Info";
     
 }
@@ -234,6 +244,8 @@ stringBuffer->append(this->heading->validationInfo());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -244,6 +256,8 @@ stringBuffer->append(this->heading->validationInfo());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

@@ -85,6 +85,8 @@ CustomItemsRequestHelperFactory::CustomItemsRequestHelperFactory() : logUtil(Log
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new CustomItemsRequestHelper(hashMap, pageContext);
     
 
@@ -104,6 +106,8 @@ CustomItemsRequestHelperFactory::CustomItemsRequestHelperFactory() : logUtil(Log
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

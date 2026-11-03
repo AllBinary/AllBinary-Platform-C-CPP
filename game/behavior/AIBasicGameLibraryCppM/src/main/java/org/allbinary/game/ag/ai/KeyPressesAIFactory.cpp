@@ -95,6 +95,8 @@ KeyPressesAIFactory::KeyPressesAIFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new KeyPressesAI(hashtable, ownerLayerInterface, gameInput);
     
 
@@ -105,6 +107,8 @@ KeyPressesAIFactory::KeyPressesAIFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new MultiKeyPressesAI(hashtable, ownerLayerInterface, gameInput);
     
 

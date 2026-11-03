@@ -147,6 +147,8 @@ this->paymentMethod= paymentMethod;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -156,6 +158,8 @@ this->paymentMethod= paymentMethod;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 }
@@ -166,6 +170,8 @@ this->paymentMethod= paymentMethod;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 }
@@ -185,6 +191,8 @@ this->paymentMethod= paymentMethod;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::valueOf(JavaString::valueOf("Please enter a valid order Id < ") +JavaString::valueOf(OrderHistoryData::MAXIDLEN)) +JavaString::valueOf(" digits in length.<br>");
     
 
@@ -194,6 +202,8 @@ this->paymentMethod= paymentMethod;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return EMPTY_STRING;
     
 }
@@ -258,6 +268,8 @@ this->storeCancelComment= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->basket;
     
 }
@@ -268,6 +280,8 @@ this->storeCancelComment= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->shippingType;
     
 }
@@ -278,6 +292,8 @@ this->storeCancelComment= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->paymentMethod;
     
 }
@@ -288,6 +304,8 @@ this->storeCancelComment= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->special;
     
 }
@@ -298,6 +316,8 @@ this->storeCancelComment= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->id;
     
 }
@@ -308,6 +328,8 @@ this->storeCancelComment= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->storeName;
     
 }
@@ -318,6 +340,8 @@ this->storeCancelComment= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->userComment;
     
 }
@@ -328,6 +352,8 @@ this->storeCancelComment= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->userCancelComment;
     
 }
@@ -338,6 +364,8 @@ this->storeCancelComment= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->storeComment;
     
 }
@@ -348,6 +376,8 @@ this->storeCancelComment= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->storeCancelComment;
     
 }
@@ -358,6 +388,8 @@ this->storeCancelComment= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Create your own Order.reviewOrder";
     
 }
@@ -368,6 +400,8 @@ this->storeCancelComment= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Create your own Order.viewOrder";
     
 }
@@ -378,6 +412,8 @@ this->storeCancelComment= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Create your own Order.emailOrder";
     
 }
@@ -409,6 +445,8 @@ hashMap->put(OrderData::STORECANCELCOMMENT, this->storeCancelComment);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }
@@ -455,6 +493,8 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }

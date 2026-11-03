@@ -322,6 +322,8 @@ MyGraphicItemEventService::addListener(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->canvasTreeNode;
     
 }
@@ -458,6 +460,8 @@ this->grid->isChanged= true;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->angle;
     
 }
@@ -740,6 +744,8 @@ this->duplicateGraphicItem(graphicItem);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->graphicItemHashMap;
     
 }
@@ -757,6 +763,8 @@ this->duplicateGraphicItem(graphicItem);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 1;
     
 
@@ -767,6 +775,8 @@ this->duplicateGraphicItem(graphicItem);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return x;
     
 
@@ -787,6 +797,8 @@ this->duplicateGraphicItem(graphicItem);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 1;
     
 
@@ -797,6 +809,8 @@ this->duplicateGraphicItem(graphicItem);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return y;
     
 
@@ -810,6 +824,8 @@ this->duplicateGraphicItem(graphicItem);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->selectedTool;
     
 }
@@ -952,6 +968,8 @@ javax::swing::JPanel::repaint();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (new CanvasDom(this))->toDom();;
     
 }
@@ -1147,6 +1165,8 @@ stringBuffer->appendint(mouseEvent->getY() /this->getYPixelsPerWorkAreaPixel());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -1347,6 +1367,8 @@ this->workAreaJTreeJPanel->repaint();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return newCanvasJPanel;
     
 }
@@ -1407,6 +1429,8 @@ this->workAreaJTreeJPanel->repaint();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->canvasDimension;
     
 }
@@ -1423,6 +1447,8 @@ this->canvasDimension= canvasDimension;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->grid;
     
 }

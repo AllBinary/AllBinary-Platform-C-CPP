@@ -79,6 +79,8 @@ AbeNoLicense::AbeNoLicense() : serverVector(new BasicArrayListD()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbeNoLicense::abeNoLicense;
     
 }
@@ -89,6 +91,8 @@ AbeNoLicense::AbeNoLicense() : serverVector(new BasicArrayListD()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -99,6 +103,8 @@ AbeNoLicense::AbeNoLicense() : serverVector(new BasicArrayListD()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 }
@@ -109,6 +115,8 @@ AbeNoLicense::AbeNoLicense() : serverVector(new BasicArrayListD()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 }
@@ -119,6 +127,8 @@ AbeNoLicense::AbeNoLicense() : serverVector(new BasicArrayListD()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 }
@@ -129,6 +139,8 @@ AbeNoLicense::AbeNoLicense() : serverVector(new BasicArrayListD()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->serverVector;
     
 }
@@ -139,6 +151,8 @@ AbeNoLicense::AbeNoLicense() : serverVector(new BasicArrayListD()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -149,6 +163,8 @@ AbeNoLicense::AbeNoLicense() : serverVector(new BasicArrayListD()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return LicenseTypeFactory::getInstance()->UNKNOWN;
     
 }

@@ -113,6 +113,8 @@ this->contextConfigurationInterface= contextConfigurationInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->contextConfigurationInterface;
     
 }
@@ -133,6 +135,8 @@ node->appendChild(emailServerConfigurationView->toXmlNode(document));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }

@@ -73,6 +73,8 @@ ExceptionUtil* ExceptionUtil::instance = ExceptionUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ExceptionUtil::instance;
     
 }
@@ -110,6 +112,8 @@ e->printStackTrace(printStream);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return std::string(output);
     
 
@@ -122,6 +126,8 @@ e->printStackTrace(printStream);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->NONE;
     
 }

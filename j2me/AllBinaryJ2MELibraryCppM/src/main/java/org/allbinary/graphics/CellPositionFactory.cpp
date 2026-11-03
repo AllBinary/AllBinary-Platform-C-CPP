@@ -77,6 +77,8 @@ CellPositionFactory* CellPositionFactory::SINGLETON = CellPositionFactory::SINGL
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return CellPositionFactory::SINGLETON;
     
 }
@@ -139,6 +141,8 @@ this->createInstance(column, row);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->cellPositionArray[i_column][i_row];
     
 
@@ -154,6 +158,8 @@ this->logUtil->put((new StringMaker())->append("columns: ")->appendint(this->get
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->NONE;
     
 }
@@ -182,6 +188,8 @@ this->cellPositionArray[i_column][i_row]= cellPositionCanBeNull;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return cellPositionCanBeNull;
     
 }
@@ -192,6 +200,8 @@ this->cellPositionArray[i_column][i_row]= cellPositionCanBeNull;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->columns;
     
 }
@@ -202,6 +212,8 @@ this->cellPositionArray[i_column][i_row]= cellPositionCanBeNull;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->rows;
     
 }

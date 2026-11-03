@@ -113,6 +113,8 @@ ImageUtil* ImageUtil::instance = ImageUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ImageUtil::instance;
     
 }
@@ -142,6 +144,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CO
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new org::eclipse::swt::graphics::Image(display, width, height);
     
 }
@@ -187,6 +191,8 @@ scaledBufferedImageArray[index]= this->createBufferedImage5(bufferedImage, newWi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return scaledBufferedImageArray;
     
 }
@@ -232,6 +238,8 @@ scaledBufferedImageArray[index]= this->createBufferedImage5(bufferedImage, newWi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return scaledBufferedImageArray;
     
 }
@@ -261,6 +269,8 @@ scaledBufferedImageArray[index]= this->createBufferedImage5(bufferedImageArray[i
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return scaledBufferedImageArray;
     
 }
@@ -273,6 +283,8 @@ scaledBufferedImageArray[index]= this->createBufferedImage5(bufferedImageArray[i
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->createBufferedImage5(bufferedImage, newWidth, newHeight, true);;
     
 }
@@ -285,6 +297,8 @@ scaledBufferedImageArray[index]= this->createBufferedImage5(bufferedImageArray[i
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->createBufferedImage6(bufferedImage, newWidth, newHeight, scale, false);;
     
 }
@@ -379,6 +393,8 @@ gc->dispose();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return newBufferedImage;
     
 }
@@ -436,6 +452,8 @@ gc->drawImage(image, 0, 0, image->getBounds()->width, image->getBounds()->height
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return imageCanvas;
     
 }
@@ -469,6 +487,8 @@ stringBuffer->appendint(imageData->type);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

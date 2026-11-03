@@ -74,6 +74,8 @@ ImageModifierUtil* ImageModifierUtil::instance = ImageModifierUtil::instance_own
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ImageModifierUtil::instance;
     
 }
@@ -96,6 +98,8 @@ ImageModifierUtil* ImageModifierUtil::instance = ImageModifierUtil::instance_own
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return originalImageArray;
     
 }

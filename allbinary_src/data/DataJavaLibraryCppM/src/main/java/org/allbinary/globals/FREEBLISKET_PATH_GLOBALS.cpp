@@ -69,6 +69,8 @@ FREEBLISKET_PATH_GLOBALS* FREEBLISKET_PATH_GLOBALS::instance = FREEBLISKET_PATH_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return FREEBLISKET_PATH_GLOBALS::instance;
     
 }

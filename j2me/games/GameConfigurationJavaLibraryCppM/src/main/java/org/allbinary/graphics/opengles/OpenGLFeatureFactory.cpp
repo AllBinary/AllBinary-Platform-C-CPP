@@ -64,6 +64,8 @@ OpenGLFeatureFactory* OpenGLFeatureFactory::instance = OpenGLFeatureFactory::ins
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return OpenGLFeatureFactory::instance;
     
 }

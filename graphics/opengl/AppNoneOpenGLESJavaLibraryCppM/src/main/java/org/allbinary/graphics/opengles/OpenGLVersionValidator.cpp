@@ -69,6 +69,8 @@ OpenGLVersionValidator* OpenGLVersionValidator::instance = OpenGLVersionValidato
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return OpenGLVersionValidator::instance;
     
 }
@@ -79,6 +81,8 @@ OpenGLVersionValidator* OpenGLVersionValidator::instance = OpenGLVersionValidato
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -89,6 +93,8 @@ OpenGLVersionValidator* OpenGLVersionValidator::instance = OpenGLVersionValidato
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

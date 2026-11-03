@@ -107,6 +107,8 @@ ImageModifierUtil* ImageModifierUtil::instance = ImageModifierUtil::instance_own
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ImageModifierUtil::instance;
     
 }
@@ -244,6 +246,8 @@ openGLESImage->openGLESImageProperties->bluef= basicColor->getBlueComponent();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -360,6 +364,8 @@ openGLESImage->openGLESImageProperties->alphaf= (alphaInt) /255;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -438,6 +444,8 @@ newImageArray[index]= image;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return newImageArray;
     
 
@@ -453,6 +461,8 @@ PreLogUtil::putOE(commonStrings->EXCEPTION, this, "getImageArray", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return originalImageArray;
     
 }

@@ -83,6 +83,8 @@ GuiLog* GuiLog::instance = GuiLog::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return GuiLog::instance;
     
 }
@@ -148,6 +150,8 @@ error->show();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->put(specialMessage, anyType, functionName, 
                             nullptr);;
     
@@ -169,6 +173,8 @@ System.out.println(data);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return data;
     
 
@@ -181,6 +187,8 @@ PreLogUtil::putOE(this->commonStrings->EXCEPTION, this, "put", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Logging Error";
     
 }
@@ -194,6 +202,8 @@ PreLogUtil::putOE(this->commonStrings->EXCEPTION, this, "put", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->put(specialMessage, className, functionName, 
                             nullptr);;
     
@@ -215,6 +225,8 @@ System.out.println(data);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return data;
     
 
@@ -227,6 +239,8 @@ PreLogUtil::putOE(this->commonStrings->EXCEPTION, this, "put", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Logging Error";
     
 }

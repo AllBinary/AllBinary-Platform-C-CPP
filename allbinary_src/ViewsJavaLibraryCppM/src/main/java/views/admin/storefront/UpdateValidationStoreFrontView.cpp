@@ -118,6 +118,8 @@ UpdateValidationStoreFrontView::UpdateValidationStoreFrontView(TransformInfoInte
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return valid;
     
 
@@ -137,6 +139,8 @@ UpdateValidationStoreFrontView::UpdateValidationStoreFrontView(TransformInfoInte
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -174,6 +178,8 @@ UpdateValidationStoreFrontView::UpdateValidationStoreFrontView(TransformInfoInte
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -193,6 +199,8 @@ UpdateValidationStoreFrontView::UpdateValidationStoreFrontView(TransformInfoInte
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Validating Form";
     
 }
@@ -205,6 +213,8 @@ UpdateValidationStoreFrontView::UpdateValidationStoreFrontView(TransformInfoInte
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -215,6 +225,8 @@ UpdateValidationStoreFrontView::UpdateValidationStoreFrontView(TransformInfoInte
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

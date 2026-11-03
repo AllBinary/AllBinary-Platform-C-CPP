@@ -87,6 +87,8 @@ ContextConfigurationInterfaceFactory* ContextConfigurationInterfaceFactory::inst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ContextConfigurationInterfaceFactory::instance;
     
 }
@@ -109,6 +111,8 @@ ContextConfigurationInterfaceFactory::ContextConfigurationInterfaceFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<ContextConfigurationInterface*>((new ContextConfigurationView(contextConfigurationNode))->getContextConfigurationInterface());
     
 }
@@ -133,6 +137,8 @@ ContextConfigurationInterfaceFactory::ContextConfigurationInterfaceFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getInstance(document);;
     
 }

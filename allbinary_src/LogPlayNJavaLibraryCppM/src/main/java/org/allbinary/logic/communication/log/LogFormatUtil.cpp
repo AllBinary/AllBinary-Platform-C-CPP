@@ -86,6 +86,8 @@ LogFormatUtil* LogFormatUtil::instance = LogFormatUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return LogFormatUtil::instance;
     
 }
@@ -111,6 +113,8 @@ stringBuffer->append(this->commonSeps->NEW_LINE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -130,6 +134,8 @@ stringBuffer->append(this->commonSeps->NEW_LINE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -155,6 +161,8 @@ stringBuffer->append(functionName);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer;
     
 }
@@ -209,6 +217,8 @@ stringBuffer->append(this->STACK_TRACE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -219,6 +229,8 @@ stringBuffer->append(this->STACK_TRACE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 

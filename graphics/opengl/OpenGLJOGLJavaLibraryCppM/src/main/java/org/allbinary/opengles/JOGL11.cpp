@@ -261,6 +261,8 @@ this->gl11->glGetTexParameteriv(target, pname, params);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->gl11->glIsBuffer(buffer);;
     
 }
@@ -271,6 +273,8 @@ this->gl11->glGetTexParameteriv(target, pname, params);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->gl11->glIsEnabled(cap);;
     
 }
@@ -281,6 +285,8 @@ this->gl11->glGetTexParameteriv(target, pname, params);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->gl11->glIsTexture(texture);;
     
 }

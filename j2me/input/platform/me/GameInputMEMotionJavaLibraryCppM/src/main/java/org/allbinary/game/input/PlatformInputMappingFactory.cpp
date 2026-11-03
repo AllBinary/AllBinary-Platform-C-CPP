@@ -78,6 +78,8 @@ PlatformInputMappingFactory* PlatformInputMappingFactory::instance = PlatformInp
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PlatformInputMappingFactory::instance;
     
 }
@@ -110,6 +112,8 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->inputToGameKeyMapping;
     
 }

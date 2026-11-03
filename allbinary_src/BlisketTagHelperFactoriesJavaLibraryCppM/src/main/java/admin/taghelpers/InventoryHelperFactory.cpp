@@ -85,6 +85,8 @@ InventoryHelperFactory::InventoryHelperFactory() : logUtil(LogUtil::getInstance(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new InventoryHelper(hashMap, pageContext);
     
 
@@ -104,6 +106,8 @@ InventoryHelperFactory::InventoryHelperFactory() : logUtil(LogUtil::getInstance(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

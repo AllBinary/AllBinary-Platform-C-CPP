@@ -69,6 +69,8 @@ SelectRTSLayerVisitorFactory* SelectRTSLayerVisitorFactory::instance = SelectRTS
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SelectRTSLayerVisitorFactory::instance;
     
 }
@@ -83,6 +85,8 @@ SelectRTSLayerVisitorFactory::SelectRTSLayerVisitorFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new SelectRTSLayerVisitor();
     
 }

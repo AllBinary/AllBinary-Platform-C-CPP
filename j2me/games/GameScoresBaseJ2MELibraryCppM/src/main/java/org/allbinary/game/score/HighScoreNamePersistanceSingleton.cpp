@@ -141,6 +141,8 @@ HighScoreNamePersistanceSingleton* HighScoreNamePersistanceSingleton::SINGLETON 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return HighScoreNamePersistanceSingleton::SINGLETON;
     
 }
@@ -182,6 +184,8 @@ this->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->platformRecordIdUtil->getRecordId(abeClientInformation, this->RECORD_ID);;
     
 }
@@ -243,6 +247,8 @@ recordStore->deleteRecord(deleteId);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->nameBasicArrayList;
     
 }
@@ -353,6 +359,8 @@ this->logUtil->putF((new StringMaker())->append(this->commonStrings->EXCEPTION_L
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }

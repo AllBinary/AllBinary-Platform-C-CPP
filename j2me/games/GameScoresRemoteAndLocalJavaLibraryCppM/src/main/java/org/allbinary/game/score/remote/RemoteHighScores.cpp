@@ -140,6 +140,8 @@ this->setAscending(ascending);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return RemoteHighScores::getInstancePreload(abeClientInformation, softwareInformation, gameInfo, heading, columnTwoHeading, isAscending, true);;
     
 }
@@ -172,6 +174,8 @@ RemoteHighScores::hashTable->put(gameInfo, highScores);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return highScores;
     
 
@@ -187,6 +191,8 @@ logUtil->put(commonStrings->EXCEPTION, RemoteErrorHighScoresSingletonFactory::ge
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return RemoteErrorHighScoresSingletonFactory::getInstance();;
     
 }
@@ -284,6 +290,8 @@ this->ascending= ascending;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->ascending;
     
 }
@@ -294,6 +302,8 @@ this->ascending= ascending;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->softwareInformation;
     
 }

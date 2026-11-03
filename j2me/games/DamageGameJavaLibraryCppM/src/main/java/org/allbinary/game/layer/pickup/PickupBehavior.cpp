@@ -110,6 +110,8 @@ Object* PickupBehavior::NULL_PICKUP_BEHAVIOR = NullUtil::getInstance()->NULL_OBJ
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<PickupBehavior*>(PickupBehavior::NULL_PICKUP_BEHAVIOR);
     
 }
@@ -284,6 +286,8 @@ countedPickedUpLayerInterfaceFactory= nextCountedLayerInterfaceFactory->getCount
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nextCountedLayerInterfaceFactory;
     
 
@@ -300,6 +304,8 @@ countedPickedUpLayerInterfaceFactory= nextCountedLayerInterfaceFactory->getCount
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return CountedLayerInterfaceFactoryPart::NULL_COUNTED_LAYER_INTERFACE_FACTORY;
     
 }
@@ -344,6 +350,8 @@ nextCountedLayerInterfaceFactory= dynamic_cast<CountedLayerInterfaceFactoryPart*
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nextCountedLayerInterfaceFactory;
     
 
@@ -364,6 +372,8 @@ nextCountedLayerInterfaceFactory= dynamic_cast<CountedLayerInterfaceFactoryPart*
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return CountedLayerInterfaceFactoryPart::NULL_COUNTED_LAYER_INTERFACE_FACTORY;
     
 }
@@ -374,6 +384,8 @@ nextCountedLayerInterfaceFactory= dynamic_cast<CountedLayerInterfaceFactoryPart*
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->countedIndex;
     
 }

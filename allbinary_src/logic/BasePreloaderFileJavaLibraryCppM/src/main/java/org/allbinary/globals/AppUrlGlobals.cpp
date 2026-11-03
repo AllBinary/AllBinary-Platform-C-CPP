@@ -70,6 +70,8 @@ AppUrlGlobals* AppUrlGlobals::NULL_APP_URL_GLOBALS = AppUrlGlobals::NULL_APP_URL
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -80,6 +82,8 @@ AppUrlGlobals* AppUrlGlobals::NULL_APP_URL_GLOBALS = AppUrlGlobals::NULL_APP_URL
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->path;
     
 }
@@ -106,6 +110,8 @@ this->path= path;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 }
@@ -118,6 +124,8 @@ this->path= path;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->path;
     
 }

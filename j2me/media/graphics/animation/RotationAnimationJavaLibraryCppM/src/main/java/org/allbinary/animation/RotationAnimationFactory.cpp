@@ -83,6 +83,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new RotationAnimationFactory(totalAngle, (totalAngle /GameConfigurationCentral::getInstance()->getGameControlFidelity()));
     
 }
@@ -103,6 +105,8 @@ this->angleIncrement= angleIncrement;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NullRotationAnimation::createTotalAngle(AngleInfo::getInstance(this->angleIncrement), this->totalAngle, AnimationBehavior::getInstance());;
     
 }
@@ -115,6 +119,8 @@ this->angleIncrement= angleIncrement;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NullRotationAnimation::createTotalAngle(AngleInfo::getInstance(this->angleIncrement), this->totalAngle, AnimationBehavior::getInstance());;
     
 }

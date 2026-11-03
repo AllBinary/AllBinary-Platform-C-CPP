@@ -90,6 +90,8 @@ StoreCustomizerComponentUtil* StoreCustomizerComponentUtil::instance = StoreCust
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StoreCustomizerComponentUtil::instance;
     
 }
@@ -150,6 +152,8 @@ this->generate(abeClientInformation, transformInfoInterface, allViewsToBeModifie
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 }

@@ -67,6 +67,8 @@ CustomMapGeneratorBaseFactory* CustomMapGeneratorBaseFactory::instance = CustomM
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return CustomMapGeneratorBaseFactory::instance;
     
 }
@@ -83,6 +85,8 @@ CustomMapGeneratorBaseFactory::CustomMapGeneratorBaseFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new CustomMapGeneratorBase();
     
 }

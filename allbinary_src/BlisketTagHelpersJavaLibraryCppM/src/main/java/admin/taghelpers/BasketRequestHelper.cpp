@@ -156,6 +156,8 @@ this->num= this->request->getParameter(BasketData::ITEMTOTALINBASKET);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -179,6 +181,8 @@ basket->addItem(this->id, num);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -198,6 +202,8 @@ basket->addItem(this->id, num);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -233,6 +239,8 @@ basket->removeItem(this->id);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -252,6 +260,8 @@ basket->removeItem(this->id);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -282,6 +292,8 @@ basket->removeItem(this->id);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -301,6 +313,8 @@ basket->removeItem(this->id);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }

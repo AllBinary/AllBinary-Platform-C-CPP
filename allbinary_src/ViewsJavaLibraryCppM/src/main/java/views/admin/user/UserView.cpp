@@ -101,6 +101,8 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(new UserDomNode(this->
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return HttpContextView::view();;
     
 

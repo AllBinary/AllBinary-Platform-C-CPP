@@ -159,6 +159,8 @@ this->request= httpServletRequest;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->weblisketSession->getId()->substring(startIndex -8);;
     
 
@@ -235,6 +237,8 @@ this->request= httpServletRequest;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -268,6 +272,8 @@ UserEntityFactory::getInstance()->update(userName, newPasswordHashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -287,6 +293,8 @@ UserEntityFactory::getInstance()->update(userName, newPasswordHashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -338,6 +346,8 @@ UserEntityFactory::getInstance()->update(userName, newPasswordHashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -360,6 +370,8 @@ UserEntityFactory::getInstance()->update(userName, newPasswordHashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -402,6 +414,8 @@ UserEntityFactory::getInstance()->update(userName, newPasswordHashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -420,6 +434,8 @@ UserEntityFactory::getInstance()->update(userName, newPasswordHashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -439,6 +455,8 @@ UserEntityFactory::getInstance()->update(userName, newPasswordHashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -474,6 +492,8 @@ UserEntityFactory::getInstance()->update(userName, newPasswordHashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -509,6 +529,8 @@ this->request->removeAttribute(WeblisketSessionData::REMOVABLEPASSWORD);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -540,6 +562,8 @@ this->logUtil->putF(stringBuffer->toString(), this, "isRoleValid()");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -559,6 +583,8 @@ this->logUtil->putF(stringBuffer->toString(), this, "isRoleValid()");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }

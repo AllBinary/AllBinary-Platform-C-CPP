@@ -254,6 +254,8 @@ this->logUtil->put("Unable to get form data", this, "getFormData()", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -276,6 +278,8 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->IS_VALID, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -474,6 +478,8 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->IS_VALID, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return isValid;
     
 }
@@ -493,6 +499,8 @@ stringBuffer->append(") you have provided is not valid.<br/>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -524,6 +532,8 @@ stringBuffer->append("Solution: Use a valid JDBC driver.<p/>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -742,6 +752,8 @@ stringBuffer->append(this->getJdbcDriverValidationInfo(this->staticPagesJdbcDriv
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

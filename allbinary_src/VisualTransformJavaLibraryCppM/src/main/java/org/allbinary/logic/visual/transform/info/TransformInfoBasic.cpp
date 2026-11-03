@@ -103,6 +103,8 @@ this->storeFrontInterface= storeFrontInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->storeFrontInterface->getName();;
     
 }
@@ -113,6 +115,8 @@ this->storeFrontInterface= storeFrontInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return commonStrings.NOT_IMPLEMENTED;
     
 }
@@ -127,6 +131,8 @@ this->storeFrontInterface= storeFrontInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -137,6 +143,8 @@ this->storeFrontInterface= storeFrontInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -147,6 +155,8 @@ this->storeFrontInterface= storeFrontInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -157,6 +167,8 @@ this->storeFrontInterface= storeFrontInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -171,6 +183,8 @@ this->storeFrontInterface= storeFrontInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -181,6 +195,8 @@ this->storeFrontInterface= storeFrontInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -191,6 +207,8 @@ this->storeFrontInterface= storeFrontInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -201,6 +219,8 @@ this->storeFrontInterface= storeFrontInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -211,6 +231,8 @@ this->storeFrontInterface= storeFrontInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -272,6 +294,8 @@ this->storeFrontInterface= storeFrontInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -282,6 +306,8 @@ this->storeFrontInterface= storeFrontInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -298,6 +324,8 @@ this->storeFrontInterface= storeFrontInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -310,6 +338,8 @@ this->storeFrontInterface= storeFrontInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -322,6 +352,8 @@ this->storeFrontInterface= storeFrontInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

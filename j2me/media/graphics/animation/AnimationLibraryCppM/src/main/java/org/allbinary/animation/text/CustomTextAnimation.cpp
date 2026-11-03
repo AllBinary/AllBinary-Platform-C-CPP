@@ -144,6 +144,8 @@ TextAnimation::setText(text);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->lastText;
     
 }
@@ -165,6 +167,8 @@ this->hasChanged= false;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->textWidth;
     
 }
@@ -175,6 +179,8 @@ this->hasChanged= false;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->font->getHeight();;
     
 }

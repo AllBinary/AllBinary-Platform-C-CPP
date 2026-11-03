@@ -229,6 +229,8 @@ this->setComments(JavaBoxes::unbox<std::string>(hashMap->get(quoteRequestData->C
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return valid;
     
 
@@ -248,6 +250,8 @@ this->setComments(JavaBoxes::unbox<std::string>(hashMap->get(quoteRequestData->C
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -319,6 +323,8 @@ this->setComments(JavaBoxes::unbox<std::string>(hashMap->get(quoteRequestData->C
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -338,6 +344,8 @@ this->setComments(JavaBoxes::unbox<std::string>(hashMap->get(quoteRequestData->C
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Validating Form";
     
 }
@@ -377,6 +385,8 @@ values->add(time);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return values;
     
 }
@@ -413,6 +423,8 @@ values->put(EntryData::getInstance()->LASTMODIFIED, time);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return values;
     
 }
@@ -466,6 +478,8 @@ this->comments= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->userName;
     
 }
@@ -476,6 +490,8 @@ this->comments= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->projectInfo;
     
 }
@@ -486,6 +502,8 @@ this->comments= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->userComments;
     
 }
@@ -496,6 +514,8 @@ this->comments= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->budget;
     
 }
@@ -506,6 +526,8 @@ this->comments= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->timeFrame;
     
 }
@@ -516,6 +538,8 @@ this->comments= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->comments;
     
 }

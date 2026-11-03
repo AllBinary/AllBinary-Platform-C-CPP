@@ -72,6 +72,8 @@ QuoteRequestEntityFactory* QuoteRequestEntityFactory::instance = QuoteRequestEnt
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return QuoteRequestEntityFactory::instance;
     
 }
@@ -88,6 +90,8 @@ QuoteRequestEntityFactory::QuoteRequestEntityFactory() : logUtil(LogUtil::getIns
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new org::allbinary::data::tables::user::quoterequest::QuoteRequestEntity();
     
 
@@ -110,6 +114,8 @@ QuoteRequestEntityFactory::QuoteRequestEntityFactory() : logUtil(LogUtil::getIns
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

@@ -169,6 +169,8 @@ this->workFlowDoc= DomDocumentHelper::create(JavaBoxes::unbox<std::string>(hashM
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->workFlowName;
     
 }
@@ -179,6 +181,8 @@ this->workFlowDoc= DomDocumentHelper::create(JavaBoxes::unbox<std::string>(hashM
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->storeName;
     
 }
@@ -189,6 +193,8 @@ this->workFlowDoc= DomDocumentHelper::create(JavaBoxes::unbox<std::string>(hashM
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getName();
     
 }
@@ -220,6 +226,8 @@ values->add(time);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return values;
     
 }
@@ -249,6 +257,8 @@ hashMap->put(EntryData::getInstance()->LASTMODIFIED, time);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }
@@ -293,6 +303,8 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 
@@ -312,6 +324,8 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -326,6 +340,8 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->workFlowDoc;
     
 
@@ -345,6 +361,8 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -371,6 +389,8 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return returnBoolean;
     
 
@@ -390,6 +410,8 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -411,6 +433,8 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -430,6 +454,8 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Getting Validation Info";
     
 }
@@ -442,6 +468,8 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -452,6 +480,8 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

@@ -284,6 +284,8 @@ jMenu->add(jMenuItemTimeInterval);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return jMenu;
     
 }
@@ -318,6 +320,8 @@ jMenu->add(jMenuItemJoystick);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return jMenu;
     
 }
@@ -338,6 +342,8 @@ jMenu->add(jMenuItemImage);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return jMenu;
     
 }
@@ -433,6 +439,8 @@ node->appendChild(profileActionProcessorInterface->toXmlNode(document));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }
@@ -443,6 +451,8 @@ node->appendChild(profileActionProcessorInterface->toXmlNode(document));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->profileActionConditionInterfaceVector;
     
 }
@@ -564,6 +574,8 @@ this->logUtil->put("Error", this, "actionPerformed", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->profileActionProcessorInterfaceVector;
     
 }
@@ -613,6 +625,8 @@ JTreeInterfaceFactory::getInstance()->getJTreeInterface()->getActionScriptJTree(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -624,6 +638,8 @@ JTreeInterfaceFactory::getInstance()->getJTreeInterface()->getActionScriptJTree(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }

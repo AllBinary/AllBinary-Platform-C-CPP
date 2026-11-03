@@ -103,6 +103,8 @@ TestingInputSingleton* TestingInputSingleton::instance = TestingInputSingleton::
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TestingInputSingleton::instance;
     
 }
@@ -320,6 +322,8 @@ this->paintable->paint(graphics);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }

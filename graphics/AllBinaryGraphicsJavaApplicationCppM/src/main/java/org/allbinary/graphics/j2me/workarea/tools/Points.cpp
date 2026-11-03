@@ -80,6 +80,8 @@ this->pointVector->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->pointVector;
     
 }
@@ -100,6 +102,8 @@ this->pointVector->addAll2(vector);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -110,6 +114,8 @@ this->pointVector->addAll2(vector);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -123,6 +129,8 @@ this->pointVector->addAll2(vector);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->pointVector->size();;
     
 }

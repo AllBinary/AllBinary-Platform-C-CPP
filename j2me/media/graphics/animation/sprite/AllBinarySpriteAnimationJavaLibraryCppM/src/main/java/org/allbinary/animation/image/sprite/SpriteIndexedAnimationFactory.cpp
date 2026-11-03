@@ -100,6 +100,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new SpriteIndexedAnimationFactory(image, basicColorArray, PrimitiveIntUtil::getArrayInstance(), width, height, dx, dy, animationBehaviorFactory);
     
 }
@@ -117,6 +119,8 @@ spriteIndexedAnimationFactory->initHWH();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return spriteIndexedAnimationFactory;
     
 }
@@ -129,6 +133,8 @@ spriteIndexedAnimationFactory->initHWH();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new SpriteIndexedAnimationFactory(image, BasicColorUtil::getInstance()->ZERO_ARRAY, PrimitiveIntUtil::getArrayInstance(), width, height, 0, 0, animationBehaviorFactory);
     
 }
@@ -177,6 +183,8 @@ this->animationFactoryInitializationVisitor->dy=  -(this->animationFactoryInitia
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AdjustedSpriteIndexedAnimation(sprite, this->getImage(), this->basicColorArray, this->animationFactoryInitializationVisitor->dx, this->animationFactoryInitializationVisitor->dy, this->animationBehaviorFactory->getOrCreateInstance());
     
 
@@ -187,6 +195,8 @@ this->animationFactoryInitializationVisitor->dy=  -(this->animationFactoryInitia
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new SpriteIndexedAnimation(sprite, this->getImage(), this->basicColorArray, this->animationBehaviorFactory->getOrCreateInstance());
     
 
@@ -202,6 +212,8 @@ this->animationFactoryInitializationVisitor->dy=  -(this->animationFactoryInitia
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getInstance(0);;
     
 }

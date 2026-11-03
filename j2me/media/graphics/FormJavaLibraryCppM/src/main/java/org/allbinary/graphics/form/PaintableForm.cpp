@@ -91,6 +91,8 @@ Object* PaintableForm::NULL_PAINTABLE_FORM = NullUtil::getInstance()->NULL_OBJEC
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<PaintableForm*>(PaintableForm::NULL_PAINTABLE_FORM);
     
 }
@@ -130,6 +132,8 @@ this->formType= formType;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->rectangle->getWidth();;
     
 }

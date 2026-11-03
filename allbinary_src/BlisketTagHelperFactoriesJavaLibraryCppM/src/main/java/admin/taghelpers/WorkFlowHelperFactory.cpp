@@ -85,6 +85,8 @@ WorkFlowHelperFactory::WorkFlowHelperFactory() : logUtil(LogUtil::getInstance())
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new WorkFlowHelper(hashMap, pageContext);
     
 
@@ -104,6 +106,8 @@ WorkFlowHelperFactory::WorkFlowHelperFactory() : logUtil(LogUtil::getInstance())
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

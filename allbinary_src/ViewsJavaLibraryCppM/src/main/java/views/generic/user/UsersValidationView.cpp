@@ -98,6 +98,8 @@ this->userVector= UserEntityFactory::getInstance()->getCustomers();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -108,6 +110,8 @@ this->userVector= UserEntityFactory::getInstance()->getCustomers();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -130,6 +134,8 @@ this->userVector= UserEntityFactory::getInstance()->getCustomers();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -144,6 +150,8 @@ this->userVector= UserEntityFactory::getInstance()->getCustomers();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "No Users";
     
 
@@ -163,6 +171,8 @@ this->userVector= UserEntityFactory::getInstance()->getCustomers();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Getting Validation Info";
     
 }
@@ -175,6 +185,8 @@ this->userVector= UserEntityFactory::getInstance()->getCustomers();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -185,6 +197,8 @@ this->userVector= UserEntityFactory::getInstance()->getCustomers();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

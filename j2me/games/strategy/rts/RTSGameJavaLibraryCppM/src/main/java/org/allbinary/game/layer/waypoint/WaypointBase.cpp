@@ -112,6 +112,8 @@ this->sound= sound;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->sound;
     
 }
@@ -130,6 +132,8 @@ this->allBinaryGameLayerManagerP= allBinaryGameLayerManager;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->connectedWaypointList;
     
 }
@@ -200,6 +204,8 @@ ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }

@@ -100,6 +100,8 @@ ScreenCaptureImagesWorker::index= ProcessingFrameIndexFactory::next();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->running;
     
 }

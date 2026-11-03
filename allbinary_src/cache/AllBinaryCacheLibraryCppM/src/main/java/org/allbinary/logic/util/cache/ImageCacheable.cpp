@@ -68,7 +68,9 @@ ImageCacheable::ImageCacheable(std::string name, Object* anyType) : name(StringU
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->name;
+                        
+                        
+                        return JavaBoxes::toObject(this->name);
     
 }
 
@@ -78,6 +80,8 @@ ImageCacheable::ImageCacheable(std::string name, Object* anyType) : name(StringU
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }

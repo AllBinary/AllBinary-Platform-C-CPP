@@ -140,6 +140,8 @@ MetaValidation::MetaValidation(Document* document) : logUtil(LogUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return valid;
     
 
@@ -159,6 +161,8 @@ MetaValidation::MetaValidation(Document* document) : logUtil(LogUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -176,6 +180,8 @@ MetaValidation::MetaValidation(Document* document) : logUtil(LogUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -195,6 +201,8 @@ MetaValidation::MetaValidation(Document* document) : logUtil(LogUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Validating Form";
     
 }
@@ -207,6 +215,8 @@ MetaValidation::MetaValidation(Document* document) : logUtil(LogUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -217,6 +227,8 @@ MetaValidation::MetaValidation(Document* document) : logUtil(LogUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -241,6 +253,8 @@ hashMap->put(htmlMetaAttributeDataFactory->CONTENT->toString(), this->content);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }
@@ -256,6 +270,8 @@ hashMap->put(htmlMetaAttributeDataFactory->CONTENT->toString(), this->content);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }

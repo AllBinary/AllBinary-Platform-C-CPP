@@ -65,6 +65,8 @@ InputFeatureFactory* InputFeatureFactory::instance = InputFeatureFactory::instan
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return InputFeatureFactory::instance;
     
 }
@@ -86,6 +88,8 @@ InputFeatureFactory::InputFeatureFactory() : REMOVE_DUPLICATE_KEY_PRESSES(new In
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -96,6 +100,8 @@ InputFeatureFactory::InputFeatureFactory() : REMOVE_DUPLICATE_KEY_PRESSES(new In
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 

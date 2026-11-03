@@ -109,6 +109,8 @@ VisibleCellPositionsSingleton* VisibleCellPositionsSingleton::instance = Visible
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return VisibleCellPositionsSingleton::instance;
     
 }
@@ -260,6 +262,8 @@ this->currentIndex++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -270,6 +274,8 @@ this->currentIndex++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -305,6 +311,8 @@ this->visibleCellPositions[cellPosition->getRow()][cellPosition->getColumn()]++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -315,6 +323,8 @@ this->visibleCellPositions[cellPosition->getRow()][cellPosition->getColumn()]++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -346,6 +356,8 @@ this->simpleTiledLayer= simpleTiledLayer;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->simpleTiledLayer;
     
 }

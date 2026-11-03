@@ -76,6 +76,8 @@ ArrayUtil* ArrayUtil::instance = ArrayUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ArrayUtil::instance;
     
 }
@@ -86,6 +88,8 @@ ArrayUtil* ArrayUtil::instance = ArrayUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->copyOfType(original, newLength, Class::forType(typeid(original)));;
     
 }
@@ -101,6 +105,8 @@ System.arraycopy(original, 0, copy, 0, this->mathUtil->min(original.size(), newL
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return copy;
     
 }
@@ -116,6 +122,8 @@ System.arraycopy(original, 0, copy, 0, this->mathUtil->min(original.size(), newL
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return copy;
     
 }
@@ -131,6 +139,8 @@ System.arraycopy(original, 0, copy, 0, this->mathUtil->min(original.size(), newL
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return copy;
     
 }
@@ -146,6 +156,8 @@ System.arraycopy(original, 0, copy, 0, this->mathUtil->min(original.size(), newL
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return copy;
     
 }
@@ -161,6 +173,8 @@ System.arraycopy(original, 0, copy, 0, this->mathUtil->min(original.size(), newL
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return copy;
     
 }
@@ -176,6 +190,8 @@ System.arraycopy(original, 0, copy, 0, this->mathUtil->min(original.size(), newL
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return copy;
     
 }
@@ -191,6 +207,8 @@ System.arraycopy(original, 0, copy, 0, this->mathUtil->min(original.size(), newL
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return copy;
     
 }
@@ -206,6 +224,8 @@ System.arraycopy(original, 0, copy, 0, this->mathUtil->min(original.size(), newL
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return copy;
     
 }
@@ -221,6 +241,8 @@ System.arraycopy(original, 0, copy, 0, this->mathUtil->min(original.size(), newL
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return copy;
     
 }
@@ -343,6 +365,8 @@ stringBuffer->append(commonSeps->NEW_LINE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -372,6 +396,8 @@ stringBuffer->append(commonSeps->COMMA_SEP);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -401,6 +427,8 @@ stringBuffer->append(commonSeps->COMMA_SEP);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

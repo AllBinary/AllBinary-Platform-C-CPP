@@ -84,6 +84,8 @@ this->GL_QUAD_STRIP= com.jogamp->opengl->GL2->GL_QUAD_STRIP;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->gl10;
     
 }
@@ -316,6 +318,8 @@ this->gl10->glGenTextures(n, textures);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->gl10->glGetError();;
     
 }
@@ -338,6 +342,8 @@ this->gl10->glGetIntegerv(pname, params);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->gl10->glGetString(name);;
     
 }

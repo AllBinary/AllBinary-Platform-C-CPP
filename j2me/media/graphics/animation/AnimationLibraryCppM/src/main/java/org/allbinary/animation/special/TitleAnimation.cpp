@@ -91,6 +91,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new TitleAnimation(animationInterfaceArray, basicColorArray, dxArray, dyArray, y, width, new IndexedAnimationBehavior(1, 250));
     
 }
@@ -169,6 +171,8 @@ this->lastFrameStartTime= currentTime;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -179,6 +183,8 @@ this->lastFrameStartTime= currentTime;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -196,6 +202,8 @@ this->lastFrameStartTime= currentTime;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PrimitiveIntUtil::getArrayInstance();;
     
 }
@@ -206,6 +214,8 @@ this->lastFrameStartTime= currentTime;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->animationInterfaceArray[0]->getSize();;
     
 }
@@ -216,6 +226,8 @@ this->lastFrameStartTime= currentTime;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->animationInterfaceArray[0]->getFrame();;
     
 }

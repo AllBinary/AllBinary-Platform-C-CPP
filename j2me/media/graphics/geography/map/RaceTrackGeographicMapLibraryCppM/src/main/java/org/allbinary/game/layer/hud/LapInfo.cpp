@@ -80,6 +80,8 @@ this->numberOfLaps++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->numberOfLaps;
     
 }
@@ -90,6 +92,8 @@ this->numberOfLaps++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->totalLaps;
     
 }
@@ -104,6 +108,8 @@ this->numberOfLaps++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -113,6 +119,8 @@ this->numberOfLaps++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -138,6 +146,8 @@ stringBuffer->appendint(this->getTotalLaps());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

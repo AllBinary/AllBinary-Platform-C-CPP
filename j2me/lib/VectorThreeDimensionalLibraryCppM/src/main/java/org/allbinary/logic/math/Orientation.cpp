@@ -75,6 +75,8 @@ Orientation::SINGLETON->roll->setint(roll);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Orientation::SINGLETON;
     
 }
@@ -110,6 +112,8 @@ stringBuffer->append(std::to_string(roll));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

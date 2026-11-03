@@ -104,6 +104,8 @@ JavaHelpUtil* JavaHelpUtil::instance = JavaHelpUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaHelpUtil::instance;
     
 }
@@ -127,6 +129,8 @@ JavaHelpUtil::JavaHelpUtil() : logUtil(LogUtil::getInstance()), point(new Point(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getHelpSet(helpSetURL);;
     
 
@@ -139,6 +143,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, getInstance(), "set", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -153,6 +159,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, getInstance(), "set", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new HelpSet(
                             nullptr, url);
     
@@ -166,6 +174,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, getInstance(), "set", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

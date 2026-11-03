@@ -61,6 +61,8 @@ CryptFileReader::CryptFileReader(std::string decryptedExtension, std::string enc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -73,6 +75,8 @@ CryptFileReader::CryptFileReader(std::string decryptedExtension, std::string enc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

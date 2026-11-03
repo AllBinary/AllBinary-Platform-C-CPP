@@ -159,6 +159,8 @@ index= end +this->endSep.size();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return tokenList;
     
 }
@@ -202,6 +204,8 @@ break;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return tokenVector;
     
 }
@@ -246,6 +250,8 @@ end= JavaString::indexOf(string, this->sep);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return tokenHashtable;
     
 }

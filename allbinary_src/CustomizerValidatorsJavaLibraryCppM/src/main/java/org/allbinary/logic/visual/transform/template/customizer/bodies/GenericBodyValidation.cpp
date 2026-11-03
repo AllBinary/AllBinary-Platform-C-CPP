@@ -183,6 +183,8 @@ this->body= JavaBoxes::unbox<std::string>(hashMap->get(BodyData::getInstance()->
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return isValid;
     
 
@@ -202,6 +204,8 @@ this->body= JavaBoxes::unbox<std::string>(hashMap->get(BodyData::getInstance()->
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -233,6 +237,8 @@ stringBuffer->appendint(AbSqlData::MAXBLOB);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -252,6 +258,8 @@ stringBuffer->appendint(AbSqlData::MAXBLOB);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Validating Form";
     
 }
@@ -264,6 +272,8 @@ stringBuffer->appendint(AbSqlData::MAXBLOB);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -274,6 +284,8 @@ stringBuffer->appendint(AbSqlData::MAXBLOB);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -289,6 +301,8 @@ stringBuffer->appendint(AbSqlData::MAXBLOB);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }

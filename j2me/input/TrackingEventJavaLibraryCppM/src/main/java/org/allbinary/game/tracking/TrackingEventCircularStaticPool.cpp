@@ -76,6 +76,8 @@ TrackingEventCircularStaticPool* TrackingEventCircularStaticPool::instance = Tra
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TrackingEventCircularStaticPool::instance;
     
 }
@@ -100,6 +102,8 @@ trackingEvent->setLayerInterfaceForCircularStaticPool(layerInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return trackingEvent;
     
 }

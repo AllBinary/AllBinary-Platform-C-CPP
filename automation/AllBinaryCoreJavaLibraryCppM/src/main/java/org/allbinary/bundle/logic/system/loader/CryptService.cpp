@@ -126,6 +126,8 @@ this->logUtil->putF(JavaString::valueOf("Set Globals: ") +JavaString::valueOf(UR
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new ByteArrayInputStream(decrypted);
     
 
@@ -147,6 +149,8 @@ this->showLicenseDialog(abeClientInformation, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

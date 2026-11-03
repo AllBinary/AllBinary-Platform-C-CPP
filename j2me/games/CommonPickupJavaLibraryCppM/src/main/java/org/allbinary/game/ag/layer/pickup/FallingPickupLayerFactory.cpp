@@ -78,6 +78,8 @@ FallingPickupLayerFactory::FallingPickupLayerFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new FallingPickupLayer(RemoteInfo::REMOTE_INFO);
     
 }

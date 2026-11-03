@@ -91,6 +91,8 @@ this->startTime= this->gameTickTimeDelayHelper->startTime;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->hundredthTime;
     
 }
@@ -161,6 +163,8 @@ this->modifier += value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->hundrethsString;
     
 }
@@ -171,6 +175,8 @@ this->modifier += value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->totalDigits;
     
 }

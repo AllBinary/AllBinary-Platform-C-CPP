@@ -163,6 +163,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET_LARGETS_INT
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return largestAsString;
     
 
@@ -182,6 +184,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET_LARGETS_INT
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->INVALID_RESULT;
     
 }
@@ -245,6 +249,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET_COLUMN);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return column;
     
 
@@ -264,6 +270,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET_COLUMN);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return column;
     
 }
@@ -341,6 +349,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET_COLUMN_WHER
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return column;
     
 
@@ -360,6 +370,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET_COLUMN_WHER
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return column;
     
 }

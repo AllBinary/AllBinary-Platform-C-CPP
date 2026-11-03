@@ -83,6 +83,8 @@ ProductListingFactory::ProductListingFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<ProductListingInterface*>(new views::admin::inventory::listings::ProductListing(searchRequest));
     
 
@@ -105,6 +107,8 @@ logUtil->put(commonStrings->EXCEPTION, "ProductListingFactory", commonStrings->G
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

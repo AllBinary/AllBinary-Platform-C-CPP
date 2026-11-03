@@ -82,6 +82,8 @@ AbCryptUtil* AbCryptUtil::instance = AbCryptUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbCryptUtil::instance;
     
 }
@@ -124,6 +126,8 @@ abCrypt->init(key);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return abCrypt->decrypt(outputStream->toByteArray());;
     
 

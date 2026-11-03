@@ -117,6 +117,8 @@ Object* InputToGameKeyMapping::instance = NullUtil::getInstance()->NULL_OBJECT;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<InputToGameKeyMapping*>(InputToGameKeyMapping::instance);
     
 }
@@ -238,6 +240,8 @@ this->set(input, this->gameKeyFactory->NONE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->platformToGameKeyMapping.size();
     
 }
@@ -284,6 +288,8 @@ this->set(input, this->gameKeyFactory->NONE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return list;
     
 }
@@ -362,6 +368,8 @@ nextKey= canvas->getKeyCode(this->mappedGameKeys[index]->getId());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return smallestKey;
     
 }
@@ -440,6 +448,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->IN
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->platformToGameKeyMapping[id];
     
 
@@ -453,6 +463,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->IN
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->negativePlatformToGameKeyMapping[ -id];
     
 
@@ -463,6 +475,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->IN
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->gameKeyFactory->NONE;
     
 
@@ -480,6 +494,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->IN
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->platformToGameKeyMapping[id];
     
 
@@ -493,6 +509,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->IN
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->negativePlatformToGameKeyMapping[ -id];
     
 
@@ -503,6 +521,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->IN
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->gameKeyFactory->NONE;
     
 

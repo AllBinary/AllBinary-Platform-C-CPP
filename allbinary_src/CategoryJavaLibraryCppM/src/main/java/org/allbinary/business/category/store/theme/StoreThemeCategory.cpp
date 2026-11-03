@@ -164,6 +164,8 @@ this->addThemes(node);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->transformInfoInterface;
     
 }
@@ -213,6 +215,8 @@ this->themeVector->add(themeValidation);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->themeVector;
     
 }
@@ -229,6 +233,8 @@ this->themeVector->add(themeValidation);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -238,6 +244,8 @@ this->themeVector->add(themeValidation);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 }
@@ -255,6 +263,8 @@ categoryHashMap->put(ThemesData::getInstance()->NAME, this->themeVector);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return categoryHashMap;
     
 }
@@ -270,6 +280,8 @@ categoryHashMap->put(ThemesData::getInstance()->NAME, this->themeVector);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return categoryVector;
     
 }

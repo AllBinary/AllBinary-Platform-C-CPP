@@ -79,6 +79,8 @@ this->aggression= aggression;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->turnSpeed;
     
 }
@@ -95,6 +97,8 @@ this->turnSpeed= turnSpeed;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->trackPathSelectionSkill;
     
 }
@@ -111,6 +115,8 @@ this->trackPathSelectionSkill= trackPathSelectionSkill;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->aggression;
     
 }

@@ -100,6 +100,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->FETCH, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new HighScoresHelper2();
     
 }
@@ -114,6 +116,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->FETCH, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -123,6 +127,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->FETCH, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

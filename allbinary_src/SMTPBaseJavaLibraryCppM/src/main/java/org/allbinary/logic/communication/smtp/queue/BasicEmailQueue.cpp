@@ -94,6 +94,8 @@ BasicEmailQueue::BasicEmailQueue() : logUtil(LogUtil::getInstance()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BasicEmailQueue::basicEmailQueue;
     
 }
@@ -111,6 +113,8 @@ this->post(emailInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -129,6 +133,8 @@ this->remove(emailInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -213,6 +219,8 @@ Transport::send(emailInterface->getMimeMessage());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -232,6 +240,8 @@ Transport::send(emailInterface->getMimeMessage());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

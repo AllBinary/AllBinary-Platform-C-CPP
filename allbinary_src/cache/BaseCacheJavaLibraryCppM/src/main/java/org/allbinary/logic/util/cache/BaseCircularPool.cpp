@@ -92,7 +92,9 @@ this->circularIndexUtil->next();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return anyType;
+                        
+                        
+                        return JavaBoxes::toObject(anyType);
     
 }
 
@@ -124,6 +126,8 @@ this->OBJECT_ARRAY[index]= allBinaryObjectFactoryInterface->getInstance();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->OBJECT_ARRAY[index];
     
 }

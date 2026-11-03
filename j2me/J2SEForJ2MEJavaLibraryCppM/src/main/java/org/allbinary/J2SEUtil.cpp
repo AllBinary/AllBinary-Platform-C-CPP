@@ -77,6 +77,8 @@ J2SEUtil* J2SEUtil::instance = J2SEUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return J2SEUtil::instance;
     
 }
@@ -90,6 +92,8 @@ J2SEUtil* J2SEUtil::instance = J2SEUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return objectArray;
     
 }
@@ -103,6 +107,8 @@ J2SEUtil* J2SEUtil::instance = J2SEUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return objectArray;
     
 }
@@ -116,6 +122,8 @@ J2SEUtil* J2SEUtil::instance = J2SEUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return objectArray;
     
 }

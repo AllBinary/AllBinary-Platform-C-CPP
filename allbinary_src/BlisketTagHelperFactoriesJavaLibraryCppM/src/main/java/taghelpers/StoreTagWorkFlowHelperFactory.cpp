@@ -87,6 +87,8 @@ StoreTagWorkFlowHelperFactory::StoreTagWorkFlowHelperFactory() : logUtil(LogUtil
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new StoreTagWorkFlowHelper(hashMap, pageContext);
     
 
@@ -106,6 +108,8 @@ StoreTagWorkFlowHelperFactory::StoreTagWorkFlowHelperFactory() : logUtil(LogUtil
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

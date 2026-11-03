@@ -94,6 +94,8 @@ FileListFetcher* FileListFetcher::instance = FileListFetcher::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return FileListFetcher::instance;
     
 }
@@ -109,6 +111,8 @@ FileListFetcher* FileListFetcher::instance = FileListFetcher::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return files;
     
 
@@ -125,6 +129,8 @@ System.out.println(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -160,6 +166,8 @@ includeExtensionBasicArrayList->add(includeExtensions[index]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return files;
     
 
@@ -176,6 +184,8 @@ System.out.println(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -199,6 +209,8 @@ includeExtensionBasicArrayList->add(includeExtension);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return files;
     
 
@@ -215,6 +227,8 @@ System.out.println(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -238,6 +252,8 @@ includeExtensionBasicArrayList->add(includeExtension);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return files;
     
 
@@ -254,6 +270,8 @@ System.out.println(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -289,6 +307,8 @@ includeExtensionBasicArrayList->add(includeExtensions[index]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return files;
     
 
@@ -305,6 +325,8 @@ System.out.println(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -328,6 +350,8 @@ includeExtensionBasicArrayList->add(includeExtension);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return files;
     
 
@@ -344,6 +368,8 @@ System.out.println(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -362,6 +388,8 @@ System.out.println(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return files;
     
 
@@ -378,6 +406,8 @@ System.out.println(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

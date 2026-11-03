@@ -61,6 +61,8 @@ TouchButtonResource* TouchButtonBlankResource::instance = new TouchButtonBlankRe
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TouchButtonBlankResource::instance;
     
 }

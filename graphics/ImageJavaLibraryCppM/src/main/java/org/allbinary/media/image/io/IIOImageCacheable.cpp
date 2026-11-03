@@ -79,7 +79,9 @@ this->key= key;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->key;
+                        
+                        
+                        return JavaBoxes::toObject(this->key);
     
 }
 
@@ -97,6 +99,8 @@ this->setIioImage(new IIOImage(bufferedImage,
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->iioImage;
     
 }
@@ -120,6 +124,8 @@ stringBuffer->append(" Reusable IIOImage");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

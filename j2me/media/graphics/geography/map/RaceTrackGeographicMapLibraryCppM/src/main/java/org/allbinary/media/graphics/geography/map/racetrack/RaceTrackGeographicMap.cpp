@@ -97,6 +97,8 @@ this->customMapGenerator= customMapGeneratorBaseFactory->create(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->customMapGenerator;
     
 }
@@ -133,6 +135,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -143,6 +147,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -176,6 +182,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -186,6 +194,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -198,6 +208,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }

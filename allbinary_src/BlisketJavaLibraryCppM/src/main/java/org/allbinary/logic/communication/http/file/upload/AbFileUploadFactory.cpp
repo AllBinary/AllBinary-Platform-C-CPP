@@ -95,6 +95,8 @@ AbFileUploadFactory* AbFileUploadFactory::instance = AbFileUploadFactory::instan
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbFileUploadFactory::instance;
     
 }
@@ -137,6 +139,8 @@ items->add(fileItem);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return items;
     
 
@@ -177,6 +181,8 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "get()", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return abFileUpload->parseRequest(httpServletRequest);;
     
 

@@ -77,6 +77,8 @@ IdGeneratorEntityFactory::IdGeneratorEntityFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<IdGeneratorEntityInterface*>(new org::allbinary::data::tables::generator::IdGeneratorEntity());
     
 
@@ -95,6 +97,8 @@ logUtil->put(commonStrings->EXCEPTION, "ServerLicenseRequestEntityFactory", comm
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

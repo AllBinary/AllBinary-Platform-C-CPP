@@ -69,6 +69,8 @@ ArtificialIntelligence* ArtificialIntelligence::instance = ArtificialIntelligenc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ArtificialIntelligence::instance;
     
 }
@@ -89,6 +91,8 @@ ArtificialIntelligence::ArtificialIntelligence(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 1;
     
 }

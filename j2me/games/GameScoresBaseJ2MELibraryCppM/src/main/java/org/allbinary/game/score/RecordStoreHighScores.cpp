@@ -177,6 +177,8 @@ RecordStoreHighScores::hashTable->put(highScores->getName(), highScores);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return highScores;
     
 
@@ -186,6 +188,8 @@ RecordStoreHighScores::hashTable->put(highScores->getName(), highScores);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<HighScores*>(highScoresCanBeNull);
     
 }
@@ -196,6 +200,8 @@ RecordStoreHighScores::hashTable->put(highScores->getName(), highScores);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->platformRecordIdUtil->getRecordId(abeClientInformation, (new StringMaker())->append(CommonSeps::getInstance()->UNDERSCORE)->append(this->getName())->append(this->RECORD_ID)->toString());;
     
 }
@@ -594,6 +600,8 @@ this->logUtil->put(this->commonStrings->UNKNOWN, this, this->commonStrings->LOAD
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -606,6 +614,8 @@ this->logUtil->put(this->commonStrings->UNKNOWN, this, this->commonStrings->LOAD
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -630,6 +640,8 @@ this->logUtil->put(this->commonStrings->UNKNOWN, this, this->commonStrings->LOAD
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -662,6 +674,8 @@ this->logUtil->put(this->commonStrings->UNKNOWN, this, this->commonStrings->LOAD
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -678,6 +692,8 @@ this->logUtil->putF("Not a High Score", this, "isBestScore");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -728,6 +744,8 @@ stringBuffer->append(CommonSeps::getInstance()->COMMA_SEP);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

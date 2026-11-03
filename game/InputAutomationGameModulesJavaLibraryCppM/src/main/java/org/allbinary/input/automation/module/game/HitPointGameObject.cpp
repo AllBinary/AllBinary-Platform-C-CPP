@@ -120,6 +120,8 @@ HitPointGameObject::HitPointGameObject(std::vector<BufferedImage*> bufferedImage
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -130,6 +132,8 @@ HitPointGameObject::HitPointGameObject(std::vector<BufferedImage*> bufferedImage
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -143,6 +147,8 @@ HitPointGameObject::HitPointGameObject(std::vector<BufferedImage*> bufferedImage
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->closeDeath;
     
 }
@@ -159,6 +165,8 @@ this->closeDeath= closeDeath;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->damaged;
     
 }
@@ -197,6 +205,8 @@ stringBuffer->appendboolean(this->isCloseDeath());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

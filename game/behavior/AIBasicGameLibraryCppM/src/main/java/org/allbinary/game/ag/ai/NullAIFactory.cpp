@@ -82,6 +82,8 @@ NullAI* NullAIFactory::NULL_AI = NullAIFactory::NULL_AI_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NullAIFactory::NULL_AI;
     
 }
@@ -92,6 +94,8 @@ NullAI* NullAIFactory::NULL_AI = NullAIFactory::NULL_AI_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NullAIFactory::NULL_AI;
     
 }

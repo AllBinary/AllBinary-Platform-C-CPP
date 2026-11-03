@@ -89,6 +89,8 @@ ImageRotationUtil* ImageRotationUtil::instance = ImageRotationUtil::instance_own
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ImageRotationUtil::instance;
     
 }
@@ -129,6 +131,8 @@ canvas->restore();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return image2;
     
 
@@ -139,6 +143,8 @@ canvas->restore();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 
@@ -162,6 +168,8 @@ canvasSurface->translate(originalImage->getWidth() /2, originalImage->getHeight(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->rotateImageCanvasSurface(originalImage, image, canvasSurface, totalAngle);;
     
 
@@ -172,6 +180,8 @@ canvasSurface->translate(originalImage->getWidth() /2, originalImage->getHeight(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 
@@ -191,6 +201,8 @@ canvasSurface->translate(originalImage->getWidth() /2, originalImage->getHeight(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return image;
     
 
@@ -201,6 +213,8 @@ canvasSurface->translate(originalImage->getWidth() /2, originalImage->getHeight(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 
@@ -268,6 +282,8 @@ canvasSurface->draw(originalPlayNImage,  -originalImage->getWidth() /2,  -origin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return rotatedImage;
     
 }

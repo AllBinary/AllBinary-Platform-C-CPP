@@ -162,6 +162,8 @@ this->helpSetListenerInterface->helpSetAdded(helpSetEvent);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<ListModel*>(this->defaultListModelHelper->getListModel());
     
 }
@@ -191,6 +193,8 @@ this->logUtil->putF(JavaString::valueOf("Getting Module: ") +JavaString::valueOf
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return inputAutomationModuleFactoryInterface;
     
 }

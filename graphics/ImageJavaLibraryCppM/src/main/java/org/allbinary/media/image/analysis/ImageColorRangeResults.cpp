@@ -69,6 +69,8 @@ this->setColorRangeInterface(dynamic_cast<ColorRangeInterface*>(new ColorRange()
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->colorRangeInterface;
     
 }
@@ -85,6 +87,8 @@ this->colorRangeInterface= colorRangeInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->matchingPixelsChecked;
     
 }
@@ -107,6 +111,8 @@ this->matchingPixelsChecked++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->totalPixelsChecked;
     
 }
@@ -129,6 +135,8 @@ this->totalPixelsChecked= totalPixelsChecked;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (this->getMatchingPixelsChecked() /this->getTotalPixelsChecked());
     
 }

@@ -347,6 +347,8 @@ TransformInfoEntityBuilder::getInstance()->update(updatedTransformInfoHashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return isValid;
     
 
@@ -366,6 +368,8 @@ TransformInfoEntityBuilder::getInstance()->update(updatedTransformInfoHashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -385,6 +389,8 @@ stringBuffer->append("Error: Template Name Is Empty.");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -404,6 +410,8 @@ stringBuffer->append("Error: Template Name Is Empty.");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Getting Validation Info";
     
 }
@@ -416,6 +424,8 @@ stringBuffer->append("Error: Template Name Is Empty.");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -426,6 +436,8 @@ stringBuffer->append("Error: Template Name Is Empty.");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -438,6 +450,8 @@ stringBuffer->append("Error: Template Name Is Empty.");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return views.ValidationOnlyTempUtil->getInstance()->view(this);;
     
 }

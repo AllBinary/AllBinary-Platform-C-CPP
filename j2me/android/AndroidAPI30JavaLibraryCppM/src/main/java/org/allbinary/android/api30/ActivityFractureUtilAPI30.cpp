@@ -82,6 +82,8 @@ ActivityFractureUtilAPI30* ActivityFractureUtilAPI30::instance30 = ActivityFract
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ActivityFractureUtilAPI30::instance30;
     
 }

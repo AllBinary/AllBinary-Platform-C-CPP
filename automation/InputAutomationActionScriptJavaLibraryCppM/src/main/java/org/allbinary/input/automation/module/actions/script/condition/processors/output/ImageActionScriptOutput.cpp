@@ -209,6 +209,8 @@ this->actionScriptOutputJPanel= new ImageActionScriptOutputJPanel(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->actionScriptOutputJPanel;
     
 }
@@ -228,6 +230,8 @@ this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(hashMa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }
@@ -250,6 +254,8 @@ node->appendChild(newNode);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }
@@ -274,6 +280,8 @@ this->actionScriptOutputJPanel->getCapturedImageActionJDialog()->setVisible(true
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->saved;
     
 }
@@ -290,6 +298,8 @@ this->saved= saved;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->display;
     
 }
@@ -321,6 +331,8 @@ stringBuffer->append(this->getImageTypes()->toString());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -337,6 +349,8 @@ this->logUtil->putF(this->future_toString(), this, "log");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->imageTypes;
     
 }

@@ -86,6 +86,8 @@ GraphicItemFactory* GraphicItemFactory::instance = GraphicItemFactory::instance_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return GraphicItemFactory::instance;
     
 }
@@ -118,6 +120,8 @@ this->graphicItems->put(LinesGraphicItem::getStaticName(), new LinesGraphicItemF
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return graphicsItemInterfaceFactoryInterface;
     
 }
@@ -157,6 +161,8 @@ graphicItemHashMap->put(graphicItem->getTreeNode(), graphicItem);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return graphicItemHashMap;
     
 }

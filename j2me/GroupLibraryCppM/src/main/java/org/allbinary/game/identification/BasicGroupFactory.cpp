@@ -92,6 +92,8 @@ BasicGroupFactory::BasicGroupFactory() : GOOD(new Group("Good Guys", 0)), ENEMY(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<BasicGroupFactory*>(BasicGroupFactory::instance);
     
 }

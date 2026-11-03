@@ -118,6 +118,8 @@ AbeClassLoader::PATH= JavaString::valueOf(org.allbinary->globals->URLGLOBALS->ge
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbeClassLoader::classes->get(name);
     
 }
@@ -131,6 +133,8 @@ AbeClassLoader::PATH= JavaString::valueOf(org.allbinary->globals->URLGLOBALS->ge
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->loadClass(name, false);;
     
 }
@@ -174,6 +178,8 @@ AbeClassLoader::PATH= JavaString::valueOf(org.allbinary->globals->URLGLOBALS->ge
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return normalClass;
     
 
@@ -249,6 +255,8 @@ resolveClass(myClass);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return myClass;
     
 
@@ -270,6 +278,8 @@ this->logUtil->put(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -299,6 +309,8 @@ in= new FileInputStream(cname);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return decrypted;
     
 
@@ -356,6 +368,8 @@ StreamUtil::getInstance()->close(in);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -396,6 +410,8 @@ StreamUtil::getInstance()->close(in);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return normalClass;
     
 
@@ -501,6 +517,8 @@ resolveClass(myClass);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return myClass;
     
 
@@ -520,6 +538,8 @@ resolveClass(myClass);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

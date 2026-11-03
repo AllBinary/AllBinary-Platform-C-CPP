@@ -255,6 +255,8 @@ this->angle= canvasJPanel->getAngle();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->angle;
     
 }
@@ -265,6 +267,8 @@ this->angle= canvasJPanel->getAngle();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->graphicItemHashMap;
     
 }
@@ -323,6 +327,8 @@ pointNode->appendChild(yNode);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return pointNode;
     
 }
@@ -465,6 +471,8 @@ frameNode->appendChild(graphicItemNode);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return frameNode;
     
 }
@@ -475,6 +483,8 @@ frameNode->appendChild(graphicItemNode);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->dimension;
     
 }
@@ -491,6 +501,8 @@ this->dimension= dimension;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->grid;
     
 }

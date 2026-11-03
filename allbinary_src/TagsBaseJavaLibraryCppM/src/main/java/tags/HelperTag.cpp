@@ -111,7 +111,9 @@ this->anyType= this->tagHelperFactoryInterface->getInstance(this->getPropertiesH
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->anyType;
+                        
+                        
+                        return JavaBoxes::toObject(this->anyType);
     
 }
 
@@ -134,6 +136,8 @@ this->anyType=
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PropertiesTag::doEndTag();;
     
 }

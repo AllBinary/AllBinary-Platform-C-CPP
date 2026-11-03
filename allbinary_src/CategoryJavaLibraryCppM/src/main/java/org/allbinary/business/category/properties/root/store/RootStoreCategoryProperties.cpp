@@ -251,6 +251,8 @@ this->setRootFilePath(new AbPath(JavaString::valueOf(URLGLOBALS::getMainPath()) 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->isRealRoot_;
     
 }
@@ -261,6 +263,8 @@ this->setRootFilePath(new AbPath(JavaString::valueOf(URLGLOBALS::getMainPath()) 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -271,6 +275,8 @@ this->setRootFilePath(new AbPath(JavaString::valueOf(URLGLOBALS::getMainPath()) 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getValue();
     
 }
@@ -293,6 +299,8 @@ this->fileAbPath= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->fileAbPath;
     
 }
@@ -303,6 +311,8 @@ this->fileAbPath= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->category;
     
 }
@@ -315,6 +325,8 @@ this->fileAbPath= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->webAppAbPath;
     
 }
@@ -325,6 +337,8 @@ this->fileAbPath= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->abPath;
     
 }
@@ -335,6 +349,8 @@ this->fileAbPath= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getValue() +AbPathData::getInstance()->EXTENSION_SEP +CategoryData::getInstance()->UNCRYPTED_EXTENSION;
     
 }
@@ -351,6 +367,8 @@ this->category= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 }
@@ -366,6 +384,8 @@ categoryHashMap->put(CategoryData::getInstance()->NAME, this->getValue());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return categoryHashMap;
     
 }
@@ -381,6 +401,8 @@ categoryVector->add(this->getValue());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return categoryVector;
     
 }
@@ -393,6 +415,8 @@ categoryVector->add(this->getValue());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -405,6 +429,8 @@ categoryVector->add(this->getValue());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -417,6 +443,8 @@ categoryVector->add(this->getValue());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

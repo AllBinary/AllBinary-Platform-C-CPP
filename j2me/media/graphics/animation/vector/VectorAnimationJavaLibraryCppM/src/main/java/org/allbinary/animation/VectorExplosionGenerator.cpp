@@ -90,6 +90,8 @@ VectorExplosionGenerator* VectorExplosionGenerator::instance = VectorExplosionGe
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return VectorExplosionGenerator::instance;
     
 }
@@ -130,6 +132,8 @@ points[index][1]= point->getY();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->createListFromPoints(list, points, howMuch, type);;
     
 }
@@ -151,6 +155,8 @@ points[index][1]= point->getY();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return newPoints;
     
 }
@@ -201,6 +207,8 @@ frameIndex++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return pointsBasicArrayList;
     
 
@@ -305,6 +313,8 @@ index++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return pointBasicArrayList;
     
 }
@@ -346,6 +356,8 @@ firstPointBasicArrayList->add(pointFactory->createXY(points[index][0], points[in
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return firstPointBasicArrayList;
     
 }

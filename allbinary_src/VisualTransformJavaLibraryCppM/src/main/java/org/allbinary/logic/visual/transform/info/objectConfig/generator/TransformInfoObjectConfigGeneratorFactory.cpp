@@ -81,6 +81,8 @@ TransformInfoObjectConfigGeneratorFactory* TransformInfoObjectConfigGeneratorFac
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TransformInfoObjectConfigGeneratorFactory::instance;
     
 }
@@ -116,6 +118,8 @@ this->logUtil->putF(JavaString::valueOf("Generating Instance for type: ") +JavaS
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new BasicGenerator();
     
 
@@ -129,6 +133,8 @@ this->logUtil->putF(JavaString::valueOf("Generating Instance for type: ") +JavaS
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new StoreFileGenerator(transformInfoInterface);
     
 

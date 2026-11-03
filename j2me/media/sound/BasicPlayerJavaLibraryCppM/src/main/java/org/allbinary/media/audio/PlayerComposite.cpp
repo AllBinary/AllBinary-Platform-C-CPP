@@ -128,6 +128,8 @@ this->player->deallocate();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->player->getContentType();;
     
 }
@@ -138,6 +140,8 @@ this->player->deallocate();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->player->getDuration();;
     
 }
@@ -148,6 +152,8 @@ this->player->deallocate();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->player->getMediaTime();;
     
 }
@@ -190,6 +196,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "realize", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->player->getState();;
     
 }
@@ -208,6 +216,8 @@ this->player->setLoopCount(count);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->player->setMediaTime(now);;
     
 
@@ -220,6 +230,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "setMediaTime", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 }
@@ -271,6 +283,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "stop", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->player->getControl(controlType);;
     
 }
@@ -299,6 +313,8 @@ controllable2->setVolume(leftVolume, rightVolume);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->player;
     
 }

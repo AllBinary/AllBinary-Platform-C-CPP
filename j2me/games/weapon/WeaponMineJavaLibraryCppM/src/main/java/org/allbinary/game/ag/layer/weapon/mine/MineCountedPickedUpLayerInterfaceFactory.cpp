@@ -119,6 +119,8 @@ MineCountedPickedUpLayerInterfaceFactory::MineCountedPickedUpLayerInterfaceFacto
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return MineCountedPickedUpLayerInterfaceFactory::pickedUpLayerInterfaceFactoryInterface;
     
 }
@@ -129,6 +131,8 @@ MineCountedPickedUpLayerInterfaceFactory::MineCountedPickedUpLayerInterfaceFacto
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 3;
     
 }
@@ -150,6 +154,8 @@ MineCountedPickedUpLayerInterfaceFactory::MineCountedPickedUpLayerInterfaceFacto
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->weaponLayerCircularStaticPool->getInstanceWeaponLayer(sourceLayerInterface, x, y, z, static_cast<int32_t>(angle), 0, this->weaponProperties, scoreableInterface);;
     
 }

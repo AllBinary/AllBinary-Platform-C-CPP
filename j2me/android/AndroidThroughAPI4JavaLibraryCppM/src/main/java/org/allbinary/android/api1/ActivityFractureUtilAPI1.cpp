@@ -75,6 +75,8 @@ ActivityFractureUtilAPI1* ActivityFractureUtilAPI1::instance = ActivityFractureU
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ActivityFractureUtilAPI1::instance;
     
 }

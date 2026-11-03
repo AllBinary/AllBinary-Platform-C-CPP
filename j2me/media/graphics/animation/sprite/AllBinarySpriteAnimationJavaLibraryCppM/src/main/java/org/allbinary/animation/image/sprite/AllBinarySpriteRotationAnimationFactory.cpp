@@ -99,6 +99,8 @@ spriteRotationAnimationFactory->initWH(dx, dy);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return spriteRotationAnimationFactory;
     
 }
@@ -111,6 +113,8 @@ spriteRotationAnimationFactory->initWH(dx, dy);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AllBinarySpriteRotationAnimationFactory::createWHDY(image, 0, 0, animationBehaviorFactory);;
     
 }
@@ -128,6 +132,8 @@ spriteRotationAnimationFactory->init(dx, dy);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return spriteRotationAnimationFactory;
     
 }
@@ -145,6 +151,8 @@ spriteRotationAnimationFactory->init(dx, dy);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return spriteRotationAnimationFactory;
     
 }
@@ -157,6 +165,8 @@ spriteRotationAnimationFactory->init(dx, dy);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AllBinarySpriteRotationAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), (image->getHeight()>>2), (image->getHeight()>>2), 0, 0, animationBehaviorFactory);
     
 }
@@ -169,6 +179,8 @@ spriteRotationAnimationFactory->init(dx, dy);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AllBinarySpriteRotationAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), image->getHeight(), image->getHeight(), 0, 0, animationBehaviorFactory);
     
 }
@@ -225,6 +237,8 @@ this->animationFactoryInitializationVisitor->dy +=  -this->animationFactoryIniti
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AllBinaryAdjustedSpriteRotationAnimation(sprite, this->getImage(), this->animationFactoryInitializationVisitor->dx, this->animationFactoryInitializationVisitor->dy, this->animationBehaviorFactory->getOrCreateInstance());
     
 
@@ -235,6 +249,8 @@ this->animationFactoryInitializationVisitor->dy +=  -this->animationFactoryIniti
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AllBinarySpriteRotationAnimation(sprite, this->getImage(), this->animationBehaviorFactory->getOrCreateInstance());
     
 
@@ -250,6 +266,8 @@ this->animationFactoryInitializationVisitor->dy +=  -this->animationFactoryIniti
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getInstance(0);;
     
 }

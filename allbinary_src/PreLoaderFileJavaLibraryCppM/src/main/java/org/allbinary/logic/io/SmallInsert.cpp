@@ -98,6 +98,8 @@ idOutData->writeBytes(JavaString::valueOf(text) +JavaString::valueOf(this->strin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -117,6 +119,8 @@ idOutData->writeBytes(JavaString::valueOf(text) +JavaString::valueOf(this->strin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -140,6 +144,8 @@ idOutData->writeBytes(JavaString::valueOf(text) +JavaString::valueOf(this->strin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -169,6 +175,8 @@ idFile->close();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -188,6 +196,8 @@ idFile->close();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -210,6 +220,8 @@ idOutData->writeBytes(JavaString::valueOf(this->string) +JavaString::valueOf(tex
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -229,6 +241,8 @@ idOutData->writeBytes(JavaString::valueOf(this->string) +JavaString::valueOf(tex
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

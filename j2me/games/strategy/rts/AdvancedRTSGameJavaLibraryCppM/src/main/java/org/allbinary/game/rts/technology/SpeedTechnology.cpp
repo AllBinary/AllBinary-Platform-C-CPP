@@ -71,6 +71,8 @@ this->maxLevel= maxLevel;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -81,6 +83,8 @@ this->maxLevel= maxLevel;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -91,6 +95,8 @@ this->maxLevel= maxLevel;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->level;
     
 }
@@ -101,6 +107,8 @@ this->maxLevel= maxLevel;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->maxLevel;
     
 }
@@ -111,6 +119,8 @@ this->maxLevel= maxLevel;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -125,6 +135,8 @@ this->maxLevel= maxLevel;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -135,6 +147,8 @@ this->maxLevel= maxLevel;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -145,6 +159,8 @@ this->maxLevel= maxLevel;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (this->getLevel() *this->getLevel()) *1000;
     
 }
@@ -159,6 +175,8 @@ this->maxLevel= maxLevel;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -169,6 +187,8 @@ this->maxLevel= maxLevel;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -193,6 +213,8 @@ unitTechnologySingletonFactory->setSpeed(unitTechnologySingletonFactory->getSpee
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

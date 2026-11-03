@@ -82,6 +82,8 @@ ImagesRatioUtil* ImagesRatioUtil::instance = ImagesRatioUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ImagesRatioUtil::instance;
     
 }
@@ -117,6 +119,8 @@ ImagesRatioUtil::ImagesRatioUtil() : logUtil(LogUtil::getInstance()), imageUtil(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -128,6 +132,8 @@ ImagesRatioUtil::ImagesRatioUtil() : logUtil(LogUtil::getInstance()), imageUtil(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -159,6 +165,8 @@ ratio += (bufferedImageArray[index]->getWidth() /bufferedImageArray[index]->getH
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (ratio /end);
     
 }
@@ -276,6 +284,8 @@ g->drawImage(bufferedImage, point->x, point->y, bufferedImage->getWidth(), buffe
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return newBufferedImage;
     
 }
@@ -309,6 +319,8 @@ fudgedBufferedImageArray[index]= fudge(bufferedImageArray[index], ratio);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return fudgedBufferedImageArray;
     
 }

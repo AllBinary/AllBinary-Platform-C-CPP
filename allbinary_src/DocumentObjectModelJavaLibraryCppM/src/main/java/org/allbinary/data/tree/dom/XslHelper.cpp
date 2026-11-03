@@ -101,6 +101,8 @@ XslHelper* XslHelper::instance = XslHelper::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return XslHelper::instance;
     
 }
@@ -127,6 +129,8 @@ transformer->transform(xmlStreamSource, streamResult);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return streamResult->getOutputStream();;
     
 
@@ -162,6 +166,8 @@ transformer->transform(xmlStreamSource, streamResult);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return streamResult->getOutputStream();;
     
 
@@ -195,6 +201,8 @@ templates->newTransformer()->transform(xmlStreamSource, streamResult);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return streamResult->getOutputStream()->toString();;
     
 
@@ -223,6 +231,8 @@ templates->newTransformer()->transform(xmlStreamSource, streamResult);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->translate(xsltStreamSource, new StreamSource(new StringBufferInputStream(XmlDocumentHelper::toString(xmlDocument))), new StreamResult(outputStream))->toString();;
     
 
@@ -251,6 +261,8 @@ templates->newTransformer()->transform(xmlStreamSource, streamResult);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->translate(xsltStreamSource, xmlStreamSource, new StreamResult(outputStream))->toString();;
     
 
@@ -279,6 +291,8 @@ templates->newTransformer()->transform(xmlStreamSource, streamResult);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->translate(resolver, xsltStreamSource, xmlStreamSource, new StreamResult(outputStream))->toString();;
     
 

@@ -83,6 +83,8 @@ LayerCoveringCellPositionsUtil* LayerCoveringCellPositionsUtil::instance = Layer
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return LayerCoveringCellPositionsUtil::instance;
     
 }
@@ -98,6 +100,8 @@ LayerCoveringCellPositionsUtil* LayerCoveringCellPositionsUtil::instance = Layer
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getAll(geographicMapInterface, topLeftGeographicMapCellPosition, layerInterface, reusableList);;
     
 }
@@ -126,6 +130,8 @@ reusableList->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->cellPositionsUtil->getAll(geographicMapInterface, topLeftGeographicMapCellPosition, columns, rows, reusableList);;
     
 }

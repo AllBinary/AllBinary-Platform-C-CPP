@@ -78,6 +78,8 @@ AnimationFrameToImageUtil* AnimationFrameToImageUtil::instance = AnimationFrameT
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AnimationFrameToImageUtil::instance;
     
 }
@@ -108,6 +110,8 @@ graphics->translate( -tranlateX,  -tranlateY);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return image;
     
 }
@@ -128,6 +132,8 @@ animationInterface->paintXY(graphics, 0, 0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return image;
     
 }

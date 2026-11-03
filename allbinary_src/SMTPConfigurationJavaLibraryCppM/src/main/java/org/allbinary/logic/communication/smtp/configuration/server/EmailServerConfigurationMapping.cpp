@@ -95,6 +95,8 @@ hashMap->put(EmailServerConfigurationData::PASSWORD, this->emailServerConfigurat
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }
@@ -107,7 +109,9 @@ hashMap->put(EmailServerConfigurationData::PASSWORD, this->emailServerConfigurat
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return EmailServerConfigurationData::NAME;
+                        
+                        
+                        return JavaBoxes::toObject(EmailServerConfigurationData::NAME);
     
 }
 
@@ -124,6 +128,8 @@ vector->add(this->emailServerConfigurationInterface->getSmtpServer());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return vector;
     
 }

@@ -117,6 +117,8 @@ this->transformInfoInterface= transformInfoInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<CategoryInterface*>(new Category(categoryPropertiesFactoryInterface));
     
 
@@ -136,6 +138,8 @@ this->transformInfoInterface= transformInfoInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -156,6 +160,8 @@ this->transformInfoInterface= transformInfoInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<CategoryInterface*>(new Category(categoryPropertiesFactoryInterface, level));
     
 
@@ -175,6 +181,8 @@ this->transformInfoInterface= transformInfoInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -198,6 +206,8 @@ this->transformInfoInterface= transformInfoInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<CategoryInterface*>(new Category(categoryPropertiesFactoryInterface, level));
     
 
@@ -217,6 +227,8 @@ this->transformInfoInterface= transformInfoInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

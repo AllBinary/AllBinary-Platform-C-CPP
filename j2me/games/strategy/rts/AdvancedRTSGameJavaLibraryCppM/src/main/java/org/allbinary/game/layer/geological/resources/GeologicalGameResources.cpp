@@ -90,6 +90,8 @@ Object* GeologicalGameResources::instance = NullUtil::getInstance()->NULL_OBJECT
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<GeologicalGameResources*>(GeologicalGameResources::instance);
     
 }
@@ -144,6 +146,8 @@ BasicGameResources::append(ROOT, sizeString);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return GameGraphicsResourceUtil::getInstance()->getStringForFeature(GraphicsFeatureFactory::getInstance()->SPRITE_QUARTER_ROTATION_GRAPHICS);;
     
 
@@ -154,6 +158,8 @@ BasicGameResources::append(ROOT, sizeString);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BasicGameResources::getString();;
     
 

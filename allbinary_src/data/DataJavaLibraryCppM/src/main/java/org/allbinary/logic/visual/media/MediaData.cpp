@@ -84,6 +84,8 @@ MediaData::hashMap->put(a_Name, this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }
@@ -94,6 +96,8 @@ MediaData::hashMap->put(a_Name, this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->type;
     
 }
@@ -104,6 +108,8 @@ MediaData::hashMap->put(a_Name, this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->extension;
     
 }
@@ -118,6 +124,8 @@ MediaData::hashMap->put(a_Name, this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -127,6 +135,8 @@ MediaData::hashMap->put(a_Name, this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -137,6 +147,8 @@ MediaData::hashMap->put(a_Name, this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getName();;
     
 }
@@ -158,6 +170,8 @@ MediaData::hashMap->put(a_Name, this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return mediaData;
     
 
@@ -180,6 +194,8 @@ MediaData::hashMap->put(a_Name, this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return MediaDataFactory::getInstance()->JPG;
     
 }
@@ -190,6 +206,8 @@ MediaData::hashMap->put(a_Name, this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return MediaData::hashMap;
     
 }

@@ -71,6 +71,8 @@ this->setMaxReverseVelocity(maxReverseVelocity);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->maxForwardVelocity;
     
 }
@@ -87,6 +89,8 @@ this->maxForwardVelocity= maxForwardVelocity;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->maxReverseVelocity;
     
 }
@@ -139,6 +143,8 @@ this->limitMaxXVelocity(this->getMaxReverseVelocity());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->isOverXYMaxVelocity(this->getMaxForwardVelocity());;
     
 }
@@ -149,6 +155,8 @@ this->limitMaxXVelocity(this->getMaxReverseVelocity());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->isOverXYMaxVelocity(this->getMaxReverseVelocity());;
     
 }
@@ -235,6 +243,8 @@ this->limitMaxNegativeYVelocity(maxVelocity);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -248,6 +258,8 @@ this->limitMaxNegativeYVelocity(maxVelocity);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -261,6 +273,8 @@ this->limitMaxNegativeYVelocity(maxVelocity);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -274,6 +288,8 @@ this->limitMaxNegativeYVelocity(maxVelocity);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -283,6 +299,8 @@ this->limitMaxNegativeYVelocity(maxVelocity);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

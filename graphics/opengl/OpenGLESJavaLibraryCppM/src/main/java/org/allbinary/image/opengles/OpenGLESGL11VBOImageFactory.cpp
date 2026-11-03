@@ -73,6 +73,8 @@ OpenGLESGL11VBOImageFactory::OpenGLESGL11VBOImageFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new OpenGLESGL10Image(image, bitmapFactory, textureFactory);
     
 }

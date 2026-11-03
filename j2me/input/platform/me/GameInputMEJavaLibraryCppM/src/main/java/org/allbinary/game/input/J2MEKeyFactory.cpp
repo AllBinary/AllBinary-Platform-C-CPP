@@ -69,6 +69,8 @@ J2MEKeyFactory* J2MEKeyFactory::instance = J2MEKeyFactory::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return J2MEKeyFactory::instance;
     
 }
@@ -111,6 +113,8 @@ inputFactory->add(gameKeyArray[index]->getId(), gameKeyArray[index]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -120,6 +124,8 @@ inputFactory->add(gameKeyArray[index]->getId(), gameKeyArray[index]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -134,6 +140,8 @@ inputFactory->add(gameKeyArray[index]->getId(), gameKeyArray[index]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -143,6 +151,8 @@ inputFactory->add(gameKeyArray[index]->getId(), gameKeyArray[index]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -153,6 +163,8 @@ inputFactory->add(gameKeyArray[index]->getId(), gameKeyArray[index]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -167,6 +179,8 @@ inputFactory->add(gameKeyArray[index]->getId(), gameKeyArray[index]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -176,6 +190,8 @@ inputFactory->add(gameKeyArray[index]->getId(), gameKeyArray[index]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -190,6 +206,8 @@ inputFactory->add(gameKeyArray[index]->getId(), gameKeyArray[index]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -199,6 +217,8 @@ inputFactory->add(gameKeyArray[index]->getId(), gameKeyArray[index]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -213,6 +233,8 @@ inputFactory->add(gameKeyArray[index]->getId(), gameKeyArray[index]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -222,6 +244,8 @@ inputFactory->add(gameKeyArray[index]->getId(), gameKeyArray[index]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -236,6 +260,8 @@ inputFactory->add(gameKeyArray[index]->getId(), gameKeyArray[index]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -245,6 +271,8 @@ inputFactory->add(gameKeyArray[index]->getId(), gameKeyArray[index]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -259,6 +287,8 @@ inputFactory->add(gameKeyArray[index]->getId(), gameKeyArray[index]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -268,6 +298,8 @@ inputFactory->add(gameKeyArray[index]->getId(), gameKeyArray[index]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

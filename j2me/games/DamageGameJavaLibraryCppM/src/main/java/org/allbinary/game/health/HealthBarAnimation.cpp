@@ -177,6 +177,8 @@ this->colorP= this->basicColor->intValue();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->allbinaryLayer->getViewPosition()->getY() -4;
     
 
@@ -190,6 +192,8 @@ this->colorP= this->basicColor->intValue();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->allbinaryLayer->getViewPosition()->getY2() +4;
     
 
@@ -199,6 +203,8 @@ this->colorP= this->basicColor->intValue();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 }

@@ -95,6 +95,8 @@ htmlImageRotationAnimationFactory->init(dx, dy);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return htmlImageRotationAnimationFactory;
     
 }
@@ -143,6 +145,8 @@ this->animationFactoryInitializationVisitor->originalDy= dy;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AllBinaryAdjustedHTMLImageRotationAnimation(scaledImage, copyOfScaledImage, AngleInfo::getInstance(this->getAngleIncrement()), AngleFactory::getInstance()->TOTAL_ANGLE, this->animationFactoryInitializationVisitor->dx, this->animationFactoryInitializationVisitor->dy, this->animationBehaviorFactory->getOrCreateInstance());
     
 
@@ -153,6 +157,8 @@ this->animationFactoryInitializationVisitor->originalDy= dy;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AllBinaryHTMLImageRotationAnimation(scaledImage, copyOfScaledImage, AngleInfo::getInstance(this->angleIncrement), AngleFactory::getInstance()->TOTAL_ANGLE, this->animationBehaviorFactory->getOrCreateInstance());
     
 
@@ -166,6 +172,8 @@ this->animationFactoryInitializationVisitor->originalDy= dy;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->angleIncrement;
     
 }

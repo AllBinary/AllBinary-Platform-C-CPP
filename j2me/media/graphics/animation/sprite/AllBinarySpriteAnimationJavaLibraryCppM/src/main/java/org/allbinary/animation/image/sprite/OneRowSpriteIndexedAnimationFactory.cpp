@@ -96,6 +96,8 @@ oneRowSpriteIndexedAnimationFactory->initW(dx);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return oneRowSpriteIndexedAnimationFactory;
     
 }
@@ -113,6 +115,8 @@ oneRowSpriteIndexedAnimationFactory->init(dx, dy);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return oneRowSpriteIndexedAnimationFactory;
     
 }
@@ -125,6 +129,8 @@ oneRowSpriteIndexedAnimationFactory->init(dx, dy);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new OneRowSpriteIndexedAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), width, height, 0, 0, animationBehaviorFactory);
     
 }
@@ -137,6 +143,8 @@ oneRowSpriteIndexedAnimationFactory->init(dx, dy);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new OneRowSpriteIndexedAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), image->getHeight(), image->getHeight(), 0, 0, animationBehaviorFactory);
     
 }
@@ -182,6 +190,8 @@ this->animationFactoryInitializationVisitor->dx +=  -(this->animationFactoryInit
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AdjustedSpriteIndexedAnimation(sprite, this->getImage(), BasicColorUtil::getInstance()->ZERO_ARRAY, this->animationFactoryInitializationVisitor->dx, this->animationFactoryInitializationVisitor->dy, this->animationBehaviorFactory->getOrCreateInstance());
     
 
@@ -192,6 +202,8 @@ this->animationFactoryInitializationVisitor->dx +=  -(this->animationFactoryInit
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new SpriteIndexedAnimation(sprite, this->getImage(), BasicColorUtil::getInstance()->ZERO_ARRAY, this->animationBehaviorFactory->getOrCreateInstance());
     
 

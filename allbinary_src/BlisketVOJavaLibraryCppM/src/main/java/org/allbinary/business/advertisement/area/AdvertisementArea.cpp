@@ -102,6 +102,8 @@ this->campaign= JavaBoxes::unbox<std::string>(hashMap->get(AdvertisementCampaign
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }
@@ -112,6 +114,8 @@ this->campaign= JavaBoxes::unbox<std::string>(hashMap->get(AdvertisementCampaign
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->storeName;
     
 }
@@ -122,6 +126,8 @@ this->campaign= JavaBoxes::unbox<std::string>(hashMap->get(AdvertisementCampaign
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->description;
     
 }
@@ -132,6 +138,8 @@ this->campaign= JavaBoxes::unbox<std::string>(hashMap->get(AdvertisementCampaign
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->advertisementAreaConstraintsInterface;
     
 }
@@ -142,6 +150,8 @@ this->campaign= JavaBoxes::unbox<std::string>(hashMap->get(AdvertisementCampaign
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->campaign;
     
 }

@@ -97,6 +97,8 @@ AbDatabaseManagement::AbDatabaseManagement(DbConnectionInfo* connectionInfo) : A
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return addr->getHostName();;
     
 
@@ -109,6 +111,8 @@ this->logUtil->put(this->FAILED, this, GET_HOST_NAME, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -153,6 +157,8 @@ AbSqlBean::executeSQLStatement(sqlStatement);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -179,6 +185,8 @@ AbSqlBean::executeSQLStatement(sqlStatement);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -191,6 +199,8 @@ this->logUtil->put(JavaString::valueOf(this->UNABLE_TO_CREATE_USER) +JavaString:
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -214,6 +224,8 @@ AbSqlBean::executeSQLStatement(sqlStatement);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -226,6 +238,8 @@ this->logUtil->put(JavaString::valueOf(this->UNABLE_TO_CREATE_DATABASE) +JavaStr
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }

@@ -81,6 +81,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new ImageAnimationFactory(image, image->getWidth(), image->getHeight(), 0, 0, AnimationBehaviorFactory::getInstance());
     
 }
@@ -117,6 +119,8 @@ scaledImage= openGLUtil->addImage(scaledImage);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AdjustedImageAnimation(scaledImage, this->animationFactoryInitializationVisitor->dx, this->animationFactoryInitializationVisitor->dy, this->animationBehaviorFactory->getOrCreateInstance());
     
 
@@ -127,6 +131,8 @@ scaledImage= openGLUtil->addImage(scaledImage);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new ImageAnimation(scaledImage, this->animationBehaviorFactory->getOrCreateInstance());
     
 

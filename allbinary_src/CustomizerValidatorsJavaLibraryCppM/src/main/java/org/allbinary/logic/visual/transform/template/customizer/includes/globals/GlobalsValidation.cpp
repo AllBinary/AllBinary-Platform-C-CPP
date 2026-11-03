@@ -112,6 +112,8 @@ GlobalsValidation::GlobalsValidation(Document* document) : logUtil(LogUtil::getI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return valid;
     
 
@@ -131,6 +133,8 @@ GlobalsValidation::GlobalsValidation(Document* document) : logUtil(LogUtil::getI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -148,6 +152,8 @@ GlobalsValidation::GlobalsValidation(Document* document) : logUtil(LogUtil::getI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -167,6 +173,8 @@ GlobalsValidation::GlobalsValidation(Document* document) : logUtil(LogUtil::getI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Validating Form";
     
 }
@@ -179,6 +187,8 @@ GlobalsValidation::GlobalsValidation(Document* document) : logUtil(LogUtil::getI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -189,6 +199,8 @@ GlobalsValidation::GlobalsValidation(Document* document) : logUtil(LogUtil::getI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -206,6 +218,8 @@ node->appendChild((new StoreFrontView(this->storeFrontInterface))->toXmlNode(doc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }

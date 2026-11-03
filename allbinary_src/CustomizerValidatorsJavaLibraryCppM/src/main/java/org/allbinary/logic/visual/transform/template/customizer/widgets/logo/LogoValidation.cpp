@@ -214,6 +214,8 @@ this->logUtil->putF(stringBuffer->toString(), this, "getFormData()");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -236,6 +238,8 @@ this->logUtil->putF(stringBuffer->toString(), this, "getFormData()");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -255,6 +259,8 @@ this->logUtil->putF(stringBuffer->toString(), this, "getFormData()");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -277,6 +283,8 @@ this->logUtil->putF(stringBuffer->toString(), this, "getFormData()");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -298,6 +306,8 @@ this->logUtil->putF(stringBuffer->toString(), this, "getFormData()");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return valid;
     
 
@@ -317,6 +327,8 @@ this->logUtil->putF(stringBuffer->toString(), this, "getFormData()");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -336,6 +348,8 @@ stringBuffer->append("Logo is not valid.");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -355,6 +369,8 @@ stringBuffer->append("Logo is not valid.");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Validating Form";
     
 }
@@ -367,6 +383,8 @@ stringBuffer->append("Logo is not valid.");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -377,6 +395,8 @@ stringBuffer->append("Logo is not valid.");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -415,6 +435,8 @@ hashMap->put(LogoData::getInstance()->IMAGEFILENAME, this->logoFile);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }
@@ -430,6 +452,8 @@ hashMap->put(LogoData::getInstance()->IMAGEFILENAME, this->logoFile);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ModDomHelper::createNameValueNodes(document, LogoData::getInstance()->NAME, hashMap);;
     
 }

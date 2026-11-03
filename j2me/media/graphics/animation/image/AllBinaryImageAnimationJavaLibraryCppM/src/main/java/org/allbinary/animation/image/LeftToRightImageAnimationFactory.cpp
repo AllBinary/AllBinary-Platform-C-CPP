@@ -96,6 +96,8 @@ LeftToRightImageAnimationFactory::LeftToRightImageAnimationFactory(Image* image,
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AdjustedLeftToRightImageAnimation(scaledImage, this->getSequenceArray(), this->animationFactoryInitializationVisitor->dx, this->animationFactoryInitializationVisitor->dy, this->animationBehaviorFactory->getOrCreateInstance());
     
 
@@ -106,6 +108,8 @@ LeftToRightImageAnimationFactory::LeftToRightImageAnimationFactory(Image* image,
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new LeftToRightImageAnimation(scaledImage, this->getSequenceArray(), this->animationBehaviorFactory->getOrCreateInstance());
     
 

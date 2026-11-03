@@ -106,6 +106,8 @@ this->extension= extension;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->extension;
     
 }
@@ -165,6 +167,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->uriResolverStrings->RE
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new StreamSource((new CryptFileReader(TransformInfoTemplateData::getInstance()->UNCRYPTED_EXTENSION, TransformInfoTemplateData::getInstance()->ENCRYPTED_EXTENSION))->getInputStream(abPath));
     
 
@@ -207,6 +211,8 @@ stringBuffer->append(this->uriResolverStrings->IMPORT_URL);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -217,6 +223,8 @@ stringBuffer->append(this->uriResolverStrings->IMPORT_URL);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "BasicUriResolver - Does not work without webapp path should be changed";
     
 }

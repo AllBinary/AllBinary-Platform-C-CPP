@@ -90,6 +90,8 @@ LinuxOperatingSystemFactory* LinuxOperatingSystemFactory::instance = LinuxOperat
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return LinuxOperatingSystemFactory::instance;
     
 }
@@ -146,6 +148,8 @@ LinuxOperatingSystemFactory::LinuxOperatingSystemFactory() : logUtil(LogUtil::ge
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return operatingSystemInterface;
     
 
@@ -168,6 +172,8 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NoOperatingSystem::NO_OPERATING_SYSTEM;
     
 }

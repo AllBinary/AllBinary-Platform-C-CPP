@@ -147,6 +147,8 @@ collidableBase2->collide(collidableInterfaceCompositeInterface2, collidableInter
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -157,6 +159,8 @@ collidableBase2->collide(collidableInterfaceCompositeInterface2, collidableInter
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 

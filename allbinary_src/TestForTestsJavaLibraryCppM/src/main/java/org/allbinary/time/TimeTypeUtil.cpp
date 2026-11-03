@@ -58,6 +58,8 @@ TimeTypeUtil* TimeTypeUtil::instance = TimeTypeUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TimeTypeUtil::instance;
     
 }
@@ -71,6 +73,8 @@ TimeTypeUtil* TimeTypeUtil::instance = TimeTypeUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hoursOfDay < 6 || hoursOfDay > 18;
     
 }
@@ -84,6 +88,8 @@ TimeTypeUtil* TimeTypeUtil::instance = TimeTypeUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return calendar->get(Calendar::HOUR_OF_DAY);;
     
 }
@@ -94,6 +100,8 @@ TimeTypeUtil* TimeTypeUtil::instance = TimeTypeUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->isNight()
                         ?       
                                 this->NIGHT
@@ -114,6 +122,8 @@ calendar->setTimeInMillis(timeInMillis);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return calendar->get(Calendar::HOUR_OF_DAY);;
     
 }
@@ -127,6 +137,8 @@ calendar->setTimeInMillis(timeInMillis);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hoursOfDay < 6 || hoursOfDay > 18;
     
 }
@@ -137,6 +149,8 @@ calendar->setTimeInMillis(timeInMillis);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->isNight(timeInMillis)
                         ?       
                                 this->NIGHT

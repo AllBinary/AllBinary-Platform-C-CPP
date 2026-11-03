@@ -214,6 +214,8 @@ AllBinaryTiledLayer::setPosition( -x,  -y, z);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->tiledLayerP;
     
 }
@@ -224,6 +226,8 @@ AllBinaryTiledLayer::setPosition( -x,  -y, z);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->tiledLayerP->getCellWidth();;
     
 }
@@ -234,6 +238,8 @@ AllBinaryTiledLayer::setPosition( -x,  -y, z);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->tiledLayerP->getCellHeight();;
     
 }
@@ -244,6 +250,8 @@ AllBinaryTiledLayer::setPosition( -x,  -y, z);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->tiledLayerP->getCell(col, row);;
     
 }
@@ -254,6 +262,8 @@ AllBinaryTiledLayer::setPosition( -x,  -y, z);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->tiledLayerP->getColumns();;
     
 }
@@ -264,6 +274,8 @@ AllBinaryTiledLayer::setPosition( -x,  -y, z);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->tiledLayerP->getRows();;
     
 }
@@ -280,6 +292,8 @@ this->tiledLayerP->setCell(col, row, index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->tiledLayerP->getAnimatedTile(animationTileIndex);;
     
 }

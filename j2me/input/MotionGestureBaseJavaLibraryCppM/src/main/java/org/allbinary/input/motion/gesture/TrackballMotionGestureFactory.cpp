@@ -78,6 +78,8 @@ Object* TrackballMotionGestureFactory::instance = NullUtil::getInstance()->NULL_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<TrackballMotionGestureFactory*>(TrackballMotionGestureFactory::instance);
     
 }

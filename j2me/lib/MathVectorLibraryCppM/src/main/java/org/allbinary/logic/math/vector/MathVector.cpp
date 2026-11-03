@@ -73,6 +73,8 @@ this->direction= direction;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->magnitudeBasicDecimal;
     
 }
@@ -83,6 +85,8 @@ this->direction= direction;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->direction;
     
 }
@@ -93,6 +97,8 @@ this->direction= direction;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->resultBasicDecimal;
     
 }

@@ -77,6 +77,8 @@ PathUtil* PathUtil::instance = PathUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PathUtil::instance;
     
 }
@@ -91,6 +93,8 @@ PathUtil::PathUtil() : abPathData(AbPathData::getInstance()), filePathData(FileP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->abPathData->getExtension(abFilePath->toString());;
     
 }
@@ -101,6 +105,8 @@ PathUtil::PathUtil() : abPathData(AbPathData::getInstance()), filePathData(FileP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->abPathData->getExtension(abPath->toString());;
     
 }
@@ -113,6 +119,8 @@ PathUtil::PathUtil() : abPathData(AbPathData::getInstance()), filePathData(FileP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getWithoutExtension(abFilePath->toString());;
     
 }
@@ -125,6 +133,8 @@ PathUtil::PathUtil() : abPathData(AbPathData::getInstance()), filePathData(FileP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getWithoutExtension(abPath->toString());;
     
 }
@@ -152,6 +162,8 @@ PathUtil::PathUtil() : abPathData(AbPathData::getInstance()), filePathData(FileP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return pathWithoutExtension;
     
 }
@@ -170,6 +182,8 @@ PathUtil::PathUtil() : abPathData(AbPathData::getInstance()), filePathData(FileP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -182,6 +196,8 @@ PathUtil::PathUtil() : abPathData(AbPathData::getInstance()), filePathData(FileP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -196,6 +212,8 @@ PathUtil::PathUtil() : abPathData(AbPathData::getInstance()), filePathData(FileP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -206,6 +224,8 @@ PathUtil::PathUtil() : abPathData(AbPathData::getInstance()), filePathData(FileP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -226,6 +246,8 @@ PathUtil::PathUtil() : abPathData(AbPathData::getInstance()), filePathData(FileP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -239,6 +261,8 @@ PathUtil::PathUtil() : abPathData(AbPathData::getInstance()), filePathData(FileP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -249,6 +273,8 @@ PathUtil::PathUtil() : abPathData(AbPathData::getInstance()), filePathData(FileP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -271,6 +297,8 @@ PathUtil::PathUtil() : abPathData(AbPathData::getInstance()), filePathData(FileP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return path;
     
 }
@@ -290,6 +318,8 @@ PathUtil::PathUtil() : abPathData(AbPathData::getInstance()), filePathData(FileP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return path;
     
 }
@@ -307,6 +337,8 @@ PathUtil::PathUtil() : abPathData(AbPathData::getInstance()), filePathData(FileP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->abPathData->SEPARATOR;
     
 
@@ -325,6 +357,8 @@ PathUtil::PathUtil() : abPathData(AbPathData::getInstance()), filePathData(FileP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return path;
     
 }
@@ -353,6 +387,8 @@ PathUtil::PathUtil() : abPathData(AbPathData::getInstance()), filePathData(FileP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbPath::createAbPath();;
     
 
@@ -366,6 +402,8 @@ PathUtil::PathUtil() : abPathData(AbPathData::getInstance()), filePathData(FileP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->removeNameFromPath(JavaString::substring(path, 0, endIndex -1));;
     
 
@@ -379,6 +417,8 @@ PathUtil::PathUtil() : abPathData(AbPathData::getInstance()), filePathData(FileP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AbPath(pathWithoutName, StringUtil::getInstance()->EMPTY_STRING);
     
 

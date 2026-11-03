@@ -75,6 +75,8 @@ this->reverse= reverse;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->reverse;
     
 }
@@ -91,6 +93,8 @@ this->forward= forward;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->forward;
     
 }

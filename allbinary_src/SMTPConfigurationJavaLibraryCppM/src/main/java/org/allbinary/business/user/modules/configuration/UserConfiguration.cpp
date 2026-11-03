@@ -100,6 +100,8 @@ this->timeLastModified= new TimeLastModified(JavaBoxes::unbox<std::string>(hashM
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->userEmailConfigurationInterface;
     
 }
@@ -116,6 +118,8 @@ this->userEmailConfigurationInterface= userEmailConfigurationInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->timeCreated;
     
 }
@@ -126,6 +130,8 @@ this->userEmailConfigurationInterface= userEmailConfigurationInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->timeLastModified;
     
 }

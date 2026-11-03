@@ -285,6 +285,8 @@ this->updateIfNeeded();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return InstallerInfo::userName;
     
 }
@@ -299,6 +301,8 @@ this->updateIfNeeded();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return InstallerInfo::password;
     
 }
@@ -317,6 +321,8 @@ this->updateIfNeeded();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -326,6 +332,8 @@ this->updateIfNeeded();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

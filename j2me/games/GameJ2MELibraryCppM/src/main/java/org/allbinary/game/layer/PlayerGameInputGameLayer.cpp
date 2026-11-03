@@ -109,6 +109,8 @@ this->logUtil->putF("Danger Danger Danger: Should Not Be Called Except For Testi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->playerGameInput;
     
 }

@@ -90,6 +90,8 @@ FileLockUtil* FileLockUtil::instance = FileLockUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return FileLockUtil::instance;
     
 }
@@ -144,6 +146,8 @@ fileLockVector->add(fileLock);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return fileLockVector;
     
 
@@ -157,6 +161,8 @@ this->logUtil->putF(JavaString::valueOf("Total Locks Obtained: ") +JavaString::v
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return fileLockVector;
     
 }
@@ -169,6 +175,8 @@ this->logUtil->putF(JavaString::valueOf("Total Locks Obtained: ") +JavaString::v
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getAll(vector, false);;
     
 }
@@ -188,6 +196,8 @@ this->logUtil->putF(JavaString::valueOf("Total Locks Obtained: ") +JavaString::v
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new BasicArrayListD();
     
 
@@ -198,6 +208,8 @@ this->logUtil->putF(JavaString::valueOf("Total Locks Obtained: ") +JavaString::v
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return fileLockVector;
     
 
@@ -223,6 +235,8 @@ this->logUtil->putF(JavaString::valueOf("Total Locks Obtained: ") +JavaString::v
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getLock(AbFileOutputStream::createFromAbFileAppend(file, true));;
     
 
@@ -235,6 +249,8 @@ this->logUtil->put("Exception returns null", this, "getLock", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -268,6 +284,8 @@ StreamUtil::getInstance()->close(fileOutputStream);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return fileLock;
     
 
@@ -280,6 +298,8 @@ this->logUtil->put("Exception returns null", this, "getLock", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -313,6 +333,8 @@ fileChannel->close();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return fileLock;
     
 
@@ -325,6 +347,8 @@ this->logUtil->put("Exception returns null", this, "getLock", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

@@ -171,6 +171,8 @@ StoreFrontsEntityFactory::getInstance()->getStoreFrontsEntityInstance()->update(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -193,6 +195,8 @@ StoreFrontsEntityFactory::getInstance()->getStoreFrontsEntityInstance()->update(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -299,6 +303,8 @@ this->modifyingStoreFrontInterface->install(JavaBoxes::value<int32_t>(this->port
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -321,6 +327,8 @@ this->modifyingStoreFrontInterface->install(JavaBoxes::value<int32_t>(this->port
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -353,6 +361,8 @@ StoreFrontsEntityFactory::getInstance()->getStoreFrontsEntityInstance()->insert(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -375,6 +385,8 @@ StoreFrontsEntityFactory::getInstance()->getStoreFrontsEntityInstance()->insert(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -403,6 +415,8 @@ StoreFrontsEntityFactory::getInstance()->getStoreFrontsEntityInstance()->delete_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -425,6 +439,8 @@ StoreFrontsEntityFactory::getInstance()->getStoreFrontsEntityInstance()->delete_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }

@@ -83,6 +83,8 @@ this->setColorAverage(new ColorAverage());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->colorRange;
     
 }
@@ -99,6 +101,8 @@ this->colorRange= colorRange;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->colorAverage;
     
 }

@@ -90,6 +90,8 @@ SqlConnectionPool* SqlConnectionPool::instance = SqlConnectionPool::instance_own
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SqlConnectionPool::instance;
     
 }
@@ -124,6 +126,8 @@ SqlConnectionPool::SqlConnectionPool() : logUtil(LogUtil::getInstance()), stdUti
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return DriverManager::getConnection(url);;
     
 
@@ -165,6 +169,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return DriverManager::getConnection(url);;
     
 
@@ -187,6 +193,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return DriverManager::getConnection(url);;
     
 
@@ -242,6 +250,8 @@ this->logUtil->putF(stringBuffer->toString(), this, METHOD_GET);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<Connection*>(sqlConnection);
     
 
@@ -277,6 +287,8 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return DriverManager::getConnection(url);;
     
 }

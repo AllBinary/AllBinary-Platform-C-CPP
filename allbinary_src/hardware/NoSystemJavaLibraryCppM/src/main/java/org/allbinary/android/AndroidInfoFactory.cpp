@@ -66,6 +66,8 @@ AndroidInfoFactory* AndroidInfoFactory::instance = AndroidInfoFactory::instance_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AndroidInfoFactory::instance;
     
 }
@@ -76,6 +78,8 @@ AndroidInfoFactory* AndroidInfoFactory::instance = AndroidInfoFactory::instance_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->version;
     
 }

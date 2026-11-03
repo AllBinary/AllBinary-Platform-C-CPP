@@ -86,6 +86,8 @@ FakeLayerManager::FakeLayerManager(GameInfo* gameInfo) : AllBinaryGameLayerManag
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->geographicMapInterfaceArray;
     
 }
@@ -104,6 +106,8 @@ this->geographicMapCellTypeArray_= std::vector<GeographicMapCellType*>(this->geo
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->geographicMapCellTypeArray_;
     
 }

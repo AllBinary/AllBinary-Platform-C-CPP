@@ -104,6 +104,8 @@ OperatingSystemFactory* OperatingSystemFactory::instance = OperatingSystemFactor
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return OperatingSystemFactory::instance;
     
 }
@@ -217,6 +219,8 @@ this->logUtil->putL(log);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->genericOperatingSystem;
     
 
@@ -236,6 +240,8 @@ this->logUtil->putL(log);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NoOperatingSystem::NO_OPERATING_SYSTEM;
     
 }

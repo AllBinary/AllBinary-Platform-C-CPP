@@ -89,6 +89,8 @@ PathFindingInfoFactory* PathFindingInfoFactory::instance = PathFindingInfoFactor
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PathFindingInfoFactory::instance;
     
 }
@@ -117,6 +119,8 @@ this->init(geographicMapInterface, pathFindingInfo, graphArray);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return pathFindingInfo;
     
 }

@@ -79,6 +79,8 @@ LOGGING::logging->add(value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return LOGGING::logging->contains(logType->toString());;
     
 }
@@ -89,6 +91,8 @@ LOGGING::logging->add(value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }

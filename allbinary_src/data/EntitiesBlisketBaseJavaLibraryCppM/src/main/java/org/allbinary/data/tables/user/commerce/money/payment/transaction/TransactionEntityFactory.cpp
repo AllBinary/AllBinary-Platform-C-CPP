@@ -72,6 +72,8 @@ TransactionEntityFactory* TransactionEntityFactory::instance = TransactionEntity
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TransactionEntityFactory::instance;
     
 }
@@ -88,6 +90,8 @@ TransactionEntityFactory::TransactionEntityFactory() : logUtil(LogUtil::getInsta
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new org::allbinary::data::tables::user::commerce::money::payment::transaction::TransactionEntity();
     
 
@@ -110,6 +114,8 @@ TransactionEntityFactory::TransactionEntityFactory() : logUtil(LogUtil::getInsta
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

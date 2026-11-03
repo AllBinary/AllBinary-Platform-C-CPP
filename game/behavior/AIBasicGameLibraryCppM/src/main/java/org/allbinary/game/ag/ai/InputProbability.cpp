@@ -90,6 +90,8 @@ this->timeDelayHelper= timeDelayHelper;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->likelyhoodIntegerArray;
     
 }
@@ -100,6 +102,8 @@ this->timeDelayHelper= timeDelayHelper;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->repeatLikelyhoodIntegerArray;
     
 }
@@ -110,6 +114,8 @@ this->timeDelayHelper= timeDelayHelper;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->max;
     
 }
@@ -120,6 +126,8 @@ this->timeDelayHelper= timeDelayHelper;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->timeDelayHelper;
     
 }
@@ -135,6 +143,8 @@ hashtable->put(InputProbability::INPUT_PROBABILITY, this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashtable;
     
 }

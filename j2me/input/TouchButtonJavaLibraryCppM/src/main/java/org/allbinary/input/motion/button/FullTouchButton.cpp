@@ -84,6 +84,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new FullTouchButton(touchButtonInput, FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->get(touchButtonResource->RESOURCE)->getInstance(0), FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->get(touchButtonResource->HINT)->getInstance(0), rawRectangle, cellPosition, xBorder, yBorder);
     
 }

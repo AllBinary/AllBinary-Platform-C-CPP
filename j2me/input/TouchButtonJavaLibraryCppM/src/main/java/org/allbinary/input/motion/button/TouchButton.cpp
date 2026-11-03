@@ -104,6 +104,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new TouchButton(touchButtonInput, FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->get(touchButtonResource->RESOURCE)->getInstance(0), FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->get(touchButtonResource->HINT)->getInstance(0), rawRectangle, cellPosition, xBorder, yBorder);
     
 }
@@ -182,6 +184,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "updateRectangle", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->cellPositionP;
     
 }
@@ -192,6 +196,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "updateRectangle", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->rectangleP;
     
 }
@@ -202,6 +208,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "updateRectangle", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->touchButtonInput;
     
 }
@@ -234,6 +242,8 @@ stringBuffer->appendint(this->yBorder);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

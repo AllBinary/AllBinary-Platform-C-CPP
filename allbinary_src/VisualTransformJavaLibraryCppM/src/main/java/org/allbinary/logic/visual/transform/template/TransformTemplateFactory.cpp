@@ -90,6 +90,8 @@ TransformTemplateFactory* TransformTemplateFactory::instance = TransformTemplate
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TransformTemplateFactory::instance;
     
 }
@@ -114,6 +116,8 @@ TransformTemplateFactory::TransformTemplateFactory() : logUtil(LogUtil::getInsta
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<TransformTemplateInterface*>(TransformInfoObjectFactory::getInstance()->getInstance(abeClientInformation, transformInfoInterface));
     
 

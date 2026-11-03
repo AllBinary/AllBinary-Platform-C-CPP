@@ -81,6 +81,8 @@ this->exception= exception;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->specialMessage;
     
 }
@@ -91,7 +93,9 @@ this->exception= exception;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->anyType;
+                        
+                        
+                        return JavaBoxes::toObject(this->anyType);
     
 }
 
@@ -101,6 +105,8 @@ this->exception= exception;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->functionName;
     
 }
@@ -111,7 +117,9 @@ this->exception= exception;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->exception;
+                        
+                        
+                        return JavaBoxes::toObject(this->exception);
     
 }
 
@@ -136,6 +144,8 @@ this->exception= exception;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->logFormatUtil->get(className, this->functionName, this->specialMessage, this->exception);;
     
 }

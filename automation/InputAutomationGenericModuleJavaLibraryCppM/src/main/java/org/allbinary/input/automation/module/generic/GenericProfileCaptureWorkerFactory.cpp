@@ -111,6 +111,8 @@ GenericProfileCaptureWorkerFactory::GenericProfileCaptureWorkerFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new ScreenCaptureImagesWorker();
     
 
@@ -124,6 +126,8 @@ GenericProfileCaptureWorkerFactory::GenericProfileCaptureWorkerFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new SavedCaptureImagesWorker(dynamic_cast<SavedCaptureGenericProfileDataWorkerType*>(genericProfileDataWorkerType));
     
 

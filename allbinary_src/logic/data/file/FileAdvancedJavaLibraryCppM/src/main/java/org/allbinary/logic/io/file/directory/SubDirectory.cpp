@@ -79,6 +79,8 @@ SubDirectory* SubDirectory::instance = SubDirectory::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SubDirectory::instance;
     
 }
@@ -93,6 +95,8 @@ SubDirectory::SubDirectory() : directory(Directory::getInstance()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->directory->search(fileFilter, file, true);;
     
 }
@@ -103,6 +107,8 @@ SubDirectory::SubDirectory() : directory(Directory::getInstance()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->directory->search(file, true);;
     
 }
@@ -113,6 +119,8 @@ SubDirectory::SubDirectory() : directory(Directory::getInstance()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->directory->search(searchValue, file, true);;
     
 }
@@ -123,6 +131,8 @@ SubDirectory::SubDirectory() : directory(Directory::getInstance()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->directory->search(level, file, true);;
     
 }
@@ -158,6 +168,8 @@ stringBuffer->append(NEW_LINE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

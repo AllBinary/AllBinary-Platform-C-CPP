@@ -128,6 +128,8 @@ TrueTypeFontUtil* TrueTypeFontUtil::instance = TrueTypeFontUtil::instance_owner(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TrueTypeFontUtil::instance;
     
 }
@@ -654,6 +656,8 @@ this->fontImage= dynamic_cast<OpenGLESImage*>(this->preResourceImageUtil->encaps
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->fontImage;
     
 
@@ -664,6 +668,8 @@ this->fontImage= dynamic_cast<OpenGLESImage*>(this->preResourceImageUtil->encaps
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->fontImage;
     
 
@@ -815,6 +821,8 @@ graphics->drawChar(this->characterArray[0], x, y, 0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return image;
     
 }
@@ -886,6 +894,8 @@ _characterWidth[index] *= this->widthScale;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return _characterWidth;
     
 }

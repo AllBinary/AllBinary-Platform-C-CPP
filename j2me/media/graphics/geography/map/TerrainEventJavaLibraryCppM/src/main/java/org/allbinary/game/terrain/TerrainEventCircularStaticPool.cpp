@@ -74,6 +74,8 @@ TerrainEventCircularStaticPool* TerrainEventCircularStaticPool::instance = Terra
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TerrainEventCircularStaticPool::instance;
     
 }
@@ -98,6 +100,8 @@ trackingEvent->setBasicTerrainInfoForCircularStaticPool(basicTerrainInfo);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return trackingEvent;
     
 }

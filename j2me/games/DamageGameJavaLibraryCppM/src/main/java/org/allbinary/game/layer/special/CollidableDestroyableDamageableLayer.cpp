@@ -150,6 +150,8 @@ Object* CollidableDestroyableDamageableLayer::NULL_COLLIDABLE_DESTROYABLE_DAMAGE
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<CollidableDestroyableDamageableLayer*>(CollidableDestroyableDamageableLayer::NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER);
     
 }
@@ -237,6 +239,8 @@ CollidableCompositeLayer::paint(graphics);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->groupInterface;
     
 }
@@ -275,6 +279,8 @@ this->allBinaryGameLayerManagerP= allBinaryGameLayerManager;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->readyForExplosion;
     
 }
@@ -291,6 +297,8 @@ this->readyForExplosion= isReadyForExplosion;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->initWidth;
     
 }
@@ -301,6 +309,8 @@ this->readyForExplosion= isReadyForExplosion;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->initHeight;
     
 }
@@ -311,6 +321,8 @@ this->readyForExplosion= isReadyForExplosion;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->initX;
     
 }
@@ -321,6 +333,8 @@ this->readyForExplosion= isReadyForExplosion;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->initY;
     
 }
@@ -443,6 +457,8 @@ this->readyForExplosion= isReadyForExplosion;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->pickupBehavior;
     
 }
@@ -471,6 +487,8 @@ this->partInterfaceArrayP= partInterfaceArray;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->partInterfaceArrayP;
     
 }
@@ -559,6 +577,8 @@ this->toStringAppend(stringBuffer);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

@@ -69,6 +69,8 @@ ThirdPartyInApplicationPurchase::ThirdPartyInApplicationPurchase() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -115,6 +117,8 @@ ThirdPartyInApplicationPurchase::ThirdPartyInApplicationPurchase() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 }
@@ -125,6 +129,8 @@ ThirdPartyInApplicationPurchase::ThirdPartyInApplicationPurchase() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

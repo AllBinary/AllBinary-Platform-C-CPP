@@ -84,6 +84,8 @@ ImageRotationUtil* ImageRotationUtil::instance = ImageRotationUtil::instance_own
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ImageRotationUtil::instance;
     
 }
@@ -125,6 +127,8 @@ image->getGraphics()->drawImage(originalImage, 0, 0, this->anchor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return image;
     
 

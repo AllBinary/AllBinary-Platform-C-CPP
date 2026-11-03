@@ -70,6 +70,8 @@ StoreRoleFactory* StoreRoleFactory::instance = StoreRoleFactory::instance_owner(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StoreRoleFactory::instance;
     
 }
@@ -97,6 +99,8 @@ this->wholesaleRoles->add(basicUserRoleFactory->WHOLESALECUSTOMER);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->roles;
     
 }
@@ -107,6 +111,8 @@ this->wholesaleRoles->add(basicUserRoleFactory->WHOLESALECUSTOMER);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->subscriberRoles;
     
 }
@@ -117,6 +123,8 @@ this->wholesaleRoles->add(basicUserRoleFactory->WHOLESALECUSTOMER);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->wholesaleRoles;
     
 }

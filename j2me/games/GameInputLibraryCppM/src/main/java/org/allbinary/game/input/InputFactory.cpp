@@ -89,6 +89,8 @@ Object* InputFactory::instance = NullUtil::getInstance()->NULL_OBJECT;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<InputFactory*>(InputFactory::instance);
     
 }
@@ -138,6 +140,8 @@ this->inputIntegerArray[id]= input;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->NO_INPUT;
     
 
@@ -147,6 +151,8 @@ this->inputIntegerArray[id]= input;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->inputIntegerArray[id];
     
 }

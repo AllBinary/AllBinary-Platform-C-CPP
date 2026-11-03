@@ -62,6 +62,8 @@ BufferedImageUtil2* BufferedImageUtil2::instance = BufferedImageUtil2::instance_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BufferedImageUtil2::instance;
     
 }
@@ -146,6 +148,8 @@ g->dispose();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return bufferedImage;
     
 }

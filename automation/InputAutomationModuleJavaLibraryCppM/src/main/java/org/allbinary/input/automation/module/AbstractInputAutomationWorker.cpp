@@ -103,6 +103,8 @@ AbstractInputAutomationWorker::AbstractInputAutomationWorker(InputAutomationActi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->running;
     
 }
@@ -127,6 +129,8 @@ this->running= running;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -136,6 +140,8 @@ this->running= running;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -241,6 +247,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->RU
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->inputAutomationActionInterface;
     
 }
@@ -257,6 +265,8 @@ this->inputAutomationActionInterface= inputAutomationActionInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->captureWorkerInterface;
     
 }
@@ -273,6 +283,8 @@ this->captureWorkerInterface= captureWorkerInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->imageComparisonWorker;
     
 }
@@ -289,6 +301,8 @@ this->imageComparisonWorker= imageComparisonWorker;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->motionRectanglesWorker;
     
 }

@@ -69,6 +69,8 @@ BasicColorUtil* BasicColorUtil::instance = BasicColorUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BasicColorUtil::instance;
     
 }
@@ -104,6 +106,8 @@ value= blue | value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return value;
     
 }
@@ -114,6 +118,8 @@ value= blue | value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ((alphaValue<<24)&this->ALPHA) +((r<<16)&0x00FF0000) +((g<<8)&0x0000FF00) +(b&0x000000FF);
     
 }
@@ -124,6 +130,8 @@ value= blue | value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ((alphaValue<<24)&this->ALPHA) +color;
     
 }
@@ -134,6 +142,8 @@ value= blue | value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (0xFFFFFF -color) | this->ALPHA;
     
 }

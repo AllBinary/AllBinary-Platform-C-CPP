@@ -88,6 +88,8 @@ CategoryComponent::CategoryComponent(CategoryInterface* categoryInterface) : Cat
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->NO_TYPE;
     
 }
@@ -98,6 +100,8 @@ CategoryComponent::CategoryComponent(CategoryInterface* categoryInterface) : Cat
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -110,6 +114,8 @@ CategoryComponent::CategoryComponent(CategoryInterface* categoryInterface) : Cat
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -131,6 +137,8 @@ document->appendChild((new CategoryView(this->getCategoryInterface()))->toXmlNod
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return document;
     
 }
@@ -143,6 +151,8 @@ document->appendChild((new CategoryView(this->getCategoryInterface()))->toXmlNod
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

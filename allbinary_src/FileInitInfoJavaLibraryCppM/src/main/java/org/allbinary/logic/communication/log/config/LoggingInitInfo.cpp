@@ -125,6 +125,8 @@ LoggingInitInfo::LoggingInitInfo(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return document;
     
 }
@@ -252,6 +254,8 @@ LoggingInitInfo::hasRead= true;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -262,6 +266,8 @@ LoggingInitInfo::hasRead= true;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -285,6 +291,8 @@ LoggingInitInfo::updateIfNeeded();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return LoggingInitInfo::logConfigInfoList;
     
 }
@@ -329,6 +337,8 @@ LoggingInitInfo::updateIfNeeded();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return allLogTypeVector;
     
 }
@@ -373,6 +383,8 @@ LoggingInitInfo::updateIfNeeded();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return allLogTypeVector;
     
 }
@@ -385,6 +397,8 @@ LoggingInitInfo::updateIfNeeded();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return LoggingInitInfo::logConfigInfoList->size();;
     
 }
@@ -400,6 +414,8 @@ LoggingInitInfo::updateIfNeeded();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return XmlDocumentHelper::toString(document);;
     
 
@@ -410,6 +426,8 @@ LoggingInitInfo::updateIfNeeded();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error";
     
 }

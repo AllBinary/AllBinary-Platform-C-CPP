@@ -110,7 +110,9 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->VISIT, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->TRUE;
+                        
+                        
+                        return JavaBoxes::toObject(this->TRUE);
     
 }
 

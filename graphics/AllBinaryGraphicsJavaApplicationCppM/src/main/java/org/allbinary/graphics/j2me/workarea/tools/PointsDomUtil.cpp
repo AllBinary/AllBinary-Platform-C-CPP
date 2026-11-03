@@ -95,6 +95,8 @@ PointsDomUtil* PointsDomUtil::instance = PointsDomUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PointsDomUtil::instance;
     
 }
@@ -190,6 +192,8 @@ index++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return linesNode;
     
 }
@@ -226,6 +230,8 @@ pointNode->appendChild(yNode);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return pointNode;
     
 }

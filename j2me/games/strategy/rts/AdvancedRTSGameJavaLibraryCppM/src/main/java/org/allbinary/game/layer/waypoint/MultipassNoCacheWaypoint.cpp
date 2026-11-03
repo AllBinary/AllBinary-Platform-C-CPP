@@ -174,6 +174,8 @@ WaypointBase::setAllBinaryGameLayerManager(allBinaryGameLayerManager);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PathFindingInfo::NULL_PATH_FINDING_INFO;
     
 
@@ -191,6 +193,8 @@ WaypointBase::setAllBinaryGameLayerManager(allBinaryGameLayerManager);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PathFindingInfo::NULL_PATH_FINDING_INFO;
     
 
@@ -239,6 +243,8 @@ customMapArray[endGeographicMapCellPosition->getRow()][endGeographicMapCellPosit
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return pathFindingInfo;
     
 }
@@ -261,6 +267,8 @@ customMapArray[endGeographicMapCellPosition->getRow()][endGeographicMapCellPosit
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BasicArrayListUtil::getInstance()->getImmutableInstance();;
     
 
@@ -297,6 +305,8 @@ customMapArray[endGeographicMapCellPosition->getRow()][endGeographicMapCellPosit
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return list;
     
 
@@ -306,6 +316,8 @@ customMapArray[endGeographicMapCellPosition->getRow()][endGeographicMapCellPosit
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BasicArrayListUtil::getInstance()->getImmutableInstance();;
     
 
@@ -321,6 +333,8 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "getPathsList", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BasicArrayListUtil::getInstance()->getImmutableInstance();;
     
 }
@@ -369,6 +383,8 @@ endGeographicMapCellPosition= dynamic_cast<GeographicMapCellPosition*>(endList->
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return endGeographicMapCellPosition;
     
 }
@@ -403,6 +419,8 @@ this->getConnectedWaypointList()->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 

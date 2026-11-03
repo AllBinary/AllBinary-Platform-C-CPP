@@ -144,6 +144,8 @@ this->numberOfOrdersLong= int64_t(numberOfOrders);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->numberOfOrdersLong;
     
 }
@@ -154,6 +156,8 @@ this->numberOfOrdersLong= int64_t(numberOfOrders);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->subTotalMoney;
     
 }
@@ -164,6 +168,8 @@ this->numberOfOrdersLong= int64_t(numberOfOrders);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->shippingCostMoney;
     
 }
@@ -174,6 +180,8 @@ this->numberOfOrdersLong= int64_t(numberOfOrders);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->taxesMoney;
     
 }
@@ -184,6 +192,8 @@ this->numberOfOrdersLong= int64_t(numberOfOrders);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->totalMoney;
     
 }
@@ -210,6 +220,8 @@ hashMap->put(storeFrontOrdersHistoryStatisticsData->TOTAL, this->getTotal()->toS
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }
@@ -220,6 +232,8 @@ hashMap->put(storeFrontOrdersHistoryStatisticsData->TOTAL, this->getTotal()->toS
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -230,6 +244,8 @@ hashMap->put(storeFrontOrdersHistoryStatisticsData->TOTAL, this->getTotal()->toS
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

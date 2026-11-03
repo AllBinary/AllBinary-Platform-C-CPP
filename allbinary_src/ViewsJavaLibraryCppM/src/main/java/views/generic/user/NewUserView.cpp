@@ -97,6 +97,8 @@ this->user= NewUserFactory::getInstance();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -116,6 +118,8 @@ this->user= NewUserFactory::getInstance();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -135,6 +139,8 @@ stringBuffer->append("Please Contact Administrator");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -154,6 +160,8 @@ stringBuffer->append("Please Contact Administrator");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Getting Validation Info";
     
 }
@@ -166,6 +174,8 @@ stringBuffer->append("Please Contact Administrator");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -176,6 +186,8 @@ stringBuffer->append("Please Contact Administrator");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

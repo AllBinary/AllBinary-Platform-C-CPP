@@ -124,6 +124,8 @@ this->hashMap= hashMap;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->upTo(replace, Integer.MIN_VALUE);;
     
 }
@@ -293,6 +295,8 @@ totalNumberOfReplaces++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return replace;
     
 }
@@ -392,6 +396,8 @@ totalNumberOfReplaces++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return replace;
     
 }

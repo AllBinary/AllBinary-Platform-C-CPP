@@ -72,6 +72,8 @@ PlayerStateUtil* PlayerStateUtil::instance = PlayerStateUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PlayerStateUtil::instance;
     
 }
@@ -86,6 +88,8 @@ PlayerStateUtil* PlayerStateUtil::instance = PlayerStateUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->UNREALIZED;
     
 
@@ -99,6 +103,8 @@ PlayerStateUtil* PlayerStateUtil::instance = PlayerStateUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->REALIZED;
     
 
@@ -112,6 +118,8 @@ PlayerStateUtil* PlayerStateUtil::instance = PlayerStateUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->PREFETCHED;
     
 
@@ -125,6 +133,8 @@ PlayerStateUtil* PlayerStateUtil::instance = PlayerStateUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->STARTED;
     
 
@@ -138,6 +148,8 @@ PlayerStateUtil* PlayerStateUtil::instance = PlayerStateUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->CLOSED;
     
 
@@ -147,6 +159,8 @@ PlayerStateUtil* PlayerStateUtil::instance = PlayerStateUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->commonStrings->UNKNOWN;
     
 }

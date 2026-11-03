@@ -104,6 +104,8 @@ CustomizerUtil* CustomizerUtil::instance = CustomizerUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return CustomizerUtil::instance;
     
 }
@@ -141,6 +143,8 @@ CustomizerUtil::CustomizerUtil() : logUtil(LogUtil::getInstance()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return customizedTransformInfoInterface;
     
 }
@@ -174,6 +178,8 @@ CustomizerUtil::CustomizerUtil() : logUtil(LogUtil::getInstance()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getTransformInfoObjectConfigComponentNodes(customizedTransformInfoInterface);;
     
 }
@@ -198,6 +204,8 @@ CustomizerUtil::CustomizerUtil() : logUtil(LogUtil::getInstance()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return transformInfoObjectConfigInterface->getTransforms();;
     
 }
@@ -222,6 +230,8 @@ CustomizerUtil::CustomizerUtil() : logUtil(LogUtil::getInstance()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return transformInfoObjectConfigInterface->getGroupTransforms();;
     
 }
@@ -452,6 +462,8 @@ transformInfoEntityInterface->update(specifiedTransformInfoInterface->toHashMap(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return specifiedTransformInfoInterface->getDataDocument();;
     
 }

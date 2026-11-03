@@ -74,6 +74,8 @@ DataOutputStreamFactory* DataOutputStreamFactory::instance = DataOutputStreamFac
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return DataOutputStreamFactory::instance;
     
 }
@@ -92,6 +94,8 @@ DataOutputStreamFactory* DataOutputStreamFactory::instance = DataOutputStreamFac
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return idOutData;
     
 }
@@ -113,6 +117,8 @@ DataOutputStreamFactory* DataOutputStreamFactory::instance = DataOutputStreamFac
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return idOutData;
     
 }

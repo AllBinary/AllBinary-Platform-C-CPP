@@ -69,6 +69,8 @@ GeographicMapCellPosition* SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPH
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new GeographicMapCellPosition(i_column, i_row, columns, rows, width, height);
     
 }

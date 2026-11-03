@@ -82,6 +82,8 @@ ForcedLogUtil::log(this->name, this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -98,6 +100,8 @@ ForcedLogUtil::log(this->name, this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }

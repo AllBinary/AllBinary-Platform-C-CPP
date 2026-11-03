@@ -71,6 +71,8 @@ DirectoryBooleanFileVisitor::DirectoryBooleanFileVisitor(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->visit(dynamic_cast<AbFile*>(anyType));
     
 }
@@ -85,6 +87,8 @@ DirectoryBooleanFileVisitor::DirectoryBooleanFileVisitor(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -94,6 +98,8 @@ DirectoryBooleanFileVisitor::DirectoryBooleanFileVisitor(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }

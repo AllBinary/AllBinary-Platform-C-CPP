@@ -164,6 +164,8 @@ this->request= dynamic_cast<HttpServletRequest*>(this->getPageContext()->getRequ
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return DownloadableInventoryItemView::TYPE_ID;
     
 }
@@ -210,6 +212,8 @@ this->addDomNodeInterface(new BasicItemView(this->itemInterface, vector));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return HttpStoreComponentView::view();;
     
 
@@ -331,6 +335,8 @@ stringBuffer->appendchar(filePathData->SEPARATORCHAR);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -347,6 +353,8 @@ this->requestHashMap= requestHashMap;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->requestHashMap;
     
 }
@@ -357,6 +365,8 @@ this->requestHashMap= requestHashMap;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->downloadableItem;
     
 }

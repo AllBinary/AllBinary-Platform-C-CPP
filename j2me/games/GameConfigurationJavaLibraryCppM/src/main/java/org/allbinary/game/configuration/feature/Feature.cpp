@@ -81,6 +81,8 @@ ChangedGameFeatureListener::getInstance()->add(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<Feature*>(Feature::hashtable->get(name));
     
 }
@@ -97,6 +99,8 @@ Feature::hashtable->put(name, gameFeature);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getName();;
     
 }
@@ -107,6 +111,8 @@ Feature::hashtable->put(name, gameFeature);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }

@@ -72,6 +72,8 @@ LogTableEntityFactory* LogTableEntityFactory::instance = LogTableEntityFactory::
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return LogTableEntityFactory::instance;
     
 }
@@ -88,6 +90,8 @@ LogTableEntityFactory::LogTableEntityFactory() : logUtil(LogUtil::getInstance())
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new org::allbinary::data::tables::log::LogTableEntity();
     
 
@@ -110,6 +114,8 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

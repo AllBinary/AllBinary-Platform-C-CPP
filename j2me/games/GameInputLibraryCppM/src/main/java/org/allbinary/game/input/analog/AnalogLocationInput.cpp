@@ -60,6 +60,8 @@ this->customGPoint= new CustomGPoint(0, 0, 0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->playerId;
     
 }
@@ -70,6 +72,8 @@ this->customGPoint= new CustomGPoint(0, 0, 0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->customGPoint;
     
 }
@@ -80,6 +84,8 @@ this->customGPoint= new CustomGPoint(0, 0, 0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->rz;
     
 }
@@ -96,6 +102,8 @@ this->rz= rz;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->rightTrigger;
     
 }
@@ -112,6 +120,8 @@ this->rightTrigger= rightTrigger;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->leftTrigger;
     
 }

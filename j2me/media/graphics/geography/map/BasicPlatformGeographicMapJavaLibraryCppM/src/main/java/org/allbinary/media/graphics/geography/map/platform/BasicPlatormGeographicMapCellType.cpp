@@ -85,6 +85,8 @@ types->add(SmallIntegerSingletonFactory::getInstance()->getAt(type));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return basicPlatormGeographicMapCellType;
     
 }
@@ -130,6 +132,8 @@ this->types= typeArray;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->hasType(type->getType());;
     
 }
@@ -154,6 +158,8 @@ this->types= typeArray;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -165,6 +171,8 @@ this->types= typeArray;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

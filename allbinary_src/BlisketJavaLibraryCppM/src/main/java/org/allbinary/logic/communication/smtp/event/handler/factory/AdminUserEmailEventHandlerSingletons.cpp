@@ -98,6 +98,8 @@ AdminUserEmailEventHandlerSingletons* AdminUserEmailEventHandlerSingletons::inst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AdminUserEmailEventHandlerSingletons::instance;
     
 }
@@ -158,6 +160,8 @@ this->userEmailEventHandlerHashMap->put(userEmailEventNameData, newUserEmailEven
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return newUserEmailEventHandler;
     
 
@@ -177,6 +181,8 @@ this->userEmailEventHandlerHashMap->put(userEmailEventNameData, newUserEmailEven
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return userEmailEventHandler;
     
 

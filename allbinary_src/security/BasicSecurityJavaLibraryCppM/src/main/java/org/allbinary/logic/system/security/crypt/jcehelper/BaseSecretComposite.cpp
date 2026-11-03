@@ -75,6 +75,8 @@ BaseSecretComposite* BaseSecretComposite::NULL_SECRET_COMPOSITE = BaseSecretComp
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NullUtil::getInstance()->NULL_BYTE_ARRAY;
     
 }
@@ -87,6 +89,8 @@ BaseSecretComposite* BaseSecretComposite::NULL_SECRET_COMPOSITE = BaseSecretComp
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NullUtil::getInstance()->NULL_BYTE_ARRAY;
     
 }

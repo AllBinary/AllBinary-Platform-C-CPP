@@ -285,6 +285,8 @@ this->setDefault(address->getId());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbSqlBean::getLargestIntegerInColumnWhere(StreetAddressData::ID, UserData::USERNAME, userName);;
     
 }
@@ -337,6 +339,8 @@ keyAndValue->put(UserData::USERNAME, this->userName);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return streetAddressVector;
     
 
@@ -356,6 +360,8 @@ keyAndValue->put(UserData::USERNAME, this->userName);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -386,6 +392,8 @@ keyAndValue->put(StreetAddressData::ID, JavaString::valueOf(index));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new StreetAddress(addressHashMap);
     
 
@@ -396,6 +404,8 @@ keyAndValue->put(StreetAddressData::ID, JavaString::valueOf(index));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 
@@ -418,6 +428,8 @@ keyAndValue->put(StreetAddressData::ID, JavaString::valueOf(index));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -462,6 +474,8 @@ addressHashMap= AbSqlBean::getRow(updateKeyAndValue);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return streetAddress;
     
 
@@ -481,6 +495,8 @@ addressHashMap= AbSqlBean::getRow(updateKeyAndValue);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 
@@ -503,6 +519,8 @@ addressHashMap= AbSqlBean::getRow(updateKeyAndValue);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -577,6 +595,8 @@ AbSqlBean::updateWhere(whereKeyAndValue, updateKeyAndValue);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->userName;
     
 }
@@ -592,6 +612,8 @@ stringBuffer->append(this->sqlStrings->CREATE_TABLE)->append(this->getTableName(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -602,6 +624,8 @@ stringBuffer->append(this->sqlStrings->CREATE_TABLE)->append(this->getTableName(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbSqlBean::createTable(this->createTableStatement());;
     
 }
@@ -612,6 +636,8 @@ stringBuffer->append(this->sqlStrings->CREATE_TABLE)->append(this->getTableName(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbSqlBean::dropTable();;
     
 }

@@ -67,6 +67,8 @@ TiledLayerUtil* TiledLayerUtil::instance = TiledLayerUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TiledLayerUtil::instance;
     
 }
@@ -101,6 +103,8 @@ TiledLayerUtil* TiledLayerUtil::instance = TiledLayerUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return newX;
     
 }
@@ -135,6 +139,8 @@ TiledLayerUtil* TiledLayerUtil::instance = TiledLayerUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return newY;
     
 }
@@ -169,6 +175,8 @@ TiledLayerUtil* TiledLayerUtil::instance = TiledLayerUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return newX;
     
 }
@@ -203,6 +211,8 @@ TiledLayerUtil* TiledLayerUtil::instance = TiledLayerUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return newY;
     
 }

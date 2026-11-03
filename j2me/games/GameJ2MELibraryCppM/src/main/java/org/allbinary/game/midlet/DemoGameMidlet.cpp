@@ -114,6 +114,8 @@ DemoGameMidlet::DemoGameMidlet(ClientInformationFactory* clientInformationFactor
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -124,6 +126,8 @@ DemoGameMidlet::DemoGameMidlet(ClientInformationFactory* clientInformationFactor
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -137,6 +141,8 @@ DemoGameMidlet::DemoGameMidlet(ClientInformationFactory* clientInformationFactor
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 1;
     
 }
@@ -151,6 +157,8 @@ this->logUtil->putF(this->commonStrings->NOT_IMPLEMENTED, this, this->commonStri
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NullGameCanvasRunnable::NULL_GAME_CANVAS_RUNNABLE;
     
 }
@@ -174,6 +182,8 @@ this->logUtil->putF(this->commonStrings->NOT_IMPLEMENTED, this, this->commonStri
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->createGameCanvasRunnable(this->createGameLayerManager());;
     
 }
@@ -234,6 +244,8 @@ this->logUtil->putF(this->commonStrings->END, this, CREATE_GAME);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }

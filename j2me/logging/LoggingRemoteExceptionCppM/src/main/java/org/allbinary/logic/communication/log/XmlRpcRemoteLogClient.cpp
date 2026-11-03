@@ -142,7 +142,9 @@ System.out.println(CommonLabels::getInstance()->RESULT_ +CommonSeps::getInstance
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return result;
+                        
+                        
+                        return JavaBoxes::toObject(result);
     
 
                 //: 
@@ -158,6 +160,8 @@ System.out.println("IOException Trying Other Servers");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->tryAnother(anyType);;
     
 
@@ -181,6 +185,8 @@ System.out.println("IOException Trying Other Servers");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->tryAnother(anyType);;
     
 }
@@ -192,6 +198,8 @@ System.out.println("IOException Trying Other Servers");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->tryAnother(anyType);;
     
 }

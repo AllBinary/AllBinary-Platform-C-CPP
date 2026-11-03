@@ -124,6 +124,8 @@ OrderItemsEntityFactory::getInstance()->setStatus(this->id, this->groupId, newSt
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -146,6 +148,8 @@ OrderItemsEntityFactory::getInstance()->setStatus(this->id, this->groupId, newSt
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -174,6 +178,8 @@ OrderItemsEntityFactory::getInstance()->setStatus(this->id, this->groupId, this-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -196,6 +202,8 @@ OrderItemsEntityFactory::getInstance()->setStatus(this->id, this->groupId, this-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }

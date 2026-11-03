@@ -84,6 +84,8 @@ FileUtil2* FileUtil2::instance = FileUtil2::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return FileUtil2::instance;
     
 }
@@ -115,6 +117,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->AD
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SimpleFileUtil::getInstance()->loadFileAsList(inputStream, max, byteArray1);;
     
 }

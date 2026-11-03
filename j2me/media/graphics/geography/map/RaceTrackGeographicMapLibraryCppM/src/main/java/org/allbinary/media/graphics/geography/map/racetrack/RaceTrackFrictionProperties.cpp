@@ -72,6 +72,8 @@ this->GROUND_FRICTION_NOMINATOR= FrictionData::getFrictionDenominator() -groundF
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->ROAD_FRICTION_NOMINATOR;
     
 }
@@ -82,6 +84,8 @@ this->GROUND_FRICTION_NOMINATOR= FrictionData::getFrictionDenominator() -groundF
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->GROUND_FRICTION_NOMINATOR;
     
 }

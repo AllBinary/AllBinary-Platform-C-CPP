@@ -246,6 +246,8 @@ this->buildFromMotionInput(rtsPlayerLayerInterface, layerManager, item, itemInde
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->dropCellPositionHistory->isCellPositionWithDrop(this->getSelectedGeographicCellPosition());;
     
 }
@@ -266,6 +268,8 @@ this->buildFromMotionInput(rtsPlayerLayerInterface, layerManager, item, itemInde
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -276,6 +280,8 @@ this->buildFromMotionInput(rtsPlayerLayerInterface, layerManager, item, itemInde
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -324,6 +330,8 @@ LockedFeatureNotificationUtil::getInstance()->fireWithColor(geographicMapInterfa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -454,6 +462,8 @@ this->logUtil->putF((new StringMaker())->append("Layer: ")->append(StringUtil::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -499,6 +509,8 @@ geographicMapCellType= geographicMapInterface->getCellTypeAt(dynamic_cast<Geogra
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -545,6 +557,8 @@ this->add(rtsPlayerLayerInterface, layerManager, layerInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -566,6 +580,8 @@ this->add(rtsPlayerLayerInterface, layerManager, layerInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -602,6 +618,8 @@ this->add(rtsPlayerLayerInterface, layerManager, layerInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -626,6 +644,8 @@ this->add(rtsPlayerLayerInterface, layerManager, layerInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -651,6 +671,8 @@ this->add(rtsPlayerLayerInterface, layerManager, layerInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -663,6 +685,8 @@ this->add(rtsPlayerLayerInterface, layerManager, layerInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -762,6 +786,8 @@ this->logUtil->putF(stringBuffer->toString(), this, "isSurroundingCellsOffMap");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -772,6 +798,8 @@ this->logUtil->putF(stringBuffer->toString(), this, "isSurroundingCellsOffMap");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 

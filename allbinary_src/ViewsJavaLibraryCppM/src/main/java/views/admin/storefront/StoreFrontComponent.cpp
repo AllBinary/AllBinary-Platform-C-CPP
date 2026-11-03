@@ -104,6 +104,8 @@ this->newStoreFrontInterface= dynamic_cast<StoreFrontInterface*>(new StoreFront(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return HttpStoreComponentView::view();;
     
 

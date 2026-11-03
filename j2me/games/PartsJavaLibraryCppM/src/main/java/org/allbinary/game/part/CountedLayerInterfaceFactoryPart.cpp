@@ -139,6 +139,8 @@ this->total= total;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getCountedPickedUpLayerInterfaceFactory()->getNextInstance(hashtable, x, y, z);;
     
 
@@ -161,6 +163,8 @@ this->total= total;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->total;
     
 }
@@ -191,6 +195,8 @@ this->myFontProcessor->process(graphics);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->animationInterface;
     
 }
@@ -207,6 +213,8 @@ this->animationInterface= animationInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->xOffset;
     
 }
@@ -223,6 +231,8 @@ this->xOffset= totalStringWidth;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->totalString;
     
 }
@@ -233,6 +243,8 @@ this->xOffset= totalStringWidth;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->countedPickedUpLayerInterfaceFactory;
     
 }

@@ -72,6 +72,8 @@ BasicGroupItemsEntityFactory* BasicGroupItemsEntityFactory::instance = BasicGrou
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BasicGroupItemsEntityFactory::instance;
     
 }
@@ -88,6 +90,8 @@ BasicGroupItemsEntityFactory::BasicGroupItemsEntityFactory() : logUtil(LogUtil::
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new org::allbinary::data::tables::user::commerce::inventory::item::groups::BasicGroupItemsEntity();
     
 
@@ -110,6 +114,8 @@ BasicGroupItemsEntityFactory::BasicGroupItemsEntityFactory() : logUtil(LogUtil::
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

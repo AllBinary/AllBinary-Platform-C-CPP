@@ -56,6 +56,8 @@ BasicGeographicMapExtractedPathCacheFactory* BasicGeographicMapExtractedPathCach
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return BasicGeographicMapExtractedPathCacheFactory::instance;
     
 }
@@ -100,6 +102,8 @@ this->maxPaths= maxPaths;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<BasicArrayList*>(this->list->removeAt(0));
     
 
@@ -110,6 +114,8 @@ this->maxPaths= maxPaths;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new BasicArrayListS(this->maxPaths);
     
 

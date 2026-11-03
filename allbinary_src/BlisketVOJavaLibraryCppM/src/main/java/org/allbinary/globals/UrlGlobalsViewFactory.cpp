@@ -82,6 +82,8 @@ UrlGlobalsViewFactory::UrlGlobalsViewFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<DomNodeInterface*>(new UrlGlobalsView());
     
 
@@ -104,6 +106,8 @@ UrlGlobalsViewFactory::UrlGlobalsViewFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

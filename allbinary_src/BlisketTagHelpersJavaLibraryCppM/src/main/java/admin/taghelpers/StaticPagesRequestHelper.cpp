@@ -256,6 +256,8 @@ this->email();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -278,6 +280,8 @@ this->email();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -315,6 +319,8 @@ FileUtil::getInstance()->copy(fromAbPath, toAbPath);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -337,6 +343,8 @@ FileUtil::getInstance()->copy(fromAbPath, toAbPath);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }

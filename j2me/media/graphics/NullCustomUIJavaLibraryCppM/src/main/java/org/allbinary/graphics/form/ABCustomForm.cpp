@@ -72,6 +72,8 @@ ABCustomForm::ABCustomForm(std::string title, std::vector<ABCustomItem*> items, 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return {};
     
 }
@@ -82,6 +84,8 @@ ABCustomForm::ABCustomForm(std::string title, std::vector<ABCustomItem*> items, 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -96,6 +100,8 @@ ABCustomForm::ABCustomForm(std::string title, std::vector<ABCustomItem*> items, 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -114,6 +120,8 @@ ABCustomForm::ABCustomForm(std::string title, std::vector<ABCustomItem*> items, 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 }
@@ -132,6 +140,8 @@ ABCustomForm::ABCustomForm(std::string title, std::vector<ABCustomItem*> items, 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ABCustomItem::getNullInstance();;
     
 }
@@ -155,6 +165,8 @@ ABCustomForm::ABCustomForm(std::string title, std::vector<ABCustomItem*> items, 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 }

@@ -100,6 +100,8 @@ ThemesValidation::ThemesValidation(HashMap<Object*, Object*>* hashMap){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 }
@@ -110,6 +112,8 @@ ThemesValidation::ThemesValidation(HashMap<Object*, Object*>* hashMap){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -120,6 +124,8 @@ ThemesValidation::ThemesValidation(HashMap<Object*, Object*>* hashMap){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -130,6 +136,8 @@ ThemesValidation::ThemesValidation(HashMap<Object*, Object*>* hashMap){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -162,6 +170,8 @@ node->appendChild(themeDomNodeInterface->toXmlNode(document));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }

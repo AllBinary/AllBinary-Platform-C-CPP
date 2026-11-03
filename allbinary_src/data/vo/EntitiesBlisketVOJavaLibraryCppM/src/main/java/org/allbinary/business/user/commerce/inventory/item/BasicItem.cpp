@@ -449,6 +449,8 @@ this->enabled= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->itemId;
     
 }
@@ -459,6 +461,8 @@ this->enabled= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->number;
     
 }
@@ -469,6 +473,8 @@ this->enabled= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->inBaskets;
     
 }
@@ -479,6 +485,8 @@ this->enabled= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->weight;
     
 }
@@ -489,6 +497,8 @@ this->enabled= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->newOrUsed;
     
 }
@@ -499,6 +509,8 @@ this->enabled= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->summary;
     
 }
@@ -509,6 +521,8 @@ this->enabled= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->distributor;
     
 }
@@ -519,6 +533,8 @@ this->enabled= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->idUsedByDistributor;
     
 }
@@ -529,6 +545,8 @@ this->enabled= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->producedBy;
     
 }
@@ -539,6 +557,8 @@ this->enabled= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->productionDate;
     
 }
@@ -549,6 +569,8 @@ this->enabled= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->startProductionDate;
     
 }
@@ -559,6 +581,8 @@ this->enabled= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->description;
     
 }
@@ -569,6 +593,8 @@ this->enabled= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->keywords;
     
 }
@@ -579,6 +605,8 @@ this->enabled= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->category;
     
 }
@@ -589,6 +617,8 @@ this->enabled= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->type;
     
 }
@@ -599,6 +629,8 @@ this->enabled= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->smallImage;
     
 }
@@ -609,6 +641,8 @@ this->enabled= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->mediumImage;
     
 }
@@ -619,6 +653,8 @@ this->enabled= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->largeImage;
     
 }
@@ -629,6 +665,8 @@ this->enabled= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->timeEntered;
     
 }
@@ -639,6 +677,8 @@ this->enabled= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->lastModified;
     
 }
@@ -649,6 +689,8 @@ this->enabled= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->price;
     
 }
@@ -659,6 +701,8 @@ this->enabled= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->comment;
     
 }
@@ -669,6 +713,8 @@ this->enabled= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->customs;
     
 }
@@ -679,6 +725,8 @@ this->enabled= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->downloads;
     
 }
@@ -689,6 +737,8 @@ this->enabled= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->groups;
     
 }
@@ -699,6 +749,8 @@ this->enabled= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->options;
     
 }
@@ -709,6 +761,8 @@ this->enabled= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->permissions;
     
 }
@@ -719,6 +773,8 @@ this->enabled= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->specials;
     
 }
@@ -735,6 +791,8 @@ this->downloadable= downloadable;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->downloadable;
     
 }
@@ -745,6 +803,8 @@ this->downloadable= downloadable;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->enabled;
     
 }
@@ -760,6 +820,8 @@ itemTotal->multiply((int32_t(this->number)).intValue());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return itemTotal;
     
 }
@@ -844,6 +906,8 @@ hashMap->put(basicItemData->SPECIALS, this->specials);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }
@@ -930,6 +994,8 @@ values->add(this->specials);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return values;
     
 }
@@ -942,6 +1008,8 @@ values->add(this->specials);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getId();
     
 }

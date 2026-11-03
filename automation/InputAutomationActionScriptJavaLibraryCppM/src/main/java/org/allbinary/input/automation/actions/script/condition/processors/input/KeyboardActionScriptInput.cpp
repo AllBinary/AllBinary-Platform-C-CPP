@@ -274,6 +274,8 @@ this->keyboardActionScriptInputJPanel= new KeyboardActionScriptInputJPanel(this)
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->delayBetweenKeys;
     
 }
@@ -290,6 +292,8 @@ this->delayBetweenKeys= delayBetweenKeys;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->press;
     
 }
@@ -306,6 +310,8 @@ this->press= press;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->release;
     
 }
@@ -322,6 +328,8 @@ this->release= release;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->isRelease() && this->isPress();
     
 }
@@ -340,6 +348,8 @@ this->setRelease(true);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->keyArray;
     
 }
@@ -366,6 +376,8 @@ this->keyboardActionScriptInputJPanel->getKeyActionJDialog()->setVisible(true);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getText(this->getKeyArray());;
     
 }
@@ -418,6 +430,8 @@ index++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -488,6 +502,8 @@ index++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return integerArray;
     
 }
@@ -520,6 +536,8 @@ this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(hashMa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }
@@ -537,6 +555,8 @@ node->appendChild(ModDomHelper::createNodeWithValueNodes(document, KeyboardActio
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }
@@ -582,6 +602,8 @@ stringBuffer->appendint(this->getDelayBetweenKeys());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

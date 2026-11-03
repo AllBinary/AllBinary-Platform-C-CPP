@@ -84,6 +84,8 @@ Object* FileStreamFactory::SINGLETON = NullUtil::getInstance()->NULL_OBJECT;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<FileStreamFactory*>(FileStreamFactory::SINGLETON);
     
 }
@@ -102,6 +104,8 @@ this->context= context;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AbFileInputStream(this->getContext()->openFileInput(fileName));
     
 }
@@ -119,6 +123,8 @@ context->deleteFile(fileName);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AbFileOutputStream(context->openFileOutput(fileName, 0));
     
 }
@@ -137,6 +143,8 @@ this->getContext()->deleteFile(fileName);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<Context*>(this->context);
     
 }

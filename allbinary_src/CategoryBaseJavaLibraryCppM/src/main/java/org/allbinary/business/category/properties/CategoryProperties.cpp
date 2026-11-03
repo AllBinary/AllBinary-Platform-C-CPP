@@ -133,6 +133,8 @@ this->category= .toCharArray();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -143,6 +145,8 @@ this->category= .toCharArray();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -153,6 +157,8 @@ this->category= .toCharArray();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getValue();
     
 }
@@ -163,6 +169,8 @@ this->category= .toCharArray();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->category;
     
 }
@@ -286,6 +294,8 @@ pathStringBuffer->append(abPathData->SEPARATOR);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AbPath(pathStringBuffer->toString(), StringUtil::getInstance()->EMPTY_STRING);
     
 }
@@ -296,6 +306,8 @@ pathStringBuffer->append(abPathData->SEPARATOR);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getValue() +AbPathData::getInstance()->EXTENSION_SEP +CategoryData::getInstance()->UNCRYPTED_EXTENSION;
     
 }
@@ -335,6 +347,8 @@ this->category= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return returnBoolean;
     
 }
@@ -350,6 +364,8 @@ categoryHashMap->put(CategoryData::getInstance()->NAME, this->category);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return categoryHashMap;
     
 }
@@ -365,6 +381,8 @@ categoryVector->add(this->category);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return categoryVector;
     
 }
@@ -377,6 +395,8 @@ categoryVector->add(this->category);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -389,6 +409,8 @@ categoryVector->add(this->category);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -401,6 +423,8 @@ categoryVector->add(this->category);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

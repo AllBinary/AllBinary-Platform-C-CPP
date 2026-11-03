@@ -84,6 +84,8 @@ this->tableName= tableName;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->tableName;
     
 }
@@ -108,6 +110,8 @@ this->tableName= tableName;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->tableName +this->sqlStrings->CREATE_RETURN;
     
 
@@ -127,6 +131,8 @@ this->tableName= tableName;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::valueOf(JavaString::valueOf("Failed to Create ") +JavaString::valueOf(this->tableName)) +JavaString::valueOf(" table.");
     
 }
@@ -156,6 +162,8 @@ this->tableName= tableName;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::valueOf(tableName) +JavaString::valueOf(this->DROPPED_SUCCESS);
     
 
@@ -175,6 +183,8 @@ this->tableName= tableName;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::valueOf(JavaString::valueOf("Failed to Drop ") +JavaString::valueOf(tableName)) +JavaString::valueOf(" table.");
     
 }

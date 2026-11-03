@@ -75,6 +75,8 @@ this->setP2(p2);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getDeltaY() /this->getDeltaX();
     
 }
@@ -93,6 +95,8 @@ this->deltaY= this->getP1()->getY() -this->getP2()->getY();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->deltaX;
     
 }
@@ -103,6 +107,8 @@ this->deltaY= this->getP1()->getY() -this->getP2()->getY();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->deltaY;
     
 }
@@ -113,6 +119,8 @@ this->deltaY= this->getP1()->getY() -this->getP2()->getY();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->p1;
     
 }
@@ -123,6 +131,8 @@ this->deltaY= this->getP1()->getY() -this->getP2()->getY();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->p2;
     
 }

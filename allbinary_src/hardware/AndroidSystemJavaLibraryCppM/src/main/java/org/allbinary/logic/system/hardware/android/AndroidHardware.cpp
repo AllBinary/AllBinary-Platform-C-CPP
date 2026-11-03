@@ -200,6 +200,8 @@ this->componentInterfaceVector->add(new UnknownHardware(nextLine));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return lineNumberReader;
     
 }
@@ -210,6 +212,8 @@ this->componentInterfaceVector->add(new UnknownHardware(nextLine));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<HardwareComponentInterface*>(this->componentInterfaceVector->get(index));
     
 }
@@ -242,6 +246,8 @@ stringBuilder->append(CommonSeps::getInstance()->NEW_LINE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuilder->toString();;
     
 }
@@ -252,6 +258,8 @@ stringBuilder->append(CommonSeps::getInstance()->NEW_LINE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -262,6 +270,8 @@ stringBuilder->append(CommonSeps::getInstance()->NEW_LINE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StdUtil::getInstance()->NULL_TABLE;
     
 }

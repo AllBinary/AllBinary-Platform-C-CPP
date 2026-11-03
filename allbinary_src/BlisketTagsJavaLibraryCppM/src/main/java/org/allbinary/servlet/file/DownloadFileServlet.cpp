@@ -164,6 +164,8 @@ DownloadFileServlet::DownloadFileServlet() : logUtil(LogUtil::getInstance()), co
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -203,6 +205,8 @@ DownloadFileServlet::DownloadFileServlet() : logUtil(LogUtil::getInstance()), co
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -318,6 +322,8 @@ this->processRequest(request, response);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Serves Up Cloud Files";
     
 }

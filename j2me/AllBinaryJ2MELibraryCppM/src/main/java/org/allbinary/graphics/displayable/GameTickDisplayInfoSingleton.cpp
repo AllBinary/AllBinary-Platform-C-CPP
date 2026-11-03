@@ -67,6 +67,8 @@ GameTickDisplayInfoSingleton* GameTickDisplayInfoSingleton::instance = GameTickD
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return GameTickDisplayInfoSingleton::instance;
     
 }
@@ -89,6 +91,8 @@ this->lastHalfHeight= this->displayInfoSingleton->getLastHalfHeight();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->lastWidth;
     
 }
@@ -99,6 +103,8 @@ this->lastHalfHeight= this->displayInfoSingleton->getLastHalfHeight();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->lastHeight;
     
 }
@@ -109,6 +115,8 @@ this->lastHalfHeight= this->displayInfoSingleton->getLastHalfHeight();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->lastHalfWidth;
     
 }
@@ -119,6 +127,8 @@ this->lastHalfHeight= this->displayInfoSingleton->getLastHalfHeight();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->lastHalfHeight;
     
 }

@@ -86,6 +86,8 @@ MultiPlayerGameLayer::MultiPlayerGameLayer(RemoteInfo* remoteInfo, std::vector<G
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return MultiplayerBehavior::NULL_MULTIPLAYER_BEHAVIOR;
     
 }
@@ -104,6 +106,8 @@ MultiPlayerGameLayer::MultiPlayerGameLayer(RemoteInfo* remoteInfo, std::vector<G
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }

@@ -86,6 +86,8 @@ StaticTileLayerIntoPositionViewPosition::StaticTileLayerIntoPositionViewPosition
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ViewPosition::getX() -StaticTileLayerIntoPositionViewPosition::tiledLayer->getXP();
     
 }
@@ -96,6 +98,8 @@ StaticTileLayerIntoPositionViewPosition::StaticTileLayerIntoPositionViewPosition
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ViewPosition::getY() -StaticTileLayerIntoPositionViewPosition::tiledLayer->getYP();
     
 }
@@ -106,6 +110,8 @@ StaticTileLayerIntoPositionViewPosition::StaticTileLayerIntoPositionViewPosition
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ViewPosition::getZ() -StaticTileLayerIntoPositionViewPosition::tiledLayer->getZP();
     
 }

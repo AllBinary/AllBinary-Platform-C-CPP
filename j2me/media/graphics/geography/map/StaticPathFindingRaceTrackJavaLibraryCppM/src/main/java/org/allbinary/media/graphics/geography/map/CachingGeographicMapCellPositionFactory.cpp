@@ -109,6 +109,8 @@ hashtable->put(cellPositionKey, cellPositionCanBeNull);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<GeographicMapCellPosition*>(cellPositionCanBeNull);
     
 }

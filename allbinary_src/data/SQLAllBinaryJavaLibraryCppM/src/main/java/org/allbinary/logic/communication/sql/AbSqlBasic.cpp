@@ -144,6 +144,8 @@ this->sqlConnectionPool->add(this->getDatabaseConnectionInfoInterface()->getUrl(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return rset;
     
 
@@ -193,6 +195,8 @@ this->conn=
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::valueOf(databaseName) +JavaString::valueOf(this->sqlStrings->CREATE_RETURN);
     
 
@@ -212,6 +216,8 @@ this->conn=
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::valueOf(this->DATABASE_CREATION_FAILED_LABEL) +JavaString::valueOf(databaseName);
     
 }
@@ -331,6 +337,8 @@ this->createConnection();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->databaseConnectionInfoInterface;
     
 }

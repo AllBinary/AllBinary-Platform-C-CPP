@@ -82,6 +82,8 @@ this->setVector(new BasicArrayListD());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->rectangleVector;
     
 }
@@ -98,6 +100,8 @@ this->rectangleVector= rectangleVector;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }
@@ -108,6 +112,8 @@ this->rectangleVector= rectangleVector;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->imageComparisonResult;
     
 }

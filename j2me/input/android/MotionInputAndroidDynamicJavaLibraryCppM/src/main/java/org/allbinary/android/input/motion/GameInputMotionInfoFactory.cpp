@@ -81,6 +81,8 @@ GameInputMotionInfoFactory::GameInputMotionInfoFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return GameInputMotionInfoAPI1::getInstance();;
     
 
@@ -91,6 +93,8 @@ GameInputMotionInfoFactory::GameInputMotionInfoFactory() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return GameInputMotionInfoAPI5::getInstance();;
     
 

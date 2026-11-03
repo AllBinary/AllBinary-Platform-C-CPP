@@ -98,6 +98,8 @@ ValidationStoreFrontStatisticsView::ValidationStoreFrontStatisticsView(Transform
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return valid;
     
 
@@ -117,6 +119,8 @@ ValidationStoreFrontStatisticsView::ValidationStoreFrontStatisticsView(Transform
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -136,6 +140,8 @@ stringBuffer->append("Never");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -155,6 +161,8 @@ stringBuffer->append("Never");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Validating Form";
     
 }
@@ -167,6 +175,8 @@ stringBuffer->append("Never");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -177,6 +187,8 @@ stringBuffer->append("Never");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

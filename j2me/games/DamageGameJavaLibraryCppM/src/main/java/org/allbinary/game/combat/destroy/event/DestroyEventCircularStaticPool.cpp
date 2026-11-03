@@ -76,6 +76,8 @@ DestroyEventCircularStaticPool* DestroyEventCircularStaticPool::instance = Destr
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return DestroyEventCircularStaticPool::instance;
     
 }
@@ -103,6 +105,8 @@ destroyedEvent->setLayerInterfaceForCircularStaticPool(layerInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return destroyedEvent;
     
 }

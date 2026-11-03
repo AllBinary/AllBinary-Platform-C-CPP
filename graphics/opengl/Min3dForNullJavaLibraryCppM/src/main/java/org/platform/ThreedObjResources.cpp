@@ -72,6 +72,8 @@ ThreedObjResources* ThreedObjResources::instance = ThreedObjResources::instance_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ThreedObjResources::instance;
     
 }
@@ -89,6 +91,8 @@ ThreedObjResources* ThreedObjResources::instance = ThreedObjResources::instance_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return resourceName2;
     
 
@@ -98,6 +102,8 @@ ThreedObjResources* ThreedObjResources::instance = ThreedObjResources::instance_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return resourceName;
     
 }

@@ -113,6 +113,8 @@ PreLogUtil::putOE(commonStrings->EXCEPTION, this, "SuperCrypt(key)", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return DatabaseEncoder::encode(crypted);;
     
 
@@ -125,6 +127,8 @@ PreLogUtil::putOE("Encrypt Failed", this, "encrypt", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 }
@@ -142,6 +146,8 @@ PreLogUtil::putOE("Encrypt Failed", this, "encrypt", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::fromChars(decrypted);
     
 
@@ -154,6 +160,8 @@ PreLogUtil::putOE("decrypt Failed", this, "decrypt", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 }

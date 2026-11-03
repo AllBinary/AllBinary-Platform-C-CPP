@@ -88,6 +88,8 @@ this->maxBlue= 0;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->minRed;
     
 }
@@ -104,6 +106,8 @@ this->minRed= minRed;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->maxRed;
     
 }
@@ -120,6 +124,8 @@ this->maxRed= maxRed;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->minGreen;
     
 }
@@ -136,6 +142,8 @@ this->minGreen= minGreen;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->maxGreen;
     
 }
@@ -152,6 +160,8 @@ this->maxGreen= maxGreen;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->minBlue;
     
 }
@@ -168,6 +178,8 @@ this->minBlue= minBlue;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->maxBlue;
     
 }
@@ -188,6 +200,8 @@ this->maxBlue= maxBlue;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -198,6 +212,8 @@ this->maxBlue= maxBlue;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -248,6 +264,8 @@ stringBuffer->appendint(this->getMaxBlue());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

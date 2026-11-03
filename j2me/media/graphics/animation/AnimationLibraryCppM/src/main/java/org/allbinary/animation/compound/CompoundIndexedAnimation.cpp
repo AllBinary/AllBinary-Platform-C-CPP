@@ -111,6 +111,8 @@ indexedAnimation->setFrame(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return indexedAnimation->getFrame();;
     
 }
@@ -124,6 +126,8 @@ indexedAnimation->setFrame(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return indexedAnimation->getSize();;
     
 }
@@ -147,6 +151,8 @@ indexedAnimation->previousFrame();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PrimitiveIntUtil::getArrayInstance();;
     
 }
@@ -177,6 +183,8 @@ this->animationInterfaceArray[this->circularIndexUtil->getIndex()]->paintThreedX
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<IndexedAnimation*>(this->animationInterfaceArray[this->circularIndexUtil->getIndex()]);
     
 }
@@ -220,6 +228,8 @@ this->setFrame(frame);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->animationInterfaceArray;
     
 }

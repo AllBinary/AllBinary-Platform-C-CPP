@@ -262,6 +262,8 @@ this->search();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return EVAL_BODY_INCLUDE;
     
 
@@ -281,6 +283,8 @@ this->viewSummary();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return EVAL_BODY_INCLUDE;
     
 
@@ -298,6 +302,8 @@ this->setObjectFile("views.generic.inventory.AutoValidationInventoryView");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StoreValidationTransformTag::doStartTag();;
     
 
@@ -330,6 +336,8 @@ AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SKIP_BODY;
     
 }
@@ -343,6 +351,8 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SKIP_BODY;
     
 }

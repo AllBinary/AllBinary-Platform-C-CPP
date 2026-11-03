@@ -97,6 +97,8 @@ this->itemInterface= dynamic_cast<ItemInterface*>(new BasicItem());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -107,6 +109,8 @@ this->itemInterface= dynamic_cast<ItemInterface*>(new BasicItem());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -119,6 +123,8 @@ this->itemInterface= dynamic_cast<ItemInterface*>(new BasicItem());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -129,6 +135,8 @@ this->itemInterface= dynamic_cast<ItemInterface*>(new BasicItem());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -139,6 +147,8 @@ this->itemInterface= dynamic_cast<ItemInterface*>(new BasicItem());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Creating New Item";
     
 }

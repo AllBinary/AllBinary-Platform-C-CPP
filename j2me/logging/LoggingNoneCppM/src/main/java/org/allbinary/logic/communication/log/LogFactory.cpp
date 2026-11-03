@@ -79,6 +79,8 @@ Log* LogFactory::LOG = LogFactory::LOG_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new Log(stringUtil->EMPTY_STRING, nullUtil->NULL_OBJECT, stringUtil->EMPTY_STRING, nullUtil->NULL_OBJECT);
     
 }
@@ -89,6 +91,8 @@ Log* LogFactory::LOG = LogFactory::LOG_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return LogFactory::LOG;
     
 }
@@ -99,6 +103,8 @@ Log* LogFactory::LOG = LogFactory::LOG_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return LogFactory::LOG;
     
 }

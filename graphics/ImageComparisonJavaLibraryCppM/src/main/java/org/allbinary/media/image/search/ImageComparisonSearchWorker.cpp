@@ -124,6 +124,8 @@ this->onImageComparisonResultsEvent(dynamic_cast<ImageComparisonResultsEvent*>(a
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->running;
     
 }

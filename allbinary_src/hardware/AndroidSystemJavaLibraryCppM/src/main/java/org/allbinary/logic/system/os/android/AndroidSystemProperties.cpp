@@ -78,6 +78,8 @@ AndroidSystemProperties* AndroidSystemProperties::SINGLETON = AndroidSystemPrope
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AndroidSystemProperties::SINGLETON;
     
 }
@@ -92,6 +94,8 @@ AndroidSystemProperties::AndroidSystemProperties(Context* context) : commonStrin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::getInstance()->EMPTY_STRING;
     
 }
@@ -102,6 +106,8 @@ AndroidSystemProperties::AndroidSystemProperties(Context* context) : commonStrin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->commonStrings->DISABLE;
     
 }
@@ -112,6 +118,8 @@ AndroidSystemProperties::AndroidSystemProperties(Context* context) : commonStrin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->commonStrings->DISABLE;
     
 }
@@ -122,6 +130,8 @@ AndroidSystemProperties::AndroidSystemProperties(Context* context) : commonStrin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->commonStrings->DISABLE;
     
 }
@@ -132,6 +142,8 @@ AndroidSystemProperties::AndroidSystemProperties(Context* context) : commonStrin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->commonStrings->DISABLE;
     
 }
@@ -142,6 +154,8 @@ AndroidSystemProperties::AndroidSystemProperties(Context* context) : commonStrin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->commonStrings->DISABLE;
     
 }
@@ -152,6 +166,8 @@ AndroidSystemProperties::AndroidSystemProperties(Context* context) : commonStrin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->commonStrings->DISABLE;
     
 }
@@ -162,6 +178,8 @@ AndroidSystemProperties::AndroidSystemProperties(Context* context) : commonStrin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->commonStrings->DISABLE;
     
 }
@@ -172,6 +190,8 @@ AndroidSystemProperties::AndroidSystemProperties(Context* context) : commonStrin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->commonStrings->DISABLE;
     
 }
@@ -182,6 +202,8 @@ AndroidSystemProperties::AndroidSystemProperties(Context* context) : commonStrin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->commonStrings->DISABLE;
     
 }
@@ -192,6 +214,8 @@ AndroidSystemProperties::AndroidSystemProperties(Context* context) : commonStrin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->commonStrings->DISABLE;
     
 }
@@ -202,6 +226,8 @@ AndroidSystemProperties::AndroidSystemProperties(Context* context) : commonStrin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->commonStrings->DISABLE;
     
 }
@@ -212,6 +238,8 @@ AndroidSystemProperties::AndroidSystemProperties(Context* context) : commonStrin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->commonStrings->DISABLE;
     
 }
@@ -222,6 +250,8 @@ AndroidSystemProperties::AndroidSystemProperties(Context* context) : commonStrin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 }
@@ -232,6 +262,8 @@ AndroidSystemProperties::AndroidSystemProperties(Context* context) : commonStrin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 }
@@ -242,6 +274,8 @@ AndroidSystemProperties::AndroidSystemProperties(Context* context) : commonStrin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Build::BOARD;
     
 }
@@ -252,6 +286,8 @@ AndroidSystemProperties::AndroidSystemProperties(Context* context) : commonStrin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Build::BRAND;
     
 }
@@ -262,6 +298,8 @@ AndroidSystemProperties::AndroidSystemProperties(Context* context) : commonStrin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Build::DEVICE;
     
 }
@@ -272,6 +310,8 @@ AndroidSystemProperties::AndroidSystemProperties(Context* context) : commonStrin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Build::FINGERPRINT;
     
 }
@@ -282,6 +322,8 @@ AndroidSystemProperties::AndroidSystemProperties(Context* context) : commonStrin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Build::HOST;
     
 }
@@ -292,6 +334,8 @@ AndroidSystemProperties::AndroidSystemProperties(Context* context) : commonStrin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Build::ID;
     
 }
@@ -302,6 +346,8 @@ AndroidSystemProperties::AndroidSystemProperties(Context* context) : commonStrin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Build::MODEL;
     
 }
@@ -312,6 +358,8 @@ AndroidSystemProperties::AndroidSystemProperties(Context* context) : commonStrin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Build::PRODUCT;
     
 }
@@ -322,6 +370,8 @@ AndroidSystemProperties::AndroidSystemProperties(Context* context) : commonStrin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Build::TAGS;
     
 }
@@ -332,6 +382,8 @@ AndroidSystemProperties::AndroidSystemProperties(Context* context) : commonStrin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Build::TIME;
     
 }
@@ -342,6 +394,8 @@ AndroidSystemProperties::AndroidSystemProperties(Context* context) : commonStrin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Build::TYPE;
     
 }
@@ -352,6 +406,8 @@ AndroidSystemProperties::AndroidSystemProperties(Context* context) : commonStrin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Build::USER;
     
 }

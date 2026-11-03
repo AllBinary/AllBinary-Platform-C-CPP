@@ -77,6 +77,8 @@ StringUtil* StringUtil::instance = StringUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StringUtil::instance;
     
 }
@@ -98,6 +100,8 @@ StringUtil::StringUtil() : INIT_STRING(""), ONE_EMPTY_STRING_ARRAY(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->EMPTY_STRING;
     
 
@@ -108,6 +112,8 @@ StringUtil::StringUtil() : INIT_STRING(""), ONE_EMPTY_STRING_ARRAY(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return string;
     
 
@@ -121,6 +127,8 @@ StringUtil::StringUtil() : INIT_STRING(""), ONE_EMPTY_STRING_ARRAY(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->stringArray;
     
 }
@@ -155,6 +163,8 @@ StringUtil::StringUtil() : INIT_STRING(""), ONE_EMPTY_STRING_ARRAY(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return count;
     
 }
@@ -171,6 +181,8 @@ StringUtil::StringUtil() : INIT_STRING(""), ONE_EMPTY_STRING_ARRAY(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return anyType->toString();;
     
 
@@ -181,6 +193,8 @@ StringUtil::StringUtil() : INIT_STRING(""), ONE_EMPTY_STRING_ARRAY(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->NULL_STRING;
     
 

@@ -75,6 +75,8 @@ NoShippingModule::NoShippingModule() : commonStrings(CommonStrings::getInstance(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new Money();
     
 }
@@ -85,6 +87,8 @@ NoShippingModule::NoShippingModule() : commonStrings(CommonStrings::getInstance(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->description;
     
 }
@@ -95,6 +99,8 @@ NoShippingModule::NoShippingModule() : commonStrings(CommonStrings::getInstance(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }

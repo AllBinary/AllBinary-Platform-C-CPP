@@ -82,6 +82,8 @@ InitHelper::InitHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageCont
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Table Dropped Successfully";
     
                              else 
@@ -107,6 +109,8 @@ InitHelper::InitHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageCont
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -121,6 +125,8 @@ InitHelper::InitHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageCont
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (new InitInfoEntity())->createTable();;
     
 
@@ -143,6 +149,8 @@ InitHelper::InitHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageCont
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -169,6 +177,8 @@ InitHelper::InitHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageCont
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -191,6 +201,8 @@ InitHelper::InitHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageCont
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -220,6 +232,8 @@ InitHelper::InitHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageCont
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 
@@ -242,6 +256,8 @@ InitHelper::InitHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageCont
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -271,6 +287,8 @@ InitHelper::InitHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageCont
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 
@@ -293,6 +311,8 @@ InitHelper::InitHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageCont
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }

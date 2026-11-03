@@ -170,6 +170,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "processTick", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -197,6 +199,8 @@ AdvancedRTSGameLayer::setDestroyed(destroyed);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return WaypointLayer::getStaticType();;
     
 }
@@ -207,6 +211,8 @@ AdvancedRTSGameLayer::setDestroyed(destroyed);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 4;
     
 }
@@ -217,6 +223,8 @@ AdvancedRTSGameLayer::setDestroyed(destroyed);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

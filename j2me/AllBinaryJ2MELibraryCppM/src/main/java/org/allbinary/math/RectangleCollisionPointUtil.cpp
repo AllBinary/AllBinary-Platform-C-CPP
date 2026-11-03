@@ -91,6 +91,8 @@ point= dynamic_cast<GPoint*>(list->objectArray[index]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -102,6 +104,8 @@ point= dynamic_cast<GPoint*>(list->objectArray[index]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -131,6 +135,8 @@ point= dynamic_cast<GPoint*>(list->objectArray[index]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -142,6 +148,8 @@ point= dynamic_cast<GPoint*>(list->objectArray[index]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }

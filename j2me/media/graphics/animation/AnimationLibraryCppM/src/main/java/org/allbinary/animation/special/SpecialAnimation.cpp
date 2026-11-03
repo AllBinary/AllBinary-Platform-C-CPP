@@ -71,6 +71,8 @@ SpecialAnimation* SpecialAnimation::NULL_SPECIAL_ANIMATION = SpecialAnimation::N
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SpecialAnimation::NULL_SPECIAL_ANIMATION;
     
 }
@@ -104,6 +106,8 @@ indexedAnimationBehavior->loopIndex++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

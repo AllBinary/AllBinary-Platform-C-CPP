@@ -84,6 +84,8 @@ this->paymentGatewayInterface= paymentGatewayInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->paymentGatewayInterface->toHashMap(false);;
     
 }
@@ -94,6 +96,8 @@ this->paymentGatewayInterface= paymentGatewayInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->paymentGatewayInterface->toVector(false);;
     
 }
@@ -106,6 +110,8 @@ this->paymentGatewayInterface= paymentGatewayInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->paymentGatewayInterface->getKey();
     
 }

@@ -341,6 +341,8 @@ canvasJPanelHashMap->put(canvasJPanel->getTreeNode(), int32_t(index));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return canvasJPanelHashMap;
     
 }
@@ -366,6 +368,8 @@ this->isPlaying_= false;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->isPlaying_;
     
 }
@@ -376,6 +380,8 @@ this->isPlaying_= false;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }
@@ -458,6 +464,8 @@ canvasJPanel->getGrid()->setZoom(canvasJPanel->getGrid()->getZoom() +factor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<CanvasJPanel*>(this->canvasJPanelList->get(this->selectedFrame));
     
 }
@@ -642,6 +650,8 @@ canvasJPanel->repaint();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return WorkAreaJPanel::document;
     
 }
@@ -693,6 +703,8 @@ WorkAreaJPanel::document->appendChild(workAreaNode);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return document;
     
 }

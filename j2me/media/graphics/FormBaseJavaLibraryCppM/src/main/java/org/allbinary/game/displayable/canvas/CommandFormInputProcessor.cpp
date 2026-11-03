@@ -151,6 +151,8 @@ this->form->processInputKey(key);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 1;
     
 
@@ -166,6 +168,8 @@ this->form->processInputKey(key);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->processCommand();;
     
 
@@ -175,6 +179,8 @@ this->form->processInputKey(key);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }
@@ -218,6 +224,8 @@ this->logUtil->putF(command->toString(), this, this->PROCESS_COMMAND);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 
@@ -228,6 +236,8 @@ this->logUtil->putF(command->toString(), this, this->PROCESS_COMMAND);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 1;
     
 
@@ -296,6 +306,8 @@ this->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 1;
     
 
@@ -306,6 +318,8 @@ this->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 
@@ -321,6 +335,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->gameInputStrings-
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 }
@@ -352,6 +368,8 @@ this->motionGestureEventList->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return lastIndex;
     
 }
@@ -464,6 +482,8 @@ this->hasPressed= true;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (new StringMaker())->append(BasicMenuInputProcessor::toString())->append(this->NAME_LABEL)->append(this->form->toString())->toString();;
     
 }

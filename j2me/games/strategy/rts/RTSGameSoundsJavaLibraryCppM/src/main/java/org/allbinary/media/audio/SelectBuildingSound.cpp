@@ -75,6 +75,8 @@ SelectBuildingSound::SelectBuildingSound() : CompositeSound("resource:/wav/selec
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SelectBuildingSound::soundInterface;
     
 }

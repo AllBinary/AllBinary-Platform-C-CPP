@@ -223,6 +223,8 @@ this->setContextConfigurationInterface(ContextConfigurationInterfaceFactory::get
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -233,6 +235,8 @@ this->setContextConfigurationInterface(ContextConfigurationInterfaceFactory::get
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -248,6 +252,8 @@ this->setContextConfigurationInterface(ContextConfigurationInterfaceFactory::get
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AbPath(this->create(this->EMPTY_STRING, key, hashMap), StringUtil::getInstance()->EMPTY_STRING);
     
 }
@@ -260,6 +266,8 @@ this->setContextConfigurationInterface(ContextConfigurationInterfaceFactory::get
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AbPath(this->create(append, key, hashMap), StringUtil::getInstance()->EMPTY_STRING);
     
 }
@@ -270,6 +278,8 @@ this->setContextConfigurationInterface(ContextConfigurationInterfaceFactory::get
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->create(this->EMPTY_STRING, key, hashMap);;
     
 }
@@ -287,6 +297,8 @@ this->setContextConfigurationInterface(ContextConfigurationInterfaceFactory::get
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->EMPTY_STRING;
     
 
@@ -301,6 +313,8 @@ this->setContextConfigurationInterface(ContextConfigurationInterfaceFactory::get
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::valueOf(JavaBoxes::unbox<std::string>(hashMap->get(path))) +JavaString::valueOf(append);
     
 
@@ -311,6 +325,8 @@ this->setContextConfigurationInterface(ContextConfigurationInterfaceFactory::get
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return path;
     
 
@@ -394,6 +410,8 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -454,6 +472,8 @@ this->name= (new Replace(hashMap))->all(this->name);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 }
@@ -692,6 +712,8 @@ valid= this->isNameValid();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -702,6 +724,8 @@ valid= this->isNameValid();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -731,6 +755,8 @@ stringBuffer->append(" and > 0 characters.<br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -740,6 +766,8 @@ stringBuffer->append(" and > 0 characters.<br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->EMPTY_STRING;
     
 }
@@ -996,6 +1024,8 @@ stringBuffer->append(" and > 0 characters.<br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -1015,6 +1045,8 @@ stringBuffer->append(" and > 0 characters.<br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Validating Form";
     
 }
@@ -1027,6 +1059,8 @@ stringBuffer->append(" and > 0 characters.<br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return org.allbinary->globals->URLGLOBALS->getTestHtmlPath() +this->getCurrentHostNamePath();
     
 }
@@ -1055,6 +1089,8 @@ stringBuffer->append(" and > 0 characters.<br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return location;
     
 }
@@ -1083,6 +1119,8 @@ stringBuffer->append(" and > 0 characters.<br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return location;
     
 }
@@ -1111,6 +1149,8 @@ stringBuffer->append(" and > 0 characters.<br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return location;
     
 }
@@ -1139,6 +1179,8 @@ stringBuffer->append(" and > 0 characters.<br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return location;
     
 }
@@ -1149,6 +1191,8 @@ stringBuffer->append(" and > 0 characters.<br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }
@@ -1159,6 +1203,8 @@ stringBuffer->append(" and > 0 characters.<br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->basketName;
     
 }
@@ -1169,6 +1215,8 @@ stringBuffer->append(" and > 0 characters.<br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->homeHostName;
     
 }
@@ -1179,6 +1227,8 @@ stringBuffer->append(" and > 0 characters.<br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->homeHostNamePath->toString();;
     
 }
@@ -1189,6 +1239,8 @@ stringBuffer->append(" and > 0 characters.<br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->hostName;
     
 }
@@ -1199,6 +1251,8 @@ stringBuffer->append(" and > 0 characters.<br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->hostNamePath->toString();;
     
 }
@@ -1209,6 +1263,8 @@ stringBuffer->append(" and > 0 characters.<br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->testHomeHostName;
     
 }
@@ -1219,6 +1275,8 @@ stringBuffer->append(" and > 0 characters.<br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->testHomeHostNamePath->toString();;
     
 }
@@ -1229,6 +1287,8 @@ stringBuffer->append(" and > 0 characters.<br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->testHostName;
     
 }
@@ -1239,6 +1299,8 @@ stringBuffer->append(" and > 0 characters.<br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->testHostNamePath->toString();;
     
 }
@@ -1249,6 +1311,8 @@ stringBuffer->append(" and > 0 characters.<br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->staticPath->toString();;
     
 }
@@ -1259,6 +1323,8 @@ stringBuffer->append(" and > 0 characters.<br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->categoryPath->toString();;
     
 }
@@ -1269,6 +1335,8 @@ stringBuffer->append(" and > 0 characters.<br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->inventoryControl;
     
 }
@@ -1289,6 +1357,8 @@ stringBuffer->append(" and > 0 characters.<br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return subStoreVector;
     
 
@@ -1310,6 +1380,8 @@ stringBuffer->append(" and > 0 characters.<br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->tagLocation;
     
 }
@@ -1320,6 +1392,8 @@ stringBuffer->append(" and > 0 characters.<br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->packageLocation;
     
 }
@@ -1330,6 +1404,8 @@ stringBuffer->append(" and > 0 characters.<br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->ftp;
     
 }
@@ -1340,6 +1416,8 @@ stringBuffer->append(" and > 0 characters.<br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->ftpUserName;
     
 }
@@ -1350,6 +1428,8 @@ stringBuffer->append(" and > 0 characters.<br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->ftpPassword;
     
 }
@@ -1360,6 +1440,8 @@ stringBuffer->append(" and > 0 characters.<br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->testFtp;
     
 }
@@ -1370,6 +1452,8 @@ stringBuffer->append(" and > 0 characters.<br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->testFtpUserName;
     
 }
@@ -1380,6 +1464,8 @@ stringBuffer->append(" and > 0 characters.<br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->testFtpPassword;
     
 }
@@ -1390,6 +1476,8 @@ stringBuffer->append(" and > 0 characters.<br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->ftpPath->toString();;
     
 }
@@ -1400,6 +1488,8 @@ stringBuffer->append(" and > 0 characters.<br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->testFtpPath->toString();;
     
 }
@@ -1410,6 +1500,8 @@ stringBuffer->append(" and > 0 characters.<br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->timeCreated;
     
 }
@@ -1420,6 +1512,8 @@ stringBuffer->append(" and > 0 characters.<br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->lastModified;
     
 }
@@ -1625,6 +1719,8 @@ this->testFtpPath= new AbPath(value, StringUtil::getInstance()->EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -1638,6 +1734,8 @@ this->testFtpPath= new AbPath(value, StringUtil::getInstance()->EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -1651,6 +1749,8 @@ this->testFtpPath= new AbPath(value, StringUtil::getInstance()->EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -1660,6 +1760,8 @@ this->testFtpPath= new AbPath(value, StringUtil::getInstance()->EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -1975,6 +2077,8 @@ dataVector->add(time);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dataVector;
     
 }
@@ -2054,6 +2158,8 @@ dataHashMap->put(EntryData::getInstance()->LASTMODIFIED, time);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dataHashMap;
     
 }
@@ -2064,6 +2170,8 @@ dataHashMap->put(EntryData::getInstance()->LASTMODIFIED, time);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getName();
     
 }
@@ -2074,6 +2182,8 @@ dataHashMap->put(EntryData::getInstance()->LASTMODIFIED, time);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->contextConfigurationInterface;
     
 }

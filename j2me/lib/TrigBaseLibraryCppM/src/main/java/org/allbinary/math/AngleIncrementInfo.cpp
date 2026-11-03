@@ -103,6 +103,8 @@ this->RIGHT_FRAME= smallIntegerSingletonFactory->getAt(angleFactory->RIGHT->getV
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->frameUtil->getFrameAngle(frame, static_cast<int32_t>(this->angleIncrement));;
     
 }
@@ -113,6 +115,8 @@ this->RIGHT_FRAME= smallIntegerSingletonFactory->getAt(angleFactory->RIGHT->getV
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->angleIncrement;
     
 }
@@ -123,6 +127,8 @@ this->RIGHT_FRAME= smallIntegerSingletonFactory->getAt(angleFactory->RIGHT->getV
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (new StringMaker())->append(AngleIncrementInfo::INCREMENT)->appendshort(this->angleIncrement)->toString();;
     
 }
@@ -172,6 +178,8 @@ this->RIGHT_FRAME= smallIntegerSingletonFactory->getAt(angleFactory->RIGHT->getV
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return closestDirection;;
     
 }

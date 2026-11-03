@@ -283,6 +283,8 @@ this->webAppAbPath= storeThemeCategoryInterface->getWebAppPath();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->transformInfoInterface;
     
 }
@@ -293,6 +295,8 @@ this->webAppAbPath= storeThemeCategoryInterface->getWebAppPath();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->themeName;
     
 }
@@ -303,6 +307,8 @@ this->webAppAbPath= storeThemeCategoryInterface->getWebAppPath();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->themePreviewImageName;
     
 }
@@ -313,6 +319,8 @@ this->webAppAbPath= storeThemeCategoryInterface->getWebAppPath();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->webAppAbPath->toString() +this->categoryAbPath->toString();
     
 }
@@ -323,6 +331,8 @@ this->webAppAbPath= storeThemeCategoryInterface->getWebAppPath();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->categoryAbPath->toString();;
     
 }
@@ -355,6 +365,8 @@ this->styleValidationInterface= new CssStyleValidation(document);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<CssStyleValidation*>(this->styleValidationInterface);
     
 }
@@ -415,6 +427,8 @@ this->styleValidationInterface= new CssStyleValidation(document);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return isValid;
     
 
@@ -434,6 +448,8 @@ this->styleValidationInterface= new CssStyleValidation(document);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -453,6 +469,8 @@ stringBuffer->append("Theme Validation Error");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -472,6 +490,8 @@ stringBuffer->append("Theme Validation Error");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Validating Form";
     
 }
@@ -484,6 +504,8 @@ stringBuffer->append("Theme Validation Error");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -494,6 +516,8 @@ stringBuffer->append("Theme Validation Error");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -504,6 +528,8 @@ stringBuffer->append("Theme Validation Error");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getName();
     
 }
@@ -525,6 +551,8 @@ vector->add(this->getPreviewImagePath());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return vector;
     
 }
@@ -549,6 +577,8 @@ hashMap->put(themeData->PREVIEW_IMAGE_PATH, this->getPreviewImagePath());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }
@@ -569,6 +599,8 @@ node->appendChild(domNodeInterface->toXmlNode(document));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return node;
     
 }

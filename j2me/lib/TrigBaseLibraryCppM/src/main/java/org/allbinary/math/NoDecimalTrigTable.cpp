@@ -99,6 +99,8 @@ NoDecimalTrigTable* NoDecimalTrigTable::instance = NoDecimalTrigTable::instance_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NoDecimalTrigTable::instance;
     
 }
@@ -2287,6 +2289,8 @@ this->noDecimalTan[0]=  -174;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->noDecimalSin[angle];
     
 }
@@ -2297,6 +2301,8 @@ this->noDecimalTan[0]=  -174;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->noDecimalCos[angle];
     
 }
@@ -2307,6 +2313,8 @@ this->noDecimalTan[0]=  -174;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->noDecimalTan[angle];
     
 }
@@ -2368,6 +2376,8 @@ ratio= this->SCALE *dxl /dy;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (index);
     
 
@@ -2381,6 +2391,8 @@ ratio= this->SCALE *dxl /dy;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (index);
     
 
@@ -2413,6 +2425,8 @@ ratio= this->SCALE *dxl /dy;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (index);
     
 
@@ -2446,6 +2460,8 @@ ratio= this->SCALE *dxl /dy;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (index);
     
 
@@ -2459,6 +2475,8 @@ ratio= this->SCALE *dxl /dy;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (index);
     
 
@@ -2491,6 +2509,8 @@ ratio= this->SCALE *dxl /dy;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (index);
     
 
@@ -2617,6 +2637,8 @@ angleOfTarget= this->antiTan(dx[0], dy[0]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return angleOfTarget;
     
 }

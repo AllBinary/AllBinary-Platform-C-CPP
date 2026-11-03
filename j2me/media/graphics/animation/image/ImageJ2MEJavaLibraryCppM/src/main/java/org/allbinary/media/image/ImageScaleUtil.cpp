@@ -71,6 +71,8 @@ ImageScaleUtil* ImageScaleUtil::instance = ImageScaleUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ImageScaleUtil::instance;
     
 }
@@ -87,6 +89,8 @@ ImageScaleUtil::ImageScaleUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->createImage3(imageCache, originalImage, scaleNominatorX, scaleDenominatorX, scaleNominatorY, scaleDenominatorY, cached, true);;
     
 }
@@ -99,6 +103,8 @@ ImageScaleUtil::ImageScaleUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return originalImage;
     
 }

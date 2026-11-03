@@ -119,6 +119,8 @@ AllBinaryMediaManager::AllBinaryMediaManager(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -133,6 +135,8 @@ AllBinaryMediaManager::AllBinaryMediaManager(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -179,6 +183,8 @@ TsUtil::getInstance()->gc();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AllBinaryMediaManager::createPlayerFromInputStream(new ByteArrayInputStream(NullUtil::getInstance()->NULL_BYTE_ARRAY), AudioContentTypeDataFactory::getInstance()->MIME_AUDIO_TONE->getName());;
     
 
@@ -200,6 +206,8 @@ TsUtil::getInstance()->gc();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new PCClipWavPlayer(bufferedInputStream);
     
 
@@ -218,6 +226,8 @@ logUtil->put(commonString->EXCEPTION, AllBinaryMediaManager::THIS, CREATE_PLAYER
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NoPlayer::NO_PLAYER;
     
 }
@@ -230,6 +240,8 @@ logUtil->put(commonString->EXCEPTION, AllBinaryMediaManager::THIS, CREATE_PLAYER
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NoPlayer::NO_PLAYER;
     
 
@@ -266,6 +278,8 @@ logUtil->put(commonString->EXCEPTION, AllBinaryMediaManager::THIS, CREATE_PLAYER
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }

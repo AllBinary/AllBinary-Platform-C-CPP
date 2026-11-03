@@ -91,6 +91,8 @@ this->tiledLayer= tiledLayer;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->tiledLayer->getWidth();;
     
 }
@@ -101,6 +103,8 @@ this->tiledLayer= tiledLayer;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->tiledLayer->getHeight();;
     
 }
@@ -111,6 +115,8 @@ this->tiledLayer= tiledLayer;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->tiledLayer->getHeight();;
     
 }
@@ -121,6 +127,8 @@ this->tiledLayer= tiledLayer;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->tiledLayer->getWidth();;
     
 }
@@ -131,6 +139,8 @@ this->tiledLayer= tiledLayer;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->tiledLayer->getHeight();;
     
 }
@@ -141,6 +151,8 @@ this->tiledLayer= tiledLayer;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->tiledLayer->getWidth();;
     
 }

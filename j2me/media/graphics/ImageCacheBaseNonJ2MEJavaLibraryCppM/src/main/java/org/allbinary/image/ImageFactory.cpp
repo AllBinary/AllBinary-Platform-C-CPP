@@ -74,6 +74,8 @@ ImageFactory* ImageFactory::instance = ImageFactory::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ImageFactory::instance;
     
 }
@@ -86,6 +88,8 @@ ImageFactory* ImageFactory::instance = ImageFactory::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Image::createImage(url);;
     
 }
@@ -98,6 +102,8 @@ ImageFactory* ImageFactory::instance = ImageFactory::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Image::createImageWH(width, height);;
     
 }
@@ -113,6 +119,8 @@ ImageFactory* ImageFactory::instance = ImageFactory::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return image;
     
 }
@@ -125,6 +133,8 @@ ImageFactory* ImageFactory::instance = ImageFactory::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Image::createImageFromInputStream(inputStream);;
     
 }

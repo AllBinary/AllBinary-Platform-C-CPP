@@ -152,6 +152,8 @@ whereHashMap->put(basicItemData->KEYWORDS, keywords);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return file;
     
 }
@@ -171,6 +173,8 @@ AbSqlBean::deleteWhere(basicItemData->KEYWORDS, keywords);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return returnStr;
     
 }
@@ -192,6 +196,8 @@ stringBuffer->append(this->sqlStrings->CREATE_TABLE)->append(TABLENAME)->append(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -202,6 +208,8 @@ stringBuffer->append(this->sqlStrings->CREATE_TABLE)->append(TABLENAME)->append(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbSqlBean::createTable(this->createTableStatement());;
     
 }

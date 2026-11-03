@@ -75,6 +75,8 @@ this->list= new BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->list;
     
 }
@@ -85,6 +87,8 @@ this->list= new BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return CountedPickedUpLayerInterfaceFactoryPool::SINGLETON;
     
 }

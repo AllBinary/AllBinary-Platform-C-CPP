@@ -85,6 +85,8 @@ UpdateOrderHelperFactory::UpdateOrderHelperFactory() : logUtil(LogUtil::getInsta
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new UpdateOrderHelper(hashMap, pageContext);
     
 
@@ -104,6 +106,8 @@ UpdateOrderHelperFactory::UpdateOrderHelperFactory() : logUtil(LogUtil::getInsta
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

@@ -138,6 +138,8 @@ this->imageArray= ImageToRotationImageArrayUtil::getInstance()->generate(this->g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new AdjustedImageArrayRotationAnimation(this->imageArray, AngleInfo::getInstance(this->getAngleIncrement()), static_cast<int32_t>(AngleFactory::getInstance()->TOTAL_ANGLE), this->animationFactoryInitializationVisitor->dx, this->animationFactoryInitializationVisitor->dy, this->animationBehaviorFactory->getOrCreateInstance());
     
 
@@ -148,6 +150,8 @@ this->imageArray= ImageToRotationImageArrayUtil::getInstance()->generate(this->g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AdjustedImageArrayRotationAnimation::createAnimation(this->imageArray, AngleInfo::getInstance(this->angleIncrement), static_cast<int32_t>(AngleFactory::getInstance()->TOTAL_ANGLE), this->animationBehaviorFactory->getOrCreateInstance());;
     
 
@@ -161,6 +165,8 @@ this->imageArray= ImageToRotationImageArrayUtil::getInstance()->generate(this->g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->angleIncrement;
     
 }

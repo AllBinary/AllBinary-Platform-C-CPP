@@ -67,6 +67,8 @@ SmallLongFactory* SmallLongFactory::instance = SmallLongFactory::instance_owner(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SmallLongFactory::instance;
     
 }
@@ -175,6 +177,8 @@ SmallLongFactory::SmallLongFactory() : INTEGER_ARRAY(std::vector<int64_t>(this->
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->INTEGER_ARRAY[ -1 +this->NEGATIVE_MAX];
     
 
@@ -184,6 +188,8 @@ SmallLongFactory::SmallLongFactory() : INTEGER_ARRAY(std::vector<int64_t>(this->
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->INTEGER_ARRAY[(static_cast<int32_t>(index)) +this->NEGATIVE_MAX];
     
 }
@@ -206,6 +212,8 @@ SmallLongFactory::SmallLongFactory() : INTEGER_ARRAY(std::vector<int64_t>(this->
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->STRING_ARRAY[i];
     
 }

@@ -85,6 +85,8 @@ StreamUtil* StreamUtil::instance = StreamUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StreamUtil::instance;
     
 }
@@ -127,6 +129,8 @@ outputStream->write(buffer, 0, len);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return outputStream;
     
 }
@@ -156,6 +160,8 @@ outputStream->write(buffer, 0, len);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return outputStream->toByteArray();;
     
 
@@ -192,6 +198,8 @@ outputStream->write(buffer, 0, len);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -207,6 +215,8 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->CLOSE, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }

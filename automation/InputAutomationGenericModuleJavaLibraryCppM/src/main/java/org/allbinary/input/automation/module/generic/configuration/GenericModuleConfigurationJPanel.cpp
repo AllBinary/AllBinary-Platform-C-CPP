@@ -704,6 +704,8 @@ this->logUtil->putF(this->commonStrings->END, this, "updateProfileOptions");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->blankGenericProfileActionsJPanel;
     
 }
@@ -720,6 +722,8 @@ this->blankGenericProfileActionsJPanel= blankGenericProfileActionsJPanel;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->genericProfiles;
     
 }
@@ -736,6 +740,8 @@ this->genericProfiles= genericProfiles;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->selectedGenericProfile;
     
 }

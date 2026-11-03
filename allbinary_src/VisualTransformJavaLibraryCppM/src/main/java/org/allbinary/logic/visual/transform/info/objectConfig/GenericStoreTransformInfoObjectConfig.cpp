@@ -202,6 +202,8 @@ this->logUtil->putF(stringBuffer->toString(), this, "generate()");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->generate(objectConfigDocumentString, replaceHashMap);;
     
 }
@@ -230,6 +232,8 @@ hashMap->put(transformInfoObjectConfigData->VARKEY +TransformInfoData::getInstan
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }
@@ -292,6 +296,8 @@ hashMap->put(templateNameKey, selectedTemplate);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }
@@ -319,6 +325,8 @@ hashMap->put(templateNameKey, selectedTemplate);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return newObjectConfigDocument;
     
 }

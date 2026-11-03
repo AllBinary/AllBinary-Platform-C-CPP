@@ -100,6 +100,8 @@ this->setAvoidVector(new BasicArrayListD());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->avoidVector;
     
 }
@@ -149,6 +151,8 @@ this->setAvoidVector(new BasicArrayListD());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return isCollsionWithAvoidRectangles;
     
 }
@@ -192,6 +196,8 @@ break;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return isCollsionWithAvoidRectangles;
     
 }
@@ -208,6 +214,8 @@ this->avoidVector= avoidVector;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->maxNonMatchingPixelDeltas;
     
 }
@@ -233,6 +241,8 @@ this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -243,6 +253,8 @@ this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 

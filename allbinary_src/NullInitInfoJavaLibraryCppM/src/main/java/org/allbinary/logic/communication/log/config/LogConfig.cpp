@@ -129,6 +129,8 @@ this->fileName= DomNodeHelper::getTextNodeValue(fileValueNode);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }
@@ -139,6 +141,8 @@ this->fileName= DomNodeHelper::getTextNodeValue(fileValueNode);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->isEnabled_;
     
 }
@@ -161,6 +165,8 @@ this->isEnabled_= false;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->description;
     
 }
@@ -171,6 +177,8 @@ this->isEnabled_= false;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->fileName;
     
 }
@@ -210,6 +218,8 @@ this->fileName= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return logKeyVector;
     
 }

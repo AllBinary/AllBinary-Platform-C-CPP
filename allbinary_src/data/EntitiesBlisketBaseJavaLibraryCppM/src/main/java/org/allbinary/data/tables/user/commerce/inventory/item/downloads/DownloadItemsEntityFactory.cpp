@@ -72,6 +72,8 @@ DownloadItemsEntityFactory* DownloadItemsEntityFactory::instance = DownloadItems
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return DownloadItemsEntityFactory::instance;
     
 }
@@ -88,6 +90,8 @@ DownloadItemsEntityFactory::DownloadItemsEntityFactory() : logUtil(LogUtil::getI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new org::allbinary::data::tables::user::commerce::inventory::item::downloads::DownloadItemsEntity();
     
 
@@ -110,6 +114,8 @@ DownloadItemsEntityFactory::DownloadItemsEntityFactory() : logUtil(LogUtil::getI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

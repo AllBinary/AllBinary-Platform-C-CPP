@@ -655,6 +655,8 @@ Arrays::sort(files, [&]() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return fileNameIndexValue1 -fileNameIndexValue2;
     
 }
@@ -688,6 +690,8 @@ i= 0;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return i;
     
 }
@@ -1008,6 +1012,8 @@ colorRangeInterface->setMaxBlue((int32_t(this->getMaxBlueJTextField()->getText()
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return colorRangeInterface;
     
 }
@@ -1018,6 +1024,8 @@ colorRangeInterface->setMaxBlue((int32_t(this->getMaxBlueJTextField()->getText()
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->maxBlueJTextField;
     
 }
@@ -1034,6 +1042,8 @@ this->maxBlueJTextField= this->maxBlueJTextField;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->maxGreenJTextField;
     
 }
@@ -1050,6 +1060,8 @@ this->maxGreenJTextField= this->maxGreenJTextField;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->maxRedJTextField;
     
 }
@@ -1066,6 +1078,8 @@ this->maxRedJTextField= this->maxRedJTextField;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->minBlueJTextField;
     
 }
@@ -1082,6 +1096,8 @@ this->minBlueJTextField= this->minBlueJTextField;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->minGreenJTextField;
     
 }
@@ -1098,6 +1114,8 @@ this->minGreenJTextField= this->minGreenJTextField;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->minRedJTextField;
     
 }

@@ -106,6 +106,8 @@ this->setEventListenerClassPath(JavaBoxes::unbox<std::string>(hashMap->get(UserE
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }
@@ -122,6 +124,8 @@ this->name= name;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->eventListenerClassPath;
     
 }
@@ -138,6 +142,8 @@ this->eventListenerClassPath= eventListenerClassPath;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("\nUser Email Event Log Info:") +JavaString::valueOf("\nName: ")) +JavaString::valueOf(this->getName())) +JavaString::valueOf("\nEventListenerClassPath: ")) +JavaString::valueOf(this->getEventListenerClassPath());
     
 }

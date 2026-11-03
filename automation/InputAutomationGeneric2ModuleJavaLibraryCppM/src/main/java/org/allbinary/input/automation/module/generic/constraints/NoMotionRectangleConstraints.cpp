@@ -86,6 +86,8 @@ this->setMaxMotionRectangles(.MAX_VALUE());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }

@@ -100,6 +100,8 @@ this->setBasicColorP(basicColor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getSize();;
     
 }
@@ -110,6 +112,8 @@ this->setBasicColorP(basicColor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->circularIndexUtil->getIndex();;
     
 }
@@ -138,6 +142,8 @@ this->circularIndexUtil->previous();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->currentPoints.size();
     
 }
@@ -152,6 +158,8 @@ this->circularIndexUtil->previous();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PrimitiveIntUtil::getArrayInstance();;
     
 }
@@ -227,6 +235,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "paintVectors", &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->currentPoints[frame];
     
 }

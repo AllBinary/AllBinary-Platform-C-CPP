@@ -204,6 +204,8 @@ this->setCell(col, row, mapTwoDArray[row][col]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getClass()->getName();;
     
 }
@@ -222,6 +224,8 @@ this->setCell(col, row, mapTwoDArray[row][col]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->x +this->getWidth();
     
 }
@@ -232,6 +236,8 @@ this->setCell(col, row, mapTwoDArray[row][col]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->y +this->getHeight();
     
 }
@@ -242,6 +248,8 @@ this->setCell(col, row, mapTwoDArray[row][col]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return static_cast<int32_t>((this->z +this->getDepth()));
     
 }
@@ -252,6 +260,8 @@ this->setCell(col, row, mapTwoDArray[row][col]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->cellWidth;
     
 }
@@ -262,6 +272,8 @@ this->setCell(col, row, mapTwoDArray[row][col]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->cellHeight;
     
 }
@@ -272,6 +284,8 @@ this->setCell(col, row, mapTwoDArray[row][col]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 }
@@ -282,6 +296,8 @@ this->setCell(col, row, mapTwoDArray[row][col]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 }
@@ -292,6 +308,8 @@ this->setCell(col, row, mapTwoDArray[row][col]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return  -1;
     
 }
@@ -306,6 +324,8 @@ this->setCell(col, row, mapTwoDArray[row][col]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->halfWidth;
     
 }
@@ -316,6 +336,8 @@ this->setCell(col, row, mapTwoDArray[row][col]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->halfHeight;
     
 }
@@ -326,6 +348,8 @@ this->setCell(col, row, mapTwoDArray[row][col]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->dataId;
     
 }
@@ -336,6 +360,8 @@ this->setCell(col, row, mapTwoDArray[row][col]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->halfCellWidth;
     
 }
@@ -346,6 +372,8 @@ this->setCell(col, row, mapTwoDArray[row][col]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->halfCellHeight;
     
 }
@@ -360,6 +388,8 @@ this->setCell(col, row, mapTwoDArray[row][col]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -370,6 +400,8 @@ this->setCell(col, row, mapTwoDArray[row][col]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -383,6 +415,8 @@ this->setCell(col, row, mapTwoDArray[row][col]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return animationTileIndex;
     
 }

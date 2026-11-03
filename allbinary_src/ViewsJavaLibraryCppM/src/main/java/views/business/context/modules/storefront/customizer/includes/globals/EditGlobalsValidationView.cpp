@@ -95,6 +95,8 @@ EditGlobalsValidationView::EditGlobalsValidationView(TransformInfoInterface* tra
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return isValid;
     
 
@@ -114,6 +116,8 @@ EditGlobalsValidationView::EditGlobalsValidationView(TransformInfoInterface* tra
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -131,6 +135,8 @@ EditGlobalsValidationView::EditGlobalsValidationView(TransformInfoInterface* tra
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -150,6 +156,8 @@ EditGlobalsValidationView::EditGlobalsValidationView(TransformInfoInterface* tra
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Getting Validation Info";
     
 }
@@ -162,6 +170,8 @@ EditGlobalsValidationView::EditGlobalsValidationView(TransformInfoInterface* tra
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -172,6 +182,8 @@ EditGlobalsValidationView::EditGlobalsValidationView(TransformInfoInterface* tra
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

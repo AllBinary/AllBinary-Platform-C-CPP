@@ -72,6 +72,8 @@ RectangleCollisionUtil* RectangleCollisionUtil::instance = RectangleCollisionUti
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return RectangleCollisionUtil::instance;
     
 }
@@ -90,6 +92,8 @@ RectangleCollisionUtil::RectangleCollisionUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -100,6 +104,8 @@ RectangleCollisionUtil::RectangleCollisionUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -117,6 +123,8 @@ RectangleCollisionUtil::RectangleCollisionUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -127,6 +135,8 @@ RectangleCollisionUtil::RectangleCollisionUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 

@@ -378,6 +378,8 @@ AbSqlBean::updateWhere(whereHashMap, updateHashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -389,6 +391,8 @@ AbSqlBean::updateWhere(whereHashMap, updateHashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -408,6 +412,8 @@ AbSqlBean::updateWhere(whereHashMap, updateHashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -484,6 +490,8 @@ basketReview->addItem(item);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return basketReview;
     
 
@@ -494,6 +502,8 @@ basketReview->addItem(item);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 
@@ -516,6 +526,8 @@ basketReview->addItem(item);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -718,6 +730,8 @@ stringBuffer->append(") )");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -728,6 +742,8 @@ stringBuffer->append(") )");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbSqlBean::createTable(this->createTableStatement());;
     
 }
@@ -738,6 +754,8 @@ stringBuffer->append(") )");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbSqlBean::dropTable();;
     
 }

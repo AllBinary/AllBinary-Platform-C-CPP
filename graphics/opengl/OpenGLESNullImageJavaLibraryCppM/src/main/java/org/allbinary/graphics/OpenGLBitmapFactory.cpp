@@ -72,6 +72,8 @@ OpenGLBitmapFactory* OpenGLBitmapFactory::instance = OpenGLBitmapFactory::instan
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return OpenGLBitmapFactory::instance;
     
 }
@@ -88,6 +90,8 @@ this->bitmapConfig= bitmapConfig;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new OpenGLBitmap(NullUtil::getInstance()->NULL_OBJECT);
     
 }
@@ -100,6 +104,8 @@ this->bitmapConfig= bitmapConfig;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new OpenGLBitmap(NullUtil::getInstance()->NULL_OBJECT);
     
 }
@@ -110,6 +116,8 @@ this->bitmapConfig= bitmapConfig;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new OpenGLBitmap(NullUtil::getInstance()->NULL_OBJECT);
     
 }

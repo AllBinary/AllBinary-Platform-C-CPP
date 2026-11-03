@@ -81,6 +81,8 @@ this->context= context;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return FileFactory::SINGLETON;
     
 }
@@ -97,6 +99,8 @@ this->context= context;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -107,6 +111,8 @@ this->context= context;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -119,6 +125,8 @@ this->context= context;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->context;
     
 }
@@ -131,6 +139,8 @@ this->context= context;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbFile::createAbFileFromRawPath(filePath);;
     
 }
@@ -143,6 +153,8 @@ this->context= context;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbFile::createAbFileWithChild(file, childFilePath);;
     
 }

@@ -99,6 +99,8 @@ this->setBasicColorP(basicColor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new VectorRotationAnimation(points, this->getBasicColorP(), this->animationBehaviorFactory->getOrCreateInstance());
     
 }
@@ -115,6 +117,8 @@ this->basicColor= basicColor;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->basicColor;
     
 }

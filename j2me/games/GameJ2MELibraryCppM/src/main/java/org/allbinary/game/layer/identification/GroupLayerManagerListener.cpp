@@ -110,6 +110,8 @@ GroupLayerManagerListener* GroupLayerManagerListener::SINGLETON = GroupLayerMana
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return GroupLayerManagerListener::SINGLETON;
     
 }
@@ -152,6 +154,8 @@ groupList->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getGroupSize(groupInterfaceArray[0]);;
     
 }
@@ -165,6 +169,8 @@ groupList->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getGroupSizeById(id);;
     
 }
@@ -178,6 +184,8 @@ groupList->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getListById(id);;
     
 }
@@ -191,6 +199,8 @@ groupList->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return groupList;
     
 }
@@ -207,6 +217,8 @@ groupList->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return size;
     
 }
@@ -243,6 +255,8 @@ groupList->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -257,6 +271,8 @@ groupList->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }
@@ -306,6 +322,8 @@ groupId= static_cast<int32_t>(groupInterface->getGroupId());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -319,6 +337,8 @@ groupId= static_cast<int32_t>(groupInterface->getGroupId());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -350,6 +370,8 @@ groupId= static_cast<int32_t>(groupInterface->getGroupId());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -364,6 +386,8 @@ groupId= static_cast<int32_t>(groupInterface->getGroupId());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 }

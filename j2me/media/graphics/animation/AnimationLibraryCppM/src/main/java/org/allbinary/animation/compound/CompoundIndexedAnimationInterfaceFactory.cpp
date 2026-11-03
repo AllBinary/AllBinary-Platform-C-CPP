@@ -85,6 +85,8 @@ CompoundIndexedAnimationInterfaceFactory::CompoundIndexedAnimationInterfaceFacto
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return std::vector<Animation*>(size);
     
 }
@@ -95,6 +97,8 @@ CompoundIndexedAnimationInterfaceFactory::CompoundIndexedAnimationInterfaceFacto
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new CompoundIndexedAnimation(animationArray, this->animationBehaviorFactory->getOrCreateInstance());
     
 }

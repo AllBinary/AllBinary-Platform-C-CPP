@@ -69,6 +69,8 @@ AdvertisementImage::AdvertisementImage(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->imageFileName;
     
 }
@@ -79,6 +81,8 @@ AdvertisementImage::AdvertisementImage(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->imageUrl;
     
 }
@@ -89,6 +93,8 @@ AdvertisementImage::AdvertisementImage(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->constraint;
     
 }

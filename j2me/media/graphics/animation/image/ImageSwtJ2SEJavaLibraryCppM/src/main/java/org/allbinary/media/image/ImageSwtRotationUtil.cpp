@@ -88,6 +88,8 @@ ImageSwtRotationUtil* ImageSwtRotationUtil::instance = ImageSwtRotationUtil::ins
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ImageSwtRotationUtil::instance;
     
 }
@@ -108,6 +110,8 @@ ImageSwtRotationUtil::ImageSwtRotationUtil() : logUtil(LogUtil::getInstance()), 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return bufferedImage;
     
 
@@ -117,6 +121,8 @@ ImageSwtRotationUtil::ImageSwtRotationUtil() : logUtil(LogUtil::getInstance()), 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return bufferedImage;
     
 }
@@ -133,6 +139,8 @@ ImageSwtRotationUtil::ImageSwtRotationUtil() : logUtil(LogUtil::getInstance()), 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return bufferedImage;
     
 
@@ -142,6 +150,8 @@ ImageSwtRotationUtil::ImageSwtRotationUtil() : logUtil(LogUtil::getInstance()), 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return bufferedImage;
     
 }
@@ -152,6 +162,8 @@ ImageSwtRotationUtil::ImageSwtRotationUtil() : logUtil(LogUtil::getInstance()), 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getRotatedImage2(originalSwtImage, newSwtImage, gc, totalAngle);;
     
 }
@@ -162,6 +174,8 @@ ImageSwtRotationUtil::ImageSwtRotationUtil() : logUtil(LogUtil::getInstance()), 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->getRotatedImage2(bufferedImage, newSwtImage, gc, totalAngle);;
     
 }
@@ -194,6 +208,8 @@ bufferedImageArray[index]= this->getRotatedImage(bufferedImage, angle);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return bufferedImageArray;
     
 }
@@ -288,6 +304,8 @@ gc->dispose();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return bufferedImage;
     
 }

@@ -72,6 +72,8 @@ StaticPagesEntityFactory* StaticPagesEntityFactory::instance = StaticPagesEntity
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return StaticPagesEntityFactory::instance;
     
 }
@@ -88,6 +90,8 @@ StaticPagesEntityFactory::StaticPagesEntityFactory() : logUtil(LogUtil::getInsta
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new org::allbinary::data::tables::staticpages::StaticPagesEntity();
     
 
@@ -110,6 +114,8 @@ StaticPagesEntityFactory::StaticPagesEntityFactory() : logUtil(LogUtil::getInsta
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

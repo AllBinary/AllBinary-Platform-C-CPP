@@ -163,6 +163,8 @@ this->index= index;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->index;
     
 }
@@ -255,6 +257,8 @@ this->animation->setScale(scaleX, scaleY);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->animation->getAnimationBehavior();;
     
 }
@@ -357,6 +361,8 @@ this->animation->changeBasicColor(basicColor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->animation->getBasicColorP();;
     
 }
@@ -367,6 +373,8 @@ this->animation->changeBasicColor(basicColor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->animation->getChangeBasicColor();;
     
 }
@@ -377,6 +385,8 @@ this->animation->changeBasicColor(basicColor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->animation->getChangeColor();;
     
 }
@@ -387,6 +397,8 @@ this->animation->changeBasicColor(basicColor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->animation->getColor();;
     
 }
@@ -397,6 +409,8 @@ this->animation->changeBasicColor(basicColor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->animation->getDx();;
     
 }
@@ -407,6 +421,8 @@ this->animation->changeBasicColor(basicColor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->animation->getDy();;
     
 }
@@ -417,6 +433,8 @@ this->animation->changeBasicColor(basicColor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->animation->isThreed();;
     
 }
@@ -447,6 +465,8 @@ this->animation->setFrame(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->animation->getFrame();;
     
 }
@@ -459,6 +479,8 @@ this->animation->setFrame(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->animation->getAnimationSize();;
     
 }
@@ -469,6 +491,8 @@ this->animation->setFrame(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->animation->getSize();;
     
 }
@@ -485,6 +509,8 @@ this->animation->previousFrame();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->animation->isLastFrame();;
     
 }
@@ -501,6 +527,8 @@ this->animation->setSequence(sequence);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->animation->getSequence();;
     
 }
@@ -511,6 +539,8 @@ this->animation->setSequence(sequence);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->animation->getWidth();;
     
 }
@@ -559,6 +589,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->PR
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return (new StringMaker())->append(RotationAnimation::toString())->append(commonSeps->SPACE)->append(image->getName())->append(commonSeps->SPACE)->appendint(image->getWidth())->append(commonSeps->SPACE)->appendint(image->getHeight())->toString();;
     
 }

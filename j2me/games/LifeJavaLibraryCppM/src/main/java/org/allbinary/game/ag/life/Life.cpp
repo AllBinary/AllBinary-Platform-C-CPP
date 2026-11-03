@@ -68,6 +68,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new Life(0, 0);
     
 
@@ -112,6 +114,8 @@ this->startLives= lives;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->lives;
     
 }
@@ -164,6 +168,8 @@ this->lives= this->startLives;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -174,6 +180,8 @@ this->lives= this->startLives;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -187,6 +195,8 @@ this->lives= this->startLives;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->maxlives;
     
 }
@@ -201,6 +211,8 @@ this->lives= this->startLives;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -211,6 +223,8 @@ this->lives= this->startLives;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -250,6 +264,8 @@ this->lives= this->startLives;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->startLives;
     
 }

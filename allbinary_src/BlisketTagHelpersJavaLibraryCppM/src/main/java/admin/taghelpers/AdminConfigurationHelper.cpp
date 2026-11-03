@@ -89,6 +89,8 @@ AdminConfigurationHelper::AdminConfigurationHelper(HashMap<Object*, Object*>* ha
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -111,6 +113,8 @@ AdminConfigurationHelper::AdminConfigurationHelper(HashMap<Object*, Object*>* ha
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -137,6 +141,8 @@ AdminConfigurationHelper::AdminConfigurationHelper(HashMap<Object*, Object*>* ha
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -159,6 +165,8 @@ AdminConfigurationHelper::AdminConfigurationHelper(HashMap<Object*, Object*>* ha
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -176,6 +184,8 @@ AdminConfigurationHelper::AdminConfigurationHelper(HashMap<Object*, Object*>* ha
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -198,6 +208,8 @@ AdminConfigurationHelper::AdminConfigurationHelper(HashMap<Object*, Object*>* ha
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -224,6 +236,8 @@ AdminConfigurationHelper::AdminConfigurationHelper(HashMap<Object*, Object*>* ha
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return success;
     
 
@@ -246,6 +260,8 @@ AdminConfigurationHelper::AdminConfigurationHelper(HashMap<Object*, Object*>* ha
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }

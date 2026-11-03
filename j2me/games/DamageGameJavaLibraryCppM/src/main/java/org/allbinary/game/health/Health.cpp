@@ -115,6 +115,8 @@ this->setHealth(this->getMaxHealth());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -125,6 +127,8 @@ this->setHealth(this->getMaxHealth());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -155,6 +159,8 @@ ForcedLogUtil::log(stringBuffer->toString(), this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -177,6 +183,8 @@ this->setHealth(health);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -187,6 +195,8 @@ this->setHealth(health);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -200,6 +210,8 @@ this->setHealth(health);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->maxHealth;
     
 }
@@ -255,6 +267,8 @@ this->maxHealth= maxHealth;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->health;
     
 }
@@ -282,6 +296,8 @@ stringBuffer->appendint(this->maxHealth);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

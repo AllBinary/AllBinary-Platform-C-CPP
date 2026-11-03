@@ -82,6 +82,8 @@ ResourceUtil* ResourceUtil::instance = ResourceUtil::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ResourceUtil::instance;
     
 }
@@ -275,6 +277,8 @@ inputStream= resource.getClass()->getResourceAsStream(resourcePath);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return inputStream;
     
 }
@@ -305,6 +309,8 @@ inputStream= resource.getClass()->getResourceAsStream(resourcePath);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return inputStream;
     
 
@@ -314,6 +320,8 @@ inputStream= resource.getClass()->getResourceAsStream(resourcePath);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return inputStream;
     
 }

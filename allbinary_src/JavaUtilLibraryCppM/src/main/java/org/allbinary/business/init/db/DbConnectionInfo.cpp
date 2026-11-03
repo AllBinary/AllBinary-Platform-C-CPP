@@ -98,6 +98,8 @@ this->url= stringBuffer->toString();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->url;
     
 }
@@ -108,6 +110,8 @@ this->url= stringBuffer->toString();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->jdbcDriver;
     
 }
@@ -118,6 +122,8 @@ this->url= stringBuffer->toString();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }
@@ -128,6 +134,8 @@ this->url= stringBuffer->toString();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->userName;
     
 }
@@ -138,6 +146,8 @@ this->url= stringBuffer->toString();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->password;
     
 }
@@ -178,6 +188,8 @@ this->host= stringBuffer->toString();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->host;
     
 }
@@ -188,6 +200,8 @@ this->host= stringBuffer->toString();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->schema;
     
 }
@@ -198,6 +212,8 @@ this->host= stringBuffer->toString();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->server;
     
 }
@@ -208,6 +224,8 @@ this->host= stringBuffer->toString();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->port;
     
 }
@@ -272,6 +290,8 @@ this->updateUrl();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->USER_NAME_KEY;
     
 }
@@ -282,6 +302,8 @@ this->updateUrl();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->PASSWORD_KEY;
     
 }

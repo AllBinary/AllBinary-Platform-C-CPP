@@ -93,6 +93,8 @@ InputImageType::hashMap->put(this->getName(), this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::valueOf("ImageType: ") +JavaString::valueOf(this->getName());
     
 }
@@ -103,6 +105,8 @@ InputImageType::hashMap->put(this->getName(), this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }
@@ -113,6 +117,8 @@ InputImageType::hashMap->put(this->getName(), this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<InputImageType*>(InputImageType::hashMap->get(imageTypeString));
     
 }
@@ -123,6 +129,8 @@ InputImageType::hashMap->put(this->getName(), this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return InputImageType::TYPE_VECTOR;
     
 }
@@ -133,6 +141,8 @@ InputImageType::hashMap->put(this->getName(), this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->index;
     
 }

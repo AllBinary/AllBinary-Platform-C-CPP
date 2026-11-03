@@ -187,6 +187,8 @@ keysAndValues->put(StoreFrontData::getInstance()->NAME, storeName);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return vector;
     
 }
@@ -215,6 +217,8 @@ keysAndValues->put(AdvertisementAreaData::getInstance()->NAME, advertisementArea
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<AdvertisementAreaInterface*>(new AdvertisementArea(hashMap));
     
 
@@ -225,6 +229,8 @@ keysAndValues->put(AdvertisementAreaData::getInstance()->NAME, advertisementArea
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 
@@ -252,6 +258,8 @@ stringBuffer->append(advertisementAreaData->NAME)->append(this->sqlTypeStrings->
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }
@@ -265,6 +273,8 @@ stringBuffer->append(advertisementAreaData->NAME)->append(this->sqlTypeStrings->
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return returnStr;
     
 }
@@ -281,6 +291,8 @@ AbSqlBean::updateWhere(AdvertisementAreaData::getInstance()->NAME, JavaBoxes::un
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbSqlBean::dropTable();;
     
 }

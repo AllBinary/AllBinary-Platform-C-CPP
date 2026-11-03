@@ -113,6 +113,8 @@ this->workFlowName= this->getPageContext()->getRequest()->getParameter(WorkFlowD
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -137,6 +139,8 @@ this->workFlowName= this->getPageContext()->getRequest()->getParameter(WorkFlowD
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 
@@ -146,6 +150,8 @@ this->workFlowName= this->getPageContext()->getRequest()->getParameter(WorkFlowD
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 
@@ -165,6 +171,8 @@ this->workFlowName= this->getPageContext()->getRequest()->getParameter(WorkFlowD
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -211,6 +219,8 @@ stringBuffer->append("WorkFlow does not exist<br />");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 
@@ -230,6 +240,8 @@ stringBuffer->append("WorkFlow does not exist<br />");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Validating Form";
     
 }
@@ -242,6 +254,8 @@ stringBuffer->append("WorkFlow does not exist<br />");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -252,6 +266,8 @@ stringBuffer->append("WorkFlow does not exist<br />");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

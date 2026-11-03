@@ -84,6 +84,8 @@ StoreThemeCategoryValidationView::StoreThemeCategoryValidationView(StoreThemeCat
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::TRUE;
     
 }
@@ -96,6 +98,8 @@ StoreThemeCategoryValidationView::StoreThemeCategoryValidationView(StoreThemeCat
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -108,6 +112,8 @@ StoreThemeCategoryValidationView::StoreThemeCategoryValidationView(StoreThemeCat
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -120,6 +126,8 @@ StoreThemeCategoryValidationView::StoreThemeCategoryValidationView(StoreThemeCat
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error";
     
 }

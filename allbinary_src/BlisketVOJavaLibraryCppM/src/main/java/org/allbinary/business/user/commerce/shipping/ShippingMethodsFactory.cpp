@@ -246,6 +246,8 @@ this->shippingVector->add(new NoShippingModuleView());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->shippingVector;
     
 }
@@ -256,6 +258,8 @@ this->shippingVector->add(new NoShippingModuleView());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->defaultShippingMethodInterface;
     
 }

@@ -72,6 +72,8 @@ PaymentEntityFactory* PaymentEntityFactory::instance = PaymentEntityFactory::ins
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PaymentEntityFactory::instance;
     
 }
@@ -88,6 +90,8 @@ PaymentEntityFactory::PaymentEntityFactory() : logUtil(LogUtil::getInstance()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new org::allbinary::data::tables::user::commerce::money::payment::PaymentEntity();
     
 
@@ -110,6 +114,8 @@ PaymentEntityFactory::PaymentEntityFactory() : logUtil(LogUtil::getInstance()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

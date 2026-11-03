@@ -100,6 +100,8 @@
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new BasicWeaponPart(animationInterface, AllBinaryLayer::NULL_ALLBINARY_LAYER, WeaponProperties::NULL_WEAPON_PROPERTIES, NoScoreable::getInstance(), RelativeRelationship::NULL_RELATIVE_RELATIONSHIP);
     
 }
@@ -150,6 +152,8 @@ this->processScore(allbinaryLayerManager, angle, otherAngle, this->getWeaponProp
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->ownerLayerInterface;
     
 }
@@ -166,6 +170,8 @@ this->ownerLayerInterface= ownerLayerInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->animationInterface;
     
 }
@@ -201,6 +207,8 @@ this->animationInterface->paintXY(graphics, viewX, viewY);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->weaponProperties;
     
 }

@@ -94,6 +94,8 @@ this->isRemoveDuplicateKeyPresses= Features::getInstance()->isFeature(InputFeatu
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return ;
     
 
@@ -132,6 +134,8 @@ this->removalGameKeyEventList->add(gameKeyEvent);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->removalGameKeyEventList->contains(gameKeyEvent);;
     
 }
@@ -226,6 +230,8 @@ removeList->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->removalGameKeyEventList;
     
 }
@@ -236,6 +242,8 @@ removeList->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->gameKeyEventList;
     
 }

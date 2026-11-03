@@ -215,6 +215,8 @@ NullRTSLayer* NullRTSLayer::NULL_RTS_LAYER = NullRTSLayer::NULL_RTS_LAYER_owner(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return NullRTSFormInputFactory::getInstance();;
     
 }

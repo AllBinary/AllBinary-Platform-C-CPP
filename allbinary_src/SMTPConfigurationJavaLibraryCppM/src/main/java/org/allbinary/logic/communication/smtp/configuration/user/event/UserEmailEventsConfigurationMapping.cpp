@@ -89,6 +89,8 @@ this->userEmailEventsConfigurationInterface= userEmailEventsConfigurationInterfa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return hashMap;
     
 }
@@ -101,7 +103,9 @@ this->userEmailEventsConfigurationInterface= userEmailEventsConfigurationInterfa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UserEmailEventsConfigurationData::NAME;
+                        
+                        
+                        return JavaBoxes::toObject(UserEmailEventsConfigurationData::NAME);
     
 }
 
@@ -116,6 +120,8 @@ this->userEmailEventsConfigurationInterface= userEmailEventsConfigurationInterfa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return vector;
     
 }

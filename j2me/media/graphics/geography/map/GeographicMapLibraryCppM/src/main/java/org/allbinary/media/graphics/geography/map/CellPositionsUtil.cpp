@@ -85,6 +85,8 @@ CellPositionsUtil* CellPositionsUtil::instance = CellPositionsUtil::instance_own
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return CellPositionsUtil::instance;
     
 }
@@ -112,6 +114,8 @@ reusableList->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return reusableList;
     
 
@@ -144,6 +148,8 @@ reusableList->add(geographicMapCellPosition);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return reusableList;
     
 }
@@ -194,6 +200,8 @@ reusableList->clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return reusableList;
     
 }
@@ -245,6 +253,8 @@ reusableSurroundingList->add(geographicMapCellPosition);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return reusableSurroundingList;
     
 }

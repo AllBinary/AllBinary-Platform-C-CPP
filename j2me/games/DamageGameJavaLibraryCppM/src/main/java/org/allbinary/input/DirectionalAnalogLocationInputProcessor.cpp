@@ -215,6 +215,8 @@ this->logUtil->put("Unable to process analog input", this, commonStrings->PROCES
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return 0;
     
 }

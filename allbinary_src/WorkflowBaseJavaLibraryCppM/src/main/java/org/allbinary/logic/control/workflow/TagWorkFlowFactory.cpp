@@ -97,6 +97,8 @@ TagWorkFlowFactory* TagWorkFlowFactory::instance = TagWorkFlowFactory::instance_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TagWorkFlowFactory::instance;
     
 }
@@ -132,6 +134,8 @@ params[1]= pageContext;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<WorkFlowInterface*>(AbeFactory::getInstance()->getInstance(abeClientInformation, workFlowClassName, classes, params));
     
 

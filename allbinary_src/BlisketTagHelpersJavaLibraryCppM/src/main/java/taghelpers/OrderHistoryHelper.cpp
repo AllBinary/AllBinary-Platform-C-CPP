@@ -170,6 +170,8 @@ this->groupId= this->request->getParameter(ShippingMethodData::GROUP);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::valueOf(JavaString::valueOf("Order ") +JavaString::valueOf(this->id)) +JavaString::valueOf(" Already Cancelled<br/>");
     
 
@@ -183,6 +185,8 @@ this->groupId= this->request->getParameter(ShippingMethodData::GROUP);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::valueOf(JavaString::valueOf("Order ") +JavaString::valueOf(this->id)) +JavaString::valueOf(" Already Shipped. You can't cancel a shipped order.<br/>");
     
 
@@ -196,6 +200,8 @@ this->groupId= this->request->getParameter(ShippingMethodData::GROUP);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::valueOf(JavaString::valueOf("Order ") +JavaString::valueOf(this->id)) +JavaString::valueOf(" has been cancelled.<br/>");
     
 
@@ -209,6 +215,8 @@ this->groupId= this->request->getParameter(ShippingMethodData::GROUP);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::valueOf(JavaString::valueOf("Order ") +JavaString::valueOf(this->id)) +JavaString::valueOf(" Partially Shipped. You can cancel unshipped items, but not the whole order.<br/>");
     
 
@@ -227,6 +235,8 @@ orderHistoryEntityInterface->setStatus(this->id, this->newStatus);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::valueOf(JavaString::valueOf("Order ") +JavaString::valueOf(this->id)) +JavaString::valueOf(" has been cancelled.<br/>");
     
 
@@ -245,6 +255,8 @@ orderHistoryEntityInterface->setStatus(this->id, this->newStatus);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Error Setting Order Status";
     
 
@@ -267,6 +279,8 @@ orderHistoryEntityInterface->setStatus(this->id, this->newStatus);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(error) +JavaString::valueOf("<br/>")) +JavaString::valueOf("Exception: ")) +JavaString::valueOf(e)) +JavaString::valueOf("<br/>");
     
 }

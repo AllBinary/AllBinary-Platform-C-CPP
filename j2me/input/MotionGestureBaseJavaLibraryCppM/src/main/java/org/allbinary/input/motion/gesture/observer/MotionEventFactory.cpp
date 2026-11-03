@@ -100,6 +100,8 @@ MotionEventFactory::index= TouchMotionGestureFactory::getInstance()->LAST_MOTION
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new MotionGestureEvent(this->source, this->id, dynamic_cast<MotionGestureInput*>(TouchMotionGestureFactory::getInstance()->NO_MOTION));
     
 
@@ -110,6 +112,8 @@ MotionEventFactory::index= TouchMotionGestureFactory::getInstance()->LAST_MOTION
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new MotionGestureEvent(this->source, this->id, dynamic_cast<MotionGestureInput*>(input));
     
 

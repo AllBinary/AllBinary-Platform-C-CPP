@@ -76,6 +76,8 @@ PointFactory* PointFactory::instance = PointFactory::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return PointFactory::instance;
     
 }
@@ -94,6 +96,8 @@ PointFactory::PointFactory() : ZERO_ZERO(this->createXYZ(0, 0, 0)){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new GPoint(x, y, 0);
     
 }
@@ -104,6 +108,8 @@ PointFactory::PointFactory() : ZERO_ZERO(this->createXYZ(0, 0, 0)){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new GPoint(x, y, z);
     
 }

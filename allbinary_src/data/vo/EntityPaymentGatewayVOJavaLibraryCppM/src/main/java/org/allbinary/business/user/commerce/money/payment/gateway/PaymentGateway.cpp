@@ -284,6 +284,8 @@ this->timeEntered= JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->storeName;
     
 }
@@ -294,6 +296,8 @@ this->timeEntered= JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }
@@ -304,6 +308,8 @@ this->timeEntered= JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->enable;
     
 }
@@ -314,6 +320,8 @@ this->timeEntered= JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->paymentMethod;
     
 }
@@ -324,6 +332,8 @@ this->timeEntered= JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->mode;
     
 }
@@ -334,6 +344,8 @@ this->timeEntered= JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->testProtocol;
     
 }
@@ -344,6 +356,8 @@ this->timeEntered= JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->testServer;
     
 }
@@ -354,6 +368,8 @@ this->timeEntered= JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->testPort;
     
 }
@@ -364,6 +380,8 @@ this->timeEntered= JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->testPath;
     
 }
@@ -374,6 +392,8 @@ this->timeEntered= JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->serverProtocol;
     
 }
@@ -384,6 +404,8 @@ this->timeEntered= JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->server;
     
 }
@@ -394,6 +416,8 @@ this->timeEntered= JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->serverPort;
     
 }
@@ -404,6 +428,8 @@ this->timeEntered= JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->serverPath;
     
 }
@@ -414,6 +440,8 @@ this->timeEntered= JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->userName;
     
 }
@@ -424,6 +452,8 @@ this->timeEntered= JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->password;
     
 }
@@ -434,6 +464,8 @@ this->timeEntered= JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->proxyProtocol;
     
 }
@@ -444,6 +476,8 @@ this->timeEntered= JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->proxyServer;
     
 }
@@ -454,6 +488,8 @@ this->timeEntered= JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->proxyPath;
     
 }
@@ -464,6 +500,8 @@ this->timeEntered= JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->proxyPort;
     
 }
@@ -474,6 +512,8 @@ this->timeEntered= JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->proxyUserName;
     
 }
@@ -484,6 +524,8 @@ this->timeEntered= JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->proxyPassword;
     
 }
@@ -494,6 +536,8 @@ this->timeEntered= JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->timeout;
     
 }
@@ -504,6 +548,8 @@ this->timeEntered= JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->proxyTimeout;
     
 }
@@ -514,6 +560,8 @@ this->timeEntered= JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->special1;
     
 }
@@ -524,6 +572,8 @@ this->timeEntered= JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->special2;
     
 }
@@ -534,6 +584,8 @@ this->timeEntered= JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->special3;
     
 }
@@ -544,6 +596,8 @@ this->timeEntered= JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->special4;
     
 }
@@ -554,6 +608,8 @@ this->timeEntered= JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->special5;
     
 }
@@ -564,6 +620,8 @@ this->timeEntered= JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->special6;
     
 }
@@ -574,6 +632,8 @@ this->timeEntered= JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->special7;
     
 }
@@ -584,6 +644,8 @@ this->timeEntered= JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->special8;
     
 }
@@ -594,6 +656,8 @@ this->timeEntered= JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->special9;
     
 }
@@ -604,6 +668,8 @@ this->timeEntered= JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->lastModified;
     
 }
@@ -614,6 +680,8 @@ this->timeEntered= JavaBoxes::unbox<std::string>(hashMap->get(EntryData::getInst
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->timeEntered;
     
 }
@@ -830,6 +898,8 @@ this->timeEntered= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->toHashMap(true);;
     
 }
@@ -959,6 +1029,8 @@ paymentGatewayHashMap->put(EntryData::getInstance()->LASTMODIFIED->toString(), t
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return paymentGatewayHashMap;
     
 }
@@ -969,6 +1041,8 @@ paymentGatewayHashMap->put(EntryData::getInstance()->LASTMODIFIED->toString(), t
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->toVector(true);;
     
 }
@@ -1096,6 +1170,8 @@ updateVector->add(this->special9);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return updateVector;
     
 }
@@ -1108,6 +1184,8 @@ updateVector->add(this->special9);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return new PaymentGatewayPrimaryKey(this->getStoreName(), this->getName());
     
 }

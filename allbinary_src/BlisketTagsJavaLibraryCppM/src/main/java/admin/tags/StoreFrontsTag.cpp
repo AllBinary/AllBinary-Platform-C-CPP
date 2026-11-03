@@ -114,6 +114,8 @@ this->setTagRequestHelperFactory(new StoreFrontsRequestHelperFactory());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 
@@ -146,6 +148,8 @@ this->setTagRequestHelperFactory(new StoreFrontsRequestHelperFactory());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -173,6 +177,8 @@ this->setTagRequestHelperFactory(new StoreFrontsRequestHelperFactory());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 
@@ -205,6 +211,8 @@ this->setTagRequestHelperFactory(new StoreFrontsRequestHelperFactory());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -232,6 +240,8 @@ this->setTagRequestHelperFactory(new StoreFrontsRequestHelperFactory());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return result;
     
 
@@ -264,6 +274,8 @@ this->setTagRequestHelperFactory(new StoreFrontsRequestHelperFactory());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return error;
     
 }
@@ -314,6 +326,8 @@ this->getPropertiesHashMap()->put("total", this->getTotal());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TagSupport::EVAL_BODY_INCLUDE;
     
 
@@ -338,6 +352,8 @@ this->install();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return TableTag::doStartTag();;
     
 
@@ -353,6 +369,8 @@ this->install();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SKIP_BODY;
     
 
@@ -365,6 +383,8 @@ AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SKIP_BODY;
     
 }
@@ -378,6 +398,8 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return SKIP_BODY;
     
 }

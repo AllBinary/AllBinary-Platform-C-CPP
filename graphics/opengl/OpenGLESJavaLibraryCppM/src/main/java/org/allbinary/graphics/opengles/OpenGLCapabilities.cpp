@@ -119,6 +119,8 @@ OpenGLCapabilities* OpenGLCapabilities::instance = OpenGLCapabilities::instance_
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return OpenGLCapabilities::instance;
     
 }
@@ -133,6 +135,8 @@ OpenGLCapabilities::OpenGLCapabilities() : logUtil(LogUtil::getInstance()), stri
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->initialized;
     
 }
@@ -465,6 +469,8 @@ this->logUtil->put(commonStrings->EXCEPTION, this, METHOD_NAME, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -475,6 +481,8 @@ this->logUtil->put(commonStrings->EXCEPTION, this, METHOD_NAME, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -490,6 +498,8 @@ this->requireInitialization();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->glExtensionDrawTexture;
     
 }
@@ -500,6 +510,8 @@ this->requireInitialization();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->glExtensionGPUShader100;
     
 }
@@ -512,6 +524,8 @@ this->requireInitialization();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->glExtensionGPUShader4;
     
 }
@@ -524,6 +538,8 @@ this->requireInitialization();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->glVersion;
     
 }
@@ -536,6 +552,8 @@ this->requireInitialization();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->glVersionString;
     
 }
@@ -548,6 +566,8 @@ this->requireInitialization();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->glShaderVersionString;
     
 }
@@ -560,6 +580,8 @@ this->requireInitialization();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->glThreedDrawTexture;
     
 }
@@ -572,6 +594,8 @@ this->requireInitialization();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->glRenderer;
     
 }
@@ -584,6 +608,8 @@ this->requireInitialization();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->vertexBufferObjectSupport;
     
 }
@@ -600,6 +626,8 @@ this->requireInitialization();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
@@ -609,6 +637,8 @@ this->requireInitialization();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 }
@@ -698,6 +728,8 @@ PreLogUtil::putOE(commonStrings->EXCEPTION, this, commonStrings->TOSTRING, &e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

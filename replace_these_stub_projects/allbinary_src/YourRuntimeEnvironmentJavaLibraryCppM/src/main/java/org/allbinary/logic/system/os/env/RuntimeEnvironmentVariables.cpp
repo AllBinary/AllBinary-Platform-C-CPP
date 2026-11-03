@@ -82,6 +82,8 @@ RuntimeEnvironmentVariables::RuntimeEnvironmentVariables() : logUtil(LogUtil::ge
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return System.getProperty("java.java.home");;
     
 }
@@ -95,6 +97,8 @@ RuntimeEnvironmentVariables::RuntimeEnvironmentVariables() : logUtil(LogUtil::ge
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return environmentVariables->getProperty(var);;
     
 }
@@ -194,6 +198,8 @@ environmentVariables->put(key, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return environmentVariables;
     
 
@@ -213,6 +219,8 @@ environmentVariables->put(key, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -227,6 +235,8 @@ environmentVariables->put(key, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return System.getProperty("java.io.tmpdir");;
     
 
@@ -246,6 +256,8 @@ environmentVariables->put(key, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -260,6 +272,8 @@ environmentVariables->put(key, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return System.getProperty("java.library.path");;
     
 
@@ -279,6 +293,8 @@ environmentVariables->put(key, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -293,6 +309,8 @@ environmentVariables->put(key, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return System.getProperty("java.class.path");;
     
 
@@ -312,6 +330,8 @@ environmentVariables->put(key, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -352,6 +372,8 @@ System.setProperty("java.library.path", JavaString::valueOf(JavaString::valueOf(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return System.getProperty("user.home");;
     
 
@@ -371,6 +393,8 @@ System.setProperty("java.library.path", JavaString::valueOf(JavaString::valueOf(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -385,6 +409,8 @@ System.setProperty("java.library.path", JavaString::valueOf(JavaString::valueOf(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return System.getProperty("user.dir");;
     
 
@@ -404,6 +430,8 @@ System.setProperty("java.library.path", JavaString::valueOf(JavaString::valueOf(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

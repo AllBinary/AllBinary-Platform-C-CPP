@@ -56,6 +56,8 @@ Collision2DProcessor::Collision2DProcessor() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return false;
     
 
@@ -66,6 +68,8 @@ Collision2DProcessor::Collision2DProcessor() {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return true;
     
 
