@@ -33,14 +33,15 @@
         -->
         
         
-        <module>../AllBinaryGraphicsUserInterfaceJavaLibraryCppM</module>
-        
+<!--        <module>../AllBinaryGraphicsUserInterfaceJavaLibraryCppM</module>-->
+
         <module>../../allbinary_src/logging/LogConfigTypeThickClientJavaLibraryCppM</module>
+<!--
         <module>../../allbinary_src/logging/GUILoggingCppM</module>
-                
+
         <module>../AllBinaryGraphicsJavaApplicationCppM</module>
-        
-        <module>../ImageToolJavaApplicationCppM</module>
+
+        <module>../ImageToolJavaApplicationCppM</module>-->
     </modules>
 
 </project>

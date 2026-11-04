@@ -37,18 +37,18 @@
         <module>../allbinary_src/logic/BasePreloaderFileJavaLibraryCppM</module>
         <module>../allbinary_src/logic/data/file/FileJavaLibraryCppM</module>
         <module>../allbinary_src/logic/data/file/FileJ2SEJavaLibraryCppM</module>
-        <module>../allbinary_src/data/DataJavaLibraryCppM</module>
-        <module>../allbinary_src/logic/data/file/FileUnamedJavaLibraryCppM</module>
-        <module>../allbinary_src/logic/data/file/FileAdvancedJavaLibraryCppM</module>
-        <module>../allbinary_src/PreLoaderJavaLibraryCppM</module>
-        <module>../allbinary_src/FileInitInfoJavaLibraryCppM</module>
+<!--        <module>../allbinary_src/data/DataJavaLibraryCppM</module>-->
+<!--        <module>../allbinary_src/logic/data/file/FileUnamedJavaLibraryCppM</module>
+        <module>../allbinary_src/logic/data/file/FileAdvancedJavaLibraryCppM</module>-->
+<!--        <module>../allbinary_src/PreLoaderJavaLibraryCppM</module>-->
+<!--        <module>../allbinary_src/FileInitInfoJavaLibraryCppM</module>
         <module>../allbinary_src/PreLoaderFileJavaLibraryCppM</module>
-        <module>../allbinary_src/PreLoaderLicenseJavaLibraryCppM</module>
+        <module>../allbinary_src/PreLoaderLicenseJavaLibraryCppM</module>-->
         <module>../j2me/PCResourceLibraryCppM</module>
         <module>../j2me/ProgressJ2MEJavaLibraryCppM</module>
         <module>../allbinary_src/licensing/ClientInfoBaseJavaLibraryCppM</module>
-        <module>../allbinary_src/licensing/RemoteXmlRpcJavaLibraryCppM</module>
-        <module>../allbinary_src/licensing/LicenseClientJavaLibraryCppM</module>
+<!--        <module>../allbinary_src/licensing/RemoteXmlRpcJavaLibraryCppM</module>
+        <module>../allbinary_src/licensing/LicenseClientJavaLibraryCppM</module>-->
 
         <!--
         <module>../allbinary_src/PreLoaderLicenseJavaLibraryCppM</module>
