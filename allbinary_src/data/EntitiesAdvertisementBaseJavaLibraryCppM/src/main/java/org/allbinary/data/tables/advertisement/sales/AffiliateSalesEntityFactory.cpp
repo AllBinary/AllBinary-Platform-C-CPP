@@ -45,6 +45,10 @@
 
       
 
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
 
 
 
@@ -80,6 +84,8 @@ AffiliateSalesEntityFactory::AffiliateSalesEntityFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return dynamic_cast<AffiliateSalesEntityInterface*>(new AffiliateSalesEntity());
     
 
@@ -87,7 +93,7 @@ AffiliateSalesEntityFactory::AffiliateSalesEntityFactory(){
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->ENTITYFACTORYERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->ENTITYFACTORYERROR))
                         
                                     {
                                     
@@ -102,6 +108,8 @@ logUtil->put(commonStrings->EXCEPTION, "AffiliateEntityFactory", commonStrings->
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

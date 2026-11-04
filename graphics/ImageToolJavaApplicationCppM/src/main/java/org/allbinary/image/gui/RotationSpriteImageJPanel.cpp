@@ -258,7 +258,7 @@ generatedBufferedImageArray= ImageJ2SERotationUtil::getInstance()->getRotatedIma
     
 outer->result= ImageJ2SERotationUtil::getInstance()->createSpriteImage(generatedBufferedImageArray);
     
-outer->getParent()->repaint();
+outer->getParent().repaint();
     
 
     File* file = imageProcessorInput->getFiles()[index];;

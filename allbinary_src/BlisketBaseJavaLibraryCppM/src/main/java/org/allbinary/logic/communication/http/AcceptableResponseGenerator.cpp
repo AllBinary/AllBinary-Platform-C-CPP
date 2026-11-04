@@ -116,7 +116,7 @@ AcceptableResponseGenerator::AcceptableResponseGenerator() : logUtil(LogUtil::ge
     std::string result = acceptableResponseUtil->getTagName(0);;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->HTTP))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->HTTP))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Request Type: ") +JavaString::valueOf(acceptable), this, commonStrings->GET);
@@ -153,7 +153,7 @@ AcceptableResponseGenerator::AcceptableResponseGenerator() : logUtil(LogUtil::ge
                                     }
                                 
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->HTTP))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->HTTP))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Response Type: ") +JavaString::valueOf(result), this, commonStrings->GET);
@@ -174,7 +174,7 @@ AcceptableResponseGenerator::AcceptableResponseGenerator() : logUtil(LogUtil::ge
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->HTTPERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->HTTPERROR))
                         
                                     {
                                     this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET, &e);

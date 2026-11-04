@@ -106,7 +106,7 @@ StoreWorkFlowTag::StoreWorkFlowTag() : HelperTag(new StoreTagWorkFlowHelperFacto
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAG))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAG))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
@@ -131,7 +131,7 @@ this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->NAME, this->
 
         try {
             
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAG))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAG))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->PROCESS);
@@ -163,7 +163,7 @@ this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->NAME, this->
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->PROCESS, &e);
@@ -187,7 +187,7 @@ this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->NAME, this->
 
         try {
             
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAG))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAG))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, tagStrings.DO_START_TAG);

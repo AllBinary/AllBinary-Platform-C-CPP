@@ -34,6 +34,8 @@
         
             #include "java/lang/Object.h"
         
+            #include "java/lang/Boolean.h"
+        
 class PreLogUtil;
 class AbFile;
 #include <org/allbinary/logic/util/visitor/VisitorInterface.h>

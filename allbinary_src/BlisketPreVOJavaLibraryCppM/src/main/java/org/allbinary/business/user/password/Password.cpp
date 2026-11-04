@@ -40,6 +40,8 @@
         
             #include "java/lang/Integer.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <java/util/HashMap.h>
 
       
@@ -142,7 +144,7 @@ this->password= value;
     bool valid = Boolean::TRUE;;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VALIDATION))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VALIDATION))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Password: ") +JavaString::valueOf(this->password), this, commonStrings->IS_VALID);
@@ -155,7 +157,7 @@ this->password= value;
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VALIDATION))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VALIDATION))
                         
                                     {
                                     this->logUtil->putF("Password is invalid", this, commonStrings->IS_VALID);
@@ -181,7 +183,7 @@ valid= Boolean::FALSE;
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VALIDATIONERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VALIDATIONERROR))
                         
                                     {
                                     this->logUtil->put("Failed to validate form", "Password", commonStrings->IS_VALID, &e);

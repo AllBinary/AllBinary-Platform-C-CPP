@@ -154,7 +154,7 @@ stringBuffer->append(this->sqlStrings->CLOSE_QUOTE);
 field= rset->getString(requestedField);
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
                         
                                     {
                                     stringBuffer->delete_(0, stringBuffer->length());
@@ -195,7 +195,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET_FIELD);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
                         
                                     {
                                     this->logUtil->put(JavaString::valueOf(this->FAILED_SQL_STATEMENT) +JavaString::valueOf(sqlStatement), this, METHOD_GET_FIELD, &e);
@@ -292,7 +292,7 @@ stringBuffer->append(this->sqlStrings->CLOSE_QUOTE);
 field= rset->getString(requestedField);
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
                         
                                     {
                                     stringBuffer->delete_(0, stringBuffer->length());
@@ -336,7 +336,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET_FIELD);
     std::string sqlStatement = stringBuffer->toString();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
                         
                                     {
                                     this->logUtil->put(JavaString::valueOf(this->FAILED_SQL_STATEMENT) +JavaString::valueOf(sqlStatement), this, METHOD_GET_FIELD, &e);
@@ -488,7 +488,7 @@ field= rset->getObject(columnName)->toString();
     std::string sqlStatement = stringBuffer->toString();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
                         
                                     {
                                     this->logUtil->put(JavaString::valueOf(this->FAILED_SQL_STATEMENT) +JavaString::valueOf(sqlStatement), this, METHOD_IS_SUBSET_OF_ENTRY, &e);

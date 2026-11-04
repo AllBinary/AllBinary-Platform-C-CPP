@@ -103,7 +103,7 @@
 
 BasicWorkFlow::BasicWorkFlow(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), abeClientInformation(ServiceClientInformationInterfaceFactory::getInstance()){
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->WORKFLOW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->WORKFLOW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Properties: ") +JavaString::valueOf(propertiesHashMap->toString()), this, "BasicWorkFlow()");
@@ -162,7 +162,7 @@ this->validationDomNodeInterface= dynamic_cast<ValidationComponentInterface*>(Tr
             
     auto BasicWorkFlow::process() -> int32_t{
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->WORKFLOW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->WORKFLOW))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->PROCESS);

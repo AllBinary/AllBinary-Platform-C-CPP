@@ -68,7 +68,7 @@ BasicGenerator::BasicGenerator() : logUtil(LogUtil::getInstance()){
 
     auto BasicGenerator::process(std::string input) -> std::string{
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("Processing", this, this->commonStrings->PROCESS);

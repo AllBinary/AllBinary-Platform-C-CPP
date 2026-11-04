@@ -40,6 +40,8 @@
         
             #include "java/lang/Long.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <java/util/Calendar.h>
 
       
@@ -328,7 +330,7 @@ this->enable_= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(userHashMap-
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VALIDATIONERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VALIDATIONERROR))
                         
                                     {
                                     
@@ -405,7 +407,7 @@ stringBuffer->append(this->password->getValidationInfo());
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);

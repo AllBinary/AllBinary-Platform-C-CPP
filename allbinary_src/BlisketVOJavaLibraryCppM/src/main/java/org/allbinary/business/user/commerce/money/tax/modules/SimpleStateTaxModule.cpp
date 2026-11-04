@@ -38,6 +38,8 @@
         
             #include "java/lang/Exception.h"
         
+            #include "java/lang/Boolean.h"
+        
             #include "java/lang/Float.h"
         
 #include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
@@ -160,7 +162,7 @@ this->storeFrontInterface= storeFrontInterface;
 this->document= DomDocumentHelper::create(data);
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAX))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAX))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Tax Doc: ") +JavaString::valueOf(XmlDocumentHelper::toString(this->document)), this, "getTaxRate");
@@ -263,7 +265,7 @@ this->storeFrontInterface= storeFrontInterface;
 this->document= DomDocumentHelper::create(data);
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAX))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAX))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Tax Doc: ") +JavaString::valueOf(XmlDocumentHelper::toString(this->document)), this, this->commonStrings->IS_VALID);
@@ -297,7 +299,7 @@ this->document= DomDocumentHelper::create(data);
     Node* streetAddressNode = DomSearchHelper::getNode(StreetAddressData::NAME, taxNodeChildren);;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAX))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAX))
                         
                                     {
                                     
@@ -381,7 +383,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALI
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to validate", this, this->commonStrings->IS_VALID, &e);

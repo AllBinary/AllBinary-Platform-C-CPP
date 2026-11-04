@@ -120,7 +120,7 @@ this->portion= new Portion(hashMap);
     std::string success = CategoryEntityFactory::getInstance()->getCategoryEntityInstance()->dropTable();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, this->commonStrings->DROP);
@@ -144,7 +144,7 @@ this->portion= new Portion(hashMap);
     std::string error = "Failed to drop Category table";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->DROP, &e);
@@ -172,7 +172,7 @@ this->portion= new Portion(hashMap);
     std::string success = CategoryEntityFactory::getInstance()->getCategoryEntityInstance()->createTable();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "create()");
@@ -196,7 +196,7 @@ this->portion= new Portion(hashMap);
     std::string error = "Failed to create new Category table";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "create()", &e);
@@ -227,7 +227,7 @@ this->portion= new Portion(hashMap);
     std::string result = AbSqlTableUtil::getInstance()->restoreTable(CategoryEntityFactory::getInstance()->getCategoryEntityInstance(), this->portion);;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "restore()");
@@ -251,7 +251,7 @@ this->portion= new Portion(hashMap);
     std::string error = "Failed to restore backup";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "restore()", &e);
@@ -282,7 +282,7 @@ this->portion= new Portion(hashMap);
     std::string result = AbSqlTableUtil::getInstance()->backupTable(CategoryEntityFactory::getInstance()->getCategoryEntityInstance());;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "backup()");
@@ -306,7 +306,7 @@ this->portion= new Portion(hashMap);
     std::string error = "Failed to make backup";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "backup()", &e);

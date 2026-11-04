@@ -36,6 +36,8 @@
         
             #include "java/lang/Object.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <java/io/File.h>
 
       
@@ -82,9 +84,7 @@ this->booleanVisitorInterface= booleanVisitorInterface;
     AbFile* abFile = FileWrapperUtil::wrapFile(file);;
     
 
-    bool isFileAcceptable = visit = JavaBoxes::unbox<bool>(this->booleanVisitorInterface->visit(abFile)visit)
-visit.
-                    ;;
+    bool isFileAcceptable = JavaBoxes::unbox<bool>(this->booleanVisitorInterface->visit(abFile));;
     
 
 
@@ -99,9 +99,7 @@ visit.
 
     auto VisitorFileFilter::accept(AbFile* file) -> bool{
 
-    bool isFileAcceptable = visit = JavaBoxes::unbox<bool>(this->booleanVisitorInterface->visit(file)visit)
-visit.
-                    ;;
+    bool isFileAcceptable = JavaBoxes::unbox<bool>(this->booleanVisitorInterface->visit(file));;
     
 
 

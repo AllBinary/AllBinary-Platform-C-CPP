@@ -208,7 +208,7 @@ this->processAllUnsent();
 
         try {
             
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Sending: ") +JavaString::valueOf(emailInterface->log()), this, "send");
@@ -219,7 +219,7 @@ this->processAllUnsent();
 Transport::send(emailInterface->getMimeMessage());
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Email Send Debug: ") +JavaString::valueOf(emailInterface->getDebugInfo()), this, "send");
@@ -240,7 +240,7 @@ Transport::send(emailInterface->getMimeMessage());
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->put(JavaString::valueOf("Failed Email Send Debug: ") +JavaString::valueOf(emailInterface->getDebugInfo()), this, "send", &e);

@@ -135,7 +135,7 @@ TransformInfoHttp::TransformInfoHttp(HashMap<Object*, Object*>* propertiesHashMa
 this->abContext= new AbContext(propertiesHashMap, pageContext);
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Properties HashMap: ") +JavaString::valueOf(propertiesHashMap->toString()), this, "Constructor(HashMap, PageContext, boolean)");
@@ -158,7 +158,7 @@ TransformInfoHttp::TransformInfoHttp(HttpServletRequest* request, HashMap<Object
 this->abContext= new AbContext(propertiesHashMap, pageContext);
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Properties HashMap: ") +JavaString::valueOf(propertiesHashMap->toString()), this, "Constructor(HttpServletRequest, HashMap, PageContext)");
@@ -183,7 +183,7 @@ TransformInfoHttp::TransformInfoHttp(HashMap<Object*, Object*>* databaseHashMap,
 this->abContext= new AbContext(propertiesHashMap, pageContext);
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Properties HashMap: ") +JavaString::valueOf(propertiesHashMap->toString()), this, "Constructor(HashMap, HashMap, PageContext)");
@@ -206,7 +206,7 @@ TransformInfoHttp::TransformInfoHttp(HashMap<Object*, Object*>* propertiesHashMa
 this->abContext= new AbContext(propertiesHashMap, pageContext);
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Properties HashMap: ") +JavaString::valueOf(propertiesHashMap->toString()), this, "Constructor(HashMap, PageContext)");
@@ -235,7 +235,7 @@ this->abContext= new AbContext(parentViewOfThisTransformInfoInterface->getProper
             
     auto TransformInfoHttp::set(HashMap<Object*, Object*>* hashMap) -> void{
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Properties HashMap: ") +JavaString::valueOf(hashMap->toString()), this, "set()");
@@ -293,7 +293,7 @@ this->setDataFile(JavaBoxes::unbox<std::string>(hashMap->get(transformInfoData->
 this->setData(JavaBoxes::unbox<std::string>(hashMap->get(transformInfoData->DATA)));
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORY))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORY))
                         
                                     {
                                     this->logUtil->putF(this->log(), this, "set()");

@@ -110,7 +110,7 @@ MagicalImageServlet::MagicalImageServlet() : logUtil(LogUtil::getInstance()), co
     auto MagicalImageServlet::processRequest(HttpServletRequest* request, HttpServletResponse* response) -> void{
 
     InputStream* inputStream = 
-                null
+                nullptr
             ;;
     
 
@@ -159,7 +159,7 @@ response->getOutputStream()->write(byteArray);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "processRequest()", &e);

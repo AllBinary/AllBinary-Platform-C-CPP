@@ -125,7 +125,7 @@ DomDocumentFileHelper::DomDocumentFileHelper(){
     auto DomDocumentFileHelper::save(AbFile* file, Document* document) -> void{
 
     AbDataOutputStream* dataOutputStream = 
-                null
+                nullptr
             ;;
     
 

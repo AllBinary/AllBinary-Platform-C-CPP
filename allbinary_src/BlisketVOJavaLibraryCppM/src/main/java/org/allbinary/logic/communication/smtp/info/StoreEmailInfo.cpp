@@ -84,7 +84,7 @@ StoreEmailInfo::StoreEmailInfo(StoreFrontInterface* storeFrontInterface, std::st
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
                         
                                     {
                                     

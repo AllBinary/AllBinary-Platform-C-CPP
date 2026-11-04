@@ -190,7 +190,7 @@ this->status= value;
     std::string error = JavaString::valueOf("Failed to set Order status to: ") +JavaString::valueOf(this->status);;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "setOrderStatus()", &e);

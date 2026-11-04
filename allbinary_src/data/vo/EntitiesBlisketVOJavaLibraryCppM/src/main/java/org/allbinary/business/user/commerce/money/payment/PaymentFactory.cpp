@@ -99,7 +99,7 @@ PaymentFactory::PaymentFactory(){
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->FACTORYERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->FACTORYERROR))
                         
                                     {
                                     logUtil->put(commonStrings->EXCEPTION, "PaymentFactory", commonStrings->GET_INSTANCE, &e);

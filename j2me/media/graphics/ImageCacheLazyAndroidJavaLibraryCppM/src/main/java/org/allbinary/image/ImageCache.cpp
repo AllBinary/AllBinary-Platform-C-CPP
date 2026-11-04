@@ -186,7 +186,7 @@ this->listOfList[foundIndex].add(image);
                                     {
                                     
     InputStream* inputStream = 
-                null
+                nullptr
             ;;
     
 

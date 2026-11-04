@@ -247,7 +247,7 @@ file= new File(filePath);
     
 logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("File: ") +JavaString::valueOf(file)) +JavaString::valueOf(" Wrote: ")) +JavaString::valueOf(isWritten), this, outer->commonStrings->RUN);
     
-outer->getParent()->repaint();
+outer->getParent().repaint();
     
 }
 

@@ -38,6 +38,8 @@
         
             #include "java/lang/Exception.h"
         
+            #include "java/lang/Boolean.h"
+        
 class InputAutomationRobotServiceInterface;
 class InputRobotFactory;
 class InputRobotInterface;

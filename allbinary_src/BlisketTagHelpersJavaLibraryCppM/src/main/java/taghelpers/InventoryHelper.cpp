@@ -179,7 +179,7 @@ this->id= this->request->getParameter(basicItemData->ID);
     std::string result = inventoryViewSearchInterface->getProduct(this->id);;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF("Successfull Inventory View Summary", this, "viewSummary()");
@@ -203,7 +203,7 @@ this->id= this->request->getParameter(basicItemData->ID);
     std::string error = "Failed to View Summary";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "viewSummary()", &e);
@@ -255,7 +255,7 @@ this->id= this->request->getParameter(basicItemData->ID);
     std::string result = inventoryViewSearchInterface->searchSingleDynamicPage();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF("Successful Inventory Dynamic Search", this, "searchSingleDynamicPage()");
@@ -279,7 +279,7 @@ this->id= this->request->getParameter(basicItemData->ID);
     std::string error = "Failed to search Inventory by keyword";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "searchSingleDynamicPage()", &e);

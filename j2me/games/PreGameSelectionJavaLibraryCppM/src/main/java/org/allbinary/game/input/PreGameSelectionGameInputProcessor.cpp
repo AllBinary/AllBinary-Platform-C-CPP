@@ -113,27 +113,26 @@
         #include "org/allbinary/game/input/GameInputProcessorInterface.h"
 #include "org/allbinary/game/input/PlayerGameInputCompositeInterface.h"
 #include "org/allbinary/game/input/PlayerGameInput.h"
+//#include "org/allbinary/game/input/PreGameSelectionRunnable.h"
 #include "org/allbinary/game/input/GameInputProcessorComposite.h"
 
 
-PreGameSelectionGameInputProcessor::PreGameSelectionGameInputProcessor(AllBinaryGameCanvas* gameCanvas, PreGameSelectorPaintable* preGameSelectorPaintable, GameState* nextGameState, int32_t lockedIndex) : logUtil(LogUtil::getInstance()), inputTimeHelper(new TimeDelayHelper(650)), abRunnable([&]() {
-    static thread_local PreGameSelectionGameInputProcessor* anonymousOuter0 = nullptr;
-    anonymousOuter0 = this;
-    class Anonymous0 : public ABRunnable {
-    public:
-    using ABRunnable::ABRunnable;
-    PreGameSelectionGameInputProcessor* outer = anonymousOuter0;
+PreGameSelectionGameInputProcessor::PreGameSelectionRunnable::PreGameSelectionRunnable(PreGameSelectionGameInputProcessor* inputProcessor){
+this->inputProcessor= inputProcessor;
+    
+}
 
-    public: void run(){
+
+    auto PreGameSelectionGameInputProcessor::PreGameSelectionRunnable::run() -> void{
 
         try {
             this->setRunning(true);
     
 SecondaryPlayerQueueFactory::getInstance()->add(SelectSound::getInstance());
     
-outer->gameCanvas->setGameState(outer->nextGameState);
+this->inputProcessor->gameCanvas->setGameState(this->inputProcessor->nextGameState);
     
-GameKeyEventHandler::getInstance()->removeListener(outer->getPlayerGameInput());
+GameKeyEventHandler::getInstance()->removeListener(this->inputProcessor->getPlayerGameInput());
     
 this->setRunning(false);
     
@@ -155,9 +154,8 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 
 }
 
-    };
-    return new Anonymous0();
-}()){
+
+PreGameSelectionGameInputProcessor::PreGameSelectionGameInputProcessor(AllBinaryGameCanvas* gameCanvas, PreGameSelectorPaintable* preGameSelectorPaintable, GameState* nextGameState, int32_t lockedIndex) : logUtil(LogUtil::getInstance()), inputTimeHelper(new TimeDelayHelper(650)), abRunnable(javaInner(new PreGameSelectionRunnable(this), this)){
 this->gameCanvas= gameCanvas;
     
 this->preGameSelectorPaintable= preGameSelectorPaintable;

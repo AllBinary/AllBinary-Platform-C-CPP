@@ -180,12 +180,12 @@ this->setTemplateAsInputStream();
     auto BasicTransformer::setEncryptedTemplateFileAsInputStream(AbFile* file) -> void{
 
     ByteArrayOutputStream* outputStream = 
-                null
+                nullptr
             ;;
     
 
     AbFileInputStream* inputStream = 
-                null
+                nullptr
             ;;
     
 
@@ -215,7 +215,7 @@ outputStream= dynamic_cast<ByteArrayOutputStream*>(this->streamUtil->get(inputSt
     std::vector<int8_t> decrypted = abCrypt->decrypt(outputStream->toByteArray());;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORY))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORY))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Decrypted Template: \n") +JavaString::valueOf(
@@ -234,7 +234,7 @@ this->setURIResolver(dynamic_cast<URIResolver*>(new BasicUriResolver(TransformIn
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORYERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     
@@ -270,12 +270,12 @@ this->logUtil->put(stringBuffer->toString(), this, "setEncryptedTemplateFileAsIn
     auto BasicTransformer::setEncryptedTemplateAsInputStream() -> void{
 
     ByteArrayOutputStream* outputStream = 
-                null
+                nullptr
             ;;
     
 
     ByteArrayInputStream* inputStream = 
-                null
+                nullptr
             ;;
     
 
@@ -305,7 +305,7 @@ outputStream= dynamic_cast<ByteArrayOutputStream*>(this->streamUtil->get(inputSt
     std::vector<int8_t> decrypted = abCrypt->decrypt(outputStream->toByteArray());;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORY))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORY))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Decrypted Template: \n") +JavaString::valueOf(decrypted.toString()), this, "setEncryptedTemplateAsInputStream()");
@@ -322,7 +322,7 @@ this->setURIResolver(dynamic_cast<URIResolver*>(new BasicUriResolver(TransformIn
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORYERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     this->logUtil->put(JavaString::valueOf("Failed to set with template: ") +JavaString::valueOf(this->getTransformInfoInterface()->getTemplateFilePath()), this, "setEncryptedTemplateFileAsInputStream()", &e);
@@ -347,12 +347,12 @@ this->setURIResolver(dynamic_cast<URIResolver*>(new BasicUriResolver(TransformIn
     auto BasicTransformer::setTemplateAsInputStream() -> void{
 
     AbFileInputStream* inputStream = 
-                null
+                nullptr
             ;;
     
 
     ByteArrayOutputStream* outputStream = 
-                null
+                nullptr
             ;;
     
 
@@ -370,7 +370,7 @@ this->streamUtil->close(inputStream);
         
         try {
             
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORY))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORY))
                         
                                     {
                                     this->logUtil->putF(this->getTransformInfoInterface()->log(), this, "setTemplateAsInputStream()");
@@ -397,7 +397,7 @@ this->streamUtil->close(inputStream);
     std::string filePath = pathUtil->getWithoutExtensionWithAbPath(this->getTransformInfoInterface()->getTemplateFilePath());;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORY))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORY))
                         
                                     {
                                     this->logUtil->putF(this->getTransformInfoInterface()->log(), this, "setTemplateAsInputStream()");
@@ -422,7 +422,7 @@ stringBuffer->append(transformInfoTemplateData->ENCRYPTED_EXTENSION);
     AbFile* encFile = AbFile::createAbFile(stringBuffer->toString());;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORY))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORY))
                         
                                     {
                                     this->logUtil->putF(this->getTransformInfoInterface()->log(), this, "setTemplateAsInputStream()");
@@ -431,7 +431,7 @@ stringBuffer->append(transformInfoTemplateData->ENCRYPTED_EXTENSION);
                                     }
                                 
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORY))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORY))
                         
                                     {
                                     stringBuffer= new StringMaker();
@@ -471,7 +471,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "setTemplateAsInputStream()"
     AbFile* file = AbFile::createAbFileFromAbPath(this->getTransformInfoInterface()->getTemplateFilePath());;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORY))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORY))
                         
                                     {
                                     this->logUtil->putF(this->getTransformInfoInterface()->log(), this, "setTemplateAsInputStream()");
@@ -480,7 +480,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "setTemplateAsInputStream()"
                                     }
                                 
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORY))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORY))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Template File isFile=") +JavaString::valueOf(file->isFile()), this, "setTemplateAsInputStream()");
@@ -499,7 +499,7 @@ outputStream= new ByteArrayOutputStream();
 outputStream= dynamic_cast<ByteArrayOutputStream*>(this->streamUtil->get(inputStream, outputStream, std::vector<int8_t>(16384)));
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORY))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORY))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Template: ") +JavaString::valueOf(outputStream->toString()), this, "getTemplateAsInputStream()");
@@ -579,7 +579,7 @@ stringBuffer->append(transformInfoTemplateData->ENCRYPTED_EXTENSION);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORYERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     this->logUtil->put("Failed to get Template Data", this, "setTemplateAsInputStream()", &e);

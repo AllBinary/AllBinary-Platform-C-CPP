@@ -36,6 +36,8 @@
         
             #include "java/lang/Exception.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <java/util/HashMap.h>
 
       
@@ -118,7 +120,7 @@ DeleteValidationUserView::DeleteValidationUserView(TransformInfoInterface* trans
 this->userName= (new UserName(hashMap))->get();
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("User Name: ") +JavaString::valueOf(this->userName), this, this->commonStrings->CONSTRUCTOR);
@@ -169,7 +171,7 @@ this->userName= (new UserName(hashMap))->get();
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to validate form", this, this->commonStrings->IS_VALID, &e);
@@ -227,7 +229,7 @@ this->userName= (new UserName(hashMap))->get();
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);

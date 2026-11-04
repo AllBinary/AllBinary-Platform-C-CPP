@@ -139,7 +139,7 @@ this->document= DomDocumentFileHelper::createDocument(xmlFile);
     BasicArrayList* transformInfoNodeVector = DomSearchHelper::getAllNodes(TransformInfoData::getInstance()->NAME, transformInfosChildNodeList);;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Size: ") +JavaString::valueOf(transformInfoNodeVector->size()), this, "toTransformInfoPropertiesHashMap()");
@@ -184,7 +184,7 @@ transformInfoPropertiesHashMap->put(transformInfoProperties->getName(), transfor
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
                         
                                     {
                                     

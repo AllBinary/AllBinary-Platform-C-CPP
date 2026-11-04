@@ -36,6 +36,8 @@
         
             #include "java/lang/Exception.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <java/util/HashMap.h>
 
       
@@ -162,7 +164,7 @@ InsertCustomizerValidationView::InsertCustomizerValidationView(TransformInfoInte
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("View Name: ") +JavaString::valueOf(transformInfoInterface->getName()), this, this->commonStrings->CONSTRUCTOR);
@@ -182,7 +184,7 @@ this->viewName= JavaBoxes::unbox<std::string>(requestHashMap->get(TransformInfoD
 
         try {
             
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("Started Validation", this, this->commonStrings->IS_VALID);
@@ -213,7 +215,7 @@ this->viewName= JavaBoxes::unbox<std::string>(requestHashMap->get(TransformInfoD
     int32_t size = componentVector->size();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     
@@ -244,7 +246,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALI
     std::string transformInfoName = transformInfo->getName();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Setting Template Component with ViewName: ") +JavaString::valueOf(transformInfoName), this, this->commonStrings->IS_VALID);
@@ -322,7 +324,7 @@ newViewNameStringBuffer->append(GeneratorTransformInfoData::NAME);
     std::string newViewName = newViewNameStringBuffer->toString();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     
@@ -344,7 +346,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALI
 templateViewObjectConfig->set(newViewName);
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     
@@ -388,7 +390,7 @@ TransformInfoEntityBuilder::getInstance()->update(updatedTransformInfoHashMap);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to validate", this, this->commonStrings->IS_VALID, &e);
@@ -430,7 +432,7 @@ stringBuffer->append("Error: Template Name Is Empty.");
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);

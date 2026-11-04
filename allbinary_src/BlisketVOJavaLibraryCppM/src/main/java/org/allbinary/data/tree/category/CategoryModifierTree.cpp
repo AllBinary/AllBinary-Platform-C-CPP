@@ -107,7 +107,7 @@ CategoryModifierTree::CategoryModifierTree(CategoryFactoryInterface* categoryFac
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->CATEGORY))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->CATEGORY))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, "CategoryModifierTree(CategoryFactoryInterface categoryFactoryInterface)");
@@ -123,7 +123,7 @@ CategoryModifierTree::CategoryModifierTree(CategoryFactoryInterface* categoryFac
 
         try {
             
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->CATEGORY))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->CATEGORY))
                         
                                     {
                                     this->logUtil->putF("Inserting", this, "insert()");
@@ -138,12 +138,12 @@ CategoryModifierTree::CategoryModifierTree(CategoryFactoryInterface* categoryFac
                                     parentCategoryInterface->addChild(newChildCategoryInterface);
     
 
-    AbPath* directoryToBeCreatedAbPath = new AbPath(newChildCategoryInterface->getRootFilePath()->toString() +newChildCategoryInterface->getPath()->toString(), StringUtil::getInstance()->EMPTY_STRING);;
+    AbPath* directoryToBeCreatedAbPath = new AbPath(newChildCategoryInterface->getRootFilePath()->toString() +newChildCategoryInterface->getPath().toString(), StringUtil::getInstance()->EMPTY_STRING);;
     
 this->directory->create(directoryToBeCreatedAbPath);
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->CATEGORY))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->CATEGORY))
                         
                                     {
                                     this->logUtil->putF("Saving", this, "insert()");
@@ -166,7 +166,7 @@ this->save(newChildCategoryInterface);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->FAILURE, this, "insert", &e);
@@ -190,7 +190,7 @@ this->save(newChildCategoryInterface);
                                     parentCategoryInterface->addChild(existingChildCategoryInterface);
     
 
-    AbPath* directoryToBeDeletedAbPath = new AbPath(existingChildCategoryInterface->getRootFilePath()->toString() +existingChildCategoryInterface->getPath()->toString(), StringUtil::getInstance()->EMPTY_STRING);;
+    AbPath* directoryToBeDeletedAbPath = new AbPath(existingChildCategoryInterface->getRootFilePath()->toString() +existingChildCategoryInterface->getPath().toString(), StringUtil::getInstance()->EMPTY_STRING);;
     
 this->CategoryPrivateTree::delete_(existingChildCategoryInterface);
     
@@ -211,7 +211,7 @@ this->directory->remove(directoryToBeDeletedAbPath);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->FAILURE, this, this->commonStrings->delete_, &e);

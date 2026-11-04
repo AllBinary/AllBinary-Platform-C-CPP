@@ -252,7 +252,7 @@ keywords->addAllList(substoreKeywords);
             
     auto ProductListing::savePage(std::string file, std::string data) -> void{
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->STATICPAGEGENERATIONLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->STATICPAGEGENERATIONLOGGING))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Creating File: ") +JavaString::valueOf(file), this, "generateAll()");
@@ -288,7 +288,7 @@ idOutData->flush();
 StreamUtil::getInstance()->close(idOutData);
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->STATICPAGEGENERATIONLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->STATICPAGEGENERATIONLOGGING))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Wrote Total Bytes: ") +JavaString::valueOf(newFile->length()), this, "generateAll()");
@@ -363,7 +363,7 @@ this->searchRequest->setFileBaseName(pageName);
                                     }
                                 
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->STATICPAGEGENERATIONLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->STATICPAGEGENERATIONLOGGING))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Saving Listing: ") +JavaString::valueOf(index), this, "generateAll()");
@@ -481,7 +481,7 @@ stringBuffer->append(storeFront->getStaticPath());
     AbPath* staticPath = new AbPath(stringBuffer->toString(), StringUtil::getInstance()->EMPTY_STRING);;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->STATICPAGEGENERATIONLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->STATICPAGEGENERATIONLOGGING))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Store Static Pages Path: ") +JavaString::valueOf(staticPath), this, "generateAll()");

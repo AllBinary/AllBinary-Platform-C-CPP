@@ -34,6 +34,8 @@
         
             #include "java/lang/Exception.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <java/util/HashMap.h>
 class PageContext;
 class LogUtil;
@@ -64,7 +66,7 @@ class Node;
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
         
-class ValidationViewHelper: public ViewHelper, public ValidationComponentInterface {
+class ValidationViewHelper: public ViewHelper, public virtual ValidationComponentInterface {
 
     /*protected*/ public: LogUtil* logUtil;
 

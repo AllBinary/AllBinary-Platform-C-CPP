@@ -175,7 +175,7 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
     auto BasicStoreFront::getCurrentHostName() -> std::string{
 
     std::string location = 
-                null
+                nullptr
             ;;
     
 
@@ -207,7 +207,7 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
     auto BasicStoreFront::getCurrentHostNamePath() -> std::string{
 
     std::string location = 
-                null
+                nullptr
             ;;
     
 
@@ -239,7 +239,7 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
     auto BasicStoreFront::getCurrentHomeHostName() -> std::string{
 
     std::string location = 
-                null
+                nullptr
             ;;
     
 
@@ -271,7 +271,7 @@ this->lastModified= JavaBoxes::unbox<std::string>(storeHashMap->get(EntryData::g
     auto BasicStoreFront::getCurrentHomeHostNamePath() -> std::string{
 
     std::string location = 
-                null
+                nullptr
             ;;
     
 

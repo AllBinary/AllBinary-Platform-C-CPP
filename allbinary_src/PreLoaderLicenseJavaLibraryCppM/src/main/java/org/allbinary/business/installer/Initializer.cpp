@@ -267,7 +267,7 @@ this->logUtil->put("Unable to get form data", this, "getFormData()", &e);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->PRELOADERERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRELOADERERROR))
                         
                                     {
                                     

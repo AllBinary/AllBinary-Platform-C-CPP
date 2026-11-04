@@ -239,7 +239,7 @@ this->fileAbPath= abPath;
 this->file= AbFile::createAbFileFromAbPath(this->fileAbPath);
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("File: ") +JavaString::valueOf(this->fileAbPath->toString()), this, this->commonStrings->CONSTRUCTOR);
@@ -254,7 +254,7 @@ this->file= AbFile::createAbFileFromAbPath(this->fileAbPath);
             
     auto StoreFileGenerator::process(std::string input) -> std::string{
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("Processing", this, this->commonStrings->PROCESS);
@@ -293,7 +293,7 @@ FileUtil::getInstance()->write(inputStream, this->file);
                         }
                             
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("Processed", this, this->commonStrings->PROCESS);

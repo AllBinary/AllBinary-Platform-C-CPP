@@ -116,7 +116,7 @@ CloudStreamUtil* CloudStreamUtil::instance = CloudStreamUtil::instance_owner();
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Cloud File Bytes: ") +JavaString::valueOf(available), this, "processRequest()");
@@ -152,7 +152,7 @@ CloudStreamUtil* CloudStreamUtil::instance = CloudStreamUtil::instance_owner();
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Local File Bytes: ") +JavaString::valueOf(available), this, "processRequest()");
@@ -173,7 +173,7 @@ available= inputStream->available();
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Cloud File Bytes: ") +JavaString::valueOf(available), this, "processRequest()");
@@ -212,7 +212,7 @@ available= inputStream->available();
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Local File Bytes: ") +JavaString::valueOf(available), this, "processRequest()");

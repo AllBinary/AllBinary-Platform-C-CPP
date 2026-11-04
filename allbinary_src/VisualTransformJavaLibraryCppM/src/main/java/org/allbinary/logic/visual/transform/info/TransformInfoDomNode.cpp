@@ -103,7 +103,7 @@
 
 TransformInfoDomNode::TransformInfoDomNode(Node* node) : logUtil(LogUtil::getInstance()){
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Constructing TransformInfo From TransformInfoDomNode: ") +JavaString::valueOf(node->getNodeName()), this, "TransformInfoDomNode(Node node)");
@@ -131,7 +131,7 @@ TransformInfoDomNode::TransformInfoDomNode(Node* node) : logUtil(LogUtil::getIns
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     
@@ -183,7 +183,7 @@ this->transformInfoInterface= dynamic_cast<TransformInfoInterface*>(new Transfor
                                 
                         else {
                             
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     
@@ -294,7 +294,7 @@ stringBuffer->append("\"/>");
     std::string key = stringBuffer->toString();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Component Key: ") +JavaString::valueOf(key), this, "getReplaceKey()");

@@ -100,7 +100,7 @@ InventoryHelperFactory::InventoryHelperFactory() : logUtil(LogUtil::getInstance(
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORYERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     

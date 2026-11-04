@@ -145,7 +145,7 @@ this->value= value;
     BasicArrayList* nameSpaceWithPropertiesVector = sepTokenizer->getTokensFromString(packages, new BasicArrayListD());;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("\nSep Tokens: ") +JavaString::valueOf(nameSpaceWithPropertiesVector->toString()), this, "NameSpaceRequestParam()");
@@ -180,7 +180,7 @@ list->clear();
     BasicArrayList* nameSpaceAndPropertiesVector = nameSpaceAndPropertiesTokenizer->getTokensFromString(nameSpaceWithProperties, list);;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("\nPackageName and PackageName Properties Tokens: ") +JavaString::valueOf(nameSpaceAndPropertiesVector->toString()), this, "NameSpaceRequestParam()");
@@ -232,7 +232,7 @@ packageIndex++;
 }
 
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("NameSpace: ") +JavaString::valueOf(this->nameSpaceVector->toString()), this, "NameSpaceRequestParam()");
@@ -245,7 +245,7 @@ packageIndex++;
 
     auto NameSpaceRequestParam::getPackages() -> BasicArrayList*{
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("NameSpace: ") +JavaString::valueOf(this->nameSpaceVector->toString()), this, "getPackages()");
@@ -280,7 +280,7 @@ packageIndex++;
                                     }
                                 
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Package Properties: ") +JavaString::valueOf(packagePropertiesHashMap->toString()), this, "getPackagesProperties()");
@@ -301,7 +301,7 @@ packageIndex++;
 
     auto NameSpaceRequestParam::getValue() -> std::string{
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("\nValue: ") +JavaString::valueOf(this->value), this, "getValue()");
@@ -372,7 +372,7 @@ list->clear();
     std::string propertyValue = JavaBoxes::unbox<std::string>(propertyNameValueVector->get(index2++));;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("\nProperty Name: ") +JavaString::valueOf(propertyName)) +JavaString::valueOf("\nProperty Value: ")) +JavaString::valueOf(propertyValue), this, "generatePackagePropertiesHashMap()");

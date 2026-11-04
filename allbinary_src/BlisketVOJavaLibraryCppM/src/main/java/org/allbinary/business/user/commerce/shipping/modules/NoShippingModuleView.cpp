@@ -36,6 +36,8 @@
         
             #include "java/lang/Exception.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <org/allbinary/business/user/commerce/shipping/ShippingMethodData.h>
 
       
@@ -152,7 +154,7 @@ shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, Shi
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "toXmlNode", &e);

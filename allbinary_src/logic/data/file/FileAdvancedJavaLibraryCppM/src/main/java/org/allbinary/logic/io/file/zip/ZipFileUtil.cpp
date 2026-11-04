@@ -236,7 +236,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "create", &e);
     
 
     ZipInputStream* inputStream = 
-                null
+                nullptr
             ;;
     
 

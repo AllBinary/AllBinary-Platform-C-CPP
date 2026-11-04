@@ -51,7 +51,7 @@ class LogUtil;
 class CommonStrings;
 class SecondaryPlayerQueueFactory;
 class SelectSound;
-class ABRunnable;
+#include <org/allbinary/thread/ABRunnable.h>
 class ThreadObjectUtil;
 class TimeDelayHelper;
 
@@ -75,6 +75,7 @@ class TimeDelayHelper;
         #include "org/allbinary/game/input/GameInputProcessorInterface.h"
 #include "org/allbinary/game/input/PlayerGameInputCompositeInterface.h"
 class PlayerGameInput;
+//class PreGameSelectionRunnable;
 class GameInputProcessorComposite;
 
                                 
@@ -82,6 +83,7 @@ class GameInputProcessorComposite;
 
         
 class PreGameSelectionGameInputProcessor: public Processor, public virtual GameInputProcessorInterface, public virtual PlayerGameInputCompositeInterface {
+public: class PreGameSelectionRunnable;
 
     /*protected*/ public: LogUtil* logUtil;
 
@@ -97,6 +99,20 @@ class PreGameSelectionGameInputProcessor: public Processor, public virtual GameI
 
     private: int32_t lockedIndex;
 
+//inner= member=true isStatic=
+public: class PreGameSelectionRunnable: public ABRunnable {
+
+    public: PreGameSelectionGameInputProcessor* outer = nullptr;
+
+    private: PreGameSelectionGameInputProcessor* inputProcessor;
+
+public: PreGameSelectionRunnable(PreGameSelectionGameInputProcessor* inputProcessor);
+
+    public: void run();
+
+};
+
+            
     private: ABRunnable* abRunnable;
 
 public: PreGameSelectionGameInputProcessor(AllBinaryGameCanvas* gameCanvas, PreGameSelectorPaintable* preGameSelectorPaintable, GameState* nextGameState, int32_t lockedIndex);

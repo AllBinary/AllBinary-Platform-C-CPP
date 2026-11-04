@@ -229,7 +229,7 @@ generatedBufferedImageArray= MirrorImageUtil::getInstance()->getImages(bufferedI
     
 outer->result= BufferedImageUtil2::getInstance()->createSpriteImage(generatedBufferedImageArray);
     
-outer->getParent()->repaint();
+outer->getParent().repaint();
     
 
     File* file = imageProcessorInput->getFiles()[index];;

@@ -38,6 +38,8 @@
         
             #include "java/lang/Exception.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <java/util/HashMap.h>
 
       
@@ -213,7 +215,7 @@ this->categoryAbPath= pathUtil->removeNameFromPath(categoryThemeAbPath->toString
 this->themeName= pathData->getNameFromPath(categoryThemeAbPath->toString());
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     
@@ -399,7 +401,7 @@ this->styleValidationInterface= new CssStyleValidation(document);
     bool isValid = Boolean::TRUE;;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->IS_VALID);
@@ -435,7 +437,7 @@ this->styleValidationInterface= new CssStyleValidation(document);
                                     }
                                 
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("End: ") +JavaString::valueOf(isValid), this, this->commonStrings->IS_VALID);
@@ -456,7 +458,7 @@ this->styleValidationInterface= new CssStyleValidation(document);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put("Failed to validate form", this, this->commonStrings->IS_VALID, &e);
@@ -498,7 +500,7 @@ stringBuffer->append("Theme Validation Error");
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -550,7 +552,7 @@ stringBuffer->append("Theme Validation Error");
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->getName();
+                        return JavaBoxes::toObject(this->getName());
     
 }
 

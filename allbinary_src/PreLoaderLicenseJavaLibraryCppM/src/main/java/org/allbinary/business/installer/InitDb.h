@@ -38,6 +38,8 @@
         
             #include "java/lang/Exception.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <java/lang/reflect/Method.h>
 class DbConnectionInfo;
 class LicensingException;

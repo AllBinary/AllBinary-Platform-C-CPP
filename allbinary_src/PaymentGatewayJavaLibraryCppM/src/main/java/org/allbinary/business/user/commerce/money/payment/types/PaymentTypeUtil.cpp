@@ -244,7 +244,7 @@ this->paymentTypeVector->add(paymentType);
             
     auto PaymentTypeUtil::initDefault(std::string storeName) -> void{
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->PAYMENT))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PAYMENT))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("initDefault Payment: ") +JavaString::valueOf(this->defaultName), this, "initDefault");
@@ -298,7 +298,7 @@ stringBuffer->append(this->PAYMENTGATEWAYFILEPATHSTRING);
     std::string defaultPaymentGatewayNodeValue = DomNodeHelper::getTextNodeValue(defaultPaymentGatewayNode);;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->PAYMENT))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PAYMENT))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("DefaultPaymentGatewayNodeValue: ") +JavaString::valueOf(defaultPaymentGatewayNodeValue), this, "initDefault");
@@ -327,7 +327,7 @@ stringBuffer->append(this->PAYMENTGATEWAYFILEPATHSTRING);
             
     auto PaymentTypeUtil::getDefault(std::string storeName) -> PaymentType*{
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->PAYMENT))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PAYMENT))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, "getDefault");

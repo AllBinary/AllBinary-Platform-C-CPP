@@ -38,6 +38,8 @@
         
             #include "java/lang/Integer.h"
         
+            #include "java/lang/Boolean.h"
+        
 class GameFeatureEvent;
 class GameFeatureEventHandler;
 class BooleanFactory;

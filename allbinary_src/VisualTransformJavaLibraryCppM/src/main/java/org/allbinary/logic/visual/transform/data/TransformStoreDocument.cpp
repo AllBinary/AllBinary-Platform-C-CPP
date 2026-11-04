@@ -103,7 +103,7 @@ TransformStoreDocument::TransformStoreDocument(PageContext* pageContext, Weblisk
     std::string storeName = weblisketSession->getStoreName();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Using Session StoreName: ") +JavaString::valueOf(storeName), this, this->commonStrings->CONSTRUCTOR);
@@ -120,7 +120,7 @@ this->getBaseNode()->appendChild((new RequestParams(dynamic_cast<HttpServletRequ
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CONSTRUCTOR, &e);
@@ -156,7 +156,7 @@ this->getBaseNode()->appendChild(searchRequest->getParams()->getParamsNode(this-
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CONSTRUCTOR, &e);

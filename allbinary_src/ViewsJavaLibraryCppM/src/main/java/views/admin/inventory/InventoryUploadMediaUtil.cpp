@@ -149,7 +149,7 @@ this->itemInterface= itemInterface;
             
     auto InventoryUploadMediaUtil::saveFiles(std::vector<int8_t> byteArray, std::string fileName, MediaData* mediaData) -> ItemInterface*{
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->CATEGORY))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->CATEGORY))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Start FileName: ") +JavaString::valueOf(fileName), this, "saveFiles()");
@@ -213,7 +213,7 @@ stringBuffer->append(mediaData->getName());
     AbFile* originalImageFile = AbFile::createAbFile(stringBuffer->toString());;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->CATEGORY))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->CATEGORY))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Saving Original Image: ") +JavaString::valueOf(originalImageFile), this, "saveFiles()");
@@ -232,7 +232,7 @@ fileUtil->write(new ByteArrayInputStream(byteArray), originalImageFile);
     bool isMediaSupported = uploadMedia->isWriterSupported(mediaData->getName()) || uploadMedia->isReaderSupported(mediaData->getName());;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->CATEGORY))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->CATEGORY))
                         
                                     {
                                     stringBuffer->delete_(0, stringBuffer->length());
@@ -263,7 +263,7 @@ this->setFileNames(fileName);
     bool isMediaResizable = uploadMedia->isWriterMedia(mediaData->getName(), MediaTypeData::getInstance()->RESIZABLE_MEDIA);;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->CATEGORY))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->CATEGORY))
                         
                                     {
                                     stringBuffer->delete_(0, stringBuffer->length());
@@ -290,7 +290,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "saveFiles()");
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->CATEGORY))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->CATEGORY))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Saving Small Image: ") +JavaString::valueOf(this->itemInterface->getSmallImage()), this, "saveFiles()");
@@ -312,7 +312,7 @@ this->mediaUtil->saveImageFile(originalImageFile, this->itemInterface->getLargeI
     bool isConvertable = mediaData->isConvertableTo(defaultMediaData);;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->CATEGORY))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->CATEGORY))
                         
                                     {
                                     stringBuffer->delete_(0, stringBuffer->length());
@@ -339,7 +339,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "saveFiles()");
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->CATEGORY))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->CATEGORY))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Saving Small Image: ") +JavaString::valueOf(this->itemInterface->getSmallImage()), this, "saveFiles()");
@@ -388,7 +388,7 @@ fileUtil->write(new ByteArrayInputStream(byteArray), largeImageFile);
                                     }
                                 
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->CATEGORY))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->CATEGORY))
                         
                                     {
                                     

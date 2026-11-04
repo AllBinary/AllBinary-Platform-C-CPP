@@ -81,7 +81,7 @@
 
 BasicEmailInfo::BasicEmailInfo(std::string subject, std::string textBody) : logUtil(LogUtil::getInstance()){
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
                         
                                     {
                                     

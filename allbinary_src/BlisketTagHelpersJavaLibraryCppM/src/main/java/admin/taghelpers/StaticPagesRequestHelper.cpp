@@ -195,7 +195,7 @@ this->searchParams= new SearchParams(this->request);
 
         try {
             
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->putF("Generated Static Pages Notification Email", this, "email");
@@ -239,7 +239,7 @@ adminUserEmailEventHandler->receiveEmailInfo(UserEmailEventNameData::STOREGENERA
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->EMAILLOGGINGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->EMAILLOGGINGERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->FAILURE, this, "email", &e);
@@ -268,7 +268,7 @@ adminUserEmailEventHandler->receiveEmailInfo(UserEmailEventNameData::STOREGENERA
 this->email();
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "generateStaticPages()");
@@ -292,7 +292,7 @@ this->email();
     std::string error = "Failed to generate staticpages table";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "generateStaticPages()", &e);
@@ -331,7 +331,7 @@ FileUtil::getInstance()->copy(fromAbPath, toAbPath);
     std::string success = "Made Public";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "makePublic()");
@@ -355,7 +355,7 @@ FileUtil::getInstance()->copy(fromAbPath, toAbPath);
     std::string error = "Failed to makePublic";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "makePublic()", &e);

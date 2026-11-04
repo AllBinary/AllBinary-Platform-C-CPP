@@ -40,6 +40,8 @@
         
             #include "java/lang/Integer.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <org/allbinary/game/configuration/event/GameFeatureEvent.h>
 
       

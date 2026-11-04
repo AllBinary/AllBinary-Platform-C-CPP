@@ -219,7 +219,7 @@ this->mediaData= MediaData::get(pathData->getExtension(this->imageFileName));
 this->imageFileName= pathUtil->getWithoutExtension(this->imageFileName);
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
                         
                                     {
                                     
@@ -309,7 +309,7 @@ this->addDomNodeInterface(new BasicItemView(this->itemInterface, vector));
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);

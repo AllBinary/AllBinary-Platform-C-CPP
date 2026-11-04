@@ -136,7 +136,7 @@ TransformInfoObjectConfigAndManipulatorFactory::TransformInfoObjectConfigAndMani
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Could Not Load Object Config", getInstance(), this->commonStrings->GET_INSTANCE, &e);
@@ -210,7 +210,7 @@ TransformInfoObjectConfigAndManipulatorFactory::TransformInfoObjectConfigAndMani
                                     }
                                 
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORYERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     this->logUtil->put(commonStrings.EXCEPTION, getInstance(), commonStrings.GET_INSTANCE, &e);
@@ -284,7 +284,7 @@ TransformInfoObjectConfigAndManipulatorFactory::TransformInfoObjectConfigAndMani
                                     }
                                 
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORYERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     this->logUtil->put(commonStrings.EXCEPTION, getInstance(), "getInstance(document)", &e);

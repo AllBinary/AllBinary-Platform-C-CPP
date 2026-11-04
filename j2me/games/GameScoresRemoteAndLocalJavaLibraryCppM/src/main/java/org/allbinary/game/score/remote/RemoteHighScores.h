@@ -38,6 +38,8 @@
         
             #include "java/lang/Long.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <java/util/Enumeration.h>
 class BasicArrayList;
 class GameInfo;

@@ -129,7 +129,7 @@ OverrideObjectConfigRootContextView::OverrideObjectConfigRootContextView(Transfo
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("View Name: ") +JavaString::valueOf(transformInfoInterface->getName()), this, "OverrideObjectRootContextView()");
@@ -146,7 +146,7 @@ OverrideObjectConfigRootContextView::OverrideObjectConfigRootContextView(Transfo
 
         try {
             
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("View Name: ") +JavaString::valueOf(this->getTransformInfoInterface()->getName()), this, "view()");
@@ -198,7 +198,7 @@ stringBuffer->append(CommonSeps::getInstance()->SPACE);
     Document* overrideObjectConfigDocument = this->getTransformInfoInterface()->getObjectConfigInterface()->toXmlDoc();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Retrieved OverrideObjectConfig: ") +JavaString::valueOf(XmlDocumentHelper::toString(overrideObjectConfigDocument)), this, "view()");
@@ -224,7 +224,7 @@ stringBuffer->append(CommonSeps::getInstance()->SPACE);
 componentInterface->getTransformInfoInterface()->setObjectConfigInterface(transformInfoObjectConfigInterface);
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Set OverrideObjectConfig: ") +JavaString::valueOf(componentInterface->getTransformInfoInterface()->getObjectConfigInterface()->toString()), this, "view()");
@@ -245,7 +245,7 @@ componentInterface->getTransformInfoInterface()->setObjectConfigInterface(transf
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPERERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);

@@ -38,6 +38,8 @@
         
             #include "java/lang/RuntimeException.h"
         
+            #include "java/lang/Boolean.h"
+        
 class CommonStrings;
 class Document;
 class Node;

@@ -180,7 +180,7 @@
 
 TableTag::TableTag() : logUtil(LogUtil::getInstance()){
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAG))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAG))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
@@ -340,7 +340,7 @@ this->total= total;
     std::string error = "Failed to drop table";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->DROP, &e);
@@ -396,7 +396,7 @@ this->total= total;
     std::string error = "Failed to create table";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "create()", &e);
@@ -452,7 +452,7 @@ this->total= total;
     std::string error = "Failed to restore backup";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "restore()", &e);
@@ -508,7 +508,7 @@ this->total= total;
     std::string error = "Failed to make backup";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "backup()", &e);
@@ -561,7 +561,7 @@ this->total= total;
     std::string error = "Failed to insert";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "insert()", &e);
@@ -614,7 +614,7 @@ this->total= total;
     std::string error = "Failed to delete";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "delete()", &e);
@@ -667,7 +667,7 @@ this->total= total;
     std::string error = "Failed to update";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "update()", &e);
@@ -694,7 +694,7 @@ this->total= total;
 
         try {
             
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAG))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAG))
                         
                                     {
                                     
@@ -723,7 +723,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->tagStrings->DO_START_T
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAG))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAG))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("TableTag RequestHelper: ") +JavaString::valueOf(this->getTagRequestHelperFactoryInterface()->getClass()->getName()), this, this->tagStrings->DO_START_TAG);
@@ -736,7 +736,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->tagStrings->DO_START_T
                                 
                         else {
                             
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAG))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAG))
                         
                                     {
                                     this->logUtil->putF("TableTag RequestHelper: null", this, this->tagStrings->DO_START_TAG);
@@ -748,7 +748,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->tagStrings->DO_START_T
                         }
                             
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAG))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAG))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("TableTag this.getCommand(): ") +JavaString::valueOf(this->getCommand()), this, tagStrings.DO_START_TAG);
@@ -810,7 +810,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->tagStrings->DO_START_T
     std::string output = this->backup();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAGEXTRAOUTPUT))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAGEXTRAOUTPUT))
                         
                                     {
                                     this->pageContext->getOut()->print(JavaString::valueOf(output) +JavaString::valueOf("<br />"));
@@ -841,7 +841,7 @@ this->getPropertiesHashMap()->put("total", this->getTotal());
     std::string output = this->restore();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAGEXTRAOUTPUT))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAGEXTRAOUTPUT))
                         
                                     {
                                     this->pageContext->getOut()->print(JavaString::valueOf(output) +JavaString::valueOf("<br />"));
@@ -868,7 +868,7 @@ this->getPropertiesHashMap()->put("total", this->getTotal());
     std::string output = this->drop();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAGEXTRAOUTPUT))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAGEXTRAOUTPUT))
                         
                                     {
                                     this->pageContext->getOut()->print(JavaString::valueOf(output) +JavaString::valueOf("<br />"));
@@ -895,7 +895,7 @@ this->getPropertiesHashMap()->put("total", this->getTotal());
     std::string output = this->create();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAGEXTRAOUTPUT))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAGEXTRAOUTPUT))
                         
                                     {
                                     this->pageContext->getOut()->print(JavaString::valueOf(output) +JavaString::valueOf("<br />"));
@@ -922,7 +922,7 @@ this->getPropertiesHashMap()->put("total", this->getTotal());
     std::string output = this->insert();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAGEXTRAOUTPUT))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAGEXTRAOUTPUT))
                         
                                     {
                                     this->pageContext->getOut()->print(JavaString::valueOf(output) +JavaString::valueOf("<br />"));
@@ -941,7 +941,7 @@ this->getPropertiesHashMap()->put("total", this->getTotal());
     std::string output = this->delete_();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAGEXTRAOUTPUT))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAGEXTRAOUTPUT))
                         
                                     {
                                     this->pageContext->getOut()->print(JavaString::valueOf(output) +JavaString::valueOf("<br />"));
@@ -960,7 +960,7 @@ this->getPropertiesHashMap()->put("total", this->getTotal());
     std::string output = this->update();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAGEXTRAOUTPUT))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAGEXTRAOUTPUT))
                         
                                     {
                                     this->pageContext->getOut()->print(JavaString::valueOf(output) +JavaString::valueOf("<br />"));

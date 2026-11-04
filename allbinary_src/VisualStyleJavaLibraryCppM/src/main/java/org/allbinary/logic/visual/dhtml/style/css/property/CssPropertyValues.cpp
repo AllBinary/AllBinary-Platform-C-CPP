@@ -132,7 +132,7 @@ this->propertyValueVector= new BasicArrayListD();
     BasicArrayList* cssPropertyNodeVector = DomSearchHelper::getAllNodes(CssPropertyValueData::getInstance()->NAME, node->getChildNodes());;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->STYLE))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->STYLE))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Number Of Properties: ") +JavaString::valueOf(cssPropertyNodeVector->size()), this, "CssProperties()");
@@ -160,7 +160,7 @@ this->propertyValueVector= new BasicArrayListD();
     std::string propertyValue = DomNodeHelper::getTextNodeValue(valueNode);;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->STYLE))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->STYLE))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Property Value: ") +JavaString::valueOf(propertyValue), this, "CssProperties()");
@@ -258,7 +258,7 @@ index++;
             
     auto CssPropertyValues::toXmlNode(Document* document) -> Node*{
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     

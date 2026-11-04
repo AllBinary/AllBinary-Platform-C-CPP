@@ -152,7 +152,7 @@ pageContext.getOut()->print(result);
     std::string error = "Failed to search Inventory by keyword";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "search()", &e);
@@ -171,7 +171,7 @@ pageContext.getOut()->print(JavaString::valueOf(JavaString::valueOf("Exception: 
 } catch(Exception& e2) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->LICENSINGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->LICENSINGERROR))
                         
                                     {
                                     this->logUtil->put("Exception in Exception Handling", this, "search()", &e);
@@ -225,7 +225,7 @@ pageContext.getOut()->print(result);
     std::string error = "Failed to View Summary";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "viewSummary()", &e);
@@ -244,7 +244,7 @@ pageContext.getOut()->print(JavaString::valueOf(JavaString::valueOf("Exception: 
 } catch(Exception& e2) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->LICENSINGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->LICENSINGERROR))
                         
                                     {
                                     this->logUtil->put("Exception in Exception Handling", this, "viewSummary())", &e);

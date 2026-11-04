@@ -122,12 +122,12 @@ PointsDomUtil* PointsDomUtil::instance = PointsDomUtil::instance_owner();
     
 
     GPoint* firstPoint = 
-                null
+                nullptr
             ;;
     
 
     GPoint* rotatedFirstPoint = 
-                null
+                nullptr
             ;;
     
 

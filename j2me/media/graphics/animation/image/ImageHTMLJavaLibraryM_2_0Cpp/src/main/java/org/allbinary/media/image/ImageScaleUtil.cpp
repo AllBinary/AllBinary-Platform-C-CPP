@@ -161,7 +161,7 @@ ImageScaleUtil::ImageScaleUtil() : playnUtil(HTMLPlaynUtil::getInstance()){
                                     {
                                     
     CoreImage* originalPlayNImage = 
-                null
+                nullptr
             ;;
     
 

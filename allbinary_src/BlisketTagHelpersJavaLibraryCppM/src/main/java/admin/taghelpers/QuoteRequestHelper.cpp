@@ -36,6 +36,8 @@
         
             #include "java/lang/Exception.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <java/util/HashMap.h>
 
       
@@ -168,7 +170,7 @@ QuoteRequestEntityFactory::getInstance()->getQuoteRequestEntityInstance()->inser
     std::string success = "New QuoteRequest Successfully added to the QuoteRequest Table";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "add()");
@@ -192,7 +194,7 @@ QuoteRequestEntityFactory::getInstance()->getQuoteRequestEntityInstance()->inser
     std::string error = "Failed to add QuoteRequest";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "add()", &e);
@@ -225,7 +227,7 @@ QuoteRequestEntityFactory::getInstance()->getQuoteRequestEntityInstance()->updat
     std::string success = "New QuoteRequest Successfully updated";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "update()");
@@ -249,7 +251,7 @@ QuoteRequestEntityFactory::getInstance()->getQuoteRequestEntityInstance()->updat
     std::string error = "Failed to update QuoteRequest";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "update()", &e);

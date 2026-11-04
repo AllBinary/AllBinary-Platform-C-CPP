@@ -32,6 +32,8 @@
             #include "java/lang/String.h"
 
         
+            #include "java/lang/Boolean.h"
+        
 class SearchRequest;
 class Document;
 class Node;

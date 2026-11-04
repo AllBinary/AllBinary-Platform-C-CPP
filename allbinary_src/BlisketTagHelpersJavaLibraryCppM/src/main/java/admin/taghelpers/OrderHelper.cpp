@@ -36,6 +36,8 @@
         
             #include "java/lang/Exception.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <java/util/HashMap.h>
 
       
@@ -211,7 +213,7 @@ paymentGatewayBoolean= Boolean::TRUE;
                                     }
                                 
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     
@@ -243,7 +245,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "setPaymentGateway()");
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     
@@ -309,7 +311,7 @@ order->setStoreName(this->storeFrontInterface->getName());
     std::string result = OrderProcessorUtil::getInstance()->process(this->weblisketSession->getUserName(), dynamic_cast<Order*>(order));;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Successfully Processed Order: ") +JavaString::valueOf(result), this, "processOrder()");
@@ -350,7 +352,7 @@ stringBuffer->append(" Exception Getting Id");
     std::string error = stringBuffer->toString();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->PROCESS, &e);

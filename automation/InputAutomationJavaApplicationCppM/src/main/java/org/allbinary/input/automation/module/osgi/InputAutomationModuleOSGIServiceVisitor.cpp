@@ -40,6 +40,8 @@
         
             #include "java/lang/Exception.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <bundle/input/automation/module/InputAutomationModuleService.h>
 
       
@@ -95,7 +97,7 @@ InputAutomationModuleOSGIServiceVisitor::InputAutomationModuleOSGIServiceVisitor
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->visit(dynamic_cast<OSGIServiceInterface*>(anyType));;
+                        return JavaBoxes::toObject(this->visit(dynamic_cast<OSGIServiceInterface*>(anyType)););
     
 }
 

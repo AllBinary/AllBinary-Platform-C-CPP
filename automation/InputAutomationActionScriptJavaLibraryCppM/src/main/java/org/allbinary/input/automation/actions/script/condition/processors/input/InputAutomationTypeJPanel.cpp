@@ -115,9 +115,9 @@ this->jLabel1->setText("Input Type:");
     
 this->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(layout->createSequentialGroup()->addComponent(jLabel1)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(inputAutomationTypeJComboBox, 0, 98, Short::MAX_VALUE)));
+layout->setHorizontalGroup(layout->createParallelGroup(GroupLayout::Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addComponent(jLabel1)->addPreferredGap(LayoutStyle::ComponentPlacement->RELATED)->addComponent(inputAutomationTypeJComboBox, 0, 98, Short::MAX_VALUE)));
     
-layout->setVerticalGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(layout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(jLabel1)->addComponent(inputAutomationTypeJComboBox, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)));
+layout->setVerticalGroup(layout->createParallelGroup(GroupLayout::Alignment->LEADING)->addGroup(layout->createParallelGroup(GroupLayout::Alignment->BASELINE)->addComponent(jLabel1)->addComponent(inputAutomationTypeJComboBox, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)));
     
 }
 

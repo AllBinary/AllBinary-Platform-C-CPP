@@ -225,9 +225,9 @@ this->newActionScriptInputJPanel->setLayout(new java::awt::GridLayout(1, 0));
     
 this->childActionScriptConditionJPanel->setLayout(childActionScriptConditionJPanelLayout);
     
-childActionScriptConditionJPanelLayout->setHorizontalGroup(childActionScriptConditionJPanelLayout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGap(0, 229, Short::MAX_VALUE));
+childActionScriptConditionJPanelLayout->setHorizontalGroup(childActionScriptConditionJPanelLayout->createParallelGroup(GroupLayout::Alignment->LEADING)->addGap(0, 229, Short::MAX_VALUE));
     
-childActionScriptConditionJPanelLayout->setVerticalGroup(childActionScriptConditionJPanelLayout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGap(0, 8, Short::MAX_VALUE));
+childActionScriptConditionJPanelLayout->setVerticalGroup(childActionScriptConditionJPanelLayout->createParallelGroup(GroupLayout::Alignment->LEADING)->addGap(0, 8, Short::MAX_VALUE));
     
 this->newActionScriptConditionJPanel->setLayout(new java::awt::GridLayout(1, 0));
     
@@ -242,9 +242,9 @@ this->removeJPanel->setMinimumSize(new java::awt::Dimension(30, 20));
     
 this->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(layout->createSequentialGroup()->addComponent(scriptItemJPanel, GroupLayout::PREFERRED_SIZE, 167, GroupLayout::PREFERRED_SIZE)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(removeJPanel, GroupLayout::DEFAULT_SIZE, 56, Short::MAX_VALUE))->addComponent(newActionScriptInputJPanel, GroupLayout::DEFAULT_SIZE, 229, Short::MAX_VALUE)->addComponent(newActionScriptConditionJPanel, GroupLayout::DEFAULT_SIZE, 229, Short::MAX_VALUE)->addComponent(childActionScriptConditionJPanel, GroupLayout::DEFAULT_SIZE, GroupLayout::DEFAULT_SIZE, Short::MAX_VALUE));
+layout->setHorizontalGroup(layout->createParallelGroup(GroupLayout::Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addComponent(scriptItemJPanel, GroupLayout::PREFERRED_SIZE, 167, GroupLayout::PREFERRED_SIZE)->addPreferredGap(LayoutStyle::ComponentPlacement->RELATED)->addComponent(removeJPanel, GroupLayout::DEFAULT_SIZE, 56, Short::MAX_VALUE))->addComponent(newActionScriptInputJPanel, GroupLayout::DEFAULT_SIZE, 229, Short::MAX_VALUE)->addComponent(newActionScriptConditionJPanel, GroupLayout::DEFAULT_SIZE, 229, Short::MAX_VALUE)->addComponent(childActionScriptConditionJPanel, GroupLayout::DEFAULT_SIZE, GroupLayout::DEFAULT_SIZE, Short::MAX_VALUE));
     
-layout->setVerticalGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(layout->createSequentialGroup()->addGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addComponent(scriptItemJPanel, GroupLayout::DEFAULT_SIZE, 31, Short::MAX_VALUE)->addComponent(removeJPanel, GroupLayout::Alignment::TRAILING, GroupLayout::DEFAULT_SIZE, 31, Short::MAX_VALUE))->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(childActionScriptConditionJPanel, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(newActionScriptConditionJPanel, GroupLayout::PREFERRED_SIZE, 28, GroupLayout::PREFERRED_SIZE)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(newActionScriptInputJPanel, GroupLayout::PREFERRED_SIZE, 30, GroupLayout::PREFERRED_SIZE)));
+layout->setVerticalGroup(layout->createParallelGroup(GroupLayout::Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addGroup(layout->createParallelGroup(GroupLayout::Alignment->LEADING)->addComponent(scriptItemJPanel, GroupLayout::DEFAULT_SIZE, 31, Short::MAX_VALUE)->addComponent(removeJPanel, GroupLayout::Alignment->TRAILING, GroupLayout::DEFAULT_SIZE, 31, Short::MAX_VALUE))->addPreferredGap(LayoutStyle::ComponentPlacement->RELATED)->addComponent(childActionScriptConditionJPanel, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->addPreferredGap(LayoutStyle::ComponentPlacement->RELATED)->addComponent(newActionScriptConditionJPanel, GroupLayout::PREFERRED_SIZE, 28, GroupLayout::PREFERRED_SIZE)->addPreferredGap(LayoutStyle::ComponentPlacement->RELATED)->addComponent(newActionScriptInputJPanel, GroupLayout::PREFERRED_SIZE, 30, GroupLayout::PREFERRED_SIZE)));
     
 }
 

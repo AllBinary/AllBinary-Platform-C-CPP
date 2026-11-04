@@ -133,7 +133,7 @@ PaymentProcessTag::PaymentProcessTag() : logUtil(LogUtil::getInstance()){
 } catch(LicensingException& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->LICENSINGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->LICENSINGERROR))
                         
                                     {
                                     this->logUtil->put("LicensingException", this, this->commonStrings->PROCESS, &e);
@@ -152,7 +152,7 @@ PaymentProcessTag::PaymentProcessTag() : logUtil(LogUtil::getInstance()){
  catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAGERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->PROCESS, &e);

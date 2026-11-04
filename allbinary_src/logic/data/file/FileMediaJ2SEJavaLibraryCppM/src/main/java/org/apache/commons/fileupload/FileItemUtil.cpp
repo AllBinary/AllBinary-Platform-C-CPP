@@ -122,12 +122,12 @@ FileItemUtil* FileItemUtil::instance = FileItemUtil::instance_owner();
     
 
     InputStream* inputStream = 
-                null
+                nullptr
             ;;
     
 
     ByteArrayOutputStream* outputStream = 
-                null
+                nullptr
             ;;
     
 

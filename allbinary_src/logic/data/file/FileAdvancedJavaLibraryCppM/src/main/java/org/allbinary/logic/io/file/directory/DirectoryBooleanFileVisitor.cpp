@@ -36,6 +36,8 @@
         
             #include "java/lang/Object.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <org/allbinary/logic/io/file/AbFile.h>
 
       
@@ -73,7 +75,7 @@ DirectoryBooleanFileVisitor::DirectoryBooleanFileVisitor(){
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->visit(dynamic_cast<AbFile*>(anyType));
+                        return JavaBoxes::toObject(this->visit(dynamic_cast<AbFile*>(anyType)));
     
 }
 

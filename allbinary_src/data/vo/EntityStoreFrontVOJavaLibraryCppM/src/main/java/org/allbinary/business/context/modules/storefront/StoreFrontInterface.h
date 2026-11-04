@@ -34,6 +34,8 @@
         
             #include "java/lang/Exception.h"
         
+            #include "java/lang/Boolean.h"
+        
 class ContextConfigurationInterface;
 #include <org/allbinary/data/tables/TableMappingInterface.h>
 class BasicArrayList;

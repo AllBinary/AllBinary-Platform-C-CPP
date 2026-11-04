@@ -302,7 +302,7 @@ resolveClass(myClass);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->LOADERERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->LOADERERROR))
                         
                                     {
                                     logBuffer->logAll();
@@ -328,7 +328,7 @@ this->logUtil->put(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("
     auto AbeClassLoader::loadClassBytesFromFile(std::string name) -> std::vector<int8_t>{
 
     FileInputStream* in = 
-                null
+                nullptr
             ;;
     
 
@@ -356,7 +356,7 @@ in= new FileInputStream(cname);
 } catch(IOException& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->LOADERERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->LOADERERROR))
                         
                                     {
                                     this->logUtil->put(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("(Before LogBuffer Output) Failure loading Encrypted: ") +JavaString::valueOf(name)) +JavaString::valueOf(" File: ")) +JavaString::valueOf(cname), "AbeClassLoader", "loadClassBytes", &e);
@@ -375,7 +375,7 @@ StreamUtil::getInstance()->close(in);
     std::string loadedWith = "loadClassBytes";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->LOADERERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->LOADERERROR))
                         
                                     {
                                     this->logUtil->put(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("(Before LogBuffer Output) Failed to Loaded Class: ") +JavaString::valueOf(name)) +JavaString::valueOf(" File: ")) +JavaString::valueOf(cname)) +JavaString::valueOf("\nwith: ")) +JavaString::valueOf(loadedWith), this, "loadClassBytes", &e);
@@ -392,7 +392,7 @@ StreamUtil::getInstance()->close(in);
     std::string loadedWith = "loadClassBytes";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->LOADERERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->LOADERERROR))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("(Before LogBuffer Output) NoClassDefFoundError Failed Loaded Class: ") +JavaString::valueOf(name)) +JavaString::valueOf(" File: ")) +JavaString::valueOf(cname)) +JavaString::valueOf("\nwith: ")) +JavaString::valueOf(loadedWith), this, "loadClassBytes");
@@ -460,7 +460,7 @@ StreamUtil::getInstance()->close(in);
 } catch(ClassNotFoundException& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->LOADER))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->LOADER))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Failed Loaded Class: ") +JavaString::valueOf(name)) +JavaString::valueOf(" with: ")) +JavaString::valueOf(loadedWith), this, this->LOAD_CLASS);
@@ -474,7 +474,7 @@ StreamUtil::getInstance()->close(in);
  catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->LOADER))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->LOADER))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Failed Loaded Class: ") +JavaString::valueOf(name)) +JavaString::valueOf(" with: ")) +JavaString::valueOf(loadedWith), this, this->LOAD_CLASS);
@@ -488,7 +488,7 @@ StreamUtil::getInstance()->close(in);
  catch(NoClassDefFoundError& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->LOADER))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->LOADER))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Failed Loaded Class: ") +JavaString::valueOf(name)) +JavaString::valueOf(" with: ")) +JavaString::valueOf(loadedWith), this, this->LOAD_CLASS);
@@ -538,7 +538,7 @@ AbeClassLoader::classes->put(name, myClass);
                                 
                         else {
                             
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->LOADER))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->LOADER))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Already Loaded: ") +JavaString::valueOf(name)) +JavaString::valueOf(" with: ")) +JavaString::valueOf(loadedWith), this, this->LOAD_CLASS);
@@ -564,7 +564,7 @@ resolveClass(myClass);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->LOADERERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->LOADERERROR))
                         
                                     {
                                     this->logUtil->put(JavaString::valueOf("Failure loading: ") +JavaString::valueOf(name), "AbeClassLoader", this->LOAD_CLASS, &e);

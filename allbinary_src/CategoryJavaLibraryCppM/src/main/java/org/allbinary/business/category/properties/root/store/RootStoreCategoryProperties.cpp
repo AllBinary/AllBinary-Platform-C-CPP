@@ -38,6 +38,8 @@
         
             #include "java/lang/Exception.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <java/util/HashMap.h>
 
       
@@ -281,7 +283,7 @@ this->setRootFilePath(new AbPath(JavaString::valueOf(URLGLOBALS::getMainPath()) 
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->getValue();
+                        return JavaBoxes::toObject(this->getValue());
     
 }
 
@@ -456,7 +458,7 @@ categoryVector->add(this->getValue());
 
     auto RootStoreCategoryProperties::log() -> void{
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->CATEGORY))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->CATEGORY))
                         
                                     {
                                     this->logUtil->putF((new StringMaker())->append("filePath = ")->append(this->fileAbPath->toString())->append("\npath = ")->append(this->abPath->toString())->append("\ncategory = ")->append(this->category)->toString(), this, "log()");

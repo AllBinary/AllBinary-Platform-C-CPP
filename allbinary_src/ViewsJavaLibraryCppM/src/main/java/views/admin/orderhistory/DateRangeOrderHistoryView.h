@@ -36,6 +36,8 @@
         
             #include "java/lang/Long.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <java/util/Calendar.h>
 class BasicArrayList;
 

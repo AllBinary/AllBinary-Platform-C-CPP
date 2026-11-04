@@ -38,6 +38,8 @@
         
             #include "java/lang/Exception.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <org/allbinary/business/context/modules/storefront/StoreFrontFactory.h>
 
       
@@ -175,7 +177,7 @@ UpdateFileValidationView::UpdateFileValidationView(TransformInfoInterface* trans
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Invalid AdminCommand=") +JavaString::valueOf(command), this, this->commonStrings->IS_VALID);
@@ -199,7 +201,7 @@ UpdateFileValidationView::UpdateFileValidationView(TransformInfoInterface* trans
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("BasicItem is not valid", this, this->commonStrings->IS_VALID);
@@ -241,7 +243,7 @@ stringBuffer->append(this->itemInterface->getCategory());
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Category Does Not Exist: ") +JavaString::valueOf(fullCategory), this, this->commonStrings->IS_VALID);
@@ -329,7 +331,7 @@ HttpFileUploadUtil::log(fileItem);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->put("Exception in validation", this, this->commonStrings->IS_VALID, &e);
@@ -407,7 +409,7 @@ stringBuffer->append((new BasicItemValidation(this->itemInterface))->validationI
     std::string fullCategory = JavaBoxes::unbox<std::string>(URLGLOBALS::getWebappPath()) +storeFrontInterface->getCurrentHostNamePath() +this->itemInterface->getCategory();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Category: ") +JavaString::valueOf(fullCategory), this, "validationInfo()");
@@ -433,7 +435,7 @@ stringBuffer->append((new BasicItemValidation(this->itemInterface))->validationI
 } catch(MoneyException& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("Existing Item With MoneyException", this, "validationInfo()");
@@ -512,7 +514,7 @@ this->validationInfo(stringBuffer, fileName, fileItemFieldName, size);
                                 
                         else {
                             
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     

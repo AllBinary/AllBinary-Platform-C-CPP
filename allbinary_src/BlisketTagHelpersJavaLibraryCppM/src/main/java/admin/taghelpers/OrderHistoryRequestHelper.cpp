@@ -164,7 +164,7 @@ this->status= this->request->getParameter(OrderHistoryData::STATUS);
 OrderHistoryEntityFactory::getInstance()->setStatus(this->id, this->status);
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF("Success", this, "setOrderStatus()");
@@ -188,7 +188,7 @@ OrderHistoryEntityFactory::getInstance()->setStatus(this->id, this->status);
     std::string error = "Failed to set order status";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "setOrderStatus()", &e);
@@ -227,7 +227,7 @@ OrderHistoryEntityFactory::getInstance()->setStatus(this->id, newStatus);
 (new OrderStatusEmail(this->abeClientInformation, orderHistory))->process();
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF("Success", this, "setOrderStatus()");
@@ -251,7 +251,7 @@ OrderHistoryEntityFactory::getInstance()->setStatus(this->id, newStatus);
     std::string error = "Failed to view order table";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "setOrderStatus(newStatus)", &e);

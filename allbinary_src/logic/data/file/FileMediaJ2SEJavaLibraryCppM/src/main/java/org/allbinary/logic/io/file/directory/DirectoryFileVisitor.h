@@ -34,6 +34,8 @@
         
             #include "java/lang/Object.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <java/io/File.h>
 #include <java/io/FileFilter.h>
 #include <org/allbinary/logic/util/visitor/VisitorInterface.h>

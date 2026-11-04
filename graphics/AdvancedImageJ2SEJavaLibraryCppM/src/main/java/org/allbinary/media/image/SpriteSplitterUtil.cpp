@@ -156,7 +156,7 @@ this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(
     
 
     std::string nameEnding = 
-                null
+                nullptr
             ;;
     
 
@@ -283,7 +283,7 @@ this->logUtil->putF("Processing Individual Cells for each Direction", this, this
     
 
     std::string nameEnding = 
-                null
+                nullptr
             ;;
     
 

@@ -214,7 +214,7 @@ canvasSurface->translate(originalImage->getWidth() /2, originalImage->getHeight(
     auto ImageRotationUtil::drawImage(Image* originalImage, Image* image, CanvasSurface* canvasSurface) -> void{
 
     playn::core::Image* originalPlayNImage = 
-                null
+                nullptr
             ;;
     
 

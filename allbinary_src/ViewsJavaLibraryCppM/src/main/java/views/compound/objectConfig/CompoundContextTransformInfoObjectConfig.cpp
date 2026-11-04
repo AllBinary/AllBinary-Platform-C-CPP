@@ -198,7 +198,7 @@ stringBuffer->append(RootTransformInfoData::NAME);
     BasicArrayList* viewVector = this->getTransformDomNodes();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Root View Called with: ") +JavaString::valueOf(viewVector->size()), this, "get(transformInfoInterface)");
@@ -251,7 +251,7 @@ stringBuffer->append(endXMLHeader);
     std::string templateValue = stringBuffer->toString();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     stringBuffer->delete_(0, stringBuffer->length());
@@ -277,7 +277,7 @@ rootView= replace->all(rootView);
 }
 
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("End: Result of a compound view: ") +JavaString::valueOf(rootView), this, "get()");
@@ -306,7 +306,7 @@ rootView= replace->all(rootView);
     ByteArrayInputStream* bais = new ByteArrayInputStream(completeTemplateViewBytes);;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Template: ") +JavaString::valueOf((JavaString::fromChars(completeTemplateViewBytes)).toString()), this, "createInputStream()");

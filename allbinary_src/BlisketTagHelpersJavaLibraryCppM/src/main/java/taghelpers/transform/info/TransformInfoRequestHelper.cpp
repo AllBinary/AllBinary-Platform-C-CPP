@@ -125,7 +125,7 @@ this->transformInfoInterface= new TransformInfoHttpStoreNoManipulation(propertie
 TransformInfoEntityBuilder::getInstance()->update(hashMapData);
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "update()");
@@ -149,7 +149,7 @@ TransformInfoEntityBuilder::getInstance()->update(hashMapData);
     std::string error = "Failed to update storefronts table";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "update()", &e);
@@ -182,7 +182,7 @@ TransformInfoEntityBuilder::getInstance()->update(hashMapData);
 TransformInfoEntityBuilder::getInstance()->insert(values);
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "insert()");
@@ -206,7 +206,7 @@ TransformInfoEntityBuilder::getInstance()->insert(values);
     std::string error = "Failed to add storefronts table";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "insert()", &e);
@@ -236,7 +236,7 @@ TransformInfoEntityBuilder::getInstance()->insert(values);
 TransformInfoEntityBuilder::getInstance()->delete_(JavaBoxes::unbox<std::string>(this->transformInfoInterface->getKey()));
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "delete()");
@@ -260,7 +260,7 @@ TransformInfoEntityBuilder::getInstance()->delete_(JavaBoxes::unbox<std::string>
     std::string error = "Failed to delete storefronts table";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "delete()", &e);

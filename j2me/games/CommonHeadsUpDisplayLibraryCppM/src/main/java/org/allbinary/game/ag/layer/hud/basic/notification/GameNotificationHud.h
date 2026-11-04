@@ -36,6 +36,8 @@
         
             #include "java/lang/Integer.h"
         
+            #include "java/lang/Boolean.h"
+        
 class Graphics;
 #include <org/allbinary/game/graphics/hud/BasicHud.h>
 class BasicHudFactory;

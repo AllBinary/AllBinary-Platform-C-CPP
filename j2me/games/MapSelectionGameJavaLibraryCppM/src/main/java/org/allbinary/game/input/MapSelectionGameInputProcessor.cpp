@@ -113,18 +113,17 @@
         #include "org/allbinary/game/input/GameInputProcessorInterface.h"
 #include "org/allbinary/game/input/PlayerGameInputCompositeInterface.h"
 #include "org/allbinary/game/input/PlayerGameInput.h"
+//#include "org/allbinary/game/input/MapSelectionRunnable.h"
 #include "org/allbinary/game/input/GameInputProcessorComposite.h"
 
 
-MapSelectionGameInputProcessor::MapSelectionGameInputProcessor(AllBinaryGameCanvas* gameCanvas, MultiLevelRaceTrackGeographicMapInterfaceFactoryInterface* raceTrackGeographicMapInterfaceFactoryInterface, PreGameSelectorPaintable* mapSelectorPaintable, int32_t lockedIndex) : logUtil(LogUtil::getInstance()), inputTimeHelper(new TimeDelayHelper(650)), abRunnable([&]() {
-    static thread_local MapSelectionGameInputProcessor* anonymousOuter0 = nullptr;
-    anonymousOuter0 = this;
-    class Anonymous0 : public ABRunnable {
-    public:
-    using ABRunnable::ABRunnable;
-    MapSelectionGameInputProcessor* outer = anonymousOuter0;
+MapSelectionGameInputProcessor::MapSelectionRunnable::MapSelectionRunnable(MapSelectionGameInputProcessor* inputProcessor){
+this->inputProcessor= inputProcessor;
+    
+}
 
-    public: void run(){
+
+    auto MapSelectionGameInputProcessor::MapSelectionRunnable::run() -> void{
 
         try {
             this->setRunning(true);
@@ -132,16 +131,16 @@ MapSelectionGameInputProcessor::MapSelectionGameInputProcessor(AllBinaryGameCanv
 SecondaryPlayerQueueFactory::getInstance()->add(SelectSound::getInstance());
     
 
-    int32_t track = outer->preGameSelectorPaintable->getPreGameSelectionForm()->getSelectedIndex() +1;;
+    int32_t track = this->inputProcessor->preGameSelectorPaintable->getPreGameSelectionForm()->getSelectedIndex() +1;;
     
 
-    int32_t wave = outer->raceTrackGeographicMapInterfaceFactoryInterface->getFirstWaveWithTrack(track);;
+    int32_t wave = this->inputProcessor->raceTrackGeographicMapInterfaceFactoryInterface->getFirstWaveWithTrack(track);;
     
-outer->gameCanvas->getLayerManager()->getGameInfo()->setCurrentLevel(wave);
+this->inputProcessor->gameCanvas->getLayerManager()->getGameInfo()->setCurrentLevel(wave);
     
-outer->gameCanvas->buildGameInit(false);
+this->inputProcessor->gameCanvas->buildGameInit(false);
     
-GameKeyEventHandler::getInstance()->removeListener(outer->getPlayerGameInput());
+GameKeyEventHandler::getInstance()->removeListener(this->inputProcessor->getPlayerGameInput());
     
 this->setRunning(false);
     
@@ -163,9 +162,8 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 
 }
 
-    };
-    return new Anonymous0();
-}()){
+
+MapSelectionGameInputProcessor::MapSelectionGameInputProcessor(AllBinaryGameCanvas* gameCanvas, MultiLevelRaceTrackGeographicMapInterfaceFactoryInterface* raceTrackGeographicMapInterfaceFactoryInterface, PreGameSelectorPaintable* mapSelectorPaintable, int32_t lockedIndex) : logUtil(LogUtil::getInstance()), inputTimeHelper(new TimeDelayHelper(650)), abRunnable(javaInner(new MapSelectionRunnable(this), this)){
 this->gameCanvas= gameCanvas;
     
 this->raceTrackGeographicMapInterfaceFactoryInterface= raceTrackGeographicMapInterfaceFactoryInterface;

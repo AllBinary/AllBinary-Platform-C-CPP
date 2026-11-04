@@ -34,6 +34,8 @@
         
             #include "java/lang/Exception.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <java/util/HashMap.h>
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
 #include <org/allbinary/logic/control/validate/ValidationInterface.h>

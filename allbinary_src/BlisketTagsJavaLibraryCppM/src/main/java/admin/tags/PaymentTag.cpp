@@ -158,7 +158,7 @@ this->storeName= value;
     std::string error = "Failed to select Payment";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "selectPayment()", &e);
@@ -206,7 +206,7 @@ this->propertiesHashMap->put(StoreFrontData::getInstance()->NAME, this->storeNam
     std::string output = this->select();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAGEXTRAOUTPUT))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAGEXTRAOUTPUT))
                         
                                     {
                                     this->pageContext->getOut()->print(JavaString::valueOf(output) +JavaString::valueOf("<br />"));

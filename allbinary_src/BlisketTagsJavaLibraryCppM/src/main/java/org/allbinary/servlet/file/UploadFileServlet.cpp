@@ -149,7 +149,7 @@ UploadFileServlet::UploadFileServlet() : logUtil(LogUtil::getInstance()), common
     
 
     InputStream* inputStream = 
-                null
+                nullptr
             ;;
     
 
@@ -251,7 +251,7 @@ response->sendError(HttpServletResponse::SC_UNAUTHORIZED, "Please Login");
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "processRequest()", &e);
@@ -275,7 +275,7 @@ response->sendError(HttpServletResponse::SC_NOT_FOUND);
     auto UploadFileServlet::saveFile(std::string filePath) -> void{
 
     AbFileOutputStream* fileOutputStream = 
-                null
+                nullptr
             ;;
     
 
@@ -323,7 +323,7 @@ response->sendError(HttpServletResponse::SC_NOT_FOUND);
     AbFile* file = AbFile::createAbFile(JavaString::valueOf(URLGLOBALS::getWebappPath()) +JavaString::valueOf(filePath));;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
                         
                                     {
                                     

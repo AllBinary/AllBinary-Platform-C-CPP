@@ -34,6 +34,8 @@
             #include "java/lang/String.h"
 
         
+            #include "java/lang/Boolean.h"
+        
 #include <org/allbinary/graphics/form/item/ABTextFieldItem.h>
 
       

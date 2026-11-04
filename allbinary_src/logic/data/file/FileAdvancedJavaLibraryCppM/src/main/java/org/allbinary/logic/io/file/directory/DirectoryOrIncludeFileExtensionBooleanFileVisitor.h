@@ -32,6 +32,8 @@
             #include "java/lang/String.h"
 
         
+            #include "java/lang/Boolean.h"
+        
 class AbFile;
 #include <org/allbinary/logic/io/file/visitor/IncludeFileExtensionsBooleanFileVisitor.h>
 class BasicArrayList;

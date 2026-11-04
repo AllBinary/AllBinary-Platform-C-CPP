@@ -144,7 +144,7 @@ this->setDocument(this->generate(this->toXmlDoc()));
     std::string docString = XmlDocumentHelper::toString(objectConfigDocument);;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Initial ObjectConfig: ") +JavaString::valueOf(docString), this, "generate()");
@@ -180,7 +180,7 @@ hashMap->put(JavaString::valueOf(VARKEY) +JavaString::valueOf(TransformInfoData:
     Document* newObjectConfigDocument = DomDocumentHelper::create(replace->all(docString));;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Final ObjectConfig: ") +JavaString::valueOf(XmlDocumentHelper::toString(newObjectConfigDocument)), this, "generate()");

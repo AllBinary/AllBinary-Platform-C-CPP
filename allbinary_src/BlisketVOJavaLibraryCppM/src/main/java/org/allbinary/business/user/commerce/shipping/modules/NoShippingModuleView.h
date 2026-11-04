@@ -34,6 +34,8 @@
         
             #include "java/lang/Exception.h"
         
+            #include "java/lang/Boolean.h"
+        
 class ShippingMethodData;
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
 class ModDomHelper;

@@ -143,7 +143,7 @@ out->close();
 } catch(LicensingException& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SERVLETERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SERVLETERROR))
                         
                                     {
                                     this->logUtil->put("Servlet LicensingException", this, "processRequest()", &e);
@@ -159,7 +159,7 @@ response->sendRedirect(abcs.globals->URLGLOBALS->LICENSEERRORPAGE);
  catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SERVLETERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SERVLETERROR))
                         
                                     {
                                     this->logUtil->put("Servlet Exception", this, "processRequest()", &e);

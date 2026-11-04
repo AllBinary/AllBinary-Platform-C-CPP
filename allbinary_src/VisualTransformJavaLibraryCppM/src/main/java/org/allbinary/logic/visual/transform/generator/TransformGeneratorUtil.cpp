@@ -117,7 +117,7 @@ TransformGeneratorUtil::TransformGeneratorUtil() : logUtil(LogUtil::getInstance(
 
         try {
             
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Generating View: ") +JavaString::valueOf(transformInfoInterface->getName()), this, "generate()");
@@ -159,7 +159,7 @@ TransformGeneratorUtil::TransformGeneratorUtil() : logUtil(LogUtil::getInstance(
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate a view", this, "generate()", &e);

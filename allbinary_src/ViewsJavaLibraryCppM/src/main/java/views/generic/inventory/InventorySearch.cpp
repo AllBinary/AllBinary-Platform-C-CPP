@@ -208,7 +208,7 @@ stringBuffer->append(InputOutputTypeData::getInstance()->DEFAULT);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->PRODUCTSEARCHLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRODUCTSEARCHLOGGING))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->FAILURE, this, "searchSingleStaticPage", &e);
@@ -247,7 +247,7 @@ stringBuffer->append(InputOutputTypeData::getInstance()->DEFAULT);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->PRODUCTSEARCHLOGGINGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRODUCTSEARCHLOGGINGERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->FAILURE, this, "searchSingleDynamicPage", &e);

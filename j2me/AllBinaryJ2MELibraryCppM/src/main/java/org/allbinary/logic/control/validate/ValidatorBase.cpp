@@ -36,6 +36,8 @@
         
             #include "java/lang/Object.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <org/allbinary/logic/StdUtil.h>
 
       

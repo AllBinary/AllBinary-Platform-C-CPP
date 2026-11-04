@@ -36,6 +36,8 @@
         
             #include "java/lang/Exception.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <java/util/HashMap.h>
 
       
@@ -148,7 +150,7 @@
 
 TitleBodyValidation::TitleBodyValidation() : logUtil(LogUtil::getInstance()){
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
@@ -168,7 +170,7 @@ this->titleValidation= new TitleNotRequiredValidation();
 
 TitleBodyValidation::TitleBodyValidation(Document* document) : logUtil(LogUtil::getInstance()){
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->CONSTRUCTOR, this, "Constructor(document)");
@@ -204,7 +206,7 @@ this->titleValidation= new TitleNotRequiredValidation(titleNode);
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("To Many Body Nodes", this, this->commonStrings->CONSTRUCTOR);
@@ -222,7 +224,7 @@ this->titleValidation= new TitleNotRequiredValidation(titleNode);
 
 TitleBodyValidation::TitleBodyValidation(HashMap<Object*, Object*>* hashMap) : logUtil(LogUtil::getInstance()){
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, "Constructor(hashmap)");
@@ -252,7 +254,7 @@ this->titleValidation= new TitleNotRequiredValidation(hashMap);
     bool isValid = Boolean::TRUE;;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("TitleBodyValidation", this, this->commonStrings->IS_VALID);
@@ -279,7 +281,7 @@ this->titleValidation= new TitleNotRequiredValidation(hashMap);
                                     }
                                 
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("TitleBodyValidation: ") +JavaString::valueOf(isValid), this, this->commonStrings->IS_VALID);
@@ -300,7 +302,7 @@ this->titleValidation= new TitleNotRequiredValidation(hashMap);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put("Failed to validate form", this, this->commonStrings->IS_VALID, &e);
@@ -354,7 +356,7 @@ stringBuffer->appendint(AbSqlData::MAXBLOB);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -403,7 +405,7 @@ stringBuffer->appendint(AbSqlData::MAXBLOB);
             
     auto TitleBodyValidation::toXmlNode(Document* document) -> Node*{
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Title Body: ") +JavaString::valueOf(this->body), this, "toXmlNode(document)");

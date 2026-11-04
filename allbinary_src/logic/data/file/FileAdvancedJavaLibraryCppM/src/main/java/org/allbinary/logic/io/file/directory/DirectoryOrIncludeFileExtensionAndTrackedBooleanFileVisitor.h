@@ -36,6 +36,8 @@
         
             #include "java/lang/System.h"
         
+            #include "java/lang/Boolean.h"
+        
 class GitProcessHelper;
 class AbFile;
 class CommonDataFileStrings;

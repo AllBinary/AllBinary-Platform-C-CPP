@@ -79,7 +79,7 @@ LogUserEmailEventListenerModule::LogUserEmailEventListenerModule() : logUtil(Log
             
     auto LogUserEmailEventListenerModule::onEmailSendRequest(EmailEvent* userEmailInfoEvent) -> void{
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
                         
                                     {
                                     

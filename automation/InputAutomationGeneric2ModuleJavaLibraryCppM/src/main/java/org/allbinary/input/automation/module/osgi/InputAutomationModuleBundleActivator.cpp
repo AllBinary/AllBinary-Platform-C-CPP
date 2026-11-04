@@ -184,7 +184,7 @@ this->init();
 
 
                         for (
-    int32_t index = 0;index < this->getInputAutomationModuleInterface().length; index++)
+    int32_t index = 0;index < this->getInputAutomationModuleInterface().size(); index++)
         {
 
     InputAutomationConfigurationModuleChangeEvent* inputAutomationConfigurationModuleChangeEvent = InputAutomationConfigurationUtil::getChangeEvent(this->getInputAutomationModuleInterface()[index]);;
@@ -234,7 +234,7 @@ OSGIActivatorUtil::registerAsService(bundleContext, getServiceFactory(), Class::
 
 
                         for (
-    int32_t index = 0;index < this->getInputAutomationModuleInterface().length; index++)
+    int32_t index = 0;index < this->getInputAutomationModuleInterface().size(); index++)
         {
 
     InputAutomationConfigurationModuleChangeEvent* inputAutomationConfigurationModuleChangeEvent = InputAutomationConfigurationUtil::getChangeEvent(this->getInputAutomationModuleInterface()[index]);;

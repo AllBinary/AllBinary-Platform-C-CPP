@@ -103,7 +103,7 @@ this->setURIResolver(dynamic_cast<URIResolver*>(new StoreUriResolver(this->getTr
     CompoundContextTransformInfoObjectConfig* objectConfig = new CompoundContextTransformInfoObjectConfig(this->abeClientInformation, this->getTransformInfoInterface(), this->getTransformInfoInterface()->getObjectConfigInterface()->toXmlDoc());;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("\nObjectConfig: \n") +JavaString::valueOf(objectConfig->toString()), this, this->commonStrings->CONSTRUCTOR);

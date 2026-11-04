@@ -109,7 +109,7 @@ this->init();
 this->emailEventHashMap= StdUtil::getInstance()->createHashMap();
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->CONSTRUCTOR, this, " Constructor");
@@ -134,7 +134,7 @@ this->emailEventHashMap= StdUtil::getInstance()->createHashMap();
 
     auto UserEmailEventsConfiguration::addUserEmailEventConfiguration(UserEmailEventConfigurationInterface* userEmailEventConfigurationInterface) -> void{
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Adding: ") +JavaString::valueOf(userEmailEventConfigurationInterface->log()), this, "addUserEmailEventConfiguration");

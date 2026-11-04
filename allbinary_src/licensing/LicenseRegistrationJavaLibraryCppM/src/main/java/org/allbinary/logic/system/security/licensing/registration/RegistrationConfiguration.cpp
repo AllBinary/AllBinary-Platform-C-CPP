@@ -164,7 +164,7 @@ PreLogUtil::put((new StringMaker())->append("Read Configuration: ")->append(this
     auto RegistrationConfiguration::write() -> void{
 
     AbDataOutputStream* dataOutputStream = 
-                null
+                nullptr
             ;;
     
 

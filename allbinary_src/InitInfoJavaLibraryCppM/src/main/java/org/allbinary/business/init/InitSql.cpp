@@ -285,7 +285,7 @@ stringBuffer->append(this->sqlStrings->WHERE);
         try {
             
     HashMap<Object*, Object*>* result = 
-                null
+                nullptr
             ;;
     
 
@@ -333,7 +333,7 @@ stringBuffer->append(this->sqlStrings->CLOSE_QUOTE);
     std::string sqlStatement = stringBuffer->toString();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
                         
                                     {
                                     PreLogUtil::put(JavaString::valueOf(this->sqlStrings->SQL_STATEMENT_LABEL) +JavaString::valueOf(sqlStatement), this->INIT_SQL, this->METHOD_GET_ROW);
@@ -373,7 +373,7 @@ result->put(columnName, field);
 }
 
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
                         
                                     {
                                     PreLogUtil::put(this->ROW_VALUE_LABEL +result->toString(), this->INIT_SQL, this->METHOD_GET_ROW);
@@ -392,7 +392,7 @@ result->put(columnName, field);
 }
 
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
                         
                                     {
                                     PreLogUtil::put(this->NO_RESULTS_IN_RESULT_SET, this->INIT_SQL, this->METHOD_GET_ROW);
@@ -413,7 +413,7 @@ result->put(columnName, field);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
                         
                                     {
                                     PreLogUtil::putOE(this->FAILED_SQL_STATEMENT +stringBuffer, this->INIT_SQL, this->METHOD_GET_ROW, &e);
@@ -516,7 +516,7 @@ stringBuffer->append(this->sqlStrings->CLOSE_QUOTE);
 this->executeSQLStatement(sqlStatement);
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
                         
                                     {
                                     PreLogUtil::put(JavaString::valueOf(this->SUCCESS_SQL_STATEMENT) +JavaString::valueOf(sqlStatement), this->INIT_SQL, METHOD_UPDATE_WHERE);
@@ -529,7 +529,7 @@ this->executeSQLStatement(sqlStatement);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
                         
                                     {
                                     PreLogUtil::putOE(this->FAILED_SQL_STATEMENT +stringBuffer, this->INIT_SQL, METHOD_UPDATE_WHERE, &e);
@@ -586,7 +586,7 @@ stringBuffer->append(this->INSERT_END);
 this->executeSQLStatement(sqlStatement);
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
                         
                                     {
                                     PreLogUtil::put(JavaString::valueOf(this->SUCCESS_SQL_STATEMENT) +JavaString::valueOf(sqlStatement), this->INIT_SQL, INSERT);
@@ -599,7 +599,7 @@ this->executeSQLStatement(sqlStatement);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
                         
                                     {
                                     PreLogUtil::putOE(this->FAILED_SQL_STATEMENT +stringBuffer->toString(), this->INIT_SQL, INSERT, &e);

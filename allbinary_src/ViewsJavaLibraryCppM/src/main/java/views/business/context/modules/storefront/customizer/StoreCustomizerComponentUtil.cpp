@@ -117,7 +117,7 @@ StoreCustomizerComponentUtil::StoreCustomizerComponentUtil() : logUtil(LogUtil::
             
     auto StoreCustomizerComponentUtil::generate(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface) -> std::string{
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Generating Modified Views For: ") +JavaString::valueOf(transformInfoInterface->getName()), this, "generateModifiedViews()");
@@ -148,7 +148,7 @@ StoreCustomizerComponentUtil::StoreCustomizerComponentUtil() : logUtil(LogUtil::
     BasicArrayList* allViewsToBeModified = customizerUtil->getTransformInfoObjectConfigComponentNodesToCustomize(transformInfoInterface, nextTransformInfoInterface);;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("View or component that was modified by a Customizer: ") +JavaString::valueOf(nextTransformInfoInterface->getName()), this, "generateModifiedViews()");
@@ -194,7 +194,7 @@ this->generate(abeClientInformation, transformInfoInterface, allViewsToBeModifie
     TransformInfoInterface* specifiedTransformInfoInterface = customizerUtil->getTransformInfoInterfaceToCustomize(transformInfoInterface, nextTransformInfoInterface);;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Retrieved: ") +JavaString::valueOf(specifiedTransformInfoInterface->getName()), this, "generateModifiedViews()");

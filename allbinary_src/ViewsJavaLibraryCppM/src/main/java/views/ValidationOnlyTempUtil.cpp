@@ -105,7 +105,7 @@ ValidationOnlyTempUtil::ValidationOnlyTempUtil() : logUtil(LogUtil::getInstance(
 
         try {
             
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("View Name: ") +JavaString::valueOf(validationComponentInterface->getTransformInfoInterface()->getName()), this, "view()");
@@ -126,7 +126,7 @@ ValidationOnlyTempUtil::ValidationOnlyTempUtil() : logUtil(LogUtil::getInstance(
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put(commonStrings->EXCEPTION, this, "view()", &e);

@@ -193,7 +193,7 @@ this->type= value;
 this->getPropertiesHashMap()->put(OutputTypeData::getInstance()->NAME, this->type);
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAG))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAG))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("TransformInfoTag type set: ") +JavaString::valueOf(this->type), this, "setType");

@@ -102,7 +102,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        
+        //#include "org/allbinary/media/image/ImageCopyCallback.h"
+
 
 ImageModifierUtil::ImageModifierUtil() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), resourceCallbackStrings(ResourceCallbackStrings::getInstance()), playnUtil(HTMLPlaynUtil::getInstance()) {
         }
@@ -230,6 +231,46 @@ this->handleImage(imageArray, index, originalImageArray[index]);
 }
 
 
+ImageModifierUtil::ImageCopyCallback::ImageCopyCallback(ImageModifierUtil* imageModifierUtil, std::vector<Image*> imageArray, int32_t index, Image* image, CoreImage* image3){
+this->imageModifierUtil= imageModifierUtil;
+    
+this->imageArray= imageArray;
+    
+this->index= index;
+    
+this->image= image;
+    
+this->image3= image3;
+    
+}
+
+
+    auto ImageModifierUtil::ImageCopyCallback::onSuccess(Object* resource) -> void{
+
+    LogUtil* logUtil = LogUtil::getInstance();;
+    
+
+    ResourceCallbackStrings* resourceCallbackStrings = this->imageModifierUtil->resourceCallbackStrings;;
+    
+logUtil->putF(resourceCallbackStrings->DONE +this->image->getName(), this, resourceCallbackStrings->HANDLE_IMAGE);
+    
+this->imageModifierUtil->copy(this->imageArray, this->index, this->image, this->image3);
+    
+}
+
+
+    auto ImageModifierUtil::ImageCopyCallback::onFailure(Throwable* e) -> void{
+
+    LogUtil* logUtil = LogUtil::getInstance();;
+    
+
+    ResourceCallbackStrings* resourceCallbackStrings = this->imageModifierUtil->resourceCallbackStrings;;
+    
+logUtil->put((new StringMaker())->append(this->imageModifierUtil->commonStrings->EXCEPTION_LABEL)->append(resourceCallbackStrings->ERROR)->append(this->image->getName())->toString(), this, resourceCallbackStrings->HANDLE_IMAGE, e);
+    
+}
+
+
     auto ImageModifierUtil::handleImage(std::vector<Image*> imageArray, int32_t index, Image* image) -> void{
 
     CoreImage* image3 = dynamic_cast<CoreImage*>((image)).getImage());;
@@ -251,47 +292,7 @@ this->handleImage(imageArray, index, originalImageArray[index]);
                                 
                         else {
                             
-    Callback* callback = [&]() {
-    static thread_local ImageModifierUtil* anonymousOuter0 = nullptr;
-    anonymousOuter0 = this;
-    static thread_local CoreImage* anonymous0_image3{};
-    anonymous0_image3 = image3;
-    static thread_local std::vector<Image*> anonymous0_imageArray{};
-    anonymous0_imageArray = imageArray;
-    static thread_local int32_t anonymous0_index{};
-    anonymous0_index = index;
-    static thread_local Image* anonymous0_image{};
-    anonymous0_image = image;
-    class Anonymous0 : public Callback {
-    public:
-    using Callback::Callback;
-    ImageModifierUtil* outer = anonymousOuter0;
-    CoreImage* image3 = anonymous0_image3;
-    std::vector<Image*> imageArray = anonymous0_imageArray;
-    int32_t index = anonymous0_index;
-    Image* image = anonymous0_image;
-
-    public: void onSuccess(Object* resource){
-
-    LogUtil* logUtil = LogUtil::getInstance();;
-    
-logUtil->putF(outer->resourceCallbackStrings->DONE +image->getName(), this, outer->resourceCallbackStrings->HANDLE_IMAGE);
-    
-outer->copy(imageArray, index, image, image3);
-    
-}
-
-    public: void onFailure(Throwable* e){
-
-    LogUtil* logUtil = LogUtil::getInstance();;
-    
-logUtil->put((new StringMaker())->append(outer->commonStrings->EXCEPTION_LABEL)->append(outer->resourceCallbackStrings->ERROR)->append(image->getName())->toString(), this, outer->resourceCallbackStrings->HANDLE_IMAGE, e);
-    
-}
-
-    };
-    return new Anonymous0();
-}();;
+    Callback* callback = javaInner(new ImageCopyCallback(this, imageArray, index, image, image3), this);;
     
 image3->addCallback(callback);
     

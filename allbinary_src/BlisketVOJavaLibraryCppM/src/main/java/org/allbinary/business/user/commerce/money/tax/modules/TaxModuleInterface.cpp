@@ -36,6 +36,8 @@
         
             #include "java/lang/Exception.h"
         
+            #include "java/lang/Boolean.h"
+        
             #include "java/lang/Float.h"
         
 #include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>

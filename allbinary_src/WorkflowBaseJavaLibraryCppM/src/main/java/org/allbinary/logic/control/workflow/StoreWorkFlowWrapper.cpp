@@ -116,7 +116,7 @@ StoreWorkFlowWrapper::StoreWorkFlowWrapper(Object* anyType) : WorkFlowWrapper(an
     std::string error = "Reflection Exception";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     

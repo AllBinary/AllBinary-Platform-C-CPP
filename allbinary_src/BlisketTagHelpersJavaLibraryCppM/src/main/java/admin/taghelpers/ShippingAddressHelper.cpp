@@ -205,7 +205,7 @@ this->streetAddress= new StreetAddress(this->request);
     std::string success = (new ShippingAddressesEntity(this->stringUtil->EMPTY_STRING))->drop();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, this->commonStrings->DROP);
@@ -229,7 +229,7 @@ this->streetAddress= new StreetAddress(this->request);
     std::string error = "Failed to drop Admin table";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->DROP, &e);
@@ -257,7 +257,7 @@ this->streetAddress= new StreetAddress(this->request);
     std::string success = (new ShippingAddressesEntity(this->stringUtil->EMPTY_STRING))->createTable();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "create()");
@@ -281,7 +281,7 @@ this->streetAddress= new StreetAddress(this->request);
     std::string error = "Failed to create user table";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "create()", &e);
@@ -312,7 +312,7 @@ this->streetAddress= new StreetAddress(this->request);
     std::string result = AbSqlTableUtil::getInstance()->restoreTable(new ShippingAddressesEntity(StringUtil::getInstance()->EMPTY_STRING), portion);;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "restore()");
@@ -336,7 +336,7 @@ this->streetAddress= new StreetAddress(this->request);
     std::string error = "Failed to restore backup";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "restore()", &e);
@@ -367,7 +367,7 @@ this->streetAddress= new StreetAddress(this->request);
     std::string result = AbSqlTableUtil::getInstance()->backupTable(new ShippingAddressesEntity(StringUtil::getInstance()->EMPTY_STRING));;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "backup()");
@@ -391,7 +391,7 @@ this->streetAddress= new StreetAddress(this->request);
     std::string error = "Failed to make backup";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "backup()", &e);
@@ -421,7 +421,7 @@ this->streetAddress= new StreetAddress(this->request);
 ShippingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSession->getUserName())->add(this->streetAddress);
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "insert");
@@ -445,7 +445,7 @@ ShippingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSessio
     std::string error = "Failed to add Shipping streetAddress";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "insert", &e);
@@ -475,7 +475,7 @@ ShippingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSessio
 ShippingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSession->getUserName())->update(this->streetAddress);
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF("Successfull update of a Users Shipping Address table", this, "update()");
@@ -499,7 +499,7 @@ ShippingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSessio
     std::string error = "Failed update of a Users Shipping Address Table";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "update", &e);
@@ -565,7 +565,7 @@ ShippingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSessio
     std::string error = "Failed Setting Shipping address to Billing Address";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "setToBillingAddress()", &e);
@@ -595,7 +595,7 @@ ShippingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSessio
 ShippingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSession->getUserName())->remove(int32_t(this->streetAddress->getId()));
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "remove()");
@@ -619,7 +619,7 @@ ShippingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSessio
     std::string error = "Failed to remove Shipping Address";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "remove()", &e);
@@ -649,7 +649,7 @@ ShippingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSessio
 ShippingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSession->getUserName())->setDefault(this->streetAddress->getId());
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "set()");
@@ -673,7 +673,7 @@ ShippingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSessio
     std::string error = "Failed to set Shipping Address";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "set()", &e);

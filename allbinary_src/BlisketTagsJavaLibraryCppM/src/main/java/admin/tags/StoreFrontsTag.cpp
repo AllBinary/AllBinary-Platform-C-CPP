@@ -148,7 +148,7 @@ this->setTagRequestHelperFactory(new StoreFrontsRequestHelperFactory());
     std::string error = "Failed to generate storefronts select";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "generateSelect()", &e);
@@ -211,7 +211,7 @@ this->setTagRequestHelperFactory(new StoreFrontsRequestHelperFactory());
     std::string error = "Failed to generate storefronts select";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "generateSelect()", &e);
@@ -274,7 +274,7 @@ this->setTagRequestHelperFactory(new StoreFrontsRequestHelperFactory());
     std::string error = "Failed to send email";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "sendStoreCreatedEmails()", &e);

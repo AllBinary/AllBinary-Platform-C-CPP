@@ -36,6 +36,8 @@
         
             #include "java/lang/Exception.h"
         
+            #include "java/lang/Boolean.h"
+        
 class BasicArrayList;
 class BasicArrayListD;
 class StoreFrontFactory;

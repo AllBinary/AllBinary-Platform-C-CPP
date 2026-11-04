@@ -42,6 +42,8 @@
         
             #include "java/lang/Integer.h"
         
+            #include "java/lang/Boolean.h"
+        
             #include "java/lang/Float.h"
         
 #include <java/util/HashSet.h>

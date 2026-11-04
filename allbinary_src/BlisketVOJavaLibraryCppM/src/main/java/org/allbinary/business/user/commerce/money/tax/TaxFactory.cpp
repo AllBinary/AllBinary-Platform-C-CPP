@@ -231,7 +231,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
                                 
                         else {
                             
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAX))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAX))
                         
                                     {
                                     this->logUtil->putF("Class Node Null", this, this->commonStrings->GET_INSTANCE);
@@ -247,7 +247,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
                                 
                         else {
                             
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAX))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAX))
                         
                                     {
                                     this->logUtil->putF("Tax Name Node Node Children", this, this->commonStrings->GET_INSTANCE);

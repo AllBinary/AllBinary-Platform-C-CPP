@@ -36,6 +36,8 @@
         
             #include "java/lang/Exception.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <java/util/HashMap.h>
 
       
@@ -54,6 +56,30 @@
 #include <org/w3c/dom/Node.h>
 
       
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
 
 
 
@@ -85,7 +111,7 @@ ValidationViewHelper::ValidationViewHelper(HashMap<Object*, Object*>* hashMap, P
 this->viewInterface= dynamic_cast<ValidationComponentInterface*>(this->getViewObject());
     
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPER))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPER))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
@@ -100,7 +126,7 @@ this->viewInterface= dynamic_cast<ValidationComponentInterface*>(this->getViewOb
 
         try {
             
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPER))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPER))
                         
                                     {
                                     this->logUtil->putF("Started", this, this->commonStrings->IS_VALID);
@@ -112,6 +138,8 @@ this->viewInterface= dynamic_cast<ValidationComponentInterface*>(this->getViewOb
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->viewInterface->isValid();;
     
 
@@ -119,7 +147,7 @@ this->viewInterface= dynamic_cast<ValidationComponentInterface*>(this->getViewOb
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->IS_VALID, &e);
@@ -131,6 +159,8 @@ this->viewInterface= dynamic_cast<ValidationComponentInterface*>(this->getViewOb
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return Boolean::FALSE;
     
 }
@@ -145,6 +175,8 @@ this->viewInterface= dynamic_cast<ValidationComponentInterface*>(this->getViewOb
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->viewInterface->validationInfo();;
     
 
@@ -152,7 +184,7 @@ this->viewInterface= dynamic_cast<ValidationComponentInterface*>(this->getViewOb
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "validationInfo()", &e);
@@ -164,6 +196,8 @@ this->viewInterface= dynamic_cast<ValidationComponentInterface*>(this->getViewOb
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Unknown Validation Error";
     
 }
@@ -178,6 +212,8 @@ this->viewInterface= dynamic_cast<ValidationComponentInterface*>(this->getViewOb
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->viewInterface->toValidationInfoDoc();;
     
 
@@ -185,7 +221,7 @@ this->viewInterface= dynamic_cast<ValidationComponentInterface*>(this->getViewOb
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "toValidationInfoDoc()", &e);
@@ -197,6 +233,8 @@ this->viewInterface= dynamic_cast<ValidationComponentInterface*>(this->getViewOb
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }
@@ -211,6 +249,8 @@ this->viewInterface= dynamic_cast<ValidationComponentInterface*>(this->getViewOb
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->viewInterface->toValidationInfoNode(document);;
     
 
@@ -218,7 +258,7 @@ this->viewInterface= dynamic_cast<ValidationComponentInterface*>(this->getViewOb
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "toValidationInfoNode()", &e);
@@ -230,6 +270,8 @@ this->viewInterface= dynamic_cast<ValidationComponentInterface*>(this->getViewOb
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return nullptr;
     
 }

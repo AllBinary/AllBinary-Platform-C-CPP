@@ -98,7 +98,7 @@ AbCryptUtil::AbCryptUtil() : streamUtil(StreamUtil::getInstance()){
     auto AbCryptUtil::decrypt(InputStream* inputStream, std::string key) -> std::vector<int8_t>{
 
     ByteArrayOutputStream* outputStream = 
-                null
+                nullptr
             ;;
     
 

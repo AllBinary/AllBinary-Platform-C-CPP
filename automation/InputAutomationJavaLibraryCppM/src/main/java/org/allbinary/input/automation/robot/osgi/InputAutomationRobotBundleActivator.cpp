@@ -188,7 +188,7 @@ OSGIActivatorUtil::registerAsService(bundleContext, getServiceFactory(), Class::
 
 
                         for (
-    int32_t index = 0;index < this->getInputRobotInterface().length; index++)
+    int32_t index = 0;index < this->getInputRobotInterface().size(); index++)
         {
 
     InputAutomationRobotChangeEvent* inputAutomationRobotChangeEvent = InputAutomationRobotUtil::getChangeEvent(this->getInputRobotInterface()[index]);;
@@ -230,7 +230,7 @@ this->logUtil->putF(this->commonStrings->EXCEPTION, this, "addModules");
 
 
                         for (
-    int32_t index = 0;index < this->getInputRobotInterface().length; index++)
+    int32_t index = 0;index < this->getInputRobotInterface().size(); index++)
         {
 
     InputAutomationRobotChangeEvent* inputAutomationRobotChangeEvent = InputAutomationRobotUtil::getChangeEvent(this->getInputRobotInterface()[index]);;

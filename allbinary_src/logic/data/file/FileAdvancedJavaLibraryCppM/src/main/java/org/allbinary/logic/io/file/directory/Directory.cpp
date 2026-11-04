@@ -190,7 +190,7 @@ PreLogUtil::putOE(JavaString::valueOf("Error Creating Directories: ") +JavaStrin
                         
                                     {
                                     
-                        if(existingDirectoryFile->list()->length > 0)
+                        if(existingDirectoryFile->list().size() > 0)
                         
                                     {
                                     
@@ -485,7 +485,7 @@ fileList->addAllList(recursiveFileList);
     int32_t index = 0;index < files.size(); index++)
         {
 
-                        if(files[index]->getPath()->indexOf(searchValue) >= 0)
+                        if(JavaString::indexOf(files[index]->getPath(), searchValue) >= 0)
                         
                                     {
                                     fileList->add(files[index]);

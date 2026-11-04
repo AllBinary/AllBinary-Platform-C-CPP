@@ -36,6 +36,8 @@
         
             #include "java/lang/Exception.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -117,7 +119,7 @@ FontFamilyValidation::FontFamilyValidation(Node* node) : FontFamilyView(node), l
     bool valid = Boolean::TRUE;;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("FontFamilyValidation", this, this->commonStrings->IS_VALID);
@@ -126,7 +128,7 @@ FontFamilyValidation::FontFamilyValidation(Node* node) : FontFamilyView(node), l
                                     }
                                 
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("CssValidation: ") +JavaString::valueOf(valid), this, this->commonStrings->IS_VALID);
@@ -147,7 +149,7 @@ FontFamilyValidation::FontFamilyValidation(Node* node) : FontFamilyView(node), l
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to validate data", this, this->commonStrings->IS_VALID, &e);
@@ -191,7 +193,7 @@ stringBuffer->append("Css Font Family Property Validation Error");
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation info error", this, "validationInfo()", &e);

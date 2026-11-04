@@ -34,6 +34,8 @@
         
             #include "java/lang/Integer.h"
         
+            #include "java/lang/Boolean.h"
+        
             #include "java/lang/Runnable.h"
         
 class Activity;

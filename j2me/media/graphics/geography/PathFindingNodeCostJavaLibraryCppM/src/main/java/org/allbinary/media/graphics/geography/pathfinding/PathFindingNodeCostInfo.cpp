@@ -40,8 +40,6 @@
         
             #include "java/lang/Exception.h"
         
-            #include "java/lang/Long.h"
-        
 #include <org/allbinary/logic/string/StringMaker.h>
 
       
@@ -125,12 +123,42 @@ this->costFromStartP += cost;
 
     auto PathFindingNodeCostInfo::compareTo(PathFindingNodeCostInfo* pathFindingNodeCostInfo) -> int32_t{
 
+                        if(this->totalCostP < pathFindingNodeCostInfo->totalCostP)
+                        
+                                    {
+                                    
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return Long.compare(this->totalCostP, pathFindingNodeCostInfo->totalCostP);;
+                        return  -1;
+    
+
+                                    }
+                                
+                             else 
+                        if(this->totalCostP > pathFindingNodeCostInfo->totalCostP)
+                        
+                                    {
+                                    
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return 1;
+    
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return 0;
     
 }
 

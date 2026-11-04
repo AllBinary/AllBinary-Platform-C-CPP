@@ -304,7 +304,7 @@ this->firstTime= false;
     auto ImageCache::loadImageForAnimation() -> void{
 
     LazyImageRotationAnimation* lazyImageRotationAnimation = 
-                null
+                nullptr
             ;;
     
 
@@ -530,7 +530,7 @@ this->loadImageForAnimation();
 
 
     LazyImageRotationAnimation* lazyImageRotationAnimation = 
-                null
+                nullptr
             ;;
     
 
@@ -601,7 +601,7 @@ this->loadImageForAnimation();
     auto ImageCache::loadNextImage() -> void{
 
     Image* image = 
-                null
+                nullptr
             ;;
     
 
@@ -842,7 +842,7 @@ this->listOfList[foundIndex].add(image);
                                     {
                                     
     InputStream* inputStream = 
-                null
+                nullptr
             ;;
     
 
@@ -1028,7 +1028,7 @@ this->loadList->add(image);
         
 
     LazyImageRotationAnimation* lazyImageRotationAnimation2 = 
-                null
+                nullptr
             ;;
     
 

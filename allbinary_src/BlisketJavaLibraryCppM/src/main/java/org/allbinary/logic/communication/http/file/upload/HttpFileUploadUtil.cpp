@@ -190,7 +190,7 @@ stringBuffer->append("Size:");
 stringBuffer->append(" Not Calculated Yet");
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->HTTP))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->HTTP))
                         
                                     {
                                     logUtil->putF(stringBuffer->toString(), getInstance(), "log()");
@@ -238,7 +238,7 @@ stringBuffer->append("Size:");
 stringBuffer->appendlong(fileItem->getSize());
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
                         
                                     {
                                     logUtil->putF(stringBuffer->toString(), getInstance(), "log()");

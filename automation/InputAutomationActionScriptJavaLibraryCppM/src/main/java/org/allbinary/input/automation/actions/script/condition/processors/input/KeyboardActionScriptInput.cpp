@@ -42,6 +42,8 @@
         
             #include "java/lang/Long.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <java/awt/event/KeyEvent.h>
 
       
@@ -518,7 +520,7 @@ index++;
 
 
                         for (
-    int32_t index = 0;index < this->getKeyArray().length; index++)
+    int32_t index = 0;index < this->getKeyArray().size(); index++)
         {
 hashMap->put(KeyboardActionScriptInputData::KEY +index, std::to_string(this->getKeyArray()[index]));
     

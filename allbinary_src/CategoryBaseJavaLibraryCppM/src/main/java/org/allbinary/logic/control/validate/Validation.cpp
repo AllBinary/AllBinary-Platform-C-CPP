@@ -40,6 +40,8 @@
         
             #include "java/lang/RuntimeException.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <org/allbinary/string/CommonStrings.h>
 
       

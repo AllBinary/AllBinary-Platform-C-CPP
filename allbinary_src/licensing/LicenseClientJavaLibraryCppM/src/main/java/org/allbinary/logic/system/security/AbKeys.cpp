@@ -77,6 +77,8 @@ AbKeys* AbKeys::instance = AbKeys::instance_owner();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbKeys::instance;
     
 }
@@ -102,6 +104,8 @@ AbKeys::AbKeys() : logUtil(LogUtil::getInstance()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return "Temp For Input Library";
     
 
@@ -111,6 +115,8 @@ AbKeys::AbKeys() : logUtil(LogUtil::getInstance()){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return AbeLicenseInterfaceFactory::getInstance()->getLicenseInstance(abeClientInformation)->getKey(keyName);;
     
 

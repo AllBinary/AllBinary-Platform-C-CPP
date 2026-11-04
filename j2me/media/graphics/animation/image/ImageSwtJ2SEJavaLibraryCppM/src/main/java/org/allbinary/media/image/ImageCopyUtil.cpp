@@ -214,7 +214,7 @@ originalImage2= openGLESImage->openGLBitmap->getImage();
                                 
 
     Image* image = 
-                null
+                nullptr
             ;;
     
 
@@ -310,7 +310,7 @@ originalImage2= openGLESImage->openGLBitmap->getImage();
                                 
 
     Image* image = 
-                null
+                nullptr
             ;;
     
 
@@ -429,7 +429,7 @@ image= this->openGLUtil->addImage(image);
                                 
 
     Image* image = 
-                null
+                nullptr
             ;;
     
 
@@ -750,9 +750,7 @@ newPixelArray[index +(index2 *width)]= originalPixelArray[(index -halfWidthDelta
 
 }
 
-getImage = dynamic_cast<org::eclipse::swt::graphics::Image*>(mutableImage2->getImage()getImage)
-getImage.
-                    getImageData()->setPixels(0, 0, image->getWidth(), newPixelArray, 0);
+dynamic_cast<org::eclipse::swt::graphics::Image*>(mutableImage2->getImage())getImageData()->setPixels(0, 0, image->getWidth(), newPixelArray, 0);
     
 
 
@@ -821,9 +819,7 @@ newPixelArray[index +(index2 *width)]= originalPixelArray[(index -halfWidthDelta
 
 }
 
-getImage = dynamic_cast<org::eclipse::swt::graphics::Image*>(originalImmutableImage->getImage()getImage)
-getImage.
-                    getImageData()->setPixels(0, 0, image->getWidth(), newPixelArray, 0);
+dynamic_cast<org::eclipse::swt::graphics::Image*>(originalImmutableImage->getImage())getImageData()->setPixels(0, 0, image->getWidth(), newPixelArray, 0);
     
 
 

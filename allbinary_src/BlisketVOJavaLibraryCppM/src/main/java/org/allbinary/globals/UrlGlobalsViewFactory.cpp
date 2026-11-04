@@ -98,7 +98,7 @@ UrlGlobalsViewFactory::UrlGlobalsViewFactory(){
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->FACTORYERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->FACTORYERROR))
                         
                                     {
                                     logUtil->put(commonStrings->EXCEPTION, "GlobalsViewFactory", commonStrings->GET_INSTANCE, &e);

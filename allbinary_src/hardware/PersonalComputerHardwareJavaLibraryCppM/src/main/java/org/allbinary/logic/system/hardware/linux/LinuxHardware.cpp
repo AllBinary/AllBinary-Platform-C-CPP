@@ -200,7 +200,7 @@ this->componentInterfaceVector->add(cpu);
     auto LinuxHardware::init(std::string filePath) -> void{
 
     LineNumberReader* lineNumberReader = 
-                null
+                nullptr
             ;;
     
 

@@ -125,7 +125,7 @@ TransformInfoPropertiesFactory::TransformInfoPropertiesFactory() : logUtil(LogUt
     std::string name = attrNode->getValue();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(CommonLabels::getInstance()->NEXT) +JavaString::valueOf(" View Name: ")) +JavaString::valueOf(name), this, "toTransformInfoPropertiesHashMap()");

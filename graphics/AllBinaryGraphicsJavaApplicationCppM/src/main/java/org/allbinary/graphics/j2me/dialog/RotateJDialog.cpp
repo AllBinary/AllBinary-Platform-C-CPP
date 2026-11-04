@@ -211,18 +211,18 @@ outer->jButton1ActionPerformed(evt);
     
 this->jPanel1->setLayout(jPanel1Layout);
     
-jPanel1Layout->setHorizontalGroup(jPanel1Layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(jPanel1Layout->createSequentialGroup()->addGap(62, 62, 62)->addComponent(jButton1)->addContainerGap(62, Short::MAX_VALUE)));
+jPanel1Layout->setHorizontalGroup(jPanel1Layout->createParallelGroup(GroupLayout::Alignment->LEADING)->addGroup(jPanel1Layout->createSequentialGroup()->addGap(62, 62, 62)->addComponent(jButton1)->addContainerGap(62, Short::MAX_VALUE)));
     
-jPanel1Layout->setVerticalGroup(jPanel1Layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addComponent(jButton1));
+jPanel1Layout->setVerticalGroup(jPanel1Layout->createParallelGroup(GroupLayout::Alignment->LEADING)->addComponent(jButton1));
     
 
     javax::swing::GroupLayout* layout = new javax::swing::GroupLayout(getContentPane());;
     
 getContentPane()->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(layout->createSequentialGroup()->addContainerGap()->addGroup(layout->createParallelGroup(GroupLayout::Alignment::TRAILING)->addComponent(jLabel1)->addComponent(jLabel2))->addPreferredGap(LayoutStyle::ComponentPlacement::UNRELATED)->addGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addComponent(totalRotationJTextField, GroupLayout::Alignment::TRAILING, GroupLayout::DEFAULT_SIZE, 31, Short::MAX_VALUE)->addComponent(angleIncrementJTextField, GroupLayout::Alignment::TRAILING, GroupLayout::PREFERRED_SIZE, 31, GroupLayout::PREFERRED_SIZE))->addContainerGap())->addComponent(jPanel1, GroupLayout::Alignment::TRAILING, GroupLayout::DEFAULT_SIZE, GroupLayout::DEFAULT_SIZE, Short::MAX_VALUE));
+layout->setHorizontalGroup(layout->createParallelGroup(GroupLayout::Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addContainerGap()->addGroup(layout->createParallelGroup(GroupLayout::Alignment->TRAILING)->addComponent(jLabel1)->addComponent(jLabel2))->addPreferredGap(LayoutStyle::ComponentPlacement->UNRELATED)->addGroup(layout->createParallelGroup(GroupLayout::Alignment->LEADING)->addComponent(totalRotationJTextField, GroupLayout::Alignment->TRAILING, GroupLayout::DEFAULT_SIZE, 31, Short::MAX_VALUE)->addComponent(angleIncrementJTextField, GroupLayout::Alignment->TRAILING, GroupLayout::PREFERRED_SIZE, 31, GroupLayout::PREFERRED_SIZE))->addContainerGap())->addComponent(jPanel1, GroupLayout::Alignment->TRAILING, GroupLayout::DEFAULT_SIZE, GroupLayout::DEFAULT_SIZE, Short::MAX_VALUE));
     
-layout->setVerticalGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(layout->createSequentialGroup()->addContainerGap()->addGroup(layout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(angleIncrementJTextField, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->addComponent(jLabel1))->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addGroup(layout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(totalRotationJTextField, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->addComponent(jLabel2))->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED, 16, Short::MAX_VALUE)->addComponent(jPanel1, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->addContainerGap()));
+layout->setVerticalGroup(layout->createParallelGroup(GroupLayout::Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addContainerGap()->addGroup(layout->createParallelGroup(GroupLayout::Alignment->BASELINE)->addComponent(angleIncrementJTextField, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->addComponent(jLabel1))->addPreferredGap(LayoutStyle::ComponentPlacement->RELATED)->addGroup(layout->createParallelGroup(GroupLayout::Alignment->BASELINE)->addComponent(totalRotationJTextField, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->addComponent(jLabel2))->addPreferredGap(LayoutStyle::ComponentPlacement->RELATED, 16, Short::MAX_VALUE)->addComponent(jPanel1, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->addContainerGap()));
     
 pack();
     
@@ -236,9 +236,7 @@ pack();
     
 this->hashMap->put(Integer.valueOf(1)Integer.valueOf(this->totalRotationJTextField->getText()));
     
-getParent = dynamic_cast<HashMapJDialogListenerInterface*>(this->getParent()getParent)
-getParent.
-                    onHashMap(this->hashMap);
+dynamic_cast<HashMapJDialogListenerInterface*>(this->getParent())onHashMap(this->hashMap);
     
 this->setVisible(false);
     

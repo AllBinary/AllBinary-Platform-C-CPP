@@ -98,7 +98,7 @@ FileUtil2::FileUtil2() : logUtil(LogUtil::getInstance()), commonStrings(CommonSt
     auto FileUtil2::loadFileAsList(AbFile* file, int32_t max, std::vector<int8_t> byteArray1) -> BasicArrayList*{
 
     AbFileInputStream* inputStream = 
-                null
+                nullptr
             ;;
     
 

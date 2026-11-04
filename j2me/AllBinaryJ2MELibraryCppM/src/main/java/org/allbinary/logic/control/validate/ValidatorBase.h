@@ -34,6 +34,8 @@
         
             #include "java/lang/Object.h"
         
+            #include "java/lang/Boolean.h"
+        
 class StdUtil;
 class BooleanFactory;
 class StringUtil;

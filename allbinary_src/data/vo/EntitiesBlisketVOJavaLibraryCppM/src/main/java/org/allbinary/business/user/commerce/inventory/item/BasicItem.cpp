@@ -124,7 +124,7 @@
 
 BasicItem::BasicItem(HashMap<Object*, Object*>* itemHashMap) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), basicItemData(BasicItemData::getInstance()){
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->PRODUCTSEARCHLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRODUCTSEARCHLOGGING))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, "Constructor(HashMap)");
@@ -195,7 +195,7 @@ this->specials= JavaBoxes::unbox<std::string>(itemHashMap->get(basicItemData->SP
 
 BasicItem::BasicItem() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), basicItemData(BasicItemData::getInstance()){
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->PRODUCTSEARCHLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRODUCTSEARCHLOGGING))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
@@ -845,7 +845,7 @@ itemTotal->multiply((int32_t(this->number)));
 
     auto BasicItem::toHashMap() -> HashMap<Object*, Object*>*{
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->PRODUCTSEARCHLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRODUCTSEARCHLOGGING))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, "toHashMap");
@@ -931,7 +931,7 @@ hashMap->put(basicItemData->SPECIALS, this->specials);
 
     auto BasicItem::toVector() -> BasicArrayList*{
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->PRODUCTSEARCHLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRODUCTSEARCHLOGGING))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, "toVector");
@@ -1026,7 +1026,7 @@ values->add(this->specials);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->getId();
+                        return JavaBoxes::toObject(this->getId());
     
 }
 

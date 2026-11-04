@@ -128,7 +128,7 @@ TransformInfoObjectConfigNoManipulationFactory::TransformInfoObjectConfigNoManip
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Could Not Load Object Config", this, commonStrings->GET_INSTANCE, &e);

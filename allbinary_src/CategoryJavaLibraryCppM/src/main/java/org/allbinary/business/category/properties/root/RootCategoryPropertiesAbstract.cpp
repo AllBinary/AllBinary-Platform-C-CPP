@@ -40,6 +40,8 @@
         
             #include "java/lang/RuntimeException.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <java/util/HashMap.h>
 
       
@@ -102,7 +104,7 @@ RootCategoryPropertiesAbstract::RootCategoryPropertiesAbstract() : category(Cate
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->getValue();
+                        return JavaBoxes::toObject(this->getValue());
     
 }
 

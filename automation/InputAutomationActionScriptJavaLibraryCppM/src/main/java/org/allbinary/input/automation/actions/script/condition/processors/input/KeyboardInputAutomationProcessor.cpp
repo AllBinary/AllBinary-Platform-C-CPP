@@ -110,7 +110,7 @@ logUtil->putF(CommonLabels::getInstance()->START +keyActionScriptInputInterface-
 
 
                         for (
-    int32_t index = 0;index < keyActionScriptInputInterface->getKeyArray()->length; index++)
+    int32_t index = 0;index < keyActionScriptInputInterface->getKeyArray().size(); index++)
         {
 
                         if(keyActionScriptInputInterface->isPress())
@@ -130,7 +130,7 @@ Thread::sleep(keyActionScriptInputInterface->getTime());
 
 
                         for (
-    int32_t index = keyActionScriptInputInterface->getKeyArray()->length -1;index >= 0; index--)
+    int32_t index = keyActionScriptInputInterface->getKeyArray().size() -1;index >= 0; index--)
         {
 
                         if(keyActionScriptInputInterface->isRelease())
@@ -152,7 +152,7 @@ Thread::sleep(keyActionScriptInputInterface->getTime());
 
 
                         for (
-    int32_t index = 0;index < keyActionScriptInputInterface->getKeyArray()->length; index++)
+    int32_t index = 0;index < keyActionScriptInputInterface->getKeyArray().size(); index++)
         {
 
                         if(keyActionScriptInputInterface->isPress())

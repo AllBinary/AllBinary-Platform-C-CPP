@@ -129,7 +129,7 @@ scaledImages[index]= this->scale(images[index], width, height);
     auto ImageJ2MEScaleUtil::scale(Image* image, int32_t width, int32_t height) -> Image*{
 
     playn::core::Image* originalPlayNImage = 
-                null
+                nullptr
             ;;
     
 

@@ -96,7 +96,7 @@
 
 StoreTagWorkFlowHelper::StoreTagWorkFlowHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) : logUtil(LogUtil::getInstance()), abeClientInformation(ServiceClientInformationInterfaceFactory::getInstance()){
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPER))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPER))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Properties: ") +JavaString::valueOf(hashMap->toString()), this, "StoreTagWorkFlowHelper()");
@@ -115,7 +115,7 @@ this->storeWorkFlowInterface= StoreTagWorkFlowFactory::getInstance()->getInstanc
 
         try {
             
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPER))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPER))
                         
                                     {
                                     this->logUtil->putF("Process", this, this->commonStrings->PROCESS);
@@ -139,7 +139,7 @@ this->storeWorkFlowInterface= StoreTagWorkFlowFactory::getInstance()->getInstanc
     std::string error = "Failed to process workflow: ";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);

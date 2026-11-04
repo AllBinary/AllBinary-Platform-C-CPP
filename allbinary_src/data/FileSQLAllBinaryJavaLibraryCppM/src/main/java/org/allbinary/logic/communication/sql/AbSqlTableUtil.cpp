@@ -191,7 +191,7 @@ AbSqlTableUtil* AbSqlTableUtil::instance = AbSqlTableUtil::instance_owner();
     std::string fileName = JavaString::valueOf(tableName) +JavaString::valueOf(this->EXTENSION);;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf(this->SAVING) +JavaString::valueOf(tableName), this, this->METHOD_GET_OUTPUT_STREAM);
@@ -234,7 +234,7 @@ backupFile->createNewFile();
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
                         
                                     {
                                     this->logUtil->put("Create File", this, this->METHOD_GET_OUTPUT_STREAM, &e);
@@ -284,7 +284,7 @@ stringBuffer->append(time);
     AbPath* backupAbPath = new AbPath(stringBuffer->toString());;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
                         
                                     {
                                     stringBuffer->delete_(0, stringBuffer->length());
@@ -324,7 +324,7 @@ FileUtil::getInstance()->copy(path, backupAbPath);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, this->METHOD_BACKUP_FILE, &e);
@@ -426,7 +426,7 @@ lastIndex= index +1;
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf(ERROR_CREATING) +JavaString::valueOf(path), this, this->METHOD_BACKUP_TABLE);
@@ -486,7 +486,7 @@ stringBuffer->append(this->END);
     std::string sqlStatementLine = stringBuffer->toString();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf(this->APPENDING) +JavaString::valueOf(sqlStatementLine), this, this->METHOD_BACKUP_TABLE);
@@ -513,7 +513,7 @@ StreamUtil::getInstance()->close(outputStream);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
                         
                                     {
                                     this->logUtil->put("Backup Table Failed\nSQL Statement", this, this->METHOD_BACKUP_TABLE, &e);
@@ -556,7 +556,7 @@ StreamUtil::getInstance()->close(outputStream);
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
                         
                                     {
                                     this->logUtil->putF(this->ERROR_CREATING +path, this, this->METHOD_RESTORE_TABLE);
@@ -613,7 +613,7 @@ stringBuffer->append(this->DASH);
 stringBuffer->append(end);
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
                         
                                     {
                                     this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_RESTORE_TABLE);
@@ -663,7 +663,7 @@ stringBuffer->append(this->PORTION_RESTORED);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
                         
                                     {
                                     this->logUtil->put("Restore Table Failed\nSQL Statement", this, this->METHOD_RESTORE_TABLE, &e);

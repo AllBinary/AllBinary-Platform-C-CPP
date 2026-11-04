@@ -40,6 +40,8 @@
         
             #include "java/lang/Long.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <java/awt/event/KeyEvent.h>
 #include <java/util/HashMap.h>
 class BasicArrayList;

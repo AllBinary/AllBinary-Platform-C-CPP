@@ -374,7 +374,7 @@ this->treeNode->add(dynamic_cast<DefaultMutableTreeNode*>(this->pointTreeNodeVec
     auto LinesGraphicItem::removePoint() -> GPoint*{
 
     GPoint* point = 
-                null
+                nullptr
             ;;
     
 
@@ -553,7 +553,7 @@ graphics->setStroke(new BasicStroke(x));
     
 
     GPoint* firstPoint = 
-                null
+                nullptr
             ;;
     
 

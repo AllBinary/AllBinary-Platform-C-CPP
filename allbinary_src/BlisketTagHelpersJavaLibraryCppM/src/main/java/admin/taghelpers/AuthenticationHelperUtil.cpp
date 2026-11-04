@@ -125,7 +125,7 @@ AuthenticationHelperUtil* AuthenticationHelperUtil::instance = AuthenticationHel
             
     auto AuthenticationHelperUtil::isAuthorized(AuthenticationHelper* authenticationHelper, std::string filePath) -> bool{
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf(CommonLabels::getInstance()->START) +JavaString::valueOf(filePath), this, "isAuthorized()");
@@ -156,7 +156,7 @@ AuthenticationHelperUtil* AuthenticationHelperUtil::instance = AuthenticationHel
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("Authorized", this, "isAuthorized()");
@@ -177,7 +177,7 @@ AuthenticationHelperUtil* AuthenticationHelperUtil::instance = AuthenticationHel
                                 
                         else {
                             
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Not Authorized: ") +JavaString::valueOf(basicUserRole->toString()), this, "isAuthorized()");

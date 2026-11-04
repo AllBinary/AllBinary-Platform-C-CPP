@@ -131,7 +131,7 @@ this->setDocument(this->generate(this->toXmlDoc()));
             
     auto InsertTemplateCustomizerTransformInfoObjectConfig::set(std::string aParentViewName) -> void{
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Setting: ") +JavaString::valueOf(aParentViewName), this, "set()");
@@ -152,7 +152,7 @@ this->setDocument(this->generate(this->toXmlDoc()));
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("Replacing", this, "set()");
@@ -181,7 +181,7 @@ parentComponentsNodeList->item(0)->appendChild((new TransformInfoDomNodeView(aPa
                                 
                         else {
                             
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("Setting", this, "set()");

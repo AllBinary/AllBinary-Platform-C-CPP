@@ -103,17 +103,20 @@
         //#include "org/allbinary/media/audio/music/MusicManagerPlayerListener.h"
 
 
-MusicManager::MusicManagerPlayerListener::MusicManagerPlayerListener() {
-        }
-        
+MusicManager::MusicManagerPlayerListener::MusicManagerPlayerListener(MusicManager* musicManager){
+this->musicManager= musicManager;
+    
+}
+
+
     auto MusicManager::MusicManagerPlayerListener::playerUpdate(Player* player, std::string event, Object* eventData) -> void{
-PreLogUtil::put(event, this, outer->commonStrings->PROCESS);
+PreLogUtil::put(event, this, this->musicManager->commonStrings->PROCESS);
     
 
                         if(event == PlayerListener::END_OF_MEDIA || event == PlayerListener::STOPPED || event == PlayerListener::CLOSED)
                         
                                     {
-                                    outer->reset();
+                                    this->musicManager->reset();
     
 
                                     }
@@ -121,7 +124,7 @@ PreLogUtil::put(event, this, outer->commonStrings->PROCESS);
 }
 
 
-MusicManager::MusicManager(Class* musicServiceClass, BasicArrayList* songList) : commonStrings(CommonStrings::getInstance()), commonSeps(CommonSeps::getInstance()), basicArrayListUtil(BasicArrayListUtil::getInstance()), gameTickTimeDelayHelper(GameTickTimeDelayHelperFactory::getInstance()), playerStateUtil(PlayerStateUtil::getInstance()), timeDelayHelper(new TimeDelayHelper(0)), playerListener(javaInner(new MusicManagerPlayerListener(), this)), NEXT_SONG(JavaString::valueOf(CommonLabels::getInstance()->NEXT) +JavaString::valueOf(" Song: ")), currentSongSound(NoSound::getInstance()), nextSongSound(NoSound::getInstance()){
+MusicManager::MusicManager(Class* musicServiceClass, BasicArrayList* songList) : commonStrings(CommonStrings::getInstance()), commonSeps(CommonSeps::getInstance()), basicArrayListUtil(BasicArrayListUtil::getInstance()), gameTickTimeDelayHelper(GameTickTimeDelayHelperFactory::getInstance()), playerStateUtil(PlayerStateUtil::getInstance()), timeDelayHelper(new TimeDelayHelper(0)), playerListener(javaInner(new MusicManagerPlayerListener(this), this)), NEXT_SONG(JavaString::valueOf(CommonLabels::getInstance()->NEXT) +JavaString::valueOf(" Song: ")), currentSongSound(NoSound::getInstance()), nextSongSound(NoSound::getInstance()){
 this->songList= songList;
     
 }

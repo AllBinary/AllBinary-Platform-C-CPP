@@ -197,12 +197,12 @@ stringBuffer->append(this->RATIOS_LABEL);
 
 
                         for (
-    int32_t index = 0;index < this->getRatios().length; index++)
+    int32_t index = 0;index < this->getRatios().size(); index++)
         {
 stringBuffer->append(this->getRatios()[index].toString());
     
 
-                        if(index < this->getRatios().length -1)
+                        if(index < this->getRatios().size() -1)
                         
                                     {
                                     stringBuffer->append(commonSeps->COMMA_SEP);

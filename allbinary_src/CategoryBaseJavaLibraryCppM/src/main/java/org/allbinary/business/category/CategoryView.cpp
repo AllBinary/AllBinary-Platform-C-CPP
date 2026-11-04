@@ -122,7 +122,7 @@ this->categoryInterface= categoryInterface;
     BasicArrayList* childCategoryVector = this->categoryInterface->getChildNodes();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->CATEGORY))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->CATEGORY))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Number Of Children: ") +JavaString::valueOf(childCategoryVector->size()), this, "toXmlNode");
@@ -145,7 +145,7 @@ this->categoryInterface= categoryInterface;
     
 
     CategoryPropertiesInterface* categoryPropertiesInterface = 
-                null
+                nullptr
             ;;
     
 

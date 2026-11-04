@@ -40,6 +40,8 @@
         
             #include "java/lang/Integer.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <java/util/HashMap.h>
 
       
@@ -123,7 +125,7 @@
 
 Category::Category(CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), childCategoryVector(new BasicArrayListD()), typeVector(new BasicArrayListD()), PROPERTIES(int32_t(1)), CATEGORY(int32_t(0)){
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->CATEGORY))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->CATEGORY))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->CONSTRUCTOR, this, "Category(CategoryPropertiesFactoryInterface)");
@@ -271,7 +273,7 @@ this->typeVector->add(this->PROPERTIES);
 this->removeDuplicateChild(categoryInterface);
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->CATEGORY))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->CATEGORY))
                         
                                     {
                                     this->logUtil->putF("adding", this, "addChild");
@@ -743,7 +745,7 @@ categoryVector->add(this->childCategoryVector);
             
     auto Category::log() -> void{
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->CATEGORY))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->CATEGORY))
                         
                                     {
                                     

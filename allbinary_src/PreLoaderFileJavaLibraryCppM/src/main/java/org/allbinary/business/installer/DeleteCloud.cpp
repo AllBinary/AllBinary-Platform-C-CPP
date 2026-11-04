@@ -171,7 +171,7 @@ nextFile= dynamic_cast<AbFile*>(fileBasicArrayList->get(index));
 
         try {
             
-                        if(nextFile->getPath()->indexOf(FileUploadData::getInstance()->FILE) < 0)
+                        if(JavaString::indexOf(nextFile->getPath(), FileUploadData::getInstance()->FILE) < 0)
                         
                                     {
                                     nextFile->delete_();

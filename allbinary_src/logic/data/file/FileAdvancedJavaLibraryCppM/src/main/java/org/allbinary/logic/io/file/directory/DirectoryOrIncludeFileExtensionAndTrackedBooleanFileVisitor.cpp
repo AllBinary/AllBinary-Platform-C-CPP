@@ -38,6 +38,8 @@
         
             #include "java/lang/System.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <org/allbinary/java/runtime/process/git/GitProcessHelper.h>
 
       
@@ -120,7 +122,7 @@ this->includesString= includesString;
                                     }
                                 
 
-                        if(false || file->getAbsolutePath()->indexOf(this->includesString) >= 0)
+                        if(false || JavaString::indexOf(file->getAbsolutePath(), this->includesString) >= 0)
                         
                                     {
                                     

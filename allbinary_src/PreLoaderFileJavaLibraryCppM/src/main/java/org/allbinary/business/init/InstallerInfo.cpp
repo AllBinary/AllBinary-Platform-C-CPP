@@ -155,7 +155,7 @@ InstallerInfo::hasRead= false;
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->PRELOADERERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRELOADERERROR))
                         
                                     {
                                     this->logUtil->putF("Failed", this, "write");
@@ -210,7 +210,7 @@ this->setPassword((new WeakCrypt(2))->decrypt(decryptedPassword));
                                 
                         else {
                             
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->PRELOADER))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRELOADER))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Not a File - Failed Loading: ") +JavaString::valueOf(FILEABPATH->toString()), this, "read");
@@ -226,7 +226,7 @@ this->setPassword((new WeakCrypt(2))->decrypt(decryptedPassword));
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->PRELOADERERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRELOADERERROR))
                         
                                     {
                                     this->logUtil->putF("Failed", this, "read");
@@ -275,7 +275,7 @@ this->read();
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->PRELOADER))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRELOADER))
                         
                                     {
                                     this->logUtil->putF("Failed", this, "updateIfNeeded");

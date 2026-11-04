@@ -38,6 +38,8 @@
         
             #include "java/lang/Integer.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <java/util/Calendar.h>
 
       
@@ -399,7 +401,7 @@ this->weblisketSession->setPassword(newPassword);
  catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAGERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "invalidateSession()", &e);
@@ -438,7 +440,7 @@ this->weblisketSession->setPassword(newPassword);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAGERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "invalidateSession()", &e);
@@ -487,7 +489,7 @@ this->weblisketSession->setPassword(newPassword);
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->AUTHENTICATION))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->AUTHENTICATION))
                         
                                     {
                                     
@@ -526,7 +528,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "isSessionOld()");
                                 
                         else {
                             
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->AUTHENTICATION))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->AUTHENTICATION))
                         
                                     {
                                     this->logUtil->putF("Role Is Not In Session", this, "isSessionOld()");
@@ -550,7 +552,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "isSessionOld()");
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAGERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "isSessionOld()", &e);
@@ -594,7 +596,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "isSessionOld()");
     int64_t timeFirst = calendar->getTimeInMillis() -lastAccess;;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->AUTHENTICATION))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->AUTHENTICATION))
                         
                                     {
                                     
@@ -622,7 +624,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "isRarelyUsedSession()");
                                 
                         else {
                             
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->AUTHENTICATION))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->AUTHENTICATION))
                         
                                     {
                                     this->logUtil->putF("Role Is Not In Session", this, "isRarelyUsedSession()");
@@ -664,7 +666,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "isRarelyUsedSession()");
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAGERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "isRoleValid()", &e);
@@ -711,7 +713,7 @@ stringBuffer->append("Trying New login<p>");
     std::string error = "Failed to set valid role";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAGERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "validRole()", &e);
@@ -762,7 +764,7 @@ stringBuffer->append("Trying New login<p>");
     std::string error = "Failed to set role invalid";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAGERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "invalidRole()", &e);
@@ -846,7 +848,7 @@ stringBuffer->append("Trying New login<p>");
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAGERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "isAuthenticationSessionValid()", &e);
@@ -873,7 +875,7 @@ stringBuffer->append("Trying New login<p>");
 
         try {
             
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPERERROR))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Starting for User: ") +JavaString::valueOf(this->userName)) +JavaString::valueOf(" Attempt: ")) +JavaString::valueOf(this->weblisketSession->getAttempts()), this, "processIfNewLogin()");
@@ -951,7 +953,7 @@ this->nextAttempt();
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAGERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "processIfNewLogin()", &e);
@@ -1015,7 +1017,7 @@ this->nextAttempt();
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAGERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "isSetToInvalidate()", &e);
@@ -1051,7 +1053,7 @@ this->weblisketSession= new BasicWeblisketSession(pageContext);
 this->getFormData();
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAG))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAG))
                         
                                     {
                                     this->logUtil->putF("Started", this, this->tagStrings->DO_START_TAG);
@@ -1068,7 +1070,7 @@ this->getFormData();
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAG))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAG))
                         
                                     {
                                     this->logUtil->putF("Change Password", this, this->tagStrings->DO_START_TAG);
@@ -1115,7 +1117,7 @@ this->getFormData();
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAG))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAG))
                         
                                     {
                                     this->logUtil->putF("INVALIDATESESSION", this, this->tagStrings->DO_START_TAG);
@@ -1144,7 +1146,7 @@ this->getFormData();
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAG))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAG))
                         
                                     {
                                     this->logUtil->putF("Processing Invalidation", this, this->tagStrings->DO_START_TAG);
@@ -1186,7 +1188,7 @@ pageContext.getOut()->print("Please login again.<p>");
                                 
                         else {
                             
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAG))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAG))
                         
                                     {
                                     this->logUtil->putF("Preparing session for invalidation", this, this->tagStrings->DO_START_TAG);
@@ -1234,7 +1236,7 @@ pageContext.getOut()->print("Please login again.<p>");
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAG))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAG))
                         
                                     {
                                     this->logUtil->putF("Authenticated session is valid", this, this->tagStrings->DO_START_TAG);
@@ -1277,7 +1279,7 @@ pageContext.getOut()->print("Please login again.<p>");
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAG))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAG))
                         
                                     {
                                     this->logUtil->putF("Processing new login.", this, this->tagStrings->DO_START_TAG);
@@ -1290,7 +1292,7 @@ pageContext.getOut()->print("Please login again.<p>");
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAG))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAG))
                         
                                     {
                                     this->logUtil->putF("Role is valid - Processing new login", this, this->tagStrings->DO_START_TAG);
@@ -1332,7 +1334,7 @@ pageContext.getOut()->print(validRole());
                                 
                         else {
                             
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAG))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAG))
                         
                                     {
                                     this->logUtil->putF("Role is not valid - Processing new login", this, this->tagStrings->DO_START_TAG);
@@ -1377,7 +1379,7 @@ pageContext.getOut()->print(invalidRole());
                                 
                         else {
                             
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAG))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAG))
                         
                                     {
                                     this->logUtil->putF("Invalid Login", this, this->tagStrings->DO_START_TAG);
@@ -1398,7 +1400,7 @@ pageContext.getOut()->print(invalidRole());
                         }
                             
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAG))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAG))
                         
                                     {
                                     

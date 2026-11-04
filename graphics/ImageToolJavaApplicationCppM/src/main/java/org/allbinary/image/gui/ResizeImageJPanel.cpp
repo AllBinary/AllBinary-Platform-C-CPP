@@ -253,7 +253,7 @@ this->jComboBox1->setModel(new javax::swing::DefaultComboBoxModel(numberStringAr
     
 
     std::vector<BufferedImage*> generatedBufferedImageArray = 
-                null
+                nullptr
             ;;
     
 
@@ -320,7 +320,7 @@ imagePersistanceUtil->saveWithBatik(FileWrapperUtil::wrapFile(files[index]), gen
     
 }
 
-outer->getParent()->repaint();
+outer->getParent().repaint();
     
 
                 //: 
@@ -358,7 +358,7 @@ logUtil->put(outer->commonStrings->EXCEPTION, this, outer->commonStrings->RUN, &
     ImageProcessorInput* imageProcessorInput = outer->getImageProcessorInput();;
     
 
-    int32_t size = imageProcessorInput->getBufferedImageArray()->length;;
+    int32_t size = imageProcessorInput->getBufferedImageArray().size();;
     
 
     std::vector<BufferedImage*> bufferedImageArray = imageProcessorInput->getBufferedImageArray();;
@@ -381,7 +381,7 @@ outer->jTextField2->setText(std::to_string(getHeight));
     
 }
 
-outer->getParent()->repaint();
+outer->getParent().repaint();
     
 
                 //: 
@@ -419,7 +419,7 @@ logUtil->put(outer->commonStrings->EXCEPTION, this, outer->commonStrings->RUN, &
     ImageProcessorInput* imageProcessorInput = outer->getImageProcessorInput();;
     
 
-    int32_t size = imageProcessorInput->getBufferedImageArray()->length;;
+    int32_t size = imageProcessorInput->getBufferedImageArray().size();;
     
 
     std::vector<BufferedImage*> bufferedImageArray = imageProcessorInput->getBufferedImageArray();;
@@ -442,7 +442,7 @@ outer->jTextField2->setText(std::to_string());
     
 }
 
-outer->getParent()->repaint();
+outer->getParent().repaint();
     
 
                 //: 
@@ -480,7 +480,7 @@ logUtil->put(outer->commonStrings->EXCEPTION, this, outer->commonStrings->RUN, &
     ImageProcessorInput* imageProcessorInput = outer->getImageProcessorInput();;
     
 
-    int32_t size = imageProcessorInput->getBufferedImageArray()->length;;
+    int32_t size = imageProcessorInput->getBufferedImageArray().size();;
     
 
     std::vector<BufferedImage*> bufferedImageArray = imageProcessorInput->getBufferedImageArray();;
@@ -503,7 +503,7 @@ outer->jTextField2->setText(std::to_string());
     
 }
 
-outer->getParent()->repaint();
+outer->getParent().repaint();
     
 
                 //: 
@@ -659,9 +659,9 @@ outer->adjustFor16BelowJButtonActionPerformed(evt);
     
 this->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(layout->createSequentialGroup()->addContainerGap()->addGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addComponent(jLabel1)->addComponent(jLabel2)->addComponent(jLabel3))->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING, false)->addComponent(jComboBox1, 0, GroupLayout::DEFAULT_SIZE, Short::MAX_VALUE)->addComponent(jTextField1)->addComponent(jTextField2))->addPreferredGap(LayoutStyle::ComponentPlacement::UNRELATED)->addGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addComponent(floatPercentJTextField, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->addComponent(adjustFor16AboveJButton)->addComponent(adjustFor16BelowJButton))->addContainerGap(GroupLayout::DEFAULT_SIZE, Short::MAX_VALUE))->addGroup(layout->createSequentialGroup()->addComponent(updateJButton)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addComponent(aboveJButton)->addGap(0, 250, Short::MAX_VALUE)));
+layout->setHorizontalGroup(layout->createParallelGroup(GroupLayout::Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addContainerGap()->addGroup(layout->createParallelGroup(GroupLayout::Alignment->LEADING)->addComponent(jLabel1)->addComponent(jLabel2)->addComponent(jLabel3))->addPreferredGap(LayoutStyle::ComponentPlacement->RELATED)->addGroup(layout->createParallelGroup(GroupLayout::Alignment->LEADING, false)->addComponent(jComboBox1, 0, GroupLayout::DEFAULT_SIZE, Short::MAX_VALUE)->addComponent(jTextField1)->addComponent(jTextField2))->addPreferredGap(LayoutStyle::ComponentPlacement->UNRELATED)->addGroup(layout->createParallelGroup(GroupLayout::Alignment->LEADING)->addComponent(floatPercentJTextField, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->addComponent(adjustFor16AboveJButton)->addComponent(adjustFor16BelowJButton))->addContainerGap(GroupLayout::DEFAULT_SIZE, Short::MAX_VALUE))->addGroup(layout->createSequentialGroup()->addComponent(updateJButton)->addPreferredGap(LayoutStyle::ComponentPlacement->RELATED)->addComponent(aboveJButton)->addGap(0, 250, Short::MAX_VALUE)));
     
-layout->setVerticalGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(layout->createSequentialGroup()->addContainerGap()->addGroup(layout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(jLabel1)->addComponent(jComboBox1, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->addComponent(floatPercentJTextField, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE))->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addGroup(layout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(jTextField1, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->addComponent(jLabel2)->addComponent(adjustFor16AboveJButton))->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED)->addGroup(layout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(jLabel3)->addComponent(jTextField2, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->addComponent(adjustFor16BelowJButton))->addGap(18, 18, 18)->addGroup(layout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(aboveJButton)->addComponent(updateJButton))->addContainerGap(175, Short::MAX_VALUE)));
+layout->setVerticalGroup(layout->createParallelGroup(GroupLayout::Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addContainerGap()->addGroup(layout->createParallelGroup(GroupLayout::Alignment->BASELINE)->addComponent(jLabel1)->addComponent(jComboBox1, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->addComponent(floatPercentJTextField, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE))->addPreferredGap(LayoutStyle::ComponentPlacement->RELATED)->addGroup(layout->createParallelGroup(GroupLayout::Alignment->BASELINE)->addComponent(jTextField1, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->addComponent(jLabel2)->addComponent(adjustFor16AboveJButton))->addPreferredGap(LayoutStyle::ComponentPlacement->RELATED)->addGroup(layout->createParallelGroup(GroupLayout::Alignment->BASELINE)->addComponent(jLabel3)->addComponent(jTextField2, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->addComponent(adjustFor16BelowJButton))->addGap(18, 18, 18)->addGroup(layout->createParallelGroup(GroupLayout::Alignment->BASELINE)->addComponent(aboveJButton)->addComponent(updateJButton))->addContainerGap(175, Short::MAX_VALUE)));
     
 }
 

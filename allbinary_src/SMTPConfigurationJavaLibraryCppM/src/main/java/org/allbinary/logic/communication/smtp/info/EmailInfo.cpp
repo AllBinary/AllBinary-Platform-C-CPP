@@ -75,7 +75,7 @@
 
 EmailInfo::EmailInfo(BasicEmailInfo* basicEmailInfo) : logUtil(LogUtil::getInstance()){
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
                         
                                     {
                                     
@@ -95,7 +95,7 @@ this->init(basicEmailInfo,
 
 EmailInfo::EmailInfo(BasicEmailInfo* basicEmailInfo, std::string htmlAttachment, std::string contentBase) : logUtil(LogUtil::getInstance()){
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
                         
                                     {
                                     

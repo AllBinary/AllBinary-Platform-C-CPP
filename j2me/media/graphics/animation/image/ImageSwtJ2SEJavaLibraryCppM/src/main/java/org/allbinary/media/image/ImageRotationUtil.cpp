@@ -143,12 +143,12 @@ openGLESImage->openGLESImageProperties->angle= totalAngle;
     
 
     GC* gc = 
-                null
+                nullptr
             ;;
     
 
     org::eclipse::swt::graphics::Image* copySwtImage = 
-                null
+                nullptr
             ;;
     
 

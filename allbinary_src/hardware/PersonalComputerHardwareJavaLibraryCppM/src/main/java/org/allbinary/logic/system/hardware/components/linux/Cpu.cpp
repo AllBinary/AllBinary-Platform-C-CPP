@@ -127,7 +127,7 @@ this->init(this->CPUFILE);
     auto Cpu::init(std::string filePath) -> void{
 
     LineNumberReader* lineNumberReader = 
-                null
+                nullptr
             ;;
     
 

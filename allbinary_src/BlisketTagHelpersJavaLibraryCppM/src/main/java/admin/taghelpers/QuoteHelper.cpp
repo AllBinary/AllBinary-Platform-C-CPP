@@ -323,9 +323,7 @@ adminUserEmailEventHandler->receiveEmailInfo(UserEmailEventNameData::QUOTEREQUES
     int32_t index = 0;index < size; index++)
         {
 
-    int32_t nextId = get = JavaBoxes::unbox<int32_t>(vector->get(index)get)
-get.
-                    ;;
+    int32_t nextId = JavaBoxes::unbox<int32_t>(vector->get(index));;
     
 
                         if(id < nextId)
@@ -376,7 +374,7 @@ this->emailAdmins(quoteRequest);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->EMAILLOGGINGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->EMAILLOGGINGERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->FAILURE, this, "email", &e);
@@ -404,7 +402,7 @@ this->emailAdmins(quoteRequest);
     std::string success = QuoteRequestEntityFactory::getInstance()->getQuoteRequestEntityInstance()->dropTable();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, this->commonStrings->DROP);
@@ -428,7 +426,7 @@ this->emailAdmins(quoteRequest);
     std::string error = "Failed to drop QuoteRequest table";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->DROP, &e);
@@ -456,7 +454,7 @@ this->emailAdmins(quoteRequest);
     std::string success = QuoteRequestEntityFactory::getInstance()->getQuoteRequestEntityInstance()->createTable();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "create()");
@@ -480,7 +478,7 @@ this->emailAdmins(quoteRequest);
     std::string error = "Failed to create new QuoteRequest table";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "create()", &e);
@@ -511,7 +509,7 @@ this->emailAdmins(quoteRequest);
     std::string result = AbSqlTableUtil::getInstance()->restoreTable(QuoteRequestEntityFactory::getInstance()->getQuoteRequestEntityInstance(), portion);;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "restore()");
@@ -535,7 +533,7 @@ this->emailAdmins(quoteRequest);
     std::string error = "Failed to restore backup";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "restore()", &e);
@@ -566,7 +564,7 @@ this->emailAdmins(quoteRequest);
     std::string result = AbSqlTableUtil::getInstance()->backupTable(QuoteRequestEntityFactory::getInstance()->getQuoteRequestEntityInstance());;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "backup()");
@@ -590,7 +588,7 @@ this->emailAdmins(quoteRequest);
     std::string error = "Failed to make backup";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "backup()", &e);

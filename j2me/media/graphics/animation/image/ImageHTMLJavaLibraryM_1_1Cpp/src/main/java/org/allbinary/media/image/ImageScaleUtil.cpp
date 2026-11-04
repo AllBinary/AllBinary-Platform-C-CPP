@@ -155,7 +155,7 @@ ImageScaleUtil::ImageScaleUtil(){
                                     {
                                     
     playn::core::Image* originalPlayNImage = 
-                null
+                nullptr
             ;;
     
 

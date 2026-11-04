@@ -133,7 +133,7 @@ this->notifyUser();
 
         try {
             
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->putF("notifyStoreAdmin", this, "notifyStoreAdmin");
@@ -163,7 +163,7 @@ adminUserEmailEventHandler->receiveEmailInfo(UserEmailEventNameData::NEWPASSWORD
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->EMAILLOGGINGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->EMAILLOGGINGERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "emailAdmin", &e);
@@ -182,7 +182,7 @@ adminUserEmailEventHandler->receiveEmailInfo(UserEmailEventNameData::NEWPASSWORD
 
         try {
             
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->putF("Email User", this, "notifyUser()");
@@ -212,7 +212,7 @@ userEmailEventHandler->receiveEmailInfo(UserEmailEventNameData::NEWPASSWORD, ema
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->EMAILLOGGINGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->EMAILLOGGINGERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "notifyUser", &e);

@@ -230,9 +230,9 @@ this->alwaysJComboBox->setModel(new javax::swing::DefaultComboBoxModel(std::vect
     
 this->alwaysActionJDialog->getContentPane()->setLayout(alwaysActionJDialogLayout);
     
-alwaysActionJDialogLayout->setHorizontalGroup(alwaysActionJDialogLayout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(alwaysActionJDialogLayout->createSequentialGroup()->addGroup(alwaysActionJDialogLayout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(alwaysActionJDialogLayout->createSequentialGroup()->addGap(47, 47, 47)->addGroup(alwaysActionJDialogLayout->createParallelGroup(GroupLayout::Alignment::LEADING, false)->addGroup(GroupLayout::Alignment::TRAILING, alwaysActionJDialogLayout->createSequentialGroup()->addComponent(jLabel2)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED, GroupLayout::DEFAULT_SIZE, Short::MAX_VALUE)->addComponent(alwaysJComboBox, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE))->addComponent(titleJLabel)))->addGroup(alwaysActionJDialogLayout->createSequentialGroup()->addGap(79, 79, 79)->addComponent(okJButton)))->addContainerGap(45, Short::MAX_VALUE)));
+alwaysActionJDialogLayout->setHorizontalGroup(alwaysActionJDialogLayout->createParallelGroup(GroupLayout::Alignment->LEADING)->addGroup(alwaysActionJDialogLayout->createSequentialGroup()->addGroup(alwaysActionJDialogLayout->createParallelGroup(GroupLayout::Alignment->LEADING)->addGroup(alwaysActionJDialogLayout->createSequentialGroup()->addGap(47, 47, 47)->addGroup(alwaysActionJDialogLayout->createParallelGroup(GroupLayout::Alignment->LEADING, false)->addGroup(GroupLayout::Alignment->TRAILING, alwaysActionJDialogLayout->createSequentialGroup()->addComponent(jLabel2)->addPreferredGap(LayoutStyle::ComponentPlacement->RELATED, GroupLayout::DEFAULT_SIZE, Short::MAX_VALUE)->addComponent(alwaysJComboBox, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE))->addComponent(titleJLabel)))->addGroup(alwaysActionJDialogLayout->createSequentialGroup()->addGap(79, 79, 79)->addComponent(okJButton)))->addContainerGap(45, Short::MAX_VALUE)));
     
-alwaysActionJDialogLayout->setVerticalGroup(alwaysActionJDialogLayout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(alwaysActionJDialogLayout->createSequentialGroup()->addContainerGap()->addComponent(titleJLabel)->addGap(20, 20, 20)->addGroup(alwaysActionJDialogLayout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(alwaysJComboBox, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->addComponent(jLabel2))->addGap(15, 15, 15)->addComponent(okJButton)->addContainerGap()));
+alwaysActionJDialogLayout->setVerticalGroup(alwaysActionJDialogLayout->createParallelGroup(GroupLayout::Alignment->LEADING)->addGroup(alwaysActionJDialogLayout->createSequentialGroup()->addContainerGap()->addComponent(titleJLabel)->addGap(20, 20, 20)->addGroup(alwaysActionJDialogLayout->createParallelGroup(GroupLayout::Alignment->BASELINE)->addComponent(alwaysJComboBox, GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE)->addComponent(jLabel2))->addGap(15, 15, 15)->addComponent(okJButton)->addContainerGap()));
     
 setMinimumSize(new java::awt::Dimension(100, 0));
     
@@ -262,9 +262,9 @@ this->jLabel1->setText("Always:");
     
 this->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(layout->createSequentialGroup()->addComponent(jLabel1)->addPreferredGap(LayoutStyle::ComponentPlacement::RELATED, 33, Short::MAX_VALUE)->addComponent(alwaysActionJButton)));
+layout->setHorizontalGroup(layout->createParallelGroup(GroupLayout::Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addComponent(jLabel1)->addPreferredGap(LayoutStyle::ComponentPlacement->RELATED, 33, Short::MAX_VALUE)->addComponent(alwaysActionJButton)));
     
-layout->setVerticalGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(layout->createParallelGroup(GroupLayout::Alignment::BASELINE)->addComponent(jLabel1)->addComponent(alwaysActionJButton)));
+layout->setVerticalGroup(layout->createParallelGroup(GroupLayout::Alignment->LEADING)->addGroup(layout->createParallelGroup(GroupLayout::Alignment->BASELINE)->addComponent(jLabel1)->addComponent(alwaysActionJButton)));
     
 }
 

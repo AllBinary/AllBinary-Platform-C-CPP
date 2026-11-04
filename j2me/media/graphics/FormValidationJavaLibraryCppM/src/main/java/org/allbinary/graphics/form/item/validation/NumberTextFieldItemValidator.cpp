@@ -38,6 +38,8 @@
         
             #include "java/lang/Integer.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <org/allbinary/graphics/form/item/ABTextFieldItem.h>
 
       

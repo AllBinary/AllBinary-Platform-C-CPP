@@ -42,6 +42,8 @@
         
             #include "java/lang/Long.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <java/util/Calendar.h>
 
       
@@ -211,7 +213,7 @@ this->workFlowDoc= DomDocumentHelper::create(JavaBoxes::unbox<std::string>(hashM
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->getName();
+                        return JavaBoxes::toObject(this->getName());
     
 }
 
@@ -328,7 +330,7 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "toXmlNode()", &e);
@@ -365,7 +367,7 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "toXmlDoc()", &e);
@@ -414,7 +416,7 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put("Failed to validate", this, this->commonStrings->IS_VALID, &e);
@@ -458,7 +460,7 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);

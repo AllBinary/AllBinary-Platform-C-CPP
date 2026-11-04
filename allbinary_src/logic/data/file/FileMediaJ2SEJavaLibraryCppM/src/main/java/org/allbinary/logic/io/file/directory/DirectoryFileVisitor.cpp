@@ -36,6 +36,8 @@
         
             #include "java/lang/Object.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <java/io/File.h>
 
       
@@ -76,9 +78,7 @@ DirectoryFileVisitor::DirectoryFileVisitor(){
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return visit = JavaBoxes::unbox<bool>(this->visit(arg0)visit)
-visit.
-                    ;;
+                        return JavaBoxes::unbox<bool>(this->visit(arg0));;
     
 }
 

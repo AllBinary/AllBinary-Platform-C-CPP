@@ -114,7 +114,7 @@ this->tableName= tableName;
             this->executeSQLStatement(data);
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(this->TABLE_CREATION_SUCCESS +this->tableName) +JavaString::valueOf(" with statement: ")) +JavaString::valueOf(data), this, this->METHOD_CREATED_TABLE);
@@ -135,7 +135,7 @@ this->tableName= tableName;
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
                         
                                     {
                                     this->logUtil->put(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Table Creation Failed: ") +JavaString::valueOf(this->tableName)) +JavaString::valueOf(" with statement: ")) +JavaString::valueOf(data), this, this->METHOD_CREATED_TABLE, &e);
@@ -166,7 +166,7 @@ this->tableName= tableName;
             this->executeSQLStatement(sqlStatement);
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf(this->SUCCESS_SQL_STATEMENT) +JavaString::valueOf(sqlStatement), this, this->METHOD_DROP_TABLE);
@@ -187,7 +187,7 @@ this->tableName= tableName;
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
                         
                                     {
                                     this->logUtil->put(JavaString::valueOf(this->FAILED_SQL_STATEMENT) +JavaString::valueOf(sqlStatement), this, this->METHOD_DROP_TABLE, &e);

@@ -205,7 +205,7 @@ InventorySearchUtil* InventorySearchUtil::instance = InventorySearchUtil::instan
     BasicArrayList* column = inventorySearchUtil->getColumnWhereLike(inventoryEntityInterface, storeFrontInterface->getCategoryPath(), basicItemData->ID);;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->PRODUCTSEARCHLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRODUCTSEARCHLOGGING))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Number Of Items Found: ") +JavaString::valueOf(column->size()), this, "search");
@@ -237,7 +237,7 @@ column->addAllList(substoreIdColumn);
 }
 
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->PRODUCTSEARCHLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRODUCTSEARCHLOGGING))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Number Of Items Found Including SubStores: ") +JavaString::valueOf(column->size()), this, "search");
@@ -267,7 +267,7 @@ inventoryNode->appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterf
     std::string success = XmlDocumentHelper::toString(viewDocumentInterface->getDoc());;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->PRODUCTSEARCHLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRODUCTSEARCHLOGGING))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("No Results Xml: ") +JavaString::valueOf(success), this, "search");
@@ -634,7 +634,7 @@ productListingPages[0]= (new StoreTransformer(abeClientInformation, new Transfor
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->PRODUCTSEARCHLOGGINGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRODUCTSEARCHLOGGINGERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->FAILURE, this, "search", &e);

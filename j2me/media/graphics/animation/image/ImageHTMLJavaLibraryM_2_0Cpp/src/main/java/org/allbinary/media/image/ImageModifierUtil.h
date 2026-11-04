@@ -49,7 +49,7 @@ class LogUtil;
 class StringMaker;
 class PlaynImage;
 class ResourceCallbackStrings;
-class Callback;
+#include <playn/core/Callback.h>
 class Canvas;
 class CoreImage;
 class ImageImpl;
@@ -72,7 +72,8 @@ class HTMLPlaynUtil;
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        
+        //class ImageCopyCallback;
+
                                 
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
@@ -80,6 +81,7 @@ class HTMLPlaynUtil;
 class ImageModifierUtil
             : public virtual Object
          {
+public: class ImageCopyCallback;
 
     public: static ImageModifierUtil* getInstanceOrCreate();
 
@@ -111,6 +113,37 @@ class ImageModifierUtil
 
     public: std::vector<Image*> getImageArray(std::vector<Image*> originalImageArray);
 
+//inner= member=true isStatic=
+public: class ImageCopyCallback
+            : public virtual Object
+        , public virtual Callback {
+
+    public: ImageModifierUtil* outer = nullptr;
+/*Static stuff is not allowed for CPP inner classes*//**/
+
+
+    private: ImageModifierUtil* imageModifierUtil;
+
+    private: std::vector<Image*> imageArray;
+
+    private: int32_t index;
+
+    private: Image* image;
+
+    private: CoreImage* image3;
+
+public: ImageCopyCallback(ImageModifierUtil* imageModifierUtil, std::vector<Image*> imageArray, int32_t index, Image* image, CoreImage* image3);
+
+    public: void onSuccess(Object* resource);
+    public: void onSuccess(const std::string& resource) { return onSuccess(JavaString::box(resource)); }
+    public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> void onSuccess(BoxValue resource) { return onSuccess(JavaBoxes::toObject(resource)); }
+    public: template<typename BoxElement> void onSuccess(const std::vector<BoxElement>& resource) { return onSuccess(JavaBoxes::toObject(resource)); }
+
+    public: void onFailure(Throwable* e);
+
+};
+
+            
     public: void handleImage(std::vector<Image*> imageArray, int32_t index, Image* image);
 
     public: void copy(std::vector<Image*> imageArray, int32_t index, Image* image, CoreImage* image3);

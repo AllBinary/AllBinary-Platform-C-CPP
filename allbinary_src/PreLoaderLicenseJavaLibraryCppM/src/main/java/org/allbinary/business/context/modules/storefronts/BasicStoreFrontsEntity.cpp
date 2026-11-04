@@ -111,7 +111,7 @@ keysAndValues->put(StoreFrontData::getInstance()->NAME, name);
                                     throw Exception(JavaString::valueOf("No Such Store: ") +JavaString::valueOf(name));
                                 
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->FACTORYERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->FACTORYERROR))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("StoreFront: ") +JavaString::valueOf(storeHashMap->toString()), this, "getStore()");

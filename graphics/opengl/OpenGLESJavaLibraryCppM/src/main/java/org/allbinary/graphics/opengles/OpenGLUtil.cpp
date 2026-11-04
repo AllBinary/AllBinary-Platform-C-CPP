@@ -189,9 +189,7 @@ graphics->update();
     
 progressCanvas->update(graphics);
     
-getInstance = dynamic_cast<OpenGLImageCache*>(OpenGLImageCacheFactory::getInstance()getInstance)
-getInstance.
-                    update(gl);
+dynamic_cast<OpenGLImageCache*>(OpenGLImageCacheFactory::getInstance())update(gl);
     
 this->processRunnables();
     

@@ -287,13 +287,13 @@ dataOutputStream->flush();
             
     auto FileUtil::fixPath(AbFile* file, AbPath* path, AbPath* realPath, std::string cloud) -> AbPath*{
 
-    int32_t beginIndex = file->getPath()->indexOf(cloud) +cloud.size();;
+    int32_t beginIndex = JavaString::indexOf(file->getPath(), cloud) +cloud.size();;
     
 
-    int32_t endIndex = file->getPath()->indexOf(file->getName());;
+    int32_t endIndex = JavaString::indexOf(file->getPath(), file->getName());;
     
 
-    std::string fixedPathString = realPath->toFileSystemString() +file->getPath()->substring(beginIndex, endIndex);;
+    std::string fixedPathString = realPath->toFileSystemString() +JavaString::substring(file->getPath(), beginIndex, endIndex);;
     
 
     AbPath* fixedPath = new AbPath(fixedPathString, StringUtil::getInstance()->EMPTY_STRING);;
@@ -304,7 +304,7 @@ this->directory->create(fixedPath);
     std::string string = fixedPath->toFileSystemString();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILE))
+                        if(LogConfigTypes::LOGGING->contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     this->logUtil->putF(string, this, "fixPath");
@@ -362,7 +362,7 @@ this->copyToCloud(file, path, realPath, cloud, false, false);
                                 
                         else {
                             
-                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILE))
+                        if(LogConfigTypes::LOGGING->contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     
@@ -399,7 +399,7 @@ this->copy(fileInputStream, dataOutputStream);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILEERROR))
+                        if(LogConfigTypes::LOGGING->contains(this->logConfigTypeFactory->FILEERROR))
                         
                                     {
                                     
@@ -459,7 +459,7 @@ this->copyToCloud(file, outFile, false, false);
                                 
                         else {
                             
-                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILE))
+                        if(LogConfigTypes::LOGGING->contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     stringBuffer->delete_(0, stringBuffer->length());
@@ -495,7 +495,7 @@ this->copy(fileInputStream, dataOutputStream);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILEERROR))
+                        if(LogConfigTypes::LOGGING->contains(this->logConfigTypeFactory->FILEERROR))
                         
                                     {
                                     
@@ -537,7 +537,7 @@ this->logUtil->put(stringBuffer->toString(), getInstance(), "copyToCloud", &e);
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILE))
+                        if(LogConfigTypes::LOGGING->contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     stringBuffer->delete_(0, stringBuffer->length());
@@ -563,7 +563,7 @@ toFile->createNewFile();
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILE))
+                        if(LogConfigTypes::LOGGING->contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     stringBuffer->delete_(0, stringBuffer->length());
@@ -592,7 +592,7 @@ toFile->createNewFile();
                                 
                         else {
                             
-                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILE))
+                        if(LogConfigTypes::LOGGING->contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     stringBuffer->delete_(0, stringBuffer->length());
@@ -668,7 +668,7 @@ this->copyFile(fromFile, toFile, false, false);
 
         try {
             
-                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILE))
+                        if(LogConfigTypes::LOGGING->contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     
@@ -719,7 +719,7 @@ this->copy(fileInputStream, dataOutputStream);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILEERROR))
+                        if(LogConfigTypes::LOGGING->contains(this->logConfigTypeFactory->FILEERROR))
                         
                                     {
                                     
@@ -851,7 +851,7 @@ stringBuffer->append(" - ");
 stringBuffer->appendint(end);
     
 
-                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILE))
+                        if(LogConfigTypes::LOGGING->contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     this->logUtil->putF(stringBuffer->toString(), getInstance(), "copySomeFilesToDirectory()");
@@ -883,13 +883,13 @@ nextFile= dynamic_cast<AbFile*>(fileList->get(index));
     std::string path = (new AbPath(nextFile->getPath(), StringUtil::getInstance()->EMPTY_STRING))->getPath();;
     
 
-    int32_t beginIndex = fromDirectoryAbPath->getPath()->length();;
+    int32_t beginIndex = fromDirectoryAbPath->getPath().length();;
     
 
                         if(JavaString::indexOf(path, URLGLOBALS::getWebappPath()) < 0)
                         
                                     {
-                                    beginIndex -= (new AbPath(URLGLOBALS::getWebappPath(), StringUtil::getInstance()->EMPTY_STRING))->getPath()->length();
+                                    beginIndex -= (new AbPath(URLGLOBALS::getWebappPath(), StringUtil::getInstance()->EMPTY_STRING))->getPath().length();
     
 
                                     }
@@ -916,7 +916,7 @@ this->copyFile(nextFile, toFile, overwriteNewer, overwriteAll);
 
         try {
             
-                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILE))
+                        if(LogConfigTypes::LOGGING->contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     
@@ -960,7 +960,7 @@ this->logUtil->putF(stringBuffer->toString(), getInstance(), "copyDirectory");
     int32_t size = fileArray.size();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILE))
+                        if(LogConfigTypes::LOGGING->contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     
@@ -1029,7 +1029,7 @@ file= fileArray[index];
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILEERROR))
+                        if(LogConfigTypes::LOGGING->contains(this->logConfigTypeFactory->FILEERROR))
                         
                                     {
                                     
@@ -1068,7 +1068,7 @@ this->logUtil->put(stringBuffer->toString(), getInstance(), "copyDirectory", &e)
 
         try {
             
-                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILE))
+                        if(LogConfigTypes::LOGGING->contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     
@@ -1135,7 +1135,7 @@ this->logUtil->putF(stringBuffer->toString(), getInstance(), COPY);
 this->copyFile(fromLocationFile, file);
     
 
-                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILE))
+                        if(LogConfigTypes::LOGGING->contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     
@@ -1165,7 +1165,7 @@ this->logUtil->putF(stringBuffer->toString(), getInstance(), COPY);
                             this->copyFile(fromLocationFile, toLocationFile);
     
 
-                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILE))
+                        if(LogConfigTypes::LOGGING->contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     
@@ -1197,11 +1197,11 @@ this->logUtil->putF(stringBuffer->toString(), getInstance(), COPY);
                         
                                     {
                                     
-                        if(fromAbPath->toFileSystemString()[fromAbPath->toFileSystemString()->length() -1] == File::separatorChar)
+                        if(fromAbPath->toFileSystemString()[fromAbPath->toFileSystemString().length() -1] == File::separatorChar)
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILE))
+                        if(LogConfigTypes::LOGGING->contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     this->logUtil->putF("Copying subdirectories", getInstance(), COPY);
@@ -1255,7 +1255,7 @@ this->copyFile(file, aFile);
 }
 
 
-                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILE))
+                        if(LogConfigTypes::LOGGING->contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     this->logUtil->putF("Copied subdirectories", getInstance(), COPY);
@@ -1268,7 +1268,7 @@ this->copyFile(file, aFile);
                                 
                         else {
                             
-                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILE))
+                        if(LogConfigTypes::LOGGING->contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     this->logUtil->putF("Copyinhg directory", getInstance(), COPY);
@@ -1279,7 +1279,7 @@ this->copyFile(file, aFile);
 this->copyDirectory(fromLocationFile, toLocationFile);
     
 
-                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILE))
+                        if(LogConfigTypes::LOGGING->contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     this->logUtil->putF("Copied directory", getInstance(), COPY);
@@ -1306,7 +1306,7 @@ this->copyDirectory(fromLocationFile, toLocationFile);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(this->logConfigTypeFactory->FILEERROR))
+                        if(LogConfigTypes::LOGGING->contains(this->logConfigTypeFactory->FILEERROR))
                         
                                     {
                                     
@@ -1352,7 +1352,7 @@ this->logUtil->put(stringBuffer->toString(), getInstance(), COPY, &e);
 skipFile= skipFiles[index];
     
 
-                        if(file->getPath()->compareTo(skipFile) == 0)
+                        if(file->getPath().compare(skipFile) == 0)
                         
                                     {
                                     
@@ -1384,7 +1384,7 @@ skipFile= skipFiles[index];
     auto FileUtil::write(std::string filePath, std::string string) -> void{
 
     AbDataOutputStream* dataOutputStream = 
-                null
+                nullptr
             ;;
     
 

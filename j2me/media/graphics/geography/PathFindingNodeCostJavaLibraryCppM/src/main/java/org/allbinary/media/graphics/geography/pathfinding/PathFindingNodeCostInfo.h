@@ -38,8 +38,6 @@
         
             #include "java/lang/Exception.h"
         
-            #include "java/lang/Long.h"
-        
 class StringMaker;
 class CommonLabels;
 

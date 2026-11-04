@@ -186,7 +186,7 @@ paymentEntity->add(this->weblisketSession->getUserName(), paymentInterface);
 paymentEntity->setDefault(this->weblisketSession->getUserName(), int32_t(paymentEntity->getLastId(this->weblisketSession->getUserName())));
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "addPayment()");
@@ -210,7 +210,7 @@ paymentEntity->setDefault(this->weblisketSession->getUserName(), int32_t(payment
     std::string error = "Failed to add Payment";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "addPayment()", &e);
@@ -243,7 +243,7 @@ paymentEntity->setDefault(this->weblisketSession->getUserName(), int32_t(payment
 paymentEntity->setDefault(this->weblisketSession->getUserName(), int32_t(this->value));
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "selectPayment()");
@@ -267,7 +267,7 @@ paymentEntity->setDefault(this->weblisketSession->getUserName(), int32_t(this->v
     std::string error = "Failed to select Payment";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "selectPayment()", &e);
@@ -314,7 +314,7 @@ paymentEntity->remove(this->weblisketSession->getUserName(), int32_t(this->value
                                     }
                                 
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "removePayment()");
@@ -338,7 +338,7 @@ paymentEntity->remove(this->weblisketSession->getUserName(), int32_t(this->value
     std::string error = "Failed to remove Payment";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "removePayment()", &e);
@@ -369,7 +369,7 @@ paymentEntity->remove(this->weblisketSession->getUserName(), int32_t(this->value
     std::string success = paymentEntity->dropTable();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, this->commonStrings->DROP);
@@ -393,7 +393,7 @@ paymentEntity->remove(this->weblisketSession->getUserName(), int32_t(this->value
     std::string error = "Failed to drop Admin table";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->DROP, &e);
@@ -424,7 +424,7 @@ paymentEntity->remove(this->weblisketSession->getUserName(), int32_t(this->value
     std::string success = paymentEntity->createTable();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "create()");
@@ -448,7 +448,7 @@ paymentEntity->remove(this->weblisketSession->getUserName(), int32_t(this->value
     std::string error = "Failed to create user table";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "create()", &e);
@@ -479,7 +479,7 @@ paymentEntity->remove(this->weblisketSession->getUserName(), int32_t(this->value
     std::string result = AbSqlTableUtil::getInstance()->restoreTable(PaymentEntityFactory::getInstance()->getPaymentEntityInstance(), portion);;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "restore()");
@@ -503,7 +503,7 @@ paymentEntity->remove(this->weblisketSession->getUserName(), int32_t(this->value
     std::string error = "Failed to restore backup";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "restore()", &e);
@@ -534,7 +534,7 @@ paymentEntity->remove(this->weblisketSession->getUserName(), int32_t(this->value
     std::string result = AbSqlTableUtil::getInstance()->backupTable(PaymentEntityFactory::getInstance()->getPaymentEntityInstance());;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "backup()");
@@ -558,7 +558,7 @@ paymentEntity->remove(this->weblisketSession->getUserName(), int32_t(this->value
     std::string error = "Failed to make backup";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "backup()", &e);

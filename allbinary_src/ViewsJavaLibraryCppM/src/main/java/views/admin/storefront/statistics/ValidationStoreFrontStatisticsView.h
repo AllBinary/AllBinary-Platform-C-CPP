@@ -34,6 +34,8 @@
         
             #include "java/lang/Exception.h"
         
+            #include "java/lang/Boolean.h"
+        
 class StoreFrontInterface;
 class LogUtil;
 #include <org/allbinary/logic/control/validate/ValidationComponentInterface.h>

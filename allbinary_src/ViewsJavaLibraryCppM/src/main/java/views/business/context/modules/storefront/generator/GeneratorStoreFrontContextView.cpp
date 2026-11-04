@@ -94,7 +94,7 @@ GeneratorStoreFrontContextView::GeneratorStoreFrontContextView(TransformInfoInte
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("View Name: ") +JavaString::valueOf(transformInfoInterface->getName()), this, this->commonStrings->CONSTRUCTOR);
@@ -112,7 +112,7 @@ GeneratorStoreFrontContextView::GeneratorStoreFrontContextView(TransformInfoInte
     std::string result = TransformsGeneratorUtil::getInstance()->generateComponentsFromObjectConfig(this->abeClientInformation, this->getTransformInfoInterface(), group);;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPEXTRAOUTPUT))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPEXTRAOUTPUT))
                         
                                     {
                                     
@@ -159,7 +159,7 @@ GeneratorStoreFrontContextView::GeneratorStoreFrontContextView(TransformInfoInte
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPERERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);

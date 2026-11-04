@@ -78,7 +78,7 @@
 
 AbEmail::AbEmail(std::string server, std::string from, std::string to, std::string subject, std::string textBody, std::string htmlAttachment, std::string contentBase){
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->EMAILLOGGINGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->EMAILLOGGINGERROR))
                         
                                     {
                                     this->email= new Email(from, to, subject, server, textBody, htmlAttachment, contentBase, true);

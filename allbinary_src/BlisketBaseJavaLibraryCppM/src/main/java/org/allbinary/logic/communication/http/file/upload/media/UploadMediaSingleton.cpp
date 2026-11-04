@@ -158,7 +158,7 @@ this->writerFileTypesHashMap->put(writerFileTypes[index], RESIZABLE_MEDIA);
 }
 
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
                         
                                     {
                                     

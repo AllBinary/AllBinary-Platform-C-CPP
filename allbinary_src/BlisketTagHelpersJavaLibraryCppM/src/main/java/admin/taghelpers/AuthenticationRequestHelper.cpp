@@ -40,6 +40,8 @@
         
             #include "java/lang/Exception.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <java/util/HashMap.h>
 
       
@@ -252,7 +254,7 @@ this->request= httpServletRequest;
     std::string email = this->request->getParameter(UserData::MAINEMAIL);;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPER))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPER))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Generating New Password For: ") +JavaString::valueOf(userName), this, "newPassword()");
@@ -277,7 +279,7 @@ this->request= httpServletRequest;
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPER))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPER))
                         
                                     {
                                     this->logUtil->putF("Requested Email Is Not In User Profile", this, "newPassword()");
@@ -312,7 +314,7 @@ UserEntityFactory::getInstance()->update(userName, newPasswordHashMap);
 (new NewPasswordEmail(this->abeClientInformation, userInterface, newPassword))->process();
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPER))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPER))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Generated New Password For: ") +JavaString::valueOf(userName), this, "newPassword()");
@@ -333,7 +335,7 @@ UserEntityFactory::getInstance()->update(userName, newPasswordHashMap);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPERERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "newPassword()", &e);
@@ -370,7 +372,7 @@ UserEntityFactory::getInstance()->update(userName, newPasswordHashMap);
     std::string newReenteredPassword = this->request->getParameter(WeblisketSessionData::REMOVABLEREENTERNEWPASSWORD);;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPER))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPER))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Changing Password For User: ") +JavaString::valueOf(userName), this, "changePassword()");
@@ -386,7 +388,7 @@ UserEntityFactory::getInstance()->update(userName, newPasswordHashMap);
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPER))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPER))
                         
                                     {
                                     this->logUtil->putF("New Password Is Not Valid", this, "changePassword()");
@@ -410,7 +412,7 @@ UserEntityFactory::getInstance()->update(userName, newPasswordHashMap);
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPER))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPER))
                         
                                     {
                                     this->logUtil->putF("New Password Fields Do Not Match", this, "changePassword()");
@@ -446,7 +448,7 @@ UserEntityFactory::getInstance()->update(userName, newPasswordHashMap);
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPER))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPER))
                         
                                     {
                                     this->logUtil->putF("Authentication Successful", this, "changePassword()");
@@ -474,7 +476,7 @@ UserEntityFactory::getInstance()->update(userName, newPasswordHashMap);
                                     }
                                 
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPER))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPER))
                         
                                     {
                                     this->logUtil->putF("Authentication Failed", this, "changePassword()");
@@ -495,7 +497,7 @@ UserEntityFactory::getInstance()->update(userName, newPasswordHashMap);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPERERROR))
                         
                                     {
                                     this->logUtil->put("Authentication Failed", this, "changePassword()", &e);
@@ -532,7 +534,7 @@ UserEntityFactory::getInstance()->update(userName, newPasswordHashMap);
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPER))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPER))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Role is null: ") +JavaString::valueOf(userInterface->getRole())) +JavaString::valueOf(" Valid Roles: ")) +JavaString::valueOf(roles->toString()), this, "isRoleValid()");
@@ -591,7 +593,7 @@ this->request->removeAttribute(WeblisketSessionData::REMOVABLEPASSWORD);
 }
 
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPER))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPER))
                         
                                     {
                                     
@@ -623,7 +625,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "isRoleValid()");
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPERERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "isRoleValid()", &e);

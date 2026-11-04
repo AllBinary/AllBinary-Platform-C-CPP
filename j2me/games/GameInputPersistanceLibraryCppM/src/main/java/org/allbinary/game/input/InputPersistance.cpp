@@ -427,7 +427,7 @@ list= dynamic_cast<BasicArrayList*>(hashtable->get(inputObjectArray[index]));
     int32_t index2 = 0;index2 < list->size(); index2++)
         {
 
-    std::string gameActionInputIdAsString = smallIntegerSingletonFactory->getAt(gameActionInput->getId())->toString();;
+    std::string gameActionInputIdAsString = JavaString::valueOf(smallIntegerSingletonFactory->getAt(gameActionInput->getId()));;
     
 outputStream->writeUTF(gameActionInputIdAsString);
     
@@ -436,7 +436,7 @@ outputStream->writeUTF(commonSeps->EQUALS);
 input= dynamic_cast<Input*>(list->objectArray[index2]);
     
 
-    std::string inputIdAsString = smallIntegerSingletonFactory->getAt(input->getId())->toString();;
+    std::string inputIdAsString = JavaString::valueOf(smallIntegerSingletonFactory->getAt(input->getId()));;
     
 outputStream->writeUTF(inputIdAsString);
     

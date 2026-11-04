@@ -112,7 +112,11 @@ class RaceTrackGeographicMapCellPositionFactoryInitVisitor
 
     private: int32_t finishLineId;
 
-public: RaceTrackGeographicMapCellPositionFactoryInitVisitor(){
+    private: BasePathFindingInfoFactory* pathFindingInfoFactory;
+
+public: RaceTrackGeographicMapCellPositionFactoryInitVisitor(BasePathFindingInfoFactory* pathFindingInfoFactory){
+this->pathFindingInfoFactory= pathFindingInfoFactory;
+    
 
     GeographicMapCellTypeFactory* raceTrackGeographicMapCellTypeFactory = geographicMapInterface->getGeographicMapCellTypeFactory();;
     
@@ -144,7 +148,7 @@ this->finishLineId= raceTrackGeographicMapCellTypeFactory->getEndType();
                         if(geographicCellType == this->startLineId)
                         
                                     {
-                                    this->addStartPathFindingNode(pathFindingInfo, cellPosition);
+                                    this->pathFindingInfoFactory->addStartPathFindingNode(pathFindingInfo, cellPosition);
     
 
                                     }
@@ -157,13 +161,13 @@ this->finishLineId= raceTrackGeographicMapCellTypeFactory->getEndType();
                         if(geographicCellType == this->startLineId)
                         
                                     {
-                                    this->addEndPathFindingNode(pathFindingInfo, geographicMapInterface->getGeographicMapCellPositionFactoryInterface()->getInstance(geographicMapInterface, cellPosition->getColumn(), cellPosition->getRow(), tiledLayer->getColumns(), tiledLayer->getRows(), tiledLayer->getCellWidth(), tiledLayer->getCellHeight()));
+                                    this->pathFindingInfoFactory->addEndPathFindingNode(pathFindingInfo, geographicMapInterface->getGeographicMapCellPositionFactoryInterface()->getInstance(geographicMapInterface, cellPosition->getColumn(), cellPosition->getRow(), tiledLayer->getColumns(), tiledLayer->getRows(), tiledLayer->getCellWidth(), tiledLayer->getCellHeight()));
     
 
                                     }
                                 
                         else {
-                            this->addEndPathFindingNode(pathFindingInfo, cellPosition);
+                            this->pathFindingInfoFactory->addEndPathFindingNode(pathFindingInfo, cellPosition);
     
 
                         }
@@ -197,7 +201,7 @@ this->finishLineId= raceTrackGeographicMapCellTypeFactory->getEndType();
 
     CommonSeps* commonSeps = CommonSeps::getInstance();;
     
-logUtil->put((new StringMaker())->append(commonSeps->BRACKET_OPEN)->appendint(row)->append(commonSeps->BRACKET_CLOSE)->append(commonSeps->BRACKET_OPEN)->appendint(column)->append("] in [")->appendint(mapArray.size())->append(commonSeps->BRACKET_CLOSE)->append(commonSeps->BRACKET_OPEN)->appendint(mapArray[0].size())->append(commonSeps->BRACKET_CLOSE)->toString(), this, "visit", &e);
+this->pathFindingInfoFactory->logUtil->put((new StringMaker())->append(commonSeps->BRACKET_OPEN)->appendint(row)->append(commonSeps->BRACKET_CLOSE)->append(commonSeps->BRACKET_OPEN)->appendint(column)->append("] in [")->appendint(mapArray.size())->append(commonSeps->BRACKET_CLOSE)->append(commonSeps->BRACKET_OPEN)->appendint(mapArray[0].size())->append(commonSeps->BRACKET_CLOSE)->toString(), this, "visit", &e);
     
 
 
@@ -212,7 +216,7 @@ logUtil->put((new StringMaker())->append(commonSeps->BRACKET_OPEN)->appendint(ro
 };
 
             
-geographicMapInterface->getGeographicMapCellPositionFactory()->visit(new RaceTrackGeographicMapCellPositionFactoryInitVisitor());
+geographicMapInterface->getGeographicMapCellPositionFactory()->visit(new RaceTrackGeographicMapCellPositionFactoryInitVisitor(this));
     
 }
 

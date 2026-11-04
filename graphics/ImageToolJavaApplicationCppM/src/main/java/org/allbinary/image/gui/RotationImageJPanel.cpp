@@ -401,7 +401,7 @@ this->imageProcessorInput= imageProcessorInput;
     auto RotationImageJPanel::visit(BufferedImage* generatedBufferedImage, std::string name, int32_t index) -> void{
 this->result= generatedBufferedImage;
     
-this->getParent()->repaint();
+this->getParent().repaint();
     
 
     File* file = this->imageProcessorInput->getFiles()[index];;

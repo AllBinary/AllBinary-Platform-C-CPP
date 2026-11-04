@@ -36,6 +36,8 @@
         
             #include "java/lang/Integer.h"
         
+            #include "java/lang/Boolean.h"
+        
 class StreetAddressData;
 class ShippingAddressesEntity;
 #include <org/allbinary/logic/control/validate/ValidationComponentInterface.h>

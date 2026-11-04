@@ -38,6 +38,8 @@
         
             #include "java/lang/Exception.h"
         
+            #include "java/lang/Boolean.h"
+        
 class InputAutomationModuleService;
 class InputAutomationJFrame;
 class InputAutomationConfigurationUtil;

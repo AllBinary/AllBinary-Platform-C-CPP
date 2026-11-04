@@ -32,6 +32,8 @@
             #include "java/lang/String.h"
 
         
+            #include "java/lang/Boolean.h"
+        
 #include <java/util/HashMap.h>
 class UserConfigurationInterface;
 class UserRole;

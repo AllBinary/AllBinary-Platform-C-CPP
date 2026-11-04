@@ -108,7 +108,7 @@ this->downloadableItem= downloadableItem;
             
     auto DownloadableItemView::toXmlNode(Document* document) -> Node*{
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->PRODUCTSEARCHLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRODUCTSEARCHLOGGING))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, "toXmlNode");

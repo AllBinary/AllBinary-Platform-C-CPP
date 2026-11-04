@@ -113,7 +113,7 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this->validationInterf
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->TAGHELPERERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPERERROR))
                         
                                     {
                                     this->logUtil->put(commonStrings.EXCEPTION, this, "view()", &e);

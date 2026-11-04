@@ -137,7 +137,7 @@ this->shippingType= this->request->getParameter(ShippingMethodData::NAME);
 order->setShippingMethod(this->shippingType);
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "setShippingType()");
@@ -161,7 +161,7 @@ order->setShippingMethod(this->shippingType);
     std::string error = "Failed to view Shipping Type";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "setShippingType()", &e);

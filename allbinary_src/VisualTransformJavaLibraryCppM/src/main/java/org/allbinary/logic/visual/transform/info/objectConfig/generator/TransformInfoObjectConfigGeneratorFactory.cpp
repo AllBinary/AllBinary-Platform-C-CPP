@@ -103,7 +103,7 @@ TransformInfoObjectConfigGeneratorFactory::TransformInfoObjectConfigGeneratorFac
     std::string type = JavaBoxes::unbox<std::string>(transformInfoInterface->getObjectConfigInterface()->getOutputTypeName());;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     

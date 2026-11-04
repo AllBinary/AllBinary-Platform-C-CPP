@@ -156,12 +156,12 @@ this->saveWithImageIO(new File(filePath), bufferedImage);
     auto ImagePersistanceUtil::saveWithImageIO(File* file, BufferedImage* bufferedImage) -> void{
 
     ImageWriter* writer = 
-                null
+                nullptr
             ;;
     
 
     ImageOutputStream* ios = 
-                null
+                nullptr
             ;;
     
 

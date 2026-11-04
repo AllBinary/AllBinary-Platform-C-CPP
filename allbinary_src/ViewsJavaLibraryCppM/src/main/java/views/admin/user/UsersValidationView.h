@@ -34,6 +34,8 @@
         
             #include "java/lang/Exception.h"
         
+            #include "java/lang/Boolean.h"
+        
 class UserRole;
 class UserRoleB;
 class UserRoleData;

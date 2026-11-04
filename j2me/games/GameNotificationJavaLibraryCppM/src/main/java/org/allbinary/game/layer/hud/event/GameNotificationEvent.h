@@ -36,6 +36,8 @@
         
             #include "java/lang/Integer.h"
         
+            #include "java/lang/Boolean.h"
+        
 class BasicColor;
 class BasicColorFactory;
 class StringUtil;

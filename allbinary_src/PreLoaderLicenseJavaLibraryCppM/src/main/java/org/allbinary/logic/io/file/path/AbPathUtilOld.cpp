@@ -155,7 +155,7 @@ AbPathUtilOld::AbPathUtilOld() : logUtil(LogUtil::getInstance()), abPathData(AbP
     std::string extension = JavaString::substring(filePath, beginIndex +1);;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("FileExtension: ") +JavaString::valueOf(extension), this, "getExtension()");
@@ -224,7 +224,7 @@ AbPathUtilOld::AbPathUtilOld() : logUtil(LogUtil::getInstance()), abPathData(AbP
     std::string pathWithoutExtension = JavaString::substring(filePath, 0, endIndex);;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("FileWithoutExtension: ") +JavaString::valueOf(pathWithoutExtension), this, "getWithoutExtension()");

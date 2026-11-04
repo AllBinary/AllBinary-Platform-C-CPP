@@ -134,7 +134,7 @@ stringBuffer->append(URLGLOBALS::getMainPath())->append(FREEBLISKET_PATH_GLOBALS
     AbPath* fileAbPath = dynamic_cast<AbPath*>(new AbFilePath(stringBuffer->toString()));;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->XMLLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->XMLLOGGING))
                         
                                     {
                                     stringBuffer->delete_(0, stringBuffer->length());

@@ -76,7 +76,7 @@ ProfileActionScriptOutputFactory::ProfileActionScriptOutputFactory(){
     auto ProfileActionScriptOutputFactory::getInstance(Node* node) -> ProfileActionScriptOutputInterface*{
 
     ProfileActionScriptOutputInterface* profileActionScriptOutputInterface = 
-                null
+                nullptr
             ;;
     
 

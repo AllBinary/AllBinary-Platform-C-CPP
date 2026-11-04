@@ -173,7 +173,7 @@ this->uriResolver= uriResolver;
 
         try {
             
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->XMLLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->XMLLOGGING))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("xml: \n") +JavaString::valueOf(xmlDocumentStr), this, "translate(String xmlDocumentStr)");
@@ -199,7 +199,7 @@ this->uriResolver= uriResolver;
     std::string result = XslHelper::getInstance()->translate(this->getURIResolver(), new StreamSource(this->getInputStream()), new StreamSource(new StringBufferInputStream(xmlDocumentStr)));;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->XSLLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->XSLLOGGING))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("translated xml: ") +JavaString::valueOf(result), this, "translate(String xmlDocumentStr)");
@@ -223,7 +223,7 @@ this->uriResolver= uriResolver;
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put(this->transformInfoInterface->log(), this, "translate(document)", &e);

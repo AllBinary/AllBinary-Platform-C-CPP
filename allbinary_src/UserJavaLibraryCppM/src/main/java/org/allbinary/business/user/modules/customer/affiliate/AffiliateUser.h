@@ -34,6 +34,8 @@
         
             #include "java/lang/Exception.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <java/util/HashMap.h>
 class AffiliateSales;
 #include <org/allbinary/business/user/modules/User.h>

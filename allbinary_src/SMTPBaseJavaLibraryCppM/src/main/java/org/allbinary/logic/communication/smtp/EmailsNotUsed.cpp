@@ -111,7 +111,7 @@ this->emailInfoVector= new BasicArrayListD();
 
         try {
             
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->PAYMENT))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PAYMENT))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, "toXmlNode");
@@ -152,7 +152,7 @@ this->emailInfoVector= new BasicArrayListD();
 }
 
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->PAYMENT))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PAYMENT))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->END, this, "toXmlNode()");
@@ -173,7 +173,7 @@ this->emailInfoVector= new BasicArrayListD();
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->EMAILLOGGINGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->EMAILLOGGINGERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "toXmlNode()", &e);

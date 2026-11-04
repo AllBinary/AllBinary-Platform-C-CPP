@@ -80,7 +80,7 @@ ProfileActionScriptConditionFactory::ProfileActionScriptConditionFactory(){
     auto ProfileActionScriptConditionFactory::getInstance(Node* node) -> ProfileActionScriptConditionInterface*{
 
     ProfileActionScriptConditionInterface* profileActionScriptConditionInterface = 
-                null
+                nullptr
             ;;
     
 

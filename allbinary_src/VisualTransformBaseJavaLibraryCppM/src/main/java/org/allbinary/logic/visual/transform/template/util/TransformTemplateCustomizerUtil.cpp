@@ -197,14 +197,14 @@ hashMap->put(std::vector<std::string>
     
 
     Replace* replace = 
-                null
+                nullptr
             ;;
     
 
     std::string rootViewName = replace->all(viewName);;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("RootViewName for ObjectConfig: ") +JavaString::valueOf(rootViewName), this, "getPageNameHack");

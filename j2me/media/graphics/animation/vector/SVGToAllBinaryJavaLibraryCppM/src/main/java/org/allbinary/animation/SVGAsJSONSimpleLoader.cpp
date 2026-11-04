@@ -48,9 +48,6 @@
         
             #include "java/lang/Double.h"
         
-#include <java/util/Enumeration.h>
-
-      
 #include <org/allbinary/graphics/GraphicsStrings.h>
 
       
@@ -161,13 +158,20 @@ SVGAsJSONSimpleLoader* SVGAsJSONSimpleLoader::instance = SVGAsJSONSimpleLoader::
     BasicArrayList* pointVector = new BasicArrayListD();;
     
 
-    Enumeration<Object*>* keys = svg->keys();;
+    std::vector<Object*> objectArray = svg->keysAsArray();;
     
 
-        while(keys->hasMoreElements())
+    int32_t size = objectArray.size();;
+    
+
+
+
+
+                        for (
+    int32_t index = 0;index < size; index++)
         {
 
-    std::string key = JavaBoxes::unbox<std::string>(keys->nextElement());;
+    std::string key = JavaBoxes::unbox<std::string>(objectArray[index]);;
     
 
     Object* value = JavaBoxes::toObject(svg->opt(key));;

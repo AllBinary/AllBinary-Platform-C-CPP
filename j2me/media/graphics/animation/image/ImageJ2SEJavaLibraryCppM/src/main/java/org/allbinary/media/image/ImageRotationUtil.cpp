@@ -106,7 +106,7 @@ ImageRotationUtil::ImageRotationUtil() : imageJ2SERotationUtil(ImageJ2SERotation
     
 
     java::awt::Image* originalAwtImage = 
-                null
+                nullptr
             ;;
     
 
@@ -156,7 +156,7 @@ this->imageJ2SERotationUtil->rotateImage(originalAwtImage, newBufferedImage, tot
                                     {
                                     
     java::awt::Image* originalAwtImage = 
-                null
+                nullptr
             ;;
     
 

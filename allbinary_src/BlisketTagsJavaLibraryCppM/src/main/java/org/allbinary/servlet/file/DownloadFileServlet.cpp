@@ -131,7 +131,7 @@ DownloadFileServlet::DownloadFileServlet() : logUtil(LogUtil::getInstance()), co
     auto DownloadFileServlet::processRequest(HttpServletRequest* request, HttpServletResponse* response) -> void{
 
     InputStream* inputStream = 
-                null
+                nullptr
             ;;
     
 
@@ -288,7 +288,7 @@ StreamUtil::getInstance()->get(inputStream, response->getOutputStream(), std::ve
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "processRequest()", &e);

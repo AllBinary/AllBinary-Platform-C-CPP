@@ -36,6 +36,8 @@
         
             #include "java/lang/Object.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <org/allbinary/logic/communication/log/PreLogUtil.h>
 
       
@@ -86,7 +88,7 @@ PreLogUtil::put(JavaString::valueOf("Filter BasicArrayList: ") +JavaString::valu
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->visit(dynamic_cast<AbFile*>(anyType));
+                        return JavaBoxes::toObject(this->visit(dynamic_cast<AbFile*>(anyType)));
     
 }
 

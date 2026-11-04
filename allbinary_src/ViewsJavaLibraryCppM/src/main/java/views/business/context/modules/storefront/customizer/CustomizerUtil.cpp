@@ -167,7 +167,7 @@ CustomizerUtil::CustomizerUtil() : logUtil(LogUtil::getInstance()){
             
     auto CustomizerUtil::getTransformInfoInterfaceToCustomize(TransformInfoInterface* customizerTransformInfoInterface, TransformInfoInterface* transformInfoInterface) -> TransformInfoInterface*{
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("View Name: ") +JavaString::valueOf(customizerTransformInfoInterface->getName()), this, "getTransformInfoInterfaceToCustomize()");
@@ -202,7 +202,7 @@ CustomizerUtil::CustomizerUtil() : logUtil(LogUtil::getInstance()){
             
     auto CustomizerUtil::getTransformInfoObjectConfigComponentNodesToCustomize(TransformInfoInterface* customizerTransformInfoInterface, TransformInfoInterface* transformInfoInterface) -> BasicArrayList*{
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("View Name: ") +JavaString::valueOf(customizerTransformInfoInterface->getName()), this, "getTransformInfoObjectConfigComponentNodesToCustomize()");
@@ -237,7 +237,7 @@ CustomizerUtil::CustomizerUtil() : logUtil(LogUtil::getInstance()){
             
     auto CustomizerUtil::getTransformInfoObjectConfigComponentNodes(TransformInfoInterface* transformInfoInterface) -> BasicArrayList*{
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("View Name: ") +JavaString::valueOf(transformInfoInterface->getName()), this, "getTransformInfoObjectConfigComponentNodes()");
@@ -263,7 +263,7 @@ CustomizerUtil::CustomizerUtil() : logUtil(LogUtil::getInstance()){
             
     auto CustomizerUtil::getTransformInfoObjectConfigGroupComponentNodes(TransformInfoInterface* transformInfoInterface) -> BasicArrayList*{
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("View Name: ") +JavaString::valueOf(transformInfoInterface->getName()), this, "getTransformInfoObjectConfigComponentNodes()");
@@ -289,7 +289,7 @@ CustomizerUtil::CustomizerUtil() : logUtil(LogUtil::getInstance()){
             
     auto CustomizerUtil::insert(TransformInfoInterface* transformInfoInterface, DomNodeInterface* domNodeInterface) -> void{
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("View Name: ") +JavaString::valueOf(transformInfoInterface->getName()), this, "insert()");
@@ -315,7 +315,7 @@ document->appendChild(domNodeInterface->toXmlNode(document));
     StringMaker* stringBuffer = new StringMaker();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     stringBuffer->append("Total Views For Modification: ");
@@ -350,7 +350,7 @@ transformInfoInterface->setData(documentString);
     std::string viewNameOfViewToBeModified = transformInfo->getName();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     stringBuffer->delete_(0, stringBuffer->length());
@@ -379,7 +379,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "insert()");
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     stringBuffer->delete_(0, stringBuffer->length());
@@ -402,7 +402,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "insert()");
                                 
                         else {
                             
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(transformInfoInterface->getName()) +JavaString::valueOf(" is adding data to view: ")) +JavaString::valueOf(viewNameOfViewToBeModified), this, "insert()");
@@ -411,7 +411,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "insert()");
                                     }
                                 
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     stringBuffer->delete_(0, stringBuffer->length());
@@ -445,7 +445,7 @@ this->write(specifiedTransformInfoInterface, documentString);
             
     auto CustomizerUtil::write(TransformInfoInterface* specifiedTransformInfoInterface, std::string documentString) -> void{
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("View Name: ") +JavaString::valueOf(specifiedTransformInfoInterface->getName()), this, "write()");
@@ -467,7 +467,7 @@ transformInfoEntityInterface->update(specifiedTransformInfoInterface->toHashMap(
             
     auto CustomizerUtil::getViewDataForComponentsInObjectConfig(TransformInfoInterface* transformInfoInterface) -> Document*{
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("View Name: ") +JavaString::valueOf(transformInfoInterface->getName()), this, "getViewDataForComponentsInObjectConfig()");

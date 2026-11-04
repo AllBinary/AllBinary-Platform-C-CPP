@@ -233,7 +233,7 @@ orderPaymentInfo->setTenderType(TenderTypeFactory::getInstance()->CREDITCARD->to
 orderReview->setPaymentInfo(orderPaymentInfo);
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->PAYMENT))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PAYMENT))
                         
                                     {
                                     this->logUtil->putF(orderReview->getId(), this, "getPaymentTransactionInterface()");
@@ -260,7 +260,7 @@ orderReview->setPaymentInfo(orderPaymentInfo);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->PAYMENTERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PAYMENTERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "getPaymentTransactionInterface()", &e);
@@ -448,7 +448,7 @@ orderReview->setPaymentInfo(payment);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->PAYMENTERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PAYMENTERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "generatePaymentTransactionInterfaceFromTestData()", &e);

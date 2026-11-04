@@ -34,6 +34,8 @@
         
             #include "java/lang/Object.h"
         
+            #include "java/lang/Boolean.h"
+        
 template<typename T1, typename T2> class ABHashtable;
 class BasicArrayList;
 

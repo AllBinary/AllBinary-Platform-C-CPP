@@ -113,7 +113,7 @@ CssProperty::CssProperty(Node* node) : logUtil(LogUtil::getInstance()){
 this->propertyName= DomNodeHelper::getTextNodeValue(propertyNode);
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->STYLE))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->STYLE))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Name: ") +JavaString::valueOf(this->getName()), this, "CssProperty()");
@@ -165,7 +165,7 @@ hashMap->put(CssPropertyData::getInstance()->NAME, this->propertyName);
     HashMap<Object*, Object*>* hashMap = this->toHashMap();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("CssView HashMap: ") +JavaString::valueOf(hashMap->toString()), this, "toXmlNode()");

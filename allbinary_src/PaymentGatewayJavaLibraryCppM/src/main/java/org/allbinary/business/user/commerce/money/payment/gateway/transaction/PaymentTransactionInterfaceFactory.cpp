@@ -139,7 +139,7 @@ PaymentTransactionInterfaceFactory::PaymentTransactionInterfaceFactory() : logUt
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->PAYMENTERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PAYMENTERROR))
                         
                                     {
                                     

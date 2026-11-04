@@ -139,7 +139,7 @@ shipping= dynamic_cast<ShippingInterface*>(this->shippingVector->get(index));
     std::string error = JavaString::valueOf("Error Finding Shipping: ") +JavaString::valueOf(name);;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SHIPPINGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SHIPPINGERROR))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->EXCEPTION, this, "getShippingInterface(String name)");

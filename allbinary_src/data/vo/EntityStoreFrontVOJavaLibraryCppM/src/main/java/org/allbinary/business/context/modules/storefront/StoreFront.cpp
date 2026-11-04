@@ -42,6 +42,8 @@
         
             #include "java/lang/Long.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <java/util/Calendar.h>
 
       
@@ -202,7 +204,7 @@ StoreFront::StoreFront(HttpServletRequest* request) : logUtil(LogUtil::getInstan
 this->getFormData((new RequestParams(request))->toHashMap());
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->putF("TWB- needs update for adding and updating context configuration - currently defaults to admin context config", this, "StoreFront");
@@ -1055,7 +1057,7 @@ stringBuffer->append(" and > 0 characters.<br>");
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -1938,7 +1940,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "install()", &e);
@@ -2194,7 +2196,7 @@ dataHashMap->put(EntryData::getInstance()->LASTMODIFIED, time);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->getName();
+                        return JavaBoxes::toObject(this->getName());
     
 }
 

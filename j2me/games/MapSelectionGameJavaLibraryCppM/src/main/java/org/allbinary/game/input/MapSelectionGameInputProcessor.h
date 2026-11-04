@@ -51,7 +51,7 @@ class CommonStrings;
 class SecondaryPlayerQueueFactory;
 class SelectSound;
 class MultiLevelRaceTrackGeographicMapInterfaceFactoryInterface;
-class ABRunnable;
+#include <org/allbinary/thread/ABRunnable.h>
 class ThreadObjectUtil;
 class TimeDelayHelper;
 
@@ -75,6 +75,7 @@ class TimeDelayHelper;
         #include "org/allbinary/game/input/GameInputProcessorInterface.h"
 #include "org/allbinary/game/input/PlayerGameInputCompositeInterface.h"
 class PlayerGameInput;
+//class MapSelectionRunnable;
 class GameInputProcessorComposite;
 
                                 
@@ -82,6 +83,7 @@ class GameInputProcessorComposite;
 
         
 class MapSelectionGameInputProcessor: public Processor, public virtual GameInputProcessorInterface, public virtual PlayerGameInputCompositeInterface {
+public: class MapSelectionRunnable;
 
     /*protected*/ public: LogUtil* logUtil;
 
@@ -97,6 +99,20 @@ class MapSelectionGameInputProcessor: public Processor, public virtual GameInput
 
     private: int32_t lockedIndex;
 
+//inner= member=true isStatic=
+public: class MapSelectionRunnable: public ABRunnable {
+
+    public: MapSelectionGameInputProcessor* outer = nullptr;
+
+    private: MapSelectionGameInputProcessor* inputProcessor;
+
+public: MapSelectionRunnable(MapSelectionGameInputProcessor* inputProcessor);
+
+    public: void run();
+
+};
+
+            
     private: ABRunnable* abRunnable;
 
 public: MapSelectionGameInputProcessor(AllBinaryGameCanvas* gameCanvas, MultiLevelRaceTrackGeographicMapInterfaceFactoryInterface* raceTrackGeographicMapInterfaceFactoryInterface, PreGameSelectorPaintable* mapSelectorPaintable, int32_t lockedIndex);

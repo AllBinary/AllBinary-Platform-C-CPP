@@ -106,7 +106,7 @@ ImageRotationUtil::ImageRotationUtil(){
                                     {
                                     
     playn::core::Image* originalPlayNImage = 
-                null
+                nullptr
             ;;
     
 

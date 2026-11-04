@@ -22,6 +22,8 @@
         
             #include "java/lang/Exception.h"
         
+            #include "java/lang/Boolean.h"
+        
 class NullUtil;
 class LogUtil;
 class PreLogUtil;

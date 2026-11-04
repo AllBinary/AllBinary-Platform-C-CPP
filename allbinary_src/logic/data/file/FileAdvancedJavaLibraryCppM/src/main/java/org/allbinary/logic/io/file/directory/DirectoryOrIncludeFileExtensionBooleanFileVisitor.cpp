@@ -34,6 +34,8 @@
             #include "java/lang/String.h"
 
         
+            #include "java/lang/Boolean.h"
+        
 #include <org/allbinary/logic/io/file/AbFile.h>
 
       
@@ -106,7 +108,7 @@ this->includesString= includesString;
                                     }
                                 
 
-                        if(false || file->getAbsolutePath()->indexOf(this->includesString) >= 0)
+                        if(false || JavaString::indexOf(file->getAbsolutePath(), this->includesString) >= 0)
                         
                                     {
                                     

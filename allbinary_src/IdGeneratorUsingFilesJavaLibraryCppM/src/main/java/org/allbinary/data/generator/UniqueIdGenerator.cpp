@@ -118,7 +118,7 @@ idData->writeLong(value);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->IDLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->IDLOGGING))
                         
                                     {
                                     
@@ -149,12 +149,12 @@ this->newFile= AbFile::createAbFile(filePathName);
     auto UniqueIdGenerator::getNext() -> std::string{
 
     AbDataInputStream* idData = 
-                null
+                nullptr
             ;;
     
 
     AbDataOutputStream* idOutData = 
-                null
+                nullptr
             ;;
     
 
@@ -201,7 +201,7 @@ idOutData->writeLong(this->id +1);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->IDLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->IDLOGGING))
                         
                                     {
                                     

@@ -170,7 +170,7 @@ this->userEmailEventsConfigurationInterface= userEmailEventsConfigurationInterfa
     Set* set = emailEventHashMap->keys();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Number Of Email Events Specified in file: ") +JavaString::valueOf(set->size()), this, this->commonStrings->CONSTRUCTOR);

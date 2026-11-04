@@ -116,7 +116,7 @@ this->idGeneratorEntity->insert(vector);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->IDLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->IDLOGGING))
                         
                                     {
                                     
@@ -168,7 +168,7 @@ this->idGeneratorEntity->update(this->name, newValue);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->IDLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->IDLOGGING))
                         
                                     {
                                     

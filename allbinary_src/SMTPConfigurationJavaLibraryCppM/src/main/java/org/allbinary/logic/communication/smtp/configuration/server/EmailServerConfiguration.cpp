@@ -88,7 +88,7 @@
 
 EmailServerConfiguration::EmailServerConfiguration() : logUtil(LogUtil::getInstance()){
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
                         
                                     {
                                     
@@ -106,7 +106,7 @@ this->setSmtpServer(StringUtil::getInstance()->EMPTY_STRING);
 
 EmailServerConfiguration::EmailServerConfiguration(HashMap<Object*, Object*>* hashMap) : logUtil(LogUtil::getInstance()){
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
                         
                                     {
                                     
@@ -130,7 +130,7 @@ this->log();
 
 EmailServerConfiguration::EmailServerConfiguration(std::string account, std::string password, std::string server) : logUtil(LogUtil::getInstance()){
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
                         
                                     {
                                     
@@ -208,7 +208,7 @@ this->password= password;
 
     auto EmailServerConfiguration::log() -> void{
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->putF(this->toString(), this, "EmailServerConfiguration");

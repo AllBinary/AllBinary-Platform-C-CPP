@@ -46,7 +46,6 @@
         
             #include "java/lang/Double.h"
         
-#include <java/util/Enumeration.h>
 class GraphicsStrings;
 class PrimitiveIntUtil;
 class StringMaker;
@@ -200,10 +199,7 @@ class SVGAsJSONSimpleLoader
         
         #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_SVGASJSONSIMPLELOADER_H_COMPLETE)
         #define ORG_ALLBINARY_ANIMATION_SVGASJSONSIMPLELOADER_H_COMPLETE
-        #if __has_include(<java/util/Enumeration.h>)
-#include <java/util/Enumeration.h>
-#endif
-#if __has_include(<org/allbinary/graphics/GraphicsStrings.h>)
+        #if __has_include(<org/allbinary/graphics/GraphicsStrings.h>)
 #include <org/allbinary/graphics/GraphicsStrings.h>
 #endif
 #if __has_include(<org/allbinary/logic/math/PrimitiveIntUtil.h>)

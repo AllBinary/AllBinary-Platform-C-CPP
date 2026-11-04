@@ -141,7 +141,7 @@ scaledImages[index]= this->scale(images[index], width, height);
     auto ImageJ2MEScaleUtil::scale(Image* image, int32_t width, int32_t height) -> Image*{
 
     CoreImage* originalPlayNImage = 
-                null
+                nullptr
             ;;
     
 
@@ -177,9 +177,7 @@ originalPlayNImage= dynamic_cast<CoreImage*>(originalHTMLImage->getImage());
 
     Canvas* canvas = (graphics)).get(dynamic_cast<HtmlImage*>(scaledPlayNImage));;
     
-originalPlayNImage = dynamic_cast<ImageImpl*>(originalPlayNImageoriginalPlayNImage)
-originalPlayNImage.
-                    draw(canvas->gc(), 0, 0, scaledImage->getWidth(), scaledImage->getHeight(), 0, 0, image->getWidth(), image->getHeight());
+canvas->drawScale(originalPlayNImage, 0, 0, scaledImage->getWidth(), scaledImage->getHeight(), 0, 0, image->getWidth(), image->getHeight());
     
 
 

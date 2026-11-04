@@ -36,6 +36,8 @@
         
             #include "java/lang/Integer.h"
         
+            #include "java/lang/Boolean.h"
+        
 class ABTextFieldItem;
 #include <org/allbinary/logic/control/validate/ValidatorBase.h>
 class BooleanFactory;

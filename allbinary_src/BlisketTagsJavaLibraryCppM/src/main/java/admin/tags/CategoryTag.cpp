@@ -163,7 +163,7 @@ this->xsl= value;
     std::string error = "Failed to view a Category";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "viewCategory()", &e);
@@ -229,7 +229,7 @@ this->xsl= value;
     std::string error = "Failed to view a Categories";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "viewCategories()", &e);
@@ -275,7 +275,7 @@ this->xsl= value;
     std::string output = this->viewCategory();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAGEXTRAOUTPUT))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAGEXTRAOUTPUT))
                         
                                     {
                                     pageContext.getOut()->print(output);
@@ -294,7 +294,7 @@ this->xsl= value;
     std::string output = this->viewCategories();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->JSPTAGEXTRAOUTPUT))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAGEXTRAOUTPUT))
                         
                                     {
                                     pageContext.getOut()->print(output);

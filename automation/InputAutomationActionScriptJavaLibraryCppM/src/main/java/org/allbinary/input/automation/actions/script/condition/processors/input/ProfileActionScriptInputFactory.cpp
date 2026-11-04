@@ -78,7 +78,7 @@ ProfileActionScriptInputFactory::ProfileActionScriptInputFactory(){
     auto ProfileActionScriptInputFactory::getInstance(Node* node) -> ProfileActionScriptInputInterface*{
 
     ProfileActionScriptInputInterface* profileActionScriptInputInterface = 
-                null
+                nullptr
             ;;
     
 

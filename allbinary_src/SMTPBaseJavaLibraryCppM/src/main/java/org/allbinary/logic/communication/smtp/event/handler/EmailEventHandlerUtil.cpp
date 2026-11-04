@@ -124,7 +124,7 @@ EmailEventHandlerUtil::EmailEventHandlerUtil() : logUtil(LogUtil::getInstance())
             
     auto EmailEventHandlerUtil::getEventHandler(AbeClientInformationInterface* abeClientInformation, UserEmailEventNameData* userEmailEventNameData, BasicArrayList* userVector) -> UserEmailEventHandler*{
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
                         
                                     {
                                     

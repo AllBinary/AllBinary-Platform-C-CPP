@@ -171,7 +171,7 @@ this->setDocument(this->generate(this->toXmlDoc()));
             
     auto GenericStoreTransformInfoObjectConfig::generate(Document* objectConfigDocument) -> Document*{
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     
@@ -267,7 +267,7 @@ hashMap->put(transformInfoObjectConfigData->VARKEY +TransformInfoData::getInstan
     std::string templateNameOverride = StringUtil::getInstance()->getNonNull(JavaBoxes::unbox<std::string>(propertiesHashMap->get(TransformInfoData::getInstance()->PARTIAL)));;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("TemplateNameOverride: ") +JavaString::valueOf(templateNameOverride), this, "generate()");
@@ -325,7 +325,7 @@ hashMap->put(templateNameKey, selectedTemplate);
     Document* newObjectConfigDocument = DomDocumentHelper::create(replace->all(objectConfigDocumentString));;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Final ObjectConfig: ") +JavaString::valueOf(XmlDocumentHelper::toString(newObjectConfigDocument)), this, "generate()");

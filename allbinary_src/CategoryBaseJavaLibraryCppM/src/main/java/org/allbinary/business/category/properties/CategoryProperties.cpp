@@ -38,6 +38,8 @@
         
             #include "java/lang/Exception.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <java/util/HashMap.h>
 
       
@@ -163,7 +165,7 @@ this->category= .toCharArray();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->getValue();
+                        return JavaBoxes::toObject(this->getValue());
     
 }
 
@@ -286,7 +288,7 @@ pathStringBuffer->append(JavaBoxes::unbox<std::string>(list->get(index)));
 pathStringBuffer->append(abPathData->SEPARATOR);
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->CATEGORY))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->CATEGORY))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("path = ") +JavaString::valueOf(pathStringBuffer->toString()), this, "getPath");

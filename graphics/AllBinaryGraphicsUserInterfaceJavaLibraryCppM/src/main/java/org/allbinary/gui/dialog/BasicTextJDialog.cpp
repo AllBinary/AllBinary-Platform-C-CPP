@@ -151,9 +151,9 @@ this->textJLabel->setText("No Text Set");
     
 getContentPane()->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(layout->createSequentialGroup()->addGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(layout->createSequentialGroup()->addGap(80, 80, 80)->addComponent(jButton1))->addGroup(layout->createSequentialGroup()->addContainerGap()->addComponent(textJLabel, GroupLayout::DEFAULT_SIZE, 184, Short::MAX_VALUE)))->addContainerGap()));
+layout->setHorizontalGroup(layout->createParallelGroup(GroupLayout::Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addGroup(layout->createParallelGroup(GroupLayout::Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addGap(80, 80, 80)->addComponent(jButton1))->addGroup(layout->createSequentialGroup()->addContainerGap()->addComponent(textJLabel, GroupLayout::DEFAULT_SIZE, 184, Short::MAX_VALUE)))->addContainerGap()));
     
-layout->setVerticalGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(layout->createSequentialGroup()->addGap(20, 20, 20)->addComponent(textJLabel, GroupLayout::PREFERRED_SIZE, 20, GroupLayout::PREFERRED_SIZE)->addGap(30, 30, 30)->addComponent(jButton1)));
+layout->setVerticalGroup(layout->createParallelGroup(GroupLayout::Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addGap(20, 20, 20)->addComponent(textJLabel, GroupLayout::PREFERRED_SIZE, 20, GroupLayout::PREFERRED_SIZE)->addGap(30, 30, 30)->addComponent(jButton1)));
     
 pack();
     

@@ -128,7 +128,7 @@ this->status= this->request->getParameter(OrderHistoryData::STATUS);
 OrderItemsEntityFactory::getInstance()->setStatus(this->id, this->groupId, newStatus);
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "setOrderStatus(newStatus)");
@@ -152,7 +152,7 @@ OrderItemsEntityFactory::getInstance()->setStatus(this->id, this->groupId, newSt
     std::string error = "Failed to view order table";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "setOrderStatus(newStatus)", &e);
@@ -182,7 +182,7 @@ OrderItemsEntityFactory::getInstance()->setStatus(this->id, this->groupId, newSt
 OrderItemsEntityFactory::getInstance()->setStatus(this->id, this->groupId, this->status);
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "setOrderStatus(newStatus)");
@@ -206,7 +206,7 @@ OrderItemsEntityFactory::getInstance()->setStatus(this->id, this->groupId, this-
     std::string error = "Failed to view order table";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "setOrderStatus(newStatus)", &e);

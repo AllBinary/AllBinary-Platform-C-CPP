@@ -142,7 +142,7 @@ DownloadItemsEntityFactory::getInstance()->getDownloadItemsEntityInstance()->ins
     std::string success = JavaString::valueOf(JavaString::valueOf("Successfully inserted ") +JavaString::valueOf(this->downloadableItem->getId())) +JavaString::valueOf(" into downloaditems table");;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "insert()");
@@ -166,7 +166,7 @@ DownloadItemsEntityFactory::getInstance()->getDownloadItemsEntityInstance()->ins
     std::string error = JavaString::valueOf(JavaString::valueOf("Failed to insert ") +JavaString::valueOf(this->downloadableItem->getId())) +JavaString::valueOf(" into downloaditems table");;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "inserts()", &e);
@@ -196,7 +196,7 @@ DownloadItemsEntityFactory::getInstance()->getDownloadItemsEntityInstance()->ins
     std::string success = "Successfully deleted";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "delete()");
@@ -220,7 +220,7 @@ DownloadItemsEntityFactory::getInstance()->getDownloadItemsEntityInstance()->ins
     std::string error = "Failed to delete";;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "delete()", &e);
@@ -253,7 +253,7 @@ DownloadItemsEntityFactory::getInstance()->getDownloadItemsEntityInstance()->ins
 DownloadItemsEntityFactory::getInstance()->getDownloadItemsEntityInstance()->update(values);
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf(this->downloadableItem->getId() +CommonSeps::getInstance()->SPACE) +JavaString::valueOf(success), this, "update()");
@@ -277,7 +277,7 @@ DownloadItemsEntityFactory::getInstance()->getDownloadItemsEntityInstance()->upd
     std::string error = JavaString::valueOf("Failed to update: ") +JavaString::valueOf(this->downloadableItem->getId());;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "update()", &e);

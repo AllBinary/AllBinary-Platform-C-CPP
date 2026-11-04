@@ -36,6 +36,8 @@
         
             #include "java/lang/Exception.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <org/allbinary/data/tables/user/address/billing/BillingAddressesEntity.h>
 
       

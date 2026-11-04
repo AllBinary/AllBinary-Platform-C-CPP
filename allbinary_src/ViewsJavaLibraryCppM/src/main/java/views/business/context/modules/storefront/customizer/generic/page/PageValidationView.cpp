@@ -36,6 +36,8 @@
         
             #include "java/lang/Exception.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <java/util/HashMap.h>
 
       
@@ -154,7 +156,7 @@ PageValidationView::PageValidationView(TransformInfoInterface* transformInfoInte
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("View Name: ") +JavaString::valueOf(transformInfoInterface->getName()), this, "PageViewValidation()");
@@ -172,7 +174,7 @@ PageValidationView::PageValidationView(TransformInfoInterface* transformInfoInte
     bool isValid = Boolean::TRUE;;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->IS_VALID);
@@ -190,7 +192,7 @@ PageValidationView::PageValidationView(TransformInfoInterface* transformInfoInte
     BasicArrayList* allViewsToBeModifiedVector = pageObjectConfigInterface->getGroupTransforms();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(JavaString::valueOf("Views To Be Modified: ") +JavaString::valueOf(allViewsToBeModifiedVector->size()), this, "get(transformInfoInterface)");
@@ -215,7 +217,7 @@ PageValidationView::PageValidationView(TransformInfoInterface* transformInfoInte
     std::string viewNameOfViewToBeModified = transformInfoInterface->getName();;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     
@@ -239,7 +241,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "insert()");
     TransformInfoInterface* specifiedTransformInfoInterface = transformInfoEntityInterface->get(viewNameOfViewToBeModified, httpTransformInfoInterface->getPropertiesHashMap(), httpTransformInfoInterface->getPageContext());;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     
@@ -302,7 +304,7 @@ document->appendChild(pageValidation->toXmlNode(document));
     std::string documentString = XmlDocumentHelper::toString(document);;
     
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     
@@ -343,7 +345,7 @@ CustomizerUtil::getInstance()->write(specifiedTransformInfoInterface, documentSt
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to validate", this, this->commonStrings->IS_VALID, &e);
@@ -453,7 +455,7 @@ stringBuffer->append(JavaString::valueOf("PageValidation Info:") +JavaString::va
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);

@@ -42,6 +42,8 @@
         
             #include "java/lang/Integer.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <java/lang/reflect/Method.h>
 #include <java/util/HashMap.h>
 class BasicArrayList;

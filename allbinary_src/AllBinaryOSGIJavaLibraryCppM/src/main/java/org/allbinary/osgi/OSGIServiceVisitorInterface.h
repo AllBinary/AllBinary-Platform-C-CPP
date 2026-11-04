@@ -32,6 +32,8 @@
             #include "java/lang/String.h"
 
         
+            #include "java/lang/Boolean.h"
+        
 #include <org/allbinary/logic/util/visitor/VisitorInterface.h>
 
 

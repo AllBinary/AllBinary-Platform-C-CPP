@@ -136,7 +136,10 @@ this->canvasSurfaceArray[1]= this->getCanvasSurface(this->twoImages[1]);
     PlayN* playN = PlayN::getInstance();;
     
 
-    Canvas* canvas = (graphics)).get(dynamic_cast<HtmlImage*>(canvasImage));;
+    HtmlGraphics* htmlGraphics = dynamic_cast<HtmlGraphics*>(playN->graphics());;
+    
+
+    Canvas* canvas = htmlGraphics->get(dynamic_cast<HtmlImage*>(canvasImage));;
     
 canvas->translate(this->originalImage->getWidth() /2, this->originalImage->getHeight() /2);
     

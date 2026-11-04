@@ -113,7 +113,7 @@ HitPointGameObject::HitPointGameObject(std::vector<BufferedImage*> bufferedImage
 
     auto HitPointGameObject::isMoreThan(float aFloat) -> bool{
 
-                        if(this->getRatios()[this->getRatios()->length -1].doubleValue() > aFloat)
+                        if(this->getRatios()[this->getRatios().size() -1].doubleValue() > aFloat)
                         
                                     {
                                     

@@ -36,6 +36,8 @@
         
             #include "java/lang/Exception.h"
         
+            #include "java/lang/Boolean.h"
+        
 class StoreFrontFactory;
 class StoreFrontInterface;
 class BasicItemData;

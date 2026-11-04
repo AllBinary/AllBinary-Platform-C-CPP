@@ -151,7 +151,7 @@ AbeFactory::AbeFactory() : logUtil(LogUtil::getInstance()){
 } catch(LicensingException& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->LOADERERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->LOADERERROR))
                         
                                     {
                                     this->logUtil->put(JavaString::valueOf("Failure for: ") +JavaString::valueOf(className), this, "getInstance(classname)", &e);
@@ -170,7 +170,7 @@ AbeFactory::AbeFactory() : logUtil(LogUtil::getInstance()){
  catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->LOADERERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->LOADERERROR))
                         
                                     {
                                     this->logUtil->put(JavaString::valueOf("Failure for: ") +JavaString::valueOf(className), this, "getInstance(classname)", &e);
@@ -197,7 +197,7 @@ AbeFactory::AbeFactory() : logUtil(LogUtil::getInstance()){
     auto AbeFactory::getInstance(AbeClientInformationInterface* abeClientInformation, std::string className, std::vector<Class*> classes, std::vector<Object*> params) -> Object*{
 
     Constructor* constructor = 
-                null
+                nullptr
             ;;
     
 
@@ -250,7 +250,7 @@ constructor= myClass->getConstructor(classes);
 } catch(LicensingException& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->LOADERERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->LOADERERROR))
                         
                                     {
                                     
@@ -280,7 +280,7 @@ this->logUtil->put(stringBuffer->toString(), this, "getInstance(className,params
  catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->LOADERERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->LOADERERROR))
                         
                                     {
                                     
@@ -362,7 +362,7 @@ this->logUtil->put(stringBuffer->toString(), this, "getInstance(className,params
 } catch(LicensingException& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->LOADERERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->LOADERERROR))
                         
                                     {
                                     this->logUtil->put(JavaString::valueOf("Failure for: ") +JavaString::valueOf(className), this, "getClass(className)", &e);
@@ -381,7 +381,7 @@ this->logUtil->put(stringBuffer->toString(), this, "getInstance(className,params
  catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING::contains(LogConfigTypeFactory::getInstance()->LOADERERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->LOADERERROR))
                         
                                     {
                                     this->logUtil->put(JavaString::valueOf("Failure for: ") +JavaString::valueOf(className), this, "getClass(className)", &e);

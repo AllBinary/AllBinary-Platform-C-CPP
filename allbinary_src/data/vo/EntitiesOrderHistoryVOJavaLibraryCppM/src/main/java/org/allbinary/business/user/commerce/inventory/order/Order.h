@@ -38,6 +38,8 @@
         
             #include "java/lang/Exception.h"
         
+            #include "java/lang/Boolean.h"
+        
 #include <java/io/Serializable.h>
 #include <java/util/HashMap.h>
 #include <java/util/Set.h>

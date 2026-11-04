@@ -80,6 +80,8 @@ this->shortName= (new StringMaker())->append(shortName)->append(KotlinUtil::getS
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->name;
     
 }
@@ -90,6 +92,8 @@ this->shortName= (new StringMaker())->append(shortName)->append(KotlinUtil::getS
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->version;
     
 }
@@ -100,6 +104,8 @@ this->shortName= (new StringMaker())->append(shortName)->append(KotlinUtil::getS
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return this->shortName;
     
 }
@@ -129,6 +135,8 @@ stringBuffer->append(this->getVersion());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
                         return stringBuffer->toString();;
     
 }

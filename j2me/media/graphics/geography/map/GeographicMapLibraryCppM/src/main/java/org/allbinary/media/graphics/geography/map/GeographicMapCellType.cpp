@@ -137,7 +137,7 @@ this->type= type;
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return SmallIntegerSingletonFactory::getInstance()->getAt(this->type)->toString();;
+                        return JavaString::valueOf(SmallIntegerSingletonFactory::getInstance()->getAt(this->type));;
     
 }
 

@@ -34,6 +34,8 @@
         
             #include "java/lang/Exception.h"
         
+            #include "java/lang/Boolean.h"
+        
 class StreetAddress;
 class ShippingAddressesEntity;
 #include <org/allbinary/logic/control/validate/ValidationComponentInterface.h>

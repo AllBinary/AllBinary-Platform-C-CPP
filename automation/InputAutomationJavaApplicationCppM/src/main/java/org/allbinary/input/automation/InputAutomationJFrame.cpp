@@ -363,9 +363,9 @@ this->noModuleSelectedJLabel->setText("Please Select A Module");
     
 this->noModuleSelectedJDialog->getContentPane()->setLayout(noModuleSelectedJDialogLayout);
     
-noModuleSelectedJDialogLayout->setHorizontalGroup(noModuleSelectedJDialogLayout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(noModuleSelectedJDialogLayout->createSequentialGroup()->addContainerGap()->addComponent(noModuleSelectedJLabel)->addContainerGap(GroupLayout::DEFAULT_SIZE, Short::MAX_VALUE)));
+noModuleSelectedJDialogLayout->setHorizontalGroup(noModuleSelectedJDialogLayout->createParallelGroup(GroupLayout::Alignment->LEADING)->addGroup(noModuleSelectedJDialogLayout->createSequentialGroup()->addContainerGap()->addComponent(noModuleSelectedJLabel)->addContainerGap(GroupLayout::DEFAULT_SIZE, Short::MAX_VALUE)));
     
-noModuleSelectedJDialogLayout->setVerticalGroup(noModuleSelectedJDialogLayout->createParallelGroup(GroupLayout::Alignment::LEADING)->addComponent(noModuleSelectedJLabel, GroupLayout::Alignment::TRAILING, GroupLayout::DEFAULT_SIZE, 48, Short::MAX_VALUE));
+noModuleSelectedJDialogLayout->setVerticalGroup(noModuleSelectedJDialogLayout->createParallelGroup(GroupLayout::Alignment->LEADING)->addComponent(noModuleSelectedJLabel, GroupLayout::Alignment->TRAILING, GroupLayout::DEFAULT_SIZE, 48, Short::MAX_VALUE));
     
 setDefaultCloseOperation(WindowConstants::EXIT_ON_CLOSE);
     
@@ -445,9 +445,9 @@ this->jScrollPane1->setViewportView(this->inputAutomationModuleJList);
     
 this->inputAutomationModuleJPanel->setLayout(inputAutomationModuleJPanelLayout);
     
-inputAutomationModuleJPanelLayout->setHorizontalGroup(inputAutomationModuleJPanelLayout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(inputAutomationModuleJPanelLayout->createSequentialGroup()->addComponent(jScrollPane1, GroupLayout::PREFERRED_SIZE, 199, GroupLayout::PREFERRED_SIZE)->addContainerGap(367, Short::MAX_VALUE)));
+inputAutomationModuleJPanelLayout->setHorizontalGroup(inputAutomationModuleJPanelLayout->createParallelGroup(GroupLayout::Alignment->LEADING)->addGroup(inputAutomationModuleJPanelLayout->createSequentialGroup()->addComponent(jScrollPane1, GroupLayout::PREFERRED_SIZE, 199, GroupLayout::PREFERRED_SIZE)->addContainerGap(367, Short::MAX_VALUE)));
     
-inputAutomationModuleJPanelLayout->setVerticalGroup(inputAutomationModuleJPanelLayout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGroup(inputAutomationModuleJPanelLayout->createSequentialGroup()->addComponent(jScrollPane1, GroupLayout::PREFERRED_SIZE, 330, GroupLayout::PREFERRED_SIZE)->addContainerGap(GroupLayout::DEFAULT_SIZE, Short::MAX_VALUE)));
+inputAutomationModuleJPanelLayout->setVerticalGroup(inputAutomationModuleJPanelLayout->createParallelGroup(GroupLayout::Alignment->LEADING)->addGroup(inputAutomationModuleJPanelLayout->createSequentialGroup()->addComponent(jScrollPane1, GroupLayout::PREFERRED_SIZE, 330, GroupLayout::PREFERRED_SIZE)->addContainerGap(GroupLayout::DEFAULT_SIZE, Short::MAX_VALUE)));
     
 this->gameRobotJTabbedPane->addTab("Modules", inputAutomationModuleJPanel);
     
@@ -456,9 +456,9 @@ this->gameRobotJTabbedPane->addTab("Modules", inputAutomationModuleJPanel);
     
 this->automationModuleConfigurationJPanel->setLayout(automationModuleConfigurationJPanelLayout);
     
-automationModuleConfigurationJPanelLayout->setHorizontalGroup(automationModuleConfigurationJPanelLayout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGap(0, 566, Short::MAX_VALUE));
+automationModuleConfigurationJPanelLayout->setHorizontalGroup(automationModuleConfigurationJPanelLayout->createParallelGroup(GroupLayout::Alignment->LEADING)->addGap(0, 566, Short::MAX_VALUE));
     
-automationModuleConfigurationJPanelLayout->setVerticalGroup(automationModuleConfigurationJPanelLayout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGap(0, 334, Short::MAX_VALUE));
+automationModuleConfigurationJPanelLayout->setVerticalGroup(automationModuleConfigurationJPanelLayout->createParallelGroup(GroupLayout::Alignment->LEADING)->addGap(0, 334, Short::MAX_VALUE));
     
 this->gameRobotJTabbedPane->addTab("Configuration", automationModuleConfigurationJPanel);
     
@@ -672,9 +672,9 @@ setJMenuBar(this->mainJMenuBar);
     
 getContentPane()->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addComponent(gameRobotJTabbedPane, GroupLayout::Alignment::TRAILING, GroupLayout::DEFAULT_SIZE, 571, Short::MAX_VALUE));
+layout->setHorizontalGroup(layout->createParallelGroup(GroupLayout::Alignment->LEADING)->addComponent(gameRobotJTabbedPane, GroupLayout::Alignment->TRAILING, GroupLayout::DEFAULT_SIZE, 571, Short::MAX_VALUE));
     
-layout->setVerticalGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addComponent(gameRobotJTabbedPane, GroupLayout::Alignment::TRAILING, GroupLayout::DEFAULT_SIZE, 359, Short::MAX_VALUE));
+layout->setVerticalGroup(layout->createParallelGroup(GroupLayout::Alignment->LEADING)->addComponent(gameRobotJTabbedPane, GroupLayout::Alignment->TRAILING, GroupLayout::DEFAULT_SIZE, 359, Short::MAX_VALUE));
     
 pack();
     
@@ -809,9 +809,9 @@ this->getAutomationModuleConfigurationJPanel()->removeAll();
 
     javax::swing::GroupLayout* layout = dynamic_cast<javax::swing::GroupLayout*>(this->getAutomationModuleConfigurationJPanel()->getLayout());;
     
-layout->setHorizontalGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGap(0, 395, Short::MAX_VALUE)->addComponent(this->inputAutomationModuleInterface->getConfigurationJPanel(), GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE));
+layout->setHorizontalGroup(layout->createParallelGroup(GroupLayout::Alignment->LEADING)->addGap(0, 395, Short::MAX_VALUE)->addComponent(this->inputAutomationModuleInterface->getConfigurationJPanel(), GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE));
     
-layout->setVerticalGroup(layout->createParallelGroup(GroupLayout::Alignment::LEADING)->addGap(0, 256, Short::MAX_VALUE)->addComponent(this->inputAutomationModuleInterface->getConfigurationJPanel(), GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE));
+layout->setVerticalGroup(layout->createParallelGroup(GroupLayout::Alignment->LEADING)->addGap(0, 256, Short::MAX_VALUE)->addComponent(this->inputAutomationModuleInterface->getConfigurationJPanel(), GroupLayout::PREFERRED_SIZE, GroupLayout::DEFAULT_SIZE, GroupLayout::PREFERRED_SIZE));
     
 this->gameRobotJTabbedPane->setEnabledAt(1, true);
     
