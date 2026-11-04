@@ -14,7 +14,7 @@
 
     <modules>
 
-        <module>../../platform/android/AndroidResourcesTempJavaLibraryCppM</module>
+<!--        <module>../../platform/android/AndroidResourcesTempJavaLibraryCppM</module>-->
         <module>../../../../allbinary_src/licensing/ClientInformationMobileLicensingRegistrationJavaLibraryCppM</module>
 
         <!--

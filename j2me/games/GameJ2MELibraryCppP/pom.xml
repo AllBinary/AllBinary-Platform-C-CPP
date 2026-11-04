@@ -31,7 +31,7 @@
         NoGyroSensorLibrary
 
         -->
-        <module>../../android/AndroidUtilJavaLibraryCppM</module>
+<!--        <module>../../android/AndroidUtilJavaLibraryCppM</module>-->
 
         <module>../../../allbinary_src/security/SimpleCryptLibraryCppM</module>
         <!--
@@ -49,8 +49,8 @@
         <module>../../DebugJavaLibraryCppM</module>             
         <module>../../ResourceLibraryCppM</module>
         <module>../../ResourceJ2MEJavaLibraryCppM</module>
-        <module>../../AndroidResourceLibraryCppM</module>
-        <module>../../../allbinary_src/hardware/AndroidSystemJavaLibraryCppM</module>
+<!--        <module>../../AndroidResourceLibraryCppM</module>-->
+<!--        <module>../../../allbinary_src/hardware/AndroidSystemJavaLibraryCppM</module>-->
 
         <module>../../../game/behavior/ArtificialIntelligenceLibraryCppM</module>
 
