@@ -83,6 +83,7 @@ class SWTJOGLProcessor
     public: GLHolder* glHolder;
 
     public: void init(Object* display, Object* comp);
+    public: void init(const std::string& display, Object* comp) { return init(JavaString::box(display), comp); }
 
     public: bool isHolderCreated();
 

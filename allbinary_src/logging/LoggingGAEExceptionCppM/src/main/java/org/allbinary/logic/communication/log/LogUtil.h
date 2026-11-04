@@ -88,6 +88,7 @@ private: LogUtil();
     /*actual*/ public: void putL(Log* log);
 
     /*actual*/ public: void put(std::string specialMessage, Object* anyType, std::string functionName, Object* exception);
+    public: void put(std::string specialMessage, const std::string& anyType, std::string functionName, Object* exception) { return put(specialMessage, JavaString::box(anyType), functionName, exception); }
 
 };
 

@@ -74,6 +74,7 @@ class CommonStrings;
     private: static inline const std::string LOG_SUCCESS = "org.allbinary: ";
 
     /*actual*/ public: static void putOE(std::string specialMessage, Object* anyType, std::string functionName, Object* exception);
+    public: static void putOE(std::string specialMessage, const std::string& anyType, std::string functionName, Object* exception) { return putOE(specialMessage, JavaString::box(anyType), functionName, exception); }
 
     /*actual*/ public: static void putSE(std::string specialMessage, std::string className, std::string functionName, Object* exception);
     public: static void putSE(std::string specialMessage, std::string className, std::string functionName, const std::string& exception) { return putSE(specialMessage, className, functionName, JavaString::box(exception)); }

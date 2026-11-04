@@ -107,7 +107,7 @@ DatabaseEncoder::DatabaseEncoder(){
                         for (
     int32_t index = 0;index < array.size(); index++)
         {
-stringBuffer->append((Number(array[index])).toString());
+stringBuffer->append(JavaString::valueOf((static_cast<int8_t>(array[index]))));
     
 
                         if(index < array.size() -1)
@@ -177,7 +177,7 @@ PreLogUtil::putOE(commonStrings->EXCEPTION, "DatabaseEncoder", "decode", &e);
         {
 byteOfData= JavaBoxes::unbox<std::string>(vector->objectArray[index]);
     
-byteVector->add(Number(byteOfData));
+byteVector->add(static_cast<int8_t>(std::stoi(byteOfData)));
     
 }
 

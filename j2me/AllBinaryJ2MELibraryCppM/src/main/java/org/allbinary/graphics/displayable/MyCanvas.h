@@ -101,6 +101,10 @@ class MyCanvas: public Canvas, public virtual DisplayableInterface, public virtu
 
 public: MyCanvas(std::string name, BasicArrayList* childNameList);
 
+    public: int32_t getWidth();
+
+    public: int32_t getHeight();
+
     public: void setFullScreenMode(bool mode);
 
     /*protected*/ public: void sizeChanged(int32_t w, int32_t h);

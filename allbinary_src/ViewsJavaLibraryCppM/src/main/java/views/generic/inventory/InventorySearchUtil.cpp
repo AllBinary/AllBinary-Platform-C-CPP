@@ -375,7 +375,7 @@ keyword= JavaString::toUpperCase(keyword);
     
 viewDocumentInterface->getBaseNode()->appendChild(inventoryNode);
     
-inventoryNode->appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterface->getDoc(), SearchData::PAGE, (int32_t(startPage)).toString()));
+inventoryNode->appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterface->getDoc(), SearchData::PAGE, JavaString::valueOf((int32_t(startPage)))));
     
 
                         if(searchRequest->getFileBaseName() != 
@@ -442,7 +442,7 @@ numberOfResultsOnCurrentPage++;
                         if(currentPage >= startPage && currentPage <= endPage)
                         
                                     {
-                                    inventoryNode->appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterface->getDoc(), SearchData::TOTAL_NUMBER_ITEMS_ON_THIS_PAGE, (int32_t(numberOfResultsOnCurrentPage)).toString()));
+                                    inventoryNode->appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterface->getDoc(), SearchData::TOTAL_NUMBER_ITEMS_ON_THIS_PAGE, JavaString::valueOf((int32_t(numberOfResultsOnCurrentPage)))));
     
 documents[currentPage]= viewDocumentInterface->getDoc();
     
@@ -456,7 +456,7 @@ inventoryNode= viewDocumentInterface->getDoc()->createElement(InventoryData::INV
     
 viewDocumentInterface->getBaseNode()->appendChild(inventoryNode);
     
-inventoryNode->appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterface->getDoc(), SearchData::PAGE, (int32_t(currentPage +1)).toString()));
+inventoryNode->appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterface->getDoc(), SearchData::PAGE, JavaString::valueOf((int32_t(currentPage +1)))));
     
 
                         if(searchRequest->getFileBaseName() != 
@@ -500,7 +500,7 @@ numberOfResults++;
                         if(numberOfResultsOnCurrentPage > 0 && (currentPage +1 >= startPage && currentPage +1 <= endPage))
                         
                                     {
-                                    inventoryNode->appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterface->getDoc(), SearchData::TOTAL_NUMBER_ITEMS_ON_THIS_PAGE, (int32_t(numberOfResultsOnCurrentPage -1)).toString()));
+                                    inventoryNode->appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterface->getDoc(), SearchData::TOTAL_NUMBER_ITEMS_ON_THIS_PAGE, JavaString::valueOf((int32_t(numberOfResultsOnCurrentPage -1)))));
     
 documents[lastPage +1]= viewDocumentInterface->getDoc();
     
@@ -543,9 +543,9 @@ savedPagesInRange++;
                                     
     Document* tempDocument = documents[index];;
     
-inventoryNodes[index]->appendChild(ModDomHelper::createNameValueNodes(tempDocument, SearchData::TOTAL_NUMBER_PAGES, (int32_t(lastPage +1)).toString()));
+inventoryNodes[index]->appendChild(ModDomHelper::createNameValueNodes(tempDocument, SearchData::TOTAL_NUMBER_PAGES, JavaString::valueOf((int32_t(lastPage +1)))));
     
-inventoryNodes[index]->appendChild(ModDomHelper::createNameValueNodes(tempDocument, SearchData::TOTAL_NUMBER_ITEMS, (int32_t(numberOfResults)).toString()));
+inventoryNodes[index]->appendChild(ModDomHelper::createNameValueNodes(tempDocument, SearchData::TOTAL_NUMBER_ITEMS, JavaString::valueOf((int32_t(numberOfResults)))));
     
 
 

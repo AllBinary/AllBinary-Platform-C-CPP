@@ -70,6 +70,7 @@ class PreLogUtil
     public: template<typename BoxElement> static void put(std::string specialMessage, const std::vector<BoxElement>& anyType, std::string functionName) { return put(specialMessage, JavaBoxes::toObject(anyType), functionName); }
 
     public: static void putOE(std::string specialMessage, Object* anyType, std::string functionName, Object* exception);
+    public: static void putOE(std::string specialMessage, const std::string& anyType, std::string functionName, Object* exception) { return putOE(specialMessage, JavaString::box(anyType), functionName, exception); }
 
     public: static void putSE(std::string specialMessage, std::string className, std::string functionName, Object* exception);
     public: static void putSE(std::string specialMessage, std::string className, std::string functionName, const std::string& exception) { return putSE(specialMessage, className, functionName, JavaString::box(exception)); }

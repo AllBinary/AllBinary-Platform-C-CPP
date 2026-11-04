@@ -72,6 +72,7 @@ class LogFormatUtil;
     private: static inline const std::string LABEL = "org.allbinary";
 
     /*actual*/ public: static void putOE(std::string specialMessage, Object* anyType, std::string functionName, Object* exception);
+    public: static void putOE(std::string specialMessage, const std::string& anyType, std::string functionName, Object* exception) { return putOE(specialMessage, JavaString::box(anyType), functionName, exception); }
 
     /*actual*/ public: static void putS(std::string specialMessage, std::string className, std::string functionName);
 

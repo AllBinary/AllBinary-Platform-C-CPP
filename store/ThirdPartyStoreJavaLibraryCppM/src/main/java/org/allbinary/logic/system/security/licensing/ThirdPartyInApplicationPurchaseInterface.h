@@ -65,6 +65,7 @@ class ThirdPartyInApplicationPurchaseInterface
     public: virtual bool isPurchased(LockableFeature* lockableFeature) = 0;
 
     public: virtual void onCreate(Object* anyType, Object* stateObject) = 0;
+    public: void onCreate(const std::string& anyType, Object* stateObject) { return onCreate(JavaString::box(anyType), stateObject); }
 
     public: virtual void onDestroy() = 0;
 

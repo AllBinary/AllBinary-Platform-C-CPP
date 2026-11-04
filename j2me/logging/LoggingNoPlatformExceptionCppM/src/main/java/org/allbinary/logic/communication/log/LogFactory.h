@@ -69,6 +69,7 @@ class LogFactory
     public: static inline Log* LOG;
 
     public: static Log* getInstance(std::string specialMessage, Object* anyType, std::string functionName, Object* exception);
+    public: static Log* getInstance(std::string specialMessage, const std::string& anyType, std::string functionName, Object* exception) { return getInstance(specialMessage, JavaString::box(anyType), functionName, exception); }
 
     public: static Log* getInstanceF(std::string specialMessage, Object* anyType, std::string functionName);
     public: static Log* getInstanceF(std::string specialMessage, const std::string& anyType, std::string functionName) { return getInstanceF(specialMessage, JavaString::box(anyType), functionName); }

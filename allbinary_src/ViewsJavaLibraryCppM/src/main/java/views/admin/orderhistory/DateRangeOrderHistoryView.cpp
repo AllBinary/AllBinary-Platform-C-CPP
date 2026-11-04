@@ -552,7 +552,7 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, GLOBALS2::VIEWNAM
                                     
     int64_t oneHour = 60 *60 *1000;;
     
-rangeDate= (int64_t(oneHour)).toString();
+rangeDate= JavaString::valueOf((int64_t(oneHour)));
     
 
                                     }
@@ -564,7 +564,7 @@ rangeDate= (int64_t(oneHour)).toString();
                                     
     int64_t oneDay = 24 *60 *60 *1000;;
     
-rangeDate= (int64_t(oneDay)).toString();
+rangeDate= JavaString::valueOf((int64_t(oneDay)));
     
 
                                     }
@@ -576,7 +576,7 @@ rangeDate= (int64_t(oneDay)).toString();
                                     
     int64_t oneWeek = 7 *24 *60 *60 *1000;;
     
-rangeDate= (int64_t(oneWeek)).toString();
+rangeDate= JavaString::valueOf((int64_t(oneWeek)));
     
 
                                     }
@@ -588,7 +588,7 @@ rangeDate= (int64_t(oneWeek)).toString();
                                     
     int64_t thirtyDays = 30 *24 *60 *60 *1000;;
     
-rangeDate= (int64_t(thirtyDays)).toString();
+rangeDate= JavaString::valueOf((int64_t(thirtyDays)));
     
 
                                     }
@@ -597,7 +597,7 @@ rangeDate= (int64_t(thirtyDays)).toString();
                         if(this->command.compare(this->VIEWALLORDERS) == 0)
                         
                                     {
-                                    rangeDate= (int64_t(currentTime)).toString();
+                                    rangeDate= JavaString::valueOf((int64_t(currentTime)));
     
 
                                     }
@@ -605,10 +605,10 @@ rangeDate= (int64_t(thirtyDays)).toString();
 
     int64_t rangeDateLong = (Long.valueOf(rangeDate));;
     
-this->fromDate= (int64_t(currentTime -rangeDateLong)).toString();
+this->fromDate= JavaString::valueOf((int64_t(currentTime -rangeDateLong)));
     
 
-    std::string time = (int64_t(currentTime)).toString();;
+    std::string time = JavaString::valueOf((int64_t(currentTime)));;
     
 this->toDate= time;
     
@@ -624,11 +624,11 @@ this->toDate= time;
     
 TimeUtil::getInstance()->setCalendar(calendar, this->fromYear, this->fromMonth, this->fromDay, this->fromHour);
     
-this->fromDate= (int64_t(calendar->getTimeInMillis())).toString();
+this->fromDate= JavaString::valueOf((int64_t(calendar->getTimeInMillis())));
     
 TimeUtil::getInstance()->setCalendar(calendar, this->toYear, this->toMonth, this->toDay, this->toHour);
     
-this->toDate= (int64_t(calendar->getTimeInMillis())).toString();
+this->toDate= JavaString::valueOf((int64_t(calendar->getTimeInMillis())));
     
 
                                     }

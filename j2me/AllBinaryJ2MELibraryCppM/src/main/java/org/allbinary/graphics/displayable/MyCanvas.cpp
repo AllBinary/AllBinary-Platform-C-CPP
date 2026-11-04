@@ -120,6 +120,30 @@ this->commandStack= StdUtil::getInstance()->createStack();
 }
 
 
+    auto MyCanvas::getWidth() -> int32_t{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return Canvas::getWidth();;
+    
+}
+
+
+    auto MyCanvas::getHeight() -> int32_t{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return Canvas::getHeight();;
+    
+}
+
+
     auto MyCanvas::setFullScreenMode(bool mode) -> void{
 Canvas::setFullScreenMode(mode);
     

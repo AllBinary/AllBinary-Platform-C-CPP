@@ -289,7 +289,7 @@ vector->add(order->getStoreName());
     Calendar* calendar = Calendar::getInstance();;
     
 
-    std::string time = (int64_t(calendar->getTimeInMillis())).toString();;
+    std::string time = JavaString::valueOf((int64_t(calendar->getTimeInMillis())));;
     
 vector->add(ZERO);
     
@@ -320,7 +320,7 @@ vector->add(paymentInterface->getExpiration());
     
 vector->add((new SuperCrypt(random))->encrypt(paymentInterface->getNumber()));
     
-vector->add((int32_t(random)).toString());
+vector->add(JavaString::valueOf((int32_t(random))));
     
 
                                     }
@@ -501,7 +501,7 @@ this->insert(vector);
     Calendar* calendar = Calendar::getInstance();;
     
 
-    std::string time = (int64_t(calendar->getTimeInMillis())).toString();;
+    std::string time = JavaString::valueOf((int64_t(calendar->getTimeInMillis())));;
     
 
     HashMap<Object*, Object*>* updateHashMap = StdUtil::getInstance()->createHashMap();;
@@ -553,7 +553,7 @@ AbSqlBean::updateWhere(OrderData::ID, orderId, updateHashMap);
     Calendar* calendar = Calendar::getInstance();;
     
 
-    std::string time = (int64_t(calendar->getTimeInMillis())).toString();;
+    std::string time = JavaString::valueOf((int64_t(calendar->getTimeInMillis())));;
     
 
     HashMap<Object*, Object*>* updateHashMap = StdUtil::getInstance()->createHashMap();;

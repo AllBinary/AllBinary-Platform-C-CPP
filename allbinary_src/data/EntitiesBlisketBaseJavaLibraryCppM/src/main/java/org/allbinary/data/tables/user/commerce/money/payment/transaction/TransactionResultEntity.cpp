@@ -195,7 +195,7 @@ values->addAllList(transactionResultInterface->getValues());
     Calendar* calendar = Calendar::getInstance();;
     
 
-    std::string time = (int64_t(calendar->getTimeInMillis())).toString();;
+    std::string time = JavaString::valueOf((int64_t(calendar->getTimeInMillis())));;
     
 values->add(time);
     

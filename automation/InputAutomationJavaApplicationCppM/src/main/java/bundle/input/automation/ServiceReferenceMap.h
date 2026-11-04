@@ -94,6 +94,7 @@ public: ServiceReferenceMap(ServiceReference* serviceReference);
     public: template<typename BoxElement> Object* get(const std::vector<BoxElement>& key) { return get(JavaBoxes::toObject(key)); }
 
     public: Object* put(Object* key, Object* value);
+    public: Object* put(const std::string& key, Object* value) { return put(JavaString::box(key), value); }
 
     public: Object* remove(Object* key);
     public: Object* remove(const std::string& key) { return remove(JavaString::box(key)); }

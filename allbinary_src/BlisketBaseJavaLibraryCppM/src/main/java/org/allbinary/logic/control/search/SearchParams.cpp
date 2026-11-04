@@ -331,7 +331,7 @@ paramsNode->appendChild(this->getLengthNode(document));
             
     auto SearchParams::getFieldsNode(Document* document) -> Node*{
 
-    Node* fieldsNode = ModDomHelper::createNameValueNodes(document, SearchData::FIELDS, (int32_t(this->columnsAndSearchValues->size())).toString());;
+    Node* fieldsNode = ModDomHelper::createNameValueNodes(document, SearchData::FIELDS, JavaString::valueOf((int32_t(this->columnsAndSearchValues->size()))));;
     
 
     Set* set = this->columnsAndSearchValues->keySet();;

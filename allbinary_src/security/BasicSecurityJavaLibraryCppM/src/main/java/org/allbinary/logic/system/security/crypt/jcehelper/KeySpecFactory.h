@@ -41,8 +41,8 @@
             #include "java/lang/RuntimeException.h"
         
 #include <java/security/spec/KeySpec.h>
-class DESKeySpec;
-class DESedeKeySpec;
+#include <javax/crypto/spec/DESKeySpec.h>
+#include <javax/crypto/spec/DESedeKeySpec.h>
 class TsUtil;
 class PreLogUtil;
 class CommonStrings;

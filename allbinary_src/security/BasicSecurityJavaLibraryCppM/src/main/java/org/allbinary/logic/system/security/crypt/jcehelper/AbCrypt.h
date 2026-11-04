@@ -40,9 +40,9 @@
         
 #include <java/security/Security.h>
 #include <java/security/spec/KeySpec.h>
-class Cipher;
-class SecretKey;
-class SecretKeyFactory;
+#include <javax/crypto/Cipher.h>
+#include <javax/crypto/SecretKey.h>
+#include <javax/crypto/SecretKeyFactory.h>
 class TsUtil;
 #include <org/allbinary/init/crypt/jcehelper/CryptInterface.h>
 class NullUtil;

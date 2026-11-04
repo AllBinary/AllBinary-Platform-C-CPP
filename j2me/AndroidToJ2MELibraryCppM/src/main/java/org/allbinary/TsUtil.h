@@ -117,6 +117,7 @@ class TsUtil
     public: bool equalIgnoreCase(std::string a, std::string b);
 
     public: bool equalsNotstring(Object* anyType, Object* object2);
+    public: bool equalsNotstring(const std::string& anyType, Object* object2) { return equalsNotstring(JavaString::box(anyType), object2); }
 
     public: ClassLoader* getClassClassLoader(Object* anyType);
     public: ClassLoader* getClassClassLoader(const std::string& anyType) { return getClassClassLoader(JavaString::box(anyType)); }

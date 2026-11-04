@@ -160,7 +160,7 @@ billingAddressesNode->appendChild(streetAddress->toXmlNode(document));
     
 }
 
-billingAddressesNode->appendChild(ModDomHelper::createNameValueNodes(document, StreetAddressData::NUMBEROFADDRESSES, (int32_t(streetAddressList->size())).toString()));
+billingAddressesNode->appendChild(ModDomHelper::createNameValueNodes(document, StreetAddressData::NUMBEROFADDRESSES, JavaString::valueOf((int32_t(streetAddressList->size())))));
     
 
 

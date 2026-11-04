@@ -80,6 +80,7 @@ class LogUtil
     public: void putFS(std::string specialMessage, std::string className, std::string functionName);
 
     public: void put(std::string specialMessage, Object* anyType, std::string functionName, Object* exception);
+    public: void put(std::string specialMessage, const std::string& anyType, std::string functionName, Object* exception) { return put(specialMessage, JavaString::box(anyType), functionName, exception); }
 
 };
 

@@ -349,7 +349,7 @@ pointNode->appendChild(yNode);
     Node* angleNode = dynamic_cast<Node*>(document->createElement(this->ROTATE));;
     
 
-    Node* angleTextNode = dynamic_cast<Node*>(document->createTextNode((double(this->getAngle())).toString()));;
+    Node* angleTextNode = dynamic_cast<Node*>(document->createTextNode(JavaString::valueOf((double(this->getAngle())))));;
     
 angleNode->appendChild(angleTextNode);
     
@@ -360,7 +360,7 @@ angleNode->appendChild(angleTextNode);
     Node* zoomNode = dynamic_cast<Node*>(document->createElement(this->ZOOM));;
     
 
-    Node* zoomTextNode = dynamic_cast<Node*>(document->createTextNode((int32_t(this->getGrid()->getZoom())).toString()));;
+    Node* zoomTextNode = dynamic_cast<Node*>(document->createTextNode(JavaString::valueOf((int32_t(this->getGrid()->getZoom())))));;
     
 zoomNode->appendChild(zoomTextNode);
     
@@ -376,7 +376,7 @@ gridNode->appendChild(gridSizeNode);
     Node* enableNode = dynamic_cast<Node*>(document->createElement(this->ENABLED));;
     
 
-    Node* enableTextNode = dynamic_cast<Node*>(document->createTextNode(().toString()));;
+    Node* enableTextNode = dynamic_cast<Node*>(document->createTextNode(JavaString::valueOf(())));;
     
 enableNode->appendChild(enableTextNode);
     
@@ -386,7 +386,7 @@ gridNode->appendChild(enableNode);
     Node* possibleNode = dynamic_cast<Node*>(document->createElement(this->POSSIBLE));;
     
 
-    Node* possibleTextNode = dynamic_cast<Node*>(document->createTextNode(().toString()));;
+    Node* possibleTextNode = dynamic_cast<Node*>(document->createTextNode(JavaString::valueOf(())));;
     
 possibleNode->appendChild(possibleTextNode);
     

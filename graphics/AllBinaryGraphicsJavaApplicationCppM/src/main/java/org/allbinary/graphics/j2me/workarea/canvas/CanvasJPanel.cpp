@@ -288,7 +288,7 @@ this->workAreaJTreeJPanel->repaint();
                 //@Throws(Exception.constructor)
             
     auto CanvasJPanel::initMyComponents() -> void{
-this->frameLabel= new CanvasTreeLabel(JavaString::valueOf("FrameLabel") +JavaString::valueOf((int32_t(CanvasJPanel::frame)).toString()));
+this->frameLabel= new CanvasTreeLabel(JavaString::valueOf("FrameLabel") +JavaString::valueOf(JavaString::valueOf((int32_t(CanvasJPanel::frame)))));
     
 this->canvasTreeNode= new DefaultMutableTreeNode(this->frameLabel);
     
@@ -928,7 +928,7 @@ this->drawGrid(graphics);
                                 
 this->drawItems(graphics);
     
-graphics->drawString((double(this->getAngle())).toString(), this->getWidth() -75, this->getHeight() -15);
+graphics->drawString(JavaString::valueOf((double(this->getAngle()))), this->getWidth() -75, this->getHeight() -15);
     
 this->grid->isChanged= false;
     

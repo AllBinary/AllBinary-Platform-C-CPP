@@ -162,7 +162,7 @@ stringBuffer->append(this->sqlStrings->CLOSE_QUOTE);
 }
 
 
-    std::string largestAsString = (int32_t(largest)).toString();;
+    std::string largestAsString = JavaString::valueOf((int32_t(largest)));;
     
 
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))

@@ -183,7 +183,7 @@ this->units= int64_t(this->units *multiplier);
 
     int64_t cents = this->units -(dollar *100);;
     
-stringBuffer->append((int64_t(dollar)).toString());
+stringBuffer->append(JavaString::valueOf((int64_t(dollar))));
     
 stringBuffer->append(AbPathData::getInstance()->EXTENSION_SEP);
     
@@ -196,7 +196,7 @@ stringBuffer->append(AbPathData::getInstance()->EXTENSION_SEP);
 
                                     }
                                 
-stringBuffer->append((int64_t(cents)).toString());
+stringBuffer->append(JavaString::valueOf((int64_t(cents))));
     
 
                                     }

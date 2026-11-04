@@ -71,6 +71,7 @@ class ThirdPartyInApplicationPurchase
     public: bool isPurchased(LockableFeature* lockableFeature);
 
     public: void onCreate(Object* anyType, Object* stateObject);
+    public: void onCreate(const std::string& anyType, Object* stateObject) { return onCreate(JavaString::box(anyType), stateObject); }
 
     public: void onDestroy();
 

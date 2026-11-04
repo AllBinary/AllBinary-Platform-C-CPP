@@ -243,7 +243,7 @@ this->password= StringUtil::getInstance()->getNonNull(this->password);
 
     BasicArrayList* vector = new BasicArrayListD();;
     
-vector->add((int32_t(random)).toString());
+vector->add(JavaString::valueOf((int32_t(random))));
     
 vector->add(secret);
     
@@ -269,7 +269,7 @@ this->password= StringUtil::getInstance()->getNonNull(this->password);
 
     int32_t random = (new Random())->nextInt(SuperCrypt::KEYMAX);;
     
-values->put(EntryData::getInstance()->ENCRYPTION, (int32_t(random)).toString());
+values->put(EntryData::getInstance()->ENCRYPTION, JavaString::valueOf((int32_t(random))));
     
 values->put(UserData::SECRET, secret);
     

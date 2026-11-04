@@ -36,8 +36,8 @@
         
             #include "java/lang/Exception.h"
         
-class Cipher;
-class SecretKey;
+#include <javax/crypto/Cipher.h>
+#include <javax/crypto/SecretKey.h>
 class ByteUtil;
 
 

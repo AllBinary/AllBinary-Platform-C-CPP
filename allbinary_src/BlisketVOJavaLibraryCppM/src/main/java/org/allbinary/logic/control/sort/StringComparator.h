@@ -65,6 +65,7 @@ class StringComparator
 public: StringComparator();
 
     public: int32_t compare(Object* anyType, Object* object2);
+    public: int32_t compare(const std::string& anyType, Object* object2) { return compare(JavaString::box(anyType), object2); }
 
 };
 

@@ -193,7 +193,7 @@ values->put(BasicGroupItemData::ITEM_TEN, this->itemTen);
     Calendar* calendar = Calendar::getInstance();;
     
 
-    std::string time = (int64_t(calendar->getTimeInMillis())).toString();;
+    std::string time = JavaString::valueOf((int64_t(calendar->getTimeInMillis())));;
     
 values->put(EntryData::getInstance()->LASTMODIFIED, time);
     
@@ -215,7 +215,7 @@ values->put(EntryData::getInstance()->LASTMODIFIED, time);
     Calendar* calendar = Calendar::getInstance();;
     
 
-    std::string time = (int64_t(calendar->getTimeInMillis())).toString();;
+    std::string time = JavaString::valueOf((int64_t(calendar->getTimeInMillis())));;
     
 
     BasicArrayList* values = new BasicArrayListD();;

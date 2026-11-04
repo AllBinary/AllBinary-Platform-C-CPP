@@ -378,32 +378,32 @@ layout->setVerticalGroup(layout->createParallelGroup(GroupLayout::Alignment->LEA
 
     ImageColorRangeResults* imageColorRangeResults = imageAnalysisResults->getImageColorRangeResults();;
     
-this->matchingPixelsJTextField->setText((int64_t(imageColorRangeResults->getMatchingPixelsChecked())).toString());
+this->matchingPixelsJTextField->setText(JavaString::valueOf((int64_t(imageColorRangeResults->getMatchingPixelsChecked()))));
     
-this->totalPixelsJTextField->setText((int64_t(imageColorRangeResults->getTotalPixelsChecked())).toString());
+this->totalPixelsJTextField->setText(JavaString::valueOf((int64_t(imageColorRangeResults->getTotalPixelsChecked()))));
     
-this->percentMatchingJTextField->setText((float(imageColorRangeResults->getPercent())).toString());
+this->percentMatchingJTextField->setText(JavaString::valueOf((float(imageColorRangeResults->getPercent()))));
     
 
     ImageColorResults* imageColorResults = imageAnalysisResults->getImageColorResults();;
     
-this->avgRedJTextField->setText((float(imageColorResults->getColorAverage()->getAvgRed())).toString());
+this->avgRedJTextField->setText(JavaString::valueOf((float(imageColorResults->getColorAverage()->getAvgRed()))));
     
-this->avgGreenJTextField->setText((float(imageColorResults->getColorAverage()->getAvgGreen())).toString());
+this->avgGreenJTextField->setText(JavaString::valueOf((float(imageColorResults->getColorAverage()->getAvgGreen()))));
     
-this->avgBlueJTextField->setText((float(imageColorResults->getColorAverage()->getAvgBlue())).toString());
+this->avgBlueJTextField->setText(JavaString::valueOf((float(imageColorResults->getColorAverage()->getAvgBlue()))));
     
-this->minRedJTextField->setText((int64_t(imageColorResults->getColorRange()->getMinRed())).toString());
+this->minRedJTextField->setText(JavaString::valueOf((int64_t(imageColorResults->getColorRange()->getMinRed()))));
     
-this->minGreenJTextField->setText((int64_t(imageColorResults->getColorRange()->getMinGreen())).toString());
+this->minGreenJTextField->setText(JavaString::valueOf((int64_t(imageColorResults->getColorRange()->getMinGreen()))));
     
-this->minBlueJTextField->setText((int64_t(imageColorResults->getColorRange()->getMinBlue())).toString());
+this->minBlueJTextField->setText(JavaString::valueOf((int64_t(imageColorResults->getColorRange()->getMinBlue()))));
     
-this->maxRedJTextField->setText((int64_t(imageColorResults->getColorRange()->getMaxRed())).toString());
+this->maxRedJTextField->setText(JavaString::valueOf((int64_t(imageColorResults->getColorRange()->getMaxRed()))));
     
-this->maxGreenJTextField->setText((int64_t(imageColorResults->getColorRange()->getMaxGreen())).toString());
+this->maxGreenJTextField->setText(JavaString::valueOf((int64_t(imageColorResults->getColorRange()->getMaxGreen()))));
     
-this->maxBlueJTextField->setText((int64_t(imageColorResults->getColorRange()->getMaxBlue())).toString());
+this->maxBlueJTextField->setText(JavaString::valueOf((int64_t(imageColorResults->getColorRange()->getMaxBlue()))));
     
 }
 

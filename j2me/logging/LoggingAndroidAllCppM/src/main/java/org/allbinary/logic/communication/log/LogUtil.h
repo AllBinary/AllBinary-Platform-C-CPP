@@ -92,6 +92,7 @@ private: LogUtil();
     public: void putFS(std::string specialMessage, std::string string, std::string functionName);
 
     /*actual*/ public: void put(std::string specialMessage, Object* anyType, std::string functionName, Object* exception);
+    public: void put(std::string specialMessage, const std::string& anyType, std::string functionName, Object* exception) { return put(specialMessage, JavaString::box(anyType), functionName, exception); }
 
     /*actual*/ public: void putS(std::string specialMessage, std::string string, std::string functionName, Object* exception);
     public: void putS(std::string specialMessage, std::string string, std::string functionName, const std::string& exception) { return putS(specialMessage, string, functionName, JavaString::box(exception)); }

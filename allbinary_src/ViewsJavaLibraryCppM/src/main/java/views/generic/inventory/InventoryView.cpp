@@ -151,7 +151,7 @@ InventoryView::InventoryView(TransformInfoInterface* transformInfoInterface) : H
 
     BasicArrayList* itemVector = inventoryEntityInterface->getItems(StoreFrontFactory::getInstance(this->getTransformInfoInterface()->getStoreName()));;
     
-inventoryNode->appendChild(ModDomHelper::createNameValueNodes(document, SearchData::TOTAL_NUMBER_ITEMS_ON_THIS_PAGE, (int32_t(itemVector->size())).toString()));
+inventoryNode->appendChild(ModDomHelper::createNameValueNodes(document, SearchData::TOTAL_NUMBER_ITEMS_ON_THIS_PAGE, JavaString::valueOf((int32_t(itemVector->size())))));
     
 
     int32_t size = itemVector->size();;

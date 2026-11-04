@@ -214,7 +214,7 @@ vector->addAllList((new PaymentGatewayEncryptedMapping(paymentGatewayInterface))
     Calendar* calendar = Calendar::getInstance();;
     
 
-    std::string time = (int64_t(calendar->getTimeInMillis())).toString();;
+    std::string time = JavaString::valueOf((int64_t(calendar->getTimeInMillis())));;
     
 vector->add(time);
     
@@ -256,7 +256,7 @@ AbSqlBean::insert(vector);
     Calendar* calendar = Calendar::getInstance();;
     
 
-    std::string time = (int64_t(calendar->getTimeInMillis())).toString();;
+    std::string time = JavaString::valueOf((int64_t(calendar->getTimeInMillis())));;
     
 paymentGatewayInterface->setLastModified(time);
     

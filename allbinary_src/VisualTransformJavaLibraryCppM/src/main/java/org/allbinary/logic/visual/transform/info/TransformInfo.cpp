@@ -1028,7 +1028,7 @@ hashMap->put(transformInfoData->DATA, Encoder::encode(JavaString::getBytes(this-
     Calendar* calendar = Calendar::getInstance();;
     
 
-    std::string time = (int64_t(calendar->getTimeInMillis())).toString();;
+    std::string time = JavaString::valueOf((int64_t(calendar->getTimeInMillis())));;
     
 hashMap->put(EntryData::getInstance()->LASTMODIFIED, time);
     
@@ -1071,7 +1071,7 @@ vector->add(Encoder::encode(JavaString::getBytes(this->data)));
     Calendar* calendar = Calendar::getInstance();;
     
 
-    std::string time = (int64_t(calendar->getTimeInMillis())).toString();;
+    std::string time = JavaString::valueOf((int64_t(calendar->getTimeInMillis())));;
     
 vector->add(time);
     

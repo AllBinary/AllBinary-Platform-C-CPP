@@ -92,6 +92,7 @@ private: LogUtil();
     private: const std::string LOG_SUCCESS = "org.allbinary: ";
 
     /*actual*/ public: void put(std::string specialMessage, Object* anyType, std::string functionName, Object* exception);
+    public: void put(std::string specialMessage, const std::string& anyType, std::string functionName, Object* exception) { return put(specialMessage, JavaString::box(anyType), functionName, exception); }
 
 };
 

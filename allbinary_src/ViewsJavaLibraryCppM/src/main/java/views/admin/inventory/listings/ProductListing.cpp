@@ -378,7 +378,7 @@ this->searchRequest->setFileBaseName(pageName);
                         if(index > 0)
                         
                                     {
-                                    indexStr= (int32_t(index)).toString();
+                                    indexStr= JavaString::valueOf((int32_t(index)));
     
 
                                     }

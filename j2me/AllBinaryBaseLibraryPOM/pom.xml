@@ -46,7 +46,7 @@
         <module>../J2MEColorJavaLibraryCppM</module>
         <module>../EventJ2MELibraryCppM</module>
 
-        <!--<module>../../allbinary_src/LogNoPlatformJavaLibraryCppM</module>-->
+        <module>../../allbinary_src/LogNoPlatformJavaLibraryCppM</module>
         <module>../../allbinary_src/LogJ2MEJavaLibraryCppM</module>
         <module>../../allbinary_src/LogJ2SEJavaLibraryCppM</module>
 <!--        <module>../../allbinary_src/LogAndroidJavaLibraryCppM</module>-->

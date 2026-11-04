@@ -220,7 +220,7 @@ weightFloat += (float(item->getWeight()));
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return (float(weightFloat)).toString();;
+                        return JavaString::valueOf((float(weightFloat)));;
     
 }
 

@@ -153,7 +153,7 @@ newValueNode->appendChild(newValueTextNode);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return ModDomHelper::createTextNode(document, DomData::INDEX, (int32_t(index)).toString());;
+                        return ModDomHelper::createTextNode(document, DomData::INDEX, JavaString::valueOf((int32_t(index))));;
     
 }
 

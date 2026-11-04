@@ -421,7 +421,7 @@ tempBufferedImageArray[index]= bufferedImage;
     double averageRatio = this->imagesRatioUtil->getAverage(tempBufferedImageArray, totalImages);;
     
 
-    std::string averageRatioString = (double(averageRatio)).toString();;
+    std::string averageRatioString = JavaString::valueOf((double(averageRatio)));;
     
 
                         if(averageRatioString.size() > 4)
@@ -549,7 +549,7 @@ this->imageUnifierProperties->setImageUnifierCell(imageUnifierCell);
     double cellRatio = (imageUnifierCell->getWidth() /imageUnifierCell->getHeight());;
     
 
-    std::string cellRatioString = (double(cellRatio)).toString();;
+    std::string cellRatioString = JavaString::valueOf((double(cellRatio)));;
     
 
                         if(cellRatioString.size() > 4)
