@@ -30,14 +30,17 @@
 
     <modules>
 
+<!--
+-->
         <module>../working_thirdpartycpp/embedded/j2me/microemulator/2_0_4/microemu-cldcCpp</module>
         <module>../working_thirdpartycpp/embedded/j2me/microemulator/2_0_4/microemu-midpCpp</module>
         <module>../working_thirdpartycpp/embedded/j2me/microemulator/2_0_4/microemu-extensions/microemu-jsr-135Cpp</module>
         
-        <!--
-        -->
+<!--
+-->
         <module>./j2me/AllBinaryBaseLibraryPOM</module>
         <module>./j2me/AllBinaryJ2MELibraryCppP</module>
+        
         <module>./AllBinaryPersistenceLibraryCppP</module>
 
         <!--<module>./automation/InputAutomationToolsCppP</module>-->
