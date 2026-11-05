@@ -59,6 +59,9 @@
 #include <javax/xml/transform/Transformer.h>
 
       
+#include <javax/xml/transform/TransformerConfigurationException.h>
+
+      
 #include <javax/xml/transform/TransformerFactory.h>
 
       
@@ -75,9 +78,6 @@
 
       
 #include <org/allbinary/logic/java/characters/CharacterSetData.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
 
       
 #include <org/w3c/dom/Document.h>
@@ -125,11 +125,20 @@ this->init(4, true);
     
 }
 
+//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     auto XmlDocumentHelper::init(int32_t indent, bool ignoreDeclaration) -> void{
+this->indent= indent;
+    
+this->ignoreDeclaration= ignoreDeclaration;
+    
+}
 
-        try {
+
+                //@Throws(TransformerConfigurationException.constructor)
             
+    auto XmlDocumentHelper::createTransformer(int32_t indent, bool ignoreDeclaration) -> Transformer*{
+
     BooleanFactory* booleanFactory = BooleanFactory::getInstance();;
     
 
@@ -137,36 +146,81 @@ this->init(4, true);
     
 transformerFactory->setAttribute(this->INDENT_NUMBER, indent);
     
-this->transformer= transformerFactory->newTransformer();
+
+    Transformer* transformer = transformerFactory->newTransformer();;
     
-this->transformer->setOutputProperty(OutputKeys::ENCODING, CharacterSetData::getInstance()->UTF_8);
+transformer->setOutputProperty(OutputKeys::ENCODING, CharacterSetData::getInstance()->UTF_8);
     
-this->transformer->setOutputProperty(OutputKeys::OMIT_XML_DECLARATION, ignoreDeclaration
+transformer->setOutputProperty(OutputKeys::OMIT_XML_DECLARATION, ignoreDeclaration
                         ?       
                                 booleanFactory->YES
                                 :
 
                             booleanFactory->NO);
     
-this->transformer->setOutputProperty(OutputKeys::INDENT, booleanFactory->YES);
+transformer->setOutputProperty(OutputKeys::INDENT, booleanFactory->YES);
     
 
-                //: 
-} catch(Exception& e) 
-            {
 
-    CommonStrings* commonStrings = CommonStrings::getInstance();;
-    
-this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->INIT, &e);
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return transformer;
     
 }
 
+
+                //@Throws(TransformerConfigurationException.constructor)
+            
+    auto XmlDocumentHelper::createTransformer() -> Transformer*{
+
+    int32_t currentIndent= 0;;
+    
+
+    bool currentIgnoreDeclaration= false;;
+    
+
+        
+        //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+        //synchronized(this) 
+
+        //mutex.withLock
+        
+currentIndent= this->indent;
+    
+currentIgnoreDeclaration= this->ignoreDeclaration;
+    
+
+
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return this->createTransformer(currentIndent, currentIgnoreDeclaration);;
+    
 }
 
 
                 //@Throws(Exception.constructor)
             
     auto XmlDocumentHelper::format(std::string xmlString) -> std::string{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return this->formatWithTransformer(xmlString, this->createTransformer());;
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    auto XmlDocumentHelper::formatWithTransformer(std::string xmlString, Transformer* transformer) -> std::string{
 
     InputSource* src = new InputSource(new StringReader(xmlString));;
     
@@ -176,7 +230,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->INIT, &e);
 
     Writer* out = new StringWriter();;
     
-this->transformer->transform(new DOMSource(document), new StreamResult(out));
+transformer->transform(new DOMSource(document), new StreamResult(out));
     
 
 

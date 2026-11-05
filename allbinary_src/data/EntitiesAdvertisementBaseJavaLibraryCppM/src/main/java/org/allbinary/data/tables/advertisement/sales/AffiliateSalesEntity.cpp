@@ -63,6 +63,9 @@
 #include <org/allbinary/logic/string/StringMaker.h>
 
       
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
 
 #include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
 
@@ -191,6 +194,12 @@ AbSqlBean::updateWhere(EntryData::getInstance()->ID, JavaBoxes::unbox<std::strin
                         
                         
                         return AbSqlBean::dropTable();;
+    
+}
+
+
+    auto AffiliateSalesEntity::insert(BasicArrayList* values) -> void{
+AbSqlBean::insert(values);
     
 }
 

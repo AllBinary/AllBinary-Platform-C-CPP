@@ -84,6 +84,7 @@ class TimeDelayHelper;
 class BasicArrayListS;
 class RemoteInfo;
 template<typename T1, typename T2> class ABHashtable;
+class RotationAnimation;
 
 
 
@@ -211,6 +212,10 @@ public: BuildingLayer(RemoteInfo* remoteInfo, BuildingPropertiesFactory* buildin
     public: SelectionHudPaintable* getHudPaintable();
 
     public: int32_t getType();
+
+    public: RotationAnimation* getRotationAnimationInterface();
+
+    public: void setFrame(int32_t index);
 
 };
 
@@ -359,6 +364,9 @@ public: BuildingLayer(RemoteInfo* remoteInfo, BuildingPropertiesFactory* buildin
 #endif
 #if __has_include(<org/allbinary/util/ABHashtable.h>)
 #include <org/allbinary/util/ABHashtable.h>
+#endif
+#if __has_include(<org/allbinary/animation/RotationAnimation.h>)
+#include <org/allbinary/animation/RotationAnimation.h>
 #endif
 #if __has_include("org/allbinary/game/layer/building/SimulatedBuildingPropertiesFactory.h")
 #include "org/allbinary/game/layer/building/SimulatedBuildingPropertiesFactory.h"

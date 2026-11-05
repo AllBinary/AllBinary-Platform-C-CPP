@@ -35,6 +35,8 @@
 #include <org/allbinary/android/input/VirtualKeyboard.h>
 #include <org/allbinary/input/event/VirtualKeyboardEventListenerInterface.h>
 class Activity;
+class VirtualKeyboardEvent;
+class AllBinaryEventObject;
 
 
 
@@ -66,6 +68,10 @@ class VirtualKeyboardAPI1: public VirtualKeyboard, public virtual VirtualKeyboar
 
 public: VirtualKeyboardAPI1(Activity* activity);
 
+    public: void onVirtualKeyboardEvent(VirtualKeyboardEvent* virtualKeyboardEvent);
+
+    public: void onEvent(AllBinaryEventObject* eventObject);
+
 };
 
             
@@ -84,6 +90,12 @@ public: VirtualKeyboardAPI1(Activity* activity);
 #endif
 #if __has_include(<android/app/Activity.h>)
 #include <android/app/Activity.h>
+#endif
+#if __has_include(<org/allbinary/input/event/VirtualKeyboardEvent.h>)
+#include <org/allbinary/input/event/VirtualKeyboardEvent.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/AllBinaryEventObject.h>)
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
 #endif
 
         #endif

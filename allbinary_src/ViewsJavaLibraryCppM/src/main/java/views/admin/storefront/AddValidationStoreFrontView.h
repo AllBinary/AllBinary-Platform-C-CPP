@@ -99,6 +99,10 @@ public: AddValidationStoreFrontView(TransformInfoInterface* transformInfoInterfa
             
     public: std::string view();
 
+                //@Throws(Exception.constructor)
+            
+    public: TransformInfoInterface* getTransformInfoInterface();
+
 };
 
             

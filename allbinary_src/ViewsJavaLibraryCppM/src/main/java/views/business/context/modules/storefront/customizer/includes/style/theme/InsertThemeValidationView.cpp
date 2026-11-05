@@ -337,6 +337,20 @@ isValid= this->validationInterface->isValid();
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto InsertThemeValidationView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return ThemeCustomizerView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_STYLE_THEME_INSERTTHEMEVALIDATIONVIEW_CPP

@@ -129,7 +129,7 @@ PlatformImage::PlatformImage() {
 }
 
 
-    auto PlatformImage::getGraphics(Object* graphicsSurface, int32_t width, int32_t height, Image* image) -> javax::microedition::lcdui::Graphics*{
+    auto PlatformImage::getGraphics(Object* graphicsSurface, int32_t width, int32_t height, Image* image) -> Graphics*{
 
 
 
@@ -138,11 +138,11 @@ PlatformImage::PlatformImage() {
 }
 
 
-    auto PlatformImage::drawImage(Image* image, int32_t x, int32_t y, int32_t anchor, javax::microedition::lcdui::Graphics* g2, Object* g) -> void{
+    auto PlatformImage::drawImage(Image* image, int32_t x, int32_t y, int32_t anchor, Graphics* g2, Object* g) -> void{
 }
 
 
-    auto PlatformImage::drawRegion(Image* image, int32_t x_src, int32_t y_src, int32_t width, int32_t height, int32_t transform, int32_t x_dst, int32_t y_dst, int32_t anchor, javax::microedition::lcdui::Graphics* g) -> void{
+    auto PlatformImage::drawRegion(Image* image, int32_t x_src, int32_t y_src, int32_t width, int32_t height, int32_t transform, int32_t x_dst, int32_t y_dst, int32_t anchor, Graphics* g) -> void{
 }
 
 

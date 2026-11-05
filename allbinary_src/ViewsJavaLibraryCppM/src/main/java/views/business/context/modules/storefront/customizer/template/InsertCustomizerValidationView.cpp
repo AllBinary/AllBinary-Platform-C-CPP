@@ -491,6 +491,20 @@ stringBuffer->append("Error: Template Name Is Empty.");
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto InsertCustomizerValidationView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return HttpStoreComponentView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_TEMPLATE_INSERTCUSTOMIZERVALIDATIONVIEW_CPP

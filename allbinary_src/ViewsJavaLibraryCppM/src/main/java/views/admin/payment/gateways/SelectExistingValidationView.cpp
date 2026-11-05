@@ -169,6 +169,20 @@ SelectExistingValidationView::SelectExistingValidationView(TransformInfoInterfac
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto SelectExistingValidationView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return HttpStoreComponentView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_ADMIN_PAYMENT_GATEWAYS_SELECTEXISTINGVALIDATIONVIEW_CPP

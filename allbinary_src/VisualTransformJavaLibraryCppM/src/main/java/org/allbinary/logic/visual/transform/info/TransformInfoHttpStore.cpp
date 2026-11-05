@@ -239,6 +239,24 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
 }
 
 
+    auto TransformInfoHttpStore::setStoreName(std::string value) -> void{
+TransformInfoHttp::setStoreName(value);
+    
+}
+
+
+    auto TransformInfoHttpStore::getStoreName() -> std::string{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return TransformInfoHttp::getStoreName();;
+    
+}
+
+
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPSTORE_CPP

@@ -141,6 +141,8 @@ public: UserEntity();
 
     public: std::string createTable();
 
+    public: std::string dropTable();
+
 };
 
             

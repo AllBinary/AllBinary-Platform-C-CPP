@@ -305,7 +305,7 @@ vector->add(ZERO_STRING);
     
 vector->add(ZERO_STRING);
     
-this->AbSqlBean::insert(vector);
+this->insert(vector);
     
 }
 
@@ -777,6 +777,12 @@ stringBuffer->append(") )");
                         
                         
                         return AbSqlBean::dropTable();;
+    
+}
+
+
+    auto OrderItemsEntity::insert(BasicArrayList* values) -> void{
+AbSqlBean::insert(values);
     
 }
 

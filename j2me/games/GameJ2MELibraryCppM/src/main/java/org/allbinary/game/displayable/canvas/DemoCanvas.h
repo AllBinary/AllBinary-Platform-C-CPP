@@ -459,6 +459,10 @@ public: DemoCanvas(AbeClientInformationInterface* abeClientInformation, CommandL
 
     public: int32_t getType();
 
+    public: std::string getTitle();
+
+    public: bool isPaused();
+
 };
 
             

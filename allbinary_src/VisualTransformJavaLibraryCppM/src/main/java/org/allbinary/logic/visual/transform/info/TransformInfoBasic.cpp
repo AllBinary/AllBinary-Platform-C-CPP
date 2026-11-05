@@ -65,6 +65,9 @@
 #include <org/w3c/dom/Document.h>
 
       
+#include <org/allbinary/logic/communication/http/request/session/WeblisketSessionInterface.h>
+
+      
 
 
 
@@ -355,6 +358,42 @@ this->storeFrontInterface= storeFrontInterface;
                         
                         
                         return nullptr;
+    
+}
+
+
+    auto TransformInfoBasic::getWeblisketSession() -> WeblisketSessionInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return AbContext::getWeblisketSession();;
+    
+}
+
+
+    auto TransformInfoBasic::getPageContext() -> PageContext*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return AbContext::getPageContext();;
+    
+}
+
+
+    auto TransformInfoBasic::getPropertiesHashMap() -> HashMap<Object*, Object*>*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return AbContext::getPropertiesHashMap();;
     
 }
 

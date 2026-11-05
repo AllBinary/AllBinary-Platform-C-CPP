@@ -803,6 +803,20 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALI
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto DateRangeOrderHistoryView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return HttpStoreComponentView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_ADMIN_ORDERHISTORY_DATERANGEORDERHISTORYVIEW_CPP

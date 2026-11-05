@@ -1488,6 +1488,42 @@ this->tempWait= tempWait;
 }
 
 
+    auto StartCanvas::getTitle() -> std::string{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return RunnableCanvas::getTitle();;
+    
+}
+
+
+    auto StartCanvas::isPaused() -> bool{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return RunnableCanvas::isPaused();;
+    
+}
+
+
+    auto StartCanvas::getType() -> int32_t{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return RunnableCanvas::getType();;
+    
+}
+
+
 
 
         #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_STARTCANVAS_CPP

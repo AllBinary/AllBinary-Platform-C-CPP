@@ -45,6 +45,7 @@ class StoreFrontInterface;
 class AbPath;
 class TransformInfoObjectConfigInterface;
 class Document;
+class WeblisketSessionInterface;
 
 
 
@@ -146,6 +147,12 @@ public: TransformInfoBasic(StoreFrontInterface* storeFrontInterface, HashMap<Obj
             
     public: HashMap<Object*, Object*>* toHashMap();
 
+    public: WeblisketSessionInterface* getWeblisketSession();
+
+    public: PageContext* getPageContext();
+
+    public: HashMap<Object*, Object*>* getPropertiesHashMap();
+
 };
 
             
@@ -180,6 +187,9 @@ public: TransformInfoBasic(StoreFrontInterface* storeFrontInterface, HashMap<Obj
 #endif
 #if __has_include(<org/w3c/dom/Document.h>)
 #include <org/w3c/dom/Document.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/http/request/session/WeblisketSessionInterface.h>)
+#include <org/allbinary/logic/communication/http/request/session/WeblisketSessionInterface.h>
 #endif
 #if __has_include("org/allbinary/logic/visual/transform/info/TransformInfoHttpInterface.h")
 #include "org/allbinary/logic/visual/transform/info/TransformInfoHttpInterface.h"

@@ -179,6 +179,8 @@ public: OrderHistory(BasketInterface* basketInterface, HashMap<Object*, Object*>
             
     public: Node* toXmlNode(Document* document);
 
+    public: std::string getPaymentMethod();
+
 };
 
             

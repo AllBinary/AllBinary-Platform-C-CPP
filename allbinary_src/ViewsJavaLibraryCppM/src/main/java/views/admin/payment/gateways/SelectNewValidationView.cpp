@@ -169,6 +169,20 @@ SelectNewValidationView::SelectNewValidationView(TransformInfoInterface* transfo
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto SelectNewValidationView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return HttpStoreComponentView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_ADMIN_PAYMENT_GATEWAYS_SELECTNEWVALIDATIONVIEW_CPP

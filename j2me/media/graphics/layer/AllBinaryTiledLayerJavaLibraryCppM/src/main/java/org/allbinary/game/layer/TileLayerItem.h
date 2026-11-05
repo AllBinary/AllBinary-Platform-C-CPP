@@ -85,6 +85,8 @@ public: TileLayerItem(std::string label, AllBinaryTiledLayer* tiledLayer, int32_
 
     public: void paintUnselected(Graphics* graphics, int32_t x, int32_t y);
 
+    public: std::string getLabel();
+
 };
 
             

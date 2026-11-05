@@ -567,6 +567,18 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 }
 
 
+    auto OrderHistory::getPaymentMethod() -> std::string{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return Order::getPaymentMethod();;
+    
+}
+
+
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDERHISTORY_CPP

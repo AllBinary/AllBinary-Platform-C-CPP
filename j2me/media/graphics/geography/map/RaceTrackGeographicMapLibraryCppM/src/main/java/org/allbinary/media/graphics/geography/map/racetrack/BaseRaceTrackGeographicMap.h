@@ -34,6 +34,8 @@
         
             #include "java/lang/Exception.h"
         
+            #include "java/lang/Integer.h"
+        
 class CommonStrings;
 class LogUtil;
 class AllBinaryTiledLayer;
@@ -42,6 +44,9 @@ class StringMaker;
 class GeographicMapCellPositionBaseFactory;
 class GeographicMapCellPositionFactoryInterface;
 class GeographicMapCellTypeFactory;
+class BasicColor;
+class GeographicMapCellPosition;
+class GeographicMapCellType;
 
 
 
@@ -92,6 +97,24 @@ public: BaseRaceTrackGeographicMap(RaceTrackInfo* raceTrackInfo, RaceTrackData* 
 
     public: void setRaceTrackData(RaceTrackData* raceTrackData);
 
+    public: int32_t getId();
+
+    public: std::string getName();
+
+    public: void reset();
+
+    public: AllBinaryTiledLayer* getAllBinaryTiledLayer();
+
+    public: int32_t getCellTypeFromMapCellTypeInt(int32_t cellTypeId);
+
+                //@Throws(Exception.constructor)
+            
+    public: GeographicMapCellType* getCellTypeAt(GeographicMapCellPosition* cellPosition);
+
+    public: BasicColor* getForegroundBasicColor();
+
+    public: BasicColor* getBackgroundBasicColor();
+
 };
 
             
@@ -125,6 +148,15 @@ public: BaseRaceTrackGeographicMap(RaceTrackInfo* raceTrackInfo, RaceTrackData* 
 #endif
 #if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellTypeFactory.h>)
 #include <org/allbinary/media/graphics/geography/map/GeographicMapCellTypeFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellType.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellType.h>
 #endif
 #if __has_include("org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapInterface.h")
 #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapInterface.h"

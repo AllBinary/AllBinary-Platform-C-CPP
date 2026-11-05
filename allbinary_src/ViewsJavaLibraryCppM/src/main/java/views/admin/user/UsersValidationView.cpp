@@ -235,6 +235,20 @@ this->userVector= UserEntityFactory::getInstance()->getUsersWithRole(userRole);
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto UsersValidationView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return UsersView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_ADMIN_USER_USERSVALIDATIONVIEW_CPP

@@ -152,7 +152,7 @@ this->nextIndex++;
 
                                     }
                                 
-this->listOfList[foundIndex].add(image);
+this->listOfList[foundIndex]->add(image);
     
 
                                     }
@@ -249,7 +249,7 @@ this->hashtable->put(resourceId, image);
     int32_t index = 0;index < size; index++)
         {
 
-                        if(resourceStringArray[index] == key)
+                        if((JavaString::box(resourceStringArray[index]) == key))
                         
                                     {
                                     

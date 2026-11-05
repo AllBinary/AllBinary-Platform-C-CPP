@@ -198,6 +198,20 @@ stringBuffer->append("Please Contact Administrator");
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto WorkflowsValidationView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return WorkFlowsView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_ADMIN_WORKFLOW_WORKFLOWSVALIDATIONVIEW_CPP

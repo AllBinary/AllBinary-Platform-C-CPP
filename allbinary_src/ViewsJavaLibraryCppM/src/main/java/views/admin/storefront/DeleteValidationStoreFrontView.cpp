@@ -244,6 +244,20 @@ this->newStoreFrontInterface= StoreFrontFactory::getInstance(this->newStoreFront
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto DeleteValidationStoreFrontView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return StoreFrontComponent::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_ADMIN_STOREFRONT_DELETEVALIDATIONSTOREFRONTVIEW_CPP

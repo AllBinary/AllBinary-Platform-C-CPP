@@ -113,6 +113,8 @@ public: StreetAddressesEntity(std::string userName);
 
     public: std::string drop();
 
+    public: std::string dropTable();
+
 };
 
             

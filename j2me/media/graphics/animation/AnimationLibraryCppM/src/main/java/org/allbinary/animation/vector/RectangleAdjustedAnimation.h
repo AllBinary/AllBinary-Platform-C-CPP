@@ -83,6 +83,10 @@ public: RectangleAdjustedAnimation(int32_t width, int32_t height, int32_t offset
 
     public: void setOffsetY(int32_t offsetY);
 
+    public: BasicColor* getBasicColorP();
+
+    public: void setBasicColorP(BasicColor* basicColor);
+
 };
 
             

@@ -329,6 +329,20 @@ stringBuffer->append(this->newStoreFrontInterface->getName());
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto AddValidationStoreFrontView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return HttpContextView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_ADMIN_STOREFRONT_ADDVALIDATIONSTOREFRONTVIEW_CPP

@@ -1938,6 +1938,30 @@ this->tempWait= tempWait;
 }
 
 
+    auto DemoCanvas::getTitle() -> std::string{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return RunnableCanvas::getTitle();;
+    
+}
+
+
+    auto DemoCanvas::isPaused() -> bool{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return RunnableCanvas::isPaused();;
+    
+}
+
+
 
 
         #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOCANVAS_CPP

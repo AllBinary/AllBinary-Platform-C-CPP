@@ -169,6 +169,20 @@ this->streetAddresses= billingAddressesEntity->get();
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto ValidationView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return BillingAddressesView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_GENERIC_ADDRESS_BILLING_VALIDATIONVIEW_CPP

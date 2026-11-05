@@ -242,6 +242,20 @@ UpdateValidationStoreFrontView::UpdateValidationStoreFrontView(TransformInfoInte
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto UpdateValidationStoreFrontView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return StoreFrontComponent::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_ADMIN_STOREFRONT_UPDATEVALIDATIONSTOREFRONTVIEW_CPP

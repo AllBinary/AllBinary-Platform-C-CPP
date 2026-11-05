@@ -97,23 +97,23 @@ stringBuffer->append(append_);
     
 this->append_= stringBuffer->toString();
     
-this->string= (new StringMaker())->append(this->listString).append(this->append_).toString();
+this->string= (new StringMaker())->append(this->listString)->append(this->append_)->toString();
     
 }
 
 
     auto CurrentlyPressedTouchButtonSingletonDebug::append(std::string append_) -> void{
-this->append_= (new StringMaker())->append(this->append_).append(append_).toString();
+this->append_= (new StringMaker())->append(this->append_)->append(append_)->toString();
     
-this->string= (new StringMaker())->append(this->listString).append(this->append_).toString();
+this->string= (new StringMaker())->append(this->listString)->append(this->append_)->toString();
     
 }
 
 
     auto CurrentlyPressedTouchButtonSingletonDebug::clearLog(int32_t x, int32_t y) -> void{
-this->append_= (new StringMaker())->append(GPoint::toStringStatic(x, y, 0)).append(CommonSeps::getInstance()->SPACE).toString();
+this->append_= (new StringMaker())->append(GPoint::toStringStatic(x, y, 0))->append(CommonSeps::getInstance()->SPACE)->toString();
     
-this->string= (new StringMaker())->append(this->listString).append(this->append_).toString();
+this->string= (new StringMaker())->append(this->listString)->append(this->append_)->toString();
     
 }
 
@@ -160,7 +160,7 @@ this->appendTouchButtonInput(this->PRESSED_AND_NOT_FIRED, touchButtonInput);
     
 this->listString= this->list->toString();
     
-this->string= (new StringMaker())->append(this->listString).append(this->append_).toString();
+this->string= (new StringMaker())->append(this->listString)->append(this->append_)->toString();
     
 
 
@@ -179,7 +179,7 @@ this->string= (new StringMaker())->append(this->listString).append(this->append_
     
 this->listString= this->list->toString();
     
-this->string= (new StringMaker())->append(this->listString).append(this->append_).toString();
+this->string= (new StringMaker())->append(this->listString)->append(this->append_)->toString();
     
 
 
@@ -197,7 +197,7 @@ CurrentlyPressedTouchButtonSingleton::add(touchButtonInput);
     
 this->listString= this->list->toString();
     
-this->string= (new StringMaker())->append(this->listString).append(this->append_).toString();
+this->string= (new StringMaker())->append(this->listString)->append(this->append_)->toString();
     
 }
 

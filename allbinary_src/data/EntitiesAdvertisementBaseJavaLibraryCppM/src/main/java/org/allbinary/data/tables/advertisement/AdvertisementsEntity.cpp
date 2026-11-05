@@ -265,6 +265,12 @@ AbSqlBean::updateWhere(EntryData::getInstance()->ID, JavaBoxes::unbox<std::strin
 }
 
 
+    auto AdvertisementsEntity::insert(BasicArrayList* values) -> void{
+AbSqlBean::insert(values);
+    
+}
+
+
 
 
         #endif //ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_ADVERTISEMENTSENTITY_CPP

@@ -101,6 +101,10 @@ public: InsertCustomizerValidationView(TransformInfoInterface* transformInfoInte
             
     public: std::string view();
 
+                //@Throws(Exception.constructor)
+            
+    public: TransformInfoInterface* getTransformInfoInterface();
+
 };
 
             

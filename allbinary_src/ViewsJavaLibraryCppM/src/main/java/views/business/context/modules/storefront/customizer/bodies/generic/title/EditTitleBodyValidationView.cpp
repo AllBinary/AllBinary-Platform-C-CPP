@@ -212,6 +212,20 @@ stringBuffer->append(this->titleBody->validationInfo());
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto EditTitleBodyValidationView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return TitleBodyCustomizerView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_BODIES_GENERIC_TITLE_EDITTITLEBODYVALIDATIONVIEW_CPP

@@ -234,6 +234,20 @@ stringBuffer->append("The WorkFlow name you selected is already in use.<br/>  Pl
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto AddValidationView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return WorkFlowView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_ADMIN_WORKFLOW_ADDVALIDATIONVIEW_CPP

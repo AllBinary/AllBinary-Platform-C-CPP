@@ -94,6 +94,10 @@ public: InsertTitleBodyValidationView(TransformInfoInterface* transformInfoInter
             
     public: std::string view();
 
+                //@Throws(Exception.constructor)
+            
+    public: TransformInfoInterface* getTransformInfoInterface();
+
 };
 
             

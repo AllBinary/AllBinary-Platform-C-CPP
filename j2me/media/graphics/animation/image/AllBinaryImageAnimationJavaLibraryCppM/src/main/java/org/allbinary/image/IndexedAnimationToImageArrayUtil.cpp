@@ -88,7 +88,7 @@ IndexedAnimationToImageArrayUtil::IndexedAnimationToImageArrayUtil() {
         {
 sequentialAnimationInterface->setFrame(index);
     
-imageArray[index]= AnimationFrameToImageUtil::getInstance().getInstanceWH(width, height, sequentialAnimationInterface);
+imageArray[index]= AnimationFrameToImageUtil::getInstance()->getInstanceWH(width, height, sequentialAnimationInterface);
     
 }
 

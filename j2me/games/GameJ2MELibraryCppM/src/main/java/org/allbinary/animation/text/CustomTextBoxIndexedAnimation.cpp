@@ -183,6 +183,18 @@ this->customTextBox->paintXY(graphics, x, y);
 }
 
 
+    auto CustomTextBoxIndexedAnimation::getWidth() -> int32_t{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return IndexedAnimation::getWidth();;
+    
+}
+
+
 
 
         #endif //ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTBOXINDEXEDANIMATION_CPP

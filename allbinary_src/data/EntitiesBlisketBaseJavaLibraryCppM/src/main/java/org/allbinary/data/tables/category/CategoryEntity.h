@@ -91,6 +91,8 @@ public: CategoryEntity();
 
     public: std::string dropTable();
 
+    public: void insert(BasicArrayList* values);
+
 };
 
             

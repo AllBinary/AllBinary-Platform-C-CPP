@@ -384,6 +384,18 @@ this->circularIndexUtil= CircularIndexUtil::createInstance(currentPoints.size())
 }
 
 
+    auto VectorAnimation::getBasicColorP() -> BasicColor*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return IndexedAnimation::getBasicColorP();;
+    
+}
+
+
 
 
         #endif //ORG_ALLBINARY_ANIMATION_VECTORANIMATION_CPP

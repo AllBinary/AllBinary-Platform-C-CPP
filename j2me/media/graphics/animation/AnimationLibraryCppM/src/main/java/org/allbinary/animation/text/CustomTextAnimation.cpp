@@ -71,6 +71,7 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/text/TextAnimation.h"
 #include "org/allbinary/animation/text/TextInterface.h"
+#include "org/allbinary/animation/text/TextChangeListener.h"
 
 
 CustomTextAnimation::CustomTextAnimation(std::string text, int32_t fontSize, AnimationBehavior* animationBehavior) : TextAnimation(text, animationBehavior), fontDebugFactory(FontDebugFactory::getInstance()), lastText(StringUtil::getInstance()->INIT_STRING){
@@ -118,6 +119,12 @@ this->fontDebugFactory->setFont(existingFont, graphics);
 this->hasChanged= true;
     
 this->font= Font::getFont(Font::FACE_SYSTEM, Font::STYLE_PLAIN, static_cast<int32_t>((this->fontSize *scaleX)));
+    
+}
+
+
+    auto CustomTextAnimation::setTextWithOnMeasure(std::string text, TextChangeListener* textChangeListener) -> void{
+TextAnimation::setTextWithOnMeasure(text, textChangeListener);
     
 }
 

@@ -76,6 +76,10 @@ public: AutoValidationInventoryView(TransformInfoInterface* transformInfoInterfa
 
     public: std::string validationInfo();
 
+                //@Throws(Exception.constructor)
+            
+    public: TransformInfoInterface* getTransformInfoInterface();
+
 };
 
             

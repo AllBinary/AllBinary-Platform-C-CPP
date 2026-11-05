@@ -59,6 +59,7 @@ class StringUtil;
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/text/TextAnimation.h"
 #include "org/allbinary/animation/text/TextInterface.h"
+class TextChangeListener;
 
                                 
         #pragma pop_macro("JAVA_COMPLETE_TYPES")
@@ -81,6 +82,8 @@ public: CustomTextAnimation(std::string text, int32_t fontSize, AnimationBehavio
     public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
     public: void setScale(float scaleX, float scaleY);
+
+    public: void setTextWithOnMeasure(std::string text, TextChangeListener* textChangeListener);
 
     public: void setText(std::string text);
 
@@ -122,6 +125,9 @@ public: CustomTextAnimation(std::string text, int32_t fontSize, AnimationBehavio
 #endif
 #if __has_include("org/allbinary/animation/text/TextInterface.h")
 #include "org/allbinary/animation/text/TextInterface.h"
+#endif
+#if __has_include("org/allbinary/animation/text/TextChangeListener.h")
+#include "org/allbinary/animation/text/TextChangeListener.h"
 #endif
 
         #endif

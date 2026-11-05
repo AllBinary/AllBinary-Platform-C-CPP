@@ -328,6 +328,20 @@ stringBuffer->append("<br />");
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto ValidationView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return OrderView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_GENERIC_ORDER_VALIDATIONVIEW_CPP

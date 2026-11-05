@@ -235,6 +235,20 @@ this->streetAddress= new StreetAddress(this->getRequest());
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto UpdateTaxValidationView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return ShippingAddressView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_GENERIC_ADDRESS_SHIPPING_UPDATETAXVALIDATIONVIEW_CPP

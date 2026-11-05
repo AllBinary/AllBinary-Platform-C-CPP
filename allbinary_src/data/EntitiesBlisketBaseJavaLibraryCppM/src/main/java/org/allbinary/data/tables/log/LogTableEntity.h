@@ -37,6 +37,7 @@ class LogDbInitInfo;
 class AbeHttpRequestInfoData;
 #include <org/allbinary/logic/communication/sql/AbSqlBean.h>
 class StringMaker;
+class BasicArrayList;
 
 
 
@@ -71,6 +72,12 @@ public: LogTableEntity();
 
     public: std::string createTable();
 
+    public: void deleteWhere(std::string key, std::string value);
+
+    public: void insert(BasicArrayList* values);
+
+    public: std::string dropTable();
+
 };
 
             
@@ -95,6 +102,9 @@ public: LogTableEntity();
 #endif
 #if __has_include(<org/allbinary/logic/string/StringMaker.h>)
 #include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
 #endif
 #if __has_include("org/allbinary/data/tables/log/LogTableEntityInterface.h")
 #include "org/allbinary/data/tables/log/LogTableEntityInterface.h"

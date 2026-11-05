@@ -203,6 +203,20 @@ stringBuffer->append("Please Contact Administrator");
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto NewUserView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return UserView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_ADMIN_USER_NEWUSERVIEW_CPP

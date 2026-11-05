@@ -315,6 +315,20 @@ this->transformDocumentInterface->getBaseNode()->appendChild(domNodeInterface->t
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto HttpComponentView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return TransformInfoHttpComposite::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_HTTPCOMPONENTVIEW_CPP

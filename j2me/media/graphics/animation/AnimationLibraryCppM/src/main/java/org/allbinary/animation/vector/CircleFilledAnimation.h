@@ -71,6 +71,10 @@ public: CircleFilledAnimation(int32_t width, int32_t height, BasicColor* basicCo
 
     public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
+    public: BasicColor* getBasicColorP();
+
+    public: void setBasicColorP(BasicColor* basicColor);
+
 };
 
             

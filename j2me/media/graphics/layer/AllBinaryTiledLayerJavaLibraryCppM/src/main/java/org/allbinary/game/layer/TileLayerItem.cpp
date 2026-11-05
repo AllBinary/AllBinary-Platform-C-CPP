@@ -170,6 +170,18 @@ this->tiledLayer->paint(graphics);
 }
 
 
+    auto TileLayerItem::getLabel() -> std::string{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return ABCustomItem::getLabel();;
+    
+}
+
+
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_TILELAYERITEM_CPP

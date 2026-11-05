@@ -91,6 +91,24 @@ graphics->drawArc(x, y, this->width, this->height, 0, this->TOTAL_ANGLE);
 }
 
 
+    auto CircleAnimation::getBasicColorP() -> BasicColor*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return Animation::getBasicColorP();;
+    
+}
+
+
+    auto CircleAnimation::setBasicColorP(BasicColor* basicColor) -> void{
+Animation::setBasicColorP(basicColor);
+    
+}
+
+
 
 
         #endif //ORG_ALLBINARY_ANIMATION_VECTOR_CIRCLEANIMATION_CPP

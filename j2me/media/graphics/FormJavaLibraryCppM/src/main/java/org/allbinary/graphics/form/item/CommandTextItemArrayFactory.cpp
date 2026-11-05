@@ -117,7 +117,7 @@ this->list->clear();
     DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();;
     
 
-    bool isLargeEnoughDisplayForBigMenu = (displayInfo->isPortrait() && displayInfo->getLastHeight() >= ScreenInfo::getInstance().MEDIUM_WIDTH) || (!displayInfo->isPortrait() && displayInfo->getLastWidth() >= ScreenInfo::getInstance().MEDIUM_WIDTH);;
+    bool isLargeEnoughDisplayForBigMenu = (displayInfo->isPortrait() && displayInfo->getLastHeight() >= ScreenInfo::getInstance()->MEDIUM_WIDTH) || (!displayInfo->isPortrait() && displayInfo->getLastWidth() >= ScreenInfo::getInstance()->MEDIUM_WIDTH);;
     
 
                         if(!isLargeEnoughDisplayForBigMenu && size > 3)
@@ -151,7 +151,7 @@ command= dynamic_cast<Command*>(vectorUtil->elementAt(vector, index));
                         if(aBoolean)
                         
                                     {
-                                    textItem= new CommandTextItem(command, ImageItem::LAYOUT_DEFAULT, StringUtil::getInstance().EMPTY_STRING, backgroundBasicColor, foregroundBasicColor);
+                                    textItem= new CommandTextItem(command, ImageItem::LAYOUT_DEFAULT, StringUtil::getInstance()->EMPTY_STRING, backgroundBasicColor, foregroundBasicColor);
     
 this->list->add(textItem);
     

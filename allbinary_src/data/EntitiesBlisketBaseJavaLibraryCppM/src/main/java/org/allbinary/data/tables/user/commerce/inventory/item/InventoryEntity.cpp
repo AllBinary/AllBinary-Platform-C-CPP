@@ -494,6 +494,12 @@ AbSqlBean::updateWhere(basicItemData->ID, JavaBoxes::unbox<std::string>(updatedV
 }
 
 
+    auto InventoryEntity::deleteWhere(std::string key, std::string value) -> void{
+AbSqlBean::deleteWhere(key, value);
+    
+}
+
+
 
 
         #endif //ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_INVENTORYENTITY_CPP

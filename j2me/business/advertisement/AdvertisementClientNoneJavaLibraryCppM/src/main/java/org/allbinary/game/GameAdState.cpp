@@ -51,6 +51,9 @@
 #include <org/allbinary/input/event/VirtualKeyboardEventListenerInterface.h>
 
       
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
+
+      
 
 
 
@@ -86,6 +89,12 @@ VirtualKeyboardEventHandler::getInstance()->addListenerInterface(this);
                 //@Throws(Exception.constructor)
             
     auto GameAdState::onVirtualKeyboardEvent(VirtualKeyboardEvent* virtualKeyboardEvent) -> void{
+}
+
+
+    auto GameAdState::onEvent(AllBinaryEventObject* eventObject) -> void{
+GameAdStateBase::onEvent(eventObject);
+    
 }
 
 

@@ -49,6 +49,9 @@
 #include <org/allbinary/logic/string/StringMaker.h>
 
       
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
 
 
 
@@ -110,6 +113,30 @@ stringBuffer->append(this->sqlStrings->CREATE_TABLE)->append(tableName)->append(
                         
                         
                         return AbSqlBean::createTable(this->createTableStatement());;
+    
+}
+
+
+    auto LogTableEntity::deleteWhere(std::string key, std::string value) -> void{
+AbSqlBean::deleteWhere(key, value);
+    
+}
+
+
+    auto LogTableEntity::insert(BasicArrayList* values) -> void{
+AbSqlBean::insert(values);
+    
+}
+
+
+    auto LogTableEntity::dropTable() -> std::string{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return AbSqlBean::dropTable();;
     
 }
 

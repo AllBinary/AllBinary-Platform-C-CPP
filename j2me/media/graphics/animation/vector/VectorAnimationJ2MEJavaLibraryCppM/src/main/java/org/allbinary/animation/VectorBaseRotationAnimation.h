@@ -98,6 +98,10 @@ public: VectorBaseRotationAnimation(AngleInfo* angleInfo, std::vector<std::vecto
 
     public: void setPoints(std::vector<std::vector<std::vector<int32_t>>> currentPoints);
 
+    public: BasicColor* getBasicColorP();
+
+    public: void setBasicColorP(BasicColor* basicColor);
+
 };
 
             

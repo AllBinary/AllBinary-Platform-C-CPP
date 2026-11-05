@@ -184,6 +184,20 @@ this->streetAddress= billingAddressesEntity->get(int32_t(this->value));
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto DeleteValidationView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return BillingAddressView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_GENERIC_ADDRESS_BILLING_DELETEVALIDATIONVIEW_CPP

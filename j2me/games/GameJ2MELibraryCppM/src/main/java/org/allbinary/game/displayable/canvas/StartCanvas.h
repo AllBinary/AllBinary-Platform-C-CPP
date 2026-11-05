@@ -403,6 +403,12 @@ public: StartCanvas(AbeClientInformationInterface* abeClientInformation, Command
 
     public: BasicBuildGameInitializerFactory* getGameInitializationInterfaceFactoryInterface();
 
+    public: std::string getTitle();
+
+    public: bool isPaused();
+
+    public: int32_t getType();
+
 };
 
             

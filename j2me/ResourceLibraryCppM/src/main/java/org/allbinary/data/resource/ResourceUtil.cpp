@@ -170,7 +170,7 @@ ResourceUtil::classLoader= classLoader;
     std::string resourcePath = JavaString::substring(resource, index +startIndex);;
     
 
-    InputStream* inputStream = resource.getClass()->getResourceAsStream(resourcePath);;
+    InputStream* inputStream = Class::forType(typeid(std::string))->getResourceAsStream(resourcePath);;
     
 
                         if(inputStream != 

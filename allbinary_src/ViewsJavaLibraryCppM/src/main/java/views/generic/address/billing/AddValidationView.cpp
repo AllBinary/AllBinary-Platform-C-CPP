@@ -151,6 +151,20 @@ this->streetAddress= new StreetAddress(this->getRequest());
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto AddValidationView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return BillingAddressView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_GENERIC_ADDRESS_BILLING_ADDVALIDATIONVIEW_CPP

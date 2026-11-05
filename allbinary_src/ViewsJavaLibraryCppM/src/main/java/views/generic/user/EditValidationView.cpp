@@ -358,6 +358,20 @@ stringBuffer->append(this->user->validationInfo());
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto EditValidationView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return UserView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_GENERIC_USER_EDITVALIDATIONVIEW_CPP

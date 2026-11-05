@@ -200,6 +200,20 @@ CustomizersValidationView::CustomizersValidationView(TransformInfoInterface* tra
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto CustomizersValidationView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return CustomizersView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_ADMIN_CUSTOMIZERS_CUSTOMIZERSVALIDATIONVIEW_CPP

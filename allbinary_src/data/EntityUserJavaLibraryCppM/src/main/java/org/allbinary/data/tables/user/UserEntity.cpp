@@ -631,6 +631,18 @@ stringBuffer->append(this->sqlStrings->CREATE_TABLE)->append(tableName)->append(
 }
 
 
+    auto UserEntity::dropTable() -> std::string{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return AbSqlBean::dropTable();;
+    
+}
+
+
 
 
         #endif //ORG_ALLBINARY_DATA_TABLES_USER_USERENTITY_CPP

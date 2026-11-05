@@ -104,6 +104,24 @@ this->offsetY= offsetY;
 }
 
 
+    auto RectangleFilledAdjustedAnimation::getBasicColorP() -> BasicColor*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return RectangleFilledAnimation::getBasicColorP();;
+    
+}
+
+
+    auto RectangleFilledAdjustedAnimation::setBasicColorP(BasicColor* basicColor) -> void{
+RectangleFilledAnimation::setBasicColorP(basicColor);
+    
+}
+
+
 
 
         #endif //ORG_ALLBINARY_ANIMATION_VECTOR_RECTANGLEFILLEDADJUSTEDANIMATION_CPP

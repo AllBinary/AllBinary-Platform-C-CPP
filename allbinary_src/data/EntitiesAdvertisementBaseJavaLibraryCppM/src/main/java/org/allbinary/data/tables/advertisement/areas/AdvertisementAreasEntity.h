@@ -98,6 +98,8 @@ public: AdvertisementAreasEntity();
 
     public: std::string dropTable();
 
+    public: void insert(BasicArrayList* values);
+
 };
 
             

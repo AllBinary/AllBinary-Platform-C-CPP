@@ -100,6 +100,24 @@ this->height= height;
 }
 
 
+    auto RectangleAnimation::getBasicColorP() -> BasicColor*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return Animation::getBasicColorP();;
+    
+}
+
+
+    auto RectangleAnimation::setBasicColorP(BasicColor* basicColor) -> void{
+Animation::setBasicColorP(basicColor);
+    
+}
+
+
 
 
         #endif //ORG_ALLBINARY_ANIMATION_VECTOR_RECTANGLEANIMATION_CPP

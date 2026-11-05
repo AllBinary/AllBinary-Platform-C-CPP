@@ -36,6 +36,8 @@
         
             #include "java/lang/Exception.h"
         
+            #include "java/lang/Integer.h"
+        
 #include <org/allbinary/string/CommonStrings.h>
 
       
@@ -58,6 +60,15 @@
 
       
 #include <org/allbinary/media/graphics/geography/map/GeographicMapCellTypeFactory.h>
+
+      
+#include <org/allbinary/graphics/color/BasicColor.h>
+
+      
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
+
+      
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellType.h>
 
       
 
@@ -192,6 +203,98 @@ this->miniGeographicMap= miniBasicGeographicMap;
 
     auto BaseRaceTrackGeographicMap::setRaceTrackData(RaceTrackData* raceTrackData) -> void{
 this->raceTrackData= raceTrackData;
+    
+}
+
+
+    auto BaseRaceTrackGeographicMap::getId() -> int32_t{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return BasicGeographicMap::getId();;
+    
+}
+
+
+    auto BaseRaceTrackGeographicMap::getName() -> std::string{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return BasicGeographicMap::getName();;
+    
+}
+
+
+    auto BaseRaceTrackGeographicMap::reset() -> void{
+BasicGeographicMap::reset();
+    
+}
+
+
+    auto BaseRaceTrackGeographicMap::getAllBinaryTiledLayer() -> AllBinaryTiledLayer*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return BasicGeographicMap::getAllBinaryTiledLayer();;
+    
+}
+
+
+    auto BaseRaceTrackGeographicMap::getCellTypeFromMapCellTypeInt(int32_t cellTypeId) -> int32_t{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return BasicGeographicMap::getCellTypeFromMapCellTypeInt(cellTypeId);;
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    auto BaseRaceTrackGeographicMap::getCellTypeAt(GeographicMapCellPosition* cellPosition) -> GeographicMapCellType*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return BasicGeographicMap::getCellTypeAt(cellPosition);;
+    
+}
+
+
+    auto BaseRaceTrackGeographicMap::getForegroundBasicColor() -> BasicColor*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return BasicGeographicMap::getForegroundBasicColor();;
+    
+}
+
+
+    auto BaseRaceTrackGeographicMap::getBackgroundBasicColor() -> BasicColor*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return BasicGeographicMap::getBackgroundBasicColor();;
     
 }
 

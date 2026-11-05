@@ -95,6 +95,10 @@ public: TransformInfoHttpStore(StoreFrontInterface* storeFrontInterface, HashMap
             
     public: AbPath* getDataFilePath();
 
+    public: void setStoreName(std::string value);
+
+    public: std::string getStoreName();
+
 };
 
             

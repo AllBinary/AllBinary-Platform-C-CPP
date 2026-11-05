@@ -75,6 +75,10 @@ public: RectangleFilledAnimation(int32_t width, int32_t height, BasicColor* basi
 
     public: void setHeight(int32_t height);
 
+    public: BasicColor* getBasicColorP();
+
+    public: void setBasicColorP(BasicColor* basicColor);
+
 };
 
             

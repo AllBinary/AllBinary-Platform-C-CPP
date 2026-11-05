@@ -269,6 +269,12 @@ AbSqlBean::updateWhere(CategoryData::getInstance()->NAME, JavaBoxes::unbox<std::
 }
 
 
+    auto CategoryEntity::insert(BasicArrayList* values) -> void{
+AbSqlBean::insert(values);
+    
+}
+
+
 
 
         #endif //ORG_ALLBINARY_DATA_TABLES_CATEGORY_CATEGORYENTITY_CPP

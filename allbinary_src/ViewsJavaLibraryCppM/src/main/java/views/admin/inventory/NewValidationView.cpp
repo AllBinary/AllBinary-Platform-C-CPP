@@ -156,6 +156,20 @@ this->itemInterface= dynamic_cast<ItemInterface*>(new BasicItem());
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto NewValidationView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return InventoryItemView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_ADMIN_INVENTORY_NEWVALIDATIONVIEW_CPP

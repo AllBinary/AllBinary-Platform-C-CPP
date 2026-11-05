@@ -87,6 +87,10 @@ public: SelectExistingValidationView(TransformInfoInterface* transformInfoInterf
             
     public: std::string view();
 
+                //@Throws(Exception.constructor)
+            
+    public: TransformInfoInterface* getTransformInfoInterface();
+
 };
 
             

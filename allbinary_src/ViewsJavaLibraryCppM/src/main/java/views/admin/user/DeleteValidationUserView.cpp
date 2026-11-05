@@ -291,6 +291,20 @@ this->userName= (new UserName(hashMap))->get();
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto DeleteValidationUserView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return UserView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_ADMIN_USER_DELETEVALIDATIONUSERVIEW_CPP

@@ -81,6 +81,10 @@ public: LineAnimation(BasicColor* basicColor);
 
     public: void nextFrame();
 
+    public: BasicColor* getBasicColorP();
+
+    public: void setBasicColorP(BasicColor* basicColor);
+
 };
 
             

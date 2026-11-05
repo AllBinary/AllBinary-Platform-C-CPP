@@ -383,6 +383,20 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, GLOBALS2::VIEWNAM
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto UserNameOrderHistoryView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return HttpStoreComponentView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_ADMIN_ORDERHISTORY_USERNAMEORDERHISTORYVIEW_CPP

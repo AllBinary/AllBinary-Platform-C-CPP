@@ -196,6 +196,20 @@ UpdateView::UpdateView(TransformInfoInterface* transformInfoInterface) : WorkFlo
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto UpdateView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return WorkFlowView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_ADMIN_WORKFLOW_UPDATEVIEW_CPP

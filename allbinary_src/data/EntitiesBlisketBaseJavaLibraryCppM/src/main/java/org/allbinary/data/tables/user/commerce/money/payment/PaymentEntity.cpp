@@ -541,6 +541,24 @@ stringBuffer->append(this->sqlStrings->CREATE_TABLE)->append(tableName)->append(
 }
 
 
+    auto PaymentEntity::insert(BasicArrayList* values) -> void{
+AbSqlBean::insert(values);
+    
+}
+
+
+    auto PaymentEntity::dropTable() -> std::string{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return AbSqlBean::dropTable();;
+    
+}
+
+
 
 
         #endif //ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_PAYMENTENTITY_CPP

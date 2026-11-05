@@ -56,6 +56,14 @@ public: ABTextItem(std::string label, int32_t layout, std::string altText, Basic
 
     public: ABStringComponent* getLabelStringComponent();
 
+    public: int32_t getMinimumWidth();
+
+    public: int32_t getMinimumHeight();
+
+    public: std::string getLabel();
+
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
+
 };
 
             

@@ -89,6 +89,10 @@ public: AddValidationUserView(TransformInfoInterface* transformInfoInterface);
             
     public: std::string view();
 
+                //@Throws(Exception.constructor)
+            
+    public: TransformInfoInterface* getTransformInfoInterface();
+
 };
 
             

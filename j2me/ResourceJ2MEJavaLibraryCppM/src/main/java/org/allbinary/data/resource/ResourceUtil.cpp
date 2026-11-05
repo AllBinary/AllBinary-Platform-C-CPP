@@ -103,7 +103,7 @@ this->logUtil->putF(CommonStrings::getInstance()->NOT_IMPLEMENTED, this, "setLoa
             
     auto ResourceUtil::getResourceAsStream(std::string resource) -> InputStream*{
 
-    InputStream* inputStream = resource.getClass()->getResourceAsStream(resource);;
+    InputStream* inputStream = Class::forType(typeid(std::string))->getResourceAsStream(resource);;
     
 
                         if(inputStream == 
@@ -136,7 +136,7 @@ this->logUtil->putF(CommonStrings::getInstance()->NOT_IMPLEMENTED, this, "setLoa
 
     std::string resourcePath = JavaString::substring(resource, index +1);;
     
-inputStream= resource.getClass()->getResourceAsStream(resourcePath);
+inputStream= Class::forType(typeid(std::string))->getResourceAsStream(resourcePath);
     
 
                         if(inputStream == 
@@ -146,7 +146,7 @@ inputStream= resource.getClass()->getResourceAsStream(resourcePath);
                                     {
                                     resourcePath= JavaString::substring(resource, index);
     
-inputStream= resource.getClass()->getResourceAsStream(resourcePath);
+inputStream= Class::forType(typeid(std::string))->getResourceAsStream(resourcePath);
     
 
                         if(inputStream == 
@@ -159,7 +159,7 @@ inputStream= resource.getClass()->getResourceAsStream(resourcePath);
     
 resourcePath= stringMaker->append(RES)->append(JavaString::substring(resource, index))->toString();
     
-inputStream= resource.getClass()->getResourceAsStream(resourcePath);
+inputStream= Class::forType(typeid(std::string))->getResourceAsStream(resourcePath);
     
 
                         if(inputStream == 
@@ -171,7 +171,7 @@ inputStream= resource.getClass()->getResourceAsStream(resourcePath);
     
 resourcePath= stringMaker->append("/")->append(RES)->append(JavaString::substring(resource, index))->toString();
     
-inputStream= resource.getClass()->getResourceAsStream(resourcePath);
+inputStream= Class::forType(typeid(std::string))->getResourceAsStream(resourcePath);
     
 
     std::string COLON = CommonSeps::getInstance()->COLON;;
@@ -186,7 +186,7 @@ inputStream= resource.getClass()->getResourceAsStream(resourcePath);
     
 resourcePath= stringMaker->append(RES)->append(COLON)->append(JavaString::substring(resource, index))->toString();
     
-inputStream= resource.getClass()->getResourceAsStream(resourcePath);
+inputStream= Class::forType(typeid(std::string))->getResourceAsStream(resourcePath);
     
 
                         if(inputStream == 
@@ -198,7 +198,7 @@ inputStream= resource.getClass()->getResourceAsStream(resourcePath);
     
 resourcePath= stringMaker->append(RES)->append(COLON)->append(JavaString::substring(resource, index +1))->toString();
     
-inputStream= resource.getClass()->getResourceAsStream(resourcePath);
+inputStream= Class::forType(typeid(std::string))->getResourceAsStream(resourcePath);
     
 
                         if(inputStream == 
@@ -213,7 +213,7 @@ stringMaker->delete_(0, stringMaker->length());
     
 resourcePath= stringMaker->append(RESOURCE_STRING)->append(COLON)->append(JavaString::substring(resource, index))->toString();
     
-inputStream= resource.getClass()->getResourceAsStream(resourcePath);
+inputStream= Class::forType(typeid(std::string))->getResourceAsStream(resourcePath);
     
 
                         if(inputStream == 
@@ -225,7 +225,7 @@ inputStream= resource.getClass()->getResourceAsStream(resourcePath);
     
 resourcePath= stringMaker->append(RESOURCE_STRING)->append(COLON)->append(JavaString::substring(resource, index +1))->toString();
     
-inputStream= resource.getClass()->getResourceAsStream(resourcePath);
+inputStream= Class::forType(typeid(std::string))->getResourceAsStream(resourcePath);
     
 
                         if(inputStream == 
@@ -297,7 +297,7 @@ inputStream= resource.getClass()->getResourceAsStream(resourcePath);
     std::string resourcePath = JavaString::substring(resource, index +startIndex);;
     
 
-    InputStream* inputStream = resource.getClass()->getResourceAsStream(resourcePath);;
+    InputStream* inputStream = Class::forType(typeid(std::string))->getResourceAsStream(resourcePath);;
     
 
                         if(inputStream != 

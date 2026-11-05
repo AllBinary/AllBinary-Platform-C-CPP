@@ -204,6 +204,20 @@ stringBuffer->append("Never");
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto ValidationStoreFrontStatisticsView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return StoreFrontStatisticsComponent::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_ADMIN_STOREFRONT_STATISTICS_VALIDATIONSTOREFRONTSTATISTICSVIEW_CPP

@@ -237,6 +237,28 @@ this->logUtil->putF(JavaString::valueOf("Buttons: ") +JavaString::valueOf(button
 }
 
 
+    auto NullInputRobot::mouseMove(Point* point) -> void{
+AbstractInputRobot::mouseMove(point);
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    auto NullInputRobot::mouseMoveToTarget(Rectangle* rectangle) -> void{
+AbstractInputRobot::mouseMoveToTarget(rectangle);
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    auto NullInputRobot::mouseMoveToTarget(Rectangle* rectangle, int32_t x, int32_t y) -> void{
+AbstractInputRobot::mouseMoveToTarget(rectangle, x, y);
+    
+}
+
+
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_NULLINPUTROBOT_CPP

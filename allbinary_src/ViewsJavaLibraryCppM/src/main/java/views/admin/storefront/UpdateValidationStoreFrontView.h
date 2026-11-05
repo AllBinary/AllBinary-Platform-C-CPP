@@ -81,6 +81,10 @@ public: UpdateValidationStoreFrontView(TransformInfoInterface* transformInfoInte
 
     public: Node* toValidationInfoNode(Document* document);
 
+                //@Throws(Exception.constructor)
+            
+    public: TransformInfoInterface* getTransformInfoInterface();
+
 };
 
             

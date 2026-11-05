@@ -132,6 +132,20 @@ ValidationView::ValidationView(TransformInfoInterface* transformInfoInterface) :
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto ValidationView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return PaymentView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_GENERIC_PAYMENT_VALIDATIONVIEW_CPP

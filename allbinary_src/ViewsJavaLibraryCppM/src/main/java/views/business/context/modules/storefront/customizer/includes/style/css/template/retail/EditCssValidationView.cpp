@@ -214,6 +214,20 @@ stringBuffer->append(this->styleValidationInterface->validationInfo());
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto EditCssValidationView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return CssCustomizerView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_STYLE_CSS_TEMPLATE_RETAIL_EDITCSSVALIDATIONVIEW_CPP

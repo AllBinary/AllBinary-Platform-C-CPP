@@ -277,6 +277,20 @@ stringBuffer->append(this->heading->validationInfo());
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto InsertHeaderValidationView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return TopBarView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_HEDGES_HEADER_INSERTHEADERVALIDATIONVIEW_CPP

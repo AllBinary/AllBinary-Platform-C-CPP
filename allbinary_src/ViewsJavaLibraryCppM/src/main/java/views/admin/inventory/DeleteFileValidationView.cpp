@@ -254,6 +254,20 @@ this->itemInterface= InventoryEntityFactory::getInstance()->getInventoryEntityIn
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto DeleteFileValidationView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return InventoryItemView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_ADMIN_INVENTORY_DELETEFILEVALIDATIONVIEW_CPP

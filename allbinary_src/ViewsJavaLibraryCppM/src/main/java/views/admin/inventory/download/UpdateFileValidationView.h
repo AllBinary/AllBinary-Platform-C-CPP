@@ -112,6 +112,10 @@ public: UpdateFileValidationView(TransformInfoInterface* transformInfoInterface)
 
     private: void validationInfo(StringMaker* stringBuffer, std::string fileName, int64_t size);
 
+                //@Throws(Exception.constructor)
+            
+    public: TransformInfoInterface* getTransformInfoInterface();
+
 };
 
             

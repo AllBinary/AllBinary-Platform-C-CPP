@@ -102,6 +102,10 @@ public: EditValidationView(TransformInfoInterface* transformInfoInterface);
             
     public: std::string validationInfo();
 
+                //@Throws(Exception.constructor)
+            
+    public: TransformInfoInterface* getTransformInfoInterface();
+
 };
 
             

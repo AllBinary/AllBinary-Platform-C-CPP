@@ -214,6 +214,20 @@ this->userVector= UserEntityFactory::getInstance()->getCustomers();
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto UsersValidationView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return UsersView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_GENERIC_USER_USERSVALIDATIONVIEW_CPP

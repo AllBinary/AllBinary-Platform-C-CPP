@@ -301,6 +301,20 @@ stringBuffer->append("The User Name you selected is already in use.<br/>  Please
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto AddValidationUserView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return HttpStoreComponentView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_GENERIC_USER_ADDVALIDATIONUSERVIEW_CPP

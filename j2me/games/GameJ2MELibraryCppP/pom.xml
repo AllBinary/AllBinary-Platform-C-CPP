@@ -40,7 +40,7 @@
         -->
         <module>../../../allbinary_src/TokenizerJavaLibraryCppM</module>
         <module>../../../allbinary_src/security/BasicSecurityJavaLibraryCppM</module>
-        <module>../../../replace_these_stub_projects/security/YourCryptFileJavaLibraryCppM</module>
+<!--        <module>../../../replace_these_stub_projects/security/YourCryptFileJavaLibraryCppM</module>-->
         <module>../../../replace_these_stub_projects/security/YourSecurityJavaLibraryCppM</module>
         <module>../../../replace_these_stub_projects/communication/YourXmlRpcJavaLibraryCppM</module>
         <module>../../../replace_these_stub_projects/allbinary_src/J2MEOnlyJavaLibraryCppM</module>

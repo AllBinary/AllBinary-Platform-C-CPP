@@ -115,6 +115,16 @@ public: NullInputRobot();
 
     public: void waitForIdle();
 
+    public: void mouseMove(Point* point);
+
+                //@Throws(Exception.constructor)
+            
+    public: void mouseMoveToTarget(Rectangle* rectangle);
+
+                //@Throws(Exception.constructor)
+            
+    public: void mouseMoveToTarget(Rectangle* rectangle, int32_t x, int32_t y);
+
 };
 
             

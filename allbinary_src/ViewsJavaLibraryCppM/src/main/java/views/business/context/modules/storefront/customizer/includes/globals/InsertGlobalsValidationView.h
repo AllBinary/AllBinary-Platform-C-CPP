@@ -86,6 +86,10 @@ public: InsertGlobalsValidationView(TransformInfoInterface* transformInfoInterfa
 
     public: Node* toValidationInfoNode(Document* document);
 
+                //@Throws(Exception.constructor)
+            
+    public: TransformInfoInterface* getTransformInfoInterface();
+
 };
 
             

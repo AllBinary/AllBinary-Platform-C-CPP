@@ -99,7 +99,7 @@ CompoundRotationAnimationInterfaceFactory::CompoundRotationAnimationInterfaceFac
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return std::vector<RotationAnimation*>(size);
+                        return JavaBoxes::arrayCast<std::vector<Animation*>>(std::vector<RotationAnimation*>(size));
     
 }
 

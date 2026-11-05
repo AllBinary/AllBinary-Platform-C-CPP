@@ -380,6 +380,20 @@ AddTaxValidationView::AddTaxValidationView(TransformInfoInterface* transformInfo
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto AddTaxValidationView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return ShippingAddressView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_GENERIC_ADDRESS_SHIPPING_ADDTAXVALIDATIONVIEW_CPP

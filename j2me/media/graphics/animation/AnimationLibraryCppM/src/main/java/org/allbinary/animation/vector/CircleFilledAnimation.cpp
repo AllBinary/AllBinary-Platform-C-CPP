@@ -94,6 +94,24 @@ graphics->fillRect(x, y, this->width, this->height);
 }
 
 
+    auto CircleFilledAnimation::getBasicColorP() -> BasicColor*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return Animation::getBasicColorP();;
+    
+}
+
+
+    auto CircleFilledAnimation::setBasicColorP(BasicColor* basicColor) -> void{
+Animation::setBasicColorP(basicColor);
+    
+}
+
+
 
 
         #endif //ORG_ALLBINARY_ANIMATION_VECTOR_CIRCLEFILLEDANIMATION_CPP

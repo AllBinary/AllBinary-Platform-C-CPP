@@ -129,6 +129,20 @@ AutoValidationInventoryView::AutoValidationInventoryView(TransformInfoInterface*
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto AutoValidationInventoryView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return InventoryView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_GENERIC_INVENTORY_AUTOVALIDATIONINVENTORYVIEW_CPP

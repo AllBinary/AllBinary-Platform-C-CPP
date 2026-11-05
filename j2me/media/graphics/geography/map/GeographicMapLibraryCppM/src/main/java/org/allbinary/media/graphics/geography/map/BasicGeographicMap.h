@@ -129,6 +129,24 @@ public: BasicGeographicMap(int32_t id, std::string name, std::vector<int32_t> ce
 
     public: GeographicMapCellTypeFactory* getGeographicMapCellTypeFactory();
 
+    public: int32_t getId();
+
+    public: std::string getName();
+
+    public: void reset();
+
+    public: AllBinaryTiledLayer* getAllBinaryTiledLayer();
+
+    public: int32_t getCellTypeFromMapCellTypeInt(int32_t cellTypeId);
+
+                //@Throws(Exception.constructor)
+            
+    public: GeographicMapCellType* getCellTypeAt(GeographicMapCellPosition* cellPosition);
+
+    public: BasicColor* getForegroundBasicColor();
+
+    public: BasicColor* getBackgroundBasicColor();
+
 };
 
             

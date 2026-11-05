@@ -178,6 +178,9 @@
 #include <org/allbinary/util/ABHashtable.h>
 
       
+#include <org/allbinary/animation/RotationAnimation.h>
+
+      
 
 
 
@@ -855,6 +858,24 @@ buildingInfoHudPaintable->setRtsLayer(this);
                         
                         
                         return 2;
+    
+}
+
+
+    auto BuildingLayer::getRotationAnimationInterface() -> RotationAnimation*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return AdvancedRTSGameLayer::getRotationAnimationInterface();;
+    
+}
+
+
+    auto BuildingLayer::setFrame(int32_t index) -> void{
+AdvancedRTSGameLayer::setFrame(index);
     
 }
 

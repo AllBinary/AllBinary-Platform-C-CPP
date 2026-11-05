@@ -339,6 +339,20 @@ this->downloadableItem= dynamic_cast<DownloadableItem*>(vector->get(0));
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto EditValidationView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return DownloadableInventoryItemView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_ADMIN_INVENTORY_DOWNLOAD_EDITVALIDATIONVIEW_CPP

@@ -101,7 +101,7 @@ BasicGameResources::BasicGameResources() : logUtil(LogUtil::getInstance()), RESO
                             
 
 
-                            throw Exception((new StringMaker())->append("Invalid Value: ").appendint(scale)->toString());
+                            throw Exception((new StringMaker())->append("Invalid Value: ")->appendint(scale)->toString());
                     
 
                         }

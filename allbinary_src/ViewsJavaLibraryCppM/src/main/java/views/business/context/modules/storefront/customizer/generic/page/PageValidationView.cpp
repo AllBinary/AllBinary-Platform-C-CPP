@@ -500,6 +500,20 @@ stringBuffer->append(JavaString::valueOf("PageValidation Info:") +JavaString::va
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto PageValidationView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return PageView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_GENERIC_PAGE_PAGEVALIDATIONVIEW_CPP

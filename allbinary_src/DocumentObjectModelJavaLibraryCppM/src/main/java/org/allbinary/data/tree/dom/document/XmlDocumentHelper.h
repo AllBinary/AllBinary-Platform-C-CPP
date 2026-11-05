@@ -43,13 +43,13 @@
 class DocumentBuilderFactory;
 class OutputKeys;
 class Transformer;
+class TransformerConfigurationException;
 class TransformerFactory;
 class DOMSource;
 class StreamResult;
 class LogUtil;
 class BooleanFactory;
 class CharacterSetData;
-class CommonStrings;
 class Document;
 class InputSource;
 
@@ -92,15 +92,30 @@ class XmlDocumentHelper
 
     private: const std::string INDENT_NUMBER = "indent-number";
 
-    private: Transformer* transformer;
+    private: int32_t indent= 0;
+
+    private: bool ignoreDeclaration= false;
 
 private: XmlDocumentHelper();
+//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: void init(int32_t indent, bool ignoreDeclaration);
+
+                //@Throws(TransformerConfigurationException.constructor)
+            
+    private: Transformer* createTransformer(int32_t indent, bool ignoreDeclaration);
+
+                //@Throws(TransformerConfigurationException.constructor)
+            
+    public: Transformer* createTransformer();
 
                 //@Throws(Exception.constructor)
             
     public: std::string format(std::string xmlString);
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string formatWithTransformer(std::string xmlString, Transformer* transformer);
 
 };
 
@@ -133,6 +148,9 @@ private: XmlDocumentHelper();
 #if __has_include(<javax/xml/transform/Transformer.h>)
 #include <javax/xml/transform/Transformer.h>
 #endif
+#if __has_include(<javax/xml/transform/TransformerConfigurationException.h>)
+#include <javax/xml/transform/TransformerConfigurationException.h>
+#endif
 #if __has_include(<javax/xml/transform/TransformerFactory.h>)
 #include <javax/xml/transform/TransformerFactory.h>
 #endif
@@ -150,9 +168,6 @@ private: XmlDocumentHelper();
 #endif
 #if __has_include(<org/allbinary/logic/java/characters/CharacterSetData.h>)
 #include <org/allbinary/logic/java/characters/CharacterSetData.h>
-#endif
-#if __has_include(<org/allbinary/string/CommonStrings.h>)
-#include <org/allbinary/string/CommonStrings.h>
 #endif
 #if __has_include(<org/w3c/dom/Document.h>)
 #include <org/w3c/dom/Document.h>

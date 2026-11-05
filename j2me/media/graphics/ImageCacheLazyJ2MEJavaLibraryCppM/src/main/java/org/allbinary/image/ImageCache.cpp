@@ -811,7 +811,7 @@ this->nextIndex++;
 
                                     }
                                 
-this->listOfList[foundIndex].add(image);
+this->listOfList[foundIndex]->add(image);
     
 
                                     }

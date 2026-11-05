@@ -3182,6 +3182,30 @@ this->gameSpecificPaintable= gameSpecificPaintable;
 }
 
 
+    auto AllBinaryGameCanvas::getTitle() -> std::string{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return RunnableCanvas::getTitle();;
+    
+}
+
+
+    auto AllBinaryGameCanvas::isPaused() -> bool{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return RunnableCanvas::isPaused();;
+    
+}
+
+
 
 
         #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_ALLBINARYGAMECANVAS_CPP

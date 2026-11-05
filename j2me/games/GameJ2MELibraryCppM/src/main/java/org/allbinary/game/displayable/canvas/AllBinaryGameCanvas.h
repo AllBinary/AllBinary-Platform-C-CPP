@@ -803,6 +803,10 @@ public: AllBinaryGameCanvas(CommandListener* commandListener, AllBinaryGameLayer
 
     public: int32_t getType();
 
+    public: std::string getTitle();
+
+    public: bool isPaused();
+
 };
 
             

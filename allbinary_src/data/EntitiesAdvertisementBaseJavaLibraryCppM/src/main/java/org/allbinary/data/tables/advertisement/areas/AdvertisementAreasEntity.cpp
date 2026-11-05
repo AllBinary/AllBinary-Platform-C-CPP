@@ -306,6 +306,12 @@ AbSqlBean::updateWhere(AdvertisementAreaData::getInstance()->NAME, JavaBoxes::un
 }
 
 
+    auto AdvertisementAreasEntity::insert(BasicArrayList* values) -> void{
+AbSqlBean::insert(values);
+    
+}
+
+
 
 
         #endif //ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_AREAS_ADVERTISEMENTAREASENTITY_CPP

@@ -116,6 +116,8 @@ public: VectorAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPo
 
     public: void setPoints(std::vector<std::vector<std::vector<int32_t>>> currentPoints);
 
+    public: BasicColor* getBasicColorP();
+
 };
 
             

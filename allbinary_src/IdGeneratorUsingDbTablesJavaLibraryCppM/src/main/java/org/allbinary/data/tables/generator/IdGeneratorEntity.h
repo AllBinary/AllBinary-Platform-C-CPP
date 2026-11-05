@@ -98,6 +98,8 @@ public: IdGeneratorEntity();
 
     public: std::string dropTable();
 
+    public: void deleteWhere(std::string key, std::string value);
+
 };
 
             

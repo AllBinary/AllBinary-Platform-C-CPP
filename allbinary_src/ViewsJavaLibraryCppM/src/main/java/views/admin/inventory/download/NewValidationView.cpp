@@ -161,6 +161,20 @@ this->downloadableItem= new DownloadableItem(this->itemInterface->getId());
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto NewValidationView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return DownloadableInventoryItemView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_ADMIN_INVENTORY_DOWNLOAD_NEWVALIDATIONVIEW_CPP

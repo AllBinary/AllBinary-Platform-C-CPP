@@ -98,6 +98,8 @@ public: CustomTextBoxIndexedAnimation(CustomTextBox* customTextBox);
 
     public: void paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z);
 
+    public: int32_t getWidth();
+
 };
 
             

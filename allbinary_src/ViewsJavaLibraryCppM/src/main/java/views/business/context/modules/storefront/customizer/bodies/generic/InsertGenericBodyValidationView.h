@@ -94,6 +94,10 @@ public: InsertGenericBodyValidationView(TransformInfoInterface* transformInfoInt
             
     public: std::string view();
 
+                //@Throws(Exception.constructor)
+            
+    public: TransformInfoInterface* getTransformInfoInterface();
+
 };
 
             

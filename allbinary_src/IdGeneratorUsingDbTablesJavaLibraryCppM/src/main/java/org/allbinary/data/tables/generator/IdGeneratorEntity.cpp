@@ -216,6 +216,12 @@ AbSqlBean::updateWhere(this->NAME, JavaBoxes::unbox<std::string>(hashMap->get(th
 }
 
 
+    auto IdGeneratorEntity::deleteWhere(std::string key, std::string value) -> void{
+AbSqlBean::deleteWhere(key, value);
+    
+}
+
+
 
 
         #endif //ORG_ALLBINARY_DATA_TABLES_GENERATOR_IDGENERATORENTITY_CPP

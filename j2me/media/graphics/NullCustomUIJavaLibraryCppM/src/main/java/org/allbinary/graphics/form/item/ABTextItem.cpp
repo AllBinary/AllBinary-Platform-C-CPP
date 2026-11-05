@@ -79,6 +79,48 @@ ABTextItem::ABTextItem(std::string label, int32_t layout, std::string altText, B
 }
 
 
+    auto ABTextItem::getMinimumWidth() -> int32_t{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return CustomCustomItem::getMinimumWidth();;
+    
+}
+
+
+    auto ABTextItem::getMinimumHeight() -> int32_t{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return CustomCustomItem::getMinimumHeight();;
+    
+}
+
+
+    auto ABTextItem::getLabel() -> std::string{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return CustomCustomItem::getLabel();;
+    
+}
+
+
+    auto ABTextItem::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
+CustomCustomItem::paintXY(graphics, x, y);
+    
+}
+
+
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABTEXTITEM_CPP

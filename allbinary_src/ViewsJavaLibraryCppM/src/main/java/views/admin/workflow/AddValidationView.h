@@ -86,6 +86,10 @@ public: AddValidationView(TransformInfoInterface* transformInfoInterface);
 
     public: Node* toValidationInfoNode(Document* document);
 
+                //@Throws(Exception.constructor)
+            
+    public: TransformInfoInterface* getTransformInfoInterface();
+
 };
 
             

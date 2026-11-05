@@ -223,7 +223,7 @@ this->category= .toCharArray();
                         if(nextParentCategoryInterface->getProperties()->isRoot())
                         
                                     {
-                                    list->addAt(0, nextParentCategoryInterface->getPath()->toString());
+                                    list->addAt(0, nextParentCategoryInterface->getPath().toString());
     
 
                                     }

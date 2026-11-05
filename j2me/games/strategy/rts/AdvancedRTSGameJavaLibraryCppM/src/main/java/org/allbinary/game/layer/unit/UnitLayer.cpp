@@ -1099,7 +1099,7 @@ AdvancedRTSGameLayer::initInputProcessors();
 
     int32_t key = GameKeyEventUtil::getKey(anyType);;
     
-this->inputProcessorArray[key].processEvent(layerManager, GameKeyEvent::NONE);
+this->inputProcessorArray[key]->processEvent(layerManager, GameKeyEvent::NONE);
     
 }
 

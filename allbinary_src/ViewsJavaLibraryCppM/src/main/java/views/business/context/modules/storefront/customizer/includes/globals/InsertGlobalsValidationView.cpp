@@ -221,6 +221,20 @@ CustomizerUtil::getInstance()->insert(this->getTransformInfoInterface(), dynamic
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto InsertGlobalsValidationView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return GlobalsView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_GLOBALS_INSERTGLOBALSVALIDATIONVIEW_CPP

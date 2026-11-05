@@ -288,6 +288,20 @@ stringBuffer->append("WorkFlow does not exist<br />");
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto EditValidationView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return WorkFlowView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_ADMIN_WORKFLOW_EDITVALIDATIONVIEW_CPP

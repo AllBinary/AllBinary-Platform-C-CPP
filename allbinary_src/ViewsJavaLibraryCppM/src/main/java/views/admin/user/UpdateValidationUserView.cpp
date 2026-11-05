@@ -301,6 +301,20 @@ stringBuffer->append("Unable to update user that does not exist.<br />");
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto UpdateValidationUserView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return HttpContextView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_ADMIN_USER_UPDATEVALIDATIONUSERVIEW_CPP

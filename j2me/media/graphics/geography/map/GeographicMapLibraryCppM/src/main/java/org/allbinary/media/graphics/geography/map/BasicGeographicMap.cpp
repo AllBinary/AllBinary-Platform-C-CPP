@@ -626,6 +626,98 @@ cellPositionArray[index][index2]= this->getCellPositionAtXY(x, y);
 }
 
 
+    auto BasicGeographicMap::getId() -> int32_t{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return SimpleGeographicMap::getId();;
+    
+}
+
+
+    auto BasicGeographicMap::getName() -> std::string{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return SimpleGeographicMap::getName();;
+    
+}
+
+
+    auto BasicGeographicMap::reset() -> void{
+SimpleGeographicMap::reset();
+    
+}
+
+
+    auto BasicGeographicMap::getAllBinaryTiledLayer() -> AllBinaryTiledLayer*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return SimpleGeographicMap::getAllBinaryTiledLayer();;
+    
+}
+
+
+    auto BasicGeographicMap::getCellTypeFromMapCellTypeInt(int32_t cellTypeId) -> int32_t{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return SimpleGeographicMap::getCellTypeFromMapCellTypeInt(cellTypeId);;
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    auto BasicGeographicMap::getCellTypeAt(GeographicMapCellPosition* cellPosition) -> GeographicMapCellType*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return SimpleGeographicMap::getCellTypeAt(cellPosition);;
+    
+}
+
+
+    auto BasicGeographicMap::getForegroundBasicColor() -> BasicColor*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return SimpleGeographicMap::getForegroundBasicColor();;
+    
+}
+
+
+    auto BasicGeographicMap::getBackgroundBasicColor() -> BasicColor*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return SimpleGeographicMap::getBackgroundBasicColor();;
+    
+}
+
+
 
 
         #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_BASICGEOGRAPHICMAP_CPP

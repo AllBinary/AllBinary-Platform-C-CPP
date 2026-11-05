@@ -250,6 +250,24 @@ this->circularIndexUtil= CircularIndexUtil::createInstance(this->currentPoints.s
 }
 
 
+    auto VectorBaseRotationAnimation::getBasicColorP() -> BasicColor*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return RotationAnimation::getBasicColorP();;
+    
+}
+
+
+    auto VectorBaseRotationAnimation::setBasicColorP(BasicColor* basicColor) -> void{
+RotationAnimation::setBasicColorP(basicColor);
+    
+}
+
+
 
 
         #endif //ORG_ALLBINARY_ANIMATION_VECTORBASEROTATIONANIMATION_CPP

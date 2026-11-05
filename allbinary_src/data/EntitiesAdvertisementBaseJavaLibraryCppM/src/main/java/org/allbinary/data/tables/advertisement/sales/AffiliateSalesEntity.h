@@ -43,6 +43,7 @@ class GroupData;
 class LogUtil;
 #include <org/allbinary/logic/communication/sql/AbSqlBean.h>
 class StringMaker;
+class BasicArrayList;
 
 
 
@@ -85,6 +86,8 @@ public: AffiliateSalesEntity();
 
     public: std::string dropTable();
 
+    public: void insert(BasicArrayList* values);
+
 };
 
             
@@ -121,6 +124,9 @@ public: AffiliateSalesEntity();
 #endif
 #if __has_include(<org/allbinary/logic/string/StringMaker.h>)
 #include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
 #endif
 #if __has_include("org/allbinary/data/tables/advertisement/sales/AffiliateSalesEntityInterface.h")
 #include "org/allbinary/data/tables/advertisement/sales/AffiliateSalesEntityInterface.h"

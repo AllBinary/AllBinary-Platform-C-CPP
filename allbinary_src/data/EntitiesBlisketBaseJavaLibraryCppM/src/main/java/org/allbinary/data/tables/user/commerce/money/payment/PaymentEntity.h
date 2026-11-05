@@ -106,6 +106,10 @@ public: PaymentEntity();
 
     public: std::string drop();
 
+    public: void insert(BasicArrayList* values);
+
+    public: std::string dropTable();
+
 };
 
             

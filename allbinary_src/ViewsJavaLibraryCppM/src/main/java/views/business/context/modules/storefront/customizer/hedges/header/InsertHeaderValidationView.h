@@ -95,6 +95,10 @@ public: InsertHeaderValidationView(TransformInfoInterface* transformInfoInterfac
 
     public: Node* toValidationInfoNode(Document* document);
 
+                //@Throws(Exception.constructor)
+            
+    public: TransformInfoInterface* getTransformInfoInterface();
+
 };
 
             

@@ -132,6 +132,20 @@ SelectValidationView::SelectValidationView(TransformInfoInterface* transformInfo
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto SelectValidationView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return BillingAddressView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_GENERIC_ADDRESS_BILLING_SELECTVALIDATIONVIEW_CPP

@@ -39,6 +39,7 @@ class AdConfiguration;
 class VirtualKeyboardEvent;
 class VirtualKeyboardEventHandler;
 #include <org/allbinary/input/event/VirtualKeyboardEventListenerInterface.h>
+class AllBinaryEventObject;
 
 
 
@@ -70,6 +71,8 @@ public: GameAdState(AdConfiguration* adConfiguration);
             
     public: void onVirtualKeyboardEvent(VirtualKeyboardEvent* virtualKeyboardEvent);
 
+    public: void onEvent(AllBinaryEventObject* eventObject);
+
 };
 
             
@@ -94,6 +97,9 @@ public: GameAdState(AdConfiguration* adConfiguration);
 #endif
 #if __has_include(<org/allbinary/input/event/VirtualKeyboardEventListenerInterface.h>)
 #include <org/allbinary/input/event/VirtualKeyboardEventListenerInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/AllBinaryEventObject.h>)
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
 #endif
 
         #endif

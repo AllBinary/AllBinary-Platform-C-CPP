@@ -199,6 +199,20 @@ EditMetaValidationView::EditMetaValidationView(TransformInfoInterface* transform
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto EditMetaValidationView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return MetaView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_META_EDITMETAVALIDATIONVIEW_CPP

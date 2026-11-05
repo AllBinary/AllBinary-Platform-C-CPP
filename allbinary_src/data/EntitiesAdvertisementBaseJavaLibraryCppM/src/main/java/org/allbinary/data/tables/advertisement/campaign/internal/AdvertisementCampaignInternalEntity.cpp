@@ -311,6 +311,12 @@ stringBuffer->append(entryData->ID)->append(this->sqlTypeStrings->MAX_BIG_INT_UN
 }
 
 
+    auto AdvertisementCampaignInternalEntity::insert(BasicArrayList* values) -> void{
+AbSqlBean::insert(values);
+    
+}
+
+
 
 
         #endif //ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_CAMPAIGN_INTERNAL_ADVERTISEMENTCAMPAIGNINTERNALENTITY_CPP

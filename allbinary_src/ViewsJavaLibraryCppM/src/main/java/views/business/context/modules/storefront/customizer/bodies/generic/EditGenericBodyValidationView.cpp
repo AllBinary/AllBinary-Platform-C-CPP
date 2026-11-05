@@ -212,6 +212,20 @@ stringBuffer->append(this->body->validationInfo());
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto EditGenericBodyValidationView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return GenericBodyCustomizerView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_BODIES_GENERIC_EDITGENERICBODYVALIDATIONVIEW_CPP

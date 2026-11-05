@@ -619,6 +619,20 @@ stringBuffer->append("<br />");
 }
 
 
+                //@Throws(Exception.constructor)
+            
+    auto UpdateFileValidationView::getTransformInfoInterface() -> TransformInfoInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return InventoryItemView::getTransformInfoInterface();;
+    
+}
+
+
 
 
         #endif //VIEWS_ADMIN_INVENTORY_UPDATEFILEVALIDATIONVIEW_CPP

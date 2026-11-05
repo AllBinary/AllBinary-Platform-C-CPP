@@ -695,6 +695,18 @@ stringBuffer->append(this->sqlStrings->CREATE_TABLE)->append(this->getTableName(
 }
 
 
+    auto StreetAddressesEntity::dropTable() -> std::string{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        
+                        
+                        return AbSqlBean::dropTable();;
+    
+}
+
+
 
 
         #endif //ORG_ALLBINARY_DATA_TABLES_USER_ADDRESS_STREETADDRESSESENTITY_CPP

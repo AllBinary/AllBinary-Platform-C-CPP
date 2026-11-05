@@ -217,7 +217,7 @@ rootAbPath= rootCategoryPropertiesInterface->getRootFilePath();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return new AbPath(this->getRootFilePath()->toString() +this->getProperties()->getPath(this->getHierarchy())->toString(), this->getProperties()->getFileName());
+                        return new AbPath(this->getRootFilePath()->toString() +this->getProperties()->getPath(this->getHierarchy()).toString(), this->getProperties()->getFileName());
     
 }
 
