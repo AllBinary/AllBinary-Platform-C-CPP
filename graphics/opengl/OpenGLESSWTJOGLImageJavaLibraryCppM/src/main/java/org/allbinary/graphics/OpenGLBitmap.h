@@ -55,6 +55,9 @@ class OpenGLBitmap: public PlatformBitmapBase {
     public: Image* image;
 
 public: OpenGLBitmap(Object* bitmap);
+public: OpenGLBitmap(const std::string& bitmap) : OpenGLBitmap(JavaString::box(bitmap)) { }
+public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> OpenGLBitmap(BoxValue bitmap) : OpenGLBitmap(JavaBoxes::toObject(bitmap)) { }
+public: template<typename BoxElement> OpenGLBitmap(const std::vector<BoxElement>& bitmap) : OpenGLBitmap(JavaBoxes::toObject(bitmap)) { }
 
     public: Image* getImage();
 

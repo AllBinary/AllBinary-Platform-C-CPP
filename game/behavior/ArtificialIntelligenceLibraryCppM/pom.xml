@@ -40,6 +40,7 @@
             <version>3.8.1</version>
             <scope>test</scope>
         </dependency>
+        
         <dependency>
             <groupId>org.allbinary</groupId>
             <artifactId>LoggingJ2MEAllCpp</artifactId>
@@ -48,7 +49,17 @@
             <!-- AllBinary Platform Version End -->
 
             <optional>true</optional>
+        </dependency>        
+
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>ThreadJ2MELibraryCpp</artifactId>
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+            <optional>true</optional>
         </dependency>
+        
         <dependency>
             <groupId>org.allbinary</groupId>
             <artifactId>AllBinaryLayerJavaLibraryCpp</artifactId>
@@ -81,6 +92,7 @@
             <!-- AllBinary Platform Version End -->
 
         </dependency>
+
     </dependencies>
 
     <build>

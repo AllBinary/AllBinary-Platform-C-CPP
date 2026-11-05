@@ -65,6 +65,9 @@ class ScrollMapEvent: public AllBinaryEventObject {
     private: int32_t dy= 0;
 
 public: ScrollMapEvent(Object* anyType);
+public: ScrollMapEvent(const std::string& anyType) : ScrollMapEvent(JavaString::box(anyType)) { }
+public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> ScrollMapEvent(BoxValue anyType) : ScrollMapEvent(JavaBoxes::toObject(anyType)) { }
+public: template<typename BoxElement> ScrollMapEvent(const std::vector<BoxElement>& anyType) : ScrollMapEvent(JavaBoxes::toObject(anyType)) { }
 
     public: void setDx(int32_t dx);
 

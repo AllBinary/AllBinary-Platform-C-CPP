@@ -71,6 +71,9 @@ class ColorCacheable
     private: Color* color;
 
 public: ColorCacheable(Object* key);
+public: ColorCacheable(const std::string& key) : ColorCacheable(JavaString::box(key)) { }
+public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> ColorCacheable(BoxValue key) : ColorCacheable(JavaBoxes::toObject(key)) { }
+public: template<typename BoxElement> ColorCacheable(const std::vector<BoxElement>& key) : ColorCacheable(JavaBoxes::toObject(key)) { }
 
     public: Object* getKey();
 

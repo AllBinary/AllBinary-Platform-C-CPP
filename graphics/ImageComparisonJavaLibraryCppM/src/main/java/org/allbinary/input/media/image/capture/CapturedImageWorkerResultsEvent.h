@@ -68,6 +68,9 @@ class CapturedImageWorkerResultsEvent: public AllBinaryEventObject {
     private: BufferedImage* bufferedImage;
 
 public: CapturedImageWorkerResultsEvent(Object* anyType, int64_t frame, BufferedImage* bufferedImage);
+public: CapturedImageWorkerResultsEvent(const std::string& anyType, int64_t frame, BufferedImage* bufferedImage) : CapturedImageWorkerResultsEvent(JavaString::box(anyType), frame, bufferedImage) { }
+public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> CapturedImageWorkerResultsEvent(BoxValue anyType, int64_t frame, BufferedImage* bufferedImage) : CapturedImageWorkerResultsEvent(JavaBoxes::toObject(anyType), frame, bufferedImage) { }
+public: template<typename BoxElement> CapturedImageWorkerResultsEvent(const std::vector<BoxElement>& anyType, int64_t frame, BufferedImage* bufferedImage) : CapturedImageWorkerResultsEvent(JavaBoxes::toObject(anyType), frame, bufferedImage) { }
 
     public: BufferedImage* getBufferedImage();
 

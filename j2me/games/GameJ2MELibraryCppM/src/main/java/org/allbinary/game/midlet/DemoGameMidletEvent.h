@@ -64,6 +64,9 @@ class DemoGameMidletEvent: public AllBinaryEventObject {
     private: DemoGameMidletState* demoGameMidletState;
 
 public: DemoGameMidletEvent(Object* anyType, DemoGameMidletState* demoGameMidletState);
+public: DemoGameMidletEvent(const std::string& anyType, DemoGameMidletState* demoGameMidletState) : DemoGameMidletEvent(JavaString::box(anyType), demoGameMidletState) { }
+public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> DemoGameMidletEvent(BoxValue anyType, DemoGameMidletState* demoGameMidletState) : DemoGameMidletEvent(JavaBoxes::toObject(anyType), demoGameMidletState) { }
+public: template<typename BoxElement> DemoGameMidletEvent(const std::vector<BoxElement>& anyType, DemoGameMidletState* demoGameMidletState) : DemoGameMidletEvent(JavaBoxes::toObject(anyType), demoGameMidletState) { }
 
     public: void init(Object* anyType);
     public: void init(const std::string& anyType) { return init(JavaString::box(anyType)); }

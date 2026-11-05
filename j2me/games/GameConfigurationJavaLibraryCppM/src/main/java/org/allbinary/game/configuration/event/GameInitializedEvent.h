@@ -67,6 +67,9 @@ class GameInitializedEvent: public AllBinaryEventObject {
     private: int32_t level= 0;
 
 public: GameInitializedEvent(Object* anyType);
+public: GameInitializedEvent(const std::string& anyType) : GameInitializedEvent(JavaString::box(anyType)) { }
+public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> GameInitializedEvent(BoxValue anyType) : GameInitializedEvent(JavaBoxes::toObject(anyType)) { }
+public: template<typename BoxElement> GameInitializedEvent(const std::vector<BoxElement>& anyType) : GameInitializedEvent(JavaBoxes::toObject(anyType)) { }
 
     public: void setLevel(int32_t level);
 

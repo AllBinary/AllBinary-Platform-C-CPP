@@ -61,6 +61,9 @@
 class AnalogControllerConfigurationEvent: public AllBinaryEventObject {
 
 public: AnalogControllerConfigurationEvent(Object* anyType);
+public: AnalogControllerConfigurationEvent(const std::string& anyType) : AnalogControllerConfigurationEvent(JavaString::box(anyType)) { }
+public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> AnalogControllerConfigurationEvent(BoxValue anyType) : AnalogControllerConfigurationEvent(JavaBoxes::toObject(anyType)) { }
+public: template<typename BoxElement> AnalogControllerConfigurationEvent(const std::vector<BoxElement>& anyType) : AnalogControllerConfigurationEvent(JavaBoxes::toObject(anyType)) { }
 
 };
 

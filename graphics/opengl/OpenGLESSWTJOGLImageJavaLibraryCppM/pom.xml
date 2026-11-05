@@ -81,7 +81,6 @@
 
         </dependency>
 
-        <!-- KeyValuePersistance.h: optional dependencies are not transitive, so GameConfigurationJavaLibraryCpp does not bring it -->
         <dependency>
             <groupId>org.allbinary</groupId>
             <artifactId>GameConfigurationJ2MEJavaLibraryCpp</artifactId>

@@ -68,6 +68,9 @@ class GeographicMapCellPositionEvent: public AllBinaryEventObject {
     private: CellPosition* geographicMapCellPosition;
 
 public: GeographicMapCellPositionEvent(Object* anyType, CellPosition* geographicMapCellPosition);
+public: GeographicMapCellPositionEvent(const std::string& anyType, CellPosition* geographicMapCellPosition) : GeographicMapCellPositionEvent(JavaString::box(anyType), geographicMapCellPosition) { }
+public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> GeographicMapCellPositionEvent(BoxValue anyType, CellPosition* geographicMapCellPosition) : GeographicMapCellPositionEvent(JavaBoxes::toObject(anyType), geographicMapCellPosition) { }
+public: template<typename BoxElement> GeographicMapCellPositionEvent(const std::vector<BoxElement>& anyType, CellPosition* geographicMapCellPosition) : GeographicMapCellPositionEvent(JavaBoxes::toObject(anyType), geographicMapCellPosition) { }
 
     public: void init(Object* anyType);
     public: void init(const std::string& anyType) { return init(JavaString::box(anyType)); }

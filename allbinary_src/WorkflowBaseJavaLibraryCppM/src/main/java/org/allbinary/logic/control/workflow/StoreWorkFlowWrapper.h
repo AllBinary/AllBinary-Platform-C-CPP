@@ -70,6 +70,9 @@ class StoreWorkFlowWrapper: public WorkFlowWrapper {
     /*protected*/ public: LogUtil* logUtil;
 
 public: StoreWorkFlowWrapper(Object* anyType);
+public: StoreWorkFlowWrapper(const std::string& anyType) : StoreWorkFlowWrapper(JavaString::box(anyType)) { }
+public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> StoreWorkFlowWrapper(BoxValue anyType) : StoreWorkFlowWrapper(JavaBoxes::toObject(anyType)) { }
+public: template<typename BoxElement> StoreWorkFlowWrapper(const std::vector<BoxElement>& anyType) : StoreWorkFlowWrapper(JavaBoxes::toObject(anyType)) { }
 
                 //@Throws(Exception.constructor)
             

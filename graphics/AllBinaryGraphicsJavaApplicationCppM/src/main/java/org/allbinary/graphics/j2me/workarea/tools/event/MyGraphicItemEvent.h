@@ -63,6 +63,9 @@ class MyGraphicItemEventSource;
 class MyGraphicItemEvent: public java::util::EventObject {
 
 public: MyGraphicItemEvent(Object* source);
+public: MyGraphicItemEvent(const std::string& source) : MyGraphicItemEvent(JavaString::box(source)) { }
+public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> MyGraphicItemEvent(BoxValue source) : MyGraphicItemEvent(JavaBoxes::toObject(source)) { }
+public: template<typename BoxElement> MyGraphicItemEvent(const std::vector<BoxElement>& source) : MyGraphicItemEvent(JavaBoxes::toObject(source)) { }
 
     public: Object* getSource();
 

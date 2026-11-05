@@ -64,6 +64,9 @@ class ImageComparisonSearchResultsEvent: public AllBinaryEventObject {
     private: ImageComparisonSearch* imageComparisonSearch;
 
 public: ImageComparisonSearchResultsEvent(Object* anyType, ImageComparisonSearch* imageComparisonSearch);
+public: ImageComparisonSearchResultsEvent(const std::string& anyType, ImageComparisonSearch* imageComparisonSearch) : ImageComparisonSearchResultsEvent(JavaString::box(anyType), imageComparisonSearch) { }
+public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> ImageComparisonSearchResultsEvent(BoxValue anyType, ImageComparisonSearch* imageComparisonSearch) : ImageComparisonSearchResultsEvent(JavaBoxes::toObject(anyType), imageComparisonSearch) { }
+public: template<typename BoxElement> ImageComparisonSearchResultsEvent(const std::vector<BoxElement>& anyType, ImageComparisonSearch* imageComparisonSearch) : ImageComparisonSearchResultsEvent(JavaBoxes::toObject(anyType), imageComparisonSearch) { }
 
     public: ImageComparisonSearch* getImageComparisonSearch();
 

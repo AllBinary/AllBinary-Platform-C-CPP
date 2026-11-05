@@ -72,6 +72,9 @@ class AllBinaryEventObject
     private: Object* source;
 
 public: AllBinaryEventObject(Object* anyType);
+public: AllBinaryEventObject(const std::string& anyType) : AllBinaryEventObject(JavaString::box(anyType)) { }
+public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> AllBinaryEventObject(BoxValue anyType) : AllBinaryEventObject(JavaBoxes::toObject(anyType)) { }
+public: template<typename BoxElement> AllBinaryEventObject(const std::vector<BoxElement>& anyType) : AllBinaryEventObject(JavaBoxes::toObject(anyType)) { }
 
     public: Object* getSource();
 

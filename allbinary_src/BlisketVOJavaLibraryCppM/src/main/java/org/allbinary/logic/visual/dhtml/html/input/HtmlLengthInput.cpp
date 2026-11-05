@@ -68,7 +68,7 @@ HtmlLengthInput::HtmlLengthInput(std::string before, std::string type, std::stri
 
 
     auto HtmlLengthInput::setMaxLength(int32_t length) -> void{
-this->length= length.toString();
+this->length= JavaString::valueOf(length);
     
 addAttribute(this->MAXLENGTH, this->length);
     
@@ -76,7 +76,7 @@ addAttribute(this->MAXLENGTH, this->length);
 
 
     auto HtmlLengthInput::setSize(int32_t size) -> void{
-this->size= size.toString();
+this->size= JavaString::valueOf(size);
     
 addAttribute(this->MAXLENGTH, this->size);
     

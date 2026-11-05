@@ -176,7 +176,7 @@ this->logUtil->put(this->commonStrings->FAILURE, this, this->commonStrings->dele
     
 map->put(this->NAME, name);
     
-map->put(this->VALUE, value.toString());
+map->put(this->VALUE, JavaString::valueOf(value));
     
 this->update(map);
     

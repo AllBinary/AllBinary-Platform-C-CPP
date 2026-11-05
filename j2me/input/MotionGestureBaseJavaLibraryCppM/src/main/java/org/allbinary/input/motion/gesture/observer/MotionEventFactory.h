@@ -75,6 +75,9 @@ class MotionEventFactory
     private: int32_t id;
 
 public: MotionEventFactory(Object* source, int32_t id);
+public: MotionEventFactory(const std::string& source, int32_t id) : MotionEventFactory(JavaString::box(source), id) { }
+public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> MotionEventFactory(BoxValue source, int32_t id) : MotionEventFactory(JavaBoxes::toObject(source), id) { }
+public: template<typename BoxElement> MotionEventFactory(const std::vector<BoxElement>& source, int32_t id) : MotionEventFactory(JavaBoxes::toObject(source), id) { }
 
     public: AllBinaryEventObject* getInstance();
 

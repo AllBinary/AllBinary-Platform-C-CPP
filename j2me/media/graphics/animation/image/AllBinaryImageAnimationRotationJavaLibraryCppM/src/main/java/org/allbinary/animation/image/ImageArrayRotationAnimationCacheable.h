@@ -68,6 +68,9 @@ class ImageArrayRotationAnimationInfo;
 class ImageArrayRotationAnimationCacheable: public AdjustedImageArrayRotationAnimation, public virtual CacheableInterface {
 
 public: ImageArrayRotationAnimationCacheable(Object* anyType, AnimationBehavior* animationBehavior);
+public: ImageArrayRotationAnimationCacheable(const std::string& anyType, AnimationBehavior* animationBehavior) : ImageArrayRotationAnimationCacheable(JavaString::box(anyType), animationBehavior) { }
+public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> ImageArrayRotationAnimationCacheable(BoxValue anyType, AnimationBehavior* animationBehavior) : ImageArrayRotationAnimationCacheable(JavaBoxes::toObject(anyType), animationBehavior) { }
+public: template<typename BoxElement> ImageArrayRotationAnimationCacheable(const std::vector<BoxElement>& anyType, AnimationBehavior* animationBehavior) : ImageArrayRotationAnimationCacheable(JavaBoxes::toObject(anyType), animationBehavior) { }
 
     public: Object* getKey();
 

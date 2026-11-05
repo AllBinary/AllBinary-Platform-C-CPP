@@ -66,6 +66,9 @@ class TerrainEvent: public AllBinaryEventObject {
     private: BasicTerrainInfo* basicTerrainInfo;
 
 public: TerrainEvent(Object* basicTerrainInfo);
+public: TerrainEvent(const std::string& basicTerrainInfo) : TerrainEvent(JavaString::box(basicTerrainInfo)) { }
+public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> TerrainEvent(BoxValue basicTerrainInfo) : TerrainEvent(JavaBoxes::toObject(basicTerrainInfo)) { }
+public: template<typename BoxElement> TerrainEvent(const std::vector<BoxElement>& basicTerrainInfo) : TerrainEvent(JavaBoxes::toObject(basicTerrainInfo)) { }
 
     public: std::string toString();
 

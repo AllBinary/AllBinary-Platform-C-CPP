@@ -81,6 +81,9 @@ class MotionGestureEvent: public AllBinaryEventObject {
     private: GPoint* currentPoint;
 
 public: MotionGestureEvent(Object* source, int32_t id, MotionGestureInput* motionGesture);
+public: MotionGestureEvent(const std::string& source, int32_t id, MotionGestureInput* motionGesture) : MotionGestureEvent(JavaString::box(source), id, motionGesture) { }
+public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> MotionGestureEvent(BoxValue source, int32_t id, MotionGestureInput* motionGesture) : MotionGestureEvent(JavaBoxes::toObject(source), id, motionGesture) { }
+public: template<typename BoxElement> MotionGestureEvent(const std::vector<BoxElement>& source, int32_t id, MotionGestureInput* motionGesture) : MotionGestureEvent(JavaBoxes::toObject(source), id, motionGesture) { }
 
     public: MotionGestureInput* getMotionGesture();
 

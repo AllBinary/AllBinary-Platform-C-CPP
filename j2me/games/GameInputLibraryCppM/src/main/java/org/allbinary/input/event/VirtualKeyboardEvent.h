@@ -61,6 +61,9 @@
 class VirtualKeyboardEvent: public AllBinaryEventObject {
 
 public: VirtualKeyboardEvent(Object* anyType);
+public: VirtualKeyboardEvent(const std::string& anyType) : VirtualKeyboardEvent(JavaString::box(anyType)) { }
+public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> VirtualKeyboardEvent(BoxValue anyType) : VirtualKeyboardEvent(JavaBoxes::toObject(anyType)) { }
+public: template<typename BoxElement> VirtualKeyboardEvent(const std::vector<BoxElement>& anyType) : VirtualKeyboardEvent(JavaBoxes::toObject(anyType)) { }
 
 };
 

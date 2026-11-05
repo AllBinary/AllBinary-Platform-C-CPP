@@ -87,6 +87,9 @@ class PrimitiveLongUtil
     private: PrimitiveLongSingleton* primitiveLongSingleton;
 
 public: PrimitiveLongUtil(int32_t powerOfTen, Object* unused);
+public: PrimitiveLongUtil(int32_t powerOfTen, const std::string& unused) : PrimitiveLongUtil(powerOfTen, JavaString::box(unused)) { }
+public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> PrimitiveLongUtil(int32_t powerOfTen, BoxValue unused) : PrimitiveLongUtil(powerOfTen, JavaBoxes::toObject(unused)) { }
+public: template<typename BoxElement> PrimitiveLongUtil(int32_t powerOfTen, const std::vector<BoxElement>& unused) : PrimitiveLongUtil(powerOfTen, JavaBoxes::toObject(unused)) { }
 
     public: std::vector<char> getCharArray(int32_t value);
 

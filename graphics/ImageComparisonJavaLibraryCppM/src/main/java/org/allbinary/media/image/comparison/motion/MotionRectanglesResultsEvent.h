@@ -68,6 +68,9 @@ class MotionRectanglesResultsEvent: public AllBinaryEventObject {
     private: MotionRectangles* motionRectangles;
 
 public: MotionRectanglesResultsEvent(Object* anyType, int64_t frame, MotionRectangles* motionRectangles);
+public: MotionRectanglesResultsEvent(const std::string& anyType, int64_t frame, MotionRectangles* motionRectangles) : MotionRectanglesResultsEvent(JavaString::box(anyType), frame, motionRectangles) { }
+public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> MotionRectanglesResultsEvent(BoxValue anyType, int64_t frame, MotionRectangles* motionRectangles) : MotionRectanglesResultsEvent(JavaBoxes::toObject(anyType), frame, motionRectangles) { }
+public: template<typename BoxElement> MotionRectanglesResultsEvent(const std::vector<BoxElement>& anyType, int64_t frame, MotionRectangles* motionRectangles) : MotionRectanglesResultsEvent(JavaBoxes::toObject(anyType), frame, motionRectangles) { }
 
     public: MotionRectangles* getMotionRectangles();
 

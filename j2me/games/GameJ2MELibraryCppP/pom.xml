@@ -45,6 +45,7 @@
         <module>../../../replace_these_stub_projects/communication/YourXmlRpcJavaLibraryCppM</module>
         <module>../../../replace_these_stub_projects/allbinary_src/J2MEOnlyJavaLibraryCppM</module>
         <module>../../../replace_these_stub_projects/allbinary_src/J2MECompatibilityJavaLibraryCppM</module>
+        <module>../../../replace_these_stub_projects/allbinary_src/J2MEJsInteropCompatibilityJavaLibraryCppM</module>
 
         <module>../../DebugJavaLibraryCppM</module>             
         <module>../../ResourceLibraryCppM</module>
@@ -89,6 +90,7 @@
         <module>../../input/platform/me/GameInputMEJavaLibraryCppM</module>
         <module>../../input/platform/me/GameInputMEKeyOnlyJavaLibraryCppM</module>
         <module>../../input/platform/me/GameInputMEMotionJavaLibraryCppM</module>
+        <module>../../input/platform/pc/GameInputPCBaseJavaLibraryCppM</module>
         <module>../../input/platform/pc/GameInputPCJavaLibraryCppM</module>
         <module>../../input/platform/pc/GameInputPCKeyOnlyJavaLibraryCppM</module>
         <module>../../input/platform/pc/GameInputPCMotionJavaLibraryCppM</module>

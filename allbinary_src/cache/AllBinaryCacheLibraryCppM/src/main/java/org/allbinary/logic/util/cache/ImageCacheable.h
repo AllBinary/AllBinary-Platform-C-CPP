@@ -65,6 +65,9 @@ class ImageCacheable
     private: std::string name;
 
 public: ImageCacheable(std::string name, Object* anyType);
+public: ImageCacheable(std::string name, const std::string& anyType) : ImageCacheable(name, JavaString::box(anyType)) { }
+public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> ImageCacheable(std::string name, BoxValue anyType) : ImageCacheable(name, JavaBoxes::toObject(anyType)) { }
+public: template<typename BoxElement> ImageCacheable(std::string name, const std::vector<BoxElement>& anyType) : ImageCacheable(name, JavaBoxes::toObject(anyType)) { }
 
     public: Object* getKey();
 

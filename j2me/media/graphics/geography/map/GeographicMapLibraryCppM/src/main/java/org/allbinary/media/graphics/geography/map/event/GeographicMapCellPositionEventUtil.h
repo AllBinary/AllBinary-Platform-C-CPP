@@ -72,6 +72,9 @@ class GeographicMapCellPositionEventUtil
     private: GeographicMapCellPositionEventHandler* geographicMapCellPositionEventHandler;
 
 public: GeographicMapCellPositionEventUtil(Object* anyType);
+public: GeographicMapCellPositionEventUtil(const std::string& anyType) : GeographicMapCellPositionEventUtil(JavaString::box(anyType)) { }
+public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> GeographicMapCellPositionEventUtil(BoxValue anyType) : GeographicMapCellPositionEventUtil(JavaBoxes::toObject(anyType)) { }
+public: template<typename BoxElement> GeographicMapCellPositionEventUtil(const std::vector<BoxElement>& anyType) : GeographicMapCellPositionEventUtil(JavaBoxes::toObject(anyType)) { }
 
                 //@Throws(Exception.constructor)
             

@@ -81,6 +81,9 @@ class GameKeyEvent: public AllBinaryEventObject {
     private: int32_t originalKey= 0;
 
 public: GameKeyEvent(Object* anyType, int32_t sourceId, int32_t originalKey, int32_t gameActionKey, int32_t key, bool repeated);
+public: GameKeyEvent(const std::string& anyType, int32_t sourceId, int32_t originalKey, int32_t gameActionKey, int32_t key, bool repeated) : GameKeyEvent(JavaString::box(anyType), sourceId, originalKey, gameActionKey, key, repeated) { }
+public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> GameKeyEvent(BoxValue anyType, int32_t sourceId, int32_t originalKey, int32_t gameActionKey, int32_t key, bool repeated) : GameKeyEvent(JavaBoxes::toObject(anyType), sourceId, originalKey, gameActionKey, key, repeated) { }
+public: template<typename BoxElement> GameKeyEvent(const std::vector<BoxElement>& anyType, int32_t sourceId, int32_t originalKey, int32_t gameActionKey, int32_t key, bool repeated) : GameKeyEvent(JavaBoxes::toObject(anyType), sourceId, originalKey, gameActionKey, key, repeated) { }
 
     public: void init(Object* anyType);
     public: void init(const std::string& anyType) { return init(JavaString::box(anyType)); }

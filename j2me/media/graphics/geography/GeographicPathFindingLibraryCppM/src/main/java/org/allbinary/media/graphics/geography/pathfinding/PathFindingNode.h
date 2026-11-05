@@ -74,6 +74,9 @@ class PathFindingNode
     public: GeographicMapCellPosition* geographicMapCellPosition;
 
 public: PathFindingNode(Object* parent, GeographicMapCellPosition* geographicMapCellPosition);
+public: PathFindingNode(const std::string& parent, GeographicMapCellPosition* geographicMapCellPosition) : PathFindingNode(JavaString::box(parent), geographicMapCellPosition) { }
+public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> PathFindingNode(BoxValue parent, GeographicMapCellPosition* geographicMapCellPosition) : PathFindingNode(JavaBoxes::toObject(parent), geographicMapCellPosition) { }
+public: template<typename BoxElement> PathFindingNode(const std::vector<BoxElement>& parent, GeographicMapCellPosition* geographicMapCellPosition) : PathFindingNode(JavaBoxes::toObject(parent), geographicMapCellPosition) { }
 
     public: PathFindingNode* getParentP();
 

@@ -63,6 +63,9 @@ class CapitalEvent: public AllBinaryEventObject {
     private: int32_t value= 0;
 
 public: CapitalEvent(Object* anyType);
+public: CapitalEvent(const std::string& anyType) : CapitalEvent(JavaString::box(anyType)) { }
+public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> CapitalEvent(BoxValue anyType) : CapitalEvent(JavaBoxes::toObject(anyType)) { }
+public: template<typename BoxElement> CapitalEvent(const std::vector<BoxElement>& anyType) : CapitalEvent(JavaBoxes::toObject(anyType)) { }
 
     public: std::string toString();
 

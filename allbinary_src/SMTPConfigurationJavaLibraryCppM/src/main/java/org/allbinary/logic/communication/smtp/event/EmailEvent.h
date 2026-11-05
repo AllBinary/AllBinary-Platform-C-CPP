@@ -70,6 +70,9 @@ class EmailEvent: public EventObject {
     private: int32_t attempts= 0;
 
 public: EmailEvent(Object* emailEventHandler, UserEmailEventNameData* userEmailEventNameData, EmailInfo* emailInfo, int32_t attempts);
+public: EmailEvent(const std::string& emailEventHandler, UserEmailEventNameData* userEmailEventNameData, EmailInfo* emailInfo, int32_t attempts) : EmailEvent(JavaString::box(emailEventHandler), userEmailEventNameData, emailInfo, attempts) { }
+public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> EmailEvent(BoxValue emailEventHandler, UserEmailEventNameData* userEmailEventNameData, EmailInfo* emailInfo, int32_t attempts) : EmailEvent(JavaBoxes::toObject(emailEventHandler), userEmailEventNameData, emailInfo, attempts) { }
+public: template<typename BoxElement> EmailEvent(const std::vector<BoxElement>& emailEventHandler, UserEmailEventNameData* userEmailEventNameData, EmailInfo* emailInfo, int32_t attempts) : EmailEvent(JavaBoxes::toObject(emailEventHandler), userEmailEventNameData, emailInfo, attempts) { }
 
     public: EmailInfo* getEmailInfo();
 

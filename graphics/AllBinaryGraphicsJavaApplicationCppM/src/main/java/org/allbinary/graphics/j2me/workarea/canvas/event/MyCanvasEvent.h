@@ -63,6 +63,9 @@ class MyCanvasEventSource;
 class MyCanvasEvent: public java::util::EventObject {
 
 public: MyCanvasEvent(Object* source);
+public: MyCanvasEvent(const std::string& source) : MyCanvasEvent(JavaString::box(source)) { }
+public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> MyCanvasEvent(BoxValue source) : MyCanvasEvent(JavaBoxes::toObject(source)) { }
+public: template<typename BoxElement> MyCanvasEvent(const std::vector<BoxElement>& source) : MyCanvasEvent(JavaBoxes::toObject(source)) { }
 
     public: Object* getSource();
 

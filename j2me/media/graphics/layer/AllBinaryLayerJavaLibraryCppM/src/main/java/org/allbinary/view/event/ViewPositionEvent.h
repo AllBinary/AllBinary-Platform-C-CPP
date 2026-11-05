@@ -61,6 +61,9 @@
 class ViewPositionEvent: public AllBinaryEventObject {
 
 public: ViewPositionEvent(Object* anyType);
+public: ViewPositionEvent(const std::string& anyType) : ViewPositionEvent(JavaString::box(anyType)) { }
+public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> ViewPositionEvent(BoxValue anyType) : ViewPositionEvent(JavaBoxes::toObject(anyType)) { }
+public: template<typename BoxElement> ViewPositionEvent(const std::vector<BoxElement>& anyType) : ViewPositionEvent(JavaBoxes::toObject(anyType)) { }
 
 };
 

@@ -65,6 +65,9 @@ class ColorChangeEvent: public AllBinaryEventObject {
     private: BasicColor* basicColor;
 
 public: ColorChangeEvent(Object* anyType);
+public: ColorChangeEvent(const std::string& anyType) : ColorChangeEvent(JavaString::box(anyType)) { }
+public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> ColorChangeEvent(BoxValue anyType) : ColorChangeEvent(JavaBoxes::toObject(anyType)) { }
+public: template<typename BoxElement> ColorChangeEvent(const std::vector<BoxElement>& anyType) : ColorChangeEvent(JavaBoxes::toObject(anyType)) { }
 
     public: void setBasicColorP(BasicColor* basicColor);
 

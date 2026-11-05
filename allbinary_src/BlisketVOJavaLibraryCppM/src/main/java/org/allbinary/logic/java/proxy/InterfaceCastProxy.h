@@ -76,6 +76,9 @@ class InterfaceCastProxy
     private: Object* anyType;
 
 private: InterfaceCastProxy(Object* anyType);
+private: InterfaceCastProxy(const std::string& anyType) : InterfaceCastProxy(JavaString::box(anyType)) { }
+private: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> InterfaceCastProxy(BoxValue anyType) : InterfaceCastProxy(JavaBoxes::toObject(anyType)) { }
+private: template<typename BoxElement> InterfaceCastProxy(const std::vector<BoxElement>& anyType) : InterfaceCastProxy(JavaBoxes::toObject(anyType)) { }
 
                 //@Throws(Throwable.constructor)
             

@@ -75,6 +75,9 @@ public: class Config
     public: Object* bitmapConfig;
 
 public: Config(Object* bitmapConfig);
+public: Config(const std::string& bitmapConfig) : Config(JavaString::box(bitmapConfig)) { }
+public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> Config(BoxValue bitmapConfig) : Config(JavaBoxes::toObject(bitmapConfig)) { }
+public: template<typename BoxElement> Config(const std::vector<BoxElement>& bitmapConfig) : Config(JavaBoxes::toObject(bitmapConfig)) { }
 
 };
 

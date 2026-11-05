@@ -78,6 +78,9 @@ class WorkFlowWrapper
     private: Object* anyType;
 
 public: WorkFlowWrapper(Object* anyType);
+public: WorkFlowWrapper(const std::string& anyType) : WorkFlowWrapper(JavaString::box(anyType)) { }
+public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> WorkFlowWrapper(BoxValue anyType) : WorkFlowWrapper(JavaBoxes::toObject(anyType)) { }
+public: template<typename BoxElement> WorkFlowWrapper(const std::vector<BoxElement>& anyType) : WorkFlowWrapper(JavaBoxes::toObject(anyType)) { }
 
     /*protected*/ public: Object* getWorkFlowObject();
 

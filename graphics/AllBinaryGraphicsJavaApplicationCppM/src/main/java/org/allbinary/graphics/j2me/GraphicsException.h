@@ -68,6 +68,8 @@ class GraphicsException: public java::lang::Exception {
     private: GuiLog* guiLog;
 
 public: GraphicsException(std::string msg, Object* obj, std::string method);
+public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> GraphicsException(std::string msg, BoxValue obj, std::string method) : GraphicsException(msg, JavaBoxes::toObject(obj), method) { }
+public: template<typename BoxElement> GraphicsException(std::string msg, const std::vector<BoxElement>& obj, std::string method) : GraphicsException(msg, JavaBoxes::toObject(obj), method) { }
 
 public: GraphicsException(std::string msg, std::string className, std::string method);
 

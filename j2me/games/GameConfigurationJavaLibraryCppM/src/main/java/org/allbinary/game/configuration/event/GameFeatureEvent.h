@@ -63,6 +63,9 @@ class GameFeatureEvent: public AllBinaryEventObject {
     private: std::string whatChanged;
 
 public: GameFeatureEvent(Object* anyType, std::string whatChanged);
+public: GameFeatureEvent(const std::string& anyType, std::string whatChanged) : GameFeatureEvent(JavaString::box(anyType), whatChanged) { }
+public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> GameFeatureEvent(BoxValue anyType, std::string whatChanged) : GameFeatureEvent(JavaBoxes::toObject(anyType), whatChanged) { }
+public: template<typename BoxElement> GameFeatureEvent(const std::vector<BoxElement>& anyType, std::string whatChanged) : GameFeatureEvent(JavaBoxes::toObject(anyType), whatChanged) { }
 
     public: std::string getWhatChanged();
 

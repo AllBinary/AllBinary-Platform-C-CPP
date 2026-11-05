@@ -61,6 +61,9 @@
 class DisplayChangeEvent: public AllBinaryEventObject {
 
 public: DisplayChangeEvent(Object* anyType);
+public: DisplayChangeEvent(const std::string& anyType) : DisplayChangeEvent(JavaString::box(anyType)) { }
+public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> DisplayChangeEvent(BoxValue anyType) : DisplayChangeEvent(JavaBoxes::toObject(anyType)) { }
+public: template<typename BoxElement> DisplayChangeEvent(const std::vector<BoxElement>& anyType) : DisplayChangeEvent(JavaBoxes::toObject(anyType)) { }
 
 };
 

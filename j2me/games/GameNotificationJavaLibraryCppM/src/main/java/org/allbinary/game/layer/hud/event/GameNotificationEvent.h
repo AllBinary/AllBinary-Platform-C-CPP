@@ -76,6 +76,9 @@ class GameNotificationEvent: public AllBinaryEventObject {
     private: bool removeable;
 
 public: GameNotificationEvent(Object* anyType, std::string string, int32_t seconds, BasicColor* basicColor, bool permanent);
+public: GameNotificationEvent(const std::string& anyType, std::string string, int32_t seconds, BasicColor* basicColor, bool permanent) : GameNotificationEvent(JavaString::box(anyType), string, seconds, basicColor, permanent) { }
+public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> GameNotificationEvent(BoxValue anyType, std::string string, int32_t seconds, BasicColor* basicColor, bool permanent) : GameNotificationEvent(JavaBoxes::toObject(anyType), string, seconds, basicColor, permanent) { }
+public: template<typename BoxElement> GameNotificationEvent(const std::vector<BoxElement>& anyType, std::string string, int32_t seconds, BasicColor* basicColor, bool permanent) : GameNotificationEvent(JavaBoxes::toObject(anyType), string, seconds, basicColor, permanent) { }
 
     public: std::string getString();
 

@@ -66,6 +66,9 @@ class TrackingEvent: public AllBinaryEventObject {
     private: AllBinaryLayer* layerInterface;
 
 public: TrackingEvent(Object* allBinaryLayerInterface);
+public: TrackingEvent(const std::string& allBinaryLayerInterface) : TrackingEvent(JavaString::box(allBinaryLayerInterface)) { }
+public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> TrackingEvent(BoxValue allBinaryLayerInterface) : TrackingEvent(JavaBoxes::toObject(allBinaryLayerInterface)) { }
+public: template<typename BoxElement> TrackingEvent(const std::vector<BoxElement>& allBinaryLayerInterface) : TrackingEvent(JavaBoxes::toObject(allBinaryLayerInterface)) { }
 
     public: void init(Object* anyType);
     public: void init(const std::string& anyType) { return init(JavaString::box(anyType)); }

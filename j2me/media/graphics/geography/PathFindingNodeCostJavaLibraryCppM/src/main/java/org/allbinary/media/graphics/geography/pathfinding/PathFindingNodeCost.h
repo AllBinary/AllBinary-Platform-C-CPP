@@ -78,6 +78,9 @@ class PathFindingNodeCost: public PathFindingNode, public virtual Comparable<Pat
     public: PathFindingNodeCostInfo* pathFindingNodeCostInfoP;
 
 public: PathFindingNodeCost(Object* parent, GeographicMapCellPosition* geographicMapCellPosition, PathFindingNodeCostInfo* pathFindingNodeCostInfo);
+public: PathFindingNodeCost(const std::string& parent, GeographicMapCellPosition* geographicMapCellPosition, PathFindingNodeCostInfo* pathFindingNodeCostInfo) : PathFindingNodeCost(JavaString::box(parent), geographicMapCellPosition, pathFindingNodeCostInfo) { }
+public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> PathFindingNodeCost(BoxValue parent, GeographicMapCellPosition* geographicMapCellPosition, PathFindingNodeCostInfo* pathFindingNodeCostInfo) : PathFindingNodeCost(JavaBoxes::toObject(parent), geographicMapCellPosition, pathFindingNodeCostInfo) { }
+public: template<typename BoxElement> PathFindingNodeCost(const std::vector<BoxElement>& parent, GeographicMapCellPosition* geographicMapCellPosition, PathFindingNodeCostInfo* pathFindingNodeCostInfo) : PathFindingNodeCost(JavaBoxes::toObject(parent), geographicMapCellPosition, pathFindingNodeCostInfo) { }
 
     public: PathFindingNodeCostInfo* getPathFindingNodeCostInfo();
 

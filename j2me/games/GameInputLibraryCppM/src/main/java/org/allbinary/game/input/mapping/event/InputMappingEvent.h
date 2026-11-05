@@ -64,6 +64,9 @@ class InputMappingEvent: public AllBinaryEventObject {
     private: InputToGameKeyMapping* inputToGameKeyMapping;
 
 public: InputMappingEvent(Object* anyType);
+public: InputMappingEvent(const std::string& anyType) : InputMappingEvent(JavaString::box(anyType)) { }
+public: template<typename BoxValue, typename std::enable_if<std::is_arithmetic<BoxValue>::value, int>::type = 0> InputMappingEvent(BoxValue anyType) : InputMappingEvent(JavaBoxes::toObject(anyType)) { }
+public: template<typename BoxElement> InputMappingEvent(const std::vector<BoxElement>& anyType) : InputMappingEvent(JavaBoxes::toObject(anyType)) { }
 
     public: void setInputToGameKeyMapping(InputToGameKeyMapping* inputToGameKeyMapping);
 
