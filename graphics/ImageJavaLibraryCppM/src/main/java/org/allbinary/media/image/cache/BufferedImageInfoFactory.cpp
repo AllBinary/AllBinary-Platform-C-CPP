@@ -82,7 +82,7 @@ stringbuffer->appendint(height);
 stringbuffer->appendint(type);
     
 
-    std::string key = stringbuffer->toString();;
+    std::string key = JavaString::valueOf(stringbuffer);;
     
 
     BufferedImageInfo* bufferedImageInfo = dynamic_cast<BufferedImageInfo*>(BufferedImageInfoFactory::hashMap->get(key));;

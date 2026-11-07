@@ -86,7 +86,7 @@ stringBuffer->append("TerrainEvent: \n");
     
 stringBuffer->append("LayerInterface: ");
     
-stringBuffer->append(this->basicTerrainInfo->toString());
+stringBuffer->append(JavaString::valueOf(this->basicTerrainInfo));
     
 
 
@@ -94,7 +94,7 @@ stringBuffer->append(this->basicTerrainInfo->toString());
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

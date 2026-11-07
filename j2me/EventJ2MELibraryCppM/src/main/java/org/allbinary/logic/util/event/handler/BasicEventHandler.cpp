@@ -267,7 +267,7 @@ stringBuffer->appendint(this->eventListenerInterfaceList->size());
     
 stringBuffer->append(this->eventStrings->LISTENER_LABEL);
     
-stringBuffer->append(eventListenerInterface->toString());
+stringBuffer->append(JavaString::valueOf(eventListenerInterface));
     
 
                 //: 
@@ -287,7 +287,7 @@ index++;
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

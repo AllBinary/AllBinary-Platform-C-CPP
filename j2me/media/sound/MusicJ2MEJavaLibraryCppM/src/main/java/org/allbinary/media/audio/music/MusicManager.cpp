@@ -149,7 +149,7 @@ this->process();
 
 
     auto MusicManager::nextSong(Sound* nextSongSound, int32_t leftVolume, int32_t rightVolume) -> void{
-PreLogUtil::put((new StringMaker())->append(NEXT_SONG)->append(nextSongSound->getResource())->toString(), this, this->commonStrings->PROCESS);
+PreLogUtil::put(JavaString::valueOf((new StringMaker())->append(NEXT_SONG)->append(nextSongSound->getResource())), this, this->commonStrings->PROCESS);
     
 this->nextSongSound= nextSongSound;
     
@@ -245,7 +245,7 @@ this->timeDelayHelper->delay= static_cast<int32_t>(duration);
                                     
     std::string NO_DURATION_FOR = "No Duration for: ";;
     
-PreLogUtil::put((new StringMaker())->append(NO_DURATION_FOR)->append(this->currentSongSound->getResource())->toString(), this, this->commonStrings->PROCESS);
+PreLogUtil::put(JavaString::valueOf((new StringMaker())->append(NO_DURATION_FOR)->append(this->currentSongSound->getResource())), this, this->commonStrings->PROCESS);
     
 this->currentSongSound->getPlayerP()->addPlayerListener(playerListener);
     
@@ -262,9 +262,9 @@ this->noDuration= true;
                         if(endingCurrentSongSound == startingCurrentSongSound && endingCurrentSongSound->getPlayerP()->getState() == Player::STARTED)
                         
                                     {
-                                    PreLogUtil::put((new StringMaker())->append(this->ALREADY_PLAYING)->append(endingCurrentSongSound->getResource())->toString(), this, this->commonStrings->PROCESS);
+                                    PreLogUtil::put(JavaString::valueOf((new StringMaker())->append(this->ALREADY_PLAYING)->append(endingCurrentSongSound->getResource())), this, this->commonStrings->PROCESS);
     
-PreLogUtil::put((new StringMaker())->append(this->STOPPING)->append(endingCurrentSongSound->getResource())->append(this->SONG)->appendlong(duration)->toString(), this, this->commonStrings->PROCESS);
+PreLogUtil::put(JavaString::valueOf((new StringMaker())->append(this->STOPPING)->append(endingCurrentSongSound->getResource())->append(this->SONG)->appendlong(duration)), this, this->commonStrings->PROCESS);
     
 endingCurrentSongSound->getPlayerP()->stop();
     
@@ -278,7 +278,7 @@ this->waitForStateChange(endingCurrentSongSound, startingCurrentSongSound);
                         if(endingCurrentSongSound->getPlayerP()->getState() == Player::STARTED)
                         
                                     {
-                                    PreLogUtil::put((new StringMaker())->append(this->STOPPING)->append(endingCurrentSongSound->getResource())->append(this->SONG)->appendlong(duration)->toString(), this, this->commonStrings->PROCESS);
+                                    PreLogUtil::put(JavaString::valueOf((new StringMaker())->append(this->STOPPING)->append(endingCurrentSongSound->getResource())->append(this->SONG)->appendlong(duration)), this, this->commonStrings->PROCESS);
     
 endingCurrentSongSound->getPlayerP()->stop();
     
@@ -288,7 +288,7 @@ this->waitForStateChange(endingCurrentSongSound, startingCurrentSongSound);
                                     }
                                 
                         else {
-                            PreLogUtil::put((new StringMaker())->append(this->ALREADY_ENDED)->append(this->PLAY)->append(startingCurrentSongSound->getResource())->toString(), this, this->commonStrings->PROCESS);
+                            PreLogUtil::put(JavaString::valueOf((new StringMaker())->append(this->ALREADY_ENDED)->append(this->PLAY)->append(startingCurrentSongSound->getResource())), this, this->commonStrings->PROCESS);
     
 
                         if(AvianUtil::isAvian())
@@ -313,7 +313,7 @@ startingCurrentSongSound->getPlayerP()->start();
                                     }
                                 
                         else {
-                            PreLogUtil::put((new StringMaker())->append(this->PLAY)->append(this->currentSongSound->getResource())->append(this->SONG)->appendlong(duration)->toString(), this, this->commonStrings->PROCESS);
+                            PreLogUtil::put(JavaString::valueOf((new StringMaker())->append(this->PLAY)->append(this->currentSongSound->getResource())->append(this->SONG)->appendlong(duration)), this, this->commonStrings->PROCESS);
     
 this->currentSongSound->getPlayerP()->start();
     
@@ -358,7 +358,7 @@ Thread::sleep(100);
     
 }
 
-PreLogUtil::put((new StringMaker())->append(this->playerStateUtil->convert(endingCurrentSongSound->getPlayerP()->getState()))->append(this->commonSeps->SPACE)->append(this->PLAY)->append(startingCurrentSongSound->getResource())->toString(), this, this->commonStrings->PROCESS);
+PreLogUtil::put(JavaString::valueOf((new StringMaker())->append(this->playerStateUtil->convert(endingCurrentSongSound->getPlayerP()->getState()))->append(this->commonSeps->SPACE)->append(this->PLAY)->append(startingCurrentSongSound->getResource())), this, this->commonStrings->PROCESS);
     
 startingCurrentSongSound->getPlayerP()->start();
     
@@ -379,7 +379,7 @@ startingCurrentSongSound->getPlayerP()->start();
                                     {
                                     this->stopped= true;
     
-PreLogUtil::put((new StringMaker())->append(this->ENDING)->append(currentSongSound->getResource())->toString(), this, this->commonStrings->PROCESS);
+PreLogUtil::put(JavaString::valueOf((new StringMaker())->append(this->ENDING)->append(currentSongSound->getResource())), this, this->commonStrings->PROCESS);
     
 currentSongSound->getPlayerP()->stop();
     
@@ -388,7 +388,7 @@ currentSongSound->getPlayerP()->stop();
                                 
 this->timeDelayHelper->setStartTime(0);
     
-PreLogUtil::put((new StringMaker())->append(this->commonStrings->END)->append(StringUtil::getInstance()->toString(currentSongSound))->toString(), this, this->commonStrings->END);
+PreLogUtil::put(JavaString::valueOf((new StringMaker())->append(this->commonStrings->END)->append(StringUtil::getInstance()->toString(currentSongSound))), this, this->commonStrings->END);
     
 
                 //: 

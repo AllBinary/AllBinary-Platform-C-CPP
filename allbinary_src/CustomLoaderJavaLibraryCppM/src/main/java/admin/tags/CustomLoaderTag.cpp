@@ -135,7 +135,7 @@ this->webappPath= value;
 
     std::vector<Object*> methodArgs = 
                                                         {
-                                                            this->webappPath
+                                                            JavaBoxes::toObject(this->webappPath)
                                                         };;
     
 

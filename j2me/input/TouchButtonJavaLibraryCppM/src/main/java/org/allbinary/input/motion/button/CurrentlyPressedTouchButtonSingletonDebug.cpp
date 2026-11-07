@@ -89,31 +89,31 @@ CurrentlyPressedTouchButtonSingletonDebug* CurrentlyPressedTouchButtonSingletonD
 
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(touchButtonInput->toString());
+stringBuffer->append(JavaString::valueOf(touchButtonInput));
     
 stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
 stringBuffer->append(append_);
     
-this->append_= stringBuffer->toString();
+this->append_= JavaString::valueOf(stringBuffer);
     
-this->string= (new StringMaker())->append(this->listString)->append(this->append_)->toString();
+this->string= JavaString::valueOf((new StringMaker())->append(this->listString)->append(this->append_));
     
 }
 
 
     auto CurrentlyPressedTouchButtonSingletonDebug::append(std::string append_) -> void{
-this->append_= (new StringMaker())->append(this->append_)->append(append_)->toString();
+this->append_= JavaString::valueOf((new StringMaker())->append(this->append_)->append(append_));
     
-this->string= (new StringMaker())->append(this->listString)->append(this->append_)->toString();
+this->string= JavaString::valueOf((new StringMaker())->append(this->listString)->append(this->append_));
     
 }
 
 
     auto CurrentlyPressedTouchButtonSingletonDebug::clearLog(int32_t x, int32_t y) -> void{
-this->append_= (new StringMaker())->append(GPoint::toStringStatic(x, y, 0))->append(CommonSeps::getInstance()->SPACE)->toString();
+this->append_= JavaString::valueOf((new StringMaker())->append(GPoint::toStringStatic(x, y, 0))->append(CommonSeps::getInstance()->SPACE));
     
-this->string= (new StringMaker())->append(this->listString)->append(this->append_)->toString();
+this->string= JavaString::valueOf((new StringMaker())->append(this->listString)->append(this->append_));
     
 }
 
@@ -158,9 +158,9 @@ this->appendTouchButtonInput(this->PRESSED_AND_NOT_FIRED, touchButtonInput);
 
     TouchButtonInput* touchButtonInput = CurrentlyPressedTouchButtonSingleton::removeAt(index);;
     
-this->listString= this->list->toString();
+this->listString= JavaString::valueOf(this->list);
     
-this->string= (new StringMaker())->append(this->listString)->append(this->append_)->toString();
+this->string= JavaString::valueOf((new StringMaker())->append(this->listString)->append(this->append_));
     
 
 
@@ -177,9 +177,9 @@ this->string= (new StringMaker())->append(this->listString)->append(this->append
 
     bool isRemoved = CurrentlyPressedTouchButtonSingleton::remove(touchButtonInput);;
     
-this->listString= this->list->toString();
+this->listString= JavaString::valueOf(this->list);
     
-this->string= (new StringMaker())->append(this->listString)->append(this->append_)->toString();
+this->string= JavaString::valueOf((new StringMaker())->append(this->listString)->append(this->append_));
     
 
 
@@ -195,9 +195,9 @@ this->string= (new StringMaker())->append(this->listString)->append(this->append
     auto CurrentlyPressedTouchButtonSingletonDebug::add(TouchButtonInput* touchButtonInput) -> void{
 CurrentlyPressedTouchButtonSingleton::add(touchButtonInput);
     
-this->listString= this->list->toString();
+this->listString= JavaString::valueOf(this->list);
     
-this->string= (new StringMaker())->append(this->listString)->append(this->append_)->toString();
+this->string= JavaString::valueOf((new StringMaker())->append(this->listString)->append(this->append_));
     
 }
 

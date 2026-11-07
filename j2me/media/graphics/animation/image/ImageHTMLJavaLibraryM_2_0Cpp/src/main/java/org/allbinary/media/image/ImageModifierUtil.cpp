@@ -266,7 +266,7 @@ this->imageModifierUtil->copy(this->imageArray, this->index, this->image, this->
 
     ResourceCallbackStrings* resourceCallbackStrings = this->imageModifierUtil->resourceCallbackStrings;;
     
-logUtil->put((new StringMaker())->append(this->imageModifierUtil->commonStrings->EXCEPTION_LABEL)->append(resourceCallbackStrings->ERROR)->append(this->image->getName())->toString(), this, resourceCallbackStrings->HANDLE_IMAGE, e);
+logUtil->put(JavaString::valueOf((new StringMaker())->append(this->imageModifierUtil->commonStrings->EXCEPTION_LABEL)->append(resourceCallbackStrings->ERROR)->append(this->image->getName())), this, resourceCallbackStrings->HANDLE_IMAGE, e);
     
 }
 

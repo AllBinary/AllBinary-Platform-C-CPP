@@ -224,7 +224,7 @@ stringBuffer->append("We usually respond to quote request within 24 hours.");
 stringBuffer->append("\n\nThank You For Your Business.");
     
 
-    std::string userEmailTextBody = stringBuffer->toString();;
+    std::string userEmailTextBody = JavaString::valueOf(stringBuffer);;
     
 
     BasicEmailInfo* basicEmailInfo = dynamic_cast<BasicEmailInfo*>(new StoreEmailInfo(this->storeFrontInterface, userEmailSubject, userEmailTextBody));;
@@ -274,7 +274,7 @@ stringBuffer->append("\nComments: \n");
 stringBuffer->append(quoteRequest->getComments());
     
 
-    std::string adminEmailTextBody = stringBuffer->toString();;
+    std::string adminEmailTextBody = JavaString::valueOf(stringBuffer);;
     
 
     BasicEmailInfo* basicEmailInfo = dynamic_cast<BasicEmailInfo*>(new StoreEmailInfo(this->storeFrontInterface, adminEmailSubject, adminEmailTextBody));;

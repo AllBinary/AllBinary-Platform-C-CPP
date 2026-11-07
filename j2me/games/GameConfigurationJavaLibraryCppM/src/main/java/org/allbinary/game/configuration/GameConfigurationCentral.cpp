@@ -342,7 +342,7 @@ stringBuffer->appendint(JavaBoxes::value<int32_t>(this->MAX_LAYERS->getValue()))
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

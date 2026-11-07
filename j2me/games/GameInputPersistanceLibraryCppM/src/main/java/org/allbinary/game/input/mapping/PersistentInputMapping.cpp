@@ -295,7 +295,7 @@ stringBuffer->append(" to: ");
     
 stringBuffer->appendint(totalMappedTo);
     
-this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->INIT);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->commonStrings->INIT);
     
 }
 

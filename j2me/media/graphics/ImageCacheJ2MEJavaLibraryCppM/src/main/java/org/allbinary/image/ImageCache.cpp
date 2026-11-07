@@ -145,7 +145,7 @@ ImageCache::ImageCache() : commonStrings(CommonStrings::getInstance()), tsUtil(T
                                 
 }
 
-this->logUtil->putF((new StringMaker())->append("unable to find key: ")->append(StringUtil::getInstance()->toString(key))->toString(), this, this->commonStrings->RUN);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("unable to find key: ")->append(StringUtil::getInstance()->toString(key))), this, this->commonStrings->RUN);
     
 
 
@@ -249,7 +249,7 @@ this->listOfList[foundIndex]->add(image);
                                     
 
 
-                            throw RuntimeException((new StringMaker())->append("Image resource is not available for key: ")->append(StringUtil::getInstance()->toString(key))->toString());
+                            throw RuntimeException(JavaString::valueOf((new StringMaker())->append("Image resource is not available for key: ")->append(StringUtil::getInstance()->toString(key))));
                     
 
                                     }
@@ -264,7 +264,7 @@ this->listOfList[foundIndex]->add(image);
             {
 this->logUtil->put("Exception: Trying Again After GC", this, this->commonStrings->GET, &e);
     
-this->logUtil->putF((new StringMaker())->append("InputStream: ")->append(StringUtil::getInstance()->toString(resourceInputStream))->toString(), this, this->commonStrings->GET);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("InputStream: ")->append(StringUtil::getInstance()->toString(resourceInputStream))), this, this->commonStrings->GET);
     
 this->tsUtil->gc();
     

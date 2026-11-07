@@ -193,7 +193,7 @@ stringBuffer->append(XmlOptionItemData::XML_FILE_STATUS)->append(this->sqlTypeSt
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

@@ -193,7 +193,7 @@ this->form->processInputKey(key);
 
     Command* command = commandCurrentSelectionForm->getSelectedCommand();;
     
-this->logUtil->putF(command->toString(), this, this->PROCESS_COMMAND);
+this->logUtil->putF(JavaString::valueOf(command), this, this->PROCESS_COMMAND);
     
 
     Features* features = Features::getInstance();;
@@ -484,7 +484,7 @@ this->hasPressed= true;
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return (new StringMaker())->append(BasicMenuInputProcessor::toString())->append(this->NAME_LABEL)->append(this->form->toString())->toString();;
+                        return JavaString::valueOf((new StringMaker())->append(BasicMenuInputProcessor::toString())->append(this->NAME_LABEL)->append(JavaString::valueOf(this->form)));;
     
 }
 

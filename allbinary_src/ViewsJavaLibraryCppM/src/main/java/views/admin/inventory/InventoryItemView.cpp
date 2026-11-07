@@ -233,7 +233,7 @@ stringBuffer->append(" Extension: ");
     
 stringBuffer->append(this->mediaData->getName());
     
-this->logUtil->putF(stringBuffer->toString(), this, "getFormData()");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "getFormData()");
     
 
                                     }

@@ -77,7 +77,7 @@ PropertyInitUtil* PropertyInitUtil::instance = PropertyInitUtil::instance_owner(
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
-logUtil->putF((new StringMaker())->append("PropertyInitUtil: ")->appendint(value)->toString(), logUtil, commonStrings->CONSTRUCTOR);
+logUtil->putF(JavaString::valueOf((new StringMaker())->append("PropertyInitUtil: ")->appendint(value)), logUtil, commonStrings->CONSTRUCTOR);
     
 
 

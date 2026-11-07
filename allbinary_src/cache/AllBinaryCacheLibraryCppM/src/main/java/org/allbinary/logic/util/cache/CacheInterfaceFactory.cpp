@@ -71,7 +71,7 @@ CacheInterfaceFactory::CacheInterfaceFactory(){
 
 
 
-                            throw Exception(JavaString::valueOf("No such ") +JavaString::valueOf(cacheType->toString()));
+                            throw Exception(JavaString::valueOf("No such ") +JavaString::valueOf(JavaString::valueOf(cacheType)));
                     
 }
 

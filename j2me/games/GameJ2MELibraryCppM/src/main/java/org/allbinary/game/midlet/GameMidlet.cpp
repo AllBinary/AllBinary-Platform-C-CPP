@@ -331,7 +331,7 @@
 #include "org/allbinary/game/midlet/DemoGameMidletStateFactory.h"
 
 
-GameMidlet::GameMidlet(ClientInformationFactory* clientInformationFactory) : ProgressMidlet(clientInformationFactory), enumerationUtil(EnumerationUtil::getInstance()), basicColorFactory(BasicColorFactory::getInstance()), features(Features::getInstance()), midletStrings(MidletStrings::getInstance()), myCommandsFactory(MyCommandsFactory::getInstance()), gameStrings(GameStrings::getInstance()), gameAdStateFactory(GameAdStateFactory::getInstance()), gameStateFactory(GameStateFactory::getInstance()), tsUtil(TsUtil::getInstance()), COMMAND_ACTION((new StringMaker())->append("GameMidlet::")->append(this->midletStrings->COMMAND_ACTION)->toString()), aboutCommandProcessor(AboutCommandProcessor::getInstance()), webCommandProcessor(WebCommandProcessor::getInstance()), gameMidletStateFactory(GameMidletStateFactory::getInstance()), gameStartTimeHelper(new TimeDelayHelper(240)), fullScreenUtil(FullScreenUtil::getInstance()), allbinaryGameCanvasRunnableInterface(NullGameCanvasRunnable::NULL_GAME_CANVAS_RUNNABLE), thread(NullThread::NULL_THREAD){
+GameMidlet::GameMidlet(ClientInformationFactory* clientInformationFactory) : ProgressMidlet(clientInformationFactory), enumerationUtil(EnumerationUtil::getInstance()), basicColorFactory(BasicColorFactory::getInstance()), features(Features::getInstance()), midletStrings(MidletStrings::getInstance()), myCommandsFactory(MyCommandsFactory::getInstance()), gameStrings(GameStrings::getInstance()), gameAdStateFactory(GameAdStateFactory::getInstance()), gameStateFactory(GameStateFactory::getInstance()), tsUtil(TsUtil::getInstance()), COMMAND_ACTION(JavaString::valueOf((new StringMaker())->append("GameMidlet::")->append(this->midletStrings->COMMAND_ACTION))), aboutCommandProcessor(AboutCommandProcessor::getInstance()), webCommandProcessor(WebCommandProcessor::getInstance()), gameMidletStateFactory(GameMidletStateFactory::getInstance()), gameStartTimeHelper(new TimeDelayHelper(240)), fullScreenUtil(FullScreenUtil::getInstance()), allbinaryGameCanvasRunnableInterface(NullGameCanvasRunnable::NULL_GAME_CANVAS_RUNNABLE), thread(NullThread::NULL_THREAD){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -505,7 +505,7 @@ this->destroyApp(unconditional);
     
 
         try {
-            PreLogUtil::put(GameStatisticsFactory::getInstance()->toString(), this, METHOD_NAME);
+            PreLogUtil::put(JavaString::valueOf(GameStatisticsFactory::getInstance()), this, METHOD_NAME);
     
 
     GameAdState* gameAdState = this->gameAdStateFactory->getCurrentInstance();;
@@ -626,7 +626,7 @@ this->notifyDestroyed();
                                 )
                         
                                     {
-                                    displayableAsString= displayable->toString();
+                                    displayableAsString= JavaString::valueOf(displayable);
     
 
                                     }
@@ -645,7 +645,7 @@ this->notifyDestroyed();
 
                                     }
                                 
-PreLogUtil::put((new StringMaker())->append(this->COMMAND_NAME)->append(label)->append(this->DISPLAYABLE)->append(displayableAsString)->toString(), this, this->COMMAND_ACTION);
+PreLogUtil::put(JavaString::valueOf((new StringMaker())->append(this->COMMAND_NAME)->append(label)->append(this->DISPLAYABLE)->append(displayableAsString)), this, this->COMMAND_ACTION);
     
 
     GameCommandsFactory* gameCommandsFactory = GameCommandsFactory::getInstance();;
@@ -1135,7 +1135,7 @@ stringBuffer->append(" isResized: ");
     
 stringBuffer->appendboolean(this->isResized());
     
-PreLogUtil::put(stringBuffer->toString(), this, this->COMMAND_ACTION);
+PreLogUtil::put(JavaString::valueOf(stringBuffer), this, this->COMMAND_ACTION);
     
 
                         if(this->isResized() || this->fullScreenUtil->isScreenChange(this->isFullScreen))
@@ -1211,11 +1211,11 @@ this->setStartStateHashtable(keyValuePersistance->get(index));
     
 menuListener->close();
     
-PreLogUtil::put(BasicMotionGesturesHandler::getInstance()->toString(), this, this->COMMAND_ACTION);
+PreLogUtil::put(JavaString::valueOf(BasicMotionGesturesHandler::getInstance()), this, this->COMMAND_ACTION);
     
 this->commandAction(gameCommandsFactory->START_COMMAND, NullCanvas::NULL_CANVAS);
     
-PreLogUtil::put(BasicMotionGesturesHandler::getInstance()->toString(), this, this->COMMAND_ACTION);
+PreLogUtil::put(JavaString::valueOf(BasicMotionGesturesHandler::getInstance()), this, this->COMMAND_ACTION);
     
 
                                     }
@@ -1361,7 +1361,7 @@ this->updateFullScreen();
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->put((new StringMaker())->append(this->commonStrings->EXCEPTION_LABEL)->append(command->getLabel())->toString(), this, this->midletStrings->COMMAND_ACTION, &e);
+this->logUtil->put(JavaString::valueOf((new StringMaker())->append(this->commonStrings->EXCEPTION_LABEL)->append(command->getLabel())), this, this->midletStrings->COMMAND_ACTION, &e);
     
 
                         if(command != GameCommandsFactory::getInstance()->EXIT_COMMAND)
@@ -1482,7 +1482,7 @@ ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 this->thread= threadFactoryUtil->getInstanceGameCanvasRunnable(this->allbinaryGameCanvasRunnableInterface);
     
-this->logUtil->putF((new StringMaker())->append("Thread Priority: ")->appendint(this->thread->getPriority())->toString(), this, "startGameCanvasRunnableInterface");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Thread Priority: ")->appendint(this->thread->getPriority())), this, "startGameCanvasRunnableInterface");
     
 this->allbinaryGameCanvasRunnableInterface->setThread(this->thread);
     
@@ -1509,7 +1509,7 @@ GameEventHandlerUtil::removeAllListeners();
                         if(gameCanvasRunnableInterface != NullGameCanvasRunnable::NULL_GAME_CANVAS_RUNNABLE)
                         
                                     {
-                                    this->logUtil->putF((new StringMaker())->append("Set Running False: ")->append(gameCanvasRunnableInterface->toString())->toString(), this, this->gameStrings->STOP_GAME_CANVAS_RUNNABLE_INTERFACE);
+                                    this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Set Running False: ")->append(JavaString::valueOf(gameCanvasRunnableInterface))), this, this->gameStrings->STOP_GAME_CANVAS_RUNNABLE_INTERFACE);
     
 gameCanvasRunnableInterface->setRunning(false);
     

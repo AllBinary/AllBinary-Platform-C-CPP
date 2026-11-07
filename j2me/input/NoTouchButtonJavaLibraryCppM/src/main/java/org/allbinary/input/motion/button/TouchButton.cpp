@@ -111,7 +111,7 @@ this->yBorder= yBorder;
     
 this->updateRectangle();
     
-this->logUtil->putF((new StringMaker())->append("Created: ")->append(this->toString())->toString(), this, this->commonStrings->CONSTRUCTOR);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Created: ")->append(JavaString::valueOf(this))), this, this->commonStrings->CONSTRUCTOR);
     
 }
 
@@ -219,7 +219,7 @@ stringBuffer->appendint(this->yBorder);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

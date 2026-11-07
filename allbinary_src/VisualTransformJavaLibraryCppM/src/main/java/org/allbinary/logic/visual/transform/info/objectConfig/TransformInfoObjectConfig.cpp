@@ -188,9 +188,9 @@ stringBuffer->append("TransformInfo: ");
                             
 stringBuffer->append("\nConstructed with document: ");
     
-stringBuffer->append(this->toString());
+stringBuffer->append(JavaString::valueOf(this));
     
-this->logUtil->putF(stringBuffer->toString(), this, "Constructor(TransformInfoInterface)");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "Constructor(TransformInfoInterface)");
     
 
                                     }
@@ -245,9 +245,9 @@ stringBuffer->append("TransformInfo: ");
                             
 stringBuffer->append("\nConstructed with document: ");
     
-stringBuffer->append(this->toString());
+stringBuffer->append(JavaString::valueOf(this));
     
-this->logUtil->putF(stringBuffer->toString(), this, "Constructor(TransformInfoInterface, Document)");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "Constructor(TransformInfoInterface, Document)");
     
 
                                     }
@@ -298,9 +298,9 @@ stringBuffer->append("TransformInfo: ");
                             
 stringBuffer->append("\nConstructed with document: ");
     
-stringBuffer->append(this->toString());
+stringBuffer->append(JavaString::valueOf(this));
     
-this->logUtil->putF(stringBuffer->toString(), this, "Constructor(TransformInfoInterface, name, type)");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "Constructor(TransformInfoInterface, name, type)");
     
 
                                     }
@@ -483,7 +483,7 @@ stringBuffer->append(" Nodes: ");
     
 stringBuffer->appendint(numberOfViews);
     
-this->logUtil->putF(stringBuffer->toString(), this, "getNodeVector(nodename)");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "getNodeVector(nodename)");
     
 
                                     }

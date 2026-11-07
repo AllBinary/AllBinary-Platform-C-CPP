@@ -363,7 +363,7 @@ this->updateIfNeeded();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->testHtmlPath->toString();;
+                        return JavaString::valueOf(this->testHtmlPath);;
     
 
                                     }
@@ -398,7 +398,7 @@ this->updateIfNeeded();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->mainPath->toString();;
+                        return JavaString::valueOf(this->mainPath);;
     
 
                                     }

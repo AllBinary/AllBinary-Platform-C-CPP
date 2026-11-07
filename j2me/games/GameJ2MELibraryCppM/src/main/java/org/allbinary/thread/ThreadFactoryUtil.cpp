@@ -152,7 +152,7 @@ ThreadFactoryUtil* ThreadFactoryUtil::instance = ThreadFactoryUtil::instance_own
                                     
     RunnableCanvasSingleThreadStartRunnable* demoGameSingleThreadStartRunnable = new RunnableCanvasSingleThreadStartRunnable(dynamic_cast<RunnableCanvas*>(runnable));;
     
-PreLogUtil::put((new StringMaker())->append("Using Pseudo Thread for DemoCanvas/AllBinaryGameCanvas under PlayN/HTML5: ")->append(StringUtil::getInstance()->toString(runnable))->toString(), this, commonStrings->CONSTRUCTOR);
+PreLogUtil::put(JavaString::valueOf((new StringMaker())->append("Using Pseudo Thread for DemoCanvas/AllBinaryGameCanvas under PlayN/HTML5: ")->append(StringUtil::getInstance()->toString(runnable))), this, commonStrings->CONSTRUCTOR);
     
 
     ThreadPool* primaryThreadPool = PrimaryThreadPool::getInstance();;
@@ -163,7 +163,7 @@ primaryThreadPool->runTask(demoGameSingleThreadStartRunnable);
                                     }
                                 
                         else {
-                            PreLogUtil::put((new StringMaker())->append("Using Pseudo Thread for Runnable under PlayN/HTML5: ")->append(StringUtil::getInstance()->toString(runnable))->toString(), this, commonStrings->CONSTRUCTOR);
+                            PreLogUtil::put(JavaString::valueOf((new StringMaker())->append("Using Pseudo Thread for Runnable under PlayN/HTML5: ")->append(StringUtil::getInstance()->toString(runnable))), this, commonStrings->CONSTRUCTOR);
     
 
     ThreadPool* primaryThreadPool = PrimaryThreadPool::getInstance();;
@@ -177,9 +177,9 @@ primaryThreadPool->runTask(runnable);
                                     }
                                 
 
-    Thread* thread = new Thread(runnable, runnable->toString());;
+    Thread* thread = new Thread(runnable, JavaString::valueOf(runnable));;
     
-this->logUtil->putF(thread->toString(), this, commonStrings->CONSTRUCTOR);
+this->logUtil->putF(JavaString::valueOf(thread), this, commonStrings->CONSTRUCTOR);
     
 
 

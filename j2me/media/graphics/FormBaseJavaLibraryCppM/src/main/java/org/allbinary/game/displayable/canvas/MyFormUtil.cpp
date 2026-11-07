@@ -128,7 +128,7 @@ MyFormUtil* MyFormUtil::instance = MyFormUtil::instance_owner();
                                 2
                                 :
 
-                            3;;;
+                            3;;
     
 
     int32_t width = MyFontProcessor::defaultStringWidth(font, TOTAL_CHAR_WIDTH);;

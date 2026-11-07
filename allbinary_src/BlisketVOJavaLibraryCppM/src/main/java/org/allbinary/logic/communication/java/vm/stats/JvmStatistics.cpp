@@ -291,7 +291,7 @@ this->runtime= Runtime::getRuntime();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->getFreeMemoryBytesLong().toString();;
+                        return JavaString::valueOf(this->getFreeMemoryBytesLong());;
     
 }
 
@@ -303,7 +303,7 @@ this->runtime= Runtime::getRuntime();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->getFreeMemoryKilobytesLong().toString();;
+                        return JavaString::valueOf(this->getFreeMemoryKilobytesLong());;
     
 }
 
@@ -315,7 +315,7 @@ this->runtime= Runtime::getRuntime();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->getFreeMemoryMegabytesLong().toString();;
+                        return JavaString::valueOf(this->getFreeMemoryMegabytesLong());;
     
 }
 
@@ -327,7 +327,7 @@ this->runtime= Runtime::getRuntime();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->getMaxMemoryBytesLong().toString();;
+                        return JavaString::valueOf(this->getMaxMemoryBytesLong());;
     
 }
 
@@ -339,7 +339,7 @@ this->runtime= Runtime::getRuntime();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->getMaxMemoryKilobytesLong().toString();;
+                        return JavaString::valueOf(this->getMaxMemoryKilobytesLong());;
     
 }
 
@@ -351,7 +351,7 @@ this->runtime= Runtime::getRuntime();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->getMaxMemoryMegabytesLong().toString();;
+                        return JavaString::valueOf(this->getMaxMemoryMegabytesLong());;
     
 }
 
@@ -363,7 +363,7 @@ this->runtime= Runtime::getRuntime();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->getTotalMemoryBytesLong().toString();;
+                        return JavaString::valueOf(this->getTotalMemoryBytesLong());;
     
 }
 
@@ -375,7 +375,7 @@ this->runtime= Runtime::getRuntime();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->getTotalMemoryKilobytesLong().toString();;
+                        return JavaString::valueOf(this->getTotalMemoryKilobytesLong());;
     
 }
 
@@ -387,7 +387,7 @@ this->runtime= Runtime::getRuntime();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->getTotalMemoryMegabytesLong().toString();;
+                        return JavaString::valueOf(this->getTotalMemoryMegabytesLong());;
     
 }
 
@@ -423,7 +423,7 @@ this->runtime= Runtime::getRuntime();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->getNumberOfThreadsLong().toString();;
+                        return JavaString::valueOf(this->getNumberOfThreadsLong());;
     
 }
 

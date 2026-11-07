@@ -247,7 +247,7 @@ this->hasRead= false;
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRELOADERERROR))
                         
                                     {
-                                    PreLogUtil::putOE(JavaString::valueOf("Failed Write: ") +JavaString::valueOf(FILEABPATH->toString()), this, "write", &e);
+                                    PreLogUtil::putOE(JavaString::valueOf("Failed Write: ") +JavaString::valueOf(JavaString::valueOf(FILEABPATH)), this, "write", &e);
     
 
                                     }
@@ -343,7 +343,7 @@ this->setPort((new WeakCrypt(7))->decrypt(decryptedPort));
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRELOADER))
                         
                                     {
-                                    PreLogUtil::put(JavaString::valueOf("Not a File - Failed Loading: ") +JavaString::valueOf(FILEABPATH->toString()), this, this->commonStrings->LOAD);
+                                    PreLogUtil::put(JavaString::valueOf("Not a File - Failed Loading: ") +JavaString::valueOf(JavaString::valueOf(FILEABPATH)), this, this->commonStrings->LOAD);
     
 
                                     }
@@ -359,7 +359,7 @@ this->setPort((new WeakCrypt(7))->decrypt(decryptedPort));
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRELOADERERROR))
                         
                                     {
-                                    PreLogUtil::putOE(JavaString::valueOf("Failed Loading: ") +JavaString::valueOf(FILEABPATH->toString()), this, this->commonStrings->LOAD, &e);
+                                    PreLogUtil::putOE(JavaString::valueOf("Failed Loading: ") +JavaString::valueOf(JavaString::valueOf(FILEABPATH)), this, this->commonStrings->LOAD, &e);
     
 
                                     }

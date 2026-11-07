@@ -112,7 +112,7 @@ stringBuilder->append(CommonSeps::getInstance()->SPACE);
     
 }
 
-System.out.println(stringBuilder->toString());
+System.out.println(JavaString::valueOf(stringBuilder));
     
 }
 

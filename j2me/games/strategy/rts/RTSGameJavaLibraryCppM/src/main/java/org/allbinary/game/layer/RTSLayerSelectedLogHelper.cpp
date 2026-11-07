@@ -122,7 +122,7 @@ stringBuffer->append(" -> ");
     
 stringBuffer->append(StringUtil::getInstance()->toString(pathsList));
     
-this->logUtil->putF(stringBuffer->toString(), this, "selected: setClosestGeographicMapCellHistory");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "selected: setClosestGeographicMapCellHistory");
     
 }
 
@@ -151,7 +151,7 @@ stringBuffer->append(this->commonSeps->SPACE);
     
 stringBuffer->append(reason);
     
-this->logUtil->putF(stringBuffer->toString(), this, "selected: trackTo");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "selected: trackTo");
     
 }
 
@@ -206,79 +206,79 @@ stringBuffer->append(" Evading: ");
     
 stringBuffer->appendboolean(evading);
     
-this->logUtil->putF(stringBuffer->toString(), this, this->TRACKTO_TURNTO);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->TRACKTO_TURNTO);
     
 }
 
 
     auto RTSLayerSelectedLogHelper::doneMoving(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
-this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" steering - done moving 0,0")->toString(), this, this->TRACKTO_TURNTO);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" steering - done moving 0,0")), this, this->TRACKTO_TURNTO);
     
 }
 
 
     auto RTSLayerSelectedLogHelper::closeEnough(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
-this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" steering - close enough")->toString(), this, this->TRACKTO_TURNTO);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" steering - close enough")), this, this->TRACKTO_TURNTO);
     
 }
 
 
     auto RTSLayerSelectedLogHelper::movingLeft(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
-this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" steering - allow movingLeft")->toString(), this, this->TRACKTO_TURNTO);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" steering - allow movingLeft")), this, this->TRACKTO_TURNTO);
     
 }
 
 
     auto RTSLayerSelectedLogHelper::movingRight(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
-this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" steering - allow movingRight")->toString(), this, this->TRACKTO_TURNTO);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" steering - allow movingRight")), this, this->TRACKTO_TURNTO);
     
 }
 
 
     auto RTSLayerSelectedLogHelper::movingUp(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
-this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" steering - allow movingUp")->toString(), this, this->TRACKTO_TURNTO);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" steering - allow movingUp")), this, this->TRACKTO_TURNTO);
     
 }
 
 
     auto RTSLayerSelectedLogHelper::movingDown(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
-this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" steering - allow movingDown")->toString(), this, this->TRACKTO_TURNTO);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" steering - allow movingDown")), this, this->TRACKTO_TURNTO);
     
 }
 
 
     auto RTSLayerSelectedLogHelper::currentMoveEnded(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
-this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" steering - correct angle, but movement not needed for current deltas so reseting movement angle")->toString(), this, this->TRACKTO_TURNTO);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" steering - correct angle, but movement not needed for current deltas so reseting movement angle")), this, this->TRACKTO_TURNTO);
     
 }
 
 
     auto RTSLayerSelectedLogHelper::evade(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
-this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" steering - evade")->toString(), this, this->TRACKTO_TURNTO);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" steering - evade")), this, this->TRACKTO_TURNTO);
     
 }
 
 
     auto RTSLayerSelectedLogHelper::rotateLeft(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
-this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" steering - rotating left")->toString(), this, this->TRACKTO_TURNTO);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" steering - rotating left")), this, this->TRACKTO_TURNTO);
     
 }
 
 
     auto RTSLayerSelectedLogHelper::rotateRight(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
-this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" steering - rotating right")->toString(), this, this->TRACKTO_TURNTO);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" steering - rotating right")), this, this->TRACKTO_TURNTO);
     
 }
 
 
     auto RTSLayerSelectedLogHelper::handle(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, NamedAngle* movementAngle) -> void{
-this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" steering - movementAngle: ")->append(movementAngle->name)->append(this->commonSeps->FORWARD_SLASH)->appendshort(movementAngle->getValue())->toString(), this, this->TRACKTO_TURNTO);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" steering - movementAngle: ")->append(movementAngle->name)->append(this->commonSeps->FORWARD_SLASH)->appendshort(movementAngle->getValue())), this, this->TRACKTO_TURNTO);
     
 }
 
 
     auto RTSLayerSelectedLogHelper::noRotation(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
-this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" steering - Do not rotate")->toString(), this, this->TRACKTO_TURNTO);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" steering - Do not rotate")), this, this->TRACKTO_TURNTO);
     
 }
 
@@ -287,7 +287,7 @@ this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->
 
     StringUtil* stringUtil = StringUtil::getInstance();;
     
-this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(CommonSeps::getInstance()->SPACE)->appendint(geographicMapCellHistory->getTotalVisited())->append(CommonSeps::getInstance()->SPACE)->append(stringUtil->toString(currentGeographicMapCellPosition))->append(" - trying to move but not on path: ")->append(stringUtil->toString(pathList))->toString(), this, "turnTo");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(CommonSeps::getInstance()->SPACE)->appendint(geographicMapCellHistory->getTotalVisited())->append(CommonSeps::getInstance()->SPACE)->append(stringUtil->toString(currentGeographicMapCellPosition))->append(" - trying to move but not on path: ")->append(stringUtil->toString(pathList))), this, "turnTo");
     
 }
 

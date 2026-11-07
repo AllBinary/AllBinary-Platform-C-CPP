@@ -256,7 +256,7 @@ stringMaker->delete_(0, stringMaker->length());
 stringMaker->append(path)->append(ANDROID)->appendint(width)->append(CanvasStrings::getInstance()->_PNG);
     
 
-    std::string newFilePath = stringMaker->toString();;
+    std::string newFilePath = JavaString::valueOf(stringMaker);;
     
 imagePersistanceUtil->saveWithBatik(AbFile::createAbFile(newFilePath), generatedBufferedImageArray[index]);
     
@@ -264,7 +264,7 @@ stringMaker->delete_(0, stringMaker->length());
     
 stringMaker->append(path)->append(IOS)->appendint(width)->append(CanvasStrings::getInstance()->_PNG);
     
-newFilePath= stringMaker->toString();
+newFilePath= JavaString::valueOf(stringMaker);
     
 imagePersistanceUtil->saveWithBatik(AbFile::createAbFile(newFilePath), generatedBufferedImageArray[index]);
     

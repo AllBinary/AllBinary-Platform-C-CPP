@@ -124,7 +124,7 @@ runningServiceInfo= runningServicesList->get(index);
     
 serviceComponent= runningServiceInfo->service;
     
-serviceName= serviceComponent->toString();
+serviceName= JavaString::valueOf(serviceComponent);
     
 
                         if(JavaString::indexOf(serviceName, name) >= 0)

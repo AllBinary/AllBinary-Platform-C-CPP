@@ -195,7 +195,7 @@ this->request= dynamic_cast<HttpServletRequest*>(this->getPageContext()->getRequ
     Node* node = basicItemView->toXmlNode(document);;
     
 
-    std::string numberInBasket = basketInterface->getNumberOf(product)->toString();;
+    std::string numberInBasket = JavaString::valueOf(basketInterface->getNumberOf(product));;
     
 node->appendChild(ModDomHelper::createNameValueNodes(document, BasketData::ITEMTOTALINBASKET, numberInBasket));
     
@@ -207,7 +207,7 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, BasketData::ITEMT
     
 itemTotal->multiply(JavaBoxes::value<int32_t>(basketInterface->getNumberOf(product)));
     
-node->appendChild(ModDomHelper::createNameValueNodes(document, BasketData::ITEMTOTAL, itemTotal->toString()));
+node->appendChild(ModDomHelper::createNameValueNodes(document, BasketData::ITEMTOTAL, JavaString::valueOf(itemTotal)));
     
 basketNode->appendChild(node);
     
@@ -228,7 +228,7 @@ numberOfResults++;
     Node* totalNumberNode = document->createElement(SearchData::TOTAL_NUMBER_ITEMS);;
     
 
-    Node* totalNumberTextNode = document->createTextNode(basketInterface->getNumberOfItems()->toString());;
+    Node* totalNumberTextNode = document->createTextNode(JavaString::valueOf(basketInterface->getNumberOfItems()));;
     
 totalNumberNode->appendChild(totalNumberTextNode);
     
@@ -236,7 +236,7 @@ totalNumberNode->appendChild(totalNumberTextNode);
     Node* totalWeightNode = document->createElement(BasketData::TOTALWEIGHT);;
     
 
-    Node* totalWeightTextNode = document->createTextNode(basketInterface->getTotalWeight()->toString());;
+    Node* totalWeightTextNode = document->createTextNode(JavaString::valueOf(basketInterface->getTotalWeight()));;
     
 totalWeightNode->appendChild(totalWeightTextNode);
     
@@ -244,7 +244,7 @@ totalWeightNode->appendChild(totalWeightTextNode);
     Node* subTotalNode = document->createElement(BasketData::SUBTOTAL);;
     
 
-    Node* subTotalTextNode = document->createTextNode(basketInterface->getSubTotal()->toString());;
+    Node* subTotalTextNode = document->createTextNode(JavaString::valueOf(basketInterface->getSubTotal()));;
     
 subTotalNode->appendChild(subTotalTextNode);
     

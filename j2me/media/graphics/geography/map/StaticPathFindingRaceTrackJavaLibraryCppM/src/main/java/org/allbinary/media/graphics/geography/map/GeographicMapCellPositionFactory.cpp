@@ -101,7 +101,7 @@ GeographicMapCellPositionFactory::GeographicMapCellPositionFactory() : logUtil(L
                                 )
                         
                                     {
-                                    this->logUtil->putF((new StringMaker())->append("Creating GeographicMapCellPositionFactory for TileLayer: ")->appendint(JavaBoxes::value<int32_t>(allBinaryTiledLayer->getDataId()))->toString(), this, commonStrings->GET_INSTANCE);
+                                    this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Creating GeographicMapCellPositionFactory for TileLayer: ")->appendint(JavaBoxes::value<int32_t>(allBinaryTiledLayer->getDataId()))), this, commonStrings->GET_INSTANCE);
     
 geographicMapCellPositionFactoryCanBeNull= new BasicGeographicMapCellPositionFactory(geographicMapInterface);
     
@@ -119,7 +119,7 @@ GeographicMapCellPositionFactory::hashtable->put(allBinaryTiledLayer->getDataId(
                                     }
                                 
                         else {
-                            this->logUtil->putF((new StringMaker())->append("Reusing GeographicMapCellPositionFactory for TileLayer: ")->appendint(JavaBoxes::value<int32_t>(allBinaryTiledLayer->getDataId()))->toString(), this, commonStrings->GET_INSTANCE);
+                            this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Reusing GeographicMapCellPositionFactory for TileLayer: ")->appendint(JavaBoxes::value<int32_t>(allBinaryTiledLayer->getDataId()))), this, commonStrings->GET_INSTANCE);
     
 
 

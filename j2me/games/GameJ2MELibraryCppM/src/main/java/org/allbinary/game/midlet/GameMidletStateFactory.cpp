@@ -91,7 +91,7 @@ GameMidletStateFactory::GameMidletStateFactory() : logUtil(LogUtil::getInstance(
 
 
     auto GameMidletStateFactory::setCurrentGameState(GameState* currentGameState) -> void{
-this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->CURRENT)->append(" GameState: ")->append(StringUtil::getInstance()->toString(currentGameState))->toString(), this, "setCurrentGameState");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(CommonLabels::getInstance()->CURRENT)->append(" GameState: ")->append(StringUtil::getInstance()->toString(currentGameState))), this, "setCurrentGameState");
     
 this->currentGameState= currentGameState;
     

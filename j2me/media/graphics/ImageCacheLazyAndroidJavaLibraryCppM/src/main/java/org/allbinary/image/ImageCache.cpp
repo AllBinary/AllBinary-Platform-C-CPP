@@ -201,7 +201,7 @@ image= this->createImage(key, inputStream);
             {
 this->logUtil->put("Exception: Trying Again After GC", this, this->commonStrings->GET, &e);
     
-this->logUtil->putF((new StringMaker())->append("InputStream: ")->append(inputStream->toString())->toString(), this, this->commonStrings->GET);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("InputStream: ")->append(JavaString::valueOf(inputStream))), this, this->commonStrings->GET);
     
 this->tsUtil->gc();
     
@@ -265,7 +265,7 @@ this->hashtable->put(resourceId, image);
                                 
 }
 
-this->logUtil->putF((new StringMaker())->append("unable to find key: ")->append(StringUtil::getInstance()->toString(key))->toString(), this, this->commonStrings->RUN);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("unable to find key: ")->append(StringUtil::getInstance()->toString(key))), this, this->commonStrings->RUN);
     
 
 

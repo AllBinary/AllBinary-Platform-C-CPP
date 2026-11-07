@@ -166,7 +166,7 @@ this->context= aContext;
                         if(DebugFactory::getInstance() != NoDebug::getInstance())
                         
                                     {
-                                    PreLogUtil::put((new StringMaker())->append(resource)->append(CommonSeps::getInstance()->COLON)->append(JavaString::valueOf(value))->toString(), this, "getResourceId");
+                                    PreLogUtil::put(JavaString::valueOf((new StringMaker())->append(resource)->append(CommonSeps::getInstance()->COLON)->append(JavaString::valueOf(value))), this, "getResourceId");
     
 
                                     }
@@ -187,13 +187,13 @@ this->context= aContext;
                         if(DebugFactory::getInstance() != NoDebug::getInstance())
                         
                                     {
-                                    PreLogUtil::put((new StringMaker())->append(resource)->append(CommonSeps::getInstance()->COLON)->append(JavaString::valueOf(value))->toString(), this, "addResource");
+                                    PreLogUtil::put(JavaString::valueOf((new StringMaker())->append(resource)->append(CommonSeps::getInstance()->COLON)->append(JavaString::valueOf(value))), this, "addResource");
     
 
                         if(this->containsDuplicate(resource, value))
                         
                                     {
-                                    ForcedLogUtil::log((new StringMaker())->append("Found Duplicate Resource: ")->append(resource)->toString(), this);
+                                    ForcedLogUtil::log(JavaString::valueOf((new StringMaker())->append("Found Duplicate Resource: ")->append(resource)), this);
     
 
                                     }
@@ -263,7 +263,7 @@ this->hashMap->put(resource, value);
 
 
     auto ResourceUtil::setResources(Resources* resources) -> void{
-this->logUtil->putF((new StringMaker())->append("Resource Loader: ")->append(resources->getClass()->getName())->toString(), this, "setResources");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Resource Loader: ")->append(resources->getClass()->getName())), this, "setResources");
     
 this->resources= resources;
     

@@ -72,7 +72,7 @@ PoolInterfaceFactory::PoolInterfaceFactory(){
 
 
 
-                            throw Exception(JavaString::valueOf("No Such PoolType: ") +JavaString::valueOf(poolType->toString()));
+                            throw Exception(JavaString::valueOf("No Such PoolType: ") +JavaString::valueOf(JavaString::valueOf(poolType)));
                     
 }
 

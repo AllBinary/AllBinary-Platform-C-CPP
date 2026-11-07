@@ -290,7 +290,7 @@ gameConfiguration= dynamic_cast<GameConfiguration*>(list->objectArray[index]);
     
 stringMaker->delete_(0, stringMaker->length());
     
-this->logUtil->putF(stringMaker->append(NAME)->append(gameConfiguration->toString())->toString(), this, METHOD_NAME);
+this->logUtil->putF(JavaString::valueOf(stringMaker->append(NAME)->append(JavaString::valueOf(gameConfiguration))), this, METHOD_NAME);
     
 gauge= new GameConfigurationGauge(gameConfiguration);
     
@@ -370,7 +370,7 @@ GameConfigurationUtil::getInstance()->updateCompetitionValue();
 
     GameConfiguration* SCALE = GameConfigurationCentral::getInstance()->SCALE;;
     
-hashtable->put(SCALE->getName(), SCALE->getValue()->toString());
+hashtable->put(SCALE->getName(), std::to_string(JavaBoxes::value<int32_t>(SCALE->getValue())));
     
 
     KeyValuePersistance* keyValuePersistance = GameConfigurationPersistanceSingleton::getInstance();;

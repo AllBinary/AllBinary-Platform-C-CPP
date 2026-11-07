@@ -205,13 +205,13 @@ keyMappings= this->get(list);
     
 stringMaker->delete_(0, stringMaker->length());
     
-actionString= stringMaker->append(inputInfo[index])->append(commonSeps->COLON)->append(commonSeps->SPACE)->append(commonSeps->SPACE)->toString();
+actionString= JavaString::valueOf(stringMaker->append(inputInfo[index])->append(commonSeps->COLON)->append(commonSeps->SPACE)->append(commonSeps->SPACE));
     
 updateMyFontProperties->actionStringArray[index]= actionString;
     
 stringMaker->delete_(0, stringMaker->length());
     
-updateMyFontProperties->keymappingBeginWidthArray[index]= (font->stringWidth(stringMaker->append(updateMyFontProperties->actionStringArray[index])->append(keyMappings)->toString())>>1);
+updateMyFontProperties->keymappingBeginWidthArray[index]= (font->stringWidth(JavaString::valueOf(stringMaker->append(updateMyFontProperties->actionStringArray[index])->append(keyMappings)))>>1);
     
 updateMyFontProperties->actionStringDeltaXArray[index]= font->stringWidth(actionString);
     
@@ -295,7 +295,7 @@ HelpPaintable::updateMeasurement(graphics);
 
     StringMaker* stringMaker = new StringMaker();;
     
-this->logUtil->putF(stringMaker->append(CommonLabels::getInstance()->START_LABEL)->append("selected GameKey: ")->append(this->stringUtil->toString(selectedGameKey))->append(" Input: ")->append(this->stringUtil->toString(selectedInput))->toString(), this, this->commonStrings->UPDATE);
+this->logUtil->putF(JavaString::valueOf(stringMaker->append(CommonLabels::getInstance()->START_LABEL)->append("selected GameKey: ")->append(this->stringUtil->toString(selectedGameKey))->append(" Input: ")->append(this->stringUtil->toString(selectedInput))), this, this->commonStrings->UPDATE);
     
 
     PersistentInputMapping* gameKeyMapping = PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance();;
@@ -359,7 +359,7 @@ inputBasicColorArray[index][index2]= this->basicColor;
                                     {
                                     stringMaker->delete_(0, stringMaker->length());
     
-this->logUtil->putF(stringMaker->append("Found: selected GameKey: ")->append(this->stringUtil->toString(selectedGameKey))->toString(), this, this->commonStrings->UPDATE);
+this->logUtil->putF(JavaString::valueOf(stringMaker->append("Found: selected GameKey: ")->append(this->stringUtil->toString(selectedGameKey))), this, this->commonStrings->UPDATE);
     
 actionBasicColor[index]= this->selectedBasicColor;
     
@@ -372,7 +372,7 @@ actionBasicColor[index]= this->selectedBasicColor;
                                     {
                                     stringMaker->delete_(0, stringMaker->length());
     
-this->logUtil->putF(stringMaker->append("Found: selected Input: ")->append(this->stringUtil->toString(selectedInput))->toString(), this, this->commonStrings->UPDATE);
+this->logUtil->putF(JavaString::valueOf(stringMaker->append("Found: selected Input: ")->append(this->stringUtil->toString(selectedInput))), this, this->commonStrings->UPDATE);
     
 inputBasicColorArray[index][indexOfSelectedInput]= this->selectedBasicColor;
     
@@ -471,7 +471,7 @@ stringBuffer->append(key->getName());
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 
@@ -550,7 +550,7 @@ deltaX += this->updateMyFontProperties->actionStringDeltaXArray[index];
         {
 input= dynamic_cast<Input*>(list->objectArray[index2]);
     
-graphics->setColor(this->inputBasicColorArray[index][index2].intValue());
+graphics->setColor(this->inputBasicColorArray[index][index2]->intValue());
     
 graphics->drawString(input->getName(), halfWidth -beginWidth +deltaX, y, this->anchor);
     

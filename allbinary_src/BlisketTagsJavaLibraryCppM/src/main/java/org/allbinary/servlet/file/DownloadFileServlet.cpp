@@ -261,7 +261,7 @@ stringBuffer->append(file->getName());
     
 stringBuffer->append(CommonSeps::getInstance()->QUOTE);
     
-response->setHeader("Content-Disposition", stringBuffer->toString());
+response->setHeader("Content-Disposition", JavaString::valueOf(stringBuffer));
     
 StreamUtil::getInstance()->get(inputStream, response->getOutputStream(), std::vector<int8_t>(16348));
     

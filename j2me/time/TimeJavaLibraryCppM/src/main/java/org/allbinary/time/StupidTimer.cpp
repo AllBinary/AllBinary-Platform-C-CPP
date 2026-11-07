@@ -101,7 +101,7 @@ StupidTimer::StupidTimer() : logUtil(LogUtil::getInstance()), commonStrings(Comm
 
     std::string WAITING_FOR = "Waiting for: ";;
     
-PreLogUtil::put((new StringMaker())->append(WAITING_FOR)->append(StringUtil::getInstance()->toString(visitorInterface))->toString(), this, this->commonStrings->VISIT);
+PreLogUtil::put(JavaString::valueOf((new StringMaker())->append(WAITING_FOR)->append(StringUtil::getInstance()->toString(visitorInterface))), this, this->commonStrings->VISIT);
     
 
     int32_t index = 0;;
@@ -113,7 +113,7 @@ PreLogUtil::put((new StringMaker())->append(WAITING_FOR)->append(StringUtil::get
                         if(index % 10 == 0)
                         
                                     {
-                                    PreLogUtil::put((new StringMaker())->append(WAITING_FOR)->appendint(index)->toString(), this, this->commonStrings->VISIT);
+                                    PreLogUtil::put(JavaString::valueOf((new StringMaker())->append(WAITING_FOR)->appendint(index)), this, this->commonStrings->VISIT);
     
 
                                     }
@@ -149,13 +149,13 @@ break;
                         if(tookTooLong)
                         
                                     {
-                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->VISIT, new Exception((new StringMaker())->append("Took Too Long: ")->append(StringUtil::getInstance()->toString(visitorInterface))->toString()));
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->VISIT, new Exception(JavaString::valueOf((new StringMaker())->append("Took Too Long: ")->append(StringUtil::getInstance()->toString(visitorInterface)))));
     
 
                                     }
                                 
                         else {
-                            PreLogUtil::put(timeDelayHelper->toString(), this, this->commonStrings->VISIT);
+                            PreLogUtil::put(JavaString::valueOf(timeDelayHelper), this, this->commonStrings->VISIT);
     
 
                         }

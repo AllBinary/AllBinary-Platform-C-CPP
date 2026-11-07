@@ -515,7 +515,7 @@ stringBuffer->append("Selected Layer: ");
 
                                     }
                                 
-this->logUtil->putF(stringBuffer->toString(), this, "setSelectedRTSLayer");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "setSelectedRTSLayer");
     
 this->paintSelectedRTSLayersList= BasicArrayListUtil::getInstance()->getImmutableInstance();
     
@@ -536,7 +536,7 @@ this->preSelectedRTSLayersList= this->selectedRTSLayersList;
     
 this->selectedRTSLayersList= tempList;
     
-this->logUtil->putF((new StringMaker())->append("Preselected: ")->append(this->preSelectedRTSLayersList->toString())->toString(), this, "setSelectedRTSLayer");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Preselected: ")->append(JavaString::valueOf(this->preSelectedRTSLayersList))), this, "setSelectedRTSLayer");
     
 
                                     }
@@ -592,9 +592,9 @@ this->paintSelectedRTSLayersList= this->selectedRTSLayersList;
     
 stringBuffer->append("Select all Preselected: ");
     
-stringBuffer->append(this->preSelectedRTSLayersList->toString());
+stringBuffer->append(JavaString::valueOf(this->preSelectedRTSLayersList));
     
-this->logUtil->putF(stringBuffer->toString(), this, "selectAllPreselected");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "selectAllPreselected");
     
 
 
@@ -619,9 +619,9 @@ rtsLayer->select();
     
 stringBuffer->append("Deselect all Preselected: ");
     
-stringBuffer->append(this->preSelectedRTSLayersList->toString());
+stringBuffer->append(JavaString::valueOf(this->preSelectedRTSLayersList));
     
-this->logUtil->putF(stringBuffer->toString(), this, "deselectAllPreselected");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "deselectAllPreselected");
     
 
 

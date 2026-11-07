@@ -83,7 +83,7 @@ LogUserEmailEventListenerModule::LogUserEmailEventListenerModule() : logUtil(Log
                         
                                     {
                                     
-    std::string message = JavaString::valueOf("Logging EmailEvent - Temporary Listener for debugging.\n\n") +JavaString::valueOf(userEmailInfoEvent->toString());;
+    std::string message = JavaString::valueOf("Logging EmailEvent - Temporary Listener for debugging.\n\n") +JavaString::valueOf(JavaString::valueOf(userEmailInfoEvent));;
     
 this->logUtil->putF(message, this, "onEmailSendRequest");
     

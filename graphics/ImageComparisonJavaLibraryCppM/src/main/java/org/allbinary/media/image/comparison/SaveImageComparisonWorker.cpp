@@ -142,7 +142,7 @@ timeHelper->setStartTimeTNT();
 
     ImageComparisonResult* imageComparisonInfo = imageComparisonResultsEvent->getImageComparisonResult();;
     
-this->logUtil->putF(imageComparisonInfo->toString(), this, this->commonStrings->RUN);
+this->logUtil->putF(JavaString::valueOf(imageComparisonInfo), this, this->commonStrings->RUN);
     
 (new ComparisonImageInputOutput())->save(imageComparisonInfo, imageComparisonInfo->getFrameTwo());
     

@@ -132,7 +132,7 @@ stringBuffer->append(SEP);
     
 stringBuffer->append(server);
     
-this->logUtil->putF(CommonLabels::getInstance()->START_LABEL +stringBuffer->toString(), this, this->commonStrings->GET);
+this->logUtil->putF(CommonLabels::getInstance()->START_LABEL +JavaString::valueOf(stringBuffer), this, this->commonStrings->GET);
     
 
     BasicArrayList* param = new BasicArrayListD();;
@@ -149,14 +149,14 @@ xmlRpcClient->setBasicAuthentication(
 
     ABHashtable<Object*, Object*>* hashtable = this->getClientInfo()->toHashtable();;
     
-this->logUtil->putF(CLIENT_INFO +hashtable->toString(), this, this->commonStrings->GET);
+this->logUtil->putF(CLIENT_INFO +JavaString::valueOf(hashtable), this, this->commonStrings->GET);
     
 param->add(hashtable);
     
 
     Object* result = JavaBoxes::toObject(xmlRpcClient->execute(this->getRemoteMethod(), param, cryptInterface));;
     
-this->logUtil->putF(RESULT +result->toString(), this, this->commonStrings->GET);
+this->logUtil->putF(RESULT +JavaString::valueOf(result), this, this->commonStrings->GET);
     
 
     ABHashtable<Object*, Object*>* resultHashtable = dynamic_cast<ABHashtable<Object*, Object*>*>(result);;
@@ -181,7 +181,7 @@ this->logUtil->putF(RESULT +result->toString(), this, this->commonStrings->GET);
 
     AbeLicenseInterface* abeLicenseInterface = new AbeClientLicense(resultHashtable);;
     
-this->logUtil->putF(this->commonStrings->END +stringBuffer->toString(), this, this->commonStrings->GET);
+this->logUtil->putF(this->commonStrings->END +JavaString::valueOf(stringBuffer), this, this->commonStrings->GET);
     
 isOnline= true;
     

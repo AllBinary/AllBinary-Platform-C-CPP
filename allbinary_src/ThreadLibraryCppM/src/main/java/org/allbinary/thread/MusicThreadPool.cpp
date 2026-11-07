@@ -93,7 +93,7 @@ MusicThreadPool::MusicThreadPool(std::string poolName, int32_t numThreads, int32
 
 
     auto MusicThreadPool::runTask(Runnable* task) -> void{
-this->logUtil->putF((new StringMaker())->append(StringUtil::getInstance()->toString(task))->appendlong(System.currentTimeMillis())->toString(), this, this->threadPoolStrings->ADD_TASK);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(StringUtil::getInstance()->toString(task))->appendlong(System.currentTimeMillis())), this, this->threadPoolStrings->ADD_TASK);
     
 ThreadPool::runTask(task);
     
@@ -101,13 +101,13 @@ ThreadPool::runTask(task);
 
 
     auto MusicThreadPool::startTask(Runnable* task) -> void{
-this->logUtil->putF((new StringMaker())->append(this->threadPoolStrings->START_TASK)->append(StringUtil::getInstance()->toString(task))->appendlong(System.currentTimeMillis())->toString(), this, this->commonStrings->RUN);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->threadPoolStrings->START_TASK)->append(StringUtil::getInstance()->toString(task))->appendlong(System.currentTimeMillis())), this, this->commonStrings->RUN);
     
 }
 
 
     auto MusicThreadPool::completedTask(Runnable* task) -> void{
-this->logUtil->putF((new StringMaker())->append(this->threadPoolStrings->COMPLETE_TASK)->append(StringUtil::getInstance()->toString(task))->appendlong(System.currentTimeMillis())->toString(), this, this->commonStrings->RUN);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->threadPoolStrings->COMPLETE_TASK)->append(StringUtil::getInstance()->toString(task))->appendlong(System.currentTimeMillis())), this, this->commonStrings->RUN);
     
 }
 

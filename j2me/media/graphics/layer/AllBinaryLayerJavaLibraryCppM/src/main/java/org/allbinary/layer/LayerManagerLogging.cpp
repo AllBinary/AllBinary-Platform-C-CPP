@@ -98,7 +98,7 @@ LayerManagerLogging* LayerManagerLogging::instance = LayerManagerLogging::instan
     auto LayerManagerLogging::append(AllBinaryLayer* layerInterface) -> void{
 this->stringBuilder->delete_(0, this->stringBuilder->length());
     
-this->logUtil->putF(this->stringBuilder->appendint(TsUtil::getInstance()->hashCode(this))->append(this->APPEND_)->append(layerInterface->getName())->toString(), this, this->APPEND);
+this->logUtil->putF(JavaString::valueOf(this->stringBuilder->appendint(TsUtil::getInstance()->hashCode(this))->append(this->APPEND_)->append(layerInterface->getName())), this, this->APPEND);
     
 }
 
@@ -106,7 +106,7 @@ this->logUtil->putF(this->stringBuilder->appendint(TsUtil::getInstance()->hashCo
     auto LayerManagerLogging::appendAt(AllBinaryLayer* layerInterface, int32_t index) -> void{
 this->stringBuilder->delete_(0, this->stringBuilder->length());
     
-this->logUtil->putF(this->stringBuilder->appendint(TsUtil::getInstance()->hashCode(this))->append(this->APPEND_)->append(layerInterface->getName())->append(this->_AT_)->appendint(index)->toString(), this, this->APPEND);
+this->logUtil->putF(JavaString::valueOf(this->stringBuilder->appendint(TsUtil::getInstance()->hashCode(this))->append(this->APPEND_)->append(layerInterface->getName())->append(this->_AT_)->appendint(index)), this, this->APPEND);
     
 }
 
@@ -120,7 +120,7 @@ this->logUtil->putF(this->stringBuilder->appendint(TsUtil::getInstance()->hashCo
                                     {
                                     this->stringBuilder->delete_(0, this->stringBuilder->length());
     
-this->logUtil->putF(this->stringBuilder->appendint(TsUtil::getInstance()->hashCode(this))->append(this->ATTEMPT_REMOVE_)->append(StringUtil::getInstance()->toString(layerInterface))->toString(), this, this->REMOVE);
+this->logUtil->putF(JavaString::valueOf(this->stringBuilder->appendint(TsUtil::getInstance()->hashCode(this))->append(this->ATTEMPT_REMOVE_)->append(StringUtil::getInstance()->toString(layerInterface))), this, this->REMOVE);
     
 
                                     }
@@ -128,7 +128,7 @@ this->logUtil->putF(this->stringBuilder->appendint(TsUtil::getInstance()->hashCo
                         else {
                             this->stringBuilder->delete_(0, this->stringBuilder->length());
     
-this->logUtil->putF(this->stringBuilder->appendint(TsUtil::getInstance()->hashCode(this))->append(this->ATTEMPT_REMOVE_)->append(layerInterface->getName())->toString(), this, this->REMOVE);
+this->logUtil->putF(JavaString::valueOf(this->stringBuilder->appendint(TsUtil::getInstance()->hashCode(this))->append(this->ATTEMPT_REMOVE_)->append(layerInterface->getName())), this, this->REMOVE);
     
 
                         }
@@ -145,7 +145,7 @@ this->logUtil->putF(this->stringBuilder->appendint(TsUtil::getInstance()->hashCo
                                     {
                                     this->stringBuilder->delete_(0, this->stringBuilder->length());
     
-this->logUtil->putF(this->stringBuilder->appendint(TsUtil::getInstance()->hashCode(this))->append(this->REMOVE_)->append(StringUtil::getInstance()->toString(layerInterface))->toString(), this, this->REMOVE);
+this->logUtil->putF(JavaString::valueOf(this->stringBuilder->appendint(TsUtil::getInstance()->hashCode(this))->append(this->REMOVE_)->append(StringUtil::getInstance()->toString(layerInterface))), this, this->REMOVE);
     
 
                                     }
@@ -160,7 +160,7 @@ this->logUtil->putF(this->stringBuilder->appendint(TsUtil::getInstance()->hashCo
                                     {
                                     this->stringBuilder->delete_(0, this->stringBuilder->length());
     
-this->logUtil->putF(this->stringBuilder->appendint(TsUtil::getInstance()->hashCode(this))->append(this->REMOVE_)->append(layerInterface->getName())->toString(), this, this->REMOVE);
+this->logUtil->putF(JavaString::valueOf(this->stringBuilder->appendint(TsUtil::getInstance()->hashCode(this))->append(this->REMOVE_)->append(layerInterface->getName())), this, this->REMOVE);
     
 
                                     }
@@ -171,7 +171,7 @@ this->logUtil->putF(this->stringBuilder->appendint(TsUtil::getInstance()->hashCo
                         else {
                             this->stringBuilder->delete_(0, this->stringBuilder->length());
     
-this->logUtil->putF(this->stringBuilder->appendint(TsUtil::getInstance()->hashCode(this))->append(this->DID_NOT_REMOVE)->append(layerInterface->getName())->toString(), this, this->REMOVE);
+this->logUtil->putF(JavaString::valueOf(this->stringBuilder->appendint(TsUtil::getInstance()->hashCode(this))->append(this->DID_NOT_REMOVE)->append(layerInterface->getName())), this, this->REMOVE);
     
 LayerManagerLogging::removeFailed= true;
     
@@ -210,7 +210,7 @@ this->stringBuilder->append(allBinaryLayer->getName())->append(commonSeps->COMMA
     
 }
 
-this->logUtil->putF(this->stringBuilder->toString(), this, this->REMOVE);
+this->logUtil->putF(JavaString::valueOf(this->stringBuilder), this, this->REMOVE);
     
 }
 
@@ -218,7 +218,7 @@ this->logUtil->putF(this->stringBuilder->toString(), this, this->REMOVE);
     auto LayerManagerLogging::clear() -> void{
 this->stringBuilder->delete_(0, this->stringBuilder->length());
     
-this->logUtil->putF(this->stringBuilder->appendint(TsUtil::getInstance()->hashCode(this))->append(this->CLEAR)->toString(), this, this->CLEAR);
+this->logUtil->putF(JavaString::valueOf(this->stringBuilder->appendint(TsUtil::getInstance()->hashCode(this))->append(this->CLEAR)), this, this->CLEAR);
     
 }
 

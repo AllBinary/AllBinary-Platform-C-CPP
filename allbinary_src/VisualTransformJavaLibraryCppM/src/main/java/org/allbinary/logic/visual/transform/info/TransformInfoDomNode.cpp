@@ -147,7 +147,7 @@ stringBuffer->appendint(nodeList->getLength());
     
 stringBuffer->append(" children");
     
-this->logUtil->putF(stringBuffer->toString(), this, "TransformInfoObjectConfigComponent(Node node)");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "TransformInfoObjectConfigComponent(Node node)");
     
 
                                     }
@@ -199,7 +199,7 @@ stringBuffer->appendint(nodeList->getLength());
     
 stringBuffer->append(" children");
     
-this->logUtil->putF(stringBuffer->toString(), this, "TransformInfoObjectConfigComponent(Node node)");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "TransformInfoObjectConfigComponent(Node node)");
     
 
                                     }
@@ -291,7 +291,7 @@ stringBuffer->append("body");
 stringBuffer->append("\"/>");
     
 
-    std::string key = stringBuffer->toString();;
+    std::string key = JavaString::valueOf(stringBuffer);;
     
 
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))

@@ -82,7 +82,7 @@ UpgradableWideRTSLayerPaintable::UpgradableWideRTSLayerPaintable(UpgradableRTSLa
     auto UpgradableWideRTSLayerPaintable::update(RTSLayer* rtsLayer) -> void{
 RTSLayerCompositePaintable::update(rtsLayer);
     
-this->setCost((new StringMaker())->append(this->getUpgradeCost())->append(CommonSeps::getInstance()->SPACE)->append(this->getDownGradeCost())->toString());
+this->setCost(JavaString::valueOf((new StringMaker())->append(this->getUpgradeCost())->append(CommonSeps::getInstance()->SPACE)->append(this->getDownGradeCost())));
     
 }
 

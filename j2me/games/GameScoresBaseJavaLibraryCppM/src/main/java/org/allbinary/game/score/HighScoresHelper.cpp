@@ -67,7 +67,7 @@ HighScoresHelper::HighScoresHelper() : circularIndexUtil(CircularIndexUtil::crea
     auto HighScoresHelper::setHighScoresArray(std::vector<HighScores*> highScoresArrayP) -> void{
 HighScoresHelperBase::setHighScoresArray(highScoresArrayP);
     
-this->circularIndexUtil->setSize(this->highScoresArrayP->size());
+this->circularIndexUtil->setSize(this->highScoresArrayP.size());
     
 }
 
@@ -80,7 +80,7 @@ this->circularIndexUtil->setSize(this->highScoresArrayP->size());
     int32_t index = 0;;
     
 
-        while((highScores->getTotal() < 1 || this->lastIndex == this->circularIndexUtil->getIndex()) && index < this->highScoresArrayP->size())
+        while((highScores->getTotal() < 1 || this->lastIndex == this->circularIndexUtil->getIndex()) && index < this->highScoresArrayP.size())
         {
 this->circularIndexUtil->next();
     
@@ -105,7 +105,7 @@ this->lastIndex= this->circularIndexUtil->getIndex();
 
     auto HighScoresHelper::isAnyHighScores() -> bool{
 
-                        if(this->highScoresArrayP->size() < 1)
+                        if(this->highScoresArrayP.size() < 1)
                         
                                     {
                                     
@@ -130,7 +130,7 @@ this->lastIndex= this->circularIndexUtil->getIndex();
 
 
                         for (
-    int32_t index = this->highScoresArrayP->size() -1;index >= 0; index--)
+    int32_t index = this->highScoresArrayP.size() -1;index >= 0; index--)
         {
 highScores= this->highScoresArrayP[index];
     

@@ -180,7 +180,7 @@ AuthenticationHelperUtil* AuthenticationHelperUtil::instance = AuthenticationHel
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf("Not Authorized: ") +JavaString::valueOf(basicUserRole->toString()), this, "isAuthorized()");
+                                    this->logUtil->putF(JavaString::valueOf("Not Authorized: ") +JavaString::valueOf(JavaString::valueOf(basicUserRole)), this, "isAuthorized()");
     
 
                                     }

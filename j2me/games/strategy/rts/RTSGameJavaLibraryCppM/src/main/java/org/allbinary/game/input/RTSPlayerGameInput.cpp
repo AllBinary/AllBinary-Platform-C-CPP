@@ -414,7 +414,7 @@ this->setSelectedRTSLayer(foundRTSLayer, geographicMapCellPosition);
                             
     CommonLabels* commonLabels = CommonLabels::getInstance();;
     
-this->logUtil->putF((new StringMaker())->append("Off Of Map -")->append(commonLabels->WIDTH_LABEL)->appendint(allBinaryTiledLayer->getWidth())->append(commonLabels->HEIGHT_LABEL)->appendint(allBinaryTiledLayer->getHeight())->toString(), this, "select");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Off Of Map -")->append(commonLabels->WIDTH_LABEL)->appendint(allBinaryTiledLayer->getWidth())->append(commonLabels->HEIGHT_LABEL)->appendint(allBinaryTiledLayer->getHeight())), this, "select");
     
 
                         }
@@ -527,7 +527,7 @@ graphics->drawRect(point->getX() -allBinaryTiledLayer->getXP(), point->getY() -a
 
 
     auto RTSPlayerGameInput::setSelectedRtsFormInput(RTSFormInput* selectedRtsFormInput) -> void{
-this->logUtil->putF((new StringMaker())->append("RTSFormInput: ")->append(StringUtil::getInstance()->toString(selectedRtsFormInput))->toString(), this, "setSelectedRtsFormInput");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("RTSFormInput: ")->append(StringUtil::getInstance()->toString(selectedRtsFormInput))), this, "setSelectedRtsFormInput");
     
 this->selectedRtsFormInput= selectedRtsFormInput;
     

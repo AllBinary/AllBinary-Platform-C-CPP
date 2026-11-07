@@ -193,7 +193,7 @@ ImageComparisonResultCacheSingleton::getInstance()->add(imageComparisonResultFra
     
 this->fireEvent(new ImageComparisonResultsEvent(this, imageComparisonResult));
     
-this->logUtil->putF((new StringMaker())->append("Image Comparison Result: ")->append(imageComparisonResult->toString())->append(" for frame: ")->appendlong(frame)->toString(), this, this->commonStrings->RUN);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Image Comparison Result: ")->append(JavaString::valueOf(imageComparisonResult))->append(" for frame: ")->appendlong(frame)), this, this->commonStrings->RUN);
     
 
                                     }
@@ -212,7 +212,7 @@ this->bufferedImageVector->remove(0);
 this->index2++;
     
 
-    std::string message = (new StringMaker())->append("Frame: ")->appendint(this->index2)->append(CommonLabels::getInstance()->ELAPSED)->appendlong(timeHelper->getElapsedTNT())->toString();;
+    std::string message = JavaString::valueOf((new StringMaker())->append("Frame: ")->appendint(this->index2)->append(CommonLabels::getInstance()->ELAPSED)->appendlong(timeHelper->getElapsedTNT()));;
     
 this->logUtil->putF(message, this, this->commonStrings->RUN);
     

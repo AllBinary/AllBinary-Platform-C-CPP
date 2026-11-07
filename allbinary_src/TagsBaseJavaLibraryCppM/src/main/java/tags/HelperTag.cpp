@@ -105,7 +105,7 @@ this->tagHelperFactoryInterface= tagHelperFactoryInterface;
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf("Creating TagHelper with: \n") +JavaString::valueOf(this->getPropertiesHashMap()->toString()), this, "doStartTag");
+                                    this->logUtil->putF(JavaString::valueOf("Creating TagHelper with: \n") +JavaString::valueOf(JavaString::valueOf(this->getPropertiesHashMap())), this, "doStartTag");
     
 
                                     }

@@ -114,7 +114,7 @@ AbPathUtilOld::AbPathUtilOld() : logUtil(LogUtil::getInstance()), abPathData(AbP
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->getExtension(abFilePath->toString());;
+                        return this->getExtension(JavaString::valueOf(abFilePath));;
     
 }
 
@@ -128,7 +128,7 @@ AbPathUtilOld::AbPathUtilOld() : logUtil(LogUtil::getInstance()), abPathData(AbP
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->getExtension(abPath->toString());;
+                        return this->getExtension(JavaString::valueOf(abPath));;
     
 }
 
@@ -183,7 +183,7 @@ AbPathUtilOld::AbPathUtilOld() : logUtil(LogUtil::getInstance()), abPathData(AbP
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->getWithoutExtension(abFilePath->toString());;
+                        return this->getWithoutExtension(JavaString::valueOf(abFilePath));;
     
 }
 
@@ -197,7 +197,7 @@ AbPathUtilOld::AbPathUtilOld() : logUtil(LogUtil::getInstance()), abPathData(AbP
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->getWithoutExtension(abPath->toString());;
+                        return this->getWithoutExtension(JavaString::valueOf(abPath));;
     
 }
 

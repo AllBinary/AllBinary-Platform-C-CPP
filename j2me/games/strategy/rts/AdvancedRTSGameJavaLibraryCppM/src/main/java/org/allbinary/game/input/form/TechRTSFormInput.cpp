@@ -176,7 +176,7 @@ RTSFormInput::process(layerManager);
 
     RTSInterface* rtsInterface = technologyRTSInterfaceImageItem->getRtsInterface();;
     
-this->logUtil->putF(stringMaker->append("isUpgradeable: ")->appendboolean(rtsInterface->isUpgradeable())->toString(), this, commonStrings->PROCESS);
+this->logUtil->putF(JavaString::valueOf(stringMaker->append("isUpgradeable: ")->appendboolean(rtsInterface->isUpgradeable())), this, commonStrings->PROCESS);
     
 
                         if(rtsInterface->isUpgradeable())
@@ -190,7 +190,7 @@ this->logUtil->putF(stringMaker->append("isUpgradeable: ")->appendboolean(rtsInt
     
 stringMaker->delete_(0, stringMaker->length());
     
-this->logUtil->putF(stringMaker->appendint(cost)->append("<=")->appendint(capital->getTotalMoney())->toString(), this, commonStrings->PROCESS);
+this->logUtil->putF(JavaString::valueOf(stringMaker->appendint(cost)->append("<=")->appendint(capital->getTotalMoney())), this, commonStrings->PROCESS);
     
 
                         if(cost <= capital->getTotalMoney())

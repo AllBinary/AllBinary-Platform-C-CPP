@@ -229,7 +229,7 @@ stringBuffer->appendint(this->image->getHeight());
     
 stringBuffer->append(commonSeps->SPACE);
     
-stringBuffer->append(this->animationFactoryInitializationVisitor->toString());
+stringBuffer->append(JavaString::valueOf(this->animationFactoryInitializationVisitor));
     
 
 
@@ -237,7 +237,7 @@ stringBuffer->append(this->animationFactoryInitializationVisitor->toString());
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

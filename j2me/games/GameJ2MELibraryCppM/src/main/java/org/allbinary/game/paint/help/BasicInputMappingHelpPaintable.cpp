@@ -144,7 +144,7 @@ list= gameKeyMapping->getInputMapping()->getMappedInput(gameKey);
     
 stringMaker->delete_(0, stringMaker->length());
     
-keyInfo[index]= stringMaker->append(gameInputMapping->getName())->append(EQUAL)->append(this->get(list))->toString();
+keyInfo[index]= JavaString::valueOf(stringMaker->append(gameInputMapping->getName())->append(EQUAL)->append(this->get(list)));
     
 }
 
@@ -225,7 +225,7 @@ stringBuffer->append(AND);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

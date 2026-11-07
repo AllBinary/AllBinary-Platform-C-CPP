@@ -199,7 +199,7 @@ stringBuffer->append(this->RATIOS_LABEL);
                         for (
     int32_t index = 0;index < this->getRatios().size(); index++)
         {
-stringBuffer->append(this->getRatios()[index].toString());
+stringBuffer->append(JavaString::valueOf(this->getRatios()[index]));
     
 
                         if(index < this->getRatios().size() -1)
@@ -230,7 +230,7 @@ stringBuffer->appendboolean(this->isDropping());
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

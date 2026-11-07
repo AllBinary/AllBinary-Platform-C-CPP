@@ -648,7 +648,7 @@ JTreeInterfaceFactory::getInstance()->getJTreeInterface()->getActionScriptJTree(
                 //@Throws(Exception.constructor)
             
     auto BasicProfileActionScriptCondition::process(int64_t frame) -> void{
-this->logUtil->putF((new StringMaker())->append("Start - Processing ")->appendint(this->getProfileActionProcessorInterfaceVector()->size())->append(" inputs")->toString(), this, this->commonStrings->PROCESS);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Start - Processing ")->appendint(this->getProfileActionProcessorInterfaceVector()->size())->append(" inputs")), this, this->commonStrings->PROCESS);
     
 
     BasicArrayList* profileActionProcessorInterfaceVector = this->getProfileActionProcessorInterfaceVector();;

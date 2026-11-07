@@ -147,7 +147,7 @@ allBinaryGameCanvas->setTouchPaintableP(NullPaintable::getInstance());
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil->putF(GameTypeFactory::getInstance()->BOT->toString(), this, commonStrings->RUN);
+this->logUtil->putF(JavaString::valueOf(GameTypeFactory::getInstance()->BOT), this, commonStrings->RUN);
     
 }
 

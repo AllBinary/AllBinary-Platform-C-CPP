@@ -257,7 +257,7 @@ initInfo->setLicenseId((new WeakCrypt(1))->decrypt(licenseIdDecoded));
     int32_t numberOfLicenseServers = iData->readInt();;
     
 
-    std::string NEXT_FILE = (new StringMaker())->append(CommonLabels::getInstance()->NEXT)->append(" License Server From File: ")->toString();;
+    std::string NEXT_FILE = JavaString::valueOf((new StringMaker())->append(CommonLabels::getInstance()->NEXT)->append(" License Server From File: "));;
     
 
     std::string licenseServerDecoded;;

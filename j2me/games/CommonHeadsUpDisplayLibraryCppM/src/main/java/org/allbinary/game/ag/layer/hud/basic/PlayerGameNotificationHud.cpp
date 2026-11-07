@@ -232,7 +232,7 @@ this->point->setY(y);
                                     {
                                     this->lastString= string;
     
-this->logUtil->putF((new StringMaker())->append(this->PERMANENT_GAME_NOTIFICATION)->append(string)->toString(), this, this->commonStrings->ADD);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->PERMANENT_GAME_NOTIFICATION)->append(string)), this, this->commonStrings->ADD);
     
 
                                     }

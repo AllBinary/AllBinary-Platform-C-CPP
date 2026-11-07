@@ -119,7 +119,7 @@ stringBuffer->append(parentTag->getClass()->getName());
 
 
 
-                            throw Exception(stringBuffer->toString());
+                            throw Exception(JavaString::valueOf(stringBuffer));
                     
 
                                     }

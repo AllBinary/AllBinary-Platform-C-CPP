@@ -121,7 +121,7 @@ this->setLicenseId(NONE);
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-PreLogUtil::put((new StringMaker())->append("Special Name: ")->append(this->getSpecialName())->toString(), this, commonStrings->CONSTRUCTOR);
+PreLogUtil::put(JavaString::valueOf((new StringMaker())->append("Special Name: ")->append(this->getSpecialName())), this, commonStrings->CONSTRUCTOR);
     
 
                 //: 

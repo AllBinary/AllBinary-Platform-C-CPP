@@ -102,7 +102,7 @@ Exception* ExceptionUtil::PRETEND_EXCEPTION = ExceptionUtil::PRETEND_EXCEPTION_o
 e->printStackTrace(printStream);
     
 
-    std::string output = byteArrayOutputStream->toString();;
+    std::string output = JavaString::valueOf(byteArrayOutputStream);;
     
 
                         if(true)

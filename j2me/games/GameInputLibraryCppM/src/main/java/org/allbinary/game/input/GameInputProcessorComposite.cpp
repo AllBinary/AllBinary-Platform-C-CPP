@@ -111,7 +111,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->UP
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return (new StringMaker())->append(PlayerGameInput::toString())->append(this->NAME_LABEL)->append(this->name)->toString();;
+                        return JavaString::valueOf((new StringMaker())->append(PlayerGameInput::toString())->append(this->NAME_LABEL)->append(this->name));;
     
 }
 

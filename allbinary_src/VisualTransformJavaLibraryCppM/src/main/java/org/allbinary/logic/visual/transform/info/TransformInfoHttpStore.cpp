@@ -111,7 +111,7 @@ TransformInfoHttpStore::TransformInfoHttpStore(HashMap<Object*, Object*>* proper
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf("Properties HashMap: ") +JavaString::valueOf(propertiesHashMap->toString()), this, this->commonStrings->CONSTRUCTOR);
+                                    this->logUtil->putF(JavaString::valueOf("Properties HashMap: ") +JavaString::valueOf(JavaString::valueOf(propertiesHashMap)), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -135,13 +135,13 @@ TransformInfoHttpStore::TransformInfoHttpStore(HashMap<Object*, Object*>* databa
     
 stringBuffer->append("Database HashMap: ");
     
-stringBuffer->append(databaseHashMap->toString());
+stringBuffer->append(JavaString::valueOf(databaseHashMap));
     
 stringBuffer->append("\nProperties HashMap: ");
     
-stringBuffer->append(propertiesHashMap->toString());
+stringBuffer->append(JavaString::valueOf(propertiesHashMap));
     
-this->logUtil->putF(stringBuffer->toString(), this, "Constructor(HashMap, HashMap , PageContext)");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "Constructor(HashMap, HashMap , PageContext)");
     
 
                                     }
@@ -162,7 +162,7 @@ TransformInfoHttpStore::TransformInfoHttpStore(StoreFrontInterface* storeFrontIn
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf("Properties HashMap: ") +JavaString::valueOf(propertiesHashMap->toString()), this, this->commonStrings->CONSTRUCTOR);
+                                    this->logUtil->putF(JavaString::valueOf("Properties HashMap: ") +JavaString::valueOf(JavaString::valueOf(propertiesHashMap)), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -192,7 +192,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

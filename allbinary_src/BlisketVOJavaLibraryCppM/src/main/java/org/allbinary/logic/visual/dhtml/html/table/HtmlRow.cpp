@@ -165,7 +165,7 @@ result += this->END;
                         for (
     int32_t i = 0;i < cellSize; i++)
         {
-result += this->htmlCellsVector->get(i)->toString();
+result += JavaString::valueOf(this->htmlCellsVector->get(i));
     
 result += " ";
     

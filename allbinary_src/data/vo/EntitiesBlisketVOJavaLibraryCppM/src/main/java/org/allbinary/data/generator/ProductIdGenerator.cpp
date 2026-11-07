@@ -78,7 +78,7 @@ stringBuffer->append(this->IDFILE);
     
 stringBuffer->append(UniqueIdGenerator::EXT);
     
-UniqueIdGenerator::setFile(stringBuffer->toString(), this->IDFILE);
+UniqueIdGenerator::setFile(JavaString::valueOf(stringBuffer), this->IDFILE);
     
 }
 

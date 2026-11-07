@@ -88,7 +88,7 @@ ExceptionUtil::ExceptionUtil() : PRETEND_EXCEPTION(new Exception("Not Really An 
 e->printStackTrace();
     
 
-    std::string output = bs->toString();;
+    std::string output = JavaString::valueOf(bs);;
     
 
                         if(true)

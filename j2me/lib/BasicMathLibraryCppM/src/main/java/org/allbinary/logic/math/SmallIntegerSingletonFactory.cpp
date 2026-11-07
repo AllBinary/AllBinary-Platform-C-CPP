@@ -110,7 +110,7 @@ SmallIntegerSingletonFactory* SmallIntegerSingletonFactory::instance = SmallInte
                                     
     LogUtil* logUtil = LogUtil::getInstance();;
     
-logUtil->putF((new StringMaker())->append("Android InputFactory was initialized before GameMidlet: ")->appendint(this->MIN)->toString(), this, "getMin");
+logUtil->putF(JavaString::valueOf((new StringMaker())->append("Android InputFactory was initialized before GameMidlet: ")->appendint(this->MIN)), this, "getMin");
     
 this->initWithRange(0x291, 6);
     
@@ -121,7 +121,7 @@ this->initWithRange(0x291, 6);
                             
     LogUtil* logUtil = LogUtil::getInstance();;
     
-logUtil->putF((new StringMaker())->append("InputFactory was initialized before GameMidlet or KeyFactoryInitializer - Currently this is occurs on JS build by TouchMotionGestureFactory constructor: ")->appendint(this->MIN)->toString(), this, "getMin");
+logUtil->putF(JavaString::valueOf((new StringMaker())->append("InputFactory was initialized before GameMidlet or KeyFactoryInitializer - Currently this is occurs on JS build by TouchMotionGestureFactory constructor: ")->appendint(this->MIN)), this, "getMin");
     
 this->initWithRange(0x2D0, 6);
     

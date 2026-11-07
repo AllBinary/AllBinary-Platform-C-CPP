@@ -140,7 +140,7 @@ MediaUtil::MediaUtil() : logUtil(LogUtil::getInstance()){
                                     
     HashMap<Object*, Object*>* hashMap = this->getImageBufferPropertyHashMap(bufferedImage);;
     
-this->logUtil->putF(JavaString::valueOf("Image Properties: ") +JavaString::valueOf(hashMap->toString()), this, "saveImageFile()");
+this->logUtil->putF(JavaString::valueOf("Image Properties: ") +JavaString::valueOf(JavaString::valueOf(hashMap)), this, "saveImageFile()");
     
 
                                     }
@@ -213,7 +213,7 @@ stringBuffer->append("\nNew File Length: ");
     
 stringBuffer->appendlong(imageFile->length());
     
-this->logUtil->putF(stringBuffer->toString(), this, "saveImageFile()");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "saveImageFile()");
     
 
                                     }
@@ -242,7 +242,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "saveImageFile()");
 
     Object* propertyObject = JavaBoxes::toObject(bufferedImage->getProperty(propertyStringArray[index]));;
     
-hashMap->put(propertyStringArray[index], propertyObject->toString());
+hashMap->put(propertyStringArray[index], JavaString::valueOf(propertyObject));
     
 }
 

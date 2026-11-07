@@ -240,9 +240,9 @@ values->add(this->getLicenseFile());
     
 values->add(this->getFile());
     
-values->add(this->getSize().toString());
+values->add(JavaString::valueOf(this->getSize()));
     
-values->add(this->getValidTime().toString());
+values->add(JavaString::valueOf(this->getValidTime()));
     
 values->add(this->getRetries());
     
@@ -285,9 +285,9 @@ values->put(DownloadItemData::LICENSE_FILE, this->getLicenseFile());
     
 values->put(DownloadItemData::FILE, this->getFile());
     
-values->put(DownloadItemData::SIZE, this->getSize().toString());
+values->put(DownloadItemData::SIZE, JavaString::valueOf(this->getSize()));
     
-values->put(DownloadItemData::VALID_TIME, this->getValidTime().toString());
+values->put(DownloadItemData::VALID_TIME, JavaString::valueOf(this->getValidTime()));
     
 values->put(DownloadItemData::RETRIES, this->getRetries());
     

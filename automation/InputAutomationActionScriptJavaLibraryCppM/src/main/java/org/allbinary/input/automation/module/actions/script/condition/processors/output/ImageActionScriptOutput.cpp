@@ -226,7 +226,7 @@ hashMap->put(ImageActionScriptOutputData::DISPLAY, Boolean::toString(this->isDis
     
 hashMap->put(ImageActionScriptOutputData::SAVE, Boolean::toString(this->isSaved()));
     
-this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(hashMap->toString()), this, "toHashMap()");
+this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(JavaString::valueOf(hashMap)), this, "toHashMap()");
     
 
 
@@ -327,7 +327,7 @@ stringBuffer->appendboolean(this->isDisplay());
     
 stringBuffer->append(" ");
     
-stringBuffer->append(this->getImageTypes()->toString());
+stringBuffer->append(JavaString::valueOf(this->getImageTypes()));
     
 
 
@@ -335,7 +335,7 @@ stringBuffer->append(this->getImageTypes()->toString());
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

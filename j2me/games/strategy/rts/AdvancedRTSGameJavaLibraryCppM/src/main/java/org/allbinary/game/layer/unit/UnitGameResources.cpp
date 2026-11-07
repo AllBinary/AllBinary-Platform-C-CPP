@@ -94,7 +94,7 @@ BasicGameResources::stringBuffer->append(string);
     
 BasicGameResources::stringBuffer->append(sizeString);
     
-this->RESOURCE_DESTROY= BasicGameResources::stringBuffer->toString();
+this->RESOURCE_DESTROY= JavaString::valueOf(BasicGameResources::stringBuffer);
     
 BasicGameResources::stringBuffer->delete_(0, BasicGameResources::stringBuffer->length());
     
@@ -102,7 +102,7 @@ BasicGameResources::stringBuffer->append(UnitGameResources::ICON);
     
 BasicGameResources::stringBuffer->append(ROOT);
     
-this->RESOURCE_ICON_ANIMATION= BasicGameResources::stringBuffer->toString();
+this->RESOURCE_ICON_ANIMATION= JavaString::valueOf(BasicGameResources::stringBuffer);
     
 BasicGameResources::stringBuffer->delete_(0, BasicGameResources::stringBuffer->length());
     
@@ -114,7 +114,7 @@ BasicGameResources::stringBuffer->append(string);
     
 BasicGameResources::stringBuffer->append(this->ICON_SIZE);
     
-this->RESOURCE_ICON= BasicGameResources::stringBuffer->toString();
+this->RESOURCE_ICON= JavaString::valueOf(BasicGameResources::stringBuffer);
     
 BasicGameResources::stringBuffer->delete_(0, BasicGameResources::stringBuffer->length());
     
@@ -126,7 +126,7 @@ BasicGameResources::stringBuffer->append(string);
     
 BasicGameResources::stringBuffer->append(this->ICON_SIZE);
     
-this->RESOURCE_ICON_BUILD= BasicGameResources::stringBuffer->toString();
+this->RESOURCE_ICON_BUILD= JavaString::valueOf(BasicGameResources::stringBuffer);
     
 }
 

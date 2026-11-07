@@ -166,7 +166,7 @@ stringBuffer->append("End: ");
     
 stringBuffer->appendboolean(valid);
     
-this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALID);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -219,7 +219,7 @@ stringBuffer->append("Title is not valid.");
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 
                 //: 

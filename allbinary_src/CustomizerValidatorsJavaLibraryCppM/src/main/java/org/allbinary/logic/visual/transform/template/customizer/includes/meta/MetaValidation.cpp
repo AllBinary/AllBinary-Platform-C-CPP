@@ -192,7 +192,7 @@ MetaValidation::MetaValidation(Document* document) : logUtil(LogUtil::getInstanc
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 
                 //: 
@@ -251,13 +251,13 @@ MetaValidation::MetaValidation(Document* document) : logUtil(LogUtil::getInstanc
 
     HtmlMetaAttributeDataFactory* htmlMetaAttributeDataFactory = HtmlMetaAttributeDataFactory::getInstance();;
     
-hashMap->put(HtmlMetaData::getInstance()->LABEL->toString(), this->label);
+hashMap->put(JavaString::valueOf(HtmlMetaData::getInstance()->LABEL), this->label);
     
-hashMap->put(htmlMetaAttributeDataFactory->NAME->toString(), this->name);
+hashMap->put(JavaString::valueOf(htmlMetaAttributeDataFactory->NAME), this->name);
     
-hashMap->put(htmlMetaAttributeDataFactory->HTTP_EQUIV->toString(), this->httpEquiv);
+hashMap->put(JavaString::valueOf(htmlMetaAttributeDataFactory->HTTP_EQUIV), this->httpEquiv);
     
-hashMap->put(htmlMetaAttributeDataFactory->CONTENT->toString(), this->content);
+hashMap->put(JavaString::valueOf(htmlMetaAttributeDataFactory->CONTENT), this->content);
     
 
 
@@ -274,7 +274,7 @@ hashMap->put(htmlMetaAttributeDataFactory->CONTENT->toString(), this->content);
             
     auto MetaValidation::toXmlNode(Document* document) -> Node*{
 
-    Node* node = ModDomHelper::createNameValueNodes(document, HtmlMetaData::getInstance()->NAME->toString(), this->toHashMap());;
+    Node* node = ModDomHelper::createNameValueNodes(document, JavaString::valueOf(HtmlMetaData::getInstance()->NAME), this->toHashMap());;
     
 
 

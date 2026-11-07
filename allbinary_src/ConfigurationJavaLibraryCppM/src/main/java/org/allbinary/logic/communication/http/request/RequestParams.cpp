@@ -178,7 +178,7 @@ stringBuffer->append(this->VALUE);
     
 stringBuffer->append(values[0]);
     
-this->logUtil->putF(stringBuffer->toString(), this, "toXmlNode(document)");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "toXmlNode(document)");
     
 node->appendChild(ModDomHelper::createNameValueNodes(document, RequestData::PARAMETER, std::string(key), .toCharArray()));
     
@@ -250,13 +250,13 @@ stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append("RequestParams: ");
     
-stringBuffer->append(this->map->toString());
+stringBuffer->append(JavaString::valueOf(this->map));
     
 stringBuffer->append("\ntoHashMap: ");
     
-stringBuffer->append(hashMap->toString());
+stringBuffer->append(JavaString::valueOf(hashMap));
     
-this->logUtil->putF(stringBuffer->toString(), this, "toHashMap()");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "toHashMap()");
     
 
 

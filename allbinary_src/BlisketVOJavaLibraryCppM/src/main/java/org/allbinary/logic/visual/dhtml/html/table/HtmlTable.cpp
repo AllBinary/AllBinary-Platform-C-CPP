@@ -167,7 +167,7 @@ result += this->END;
                         for (
     int32_t i = 0;i < size; i++)
         {
-result += this->htmlRowsVector->get(i)->toString();
+result += JavaString::valueOf(this->htmlRowsVector->get(i));
     
 result += " ";
     

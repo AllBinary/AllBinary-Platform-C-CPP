@@ -274,7 +274,7 @@ stringBuffer->append(this->sqlStrings->SET);
     int32_t i = 0;i < size; i++)
         {
 
-    std::string columnName = keyArray[i]->toString();;
+    std::string columnName = JavaString::valueOf(keyArray[i]);;
     
 stringBuffer->append(this->commonSeps->SPACE);
     
@@ -326,7 +326,7 @@ stringBuffer->append(this->getValue(value));
 stringBuffer->append(this->sqlStrings->CLOSE_QUOTE);
     
 
-    std::string sqlStatement = stringBuffer->toString();;
+    std::string sqlStatement = JavaString::valueOf(stringBuffer);;
     
 this->executeSQLStatement(sqlStatement);
     
@@ -386,7 +386,7 @@ stringBuffer->append(this->sqlStrings->SET);
     int32_t i = 0;i < size; i++)
         {
 
-    std::string columnName = keyArray[i]->toString();;
+    std::string columnName = JavaString::valueOf(keyArray[i]);;
     
 stringBuffer->append(this->commonSeps->SPACE);
     
@@ -486,7 +486,7 @@ stringBuffer->append(this->sqlStrings->CLOSE_QUOTE);
 }
 
 
-    std::string sqlStatement = stringBuffer->toString();;
+    std::string sqlStatement = JavaString::valueOf(stringBuffer);;
     
 this->executeSQLStatement(sqlStatement);
     
@@ -546,7 +546,7 @@ stringBuffer->append(this->sqlStrings->CLOSE_QUOTE);
 
         try {
             
-    std::string sqlStatement = stringBuffer->toString();;
+    std::string sqlStatement = JavaString::valueOf(stringBuffer);;
     
 this->executeSQLStatement(sqlStatement);
     
@@ -567,7 +567,7 @@ this->executeSQLStatement(sqlStatement);
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil->put(this->FAILED_SQL_STATEMENT +stringBuffer->toString(), this, this->METHOD_DELETE_WHERE, &e);
+                                    this->logUtil->put(this->FAILED_SQL_STATEMENT +JavaString::valueOf(stringBuffer), this, this->METHOD_DELETE_WHERE, &e);
     
 
                                     }
@@ -634,7 +634,7 @@ stringBuffer->append(this->sqlStrings->CLOSE_QUOTE);
 }
 
 
-    std::string sqlStatement = stringBuffer->toString();;
+    std::string sqlStatement = JavaString::valueOf(stringBuffer);;
     
 this->executeSQLStatement(sqlStatement);
     
@@ -655,7 +655,7 @@ this->executeSQLStatement(sqlStatement);
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil->put(this->FAILED_SQL_STATEMENT +stringBuffer->toString(), this, this->METHOD_DELETE_WHERE, &e);
+                                    this->logUtil->put(this->FAILED_SQL_STATEMENT +JavaString::valueOf(stringBuffer), this, this->METHOD_DELETE_WHERE, &e);
     
 
                                     }
@@ -705,7 +705,7 @@ stringBuffer->append(value);
 stringBuffer->append(this->INSERT_END);
     
 
-    std::string sqlStatement = stringBuffer->toString();;
+    std::string sqlStatement = JavaString::valueOf(stringBuffer);;
     
 this->executeSQLStatement(sqlStatement);
     
@@ -726,7 +726,7 @@ this->executeSQLStatement(sqlStatement);
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil->put(this->FAILED_SQL_STATEMENT +stringBuffer->toString(), this, INSERT, &e);
+                                    this->logUtil->put(this->FAILED_SQL_STATEMENT +JavaString::valueOf(stringBuffer), this, INSERT, &e);
     
 
                                     }
@@ -795,7 +795,7 @@ stringBuffer->append(this->sqlStrings->CLOSE_QUOTE);
 }
 
 
-    std::string sqlStatement = stringBuffer->toString();;
+    std::string sqlStatement = JavaString::valueOf(stringBuffer);;
     
 
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
@@ -841,7 +841,7 @@ result->put(columnName, field);
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->putF(this->ROW_VALUE_LABEL +result->toString(), this, this->METHOD_GET_ROW);
+                                    this->logUtil->putF(this->ROW_VALUE_LABEL +JavaString::valueOf(result), this, this->METHOD_GET_ROW);
     
 
                                     }
@@ -979,7 +979,7 @@ stringBuffer->append(this->sqlStrings->CLOSE_QUOTE);
 stringBuffer->append(more);
     
 
-    std::string sqlStatement = stringBuffer->toString();;
+    std::string sqlStatement = JavaString::valueOf(stringBuffer);;
     
 
     ResultSet* rset = this->executeSQLStatement(sqlStatement);;
@@ -1014,7 +1014,7 @@ result->put(columnName, field);
 }
 
 
-    std::string resultAsString = result->toString();;
+    std::string resultAsString = JavaString::valueOf(result);;
     
 
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
@@ -1086,7 +1086,7 @@ stringBuffer->append(this->getTableName());
     BasicArrayList* rows = new BasicArrayListD();;
     
 
-    std::string sqlStatement = stringBuffer->toString();;
+    std::string sqlStatement = JavaString::valueOf(stringBuffer);;
     
 
     ResultSet* rset = this->executeSQLStatement(sqlStatement);;
@@ -1124,7 +1124,7 @@ result->put(columnName, field);
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->putF(this->ROW_VALUES_LABEL +result->toString(), this, this->METHOD_GET_ALL_ROWS);
+                                    this->logUtil->putF(this->ROW_VALUES_LABEL +JavaString::valueOf(result), this, this->METHOD_GET_ALL_ROWS);
     
 
                                     }
@@ -1239,7 +1239,7 @@ stringBuffer->append(largest);
 stringBuffer->append(this->sqlStrings->CLOSE_QUOTE);
     
 
-    std::string sqlStatement = stringBuffer->toString();;
+    std::string sqlStatement = JavaString::valueOf(stringBuffer);;
     
 
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
@@ -1299,7 +1299,7 @@ result->put(columnName, field);
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->putF(this->ROW_VALUE_LABEL +result->toString(), this, this->METHOD_GET_ROWS_WHERE_BETWEEN);
+                                    this->logUtil->putF(this->ROW_VALUE_LABEL +JavaString::valueOf(result), this, this->METHOD_GET_ROWS_WHERE_BETWEEN);
     
 
                                     }
@@ -1376,7 +1376,7 @@ stringBuffer->append(largest);
 stringBuffer->append(this->sqlStrings->CLOSE_QUOTE);
     
 
-    std::string sqlStatement = stringBuffer->toString();;
+    std::string sqlStatement = JavaString::valueOf(stringBuffer);;
     
 
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
@@ -1436,7 +1436,7 @@ result->put(columnName, field);
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->putF(this->ROW_VALUE_LABEL +result->toString(), this, this->METHOD_GET_ROWS_WHERE_BETWEEN);
+                                    this->logUtil->putF(this->ROW_VALUE_LABEL +JavaString::valueOf(result), this, this->METHOD_GET_ROWS_WHERE_BETWEEN);
     
 
                                     }

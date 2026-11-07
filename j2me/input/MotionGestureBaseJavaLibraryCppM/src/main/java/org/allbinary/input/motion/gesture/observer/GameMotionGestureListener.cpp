@@ -179,7 +179,7 @@ stringBuffer->append(this->commonStrings->EXCEPTION_LABEL);
     
 stringBuffer->append(StringUtil::getInstance()->toString(ev->getMotionGesture()));
     
-this->logUtil->put(stringBuffer->toString(), this, "release", &e);
+this->logUtil->put(JavaString::valueOf(stringBuffer), this, "release", &e);
     
 }
 
@@ -237,7 +237,7 @@ stringBuffer->append(this->commonStrings->EXCEPTION_LABEL);
     
 stringBuffer->append(StringUtil::getInstance()->toString(ev->getMotionGesture()));
     
-this->logUtil->put(stringBuffer->toString(), this, "onMotionGestureEvent", &e);
+this->logUtil->put(JavaString::valueOf(stringBuffer), this, "onMotionGestureEvent", &e);
     
 }
 

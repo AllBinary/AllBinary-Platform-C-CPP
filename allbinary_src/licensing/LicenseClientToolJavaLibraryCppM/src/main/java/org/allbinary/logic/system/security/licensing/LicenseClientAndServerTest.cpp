@@ -216,14 +216,14 @@ LicenseInitInfoUtil::getInstance()->write(licenseInitInfo);
                                     {
                                     stringBuffer->append(PROCESSING);
     
-stringBuffer->append(abeLicenseInterface->toString());
+stringBuffer->append(JavaString::valueOf(abeLicenseInterface));
     
 
                                     }
                                 
 stringBuffer->append(END);
     
-this->logUtil->putF(JavaString::valueOf(RESULT) +JavaString::valueOf(stringBuffer->toString()), this, "test");
+this->logUtil->putF(JavaString::valueOf(RESULT) +JavaString::valueOf(JavaString::valueOf(stringBuffer)), this, "test");
     
 stringBuffer->delete_(0, stringBuffer->length());
     
@@ -233,19 +233,19 @@ stringBuffer->delete_(0, stringBuffer->length());
             {
 list->add(serverName);
     
-this->logUtil->put(JavaString::valueOf("Test Error: ") +JavaString::valueOf(stringBuffer->toString()), this, "test", &e);
+this->logUtil->put(JavaString::valueOf("Test Error: ") +JavaString::valueOf(JavaString::valueOf(stringBuffer)), this, "test", &e);
     
 }
 
 }
 
-this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Total Servers Failed: ") +JavaString::valueOf(list->size())) +JavaString::valueOf(" Failed Servers: ")) +JavaString::valueOf(list->toString()), this, "test");
+this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Total Servers Failed: ") +JavaString::valueOf(list->size())) +JavaString::valueOf(" Failed Servers: ")) +JavaString::valueOf(JavaString::valueOf(list)), this, "test");
     
 
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->put(JavaString::valueOf("Test Error: ") +JavaString::valueOf(stringBuffer->toString()), this, "test", &e);
+this->logUtil->put(JavaString::valueOf("Test Error: ") +JavaString::valueOf(JavaString::valueOf(stringBuffer)), this, "test", &e);
     
 }
 

@@ -209,7 +209,7 @@ stringBuffer->append(userName->get());
 stringBuffer->append(" from to the user table");
     
 
-    std::string success = stringBuffer->toString();;
+    std::string success = JavaString::valueOf(stringBuffer);;
     
 
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))

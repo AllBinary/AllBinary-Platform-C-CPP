@@ -148,7 +148,7 @@ this->value= value;
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf("\nSep Tokens: ") +JavaString::valueOf(nameSpaceWithPropertiesVector->toString()), this, "NameSpaceRequestParam()");
+                                    this->logUtil->putF(JavaString::valueOf("\nSep Tokens: ") +JavaString::valueOf(JavaString::valueOf(nameSpaceWithPropertiesVector)), this, "NameSpaceRequestParam()");
     
 
                                     }
@@ -183,7 +183,7 @@ list->clear();
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf("\nPackageName and PackageName Properties Tokens: ") +JavaString::valueOf(nameSpaceAndPropertiesVector->toString()), this, "NameSpaceRequestParam()");
+                                    this->logUtil->putF(JavaString::valueOf("\nPackageName and PackageName Properties Tokens: ") +JavaString::valueOf(JavaString::valueOf(nameSpaceAndPropertiesVector)), this, "NameSpaceRequestParam()");
     
 
                                     }
@@ -235,7 +235,7 @@ packageIndex++;
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf("NameSpace: ") +JavaString::valueOf(this->nameSpaceVector->toString()), this, "NameSpaceRequestParam()");
+                                    this->logUtil->putF(JavaString::valueOf("NameSpace: ") +JavaString::valueOf(JavaString::valueOf(this->nameSpaceVector)), this, "NameSpaceRequestParam()");
     
 
                                     }
@@ -248,7 +248,7 @@ packageIndex++;
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf("NameSpace: ") +JavaString::valueOf(this->nameSpaceVector->toString()), this, "getPackages()");
+                                    this->logUtil->putF(JavaString::valueOf("NameSpace: ") +JavaString::valueOf(JavaString::valueOf(this->nameSpaceVector)), this, "getPackages()");
     
 
                                     }
@@ -283,7 +283,7 @@ packageIndex++;
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf("Package Properties: ") +JavaString::valueOf(packagePropertiesHashMap->toString()), this, "getPackagesProperties()");
+                                    this->logUtil->putF(JavaString::valueOf("Package Properties: ") +JavaString::valueOf(JavaString::valueOf(packagePropertiesHashMap)), this, "getPackagesProperties()");
     
 
                                     }

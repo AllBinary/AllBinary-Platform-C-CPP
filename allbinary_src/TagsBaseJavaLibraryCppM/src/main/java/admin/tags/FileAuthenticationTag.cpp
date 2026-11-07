@@ -507,7 +507,7 @@ stringBuffer->append(" > ");
     
 stringBuffer->appendlong(timeCreated);
     
-this->logUtil->putF(stringBuffer->toString(), this, "isSessionOld()");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "isSessionOld()");
     
 
                                     }
@@ -614,7 +614,7 @@ stringBuffer->append(" > ");
     
 stringBuffer->appendlong(timePassed);
     
-this->logUtil->putF(stringBuffer->toString(), this, "isRarelyUsedSession()");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "isRarelyUsedSession()");
     
 
                                     }
@@ -703,7 +703,7 @@ stringBuffer->append("Trying New login<p>");
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 
                 //: 
@@ -754,7 +754,7 @@ stringBuffer->append("Trying New login<p>");
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 
                 //: 
@@ -1418,7 +1418,7 @@ stringBuffer->append(" Command: ");
     
 stringBuffer->append(this->command);
     
-this->logUtil->putF(stringBuffer->toString(), this, this->tagStrings->DO_START_TAG);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->tagStrings->DO_START_TAG);
     
 
                                     }

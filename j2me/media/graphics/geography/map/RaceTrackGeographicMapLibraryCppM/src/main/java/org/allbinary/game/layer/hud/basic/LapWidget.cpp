@@ -102,7 +102,7 @@ stringBuffer->append(this->OF_STR);
     
 stringBuffer->appendint(lapInfo->getTotalLaps());
     
-this->string= stringBuffer->toString();
+this->string= JavaString::valueOf(stringBuffer);
     
 }
 

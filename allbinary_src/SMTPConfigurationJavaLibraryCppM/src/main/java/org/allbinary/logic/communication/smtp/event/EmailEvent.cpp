@@ -118,9 +118,9 @@ stringBuffer->append("EmailEvent Log: \n");
     
 stringBuffer->append("Event Name: ");
     
-stringBuffer->append(this->userEmailEventNameData->toString());
+stringBuffer->append(JavaString::valueOf(this->userEmailEventNameData));
     
-stringBuffer->append(this->getEmailInfo()->toString());
+stringBuffer->append(JavaString::valueOf(this->getEmailInfo()));
     
 stringBuffer->append("\nNumber of Attempts: ");
     
@@ -132,7 +132,7 @@ stringBuffer->appendint(this->getAttempts());
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

@@ -134,7 +134,7 @@ OpenGLUtil* OpenGLUtil::instance = OpenGLUtil::instance_owner();
                                     {
                                     this->created= true;
     
-PreLogUtil::put(CommonLabels::getInstance()->START_LABEL +OpenGLCapabilities::getInstance()->toString(), this, this->renderStrings->ON_SURFACE_CREATED);
+PreLogUtil::put(CommonLabels::getInstance()->START_LABEL +JavaString::valueOf(OpenGLCapabilities::getInstance()), this, this->renderStrings->ON_SURFACE_CREATED);
     
 
                                     }

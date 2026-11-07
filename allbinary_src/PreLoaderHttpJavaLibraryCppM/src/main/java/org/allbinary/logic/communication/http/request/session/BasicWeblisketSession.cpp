@@ -100,7 +100,7 @@ this->session= request->getSession(true);
 
 
     auto BasicWeblisketSession::setRole(BasicUserRole* aRole) -> void{
-this->session->setAttribute(BasicUserRoleData::NAME->toString(), aRole);
+this->session->setAttribute(JavaString::valueOf(BasicUserRoleData::NAME), aRole);
     
 }
 
@@ -112,7 +112,7 @@ this->session->setAttribute(BasicUserRoleData::NAME->toString(), aRole);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return dynamic_cast<BasicUserRole*>(this->session->getAttribute(BasicUserRoleData::NAME->toString()));
+                        return dynamic_cast<BasicUserRole*>(this->session->getAttribute(JavaString::valueOf(BasicUserRoleData::NAME)));
     
 }
 
@@ -130,7 +130,7 @@ this->session->setAttribute(UserData::USERNAME, userName);
 
 
     auto BasicWeblisketSession::setPaymentMethod(std::string value) -> void{
-this->session->setAttribute(PaymentGatewayData::NAME->toString(), value);
+this->session->setAttribute(JavaString::valueOf(PaymentGatewayData::NAME), value);
     
 }
 
@@ -202,7 +202,7 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return JavaBoxes::unbox<std::string>(this->session->getAttribute(PaymentGatewayData::NAME->toString()));
+                        return JavaBoxes::unbox<std::string>(this->session->getAttribute(JavaString::valueOf(PaymentGatewayData::NAME)));
     
 }
 
@@ -266,7 +266,7 @@ this->session->removeAttribute(WeblisketSessionData::AUTHENTICATED);
     
 this->session->removeAttribute(WeblisketSessionData::TIMEOUT);
     
-this->session->removeAttribute(BasicUserRoleData::NAME->toString());
+this->session->removeAttribute(JavaString::valueOf(BasicUserRoleData::NAME));
     
 this->session->removeAttribute(UserData::USERNAME);
     

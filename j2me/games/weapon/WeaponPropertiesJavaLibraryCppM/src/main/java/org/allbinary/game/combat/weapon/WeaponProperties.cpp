@@ -85,7 +85,7 @@ WeaponProperties::WeaponProperties(int64_t reloadTime, int64_t targetingTime, in
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-PreLogUtil::put((new StringMaker())->append(MESSAGE)->appendlong(speed)->toString(), this, commonStrings->CONSTRUCTOR);
+PreLogUtil::put(JavaString::valueOf((new StringMaker())->append(MESSAGE)->appendlong(speed)), this, commonStrings->CONSTRUCTOR);
     
 WeaponProperties::messageSent= true;
     
@@ -199,15 +199,15 @@ this->speed= speed;
 
     StringMaker* stringBuffer = new StringMaker();;
     
-stringArray[index++]= stringBuffer->append(WeaponProperties::DAMAGE)->appendint(this->getDamage())->toString();
+stringArray[index++]= JavaString::valueOf(stringBuffer->append(WeaponProperties::DAMAGE)->appendint(this->getDamage()));
     
 stringBuffer->delete_(0, stringBuffer->length());
     
-stringArray[index++]= stringBuffer->append(WeaponProperties::RANGE)->appendint(this->getRange())->toString();
+stringArray[index++]= JavaString::valueOf(stringBuffer->append(WeaponProperties::RANGE)->appendint(this->getRange()));
     
 stringBuffer->delete_(0, stringBuffer->length());
     
-stringArray[index++]= stringBuffer->append(WeaponProperties::RELOAD)->appendlong(this->getReloadTime())->toString();
+stringArray[index++]= JavaString::valueOf(stringBuffer->append(WeaponProperties::RELOAD)->appendlong(this->getReloadTime()));
     
 
 
@@ -240,7 +240,7 @@ stringBuffer->append(WeaponProperties::RELOAD)->appendlong(this->getReloadTime()
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

@@ -117,7 +117,7 @@ UserConfigurationInterfaceFactory::UserConfigurationInterfaceFactory(){
             
     auto UserConfigurationInterfaceFactory::getInstance(UserRole* userRole) -> UserConfigurationInterface*{
 
-    AbPath* abPath = new AbPath(URLGLOBALS::getMainPath() +FREEBLISKET_PATH_GLOBALS::getInstance()->USERCONFIGURATIONPATH, UserConfigurationInterfaceFactory::configurationName +userRole->toString() +AbPathData::getInstance()->EXTENSION_SEP +UserConfigurationData::UNCRYPTED_EXTENSION);;
+    AbPath* abPath = new AbPath(URLGLOBALS::getMainPath() +FREEBLISKET_PATH_GLOBALS::getInstance()->USERCONFIGURATIONPATH, UserConfigurationInterfaceFactory::configurationName +JavaString::valueOf(userRole) +AbPathData::getInstance()->EXTENSION_SEP +UserConfigurationData::UNCRYPTED_EXTENSION);;
     
 
     std::string documentString = (new CryptFileReader(UserConfigurationData::UNCRYPTED_EXTENSION, UserConfigurationData::ENCRYPTED_EXTENSION))->get(abPath);;

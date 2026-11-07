@@ -202,7 +202,7 @@ totalWeight->add(JavaString::valueOf(weightFloat));
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return totalWeight->toString();;
+                        return JavaString::valueOf(totalWeight);;
     
 }
 
@@ -307,7 +307,7 @@ totalWeight->add(JavaString::valueOf(weightFloat));
     
 productTotal->multiply(getNumberOf(product));
     
-subTotal->add(productTotal->toString());
+subTotal->add(JavaString::valueOf(productTotal));
     
 }
 

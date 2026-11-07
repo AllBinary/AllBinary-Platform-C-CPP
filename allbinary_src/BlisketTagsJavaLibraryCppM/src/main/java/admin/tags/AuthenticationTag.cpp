@@ -537,7 +537,7 @@ this->roles= values;
 
     std::vector<Object*> methodArgs = 
                                                         {
-                                                            this->userName,this->password,this->roles
+                                                            JavaBoxes::toObject(this->userName),JavaBoxes::toObject(this->password),JavaBoxes::toObject(this->roles)
                                                         };;
     
 
@@ -742,7 +742,7 @@ this->roles= values;
 
     std::vector<Object*> methodArgs = 
                                                         {
-                                                            this->roles
+                                                            JavaBoxes::toObject(this->roles)
                                                         };;
     
 
@@ -815,7 +815,7 @@ this->roles= values;
 
     std::vector<Object*> methodArgs = 
                                                         {
-                                                            this->userName,this->password
+                                                            JavaBoxes::toObject(this->userName),JavaBoxes::toObject(this->password)
                                                         };;
     
 
@@ -950,7 +950,7 @@ stringBuffer->append(" Request URI: ");
     
 stringBuffer->append(request->getRequestURI());
     
-this->logUtil->putF(stringBuffer->toString(), this, tagStrings.DO_START_TAG);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, tagStrings.DO_START_TAG);
     
 
                                     }
@@ -1346,7 +1346,7 @@ pageContext.getOut()->print(invalidRole());
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil->putF((new StringMaker())->append("Major authentication error - userName: ")->append(this->userName)->append(" Password: ")->append(this->password)->append(" Command: ")->append(this->command)->toString(), this, tagStrings.DO_START_TAG);
+                                    this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Major authentication error - userName: ")->append(this->userName)->append(" Password: ")->append(this->password)->append(" Command: ")->append(this->command)), this, tagStrings.DO_START_TAG);
     
 
                                     }

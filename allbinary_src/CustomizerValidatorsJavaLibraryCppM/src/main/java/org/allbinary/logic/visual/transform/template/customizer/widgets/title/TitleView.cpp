@@ -148,7 +148,7 @@ TitleView::TitleView(HashMap<Object*, Object*>* hashMap) : logUtil(LogUtil::getI
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(hashMap->toString()), this, this->commonStrings->CONSTRUCTOR);
+                                    this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(JavaString::valueOf(hashMap)), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -212,7 +212,7 @@ hashMap->put(TitleData::getInstance()->TEXT, this->getTitle());
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf("TitleView HashMap: ") +JavaString::valueOf(hashMap->toString()), this, "toXmlNode()");
+                                    this->logUtil->putF(JavaString::valueOf("TitleView HashMap: ") +JavaString::valueOf(JavaString::valueOf(hashMap)), this, "toXmlNode()");
     
 
                                     }

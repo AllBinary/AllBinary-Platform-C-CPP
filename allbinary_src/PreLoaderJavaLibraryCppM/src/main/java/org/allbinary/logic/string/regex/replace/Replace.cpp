@@ -218,7 +218,7 @@ index= newStringBuffer->length();
     
 newStringBuffer->append(JavaString::substring(replace, end, replace.size()));
     
-replace= newStringBuffer->toString();
+replace= JavaString::valueOf(newStringBuffer);
     
 
                         if(keys.size() > 1)
@@ -245,7 +245,7 @@ index= newStringBuffer->length();
     
 newStringBuffer->append(JavaString::substring(replace, end2, replace.size()));
     
-replace= newStringBuffer->toString();
+replace= JavaString::valueOf(newStringBuffer);
     
 
                                     }
@@ -366,7 +366,7 @@ index= newStringBuffer->length();
     
 newStringBuffer->append(JavaString::substring(replace, end, replace.size()));
     
-replace= newStringBuffer->toString();
+replace= JavaString::valueOf(newStringBuffer);
     
 totalNumberOfReplaces++;
     

@@ -118,7 +118,7 @@ this->put(specialMessage, anyType, functionName, exception);
                         if(true)
                         
                                     {
-                                    className= (new StringMaker())->append(anyType->getClass()->getName())->append(CommonSeps::getInstance()->COLON)->append(Integer.toHexString(TsUtil::getInstance()->hashCode(anyType)))->toString();
+                                    className= JavaString::valueOf((new StringMaker())->append(anyType->getClass()->getName())->append(CommonSeps::getInstance()->COLON)->append(Integer.toHexString(TsUtil::getInstance()->hashCode(anyType))));
     
 
                                     }
@@ -158,7 +158,7 @@ System.out.println(message);
 
     std::string hexString = Integer.toHexString(hashCodeValue);;
     
-className= (new StringMaker())->append(anyType->getClass()->getName())->append(CommonSeps::getInstance()->COLON)->append(hexString)->toString();
+className= JavaString::valueOf((new StringMaker())->append(anyType->getClass()->getName())->append(CommonSeps::getInstance()->COLON)->append(hexString));
     
 
                                     }

@@ -99,7 +99,7 @@ StoreTagWorkFlowHelper::StoreTagWorkFlowHelper(HashMap<Object*, Object*>* hashMa
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPER))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf("Properties: ") +JavaString::valueOf(hashMap->toString()), this, "StoreTagWorkFlowHelper()");
+                                    this->logUtil->putF(JavaString::valueOf("Properties: ") +JavaString::valueOf(JavaString::valueOf(hashMap)), this, "StoreTagWorkFlowHelper()");
     
 
                                     }

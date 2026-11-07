@@ -90,7 +90,7 @@ stringBuffer->append("data");
     
 stringBuffer->append(abPathData->SEPARATOR);
     
-this->DATA_PATH= stringBuffer->toString();
+this->DATA_PATH= JavaString::valueOf(stringBuffer);
     
 stringBuffer->delete_(0, stringBuffer->length());
     
@@ -100,7 +100,7 @@ stringBuffer->append(CommonStrings::getInstance()->INIT);
     
 stringBuffer->append(abPathData->SEPARATOR);
     
-this->INIT_PATH= stringBuffer->toString();
+this->INIT_PATH= JavaString::valueOf(stringBuffer);
     
 stringBuffer->delete_(0, stringBuffer->length());
     
@@ -110,7 +110,7 @@ stringBuffer->append("log");
     
 stringBuffer->append(abPathData->SEPARATOR);
     
-this->LOG_PATH= stringBuffer->toString();
+this->LOG_PATH= JavaString::valueOf(stringBuffer);
     
 stringBuffer->delete_(0, stringBuffer->length());
     
@@ -120,7 +120,7 @@ stringBuffer->append("backup");
     
 stringBuffer->append(abPathData->SEPARATOR);
     
-this->BACKUP_PATH= stringBuffer->toString();
+this->BACKUP_PATH= JavaString::valueOf(stringBuffer);
     
 stringBuffer->delete_(0, stringBuffer->length());
     
@@ -130,7 +130,7 @@ stringBuffer->append("views");
     
 stringBuffer->append(abPathData->SEPARATOR);
     
-this->VIEWS_PATH= stringBuffer->toString();
+this->VIEWS_PATH= JavaString::valueOf(stringBuffer);
     
 }
 

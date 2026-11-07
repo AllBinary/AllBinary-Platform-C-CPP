@@ -220,7 +220,7 @@ stringBuffer->append(id);
 stringBuffer->append(" from to the Inventory table");
     
 
-    std::string success = stringBuffer->toString();;
+    std::string success = JavaString::valueOf(stringBuffer);;
     
 
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))

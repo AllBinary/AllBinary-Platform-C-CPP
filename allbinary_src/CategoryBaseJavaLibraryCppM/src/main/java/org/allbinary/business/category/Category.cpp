@@ -217,7 +217,7 @@ rootAbPath= rootCategoryPropertiesInterface->getRootFilePath();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return new AbPath(this->getRootFilePath()->toString() +this->getProperties()->getPath(this->getHierarchy()).toString(), this->getProperties()->getFileName());
+                        return new AbPath(JavaString::valueOf(this->getRootFilePath()) +JavaString::valueOf(this->getProperties()->getPath(this->getHierarchy())), this->getProperties()->getFileName());
     
 }
 
@@ -757,13 +757,13 @@ stringBuffer->append(this->categoryPropertiesInterface->getValue());
     
 stringBuffer->append("\nPath = ");
     
-stringBuffer->append(this->getPath()->toString());
+stringBuffer->append(JavaString::valueOf(this->getPath()));
     
 stringBuffer->append("\nFile Path: ");
     
-stringBuffer->append(this->getFilePath()->toString());
+stringBuffer->append(JavaString::valueOf(this->getFilePath()));
     
-this->logUtil->putF(stringBuffer->toString(), this, "log()");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "log()");
     
 
                                     }

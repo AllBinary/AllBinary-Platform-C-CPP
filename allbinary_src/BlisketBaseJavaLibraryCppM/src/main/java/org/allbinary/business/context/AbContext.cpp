@@ -83,7 +83,7 @@ AbContext::AbContext(HashMap<Object*, Object*>* propertiesHashMap, PageContext* 
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf("Properties HashMap: ") +JavaString::valueOf(propertiesHashMap->toString()), this, this->commonStrings->CONSTRUCTOR);
+                                    this->logUtil->putF(JavaString::valueOf("Properties HashMap: ") +JavaString::valueOf(JavaString::valueOf(propertiesHashMap)), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }

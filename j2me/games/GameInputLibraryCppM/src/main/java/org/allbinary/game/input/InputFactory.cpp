@@ -134,7 +134,7 @@ this->inputIntegerArray[id]= input;
                         if(id > this->inputIntegerArray.size())
                         
                                     {
-                                    this->logUtil->putF((new StringMaker())->append("Warning id: ")->appendint(id)->toString(), this, this->commonStrings->GET_INSTANCE);
+                                    this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Warning id: ")->appendint(id)), this, this->commonStrings->GET_INSTANCE);
     
 
 

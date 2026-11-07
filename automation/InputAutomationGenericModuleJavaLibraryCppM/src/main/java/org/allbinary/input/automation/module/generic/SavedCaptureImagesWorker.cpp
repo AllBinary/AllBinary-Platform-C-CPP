@@ -178,7 +178,7 @@ filePathStringBuffer->append(LongUtil::fillIn(JavaString::valueOf(frame)));
 filePathStringBuffer->append(MediaDataFactory::getInstance()->JPG->getExtension());
     
 
-    std::string filePath = filePathStringBuffer->toString();;
+    std::string filePath = JavaString::valueOf(filePathStringBuffer);;
     
 this->logUtil->putF(JavaString::valueOf("Loading Image File Path: ") +JavaString::valueOf(filePath), this, this->commonStrings->RUN);
     

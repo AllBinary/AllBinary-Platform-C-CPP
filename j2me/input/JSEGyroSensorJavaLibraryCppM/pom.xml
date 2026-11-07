@@ -148,6 +148,37 @@
             <optional>true</optional>
         </dependency>
 
+
+        <!-- RecordStore.h: optional dependencies are not transitive, so GameConfigurationJ2MEJavaLibraryCpp does not bring it -->
+        <dependency>
+            <groupId>org.microemu</groupId>
+            <artifactId>microemu-midp-for-polyglotCpp</artifactId>
+            <version>2.0.4</version>
+            <optional>true</optional>
+        </dependency>
+
+
+        <!-- GL.h: optional dependencies are not transitive, so AnimationLibraryCpp does not bring it -->
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>OpenGLNoneJavaLibraryCpp</artifactId>
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+            <optional>true</optional>
+        </dependency>
+
+
+        <!-- OpenGLSurfaceChangedInterface.h: optional dependencies are not transitive, so AnimationLibraryCpp does not bring it -->
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>OpenGLNoneOtherJavaLibraryCpp</artifactId>
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+            <optional>true</optional>
+        </dependency>
+
     </dependencies>
 
     <build>

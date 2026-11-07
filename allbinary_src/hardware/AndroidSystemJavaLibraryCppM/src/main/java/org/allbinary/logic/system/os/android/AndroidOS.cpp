@@ -275,7 +275,7 @@ osBuffer->append(CommonSeps::getInstance()->SPACE);
     
 osBuffer->append("Other System Info: \n");
     
-osBuffer->append(this->stringBuffer->toString());
+osBuffer->append(JavaString::valueOf(this->stringBuffer));
     
 
 
@@ -283,7 +283,7 @@ osBuffer->append(this->stringBuffer->toString());
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return osBuffer->toString();;
+                        return JavaString::valueOf(osBuffer);;
     
 }
 

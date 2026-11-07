@@ -162,7 +162,7 @@ name= stringUtil->EMPTY_STRING;
                         else {
                             stringMaker->delete_(0, stringMaker->length());
     
-name= stringMaker->append(TEAM)->appendint(size)->toString();
+name= JavaString::valueOf(stringMaker->append(TEAM)->appendint(size));
     
 
                         }

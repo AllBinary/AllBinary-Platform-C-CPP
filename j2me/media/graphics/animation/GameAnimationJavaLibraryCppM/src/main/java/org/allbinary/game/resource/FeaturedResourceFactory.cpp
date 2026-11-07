@@ -118,7 +118,7 @@ FeaturedResourceFactory::FeaturedResourceFactory() : logUtil(LogUtil::getInstanc
 
     bool isFeature = featureInterface->isFeature();;
     
-this->logUtil->putF((new StringMaker())->append(this->GAME_FEATURE_CONTROLLED)->append(featureInterface->toString())->append(this->IS_LOADING_LEVEL_LABEL)->append(ResourceLoadingLevelFactory::getInstance()->getLevelString(level))->append(CommonSeps::getInstance()->COLON_SEP)->appendboolean(isLoadingLevel)->append(this->IS_FEATURE)->appendboolean(isFeature)->toString(), this, this->commonStrings->INIT);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->GAME_FEATURE_CONTROLLED)->append(JavaString::valueOf(featureInterface))->append(this->IS_LOADING_LEVEL_LABEL)->append(ResourceLoadingLevelFactory::getInstance()->getLevelString(level))->append(CommonSeps::getInstance()->COLON_SEP)->appendboolean(isLoadingLevel)->append(this->IS_FEATURE)->appendboolean(isFeature)), this, this->commonStrings->INIT);
     
 
                         if(isLoadingLevel && isFeature)
@@ -148,7 +148,7 @@ stringBuffer->append(this->IMAGE_LABEL);
     
 stringBuffer->appendboolean(features->isFeature(graphicsFeatureFactory->IMAGE_GRAPHICS));
     
-this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->INIT);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->commonStrings->INIT);
     
 
                         if(features->isFeature(graphicsFeatureFactory->IMAGE_GRAPHICS))
@@ -172,7 +172,7 @@ stringBuffer->append(this->SPRITE_FULL);
     
 stringBuffer->appendboolean(features->isFeature(graphicsFeatureFactory->SPRITE_FULL_GRAPHICS));
     
-this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->INIT);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->commonStrings->INIT);
     
 
                                     }
@@ -187,7 +187,7 @@ this->list->clear();
 
 
     auto FeaturedResourceFactory::add(GameFeatureControlledInterface* featureInterface) -> void{
-this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->START_LABEL)->append(StringUtil::getInstance()->toString(featureInterface))->toString(), this, this->commonStrings->ADD);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(CommonLabels::getInstance()->START_LABEL)->append(StringUtil::getInstance()->toString(featureInterface))), this, this->commonStrings->ADD);
     
 this->list->add(featureInterface);
     

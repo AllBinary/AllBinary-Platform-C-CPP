@@ -210,7 +210,7 @@ this->set(input, mappedToInput);
 
 
     auto InputToGameKeyMapping::remove(Input* input, Input* mappedToInput) -> void{
-this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->START_LABEL)->append(StringUtil::getInstance()->toString(input))->append(" == ")->append(StringUtil::getInstance()->toString(mappedToInput))->toString(), this, "InputToGameKeyMapping::remove");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(CommonLabels::getInstance()->START_LABEL)->append(StringUtil::getInstance()->toString(input))->append(" == ")->append(StringUtil::getInstance()->toString(mappedToInput))), this, "InputToGameKeyMapping::remove");
     
 InputMapping::remove(input, mappedToInput);
     
@@ -327,7 +327,7 @@ this->set(input, this->gameKeyFactory->NONE);
                                     }
                                 
                         else {
-                            PreLogUtil::putOE((new StringMaker())->append(gameKey->toString())->append(CommonSeps::getInstance()->COLON_SEP)->appendint(key)->toString(), this, this->commonStrings->INIT, new Exception());
+                            PreLogUtil::putOE(JavaString::valueOf((new StringMaker())->append(JavaString::valueOf(gameKey))->append(CommonSeps::getInstance()->COLON_SEP)->appendint(key)), this, this->commonStrings->INIT, new Exception());
     
 
                         }

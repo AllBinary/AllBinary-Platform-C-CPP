@@ -126,7 +126,7 @@ PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), comp
                         
                                     {
                                     
-                        if(component.compare(this->componentFactory->ETHERNET->toString()) == 0)
+                        if(component.compare(JavaString::valueOf(this->componentFactory->ETHERNET)) == 0)
                         
                                     {
                                     
@@ -141,7 +141,7 @@ PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), comp
                                     }
                                 
                              else 
-                        if(component.compare(this->componentFactory->BRIDGE->toString()) == 0)
+                        if(component.compare(JavaString::valueOf(this->componentFactory->BRIDGE)) == 0)
                         
                                     {
                                     
@@ -156,7 +156,7 @@ PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), comp
                                     }
                                 
                              else 
-                        if(component.compare(this->componentFactory->IDE->toString()) == 0)
+                        if(component.compare(JavaString::valueOf(this->componentFactory->IDE)) == 0)
                         
                                     {
                                     
@@ -171,7 +171,7 @@ PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), comp
                                     }
                                 
                              else 
-                        if(component.compare(this->componentFactory->MULTIMEDIA->toString()) == 0)
+                        if(component.compare(JavaString::valueOf(this->componentFactory->MULTIMEDIA)) == 0)
                         
                                     {
                                     
@@ -186,7 +186,7 @@ PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), comp
                                     }
                                 
                              else 
-                        if(component.compare(this->componentFactory->SCSI->toString()) == 0)
+                        if(component.compare(JavaString::valueOf(this->componentFactory->SCSI)) == 0)
                         
                                     {
                                     
@@ -201,7 +201,7 @@ PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), comp
                                     }
                                 
                              else 
-                        if(component.compare(this->componentFactory->USB->toString()) == 0)
+                        if(component.compare(JavaString::valueOf(this->componentFactory->USB)) == 0)
                         
                                     {
                                     
@@ -216,7 +216,7 @@ PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), comp
                                     }
                                 
                              else 
-                        if(component.compare(this->componentFactory->VGA->toString()) == 0)
+                        if(component.compare(JavaString::valueOf(this->componentFactory->VGA)) == 0)
                         
                                     {
                                     
@@ -231,7 +231,7 @@ PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), comp
                                     }
                                 
                              else 
-                        if(component.compare(this->componentFactory->PCI->toString()) == 0)
+                        if(component.compare(JavaString::valueOf(this->componentFactory->PCI)) == 0)
                         
                                     {
                                     
@@ -287,7 +287,7 @@ PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), comp
 
     auto PCComponentFactory::getComponentType(std::string component) -> std::string{
 
-                        if(JavaString::indexOf(component, this->componentFactory->ETHERNET->toString()) >= 0)
+                        if(JavaString::indexOf(component, JavaString::valueOf(this->componentFactory->ETHERNET)) >= 0)
                         
                                     {
                                     
@@ -296,13 +296,13 @@ PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), comp
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->componentFactory->ETHERNET->toString();;
+                        return JavaString::valueOf(this->componentFactory->ETHERNET);;
     
 
                                     }
                                 
                              else 
-                        if(JavaString::indexOf(component, this->componentFactory->BRIDGE->toString()) >= 0)
+                        if(JavaString::indexOf(component, JavaString::valueOf(this->componentFactory->BRIDGE)) >= 0)
                         
                                     {
                                     
@@ -311,13 +311,13 @@ PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), comp
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->componentFactory->BRIDGE->toString();;
+                        return JavaString::valueOf(this->componentFactory->BRIDGE);;
     
 
                                     }
                                 
                              else 
-                        if(JavaString::indexOf(component, this->componentFactory->IDE->toString()) >= 0)
+                        if(JavaString::indexOf(component, JavaString::valueOf(this->componentFactory->IDE)) >= 0)
                         
                                     {
                                     
@@ -326,13 +326,13 @@ PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), comp
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->componentFactory->IDE->toString();;
+                        return JavaString::valueOf(this->componentFactory->IDE);;
     
 
                                     }
                                 
                              else 
-                        if(JavaString::indexOf(component, this->componentFactory->MULTIMEDIA->toString()) >= 0)
+                        if(JavaString::indexOf(component, JavaString::valueOf(this->componentFactory->MULTIMEDIA)) >= 0)
                         
                                     {
                                     
@@ -341,13 +341,13 @@ PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), comp
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->componentFactory->MULTIMEDIA->toString();;
+                        return JavaString::valueOf(this->componentFactory->MULTIMEDIA);;
     
 
                                     }
                                 
                              else 
-                        if(JavaString::indexOf(component, this->componentFactory->SCSI->toString()) >= 0)
+                        if(JavaString::indexOf(component, JavaString::valueOf(this->componentFactory->SCSI)) >= 0)
                         
                                     {
                                     
@@ -356,13 +356,13 @@ PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), comp
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->componentFactory->SCSI->toString();;
+                        return JavaString::valueOf(this->componentFactory->SCSI);;
     
 
                                     }
                                 
                              else 
-                        if(JavaString::indexOf(component, this->componentFactory->USB->toString()) >= 0)
+                        if(JavaString::indexOf(component, JavaString::valueOf(this->componentFactory->USB)) >= 0)
                         
                                     {
                                     
@@ -371,13 +371,13 @@ PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), comp
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->componentFactory->USB->toString();;
+                        return JavaString::valueOf(this->componentFactory->USB);;
     
 
                                     }
                                 
                              else 
-                        if(JavaString::indexOf(component, this->componentFactory->VGA->toString()) >= 0)
+                        if(JavaString::indexOf(component, JavaString::valueOf(this->componentFactory->VGA)) >= 0)
                         
                                     {
                                     
@@ -386,13 +386,13 @@ PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), comp
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->componentFactory->VGA->toString();;
+                        return JavaString::valueOf(this->componentFactory->VGA);;
     
 
                                     }
                                 
                              else 
-                        if(component.compare(this->componentFactory->PCI->toString()) == 0)
+                        if(component.compare(JavaString::valueOf(this->componentFactory->PCI)) == 0)
                         
                                     {
                                     
@@ -401,7 +401,7 @@ PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), comp
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->componentFactory->PCI->toString();;
+                        return JavaString::valueOf(this->componentFactory->PCI);;
     
 
                                     }
@@ -412,7 +412,7 @@ PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), comp
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->componentFactory->UNKNOWN->toString();;
+                        return JavaString::valueOf(this->componentFactory->UNKNOWN);;
     
 }
 

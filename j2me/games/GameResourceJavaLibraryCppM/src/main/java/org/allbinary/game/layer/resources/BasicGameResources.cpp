@@ -89,7 +89,7 @@ BasicGameResources::BasicGameResources() : logUtil(LogUtil::getInstance()), RESO
     int32_t scale = JavaBoxes::value<int32_t>(GameConfigurationCentral::getInstance()->SCALE->getValue());;
     
 
-                        if(scale > 1 && scale -1 < SIZE::size())
+                        if(scale > 1 && scale -1 < SIZE.size())
                         
                                     {
                                     this->append(ROOT, SIZE[scale -1]);
@@ -101,7 +101,7 @@ BasicGameResources::BasicGameResources() : logUtil(LogUtil::getInstance()), RESO
                             
 
 
-                            throw Exception((new StringMaker())->append("Invalid Value: ")->appendint(scale)->toString());
+                            throw Exception(JavaString::valueOf((new StringMaker())->append("Invalid Value: ")->appendint(scale)));
                     
 
                         }
@@ -137,7 +137,7 @@ BasicGameResources::stringBuffer->append(string);
     
 BasicGameResources::stringBuffer->append(sizeString);
     
-this->RESOURCE= BasicGameResources::stringBuffer->toString();
+this->RESOURCE= JavaString::valueOf(BasicGameResources::stringBuffer);
     
 BasicGameResources::stringBuffer->delete_(0, BasicGameResources::stringBuffer->length());
     
@@ -149,7 +149,7 @@ BasicGameResources::stringBuffer->append(string);
     
 BasicGameResources::stringBuffer->append(sizeString);
     
-this->RESOURCE_DESTROY= BasicGameResources::stringBuffer->toString();
+this->RESOURCE_DESTROY= JavaString::valueOf(BasicGameResources::stringBuffer);
     
 }
 

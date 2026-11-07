@@ -86,7 +86,7 @@ PathParser::PathParser() {
                         if(sb->length() > 0)
                         
                                     {
-                                    tokens->add(sb->toString());
+                                    tokens.add(JavaString::valueOf(sb));
     
 sb->setLength(0);
     
@@ -104,14 +104,14 @@ sb->setLength(0);
                         if(sb->length() > 0)
                         
                                     {
-                                    tokens->add(sb->toString());
+                                    tokens.add(JavaString::valueOf(sb));
     
 sb->setLength(0);
     
 
                                     }
                                 
-tokens->add(c.slice(, ).join(''));
+tokens.add(c.slice(, ).join(''));
     
 
                                     }
@@ -126,12 +126,12 @@ tokens->add(c.slice(, ).join(''));
 
 
                         if(sb->length() > 0)
-                        tokens->add(sb->toString());
+                        tokens.add(JavaString::valueOf(sb));
                                 
 
-    std::vector<std::string> res = std::vector<std::string>(tokens->size());;
+    std::vector<std::string> res = std::vector<std::string>(tokens.size());;
     
-tokens->toArrayType(res);
+tokens.toArrayType(res);
     
 
 
@@ -164,7 +164,7 @@ tokens->toArrayType(res);
     int32_t idx = 0;;
     
 
-        while(idx < tokens->size())
+        while(idx < tokens.size())
         {
 
     std::string tok = tokens[idx++];;
@@ -339,7 +339,7 @@ count[0]++;
                                     }
                                 
 
-        while(idx < tokens->size() && !isCommand(tokens[idx]))
+        while(idx < tokens.size() && !isCommand(tokens[idx]))
         {
 
                         if(cmd == 'M' || cmd == 'm' || cmd == 'L' || cmd == 'l')

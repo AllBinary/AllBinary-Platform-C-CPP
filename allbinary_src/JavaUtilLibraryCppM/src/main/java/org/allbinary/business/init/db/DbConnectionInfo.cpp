@@ -88,7 +88,7 @@ stringBuffer->append(this->getPasswordKey());
     
 stringBuffer->append(this->getPassword());
     
-this->url= stringBuffer->toString();
+this->url= JavaString::valueOf(stringBuffer);
     
 }
 
@@ -178,7 +178,7 @@ stringBuffer->append(this->getPort());
                                 
 stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
     
-this->host= stringBuffer->toString();
+this->host= JavaString::valueOf(stringBuffer);
     
 }
 

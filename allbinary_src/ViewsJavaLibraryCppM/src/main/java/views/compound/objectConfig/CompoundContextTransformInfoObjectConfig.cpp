@@ -192,7 +192,7 @@ stringBuffer->append(CommonSeps::getInstance()->SPACE);
 stringBuffer->append(RootTransformInfoData::NAME);
     
 
-    TransformInterface* rootComponentInterface = TransformFactory::getInstance()->getInstance(abeClientInformation, stringBuffer->toString(), this->getTransformInfoInterface());;
+    TransformInterface* rootComponentInterface = TransformFactory::getInstance()->getInstance(abeClientInformation, JavaString::valueOf(stringBuffer), this->getTransformInfoInterface());;
     
 
     BasicArrayList* viewVector = this->getTransformDomNodes();;
@@ -248,7 +248,7 @@ stringBuffer->append(replacementViewString);
 stringBuffer->append(endXMLHeader);
     
 
-    std::string templateValue = stringBuffer->toString();;
+    std::string templateValue = JavaString::valueOf(stringBuffer);;
     
 
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
@@ -264,7 +264,7 @@ stringBuffer->append(" with ");
     
 stringBuffer->append(templateValue);
     
-this->logUtil->putF(stringBuffer->toString(), this, "get()");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "get()");
     
 
                                     }
@@ -309,7 +309,7 @@ rootView= replace->all(rootView);
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf("Template: ") +JavaString::valueOf((JavaString::fromChars(completeTemplateViewBytes)).toString()), this, "createInputStream()");
+                                    this->logUtil->putF(JavaString::valueOf("Template: ") +JavaString::valueOf(JavaString::valueOf((JavaString::fromChars(completeTemplateViewBytes)))), this, "createInputStream()");
     
 
                                     }

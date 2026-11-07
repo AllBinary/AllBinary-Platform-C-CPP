@@ -118,7 +118,7 @@ this->put(specialMessage, anyType, functionName, exception);
                         if(true)
                         
                                     {
-                                    className= (new StringMaker())->append(anyType->getClass()->getName())->append(CommonSeps::getInstance()->COLON)->append(Integer.toHexString(TsUtil::getInstance()->hashCode(anyType)))->toString();
+                                    className= JavaString::valueOf((new StringMaker())->append(anyType->getClass()->getName())->append(CommonSeps::getInstance()->COLON)->append(Integer.toHexString(TsUtil::getInstance()->hashCode(anyType))));
     
 
                                     }
@@ -134,7 +134,7 @@ System.out.println(message);
 
 
     /*actual*/ auto LogUtil::putFS(std::string specialMessage, std::string className, std::string functionName) -> void{
-className= (new StringMaker())->append(className)->append(CommonSeps::getInstance()->COLON)->append(Integer.toHexString(TsUtil::getInstance()->hashCode(anyType)))->toString();
+className= JavaString::valueOf((new StringMaker())->append(className)->append(CommonSeps::getInstance()->COLON)->append(Integer.toHexString(TsUtil::getInstance()->hashCode(anyType))));
     
 
     std::string message = this->logFormatUtil->getS(className, functionName, specialMessage);;
@@ -154,7 +154,7 @@ System.out.println(message);
                         if(true)
                         
                                     {
-                                    className= (new StringMaker())->append(anyType->getClass()->getName())->append(CommonSeps::getInstance()->COLON)->append(Integer.toHexString(TsUtil::getInstance()->hashCode(anyType)))->toString();
+                                    className= JavaString::valueOf((new StringMaker())->append(anyType->getClass()->getName())->append(CommonSeps::getInstance()->COLON)->append(Integer.toHexString(TsUtil::getInstance()->hashCode(anyType))));
     
 
                                     }

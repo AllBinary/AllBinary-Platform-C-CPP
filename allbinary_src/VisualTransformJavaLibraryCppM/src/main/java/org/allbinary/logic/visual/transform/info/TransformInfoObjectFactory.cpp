@@ -172,7 +172,7 @@ stringBuffer->append(transformInfoInterface->getObjectFile());
 
 
 
-                            throw Exception(stringBuffer->toString());
+                            throw Exception(JavaString::valueOf(stringBuffer));
                     
 
                                     }

@@ -150,7 +150,7 @@ this->androidMediaPlayerWrapperListener= androidMediaPlayerWrapperListener;
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
-logUtil->putF((new StringMaker())->append("Update buffer: ")->appendint(i)->append("%")->toString(), this, this->ON_BUFFERING_UPDATE);
+logUtil->putF(JavaString::valueOf((new StringMaker())->append("Update buffer: ")->appendint(i)->append("%")), this, this->ON_BUFFERING_UPDATE);
     
 this->androidMediaPlayerWrapperListener->androidMediaPlayerWrapper->update(PlayerListener::DEVICE_UNAVAILABLE);
     
@@ -187,7 +187,7 @@ this->androidMediaPlayerWrapperListener= androidMediaPlayerWrapperListener;
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
-logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->START_LABEL)->append("What: ")->appendint(what)->append(" Extra: ")->appendint(extra)->toString(), this, this->ON_ERROR);
+logUtil->putF(JavaString::valueOf((new StringMaker())->append(CommonLabels::getInstance()->START_LABEL)->append("What: ")->appendint(what)->append(" Extra: ")->appendint(extra)), this, this->ON_ERROR);
     
 this->androidMediaPlayerWrapperListener->androidMediaPlayerWrapper->update(PlayerListener::ERROR);
     

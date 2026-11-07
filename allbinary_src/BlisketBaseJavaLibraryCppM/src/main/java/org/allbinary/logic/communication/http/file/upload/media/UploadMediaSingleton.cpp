@@ -166,13 +166,13 @@ this->writerFileTypesHashMap->put(writerFileTypes[index], RESIZABLE_MEDIA);
     
 stringBuffer->append("Supported Media Readers: ");
     
-stringBuffer->append(this->readerFileTypesHashMap->toString());
+stringBuffer->append(JavaString::valueOf(this->readerFileTypesHashMap));
     
 stringBuffer->append(" Writers: ");
     
-stringBuffer->append(this->writerFileTypesHashMap->toString());
+stringBuffer->append(JavaString::valueOf(this->writerFileTypesHashMap));
     
-this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->CONSTRUCTOR);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }

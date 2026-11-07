@@ -128,7 +128,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
 stringBuffer->append(href);
     
 
-    AbPath* fileAbPath = new AbFilePath(stringBuffer->toString());;
+    AbPath* fileAbPath = new AbFilePath(JavaString::valueOf(stringBuffer));;
     
 
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->XMLLOGGING))
@@ -146,7 +146,7 @@ stringBuffer->append(base);
     
 stringBuffer->append(this->uriResolverStrings->NEW_PATH);
     
-stringBuffer->append(fileAbPath->toString());
+stringBuffer->append(JavaString::valueOf(fileAbPath));
     
 stringBuffer->append(this->uriResolverStrings->NOTE);
     
@@ -158,7 +158,7 @@ stringBuffer->append(this->uriResolverStrings->REQUIRED_EXTENSION);
     
 stringBuffer->append(this->basicURIResolver->getExtension());
     
-this->logUtil->putF(stringBuffer->toString(), this, this->uriResolverStrings->RESOLVE);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->uriResolverStrings->RESOLVE);
     
 
                                     }

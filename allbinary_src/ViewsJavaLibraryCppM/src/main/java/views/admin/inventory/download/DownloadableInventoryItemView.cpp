@@ -267,7 +267,7 @@ stringBuffer->append(fileName);
 this->logUtil->putF(JavaString::valueOf("FileName: ") +JavaString::valueOf(fileName), this, "processFile()");
     
 
-    AbFile* file = AbFile::createAbFile(stringBuffer->toString());;
+    AbFile* file = AbFile::createAbFile(JavaString::valueOf(stringBuffer));;
     
 this->logUtil->putF(file->getPath(), this, "processFiles()");
     
@@ -300,7 +300,7 @@ stringBuffer->append(fileName);
 this->logUtil->putF(JavaString::valueOf("FileName: ") +JavaString::valueOf(fileName), this, "unzip()");
     
 
-    AbFile* file = AbFile::createAbFile(stringBuffer->toString());;
+    AbFile* file = AbFile::createAbFile(JavaString::valueOf(stringBuffer));;
     
 this->logUtil->putF(file->getPath(), this, "unzip()");
     
@@ -341,7 +341,7 @@ stringBuffer->appendchar(filePathData->SEPARATORCHAR);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

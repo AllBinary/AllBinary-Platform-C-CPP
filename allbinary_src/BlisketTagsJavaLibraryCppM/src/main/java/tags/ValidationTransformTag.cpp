@@ -256,7 +256,7 @@ stringBuffer->append("\nRequest URI: ");
     
 stringBuffer->append(request->getRequestURI());
     
-this->logUtil->putF(stringBuffer->toString(), this, tagStrings.DO_START_TAG);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, tagStrings.DO_START_TAG);
     
 
                                     }
@@ -284,7 +284,7 @@ stringBuffer->append("\nLogic includes body if true=");
     
 stringBuffer->appendboolean(this->logic);
     
-this->logUtil->putF(stringBuffer->toString(), this, tagStrings.DO_START_TAG);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, tagStrings.DO_START_TAG);
     
 
                                     }
@@ -339,7 +339,7 @@ stringBuffer->append("\nLogic skips body if true=");
     
 stringBuffer->appendboolean(this->logic);
     
-this->logUtil->putF(stringBuffer->toString(), this, tagStrings.DO_START_TAG);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, tagStrings.DO_START_TAG);
     
 
                                     }

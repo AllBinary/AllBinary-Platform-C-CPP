@@ -434,7 +434,7 @@ index++;
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 
@@ -532,7 +532,7 @@ hashMap->put(KeyboardActionScriptInputData::PRESS, Boolean::toString(this->isPre
     
 hashMap->put(KeyboardActionScriptInputData::RELEASE, Boolean::toString(this->isRelease()));
     
-this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(hashMap->toString()), this, "toHashMap()");
+this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(JavaString::valueOf(hashMap)), this, "toHashMap()");
     
 
 
@@ -573,7 +573,7 @@ KeyboardInputAutomationProcessor::process(this);
 
 
     auto KeyboardActionScriptInput::log() -> void{
-this->logUtil->putF(this->toString(), this, "log");
+this->logUtil->putF(JavaString::valueOf(this), this, "log");
     
 }
 
@@ -606,7 +606,7 @@ stringBuffer->appendint(this->getDelayBetweenKeys());
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

@@ -85,13 +85,13 @@ WaypointRunnableSelectedLogHelper* WaypointRunnableSelectedLogHelper::instanceC 
 
 
     auto WaypointRunnableSelectedLogHelper::start(PathFindingLayerInterface* pathFindingLayerInterface) -> void{
-this->logUtil->putF((new StringMaker())->append(pathFindingLayerInterface->getName())->append(this->commonStrings->START_RUNNABLE)->toString(), this, this->commonStrings->RUN);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(pathFindingLayerInterface->getName())->append(this->commonStrings->START_RUNNABLE)), this, this->commonStrings->RUN);
     
 }
 
 
     auto WaypointRunnableSelectedLogHelper::end(PathFindingLayerInterface* pathFindingLayerInterface) -> void{
-this->logUtil->putF((new StringMaker())->append(pathFindingLayerInterface->getName())->append(this->commonStrings->END_RUNNABLE)->toString(), this, this->commonStrings->RUN);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(pathFindingLayerInterface->getName())->append(this->commonStrings->END_RUNNABLE)), this, this->commonStrings->RUN);
     
 }
 

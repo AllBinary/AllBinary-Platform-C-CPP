@@ -571,7 +571,7 @@ stringBuffer->append(searchRequest->getFileBaseName());
 
                                     }
                                 
-inventoryNodes[index]->appendChild(ModDomHelper::createNameValueNodes(tempDocument, SearchData::PAGE_INFO, std::to_string(pageIndex)stringBuffer->toString()));
+inventoryNodes[index]->appendChild(ModDomHelper::createNameValueNodes(tempDocument, SearchData::PAGE_INFO, std::to_string(pageIndex)JavaString::valueOf(stringBuffer)));
     
 
                                     }

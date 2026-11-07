@@ -112,14 +112,14 @@ stringBuffer->append(cloud);
 stringBuffer->append(PATH_GLOBALS::getInstance()->DATA_PATH);
     
 
-    AbPath* path = new AbPath(stringBuffer->toString(), StringUtil::getInstance()->EMPTY_STRING);;
+    AbPath* path = new AbPath(JavaString::valueOf(stringBuffer), StringUtil::getInstance()->EMPTY_STRING);;
     
 stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(URLGLOBALS::getWebappPath());
     
 
-    AbPath* realPath = new AbPath(stringBuffer->toString(), StringUtil::getInstance()->EMPTY_STRING);;
+    AbPath* realPath = new AbPath(JavaString::valueOf(stringBuffer), StringUtil::getInstance()->EMPTY_STRING);;
     
 
     AbFile* file = AbFile::createAbFileFromAbPath(path);;
@@ -166,7 +166,7 @@ stringBuffer->append(" - ");
     
 stringBuffer->appendint(end);
     
-this->logUtil->putF(stringBuffer->toString(), this, "initialize()");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "initialize()");
     
 
     AbFile* nextFile;;

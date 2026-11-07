@@ -455,7 +455,7 @@ file->createNewFile();
 
     AbDataOutputStream* idOutData = DataOutputStreamFactory::getInstance()->getInstanceForAbFile(file);;
     
-idOutData->writeBytes(this->sqlCommandLog->toString());
+idOutData->writeBytes(JavaString::valueOf(this->sqlCommandLog));
     
 
 
@@ -524,7 +524,7 @@ stringBuffer->append(StaticPagesEntityFactory::getInstance()->getStaticPagesEnti
     
 stringBuffer->append(TransformInfoEntityBuilder::getInstance()->createTable());
     
-this->logUtil->putF(ADD_TABLES_RESULTS_LABEL +stringBuffer->toString(), this, this->METHOD_ADD_TABLES);
+this->logUtil->putF(ADD_TABLES_RESULTS_LABEL +JavaString::valueOf(stringBuffer), this, this->METHOD_ADD_TABLES);
     
 
 

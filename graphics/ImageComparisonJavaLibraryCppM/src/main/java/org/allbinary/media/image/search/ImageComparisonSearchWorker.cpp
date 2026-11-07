@@ -153,7 +153,7 @@ timeHelper->setStartTimeTNT();
 
     ImageComparisonResult* imageComparisonInfo = dynamic_cast<ImageComparisonResult*>(this->imageComparisonInfoVector->get(0));;
     
-this->logUtil->putF(imageComparisonInfo->toString(), this, this->commonStrings->RUN);
+this->logUtil->putF(JavaString::valueOf(imageComparisonInfo), this, this->commonStrings->RUN);
     
 
     BufferedImage* latestBufferedImage = imageComparisonInfo->getBufferedImages()[1];;

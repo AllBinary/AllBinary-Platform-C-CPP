@@ -87,7 +87,7 @@ RaceTracksPathPrinter::RaceTracksPathPrinter() {
 
     Object* anyType = JavaBoxes::toObject(list->get(index));;
     
-PreLogUtil::put((new StringMaker())->append("pathList.add(cellPositionFactory.getInstance")->append(anyType->toString())->append(");")->toString(), this, "printPath");
+PreLogUtil::put(JavaString::valueOf((new StringMaker())->append("pathList.add(cellPositionFactory.getInstance")->append(JavaString::valueOf(anyType))->append(");")), this, "printPath");
     
 }
 
@@ -105,7 +105,7 @@ PreLogUtil::put((new StringMaker())->append("pathList.add(cellPositionFactory.ge
                         for (
     int32_t index = 0;index < size; index++)
         {
-System.out.println((new StringMaker())->append(" Path ")->appendint(index)->append(CommonLabels::getInstance()->COLON_SEP)->toString());
+System.out.println(JavaString::valueOf((new StringMaker())->append(" Path ")->appendint(index)->append(CommonLabels::getInstance()->COLON_SEP)));
     
 this->printPath(dynamic_cast<BasicArrayList*>(list->get(index)));
     

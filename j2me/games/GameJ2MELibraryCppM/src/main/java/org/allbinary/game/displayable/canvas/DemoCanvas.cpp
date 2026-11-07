@@ -434,7 +434,7 @@ ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     auto DemoCanvas::onDisplayChangeEvent(DisplayChangeEvent* displayChangeEvent) -> void{
 
         try {
-            this->logUtil->putF((new StringMaker())->append(this->commonLabels->START_LABEL)->append(this->displayInfo->toString())->toString(), this, this->canvasStrings->ON_DISPLAY_CHANGE_EVENT);
+            this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->commonLabels->START_LABEL)->append(JavaString::valueOf(this->displayInfo))), this, this->canvasStrings->ON_DISPLAY_CHANGE_EVENT);
     
 
     ScrollSelectionForm* scrollSelectionForm = this->getMenuForm();;
@@ -480,7 +480,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->canvasStrings->ON
                                     
     std::vector<Object*> commandArray = 
                                                         {
-                                                            gameCommandsFactory->START_COMMAND,HighScoreCommands::getInstance()->DISPLAY,GameInputMappingCanvas::DISPLAY,gameCommandsFactory->DISPLAY_ABOUT
+                                                            JavaBoxes::toObject(gameCommandsFactory->START_COMMAND),JavaBoxes::toObject(HighScoreCommands::getInstance()->DISPLAY),JavaBoxes::toObject(GameInputMappingCanvas::DISPLAY),JavaBoxes::toObject(gameCommandsFactory->DISPLAY_ABOUT)
                                                         };;
     
 
@@ -640,7 +640,7 @@ this->close();
 
     Rectangle* rectangle = this->formUtil->createFormRectangle();;
     
-PreLogUtil::put((new StringMaker())->append(this->commonLabels->START_LABEL)->append(this->displayInfo->toString())->toString(), this, "initMenu");
+PreLogUtil::put(JavaString::valueOf((new StringMaker())->append(this->commonLabels->START_LABEL)->append(JavaString::valueOf(this->displayInfo))), this, "initMenu");
     
 
     ScrollSelectionForm* scrollSelectionForm = CommandCurrentSelectionFormFactory::getInstance(StringUtil::getInstance()->EMPTY_STRING, items, rectangle, formType, 15, true, this->basicColorFactory->BLACK, this->basicColorFactory->WHITE);;
@@ -765,7 +765,7 @@ DownGameKeyEventHandler::getInstance()->fireEvent(gameKeyEvent);
                                     {
                                     this->lastKeyNotMapped= keyCode;
     
-this->logUtil->putF((new StringMaker())->append(this->gameInputStrings->NO_KEY)->appendint(keyCode)->toString(), this, this->gameInputStrings->ADD_KEY_EVENT);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->gameInputStrings->NO_KEY)->appendint(keyCode)), this, this->gameInputStrings->ADD_KEY_EVENT);
     
 
                                     }
@@ -803,7 +803,7 @@ UpGameKeyEventHandler::getInstance()->fireEvent(gameKeyEvent);
                                     }
                                 
                         else {
-                            this->logUtil->putF((new StringMaker())->append(this->gameInputStrings->NO_KEY)->appendint(keyCode)->toString(), this, this->gameInputStrings->REMOVE_KEY_EVENT);
+                            this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->gameInputStrings->NO_KEY)->appendint(keyCode)), this, this->gameInputStrings->REMOVE_KEY_EVENT);
     
 
                         }
@@ -877,7 +877,7 @@ this->setPaused(false);
 
 
     auto DemoCanvas::isGameOver() -> bool{
-this->logUtil->putF((new StringMaker())->append(this->commonStrings->NOT_IMPLEMENTED)->append(" since not a game")->toString(), this, "isGameOver");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->commonStrings->NOT_IMPLEMENTED)->append(" since not a game")), this, "isGameOver");
     
 
 
@@ -1026,7 +1026,7 @@ this->updateDemoState();
 
 
     auto DemoCanvas::updateDemoState() -> void{
-PreLogUtil::put(SmallIntegerSingletonFactory::getInstance()->createInstance(this->state)->toString(), this, this->SET_STATE);
+PreLogUtil::put(JavaString::valueOf(SmallIntegerSingletonFactory::getInstance()->createInstance(this->state)), this, this->SET_STATE);
     
 this->getBasicGameDemoPaintable()->setState(this->state);
     
@@ -1141,7 +1141,7 @@ this->getHighScoresFactoryInterface()->fetchHighScores(gameInfo, this->highScore
 
     AllBinaryGameCanvas* gameCanvas = this->gameCanvas;;
     
-PreLogUtil::put((new StringMaker())->append("Game Thread in DemoCanvas: ")->append(this->stringUtil->toString(gameCanvas))->toString(), this, this->commonStrings->START);
+PreLogUtil::put(JavaString::valueOf((new StringMaker())->append("Game Thread in DemoCanvas: ")->append(this->stringUtil->toString(gameCanvas))), this, this->commonStrings->START);
     
 this->canvasThread= this->threadFactoryUtil->getInstanceGameCanvasRunnable(gameCanvas);
     
@@ -1560,7 +1560,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->SET_RUNNING, &e);
 
     Features* features = Features::getInstance();;
     
-this->baseGameStatistics->add((new StringMaker())->append(DemoCanvas::BOT_GAME_STATS)->append(this->baseGameStatistics->toString())->append(CommonSeps::getInstance()->NEW_LINE)->toString());
+this->baseGameStatistics->add(JavaString::valueOf((new StringMaker())->append(DemoCanvas::BOT_GAME_STATS)->append(JavaString::valueOf(this->baseGameStatistics))->append(CommonSeps::getInstance()->NEW_LINE)));
     
 this->baseGameStatistics->init();
     

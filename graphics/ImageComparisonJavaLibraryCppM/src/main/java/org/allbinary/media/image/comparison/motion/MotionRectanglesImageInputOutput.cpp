@@ -196,7 +196,7 @@ filePathStringBuffer->append(motionRectangles->getName());
 
     StringMaker* filePathStringBuffer1 = new StringMaker();;
     
-filePathStringBuffer1->append(filePathStringBuffer->toString());
+filePathStringBuffer1->append(JavaString::valueOf(filePathStringBuffer));
     
 filePathStringBuffer1->append("_1");
     
@@ -205,7 +205,7 @@ filePathStringBuffer1->append(MediaDataFactory::getInstance()->JPG->getExtension
 
     StringMaker* filePathStringBuffer2 = new StringMaker();;
     
-filePathStringBuffer2->append(filePathStringBuffer->toString());
+filePathStringBuffer2->append(JavaString::valueOf(filePathStringBuffer));
     
 filePathStringBuffer2->append("_2");
     
@@ -214,15 +214,15 @@ filePathStringBuffer2->append(MediaDataFactory::getInstance()->JPG->getExtension
 
     StringMaker* filePathStringBuffer3 = new StringMaker();;
     
-filePathStringBuffer3->append(filePathStringBuffer->toString());
+filePathStringBuffer3->append(JavaString::valueOf(filePathStringBuffer));
     
 filePathStringBuffer3->append(MediaDataFactory::getInstance()->JPG->getExtension());
     
-this->logUtil->putF(JavaString::valueOf("Motion Image File Path 1: ") +JavaString::valueOf(filePathStringBuffer1->toString()), this, commonStrings->SAVE);
+this->logUtil->putF(JavaString::valueOf("Motion Image File Path 1: ") +JavaString::valueOf(JavaString::valueOf(filePathStringBuffer1)), this, commonStrings->SAVE);
     
-this->logUtil->putF(JavaString::valueOf("Motion Image File Path 2: ") +JavaString::valueOf(filePathStringBuffer2->toString()), this, commonStrings->SAVE);
+this->logUtil->putF(JavaString::valueOf("Motion Image File Path 2: ") +JavaString::valueOf(JavaString::valueOf(filePathStringBuffer2)), this, commonStrings->SAVE);
     
-this->logUtil->putF(JavaString::valueOf("Motion Image File Path 2: ") +JavaString::valueOf(filePathStringBuffer3->toString()), this, commonStrings->SAVE);
+this->logUtil->putF(JavaString::valueOf("Motion Image File Path 2: ") +JavaString::valueOf(JavaString::valueOf(filePathStringBuffer3)), this, commonStrings->SAVE);
     
 
     std::vector<BufferedImageCacheable*> bufferedImageCacheables = std::vector<BufferedImageCacheable*>(this->NUMBER_OF_IMAGES);;
@@ -318,18 +318,18 @@ bufferedImageGraphicsArray[index]->drawRect(rectangle->x, rectangle->y, rectangl
                         if(this->NUMBER_OF_IMAGES > 1)
                         
                                     {
-                                    imagePersistanceUtil->saveWithImageIO(filePathStringBuffer1->toString(), bufferedImageCacheables[1]->getBufferedImage());
+                                    imagePersistanceUtil->saveWithImageIO(JavaString::valueOf(filePathStringBuffer1), bufferedImageCacheables[1]->getBufferedImage());
     
 
                                     }
                                 
-imagePersistanceUtil->saveWithImageIO(filePathStringBuffer2->toString(), bufferedImageCacheables[0]->getBufferedImage());
+imagePersistanceUtil->saveWithImageIO(JavaString::valueOf(filePathStringBuffer2), bufferedImageCacheables[0]->getBufferedImage());
     
 
                         if(this->NUMBER_OF_IMAGES > 2)
                         
                                     {
-                                    imagePersistanceUtil->saveWithImageIO(filePathStringBuffer3->toString(), bufferedImageCacheables[2]->getBufferedImage());
+                                    imagePersistanceUtil->saveWithImageIO(JavaString::valueOf(filePathStringBuffer3), bufferedImageCacheables[2]->getBufferedImage());
     
 
                                     }

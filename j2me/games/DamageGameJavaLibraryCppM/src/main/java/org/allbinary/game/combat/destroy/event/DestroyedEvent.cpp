@@ -129,7 +129,7 @@ stringBuffer->append("DestroyedEvent: \n");
     
 stringBuffer->append("AllBinaryLayerInterface: ");
     
-stringBuffer->append(this->allBinaryLayerInterface->toString());
+stringBuffer->append(JavaString::valueOf(this->allBinaryLayerInterface));
     
 stringBuffer->append("\nAllBinaryGameCanvas: ");
     
@@ -141,7 +141,7 @@ stringBuffer->append(StringUtil::getInstance()->toString(this->getAllBinaryGameC
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

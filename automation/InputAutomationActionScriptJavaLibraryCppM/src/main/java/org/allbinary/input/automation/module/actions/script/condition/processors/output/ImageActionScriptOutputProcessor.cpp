@@ -96,7 +96,7 @@ ImageActionScriptOutputProcessor::ImageActionScriptOutputProcessor() : logUtil(L
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-logUtil->putF(JavaString::valueOf("Start - Processing at: ") +JavaString::valueOf(imageActionScriptOutputInterface->toString()), "ImageActionScriptOutputProcessor", commonStrings->PROCESS);
+logUtil->putF(JavaString::valueOf("Start - Processing at: ") +JavaString::valueOf(JavaString::valueOf(imageActionScriptOutputInterface)), "ImageActionScriptOutputProcessor", commonStrings->PROCESS);
     
 
     ImageTypes* imageTypes = imageActionScriptOutputInterface->getImageTypes();;

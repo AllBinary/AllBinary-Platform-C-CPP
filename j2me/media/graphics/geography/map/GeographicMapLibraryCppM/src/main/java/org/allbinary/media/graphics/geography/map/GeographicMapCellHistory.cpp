@@ -116,7 +116,7 @@
 
 std::vector<GeographicMapCellHistory*> GeographicMapCellHistory::NULL_GEOGRPAHIC_MAP_HISTORY_ARRAY = {};
 
-GeographicMapCellHistory::GeographicMapCellHistory() : logUtil(LogUtil::getInstance()), booleanFactory(BooleanFactory::getInstance()), animation(new TextAnimation(this->MISSED_INFO, AnimationBehavior::getInstance())), myFontProcessor(new UpdateMyFontProcessor(this)), RED(BasicColorFactory::getInstance()->RED){
+GeographicMapCellHistory::GeographicMapCellHistory() : logUtil(LogUtil::getInstance()), booleanFactory(BooleanFactory::getInstance()), animation(new TextAnimation(this->MISSED_INFO, AnimationBehavior::getInstance())), myFontProcessor(new UpdateMyFontProcessor(this)), RED(BasicColorFactory::getInstance()->RED->intValue()){
 this->list= new BasicArrayListD();
     
 this->visitedList= new BasicArrayListD();

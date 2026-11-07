@@ -249,7 +249,7 @@ groupList->clear();
                         if(groupSize != 0)
                         
                                     {
-                                    this->logUtil->putF((new StringMaker())->append("Group Size: ")->appendint(groupSize)->toString(), this, "areAllOtherGroupsEmpty");
+                                    this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Group Size: ")->appendint(groupSize)), this, "areAllOtherGroupsEmpty");
     
 
 
@@ -445,7 +445,7 @@ groupList= dynamic_cast<BasicArrayList*>(this->list->objectArray[id]);
                                 )
                         
                                     {
-                                    this->logUtil->putF((new StringMaker())->append("id: ")->appendint(id)->toString(), this, "onCreateLayerManagerEvent");
+                                    this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("id: ")->appendint(id)), this, "onCreateLayerManagerEvent");
     
 
                                     }
@@ -544,7 +544,7 @@ stringBuffer->append(SPACE);
     
 }
 
-this->logUtil->putF(stringBuffer->toString(), this, "log");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "log");
     
 }
 

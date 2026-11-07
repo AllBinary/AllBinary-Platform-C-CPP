@@ -107,7 +107,7 @@ this->idGeneratorEntity= dynamic_cast<IdGeneratorEntity*>(IdGeneratorEntityFacto
     
 vector->add(this->name);
     
-vector->add(Long.valueOf(value)->toString());
+vector->add(JavaString::valueOf(Long.valueOf(value)));
     
 this->idGeneratorEntity->insert(vector);
     

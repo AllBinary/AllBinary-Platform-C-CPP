@@ -182,7 +182,7 @@ tile--;
     
 stringMaker->delete_(0, stringMaker->length());
     
-graphics->drawString(stringMaker->appendint(columnIndex)->append(commonSeps->COMMA)->appendint(rowIndex)->append(commonSeps->COLON)->appendint(tile)->toString(), x +5, y +10, 0);
+graphics->drawString(JavaString::valueOf(stringMaker->appendint(columnIndex)->append(commonSeps->COMMA)->appendint(rowIndex)->append(commonSeps->COLON)->appendint(tile)), x +5, y +10, 0);
     
 }
 

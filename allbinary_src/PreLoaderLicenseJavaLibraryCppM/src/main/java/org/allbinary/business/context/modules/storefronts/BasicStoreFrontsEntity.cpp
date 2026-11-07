@@ -114,7 +114,7 @@ keysAndValues->put(StoreFrontData::getInstance()->NAME, name);
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->FACTORYERROR))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf("StoreFront: ") +JavaString::valueOf(storeHashMap->toString()), this, "getStore()");
+                                    this->logUtil->putF(JavaString::valueOf("StoreFront: ") +JavaString::valueOf(JavaString::valueOf(storeHashMap)), this, "getStore()");
     
 
                                     }

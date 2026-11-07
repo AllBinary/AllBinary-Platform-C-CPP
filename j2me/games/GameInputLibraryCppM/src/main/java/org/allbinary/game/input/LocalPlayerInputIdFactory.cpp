@@ -177,7 +177,7 @@ index= this->totalDevicesMapped;
                                     }
                                 
                         else {
-                            this->logUtil->putF((new StringMaker())->append("Added DeviceId: ")->appendint(deviceId)->append(" beyond fast Id list")->toString(), this, "getPlayerForDevice");
+                            this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Added DeviceId: ")->appendint(deviceId)->append(" beyond fast Id list")), this, "getPlayerForDevice");
     
 
                         }
@@ -188,7 +188,7 @@ AnalogLocationInputFactory::getInstance()->addPlayer(this->totalDevicesMapped);
     
 this->totalDevicesMapped++;
     
-this->logUtil->putF((new StringMaker())->append("Added DeviceId: ")->appendint(deviceId)->append(" at: ")->appendint(index)->append(" Total: ")->appendint(this->totalDevicesMapped)->toString(), this, "getPlayerForDevice");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Added DeviceId: ")->appendint(deviceId)->append(" at: ")->appendint(index)->append(" Total: ")->appendint(this->totalDevicesMapped)), this, "getPlayerForDevice");
     
 
 
@@ -247,7 +247,7 @@ this->logUtil->putF((new StringMaker())->append("Added DeviceId: ")->appendint(d
 
 
     auto LocalPlayerInputIdFactory::setPlayerInPlay(int32_t playerInputId) -> void{
-this->logUtil->putF((new StringMaker())->append("Setting PlayerInPlay with playerInputId: ")->appendint(playerInputId)->toString(), this, "setPlayerInPlay");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Setting PlayerInPlay with playerInputId: ")->appendint(playerInputId)), this, "setPlayerInPlay");
     
 this->playersInPlay[playerInputId]= true;
     
@@ -255,7 +255,7 @@ this->playersInPlay[playerInputId]= true;
 
 
     auto LocalPlayerInputIdFactory::setPlayerOutOfPlay(int32_t playerInputId) -> void{
-this->logUtil->putF((new StringMaker())->append("Setting PlayerOutOfPlay with playerInputId: ")->appendint(playerInputId)->toString(), this, "setPlayerOutOfPlay");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Setting PlayerOutOfPlay with playerInputId: ")->appendint(playerInputId)), this, "setPlayerOutOfPlay");
     
 this->playersInPlay[playerInputId]= false;
     

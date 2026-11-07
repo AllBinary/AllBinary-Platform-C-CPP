@@ -116,7 +116,7 @@ MiniBasketView::MiniBasketView(TransformInfoInterface* transformInfoInterface) :
     Node* totalNumberNode = document->createElement(SearchData::TOTAL_NUMBER_ITEMS);;
     
 
-    Node* totalNumberTextNode = document->createTextNode(basketInterface->getNumberOfItems()->toString());;
+    Node* totalNumberTextNode = document->createTextNode(JavaString::valueOf(basketInterface->getNumberOfItems()));;
     
 totalNumberNode->appendChild(totalNumberTextNode);
     
@@ -124,7 +124,7 @@ totalNumberNode->appendChild(totalNumberTextNode);
     Node* totalWeightNode = document->createElement(BasketData::TOTALWEIGHT);;
     
 
-    Node* totalWeightTextNode = document->createTextNode(basketInterface->getTotalWeight()->toString());;
+    Node* totalWeightTextNode = document->createTextNode(JavaString::valueOf(basketInterface->getTotalWeight()));;
     
 totalWeightNode->appendChild(totalWeightTextNode);
     
@@ -132,7 +132,7 @@ totalWeightNode->appendChild(totalWeightTextNode);
     Node* subTotalNode = document->createElement(BasketData::SUBTOTAL);;
     
 
-    Node* subTotalTextNode = document->createTextNode(basketInterface->getSubTotal()->toString());;
+    Node* subTotalTextNode = document->createTextNode(JavaString::valueOf(basketInterface->getSubTotal()));;
     
 subTotalNode->appendChild(subTotalTextNode);
     

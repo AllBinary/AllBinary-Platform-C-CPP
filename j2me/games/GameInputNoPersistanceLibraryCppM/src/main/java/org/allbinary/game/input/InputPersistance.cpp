@@ -141,7 +141,7 @@ id= recordEnum->nextRecordId();
     
 stringBuffer->delete_(0, stringBuffer->length());
     
-this->logUtil->putF(stringBuffer->append(this->persistanceStrings->LOADING_ID)->appendint(id)->toString(), this, this->persistanceStrings->LOAD_ALL);
+this->logUtil->putF(JavaString::valueOf(stringBuffer->append(this->persistanceStrings->LOADING_ID)->appendint(id)), this, this->persistanceStrings->LOAD_ALL);
     
 hashtable= StdUtil::getInstance()->createHashtable();
     
@@ -159,7 +159,7 @@ recordStore->closeRecordStore();
                 //@Throws(Exception.constructor)
             
     auto InputPersistance::save(AbeClientInformationInterface* abeClientInformation, ABHashtable<Object*, Object*>* hashtable) -> void{
-PreLogUtil::put((new StringMaker())->append(this->persistanceStrings->NOT_SAVING)->append(StringUtil::getInstance()->toString(hashtable))->toString(), this, this->commonStrings->SAVE);
+PreLogUtil::put(JavaString::valueOf((new StringMaker())->append(this->persistanceStrings->NOT_SAVING)->append(StringUtil::getInstance()->toString(hashtable))), this, this->commonStrings->SAVE);
     
 
     RecordStore* recordStore = RecordStore::openRecordStore(this->getRecordId(abeClientInformation), true);;

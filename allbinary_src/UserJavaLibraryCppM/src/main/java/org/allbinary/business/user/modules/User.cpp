@@ -241,7 +241,7 @@ this->electronicDevice= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(use
     
 this->fax= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(userHashMap->get(UserData::FAX)));
     
-this->role= UserRoleB::getRole(JavaBoxes::unbox<std::string>(userHashMap->get(UserRoleData::NAME->toString())));
+this->role= UserRoleB::getRole(JavaBoxes::unbox<std::string>(userHashMap->get(JavaString::valueOf(UserRoleData::NAME))));
     
 this->permissions= stringUtil->getNonNull(JavaBoxes::unbox<std::string>(userHashMap->get(UserData::PERMISSIONS)));
     
@@ -400,7 +400,7 @@ stringBuffer->append(this->password->getValidationInfo());
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 
                 //: 
@@ -862,7 +862,7 @@ values->add(this->electronicDevice);
     
 values->add(this->fax);
     
-values->add(this->getRole()->toString());
+values->add(JavaString::valueOf(this->getRole()));
     
 
     UserConfigurationDomDocumentMapping* userConfigurationDomDocumentMapping = new UserConfigurationDomDocumentMapping(this->getUserConfigurationInterface());;
@@ -940,7 +940,7 @@ values->put(UserData::FAX, fax);
                                 )
                         
                                     {
-                                    values->put(UserRoleData::NAME->toString(), this->getRole()->toString());
+                                    values->put(JavaString::valueOf(UserRoleData::NAME), JavaString::valueOf(this->getRole()));
     
 
                                     }

@@ -145,7 +145,7 @@ this->emailServerConfigurationInterface= emailServerConfigurationInterface;
 
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(this->getEmailServerConfigurationInterface()->toString());
+stringBuffer->append(JavaString::valueOf(this->getEmailServerConfigurationInterface()));
     
 stringBuffer->append(CommonSeps::getInstance()->NEW_LINE);
     
@@ -163,7 +163,7 @@ stringBuffer->append(this->getTextBody());
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

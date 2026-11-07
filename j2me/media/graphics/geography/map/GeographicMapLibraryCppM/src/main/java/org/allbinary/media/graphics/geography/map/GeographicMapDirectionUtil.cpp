@@ -484,14 +484,14 @@ GeographicMapDirectionUtil::GeographicMapDirectionUtil(){
     StringMaker* stringMaker = new StringMaker();;
     
 
-    std::string string = stringMaker->append(CellPosition::toStringCellPosition(fromGeographicMapCellPosition))->append(" == ")->append(CellPosition::toStringCellPosition(toGeographicMapCellPosition))->toString();;
+    std::string string = JavaString::valueOf(stringMaker->append(CellPosition::toStringCellPosition(fromGeographicMapCellPosition))->append(" == ")->append(CellPosition::toStringCellPosition(toGeographicMapCellPosition)));;
     
 stringMaker->delete_(0, stringMaker->length());
     
 
 
 
-                            throw Exception(stringMaker->append("Error: ")->append(string)->toString());
+                            throw Exception(JavaString::valueOf(stringMaker->append("Error: ")->append(string)));
                     
 }
 
@@ -684,7 +684,7 @@ stringBuffer->append(CellPosition::toStringCellPosition(toGeographicMapCellPosit
 
 
 
-                            throw Exception(stringBuffer->toString());
+                            throw Exception(JavaString::valueOf(stringBuffer));
                     
 }
 

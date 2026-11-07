@@ -169,7 +169,7 @@ stringBuffer->append(" name = ");
     
 stringBuffer->append(fileItem->getName());
     
-this->logUtil->putF(stringBuffer->toString(), this, "write()");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "write()");
     
 
                         }

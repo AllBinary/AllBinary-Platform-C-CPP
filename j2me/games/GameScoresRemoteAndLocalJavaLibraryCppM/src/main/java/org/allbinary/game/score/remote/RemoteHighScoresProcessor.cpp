@@ -116,16 +116,16 @@ this->logUtil->putF("Begin Remote HighScores Retrieval", this, this->commonStrin
     
 HashtableUtil::getInstance()->putAll(gameInfo->toHashtable(), hashtable);
     
-hashtable->put(gameInfoData->SOFTWARE_INFORMATION, remoteHighScores->getSoftwareInformation()->toString());
+hashtable->put(gameInfoData->SOFTWARE_INFORMATION, JavaString::valueOf(remoteHighScores->getSoftwareInformation()));
     
-hashtable->put(remoteHighScores->ASCENDING, remoteHighScores->getAscending()->toString());
+hashtable->put(remoteHighScores->ASCENDING, JavaString::valueOf(remoteHighScores->getAscending()));
     
 
     DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();;
     
 hashtable->put(displayInfoSingleton->ORIENTATION, BooleanFactory::getInstance()->toStringb(displayInfoSingleton->isPortrait()));
     
-hashtable->put(RemoteHighScoresData::getInstance()->GAME_CONFIGURATION, GameConfigurationCentral::getInstance()->toString());
+hashtable->put(RemoteHighScoresData::getInstance()->GAME_CONFIGURATION, JavaString::valueOf(GameConfigurationCentral::getInstance()));
     
 
                         if(XmlRpcAbeClient::isOnline)

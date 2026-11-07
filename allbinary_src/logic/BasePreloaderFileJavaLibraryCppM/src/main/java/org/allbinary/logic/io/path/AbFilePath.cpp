@@ -79,7 +79,7 @@ this->schema= this->getSchema(aPath);
     
 this->setName(pathData->getNameFromPath(aPath));
     
-this->setPath(abPathUtil->adjust(this->getPathFromPath(abPathUtil->removeNameFromPath(aPath)->toString())));
+this->setPath(abPathUtil->adjust(this->getPathFromPath(JavaString::valueOf(abPathUtil->removeNameFromPath(aPath)))));
     
 }
 

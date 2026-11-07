@@ -101,7 +101,7 @@ this->version= version;
     
 this->specialName= specialName;
     
-this->shortName= (new StringMaker())->append(shortName)->append(CommonSeps::getInstance()->UNDERSCORE)->append(version)->toString();
+this->shortName= JavaString::valueOf((new StringMaker())->append(shortName)->append(CommonSeps::getInstance()->UNDERSCORE)->append(version));
     
 this->init();
     
@@ -232,13 +232,13 @@ clientInfoHashtable->put(abeClientInformationData->OSARCH, genericOperatingSyste
     
 clientInfoHashtable->put(abeClientInformationData->OSVERSION, genericOperatingSystem->getVersion());
     
-clientInfoHashtable->put(abeClientInformationData->OS, genericOperatingSystem->toString());
+clientInfoHashtable->put(abeClientInformationData->OS, JavaString::valueOf(genericOperatingSystem));
     
 
     HardwareInterface* hardwareInterface = SystemHardwareFactory::getInstance()->getInstance(genericOperatingSystem);;
     
 
-    std::string hardwareString = hardwareInterface->toString();;
+    std::string hardwareString = JavaString::valueOf(hardwareInterface);;
     
 clientInfoHashtable->put(abeClientInformationData->HARDWARE, hardwareString);
     

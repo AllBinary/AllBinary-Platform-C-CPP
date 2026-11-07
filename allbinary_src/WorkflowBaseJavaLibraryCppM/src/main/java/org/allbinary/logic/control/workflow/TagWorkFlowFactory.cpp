@@ -171,7 +171,7 @@ stringBuffer->append(TagWorkFlowFactory::instance->getClass()->getName());
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil->put(stringBuffer->toString(), this, commonStrings->GET_INSTANCE, &e);
+this->logUtil->put(JavaString::valueOf(stringBuffer), this, commonStrings->GET_INSTANCE, &e);
     
 
                                     }
@@ -207,7 +207,7 @@ stringBuffer->append(TagWorkFlowFactory::instance->getClass()->getName());
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil->put(stringBuffer->toString(), this, commonStrings->GET_INSTANCE, &e);
+this->logUtil->put(JavaString::valueOf(stringBuffer), this, commonStrings->GET_INSTANCE, &e);
     
 
                                     }

@@ -220,7 +220,7 @@ recordStore->closeRecordStore();
         struct FinallyGuard_N67232 { decltype(finallyFunction_N67232)& function; ~FinallyGuard_N67232() { function(); } } finallyGuard_N67232{finallyFunction_N67232};
         
         try {
-            this->logUtil->putF((new StringMaker())->append("Deleting: ")->appendint(deleteId)->toString(), this, this->commonStrings->delete_);
+            this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Deleting: ")->appendint(deleteId)), this, this->commonStrings->delete_);
     
 recordStore= RecordStore::openRecordStore(this->getRecordId(abeClientInformation), true);
     
@@ -321,7 +321,7 @@ recordStore= RecordStore::openRecordStore(this->getRecordId(abeClientInformation
 
     int32_t id = recordEnum->nextRecordId();;
     
-this->logUtil->putF((new StringMaker())->append(LOADING_ID)->appendint(id)->toString(), this, this->commonStrings->LOAD);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(LOADING_ID)->appendint(id)), this, this->commonStrings->LOAD);
     
 recordAsBytes= this->tsUtil->getRecord(recordStore, id);
     
@@ -349,7 +349,7 @@ this->nameBasicArrayList->add(smallIntegerSingletonFactory->getAt(id));
             {
 this->save(abeClientInformation, gameInfo, this->name);
     
-this->logUtil->putF((new StringMaker())->append(this->commonStrings->EXCEPTION_LABEL)->append(ExceptionUtil::getInstance()->getStackTrace(&e))->toString(), this, this->commonStrings->LOAD);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->commonStrings->EXCEPTION_LABEL)->append(ExceptionUtil::getInstance()->getStackTrace(&e))), this, this->commonStrings->LOAD);
     
 }
 
@@ -403,7 +403,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->SA
         struct FinallyGuard_N69188 { decltype(finallyFunction_N69188)& function; ~FinallyGuard_N69188() { function(); } } finallyGuard_N69188{finallyFunction_N69188};
         
         try {
-            this->logUtil->putF((new StringMaker())->append("Saving: ")->append(name)->toString(), this, this->commonStrings->SAVE);
+            this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Saving: ")->append(name)), this, this->commonStrings->SAVE);
     
 recordStore= RecordStore::openRecordStore(this->getRecordId(abeClientInformation), true);
     

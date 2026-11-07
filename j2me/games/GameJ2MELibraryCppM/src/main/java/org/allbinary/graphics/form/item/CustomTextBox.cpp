@@ -126,7 +126,7 @@ this->setTitle(label);
 
 
     auto CustomTextBox::onEventRaw(int32_t keyCode, int32_t deviceId, bool repeated) -> void{
-this->logUtil->putF((new StringMaker())->append(this->commonStrings->START)->appendint(keyCode)->toString(), this, "onEvent");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->commonStrings->START)->appendint(keyCode)), this, "onEvent");
     
 this->keyPressedByDevice(keyCode, deviceId);
     
@@ -154,7 +154,7 @@ this->keyRepeatedByDevice(keyCode, 0);
     auto CustomTextBox::keyPressedByDevice(int32_t keyCode, int32_t deviceId) -> void{
 
         try {
-            this->logUtil->putF((new StringMaker())->append(CommonSeps::getInstance()->SPACE)->appendint(keyCode)->toString(), this, this->gameInputStrings->KEY_PRESSED);
+            this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(CommonSeps::getInstance()->SPACE)->appendint(keyCode)), this, this->gameInputStrings->KEY_PRESSED);
     
 
     PlatformKeyFactory* platformKeyFactory = PlatformKeyFactory::getInstance();;

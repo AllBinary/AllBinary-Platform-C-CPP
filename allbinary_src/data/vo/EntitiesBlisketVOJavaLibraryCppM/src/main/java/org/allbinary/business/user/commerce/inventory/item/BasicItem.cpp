@@ -902,7 +902,7 @@ hashMap->put(basicItemData->LARGEIMAGE, this->largeImage);
     
 hashMap->put(EntryData::getInstance()->LASTMODIFIED, time);
     
-hashMap->put(basicItemData->PRICE, this->price->toString());
+hashMap->put(basicItemData->PRICE, JavaString::valueOf(this->price));
     
 hashMap->put(basicItemData->COMMENT, this->comment);
     
@@ -990,7 +990,7 @@ values->add(time);
     
 values->add(time);
     
-values->add(this->price->toString());
+values->add(JavaString::valueOf(this->price));
     
 values->add(this->comment);
     

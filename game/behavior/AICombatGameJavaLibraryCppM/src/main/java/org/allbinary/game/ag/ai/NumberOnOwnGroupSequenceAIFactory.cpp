@@ -145,7 +145,7 @@ stringBuffer->append(" + 1");
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil->putF(stringBuffer->toString(), this, commonStrings->GET_INSTANCE);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, commonStrings->GET_INSTANCE);
     
 
                         if(artificialIntelligenceInterface.size() -1 > list->size())

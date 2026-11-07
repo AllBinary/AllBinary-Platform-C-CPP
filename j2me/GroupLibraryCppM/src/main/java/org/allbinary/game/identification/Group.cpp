@@ -101,7 +101,7 @@ stringBuffer->append(groupCommonFactory->ID_LABEL);
     
 stringBuffer->appendshort(this->teamId);
     
-this->string= stringBuffer->toString();
+this->string= JavaString::valueOf(stringBuffer);
     
 }
 

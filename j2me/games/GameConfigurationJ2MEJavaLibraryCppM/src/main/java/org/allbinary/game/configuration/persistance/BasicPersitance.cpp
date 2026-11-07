@@ -157,7 +157,7 @@ recordStore->closeRecordStore();
         struct FinallyGuard_N66725 { decltype(finallyFunction_N66725)& function; ~FinallyGuard_N66725() { function(); } } finallyGuard_N66725{finallyFunction_N66725};
         
         try {
-            this->logUtil->putF((new StringMaker())->append(this->persistanceStrings->DELETING_WITH_ID)->appendint(deleteId)->toString(), this, this->commonStrings->delete_);
+            this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->persistanceStrings->DELETING_WITH_ID)->appendint(deleteId)), this, this->commonStrings->delete_);
     
 recordStore= RecordStore::openRecordStore(this->getRecordId(abeClientInformation), true);
     

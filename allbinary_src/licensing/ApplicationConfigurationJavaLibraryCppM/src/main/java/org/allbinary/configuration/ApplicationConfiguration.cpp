@@ -251,7 +251,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->CONSTRUCTOR, &
 
                         }
                             
-this->logUtil->putF(JavaString::valueOf("Read Configuration: ") +JavaString::valueOf(this->toString()), this, "read");
+this->logUtil->putF(JavaString::valueOf("Read Configuration: ") +JavaString::valueOf(JavaString::valueOf(this)), this, "read");
     
 }
 
@@ -274,7 +274,7 @@ this->logUtil->putF(JavaString::valueOf("Read Configuration: ") +JavaString::val
         struct FinallyGuard_N67597 { decltype(finallyFunction_N67597)& function; ~FinallyGuard_N67597() { function(); } } finallyGuard_N67597{finallyFunction_N67597};
         
         try {
-            this->logUtil->putF(JavaString::valueOf("Write Configuration: ") +JavaString::valueOf(this->toString()), this, "write");
+            this->logUtil->putF(JavaString::valueOf("Write Configuration: ") +JavaString::valueOf(JavaString::valueOf(this)), this, "write");
     
 
     FileStreamFactory* fileInputStreamFactory = FileStreamFactory::getInstance();;
@@ -475,7 +475,7 @@ stringBuffer->appendboolean(this->isShowTitleBar());
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

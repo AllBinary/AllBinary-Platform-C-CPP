@@ -154,7 +154,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->CONSTRUCTOR, &
     
 this->setRegistrationCode(dataInputStream->readUTF());
     
-PreLogUtil::put((new StringMaker())->append("Read Configuration: ")->append(this->toString())->toString(), this, "read");
+PreLogUtil::put(JavaString::valueOf((new StringMaker())->append("Read Configuration: ")->append(JavaString::valueOf(this))), this, "read");
     
 }
 
@@ -179,7 +179,7 @@ PreLogUtil::put((new StringMaker())->append("Read Configuration: ")->append(this
         struct FinallyGuard_N66840 { decltype(finallyFunction_N66840)& function; ~FinallyGuard_N66840() { function(); } } finallyGuard_N66840{finallyFunction_N66840};
         
         {
-            this->logUtil->putF((new StringMaker())->append("Write Configuration: ")->append(this->toString())->toString(), this, "write");
+            this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Write Configuration: ")->append(JavaString::valueOf(this))), this, "write");
     
 
     FileStreamFactory* fileInputStreamFactory = FileStreamFactory::getInstance();;
@@ -208,7 +208,7 @@ dataOutputStream->flush();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return (new StringMaker())->append("Registration Code: ")->append(this->getRegistrationCode())->toString();;
+                        return JavaString::valueOf((new StringMaker())->append("Registration Code: ")->append(this->getRegistrationCode()));;
     
 }
 

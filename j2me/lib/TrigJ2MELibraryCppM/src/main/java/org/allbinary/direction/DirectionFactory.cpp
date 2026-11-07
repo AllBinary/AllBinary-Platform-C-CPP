@@ -87,19 +87,19 @@ DirectionFactory::DirectionFactory() : LEFT(new Direction(CommonPhoneStrings::ge
 
     CommonSeps* commonSeps = CommonSeps::getInstance();;
     
-this->UP_LEFT= new Direction("UP LEFT", stringBuffer->append(this->UP->getOtherName())->append(commonSeps->SPACE)->append(this->LEFT->getOtherName())->toString(), 4, 0);
+this->UP_LEFT= new Direction("UP LEFT", JavaString::valueOf(stringBuffer->append(this->UP->getOtherName())->append(commonSeps->SPACE)->append(this->LEFT->getOtherName())), 4, 0);
     
 stringBuffer->delete_(0, stringBuffer->length());
     
-this->UP_RIGHT= new Direction("UP RIGHT", stringBuffer->append(this->UP->getOtherName())->append(commonSeps->SPACE)->append(this->RIGHT->getOtherName())->toString(), 5, 0);
+this->UP_RIGHT= new Direction("UP RIGHT", JavaString::valueOf(stringBuffer->append(this->UP->getOtherName())->append(commonSeps->SPACE)->append(this->RIGHT->getOtherName())), 5, 0);
     
 stringBuffer->delete_(0, stringBuffer->length());
     
-this->DOWN_LEFT= new Direction("DOWN LEFT", stringBuffer->append(this->DOWN->getOtherName())->append(commonSeps->SPACE)->append(this->LEFT->getOtherName())->toString(), 6, 0);
+this->DOWN_LEFT= new Direction("DOWN LEFT", JavaString::valueOf(stringBuffer->append(this->DOWN->getOtherName())->append(commonSeps->SPACE)->append(this->LEFT->getOtherName())), 6, 0);
     
 stringBuffer->delete_(0, stringBuffer->length());
     
-this->DOWN_RIGHT= new Direction("DOWN RIGHT", stringBuffer->append(this->DOWN->getOtherName())->append(commonSeps->SPACE)->append(this->RIGHT->getOtherName())->toString(), 7, 0);
+this->DOWN_RIGHT= new Direction("DOWN RIGHT", JavaString::valueOf(stringBuffer->append(this->DOWN->getOtherName())->append(commonSeps->SPACE)->append(this->RIGHT->getOtherName())), 7, 0);
     
 }
 

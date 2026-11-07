@@ -124,7 +124,7 @@ hexColorStringBuffer->append(std::to_string(greenIndex));
 hexColorStringBuffer->append(std::to_string(blueIndex));
     
 
-    Node* colorNode = ModDomHelper::createNameValueNodes(document, ColorData::getInstance()->NAME, hexColorStringBuffer->toString());;
+    Node* colorNode = ModDomHelper::createNameValueNodes(document, ColorData::getInstance()->NAME, JavaString::valueOf(hexColorStringBuffer));;
     
 
 
@@ -192,7 +192,7 @@ hexColorStringBuffer->append(std::to_string(index));
 hexColorStringBuffer->append(std::to_string(index));
     
 
-    Node* colorNode = ModDomHelper::createNameValueNodes(document, ColorData::getInstance()->NAME, hexColorStringBuffer->toString());;
+    Node* colorNode = ModDomHelper::createNameValueNodes(document, ColorData::getInstance()->NAME, JavaString::valueOf(hexColorStringBuffer));;
     
 node->appendChild(colorNode);
     

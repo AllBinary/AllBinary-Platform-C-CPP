@@ -326,7 +326,7 @@ stringBuffer->append(" New Xml/Data: ");
     
 stringBuffer->append(documentString);
     
-this->logUtil->putF(stringBuffer->toString(), this, "insert()");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "insert()");
     
 
                                     }
@@ -361,7 +361,7 @@ stringBuffer->append(" is modifying view: ");
     
 stringBuffer->append(viewNameOfViewToBeModified);
     
-this->logUtil->putF(stringBuffer->toString(), this, "insert()");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "insert()");
     
 
                                     }
@@ -392,7 +392,7 @@ stringBuffer->append(viewNameOfViewToBeModified);
     
 stringBuffer->append(" since it does not exist");
     
-this->logUtil->putF(stringBuffer->toString(), this, "insert()");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "insert()");
     
 
                                     }
@@ -420,13 +420,13 @@ stringBuffer->append(viewNameOfViewToBeModified);
     
 stringBuffer->append(" is changing data in ");
     
-stringBuffer->append(specifiedTransformInfoInterface->getDataFilePath()->toString());
+stringBuffer->append(JavaString::valueOf(specifiedTransformInfoInterface->getDataFilePath()));
     
 stringBuffer->append(" to the following data:\n");
     
 stringBuffer->append(documentString);
     
-this->logUtil->putF(stringBuffer->toString(), this, "insert()");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "insert()");
     
 
                                     }

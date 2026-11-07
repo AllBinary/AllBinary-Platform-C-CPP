@@ -102,7 +102,7 @@ BasicUserRoles* BasicUserRoles::instance = BasicUserRoles::instance_owner();
     BasicUserRole* userRole = dynamic_cast<BasicUserRole*>(roleVector->get(index));;
     
 
-                        if(role.compare(userRole->toString()) == 0)
+                        if(role.compare(JavaString::valueOf(userRole)) == 0)
                         
                                     {
                                     

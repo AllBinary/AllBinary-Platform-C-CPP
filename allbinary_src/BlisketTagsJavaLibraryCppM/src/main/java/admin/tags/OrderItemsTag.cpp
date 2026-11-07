@@ -155,7 +155,7 @@ this->status= value;
 
     std::vector<Object*> methodArgs = 
                                                         {
-                                                            this->status
+                                                            JavaBoxes::toObject(this->status)
                                                         };;
     
 

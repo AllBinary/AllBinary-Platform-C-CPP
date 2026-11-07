@@ -98,15 +98,15 @@ this->roll->setint(roll);
     
 stringBuffer->append("Y: ");
     
-stringBuffer->append(std::to_string(yaw));
+stringBuffer->append(JavaString::valueOf(this->yaw));
     
 stringBuffer->append(" P: ");
     
-stringBuffer->append(std::to_string(pitch));
+stringBuffer->append(JavaString::valueOf(this->pitch));
     
 stringBuffer->append(" R: ");
     
-stringBuffer->append(std::to_string(roll));
+stringBuffer->append(JavaString::valueOf(this->roll));
     
 
 
@@ -114,7 +114,7 @@ stringBuffer->append(std::to_string(roll));
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

@@ -76,7 +76,7 @@
 
 const std::string MobileClientInformation::ANDROID_DESC = JavaString::valueOf("Android") +JavaString::valueOf(MobileClientInformation::DESC);
 
-MobileClientInformation::MobileClientInformation(std::string name, std::string version, std::string specialName, std::string shortName) : AbeClientInformation(name, version, (new StringMaker())->append(specialName)->append(CommonSeps::getInstance()->SPACE)->append(PartnerIdentifierFileUtil::getInstance()->get())->toString(), shortName){
+MobileClientInformation::MobileClientInformation(std::string name, std::string version, std::string specialName, std::string shortName) : AbeClientInformation(name, version, JavaString::valueOf((new StringMaker())->append(specialName)->append(CommonSeps::getInstance()->SPACE)->append(PartnerIdentifierFileUtil::getInstance()->get())), shortName){
 
                         //super/this constructor call is in the constructor initializer list.
                     

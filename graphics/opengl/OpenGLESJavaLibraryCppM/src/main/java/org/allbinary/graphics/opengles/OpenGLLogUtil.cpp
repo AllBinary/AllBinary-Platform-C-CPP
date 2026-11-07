@@ -114,13 +114,13 @@ stringBuffer->appendint(maxTextureSize[0]);
                         if(error == 1280)
                         
                                     {
-                                    PreLogUtil::put(stringBuffer->toString(), this, OpenGLStrings::getInstance()->SET);
+                                    PreLogUtil::put(JavaString::valueOf(stringBuffer), this, OpenGLStrings::getInstance()->SET);
     
 
                                     }
                                 
                         else {
-                            ForcedLogUtil::log(stringBuffer->toString(), this);
+                            ForcedLogUtil::log(JavaString::valueOf(stringBuffer), this);
     
 
                         }
@@ -164,9 +164,9 @@ stringBuffer->appendint(maxTextureSize[0]);
                                 
 stringBuffer->append(this->IMAGE);
     
-stringBuffer->append(image->toString());
+stringBuffer->append(JavaString::valueOf(image));
     
-PreLogUtil::put(stringBuffer->toString(), this, this->LOG_ERROR);
+PreLogUtil::put(JavaString::valueOf(stringBuffer), this, this->LOG_ERROR);
     
 
                                     }

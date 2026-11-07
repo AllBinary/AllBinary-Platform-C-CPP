@@ -196,7 +196,7 @@ stringBuffer->append("TransformInfo: ");
 
                         }
                             
-this->logUtil->putF(stringBuffer->toString(), this, "generate()");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "generate()");
     
 
                                     }
@@ -294,7 +294,7 @@ templateNameStringBuffer->append(RootTransformInfoData::NAME);
                         
                                     {
                                     
-    TransformTemplateInterface* templateInterface = TransformTemplateFactory::getInstance()->getInstance(this->abeClientInformation, templateNameStringBuffer->toString(), transformInfoHttpStoreInterface->getPropertiesHashMap(), transformInfoHttpStoreInterface->getPageContext());;
+    TransformTemplateInterface* templateInterface = TransformTemplateFactory::getInstance()->getInstance(this->abeClientInformation, JavaString::valueOf(templateNameStringBuffer), transformInfoHttpStoreInterface->getPropertiesHashMap(), transformInfoHttpStoreInterface->getPageContext());;
     
 
     std::string selectedTemplate = templateInterface->getName();;

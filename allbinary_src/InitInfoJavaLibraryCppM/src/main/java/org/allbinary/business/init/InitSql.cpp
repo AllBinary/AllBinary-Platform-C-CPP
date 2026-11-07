@@ -191,7 +191,7 @@ stringBuffer->append("Creating Table: ");
     
 stringBuffer->append(tableData);
     
-PreLogUtil::put(stringBuffer->toString(), INIT_SQL, "createTable()");
+PreLogUtil::put(JavaString::valueOf(stringBuffer), INIT_SQL, "createTable()");
     
 this->executeSQLStatement(tableData);
     
@@ -330,7 +330,7 @@ stringBuffer->append(this->sqlStrings->CLOSE_QUOTE);
 }
 
 
-    std::string sqlStatement = stringBuffer->toString();;
+    std::string sqlStatement = JavaString::valueOf(stringBuffer);;
     
 
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
@@ -376,7 +376,7 @@ result->put(columnName, field);
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
                         
                                     {
-                                    PreLogUtil::put(this->ROW_VALUE_LABEL +result->toString(), this->INIT_SQL, this->METHOD_GET_ROW);
+                                    PreLogUtil::put(this->ROW_VALUE_LABEL +JavaString::valueOf(result), this->INIT_SQL, this->METHOD_GET_ROW);
     
 
                                     }
@@ -461,7 +461,7 @@ stringBuffer->append(this->sqlStrings->SET);
     int32_t i = 0;i < size; i++)
         {
 
-    std::string columnName = columnArray[i]->toString();;
+    std::string columnName = JavaString::valueOf(columnArray[i]);;
     
 stringBuffer->append(this->commonSeps->SPACE);
     
@@ -511,7 +511,7 @@ stringBuffer->append(this->getValue(value));
 stringBuffer->append(this->sqlStrings->CLOSE_QUOTE);
     
 
-    std::string sqlStatement = stringBuffer->toString();;
+    std::string sqlStatement = JavaString::valueOf(stringBuffer);;
     
 this->executeSQLStatement(sqlStatement);
     
@@ -581,7 +581,7 @@ stringBuffer->append(value);
 stringBuffer->append(this->INSERT_END);
     
 
-    std::string sqlStatement = stringBuffer->toString();;
+    std::string sqlStatement = JavaString::valueOf(stringBuffer);;
     
 this->executeSQLStatement(sqlStatement);
     
@@ -602,7 +602,7 @@ this->executeSQLStatement(sqlStatement);
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
                         
                                     {
-                                    PreLogUtil::putOE(this->FAILED_SQL_STATEMENT +stringBuffer->toString(), this->INIT_SQL, INSERT, &e);
+                                    PreLogUtil::putOE(this->FAILED_SQL_STATEMENT +JavaString::valueOf(stringBuffer), this->INIT_SQL, INSERT, &e);
     
 
                                     }
@@ -766,7 +766,7 @@ PreLogUtil::putOE(this->commonStrings->EXCEPTION, INIT_SQL, "createConnection()"
             
     std::string jdbcDriver = this->databaseConnectionInfoInterface->getJdbcDriver();;
     
-PreLogUtil::put((new StringMaker())->append("Loading DbConnnectionInfo: ")->append(this->databaseConnectionInfoInterface->getClass()->getName())->append(" Driver: ")->append(jdbcDriver)->toString(), this->INIT_SQL, "initialize()");
+PreLogUtil::put(JavaString::valueOf((new StringMaker())->append("Loading DbConnnectionInfo: ")->append(this->databaseConnectionInfoInterface->getClass()->getName())->append(" Driver: ")->append(jdbcDriver)), this->INIT_SQL, "initialize()");
     
 Class::forName(jdbcDriver)->newInstance();
     

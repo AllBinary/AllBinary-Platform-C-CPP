@@ -186,7 +186,7 @@ this->saveWithImageIO(new File(filePath), bufferedImage);
                                 )
                         
                                     {
-                                    this->logUtil->putF(ios->toString(), ios, this->commonStrings->CLOSE);
+                                    this->logUtil->putF(JavaString::valueOf(ios), ios, this->commonStrings->CLOSE);
     
 ios->close();
     

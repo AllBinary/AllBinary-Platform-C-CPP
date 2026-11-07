@@ -115,7 +115,7 @@ RunnableCanvas::RunnableCanvas(CommandListener* commandListener, BasicArrayList*
 
                             //For kotlin this is before the body of the constructor.
                     
-this->logUtil->putF((new StringMaker())->append("RunnableCanvas delay: ")->appendint(this->loopTimeHelper->delay)->toString(), this, this->commonStrings->CONSTRUCTOR);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("RunnableCanvas delay: ")->appendint(this->loopTimeHelper->delay)), this, this->commonStrings->CONSTRUCTOR);
     
 this->runnableCanvasRefreshHelper= new RunnableCanvasRefreshHelper(this);
     
@@ -210,7 +210,7 @@ this->threadObjectUtil->notifyObject(this);
 
                                     }
                                 
-this->logUtil->putF((new StringMaker())->append(this->IS_RUNNING)->appendboolean(this->running)->toString(), this, this->SET_RUNNING);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->IS_RUNNING)->appendboolean(this->running)), this, this->SET_RUNNING);
     
 }
 
@@ -244,7 +244,7 @@ stringBuffer->append(this->THREAD);
                                 )
                         
                                     {
-                                    stringBuffer->append(this->thread->toString());
+                                    stringBuffer->append(JavaString::valueOf(this->thread));
     
 
                                     }
@@ -262,7 +262,7 @@ stringBuffer->append(this->NOT_EQUAL);
 
                                     }
                                 
-this->logUtil->putF(stringBuffer->toString(), this, this->IS_RUNNING);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->IS_RUNNING);
     
 
 
@@ -295,7 +295,7 @@ this->loopTimeHelper->delay= wait;
     
 this->pauseWait= wait *3;
     
-this->logUtil->putF((new StringMaker())->append("setWait - delay: ")->appendint(this->loopTimeHelper->delay)->toString(), this, this->commonStrings->CONSTRUCTOR);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("setWait - delay: ")->appendint(this->loopTimeHelper->delay)), this, this->commonStrings->CONSTRUCTOR);
     
 }
 
@@ -439,7 +439,7 @@ this->runnableCanvasRefreshHelper->process();
 
     int64_t currentTimeMillis = this->systemWrapper->currentTimeMillis();;
     
-this->logUtil->putF(stringMaker->append(this->START_PAUSE)->appendlong(currentTimeMillis)->append(this->PAUSE_SLEEP)->appendlong(this->pauseWait)->toString(), this, this->PROCESS_LOOP_SLEEP);
+this->logUtil->putF(JavaString::valueOf(stringMaker->append(this->START_PAUSE)->appendlong(currentTimeMillis)->append(this->PAUSE_SLEEP)->appendlong(this->pauseWait)), this, this->PROCESS_LOOP_SLEEP);
     
 
         while(this->isPaused() && this->isRunning() && !this->isSingleThread())
@@ -452,7 +452,7 @@ this->processSleep();
                                     {
                                     stringMaker->delete_(0, stringMaker->length());
     
-this->logUtil->putF(stringMaker->append(this->END_PAUSE)->appendlong(currentTimeMillis)->toString(), this, this->PROCESS_LOOP_SLEEP);
+this->logUtil->putF(JavaString::valueOf(stringMaker->append(this->END_PAUSE)->appendlong(currentTimeMillis)), this, this->PROCESS_LOOP_SLEEP);
     
 
 

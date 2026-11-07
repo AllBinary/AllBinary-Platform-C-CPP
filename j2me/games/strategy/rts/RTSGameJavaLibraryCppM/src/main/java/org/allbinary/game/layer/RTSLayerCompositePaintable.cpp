@@ -79,7 +79,7 @@ this->upgradableRTSLayerHudPaintable= upgradableRTSLayerHudPaintable;
                         if(rtsLayer->isUpgradeable())
                         
                                     {
-                                    this->setUpgradeCost((new StringMaker())->append(this->UPGRADE)->appendint(rtsLayer->getUpgradeCost())->toString());
+                                    this->setUpgradeCost(JavaString::valueOf((new StringMaker())->append(this->UPGRADE)->appendint(rtsLayer->getUpgradeCost())));
     
 
                                     }
@@ -94,7 +94,7 @@ this->upgradableRTSLayerHudPaintable= upgradableRTSLayerHudPaintable;
                         if(rtsLayer->isDowngradeable())
                         
                                     {
-                                    this->setDownGradeCost((new StringMaker())->append(this->DOWNGRADE)->appendint(rtsLayer->getDowngradeCost())->toString());
+                                    this->setDownGradeCost(JavaString::valueOf((new StringMaker())->append(this->DOWNGRADE)->appendint(rtsLayer->getDowngradeCost())));
     
 
                                     }

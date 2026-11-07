@@ -191,7 +191,7 @@ this->name= name;
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return (new StringMaker())->append(this->name)->append(commonSeps->COLON)->appendlong(this->score)->append(commonSeps->FORWARD_SLASH)->append(this->scoreString)->toString();;
+                        return JavaString::valueOf((new StringMaker())->append(this->name)->append(commonSeps->COLON)->appendlong(this->score)->append(commonSeps->FORWARD_SLASH)->append(this->scoreString));;
     
 }
 

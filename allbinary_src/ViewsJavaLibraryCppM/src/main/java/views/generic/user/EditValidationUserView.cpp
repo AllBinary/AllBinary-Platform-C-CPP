@@ -212,7 +212,7 @@ this->user= UserEntityFactory::getInstance()->getUser(this->userName);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 
                                     }
@@ -229,7 +229,7 @@ this->user= UserEntityFactory::getInstance()->getUser(this->userName);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 
                         }
@@ -260,7 +260,7 @@ stringBuffer->append(this->user->validationInfo());
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 
                 //: 

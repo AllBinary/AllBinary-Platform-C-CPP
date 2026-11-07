@@ -180,7 +180,7 @@ FeaturedAnimationInterfaceFactoryInterfaceFactory::FeaturedAnimationInterfaceFac
 
 
 
-                            throw Exception((new StringMaker())->append("No rectangle available for current feature selection or Resource: ")->append(resource)->toString());
+                            throw Exception(JavaString::valueOf((new StringMaker())->append("No rectangle available for current feature selection or Resource: ")->append(resource)));
                     
 }
 
@@ -310,7 +310,7 @@ stringBuffer->append(FOR_FACTORIES);
                         for (
     int32_t index = 0;index < size2; index++)
         {
-stringBuffer->append(resourceTypeAvailableList->get(index)->toString());
+stringBuffer->append(JavaString::valueOf(resourceTypeAvailableList->get(index)));
     
 stringBuffer->append(CommonSeps::getInstance()->COMMA_SEP);
     
@@ -351,7 +351,7 @@ stringBuffer->append(RESOURCES_LABEL);
 
 
 
-                            throw Exception(stringBuffer->toString());
+                            throw Exception(JavaString::valueOf(stringBuffer));
                     
 
                                     }
@@ -369,21 +369,21 @@ stringBuffer->append(RESOURCES_LABEL);
         {
 featureInterface= dynamic_cast<FeatureResourceAnimationInterfaceFactoryInterface*>(list->objectArray[index]);
     
-stringBuffer->append(featureInterface->toString());
+stringBuffer->append(JavaString::valueOf(featureInterface));
     
 stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
 }
 
 
-    std::string result = stringBuffer->toString();;
+    std::string result = JavaString::valueOf(stringBuffer);;
     
 stringBuffer->delete_(0, stringBuffer->length());
     
 
 
 
-                            throw Exception(stringBuffer->append("No feature resource type available for Resource: ")->append(resource)->append(" Resource Factories Available: ")->append(result)->toString());
+                            throw Exception(JavaString::valueOf(stringBuffer->append("No feature resource type available for Resource: ")->append(resource)->append(" Resource Factories Available: ")->append(result)));
                     
 
                         }

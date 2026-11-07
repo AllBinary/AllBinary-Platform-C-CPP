@@ -187,7 +187,7 @@ this->componentInterfaceVector->add(cpu);
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->OS))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf("Hardware Data: ") +JavaString::valueOf(this->toString()), this, this->commonStrings->CONSTRUCTOR);
+                                    this->logUtil->putF(JavaString::valueOf("Hardware Data: ") +JavaString::valueOf(JavaString::valueOf(this)), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -215,7 +215,7 @@ this->componentInterfaceVector->add(cpu);
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->OS))
                         
                                     {
-                                    this->logUtil->put(JavaString::valueOf("Hardware Data: ") +JavaString::valueOf(this->toString()), this, this->commonStrings->CONSTRUCTOR, &e);
+                                    this->logUtil->put(JavaString::valueOf("Hardware Data: ") +JavaString::valueOf(JavaString::valueOf(this)), this, this->commonStrings->CONSTRUCTOR, &e);
     
 
                                     }
@@ -401,7 +401,7 @@ nextLine= lineNumberReader->readLine();
 }
 
 
-    HardwareComponentInterface* componentInterface = PCComponentFactory::getInstance()->getInstance(componentType, componentData->toString());;
+    HardwareComponentInterface* componentInterface = PCComponentFactory::getInstance()->getInstance(componentType, JavaString::valueOf(componentData));;
     
 
                         if(componentInterface != 
@@ -609,7 +609,7 @@ hardwareBuffer->appendint(index);
     
 hardwareBuffer->append(": \n");
     
-hardwareBuffer->append(componentInterface->toString());
+hardwareBuffer->append(JavaString::valueOf(componentInterface));
     
 hardwareBuffer->append(CommonSeps::getInstance()->NEW_LINE);
     
@@ -621,7 +621,7 @@ hardwareBuffer->append(CommonSeps::getInstance()->NEW_LINE);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return hardwareBuffer->toString();;
+                        return JavaString::valueOf(hardwareBuffer);;
     
 }
 

@@ -143,7 +143,7 @@ stringBuffer->append(this->TO);
     
 stringBuffer->appendint(value);
     
-this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->UPDATE);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->commonStrings->UPDATE);
     
 gameConfiguration->setValue(value);
     
@@ -170,7 +170,7 @@ stringBuffer->append(this->TO);
     
 stringBuffer->appendint(JavaBoxes::value<int32_t>(gameConfiguration->getDefaultValue()));
     
-this->logUtil->putF(stringBuffer->toString(), this, "setDefault");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "setDefault");
     
 gauge->setValue(JavaBoxes::value<int32_t>(gameConfiguration->getDefaultValue()) -JavaBoxes::value<int32_t>(gameConfiguration->getMinValue()));
     

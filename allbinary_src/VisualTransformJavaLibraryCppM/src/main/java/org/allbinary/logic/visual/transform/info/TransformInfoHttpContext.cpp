@@ -108,13 +108,13 @@ TransformInfoHttpContext::TransformInfoHttpContext(HashMap<Object*, Object*>* da
     
 stringBuffer->append("Database HashMap: ");
     
-stringBuffer->append(databaseHashMap->toString());
+stringBuffer->append(JavaString::valueOf(databaseHashMap));
     
 stringBuffer->append("\nProperties HashMap: ");
     
-stringBuffer->append(propertiesHashMap->toString());
+stringBuffer->append(JavaString::valueOf(propertiesHashMap));
     
-this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->CONSTRUCTOR);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -135,7 +135,7 @@ TransformInfoHttpContext::TransformInfoHttpContext(HashMap<Object*, Object*>* pr
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf("Properties HashMap: ") +JavaString::valueOf(propertiesHashMap->toString()), this, this->commonStrings->CONSTRUCTOR);
+                                    this->logUtil->putF(JavaString::valueOf("Properties HashMap: ") +JavaString::valueOf(JavaString::valueOf(propertiesHashMap)), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -167,7 +167,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

@@ -274,7 +274,7 @@ this->mouseActionScriptInputJPanel->getMouseActionJDialog()->setVisible(true);
     
 hashMap->put(MouseActionScriptInputData::BUTTONS, std::to_string(this->getButtonClicks()));
     
-this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(hashMap->toString()), this, "toHashMap()");
+this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(JavaString::valueOf(hashMap)), this, "toHashMap()");
     
 
 
@@ -384,7 +384,7 @@ buttonStringBuffer->append(" 3: ");
 
                         }
                             
-this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Input Type: ") +JavaString::valueOf(this->getInputRobotInterface()->getName())) +JavaString::valueOf(" Point: ")) +JavaString::valueOf(this->getPoint())) +JavaString::valueOf(" Buttons Clicked: ")) +JavaString::valueOf(buttonStringBuffer->toString()), this, "log");
+this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Input Type: ") +JavaString::valueOf(this->getInputRobotInterface()->getName())) +JavaString::valueOf(" Point: ")) +JavaString::valueOf(this->getPoint())) +JavaString::valueOf(" Buttons Clicked: ")) +JavaString::valueOf(JavaString::valueOf(buttonStringBuffer)), this, "log");
     
 }
 

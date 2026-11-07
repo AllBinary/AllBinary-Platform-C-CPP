@@ -136,7 +136,7 @@ param->add(hashtable);
 
     Object* result = JavaBoxes::toObject(xmlRpcClient->execute(this->getRemoteMethod(), param, this->noCrypt));;
     
-System.out.println(CommonLabels::getInstance()->RESULT_ +CommonSeps::getInstance()->NEW_LINE +result->toString());
+System.out.println(CommonLabels::getInstance()->RESULT_ +CommonSeps::getInstance()->NEW_LINE +JavaString::valueOf(result));
     
 
 

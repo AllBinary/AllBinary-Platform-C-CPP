@@ -92,7 +92,7 @@ SecondaryThreadPool::SecondaryThreadPool(std::string poolName, int32_t numThread
 
 
     auto SecondaryThreadPool::runTask(Runnable* task) -> void{
-this->logUtil->putF((new StringMaker())->append(StringUtil::getInstance()->toString(task))->appendlong(System.currentTimeMillis())->toString(), this, this->threadPoolStrings->ADD_TASK);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(StringUtil::getInstance()->toString(task))->appendlong(System.currentTimeMillis())), this, this->threadPoolStrings->ADD_TASK);
     
 ThreadPool::runTask(task);
     
@@ -100,13 +100,13 @@ ThreadPool::runTask(task);
 
 
     auto SecondaryThreadPool::startTask(Runnable* task) -> void{
-this->logUtil->putF((new StringMaker())->append(this->threadPoolStrings->START_TASK)->append(StringUtil::getInstance()->toString(task))->appendlong(System.currentTimeMillis())->toString(), this, this->commonStrings->RUN);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->threadPoolStrings->START_TASK)->append(StringUtil::getInstance()->toString(task))->appendlong(System.currentTimeMillis())), this, this->commonStrings->RUN);
     
 }
 
 
     auto SecondaryThreadPool::completedTask(Runnable* task) -> void{
-this->logUtil->putF((new StringMaker())->append(this->threadPoolStrings->COMPLETE_TASK)->append(StringUtil::getInstance()->toString(task))->appendlong(System.currentTimeMillis())->toString(), this, this->commonStrings->RUN);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->threadPoolStrings->COMPLETE_TASK)->append(StringUtil::getInstance()->toString(task))->appendlong(System.currentTimeMillis())), this, this->commonStrings->RUN);
     
 }
 

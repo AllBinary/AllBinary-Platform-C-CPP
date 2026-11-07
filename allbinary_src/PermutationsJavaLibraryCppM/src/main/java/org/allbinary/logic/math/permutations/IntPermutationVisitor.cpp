@@ -109,7 +109,7 @@ stringBuilder->append(commonSeps->SPACE);
     
 }
 
-System.out.println(stringBuilder->toString());
+System.out.println(JavaString::valueOf(stringBuilder));
     
 }
 

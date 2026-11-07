@@ -156,7 +156,7 @@ stringBuffer->append(URLGLOBALS::getWebappPath());
 stringBuffer->append(PATH_GLOBALS::getInstance()->BACKUP_PATH);
     
 
-    std::string backupPath = stringBuffer->toString();;
+    std::string backupPath = JavaString::valueOf(stringBuffer);;
     
 
     AbPath* path = new AbPath(backupPath, this->stringUtil->EMPTY_STRING);;
@@ -190,7 +190,7 @@ stringBuffer->append(URLGLOBALS::getWebappPath());
 stringBuffer->append(PATH_GLOBALS::getInstance()->BACKUP_PATH);
     
 
-    std::string backupPath = stringBuffer->toString();;
+    std::string backupPath = JavaString::valueOf(stringBuffer);;
     
 
     AbPath* path = new AbPath(backupPath, this->stringUtil->EMPTY_STRING);;
@@ -230,7 +230,7 @@ stringBuffer->append(PATH_GLOBALS::getInstance()->VIEWS_PATH);
     
 stringBuffer->append(nextStore);
     
-viewsPath= stringBuffer->toString();
+viewsPath= JavaString::valueOf(stringBuffer);
     
 stringBuffer->delete_(0, stringBuffer->length());
     
@@ -242,7 +242,7 @@ stringBuffer->append(" from: ");
     
 stringBuffer->append(viewsPath);
     
-PreLogUtil::put(stringBuffer->toString(), this, "backupViews()");
+PreLogUtil::put(JavaString::valueOf(stringBuffer), this, "backupViews()");
     
 fileBasicArrayList->addAllList(this->getFileBasicArrayList(viewsPath));
     
@@ -274,7 +274,7 @@ stringBuffer->append(URLGLOBALS::getWebappPath());
 stringBuffer->append(PATH_GLOBALS::getInstance()->BACKUP_PATH);
     
 
-    std::string backupPath = stringBuffer->toString();;
+    std::string backupPath = JavaString::valueOf(stringBuffer);;
     
 
     AbPath* path = new AbPath(backupPath, this->stringUtil->EMPTY_STRING);;
@@ -319,7 +319,7 @@ stringBuffer->append(storeFrontInterface->getCurrentHostNamePath());
     
 stringBuffer->append(storeFrontInterface->getCategoryPath());
     
-resourcesPath= stringBuffer->toString();
+resourcesPath= JavaString::valueOf(stringBuffer);
     
 stringBuffer->delete_(0, stringBuffer->length());
     
@@ -331,7 +331,7 @@ stringBuffer->append(" from: ");
     
 stringBuffer->append(resourcesPath);
     
-PreLogUtil::put(stringBuffer->toString(), this, "backupResources()");
+PreLogUtil::put(JavaString::valueOf(stringBuffer), this, "backupResources()");
     
 fileBasicArrayList->addAllList(this->getFileBasicArrayList(resourcesPath));
     
@@ -363,7 +363,7 @@ stringBuffer->append(URLGLOBALS::getWebappPath());
 stringBuffer->append(PATH_GLOBALS::getInstance()->BACKUP_PATH);
     
 
-    std::string backupPath = stringBuffer->toString();;
+    std::string backupPath = JavaString::valueOf(stringBuffer);;
     
 
     AbPath* path = new AbPath(backupPath, this->stringUtil->EMPTY_STRING);;
@@ -400,7 +400,7 @@ stringBuffer->append(URLGLOBALS::getWebappPath());
     
 stringBuffer->append(nextStore);
     
-fileBasicArrayList->addAllList(this->getFileBasicArrayList(stringBuffer->toString()));
+fileBasicArrayList->addAllList(this->getFileBasicArrayList(JavaString::valueOf(stringBuffer)));
     
 }
 
@@ -433,7 +433,7 @@ stringBuffer->append(" BasicArrayList: ");
     
 stringBuffer->appendint(fileBasicArrayList->size());
     
-PreLogUtil::put(JavaString::valueOf("Creating Backup Zip File: ") +JavaString::valueOf(stringBuffer->toString()), this, "backup()");
+PreLogUtil::put(JavaString::valueOf("Creating Backup Zip File: ") +JavaString::valueOf(JavaString::valueOf(stringBuffer)), this, "backup()");
     
 ZipFileUtil::getInstance()->create(zipFile, fileBasicArrayList);
     

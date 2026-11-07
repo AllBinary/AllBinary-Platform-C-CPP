@@ -194,7 +194,7 @@ stringBuffer->appendint(size);
     
 stringBuffer->append(UpGameKeyEventHandlerBase::LISTENER_LABEL);
     
-stringBuffer->append(eventListenerInterface->toString());
+stringBuffer->append(JavaString::valueOf(eventListenerInterface));
     
 
                 //: 
@@ -212,7 +212,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->TO
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

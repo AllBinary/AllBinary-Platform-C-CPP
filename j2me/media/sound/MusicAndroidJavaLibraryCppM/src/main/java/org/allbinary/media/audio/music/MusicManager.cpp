@@ -209,7 +209,7 @@ this->timeDelayHelper->delay= 0;
 
     int64_t duration = sound->getDuration();;
     
-PreLogUtil::put((new StringMaker())->append(this->PLAY)->append(sound->getResource())->append(this->FOR)->appendlong(duration)->toString(), this, this->commonStrings->PROCESS);
+PreLogUtil::put(JavaString::valueOf((new StringMaker())->append(this->PLAY)->append(sound->getResource())->append(this->FOR)->appendlong(duration)), this, this->commonStrings->PROCESS);
     
 }
 
@@ -241,7 +241,7 @@ this->nextSongSound= NoSound::getInstance();
 
     int64_t duration = this->currentSongSound->getDuration();;
     
-PreLogUtil::put((new StringMaker())->append(this->PLAY)->append(this->currentSongSound->getResource())->append(this->FOR)->appendlong(duration)->toString(), this, this->commonStrings->PROCESS);
+PreLogUtil::put(JavaString::valueOf((new StringMaker())->append(this->PLAY)->append(this->currentSongSound->getResource())->append(this->FOR)->appendlong(duration)), this, this->commonStrings->PROCESS);
     
 this->timeDelayHelper->delay= static_cast<int32_t>(duration);
     

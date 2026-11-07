@@ -126,7 +126,18 @@
         </dependency>
         -->
 
-</dependencies>
+
+        <!-- GL.h: optional dependencies are not transitive, so AnimationLibraryCpp does not bring it -->
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>OpenGLNoneJavaLibraryCpp</artifactId>
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+            <optional>true</optional>
+        </dependency>
+
+    </dependencies>
 
     <build>
         <plugins>

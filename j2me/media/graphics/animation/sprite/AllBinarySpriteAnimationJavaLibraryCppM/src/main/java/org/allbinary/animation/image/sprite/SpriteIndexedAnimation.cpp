@@ -113,7 +113,7 @@ this->basicColorArray= basicColorArray;
                                     
 
 
-                            throw Exception((new StringMaker())->append(CommonLabels::getInstance()->TOTAL_LABEL)->appendint(this->getSize())->append("!=")->appendint(this->basicColorArray.size())->toString());
+                            throw Exception(JavaString::valueOf((new StringMaker())->append(CommonLabels::getInstance()->TOTAL_LABEL)->appendint(this->getSize())->append("!=")->appendint(this->basicColorArray.size())));
                     
 
                                     }

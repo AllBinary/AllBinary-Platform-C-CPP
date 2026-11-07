@@ -78,7 +78,7 @@ stringBuffer->append("MakePayment");
     
 stringBuffer->append(PaymentGatewayPageData::EXTENSION);
     
-MAKEPAYMENT= stringBuffer->toString();
+MAKEPAYMENT= JavaString::valueOf(stringBuffer);
     
 stringBuffer->delete_(0, stringBuffer->length());
     
@@ -88,7 +88,7 @@ stringBuffer->append("Checkout");
     
 stringBuffer->append(PaymentGatewayPageData::EXTENSION);
     
-CHECKOUT= stringBuffer->toString();
+CHECKOUT= JavaString::valueOf(stringBuffer);
     
 stringBuffer->delete_(0, stringBuffer->length());
     
@@ -98,7 +98,7 @@ stringBuffer->append("Shipping");
     
 stringBuffer->append(PaymentGatewayPageData::EXTENSION);
     
-SHIPPING= stringBuffer->toString();
+SHIPPING= JavaString::valueOf(stringBuffer);
     
 stringBuffer->delete_(0, stringBuffer->length());
     
@@ -108,7 +108,7 @@ stringBuffer->append("ShippingAddress");
     
 stringBuffer->append(PaymentGatewayPageData::EXTENSION);
     
-SHIPPINGADDRESS= stringBuffer->toString();
+SHIPPINGADDRESS= JavaString::valueOf(stringBuffer);
     
 stringBuffer->delete_(0, stringBuffer->length());
     
@@ -118,7 +118,7 @@ stringBuffer->append("ShippingAddressAction");
     
 stringBuffer->append(PaymentGatewayPageData::EXTENSION);
     
-SHIPPINGADDRESSACTION= stringBuffer->toString();
+SHIPPINGADDRESSACTION= JavaString::valueOf(stringBuffer);
     
 stringBuffer->delete_(0, stringBuffer->length());
     
@@ -128,7 +128,7 @@ stringBuffer->append("BillingAddress");
     
 stringBuffer->append(PaymentGatewayPageData::EXTENSION);
     
-BILLINGADDRESS= stringBuffer->toString();
+BILLINGADDRESS= JavaString::valueOf(stringBuffer);
     
 stringBuffer->delete_(0, stringBuffer->length());
     
@@ -138,7 +138,7 @@ stringBuffer->append("Payment");
     
 stringBuffer->append(PaymentGatewayPageData::EXTENSION);
     
-PAYMENT= stringBuffer->toString();
+PAYMENT= JavaString::valueOf(stringBuffer);
     
 stringBuffer->delete_(0, stringBuffer->length());
     
@@ -148,7 +148,7 @@ stringBuffer->append("Authorize");
     
 stringBuffer->append(PaymentGatewayPageData::EXTENSION);
     
-AUTHORIZE= stringBuffer->toString();
+AUTHORIZE= JavaString::valueOf(stringBuffer);
     
 stringBuffer->delete_(0, stringBuffer->length());
     
@@ -158,7 +158,7 @@ stringBuffer->append("PaymentFinish");
     
 stringBuffer->append(PaymentGatewayPageData::EXTENSION);
     
-FINISH= stringBuffer->toString();
+FINISH= JavaString::valueOf(stringBuffer);
     
 }
 

@@ -530,7 +530,7 @@ DisplayChangeEventHandler::getInstance()->addListenerInterface(this);
             
     Font* font = graphics->getFont();;
     
-this->logUtil->putF((new StringMaker())->append(this->commonStrings->START)->append(this->canvasStrings->FD_WIDTH)->appendint(MyFontProcessor::defaultCharWidth(font))->append(this->canvasStrings->FD_HEIGHT)->appendint(font->getHeight())->toString(), this, this->canvasStrings->UPDATE_MEASUREMENT);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->commonStrings->START)->append(this->canvasStrings->FD_WIDTH)->appendint(MyFontProcessor::defaultCharWidth(font))->append(this->canvasStrings->FD_HEIGHT)->appendint(font->getHeight())), this, this->canvasStrings->UPDATE_MEASUREMENT);
     
 this->fontHeightP= font->getHeight();
     
@@ -609,7 +609,7 @@ ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     auto AllBinaryGameCanvas::onDisplayChangeEvent(DisplayChangeEvent* displayChangeEvent) -> void{
 
         try {
-            this->logUtil->putF((new StringMaker())->append(this->commonStrings->START)->append(DisplayInfoSingleton::getInstance()->toString())->toString(), this, this->canvasStrings->UPDATE_MEASUREMENT);
+            this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->commonStrings->START)->append(JavaString::valueOf(DisplayInfoSingleton::getInstance()))), this, this->canvasStrings->UPDATE_MEASUREMENT);
     
 this->myFontProcessor= this->updateMyFontProcessor;
     
@@ -1173,7 +1173,7 @@ GameInitializationUtil::getInstance()->initGame(abeClientInformation, this, this
                                     
     Features* features = Features::getInstance();;
     
-this->logUtil->putF((new StringMaker())->append("Sound Changing To: ")->appendboolean(features->isFeature(gameFeatureFactory->SOUND))->toString(), this, "initConfigurable");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Sound Changing To: ")->appendboolean(features->isFeature(gameFeatureFactory->SOUND))), this, "initConfigurable");
     
 this->mediaInit();
     
@@ -1253,7 +1253,7 @@ this->postInitTouch();
                                     {
                                     this->currentTouchInputFactory= nextTouchInput;
     
-PreLogUtil::put(this->currentTouchInputFactory->toString(), this, this->gameInputStrings->UDPATE_CURRENT_TOUCH_INPUT_FACTORY);
+PreLogUtil::put(JavaString::valueOf(this->currentTouchInputFactory), this, this->gameInputStrings->UDPATE_CURRENT_TOUCH_INPUT_FACTORY);
     
 this->touchButtonFactory->toggle(this->isPaused(), this->currentTouchInputFactory->getList());
     
@@ -1384,7 +1384,7 @@ this->addCommand(gameCommandsFactory->DISPLAY_LOAD_FORM);
             
     std::string itemLabel = item->getLabel();;
     
-this->logUtil->putF((new StringMaker())->append(this->commonLabels->ITEM_LABEL)->append(itemLabel)->toString(), this, "itemStateChanged");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->commonLabels->ITEM_LABEL)->append(itemLabel)), this, "itemStateChanged");
     
 
                         if(
@@ -1562,7 +1562,7 @@ this->highScoreSubmitted= highScoreSubmitted;
 
                                     }
                                 
-this->logUtil->putF((new StringMaker())->append("isHighScoreSubmitted: ")->appendboolean(highScoreSubmitted)->toString(), this, "setHighScoreSubmitted");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("isHighScoreSubmitted: ")->appendboolean(highScoreSubmitted)), this, "setHighScoreSubmitted");
     
 }
 
@@ -1582,7 +1582,7 @@ this->logUtil->putF((new StringMaker())->append("isHighScoreSubmitted: ")->appen
                 //@Throws(Exception.constructor)
             
     auto AllBinaryGameCanvas::setGameState(GameState* gameState) -> void{
-this->logUtil->putF((new StringMaker())->append(this->gameStrings->GAME_STATE)->append(this->stringUtil->toString(gameState))->toString(), this, this->gameStrings->SET_GAME_STATE);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->gameStrings->GAME_STATE)->append(this->stringUtil->toString(gameState))), this, this->gameStrings->SET_GAME_STATE);
     
 this->gameState= gameState;
     
@@ -1872,7 +1872,7 @@ this->gameBehavior->buildGame(this);
 
 
     auto AllBinaryGameCanvas::buildGame2() -> void{
-PreLogUtil::put((new StringMaker())->append(this->gameInputStrings->ENABLE_PLAYER_GAME_INPUTS)->appendint(this->localPlayerGameInputList->size())->toString(), this, this->BUILD_GAME);
+PreLogUtil::put(JavaString::valueOf((new StringMaker())->append(this->gameInputStrings->ENABLE_PLAYER_GAME_INPUTS)->appendint(this->localPlayerGameInputList->size())), this, this->BUILD_GAME);
     
 
     PlayerGameInput* playerGameInput;;
@@ -1886,7 +1886,7 @@ PreLogUtil::put((new StringMaker())->append(this->gameInputStrings->ENABLE_PLAYE
         {
 playerGameInput= dynamic_cast<PlayerGameInput*>(this->localPlayerGameInputList->get(index));
     
-PreLogUtil::put((new StringMaker())->append(this->gameInputStrings->ENABLE_PLAYER_GAME_INPUT)->append(playerGameInput->toString())->toString(), this, this->BUILD_GAME);
+PreLogUtil::put(JavaString::valueOf((new StringMaker())->append(this->gameInputStrings->ENABLE_PLAYER_GAME_INPUT)->append(JavaString::valueOf(playerGameInput))), this, this->BUILD_GAME);
     
 playerGameInput->removeNonAIInputGameKeyEvents();
     
@@ -1943,7 +1943,7 @@ gameInfo->setCurrentLevel(level);
                 //@Throws(Exception.constructor)
             
     auto AllBinaryGameCanvas::getLoadStateHashtable() -> ABHashtable<Object*, Object*>*{
-this->logUtil->putF((new StringMaker())->append(this->commonLabels->START_LABEL)->append(this->stringUtil->toString(this->hashtable))->toString(), this, "getLoadStateHashtable");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->commonLabels->START_LABEL)->append(this->stringUtil->toString(this->hashtable))), this, "getLoadStateHashtable");
     
 
 
@@ -1957,7 +1957,7 @@ this->logUtil->putF((new StringMaker())->append(this->commonLabels->START_LABEL)
 
 
     auto AllBinaryGameCanvas::setLoadStateHashtable(ABHashtable<Object*, Object*>* hashtable) -> void{
-this->logUtil->putF((new StringMaker())->append(this->commonLabels->START_LABEL)->append(this->stringUtil->toString(hashtable))->toString(), this, "setLoadStateHashtable");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->commonLabels->START_LABEL)->append(this->stringUtil->toString(hashtable))), this, "setLoadStateHashtable");
     
 this->hashtable= hashtable;
     
@@ -1971,9 +1971,9 @@ this->hashtable= hashtable;
 
     int32_t level = this->gameLayerManager->getGameInfo()->getCurrentLevel();;
     
-hashtable->put(GameInfo::LEVEL_NAME->toString(), std::to_string(level));
+hashtable->put(JavaString::valueOf(GameInfo::LEVEL_NAME), std::to_string(level));
     
-this->logUtil->putF((new StringMaker())->append("End: ")->append(this->stringUtil->toString(hashtable))->toString(), this, "getCurrentStateHashtable");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("End: ")->append(this->stringUtil->toString(hashtable))), this, "getCurrentStateHashtable");
     
 
 
@@ -2452,7 +2452,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->SET_RUNNING, &e);
     auto AllBinaryGameCanvas::end() -> void{
 this->screenCapture->endRecording();
     
-this->baseGameStatistics->add((new StringMaker())->append(this->baseGameStatistics->toString())->append(CommonSeps::getInstance()->NEW_LINE)->toString());
+this->baseGameStatistics->add(JavaString::valueOf((new StringMaker())->append(JavaString::valueOf(this->baseGameStatistics))->append(CommonSeps::getInstance()->NEW_LINE)));
     
 this->baseGameStatistics->init();
     
@@ -2533,6 +2533,12 @@ class SaveHighScoreRunnable
             : public virtual Object
         , public virtual Runnable {
 
+    private: HighScoreTextBox* textBox;
+
+    private: bool isLast;
+
+    public: SaveHighScoreRunnable(bool captured_isLast, HighScoreTextBox* captured_textBox) : isLast(captured_isLast), textBox(captured_textBox) { }
+
     private: ProgressCanvas* progressCanvas = ProgressCanvasFactory::getInstance();
 
     public: void run(){
@@ -2575,7 +2581,7 @@ this->progressCanvas->end();
 };
 
             
-SecondaryThreadPool::getInstance()->runTask(new SaveHighScoreRunnable());
+SecondaryThreadPool::getInstance()->runTask(new SaveHighScoreRunnable(isLast, textBox));
     
 
                                     }

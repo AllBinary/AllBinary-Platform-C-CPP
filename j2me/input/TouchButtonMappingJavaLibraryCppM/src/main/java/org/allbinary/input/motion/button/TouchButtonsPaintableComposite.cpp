@@ -199,7 +199,7 @@ this->released= true;
                                 
 this->released= false;
     
-this->logUtil->putF((new StringMaker())->append("GameKey: ")->append(StringUtil::getInstance()->toString(gameKey))->append(" MotionGestureInput: ")->append(StringUtil::getInstance()->toString(motionGestureInput))->toString(), this, this->METHOD_NAME);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("GameKey: ")->append(StringUtil::getInstance()->toString(gameKey))->append(" MotionGestureInput: ")->append(StringUtil::getInstance()->toString(motionGestureInput))), this, this->METHOD_NAME);
     
 this->inputMappingInterface->processInputMapping(gameKey, motionGestureInput);
     

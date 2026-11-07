@@ -151,7 +151,7 @@ this->emailEventHashMap->put(userEmailEventConfigurationInterface->getName(), us
             
     auto UserEmailEventsConfiguration::getEventListener(AbeClientInformationInterface* abeClientInformation, UserEmailEventNameData* userEmailEventNameData, UserInterface* userInterface) -> UserEmailEventListenerInterface*{
 
-    UserEmailEventConfigurationInterface* userEmailEventConfigurationInterface = dynamic_cast<UserEmailEventConfigurationInterface*>(this->emailEventHashMap->get(userEmailEventNameData->toString()));;
+    UserEmailEventConfigurationInterface* userEmailEventConfigurationInterface = dynamic_cast<UserEmailEventConfigurationInterface*>(this->emailEventHashMap->get(JavaString::valueOf(userEmailEventNameData)));;
     
 
 

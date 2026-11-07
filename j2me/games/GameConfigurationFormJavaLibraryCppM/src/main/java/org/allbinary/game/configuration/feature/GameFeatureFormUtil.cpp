@@ -153,9 +153,9 @@ GameFeatureFormUtil* GameFeatureFormUtil::instance = GameFeatureFormUtil::instan
     
 stringMaker->delete_(0, stringMaker->length());
     
-this->logUtil->putF(stringMaker->append(name)->append(ADD_CHOICE)->append(gameFeature->toString())->toString(), this, GET_CHOICE_GROUP);
+this->logUtil->putF(JavaString::valueOf(stringMaker->append(name)->append(ADD_CHOICE)->append(JavaString::valueOf(gameFeature))), this, GET_CHOICE_GROUP);
     
-choiceGroup->append(gameFeature->toString(), NullImage::NULL_IMAGE);
+choiceGroup->append(JavaString::valueOf(gameFeature), NullImage::NULL_IMAGE);
     
 
                         if(features->isFeature(gameFeature))
@@ -209,7 +209,7 @@ name= JavaBoxes::unbox<std::string>(objectArray[index]);
     
 stringMaker->delete_(0, stringMaker->length());
     
-this->logUtil->putF(stringMaker->append(ADDING_CHOICE_GROUP)->append(name)->toString(), this, ADD_CHOICE_GROUP);
+this->logUtil->putF(JavaString::valueOf(stringMaker->append(ADDING_CHOICE_GROUP)->append(name)), this, ADD_CHOICE_GROUP);
     
 this->meUtil->appendItem(form, this->getChoiceGroup(hashtable, name, option));
     

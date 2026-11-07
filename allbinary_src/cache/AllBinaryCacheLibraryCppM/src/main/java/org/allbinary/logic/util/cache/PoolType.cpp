@@ -85,7 +85,7 @@ this->cacheType= cacheType;
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return JavaString::valueOf(POOL_TYPE) +JavaString::valueOf(this->getCacheType()->toString());
+                        return JavaString::valueOf(POOL_TYPE) +JavaString::valueOf(JavaString::valueOf(this->getCacheType()));
     
 }
 

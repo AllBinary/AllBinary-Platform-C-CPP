@@ -165,7 +165,7 @@ stringBuffer->append(this->getTransformInfoInterface()->getStoreName());
 stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
 
-    std::string nameStart = stringBuffer->toString();;
+    std::string nameStart = JavaString::valueOf(stringBuffer);;
     
 
                         if(JavaString::indexOf(this->getTransformInfoInterface()->getName(), GeneratorTransformInfoData::NAME) > 0)
@@ -227,7 +227,7 @@ componentInterface->getTransformInfoInterface()->setObjectConfigInterface(transf
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf("Set OverrideObjectConfig: ") +JavaString::valueOf(componentInterface->getTransformInfoInterface()->getObjectConfigInterface()->toString()), this, "view()");
+                                    this->logUtil->putF(JavaString::valueOf("Set OverrideObjectConfig: ") +JavaString::valueOf(JavaString::valueOf(componentInterface->getTransformInfoInterface()->getObjectConfigInterface())), this, "view()");
     
 
                                     }

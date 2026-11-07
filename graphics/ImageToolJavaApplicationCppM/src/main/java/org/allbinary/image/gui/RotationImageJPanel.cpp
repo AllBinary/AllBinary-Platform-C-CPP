@@ -416,7 +416,7 @@ this->getParent().repaint();
 
     int32_t extensionIndex = JavaString::indexOf(filePath, this->imageStrings->PNG_EXTENSION);;
     
-filePath= (new StringMaker())->append(JavaString::substring(filePath, 0, extensionIndex))->append(CommonSeps::getInstance()->UNDERSCORE)->append(name)->append(this->imageStrings->PNG_EXTENSION)->toString();
+filePath= JavaString::valueOf((new StringMaker())->append(JavaString::substring(filePath, 0, extensionIndex))->append(CommonSeps::getInstance()->UNDERSCORE)->append(name)->append(this->imageStrings->PNG_EXTENSION));
     
 file= new File(filePath);
     

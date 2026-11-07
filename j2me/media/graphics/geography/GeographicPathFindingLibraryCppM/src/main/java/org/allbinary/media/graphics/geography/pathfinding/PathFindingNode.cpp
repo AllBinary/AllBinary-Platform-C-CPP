@@ -124,7 +124,7 @@ stringBuffer->append(CommonLabels::getInstance()->COLON_SEP);
     
 stringBuffer->append(" Path: ");
     
-stringBuffer->append(this->geographicMapCellPosition->toString());
+stringBuffer->append(JavaString::valueOf(this->geographicMapCellPosition));
     
 
     PathFindingNode* pathFindingNode = this->getParentP();;
@@ -134,7 +134,7 @@ stringBuffer->append(this->geographicMapCellPosition->toString());
                                     nullptr
                                 )
         {
-stringBuffer->append(pathFindingNode->geographicMapCellPosition->toString());
+stringBuffer->append(JavaString::valueOf(pathFindingNode->geographicMapCellPosition));
     
 stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
@@ -148,7 +148,7 @@ pathFindingNode= pathFindingNode->getParentP();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

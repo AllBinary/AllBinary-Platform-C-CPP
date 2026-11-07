@@ -190,7 +190,7 @@ stringBuffer->append(AbPathData::getInstance()->EXTENSION_SEP);
 stringBuffer->append(InputOutputTypeData::getInstance()->DEFAULT);
     
 
-    std::string filePath = (new Replace(CommonSeps::getInstance()->SPACE, "%20"))->all(stringBuffer->toString());;
+    std::string filePath = (new Replace(CommonSeps::getInstance()->SPACE, "%20"))->all(JavaString::valueOf(stringBuffer));;
     
 
 

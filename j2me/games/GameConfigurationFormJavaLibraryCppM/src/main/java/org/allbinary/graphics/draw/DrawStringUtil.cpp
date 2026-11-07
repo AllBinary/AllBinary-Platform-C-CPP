@@ -119,7 +119,7 @@ DrawStringUtil* DrawStringUtil::instance = DrawStringUtil::instance_owner();
                 //: 
 } catch(Exception& e) 
             {
-PreLogUtil::put((new StringMaker())->append("Exception: stringLength: ")->appendint(string.size())->append(" offset: ")->appendint(offset)->append(" currentLength: ")->appendint(length)->toString(), this, "drawCenterString");
+PreLogUtil::put(JavaString::valueOf((new StringMaker())->append("Exception: stringLength: ")->appendint(string.size())->append(" offset: ")->appendint(offset)->append(" currentLength: ")->appendint(length)), this, "drawCenterString");
     
 }
 

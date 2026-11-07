@@ -109,7 +109,7 @@ CapturedImageInputOutput::CapturedImageInputOutput() : logUtil(LogUtil::getInsta
 
     BufferedImageFrameCacheable* capturedBufferedImageCacheable = (dynamic_cast<BufferedImageFrameCacheable*>((getInstance)).get(frame)));;
     
-this->logUtil->putF((JavaString::valueOf("Saving: ") +JavaString::valueOf(capturedBufferedImageCacheable->toString())), this, commonStrings->SAVE);
+this->logUtil->putF((JavaString::valueOf("Saving: ") +JavaString::valueOf(JavaString::valueOf(capturedBufferedImageCacheable))), this, commonStrings->SAVE);
     
 this->save(capturedBufferedImageCacheable->getBufferedImage(), frame);
     
@@ -133,7 +133,7 @@ filePathStringBuffer->append(LongUtil::fillIn(JavaString::valueOf(frame)));
 filePathStringBuffer->append(MediaDataFactory::getInstance()->JPG->getExtension());
     
 
-    std::string filePath = filePathStringBuffer->toString();;
+    std::string filePath = JavaString::valueOf(filePathStringBuffer);;
     
 this->logUtil->putF((JavaString::valueOf(JavaString::valueOf("Image File Path: ") +JavaString::valueOf(filePath)) +JavaString::valueOf(imageUtil->toString(bufferedImage))), this, commonStrings->SAVE);
     

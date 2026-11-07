@@ -279,7 +279,7 @@ stringBuffer->append(this->toDate);
     
 stringBuffer->append(") and status");
     
-this->logUtil->putF(stringBuffer->toString(), this, "view");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "view");
     
 
                                     }
@@ -671,7 +671,7 @@ stringBuffer->append(this->toDate);
     
 stringBuffer->append(")");
     
-this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALID);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -775,7 +775,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALI
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return result->toString();;
+                        return JavaString::valueOf(result);;
     
 
                 //: 

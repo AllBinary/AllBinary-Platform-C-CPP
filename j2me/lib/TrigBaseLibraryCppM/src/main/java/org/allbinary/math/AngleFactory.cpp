@@ -288,7 +288,7 @@ stringMaker->appendint(index)->append(CommonSeps::getInstance()->FORWARD_SLASH)-
     
 }
 
-LogUtil::getInstance()->putF(stringMaker->toString(), "main", "main");
+LogUtil::getInstance()->putF(JavaString::valueOf(stringMaker), "main", "main");
     
 }
 

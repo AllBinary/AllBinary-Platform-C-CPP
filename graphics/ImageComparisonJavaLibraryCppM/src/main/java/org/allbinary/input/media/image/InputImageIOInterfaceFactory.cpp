@@ -127,7 +127,7 @@ InputImageIOInterfaceFactory::InputImageIOInterfaceFactory(){
                             
 
 
-                            throw Exception(JavaString::valueOf("No ImageIOInterface for: ") +JavaString::valueOf(imageType->toString()));
+                            throw Exception(JavaString::valueOf("No ImageIOInterface for: ") +JavaString::valueOf(JavaString::valueOf(imageType)));
                     
 
                         }

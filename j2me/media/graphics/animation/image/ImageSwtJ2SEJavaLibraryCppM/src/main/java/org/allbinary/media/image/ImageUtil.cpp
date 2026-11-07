@@ -345,7 +345,7 @@ ratioY= heightRatio;
 
                                     }
                                 
-this->logUtil->putF((new StringMaker())->appendfloat(width)->append(this->commonSeps->FORWARD_SLASH)->appendfloat(height)->append(this->commonSeps->COLON)->appendint(newWidth)->append(this->commonSeps->FORWARD_SLASH)->appendint(newHeight)->append(this->commonSeps->COLON)->appendfloat(widthRatio)->append(this->commonSeps->FORWARD_SLASH)->appendfloat(heightRatio)->toString(), this, this->CREATE_BUFFERED_IMAGE);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->appendfloat(width)->append(this->commonSeps->FORWARD_SLASH)->appendfloat(height)->append(this->commonSeps->COLON)->appendint(newWidth)->append(this->commonSeps->FORWARD_SLASH)->appendint(newHeight)->append(this->commonSeps->COLON)->appendfloat(widthRatio)->append(this->commonSeps->FORWARD_SLASH)->appendfloat(heightRatio)), this, this->CREATE_BUFFERED_IMAGE);
     
 
     float dx = 0;;
@@ -361,7 +361,7 @@ this->logUtil->putF((new StringMaker())->appendfloat(width)->append(this->common
     
 dy= (newHeight -height) /2;
     
-this->logUtil->putF((new StringMaker())->append("Translate dx: ")->appendfloat(dx)->append(" dy: ")->appendfloat(dy)->toString(), this, this->CREATE_BUFFERED_IMAGE);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Translate dx: ")->appendfloat(dx)->append(" dy: ")->appendfloat(dy)), this, this->CREATE_BUFFERED_IMAGE);
     
 
                                     }
@@ -489,7 +489,7 @@ stringBuffer->appendint(imageData->type);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

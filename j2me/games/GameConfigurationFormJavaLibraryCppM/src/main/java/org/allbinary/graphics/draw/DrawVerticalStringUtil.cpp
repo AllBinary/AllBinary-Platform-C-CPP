@@ -218,7 +218,7 @@ graphics->drawChar(aChar, x +this->offsetXArray[index], y +(this->charHeight *in
                 //: 
 } catch(Exception& e) 
             {
-PreLogUtil::put((new StringMaker())->append("Exception: stringLength: ")->appendint(string.size())->append(" offset: ")->appendint(offset)->append(" currentLength: ")->appendint(length)->toString(), this, "drawCenterString");
+PreLogUtil::put(JavaString::valueOf((new StringMaker())->append("Exception: stringLength: ")->appendint(string.size())->append(" offset: ")->appendint(offset)->append(" currentLength: ")->appendint(length)), this, "drawCenterString");
     
 }
 

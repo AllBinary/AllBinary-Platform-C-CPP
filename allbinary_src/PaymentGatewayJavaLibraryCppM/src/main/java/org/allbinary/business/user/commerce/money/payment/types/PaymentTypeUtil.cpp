@@ -188,7 +188,7 @@ stringBuffer->append("gateway");
     
 stringBuffer->append(sep);
     
-this->PAYMENTGATEWAYFILEPATHSTRING= stringBuffer->toString();
+this->PAYMENTGATEWAYFILEPATHSTRING= JavaString::valueOf(stringBuffer);
     
 }
 
@@ -270,7 +270,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
 stringBuffer->append(this->PAYMENTGATEWAYFILEPATHSTRING);
     
 
-    AbPath* abPath = dynamic_cast<AbPath*>(new AbPath(stringBuffer->toString(), this->SHIPPINGMETHODSFILENAME));;
+    AbPath* abPath = dynamic_cast<AbPath*>(new AbPath(JavaString::valueOf(stringBuffer), this->SHIPPINGMETHODSFILENAME));;
     
 
     std::string data = (new CryptFileReader(TransformInfoObjectConfigData::getInstance()->UNCRYPTED_EXTENSION, TransformInfoObjectConfigData::getInstance()->ENCRYPTED_EXTENSION))->get(abPath);;

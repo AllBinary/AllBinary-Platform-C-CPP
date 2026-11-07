@@ -123,7 +123,7 @@ stringBuffer->append("TrackingEvent: \n");
     
 stringBuffer->append("LayerInterface: ");
     
-stringBuffer->append(this->layerInterface->toString());
+stringBuffer->append(JavaString::valueOf(this->layerInterface));
     
 
 
@@ -131,7 +131,7 @@ stringBuffer->append(this->layerInterface->toString());
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

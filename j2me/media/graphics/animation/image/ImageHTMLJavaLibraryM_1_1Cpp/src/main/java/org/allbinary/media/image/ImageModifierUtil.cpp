@@ -279,7 +279,7 @@ outer->copy(imageArray, index, image, image3);
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
-logUtil->putF((new StringMaker())->append(outer->commonStrings->EXCEPTION_LABEL)->append(outer->resourceCallbackStrings->ERROR)->append(image->getName())->toString(), this, outer->resourceCallbackStrings->HANDLE_IMAGE);
+logUtil->putF(JavaString::valueOf((new StringMaker())->append(outer->commonStrings->EXCEPTION_LABEL)->append(outer->resourceCallbackStrings->ERROR)->append(image->getName())), this, outer->resourceCallbackStrings->HANDLE_IMAGE);
     
 }
 

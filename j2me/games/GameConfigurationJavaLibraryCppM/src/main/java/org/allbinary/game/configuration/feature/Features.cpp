@@ -156,11 +156,11 @@ this->add(gameFeature);
                         if(!this->list->contains(gameFeature))
                         
                                     {
-                                    this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->START_LABEL)->append(gameFeature->toString())->toString(), this, this->commonStrings->ADD);
+                                    this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(CommonLabels::getInstance()->START_LABEL)->append(JavaString::valueOf(gameFeature))), this, this->commonStrings->ADD);
     
 this->list->add(gameFeature);
     
-GameFeatureEventHandler::getInstance()->fireEvent(new GameFeatureEvent(gameFeature, gameFeature->toString()));
+GameFeatureEventHandler::getInstance()->fireEvent(new GameFeatureEvent(gameFeature, JavaString::valueOf(gameFeature)));
     
 
                                     }
@@ -171,7 +171,7 @@ GameFeatureEventHandler::getInstance()->fireEvent(new GameFeatureEvent(gameFeatu
                 //@Throws(Exception.constructor)
             
     auto Features::removeDefault(Feature* gameFeature) -> void{
-this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->START_LABEL)->append(gameFeature->toString())->toString(), this, "removeDefault");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(CommonLabels::getInstance()->START_LABEL)->append(JavaString::valueOf(gameFeature))), this, "removeDefault");
     
 this->remove(gameFeature);
     
@@ -191,7 +191,7 @@ this->defaultList->remove(gameFeature);
     
 this->list->remove(gameFeature);
     
-GameFeatureEventHandler::getInstance()->fireEvent(new GameFeatureEvent(gameFeature, gameFeature->toString()));
+GameFeatureEventHandler::getInstance()->fireEvent(new GameFeatureEvent(gameFeature, JavaString::valueOf(gameFeature)));
     
 
                                     }

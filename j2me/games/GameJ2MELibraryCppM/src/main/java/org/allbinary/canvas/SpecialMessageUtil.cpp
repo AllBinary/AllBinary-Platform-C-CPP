@@ -97,7 +97,7 @@ stringBuffer->append(Memory::getInfo());
     
 stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
-stringBuffer->append(GameStatisticsFactory::getInstance()->toString());
+stringBuffer->append(JavaString::valueOf(GameStatisticsFactory::getInstance()));
     
 stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
@@ -124,7 +124,7 @@ stringBuffer->append(" Option: ");
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

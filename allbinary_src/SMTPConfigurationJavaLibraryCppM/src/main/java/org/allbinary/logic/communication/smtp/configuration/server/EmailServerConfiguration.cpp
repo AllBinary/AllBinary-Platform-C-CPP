@@ -211,7 +211,7 @@ this->password= password;
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
                         
                                     {
-                                    this->logUtil->putF(this->toString(), this, "EmailServerConfiguration");
+                                    this->logUtil->putF(JavaString::valueOf(this), this, "EmailServerConfiguration");
     
 
                                     }

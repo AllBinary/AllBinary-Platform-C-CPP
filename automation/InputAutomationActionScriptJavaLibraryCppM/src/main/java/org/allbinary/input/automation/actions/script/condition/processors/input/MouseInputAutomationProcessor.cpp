@@ -86,7 +86,7 @@ MouseInputAutomationProcessor::MouseInputAutomationProcessor(){
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-logUtil->putF((new StringMaker())->append("Start - Processing Mouse Input at: ")->append(mouseActionScriptInputInterface->getPoint()->toString())->append(" clicks: ")->appendint(mouseActionScriptInputInterface->getButtonClicks())->toString(), "MouseInputAutomationProcessor", commonStrings->PROCESS);
+logUtil->putF(JavaString::valueOf((new StringMaker())->append("Start - Processing Mouse Input at: ")->append(JavaString::valueOf(mouseActionScriptInputInterface->getPoint()))->append(" clicks: ")->appendint(mouseActionScriptInputInterface->getButtonClicks())), "MouseInputAutomationProcessor", commonStrings->PROCESS);
     
 
     InputRobotInterface* inputRobotInterface = mouseActionScriptInputInterface->getInputRobotInterface();;

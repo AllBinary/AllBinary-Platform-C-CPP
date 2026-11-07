@@ -201,7 +201,7 @@ this->special= true;
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf("Special Request Data: ") +JavaString::valueOf(specialRequest->toString()), this, "processMultipartRequest()");
+                                    this->logUtil->putF(JavaString::valueOf("Special Request Data: ") +JavaString::valueOf(JavaString::valueOf(specialRequest)), this, "processMultipartRequest()");
     
 
                                     }

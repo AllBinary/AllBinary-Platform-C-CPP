@@ -271,7 +271,7 @@ stringBuffer->append(" with ");
     
 stringBuffer->appendint(capital->getTotalMoney());
     
-this->logUtil->putF(stringBuffer->toString(), this, "attemptBuild");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "attemptBuild");
     
 
                         if(cost <= capital->getTotalMoney())

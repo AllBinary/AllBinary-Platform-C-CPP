@@ -277,7 +277,7 @@ stringBuffer->append(BREAK);
     
 stringBuffer->append("Keys: ");
     
-stringBuffer->append(this->hashtable->toString());
+stringBuffer->append(JavaString::valueOf(this->hashtable));
     
 stringBuffer->append(BREAK);
     
@@ -311,7 +311,7 @@ stringBuffer->append(BREAK);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

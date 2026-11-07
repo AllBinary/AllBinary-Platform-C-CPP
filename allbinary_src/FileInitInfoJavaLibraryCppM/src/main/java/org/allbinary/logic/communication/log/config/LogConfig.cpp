@@ -257,7 +257,7 @@ stringBuffer->append(PATH_GLOBALS::getInstance()->INIT_PATH);
 stringBuffer->append(this->getFileName());
     
 
-    AbFile* file = AbFile::createAbFile(stringBuffer->toString());;
+    AbFile* file = AbFile::createAbFile(JavaString::valueOf(stringBuffer));;
     
 
     Document* document = DomDocumentHelper::create(new AbFileLocalInputStream(file));;

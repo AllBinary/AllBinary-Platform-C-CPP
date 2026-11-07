@@ -122,16 +122,16 @@ hashtable->put(RemoteHighScoresData::getInstance()->CUSTOMER_USER_NAME, "None");
     
 hashtable->put(RemoteHighScoresData::getInstance()->DISPLAY_NAME, highScore->getName());
     
-hashtable->put(gameInfoData->SOFTWARE_INFORMATION, remoteHighScores->getSoftwareInformation()->toString());
+hashtable->put(gameInfoData->SOFTWARE_INFORMATION, JavaString::valueOf(remoteHighScores->getSoftwareInformation()));
     
-hashtable->put(remoteHighScores->ASCENDING, remoteHighScores->getAscending()->toString());
+hashtable->put(remoteHighScores->ASCENDING, JavaString::valueOf(remoteHighScores->getAscending()));
     
 
     DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();;
     
 hashtable->put(displayInfoSingleton->ORIENTATION, BooleanFactory::getInstance()->toStringb(displayInfoSingleton->isPortrait()));
     
-hashtable->put(RemoteHighScoresData::getInstance()->GAME_CONFIGURATION, GameConfigurationCentral::getInstance()->toString());
+hashtable->put(RemoteHighScoresData::getInstance()->GAME_CONFIGURATION, JavaString::valueOf(GameConfigurationCentral::getInstance()));
     
 hashtable->put(RemoteHighScoresData::getInstance()->SCORE, std::to_string(highScore->getScore()));
     

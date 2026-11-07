@@ -149,7 +149,7 @@ FeaturedResourceRelativeRelationshipFactory::FeaturedResourceRelativeRelationshi
 
 
 
-                            throw Exception((new StringMaker())->append("Not available for current feature selection or Resource: ")->append(resource)->toString());
+                            throw Exception(JavaString::valueOf((new StringMaker())->append("Not available for current feature selection or Resource: ")->append(resource)));
                     
 }
 

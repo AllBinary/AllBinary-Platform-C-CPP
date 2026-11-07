@@ -310,7 +310,7 @@ this->itemInterface= inventoryEntity->getItem(this->id);
     StoreFrontInterface* storeFrontInterface = StoreFrontFactory::getInstance(this->getWeblisketSession()->getStoreName());;
     
 
-    std::string fullCategory = (new StringMaker())->append(URLGLOBALS::getWebappPath())->append(storeFrontInterface->getCurrentHostNamePath())->append(this->itemInterface->getCategory())->toString();;
+    std::string fullCategory = JavaString::valueOf((new StringMaker())->append(URLGLOBALS::getWebappPath())->append(storeFrontInterface->getCurrentHostNamePath())->append(this->itemInterface->getCategory()));;
     
 
     AbFile* categoryFile = AbFile::createAbFile(fullCategory);;
@@ -674,7 +674,7 @@ stringBuffer->append("<br/>");
     StoreFrontInterface* storeFrontInterface = StoreFrontFactory::getInstance(this->getWeblisketSession()->getStoreName());;
     
 
-    std::string fullCategory = (new StringMaker())->append(URLGLOBALS::getWebappPath())->append(storeFrontInterface->getCurrentHostNamePath())->append(this->itemInterface->getCategory())->toString();;
+    std::string fullCategory = JavaString::valueOf((new StringMaker())->append(URLGLOBALS::getWebappPath())->append(storeFrontInterface->getCurrentHostNamePath())->append(this->itemInterface->getCategory()));;
     
 
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
@@ -823,7 +823,7 @@ stringBuffer->append("<br/>");
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 
                 //: 
@@ -880,7 +880,7 @@ stringBuffer->append("File name is not valid: ");
     
 stringBuffer->append(fileName);
     
-this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALID);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -919,7 +919,7 @@ stringBuffer->append(">");
     
 stringBuffer->appendint(fileData->MAXDOWNLOADABLEFILESIZE);
     
-this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALID);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -954,7 +954,7 @@ stringBuffer->append(">");
     
 stringBuffer->appendint(fileData->MINDOWNLOADABLEFILESIZE);
     
-this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALID);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->commonStrings->IS_VALID);
     
 
                                     }

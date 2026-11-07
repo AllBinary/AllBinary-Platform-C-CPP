@@ -138,7 +138,7 @@ CategoryModifierTree::CategoryModifierTree(CategoryFactoryInterface* categoryFac
                                     parentCategoryInterface->addChild(newChildCategoryInterface);
     
 
-    AbPath* directoryToBeCreatedAbPath = new AbPath(newChildCategoryInterface->getRootFilePath()->toString() +newChildCategoryInterface->getPath().toString(), StringUtil::getInstance()->EMPTY_STRING);;
+    AbPath* directoryToBeCreatedAbPath = new AbPath(JavaString::valueOf(newChildCategoryInterface->getRootFilePath()) +JavaString::valueOf(newChildCategoryInterface->getPath()), StringUtil::getInstance()->EMPTY_STRING);;
     
 this->directory->create(directoryToBeCreatedAbPath);
     
@@ -190,7 +190,7 @@ this->save(newChildCategoryInterface);
                                     parentCategoryInterface->addChild(existingChildCategoryInterface);
     
 
-    AbPath* directoryToBeDeletedAbPath = new AbPath(existingChildCategoryInterface->getRootFilePath()->toString() +existingChildCategoryInterface->getPath().toString(), StringUtil::getInstance()->EMPTY_STRING);;
+    AbPath* directoryToBeDeletedAbPath = new AbPath(JavaString::valueOf(existingChildCategoryInterface->getRootFilePath()) +JavaString::valueOf(existingChildCategoryInterface->getPath()), StringUtil::getInstance()->EMPTY_STRING);;
     
 this->CategoryPrivateTree::delete_(existingChildCategoryInterface);
     

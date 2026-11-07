@@ -115,17 +115,17 @@ damageableInterface->damage(damageableInterface2->getDamage(0), 0);
     
 stringBuffer->append("Collision ");
     
-stringBuffer->append(collidableInterfaceCompositeInterface1->toString());
+stringBuffer->append(JavaString::valueOf(collidableInterfaceCompositeInterface1));
     
 stringBuffer->append(" with: ");
     
-stringBuffer->append(collidableInterfaceCompositeInterface->toString());
+stringBuffer->append(JavaString::valueOf(collidableInterfaceCompositeInterface));
     
 stringBuffer->append(" damage: ");
     
 stringBuffer->appendint(damage);
     
-this->logUtil->putF(stringBuffer->toString(), collidableInterfaceCompositeInterface1, this->COLLIDE);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), collidableInterfaceCompositeInterface1, this->COLLIDE);
     
 
                                     }

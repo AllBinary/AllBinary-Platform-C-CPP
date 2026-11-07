@@ -68,7 +68,7 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 
-CommonSeps::CommonSeps() : COLON_SEP((new StringMaker())->append(this->COLON)->append(this->SPACE)->toString()), COMMA_SEP((new StringMaker())->append(this->COMMA)->append(this->SPACE)->toString()) {
+CommonSeps::CommonSeps() : COLON_SEP(JavaString::valueOf((new StringMaker())->append(this->COLON)->append(this->SPACE))), COMMA_SEP(JavaString::valueOf((new StringMaker())->append(this->COMMA)->append(this->SPACE))) {
         }
         auto CommonSeps::instance_owner() -> CommonSeps* { static std::unique_ptr<CommonSeps> value(new CommonSeps()); return value.get(); }
 CommonSeps* CommonSeps::instance = CommonSeps::instance_owner();

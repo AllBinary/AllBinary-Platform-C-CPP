@@ -168,7 +168,7 @@ hashMap->put(CssPropertyData::getInstance()->NAME, this->propertyName);
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf("CssView HashMap: ") +JavaString::valueOf(hashMap->toString()), this, "toXmlNode()");
+                                    this->logUtil->putF(JavaString::valueOf("CssView HashMap: ") +JavaString::valueOf(JavaString::valueOf(hashMap)), this, "toXmlNode()");
     
 
                                     }

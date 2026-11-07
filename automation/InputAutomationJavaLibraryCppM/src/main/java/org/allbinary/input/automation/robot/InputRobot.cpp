@@ -142,7 +142,7 @@ this->robot= new Robot(graphicsDevice);
 this->robot->mouseMove(point->x +x, point->y +y);
     
 
-    std::string message = (new StringMaker())->append("Moved Mouse To: x: ")->appendint(point->x)->append(" y: ")->appendint(point->y)->append(" in the middle of: ")->append(StringUtil::getInstance()->toString(rectangle))->toString();;
+    std::string message = JavaString::valueOf((new StringMaker())->append("Moved Mouse To: x: ")->appendint(point->x)->append(" y: ")->appendint(point->y)->append(" in the middle of: ")->append(StringUtil::getInstance()->toString(rectangle)));;
     
 this->logUtil->putF(message, this, "moveMouseToTarget");
     
@@ -159,7 +159,7 @@ this->mouseMove(point->x, point->y);
 this->robot->mouseMove(x, y);
     
 
-    std::string message = (new StringMaker())->append("Moved Mouse To: x: ")->appendint(x)->append(" y: ")->appendint(y)->toString();;
+    std::string message = JavaString::valueOf((new StringMaker())->append("Moved Mouse To: x: ")->appendint(x)->append(" y: ")->appendint(y));;
     
 this->logUtil->putF(message, this, "moveMouse");
     
@@ -283,7 +283,7 @@ this->robot->setAutoWaitForIdle(isOn);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->robot->toString();;
+                        return JavaString::valueOf(this->robot);;
     
 }
 

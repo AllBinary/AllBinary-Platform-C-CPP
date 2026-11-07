@@ -238,7 +238,7 @@ this->scaleLargestTo= scaleLargestTo;
 
     StringMaker* stringMaker = new StringMaker();;
     
-this->logUtil->putF(stringMaker->append(CommonLabels::getInstance()->START_LABEL)->append(reason)->toString(), this, this->SET_LAST_SIZE_METHOD_NAME);
+this->logUtil->putF(JavaString::valueOf(stringMaker->append(CommonLabels::getInstance()->START_LABEL)->append(reason)), this, this->SET_LAST_SIZE_METHOD_NAME);
     
 
     int32_t aFullWidth = aLastWidth;;
@@ -248,7 +248,7 @@ this->logUtil->putF(stringMaker->append(CommonLabels::getInstance()->START_LABEL
     
 stringMaker->delete_(0, stringMaker->length());
     
-this->logUtil->putF(stringMaker->append(this->FULL_WIDTH)->appendint(aFullWidth)->append(this->FULL_HEIGHT)->appendint(aFullHeight)->append(this->toString())->toString(), this, this->SET_LAST_SIZE_METHOD_NAME);
+this->logUtil->putF(JavaString::valueOf(stringMaker->append(this->FULL_WIDTH)->appendint(aFullWidth)->append(this->FULL_HEIGHT)->appendint(aFullHeight)->append(JavaString::valueOf(this))), this, this->SET_LAST_SIZE_METHOD_NAME);
     
 
     GenericOperatingSystem* operatingSystemInterface = OperatingSystemFactory::getInstance()->getOperatingSystemInstance();;
@@ -282,7 +282,7 @@ this->ratio= aLastHeight /this->scaleLargestTo;
     
 stringMaker->delete_(0, stringMaker->length());
     
-this->logUtil->putF(stringMaker->append(this->ADJUSTING_FOR_SCALING_IN_PORTRAIT)->appendfloat(this->displayRatio)->toString(), this, this->SET_LAST_SIZE_METHOD_NAME);
+this->logUtil->putF(JavaString::valueOf(stringMaker->append(this->ADJUSTING_FOR_SCALING_IN_PORTRAIT)->appendfloat(this->displayRatio)), this, this->SET_LAST_SIZE_METHOD_NAME);
     
 aLastWidth= static_cast<int32_t>((aLastWidth *this->displayRatio));
     
@@ -315,7 +315,7 @@ this->ratio= aLastWidth /this->scaleLargestTo;
     
 stringMaker->delete_(0, stringMaker->length());
     
-this->logUtil->putF(stringMaker->append(this->ADJUSTING_FOR_SCALING_IN_LANDSCAPE)->appendfloat(this->displayRatio)->toString(), this, this->SET_LAST_SIZE_METHOD_NAME);
+this->logUtil->putF(JavaString::valueOf(stringMaker->append(this->ADJUSTING_FOR_SCALING_IN_LANDSCAPE)->appendfloat(this->displayRatio)), this, this->SET_LAST_SIZE_METHOD_NAME);
     
 aLastWidth= static_cast<int32_t>((aLastWidth *this->displayRatio));
     
@@ -342,7 +342,7 @@ this->scalableListener->scale(this->ratio);
                                 
 stringMaker->delete_(0, stringMaker->length());
     
-this->logUtil->putF(stringMaker->append(this->LAST_WIDTH)->appendint(aLastWidth)->append(this->LAST_HEIGHT)->appendint(aLastHeight)->toString(), this, this->SET_LAST_SIZE_METHOD_NAME);
+this->logUtil->putF(JavaString::valueOf(stringMaker->append(this->LAST_WIDTH)->appendint(aLastWidth)->append(this->LAST_HEIGHT)->appendint(aLastHeight)), this, this->SET_LAST_SIZE_METHOD_NAME);
     
 this->xOffset= aFullWidth -aLastWidth;
     
@@ -418,7 +418,7 @@ this->add(this->SET_LAST_SIZE_METHOD_NAME);
 
     StringMaker* stringMaker = new StringMaker();;
     
-this->logUtil->putF(stringMaker->append(this->REASON)->append(reason)->toString(), this, this->FIRE_METHOD_NAME);
+this->logUtil->putF(JavaString::valueOf(stringMaker->append(this->REASON)->append(reason)), this, this->FIRE_METHOD_NAME);
     
 stringMaker->delete_(0, stringMaker->length());
     
@@ -495,7 +495,7 @@ PreLogUtil::putOE(this->commonStrings->EXCEPTION, this, this->FIRE_METHOD_NAME, 
 
     StringMaker* stringMaker = new StringMaker();;
     
-this->logUtil->putF(stringMaker->append(CommonLabels::getInstance()->START_LABEL)->append(reason)->append(this->LAST_WIDTH)->appendint(aLastWidth)->append(this->LAST_HEIGHT)->appendint(aLastHeight)->append(this->commonSeps->SPACE)->append(this->toString())->toString(), this, this->commonStrings->UPDATE);
+this->logUtil->putF(JavaString::valueOf(stringMaker->append(CommonLabels::getInstance()->START_LABEL)->append(reason)->append(this->LAST_WIDTH)->appendint(aLastWidth)->append(this->LAST_HEIGHT)->appendint(aLastHeight)->append(this->commonSeps->SPACE)->append(JavaString::valueOf(this))), this, this->commonStrings->UPDATE);
     
 
                         if(aLastWidth > 0 && aLastHeight > 0)
@@ -513,7 +513,7 @@ this->logUtil->putF(stringMaker->append(CommonLabels::getInstance()->START_LABEL
                                     {
                                     stringMaker->delete_(0, stringMaker->length());
     
-this->logUtil->putF(stringMaker->append(this->UPDATE_FROM_ORIENTATION_CHANGE)->toString(), this, this->commonStrings->UPDATE);
+this->logUtil->putF(JavaString::valueOf(stringMaker->append(this->UPDATE_FROM_ORIENTATION_CHANGE)), this, this->commonStrings->UPDATE);
     
 
     GenericOperatingSystem* operatingSystemInterface = OperatingSystemFactory::getInstance()->getOperatingSystemInstance();;
@@ -547,7 +547,7 @@ this->ratio= aLastHeight /this->scaleLargestTo;
     
 stringMaker->delete_(0, stringMaker->length());
     
-this->logUtil->putF(stringMaker->append(this->ADJUSTING_FOR_SCALING_IN_PORTRAIT)->appendfloat(this->displayRatio)->toString(), this, this->commonStrings->UPDATE);
+this->logUtil->putF(JavaString::valueOf(stringMaker->append(this->ADJUSTING_FOR_SCALING_IN_PORTRAIT)->appendfloat(this->displayRatio)), this, this->commonStrings->UPDATE);
     
 aLastWidth= static_cast<int32_t>((aLastWidth *this->displayRatio));
     
@@ -580,7 +580,7 @@ this->ratio= aLastWidth /this->scaleLargestTo;
     
 stringMaker->delete_(0, stringMaker->length());
     
-this->logUtil->putF(stringMaker->append(this->ADJUSTING_FOR_SCALING_IN_LANDSCAPE)->appendfloat(this->displayRatio)->toString(), this, this->commonStrings->UPDATE);
+this->logUtil->putF(JavaString::valueOf(stringMaker->append(this->ADJUSTING_FOR_SCALING_IN_LANDSCAPE)->appendfloat(this->displayRatio)), this, this->commonStrings->UPDATE);
     
 aLastWidth= static_cast<int32_t>((aLastWidth *this->displayRatio));
     
@@ -607,7 +607,7 @@ this->scalableListener->scale(this->ratio);
                                 
 stringMaker->delete_(0, stringMaker->length());
     
-this->logUtil->putF(stringMaker->append(this->UPDATE_FROM_ORIENTATION_CHANGE)->append(this->LAST_WIDTH)->appendint(aLastWidth)->append(this->LAST_HEIGHT)->appendint(aLastHeight)->toString(), this, this->commonStrings->UPDATE);
+this->logUtil->putF(JavaString::valueOf(stringMaker->append(this->UPDATE_FROM_ORIENTATION_CHANGE)->append(this->LAST_WIDTH)->appendint(aLastWidth)->append(this->LAST_HEIGHT)->appendint(aLastHeight)), this, this->commonStrings->UPDATE);
     
 this->xOffset= aFullWidth -aLastWidth;
     
@@ -721,7 +721,7 @@ stringBuffer->append(this->isPortrait()
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

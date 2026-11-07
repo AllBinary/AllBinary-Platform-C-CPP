@@ -115,7 +115,7 @@ this->miniGeographicMap= miniGeographicMap;
                         
                                     {
                                     
-    std::string error = (new StringMaker())->append("RaceTrackMap has incorrect Mini Map columns: ")->appendint(miniTiledLayer->getColumns())->append(" != ")->appendint(this->getGeographicMapCellPositionFactory()->getColumns())->toString();;
+    std::string error = JavaString::valueOf((new StringMaker())->append("RaceTrackMap has incorrect Mini Map columns: ")->appendint(miniTiledLayer->getColumns())->append(" != ")->appendint(this->getGeographicMapCellPositionFactory()->getColumns()));;
     
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;

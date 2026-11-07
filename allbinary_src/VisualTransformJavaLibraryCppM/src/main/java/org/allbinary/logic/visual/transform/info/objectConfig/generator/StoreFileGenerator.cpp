@@ -152,7 +152,7 @@ stringBuffer->append(weblisketSession->getStoreName());
 stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
     
 
-    AbPath* abPath = new AbPath(stringBuffer->toString(), StringUtil::getInstance()->EMPTY_STRING);;
+    AbPath* abPath = new AbPath(JavaString::valueOf(stringBuffer), StringUtil::getInstance()->EMPTY_STRING);;
     
 
     std::string fileName = JavaBoxes::unbox<std::string>(httpTransformInfoInterface->getPropertiesHashMap()->get(InputOutputTypeData::getInstance()->FILE));;
@@ -232,7 +232,7 @@ stringBuffer->append(AbPathData::getInstance()->EXTENSION_SEP);
     
 stringBuffer->append(this->output);
     
-abPath= new AbPath(abPath->toString(), stringBuffer->toString());
+abPath= new AbPath(JavaString::valueOf(abPath), JavaString::valueOf(stringBuffer));
     
 this->fileAbPath= abPath;
     
@@ -242,7 +242,7 @@ this->file= AbFile::createAbFileFromAbPath(this->fileAbPath);
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf("File: ") +JavaString::valueOf(this->fileAbPath->toString()), this, this->commonStrings->CONSTRUCTOR);
+                                    this->logUtil->putF(JavaString::valueOf("File: ") +JavaString::valueOf(JavaString::valueOf(this->fileAbPath)), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -287,7 +287,7 @@ FileUtil::getInstance()->write(inputStream, this->file);
                             
 
 
-                            throw Exception(JavaString::valueOf("Could Not Create: ") +JavaString::valueOf(this->fileAbPath->toString()));
+                            throw Exception(JavaString::valueOf("Could Not Create: ") +JavaString::valueOf(JavaString::valueOf(this->fileAbPath)));
                     
 
                         }

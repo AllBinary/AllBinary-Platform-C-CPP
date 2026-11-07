@@ -134,7 +134,7 @@ stringBuffer->append(value);
 stringBuffer->append(this->sqlStrings->CLOSE_QUOTE);
     
 
-    std::string sqlStatement = stringBuffer->toString();;
+    std::string sqlStatement = JavaString::valueOf(stringBuffer);;
     
 
         try {
@@ -178,7 +178,7 @@ stringBuffer->append(this->LARGEST_INT_VALUE_IN_COLUMN);
     
 stringBuffer->append(largestAsString);
     
-this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET_LARGETS_INTEGER_IN_COLUMN);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->METHOD_GET_LARGETS_INTEGER_IN_COLUMN);
     
 
                                     }
@@ -233,7 +233,7 @@ stringBuffer->append(this->sqlStrings->FROM);
 stringBuffer->append(this->getTableName());
     
 
-    std::string sqlStatement = stringBuffer->toString();;
+    std::string sqlStatement = JavaString::valueOf(stringBuffer);;
     
 
         try {
@@ -244,7 +244,7 @@ stringBuffer->append(this->getTableName());
         while(rset->next())
         {
 
-    std::string field = rset->getObject(columnName)->toString();;
+    std::string field = JavaString::valueOf(rset->getObject(columnName));;
     
 column->add(field);
     
@@ -262,9 +262,9 @@ stringBuffer->append(sqlStatement);
     
 stringBuffer->append(this->sqlStrings->COLUMN_VALUE);
     
-stringBuffer->append(column->toString());
+stringBuffer->append(JavaString::valueOf(column));
     
-this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET_COLUMN);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->METHOD_GET_COLUMN);
     
 
                                     }
@@ -326,7 +326,7 @@ stringBuffer->append(value);
 stringBuffer->append(this->sqlStrings->CLOSE_QUOTE);
     
 
-    std::string sqlStatement = stringBuffer->toString();;
+    std::string sqlStatement = JavaString::valueOf(stringBuffer);;
     
 
     BasicArrayList* column = new BasicArrayListD();;
@@ -344,7 +344,7 @@ stringBuffer->append(this->sqlStrings->CLOSE_QUOTE);
 
         while(rset->next())
         {
-field= rset->getObject(columnName)->toString();
+field= JavaString::valueOf(rset->getObject(columnName));
     
 column->add(field);
     
@@ -362,9 +362,9 @@ stringBuffer->append(sqlStatement);
     
 stringBuffer->append(this->sqlStrings->COLUMN_VALUE);
     
-stringBuffer->append(column->toString());
+stringBuffer->append(JavaString::valueOf(column));
     
-this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET_COLUMN_WHERE);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->METHOD_GET_COLUMN_WHERE);
     
 
                                     }

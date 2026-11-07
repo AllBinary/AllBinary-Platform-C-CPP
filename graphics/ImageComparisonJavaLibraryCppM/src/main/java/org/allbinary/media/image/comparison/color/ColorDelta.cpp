@@ -99,7 +99,7 @@ this->key= ColorDelta::getKey(rgb1, rgb2);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return (new StringMaker())->append(std::to_string(rgb1))->append(CommonSeps::getInstance()->UNDERSCORE)->append(std::to_string(rgb2))->toString();;
+                        return JavaString::valueOf((new StringMaker())->append(std::to_string(rgb1))->append(CommonSeps::getInstance()->UNDERSCORE)->append(std::to_string(rgb2)));;
     
 }
 
@@ -147,7 +147,7 @@ this->rgb2= rgb2;
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return (new StringMaker())->append("ColorDelta: ")->append(StringUtil::getInstance()->toString(this->getKey()))->append(" RGB1: ")->appendint(this->getRgb1())->append(" RGB2: ")->appendint(this->getRgb2())->toString();;
+                        return JavaString::valueOf((new StringMaker())->append("ColorDelta: ")->append(StringUtil::getInstance()->toString(this->getKey()))->append(" RGB1: ")->appendint(this->getRgb1())->append(" RGB2: ")->appendint(this->getRgb2()));;
     
 }
 

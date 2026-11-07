@@ -202,7 +202,7 @@ RecordStoreHighScores::hashTable->put(highScores->getName(), highScores);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->platformRecordIdUtil->getRecordId(abeClientInformation, (new StringMaker())->append(CommonSeps::getInstance()->UNDERSCORE)->append(this->getName())->append(this->RECORD_ID)->toString());;
+                        return this->platformRecordIdUtil->getRecordId(abeClientInformation, JavaString::valueOf((new StringMaker())->append(CommonSeps::getInstance()->UNDERSCORE)->append(this->getName())->append(this->RECORD_ID)));;
     
 }
 
@@ -245,7 +245,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->AD
         struct FinallyGuard_N67757 { decltype(finallyFunction_N67757)& function; ~FinallyGuard_N67757() { function(); } } finallyGuard_N67757{finallyFunction_N67757};
         
         try {
-            this->logUtil->putF((new StringMaker())->append("Adding HighScore: ")->appendlong(newHighScore->getScore())->toString(), this, this->commonStrings->ADD);
+            this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Adding HighScore: ")->appendlong(newHighScore->getScore())), this, this->commonStrings->ADD);
     
 
                         if(this->isTooManyHighScores())
@@ -395,7 +395,7 @@ inputStream= new DataInputStream(byteArrayInputStream);
                         if(bestHighScore->getId() !=  -1)
                         
                                     {
-                                    this->logUtil->putF((new StringMaker())->append("Removing Lowest HighScore: ")->appendlong(bestHighScore->getScore())->toString(), this, this->commonStrings->LOAD);
+                                    this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Removing Lowest HighScore: ")->appendlong(bestHighScore->getScore())), this, this->commonStrings->LOAD);
     
 recordStore->deleteRecord(bestHighScore->getId());
     
@@ -608,7 +608,7 @@ this->logUtil->put(this->commonStrings->UNKNOWN, this, this->commonStrings->LOAD
                                     }
                                 
                         else {
-                            this->logUtil->putF((new StringMaker())->append("HighScores RecordStore Max Reached: ")->appendint(this->MAXHIGHSCORES)->toString(), this, "isTooManyHighScores");
+                            this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("HighScores RecordStore Max Reached: ")->appendint(this->MAXHIGHSCORES)), this, "isTooManyHighScores");
     
 
 
@@ -746,7 +746,7 @@ stringBuffer->append(CommonSeps::getInstance()->COMMA_SEP);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

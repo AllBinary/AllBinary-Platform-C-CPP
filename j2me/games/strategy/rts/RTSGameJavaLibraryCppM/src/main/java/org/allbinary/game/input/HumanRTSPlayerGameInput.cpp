@@ -383,7 +383,7 @@ stringBuffer->append(this->SPACE);
     
 stringBuffer->appendint(rectY2);
     
-this->logUtil->putF(stringBuffer->toString(), this, this->METHOD);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->METHOD);
     
 
     RTSLayer* rtsLayer;;
@@ -416,13 +416,13 @@ stringBuffer->append(this->SPACE);
     
 stringBuffer->appendint((viewPosition->getY() +rtsLayer->getHalfHeight()));
     
-this->logUtil->putF(stringBuffer->toString(), this, this->METHOD);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->METHOD);
     
 
                         if(this->rectangleCollisionUtil->isInside(rectX1, rectY1, rectX2, rectY2, viewPosition->getX() +rtsLayer->getHalfWidth(), viewPosition->getY() +rtsLayer->getHalfHeight()))
                         
                                     {
-                                    this->logUtil->putF((new StringMaker())->append(this->ADDING)->append(rtsLayer->getName())->toString(), this, this->METHOD);
+                                    this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->ADDING)->append(rtsLayer->getName())), this, this->METHOD);
     
 rtsLayer->select();
     
@@ -558,7 +558,7 @@ this->getMotionGestureInputList()->clear();
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
-this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->START)->append(StringUtil::getInstance()->toString(selectedRtsFormInput))->toString(), this, "setSelectedRtsFormInput");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(CommonLabels::getInstance()->START)->append(StringUtil::getInstance()->toString(selectedRtsFormInput))), this, "setSelectedRtsFormInput");
     
 RTSPlayerGameInput::setSelectedRtsFormInput(selectedRtsFormInput);
     

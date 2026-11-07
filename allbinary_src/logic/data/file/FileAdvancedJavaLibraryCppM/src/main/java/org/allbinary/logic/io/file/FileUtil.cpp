@@ -378,7 +378,7 @@ stringBuffer->append(file->getPath());
     
 stringBuffer->append(" to cloud.");
     
-this->logUtil->putF(stringBuffer->toString(), getInstance(), "copyToCloud");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), getInstance(), "copyToCloud");
     
 
                                     }
@@ -407,11 +407,11 @@ this->copy(fileInputStream, dataOutputStream);
     
 stringBuffer->append("Error Copying File File: ");
     
-stringBuffer->append(file->toString());
+stringBuffer->append(JavaString::valueOf(file));
     
 stringBuffer->append(" to cloud.");
     
-this->logUtil->put(stringBuffer->toString(), getInstance(), "copyToCloud", &e);
+this->logUtil->put(JavaString::valueOf(stringBuffer), getInstance(), "copyToCloud", &e);
     
 
                                     }
@@ -474,7 +474,7 @@ stringBuffer->append(file->getPath());
     
 stringBuffer->append(" to cloud.");
     
-this->logUtil->putF(stringBuffer->toString(), getInstance(), "copyToCloud");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), getInstance(), "copyToCloud");
     
 
                                     }
@@ -503,11 +503,11 @@ this->copy(fileInputStream, dataOutputStream);
     
 stringBuffer->append("Error Copying File File: ");
     
-stringBuffer->append(file->toString());
+stringBuffer->append(JavaString::valueOf(file));
     
 stringBuffer->append(" to cloud.");
     
-this->logUtil->put(stringBuffer->toString(), getInstance(), "copyToCloud", &e);
+this->logUtil->put(JavaString::valueOf(stringBuffer), getInstance(), "copyToCloud", &e);
     
 
                                     }
@@ -546,7 +546,7 @@ stringBuffer->append("Overwriting File: ");
     
 stringBuffer->append(toFile->getPath());
     
-this->logUtil->putF(stringBuffer->toString(), getInstance(), "copyFile");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), getInstance(), "copyFile");
     
 
                                     }
@@ -578,7 +578,7 @@ stringBuffer->append("Copying File: ");
     
 stringBuffer->append(toFile->getPath());
     
-this->logUtil->putF(stringBuffer->toString(), getInstance(), "copyFile");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), getInstance(), "copyFile");
     
 
                                     }
@@ -618,7 +618,7 @@ stringBuffer->append(CommonLabels::getInstance()->COLON_SEP);
     
 stringBuffer->append(toFile->getPath());
     
-this->logUtil->putF(stringBuffer->toString(), getInstance(), "copyFile");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), getInstance(), "copyFile");
     
 
                                     }
@@ -686,7 +686,7 @@ stringBuffer->append(" to: ");
     
 stringBuffer->append(toFile->getPath());
     
-this->logUtil->putF(stringBuffer->toString(), getInstance(), "copyFile");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), getInstance(), "copyFile");
     
 
                                     }
@@ -727,13 +727,13 @@ this->copy(fileInputStream, dataOutputStream);
     
 stringBuffer->append("Error Copying File fromFile: ");
     
-stringBuffer->append(fromFile->toString());
+stringBuffer->append(JavaString::valueOf(fromFile));
     
 stringBuffer->append(" to: ");
     
-stringBuffer->append(toFile->toString());
+stringBuffer->append(JavaString::valueOf(toFile));
     
-this->logUtil->put(stringBuffer->toString(), getInstance(), "copyFile", &e);
+this->logUtil->put(JavaString::valueOf(stringBuffer), getInstance(), "copyFile", &e);
     
 
                                     }
@@ -854,7 +854,7 @@ stringBuffer->appendint(end);
                         if(LogConfigTypes::LOGGING->contains(this->logConfigTypeFactory->FILE))
                         
                                     {
-                                    this->logUtil->putF(stringBuffer->toString(), getInstance(), "copySomeFilesToDirectory()");
+                                    this->logUtil->putF(JavaString::valueOf(stringBuffer), getInstance(), "copySomeFilesToDirectory()");
     
 
                                     }
@@ -930,7 +930,7 @@ stringBuffer->append(" to: ");
     
 stringBuffer->append(to->getPath());
     
-this->logUtil->putF(stringBuffer->toString(), getInstance(), "copyDirectory");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), getInstance(), "copyDirectory");
     
 
                                     }
@@ -978,7 +978,7 @@ stringBuffer->append(" to: ");
     
 stringBuffer->append(to->getPath());
     
-this->logUtil->putF(stringBuffer->toString(), getInstance(), "copyDirectory");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), getInstance(), "copyDirectory");
     
 
                                     }
@@ -999,7 +999,7 @@ file= fileArray[index];
                         if(file->isFile())
                         
                                     {
-                                    this->copyFile(file, AbFile::createAbFilePathAndName(newDirectoryAbPath->toString(), file->getName()));
+                                    this->copyFile(file, AbFile::createAbFilePathAndName(JavaString::valueOf(newDirectoryAbPath), file->getName()));
     
 
                                     }
@@ -1037,13 +1037,13 @@ file= fileArray[index];
     
 stringBuffer->append("Error Copying Directory fromFile: ");
     
-stringBuffer->append(fromFile->toString());
+stringBuffer->append(JavaString::valueOf(fromFile));
     
 stringBuffer->append(" to: ");
     
-stringBuffer->append(to->toString());
+stringBuffer->append(JavaString::valueOf(to));
     
-this->logUtil->put(stringBuffer->toString(), getInstance(), "copyDirectory", &e);
+this->logUtil->put(JavaString::valueOf(stringBuffer), getInstance(), "copyDirectory", &e);
     
 
                                     }
@@ -1076,13 +1076,13 @@ this->logUtil->put(stringBuffer->toString(), getInstance(), "copyDirectory", &e)
     
 stringBuffer->append("Copying AbPaths from: ");
     
-stringBuffer->append(fromAbPath->toString());
+stringBuffer->append(JavaString::valueOf(fromAbPath));
     
 stringBuffer->append(" to: ");
     
-stringBuffer->append(to->toString());
+stringBuffer->append(JavaString::valueOf(to));
     
-this->logUtil->putF(stringBuffer->toString(), getInstance(), COPY);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), getInstance(), COPY);
     
 
                                     }
@@ -1153,7 +1153,7 @@ stringBuffer->append(" to: ");
     
 stringBuffer->append(toLocationFile->getPath());
     
-this->logUtil->putF(stringBuffer->toString(), getInstance(), COPY);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), getInstance(), COPY);
     
 
                                     }
@@ -1181,7 +1181,7 @@ stringBuffer->append(" to: ");
     
 stringBuffer->append(toLocationFile->getPath());
     
-this->logUtil->putF(stringBuffer->toString(), getInstance(), COPY);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), getInstance(), COPY);
     
 
                                     }
@@ -1314,13 +1314,13 @@ this->copyDirectory(fromLocationFile, toLocationFile);
     
 stringBuffer->append("Error Copying fromAbPath: ");
     
-stringBuffer->append(fromAbPath->toString());
+stringBuffer->append(JavaString::valueOf(fromAbPath));
     
 stringBuffer->append(" to: ");
     
-stringBuffer->append(to->toString());
+stringBuffer->append(JavaString::valueOf(to));
     
-this->logUtil->put(stringBuffer->toString(), getInstance(), COPY, &e);
+this->logUtil->put(JavaString::valueOf(stringBuffer), getInstance(), COPY, &e);
     
 
                                     }
@@ -1399,7 +1399,7 @@ skipFile= skipFiles[index];
         struct FinallyGuard_N81711 { decltype(finallyFunction_N81711)& function; ~FinallyGuard_N81711() { function(); } } finallyGuard_N81711{finallyFunction_N81711};
         
         {
-            PreLogUtil::put((new StringMaker())->append(this->WRITE_LABEL)->append(filePath)->append(this->DATA_LABEL)->append(string)->toString(), this, this->WRITE_METHOD);
+            PreLogUtil::put(JavaString::valueOf((new StringMaker())->append(this->WRITE_LABEL)->append(filePath)->append(this->DATA_LABEL)->append(string)), this, this->WRITE_METHOD);
     
 
     FileStreamFactory* fileInputStreamFactory = FileStreamFactory::getInstance();;

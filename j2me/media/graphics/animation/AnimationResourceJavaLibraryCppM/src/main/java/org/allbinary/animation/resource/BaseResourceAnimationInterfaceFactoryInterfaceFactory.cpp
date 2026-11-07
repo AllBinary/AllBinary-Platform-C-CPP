@@ -124,7 +124,7 @@ this->name= name;
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil->putF((new StringMaker())->append("Available List of Animations: ")->append(this->hashtable->toString())->toString(), this, commonStrings->INIT);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Available List of Animations: ")->append(JavaString::valueOf(this->hashtable))), this, commonStrings->INIT);
     
 this->setInitialized(true);
     
@@ -147,7 +147,7 @@ this->setInitialized(true);
                                     
 
 
-                            throw Exception((new StringMaker())->append("Resource Already Created: ")->append(resource)->toString());
+                            throw Exception(JavaString::valueOf((new StringMaker())->append("Resource Already Created: ")->append(resource)));
                     
 
                                     }
@@ -335,7 +335,7 @@ this->rectangleArrayOfArraysHashtable->put(resource, rectangleArrayOfArrays);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return (new StringMaker())->append(this->getClass()->getName())->append(CommonSeps::getInstance()->SEMICOLON)->append(CommonSeps::getInstance()->SPACE)->append(this->name)->toString();;
+                        return JavaString::valueOf((new StringMaker())->append(this->getClass()->getName())->append(CommonSeps::getInstance()->SEMICOLON)->append(CommonSeps::getInstance()->SPACE)->append(this->name));;
     
 }
 

@@ -137,14 +137,14 @@ abFile->delete_();
                             
     StringMaker* stringBuilder = new StringMaker();;
     
-this->logUtil->putF(stringBuilder->append(this->commonStrings->CREATE)->append(this->commonLabels->COLON_SEP)->append(name)->toString(), this, this->commonStrings->CREATE);
+this->logUtil->putF(JavaString::valueOf(stringBuilder->append(this->commonStrings->CREATE)->append(this->commonLabels->COLON_SEP)->append(name)), this, this->commonStrings->CREATE);
     
 
     bool result = abFileDirectory->mkdirs();;
     
 stringBuilder->delete_(0, stringBuilder->length());
     
-this->logUtil->putF(stringBuilder->append(this->commonLabels->RESULT_)->appendboolean(result)->toString(), this, this->commonStrings->CREATE);
+this->logUtil->putF(JavaString::valueOf(stringBuilder->append(this->commonLabels->RESULT_)->appendboolean(result)), this, this->commonStrings->CREATE);
     
 
                         }
@@ -189,14 +189,14 @@ abFile->delete_();
                             
     StringMaker* stringBuilder = new StringMaker();;
     
-this->logUtil->putF(stringBuilder->append(this->commonStrings->CREATE)->append(this->commonLabels->COLON_SEP)->append(name)->toString(), this, this->commonStrings->CREATE);
+this->logUtil->putF(JavaString::valueOf(stringBuilder->append(this->commonStrings->CREATE)->append(this->commonLabels->COLON_SEP)->append(name)), this, this->commonStrings->CREATE);
     
 
     bool result = abFileDirectory->mkdirs();;
     
 stringBuilder->delete_(0, stringBuilder->length());
     
-this->logUtil->putF(stringBuilder->append(this->commonLabels->RESULT_)->appendboolean(result)->toString(), this, this->commonStrings->CREATE);
+this->logUtil->putF(JavaString::valueOf(stringBuilder->append(this->commonLabels->RESULT_)->appendboolean(result)), this, this->commonStrings->CREATE);
     
 
                         }

@@ -151,7 +151,7 @@ this->name= name;
     
 hashMap->put(GenericProfileActionData::NAME, this->name);
     
-this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(hashMap->toString()), this, "toHashMap()");
+this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(JavaString::valueOf(hashMap)), this, "toHashMap()");
     
 
 

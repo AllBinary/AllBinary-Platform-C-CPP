@@ -216,7 +216,7 @@ stringMaker->appendboolean(booleanArray[index]);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringMaker->toString();;
+                        return JavaString::valueOf(stringMaker);;
     
 }
 

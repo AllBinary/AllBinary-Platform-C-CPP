@@ -955,7 +955,7 @@ this->updateOnPropertiesChange();
 
     int32_t extensionIndex = JavaString::indexOf(filePath, this->imageStrings->PNG_EXTENSION);;
     
-filePath= (new StringMaker())->append(JavaString::substring(filePath, 0, extensionIndex))->append(CommonSeps::getInstance()->UNDERSCORE)->appendint(this->imageUnifierProperties->getColumns())->append("_By_")->appendint(this->imageUnifierProperties->getRows())->append("_Unified")->append(this->imageStrings->PNG_EXTENSION)->toString();
+filePath= JavaString::valueOf((new StringMaker())->append(JavaString::substring(filePath, 0, extensionIndex))->append(CommonSeps::getInstance()->UNDERSCORE)->appendint(this->imageUnifierProperties->getColumns())->append("_By_")->appendint(this->imageUnifierProperties->getRows())->append("_Unified")->append(this->imageStrings->PNG_EXTENSION));
     
 this->logUtil->putF(JavaString::valueOf("New File Path: ") +JavaString::valueOf(filePath), this, StringUtil::getInstance()->EMPTY_STRING);
     

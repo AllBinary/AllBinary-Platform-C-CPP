@@ -591,7 +591,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->PR
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return (new StringMaker())->append(RotationAnimation::toString())->append(commonSeps->SPACE)->append(image->getName())->append(commonSeps->SPACE)->appendint(image->getWidth())->append(commonSeps->SPACE)->appendint(image->getHeight())->toString();;
+                        return JavaString::valueOf((new StringMaker())->append(RotationAnimation::toString())->append(commonSeps->SPACE)->append(image->getName())->append(commonSeps->SPACE)->appendint(image->getWidth())->append(commonSeps->SPACE)->appendint(image->getHeight()));;
     
 }
 

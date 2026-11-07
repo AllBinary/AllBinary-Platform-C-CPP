@@ -207,7 +207,7 @@ hashMap->put(GenericProfileActionScriptInputData::TYPE, this->getInputRobotInter
     
 hashMap->put(GenericProfileActionScriptInputData::DELAY, std::to_string(this->getTime()));
     
-this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(hashMap->toString()), this, "toHashMap()");
+this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(JavaString::valueOf(hashMap)), this, "toHashMap()");
     
 
 
@@ -290,7 +290,7 @@ stringBuffer->appendlong(this->getTime());
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

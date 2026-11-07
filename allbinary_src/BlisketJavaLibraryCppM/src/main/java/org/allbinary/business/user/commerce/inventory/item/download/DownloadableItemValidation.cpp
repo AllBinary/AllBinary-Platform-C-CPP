@@ -235,7 +235,7 @@ this->downloadableItem= downloadableItem;
                                 
                         else {
                             
-    std::string size = this->downloadableItem->getSize()->toString();;
+    std::string size = JavaString::valueOf(this->downloadableItem->getSize());;
     
 
                         if(size.size() < 1 || size.size() > AbSqlData::MAXNUM)
@@ -274,7 +274,7 @@ this->downloadableItem= downloadableItem;
                                 
                         else {
                             
-    std::string size = this->downloadableItem->getValidTime()->toString();;
+    std::string size = JavaString::valueOf(this->downloadableItem->getValidTime());;
     
 
                         if(size.size() < 1 || size.size() > AbSqlData::MAXNUM)
@@ -313,7 +313,7 @@ this->downloadableItem= downloadableItem;
                                 
                         else {
                             
-    std::string size = this->downloadableItem->getRetries()->toString();;
+    std::string size = JavaString::valueOf(this->downloadableItem->getRetries());;
     
 
                         if(size.size() < 1 || size.size() > AbSqlData::MAXNUM)
@@ -487,7 +487,7 @@ stringBuffer->append(" and >= 0 characters long.<br/>");
                                 
                         else {
                             
-    std::string size = this->downloadableItem->getSize()->toString();;
+    std::string size = JavaString::valueOf(this->downloadableItem->getSize());;
     
 
                         if(size.size() < 1 || size.size() > AbSqlData::MAXNUM)
@@ -518,7 +518,7 @@ stringBuffer->append(" and > 0 digits.<br/>");
                                 
                         else {
                             
-    std::string size = this->downloadableItem->getValidTime()->toString();;
+    std::string size = JavaString::valueOf(this->downloadableItem->getValidTime());;
     
 
                         if(size.size() < 1 || size.size() > AbSqlData::MAXNUM)
@@ -549,7 +549,7 @@ stringBuffer->append(" and > 0 digits.<br/>");
                                 
                         else {
                             
-    std::string size = this->downloadableItem->getRetries()->toString();;
+    std::string size = JavaString::valueOf(this->downloadableItem->getRetries());;
     
 
                         if(size.size() < 1 || size.size() > AbSqlData::MAXNUM)
@@ -573,7 +573,7 @@ stringBuffer->append(" and > 0 digits.<br/>");
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 
                 //: 

@@ -446,7 +446,7 @@ this->attemptBuild(rtsPlayerLayerInterface, layerManager, rtsLayer, itemIndex);
                 //@Throws(Exception.constructor)
             
     auto BuildingRTSFormInput::attemptBuild(RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, RTSLayer* layerInterface, int32_t itemIndex) -> bool{
-this->logUtil->putF((new StringMaker())->append("Layer: ")->append(StringUtil::getInstance()->toString(layerInterface))->toString(), this, "attemptBuild");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Layer: ")->append(StringUtil::getInstance()->toString(layerInterface))), this, "attemptBuild");
     
 
     GeographicMapCellPositionAreaBase* geographicMapCellPositionArea = layerInterface->geographicMapCellPositionAreaBase;;
@@ -539,7 +539,7 @@ stringBuffer->append(" with ");
     
 stringBuffer->appendint(capital->getTotalMoney());
     
-this->logUtil->putF(stringBuffer->toString(), this, "attemptBuild");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "attemptBuild");
     
 
                         if(cost <= capital->getTotalMoney())
@@ -755,7 +755,7 @@ stringBuffer->append(" surroundList: ");
     
 stringBuffer->append(StringUtil::getInstance()->toString(surroundList));
     
-this->logUtil->putF(stringBuffer->toString(), this, "isSurroundingCellsOffMap");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "isSurroundingCellsOffMap");
     
 
     bool isSurroundOffMap = false;;

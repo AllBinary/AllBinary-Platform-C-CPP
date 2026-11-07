@@ -531,7 +531,7 @@ valid= this->isNameValid();
                                     }
                                 
 
-                        if(!stringValidationUtil->isValidNotRequired(this->homeHostNamePath->toString(), this->MINCHAR, this->MAXCHAR))
+                        if(!stringValidationUtil->isValidNotRequired(JavaString::valueOf(this->homeHostNamePath), this->MINCHAR, this->MAXCHAR))
                         
                                     {
                                     valid= Boolean::FALSE;
@@ -549,7 +549,7 @@ valid= this->isNameValid();
                                     }
                                 
 
-                        if(!stringValidationUtil->isValidRequired(this->hostNamePath->toString(), this->MINCHAR, this->MAXCHAR))
+                        if(!stringValidationUtil->isValidRequired(JavaString::valueOf(this->hostNamePath), this->MINCHAR, this->MAXCHAR))
                         
                                     {
                                     valid= Boolean::FALSE;
@@ -567,7 +567,7 @@ valid= this->isNameValid();
                                     }
                                 
 
-                        if(!stringValidationUtil->isValidNotRequired(this->testHomeHostNamePath->toString(), this->MINCHAR, this->MAXCHAR))
+                        if(!stringValidationUtil->isValidNotRequired(JavaString::valueOf(this->testHomeHostNamePath), this->MINCHAR, this->MAXCHAR))
                         
                                     {
                                     valid= Boolean::FALSE;
@@ -585,7 +585,7 @@ valid= this->isNameValid();
                                     }
                                 
 
-                        if(!stringValidationUtil->isValidNotRequired(this->testHostNamePath->toString(), this->MINCHAR, this->MAXCHAR))
+                        if(!stringValidationUtil->isValidNotRequired(JavaString::valueOf(this->testHostNamePath), this->MINCHAR, this->MAXCHAR))
                         
                                     {
                                     valid= Boolean::FALSE;
@@ -594,7 +594,7 @@ valid= this->isNameValid();
                                     }
                                 
 
-                        if(!stringValidationUtil->isValidRequired(this->imagePath->toString(), this->MINCHAR, this->MAXCHAR))
+                        if(!stringValidationUtil->isValidRequired(JavaString::valueOf(this->imagePath), this->MINCHAR, this->MAXCHAR))
                         
                                     {
                                     valid= Boolean::FALSE;
@@ -603,7 +603,7 @@ valid= this->isNameValid();
                                     }
                                 
 
-                        if(!stringValidationUtil->isValidRequired(this->staticPath->toString(), this->MINCHAR, this->MAXCHAR))
+                        if(!stringValidationUtil->isValidRequired(JavaString::valueOf(this->staticPath), this->MINCHAR, this->MAXCHAR))
                         
                                     {
                                     valid= Boolean::FALSE;
@@ -612,7 +612,7 @@ valid= this->isNameValid();
                                     }
                                 
 
-                        if(!stringValidationUtil->isValidRequired(this->categoryPath->toString(), this->MINCHAR, this->MAXCHAR))
+                        if(!stringValidationUtil->isValidRequired(JavaString::valueOf(this->categoryPath), this->MINCHAR, this->MAXCHAR))
                         
                                     {
                                     valid= Boolean::FALSE;
@@ -666,7 +666,7 @@ valid= this->isNameValid();
                                     }
                                 
 
-                        if(!stringValidationUtil->isValidNotRequired(this->ftpPath->toString(), this->MINCHAR, this->MAXCHAR))
+                        if(!stringValidationUtil->isValidNotRequired(JavaString::valueOf(this->ftpPath), this->MINCHAR, this->MAXCHAR))
                         
                                     {
                                     valid= Boolean::FALSE;
@@ -702,7 +702,7 @@ valid= this->isNameValid();
                                     }
                                 
 
-                        if(!stringValidationUtil->isValidNotRequired(this->testFtpPath->toString(), this->MINCHAR, this->MAXCHAR))
+                        if(!stringValidationUtil->isValidNotRequired(JavaString::valueOf(this->testFtpPath), this->MINCHAR, this->MAXCHAR))
                         
                                     {
                                     valid= Boolean::FALSE;
@@ -781,7 +781,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 
                                     }
@@ -835,7 +835,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                                     }
                                 
 
-                        if(!stringValidationUtil->isValidNotRequired(this->homeHostNamePath->toString(), this->MINCHAR, this->MAXCHAR))
+                        if(!stringValidationUtil->isValidNotRequired(JavaString::valueOf(this->homeHostNamePath), this->MINCHAR, this->MAXCHAR))
                         
                                     {
                                     stringBuffer->append("Home host name path is invalid. Must be < ");
@@ -861,7 +861,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                                     }
                                 
 
-                        if(!stringValidationUtil->isValidRequired(this->hostNamePath->toString(), this->MINCHAR, this->MAXCHAR))
+                        if(!stringValidationUtil->isValidRequired(JavaString::valueOf(this->hostNamePath), this->MINCHAR, this->MAXCHAR))
                         
                                     {
                                     stringBuffer->append("Host name path is invalid. Must be < ");
@@ -883,7 +883,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                                     }
                                 
 
-                        if(!stringValidationUtil->isValidNotRequired(this->testHomeHostNamePath->toString(), this->MINCHAR, this->MAXCHAR))
+                        if(!stringValidationUtil->isValidNotRequired(JavaString::valueOf(this->testHomeHostNamePath), this->MINCHAR, this->MAXCHAR))
                         
                                     {
                                     stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Test home host name path is invalid. Must be < ") +JavaString::valueOf(this->MAXCHAR)) +JavaString::valueOf(" and > 0 characters.<br>"));
@@ -901,7 +901,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                                     }
                                 
 
-                        if(!stringValidationUtil->isValidNotRequired(this->testHostNamePath->toString(), this->MINCHAR, this->MAXCHAR))
+                        if(!stringValidationUtil->isValidNotRequired(JavaString::valueOf(this->testHostNamePath), this->MINCHAR, this->MAXCHAR))
                         
                                     {
                                     stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Test host name path is invalid. Must be < ") +JavaString::valueOf(this->MAXCHAR)) +JavaString::valueOf(" and > 0 characters.<br>"));
@@ -910,7 +910,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                                     }
                                 
 
-                        if(!stringValidationUtil->isValidRequired(this->imagePath->toString(), this->MINCHAR, this->MAXCHAR))
+                        if(!stringValidationUtil->isValidRequired(JavaString::valueOf(this->imagePath), this->MINCHAR, this->MAXCHAR))
                         
                                     {
                                     stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Image path is invalid. Must be < ") +JavaString::valueOf(this->MAXCHAR)) +JavaString::valueOf(" and > 0 characters.<br>"));
@@ -919,7 +919,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                                     }
                                 
 
-                        if(!stringValidationUtil->isValidRequired(this->staticPath->toString(), this->MINCHAR, this->MAXCHAR))
+                        if(!stringValidationUtil->isValidRequired(JavaString::valueOf(this->staticPath), this->MINCHAR, this->MAXCHAR))
                         
                                     {
                                     stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Static path is invalid. Must be < ") +JavaString::valueOf(this->MAXCHAR)) +JavaString::valueOf(" and > 0 characters.<br>"));
@@ -928,7 +928,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                                     }
                                 
 
-                        if(!stringValidationUtil->isValidRequired(this->categoryPath->toString(), this->MINCHAR, this->MAXCHAR))
+                        if(!stringValidationUtil->isValidRequired(JavaString::valueOf(this->categoryPath), this->MINCHAR, this->MAXCHAR))
                         
                                     {
                                     stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Category path is invalid. Must be < ") +JavaString::valueOf(this->MAXCHAR)) +JavaString::valueOf(" and > 0 characters.<br>"));
@@ -982,7 +982,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                                     }
                                 
 
-                        if(!stringValidationUtil->isValidNotRequired(this->ftpPath->toString(), this->MINCHAR, this->MAXCHAR))
+                        if(!stringValidationUtil->isValidNotRequired(JavaString::valueOf(this->ftpPath), this->MINCHAR, this->MAXCHAR))
                         
                                     {
                                     stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Ftp path is invalid. Must be < ") +JavaString::valueOf(this->MAXCHAR)) +JavaString::valueOf(" and > 0 characters.<br>"));
@@ -1018,7 +1018,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                                     }
                                 
 
-                        if(!stringValidationUtil->isValidNotRequired(this->testFtpPath->toString(), this->MINCHAR, this->MAXCHAR))
+                        if(!stringValidationUtil->isValidNotRequired(JavaString::valueOf(this->testFtpPath), this->MINCHAR, this->MAXCHAR))
                         
                                     {
                                     stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Test ftp Path is invalid. Must be < ") +JavaString::valueOf(this->MAXCHAR)) +JavaString::valueOf(" and > 0 characters.<br>"));
@@ -1050,7 +1050,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 
                 //: 
@@ -1253,7 +1253,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->homeHostNamePath->toString();;
+                        return JavaString::valueOf(this->homeHostNamePath);;
     
 }
 
@@ -1277,7 +1277,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->hostNamePath->toString();;
+                        return JavaString::valueOf(this->hostNamePath);;
     
 }
 
@@ -1301,7 +1301,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->testHomeHostNamePath->toString();;
+                        return JavaString::valueOf(this->testHomeHostNamePath);;
     
 }
 
@@ -1325,7 +1325,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->testHostNamePath->toString();;
+                        return JavaString::valueOf(this->testHostNamePath);;
     
 }
 
@@ -1337,7 +1337,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->staticPath->toString();;
+                        return JavaString::valueOf(this->staticPath);;
     
 }
 
@@ -1349,7 +1349,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->categoryPath->toString();;
+                        return JavaString::valueOf(this->categoryPath);;
     
 }
 
@@ -1502,7 +1502,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->ftpPath->toString();;
+                        return JavaString::valueOf(this->ftpPath);;
     
 }
 
@@ -1514,7 +1514,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->testFtpPath->toString();;
+                        return JavaString::valueOf(this->testFtpPath);;
     
 }
 
@@ -1818,7 +1818,7 @@ stringBuffer->append(URLGLOBALS::getMainPath());
 stringBuffer->append(FREEBLISKET_PATH_GLOBALS::getInstance()->XSLPATH);
     
 
-    std::string viewPath = stringBuffer->toString();;
+    std::string viewPath = JavaString::valueOf(stringBuffer);;
     
 stringBuffer->delete_(0, stringBuffer->length());
     
@@ -1827,7 +1827,7 @@ stringBuffer->append(viewPath);
 stringBuffer->append(FREEBLISKET_PATH_GLOBALS::getInstance()->INSTALLPATH);
     
 
-    AbPath* fromDirectoryAbPath = new AbPath(stringBuffer->toString(), StringUtil::getInstance()->EMPTY_STRING);;
+    AbPath* fromDirectoryAbPath = new AbPath(JavaString::valueOf(stringBuffer), StringUtil::getInstance()->EMPTY_STRING);;
     
 stringBuffer->delete_(0, stringBuffer->length());
     
@@ -1838,7 +1838,7 @@ stringBuffer->append("special");
 stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
     
 
-    AbPath* fromSpecialDirectoryAbPath = new AbPath(stringBuffer->toString(), StringUtil::getInstance()->EMPTY_STRING);;
+    AbPath* fromSpecialDirectoryAbPath = new AbPath(JavaString::valueOf(stringBuffer), StringUtil::getInstance()->EMPTY_STRING);;
     
 stringBuffer->delete_(0, stringBuffer->length());
     
@@ -1849,7 +1849,7 @@ stringBuffer->append(this->getName());
 stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
     
 
-    AbPath* toDirectoryAbPath = new AbPath(stringBuffer->toString(), StringUtil::getInstance()->EMPTY_STRING);;
+    AbPath* toDirectoryAbPath = new AbPath(JavaString::valueOf(stringBuffer), StringUtil::getInstance()->EMPTY_STRING);;
     
 
                         if(current == 0)
@@ -1862,7 +1862,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
                                     
 
 
-                            throw Exception(JavaString::valueOf("Unable to create store view directory: ") +JavaString::valueOf(toDirectoryAbPath->toString()));
+                            throw Exception(JavaString::valueOf("Unable to create store view directory: ") +JavaString::valueOf(JavaString::valueOf(toDirectoryAbPath)));
                     
 
                                     }
@@ -1972,7 +1972,7 @@ FileUtil::getInstance()->copyDirectoryPortion(fromDirectoryAbPath, toDirectoryAb
 
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(fromDirectoryAbPath->toString());
+stringBuffer->append(JavaString::valueOf(fromDirectoryAbPath));
     
 stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
     
@@ -1981,7 +1981,7 @@ stringBuffer->append("Resources");
 stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
     
 
-    AbPath* installCategoryAbPath = new AbPath(stringBuffer->toString(), StringUtil::getInstance()->EMPTY_STRING);;
+    AbPath* installCategoryAbPath = new AbPath(JavaString::valueOf(stringBuffer), StringUtil::getInstance()->EMPTY_STRING);;
     
 stringBuffer->delete_(0, stringBuffer->length());
     
@@ -1994,7 +1994,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
 stringBuffer->append(this->getCategoryPath());
     
 
-    AbPath* categoryAbPath = new AbPath(stringBuffer->toString(), StringUtil::getInstance()->EMPTY_STRING);;
+    AbPath* categoryAbPath = new AbPath(JavaString::valueOf(stringBuffer), StringUtil::getInstance()->EMPTY_STRING);;
     
 FileUtil::getInstance()->copyDirectoryPortion(installCategoryAbPath, categoryAbPath, true, false, current, total);
     
@@ -2007,7 +2007,7 @@ FileUtil::getInstance()->copyDirectoryPortion(installCategoryAbPath, categoryAbP
 
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(fromDirectoryAbPath->toString());
+stringBuffer->append(JavaString::valueOf(fromDirectoryAbPath));
     
 stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
     
@@ -2018,7 +2018,7 @@ stringBuffer->append("images");
 stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
     
 
-    AbPath* viewStoreImagesDirectoryAbPath = new AbPath(stringBuffer->toString(), StringUtil::getInstance()->EMPTY_STRING);;
+    AbPath* viewStoreImagesDirectoryAbPath = new AbPath(JavaString::valueOf(stringBuffer), StringUtil::getInstance()->EMPTY_STRING);;
     
 
     AbPath* storeAbPath = new AbPath(URLGLOBALS::getWebappPath() +this->getCurrentHomeHostNamePath(), StringUtil::getInstance()->EMPTY_STRING);;
@@ -2038,25 +2038,25 @@ dataVector->add(this->name);
     
 dataVector->add(this->homeHostName);
     
-dataVector->add(this->homeHostNamePath->toString());
+dataVector->add(JavaString::valueOf(this->homeHostNamePath));
     
 dataVector->add(this->hostName);
     
-dataVector->add(this->hostNamePath->toString());
+dataVector->add(JavaString::valueOf(this->hostNamePath));
     
 dataVector->add(this->testHomeHostName);
     
-dataVector->add(this->testHomeHostNamePath->toString());
+dataVector->add(JavaString::valueOf(this->testHomeHostNamePath));
     
 dataVector->add(this->testHostName);
     
-dataVector->add(this->testHostNamePath->toString());
+dataVector->add(JavaString::valueOf(this->testHostNamePath));
     
-dataVector->add(this->imagePath->toString());
+dataVector->add(JavaString::valueOf(this->imagePath));
     
-dataVector->add(this->staticPath->toString());
+dataVector->add(JavaString::valueOf(this->staticPath));
     
-dataVector->add(this->categoryPath->toString());
+dataVector->add(JavaString::valueOf(this->categoryPath));
     
 dataVector->add(this->inventoryControl);
     
@@ -2073,7 +2073,7 @@ dataVector->add(this->packageLocation);
     
 dataVector->add(this->ftp);
     
-dataVector->add(this->ftpPath->toString());
+dataVector->add(JavaString::valueOf(this->ftpPath));
     
 dataVector->add(this->ftpUserName);
     
@@ -2081,7 +2081,7 @@ dataVector->add(this->ftpPassword);
     
 dataVector->add(this->testFtp);
     
-dataVector->add(this->testFtpPath->toString());
+dataVector->add(JavaString::valueOf(this->testFtpPath));
     
 dataVector->add(this->testFtpUserName);
     
@@ -2121,25 +2121,25 @@ dataHashMap->put(storeFrontData->NAME, this->name);
     
 dataHashMap->put(storeFrontData->HOMEHOSTNAME, this->homeHostName);
     
-dataHashMap->put(storeFrontData->HOMEHOSTNAMEPATH, this->homeHostNamePath->toString());
+dataHashMap->put(storeFrontData->HOMEHOSTNAMEPATH, JavaString::valueOf(this->homeHostNamePath));
     
 dataHashMap->put(storeFrontData->HOSTNAME, this->hostName);
     
-dataHashMap->put(storeFrontData->HOSTNAMEPATH, this->hostNamePath->toString());
+dataHashMap->put(storeFrontData->HOSTNAMEPATH, JavaString::valueOf(this->hostNamePath));
     
 dataHashMap->put(storeFrontData->TESTHOMEHOSTNAME, this->testHomeHostName);
     
-dataHashMap->put(storeFrontData->TESTHOMEHOSTNAMEPATH, this->testHomeHostNamePath->toString());
+dataHashMap->put(storeFrontData->TESTHOMEHOSTNAMEPATH, JavaString::valueOf(this->testHomeHostNamePath));
     
 dataHashMap->put(storeFrontData->TESTHOSTNAME, this->testHostName);
     
-dataHashMap->put(storeFrontData->TESTHOSTNAMEPATH, this->testHostNamePath->toString());
+dataHashMap->put(storeFrontData->TESTHOSTNAMEPATH, JavaString::valueOf(this->testHostNamePath));
     
-dataHashMap->put(storeFrontData->IMAGEPATH, this->imagePath->toString());
+dataHashMap->put(storeFrontData->IMAGEPATH, JavaString::valueOf(this->imagePath));
     
-dataHashMap->put(storeFrontData->STATICPATH, this->staticPath->toString());
+dataHashMap->put(storeFrontData->STATICPATH, JavaString::valueOf(this->staticPath));
     
-dataHashMap->put(storeFrontData->CATEGORYPATH, this->categoryPath->toString());
+dataHashMap->put(storeFrontData->CATEGORYPATH, JavaString::valueOf(this->categoryPath));
     
 dataHashMap->put(storeFrontData->INVENTORYCONTROL, this->inventoryControl);
     
@@ -2156,7 +2156,7 @@ dataHashMap->put(storeFrontData->PACKAGELOCATION, this->packageLocation);
     
 dataHashMap->put(storeFrontData->FTP, this->ftp);
     
-dataHashMap->put(storeFrontData->FTPPATH, this->ftpPath->toString());
+dataHashMap->put(storeFrontData->FTPPATH, JavaString::valueOf(this->ftpPath));
     
 dataHashMap->put(storeFrontData->FTPUSERNAME, this->ftpUserName);
     
@@ -2164,7 +2164,7 @@ dataHashMap->put(storeFrontData->FTPPASSWORD, this->ftpPassword);
     
 dataHashMap->put(storeFrontData->TESTFTP, this->testFtp);
     
-dataHashMap->put(storeFrontData->TESTFTPPATH, this->testFtpPath->toString());
+dataHashMap->put(storeFrontData->TESTFTPPATH, JavaString::valueOf(this->testFtpPath));
     
 dataHashMap->put(storeFrontData->TESTFTPUSERNAME, this->testFtpUserName);
     

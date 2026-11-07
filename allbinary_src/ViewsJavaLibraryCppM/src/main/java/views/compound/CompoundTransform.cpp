@@ -106,7 +106,7 @@ this->setURIResolver(dynamic_cast<URIResolver*>(new StoreUriResolver(this->getTr
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf("\nObjectConfig: \n") +JavaString::valueOf(objectConfig->toString()), this, this->commonStrings->CONSTRUCTOR);
+                                    this->logUtil->putF(JavaString::valueOf("\nObjectConfig: \n") +JavaString::valueOf(JavaString::valueOf(objectConfig)), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }

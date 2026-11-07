@@ -88,7 +88,7 @@
 
     BasicArrayList* types = new BasicArrayListS(1);;
     
-types->add(type);
+types.add(type);
     
 
 
@@ -103,7 +103,7 @@ types->add(type);
 
 BasicTopViewGeographicMapCellType::BasicTopViewGeographicMapCellType(std::string name, BasicArrayList* types, int32_t cost) : logUtil(LogUtil::getInstance()){
 
-    int32_t size = types->size();;
+    int32_t size = types.size();;
     
 
     std::vector<int32_t> typeArray = std::vector<int32_t>(size);;
@@ -121,7 +121,7 @@ BasicTopViewGeographicMapCellType::BasicTopViewGeographicMapCellType(std::string
                         for (
     int32_t index = 0;index < size; index++)
         {
-typeAsInteger= (JavaBoxes::unbox<int32_t>(types->get(index)));
+typeAsInteger= (JavaBoxes::unbox<int32_t>(types.get(index)));
     
 type= typeAsInteger;
     
@@ -240,7 +240,7 @@ stringMaker->appendint(this->types[index])->append(CommonSeps::getInstance()->CO
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringMaker->toString();;
+                        return JavaString::valueOf(stringMaker);;
     
 }
 

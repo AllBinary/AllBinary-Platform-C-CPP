@@ -206,15 +206,15 @@ this->numberOfOrdersLong= int64_t(numberOfOrders);
 
     StoreFrontOrdersHistoryStatisticsData* storeFrontOrdersHistoryStatisticsData = StoreFrontOrdersHistoryStatisticsData::getInstance();;
     
-hashMap->put(storeFrontOrdersHistoryStatisticsData->NUMBEROFORDERS, this->getNumberOfOrders().toString());
+hashMap->put(storeFrontOrdersHistoryStatisticsData->NUMBEROFORDERS, JavaString::valueOf(this->getNumberOfOrders()));
     
-hashMap->put(storeFrontOrdersHistoryStatisticsData->SUBTOTAL, this->getSubTotal()->toString());
+hashMap->put(storeFrontOrdersHistoryStatisticsData->SUBTOTAL, JavaString::valueOf(this->getSubTotal()));
     
-hashMap->put(storeFrontOrdersHistoryStatisticsData->SHIPPINGCOST, this->getShippingCost()->toString());
+hashMap->put(storeFrontOrdersHistoryStatisticsData->SHIPPINGCOST, JavaString::valueOf(this->getShippingCost()));
     
-hashMap->put(storeFrontOrdersHistoryStatisticsData->TAXES, this->getTaxes()->toString());
+hashMap->put(storeFrontOrdersHistoryStatisticsData->TAXES, JavaString::valueOf(this->getTaxes()));
     
-hashMap->put(storeFrontOrdersHistoryStatisticsData->TOTAL, this->getTotal()->toString());
+hashMap->put(storeFrontOrdersHistoryStatisticsData->TOTAL, JavaString::valueOf(this->getTotal()));
     
 
 

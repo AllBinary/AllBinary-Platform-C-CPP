@@ -186,7 +186,7 @@ stringBuffer->append(" Creating Zip File Entry: ");
     
 stringBuffer->append(file->getPath());
     
-this->logUtil->putF(stringBuffer->toString(), this, "create()");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "create()");
     
 
         try {
@@ -299,7 +299,7 @@ stringBuffer->append(" getParent: ");
     
 stringBuffer->append(entryFile->getParent());
     
-this->logUtil->putF(stringBuffer->toString(), this, "unzip");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "unzip");
     
 
     AbDataOutputStream* dataOutputStream = DataOutputStreamFactory::getInstance()->getInstanceForAbFile(entryFile);;

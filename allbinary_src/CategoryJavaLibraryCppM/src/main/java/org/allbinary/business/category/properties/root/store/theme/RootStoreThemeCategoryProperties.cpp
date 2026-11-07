@@ -161,14 +161,14 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
 stringBuffer->append(FREEBLISKET_PATH_GLOBALS::getInstance()->THEMEPATH);
     
 
-    AbPath* abPath = new AbPath(stringBuffer->toString(), StringUtil::getInstance()->EMPTY_STRING);;
+    AbPath* abPath = new AbPath(JavaString::valueOf(stringBuffer), StringUtil::getInstance()->EMPTY_STRING);;
     
 
     HttpServletRequest* httpServletRequest = dynamic_cast<HttpServletRequest*>(transformInfoHttpStoreInterface->getPageContext()->getRequest());;
     
-this->webAppAbPath= new AbPath(httpServletRequest->getContextPath() +abPath->toString(), StringUtil::getInstance()->EMPTY_STRING);
+this->webAppAbPath= new AbPath(httpServletRequest->getContextPath() +JavaString::valueOf(abPath), StringUtil::getInstance()->EMPTY_STRING);
     
-this->setRootFilePath(new AbPath(URLGLOBALS::getMainPath() +abPath->toString(), StringUtil::getInstance()->EMPTY_STRING));
+this->setRootFilePath(new AbPath(URLGLOBALS::getMainPath() +JavaString::valueOf(abPath), StringUtil::getInstance()->EMPTY_STRING));
     
 }
 

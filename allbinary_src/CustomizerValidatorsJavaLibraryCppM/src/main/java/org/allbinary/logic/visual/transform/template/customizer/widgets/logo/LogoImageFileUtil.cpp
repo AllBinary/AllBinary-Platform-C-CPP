@@ -112,7 +112,7 @@ this->imageFileAbPath= imageAbPath;
                                     }
                                 
 
-    AbFile* originalImageFile = AbFile::createAbFile(this->imageFileAbPath->toString() +this->fileName);;
+    AbFile* originalImageFile = AbFile::createAbFile(JavaString::valueOf(this->imageFileAbPath) +this->fileName);;
     
 originalImageFile->createNewFile();
     

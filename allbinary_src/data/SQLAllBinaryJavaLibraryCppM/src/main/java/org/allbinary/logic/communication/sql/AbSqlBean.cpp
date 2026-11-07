@@ -138,7 +138,7 @@ stringBuffer->append(value);
 stringBuffer->append(this->sqlStrings->CLOSE_QUOTE);
     
 
-    std::string sqlStatement = stringBuffer->toString();;
+    std::string sqlStatement = JavaString::valueOf(stringBuffer);;
     
 
         try {
@@ -167,7 +167,7 @@ stringBuffer->append(this->sqlStrings->FIELD_VALUE);
     
 stringBuffer->append(field);
     
-this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET_FIELD);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->METHOD_GET_FIELD);
     
 
                                     }
@@ -281,7 +281,7 @@ stringBuffer->append(this->sqlStrings->CLOSE_QUOTE);
 }
 
 
-    std::string sqlStatement = stringBuffer->toString();;
+    std::string sqlStatement = JavaString::valueOf(stringBuffer);;
     
 
     ResultSet* rset = executeSQLStatement(sqlStatement);;
@@ -305,7 +305,7 @@ stringBuffer->append(this->sqlStrings->FIELD_VALUE);
     
 stringBuffer->append(field);
     
-this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET_FIELD);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->METHOD_GET_FIELD);
     
 
                                     }
@@ -333,7 +333,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET_FIELD);
 } catch(Exception& e) 
             {
 
-    std::string sqlStatement = stringBuffer->toString();;
+    std::string sqlStatement = JavaString::valueOf(stringBuffer);;
     
 
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
@@ -384,7 +384,7 @@ stringBuffer->append(key);
         {
 stringBuffer->append(this->commonSeps->SPACE);
     
-stringBuffer->append(keyArray[i]->toString());
+stringBuffer->append(JavaString::valueOf(keyArray[i]));
     
 }
 
@@ -403,7 +403,7 @@ stringBuffer->append(value);
 stringBuffer->append(this->sqlStrings->CLOSE_QUOTE);
     
 
-    std::string sqlStatement = stringBuffer->toString();;
+    std::string sqlStatement = JavaString::valueOf(stringBuffer);;
     
 
     ResultSet* rset = executeSQLStatement(sqlStatement);;
@@ -430,9 +430,9 @@ stringBuffer->append(this->sqlStrings->CLOSE_QUOTE);
                         for (
     int32_t i = 0;i < size2; i++)
         {
-columnName= keyArray2[i]->toString();
+columnName= JavaString::valueOf(keyArray2[i]);
     
-field= rset->getObject(columnName)->toString();
+field= JavaString::valueOf(rset->getObject(columnName));
     
 
                         if(field.compare(JavaBoxes::unbox<std::string>(columnsAndValues->get(columnName))) != 0)
@@ -485,7 +485,7 @@ field= rset->getObject(columnName)->toString();
 } catch(Exception& e) 
             {
 
-    std::string sqlStatement = stringBuffer->toString();;
+    std::string sqlStatement = JavaString::valueOf(stringBuffer);;
     
 
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))

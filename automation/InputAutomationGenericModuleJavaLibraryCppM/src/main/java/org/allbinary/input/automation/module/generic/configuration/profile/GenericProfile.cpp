@@ -118,7 +118,7 @@ this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(
                                     
     GenericProfileDataWorkerType* genericProfileDataWorkerType = GenericProfileDataWorkerType::getInstance(profileNode);;
     
-this->logUtil->putF(JavaString::valueOf("Adding GenericProfileDataWorkerType: ") +JavaString::valueOf(genericProfileDataWorkerType->toString()), this, "Contructor");
+this->logUtil->putF(JavaString::valueOf("Adding GenericProfileDataWorkerType: ") +JavaString::valueOf(JavaString::valueOf(genericProfileDataWorkerType)), this, "Contructor");
     
 this->vector->add(genericProfileDataWorkerType);
     

@@ -201,7 +201,7 @@ this->setFrame(this->frameUtil->getFrameForAngle(angle, static_cast<int32_t>(thi
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return (new StringMaker())->append(IndexedAnimation::toString())->append("circularIndexUtil: ")->append(this->circularIndexUtil->toString())->append("angleInfo: ")->append(this->angleInfo->toString())->toString();;
+                        return JavaString::valueOf((new StringMaker())->append(IndexedAnimation::toString())->append("circularIndexUtil: ")->append(JavaString::valueOf(this->circularIndexUtil))->append("angleInfo: ")->append(JavaString::valueOf(this->angleInfo)));;
     
 }
 

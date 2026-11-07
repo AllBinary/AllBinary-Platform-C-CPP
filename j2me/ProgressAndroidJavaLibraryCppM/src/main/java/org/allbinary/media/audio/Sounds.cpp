@@ -153,11 +153,11 @@ stringBuffer->append(this->soundStrings->SOUND);
     
 stringBuffer->append(soundInterfaceCanBeNull->getClass()->getName());
     
-this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->INIT);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->commonStrings->INIT);
     
 soundInterfaceCanBeNull->init();
     
-progressCanvas->addNormalPortion(100, (new StringMaker())->append(this->soundStrings->INIT_SOUND)->append(indexString)->toString());
+progressCanvas->addNormalPortion(100, JavaString::valueOf((new StringMaker())->append(this->soundStrings->INIT_SOUND)->append(indexString)));
     
 
                                     }

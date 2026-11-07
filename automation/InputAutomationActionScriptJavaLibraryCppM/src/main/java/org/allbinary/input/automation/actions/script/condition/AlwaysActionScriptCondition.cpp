@@ -208,7 +208,7 @@ this->alwaysActionScriptConditionJPanel->getAlwaysActionJDialog()->setVisible(tr
     
 hashMap->put(AlwaysActionScriptConditionData::IS_ON, Boolean::toString(this->isIsOn()));
     
-this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(hashMap->toString()), this, "toHashMap()");
+this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(JavaString::valueOf(hashMap)), this, "toHashMap()");
     
 
 

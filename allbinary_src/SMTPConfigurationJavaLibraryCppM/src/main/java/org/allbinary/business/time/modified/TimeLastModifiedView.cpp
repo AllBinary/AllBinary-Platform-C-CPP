@@ -98,7 +98,7 @@ this->setTimeLastModified(new TimeLastModified(DomNodeHelper::getTextNodeValue(n
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return ModDomHelper::createTextNode(document, EntryData::getInstance()->TIMECREATED, this->getTimeLastModified()->toString());;
+                        return ModDomHelper::createTextNode(document, EntryData::getInstance()->TIMECREATED, JavaString::valueOf(this->getTimeLastModified()));;
     
 }
 

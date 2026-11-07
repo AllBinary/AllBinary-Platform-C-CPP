@@ -245,9 +245,9 @@ vector->add(this->value);
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap->put(PaymentGatewayData::NAME->toString(), this->name);
+hashMap->put(JavaString::valueOf(PaymentGatewayData::NAME), this->name);
     
-hashMap->put(PaymentGatewayData::VALUE->toString(), this->value);
+hashMap->put(JavaString::valueOf(PaymentGatewayData::VALUE), this->value);
     
 
 

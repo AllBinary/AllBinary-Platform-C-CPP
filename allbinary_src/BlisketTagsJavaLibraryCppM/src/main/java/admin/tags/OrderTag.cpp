@@ -279,7 +279,7 @@ this->propertiesHashMap->put(StoreFrontData::getInstance()->NAME, this->storeNam
                                     }
                                 
                              else 
-                        if(this->command.compare(PaymentGatewayData::NAME->toString()) == 0)
+                        if(this->command.compare(JavaString::valueOf(PaymentGatewayData::NAME)) == 0)
                         
                                     {
                                     

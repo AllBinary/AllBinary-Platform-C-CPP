@@ -159,7 +159,7 @@ PaymentGatewayInterfaceFactory::PaymentGatewayInterfaceFactory() : logUtil(LogUt
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap->put(PaymentGatewayData::NAME->toString(), paymentType->getName());
+hashMap->put(JavaString::valueOf(PaymentGatewayData::NAME), paymentType->getName());
     
 
 
@@ -181,7 +181,7 @@ hashMap->put(PaymentGatewayData::NAME->toString(), paymentType->getName());
 
         try {
             
-    std::string gatewayName = JavaBoxes::unbox<std::string>(hashMap->get(PaymentGatewayData::NAME->toString()));;
+    std::string gatewayName = JavaBoxes::unbox<std::string>(hashMap->get(JavaString::valueOf(PaymentGatewayData::NAME)));;
     
 
     BasicPaymentType* paymentType = BasicPaymentTypeUtil::getInstance()->get(gatewayName);;

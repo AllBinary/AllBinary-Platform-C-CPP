@@ -170,7 +170,7 @@ this->highestLevel= highestLevel;
     auto GameInfo::setCurrentLevel(int32_t currentLevel) -> void{
 this->currentLevel= currentLevel;
     
-this->logUtil->putF((new StringMaker())->append(this->NEW_LEVEL)->appendint(this->getCurrentLevel())->toString(), this, this->SET_CURRENT_LEVEL);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->NEW_LEVEL)->appendint(this->getCurrentLevel())), this, this->SET_CURRENT_LEVEL);
     
 }
 
@@ -185,7 +185,7 @@ this->logUtil->putF((new StringMaker())->append(this->NEW_LEVEL)->appendint(this
 
                                     }
                                 
-this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->NEXT)->append(CommonSeps::getInstance()->SPACE)->append(this->NEW_LEVEL)->appendint(this->getCurrentLevel())->toString(), this, this->NEXT_GAME_LEVEL);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(CommonLabels::getInstance()->NEXT)->append(CommonSeps::getInstance()->SPACE)->append(this->NEW_LEVEL)->appendint(this->getCurrentLevel())), this, this->NEXT_GAME_LEVEL);
     
 }
 
@@ -233,11 +233,11 @@ this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->NEX
 
     ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();;
     
-hashtable->put(this->gameInfoData->GAME_TYPE, this->getGameType()->toString());
+hashtable->put(this->gameInfoData->GAME_TYPE, JavaString::valueOf(this->getGameType()));
     
-hashtable->put(this->gameInfoData->GAME_MODE, this->gameMode->toString());
+hashtable->put(this->gameInfoData->GAME_MODE, JavaString::valueOf(this->gameMode));
     
-hashtable->put(this->gameInfoData->PLAYER_TYPE, this->playerType->toString());
+hashtable->put(this->gameInfoData->PLAYER_TYPE, JavaString::valueOf(this->playerType));
     
 hashtable->put(this->gameInfoData->HIGHEST_LEVEL, std::to_string(this->getHighestLevel()));
     
@@ -265,7 +265,7 @@ stringBuffer->append(this->gameInfoData->GAME_TYPE);
     
 stringBuffer->append(commonSeps->EQUALS);
     
-stringBuffer->append(this->getGameType()->toString());
+stringBuffer->append(JavaString::valueOf(this->getGameType()));
     
 stringBuffer->append(commonSeps->COMMA_SEP);
     
@@ -273,7 +273,7 @@ stringBuffer->append(this->gameInfoData->GAME_MODE);
     
 stringBuffer->append(commonSeps->EQUALS);
     
-stringBuffer->append(this->gameMode->toString());
+stringBuffer->append(JavaString::valueOf(this->gameMode));
     
 stringBuffer->append(commonSeps->COMMA_SEP);
     
@@ -305,7 +305,7 @@ stringBuffer->appendint(this->currentLevel);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

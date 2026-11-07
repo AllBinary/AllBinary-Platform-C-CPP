@@ -200,15 +200,15 @@ this->genericOperatingSystem= SolarisOperatingSystemFactory::getInstance()->getO
                             
 
 
-                            throw Exception((new StringMaker())->append("OS Not Supported: ")->append(osName)->toString());
+                            throw Exception(JavaString::valueOf((new StringMaker())->append("OS Not Supported: ")->append(osName)));
                     
 
                         }
                             
 
-    Log* log = LogFactory::getInstanceF((new StringMaker())->append("OperatingSystem Info: ")->append(StringUtil::getInstance()->toString(this->genericOperatingSystem))->toString(), this, this->commonStrings->GET_INSTANCE);;
+    Log* log = LogFactory::getInstanceF(JavaString::valueOf((new StringMaker())->append("OperatingSystem Info: ")->append(StringUtil::getInstance()->toString(this->genericOperatingSystem))), this, this->commonStrings->GET_INSTANCE);;
     
-System.out.println(log->toString());
+System.out.println(JavaString::valueOf(log));
     
 this->logUtil->putL(log);
     

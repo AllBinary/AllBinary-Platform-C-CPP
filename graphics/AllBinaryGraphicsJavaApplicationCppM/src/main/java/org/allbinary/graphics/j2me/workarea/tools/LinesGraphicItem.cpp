@@ -361,9 +361,9 @@ this->addPoint(point);
     auto LinesGraphicItem::addPoint(GPoint* point) -> void{
 this->points->getPoints()->add(point);
     
-this->logUtil->putF(point->toString(), this, "addPoint");
+this->logUtil->putF(JavaString::valueOf(point), this, "addPoint");
     
-this->pointTreeNodeVector->add(new DefaultMutableTreeNode(point->toString()));
+this->pointTreeNodeVector->add(new DefaultMutableTreeNode(JavaString::valueOf(point)));
     
 this->treeNode->add(dynamic_cast<DefaultMutableTreeNode*>(this->pointTreeNodeVector->get(this->pointTreeNodeVector->size() -1)));
     
@@ -462,7 +462,7 @@ this->active= true;
                                     {
                                     this->points->getPoints()->add(PointFactory::getInstance()->createXY(point->getX(), point->getY()));
     
-this->pointTreeNodeVector->add(new DefaultMutableTreeNode(point->toString()));
+this->pointTreeNodeVector->add(new DefaultMutableTreeNode(JavaString::valueOf(point)));
     
 this->treeNode->add(dynamic_cast<DefaultMutableTreeNode*>(this->pointTreeNodeVector->get(this->pointTreeNodeVector->size() -1)));
     
@@ -667,7 +667,7 @@ this->color= color;
                                     
     GPoint* point = PointFactory::getInstance()->createXY(mousePoint->getX() /x, mousePoint->getY() /y);;
     
-StatusFactory::getInstance()->setStatus(JavaString::valueOf("Line Point Added: ") +JavaString::valueOf(point->toString()));
+StatusFactory::getInstance()->setStatus(JavaString::valueOf("Line Point Added: ") +JavaString::valueOf(JavaString::valueOf(point)));
     
 this->addPoint(point);
     

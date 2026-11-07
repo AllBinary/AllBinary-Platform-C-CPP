@@ -237,7 +237,7 @@ auto PathFinderGraphHackVisitor<V, E>::fixOverPassEdges(SimpleWeightedGraph<Cell
 
 
                         for (
-    int32_t index = CellPositionArray::size() -1;index >= 0; index--)
+    int32_t index = CellPositionArray.size() -1;index >= 0; index--)
         {
 
     CellPosition* overPassGeographicMapCellPosition = CellPositionArray[index];;
@@ -328,7 +328,7 @@ auto PathFinderGraphHackVisitor<V, E>::removeOverPassEdges(BasicArrayList* pathL
 
 
                         for (
-    int32_t index = CellPositionArray::size() -1;index >= 0; index--)
+    int32_t index = CellPositionArray.size() -1;index >= 0; index--)
         {
 
     CellPosition* overPassGeographicMapCellPosition = CellPositionArray[index];;

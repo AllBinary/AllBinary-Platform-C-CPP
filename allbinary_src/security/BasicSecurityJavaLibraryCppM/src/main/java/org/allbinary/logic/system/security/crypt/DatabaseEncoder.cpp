@@ -126,7 +126,7 @@ stringBuffer->append(JavaString::valueOf((static_cast<int8_t>(array[index]))));
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 
                 //: 

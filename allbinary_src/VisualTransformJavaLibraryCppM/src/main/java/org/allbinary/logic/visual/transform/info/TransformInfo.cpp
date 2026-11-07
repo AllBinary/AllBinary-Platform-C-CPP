@@ -276,9 +276,9 @@ stringBuffer->append(this->getName());
     
 stringBuffer->append("\n properties: ");
     
-stringBuffer->append(hashMap->toString());
+stringBuffer->append(JavaString::valueOf(hashMap));
     
-this->logUtil->putF(stringBuffer->toString(), this, "override(HashMap hashMap)");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "override(HashMap hashMap)");
     
 
                                     }
@@ -319,7 +319,7 @@ stringBuffer->append(this->storeName);
 stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
     
 
-    AbPath* fileAbPath = new AbPath(stringBuffer->toString(), StringUtil::getInstance()->EMPTY_STRING);;
+    AbPath* fileAbPath = new AbPath(JavaString::valueOf(stringBuffer), StringUtil::getInstance()->EMPTY_STRING);;
     
 
     std::string aObject = JavaBoxes::unbox<std::string>(hashMap->get(transformInfoData->OBJECT));;
@@ -338,7 +338,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
                                     }
                                 
 
-    std::string fileDataString = (new CryptFileReader(TransformInfoObjectData::getInstance()->UNCRYPTED_EXTENSION, TransformInfoObjectData::getInstance()->ENCRYPTED_EXTENSION))->get(new AbPath(fileAbPath->toString(), aObject));;
+    std::string fileDataString = (new CryptFileReader(TransformInfoObjectData::getInstance()->UNCRYPTED_EXTENSION, TransformInfoObjectData::getInstance()->ENCRYPTED_EXTENSION))->get(new AbPath(JavaString::valueOf(fileAbPath), aObject));;
     
 
                         if(true)
@@ -443,7 +443,7 @@ this->getObjectConfigInterface()->setOutputTypeName(type);
                                     }
                                 
 
-    std::string fileDataString = (new CryptFileReader(TransformInfoTemplateData::getInstance()->UNCRYPTED_EXTENSION, TransformInfoTemplateData::getInstance()->ENCRYPTED_EXTENSION))->get(new AbPath(fileAbPath->toString(), aTemplate));;
+    std::string fileDataString = (new CryptFileReader(TransformInfoTemplateData::getInstance()->UNCRYPTED_EXTENSION, TransformInfoTemplateData::getInstance()->ENCRYPTED_EXTENSION))->get(new AbPath(JavaString::valueOf(fileAbPath), aTemplate));;
     
 
                         if(!stringValidationUtil->isEmpty(fileDataString))
@@ -486,7 +486,7 @@ this->getObjectConfigInterface()->setOutputTypeName(type);
                                     }
                                 
 
-    std::string fileDataString = (new CryptFileReader(TransformInfoDataData::getInstance()->UNCRYPTED_EXTENSION, TransformInfoDataData::getInstance()->ENCRYPTED_EXTENSION))->get(new AbPath(fileAbPath->toString(), aData));;
+    std::string fileDataString = (new CryptFileReader(TransformInfoDataData::getInstance()->UNCRYPTED_EXTENSION, TransformInfoDataData::getInstance()->ENCRYPTED_EXTENSION))->get(new AbPath(JavaString::valueOf(fileAbPath), aData));;
     
 
                         if(!stringValidationUtil->isEmpty(fileDataString))
@@ -516,7 +516,7 @@ stringBuffer->append(aObject);
     
 stringBuffer->append("\nTemp Object Config File: ");
     
-stringBuffer->append(this->getObjectConfigFilePath()->toString());
+stringBuffer->append(JavaString::valueOf(this->getObjectConfigFilePath()));
     
 stringBuffer->append("\nTemp Template File: ");
     
@@ -536,7 +536,7 @@ stringBuffer->append(this->getObjectFile());
     
 stringBuffer->append("->TransformInfo");
     
-this->logUtil->putF(stringBuffer->toString(), this, "TransformInfoInterface(HashMap)");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "TransformInfoInterface(HashMap)");
     
 
                                     }
@@ -595,7 +595,7 @@ stringBuffer->append("TransformInfoInterface(HashMap)");
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 
@@ -897,7 +897,7 @@ stringBuffer->append(this->getDataFilePath()->toFileSystemString());
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->putF(stringBuffer->toString(), this, "getData()");
+                                    this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "getData()");
     
 
                                     }

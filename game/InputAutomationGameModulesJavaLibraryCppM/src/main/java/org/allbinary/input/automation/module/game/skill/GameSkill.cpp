@@ -86,7 +86,7 @@ this->setTime(time);
     
 this->vector= new BasicArrayListD();
     
-GameSkill::hashMap->put((new StringMaker())->append(this->getGameSkillType()->getName())->append(CommonSeps::getInstance()->SPACE)->append(extra)->toString(), this);
+GameSkill::hashMap->put(JavaString::valueOf((new StringMaker())->append(this->getGameSkillType()->getName())->append(CommonSeps::getInstance()->SPACE)->append(extra)), this);
     
 }
 
@@ -170,7 +170,7 @@ this->vector->add(gameSkillPropertyInterface);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return dynamic_cast<GameSkill*>(GameSkill::hashMap->get((new StringMaker())->append(gameSkillType->getName())->append(CommonSeps::getInstance()->SPACE)->append(extra)->toString()));
+                        return dynamic_cast<GameSkill*>(GameSkill::hashMap->get(JavaString::valueOf((new StringMaker())->append(gameSkillType->getName())->append(CommonSeps::getInstance()->SPACE)->append(extra))));
     
 }
 
@@ -184,7 +184,7 @@ this->vector->add(gameSkillPropertyInterface);
     
 stringBuffer->append(this->GAME_SKILL_LABEL);
     
-stringBuffer->append(this->getGameSkillType()->toString());
+stringBuffer->append(JavaString::valueOf(this->getGameSkillType()));
     
 stringBuffer->append(commonSeps->SPACE);
     
@@ -204,7 +204,7 @@ stringBuffer->appendlong(this->getTime());
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

@@ -171,7 +171,7 @@ played= true;
 
                                     }
                                 
-PreLogUtil::put((new StringMaker())->append(this->commonStrings->EXCEPTION_LABEL)->append(resource)->toString(), this, this->commonStrings->PROCESS);
+PreLogUtil::put(JavaString::valueOf((new StringMaker())->append(this->commonStrings->EXCEPTION_LABEL)->append(resource)), this, this->commonStrings->PROCESS);
     
 
 
@@ -199,7 +199,7 @@ this->list->clear();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return (new StringMaker())->append(PlayerQueue::TOTAL)->appendint(this->list->size())->toString();;
+                        return JavaString::valueOf((new StringMaker())->append(PlayerQueue::TOTAL)->appendint(this->list->size()));;
     
 }
 

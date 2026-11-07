@@ -160,7 +160,7 @@ stringBuffer->append(entryData->ID)->append(this->sqlTypeStrings->MAX_BIG_INT_UN
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

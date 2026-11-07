@@ -166,26 +166,26 @@ filePathStringBuffer->append(ComparisonImageInputOutput::ROOT_NAME);
 
     StringMaker* filePathStringBuffer1 = new StringMaker();;
     
-filePathStringBuffer1->append(filePathStringBuffer->toString());
+filePathStringBuffer1->append(JavaString::valueOf(filePathStringBuffer));
     
 filePathStringBuffer1->append("_1");
     
 filePathStringBuffer1->append(MediaDataFactory::getInstance()->JPG->getExtension());
     
 
-    std::string filePath1 = filePathStringBuffer1->toString();;
+    std::string filePath1 = JavaString::valueOf(filePathStringBuffer1);;
     
 
     StringMaker* filePathStringBuffer2 = new StringMaker();;
     
-filePathStringBuffer2->append(filePathStringBuffer->toString());
+filePathStringBuffer2->append(JavaString::valueOf(filePathStringBuffer));
     
 filePathStringBuffer2->append("_2");
     
 filePathStringBuffer2->append(MediaDataFactory::getInstance()->JPG->getExtension());
     
 
-    std::string filePath2 = filePathStringBuffer2->toString();;
+    std::string filePath2 = JavaString::valueOf(filePathStringBuffer2);;
     
 
     std::vector<BufferedImageCacheable*> bufferedImageCacheables = ChangedPixelsUtil::generateBufferedImageChacheables(imageComparisonResult);;

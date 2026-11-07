@@ -213,7 +213,7 @@ this->setPassword((new WeakCrypt(2))->decrypt(decryptedPassword));
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRELOADER))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf("Not a File - Failed Loading: ") +JavaString::valueOf(FILEABPATH->toString()), this, "read");
+                                    this->logUtil->putF(JavaString::valueOf("Not a File - Failed Loading: ") +JavaString::valueOf(JavaString::valueOf(FILEABPATH)), this, "read");
     
 
                                     }

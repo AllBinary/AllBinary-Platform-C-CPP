@@ -147,7 +147,7 @@ stringBuffer->append("shipping");
     
 stringBuffer->append(sep);
     
-SHIPPINGMETHODSFILEPATHSTRING= stringBuffer->toString();
+SHIPPINGMETHODSFILEPATHSTRING= JavaString::valueOf(stringBuffer);
     
 
 
@@ -172,7 +172,7 @@ stringBuffer->append(sep);
 stringBuffer->append(ShippingMethodsFactory::SHIPPINGMETHODSFILEPATHSTRING);
     
 
-    AbPath* abPath = dynamic_cast<AbPath*>(new AbPath(stringBuffer->toString(), this->SHIPPINGMETHODSFILENAME));;
+    AbPath* abPath = dynamic_cast<AbPath*>(new AbPath(JavaString::valueOf(stringBuffer), this->SHIPPINGMETHODSFILENAME));;
     
 
     std::string data = (new CryptFileReader(TransformInfoObjectConfigData::getInstance()->UNCRYPTED_EXTENSION, TransformInfoObjectConfigData::getInstance()->ENCRYPTED_EXTENSION))->get(abPath);;

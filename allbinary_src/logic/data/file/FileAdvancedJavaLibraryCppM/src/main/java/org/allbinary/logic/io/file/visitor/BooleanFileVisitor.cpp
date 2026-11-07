@@ -76,7 +76,7 @@
 BooleanFileVisitor::BooleanFileVisitor(BasicArrayList* filterStringBasicArrayList) : commonStrings(CommonStrings::getInstance()){
 this->setFilterStringBasicArrayList(filterStringBasicArrayList);
     
-PreLogUtil::put(JavaString::valueOf("Filter BasicArrayList: ") +JavaString::valueOf(this->getFilterStringBasicArrayList()->toString()), this, this->commonStrings->CONSTRUCTOR);
+PreLogUtil::put(JavaString::valueOf("Filter BasicArrayList: ") +JavaString::valueOf(JavaString::valueOf(this->getFilterStringBasicArrayList())), this, this->commonStrings->CONSTRUCTOR);
     
 }
 

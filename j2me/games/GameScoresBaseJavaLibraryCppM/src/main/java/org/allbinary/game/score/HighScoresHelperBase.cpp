@@ -84,7 +84,7 @@ HighScoresHelperBase::HighScoresHelperBase() : logUtil(LogUtil::getInstance()), 
                                     
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil->putF((new StringMaker())->append(commonStrings->START)->appendint(highScoresArrayP.size())->toString(), this, "setHighScoresArray");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(commonStrings->START)->appendint(highScoresArrayP.size())), this, "setHighScoresArray");
     
 
                                     }

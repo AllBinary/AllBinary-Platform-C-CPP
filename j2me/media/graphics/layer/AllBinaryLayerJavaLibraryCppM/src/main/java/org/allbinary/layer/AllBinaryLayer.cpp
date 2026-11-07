@@ -129,7 +129,7 @@ AllBinaryLayer::AllBinaryLayer(std::string name, Rectangle* rectangle, ViewPosit
                                     }
                                 
                         else {
-                            localName= (new StringMaker())->append(name)->append(CommonSeps::getInstance()->COLON)->append(Integer.toHexString(TsUtil::getInstance()->hashCode(this)))->toString();
+                            localName= JavaString::valueOf((new StringMaker())->append(name)->append(CommonSeps::getInstance()->COLON)->append(Integer.toHexString(TsUtil::getInstance()->hashCode(this))));
     
 
                         }
@@ -531,7 +531,7 @@ this->toStringAppend(stringBuffer);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

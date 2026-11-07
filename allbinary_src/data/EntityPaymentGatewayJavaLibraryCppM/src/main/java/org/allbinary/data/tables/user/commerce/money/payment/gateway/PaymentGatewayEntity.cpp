@@ -263,9 +263,9 @@ paymentGatewayInterface->setLastModified(time);
 
     HashMap<Object*, Object*>* whereKeyValuePairs = StdUtil::getInstance()->createHashMap();;
     
-whereKeyValuePairs->put(StoreFrontData::getInstance()->NAME->toString(), paymentGatewayInterface->getStoreName());
+whereKeyValuePairs->put(JavaString::valueOf(StoreFrontData::getInstance()->NAME), paymentGatewayInterface->getStoreName());
     
-whereKeyValuePairs->put(PaymentGatewayData::NAME->toString(), paymentGatewayInterface->getName());
+whereKeyValuePairs->put(JavaString::valueOf(PaymentGatewayData::NAME), paymentGatewayInterface->getName());
     
 
                         if(whereKeyValuePairs->get(EntryData::getInstance()->TIMECREATED) != 
@@ -322,9 +322,9 @@ AbSqlBean::updateWhere(whereKeyValuePairs, updateHashMap);
 
     HashMap<Object*, Object*>* whereKeyAndValue = StdUtil::getInstance()->createHashMap();;
     
-whereKeyAndValue->put(StoreFrontData::getInstance()->NAME->toString(), storeName);
+whereKeyAndValue->put(JavaString::valueOf(StoreFrontData::getInstance()->NAME), storeName);
     
-whereKeyAndValue->put(PaymentGatewayData::NAME->toString(), paymentType->getName());
+whereKeyAndValue->put(JavaString::valueOf(PaymentGatewayData::NAME), paymentType->getName());
     
 paymentGatewayHashMap= AbSqlBean::getRow(whereKeyAndValue);
     
@@ -335,62 +335,62 @@ paymentGatewayHashMap= AbSqlBean::getRow(whereKeyAndValue);
                         
                                     {
                                     
-    std::string userName = JavaBoxes::unbox<std::string>(paymentGatewayHashMap->get(UserData::USERNAME->toString()));;
+    std::string userName = JavaBoxes::unbox<std::string>(paymentGatewayHashMap->get(JavaString::valueOf(UserData::USERNAME)));;
     
 
-    std::string password = JavaBoxes::unbox<std::string>(paymentGatewayHashMap->get(UserData::PASSWORD->toString()));;
+    std::string password = JavaBoxes::unbox<std::string>(paymentGatewayHashMap->get(JavaString::valueOf(UserData::PASSWORD)));;
     
 
-    std::string special1 = JavaBoxes::unbox<std::string>(paymentGatewayHashMap->get(PaymentGatewayData::SPECIAL1->toString()));;
+    std::string special1 = JavaBoxes::unbox<std::string>(paymentGatewayHashMap->get(JavaString::valueOf(PaymentGatewayData::SPECIAL1)));;
     
 
-    std::string special2 = JavaBoxes::unbox<std::string>(paymentGatewayHashMap->get(PaymentGatewayData::SPECIAL2->toString()));;
+    std::string special2 = JavaBoxes::unbox<std::string>(paymentGatewayHashMap->get(JavaString::valueOf(PaymentGatewayData::SPECIAL2)));;
     
 
-    std::string special3 = JavaBoxes::unbox<std::string>(paymentGatewayHashMap->get(PaymentGatewayData::SPECIAL3->toString()));;
+    std::string special3 = JavaBoxes::unbox<std::string>(paymentGatewayHashMap->get(JavaString::valueOf(PaymentGatewayData::SPECIAL3)));;
     
 
-    std::string special4 = JavaBoxes::unbox<std::string>(paymentGatewayHashMap->get(PaymentGatewayData::SPECIAL4->toString()));;
+    std::string special4 = JavaBoxes::unbox<std::string>(paymentGatewayHashMap->get(JavaString::valueOf(PaymentGatewayData::SPECIAL4)));;
     
 
-    std::string special5 = JavaBoxes::unbox<std::string>(paymentGatewayHashMap->get(PaymentGatewayData::SPECIAL5->toString()));;
+    std::string special5 = JavaBoxes::unbox<std::string>(paymentGatewayHashMap->get(JavaString::valueOf(PaymentGatewayData::SPECIAL5)));;
     
 
-    std::string special6 = JavaBoxes::unbox<std::string>(paymentGatewayHashMap->get(PaymentGatewayData::SPECIAL6->toString()));;
+    std::string special6 = JavaBoxes::unbox<std::string>(paymentGatewayHashMap->get(JavaString::valueOf(PaymentGatewayData::SPECIAL6)));;
     
 
-    std::string special7 = JavaBoxes::unbox<std::string>(paymentGatewayHashMap->get(PaymentGatewayData::SPECIAL7->toString()));;
+    std::string special7 = JavaBoxes::unbox<std::string>(paymentGatewayHashMap->get(JavaString::valueOf(PaymentGatewayData::SPECIAL7)));;
     
 
-    std::string special8 = JavaBoxes::unbox<std::string>(paymentGatewayHashMap->get(PaymentGatewayData::SPECIAL8->toString()));;
+    std::string special8 = JavaBoxes::unbox<std::string>(paymentGatewayHashMap->get(JavaString::valueOf(PaymentGatewayData::SPECIAL8)));;
     
 
-    std::string special9 = JavaBoxes::unbox<std::string>(paymentGatewayHashMap->get(PaymentGatewayData::SPECIAL9->toString()));;
+    std::string special9 = JavaBoxes::unbox<std::string>(paymentGatewayHashMap->get(JavaString::valueOf(PaymentGatewayData::SPECIAL9)));;
     
 
     SuperCrypt* superCrypt = new SuperCrypt(PaymentGatewayData::CRYPTNUM);;
     
-paymentGatewayHashMap->put(UserData::USERNAME->toString(), superCrypt->decrypt(userName));
+paymentGatewayHashMap->put(JavaString::valueOf(UserData::USERNAME), superCrypt->decrypt(userName));
     
-paymentGatewayHashMap->put(UserData::PASSWORD->toString(), superCrypt->decrypt(password));
+paymentGatewayHashMap->put(JavaString::valueOf(UserData::PASSWORD), superCrypt->decrypt(password));
     
-paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL1->toString(), superCrypt->decrypt(special1));
+paymentGatewayHashMap->put(JavaString::valueOf(PaymentGatewayData::SPECIAL1), superCrypt->decrypt(special1));
     
-paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL2->toString(), superCrypt->decrypt(special2));
+paymentGatewayHashMap->put(JavaString::valueOf(PaymentGatewayData::SPECIAL2), superCrypt->decrypt(special2));
     
-paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL3->toString(), superCrypt->decrypt(special3));
+paymentGatewayHashMap->put(JavaString::valueOf(PaymentGatewayData::SPECIAL3), superCrypt->decrypt(special3));
     
-paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL4->toString(), superCrypt->decrypt(special4));
+paymentGatewayHashMap->put(JavaString::valueOf(PaymentGatewayData::SPECIAL4), superCrypt->decrypt(special4));
     
-paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL5->toString(), superCrypt->decrypt(special5));
+paymentGatewayHashMap->put(JavaString::valueOf(PaymentGatewayData::SPECIAL5), superCrypt->decrypt(special5));
     
-paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL6->toString(), superCrypt->decrypt(special6));
+paymentGatewayHashMap->put(JavaString::valueOf(PaymentGatewayData::SPECIAL6), superCrypt->decrypt(special6));
     
-paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL7->toString(), superCrypt->decrypt(special7));
+paymentGatewayHashMap->put(JavaString::valueOf(PaymentGatewayData::SPECIAL7), superCrypt->decrypt(special7));
     
-paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL8->toString(), superCrypt->decrypt(special8));
+paymentGatewayHashMap->put(JavaString::valueOf(PaymentGatewayData::SPECIAL8), superCrypt->decrypt(special8));
     
-paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL9->toString(), superCrypt->decrypt(special9));
+paymentGatewayHashMap->put(JavaString::valueOf(PaymentGatewayData::SPECIAL9), superCrypt->decrypt(special9));
     
 
     PaymentGatewayInterface* paymentGatewayInterface = (new PaymentGatewayInterfaceFactory())->getInstance(paymentGatewayHashMap);;
@@ -459,7 +459,7 @@ paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL9->toString(), superCrypt-
             
     BasicArrayList* paymentGatewayNameVector = new BasicArrayListD();;
     
-paymentGatewayNameVector= AbSqlBean::getColumnWhere(PaymentGatewayData::NAME->toString(), StoreFrontData::getInstance()->NAME->toString(), storeName);
+paymentGatewayNameVector= AbSqlBean::getColumnWhere(JavaString::valueOf(PaymentGatewayData::NAME), JavaString::valueOf(StoreFrontData::getInstance()->NAME), storeName);
     
 
                         if(paymentGatewayNameVector != 
@@ -554,9 +554,9 @@ paymentGatewayVector->add(paymentType);
             
     HashMap<Object*, Object*>* whereHashMap = StdUtil::getInstance()->createHashMap();;
     
-whereHashMap->put(StoreFrontData::getInstance()->NAME->toString(), storeName);
+whereHashMap->put(JavaString::valueOf(StoreFrontData::getInstance()->NAME), storeName);
     
-whereHashMap->put(PaymentGatewayData::NAME->toString(), paymentType->getName());
+whereHashMap->put(JavaString::valueOf(PaymentGatewayData::NAME), paymentType->getName());
     
 AbSqlBean::deleteWhere(whereHashMap);
     
@@ -597,7 +597,7 @@ stringBuffer->append(this->tableName);
     
 stringBuffer->append(this->sqlStrings->START);
     
-stringBuffer->append(PaymentGatewayData::ID->toString());
+stringBuffer->append(JavaString::valueOf(PaymentGatewayData::ID));
     
 stringBuffer->append(this->sqlTypeStrings->MAX_BIG_INT_UNSIGNED_AUTO_INCREMENT_NOT_NULL);
     
@@ -609,7 +609,7 @@ stringBuffer->append(StoreFrontData::getInstance()->NAME);
     
 stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer->append(PaymentGatewayData::NAME->toString());
+stringBuffer->append(JavaString::valueOf(PaymentGatewayData::NAME));
     
 stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
@@ -617,39 +617,39 @@ stringBuffer->append(PaymentData::METHOD);
     
 stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer->append(PaymentGatewayData::MODE->toString());
+stringBuffer->append(JavaString::valueOf(PaymentGatewayData::MODE));
     
 stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer->append(PaymentGatewayData::TESTPROTOCOL->toString());
+stringBuffer->append(JavaString::valueOf(PaymentGatewayData::TESTPROTOCOL));
     
 stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer->append(PaymentGatewayData::TESTSERVER->toString());
+stringBuffer->append(JavaString::valueOf(PaymentGatewayData::TESTSERVER));
     
 stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer->append(PaymentGatewayData::TESTPORT->toString());
+stringBuffer->append(JavaString::valueOf(PaymentGatewayData::TESTPORT));
     
 stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer->append(PaymentGatewayData::TESTPATH->toString());
+stringBuffer->append(JavaString::valueOf(PaymentGatewayData::TESTPATH));
     
 stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer->append(PaymentGatewayData::SERVERPROTOCOL->toString());
+stringBuffer->append(JavaString::valueOf(PaymentGatewayData::SERVERPROTOCOL));
     
 stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer->append(PaymentGatewayData::SERVER->toString());
+stringBuffer->append(JavaString::valueOf(PaymentGatewayData::SERVER));
     
 stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer->append(PaymentGatewayData::SERVERPORT->toString());
+stringBuffer->append(JavaString::valueOf(PaymentGatewayData::SERVERPORT));
     
 stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer->append(PaymentGatewayData::SERVERPATH->toString());
+stringBuffer->append(JavaString::valueOf(PaymentGatewayData::SERVERPATH));
     
 stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
@@ -661,71 +661,71 @@ stringBuffer->append(UserData::PASSWORD);
     
 stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer->append(PaymentGatewayData::TIMEOUT->toString());
+stringBuffer->append(JavaString::valueOf(PaymentGatewayData::TIMEOUT));
     
 stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer->append(PaymentGatewayData::PROXYPROTOCOL->toString());
+stringBuffer->append(JavaString::valueOf(PaymentGatewayData::PROXYPROTOCOL));
     
 stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer->append(PaymentGatewayData::PROXYSERVER->toString());
+stringBuffer->append(JavaString::valueOf(PaymentGatewayData::PROXYSERVER));
     
 stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer->append(PaymentGatewayData::PROXYPORT->toString());
+stringBuffer->append(JavaString::valueOf(PaymentGatewayData::PROXYPORT));
     
 stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer->append(PaymentGatewayData::PROXYPATH->toString());
+stringBuffer->append(JavaString::valueOf(PaymentGatewayData::PROXYPATH));
     
 stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer->append(PaymentGatewayData::PROXYUSERNAME->toString());
+stringBuffer->append(JavaString::valueOf(PaymentGatewayData::PROXYUSERNAME));
     
 stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer->append(PaymentGatewayData::PROXYPASSWORD->toString());
+stringBuffer->append(JavaString::valueOf(PaymentGatewayData::PROXYPASSWORD));
     
 stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer->append(PaymentGatewayData::PROXYTIMEOUT->toString());
+stringBuffer->append(JavaString::valueOf(PaymentGatewayData::PROXYTIMEOUT));
     
 stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer->append(PaymentGatewayData::SPECIAL1->toString());
+stringBuffer->append(JavaString::valueOf(PaymentGatewayData::SPECIAL1));
     
 stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer->append(PaymentGatewayData::SPECIAL2->toString());
+stringBuffer->append(JavaString::valueOf(PaymentGatewayData::SPECIAL2));
     
 stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer->append(PaymentGatewayData::SPECIAL3->toString());
+stringBuffer->append(JavaString::valueOf(PaymentGatewayData::SPECIAL3));
     
 stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer->append(PaymentGatewayData::SPECIAL4->toString());
+stringBuffer->append(JavaString::valueOf(PaymentGatewayData::SPECIAL4));
     
 stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer->append(PaymentGatewayData::SPECIAL5->toString());
+stringBuffer->append(JavaString::valueOf(PaymentGatewayData::SPECIAL5));
     
 stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer->append(PaymentGatewayData::SPECIAL6->toString());
+stringBuffer->append(JavaString::valueOf(PaymentGatewayData::SPECIAL6));
     
 stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer->append(PaymentGatewayData::SPECIAL7->toString());
+stringBuffer->append(JavaString::valueOf(PaymentGatewayData::SPECIAL7));
     
 stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer->append(PaymentGatewayData::SPECIAL8->toString());
+stringBuffer->append(JavaString::valueOf(PaymentGatewayData::SPECIAL8));
     
 stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer->append(PaymentGatewayData::SPECIAL9->toString());
+stringBuffer->append(JavaString::valueOf(PaymentGatewayData::SPECIAL9));
     
 stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
@@ -739,7 +739,7 @@ stringBuffer->append(this->sqlTypeStrings->MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
 stringBuffer->append(this->sqlStrings->PRIMARY_KEY);
     
-stringBuffer->append(PaymentGatewayData::ID->toString());
+stringBuffer->append(JavaString::valueOf(PaymentGatewayData::ID));
     
 stringBuffer->append(this->sqlStrings->END);
     
@@ -749,7 +749,7 @@ stringBuffer->append(this->sqlStrings->END);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

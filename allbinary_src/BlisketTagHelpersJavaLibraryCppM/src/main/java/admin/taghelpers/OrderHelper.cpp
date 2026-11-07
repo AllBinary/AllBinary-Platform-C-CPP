@@ -169,7 +169,7 @@ this->weblisketSession= new WeblisketSession(this->propertiesHashMap, this->page
     OrderInterface* orderInterface = this->weblisketSession->getOrder();;
     
 
-    std::string requestPaymentGateway = JavaBoxes::unbox<std::string>(this->request->getParameter(PaymentGatewayData::NAME->toString()));;
+    std::string requestPaymentGateway = JavaBoxes::unbox<std::string>(this->request->getParameter(JavaString::valueOf(PaymentGatewayData::NAME)));;
     
 
                         if(!StringValidationUtil::getInstance()->isEmpty(requestPaymentGateway))
@@ -227,7 +227,7 @@ stringBuffer->append(" to: ");
     
 stringBuffer->append(orderInterface->getPaymentMethod());
     
-this->logUtil->putF(stringBuffer->toString(), this, "setPaymentGateway()");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "setPaymentGateway()");
     
 
                                     }
@@ -281,7 +281,7 @@ stringBuffer->append(" Exception Getting");
     
 }
 
-this->logUtil->put(stringBuffer->toString(), this, "setPaymentGateway()", &e);
+this->logUtil->put(JavaString::valueOf(stringBuffer), this, "setPaymentGateway()", &e);
     
 
                                     }
@@ -349,7 +349,7 @@ stringBuffer->append(" Exception Getting Id");
 }
 
 
-    std::string error = stringBuffer->toString();;
+    std::string error = JavaString::valueOf(stringBuffer);;
     
 
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGSERROR))

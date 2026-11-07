@@ -126,7 +126,7 @@ stringBuffer->append(this->NOTHING);
     
 stringBuffer->append(this->sqlStrings->END);
     
-this->tableData= stringBuffer->toString();
+this->tableData= JavaString::valueOf(stringBuffer);
     
 this->setTable(this->tableName);
     
@@ -357,7 +357,7 @@ stringBuffer->append(AbPathData::getInstance()->EXTENSION_SEP);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 
                         }

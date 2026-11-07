@@ -140,7 +140,7 @@ filePathStringBuffer->append(LongUtil::fillIn(JavaString::valueOf(this->frame)))
 filePathStringBuffer->append(".txt");
     
 
-    std::string filePath = filePathStringBuffer->toString();;
+    std::string filePath = JavaString::valueOf(filePathStringBuffer);;
     
 
     FileOutputStream* fileOutputStream = new FileOutputStream(new File(filePath));;

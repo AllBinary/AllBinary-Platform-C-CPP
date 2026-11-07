@@ -311,7 +311,7 @@ stringBuffer->append(JavaBoxes::unbox<std::string>(propertiesHashMap->get(Transf
     
 stringBuffer->append("->TransformFactory");
     
-this->logUtil->put(stringBuffer->toString(), this, this->commonStrings->GET_INSTANCE, &e);
+this->logUtil->put(JavaString::valueOf(stringBuffer), this, this->commonStrings->GET_INSTANCE, &e);
     
 
                                     }

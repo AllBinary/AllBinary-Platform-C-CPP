@@ -138,7 +138,7 @@ this->abContext= new AbContext(propertiesHashMap, pageContext);
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf("Properties HashMap: ") +JavaString::valueOf(propertiesHashMap->toString()), this, "Constructor(HashMap, PageContext, boolean)");
+                                    this->logUtil->putF(JavaString::valueOf("Properties HashMap: ") +JavaString::valueOf(JavaString::valueOf(propertiesHashMap)), this, "Constructor(HashMap, PageContext, boolean)");
     
 
                                     }
@@ -161,7 +161,7 @@ this->abContext= new AbContext(propertiesHashMap, pageContext);
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf("Properties HashMap: ") +JavaString::valueOf(propertiesHashMap->toString()), this, "Constructor(HttpServletRequest, HashMap, PageContext)");
+                                    this->logUtil->putF(JavaString::valueOf("Properties HashMap: ") +JavaString::valueOf(JavaString::valueOf(propertiesHashMap)), this, "Constructor(HttpServletRequest, HashMap, PageContext)");
     
 
                                     }
@@ -186,7 +186,7 @@ this->abContext= new AbContext(propertiesHashMap, pageContext);
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf("Properties HashMap: ") +JavaString::valueOf(propertiesHashMap->toString()), this, "Constructor(HashMap, HashMap, PageContext)");
+                                    this->logUtil->putF(JavaString::valueOf("Properties HashMap: ") +JavaString::valueOf(JavaString::valueOf(propertiesHashMap)), this, "Constructor(HashMap, HashMap, PageContext)");
     
 
                                     }
@@ -209,7 +209,7 @@ this->abContext= new AbContext(propertiesHashMap, pageContext);
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf("Properties HashMap: ") +JavaString::valueOf(propertiesHashMap->toString()), this, "Constructor(HashMap, PageContext)");
+                                    this->logUtil->putF(JavaString::valueOf("Properties HashMap: ") +JavaString::valueOf(JavaString::valueOf(propertiesHashMap)), this, "Constructor(HashMap, PageContext)");
     
 
                                     }
@@ -238,7 +238,7 @@ this->abContext= new AbContext(parentViewOfThisTransformInfoInterface->getProper
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf("Properties HashMap: ") +JavaString::valueOf(hashMap->toString()), this, "set()");
+                                    this->logUtil->putF(JavaString::valueOf("Properties HashMap: ") +JavaString::valueOf(JavaString::valueOf(hashMap)), this, "set()");
     
 
                                     }
@@ -270,7 +270,7 @@ this->setObject(JavaBoxes::unbox<std::string>(hashMap->get(transformInfoData->OB
                                     }
                                 
                         else {
-                            this->setObjectConfig((new TransformInfoObjectConfig(this))->toString());
+                            this->setObjectConfig(JavaString::valueOf((new TransformInfoObjectConfig(this))));
     
 
                         }

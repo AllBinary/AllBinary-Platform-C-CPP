@@ -64,7 +64,7 @@ this->name= name;
 
     auto TransactionType::isEqual(TransactionType* transactionType) -> bool{
 
-                        if(this->toString().compare(transactionType->toString()) == 0)
+                        if(this->toString().compare(JavaString::valueOf(transactionType)) == 0)
                         
 
 

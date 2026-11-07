@@ -192,7 +192,7 @@ TransformTag::TransformTag(TagHelperFactoryInterface* tagHelperFactoryInterface)
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf("Creating with: \n") +JavaString::valueOf(this->getPropertiesHashMap()->toString()), this, tagStrings.DO_START_TAG);
+                                    this->logUtil->putF(JavaString::valueOf("Creating with: \n") +JavaString::valueOf(JavaString::valueOf(this->getPropertiesHashMap())), this, tagStrings.DO_START_TAG);
     
 
                                     }
@@ -212,7 +212,7 @@ stringBuffer->append("\nViewFile: ");
     
 stringBuffer->append(this->getObjectFile());
     
-this->logUtil->putF(stringBuffer->toString(), this, tagStrings.DO_START_TAG);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, tagStrings.DO_START_TAG);
     
 
                                     }

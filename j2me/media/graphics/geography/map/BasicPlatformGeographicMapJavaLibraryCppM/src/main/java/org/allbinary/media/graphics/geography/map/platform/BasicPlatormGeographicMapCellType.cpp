@@ -76,7 +76,7 @@
 
     BasicArrayList* types = new BasicArrayListS(1);;
     
-types->add(SmallIntegerSingletonFactory::getInstance()->getAt(type));
+types.add(SmallIntegerSingletonFactory::getInstance()->getAt(type));
     
 
     BasicPlatormGeographicMapCellType* basicPlatormGeographicMapCellType = new BasicPlatormGeographicMapCellType(types);;
@@ -94,7 +94,7 @@ types->add(SmallIntegerSingletonFactory::getInstance()->getAt(type));
 
 BasicPlatormGeographicMapCellType::BasicPlatormGeographicMapCellType(BasicArrayList* types){
 
-    int32_t size = types->size();;
+    int32_t size = types.size();;
     
 
     std::vector<int32_t> typeArray = std::vector<int32_t>(size);;
@@ -112,7 +112,7 @@ BasicPlatormGeographicMapCellType::BasicPlatormGeographicMapCellType(BasicArrayL
                         for (
     int32_t index = 0;index < size; index++)
         {
-typeAsInteger= (JavaBoxes::unbox<int32_t>(types->get(index)));
+typeAsInteger= (JavaBoxes::unbox<int32_t>(types.get(index)));
     
 type= typeAsInteger;
     
@@ -141,7 +141,7 @@ this->types= typeArray;
 
     auto BasicPlatormGeographicMapCellType::hasType(int32_t type) -> bool{
 
-    int32_t size = types->size();;
+    int32_t size = types.size();;
     
 
 

@@ -125,7 +125,7 @@ stringBuffer->append(advancedRTSGameLayer->getParentLayer()->getName());
 
                                     }
                                 
-this->logUtil->putF(stringBuffer->toString(), this, "onWaypointEvent");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "onWaypointEvent");
     
 }
 
@@ -153,7 +153,7 @@ stringBuffer->append(advancedRTSGameLayer->getParentLayer()->getName());
 
                                     }
                                 
-this->logUtil->putF(stringBuffer->toString(), this, "selected: onWaypointEvent");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "selected: onWaypointEvent");
     
 }
 
@@ -168,7 +168,7 @@ stringBuffer->append(" Waypoints: ");
     
 stringBuffer->append(this->stringUtil->toString(list));
     
-this->logUtil->putF(stringBuffer->toString(), this, "selected: onWaypointEvent");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "selected: onWaypointEvent");
     
 }
 
@@ -189,7 +189,7 @@ stringBuffer->append(rtsLayer->getName());
     
 stringBuffer->append(" for Waypoint: ");
     
-this->logUtil->putF(stringBuffer->toString(), this, "selected: insertWaypoint");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "selected: insertWaypoint");
     
 }
 
@@ -212,7 +212,7 @@ stringBuffer->append(" Waypoints: ");
     
 stringBuffer->append(this->stringUtil->toString(list));
     
-this->logUtil->putF(stringBuffer->toString(), this, "selected: insertWaypoint");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "selected: insertWaypoint");
     
 }
 
@@ -236,25 +236,25 @@ stringBuffer->append(" -> ");
     
 stringBuffer->append(this->stringUtil->toString(pathsList));
     
-this->logUtil->putF(stringBuffer->toString(), this, "selected: setRandomGeographicMapCellHistory");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "selected: setRandomGeographicMapCellHistory");
     
 }
 
 
     auto WaypointSelectedLogHelper::moveAwayFromBuilding(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
-this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" Trying to move away from building")->toString(), this, "selected: moveAwayFromBuilding");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" Trying to move away from building")), this, "selected: moveAwayFromBuilding");
     
 }
 
 
     auto WaypointSelectedLogHelper::needToMove(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* unitWaypointBehavior) -> void{
-this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(unitWaypointBehavior->getMovementLogicAsString())->toString(), this, "needToMove");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(unitWaypointBehavior->getMovementLogicAsString())), this, "needToMove");
     
 }
 
 
     auto WaypointSelectedLogHelper::setRandomGeographicMapCellHistory(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
-this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" pathsList is null")->toString(), this, "setRandomGeographicMapCellHistory");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" pathsList is null")), this, "setRandomGeographicMapCellHistory");
     
 }
 
@@ -264,7 +264,7 @@ this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->
                         if(existingCurrentPathGeographicMapCellPosition == 
                                     nullptr
                                 )
-                        this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" currentPathGeographicMapCellPosition: ")->append(this->stringUtil->toString(currentPathGeographicMapCellPosition))->toString(), this, "setCurrentPathGeographicMapCellPosition");
+                        this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" currentPathGeographicMapCellPosition: ")->append(this->stringUtil->toString(currentPathGeographicMapCellPosition))), this, "setCurrentPathGeographicMapCellPosition");
                                 
 }
 
@@ -272,7 +272,7 @@ this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->
     auto WaypointSelectedLogHelper::setNextUnvisitedPathGeographicMapCellPosition(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, GeographicMapCellPosition* existingNextUnvisitedPathGeographicMapCellPosition, GeographicMapCellPosition* nextUnvisitedPathGeographicMapCellPosition) -> void{
 
                         if(existingNextUnvisitedPathGeographicMapCellPosition != nextUnvisitedPathGeographicMapCellPosition)
-                        this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" nextUnvisitedPathGeographicMapCellPosition: ")->append(this->stringUtil->toString(nextUnvisitedPathGeographicMapCellPosition))->toString(), this, "setNextUnvisitedPathGeographicMapCellPosition");
+                        this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" nextUnvisitedPathGeographicMapCellPosition: ")->append(this->stringUtil->toString(nextUnvisitedPathGeographicMapCellPosition))), this, "setNextUnvisitedPathGeographicMapCellPosition");
                                 
 }
 

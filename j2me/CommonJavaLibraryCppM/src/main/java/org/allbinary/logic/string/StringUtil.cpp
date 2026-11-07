@@ -183,7 +183,7 @@ StringUtil::StringUtil() : INIT_STRING(""), ONE_EMPTY_STRING_ARRAY(
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return anyType->toString();;
+                        return JavaString::valueOf(anyType);;
     
 
                                     }

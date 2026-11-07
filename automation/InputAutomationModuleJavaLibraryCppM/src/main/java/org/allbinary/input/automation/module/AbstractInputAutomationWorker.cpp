@@ -157,7 +157,7 @@ this->running= running;
                                     {
                                     this->captureThread= new Thread(this->getCaptureWorker());
     
-this->logUtil->putF(JavaString::valueOf("Starting CaptureWorkers - Need more images - Thread State: ") +JavaString::valueOf(this->captureThread->getState()->toString()), this, "startCaptureWorkers");
+this->logUtil->putF(JavaString::valueOf("Starting CaptureWorkers - Need more images - Thread State: ") +JavaString::valueOf(JavaString::valueOf(this->captureThread->getState())), this, "startCaptureWorkers");
     
 this->captureThread->start();
     

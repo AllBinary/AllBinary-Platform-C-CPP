@@ -197,7 +197,7 @@ this->title= stringUtil->EMPTY_STRING;
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF((new StringMaker())->append("Value: ")->append(this->value)->append("\nTitle: ")->append(this->title)->append("\nDescription: ")->append(this->description)->toString(), this, this->commonStrings->CONSTRUCTOR);
+                                    this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Value: ")->append(this->value)->append("\nTitle: ")->append(this->title)->append("\nDescription: ")->append(this->description)), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -229,7 +229,7 @@ this->cssPropertyVector= CssPropertiesValidationFactory::getInstance(nodeList);
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put((new StringMaker())->append("Value: ")->append(this->value)->append("\nTitle: ")->append(this->title)->append("\nDescription: ")->append(this->description)->toString(), this, this->commonStrings->CONSTRUCTOR, &e);
+                                    this->logUtil->put(JavaString::valueOf((new StringMaker())->append("Value: ")->append(this->value)->append("\nTitle: ")->append(this->title)->append("\nDescription: ")->append(this->description)), this, this->commonStrings->CONSTRUCTOR, &e);
     
 
                                     }
@@ -287,7 +287,7 @@ hashMap->put(this->DESCRIPTION, this->description);
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf("CssView HashMap: ") +JavaString::valueOf(hashMap->toString()), this, "toXmlNode");
+                                    this->logUtil->putF(JavaString::valueOf("CssView HashMap: ") +JavaString::valueOf(JavaString::valueOf(hashMap)), this, "toXmlNode");
     
 
                                     }

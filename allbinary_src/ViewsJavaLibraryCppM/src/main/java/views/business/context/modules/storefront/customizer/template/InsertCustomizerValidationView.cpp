@@ -227,7 +227,7 @@ stringBuffer->appendint(componentVector->size());
     
 stringBuffer->append(" Components");
     
-this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALID);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -321,7 +321,7 @@ newViewNameStringBuffer->append(GeneratorTransformInfoData::NAME);
                                     }
                                 
 
-    std::string newViewName = newViewNameStringBuffer->toString();;
+    std::string newViewName = JavaString::valueOf(newViewNameStringBuffer);;
     
 
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
@@ -338,7 +338,7 @@ stringBuffer->append("\n Now Pointing To View Name: ");
     
 stringBuffer->append(newViewName);
     
-this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALID);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -358,9 +358,9 @@ stringBuffer->append(transformInfoName);
     
 stringBuffer->append("\n with ObjectConfig: ");
     
-stringBuffer->append(templateViewObjectConfig->toString());
+stringBuffer->append(JavaString::valueOf(templateViewObjectConfig));
     
-this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALID);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -425,7 +425,7 @@ stringBuffer->append("Error: Template Name Is Empty.");
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 
                 //: 

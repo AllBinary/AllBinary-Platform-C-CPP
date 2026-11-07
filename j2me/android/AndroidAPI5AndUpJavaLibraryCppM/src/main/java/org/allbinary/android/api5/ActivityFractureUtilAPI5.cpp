@@ -107,7 +107,7 @@ touchScreenTypeFactory->update(activity);
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-PreLogUtil::put(touchScreenFactory->toString(), this, commonStrings->PROCESS);
+PreLogUtil::put(JavaString::valueOf(touchScreenFactory), this, commonStrings->PROCESS);
     
 }
 

@@ -114,7 +114,7 @@ UserRoleFactory::getInstance();
     UserRole* userRole = dynamic_cast<UserRole*>(roleVector->get(index));;
     
 
-                        if(role.compare(userRole->toString()) == 0)
+                        if(role.compare(JavaString::valueOf(userRole)) == 0)
                         
                                     {
                                     

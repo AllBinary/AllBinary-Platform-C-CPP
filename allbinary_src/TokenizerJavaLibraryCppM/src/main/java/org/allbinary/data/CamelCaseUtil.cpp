@@ -149,7 +149,7 @@ word= stringValidationUtil->isEmpty(word)
                                 word
                                 :
 
-                            (new StringMaker())->appendchar(Character::toUpperCase(word[0]))->append(JavaString::toLowerCase(JavaString::substring(word, 1)))->toString();;
+                            JavaString::valueOf((new StringMaker())->appendchar(Character::toUpperCase(word[0]))->append(JavaString::toLowerCase(JavaString::substring(word, 1))));;
     
 stringBuilder->append(word);
     
@@ -161,7 +161,7 @@ stringBuilder->append(word);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuilder->toString();;
+                        return JavaString::valueOf(stringBuilder);;
     
 }
 

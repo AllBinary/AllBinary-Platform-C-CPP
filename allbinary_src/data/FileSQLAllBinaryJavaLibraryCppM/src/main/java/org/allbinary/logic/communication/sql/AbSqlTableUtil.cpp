@@ -281,7 +281,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
 stringBuffer->append(time);
     
 
-    AbPath* backupAbPath = new AbPath(stringBuffer->toString());;
+    AbPath* backupAbPath = new AbPath(JavaString::valueOf(stringBuffer));;
     
 
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
@@ -297,7 +297,7 @@ stringBuffer->append(this->FILE_LABEL);
     
 stringBuffer->append(fileName);
     
-this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_BACKUP_FILE);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->METHOD_BACKUP_FILE);
     
 
                                     }
@@ -400,7 +400,7 @@ lastIndex= index +1;
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 
@@ -447,7 +447,7 @@ lastIndex= index +1;
     int32_t colNum = rsmd->getColumnCount();;
     
 
-    std::string QUERY_START = (new StringBuilder())->append(this->sqlStrings->INSERT_INTO)->append(tableName)->append(this->sqlStrings->VALUES)->toString();;
+    std::string QUERY_START = JavaString::valueOf((new StringBuilder())->append(this->sqlStrings->INSERT_INTO)->append(tableName)->append(this->sqlStrings->VALUES));;
     
 
     StringMaker* stringBuffer = new StringMaker();;
@@ -483,7 +483,7 @@ stringBuffer->append(rset->getString(colNum));
 stringBuffer->append(this->END);
     
 
-    std::string sqlStatementLine = stringBuffer->toString();;
+    std::string sqlStatementLine = JavaString::valueOf(stringBuffer);;
     
 
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
@@ -616,7 +616,7 @@ stringBuffer->append(end);
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_RESTORE_TABLE);
+                                    this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->METHOD_RESTORE_TABLE);
     
 
                                     }
@@ -656,7 +656,7 @@ stringBuffer->append(this->PORTION_RESTORED);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 
                 //: 
@@ -686,7 +686,7 @@ stringBuffer->append(" Restoration Failed");
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

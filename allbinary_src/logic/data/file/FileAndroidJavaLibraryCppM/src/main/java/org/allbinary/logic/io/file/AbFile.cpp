@@ -587,7 +587,7 @@ this->file->deleteOnExit();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->file->toString();;
+                        return JavaString::valueOf(this->file);;
     
 }
 

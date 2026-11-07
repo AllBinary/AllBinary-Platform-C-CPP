@@ -318,7 +318,7 @@ XmlOptionItemsEntityFactory::getInstance()->getXmlOptionItemsEntityInstance()->u
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil->putF((new StringMaker())->append(this->id)->append(CommonSeps::getInstance()->SPACE)->append(success)->toString(), this, "update()");
+                                    this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->id)->append(CommonSeps::getInstance()->SPACE)->append(success)), this, "update()");
     
 
                                     }

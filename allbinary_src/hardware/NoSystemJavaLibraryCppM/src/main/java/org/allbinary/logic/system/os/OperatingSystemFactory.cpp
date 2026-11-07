@@ -97,7 +97,7 @@ OperatingSystemFactory::OperatingSystemFactory() : logUtil(LogUtil::getInstance(
 
         try {
             
-    std::string osString = (new StringMaker())->append("OperatingSystem Info: ")->append(this->genericOperatingSystem->toString())->toString();;
+    std::string osString = JavaString::valueOf((new StringMaker())->append("OperatingSystem Info: ")->append(JavaString::valueOf(this->genericOperatingSystem)));;
     
 System.out.println(osString);
     

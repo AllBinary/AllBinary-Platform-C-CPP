@@ -205,25 +205,25 @@ shippingMethodNode->appendChild(shippingView->toXmlNode(document));
 
     Money* total = new Money();;
     
-total->add(shippingCost->toString());
+total->add(JavaString::valueOf(shippingCost));
     
-total->add(subTotal->toString());
+total->add(JavaString::valueOf(subTotal));
     
-tax->add(total->toString());
+tax->add(JavaString::valueOf(total));
     
 tax->multiply(taxRate);
     
-total->add(tax->toString());
+total->add(JavaString::valueOf(tax));
     
-shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodsData::SHIPPINGCOST, shippingCost->toString()));
+shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodsData::SHIPPINGCOST, JavaString::valueOf(shippingCost)));
     
 shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodsData::TAXRATE, JavaString::valueOf(taxRate)));
     
-shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodsData::SUBTOTAL, subTotal->toString()));
+shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodsData::SUBTOTAL, JavaString::valueOf(subTotal)));
     
-shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodsData::TAX, tax->toString()));
+shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodsData::TAX, JavaString::valueOf(tax)));
     
-shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodsData::TOTAL, total->toString()));
+shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodsData::TOTAL, JavaString::valueOf(total)));
     
 shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, EntryData::getInstance()->DEFAULT, this->shippingMethods->getDefault()->getName()));
     

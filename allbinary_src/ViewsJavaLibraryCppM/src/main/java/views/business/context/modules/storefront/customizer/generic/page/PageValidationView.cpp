@@ -229,7 +229,7 @@ stringBuffer->append(" is modifying view: ");
     
 stringBuffer->append(viewNameOfViewToBeModified);
     
-this->logUtil->putF(stringBuffer->toString(), this, "insert()");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "insert()");
     
 
                                     }
@@ -253,7 +253,7 @@ stringBuffer->append(" is adding data to view: ");
     
 stringBuffer->append(viewNameOfViewToBeModified);
     
-this->logUtil->putF(stringBuffer->toString(), this, "insert()");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "insert()");
     
 
                                     }
@@ -314,13 +314,13 @@ stringBuffer->append(viewNameOfViewToBeModified);
     
 stringBuffer->append(" is changing data in ");
     
-stringBuffer->append(specifiedTransformInfoInterface->getDataFilePath()->toString());
+stringBuffer->append(JavaString::valueOf(specifiedTransformInfoInterface->getDataFilePath()));
     
 stringBuffer->append(" to the following data:\n");
     
 stringBuffer->append(documentString);
     
-this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALID);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -448,7 +448,7 @@ stringBuffer->append(JavaString::valueOf("PageValidation Info:") +JavaString::va
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 
                 //: 

@@ -151,9 +151,9 @@ stringBuffer->appendint(ahealth);
     
 stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
-stringBuffer->append(this->toString());
+stringBuffer->append(JavaString::valueOf(this));
     
-ForcedLogUtil::log(stringBuffer->toString(), this);
+ForcedLogUtil::log(JavaString::valueOf(stringBuffer), this);
     
 
 
@@ -298,7 +298,7 @@ stringBuffer->appendint(this->maxHealth);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

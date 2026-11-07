@@ -168,7 +168,7 @@ this->availableListOfList[index]->addAllList(this->listOfList[index]);
     
 }
 
-this->logUtil->putF((new StringMaker())->append("ImageCache: ")->append(this->toString())->toString(), this, "releaseAll");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("ImageCache: ")->append(JavaString::valueOf(this))), this, "releaseAll");
     
 }
 
@@ -353,7 +353,7 @@ stringBuffer->appendint(totalAvailable);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

@@ -489,7 +489,7 @@ this->logUtil->putF(CommonLabels::getInstance()->START +url, this, "install");
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return bundleContext->installBundle(url->toString());;
+                        return bundleContext->installBundle(JavaString::valueOf(url));;
     
 }
 

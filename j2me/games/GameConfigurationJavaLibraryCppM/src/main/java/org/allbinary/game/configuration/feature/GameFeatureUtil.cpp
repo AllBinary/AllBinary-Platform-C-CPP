@@ -135,7 +135,7 @@ stringBuffer->append("Multiple Total Choices: ");
     
 stringBuffer->appendint(total);
     
-this->logUtil->putF(stringBuffer->toString(), this, METHOD_NAME);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, METHOD_NAME);
     
 
     Features* features = Features::getInstance();;
@@ -160,7 +160,7 @@ stringBuffer->append(SELECTED_SEP);
     
 stringBuffer->appendboolean(isSelected);
     
-this->logUtil->putF(stringBuffer->toString(), this, METHOD_NAME);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, METHOD_NAME);
     
 
     std::string selectedChoiceLabel = choiceGroup->getString(index);;
@@ -217,7 +217,7 @@ stringBuffer->append("Multiple Total Choices: ");
     
 stringBuffer->appendint(total);
     
-this->logUtil->putF(stringBuffer->toString(), this, METHOD_NAME);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, METHOD_NAME);
     
 
     Features* features = Features::getInstance();;
@@ -242,7 +242,7 @@ stringBuffer->append(SELECTED_SEP);
     
 stringBuffer->appendboolean(isSelected);
     
-this->logUtil->putF(stringBuffer->toString(), this, METHOD_NAME);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, METHOD_NAME);
     
 
     std::string selectedChoiceLabel = choiceGroup->getString(index);;
@@ -298,7 +298,7 @@ stringBuffer->append("Exclusive Total Choices: 1==");
     
 stringBuffer->appendint(total);
     
-this->logUtil->putF(stringBuffer->toString(), this, METHOD_NAME);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, METHOD_NAME);
     
 
 
@@ -320,7 +320,7 @@ stringBuffer->append(SELECTED_SEP);
     
 stringBuffer->appendboolean(isSelected);
     
-this->logUtil->putF(stringBuffer->toString(), this, METHOD_NAME);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, METHOD_NAME);
     
 
                         if(isSelected)
@@ -382,7 +382,7 @@ name= JavaBoxes::unbox<std::string>(this->enumerationUtil->nextElement(enumerati
                 //@Throws(Exception.constructor)
             
     auto GameFeatureUtil::updateExclusive(std::string selectedChoiceLabel) -> void{
-this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->ITEM_LABEL)->append(selectedChoiceLabel)->toString(), this, "updateExclusive");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(CommonLabels::getInstance()->ITEM_LABEL)->append(selectedChoiceLabel)), this, "updateExclusive");
     
 
     Feature* gameFeature = Feature::getInstance(selectedChoiceLabel);;

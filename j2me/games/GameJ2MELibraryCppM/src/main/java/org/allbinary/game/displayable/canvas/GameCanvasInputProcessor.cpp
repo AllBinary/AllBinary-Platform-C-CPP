@@ -133,7 +133,7 @@ this->downGameKeyEventHandler->getInstanceForDevice(deviceId)->fireEvent(gameKey
                                     }
                                 
                         else {
-                            this->logUtil->putF((new StringMaker())->append(this->gameInputStrings->NO_KEY)->appendint(keyCode)->toString(), this, this->gameInputStrings->ADD_KEY_EVENT);
+                            this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->gameInputStrings->NO_KEY)->appendint(keyCode)), this, this->gameInputStrings->ADD_KEY_EVENT);
     
 
                         }
@@ -186,7 +186,7 @@ this->upGameKeyEventHandler->getInstanceForDevice(deviceId)->fireEvent(gameKeyEv
                                     }
                                 
                         else {
-                            this->logUtil->putF((new StringMaker())->append(this->gameInputStrings->NO_KEY)->appendint(keyCode)->toString(), this, this->gameInputStrings->REMOVE_KEY_EVENT);
+                            this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->gameInputStrings->NO_KEY)->appendint(keyCode)), this, this->gameInputStrings->REMOVE_KEY_EVENT);
     
 
                         }

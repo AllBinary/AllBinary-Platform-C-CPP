@@ -216,7 +216,7 @@ hashMap->putAll(this->getBasicPaymentType()->toHashMap());
                                 )
                         
                                     {
-                                    hashMap->put(PaymentGatewayData::PAYMENTTRANSACTIONINTERFACEFACTORYINTERFACE->toString(), this->paymentTransactionInterfaceFactoryInterface->getClass()->getName());
+                                    hashMap->put(JavaString::valueOf(PaymentGatewayData::PAYMENTTRANSACTIONINTERFACEFACTORYINTERFACE), this->paymentTransactionInterfaceFactoryInterface->getClass()->getName());
     
 
                                     }
@@ -227,7 +227,7 @@ hashMap->putAll(this->getBasicPaymentType()->toHashMap());
                                 )
                         
                                     {
-                                    hashMap->put(PaymentGatewayData::PAYMENTPROCESSORINTERFACEFACTORYINTERFACE->toString(), this->paymentProcessorInterfaceFactoryInterface->getClass()->getName());
+                                    hashMap->put(JavaString::valueOf(PaymentGatewayData::PAYMENTPROCESSORINTERFACEFACTORYINTERFACE), this->paymentProcessorInterfaceFactoryInterface->getClass()->getName());
     
 
                                     }

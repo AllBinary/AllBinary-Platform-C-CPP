@@ -203,13 +203,13 @@ this->logoAbPath= new AbPath(JavaBoxes::unbox<std::string>(hashMap->get(LogoData
     
 stringBuffer->append("HashMap: ");
     
-stringBuffer->append(hashMap->toString());
+stringBuffer->append(JavaString::valueOf(hashMap));
     
 stringBuffer->append("\nLogoFileName: ");
     
 stringBuffer->append(this->logoFile);
     
-this->logUtil->putF(stringBuffer->toString(), this, "getFormData()");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "getFormData()");
     
 
                                     }
@@ -236,14 +236,14 @@ this->logUtil->putF(stringBuffer->toString(), this, "getFormData()");
                                     }
                                 
 
-                        if(!StringValidationUtil::getInstance()->isValidRequired(this->logoAbPath->toString(), 0, 512))
+                        if(!StringValidationUtil::getInstance()->isValidRequired(JavaString::valueOf(this->logoAbPath), 0, 512))
                         
                                     {
                                     
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf("logoPath is invalid: ") +JavaString::valueOf(this->logoAbPath->toString()), this, this->commonStrings->IS_VALID);
+                                    this->logUtil->putF(JavaString::valueOf("logoPath is invalid: ") +JavaString::valueOf(JavaString::valueOf(this->logoAbPath)), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -388,7 +388,7 @@ stringBuffer->append("Logo is not valid.");
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 
                 //: 
@@ -453,7 +453,7 @@ hashMap->put(LogoData::getInstance()->IMAGE, stringUtil->EMPTY_STRING);
                         if(true)
                         
                                     {
-                                    hashMap->put(LogoData::getInstance()->IMAGEPATH, this->logoAbPath->toString());
+                                    hashMap->put(LogoData::getInstance()->IMAGEPATH, JavaString::valueOf(this->logoAbPath));
     
 hashMap->put(LogoData::getInstance()->IMAGEFILENAME, this->logoFile);
     
@@ -509,11 +509,11 @@ hashMap->put(LogoData::getInstance()->IMAGEFILENAME, this->logoFile);
     
 stringBuffer->append("Processing logoFile: ");
     
-stringBuffer->append(this->logoAbPath->toString());
+stringBuffer->append(JavaString::valueOf(this->logoAbPath));
     
 stringBuffer->append(this->logoFile);
     
-this->logUtil->putF(stringBuffer->toString(), this, "processLogoFile()");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "processLogoFile()");
     
 
                                     }

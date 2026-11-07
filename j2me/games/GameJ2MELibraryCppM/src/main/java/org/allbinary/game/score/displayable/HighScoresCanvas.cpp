@@ -196,7 +196,7 @@ class HighScoreRunnable: public ARunnable {
 
     HighScoresCanvas* highScoresCanvas;
 
-: HighScoreRunnable(HighScoresCanvas* highScoresCanvas){
+public: HighScoreRunnable(HighScoresCanvas* highScoresCanvas){
 this->highScoresCanvas= highScoresCanvas;
     
 }
@@ -240,7 +240,7 @@ highScoresCanvas->hasPainted= false;
 
     int64_t currentTimeMillis = systemWrapper->currentTimeMillis();;
     
-logUtil->putF(stringMaker->append("HighScoresCanvas - Request repaint to be sure: ")->appendlong(currentTimeMillis)->toString(), this, commonStrings->RUN);
+logUtil->putF(JavaString::valueOf(stringMaker->append("HighScoresCanvas - Request repaint to be sure: ")->appendlong(currentTimeMillis)), this, commonStrings->RUN);
     
 highScoresCanvas->repaintBehavior->onChangeRepaint(highScoresCanvas);
     
@@ -258,7 +258,7 @@ highScoresCanvas->repaintBehavior->onChangeRepaint(highScoresCanvas);
                                 
 stringMaker->delete_(0, stringMaker->length());
     
-logUtil->putF(stringMaker->append("HighScoresCanvas - Now that the canvas has completed repaint go ahead and fetch the scores: ")->appendlong(currentTimeMillis)->toString(), this, commonStrings->RUN);
+logUtil->putF(JavaString::valueOf(stringMaker->append("HighScoresCanvas - Now that the canvas has completed repaint go ahead and fetch the scores: ")->appendlong(currentTimeMillis)), this, commonStrings->RUN);
     
 highScoresCanvas->executeUpdate();
     
@@ -366,7 +366,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->UP
                         if(!highScoresArray.empty())
                         
                                     {
-                                    this->logUtil->putF((new StringMaker())->append(this->commonStrings->START)->appendint(highScoresArray.size())->toString(), this, "setHighScoresArray");
+                                    this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->commonStrings->START)->appendint(highScoresArray.size())), this, "setHighScoresArray");
     
 
                                     }
@@ -397,7 +397,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->UP
                 //@Throws(Exception.constructor)
             
     auto HighScoresCanvas::updateCommand(Command* command) -> void{
-this->logUtil->putF((new StringMaker())->append(this->commonStrings->START)->append(this->stringUtil->toString(command))->toString(), this, this->commonStrings->UPDATE);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->commonStrings->START)->append(this->stringUtil->toString(command))), this, this->commonStrings->UPDATE);
     
 
     GameCommandsFactory* gameCommandsFactory = GameCommandsFactory::getInstance();;

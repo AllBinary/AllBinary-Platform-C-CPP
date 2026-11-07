@@ -142,7 +142,7 @@ this->highScore->setName(name);
 
 
     auto HighScoreUtil::saveHighScore() -> void{
-this->logUtil->putF((new StringMaker())->append(this->commonStrings->START)->append(StringUtil::getInstance()->toString(this->highScore))->toString(), this, "saveHighScore");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->commonStrings->START)->append(StringUtil::getInstance()->toString(this->highScore))), this, "saveHighScore");
     
 
     int32_t size = this->highScoresArray.size();;
@@ -183,9 +183,9 @@ highScores= this->highScoresArray[index];
     
 highScores->addHighScore(this->highScore);
     
-highScoresAsString= highScores->toString();
+highScoresAsString= JavaString::valueOf(highScores);
     
-this->logUtil->putF((new StringMaker())->append("Added/Adding Score: ")->append(highScoresAsString)->toString(), this, "saveHighScore");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Added/Adding Score: ")->append(highScoresAsString)), this, "saveHighScore");
     
 }
 

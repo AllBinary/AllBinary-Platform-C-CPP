@@ -110,7 +110,7 @@ EmailQueueFactory::getInstance()->offer(dynamic_cast<EmailInterface*>(email->get
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->EMAILLOGGING))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf("Add Email To Que For Sending: ") +JavaString::valueOf(emailEvent->toString()), this, "onEmailSendRequest");
+                                    this->logUtil->putF(JavaString::valueOf("Add Email To Que For Sending: ") +JavaString::valueOf(JavaString::valueOf(emailEvent)), this, "onEmailSendRequest");
     
 
                                     }

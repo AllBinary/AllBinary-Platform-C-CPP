@@ -140,7 +140,7 @@ this->units= int64_t(units);
 
 
     auto Money::add(Money* moreMoney) -> void{
-this->add(moreMoney->toString());
+this->add(JavaString::valueOf(moreMoney));
     
 }
 
@@ -207,7 +207,7 @@ stringBuffer->append(JavaString::valueOf((int64_t(cents))));
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

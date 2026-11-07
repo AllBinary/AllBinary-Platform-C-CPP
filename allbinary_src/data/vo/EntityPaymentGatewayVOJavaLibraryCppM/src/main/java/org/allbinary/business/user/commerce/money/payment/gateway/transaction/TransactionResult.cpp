@@ -159,49 +159,49 @@ this->result= "Needs to have the hashmap converted to string for other construct
 
     BasicArrayList* verisignResponseKeys = new BasicArrayListD();;
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->RESULT->toString());
+verisignResponseKeys->add(JavaString::valueOf(paymentTransactionKeysFactory->RESULT));
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->PNREF->toString());
+verisignResponseKeys->add(JavaString::valueOf(paymentTransactionKeysFactory->PNREF));
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->RESPMSG->toString());
+verisignResponseKeys->add(JavaString::valueOf(paymentTransactionKeysFactory->RESPMSG));
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->AUTHCODE->toString());
+verisignResponseKeys->add(JavaString::valueOf(paymentTransactionKeysFactory->AUTHCODE));
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->AVSADDR->toString());
+verisignResponseKeys->add(JavaString::valueOf(paymentTransactionKeysFactory->AVSADDR));
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->AVSZIP->toString());
+verisignResponseKeys->add(JavaString::valueOf(paymentTransactionKeysFactory->AVSZIP));
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->ORIGRESULT->toString());
+verisignResponseKeys->add(JavaString::valueOf(paymentTransactionKeysFactory->ORIGRESULT));
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->STATUS->toString());
+verisignResponseKeys->add(JavaString::valueOf(paymentTransactionKeysFactory->STATUS));
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->FRAUDCODE->toString());
+verisignResponseKeys->add(JavaString::valueOf(paymentTransactionKeysFactory->FRAUDCODE));
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->FRAUDMSG->toString());
+verisignResponseKeys->add(JavaString::valueOf(paymentTransactionKeysFactory->FRAUDMSG));
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->ERRCODE->toString());
+verisignResponseKeys->add(JavaString::valueOf(paymentTransactionKeysFactory->ERRCODE));
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->SCORE->toString());
+verisignResponseKeys->add(JavaString::valueOf(paymentTransactionKeysFactory->SCORE));
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->REASON1->toString());
+verisignResponseKeys->add(JavaString::valueOf(paymentTransactionKeysFactory->REASON1));
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->REASON2->toString());
+verisignResponseKeys->add(JavaString::valueOf(paymentTransactionKeysFactory->REASON2));
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->REASON3->toString());
+verisignResponseKeys->add(JavaString::valueOf(paymentTransactionKeysFactory->REASON3));
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->EXCEPTION1->toString());
+verisignResponseKeys->add(JavaString::valueOf(paymentTransactionKeysFactory->EXCEPTION1));
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->EXCEPTION2->toString());
+verisignResponseKeys->add(JavaString::valueOf(paymentTransactionKeysFactory->EXCEPTION2));
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->EXCEPTION3->toString());
+verisignResponseKeys->add(JavaString::valueOf(paymentTransactionKeysFactory->EXCEPTION3));
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->EXCEPTION4->toString());
+verisignResponseKeys->add(JavaString::valueOf(paymentTransactionKeysFactory->EXCEPTION4));
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->EXCEPTION5->toString());
+verisignResponseKeys->add(JavaString::valueOf(paymentTransactionKeysFactory->EXCEPTION5));
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->EXCEPTION6->toString());
+verisignResponseKeys->add(JavaString::valueOf(paymentTransactionKeysFactory->EXCEPTION6));
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->EXCEPTION7->toString());
+verisignResponseKeys->add(JavaString::valueOf(paymentTransactionKeysFactory->EXCEPTION7));
     
 
 
@@ -272,7 +272,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->PNREF->toString()));
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(JavaString::valueOf(PaymentTransactionKeysFactory::getInstance()->PNREF)));
     
 }
 
@@ -284,7 +284,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->RESPMSG->toString()));
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(JavaString::valueOf(PaymentTransactionKeysFactory::getInstance()->RESPMSG)));
     
 }
 
@@ -296,7 +296,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->RESULT->toString()));
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(JavaString::valueOf(PaymentTransactionKeysFactory::getInstance()->RESULT)));
     
 }
 
@@ -308,7 +308,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->SCORE->toString()));
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(JavaString::valueOf(PaymentTransactionKeysFactory::getInstance()->SCORE)));
     
 }
 
@@ -320,7 +320,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->STATUS->toString()));
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(JavaString::valueOf(PaymentTransactionKeysFactory::getInstance()->STATUS)));
     
 }
 
@@ -332,7 +332,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->FRAUDCODE->toString()));
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(JavaString::valueOf(PaymentTransactionKeysFactory::getInstance()->FRAUDCODE)));
     
 }
 
@@ -344,7 +344,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->FRAUDMSG->toString()));
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(JavaString::valueOf(PaymentTransactionKeysFactory::getInstance()->FRAUDMSG)));
     
 }
 
@@ -356,7 +356,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->ORIGRESULT->toString()));
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(JavaString::valueOf(PaymentTransactionKeysFactory::getInstance()->ORIGRESULT)));
     
 }
 
@@ -368,7 +368,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->AVSADDR->toString()));
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(JavaString::valueOf(PaymentTransactionKeysFactory::getInstance()->AVSADDR)));
     
 }
 
@@ -380,7 +380,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->AVSZIP->toString()));
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(JavaString::valueOf(PaymentTransactionKeysFactory::getInstance()->AVSZIP)));
     
 }
 
@@ -392,7 +392,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->ERRCODE->toString()));
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(JavaString::valueOf(PaymentTransactionKeysFactory::getInstance()->ERRCODE)));
     
 }
 
@@ -404,7 +404,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION1->toString()));
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(JavaString::valueOf(PaymentTransactionKeysFactory::getInstance()->EXCEPTION1)));
     
 }
 
@@ -416,7 +416,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION2->toString()));
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(JavaString::valueOf(PaymentTransactionKeysFactory::getInstance()->EXCEPTION2)));
     
 }
 
@@ -428,7 +428,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION3->toString()));
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(JavaString::valueOf(PaymentTransactionKeysFactory::getInstance()->EXCEPTION3)));
     
 }
 
@@ -440,7 +440,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION4->toString()));
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(JavaString::valueOf(PaymentTransactionKeysFactory::getInstance()->EXCEPTION4)));
     
 }
 
@@ -452,7 +452,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION5->toString()));
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(JavaString::valueOf(PaymentTransactionKeysFactory::getInstance()->EXCEPTION5)));
     
 }
 
@@ -464,7 +464,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION6->toString()));
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(JavaString::valueOf(PaymentTransactionKeysFactory::getInstance()->EXCEPTION6)));
     
 }
 
@@ -476,7 +476,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION7->toString()));
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(JavaString::valueOf(PaymentTransactionKeysFactory::getInstance()->EXCEPTION7)));
     
 }
 
@@ -488,7 +488,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->REASON1->toString()));
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(JavaString::valueOf(PaymentTransactionKeysFactory::getInstance()->REASON1)));
     
 }
 
@@ -500,7 +500,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->REASON2->toString()));
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(JavaString::valueOf(PaymentTransactionKeysFactory::getInstance()->REASON2)));
     
 }
 
@@ -512,7 +512,7 @@ valueVector->add(stringUtil->EMPTY_STRING);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->REASON3->toString()));
+                        return JavaBoxes::unbox<std::string>(this->keyValuePairs->get(JavaString::valueOf(PaymentTransactionKeysFactory::getInstance()->REASON3)));
     
 }
 

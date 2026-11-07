@@ -154,13 +154,13 @@ filePropertyVector->add(this->file->getPath());
     
 filePropertyHashMap->put(fileData->ROOT_NAME, rootFileName);
     
-filePropertyHashMap->put(fileData->ISFILE, Boolean::valueOf(this->file->isFile())->toString());
+filePropertyHashMap->put(fileData->ISFILE, JavaString::valueOf(Boolean::valueOf(this->file->isFile())));
     
-filePropertyHashMap->put(fileData->ISDIRECTORY, Boolean::valueOf(this->file->isDirectory())->toString());
+filePropertyHashMap->put(fileData->ISDIRECTORY, JavaString::valueOf(Boolean::valueOf(this->file->isDirectory())));
     
-filePropertyHashMap->put(fileData->ISHIDDEN, Boolean::valueOf(this->file->isHidden())->toString());
+filePropertyHashMap->put(fileData->ISHIDDEN, JavaString::valueOf(Boolean::valueOf(this->file->isHidden())));
     
-filePropertyHashMap->put(fileData->ISABSOLUTE, Boolean::valueOf(this->file->isAbsolute())->toString());
+filePropertyHashMap->put(fileData->ISABSOLUTE, JavaString::valueOf(Boolean::valueOf(this->file->isAbsolute())));
     
 filePropertyHashMap->put(fileData->ABSOLUTE_PATH, file->getAbsolutePath());
     

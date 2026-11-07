@@ -119,7 +119,7 @@ PrimitiveLongSingleton* PrimitiveLongSingleton::instance = PrimitiveLongSingleto
 
 
 
-                            throw Exception((new StringMaker())->append("numberAsChar was not in array: ")->appendchar(numberAsChar)->toString());
+                            throw Exception(JavaString::valueOf((new StringMaker())->append("numberAsChar was not in array: ")->appendchar(numberAsChar)));
                     
 }
 

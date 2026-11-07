@@ -162,7 +162,7 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 }
 
 
-    Node* totalNode = ModDomHelper::createNameValueNodes(document, this->basicItemData->TOTAL, this->itemInterface->getTotal()->toString());;
+    Node* totalNode = ModDomHelper::createNameValueNodes(document, this->basicItemData->TOTAL, JavaString::valueOf(this->itemInterface->getTotal()));;
     
 node->appendChild(totalNode);
     

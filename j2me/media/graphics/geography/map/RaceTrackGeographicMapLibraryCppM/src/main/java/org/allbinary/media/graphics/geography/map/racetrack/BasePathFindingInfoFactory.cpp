@@ -201,7 +201,7 @@ this->finishLineId= raceTrackGeographicMapCellTypeFactory->getEndType();
 
     CommonSeps* commonSeps = CommonSeps::getInstance();;
     
-this->pathFindingInfoFactory->logUtil->put((new StringMaker())->append(commonSeps->BRACKET_OPEN)->appendint(row)->append(commonSeps->BRACKET_CLOSE)->append(commonSeps->BRACKET_OPEN)->appendint(column)->append("] in [")->appendint(mapArray.size())->append(commonSeps->BRACKET_CLOSE)->append(commonSeps->BRACKET_OPEN)->appendint(mapArray[0].size())->append(commonSeps->BRACKET_CLOSE)->toString(), this, "visit", &e);
+this->pathFindingInfoFactory->logUtil->put(JavaString::valueOf((new StringMaker())->append(commonSeps->BRACKET_OPEN)->appendint(row)->append(commonSeps->BRACKET_CLOSE)->append(commonSeps->BRACKET_OPEN)->appendint(column)->append("] in [")->appendint(mapArray.size())->append(commonSeps->BRACKET_CLOSE)->append(commonSeps->BRACKET_OPEN)->appendint(mapArray[0].size())->append(commonSeps->BRACKET_CLOSE)), this, "visit", &e);
     
 
 

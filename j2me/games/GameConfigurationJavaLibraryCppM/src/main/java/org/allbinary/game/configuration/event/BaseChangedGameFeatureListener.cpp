@@ -101,7 +101,7 @@ ForcedLogUtil::log(CommonStrings::getInstance()->NOT_IMPLEMENTED, this);
 
 
     auto BaseChangedGameFeatureListener::onGameFeatureChange(GameFeatureEvent* gameFeatureEvent) -> void{
-this->logUtil->putF((new StringMaker())->append(this->gameFeatureUtil->GAME_FEATURE_CHANGED)->append(gameFeatureEvent->getWhatChanged())->toString(), this, this->gameFeatureUtil->ON_GAME_FEATURE_CHANGE);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->gameFeatureUtil->GAME_FEATURE_CHANGED)->append(gameFeatureEvent->getWhatChanged())), this, this->gameFeatureUtil->ON_GAME_FEATURE_CHANGE);
     
 this->list->add(gameFeatureEvent->getGameOption());
     
@@ -156,7 +156,7 @@ stringBuffer->append(" isChanged: ");
     
 stringBuffer->appendboolean(isChanged);
     
-this->logUtil->putF(stringBuffer->toString(), this, "isChanged");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "isChanged");
     
 
 

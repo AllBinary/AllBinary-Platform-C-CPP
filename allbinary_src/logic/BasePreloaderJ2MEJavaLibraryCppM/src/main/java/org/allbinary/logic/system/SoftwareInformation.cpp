@@ -70,7 +70,7 @@ this->name= name;
     
 this->version= version;
     
-this->shortName= (new StringMaker())->append(shortName)->append(KotlinUtil::getShortName())->toString();
+this->shortName= JavaString::valueOf((new StringMaker())->append(shortName)->append(KotlinUtil::getShortName()));
     
 }
 
@@ -137,7 +137,7 @@ stringBuffer->append(this->getVersion());
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

@@ -195,7 +195,7 @@ this->timeIntervalActionScriptConditionJPanel->getTimeIntervalActionJDialog()->s
     
 hashMap->put(TimeIntervalActionScriptConditionData::TIME, std::to_string(this->timeHelper->delay));
     
-this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(hashMap->toString()), this, "toHashMap()");
+this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(JavaString::valueOf(hashMap)), this, "toHashMap()");
     
 
 

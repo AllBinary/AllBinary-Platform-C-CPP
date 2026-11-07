@@ -157,7 +157,7 @@ inputStream= Class::forType(typeid(std::string))->getResourceAsStream(resourcePa
                                     
     std::string RES = "res";;
     
-resourcePath= stringMaker->append(RES)->append(JavaString::substring(resource, index))->toString();
+resourcePath= JavaString::valueOf(stringMaker->append(RES)->append(JavaString::substring(resource, index)));
     
 inputStream= Class::forType(typeid(std::string))->getResourceAsStream(resourcePath);
     
@@ -169,7 +169,7 @@ inputStream= Class::forType(typeid(std::string))->getResourceAsStream(resourcePa
                                     {
                                     stringMaker->delete_(0, stringMaker->length());
     
-resourcePath= stringMaker->append("/")->append(RES)->append(JavaString::substring(resource, index))->toString();
+resourcePath= JavaString::valueOf(stringMaker->append("/")->append(RES)->append(JavaString::substring(resource, index)));
     
 inputStream= Class::forType(typeid(std::string))->getResourceAsStream(resourcePath);
     
@@ -184,7 +184,7 @@ inputStream= Class::forType(typeid(std::string))->getResourceAsStream(resourcePa
                                     {
                                     stringMaker->delete_(0, stringMaker->length());
     
-resourcePath= stringMaker->append(RES)->append(COLON)->append(JavaString::substring(resource, index))->toString();
+resourcePath= JavaString::valueOf(stringMaker->append(RES)->append(COLON)->append(JavaString::substring(resource, index)));
     
 inputStream= Class::forType(typeid(std::string))->getResourceAsStream(resourcePath);
     
@@ -196,7 +196,7 @@ inputStream= Class::forType(typeid(std::string))->getResourceAsStream(resourcePa
                                     {
                                     stringMaker->delete_(0, stringMaker->length());
     
-resourcePath= stringMaker->append(RES)->append(COLON)->append(JavaString::substring(resource, index +1))->toString();
+resourcePath= JavaString::valueOf(stringMaker->append(RES)->append(COLON)->append(JavaString::substring(resource, index +1)));
     
 inputStream= Class::forType(typeid(std::string))->getResourceAsStream(resourcePath);
     
@@ -211,7 +211,7 @@ inputStream= Class::forType(typeid(std::string))->getResourceAsStream(resourcePa
     
 stringMaker->delete_(0, stringMaker->length());
     
-resourcePath= stringMaker->append(RESOURCE_STRING)->append(COLON)->append(JavaString::substring(resource, index))->toString();
+resourcePath= JavaString::valueOf(stringMaker->append(RESOURCE_STRING)->append(COLON)->append(JavaString::substring(resource, index)));
     
 inputStream= Class::forType(typeid(std::string))->getResourceAsStream(resourcePath);
     
@@ -223,7 +223,7 @@ inputStream= Class::forType(typeid(std::string))->getResourceAsStream(resourcePa
                                     {
                                     stringMaker->delete_(0, stringMaker->length());
     
-resourcePath= stringMaker->append(RESOURCE_STRING)->append(COLON)->append(JavaString::substring(resource, index +1))->toString();
+resourcePath= JavaString::valueOf(stringMaker->append(RESOURCE_STRING)->append(COLON)->append(JavaString::substring(resource, index +1)));
     
 inputStream= Class::forType(typeid(std::string))->getResourceAsStream(resourcePath);
     
@@ -238,7 +238,7 @@ inputStream= Class::forType(typeid(std::string))->getResourceAsStream(resourcePa
 
 
 
-                            throw Exception(stringMaker->append("Unable to obtain: ")->append(resource)->toString());
+                            throw Exception(JavaString::valueOf(stringMaker->append("Unable to obtain: ")->append(resource)));
                     
 
                                     }

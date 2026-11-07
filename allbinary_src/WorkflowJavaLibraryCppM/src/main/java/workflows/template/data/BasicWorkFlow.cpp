@@ -106,7 +106,7 @@ BasicWorkFlow::BasicWorkFlow(HashMap<Object*, Object*>* propertiesHashMap, PageC
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->WORKFLOW))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf("Properties: ") +JavaString::valueOf(propertiesHashMap->toString()), this, "BasicWorkFlow()");
+                                    this->logUtil->putF(JavaString::valueOf("Properties: ") +JavaString::valueOf(JavaString::valueOf(propertiesHashMap)), this, "BasicWorkFlow()");
     
 
                                     }

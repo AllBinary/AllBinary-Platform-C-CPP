@@ -142,7 +142,7 @@ this->init(this->CPUFILE);
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->OS))
                         
                                     {
-                                    this->logUtil->put((new StringMaker())->append("Cpu Data: ")->append(this->toString())->toString(), this, this->commonStrings->CONSTRUCTOR, &e);
+                                    this->logUtil->put(JavaString::valueOf((new StringMaker())->append("Cpu Data: ")->append(JavaString::valueOf(this))), this, this->commonStrings->CONSTRUCTOR, &e);
     
 
                                     }
@@ -196,7 +196,7 @@ this->cpuHashMap= StdUtil::getInstance()->createHashMap();
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->OS))
                         
                                     {
-                                    this->logUtil->putF((new StringMaker())->append("Cpu File BasicArrayList Size: ")->appendint(fileVector->size())->toString(), this, this->commonStrings->CONSTRUCTOR);
+                                    this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Cpu File BasicArrayList Size: ")->appendint(fileVector->size())), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -247,35 +247,35 @@ lineNumberReader= new LineNumberReader(new FileReader(file->getPath()));
     std::string value = JavaString::substring(nextLine, valueIndex, nextLine.size());;
     
 
-                        if(JavaString::indexOf(key, CpuInfo::PROCESSOR->toString()) >= 0)
+                        if(JavaString::indexOf(key, JavaString::valueOf(CpuInfo::PROCESSOR)) >= 0)
                         this->cpuHashMap->put(CpuInfo::PROCESSOR, value);
                                 
 
-                        if(JavaString::indexOf(key, CpuInfo::VENDORID->toString()) >= 0)
+                        if(JavaString::indexOf(key, JavaString::valueOf(CpuInfo::VENDORID)) >= 0)
                         this->cpuHashMap->put(CpuInfo::VENDORID, value);
                                 
 
-                        if(JavaString::indexOf(key, CpuInfo::CPUFAMILY->toString()) >= 0)
+                        if(JavaString::indexOf(key, JavaString::valueOf(CpuInfo::CPUFAMILY)) >= 0)
                         this->cpuHashMap->put(CpuInfo::CPUFAMILY, value);
                                 
 
-                        if(JavaString::indexOf(key, CpuInfo::MODEL->toString()) >= 0)
+                        if(JavaString::indexOf(key, JavaString::valueOf(CpuInfo::MODEL)) >= 0)
                         this->cpuHashMap->put(CpuInfo::MODEL, value);
                                 
 
-                        if(JavaString::indexOf(key, CpuInfo::MODELNAME->toString()) >= 0)
+                        if(JavaString::indexOf(key, JavaString::valueOf(CpuInfo::MODELNAME)) >= 0)
                         this->cpuHashMap->put(CpuInfo::MODELNAME, value);
                                 
 
-                        if(JavaString::indexOf(key, CpuInfo::STEPPING->toString()) >= 0)
+                        if(JavaString::indexOf(key, JavaString::valueOf(CpuInfo::STEPPING)) >= 0)
                         this->cpuHashMap->put(CpuInfo::STEPPING, value);
                                 
 
-                        if(JavaString::indexOf(key, CpuInfo::CPUMHZ->toString()) >= 0)
+                        if(JavaString::indexOf(key, JavaString::valueOf(CpuInfo::CPUMHZ)) >= 0)
                         this->cpuHashMap->put(CpuInfo::CPUMHZ, value);
                                 
 
-                        if(JavaString::indexOf(key, CpuInfo::CACHESIZE->toString()) >= 0)
+                        if(JavaString::indexOf(key, JavaString::valueOf(CpuInfo::CACHESIZE)) >= 0)
                         this->cpuHashMap->put(CpuInfo::CACHESIZE, value);
                                 
 
@@ -426,35 +426,35 @@ nextLine= lineNumberReader->readLine();
 
     StringMaker* stringMaker = new StringMaker();;
     
-stringMaker->append(CpuInfo::PROCESSOR->toString())->append(commonLabels->COLON_SEP)->append(this->getProcessor());
+stringMaker->append(JavaString::valueOf(CpuInfo::PROCESSOR))->append(commonLabels->COLON_SEP)->append(this->getProcessor());
     
 stringMaker->append(commonSeps->NEW_LINE);
     
-stringMaker->append(CpuInfo::VENDORID->toString())->append(commonLabels->COLON_SEP)->append(this->getVendorId());
+stringMaker->append(JavaString::valueOf(CpuInfo::VENDORID))->append(commonLabels->COLON_SEP)->append(this->getVendorId());
     
 stringMaker->append(commonSeps->NEW_LINE);
     
-stringMaker->append(CpuInfo::CPUFAMILY->toString())->append(commonLabels->COLON_SEP)->append(this->getCpuFamily());
+stringMaker->append(JavaString::valueOf(CpuInfo::CPUFAMILY))->append(commonLabels->COLON_SEP)->append(this->getCpuFamily());
     
 stringMaker->append(commonSeps->NEW_LINE);
     
-stringMaker->append(CpuInfo::MODEL->toString())->append(commonLabels->COLON_SEP)->append(this->getModel());
+stringMaker->append(JavaString::valueOf(CpuInfo::MODEL))->append(commonLabels->COLON_SEP)->append(this->getModel());
     
 stringMaker->append(commonSeps->NEW_LINE);
     
-stringMaker->append(CpuInfo::MODELNAME->toString())->append(commonLabels->COLON_SEP)->append(this->getModelName());
+stringMaker->append(JavaString::valueOf(CpuInfo::MODELNAME))->append(commonLabels->COLON_SEP)->append(this->getModelName());
     
 stringMaker->append(commonSeps->NEW_LINE);
     
-stringMaker->append(CpuInfo::STEPPING->toString())->append(commonLabels->COLON_SEP)->append(this->getStepping());
+stringMaker->append(JavaString::valueOf(CpuInfo::STEPPING))->append(commonLabels->COLON_SEP)->append(this->getStepping());
     
 stringMaker->append(commonSeps->NEW_LINE);
     
-stringMaker->append(CpuInfo::CPUMHZ->toString())->append(commonLabels->COLON_SEP)->append(this->getCpuSpeed());
+stringMaker->append(JavaString::valueOf(CpuInfo::CPUMHZ))->append(commonLabels->COLON_SEP)->append(this->getCpuSpeed());
     
 stringMaker->append(commonSeps->NEW_LINE);
     
-stringMaker->append(CpuInfo::CACHESIZE->toString())->append(commonLabels->COLON_SEP)->append(this->getCacheSize());
+stringMaker->append(JavaString::valueOf(CpuInfo::CACHESIZE))->append(commonLabels->COLON_SEP)->append(this->getCacheSize());
     
 
 
@@ -462,7 +462,7 @@ stringMaker->append(CpuInfo::CACHESIZE->toString())->append(commonLabels->COLON_
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringMaker->toString();;
+                        return JavaString::valueOf(stringMaker);;
     
 }
 

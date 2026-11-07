@@ -64,7 +64,7 @@ this->name= name;
 
     auto TenderType::isEqual(TenderType* tenderType) -> bool{
 
-                        if(this->toString().compare(tenderType->toString()) == 0)
+                        if(this->toString().compare(JavaString::valueOf(tenderType)) == 0)
                         
                                     {
                                     

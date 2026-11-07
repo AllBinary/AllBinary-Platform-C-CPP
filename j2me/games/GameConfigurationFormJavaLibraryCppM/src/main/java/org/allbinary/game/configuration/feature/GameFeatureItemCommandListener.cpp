@@ -103,7 +103,7 @@ this->gameOptionsForm= gameOptionsForm;
             
     std::string itemLabel = item->getLabel();;
     
-this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->ITEM_LABEL)->append(itemLabel)->toString(), this, MidletStrings::getInstance()->COMMAND_ACTION);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(CommonLabels::getInstance()->ITEM_LABEL)->append(itemLabel)), this, MidletStrings::getInstance()->COMMAND_ACTION);
     
 
                         if(

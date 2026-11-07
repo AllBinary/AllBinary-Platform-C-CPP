@@ -112,7 +112,7 @@ DemoCanvasBasicStartInputProcessor::DemoCanvasBasicStartInputProcessor(BasicArra
         {
 gameKeyEvent= dynamic_cast<GameKeyEvent*>(list->objectArray[index]);
     
-this->logUtil->putF((new StringMaker())->append("Start GameKey: ")->append(StringUtil::getInstance()->toString(gameKeyEvent))->toString(), this, GameInputStrings::getInstance()->PROCESS_INPUT);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Start GameKey: ")->append(StringUtil::getInstance()->toString(gameKeyEvent))), this, GameInputStrings::getInstance()->PROCESS_INPUT);
     
 }
 

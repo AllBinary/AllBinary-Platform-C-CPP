@@ -124,7 +124,7 @@ this->putS(specialMessage, string, functionName, NullUtil::getInstance()->NULL_O
 
     std::string className = this->LABEL;;
     
-className= (new StringMaker())->append(anyType->getClass()->getName())->append(this->commonSeps->COLON)->append(Integer.toHexString(TsUtil::getInstance()->hashCode(anyType)))->toString();
+className= JavaString::valueOf((new StringMaker())->append(anyType->getClass()->getName())->append(this->commonSeps->COLON)->append(Integer.toHexString(TsUtil::getInstance()->hashCode(anyType))));
     
 
     std::string message = this->logFormatUtil->get(className, functionName, specialMessage, exception);;
@@ -138,7 +138,7 @@ android.util->Log->i(this->LABEL, message);
 
     std::string className = this->LABEL;;
     
-className= (new StringMaker())->append(string)->append(this->commonSeps->COLON)->append(Integer.toHexString(TsUtil::getInstance()->hashCode(string)))->toString();
+className= JavaString::valueOf((new StringMaker())->append(string)->append(this->commonSeps->COLON)->append(Integer.toHexString(TsUtil::getInstance()->hashCode(string))));
     
 
     std::string message = this->logFormatUtil->get(className, functionName, specialMessage, exception);;

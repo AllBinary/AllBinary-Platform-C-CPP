@@ -96,7 +96,7 @@ this->eventList->add(gameKeyCompleteMotionGestureInputEvent);
 
 
     auto GameKeyCompleteMotionGestureInputEventFactory::updateAll() -> void{
-this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->START_LABEL)->appendint(this->eventList->size())->toString(), this, "updateAll");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(CommonLabels::getInstance()->START_LABEL)->appendint(this->eventList->size())), this, "updateAll");
     
 
 

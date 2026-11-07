@@ -721,7 +721,7 @@ this->captureMotionAnalysisJCheckBox->setSelected(false);
 
     GenericProfileDataWorkerType* genericProfileDataWorkerType = dynamic_cast<GenericProfileDataWorkerType*>(vector->get(index));;
     
-this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(genericProfile->getName()) +JavaString::valueOf(" has GenericProfileDataWorkerType: ")) +JavaString::valueOf(genericProfileDataWorkerType->toString()), this, "updateProfileOptions");
+this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(genericProfile->getName()) +JavaString::valueOf(" has GenericProfileDataWorkerType: ")) +JavaString::valueOf(JavaString::valueOf(genericProfileDataWorkerType)), this, "updateProfileOptions");
     
 
                         if(genericProfileDataWorkerType == GenericProfileDataWorkerType::SCREEN_CAPTURE)

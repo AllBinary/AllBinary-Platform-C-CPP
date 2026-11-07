@@ -394,7 +394,7 @@ this->msg->setContent(mimeMultipart);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return JavaString::valueOf("\nHashMap: ") +JavaString::valueOf(this->toHashMap()->toString());
+                        return JavaString::valueOf("\nHashMap: ") +JavaString::valueOf(JavaString::valueOf(this->toHashMap()));
     
 }
 
@@ -423,7 +423,7 @@ hashMap->put(EmailData::SERVER, JavaBoxes::unbox<std::string>(this->properties->
                         for (
     int32_t index = 0;index < addresses.size(); index++)
         {
-hashMap->put(EmailData::FROM, addresses[index]->toString());
+hashMap->put(EmailData::FROM, JavaString::valueOf(addresses[index]));
     
 }
 
@@ -443,7 +443,7 @@ addresses= this->msg->getRecipients(Message::RecipientType->TO);
                         for (
     int32_t index = 0;index < addresses.size(); index++)
         {
-hashMap->put(EmailData::TO, addresses[index]->toString());
+hashMap->put(EmailData::TO, JavaString::valueOf(addresses[index]));
     
 }
 
@@ -463,7 +463,7 @@ addresses= this->msg->getRecipients(Message::RecipientType->CC);
                         for (
     int32_t index = 0;index < addresses.size(); index++)
         {
-hashMap->put(EmailData::CC, addresses[index]->toString());
+hashMap->put(EmailData::CC, JavaString::valueOf(addresses[index]));
     
 }
 
@@ -483,7 +483,7 @@ addresses= this->msg->getRecipients(Message::RecipientType->BCC);
                         for (
     int32_t index = 0;index < addresses.size(); index++)
         {
-hashMap->put(EmailData::BCC, addresses[index]->toString());
+hashMap->put(EmailData::BCC, JavaString::valueOf(addresses[index]));
     
 }
 

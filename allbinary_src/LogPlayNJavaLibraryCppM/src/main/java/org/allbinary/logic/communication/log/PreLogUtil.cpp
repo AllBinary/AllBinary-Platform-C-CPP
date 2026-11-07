@@ -91,7 +91,7 @@ PreLogUtil::PreLogUtil(){
 
                                     }
                                 
-className= (new StringMaker())->append(className)->append(CommonSeps::getInstance()->FORWARD_SLASH)->append(StringUtil::getInstance()->toString(anyType))->toString();
+className= JavaString::valueOf((new StringMaker())->append(className)->append(CommonSeps::getInstance()->FORWARD_SLASH)->append(StringUtil::getInstance()->toString(anyType)));
     
 
     std::string message = LogFormatUtil::getInstance()->getS(className, functionName, specialMessage);;
@@ -114,7 +114,7 @@ PlayN::log()->debug(JavaString::valueOf(PreLogUtil::LOG_SUCCESS) +JavaString::va
 
                                     }
                                 
-className= (new StringMaker())->append(className)->append(CommonSeps::getInstance()->FORWARD_SLASH)->append(StringUtil::getInstance()->toString(anyType))->toString();
+className= JavaString::valueOf((new StringMaker())->append(className)->append(CommonSeps::getInstance()->FORWARD_SLASH)->append(StringUtil::getInstance()->toString(anyType)));
     
 
     std::string message = LogFormatUtil::getInstance()->get(className, functionName, specialMessage, exception);;

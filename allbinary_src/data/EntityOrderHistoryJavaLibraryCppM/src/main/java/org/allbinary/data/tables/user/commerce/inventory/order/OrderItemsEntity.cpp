@@ -231,7 +231,7 @@ vector->add(order->getStoreName());
     
 vector->add(itemInterface->getId());
     
-vector->add(basket->getNumberOf(item)->toString());
+vector->add(JavaString::valueOf(basket->getNumberOf(item)));
     
 vector->add(itemInterface->getNewOrUsed());
     
@@ -263,7 +263,7 @@ vector->add(itemInterface->getLargeImage());
     
 vector->add(itemInterface->getWeight());
     
-vector->add(itemInterface->getPrice()->toString());
+vector->add(JavaString::valueOf(itemInterface->getPrice()));
     
 vector->add(itemInterface->getComment());
     
@@ -326,7 +326,7 @@ this->insert(vector);
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(JavaString::valueOf("Command Failed: ") +JavaString::valueOf(vector->toString()), this, INSERT, &e);
+                                    this->logUtil->put(JavaString::valueOf("Command Failed: ") +JavaString::valueOf(JavaString::valueOf(vector)), this, INSERT, &e);
     
 
                                     }
@@ -752,7 +752,7 @@ stringBuffer->append(") )");
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

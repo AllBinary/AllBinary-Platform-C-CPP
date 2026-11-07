@@ -537,7 +537,7 @@ UserEntityFactory::getInstance()->update(userName, newPasswordHashMap);
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPER))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Role is null: ") +JavaString::valueOf(userInterface->getRole())) +JavaString::valueOf(" Valid Roles: ")) +JavaString::valueOf(roles->toString()), this, "isRoleValid()");
+                                    this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Role is null: ") +JavaString::valueOf(userInterface->getRole())) +JavaString::valueOf(" Valid Roles: ")) +JavaString::valueOf(JavaString::valueOf(roles)), this, "isRoleValid()");
     
 
                                     }
@@ -601,13 +601,13 @@ this->request->removeAttribute(WeblisketSessionData::REMOVABLEPASSWORD);
     
 stringBuffer->append("Role is not valid: ");
     
-stringBuffer->append(userInterface->getRole()->toString());
+stringBuffer->append(JavaString::valueOf(userInterface->getRole()));
     
 stringBuffer->append(" Valid Roles: ");
     
-stringBuffer->append(roles->toString());
+stringBuffer->append(JavaString::valueOf(roles));
     
-this->logUtil->putF(stringBuffer->toString(), this, "isRoleValid()");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "isRoleValid()");
     
 
                                     }

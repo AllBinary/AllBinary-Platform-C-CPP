@@ -269,7 +269,7 @@ this->repaintProcessor->process();
             
     Font* font = graphics->getFont();;
     
-this->logUtil->putF((new StringMaker())->append(this->commonStrings->START)->append(this->canvasStrings->FD_WIDTH)->appendint(MyFontProcessor::defaultCharWidth(font))->append(this->canvasStrings->FD_HEIGHT)->appendint(font->getHeight())->toString(), this, this->canvasStrings->UPDATE_MEASUREMENT);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->commonStrings->START)->append(this->canvasStrings->FD_WIDTH)->appendint(MyFontProcessor::defaultCharWidth(font))->append(this->canvasStrings->FD_HEIGHT)->appendint(font->getHeight())), this, this->canvasStrings->UPDATE_MEASUREMENT);
     
 this->fontHeight= font->getHeight();
     
@@ -300,7 +300,7 @@ ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
 
 
     auto GameCommandCanvas::onDisplayChangeEvent(DisplayChangeEvent* displayChangeEvent) -> void{
-this->logUtil->putF((new StringMaker())->append(this->commonStrings->START)->append(DisplayInfoSingleton::getInstance()->toString())->toString(), this, this->canvasStrings->ON_DISPLAY_CHANGE_EVENT);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->commonStrings->START)->append(JavaString::valueOf(DisplayInfoSingleton::getInstance()))), this, this->canvasStrings->ON_DISPLAY_CHANGE_EVENT);
     
 this->myFontProcessor= this->updateMyFontProcessor;
     
@@ -448,7 +448,7 @@ this->keyRepeatedByDevice(keyCode, 0);
 
 
     auto GameCommandCanvas::keyPressedByDevice(int32_t keyCode, int32_t deviceId) -> void{
-this->logUtil->putF((new StringMaker())->append(CommonSeps::getInstance()->SPACE)->appendint(keyCode)->toString(), this, this->gameInputStrings->KEY_PRESSED);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(CommonSeps::getInstance()->SPACE)->appendint(keyCode)), this, this->gameInputStrings->KEY_PRESSED);
     
 this->addGameKeyEvent(keyCode, 0, false);
     
@@ -495,7 +495,7 @@ this->downGameKeyEventHandler->getInstanceForDevice(deviceId)->fireEvent(gameKey
                                     }
                                 
                         else {
-                            this->logUtil->putF((new StringMaker())->append(this->gameInputStrings->NO_KEY)->appendint(keyCode)->toString(), this, this->gameInputStrings->ADD_KEY_EVENT);
+                            this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->gameInputStrings->NO_KEY)->appendint(keyCode)), this, this->gameInputStrings->ADD_KEY_EVENT);
     
 
                         }
@@ -532,7 +532,7 @@ this->upGameKeyEventHandler->getInstanceForDevice(deviceId)->fireEvent(gameKeyEv
                                     }
                                 
                         else {
-                            this->logUtil->putF((new StringMaker())->append(this->gameInputStrings->NO_KEY)->appendint(keyCode)->toString(), this, this->gameInputStrings->REMOVE_KEY_EVENT);
+                            this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->gameInputStrings->NO_KEY)->appendint(keyCode)), this, this->gameInputStrings->REMOVE_KEY_EVENT);
     
 
                         }

@@ -108,7 +108,7 @@ this->logUtil->putF(CommonStrings::getInstance()->NOT_IMPLEMENTED, this, "setLoa
 
 
     auto ResourceUtil::setClassLoader(ClassLoader* classLoader) -> void{
-this->logUtil->putF((new StringMaker())->append("Resource Loader: ")->append(classLoader->getClass()->getName())->toString(), this, "setClassLoader");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Resource Loader: ")->append(classLoader->getClass()->getName())), this, "setClassLoader");
     
 ResourceUtil::classLoader= classLoader;
     
@@ -138,7 +138,7 @@ ResourceUtil::classLoader= classLoader;
                                     
 
 
-                            throw Exception((new StringMaker())->append("Unable to obtain: ")->append(resource)->toString());
+                            throw Exception(JavaString::valueOf((new StringMaker())->append("Unable to obtain: ")->append(resource)));
                     
 
                                     }

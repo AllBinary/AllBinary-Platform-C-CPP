@@ -147,7 +147,7 @@ stringBuffer->append(password);
 stringBuffer->append(this->WITH_GRANT_OPTION);
     
 
-    std::string sqlStatement = stringBuffer->toString();;
+    std::string sqlStatement = JavaString::valueOf(stringBuffer);;
     
 this->sqlCommandLog->append(sqlStatement);
     

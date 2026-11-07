@@ -472,23 +472,23 @@ hashMap->put(OrderHistoryData::TRANSDATE, this->transDate);
     
 hashMap->put(OrderHistoryData::CANCELDATE, this->cancelDate);
     
-hashMap->put(OrderHistoryData::ORDERDATEFORMATTED, (new Date((int64_t(this->orderDate))))->toString());
+hashMap->put(OrderHistoryData::ORDERDATEFORMATTED, JavaString::valueOf((new Date((int64_t(this->orderDate))))));
     
-hashMap->put(OrderHistoryData::SHIPPEDDATEFORMATTED, (new Date((int64_t(this->shipDate))))->toString());
+hashMap->put(OrderHistoryData::SHIPPEDDATEFORMATTED, JavaString::valueOf((new Date((int64_t(this->shipDate))))));
     
-hashMap->put(OrderHistoryData::TRANSDATEFORMATTED, (new Date((int64_t(this->transDate))))->toString());
+hashMap->put(OrderHistoryData::TRANSDATEFORMATTED, JavaString::valueOf((new Date((int64_t(this->transDate))))));
     
-hashMap->put(OrderHistoryData::CANCELDATEFORMATTED, (new Date((int64_t(this->cancelDate))))->toString());
+hashMap->put(OrderHistoryData::CANCELDATEFORMATTED, JavaString::valueOf((new Date((int64_t(this->cancelDate))))));
     
 hashMap->put(OrderHistoryData::STATUS, this->status);
     
-hashMap->put(OrderHistoryData::SUBTOTAL, this->subTotal->toString());
+hashMap->put(OrderHistoryData::SUBTOTAL, JavaString::valueOf(this->subTotal));
     
-hashMap->put(OrderHistoryData::TOTAL, this->total->toString());
+hashMap->put(OrderHistoryData::TOTAL, JavaString::valueOf(this->total));
     
-hashMap->put(OrderHistoryData::SHIPPINGCOST, this->shippingCost->toString());
+hashMap->put(OrderHistoryData::SHIPPINGCOST, JavaString::valueOf(this->shippingCost));
     
-hashMap->put(OrderHistoryData::TAX, this->taxes->toString());
+hashMap->put(OrderHistoryData::TAX, JavaString::valueOf(this->taxes));
     
 
 

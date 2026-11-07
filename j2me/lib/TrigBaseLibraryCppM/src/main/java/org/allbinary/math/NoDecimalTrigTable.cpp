@@ -2543,7 +2543,7 @@ stringBuffer->appendint(dy);
 
 
 
-                            throw Exception(stringBuffer->toString());
+                            throw Exception(JavaString::valueOf(stringBuffer));
                     
 }
 
@@ -2560,7 +2560,7 @@ stringBuffer->appendint(dy);
 
     StringMaker* stringMaker = new StringMaker();;
     
-PreLogUtil::put(stringMaker->append("screenX: ")->appendint(screenX)->append(" screenY: ")->appendint(screenY)->append(" targetX: ")->appendint(targetX)->append(" targetY: ")->appendint(targetY)->toString(), this, METHOD_NAME);
+PreLogUtil::put(JavaString::valueOf(stringMaker->append("screenX: ")->appendint(screenX)->append(" screenY: ")->appendint(screenY)->append(" targetX: ")->appendint(targetX)->append(" targetY: ")->appendint(targetY)), this, METHOD_NAME);
     
 
     int32_t targetX2 = static_cast<int32_t>( -targetX);;
@@ -2625,7 +2625,7 @@ angle= angleFactory->getAt(static_cast<int32_t>(angleOfTarget));
     
 stringMaker->delete_(0, stringMaker->length());
     
-PreLogUtil::put(stringMaker->append(CommonLabels::getInstance()->INDEX_LABEL)->appendint(index)->append(" index2: ")->appendint(index2)->append(PositionStrings::getInstance()->DX_LABEL)->appendint(dx[index])->append(PositionStrings::getInstance()->DY_LABEL)->appendint(dy[index2])->append(TARGET_ANGLE)->appendshort(angleOfTarget)->append(CommonSeps::getInstance()->EQUALS)->appendshort(angle->getValue())->toString(), this, METHOD_NAME);
+PreLogUtil::put(JavaString::valueOf(stringMaker->append(CommonLabels::getInstance()->INDEX_LABEL)->appendint(index)->append(" index2: ")->appendint(index2)->append(PositionStrings::getInstance()->DX_LABEL)->appendint(dx[index])->append(PositionStrings::getInstance()->DY_LABEL)->appendint(dy[index2])->append(TARGET_ANGLE)->appendshort(angleOfTarget)->append(CommonSeps::getInstance()->EQUALS)->appendshort(angle->getValue())), this, METHOD_NAME);
     
 }
 

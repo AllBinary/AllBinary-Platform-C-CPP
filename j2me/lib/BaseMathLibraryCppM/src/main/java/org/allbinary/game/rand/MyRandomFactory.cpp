@@ -284,7 +284,7 @@ stringBuilder->appendint(randomFactory->getAbsoluteNextInt(3))->append(commonSep
     
 }
 
-System.out.println(stringBuilder->toString());
+System.out.println(JavaString::valueOf(stringBuilder));
     
 stringBuilder->delete_(0, stringBuilder->length());
     
@@ -323,7 +323,7 @@ stringBuilder->appendint(intArray[index])->append(commonSeps->COMMA);
     
 }
 
-System.out.println(stringBuilder->toString());
+System.out.println(JavaString::valueOf(stringBuilder));
     
 stringBuilder->delete_(0, stringBuilder->length());
     
@@ -338,7 +338,7 @@ stringBuilder->appendint(intArray2[index])->append(commonSeps->COMMA);
     
 }
 
-System.out.println(stringBuilder->toString());
+System.out.println(JavaString::valueOf(stringBuilder));
     
 
     bool found= false;;

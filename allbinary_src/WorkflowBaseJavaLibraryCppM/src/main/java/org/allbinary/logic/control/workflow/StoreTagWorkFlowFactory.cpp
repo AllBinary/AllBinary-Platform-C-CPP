@@ -146,7 +146,7 @@ stringBuffer->append(StoreTagWorkFlowFactory::instance->getClass()->getName());
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil->putF(stringBuffer->toString(), this, commonStrings->GET_INSTANCE);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, commonStrings->GET_INSTANCE);
     
 
                                     }
@@ -198,7 +198,7 @@ stringBuffer->append(StoreTagWorkFlowFactory::instance->getClass()->getName());
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil->put(stringBuffer->toString(), this, commonStrings->GET_INSTANCE, &e);
+this->logUtil->put(JavaString::valueOf(stringBuffer), this, commonStrings->GET_INSTANCE, &e);
     
 
                                     }
@@ -234,7 +234,7 @@ stringBuffer->append(StoreTagWorkFlowFactory::instance->getClass()->getName());
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil->put(stringBuffer->toString(), this, commonStrings->GET_INSTANCE, &e);
+this->logUtil->put(JavaString::valueOf(stringBuffer), this, commonStrings->GET_INSTANCE, &e);
     
 
                                     }

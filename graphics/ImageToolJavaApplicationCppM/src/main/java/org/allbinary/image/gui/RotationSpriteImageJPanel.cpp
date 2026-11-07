@@ -273,7 +273,7 @@ outer->getParent().repaint();
 
     int32_t extensionIndex = JavaString::indexOf(filePath, outer->imageStrings->PNG_EXTENSION);;
     
-filePath= (new StringMaker())->append(JavaString::substring(filePath, 0, extensionIndex))->append(CommonSeps::getInstance()->UNDERSCORE)->append("sprite")->append(outer->imageStrings->PNG_EXTENSION)->toString();
+filePath= JavaString::valueOf((new StringMaker())->append(JavaString::substring(filePath, 0, extensionIndex))->append(CommonSeps::getInstance()->UNDERSCORE)->append("sprite")->append(outer->imageStrings->PNG_EXTENSION));
     
 logUtil->putF(JavaString::valueOf("New File Path: ") +JavaString::valueOf(filePath), this, outer->commonStrings->RUN);
     

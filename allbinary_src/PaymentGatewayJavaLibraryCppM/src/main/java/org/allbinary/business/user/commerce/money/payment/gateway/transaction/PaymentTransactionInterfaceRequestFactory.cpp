@@ -226,9 +226,9 @@ PaymentTransactionInterfaceRequestFactory::PaymentTransactionInterfaceRequestFac
 
     Payment* orderPaymentInfo = orderReview->getPaymentInfo();;
     
-orderPaymentInfo->setTransactionType(TransactionTypeFactory::getInstance()->SALE->toString());
+orderPaymentInfo->setTransactionType(JavaString::valueOf(TransactionTypeFactory::getInstance()->SALE));
     
-orderPaymentInfo->setTenderType(TenderTypeFactory::getInstance()->CREDITCARD->toString());
+orderPaymentInfo->setTenderType(JavaString::valueOf(TenderTypeFactory::getInstance()->CREDITCARD));
     
 orderReview->setPaymentInfo(orderPaymentInfo);
     
@@ -308,7 +308,7 @@ orderReview->setPaymentInfo(orderPaymentInfo);
                         if(StringValidationUtil::getInstance()->isEmpty(gatewayName))
                         
                                     {
-                                    gatewayName= httpServletRequest->getParameter(PaymentGatewayData::NAME->toString());
+                                    gatewayName= httpServletRequest->getParameter(JavaString::valueOf(PaymentGatewayData::NAME));
     
 
                                     }

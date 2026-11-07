@@ -119,7 +119,7 @@ OperatingSystemFactory::OperatingSystemFactory() : logUtil(LogUtil::getInstance(
     
 this->genericOperatingSystem= AndroidOperatingSystemFactory::getInstance()->getOperatingSystemInstance();
     
-this->logUtil->putF((new StringMaker())->append("Operating System Info: ")->append(this->genericOperatingSystem->toString())->toString(), this, commonStrings->GET_INSTANCE);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Operating System Info: ")->append(JavaString::valueOf(this->genericOperatingSystem))), this, commonStrings->GET_INSTANCE);
     
 
                                     }
@@ -132,7 +132,7 @@ this->logUtil->putF((new StringMaker())->append("Operating System Info: ")->appe
     
 this->genericOperatingSystem= AndroidOperatingSystemFactory::getInstance()->getOperatingSystemInstance();
     
-this->logUtil->putF((new StringMaker())->append("Operating System Info: ")->append(this->genericOperatingSystem->toString())->toString(), this, commonStrings->GET_INSTANCE);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Operating System Info: ")->append(JavaString::valueOf(this->genericOperatingSystem))), this, commonStrings->GET_INSTANCE);
     
 
                                     }
@@ -141,7 +141,7 @@ this->logUtil->putF((new StringMaker())->append("Operating System Info: ")->appe
                             
 
 
-                            throw Exception((new StringMaker())->append("OS Not Supported: ")->append(osName)->toString());
+                            throw Exception(JavaString::valueOf((new StringMaker())->append("OS Not Supported: ")->append(osName)));
                     
 
                         }

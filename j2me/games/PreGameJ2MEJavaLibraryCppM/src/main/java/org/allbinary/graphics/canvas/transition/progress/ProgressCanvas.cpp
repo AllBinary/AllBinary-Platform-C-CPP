@@ -327,7 +327,7 @@ this->inGameProcessor= this->IN_GAME_PROCESSOR;
 
 
     auto ProgressCanvas::addEarlyPortion(int32_t value, std::string text, int32_t index) -> void{
-this->setText((new StringMaker())->append(text)->append(JavaString::valueOf(SmallIntegerSingletonFactory::getInstance()->getAt(index)))->toString());
+this->setText(JavaString::valueOf((new StringMaker())->append(text)->append(JavaString::valueOf(SmallIntegerSingletonFactory::getInstance()->getAt(index)))));
     
 this->gauge->setValue(this->gauge->getValue() +this->getMaxValue() /value);
     
@@ -335,7 +335,7 @@ this->gauge->setValue(this->gauge->getValue() +this->getMaxValue() /value);
 
 
     auto ProgressCanvas::addPortion(int32_t value, std::string text, int32_t index) -> void{
-this->setText((new StringMaker())->append(text)->append(JavaString::valueOf(SmallIntegerSingletonFactory::getInstance()->getAt(index)))->toString());
+this->setText(JavaString::valueOf((new StringMaker())->append(text)->append(JavaString::valueOf(SmallIntegerSingletonFactory::getInstance()->getAt(index)))));
     
 PreLogUtil::put(this->text, this, this->ADD_PORTION);
     

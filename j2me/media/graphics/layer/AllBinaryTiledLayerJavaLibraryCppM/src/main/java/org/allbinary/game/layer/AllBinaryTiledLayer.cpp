@@ -129,7 +129,7 @@ stringBuffer->append(" columns: ");
     
 stringBuffer->appendint(this->getColumns());
     
-this->logUtil->putF(stringBuffer->toString(), this, "setCells");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "setCells");
     
 
     int32_t rows = this->getRows();;

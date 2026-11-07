@@ -116,7 +116,7 @@ this->list= new BasicArrayListD();
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil->putF((new StringMaker())->append(this->HASHTABLE_LABEL)->append(StringUtil::getInstance()->toString(hashtable))->toString(), this, commonStrings->GET_INSTANCE);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->HASHTABLE_LABEL)->append(StringUtil::getInstance()->toString(hashtable))), this, commonStrings->GET_INSTANCE);
     
 
     int32_t typeInteger = JavaBoxes::unbox<int32_t>(hashtable->get(Layer::ID));;

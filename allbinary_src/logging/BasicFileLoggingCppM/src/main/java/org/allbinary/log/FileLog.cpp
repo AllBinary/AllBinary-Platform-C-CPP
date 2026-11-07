@@ -94,7 +94,7 @@
 StringUtil* FileLog::stringUtil = StringUtil::getInstance();
 const std::string FileLog::extension = "dat";
 const std::string FileLog::fileName = .toCharArray();
-const std::string FileLog::backupFileName = FileLog::fileName.concat(".bak");
+const std::string FileLog::backupFileName = FileLog::fileName->concat(".bak");
 auto FileLog::logFile_owner() -> File* { static std::unique_ptr<File> value(new File(FileLog::logPath, FileLog::fileName)); return value.get(); }
 File* FileLog::logFile = FileLog::logFile_owner();
 
@@ -167,7 +167,7 @@ System.out.println(JavaString::valueOf("Error Creating Log: ") +JavaString::valu
             
     StringMaker* stringMaker = new StringMaker();;
     
-FileLog::logFileBak= new File(logPath, stringMaker->append(backupFileName)->append(CommonSeps::getInstance()->PERIOD)->appendint(backupIndex)->toString());
+FileLog::logFileBak= new File(logPath, JavaString::valueOf(stringMaker->append(backupFileName)->append(CommonSeps::getInstance()->PERIOD)->appendint(backupIndex)));
     
 
         while(FileLog::logFileBak->isFile())
@@ -176,7 +176,7 @@ FileLog::backupIndex++;
     
 stringMaker->delete_(0, stringMaker->length());
     
-FileLog::logFileBak= new File(logPath, stringMaker->append(backupFileName)->append(CommonSeps::getInstance()->PERIOD)->appendint(backupIndex)->toString());
+FileLog::logFileBak= new File(logPath, JavaString::valueOf(stringMaker->append(backupFileName)->append(CommonSeps::getInstance()->PERIOD)->appendint(backupIndex)));
     
 }
 

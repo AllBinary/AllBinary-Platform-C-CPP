@@ -161,7 +161,7 @@ logUtil->putF(THIS_IS_SLOW, this, commonStrings->CONSTRUCTOR);
                                     
 
 
-                            throw IllegalStateException((new StringMaker())->append("git ls-files failed for ")->append(rootAsString)->append(" with exit code ")->appendint(exitCode)->toString());
+                            throw IllegalStateException(JavaString::valueOf((new StringMaker())->append("git ls-files failed for ")->append(rootAsString)->append(" with exit code ")->appendint(exitCode)));
                     
 
                                     }

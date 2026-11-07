@@ -85,7 +85,7 @@ BasicArrayListS::BasicArrayListS(int32_t size) : BasicArrayList(NullUtil::getIns
                                     
 
 
-                            throw IllegalArgumentException((new StringMaker())->append("Init Size Exception: ")->appendint(size)->toString());
+                            throw IllegalArgumentException(JavaString::valueOf((new StringMaker())->append("Init Size Exception: ")->appendint(size)));
                     
 
                                     }

@@ -96,7 +96,7 @@ stringBuffer->appendint(this->currentIndex);
 
 
 
-                            throw IndexOutOfBoundsException(stringBuffer->toString());
+                            throw IndexOutOfBoundsException(JavaString::valueOf(stringBuffer));
                     
 
                                     }
@@ -147,7 +147,7 @@ stringBuffer->appendint(this->currentIndex);
 
 
 
-                            throw IndexOutOfBoundsException(stringBuffer->toString());
+                            throw IndexOutOfBoundsException(JavaString::valueOf(stringBuffer));
                     
 
                                     }
@@ -606,7 +606,7 @@ stringBuffer->appendint(this->currentIndex);
 
 
 
-                            throw IndexOutOfBoundsException(stringBuffer->toString());
+                            throw IndexOutOfBoundsException(JavaString::valueOf(stringBuffer));
                     
 
                                     }
@@ -641,7 +641,7 @@ stringBuffer->appendint(this->currentIndex);
 
 
 
-                            throw IndexOutOfBoundsException(stringBuffer->toString());
+                            throw IndexOutOfBoundsException(JavaString::valueOf(stringBuffer));
                     
 
                                     }
@@ -817,7 +817,7 @@ list->add(anyType);
                         for (
     int32_t index = 0;index < this->currentIndex; index++)
         {
-stringBuffer->append(this->objectArray[index]->toString());
+stringBuffer->append(JavaString::valueOf(this->objectArray[index]));
     
 stringBuffer->append(COMMA_SEP);
     
@@ -829,7 +829,7 @@ stringBuffer->append(COMMA_SEP);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

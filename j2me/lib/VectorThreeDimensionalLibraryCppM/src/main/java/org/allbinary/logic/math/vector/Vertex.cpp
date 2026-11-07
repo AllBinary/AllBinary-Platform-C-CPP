@@ -81,19 +81,19 @@ Vertex::Vertex() : x(new BasicDecimal(0)), y(new BasicDecimal(0)), z(new BasicDe
     
 stringBuffer->append(positionStrings->X_LABEL);
     
-stringBuffer->append(this->x->toString());
+stringBuffer->append(JavaString::valueOf(this->x));
     
 stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
 stringBuffer->append(positionStrings->Y_LABEL);
     
-stringBuffer->append(this->y->toString());
+stringBuffer->append(JavaString::valueOf(this->y));
     
 stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
 stringBuffer->append(positionStrings->Z_LABEL);
     
-stringBuffer->append(this->z->toString());
+stringBuffer->append(JavaString::valueOf(this->z));
     
 
 
@@ -101,7 +101,7 @@ stringBuffer->append(this->z->toString());
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

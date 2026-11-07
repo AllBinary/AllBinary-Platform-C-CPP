@@ -166,7 +166,7 @@ this->initImageCache(ImageCacheFactory::getInstance(), level);
     int32_t portion = 140;;
     
 
-    std::string loadingString = (new StringMaker())->append(this->toString())->append(" Loading: ")->toString();;
+    std::string loadingString = JavaString::valueOf((new StringMaker())->append(JavaString::valueOf(this))->append(" Loading: "));;
     
 
     int32_t index = 0;;

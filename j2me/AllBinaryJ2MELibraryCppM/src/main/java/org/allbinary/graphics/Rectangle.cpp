@@ -158,7 +158,7 @@ this->height= height;
 
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(this->getPoint()->toString());
+stringBuffer->append(JavaString::valueOf(this->getPoint()));
     
 stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
@@ -186,7 +186,7 @@ stringBuffer->appendint(this->getMaxY());
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

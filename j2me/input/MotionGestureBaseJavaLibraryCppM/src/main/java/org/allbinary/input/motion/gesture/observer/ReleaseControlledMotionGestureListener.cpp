@@ -190,7 +190,7 @@ this->motionGestureCollection->clear();
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->put((new StringMaker())->append(this->commonStrings->EXCEPTION_LABEL)->append(StringUtil::getInstance()->toString(ev->getMotionGesture()))->toString(), this, "release", &e);
+this->logUtil->put(JavaString::valueOf((new StringMaker())->append(this->commonStrings->EXCEPTION_LABEL)->append(StringUtil::getInstance()->toString(ev->getMotionGesture()))), this, "release", &e);
     
 }
 

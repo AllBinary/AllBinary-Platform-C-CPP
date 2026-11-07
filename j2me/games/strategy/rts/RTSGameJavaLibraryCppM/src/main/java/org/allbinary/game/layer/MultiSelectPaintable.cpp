@@ -160,7 +160,7 @@ stringBuffer->append(rootName);
                                 
 }
 
-this->rootNamesString= stringBuffer->toString();
+this->rootNamesString= JavaString::valueOf(stringBuffer);
     
 }
 

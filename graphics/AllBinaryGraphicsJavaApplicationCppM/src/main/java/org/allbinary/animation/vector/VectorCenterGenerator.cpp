@@ -154,7 +154,7 @@ this->setHeight(this->maxY -this->minY);
     CommonLabels* commonLabels = CommonLabels::getInstance();;
     
 
-    std::string s = (new StringMaker())->append(commonLabels->WIDTH_LABEL)->appendint(getWidth())->append(commonLabels->HEIGHT_LABEL)->appendint(getHeight())->append(" max: ")->appendint(max)->append(" middle: ")->appendint(middle)->toString();;
+    std::string s = JavaString::valueOf((new StringMaker())->append(commonLabels->WIDTH_LABEL)->appendint(getWidth())->append(commonLabels->HEIGHT_LABEL)->appendint(getHeight())->append(" max: ")->appendint(max)->append(" middle: ")->appendint(middle));;
     
 this->logUtil->putF(s, this, this->commonStrings->GET_INSTANCE);
     
@@ -176,7 +176,7 @@ this->dy= middle -currentMiddleY;
     auto VectorCenterGenerator::transform(HashMap<Object*, Object*>* hashMap) -> void{
 this->calculate(hashMap);
     
-this->logUtil->putF((new StringMaker())->append(" dx: ")->appendint(this->dx)->append(" dy: ")->appendint(this->dy)->toString(), this, this->commonStrings->GET_INSTANCE);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(" dx: ")->appendint(this->dx)->append(" dy: ")->appendint(this->dy)), this, this->commonStrings->GET_INSTANCE);
     
 
     std::vector<Object*> graphicItemArray = hashMap->keys().toArray();;

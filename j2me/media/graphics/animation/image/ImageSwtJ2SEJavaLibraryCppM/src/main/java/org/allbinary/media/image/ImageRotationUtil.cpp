@@ -168,7 +168,7 @@ this->imageSwtRotationUtil->rotateImage(originalSwtImage, copySwtImage, gc, tota
                                     }
                                 
                         else {
-                            PreLogUtil::put(JavaString::valueOf("No rotation for: ") +JavaString::valueOf(image->toString()), this, "rotateImage");
+                            PreLogUtil::put(JavaString::valueOf("No rotation for: ") +JavaString::valueOf(JavaString::valueOf(image)), this, "rotateImage");
     
 
                         }

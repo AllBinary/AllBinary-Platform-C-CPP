@@ -108,7 +108,7 @@ UsersValidationView::UsersValidationView(TransformInfoInterface* transformInfoIn
     TransformInfoHttpInterface* httpTransformInfoInterface = dynamic_cast<TransformInfoHttpInterface*>(this->getTransformInfoInterface());;
     
 
-    std::string role = JavaBoxes::unbox<std::string>(httpTransformInfoInterface->getPropertiesHashMap()->get(UserRoleData::NAME->toString()));;
+    std::string role = JavaBoxes::unbox<std::string>(httpTransformInfoInterface->getPropertiesHashMap()->get(JavaString::valueOf(UserRoleData::NAME)));;
     
 
     UserRole* userRole = UserRoleB::getRole(role);;

@@ -136,7 +136,7 @@ stringBuffer->appendint(userVector->size());
     
 stringBuffer->append(" users.");
     
-this->logUtil->putF(stringBuffer->toString(), this, "getEventHandler");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "getEventHandler");
     
 
                                     }

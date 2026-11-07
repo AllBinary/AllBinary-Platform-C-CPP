@@ -120,7 +120,7 @@ stringBuffer->append(" ClassLoader: ");
     
 stringBuffer->append(classLoader->getClass()->getName());
     
-this->logUtil->putF(stringBuffer->toString(), this, commonStrings->INIT);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, commonStrings->INIT);
     
 
     StringValidationUtil* stringValidationUtil = StringValidationUtil::getInstance();;
@@ -143,7 +143,7 @@ stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
 stringBuffer->append(URLGLOBALS::getWebappPath());
     
-this->logUtil->putF(stringBuffer->toString(), this, commonStrings->INIT);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, commonStrings->INIT);
     
 
                                     }
@@ -154,7 +154,7 @@ stringBuffer->append("Webapp Path Set To: ");
     
 stringBuffer->append(URLGLOBALS::getWebappPath());
     
-this->logUtil->putF(stringBuffer->toString(), this, commonStrings->INIT);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, commonStrings->INIT);
     
 }
 

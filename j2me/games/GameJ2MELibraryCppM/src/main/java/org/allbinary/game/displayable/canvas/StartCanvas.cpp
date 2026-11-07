@@ -422,7 +422,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->canvasStrings->ON
                                     
     std::vector<Object*> commandArray = 
                                                         {
-                                                            gameCommandsFactory->START_COMMAND,HighScoreCommands::getInstance()->DISPLAY,GameInputMappingCanvas::DISPLAY,gameCommandsFactory->DISPLAY_ABOUT
+                                                            JavaBoxes::toObject(gameCommandsFactory->START_COMMAND),JavaBoxes::toObject(HighScoreCommands::getInstance()->DISPLAY),JavaBoxes::toObject(GameInputMappingCanvas::DISPLAY),JavaBoxes::toObject(gameCommandsFactory->DISPLAY_ABOUT)
                                                         };;
     
 
@@ -665,7 +665,7 @@ DownGameKeyEventHandler::getInstance()->fireEvent(gameKeyEvent);
                                     }
                                 
                         else {
-                            this->logUtil->putF((new StringMaker())->append(this->gameInputStrings->NO_KEY)->appendint(keyCode)->toString(), this, this->gameInputStrings->ADD_KEY_EVENT);
+                            this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->gameInputStrings->NO_KEY)->appendint(keyCode)), this, this->gameInputStrings->ADD_KEY_EVENT);
     
 
                         }
@@ -700,7 +700,7 @@ UpGameKeyEventHandler::getInstance()->fireEvent(gameKeyEvent);
                                     }
                                 
                         else {
-                            this->logUtil->putF((new StringMaker())->append(this->gameInputStrings->NO_KEY)->appendint(keyCode)->toString(), this, this->gameInputStrings->REMOVE_KEY_EVENT);
+                            this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->gameInputStrings->NO_KEY)->appendint(keyCode)), this, this->gameInputStrings->REMOVE_KEY_EVENT);
     
 
                         }
@@ -766,7 +766,7 @@ this->setPaused(false);
 
 
     auto StartCanvas::isGameOver() -> bool{
-this->logUtil->putF((new StringMaker())->append(this->commonStrings->NOT_IMPLEMENTED)->append(" since not a game")->toString(), this, "isGameOver");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->commonStrings->NOT_IMPLEMENTED)->append(" since not a game")), this, "isGameOver");
     
 
 
@@ -913,7 +913,7 @@ this->updateDemoState();
 
 
     auto StartCanvas::updateDemoState() -> void{
-PreLogUtil::put(SmallIntegerSingletonFactory::getInstance()->createInstance(this->state)->toString(), this, this->SET_STATE);
+PreLogUtil::put(JavaString::valueOf(SmallIntegerSingletonFactory::getInstance()->createInstance(this->state)), this, this->SET_STATE);
     
 this->getBasicGameDemoPaintable()->setState(this->state);
     
@@ -1181,7 +1181,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->SET_RUNNING, &e);
 
     ProgressCanvas* progressCanvas = ProgressCanvasFactory::getInstance();;
     
-this->baseGameStatistics->add((new StringMaker())->append(StartCanvas::BOT_GAME_STATS)->append(this->baseGameStatistics->toString())->append(CommonSeps::getInstance()->NEW_LINE)->toString());
+this->baseGameStatistics->add(JavaString::valueOf((new StringMaker())->append(StartCanvas::BOT_GAME_STATS)->append(JavaString::valueOf(this->baseGameStatistics))->append(CommonSeps::getInstance()->NEW_LINE)));
     
 this->baseGameStatistics->init();
     

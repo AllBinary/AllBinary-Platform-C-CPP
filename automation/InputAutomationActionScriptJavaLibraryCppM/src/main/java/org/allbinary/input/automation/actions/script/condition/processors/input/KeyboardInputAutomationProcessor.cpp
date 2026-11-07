@@ -93,7 +93,7 @@ KeyboardInputAutomationProcessor::KeyboardInputAutomationProcessor(){
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-logUtil->putF(CommonLabels::getInstance()->START +keyActionScriptInputInterface->toString(), "KeyInputAutomationProcessor", commonStrings->PROCESS);
+logUtil->putF(CommonLabels::getInstance()->START +JavaString::valueOf(keyActionScriptInputInterface), "KeyInputAutomationProcessor", commonStrings->PROCESS);
     
 
     InputRobotInterface* inputRobotInterface = keyActionScriptInputInterface->getInputRobotInterface();;

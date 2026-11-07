@@ -111,7 +111,7 @@
 
 ABHashtable<Object*, Object*>* RemoteHighScores::hashTable = StdUtil::getInstance()->createHashtable();
 
-RemoteHighScores::RemoteHighScores(AbeClientInformationInterface* abeClientInformation, SoftwareInformation* softwareInformation, GameInfo* gameInfo, std::string heading, std::string columnTwoHeading, bool ascending, bool preload) : HighScores(gameInfo->toString(), heading, columnTwoHeading), logUtil(LogUtil::getInstance()), enumerationUtil(EnumerationUtil::getInstance()){
+RemoteHighScores::RemoteHighScores(AbeClientInformationInterface* abeClientInformation, SoftwareInformation* softwareInformation, GameInfo* gameInfo, std::string heading, std::string columnTwoHeading, bool ascending, bool preload) : HighScores(JavaString::valueOf(gameInfo), heading, columnTwoHeading), logUtil(LogUtil::getInstance()), enumerationUtil(EnumerationUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -255,7 +255,7 @@ this->getList()->add(highScore);
                                 
                         else {
                             
-    std::string NEXT_ELEMENT = (new StringMaker())->append(CommonLabels::getInstance()->NEXT)->append("Element: ")->toString();;
+    std::string NEXT_ELEMENT = JavaString::valueOf((new StringMaker())->append(CommonLabels::getInstance()->NEXT)->append("Element: "));;
     
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;

@@ -120,7 +120,7 @@ TouchButtonAndroidResources::TouchButtonAndroidResources() {
                                                         };;
     
 
-    std::vector<int32_t> RESOURCE_ARRAY = std::vector<int32_t>(RESOURCE_STRING_ARRAY::size());;
+    std::vector<int32_t> RESOURCE_ARRAY = std::vector<int32_t>(RESOURCE_STRING_ARRAY.size());;
     
 
                         if(CommonButtons::getInstance()->STANDARD_BUTTON_SIZE == 128)
@@ -183,7 +183,7 @@ RESOURCE_ARRAY[8]= androidResources->raw->touch_button_strafe_right_arrow_64_by_
 
 
                         for (
-    int32_t index = 0;index < RESOURCE_ARRAY::size(); index++)
+    int32_t index = 0;index < RESOURCE_ARRAY.size(); index++)
         {
 resourceUtil->addResource(RESOURCE_STRING_ARRAY[index]->RESOURCE, Integer.valueOf(RESOURCE_ARRAY[index]));
     

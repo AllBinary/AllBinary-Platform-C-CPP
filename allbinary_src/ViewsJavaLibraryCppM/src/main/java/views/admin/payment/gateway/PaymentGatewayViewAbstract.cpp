@@ -86,7 +86,7 @@ this->getFormData(dynamic_cast<HttpServletRequest*>(this->getPageContext()->getR
     std::string storeName = this->getWeblisketSession()->getStoreName();;
     
 
-    std::string gatewayName = request->getParameter(PaymentGatewayData::NAME->toString());;
+    std::string gatewayName = request->getParameter(JavaString::valueOf(PaymentGatewayData::NAME));;
     
 this->setPaymentGatewayPrimaryKey(new PaymentGatewayPrimaryKey(storeName, gatewayName));
     

@@ -186,7 +186,7 @@ this->totalUsersByRoleHashMap->put(nextUserRole, currentNumberOfUsersForRole);
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap->put(StoreFrontUsersStatisticsData::getInstance()->NUMBEROFUSERS, this->getNumberOfUsers().toString());
+hashMap->put(StoreFrontUsersStatisticsData::getInstance()->NUMBEROFUSERS, JavaString::valueOf(this->getNumberOfUsers()));
     
 
     Set* setOfUserRoles = this->totalUsersByRoleHashMap->keys();;
@@ -212,7 +212,7 @@ nextUserRole= dynamic_cast<UserRole*>(userRoleArray[index]);
 
     int64_t totalForRole = JavaBoxes::unbox<int64_t>(this->totalUsersByRoleHashMap->get(nextUserRole));;
     
-hashMap->put(nextUserRole->toString(), JavaString::valueOf(totalForRole));
+hashMap->put(JavaString::valueOf(nextUserRole), JavaString::valueOf(totalForRole));
     
 }
 

@@ -711,7 +711,7 @@ stringBuffer->append(" Request URI: ");
     
 stringBuffer->append(request->getRequestURI());
     
-this->logUtil->putF(stringBuffer->toString(), this, this->tagStrings->DO_START_TAG);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->tagStrings->DO_START_TAG);
     
 
                                     }

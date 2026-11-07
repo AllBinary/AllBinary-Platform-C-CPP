@@ -317,7 +317,7 @@ stringBuffer->append(" Number Of Children: ");
     
 stringBuffer->appendint(streetAddressNode->getChildNodes()->getLength());
     
-this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALID);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->commonStrings->IS_VALID);
     
 
                                     }

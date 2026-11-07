@@ -185,7 +185,7 @@ this->updateAllFromList(this->list, inputToGameKeyMapping);
 
 
     auto BasicTouchInputFactory::updateAllFromList(BasicArrayList* list, InputToGameKeyMapping* inputToGameKeyMapping) -> void{
-this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->START_LABEL)->appendint(list->size())->toString(), this, "updateAll");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(CommonLabels::getInstance()->START_LABEL)->appendint(list->size())), this, "updateAll");
     
 
     TouchButtonInput* touchButtonInput;;

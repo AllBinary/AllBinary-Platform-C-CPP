@@ -86,7 +86,7 @@ this->selectedHighScores= selectedHighScores;
     auto HighScoresHelper2::setHighScoresArray(std::vector<HighScores*> highScoresArrayP) -> void{
 HighScoresHelperBase::setHighScoresArray(highScoresArrayP);
     
-this->circularIndexUtil->setSize(this->highScoresArrayP->size());
+this->circularIndexUtil->setSize(this->highScoresArrayP.size());
     
 this->selectHighScores();
     
@@ -95,7 +95,7 @@ this->selectHighScores();
 
     auto HighScoresHelper2::selectHighScores() -> void{
 
-                        if(this->highScoresArrayP->size() == 0)
+                        if(this->highScoresArrayP.size() == 0)
                         
                                     {
                                     this->setSelectedHighScores(NullHighScoresSingletonFactory::getInstance());
@@ -120,7 +120,7 @@ this->circularIndexUtil->next();
     int32_t index = 0;;
     
 
-        while(highScores->getTotal() < 1 && index < this->highScoresArrayP->size())
+        while(highScores->getTotal() < 1 && index < this->highScoresArrayP.size())
         {
 highScores= this->highScoresArrayP[this->circularIndexUtil->next()];
     

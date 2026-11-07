@@ -180,7 +180,7 @@ this->fontDebugFactory->setFont(existingFont, graphics);
 
     int32_t level = this->gameCanvas->getLayerManager()->getGameInfo()->getCurrentLevel();;
     
-this->stringArray[0]= (new StringMaker())->append(this->BEGIN_LEVEL)->appendint(level)->toString();
+this->stringArray[0]= JavaString::valueOf((new StringMaker())->append(this->BEGIN_LEVEL)->appendint(level));
     
 
 

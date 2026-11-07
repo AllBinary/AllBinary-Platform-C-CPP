@@ -261,15 +261,15 @@ this->setTableName(this->tableName);
 
     Money* total = new Money();;
     
-total->add(shippingCost->toString());
+total->add(JavaString::valueOf(shippingCost));
     
-total->add(subTotal->toString());
+total->add(JavaString::valueOf(subTotal));
     
-tax->add(total->toString());
+tax->add(JavaString::valueOf(total));
     
 tax->multiply(taxRate);
     
-total->add(tax->toString());
+total->add(JavaString::valueOf(tax));
     
 
     std::string empty = StringUtil::getInstance()->EMPTY_STRING;;
@@ -415,13 +415,13 @@ vector->add(empty);
                             
 vector->add(order->getShippingMethod());
     
-vector->add(subTotal->toString());
+vector->add(JavaString::valueOf(subTotal));
     
-vector->add(shippingCost->toString());
+vector->add(JavaString::valueOf(shippingCost));
     
-vector->add(tax->toString());
+vector->add(JavaString::valueOf(tax));
     
-vector->add(total->toString());
+vector->add(JavaString::valueOf(total));
     
 vector->add(order->getSpecial());
     
@@ -976,7 +976,7 @@ stringBuffer->append(") )");
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

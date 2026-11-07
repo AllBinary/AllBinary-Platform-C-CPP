@@ -152,7 +152,7 @@ stringBuffer->append(" == ");
     
 stringBuffer->append(stringUtil->toString(mappedToInput));
     
-this->logUtil->putF(stringBuffer->toString(), this, "InputMapping::remove");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "InputMapping::remove");
     
 
     BasicArrayList* list = this->getMappedInput(input);;
@@ -175,7 +175,7 @@ stringBuffer->append(" == ");
     
 stringBuffer->append(stringUtil->toString(mappedToInput));
     
-this->logUtil->putF(stringBuffer->toString(), this, "InputMapping::remove");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "InputMapping::remove");
     
 
                                     }
@@ -191,7 +191,7 @@ stringBuffer->append(" == ");
     
 stringBuffer->append(stringUtil->toString(mappedToInput));
     
-this->logUtil->putF(stringBuffer->toString(), this, "InputMapping::remove");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "InputMapping::remove");
     
 
                         }

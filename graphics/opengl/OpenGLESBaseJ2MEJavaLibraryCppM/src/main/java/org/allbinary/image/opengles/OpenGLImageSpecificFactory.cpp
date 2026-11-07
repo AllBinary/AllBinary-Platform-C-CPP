@@ -86,7 +86,7 @@ OpenGLImageSpecificFactory* OpenGLImageSpecificFactory::instance = OpenGLImageSp
     auto OpenGLImageSpecificFactory::setImageFactory(OpenGLImageFactory* imageFactory) -> void{
 this->imageFactory= imageFactory;
     
-PreLogUtil::put((new StringMaker())->append("Selected Image Factory: ")->append(StringUtil::getInstance()->toString(this->imageFactory))->toString(), this, "setImageFactory");
+PreLogUtil::put(JavaString::valueOf((new StringMaker())->append("Selected Image Factory: ")->append(StringUtil::getInstance()->toString(this->imageFactory))), this, "setImageFactory");
     
 }
 

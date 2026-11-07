@@ -188,7 +188,7 @@ stringBuffer->append(url);
     
 stringBuffer->append(this->CREATED);
     
-this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->METHOD_GET);
     
 
                                     }
@@ -212,7 +212,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET);
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGPOOL))
                         
                                     {
-                                    this->logUtil->putF((new StringMaker())->append(this->NEW_CONNECTION_FOR)->append(url)->append(this->CREATED)->toString(), this, METHOD_GET);
+                                    this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->NEW_CONNECTION_FOR)->append(url)->append(this->CREATED)), this, METHOD_GET);
     
 
                                     }
@@ -269,7 +269,7 @@ stringBuffer->appendint(connectionVector->size());
     
 this->logUtil->putF(JavaString::valueOf(NUMBER_OF_SQL_CONNECTION_VECTORS) +JavaString::valueOf(this->connectionHashMap->size()), this, this->METHOD_GET);
     
-this->logUtil->putF(stringBuffer->toString(), this, METHOD_GET);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, METHOD_GET);
     
 
                                     }
@@ -306,7 +306,7 @@ stringBuffer->append(url);
     
 stringBuffer->append(this->CREATED);
     
-this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->METHOD_GET);
     
 
                                     }
@@ -386,7 +386,7 @@ stringBuffer->appendint(connectionVector->size());
     
 this->logUtil->putF(this->NUMBER_OF_SQL_CONNECTION_VECTORS +this->connectionHashMap->size(), this, this->METHOD_ADD);
     
-this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_ADD);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->METHOD_ADD);
     
 
                                     }

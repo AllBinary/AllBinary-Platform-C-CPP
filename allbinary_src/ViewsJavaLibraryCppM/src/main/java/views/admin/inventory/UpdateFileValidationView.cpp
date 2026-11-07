@@ -233,7 +233,7 @@ stringBuffer->append(storeFrontInterface->getCurrentHostNamePath());
 stringBuffer->append(this->itemInterface->getCategory());
     
 
-    std::string fullCategory = stringBuffer->toString();;
+    std::string fullCategory = JavaString::valueOf(stringBuffer);;
     
 
     AbFile* categoryFile = AbFile::createAbFile(fullCategory);;
@@ -475,7 +475,7 @@ this->validationInfo(stringBuffer, fileName, fileItemFieldName, size);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 
@@ -528,7 +528,7 @@ stringBuffer->append(">");
     
 stringBuffer->appendint(fileData->MAXIMAGEFILESIZE);
     
-this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALID);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->commonStrings->IS_VALID);
     
 
                                     }

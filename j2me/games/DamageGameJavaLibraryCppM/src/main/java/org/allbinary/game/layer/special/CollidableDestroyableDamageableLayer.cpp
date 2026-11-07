@@ -518,7 +518,7 @@ stringBuffer->append(commonSeps->NEW_LINE);
                         for (
     int32_t index = 0;index < size; index++)
         {
-stringBuffer->append(groupInterfaceArray[index]->toString());
+stringBuffer->append(JavaString::valueOf(groupInterfaceArray[index]));
     
 stringBuffer->append(commonSeps->COMMA);
     
@@ -535,7 +535,7 @@ stringBuffer->append(commonSeps->COMMA);
                                     {
                                     stringBuffer->append(commonSeps->NEW_LINE);
     
-stringBuffer->append(pickupBehavior->toString());
+stringBuffer->append(JavaString::valueOf(pickupBehavior));
     
 
                                     }
@@ -579,7 +579,7 @@ this->toStringAppend(stringBuffer);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

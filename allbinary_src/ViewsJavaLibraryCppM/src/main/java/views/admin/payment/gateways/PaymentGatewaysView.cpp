@@ -151,7 +151,7 @@ this->paymentGatewayVector= gatewayVector;
 hashMap->put(EntryData::getInstance()->DEFAULT, PaymentTypeUtil::getInstance()->getDefault(storeName)->getBasicPaymentType()->getName());
     
 
-    Node* paymentGatewayNode = ModDomHelper::createNodeWithValueNodes(document, PaymentGatewayData::NAME->toString(), hashMap);;
+    Node* paymentGatewayNode = ModDomHelper::createNodeWithValueNodes(document, JavaString::valueOf(PaymentGatewayData::NAME), hashMap);;
     
 paymentGatewaysNode->appendChild(paymentGatewayNode);
     

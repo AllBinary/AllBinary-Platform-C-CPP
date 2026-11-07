@@ -167,7 +167,7 @@ this->allowOnEmpty= allowOnEmpty;
                         if(textLength < this->min)
                         
                                     {
-                                    list->add((new StringMaker())->append(name)->append(" is to short")->toString());
+                                    list->add(JavaString::valueOf((new StringMaker())->append(name)->append(" is to short")));
     
 
                                     }
@@ -176,7 +176,7 @@ this->allowOnEmpty= allowOnEmpty;
                         if(textLength > this->max)
                         
                                     {
-                                    list->add((new StringMaker())->append(name)->append(" is to long")->toString());
+                                    list->add(JavaString::valueOf((new StringMaker())->append(name)->append(" is to long")));
     
 
                                     }

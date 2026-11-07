@@ -80,61 +80,61 @@ RTSLayer2SelectedLogHelper* RTSLayer2SelectedLogHelper::instanceC = RTSLayer2Sel
 
 
     auto RTSLayer2SelectedLogHelper::steeringUp(PathFindingLayerInterface* pathFindingLayerInterface) -> void{
-this->logUtil->putF((new StringMaker())->append(pathFindingLayerInterface->getName())->append(" steering - Up")->toString(), this, this->TRACK_TO_FIRE_OR_MOVE);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(pathFindingLayerInterface->getName())->append(" steering - Up")), this, this->TRACK_TO_FIRE_OR_MOVE);
     
 }
 
 
     auto RTSLayer2SelectedLogHelper::steeringFireOrStop(PathFindingLayerInterface* pathFindingLayerInterface) -> void{
-this->logUtil->putF((new StringMaker())->append(pathFindingLayerInterface->getName())->append(" steering - Fire/All Stop")->toString(), this, this->TRACK_TO_FIRE_OR_MOVE);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(pathFindingLayerInterface->getName())->append(" steering - Fire/All Stop")), this, this->TRACK_TO_FIRE_OR_MOVE);
     
 }
 
 
     auto RTSLayer2SelectedLogHelper::buildingAbove(PathFindingLayerInterface* pathFindingLayerInterface) -> void{
-this->logUtil->putF((new StringMaker())->append(pathFindingLayerInterface->getName())->append(" Building Above")->toString(), this, this->BUILDING_CHASE);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(pathFindingLayerInterface->getName())->append(" Building Above")), this, this->BUILDING_CHASE);
     
 }
 
 
     auto RTSLayer2SelectedLogHelper::buildingChaseLeft(PathFindingLayerInterface* pathFindingLayerInterface, int32_t angle) -> void{
-this->logUtil->putF((new StringMaker())->append(pathFindingLayerInterface->getName())->append(" steering - Going Left: ")->appendint(angle)->toString(), this, this->BUILDING_CHASE);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(pathFindingLayerInterface->getName())->append(" steering - Going Left: ")->appendint(angle)), this, this->BUILDING_CHASE);
     
 }
 
 
     auto RTSLayer2SelectedLogHelper::buildingChaseRight(PathFindingLayerInterface* pathFindingLayerInterface, int32_t angle) -> void{
-this->logUtil->putF((new StringMaker())->append(pathFindingLayerInterface->getName())->append(" steering - Going Right: ")->appendint(angle)->toString(), this, this->BUILDING_CHASE);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(pathFindingLayerInterface->getName())->append(" steering - Going Right: ")->appendint(angle)), this, this->BUILDING_CHASE);
     
 }
 
 
     auto RTSLayer2SelectedLogHelper::buildingDown(PathFindingLayerInterface* pathFindingLayerInterface) -> void{
-this->logUtil->putF((new StringMaker())->append(pathFindingLayerInterface->getName())->append(" Building Below")->toString(), this, this->BUILDING_CHASE);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(pathFindingLayerInterface->getName())->append(" Building Below")), this, this->BUILDING_CHASE);
     
 }
 
 
     auto RTSLayer2SelectedLogHelper::buildingChaseDown(PathFindingLayerInterface* pathFindingLayerInterface, int32_t angle) -> void{
-this->logUtil->putF((new StringMaker())->append(pathFindingLayerInterface->getName())->append(" steering - Going Down: ")->appendint(angle)->toString(), this, this->BUILDING_CHASE);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(pathFindingLayerInterface->getName())->append(" steering - Going Down: ")->appendint(angle)), this, this->BUILDING_CHASE);
     
 }
 
 
     auto RTSLayer2SelectedLogHelper::buildingChaseUp(PathFindingLayerInterface* pathFindingLayerInterface, int32_t angle) -> void{
-this->logUtil->putF((new StringMaker())->append(pathFindingLayerInterface->getName())->append(" steering - Going Up: ")->appendint(angle)->toString(), this, this->BUILDING_CHASE);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(pathFindingLayerInterface->getName())->append(" steering - Going Up: ")->appendint(angle)), this, this->BUILDING_CHASE);
     
 }
 
 
     auto RTSLayer2SelectedLogHelper::buildingLeft(PathFindingLayerInterface* pathFindingLayerInterface) -> void{
-this->logUtil->putF((new StringMaker())->append(pathFindingLayerInterface->getName())->append(" Building Left")->toString(), this, this->BUILDING_CHASE);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(pathFindingLayerInterface->getName())->append(" Building Left")), this, this->BUILDING_CHASE);
     
 }
 
 
     auto RTSLayer2SelectedLogHelper::buildingRight(PathFindingLayerInterface* pathFindingLayerInterface) -> void{
-this->logUtil->putF((new StringMaker())->append(pathFindingLayerInterface->getName())->append(" Building Right")->toString(), this, this->BUILDING_CHASE);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(pathFindingLayerInterface->getName())->append(" Building Right")), this, this->BUILDING_CHASE);
     
 }
 

@@ -173,7 +173,7 @@ stringBuffer->append("taxes");
 stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
     
 
-    AbPath* abPath = new AbPath(stringBuffer->toString(), TAXATIONFILENAME);;
+    AbPath* abPath = new AbPath(JavaString::valueOf(stringBuffer), TAXATIONFILENAME);;
     
 
     TransformInfoObjectConfigData* transformInfoObjectConfigData = TransformInfoObjectConfigData::getInstance();;

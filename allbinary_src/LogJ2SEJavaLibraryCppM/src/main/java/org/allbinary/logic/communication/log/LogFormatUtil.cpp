@@ -115,7 +115,7 @@ stringBuffer->append(this->commonSeps->NEW_LINE);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 
@@ -136,7 +136,7 @@ stringBuffer->append(this->commonSeps->NEW_LINE);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 
@@ -188,7 +188,7 @@ stringBuffer->append(functionName);
 stringBuffer->append(this->LOG_ERROR);
     
 
-    std::string exceptionAsString = exception->toString();;
+    std::string exceptionAsString = JavaString::valueOf(exception);;
     
 
                         if(true)
@@ -228,7 +228,7 @@ stringBuffer->append(this->STACK_TRACE);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 
                                     }

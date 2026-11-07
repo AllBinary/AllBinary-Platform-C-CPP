@@ -387,7 +387,7 @@ keywordFilenameHashMap->put(keywordData, JavaString::valueOf(pageName) +JavaStri
     
 stringBuffer->delete_(0, stringBuffer->length());
     
-stringBuffer->append(staticPath->toString());
+stringBuffer->append(JavaString::valueOf(staticPath));
     
 stringBuffer->append(pageName);
     
@@ -398,7 +398,7 @@ stringBuffer->append(AbPathData::getInstance()->EXTENSION_SEP);
 stringBuffer->append(InputOutputTypeData::getInstance()->DEFAULT);
     
 
-    std::string file = stringBuffer->toString();;
+    std::string file = JavaString::valueOf(stringBuffer);;
     
 
                         if(!this->directory->create(staticPath))
@@ -478,7 +478,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
 stringBuffer->append(storeFront->getStaticPath());
     
 
-    AbPath* staticPath = new AbPath(stringBuffer->toString(), StringUtil::getInstance()->EMPTY_STRING);;
+    AbPath* staticPath = new AbPath(JavaString::valueOf(stringBuffer), StringUtil::getInstance()->EMPTY_STRING);;
     
 
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->STATICPAGEGENERATIONLOGGING))
@@ -519,7 +519,7 @@ stringBuffer->append(" Store Not Found");
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 
                                     }
@@ -571,7 +571,7 @@ stringBuffer->append(this->INVENTORY);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 
                 //: 
@@ -662,7 +662,7 @@ stringBuffer->append("All Static Pages Generated<br/>");
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 
                 //: 

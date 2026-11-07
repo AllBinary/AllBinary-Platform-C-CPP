@@ -216,7 +216,7 @@ result= BooleanFactory::getInstance()->FALSE;
                                     {
                                     stringMaker->delete_(0, stringMaker->length());
     
-list->add(stringMaker->append(name)->append(" is to small")->toString());
+list->add(JavaString::valueOf(stringMaker->append(name)->append(" is to small")));
     
 
                                     }
@@ -227,7 +227,7 @@ list->add(stringMaker->append(name)->append(" is to small")->toString());
                                     {
                                     stringMaker->delete_(0, stringMaker->length());
     
-list->add(stringMaker->append(name)->append(" is to large")->toString());
+list->add(JavaString::valueOf(stringMaker->append(name)->append(" is to large")));
     
 
                                     }
@@ -238,7 +238,7 @@ list->add(stringMaker->append(name)->append(" is to large")->toString());
             {
 stringMaker->delete_(0, stringMaker->length());
     
-list->add(stringMaker->append(name)->append(" is not a number")->toString());
+list->add(JavaString::valueOf(stringMaker->append(name)->append(" is not a number")));
     
 }
 
@@ -252,7 +252,7 @@ list->add(stringMaker->append(name)->append(" is not a number")->toString());
                                     {
                                     stringMaker->delete_(0, stringMaker->length());
     
-list->add(stringMaker->append(name)->append(" is to short")->toString());
+list->add(JavaString::valueOf(stringMaker->append(name)->append(" is to short")));
     
 
                                     }
@@ -263,7 +263,7 @@ list->add(stringMaker->append(name)->append(" is to short")->toString());
                                     {
                                     stringMaker->delete_(0, stringMaker->length());
     
-list->add(stringMaker->append(name)->append(" is to long")->toString());
+list->add(JavaString::valueOf(stringMaker->append(name)->append(" is to long")));
     
 
                                     }

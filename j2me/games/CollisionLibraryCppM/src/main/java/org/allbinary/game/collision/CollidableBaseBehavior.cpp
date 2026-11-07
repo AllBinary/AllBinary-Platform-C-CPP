@@ -130,7 +130,7 @@ this->collidable= collidable;
 
 
 
-                            throw Exception((new StringMaker())->append(this->commonStrings->NOT_IMPLEMENTED)->append(CommonLabels::getInstance()->COLON_SEP)->append(this->getClass()->getName())->toString());
+                            throw Exception(JavaString::valueOf((new StringMaker())->append(this->commonStrings->NOT_IMPLEMENTED)->append(CommonLabels::getInstance()->COLON_SEP)->append(this->getClass()->getName())));
                     
 }
 

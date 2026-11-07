@@ -97,7 +97,7 @@ this->downGameKeyEventHandler->removeAllListeners();
 
 
     auto GameKeyEventHandler::addListenerForPlayer(EventListenerInterface* eventListenerInterface, int32_t playerInputId) -> void{
-this->logUtil->putF(eventListenerInterface->toString(), this, this->commonStrings->ADD_LISTENER);
+this->logUtil->putF(JavaString::valueOf(eventListenerInterface), this, this->commonStrings->ADD_LISTENER);
     
 this->pressGameKeyEventHandler->addListenerSingleThreaded(eventListenerInterface);
     
@@ -109,7 +109,7 @@ this->downGameKeyEventHandler->getInstanceForPlayer(playerInputId)->addListenerS
 
 
     auto GameKeyEventHandler::addListener(EventListenerInterface* eventListenerInterface) -> void{
-this->logUtil->putF(eventListenerInterface->toString(), this, this->commonStrings->ADD_LISTENER);
+this->logUtil->putF(JavaString::valueOf(eventListenerInterface), this, this->commonStrings->ADD_LISTENER);
     
 this->pressGameKeyEventHandler->addListenerSingleThreaded(eventListenerInterface);
     
@@ -121,7 +121,7 @@ this->downGameKeyEventHandler->addListenerSingleThreaded(eventListenerInterface)
 
 
     auto GameKeyEventHandler::removeListener(EventListenerInterface* eventListenerInterface) -> void{
-this->logUtil->putF(eventListenerInterface->toString(), this, this->commonStrings->REMOVE_LISTENER);
+this->logUtil->putF(JavaString::valueOf(eventListenerInterface), this, this->commonStrings->REMOVE_LISTENER);
     
 this->pressGameKeyEventHandler->removeListenerSingleThreaded(eventListenerInterface);
     

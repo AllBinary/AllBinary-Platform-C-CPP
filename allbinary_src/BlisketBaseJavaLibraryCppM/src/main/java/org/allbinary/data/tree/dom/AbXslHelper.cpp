@@ -133,7 +133,7 @@ AbXslHelper* AbXslHelper::instance = AbXslHelper::instance_owner();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return XslHelper::getInstance()->translate(new StreamSource(xsltFilePath), new StreamSource(xmlFilePath), new StreamResult(outputStream))->toString();;
+                        return JavaString::valueOf(XslHelper::getInstance()->translate(new StreamSource(xsltFilePath), new StreamSource(xmlFilePath), new StreamResult(outputStream)));;
     
 
                 //: 

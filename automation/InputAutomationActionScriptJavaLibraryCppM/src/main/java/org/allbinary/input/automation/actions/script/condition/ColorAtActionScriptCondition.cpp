@@ -337,7 +337,7 @@ hashMap->put(ColorAtActionScriptConditionData::MIN_BLUE, std::to_string(this->ge
     
 hashMap->put(ColorAtActionScriptConditionData::MAX_BLUE, std::to_string(this->getColorRangeInterface()->getMaxBlue()));
     
-this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(hashMap->toString()), this, "toHashMap()");
+this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(JavaString::valueOf(hashMap)), this, "toHashMap()");
     
 
 
@@ -418,7 +418,7 @@ node->appendChild(ModDomHelper::createNodeWithValueNodes(document, ColorAtAction
 
     auto ColorAtActionScriptCondition::log() -> void{
 
-    std::string message = (new StringMaker())->append("getPoint(): ")->append(this->getPoint()->toString())->append(CommonSeps::getInstance()->NEW_LINE)->append(this->getColorRangeInterface()->toString())->toString();;
+    std::string message = JavaString::valueOf((new StringMaker())->append("getPoint(): ")->append(JavaString::valueOf(this->getPoint()))->append(CommonSeps::getInstance()->NEW_LINE)->append(JavaString::valueOf(this->getColorRangeInterface())));;
     
 this->logUtil->putF(message, this, "log");
     

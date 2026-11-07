@@ -166,7 +166,7 @@ this->contentBase= contentBase;
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return JavaString::valueOf("Email Info: \n ") +JavaString::valueOf(this->getBasicEmailInfo()->toString());
+                        return JavaString::valueOf("Email Info: \n ") +JavaString::valueOf(JavaString::valueOf(this->getBasicEmailInfo()));
     
 }
 

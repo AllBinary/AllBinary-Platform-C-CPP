@@ -166,7 +166,7 @@ this->monitorInterfaceVector= new BasicArrayListD();
 
     auto WindowsHardware::getComponentType(std::string component) -> std::string{
 
-                        if(JavaString::indexOf(component, this->componentFactory->ETHERNET->toString()) >= 0)
+                        if(JavaString::indexOf(component, JavaString::valueOf(this->componentFactory->ETHERNET)) >= 0)
                         
                                     {
                                     
@@ -175,13 +175,13 @@ this->monitorInterfaceVector= new BasicArrayListD();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->componentFactory->ETHERNET->toString();;
+                        return JavaString::valueOf(this->componentFactory->ETHERNET);;
     
 
                                     }
                                 
                              else 
-                        if(JavaString::indexOf(component, this->componentFactory->BRIDGE->toString()) >= 0)
+                        if(JavaString::indexOf(component, JavaString::valueOf(this->componentFactory->BRIDGE)) >= 0)
                         
                                     {
                                     
@@ -190,13 +190,13 @@ this->monitorInterfaceVector= new BasicArrayListD();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->componentFactory->BRIDGE->toString();;
+                        return JavaString::valueOf(this->componentFactory->BRIDGE);;
     
 
                                     }
                                 
                              else 
-                        if(JavaString::indexOf(component, this->componentFactory->IDE->toString()) >= 0)
+                        if(JavaString::indexOf(component, JavaString::valueOf(this->componentFactory->IDE)) >= 0)
                         
                                     {
                                     
@@ -205,13 +205,13 @@ this->monitorInterfaceVector= new BasicArrayListD();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->componentFactory->IDE->toString();;
+                        return JavaString::valueOf(this->componentFactory->IDE);;
     
 
                                     }
                                 
                              else 
-                        if(JavaString::indexOf(component, this->componentFactory->MULTIMEDIA->toString()) >= 0)
+                        if(JavaString::indexOf(component, JavaString::valueOf(this->componentFactory->MULTIMEDIA)) >= 0)
                         
                                     {
                                     
@@ -220,13 +220,13 @@ this->monitorInterfaceVector= new BasicArrayListD();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->componentFactory->MULTIMEDIA->toString();;
+                        return JavaString::valueOf(this->componentFactory->MULTIMEDIA);;
     
 
                                     }
                                 
                              else 
-                        if(JavaString::indexOf(component, this->componentFactory->SCSI->toString()) >= 0)
+                        if(JavaString::indexOf(component, JavaString::valueOf(this->componentFactory->SCSI)) >= 0)
                         
                                     {
                                     
@@ -235,13 +235,13 @@ this->monitorInterfaceVector= new BasicArrayListD();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->componentFactory->SCSI->toString();;
+                        return JavaString::valueOf(this->componentFactory->SCSI);;
     
 
                                     }
                                 
                              else 
-                        if(JavaString::indexOf(component, this->componentFactory->USB->toString()) >= 0)
+                        if(JavaString::indexOf(component, JavaString::valueOf(this->componentFactory->USB)) >= 0)
                         
                                     {
                                     
@@ -250,13 +250,13 @@ this->monitorInterfaceVector= new BasicArrayListD();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->componentFactory->USB->toString();;
+                        return JavaString::valueOf(this->componentFactory->USB);;
     
 
                                     }
                                 
                              else 
-                        if(JavaString::indexOf(component, this->componentFactory->VGA->toString()) >= 0)
+                        if(JavaString::indexOf(component, JavaString::valueOf(this->componentFactory->VGA)) >= 0)
                         
                                     {
                                     
@@ -265,7 +265,7 @@ this->monitorInterfaceVector= new BasicArrayListD();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->componentFactory->VGA->toString();;
+                        return JavaString::valueOf(this->componentFactory->VGA);;
     
 
                                     }
@@ -437,7 +437,7 @@ this->monitorInterfaceVector= new BasicArrayListD();
 
     HardwareComponentInterface* componentInterface = dynamic_cast<HardwareComponentInterface*>(this->componentInterfaceVector->get(index));;
     
-hardwareBuffer->append(componentInterface->toString());
+hardwareBuffer->append(JavaString::valueOf(componentInterface));
     
 hardwareBuffer->append(CommonSeps::getInstance()->NEW_LINE);
     
@@ -449,7 +449,7 @@ hardwareBuffer->append(CommonSeps::getInstance()->NEW_LINE);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return hardwareBuffer->toString();;
+                        return JavaString::valueOf(hardwareBuffer);;
     
 }
 

@@ -124,7 +124,7 @@ this->addForRemoval(gameKeyEvent);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     auto PlayerGameInput::onDownKey(int32_t gameKeyEvent) -> void{
-PreLogUtil::put((new StringMaker())->append(CommonLabels::getInstance()->START_LABEL)->append(JavaString::valueOf(gameKeyEvent))->toString(), this, this->gameInputStrings->ON_DOWN_GAME_KEY);
+PreLogUtil::put(JavaString::valueOf((new StringMaker())->append(CommonLabels::getInstance()->START_LABEL)->append(JavaString::valueOf(gameKeyEvent))), this, this->gameInputStrings->ON_DOWN_GAME_KEY);
     
 }
 

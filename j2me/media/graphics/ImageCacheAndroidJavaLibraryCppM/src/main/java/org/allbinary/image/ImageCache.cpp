@@ -144,7 +144,7 @@ ImageCache::ImageCache() : commonStrings(CommonStrings::getInstance()), systemWr
                                 
 }
 
-this->logUtil->putF((new StringMaker())->append("unable to find key: ")->append(StringUtil::getInstance()->toString(key))->toString(), this, this->commonStrings->RUN);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("unable to find key: ")->append(StringUtil::getInstance()->toString(key))), this, this->commonStrings->RUN);
     
 
 
@@ -244,7 +244,7 @@ image= this->createImageFromInputStream(key, inputStream);
             {
 this->logUtil->put("Exception: Trying Again After GC", this, this->commonStrings->GET, &e);
     
-this->logUtil->putF((new StringMaker())->append("InputStream: ")->append(StringUtil::getInstance()->toString(inputStream))->toString(), this, this->commonStrings->GET);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("InputStream: ")->append(StringUtil::getInstance()->toString(inputStream))), this, this->commonStrings->GET);
     
 this->tsUtil->gc();
     

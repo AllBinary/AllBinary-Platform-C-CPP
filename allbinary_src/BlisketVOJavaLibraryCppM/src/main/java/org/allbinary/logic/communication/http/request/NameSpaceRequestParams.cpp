@@ -402,7 +402,7 @@ nextNode->appendChild(indexNode);
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("\nAppending Document Root: ") +JavaString::valueOf("\nElementName: ")) +JavaString::valueOf(rootElementPackage)) +JavaString::valueOf("\nProperties: ")) +JavaString::valueOf(packagePropertiesHashMap->toString()), this, "getRootNode");
+                                    this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("\nAppending Document Root: ") +JavaString::valueOf("\nElementName: ")) +JavaString::valueOf(rootElementPackage)) +JavaString::valueOf("\nProperties: ")) +JavaString::valueOf(JavaString::valueOf(packagePropertiesHashMap)), this, "getRootNode");
     
 
                                     }
@@ -463,7 +463,7 @@ document->appendChild(node);
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil->putF((new StringMaker())->append("\nAdding Any New Properties: ")->append(nextPackagePropertiesHashMap->toString())->append("\nto node: ")->append(node->getNodeName())->toString(), this, "addNewProperties");
+                                    this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("\nAdding Any New Properties: ")->append(JavaString::valueOf(nextPackagePropertiesHashMap))->append("\nto node: ")->append(node->getNodeName())), this, "addNewProperties");
     
 
                                     }
@@ -573,7 +573,7 @@ node->appendChild(newPropertyNode);
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("\nComparing the value property in: ") +JavaString::valueOf(nextPackagePropertiesHashMap->toString())) +JavaString::valueOf("\nto node child leaves of node: ")) +JavaString::valueOf(node->getNodeName()), this, "isElementValueTextNodeEqual");
+                                    this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("\nComparing the value property in: ") +JavaString::valueOf(JavaString::valueOf(nextPackagePropertiesHashMap))) +JavaString::valueOf("\nto node child leaves of node: ")) +JavaString::valueOf(node->getNodeName()), this, "isElementValueTextNodeEqual");
     
 
                                     }
@@ -722,7 +722,7 @@ node->appendChild(newPropertyNode);
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil->putF((new StringMaker())->append("\nTrying to Add Child to Node: ")->append(node->getNodeName())->append("\nwith new PackageName: ")->append(nextPackageName)->toString(), this, "addChildren");
+                                    this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("\nTrying to Add Child to Node: ")->append(node->getNodeName())->append("\nwith new PackageName: ")->append(nextPackageName)), this, "addChildren");
     
 
                                     }
@@ -849,7 +849,7 @@ node= this->addNewProperties(document, nodeNameDuplicateNode, nextPackagePropert
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil->putF((new StringMaker())->append("NameSpace key: ")->append(key)->append(" Value: ")->append(value)->toString(), this, "addNameSpace");
+                                    this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("NameSpace key: ")->append(key)->append(" Value: ")->append(value)), this, "addNameSpace");
     
 
                                     }
@@ -1037,7 +1037,7 @@ hashMap->put(std::string(key), .toCharArray());
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("NameSpaceRequestParams: ") +JavaString::valueOf(this->getMap()->toString())) +JavaString::valueOf("\ntoHashMap(): ")) +JavaString::valueOf(hashMap->toString())) +JavaString::valueOf("\nDocument Created: ")) +JavaString::valueOf(XmlDocumentHelper::toString(document)), this, "toHashMap()");
+                                    this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("NameSpaceRequestParams: ") +JavaString::valueOf(JavaString::valueOf(this->getMap()))) +JavaString::valueOf("\ntoHashMap(): ")) +JavaString::valueOf(JavaString::valueOf(hashMap))) +JavaString::valueOf("\nDocument Created: ")) +JavaString::valueOf(XmlDocumentHelper::toString(document)), this, "toHashMap()");
     
 
                                     }

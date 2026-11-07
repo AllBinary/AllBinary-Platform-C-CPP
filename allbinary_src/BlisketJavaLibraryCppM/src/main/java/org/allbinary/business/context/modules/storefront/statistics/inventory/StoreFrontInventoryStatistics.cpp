@@ -123,7 +123,7 @@ this->totalNumberOfItems= this->totalNumberOfItems +numberInStock;
     
 itemPriceMoney->multiply(numberInStock);
     
-this->totalInventorySaleValueMoney->add(itemPriceMoney->toString());
+this->totalInventorySaleValueMoney->add(JavaString::valueOf(itemPriceMoney));
     
 }
 
@@ -158,9 +158,9 @@ this->totalInventorySaleValueMoney->add(itemPriceMoney->toString());
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap->put(StoreFrontInventoryStatisticsData::getInstance()->NUMBEROFITEMS, this->getNumber().toString());
+hashMap->put(StoreFrontInventoryStatisticsData::getInstance()->NUMBEROFITEMS, JavaString::valueOf(this->getNumber()));
     
-hashMap->put(StoreFrontInventoryStatisticsData::getInstance()->TOTALVALUE, this->getTotal()->toString());
+hashMap->put(StoreFrontInventoryStatisticsData::getInstance()->TOTALVALUE, JavaString::valueOf(this->getTotal()));
     
 
 

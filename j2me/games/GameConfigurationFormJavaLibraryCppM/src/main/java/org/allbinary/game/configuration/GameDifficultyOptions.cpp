@@ -212,9 +212,9 @@ this->meUtil->appendItem(this, choiceGroup);
         {
 anyType= list->objectArray[index];
     
-this->logUtil->putF((new StringMaker())->append(NAME)->append(anyType->toString())->toString(), this, METHOD_NAME);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(NAME)->append(JavaString::valueOf(anyType))), this, METHOD_NAME);
     
-choiceGroup->append(anyType->toString(), NullImage::NULL_IMAGE);
+choiceGroup->append(JavaString::valueOf(anyType), NullImage::NULL_IMAGE);
     
 }
 

@@ -155,7 +155,7 @@ stringBuffer->appendint(countedBasicArrayList->size());
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil->putF(stringBuffer->toString(), this, commonStrings->GET_INSTANCE);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, commonStrings->GET_INSTANCE);
     
 
     std::vector<PartInterface*> newPartInterfaceArray = std::vector<PartInterface*>(this->list->size());;

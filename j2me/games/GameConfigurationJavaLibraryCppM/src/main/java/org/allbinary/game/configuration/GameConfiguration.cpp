@@ -110,7 +110,7 @@ GameConfigurationSingleton::getInstance()->getHashtable()->put(this->getName(), 
     
 this->value= value;
     
-GameFeatureEventHandler::getInstance()->fireEvent(new GameFeatureEvent(this, (new StringMaker())->append(this->name)->append(" value: from: ")->appendint(oldValue)->append(" to ")->appendint(this->value)->toString()));
+GameFeatureEventHandler::getInstance()->fireEvent(new GameFeatureEvent(this, JavaString::valueOf((new StringMaker())->append(this->name)->append(" value: from: ")->appendint(oldValue)->append(" to ")->appendint(this->value))));
     
 
                                     }
@@ -244,7 +244,7 @@ stringBuffer->appendboolean(this->isModifiable());
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

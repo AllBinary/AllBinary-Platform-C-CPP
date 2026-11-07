@@ -152,7 +152,7 @@ SVGAsJSONSimpleLoader* SVGAsJSONSimpleLoader::instance = SVGAsJSONSimpleLoader::
                                 root
                                 :
 
-                            this->asObject(svgValue, KEY_SVG);;;
+                            this->asObject(svgValue, KEY_SVG);;
     
 
     BasicArrayList* pointVector = new BasicArrayListD();;
@@ -619,7 +619,7 @@ stringBuilder->append(CommonSeps::getInstance()->COMMA);
 
 }
 
-System.out.println(stringBuilder->toString());
+System.out.println(JavaString::valueOf(stringBuilder));
     
 }
 

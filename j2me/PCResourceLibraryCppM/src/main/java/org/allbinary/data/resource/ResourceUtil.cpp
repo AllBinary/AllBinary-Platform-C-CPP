@@ -141,7 +141,7 @@ this->ext= ext;
                                     
 
 
-                            throw Exception((new StringMaker())->append("Unable to obtain: ")->append(resource)->toString());
+                            throw Exception(JavaString::valueOf((new StringMaker())->append("Unable to obtain: ")->append(resource)));
                     
 
                                     }
@@ -164,7 +164,7 @@ this->ext= ext;
             
     auto ResourceUtil::getResourceAsStreamAtStart(std::string resource, int32_t startIndex) -> InputStream*{
 
-    InputStream* inputStream = new FileInputStream((new StringMaker())->append(this->path)->append(resource)->append(this->ext)->toString());;
+    InputStream* inputStream = new FileInputStream(JavaString::valueOf((new StringMaker())->append(this->path)->append(resource)->append(this->ext)));;
     
 
                         if(inputStream != 

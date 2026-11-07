@@ -157,7 +157,7 @@ this->init(this->DEVICES);
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->put(JavaString::valueOf("Hardware Data: ") +JavaString::valueOf(this->toString()), this, this->commonStrings->INIT, &e);
+this->logUtil->put(JavaString::valueOf("Hardware Data: ") +JavaString::valueOf(JavaString::valueOf(this)), this, this->commonStrings->INIT, &e);
     
 
 
@@ -236,7 +236,7 @@ this->componentInterfaceVector->add(new UnknownHardware(nextLine));
 
     HardwareComponentInterface* componentInterface = dynamic_cast<HardwareComponentInterface*>(this->componentInterfaceVector->get(index));;
     
-stringBuilder->append(componentInterface->toString());
+stringBuilder->append(JavaString::valueOf(componentInterface));
     
 stringBuilder->append(CommonSeps::getInstance()->NEW_LINE);
     
@@ -248,7 +248,7 @@ stringBuilder->append(CommonSeps::getInstance()->NEW_LINE);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuilder->toString();;
+                        return JavaString::valueOf(stringBuilder);;
     
 }
 

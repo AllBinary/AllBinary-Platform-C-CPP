@@ -154,7 +154,7 @@ this->transformInfoInterface= transformInfoInterface;
     
 this->abPath= categoryAbPath;
     
-this->category= this->pathData->getNameFromPath(categoryAbPath->toString());
+this->category= this->pathData->getNameFromPath(JavaString::valueOf(categoryAbPath));
     
 
                         if(StringValidationUtil::getInstance()->isEmpty(this->category))
@@ -461,7 +461,7 @@ categoryVector->add(this->getValue());
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->CATEGORY))
                         
                                     {
-                                    this->logUtil->putF((new StringMaker())->append("filePath = ")->append(this->fileAbPath->toString())->append("\npath = ")->append(this->abPath->toString())->append("\ncategory = ")->append(this->category)->toString(), this, "log()");
+                                    this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("filePath = ")->append(JavaString::valueOf(this->fileAbPath))->append("\npath = ")->append(JavaString::valueOf(this->abPath))->append("\ncategory = ")->append(this->category)), this, "log()");
     
 
                                     }

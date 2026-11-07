@@ -237,7 +237,7 @@ stringBuffer->appendint(index);
     
 stringBuffer->append(commonSeps->BRACKET_CLOSE);
     
-hashMap->put(stringBuffer->toString(), value);
+hashMap->put(JavaString::valueOf(stringBuffer), value);
     
 index++;
     
@@ -264,7 +264,7 @@ index++;
                                     
     HashMap<Object*, Object*>* hashMap = this->toHashMap();;
     
-this->logUtil->putF(JavaString::valueOf("CssPropertyValues HashMap: ") +JavaString::valueOf(hashMap->toString()), this, "toXmlNode()");
+this->logUtil->putF(JavaString::valueOf("CssPropertyValues HashMap: ") +JavaString::valueOf(JavaString::valueOf(hashMap)), this, "toXmlNode()");
     
 
                                     }

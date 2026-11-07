@@ -275,7 +275,7 @@ stringBuffer->append("UserName: ");
 stringBuffer->append(this->weblisketSession->getUserName());
     
 
-    std::string adminEmailTextBody = stringBuffer->toString();;
+    std::string adminEmailTextBody = JavaString::valueOf(stringBuffer);;
     
 
     BasicEmailInfo* adminBasicEmailInfo = dynamic_cast<BasicEmailInfo*>(new AdminEmailInfo(adminEmailSubject, adminEmailTextBody));;
@@ -318,7 +318,7 @@ stringBuffer->append(" of ");
 stringBuffer->appendint(JavaBoxes::value<int32_t>(this->portion->getTotal()));
     
 
-    std::string success = stringBuffer->toString();;
+    std::string success = JavaString::valueOf(stringBuffer);;
     
 this->modifyingStoreFrontInterface->install(JavaBoxes::value<int32_t>(this->portion->getCurrent()), JavaBoxes::value<int32_t>(this->portion->getTotal()));
     

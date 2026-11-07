@@ -248,7 +248,7 @@ stringBuffer->append(" \nName:");
     
 stringBuffer->append(file->getName());
     
-this->logUtil->put(stringBuffer->toString(), this, "setEncryptedTemplateFileAsInputStream()", &e);
+this->logUtil->put(JavaString::valueOf(stringBuffer), this, "setEncryptedTemplateFileAsInputStream()", &e);
     
 
                                     }
@@ -308,7 +308,7 @@ outputStream= dynamic_cast<ByteArrayOutputStream*>(this->streamUtil->get(inputSt
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORY))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf("Decrypted Template: \n") +JavaString::valueOf(decrypted.toString()), this, "setEncryptedTemplateAsInputStream()");
+                                    this->logUtil->putF(JavaString::valueOf("Decrypted Template: \n") +JavaString::valueOf(JavaString::valueOf(decrypted)), this, "setEncryptedTemplateAsInputStream()");
     
 
                                     }
@@ -419,7 +419,7 @@ stringBuffer->append(AbPathData::getInstance()->EXTENSION_SEP);
 stringBuffer->append(transformInfoTemplateData->ENCRYPTED_EXTENSION);
     
 
-    AbFile* encFile = AbFile::createAbFile(stringBuffer->toString());;
+    AbFile* encFile = AbFile::createAbFile(JavaString::valueOf(stringBuffer));;
     
 
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORY))
@@ -444,7 +444,7 @@ stringBuffer->append("\nEncTemplateFilePath: ");
     
 stringBuffer->append(encFile->getPath());
     
-this->logUtil->putF(stringBuffer->toString(), this, "setTemplateAsInputStream()");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "setTemplateAsInputStream()");
     
 
                                     }
@@ -502,7 +502,7 @@ outputStream= dynamic_cast<ByteArrayOutputStream*>(this->streamUtil->get(inputSt
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORY))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf("Template: ") +JavaString::valueOf(outputStream->toString()), this, "getTemplateAsInputStream()");
+                                    this->logUtil->putF(JavaString::valueOf("Template: ") +JavaString::valueOf(JavaString::valueOf(outputStream)), this, "getTemplateAsInputStream()");
     
 
                                     }
@@ -542,7 +542,7 @@ stringBuffer->append(AbPathData::getInstance()->EXTENSION_SEP);
 stringBuffer->append(transformInfoTemplateData->ENCRYPTED_EXTENSION);
     
 
-    AbFile* file = AbFile::createAbFile(stringBuffer->toString());;
+    AbFile* file = AbFile::createAbFile(JavaString::valueOf(stringBuffer));;
     
 
                         if(file->isFile())

@@ -129,7 +129,7 @@ stringBuffer->append(inventoryTag->getHelper()->getClass()->getName());
 
 
 
-                            throw Exception(stringBuffer->toString());
+                            throw Exception(JavaString::valueOf(stringBuffer));
                     
 
                                     }
@@ -190,7 +190,7 @@ stringBuffer->append(inventoryTag->getHelper()->getClass()->getName());
 
 
 
-                            throw Exception(stringBuffer->toString());
+                            throw Exception(JavaString::valueOf(stringBuffer));
                     
 
                                     }
@@ -251,7 +251,7 @@ stringBuffer->append(inventoryTag->getHelper()->getClass()->getName());
 
 
 
-                            throw Exception(stringBuffer->toString());
+                            throw Exception(JavaString::valueOf(stringBuffer));
                     
 
                                     }
@@ -300,7 +300,7 @@ stringBuffer->append(helperObject->getClass()->getName());
 
 
 
-                            throw Exception(stringBuffer->toString());
+                            throw Exception(JavaString::valueOf(stringBuffer));
                     
 
                                     }

@@ -132,7 +132,7 @@ stringBuffer->append(FREEBLISKET_PATH_GLOBALS::getInstance()->XSLPATH);
 stringBuffer->append(href);
     
 
-    AbPath* abPath = dynamic_cast<AbPath*>(new AbFilePath(stringBuffer->toString()));;
+    AbPath* abPath = dynamic_cast<AbPath*>(new AbFilePath(JavaString::valueOf(stringBuffer)));;
     
 
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->XMLLOGGING))
@@ -150,7 +150,7 @@ stringBuffer->append(base);
     
 stringBuffer->append(this->uriResolverStrings->NEW_PATH);
     
-stringBuffer->append(abPath->toString());
+stringBuffer->append(JavaString::valueOf(abPath));
     
 stringBuffer->append(this->uriResolverStrings->NOTE);
     
@@ -162,7 +162,7 @@ stringBuffer->append(this->uriResolverStrings->REQUIRED_EXTENSION);
     
 stringBuffer->append(this->extension);
     
-this->logUtil->putF(stringBuffer->toString(), this, this->uriResolverStrings->RESOLVE);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->uriResolverStrings->RESOLVE);
     
 
                                     }
@@ -217,7 +217,7 @@ stringBuffer->append(this->uriResolverStrings->IMPORT_URL);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 
                 //: 

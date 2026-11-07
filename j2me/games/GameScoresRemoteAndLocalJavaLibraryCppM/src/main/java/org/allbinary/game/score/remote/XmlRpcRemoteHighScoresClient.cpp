@@ -135,7 +135,7 @@ stringBuffer->append(SEP);
     
 stringBuffer->append(serverUrl);
     
-this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->GET);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->commonStrings->GET);
     
 
     XmlRpcClient* xmlRpcClient = new XmlRpcClient(serverUrl);;
@@ -149,14 +149,14 @@ xmlRpcClient->setBasicAuthentication(
 
     ABHashtable<Object*, Object*>* hashtable = dynamic_cast<ABHashtable<Object*, Object*>*>(anyType);;
     
-this->logUtil->putF(CLIENT_INFO +hashtable->toString(), this, this->commonStrings->GET);
+this->logUtil->putF(CLIENT_INFO +JavaString::valueOf(hashtable), this, this->commonStrings->GET);
     
 param->add(hashtable);
     
 
     Object* result = JavaBoxes::toObject(xmlRpcClient->execute(this->getRemoteMethod(), param, cryptInterface));;
     
-this->logUtil->putF(RESULT +result->toString(), this, this->commonStrings->GET);
+this->logUtil->putF(RESULT +JavaString::valueOf(result), this, this->commonStrings->GET);
     
 isOnline= true;
     

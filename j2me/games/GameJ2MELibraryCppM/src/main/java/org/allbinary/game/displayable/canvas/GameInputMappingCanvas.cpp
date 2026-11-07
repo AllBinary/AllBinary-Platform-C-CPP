@@ -220,7 +220,7 @@ GameCommandCanvas::keyPressedByDevice(keyCode, 0);
     auto GameInputMappingCanvas::addGameKey(int32_t keyCode, bool repeated) -> void{
 
         try {
-            this->logUtil->putF((new StringMaker())->append("Raw Device Key Code: ")->append(Integer.toHexString(keyCode))->toString(), this, this->gameInputStrings->ADD_KEY_EVENT);
+            this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Raw Device Key Code: ")->append(Integer.toHexString(keyCode))), this, this->gameInputStrings->ADD_KEY_EVENT);
     
 
     GameKey* gameKey = this->inputToGameKeyMapping->getInstanceForCanvas(this, keyCode);;
@@ -255,7 +255,7 @@ stringBuffer->append(" Input: ");
     
 stringBuffer->append(this->stringUtil->toString(input));
     
-this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->PROCESS);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->commonStrings->PROCESS);
     
 
                         if(this->selectedGameKey != this->NONE)
@@ -276,7 +276,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->PROCESS
 
 
     auto GameInputMappingCanvas::setSelectedAction(GameKey* gameKey) -> void{
-this->logUtil->putF((new StringMaker())->append("Selected GameKey: ")->append(this->stringUtil->toString(gameKey))->toString(), this, "setSelectedAction");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Selected GameKey: ")->append(this->stringUtil->toString(gameKey))), this, "setSelectedAction");
     
 this->selectedGameKey= gameKey;
     
@@ -303,7 +303,7 @@ stringBuffer->append(" Input: ");
     
 stringBuffer->append(this->stringUtil->toString(this->selectedInput));
     
-this->logUtil->putF(stringBuffer->toString(), this, "gameActionCrud");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "gameActionCrud");
     
 
                         if(this->selectedInput == this->NONE)
@@ -319,7 +319,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "gameActionCrud");
                         if(isInputAlreadyMappedToSelectedAction)
                         
                                     {
-                                    this->logUtil->putF((new StringMaker())->append("Already Mapped Input: ")->append(this->stringUtil->toString(input))->toString(), this, "gameActionCrud");
+                                    this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Already Mapped Input: ")->append(this->stringUtil->toString(input))), this, "gameActionCrud");
     
 this->selectedInput= input;
     
@@ -383,7 +383,7 @@ stringBuffer->append(" Input: ");
     
 stringBuffer->append(this->stringUtil->toString(this->selectedInput));
     
-this->logUtil->putF(stringBuffer->toString(), this, METHOD_NAME);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, METHOD_NAME);
     
 this->inputMapping->getInputMapping()->add(this->selectedGameKey, input);
     
@@ -431,7 +431,7 @@ stringBuffer->append(" Input: ");
     
 stringBuffer->append(this->stringUtil->toString(this->selectedInput));
     
-this->logUtil->putF(stringBuffer->toString(), this, METHOD_NAME);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, METHOD_NAME);
     
 this->inputMapping->getInputMapping()->remove(this->selectedGameKey, this->selectedInput);
     

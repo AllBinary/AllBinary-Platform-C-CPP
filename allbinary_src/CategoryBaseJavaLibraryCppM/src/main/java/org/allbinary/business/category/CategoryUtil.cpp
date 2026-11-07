@@ -91,7 +91,7 @@ CategoryUtil::CategoryUtil(){
 
     auto CategoryUtil::getPathLevel(AbPath* categoryPath) -> int32_t{
 
-    int32_t count = StringUtils::countMatches(categoryPath->toString(), AbPathData::getInstance()->SEPARATOR);;
+    int32_t count = StringUtils::countMatches(JavaString::valueOf(categoryPath), AbPathData::getInstance()->SEPARATOR);;
     
 
 

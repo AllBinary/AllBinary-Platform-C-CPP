@@ -116,7 +116,7 @@ stringBuffer->append(this->SENSOR_RANGE);
     
 stringBuffer->appendint(sensorRange);
     
-this->logUtil->putF(stringBuffer->toString(), this, "selected: initRange");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "selected: initRange");
     
 }
 
@@ -149,7 +149,7 @@ stringBuffer->appendboolean((waypointBehaviorBase->getCurrentTargetLayerInterfac
                                     nullptr
                                 ));
     
-this->logUtil->putF(stringBuffer->toString(), this, this->PROCESS_POSSIBLE_TARGET);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->PROCESS_POSSIBLE_TARGET);
     
 
                                     }
@@ -175,7 +175,7 @@ stringBuffer->append(" anotherTargetDistance: ");
     
 stringBuffer->appendint(anotherTargetDistance);
     
-this->logUtil->putF(stringBuffer->toString(), this, "selected: processPossibleTarget2");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "selected: processPossibleTarget2");
     
 }
 
@@ -198,7 +198,7 @@ stringBuffer->append(" anotherTargetDistance: ");
     
 stringBuffer->appendint(anotherTargetDistance);
     
-this->logUtil->putF(stringBuffer->toString(), this, "selected: processPossibleTarget3");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "selected: processPossibleTarget3");
     
 }
 
@@ -225,7 +225,7 @@ stringBuffer->append(" instead of: ");
     
 stringBuffer->append(waypointBehaviorBase->getCurrentTargetingStateString());
     
-this->logUtil->putF(stringBuffer->toString(), this, "selected: setTarget");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "selected: setTarget");
     
 }
 
@@ -250,7 +250,7 @@ stringBuffer->append(this->commonSeps->SPACE);
     
 stringBuffer->append(this->stringUtil->toString(waypointBehaviorBase->getCurrentTargetLayerInterface()));
     
-this->logUtil->putF(stringBuffer->toString(), this, "selected: setTargetPath");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "selected: setTargetPath");
     
 }
 
@@ -281,7 +281,7 @@ stringBuffer->append(" WaypointOverridesAttacking: ");
     
 stringBuffer->appendboolean(waypointBehaviorBase->isWaypointOverridesAttacking());
     
-this->logUtil->putF(stringBuffer->toString(), this, "selected: processWaypoint");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "selected: processWaypoint");
     
 }
 
@@ -304,7 +304,7 @@ stringBuffer->append(" Tracked: ");
     
 stringBuffer->append(this->stringUtil->toString(waypointBehaviorBase->getCurrentGeographicMapCellHistory()->getTracked()));
     
-this->logUtil->putF(stringBuffer->toString(), this, "selected: processWaypoint");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "selected: processWaypoint");
     
 }
 
@@ -319,13 +319,13 @@ stringBuffer->append(" Visited: ");
     
 stringBuffer->append(this->stringUtil->toString(geographicMapCellPosition));
     
-this->logUtil->putF(stringBuffer->toString(), this, "selected: processWaypoint");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "selected: processWaypoint");
     
 }
 
 
     auto Waypoint2SelectedLogHelper::processWaypointTrackedWithoutProgress(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, std::string reason) -> void{
-this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(reason)->toString(), this, "turnTo");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(reason)), this, "turnTo");
     
 }
 
@@ -337,7 +337,7 @@ this->logUtil->putF(associatedAdvancedRTSGameLayer->getName(), this, "wander");
 
 
     auto Waypoint2SelectedLogHelper::targetDestroyed(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
-this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" Target Destroyed")->toString(), this, "selected: processTargeting");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" Target Destroyed")), this, "selected: processTargeting");
     
 }
 
@@ -360,7 +360,7 @@ stringBuffer->append(this->positionStrings->DY_LABEL);
     
 stringBuffer->appendint(dy);
     
-this->logUtil->putF(stringBuffer->toString(), this, "selected: processTargeting");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "selected: processTargeting");
     
 }
 
@@ -383,7 +383,7 @@ stringBuffer->append(this->positionStrings->DY_LABEL);
     
 stringBuffer->appendint(dy);
     
-this->logUtil->putF(stringBuffer->toString(), this, "selected: processTargeting");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "selected: processTargeting");
     
 }
 
@@ -406,7 +406,7 @@ stringBuffer->append(" because: ");
     
 stringBuffer->append(reason);
     
-this->logUtil->putF(stringBuffer->toString(), this, "selected: removeWaypoint");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "selected: removeWaypoint");
     
 }
 
@@ -425,19 +425,19 @@ stringBuffer->append(" Waypoints: ");
     
 stringBuffer->append(this->stringUtil->toString(list));
     
-this->logUtil->putF(stringBuffer->toString(), this, "selected: removeWaypoint");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "selected: removeWaypoint");
     
 }
 
 
     auto Waypoint2SelectedLogHelper::removeWaypointClear(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
-this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" Clearing removed waypoint")->toString(), this, "selected: removeWaypoint");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" Clearing removed waypoint")), this, "selected: removeWaypoint");
     
 }
 
 
     auto Waypoint2SelectedLogHelper::clearTarget(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
-this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" Cleared Target")->toString(), this, "selected: clearTarget");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" Cleared Target")), this, "selected: clearTarget");
     
 }
 
@@ -465,13 +465,13 @@ stringBuffer->append(advancedRTSGameLayer->getParentLayer()->getName());
 
                                     }
                                 
-this->logUtil->putF(stringBuffer->toString(), this, "selected: onWaypointEvent");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "selected: onWaypointEvent");
     
 }
 
 
     auto Waypoint2SelectedLogHelper::targetMovedSoRetarget(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
-this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" - target moved so retargeting")->toString(), this, "turnTo");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" - target moved so retargeting")), this, "turnTo");
     
 }
 

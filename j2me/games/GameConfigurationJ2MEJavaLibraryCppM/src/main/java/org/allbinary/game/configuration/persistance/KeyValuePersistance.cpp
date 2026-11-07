@@ -193,7 +193,7 @@ recordStore->closeRecordStore();
     
 stringBuffer->delete_(0, stringBuffer->length());
     
-this->logUtil->putF(stringBuffer->append(this->persistanceStrings->LOADING_ID)->appendint(id)->toString(), this, this->persistanceStrings->LOAD_ALL);
+this->logUtil->putF(JavaString::valueOf(stringBuffer->append(this->persistanceStrings->LOADING_ID)->appendint(id)), this, this->persistanceStrings->LOAD_ALL);
     
 recordAsBytes= this->tsUtil->getRecord(recordStore, id);
     
@@ -278,7 +278,7 @@ recordStore->closeRecordStore();
         struct FinallyGuard_N67693 { decltype(finallyFunction_N67693)& function; ~FinallyGuard_N67693() { function(); } } finallyGuard_N67693{finallyFunction_N67693};
         
         try {
-            this->logUtil->putF((new StringMaker())->append(this->persistanceStrings->SAVING)->append(StringUtil::getInstance()->toString(hashtable))->toString(), this, this->commonStrings->SAVE);
+            this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(this->persistanceStrings->SAVING)->append(StringUtil::getInstance()->toString(hashtable))), this, this->commonStrings->SAVE);
     
 recordStore= RecordStore::openRecordStore(this->getRecordId(abeClientInformation), true);
     
@@ -326,7 +326,7 @@ outputStream->writeUTF(value);
     TsUtil* tsUtil = TsUtil::getInstance();;
     
 
-    std::vector<int8_t> savedGameBytes = tsUtil->getByteArray(byteArrayOutputStream->toString());;
+    std::vector<int8_t> savedGameBytes = tsUtil->getByteArray(JavaString::valueOf(byteArrayOutputStream));;
     
 recordStore->addRecord(savedGameBytes, 0, savedGameBytes.size());
     

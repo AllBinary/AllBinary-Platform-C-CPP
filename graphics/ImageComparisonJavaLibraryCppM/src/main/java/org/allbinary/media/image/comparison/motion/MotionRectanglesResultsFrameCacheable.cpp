@@ -111,7 +111,7 @@ stringBuffer->append(this->getClass()->getName());
     
 stringBuffer->append(" Frame: ");
     
-stringBuffer->append(this->getKey()->toString());
+stringBuffer->append(JavaString::valueOf(this->getKey()));
     
 
 
@@ -119,7 +119,7 @@ stringBuffer->append(this->getKey()->toString());
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

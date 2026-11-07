@@ -98,7 +98,7 @@ this->stringBuffer->append(string);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return (new StringMaker())->append(AndroidGameStatistics::toString())->append(this->stringBuffer->toString())->toString();;
+                        return JavaString::valueOf((new StringMaker())->append(AndroidGameStatistics::toString())->append(JavaString::valueOf(this->stringBuffer)));;
     
 }
 

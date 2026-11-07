@@ -244,7 +244,7 @@ this->getXmlData();
 
 }
 
-const std::string CategoryRequestHelper::categoryRequest = (new StringMaker())->append("<")->append(CategoryData::getInstance()->REQUEST)->append(">")->toString();
+const std::string CategoryRequestHelper::categoryRequest = JavaString::valueOf((new StringMaker())->append("<")->append(CategoryData::getInstance()->REQUEST)->append(">"));
 
     auto CategoryRequestHelper::getXmlData() -> void{
 

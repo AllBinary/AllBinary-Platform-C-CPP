@@ -89,7 +89,7 @@ PlatformRecordIdUtil* PlatformRecordIdUtil::instance = PlatformRecordIdUtil::ins
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return (new StringMaker())->append(abeClientInformation->toShortString())->append(CommonSeps::getInstance()->UNDERSCORE)->append(this->PLATFORM_SHORT_NAME)->append(baseRecordId)->toString();;
+                        return JavaString::valueOf((new StringMaker())->append(abeClientInformation->toShortString())->append(CommonSeps::getInstance()->UNDERSCORE)->append(this->PLATFORM_SHORT_NAME)->append(baseRecordId));;
     
 }
 

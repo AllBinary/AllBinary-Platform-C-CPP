@@ -148,7 +148,7 @@ this->paymentGatewayInterface= paymentGatewayInterface;
 hashMap->putAll(this->toHashMap());
     
 
-    Node* paymentGatewayNode = ModDomHelper::createNodeWithValueNodes(document, PaymentGatewayData::NAME->toString(), hashMap);;
+    Node* paymentGatewayNode = ModDomHelper::createNodeWithValueNodes(document, JavaString::valueOf(PaymentGatewayData::NAME), hashMap);;
     
 
 

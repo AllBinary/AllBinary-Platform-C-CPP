@@ -173,7 +173,7 @@ this->session->setAttribute(UserData::USERNAME, userName);
 
 
     auto WeblisketSession::setPaymentMethod(std::string value) -> void{
-this->session->setAttribute(PaymentGatewayData::NAME->toString(), value);
+this->session->setAttribute(JavaString::valueOf(PaymentGatewayData::NAME), value);
     
 }
 
@@ -185,7 +185,7 @@ this->session->setAttribute(WeblisketSessionData::AUTHENTICATED, BooleanFactory:
 
 
     auto WeblisketSession::setRole(UserRole* aRole) -> void{
-this->session->setAttribute(UserRoleData::NAME->toString(), aRole);
+this->session->setAttribute(JavaString::valueOf(UserRoleData::NAME), aRole);
     
 }
 
@@ -251,7 +251,7 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return JavaBoxes::unbox<std::string>(this->session->getAttribute(PaymentGatewayData::NAME->toString()));
+                        return JavaBoxes::unbox<std::string>(this->session->getAttribute(JavaString::valueOf(PaymentGatewayData::NAME)));
     
 }
 
@@ -308,7 +308,7 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
             
     auto WeblisketSession::getRole() -> UserRole*{
 
-    UserRole* userRole = dynamic_cast<UserRole*>(this->session->getAttribute(UserRoleData::NAME->toString()));;
+    UserRole* userRole = dynamic_cast<UserRole*>(this->session->getAttribute(JavaString::valueOf(UserRoleData::NAME)));;
     
 
                         if(userRole != 
@@ -405,7 +405,7 @@ this->session->removeAttribute(WeblisketSessionData::AUTHENTICATED);
     
 this->session->removeAttribute(WeblisketSessionData::TIMEOUT);
     
-this->session->removeAttribute(UserRoleData::NAME->toString());
+this->session->removeAttribute(JavaString::valueOf(UserRoleData::NAME));
     
 this->session->removeAttribute(UserData::USERNAME);
     

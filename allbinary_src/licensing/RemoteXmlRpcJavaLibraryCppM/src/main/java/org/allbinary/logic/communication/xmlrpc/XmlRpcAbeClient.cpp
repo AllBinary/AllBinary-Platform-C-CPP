@@ -136,7 +136,7 @@ stringBuffer->append(this->SEP);
     
 stringBuffer->append(clientInfo->getLicenseServer(this->getServer()));
     
-this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->CONSTRUCTOR);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, this->commonStrings->CONSTRUCTOR);
     
 }
 

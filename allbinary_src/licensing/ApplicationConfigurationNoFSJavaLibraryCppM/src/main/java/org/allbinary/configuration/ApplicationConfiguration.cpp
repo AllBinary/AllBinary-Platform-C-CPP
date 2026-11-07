@@ -115,7 +115,7 @@ this->setProgressBarView(false);
     
 this->setShowTitleBar(false);
     
-this->logUtil->putF(JavaString::valueOf("Read Configuration: ") +JavaString::valueOf(this->toString()), this, "read");
+this->logUtil->putF(JavaString::valueOf("Read Configuration: ") +JavaString::valueOf(JavaString::valueOf(this)), this, "read");
     
 }
 
@@ -251,7 +251,7 @@ stringBuffer->appendboolean(this->isShowTitleBar());
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

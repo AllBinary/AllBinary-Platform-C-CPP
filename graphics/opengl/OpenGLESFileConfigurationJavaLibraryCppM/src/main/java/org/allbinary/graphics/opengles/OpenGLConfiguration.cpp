@@ -354,7 +354,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CO
 
                         }
                             
-PreLogUtil::put(JavaString::valueOf("Read Configuration: ") +JavaString::valueOf(this->toString()), this, "read");
+PreLogUtil::put(JavaString::valueOf("Read Configuration: ") +JavaString::valueOf(JavaString::valueOf(this)), this, "read");
     
 }
 
@@ -377,7 +377,7 @@ PreLogUtil::put(JavaString::valueOf("Read Configuration: ") +JavaString::valueOf
         struct FinallyGuard_N69039 { decltype(finallyFunction_N69039)& function; ~FinallyGuard_N69039() { function(); } } finallyGuard_N69039{finallyFunction_N69039};
         
         try {
-            PreLogUtil::put(JavaString::valueOf("Write Configuration: ") +JavaString::valueOf(this->toString()), this, "write");
+            PreLogUtil::put(JavaString::valueOf("Write Configuration: ") +JavaString::valueOf(JavaString::valueOf(this)), this, "write");
     
 
     FileStreamFactory* fileInputStreamFactory = FileStreamFactory::getInstance();;
@@ -513,7 +513,7 @@ features->addDefault(this->getVersionSelector());
 
                         }
                             
-PreLogUtil::put(this->toString(), this, this->commonStrings->INIT);
+PreLogUtil::put(JavaString::valueOf(this), this, this->commonStrings->INIT);
     
 }
 
@@ -832,7 +832,7 @@ stringBuffer->append(stringUtil->toString(this->getColor()));
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

@@ -144,7 +144,7 @@ AbeFactory::AbeFactory() : logUtil(LogUtil::getInstance()){
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return new (this->getClass() as any)();;
+                        return new (thisgetClass() as any)();;
     
 
                 //: 
@@ -264,7 +264,7 @@ stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
 stringBuffer->append(ConstructorUtil::view(constructor, CommonSeps::getInstance()->NEW_LINE));
     
-this->logUtil->put(stringBuffer->toString(), this, "getInstance(className,params)", &e);
+this->logUtil->put(JavaString::valueOf(stringBuffer), this, "getInstance(className,params)", &e);
     
 
                                     }
@@ -294,7 +294,7 @@ stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
 stringBuffer->append(ConstructorUtil::view(constructor, CommonSeps::getInstance()->NEW_LINE));
     
-this->logUtil->put(stringBuffer->toString(), this, "getInstance(className,params)", &e);
+this->logUtil->put(JavaString::valueOf(stringBuffer), this, "getInstance(className,params)", &e);
     
 
                                     }

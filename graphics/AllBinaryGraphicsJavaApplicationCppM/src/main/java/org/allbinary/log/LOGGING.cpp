@@ -81,7 +81,7 @@ LOGGING::logging->add(value);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return LOGGING::logging->contains(logType->toString());;
+                        return LOGGING::logging->contains(JavaString::valueOf(logType));;
     
 }
 

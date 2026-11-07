@@ -48,7 +48,7 @@
 
 AppNameLicensingAdConfiguration::AppNameLicensingAdConfiguration() : AdConfiguration(std::vector<Object*>
                                                 {
-                                                    StringUtil::getInstance()->EMPTY_STRING,StringUtil::getInstance()->EMPTY_STRING,StringUtil::getInstance()->EMPTY_STRING
+                                                    JavaBoxes::toObject(StringUtil::getInstance()->EMPTY_STRING),JavaBoxes::toObject(StringUtil::getInstance()->EMPTY_STRING),JavaBoxes::toObject(StringUtil::getInstance()->EMPTY_STRING)
                                                 }){
 
                         //super/this constructor call is in the constructor initializer list.

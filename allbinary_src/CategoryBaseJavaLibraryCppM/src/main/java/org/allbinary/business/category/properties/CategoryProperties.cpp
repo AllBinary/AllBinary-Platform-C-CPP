@@ -223,7 +223,7 @@ this->category= .toCharArray();
                         if(nextParentCategoryInterface->getProperties()->isRoot())
                         
                                     {
-                                    list->addAt(0, nextParentCategoryInterface->getPath().toString());
+                                    list->addAt(0, JavaString::valueOf(nextParentCategoryInterface->getPath()));
     
 
                                     }
@@ -231,7 +231,7 @@ this->category= .toCharArray();
                         else {
                             pathStringBuffer->delete_(0, pathStringBuffer->length());
     
-list->addAt(0, pathStringBuffer->append(abPathData->SEPARATOR)->append(nextParentCategoryInterface->getProperties()->getValue())->toString());
+list->addAt(0, JavaString::valueOf(pathStringBuffer->append(abPathData->SEPARATOR)->append(nextParentCategoryInterface->getProperties()->getValue())));
     
 
                         }
@@ -291,7 +291,7 @@ pathStringBuffer->append(abPathData->SEPARATOR);
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->CATEGORY))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf("path = ") +JavaString::valueOf(pathStringBuffer->toString()), this, "getPath");
+                                    this->logUtil->putF(JavaString::valueOf("path = ") +JavaString::valueOf(JavaString::valueOf(pathStringBuffer)), this, "getPath");
     
 
                                     }
@@ -302,7 +302,7 @@ pathStringBuffer->append(abPathData->SEPARATOR);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return new AbPath(pathStringBuffer->toString(), StringUtil::getInstance()->EMPTY_STRING);
+                        return new AbPath(JavaString::valueOf(pathStringBuffer), StringUtil::getInstance()->EMPTY_STRING);
     
 }
 

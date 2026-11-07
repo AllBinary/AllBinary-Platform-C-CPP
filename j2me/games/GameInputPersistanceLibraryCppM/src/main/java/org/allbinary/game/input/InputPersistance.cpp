@@ -219,7 +219,7 @@ recordStore->closeRecordStore();
     
 stringBuffer->delete_(0, stringBuffer->length());
     
-this->logUtil->putF(stringBuffer->append(this->persistanceStrings->LOADING_ID)->appendint(id)->toString(), this, this->persistanceStrings->LOAD_ALL);
+this->logUtil->putF(JavaString::valueOf(stringBuffer->append(this->persistanceStrings->LOADING_ID)->appendint(id)), this, this->persistanceStrings->LOAD_ALL);
     
 recordAsBytes= this->tsUtil->getRecord(recordStore, id);
     
@@ -276,7 +276,7 @@ stringBuffer->append(this->persistanceStrings->GAME_ACTION_INPUT);
     
 stringBuffer->appendlong(gameActionInputId);
     
-PreLogUtil::put(stringBuffer->toString(), this, this->persistanceStrings->LOAD_ALL);
+PreLogUtil::put(JavaString::valueOf(stringBuffer), this, this->persistanceStrings->LOAD_ALL);
     
 
                                     }
@@ -297,7 +297,7 @@ stringBuffer->append(this->persistanceStrings->ID);
     
 stringBuffer->appendlong(inputId);
     
-PreLogUtil::put(stringBuffer->toString(), this, this->persistanceStrings->LOAD_ALL);
+PreLogUtil::put(JavaString::valueOf(stringBuffer), this, this->persistanceStrings->LOAD_ALL);
     
 
                                     }
@@ -374,7 +374,7 @@ recordStore->closeRecordStore();
             
     StringMaker* stringBuffer = new StringMaker();;
     
-PreLogUtil::put(stringBuffer->append(this->persistanceStrings->SAVING)->append(StringUtil::getInstance()->toString(hashtable))->toString(), this, this->commonStrings->SAVE);
+PreLogUtil::put(JavaString::valueOf(stringBuffer->append(this->persistanceStrings->SAVING)->append(StringUtil::getInstance()->toString(hashtable))), this, this->commonStrings->SAVE);
     
 recordStore= RecordStore::openRecordStore(this->getRecordId(abeClientInformation), true);
     

@@ -397,7 +397,7 @@ this->setStartTimeTNT();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return (new StringMaker())->append(commonLabels->START)->appendlong(this->startTime)->append(commonLabels->CURRENT)->appendlong(currentTime)->append(commonLabels->ELAPSED)->append(elapsedAsString)->toString();;
+                        return JavaString::valueOf((new StringMaker())->append(commonLabels->START)->appendlong(this->startTime)->append(commonLabels->CURRENT)->appendlong(currentTime)->append(commonLabels->ELAPSED)->append(elapsedAsString));;
     
 
                                     }
@@ -440,7 +440,7 @@ this->setStartTimeTNT();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return (new StringMaker())->append(commonLabels->START)->appendlong(this->startTime)->append(commonLabels->CURRENT)->appendlong(currentTime)->append(commonLabels->ELAPSED)->append(elapsedAsString)->toString();;
+                        return JavaString::valueOf((new StringMaker())->append(commonLabels->START)->appendlong(this->startTime)->append(commonLabels->CURRENT)->appendlong(currentTime)->append(commonLabels->ELAPSED)->append(elapsedAsString));;
     
 
                                     }

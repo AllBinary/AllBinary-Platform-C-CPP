@@ -538,7 +538,7 @@ this->getParent().repaint();
 
     int32_t extensionIndex = JavaString::indexOf(filePath, this->imageStrings->PNG_EXTENSION);;
     
-filePath= (new StringMaker())->append(JavaString::substring(filePath, 0, extensionIndex))->append(this->commonSeps->UNDERSCORE)->append(name)->append(this->imageStrings->PNG_EXTENSION)->toString();
+filePath= JavaString::valueOf((new StringMaker())->append(JavaString::substring(filePath, 0, extensionIndex))->append(this->commonSeps->UNDERSCORE)->append(name)->append(this->imageStrings->PNG_EXTENSION));
     
 file= new File(filePath);
     
@@ -548,7 +548,7 @@ file= new File(filePath);
 
     bool isWritten = ImageIO::write(dynamic_cast<RenderedImage*>(this->result), imageStrings->PNG, file);;
     
-this->logUtil->putF((new StringMaker())->append("File: ")->append(StringUtil::getInstance()->toString(file))->append(" Wrote: ")->appendboolean(isWritten)->toString(), this, this->commonStrings->RUN);
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("File: ")->append(StringUtil::getInstance()->toString(file))->append(" Wrote: ")->appendboolean(isWritten)), this, this->commonStrings->RUN);
     
 }
 

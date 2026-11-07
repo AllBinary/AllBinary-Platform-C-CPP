@@ -147,7 +147,7 @@ result += this->END;
                         for (
     int32_t i = 0;i < inputSize; i++)
         {
-result += inputArray[i]->toString();
+result += JavaString::valueOf(inputArray[i]);
     
 result += " ";
     

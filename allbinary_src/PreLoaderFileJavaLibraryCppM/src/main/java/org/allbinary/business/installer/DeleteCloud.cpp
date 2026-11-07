@@ -107,7 +107,7 @@ stringBuffer->append(URLGLOBALS::getWebappPath());
 stringBuffer->append(prePath);
     
 
-    AbPath* path = new AbPath(stringBuffer->toString(), StringUtil::getInstance()->EMPTY_STRING);;
+    AbPath* path = new AbPath(JavaString::valueOf(stringBuffer), StringUtil::getInstance()->EMPTY_STRING);;
     
 
     AbFile* file = AbFile::createAbFileFromAbPath(path);;
@@ -154,7 +154,7 @@ stringBuffer->append(" - ");
     
 stringBuffer->appendint(end);
     
-this->logUtil->putF(stringBuffer->toString(), this, "initialize()");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "initialize()");
     
 
     AbFile* nextFile;;

@@ -163,7 +163,7 @@ params[1]= httpServletRequest;
 } catch(LicensingException& e) 
             {
 
-    std::string error = JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Failed To Get Instance Args: HashMap=") +JavaString::valueOf(hashMap->toString())) +JavaString::valueOf(" HttpServletRequest=")) +JavaString::valueOf(httpServletRequest);;
+    std::string error = JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Failed To Get Instance Args: HashMap=") +JavaString::valueOf(JavaString::valueOf(hashMap))) +JavaString::valueOf(" HttpServletRequest=")) +JavaString::valueOf(httpServletRequest);;
     
 
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->TAGHELPERFACTORYERROR))
@@ -254,7 +254,7 @@ params[1]= pageContext;
                         
                                     {
                                     
-    std::string error = JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Failed To Get Instance Args: HashMap=") +JavaString::valueOf(hashMap->toString())) +JavaString::valueOf(" PageContext=")) +JavaString::valueOf(pageContext);;
+    std::string error = JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Failed To Get Instance Args: HashMap=") +JavaString::valueOf(JavaString::valueOf(hashMap))) +JavaString::valueOf(" PageContext=")) +JavaString::valueOf(pageContext);;
     
 logUtil->put(error, JavaString::valueOf(factoryName) +JavaString::valueOf("->HelperFactory"), "getInstance(String, String, HashMap, PageContext)", &e);
     
@@ -345,7 +345,7 @@ params[2]= pageContext;
                         
                                     {
                                     
-    std::string error = JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Failed To Get Instance Args: HashMap=") +JavaString::valueOf(hashMap->toString())) +JavaString::valueOf(" PageContext=")) +JavaString::valueOf(pageContext);;
+    std::string error = JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Failed To Get Instance Args: HashMap=") +JavaString::valueOf(JavaString::valueOf(hashMap))) +JavaString::valueOf(" PageContext=")) +JavaString::valueOf(pageContext);;
     
 logUtil->put(error, JavaString::valueOf(factoryName) +JavaString::valueOf("->HelperFactory"), "getInstance(String, String, HashMap, PageContext)", &e);
     

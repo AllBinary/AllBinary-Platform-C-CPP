@@ -337,7 +337,7 @@ stringBuffer->append(" New File: ");
     
 stringBuffer->append(file->getPath());
     
-this->logUtil->putF(stringBuffer->toString(), this, "saveFile()");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "saveFile()");
     
 
                                     }

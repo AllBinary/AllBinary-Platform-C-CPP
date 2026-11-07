@@ -95,7 +95,7 @@ PathUtil::PathUtil() : abPathData(AbPathData::getInstance()), filePathData(FileP
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->abPathData->getExtension(abFilePath->toString());;
+                        return this->abPathData->getExtension(JavaString::valueOf(abFilePath));;
     
 }
 
@@ -107,7 +107,7 @@ PathUtil::PathUtil() : abPathData(AbPathData::getInstance()), filePathData(FileP
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->abPathData->getExtension(abPath->toString());;
+                        return this->abPathData->getExtension(JavaString::valueOf(abPath));;
     
 }
 
@@ -121,7 +121,7 @@ PathUtil::PathUtil() : abPathData(AbPathData::getInstance()), filePathData(FileP
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->getWithoutExtension(abFilePath->toString());;
+                        return this->getWithoutExtension(JavaString::valueOf(abFilePath));;
     
 }
 
@@ -135,7 +135,7 @@ PathUtil::PathUtil() : abPathData(AbPathData::getInstance()), filePathData(FileP
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->getWithoutExtension(abPath->toString());;
+                        return this->getWithoutExtension(JavaString::valueOf(abPath));;
     
 }
 

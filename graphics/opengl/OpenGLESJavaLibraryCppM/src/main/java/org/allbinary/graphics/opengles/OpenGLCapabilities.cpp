@@ -362,7 +362,7 @@ this->glVersion= this->VERSION_UNK;
                         if(this->possiblyAccelerated)
                         
                                     {
-                                    PreLogUtil::put((new StringMaker())->append("VBO:?")->appendboolean((this->glInstanceVersion == this->VERSION_1_1))->append("||")->appendboolean(this->isExtension(openGLFeatureFactory->OPENGL_VERTEX_BUFFER_OBJECT))->toString(), this, METHOD_NAME);
+                                    PreLogUtil::put(JavaString::valueOf((new StringMaker())->append("VBO:?")->appendboolean((this->glInstanceVersion == this->VERSION_1_1))->append("||")->appendboolean(this->isExtension(openGLFeatureFactory->OPENGL_VERTEX_BUFFER_OBJECT))), this, METHOD_NAME);
     
 
                         if((this->glInstanceVersion == this->VERSION_1_1 || this->isExtension(openGLFeatureFactory->OPENGL_VERTEX_BUFFER_OBJECT)))
@@ -412,7 +412,7 @@ stringBuffer->append(stringUtil->toString(openGLFeatureFactory->OPENGL_DRAW_TEXT
     
 stringBuffer->append(" was not available");
     
-PreLogUtil::put(stringBuffer->toString(), this, METHOD_NAME);
+PreLogUtil::put(JavaString::valueOf(stringBuffer), this, METHOD_NAME);
     
 openGLImageSpecificFactory->setImageFactory(new OpenGLESGL10ImageFactory());
     
@@ -427,7 +427,7 @@ openGLImageSpecificFactory->setImageFactory(new OpenGLESGL10ImageFactory());
     
 stringBuffer->append(" is not on");
     
-PreLogUtil::put(stringBuffer->toString(), this, METHOD_NAME);
+PreLogUtil::put(JavaString::valueOf(stringBuffer), this, METHOD_NAME);
     
 openGLImageSpecificFactory->setImageFactory(new OpenGLESGL10ImageFactory());
     
@@ -730,7 +730,7 @@ PreLogUtil::putOE(commonStrings->EXCEPTION, this, commonStrings->TOSTRING, &e);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

@@ -182,7 +182,7 @@ stringBuffer->append(this->storeFrontInterface->getCurrentHostNamePath());
 stringBuffer->append(this->itemInterface->getCategory());
     
 
-    std::string fullPath = stringBuffer->toString();;
+    std::string fullPath = JavaString::valueOf(stringBuffer);;
     
 
     AbFile* imageDirectoryFile = AbFile::createAbFile(fullPath);;
@@ -210,7 +210,7 @@ stringBuffer->append(AbPathData::getInstance()->EXTENSION_SEP);
 stringBuffer->append(mediaData->getName());
     
 
-    AbFile* originalImageFile = AbFile::createAbFile(stringBuffer->toString());;
+    AbFile* originalImageFile = AbFile::createAbFile(JavaString::valueOf(stringBuffer));;
     
 
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->CATEGORY))
@@ -245,7 +245,7 @@ stringBuffer->append(" supported: ");
     
 stringBuffer->appendboolean(isMediaSupported);
     
-this->logUtil->putF(stringBuffer->toString(), this, "saveFiles()");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "saveFiles()");
     
 
                                     }
@@ -270,7 +270,7 @@ this->setFileNames(fileName);
     
 stringBuffer->append("Is ");
     
-stringBuffer->append(mediaData->toString());
+stringBuffer->append(JavaString::valueOf(mediaData));
     
 stringBuffer->append(" Image Resize Supported:");
     
@@ -280,7 +280,7 @@ stringBuffer->append(" WriterMedia: ");
     
 stringBuffer->appendboolean(isMediaResizable);
     
-this->logUtil->putF(stringBuffer->toString(), this, "saveFiles()");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "saveFiles()");
     
 
                                     }
@@ -329,7 +329,7 @@ stringBuffer->append(" if Convertable is it: ");
     
 stringBuffer->appendboolean(isConvertable);
     
-this->logUtil->putF(stringBuffer->toString(), this, "saveFiles()");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "saveFiles()");
     
 
                                     }
@@ -421,7 +421,7 @@ stringBuffer->append(AbPathData::getInstance()->EXTENSION_SEP);
 stringBuffer->append(MediaData::getDefault()->getName());
     
 
-    std::string END = stringBuffer->toString();;
+    std::string END = JavaString::valueOf(stringBuffer);;
     
 stringBuffer->delete_(0, stringBuffer->length());
     
@@ -432,7 +432,7 @@ stringBuffer->append(this->SMALL);
 stringBuffer->append(END);
     
 
-    std::string newImageFileName = stringBuffer->toString();;
+    std::string newImageFileName = JavaString::valueOf(stringBuffer);;
     
 this->itemInterface->setSmallImage(newImageFileName);
     
@@ -444,7 +444,7 @@ stringBuffer->append(this->MEDIUM);
     
 stringBuffer->append(END);
     
-newImageFileName= stringBuffer->toString();
+newImageFileName= JavaString::valueOf(stringBuffer);
     
 this->itemInterface->setMediumImage(newImageFileName);
     
@@ -456,7 +456,7 @@ stringBuffer->append(this->LARGE);
     
 stringBuffer->append(END);
     
-newImageFileName= stringBuffer->toString();
+newImageFileName= JavaString::valueOf(stringBuffer);
     
 this->itemInterface->setLargeImage(newImageFileName);
     

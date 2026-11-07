@@ -197,7 +197,7 @@ onDemandResources= this->onDemandResourcesFactory->remove(onDemandIndex);
 
     std::vector<int32_t> onDemandArray = layerPlacementInterfaceBasicArrayListFactoryInterface->getOnDemandResources();;
     
-PreLogUtil::put((new StringMaker())->append(commonStrings->START)->appendint(onDemandArray.size())->toString(), this, "initLevel");
+PreLogUtil::put(JavaString::valueOf((new StringMaker())->append(commonStrings->START)->appendint(onDemandArray.size())), this, "initLevel");
     
 
     OnDemandResources* onDemandResources;;

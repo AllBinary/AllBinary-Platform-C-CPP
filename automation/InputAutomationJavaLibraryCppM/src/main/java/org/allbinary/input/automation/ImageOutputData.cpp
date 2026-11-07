@@ -67,7 +67,7 @@
 ImageOutputData::ImageOutputData(){
 }
 
-const std::string ImageOutputData::SAVE_PATH = (new StringMaker())->append(System.getProperty("user.dir"))->appendchar(FilePathData::getInstance()->SEPARATORCHAR)->append("saves")->appendchar(FilePathData::getInstance()->SEPARATORCHAR)->toString();
+const std::string ImageOutputData::SAVE_PATH = JavaString::valueOf((new StringMaker())->append(System.getProperty("user.dir"))->appendchar(FilePathData::getInstance()->SEPARATORCHAR)->append("saves")->appendchar(FilePathData::getInstance()->SEPARATORCHAR));
 
 
 

@@ -171,8 +171,16 @@ MultipleScrollSelectionHorizontalForm::MultipleScrollSelectionHorizontalForm(std
 //inner=true member= isStatic=
 class MPaintable: public Paintable {
 
+    private: MultipleScrollSelectionHorizontalForm* form;
+
+public: MPaintable(MultipleScrollSelectionHorizontalForm* form){
+this->form= form;
+    
+}
+
+
     public: void paint(Graphics* graphics){
-this->fillRect(graphics);
+this->form->fillRect(graphics);
     
 }
 
@@ -183,7 +191,7 @@ this->fillRect(graphics);
 
                     //Otherwise - statement - EmptyStmt
 
-this->rectPaintable= new MPaintable();
+this->rectPaintable= new MPaintable(this);
     
 
                         }
@@ -353,7 +361,7 @@ item= this->get(index);
                         else {
                             this->logged= true;
     
-PreLogUtil::put((new StringMaker())->append("painting beyond maxx: ")->appendint(this->rectangle->getMaxX())->toString(), this, this->canvasStrings->PAINT);
+PreLogUtil::put(JavaString::valueOf((new StringMaker())->append("painting beyond maxx: ")->appendint(this->rectangle->getMaxX())), this, this->canvasStrings->PAINT);
     
 
                         }

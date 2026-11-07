@@ -194,7 +194,7 @@ generatedBufferedImageArray[index2][index3]= bufferedImage->getSubimage(x +width
 
                                     }
                                 
-nameEnding= (new StringMaker())->appendint(index2)->append(this->commonSeps->UNDERSCORE)->appendint(index3)->toString();
+nameEnding= JavaString::valueOf((new StringMaker())->appendint(index2)->append(this->commonSeps->UNDERSCORE)->appendint(index3));
     
 visitor->visit(generatedBufferedImageArray[index2][index3], nameEnding, index);
     
@@ -237,7 +237,7 @@ y= cellHeight *index2;
         {
 tempBufferedImageArray[index3]= generatedBufferedImageArray[index2][index3];
     
-nameEnding= (new StringMaker())->appendint(index2)->append(this->commonSeps->UNDERSCORE)->appendint(1)->append(this->_ROW)->toString();
+nameEnding= JavaString::valueOf((new StringMaker())->appendint(index2)->append(this->commonSeps->UNDERSCORE)->appendint(1)->append(this->_ROW));
     
 }
 
@@ -321,7 +321,7 @@ generatedBufferedImageArray[index2][index3]= bufferedImage->getSubimage(x +width
 
                                     }
                                 
-nameEnding= (new StringMaker())->append(this->commonStrings->DIRECTION_NAME[index2])->append(this->commonSeps->UNDERSCORE)->appendint(index3)->toString();
+nameEnding= JavaString::valueOf((new StringMaker())->append(this->commonStrings->DIRECTION_NAME[index2])->append(this->commonSeps->UNDERSCORE)->appendint(index3));
     
 visitor->visit(generatedBufferedImageArray[index2][index3], nameEnding, index);
     
@@ -364,7 +364,7 @@ y= cellHeight *index2;
         {
 tempBufferedImageArray[index3]= generatedBufferedImageArray[index2][index3];
     
-nameEnding= (new StringMaker())->append(this->commonStrings->DIRECTION_NAME[index2])->append(this->commonSeps->UNDERSCORE)->appendint(1)->append(this->_ROW)->toString();
+nameEnding= JavaString::valueOf((new StringMaker())->append(this->commonStrings->DIRECTION_NAME[index2])->append(this->commonSeps->UNDERSCORE)->appendint(1)->append(this->_ROW));
     
 }
 

@@ -286,7 +286,7 @@ this->processStickyGameSpecific(associatedRtsLayer, rtsPlayerLayerInterface, lay
                 //@Throws(Exception.constructor)
             
     auto RTSFormInput::getItemAt(RTSPlayerLayerInterface* rtsPlayerLayerInterface, GPoint* point) -> ABCustomItem*{
-this->logUtil->putF((new StringMaker())->append("Point: ")->append(StringUtil::getInstance()->toString(point))->toString(), this, "getItemAt");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Point: ")->append(StringUtil::getInstance()->toString(point))), this, "getItemAt");
     
 
     ScrollSelectionForm* scrollSelectionForm = rtsPlayerLayerInterface->getCurrentScrollSelectionForm();;
@@ -305,7 +305,7 @@ this->logUtil->putF((new StringMaker())->append("Point: ")->append(StringUtil::g
                 //@Throws(Exception.constructor)
             
     auto RTSFormInput::getIndexAt(RTSPlayerLayerInterface* rtsPlayerLayerInterface, GPoint* point) -> int32_t{
-this->logUtil->putF((new StringMaker())->append("Point: ")->append(StringUtil::getInstance()->toString(point))->toString(), this, "getItemAt");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Point: ")->append(StringUtil::getInstance()->toString(point))), this, "getItemAt");
     
 
     ScrollSelectionForm* scrollSelectionForm = rtsPlayerLayerInterface->getCurrentScrollSelectionForm();;
@@ -376,7 +376,7 @@ this->logUtil->putF((new StringMaker())->append("Point: ")->append(StringUtil::g
 
 
     auto RTSFormInput::setSelectedGeographicCellPosition(GeographicMapCellPosition* selectedGeographicCellPosition) -> void{
-this->logUtil->putF((new StringMaker())->append("Selected GeographicMapCellPosition: ")->append(selectedGeographicCellPosition->toString())->toString(), this, "setSelectedGeographicCellPosition");
+this->logUtil->putF(JavaString::valueOf((new StringMaker())->append("Selected GeographicMapCellPosition: ")->append(JavaString::valueOf(selectedGeographicCellPosition))), this, "setSelectedGeographicCellPosition");
     
 this->selectedGeographicCellPosition= selectedGeographicCellPosition;
     

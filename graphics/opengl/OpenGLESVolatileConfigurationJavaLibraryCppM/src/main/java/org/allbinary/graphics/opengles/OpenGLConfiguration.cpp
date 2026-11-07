@@ -186,7 +186,7 @@ features->addDefault(this->getVersionSelector());
 
                         }
                             
-PreLogUtil::put(this->toString(), this, this->commonStrings->INIT);
+PreLogUtil::put(JavaString::valueOf(this), this, this->commonStrings->INIT);
     
 }
 
@@ -496,7 +496,7 @@ stringBuffer->append(stringUtil->toString(this->getColor()));
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

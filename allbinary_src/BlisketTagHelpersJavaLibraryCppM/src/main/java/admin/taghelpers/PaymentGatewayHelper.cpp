@@ -269,9 +269,9 @@ stringBuffer->append(paymentGatewayInterface->getName());
     
 stringBuffer->append(" HashMap=");
     
-stringBuffer->append(paymentGatewayInterface->toHashMap(true)->toString());
+stringBuffer->append(JavaString::valueOf(paymentGatewayInterface->toHashMap(true)));
     
-this->logUtil->putF(stringBuffer->toString(), this, "update()");
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "update()");
     
 
                                     }
@@ -355,7 +355,7 @@ stringBuffer->append(" and gateway name=");
 stringBuffer->append(gatewayName);
     
 
-    std::string success = stringBuffer->toString();;
+    std::string success = JavaString::valueOf(stringBuffer);;
     
 
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLTAGS))

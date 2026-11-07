@@ -141,7 +141,7 @@ AndroidMediaPlayerWrapper::AndroidMediaPlayerWrapper(std::string resource) : log
                                     
 
 
-                            throw Exception((new StringMaker())->append("Failed to create media player for: ")->append(resource)->append(" with id: ")->append(resourceUtil->getResourceId(resource)->toString())->toString());
+                            throw Exception(JavaString::valueOf((new StringMaker())->append("Failed to create media player for: ")->append(resource)->append(" with id: ")->append(JavaString::valueOf(resourceUtil->getResourceId(resource)))));
                     
 
                                     }

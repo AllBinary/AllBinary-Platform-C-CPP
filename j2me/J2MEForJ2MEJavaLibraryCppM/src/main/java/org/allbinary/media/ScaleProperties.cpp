@@ -74,7 +74,7 @@ ScaleProperties* ScaleProperties::instance = ScaleProperties::instance_owner();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return (new StringMaker())->append(CommonLabels::getInstance()->COLON_SEP)->appendboolean(this->shouldScale)->append("scaleX: ")->appendfloat(this->scaleX)->append("scaleY: ")->appendfloat(this->scaleY)->append("scaleWidth: ")->appendint(this->scaleWidth)->append("scaleHeight: ")->appendint(this->scaleHeight)->toString();;
+                        return JavaString::valueOf((new StringMaker())->append(CommonLabels::getInstance()->COLON_SEP)->appendboolean(this->shouldScale)->append("scaleX: ")->appendfloat(this->scaleX)->append("scaleY: ")->appendfloat(this->scaleY)->append("scaleWidth: ")->appendint(this->scaleWidth)->append("scaleHeight: ")->appendint(this->scaleHeight));;
     
 }
 

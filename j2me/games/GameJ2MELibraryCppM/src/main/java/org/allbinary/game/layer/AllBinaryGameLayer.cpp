@@ -140,7 +140,7 @@ this->basicSetColorUtil->setBasicColorP(graphics, this->BLACK);
 }()
                                 :
 
-                            NullPaintable::getInstance();), gameKeyEventList(new BasicArrayListD()){
+                            NullPaintable::getInstance()), gameKeyEventList(new BasicArrayListD()){
 
                         //super/this constructor call is in the constructor initializer list.
                     

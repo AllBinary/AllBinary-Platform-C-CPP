@@ -192,7 +192,7 @@ AllBinaryGameLayer::toStringAppend(stringBuffer);
     
 stringBuffer->append(commonSeps->NEW_LINE);
     
-stringBuffer->append(this->getCollidableInferface()->toString());
+stringBuffer->append(JavaString::valueOf(this->getCollidableInferface()));
     
 }
 
@@ -209,7 +209,7 @@ this->toStringAppend(stringBuffer);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 }
 

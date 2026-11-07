@@ -643,7 +643,7 @@ stringBuffer->append(commonLabels->TOTAL_LABEL);
     
 stringBuffer->appendint(size);
     
-this->logUtil->putF(stringBuffer->toString(), this, ScrollSelectionForm::GET_SELECTED_INDEX);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, ScrollSelectionForm::GET_SELECTED_INDEX);
     
 
     ABCustomItem* item;;
@@ -688,7 +688,7 @@ stringBuffer->append(commonLabels->INDEX_LABEL);
     
 stringBuffer->appendint(index);
     
-this->logUtil->putF(stringBuffer->toString(), this, ScrollSelectionForm::GET_SELECTED_INDEX);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, ScrollSelectionForm::GET_SELECTED_INDEX);
     
 
 
@@ -901,7 +901,7 @@ this->logUtil->putF(stringBuffer->toString(), this, ScrollSelectionForm::GET_SEL
                         if(this->rectangleCollisionUtil->isInside(this->x, this->y -this->halfBorder, this->rectangle->getMaxX() +this->border, this->rectangle->getMaxY() +this->border, point->getX(), point->getY()))
                         
                                     {
-                                    this->logUtil->putF((new StringMaker())->append(StringUtil::getInstance()->toString(point))->append(ScrollSelectionForm::INSIDE_FORM)->toString(), this, ScrollSelectionForm::IS_IN_FORM);
+                                    this->logUtil->putF(JavaString::valueOf((new StringMaker())->append(StringUtil::getInstance()->toString(point))->append(ScrollSelectionForm::INSIDE_FORM)), this, ScrollSelectionForm::IS_IN_FORM);
     
 
 

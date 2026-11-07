@@ -85,7 +85,7 @@ stringBuffer->append("install");
     
 stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
     
-this->INSTALLPATH= stringBuffer->toString();
+this->INSTALLPATH= JavaString::valueOf(stringBuffer);
     
 stringBuffer->delete_(0, stringBuffer->length());
     
@@ -95,7 +95,7 @@ stringBuffer->append("views");
     
 stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
     
-this->XSLPATH= stringBuffer->toString();
+this->XSLPATH= JavaString::valueOf(stringBuffer);
     
 stringBuffer->delete_(0, stringBuffer->length());
     
@@ -105,7 +105,7 @@ stringBuffer->append("configuration");
     
 stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
     
-this->CONFIGURATIONPATH= stringBuffer->toString();
+this->CONFIGURATIONPATH= JavaString::valueOf(stringBuffer);
     
 stringBuffer->delete_(0, stringBuffer->length());
     
@@ -115,7 +115,7 @@ stringBuffer->append("user");
     
 stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
     
-this->USERCONFIGURATIONPATH= stringBuffer->toString();
+this->USERCONFIGURATIONPATH= JavaString::valueOf(stringBuffer);
     
 stringBuffer->delete_(0, stringBuffer->length());
     
@@ -125,7 +125,7 @@ stringBuffer->append("context");
     
 stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
     
-this->CONTEXTCONFIGURATIONPATH= stringBuffer->toString();
+this->CONTEXTCONFIGURATIONPATH= JavaString::valueOf(stringBuffer);
     
 stringBuffer->delete_(0, stringBuffer->length());
     

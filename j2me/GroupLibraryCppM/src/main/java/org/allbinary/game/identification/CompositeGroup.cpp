@@ -100,13 +100,13 @@ this->list->clear();
     
 stringBuffer->append(groupCommonFactory->ADDING_LABEL);
     
-stringBuffer->append(groupInterface->toString());
+stringBuffer->append(JavaString::valueOf(groupInterface));
     
 stringBuffer->append(groupCommonFactory->TO_LABEL);
     
 stringBuffer->append(StringUtil::getInstance()->toString(this->groupInterface));
     
-this->logUtil->putF(stringBuffer->toString(), this, commonStrings->ADD);
+this->logUtil->putF(JavaString::valueOf(stringBuffer), this, commonStrings->ADD);
     
 this->list->add(groupInterface);
     

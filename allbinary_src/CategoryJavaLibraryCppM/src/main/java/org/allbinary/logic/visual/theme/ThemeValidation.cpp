@@ -210,9 +210,9 @@ this->transformInfoInterface= transformInfoInterface;
 
     PathUtil* pathUtil = PathUtil::getInstance();;
     
-this->categoryAbPath= pathUtil->removeNameFromPath(categoryThemeAbPath->toString());
+this->categoryAbPath= pathUtil->removeNameFromPath(JavaString::valueOf(categoryThemeAbPath));
     
-this->themeName= pathData->getNameFromPath(categoryThemeAbPath->toString());
+this->themeName= pathData->getNameFromPath(JavaString::valueOf(categoryThemeAbPath));
     
 
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
@@ -223,17 +223,17 @@ this->themeName= pathData->getNameFromPath(categoryThemeAbPath->toString());
     
 stringBuffer->append("CategoryThemePath: ");
     
-stringBuffer->append(categoryThemeAbPath->toString());
+stringBuffer->append(JavaString::valueOf(categoryThemeAbPath));
     
 stringBuffer->append(" & CategoryPath: ");
     
-stringBuffer->append(this->categoryAbPath->toString());
+stringBuffer->append(JavaString::valueOf(this->categoryAbPath));
     
 stringBuffer->append(" & ThemeName: ");
     
 stringBuffer->append(this->themeName);
     
-this->logUtil->putF("Http Request Constructor", this, stringBuffer->toString());
+this->logUtil->putF("Http Request Constructor", this, JavaString::valueOf(stringBuffer));
     
 
                                     }
@@ -291,7 +291,7 @@ this->init(rootStoreThemeCategoryInterface);
                 //@Throws(Exception.constructor)
             
     auto ThemeValidation::init(StoreThemeCategoryInterface* storeThemeCategoryInterface) -> void{
-this->fileAbPath= new AbPath(storeThemeCategoryInterface->getRootFilePath()->toString() +this->categoryAbPath->toString(), StringUtil::getInstance()->EMPTY_STRING);
+this->fileAbPath= new AbPath(JavaString::valueOf(storeThemeCategoryInterface->getRootFilePath()) +JavaString::valueOf(this->categoryAbPath), StringUtil::getInstance()->EMPTY_STRING);
     
 this->webAppAbPath= storeThemeCategoryInterface->getWebAppPath();
     
@@ -343,7 +343,7 @@ this->webAppAbPath= storeThemeCategoryInterface->getWebAppPath();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->webAppAbPath->toString() +this->categoryAbPath->toString();
+                        return JavaString::valueOf(this->webAppAbPath) +JavaString::valueOf(this->categoryAbPath);
     
 }
 
@@ -355,7 +355,7 @@ this->webAppAbPath= storeThemeCategoryInterface->getWebAppPath();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return this->categoryAbPath->toString();;
+                        return JavaString::valueOf(this->categoryAbPath);;
     
 }
 
@@ -370,7 +370,7 @@ this->webAppAbPath= storeThemeCategoryInterface->getWebAppPath();
                         
                                     {
                                     
-    AbPath* cssStyleFileAbPath = new AbPath(this->fileAbPath->toString(), this->themeName +AbPathData::getInstance()->EXTENSION_SEP +CategoryData::getInstance()->UNCRYPTED_EXTENSION);;
+    AbPath* cssStyleFileAbPath = new AbPath(JavaString::valueOf(this->fileAbPath), this->themeName +AbPathData::getInstance()->EXTENSION_SEP +CategoryData::getInstance()->UNCRYPTED_EXTENSION);;
     
 
     CryptFileReader* cryptFileReader = new CryptFileReader(CategoryData::getInstance()->UNCRYPTED_EXTENSION, CategoryData::getInstance()->ENCRYPTED_EXTENSION);;
@@ -410,7 +410,7 @@ this->styleValidationInterface= new CssStyleValidation(document);
                                     }
                                 
 
-                        if(!StringValidationUtil::getInstance()->isValidRequired(this->categoryAbPath->toString(), AbSqlData::MINSTRING, AbSqlData::MAXSTRING))
+                        if(!StringValidationUtil::getInstance()->isValidRequired(JavaString::valueOf(this->categoryAbPath), AbSqlData::MINSTRING, AbSqlData::MAXSTRING))
                         
                                     {
                                     isValid= Boolean::FALSE;
@@ -493,7 +493,7 @@ stringBuffer->append("Theme Validation Error");
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return stringBuffer->toString();;
+                        return JavaString::valueOf(stringBuffer);;
     
 
                 //: 
