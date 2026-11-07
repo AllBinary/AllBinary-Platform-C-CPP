@@ -323,7 +323,7 @@ adminUserEmailEventHandler->receiveEmailInfo(UserEmailEventNameData::QUOTEREQUES
     int32_t index = 0;index < size; index++)
         {
 
-    int32_t nextId = JavaBoxes::unbox<int32_t>(vector->get(index));;
+    int32_t nextId = (JavaBoxes::unbox<int32_t>(vector->get(index))).;;
     
 
                         if(id < nextId)

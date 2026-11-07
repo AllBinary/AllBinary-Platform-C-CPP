@@ -175,7 +175,7 @@ originalPlayNImage= dynamic_cast<CoreImage*>(originalHTMLImage->getImage());
     ImageImpl* scaledPlayNImage = dynamic_cast<ImageImpl*>(htmlImage->getImage());;
     
 
-    Canvas* canvas = (graphics)).get(dynamic_cast<HtmlImage*>(scaledPlayNImage));;
+    Canvas* canvas = (dynamic_cast<HtmlGraphics*>(PlayN::getInstance()->graphics()))->get(dynamic_cast<HtmlImage*>(scaledPlayNImage));;
     
 canvas->drawScale(originalPlayNImage, 0, 0, scaledImage->getWidth(), scaledImage->getHeight(), 0, 0, image->getWidth(), image->getHeight());
     

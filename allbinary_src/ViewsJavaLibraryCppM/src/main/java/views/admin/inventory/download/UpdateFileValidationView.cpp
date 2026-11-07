@@ -488,7 +488,7 @@ hashMap->put(basicItemData.ID, this->itemInterface->getId());
                                 )
                         
                                     {
-                                    hashMap->put(DownloadItemData::LICENSE_FILE, (licenseObject)).getName());
+                                    hashMap->put(DownloadItemData::LICENSE_FILE, (dynamic_cast<FileItem*>(licenseObject))->getName());
     
 
                                     }
@@ -508,7 +508,7 @@ hashMap->put(basicItemData.ID, this->itemInterface->getId());
                                 )
                         
                                     {
-                                    hashMap->put(DownloadItemData::FILE, (fileObject)).getName());
+                                    hashMap->put(DownloadItemData::FILE, (dynamic_cast<FileItem*>(fileObject))->getName());
     
 
                                     }

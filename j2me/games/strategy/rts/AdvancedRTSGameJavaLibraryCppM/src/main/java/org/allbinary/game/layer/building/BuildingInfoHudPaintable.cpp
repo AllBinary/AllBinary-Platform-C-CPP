@@ -150,7 +150,7 @@ BuildingInfoHudPaintable::BuildingInfoHudPaintable() : logUtil(LogUtil::getInsta
 //inner=true member= isStatic=
 class ProductivityNumberStringHud: public NumberStringHud {
 
-: ProductivityNumberStringHud() : NumberStringHud("Productivity:", 999, basicHudFactory->ABSOLUTE, basicHudFactory->HORIZONTAL, 0, basicColor){
+public: ProductivityNumberStringHud() : NumberStringHud("Productivity:", 999, basicHudFactory->ABSOLUTE, basicHudFactory->HORIZONTAL, 0, basicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -190,7 +190,7 @@ index++;
 //inner=true member= isStatic=
 class EfficiencyNumberStringHud: public NumberStringHud {
 
-: EfficiencyNumberStringHud() : NumberStringHud("Efficiency:", 999, basicHudFactory->ABSOLUTE, basicHudFactory->HORIZONTAL, 0, basicColor){
+public: EfficiencyNumberStringHud() : NumberStringHud("Efficiency:", 999, basicHudFactory->ABSOLUTE, basicHudFactory->HORIZONTAL, 0, basicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -233,7 +233,7 @@ index++;
 //inner=true member= isStatic=
 class HealthNumberStringHud: public NumberStringHud {
 
-: HealthNumberStringHud() : NumberStringHud(HEALTH, 99999, basicHudFactory->ABSOLUTE, basicHudFactory->HORIZONTAL, 0, basicColor){
+public: HealthNumberStringHud() : NumberStringHud(HEALTH, 99999, basicHudFactory->ABSOLUTE, basicHudFactory->HORIZONTAL, 0, basicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -274,7 +274,7 @@ healthHud= new HealthNumberStringHud();
 //inner=true member= isStatic=
 class MaxHealthNumberStringHud: public NumberStringHud {
 
-: MaxHealthNumberStringHud() : NumberStringHud("/ ", 99999, basicHudFactory->ABSOLUTE, basicHudFactory->HORIZONTAL, 0, basicColor){
+public: MaxHealthNumberStringHud() : NumberStringHud("/ ", 99999, basicHudFactory->ABSOLUTE, basicHudFactory->HORIZONTAL, 0, basicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     

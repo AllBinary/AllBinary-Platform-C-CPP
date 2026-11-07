@@ -203,7 +203,7 @@ RTSFormInput::process(layerManager);
     
 this->getHashtable()->put(Layer::ID, associatedRtsLayer);
     
-this->getHashtable()->put(UnitRTSFormInput::DECAL_ID, (rtsPlayerLayerInterface)).getDecalBasicColor());
+this->getHashtable()->put(UnitRTSFormInput::DECAL_ID, (dynamic_cast<AdvancedRTSPlayerLayerInterface*>(rtsPlayerLayerInterface))->getDecalBasicColor());
     
 
                         if(this->newUnconstructedRTSLayerInterfaceArray[itemIndex] == CollidableDestroyableDamageableLayer::getNullInstance())

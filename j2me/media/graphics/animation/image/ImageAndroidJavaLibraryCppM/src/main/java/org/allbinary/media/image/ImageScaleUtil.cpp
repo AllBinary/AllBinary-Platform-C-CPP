@@ -297,7 +297,7 @@ image->getGraphics()->drawImage(originalImage, 0, 0, this->anchor);
 matrix->setScale(scaleX, scaleY);
     
 
-    Canvas* canvas = (image)).getCanvas();;
+    Canvas* canvas = (dynamic_cast<AndroidImageInterface*>(image))->getCanvas();;
     
 canvas->concat(matrix);
     

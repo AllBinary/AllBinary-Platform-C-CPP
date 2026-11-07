@@ -40,12 +40,7 @@
         
             #include "java/lang/Exception.h"
         
-            #include "java/lang/CharSequence.h"
-        
 #include <java/io/ByteArrayOutputStream.h>
-
-      
-#include <java/io/IOException.h>
 
       
 #include <java/io/InputStream.h>
@@ -60,13 +55,19 @@
 #include <java/io/Writer.h>
 
       
-#include <java/nio/CharBuffer.h>
-
-      
 #include <org/allbinary/logic/NullUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
+
+      
+#include <org/allbinary/logic/io/NullOutputStream.h>
+
+      
+#include <org/allbinary/logic/io/NullReader.h>
+
+      
+#include <org/allbinary/logic/io/NullWriter.h>
 
       
 #include <org/allbinary/logic/io/StreamUtil.h>
@@ -128,27 +129,7 @@ SimpleFileUtil* SimpleFileUtil::instance = SimpleFileUtil::instance_owner();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return []() {
-    class Anonymous0 : public OutputStream {
-    public:
-    using OutputStream::OutputStream;
-
-                //@Throws(IOException.constructor)
-            
-    public: void write(int32_t b){
-}
-
-                //@Throws(IOException.constructor)
-            
-    public: void write(std::vector<int8_t> b, int32_t off, int32_t len){
-}
-
-    public: void close(){
-}
-
-    };
-    return new Anonymous0();
-}();
+                        return NullOutputStream::NULL_OUTPUT_STREAM;
     
 }
 
@@ -160,82 +141,7 @@ SimpleFileUtil* SimpleFileUtil::instance = SimpleFileUtil::instance_owner();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return []() {
-    class Anonymous0 : public Writer {
-    public:
-    using Writer::Writer;
-
-    bool closed= false;
-                //@Throws(IOException.constructor)
-            
-    public: Writer* append(char c){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        
-                        
-                        return this;
-    
-}
-
-                //@Throws(IOException.constructor)
-            
-    public: Writer* append(CharSequence* csq){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        
-                        
-                        return this;
-    
-}
-
-                //@Throws(IOException.constructor)
-            
-    public: Writer* append(CharSequence* csq, int32_t start, int32_t end){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        
-                        
-                        return this;
-    
-}
-
-                //@Throws(IOException.constructor)
-            
-    public: void write(int32_t c){
-}
-
-                //@Throws(IOException.constructor)
-            
-    public: void write(std::vector<char> cbuf, int32_t off, int32_t len){
-}
-
-                //@Throws(IOException.constructor)
-            
-    public: void write(std::string str){
-}
-
-                //@Throws(IOException.constructor)
-            
-    public: void write(std::string str, int32_t off, int32_t len){
-}
-
-                //@Throws(IOException.constructor)
-            
-    public: void flush(){
-}
-
-    public: void close(){
-}
-
-    };
-    return new Anonymous0();
-}();
+                        return NullWriter::NULL_WRITER;
     
 }
 
@@ -247,82 +153,7 @@ SimpleFileUtil* SimpleFileUtil::instance = SimpleFileUtil::instance_owner();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return []() {
-    class Anonymous0 : public Reader {
-    public:
-    using Reader::Reader;
-
-                //@Throws(IOException.constructor)
-            
-    public: int32_t read(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        
-                        
-                        return  -1;
-    
-}
-
-                //@Throws(IOException.constructor)
-            
-    public: int32_t read(std::vector<char> cbuf, int32_t off, int32_t len){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        
-                        
-                        return  -1;
-    
-}
-
-                //@Throws(IOException.constructor)
-            
-    public: int32_t read(CharBuffer* target){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        
-                        
-                        return  -1;
-    
-}
-
-                //@Throws(IOException.constructor)
-            
-    public: bool ready(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        
-                        
-                        return false;
-    
-}
-
-                //@Throws(IOException.constructor)
-            
-    public: int64_t skip(int64_t n){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        
-                        
-                        return 0;
-    
-}
-
-    public: void close(){
-}
-
-    };
-    return new Anonymous0();
-}();
+                        return NullReader::NULL_READER;
     
 }
 

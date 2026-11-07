@@ -106,7 +106,7 @@ ImageRotationUtil::ImageRotationUtil() : matrix(new Matrix()), anchor(Anchor::TO
                         
                                     {
                                     
-    Bitmap* bitmap = (image)).getBitmap();;
+    Bitmap* bitmap = (dynamic_cast<AndroidImageInterface*>(image))->getBitmap();;
     
 
     int32_t width = bitmap->getWidth();;
@@ -117,7 +117,7 @@ ImageRotationUtil::ImageRotationUtil() : matrix(new Matrix()), anchor(Anchor::TO
 this->matrix->setRotate(rotationInDegrees, (width>>1), (height>>1));
     
 
-    Canvas* canvas = (image)).getCanvas();;
+    Canvas* canvas = (dynamic_cast<AndroidImageInterface*>(image))->getCanvas();;
     
 canvas->concat(this->matrix);
     

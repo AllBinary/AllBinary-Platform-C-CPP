@@ -107,7 +107,7 @@ CapturedImageInputOutput::CapturedImageInputOutput() : logUtil(LogUtil::getInsta
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-    BufferedImageFrameCacheable* capturedBufferedImageCacheable = (dynamic_cast<BufferedImageFrameCacheable*>((getInstance)).get(frame)));;
+    BufferedImageFrameCacheable* capturedBufferedImageCacheable = (dynamic_cast<BufferedImageFrameCacheable*>((dynamic_cast<AutomaticCacheInterface*>(CapturedBufferedImagesCacheSingleton::getInstance()))->get(frame)));;
     
 this->logUtil->putF((JavaString::valueOf("Saving: ") +JavaString::valueOf(JavaString::valueOf(capturedBufferedImageCacheable))), this, commonStrings->SAVE);
     

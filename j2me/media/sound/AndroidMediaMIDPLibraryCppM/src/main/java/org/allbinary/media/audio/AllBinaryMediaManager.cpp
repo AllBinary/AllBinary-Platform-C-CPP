@@ -209,7 +209,7 @@ logUtil->putF(commonString->START, AllBinaryMediaManager::THIS, "shutdown");
                                 )
                         
                                     {
-                                    player2= (player)).getPlayerP();
+                                    player2= (dynamic_cast<PlayerComposite*>(player))->getPlayerP();
     
 
                         if(

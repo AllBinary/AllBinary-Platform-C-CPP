@@ -178,7 +178,7 @@ this->paintableTable[index][rowIndex]= TouchButton::createButton(BasicTouchInput
                         for (
     int32_t rowIndex = totalRows -1;rowIndex >= 0; rowIndex--)
         {
-this->paintableTable[index][rowIndex].paint(graphics);
+this->paintableTable[index][rowIndex]->paint(graphics);
     
 }
 

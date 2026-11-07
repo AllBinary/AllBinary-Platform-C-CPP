@@ -139,7 +139,7 @@ MotionRectanglesImageInputOutput::MotionRectanglesImageInputOutput() : logUtil(L
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-    MotionRectanglesResultsFrameCacheable* motionRectanglesResultsFrameCacheable = dynamic_cast<MotionRectanglesResultsFrameCacheable*>((getInstance)).get(frame));;
+    MotionRectanglesResultsFrameCacheable* motionRectanglesResultsFrameCacheable = dynamic_cast<MotionRectanglesResultsFrameCacheable*>((dynamic_cast<AutomaticCacheInterface*>(AllMotionRectanglesResultsCacheSingleton::getInstance()))->get(frame));;
     
 
                         if(motionRectanglesResultsFrameCacheable != 
@@ -152,13 +152,13 @@ MotionRectanglesImageInputOutput::MotionRectanglesImageInputOutput() : logUtil(L
     
 this->save(motionRectangles, frame);
     
-motionRectanglesResultsFrameCacheable= dynamic_cast<MotionRectanglesResultsFrameCacheable*>((getInstance)).get(frame));
+motionRectanglesResultsFrameCacheable= dynamic_cast<MotionRectanglesResultsFrameCacheable*>((dynamic_cast<AutomaticCacheInterface*>(ConsolidatedMotionRectanglesResultsCacheSingleton::getInstance()))->get(frame));
     
 motionRectangles= motionRectanglesResultsFrameCacheable->getMotionRectangles();
     
 this->save(motionRectangles, frame);
     
-motionRectanglesResultsFrameCacheable= dynamic_cast<MotionRectanglesResultsFrameCacheable*>((getInstance)).get(frame));
+motionRectanglesResultsFrameCacheable= dynamic_cast<MotionRectanglesResultsFrameCacheable*>((dynamic_cast<AutomaticCacheInterface*>(ConstrainedMotionRectanglesResultsCacheSingleton::getInstance()))->get(frame));
     
 motionRectangles= motionRectanglesResultsFrameCacheable->getMotionRectangles();
     

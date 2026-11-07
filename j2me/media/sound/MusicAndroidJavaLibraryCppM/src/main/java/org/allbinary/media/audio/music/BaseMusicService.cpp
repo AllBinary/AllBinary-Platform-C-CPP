@@ -283,7 +283,7 @@ class MusicRunnable: public ARunnable {
 
     private: BaseMusicService* baseMusicService;
 
-: MusicRunnable(BaseMusicService* baseMusicService){
+public: MusicRunnable(BaseMusicService* baseMusicService){
 this->baseMusicService= baseMusicService;
     
 }

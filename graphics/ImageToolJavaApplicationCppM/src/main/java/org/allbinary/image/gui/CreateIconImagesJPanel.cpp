@@ -225,9 +225,9 @@ iconHeightList->add(864);
                         for (
     int32_t index2 = 0;index2 < size; index2++)
         {
-width= JavaBoxes::unbox<int32_t>(iconWidthList->get(index2));
+width= (JavaBoxes::unbox<int32_t>(iconWidthList->get(index2))).;
     
-height= JavaBoxes::unbox<int32_t>(iconHeightList->get(index2));
+height= (JavaBoxes::unbox<int32_t>(iconHeightList->get(index2))).;
     
 
     std::vector<BufferedImage*> generatedBufferedImageArray = imageUtil->createBufferedImage3(imageProcessorInput->getBufferedImageArray(), width, height, true);;

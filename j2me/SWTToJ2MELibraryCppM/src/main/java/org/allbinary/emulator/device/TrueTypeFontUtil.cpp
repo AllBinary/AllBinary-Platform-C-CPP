@@ -703,9 +703,7 @@ PreLogUtil::putOE(commonStrings->EXCEPTION, this, commonStrings->EXCEPTION, &e);
     ImageLoader* imageLoader = new ImageLoader();;
     
 
-    ImageData* imageData = image = dynamic_cast<SwtMutableImage*>(imageimage)
-image.
-                    image->getImageData();;
+    ImageData* imageData = (dynamic_cast<SwtMutableImage*>(image))->image->getImageData();;
     
 imageData->transparentPixel= imageData->getPixel(0, 0);
     

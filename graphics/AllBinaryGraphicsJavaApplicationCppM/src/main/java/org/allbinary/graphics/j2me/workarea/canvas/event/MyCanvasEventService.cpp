@@ -108,9 +108,7 @@ MyCanvasEventService::listenerList->remove(listener->getClass(), dynamic_cast<ja
                         if(evt->getCommand()->compareTo(MyCanvasEventService::DELETE) == 0)
                         
                                     {
-                                     = dynamic_cast<MyCanvasEventListener*>(listeners[i +1])
-.
-                    delete_(evt);
+                                    (dynamic_cast<MyCanvasEventListener*>(listeners[i +1]))->delete_(evt);
     
 
                                     }
@@ -119,9 +117,7 @@ MyCanvasEventService::listenerList->remove(listener->getClass(), dynamic_cast<ja
                         if(evt->getCommand()->compareTo(MyCanvasEventService::DUPLICATE) == 0)
                         
                                     {
-                                     = dynamic_cast<MyCanvasEventListener*>(listeners[i +1])
-.
-                    duplicate(evt);
+                                    (dynamic_cast<MyCanvasEventListener*>(listeners[i +1]))->duplicate(evt);
     
 
                                     }
@@ -130,9 +126,7 @@ MyCanvasEventService::listenerList->remove(listener->getClass(), dynamic_cast<ja
                         if(evt->getCommand()->compareTo(MyCanvasEventService::SELECT) == 0)
                         
                                     {
-                                     = dynamic_cast<MyCanvasEventListener*>(listeners[i +1])
-.
-                    select(evt);
+                                    (dynamic_cast<MyCanvasEventListener*>(listeners[i +1]))->select(evt);
     
 
                                     }
@@ -141,9 +135,7 @@ MyCanvasEventService::listenerList->remove(listener->getClass(), dynamic_cast<ja
                         if(evt->getCommand()->compareTo(MyCanvasEventService::ROTATE) == 0)
                         
                                     {
-                                     = dynamic_cast<MyCanvasEventListener*>(listeners[i +1])
-.
-                    rotate(evt);
+                                    (dynamic_cast<MyCanvasEventListener*>(listeners[i +1]))->rotate(evt);
     
 
                                     }
@@ -152,9 +144,7 @@ MyCanvasEventService::listenerList->remove(listener->getClass(), dynamic_cast<ja
                         if(evt->getCommand()->compareTo(MyCanvasEventService::EXPLODE) == 0)
                         
                                     {
-                                     = dynamic_cast<MyCanvasEventListener*>(listeners[i +1])
-.
-                    explode(evt);
+                                    (dynamic_cast<MyCanvasEventListener*>(listeners[i +1]))->explode(evt);
     
 
                                     }
@@ -163,9 +153,7 @@ MyCanvasEventService::listenerList->remove(listener->getClass(), dynamic_cast<ja
                         if(evt->getCommand()->compareTo(MyCanvasEventService::AUTOEXPLODE) == 0)
                         
                                     {
-                                     = dynamic_cast<MyCanvasEventListener*>(listeners[i +1])
-.
-                    autoExplode(evt);
+                                    (dynamic_cast<MyCanvasEventListener*>(listeners[i +1]))->autoExplode(evt);
     
 
                                     }
@@ -174,9 +162,7 @@ MyCanvasEventService::listenerList->remove(listener->getClass(), dynamic_cast<ja
                         if(evt->getCommand()->compareTo(MyCanvasEventService::CENTER) == 0)
                         
                                     {
-                                     = dynamic_cast<MyCanvasEventListener*>(listeners[i +1])
-.
-                    center(evt);
+                                    (dynamic_cast<MyCanvasEventListener*>(listeners[i +1]))->center(evt);
     
 
                                     }

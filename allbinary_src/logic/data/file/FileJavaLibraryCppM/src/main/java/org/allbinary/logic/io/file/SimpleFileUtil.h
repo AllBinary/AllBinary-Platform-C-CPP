@@ -38,17 +38,16 @@
         
             #include "java/lang/Exception.h"
         
-            #include "java/lang/CharSequence.h"
-        
 #include <java/io/ByteArrayOutputStream.h>
-#include <java/io/IOException.h>
 #include <java/io/InputStream.h>
 #include <java/io/OutputStream.h>
 #include <java/io/Reader.h>
 #include <java/io/Writer.h>
-#include <java/nio/CharBuffer.h>
 class NullUtil;
 class LogUtil;
+class NullOutputStream;
+class NullReader;
+class NullWriter;
 class StreamUtil;
 class StringMaker;
 class CommonStrings;
@@ -127,9 +126,6 @@ class SimpleFileUtil
         #if __has_include(<java/io/ByteArrayOutputStream.h>)
 #include <java/io/ByteArrayOutputStream.h>
 #endif
-#if __has_include(<java/io/IOException.h>)
-#include <java/io/IOException.h>
-#endif
 #if __has_include(<java/io/InputStream.h>)
 #include <java/io/InputStream.h>
 #endif
@@ -142,14 +138,20 @@ class SimpleFileUtil
 #if __has_include(<java/io/Writer.h>)
 #include <java/io/Writer.h>
 #endif
-#if __has_include(<java/nio/CharBuffer.h>)
-#include <java/nio/CharBuffer.h>
-#endif
 #if __has_include(<org/allbinary/logic/NullUtil.h>)
 #include <org/allbinary/logic/NullUtil.h>
 #endif
 #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
 #include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/NullOutputStream.h>)
+#include <org/allbinary/logic/io/NullOutputStream.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/NullReader.h>)
+#include <org/allbinary/logic/io/NullReader.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/NullWriter.h>)
+#include <org/allbinary/logic/io/NullWriter.h>
 #endif
 #if __has_include(<org/allbinary/logic/io/StreamUtil.h>)
 #include <org/allbinary/logic/io/StreamUtil.h>

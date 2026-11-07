@@ -72,7 +72,7 @@
 #include "org/allbinary/animation/image/ImageArrayRotationAnimationInfo.h"
 
 
-ImageArrayRotationAnimationCacheable::ImageArrayRotationAnimationCacheable(Object* anyType, AnimationBehavior* animationBehavior) : AdjustedImageArrayRotationAnimation((anyType)).getImageArray(), (anyType)).getAngleInfoP(), (anyType)).getTotalAngle(), (anyType)).getDx(), (anyType)).getDy(), animationBehavior){
+ImageArrayRotationAnimationCacheable::ImageArrayRotationAnimationCacheable(Object* anyType, AnimationBehavior* animationBehavior) : AdjustedImageArrayRotationAnimation((dynamic_cast<ImageArrayRotationAnimationInfo*>(anyType))->getImageArray(), (dynamic_cast<ImageArrayRotationAnimationInfo*>(anyType))->getAngleInfoP(), (dynamic_cast<ImageArrayRotationAnimationInfo*>(anyType))->getTotalAngle(), (dynamic_cast<ImageArrayRotationAnimationInfo*>(anyType))->getDx(), (dynamic_cast<ImageArrayRotationAnimationInfo*>(anyType))->getDy(), animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     

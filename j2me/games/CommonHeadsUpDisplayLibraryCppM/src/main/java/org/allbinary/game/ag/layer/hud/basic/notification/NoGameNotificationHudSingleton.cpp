@@ -95,7 +95,7 @@ NoGameNotificationHudSingleton::NoGameNotificationHudSingleton() : logUtil(LogUt
 //inner=true member= isStatic=
 class NoGameGameNotificationHud: public GameNotificationHud {
 
-: NoGameGameNotificationHud() : GameNotificationHud(basicHudFactory->TOPCENTER, basicHudFactory->HORIZONTAL, 2, BasicColorFactory::getInstance()->RED){
+public: NoGameGameNotificationHud() : GameNotificationHud(basicHudFactory->TOPCENTER, basicHudFactory->HORIZONTAL, 2, BasicColorFactory::getInstance()->RED){
 
                         //super/this constructor call is in the constructor initializer list.
                     

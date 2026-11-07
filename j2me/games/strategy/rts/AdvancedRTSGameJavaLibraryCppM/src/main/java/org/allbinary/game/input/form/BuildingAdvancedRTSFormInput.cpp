@@ -240,7 +240,7 @@ this->BUILD_BUILDING_RTS_LAYER_EVENT->setRtsLayer(layerInterface);
 BuildingEventHandler::getInstance()->fireEvent(this->BUILD_BUILDING_RTS_LAYER_EVENT);
     
 
-                        if((rtsPlayerLayerInterface)).isLocalPlayer())
+                        if((dynamic_cast<AdvancedRTSPlayerLayerInterface*>(rtsPlayerLayerInterface))->isLocalPlayer())
                         
                                     {
                                     LocalPlayerBuildingEventHandler::getInstance()->fireEvent(this->BUILD_BUILDING_RTS_LAYER_EVENT);

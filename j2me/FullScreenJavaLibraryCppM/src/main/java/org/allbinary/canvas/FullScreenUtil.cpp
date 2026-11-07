@@ -91,9 +91,7 @@ FullScreenUtil* FullScreenUtil::instance = FullScreenUtil::instance_owner();
                 //@Throws(Exception.constructor)
             
     auto FullScreenUtil::initOnRun(Canvas* fullScreenInterface, CommandListener* commandListener) -> void{
-fullScreenInterface = dynamic_cast<RunnableCanvas*>(fullScreenInterfacefullScreenInterface)
-fullScreenInterface.
-                    waitOnNotify(0);
+(dynamic_cast<RunnableCanvas*>(fullScreenInterface))->waitOnNotify(0);
     
 
                         if(commandListener != 

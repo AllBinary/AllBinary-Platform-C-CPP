@@ -696,7 +696,7 @@ image= this->openGLUtil->addImage(image);
                         
                                     {
                                     
-    ImageData* originalImageData = (getImage)).getImageData();;
+    ImageData* originalImageData = (dynamic_cast<org::eclipse::swt::graphics::Image*>(originalImage->getImage()))->getImageData();;
     
 
     SwtMutableImage* mutableImage2 = dynamic_cast<SwtMutableImage*>(image);;
@@ -750,7 +750,7 @@ newPixelArray[index +(index2 *width)]= originalPixelArray[(index -halfWidthDelta
 
 }
 
-dynamic_cast<org::eclipse::swt::graphics::Image*>(mutableImage2->getImage())getImageData()->setPixels(0, 0, image->getWidth(), newPixelArray, 0);
+(dynamic_cast<org::eclipse::swt::graphics::Image*>(mutableImage2->getImage()))->getImageData()->setPixels(0, 0, image->getWidth(), newPixelArray, 0);
     
 
 
@@ -768,7 +768,7 @@ dynamic_cast<org::eclipse::swt::graphics::Image*>(mutableImage2->getImage())getI
     SwtImmutableImage* originalImmutableImage = dynamic_cast<SwtImmutableImage*>(image);;
     
 
-    ImageData* originalImageData = (getImage)).getImageData();;
+    ImageData* originalImageData = (dynamic_cast<org::eclipse::swt::graphics::Image*>(originalImage->getImage()))->getImageData();;
     
 
     int32_t halfWidthDelta = (newWidth -originalImage->getWidth()) /2;;
@@ -819,7 +819,7 @@ newPixelArray[index +(index2 *width)]= originalPixelArray[(index -halfWidthDelta
 
 }
 
-dynamic_cast<org::eclipse::swt::graphics::Image*>(originalImmutableImage->getImage())getImageData()->setPixels(0, 0, image->getWidth(), newPixelArray, 0);
+(dynamic_cast<org::eclipse::swt::graphics::Image*>(originalImmutableImage->getImage()))->getImageData()->setPixels(0, 0, image->getWidth(), newPixelArray, 0);
     
 
 

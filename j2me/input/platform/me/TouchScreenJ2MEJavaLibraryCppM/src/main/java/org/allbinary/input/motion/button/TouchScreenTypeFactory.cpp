@@ -74,7 +74,7 @@ TouchScreenTypeFactory* TouchScreenTypeFactory::instance = TouchScreenTypeFactor
 }
 
 
-    auto TouchScreenTypeFactory::TouchScreenTypeFactory() -> void{
+    auto TouchScreenTypeFactory::TouchScreenTypeFactory_() -> void{
 
     TouchScreenFactory* touchScreenFactory = TouchScreenFactory::getInstance();;
     

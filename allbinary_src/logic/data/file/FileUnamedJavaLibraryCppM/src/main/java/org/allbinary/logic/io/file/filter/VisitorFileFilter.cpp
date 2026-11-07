@@ -84,7 +84,7 @@ this->booleanVisitorInterface= booleanVisitorInterface;
     AbFile* abFile = FileWrapperUtil::wrapFile(file);;
     
 
-    bool isFileAcceptable = JavaBoxes::unbox<bool>(this->booleanVisitorInterface->visit(abFile));;
+    bool isFileAcceptable = (JavaBoxes::unbox<bool>(this->booleanVisitorInterface->visit(abFile))).;;
     
 
 
@@ -99,7 +99,7 @@ this->booleanVisitorInterface= booleanVisitorInterface;
 
     auto VisitorFileFilter::accept(AbFile* file) -> bool{
 
-    bool isFileAcceptable = JavaBoxes::unbox<bool>(this->booleanVisitorInterface->visit(file));;
+    bool isFileAcceptable = (JavaBoxes::unbox<bool>(this->booleanVisitorInterface->visit(file))).;;
     
 
 

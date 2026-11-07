@@ -78,7 +78,7 @@ DirectoryFileVisitor::DirectoryFileVisitor(){
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return JavaBoxes::unbox<bool>(this->visit(arg0));;
+                        return (JavaBoxes::unbox<bool>(this->visit(arg0))).;;
     
 }
 

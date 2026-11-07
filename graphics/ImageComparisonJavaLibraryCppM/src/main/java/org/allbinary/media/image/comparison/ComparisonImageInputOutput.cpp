@@ -114,7 +114,7 @@ ComparisonImageInputOutput::ComparisonImageInputOutput() : logUtil(LogUtil::getI
                         
                                     {
                                     
-    ImageComparisonResultFrameCacheable* imageComparisonResultFrameCacheable = dynamic_cast<ImageComparisonResultFrameCacheable*>((getInstance)).get(frame));;
+    ImageComparisonResultFrameCacheable* imageComparisonResultFrameCacheable = dynamic_cast<ImageComparisonResultFrameCacheable*>((dynamic_cast<AutomaticCacheInterface*>(ImageComparisonResultCacheSingleton::getInstance()))->get(frame));;
     
 
                         if(imageComparisonResultFrameCacheable != 

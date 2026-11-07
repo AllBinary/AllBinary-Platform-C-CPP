@@ -158,7 +158,7 @@ this->logUtil->putF(path, this, commonStrings->CONSTRUCTOR);
     FileOutputStream* fos = new FileOutputStream(path);;
     
 
-    Bitmap* bitmap = (getImage)).getBitmap();;
+    Bitmap* bitmap = (dynamic_cast<AndroidImageInterface*>(this->fontImage->openGLBitmap->getImage()))->getBitmap();;
     
 bitmap->compress(Bitmap::CompressFormat->PNG, 100, fos);
     

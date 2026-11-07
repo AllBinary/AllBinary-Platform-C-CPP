@@ -98,7 +98,7 @@ GenericModuleFactory::GenericModuleFactory() : AbstractInputAutomationFactory(NA
 
     auto GenericModuleFactory::getInstance() -> RunnableInterface*{
 
-    GenericProfile* genericProfile = (getConfigurationJPanel)).getSelectedGenericProfile();;
+    GenericProfile* genericProfile = (dynamic_cast<GenericModuleConfigurationJPanel*>(this->getConfigurationJPanel()))->getSelectedGenericProfile();;
     
 
     InputAutomationActionInterface* inputAutomationActionInterface = dynamic_cast<InputAutomationActionInterface*>(new GenericInputAutomationAction());;

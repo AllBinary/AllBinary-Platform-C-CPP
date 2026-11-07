@@ -58,7 +58,7 @@
         <dependency>
             <groupId>org.eclipse.swt</groupId>
             <artifactId>org.eclipse.swt.win32.win32.x86_64Cpp</artifactId>
-            <version>4.3</version>
+            <version>4.2.1</version>
             <optional>true</optional>
         </dependency>
         

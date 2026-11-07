@@ -71,7 +71,7 @@ class TouchScreenTypeFactory
             
     public: TouchScreenTypeFactory();
         
-    public: void TouchScreenTypeFactory();
+    public: void TouchScreenTypeFactory_();
 
 };
 

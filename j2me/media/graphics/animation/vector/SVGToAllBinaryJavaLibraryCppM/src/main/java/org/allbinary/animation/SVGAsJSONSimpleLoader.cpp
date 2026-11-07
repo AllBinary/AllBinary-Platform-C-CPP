@@ -473,9 +473,7 @@ e.printStackTrace();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return static_cast<int32_t>(Math::round(value = valuevalue
-value.
-                    ));
+                        return static_cast<int32_t>(Math::round((value).));
     
 
                                     }

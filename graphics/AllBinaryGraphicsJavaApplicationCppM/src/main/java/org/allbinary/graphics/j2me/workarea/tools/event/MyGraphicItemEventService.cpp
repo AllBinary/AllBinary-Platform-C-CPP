@@ -108,9 +108,7 @@ MyGraphicItemEventService::listenerList->remove(listener->getClass(), dynamic_ca
                         if(evt->getCommand()->compareTo(MyGraphicItemEventService::SELECT) == 0)
                         
                                     {
-                                     = dynamic_cast<MyGraphicItemEventListener*>(listeners[i +1])
-.
-                    highlight(evt);
+                                    (dynamic_cast<MyGraphicItemEventListener*>(listeners[i +1]))->highlight(evt);
     
 
                                     }
@@ -119,9 +117,7 @@ MyGraphicItemEventService::listenerList->remove(listener->getClass(), dynamic_ca
                         if(evt->getCommand()->compareTo(MyGraphicItemEventService::DESELECT) == 0)
                         
                                     {
-                                     = dynamic_cast<MyGraphicItemEventListener*>(listeners[i +1])
-.
-                    deselect(evt);
+                                    (dynamic_cast<MyGraphicItemEventListener*>(listeners[i +1]))->deselect(evt);
     
 
                                     }
@@ -130,9 +126,7 @@ MyGraphicItemEventService::listenerList->remove(listener->getClass(), dynamic_ca
                         if(evt->getCommand()->compareTo(MyGraphicItemEventService::DELETE) == 0)
                         
                                     {
-                                     = dynamic_cast<MyGraphicItemEventListener*>(listeners[i +1])
-.
-                    delete_(evt);
+                                    (dynamic_cast<MyGraphicItemEventListener*>(listeners[i +1]))->delete_(evt);
     
 
                                     }
@@ -141,9 +135,7 @@ MyGraphicItemEventService::listenerList->remove(listener->getClass(), dynamic_ca
                         if(evt->getCommand()->compareTo(MyGraphicItemEventService::DUPLICATE) == 0)
                         
                                     {
-                                     = dynamic_cast<MyGraphicItemEventListener*>(listeners[i +1])
-.
-                    duplicate(evt);
+                                    (dynamic_cast<MyGraphicItemEventListener*>(listeners[i +1]))->duplicate(evt);
     
 
                                     }
@@ -152,9 +144,7 @@ MyGraphicItemEventService::listenerList->remove(listener->getClass(), dynamic_ca
                         if(evt->getCommand()->compareTo(MyGraphicItemEventService::ROTATE) == 0)
                         
                                     {
-                                     = dynamic_cast<MyGraphicItemEventListener*>(listeners[i +1])
-.
-                    rotate(evt);
+                                    (dynamic_cast<MyGraphicItemEventListener*>(listeners[i +1]))->rotate(evt);
     
 
                                     }

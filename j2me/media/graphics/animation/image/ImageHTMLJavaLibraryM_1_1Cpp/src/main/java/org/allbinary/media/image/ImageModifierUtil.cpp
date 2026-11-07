@@ -156,7 +156,7 @@ this->setAlpha2(originalImage, image, imageIndex, alpha);
     CanvasImage* canvasImage = dynamic_cast<CanvasImage*>(htmlImage->getImage());;
     
 
-    playn::core::Image* originalPlaynImage = dynamic_cast<playn::core::Image*>((originalImage)).getImage());;
+    playn::core::Image* originalPlaynImage = dynamic_cast<playn::core::Image*>((dynamic_cast<PlaynImage*>(originalImage))->getImage());;
     
 
     Canvas* canvas = canvasImage->canvas();;
@@ -226,7 +226,7 @@ this->handleImage(imageArray, index, originalImageArray[index]);
 
     auto ImageModifierUtil::handleImage(std::vector<Image*> imageArray, int32_t index, Image* image) -> void{
 
-    playn::core::Image* image3 = dynamic_cast<playn::core::Image*>((image)).getImage());;
+    playn::core::Image* image3 = dynamic_cast<playn::core::Image*>((dynamic_cast<PlaynImage*>(image))->getImage());;
     
 
                         if(image3 != 

@@ -173,7 +173,7 @@ this->player->deallocate();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return (player)).getTimeBase();;
+                        return (dynamic_cast<TimeBaseInterface*>(this->player))->getTimeBase();;
     
 }
 
@@ -182,9 +182,7 @@ this->player->deallocate();
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     auto PlayerComposite::setTimeBase(TimeBase* timeBase) -> void{
-player = dynamic_cast<TimeBaseInterface*>(this->playerplayer)
-player.
-                    setTimeBase(timeBase);
+(dynamic_cast<TimeBaseInterface*>(this->player))->setTimeBase(timeBase);
     
 }
 

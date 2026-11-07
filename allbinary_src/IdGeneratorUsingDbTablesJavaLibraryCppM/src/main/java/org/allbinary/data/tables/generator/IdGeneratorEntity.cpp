@@ -109,7 +109,7 @@ keysAndValues->put(this->NAME, name);
     HashMap<Object*, Object*>* hashMap = AbSqlBean::getRow(keysAndValues);;
     
 
-                        if((get)).compareTo(name) != 0)
+                        if((JavaBoxes::unbox<std::string>(hashMap->get(this->NAME))).compareTo(name) != 0)
                         
                                     {
                                     

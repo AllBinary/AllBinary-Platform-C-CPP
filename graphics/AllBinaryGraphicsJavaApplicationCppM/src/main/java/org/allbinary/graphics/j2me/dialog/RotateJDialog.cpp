@@ -236,7 +236,7 @@ pack();
     
 this->hashMap->put(Integer.valueOf(1)Integer.valueOf(this->totalRotationJTextField->getText()));
     
-dynamic_cast<HashMapJDialogListenerInterface*>(this->getParent())onHashMap(this->hashMap);
+(dynamic_cast<HashMapJDialogListenerInterface*>(this->getParent()))->onHashMap(this->hashMap);
     
 this->setVisible(false);
     

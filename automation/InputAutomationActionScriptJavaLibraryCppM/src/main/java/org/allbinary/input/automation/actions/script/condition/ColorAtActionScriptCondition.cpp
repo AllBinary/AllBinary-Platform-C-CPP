@@ -373,7 +373,7 @@ node->appendChild(ModDomHelper::createNodeWithValueNodes(document, ColorAtAction
             
     auto ColorAtActionScriptCondition::shouldProcess(int64_t frame) -> bool{
 
-    BufferedImageFrameCacheable* capturedBufferedImageCacheable = dynamic_cast<BufferedImageFrameCacheable*>((getInstance)).get((frame).toLong()));;
+    BufferedImageFrameCacheable* capturedBufferedImageCacheable = dynamic_cast<BufferedImageFrameCacheable*>((dynamic_cast<AutomaticCacheInterface*>(CapturedBufferedImagesCacheSingleton::getInstance()))->get((frame).toLong()));;
     
 
     BufferedImage* bufferedImage = capturedBufferedImageCacheable->getBufferedImage();;

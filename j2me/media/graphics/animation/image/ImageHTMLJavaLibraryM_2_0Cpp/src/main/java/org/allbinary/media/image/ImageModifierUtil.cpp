@@ -163,7 +163,7 @@ this->setAlpha2(originalImage, image, imageIndex, alpha);
     ImageImpl* canvasImage = dynamic_cast<ImageImpl*>(htmlImage->getImage());;
     
 
-    CoreImage* originalPlaynImage = dynamic_cast<CoreImage*>((originalImage)).getImage());;
+    CoreImage* originalPlaynImage = dynamic_cast<CoreImage*>((dynamic_cast<PlaynImage*>(originalImage))->getImage());;
     
 
     Canvas* canvas = this->playnUtil->getCanvas(canvasImage);;
@@ -273,7 +273,7 @@ logUtil->put(JavaString::valueOf((new StringMaker())->append(this->imageModifier
 
     auto ImageModifierUtil::handleImage(std::vector<Image*> imageArray, int32_t index, Image* image) -> void{
 
-    CoreImage* image3 = dynamic_cast<CoreImage*>((image)).getImage());;
+    CoreImage* image3 = dynamic_cast<CoreImage*>((dynamic_cast<PlaynImage*>(image))->getImage());;
     
 
                         if(image3 != 
