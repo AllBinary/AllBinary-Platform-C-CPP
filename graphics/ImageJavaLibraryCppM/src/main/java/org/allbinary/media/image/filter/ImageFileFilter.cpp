@@ -90,7 +90,7 @@ ImageFileFilter::ImageFileFilter() {
                         
                                     {
                                     
-    std::string ext = JavaString::toLowerCase(JavaString::substring(s, i +1));;
+    std::string ext = JavaString::toLowerCase(JavaString::toLowerCase(JavaString::substring(s, i +1)));;
     
 
                         if(JavaObjects::equals(ext, "jpg") || JavaObjects::equals(ext, "jpeg"))

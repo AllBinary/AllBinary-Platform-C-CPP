@@ -136,11 +136,13 @@ this->NULL_INDEX_ANIMATION= dynamic_cast<IndexedAnimation*>(NullRotationAnimatio
 //inner=true member= isStatic=
 class ActualRotationAnimation: public RotationAnimation {
 
+    private: AnimationBehavior* animationBehavior;
+
     private: LazyImageRotationAnimation* lazyImageRotationAnimation;
 
     private: int32_t index= 0;
 
-public: ActualRotationAnimation(LazyImageRotationAnimation* lazyImageRotationAnimation) : RotationAnimation(AngleInfo::getInstance(AngleFactory::getInstance()->QUARTER_TOTAL_ANGLE), CircularIndexUtil::createInstance(4), animationBehavior){
+public: ActualRotationAnimation(LazyImageRotationAnimation* lazyImageRotationAnimation, AnimationBehavior* captured_animationBehavior) : RotationAnimation(AngleInfo::getInstance(AngleFactory::getInstance()->QUARTER_TOTAL_ANGLE), CircularIndexUtil::createInstance(4), animationBehavior), animationBehavior(captured_animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -218,7 +220,7 @@ logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->PROCESS,
 
                     //Otherwise - statement - EmptyStmt
 
-this->animation= new ActualRotationAnimation(this);
+this->animation= new ActualRotationAnimation(this, animationBehavior);
     
 }
 

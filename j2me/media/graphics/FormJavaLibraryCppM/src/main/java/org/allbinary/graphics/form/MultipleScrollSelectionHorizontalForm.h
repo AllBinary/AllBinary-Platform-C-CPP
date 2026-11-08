@@ -58,6 +58,7 @@ class StringMaker;
 class ItemPaintableFactory;
 class FormType;
 #include "org/allbinary/graphics/form/ItemIndexPaintable.h"
+//class MultipleScrollSelectionFormRectPaintable;
 class FormTypeFactory;
 //class MultipleScrollSelectionFormVerticalPaintable;
 //class MultipleScrollSelectionFormHorizontalPaintable;
@@ -69,6 +70,7 @@ class FormTypeFactory;
 class MultipleScrollSelectionHorizontalForm: public ScrollSelectionForm, public virtual UpdateMyFontInterface {
 public: class MultipleScrollSelectionFormHorizontalPaintable;
 public: class MultipleScrollSelectionFormVerticalPaintable;
+public: class MultipleScrollSelectionFormRectPaintable;
 
                 //@Throws(Exception.constructor)
             
@@ -106,6 +108,22 @@ public: MultipleScrollSelectionFormVerticalPaintable(MultipleScrollSelectionHori
                 //@Throws(Exception.constructor)
             
     public: int32_t paint(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t dx, int32_t dy);
+
+};
+
+            
+//inner= member=true isStatic=
+public: class MultipleScrollSelectionFormRectPaintable: public Paintable {
+
+    public: MultipleScrollSelectionHorizontalForm* outer = nullptr;
+/*Static stuff is not allowed for CPP inner classes*//**/
+
+
+    private: MultipleScrollSelectionHorizontalForm* multipleScrollSelectionForm;
+
+public: MultipleScrollSelectionFormRectPaintable(MultipleScrollSelectionHorizontalForm* multipleScrollSelectionForm);
+
+    public: void paint(Graphics* graphics);
 
 };
 

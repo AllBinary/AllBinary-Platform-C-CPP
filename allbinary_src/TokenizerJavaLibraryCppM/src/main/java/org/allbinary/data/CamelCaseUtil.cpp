@@ -149,7 +149,7 @@ word= stringValidationUtil->isEmpty(word)
                                 word
                                 :
 
-                            JavaString::valueOf((new StringMaker())->appendchar(Character::toUpperCase(word[0]))->append(JavaString::toLowerCase(JavaString::substring(word, 1))));;
+                            JavaString::valueOf((new StringMaker())->appendchar(Character::toUpperCase(word[0]))->append(JavaString::toLowerCase(JavaString::toLowerCase(JavaString::substring(word, 1)))));;
     
 stringBuilder->append(word);
     

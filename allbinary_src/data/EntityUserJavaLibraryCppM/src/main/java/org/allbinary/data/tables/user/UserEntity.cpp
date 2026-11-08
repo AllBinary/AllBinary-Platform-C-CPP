@@ -239,7 +239,7 @@ keysAndValues->put(UserData::PERMISSIONS, storeFrontInterface->getName());
     int32_t i = 0;i < size; i++)
         {
 
-    HashMap<Object*, Object*>* userHashMap = dynamic_cast<HashMap*>(usersHashMapVector->get(i));;
+    HashMap<Object*, Object*>* userHashMap = dynamic_cast<HashMap<Object*, Object*>*>(usersHashMapVector->get(i));;
     
 
                         if(userHashMap != 
@@ -299,7 +299,7 @@ keysAndValues->put(JavaString::valueOf(UserRoleData::NAME), JavaString::valueOf(
     int32_t index = 0;index < size; index++)
         {
 
-    HashMap<Object*, Object*>* userHashMap = dynamic_cast<HashMap*>(usersHashMapVector->get(index));;
+    HashMap<Object*, Object*>* userHashMap = dynamic_cast<HashMap<Object*, Object*>*>(usersHashMapVector->get(index));;
     
 
                         if(userHashMap != 
@@ -345,7 +345,7 @@ keysAndValues->put(StoreFrontData::getInstance()->NAME, storeFrontInterface->get
     int32_t index = 0;index < size; index++)
         {
 
-    HashMap<Object*, Object*>* userHashMap = dynamic_cast<HashMap*>(usersHashMapVector->get(index));;
+    HashMap<Object*, Object*>* userHashMap = dynamic_cast<HashMap<Object*, Object*>*>(usersHashMapVector->get(index));;
     
 
                         if(userHashMap != 

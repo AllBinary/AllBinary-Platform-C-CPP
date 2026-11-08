@@ -164,7 +164,7 @@ this->availableListOfList[index]= new BasicArrayListD();
         {
 this->availableListOfList[index]->clear();
     
-this->availableListOfList[index].addAllList(this->listOfList[index]);
+this->availableListOfList[index]->addAllList(this->listOfList[index]);
     
 }
 

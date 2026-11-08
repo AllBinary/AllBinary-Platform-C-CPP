@@ -79,7 +79,7 @@ HitPointGameObject::HitPointGameObject(std::vector<BufferedImage*> bufferedImage
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(this->getRatios()[bufferedImage.size() -1].doubleValue() < 1.0F)
+                        if(this->getRatios()[bufferedImage.size() -1]->doubleValue() < 1.0F)
                         
                                     {
                                     this->setDamaged(true);
@@ -94,7 +94,7 @@ HitPointGameObject::HitPointGameObject(std::vector<BufferedImage*> bufferedImage
                         }
                             
 
-                        if(this->getRatios()[bufferedImage.size() -1].doubleValue() > 0.25F)
+                        if(this->getRatios()[bufferedImage.size() -1]->doubleValue() > 0.25F)
                         
                                     {
                                     this->closeDeath= false;
@@ -113,7 +113,7 @@ HitPointGameObject::HitPointGameObject(std::vector<BufferedImage*> bufferedImage
 
     auto HitPointGameObject::isMoreThan(float aFloat) -> bool{
 
-                        if(this->getRatios()[this->getRatios().size() -1].doubleValue() > aFloat)
+                        if(this->getRatios()[this->getRatios().size() -1]->doubleValue() > aFloat)
                         
                                     {
                                     

@@ -126,7 +126,7 @@ this->update();
     int32_t index = 0;index < size; index++)
         {
 
-    int32_t key = keys[index].intValue();;
+    int32_t key = keys[index];;
     
 
                         if(key !=  -1)
@@ -151,7 +151,7 @@ this->update();
     int32_t index = 0;index < size; index++)
         {
 
-    int32_t key = keys[index].intValue();;
+    int32_t key = keys[index];;
     
 
                         if(key !=  -1)

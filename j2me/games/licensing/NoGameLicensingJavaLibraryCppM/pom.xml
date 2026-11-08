@@ -80,6 +80,51 @@
             <optional>true</optional>
         </dependency>
 
+        <!-- CommandForm.h is referenced by GameOptionsForm.h. Optional native
+             dependencies are not transitive, so include its owning module. -->
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>FormJMEJavaLibraryCpp</artifactId>
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+
+            <optional>true</optional>
+        </dependency>
+
+        <!-- ThreadPool.h is referenced by PathFindingThreadPool.h. -->
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>ThreadJ2MELibraryCpp</artifactId>
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+
+            <optional>true</optional>
+        </dependency>
+
+        <!-- ABCustomForm.h is selected by the null custom-UI platform. -->
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>NullCustomUIJavaLibraryCpp</artifactId>
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+
+            <optional>true</optional>
+        </dependency>
+
+        <!-- BasicMenuInputProcessor.h consumes the motion-gesture listener API. -->
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>MotionGestureBaseJavaLibraryCpp</artifactId>
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+
+            <optional>true</optional>
+        </dependency>
+
         <dependency>
             <groupId>org.allbinary</groupId>
             <artifactId>PartnerJ2MEJavaLibraryCpp</artifactId>

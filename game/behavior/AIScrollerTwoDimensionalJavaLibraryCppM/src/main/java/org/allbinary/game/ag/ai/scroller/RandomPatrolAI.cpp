@@ -90,7 +90,7 @@ this->updateRandomDistance();
 
 
     auto RandomPatrolAI::updateRandomDistance() -> void{
-this->currentDistance= MyRandomFactory::getInstance()->getAbsoluteNextInt(this->maxDistance->intValue());
+this->currentDistance= MyRandomFactory::getInstance()->getAbsoluteNextInt(JavaBoxes::value<int32_t>(this->maxDistance));
     
 }
 

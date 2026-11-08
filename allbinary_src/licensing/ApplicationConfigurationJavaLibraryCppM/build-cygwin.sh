@@ -14,6 +14,16 @@ read -r -a compiler_flags <<< "$7"
 include_dir="$(cygpath -u "$8")"
 relative_include_dir="$include_dir/java/lang"
 
+# Arguments after the runtime include path are extra include dirs, e.g. target/native/dependency-include
+# (headers unpacked from the dependencies' -sources jars). Missing dirs are skipped.
+extra_includes=()
+for extra_include_dir in "${@:9}"; do
+    extra_include_dir="$(cygpath -u "$extra_include_dir")"
+    if [ -d "$extra_include_dir" ]; then
+        extra_includes+=(-I"$extra_include_dir")
+    fi
+done
+
 mkdir -p "$object_dir" "$archive_dir"
 find "$object_dir" -type f -delete
 
@@ -25,10 +35,10 @@ while IFS= read -r -d '' source; do
 
     case "$source" in
         *.c)
-            gcc -std="$c_standard" "${compiler_flags[@]}" -I"$source_dir" -I"$include_dir" -iquote "$relative_include_dir" -MMD -MP -c "$source" -o "$object"
+            gcc -std="$c_standard" "${compiler_flags[@]}" -I"$source_dir" -I"$include_dir" "${extra_includes[@]}" -iquote "$relative_include_dir" -MMD -MP -c "$source" -o "$object"
             ;;
         *)
-            g++ -std="$cpp_standard" "${compiler_flags[@]}" -I"$source_dir" -I"$include_dir" -iquote "$relative_include_dir" -MMD -MP -c "$source" -o "$object"
+            g++ -std="$cpp_standard" "${compiler_flags[@]}" -I"$source_dir" -I"$include_dir" "${extra_includes[@]}" -iquote "$relative_include_dir" -MMD -MP -c "$source" -o "$object"
             ;;
     esac
 

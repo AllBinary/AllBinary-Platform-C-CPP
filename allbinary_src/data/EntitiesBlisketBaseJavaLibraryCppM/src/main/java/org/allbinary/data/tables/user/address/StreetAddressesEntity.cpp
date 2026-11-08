@@ -369,7 +369,7 @@ keyAndValue->put(UserData::USERNAME, this->userName);
     int32_t index = 0;index < size; index++)
         {
 
-    HashMap<Object*, Object*>* addressHashMap = dynamic_cast<HashMap*>(addressList->get(index));;
+    HashMap<Object*, Object*>* addressHashMap = dynamic_cast<HashMap<Object*, Object*>*>(addressList->get(index));;
     
 
     StreetAddress* streetAddress = new StreetAddress(addressHashMap);;

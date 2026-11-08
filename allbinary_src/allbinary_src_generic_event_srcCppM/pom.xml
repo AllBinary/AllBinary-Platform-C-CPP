@@ -41,7 +41,7 @@
         
         <dependency>
             <groupId>org.allbinary</groupId>
-            <artifactId>LoggingAndroidAllCpp</artifactId>
+            <artifactId>LoggingJ2MEAllCpp</artifactId>
 
             <!--
 <artifactId>LoggingJ2MEAllCpp</artifactId>

@@ -61,7 +61,7 @@
         <!--
         <module>../../graphics/animation/image/ImageHTMLJavaLibraryCppM</module>
         -->
-        <module>../../graphics/animation/image/ImageJ2SEJavaLibraryCppM</module>
+<!--        <module>../../graphics/animation/image/ImageJ2SEJavaLibraryCppM</module>-->
         <!--
         <module>../../graphics/animation/image/ImageAndroidJavaLibraryCppM</module>
         -->

@@ -262,7 +262,7 @@ keyAndValue->put(UserData::USERNAME, userName);
     int32_t index = 0;index < size; index++)
         {
 
-    HashMap<Object*, Object*>* paymentHashMap = dynamic_cast<HashMap*>(paymentList->get(index));;
+    HashMap<Object*, Object*>* paymentHashMap = dynamic_cast<HashMap<Object*, Object*>*>(paymentList->get(index));;
     
 
     Payment* payment = new Payment(paymentHashMap);;

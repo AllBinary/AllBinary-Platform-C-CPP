@@ -117,7 +117,7 @@ this->visitor= visitor;
     std::vector<int32_t> repeatLikelyhoodIntegerArray = this->inputProbability->getRepeatLikelyhoodIntegerArray();;
     
 
-                        if(this->getLastKey() !=  -1 && repeatLikelyhoodIntegerArray[this->getLastKey()].intValue() >= this->i_random)
+                        if(this->getLastKey() !=  -1 && repeatLikelyhoodIntegerArray[this->getLastKey()] >= this->i_random)
                         
                                     {
                                     repeat= true;
@@ -157,7 +157,7 @@ likelyhoodIntegerKeyArray= likelyhoodIntegerArray[key];
                         
                                     {
                                     
-                        if(this->i_random >= likelyhoodIntegerKeyArray[0].intValue() && this->i_random < likelyhoodIntegerKeyArray[1].intValue())
+                        if(this->i_random >= likelyhoodIntegerKeyArray[0] && this->i_random < likelyhoodIntegerKeyArray[1])
                         
                                     {
                                     this->setLastKey(key);

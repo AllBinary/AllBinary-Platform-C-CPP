@@ -144,7 +144,7 @@ numberStringArray[index]= std::to_string(index);
 }
 
 
-    Raster* araster = this->imageProcessorInput->getBufferedImageArray()[0].getAlphaRaster();;
+    Raster* araster = this->imageProcessorInput->getBufferedImageArray()[0]->getAlphaRaster();;
     
 
                         if(araster == 

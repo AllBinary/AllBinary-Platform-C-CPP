@@ -114,7 +114,7 @@ this->update();
 
     RotationAnimationInterfaceCompositeInterface* rotationAnimationInterfaceCompositeInterface = dynamic_cast<RotationAnimationInterfaceCompositeInterface*>(this->getOwnerLayerInterface());;
     
-rotationAnimationInterfaceCompositeInterface->setFrame(angleIncrementInfo->RIGHT_FRAME->intValue());
+rotationAnimationInterfaceCompositeInterface->setFrame(JavaBoxes::value<int32_t>(angleIncrementInfo->RIGHT_FRAME));
     
 
                                     }
@@ -132,7 +132,7 @@ rotationAnimationInterfaceCompositeInterface->setFrame(angleIncrementInfo->RIGHT
 
     RotationAnimationInterfaceCompositeInterface* rotationAnimationInterfaceCompositeInterface = dynamic_cast<RotationAnimationInterfaceCompositeInterface*>(this->getOwnerLayerInterface());;
     
-rotationAnimationInterfaceCompositeInterface->setFrame(angleIncrementInfo->LEFT_FRAME->intValue());
+rotationAnimationInterfaceCompositeInterface->setFrame(JavaBoxes::value<int32_t>(angleIncrementInfo->LEFT_FRAME));
     
 
                                     }

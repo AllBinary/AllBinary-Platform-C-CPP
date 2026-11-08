@@ -85,6 +85,15 @@
 
         </dependency>
 
+        <!-- Player.h is in this source artifact.  It must be direct because
+             Maven does not unpack optional dependencies of dependencies. -->
+        <dependency>
+            <groupId>org.microemu</groupId>
+            <artifactId>microemu-midp-for-polyglotCpp</artifactId>
+            <version>2.0.4</version>
+            <optional>true</optional>
+        </dependency>
+
     </dependencies>
 
     <build>

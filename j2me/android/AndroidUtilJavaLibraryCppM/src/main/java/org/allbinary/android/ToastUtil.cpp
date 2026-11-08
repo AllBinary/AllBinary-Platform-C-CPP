@@ -85,9 +85,13 @@ class MakeToast
             : public virtual Object
         , public virtual Runnable {
 
+    private: Context* context;
+
+    private: int32_t time;
+
     std::string string;
 
-public: MakeToast(std::string string){
+public: MakeToast(std::string string, Context* captured_context, int32_t captured_time) : context(captured_context), time(captured_time){
 this->string= string;
     
 }
@@ -118,7 +122,7 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 };
 
             
-view->post(new MakeToast(message));
+view->post(new MakeToast(message, context, time));
     
 }
 

@@ -281,9 +281,13 @@ this->logUtil->putF(this->ALREADY_PLAYING, this, this->commonStateStrings->ON_ST
 //inner=true member= isStatic=
 class MusicRunnable: public ARunnable {
 
+    private: MediaPlayer* player;
+
+    private: Intent* intent;
+
     private: BaseMusicService* baseMusicService;
 
-public: MusicRunnable(BaseMusicService* baseMusicService){
+public: MusicRunnable(BaseMusicService* baseMusicService, MediaPlayer* captured_player, Intent* captured_intent) : player(captured_player), intent(captured_intent){
 this->baseMusicService= baseMusicService;
     
 }
@@ -330,7 +334,7 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStateStrings->ON_START_COMMAN
                     //Otherwise - statement - EmptyStmt
 
 
-    Runnable* runnable = new MusicRunnable(this);;
+    Runnable* runnable = new MusicRunnable(this, intent, player);;
     
 
     Thread* thread = new Thread(runnable);;

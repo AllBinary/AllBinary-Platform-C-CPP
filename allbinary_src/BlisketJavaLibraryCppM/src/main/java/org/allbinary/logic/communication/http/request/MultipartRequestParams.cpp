@@ -156,7 +156,7 @@ this->special= true;
                         if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil->putF(JavaString::valueOf("FileItem List Size: ") +JavaString::valueOf(multipartRequestList->size), this, "processMultipartRequest()");
+                                    this->logUtil->putF(JavaString::valueOf("FileItem List Size: ") +JavaString::valueOf(multipartRequestList->size()), this, "processMultipartRequest()");
     
 
                                     }
@@ -262,7 +262,7 @@ RequestParams::setMap(request->getParameterMap());
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return dynamic_cast<HashMap*>(this->getMap());
+                        return dynamic_cast<HashMap<Object*, Object*>*>(this->getMap());
     
 
                                     }

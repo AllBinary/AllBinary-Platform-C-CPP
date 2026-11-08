@@ -53,7 +53,7 @@
         <!--
         <module>../../../graphics/opengl/OpenGLESJavaLibraryCppM</module>
         -->
-        <module>../../../graphics/opengl/OpenGLJOGLJavaLibraryCppM</module>
+<!--TWB this will be needed        <module>../../../graphics/opengl/OpenGLJOGLJavaLibraryCppM</module>-->
         <module>../../../graphics/opengl/OpenGLESBaseJavaLibraryCppM</module>
 
         <!-- Not used in Platform Libraries -->

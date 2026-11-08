@@ -111,10 +111,10 @@ this->imageComparatorConstraintsInterface= imageComparatorConstraintsInterface;
                         
                                     {
                                     
-    int32_t rgb1 = imageComparisonInfo->getBufferedImages()[0].getRGB(point->getX(), point->getY());;
+    int32_t rgb1 = imageComparisonInfo->getBufferedImages()[0]->getRGB(point->getX(), point->getY());;
     
 
-    int32_t rgb2 = imageComparisonInfo->getBufferedImages()[1].getRGB(point->getX(), point->getY());;
+    int32_t rgb2 = imageComparisonInfo->getBufferedImages()[1]->getRGB(point->getX(), point->getY());;
     
 
     AutomaticCacheInterface* automaticCacheInterface = ColorCacheFactory::getInstance();;

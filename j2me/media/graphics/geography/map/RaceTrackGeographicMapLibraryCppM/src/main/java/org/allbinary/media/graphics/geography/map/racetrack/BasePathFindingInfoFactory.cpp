@@ -108,13 +108,19 @@ class RaceTrackGeographicMapCellPositionFactoryInitVisitor
             : public virtual Object
         , public virtual GeographicMapCellPositionFactoryInitVisitorInterface {
 
+    private: BasicGeographicMap* geographicMapInterface;
+
+    private: PathFindingInfo* pathFindingInfo;
+
+    private: std::vector<std::vector<int32_t>> mapArray;
+
     private: int32_t startLineId;
 
     private: int32_t finishLineId;
 
     private: BasePathFindingInfoFactory* pathFindingInfoFactory;
 
-public: RaceTrackGeographicMapCellPositionFactoryInitVisitor(BasePathFindingInfoFactory* pathFindingInfoFactory){
+public: RaceTrackGeographicMapCellPositionFactoryInitVisitor(BasePathFindingInfoFactory* pathFindingInfoFactory, BasicGeographicMap* captured_geographicMapInterface, PathFindingInfo* captured_pathFindingInfo, ) : geographicMapInterface(captured_geographicMapInterface), pathFindingInfo(captured_pathFindingInfo), {
 this->pathFindingInfoFactory= pathFindingInfoFactory;
     
 
@@ -216,7 +222,7 @@ this->pathFindingInfoFactory->logUtil->put(JavaString::valueOf((new StringMaker(
 };
 
             
-geographicMapInterface->getGeographicMapCellPositionFactory()->visit(new RaceTrackGeographicMapCellPositionFactoryInitVisitor(this));
+geographicMapInterface->getGeographicMapCellPositionFactory()->visit(new RaceTrackGeographicMapCellPositionFactoryInitVisitor(this, geographicMapInterface, pathFindingInfo, mapArray));
     
 }
 

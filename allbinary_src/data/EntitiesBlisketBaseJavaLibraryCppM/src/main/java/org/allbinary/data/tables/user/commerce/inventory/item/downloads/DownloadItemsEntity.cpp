@@ -222,7 +222,7 @@ keysAndValues->put(basicItemData->ID, id);
     int32_t index = 0;index < size; index++)
         {
 
-    HashMap<Object*, Object*>* hashMap = dynamic_cast<HashMap*>(vector->get(index));;
+    HashMap<Object*, Object*>* hashMap = dynamic_cast<HashMap<Object*, Object*>*>(vector->get(index));;
     
 returnVector->add(new DownloadableItem(hashMap));
     
@@ -273,7 +273,7 @@ keysAndValues->put(DownloadItemData::ID, downloadItemId);
     int32_t index = 0;index < size; index++)
         {
 
-    HashMap<Object*, Object*>* hashMap = dynamic_cast<HashMap*>(vector->get(index));;
+    HashMap<Object*, Object*>* hashMap = dynamic_cast<HashMap<Object*, Object*>*>(vector->get(index));;
     
 returnVector->add(new DownloadableItem(hashMap));
     

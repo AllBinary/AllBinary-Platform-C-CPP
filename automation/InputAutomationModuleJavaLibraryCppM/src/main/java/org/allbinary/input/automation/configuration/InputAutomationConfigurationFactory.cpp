@@ -156,7 +156,7 @@ logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("isIns
                         
                                     {
                                     
-    int32_t size = inputAutomationModuleConfigurationList->size;;
+    int32_t size = inputAutomationModuleConfigurationList->size();;
     
 
     InputAutomationModuleConfiguration* inputAutomationModuleConfiguration;;

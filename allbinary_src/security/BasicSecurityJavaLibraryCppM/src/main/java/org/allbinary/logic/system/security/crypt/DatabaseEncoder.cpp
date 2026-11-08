@@ -160,10 +160,10 @@ PreLogUtil::putOE(commonStrings->EXCEPTION, "DatabaseEncoder", "decode", &e);
     BasicArrayList* vector = tokenizer->getTokensFromString(value, new BasicArrayListD());;
     
 
-    BasicArrayList* byteVector = new BasicArrayListD();;
+    int32_t size = vector->size();;
     
 
-    int32_t size = vector->size();;
+    std::vector<int8_t> decode = std::vector<int8_t>(size);;
     
 
     std::string byteOfData;;
@@ -177,31 +177,7 @@ PreLogUtil::putOE(commonStrings->EXCEPTION, "DatabaseEncoder", "decode", &e);
         {
 byteOfData= JavaBoxes::unbox<std::string>(vector->objectArray[index]);
     
-byteVector->add(static_cast<int8_t>(std::stoi(byteOfData)));
-    
-}
-
-
-    std::vector<int8_t> decode = std::vector<int8_t>(byteVector->size());;
-    
-
-    int32_t decodeIndex = 0;;
-    
-
-    int8_t aByte;;
-    
-
-
-
-
-                        for (
-    int32_t index = 0;index < size; index++)
-        {
-aByte= JavaBoxes::unbox<int8_t>(byteVector->objectArray[index]);
-    
-decode[decodeIndex]= aByte;
-    
-decodeIndex++;
+decode[index]= number::parseByte(byteOfData);
     
 }
 

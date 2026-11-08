@@ -31,8 +31,11 @@
         <module>../j2me/HTMLForJ2MEJavaLibraryCppM</module>
         -->
         
+        <!--
+        -->
         <module>../../../games/PreGameJ2MEJavaLibraryCppP</module>
         <module>../../GameJ2MELibraryCppP</module>
+
         <module>../../CombatGameJavaLibraryPOM</module>
         <module>../../AdvancedCombatGameJavaLibraryCppP</module>
         

@@ -88,6 +88,7 @@
 #include "org/allbinary/graphics/form/ItemPaintableFactory.h"
 #include "org/allbinary/graphics/form/FormType.h"
 #include "org/allbinary/graphics/form/ItemIndexPaintable.h"
+//#include "org/allbinary/graphics/form/MultipleScrollSelectionFormRectPaintable.h"
 #include "org/allbinary/graphics/form/FormTypeFactory.h"
 //#include "org/allbinary/graphics/form/MultipleScrollSelectionFormVerticalPaintable.h"
 //#include "org/allbinary/graphics/form/MultipleScrollSelectionFormHorizontalPaintable.h"
@@ -152,6 +153,18 @@ this->multipleScrollSelectionForm= multipleScrollSelectionForm;
 }
 
 
+MultipleScrollSelectionHorizontalForm::MultipleScrollSelectionFormRectPaintable::MultipleScrollSelectionFormRectPaintable(MultipleScrollSelectionHorizontalForm* multipleScrollSelectionForm){
+this->multipleScrollSelectionForm= multipleScrollSelectionForm;
+    
+}
+
+
+    auto MultipleScrollSelectionHorizontalForm::MultipleScrollSelectionFormRectPaintable::paint(Graphics* graphics) -> void{
+this->multipleScrollSelectionForm->fillRect(graphics);
+    
+}
+
+
 MultipleScrollSelectionHorizontalForm::MultipleScrollSelectionHorizontalForm(std::string title, std::vector<ABCustomItem*> items, ItemPaintableFactory* formPaintableFactory, int32_t border, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : ScrollSelectionForm(title, items, formPaintableFactory, border, 3, backgroundBasicColor, foregroundBasicColor), rectPaintable(NullPaintable::getInstance()), multipleScrollSelectionHorizontalFormTypeItemIndexPaintable(ItemIndexPaintable::getInstance()), backgroundColor(BasicColorFactory::getInstance()->TRANSPARENT_GREY->intValue()), myFontProcessor(new UpdateMyFontProcessor(this)){
 
                         //super/this constructor call is in the constructor initializer list.
@@ -167,31 +180,7 @@ MultipleScrollSelectionHorizontalForm::MultipleScrollSelectionHorizontalForm(std
                                     }
                                 
                         else {
-                            
-//inner=true member= isStatic=
-class MPaintable: public Paintable {
-
-    private: MultipleScrollSelectionHorizontalForm* form;
-
-public: MPaintable(MultipleScrollSelectionHorizontalForm* form){
-this->form= form;
-    
-}
-
-
-    public: void paint(Graphics* graphics){
-this->form->fillRect(graphics);
-    
-}
-
-
-};
-
-            
-
-                    //Otherwise - statement - EmptyStmt
-
-this->rectPaintable= new MPaintable(this);
+                            this->rectPaintable= javaInner(new MultipleScrollSelectionFormRectPaintable(this), this);
     
 
                         }

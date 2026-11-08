@@ -101,7 +101,7 @@ this->getRatios()[index]= double(nominator /this->getSize());
 }
 
 
-                        if(this->getRatios()[bufferedImage.size() -1].doubleValue() > 0.93F)
+                        if(this->getRatios()[bufferedImage.size() -1]->doubleValue() > 0.93F)
                         
                                     {
                                     this->setGood(true);
@@ -116,7 +116,7 @@ this->getRatios()[index]= double(nominator /this->getSize());
                         }
                             
 
-                        if(this->getRatios()[bufferedImage.size() -1].doubleValue() < this->getRatios()[0].doubleValue())
+                        if(this->getRatios()[bufferedImage.size() -1]->doubleValue() < this->getRatios()[0]->doubleValue())
                         
                                     {
                                     this->setDropping(true);

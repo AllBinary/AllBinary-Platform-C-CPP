@@ -106,12 +106,12 @@
         </dependency>
         -->
                     
-        <dependency>
+<!--        <dependency>
             <groupId>org.microemu</groupId>
             <artifactId>microemu-javase-swingCpp</artifactId>
             <version>2.0.4</version>
             <optional>true</optional>
-        </dependency>
+        </dependency>-->
         <!--
         Public microemu
         <dependency>

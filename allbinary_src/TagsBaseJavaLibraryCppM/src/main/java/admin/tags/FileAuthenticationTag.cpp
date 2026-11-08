@@ -518,7 +518,7 @@ this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "isSessionOld()");
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return Boolean::TRUE.valueOf();;
+                        return JavaBoxes::value<bool>(Boolean::TRUE);;
     
 
                                     }
@@ -659,7 +659,7 @@ this->logUtil->putF(JavaString::valueOf(stringBuffer), this, "isRarelyUsedSessio
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return Boolean::TRUE.valueOf();;
+                        return JavaBoxes::value<bool>(Boolean::TRUE);;
     
 
                 //: 
@@ -817,7 +817,7 @@ stringBuffer->append("Trying New login<p>");
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return Boolean::TRUE.valueOf();;
+                        return JavaBoxes::value<bool>(Boolean::TRUE);;
     
 
                                     }
@@ -830,7 +830,7 @@ stringBuffer->append("Trying New login<p>");
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return Boolean::FALSE.valueOf();;
+                        return JavaBoxes::value<bool>(Boolean::FALSE);;
     
 
                                     }
@@ -841,7 +841,7 @@ stringBuffer->append("Trying New login<p>");
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return Boolean::FALSE.valueOf();;
+                        return JavaBoxes::value<bool>(Boolean::FALSE);;
     
 
                 //: 
@@ -920,7 +920,7 @@ stringBuffer->append("Trying New login<p>");
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return Boolean::TRUE.valueOf();;
+                        return JavaBoxes::value<bool>(Boolean::TRUE);;
     
 
                                     }
@@ -933,7 +933,7 @@ this->nextAttempt();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return Boolean::FALSE.valueOf();;
+                        return JavaBoxes::value<bool>(Boolean::FALSE);;
     
 
                                     }
@@ -946,7 +946,7 @@ this->nextAttempt();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return Boolean::FALSE.valueOf();;
+                        return JavaBoxes::value<bool>(Boolean::FALSE);;
     
 
                 //: 
@@ -991,7 +991,7 @@ this->nextAttempt();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return Boolean::TRUE.valueOf();;
+                        return JavaBoxes::value<bool>(Boolean::TRUE);;
     
 
                                     }
@@ -1007,7 +1007,7 @@ this->nextAttempt();
                         //if statement needs to be on the same line and ternary does not work the same way.
                         
                         
-                        return Boolean::FALSE.valueOf();;
+                        return JavaBoxes::value<bool>(Boolean::FALSE);;
     
 
                             }

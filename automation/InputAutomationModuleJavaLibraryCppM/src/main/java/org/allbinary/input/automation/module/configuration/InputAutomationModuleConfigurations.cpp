@@ -179,7 +179,7 @@ InputAutomationModuleConfigurations::InputAutomationModuleConfigurations(List<In
 this->setHashMap(new HashMap<Object*, Object*>());
     
 
-    int32_t size = inputAutomationModuleConfigurationList->size;;
+    int32_t size = inputAutomationModuleConfigurationList->size();;
     
 
     InputAutomationModuleConfiguration* inputAutomationModuleConfiguration;;

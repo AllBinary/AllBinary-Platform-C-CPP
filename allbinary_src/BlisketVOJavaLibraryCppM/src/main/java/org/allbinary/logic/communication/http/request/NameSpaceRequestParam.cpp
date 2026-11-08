@@ -266,7 +266,7 @@ packageIndex++;
 
     auto NameSpaceRequestParam::getPackageProperties(int32_t packageIndex) -> HashMap<Object*, Object*>*{
 
-    HashMap<Object*, Object*>* packagePropertiesHashMap = dynamic_cast<HashMap*>(this->nameSpacePropertiesHashMap->get(std::to_string(packageIndex)));;
+    HashMap<Object*, Object*>* packagePropertiesHashMap = dynamic_cast<HashMap<Object*, Object*>*>(this->nameSpacePropertiesHashMap->get(std::to_string(packageIndex)));;
     
 
                         if(packagePropertiesHashMap == 

@@ -250,13 +250,13 @@ bufferedImageCacheables[index]= dynamic_cast<BufferedImageCacheable*>(poolInterf
     
 }
 
-bufferedImageCacheables[0]->getBufferedImage()->setData(imageComparisonInfo->getBufferedImages()[1].getData());
+bufferedImageCacheables[0]->getBufferedImage()->setData(imageComparisonInfo->getBufferedImages()[1]->getData());
     
 
                         if(this->NUMBER_OF_IMAGES > 1)
                         
                                     {
-                                    bufferedImageCacheables[1]->getBufferedImage()->setData(imageComparisonInfo->getBufferedImages()[1].getData());
+                                    bufferedImageCacheables[1]->getBufferedImage()->setData(imageComparisonInfo->getBufferedImages()[1]->getData());
     
 
                                     }

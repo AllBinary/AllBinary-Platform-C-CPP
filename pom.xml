@@ -40,7 +40,6 @@
 -->
         <module>./j2me/AllBinaryBaseLibraryPOM</module>
         <module>./j2me/AllBinaryJ2MELibraryCppP</module>
-        
         <module>./AllBinaryPersistenceLibraryCppP</module>
 
         <!--<module>./automation/InputAutomationToolsCppP</module>-->
@@ -52,7 +51,7 @@
         <module>./j2me/media/graphics/animation/image/AllBinaryHTMLImageAnimationRotationJavaLibraryCppM</module>
         <module>./j2me/media/graphics/animation/image/AllBinaryHTML2ImageAnimationRotationJavaLibraryCppM</module>
         -->
-        <module>./j2me/media/graphics/animation/image/AllBinaryJ2SEImageAnimationRotationJavaLibraryCppM</module>
+<!--        <module>./j2me/media/graphics/animation/image/AllBinaryJ2SEImageAnimationRotationJavaLibraryCppM</module>-->
         <!--<module>./j2me/games/Resources/sounds/release/GameSoundsJ2SEOggResourcesJavaLibraryCppM</module>-->
         <!--<module>./graphics/opengl/AllBinaryJOGLResourcesJavaLibraryCppM</module>-->
 

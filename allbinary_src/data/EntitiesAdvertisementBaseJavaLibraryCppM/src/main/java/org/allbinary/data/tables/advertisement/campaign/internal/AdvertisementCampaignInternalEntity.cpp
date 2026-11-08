@@ -180,7 +180,7 @@ keysAndValues->put(StoreFrontData::getInstance()->NAME, storeName);
     int32_t index = 0;index < size; index++)
         {
 
-    HashMap<Object*, Object*>* hashMap = dynamic_cast<HashMap*>(hashMapVector->get(index));;
+    HashMap<Object*, Object*>* hashMap = dynamic_cast<HashMap<Object*, Object*>*>(hashMapVector->get(index));;
     
 
                         if(hashMap != 

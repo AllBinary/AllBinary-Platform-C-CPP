@@ -98,7 +98,7 @@ SequenceAI::SequenceAI(std::vector<ArtificialIntelligenceInterface*> artificialI
                 //@Throws(Exception.constructor)
             
     auto SequenceAI::processAI(AllBinaryLayerManager* allBinaryLayerManager) -> void{
-this->getArtificialIntelligenceInterface()[this->index].processAI(allBinaryLayerManager);
+this->getArtificialIntelligenceInterface()[this->index]->processAI(allBinaryLayerManager);
     
 }
 

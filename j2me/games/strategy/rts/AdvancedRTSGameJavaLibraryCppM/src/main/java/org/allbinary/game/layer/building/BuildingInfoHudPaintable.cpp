@@ -150,7 +150,17 @@ BuildingInfoHudPaintable::BuildingInfoHudPaintable() : logUtil(LogUtil::getInsta
 //inner=true member= isStatic=
 class ProductivityNumberStringHud: public NumberStringHud {
 
-public: ProductivityNumberStringHud() : NumberStringHud("Productivity:", 999, basicHudFactory->ABSOLUTE, basicHudFactory->HORIZONTAL, 0, basicColor){
+    private: BasicHudFactory* basicHudFactory;
+
+    private: BasicColor* basicColor;
+
+    private: int32_t textX;
+
+    private: int32_t y;
+
+    private: int32_t firstIndex;
+
+public: ProductivityNumberStringHud(BasicHudFactory* captured_basicHudFactory, BasicColor* captured_basicColor, ) : NumberStringHud("Productivity:", 999, basicHudFactory->ABSOLUTE, basicHudFactory->HORIZONTAL, 0, basicColor), basicHudFactory(captured_basicHudFactory), basicColor(captured_basicColor), {
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -179,7 +189,7 @@ NumberStringHud::updateMeasurement(graphics);
 
                     //Otherwise - statement - EmptyStmt
 
-productivityHud= new ProductivityNumberStringHud();
+productivityHud= new ProductivityNumberStringHud(basicHudFactory, basicColor, textX, y, firstIndex);
     
 index++;
     
@@ -190,7 +200,17 @@ index++;
 //inner=true member= isStatic=
 class EfficiencyNumberStringHud: public NumberStringHud {
 
-public: EfficiencyNumberStringHud() : NumberStringHud("Efficiency:", 999, basicHudFactory->ABSOLUTE, basicHudFactory->HORIZONTAL, 0, basicColor){
+    private: BasicHudFactory* basicHudFactory;
+
+    private: BasicColor* basicColor;
+
+    private: int32_t textX;
+
+    private: int32_t y;
+
+    private: int32_t secondIndex;
+
+public: EfficiencyNumberStringHud(BasicHudFactory* captured_basicHudFactory, BasicColor* captured_basicColor, ) : NumberStringHud("Efficiency:", 999, basicHudFactory->ABSOLUTE, basicHudFactory->HORIZONTAL, 0, basicColor), basicHudFactory(captured_basicHudFactory), basicColor(captured_basicColor), {
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -219,7 +239,7 @@ this->updateMaxHeight= y +((secondIndex +1) *font->getHeight());
 
                     //Otherwise - statement - EmptyStmt
 
-efficiencyHud= new EfficiencyNumberStringHud();
+efficiencyHud= new EfficiencyNumberStringHud(basicHudFactory, basicColor, textX, y, secondIndex);
     
 index++;
     
@@ -233,7 +253,19 @@ index++;
 //inner=true member= isStatic=
 class HealthNumberStringHud: public NumberStringHud {
 
-public: HealthNumberStringHud() : NumberStringHud(HEALTH, 99999, basicHudFactory->ABSOLUTE, basicHudFactory->HORIZONTAL, 0, basicColor){
+    private: BasicHudFactory* basicHudFactory;
+
+    private: BasicColor* basicColor;
+
+    private: int32_t textX;
+
+    private: int32_t y;
+
+    private: std::string HEALTH;
+
+    private: int32_t thirdIndex;
+
+public: HealthNumberStringHud(BasicHudFactory* captured_basicHudFactory, BasicColor* captured_basicColor, ) : NumberStringHud(HEALTH, 99999, basicHudFactory->ABSOLUTE, basicHudFactory->HORIZONTAL, 0, basicColor), basicHudFactory(captured_basicHudFactory), basicColor(captured_basicColor), {
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -265,7 +297,7 @@ NumberStringHud::updateMeasurement(graphics);
 
     int32_t totalLength = HEALTH.size() +1;;
     
-healthHud= new HealthNumberStringHud();
+healthHud= new HealthNumberStringHud(basicHudFactory, basicColor, textX, y, HEALTH, thirdIndex);
     
 
     int32_t fourthIndex = index;;
@@ -274,7 +306,19 @@ healthHud= new HealthNumberStringHud();
 //inner=true member= isStatic=
 class MaxHealthNumberStringHud: public NumberStringHud {
 
-public: MaxHealthNumberStringHud() : NumberStringHud("/ ", 99999, basicHudFactory->ABSOLUTE, basicHudFactory->HORIZONTAL, 0, basicColor){
+    private: BasicHudFactory* basicHudFactory;
+
+    private: BasicColor* basicColor;
+
+    private: int32_t textX;
+
+    private: int32_t y;
+
+    private: int32_t totalLength;
+
+    private: int32_t fourthIndex;
+
+public: MaxHealthNumberStringHud(BasicHudFactory* captured_basicHudFactory, BasicColor* captured_basicColor, ) : NumberStringHud("/ ", 99999, basicHudFactory->ABSOLUTE, basicHudFactory->HORIZONTAL, 0, basicColor), basicHudFactory(captured_basicHudFactory), basicColor(captured_basicColor), {
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -303,7 +347,7 @@ this->updateMaxHeight= y +((fourthIndex +1) *font->getHeight());
 
                     //Otherwise - statement - EmptyStmt
 
-maxHealthHud= new MaxHealthNumberStringHud();
+maxHealthHud= new MaxHealthNumberStringHud(basicHudFactory, basicColor, textX, y, totalLength, fourthIndex);
     
 
                 //: 

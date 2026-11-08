@@ -127,7 +127,7 @@ this->x2= newX2;
                                     {
                                     this->basicColor= this->basicColorFactory->GREEN;
     
-this->colorP= this->basicColor->intValue();
+this->colorP= JavaBoxes::value<int32_t>(this->basicColor);
     
 
                                     }
@@ -138,7 +138,7 @@ this->colorP= this->basicColor->intValue();
                                     {
                                     this->basicColor= this->basicColorFactory->YELLOW;
     
-this->colorP= this->basicColor->intValue();
+this->colorP= JavaBoxes::value<int32_t>(this->basicColor);
     
 
                                     }
@@ -149,7 +149,7 @@ this->colorP= this->basicColor->intValue();
                                     {
                                     this->basicColor= this->basicColorFactory->ORANGE;
     
-this->colorP= this->basicColor->intValue();
+this->colorP= JavaBoxes::value<int32_t>(this->basicColor);
     
 
                                     }
@@ -157,7 +157,7 @@ this->colorP= this->basicColor->intValue();
                         else {
                             this->basicColor= this->basicColorFactory->RED;
     
-this->colorP= this->basicColor->intValue();
+this->colorP= JavaBoxes::value<int32_t>(this->basicColor);
     
 
                         }

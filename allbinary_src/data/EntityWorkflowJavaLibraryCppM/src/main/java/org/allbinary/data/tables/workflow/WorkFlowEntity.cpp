@@ -313,7 +313,7 @@ keysAndValues->put(StoreFrontData::getInstance()->NAME, storeName);
     int32_t i = 0;i < size; i++)
         {
 
-    HashMap<Object*, Object*>* workFlowHashMap = dynamic_cast<HashMap*>(hashMapVector->get(i));;
+    HashMap<Object*, Object*>* workFlowHashMap = dynamic_cast<HashMap<Object*, Object*>*>(hashMapVector->get(i));;
     
 
                         if(workFlowHashMap != 

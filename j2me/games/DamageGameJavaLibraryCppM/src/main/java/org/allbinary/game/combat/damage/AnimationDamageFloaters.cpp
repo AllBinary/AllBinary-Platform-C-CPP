@@ -96,7 +96,7 @@ this->animationInterfaceArray= animationInterfaceArray;
                         for (
     int32_t index = this->animationInterfaceArray.size() -1;index >= 0; index--)
         {
-this->animationInterfaceArray[index].setFrame(this->animationInterfaceArray[index]->getSize() -1);
+this->animationInterfaceArray[index]->setFrame(this->animationInterfaceArray[index]->getSize() -1);
     
 }
 

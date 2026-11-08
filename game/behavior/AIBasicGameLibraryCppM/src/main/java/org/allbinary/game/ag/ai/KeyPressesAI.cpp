@@ -123,7 +123,7 @@ this->keys[index]= JavaBoxes::unbox<int32_t>(hashtable->get(objectArray[index]))
                         for (
     int32_t index = 0;index < this->keys.size(); index++)
         {
-BasicAI::processKeyAI(this->keys[index].intValue());
+BasicAI::processKeyAI(this->keys[index]);
     
 }
 

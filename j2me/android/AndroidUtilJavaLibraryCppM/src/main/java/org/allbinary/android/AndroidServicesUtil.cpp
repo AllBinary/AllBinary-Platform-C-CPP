@@ -111,7 +111,7 @@ AndroidServicesUtil* AndroidServicesUtil::instance = AndroidServicesUtil::instan
     std::string serviceName;;
     
 
-    int32_t size = runningServicesList->size;;
+    int32_t size = runningServicesList->size();;
     
 
 

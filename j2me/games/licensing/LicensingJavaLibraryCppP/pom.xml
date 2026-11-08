@@ -14,8 +14,8 @@
 
     <modules>
 
-<!--        <module>../../platform/android/AndroidResourcesTempJavaLibraryCppM</module>-->
-        <module>../../../../allbinary_src/licensing/ClientInformationMobileLicensingRegistrationJavaLibraryCppM</module>
+<!--        <module>../../platform/android/AndroidResourcesTempJavaLibraryCppM</module>
+        <module>../../../../allbinary_src/licensing/ClientInformationMobileLicensingRegistrationJavaLibraryCppM</module>-->
 
         <!--
         <module>../../../../../working/allbinary_src/licensing/LicenseRegistrationJavaLibraryCppM</module>

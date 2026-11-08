@@ -607,7 +607,7 @@ whereHashMap->put(StoreFrontData::getInstance()->NAME, storeFrontInterface->getN
     int32_t i = 0;i < size; i++)
         {
 
-    HashMap<Object*, Object*>* orderReviewHashMap = dynamic_cast<HashMap*>(orderHashMapVector->get(i));;
+    HashMap<Object*, Object*>* orderReviewHashMap = dynamic_cast<HashMap<Object*, Object*>*>(orderHashMapVector->get(i));;
     
 
     OrderHistory* orderReview = new OrderHistory(new Basket(), orderReviewHashMap);;
@@ -652,7 +652,7 @@ whereHashMap->put(UserData::USERNAME, userName);
     int32_t index = 0;index < size; index++)
         {
 
-    HashMap<Object*, Object*>* orderReviewHashMap = dynamic_cast<HashMap*>(orderHashMapVector->get(index));;
+    HashMap<Object*, Object*>* orderReviewHashMap = dynamic_cast<HashMap<Object*, Object*>*>(orderHashMapVector->get(index));;
     
 
     OrderHistory* orderReview = new OrderHistory(new Basket(), orderReviewHashMap);;
@@ -697,7 +697,7 @@ whereHashMap->put(OrderHistoryData::STATUS, status);
     int32_t index = 0;index < size; index++)
         {
 
-    HashMap<Object*, Object*>* orderReviewHashMap = dynamic_cast<HashMap*>(orderHashMapVector->get(index));;
+    HashMap<Object*, Object*>* orderReviewHashMap = dynamic_cast<HashMap<Object*, Object*>*>(orderHashMapVector->get(index));;
     
 
     OrderHistory* orderReview = new OrderHistory(new Basket(), orderReviewHashMap);;
@@ -737,7 +737,7 @@ orderReviewVector->add(orderReview);
     int32_t index = 0;index < size; index++)
         {
 
-    HashMap<Object*, Object*>* orderReviewHashMap = dynamic_cast<HashMap*>(orderHashMapVector->get(index));;
+    HashMap<Object*, Object*>* orderReviewHashMap = dynamic_cast<HashMap<Object*, Object*>*>(orderHashMapVector->get(index));;
     
 
     OrderHistory* orderReview = new OrderHistory(new Basket(), orderReviewHashMap);;

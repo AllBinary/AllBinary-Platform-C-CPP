@@ -47,14 +47,14 @@
 
             <optional>true</optional>
         </dependency>
-        <!-- ThreadPool.h (PathFindingThreadPool extends it); ThreadLibraryCpp only has this as an optional dependency -->
+        <!-- ProgressCanvas.h exposes PathFindingThreadPool.h, which includes
+             ThreadPool.h, so consumers of this module need the owner transitively. -->
         <dependency>
             <groupId>org.allbinary</groupId>
             <artifactId>ThreadJ2MELibraryCpp</artifactId>
             <!-- AllBinary Platform Version Start -->
             <version>1.0.0-SNAPSHOT</version>
             <!-- AllBinary Platform Version End -->
-            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.allbinary</groupId>

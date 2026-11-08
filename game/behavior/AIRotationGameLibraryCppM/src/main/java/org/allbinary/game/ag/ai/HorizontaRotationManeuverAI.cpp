@@ -131,7 +131,7 @@ this->velocityInterface= dynamic_cast<VelocityInterface*>(this->baseVelocityInte
 
     AngleIncrementInfo* angleIncrementInfo = rotationAnimationInterface->getAngleInfoP()->getAngleIncrementInfo();;
     
-rotationAnimationInterfaceCompositeInterface->setFrame(angleIncrementInfo->RIGHT_FRAME->intValue());
+rotationAnimationInterfaceCompositeInterface->setFrame(JavaBoxes::value<int32_t>(angleIncrementInfo->RIGHT_FRAME));
     
 }
 
@@ -146,7 +146,7 @@ rotationAnimationInterfaceCompositeInterface->setFrame(angleIncrementInfo->RIGHT
 
     RotationAnimationInterfaceCompositeInterface* rotationAnimationInterfaceCompositeInterface = dynamic_cast<RotationAnimationInterfaceCompositeInterface*>(this->getOwnerLayerInterface());;
     
-rotationAnimationInterfaceCompositeInterface->setFrame(angleIncrementInfo->RIGHT_FRAME->intValue());
+rotationAnimationInterfaceCompositeInterface->setFrame(JavaBoxes::value<int32_t>(angleIncrementInfo->RIGHT_FRAME));
     
 
     AllBinaryLayer* allbinaryLayer = this->getOwnerLayerInterface();;
@@ -172,7 +172,7 @@ allbinaryLayer->setPosition(allbinaryLayer->getXP(), 1, allbinaryLayer->getZP())
     AllBinaryLayer* ownerLayerInterface = this->getOwnerLayerInterface();;
     
 
-                        if(ownerLayerInterface->getXP() -ownerLayerInterface->getWidth() <= 0 && frame == angleIncrementInfo->LEFT_FRAME->intValue())
+                        if(ownerLayerInterface->getXP() -ownerLayerInterface->getWidth() <= 0 && frame == JavaBoxes::value<int32_t>(angleIncrementInfo->LEFT_FRAME))
                         
                                     {
                                     this->reverse();
@@ -186,7 +186,7 @@ this->drop();
     DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();;
     
 
-                        if(ownerLayerInterface->getX2() +ownerLayerInterface->getWidth() > displayInfo->getLastWidth() && frame == angleIncrementInfo->RIGHT_FRAME->intValue())
+                        if(ownerLayerInterface->getX2() +ownerLayerInterface->getWidth() > displayInfo->getLastWidth() && frame == JavaBoxes::value<int32_t>(angleIncrementInfo->RIGHT_FRAME))
                         
                                     {
                                     this->reverse();
@@ -215,7 +215,7 @@ this->velocityInterface->limitMaxXYVelocity(this->velocityInterface->getMaxForwa
 this->circularIndexUtil->next();
     
 
-                        if(frame == angleIncrementInfo->LEFT_FRAME->intValue())
+                        if(frame == JavaBoxes::value<int32_t>(angleIncrementInfo->LEFT_FRAME))
                         
                                     {
                                     BasicAI::processKeyAI(Canvas::KEY_NUM0);
@@ -224,7 +224,7 @@ this->circularIndexUtil->next();
                                     }
                                 
                              else 
-                        if(frame == angleIncrementInfo->RIGHT_FRAME->intValue())
+                        if(frame == JavaBoxes::value<int32_t>(angleIncrementInfo->RIGHT_FRAME))
                         
                                     {
                                     BasicAI::processKeyAI(Canvas::KEY_POUND);
@@ -246,13 +246,13 @@ this->circularIndexUtil->next();
     int32_t frame = this->rotationAnimationInterface->getFrame();;
     
 
-                        if(frame == angleIncrementInfo->LEFT_FRAME->intValue())
+                        if(frame == JavaBoxes::value<int32_t>(angleIncrementInfo->LEFT_FRAME))
                         
                                     {
                                     
     RotationAnimationInterfaceCompositeInterface* rotationAnimationInterfaceCompositeInterface = dynamic_cast<RotationAnimationInterfaceCompositeInterface*>(this->getOwnerLayerInterface());;
     
-rotationAnimationInterfaceCompositeInterface->setFrame(angleIncrementInfo->RIGHT_FRAME->intValue());
+rotationAnimationInterfaceCompositeInterface->setFrame(JavaBoxes::value<int32_t>(angleIncrementInfo->RIGHT_FRAME));
     
 this->baseVelocityInterface->zero();
     
@@ -260,13 +260,13 @@ this->baseVelocityInterface->zero();
                                     }
                                 
                              else 
-                        if(frame == angleIncrementInfo->RIGHT_FRAME->intValue())
+                        if(frame == JavaBoxes::value<int32_t>(angleIncrementInfo->RIGHT_FRAME))
                         
                                     {
                                     
     RotationAnimationInterfaceCompositeInterface* rotationAnimationInterfaceCompositeInterface = dynamic_cast<RotationAnimationInterfaceCompositeInterface*>(this->getOwnerLayerInterface());;
     
-rotationAnimationInterfaceCompositeInterface->setFrame(angleIncrementInfo->LEFT_FRAME->intValue());
+rotationAnimationInterfaceCompositeInterface->setFrame(JavaBoxes::value<int32_t>(angleIncrementInfo->LEFT_FRAME));
     
 this->baseVelocityInterface->zero();
     

@@ -107,7 +107,7 @@ this->numberOnSameTeam= numberOnSameTeam;
     int32_t size = GroupLayerManagerListener::getInstance()->getGroupSizeFromInterface(layerInterface);;
     
 
-                        if(this->numberOnSameTeam[index].intValue() > size)
+                        if(this->numberOnSameTeam[index] > size)
                         
                                     {
                                     this->next();

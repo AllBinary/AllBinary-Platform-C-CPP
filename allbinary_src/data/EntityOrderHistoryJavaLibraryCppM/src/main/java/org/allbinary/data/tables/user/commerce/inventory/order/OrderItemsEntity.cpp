@@ -481,7 +481,7 @@ keyValues->put(OrderData::ID, orderId);
     int32_t i = 0;i < itemsSize; i++)
         {
 
-    HashMap<Object*, Object*>* itemHashMap = dynamic_cast<HashMap*>(itemsArray[i]);;
+    HashMap<Object*, Object*>* itemHashMap = dynamic_cast<HashMap<Object*, Object*>*>(itemsArray[i]);;
     
 itemHashMap->put(basicItemData->INBASKETS, EMPTY_STRING);
     

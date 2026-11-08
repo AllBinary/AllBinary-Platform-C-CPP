@@ -102,7 +102,7 @@ HealthBarThreedAnimation::HealthBarThreedAnimation(AllBinaryLayer* layerInterfac
                     
 this->basicColor= this->basicColorFactory->GREEN;
     
-this->colorP= this->basicColor->intValue();
+this->colorP= JavaBoxes::value<int32_t>(this->basicColor);
     
 this->rectangle= new Rectangle(0, 0, 1, 1, this->basicColor);
     

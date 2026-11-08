@@ -230,7 +230,7 @@ this->setTableName(this->tableName);
     int32_t i = 0;i < size; i++)
         {
 
-    HashMap<Object*, Object*>* itemHashMap = dynamic_cast<HashMap*>(itemHashMapVector->get(i));;
+    HashMap<Object*, Object*>* itemHashMap = dynamic_cast<HashMap<Object*, Object*>*>(itemHashMapVector->get(i));;
     
 
                         if(itemHashMap != 

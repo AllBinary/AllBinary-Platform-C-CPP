@@ -114,7 +114,7 @@ this->logUtil->putF(JavaString::valueOf("Start Category: ") +JavaString::valueOf
     int32_t index = 0;index < size; index++)
         {
 
-    HashMap<Object*, Object*>* hashMap = dynamic_cast<HashMap*>(vectorOfHashMaps->get(index));;
+    HashMap<Object*, Object*>* hashMap = dynamic_cast<HashMap<Object*, Object*>*>(vectorOfHashMaps->get(index));;
     
 
     std::string categoryName = JavaBoxes::unbox<std::string>(hashMap->get(basicItemData->CATEGORY));;

@@ -216,7 +216,7 @@ this->stringBuffer->append(commonStrings->SPACE);
     AndroidSystemProperties* properties = AndroidSystemProperties::getInstance();;
     
 
-                        if(JavaString::indexOf(properties->getDevice()->toLowerCase(), this->OUYA) >= 0)
+                        if(JavaString::indexOf(JavaString::toLowerCase(properties->getDevice()), this->OUYA) >= 0)
                         
                                     {
                                     
