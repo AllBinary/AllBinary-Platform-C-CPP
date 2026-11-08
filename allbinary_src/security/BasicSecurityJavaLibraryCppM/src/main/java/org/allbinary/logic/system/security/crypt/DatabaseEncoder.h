@@ -38,6 +38,8 @@
         
             #include "java/lang/Exception.h"
         
+            #include "java/lang/Byte.h"
+        
 class NullUtil;
 class PreLogUtil;
 class StringMaker;

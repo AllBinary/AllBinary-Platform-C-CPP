@@ -40,6 +40,8 @@
         
             #include "java/lang/Exception.h"
         
+            #include "java/lang/Byte.h"
+        
 #include <org/allbinary/logic/NullUtil.h>
 
       
@@ -177,7 +179,7 @@ PreLogUtil::putOE(commonStrings->EXCEPTION, "DatabaseEncoder", "decode", &e);
         {
 byteOfData= JavaBoxes::unbox<std::string>(vector->objectArray[index]);
     
-decode[index]= number::parseByte(byteOfData);
+decode[index]= Byte::parseByte(byteOfData);
     
 }
 
