@@ -150,7 +150,7 @@
         <module>../../media/sound/NotDeviceSpecificNoMediaMIDP1LibraryCppM</module>
 
         <module>../../../allbinary_src/content/ContentNoneJavaLibraryCppM</module>
-        <module>../../../allbinary_src/content/ContentAndroidJavaLibraryCppM</module>
+<!--        <module>../../../allbinary_src/content/ContentAndroidJavaLibraryCppM</module>-->
 
         <module>../../games/GameConfigurationFormJavaLibraryCppM</module>
 
