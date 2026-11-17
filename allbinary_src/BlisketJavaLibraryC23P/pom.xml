@@ -1,0 +1,147 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.allbinary.business</groupId>
+    <artifactId>BlisketJavaLibraryPC23</artifactId>
+    <packaging>pom</packaging>
+    <!-- AllBinary Platform Version Start -->
+    <version>1.0.0-SNAPSHOT</version>
+    <!-- AllBinary Platform Version End -->
+
+    <name>BlisketJavaLibraryPC23</name>
+    <url>http://www.allbinary.com/</url>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>AllBinary Snapshots Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus-releases</id>
+            <name>AllBinary Releases Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/releases/</url>
+        </repository>
+    </distributionManagement>
+    
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    
+    <modules>
+
+        <!--
+        <module>../../j2me/AllBinaryJ2MELibraryC23P</module>
+        -->
+        <!--
+        <module>../data/DataJavaLibraryC23M</module>
+        -->
+
+        <module>../licensing/TestServiceClientInfoJavaLibraryC23M</module>        
+
+        <module>../data/DataTableInterfacesC23M</module>
+        
+        <module>../QueueJavaLibraryC23M</module>
+        
+        <!--
+        <module>../TokenizerJavaLibraryC23M</module>
+        -->
+
+        <module>../logging/LogConfigTypeFreeblisketJavaLibraryC23M</module>
+
+        <module>../JavaUtilLibraryC23M</module>
+        <module>../NullInitInfoJavaLibraryC23M</module>        
+        <module>../InitInfoJavaLibraryC23M</module>
+        <module>../PreLoaderHttpJavaLibraryC23M</module>
+        
+        <module>../TagsBaseJavaLibraryC23M</module>
+        <module>../CustomLoaderJavaLibraryC23M</module>
+        
+        <!--
+        <module>../logic/data/file/FileJ2SEJavaLibraryC23M</module>
+        <module>../logic/data/file/FileJavaLibraryC23M</module>
+        -->
+
+        <module>../data/SQLAllBinaryJavaLibraryC23M</module>
+
+        <!--
+        <module>../licensing/FileLicenseInitInfoJavaLibraryC23M</module>
+        -->
+
+        <module>../DocumentObjectModelJavaLibraryC23M</module>
+
+        <module>../VisualStyleJavaLibraryC23M</module>
+
+        <module>../ConfigurationJavaLibraryC23M</module>
+
+        <module>../VisualTransformBaseJavaLibraryC23M</module>
+
+        <module>../CategoryBaseJavaLibraryC23M</module>
+        <module>../CategoryJavaLibraryC23M</module>
+
+        <module>../UserJavaLibraryC23M</module>
+
+        <module>../PaymentGatewayBaseJavaLibraryC23M</module>
+
+        <module>../data/vo/EntitiesBlisketVOJavaLibraryC23M</module>
+        <module>../PaymentGatewayJavaLibraryC23M</module>
+        <module>../data/vo/EntitiesOrderHistoryVOJavaLibraryC23M</module>
+        <module>../data/vo/EntityPaymentGatewayVOJavaLibraryC23M</module>
+        <module>../data/vo/EntityStoreFrontVOJavaLibraryC23M</module>
+
+        <module>../data/EntitiesBlisketBaseInterfacesJavaLibraryC23M</module>
+        <module>../data/EntitiesBlisketBaseJavaLibraryC23M</module>
+        
+        <module>../data/EntitiesAdvertisementBaseJavaLibraryC23M</module>
+        <module>../data/EntityOrderHistoryJavaLibraryC23M</module>
+        <module>../data/EntityPaymentGatewayJavaLibraryC23M</module>
+        <module>../data/EntityVisualTransformJavaLibraryC23M</module>
+        <module>../data/EntityUserJavaLibraryC23M</module>
+        <module>../data/EntityWorkflowJavaLibraryC23M</module>
+
+        <module>../SMTPConfigurationJavaLibraryC23M</module>
+        <module>../SMTPBaseJavaLibraryC23M</module>
+
+        <module>../VisualTransformJavaLibraryC23M</module>
+
+        <module>../../replace_these_stub_projects/allbinary_src/YourRuntimeEnvironmentJavaLibraryC23M</module>
+        <module>../GatewayJavaLibraryC23M</module>
+        
+        <module>../WorkflowBaseJavaLibraryC23M</module>
+        <module>../WorkflowJavaLibraryC23M</module>
+
+        <module>../IdGeneratorUsingFilesJavaLibraryC23M</module>
+        <module>../BlisketPreVOJavaLibraryC23M</module>
+
+        <!-- 
+        EntitiesOrderHistoryVOJavaLibrary
+        UserJavaLibrary
+        -->
+        
+        <module>../BlisketVOJavaLibraryC23M</module>
+
+        <module>../UserCommerceJavaLibraryC23M</module>
+
+        <module>../CustomizerValidatorsJavaLibraryC23M</module>
+
+        <!-- 
+        AllBinaryCacheForShiftOneJavaLibrary
+        AllBinaryJSECacheJavaLibrary
+        ColorJavaLibrary
+        ImageJavaLibrary
+        -->
+        
+        <module>../logic/data/file/FileMediaJ2SEJavaLibraryC23M</module>
+        <module>../BlisketBaseJavaLibraryC23M</module>
+
+        <module>../logging/LoggingGAEAllC23M</module>
+        <module>../BlisketJavaLibraryC23M</module>
+        
+    </modules>
+
+</project>
+

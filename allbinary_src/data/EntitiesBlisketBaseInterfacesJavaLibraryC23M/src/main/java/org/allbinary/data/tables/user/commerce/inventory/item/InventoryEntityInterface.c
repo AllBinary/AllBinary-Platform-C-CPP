@@ -1,0 +1,44 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.data.tables.user.commerce.inventory.item
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+// #include "java/util/HashMap.h"
+#include "org/allbinary/util/BasicArrayList.h"
+#include "org/allbinary/util/BasicArrayListD.h"
+#include "org/allbinary/business/context/modules/storefront/StoreFrontInterface.h"
+#include "org/allbinary/business/user/commerce/inventory/item/ItemInterface.h"
+#include "org/allbinary/business/user/commerce/money/MoneyException.h"
+#include "org/allbinary/data/tables/BasicDataTableInterface.h"
+
+typedef struct InventoryEntityInterface InventoryEntityInterface;
+struct InventoryEntityInterface {
+    ItemInterface* (*getItem)(void* this, const char* id);
+    BasicArrayList* (*getItems)(void* this, StoreFrontInterface* storeFrontInterface);
+    const char* (*getWeight)(void* this, const char* id);
+    void (*deleteWhere)(void* this, const char* key, const char* value);
+    void (*insert)(void* this, BasicArrayList* values);
+    void (*update)(void* this, HashMap* updatedValues);
+};
+
+

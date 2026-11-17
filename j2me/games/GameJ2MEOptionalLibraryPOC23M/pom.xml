@@ -1,0 +1,76 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.allbinary</groupId>
+    <artifactId>GameJ2MEOptionalLibraryPOMC23</artifactId>
+    <packaging>pom</packaging>
+    <!-- AllBinary Platform Version Start -->
+    <version>1.0.0-SNAPSHOT</version>
+    <!-- AllBinary Platform Version End -->
+
+    <name>GameJ2MEOptionalLibraryPOMC23</name>
+    <url>http://www.allbinary.com/</url>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>AllBinary Snapshots Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus-releases</id>
+            <name>AllBinary Releases Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/releases/</url>
+        </repository>
+    </distributionManagement>
+
+
+
+    <modules>
+        
+        <!--<module>../../ProgressLazyJ2MEJavaLibraryC23M</module>-->
+        <!--
+                <module>../../games/GameScoresBaseHTMLLibraryC23M</module>
+                <module>../../games/GameScoresJ2MEJavaLibraryC23M</module>
+                <module>../../../allbinary_src/licensing/RemoteXmlRpcJavaLibraryC23M</module>
+                <module>../../games/GameScoresLocalLibraryC23M</module>
+                <module>../../games/GameScoresRemoteAndLocalLibraryC23M</module>
+        -->
+<!-- in GameJ2MELibraryPOM <module>../../media/graphics/ImageCacheJ2MEJavaLibraryC23M</module>-->
+        <!--<module>../../media/graphics/ImageCacheLazyJ2MEJavaLibraryC23M</module>-->
+        <!--        <module>../../media/graphics/ImageCacheOpenGLESJavaLibraryC23M</module>-->
+        <module>../../media/graphics/LazyGameResourceNoneJavaLibraryC23M</module>
+
+<!-- in GameJ2MELibraryPOM <module>../../../graphics/opengl/OpenGLNoneJavaLibraryC23M</module>-->
+
+        <!--
+                <module>../../../graphics/opengl/OpenGLESJavaLibraryC23M</module>
+        -->
+
+<!-- in GameJ2MELibraryPOM <module>../../input/JSEGyroSensorJavaLibraryC23M</module>-->
+        <!--        
+                <module>../../ProgressJ2MEJavaLibraryC23M</module>
+        -->
+        <!--        
+                //At some point the GameInput libraries were here
+        -->
+        
+        <!--
+        ../../
+        <module>../../../../workcpp/j2me/media/graphics/FormJMEJavaLibraryC23M</module>
+        -->
+        <!--
+        ../../
+        <module>../../../../workcpp/j2me/media/graphics/FormJSEJavaLibraryC23M</module>
+        -->
+
+        <!--<module>../../media/sound/J2SEMediaMIDPMinimalJavaLibraryC23M</module>-->
+<!--        <module>../../media/sound/NotDeviceSpecificMIDP2JavaLibraryC23M</module>-->
+        <!--<module>../../media/sound/MediaMIDP2ForHTMLJavaLibraryC23M</module>-->
+
+        <!--
+                <module>../../../../workcpp/j2me/ScreenCaptureAndroidJavaLibraryC23M</module>
+        -->
+    </modules>
+
+</project>
+

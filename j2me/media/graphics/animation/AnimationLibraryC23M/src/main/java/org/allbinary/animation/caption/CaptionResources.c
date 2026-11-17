@@ -1,0 +1,44 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation.caption
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+
+typedef struct CaptionResources CaptionResources;
+struct CaptionResources {
+    char unused;
+};
+
+const char* CaptionResources_RESOURCE = "/character_message_bubbled_box.png";
+
+CaptionResources* CaptionResources_new(void);
+
+void CaptionResources_init(CaptionResources* this) {
+}
+
+CaptionResources* CaptionResources_new(void) {
+    CaptionResources* this = calloc(1, sizeof(CaptionResources));
+    CaptionResources_init(this);
+    return this;
+}
+

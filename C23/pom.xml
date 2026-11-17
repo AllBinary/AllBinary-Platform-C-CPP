@@ -1,0 +1,68 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.allbinary</groupId>
+  <artifactId>AllBinaryPlatformPOMC23</artifactId>
+  <packaging>pom</packaging>
+  <!-- AllBinary Platform Version Start -->
+  <version>1.0.0-SNAPSHOT</version>
+  <!-- AllBinary Platform Version End -->
+
+  <name>AllBinaryPlatformPOMC23</name>
+  <url>http://www.allbinary.com/</url>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>AllBinary Snapshots Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus-releases</id>
+            <name>AllBinary Releases Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/releases/</url>
+        </repository>
+    </distributionManagement>
+
+    <properties>
+        <buildLabel>${project.version}</buildLabel>
+        <assemblyPluginVersion>2.2-beta-1</assemblyPluginVersion>
+    </properties>
+
+    <modules>
+
+<!--
+-->
+        <!-- C23 POM not yet available: <module>../../working_thirdpartycpp/embedded/j2me/microemulator/2_0_4/microemu-cldcC23</module> -->
+        <!-- C23 POM not yet available: <module>../../working_thirdpartycpp/embedded/j2me/microemulator/2_0_4/microemu-midpC23</module> -->
+        <!-- C23 POM not yet available: <module>../../working_thirdpartycpp/embedded/j2me/microemulator/2_0_4/microemu-extensions/microemu-jsr-135C23</module> -->
+<!--
+-->
+        <module>../j2me/AllBinaryBaseLibraryPOC23M</module>
+        <module>../j2me/AllBinaryJ2MELibraryC23P</module>
+        <module>../AllBinaryPersistenceLibraryC23P</module>
+
+        <!--<module>../automation/InputAutomationToolsC23P</module>-->
+        <module>../graphics/GraphicsToolsC23P</module>
+        <!--<module>../allbinary_src/FreeblisketJavaLibraryC23P</module>-->
+        <!-- C23 POM not yet available: <module>../j2me/games/platform/AllBinaryOnAllPlatformsJavaLibraryC23P</module> -->
+        <!--
+        <module>../j2me/media/graphics/animation/image/AllBinaryHTMLImageAnimationRotationJavaLibraryC23M</module>
+        <module>../j2me/media/graphics/animation/image/AllBinaryHTML2ImageAnimationRotationJavaLibraryC23M</module>
+        -->
+<!--        <module>../j2me/media/graphics/animation/image/AllBinaryJ2SEImageAnimationRotationJavaLibraryC23M</module>-->
+        <!--<module>../j2me/games/Resources/sounds/release/GameSoundsJ2SEOggResourcesJavaLibraryC23M</module>-->
+        <!--<module>../graphics/opengl/AllBinaryJOGLResourcesJavaLibraryC23M</module>-->
+
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+</project>
+

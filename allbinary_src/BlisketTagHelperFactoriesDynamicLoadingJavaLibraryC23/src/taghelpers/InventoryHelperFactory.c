@@ -1,0 +1,59 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package taghelpers
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+// #include "java/util/HashMap.h"
+// #include "javax/servlet/jsp/PageContext.h"
+#include "org/allbinary/logic/system/security/licensing/LicensingException.h"
+#include "admin/taghelpers/HelperFactory.h"
+
+typedef struct InventoryHelperFactory InventoryHelperFactory;
+struct InventoryHelperFactory {
+    char unused;
+};
+
+static const char* InventoryHelperFactory_CLASSNAME = "taghelpers.InventoryHelper";
+static const char* InventoryHelperFactory_FACTORYNAME = "taghelpers.InventoryHelperFactory";
+
+InventoryHelperFactory* InventoryHelperFactory_new(void);
+
+void InventoryHelperFactory_init(InventoryHelperFactory* this);
+Any* InventoryHelperFactory_getInstance(HashMap* hashMap, PageContext* pageContext);
+
+
+void InventoryHelperFactory_init(InventoryHelperFactory* this) {
+}
+
+InventoryHelperFactory* InventoryHelperFactory_new(void) {
+    InventoryHelperFactory* this = calloc(1, sizeof(InventoryHelperFactory));
+    InventoryHelperFactory_init(this);
+    return this;
+}
+
+
+// throws LicensingException
+Any* InventoryHelperFactory_getInstance(HashMap* hashMap, PageContext* pageContext) {
+        return HelperFactory_getInstance(InventoryHelperFactory_FACTORYNAME, InventoryHelperFactory_CLASSNAME, hashMap, pageContext);
+}
+

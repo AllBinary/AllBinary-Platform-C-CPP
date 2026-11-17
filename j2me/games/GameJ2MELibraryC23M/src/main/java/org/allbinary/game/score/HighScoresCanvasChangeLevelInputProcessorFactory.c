@@ -1,0 +1,51 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.score
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+#include "org/allbinary/game/score/displayable/HighScoresCanvas.h"
+#include "org/allbinary/game/score/HighScoresCanvasInputProcessorFactoryInterface.h"
+
+typedef struct HighScoresCanvasChangeLevelInputProcessorFactory HighScoresCanvasChangeLevelInputProcessorFactory;
+struct HighScoresCanvasChangeLevelInputProcessorFactory {
+    HighScoresCanvasInputProcessorFactoryInterface HighScoresCanvasInputProcessorFactoryInterface_interface;
+};
+
+
+HighScoresCanvasChangeLevelInputProcessorFactory* HighScoresCanvasChangeLevelInputProcessorFactory_new(void);
+HighScoresCanvasInputProcessor* HighScoresCanvasChangeLevelInputProcessorFactory_getInstance(HighScoresCanvasChangeLevelInputProcessorFactory* this, HighScoresCanvas* highScoresCanvas);
+
+void HighScoresCanvasChangeLevelInputProcessorFactory_init(HighScoresCanvasChangeLevelInputProcessorFactory* this) {
+}
+
+HighScoresCanvasChangeLevelInputProcessorFactory* HighScoresCanvasChangeLevelInputProcessorFactory_new(void) {
+    HighScoresCanvasChangeLevelInputProcessorFactory* this = calloc(1, sizeof(HighScoresCanvasChangeLevelInputProcessorFactory));
+    HighScoresCanvasChangeLevelInputProcessorFactory_init(this);
+    return this;
+}
+
+
+HighScoresCanvasInputProcessor* HighScoresCanvasChangeLevelInputProcessorFactory_getInstance(HighScoresCanvasChangeLevelInputProcessorFactory* this, HighScoresCanvas* highScoresCanvas) {
+        return HighScoresCanvasLevelChangeInputProcessor_new(highScoresCanvas);
+}
+

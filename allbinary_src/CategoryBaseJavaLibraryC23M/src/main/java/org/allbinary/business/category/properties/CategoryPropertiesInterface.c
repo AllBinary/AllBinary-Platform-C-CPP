@@ -1,0 +1,42 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.business.category.properties
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+#include "org/allbinary/business/category/hierarchy/CategoryHierarchyInterface.h"
+#include "org/allbinary/data/tables/TableMappingInterface.h"
+#include "org/allbinary/logic/control/validate/ValidationInterface.h"
+#include "org/allbinary/logic/io/path/AbPath.h"
+
+typedef struct CategoryPropertiesInterface CategoryPropertiesInterface;
+struct CategoryPropertiesInterface {
+    void (*setValue)(void* this, const char* value);
+    const char* (*getValue)(void* this);
+    AbPath* (*getWebAppPath)(void* this);
+    AbPath* (*getPath)(void* this, CategoryHierarchyInterface* categoryHierarchyInterface);
+    const char* (*getFileName)(void* this);
+    bool (*isRoot)(void* this);
+    bool (*isRealRoot)(void* this);
+};
+
+

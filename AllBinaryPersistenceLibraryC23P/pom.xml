@@ -1,0 +1,59 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.allbinary</groupId>
+    <artifactId>AllBinaryPersistenceLibraryPC23</artifactId>
+    <packaging>pom</packaging>
+    <!-- AllBinary Platform Version Start -->
+    <version>1.0.0-SNAPSHOT</version>
+    <!-- AllBinary Platform Version End -->
+
+    <name>AllBinaryPersistenceLibraryPC23</name>
+    <url>http://www.allbinary.com/</url>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>AllBinary Snapshots Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus-releases</id>
+            <name>AllBinary Releases Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/releases/</url>
+        </repository>
+    </distributionManagement>
+    
+    <properties>
+        <buildLabel>${project.version}</buildLabel>
+        <assemblyPluginVersion>2.2-beta-1</assemblyPluginVersion>
+    </properties>
+
+    <modules>
+        
+        <!--
+        -->
+        <module>../allbinary_src/cache/AllBinaryCacheLibraryC23M</module>
+        <module>../allbinary_src/PermutationsJavaLibraryC23M</module>
+        <module>../allbinary_src/logic/BasePreloaderFileJavaLibraryC23M</module>
+        <module>../allbinary_src/logic/data/file/FileJavaLibraryC23M</module>
+        <module>../allbinary_src/logic/data/file/FileJ2SEJavaLibraryC23M</module>
+        <!--<module>../allbinary_src/data/DataJavaLibraryC23M</module>-->
+        <!--<module>../allbinary_src/logic/data/file/FileUnamedJavaLibraryC23M</module>-->
+        <!--<module>../allbinary_src/logic/data/file/FileAdvancedJavaLibraryC23M</module>-->
+        <!--<module>../allbinary_src/PreLoaderJavaLibraryC23M</module>-->
+        <!--<module>../allbinary_src/FileInitInfoJavaLibraryC23M</module>-->
+        <!--<module>../allbinary_src/PreLoaderFileJavaLibraryC23M</module>-->
+        <!--<module>../allbinary_src/PreLoaderLicenseJavaLibraryC23M</module>-->
+        <module>../j2me/PCResourceLibraryC23M</module>
+        <module>../j2me/ProgressJ2MEJavaLibraryC23M</module>
+        <module>../allbinary_src/licensing/ClientInfoBaseJavaLibraryC23M</module>
+        <!--<module>../allbinary_src/licensing/RemoteXmlRpcJavaLibraryC23M</module>-->
+        <!--<module>../allbinary_src/licensing/LicenseClientJavaLibraryC23M</module>-->
+
+        <!--
+        <module>../allbinary_src/PreLoaderLicenseJavaLibraryC23M</module>
+        -->
+    </modules>
+
+</project>
+

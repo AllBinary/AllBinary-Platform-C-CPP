@@ -1,0 +1,192 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.allbinary</groupId>
+  <artifactId>GameJ2MELibraryPOMC23</artifactId>
+  <packaging>pom</packaging>
+  <!-- AllBinary Platform Version Start -->
+  <version>1.0.0-SNAPSHOT</version>
+  <!-- AllBinary Platform Version End -->
+
+  <name>GameJ2MELibraryPOMC23</name>
+  <url>http://www.allbinary.com/</url>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>AllBinary Snapshots Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus-releases</id>
+            <name>AllBinary Releases Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/releases/</url>
+        </repository>
+    </distributionManagement>
+
+
+
+    <modules>
+
+        <!--
+        NoGyroSensorLibrary
+
+        -->
+        <!--<module>../../android/AndroidUtilJavaLibraryC23M</module>-->
+
+        <module>../../../allbinary_src/security/SimpleCryptLibraryC23M</module>
+        <!--
+        <module>../../../../working_thirdpartycpp/security/BouncyCastleDESJavaLibraryC23M</module>
+        <module>../../../../working_thirdpartycpp/communication/XmlRpc/XmlRpcJavaLibraryC23M</module>
+        -->
+        <module>../../../allbinary_src/TokenizerJavaLibraryC23M</module>
+        <module>../../../allbinary_src/security/BasicSecurityJavaLibraryC23M</module>
+        <!--<module>../../../replace_these_stub_projects/security/YourCryptFileJavaLibraryC23M</module>-->
+        <module>../../../replace_these_stub_projects/security/YourSecurityJavaLibraryC23M</module>
+        <module>../../../replace_these_stub_projects/communication/YourXmlRpcJavaLibraryC23M</module>
+        <module>../../../replace_these_stub_projects/allbinary_src/J2MEOnlyJavaLibraryC23M</module>
+        <module>../../../replace_these_stub_projects/allbinary_src/J2MECompatibilityJavaLibraryC23M</module>
+        <module>../../../replace_these_stub_projects/allbinary_src/J2MEJsInteropCompatibilityJavaLibraryC23M</module>
+
+        <module>../../DebugJavaLibraryC23M</module>             
+        <module>../../ResourceLibraryC23M</module>
+        <module>../../ResourceJ2MEJavaLibraryC23M</module>
+        <!--<module>../../AndroidResourceLibraryC23M</module>-->
+        <!--<module>../../../allbinary_src/hardware/AndroidSystemJavaLibraryC23M</module>-->
+
+        <module>../../../game/behavior/ArtificialIntelligenceLibraryC23M</module>
+
+        <module>../../media/graphics/PlatformNullImageJavaLibraryC23M</module>
+        <module>../../media/graphics/ImageCacheBaseJ2MEJavaLibraryC23M</module>
+        <module>../../media/graphics/ImageCacheJ2MEJavaLibraryC23M</module>
+        <module>../../../graphics/opengl/OpenGLJ2MENoneJavaLibraryC23M</module>
+        <module>../../../graphics/opengl/OpenGLNoneJavaLibraryC23M</module>
+        <module>../../../graphics/opengl/OpenGLNoneOtherJavaLibraryC23M</module>
+        <module>../../../graphics/opengl/OpenGLNoneOther2JavaLibraryC23M</module>
+        <module>../../../graphics/opengl/OpenGLESBaseJ2MEJavaLibraryC23M</module>
+
+        <module>../../media/graphics/animation/AnimationLibraryC23M</module>
+        <module>../../media/graphics/animation/RotationAnimationJavaLibraryC23M</module>
+
+        <module>../../games/GameInputLibraryC23M</module>
+
+        <module>../../games/GameScoresBaseJavaLibraryC23M</module>
+        <module>../../games/GameScoresBaseJ2MELibraryC23M</module>
+
+        <module>../../statistics/ApplicationStatisticsHTMLLibraryC23M</module>
+        <!--
+        <module>../../games/GameConfigurationHTMLJavaLibraryC23M</module>
+        -->
+        <module>../../games/GameConfigurationJ2MEJavaLibraryC23M</module>   
+        <module>../../games/GameConfigurationJavaLibraryC23M</module>
+
+        <module>../../games/GameIntermissionLibraryC23M</module>
+
+        <module>../../GroupLibraryC23M</module>
+
+        <module>../../input/NoSensorJavaLibraryC23M</module>
+
+        <module>../../input/AllBinarySensorJavaLibraryC23M</module>
+
+        <module>../../input/platform/me/GameInputMEJavaLibraryC23M</module>
+        <module>../../input/platform/me/GameInputMEKeyOnlyJavaLibraryC23M</module>
+        <module>../../input/platform/me/GameInputMEMotionJavaLibraryC23M</module>
+        <module>../../input/platform/pc/GameInputPCBaseJavaLibraryC23M</module>
+        <module>../../input/platform/pc/GameInputPCJavaLibraryC23M</module>
+        <module>../../input/platform/pc/GameInputPCKeyOnlyJavaLibraryC23M</module>
+        <module>../../input/platform/pc/GameInputPCMotionJavaLibraryC23M</module>
+        <module>../../input/platform/pc/GameInputSwtJavaLibraryC23M</module>
+
+        <module>../../input/AllBinaryGyroSensorJavaLibraryC23M</module>
+        <module>../../input/MotionGestureJavaLibraryC23M</module>
+        
+        <module>../../input/MotionGestureBaseJavaLibraryC23M</module>
+
+        <module>../../games/GameInputPersistanceLibraryC23M</module>
+        <module>../../games/GameInputNoPersistanceLibraryC23M</module>
+        
+        <module>../../lib/VectorThreeDimensionalLibraryC23M</module>
+        <module>../../input/AllBinaryAccelerometerSensorJavaLibraryC23M</module>
+        <module>../../input/NoGyroSensorJavaLibraryC23M</module>
+        <module>../../input/JSEGyroSensorJavaLibraryC23M</module>
+        <!--
+        <module>../../input/android/</module>
+        <module>../../input/platform/android/GameInputAndroidBaseJavaLibraryC23M</module>
+        -->
+
+        <module>../../media/sound/BasicPlayerJavaLibraryC23M</module>
+        <module>../../media/sound/BasicPlayerMIDP2JavaLibraryC23M</module>
+        <module>../../media/sound/NoPlayerJavaLibraryC23M</module>
+        <module>../../media/sound/SoundJ2MELibraryC23M</module>
+
+        <module>../../media/motion/AllBinaryVibrationJavaLibraryC23M</module>
+        <module>../../media/motion/NoVibrateJavaLibraryC23M</module>
+        <!--<module>../../media/motion/VibrateAndroidJavaLibraryC23M</module>-->
+
+        <module>../../media/graphics/NullCustomUIJavaLibraryC23M</module>
+        <module>../../media/graphics/NullCustomUIBaseJavaLibraryC23M</module>
+
+        <module>../../media/graphics/FormValidationJavaLibraryC23M</module>
+        
+        <module>../../media/graphics/FormJavaLibraryC23M</module>
+        <module>../../media/graphics/FormBaseJavaLibraryC23M</module>
+        <!--
+        <module>../../media/graphics/FormJMEJavaLibraryC23M</module>
+        -->
+        <module>../../../j2me/media/graphics/FormJMEJavaLibraryC23M</module>
+
+        <module>../../media/graphics/animation/AnimationResourceJavaLibraryC23M</module>
+        <module>../../media/graphics/animation/TransitionAnimationJavaLibraryC23M</module>
+        <module>../../media/graphics/animation/NoTransitionAnimationJavaLibraryC23M</module>
+        <!--
+        AndroidTransitionAnimationJavaLibraryM
+        -->
+        <module>../../media/graphics/animation/GameAnimationJavaLibraryC23M</module>
+        <module>../../games/GameResourceJavaLibraryC23M</module>
+        <module>../../games/GameSoundsJavaLibraryC23M</module>
+
+        <module>../../input/TouchInputLibraryC23P</module>
+
+        <module>../../media/MediaDataC23M</module>
+        <module>../../media/sound/NotDeviceSpecificNoMediaMIDP1LibraryC23M</module>
+
+        <module>../../../allbinary_src/content/ContentNoneJavaLibraryC23M</module>
+        <!--<module>../../../allbinary_src/content/ContentAndroidJavaLibraryC23M</module>-->
+
+        <module>../../games/GameConfigurationFormJavaLibraryC23M</module>
+
+        <module>../../FullScreenNoneJavaLibraryC23M</module>
+        <!--
+        <module>../../FullScreenJavaLibraryC23M</module>
+        -->
+
+        <module>../../../physics/VelocityLibraryC23M</module>
+
+        <module>../../games/weapon/SoundsBasicWeaponsJavaLibraryC23M</module>
+
+        <module>../../lib/TrigJ2MELibraryC23M</module>
+
+        <module>../../media/graphics/geography/map/LayerPlacementLibraryC23M</module>
+        <module>../../media/graphics/layer/AllBinaryLayerJavaLibraryC23M</module>
+
+        <module>../../ScreenCaptureNoneJavaLibraryC23M</module>
+        
+        <module>../licensing/GameLicensingNullJavaLibraryC23M</module>
+        
+        <module>../../business/advertisement/AllBinaryAdvertisementClientJavaLibraryC23M</module>
+        <module>../../business/advertisement/AdvertisementClientNoneJavaLibraryC23M</module>
+
+        <module>../GameNotificationJavaLibraryC23M</module>
+
+        <module>../../../graphics/opengl/NoSWTJavaLibraryC23M</module>
+        <module>../../../graphics/opengl/SWTWithoutJOGLJavaLibraryC23M</module>
+        <module>../SWTJavaLibraryC23M</module>
+        <module>../GameJ2MELibraryC23M</module>
+        
+        <!--
+        <module>../GameJ2MEOptionalLibraryPOC23M</module>
+        -->
+    
+    </modules>
+
+</project>
+

@@ -1,0 +1,142 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.allbinary</groupId>
+  <artifactId>CombatGameJavaLibraryPOMC23</artifactId>
+  <packaging>pom</packaging>
+  <!-- AllBinary Platform Version Start -->
+  <version>1.0.0-SNAPSHOT</version>
+  <!-- AllBinary Platform Version End -->
+
+  <name>CombatGameJavaLibraryPOMC23</name>
+  <url>http://www.allbinary.com/</url>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>AllBinary Snapshots Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus-releases</id>
+            <name>AllBinary Releases Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/releases/</url>
+        </repository>
+    </distributionManagement>
+
+    <properties>
+        <buildLabel>${project.version}</buildLabel>
+        <assemblyPluginVersion>2.2-beta-1</assemblyPluginVersion>
+    </properties>
+
+    <modules>
+
+        <!--
+
+        -->
+
+        <module>../../games/TickableJavaLibraryC23M</module>
+
+        <module>../../games/CommonHeadsUpDisplayLibraryC23M</module>
+
+        <module>../../../physics/MovementJavaLibraryC23M</module>
+        <!--        -->
+        <module>../../games/PartsJavaLibraryC23M</module>
+        <module>../../games/PickupGameJavaLibraryC23M</module>
+
+        <module>../../../allbinary_src/licensing/HardCodedLicenseInitInfoJavaLibraryC23M</module>
+        <module>../../../allbinary_src/licensing/FileLicenseInitInfoJavaLibraryC23M</module>
+        <module>../../../allbinary_src/licensing/ClientInfoLicensingJavaLibraryC23M</module>
+
+        <module>../../games/licensing/PartnerJ2MEJavaLibraryC23M</module>
+        <!--<module>../../games/licensing/PartnerHTMLJavaLibraryC23M</module>-->
+        <!--<module>../../games/licensing/PartnerAndroidJavaLibraryC23M</module>-->
+        <module>../../games/licensing/NoGameLicensingJavaLibraryC23M</module>
+        <module>../../games/licensing/GameLicensingOnlyDemoJavaLibraryC23M</module>
+        <!--<module>../../games/licensing/GameLicensingOnlyNormalJavaLibraryC23M</module>-->
+        <module>../../games/licensing/GameLicensingBaseJavaLibraryC23M</module>
+
+        <!--
+        <module>../../games/GameScoresBaseLibraryC23M</module>
+        <module>../../games/GameScoresBaseHTMLLibraryC23M</module>
+        <module>../../games/GameScoresBaseJ2MELibraryC23M</module>
+        -->
+        <module>../../games/GameScoresLocalJavaLibraryC23M</module>
+        <!--<module>../../games/GameScoresRemoteAndLocalJavaLibraryC23M</module>-->
+
+        <module>../../../store/ThirdPartyStoreJavaLibraryC23M</module>
+        <module>../../../store/NoThirdPartyStoreJavaLibraryC23M</module>
+
+        <module>../../media/graphics/layer/CollisionLayerJavaLibraryC23M</module>
+        <module>../../games/CollisionLibraryC23M</module>
+
+        <module>../../games/multiplayer/AllBinaryGameClientBaseNullJavaLibraryC23M</module>
+
+        <module>../../games/PickupLayerJavaLibraryC23M</module>
+
+        <module>../../games/DamageGameJavaLibraryC23M</module>
+        <module>../../games/DropJavaLibraryC23M</module>
+        <module>../../games/WeaponLayerJavaLibraryC23M</module>
+
+        <module>../../games/CombatGameJavaLibraryC23M</module>
+        <module>../../games/LifeJavaLibraryC23M</module>
+
+        <module>../../games/CommonHeadsUpDisplayCombatGameLibraryC23M</module>
+        <module>../../games/LifeOrDeathDataJavaLibraryC23M</module>
+
+        <module>../../games/BasicWeaponPartsJavaLibraryC23M</module>
+        <module>../../games/weapon/WeaponPropertiesJavaLibraryC23M</module>
+
+        <module>../../games/weapon/WeaponMineJavaLibraryC23M</module>
+
+        <!--
+        <module>../../media/graphics/effects/fireworks/FireworksJavaLibraryC23M</module>
+        -->
+
+        <module>../../media/graphics/geography/map/TerrainEventJavaLibraryC23M</module>
+
+<!--
+        <module>../../media/graphics/geography/map/BasicPlatformGeographicMapJavaLibraryC23M</module>
+        -->
+
+        <!--
+        <module>../../media/graphics/geography/map/RaceTrackC23P</module>
+        -->
+
+        <!--
+        XmlRpcJavaLibrary
+        RemoteXmlRpcJavaLibrary
+
+        Since POMs are built before the other libs is it best to handle this differently
+        ../../
+        <module>../../../../workcpp/j2me/games/strategy/rts/RTSGameJavaLibraryC23P</module>
+        -->
+
+        <module>../../media/graphics/OtherGraphicsMediaLibraryC23P</module>
+
+        <module>../../input/NoTouchButtonResourceAnimationJavaLibraryC23M</module>
+        <module>../../input/TouchButtonResourceAnimationJavaLibraryC23M</module>
+        <module>../../input/TouchButtonResourceOpenGLESAnimationJavaLibraryC23M</module>
+
+        <module>../../input/TrackingEventJavaLibraryC23M</module>
+        <module>../../../game/behavior/BehaviorLibraryC23P</module>
+
+        <module>../../media/sound/OtherSoundMediaLibraryC23P</module>
+
+        <module>../../../allbinary_src/licensing/ApplicationConfigurationJavaLibraryC23M</module>
+        <module>../../../allbinary_src/licensing/ApplicationConfigurationNoFSJavaLibraryC23M</module>
+        <module>../../input/AllBinaryMagneticFieldSensorJavaLibraryC23M</module>
+        <!--<module>../../android/VirtualKeyboardJavaLibraryC23M</module>-->
+
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+</project>
+

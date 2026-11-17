@@ -1,0 +1,88 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.allbinary</groupId>
+    <artifactId>AllBinaryBaseLibraryPOMC23</artifactId>
+    <packaging>pom</packaging>
+    <!-- AllBinary Platform Version Start -->
+    <version>1.0.0-SNAPSHOT</version>
+    <!-- AllBinary Platform Version End -->
+
+    <name>AllBinaryBaseLibraryPOMC23</name>
+    <url>http://www.allbinary.com/</url>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>AllBinary Snapshots Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus-releases</id>
+            <name>AllBinary Releases Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/releases/</url>
+        </repository>
+    </distributionManagement>
+    
+    <properties>
+        <buildLabel>${project.version}</buildLabel>
+        <assemblyPluginVersion>2.2-beta-1</assemblyPluginVersion>
+    </properties>
+
+    <modules>
+        <module>../CommonJavaLibraryC23M</module>
+        <module>../TempBaseJavaLibraryC23M</module>
+        
+        <module>../../allbinary_src/LogC23M</module>
+        <module>../../allbinary_src/allbinary_src_designpatterns_srcC23M</module>
+        <module>../../allbinary_src/data/BaseDataJavaLibraryC23M</module>
+        <module>../../allbinary_src/cache/BaseCacheJavaLibraryC23M</module>
+        <module>../../allbinary_src/logic/BasePreloaderJavaLibraryC23M</module>
+        <module>../../allbinary_src/logic/BasePreloaderJ2MEJavaLibraryC23M</module>
+
+        <module>../ExceptionHTMLJavaLibraryC23M</module>
+        <module>../J2MEExceptionLibraryC23M</module>
+        <module>../../allbinary_src/J2SEExceptionLibraryC23M</module>
+        <module>../J2MEUtilJavaLibraryC23M</module>
+        <module>../J2MEColorJavaLibraryC23M</module>
+        <module>../EventJ2MELibraryC23M</module>
+
+        <module>../../allbinary_src/LogNoPlatformJavaLibraryC23M</module>
+        <module>../../allbinary_src/LogJ2MEJavaLibraryC23M</module>
+        <module>../../allbinary_src/LogJ2SEJavaLibraryC23M</module>
+        <!--<module>../../allbinary_src/LogAndroidJavaLibraryC23M</module>-->
+        <module>../logging/LoggingNoneC23M</module>
+        <module>../logging/LoggingJ2MEAllC23M</module>
+        <module>../logging/LoggingJ2MEExceptionC23M</module>
+        <!--<module>../logging/LoggingAndroidAllC23M</module>-->
+        <!--
+        //While it is a possible dependency option it really does not fit here
+        //as such it is actually build in the final POM builds instead
+        <module>../logging/LoggingRemoteExceptionC23M</module>  
+        -->
+        
+        <module>../J2MEWindowingJavaLibraryC23M</module>
+        
+        <module>../lib/BaseMathLibraryC23M</module>
+        <module>../lib/BasicMathLibraryC23M</module>
+        
+        <module>../../allbinary_src/ThreadLibraryC23M</module>
+        <!--<module>../../allbinary_src/ThreadHTMLLibraryC23M</module>-->
+        <module>../../replace_these_stub_projects/allbinary_src/NoneOnlyJavaLibraryC23M</module>
+        <module>../../allbinary_src/ThreadJ2MELibraryC23M</module>
+        <module>../time/TimeJavaLibraryC23M</module>
+
+        <module>../statistics/ApplicationStatisticsJ2SELibraryC23M</module>
+        <module>../statistics/ApplicationStatisticsJ2MELibraryC23M</module>
+        <module>../statistics/ApplicationStatisticsJavaLibraryC23M</module>
+
+        <module>../../allbinary_src/logging/BasicLogConfigTypeJavaLibraryC23M</module>
+        <module>../../allbinary_src/logging/LogConfigTypeGameClientJavaLibraryC23M</module>
+
+        <module>../../allbinary_src/hardware/HardwareLibraryPOC23M</module>
+
+        <module>../lib/TrigBaseLibraryC23M</module>
+
+    </modules>
+
+</project>
+

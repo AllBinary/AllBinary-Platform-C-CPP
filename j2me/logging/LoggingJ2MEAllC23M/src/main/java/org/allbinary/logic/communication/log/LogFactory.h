@@ -1,0 +1,55 @@
+#ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGFACTORY_H
+#define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGFACTORY_H
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.logic.communication.log
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+typedef struct Log Log;
+typedef struct NullUtil NullUtil;
+typedef struct StringUtil StringUtil;
+
+//ActualPlatform
+typedef struct LogFactory LogFactory;
+struct LogFactory {
+    char unused;
+};
+
+
+LogFactory* LogFactory_new(void);
+void LogFactory_init(LogFactory* this);
+
+Log* LogFactory_getInstanceD(void);
+
+Log* LogFactory_getInstanceNoF(const char* specialMessage, void* anyType, void* exception);
+
+Log* LogFactory_getInstance(const char* specialMessage, void* anyType, const char* functionName, void* exception);
+
+Log* LogFactory_getInstanceF(const char* specialMessage, void* anyType, const char* functionName);
+// Runs the Java static initialization of the class once. Reads of its static fields call it first.
+void LogFactory_staticInit(void);
+// Registers the class, its superclass, and its methods for the interface calls (java_register_method)
+void LogFactory_register(void);
+
+
+#endif // ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGFACTORY_H

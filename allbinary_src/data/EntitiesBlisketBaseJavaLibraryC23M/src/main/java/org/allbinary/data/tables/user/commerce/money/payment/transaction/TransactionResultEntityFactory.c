@@ -1,0 +1,79 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.data.tables.user.commerce.money.payment.transaction
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+#include "org/allbinary/logic/communication/log/LogUtil.h"
+#include "org/allbinary/string/CommonStrings.h"
+
+typedef struct TransactionResultEntityFactory TransactionResultEntityFactory;
+struct TransactionResultEntityFactory {
+    LogUtil* logUtil;
+};
+
+static TransactionResultEntityFactory* TransactionResultEntityFactory_instance;
+
+TransactionResultEntityFactory* TransactionResultEntityFactory_new(void);
+TransactionResultEntityFactory* TransactionResultEntityFactory_getInstance(void);
+
+void TransactionResultEntityFactory_init(TransactionResultEntityFactory* this);
+TransactionResultEntity* TransactionResultEntityFactory_getTransactionResultEntityInstance(TransactionResultEntityFactory* this);
+
+// Static fields with runtime initializers: call this once at startup
+void TransactionResultEntityFactory_staticInit(void) {
+    TransactionResultEntityFactory_instance = TransactionResultEntityFactory_new();
+}
+
+static void TransactionResultEntityFactory_initFields(TransactionResultEntityFactory* this) {
+    this->logUtil = LogUtil_getInstance();
+}
+
+
+TransactionResultEntityFactory* TransactionResultEntityFactory_getInstance(void) {
+        return TransactionResultEntityFactory_instance;
+}
+
+
+void TransactionResultEntityFactory_init(TransactionResultEntityFactory* this) {
+    TransactionResultEntityFactory_initFields(this);
+}
+
+TransactionResultEntityFactory* TransactionResultEntityFactory_new(void) {
+    TransactionResultEntityFactory* this = calloc(1, sizeof(TransactionResultEntityFactory));
+    TransactionResultEntityFactory_init(this);
+    return this;
+}
+
+
+TransactionResultEntity* TransactionResultEntityFactory_getTransactionResultEntityInstance(TransactionResultEntityFactory* this) {
+        JAVA_TRY {
+            return TransactionResultEntity_new();
+        } JAVA_CATCH(Exception, e) {
+            CommonStrings* commonStrings = CommonStrings_getInstance();
+            if (JAVA_CALL(org_allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING, contains, JAVA_CALL(org_allbinary->logic->communication->log->config->type->LogConfigTypeFactory, getInstance)->ENTITYFACTORYERROR)) {
+                LogUtil_put(this->logUtil, commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, e);
+            }
+            return nullptr;
+        } JAVA_END_TRY;
+}
+

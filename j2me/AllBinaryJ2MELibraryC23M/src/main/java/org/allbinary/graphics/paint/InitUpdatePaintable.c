@@ -1,0 +1,61 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.paint
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+#include "org/allbinary/graphics/paint/Paintable.h"
+#include "org/allbinary/graphics/paint/InitUpdatePaintableInterface.h"
+
+typedef struct InitUpdatePaintable InitUpdatePaintable;
+struct InitUpdatePaintable {
+    Paintable base;
+    InitUpdatePaintableInterface InitUpdatePaintableInterface_interface;
+};
+
+
+InitUpdatePaintable* InitUpdatePaintable_new(void);
+
+void InitUpdatePaintable_init(InitUpdatePaintable* this);
+void InitUpdatePaintable_init(InitUpdatePaintable* this);
+void InitUpdatePaintable_update(InitUpdatePaintable* this);
+
+
+void InitUpdatePaintable_init(InitUpdatePaintable* this) {
+    Paintable_init(&this->base);
+}
+
+InitUpdatePaintable* InitUpdatePaintable_new(void) {
+    InitUpdatePaintable* this = calloc(1, sizeof(InitUpdatePaintable));
+    InitUpdatePaintable_init(this);
+    return this;
+}
+
+
+// throws Exception
+void InitUpdatePaintable_init(InitUpdatePaintable* this) {
+}
+
+
+void InitUpdatePaintable_update(InitUpdatePaintable* this) {
+}
+

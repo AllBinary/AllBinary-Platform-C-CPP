@@ -1,0 +1,63 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.business.page
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+
+typedef struct PageData PageData;
+struct PageData {
+    const char* NAME;
+};
+
+static PageData* PageData_instance;
+
+PageData* PageData_new(void);
+PageData* PageData_getInstance(void);
+
+void PageData_init(PageData* this);
+
+// Static fields with runtime initializers: call this once at startup
+void PageData_staticInit(void) {
+    PageData_instance = PageData_new();
+}
+
+static void PageData_initFields(PageData* this) {
+    this->NAME = "PAGE_NAME";
+}
+
+
+PageData* PageData_getInstance(void) {
+        return PageData_instance;
+}
+
+
+void PageData_init(PageData* this) {
+    PageData_initFields(this);
+}
+
+PageData* PageData_new(void) {
+    PageData* this = calloc(1, sizeof(PageData));
+    PageData_init(this);
+    return this;
+}
+

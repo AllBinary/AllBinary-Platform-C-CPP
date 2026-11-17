@@ -1,0 +1,49 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ * 
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.input
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+#include "org/allbinary/layer/LayerManager.h"
+#include "org/allbinary/layer/LayerManagerNoDebug.h"
+
+typedef struct GameInputLayerManager GameInputLayerManager;
+struct GameInputLayerManager {
+    LayerManager base;
+};
+
+
+GameInputLayerManager* GameInputLayerManager_new(void);
+
+void GameInputLayerManager_init(GameInputLayerManager* this);
+
+
+void GameInputLayerManager_init(GameInputLayerManager* this) {
+        LayerManager_init(&this->base, LayerManagerNoDebug_getInstance());
+}
+
+GameInputLayerManager* GameInputLayerManager_new(void) {
+    GameInputLayerManager* this = calloc(1, sizeof(GameInputLayerManager));
+    GameInputLayerManager_init(this);
+    return this;
+}
+

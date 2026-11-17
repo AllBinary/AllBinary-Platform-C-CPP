@@ -1,0 +1,174 @@
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.business.init
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+#include "org/allbinary/TsUtil.h"
+#include "org/allbinary/globals/PATH_GLOBALS.h"
+#include "org/allbinary/globals/URLGLOBALS.h"
+#include "org/allbinary/logic/communication/log/LogUtil.h"
+#include "org/allbinary/logic/io/AbDataInputStream.h"
+#include "org/allbinary/logic/io/AbDataOutputStream.h"
+#include "org/allbinary/logic/io/AbFileInputStream.h"
+#include "org/allbinary/logic/io/DataOutputStreamFactory.h"
+#include "org/allbinary/logic/io/FileStreamFactory.h"
+#include "org/allbinary/logic/string/StringMaker.h"
+#include "org/allbinary/logic/string/StringUtil.h"
+#include "org/allbinary/logic/system/security/crypt/DatabaseEncoder.h"
+#include "org/allbinary/logic/system/security/crypt/WeakCrypt.h"
+#include "org/allbinary/string/CommonLabels.h"
+
+typedef struct LicenseInitInfoUtil LicenseInitInfoUtil;
+struct LicenseInitInfoUtil {
+    LogUtil* logUtil;
+    StringUtil* stringUtil;
+    const char* INITFILENAME;
+    const char* ABOUT;
+    const char* PRIVACY_POLICY;
+    const char* filePath;
+};
+
+static LicenseInitInfoUtil* LicenseInitInfoUtil_instance;
+
+LicenseInitInfoUtil* LicenseInitInfoUtil_new(void);
+LicenseInitInfoUtil* LicenseInitInfoUtil_getInstance(void);
+void LicenseInitInfoUtil_setFilePath(LicenseInitInfoUtil* this, const char* filePath);
+void LicenseInitInfoUtil_write(LicenseInitInfoUtil* this, LicenseInitInfo* initData);
+LicenseInitInfo* LicenseInitInfoUtil_read(LicenseInitInfoUtil* this);
+LicenseInitInfo* LicenseInitInfoUtil_readAgain(LicenseInitInfoUtil* this, int32_t initializeCounter);
+const char* LicenseInitInfoUtil_getFilePath(LicenseInitInfoUtil* this);
+
+// Static fields with runtime initializers: call this once at startup
+void LicenseInitInfoUtil_staticInit(void) {
+    LicenseInitInfoUtil_instance = LicenseInitInfoUtil_new();
+}
+
+static void LicenseInitInfoUtil_initFields(LicenseInitInfoUtil* this) {
+    this->logUtil = LogUtil_getInstance();
+    this->stringUtil = StringUtil_getInstance();
+    this->INITFILENAME = "licenseinitdata.dat";
+    this->ABOUT = "about";
+    this->PRIVACY_POLICY = "privacy_policy";
+    this->filePath = this->stringUtil->EMPTY_STRING;
+}
+
+void LicenseInitInfoUtil_init(LicenseInitInfoUtil* this) {
+    LicenseInitInfoUtil_initFields(this);
+}
+
+LicenseInitInfoUtil* LicenseInitInfoUtil_new(void) {
+    LicenseInitInfoUtil* this = calloc(1, sizeof(LicenseInitInfoUtil));
+    LicenseInitInfoUtil_init(this);
+    return this;
+}
+
+
+LicenseInitInfoUtil* LicenseInitInfoUtil_getInstance(void) {
+        return LicenseInitInfoUtil_instance;
+}
+
+
+// synchronized
+void LicenseInitInfoUtil_setFilePath(LicenseInitInfoUtil* this, const char* filePath) {
+        this->filePath = filePath;
+}
+
+
+// throws Exception
+// synchronized
+void LicenseInitInfoUtil_write(LicenseInitInfoUtil* this, LicenseInitInfo* initData) {
+        if (this->filePath == this->stringUtil->EMPTY_STRING) {
+            this->filePath = JAVA_CALL(_URLGLOBALS, getMainPath) + JAVA_CALL(_PATH_GLOBALS, getInstance)->INIT_PATH;
+        }
+        JAVA_TRY {
+            TsUtil* tsUtil = TsUtil_getInstance();
+            AbDataOutputStream* dataOutputStream = DataOutputStreamFactory_getInstance(DataOutputStreamFactory_getInstance(), this->filePath, this->INITFILENAME);
+            int8_t* licenseIdCrypted = TsUtil_getByteArray(tsUtil, WeakCrypt_encrypt(WeakCrypt_new(1), LicenseInitInfo_getLicenseId(initData)));
+            AbDataOutputStream_writeUTF(dataOutputStream, DatabaseEncoder_encode(licenseIdCrypted));
+            int32_t numberOfLicenseServers = LicenseInitInfo_getNumberOfServers(initData);
+            AbDataOutputStream_writeInt(dataOutputStream, numberOfLicenseServers);
+            int8_t* licenseServerCrypted = nullptr;
+            for (int32_t index = 0; index < numberOfLicenseServers; index++) {
+                licenseServerCrypted = TsUtil_getByteArray(tsUtil, WeakCrypt_encrypt(WeakCrypt_new(3), LicenseInitInfo_getServer(initData, index)));
+                AbDataOutputStream_writeUTF(dataOutputStream, DatabaseEncoder_encode(licenseServerCrypted));
+            }
+        } JAVA_CATCH(Exception, e) {
+            LogUtil_put(this->logUtil, java_concat("Command Failed: ", this->INITFILENAME), this, "write", e);
+            FileStreamFactory_delete(FileStreamFactory_getInstance(), this->filePath, this->INITFILENAME);
+            java_throw(e);
+        } JAVA_END_TRY;
+}
+
+
+// throws Exception
+// synchronized
+LicenseInitInfo* LicenseInitInfoUtil_read(LicenseInitInfoUtil* this) {
+        return LicenseInitInfoUtil_readAgain(this, 0);
+}
+
+
+// throws Exception
+// synchronized
+LicenseInitInfo* LicenseInitInfoUtil_readAgain(LicenseInitInfoUtil* this, int32_t initializeCounter) {
+        const char* METHOD_NAME = "readAgain";
+        if (this->filePath == this->stringUtil->EMPTY_STRING) {
+            this->filePath = JAVA_CALL(_URLGLOBALS, getMainPath) + JAVA_CALL(_PATH_GLOBALS, getInstance)->INIT_PATH;
+        }
+        JAVA_TRY {
+            LogUtil_putF(this->logUtil, java_concat("LicenseInitInfo File: ", this->INITFILENAME), this, METHOD_NAME);
+            FileStreamFactory* fileStreamFactory = FileStreamFactory_getInstance();
+            AbFileInputStream* iFile = FileStreamFactory_getFileInputStreamInstance(fileStreamFactory, this->filePath, this->INITFILENAME);
+            if (iFile != nullptr) {
+                AbDataInputStream* iData = AbDataInputStream_new(iFile);
+                LicenseInitInfo* initInfo = LicenseInitInfo_new();
+                int8_t* decodedByteArray = DatabaseEncoder_decode(AbDataInputStream_readUTF(iData));
+                const char* licenseIdDecoded = java_string_new(decodedByteArray);
+                LicenseInitInfo_setLicenseId(initInfo, WeakCrypt_decrypt(WeakCrypt_new(1), licenseIdDecoded));
+                int32_t numberOfLicenseServers = AbDataInputStream_readInt(iData);
+                const char* NEXT_FILE = JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), CommonLabels_getInstance()->NEXT), append, " License Server From File: "), toString);
+                const char* licenseServerDecoded = nullptr;
+                for (int32_t index = 0; index < numberOfLicenseServers; index++) {
+                    decodedByteArray = DatabaseEncoder_decode(AbDataInputStream_readUTF(iData));
+                    licenseServerDecoded = java_string_new(decodedByteArray);
+                    LicenseInitInfo_setServer(initInfo, WeakCrypt_decrypt(WeakCrypt_new(3), licenseServerDecoded), index);
+                    LogUtil_putF(this->logUtil, java_concat(NEXT_FILE, java_string_of(LicenseInitInfo_getServer(initInfo, index))), this, METHOD_NAME);
+                }
+                return initInfo;
+            } else {
+                java_throw(java_exception_new("Exception", java_concat("Could Not Load License InitInfo: ", this->INITFILENAME)));
+            }
+        } JAVA_CATCH(Exception, e) {
+            JAVA_TRY {
+                LogUtil_put(this->logUtil, java_concat("Command Failed: ", this->INITFILENAME), this, METHOD_NAME, e);
+            } JAVA_CATCH(Exception, e2) {
+                LogUtil_put(this->logUtil, java_concat("LicenseInitInfo Read Retry: ", this->INITFILENAME), this, "readAgain()", e2);
+            } JAVA_END_TRY;
+            java_throw(java_exception_new("Exception", java_concat("LicenseInitInfo Read Error: ", this->INITFILENAME)));
+        } JAVA_END_TRY;
+}
+
+
+const char* LicenseInitInfoUtil_getFilePath(LicenseInitInfoUtil* this) {
+        return this->filePath;
+}
+
