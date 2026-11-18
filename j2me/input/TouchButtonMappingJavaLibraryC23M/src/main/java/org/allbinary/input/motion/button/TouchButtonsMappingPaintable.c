@@ -10,6 +10,9 @@
 #include "org/allbinary/input/motion/button/TouchButton.h"
 #include "org/allbinary/input/motion/button/BasicTouchInputFactory.h"
 #include "org/allbinary/input/motion/button/TouchButtonBlankResource.h"
+#if __has_include("org/allbinary/graphics/paint/Paintable.h")
+#include "org/allbinary/graphics/paint/Paintable.h"
+#endif
 
 
 
@@ -93,7 +96,7 @@ void TouchButtonsMappingPaintable_paint(TouchButtonsMappingPaintable* this, Grap
         int32_t totalRows = TouchButtonLocationHelper_getTotalRows(this->touchButtonLocationHelper);
         for (int32_t index = totalColumns - 1; index >= 0; index--) {
             for (int32_t rowIndex = totalRows - 1; rowIndex >= 0; rowIndex--) {
-                JAVA_CALL(this->paintableTable[index][rowIndex], paint, graphics);
+                Paintable_paint(this->paintableTable[index][rowIndex], graphics);
             }
         }
 }
