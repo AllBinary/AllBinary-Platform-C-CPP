@@ -1,59 +1,44 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.combat.damage
+#include "org/allbinary/game/combat/damage/DamageFloaters.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-#include "org/allbinary/graphics/paint/Paintable.h"
-
-typedef struct DamageFloaters DamageFloaters;
-struct DamageFloaters {
-    Paintable base;
-};
 
 static DamageFloaters* DamageFloaters_SINGLETON;
 
-DamageFloaters* DamageFloaters_new(void);
-DamageFloaters* DamageFloaters_getInstance(void);
-void DamageFloaters_add(DamageFloaters* this, int32_t damage);
 
-// Static fields with runtime initializers: call this once at startup
+
 void DamageFloaters_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     DamageFloaters_SINGLETON = DamageFloaters_new();
 }
 
+void DamageFloaters_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("DamageFloaters", "Paintable");
+    java_register_method("DamageFloaters", "add", (void*) DamageFloaters_add);
+}
+
 void DamageFloaters_init(DamageFloaters* this) {
+    DamageFloaters_register();
     Paintable_init(&this->base);
 }
 
 DamageFloaters* DamageFloaters_new(void) {
-    DamageFloaters* this = calloc(1, sizeof(DamageFloaters));
+    DamageFloaters* this = java_object_alloc(sizeof(DamageFloaters), "DamageFloaters");
     DamageFloaters_init(this);
     return this;
 }
 
 
 DamageFloaters* DamageFloaters_getInstance(void) {
-        return DamageFloaters_SINGLETON;
+        return (DamageFloaters_staticInit(), DamageFloaters_SINGLETON);
 }
 
 

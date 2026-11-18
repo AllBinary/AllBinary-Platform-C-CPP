@@ -1,28 +1,5 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/GameInfo.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/logic/string/StringUtil.h"
@@ -30,43 +7,88 @@
 #include "org/allbinary/logic/StdUtil.h"
 #include "org/allbinary/string/CommonLabels.h"
 #include "org/allbinary/util/ABHashtable.h"
+#include "org/allbinary/game/GameTypeFactory.h"
+#include "org/allbinary/game/GameMode.h"
+#include "org/allbinary/game/PlayerTypesFactory.h"
+#include "org/allbinary/game/GameInfoData.h"
+#include "org/allbinary/game/GameType.h"
+#include "org/allbinary/game/PlayerType.h"
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/string/CommonLabels.h")
+#include "org/allbinary/string/CommonLabels.h"
+#endif
+#if __has_include("org/allbinary/string/CommonSeps.h")
+#include "org/allbinary/string/CommonSeps.h"
+#endif
+#if __has_include("org/allbinary/logic/StdUtil.h")
+#include "org/allbinary/logic/StdUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
-typedef struct GameInfo GameInfo;
-struct GameInfo {
-    LogUtil* logUtil;
-    GameInfoData* gameInfoData;
-    GameType* gameType;
-    GameMode* gameMode;
-    PlayerType* playerType;
-    int32_t highestLevel;
-    int32_t currentLevel;
-    const char* NEW_LEVEL;
-    const char* SET_CURRENT_LEVEL;
-    const char* NEXT_GAME_LEVEL;
-};
 
 GameInfo* GameInfo_NONE;
 const char* GameInfo_LEVEL_NAME = "LEVEL";
 
-GameInfo* GameInfo_new(GameType* gameType, GameMode* gameMode, PlayerType* playerType, int32_t highestLevel, int32_t currentLevel);
 
-void GameInfo_init(GameInfo* this, GameType* gameType, GameMode* gameMode, PlayerType* playerType, int32_t highestLevel, int32_t currentLevel);
-GameType* GameInfo_getGameType(GameInfo* this);
-GameMode* GameInfo_getGameMode(GameInfo* this);
-PlayerType* GameInfo_getPlayerType(GameInfo* this);
-int32_t GameInfo_getHighestLevel(GameInfo* this);
-void GameInfo_setHighestLevel(GameInfo* this, int32_t highestLevel);
-int32_t GameInfo_getCurrentLevel(GameInfo* this);
-void GameInfo_setCurrentLevel(GameInfo* this, int32_t currentLevel);
-void GameInfo_nextGameLevel(GameInfo* this);
-void GameInfo_previousGameLevel(GameInfo* this);
-bool GameInfo_isLastLevel(GameInfo* this);
-ABHashtable* GameInfo_toHashtable(GameInfo* this);
-const char* GameInfo_toString(GameInfo* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+
+
+
+
+
+
+
 void GameInfo_staticInit(void) {
-    GameInfo_NONE = GameInfo_new(GameTypeFactory_getInstance()->NONE, GameMode_NONE, PlayerTypesFactory_getInstance()->PLAYER_TYPE_ONE, -1, -1);
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+    GameInfo_NONE = GameInfo_new(GameTypeFactory_getInstance()->NONE, (GameMode_staticInit(), GameMode_NONE), PlayerTypesFactory_getInstance()->PLAYER_TYPE_ONE, -1, -1);
+}
+
+void GameInfo_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GameInfo", nullptr);
+    java_register_method("GameInfo", "getGameType", (void*) GameInfo_getGameType);
+    java_register_method("GameInfo", "getGameMode", (void*) GameInfo_getGameMode);
+    java_register_method("GameInfo", "getPlayerType", (void*) GameInfo_getPlayerType);
+    java_register_method("GameInfo", "getHighestLevel", (void*) GameInfo_getHighestLevel);
+    java_register_method("GameInfo", "setHighestLevel", (void*) GameInfo_setHighestLevel);
+    java_register_method("GameInfo", "getCurrentLevel", (void*) GameInfo_getCurrentLevel);
+    java_register_method("GameInfo", "setCurrentLevel", (void*) GameInfo_setCurrentLevel);
+    java_register_method("GameInfo", "nextGameLevel", (void*) GameInfo_nextGameLevel);
+    java_register_method("GameInfo", "previousGameLevel", (void*) GameInfo_previousGameLevel);
+    java_register_method("GameInfo", "isLastLevel", (void*) GameInfo_isLastLevel);
+    java_register_method("GameInfo", "toHashtable", (void*) GameInfo_toHashtable);
+    java_register_method("GameInfo", "toString", (void*) GameInfo_toString);
 }
 
 static void GameInfo_initFields(GameInfo* this) {
@@ -84,6 +106,7 @@ static void GameInfo_initFields(GameInfo* this) {
 
 
 void GameInfo_init(GameInfo* this, GameType* gameType, GameMode* gameMode, PlayerType* playerType, int32_t highestLevel, int32_t currentLevel) {
+    GameInfo_register();
     GameInfo_initFields(this);
         this->gameType = gameType;
         this->gameMode = gameMode;
@@ -93,7 +116,7 @@ void GameInfo_init(GameInfo* this, GameType* gameType, GameMode* gameMode, Playe
 }
 
 GameInfo* GameInfo_new(GameType* gameType, GameMode* gameMode, PlayerType* playerType, int32_t highestLevel, int32_t currentLevel) {
-    GameInfo* this = calloc(1, sizeof(GameInfo));
+    GameInfo* this = java_object_alloc(sizeof(GameInfo), "GameInfo");
     GameInfo_init(this, gameType, gameMode, playerType, highestLevel, currentLevel);
     return this;
 }
@@ -131,7 +154,7 @@ int32_t GameInfo_getCurrentLevel(GameInfo* this) {
 
 void GameInfo_setCurrentLevel(GameInfo* this, int32_t currentLevel) {
         this->currentLevel = currentLevel;
-        LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), this->NEW_LEVEL), appendint, GameInfo_getCurrentLevel(this)), toString), this, this->SET_CURRENT_LEVEL);
+        LogUtil_putF(this->logUtil, java_string_of(StringMaker_appendint(StringMaker_append(StringMaker_new(), this->NEW_LEVEL), GameInfo_getCurrentLevel(this))), this, this->SET_CURRENT_LEVEL);
 }
 
 
@@ -139,7 +162,7 @@ void GameInfo_nextGameLevel(GameInfo* this) {
         if (GameInfo_getCurrentLevel(this) < GameInfo_getHighestLevel(this)) {
             this->currentLevel++;
         }
-        LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), CommonLabels_getInstance()->NEXT), append, CommonSeps_getInstance()->SPACE), append, this->NEW_LEVEL), appendint, GameInfo_getCurrentLevel(this)), toString), this, this->NEXT_GAME_LEVEL);
+        LogUtil_putF(this->logUtil, java_string_of(StringMaker_appendint(StringMaker_append(StringMaker_append(StringMaker_append(StringMaker_new(), CommonLabels_getInstance()->NEXT), CommonSeps_getInstance()->SPACE), this->NEW_LEVEL), GameInfo_getCurrentLevel(this))), this, this->NEXT_GAME_LEVEL);
 }
 
 
@@ -161,11 +184,11 @@ bool GameInfo_isLastLevel(GameInfo* this) {
 
 ABHashtable* GameInfo_toHashtable(GameInfo* this) {
         ABHashtable* hashtable = StdUtil_createHashtable(StdUtil_getInstance());
-        ABHashtable_put(hashtable, this->gameInfoData->GAME_TYPE, JAVA_CALL(GameInfo_getGameType(this), toString));
-        ABHashtable_put(hashtable, this->gameInfoData->GAME_MODE, GameMode_toString(this->gameMode));
-        ABHashtable_put(hashtable, this->gameInfoData->PLAYER_TYPE, PlayerType_toString(this->playerType));
-        ABHashtable_put(hashtable, this->gameInfoData->HIGHEST_LEVEL, java_string_of(GameInfo_getHighestLevel(this)));
-        ABHashtable_put(hashtable, this->gameInfoData->CURRENT_LEVEL, java_string_of(this->currentLevel));
+        Hashtable_put(hashtable, this->gameInfoData->GAME_TYPE, java_string_of(GameInfo_getGameType(this)));
+        Hashtable_put(hashtable, this->gameInfoData->GAME_MODE, java_string_of(this->gameMode));
+        Hashtable_put(hashtable, this->gameInfoData->PLAYER_TYPE, java_string_of(this->playerType));
+        Hashtable_put(hashtable, this->gameInfoData->HIGHEST_LEVEL, java_string_of(GameInfo_getHighestLevel(this)));
+        Hashtable_put(hashtable, this->gameInfoData->CURRENT_LEVEL, java_string_of(this->currentLevel));
         return hashtable;
 }
 
@@ -175,11 +198,11 @@ const char* GameInfo_toString(GameInfo* this) {
         CommonSeps* commonSeps = CommonSeps_getInstance();
         StringMaker_append(stringBuffer, this->gameInfoData->GAME_TYPE);
         StringMaker_append(stringBuffer, commonSeps->EQUALS);
-        StringMaker_append(stringBuffer, JAVA_CALL(GameInfo_getGameType(this), toString));
+        StringMaker_append(stringBuffer, java_string_of(GameInfo_getGameType(this)));
         StringMaker_append(stringBuffer, commonSeps->COMMA_SEP);
         StringMaker_append(stringBuffer, this->gameInfoData->GAME_MODE);
         StringMaker_append(stringBuffer, commonSeps->EQUALS);
-        StringMaker_append(stringBuffer, GameMode_toString(this->gameMode));
+        StringMaker_append(stringBuffer, java_string_of(this->gameMode));
         StringMaker_append(stringBuffer, commonSeps->COMMA_SEP);
         StringMaker_append(stringBuffer, this->gameInfoData->PLAYER_TYPE);
         StringMaker_append(stringBuffer, commonSeps->EQUALS);
@@ -192,6 +215,6 @@ const char* GameInfo_toString(GameInfo* this) {
         StringMaker_append(stringBuffer, this->gameInfoData->CURRENT_LEVEL);
         StringMaker_append(stringBuffer, commonSeps->EQUALS);
         StringMaker_appendint(stringBuffer, this->currentLevel);
-        return StringMaker_toString(stringBuffer);
+        return java_string_of(stringBuffer);
 }
 

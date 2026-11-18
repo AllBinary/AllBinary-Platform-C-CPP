@@ -3,6 +3,27 @@
 #include "org/allbinary/logic/io/file/FilePathData.h"
 #include "org/allbinary/logic/string/StringUtil.h"
 #include "org/allbinary/string/CommonSeps.h"
+#if __has_include("org/allbinary/string/CommonSeps.h")
+#include "org/allbinary/string/CommonSeps.h"
+#endif
+#if __has_include("org/allbinary/string/CommonSeps.h")
+#include "org/allbinary/string/CommonSeps.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/io/file/FilePathData.h")
+#include "org/allbinary/logic/io/file/FilePathData.h"
+#endif
+#if __has_include("org/allbinary/logic/io/file/FilePathData.h")
+#include "org/allbinary/logic/io/file/FilePathData.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
 
 static AbPathData* AbPathData_instance;

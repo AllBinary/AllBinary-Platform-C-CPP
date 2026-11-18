@@ -1,28 +1,5 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.util.event.handler
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/logic/util/event/handler/BasicEventHandler.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/logic/string/StringUtil.h"
@@ -33,28 +10,51 @@
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
 #include "org/allbinary/logic/util/event/handler/BasicEventHandlerInterface.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/util/event/EventStrings.h")
+#include "org/allbinary/logic/util/event/EventStrings.h"
+#endif
 
-typedef struct BasicEventHandler BasicEventHandler;
-struct BasicEventHandler {
-    BasicEventHandlerInterface BasicEventHandlerInterface_interface;
-    LogUtil* logUtil;
-    BasicArrayList* eventListenerInterfaceList;
-};
 
 const char* BasicEventHandler_PERFORMANCE_MESSAGE = "Use Custom onEvent Methods for needed optimization";
 
-BasicEventHandler* BasicEventHandler_new(void);
 
-void BasicEventHandler_init(BasicEventHandler* this);
-const char* BasicEventHandler_toString(BasicEventHandler* this);
-void BasicEventHandler_removeAllListeners(BasicEventHandler* this);
-void BasicEventHandler_addListenerSingleThreaded(BasicEventHandler* this, EventListenerInterface* eventListenerInterface);
-void BasicEventHandler_addListenerInterface(BasicEventHandler* this, EventListenerInterface* eventListenerInterface);
-void BasicEventHandler_removeListenerSingleThreaded(BasicEventHandler* this, EventListenerInterface* eventListenerInterface);
-void BasicEventHandler_removeListener(BasicEventHandler* this, EventListenerInterface* eventListenerInterface);
-void BasicEventHandler_fireEvent(BasicEventHandler* this, AllBinaryEventObject* eventObject);
-void BasicEventHandler_process(BasicEventHandler* this, AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
-BasicArrayList* BasicEventHandler_getEventListenerInterfaceListP(BasicEventHandler* this);
+
+
+
+
+
+
+
+
+
+void BasicEventHandler_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void BasicEventHandler_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("BasicEventHandler", nullptr);
+    java_register_method("BasicEventHandler", "toString", (void*) BasicEventHandler_toString);
+    java_register_method("BasicEventHandler", "removeAllListeners", (void*) BasicEventHandler_removeAllListeners);
+    java_register_method("BasicEventHandler", "addListenerSingleThreaded", (void*) BasicEventHandler_addListenerSingleThreaded);
+    java_register_method("BasicEventHandler", "addListenerInterface", (void*) BasicEventHandler_addListenerInterface);
+    java_register_method("BasicEventHandler", "removeListenerSingleThreaded", (void*) BasicEventHandler_removeListenerSingleThreaded);
+    java_register_method("BasicEventHandler", "removeListener", (void*) BasicEventHandler_removeListener);
+    java_register_method("BasicEventHandler", "fireEvent", (void*) BasicEventHandler_fireEvent);
+    java_register_method("BasicEventHandler", "process", (void*) BasicEventHandler_process);
+    java_register_method("BasicEventHandler", "getEventListenerInterfaceListP", (void*) BasicEventHandler_getEventListenerInterfaceListP);
+}
 
 static void BasicEventHandler_initFields(BasicEventHandler* this) {
     this->logUtil = LogUtil_getInstance();
@@ -63,12 +63,13 @@ static void BasicEventHandler_initFields(BasicEventHandler* this) {
 
 
 void BasicEventHandler_init(BasicEventHandler* this) {
+    BasicEventHandler_register();
     BasicEventHandler_initFields(this);
         this->eventListenerInterfaceList = BasicArrayListD_new();
 }
 
 BasicEventHandler* BasicEventHandler_new(void) {
-    BasicEventHandler* this = calloc(1, sizeof(BasicEventHandler));
+    BasicEventHandler* this = java_object_alloc(sizeof(BasicEventHandler), "BasicEventHandler");
     BasicEventHandler_init(this);
     return this;
 }
@@ -92,7 +93,7 @@ const char* BasicEventHandler_toString(BasicEventHandler* this) {
             } JAVA_END_TRY;
             index++;
         }
-        return StringMaker_toString(stringBuffer);
+        return java_string_of(stringBuffer);
 }
 
 

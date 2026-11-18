@@ -1,0 +1,506 @@
+#ifndef ORG_ALLBINARY_GAME_LAYER_WEAPON_SIMPLEWEAPONLAYER_H
+#define ORG_ALLBINARY_GAME_LAYER_WEAPON_SIMPLEWEAPONLAYER_H
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.layer.weapon
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+typedef struct WeaponLayer WeaponLayer;
+typedef struct CollidableWeaponBehavior CollidableWeaponBehavior;
+typedef struct Animation Animation;
+typedef struct FeaturedAnimationInterfaceFactoryInterfaceFactory FeaturedAnimationInterfaceFactoryInterfaceFactory;
+typedef struct NullIndexedAnimationFactory NullIndexedAnimationFactory;
+typedef struct ExplosionResources ExplosionResources;
+typedef struct RemoteInfo RemoteInfo;
+typedef struct Rectangle Rectangle;
+typedef struct Movement Movement;
+typedef struct ViewPositionBase ViewPositionBase;
+#include "org/allbinary/game/layer/weapon/WeaponLayer.h"
+
+typedef struct SimpleWeaponLayer SimpleWeaponLayer;
+struct SimpleWeaponLayer {
+    WeaponLayer base;
+};
+
+
+SimpleWeaponLayer* SimpleWeaponLayer_new(const char* name, RemoteInfo* remoteInfo, int32_t multiPlayerType, Movement* movement, Animation* animationInterface, Animation* destroyedAnimationInterface, Rectangle* rectangle, ViewPositionBase* viewPosition);
+
+Animation* SimpleWeaponLayer_createDestroyed(void);
+
+void SimpleWeaponLayer_init(SimpleWeaponLayer* this, const char* name, RemoteInfo* remoteInfo, int32_t multiPlayerType, Movement* movement, Animation* animationInterface, Animation* destroyedAnimationInterface, Rectangle* rectangle, ViewPositionBase* viewPosition);
+#define SimpleWeaponLayer_new8 SimpleWeaponLayer_new
+#define SimpleWeaponLayer_init8 SimpleWeaponLayer_init
+#ifndef SimpleWeaponLayer_setCollidableInferface
+#define SimpleWeaponLayer_setCollidableInferface WeaponLayer_setCollidableInferface
+#endif
+#ifndef SimpleWeaponLayer_initXYZ
+#define SimpleWeaponLayer_initXYZ WeaponLayer_initXYZ
+#endif
+#ifndef SimpleWeaponLayer_setGroupInterfaces
+#define SimpleWeaponLayer_setGroupInterfaces WeaponLayer_setGroupInterfaces
+#endif
+#ifndef SimpleWeaponLayer_processTick
+#define SimpleWeaponLayer_processTick WeaponLayer_processTick
+#endif
+#ifndef SimpleWeaponLayer_isDestroyed
+#define SimpleWeaponLayer_isDestroyed WeaponLayer_isDestroyed
+#endif
+#ifndef SimpleWeaponLayer_damage
+#define SimpleWeaponLayer_damage WeaponLayer_damage
+#endif
+#ifndef SimpleWeaponLayer_givePoints
+#define SimpleWeaponLayer_givePoints WeaponLayer_givePoints
+#endif
+#ifndef SimpleWeaponLayer_isExhausted
+#define SimpleWeaponLayer_isExhausted WeaponLayer_isExhausted
+#endif
+#ifndef SimpleWeaponLayer_getDamage
+#define SimpleWeaponLayer_getDamage WeaponLayer_getDamage
+#endif
+#ifndef SimpleWeaponLayer_setDestroyed
+#define SimpleWeaponLayer_setDestroyed WeaponLayer_setDestroyed
+#endif
+#ifndef SimpleWeaponLayer_getInitDamage
+#define SimpleWeaponLayer_getInitDamage WeaponLayer_getInitDamage
+#endif
+#ifndef SimpleWeaponLayer_setAnimationInterface
+#define SimpleWeaponLayer_setAnimationInterface WeaponLayer_setAnimationInterface
+#endif
+#ifndef SimpleWeaponLayer_getAnimationInterface
+#define SimpleWeaponLayer_getAnimationInterface WeaponLayer_getAnimationInterface
+#endif
+#ifndef SimpleWeaponLayer_getInitAnimationInterfaceP
+#define SimpleWeaponLayer_getInitAnimationInterfaceP WeaponLayer_getInitAnimationInterfaceP
+#endif
+#ifndef SimpleWeaponLayer_setInitAnimationInterfaceP
+#define SimpleWeaponLayer_setInitAnimationInterfaceP WeaponLayer_setInitAnimationInterfaceP
+#endif
+#ifndef SimpleWeaponLayer_getDestroyedAnimationInterface
+#define SimpleWeaponLayer_getDestroyedAnimationInterface WeaponLayer_getDestroyedAnimationInterface
+#endif
+#ifndef SimpleWeaponLayer_getOwnerLayerInterface
+#define SimpleWeaponLayer_getOwnerLayerInterface WeaponLayer_getOwnerLayerInterface
+#endif
+#ifndef SimpleWeaponLayer_setOwnerLayerInterface
+#define SimpleWeaponLayer_setOwnerLayerInterface WeaponLayer_setOwnerLayerInterface
+#endif
+#ifndef SimpleWeaponLayer_paint
+#define SimpleWeaponLayer_paint WeaponLayer_paint
+#endif
+#ifndef SimpleWeaponLayer_paintThreed
+#define SimpleWeaponLayer_paintThreed WeaponLayer_paintThreed
+#endif
+#ifndef SimpleWeaponLayer_getMovement
+#define SimpleWeaponLayer_getMovement WeaponLayer_getMovement
+#endif
+#ifndef SimpleWeaponLayer_setMovement
+#define SimpleWeaponLayer_setMovement WeaponLayer_setMovement
+#endif
+#ifndef SimpleWeaponLayer_getType
+#define SimpleWeaponLayer_getType WeaponLayer_getType
+#endif
+#ifndef SimpleWeaponLayer_getStaticType
+#define SimpleWeaponLayer_getStaticType WeaponLayer_getStaticType
+#endif
+#ifndef SimpleWeaponLayer_getMultiPlayerType
+#define SimpleWeaponLayer_getMultiPlayerType WeaponLayer_getMultiPlayerType
+#endif
+#ifndef SimpleWeaponLayer_setWeaponPropertiesP
+#define SimpleWeaponLayer_setWeaponPropertiesP WeaponLayer_setWeaponPropertiesP
+#endif
+#ifndef SimpleWeaponLayer_getWeaponPropertiesP
+#define SimpleWeaponLayer_getWeaponPropertiesP WeaponLayer_getWeaponPropertiesP
+#endif
+#ifndef SimpleWeaponLayer_implmentsTickableInterface
+#define SimpleWeaponLayer_implmentsTickableInterface WeaponLayer_implmentsTickableInterface
+#endif
+#ifndef SimpleWeaponLayer_set
+#define SimpleWeaponLayer_set WeaponLayer_set
+#endif
+#ifndef SimpleWeaponLayer_getMultiplayerBehavior
+#define SimpleWeaponLayer_getMultiplayerBehavior MultiPlayerGameLayer_getMultiplayerBehavior
+#endif
+#ifndef SimpleWeaponLayer_setPingInfo
+#define SimpleWeaponLayer_setPingInfo MultiPlayerGameLayer_setPingInfo
+#endif
+#ifndef SimpleWeaponLayer_setFiring
+#define SimpleWeaponLayer_setFiring MultiPlayerGameLayer_setFiring
+#endif
+#ifndef SimpleWeaponLayer_getFiring
+#define SimpleWeaponLayer_getFiring MultiPlayerGameLayer_getFiring
+#endif
+#ifndef SimpleWeaponLayer_getNullInstance
+#define SimpleWeaponLayer_getNullInstance CollidableDestroyableDamageableLayer_getNullInstance
+#endif
+#ifndef SimpleWeaponLayer_initPosition
+#define SimpleWeaponLayer_initPosition CollidableDestroyableDamageableLayer_initPosition
+#endif
+#ifndef SimpleWeaponLayer_initPositionXYZ
+#define SimpleWeaponLayer_initPositionXYZ CollidableDestroyableDamageableLayer_initPositionXYZ
+#endif
+#ifndef SimpleWeaponLayer_paint
+#define SimpleWeaponLayer_paint CollidableDestroyableDamageableLayer_paint
+#endif
+#ifndef SimpleWeaponLayer_damage
+#define SimpleWeaponLayer_damage CollidableDestroyableDamageableLayer_damage
+#endif
+#ifndef SimpleWeaponLayer_getDamage
+#define SimpleWeaponLayer_getDamage CollidableDestroyableDamageableLayer_getDamage
+#endif
+#ifndef SimpleWeaponLayer_isDestroyed
+#define SimpleWeaponLayer_isDestroyed CollidableDestroyableDamageableLayer_isDestroyed
+#endif
+#ifndef SimpleWeaponLayer_getGroupInterface
+#define SimpleWeaponLayer_getGroupInterface CollidableDestroyableDamageableLayer_getGroupInterface
+#endif
+#ifndef SimpleWeaponLayer_setGroupInterface
+#define SimpleWeaponLayer_setGroupInterface CollidableDestroyableDamageableLayer_setGroupInterface
+#endif
+#ifndef SimpleWeaponLayer_setAllBinaryGameLayerManager
+#define SimpleWeaponLayer_setAllBinaryGameLayerManager CollidableDestroyableDamageableLayer_setAllBinaryGameLayerManager
+#endif
+#ifndef SimpleWeaponLayer_isReadyForExplosion
+#define SimpleWeaponLayer_isReadyForExplosion CollidableDestroyableDamageableLayer_isReadyForExplosion
+#endif
+#ifndef SimpleWeaponLayer_setReadyForExplosion
+#define SimpleWeaponLayer_setReadyForExplosion CollidableDestroyableDamageableLayer_setReadyForExplosion
+#endif
+#ifndef SimpleWeaponLayer_getInitWidth
+#define SimpleWeaponLayer_getInitWidth CollidableDestroyableDamageableLayer_getInitWidth
+#endif
+#ifndef SimpleWeaponLayer_getInitHeight
+#define SimpleWeaponLayer_getInitHeight CollidableDestroyableDamageableLayer_getInitHeight
+#endif
+#ifndef SimpleWeaponLayer_getInitX
+#define SimpleWeaponLayer_getInitX CollidableDestroyableDamageableLayer_getInitX
+#endif
+#ifndef SimpleWeaponLayer_getInitY
+#define SimpleWeaponLayer_getInitY CollidableDestroyableDamageableLayer_getInitY
+#endif
+#ifndef SimpleWeaponLayer_up
+#define SimpleWeaponLayer_up CollidableDestroyableDamageableLayer_up
+#endif
+#ifndef SimpleWeaponLayer_down
+#define SimpleWeaponLayer_down CollidableDestroyableDamageableLayer_down
+#endif
+#ifndef SimpleWeaponLayer_right
+#define SimpleWeaponLayer_right CollidableDestroyableDamageableLayer_right
+#endif
+#ifndef SimpleWeaponLayer_left
+#define SimpleWeaponLayer_left CollidableDestroyableDamageableLayer_left
+#endif
+#ifndef SimpleWeaponLayer_strafeLeft
+#define SimpleWeaponLayer_strafeLeft CollidableDestroyableDamageableLayer_strafeLeft
+#endif
+#ifndef SimpleWeaponLayer_strafeRight
+#define SimpleWeaponLayer_strafeRight CollidableDestroyableDamageableLayer_strafeRight
+#endif
+#ifndef SimpleWeaponLayer_fire
+#define SimpleWeaponLayer_fire CollidableDestroyableDamageableLayer_fire
+#endif
+#ifndef SimpleWeaponLayer_special1
+#define SimpleWeaponLayer_special1 CollidableDestroyableDamageableLayer_special1
+#endif
+#ifndef SimpleWeaponLayer_special2
+#define SimpleWeaponLayer_special2 CollidableDestroyableDamageableLayer_special2
+#endif
+#ifndef SimpleWeaponLayer_special3
+#define SimpleWeaponLayer_special3 CollidableDestroyableDamageableLayer_special3
+#endif
+#ifndef SimpleWeaponLayer_special4
+#define SimpleWeaponLayer_special4 CollidableDestroyableDamageableLayer_special4
+#endif
+#ifndef SimpleWeaponLayer_special5
+#define SimpleWeaponLayer_special5 CollidableDestroyableDamageableLayer_special5
+#endif
+#ifndef SimpleWeaponLayer_upAnalog
+#define SimpleWeaponLayer_upAnalog CollidableDestroyableDamageableLayer_upAnalog
+#endif
+#ifndef SimpleWeaponLayer_downAnalog
+#define SimpleWeaponLayer_downAnalog CollidableDestroyableDamageableLayer_downAnalog
+#endif
+#ifndef SimpleWeaponLayer_rightAnalog
+#define SimpleWeaponLayer_rightAnalog CollidableDestroyableDamageableLayer_rightAnalog
+#endif
+#ifndef SimpleWeaponLayer_leftAnalog
+#define SimpleWeaponLayer_leftAnalog CollidableDestroyableDamageableLayer_leftAnalog
+#endif
+#ifndef SimpleWeaponLayer_rightTrigger
+#define SimpleWeaponLayer_rightTrigger CollidableDestroyableDamageableLayer_rightTrigger
+#endif
+#ifndef SimpleWeaponLayer_leftTrigger
+#define SimpleWeaponLayer_leftTrigger CollidableDestroyableDamageableLayer_leftTrigger
+#endif
+#ifndef SimpleWeaponLayer_onDestroyed
+#define SimpleWeaponLayer_onDestroyed CollidableDestroyableDamageableLayer_onDestroyed
+#endif
+#ifndef SimpleWeaponLayer_getPickupBehavior
+#define SimpleWeaponLayer_getPickupBehavior CollidableDestroyableDamageableLayer_getPickupBehavior
+#endif
+#ifndef SimpleWeaponLayer_setPickupBehavior
+#define SimpleWeaponLayer_setPickupBehavior CollidableDestroyableDamageableLayer_setPickupBehavior
+#endif
+#ifndef SimpleWeaponLayer_addPart
+#define SimpleWeaponLayer_addPart CollidableDestroyableDamageableLayer_addPart
+#endif
+#ifndef SimpleWeaponLayer_setPartInterfaceArray
+#define SimpleWeaponLayer_setPartInterfaceArray CollidableDestroyableDamageableLayer_setPartInterfaceArray
+#endif
+#ifndef SimpleWeaponLayer_getPartInterfaceArray
+#define SimpleWeaponLayer_getPartInterfaceArray CollidableDestroyableDamageableLayer_getPartInterfaceArray
+#endif
+#ifndef SimpleWeaponLayer_toStringAppend
+#define SimpleWeaponLayer_toStringAppend CollidableDestroyableDamageableLayer_toStringAppend
+#endif
+#ifndef SimpleWeaponLayer_toString
+#define SimpleWeaponLayer_toString CollidableDestroyableDamageableLayer_toString
+#endif
+#ifndef SimpleWeaponLayer_getNullInstance
+#define SimpleWeaponLayer_getNullInstance CollidableCompositeLayer_getNullInstance
+#endif
+#ifndef SimpleWeaponLayer_getArtificialIntelligenceInterface
+#define SimpleWeaponLayer_getArtificialIntelligenceInterface CollidableCompositeLayer_getArtificialIntelligenceInterface
+#endif
+#ifndef SimpleWeaponLayer_getCollidableInferface
+#define SimpleWeaponLayer_getCollidableInferface CollidableCompositeLayer_getCollidableInferface
+#endif
+#ifndef SimpleWeaponLayer_setCollidableInferface
+#define SimpleWeaponLayer_setCollidableInferface CollidableCompositeLayer_setCollidableInferface
+#endif
+#ifndef SimpleWeaponLayer_implmentsCollidableInterface
+#define SimpleWeaponLayer_implmentsCollidableInterface CollidableCompositeLayer_implmentsCollidableInterface
+#endif
+#ifndef SimpleWeaponLayer_toStringAppend
+#define SimpleWeaponLayer_toStringAppend CollidableCompositeLayer_toStringAppend
+#endif
+#ifndef SimpleWeaponLayer_toString
+#define SimpleWeaponLayer_toString CollidableCompositeLayer_toString
+#endif
+#ifndef SimpleWeaponLayer_createPaintable
+#define SimpleWeaponLayer_createPaintable AllBinaryGameLayer_createPaintable
+#endif
+#ifndef SimpleWeaponLayer_set
+#define SimpleWeaponLayer_set AllBinaryGameLayer_set
+#endif
+#ifndef SimpleWeaponLayer_move
+#define SimpleWeaponLayer_move AllBinaryGameLayer_move
+#endif
+#ifndef SimpleWeaponLayer_getGameKeyEventList
+#define SimpleWeaponLayer_getGameKeyEventList AllBinaryGameLayer_getGameKeyEventList
+#endif
+#ifndef SimpleWeaponLayer_processInput
+#define SimpleWeaponLayer_processInput AllBinaryGameLayer_processInput
+#endif
+#ifndef SimpleWeaponLayer_processTick
+#define SimpleWeaponLayer_processTick AllBinaryGameLayer_processTick
+#endif
+#ifndef SimpleWeaponLayer_onEvent
+#define SimpleWeaponLayer_onEvent AllBinaryGameLayer_onEvent
+#endif
+#ifndef SimpleWeaponLayer_onViewPositionChangeEvent
+#define SimpleWeaponLayer_onViewPositionChangeEvent AllBinaryGameLayer_onViewPositionChangeEvent
+#endif
+#ifndef SimpleWeaponLayer_onChangeEvent
+#define SimpleWeaponLayer_onChangeEvent AllBinaryGameLayer_onChangeEvent
+#endif
+#ifndef SimpleWeaponLayer_paintFirst
+#define SimpleWeaponLayer_paintFirst AllBinaryGameLayer_paintFirst
+#endif
+#ifndef SimpleWeaponLayer_paintDebug
+#define SimpleWeaponLayer_paintDebug AllBinaryGameLayer_paintDebug
+#endif
+#ifndef SimpleWeaponLayer_setWidth
+#define SimpleWeaponLayer_setWidth AllBinaryGameLayer_setWidth
+#endif
+#ifndef SimpleWeaponLayer_setHeight
+#define SimpleWeaponLayer_setHeight AllBinaryGameLayer_setHeight
+#endif
+#ifndef SimpleWeaponLayer_setPosition
+#define SimpleWeaponLayer_setPosition AllBinaryLayer_setPosition
+#endif
+#ifndef SimpleWeaponLayer_moveDXYZ
+#define SimpleWeaponLayer_moveDXYZ AllBinaryLayer_moveDXYZ
+#endif
+#ifndef SimpleWeaponLayer_getXP
+#define SimpleWeaponLayer_getXP AllBinaryLayer_getXP
+#endif
+#ifndef SimpleWeaponLayer_getYP
+#define SimpleWeaponLayer_getYP AllBinaryLayer_getYP
+#endif
+#ifndef SimpleWeaponLayer_getZP
+#define SimpleWeaponLayer_getZP AllBinaryLayer_getZP
+#endif
+#ifndef SimpleWeaponLayer_getWidth
+#define SimpleWeaponLayer_getWidth AllBinaryLayer_getWidth
+#endif
+#ifndef SimpleWeaponLayer_getHeight
+#define SimpleWeaponLayer_getHeight AllBinaryLayer_getHeight
+#endif
+#ifndef SimpleWeaponLayer_setVisible
+#define SimpleWeaponLayer_setVisible AllBinaryLayer_setVisible
+#endif
+#ifndef SimpleWeaponLayer_isVisible
+#define SimpleWeaponLayer_isVisible AllBinaryLayer_isVisible
+#endif
+#ifndef SimpleWeaponLayer_paint
+#define SimpleWeaponLayer_paint AllBinaryLayer_paint
+#endif
+#ifndef SimpleWeaponLayer_onChangeEvent
+#define SimpleWeaponLayer_onChangeEvent AllBinaryLayer_onChangeEvent
+#endif
+#ifndef SimpleWeaponLayer_paintThreed
+#define SimpleWeaponLayer_paintThreed AllBinaryLayer_paintThreed
+#endif
+#ifndef SimpleWeaponLayer_getX2
+#define SimpleWeaponLayer_getX2 AllBinaryLayer_getX2
+#endif
+#ifndef SimpleWeaponLayer_getY2
+#define SimpleWeaponLayer_getY2 AllBinaryLayer_getY2
+#endif
+#ifndef SimpleWeaponLayer_getZ2
+#define SimpleWeaponLayer_getZ2 AllBinaryLayer_getZ2
+#endif
+#ifndef SimpleWeaponLayer_getName
+#define SimpleWeaponLayer_getName AllBinaryLayer_getName
+#endif
+#ifndef SimpleWeaponLayer_setHalfWidth
+#define SimpleWeaponLayer_setHalfWidth AllBinaryLayer_setHalfWidth
+#endif
+#ifndef SimpleWeaponLayer_getHalfWidth
+#define SimpleWeaponLayer_getHalfWidth AllBinaryLayer_getHalfWidth
+#endif
+#ifndef SimpleWeaponLayer_setHalfHeight
+#define SimpleWeaponLayer_setHalfHeight AllBinaryLayer_setHalfHeight
+#endif
+#ifndef SimpleWeaponLayer_getHalfHeight
+#define SimpleWeaponLayer_getHalfHeight AllBinaryLayer_getHalfHeight
+#endif
+#ifndef SimpleWeaponLayer_getHalfDepth
+#define SimpleWeaponLayer_getHalfDepth AllBinaryLayer_getHalfDepth
+#endif
+#ifndef SimpleWeaponLayer_getViewPosition
+#define SimpleWeaponLayer_getViewPosition AllBinaryLayer_getViewPosition
+#endif
+#ifndef SimpleWeaponLayer_setViewPosition
+#define SimpleWeaponLayer_setViewPosition AllBinaryLayer_setViewPosition
+#endif
+#ifndef SimpleWeaponLayer_getGroupInterface
+#define SimpleWeaponLayer_getGroupInterface AllBinaryLayer_getGroupInterface
+#endif
+#ifndef SimpleWeaponLayer_implmentsTickableInterface
+#define SimpleWeaponLayer_implmentsTickableInterface AllBinaryLayer_implmentsTickableInterface
+#endif
+#ifndef SimpleWeaponLayer_implmentsGameInputInterface
+#define SimpleWeaponLayer_implmentsGameInputInterface AllBinaryLayer_implmentsGameInputInterface
+#endif
+#ifndef SimpleWeaponLayer_implmentsArtificialIntelligenceCompositeInterface
+#define SimpleWeaponLayer_implmentsArtificialIntelligenceCompositeInterface AllBinaryLayer_implmentsArtificialIntelligenceCompositeInterface
+#endif
+#ifndef SimpleWeaponLayer_implmentsCollidableInterface
+#define SimpleWeaponLayer_implmentsCollidableInterface AllBinaryLayer_implmentsCollidableInterface
+#endif
+#ifndef SimpleWeaponLayer_implementsThreedInterface
+#define SimpleWeaponLayer_implementsThreedInterface AllBinaryLayer_implementsThreedInterface
+#endif
+#ifndef SimpleWeaponLayer_getType
+#define SimpleWeaponLayer_getType AllBinaryLayer_getType
+#endif
+#ifndef SimpleWeaponLayer_getMultiPlayerType
+#define SimpleWeaponLayer_getMultiPlayerType AllBinaryLayer_getMultiPlayerType
+#endif
+#ifndef SimpleWeaponLayer_toStringAppend
+#define SimpleWeaponLayer_toStringAppend AllBinaryLayer_toStringAppend
+#endif
+#ifndef SimpleWeaponLayer_toString
+#define SimpleWeaponLayer_toString AllBinaryLayer_toString
+#endif
+#ifndef SimpleWeaponLayer_setPosition
+#define SimpleWeaponLayer_setPosition Layer_setPosition
+#endif
+#ifndef SimpleWeaponLayer_moveDXY
+#define SimpleWeaponLayer_moveDXY Layer_moveDXY
+#endif
+#ifndef SimpleWeaponLayer_moveDXYZ
+#define SimpleWeaponLayer_moveDXYZ Layer_moveDXYZ
+#endif
+#ifndef SimpleWeaponLayer_getXP
+#define SimpleWeaponLayer_getXP Layer_getXP
+#endif
+#ifndef SimpleWeaponLayer_getYP
+#define SimpleWeaponLayer_getYP Layer_getYP
+#endif
+#ifndef SimpleWeaponLayer_getZP
+#define SimpleWeaponLayer_getZP Layer_getZP
+#endif
+#ifndef SimpleWeaponLayer_getWidth
+#define SimpleWeaponLayer_getWidth Layer_getWidth
+#endif
+#ifndef SimpleWeaponLayer_getHeight
+#define SimpleWeaponLayer_getHeight Layer_getHeight
+#endif
+#ifndef SimpleWeaponLayer_getDepth
+#define SimpleWeaponLayer_getDepth Layer_getDepth
+#endif
+#ifndef SimpleWeaponLayer_setVisible
+#define SimpleWeaponLayer_setVisible Layer_setVisible
+#endif
+#ifndef SimpleWeaponLayer_isVisible
+#define SimpleWeaponLayer_isVisible Layer_isVisible
+#endif
+#ifndef SimpleWeaponLayer_paint
+#define SimpleWeaponLayer_paint Layer_paint
+#endif
+#ifndef SimpleWeaponLayer_setLayerWidth
+#define SimpleWeaponLayer_setLayerWidth Layer_setLayerWidth
+#endif
+#ifndef SimpleWeaponLayer_setLayerHeight
+#define SimpleWeaponLayer_setLayerHeight Layer_setLayerHeight
+#endif
+#ifndef SimpleWeaponLayer_toStringAppend
+#define SimpleWeaponLayer_toStringAppend Layer_toStringAppend
+#endif
+#ifndef SimpleWeaponLayer_setSize
+#define SimpleWeaponLayer_setSize Layer_setSize
+#endif
+#ifndef SimpleWeaponLayer_getX
+#define SimpleWeaponLayer_getX Layer_getX
+#endif
+#ifndef SimpleWeaponLayer_getY
+#define SimpleWeaponLayer_getY Layer_getY
+#endif
+#ifndef SimpleWeaponLayer_move
+#define SimpleWeaponLayer_move Layer_move
+#endif
+#ifndef SimpleWeaponLayer_setPosition
+#define SimpleWeaponLayer_setPosition Layer_setPosition
+#endif
+// Runs the Java static initialization of the class once. Reads of its static fields call it first.
+void SimpleWeaponLayer_staticInit(void);
+// Registers the class, its superclass, and its methods for the interface calls (java_register_method)
+void SimpleWeaponLayer_register(void);
+
+#if __has_include("org/allbinary/animation/Animation.h")
+#include "org/allbinary/animation/Animation.h"
+#endif
+
+#endif // ORG_ALLBINARY_GAME_LAYER_WEAPON_SIMPLEWEAPONLAYER_H

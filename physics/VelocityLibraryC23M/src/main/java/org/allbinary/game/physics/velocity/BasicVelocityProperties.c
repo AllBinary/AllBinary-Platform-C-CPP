@@ -1,28 +1,5 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.physics.velocity
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/physics/velocity/BasicVelocityProperties.h"
 #include "org/allbinary/direction/Direction.h"
 #include "org/allbinary/direction/DirectionUtil.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
@@ -35,36 +12,55 @@
 #include "org/allbinary/string/CommonSeps.h"
 #include "org/allbinary/game/physics/velocity/BasicVelocityInterface.h"
 
-typedef struct BasicVelocityProperties BasicVelocityProperties;
-struct BasicVelocityProperties {
-    BasicVelocityInterface BasicVelocityInterface_interface;
-    LogUtil* logUtil;
-    BasicDecimal* velocityXBasicDecimal;
-    BasicDecimal* velocityYBasicDecimal;
-    BasicDecimal* velocityZBasicDecimal;
-    AxisMathVectorUtil* axisMathVectorUtil;
-    DirectionUtil* directionUtil;
-};
 
 
-BasicVelocityProperties* BasicVelocityProperties_new(void);
 
-void BasicVelocityProperties_init(BasicVelocityProperties* this);
-void BasicVelocityProperties_zero(BasicVelocityProperties* this);
-BasicDecimal* BasicVelocityProperties_getVelocityXBasicDecimalP(BasicVelocityProperties* this);
-BasicDecimal* BasicVelocityProperties_getVelocityYBasicDecimalP(BasicVelocityProperties* this);
-BasicDecimal* BasicVelocityProperties_getVelocityZBasicDecimalP(BasicVelocityProperties* this);
-void BasicVelocityProperties_setVelocityWithBigDecimalAndDirection(BasicVelocityProperties* this, BasicDecimal* magnitudeBasicDecimal, Direction* direction, Direction* otherDirection);
-void BasicVelocityProperties_setVelocityWithDirection(BasicVelocityProperties* this, int64_t magnitude, Direction* direction, Direction* otherDirection);
-void BasicVelocityProperties_addVelocityWithBigDecimalAndDirection(BasicVelocityProperties* this, BasicDecimal* magnitudeBasicDecimal, Direction* direction, Direction* otherDirection);
-void BasicVelocityProperties_addVelocityWithDirection(BasicVelocityProperties* this, int64_t magnitude, Direction* direction, Direction* otherDirection);
-void BasicVelocityProperties_setVelocityWithBigDecimal(BasicVelocityProperties* this, BasicDecimal* magnitudeBasicDecimal, Angle* angle, Angle* otherAngle);
-void BasicVelocityProperties_addVelocityWithBigDecimal(BasicVelocityProperties* this, BasicDecimal* magnitudeBasicDecimal, Angle* angle, Angle* otherAngle);
-void BasicVelocityProperties_setVelocity(BasicVelocityProperties* this, int64_t magnitude, Angle* angle, Angle* otherAngle);
-void BasicVelocityProperties_addVelocity(BasicVelocityProperties* this, int64_t magnitude, Angle* angle, Angle* otherAngle);
-void BasicVelocityProperties_setVelocityi(BasicVelocityProperties* this, int64_t magnitude, int32_t angle, int32_t otherAngle);
-void BasicVelocityProperties_addVelocityi(BasicVelocityProperties* this, int64_t magnitude, int32_t angle, int32_t otherAngle);
-const char* BasicVelocityProperties_toString(BasicVelocityProperties* this);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void BasicVelocityProperties_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void BasicVelocityProperties_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("BasicVelocityProperties", nullptr);
+    java_register_method("BasicVelocityProperties", "zero", (void*) BasicVelocityProperties_zero);
+    java_register_method("BasicVelocityProperties", "getVelocityXBasicDecimalP", (void*) BasicVelocityProperties_getVelocityXBasicDecimalP);
+    java_register_method("BasicVelocityProperties", "getVelocityYBasicDecimalP", (void*) BasicVelocityProperties_getVelocityYBasicDecimalP);
+    java_register_method("BasicVelocityProperties", "getVelocityZBasicDecimalP", (void*) BasicVelocityProperties_getVelocityZBasicDecimalP);
+    java_register_method("BasicVelocityProperties", "setVelocityWithBigDecimalAndDirection", (void*) BasicVelocityProperties_setVelocityWithBigDecimalAndDirection);
+    java_register_method("BasicVelocityProperties", "setVelocityWithDirection", (void*) BasicVelocityProperties_setVelocityWithDirection);
+    java_register_method("BasicVelocityProperties", "addVelocityWithBigDecimalAndDirection", (void*) BasicVelocityProperties_addVelocityWithBigDecimalAndDirection);
+    java_register_method("BasicVelocityProperties", "addVelocityWithDirection", (void*) BasicVelocityProperties_addVelocityWithDirection);
+    java_register_method("BasicVelocityProperties", "setVelocityWithBigDecimal", (void*) BasicVelocityProperties_setVelocityWithBigDecimal);
+    java_register_method("BasicVelocityProperties", "addVelocityWithBigDecimal", (void*) BasicVelocityProperties_addVelocityWithBigDecimal);
+    java_register_method("BasicVelocityProperties", "setVelocity", (void*) BasicVelocityProperties_setVelocity);
+    java_register_method("BasicVelocityProperties", "addVelocity", (void*) BasicVelocityProperties_addVelocity);
+    java_register_method("BasicVelocityProperties", "setVelocityi", (void*) BasicVelocityProperties_setVelocityi);
+    java_register_method("BasicVelocityProperties", "addVelocityi", (void*) BasicVelocityProperties_addVelocityi);
+    java_register_method("BasicVelocityProperties", "toString", (void*) BasicVelocityProperties_toString);
+}
 
 static void BasicVelocityProperties_initFields(BasicVelocityProperties* this) {
     this->logUtil = LogUtil_getInstance();
@@ -77,6 +73,7 @@ static void BasicVelocityProperties_initFields(BasicVelocityProperties* this) {
 
 
 void BasicVelocityProperties_init(BasicVelocityProperties* this) {
+    BasicVelocityProperties_register();
     BasicVelocityProperties_initFields(this);
         this->velocityXBasicDecimal = BasicDecimal_new(0);
         this->velocityYBasicDecimal = BasicDecimal_new(0);
@@ -84,7 +81,7 @@ void BasicVelocityProperties_init(BasicVelocityProperties* this) {
 }
 
 BasicVelocityProperties* BasicVelocityProperties_new(void) {
-    BasicVelocityProperties* this = calloc(1, sizeof(BasicVelocityProperties));
+    BasicVelocityProperties* this = java_object_alloc(sizeof(BasicVelocityProperties), "BasicVelocityProperties");
     BasicVelocityProperties_init(this);
     return this;
 }
@@ -163,9 +160,9 @@ void BasicVelocityProperties_addVelocity(BasicVelocityProperties* this, int64_t 
 
 
 void BasicVelocityProperties_setVelocityi(BasicVelocityProperties* this, int64_t magnitude, int32_t angle, int32_t otherAngle) {
-        int64_t xVector = (AxisMathVectorUtil_calculateX(this->axisMathVectorUtil, magnitude, angle) / BasicDecimal_getScaledFactorValue(this->velocityXBasicDecimal));
-        int64_t yVector = (AxisMathVectorUtil_calculateY(this->axisMathVectorUtil, magnitude, angle) / BasicDecimal_getScaledFactorValue(this->velocityYBasicDecimal));
-        int64_t zVector = (AxisMathVectorUtil_calculateZ(this->axisMathVectorUtil, magnitude, otherAngle) / BasicDecimal_getScaledFactorValue(this->velocityZBasicDecimal));
+        int64_t xVector = (AxisMathVectorUtil_calculateX(this->axisMathVectorUtil, magnitude, angle) / ((int64_t) BasicDecimal_getScaledFactorValue(this->velocityXBasicDecimal)));
+        int64_t yVector = (AxisMathVectorUtil_calculateY(this->axisMathVectorUtil, magnitude, angle) / ((int64_t) BasicDecimal_getScaledFactorValue(this->velocityYBasicDecimal)));
+        int64_t zVector = (AxisMathVectorUtil_calculateZ(this->axisMathVectorUtil, magnitude, otherAngle) / ((int64_t) BasicDecimal_getScaledFactorValue(this->velocityZBasicDecimal)));
         BasicDecimal_setlong(this->velocityXBasicDecimal, xVector);
         BasicDecimal_setlong(this->velocityYBasicDecimal, yVector);
         BasicDecimal_setlong(this->velocityZBasicDecimal, zVector);
@@ -173,9 +170,9 @@ void BasicVelocityProperties_setVelocityi(BasicVelocityProperties* this, int64_t
 
 
 void BasicVelocityProperties_addVelocityi(BasicVelocityProperties* this, int64_t magnitude, int32_t angle, int32_t otherAngle) {
-        int64_t xVector = (AxisMathVectorUtil_calculateX(this->axisMathVectorUtil, magnitude, angle) / BasicDecimal_getScaledFactorValue(this->velocityXBasicDecimal));
-        int64_t yVector = (AxisMathVectorUtil_calculateY(this->axisMathVectorUtil, magnitude, angle) / BasicDecimal_getScaledFactorValue(this->velocityYBasicDecimal));
-        int64_t zVector = (AxisMathVectorUtil_calculateZ(this->axisMathVectorUtil, magnitude, otherAngle) / BasicDecimal_getScaledFactorValue(this->velocityZBasicDecimal));
+        int64_t xVector = (AxisMathVectorUtil_calculateX(this->axisMathVectorUtil, magnitude, angle) / ((int64_t) BasicDecimal_getScaledFactorValue(this->velocityXBasicDecimal)));
+        int64_t yVector = (AxisMathVectorUtil_calculateY(this->axisMathVectorUtil, magnitude, angle) / ((int64_t) BasicDecimal_getScaledFactorValue(this->velocityYBasicDecimal)));
+        int64_t zVector = (AxisMathVectorUtil_calculateZ(this->axisMathVectorUtil, magnitude, otherAngle) / ((int64_t) BasicDecimal_getScaledFactorValue(this->velocityZBasicDecimal)));
         BasicDecimal_addlong(this->velocityXBasicDecimal, xVector);
         BasicDecimal_addlong(this->velocityYBasicDecimal, yVector);
         BasicDecimal_addlong(this->velocityZBasicDecimal, zVector);
@@ -196,6 +193,6 @@ const char* BasicVelocityProperties_toString(BasicVelocityProperties* this) {
         StringMaker_append(stringBuffer, commonSeps->SPACE);
         StringMaker_append(stringBuffer, positionStrings->Z_LABEL);
         StringMaker_append(stringBuffer, StringUtil_toString(stringUtil, this->velocityZBasicDecimal));
-        return StringMaker_toString(stringBuffer);
+        return java_string_of(stringBuffer);
 }
 

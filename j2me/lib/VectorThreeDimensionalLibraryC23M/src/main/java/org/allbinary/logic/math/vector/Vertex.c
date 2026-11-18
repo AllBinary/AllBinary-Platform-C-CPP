@@ -1,45 +1,37 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.math.vector
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/logic/math/vector/Vertex.h"
 #include "org/allbinary/logic/math/BasicDecimal.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/math/PositionStrings.h"
 #include "org/allbinary/string/CommonSeps.h"
+#if __has_include("org/allbinary/string/CommonSeps.h")
+#include "org/allbinary/string/CommonSeps.h"
+#endif
+#if __has_include("org/allbinary/string/CommonSeps.h")
+#include "org/allbinary/string/CommonSeps.h"
+#endif
 
-typedef struct Vertex Vertex;
-struct Vertex {
-    BasicDecimal* x;
-    BasicDecimal* y;
-    BasicDecimal* z;
-};
 
 
-Vertex* Vertex_new(void);
 
-void Vertex_init(Vertex* this);
-const char* Vertex_toString(Vertex* this);
+
+void Vertex_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void Vertex_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("Vertex", nullptr);
+    java_register_method("Vertex", "toString", (void*) Vertex_toString);
+}
 
 static void Vertex_initFields(Vertex* this) {
     this->x = BasicDecimal_new(0);
@@ -49,11 +41,12 @@ static void Vertex_initFields(Vertex* this) {
 
 
 void Vertex_init(Vertex* this) {
+    Vertex_register();
     Vertex_initFields(this);
 }
 
 Vertex* Vertex_new(void) {
-    Vertex* this = calloc(1, sizeof(Vertex));
+    Vertex* this = java_object_alloc(sizeof(Vertex), "Vertex");
     Vertex_init(this);
     return this;
 }
@@ -63,13 +56,13 @@ const char* Vertex_toString(Vertex* this) {
         StringMaker* stringBuffer = StringMaker_new();
         PositionStrings* positionStrings = PositionStrings_getInstance();
         StringMaker_append(stringBuffer, positionStrings->X_LABEL);
-        StringMaker_append(stringBuffer, BasicDecimal_toString(this->x));
+        StringMaker_append(stringBuffer, java_string_of(this->x));
         StringMaker_append(stringBuffer, CommonSeps_getInstance()->SPACE);
         StringMaker_append(stringBuffer, positionStrings->Y_LABEL);
-        StringMaker_append(stringBuffer, BasicDecimal_toString(this->y));
+        StringMaker_append(stringBuffer, java_string_of(this->y));
         StringMaker_append(stringBuffer, CommonSeps_getInstance()->SPACE);
         StringMaker_append(stringBuffer, positionStrings->Z_LABEL);
-        StringMaker_append(stringBuffer, BasicDecimal_toString(this->z));
-        return StringMaker_toString(stringBuffer);
+        StringMaker_append(stringBuffer, java_string_of(this->z));
+        return java_string_of(stringBuffer);
 }
 

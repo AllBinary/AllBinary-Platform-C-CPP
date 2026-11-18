@@ -4,6 +4,9 @@
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/logic/string/StringUtil.h"
 #include "org/allbinary/string/CommonSeps.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
 
 static ArrayUtil* ArrayUtil_instance;

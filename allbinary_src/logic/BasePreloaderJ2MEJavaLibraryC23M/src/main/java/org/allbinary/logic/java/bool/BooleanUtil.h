@@ -50,6 +50,8 @@ bool BooleanUtil_getFromString(BooleanUtil* this, const char* booleanString);
 bool BooleanUtil_isStringBoolean(BooleanUtil* this, const char* booleanString);
 
 const char* BooleanUtil_toStringFromBooleanArray(BooleanUtil* this, bool* booleanArray);
+#define BooleanUtil_new0 BooleanUtil_new
+#define BooleanUtil_init0 BooleanUtil_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void BooleanUtil_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

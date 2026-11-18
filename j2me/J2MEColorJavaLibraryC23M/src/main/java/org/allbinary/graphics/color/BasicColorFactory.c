@@ -3,6 +3,27 @@
 #include "org/allbinary/logic/string/StringUtil.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
 #include "org/allbinary/graphics/color/BasicColorUtil.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
 
 static BasicColorFactory* BasicColorFactory_instance;

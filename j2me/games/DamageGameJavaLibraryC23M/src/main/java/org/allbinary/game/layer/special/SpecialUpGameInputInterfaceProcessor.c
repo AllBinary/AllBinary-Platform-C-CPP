@@ -1,50 +1,40 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.layer.special
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/layer/special/SpecialUpGameInputInterfaceProcessor.h"
 #include "org/allbinary/game/input/event/GameKeyEvent.h"
 #include "org/allbinary/layer/AllBinaryLayerManager.h"
 #include "org/allbinary/game/layer/special/SpecialGameInputInterfaceProcessor.h"
-
-typedef struct SpecialUpGameInputInterfaceProcessor SpecialUpGameInputInterfaceProcessor;
-struct SpecialUpGameInputInterfaceProcessor {
-    SpecialGameInputInterfaceProcessor base;
-};
+#include "org/allbinary/game/layer/special/SpecialGameInputInterface.h"
 
 
-SpecialUpGameInputInterfaceProcessor* SpecialUpGameInputInterfaceProcessor_new(SpecialGameInputInterface* collidableDestroyableDamageableLayer);
 
-void SpecialUpGameInputInterfaceProcessor_init(SpecialUpGameInputInterfaceProcessor* this, SpecialGameInputInterface* collidableDestroyableDamageableLayer);
-void SpecialUpGameInputInterfaceProcessor_processEvent(SpecialUpGameInputInterfaceProcessor* this, AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent);
+
+
+void SpecialUpGameInputInterfaceProcessor_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void SpecialUpGameInputInterfaceProcessor_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("SpecialUpGameInputInterfaceProcessor", "SpecialGameInputInterfaceProcessor");
+    java_register_method("SpecialUpGameInputInterfaceProcessor", "processEvent", (void*) SpecialUpGameInputInterfaceProcessor_processEvent);
+}
 
 
 void SpecialUpGameInputInterfaceProcessor_init(SpecialUpGameInputInterfaceProcessor* this, SpecialGameInputInterface* collidableDestroyableDamageableLayer) {
+    SpecialUpGameInputInterfaceProcessor_register();
         SpecialGameInputInterfaceProcessor_init(&this->base, collidableDestroyableDamageableLayer);
 }
 
 SpecialUpGameInputInterfaceProcessor* SpecialUpGameInputInterfaceProcessor_new(SpecialGameInputInterface* collidableDestroyableDamageableLayer) {
-    SpecialUpGameInputInterfaceProcessor* this = calloc(1, sizeof(SpecialUpGameInputInterfaceProcessor));
+    SpecialUpGameInputInterfaceProcessor* this = java_object_alloc(sizeof(SpecialUpGameInputInterfaceProcessor), "SpecialUpGameInputInterfaceProcessor");
     SpecialUpGameInputInterfaceProcessor_init(this, collidableDestroyableDamageableLayer);
     return this;
 }
@@ -52,6 +42,6 @@ SpecialUpGameInputInterfaceProcessor* SpecialUpGameInputInterfaceProcessor_new(S
 
 // throws Exception
 void SpecialUpGameInputInterfaceProcessor_processEvent(SpecialUpGameInputInterfaceProcessor* this, AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent) {
-        JAVA_CALL(this->specialGameInputInterface, up);
+        SpecialGameInputInterface_up(this->base.specialGameInputInterface);
 }
 

@@ -41,6 +41,8 @@ bool J2MEUtil_isJ2ME(void);
 bool J2MEUtil_isJ2SE(void);
 
 bool J2MEUtil_isHTML(void);
+#define J2MEUtil_new0 J2MEUtil_new
+#define J2MEUtil_init0 J2MEUtil_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void J2MEUtil_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

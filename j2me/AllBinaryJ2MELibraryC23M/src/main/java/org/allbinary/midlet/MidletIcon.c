@@ -1,43 +1,32 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.midlet
+#include "org/allbinary/midlet/MidletIcon.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct MidletIcon MidletIcon;
-struct MidletIcon {
-    char unused;
-};
 
 const char* MidletIcon_RESOURCE = "icon";
 
-MidletIcon* MidletIcon_new(void);
+void MidletIcon_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void MidletIcon_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("MidletIcon", nullptr);
+}
 
 void MidletIcon_init(MidletIcon* this) {
+    MidletIcon_register();
 }
 
 MidletIcon* MidletIcon_new(void) {
-    MidletIcon* this = calloc(1, sizeof(MidletIcon));
+    MidletIcon* this = java_object_alloc(sizeof(MidletIcon), "MidletIcon");
     MidletIcon_init(this);
     return this;
 }

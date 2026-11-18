@@ -1,30 +1,7 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.displayable.canvas
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Font.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/game/displayable/canvas/MyFormUtil.h"
+#include "javax/microedition/lcdui/Font.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/game/configuration/feature/Features.h"
 #include "org/allbinary/graphics/PointFactory.h"
 #include "org/allbinary/graphics/Rectangle.h"
@@ -35,45 +12,59 @@
 #include "org/allbinary/graphics/threed/SWTJOGLProcessor.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/string/CommonStrings.h"
+#if __has_include("org/allbinary/graphics/opengles/OpenGLFeatureFactory.h")
+#include "org/allbinary/graphics/opengles/OpenGLFeatureFactory.h"
+#endif
+#if __has_include("org/allbinary/graphics/threed/SWTJOGLProcessor.h")
+#include "org/allbinary/graphics/threed/SWTJOGLProcessor.h"
+#endif
 
-typedef struct MyFormUtil MyFormUtil;
-struct MyFormUtil {
-    LogUtil* logUtil;
-    CommonStrings* commonStrings;
-    Rectangle* popupMenuRectangle;
-};
 
 static MyFormUtil* MyFormUtil_instance;
 
-MyFormUtil* MyFormUtil_new(void);
-MyFormUtil* MyFormUtil_getInstance(void);
-void MyFormUtil_updateMeasurement(MyFormUtil* this, Graphics* graphics);
-Rectangle* MyFormUtil_getPopupMenuRectangle(MyFormUtil* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
 void MyFormUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     MyFormUtil_instance = MyFormUtil_new();
+}
+
+void MyFormUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("MyFormUtil", nullptr);
+    java_register_method("MyFormUtil", "updateMeasurement", (void*) MyFormUtil_updateMeasurement);
+    java_register_method("MyFormUtil", "getPopupMenuRectangle", (void*) MyFormUtil_getPopupMenuRectangle);
 }
 
 static void MyFormUtil_initFields(MyFormUtil* this) {
     this->logUtil = LogUtil_getInstance();
     this->commonStrings = CommonStrings_getInstance();
-    this->popupMenuRectangle = RectangleFactory_SINGLETON;
+    this->popupMenuRectangle = (RectangleFactory_staticInit(), RectangleFactory_SINGLETON);
 }
 
 void MyFormUtil_init(MyFormUtil* this) {
+    MyFormUtil_register();
     MyFormUtil_initFields(this);
 }
 
 MyFormUtil* MyFormUtil_new(void) {
-    MyFormUtil* this = calloc(1, sizeof(MyFormUtil));
+    MyFormUtil* this = java_object_alloc(sizeof(MyFormUtil), "MyFormUtil");
     MyFormUtil_init(this);
     return this;
 }
 
 
 MyFormUtil* MyFormUtil_getInstance(void) {
-        return MyFormUtil_instance;
+        return (MyFormUtil_staticInit(), MyFormUtil_instance);
 }
 
 

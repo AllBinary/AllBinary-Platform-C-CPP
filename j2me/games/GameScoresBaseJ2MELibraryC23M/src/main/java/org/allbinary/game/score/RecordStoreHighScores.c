@@ -1,37 +1,10 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.score
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "java/io/ByteArrayInputStream.h"
-// #include "java/io/DataInputStream.h"
-// #include "java/io/EOFException.h"
-// #include "java/io/IOException.h"
-// #include "javax/microedition/rms/RecordComparator.h"
-// #include "javax/microedition/rms/RecordEnumeration.h"
-// #include "javax/microedition/rms/RecordStore.h"
-// #include "javax/microedition/rms/RecordStoreException.h"
-// #include "javax/microedition/rms/RecordStoreNotFoundException.h"
+#include "org/allbinary/game/score/RecordStoreHighScores.h"
+#include "javax/microedition/rms/RecordComparator.h"
+#include "javax/microedition/rms/RecordEnumeration.h"
+#include "javax/microedition/rms/RecordStore.h"
+#include "javax/microedition/rms/RecordStoreException.h"
+#include "javax/microedition/rms/RecordStoreNotFoundException.h"
 #include "org/allbinary/TsUtil.h"
 #include "org/allbinary/game/GameInfo.h"
 #include "org/allbinary/game/configuration/persistance/NullRecordComparator.h"
@@ -49,38 +22,87 @@
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
 #include "org/allbinary/game/score/HighScores.h"
+#include "org/allbinary/game/score/HighScore.h"
+#include "org/allbinary/game/score/ScoreComparator.h"
+#if __has_include("org/allbinary/logic/StdUtil.h")
+#include "org/allbinary/logic/StdUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/string/CommonSeps.h")
+#include "org/allbinary/string/CommonSeps.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/util/BasicArrayList.h")
+#include "org/allbinary/util/BasicArrayList.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/string/CommonSeps.h")
+#include "org/allbinary/string/CommonSeps.h"
+#endif
 
-typedef struct RecordStoreHighScores RecordStoreHighScores;
-struct RecordStoreHighScores {
-    HighScores base;
-    LogUtil* logUtil;
-    CommonStrings* commonStrings;
-    PlatformRecordIdUtil* platformRecordIdUtil;
-    TsUtil* tsUtil;
-    const char* RECORD_ID;
-    int32_t MAXHIGHSCORES;
-    GameInfo* gameInfo;
-    AbeClientInformationInterface* abeClientInformation;
-    RecordComparator* recordComparatorInterface;
-};
 
 static ABHashtable* RecordStoreHighScores_hashTable;
 
-RecordStoreHighScores* RecordStoreHighScores_new(AbeClientInformationInterface* abeClientInformation, GameInfo* gameInfo, const char* name, const char* heading, const char* columnTwoHeading, RecordComparator* recordComparatorInterface);
 
-void RecordStoreHighScores_init(RecordStoreHighScores* this, AbeClientInformationInterface* abeClientInformation, GameInfo* gameInfo, const char* name, const char* heading, const char* columnTwoHeading, RecordComparator* recordComparatorInterface);
-HighScores* RecordStoreHighScores_getInstance(AbeClientInformationInterface* abeClientInformation, GameInfo* gameInfo, const char* highScoreName, const char* heading, const char* columnTwoHeading, RecordComparator* recordComparatorInterface);
+
 static const char* RecordStoreHighScores_getRecordId(RecordStoreHighScores* this, AbeClientInformationInterface* abeClientInformation);
-void RecordStoreHighScores_addHighScore(RecordStoreHighScores* this, HighScore* newHighScore);
-static void RecordStoreHighScores_removeLowestHighScore(RecordStoreHighScores* this);
-static void RecordStoreHighScores_load(RecordStoreHighScores* this);
-static bool RecordStoreHighScores_isTooManyHighScores(RecordStoreHighScores* this);
-bool RecordStoreHighScores_isBestScore(RecordStoreHighScores* this, HighScore* newHighScore);
-const char* RecordStoreHighScores_toString(RecordStoreHighScores* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+static void RecordStoreHighScores_removeLowestHighScore(RecordStoreHighScores* this);
+
+static void RecordStoreHighScores_load(RecordStoreHighScores* this);
+
+static bool RecordStoreHighScores_isTooManyHighScores(RecordStoreHighScores* this);
+
+
+
 void RecordStoreHighScores_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     RecordStoreHighScores_hashTable = StdUtil_createHashtable(StdUtil_getInstance());
+}
+
+void RecordStoreHighScores_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("RecordStoreHighScores", "HighScores");
+    java_register_method("RecordStoreHighScores", "getRecordId", (void*) RecordStoreHighScores_getRecordId);
+    java_register_method("RecordStoreHighScores", "addHighScore", (void*) RecordStoreHighScores_addHighScore);
+    java_register_method("RecordStoreHighScores", "removeLowestHighScore", (void*) RecordStoreHighScores_removeLowestHighScore);
+    java_register_method("RecordStoreHighScores", "load", (void*) RecordStoreHighScores_load);
+    java_register_method("RecordStoreHighScores", "isTooManyHighScores", (void*) RecordStoreHighScores_isTooManyHighScores);
+    java_register_method("RecordStoreHighScores", "isBestScore", (void*) RecordStoreHighScores_isBestScore);
+    java_register_method("RecordStoreHighScores", "toString", (void*) RecordStoreHighScores_toString);
 }
 
 static void RecordStoreHighScores_initFields(RecordStoreHighScores* this) {
@@ -97,6 +119,7 @@ static void RecordStoreHighScores_initFields(RecordStoreHighScores* this) {
 
 
 void RecordStoreHighScores_init(RecordStoreHighScores* this, AbeClientInformationInterface* abeClientInformation, GameInfo* gameInfo, const char* name, const char* heading, const char* columnTwoHeading, RecordComparator* recordComparatorInterface) {
+    RecordStoreHighScores_register();
         HighScores_init(&this->base, name, heading, columnTwoHeading);
         RecordStoreHighScores_initFields(this);
         this->abeClientInformation = abeClientInformation;
@@ -106,7 +129,7 @@ void RecordStoreHighScores_init(RecordStoreHighScores* this, AbeClientInformatio
 }
 
 RecordStoreHighScores* RecordStoreHighScores_new(AbeClientInformationInterface* abeClientInformation, GameInfo* gameInfo, const char* name, const char* heading, const char* columnTwoHeading, RecordComparator* recordComparatorInterface) {
-    RecordStoreHighScores* this = calloc(1, sizeof(RecordStoreHighScores));
+    RecordStoreHighScores* this = java_object_alloc(sizeof(RecordStoreHighScores), "RecordStoreHighScores");
     RecordStoreHighScores_init(this, abeClientInformation, gameInfo, name, heading, columnTwoHeading, recordComparatorInterface);
     return this;
 }
@@ -114,10 +137,10 @@ RecordStoreHighScores* RecordStoreHighScores_new(AbeClientInformationInterface* 
 
 // synchronized
 HighScores* RecordStoreHighScores_getInstance(AbeClientInformationInterface* abeClientInformation, GameInfo* gameInfo, const char* highScoreName, const char* heading, const char* columnTwoHeading, RecordComparator* recordComparatorInterface) {
-        Any* highScoresCanBeNull = JAVA_CALL(RecordStoreHighScores_hashTable, get, ((Any*) highScoreName));
+        void* highScoresCanBeNull = Hashtable_get((RecordStoreHighScores_staticInit(), RecordStoreHighScores_hashTable), ((void*) highScoreName));
         if (highScoresCanBeNull == nullptr) {
             HighScores* highScores = RecordStoreHighScores_new(abeClientInformation, gameInfo, highScoreName, heading, columnTwoHeading, recordComparatorInterface);
-            JAVA_CALL(RecordStoreHighScores_hashTable, put, HighScores_getName(highScores), highScores);
+            Hashtable_put((RecordStoreHighScores_staticInit(), RecordStoreHighScores_hashTable), HighScores_getName(highScores), highScores);
             return highScores;
         }
         return ((HighScores*) highScoresCanBeNull);
@@ -125,15 +148,15 @@ HighScores* RecordStoreHighScores_getInstance(AbeClientInformationInterface* abe
 
 
 static const char* RecordStoreHighScores_getRecordId(RecordStoreHighScores* this, AbeClientInformationInterface* abeClientInformation) {
-        return PlatformRecordIdUtil_getRecordId(this->platformRecordIdUtil, abeClientInformation, JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), CommonSeps_getInstance()->UNDERSCORE), append, RecordStoreHighScores_getName(this)), append, this->RECORD_ID), toString));
+        return PlatformRecordIdUtil_getRecordId(this->platformRecordIdUtil, abeClientInformation, java_string_of(StringMaker_append(StringMaker_append(StringMaker_append(StringMaker_new(), CommonSeps_getInstance()->UNDERSCORE), HighScores_getName(this)), this->RECORD_ID)));
 }
 
 
 // synchronized
 void RecordStoreHighScores_addHighScore(RecordStoreHighScores* this, HighScore* newHighScore) {
-        RecordStore* recordStore = NullRecordStore_NULL_RECORD_STORE;
+        RecordStore* recordStore = (NullRecordStore_staticInit(), NullRecordStore_NULL_RECORD_STORE);
         JAVA_TRY {
-            LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), "Adding HighScore: "), appendlong, ((int64_t) HighScore_getScore(newHighScore))), toString), this, this->commonStrings->ADD);
+            LogUtil_putF(this->logUtil, java_string_of(StringMaker_appendlong(StringMaker_append(StringMaker_new(), "Adding HighScore: "), HighScore_getScore(newHighScore))), this, this->commonStrings->ADD);
             if (RecordStoreHighScores_isTooManyHighScores(this)) {
                 LogUtil_putF(this->logUtil, "Removing Lowest Score", this, this->commonStrings->ADD);
                 RecordStoreHighScores_removeLowestHighScore(this);
@@ -162,12 +185,12 @@ void RecordStoreHighScores_addHighScore(RecordStoreHighScores* this, HighScore* 
 
 
 static void RecordStoreHighScores_removeLowestHighScore(RecordStoreHighScores* this) {
-        RecordStore* recordStore = NullRecordStore_NULL_RECORD_STORE;
+        RecordStore* recordStore = (NullRecordStore_staticInit(), NullRecordStore_NULL_RECORD_STORE);
         JAVA_TRY {
             recordStore = RecordStore_openRecordStore(RecordStoreHighScores_getRecordId(this, this->abeClientInformation), true);
-            RecordEnumeration* recordEnum = RecordStore_enumerateRecords(recordStore, NullRecordFilter_NULL_RECORD_FILTER, NullRecordComparator_NULL_RECORD_COMPARATOR, true);
+            RecordEnumeration* recordEnum = RecordStore_enumerateRecords(recordStore, (NullRecordFilter_staticInit(), NullRecordFilter_NULL_RECORD_FILTER), (NullRecordComparator_staticInit(), NullRecordComparator_NULL_RECORD_COMPARATOR), true);
             ScoreComparator* scoreComparator = (((ScoreComparator*) this->recordComparatorInterface));
-            HighScore* bestHighScore = HighScore_new(-1, "none", GameInfo_NONE, ScoreComparator_getBestScore(scoreComparator));
+            HighScore* bestHighScore = HighScore_new(-1, "none", (GameInfo_staticInit(), GameInfo_NONE), ScoreComparator_getBestScore(scoreComparator));
             int8_t* recordAsBytes = nullptr;
             ByteArrayInputStream* byteArrayInputStream = nullptr;
             DataInputStream* inputStream = nullptr;
@@ -179,14 +202,14 @@ static void RecordStoreHighScores_removeLowestHighScore(RecordStoreHighScores* t
                     inputStream = DataInputStream_new(byteArrayInputStream);
                     const char* name = DataInputStream_readUTF(inputStream);
                     int64_t nextScore = DataInputStream_readLong(inputStream);
-                    HighScore* nextCurrentHighScore = HighScore_new(id, name, GameInfo_NONE, nextScore);
-                    if (RecordComparator_compare(this->recordComparatorInterface, HighScore_getAsBytes(nextCurrentHighScore), HighScore_getAsBytes(bestHighScore)) == RecordComparator_FOLLOWS) {
+                    HighScore* nextCurrentHighScore = HighScore_new(id, name, (GameInfo_staticInit(), GameInfo_NONE), nextScore);
+                    if (RecordComparator_compare(this->recordComparatorInterface, HighScore_getAsBytes(nextCurrentHighScore), HighScore_getAsBytes(bestHighScore)) == (RecordComparator_staticInit(), RecordComparator_FOLLOWS)) {
                         bestHighScore = nextCurrentHighScore;
                     }
                 }
             }
             if (HighScore_getId(bestHighScore) != -1) {
-                LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), "Removing Lowest HighScore: "), appendlong, ((int64_t) HighScore_getScore(bestHighScore))), toString), this, this->commonStrings->LOAD);
+                LogUtil_putF(this->logUtil, java_string_of(StringMaker_appendlong(StringMaker_append(StringMaker_new(), "Removing Lowest HighScore: "), HighScore_getScore(bestHighScore))), this, this->commonStrings->LOAD);
                 RecordStore_deleteRecord(recordStore, HighScore_getId(bestHighScore));
             }
         } JAVA_CATCH(RecordStoreException, e) {
@@ -207,11 +230,11 @@ static void RecordStoreHighScores_removeLowestHighScore(RecordStoreHighScores* t
 
 
 static void RecordStoreHighScores_load(RecordStoreHighScores* this) {
-        RecordStore* recordStore = NullRecordStore_NULL_RECORD_STORE;
+        RecordStore* recordStore = (NullRecordStore_staticInit(), NullRecordStore_NULL_RECORD_STORE);
         JAVA_TRY {
             recordStore = RecordStore_openRecordStore(RecordStoreHighScores_getRecordId(this, this->abeClientInformation), true);
-            RecordStoreHighScores_setList(this, BasicArrayListD_new());
-            RecordEnumeration* recordEnum = RecordStore_enumerateRecords(recordStore, NullRecordFilter_NULL_RECORD_FILTER, NullRecordComparator_NULL_RECORD_COMPARATOR, true);
+            HighScores_setList(this, BasicArrayListD_new());
+            RecordEnumeration* recordEnum = RecordStore_enumerateRecords(recordStore, (NullRecordFilter_staticInit(), NullRecordFilter_NULL_RECORD_FILTER), (NullRecordComparator_staticInit(), NullRecordComparator_NULL_RECORD_COMPARATOR), true);
             int8_t* recordAsBytes = nullptr;
             ByteArrayInputStream* byteArrayInputStream = nullptr;
             DataInputStream* inputStream = nullptr;
@@ -224,13 +247,13 @@ static void RecordStoreHighScores_load(RecordStoreHighScores* this) {
                     JAVA_TRY {
                         const char* name = DataInputStream_readUTF(inputStream);
                         int64_t score = DataInputStream_readLong(inputStream);
-                        HighScore* newHighScore = HighScore_new(id, name, GameInfo_NONE, score);
-                        BasicArrayList* list = RecordStoreHighScores_getList(this);
+                        HighScore* newHighScore = HighScore_new(id, name, (GameInfo_staticInit(), GameInfo_NONE), score);
+                        BasicArrayList* list = HighScores_getList(this);
                         int32_t size = BasicArrayList_size(list);
                         int32_t lastIndex = size;
                         for (int32_t index = 0; index < size; index++) {
                             HighScore* highScore = ((HighScore*) list->objectArray[index]);
-                            if (RecordComparator_compare(this->recordComparatorInterface, HighScore_getAsBytes(newHighScore), HighScore_getAsBytes(highScore)) == RecordComparator_PRECEDES) {
+                            if (RecordComparator_compare(this->recordComparatorInterface, HighScore_getAsBytes(newHighScore), HighScore_getAsBytes(highScore)) == (RecordComparator_staticInit(), RecordComparator_PRECEDES)) {
                                 lastIndex = index;
                                 break;
                             }
@@ -264,10 +287,10 @@ static void RecordStoreHighScores_load(RecordStoreHighScores* this) {
 
 
 static bool RecordStoreHighScores_isTooManyHighScores(RecordStoreHighScores* this) {
-        if (RecordStoreHighScores_getList(this) != nullptr && JAVA_CALL(RecordStoreHighScores_getList(this), size) < this->MAXHIGHSCORES) {
+        if (HighScores_getList(this) != nullptr && BasicArrayList_size(HighScores_getList(this)) < this->MAXHIGHSCORES) {
             return false;
         } else {
-            LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), "HighScores RecordStore Max Reached: "), appendint, this->MAXHIGHSCORES), toString), this, "isTooManyHighScores");
+            LogUtil_putF(this->logUtil, java_string_of(StringMaker_appendint(StringMaker_append(StringMaker_new(), "HighScores RecordStore Max Reached: "), this->MAXHIGHSCORES)), this, "isTooManyHighScores");
             return true;
         }
 }
@@ -281,11 +304,11 @@ bool RecordStoreHighScores_isBestScore(RecordStoreHighScores* this, HighScore* n
                 LogUtil_putF(this->logUtil, "Slot Available for a High Score", this, "isBestScore");
                 return true;
             } else {
-                BasicArrayList* list = RecordStoreHighScores_getList(this);
+                BasicArrayList* list = HighScores_getList(this);
                 int32_t size = BasicArrayList_size(list);
                 for (int32_t index = 0; index < size; index++) {
                     HighScore* highScore = ((HighScore*) list->objectArray[index]);
-                    if (RecordComparator_compare(this->recordComparatorInterface, HighScore_getAsBytes(newHighScore), HighScore_getAsBytes(highScore)) == RecordComparator_FOLLOWS) {
+                    if (RecordComparator_compare(this->recordComparatorInterface, HighScore_getAsBytes(newHighScore), HighScore_getAsBytes(highScore)) == (RecordComparator_staticInit(), RecordComparator_FOLLOWS)) {
                         LogUtil_putF(this->logUtil, "Obtained a High Score", this, "isBestScore");
                         return true;
                     }
@@ -303,13 +326,13 @@ bool RecordStoreHighScores_isBestScore(RecordStoreHighScores* this, HighScore* n
 const char* RecordStoreHighScores_toString(RecordStoreHighScores* this) {
         StringMaker* stringBuffer = StringMaker_new();
         StringMaker_append(stringBuffer, HighScores_toString((&this->base)));
-        BasicArrayList* list = RecordStoreHighScores_getList(this);
+        BasicArrayList* list = HighScores_getList(this);
         int32_t size = BasicArrayList_size(list);
         for (int32_t index = 0; index < size; index++) {
             HighScore* highScore = ((HighScore*) list->objectArray[index]);
             StringMaker_append(stringBuffer, HighScore_getScoreString(highScore));
             StringMaker_append(stringBuffer, CommonSeps_getInstance()->COMMA_SEP);
         }
-        return StringMaker_toString(stringBuffer);
+        return java_string_of(stringBuffer);
 }
 

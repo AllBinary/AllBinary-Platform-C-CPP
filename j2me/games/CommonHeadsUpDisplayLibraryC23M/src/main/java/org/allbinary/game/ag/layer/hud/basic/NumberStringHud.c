@@ -1,64 +1,54 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.ag.layer.hud.basic
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Font.h"
-// #include "javax/microedition/lcdui/Graphics.h"
-#include "org/allbinary/game/graphics/hud/BasicHud.h"
+#include "org/allbinary/game/ag/layer/hud/basic/NumberStringHud.h"
+#include "javax/microedition/lcdui/Font.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/game/graphics/hud/BasicHudFactory.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
 #include "org/allbinary/graphics/font/MyFontProcessor.h"
-#include "org/allbinary/graphics/paint/PaintableInterface.h"
 #include "org/allbinary/logic/math/PrimitiveLongSingleton.h"
 #include "org/allbinary/logic/math/PrimitiveLongUtil.h"
-
-typedef struct NumberStringHud NumberStringHud;
-struct NumberStringHud {
-    BasicHud base;
-    PaintableInterface PaintableInterface_interface;
-    PrimitiveLongUtil* primitiveLongUtil;
-    const char* prependString;
-    uint16_t* PREPEND_STRING;
-    int32_t value;
-    int32_t max;
-    int32_t offset;
-    uint16_t* valueString;
-    int32_t valueTotalDigits;
-};
+#if __has_include("org/allbinary/logic/math/PrimitiveLongSingleton.h")
+#include "org/allbinary/logic/math/PrimitiveLongSingleton.h"
+#endif
+#if __has_include("org/allbinary/game/graphics/hud/BasicHudFactory.h")
+#include "org/allbinary/game/graphics/hud/BasicHudFactory.h"
+#endif
 
 
-NumberStringHud* NumberStringHud_new(const char* prependString, int32_t max, int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor);
 
-void NumberStringHud_init(NumberStringHud* this, const char* prependString, int32_t max, int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor);
-void NumberStringHud_updateMeasurement(NumberStringHud* this, Graphics* graphics);
-int32_t NumberStringHud_get(NumberStringHud* this);
-void NumberStringHud_add(NumberStringHud* this, int32_t value);
-void NumberStringHud_set(NumberStringHud* this, int32_t value);
-void NumberStringHud_reduce(NumberStringHud* this, int32_t value);
-void NumberStringHud_paint(NumberStringHud* this, Graphics* graphics);
-void NumberStringHud_paintXY(NumberStringHud* this, Graphics* graphics, int32_t x, int32_t y);
-void NumberStringHud_paintThreed(NumberStringHud* this, Graphics* graphics);
+
+
+
+
+
+
+
+
+
+void NumberStringHud_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void NumberStringHud_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("NumberStringHud", "BasicHud");
+    java_register_method("NumberStringHud", "updateMeasurement", (void*) NumberStringHud_updateMeasurement);
+    java_register_method("NumberStringHud", "get", (void*) NumberStringHud_get);
+    java_register_method("NumberStringHud", "add", (void*) NumberStringHud_add);
+    java_register_method("NumberStringHud", "set", (void*) NumberStringHud_set);
+    java_register_method("NumberStringHud", "reduce", (void*) NumberStringHud_reduce);
+    java_register_method("NumberStringHud", "paint", (void*) NumberStringHud_paint);
+    java_register_method("NumberStringHud", "paintXY", (void*) NumberStringHud_paintXY);
+    java_register_method("NumberStringHud", "paintThreed", (void*) NumberStringHud_paintThreed);
+}
 
 static void NumberStringHud_initFields(NumberStringHud* this) {
     
@@ -73,6 +63,7 @@ static void NumberStringHud_initFields(NumberStringHud* this) {
 
 
 void NumberStringHud_init(NumberStringHud* this, const char* prependString, int32_t max, int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor) {
+    NumberStringHud_register();
         BasicHud_init(&this->base, location, direction, bufferZone, basicColor);
         NumberStringHud_initFields(this);
         this->prependString = prependString;
@@ -87,7 +78,7 @@ void NumberStringHud_init(NumberStringHud* this, const char* prependString, int3
 }
 
 NumberStringHud* NumberStringHud_new(const char* prependString, int32_t max, int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor) {
-    NumberStringHud* this = calloc(1, sizeof(NumberStringHud));
+    NumberStringHud* this = java_object_alloc(sizeof(NumberStringHud), "NumberStringHud");
     NumberStringHud_init(this, prependString, max, location, direction, bufferZone, basicColor);
     return this;
 }
@@ -131,12 +122,12 @@ void NumberStringHud_paint(NumberStringHud* this, Graphics* graphics) {
 
 
 void NumberStringHud_paintXY(NumberStringHud* this, Graphics* graphics, int32_t x, int32_t y) {
-        JAVA_CALL(this->myFontProcessor, process, graphics);
+        MyFontProcessor_process(this->base.myFontProcessor, graphics);
         uint16_t* charArray = this->PREPEND_STRING;
         int32_t len = java_array_length(this->PREPEND_STRING);
         uint16_t* charArray2 = this->valueString;
         int32_t len2 = this->valueTotalDigits;
-        JAVA_CALL(this->basicSetColorUtil, setBasicColorP, graphics, NumberStringHud_getBasicColorP(this));
+        BasicColorSetUtil_setBasicColorP(this->base.basicSetColorUtil, graphics, BasicHud_getBasicColorP(this));
         Graphics_drawChars(graphics, charArray, 0, len, x, y, 0);
         Graphics_drawChars(graphics, charArray2, 0, len2, x - this->offset, y, 0);
 }

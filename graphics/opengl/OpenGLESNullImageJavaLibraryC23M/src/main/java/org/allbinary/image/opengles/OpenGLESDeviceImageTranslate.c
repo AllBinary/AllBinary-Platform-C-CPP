@@ -1,44 +1,31 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2025 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.image.opengles
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/khronos/opengles/GL10.h"
+#include "org/allbinary/image/opengles/OpenGLESDeviceImageTranslate.h"
+#include "javax/microedition/khronos/opengles/GL10.h"
 #include "org/allbinary/image/opengles/OpenGLESImageTranslate.h"
-
-typedef struct OpenGLESDeviceImageTranslate OpenGLESDeviceImageTranslate;
-struct OpenGLESDeviceImageTranslate {
-    OpenGLESImageTranslate base;
-    float translateX;
-    float translateY;
-    float translateX2;
-    float translateY2;
-};
+#include "org/allbinary/image/opengles/OpenGLESImage.h"
 
 
-OpenGLESDeviceImageTranslate* OpenGLESDeviceImageTranslate_new(void);
-void OpenGLESDeviceImageTranslate_translate(OpenGLESDeviceImageTranslate* this, GL10* gl, OpenGLESImage* openGLESImage, float x, float y);
-void OpenGLESDeviceImageTranslate_translate2(OpenGLESDeviceImageTranslate* this, GL10* gl, OpenGLESImage* openGLESImage);
+
+
+
+void OpenGLESDeviceImageTranslate_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void OpenGLESDeviceImageTranslate_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("OpenGLESDeviceImageTranslate", "OpenGLESImageTranslate");
+    java_register_method("OpenGLESDeviceImageTranslate", "translate", (void*) OpenGLESDeviceImageTranslate_translate);
+    java_register_method("OpenGLESDeviceImageTranslate", "translate2", (void*) OpenGLESDeviceImageTranslate_translate2);
+}
 
 static void OpenGLESDeviceImageTranslate_initFields(OpenGLESDeviceImageTranslate* this) {
     this->translateX = 0.0f;
@@ -48,23 +35,24 @@ static void OpenGLESDeviceImageTranslate_initFields(OpenGLESDeviceImageTranslate
 }
 
 void OpenGLESDeviceImageTranslate_init(OpenGLESDeviceImageTranslate* this) {
+    OpenGLESDeviceImageTranslate_register();
     OpenGLESImageTranslate_init(&this->base);
     OpenGLESDeviceImageTranslate_initFields(this);
 }
 
 OpenGLESDeviceImageTranslate* OpenGLESDeviceImageTranslate_new(void) {
-    OpenGLESDeviceImageTranslate* this = calloc(1, sizeof(OpenGLESDeviceImageTranslate));
+    OpenGLESDeviceImageTranslate* this = java_object_alloc(sizeof(OpenGLESDeviceImageTranslate), "OpenGLESDeviceImageTranslate");
     OpenGLESDeviceImageTranslate_init(this);
     return this;
 }
 
 
 void OpenGLESDeviceImageTranslate_translate(OpenGLESDeviceImageTranslate* this, GL10* gl, OpenGLESImage* openGLESImage, float x, float y) {
-        JAVA_CALL(openGLESImage->imageProcessor, translate, gl, this->translateX + (openGLESImage->openGLESImageProperties->scaleX * x), this->translateY + (openGLESImage->openGLESImageProperties->scaleY * y));
+        OpenGLESImageProcessor_translate(openGLESImage->imageProcessor, gl, this->translateX + (openGLESImage->openGLESImageProperties->scaleX * x), this->translateY + (openGLESImage->openGLESImageProperties->scaleY * y));
 }
 
 
 void OpenGLESDeviceImageTranslate_translate2(OpenGLESDeviceImageTranslate* this, GL10* gl, OpenGLESImage* openGLESImage) {
-        JAVA_CALL(openGLESImage->imageProcessor, translate, gl, this->translateX2, this->translateY2);
+        OpenGLESImageProcessor_translate(openGLESImage->imageProcessor, gl, this->translateX2, this->translateY2);
 }
 

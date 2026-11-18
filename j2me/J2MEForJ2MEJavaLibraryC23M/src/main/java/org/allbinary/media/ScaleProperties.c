@@ -1,48 +1,62 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2022 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.media
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/media/ScaleProperties.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/string/CommonLabels.h"
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/string/CommonLabels.h")
+#include "org/allbinary/string/CommonLabels.h"
+#endif
 
-typedef struct ScaleProperties ScaleProperties;
-struct ScaleProperties {
-    float scaleX;
-    float scaleY;
-    int32_t scaleWidth;
-    int32_t scaleHeight;
-    bool shouldScale;
-};
 
 ScaleProperties* ScaleProperties_instance;
 
-ScaleProperties* ScaleProperties_new(void);
-const char* ScaleProperties_toString(ScaleProperties* this);
 
-// Static fields with runtime initializers: call this once at startup
 void ScaleProperties_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     ScaleProperties_instance = ScaleProperties_new();
+}
+
+void ScaleProperties_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ScaleProperties", nullptr);
+    java_register_method("ScaleProperties", "toString", (void*) ScaleProperties_toString);
 }
 
 static void ScaleProperties_initFields(ScaleProperties* this) {
@@ -54,17 +68,18 @@ static void ScaleProperties_initFields(ScaleProperties* this) {
 }
 
 void ScaleProperties_init(ScaleProperties* this) {
+    ScaleProperties_register();
     ScaleProperties_initFields(this);
 }
 
 ScaleProperties* ScaleProperties_new(void) {
-    ScaleProperties* this = calloc(1, sizeof(ScaleProperties));
+    ScaleProperties* this = java_object_alloc(sizeof(ScaleProperties), "ScaleProperties");
     ScaleProperties_init(this);
     return this;
 }
 
 
 const char* ScaleProperties_toString(ScaleProperties* this) {
-        return JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), CommonLabels_getInstance()->COLON_SEP), appendboolean, this->shouldScale), append, "scaleX: "), appendfloat, this->scaleX), append, "scaleY: "), appendfloat, this->scaleY), append, "scaleWidth: "), appendint, this->scaleWidth), append, "scaleHeight: "), appendint, this->scaleHeight), toString);
+        return java_string_of(StringMaker_appendint(StringMaker_append(StringMaker_appendint(StringMaker_append(StringMaker_appendfloat(StringMaker_append(StringMaker_appendfloat(StringMaker_append(StringMaker_appendboolean(StringMaker_append(StringMaker_new(), CommonLabels_getInstance()->COLON_SEP), this->shouldScale), "scaleX: "), this->scaleX), "scaleY: "), this->scaleY), "scaleWidth: "), this->scaleWidth), "scaleHeight: "), this->scaleHeight));
 }
 

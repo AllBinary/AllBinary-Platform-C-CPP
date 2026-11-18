@@ -1,14 +1,5 @@
 // Generated Code Do Not Modify
-// package org.allbinary.configuration
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/configuration/ApplicationConfiguration.h"
 #include "org/allbinary/game/configuration/feature/Feature.h"
 #include "org/allbinary/game/configuration/feature/Features.h"
 #include "org/allbinary/game/configuration/feature/MainFeatureFactory.h"
@@ -16,35 +7,58 @@
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/string/CommonStrings.h"
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/game/configuration/feature/MainFeatureFactory.h")
+#include "org/allbinary/game/configuration/feature/MainFeatureFactory.h"
+#endif
 
-typedef struct ApplicationConfiguration ApplicationConfiguration;
-struct ApplicationConfiguration {
-    LogUtil* logUtil;
-    bool fullscreen;
-    bool showTitleBar;
-    bool progressBarView;
-};
 
-static Any* ApplicationConfiguration_instance;
+static void* ApplicationConfiguration_instance;
 
-ApplicationConfiguration* ApplicationConfiguration_new(void);
-ApplicationConfiguration* ApplicationConfiguration_getInstance(void);
 
-void ApplicationConfiguration_init(ApplicationConfiguration* this);
+
 static void ApplicationConfiguration_read(ApplicationConfiguration* this);
-void ApplicationConfiguration_write(ApplicationConfiguration* this);
-void ApplicationConfiguration_update(ApplicationConfiguration* this, Feature* gameFeature);
-void ApplicationConfiguration_setFullscreen(ApplicationConfiguration* this, bool fullscreen);
-bool ApplicationConfiguration_isFullscreen(ApplicationConfiguration* this);
-void ApplicationConfiguration_setShowTitleBar(ApplicationConfiguration* this, bool showTitleBar);
-bool ApplicationConfiguration_isShowTitleBar(ApplicationConfiguration* this);
-void ApplicationConfiguration_setProgressBarView(ApplicationConfiguration* this, bool progressBarView);
-bool ApplicationConfiguration_isProgressBarView(ApplicationConfiguration* this);
-const char* ApplicationConfiguration_toString(ApplicationConfiguration* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+
+
+
+
+
 void ApplicationConfiguration_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     ApplicationConfiguration_instance = NullUtil_getInstance()->NULL_OBJECT;
+}
+
+void ApplicationConfiguration_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ApplicationConfiguration", nullptr);
+    java_register_method("ApplicationConfiguration", "read", (void*) ApplicationConfiguration_read);
+    java_register_method("ApplicationConfiguration", "write", (void*) ApplicationConfiguration_write);
+    java_register_method("ApplicationConfiguration", "update", (void*) ApplicationConfiguration_update);
+    java_register_method("ApplicationConfiguration", "setFullscreen", (void*) ApplicationConfiguration_setFullscreen);
+    java_register_method("ApplicationConfiguration", "isFullscreen", (void*) ApplicationConfiguration_isFullscreen);
+    java_register_method("ApplicationConfiguration", "setShowTitleBar", (void*) ApplicationConfiguration_setShowTitleBar);
+    java_register_method("ApplicationConfiguration", "isShowTitleBar", (void*) ApplicationConfiguration_isShowTitleBar);
+    java_register_method("ApplicationConfiguration", "setProgressBarView", (void*) ApplicationConfiguration_setProgressBarView);
+    java_register_method("ApplicationConfiguration", "isProgressBarView", (void*) ApplicationConfiguration_isProgressBarView);
+    java_register_method("ApplicationConfiguration", "toString", (void*) ApplicationConfiguration_toString);
 }
 
 static void ApplicationConfiguration_initFields(ApplicationConfiguration* this) {
@@ -56,14 +70,15 @@ static void ApplicationConfiguration_initFields(ApplicationConfiguration* this) 
 
 
 ApplicationConfiguration* ApplicationConfiguration_getInstance(void) {
-        if (ApplicationConfiguration_instance == NullUtil_getInstance()->NULL_OBJECT) {
+        if ((ApplicationConfiguration_staticInit(), ApplicationConfiguration_instance) == NullUtil_getInstance()->NULL_OBJECT) {
             ApplicationConfiguration_instance = ApplicationConfiguration_new();
         }
-        return ((ApplicationConfiguration*) ApplicationConfiguration_instance);
+        return ((ApplicationConfiguration*) (ApplicationConfiguration_staticInit(), ApplicationConfiguration_instance));
 }
 
 
 void ApplicationConfiguration_init(ApplicationConfiguration* this) {
+    ApplicationConfiguration_register();
     ApplicationConfiguration_initFields(this);
         JAVA_TRY {
             ApplicationConfiguration_read(this);
@@ -74,7 +89,7 @@ void ApplicationConfiguration_init(ApplicationConfiguration* this) {
 }
 
 ApplicationConfiguration* ApplicationConfiguration_new(void) {
-    ApplicationConfiguration* this = calloc(1, sizeof(ApplicationConfiguration));
+    ApplicationConfiguration* this = java_object_alloc(sizeof(ApplicationConfiguration), "ApplicationConfiguration");
     ApplicationConfiguration_init(this);
     return this;
 }
@@ -151,6 +166,6 @@ const char* ApplicationConfiguration_toString(ApplicationConfiguration* this) {
         StringMaker_appendboolean(stringBuffer, ApplicationConfiguration_isProgressBarView(this));
         StringMaker_append(stringBuffer, " isShowTitleBar: ");
         StringMaker_appendboolean(stringBuffer, ApplicationConfiguration_isShowTitleBar(this));
-        return StringMaker_toString(stringBuffer);
+        return java_string_of(stringBuffer);
 }
 

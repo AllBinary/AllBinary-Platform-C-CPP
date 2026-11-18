@@ -1,0 +1,203 @@
+#ifndef ORG_ALLBINARY_ANIMATION_COLORLESSVECTORANIMATION_H
+#define ORG_ALLBINARY_ANIMATION_COLORLESSVECTORANIMATION_H
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+typedef struct VectorAnimation VectorAnimation;
+typedef struct AnimationBehavior AnimationBehavior;
+typedef struct Graphics Graphics;
+typedef struct BasicColorFactory BasicColorFactory;
+#include "org/allbinary/animation/VectorAnimation.h"
+
+typedef struct ColorLessVectorAnimation ColorLessVectorAnimation;
+struct ColorLessVectorAnimation {
+    VectorAnimation base;
+};
+
+
+ColorLessVectorAnimation* ColorLessVectorAnimation_new(int32_t*** currentPoints, AnimationBehavior* animationBehavior);
+
+void ColorLessVectorAnimation_init(ColorLessVectorAnimation* this, int32_t*** currentPoints, AnimationBehavior* animationBehavior);
+
+void ColorLessVectorAnimation_paintXY(ColorLessVectorAnimation* this, Graphics* graphics, int32_t x, int32_t y);
+#define ColorLessVectorAnimation_new2 ColorLessVectorAnimation_new
+#define ColorLessVectorAnimation_init2 ColorLessVectorAnimation_init
+#ifndef ColorLessVectorAnimation_createVectorAnimation
+#define ColorLessVectorAnimation_createVectorAnimation VectorAnimation_createVectorAnimation
+#endif
+#ifndef ColorLessVectorAnimation_setBasicColorP
+#define ColorLessVectorAnimation_setBasicColorP VectorAnimation_setBasicColorP
+#endif
+#ifndef ColorLessVectorAnimation_changeBasicColor
+#define ColorLessVectorAnimation_changeBasicColor VectorAnimation_changeBasicColor
+#endif
+#ifndef ColorLessVectorAnimation_setAlpha
+#define ColorLessVectorAnimation_setAlpha VectorAnimation_setAlpha
+#endif
+#ifndef ColorLessVectorAnimation_setScale
+#define ColorLessVectorAnimation_setScale VectorAnimation_setScale
+#endif
+#ifndef ColorLessVectorAnimation_setMaxScale
+#define ColorLessVectorAnimation_setMaxScale VectorAnimation_setMaxScale
+#endif
+#ifndef ColorLessVectorAnimation_updateModifiers
+#define ColorLessVectorAnimation_updateModifiers VectorAnimation_updateModifiers
+#endif
+#ifndef ColorLessVectorAnimation_getAnimationSize
+#define ColorLessVectorAnimation_getAnimationSize VectorAnimation_getAnimationSize
+#endif
+#ifndef ColorLessVectorAnimation_getSize
+#define ColorLessVectorAnimation_getSize VectorAnimation_getSize
+#endif
+#ifndef ColorLessVectorAnimation_setSequence
+#define ColorLessVectorAnimation_setSequence VectorAnimation_setSequence
+#endif
+#ifndef ColorLessVectorAnimation_getSequence
+#define ColorLessVectorAnimation_getSequence VectorAnimation_getSequence
+#endif
+#ifndef ColorLessVectorAnimation_nextFrame
+#define ColorLessVectorAnimation_nextFrame VectorAnimation_nextFrame
+#endif
+#ifndef ColorLessVectorAnimation_previousFrame
+#define ColorLessVectorAnimation_previousFrame VectorAnimation_previousFrame
+#endif
+#ifndef ColorLessVectorAnimation_paintVectors
+#define ColorLessVectorAnimation_paintVectors VectorAnimation_paintVectors
+#endif
+#ifndef ColorLessVectorAnimation_getFrame
+#define ColorLessVectorAnimation_getFrame VectorAnimation_getFrame
+#endif
+#ifndef ColorLessVectorAnimation_setFrame
+#define ColorLessVectorAnimation_setFrame VectorAnimation_setFrame
+#endif
+#ifndef ColorLessVectorAnimation_getPoints
+#define ColorLessVectorAnimation_getPoints VectorAnimation_getPoints
+#endif
+#ifndef ColorLessVectorAnimation_setPoints
+#define ColorLessVectorAnimation_setPoints VectorAnimation_setPoints
+#endif
+#ifndef ColorLessVectorAnimation_getBasicColorP
+#define ColorLessVectorAnimation_getBasicColorP VectorAnimation_getBasicColorP
+#endif
+#ifndef ColorLessVectorAnimation_getAnimationBehavior
+#define ColorLessVectorAnimation_getAnimationBehavior IndexedAnimation_getAnimationBehavior
+#endif
+#ifndef ColorLessVectorAnimation_reset
+#define ColorLessVectorAnimation_reset IndexedAnimation_reset
+#endif
+#ifndef ColorLessVectorAnimation_setFrame
+#define ColorLessVectorAnimation_setFrame IndexedAnimation_setFrame
+#endif
+#ifndef ColorLessVectorAnimation_getFrame
+#define ColorLessVectorAnimation_getFrame IndexedAnimation_getFrame
+#endif
+#ifndef ColorLessVectorAnimation_getAnimationSize
+#define ColorLessVectorAnimation_getAnimationSize IndexedAnimation_getAnimationSize
+#endif
+#ifndef ColorLessVectorAnimation_getSize
+#define ColorLessVectorAnimation_getSize IndexedAnimation_getSize
+#endif
+#ifndef ColorLessVectorAnimation_previousFrame
+#define ColorLessVectorAnimation_previousFrame IndexedAnimation_previousFrame
+#endif
+#ifndef ColorLessVectorAnimation_isLastFrame
+#define ColorLessVectorAnimation_isLastFrame IndexedAnimation_isLastFrame
+#endif
+#ifndef ColorLessVectorAnimation_setSequence
+#define ColorLessVectorAnimation_setSequence IndexedAnimation_setSequence
+#endif
+#ifndef ColorLessVectorAnimation_getSequence
+#define ColorLessVectorAnimation_getSequence IndexedAnimation_getSequence
+#endif
+#ifndef ColorLessVectorAnimation_setState
+#define ColorLessVectorAnimation_setState IndexedAnimation_setState
+#endif
+#ifndef ColorLessVectorAnimation_getWidth
+#define ColorLessVectorAnimation_getWidth IndexedAnimation_getWidth
+#endif
+#ifndef ColorLessVectorAnimation_getHeight
+#define ColorLessVectorAnimation_getHeight IndexedAnimation_getHeight
+#endif
+#ifndef ColorLessVectorAnimation_setAlpha
+#define ColorLessVectorAnimation_setAlpha Animation_setAlpha
+#endif
+#ifndef ColorLessVectorAnimation_nextFrame
+#define ColorLessVectorAnimation_nextFrame Animation_nextFrame
+#endif
+#ifndef ColorLessVectorAnimation_paintThreedXYZ
+#define ColorLessVectorAnimation_paintThreedXYZ Animation_paintThreedXYZ
+#endif
+#ifndef ColorLessVectorAnimation_isThreed
+#define ColorLessVectorAnimation_isThreed Animation_isThreed
+#endif
+#ifndef ColorLessVectorAnimation_getBasicColorP
+#define ColorLessVectorAnimation_getBasicColorP Animation_getBasicColorP
+#endif
+#ifndef ColorLessVectorAnimation_setBasicColorP
+#define ColorLessVectorAnimation_setBasicColorP Animation_setBasicColorP
+#endif
+#ifndef ColorLessVectorAnimation_setBackgroundBasicColorP
+#define ColorLessVectorAnimation_setBackgroundBasicColorP Animation_setBackgroundBasicColorP
+#endif
+#ifndef ColorLessVectorAnimation_getChangeBasicColor
+#define ColorLessVectorAnimation_getChangeBasicColor Animation_getChangeBasicColor
+#endif
+#ifndef ColorLessVectorAnimation_changeBasicColor
+#define ColorLessVectorAnimation_changeBasicColor Animation_changeBasicColor
+#endif
+#ifndef ColorLessVectorAnimation_getChangeColor
+#define ColorLessVectorAnimation_getChangeColor Animation_getChangeColor
+#endif
+#ifndef ColorLessVectorAnimation_getColor
+#define ColorLessVectorAnimation_getColor Animation_getColor
+#endif
+#ifndef ColorLessVectorAnimation_setScale
+#define ColorLessVectorAnimation_setScale Animation_setScale
+#endif
+#ifndef ColorLessVectorAnimation_setMaxScale
+#define ColorLessVectorAnimation_setMaxScale Animation_setMaxScale
+#endif
+#ifndef ColorLessVectorAnimation_set
+#define ColorLessVectorAnimation_set Animation_set
+#endif
+#ifndef ColorLessVectorAnimation_setDx
+#define ColorLessVectorAnimation_setDx Animation_setDx
+#endif
+#ifndef ColorLessVectorAnimation_getDx
+#define ColorLessVectorAnimation_getDx Animation_getDx
+#endif
+#ifndef ColorLessVectorAnimation_setDy
+#define ColorLessVectorAnimation_setDy Animation_setDy
+#endif
+#ifndef ColorLessVectorAnimation_getDy
+#define ColorLessVectorAnimation_getDy Animation_getDy
+#endif
+// Runs the Java static initialization of the class once. Reads of its static fields call it first.
+void ColorLessVectorAnimation_staticInit(void);
+// Registers the class, its superclass, and its methods for the interface calls (java_register_method)
+void ColorLessVectorAnimation_register(void);
+
+
+#endif // ORG_ALLBINARY_ANIMATION_COLORLESSVECTORANIMATION_H

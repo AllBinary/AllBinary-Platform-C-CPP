@@ -1,46 +1,32 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.physics.movement
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/physics/movement/CustomGravityConstantVelocityMovement.h"
 #include "org/allbinary/game/layer/AllBinaryGameLayer.h"
 #include "org/allbinary/game/physics/acceleration/GravityUtil.h"
 #include "org/allbinary/game/physics/velocity/VelocityProperties.h"
 #include "org/allbinary/logic/math/BasicDecimal.h"
 #include "org/allbinary/physics/movement/BasicConstantVelocityMovement.h"
 
-typedef struct CustomGravityConstantVelocityMovement CustomGravityConstantVelocityMovement;
-struct CustomGravityConstantVelocityMovement {
-    BasicConstantVelocityMovement base;
-    int32_t customGravity;
-    GravityUtil* gravityUtil;
-};
 
 
-CustomGravityConstantVelocityMovement* CustomGravityConstantVelocityMovement_new(BasicDecimal* speedBasicDecimal, int32_t customGravity);
 
-void CustomGravityConstantVelocityMovement_init(CustomGravityConstantVelocityMovement* this, BasicDecimal* speedBasicDecimal, int32_t customGravity);
-void CustomGravityConstantVelocityMovement_process(CustomGravityConstantVelocityMovement* this, AllBinaryGameLayer* layer);
+
+void CustomGravityConstantVelocityMovement_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void CustomGravityConstantVelocityMovement_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("CustomGravityConstantVelocityMovement", "BasicConstantVelocityMovement");
+    java_register_method("CustomGravityConstantVelocityMovement", "process", (void*) CustomGravityConstantVelocityMovement_process);
+}
 
 static void CustomGravityConstantVelocityMovement_initFields(CustomGravityConstantVelocityMovement* this) {
     
@@ -49,13 +35,14 @@ static void CustomGravityConstantVelocityMovement_initFields(CustomGravityConsta
 
 
 void CustomGravityConstantVelocityMovement_init(CustomGravityConstantVelocityMovement* this, BasicDecimal* speedBasicDecimal, int32_t customGravity) {
+    CustomGravityConstantVelocityMovement_register();
         BasicConstantVelocityMovement_init(&this->base, speedBasicDecimal, VelocityProperties_new(((int32_t) BasicDecimal_getUnscaled(speedBasicDecimal)), ((int32_t) BasicDecimal_getUnscaled(speedBasicDecimal))));
         CustomGravityConstantVelocityMovement_initFields(this);
         this->customGravity = customGravity;
 }
 
 CustomGravityConstantVelocityMovement* CustomGravityConstantVelocityMovement_new(BasicDecimal* speedBasicDecimal, int32_t customGravity) {
-    CustomGravityConstantVelocityMovement* this = calloc(1, sizeof(CustomGravityConstantVelocityMovement));
+    CustomGravityConstantVelocityMovement* this = java_object_alloc(sizeof(CustomGravityConstantVelocityMovement), "CustomGravityConstantVelocityMovement");
     CustomGravityConstantVelocityMovement_init(this, speedBasicDecimal, customGravity);
     return this;
 }
@@ -64,8 +51,8 @@ CustomGravityConstantVelocityMovement* CustomGravityConstantVelocityMovement_new
 // throws Exception
 void CustomGravityConstantVelocityMovement_process(CustomGravityConstantVelocityMovement* this, AllBinaryGameLayer* layer) {
         BasicConstantVelocityMovement_process((&this->base), layer);
-        GravityUtil_process(this->gravityUtil, CustomGravityConstantVelocityMovement_getVelocityProperties(this), this->customGravity);
-        VelocityProperties* velocityProperties = ((VelocityProperties*) CustomGravityConstantVelocityMovement_getVelocityProperties(this));
+        GravityUtil_process(this->gravityUtil, BasicConstantVelocityMovement_getVelocityProperties(this), this->customGravity);
+        VelocityProperties* velocityProperties = ((VelocityProperties*) BasicConstantVelocityMovement_getVelocityProperties(this));
         VelocityProperties_limitMaxYForwardVelocity(velocityProperties);
 }
 

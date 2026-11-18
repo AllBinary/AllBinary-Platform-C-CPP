@@ -1,28 +1,5 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.midlet
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/midlet/DemoGameMidlet.h"
 #include "org/allbinary/game/displayable/canvas/GameCanvasRunnableInterface.h"
 #include "org/allbinary/game/layer/AllBinaryGameLayerManager.h"
 #include "org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h"
@@ -33,34 +10,120 @@
 #include "org/allbinary/game/displayable/canvas/NullGameCanvasRunnable.h"
 #include "org/allbinary/util/ABHashtable.h"
 #include "org/allbinary/game/midlet/GameMidlet.h"
+#include "org/allbinary/game/midlet/DemoRunnable.h"
+#include "org/allbinary/game/midlet/CreateGameRunnable.h"
+#if __has_include("org/allbinary/game/midlet/ThreadPool.h")
+#include "org/allbinary/game/midlet/ThreadPool.h"
+#endif
+#if __has_include("org/allbinary/game/displayable/canvas/ThreadPool.h")
+#include "org/allbinary/game/displayable/canvas/ThreadPool.h"
+#endif
+#if __has_include("org/allbinary/game/layer/ThreadPool.h")
+#include "org/allbinary/game/layer/ThreadPool.h"
+#endif
+#if __has_include("org/allbinary/graphics/canvas/transition/progress/ThreadPool.h")
+#include "org/allbinary/graphics/canvas/transition/progress/ThreadPool.h"
+#endif
+#if __has_include("org/allbinary/graphics/canvas/transition/progress/ThreadPool.h")
+#include "org/allbinary/graphics/canvas/transition/progress/ThreadPool.h"
+#endif
+#if __has_include("org/allbinary/logic/ThreadPool.h")
+#include "org/allbinary/logic/ThreadPool.h"
+#endif
+#if __has_include("org/allbinary/logic/system/security/licensing/ThreadPool.h")
+#include "org/allbinary/logic/system/security/licensing/ThreadPool.h"
+#endif
+#if __has_include("org/allbinary/thread/ThreadPool.h")
+#include "org/allbinary/thread/ThreadPool.h"
+#endif
+#if __has_include("org/allbinary/game/displayable/canvas/ThreadPool.h")
+#include "org/allbinary/game/displayable/canvas/ThreadPool.h"
+#endif
+#if __has_include("org/allbinary/util/ThreadPool.h")
+#include "org/allbinary/util/ThreadPool.h"
+#endif
+#if __has_include("org/allbinary/logic/StdUtil.h")
+#include "org/allbinary/logic/StdUtil.h"
+#endif
+#if __has_include("org/allbinary/game/midlet/ThreadPool.h")
+#include "org/allbinary/game/midlet/ThreadPool.h"
+#endif
+#if __has_include("org/allbinary/game/displayable/canvas/ThreadPool.h")
+#include "org/allbinary/game/displayable/canvas/ThreadPool.h"
+#endif
+#if __has_include("org/allbinary/game/layer/ThreadPool.h")
+#include "org/allbinary/game/layer/ThreadPool.h"
+#endif
+#if __has_include("org/allbinary/graphics/canvas/transition/progress/ThreadPool.h")
+#include "org/allbinary/graphics/canvas/transition/progress/ThreadPool.h"
+#endif
+#if __has_include("org/allbinary/graphics/canvas/transition/progress/ThreadPool.h")
+#include "org/allbinary/graphics/canvas/transition/progress/ThreadPool.h"
+#endif
+#if __has_include("org/allbinary/logic/ThreadPool.h")
+#include "org/allbinary/logic/ThreadPool.h"
+#endif
+#if __has_include("org/allbinary/logic/system/security/licensing/ThreadPool.h")
+#include "org/allbinary/logic/system/security/licensing/ThreadPool.h"
+#endif
+#if __has_include("org/allbinary/thread/ThreadPool.h")
+#include "org/allbinary/thread/ThreadPool.h"
+#endif
+#if __has_include("org/allbinary/game/displayable/canvas/ThreadPool.h")
+#include "org/allbinary/game/displayable/canvas/ThreadPool.h"
+#endif
+#if __has_include("org/allbinary/util/ThreadPool.h")
+#include "org/allbinary/util/ThreadPool.h"
+#endif
 
-typedef struct DemoGameMidlet DemoGameMidlet;
-struct DemoGameMidlet {
-    GameMidlet base;
-};
 
 
-DemoGameMidlet* DemoGameMidlet_new(ClientInformationFactory* clientInformationFactory);
 
-void DemoGameMidlet_init(DemoGameMidlet* this, ClientInformationFactory* clientInformationFactory);
-bool DemoGameMidlet_isContinue(DemoGameMidlet* this);
-int32_t DemoGameMidlet_getHighestLevel(DemoGameMidlet* this);
-GameCanvasRunnableInterface* DemoGameMidlet_createDemoGameCanvasRunnableInterface(DemoGameMidlet* this);
-GameCanvasRunnableInterface* DemoGameMidlet_createGameCanvasRunnable(DemoGameMidlet* this, AllBinaryGameLayerManager* allBinaryGameLayerManager);
-GameCanvasRunnableInterface* DemoGameMidlet_createGameCanvasRunnableInterface(DemoGameMidlet* this);
-void DemoGameMidlet_demoSetup(DemoGameMidlet* this);
-void DemoGameMidlet_postDemoSetup(DemoGameMidlet* this);
-void DemoGameMidlet_setDemo(DemoGameMidlet* this);
-void DemoGameMidlet_createGame(DemoGameMidlet* this);
-bool DemoGameMidlet_isReady(DemoGameMidlet* this);
+
+
+
+
+
+
+
+
+
+
+void DemoGameMidlet_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void DemoGameMidlet_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("DemoGameMidlet", "GameMidlet");
+    java_register_method("DemoGameMidlet", "isContinue", (void*) DemoGameMidlet_isContinue);
+    java_register_method("DemoGameMidlet", "getHighestLevel", (void*) DemoGameMidlet_getHighestLevel);
+    java_register_method("DemoGameMidlet", "createDemoGameCanvasRunnableInterface", (void*) DemoGameMidlet_createDemoGameCanvasRunnableInterface);
+    java_register_method("DemoGameMidlet", "createGameCanvasRunnable", (void*) DemoGameMidlet_createGameCanvasRunnable);
+    java_register_method("DemoGameMidlet", "createGameCanvasRunnableInterface", (void*) DemoGameMidlet_createGameCanvasRunnableInterface);
+    java_register_method("DemoGameMidlet", "demoSetup", (void*) DemoGameMidlet_demoSetup);
+    java_register_method("DemoGameMidlet", "postDemoSetup", (void*) DemoGameMidlet_postDemoSetup);
+    java_register_method("DemoGameMidlet", "setDemo", (void*) DemoGameMidlet_setDemo);
+    java_register_method("DemoGameMidlet", "createGame", (void*) DemoGameMidlet_createGame);
+    java_register_method("DemoGameMidlet", "isReady", (void*) DemoGameMidlet_isReady);
+}
 
 
 void DemoGameMidlet_init(DemoGameMidlet* this, ClientInformationFactory* clientInformationFactory) {
+    DemoGameMidlet_register();
         GameMidlet_init(&this->base, clientInformationFactory);
 }
 
 DemoGameMidlet* DemoGameMidlet_new(ClientInformationFactory* clientInformationFactory) {
-    DemoGameMidlet* this = calloc(1, sizeof(DemoGameMidlet));
+    DemoGameMidlet* this = java_object_alloc(sizeof(DemoGameMidlet), "DemoGameMidlet");
     DemoGameMidlet_init(this, clientInformationFactory);
     return this;
 }
@@ -68,8 +131,8 @@ DemoGameMidlet* DemoGameMidlet_new(ClientInformationFactory* clientInformationFa
 
 // throws Exception
 bool DemoGameMidlet_isContinue(DemoGameMidlet* this) {
-        ABHashtable* hashtable = DemoGameMidlet_getStartStateHashtable(this);
-        if (hashtable != nullptr && ABHashtable_size(hashtable) > 0) {
+        ABHashtable* hashtable = AllBinaryMidlet_getStartStateHashtable(this);
+        if (hashtable != nullptr && Hashtable_size(hashtable) > 0) {
             return true;
         } else {
             return false;
@@ -84,20 +147,20 @@ int32_t DemoGameMidlet_getHighestLevel(DemoGameMidlet* this) {
 
 // throws Exception
 GameCanvasRunnableInterface* DemoGameMidlet_createDemoGameCanvasRunnableInterface(DemoGameMidlet* this) {
-        JAVA_CALL(this->logUtil, putF, this->commonStrings->NOT_IMPLEMENTED, this, this->commonStrings->CREATE);
-        return NullGameCanvasRunnable_NULL_GAME_CANVAS_RUNNABLE;
+        LogUtil_putF(this->base.base.base.logUtil, this->base.base.base.commonStrings->NOT_IMPLEMENTED, this, this->base.base.base.commonStrings->CREATE);
+        return (NullGameCanvasRunnable_staticInit(), NullGameCanvasRunnable_NULL_GAME_CANVAS_RUNNABLE);
 }
 
 
 // throws Exception
 GameCanvasRunnableInterface* DemoGameMidlet_createGameCanvasRunnable(DemoGameMidlet* this, AllBinaryGameLayerManager* allBinaryGameLayerManager) {
-        java_throw(java_exception_new("Exception", this->commonStrings->NOT_IMPLEMENTED));
+        java_throw(java_exception_new("Exception", this->base.base.base.commonStrings->NOT_IMPLEMENTED));
 }
 
 
 // throws Exception
 GameCanvasRunnableInterface* DemoGameMidlet_createGameCanvasRunnableInterface(DemoGameMidlet* this) {
-        return DemoGameMidlet_createGameCanvasRunnable(this, DemoGameMidlet_createGameLayerManager(this));
+        return DemoGameMidlet_createGameCanvasRunnable(this, GameMidlet_createGameLayerManager(this));
 }
 
 
@@ -112,10 +175,10 @@ void DemoGameMidlet_postDemoSetup(DemoGameMidlet* this) {
 // throws Exception
 // synchronized
 void DemoGameMidlet_setDemo(DemoGameMidlet* this) {
-        JAVA_CALL(this->logUtil, putF, this->commonStrings->START, this, "setDemo");
+        LogUtil_putF(this->base.base.base.logUtil, this->base.base.base.commonStrings->START, this, "setDemo");
         ProgressCanvas* progressCanvas = ProgressCanvasFactory_getInstance();
         ProgressCanvas_start(progressCanvas);
-        PrimaryThreadPool_runTask(PrimaryThreadPool_getInstance(), DemoRunnable_new(this));
+        ThreadPool_runTask(PrimaryThreadPool_getInstance(), DemoRunnable_new(this));
 }
 
 
@@ -123,13 +186,13 @@ void DemoGameMidlet_setDemo(DemoGameMidlet* this) {
 // synchronized
 void DemoGameMidlet_createGame(DemoGameMidlet* this) {
         const char* CREATE_GAME = "createGame";
-        JAVA_CALL(this->logUtil, putF, this->commonStrings->START, this, CREATE_GAME);
+        LogUtil_putF(this->base.base.base.logUtil, this->base.base.base.commonStrings->START, this, CREATE_GAME);
         ProgressCanvas* progressCanvas = ProgressCanvasFactory_getInstance();
         ProgressCanvas_start(progressCanvas);
-        ABHashtable* hashtable = DemoGameMidlet_getStartStateHashtable(this);
-        DemoGameMidlet_setStartStateHashtable(this, StdUtil_getInstance()->NULL_TABLE);
-        PrimaryThreadPool_runTask(PrimaryThreadPool_getInstance(), CreateGameRunnable_new(this, hashtable));
-        JAVA_CALL(this->logUtil, putF, this->commonStrings->END, this, CREATE_GAME);
+        ABHashtable* hashtable = AllBinaryMidlet_getStartStateHashtable(this);
+        AllBinaryMidlet_setStartStateHashtable(this, StdUtil_getInstance()->NULL_TABLE);
+        ThreadPool_runTask(PrimaryThreadPool_getInstance(), CreateGameRunnable_new(this, hashtable));
+        LogUtil_putF(this->base.base.base.logUtil, this->base.base.base.commonStrings->END, this, CREATE_GAME);
 }
 
 

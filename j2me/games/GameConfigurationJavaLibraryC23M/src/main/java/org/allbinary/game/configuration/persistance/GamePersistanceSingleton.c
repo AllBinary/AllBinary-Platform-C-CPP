@@ -1,59 +1,44 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.configuration.persistance
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/configuration/persistance/GamePersistanceSingleton.h"
 #include "org/allbinary/game/configuration/persistance/KeyValuePersistance.h"
+#include "org/allbinary/game/configuration/persistance/GamePersistanceStrings.h"
 
-typedef struct GamePersistanceSingleton GamePersistanceSingleton;
-struct GamePersistanceSingleton {
-    KeyValuePersistance base;
-};
 
 static GamePersistanceSingleton* GamePersistanceSingleton_GAME_PERSISTANCE;
 
-GamePersistanceSingleton* GamePersistanceSingleton_new(void);
-GamePersistanceSingleton* GamePersistanceSingleton_getInstance(void);
 
-void GamePersistanceSingleton_init(GamePersistanceSingleton* this);
 
-// Static fields with runtime initializers: call this once at startup
 void GamePersistanceSingleton_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     GamePersistanceSingleton_GAME_PERSISTANCE = GamePersistanceSingleton_new();
+}
+
+void GamePersistanceSingleton_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GamePersistanceSingleton", "KeyValuePersistance");
 }
 
 
 GamePersistanceSingleton* GamePersistanceSingleton_getInstance(void) {
-        return GamePersistanceSingleton_GAME_PERSISTANCE;
+        return (GamePersistanceSingleton_staticInit(), GamePersistanceSingleton_GAME_PERSISTANCE);
 }
 
 
 void GamePersistanceSingleton_init(GamePersistanceSingleton* this) {
+    GamePersistanceSingleton_register();
         KeyValuePersistance_init(&this->base, GamePersistanceStrings_getInstance()->SAVED_GAME_RECORD_ID);
 }
 
 GamePersistanceSingleton* GamePersistanceSingleton_new(void) {
-    GamePersistanceSingleton* this = calloc(1, sizeof(GamePersistanceSingleton));
+    GamePersistanceSingleton* this = java_object_alloc(sizeof(GamePersistanceSingleton), "GamePersistanceSingleton");
     GamePersistanceSingleton_init(this);
     return this;
 }

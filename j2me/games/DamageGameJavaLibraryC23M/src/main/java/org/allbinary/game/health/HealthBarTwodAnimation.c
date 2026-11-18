@@ -1,58 +1,56 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.health
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/game/health/HealthBarTwodAnimation.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/layer/AllBinaryLayer.h"
 #include "org/allbinary/game/health/HealthBarAnimation.h"
+#if __has_include("org/allbinary/game/health/ViewPositionBase.h")
+#include "org/allbinary/game/health/ViewPositionBase.h"
+#endif
+#if __has_include("javax/microedition/lcdui/ViewPositionBase.h")
+#include "javax/microedition/lcdui/ViewPositionBase.h"
+#endif
+#if __has_include("org/allbinary/layer/ViewPositionBase.h")
+#include "org/allbinary/layer/ViewPositionBase.h"
+#endif
 
-typedef struct HealthBarTwodAnimation HealthBarTwodAnimation;
-struct HealthBarTwodAnimation {
-    HealthBarAnimation base;
-};
 
 
-HealthBarTwodAnimation* HealthBarTwodAnimation_new(AllBinaryLayer* layerInterface, int32_t location);
 
-void HealthBarTwodAnimation_init(HealthBarTwodAnimation* this, AllBinaryLayer* layerInterface, int32_t location);
-void HealthBarTwodAnimation_paintXY(HealthBarTwodAnimation* this, Graphics* graphics, int32_t x, int32_t y);
+
+void HealthBarTwodAnimation_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void HealthBarTwodAnimation_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("HealthBarTwodAnimation", "HealthBarAnimation");
+    java_register_method("HealthBarTwodAnimation", "paintXY", (void*) HealthBarTwodAnimation_paintXY);
+}
 
 
 void HealthBarTwodAnimation_init(HealthBarTwodAnimation* this, AllBinaryLayer* layerInterface, int32_t location) {
+    HealthBarTwodAnimation_register();
         HealthBarAnimation_init(&this->base, layerInterface, location);
 }
 
 HealthBarTwodAnimation* HealthBarTwodAnimation_new(AllBinaryLayer* layerInterface, int32_t location) {
-    HealthBarTwodAnimation* this = calloc(1, sizeof(HealthBarTwodAnimation));
+    HealthBarTwodAnimation* this = java_object_alloc(sizeof(HealthBarTwodAnimation), "HealthBarTwodAnimation");
     HealthBarTwodAnimation_init(this, layerInterface, location);
     return this;
 }
 
 
 void HealthBarTwodAnimation_paintXY(HealthBarTwodAnimation* this, Graphics* graphics, int32_t x, int32_t y) {
-        int32_t ax = JAVA_CALL(JAVA_CALL(this->allbinaryLayer, getViewPosition), getX);
-        JAVA_CALL(this->basicSetColorUtil, setBasicColorP3, graphics, this->basicColor, this->colorP);
-        Graphics_fillRect(graphics, ax, HealthBarTwodAnimation_getY(this) - 1, this->x2, this->thickness);
+        int32_t ax = GPoint_getX(AllBinaryLayer_getViewPosition(this->base.allbinaryLayer));
+        BasicColorSetUtil_setBasicColorP3(this->base.base.basicSetColorUtil, graphics, this->base.base.basicColor, this->base.base.colorP);
+        Graphics_fillRect(graphics, ax, HealthBarAnimation_getY(this) - 1, this->base.x2, this->base.thickness);
 }
 

@@ -1,45 +1,38 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2022 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.physics.velocity
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct VelocityBehaviorBase VelocityBehaviorBase;
-struct VelocityBehaviorBase {
-    char unused;
-};
+#include "org/allbinary/game/physics/velocity/VelocityBehaviorBase.h"
+#include "org/allbinary/game/physics/velocity/BasicVelocityProperties.h"
 
 
-VelocityBehaviorBase* VelocityBehaviorBase_new(void);
-void VelocityBehaviorBase_reduce(VelocityBehaviorBase* this, BasicVelocityProperties* velocityProperties, int32_t nominator, int32_t denominator);
-void VelocityBehaviorBase_reduceX(VelocityBehaviorBase* this, BasicVelocityProperties* velocityProperties, int32_t nominator, int32_t denominator);
-void VelocityBehaviorBase_reduceY(VelocityBehaviorBase* this, BasicVelocityProperties* velocityProperties, int32_t nominator, int32_t denominator);
+
+
+
+
+void VelocityBehaviorBase_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void VelocityBehaviorBase_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("VelocityBehaviorBase", nullptr);
+    java_register_method("VelocityBehaviorBase", "reduce", (void*) VelocityBehaviorBase_reduce);
+    java_register_method("VelocityBehaviorBase", "reduceX", (void*) VelocityBehaviorBase_reduceX);
+    java_register_method("VelocityBehaviorBase", "reduceY", (void*) VelocityBehaviorBase_reduceY);
+}
 
 void VelocityBehaviorBase_init(VelocityBehaviorBase* this) {
+    VelocityBehaviorBase_register();
 }
 
 VelocityBehaviorBase* VelocityBehaviorBase_new(void) {
-    VelocityBehaviorBase* this = calloc(1, sizeof(VelocityBehaviorBase));
+    VelocityBehaviorBase* this = java_object_alloc(sizeof(VelocityBehaviorBase), "VelocityBehaviorBase");
     VelocityBehaviorBase_init(this);
     return this;
 }

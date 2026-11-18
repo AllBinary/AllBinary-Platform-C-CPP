@@ -1,48 +1,33 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input.motion.button
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/input/motion/button/TouchButtonsPaintable.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
 #include "org/allbinary/graphics/color/BasicColorSetUtil.h"
-#include "org/allbinary/graphics/paint/Paintable.h"
 #include "org/allbinary/util/BasicArrayList.h"
-
-typedef struct TouchButtonsPaintable TouchButtonsPaintable;
-struct TouchButtonsPaintable {
-    Paintable base;
-    BasicColor* foregroundBasicColor;
-    int32_t foregroundColor;
-    BasicColorSetUtil* basicSetColorUtil;
-    TouchButtonFactory* touchButtonFactory;
-};
+#include "org/allbinary/input/motion/button/TouchButtonFactory.h"
+#include "org/allbinary/input/motion/button/TouchButton.h"
 
 
-TouchButtonsPaintable* TouchButtonsPaintable_new(BasicColor* basicColor);
 
-void TouchButtonsPaintable_init(TouchButtonsPaintable* this, BasicColor* basicColor);
-void TouchButtonsPaintable_paint(TouchButtonsPaintable* this, Graphics* graphics);
+
+
+void TouchButtonsPaintable_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void TouchButtonsPaintable_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("TouchButtonsPaintable", "Paintable");
+    java_register_method("TouchButtonsPaintable", "paint", (void*) TouchButtonsPaintable_paint);
+}
 
 static void TouchButtonsPaintable_initFields(TouchButtonsPaintable* this) {
     
@@ -53,6 +38,7 @@ static void TouchButtonsPaintable_initFields(TouchButtonsPaintable* this) {
 
 
 void TouchButtonsPaintable_init(TouchButtonsPaintable* this, BasicColor* basicColor) {
+    TouchButtonsPaintable_register();
     Paintable_init(&this->base);
     TouchButtonsPaintable_initFields(this);
         this->foregroundBasicColor = basicColor;
@@ -60,7 +46,7 @@ void TouchButtonsPaintable_init(TouchButtonsPaintable* this, BasicColor* basicCo
 }
 
 TouchButtonsPaintable* TouchButtonsPaintable_new(BasicColor* basicColor) {
-    TouchButtonsPaintable* this = calloc(1, sizeof(TouchButtonsPaintable));
+    TouchButtonsPaintable* this = java_object_alloc(sizeof(TouchButtonsPaintable), "TouchButtonsPaintable");
     TouchButtonsPaintable_init(this, basicColor);
     return this;
 }

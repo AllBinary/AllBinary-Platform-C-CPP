@@ -1,28 +1,5 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.ag.ai
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/ag/ai/NumberOnOwnGroupSequenceAIFactory.h"
 #include "org/allbinary/ai/ArtificialIntelligenceInterface.h"
 #include "org/allbinary/game/input/GameInput.h"
 #include "org/allbinary/layer/AllBinaryLayer.h"
@@ -32,26 +9,41 @@
 #include "org/allbinary/util/ABHashtable.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
-
-typedef struct NumberOnOwnGroupSequenceAIFactory NumberOnOwnGroupSequenceAIFactory;
-struct NumberOnOwnGroupSequenceAIFactory {
-    LogUtil* logUtil;
-};
+#include "org/allbinary/game/ag/ai/NumberInSameGroupSequence.h"
+#include "org/allbinary/game/ag/ai/NumberOnOwnGroupSequenceAI.h"
 
 
-NumberOnOwnGroupSequenceAIFactory* NumberOnOwnGroupSequenceAIFactory_new(void);
-ArtificialIntelligenceInterface* NumberOnOwnGroupSequenceAIFactory_getInstance(NumberOnOwnGroupSequenceAIFactory* this, ABHashtable* hashtable, ArtificialIntelligenceInterface** artificialIntelligenceInterface, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
+
+
+void NumberOnOwnGroupSequenceAIFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void NumberOnOwnGroupSequenceAIFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("NumberOnOwnGroupSequenceAIFactory", nullptr);
+    java_register_method("NumberOnOwnGroupSequenceAIFactory", "getInstance", (void*) NumberOnOwnGroupSequenceAIFactory_getInstance);
+}
 
 static void NumberOnOwnGroupSequenceAIFactory_initFields(NumberOnOwnGroupSequenceAIFactory* this) {
     this->logUtil = LogUtil_getInstance();
 }
 
 void NumberOnOwnGroupSequenceAIFactory_init(NumberOnOwnGroupSequenceAIFactory* this) {
+    NumberOnOwnGroupSequenceAIFactory_register();
     NumberOnOwnGroupSequenceAIFactory_initFields(this);
 }
 
 NumberOnOwnGroupSequenceAIFactory* NumberOnOwnGroupSequenceAIFactory_new(void) {
-    NumberOnOwnGroupSequenceAIFactory* this = calloc(1, sizeof(NumberOnOwnGroupSequenceAIFactory));
+    NumberOnOwnGroupSequenceAIFactory* this = java_object_alloc(sizeof(NumberOnOwnGroupSequenceAIFactory), "NumberOnOwnGroupSequenceAIFactory");
     NumberOnOwnGroupSequenceAIFactory_init(this);
     return this;
 }
@@ -62,7 +54,7 @@ ArtificialIntelligenceInterface* NumberOnOwnGroupSequenceAIFactory_getInstance(N
         int32_t* integerArray = NumberInSameGroupSequence_getInstance()->NUMBER_ON_SAME_TEAM_SEQUENCE;
         BasicArrayList* list = BasicArrayListD_new();
         for (int32_t index = 0; index < java_array_length(integerArray); index++) {
-            Any* integerCanBeNull = ABHashtable_get(hashtable, ((Any*) integerArray[index]));
+            void* integerCanBeNull = Hashtable_get(hashtable, ((void*) integerArray[index]));
             if (integerCanBeNull == nullptr) {
                 break;
             }
@@ -75,7 +67,7 @@ ArtificialIntelligenceInterface* NumberOnOwnGroupSequenceAIFactory_getInstance(N
         StringMaker_appendint(stringBuffer, java_array_length(artificialIntelligenceInterface));
         StringMaker_append(stringBuffer, " + 1");
         CommonStrings* commonStrings = CommonStrings_getInstance();
-        LogUtil_putF(this->logUtil, StringMaker_toString(stringBuffer), this, commonStrings->GET_INSTANCE);
+        LogUtil_putF(this->logUtil, java_string_of(stringBuffer), this, commonStrings->GET_INSTANCE);
         if (java_array_length(artificialIntelligenceInterface) - 1 > BasicArrayList_size(list)) {
             java_throw(java_exception_new("Exception", "Not enough AI properties."));
         }

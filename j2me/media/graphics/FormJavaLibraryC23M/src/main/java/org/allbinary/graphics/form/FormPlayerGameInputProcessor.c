@@ -1,42 +1,37 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.form
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-#include "org/allbinary/canvas/Processor.h"
+#include "org/allbinary/graphics/form/FormPlayerGameInputProcessor.h"
 #include "org/allbinary/game/input/PlayerGameInputCompositeInterface.h"
+#if __has_include("org/allbinary/graphics/form/PlayerGameInput.h")
+#include "org/allbinary/graphics/form/PlayerGameInput.h"
+#endif
+#if __has_include("org/allbinary/canvas/PlayerGameInput.h")
+#include "org/allbinary/canvas/PlayerGameInput.h"
+#endif
+#if __has_include("org/allbinary/game/input/PlayerGameInput.h")
+#include "org/allbinary/game/input/PlayerGameInput.h"
+#endif
 
-typedef struct FormPlayerGameInputProcessor FormPlayerGameInputProcessor;
-struct FormPlayerGameInputProcessor {
-    Processor base;
-    PlayerGameInputCompositeInterface* playerGameInputCompositeInterface;
-};
 
 
-FormPlayerGameInputProcessor* FormPlayerGameInputProcessor_new(PlayerGameInputCompositeInterface* playerGameInputCompositeInterface);
 
-void FormPlayerGameInputProcessor_init(FormPlayerGameInputProcessor* this, PlayerGameInputCompositeInterface* playerGameInputCompositeInterface);
-void FormPlayerGameInputProcessor_process(FormPlayerGameInputProcessor* this);
+
+void FormPlayerGameInputProcessor_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void FormPlayerGameInputProcessor_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("FormPlayerGameInputProcessor", "Processor");
+    java_register_method("FormPlayerGameInputProcessor", "process", (void*) FormPlayerGameInputProcessor_process);
+}
 
 static void FormPlayerGameInputProcessor_initFields(FormPlayerGameInputProcessor* this) {
     
@@ -44,13 +39,14 @@ static void FormPlayerGameInputProcessor_initFields(FormPlayerGameInputProcessor
 
 
 void FormPlayerGameInputProcessor_init(FormPlayerGameInputProcessor* this, PlayerGameInputCompositeInterface* playerGameInputCompositeInterface) {
+    FormPlayerGameInputProcessor_register();
     Processor_init(&this->base);
     FormPlayerGameInputProcessor_initFields(this);
         this->playerGameInputCompositeInterface = playerGameInputCompositeInterface;
 }
 
 FormPlayerGameInputProcessor* FormPlayerGameInputProcessor_new(PlayerGameInputCompositeInterface* playerGameInputCompositeInterface) {
-    FormPlayerGameInputProcessor* this = calloc(1, sizeof(FormPlayerGameInputProcessor));
+    FormPlayerGameInputProcessor* this = java_object_alloc(sizeof(FormPlayerGameInputProcessor), "FormPlayerGameInputProcessor");
     FormPlayerGameInputProcessor_init(this, playerGameInputCompositeInterface);
     return this;
 }
@@ -58,6 +54,6 @@ FormPlayerGameInputProcessor* FormPlayerGameInputProcessor_new(PlayerGameInputCo
 
 // throws Exception
 void FormPlayerGameInputProcessor_process(FormPlayerGameInputProcessor* this) {
-        JAVA_CALL(PlayerGameInputCompositeInterface_getPlayerGameInput(this->playerGameInputCompositeInterface), update);
+        GameInput_update(PlayerGameInputCompositeInterface_getPlayerGameInput(this->playerGameInputCompositeInterface));
 }
 

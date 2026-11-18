@@ -1,52 +1,41 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.media.audio
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/media/audio/EarlySoundsFactory.h"
 #include "org/allbinary/media/audio/BaseSoundsFactory.h"
+#include "org/allbinary/media/audio/Sound.h"
+#include "org/allbinary/media/audio/SelectSound.h"
+#include "org/allbinary/media/audio/ErrorSound.h"
 
-typedef struct EarlySoundsFactory EarlySoundsFactory;
-struct EarlySoundsFactory {
-    BaseSoundsFactory base;
-};
 
 static EarlySoundsFactory* EarlySoundsFactory_instance;
 
-EarlySoundsFactory* EarlySoundsFactory_new(void);
-Sound** EarlySoundsFactory_getSoundInterfaceArray(EarlySoundsFactory* this);
-EarlySoundsFactory* EarlySoundsFactory_getInstance(void);
 
-// Static fields with runtime initializers: call this once at startup
+
 void EarlySoundsFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     EarlySoundsFactory_instance = EarlySoundsFactory_new();
 }
 
+void EarlySoundsFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("EarlySoundsFactory", "BaseSoundsFactory");
+    java_register_method("EarlySoundsFactory", "getSoundInterfaceArray", (void*) EarlySoundsFactory_getSoundInterfaceArray);
+}
+
 void EarlySoundsFactory_init(EarlySoundsFactory* this) {
+    EarlySoundsFactory_register();
     BaseSoundsFactory_init(&this->base);
 }
 
 EarlySoundsFactory* EarlySoundsFactory_new(void) {
-    EarlySoundsFactory* this = calloc(1, sizeof(EarlySoundsFactory));
+    EarlySoundsFactory* this = java_object_alloc(sizeof(EarlySoundsFactory), "EarlySoundsFactory");
     EarlySoundsFactory_init(this);
     return this;
 }
@@ -63,6 +52,6 @@ Sound** EarlySoundsFactory_getSoundInterfaceArray(EarlySoundsFactory* this) {
 
 
 EarlySoundsFactory* EarlySoundsFactory_getInstance(void) {
-        return EarlySoundsFactory_instance;
+        return (EarlySoundsFactory_staticInit(), EarlySoundsFactory_instance);
 }
 

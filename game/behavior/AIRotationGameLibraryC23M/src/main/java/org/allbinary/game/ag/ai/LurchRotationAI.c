@@ -1,48 +1,84 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.ag.ai
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/ag/ai/LurchRotationAI.h"
 #include "org/allbinary/animation/IndexedAnimation.h"
 #include "org/allbinary/animation/RotationAnimationInterface.h"
 #include "org/allbinary/animation/RotationAnimationInterfaceCompositeInterface.h"
-#include "org/allbinary/game/ag/ai/tactical/LurchAI.h"
 #include "org/allbinary/game/input/GameInput.h"
 #include "org/allbinary/layer/AllBinaryLayer.h"
 #include "org/allbinary/math/AngleIncrementInfo.h"
+#if __has_include("org/allbinary/game/ag/ai/AngleInfo.h")
+#include "org/allbinary/game/ag/ai/AngleInfo.h"
+#endif
+#if __has_include("org/allbinary/animation/AngleInfo.h")
+#include "org/allbinary/animation/AngleInfo.h"
+#endif
+#if __has_include("org/allbinary/animation/AngleInfo.h")
+#include "org/allbinary/animation/AngleInfo.h"
+#endif
+#if __has_include("org/allbinary/animation/AngleInfo.h")
+#include "org/allbinary/animation/AngleInfo.h"
+#endif
+#if __has_include("org/allbinary/game/ag/ai/tactical/AngleInfo.h")
+#include "org/allbinary/game/ag/ai/tactical/AngleInfo.h"
+#endif
+#if __has_include("org/allbinary/game/input/AngleInfo.h")
+#include "org/allbinary/game/input/AngleInfo.h"
+#endif
+#if __has_include("org/allbinary/layer/AngleInfo.h")
+#include "org/allbinary/layer/AngleInfo.h"
+#endif
+#if __has_include("org/allbinary/math/AngleInfo.h")
+#include "org/allbinary/math/AngleInfo.h"
+#endif
+#if __has_include("org/allbinary/game/ag/ai/AngleInfo.h")
+#include "org/allbinary/game/ag/ai/AngleInfo.h"
+#endif
+#if __has_include("org/allbinary/animation/AngleInfo.h")
+#include "org/allbinary/animation/AngleInfo.h"
+#endif
+#if __has_include("org/allbinary/animation/AngleInfo.h")
+#include "org/allbinary/animation/AngleInfo.h"
+#endif
+#if __has_include("org/allbinary/animation/AngleInfo.h")
+#include "org/allbinary/animation/AngleInfo.h"
+#endif
+#if __has_include("org/allbinary/game/ag/ai/tactical/AngleInfo.h")
+#include "org/allbinary/game/ag/ai/tactical/AngleInfo.h"
+#endif
+#if __has_include("org/allbinary/game/input/AngleInfo.h")
+#include "org/allbinary/game/input/AngleInfo.h"
+#endif
+#if __has_include("org/allbinary/layer/AngleInfo.h")
+#include "org/allbinary/layer/AngleInfo.h"
+#endif
+#if __has_include("org/allbinary/math/AngleInfo.h")
+#include "org/allbinary/math/AngleInfo.h"
+#endif
 
-typedef struct LurchRotationAI LurchRotationAI;
-struct LurchRotationAI {
-    LurchAI base;
-    IndexedAnimation* rotationAnimationInterface;
-};
 
 
-LurchRotationAI* LurchRotationAI_new(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
 
-void LurchRotationAI_init(LurchRotationAI* this, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
-void LurchRotationAI_reverse(LurchRotationAI* this);
+
 static void LurchRotationAI_update(LurchRotationAI* this);
+
+void LurchRotationAI_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void LurchRotationAI_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("LurchRotationAI", "LurchAI");
+    java_register_method("LurchRotationAI", "reverse", (void*) LurchRotationAI_reverse);
+    java_register_method("LurchRotationAI", "update", (void*) LurchRotationAI_update);
+}
 
 static void LurchRotationAI_initFields(LurchRotationAI* this) {
     
@@ -50,15 +86,16 @@ static void LurchRotationAI_initFields(LurchRotationAI* this) {
 
 
 void LurchRotationAI_init(LurchRotationAI* this, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) {
+    LurchRotationAI_register();
         LurchAI_init(&this->base, ownerLayerInterface, gameInput);
         LurchRotationAI_initFields(this);
-        RotationAnimationInterfaceCompositeInterface* rotationAnimationInterfaceCompositeInterface = ((RotationAnimationInterfaceCompositeInterface*) LurchRotationAI_getOwnerLayerInterface(this));
+        RotationAnimationInterfaceCompositeInterface* rotationAnimationInterfaceCompositeInterface = ((RotationAnimationInterfaceCompositeInterface*) BasicAI_getOwnerLayerInterface(this));
         this->rotationAnimationInterface = RotationAnimationInterfaceCompositeInterface_getRotationAnimationInterface(rotationAnimationInterfaceCompositeInterface);
         LurchRotationAI_update(this);
 }
 
 LurchRotationAI* LurchRotationAI_new(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) {
-    LurchRotationAI* this = calloc(1, sizeof(LurchRotationAI));
+    LurchRotationAI* this = java_object_alloc(sizeof(LurchRotationAI), "LurchRotationAI");
     LurchRotationAI_init(this, ownerLayerInterface, gameInput);
     return this;
 }
@@ -71,16 +108,16 @@ void LurchRotationAI_reverse(LurchRotationAI* this) {
 
 
 static void LurchRotationAI_update(LurchRotationAI* this) {
-        if (this->currentRelativeAngle == 0) {
+        if (this->base.currentRelativeAngle == 0) {
             RotationAnimationInterface* rotationAnimationInterface = ((RotationAnimationInterface*) this->rotationAnimationInterface);
-            AngleIncrementInfo* angleIncrementInfo = JAVA_CALL(IndexedAnimation_getAngleInfoP(rotationAnimationInterface), getAngleIncrementInfo);
-            RotationAnimationInterfaceCompositeInterface* rotationAnimationInterfaceCompositeInterface = ((RotationAnimationInterfaceCompositeInterface*) LurchRotationAI_getOwnerLayerInterface(this));
-            RotationAnimationInterfaceCompositeInterface_setFrame(rotationAnimationInterfaceCompositeInterface, JAVA_CALL(angleIncrementInfo->RIGHT_FRAME, intValue));
-        } else if (this->currentRelativeAngle == 180) {
+            AngleIncrementInfo* angleIncrementInfo = AngleInfo_getAngleIncrementInfo(RotationAnimationInterface_getAngleInfoP(rotationAnimationInterface));
+            RotationAnimationInterfaceCompositeInterface* rotationAnimationInterfaceCompositeInterface = ((RotationAnimationInterfaceCompositeInterface*) BasicAI_getOwnerLayerInterface(this));
+            RotationAnimationInterfaceCompositeInterface_setFrame(rotationAnimationInterfaceCompositeInterface, Integer_intValue(angleIncrementInfo->RIGHT_FRAME));
+        } else if (this->base.currentRelativeAngle == 180) {
             RotationAnimationInterface* rotationAnimationInterface = ((RotationAnimationInterface*) this->rotationAnimationInterface);
-            AngleIncrementInfo* angleIncrementInfo = JAVA_CALL(IndexedAnimation_getAngleInfoP(rotationAnimationInterface), getAngleIncrementInfo);
-            RotationAnimationInterfaceCompositeInterface* rotationAnimationInterfaceCompositeInterface = ((RotationAnimationInterfaceCompositeInterface*) LurchRotationAI_getOwnerLayerInterface(this));
-            RotationAnimationInterfaceCompositeInterface_setFrame(rotationAnimationInterfaceCompositeInterface, JAVA_CALL(angleIncrementInfo->LEFT_FRAME, intValue));
+            AngleIncrementInfo* angleIncrementInfo = AngleInfo_getAngleIncrementInfo(RotationAnimationInterface_getAngleInfoP(rotationAnimationInterface));
+            RotationAnimationInterfaceCompositeInterface* rotationAnimationInterfaceCompositeInterface = ((RotationAnimationInterfaceCompositeInterface*) BasicAI_getOwnerLayerInterface(this));
+            RotationAnimationInterfaceCompositeInterface_setFrame(rotationAnimationInterfaceCompositeInterface, Integer_intValue(angleIncrementInfo->LEFT_FRAME));
         }
 }
 

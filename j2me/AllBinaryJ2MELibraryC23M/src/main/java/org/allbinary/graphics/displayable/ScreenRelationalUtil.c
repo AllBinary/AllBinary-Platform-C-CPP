@@ -1,48 +1,53 @@
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.displayable
+#include "org/allbinary/graphics/displayable/ScreenRelationalUtil.h"
+#include "javax/microedition/lcdui/Image.h"
+#include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Image.h"
-
-typedef struct ScreenRelationalUtil ScreenRelationalUtil;
-struct ScreenRelationalUtil {
-    char unused;
-};
 
 static ScreenRelationalUtil* ScreenRelationalUtil_instance;
 
-ScreenRelationalUtil* ScreenRelationalUtil_new(void);
-ScreenRelationalUtil* ScreenRelationalUtil_getInstance(void);
-float ScreenRelationalUtil_getScaleImage(ScreenRelationalUtil* this, Image* image);
-float ScreenRelationalUtil_getScaleWH(ScreenRelationalUtil* this, int32_t aWidth, int32_t aHeight);
-float ScreenRelationalUtil_getScaleWHA(ScreenRelationalUtil* this, int32_t aWidth, int32_t aHeight, int32_t add);
-int32_t ScreenRelationalUtil_getScaledHeight(ScreenRelationalUtil* this, int32_t aWidth, int32_t aHeight);
-int32_t ScreenRelationalUtil_getScaledHeightAdd(ScreenRelationalUtil* this, int32_t aWidth, int32_t aHeight, int32_t add);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+
 void ScreenRelationalUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     ScreenRelationalUtil_instance = ScreenRelationalUtil_new();
 }
 
+void ScreenRelationalUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ScreenRelationalUtil", nullptr);
+    java_register_method("ScreenRelationalUtil", "getScaleImage", (void*) ScreenRelationalUtil_getScaleImage);
+    java_register_method("ScreenRelationalUtil", "getScaleWH", (void*) ScreenRelationalUtil_getScaleWH);
+    java_register_method("ScreenRelationalUtil", "getScaleWHA", (void*) ScreenRelationalUtil_getScaleWHA);
+    java_register_method("ScreenRelationalUtil", "getScaledHeight", (void*) ScreenRelationalUtil_getScaledHeight);
+    java_register_method("ScreenRelationalUtil", "getScaledHeightAdd", (void*) ScreenRelationalUtil_getScaledHeightAdd);
+}
+
 void ScreenRelationalUtil_init(ScreenRelationalUtil* this) {
+    ScreenRelationalUtil_register();
 }
 
 ScreenRelationalUtil* ScreenRelationalUtil_new(void) {
-    ScreenRelationalUtil* this = calloc(1, sizeof(ScreenRelationalUtil));
+    ScreenRelationalUtil* this = java_object_alloc(sizeof(ScreenRelationalUtil), "ScreenRelationalUtil");
     ScreenRelationalUtil_init(this);
     return this;
 }
 
 
 ScreenRelationalUtil* ScreenRelationalUtil_getInstance(void) {
-        return ScreenRelationalUtil_instance;
+        return (ScreenRelationalUtil_staticInit(), ScreenRelationalUtil_instance);
 }
 
 

@@ -1,50 +1,44 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.identification
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/identification/CompositeGroup.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/logic/string/StringUtil.h"
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
-
-typedef struct CompositeGroup CompositeGroup;
-struct CompositeGroup {
-    LogUtil* logUtil;
-    Group* groupInterface;
-    BasicArrayList* list;
-};
+#include "org/allbinary/game/identification/Group.h"
+#include "org/allbinary/game/identification/GroupCommonFactory.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
 
-CompositeGroup* CompositeGroup_new(Group* groupInterface);
 
-void CompositeGroup_init(CompositeGroup* this, Group* groupInterface);
-void CompositeGroup_clear(CompositeGroup* this);
-void CompositeGroup_add(CompositeGroup* this, Group* groupInterface);
-bool CompositeGroup_isInGroup(CompositeGroup* this, Group* groupInterface);
-Group* CompositeGroup_getGroup(CompositeGroup* this);
+
+
+
+
+
+void CompositeGroup_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void CompositeGroup_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("CompositeGroup", nullptr);
+    java_register_method("CompositeGroup", "clear", (void*) CompositeGroup_clear);
+    java_register_method("CompositeGroup", "add", (void*) CompositeGroup_add);
+    java_register_method("CompositeGroup", "isInGroup", (void*) CompositeGroup_isInGroup);
+    java_register_method("CompositeGroup", "getGroup", (void*) CompositeGroup_getGroup);
+}
 
 static void CompositeGroup_initFields(CompositeGroup* this) {
     this->logUtil = LogUtil_getInstance();
@@ -54,12 +48,13 @@ static void CompositeGroup_initFields(CompositeGroup* this) {
 
 
 void CompositeGroup_init(CompositeGroup* this, Group* groupInterface) {
+    CompositeGroup_register();
     CompositeGroup_initFields(this);
         this->groupInterface = groupInterface;
 }
 
 CompositeGroup* CompositeGroup_new(Group* groupInterface) {
-    CompositeGroup* this = calloc(1, sizeof(CompositeGroup));
+    CompositeGroup* this = java_object_alloc(sizeof(CompositeGroup), "CompositeGroup");
     CompositeGroup_init(this, groupInterface);
     return this;
 }
@@ -75,10 +70,10 @@ void CompositeGroup_add(CompositeGroup* this, Group* groupInterface) {
         GroupCommonFactory* groupCommonFactory = GroupCommonFactory_getInstance();
         StringMaker* stringBuffer = StringMaker_new();
         StringMaker_append(stringBuffer, groupCommonFactory->ADDING_LABEL);
-        StringMaker_append(stringBuffer, Group_toString(groupInterface));
+        StringMaker_append(stringBuffer, java_string_of(groupInterface));
         StringMaker_append(stringBuffer, groupCommonFactory->TO_LABEL);
         StringMaker_append(stringBuffer, StringUtil_toString(StringUtil_getInstance(), this->groupInterface));
-        LogUtil_putF(this->logUtil, StringMaker_toString(stringBuffer), this, commonStrings->ADD);
+        LogUtil_putF(this->logUtil, java_string_of(stringBuffer), this, commonStrings->ADD);
         BasicArrayList_add(this->list, groupInterface);
 }
 

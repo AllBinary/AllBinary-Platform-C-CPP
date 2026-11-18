@@ -42,6 +42,8 @@ ExceptionUtil* ExceptionUtil_getInstance(void);
 void ExceptionUtil_init(ExceptionUtil* this);
 
 const char* ExceptionUtil_getStackTrace(ExceptionUtil* this, JavaException* e);
+#define ExceptionUtil_new0 ExceptionUtil_new
+#define ExceptionUtil_init0 ExceptionUtil_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void ExceptionUtil_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

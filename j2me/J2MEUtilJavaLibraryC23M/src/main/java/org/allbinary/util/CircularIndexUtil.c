@@ -2,6 +2,27 @@
 #include "org/allbinary/util/CircularIndexUtil.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/string/CommonLabels.h"
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/string/CommonLabels.h")
+#include "org/allbinary/string/CommonLabels.h"
+#endif
 
 
 CircularIndexUtil* CircularIndexUtil_NULL_CIRCULAR_INDEX_UTIL;

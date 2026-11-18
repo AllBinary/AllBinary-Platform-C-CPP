@@ -1,46 +1,46 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2022 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.persistance
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/persistance/PlatformRecordIdUtil.h"
 #include "org/allbinary/string/CommonSeps.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h"
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/string/CommonSeps.h")
+#include "org/allbinary/string/CommonSeps.h"
+#endif
 
-typedef struct PlatformRecordIdUtil PlatformRecordIdUtil;
-struct PlatformRecordIdUtil {
-    const char* PLATFORM_SHORT_NAME;
-};
 
 static PlatformRecordIdUtil* PlatformRecordIdUtil_instance;
 
-PlatformRecordIdUtil* PlatformRecordIdUtil_new(void);
-PlatformRecordIdUtil* PlatformRecordIdUtil_getInstance(void);
-const char* PlatformRecordIdUtil_getRecordId(PlatformRecordIdUtil* this, AbeClientInformationInterface* abeClientInformation, const char* baseRecordId);
 
-// Static fields with runtime initializers: call this once at startup
+
 void PlatformRecordIdUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     PlatformRecordIdUtil_instance = PlatformRecordIdUtil_new();
+}
+
+void PlatformRecordIdUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("PlatformRecordIdUtil", nullptr);
+    java_register_method("PlatformRecordIdUtil", "getRecordId", (void*) PlatformRecordIdUtil_getRecordId);
 }
 
 static void PlatformRecordIdUtil_initFields(PlatformRecordIdUtil* this) {
@@ -48,22 +48,23 @@ static void PlatformRecordIdUtil_initFields(PlatformRecordIdUtil* this) {
 }
 
 void PlatformRecordIdUtil_init(PlatformRecordIdUtil* this) {
+    PlatformRecordIdUtil_register();
     PlatformRecordIdUtil_initFields(this);
 }
 
 PlatformRecordIdUtil* PlatformRecordIdUtil_new(void) {
-    PlatformRecordIdUtil* this = calloc(1, sizeof(PlatformRecordIdUtil));
+    PlatformRecordIdUtil* this = java_object_alloc(sizeof(PlatformRecordIdUtil), "PlatformRecordIdUtil");
     PlatformRecordIdUtil_init(this);
     return this;
 }
 
 
 PlatformRecordIdUtil* PlatformRecordIdUtil_getInstance(void) {
-        return PlatformRecordIdUtil_instance;
+        return (PlatformRecordIdUtil_staticInit(), PlatformRecordIdUtil_instance);
 }
 
 
 const char* PlatformRecordIdUtil_getRecordId(PlatformRecordIdUtil* this, AbeClientInformationInterface* abeClientInformation, const char* baseRecordId) {
-        return JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), AbeClientInformationInterface_toShortString(abeClientInformation)), append, CommonSeps_getInstance()->UNDERSCORE), append, this->PLATFORM_SHORT_NAME), append, baseRecordId), toString);
+        return java_string_of(StringMaker_append(StringMaker_append(StringMaker_append(StringMaker_append(StringMaker_new(), AbeClientInformationInterface_toShortString(abeClientInformation)), CommonSeps_getInstance()->UNDERSCORE), this->PLATFORM_SHORT_NAME), baseRecordId));
 }
 

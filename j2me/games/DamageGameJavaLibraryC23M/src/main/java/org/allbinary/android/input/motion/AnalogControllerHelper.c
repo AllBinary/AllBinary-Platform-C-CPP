@@ -1,49 +1,36 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.android.input.motion
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/android/input/motion/AnalogControllerHelper.h"
 #include "org/allbinary/game/layer/special/CollidableDestroyableDamageableLayer.h"
 #include "org/allbinary/time/TimeDelayHelper.h"
-
-typedef struct AnalogControllerHelper AnalogControllerHelper;
-struct AnalogControllerHelper {
-    int32_t reduceTimeFactor;
-    int32_t SCALE_VALUE;
-    TimeDelayHelper* rightTimeElapsedHelper;
-    TimeDelayHelper* leftTimeElapsedHelper;
-    TimeDelayHelper* downTimeElapsedHelper;
-    TimeDelayHelper* upTimeElapsedHelper;
-};
+#include "org/allbinary/android/input/motion/AnalogControllerConfigurationFactory.h"
 
 
-AnalogControllerHelper* AnalogControllerHelper_new(int32_t reduceTimeFactor);
 
-void AnalogControllerHelper_init(AnalogControllerHelper* this, int32_t reduceTimeFactor);
-void AnalogControllerHelper_right(AnalogControllerHelper* this, CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer, int32_t xAnalogValue);
-void AnalogControllerHelper_left(AnalogControllerHelper* this, CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer, int32_t xAnalogValue);
-void AnalogControllerHelper_up(AnalogControllerHelper* this, CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer, int32_t xAnalogValue);
-void AnalogControllerHelper_down(AnalogControllerHelper* this, CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer, int32_t xAnalogValue);
+
+
+
+
+
+void AnalogControllerHelper_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void AnalogControllerHelper_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("AnalogControllerHelper", nullptr);
+    java_register_method("AnalogControllerHelper", "right", (void*) AnalogControllerHelper_right);
+    java_register_method("AnalogControllerHelper", "left", (void*) AnalogControllerHelper_left);
+    java_register_method("AnalogControllerHelper", "up", (void*) AnalogControllerHelper_up);
+    java_register_method("AnalogControllerHelper", "down", (void*) AnalogControllerHelper_down);
+}
 
 static void AnalogControllerHelper_initFields(AnalogControllerHelper* this) {
     
@@ -56,12 +43,13 @@ static void AnalogControllerHelper_initFields(AnalogControllerHelper* this) {
 
 
 void AnalogControllerHelper_init(AnalogControllerHelper* this, int32_t reduceTimeFactor) {
+    AnalogControllerHelper_register();
     AnalogControllerHelper_initFields(this);
         this->reduceTimeFactor = reduceTimeFactor;
 }
 
 AnalogControllerHelper* AnalogControllerHelper_new(int32_t reduceTimeFactor) {
-    AnalogControllerHelper* this = calloc(1, sizeof(AnalogControllerHelper));
+    AnalogControllerHelper* this = java_object_alloc(sizeof(AnalogControllerHelper), "AnalogControllerHelper");
     AnalogControllerHelper_init(this, reduceTimeFactor);
     return this;
 }

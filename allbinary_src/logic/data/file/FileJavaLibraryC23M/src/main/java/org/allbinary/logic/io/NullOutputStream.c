@@ -1,67 +1,54 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2025 AllBinary 
- * 
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- * 
- * Created By: Travis Berthelot 
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.io
+#include "org/allbinary/logic/io/NullOutputStream.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "java/io/IOException.h"
-// #include "java/io/OutputStream.h"
-
-typedef struct NullOutputStream NullOutputStream;
-struct NullOutputStream {
-    OutputStream base;
-};
 
 NullOutputStream* NullOutputStream_NULL_OUTPUT_STREAM;
 
-NullOutputStream* NullOutputStream_new(void);
-void NullOutputStream_write(NullOutputStream* this, int32_t b);
-void NullOutputStream_write(NullOutputStream* this, int8_t* b, int32_t off, int32_t len);
-void NullOutputStream_close(NullOutputStream* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
 void NullOutputStream_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     NullOutputStream_NULL_OUTPUT_STREAM = NullOutputStream_new();
 }
 
+void NullOutputStream_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("NullOutputStream", "OutputStream");
+    java_register_method("NullOutputStream", "write", (void*) NullOutputStream_write2);
+    java_register_method("NullOutputStream", "write@2", (void*) NullOutputStream_write2);
+    java_register_method("NullOutputStream", "write@4", (void*) NullOutputStream_write4);
+    java_register_method("NullOutputStream", "close", (void*) NullOutputStream_close);
+}
+
 void NullOutputStream_init(NullOutputStream* this) {
+    NullOutputStream_register();
     OutputStream_init(&this->base);
 }
 
 NullOutputStream* NullOutputStream_new(void) {
-    NullOutputStream* this = calloc(1, sizeof(NullOutputStream));
+    NullOutputStream* this = java_object_alloc(sizeof(NullOutputStream), "NullOutputStream");
     NullOutputStream_init(this);
     return this;
 }
 
 
 // throws IOException
-void NullOutputStream_write(NullOutputStream* this, int32_t b) {
+void NullOutputStream_write2(NullOutputStream* this, int32_t b) {
 }
 
 
 // throws IOException
 // Java overloaded method: C needs a different name
-void NullOutputStream_write(NullOutputStream* this, int8_t* b, int32_t off, int32_t len) {
+void NullOutputStream_write4(NullOutputStream* this, int8_t* b, int32_t off, int32_t len) {
 }
 
 

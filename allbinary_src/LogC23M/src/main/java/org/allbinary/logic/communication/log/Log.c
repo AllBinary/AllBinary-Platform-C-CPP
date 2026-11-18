@@ -2,6 +2,9 @@
 #include "org/allbinary/logic/communication/log/Log.h"
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/logic/communication/log/LogFormatUtil.h"
+#if __has_include("org/allbinary/string/CommonStrings.h")
+#include "org/allbinary/string/CommonStrings.h"
+#endif
 
 
 

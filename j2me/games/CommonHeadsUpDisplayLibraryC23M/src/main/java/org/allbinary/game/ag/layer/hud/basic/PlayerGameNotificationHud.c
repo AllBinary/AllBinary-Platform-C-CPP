@@ -1,41 +1,16 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.ag.layer.hud.basic
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Font.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/game/ag/layer/hud/basic/PlayerGameNotificationHud.h"
+#include "javax/microedition/lcdui/Font.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/business/advertisement/GameAdStateFactory.h"
 #include "org/allbinary/canvas/Processor.h"
 #include "org/allbinary/game/GameAdState.h"
 #include "org/allbinary/game/ag/layer/hud/basic/notification/GameNotification.h"
-#include "org/allbinary/game/ag/layer/hud/basic/notification/GameNotificationHud.h"
 #include "org/allbinary/game/layer/hud/event/GameNotificationEventHandler.h"
 #include "org/allbinary/graphics/CustomGPoint.h"
 #include "org/allbinary/graphics/GPoint.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
 #include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
-#include "org/allbinary/graphics/font/UpdateMyFontInterface.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/logic/string/StringUtil.h"
@@ -44,42 +19,65 @@
 #include "org/allbinary/time/GameTickTimeDelayHelperFactory.h"
 #include "org/allbinary/time/TimeDelayHelper.h"
 #include "org/allbinary/util/CircularIndexUtil.h"
-
-typedef struct PlayerGameNotificationHud PlayerGameNotificationHud;
-struct PlayerGameNotificationHud {
-    GameNotificationHud base;
-    UpdateMyFontInterface UpdateMyFontInterface_interface;
-    GameTickTimeDelayHelper* gameTickTimeDelayHelper;
-    const char* EMPTY_STRING;
-    DisplayInfoSingleton* displayInfo;
-    TimeDelayHelper* timeDelayHelper;
-    CircularIndexUtil* circularIndexUtil;
-    GameNotification* gameNotification;
-    GameNotification* permanentGameNotification;
-    Processor* setAndRemoveProcessor;
-    Processor* nextUnremoveableProcessor;
-    Processor* processor;
-    const char* PERMANENT_GAME_NOTIFICATION;
-    const char* lastString;
-    const char* string;
-    CustomGPoint* point;
-    int32_t width;
-};
+#include "org/allbinary/game/ag/layer/hud/basic/SetAndRemoveProcessor.h"
+#include "org/allbinary/game/ag/layer/hud/basic/NextUnremoveableProcessor.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/business/advertisement/GameAdStateFactory.h")
+#include "org/allbinary/business/advertisement/GameAdStateFactory.h"
+#endif
 
 
-PlayerGameNotificationHud* PlayerGameNotificationHud_new(int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor);
 
-void PlayerGameNotificationHud_init(PlayerGameNotificationHud* this, int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor);
-void PlayerGameNotificationHud_updateMeasurement(PlayerGameNotificationHud* this, Graphics* graphics);
-GPoint* PlayerGameNotificationHud_getPoint(PlayerGameNotificationHud* this, int32_t x, int32_t y);
-void PlayerGameNotificationHud_add(PlayerGameNotificationHud* this, const char* string, int32_t seconds, BasicColor* basicColor, bool permanent);
-void PlayerGameNotificationHud_processTick(PlayerGameNotificationHud* this);
+
+
+
+
+
 static void PlayerGameNotificationHud_setAndRemove(PlayerGameNotificationHud* this);
-void PlayerGameNotificationHud_setAndRemoveProcess(PlayerGameNotificationHud* this);
+
+
 static void PlayerGameNotificationHud_setNextUnremoveable(PlayerGameNotificationHud* this);
-void PlayerGameNotificationHud_setNextUnremoveableProcess(PlayerGameNotificationHud* this);
-void PlayerGameNotificationHud_clear(PlayerGameNotificationHud* this);
-void PlayerGameNotificationHud_paint(PlayerGameNotificationHud* this, Graphics* graphics);
+
+
+
+
+void PlayerGameNotificationHud_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void PlayerGameNotificationHud_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("PlayerGameNotificationHud", "GameNotificationHud");
+    java_register_method("PlayerGameNotificationHud", "updateMeasurement", (void*) PlayerGameNotificationHud_updateMeasurement);
+    java_register_method("PlayerGameNotificationHud", "getPoint", (void*) PlayerGameNotificationHud_getPoint);
+    java_register_method("PlayerGameNotificationHud", "add", (void*) PlayerGameNotificationHud_add);
+    java_register_method("PlayerGameNotificationHud", "processTick", (void*) PlayerGameNotificationHud_processTick);
+    java_register_method("PlayerGameNotificationHud", "setAndRemove", (void*) PlayerGameNotificationHud_setAndRemove);
+    java_register_method("PlayerGameNotificationHud", "setAndRemoveProcess", (void*) PlayerGameNotificationHud_setAndRemoveProcess);
+    java_register_method("PlayerGameNotificationHud", "setNextUnremoveable", (void*) PlayerGameNotificationHud_setNextUnremoveable);
+    java_register_method("PlayerGameNotificationHud", "setNextUnremoveableProcess", (void*) PlayerGameNotificationHud_setNextUnremoveableProcess);
+    java_register_method("PlayerGameNotificationHud", "clear", (void*) PlayerGameNotificationHud_clear);
+    java_register_method("PlayerGameNotificationHud", "paint", (void*) PlayerGameNotificationHud_paint);
+}
 
 static void PlayerGameNotificationHud_initFields(PlayerGameNotificationHud* this) {
     this->gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory_getInstance();
@@ -95,22 +93,23 @@ static void PlayerGameNotificationHud_initFields(PlayerGameNotificationHud* this
     this->PERMANENT_GAME_NOTIFICATION = "Permanent Game Notification: ";
     this->lastString = StringUtil_getInstance()->EMPTY_STRING;
     this->string = this->EMPTY_STRING;
-    this->point = CustomGPoint_NULL_CUSTOM_POINT;
+    this->point = (CustomGPoint_staticInit(), CustomGPoint_NULL_CUSTOM_POINT);
     this->width = 0;
 }
 
 
 void PlayerGameNotificationHud_init(PlayerGameNotificationHud* this, int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor) {
+    PlayerGameNotificationHud_register();
         GameNotificationHud_init(&this->base, location, direction, bufferZone, basicColor);
         PlayerGameNotificationHud_initFields(this);
         this->circularIndexUtil = CircularIndexUtil_createInstance(0);
         GameNotificationEventHandler* gameNotificationEventHandler = GameNotificationEventHandler_getInstance();
         GameNotificationEventHandler_removeAllListeners(gameNotificationEventHandler);
-        GameNotificationEventHandler_addListenerInterface(gameNotificationEventHandler, this);
+        BasicEventHandler_addListenerInterface(gameNotificationEventHandler, this);
 }
 
 PlayerGameNotificationHud* PlayerGameNotificationHud_new(int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor) {
-    PlayerGameNotificationHud* this = calloc(1, sizeof(PlayerGameNotificationHud));
+    PlayerGameNotificationHud* this = java_object_alloc(sizeof(PlayerGameNotificationHud), "PlayerGameNotificationHud");
     PlayerGameNotificationHud_init(this, location, direction, bufferZone, basicColor);
     return this;
 }
@@ -118,7 +117,7 @@ PlayerGameNotificationHud* PlayerGameNotificationHud_new(int32_t location, int32
 
 void PlayerGameNotificationHud_updateMeasurement(PlayerGameNotificationHud* this, Graphics* graphics) {
         JAVA_TRY {
-            GameNotificationHud_updateMeasurement((&this->base), graphics);
+            BasicHud_updateMeasurement((&this->base), graphics);
             Font* font = Graphics_getFont(graphics);
             this->width = Font_stringWidth(font, this->string);
             Processor_process(this->processor);
@@ -143,7 +142,7 @@ void PlayerGameNotificationHud_add(PlayerGameNotificationHud* this, const char* 
         if (Boolean_booleanValue(permanent)) {
             if (this->lastString != string) {
                 this->lastString = string;
-                LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), this->PERMANENT_GAME_NOTIFICATION), append, string), toString), this, this->commonStrings->ADD);
+                LogUtil_putF(this->base.base.logUtil, java_string_of(StringMaker_append(StringMaker_append(StringMaker_new(), this->PERMANENT_GAME_NOTIFICATION), string)), this, this->base.base.commonStrings->ADD);
             }
             GameNotification_add(this->permanentGameNotification, string, seconds, basicColor);
             CircularIndexUtil_setSize(this->circularIndexUtil, GameNotification_getSize(this->permanentGameNotification));
@@ -157,10 +156,10 @@ void PlayerGameNotificationHud_add(PlayerGameNotificationHud* this, const char* 
 void PlayerGameNotificationHud_processTick(PlayerGameNotificationHud* this) {
         if (TimeDelayHelper_isTime(this->timeDelayHelper, this->gameTickTimeDelayHelper->startTime)) {
             GameAdState* gameAdState = GameAdStateFactory_getCurrentInstance(GameAdStateFactory_getInstance());
-            if (GameAdState_isShowingAtLocation(gameAdState, PlayerGameNotificationHud_getLocation(this))) {
-                this->offsetY = -54;
+            if (GameAdStateBase_isShowingAtLocation(gameAdState, BasicHud_getLocation(this))) {
+                this->base.base.offsetY = -54;
             } else {
-                this->offsetY = 0;
+                this->base.base.offsetY = 0;
             }
             if (GameNotification_getSize(this->gameNotification) > 0) {
                 PlayerGameNotificationHud_setAndRemove(this);
@@ -175,23 +174,23 @@ void PlayerGameNotificationHud_processTick(PlayerGameNotificationHud* this) {
 
 // throws Exception
 static void PlayerGameNotificationHud_setAndRemove(PlayerGameNotificationHud* this) {
-        this->string = ((const char*) JAVA_CALL(this->gameNotification->stringList, removeAt, 0));
+        this->string = ((const char*) BasicArrayList_removeAt(this->gameNotification->stringList, 0));
         this->processor = this->setAndRemoveProcessor;
 }
 
 
 // throws Exception
 void PlayerGameNotificationHud_setAndRemoveProcess(PlayerGameNotificationHud* this) {
-        PlayerGameNotificationHud_setX(this, (DisplayInfoSingleton_getLastWidth(this->displayInfo) - this->width) >> 1);
-        CustomGPoint_setX(this->point, PlayerGameNotificationHud_getX(this));
-        CustomGPoint_setY(this->point, PlayerGameNotificationHud_getY(this));
-        int32_t time = ((int32_t) JAVA_CALL(this->gameNotification->timeList, removeAt, 0));
+        BasicHud_setX(this, (DisplayInfoSingleton_getLastWidth(this->displayInfo) - this->width) >> 1);
+        CustomGPoint_setX(this->point, BasicHud_getX(this));
+        CustomGPoint_setY(this->point, BasicHud_getY(this));
+        int32_t time = ((int32_t) BasicArrayList_removeAt(this->gameNotification->timeList, 0));
         int32_t iTime = Integer_intValue(time) * 1000;
         if (iTime == 0) {
             iTime = 500;
         }
         this->timeDelayHelper->delay = iTime;
-        PlayerGameNotificationHud_setBasicColorP(this, ((BasicColor*) JAVA_CALL(this->gameNotification->colorList, removeAt, 0)));
+        BasicHud_setBasicColorP(this, ((BasicColor*) BasicArrayList_removeAt(this->gameNotification->colorList, 0)));
 }
 
 
@@ -206,12 +205,12 @@ static void PlayerGameNotificationHud_setNextUnremoveable(PlayerGameNotification
 // throws Exception
 void PlayerGameNotificationHud_setNextUnremoveableProcess(PlayerGameNotificationHud* this) {
         int32_t index = CircularIndexUtil_getIndex(this->circularIndexUtil);
-        PlayerGameNotificationHud_setX(this, (DisplayInfoSingleton_getLastWidth(this->displayInfo) - this->width) >> 1);
-        CustomGPoint_setX(this->point, PlayerGameNotificationHud_getX(this));
-        CustomGPoint_setY(this->point, PlayerGameNotificationHud_getY(this));
+        BasicHud_setX(this, (DisplayInfoSingleton_getLastWidth(this->displayInfo) - this->width) >> 1);
+        CustomGPoint_setX(this->point, BasicHud_getX(this));
+        CustomGPoint_setY(this->point, BasicHud_getY(this));
         int32_t time = ((int32_t) this->permanentGameNotification->timeList->objectArray[index]);
         this->timeDelayHelper->delay = Integer_intValue(time) * 1000;
-        PlayerGameNotificationHud_setBasicColorP(this, ((BasicColor*) this->permanentGameNotification->colorList->objectArray[index]));
+        BasicHud_setBasicColorP(this, ((BasicColor*) this->permanentGameNotification->colorList->objectArray[index]));
         CircularIndexUtil_next(this->circularIndexUtil);
 }
 
@@ -223,7 +222,7 @@ void PlayerGameNotificationHud_clear(PlayerGameNotificationHud* this) {
 
 
 void PlayerGameNotificationHud_paint(PlayerGameNotificationHud* this, Graphics* graphics) {
-        JAVA_CALL(this->myFontProcessor, process, graphics);
-        GameNotificationHud_paintString((&this->base), graphics, this->string);
+        MyFontProcessor_process(this->base.base.myFontProcessor, graphics);
+        BasicHud_paintString((&this->base), graphics, this->string);
 }
 

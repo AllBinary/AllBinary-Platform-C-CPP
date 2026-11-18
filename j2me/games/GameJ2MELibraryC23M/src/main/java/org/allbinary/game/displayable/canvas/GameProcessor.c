@@ -1,41 +1,28 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.displayable.canvas
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-#include "org/allbinary/canvas/Processor.h"
-
-typedef struct GameProcessor GameProcessor;
-struct GameProcessor {
-    Processor base;
-    AllBinaryGameCanvas* gameCanvas;
-};
+#include "org/allbinary/game/displayable/canvas/GameProcessor.h"
+#include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
 
-GameProcessor* GameProcessor_new(AllBinaryGameCanvas* gameCanvas);
 
-void GameProcessor_init(GameProcessor* this, AllBinaryGameCanvas* gameCanvas);
-void GameProcessor_process(GameProcessor* this);
+
+
+void GameProcessor_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void GameProcessor_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GameProcessor", "Processor");
+    java_register_method("GameProcessor", "process", (void*) GameProcessor_process);
+}
 
 static void GameProcessor_initFields(GameProcessor* this) {
     
@@ -43,13 +30,14 @@ static void GameProcessor_initFields(GameProcessor* this) {
 
 
 void GameProcessor_init(GameProcessor* this, AllBinaryGameCanvas* gameCanvas) {
+    GameProcessor_register();
     Processor_init(&this->base);
     GameProcessor_initFields(this);
         this->gameCanvas = gameCanvas;
 }
 
 GameProcessor* GameProcessor_new(AllBinaryGameCanvas* gameCanvas) {
-    GameProcessor* this = calloc(1, sizeof(GameProcessor));
+    GameProcessor* this = java_object_alloc(sizeof(GameProcessor), "GameProcessor");
     GameProcessor_init(this, gameCanvas);
     return this;
 }

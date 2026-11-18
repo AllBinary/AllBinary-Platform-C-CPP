@@ -1,49 +1,38 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.displayable
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/displayable/GameLevelDisplayChangeEventListenersFactory.h"
 #include "org/allbinary/graphics/displayable/event/DisplayChangeEventHandler.h"
 #include "org/allbinary/graphics/displayable/event/DisplayChangeEventListener.h"
 #include "org/allbinary/logic/util/event/handler/BasicEventHandler.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
+#if __has_include("org/allbinary/graphics/displayable/event/DisplayChangeEventHandler.h")
+#include "org/allbinary/graphics/displayable/event/DisplayChangeEventHandler.h"
+#endif
 
-typedef struct GameLevelDisplayChangeEventListenersFactory GameLevelDisplayChangeEventListenersFactory;
-struct GameLevelDisplayChangeEventListenersFactory {
-    BasicArrayList* list;
-};
 
 static GameLevelDisplayChangeEventListenersFactory* GameLevelDisplayChangeEventListenersFactory_instance;
 
-GameLevelDisplayChangeEventListenersFactory* GameLevelDisplayChangeEventListenersFactory_new(void);
-GameLevelDisplayChangeEventListenersFactory* GameLevelDisplayChangeEventListenersFactory_getInstance(void);
-void GameLevelDisplayChangeEventListenersFactory_add(GameLevelDisplayChangeEventListenersFactory* this, DisplayChangeEventListener* displayChangeEventListener);
-void GameLevelDisplayChangeEventListenersFactory_clear(GameLevelDisplayChangeEventListenersFactory* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
 void GameLevelDisplayChangeEventListenersFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     GameLevelDisplayChangeEventListenersFactory_instance = GameLevelDisplayChangeEventListenersFactory_new();
+}
+
+void GameLevelDisplayChangeEventListenersFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GameLevelDisplayChangeEventListenersFactory", nullptr);
+    java_register_method("GameLevelDisplayChangeEventListenersFactory", "add", (void*) GameLevelDisplayChangeEventListenersFactory_add);
+    java_register_method("GameLevelDisplayChangeEventListenersFactory", "clear", (void*) GameLevelDisplayChangeEventListenersFactory_clear);
 }
 
 static void GameLevelDisplayChangeEventListenersFactory_initFields(GameLevelDisplayChangeEventListenersFactory* this) {
@@ -51,24 +40,25 @@ static void GameLevelDisplayChangeEventListenersFactory_initFields(GameLevelDisp
 }
 
 void GameLevelDisplayChangeEventListenersFactory_init(GameLevelDisplayChangeEventListenersFactory* this) {
+    GameLevelDisplayChangeEventListenersFactory_register();
     GameLevelDisplayChangeEventListenersFactory_initFields(this);
 }
 
 GameLevelDisplayChangeEventListenersFactory* GameLevelDisplayChangeEventListenersFactory_new(void) {
-    GameLevelDisplayChangeEventListenersFactory* this = calloc(1, sizeof(GameLevelDisplayChangeEventListenersFactory));
+    GameLevelDisplayChangeEventListenersFactory* this = java_object_alloc(sizeof(GameLevelDisplayChangeEventListenersFactory), "GameLevelDisplayChangeEventListenersFactory");
     GameLevelDisplayChangeEventListenersFactory_init(this);
     return this;
 }
 
 
 GameLevelDisplayChangeEventListenersFactory* GameLevelDisplayChangeEventListenersFactory_getInstance(void) {
-        return GameLevelDisplayChangeEventListenersFactory_instance;
+        return (GameLevelDisplayChangeEventListenersFactory_staticInit(), GameLevelDisplayChangeEventListenersFactory_instance);
 }
 
 
 void GameLevelDisplayChangeEventListenersFactory_add(GameLevelDisplayChangeEventListenersFactory* this, DisplayChangeEventListener* displayChangeEventListener) {
         BasicArrayList_add(this->list, displayChangeEventListener);
-        DisplayChangeEventHandler_addListenerInterface(DisplayChangeEventHandler_getInstance(), displayChangeEventListener);
+        BasicEventHandler_addListenerInterface(DisplayChangeEventHandler_getInstance(), displayChangeEventListener);
 }
 
 

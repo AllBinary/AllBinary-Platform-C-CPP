@@ -1,50 +1,40 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.data
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/data/CamelCaseUtil.h"
 #include "org/allbinary/logic/string/StringMaker.h"
-#include "org/allbinary/logic/string/StringUtil.h"
 #include "org/allbinary/logic/string/StringValidationUtil.h"
 #include "org/allbinary/logic/string/tokens/Tokenizer.h"
 #include "org/allbinary/string/CommonSeps.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
 
-typedef struct CamelCaseUtil CamelCaseUtil;
-struct CamelCaseUtil {
-    CommonSeps* commonSeps;
-};
 
 static CamelCaseUtil* CamelCaseUtil_instance;
 
-CamelCaseUtil* CamelCaseUtil_new(void);
-CamelCaseUtil* CamelCaseUtil_getInstance(void);
-const char* CamelCaseUtil_getAsCamelCase(CamelCaseUtil* this, const char* string, StringMaker* stringBuilder);
 
-// Static fields with runtime initializers: call this once at startup
+
 void CamelCaseUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     CamelCaseUtil_instance = CamelCaseUtil_new();
+}
+
+void CamelCaseUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("CamelCaseUtil", nullptr);
+    java_register_method("CamelCaseUtil", "getAsCamelCase", (void*) CamelCaseUtil_getAsCamelCase);
 }
 
 static void CamelCaseUtil_initFields(CamelCaseUtil* this) {
@@ -52,18 +42,19 @@ static void CamelCaseUtil_initFields(CamelCaseUtil* this) {
 }
 
 void CamelCaseUtil_init(CamelCaseUtil* this) {
+    CamelCaseUtil_register();
     CamelCaseUtil_initFields(this);
 }
 
 CamelCaseUtil* CamelCaseUtil_new(void) {
-    CamelCaseUtil* this = calloc(1, sizeof(CamelCaseUtil));
+    CamelCaseUtil* this = java_object_alloc(sizeof(CamelCaseUtil), "CamelCaseUtil");
     CamelCaseUtil_init(this);
     return this;
 }
 
 
 CamelCaseUtil* CamelCaseUtil_getInstance(void) {
-        return CamelCaseUtil_instance;
+        return (CamelCaseUtil_staticInit(), CamelCaseUtil_instance);
 }
 
 
@@ -78,9 +69,9 @@ const char* CamelCaseUtil_getAsCamelCase(CamelCaseUtil* this, const char* string
         const char* word = nullptr;
         for (int32_t i = 0; i < size; i++) {
             word = ((const char*) BasicArrayList_get(list, i));
-            word = (StringValidationUtil_isEmpty(stringValidationUtil, word) ? word : JAVA_CALL(JAVA_CALL(StringMaker_appendchar(StringMaker_new(), ((uint16_t) toupper(((uint16_t) word[0])))), append, java_string_toLowerCase(java_substring(word, 1, (int32_t) strlen(word)))), toString));
+            word = (StringValidationUtil_isEmpty(stringValidationUtil, word) ? word : java_string_of(StringMaker_append(StringMaker_appendchar(StringMaker_new(), ((uint16_t) toupper(((uint16_t) word[0])))), java_string_toLowerCase(java_substring(word, 1, (int32_t) strlen(word))))));
             StringMaker_append(stringBuilder, word);
         }
-        return StringMaker_toString(stringBuilder);
+        return java_string_of(stringBuilder);
 }
 

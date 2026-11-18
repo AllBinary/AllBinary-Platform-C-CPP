@@ -1,48 +1,35 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- * 
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.collision.layer
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-#include "org/allbinary/layer/LayerManager.h"
+#include "org/allbinary/game/collision/layer/CollidableInterfaceLayerManager.h"
 #include "org/allbinary/layer/LayerManagerNoDebug.h"
 
-typedef struct CollidableInterfaceLayerManager CollidableInterfaceLayerManager;
-struct CollidableInterfaceLayerManager {
-    LayerManager base;
-};
 
 
-CollidableInterfaceLayerManager* CollidableInterfaceLayerManager_new(void);
 
-void CollidableInterfaceLayerManager_init(CollidableInterfaceLayerManager* this);
+void CollidableInterfaceLayerManager_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void CollidableInterfaceLayerManager_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("CollidableInterfaceLayerManager", "LayerManager");
+}
 
 
 void CollidableInterfaceLayerManager_init(CollidableInterfaceLayerManager* this) {
+    CollidableInterfaceLayerManager_register();
         LayerManager_init(&this->base, LayerManagerNoDebug_getInstance());
 }
 
 CollidableInterfaceLayerManager* CollidableInterfaceLayerManager_new(void) {
-    CollidableInterfaceLayerManager* this = calloc(1, sizeof(CollidableInterfaceLayerManager));
+    CollidableInterfaceLayerManager* this = java_object_alloc(sizeof(CollidableInterfaceLayerManager), "CollidableInterfaceLayerManager");
     CollidableInterfaceLayerManager_init(this);
     return this;
 }

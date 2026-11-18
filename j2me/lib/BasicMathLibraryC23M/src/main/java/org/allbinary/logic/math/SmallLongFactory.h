@@ -52,6 +52,8 @@ void SmallLongFactory_init(SmallLongFactory* this);
 int64_t SmallLongFactory_getInstanceNoThrow(SmallLongFactory* this, int64_t index);
 
 const char* SmallLongFactory_getString(SmallLongFactory* this, int32_t index);
+#define SmallLongFactory_new0 SmallLongFactory_new
+#define SmallLongFactory_init0 SmallLongFactory_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void SmallLongFactory_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

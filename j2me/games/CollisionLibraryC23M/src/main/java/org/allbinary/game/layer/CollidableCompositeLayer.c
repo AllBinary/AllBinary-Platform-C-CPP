@@ -1,33 +1,9 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.layer
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/layer/CollidableCompositeLayer.h"
 #include "org/allbinary/ai/ArtificialIntelligence.h"
 #include "org/allbinary/ai/ArtificialIntelligenceInterface.h"
 #include "org/allbinary/game/collision/CollidableBaseBehavior.h"
 #include "org/allbinary/game/collision/CollidableBaseBehaviorFactory.h"
-#include "org/allbinary/game/collision/CollidableInterfaceCompositeInterface.h"
 #include "org/allbinary/game/collision/CollidableNeverCollideBehaviorFactory.h"
 #include "org/allbinary/graphics/Rectangle.h"
 #include "org/allbinary/graphics/RectangleFactory.h"
@@ -38,30 +14,55 @@
 #include "org/allbinary/view/ViewPositionBase.h"
 #include "org/allbinary/logic/NullUtil.h"
 #include "org/allbinary/game/layer/AllBinaryGameLayer.h"
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/game/collision/CollidableNeverCollideBehaviorFactory.h")
+#include "org/allbinary/game/collision/CollidableNeverCollideBehaviorFactory.h"
+#endif
+#if __has_include("org/allbinary/game/collision/CollidableBaseBehavior.h")
+#include "org/allbinary/game/collision/CollidableBaseBehavior.h"
+#endif
 
-typedef struct CollidableCompositeLayer CollidableCompositeLayer;
-struct CollidableCompositeLayer {
-    AllBinaryGameLayer base;
-    CollidableInterfaceCompositeInterface CollidableInterfaceCompositeInterface_interface;
-    CollidableBaseBehavior* collidableInferface;
-};
 
-static Any* CollidableCompositeLayer_NULL_COLLIDABLE_COMPOSITE_LAYER;
+static void* CollidableCompositeLayer_NULL_COLLIDABLE_COMPOSITE_LAYER;
 
-CollidableCompositeLayer* CollidableCompositeLayer_new(const char* name, Rectangle* layerInfo, ViewPositionBase* viewPosition, CollidableBaseBehaviorFactory* collidableBaseBehaviorFactory);
-CollidableCompositeLayer* CollidableCompositeLayer_getNullInstance(void);
 
-void CollidableCompositeLayer_init(CollidableCompositeLayer* this, const char* name, Rectangle* layerInfo, ViewPositionBase* viewPosition, CollidableBaseBehaviorFactory* collidableBaseBehaviorFactory);
-ArtificialIntelligenceInterface* CollidableCompositeLayer_getArtificialIntelligenceInterface(CollidableCompositeLayer* this);
-CollidableBaseBehavior* CollidableCompositeLayer_getCollidableInferface(CollidableCompositeLayer* this);
-void CollidableCompositeLayer_setCollidableInferface(CollidableCompositeLayer* this, CollidableBaseBehavior* collidableInferface);
-bool CollidableCompositeLayer_implmentsCollidableInterface(CollidableCompositeLayer* this);
-void CollidableCompositeLayer_toStringAppend(CollidableCompositeLayer* this, StringMaker* stringBuffer);
-const char* CollidableCompositeLayer_toString(CollidableCompositeLayer* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+
+
 void CollidableCompositeLayer_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     CollidableCompositeLayer_NULL_COLLIDABLE_COMPOSITE_LAYER = NullUtil_getInstance()->NULL_OBJECT;
+}
+
+void CollidableCompositeLayer_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("CollidableCompositeLayer", "AllBinaryGameLayer");
+    java_register_method("CollidableCompositeLayer", "getArtificialIntelligenceInterface", (void*) CollidableCompositeLayer_getArtificialIntelligenceInterface);
+    java_register_method("CollidableCompositeLayer", "getCollidableInferface", (void*) CollidableCompositeLayer_getCollidableInferface);
+    java_register_method("CollidableCompositeLayer", "setCollidableInferface", (void*) CollidableCompositeLayer_setCollidableInferface);
+    java_register_method("CollidableCompositeLayer", "implmentsCollidableInterface", (void*) CollidableCompositeLayer_implmentsCollidableInterface);
+    java_register_method("CollidableCompositeLayer", "toStringAppend", (void*) CollidableCompositeLayer_toStringAppend);
+    java_register_method("CollidableCompositeLayer", "toString", (void*) CollidableCompositeLayer_toString);
 }
 
 static void CollidableCompositeLayer_initFields(CollidableCompositeLayer* this) {
@@ -70,14 +71,15 @@ static void CollidableCompositeLayer_initFields(CollidableCompositeLayer* this) 
 
 
 CollidableCompositeLayer* CollidableCompositeLayer_getNullInstance(void) {
-        if (CollidableCompositeLayer_NULL_COLLIDABLE_COMPOSITE_LAYER == NullUtil_getInstance()->NULL_OBJECT) {
-            CollidableCompositeLayer_NULL_COLLIDABLE_COMPOSITE_LAYER = CollidableCompositeLayer_new(StringUtil_getInstance()->EMPTY_STRING, RectangleFactory_SINGLETON, ViewPositionBase_NULL_VIEW_POSITION, CollidableNeverCollideBehaviorFactory_getInstance());
+        if ((CollidableCompositeLayer_staticInit(), CollidableCompositeLayer_NULL_COLLIDABLE_COMPOSITE_LAYER) == NullUtil_getInstance()->NULL_OBJECT) {
+            CollidableCompositeLayer_NULL_COLLIDABLE_COMPOSITE_LAYER = CollidableCompositeLayer_new(StringUtil_getInstance()->EMPTY_STRING, (RectangleFactory_staticInit(), RectangleFactory_SINGLETON), (ViewPositionBase_staticInit(), ViewPositionBase_NULL_VIEW_POSITION), CollidableNeverCollideBehaviorFactory_getInstance());
         }
-        return ((CollidableCompositeLayer*) CollidableCompositeLayer_NULL_COLLIDABLE_COMPOSITE_LAYER);
+        return ((CollidableCompositeLayer*) (CollidableCompositeLayer_staticInit(), CollidableCompositeLayer_NULL_COLLIDABLE_COMPOSITE_LAYER));
 }
 
 
 void CollidableCompositeLayer_init(CollidableCompositeLayer* this, const char* name, Rectangle* layerInfo, ViewPositionBase* viewPosition, CollidableBaseBehaviorFactory* collidableBaseBehaviorFactory) {
+    CollidableCompositeLayer_register();
         AllBinaryGameLayer_init(&this->base, name, layerInfo, viewPosition);
         CollidableCompositeLayer_initFields(this);
         if (collidableBaseBehaviorFactory != CollidableNeverCollideBehaviorFactory_getInstance()) {
@@ -86,14 +88,14 @@ void CollidableCompositeLayer_init(CollidableCompositeLayer* this, const char* n
 }
 
 CollidableCompositeLayer* CollidableCompositeLayer_new(const char* name, Rectangle* layerInfo, ViewPositionBase* viewPosition, CollidableBaseBehaviorFactory* collidableBaseBehaviorFactory) {
-    CollidableCompositeLayer* this = calloc(1, sizeof(CollidableCompositeLayer));
+    CollidableCompositeLayer* this = java_object_alloc(sizeof(CollidableCompositeLayer), "CollidableCompositeLayer");
     CollidableCompositeLayer_init(this, name, layerInfo, viewPosition, collidableBaseBehaviorFactory);
     return this;
 }
 
 
 ArtificialIntelligenceInterface* CollidableCompositeLayer_getArtificialIntelligenceInterface(CollidableCompositeLayer* this) {
-        ForcedLogUtil_log(this->commonStrings->NOT_IMPLEMENTED, this);
+        ForcedLogUtil_log(this->base.commonStrings->NOT_IMPLEMENTED, this);
         return ArtificialIntelligence_getInstance();
 }
 
@@ -115,15 +117,15 @@ bool CollidableCompositeLayer_implmentsCollidableInterface(CollidableCompositeLa
 
 void CollidableCompositeLayer_toStringAppend(CollidableCompositeLayer* this, StringMaker* stringBuffer) {
         CommonSeps* commonSeps = CommonSeps_getInstance();
-        AllBinaryGameLayer_toStringAppend((&this->base), stringBuffer);
+        AllBinaryLayer_toStringAppend((&this->base), stringBuffer);
         StringMaker_append(stringBuffer, commonSeps->NEW_LINE);
-        StringMaker_append(stringBuffer, JAVA_CALL(CollidableCompositeLayer_getCollidableInferface(this), toString));
+        StringMaker_append(stringBuffer, java_string_of(CollidableCompositeLayer_getCollidableInferface(this)));
 }
 
 
 const char* CollidableCompositeLayer_toString(CollidableCompositeLayer* this) {
         StringMaker* stringBuffer = StringMaker_new();
         CollidableCompositeLayer_toStringAppend(this, stringBuffer);
-        return StringMaker_toString(stringBuffer);
+        return java_string_of(stringBuffer);
 }
 

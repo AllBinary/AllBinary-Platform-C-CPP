@@ -1,51 +1,41 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.layer
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/layer/BasicLayerProcessor.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
+#include "org/allbinary/layer/AllBinaryLayer.h"
+#include "org/allbinary/layer/AllBinaryLayerManager.h"
+#if __has_include("org/allbinary/string/CommonStrings.h")
+#include "org/allbinary/string/CommonStrings.h"
+#endif
 
-typedef struct BasicLayerProcessor BasicLayerProcessor;
-struct BasicLayerProcessor {
-    LogUtil* logUtil;
-    BasicArrayList* list;
-};
 
 BasicLayerProcessor* BasicLayerProcessor_NULL_LAYER_PROCESSOR;
 
-BasicLayerProcessor* BasicLayerProcessor_new(void);
 
-void BasicLayerProcessor_init(BasicLayerProcessor* this);
-void BasicLayerProcessor_add(BasicLayerProcessor* this, AllBinaryLayer* layerInterface);
-void BasicLayerProcessor_process(BasicLayerProcessor* this, AllBinaryLayerManager* allBinaryLayerManager);
-BasicArrayList* BasicLayerProcessor_getList(BasicLayerProcessor* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
 void BasicLayerProcessor_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     BasicLayerProcessor_NULL_LAYER_PROCESSOR = BasicLayerProcessor_new();
+}
+
+void BasicLayerProcessor_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("BasicLayerProcessor", nullptr);
+    java_register_method("BasicLayerProcessor", "add", (void*) BasicLayerProcessor_add);
+    java_register_method("BasicLayerProcessor", "process", (void*) BasicLayerProcessor_process);
+    java_register_method("BasicLayerProcessor", "getList", (void*) BasicLayerProcessor_getList);
 }
 
 static void BasicLayerProcessor_initFields(BasicLayerProcessor* this) {
@@ -55,11 +45,12 @@ static void BasicLayerProcessor_initFields(BasicLayerProcessor* this) {
 
 
 void BasicLayerProcessor_init(BasicLayerProcessor* this) {
+    BasicLayerProcessor_register();
     BasicLayerProcessor_initFields(this);
 }
 
 BasicLayerProcessor* BasicLayerProcessor_new(void) {
-    BasicLayerProcessor* this = calloc(1, sizeof(BasicLayerProcessor));
+    BasicLayerProcessor* this = java_object_alloc(sizeof(BasicLayerProcessor), "BasicLayerProcessor");
     BasicLayerProcessor_init(this);
     return this;
 }

@@ -1,49 +1,37 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input.motion.button
+#include "org/allbinary/input/motion/button/TouchButtonsBuilderFactory.h"
+#include "org/allbinary/input/motion/button/NoButtonsTouchInputFactory.h"
+#include "org/allbinary/input/motion/button/BaseTouchInput.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct TouchButtonsBuilderFactory TouchButtonsBuilderFactory;
-struct TouchButtonsBuilderFactory {
-    char unused;
-};
 
 TouchButtonsBuilderFactory* TouchButtonsBuilderFactory_NO_TOUCH_BUTTON_BUILDER_FACTORY;
 
-TouchButtonsBuilderFactory* TouchButtonsBuilderFactory_new(void);
-BaseTouchInput* TouchButtonsBuilderFactory_getInstance(TouchButtonsBuilderFactory* this);
 
-// Static fields with runtime initializers: call this once at startup
 void TouchButtonsBuilderFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     TouchButtonsBuilderFactory_NO_TOUCH_BUTTON_BUILDER_FACTORY = TouchButtonsBuilderFactory_new();
 }
 
+void TouchButtonsBuilderFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("TouchButtonsBuilderFactory", nullptr);
+    java_register_method("TouchButtonsBuilderFactory", "getInstance", (void*) TouchButtonsBuilderFactory_getInstance);
+}
+
 void TouchButtonsBuilderFactory_init(TouchButtonsBuilderFactory* this) {
+    TouchButtonsBuilderFactory_register();
 }
 
 TouchButtonsBuilderFactory* TouchButtonsBuilderFactory_new(void) {
-    TouchButtonsBuilderFactory* this = calloc(1, sizeof(TouchButtonsBuilderFactory));
+    TouchButtonsBuilderFactory* this = java_object_alloc(sizeof(TouchButtonsBuilderFactory), "TouchButtonsBuilderFactory");
     TouchButtonsBuilderFactory_init(this);
     return this;
 }

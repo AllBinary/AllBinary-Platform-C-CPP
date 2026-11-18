@@ -1,42 +1,31 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct VectorExplosionType VectorExplosionType;
-struct VectorExplosionType {
-    char unused;
-};
+#include "org/allbinary/animation/VectorExplosionType.h"
 
 
-VectorExplosionType* VectorExplosionType_new(void);
+
+void VectorExplosionType_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void VectorExplosionType_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("VectorExplosionType", nullptr);
+}
 
 void VectorExplosionType_init(VectorExplosionType* this) {
+    VectorExplosionType_register();
 }
 
 VectorExplosionType* VectorExplosionType_new(void) {
-    VectorExplosionType* this = calloc(1, sizeof(VectorExplosionType));
+    VectorExplosionType* this = java_object_alloc(sizeof(VectorExplosionType), "VectorExplosionType");
     VectorExplosionType_init(this);
     return this;
 }

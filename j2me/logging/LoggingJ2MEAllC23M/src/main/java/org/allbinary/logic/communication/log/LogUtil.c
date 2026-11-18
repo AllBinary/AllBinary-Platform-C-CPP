@@ -6,6 +6,42 @@
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/logic/communication/log/LogFormatUtil.h"
 #include "org/allbinary/logic/communication/log/Log.h"
+#if __has_include("org/allbinary/string/CommonStrings.h")
+#include "org/allbinary/string/CommonStrings.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/string/CommonSeps.h")
+#include "org/allbinary/string/CommonSeps.h"
+#endif
+#if __has_include("org/allbinary/TsUtil.h")
+#include "org/allbinary/TsUtil.h"
+#endif
+#if __has_include("org/allbinary/string/CommonStrings.h")
+#include "org/allbinary/string/CommonStrings.h"
+#endif
+#if __has_include("org/allbinary/TsUtil.h")
+#include "org/allbinary/TsUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/string/CommonSeps.h")
+#include "org/allbinary/string/CommonSeps.h"
+#endif
 
 
 static LogUtil* LogUtil_instance;

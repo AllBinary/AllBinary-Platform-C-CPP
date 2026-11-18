@@ -1,49 +1,28 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.audio
+#include "org/allbinary/audio/AudioContentTypeDataFactory.h"
+#include "org/allbinary/audio/AudioContentTypeData.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct AudioContentTypeDataFactory AudioContentTypeDataFactory;
-struct AudioContentTypeDataFactory {
-    AudioContentTypeData* MIME_AUDIO_TONE;
-    AudioContentTypeData* MIME_AUDIO_AMR;
-    AudioContentTypeData* MIME_AUDIO_AMR_WB;
-    AudioContentTypeData* MIME_AUDIO_WAV;
-    AudioContentTypeData* MIME_AUDIO_MIDI;
-    AudioContentTypeData* MIME_AUDIO_SP_MIDI;
-};
 
 static AudioContentTypeDataFactory* AudioContentTypeDataFactory_instance;
 
-AudioContentTypeDataFactory* AudioContentTypeDataFactory_new(void);
-AudioContentTypeDataFactory* AudioContentTypeDataFactory_getInstance(void);
 
-void AudioContentTypeDataFactory_init(AudioContentTypeDataFactory* this);
 
-// Static fields with runtime initializers: call this once at startup
 void AudioContentTypeDataFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     AudioContentTypeDataFactory_instance = AudioContentTypeDataFactory_new();
+}
+
+void AudioContentTypeDataFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("AudioContentTypeDataFactory", nullptr);
 }
 
 static void AudioContentTypeDataFactory_initFields(AudioContentTypeDataFactory* this) {
@@ -57,16 +36,17 @@ static void AudioContentTypeDataFactory_initFields(AudioContentTypeDataFactory* 
 
 
 AudioContentTypeDataFactory* AudioContentTypeDataFactory_getInstance(void) {
-        return AudioContentTypeDataFactory_instance;
+        return (AudioContentTypeDataFactory_staticInit(), AudioContentTypeDataFactory_instance);
 }
 
 
 void AudioContentTypeDataFactory_init(AudioContentTypeDataFactory* this) {
+    AudioContentTypeDataFactory_register();
     AudioContentTypeDataFactory_initFields(this);
 }
 
 AudioContentTypeDataFactory* AudioContentTypeDataFactory_new(void) {
-    AudioContentTypeDataFactory* this = calloc(1, sizeof(AudioContentTypeDataFactory));
+    AudioContentTypeDataFactory* this = java_object_alloc(sizeof(AudioContentTypeDataFactory), "AudioContentTypeDataFactory");
     AudioContentTypeDataFactory_init(this);
     return this;
 }

@@ -1,65 +1,75 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input.motion.gyro.action
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/input/motion/gyro/action/LeftOrientationInputToGameKeyEventAction.h"
 #include "org/allbinary/game/input/PlatformInputMappingFactory.h"
-#include "org/allbinary/game/input/motion/action/GameKeyCompleteMotionGestureInputEvent.h"
 #include "org/allbinary/input/gyro/OrientationMotionGestureFactory.h"
 #include "org/allbinary/logic/NullUtil.h"
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/input/gyro/OrientationMotionGestureFactory.h")
+#include "org/allbinary/input/gyro/OrientationMotionGestureFactory.h"
+#endif
+#if __has_include("org/allbinary/input/motion/gyro/action/PersistentInputMapping.h")
+#include "org/allbinary/input/motion/gyro/action/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/input/PersistentInputMapping.h")
+#include "org/allbinary/game/input/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/input/motion/action/PersistentInputMapping.h")
+#include "org/allbinary/game/input/motion/action/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/input/gyro/PersistentInputMapping.h")
+#include "org/allbinary/input/gyro/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/logic/PersistentInputMapping.h")
+#include "org/allbinary/logic/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/input/PlatformInputMappingFactory.h")
+#include "org/allbinary/game/input/PlatformInputMappingFactory.h"
+#endif
 
-typedef struct LeftOrientationInputToGameKeyEventAction LeftOrientationInputToGameKeyEventAction;
-struct LeftOrientationInputToGameKeyEventAction {
-    GameKeyCompleteMotionGestureInputEvent base;
-};
 
-static Any* LeftOrientationInputToGameKeyEventAction_instance;
+static void* LeftOrientationInputToGameKeyEventAction_instance;
 
-LeftOrientationInputToGameKeyEventAction* LeftOrientationInputToGameKeyEventAction_new(void);
-GameKeyCompleteMotionGestureInputEvent* LeftOrientationInputToGameKeyEventAction_getInstance(void);
 
-void LeftOrientationInputToGameKeyEventAction_init(LeftOrientationInputToGameKeyEventAction* this);
 
-// Static fields with runtime initializers: call this once at startup
 void LeftOrientationInputToGameKeyEventAction_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     LeftOrientationInputToGameKeyEventAction_instance = NullUtil_getInstance()->NULL_OBJECT;
+}
+
+void LeftOrientationInputToGameKeyEventAction_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("LeftOrientationInputToGameKeyEventAction", "GameKeyCompleteMotionGestureInputEvent");
 }
 
 
 GameKeyCompleteMotionGestureInputEvent* LeftOrientationInputToGameKeyEventAction_getInstance(void) {
-        if (LeftOrientationInputToGameKeyEventAction_instance == NullUtil_getInstance()->NULL_OBJECT) {
+        if ((LeftOrientationInputToGameKeyEventAction_staticInit(), LeftOrientationInputToGameKeyEventAction_instance) == NullUtil_getInstance()->NULL_OBJECT) {
             LeftOrientationInputToGameKeyEventAction_instance = LeftOrientationInputToGameKeyEventAction_new();
         }
-        return ((GameKeyCompleteMotionGestureInputEvent*) LeftOrientationInputToGameKeyEventAction_instance);
+        return ((GameKeyCompleteMotionGestureInputEvent*) (LeftOrientationInputToGameKeyEventAction_staticInit(), LeftOrientationInputToGameKeyEventAction_instance));
 }
 
 
 void LeftOrientationInputToGameKeyEventAction_init(LeftOrientationInputToGameKeyEventAction* this) {
-        GameKeyCompleteMotionGestureInputEvent_init(&this->base, "Left Action", OrientationMotionGestureFactory_getInstance()->LEFT, JAVA_CALL(PlatformInputMappingFactory_getPersistentInputMappingInstance(PlatformInputMappingFactory_getInstance()), getInputMapping));
+    LeftOrientationInputToGameKeyEventAction_register();
+        GameKeyCompleteMotionGestureInputEvent_init(&this->base, "Left Action", OrientationMotionGestureFactory_getInstance()->LEFT, PersistentInputMapping_getInputMapping(PlatformInputMappingFactory_getPersistentInputMappingInstance(PlatformInputMappingFactory_getInstance())));
 }
 
 LeftOrientationInputToGameKeyEventAction* LeftOrientationInputToGameKeyEventAction_new(void) {
-    LeftOrientationInputToGameKeyEventAction* this = calloc(1, sizeof(LeftOrientationInputToGameKeyEventAction));
+    LeftOrientationInputToGameKeyEventAction* this = java_object_alloc(sizeof(LeftOrientationInputToGameKeyEventAction), "LeftOrientationInputToGameKeyEventAction");
     LeftOrientationInputToGameKeyEventAction_init(this);
     return this;
 }

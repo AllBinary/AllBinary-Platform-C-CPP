@@ -1,47 +1,37 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2025 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.emulator.device
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct TrueTypeFontUtilBase TrueTypeFontUtilBase;
-struct TrueTypeFontUtilBase {
-    char unused;
-};
+#include "org/allbinary/emulator/device/TrueTypeFontUtilBase.h"
 
 
-TrueTypeFontUtilBase* TrueTypeFontUtilBase_new(int32_t scale);
 
-void TrueTypeFontUtilBase_init(TrueTypeFontUtilBase* this, int32_t scale);
-int32_t TrueTypeFontUtilBase_getAsTextureSize(TrueTypeFontUtilBase* this, int32_t textureSize);
-int32_t TrueTypeFontUtilBase_getCellSize(TrueTypeFontUtilBase* this, int32_t cellSize);
+
+
+
+void TrueTypeFontUtilBase_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void TrueTypeFontUtilBase_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("TrueTypeFontUtilBase", nullptr);
+    java_register_method("TrueTypeFontUtilBase", "getAsTextureSize", (void*) TrueTypeFontUtilBase_getAsTextureSize);
+    java_register_method("TrueTypeFontUtilBase", "getCellSize", (void*) TrueTypeFontUtilBase_getCellSize);
+}
 
 
 void TrueTypeFontUtilBase_init(TrueTypeFontUtilBase* this, int32_t scale) {
+    TrueTypeFontUtilBase_register();
 }
 
 TrueTypeFontUtilBase* TrueTypeFontUtilBase_new(int32_t scale) {
-    TrueTypeFontUtilBase* this = calloc(1, sizeof(TrueTypeFontUtilBase));
+    TrueTypeFontUtilBase* this = java_object_alloc(sizeof(TrueTypeFontUtilBase), "TrueTypeFontUtilBase");
     TrueTypeFontUtilBase_init(this, scale);
     return this;
 }

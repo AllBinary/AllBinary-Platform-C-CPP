@@ -1,45 +1,36 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.score
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/score/HighScoresBase.h"
 #include "org/allbinary/game/GameInfo.h"
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/game/score/HighScoresFactoryInterface.h"
-
-typedef struct HighScoresBase HighScoresBase;
-struct HighScoresBase {
-    HighScoresFactoryInterface HighScoresFactoryInterface_interface;
-    CommonStrings* commonStrings;
-};
+#include "org/allbinary/game/score/HighScoresResultsListener.h"
+#include "org/allbinary/game/score/HighScoresHelperBaseInterface.h"
 
 
-HighScoresBase* HighScoresBase_new(void);
 
-void HighScoresBase_init(HighScoresBase* this);
-void HighScoresBase_fetchHighScores(HighScoresBase* this, GameInfo* gameInfo, HighScoresResultsListener* highScoresResultsListener);
-void HighScoresBase_fetchHighScoresPreload(HighScoresBase* this, GameInfo* gameInfo, HighScoresResultsListener* highScoresResultsListener, bool preload);
-HighScoresHelperBaseInterface* HighScoresBase_createHighScoresHelper(HighScoresBase* this);
+
+
+
+
+void HighScoresBase_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void HighScoresBase_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("HighScoresBase", nullptr);
+    java_register_method("HighScoresBase", "fetchHighScores", (void*) HighScoresBase_fetchHighScores);
+    java_register_method("HighScoresBase", "fetchHighScoresPreload", (void*) HighScoresBase_fetchHighScoresPreload);
+    java_register_method("HighScoresBase", "createHighScoresHelper", (void*) HighScoresBase_createHighScoresHelper);
+}
 
 static void HighScoresBase_initFields(HighScoresBase* this) {
     this->commonStrings = CommonStrings_getInstance();
@@ -47,11 +38,12 @@ static void HighScoresBase_initFields(HighScoresBase* this) {
 
 
 void HighScoresBase_init(HighScoresBase* this) {
+    HighScoresBase_register();
     HighScoresBase_initFields(this);
 }
 
 HighScoresBase* HighScoresBase_new(void) {
-    HighScoresBase* this = calloc(1, sizeof(HighScoresBase));
+    HighScoresBase* this = java_object_alloc(sizeof(HighScoresBase), "HighScoresBase");
     HighScoresBase_init(this);
     return this;
 }

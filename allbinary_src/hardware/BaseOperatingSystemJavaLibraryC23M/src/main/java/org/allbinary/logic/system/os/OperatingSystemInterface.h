@@ -84,5 +84,8 @@ static inline const char* OperatingSystemInterface_toString(void* this) {
     return ((__typeof__(((OperatingSystemInterface*) nullptr)->toString)) java_method_of(this, "toString"))(this);
 }
 
+#if __has_include("org/allbinary/logic/java/character/CharacterSet.h")
+#include "org/allbinary/logic/java/character/CharacterSet.h"
+#endif
 
 #endif // ORG_ALLBINARY_LOGIC_SYSTEM_OS_OPERATINGSYSTEMINTERFACE_H

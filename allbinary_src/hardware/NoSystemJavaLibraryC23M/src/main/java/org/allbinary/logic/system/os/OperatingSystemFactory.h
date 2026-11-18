@@ -52,6 +52,8 @@ OperatingSystemFactory* OperatingSystemFactory_getInstance(void);
 void OperatingSystemFactory_init(OperatingSystemFactory* this);
 
 GenericOperatingSystem* OperatingSystemFactory_getOperatingSystemInstance(OperatingSystemFactory* this);
+#define OperatingSystemFactory_new0 OperatingSystemFactory_new
+#define OperatingSystemFactory_init0 OperatingSystemFactory_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void OperatingSystemFactory_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

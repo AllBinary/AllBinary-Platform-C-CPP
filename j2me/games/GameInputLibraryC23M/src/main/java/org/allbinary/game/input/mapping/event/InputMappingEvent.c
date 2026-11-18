@@ -1,56 +1,44 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.input.mapping.event
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/input/mapping/event/InputMappingEvent.h"
 #include "org/allbinary/game/input/mapping/InputToGameKeyMapping.h"
-#include "org/allbinary/logic/util/event/AllBinaryEventObject.h"
-
-typedef struct InputMappingEvent InputMappingEvent;
-struct InputMappingEvent {
-    AllBinaryEventObject base;
-    InputToGameKeyMapping* inputToGameKeyMapping;
-};
 
 
-InputMappingEvent* InputMappingEvent_new(Any* anyType);
 
-void InputMappingEvent_init(InputMappingEvent* this, Any* anyType);
-void InputMappingEvent_setInputToGameKeyMapping(InputMappingEvent* this, InputToGameKeyMapping* inputToGameKeyMapping);
-InputToGameKeyMapping* InputMappingEvent_getInputToGameKeyMapping(InputMappingEvent* this);
+
+
+
+void InputMappingEvent_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void InputMappingEvent_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("InputMappingEvent", "AllBinaryEventObject");
+    java_register_method("InputMappingEvent", "setInputToGameKeyMapping", (void*) InputMappingEvent_setInputToGameKeyMapping);
+    java_register_method("InputMappingEvent", "getInputToGameKeyMapping", (void*) InputMappingEvent_getInputToGameKeyMapping);
+}
 
 static void InputMappingEvent_initFields(InputMappingEvent* this) {
     this->inputToGameKeyMapping = InputToGameKeyMapping_getNullInstance();
 }
 
 
-void InputMappingEvent_init(InputMappingEvent* this, Any* anyType) {
+void InputMappingEvent_init(InputMappingEvent* this, void* anyType) {
+    InputMappingEvent_register();
         AllBinaryEventObject_init(&this->base, anyType);
         InputMappingEvent_initFields(this);
 }
 
-InputMappingEvent* InputMappingEvent_new(Any* anyType) {
-    InputMappingEvent* this = calloc(1, sizeof(InputMappingEvent));
+InputMappingEvent* InputMappingEvent_new(void* anyType) {
+    InputMappingEvent* this = java_object_alloc(sizeof(InputMappingEvent), "InputMappingEvent");
     InputMappingEvent_init(this, anyType);
     return this;
 }

@@ -1,52 +1,41 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.input.event
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct GameKeyEventUtil GameKeyEventUtil;
-struct GameKeyEventUtil {
-    char unused;
-};
+#include "org/allbinary/game/input/event/GameKeyEventUtil.h"
+#include "org/allbinary/game/input/event/GameKeyEvent.h"
 
 
-GameKeyEventUtil* GameKeyEventUtil_new(void);
 
-void GameKeyEventUtil_init(GameKeyEventUtil* this);
-int32_t GameKeyEventUtil_getKey(Any* anyType);
+
+
+void GameKeyEventUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void GameKeyEventUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GameKeyEventUtil", nullptr);
+}
 
 
 void GameKeyEventUtil_init(GameKeyEventUtil* this) {
+    GameKeyEventUtil_register();
 }
 
 GameKeyEventUtil* GameKeyEventUtil_new(void) {
-    GameKeyEventUtil* this = calloc(1, sizeof(GameKeyEventUtil));
+    GameKeyEventUtil* this = java_object_alloc(sizeof(GameKeyEventUtil), "GameKeyEventUtil");
     GameKeyEventUtil_init(this);
     return this;
 }
 
 
-int32_t GameKeyEventUtil_getKey(Any* anyType) {
+int32_t GameKeyEventUtil_getKey(void* anyType) {
         GameKeyEvent* gameKeyEvent = ((GameKeyEvent*) anyType);
         return GameKeyEvent_getKey(gameKeyEvent);
 }

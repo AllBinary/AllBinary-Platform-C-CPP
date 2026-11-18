@@ -1,51 +1,43 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.util.cache
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/logic/util/cache/BasicArrayListCacheableInterfaceFactory.h"
 #include "org/allbinary/logic/util/cache/CacheableInterfaceFactoryInterface.h"
-
-typedef struct BasicArrayListCacheableInterfaceFactory BasicArrayListCacheableInterfaceFactory;
-struct BasicArrayListCacheableInterfaceFactory {
-    CacheableInterfaceFactoryInterface CacheableInterfaceFactoryInterface_interface;
-};
+#include "org/allbinary/logic/util/cache/BasicArrayListCacheable.h"
+#include "org/allbinary/logic/util/cache/CacheableInterface.h"
 
 
-BasicArrayListCacheableInterfaceFactory* BasicArrayListCacheableInterfaceFactory_new(void);
-CacheableInterface* BasicArrayListCacheableInterfaceFactory_getInstance(BasicArrayListCacheableInterfaceFactory* this, Any* key);
+
+
+void BasicArrayListCacheableInterfaceFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void BasicArrayListCacheableInterfaceFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("BasicArrayListCacheableInterfaceFactory", nullptr);
+    java_register_method("BasicArrayListCacheableInterfaceFactory", "getInstance", (void*) BasicArrayListCacheableInterfaceFactory_getInstance);
+}
 
 void BasicArrayListCacheableInterfaceFactory_init(BasicArrayListCacheableInterfaceFactory* this) {
+    BasicArrayListCacheableInterfaceFactory_register();
 }
 
 BasicArrayListCacheableInterfaceFactory* BasicArrayListCacheableInterfaceFactory_new(void) {
-    BasicArrayListCacheableInterfaceFactory* this = calloc(1, sizeof(BasicArrayListCacheableInterfaceFactory));
+    BasicArrayListCacheableInterfaceFactory* this = java_object_alloc(sizeof(BasicArrayListCacheableInterfaceFactory), "BasicArrayListCacheableInterfaceFactory");
     BasicArrayListCacheableInterfaceFactory_init(this);
     return this;
 }
 
 
 // throws Exception
-CacheableInterface* BasicArrayListCacheableInterfaceFactory_getInstance(BasicArrayListCacheableInterfaceFactory* this, Any* key) {
+CacheableInterface* BasicArrayListCacheableInterfaceFactory_getInstance(BasicArrayListCacheableInterfaceFactory* this, void* key) {
         return BasicArrayListCacheable_new();
 }
 

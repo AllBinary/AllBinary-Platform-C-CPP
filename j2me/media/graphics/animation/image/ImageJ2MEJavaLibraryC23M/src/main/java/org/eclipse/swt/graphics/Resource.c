@@ -1,30 +1,35 @@
 // Generated Code Do Not Modify
-// package org.eclipse.swt.graphics
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct Resource Resource;
-struct Resource {
-    char unused;
-};
+#include "org/eclipse/swt/graphics/Resource.h"
 
 
-Resource* Resource_new(void);
-void Resource_dispose(Resource* this);
-bool Resource_isDisposed(Resource* this);
+
+
+
+void Resource_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void Resource_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("Resource", nullptr);
+    java_register_method("Resource", "dispose", (void*) Resource_dispose);
+    java_register_method("Resource", "isDisposed", (void*) Resource_isDisposed);
+}
 
 void Resource_init(Resource* this) {
+    Resource_register();
 }
 
 Resource* Resource_new(void) {
-    Resource* this = calloc(1, sizeof(Resource));
+    Resource* this = java_object_alloc(sizeof(Resource), "Resource");
     Resource_init(this);
     return this;
 }

@@ -1,67 +1,51 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.media.image
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
-// #include "javax/microedition/lcdui/Image.h"
+#include "org/allbinary/media/image/ImageCopyUtil.h"
+#include "javax/microedition/lcdui/Graphics.h"
+#include "javax/microedition/lcdui/Image.h"
 #include "org/allbinary/game/configuration/feature/Features.h"
 #include "org/allbinary/game/configuration/feature/GameFeatureFactory.h"
 #include "org/allbinary/graphics/Anchor.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/string/CommonStrings.h"
+#include "org/allbinary/media/image/ImageCreationUtil.h"
+#if __has_include("javax/microedition/lcdui/Graphics.h")
+#include "javax/microedition/lcdui/Graphics.h"
+#endif
 
-typedef struct ImageCopyUtil ImageCopyUtil;
-struct ImageCopyUtil {
-    LogUtil* logUtil;
-    CommonStrings* commonStrings;
-    ImageCreationUtil* imageCreationUtil;
-    int32_t anchor;
-    GameFeatureFactory* gameFeatureFactory;
-    Features* features;
-    const char* NO_COPY;
-};
 
 static ImageCopyUtil* ImageCopyUtil_instance;
 
-ImageCopyUtil* ImageCopyUtil_new(void);
-ImageCopyUtil* ImageCopyUtil_getInstance(void);
 
-void ImageCopyUtil_init(ImageCopyUtil* this);
-Image* ImageCopyUtil_createImageForRotation(ImageCopyUtil* this, Image* originalImage);
-Image* ImageCopyUtil_createImage(ImageCopyUtil* this, Image* originalImage);
-Image* ImageCopyUtil_createImageScale(ImageCopyUtil* this, Image* originalImage, float canvasScale, bool resize);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
 void ImageCopyUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     ImageCopyUtil_instance = ImageCopyUtil_new();
+}
+
+void ImageCopyUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ImageCopyUtil", nullptr);
+    java_register_method("ImageCopyUtil", "createImageForRotation", (void*) ImageCopyUtil_createImageForRotation);
+    java_register_method("ImageCopyUtil", "createImage", (void*) ImageCopyUtil_createImage);
+    java_register_method("ImageCopyUtil", "createImageScale", (void*) ImageCopyUtil_createImageScale);
 }
 
 static void ImageCopyUtil_initFields(ImageCopyUtil* this) {
     this->logUtil = LogUtil_getInstance();
     this->commonStrings = CommonStrings_getInstance();
     this->imageCreationUtil = ImageCreationUtil_getInstance();
-    this->anchor = Anchor_TOP_LEFT;
+    this->anchor = (Anchor_staticInit(), Anchor_TOP_LEFT);
     this->gameFeatureFactory = GameFeatureFactory_getInstance();
     this->features = Features_getInstance();
     this->NO_COPY = "J2ME does not need to copy images after initial loading";
@@ -69,16 +53,17 @@ static void ImageCopyUtil_initFields(ImageCopyUtil* this) {
 
 
 ImageCopyUtil* ImageCopyUtil_getInstance(void) {
-        return ImageCopyUtil_instance;
+        return (ImageCopyUtil_staticInit(), ImageCopyUtil_instance);
 }
 
 
 void ImageCopyUtil_init(ImageCopyUtil* this) {
+    ImageCopyUtil_register();
     ImageCopyUtil_initFields(this);
 }
 
 ImageCopyUtil* ImageCopyUtil_new(void) {
-    ImageCopyUtil* this = calloc(1, sizeof(ImageCopyUtil));
+    ImageCopyUtil* this = java_object_alloc(sizeof(ImageCopyUtil), "ImageCopyUtil");
     ImageCopyUtil_init(this);
     return this;
 }
@@ -98,7 +83,7 @@ Image* ImageCopyUtil_createImage(ImageCopyUtil* this, Image* originalImage) {
         }
         Image* image = ImageCreationUtil_createImageWH(this->imageCreationUtil, Image_getWidth(originalImage), Image_getHeight(originalImage));
         if (Image_isMutable(image)) {
-            JAVA_CALL(Image_getGraphics(image), drawImage, originalImage, 0, 0, this->anchor);
+            Graphics_drawImage(Image_getGraphics(image), originalImage, 0, 0, this->anchor);
             return image;
         } else {
             java_throw(java_exception_new("Exception", "Not Mutable"));
@@ -112,8 +97,8 @@ Image* ImageCopyUtil_createImageScale(ImageCopyUtil* this, Image* originalImage,
             LogUtil_put(this->logUtil, this->NO_COPY, this, this->commonStrings->CONSTRUCTOR, java_exception_new("Exception", ""));
             return originalImage;
         }
-        int32_t newWidth = ((int32_t) (Image_getWidth(originalImage) * canvasScale));
-        int32_t newHeight = ((int32_t) (Image_getHeight(originalImage) * canvasScale));
+        int32_t newWidth = ((int32_t) (((float) Image_getWidth(originalImage)) * canvasScale));
+        int32_t newHeight = ((int32_t) (((float) Image_getHeight(originalImage)) * canvasScale));
         if (resize) {
             if (newWidth < newHeight) {
                 newWidth = newHeight;

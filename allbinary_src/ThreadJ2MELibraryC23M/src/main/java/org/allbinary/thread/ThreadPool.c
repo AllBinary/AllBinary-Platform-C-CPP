@@ -11,6 +11,18 @@
 #include "org/allbinary/thread/ThreadObjectUtil.h"
 #include "org/allbinary/thread/PooledThread.h"
 #include "org/allbinary/thread/PriorityRunnable.h"
+#if __has_include("org/allbinary/util/BasicArrayListUtil.h")
+#include "org/allbinary/util/BasicArrayListUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
 
 
 static const char* ThreadPool_ROOT_NAME = "-PooledThread-";

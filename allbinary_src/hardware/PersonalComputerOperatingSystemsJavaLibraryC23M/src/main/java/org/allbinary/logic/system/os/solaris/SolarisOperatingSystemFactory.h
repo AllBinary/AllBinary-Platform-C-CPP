@@ -51,10 +51,15 @@ SolarisOperatingSystemFactory* SolarisOperatingSystemFactory_getInstance(void);
 void SolarisOperatingSystemFactory_init(SolarisOperatingSystemFactory* this);
 
 GenericOperatingSystem* SolarisOperatingSystemFactory_getOperatingSystemInstance(SolarisOperatingSystemFactory* this);
+#define SolarisOperatingSystemFactory_new0 SolarisOperatingSystemFactory_new
+#define SolarisOperatingSystemFactory_init0 SolarisOperatingSystemFactory_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void SolarisOperatingSystemFactory_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)
 void SolarisOperatingSystemFactory_register(void);
 
+#if __has_include("org/allbinary/logic/system/os/GenericOperatingSystem.h")
+#include "org/allbinary/logic/system/os/GenericOperatingSystem.h"
+#endif
 
 #endif // ORG_ALLBINARY_LOGIC_SYSTEM_OS_SOLARIS_SOLARISOPERATINGSYSTEMFACTORY_H

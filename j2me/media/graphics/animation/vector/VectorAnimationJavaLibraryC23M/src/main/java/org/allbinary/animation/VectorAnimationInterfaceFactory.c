@@ -1,49 +1,43 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/animation/VectorAnimationInterfaceFactory.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
 #include "org/allbinary/graphics/color/BasicColorFactory.h"
 #include "org/allbinary/media/ScaleProperties.h"
 #include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
-
-typedef struct VectorAnimationInterfaceFactory VectorAnimationInterfaceFactory;
-struct VectorAnimationInterfaceFactory {
-    AnimationInterfaceFactoryInterface AnimationInterfaceFactoryInterface_interface;
-    int32_t*** currentPoints;
-    BasicColor* basicColor;
-    AnimationBehaviorFactory* animationBehaviorFactory;
-};
+#include "org/allbinary/animation/AnimationBehaviorFactory.h"
+#include "org/allbinary/animation/VectorAnimation.h"
+#include "org/allbinary/animation/Animation.h"
+#if __has_include("org/allbinary/graphics/color/BasicColorFactory.h")
+#include "org/allbinary/graphics/color/BasicColorFactory.h"
+#endif
 
 
-VectorAnimationInterfaceFactory* VectorAnimationInterfaceFactory_new(int32_t*** currentPoints, BasicColor* basicColor, AnimationBehaviorFactory* animationBehaviorFactory);
 
-void VectorAnimationInterfaceFactory_init(VectorAnimationInterfaceFactory* this, int32_t*** currentPoints, BasicColor* basicColor, AnimationBehaviorFactory* animationBehaviorFactory);
-Animation* VectorAnimationInterfaceFactory_getInstance(VectorAnimationInterfaceFactory* this, int32_t instanceId);
-void VectorAnimationInterfaceFactory_setBasicColorP(VectorAnimationInterfaceFactory* this, BasicColor* basicColor);
-BasicColor* VectorAnimationInterfaceFactory_getBasicColorP(VectorAnimationInterfaceFactory* this);
-void VectorAnimationInterfaceFactory_setInitialScale(VectorAnimationInterfaceFactory* this, ScaleProperties* scaleProperties);
+
+
+
+
+
+void VectorAnimationInterfaceFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void VectorAnimationInterfaceFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("VectorAnimationInterfaceFactory", nullptr);
+    java_register_method("VectorAnimationInterfaceFactory", "getInstance", (void*) VectorAnimationInterfaceFactory_getInstance);
+    java_register_method("VectorAnimationInterfaceFactory", "setBasicColorP", (void*) VectorAnimationInterfaceFactory_setBasicColorP);
+    java_register_method("VectorAnimationInterfaceFactory", "getBasicColorP", (void*) VectorAnimationInterfaceFactory_getBasicColorP);
+    java_register_method("VectorAnimationInterfaceFactory", "setInitialScale", (void*) VectorAnimationInterfaceFactory_setInitialScale);
+}
 
 static void VectorAnimationInterfaceFactory_initFields(VectorAnimationInterfaceFactory* this) {
     
@@ -53,6 +47,7 @@ static void VectorAnimationInterfaceFactory_initFields(VectorAnimationInterfaceF
 
 
 void VectorAnimationInterfaceFactory_init(VectorAnimationInterfaceFactory* this, int32_t*** currentPoints, BasicColor* basicColor, AnimationBehaviorFactory* animationBehaviorFactory) {
+    VectorAnimationInterfaceFactory_register();
     VectorAnimationInterfaceFactory_initFields(this);
         this->currentPoints = currentPoints;
         VectorAnimationInterfaceFactory_setBasicColorP(this, basicColor);
@@ -60,7 +55,7 @@ void VectorAnimationInterfaceFactory_init(VectorAnimationInterfaceFactory* this,
 }
 
 VectorAnimationInterfaceFactory* VectorAnimationInterfaceFactory_new(int32_t*** currentPoints, BasicColor* basicColor, AnimationBehaviorFactory* animationBehaviorFactory) {
-    VectorAnimationInterfaceFactory* this = calloc(1, sizeof(VectorAnimationInterfaceFactory));
+    VectorAnimationInterfaceFactory* this = java_object_alloc(sizeof(VectorAnimationInterfaceFactory), "VectorAnimationInterfaceFactory");
     VectorAnimationInterfaceFactory_init(this, currentPoints, basicColor, animationBehaviorFactory);
     return this;
 }

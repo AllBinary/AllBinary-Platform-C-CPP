@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <groupId>org.allbinary.game</groupId>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>AllBinaryGameClientNoPlatformJavaDocC23</artifactId>
+    <packaging>jar</packaging>
+    <!-- AllBinary Platform Version Start -->
+    <version>1.0.0-SNAPSHOT</version>
+    <!-- AllBinary Platform Version End -->
+
+    <name>AllBinaryGameClientNoPlatformJavaDocC23</name>
+    <url>http://www.allbinary.com/</url>
+
+    <properties>
+        <inputPath2>src\main\java\</inputPath2>
+        <inputPath>target\dependency\</inputPath>
+        <outputPath>..\AllBinaryGameClientNoPlatformJavaDocApplicationM\src\main\java\</outputPath>
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>LoggingJ2MEAllC23</artifactId>
+
+<!--
+<artifactId>LoggingJ2MEAllC23</artifactId>
+<artifactId>LoggingNoneC23</artifactId>
+<artifactId>LoggingJ2MEExceptionC23</artifactId>
+<artifactId>LoggingRemoteExceptionC23</artifactId>
+
+-->
+
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>GameInputMEKeyOnlyJavaLibraryC23</artifactId>
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+
+        </dependency>
+
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>AdvertisementClientNoneJavaLibraryC23</artifactId>
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+
+        </dependency>
+
+        <dependency>
+            <groupId>org.allbinary.game.multiplayer</groupId>
+            <artifactId>AllBinaryGameClientBaseNullJavaLibraryC23</artifactId>
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+
+        </dependency>
+
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>NoGyroSensorJavaLibraryC23</artifactId>
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+
+        </dependency>
+
+        <!--        
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>MotionGestureJavaLibraryC23</artifactId>
+            
+        </dependency>
+        -->
+        
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>TouchScreenJ2MENoneJavaLibraryC23</artifactId>
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+        </dependency>
+
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>TouchJ2MENoneJavaLibraryC23</artifactId>
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+            <!--
+            <artifactId>TouchJ2MEJavaLibraryC23</artifactId>
+            <artifactId>TouchJ2MENoneJavaLibraryC23</artifactId>
+            -->
+        </dependency>
+
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>AllBinaryOnJ2MEPlatformJavaLibraryC23</artifactId>
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+            <exclusions>
+                <exclusion>
+                    <artifactId>OpenGLNoneJavaLibraryC23</artifactId>
+                    <groupId>org.allbinary</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>NullCustomUIJavaLibraryC23</artifactId>
+            <!--
+            <artifactId>MicroEmulatorCustomUIJavaLibraryC23</artifactId>
+            <artifactId>NullCustomUIJavaLibraryC23</artifactId>
+            -->
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+
+        </dependency>
+
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>NoGameLicensingJavaLibraryC23</artifactId>
+            <!--
+                <artifactId>NoGameLicensingJavaLibraryC23</artifactId>
+                <artifactId>LicensedGameDemoJavaLibraryC23</artifactId>
+            -->
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+
+            <optional>true</optional>
+            <exclusions>
+                <exclusion>
+                    <artifactId>BasicPlayerJavaLibraryC23</artifactId>
+                    <groupId>org.allbinary</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>GameLicensingOnlyDemoJavaLibraryC23</artifactId>
+            <!--
+                <artifactId>GameLicensingOnlyNormalJavaLibraryC23</artifactId>
+                <artifactId>GameLicensingOnlyDemoJavaLibraryC23</artifactId>
+            -->
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+
+        </dependency>
+
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>HardCodedLicenseInitInfoJavaLibraryC23</artifactId>
+            <!--
+            <artifactId>HardCodedLicenseInitInfoJavaLibraryC23</artifactId>
+            <artifactId>FileLicenseInitInfoJavaLibraryC23</artifactId>
+
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>YourSecurityJavaLibraryC23</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>FileJ2SEJavaLibraryC23</artifactId>
+        </dependency>
+            -->
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+
+        </dependency>
+
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>VectorAnimationJ2MEJavaLibraryC23</artifactId>
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+            <exclusions>
+                <exclusion>
+                    <artifactId>GraphBaseJavaLibraryC23</artifactId>
+                    <groupId>org.graph</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>BasicPlayerJavaLibraryC23</artifactId>
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+
+        </dependency>
+
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>TouchButtonJavaLibraryC23</artifactId>
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+
+        </dependency>
+        
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>MotionGestureJavaLibraryC23</artifactId>
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+
+        </dependency>
+                
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>TouchButtonMappingJavaLibraryC23</artifactId>
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+
+        </dependency>
+                
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>NotDeviceSpecificNoMediaMIDP1LibraryC23</artifactId>
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+
+        </dependency>
+        
+    </dependencies>
+
+
+    <build>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-pluginC23</artifactId>
+                <version>3.8.1</version>
+                <!-- 
+                <version>2.5.1</version>
+                <version>2.3.2</version>
+                -->
+                <configuration> 
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <compilerArgument>-Xlint:all</compilerArgument>
+                    <showWarnings>true</showWarnings>
+                    <showDeprecation>true</showDeprecation>
+                </configuration>
+            </plugin>
+
+
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-pluginC23</artifactId>
+                <executions>
+                    <execution>
+                        <id>sources</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>sources</classifier>
+                            <failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
+                            <!--
+                            <outputDirectory>${project.build.directory}/sources</outputDirectory>
+                            -->
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Delete output directory -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-pluginC23</artifactId>
+                <version>2.4.1</version>
+                <configuration>
+                    <followSymLinks>false</followSymLinks>
+                    <filesets>
+                        <fileset>
+                            <directory>${outputPath}</directory>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+      
+            <plugin>
+                <artifactId>maven-resources-pluginC23</artifactId>
+                <version>2.4.3</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${outputPath}</outputDirectory>
+                            <resources>          
+                                <resource>
+                                    <directory>${inputPath}</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>${inputPath2}</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <!--
+                                -->                
+                            </resources>              
+                        </configuration>            
+                    </execution>
+                </executions>
+            </plugin>
+            
+        </plugins>
+    </build>
+
+</project>
+

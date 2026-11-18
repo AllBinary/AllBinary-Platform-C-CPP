@@ -74,6 +74,8 @@ bool TimeDelayHelper_resume(TimeDelayHelper* this);
 const char* TimeDelayHelper_toStringAt(TimeDelayHelper* this, int64_t currentTime);
 
 const char* TimeDelayHelper_toString(TimeDelayHelper* this);
+#define TimeDelayHelper_new1 TimeDelayHelper_new
+#define TimeDelayHelper_init1 TimeDelayHelper_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void TimeDelayHelper_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

@@ -1,45 +1,35 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2022 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.system.security.crypt.jcehelper
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-#include "org/allbinary/init/crypt/jcehelper/CryptInterface.h"
-
-typedef struct NoCrypt NoCrypt;
-struct NoCrypt {
-    CryptInterface CryptInterface_interface;
-};
+#include "org/allbinary/logic/system/security/crypt/jcehelper/NoCrypt.h"
 
 
-NoCrypt* NoCrypt_new(void);
-int8_t* NoCrypt_encrypt(NoCrypt* this, int8_t* array);
-int8_t* NoCrypt_decrypt(NoCrypt* this, int8_t* array);
+
+
+
+void NoCrypt_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void NoCrypt_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("NoCrypt", nullptr);
+    java_register_method("NoCrypt", "encrypt", (void*) NoCrypt_encrypt);
+    java_register_method("NoCrypt", "decrypt", (void*) NoCrypt_decrypt);
+}
 
 void NoCrypt_init(NoCrypt* this) {
+    NoCrypt_register();
 }
 
 NoCrypt* NoCrypt_new(void) {
-    NoCrypt* this = calloc(1, sizeof(NoCrypt));
+    NoCrypt* this = java_object_alloc(sizeof(NoCrypt), "NoCrypt");
     NoCrypt_init(this);
     return this;
 }

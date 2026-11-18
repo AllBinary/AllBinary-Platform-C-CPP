@@ -1,70 +1,86 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation.image.sprite
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
-// #include "javax/microedition/lcdui/Image.h"
-// #include "javax/microedition/lcdui/game/Sprite.h"
+#include "org/allbinary/animation/image/sprite/SpriteIndexedAnimation.h"
+#include "javax/microedition/lcdui/Graphics.h"
+#include "javax/microedition/lcdui/Image.h"
+#include "javax/microedition/lcdui/game/Sprite.h"
 #include "org/allbinary/animation/AnimationBehavior.h"
-#include "org/allbinary/animation/IndexedAnimation.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
 #include "org/allbinary/graphics/color/BasicColorFactory.h"
-#include "org/allbinary/graphics/color/ColorCompositeInterface.h"
 #include "org/allbinary/logic/math/PrimitiveIntUtil.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/string/CommonLabels.h"
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/string/CommonLabels.h")
+#include "org/allbinary/string/CommonLabels.h"
+#endif
+#if __has_include("org/allbinary/graphics/color/BasicColorFactory.h")
+#include "org/allbinary/graphics/color/BasicColorFactory.h"
+#endif
 
-typedef struct SpriteIndexedAnimation SpriteIndexedAnimation;
-struct SpriteIndexedAnimation {
-    IndexedAnimation base;
-    ColorCompositeInterface ColorCompositeInterface_interface;
-    Sprite* sprite;
-    Image* image;
-    BasicColor** basicColorArray;
-};
 
 
-SpriteIndexedAnimation* SpriteIndexedAnimation_new(Sprite* sprite, Image* image, BasicColor** basicColorArray, AnimationBehavior* animationBehavior);
 
-void SpriteIndexedAnimation_init(SpriteIndexedAnimation* this, Sprite* sprite, Image* image, BasicColor** basicColorArray, AnimationBehavior* animationBehavior);
-int32_t SpriteIndexedAnimation_getAnimationSize(SpriteIndexedAnimation* this);
-void SpriteIndexedAnimation_setBasicColorP(SpriteIndexedAnimation* this, BasicColor* basicColor);
-BasicColor* SpriteIndexedAnimation_getBasicColorP(SpriteIndexedAnimation* this);
-void SpriteIndexedAnimation_paintFrame(SpriteIndexedAnimation* this, Graphics* graphics, int32_t frame, int32_t x, int32_t y);
-void SpriteIndexedAnimation_paintXY(SpriteIndexedAnimation* this, Graphics* graphics, int32_t x, int32_t y);
-void SpriteIndexedAnimation_paint(SpriteIndexedAnimation* this, Graphics* graphics);
-void SpriteIndexedAnimation_nextFrame(SpriteIndexedAnimation* this);
-void SpriteIndexedAnimation_previousFrame(SpriteIndexedAnimation* this);
-int32_t SpriteIndexedAnimation_getSize(SpriteIndexedAnimation* this);
-void SpriteIndexedAnimation_setFrame(SpriteIndexedAnimation* this, int32_t frame);
-int32_t SpriteIndexedAnimation_getFrame(SpriteIndexedAnimation* this);
-bool SpriteIndexedAnimation_isLastFrame(SpriteIndexedAnimation* this);
-int32_t SpriteIndexedAnimation_getLastFrame(SpriteIndexedAnimation* this);
-void SpriteIndexedAnimation_setSequence(SpriteIndexedAnimation* this, int32_t* sequence);
-int32_t* SpriteIndexedAnimation_getSequence(SpriteIndexedAnimation* this);
-void SpriteIndexedAnimation_close(SpriteIndexedAnimation* this);
-void SpriteIndexedAnimation_finalize(SpriteIndexedAnimation* this);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void SpriteIndexedAnimation_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void SpriteIndexedAnimation_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("SpriteIndexedAnimation", "IndexedAnimation");
+    java_register_method("SpriteIndexedAnimation", "getAnimationSize", (void*) SpriteIndexedAnimation_getAnimationSize);
+    java_register_method("SpriteIndexedAnimation", "setBasicColorP", (void*) SpriteIndexedAnimation_setBasicColorP);
+    java_register_method("SpriteIndexedAnimation", "getBasicColorP", (void*) SpriteIndexedAnimation_getBasicColorP);
+    java_register_method("SpriteIndexedAnimation", "paintFrame", (void*) SpriteIndexedAnimation_paintFrame);
+    java_register_method("SpriteIndexedAnimation", "paintXY", (void*) SpriteIndexedAnimation_paintXY);
+    java_register_method("SpriteIndexedAnimation", "paint", (void*) SpriteIndexedAnimation_paint);
+    java_register_method("SpriteIndexedAnimation", "nextFrame", (void*) SpriteIndexedAnimation_nextFrame);
+    java_register_method("SpriteIndexedAnimation", "previousFrame", (void*) SpriteIndexedAnimation_previousFrame);
+    java_register_method("SpriteIndexedAnimation", "getSize", (void*) SpriteIndexedAnimation_getSize);
+    java_register_method("SpriteIndexedAnimation", "setFrame", (void*) SpriteIndexedAnimation_setFrame);
+    java_register_method("SpriteIndexedAnimation", "getFrame", (void*) SpriteIndexedAnimation_getFrame);
+    java_register_method("SpriteIndexedAnimation", "isLastFrame", (void*) SpriteIndexedAnimation_isLastFrame);
+    java_register_method("SpriteIndexedAnimation", "getLastFrame", (void*) SpriteIndexedAnimation_getLastFrame);
+    java_register_method("SpriteIndexedAnimation", "setSequence", (void*) SpriteIndexedAnimation_setSequence);
+    java_register_method("SpriteIndexedAnimation", "getSequence", (void*) SpriteIndexedAnimation_getSequence);
+    java_register_method("SpriteIndexedAnimation", "close", (void*) SpriteIndexedAnimation_close);
+    java_register_method("SpriteIndexedAnimation", "finalize", (void*) SpriteIndexedAnimation_finalize);
+}
 
 static void SpriteIndexedAnimation_initFields(SpriteIndexedAnimation* this) {
     
@@ -74,18 +90,19 @@ static void SpriteIndexedAnimation_initFields(SpriteIndexedAnimation* this) {
 
 
 void SpriteIndexedAnimation_init(SpriteIndexedAnimation* this, Sprite* sprite, Image* image, BasicColor** basicColorArray, AnimationBehavior* animationBehavior) {
+    SpriteIndexedAnimation_register();
         IndexedAnimation_init(&this->base, animationBehavior);
         SpriteIndexedAnimation_initFields(this);
         this->sprite = sprite;
         this->image = image;
         this->basicColorArray = basicColorArray;
         if (java_array_length(this->basicColorArray) != 0 && SpriteIndexedAnimation_getSize(this) != java_array_length(this->basicColorArray)) {
-            java_throw(java_exception_new("Exception", JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), CommonLabels_getInstance()->TOTAL_LABEL), appendint, SpriteIndexedAnimation_getSize(this)), append, "!="), appendint, java_array_length(this->basicColorArray)), toString)));
+            java_throw(java_exception_new("Exception", java_string_of(StringMaker_appendint(StringMaker_append(StringMaker_appendint(StringMaker_append(StringMaker_new(), CommonLabels_getInstance()->TOTAL_LABEL), SpriteIndexedAnimation_getSize(this)), "!="), java_array_length(this->basicColorArray)))));
         }
 }
 
 SpriteIndexedAnimation* SpriteIndexedAnimation_new(Sprite* sprite, Image* image, BasicColor** basicColorArray, AnimationBehavior* animationBehavior) {
-    SpriteIndexedAnimation* this = calloc(1, sizeof(SpriteIndexedAnimation));
+    SpriteIndexedAnimation* this = java_object_alloc(sizeof(SpriteIndexedAnimation), "SpriteIndexedAnimation");
     SpriteIndexedAnimation_init(this, sprite, image, basicColorArray, animationBehavior);
     return this;
 }
@@ -118,13 +135,13 @@ BasicColor* SpriteIndexedAnimation_getBasicColorP(SpriteIndexedAnimation* this) 
 
 void SpriteIndexedAnimation_paintFrame(SpriteIndexedAnimation* this, Graphics* graphics, int32_t frame, int32_t x, int32_t y) {
         SpriteIndexedAnimation_setFrame(this, frame);
-        Sprite_setPosition(this->sprite, x, y);
+        Layer_setPosition(this->sprite, x, y);
         Sprite_paint(this->sprite, graphics);
 }
 
 
 void SpriteIndexedAnimation_paintXY(SpriteIndexedAnimation* this, Graphics* graphics, int32_t x, int32_t y) {
-        Sprite_setPosition(this->sprite, x, y);
+        Layer_setPosition(this->sprite, x, y);
         Sprite_paint(this->sprite, graphics);
 }
 

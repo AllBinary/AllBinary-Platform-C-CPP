@@ -1,46 +1,33 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.resource
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/resource/FeatureResourceInitializationUtil.h"
 #include "org/allbinary/animation/FeaturedAnimationInterfaceFactoryInterfaceFactory.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/string/CommonStrings.h"
+#include "org/allbinary/game/resource/FeaturedResourceFactory.h"
+#include "org/allbinary/game/resource/FeaturedResourceRelativeRelationshipFactory.h"
 
-typedef struct FeatureResourceInitializationUtil FeatureResourceInitializationUtil;
-struct FeatureResourceInitializationUtil {
-    LogUtil* logUtil;
-};
 
 static FeatureResourceInitializationUtil* FeatureResourceInitializationUtil_instance;
 
-FeatureResourceInitializationUtil* FeatureResourceInitializationUtil_new(void);
-FeatureResourceInitializationUtil* FeatureResourceInitializationUtil_getInstance(void);
-void FeatureResourceInitializationUtil_init(FeatureResourceInitializationUtil* this, int32_t level);
 
-// Static fields with runtime initializers: call this once at startup
+
 void FeatureResourceInitializationUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     FeatureResourceInitializationUtil_instance = FeatureResourceInitializationUtil_new();
+}
+
+void FeatureResourceInitializationUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("FeatureResourceInitializationUtil", nullptr);
+    java_register_method("FeatureResourceInitializationUtil", "init", (void*) FeatureResourceInitializationUtil_initMethod);
 }
 
 static void FeatureResourceInitializationUtil_initFields(FeatureResourceInitializationUtil* this) {
@@ -48,27 +35,28 @@ static void FeatureResourceInitializationUtil_initFields(FeatureResourceInitiali
 }
 
 void FeatureResourceInitializationUtil_init(FeatureResourceInitializationUtil* this) {
+    FeatureResourceInitializationUtil_register();
     FeatureResourceInitializationUtil_initFields(this);
 }
 
 FeatureResourceInitializationUtil* FeatureResourceInitializationUtil_new(void) {
-    FeatureResourceInitializationUtil* this = calloc(1, sizeof(FeatureResourceInitializationUtil));
+    FeatureResourceInitializationUtil* this = java_object_alloc(sizeof(FeatureResourceInitializationUtil), "FeatureResourceInitializationUtil");
     FeatureResourceInitializationUtil_init(this);
     return this;
 }
 
 
 FeatureResourceInitializationUtil* FeatureResourceInitializationUtil_getInstance(void) {
-        return FeatureResourceInitializationUtil_instance;
+        return (FeatureResourceInitializationUtil_staticInit(), FeatureResourceInitializationUtil_instance);
 }
 
 
 // throws Exception
-void FeatureResourceInitializationUtil_init(FeatureResourceInitializationUtil* this, int32_t level) {
+void FeatureResourceInitializationUtil_initMethod(FeatureResourceInitializationUtil* this, int32_t level) {
         CommonStrings* commonStrings = CommonStrings_getInstance();
         LogUtil_putF(this->logUtil, commonStrings->START, this, commonStrings->INIT);
         FeaturedResourceFactory* featuredResourceFactory = FeaturedAnimationInterfaceFactoryInterfaceFactory_getInstance();
-        FeaturedResourceFactory_init(featuredResourceFactory, level);
-        FeaturedResourceRelativeRelationshipFactory_init(FeaturedResourceRelativeRelationshipFactory_getInstance(), level);
+        FeaturedResourceFactory_initMethod(featuredResourceFactory, level);
+        FeaturedResourceFactory_initMethod(FeaturedResourceRelativeRelationshipFactory_getInstance(), level);
 }
 

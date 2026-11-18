@@ -61,6 +61,8 @@ int32_t GPoint_getRawZ(GPoint* this);
 const char* GPoint_toString(GPoint* this);
 
 const char* GPoint_toStringStatic(int32_t x, int32_t y, int32_t z);
+#define GPoint_new3 GPoint_new
+#define GPoint_init3 GPoint_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void GPoint_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

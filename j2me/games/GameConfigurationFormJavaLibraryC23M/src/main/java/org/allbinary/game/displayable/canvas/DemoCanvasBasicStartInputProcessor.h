@@ -1,0 +1,118 @@
+#ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOCANVASBASICSTARTINPUTPROCESSOR_H
+#define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOCANVASBASICSTARTINPUTPROCESSOR_H
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.displayable.canvas
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+typedef struct BasicMenuInputProcessor BasicMenuInputProcessor;
+typedef struct NullCanvas NullCanvas;
+typedef struct RunnableCanvas RunnableCanvas;
+typedef struct GameCommandsFactory GameCommandsFactory;
+typedef struct GameInputStrings GameInputStrings;
+typedef struct GameKeyEvent GameKeyEvent;
+typedef struct StringMaker StringMaker;
+typedef struct StringUtil StringUtil;
+typedef struct BasicArrayList BasicArrayList;
+#include "org/allbinary/game/displayable/canvas/BasicMenuInputProcessor.h"
+
+typedef struct DemoCanvasBasicStartInputProcessor DemoCanvasBasicStartInputProcessor;
+struct DemoCanvasBasicStartInputProcessor {
+    BasicMenuInputProcessor base;
+};
+
+
+DemoCanvasBasicStartInputProcessor* DemoCanvasBasicStartInputProcessor_new(BasicArrayList* gameKeyEventList, RunnableCanvas* gameCanvas);
+
+void DemoCanvasBasicStartInputProcessor_init(DemoCanvasBasicStartInputProcessor* this, BasicArrayList* gameKeyEventList, RunnableCanvas* gameCanvas);
+
+int32_t DemoCanvasBasicStartInputProcessor_processInputList(DemoCanvasBasicStartInputProcessor* this);
+#define DemoCanvasBasicStartInputProcessor_new2 DemoCanvasBasicStartInputProcessor_new
+#define DemoCanvasBasicStartInputProcessor_init2 DemoCanvasBasicStartInputProcessor_init
+#ifndef DemoCanvasBasicStartInputProcessor_onMotionGestureEvent
+#define DemoCanvasBasicStartInputProcessor_onMotionGestureEvent BasicMenuInputProcessor_onMotionGestureEvent
+#endif
+#ifndef DemoCanvasBasicStartInputProcessor_onScrolledMotionGestureEvent
+#define DemoCanvasBasicStartInputProcessor_onScrolledMotionGestureEvent BasicMenuInputProcessor_onScrolledMotionGestureEvent
+#endif
+#ifndef DemoCanvasBasicStartInputProcessor_setCanvas
+#define DemoCanvasBasicStartInputProcessor_setCanvas BasicMenuInputProcessor_setCanvas
+#endif
+#ifndef DemoCanvasBasicStartInputProcessor_getCanvas
+#define DemoCanvasBasicStartInputProcessor_getCanvas BasicMenuInputProcessor_getCanvas
+#endif
+#ifndef DemoCanvasBasicStartInputProcessor_onPressGameKeyEvent
+#define DemoCanvasBasicStartInputProcessor_onPressGameKeyEvent PlayerGameInput_onPressGameKeyEvent
+#endif
+#ifndef DemoCanvasBasicStartInputProcessor_onDownGameKeyEvent
+#define DemoCanvasBasicStartInputProcessor_onDownGameKeyEvent PlayerGameInput_onDownGameKeyEvent
+#endif
+#ifndef DemoCanvasBasicStartInputProcessor_onDownKeyEvent
+#define DemoCanvasBasicStartInputProcessor_onDownKeyEvent PlayerGameInput_onDownKeyEvent
+#endif
+#ifndef DemoCanvasBasicStartInputProcessor_onDownKey
+#define DemoCanvasBasicStartInputProcessor_onDownKey PlayerGameInput_onDownKey
+#endif
+#ifndef DemoCanvasBasicStartInputProcessor_onUpGameKeyEvent
+#define DemoCanvasBasicStartInputProcessor_onUpGameKeyEvent PlayerGameInput_onUpGameKeyEvent
+#endif
+#ifndef DemoCanvasBasicStartInputProcessor_onUpKeyEvent
+#define DemoCanvasBasicStartInputProcessor_onUpKeyEvent PlayerGameInput_onUpKeyEvent
+#endif
+#ifndef DemoCanvasBasicStartInputProcessor_onEvent
+#define DemoCanvasBasicStartInputProcessor_onEvent PlayerGameInput_onEvent
+#endif
+#ifndef DemoCanvasBasicStartInputProcessor_getPlayerInputId
+#define DemoCanvasBasicStartInputProcessor_getPlayerInputId PlayerGameInput_getPlayerInputId
+#endif
+#ifndef DemoCanvasBasicStartInputProcessor_add
+#define DemoCanvasBasicStartInputProcessor_add GameInput_add
+#endif
+#ifndef DemoCanvasBasicStartInputProcessor_addForRemoval
+#define DemoCanvasBasicStartInputProcessor_addForRemoval GameInput_addForRemoval
+#endif
+#ifndef DemoCanvasBasicStartInputProcessor_isForRemoval
+#define DemoCanvasBasicStartInputProcessor_isForRemoval GameInput_isForRemoval
+#endif
+#ifndef DemoCanvasBasicStartInputProcessor_clear
+#define DemoCanvasBasicStartInputProcessor_clear GameInput_clear
+#endif
+#ifndef DemoCanvasBasicStartInputProcessor_removeNonAIInputGameKeyEvents
+#define DemoCanvasBasicStartInputProcessor_removeNonAIInputGameKeyEvents GameInput_removeNonAIInputGameKeyEvents
+#endif
+#ifndef DemoCanvasBasicStartInputProcessor_update
+#define DemoCanvasBasicStartInputProcessor_update GameInput_update
+#endif
+#ifndef DemoCanvasBasicStartInputProcessor_getRemovalGameKeyEventList
+#define DemoCanvasBasicStartInputProcessor_getRemovalGameKeyEventList GameInput_getRemovalGameKeyEventList
+#endif
+#ifndef DemoCanvasBasicStartInputProcessor_getGameKeyEventList
+#define DemoCanvasBasicStartInputProcessor_getGameKeyEventList GameInput_getGameKeyEventList
+#endif
+// Runs the Java static initialization of the class once. Reads of its static fields call it first.
+void DemoCanvasBasicStartInputProcessor_staticInit(void);
+// Registers the class, its superclass, and its methods for the interface calls (java_register_method)
+void DemoCanvasBasicStartInputProcessor_register(void);
+
+
+#endif // ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOCANVASBASICSTARTINPUTPROCESSOR_H

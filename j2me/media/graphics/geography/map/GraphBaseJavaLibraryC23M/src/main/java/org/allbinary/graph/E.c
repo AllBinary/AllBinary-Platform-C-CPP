@@ -1,41 +1,41 @@
 // Generated Code Do Not Modify
-// package org.allbinary.graph
+#include "org/allbinary/graph/E.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct E E;
-struct E {
-    char unused;
-};
 
 static E* E_e;
 
-E* E_new(void);
-E* E_newInstance(E* this);
 
-// Static fields with runtime initializers: call this once at startup
 void E_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     E_e = E_new();
 }
 
+void E_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("E", nullptr);
+    java_register_method("E", "newInstance", (void*) E_newInstance);
+}
+
 void E_init(E* this) {
+    E_register();
 }
 
 E* E_new(void) {
-    E* this = calloc(1, sizeof(E));
+    E* this = java_object_alloc(sizeof(E), "E");
     E_init(this);
     return this;
 }
 
 
 E* E_newInstance(E* this) {
-        return E_e;
+        return (E_staticInit(), E_e);
 }
 

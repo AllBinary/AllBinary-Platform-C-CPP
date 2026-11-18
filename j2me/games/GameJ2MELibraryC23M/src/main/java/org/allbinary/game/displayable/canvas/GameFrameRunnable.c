@@ -1,49 +1,52 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.displayable.canvas
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/displayable/canvas/GameFrameRunnable.h"
 #include "org/allbinary/graphics/displayable/GameTickDisplayInfoSingleton.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/time/GameTickTimeDelayHelper.h"
 #include "org/allbinary/time/GameTickTimeDelayHelperFactory.h"
 #include "org/allbinary/game/displayable/canvas/GameRunnable.h"
+#include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
+#if __has_include("org/allbinary/game/displayable/canvas/TimeDelayHelper.h")
+#include "org/allbinary/game/displayable/canvas/TimeDelayHelper.h"
+#endif
+#if __has_include("org/allbinary/graphics/displayable/TimeDelayHelper.h")
+#include "org/allbinary/graphics/displayable/TimeDelayHelper.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/log/TimeDelayHelper.h")
+#include "org/allbinary/logic/communication/log/TimeDelayHelper.h"
+#endif
+#if __has_include("org/allbinary/string/TimeDelayHelper.h")
+#include "org/allbinary/string/TimeDelayHelper.h"
+#endif
+#if __has_include("org/allbinary/time/TimeDelayHelper.h")
+#include "org/allbinary/time/TimeDelayHelper.h"
+#endif
+#if __has_include("org/allbinary/time/TimeDelayHelper.h")
+#include "org/allbinary/time/TimeDelayHelper.h"
+#endif
 
-typedef struct GameFrameRunnable GameFrameRunnable;
-struct GameFrameRunnable {
-    GameRunnable base;
-    LogUtil* logUtil;
-    GameTickDisplayInfoSingleton* gameTickDisplayInfoSingleton;
-    AllBinaryGameCanvas* allBinaryGameCanvas;
-    GameTickTimeDelayHelper* gameTickTimeDelayHelper;
-};
 
 
-GameFrameRunnable* GameFrameRunnable_new(AllBinaryGameCanvas* allBinaryGameCanvas);
 
-void GameFrameRunnable_init(GameFrameRunnable* this, AllBinaryGameCanvas* allBinaryGameCanvas);
-void GameFrameRunnable_run(GameFrameRunnable* this);
+
+void GameFrameRunnable_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void GameFrameRunnable_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GameFrameRunnable", "GameRunnable");
+    java_register_method("GameFrameRunnable", "run", (void*) GameFrameRunnable_run);
+}
 
 static void GameFrameRunnable_initFields(GameFrameRunnable* this) {
     this->logUtil = LogUtil_getInstance();
@@ -54,13 +57,14 @@ static void GameFrameRunnable_initFields(GameFrameRunnable* this) {
 
 
 void GameFrameRunnable_init(GameFrameRunnable* this, AllBinaryGameCanvas* allBinaryGameCanvas) {
+    GameFrameRunnable_register();
     GameRunnable_init(&this->base);
     GameFrameRunnable_initFields(this);
         this->allBinaryGameCanvas = allBinaryGameCanvas;
 }
 
 GameFrameRunnable* GameFrameRunnable_new(AllBinaryGameCanvas* allBinaryGameCanvas) {
-    GameFrameRunnable* this = calloc(1, sizeof(GameFrameRunnable));
+    GameFrameRunnable* this = java_object_alloc(sizeof(GameFrameRunnable), "GameFrameRunnable");
     GameFrameRunnable_init(this, allBinaryGameCanvas);
     return this;
 }
@@ -69,10 +73,10 @@ GameFrameRunnable* GameFrameRunnable_new(AllBinaryGameCanvas* allBinaryGameCanva
 void GameFrameRunnable_run(GameFrameRunnable* this) {
         JAVA_TRY {
             AllBinaryGameCanvas* allBinaryGameCanvas = this->allBinaryGameCanvas;
-            JAVA_CALL(AllBinaryGameCanvas_getLoopTimeHelperP(allBinaryGameCanvas), setStartTime, GameTickTimeDelayHelper_setStartTime(this->gameTickTimeDelayHelper));
+            TimeDelayHelper_setStartTime(RunnableCanvas_getLoopTimeHelperP(allBinaryGameCanvas), GameTickTimeDelayHelper_setStartTime(this->gameTickTimeDelayHelper));
             GameTickDisplayInfoSingleton_update(this->gameTickDisplayInfoSingleton);
             AllBinaryGameCanvas_processGame(allBinaryGameCanvas);
-            if (!AllBinaryGameCanvas_isRunning(allBinaryGameCanvas) || AllBinaryGameCanvas_isPaused(allBinaryGameCanvas)) {
+            if (!RunnableCanvas_isRunning(allBinaryGameCanvas) || AllBinaryGameCanvas_isPaused(allBinaryGameCanvas)) {
                 AllBinaryGameCanvas_notifyDonePainting(allBinaryGameCanvas);
             }
         } JAVA_CATCH(Exception, e) {

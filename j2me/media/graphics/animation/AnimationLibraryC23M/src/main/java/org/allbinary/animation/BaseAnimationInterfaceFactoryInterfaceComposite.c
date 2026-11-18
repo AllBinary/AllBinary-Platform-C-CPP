@@ -1,45 +1,38 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/animation/BaseAnimationInterfaceFactoryInterfaceComposite.h"
 #include "org/allbinary/media/ScaleProperties.h"
 #include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
-
-typedef struct BaseAnimationInterfaceFactoryInterfaceComposite BaseAnimationInterfaceFactoryInterfaceComposite;
-struct BaseAnimationInterfaceFactoryInterfaceComposite {
-    AnimationInterfaceFactoryInterface AnimationInterfaceFactoryInterface_interface;
-    BasicAnimationInterfaceFactoryInterface** basicAnimationInterfaceFactoryInterfaceArray;
-};
+#include "org/allbinary/animation/BasicAnimationInterfaceFactoryInterface.h"
+#include "org/allbinary/animation/NullAnimationFactory.h"
+#include "org/allbinary/animation/Animation.h"
 
 
-BaseAnimationInterfaceFactoryInterfaceComposite* BaseAnimationInterfaceFactoryInterfaceComposite_new(BasicAnimationInterfaceFactoryInterface** basicAnimationInterfaceFactoryInterfaceArray);
 
-void BaseAnimationInterfaceFactoryInterfaceComposite_init(BaseAnimationInterfaceFactoryInterfaceComposite* this, BasicAnimationInterfaceFactoryInterface** basicAnimationInterfaceFactoryInterfaceArray);
-Animation* BaseAnimationInterfaceFactoryInterfaceComposite_getInstance(BaseAnimationInterfaceFactoryInterfaceComposite* this, int32_t instanceId);
-BasicAnimationInterfaceFactoryInterface** BaseAnimationInterfaceFactoryInterfaceComposite_getBasicAnimationInterfaceFactoryInterfaceArray(BaseAnimationInterfaceFactoryInterfaceComposite* this);
-void BaseAnimationInterfaceFactoryInterfaceComposite_setBasicAnimationInterfaceFactoryInterfaceArray(BaseAnimationInterfaceFactoryInterfaceComposite* this, BasicAnimationInterfaceFactoryInterface** basicAnimationInterfaceFactoryInterfaceArray);
-void BaseAnimationInterfaceFactoryInterfaceComposite_setInitialScale(BaseAnimationInterfaceFactoryInterfaceComposite* this, ScaleProperties* scaleProperties);
+
+
+
+
+
+void BaseAnimationInterfaceFactoryInterfaceComposite_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void BaseAnimationInterfaceFactoryInterfaceComposite_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("BaseAnimationInterfaceFactoryInterfaceComposite", nullptr);
+    java_register_method("BaseAnimationInterfaceFactoryInterfaceComposite", "getInstance", (void*) BaseAnimationInterfaceFactoryInterfaceComposite_getInstance);
+    java_register_method("BaseAnimationInterfaceFactoryInterfaceComposite", "getBasicAnimationInterfaceFactoryInterfaceArray", (void*) BaseAnimationInterfaceFactoryInterfaceComposite_getBasicAnimationInterfaceFactoryInterfaceArray);
+    java_register_method("BaseAnimationInterfaceFactoryInterfaceComposite", "setBasicAnimationInterfaceFactoryInterfaceArray", (void*) BaseAnimationInterfaceFactoryInterfaceComposite_setBasicAnimationInterfaceFactoryInterfaceArray);
+    java_register_method("BaseAnimationInterfaceFactoryInterfaceComposite", "setInitialScale", (void*) BaseAnimationInterfaceFactoryInterfaceComposite_setInitialScale);
+}
 
 static void BaseAnimationInterfaceFactoryInterfaceComposite_initFields(BaseAnimationInterfaceFactoryInterfaceComposite* this) {
     
@@ -47,12 +40,13 @@ static void BaseAnimationInterfaceFactoryInterfaceComposite_initFields(BaseAnima
 
 
 void BaseAnimationInterfaceFactoryInterfaceComposite_init(BaseAnimationInterfaceFactoryInterfaceComposite* this, BasicAnimationInterfaceFactoryInterface** basicAnimationInterfaceFactoryInterfaceArray) {
+    BaseAnimationInterfaceFactoryInterfaceComposite_register();
     BaseAnimationInterfaceFactoryInterfaceComposite_initFields(this);
         this->basicAnimationInterfaceFactoryInterfaceArray = basicAnimationInterfaceFactoryInterfaceArray;
 }
 
 BaseAnimationInterfaceFactoryInterfaceComposite* BaseAnimationInterfaceFactoryInterfaceComposite_new(BasicAnimationInterfaceFactoryInterface** basicAnimationInterfaceFactoryInterfaceArray) {
-    BaseAnimationInterfaceFactoryInterfaceComposite* this = calloc(1, sizeof(BaseAnimationInterfaceFactoryInterfaceComposite));
+    BaseAnimationInterfaceFactoryInterfaceComposite* this = java_object_alloc(sizeof(BaseAnimationInterfaceFactoryInterfaceComposite), "BaseAnimationInterfaceFactoryInterfaceComposite");
     BaseAnimationInterfaceFactoryInterfaceComposite_init(this, basicAnimationInterfaceFactoryInterfaceArray);
     return this;
 }
@@ -60,7 +54,7 @@ BaseAnimationInterfaceFactoryInterfaceComposite* BaseAnimationInterfaceFactoryIn
 
 // throws Exception
 Animation* BaseAnimationInterfaceFactoryInterfaceComposite_getInstance(BaseAnimationInterfaceFactoryInterfaceComposite* this, int32_t instanceId) {
-        return JAVA_CALL(NullAnimationFactory_getFactoryInstance(), getInstance, 0);
+        return NullAnimationFactory_getInstance(NullAnimationFactory_getFactoryInstance(), 0);
 }
 
 

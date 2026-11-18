@@ -1,76 +1,65 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.canvas
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Canvas.h"
-// #include "javax/microedition/lcdui/CommandListener.h"
+#include "org/allbinary/canvas/FullScreenUtil.h"
+#include "javax/microedition/lcdui/Canvas.h"
+#include "javax/microedition/lcdui/CommandListener.h"
 #include "org/allbinary/game/configuration/feature/Features.h"
 #include "org/allbinary/game/configuration/feature/MainFeatureFactory.h"
 
-typedef struct FullScreenUtil FullScreenUtil;
-struct FullScreenUtil {
-    char unused;
-};
 
 static FullScreenUtil* FullScreenUtil_instance;
 
-FullScreenUtil* FullScreenUtil_new(void);
-FullScreenUtil* FullScreenUtil_getInstance(void);
-void FullScreenUtil_initOnRun(FullScreenUtil* this, Canvas* fullScreenInterface, CommandListener* commandListener);
-void FullScreenUtil_init(FullScreenUtil* this, Canvas* fullScreenInterface);
-bool FullScreenUtil_isScreenChange(FullScreenUtil* this, bool isFullScreen);
-bool FullScreenUtil_isScreenChangeCanvas(FullScreenUtil* this, Canvas* fullScreenInterface);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
 void FullScreenUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     FullScreenUtil_instance = FullScreenUtil_new();
 }
 
+void FullScreenUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("FullScreenUtil", nullptr);
+    java_register_method("FullScreenUtil", "initOnRun", (void*) FullScreenUtil_initOnRun);
+    java_register_method("FullScreenUtil", "init", (void*) FullScreenUtil_initMethod);
+    java_register_method("FullScreenUtil", "isScreenChange", (void*) FullScreenUtil_isScreenChange);
+    java_register_method("FullScreenUtil", "isScreenChangeCanvas", (void*) FullScreenUtil_isScreenChangeCanvas);
+}
+
 void FullScreenUtil_init(FullScreenUtil* this) {
+    FullScreenUtil_register();
 }
 
 FullScreenUtil* FullScreenUtil_new(void) {
-    FullScreenUtil* this = calloc(1, sizeof(FullScreenUtil));
+    FullScreenUtil* this = java_object_alloc(sizeof(FullScreenUtil), "FullScreenUtil");
     FullScreenUtil_init(this);
     return this;
 }
 
 
 FullScreenUtil* FullScreenUtil_getInstance(void) {
-        return FullScreenUtil_instance;
+        return (FullScreenUtil_staticInit(), FullScreenUtil_instance);
 }
 
 
 // throws Exception
 void FullScreenUtil_initOnRun(FullScreenUtil* this, Canvas* fullScreenInterface, CommandListener* commandListener) {
         if (commandListener != nullptr) {
-            FullScreenUtil_init(this, fullScreenInterface);
+            FullScreenUtil_initMethod(this, fullScreenInterface);
         }
 }
 
 
-void FullScreenUtil_init(FullScreenUtil* this, Canvas* fullScreenInterface) {
+void FullScreenUtil_initMethod(FullScreenUtil* this, Canvas* fullScreenInterface) {
 }
 
 

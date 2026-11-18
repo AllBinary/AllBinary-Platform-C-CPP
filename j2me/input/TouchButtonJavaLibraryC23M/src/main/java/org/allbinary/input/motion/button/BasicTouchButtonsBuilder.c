@@ -1,55 +1,56 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input.motion.button
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/input/motion/button/BasicTouchButtonsBuilder.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
 #include "org/allbinary/util/BasicArrayListUtil.h"
 #include "org/allbinary/input/motion/button/BaseTouchInput.h"
+#include "org/allbinary/input/motion/button/CommonButtons.h"
+#include "org/allbinary/input/motion/button/TouchButtonLocationHelper.h"
+#include "org/allbinary/input/motion/button/BasicTouchButtonCellPositionFactory.h"
+#include "org/allbinary/input/motion/button/TouchButton.h"
+#include "org/allbinary/input/motion/button/BasicTouchInputFactory.h"
+#include "org/allbinary/input/motion/button/TouchButtonUpResource.h"
+#include "org/allbinary/input/motion/button/TouchButtonDownResource.h"
+#include "org/allbinary/input/motion/button/TouchButtonTurnLeftResource.h"
+#include "org/allbinary/input/motion/button/TouchButtonTurnRightResource.h"
+#if __has_include("org/allbinary/util/BasicArrayListUtil.h")
+#include "org/allbinary/util/BasicArrayListUtil.h"
+#endif
 
-typedef struct BasicTouchButtonsBuilder BasicTouchButtonsBuilder;
-struct BasicTouchButtonsBuilder {
-    BaseTouchInput base;
-    LogUtil* logUtil;
-};
 
 
-BasicTouchButtonsBuilder* BasicTouchButtonsBuilder_new(void);
-BasicArrayList* BasicTouchButtonsBuilder_getList(BasicTouchButtonsBuilder* this);
+
+void BasicTouchButtonsBuilder_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void BasicTouchButtonsBuilder_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("BasicTouchButtonsBuilder", "BaseTouchInput");
+    java_register_method("BasicTouchButtonsBuilder", "getList", (void*) BasicTouchButtonsBuilder_getList);
+}
 
 static void BasicTouchButtonsBuilder_initFields(BasicTouchButtonsBuilder* this) {
     this->logUtil = LogUtil_getInstance();
 }
 
 void BasicTouchButtonsBuilder_init(BasicTouchButtonsBuilder* this) {
+    BasicTouchButtonsBuilder_register();
     BaseTouchInput_init(&this->base);
     BasicTouchButtonsBuilder_initFields(this);
 }
 
 BasicTouchButtonsBuilder* BasicTouchButtonsBuilder_new(void) {
-    BasicTouchButtonsBuilder* this = calloc(1, sizeof(BasicTouchButtonsBuilder));
+    BasicTouchButtonsBuilder* this = java_object_alloc(sizeof(BasicTouchButtonsBuilder), "BasicTouchButtonsBuilder");
     BasicTouchButtonsBuilder_init(this);
     return this;
 }
@@ -57,7 +58,7 @@ BasicTouchButtonsBuilder* BasicTouchButtonsBuilder_new(void) {
 
 BasicArrayList* BasicTouchButtonsBuilder_getList(BasicTouchButtonsBuilder* this) {
         JAVA_TRY {
-            LogUtil_putF(this->logUtil, this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
+            LogUtil_putF(this->logUtil, this->base.commonStrings->START, this, this->base.commonStrings->CONSTRUCTOR);
             BasicArrayList* list = BasicArrayListD_new();
             CommonButtons* commonButtons = CommonButtons_getInstance();
             TouchButtonLocationHelper* touchButtonLocationHelper = TouchButtonLocationHelper_new();
@@ -72,7 +73,7 @@ BasicArrayList* BasicTouchButtonsBuilder_getList(BasicTouchButtonsBuilder* this)
             BasicArrayList_add(list, DOWN);
             return list;
         } JAVA_CATCH(Exception, e) {
-            LogUtil_put(this->logUtil, this->commonStrings->EXCEPTION, this, this->commonStrings->GET_LIST, e);
+            LogUtil_put(this->logUtil, this->base.commonStrings->EXCEPTION, this, this->base.commonStrings->GET_LIST, e);
             return BasicArrayListUtil_getImmutableInstance(BasicArrayListUtil_getInstance());
         } JAVA_END_TRY;
 }

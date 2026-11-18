@@ -44,6 +44,8 @@ const char* LogConfigType_getDescription(LogConfigType* this);
 void LogConfigType_setName(LogConfigType* this, const char* value);
 
 void LogConfigType_setDescription(LogConfigType* this, const char* value);
+#define LogConfigType_new2 LogConfigType_new
+#define LogConfigType_init2 LogConfigType_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void LogConfigType_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

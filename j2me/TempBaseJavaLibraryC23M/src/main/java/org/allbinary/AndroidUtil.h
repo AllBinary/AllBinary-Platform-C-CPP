@@ -39,6 +39,8 @@ void AndroidUtil_init(AndroidUtil* this);
 bool AndroidUtil_isMemoryRestrictive(void);
 
 bool AndroidUtil_isAndroid(void);
+#define AndroidUtil_new0 AndroidUtil_new
+#define AndroidUtil_init0 AndroidUtil_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void AndroidUtil_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

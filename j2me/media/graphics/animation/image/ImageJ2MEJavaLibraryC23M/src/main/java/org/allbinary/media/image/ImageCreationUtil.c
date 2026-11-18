@@ -1,61 +1,65 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.media.image
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Image.h"
+#include "org/allbinary/media/image/ImageCreationUtil.h"
+#include "javax/microedition/lcdui/Image.h"
 #include "org/allbinary/image/GameFeatureImageCacheFactory.h"
+#if __has_include("org/allbinary/media/image/ImageCache.h")
+#include "org/allbinary/media/image/ImageCache.h"
+#endif
+#if __has_include("javax/microedition/lcdui/ImageCache.h")
+#include "javax/microedition/lcdui/ImageCache.h"
+#endif
+#if __has_include("org/allbinary/image/ImageCache.h")
+#include "org/allbinary/image/ImageCache.h"
+#endif
+#if __has_include("org/allbinary/media/image/ImageCache.h")
+#include "org/allbinary/media/image/ImageCache.h"
+#endif
+#if __has_include("javax/microedition/lcdui/ImageCache.h")
+#include "javax/microedition/lcdui/ImageCache.h"
+#endif
+#if __has_include("org/allbinary/image/ImageCache.h")
+#include "org/allbinary/image/ImageCache.h"
+#endif
 
-typedef struct ImageCreationUtil ImageCreationUtil;
-struct ImageCreationUtil {
-    char unused;
-};
 
 static ImageCreationUtil* ImageCreationUtil_instance;
 
-ImageCreationUtil* ImageCreationUtil_new(void);
-ImageCreationUtil* ImageCreationUtil_getInstance(void);
 
-void ImageCreationUtil_init(ImageCreationUtil* this);
-Image* ImageCreationUtil_createImageWH(ImageCreationUtil* this, int32_t width, int32_t height);
-Image* ImageCreationUtil_createImage(ImageCreationUtil* this, int32_t width, int32_t height, float maxScaleX, float maxScaleY);
 
-// Static fields with runtime initializers: call this once at startup
+
+
 void ImageCreationUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     ImageCreationUtil_instance = ImageCreationUtil_new();
+}
+
+void ImageCreationUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ImageCreationUtil", nullptr);
+    java_register_method("ImageCreationUtil", "createImageWH", (void*) ImageCreationUtil_createImageWH);
+    java_register_method("ImageCreationUtil", "createImage", (void*) ImageCreationUtil_createImage);
 }
 
 
 ImageCreationUtil* ImageCreationUtil_getInstance(void) {
-        return ImageCreationUtil_instance;
+        return (ImageCreationUtil_staticInit(), ImageCreationUtil_instance);
 }
 
 
 void ImageCreationUtil_init(ImageCreationUtil* this) {
+    ImageCreationUtil_register();
 }
 
 ImageCreationUtil* ImageCreationUtil_new(void) {
-    ImageCreationUtil* this = calloc(1, sizeof(ImageCreationUtil));
+    ImageCreationUtil* this = java_object_alloc(sizeof(ImageCreationUtil), "ImageCreationUtil");
     ImageCreationUtil_init(this);
     return this;
 }
@@ -63,14 +67,14 @@ ImageCreationUtil* ImageCreationUtil_new(void) {
 
 // throws Exception
 Image* ImageCreationUtil_createImageWH(ImageCreationUtil* this, int32_t width, int32_t height) {
-        Image* image = GameFeatureImageCacheFactory_get(GameFeatureImageCacheFactory_getInstance(), java_class_of(this), width, height);
+        Image* image = ImageCache_get(GameFeatureImageCacheFactory_getInstance(), java_class_of(this), width, height);
         return image;
 }
 
 
 // throws Exception
 Image* ImageCreationUtil_createImage(ImageCreationUtil* this, int32_t width, int32_t height, float maxScaleX, float maxScaleY) {
-        Image* image = GameFeatureImageCacheFactory_get(GameFeatureImageCacheFactory_getInstance(), java_class_of(this), ((int32_t) (((float) width) * maxScaleX)) + 1, ((int32_t) (((float) height) * maxScaleY)) + 1);
+        Image* image = ImageCache_get(GameFeatureImageCacheFactory_getInstance(), java_class_of(this), ((int32_t) (((float) width) * maxScaleX)) + 1, ((int32_t) (((float) height) * maxScaleY)) + 1);
         return image;
 }
 

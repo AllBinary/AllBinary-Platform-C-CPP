@@ -1,0 +1,182 @@
+#ifndef ORG_ALLBINARY_ANIMATION_NULLROTATIONANIMATION_H
+#define ORG_ALLBINARY_ANIMATION_NULLROTATIONANIMATION_H
+// Generated Code Do Not Modify
+// package org.allbinary.animation
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+typedef struct RotationAnimation RotationAnimation;
+typedef struct AnimationBehavior AnimationBehavior;
+typedef struct AngleFactory AngleFactory;
+typedef struct AngleInfo AngleInfo;
+typedef struct CircularIndexUtil CircularIndexUtil;
+#include "org/allbinary/animation/RotationAnimation.h"
+
+typedef struct NullRotationAnimation NullRotationAnimation;
+struct NullRotationAnimation {
+    RotationAnimation base;
+};
+
+
+NullRotationAnimation* NullRotationAnimation_new(AngleInfo* angleInfo, CircularIndexUtil* circularIndexUtil, AnimationBehavior* animationBehavior);
+
+NullRotationAnimation* NullRotationAnimation_createTotalAngle(AngleInfo* angleInfo, int16_t totalAngle, AnimationBehavior* animationBehavior);
+
+NullRotationAnimation* NullRotationAnimation_createQuarter(AnimationBehavior* animationBehavior);
+
+void NullRotationAnimation_init(NullRotationAnimation* this, AngleInfo* angleInfo, CircularIndexUtil* circularIndexUtil, AnimationBehavior* animationBehavior);
+
+int32_t NullRotationAnimation_getAnimationSize(NullRotationAnimation* this);
+#define NullRotationAnimation_new3 NullRotationAnimation_new
+#define NullRotationAnimation_init3 NullRotationAnimation_init
+#ifndef NullRotationAnimation_nextRotationX
+#define NullRotationAnimation_nextRotationX RotationAnimation_nextRotationX
+#endif
+#ifndef NullRotationAnimation_previousRotationX
+#define NullRotationAnimation_previousRotationX RotationAnimation_previousRotationX
+#endif
+#ifndef NullRotationAnimation_nextRotation
+#define NullRotationAnimation_nextRotation RotationAnimation_nextRotation
+#endif
+#ifndef NullRotationAnimation_previousRotation
+#define NullRotationAnimation_previousRotation RotationAnimation_previousRotation
+#endif
+#ifndef NullRotationAnimation_nextRotationZ
+#define NullRotationAnimation_nextRotationZ RotationAnimation_nextRotationZ
+#endif
+#ifndef NullRotationAnimation_previousRotationZ
+#define NullRotationAnimation_previousRotationZ RotationAnimation_previousRotationZ
+#endif
+#ifndef NullRotationAnimation_setFrame
+#define NullRotationAnimation_setFrame RotationAnimation_setFrame
+#endif
+#ifndef NullRotationAnimation_setFrameByDirection
+#define NullRotationAnimation_setFrameByDirection RotationAnimation_setFrameByDirection
+#endif
+#ifndef NullRotationAnimation_setFrameToAngle
+#define NullRotationAnimation_setFrameToAngle RotationAnimation_setFrameToAngle
+#endif
+#ifndef NullRotationAnimation_adjustFrameToAngle
+#define NullRotationAnimation_adjustFrameToAngle RotationAnimation_adjustFrameToAngle
+#endif
+#ifndef NullRotationAnimation_adjustFrame
+#define NullRotationAnimation_adjustFrame RotationAnimation_adjustFrame
+#endif
+#ifndef NullRotationAnimation_getFrame
+#define NullRotationAnimation_getFrame RotationAnimation_getFrame
+#endif
+#ifndef NullRotationAnimation_getSize
+#define NullRotationAnimation_getSize RotationAnimation_getSize
+#endif
+#ifndef NullRotationAnimation_getAngleInfoP
+#define NullRotationAnimation_getAngleInfoP RotationAnimation_getAngleInfoP
+#endif
+#ifndef NullRotationAnimation_toString
+#define NullRotationAnimation_toString RotationAnimation_toString
+#endif
+#ifndef NullRotationAnimation_getAnimationBehavior
+#define NullRotationAnimation_getAnimationBehavior IndexedAnimation_getAnimationBehavior
+#endif
+#ifndef NullRotationAnimation_reset
+#define NullRotationAnimation_reset IndexedAnimation_reset
+#endif
+#ifndef NullRotationAnimation_setFrame
+#define NullRotationAnimation_setFrame IndexedAnimation_setFrame
+#endif
+#ifndef NullRotationAnimation_getFrame
+#define NullRotationAnimation_getFrame IndexedAnimation_getFrame
+#endif
+#ifndef NullRotationAnimation_getSize
+#define NullRotationAnimation_getSize IndexedAnimation_getSize
+#endif
+#ifndef NullRotationAnimation_previousFrame
+#define NullRotationAnimation_previousFrame IndexedAnimation_previousFrame
+#endif
+#ifndef NullRotationAnimation_isLastFrame
+#define NullRotationAnimation_isLastFrame IndexedAnimation_isLastFrame
+#endif
+#ifndef NullRotationAnimation_setSequence
+#define NullRotationAnimation_setSequence IndexedAnimation_setSequence
+#endif
+#ifndef NullRotationAnimation_getSequence
+#define NullRotationAnimation_getSequence IndexedAnimation_getSequence
+#endif
+#ifndef NullRotationAnimation_setState
+#define NullRotationAnimation_setState IndexedAnimation_setState
+#endif
+#ifndef NullRotationAnimation_getWidth
+#define NullRotationAnimation_getWidth IndexedAnimation_getWidth
+#endif
+#ifndef NullRotationAnimation_getHeight
+#define NullRotationAnimation_getHeight IndexedAnimation_getHeight
+#endif
+#ifndef NullRotationAnimation_setAlpha
+#define NullRotationAnimation_setAlpha Animation_setAlpha
+#endif
+#ifndef NullRotationAnimation_nextFrame
+#define NullRotationAnimation_nextFrame Animation_nextFrame
+#endif
+#ifndef NullRotationAnimation_paintXY
+#define NullRotationAnimation_paintXY Animation_paintXY
+#endif
+#ifndef NullRotationAnimation_paintThreedXYZ
+#define NullRotationAnimation_paintThreedXYZ Animation_paintThreedXYZ
+#endif
+#ifndef NullRotationAnimation_isThreed
+#define NullRotationAnimation_isThreed Animation_isThreed
+#endif
+#ifndef NullRotationAnimation_getBasicColorP
+#define NullRotationAnimation_getBasicColorP Animation_getBasicColorP
+#endif
+#ifndef NullRotationAnimation_setBasicColorP
+#define NullRotationAnimation_setBasicColorP Animation_setBasicColorP
+#endif
+#ifndef NullRotationAnimation_setBackgroundBasicColorP
+#define NullRotationAnimation_setBackgroundBasicColorP Animation_setBackgroundBasicColorP
+#endif
+#ifndef NullRotationAnimation_getChangeBasicColor
+#define NullRotationAnimation_getChangeBasicColor Animation_getChangeBasicColor
+#endif
+#ifndef NullRotationAnimation_changeBasicColor
+#define NullRotationAnimation_changeBasicColor Animation_changeBasicColor
+#endif
+#ifndef NullRotationAnimation_getChangeColor
+#define NullRotationAnimation_getChangeColor Animation_getChangeColor
+#endif
+#ifndef NullRotationAnimation_getColor
+#define NullRotationAnimation_getColor Animation_getColor
+#endif
+#ifndef NullRotationAnimation_setScale
+#define NullRotationAnimation_setScale Animation_setScale
+#endif
+#ifndef NullRotationAnimation_setMaxScale
+#define NullRotationAnimation_setMaxScale Animation_setMaxScale
+#endif
+#ifndef NullRotationAnimation_set
+#define NullRotationAnimation_set Animation_set
+#endif
+#ifndef NullRotationAnimation_setDx
+#define NullRotationAnimation_setDx Animation_setDx
+#endif
+#ifndef NullRotationAnimation_getDx
+#define NullRotationAnimation_getDx Animation_getDx
+#endif
+#ifndef NullRotationAnimation_setDy
+#define NullRotationAnimation_setDy Animation_setDy
+#endif
+#ifndef NullRotationAnimation_getDy
+#define NullRotationAnimation_getDy Animation_getDy
+#endif
+// Runs the Java static initialization of the class once. Reads of its static fields call it first.
+void NullRotationAnimation_staticInit(void);
+// Registers the class, its superclass, and its methods for the interface calls (java_register_method)
+void NullRotationAnimation_register(void);
+
+
+#endif // ORG_ALLBINARY_ANIMATION_NULLROTATIONANIMATION_H

@@ -1,48 +1,33 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.ag.game.vector
+#include "org/allbinary/ag/game/vector/HealthVectorData.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct HealthVectorData HealthVectorData;
-struct HealthVectorData {
-    char unused;
-};
 
 int32_t*** HealthVectorData_points;
 
-HealthVectorData* HealthVectorData_new(void);
-
-// Static fields with runtime initializers: call this once at startup
 void HealthVectorData_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     HealthVectorData_points = ((int32_t***) java_array_from(sizeof(int32_t**), sizeof((int32_t**[]){ ((int32_t**) java_array_from(sizeof(int32_t*), sizeof((int32_t*[]){ ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 2, 1 }) / sizeof(int32_t), (int32_t[]){ 2, 1 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 3, 2 }) / sizeof(int32_t), (int32_t[]){ 3, 2 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 3, 2 }) / sizeof(int32_t), (int32_t[]){ 3, 2 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 4, 1 }) / sizeof(int32_t), (int32_t[]){ 4, 1 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 4, 1 }) / sizeof(int32_t), (int32_t[]){ 4, 1 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 5, 1 }) / sizeof(int32_t), (int32_t[]){ 5, 1 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 5, 1 }) / sizeof(int32_t), (int32_t[]){ 5, 1 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 6, 2 }) / sizeof(int32_t), (int32_t[]){ 6, 2 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 6, 2 }) / sizeof(int32_t), (int32_t[]){ 6, 2 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 6, 3 }) / sizeof(int32_t), (int32_t[]){ 6, 3 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 6, 3 }) / sizeof(int32_t), (int32_t[]){ 6, 3 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 3, 6 }) / sizeof(int32_t), (int32_t[]){ 3, 6 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 3, 6 }) / sizeof(int32_t), (int32_t[]){ 3, 6 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 0, 3 }) / sizeof(int32_t), (int32_t[]){ 0, 3 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 0, 3 }) / sizeof(int32_t), (int32_t[]){ 0, 3 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 0, 2 }) / sizeof(int32_t), (int32_t[]){ 0, 2 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 0, 2 }) / sizeof(int32_t), (int32_t[]){ 0, 2 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 1, 1 }) / sizeof(int32_t), (int32_t[]){ 1, 1 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 1, 1 }) / sizeof(int32_t), (int32_t[]){ 1, 1 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 2, 1 }) / sizeof(int32_t), (int32_t[]){ 2, 1 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 1000, 1000 }) / sizeof(int32_t), (int32_t[]){ 1000, 1000 })) }) / sizeof(int32_t*), (int32_t*[]){ ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 2, 1 }) / sizeof(int32_t), (int32_t[]){ 2, 1 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 3, 2 }) / sizeof(int32_t), (int32_t[]){ 3, 2 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 3, 2 }) / sizeof(int32_t), (int32_t[]){ 3, 2 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 4, 1 }) / sizeof(int32_t), (int32_t[]){ 4, 1 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 4, 1 }) / sizeof(int32_t), (int32_t[]){ 4, 1 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 5, 1 }) / sizeof(int32_t), (int32_t[]){ 5, 1 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 5, 1 }) / sizeof(int32_t), (int32_t[]){ 5, 1 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 6, 2 }) / sizeof(int32_t), (int32_t[]){ 6, 2 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 6, 2 }) / sizeof(int32_t), (int32_t[]){ 6, 2 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 6, 3 }) / sizeof(int32_t), (int32_t[]){ 6, 3 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 6, 3 }) / sizeof(int32_t), (int32_t[]){ 6, 3 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 3, 6 }) / sizeof(int32_t), (int32_t[]){ 3, 6 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 3, 6 }) / sizeof(int32_t), (int32_t[]){ 3, 6 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 0, 3 }) / sizeof(int32_t), (int32_t[]){ 0, 3 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 0, 3 }) / sizeof(int32_t), (int32_t[]){ 0, 3 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 0, 2 }) / sizeof(int32_t), (int32_t[]){ 0, 2 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 0, 2 }) / sizeof(int32_t), (int32_t[]){ 0, 2 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 1, 1 }) / sizeof(int32_t), (int32_t[]){ 1, 1 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 1, 1 }) / sizeof(int32_t), (int32_t[]){ 1, 1 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 2, 1 }) / sizeof(int32_t), (int32_t[]){ 2, 1 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 1000, 1000 }) / sizeof(int32_t), (int32_t[]){ 1000, 1000 })) })) }) / sizeof(int32_t**), (int32_t**[]){ ((int32_t**) java_array_from(sizeof(int32_t*), sizeof((int32_t*[]){ ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 2, 1 }) / sizeof(int32_t), (int32_t[]){ 2, 1 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 3, 2 }) / sizeof(int32_t), (int32_t[]){ 3, 2 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 3, 2 }) / sizeof(int32_t), (int32_t[]){ 3, 2 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 4, 1 }) / sizeof(int32_t), (int32_t[]){ 4, 1 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 4, 1 }) / sizeof(int32_t), (int32_t[]){ 4, 1 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 5, 1 }) / sizeof(int32_t), (int32_t[]){ 5, 1 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 5, 1 }) / sizeof(int32_t), (int32_t[]){ 5, 1 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 6, 2 }) / sizeof(int32_t), (int32_t[]){ 6, 2 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 6, 2 }) / sizeof(int32_t), (int32_t[]){ 6, 2 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 6, 3 }) / sizeof(int32_t), (int32_t[]){ 6, 3 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 6, 3 }) / sizeof(int32_t), (int32_t[]){ 6, 3 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 3, 6 }) / sizeof(int32_t), (int32_t[]){ 3, 6 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 3, 6 }) / sizeof(int32_t), (int32_t[]){ 3, 6 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 0, 3 }) / sizeof(int32_t), (int32_t[]){ 0, 3 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 0, 3 }) / sizeof(int32_t), (int32_t[]){ 0, 3 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 0, 2 }) / sizeof(int32_t), (int32_t[]){ 0, 2 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 0, 2 }) / sizeof(int32_t), (int32_t[]){ 0, 2 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 1, 1 }) / sizeof(int32_t), (int32_t[]){ 1, 1 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 1, 1 }) / sizeof(int32_t), (int32_t[]){ 1, 1 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 2, 1 }) / sizeof(int32_t), (int32_t[]){ 2, 1 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 1000, 1000 }) / sizeof(int32_t), (int32_t[]){ 1000, 1000 })) }) / sizeof(int32_t*), (int32_t*[]){ ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 2, 1 }) / sizeof(int32_t), (int32_t[]){ 2, 1 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 3, 2 }) / sizeof(int32_t), (int32_t[]){ 3, 2 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 3, 2 }) / sizeof(int32_t), (int32_t[]){ 3, 2 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 4, 1 }) / sizeof(int32_t), (int32_t[]){ 4, 1 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 4, 1 }) / sizeof(int32_t), (int32_t[]){ 4, 1 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 5, 1 }) / sizeof(int32_t), (int32_t[]){ 5, 1 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 5, 1 }) / sizeof(int32_t), (int32_t[]){ 5, 1 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 6, 2 }) / sizeof(int32_t), (int32_t[]){ 6, 2 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 6, 2 }) / sizeof(int32_t), (int32_t[]){ 6, 2 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 6, 3 }) / sizeof(int32_t), (int32_t[]){ 6, 3 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 6, 3 }) / sizeof(int32_t), (int32_t[]){ 6, 3 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 3, 6 }) / sizeof(int32_t), (int32_t[]){ 3, 6 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 3, 6 }) / sizeof(int32_t), (int32_t[]){ 3, 6 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 0, 3 }) / sizeof(int32_t), (int32_t[]){ 0, 3 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 0, 3 }) / sizeof(int32_t), (int32_t[]){ 0, 3 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 0, 2 }) / sizeof(int32_t), (int32_t[]){ 0, 2 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 0, 2 }) / sizeof(int32_t), (int32_t[]){ 0, 2 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 1, 1 }) / sizeof(int32_t), (int32_t[]){ 1, 1 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 1, 1 }) / sizeof(int32_t), (int32_t[]){ 1, 1 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 2, 1 }) / sizeof(int32_t), (int32_t[]){ 2, 1 })), ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ 1000, 1000 }) / sizeof(int32_t), (int32_t[]){ 1000, 1000 })) })) }));
 }
 
+void HealthVectorData_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("HealthVectorData", nullptr);
+}
+
 void HealthVectorData_init(HealthVectorData* this) {
+    HealthVectorData_register();
 }
 
 HealthVectorData* HealthVectorData_new(void) {
-    HealthVectorData* this = calloc(1, sizeof(HealthVectorData));
+    HealthVectorData* this = java_object_alloc(sizeof(HealthVectorData), "HealthVectorData");
     HealthVectorData_init(this);
     return this;
 }

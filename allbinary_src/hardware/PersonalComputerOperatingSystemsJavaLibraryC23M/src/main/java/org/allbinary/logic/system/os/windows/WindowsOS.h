@@ -39,6 +39,35 @@ WindowsOS* WindowsOS_new(void);
 void WindowsOS_init(WindowsOS* this);
 
 bool WindowsOS_isAutoHide(WindowsOS* this);
+#define WindowsOS_new0 WindowsOS_new
+#define WindowsOS_init0 WindowsOS_init
+#ifndef WindowsOS_getName
+#define WindowsOS_getName GenericOperatingSystem_getName
+#endif
+#ifndef WindowsOS_getVersion
+#define WindowsOS_getVersion GenericOperatingSystem_getVersion
+#endif
+#ifndef WindowsOS_getArch
+#define WindowsOS_getArch GenericOperatingSystem_getArch
+#endif
+#ifndef WindowsOS_getCharacterSet
+#define WindowsOS_getCharacterSet GenericOperatingSystem_getCharacterSet
+#endif
+#ifndef WindowsOS_isOverScan
+#define WindowsOS_isOverScan GenericOperatingSystem_isOverScan
+#endif
+#ifndef WindowsOS_getOverScanXPercent
+#define WindowsOS_getOverScanXPercent GenericOperatingSystem_getOverScanXPercent
+#endif
+#ifndef WindowsOS_getOverScanYPercent
+#define WindowsOS_getOverScanYPercent GenericOperatingSystem_getOverScanYPercent
+#endif
+#ifndef WindowsOS_isScalable
+#define WindowsOS_isScalable GenericOperatingSystem_isScalable
+#endif
+#ifndef WindowsOS_toString
+#define WindowsOS_toString GenericOperatingSystem_toString
+#endif
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void WindowsOS_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

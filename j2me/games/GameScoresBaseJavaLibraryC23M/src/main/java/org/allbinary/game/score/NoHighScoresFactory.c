@@ -1,51 +1,38 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.score
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/score/NoHighScoresFactory.h"
 #include "org/allbinary/game/GameInfo.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/game/score/HighScoresBase.h"
+#include "org/allbinary/game/score/HighScores.h"
+#include "org/allbinary/game/score/HighScoresResultsListener.h"
+#include "org/allbinary/game/score/HighScoresHelperBase.h"
+#include "org/allbinary/game/score/HighScoresHelperBaseInterface.h"
 
-typedef struct NoHighScoresFactory NoHighScoresFactory;
-struct NoHighScoresFactory {
-    HighScoresBase base;
-    LogUtil* logUtil;
-    HighScores** NO_HIGH_SCORES;
-};
 
 static NoHighScoresFactory* NoHighScoresFactory_instance;
 
-NoHighScoresFactory* NoHighScoresFactory_new(void);
-NoHighScoresFactory* NoHighScoresFactory_getInstance(void);
 
-void NoHighScoresFactory_init(NoHighScoresFactory* this);
-void NoHighScoresFactory_fetchHighScores(NoHighScoresFactory* this, GameInfo* gameInfo, HighScoresResultsListener* highScoresResultsListener);
-HighScoresHelperBaseInterface* NoHighScoresFactory_createHighScoresHelper(NoHighScoresFactory* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
 void NoHighScoresFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     NoHighScoresFactory_instance = NoHighScoresFactory_new();
+}
+
+void NoHighScoresFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("NoHighScoresFactory", "HighScoresBase");
+    java_register_method("NoHighScoresFactory", "fetchHighScores", (void*) NoHighScoresFactory_fetchHighScores);
+    java_register_method("NoHighScoresFactory", "createHighScoresHelper", (void*) NoHighScoresFactory_createHighScoresHelper);
 }
 
 static void NoHighScoresFactory_initFields(NoHighScoresFactory* this) {
@@ -55,17 +42,18 @@ static void NoHighScoresFactory_initFields(NoHighScoresFactory* this) {
 
 
 NoHighScoresFactory* NoHighScoresFactory_getInstance(void) {
-        return NoHighScoresFactory_instance;
+        return (NoHighScoresFactory_staticInit(), NoHighScoresFactory_instance);
 }
 
 
 void NoHighScoresFactory_init(NoHighScoresFactory* this) {
+    NoHighScoresFactory_register();
     HighScoresBase_init(&this->base);
     NoHighScoresFactory_initFields(this);
 }
 
 NoHighScoresFactory* NoHighScoresFactory_new(void) {
-    NoHighScoresFactory* this = calloc(1, sizeof(NoHighScoresFactory));
+    NoHighScoresFactory* this = java_object_alloc(sizeof(NoHighScoresFactory), "NoHighScoresFactory");
     NoHighScoresFactory_init(this);
     return this;
 }

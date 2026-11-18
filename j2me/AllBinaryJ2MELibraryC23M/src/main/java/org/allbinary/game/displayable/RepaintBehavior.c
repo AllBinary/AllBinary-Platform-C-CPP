@@ -1,52 +1,39 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2022 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.displayable
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Canvas.h"
+#include "org/allbinary/game/displayable/RepaintBehavior.h"
+#include "javax/microedition/lcdui/Canvas.h"
 #include "org/allbinary/game/configuration/feature/Features.h"
 #include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
 #include "org/allbinary/graphics/opengles/OpenGLFeatureFactory.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
-#include "org/allbinary/string/CommonStrings.h"
-#include "org/allbinary/thread/NullRunnable.h"
+#include "org/allbinary/game/displayable/RepaintRunnable.h"
+#if __has_include("org/allbinary/graphics/displayable/DisplayInfoSingleton.h")
+#include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
+#endif
 
-typedef struct RepaintBehavior RepaintBehavior;
-struct RepaintBehavior {
-    LogUtil* logUtil;
-    const char* NAME;
-};
 
 static RepaintBehavior* RepaintBehavior_instance;
 
-RepaintBehavior* RepaintBehavior_new(void);
-RepaintBehavior* RepaintBehavior_getInstance(void);
-void RepaintBehavior_repaint(RepaintBehavior* this, Canvas* canvas);
-void RepaintBehavior_onChangeRepaint(RepaintBehavior* this, Canvas* canvas);
 
-// Static fields with runtime initializers: call this once at startup
+
+
 void RepaintBehavior_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     RepaintBehavior_instance = RepaintBehavior_new();
+}
+
+void RepaintBehavior_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("RepaintBehavior", nullptr);
+    java_register_method("RepaintBehavior", "repaint", (void*) RepaintBehavior_repaint);
+    java_register_method("RepaintBehavior", "onChangeRepaint", (void*) RepaintBehavior_onChangeRepaint);
 }
 
 static void RepaintBehavior_initFields(RepaintBehavior* this) {
@@ -55,18 +42,19 @@ static void RepaintBehavior_initFields(RepaintBehavior* this) {
 }
 
 void RepaintBehavior_init(RepaintBehavior* this) {
+    RepaintBehavior_register();
     RepaintBehavior_initFields(this);
 }
 
 RepaintBehavior* RepaintBehavior_new(void) {
-    RepaintBehavior* this = calloc(1, sizeof(RepaintBehavior));
+    RepaintBehavior* this = java_object_alloc(sizeof(RepaintBehavior), "RepaintBehavior");
     RepaintBehavior_init(this);
     return this;
 }
 
 
 RepaintBehavior* RepaintBehavior_getInstance(void) {
-        return RepaintBehavior_instance;
+        return (RepaintBehavior_staticInit(), RepaintBehavior_instance);
 }
 
 

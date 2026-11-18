@@ -2,6 +2,9 @@
 #include "org/allbinary/logic/math/MathData.h"
 #include "org/allbinary/string/CommonPhoneStrings.h"
 #include "org/allbinary/string/CommonSeps.h"
+#if __has_include("org/allbinary/string/CommonPhoneStrings.h")
+#include "org/allbinary/string/CommonPhoneStrings.h"
+#endif
 
 
 static MathData* MathData_instance;

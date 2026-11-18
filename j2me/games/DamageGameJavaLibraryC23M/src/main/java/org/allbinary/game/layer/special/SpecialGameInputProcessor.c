@@ -1,40 +1,26 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.layer.special
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-#include "org/allbinary/game/input/GameInputProcessor.h"
-
-typedef struct SpecialGameInputProcessor SpecialGameInputProcessor;
-struct SpecialGameInputProcessor {
-    GameInputProcessor base;
-    CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer;
-};
+#include "org/allbinary/game/layer/special/SpecialGameInputProcessor.h"
+#include "org/allbinary/game/layer/special/CollidableDestroyableDamageableLayer.h"
 
 
-SpecialGameInputProcessor* SpecialGameInputProcessor_new(CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer);
 
-void SpecialGameInputProcessor_init(SpecialGameInputProcessor* this, CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer);
+
+void SpecialGameInputProcessor_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void SpecialGameInputProcessor_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("SpecialGameInputProcessor", "GameInputProcessor");
+}
 
 static void SpecialGameInputProcessor_initFields(SpecialGameInputProcessor* this) {
     
@@ -42,13 +28,14 @@ static void SpecialGameInputProcessor_initFields(SpecialGameInputProcessor* this
 
 
 void SpecialGameInputProcessor_init(SpecialGameInputProcessor* this, CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer) {
+    SpecialGameInputProcessor_register();
     GameInputProcessor_init(&this->base);
     SpecialGameInputProcessor_initFields(this);
         this->collidableDestroyableDamageableLayer = collidableDestroyableDamageableLayer;
 }
 
 SpecialGameInputProcessor* SpecialGameInputProcessor_new(CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer) {
-    SpecialGameInputProcessor* this = calloc(1, sizeof(SpecialGameInputProcessor));
+    SpecialGameInputProcessor* this = java_object_alloc(sizeof(SpecialGameInputProcessor), "SpecialGameInputProcessor");
     SpecialGameInputProcessor_init(this, collidableDestroyableDamageableLayer);
     return this;
 }

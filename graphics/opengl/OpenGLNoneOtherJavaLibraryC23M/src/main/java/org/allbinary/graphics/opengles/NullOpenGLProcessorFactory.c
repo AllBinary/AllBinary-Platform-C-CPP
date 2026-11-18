@@ -1,41 +1,41 @@
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.opengles
+#include "org/allbinary/graphics/opengles/NullOpenGLProcessorFactory.h"
+#include "org/allbinary/graphics/opengles/OpenGLProcessor.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct NullOpenGLProcessorFactory NullOpenGLProcessorFactory;
-struct NullOpenGLProcessorFactory {
-    char unused;
-};
 
 static OpenGLProcessor* NullOpenGLProcessorFactory_instance;
 
-NullOpenGLProcessorFactory* NullOpenGLProcessorFactory_new(void);
-OpenGLProcessor* NullOpenGLProcessorFactory_getInstance(void);
 
-// Static fields with runtime initializers: call this once at startup
 void NullOpenGLProcessorFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     NullOpenGLProcessorFactory_instance = OpenGLProcessor_new();
 }
 
+void NullOpenGLProcessorFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("NullOpenGLProcessorFactory", nullptr);
+}
+
 void NullOpenGLProcessorFactory_init(NullOpenGLProcessorFactory* this) {
+    NullOpenGLProcessorFactory_register();
 }
 
 NullOpenGLProcessorFactory* NullOpenGLProcessorFactory_new(void) {
-    NullOpenGLProcessorFactory* this = calloc(1, sizeof(NullOpenGLProcessorFactory));
+    NullOpenGLProcessorFactory* this = java_object_alloc(sizeof(NullOpenGLProcessorFactory), "NullOpenGLProcessorFactory");
     NullOpenGLProcessorFactory_init(this);
     return this;
 }
 
 
 OpenGLProcessor* NullOpenGLProcessorFactory_getInstance(void) {
-        return NullOpenGLProcessorFactory_instance;
+        return (NullOpenGLProcessorFactory_staticInit(), NullOpenGLProcessorFactory_instance);
 }
 

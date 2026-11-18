@@ -8,6 +8,15 @@
 #include "org/allbinary/time/GameTickTimeDelayHelper.h"
 #include "org/allbinary/time/GameTickTimeDelayHelperFactory.h"
 #include "org/allbinary/time/TimeDelayHelper.h"
+#if __has_include("org/allbinary/logic/math/ScaleFactorFactory.h")
+#include "org/allbinary/logic/math/ScaleFactorFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/string/CommonSeps.h")
+#include "org/allbinary/string/CommonSeps.h"
+#endif
 
 
 

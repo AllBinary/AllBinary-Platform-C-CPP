@@ -32,9 +32,9 @@
 
 <!--
 -->
-        <!-- C23 POM not yet available: <module>../../working_thirdpartycpp/embedded/j2me/microemulator/2_0_4/microemu-cldcC23</module> -->
-        <!-- C23 POM not yet available: <module>../../working_thirdpartycpp/embedded/j2me/microemulator/2_0_4/microemu-midpC23</module> -->
-        <!-- C23 POM not yet available: <module>../../working_thirdpartycpp/embedded/j2me/microemulator/2_0_4/microemu-extensions/microemu-jsr-135C23</module> -->
+        <!-- Built and installed by working_thirdpartycpp/.../microemuPOC23M (microemu-*-for-polyglotC23): <module>../../working_thirdpartycpp/embedded/j2me/microemulator/2_0_4/microemu-cldcC23</module> -->
+        <!-- Built and installed by working_thirdpartycpp/.../microemuPOC23M (microemu-*-for-polyglotC23): <module>../../working_thirdpartycpp/embedded/j2me/microemulator/2_0_4/microemu-midpC23</module> -->
+        <!-- Built and installed by working_thirdpartycpp/.../microemuPOC23M (microemu-*-for-polyglotC23): <module>../../working_thirdpartycpp/embedded/j2me/microemulator/2_0_4/microemu-extensions/microemu-jsr-135C23</module> -->
 <!--
 -->
         <module>../j2me/AllBinaryBaseLibraryPOC23M</module>
@@ -44,7 +44,7 @@
         <!--<module>../automation/InputAutomationToolsC23P</module>-->
         <module>../graphics/GraphicsToolsC23P</module>
         <!--<module>../allbinary_src/FreeblisketJavaLibraryC23P</module>-->
-        <!-- C23 POM not yet available: <module>../j2me/games/platform/AllBinaryOnAllPlatformsJavaLibraryC23P</module> -->
+        <module>../j2me/games/platform/AllBinaryOnAllPlatformsJavaLibraryC23P</module>
         <!--
         <module>../j2me/media/graphics/animation/image/AllBinaryHTMLImageAnimationRotationJavaLibraryC23M</module>
         <module>../j2me/media/graphics/animation/image/AllBinaryHTML2ImageAnimationRotationJavaLibraryC23M</module>

@@ -1,45 +1,36 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.system
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/system/Memory.h"
 #include "org/allbinary/logic/string/StringUtil.h"
-
-//ActualPlatform
-typedef struct Memory Memory;
-struct Memory {
-    char unused;
-};
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
 
-Memory* Memory_new(void);
-const char* Memory_getInfo(void);
+
+
+void Memory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void Memory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("Memory", nullptr);
+}
 
 void Memory_init(Memory* this) {
+    Memory_register();
 }
 
 Memory* Memory_new(void) {
-    Memory* this = calloc(1, sizeof(Memory));
+    Memory* this = java_object_alloc(sizeof(Memory), "Memory");
     Memory_init(this);
     return this;
 }

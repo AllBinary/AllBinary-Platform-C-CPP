@@ -1,47 +1,37 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.io
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "java/io/BufferedReader.h"
-// #include "java/io/FileReader.h"
+#include "org/allbinary/logic/io/BufferedLineReader.h"
 #include "org/allbinary/logic/io/file/AbFile.h"
 #include "org/allbinary/logic/io/file/AbFileNativeUtil.h"
 
-typedef struct BufferedLineReader BufferedLineReader;
-struct BufferedLineReader {
-    BufferedReader* tmpIn;
-};
 
 
-BufferedLineReader* BufferedLineReader_new(AbFile* file);
 
-void BufferedLineReader_init(BufferedLineReader* this, AbFile* file);
-void BufferedLineReader_readUpToLines(BufferedLineReader* this, int64_t readAheadIndex);
-const char* BufferedLineReader_readLine(BufferedLineReader* this);
-bool BufferedLineReader_ready(BufferedLineReader* this);
-int64_t BufferedLineReader_getSize(BufferedLineReader* this);
-int32_t BufferedLineReader_getCurrent(BufferedLineReader* this);
+
+
+
+
+
+void BufferedLineReader_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void BufferedLineReader_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("BufferedLineReader", nullptr);
+    java_register_method("BufferedLineReader", "readUpToLines", (void*) BufferedLineReader_readUpToLines);
+    java_register_method("BufferedLineReader", "readLine", (void*) BufferedLineReader_readLine);
+    java_register_method("BufferedLineReader", "ready", (void*) BufferedLineReader_ready);
+    java_register_method("BufferedLineReader", "getSize", (void*) BufferedLineReader_getSize);
+    java_register_method("BufferedLineReader", "getCurrent", (void*) BufferedLineReader_getCurrent);
+}
 
 static void BufferedLineReader_initFields(BufferedLineReader* this) {
     
@@ -49,12 +39,13 @@ static void BufferedLineReader_initFields(BufferedLineReader* this) {
 
 
 void BufferedLineReader_init(BufferedLineReader* this, AbFile* file) {
+    BufferedLineReader_register();
     BufferedLineReader_initFields(this);
         this->tmpIn = BufferedReader_new(FileReader_new(AbFileNativeUtil_get(file)));
 }
 
 BufferedLineReader* BufferedLineReader_new(AbFile* file) {
-    BufferedLineReader* this = calloc(1, sizeof(BufferedLineReader));
+    BufferedLineReader* this = java_object_alloc(sizeof(BufferedLineReader), "BufferedLineReader");
     BufferedLineReader_init(this, file);
     return this;
 }

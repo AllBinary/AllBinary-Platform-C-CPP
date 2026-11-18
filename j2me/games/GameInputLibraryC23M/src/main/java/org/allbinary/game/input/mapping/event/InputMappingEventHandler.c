@@ -1,64 +1,50 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.input.mapping.event
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/input/mapping/event/InputMappingEventHandler.h"
 #include "org/allbinary/logic/util/event/AllBinaryEventObject.h"
 #include "org/allbinary/logic/util/event/EventListenerInterface.h"
-#include "org/allbinary/logic/util/event/handler/BasicEventHandler.h"
+#include "org/allbinary/game/input/mapping/event/InputMappingEventListenerInterface.h"
+#include "org/allbinary/game/input/mapping/event/InputMappingEvent.h"
 
-typedef struct InputMappingEventHandler InputMappingEventHandler;
-struct InputMappingEventHandler {
-    BasicEventHandler base;
-};
 
 static InputMappingEventHandler* InputMappingEventHandler_gameKeyEventHandler;
 
-InputMappingEventHandler* InputMappingEventHandler_new(void);
 
-void InputMappingEventHandler_init(InputMappingEventHandler* this);
-InputMappingEventHandler* InputMappingEventHandler_getInstance(void);
-void InputMappingEventHandler_process(InputMappingEventHandler* this, AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
 
-// Static fields with runtime initializers: call this once at startup
+
 void InputMappingEventHandler_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     InputMappingEventHandler_gameKeyEventHandler = InputMappingEventHandler_new();
+}
+
+void InputMappingEventHandler_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("InputMappingEventHandler", "BasicEventHandler");
+    java_register_method("InputMappingEventHandler", "process", (void*) InputMappingEventHandler_process);
 }
 
 
 void InputMappingEventHandler_init(InputMappingEventHandler* this) {
+    InputMappingEventHandler_register();
     BasicEventHandler_init(&this->base);
 }
 
 InputMappingEventHandler* InputMappingEventHandler_new(void) {
-    InputMappingEventHandler* this = calloc(1, sizeof(InputMappingEventHandler));
+    InputMappingEventHandler* this = java_object_alloc(sizeof(InputMappingEventHandler), "InputMappingEventHandler");
     InputMappingEventHandler_init(this);
     return this;
 }
 
 
 InputMappingEventHandler* InputMappingEventHandler_getInstance(void) {
-        return InputMappingEventHandler_gameKeyEventHandler;
+        return (InputMappingEventHandler_staticInit(), InputMappingEventHandler_gameKeyEventHandler);
 }
 
 

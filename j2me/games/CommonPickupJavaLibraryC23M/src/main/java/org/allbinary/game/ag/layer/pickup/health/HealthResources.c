@@ -1,44 +1,27 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.ag.layer.pickup.health
+#include "org/allbinary/game/ag/layer/pickup/health/HealthResources.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct HealthResources HealthResources;
-struct HealthResources {
-    const char* RESOURCE;
-};
 
 static HealthResources* HealthResources_SINGLETON;
 
-HealthResources* HealthResources_new(void);
 
-void HealthResources_init(HealthResources* this);
-HealthResources* HealthResources_getInstance(void);
 
-// Static fields with runtime initializers: call this once at startup
 void HealthResources_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     HealthResources_SINGLETON = HealthResources_new();
+}
+
+void HealthResources_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("HealthResources", nullptr);
 }
 
 static void HealthResources_initFields(HealthResources* this) {
@@ -47,17 +30,18 @@ static void HealthResources_initFields(HealthResources* this) {
 
 
 void HealthResources_init(HealthResources* this) {
+    HealthResources_register();
     HealthResources_initFields(this);
 }
 
 HealthResources* HealthResources_new(void) {
-    HealthResources* this = calloc(1, sizeof(HealthResources));
+    HealthResources* this = java_object_alloc(sizeof(HealthResources), "HealthResources");
     HealthResources_init(this);
     return this;
 }
 
 
 HealthResources* HealthResources_getInstance(void) {
-        return HealthResources_SINGLETON;
+        return (HealthResources_staticInit(), HealthResources_SINGLETON);
 }
 

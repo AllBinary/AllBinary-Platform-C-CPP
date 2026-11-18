@@ -1,64 +1,42 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.paint
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Font.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/game/paint/AboutPaintable.h"
+#include "javax/microedition/lcdui/Font.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/graphics/Anchor.h"
 #include "org/allbinary/graphics/displayable/CanvasStrings.h"
 #include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
 #include "org/allbinary/graphics/font/MyFontProcessor.h"
-#include "org/allbinary/graphics/font/UpdateMyFontInterface.h"
 #include "org/allbinary/graphics/font/UpdateMyFontProcessor.h"
-#include "org/allbinary/graphics/paint/Paintable.h"
-
-//J2SEForJ2ME
-typedef struct AboutPaintable AboutPaintable;
-struct AboutPaintable {
-    Paintable base;
-    UpdateMyFontInterface UpdateMyFontInterface_interface;
-    DisplayInfoSingleton* displayInfoSingleton;
-    const char* ABOUT;
-    const char** info;
-    const char** developers;
-    Paintable** paintableArray;
-    MyFontProcessor* myFontProcessor;
-    int32_t charHeight;
-    int32_t aboutBeginWidth;
-    int32_t* infoBeginWidth;
-    int32_t* developersBeginWidth;
-    int32_t anchor;
-};
+#if __has_include("org/allbinary/graphics/displayable/CanvasStrings.h")
+#include "org/allbinary/graphics/displayable/CanvasStrings.h"
+#endif
 
 
-AboutPaintable* AboutPaintable_new(const char** info, const char** developers);
-AboutPaintable* AboutPaintable_getInstance(const char** info, const char** developers);
 
-void AboutPaintable_init(AboutPaintable* this, const char** info, const char** developers);
-void AboutPaintable_updateMeasurement(AboutPaintable* this, Graphics* graphics);
-Paintable** AboutPaintable_getPaintableArrayInstance(AboutPaintable* this);
-void AboutPaintable_paint(AboutPaintable* this, Graphics* graphics);
+
+
+
+
+
+void AboutPaintable_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void AboutPaintable_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("AboutPaintable", "Paintable");
+    java_register_method("AboutPaintable", "updateMeasurement", (void*) AboutPaintable_updateMeasurement);
+    java_register_method("AboutPaintable", "getPaintableArrayInstance", (void*) AboutPaintable_getPaintableArrayInstance);
+    java_register_method("AboutPaintable", "paint", (void*) AboutPaintable_paint);
+}
 
 static void AboutPaintable_initFields(AboutPaintable* this) {
     this->displayInfoSingleton = DisplayInfoSingleton_getInstance();
@@ -71,7 +49,7 @@ static void AboutPaintable_initFields(AboutPaintable* this) {
     this->aboutBeginWidth = 0;
     
     
-    this->anchor = Anchor_TOP_LEFT;
+    this->anchor = (Anchor_staticInit(), Anchor_TOP_LEFT);
 }
 
 
@@ -81,6 +59,7 @@ AboutPaintable* AboutPaintable_getInstance(const char** info, const char** devel
 
 
 void AboutPaintable_init(AboutPaintable* this, const char** info, const char** developers) {
+    AboutPaintable_register();
     Paintable_init(&this->base);
     AboutPaintable_initFields(this);
         this->info = info;
@@ -90,7 +69,7 @@ void AboutPaintable_init(AboutPaintable* this, const char** info, const char** d
 }
 
 AboutPaintable* AboutPaintable_new(const char** info, const char** developers) {
-    AboutPaintable* this = calloc(1, sizeof(AboutPaintable));
+    AboutPaintable* this = java_object_alloc(sizeof(AboutPaintable), "AboutPaintable");
     AboutPaintable_init(this, info, developers);
     return this;
 }

@@ -1,29 +1,6 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input.motion.button
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/input/motion/button/TouchButton.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/animation/Animation.h"
 #include "org/allbinary/animation/FeaturedAnimationInterfaceFactoryInterfaceFactory.h"
 #include "org/allbinary/graphics/CellPosition.h"
@@ -31,42 +8,143 @@
 #include "org/allbinary/graphics/PointFactory.h"
 #include "org/allbinary/graphics/Rectangle.h"
 #include "org/allbinary/graphics/RectangleFactory.h"
-#include "org/allbinary/graphics/paint/Paintable.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/logic/string/StringUtil.h"
 #include "org/allbinary/string/CommonStrings.h"
+#include "org/allbinary/input/motion/button/TouchButtonInput.h"
+#include "org/allbinary/input/motion/button/TouchButtonResource.h"
+#if __has_include("org/allbinary/input/motion/button/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/input/motion/button/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("javax/microedition/lcdui/AnimationInterfaceFactoryInterface.h")
+#include "javax/microedition/lcdui/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/animation/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/animation/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/graphics/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/graphics/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/graphics/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/graphics/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/graphics/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/graphics/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/graphics/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/graphics/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/graphics/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/graphics/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/graphics/paint/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/graphics/paint/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/log/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/logic/communication/log/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/string/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/logic/string/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/string/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/logic/string/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/string/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/string/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/animation/FeaturedAnimationInterfaceFactoryInterfaceFactory.h")
+#include "org/allbinary/animation/FeaturedAnimationInterfaceFactoryInterfaceFactory.h"
+#endif
+#if __has_include("org/allbinary/input/motion/button/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/input/motion/button/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("javax/microedition/lcdui/AnimationInterfaceFactoryInterface.h")
+#include "javax/microedition/lcdui/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/animation/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/animation/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/graphics/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/graphics/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/graphics/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/graphics/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/graphics/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/graphics/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/graphics/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/graphics/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/graphics/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/graphics/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/graphics/paint/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/graphics/paint/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/log/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/logic/communication/log/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/string/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/logic/string/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/string/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/logic/string/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/string/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/string/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/animation/FeaturedAnimationInterfaceFactoryInterfaceFactory.h")
+#include "org/allbinary/animation/FeaturedAnimationInterfaceFactoryInterfaceFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
 
-typedef struct TouchButton TouchButton;
-struct TouchButton {
-    Paintable base;
-    LogUtil* logUtil;
-    CommonStrings* commonStrings;
-    TouchButtonInput* touchButtonInput;
-    Animation* animationInterface;
-    Animation* hintAnimationInterface;
-    Rectangle* rawRectangle;
-    int32_t xBorder;
-    int32_t yBorder;
-    Rectangle* rectangleP;
-    CellPosition* cellPositionP;
-    int32_t animationX;
-    int32_t animationY;
-    int32_t hintAnimationY;
-};
 
 
-TouchButton* TouchButton_new(TouchButtonInput* touchButtonInput, Animation* animationInterface, Animation* hintAnimationInterface, Rectangle* rawRectangle, CellPosition* cellPosition, int32_t xBorder, int32_t yBorder);
-TouchButton* TouchButton_createButton(TouchButtonInput* touchButtonInput, TouchButtonResource* touchButtonResource, Rectangle* rawRectangle, CellPosition* cellPosition, int32_t xBorder, int32_t yBorder);
 
-void TouchButton_init(TouchButton* this, TouchButtonInput* touchButtonInput, Animation* animationInterface, Animation* hintAnimationInterface, Rectangle* rawRectangle, CellPosition* cellPosition, int32_t xBorder, int32_t yBorder);
-void TouchButton_paintHint(TouchButton* this, Graphics* graphics);
-void TouchButton_paint(TouchButton* this, Graphics* graphics);
-void TouchButton_updateRectangle(TouchButton* this);
-CellPosition* TouchButton_getCellPosition(TouchButton* this);
-Rectangle* TouchButton_getRectangle(TouchButton* this);
-TouchButtonInput* TouchButton_getTouchButtonInput(TouchButton* this);
-const char* TouchButton_toString(TouchButton* this);
+
+
+
+
+
+
+
+
+void TouchButton_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void TouchButton_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("TouchButton", "Paintable");
+    java_register_method("TouchButton", "paintHint", (void*) TouchButton_paintHint);
+    java_register_method("TouchButton", "paint", (void*) TouchButton_paint);
+    java_register_method("TouchButton", "updateRectangle", (void*) TouchButton_updateRectangle);
+    java_register_method("TouchButton", "getCellPosition", (void*) TouchButton_getCellPosition);
+    java_register_method("TouchButton", "getRectangle", (void*) TouchButton_getRectangle);
+    java_register_method("TouchButton", "getTouchButtonInput", (void*) TouchButton_getTouchButtonInput);
+    java_register_method("TouchButton", "toString", (void*) TouchButton_toString);
+}
 
 static void TouchButton_initFields(TouchButton* this) {
     this->logUtil = LogUtil_getInstance();
@@ -77,7 +155,7 @@ static void TouchButton_initFields(TouchButton* this) {
     
     
     
-    this->rectangleP = RectangleFactory_SINGLETON;
+    this->rectangleP = (RectangleFactory_staticInit(), RectangleFactory_SINGLETON);
     
     this->animationX = 0;
     this->animationY = 0;
@@ -87,11 +165,12 @@ static void TouchButton_initFields(TouchButton* this) {
 
 // throws Exception
 TouchButton* TouchButton_createButton(TouchButtonInput* touchButtonInput, TouchButtonResource* touchButtonResource, Rectangle* rawRectangle, CellPosition* cellPosition, int32_t xBorder, int32_t yBorder) {
-        return TouchButton_new(touchButtonInput, JAVA_CALL(FeaturedAnimationInterfaceFactoryInterfaceFactory_get(FeaturedAnimationInterfaceFactoryInterfaceFactory_getInstance(), touchButtonResource->RESOURCE), getInstance, 0), JAVA_CALL(FeaturedAnimationInterfaceFactoryInterfaceFactory_get(FeaturedAnimationInterfaceFactoryInterfaceFactory_getInstance(), touchButtonResource->HINT), getInstance, 0), rawRectangle, cellPosition, xBorder, yBorder);
+        return TouchButton_new(touchButtonInput, AnimationInterfaceFactoryInterface_getInstance(FeaturedAnimationInterfaceFactoryInterfaceFactory_get(FeaturedAnimationInterfaceFactoryInterfaceFactory_getInstance(), touchButtonResource->RESOURCE), 0), AnimationInterfaceFactoryInterface_getInstance(FeaturedAnimationInterfaceFactoryInterfaceFactory_get(FeaturedAnimationInterfaceFactoryInterfaceFactory_getInstance(), touchButtonResource->HINT), 0), rawRectangle, cellPosition, xBorder, yBorder);
 }
 
 
 void TouchButton_init(TouchButton* this, TouchButtonInput* touchButtonInput, Animation* animationInterface, Animation* hintAnimationInterface, Rectangle* rawRectangle, CellPosition* cellPosition, int32_t xBorder, int32_t yBorder) {
+    TouchButton_register();
     Paintable_init(&this->base);
     TouchButton_initFields(this);
         this->touchButtonInput = touchButtonInput;
@@ -102,11 +181,11 @@ void TouchButton_init(TouchButton* this, TouchButtonInput* touchButtonInput, Ani
         this->xBorder = xBorder;
         this->yBorder = yBorder;
         TouchButton_updateRectangle(this);
-        LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), "Created: "), append, TouchButton_toString(this)), toString), this, this->commonStrings->CONSTRUCTOR);
+        LogUtil_putF(this->logUtil, java_string_of(StringMaker_append(StringMaker_append(StringMaker_new(), "Created: "), TouchButton_toString(this))), this, this->commonStrings->CONSTRUCTOR);
 }
 
 TouchButton* TouchButton_new(TouchButtonInput* touchButtonInput, Animation* animationInterface, Animation* hintAnimationInterface, Rectangle* rawRectangle, CellPosition* cellPosition, int32_t xBorder, int32_t yBorder) {
-    TouchButton* this = calloc(1, sizeof(TouchButton));
+    TouchButton* this = java_object_alloc(sizeof(TouchButton), "TouchButton");
     TouchButton_init(this, touchButtonInput, animationInterface, hintAnimationInterface, rawRectangle, cellPosition, xBorder, yBorder);
     return this;
 }
@@ -164,6 +243,6 @@ const char* TouchButton_toString(TouchButton* this) {
         StringMaker_appendint(stringBuffer, this->xBorder);
         StringMaker_append(stringBuffer, " yBorder: ");
         StringMaker_appendint(stringBuffer, this->yBorder);
-        return StringMaker_toString(stringBuffer);
+        return java_string_of(stringBuffer);
 }
 

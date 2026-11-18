@@ -1,28 +1,5 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.configuration
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/configuration/GameConfigurationCentral.h"
 #include "org/allbinary/game/configuration/persistance/GameConfigurationPersistanceSingleton.h"
 #include "org/allbinary/game/configuration/persistance/KeyValuePersistance.h"
 #include "org/allbinary/logic/NullUtil.h"
@@ -34,42 +11,43 @@
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/util/ABHashtable.h"
 #include "org/allbinary/util/BasicArrayList.h"
+#include "org/allbinary/game/configuration/GameConfiguration.h"
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
 
-typedef struct GameConfigurationCentral GameConfigurationCentral;
-struct GameConfigurationCentral {
-    LogUtil* logUtil;
-    GameConfiguration* SCALE;
-    GameConfiguration* ORIENTATION;
-    GameConfiguration* SENSOR_UPDATE_RATE;
-    GameConfiguration* VIBRATION;
-    GameConfiguration* CHALLENGE_LEVEL;
-    GameConfiguration* COLLIDE_DAMAGE;
-    GameConfiguration* DURABILITY_CHALLENGE_LEVEL;
-    GameConfiguration* SPEED_CHALLENGE_LEVEL;
-    GameConfiguration* ATTACK_CHALLENGE_LEVEL;
-    GameConfiguration* CONTROL_LEVEL;
-    GameConfiguration* PLAYER_INPUT_WAIT;
-    GameConfiguration* SPEED;
-    GameConfiguration* SOUND_VOLUME;
-    GameConfiguration* MAX_GAME_OBJECTS;
-    GameConfiguration* MAX_LAYERS;
-    int32_t gameControlFidelity;
-};
 
-static Any* GameConfigurationCentral_SINGLETON;
+static void* GameConfigurationCentral_SINGLETON;
 
-GameConfigurationCentral* GameConfigurationCentral_new(void);
-GameConfigurationCentral* GameConfigurationCentral_getInstance(void);
 
-void GameConfigurationCentral_init(GameConfigurationCentral* this);
-void GameConfigurationCentral_load(GameConfigurationCentral* this, AbeClientInformationInterface* abeClientInformation);
-void GameConfigurationCentral_setGameControlFidelity(GameConfigurationCentral* this, int32_t gameControlFidelity);
-int32_t GameConfigurationCentral_getGameControlFidelity(GameConfigurationCentral* this);
-const char* GameConfigurationCentral_toString(GameConfigurationCentral* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
 void GameConfigurationCentral_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     GameConfigurationCentral_SINGLETON = NullUtil_getInstance()->NULL_OBJECT;
+}
+
+void GameConfigurationCentral_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GameConfigurationCentral", nullptr);
+    java_register_method("GameConfigurationCentral", "load", (void*) GameConfigurationCentral_load);
+    java_register_method("GameConfigurationCentral", "setGameControlFidelity", (void*) GameConfigurationCentral_setGameControlFidelity);
+    java_register_method("GameConfigurationCentral", "getGameControlFidelity", (void*) GameConfigurationCentral_getGameControlFidelity);
+    java_register_method("GameConfigurationCentral", "toString", (void*) GameConfigurationCentral_toString);
 }
 
 static void GameConfigurationCentral_initFields(GameConfigurationCentral* this) {
@@ -94,14 +72,15 @@ static void GameConfigurationCentral_initFields(GameConfigurationCentral* this) 
 
 
 GameConfigurationCentral* GameConfigurationCentral_getInstance(void) {
-        if (GameConfigurationCentral_SINGLETON == NullUtil_getInstance()->NULL_OBJECT) {
+        if ((GameConfigurationCentral_staticInit(), GameConfigurationCentral_SINGLETON) == NullUtil_getInstance()->NULL_OBJECT) {
             GameConfigurationCentral_SINGLETON = GameConfigurationCentral_new();
         }
-        return ((GameConfigurationCentral*) GameConfigurationCentral_SINGLETON);
+        return ((GameConfigurationCentral*) (GameConfigurationCentral_staticInit(), GameConfigurationCentral_SINGLETON));
 }
 
 
 void GameConfigurationCentral_init(GameConfigurationCentral* this) {
+    GameConfigurationCentral_register();
     GameConfigurationCentral_initFields(this);
         SmallIntegerSingletonFactory* smallIntegerSingletonFactory = SmallIntegerSingletonFactory_getInstance();
         this->SCALE = GameConfiguration_new("Scale", SmallIntegerSingletonFactory_getAt(smallIntegerSingletonFactory, 2), SmallIntegerSingletonFactory_getAt(smallIntegerSingletonFactory, 2), SmallIntegerSingletonFactory_getAt(smallIntegerSingletonFactory, 3));
@@ -122,7 +101,7 @@ void GameConfigurationCentral_init(GameConfigurationCentral* this) {
 }
 
 GameConfigurationCentral* GameConfigurationCentral_new(void) {
-    GameConfigurationCentral* this = calloc(1, sizeof(GameConfigurationCentral));
+    GameConfigurationCentral* this = java_object_alloc(sizeof(GameConfigurationCentral), "GameConfigurationCentral");
     GameConfigurationCentral_init(this);
     return this;
 }
@@ -133,14 +112,14 @@ void GameConfigurationCentral_load(GameConfigurationCentral* this, AbeClientInfo
         JAVA_TRY {
             SmallIntegerSingletonFactory* smallIntegerSingletonFactory = SmallIntegerSingletonFactory_getInstance();
             KeyValuePersistance* keyValuePersistance = GameConfigurationPersistanceSingleton_getInstance();
-            KeyValuePersistance_clear(keyValuePersistance);
+            BasicPersitance_clear(keyValuePersistance);
             KeyValuePersistance_loadAll(keyValuePersistance, abeClientInformation);
-            BasicArrayList* list = KeyValuePersistance_getIds(keyValuePersistance);
+            BasicArrayList* list = BasicPersitance_getIds(keyValuePersistance);
             if (BasicArrayList_size(list) > 0) {
                 ABHashtable* hashtable = KeyValuePersistance_get(keyValuePersistance, 0);
-                Any* anyType = ((Any*) GameConfiguration_getName(this->SCALE));
-                const char* value = ((const char*) ABHashtable_get(hashtable, anyType));
-                GameConfiguration_setValue(this->SCALE, SmallIntegerSingletonFactory_getAt(smallIntegerSingletonFactory, JAVA_CALL(java_string_of(value), intValue)));
+                void* anyType = ((void*) GameConfiguration_getName(this->SCALE));
+                const char* value = ((const char*) Hashtable_get(hashtable, anyType));
+                GameConfiguration_setValue(this->SCALE, SmallIntegerSingletonFactory_getAt(smallIntegerSingletonFactory, ((int32_t) (((int32_t) strtoll(value, nullptr, 10))))));
             } else {
                 LogUtil_putF(this->logUtil, "No Game Configuration To Load", this, commonStrings->LOAD);
             }
@@ -166,55 +145,55 @@ const char* GameConfigurationCentral_toString(GameConfigurationCentral* this) {
         StringMaker_append(stringBuffer, commonStrings->COMMA_SEP);
         StringMaker_append(stringBuffer, GameConfiguration_getName(this->SCALE));
         StringMaker_append(stringBuffer, commonStrings->EQUALS);
-        StringMaker_appendint(stringBuffer, ((int32_t) JAVA_CALL(GameConfiguration_getValue(this->SCALE), intValue)));
+        StringMaker_appendint(stringBuffer, ((int32_t) Integer_intValue(GameConfiguration_getValue(this->SCALE))));
         StringMaker_append(stringBuffer, commonStrings->COMMA_SEP);
         StringMaker_append(stringBuffer, GameConfiguration_getName(this->ORIENTATION));
         StringMaker_append(stringBuffer, commonStrings->EQUALS);
-        StringMaker_appendint(stringBuffer, ((int32_t) JAVA_CALL(GameConfiguration_getValue(this->ORIENTATION), intValue)));
+        StringMaker_appendint(stringBuffer, ((int32_t) Integer_intValue(GameConfiguration_getValue(this->ORIENTATION))));
         StringMaker_append(stringBuffer, commonStrings->COMMA_SEP);
         StringMaker_append(stringBuffer, GameConfiguration_getName(this->SENSOR_UPDATE_RATE));
         StringMaker_append(stringBuffer, commonStrings->EQUALS);
-        StringMaker_appendint(stringBuffer, ((int32_t) JAVA_CALL(GameConfiguration_getValue(this->SENSOR_UPDATE_RATE), intValue)));
+        StringMaker_appendint(stringBuffer, ((int32_t) Integer_intValue(GameConfiguration_getValue(this->SENSOR_UPDATE_RATE))));
         StringMaker_append(stringBuffer, commonStrings->COMMA_SEP);
         StringMaker_append(stringBuffer, GameConfiguration_getName(this->VIBRATION));
         StringMaker_append(stringBuffer, commonStrings->EQUALS);
-        StringMaker_appendint(stringBuffer, ((int32_t) JAVA_CALL(GameConfiguration_getValue(this->VIBRATION), intValue)));
+        StringMaker_appendint(stringBuffer, ((int32_t) Integer_intValue(GameConfiguration_getValue(this->VIBRATION))));
         StringMaker_append(stringBuffer, commonStrings->COMMA_SEP);
         StringMaker_append(stringBuffer, GameConfiguration_getName(this->CHALLENGE_LEVEL));
         StringMaker_append(stringBuffer, commonStrings->EQUALS);
-        StringMaker_appendint(stringBuffer, ((int32_t) JAVA_CALL(GameConfiguration_getValue(this->CHALLENGE_LEVEL), intValue)));
+        StringMaker_appendint(stringBuffer, ((int32_t) Integer_intValue(GameConfiguration_getValue(this->CHALLENGE_LEVEL))));
         StringMaker_append(stringBuffer, commonStrings->COMMA_SEP);
         StringMaker_append(stringBuffer, GameConfiguration_getName(this->COLLIDE_DAMAGE));
         StringMaker_append(stringBuffer, commonStrings->EQUALS);
-        StringMaker_appendint(stringBuffer, ((int32_t) JAVA_CALL(GameConfiguration_getValue(this->COLLIDE_DAMAGE), intValue)));
+        StringMaker_appendint(stringBuffer, ((int32_t) Integer_intValue(GameConfiguration_getValue(this->COLLIDE_DAMAGE))));
         StringMaker_append(stringBuffer, commonStrings->COMMA_SEP);
         StringMaker_append(stringBuffer, GameConfiguration_getName(this->DURABILITY_CHALLENGE_LEVEL));
         StringMaker_append(stringBuffer, commonStrings->EQUALS);
-        StringMaker_appendint(stringBuffer, ((int32_t) JAVA_CALL(GameConfiguration_getValue(this->DURABILITY_CHALLENGE_LEVEL), intValue)));
+        StringMaker_appendint(stringBuffer, ((int32_t) Integer_intValue(GameConfiguration_getValue(this->DURABILITY_CHALLENGE_LEVEL))));
         StringMaker_append(stringBuffer, commonStrings->COMMA_SEP);
         StringMaker_append(stringBuffer, GameConfiguration_getName(this->SPEED_CHALLENGE_LEVEL));
         StringMaker_append(stringBuffer, commonStrings->EQUALS);
-        StringMaker_appendint(stringBuffer, ((int32_t) JAVA_CALL(GameConfiguration_getValue(this->SPEED_CHALLENGE_LEVEL), intValue)));
+        StringMaker_appendint(stringBuffer, ((int32_t) Integer_intValue(GameConfiguration_getValue(this->SPEED_CHALLENGE_LEVEL))));
         StringMaker_append(stringBuffer, commonStrings->COMMA_SEP);
         StringMaker_append(stringBuffer, GameConfiguration_getName(this->ATTACK_CHALLENGE_LEVEL));
         StringMaker_append(stringBuffer, commonStrings->EQUALS);
-        StringMaker_appendint(stringBuffer, ((int32_t) JAVA_CALL(GameConfiguration_getValue(this->ATTACK_CHALLENGE_LEVEL), intValue)));
+        StringMaker_appendint(stringBuffer, ((int32_t) Integer_intValue(GameConfiguration_getValue(this->ATTACK_CHALLENGE_LEVEL))));
         StringMaker_append(stringBuffer, commonStrings->COMMA_SEP);
         StringMaker_append(stringBuffer, GameConfiguration_getName(this->CONTROL_LEVEL));
         StringMaker_append(stringBuffer, commonStrings->EQUALS);
-        StringMaker_appendint(stringBuffer, ((int32_t) JAVA_CALL(GameConfiguration_getValue(this->CONTROL_LEVEL), intValue)));
+        StringMaker_appendint(stringBuffer, ((int32_t) Integer_intValue(GameConfiguration_getValue(this->CONTROL_LEVEL))));
         StringMaker_append(stringBuffer, commonStrings->COMMA_SEP);
         StringMaker_append(stringBuffer, GameConfiguration_getName(this->SPEED));
         StringMaker_append(stringBuffer, commonStrings->EQUALS);
-        StringMaker_appendint(stringBuffer, ((int32_t) JAVA_CALL(GameConfiguration_getValue(this->SPEED), intValue)));
+        StringMaker_appendint(stringBuffer, ((int32_t) Integer_intValue(GameConfiguration_getValue(this->SPEED))));
         StringMaker_append(stringBuffer, commonStrings->COMMA_SEP);
         StringMaker_append(stringBuffer, GameConfiguration_getName(this->MAX_GAME_OBJECTS));
         StringMaker_append(stringBuffer, commonStrings->EQUALS);
-        StringMaker_appendint(stringBuffer, ((int32_t) JAVA_CALL(GameConfiguration_getValue(this->MAX_GAME_OBJECTS), intValue)));
+        StringMaker_appendint(stringBuffer, ((int32_t) Integer_intValue(GameConfiguration_getValue(this->MAX_GAME_OBJECTS))));
         StringMaker_append(stringBuffer, commonStrings->COMMA_SEP);
         StringMaker_append(stringBuffer, GameConfiguration_getName(this->MAX_LAYERS));
         StringMaker_append(stringBuffer, commonStrings->EQUALS);
-        StringMaker_appendint(stringBuffer, ((int32_t) JAVA_CALL(GameConfiguration_getValue(this->MAX_LAYERS), intValue)));
-        return StringMaker_toString(stringBuffer);
+        StringMaker_appendint(stringBuffer, ((int32_t) Integer_intValue(GameConfiguration_getValue(this->MAX_LAYERS))));
+        return java_string_of(stringBuffer);
 }
 

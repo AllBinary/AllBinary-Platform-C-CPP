@@ -53,6 +53,8 @@ void BasicColorArrayIndexer_next(BasicColorArrayIndexer* this);
 BasicColor* BasicColorArrayIndexer_get(BasicColorArrayIndexer* this);
 
 BasicColor** BasicColorArrayIndexer_getBasicColorArray(BasicColorArrayIndexer* this);
+#define BasicColorArrayIndexer_new1 BasicColorArrayIndexer_new
+#define BasicColorArrayIndexer_init1 BasicColorArrayIndexer_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void BasicColorArrayIndexer_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

@@ -1,67 +1,79 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.image
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
-// #include "javax/microedition/lcdui/Image.h"
+#include "org/allbinary/image/AnimationFrameToImageUtil.h"
+#include "javax/microedition/lcdui/Graphics.h"
+#include "javax/microedition/lcdui/Image.h"
 #include "org/allbinary/animation/Animation.h"
+#include "org/allbinary/image/GameFeatureImageCacheFactory.h"
+#if __has_include("org/allbinary/image/ImageCache.h")
+#include "org/allbinary/image/ImageCache.h"
+#endif
+#if __has_include("javax/microedition/lcdui/ImageCache.h")
+#include "javax/microedition/lcdui/ImageCache.h"
+#endif
+#if __has_include("javax/microedition/lcdui/ImageCache.h")
+#include "javax/microedition/lcdui/ImageCache.h"
+#endif
+#if __has_include("org/allbinary/animation/ImageCache.h")
+#include "org/allbinary/animation/ImageCache.h"
+#endif
+#if __has_include("org/allbinary/image/ImageCache.h")
+#include "org/allbinary/image/ImageCache.h"
+#endif
+#if __has_include("javax/microedition/lcdui/ImageCache.h")
+#include "javax/microedition/lcdui/ImageCache.h"
+#endif
+#if __has_include("javax/microedition/lcdui/ImageCache.h")
+#include "javax/microedition/lcdui/ImageCache.h"
+#endif
+#if __has_include("org/allbinary/animation/ImageCache.h")
+#include "org/allbinary/animation/ImageCache.h"
+#endif
 
-typedef struct AnimationFrameToImageUtil AnimationFrameToImageUtil;
-struct AnimationFrameToImageUtil {
-    char unused;
-};
 
 static AnimationFrameToImageUtil* AnimationFrameToImageUtil_instance;
 
-AnimationFrameToImageUtil* AnimationFrameToImageUtil_new(void);
-AnimationFrameToImageUtil* AnimationFrameToImageUtil_getInstance(void);
-Image* AnimationFrameToImageUtil_getInstanceTranslate(AnimationFrameToImageUtil* this, int32_t width, int32_t height, Animation* animationInterface);
-Image* AnimationFrameToImageUtil_getInstanceWH(AnimationFrameToImageUtil* this, int32_t width, int32_t height, Animation* animationInterface);
 
-// Static fields with runtime initializers: call this once at startup
+
+
 void AnimationFrameToImageUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     AnimationFrameToImageUtil_instance = AnimationFrameToImageUtil_new();
 }
 
+void AnimationFrameToImageUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("AnimationFrameToImageUtil", nullptr);
+    java_register_method("AnimationFrameToImageUtil", "getInstanceTranslate", (void*) AnimationFrameToImageUtil_getInstanceTranslate);
+    java_register_method("AnimationFrameToImageUtil", "getInstanceWH", (void*) AnimationFrameToImageUtil_getInstanceWH);
+}
+
 void AnimationFrameToImageUtil_init(AnimationFrameToImageUtil* this) {
+    AnimationFrameToImageUtil_register();
 }
 
 AnimationFrameToImageUtil* AnimationFrameToImageUtil_new(void) {
-    AnimationFrameToImageUtil* this = calloc(1, sizeof(AnimationFrameToImageUtil));
+    AnimationFrameToImageUtil* this = java_object_alloc(sizeof(AnimationFrameToImageUtil), "AnimationFrameToImageUtil");
     AnimationFrameToImageUtil_init(this);
     return this;
 }
 
 
 AnimationFrameToImageUtil* AnimationFrameToImageUtil_getInstance(void) {
-        return AnimationFrameToImageUtil_instance;
+        return (AnimationFrameToImageUtil_staticInit(), AnimationFrameToImageUtil_instance);
 }
 
 
 // throws Exception
 Image* AnimationFrameToImageUtil_getInstanceTranslate(AnimationFrameToImageUtil* this, int32_t width, int32_t height, Animation* animationInterface) {
-        Image* image = GameFeatureImageCacheFactory_get(GameFeatureImageCacheFactory_getInstance(), java_class_of(AnimationFrameToImageUtil_instance), ((width * 3) >> 1), ((height * 3) >> 1));
+        Image* image = ImageCache_get(GameFeatureImageCacheFactory_getInstance(), java_class_of((AnimationFrameToImageUtil_staticInit(), AnimationFrameToImageUtil_instance)), ((width * 3) >> 1), ((height * 3) >> 1));
         Graphics* graphics = Image_getGraphics(image);
         int32_t tranlateX = (width >> 2);
         int32_t tranlateY = (height >> 2);
@@ -74,7 +86,7 @@ Image* AnimationFrameToImageUtil_getInstanceTranslate(AnimationFrameToImageUtil*
 
 // throws Exception
 Image* AnimationFrameToImageUtil_getInstanceWH(AnimationFrameToImageUtil* this, int32_t width, int32_t height, Animation* animationInterface) {
-        Image* image = GameFeatureImageCacheFactory_get(GameFeatureImageCacheFactory_getInstance(), java_class_of(AnimationFrameToImageUtil_instance), width, height);
+        Image* image = ImageCache_get(GameFeatureImageCacheFactory_getInstance(), java_class_of((AnimationFrameToImageUtil_staticInit(), AnimationFrameToImageUtil_instance)), width, height);
         Graphics* graphics = Image_getGraphics(image);
         Animation_paintXY(animationInterface, graphics, 0, 0);
         return image;

@@ -1,15 +1,6 @@
 // Generated Code Do Not Modify
-// package org.allbinary.layer
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/layer/LayerManager.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/TsUtil.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/string/CommonStrings.h"
@@ -17,32 +8,49 @@
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
 #include "org/allbinary/logic/ABSystemWrapper.h"
-
-typedef struct LayerManager LayerManager;
-struct LayerManager {
-    LogUtil* logUtil;
-    CommonStrings* commonStrings;
-    ABSystemWrapper* systemWrapper;
-    TsUtil* tsUtil;
-    LayerManagerLoggingBase* layerManagerLogging;
-    BasicArrayList* list;
-    SynchObject* anyType;
-};
+#include "org/allbinary/layer/LayerManagerLoggingBase.h"
+#include "org/allbinary/layer/AllBinaryLayer.h"
+#include "org/allbinary/layer/Layer.h"
 
 
-LayerManager* LayerManager_new(LayerManagerLoggingBase* layerManagerLogging);
 
-void LayerManager_init(LayerManager* this, LayerManagerLoggingBase* layerManagerLogging);
-bool LayerManager_contains(LayerManager* this, AllBinaryLayer* layerInterface);
-void LayerManager_update(LayerManager* this, AllBinaryLayer* layerInterface);
-void LayerManager_insert(LayerManager* this, AllBinaryLayer* layerInterface);
-void LayerManager_append(LayerManager* this, AllBinaryLayer* layerInterface);
-void LayerManager_appendAt(LayerManager* this, AllBinaryLayer* layerInterface, int32_t index);
-void LayerManager_remove(LayerManager* this, AllBinaryLayer* layerInterface);
-Layer* LayerManager_getLayerAt(LayerManager* this, int32_t index);
-int32_t LayerManager_getSize(LayerManager* this);
-void LayerManager_cleanup(LayerManager* this);
-void LayerManager_paint(LayerManager* this, Graphics* g, int32_t x, int32_t y);
+
+
+
+
+
+
+
+
+
+
+
+void LayerManager_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void LayerManager_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("LayerManager", nullptr);
+    java_register_method("LayerManager", "contains", (void*) LayerManager_contains);
+    java_register_method("LayerManager", "update", (void*) LayerManager_update);
+    java_register_method("LayerManager", "insert", (void*) LayerManager_insert);
+    java_register_method("LayerManager", "append", (void*) LayerManager_append);
+    java_register_method("LayerManager", "appendAt", (void*) LayerManager_appendAt);
+    java_register_method("LayerManager", "remove", (void*) LayerManager_remove);
+    java_register_method("LayerManager", "getLayerAt", (void*) LayerManager_getLayerAt);
+    java_register_method("LayerManager", "getSize", (void*) LayerManager_getSize);
+    java_register_method("LayerManager", "cleanup", (void*) LayerManager_cleanup);
+    java_register_method("LayerManager", "paint", (void*) LayerManager_paint);
+}
 
 static void LayerManager_initFields(LayerManager* this) {
     this->logUtil = LogUtil_getInstance();
@@ -56,13 +64,14 @@ static void LayerManager_initFields(LayerManager* this) {
 
 
 void LayerManager_init(LayerManager* this, LayerManagerLoggingBase* layerManagerLogging) {
+    LayerManager_register();
     LayerManager_initFields(this);
         LogUtil_putF(this->logUtil, this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
         this->layerManagerLogging = layerManagerLogging;
 }
 
 LayerManager* LayerManager_new(LayerManagerLoggingBase* layerManagerLogging) {
-    LayerManager* this = calloc(1, sizeof(LayerManager));
+    LayerManager* this = java_object_alloc(sizeof(LayerManager), "LayerManager");
     LayerManager_init(this, layerManagerLogging);
     return this;
 }

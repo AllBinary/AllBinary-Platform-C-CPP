@@ -1,55 +1,54 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.ag.layer.hud.basic.life
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/game/ag/layer/hud/basic/life/LivesHudWidget.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/animation/Animation.h"
 #include "org/allbinary/game/ag/life/Life.h"
-#include "org/allbinary/game/graphics/hud/BasicHud.h"
 #include "org/allbinary/graphics/color/BasicColorFactory.h"
 #include "org/allbinary/graphics/displayable/event/DisplayChangeEvent.h"
-#include "org/allbinary/graphics/paint/PaintableInterface.h"
+#if __has_include("org/allbinary/graphics/color/BasicColorFactory.h")
+#include "org/allbinary/graphics/color/BasicColorFactory.h"
+#endif
+#if __has_include("org/allbinary/game/ag/life/Life.h")
+#include "org/allbinary/game/ag/life/Life.h"
+#endif
+#if __has_include("org/allbinary/game/ag/life/Life.h")
+#include "org/allbinary/game/ag/life/Life.h"
+#endif
+#if __has_include("org/allbinary/game/ag/life/Life.h")
+#include "org/allbinary/game/ag/life/Life.h"
+#endif
 
-typedef struct LivesHudWidget LivesHudWidget;
-struct LivesHudWidget {
-    BasicHud base;
-    PaintableInterface PaintableInterface_interface;
-    Life* lifeInterface;
-    int32_t* xArray;
-    Animation* animationInterface;
-};
 
 
-LivesHudWidget* LivesHudWidget_new(Animation* animationInterface, Life* lifeInterface, int32_t location, int32_t direction);
 
-void LivesHudWidget_init(LivesHudWidget* this, Animation* animationInterface, Life* lifeInterface, int32_t location, int32_t direction);
-void LivesHudWidget_updateMeasurement(LivesHudWidget* this, Graphics* graphics);
-void LivesHudWidget_onDisplayChangeEvent(LivesHudWidget* this, DisplayChangeEvent* displayChangeEvent);
-void LivesHudWidget_setX(LivesHudWidget* this, int32_t x);
-void LivesHudWidget_paint(LivesHudWidget* this, Graphics* graphics);
-void LivesHudWidget_paintThreed(LivesHudWidget* this, Graphics* graphics);
-Life* LivesHudWidget_getLifeInterface(LivesHudWidget* this);
+
+
+
+
+
+
+void LivesHudWidget_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void LivesHudWidget_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("LivesHudWidget", "BasicHud");
+    java_register_method("LivesHudWidget", "updateMeasurement", (void*) LivesHudWidget_updateMeasurement);
+    java_register_method("LivesHudWidget", "onDisplayChangeEvent", (void*) LivesHudWidget_onDisplayChangeEvent);
+    java_register_method("LivesHudWidget", "setX", (void*) LivesHudWidget_setX);
+    java_register_method("LivesHudWidget", "paint", (void*) LivesHudWidget_paint);
+    java_register_method("LivesHudWidget", "paintThreed", (void*) LivesHudWidget_paintThreed);
+    java_register_method("LivesHudWidget", "getLifeInterface", (void*) LivesHudWidget_getLifeInterface);
+}
 
 static void LivesHudWidget_initFields(LivesHudWidget* this) {
     
@@ -59,18 +58,19 @@ static void LivesHudWidget_initFields(LivesHudWidget* this) {
 
 
 void LivesHudWidget_init(LivesHudWidget* this, Animation* animationInterface, Life* lifeInterface, int32_t location, int32_t direction) {
+    LivesHudWidget_register();
         BasicHud_init(&this->base, location, direction, 2, BasicColorFactory_getInstance()->WHITE);
         LivesHudWidget_initFields(this);
         this->lifeInterface = lifeInterface;
-        int32_t size = ((int32_t) JAVA_CALL(LivesHudWidget_getLifeInterface(this), getMaxlives));
+        int32_t size = ((int32_t) Life_getMaxlives(LivesHudWidget_getLifeInterface(this)));
         this->xArray = ((int32_t*) java_array_new(sizeof(int32_t), size));
         this->animationInterface = animationInterface;
-        this->updateMaxWidth = Life_getMaxlives(this->lifeInterface) * 16;
-        this->updateMaxHeight = 16;
+        this->base.updateMaxWidth = ((int32_t) Life_getMaxlives(this->lifeInterface)) * 16;
+        this->base.updateMaxHeight = 16;
 }
 
 LivesHudWidget* LivesHudWidget_new(Animation* animationInterface, Life* lifeInterface, int32_t location, int32_t direction) {
-    LivesHudWidget* this = calloc(1, sizeof(LivesHudWidget));
+    LivesHudWidget* this = java_object_alloc(sizeof(LivesHudWidget), "LivesHudWidget");
     LivesHudWidget_init(this, animationInterface, lifeInterface, location, direction);
     return this;
 }
@@ -78,29 +78,29 @@ LivesHudWidget* LivesHudWidget_new(Animation* animationInterface, Life* lifeInte
 
 void LivesHudWidget_updateMeasurement(LivesHudWidget* this, Graphics* graphics) {
         BasicHud_updateMeasurement((&this->base), graphics);
-        int32_t maxLives = ((int32_t) JAVA_CALL(LivesHudWidget_getLifeInterface(this), getMaxlives));
+        int32_t maxLives = ((int32_t) Life_getMaxlives(LivesHudWidget_getLifeInterface(this)));
         for (int32_t index = 0; index < maxLives; index++) {
-            this->xArray[index] = LivesHudWidget_getX(this) + (index * 16);
+            this->xArray[index] = BasicHud_getX(this) + (index * 16);
         }
 }
 
 
 void LivesHudWidget_onDisplayChangeEvent(LivesHudWidget* this, DisplayChangeEvent* displayChangeEvent) {
         BasicHud_onDisplayChangeEvent((&this->base), displayChangeEvent);
-        this->myFontProcessor = this->updateMyFontProcessor;
+        this->base.myFontProcessor = this->base.updateMyFontProcessor;
 }
 
 
 void LivesHudWidget_setX(LivesHudWidget* this, int32_t x) {
         BasicHud_setX((&this->base), x);
-        this->myFontProcessor = this->updateMyFontProcessor;
+        this->base.myFontProcessor = this->base.updateMyFontProcessor;
 }
 
 
 void LivesHudWidget_paint(LivesHudWidget* this, Graphics* graphics) {
-        JAVA_CALL(this->myFontProcessor, process, graphics);
-        for (int32_t index = ((int32_t) JAVA_CALL(LivesHudWidget_getLifeInterface(this), get)); --index >= 0; ) {
-            Animation_paintXY(this->animationInterface, graphics, this->xArray[index], LivesHudWidget_getY(this));
+        MyFontProcessor_process(this->base.myFontProcessor, graphics);
+        for (int32_t index = ((int32_t) Life_get(LivesHudWidget_getLifeInterface(this))); --index >= 0; ) {
+            Animation_paintXY(this->animationInterface, graphics, this->xArray[index], BasicHud_getY(this));
         }
 }
 

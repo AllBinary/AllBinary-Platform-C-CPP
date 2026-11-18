@@ -1,28 +1,5 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2011 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation.resource
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/animation/resource/BaseResourceAnimationInterfaceFactoryInterfaceFactory.h"
 #include "org/allbinary/animation/BasicAnimationInterfaceFactoryInterface.h"
 #include "org/allbinary/animation/NullAnimationFactory.h"
 #include "org/allbinary/game/resource/ResourceLoadingLevelFactory.h"
@@ -35,40 +12,90 @@
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/util/ABHashtable.h"
 #include "org/allbinary/animation/resource/FeatureResourceAnimationInterfaceFactoryInterface.h"
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/string/CommonSeps.h")
+#include "org/allbinary/string/CommonSeps.h"
+#endif
+#if __has_include("org/allbinary/string/CommonSeps.h")
+#include "org/allbinary/string/CommonSeps.h"
+#endif
 
-typedef struct BaseResourceAnimationInterfaceFactoryInterfaceFactory BaseResourceAnimationInterfaceFactoryInterfaceFactory;
-struct BaseResourceAnimationInterfaceFactoryInterfaceFactory {
-    FeatureResourceAnimationInterfaceFactoryInterface FeatureResourceAnimationInterfaceFactoryInterface_interface;
-    LogUtil* logUtil;
-    CommonStrings* commonStrings;
-    ABHashtable* hashtable;
-    ABHashtable* rectangleHashtable;
-    ABHashtable* rectangleArrayOfArraysHashtable;
-    const char* name;
-    bool initialized;
-};
 
 
-BaseResourceAnimationInterfaceFactoryInterfaceFactory* BaseResourceAnimationInterfaceFactoryInterfaceFactory_new(const char* name, ABHashtable* hashtable, ABHashtable* rectangleHashtable, ABHashtable* rectangleArrayHashtable);
 
-void BaseResourceAnimationInterfaceFactoryInterfaceFactory_init(BaseResourceAnimationInterfaceFactoryInterfaceFactory* this, const char* name, ABHashtable* hashtable, ABHashtable* rectangleHashtable, ABHashtable* rectangleArrayHashtable);
-const char* BaseResourceAnimationInterfaceFactoryInterfaceFactory_getName(BaseResourceAnimationInterfaceFactoryInterfaceFactory* this);
-void BaseResourceAnimationInterfaceFactoryInterfaceFactory_init(BaseResourceAnimationInterfaceFactoryInterfaceFactory* this, int32_t level);
-void BaseResourceAnimationInterfaceFactoryInterfaceFactory_initImageCache(BaseResourceAnimationInterfaceFactoryInterfaceFactory* this, ImageCache* imageCache, int32_t level);
-void BaseResourceAnimationInterfaceFactoryInterfaceFactory_add(BaseResourceAnimationInterfaceFactoryInterfaceFactory* this, const char* resource, BasicAnimationInterfaceFactoryInterface* animationInterfaceFactoryInterface);
-BasicAnimationInterfaceFactoryInterface* BaseResourceAnimationInterfaceFactoryInterfaceFactory_getBasicAnimationInterfaceFactoryInstance(BaseResourceAnimationInterfaceFactoryInterfaceFactory* this, const char* resource);
-Rectangle* BaseResourceAnimationInterfaceFactoryInterfaceFactory_getRectangle(BaseResourceAnimationInterfaceFactoryInterfaceFactory* this, const char* resource);
-void BaseResourceAnimationInterfaceFactoryInterfaceFactory_addRectangle(BaseResourceAnimationInterfaceFactoryInterfaceFactory* this, const char* resource, Rectangle* rectangle);
-Rectangle*** BaseResourceAnimationInterfaceFactoryInterfaceFactory_getRectangleArrayOfArrays(BaseResourceAnimationInterfaceFactoryInterfaceFactory* this, const char* resource);
-void BaseResourceAnimationInterfaceFactoryInterfaceFactory_addRectangleArrayOfArrays(BaseResourceAnimationInterfaceFactoryInterfaceFactory* this, const char* resource, Rectangle*** rectangleArrayOfArrays);
-bool BaseResourceAnimationInterfaceFactoryInterfaceFactory_isFeature(BaseResourceAnimationInterfaceFactoryInterfaceFactory* this);
-bool BaseResourceAnimationInterfaceFactoryInterfaceFactory_isLoadingLevel(BaseResourceAnimationInterfaceFactoryInterfaceFactory* this, int32_t level);
-const char* BaseResourceAnimationInterfaceFactoryInterfaceFactory_toString(BaseResourceAnimationInterfaceFactoryInterfaceFactory* this);
-ABHashtable* BaseResourceAnimationInterfaceFactoryInterfaceFactory_getHashtable(BaseResourceAnimationInterfaceFactoryInterfaceFactory* this);
-ABHashtable* BaseResourceAnimationInterfaceFactoryInterfaceFactory_getRectangleHashtable(BaseResourceAnimationInterfaceFactoryInterfaceFactory* this);
-ABHashtable* BaseResourceAnimationInterfaceFactoryInterfaceFactory_getRectangleArrayOfArraysHashtable(BaseResourceAnimationInterfaceFactoryInterfaceFactory* this);
-void BaseResourceAnimationInterfaceFactoryInterfaceFactory_setInitialized(BaseResourceAnimationInterfaceFactoryInterfaceFactory* this, bool initialized);
-bool BaseResourceAnimationInterfaceFactoryInterfaceFactory_isInitialized(BaseResourceAnimationInterfaceFactoryInterfaceFactory* this);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void BaseResourceAnimationInterfaceFactoryInterfaceFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void BaseResourceAnimationInterfaceFactoryInterfaceFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("BaseResourceAnimationInterfaceFactoryInterfaceFactory", nullptr);
+    java_register_method("BaseResourceAnimationInterfaceFactoryInterfaceFactory", "getName", (void*) BaseResourceAnimationInterfaceFactoryInterfaceFactory_getName);
+    java_register_method("BaseResourceAnimationInterfaceFactoryInterfaceFactory", "init", (void*) BaseResourceAnimationInterfaceFactoryInterfaceFactory_initMethod);
+    java_register_method("BaseResourceAnimationInterfaceFactoryInterfaceFactory", "initImageCache", (void*) BaseResourceAnimationInterfaceFactoryInterfaceFactory_initImageCache);
+    java_register_method("BaseResourceAnimationInterfaceFactoryInterfaceFactory", "add", (void*) BaseResourceAnimationInterfaceFactoryInterfaceFactory_add);
+    java_register_method("BaseResourceAnimationInterfaceFactoryInterfaceFactory", "getBasicAnimationInterfaceFactoryInstance", (void*) BaseResourceAnimationInterfaceFactoryInterfaceFactory_getBasicAnimationInterfaceFactoryInstance);
+    java_register_method("BaseResourceAnimationInterfaceFactoryInterfaceFactory", "getRectangle", (void*) BaseResourceAnimationInterfaceFactoryInterfaceFactory_getRectangle);
+    java_register_method("BaseResourceAnimationInterfaceFactoryInterfaceFactory", "addRectangle", (void*) BaseResourceAnimationInterfaceFactoryInterfaceFactory_addRectangle);
+    java_register_method("BaseResourceAnimationInterfaceFactoryInterfaceFactory", "getRectangleArrayOfArrays", (void*) BaseResourceAnimationInterfaceFactoryInterfaceFactory_getRectangleArrayOfArrays);
+    java_register_method("BaseResourceAnimationInterfaceFactoryInterfaceFactory", "addRectangleArrayOfArrays", (void*) BaseResourceAnimationInterfaceFactoryInterfaceFactory_addRectangleArrayOfArrays);
+    java_register_method("BaseResourceAnimationInterfaceFactoryInterfaceFactory", "isFeature", (void*) BaseResourceAnimationInterfaceFactoryInterfaceFactory_isFeature);
+    java_register_method("BaseResourceAnimationInterfaceFactoryInterfaceFactory", "isLoadingLevel", (void*) BaseResourceAnimationInterfaceFactoryInterfaceFactory_isLoadingLevel);
+    java_register_method("BaseResourceAnimationInterfaceFactoryInterfaceFactory", "toString", (void*) BaseResourceAnimationInterfaceFactoryInterfaceFactory_toString);
+    java_register_method("BaseResourceAnimationInterfaceFactoryInterfaceFactory", "getHashtable", (void*) BaseResourceAnimationInterfaceFactoryInterfaceFactory_getHashtable);
+    java_register_method("BaseResourceAnimationInterfaceFactoryInterfaceFactory", "getRectangleHashtable", (void*) BaseResourceAnimationInterfaceFactoryInterfaceFactory_getRectangleHashtable);
+    java_register_method("BaseResourceAnimationInterfaceFactoryInterfaceFactory", "getRectangleArrayOfArraysHashtable", (void*) BaseResourceAnimationInterfaceFactoryInterfaceFactory_getRectangleArrayOfArraysHashtable);
+    java_register_method("BaseResourceAnimationInterfaceFactoryInterfaceFactory", "setInitialized", (void*) BaseResourceAnimationInterfaceFactoryInterfaceFactory_setInitialized);
+    java_register_method("BaseResourceAnimationInterfaceFactoryInterfaceFactory", "isInitialized", (void*) BaseResourceAnimationInterfaceFactoryInterfaceFactory_isInitialized);
+}
 
 static void BaseResourceAnimationInterfaceFactoryInterfaceFactory_initFields(BaseResourceAnimationInterfaceFactoryInterfaceFactory* this) {
     this->logUtil = LogUtil_getInstance();
@@ -82,6 +109,7 @@ static void BaseResourceAnimationInterfaceFactoryInterfaceFactory_initFields(Bas
 
 
 void BaseResourceAnimationInterfaceFactoryInterfaceFactory_init(BaseResourceAnimationInterfaceFactoryInterfaceFactory* this, const char* name, ABHashtable* hashtable, ABHashtable* rectangleHashtable, ABHashtable* rectangleArrayHashtable) {
+    BaseResourceAnimationInterfaceFactoryInterfaceFactory_register();
     BaseResourceAnimationInterfaceFactoryInterfaceFactory_initFields(this);
         this->hashtable = hashtable;
         this->rectangleHashtable = rectangleHashtable;
@@ -90,7 +118,7 @@ void BaseResourceAnimationInterfaceFactoryInterfaceFactory_init(BaseResourceAnim
 }
 
 BaseResourceAnimationInterfaceFactoryInterfaceFactory* BaseResourceAnimationInterfaceFactoryInterfaceFactory_new(const char* name, ABHashtable* hashtable, ABHashtable* rectangleHashtable, ABHashtable* rectangleArrayHashtable) {
-    BaseResourceAnimationInterfaceFactoryInterfaceFactory* this = calloc(1, sizeof(BaseResourceAnimationInterfaceFactoryInterfaceFactory));
+    BaseResourceAnimationInterfaceFactoryInterfaceFactory* this = java_object_alloc(sizeof(BaseResourceAnimationInterfaceFactoryInterfaceFactory), "BaseResourceAnimationInterfaceFactoryInterfaceFactory");
     BaseResourceAnimationInterfaceFactoryInterfaceFactory_init(this, name, hashtable, rectangleHashtable, rectangleArrayHashtable);
     return this;
 }
@@ -102,9 +130,9 @@ const char* BaseResourceAnimationInterfaceFactoryInterfaceFactory_getName(BaseRe
 
 
 // throws Exception
-void BaseResourceAnimationInterfaceFactoryInterfaceFactory_init(BaseResourceAnimationInterfaceFactoryInterfaceFactory* this, int32_t level) {
+void BaseResourceAnimationInterfaceFactoryInterfaceFactory_initMethod(BaseResourceAnimationInterfaceFactoryInterfaceFactory* this, int32_t level) {
         CommonStrings* commonStrings = CommonStrings_getInstance();
-        LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), "Available List of Animations: "), append, ABHashtable_toString(this->hashtable)), toString), this, commonStrings->INIT);
+        LogUtil_putF(this->logUtil, java_string_of(StringMaker_append(StringMaker_append(StringMaker_new(), "Available List of Animations: "), java_string_of(this->hashtable))), this, commonStrings->INIT);
         BaseResourceAnimationInterfaceFactoryInterfaceFactory_setInitialized(this, true);
 }
 
@@ -116,18 +144,18 @@ void BaseResourceAnimationInterfaceFactoryInterfaceFactory_initImageCache(BaseRe
 
 // throws Exception
 void BaseResourceAnimationInterfaceFactoryInterfaceFactory_add(BaseResourceAnimationInterfaceFactoryInterfaceFactory* this, const char* resource, BasicAnimationInterfaceFactoryInterface* animationInterfaceFactoryInterface) {
-        if (ABHashtable_containsKey(this->hashtable, ((Any*) resource))) {
-            java_throw(java_exception_new("Exception", JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), "Resource Already Created: "), append, resource), toString)));
+        if (Hashtable_containsKey(this->hashtable, ((void*) resource))) {
+            java_throw(java_exception_new("Exception", java_string_of(StringMaker_append(StringMaker_append(StringMaker_new(), "Resource Already Created: "), resource))));
         }
-        ABHashtable_put(this->hashtable, resource, animationInterfaceFactoryInterface);
+        Hashtable_put(this->hashtable, resource, animationInterfaceFactoryInterface);
 }
 
 
 // throws Exception
 BasicAnimationInterfaceFactoryInterface* BaseResourceAnimationInterfaceFactoryInterfaceFactory_getBasicAnimationInterfaceFactoryInstance(BaseResourceAnimationInterfaceFactoryInterfaceFactory* this, const char* resource) {
-        Any* basicAnimationInterfaceFactoryInterfaceCanBeNull = ABHashtable_get(this->hashtable, resource);
+        void* basicAnimationInterfaceFactoryInterfaceCanBeNull = Hashtable_get(this->hashtable, resource);
         if (basicAnimationInterfaceFactoryInterfaceCanBeNull == nullptr) {
-            return NullAnimationFactory_NULL_NOT_FOR_USE_ANIMATION_FACTORY;
+            return (NullAnimationFactory_staticInit(), NullAnimationFactory_NULL_NOT_FOR_USE_ANIMATION_FACTORY);
         }
         return ((BasicAnimationInterfaceFactoryInterface*) basicAnimationInterfaceFactoryInterfaceCanBeNull);
 }
@@ -135,9 +163,9 @@ BasicAnimationInterfaceFactoryInterface* BaseResourceAnimationInterfaceFactoryIn
 
 // throws Exception
 Rectangle* BaseResourceAnimationInterfaceFactoryInterfaceFactory_getRectangle(BaseResourceAnimationInterfaceFactoryInterfaceFactory* this, const char* resource) {
-        Any* rectangleCanBeNull = ABHashtable_get(this->rectangleHashtable, resource);
+        void* rectangleCanBeNull = Hashtable_get(this->rectangleHashtable, resource);
         if (rectangleCanBeNull == nullptr) {
-            return RectangleFactory_SINGLETON;
+            return (RectangleFactory_staticInit(), RectangleFactory_SINGLETON);
         }
         return ((Rectangle*) rectangleCanBeNull);
 }
@@ -145,25 +173,25 @@ Rectangle* BaseResourceAnimationInterfaceFactoryInterfaceFactory_getRectangle(Ba
 
 // throws Exception
 void BaseResourceAnimationInterfaceFactoryInterfaceFactory_addRectangle(BaseResourceAnimationInterfaceFactoryInterfaceFactory* this, const char* resource, Rectangle* rectangle) {
-        ABHashtable_put(this->rectangleHashtable, resource, rectangle);
+        Hashtable_put(this->rectangleHashtable, resource, rectangle);
 }
 
 
 // throws Exception
 Rectangle*** BaseResourceAnimationInterfaceFactoryInterfaceFactory_getRectangleArrayOfArrays(BaseResourceAnimationInterfaceFactoryInterfaceFactory* this, const char* resource) {
-        Any* valueCanBeNull = ABHashtable_get(this->rectangleArrayOfArraysHashtable, resource);
+        void* valueCanBeNull = Hashtable_get(this->rectangleArrayOfArraysHashtable, resource);
         if (valueCanBeNull != nullptr) {
             Rectangle*** rectangleArrayOfArrays = ((Rectangle***) valueCanBeNull);
             return rectangleArrayOfArrays;
         } else {
-            return RectangleFactory_ARRAY_OF_ARRAYS;
+            return (RectangleFactory_staticInit(), RectangleFactory_ARRAY_OF_ARRAYS);
         }
 }
 
 
 // throws Exception
 void BaseResourceAnimationInterfaceFactoryInterfaceFactory_addRectangleArrayOfArrays(BaseResourceAnimationInterfaceFactoryInterfaceFactory* this, const char* resource, Rectangle*** rectangleArrayOfArrays) {
-        ABHashtable_put(this->rectangleArrayOfArraysHashtable, resource, rectangleArrayOfArrays);
+        Hashtable_put(this->rectangleArrayOfArraysHashtable, resource, rectangleArrayOfArrays);
 }
 
 
@@ -174,7 +202,7 @@ bool BaseResourceAnimationInterfaceFactoryInterfaceFactory_isFeature(BaseResourc
 
 bool BaseResourceAnimationInterfaceFactoryInterfaceFactory_isLoadingLevel(BaseResourceAnimationInterfaceFactoryInterfaceFactory* this, int32_t level) {
         ResourceLoadingLevelFactory* resourceLoadingLevelFactory = ResourceLoadingLevelFactory_getInstance();
-        if (level == JAVA_CALL(resourceLoadingLevelFactory->LOAD_ALL, getLevel)) {
+        if (level == ResourceLoadingLevel_getLevel(resourceLoadingLevelFactory->LOAD_ALL)) {
             return true;
         } else {
             return false;
@@ -183,7 +211,7 @@ bool BaseResourceAnimationInterfaceFactoryInterfaceFactory_isLoadingLevel(BaseRe
 
 
 const char* BaseResourceAnimationInterfaceFactoryInterfaceFactory_toString(BaseResourceAnimationInterfaceFactoryInterfaceFactory* this) {
-        return JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), java_class_of(this)), append, CommonSeps_getInstance()->SEMICOLON), append, CommonSeps_getInstance()->SPACE), append, this->name), toString);
+        return java_string_of(StringMaker_append(StringMaker_append(StringMaker_append(StringMaker_append(StringMaker_new(), java_class_of(this)), CommonSeps_getInstance()->SEMICOLON), CommonSeps_getInstance()->SPACE), this->name));
 }
 
 

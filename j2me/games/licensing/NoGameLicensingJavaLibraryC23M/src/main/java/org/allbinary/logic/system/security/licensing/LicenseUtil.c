@@ -1,65 +1,54 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.system.security.licensing
+#include "org/allbinary/logic/system/security/licensing/LicenseUtil.h"
+#include "javax/microedition/lcdui/CommandListener.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/CommandListener.h"
-
-typedef struct LicenseUtil LicenseUtil;
-struct LicenseUtil {
-    char unused;
-};
 
 static LicenseUtil* LicenseUtil_instance;
 
-LicenseUtil* LicenseUtil_new(void);
-LicenseUtil* LicenseUtil_getInstance(void);
-void LicenseUtil_init(LicenseUtil* this);
-bool LicenseUtil_isRunning(LicenseUtil* this);
-void LicenseUtil_setRunning(LicenseUtil* this, bool running);
-bool LicenseUtil_shouldWait(LicenseUtil* this, CommandListener* commandListener);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
 void LicenseUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     LicenseUtil_instance = LicenseUtil_new();
 }
 
+void LicenseUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("LicenseUtil", nullptr);
+    java_register_method("LicenseUtil", "init", (void*) LicenseUtil_initMethod);
+    java_register_method("LicenseUtil", "isRunning", (void*) LicenseUtil_isRunning);
+    java_register_method("LicenseUtil", "setRunning", (void*) LicenseUtil_setRunning);
+    java_register_method("LicenseUtil", "shouldWait", (void*) LicenseUtil_shouldWait);
+}
+
 void LicenseUtil_init(LicenseUtil* this) {
+    LicenseUtil_register();
 }
 
 LicenseUtil* LicenseUtil_new(void) {
-    LicenseUtil* this = calloc(1, sizeof(LicenseUtil));
+    LicenseUtil* this = java_object_alloc(sizeof(LicenseUtil), "LicenseUtil");
     LicenseUtil_init(this);
     return this;
 }
 
 
 LicenseUtil* LicenseUtil_getInstance(void) {
-        return LicenseUtil_instance;
+        return (LicenseUtil_staticInit(), LicenseUtil_instance);
 }
 
 
-void LicenseUtil_init(LicenseUtil* this) {
+void LicenseUtil_initMethod(LicenseUtil* this) {
 }
 
 

@@ -1,0 +1,223 @@
+#ifndef ORG_ALLBINARY_ANIMATION_VECTORROTATIONANIMATION_H
+#define ORG_ALLBINARY_ANIMATION_VECTORROTATIONANIMATION_H
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+typedef struct VectorBaseRotationAnimation VectorBaseRotationAnimation;
+typedef struct AnimationBehavior AnimationBehavior;
+typedef struct Direction Direction;
+typedef struct BasicColor BasicColor;
+typedef struct Angle Angle;
+typedef struct AngleFactory AngleFactory;
+typedef struct AngleInfo AngleInfo;
+#include "org/allbinary/animation/VectorBaseRotationAnimation.h"
+
+typedef struct VectorRotationAnimation VectorRotationAnimation;
+struct VectorRotationAnimation {
+    VectorBaseRotationAnimation base;
+};
+
+
+VectorRotationAnimation* VectorRotationAnimation_new(int32_t*** currentPoints, BasicColor* basicColor, AnimationBehavior* animationBehavior);
+
+void VectorRotationAnimation_init(VectorRotationAnimation* this, int32_t*** currentPoints, BasicColor* basicColor, AnimationBehavior* animationBehavior);
+
+void VectorRotationAnimation_setFrameByDirection(VectorRotationAnimation* this, Direction* direction);
+
+void VectorRotationAnimation_setFrameToAngle(VectorRotationAnimation* this, Angle* angle);
+
+void VectorRotationAnimation_setFrame(VectorRotationAnimation* this, int32_t index);
+
+void VectorRotationAnimation_adjustFrame(VectorRotationAnimation* this, int16_t newAngle);
+
+void VectorRotationAnimation_adjustFrameToAngle(VectorRotationAnimation* this, Angle* newAngle);
+#define VectorRotationAnimation_new3 VectorRotationAnimation_new
+#define VectorRotationAnimation_init3 VectorRotationAnimation_init
+#ifndef VectorRotationAnimation_getAnimationSize
+#define VectorRotationAnimation_getAnimationSize VectorBaseRotationAnimation_getAnimationSize
+#endif
+#ifndef VectorRotationAnimation_getFrame
+#define VectorRotationAnimation_getFrame VectorBaseRotationAnimation_getFrame
+#endif
+#ifndef VectorRotationAnimation_nextFrame
+#define VectorRotationAnimation_nextFrame VectorBaseRotationAnimation_nextFrame
+#endif
+#ifndef VectorRotationAnimation_previousFrame
+#define VectorRotationAnimation_previousFrame VectorBaseRotationAnimation_previousFrame
+#endif
+#ifndef VectorRotationAnimation_getSize
+#define VectorRotationAnimation_getSize VectorBaseRotationAnimation_getSize
+#endif
+#ifndef VectorRotationAnimation_setSequence
+#define VectorRotationAnimation_setSequence VectorBaseRotationAnimation_setSequence
+#endif
+#ifndef VectorRotationAnimation_getSequence
+#define VectorRotationAnimation_getSequence VectorBaseRotationAnimation_getSequence
+#endif
+#ifndef VectorRotationAnimation_paintXY
+#define VectorRotationAnimation_paintXY VectorBaseRotationAnimation_paintXY
+#endif
+#ifndef VectorRotationAnimation_getPoints
+#define VectorRotationAnimation_getPoints VectorBaseRotationAnimation_getPoints
+#endif
+#ifndef VectorRotationAnimation_setPoints
+#define VectorRotationAnimation_setPoints VectorBaseRotationAnimation_setPoints
+#endif
+#ifndef VectorRotationAnimation_getBasicColorP
+#define VectorRotationAnimation_getBasicColorP VectorBaseRotationAnimation_getBasicColorP
+#endif
+#ifndef VectorRotationAnimation_setBasicColorP
+#define VectorRotationAnimation_setBasicColorP VectorBaseRotationAnimation_setBasicColorP
+#endif
+#ifndef VectorRotationAnimation_nextRotationX
+#define VectorRotationAnimation_nextRotationX RotationAnimation_nextRotationX
+#endif
+#ifndef VectorRotationAnimation_previousRotationX
+#define VectorRotationAnimation_previousRotationX RotationAnimation_previousRotationX
+#endif
+#ifndef VectorRotationAnimation_nextRotation
+#define VectorRotationAnimation_nextRotation RotationAnimation_nextRotation
+#endif
+#ifndef VectorRotationAnimation_previousRotation
+#define VectorRotationAnimation_previousRotation RotationAnimation_previousRotation
+#endif
+#ifndef VectorRotationAnimation_nextRotationZ
+#define VectorRotationAnimation_nextRotationZ RotationAnimation_nextRotationZ
+#endif
+#ifndef VectorRotationAnimation_previousRotationZ
+#define VectorRotationAnimation_previousRotationZ RotationAnimation_previousRotationZ
+#endif
+#ifndef VectorRotationAnimation_getFrame
+#define VectorRotationAnimation_getFrame RotationAnimation_getFrame
+#endif
+#ifndef VectorRotationAnimation_getSize
+#define VectorRotationAnimation_getSize RotationAnimation_getSize
+#endif
+#ifndef VectorRotationAnimation_getAngleInfoP
+#define VectorRotationAnimation_getAngleInfoP RotationAnimation_getAngleInfoP
+#endif
+#ifndef VectorRotationAnimation_toString
+#define VectorRotationAnimation_toString RotationAnimation_toString
+#endif
+#ifndef VectorRotationAnimation_getAnimationBehavior
+#define VectorRotationAnimation_getAnimationBehavior IndexedAnimation_getAnimationBehavior
+#endif
+#ifndef VectorRotationAnimation_reset
+#define VectorRotationAnimation_reset IndexedAnimation_reset
+#endif
+#ifndef VectorRotationAnimation_getFrame
+#define VectorRotationAnimation_getFrame IndexedAnimation_getFrame
+#endif
+#ifndef VectorRotationAnimation_getAnimationSize
+#define VectorRotationAnimation_getAnimationSize IndexedAnimation_getAnimationSize
+#endif
+#ifndef VectorRotationAnimation_getSize
+#define VectorRotationAnimation_getSize IndexedAnimation_getSize
+#endif
+#ifndef VectorRotationAnimation_previousFrame
+#define VectorRotationAnimation_previousFrame IndexedAnimation_previousFrame
+#endif
+#ifndef VectorRotationAnimation_isLastFrame
+#define VectorRotationAnimation_isLastFrame IndexedAnimation_isLastFrame
+#endif
+#ifndef VectorRotationAnimation_setSequence
+#define VectorRotationAnimation_setSequence IndexedAnimation_setSequence
+#endif
+#ifndef VectorRotationAnimation_getSequence
+#define VectorRotationAnimation_getSequence IndexedAnimation_getSequence
+#endif
+#ifndef VectorRotationAnimation_setState
+#define VectorRotationAnimation_setState IndexedAnimation_setState
+#endif
+#ifndef VectorRotationAnimation_getWidth
+#define VectorRotationAnimation_getWidth IndexedAnimation_getWidth
+#endif
+#ifndef VectorRotationAnimation_getHeight
+#define VectorRotationAnimation_getHeight IndexedAnimation_getHeight
+#endif
+#ifndef VectorRotationAnimation_setAlpha
+#define VectorRotationAnimation_setAlpha Animation_setAlpha
+#endif
+#ifndef VectorRotationAnimation_nextFrame
+#define VectorRotationAnimation_nextFrame Animation_nextFrame
+#endif
+#ifndef VectorRotationAnimation_paintXY
+#define VectorRotationAnimation_paintXY Animation_paintXY
+#endif
+#ifndef VectorRotationAnimation_paintThreedXYZ
+#define VectorRotationAnimation_paintThreedXYZ Animation_paintThreedXYZ
+#endif
+#ifndef VectorRotationAnimation_isThreed
+#define VectorRotationAnimation_isThreed Animation_isThreed
+#endif
+#ifndef VectorRotationAnimation_getBasicColorP
+#define VectorRotationAnimation_getBasicColorP Animation_getBasicColorP
+#endif
+#ifndef VectorRotationAnimation_setBasicColorP
+#define VectorRotationAnimation_setBasicColorP Animation_setBasicColorP
+#endif
+#ifndef VectorRotationAnimation_setBackgroundBasicColorP
+#define VectorRotationAnimation_setBackgroundBasicColorP Animation_setBackgroundBasicColorP
+#endif
+#ifndef VectorRotationAnimation_getChangeBasicColor
+#define VectorRotationAnimation_getChangeBasicColor Animation_getChangeBasicColor
+#endif
+#ifndef VectorRotationAnimation_changeBasicColor
+#define VectorRotationAnimation_changeBasicColor Animation_changeBasicColor
+#endif
+#ifndef VectorRotationAnimation_getChangeColor
+#define VectorRotationAnimation_getChangeColor Animation_getChangeColor
+#endif
+#ifndef VectorRotationAnimation_getColor
+#define VectorRotationAnimation_getColor Animation_getColor
+#endif
+#ifndef VectorRotationAnimation_setScale
+#define VectorRotationAnimation_setScale Animation_setScale
+#endif
+#ifndef VectorRotationAnimation_setMaxScale
+#define VectorRotationAnimation_setMaxScale Animation_setMaxScale
+#endif
+#ifndef VectorRotationAnimation_set
+#define VectorRotationAnimation_set Animation_set
+#endif
+#ifndef VectorRotationAnimation_setDx
+#define VectorRotationAnimation_setDx Animation_setDx
+#endif
+#ifndef VectorRotationAnimation_getDx
+#define VectorRotationAnimation_getDx Animation_getDx
+#endif
+#ifndef VectorRotationAnimation_setDy
+#define VectorRotationAnimation_setDy Animation_setDy
+#endif
+#ifndef VectorRotationAnimation_getDy
+#define VectorRotationAnimation_getDy Animation_getDy
+#endif
+// Runs the Java static initialization of the class once. Reads of its static fields call it first.
+void VectorRotationAnimation_staticInit(void);
+// Registers the class, its superclass, and its methods for the interface calls (java_register_method)
+void VectorRotationAnimation_register(void);
+
+
+#endif // ORG_ALLBINARY_ANIMATION_VECTORROTATIONANIMATION_H

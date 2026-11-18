@@ -1,41 +1,28 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.form
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-#include "org/allbinary/canvas/Processor.h"
-
-typedef struct HorizontalFormProcessor HorizontalFormProcessor;
-struct HorizontalFormProcessor {
-    Processor base;
-    ScrollCurrentSelectionForm* scrollCurrentSelectionForm;
-};
+#include "org/allbinary/graphics/form/HorizontalFormProcessor.h"
+#include "org/allbinary/graphics/form/ScrollCurrentSelectionForm.h"
 
 
-HorizontalFormProcessor* HorizontalFormProcessor_new(ScrollCurrentSelectionForm* scrollCurrentSelectionForm);
 
-void HorizontalFormProcessor_init(HorizontalFormProcessor* this, ScrollCurrentSelectionForm* scrollCurrentSelectionForm);
-void HorizontalFormProcessor_process(HorizontalFormProcessor* this);
+
+
+void HorizontalFormProcessor_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void HorizontalFormProcessor_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("HorizontalFormProcessor", "Processor");
+    java_register_method("HorizontalFormProcessor", "process", (void*) HorizontalFormProcessor_process);
+}
 
 static void HorizontalFormProcessor_initFields(HorizontalFormProcessor* this) {
     
@@ -43,13 +30,14 @@ static void HorizontalFormProcessor_initFields(HorizontalFormProcessor* this) {
 
 
 void HorizontalFormProcessor_init(HorizontalFormProcessor* this, ScrollCurrentSelectionForm* scrollCurrentSelectionForm) {
+    HorizontalFormProcessor_register();
     Processor_init(&this->base);
     HorizontalFormProcessor_initFields(this);
         this->scrollCurrentSelectionForm = scrollCurrentSelectionForm;
 }
 
 HorizontalFormProcessor* HorizontalFormProcessor_new(ScrollCurrentSelectionForm* scrollCurrentSelectionForm) {
-    HorizontalFormProcessor* this = calloc(1, sizeof(HorizontalFormProcessor));
+    HorizontalFormProcessor* this = java_object_alloc(sizeof(HorizontalFormProcessor), "HorizontalFormProcessor");
     HorizontalFormProcessor_init(this, scrollCurrentSelectionForm);
     return this;
 }

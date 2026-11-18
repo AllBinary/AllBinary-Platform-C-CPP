@@ -1,64 +1,50 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.configuration.event
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/configuration/event/ChangedGameFeatureListener.h"
 #include "org/allbinary/game/configuration/GameConfiguration.h"
 #include "org/allbinary/game/configuration/event/BaseChangedGameFeatureListener.h"
 
-typedef struct ChangedGameFeatureListener ChangedGameFeatureListener;
-struct ChangedGameFeatureListener {
-    BaseChangedGameFeatureListener base;
-};
 
 static ChangedGameFeatureListener* ChangedGameFeatureListener_gameFeatureListener;
 
-ChangedGameFeatureListener* ChangedGameFeatureListener_new(void);
-ChangedGameFeatureListener* ChangedGameFeatureListener_getInstance(void);
-bool ChangedGameFeatureListener_isChangedGameConfiguration(ChangedGameFeatureListener* this, GameConfiguration* gameConfiguration);
 
-// Static fields with runtime initializers: call this once at startup
+
 void ChangedGameFeatureListener_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     ChangedGameFeatureListener_gameFeatureListener = ChangedGameFeatureListener_new();
 }
 
+void ChangedGameFeatureListener_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ChangedGameFeatureListener", "BaseChangedGameFeatureListener");
+    java_register_method("ChangedGameFeatureListener", "isChangedGameConfiguration", (void*) ChangedGameFeatureListener_isChangedGameConfiguration);
+}
+
 void ChangedGameFeatureListener_init(ChangedGameFeatureListener* this) {
+    ChangedGameFeatureListener_register();
     BaseChangedGameFeatureListener_init(&this->base);
 }
 
 ChangedGameFeatureListener* ChangedGameFeatureListener_new(void) {
-    ChangedGameFeatureListener* this = calloc(1, sizeof(ChangedGameFeatureListener));
+    ChangedGameFeatureListener* this = java_object_alloc(sizeof(ChangedGameFeatureListener), "ChangedGameFeatureListener");
     ChangedGameFeatureListener_init(this);
     return this;
 }
 
 
 ChangedGameFeatureListener* ChangedGameFeatureListener_getInstance(void) {
-        return ChangedGameFeatureListener_gameFeatureListener;
+        return (ChangedGameFeatureListener_staticInit(), ChangedGameFeatureListener_gameFeatureListener);
 }
 
 
 bool ChangedGameFeatureListener_isChangedGameConfiguration(ChangedGameFeatureListener* this, GameConfiguration* gameConfiguration) {
-        return JAVA_CALL(this->list, contains, gameConfiguration);
+        return BasicArrayList_contains(this->base.list, gameConfiguration);
 }
 

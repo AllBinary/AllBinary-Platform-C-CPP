@@ -1,61 +1,47 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.displayable.screen
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Displayable.h"
+#include "org/allbinary/graphics/displayable/screen/ScreenRepaintProcessorFactory.h"
+#include "javax/microedition/lcdui/Displayable.h"
 #include "org/allbinary/J2MEUtil.h"
 #include "org/allbinary/canvas/Processor.h"
+#include "org/allbinary/graphics/displayable/screen/ScreenRepaintProcessor.h"
 
-typedef struct ScreenRepaintProcessorFactory ScreenRepaintProcessorFactory;
-struct ScreenRepaintProcessorFactory {
-    char unused;
-};
 
 static ScreenRepaintProcessorFactory* ScreenRepaintProcessorFactory_instance;
 
-ScreenRepaintProcessorFactory* ScreenRepaintProcessorFactory_new(void);
-ScreenRepaintProcessorFactory* ScreenRepaintProcessorFactory_getInstance(void);
 
-void ScreenRepaintProcessorFactory_init(ScreenRepaintProcessorFactory* this);
-Processor* ScreenRepaintProcessorFactory_create(ScreenRepaintProcessorFactory* this, Displayable* displayable);
 
-// Static fields with runtime initializers: call this once at startup
+
 void ScreenRepaintProcessorFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     ScreenRepaintProcessorFactory_instance = ScreenRepaintProcessorFactory_new();
+}
+
+void ScreenRepaintProcessorFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ScreenRepaintProcessorFactory", nullptr);
+    java_register_method("ScreenRepaintProcessorFactory", "create", (void*) ScreenRepaintProcessorFactory_create);
 }
 
 
 ScreenRepaintProcessorFactory* ScreenRepaintProcessorFactory_getInstance(void) {
-        return ScreenRepaintProcessorFactory_instance;
+        return (ScreenRepaintProcessorFactory_staticInit(), ScreenRepaintProcessorFactory_instance);
 }
 
 
 void ScreenRepaintProcessorFactory_init(ScreenRepaintProcessorFactory* this) {
+    ScreenRepaintProcessorFactory_register();
 }
 
 ScreenRepaintProcessorFactory* ScreenRepaintProcessorFactory_new(void) {
-    ScreenRepaintProcessorFactory* this = calloc(1, sizeof(ScreenRepaintProcessorFactory));
+    ScreenRepaintProcessorFactory* this = java_object_alloc(sizeof(ScreenRepaintProcessorFactory), "ScreenRepaintProcessorFactory");
     ScreenRepaintProcessorFactory_init(this);
     return this;
 }

@@ -1,50 +1,40 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.layer.special
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/layer/special/SpecialFireGameInputProcessor.h"
 #include "org/allbinary/game/input/event/GameKeyEvent.h"
 #include "org/allbinary/layer/AllBinaryLayerManager.h"
 #include "org/allbinary/game/layer/special/SpecialGameInputProcessor.h"
-
-typedef struct SpecialFireGameInputProcessor SpecialFireGameInputProcessor;
-struct SpecialFireGameInputProcessor {
-    SpecialGameInputProcessor base;
-};
+#include "org/allbinary/game/layer/special/CollidableDestroyableDamageableLayer.h"
 
 
-SpecialFireGameInputProcessor* SpecialFireGameInputProcessor_new(CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer);
 
-void SpecialFireGameInputProcessor_init(SpecialFireGameInputProcessor* this, CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer);
-void SpecialFireGameInputProcessor_processEvent(SpecialFireGameInputProcessor* this, AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent);
+
+
+void SpecialFireGameInputProcessor_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void SpecialFireGameInputProcessor_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("SpecialFireGameInputProcessor", "SpecialGameInputProcessor");
+    java_register_method("SpecialFireGameInputProcessor", "processEvent", (void*) SpecialFireGameInputProcessor_processEvent);
+}
 
 
 void SpecialFireGameInputProcessor_init(SpecialFireGameInputProcessor* this, CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer) {
+    SpecialFireGameInputProcessor_register();
         SpecialGameInputProcessor_init(&this->base, collidableDestroyableDamageableLayer);
 }
 
 SpecialFireGameInputProcessor* SpecialFireGameInputProcessor_new(CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer) {
-    SpecialFireGameInputProcessor* this = calloc(1, sizeof(SpecialFireGameInputProcessor));
+    SpecialFireGameInputProcessor* this = java_object_alloc(sizeof(SpecialFireGameInputProcessor), "SpecialFireGameInputProcessor");
     SpecialFireGameInputProcessor_init(this, collidableDestroyableDamageableLayer);
     return this;
 }
@@ -52,6 +42,6 @@ SpecialFireGameInputProcessor* SpecialFireGameInputProcessor_new(CollidableDestr
 
 // throws Exception
 void SpecialFireGameInputProcessor_processEvent(SpecialFireGameInputProcessor* this, AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent) {
-        CollidableDestroyableDamageableLayer_fire(this->collidableDestroyableDamageableLayer, allbinaryLayerManager, gameKeyEvent);
+        CollidableDestroyableDamageableLayer_fire(this->base.collidableDestroyableDamageableLayer, allbinaryLayerManager, gameKeyEvent);
 }
 

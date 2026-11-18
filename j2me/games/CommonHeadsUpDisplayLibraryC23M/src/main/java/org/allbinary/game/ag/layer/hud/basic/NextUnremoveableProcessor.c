@@ -1,41 +1,28 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- *
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- *
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- *
- * Created By: Travis Berthelot
- * 
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.ag.layer.hud.basic
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-#include "org/allbinary/canvas/Processor.h"
-
-typedef struct NextUnremoveableProcessor NextUnremoveableProcessor;
-struct NextUnremoveableProcessor {
-    Processor base;
-    PlayerGameNotificationHud* updateMeasurementProcessor;
-};
+#include "org/allbinary/game/ag/layer/hud/basic/NextUnremoveableProcessor.h"
+#include "org/allbinary/game/ag/layer/hud/basic/PlayerGameNotificationHud.h"
 
 
-NextUnremoveableProcessor* NextUnremoveableProcessor_new(PlayerGameNotificationHud* updateMeasurementProcessor);
 
-void NextUnremoveableProcessor_init(NextUnremoveableProcessor* this, PlayerGameNotificationHud* updateMeasurementProcessor);
-void NextUnremoveableProcessor_process(NextUnremoveableProcessor* this);
+
+
+void NextUnremoveableProcessor_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void NextUnremoveableProcessor_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("NextUnremoveableProcessor", "Processor");
+    java_register_method("NextUnremoveableProcessor", "process", (void*) NextUnremoveableProcessor_process);
+}
 
 static void NextUnremoveableProcessor_initFields(NextUnremoveableProcessor* this) {
     
@@ -43,13 +30,14 @@ static void NextUnremoveableProcessor_initFields(NextUnremoveableProcessor* this
 
 
 void NextUnremoveableProcessor_init(NextUnremoveableProcessor* this, PlayerGameNotificationHud* updateMeasurementProcessor) {
+    NextUnremoveableProcessor_register();
     Processor_init(&this->base);
     NextUnremoveableProcessor_initFields(this);
         this->updateMeasurementProcessor = updateMeasurementProcessor;
 }
 
 NextUnremoveableProcessor* NextUnremoveableProcessor_new(PlayerGameNotificationHud* updateMeasurementProcessor) {
-    NextUnremoveableProcessor* this = calloc(1, sizeof(NextUnremoveableProcessor));
+    NextUnremoveableProcessor* this = java_object_alloc(sizeof(NextUnremoveableProcessor), "NextUnremoveableProcessor");
     NextUnremoveableProcessor_init(this, updateMeasurementProcessor);
     return this;
 }

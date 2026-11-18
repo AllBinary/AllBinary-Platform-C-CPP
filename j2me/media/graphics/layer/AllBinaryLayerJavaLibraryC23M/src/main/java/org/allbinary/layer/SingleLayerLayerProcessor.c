@@ -1,48 +1,41 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.layer
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/layer/SingleLayerLayerProcessor.h"
 #include "org/allbinary/layer/LayerProcessor.h"
+#include "org/allbinary/layer/SingleLayerLayerManager.h"
+#include "org/allbinary/layer/LayerManager.h"
+#include "org/allbinary/layer/AllBinaryLayer.h"
+#include "org/allbinary/layer/AllBinaryLayerManager.h"
 
-typedef struct SingleLayerLayerProcessor SingleLayerLayerProcessor;
-struct SingleLayerLayerProcessor {
-    LayerProcessor base;
-};
 
 
-SingleLayerLayerProcessor* SingleLayerLayerProcessor_new(void);
 
-void SingleLayerLayerProcessor_init(SingleLayerLayerProcessor* this);
-void SingleLayerLayerProcessor_process(SingleLayerLayerProcessor* this, AllBinaryLayerManager* allBinaryLayerManager);
+
+void SingleLayerLayerProcessor_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void SingleLayerLayerProcessor_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("SingleLayerLayerProcessor", "LayerProcessor");
+    java_register_method("SingleLayerLayerProcessor", "process", (void*) SingleLayerLayerProcessor_process);
+}
 
 
 void SingleLayerLayerProcessor_init(SingleLayerLayerProcessor* this) {
+    SingleLayerLayerProcessor_register();
         LayerProcessor_init(&this->base, SingleLayerLayerManager_new());
 }
 
 SingleLayerLayerProcessor* SingleLayerLayerProcessor_new(void) {
-    SingleLayerLayerProcessor* this = calloc(1, sizeof(SingleLayerLayerProcessor));
+    SingleLayerLayerProcessor* this = java_object_alloc(sizeof(SingleLayerLayerProcessor), "SingleLayerLayerProcessor");
     SingleLayerLayerProcessor_init(this);
     return this;
 }
@@ -50,7 +43,7 @@ SingleLayerLayerProcessor* SingleLayerLayerProcessor_new(void) {
 
 // throws Exception
 void SingleLayerLayerProcessor_process(SingleLayerLayerProcessor* this, AllBinaryLayerManager* allBinaryLayerManager) {
-        LayerManager* layerManager = SingleLayerLayerProcessor_getLayerManager(this);
-        SingleLayerLayerProcessor_processAt(this, allBinaryLayerManager, ((AllBinaryLayer*) LayerManager_getLayerAt(layerManager, 0)), 0);
+        LayerManager* layerManager = LayerProcessor_getLayerManager(this);
+        LayerProcessor_processAt(this, allBinaryLayerManager, ((AllBinaryLayer*) LayerManager_getLayerAt(layerManager, 0)), 0);
 }
 

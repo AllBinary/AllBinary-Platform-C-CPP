@@ -1,53 +1,41 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input.gyro
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-#include "org/allbinary/input/AllBinarySensorListener.h"
+#include "org/allbinary/input/gyro/NoGyroSensor.h"
 #include "org/allbinary/logic/math/Orientation.h"
 #include "org/allbinary/input/gyro/AllBinaryOrientationSensor.h"
 
-typedef struct NoGyroSensor NoGyroSensor;
-struct NoGyroSensor {
-    AllBinaryOrientationSensor base;
-    AllBinarySensorListener AllBinarySensorListener_interface;
-};
 
 
-NoGyroSensor* NoGyroSensor_new(void);
 
-void NoGyroSensor_init(NoGyroSensor* this);
-Orientation* NoGyroSensor_getOrientation(NoGyroSensor* this);
-void NoGyroSensor_onSensorChange(NoGyroSensor* this);
+
+
+void NoGyroSensor_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void NoGyroSensor_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("NoGyroSensor", "AllBinaryOrientationSensor");
+    java_register_method("NoGyroSensor", "getOrientation", (void*) NoGyroSensor_getOrientation);
+    java_register_method("NoGyroSensor", "onSensorChange", (void*) NoGyroSensor_onSensorChange);
+}
 
 
 void NoGyroSensor_init(NoGyroSensor* this) {
+    NoGyroSensor_register();
     AllBinaryOrientationSensor_init(&this->base);
-        JAVA_CALL(this->logUtil, putF, this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
+        LogUtil_putF(this->base.base.logUtil, this->base.base.commonStrings->START, this, this->base.base.commonStrings->CONSTRUCTOR);
 }
 
 NoGyroSensor* NoGyroSensor_new(void) {
-    NoGyroSensor* this = calloc(1, sizeof(NoGyroSensor));
+    NoGyroSensor* this = java_object_alloc(sizeof(NoGyroSensor), "NoGyroSensor");
     NoGyroSensor_init(this);
     return this;
 }
@@ -55,7 +43,7 @@ NoGyroSensor* NoGyroSensor_new(void) {
 
 // throws Exception
 Orientation* NoGyroSensor_getOrientation(NoGyroSensor* this) {
-        return Orientation_NONE;
+        return (Orientation_staticInit(), Orientation_NONE);
 }
 
 

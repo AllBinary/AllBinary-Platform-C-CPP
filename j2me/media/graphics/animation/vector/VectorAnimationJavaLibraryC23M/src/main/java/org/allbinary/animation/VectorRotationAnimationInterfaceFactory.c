@@ -1,50 +1,47 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/animation/VectorRotationAnimationInterfaceFactory.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
 #include "org/allbinary/graphics/color/BasicColorFactory.h"
 #include "org/allbinary/logic/NullUtil.h"
 #include "org/allbinary/media/ScaleProperties.h"
 #include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
+#include "org/allbinary/animation/AnimationBehaviorFactory.h"
+#include "org/allbinary/animation/VectorRotationAnimation.h"
+#include "org/allbinary/animation/Animation.h"
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/graphics/color/BasicColorFactory.h")
+#include "org/allbinary/graphics/color/BasicColorFactory.h"
+#endif
 
-typedef struct VectorRotationAnimationInterfaceFactory VectorRotationAnimationInterfaceFactory;
-struct VectorRotationAnimationInterfaceFactory {
-    AnimationInterfaceFactoryInterface AnimationInterfaceFactoryInterface_interface;
-    int32_t*** currentPoints;
-    BasicColor* basicColor;
-    AnimationBehaviorFactory* animationBehaviorFactory;
-};
 
 
-VectorRotationAnimationInterfaceFactory* VectorRotationAnimationInterfaceFactory_new(int32_t*** currentPoints, BasicColor* basicColor, AnimationBehaviorFactory* animationBehaviorFactory);
 
-void VectorRotationAnimationInterfaceFactory_init(VectorRotationAnimationInterfaceFactory* this, int32_t*** currentPoints, BasicColor* basicColor, AnimationBehaviorFactory* animationBehaviorFactory);
-Animation* VectorRotationAnimationInterfaceFactory_getInstance(VectorRotationAnimationInterfaceFactory* this, int32_t instanceId);
-void VectorRotationAnimationInterfaceFactory_setBasicColorP(VectorRotationAnimationInterfaceFactory* this, BasicColor* basicColor);
-BasicColor* VectorRotationAnimationInterfaceFactory_getBasicColorP(VectorRotationAnimationInterfaceFactory* this);
-void VectorRotationAnimationInterfaceFactory_setInitialScale(VectorRotationAnimationInterfaceFactory* this, ScaleProperties* scaleProperties);
+
+
+
+
+void VectorRotationAnimationInterfaceFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void VectorRotationAnimationInterfaceFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("VectorRotationAnimationInterfaceFactory", nullptr);
+    java_register_method("VectorRotationAnimationInterfaceFactory", "getInstance", (void*) VectorRotationAnimationInterfaceFactory_getInstance);
+    java_register_method("VectorRotationAnimationInterfaceFactory", "setBasicColorP", (void*) VectorRotationAnimationInterfaceFactory_setBasicColorP);
+    java_register_method("VectorRotationAnimationInterfaceFactory", "getBasicColorP", (void*) VectorRotationAnimationInterfaceFactory_getBasicColorP);
+    java_register_method("VectorRotationAnimationInterfaceFactory", "setInitialScale", (void*) VectorRotationAnimationInterfaceFactory_setInitialScale);
+}
 
 static void VectorRotationAnimationInterfaceFactory_initFields(VectorRotationAnimationInterfaceFactory* this) {
     this->currentPoints = NullUtil_getInstance()->NULL_INT_ARRAY_ARRAY_ARRAY;
@@ -54,6 +51,7 @@ static void VectorRotationAnimationInterfaceFactory_initFields(VectorRotationAni
 
 
 void VectorRotationAnimationInterfaceFactory_init(VectorRotationAnimationInterfaceFactory* this, int32_t*** currentPoints, BasicColor* basicColor, AnimationBehaviorFactory* animationBehaviorFactory) {
+    VectorRotationAnimationInterfaceFactory_register();
     VectorRotationAnimationInterfaceFactory_initFields(this);
         this->currentPoints = currentPoints;
         VectorRotationAnimationInterfaceFactory_setBasicColorP(this, basicColor);
@@ -61,7 +59,7 @@ void VectorRotationAnimationInterfaceFactory_init(VectorRotationAnimationInterfa
 }
 
 VectorRotationAnimationInterfaceFactory* VectorRotationAnimationInterfaceFactory_new(int32_t*** currentPoints, BasicColor* basicColor, AnimationBehaviorFactory* animationBehaviorFactory) {
-    VectorRotationAnimationInterfaceFactory* this = calloc(1, sizeof(VectorRotationAnimationInterfaceFactory));
+    VectorRotationAnimationInterfaceFactory* this = java_object_alloc(sizeof(VectorRotationAnimationInterfaceFactory), "VectorRotationAnimationInterfaceFactory");
     VectorRotationAnimationInterfaceFactory_init(this, currentPoints, basicColor, animationBehaviorFactory);
     return this;
 }

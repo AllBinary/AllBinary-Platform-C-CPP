@@ -1,49 +1,44 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2025 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.ag.layer.hud.basic
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/ag/layer/hud/basic/NumberStringHudFactory.h"
 #include "org/allbinary/game/graphics/hud/BasicHudFactory.h"
 #include "org/allbinary/graphics/color/BasicColorFactory.h"
 #include "org/allbinary/logic/NullUtil.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/logic/string/StringUtil.h"
 #include "org/allbinary/string/CommonStrings.h"
+#include "org/allbinary/game/ag/layer/hud/basic/NumberStringHud.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/game/graphics/hud/BasicHudFactory.h")
+#include "org/allbinary/game/graphics/hud/BasicHudFactory.h"
+#endif
+#if __has_include("org/allbinary/graphics/color/BasicColorFactory.h")
+#include "org/allbinary/graphics/color/BasicColorFactory.h"
+#endif
 
-typedef struct NumberStringHudFactory NumberStringHudFactory;
-struct NumberStringHudFactory {
-    NumberStringHud* NULL_NUMBER_STRING_HUD;
-};
 
-static Any* NumberStringHudFactory_instance;
+static void* NumberStringHudFactory_instance;
 
-NumberStringHudFactory* NumberStringHudFactory_new(void);
-NumberStringHudFactory* NumberStringHudFactory_getInstance(void);
-NumberStringHud* NumberStringHudFactory_createHud(NumberStringHudFactory* this);
 
-// Static fields with runtime initializers: call this once at startup
+
 void NumberStringHudFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     NumberStringHudFactory_instance = NullUtil_getInstance();
+}
+
+void NumberStringHudFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("NumberStringHudFactory", nullptr);
+    java_register_method("NumberStringHudFactory", "createHud", (void*) NumberStringHudFactory_createHud);
 }
 
 static void NumberStringHudFactory_initFields(NumberStringHudFactory* this) {
@@ -51,21 +46,22 @@ static void NumberStringHudFactory_initFields(NumberStringHudFactory* this) {
 }
 
 void NumberStringHudFactory_init(NumberStringHudFactory* this) {
+    NumberStringHudFactory_register();
     NumberStringHudFactory_initFields(this);
 }
 
 NumberStringHudFactory* NumberStringHudFactory_new(void) {
-    NumberStringHudFactory* this = calloc(1, sizeof(NumberStringHudFactory));
+    NumberStringHudFactory* this = java_object_alloc(sizeof(NumberStringHudFactory), "NumberStringHudFactory");
     NumberStringHudFactory_init(this);
     return this;
 }
 
 
 NumberStringHudFactory* NumberStringHudFactory_getInstance(void) {
-        if (NumberStringHudFactory_instance == NullUtil_getInstance()) {
+        if ((NumberStringHudFactory_staticInit(), NumberStringHudFactory_instance) == NullUtil_getInstance()) {
             NumberStringHudFactory_instance = NumberStringHudFactory_new();
         }
-        return ((NumberStringHudFactory*) NumberStringHudFactory_instance);
+        return ((NumberStringHudFactory*) (NumberStringHudFactory_staticInit(), NumberStringHudFactory_instance));
 }
 
 

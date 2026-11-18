@@ -6,6 +6,12 @@
 #include "org/allbinary/math/AngleIncrementInfo.h"
 #include "org/allbinary/math/AngleIncrementInfoFactory.h"
 #include "org/allbinary/math/FrameUtil.h"
+#if __has_include("org/allbinary/string/CommonSeps.h")
+#include "org/allbinary/string/CommonSeps.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
 
 static const char* AngleInfo_ANGLE = "Angle: ";

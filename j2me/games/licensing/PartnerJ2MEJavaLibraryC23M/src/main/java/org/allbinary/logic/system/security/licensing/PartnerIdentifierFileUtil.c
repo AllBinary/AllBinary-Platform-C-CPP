@@ -1,50 +1,38 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.system.security.licensing
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "java/io/InputStream.h"
-// #include "java/io/InputStreamReader.h"
+#include "org/allbinary/logic/system/security/licensing/PartnerIdentifierFileUtil.h"
 #include "org/allbinary/data/resource/ResourceUtil.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/logic/string/StringUtil.h"
 #include "org/allbinary/string/CommonStrings.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
-typedef struct PartnerIdentifierFileUtil PartnerIdentifierFileUtil;
-struct PartnerIdentifierFileUtil {
-    LogUtil* logUtil;
-    const char* FILE_NAME;
-};
 
 static PartnerIdentifierFileUtil* PartnerIdentifierFileUtil_instance;
 
-PartnerIdentifierFileUtil* PartnerIdentifierFileUtil_new(void);
-PartnerIdentifierFileUtil* PartnerIdentifierFileUtil_getInstance(void);
-const char* PartnerIdentifierFileUtil_get(PartnerIdentifierFileUtil* this);
 
-// Static fields with runtime initializers: call this once at startup
+
 void PartnerIdentifierFileUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     PartnerIdentifierFileUtil_instance = PartnerIdentifierFileUtil_new();
+}
+
+void PartnerIdentifierFileUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("PartnerIdentifierFileUtil", nullptr);
+    java_register_method("PartnerIdentifierFileUtil", "get", (void*) PartnerIdentifierFileUtil_get);
 }
 
 static void PartnerIdentifierFileUtil_initFields(PartnerIdentifierFileUtil* this) {
@@ -53,18 +41,19 @@ static void PartnerIdentifierFileUtil_initFields(PartnerIdentifierFileUtil* this
 }
 
 void PartnerIdentifierFileUtil_init(PartnerIdentifierFileUtil* this) {
+    PartnerIdentifierFileUtil_register();
     PartnerIdentifierFileUtil_initFields(this);
 }
 
 PartnerIdentifierFileUtil* PartnerIdentifierFileUtil_new(void) {
-    PartnerIdentifierFileUtil* this = calloc(1, sizeof(PartnerIdentifierFileUtil));
+    PartnerIdentifierFileUtil* this = java_object_alloc(sizeof(PartnerIdentifierFileUtil), "PartnerIdentifierFileUtil");
     PartnerIdentifierFileUtil_init(this);
     return this;
 }
 
 
 PartnerIdentifierFileUtil* PartnerIdentifierFileUtil_getInstance(void) {
-        return PartnerIdentifierFileUtil_instance;
+        return (PartnerIdentifierFileUtil_staticInit(), PartnerIdentifierFileUtil_instance);
 }
 
 

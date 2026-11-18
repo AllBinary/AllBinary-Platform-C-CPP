@@ -1,0 +1,255 @@
+#ifndef ORG_ALLBINARY_GAME_MIDLET_SPECIALDEMOGAMEMIDLET_H
+#define ORG_ALLBINARY_GAME_MIDLET_SPECIALDEMOGAMEMIDLET_H
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.midlet
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+typedef struct DemoGameMidlet DemoGameMidlet;
+typedef struct LicenseLoadingType LicenseLoadingType;
+typedef struct LicensedDemoSetupFactory LicensedDemoSetupFactory;
+typedef struct LicenseCheckRunnableFactory LicenseCheckRunnableFactory;
+typedef struct ClientInformationFactory ClientInformationFactory;
+typedef struct LicenseServerInitFileUtil LicenseServerInitFileUtil;
+#include "org/allbinary/game/midlet/DemoGameMidlet.h"
+
+typedef struct SpecialDemoGameMidlet SpecialDemoGameMidlet;
+struct SpecialDemoGameMidlet {
+    DemoGameMidlet base;
+};
+
+
+SpecialDemoGameMidlet* SpecialDemoGameMidlet_new(ClientInformationFactory* clientInformationFactory, LicenseLoadingType* licenseLoadingType, LicensedDemoSetupFactory* demoSetupFactory, LicenseCheckRunnableFactory* licenseCheckRunnableFactory);
+
+void SpecialDemoGameMidlet_init(SpecialDemoGameMidlet* this, ClientInformationFactory* clientInformationFactory, LicenseLoadingType* licenseLoadingType, LicensedDemoSetupFactory* demoSetupFactory, LicenseCheckRunnableFactory* licenseCheckRunnableFactory);
+
+void SpecialDemoGameMidlet_initView(SpecialDemoGameMidlet* this);
+
+void SpecialDemoGameMidlet_preInit(SpecialDemoGameMidlet* this);
+#define SpecialDemoGameMidlet_new4 SpecialDemoGameMidlet_new
+#define SpecialDemoGameMidlet_init4 SpecialDemoGameMidlet_init
+#ifndef SpecialDemoGameMidlet_isContinue
+#define SpecialDemoGameMidlet_isContinue DemoGameMidlet_isContinue
+#endif
+#ifndef SpecialDemoGameMidlet_getHighestLevel
+#define SpecialDemoGameMidlet_getHighestLevel DemoGameMidlet_getHighestLevel
+#endif
+#ifndef SpecialDemoGameMidlet_createDemoGameCanvasRunnableInterface
+#define SpecialDemoGameMidlet_createDemoGameCanvasRunnableInterface DemoGameMidlet_createDemoGameCanvasRunnableInterface
+#endif
+#ifndef SpecialDemoGameMidlet_createGameCanvasRunnable
+#define SpecialDemoGameMidlet_createGameCanvasRunnable DemoGameMidlet_createGameCanvasRunnable
+#endif
+#ifndef SpecialDemoGameMidlet_createGameCanvasRunnableInterface
+#define SpecialDemoGameMidlet_createGameCanvasRunnableInterface DemoGameMidlet_createGameCanvasRunnableInterface
+#endif
+#ifndef SpecialDemoGameMidlet_demoSetup
+#define SpecialDemoGameMidlet_demoSetup DemoGameMidlet_demoSetup
+#endif
+#ifndef SpecialDemoGameMidlet_postDemoSetup
+#define SpecialDemoGameMidlet_postDemoSetup DemoGameMidlet_postDemoSetup
+#endif
+#ifndef SpecialDemoGameMidlet_setDemo
+#define SpecialDemoGameMidlet_setDemo DemoGameMidlet_setDemo
+#endif
+#ifndef SpecialDemoGameMidlet_createGame
+#define SpecialDemoGameMidlet_createGame DemoGameMidlet_createGame
+#endif
+#ifndef SpecialDemoGameMidlet_isReady
+#define SpecialDemoGameMidlet_isReady DemoGameMidlet_isReady
+#endif
+#ifndef SpecialDemoGameMidlet_setDemo
+#define SpecialDemoGameMidlet_setDemo GameMidlet_setDemo
+#endif
+#ifndef SpecialDemoGameMidlet_createGame
+#define SpecialDemoGameMidlet_createGame GameMidlet_createGame
+#endif
+#ifndef SpecialDemoGameMidlet_mediaShutdown
+#define SpecialDemoGameMidlet_mediaShutdown GameMidlet_mediaShutdown
+#endif
+#ifndef SpecialDemoGameMidlet_stopAll
+#define SpecialDemoGameMidlet_stopAll GameMidlet_stopAll
+#endif
+#ifndef SpecialDemoGameMidlet_pauseApp
+#define SpecialDemoGameMidlet_pauseApp GameMidlet_pauseApp
+#endif
+#ifndef SpecialDemoGameMidlet_pauseAppBackground
+#define SpecialDemoGameMidlet_pauseAppBackground GameMidlet_pauseAppBackground
+#endif
+#ifndef SpecialDemoGameMidlet_unPauseApp
+#define SpecialDemoGameMidlet_unPauseApp GameMidlet_unPauseApp
+#endif
+#ifndef SpecialDemoGameMidlet_unPauseAppBackground
+#define SpecialDemoGameMidlet_unPauseAppBackground GameMidlet_unPauseAppBackground
+#endif
+#ifndef SpecialDemoGameMidlet_destroyAppInRunnable
+#define SpecialDemoGameMidlet_destroyAppInRunnable GameMidlet_destroyAppInRunnable
+#endif
+#ifndef SpecialDemoGameMidlet_destroyApp
+#define SpecialDemoGameMidlet_destroyApp GameMidlet_destroyApp
+#endif
+#ifndef SpecialDemoGameMidlet_startApp
+#define SpecialDemoGameMidlet_startApp GameMidlet_startApp
+#endif
+#ifndef SpecialDemoGameMidlet_commandAction
+#define SpecialDemoGameMidlet_commandAction GameMidlet_commandAction
+#endif
+#ifndef SpecialDemoGameMidlet_updateFullScreen
+#define SpecialDemoGameMidlet_updateFullScreen GameMidlet_updateFullScreen
+#endif
+#ifndef SpecialDemoGameMidlet_onEvent
+#define SpecialDemoGameMidlet_onEvent GameMidlet_onEvent
+#endif
+#ifndef SpecialDemoGameMidlet_getInputMappingInstructionsCanvas
+#define SpecialDemoGameMidlet_getInputMappingInstructionsCanvas GameMidlet_getInputMappingInstructionsCanvas
+#endif
+#ifndef SpecialDemoGameMidlet_getInputMappingCanvas
+#define SpecialDemoGameMidlet_getInputMappingCanvas GameMidlet_getInputMappingCanvas
+#endif
+#ifndef SpecialDemoGameMidlet_getAboutCanvas
+#define SpecialDemoGameMidlet_getAboutCanvas GameMidlet_getAboutCanvas
+#endif
+#ifndef SpecialDemoGameMidlet_getHelpPaintable
+#define SpecialDemoGameMidlet_getHelpPaintable GameMidlet_getHelpPaintable
+#endif
+#ifndef SpecialDemoGameMidlet_createHighScoresCanvas
+#define SpecialDemoGameMidlet_createHighScoresCanvas GameMidlet_createHighScoresCanvas
+#endif
+#ifndef SpecialDemoGameMidlet_startGameCanvasRunnableInterface
+#define SpecialDemoGameMidlet_startGameCanvasRunnableInterface GameMidlet_startGameCanvasRunnableInterface
+#endif
+#ifndef SpecialDemoGameMidlet_stopGameCanvasRunnableInterface
+#define SpecialDemoGameMidlet_stopGameCanvasRunnableInterface GameMidlet_stopGameCanvasRunnableInterface
+#endif
+#ifndef SpecialDemoGameMidlet_getGameCanvasRunnableInterface
+#define SpecialDemoGameMidlet_getGameCanvasRunnableInterface GameMidlet_getGameCanvasRunnableInterface
+#endif
+#ifndef SpecialDemoGameMidlet_setGameCanvasRunnableInterface
+#define SpecialDemoGameMidlet_setGameCanvasRunnableInterface GameMidlet_setGameCanvasRunnableInterface
+#endif
+#ifndef SpecialDemoGameMidlet_createGameLayerManager
+#define SpecialDemoGameMidlet_createGameLayerManager GameMidlet_createGameLayerManager
+#endif
+#ifndef SpecialDemoGameMidlet_getGameOptionsForm
+#define SpecialDemoGameMidlet_getGameOptionsForm GameMidlet_getGameOptionsForm
+#endif
+#ifndef SpecialDemoGameMidlet_save
+#define SpecialDemoGameMidlet_save GameMidlet_save
+#endif
+#ifndef SpecialDemoGameMidlet_getCurrentStateHashtable
+#define SpecialDemoGameMidlet_getCurrentStateHashtable GameMidlet_getCurrentStateHashtable
+#endif
+#ifndef SpecialDemoGameMidlet_setLoadGameForm
+#define SpecialDemoGameMidlet_setLoadGameForm GameMidlet_setLoadGameForm
+#endif
+#ifndef SpecialDemoGameMidlet_getLoadGameForm
+#define SpecialDemoGameMidlet_getLoadGameForm GameMidlet_getLoadGameForm
+#endif
+#ifndef SpecialDemoGameMidlet_setResized
+#define SpecialDemoGameMidlet_setResized GameMidlet_setResized
+#endif
+#ifndef SpecialDemoGameMidlet_isResized
+#define SpecialDemoGameMidlet_isResized GameMidlet_isResized
+#endif
+#ifndef SpecialDemoGameMidlet_isDemoLoading
+#define SpecialDemoGameMidlet_isDemoLoading GameMidlet_isDemoLoading
+#endif
+#ifndef SpecialDemoGameMidlet_exitProgress
+#define SpecialDemoGameMidlet_exitProgress ProgressMidlet_exitProgress
+#endif
+#ifndef SpecialDemoGameMidlet_getNullInstance
+#define SpecialDemoGameMidlet_getNullInstance AllBinaryMidlet_getNullInstance
+#endif
+#ifndef SpecialDemoGameMidlet_setDisplay
+#define SpecialDemoGameMidlet_setDisplay AllBinaryMidlet_setDisplay
+#endif
+#ifndef SpecialDemoGameMidlet_getDisplay
+#define SpecialDemoGameMidlet_getDisplay AllBinaryMidlet_getDisplay
+#endif
+#ifndef SpecialDemoGameMidlet_getCurrentDisplayable
+#define SpecialDemoGameMidlet_getCurrentDisplayable AllBinaryMidlet_getCurrentDisplayable
+#endif
+#ifndef SpecialDemoGameMidlet_setDestroyed
+#define SpecialDemoGameMidlet_setDestroyed AllBinaryMidlet_setDestroyed
+#endif
+#ifndef SpecialDemoGameMidlet_isDestroyed
+#define SpecialDemoGameMidlet_isDestroyed AllBinaryMidlet_isDestroyed
+#endif
+#ifndef SpecialDemoGameMidlet_startApp
+#define SpecialDemoGameMidlet_startApp AllBinaryMidlet_startApp
+#endif
+#ifndef SpecialDemoGameMidlet_pauseApp
+#define SpecialDemoGameMidlet_pauseApp AllBinaryMidlet_pauseApp
+#endif
+#ifndef SpecialDemoGameMidlet_destroyAppInRunnable
+#define SpecialDemoGameMidlet_destroyAppInRunnable AllBinaryMidlet_destroyAppInRunnable
+#endif
+#ifndef SpecialDemoGameMidlet_destroyApp
+#define SpecialDemoGameMidlet_destroyApp AllBinaryMidlet_destroyApp
+#endif
+#ifndef SpecialDemoGameMidlet_setStartStateHashtable
+#define SpecialDemoGameMidlet_setStartStateHashtable AllBinaryMidlet_setStartStateHashtable
+#endif
+#ifndef SpecialDemoGameMidlet_getStartStateHashtable
+#define SpecialDemoGameMidlet_getStartStateHashtable AllBinaryMidlet_getStartStateHashtable
+#endif
+#ifndef SpecialDemoGameMidlet_getCurrentStateHashtable
+#define SpecialDemoGameMidlet_getCurrentStateHashtable AllBinaryMidlet_getCurrentStateHashtable
+#endif
+#ifndef SpecialDemoGameMidlet_commandAction
+#define SpecialDemoGameMidlet_commandAction AllBinaryMidlet_commandAction
+#endif
+#ifndef SpecialDemoGameMidlet_startApp
+#define SpecialDemoGameMidlet_startApp MIDlet_startApp
+#endif
+#ifndef SpecialDemoGameMidlet_pauseApp
+#define SpecialDemoGameMidlet_pauseApp MIDlet_pauseApp
+#endif
+#ifndef SpecialDemoGameMidlet_destroyApp
+#define SpecialDemoGameMidlet_destroyApp MIDlet_destroyApp
+#endif
+#ifndef SpecialDemoGameMidlet_checkPermission
+#define SpecialDemoGameMidlet_checkPermission MIDlet_checkPermission
+#endif
+#ifndef SpecialDemoGameMidlet_getAppProperty
+#define SpecialDemoGameMidlet_getAppProperty MIDlet_getAppProperty
+#endif
+#ifndef SpecialDemoGameMidlet_notifyDestroyed
+#define SpecialDemoGameMidlet_notifyDestroyed MIDlet_notifyDestroyed
+#endif
+#ifndef SpecialDemoGameMidlet_notifyPaused
+#define SpecialDemoGameMidlet_notifyPaused MIDlet_notifyPaused
+#endif
+#ifndef SpecialDemoGameMidlet_platformRequest
+#define SpecialDemoGameMidlet_platformRequest MIDlet_platformRequest
+#endif
+#ifndef SpecialDemoGameMidlet_resumeRequest
+#define SpecialDemoGameMidlet_resumeRequest MIDlet_resumeRequest
+#endif
+// Runs the Java static initialization of the class once. Reads of its static fields call it first.
+void SpecialDemoGameMidlet_staticInit(void);
+// Registers the class, its superclass, and its methods for the interface calls (java_register_method)
+void SpecialDemoGameMidlet_register(void);
+
+
+#endif // ORG_ALLBINARY_GAME_MIDLET_SPECIALDEMOGAMEMIDLET_H

@@ -1,63 +1,60 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation.image
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
-// #include "javax/microedition/lcdui/Image.h"
+#include "org/allbinary/animation/image/TweenedImageAnimation.h"
+#include "javax/microedition/lcdui/Graphics.h"
+#include "javax/microedition/lcdui/Image.h"
 #include "org/allbinary/DisposalUtil.h"
 #include "org/allbinary/animation/AnimationBehavior.h"
-#include "org/allbinary/animation/IndexedAnimation.h"
 #include "org/allbinary/graphics/Anchor.h"
 #include "org/allbinary/logic/math/PrimitiveIntUtil.h"
 #include "org/allbinary/util/CircularIndexUtil.h"
-
-typedef struct TweenedImageAnimation TweenedImageAnimation;
-struct TweenedImageAnimation {
-    IndexedAnimation base;
-    Image* image;
-    int32_t dx;
-    int32_t dy;
-    int32_t totalFrames;
-    CircularIndexUtil* circularIndexUtil;
-    int32_t anchor;
-};
+#if __has_include("org/allbinary/DisposalUtil.h")
+#include "org/allbinary/DisposalUtil.h"
+#endif
+#if __has_include("org/allbinary/DisposalUtil.h")
+#include "org/allbinary/DisposalUtil.h"
+#endif
 
 
-TweenedImageAnimation* TweenedImageAnimation_new(Image* image, int32_t dx, int32_t dy, int32_t totalFrames, AnimationBehavior* animationBehavior);
 
-void TweenedImageAnimation_init(TweenedImageAnimation* this, Image* image, int32_t dx, int32_t dy, int32_t totalFrames, AnimationBehavior* animationBehavior);
-int32_t TweenedImageAnimation_getAnimationSize(TweenedImageAnimation* this);
-void TweenedImageAnimation_nextFrame(TweenedImageAnimation* this);
-void TweenedImageAnimation_previousFrame(TweenedImageAnimation* this);
-void TweenedImageAnimation_setFrame(TweenedImageAnimation* this, int32_t index);
-int32_t TweenedImageAnimation_getFrame(TweenedImageAnimation* this);
-int32_t TweenedImageAnimation_getSize(TweenedImageAnimation* this);
-void TweenedImageAnimation_setSequence(TweenedImageAnimation* this, int32_t* sequence);
-int32_t* TweenedImageAnimation_getSequence(TweenedImageAnimation* this);
-void TweenedImageAnimation_paintXY(TweenedImageAnimation* this, Graphics* graphics, int32_t x, int32_t y);
-void TweenedImageAnimation_close(TweenedImageAnimation* this);
-void TweenedImageAnimation_finalize(TweenedImageAnimation* this);
+
+
+
+
+
+
+
+
+
+
+
+
+void TweenedImageAnimation_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void TweenedImageAnimation_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("TweenedImageAnimation", "IndexedAnimation");
+    java_register_method("TweenedImageAnimation", "getAnimationSize", (void*) TweenedImageAnimation_getAnimationSize);
+    java_register_method("TweenedImageAnimation", "nextFrame", (void*) TweenedImageAnimation_nextFrame);
+    java_register_method("TweenedImageAnimation", "previousFrame", (void*) TweenedImageAnimation_previousFrame);
+    java_register_method("TweenedImageAnimation", "setFrame", (void*) TweenedImageAnimation_setFrame);
+    java_register_method("TweenedImageAnimation", "getFrame", (void*) TweenedImageAnimation_getFrame);
+    java_register_method("TweenedImageAnimation", "getSize", (void*) TweenedImageAnimation_getSize);
+    java_register_method("TweenedImageAnimation", "setSequence", (void*) TweenedImageAnimation_setSequence);
+    java_register_method("TweenedImageAnimation", "getSequence", (void*) TweenedImageAnimation_getSequence);
+    java_register_method("TweenedImageAnimation", "paintXY", (void*) TweenedImageAnimation_paintXY);
+    java_register_method("TweenedImageAnimation", "close", (void*) TweenedImageAnimation_close);
+    java_register_method("TweenedImageAnimation", "finalize", (void*) TweenedImageAnimation_finalize);
+}
 
 static void TweenedImageAnimation_initFields(TweenedImageAnimation* this) {
     
@@ -65,11 +62,12 @@ static void TweenedImageAnimation_initFields(TweenedImageAnimation* this) {
     
     
     
-    this->anchor = Anchor_TOP_LEFT;
+    this->anchor = (Anchor_staticInit(), Anchor_TOP_LEFT);
 }
 
 
 void TweenedImageAnimation_init(TweenedImageAnimation* this, Image* image, int32_t dx, int32_t dy, int32_t totalFrames, AnimationBehavior* animationBehavior) {
+    TweenedImageAnimation_register();
         IndexedAnimation_init(&this->base, animationBehavior);
         TweenedImageAnimation_initFields(this);
         this->image = image;
@@ -80,7 +78,7 @@ void TweenedImageAnimation_init(TweenedImageAnimation* this, Image* image, int32
 }
 
 TweenedImageAnimation* TweenedImageAnimation_new(Image* image, int32_t dx, int32_t dy, int32_t totalFrames, AnimationBehavior* animationBehavior) {
-    TweenedImageAnimation* this = calloc(1, sizeof(TweenedImageAnimation));
+    TweenedImageAnimation* this = java_object_alloc(sizeof(TweenedImageAnimation), "TweenedImageAnimation");
     TweenedImageAnimation_init(this, image, dx, dy, totalFrames, animationBehavior);
     return this;
 }

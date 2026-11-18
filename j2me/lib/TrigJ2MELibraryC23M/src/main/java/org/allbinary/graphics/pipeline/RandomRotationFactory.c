@@ -1,48 +1,34 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.pipeline
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/graphics/pipeline/RandomRotationFactory.h"
 #include "org/allbinary/game/rand/MyRandomFactory.h"
 #include "org/allbinary/math/AngleFactory.h"
 #include "org/allbinary/util/BasicArrayList.h"
+#include "org/allbinary/graphics/pipeline/BasicGraphicsPipeline.h"
 
-typedef struct RandomRotationFactory RandomRotationFactory;
-struct RandomRotationFactory {
-    MyRandomFactory* myRandomFactory;
-    AngleFactory* angleFactory;
-};
 
 static RandomRotationFactory* RandomRotationFactory_instance;
 
-RandomRotationFactory* RandomRotationFactory_new(void);
-RandomRotationFactory* RandomRotationFactory_getInstance(void);
-BasicArrayList* RandomRotationFactory_getInstanceList(RandomRotationFactory* this, BasicArrayList* vector, int32_t howMuch);
-int32_t RandomRotationFactory_getNextRandomAngle(RandomRotationFactory* this, int32_t howMuch);
 
-// Static fields with runtime initializers: call this once at startup
+
+
 void RandomRotationFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     RandomRotationFactory_instance = RandomRotationFactory_new();
+}
+
+void RandomRotationFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("RandomRotationFactory", nullptr);
+    java_register_method("RandomRotationFactory", "getInstanceList", (void*) RandomRotationFactory_getInstanceList);
+    java_register_method("RandomRotationFactory", "getNextRandomAngle", (void*) RandomRotationFactory_getNextRandomAngle);
 }
 
 static void RandomRotationFactory_initFields(RandomRotationFactory* this) {
@@ -51,18 +37,19 @@ static void RandomRotationFactory_initFields(RandomRotationFactory* this) {
 }
 
 void RandomRotationFactory_init(RandomRotationFactory* this) {
+    RandomRotationFactory_register();
     RandomRotationFactory_initFields(this);
 }
 
 RandomRotationFactory* RandomRotationFactory_new(void) {
-    RandomRotationFactory* this = calloc(1, sizeof(RandomRotationFactory));
+    RandomRotationFactory* this = java_object_alloc(sizeof(RandomRotationFactory), "RandomRotationFactory");
     RandomRotationFactory_init(this);
     return this;
 }
 
 
 RandomRotationFactory* RandomRotationFactory_getInstance(void) {
-        return RandomRotationFactory_instance;
+        return (RandomRotationFactory_staticInit(), RandomRotationFactory_instance);
 }
 
 

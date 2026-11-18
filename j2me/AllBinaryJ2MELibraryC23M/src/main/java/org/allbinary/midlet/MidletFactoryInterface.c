@@ -1,44 +1,35 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.midlet
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/midlet/MIDlet.h"
-
-typedef struct MidletFactoryInterface MidletFactoryInterface;
-struct MidletFactoryInterface {
-    char unused;
-};
+#include "org/allbinary/midlet/MidletFactoryInterface.h"
+#include "javax/microedition/midlet/MIDlet.h"
+#include "org/allbinary/midlet/AllBinaryMidlet.h"
 
 
-MidletFactoryInterface* MidletFactoryInterface_new(void);
-MIDlet* MidletFactoryInterface_getInstance(MidletFactoryInterface* this);
+
+
+void MidletFactoryInterface_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void MidletFactoryInterface_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("MidletFactoryInterface", nullptr);
+    java_register_method("MidletFactoryInterface", "getInstance", (void*) MidletFactoryInterface_getInstance);
+}
 
 void MidletFactoryInterface_init(MidletFactoryInterface* this) {
+    MidletFactoryInterface_register();
 }
 
 MidletFactoryInterface* MidletFactoryInterface_new(void) {
-    MidletFactoryInterface* this = calloc(1, sizeof(MidletFactoryInterface));
+    MidletFactoryInterface* this = java_object_alloc(sizeof(MidletFactoryInterface), "MidletFactoryInterface");
     MidletFactoryInterface_init(this);
     return this;
 }

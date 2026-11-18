@@ -1,28 +1,5 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.system.security.crypt
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/logic/system/security/crypt/DatabaseEncoder.h"
 #include "org/allbinary/logic/NullUtil.h"
 #include "org/allbinary/logic/communication/log/PreLogUtil.h"
 #include "org/allbinary/logic/string/StringMaker.h"
@@ -32,25 +9,48 @@
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
+#if __has_include("org/allbinary/string/CommonSeps.h")
+#include "org/allbinary/string/CommonSeps.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/string/CommonSeps.h")
+#include "org/allbinary/string/CommonSeps.h"
+#endif
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
 
-typedef struct DatabaseEncoder DatabaseEncoder;
-struct DatabaseEncoder {
-    char unused;
-};
 
 
-DatabaseEncoder* DatabaseEncoder_new(void);
 
-void DatabaseEncoder_init(DatabaseEncoder* this);
-const char* DatabaseEncoder_encode(int8_t* value);
-int8_t* DatabaseEncoder_decode(const char* value);
+
+
+void DatabaseEncoder_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void DatabaseEncoder_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("DatabaseEncoder", nullptr);
+}
 
 
 void DatabaseEncoder_init(DatabaseEncoder* this) {
+    DatabaseEncoder_register();
 }
 
 DatabaseEncoder* DatabaseEncoder_new(void) {
-    DatabaseEncoder* this = calloc(1, sizeof(DatabaseEncoder));
+    DatabaseEncoder* this = java_object_alloc(sizeof(DatabaseEncoder), "DatabaseEncoder");
     DatabaseEncoder_init(this);
     return this;
 }
@@ -61,12 +61,12 @@ const char* DatabaseEncoder_encode(int8_t* value) {
             int8_t* array = value;
             StringMaker* stringBuffer = StringMaker_new();
             for (int32_t index = 0; index < java_array_length(array); index++) {
-                StringMaker_append(stringBuffer, Byte_toString(array[index]));
+                StringMaker_append(stringBuffer, java_string_of(array[index]));
                 if (index < java_array_length(array) - 1) {
                     StringMaker_append(stringBuffer, CommonSeps_getInstance()->SPACE);
                 }
             }
-            return StringMaker_toString(stringBuffer);
+            return java_string_of(stringBuffer);
         } JAVA_CATCH(Exception, e) {
             CommonStrings* commonStrings = CommonStrings_getInstance();
             PreLogUtil_putOE(commonStrings->EXCEPTION, "DatabaseEncoder", "decode", e);

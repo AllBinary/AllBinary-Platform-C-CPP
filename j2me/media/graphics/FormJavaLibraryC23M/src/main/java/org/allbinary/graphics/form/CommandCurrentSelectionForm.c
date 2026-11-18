@@ -1,30 +1,7 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.form
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Command.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/graphics/form/CommandCurrentSelectionForm.h"
+#include "javax/microedition/lcdui/Command.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/J2MEUtil.h"
 #include "org/allbinary/animation/Animation.h"
 #include "org/allbinary/animation/NullAnimationFactory.h"
@@ -32,38 +9,77 @@
 #include "org/allbinary/animation/vector/RectangleFilledAdjustedAnimation.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
 #include "org/allbinary/graphics/color/BasicColorFactory.h"
-#include "org/allbinary/graphics/font/UpdateMyFontInterface.h"
 #include "org/allbinary/graphics/form/item/CommandTextItem.h"
 #include "org/allbinary/graphics/form/item/ABCustomItem.h"
 #include "org/allbinary/graphics/form/ScrollCurrentSelectionForm.h"
+#include "org/allbinary/graphics/form/ItemPaintableFactory.h"
+#if __has_include("org/allbinary/animation/NullAnimationFactory.h")
+#include "org/allbinary/animation/NullAnimationFactory.h"
+#endif
+#if __has_include("org/allbinary/graphics/form/item/ABCustomItem.h")
+#include "org/allbinary/graphics/form/item/ABCustomItem.h"
+#endif
+#if __has_include("org/allbinary/animation/Animation.h")
+#include "org/allbinary/animation/Animation.h"
+#endif
+#if __has_include("org/allbinary/animation/Animation.h")
+#include "org/allbinary/animation/Animation.h"
+#endif
 
-typedef struct CommandCurrentSelectionForm CommandCurrentSelectionForm;
-struct CommandCurrentSelectionForm {
-    ScrollCurrentSelectionForm base;
-    UpdateMyFontInterface UpdateMyFontInterface_interface;
-    Animation** selectedAnimationArray;
-    Animation** unSelectedAnimationArray;
-};
 
 
-CommandCurrentSelectionForm* CommandCurrentSelectionForm_new(const char* title, ABCustomItem** items, int32_t border, bool moveForSmallScreen, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
 
-void CommandCurrentSelectionForm_init(CommandCurrentSelectionForm* this, const char* title, ABCustomItem** items, int32_t border, bool moveForSmallScreen, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
-void CommandCurrentSelectionForm_updateMeasurement(CommandCurrentSelectionForm* this, Graphics* graphics);
+
 static void CommandCurrentSelectionForm_initAnimations(CommandCurrentSelectionForm* this);
+
 static void CommandCurrentSelectionForm_addAll(CommandCurrentSelectionForm* this, ABCustomItem** items);
+
 static void CommandCurrentSelectionForm_addAt(CommandCurrentSelectionForm* this, int32_t index, ABCustomItem* item);
+
 static void CommandCurrentSelectionForm_updateAll(CommandCurrentSelectionForm* this, Graphics* graphics, ABCustomItem** items);
+
 static void CommandCurrentSelectionForm_updateAt(CommandCurrentSelectionForm* this, int32_t index, ABCustomItem* item);
-Command* CommandCurrentSelectionForm_getSelectedCommand(CommandCurrentSelectionForm* this);
-int32_t CommandCurrentSelectionForm_append(CommandCurrentSelectionForm* this, ABCustomItem* item);
-void CommandCurrentSelectionForm_delete(CommandCurrentSelectionForm* this, int32_t itemNum);
-void CommandCurrentSelectionForm_deleteAll(CommandCurrentSelectionForm* this);
-void CommandCurrentSelectionForm_insert(CommandCurrentSelectionForm* this, int32_t itemNum, ABCustomItem* item);
-void CommandCurrentSelectionForm_set(CommandCurrentSelectionForm* this, int32_t itemNum, ABCustomItem* item);
-void CommandCurrentSelectionForm_paint(CommandCurrentSelectionForm* this, Graphics* graphics);
-int32_t CommandCurrentSelectionForm_paintItem(CommandCurrentSelectionForm* this, Graphics* graphics, int32_t index, ABCustomItem* item, int32_t x, int32_t y);
-int32_t CommandCurrentSelectionForm_paintUnselectedItem(CommandCurrentSelectionForm* this, Graphics* graphics, int32_t index, ABCustomItem* item, int32_t x, int32_t y);
+
+
+
+
+
+
+
+
+
+
+void CommandCurrentSelectionForm_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void CommandCurrentSelectionForm_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("CommandCurrentSelectionForm", "ScrollCurrentSelectionForm");
+    java_register_method("CommandCurrentSelectionForm", "updateMeasurement", (void*) CommandCurrentSelectionForm_updateMeasurement);
+    java_register_method("CommandCurrentSelectionForm", "initAnimations", (void*) CommandCurrentSelectionForm_initAnimations);
+    java_register_method("CommandCurrentSelectionForm", "addAll", (void*) CommandCurrentSelectionForm_addAll);
+    java_register_method("CommandCurrentSelectionForm", "addAt", (void*) CommandCurrentSelectionForm_addAt);
+    java_register_method("CommandCurrentSelectionForm", "updateAll", (void*) CommandCurrentSelectionForm_updateAll);
+    java_register_method("CommandCurrentSelectionForm", "updateAt", (void*) CommandCurrentSelectionForm_updateAt);
+    java_register_method("CommandCurrentSelectionForm", "getSelectedCommand", (void*) CommandCurrentSelectionForm_getSelectedCommand);
+    java_register_method("CommandCurrentSelectionForm", "append", (void*) CommandCurrentSelectionForm_append);
+    java_register_method("CommandCurrentSelectionForm", "delete", (void*) CommandCurrentSelectionForm_delete);
+    java_register_method("CommandCurrentSelectionForm", "deleteAll", (void*) CommandCurrentSelectionForm_deleteAll);
+    java_register_method("CommandCurrentSelectionForm", "insert", (void*) CommandCurrentSelectionForm_insert);
+    java_register_method("CommandCurrentSelectionForm", "set", (void*) CommandCurrentSelectionForm_set);
+    java_register_method("CommandCurrentSelectionForm", "paint", (void*) CommandCurrentSelectionForm_paint);
+    java_register_method("CommandCurrentSelectionForm", "paintItem", (void*) CommandCurrentSelectionForm_paintItem);
+    java_register_method("CommandCurrentSelectionForm", "paintUnselectedItem", (void*) CommandCurrentSelectionForm_paintUnselectedItem);
+}
 
 static void CommandCurrentSelectionForm_initFields(CommandCurrentSelectionForm* this) {
     this->selectedAnimationArray = ((Animation**) java_array_new(sizeof(Animation*), 16));
@@ -72,6 +88,7 @@ static void CommandCurrentSelectionForm_initFields(CommandCurrentSelectionForm* 
 
 
 void CommandCurrentSelectionForm_init(CommandCurrentSelectionForm* this, const char* title, ABCustomItem** items, int32_t border, bool moveForSmallScreen, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) {
+    CommandCurrentSelectionForm_register();
         ScrollCurrentSelectionForm_init(&this->base, title, items, ItemPaintableFactory_getInstance(), border, -3, moveForSmallScreen, backgroundBasicColor, foregroundBasicColor);
         CommandCurrentSelectionForm_initFields(this);
         CommandCurrentSelectionForm_initAnimations(this);
@@ -79,20 +96,20 @@ void CommandCurrentSelectionForm_init(CommandCurrentSelectionForm* this, const c
 }
 
 CommandCurrentSelectionForm* CommandCurrentSelectionForm_new(const char* title, ABCustomItem** items, int32_t border, bool moveForSmallScreen, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) {
-    CommandCurrentSelectionForm* this = calloc(1, sizeof(CommandCurrentSelectionForm));
+    CommandCurrentSelectionForm* this = java_object_alloc(sizeof(CommandCurrentSelectionForm), "CommandCurrentSelectionForm");
     CommandCurrentSelectionForm_init(this, title, items, border, moveForSmallScreen, backgroundBasicColor, foregroundBasicColor);
     return this;
 }
 
 
 void CommandCurrentSelectionForm_updateMeasurement(CommandCurrentSelectionForm* this, Graphics* graphics) {
-        CommandCurrentSelectionForm_updateAll(this, graphics, CommandCurrentSelectionForm_getAllitems(this));
+        CommandCurrentSelectionForm_updateAll(this, graphics, ABCustomForm_getAllitems(this));
         ScrollCurrentSelectionForm_updateMeasurement((&this->base), graphics);
 }
 
 
 static void CommandCurrentSelectionForm_initAnimations(CommandCurrentSelectionForm* this) {
-        Animation* nullAnimation = JAVA_CALL(NullAnimationFactory_getFactoryInstance(), getInstance, 0);
+        Animation* nullAnimation = NullAnimationFactory_getInstance(NullAnimationFactory_getFactoryInstance(), 0);
         for (int32_t index = java_array_length(this->selectedAnimationArray); --index >= 0; ) {
             this->selectedAnimationArray[index] = nullAnimation;
         }
@@ -116,9 +133,9 @@ static void CommandCurrentSelectionForm_addAt(CommandCurrentSelectionForm* this,
         int32_t width = ABCustomItem_getMinimumWidth(item);
         int32_t height = ABCustomItem_getMinimumHeight(item);
         int32_t adjustedBorder = 3;
-        int32_t offset = -(this->halfBorder + adjustedBorder);
-        int32_t rectWidth = width + this->border - adjustedBorder;
-        int32_t rectHeight = height + this->border - adjustedBorder;
+        int32_t offset = -(this->base.base.halfBorder + adjustedBorder);
+        int32_t rectWidth = width + this->base.base.border - adjustedBorder;
+        int32_t rectHeight = height + this->base.base.border - adjustedBorder;
         if (J2MEUtil_isJ2ME() || J2MEUtil_isHTML()) {
             this->selectedAnimationArray[index] = RectangleAdjustedAnimation_new(rectWidth, rectHeight, offset, offset, selectedButtonColor);
         } else {
@@ -135,7 +152,7 @@ static void CommandCurrentSelectionForm_addAt(CommandCurrentSelectionForm* this,
 
 static void CommandCurrentSelectionForm_updateAll(CommandCurrentSelectionForm* this, Graphics* graphics, ABCustomItem** items) {
         for (int32_t index = java_array_length(items); --index >= 0; ) {
-            JAVA_CALL(items[index], preMeasurement, graphics);
+            ABCustomItem_preMeasurement(items[index], graphics);
             CommandCurrentSelectionForm_updateAt(this, index, items[index]);
         }
 }
@@ -148,20 +165,20 @@ static void CommandCurrentSelectionForm_updateAt(CommandCurrentSelectionForm* th
         int32_t width = ABCustomItem_getMinimumWidth(item);
         int32_t height = ABCustomItem_getMinimumHeight(item);
         int32_t adjustedBorder = 3;
-        int32_t offset = -(this->halfBorder + adjustedBorder);
-        int32_t rectWidth = width + this->border - adjustedBorder;
-        int32_t rectHeight = height + this->border - adjustedBorder;
+        int32_t offset = -(this->base.base.halfBorder + adjustedBorder);
+        int32_t rectWidth = width + this->base.base.border - adjustedBorder;
+        int32_t rectHeight = height + this->base.base.border - adjustedBorder;
         if (J2MEUtil_isJ2ME() || J2MEUtil_isHTML()) {
             RectangleAdjustedAnimation* rectangleAdjustedAnimation = ((RectangleAdjustedAnimation*) this->selectedAnimationArray[index]);
-            RectangleFilledAdjustedAnimation_setWidth(rectangleAdjustedAnimation, rectWidth);
-            RectangleFilledAdjustedAnimation_setHeight(rectangleAdjustedAnimation, rectHeight);
+            RectangleFilledAnimation_setWidth(rectangleAdjustedAnimation, rectWidth);
+            RectangleFilledAnimation_setHeight(rectangleAdjustedAnimation, rectHeight);
             RectangleFilledAdjustedAnimation_setOffsetX(rectangleAdjustedAnimation, offset);
             RectangleFilledAdjustedAnimation_setOffsetY(rectangleAdjustedAnimation, offset);
             RectangleFilledAdjustedAnimation_setBasicColorP(rectangleAdjustedAnimation, selectedButtonColor);
         } else {
             RectangleFilledAdjustedAnimation* rectangleAdjustedAnimation = ((RectangleFilledAdjustedAnimation*) this->selectedAnimationArray[index]);
-            RectangleFilledAdjustedAnimation_setWidth(rectangleAdjustedAnimation, rectWidth);
-            RectangleFilledAdjustedAnimation_setHeight(rectangleAdjustedAnimation, rectHeight);
+            RectangleFilledAnimation_setWidth(rectangleAdjustedAnimation, rectWidth);
+            RectangleFilledAnimation_setHeight(rectangleAdjustedAnimation, rectHeight);
             RectangleFilledAdjustedAnimation_setOffsetX(rectangleAdjustedAnimation, offset);
             RectangleFilledAdjustedAnimation_setOffsetY(rectangleAdjustedAnimation, offset);
             RectangleFilledAdjustedAnimation_setBasicColorP(rectangleAdjustedAnimation, selectedButtonColor);
@@ -169,15 +186,15 @@ static void CommandCurrentSelectionForm_updateAt(CommandCurrentSelectionForm* th
         adjustedBorder = 4;
         if (J2MEUtil_isJ2ME() || J2MEUtil_isHTML()) {
             RectangleAdjustedAnimation* rectangleAdjustedAnimation = ((RectangleAdjustedAnimation*) this->unSelectedAnimationArray[index]);
-            RectangleFilledAdjustedAnimation_setWidth(rectangleAdjustedAnimation, rectWidth);
-            RectangleFilledAdjustedAnimation_setHeight(rectangleAdjustedAnimation, rectHeight);
+            RectangleFilledAnimation_setWidth(rectangleAdjustedAnimation, rectWidth);
+            RectangleFilledAnimation_setHeight(rectangleAdjustedAnimation, rectHeight);
             RectangleFilledAdjustedAnimation_setOffsetX(rectangleAdjustedAnimation, offset);
             RectangleFilledAdjustedAnimation_setOffsetY(rectangleAdjustedAnimation, offset);
             RectangleFilledAdjustedAnimation_setBasicColorP(rectangleAdjustedAnimation, buttonColor);
         } else {
             RectangleFilledAdjustedAnimation* rectangleAdjustedAnimation = ((RectangleFilledAdjustedAnimation*) this->unSelectedAnimationArray[index]);
-            RectangleFilledAdjustedAnimation_setWidth(rectangleAdjustedAnimation, rectWidth);
-            RectangleFilledAdjustedAnimation_setHeight(rectangleAdjustedAnimation, rectHeight);
+            RectangleFilledAnimation_setWidth(rectangleAdjustedAnimation, rectWidth);
+            RectangleFilledAnimation_setHeight(rectangleAdjustedAnimation, rectHeight);
             RectangleFilledAdjustedAnimation_setOffsetX(rectangleAdjustedAnimation, offset);
             RectangleFilledAdjustedAnimation_setOffsetY(rectangleAdjustedAnimation, offset);
             RectangleFilledAdjustedAnimation_setBasicColorP(rectangleAdjustedAnimation, buttonColor);
@@ -186,56 +203,56 @@ static void CommandCurrentSelectionForm_updateAt(CommandCurrentSelectionForm* th
 
 
 Command* CommandCurrentSelectionForm_getSelectedCommand(CommandCurrentSelectionForm* this) {
-        int32_t index = ScrollCurrentSelectionForm_getSelectedIndex((&this->base));
-        CommandTextItem* commandTextItem = ((CommandTextItem*) CommandCurrentSelectionForm_get(this, index));
+        int32_t index = ABCustomForm_getSelectedIndex((&this->base));
+        CommandTextItem* commandTextItem = ((CommandTextItem*) ABCustomForm_get(this, index));
         return CommandTextItem_getCommand(commandTextItem);
 }
 
 
 int32_t CommandCurrentSelectionForm_append(CommandCurrentSelectionForm* this, ABCustomItem* item) {
-        int32_t result = ScrollCurrentSelectionForm_append((&this->base), item);
+        int32_t result = ScrollSelectionForm_append((&this->base), item);
         CommandCurrentSelectionForm_addAt(this, result, item);
         return result;
 }
 
 
 void CommandCurrentSelectionForm_delete(CommandCurrentSelectionForm* this, int32_t itemNum) {
-        ScrollCurrentSelectionForm_delete((&this->base), itemNum);
+        ABCustomForm_delete((&this->base), itemNum);
 }
 
 
 void CommandCurrentSelectionForm_deleteAll(CommandCurrentSelectionForm* this) {
         CommandCurrentSelectionForm_initAnimations(this);
-        ScrollCurrentSelectionForm_deleteAll((&this->base));
+        ABCustomForm_deleteAll((&this->base));
 }
 
 
 void CommandCurrentSelectionForm_insert(CommandCurrentSelectionForm* this, int32_t itemNum, ABCustomItem* item) {
-        ScrollCurrentSelectionForm_insert((&this->base), itemNum, item);
+        ABCustomForm_insert((&this->base), itemNum, item);
 }
 
 
 void CommandCurrentSelectionForm_set(CommandCurrentSelectionForm* this, int32_t itemNum, ABCustomItem* item) {
-        ScrollCurrentSelectionForm_set((&this->base), itemNum, item);
+        ABCustomForm_set((&this->base), itemNum, item);
 }
 
 
 void CommandCurrentSelectionForm_paint(CommandCurrentSelectionForm* this, Graphics* graphics) {
-        JAVA_CALL(this->myFontProcessor, process, graphics);
+        MyFontProcessor_process(this->base.myFontProcessor, graphics);
         ScrollCurrentSelectionForm_paint((&this->base), graphics);
 }
 
 
 // throws Exception
 int32_t CommandCurrentSelectionForm_paintItem(CommandCurrentSelectionForm* this, Graphics* graphics, int32_t index, ABCustomItem* item, int32_t x, int32_t y) {
-        JAVA_CALL(this->selectedAnimationArray[index], paintXY, graphics, x, y);
-        return ScrollCurrentSelectionForm_paintItem((&this->base), graphics, index, item, x, y);
+        Animation_paintXY(this->selectedAnimationArray[index], graphics, x, y);
+        return ScrollSelectionForm_paintItem((&this->base), graphics, index, item, x, y);
 }
 
 
 // throws Exception
 int32_t CommandCurrentSelectionForm_paintUnselectedItem(CommandCurrentSelectionForm* this, Graphics* graphics, int32_t index, ABCustomItem* item, int32_t x, int32_t y) {
-        JAVA_CALL(this->unSelectedAnimationArray[index], paintXY, graphics, x, y);
-        return ScrollCurrentSelectionForm_paintUnselectedItem((&this->base), graphics, index, item, x, y);
+        Animation_paintXY(this->unSelectedAnimationArray[index], graphics, x, y);
+        return ScrollSelectionForm_paintUnselectedItem((&this->base), graphics, index, item, x, y);
 }
 

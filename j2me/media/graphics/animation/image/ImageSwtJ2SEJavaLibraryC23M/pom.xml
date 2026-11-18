@@ -94,7 +94,7 @@
 
         <dependency>
             <groupId>org.microemu</groupId>
-            <artifactId>microemu-midpC23</artifactId>
+            <artifactId>microemu-midp-for-polyglotC23</artifactId>
             <version>3.0.0-SNAPSHOT</version>
             <optional>true</optional>
         </dependency>
@@ -102,14 +102,14 @@
         Public microemu
         <dependency>
             <groupId>org.microemu</groupId>
-            <artifactId>microemu-midpC23</artifactId>
+            <artifactId>microemu-midp-for-polyglotC23</artifactId>
             <version>2.0.4</version>
             <optional>true</optional>
         </dependency>
         Custom microemu
         <dependency>
             <groupId>org.microemu</groupId>
-            <artifactId>microemu-midpC23</artifactId>
+            <artifactId>microemu-midp-for-polyglotC23</artifactId>
             <version>3.0.0-SNAPSHOT</version>
             <optional>true</optional>
         </dependency>
@@ -154,11 +154,21 @@
         </dependency>
 -->
 
+        <!-- The SWT jar has no C23 sources so the NoSWT org.eclipse.swt.widgets.Display stub is used like Lua and Go (PlannedLanguageSwtPomFixer) -->
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>NoSWTJavaLibraryC23</artifactId>
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+        </dependency>
+<!-- PlannedLanguageSwtPomFixer: the SWT jar has no planned language version
         <dependency>
             <groupId>org.eclipse.swt</groupId>
             <artifactId>org.eclipse.swt.win32.win32.x86_64C23</artifactId>
             <version>4.4.2.0</version>
         </dependency>
+        -->
 
 <!--    
         <dependency>

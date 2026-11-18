@@ -1,56 +1,53 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2011 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.input.event
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/input/event/DownGameKeyEventHandlerBase.h"
 #include "org/allbinary/game/input/PlayerGameInput.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/logic/util/event/AllBinaryEventObject.h"
 #include "org/allbinary/logic/util/event/EventListenerInterface.h"
 #include "org/allbinary/logic/util/event/EventStrings.h"
-#include "org/allbinary/logic/util/event/handler/BasicEventHandler.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
+#include "org/allbinary/game/input/event/GameKeyEvent.h"
+#include "org/allbinary/game/input/event/DownGameKeyEventListenerInterface.h"
+#if __has_include("org/allbinary/logic/util/event/EventStrings.h")
+#include "org/allbinary/logic/util/event/EventStrings.h"
+#endif
 
-typedef struct DownGameKeyEventHandlerBase DownGameKeyEventHandlerBase;
-struct DownGameKeyEventHandlerBase {
-    BasicEventHandler base;
-    BasicArrayList* list;
-};
 
 static const char* DownGameKeyEventHandlerBase_TOTAL_LISTENERS = " Total PlayerGameInput Listeners: ";
 static const char* DownGameKeyEventHandlerBase_LISTENER_LABEL = " PlayerGameInput Listener: ";
 
-DownGameKeyEventHandlerBase* DownGameKeyEventHandlerBase_new(void);
 
-void DownGameKeyEventHandlerBase_init(DownGameKeyEventHandlerBase* this);
-void DownGameKeyEventHandlerBase_addListener(DownGameKeyEventHandlerBase* this, PlayerGameInput* playerGameInput);
-void DownGameKeyEventHandlerBase_removeAllListeners(DownGameKeyEventHandlerBase* this);
-void DownGameKeyEventHandlerBase_removeListenerSingleThreaded(DownGameKeyEventHandlerBase* this, EventListenerInterface* eventListenerInterface);
-void DownGameKeyEventHandlerBase_removeListener(DownGameKeyEventHandlerBase* this, EventListenerInterface* eventListenerInterface);
-void DownGameKeyEventHandlerBase_fireEvent(DownGameKeyEventHandlerBase* this, AllBinaryEventObject* eventObject);
-void DownGameKeyEventHandlerBase_process(DownGameKeyEventHandlerBase* this, AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
-const char* DownGameKeyEventHandlerBase_toString(DownGameKeyEventHandlerBase* this);
+
+
+
+
+
+
+
+void DownGameKeyEventHandlerBase_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void DownGameKeyEventHandlerBase_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("DownGameKeyEventHandlerBase", "BasicEventHandler");
+    java_register_method("DownGameKeyEventHandlerBase", "addListener", (void*) DownGameKeyEventHandlerBase_addListener);
+    java_register_method("DownGameKeyEventHandlerBase", "removeAllListeners", (void*) DownGameKeyEventHandlerBase_removeAllListeners);
+    java_register_method("DownGameKeyEventHandlerBase", "removeListenerSingleThreaded", (void*) DownGameKeyEventHandlerBase_removeListenerSingleThreaded);
+    java_register_method("DownGameKeyEventHandlerBase", "removeListener", (void*) DownGameKeyEventHandlerBase_removeListener);
+    java_register_method("DownGameKeyEventHandlerBase", "fireEvent", (void*) DownGameKeyEventHandlerBase_fireEvent);
+    java_register_method("DownGameKeyEventHandlerBase", "process", (void*) DownGameKeyEventHandlerBase_process);
+    java_register_method("DownGameKeyEventHandlerBase", "toString", (void*) DownGameKeyEventHandlerBase_toString);
+}
 
 static void DownGameKeyEventHandlerBase_initFields(DownGameKeyEventHandlerBase* this) {
     this->list = BasicArrayListD_new();
@@ -58,12 +55,13 @@ static void DownGameKeyEventHandlerBase_initFields(DownGameKeyEventHandlerBase* 
 
 
 void DownGameKeyEventHandlerBase_init(DownGameKeyEventHandlerBase* this) {
+    DownGameKeyEventHandlerBase_register();
     BasicEventHandler_init(&this->base);
     DownGameKeyEventHandlerBase_initFields(this);
 }
 
 DownGameKeyEventHandlerBase* DownGameKeyEventHandlerBase_new(void) {
-    DownGameKeyEventHandlerBase* this = calloc(1, sizeof(DownGameKeyEventHandlerBase));
+    DownGameKeyEventHandlerBase* this = java_object_alloc(sizeof(DownGameKeyEventHandlerBase), "DownGameKeyEventHandlerBase");
     DownGameKeyEventHandlerBase_init(this);
     return this;
 }
@@ -102,7 +100,7 @@ void DownGameKeyEventHandlerBase_fireEvent(DownGameKeyEventHandlerBase* this, Al
                 PlayerGameInput* playerGameInput = ((PlayerGameInput*) this->list->objectArray[index]);
                 PlayerGameInput_onDownGameKeyEvent(playerGameInput, ((GameKeyEvent*) eventObject));
             } JAVA_CATCH(Exception, e) {
-                JAVA_CALL(this->logUtil, put, this->commonStrings->EXCEPTION, this, EventStrings_getInstance()->FIRE_EVENT, e);
+                LogUtil_put(this->base.logUtil, this->base.commonStrings->EXCEPTION, this, EventStrings_getInstance()->FIRE_EVENT, e);
             } JAVA_END_TRY;
         }
         BasicEventHandler_fireEvent((&this->base), eventObject);
@@ -128,12 +126,12 @@ const char* DownGameKeyEventHandlerBase_toString(DownGameKeyEventHandlerBase* th
             JAVA_TRY {
                 eventListenerInterface = ((EventListenerInterface*) BasicArrayList_get(this->list, index));
                 StringMaker_append(stringBuffer, DownGameKeyEventHandlerBase_LISTENER_LABEL);
-                StringMaker_append(stringBuffer, EventListenerInterface_toString(eventListenerInterface));
+                StringMaker_append(stringBuffer, java_string_of(eventListenerInterface));
             } JAVA_CATCH(Exception, e) {
-                JAVA_CALL(this->logUtil, put, this->commonStrings->EXCEPTION, this, this->commonStrings->TOSTRING, e);
+                LogUtil_put(this->base.logUtil, this->base.commonStrings->EXCEPTION, this, this->base.commonStrings->TOSTRING, e);
             } JAVA_END_TRY;
             index++;
         }
-        return StringMaker_toString(stringBuffer);
+        return java_string_of(stringBuffer);
 }
 

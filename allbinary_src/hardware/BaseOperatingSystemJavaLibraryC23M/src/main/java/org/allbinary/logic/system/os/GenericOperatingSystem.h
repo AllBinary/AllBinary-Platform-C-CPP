@@ -71,10 +71,15 @@ bool GenericOperatingSystem_isScalable(GenericOperatingSystem* this);
 bool GenericOperatingSystem_isAutoHide(GenericOperatingSystem* this);
 
 const char* GenericOperatingSystem_toString(GenericOperatingSystem* this);
+#define GenericOperatingSystem_new0 GenericOperatingSystem_new
+#define GenericOperatingSystem_init0 GenericOperatingSystem_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void GenericOperatingSystem_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)
 void GenericOperatingSystem_register(void);
 
+#if __has_include("org/allbinary/logic/java/character/CharacterSet.h")
+#include "org/allbinary/logic/java/character/CharacterSet.h"
+#endif
 
 #endif // ORG_ALLBINARY_LOGIC_SYSTEM_OS_GENERICOPERATINGSYSTEM_H

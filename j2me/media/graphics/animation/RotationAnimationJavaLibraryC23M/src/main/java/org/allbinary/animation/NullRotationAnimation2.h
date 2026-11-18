@@ -1,0 +1,202 @@
+#ifndef ORG_ALLBINARY_ANIMATION_NULLROTATIONANIMATION2_H
+#define ORG_ALLBINARY_ANIMATION_NULLROTATIONANIMATION2_H
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ *
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ *
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ *
+ * Created By: Travis Berthelot
+ * 
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+typedef struct NullRotationAnimation NullRotationAnimation;
+typedef struct IndexedAnimationBehavior IndexedAnimationBehavior;
+typedef struct Graphics Graphics;
+typedef struct AngleFactory AngleFactory;
+typedef struct AngleInfo AngleInfo;
+typedef struct CircularIndexUtil CircularIndexUtil;
+#include "org/allbinary/animation/NullRotationAnimation.h"
+
+typedef struct NullRotationAnimation2 NullRotationAnimation2;
+struct NullRotationAnimation2 {
+    NullRotationAnimation base;
+};
+
+
+NullRotationAnimation2* NullRotationAnimation2_new(void);
+
+void NullRotationAnimation2_init(NullRotationAnimation2* this);
+
+void NullRotationAnimation2_paintXY(NullRotationAnimation2* this, Graphics* graphics, int32_t x, int32_t y);
+#define NullRotationAnimation2_new0 NullRotationAnimation2_new
+#define NullRotationAnimation2_init0 NullRotationAnimation2_init
+#ifndef NullRotationAnimation2_createTotalAngle
+#define NullRotationAnimation2_createTotalAngle NullRotationAnimation_createTotalAngle
+#endif
+#ifndef NullRotationAnimation2_createQuarter
+#define NullRotationAnimation2_createQuarter NullRotationAnimation_createQuarter
+#endif
+#ifndef NullRotationAnimation2_getAnimationSize
+#define NullRotationAnimation2_getAnimationSize NullRotationAnimation_getAnimationSize
+#endif
+#ifndef NullRotationAnimation2_nextRotationX
+#define NullRotationAnimation2_nextRotationX RotationAnimation_nextRotationX
+#endif
+#ifndef NullRotationAnimation2_previousRotationX
+#define NullRotationAnimation2_previousRotationX RotationAnimation_previousRotationX
+#endif
+#ifndef NullRotationAnimation2_nextRotation
+#define NullRotationAnimation2_nextRotation RotationAnimation_nextRotation
+#endif
+#ifndef NullRotationAnimation2_previousRotation
+#define NullRotationAnimation2_previousRotation RotationAnimation_previousRotation
+#endif
+#ifndef NullRotationAnimation2_nextRotationZ
+#define NullRotationAnimation2_nextRotationZ RotationAnimation_nextRotationZ
+#endif
+#ifndef NullRotationAnimation2_previousRotationZ
+#define NullRotationAnimation2_previousRotationZ RotationAnimation_previousRotationZ
+#endif
+#ifndef NullRotationAnimation2_setFrame
+#define NullRotationAnimation2_setFrame RotationAnimation_setFrame
+#endif
+#ifndef NullRotationAnimation2_setFrameByDirection
+#define NullRotationAnimation2_setFrameByDirection RotationAnimation_setFrameByDirection
+#endif
+#ifndef NullRotationAnimation2_setFrameToAngle
+#define NullRotationAnimation2_setFrameToAngle RotationAnimation_setFrameToAngle
+#endif
+#ifndef NullRotationAnimation2_adjustFrameToAngle
+#define NullRotationAnimation2_adjustFrameToAngle RotationAnimation_adjustFrameToAngle
+#endif
+#ifndef NullRotationAnimation2_adjustFrame
+#define NullRotationAnimation2_adjustFrame RotationAnimation_adjustFrame
+#endif
+#ifndef NullRotationAnimation2_getFrame
+#define NullRotationAnimation2_getFrame RotationAnimation_getFrame
+#endif
+#ifndef NullRotationAnimation2_getSize
+#define NullRotationAnimation2_getSize RotationAnimation_getSize
+#endif
+#ifndef NullRotationAnimation2_getAngleInfoP
+#define NullRotationAnimation2_getAngleInfoP RotationAnimation_getAngleInfoP
+#endif
+#ifndef NullRotationAnimation2_toString
+#define NullRotationAnimation2_toString RotationAnimation_toString
+#endif
+#ifndef NullRotationAnimation2_getAnimationBehavior
+#define NullRotationAnimation2_getAnimationBehavior IndexedAnimation_getAnimationBehavior
+#endif
+#ifndef NullRotationAnimation2_reset
+#define NullRotationAnimation2_reset IndexedAnimation_reset
+#endif
+#ifndef NullRotationAnimation2_setFrame
+#define NullRotationAnimation2_setFrame IndexedAnimation_setFrame
+#endif
+#ifndef NullRotationAnimation2_getFrame
+#define NullRotationAnimation2_getFrame IndexedAnimation_getFrame
+#endif
+#ifndef NullRotationAnimation2_getAnimationSize
+#define NullRotationAnimation2_getAnimationSize IndexedAnimation_getAnimationSize
+#endif
+#ifndef NullRotationAnimation2_getSize
+#define NullRotationAnimation2_getSize IndexedAnimation_getSize
+#endif
+#ifndef NullRotationAnimation2_previousFrame
+#define NullRotationAnimation2_previousFrame IndexedAnimation_previousFrame
+#endif
+#ifndef NullRotationAnimation2_isLastFrame
+#define NullRotationAnimation2_isLastFrame IndexedAnimation_isLastFrame
+#endif
+#ifndef NullRotationAnimation2_setSequence
+#define NullRotationAnimation2_setSequence IndexedAnimation_setSequence
+#endif
+#ifndef NullRotationAnimation2_getSequence
+#define NullRotationAnimation2_getSequence IndexedAnimation_getSequence
+#endif
+#ifndef NullRotationAnimation2_setState
+#define NullRotationAnimation2_setState IndexedAnimation_setState
+#endif
+#ifndef NullRotationAnimation2_getWidth
+#define NullRotationAnimation2_getWidth IndexedAnimation_getWidth
+#endif
+#ifndef NullRotationAnimation2_getHeight
+#define NullRotationAnimation2_getHeight IndexedAnimation_getHeight
+#endif
+#ifndef NullRotationAnimation2_setAlpha
+#define NullRotationAnimation2_setAlpha Animation_setAlpha
+#endif
+#ifndef NullRotationAnimation2_nextFrame
+#define NullRotationAnimation2_nextFrame Animation_nextFrame
+#endif
+#ifndef NullRotationAnimation2_paintThreedXYZ
+#define NullRotationAnimation2_paintThreedXYZ Animation_paintThreedXYZ
+#endif
+#ifndef NullRotationAnimation2_isThreed
+#define NullRotationAnimation2_isThreed Animation_isThreed
+#endif
+#ifndef NullRotationAnimation2_getBasicColorP
+#define NullRotationAnimation2_getBasicColorP Animation_getBasicColorP
+#endif
+#ifndef NullRotationAnimation2_setBasicColorP
+#define NullRotationAnimation2_setBasicColorP Animation_setBasicColorP
+#endif
+#ifndef NullRotationAnimation2_setBackgroundBasicColorP
+#define NullRotationAnimation2_setBackgroundBasicColorP Animation_setBackgroundBasicColorP
+#endif
+#ifndef NullRotationAnimation2_getChangeBasicColor
+#define NullRotationAnimation2_getChangeBasicColor Animation_getChangeBasicColor
+#endif
+#ifndef NullRotationAnimation2_changeBasicColor
+#define NullRotationAnimation2_changeBasicColor Animation_changeBasicColor
+#endif
+#ifndef NullRotationAnimation2_getChangeColor
+#define NullRotationAnimation2_getChangeColor Animation_getChangeColor
+#endif
+#ifndef NullRotationAnimation2_getColor
+#define NullRotationAnimation2_getColor Animation_getColor
+#endif
+#ifndef NullRotationAnimation2_setScale
+#define NullRotationAnimation2_setScale Animation_setScale
+#endif
+#ifndef NullRotationAnimation2_setMaxScale
+#define NullRotationAnimation2_setMaxScale Animation_setMaxScale
+#endif
+#ifndef NullRotationAnimation2_set
+#define NullRotationAnimation2_set Animation_set
+#endif
+#ifndef NullRotationAnimation2_setDx
+#define NullRotationAnimation2_setDx Animation_setDx
+#endif
+#ifndef NullRotationAnimation2_getDx
+#define NullRotationAnimation2_getDx Animation_getDx
+#endif
+#ifndef NullRotationAnimation2_setDy
+#define NullRotationAnimation2_setDy Animation_setDy
+#endif
+#ifndef NullRotationAnimation2_getDy
+#define NullRotationAnimation2_getDy Animation_getDy
+#endif
+// Runs the Java static initialization of the class once. Reads of its static fields call it first.
+void NullRotationAnimation2_staticInit(void);
+// Registers the class, its superclass, and its methods for the interface calls (java_register_method)
+void NullRotationAnimation2_register(void);
+
+
+#endif // ORG_ALLBINARY_ANIMATION_NULLROTATIONANIMATION2_H

@@ -67,6 +67,8 @@ int64_t NoDecimalTrigTable_tan(NoDecimalTrigTable* this, int32_t angle);
 int16_t NoDecimalTrigTable_antiTan(NoDecimalTrigTable* this, int32_t dx, int32_t dy);
 
 int16_t NoDecimalTrigTable_antiTanDebug(NoDecimalTrigTable* this, int32_t screenX, int32_t screenY, int32_t targetX, int32_t targetY);
+#define NoDecimalTrigTable_new0 NoDecimalTrigTable_new
+#define NoDecimalTrigTable_init0 NoDecimalTrigTable_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void NoDecimalTrigTable_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

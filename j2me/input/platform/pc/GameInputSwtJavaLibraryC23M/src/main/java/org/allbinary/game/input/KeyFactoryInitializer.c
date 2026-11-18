@@ -1,60 +1,51 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.input
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-#include "org/allbinary/init/Init.h"
+#include "org/allbinary/game/input/KeyFactoryInitializer.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/logic/math/SmallIntegerSingletonFactory.h"
-
-typedef struct KeyFactoryInitializer KeyFactoryInitializer;
-struct KeyFactoryInitializer {
-    Init base;
-    LogUtil* logUtil;
-};
+#if __has_include("org/allbinary/logic/math/SmallIntegerSingletonFactory.h")
+#include "org/allbinary/logic/math/SmallIntegerSingletonFactory.h"
+#endif
 
 
-KeyFactoryInitializer* KeyFactoryInitializer_new(void);
-void KeyFactoryInitializer_init(KeyFactoryInitializer* this);
+
+
+void KeyFactoryInitializer_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void KeyFactoryInitializer_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("KeyFactoryInitializer", "Init");
+    java_register_method("KeyFactoryInitializer", "init", (void*) KeyFactoryInitializer_initMethod);
+}
 
 static void KeyFactoryInitializer_initFields(KeyFactoryInitializer* this) {
     this->logUtil = LogUtil_getInstance();
 }
 
 void KeyFactoryInitializer_init(KeyFactoryInitializer* this) {
+    KeyFactoryInitializer_register();
     Init_init(&this->base);
     KeyFactoryInitializer_initFields(this);
 }
 
 KeyFactoryInitializer* KeyFactoryInitializer_new(void) {
-    KeyFactoryInitializer* this = calloc(1, sizeof(KeyFactoryInitializer));
+    KeyFactoryInitializer* this = java_object_alloc(sizeof(KeyFactoryInitializer), "KeyFactoryInitializer");
     KeyFactoryInitializer_init(this);
     return this;
 }
 
 
-void KeyFactoryInitializer_init(KeyFactoryInitializer* this) {
-        LogUtil_putF(this->logUtil, this->commonStrings->START, this, this->commonStrings->INIT);
+void KeyFactoryInitializer_initMethod(KeyFactoryInitializer* this) {
+        LogUtil_putF(this->logUtil, this->base.commonStrings->START, this, this->base.commonStrings->INIT);
         SmallIntegerSingletonFactory_initWithRange(SmallIntegerSingletonFactory_getInstance(), 0x2D0, 6);
 }
 

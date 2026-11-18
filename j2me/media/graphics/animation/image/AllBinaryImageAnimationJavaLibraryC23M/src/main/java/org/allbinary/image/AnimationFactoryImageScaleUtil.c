@@ -1,53 +1,35 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2022 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.image
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Image.h"
+#include "org/allbinary/image/AnimationFactoryImageScaleUtil.h"
+#include "javax/microedition/lcdui/Image.h"
 #include "org/allbinary/animation/image/AnimationFactoryInitializationVisitor.h"
 #include "org/allbinary/animation/image/BaseImageAnimationFactory.h"
-#include "org/allbinary/logic/communication/log/LogUtil.h"
-#include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/media/ScaleProperties.h"
 #include "org/allbinary/media/image/ImageJ2MEScaleUtil.h"
-#include "org/allbinary/string/CommonLabels.h"
-#include "org/allbinary/string/CommonStrings.h"
 
-typedef struct AnimationFactoryImageScaleUtil AnimationFactoryImageScaleUtil;
-struct AnimationFactoryImageScaleUtil {
-    ImageJ2MEScaleUtil* imageScaleUtil;
-};
 
 static AnimationFactoryImageScaleUtil* AnimationFactoryImageScaleUtil_instance;
 
-AnimationFactoryImageScaleUtil* AnimationFactoryImageScaleUtil_new(void);
-AnimationFactoryImageScaleUtil* AnimationFactoryImageScaleUtil_getInstance(void);
-Image* AnimationFactoryImageScaleUtil_createImage(AnimationFactoryImageScaleUtil* this, Image* image, int32_t width, int32_t height, int32_t scaleWidth, int32_t scaleHeight);
-void AnimationFactoryImageScaleUtil_processAdjust(AnimationFactoryImageScaleUtil* this, BaseImageAnimationFactory* baseImageAnimationFactory);
 
-// Static fields with runtime initializers: call this once at startup
+
+
 void AnimationFactoryImageScaleUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     AnimationFactoryImageScaleUtil_instance = AnimationFactoryImageScaleUtil_new();
+}
+
+void AnimationFactoryImageScaleUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("AnimationFactoryImageScaleUtil", nullptr);
+    java_register_method("AnimationFactoryImageScaleUtil", "createImage", (void*) AnimationFactoryImageScaleUtil_createImage);
+    java_register_method("AnimationFactoryImageScaleUtil", "processAdjust", (void*) AnimationFactoryImageScaleUtil_processAdjust);
 }
 
 static void AnimationFactoryImageScaleUtil_initFields(AnimationFactoryImageScaleUtil* this) {
@@ -55,18 +37,19 @@ static void AnimationFactoryImageScaleUtil_initFields(AnimationFactoryImageScale
 }
 
 void AnimationFactoryImageScaleUtil_init(AnimationFactoryImageScaleUtil* this) {
+    AnimationFactoryImageScaleUtil_register();
     AnimationFactoryImageScaleUtil_initFields(this);
 }
 
 AnimationFactoryImageScaleUtil* AnimationFactoryImageScaleUtil_new(void) {
-    AnimationFactoryImageScaleUtil* this = calloc(1, sizeof(AnimationFactoryImageScaleUtil));
+    AnimationFactoryImageScaleUtil* this = java_object_alloc(sizeof(AnimationFactoryImageScaleUtil), "AnimationFactoryImageScaleUtil");
     AnimationFactoryImageScaleUtil_init(this);
     return this;
 }
 
 
 AnimationFactoryImageScaleUtil* AnimationFactoryImageScaleUtil_getInstance(void) {
-        return AnimationFactoryImageScaleUtil_instance;
+        return (AnimationFactoryImageScaleUtil_staticInit(), AnimationFactoryImageScaleUtil_instance);
 }
 
 
@@ -99,8 +82,8 @@ void AnimationFactoryImageScaleUtil_processAdjust(AnimationFactoryImageScaleUtil
             float scaleY = (((float) scaleProperties->scaleHeight)) / (((float) animationFactoryInitializationVisitor->height));
             if ((scaleX == 1.0f && scaleY == 1.0f) || (scaleX == 0.0f || scaleY == 0.0f)) {
             } else {
-                animationFactoryInitializationVisitor->dx = ((int32_t) (animationFactoryInitializationVisitor->originalDx * scaleX));
-                animationFactoryInitializationVisitor->dy = ((int32_t) (animationFactoryInitializationVisitor->originalDy * scaleY));
+                animationFactoryInitializationVisitor->dx = ((int32_t) (((float) animationFactoryInitializationVisitor->originalDx) * scaleX));
+                animationFactoryInitializationVisitor->dy = ((int32_t) (((float) animationFactoryInitializationVisitor->originalDy) * scaleY));
             }
         } else {
         }

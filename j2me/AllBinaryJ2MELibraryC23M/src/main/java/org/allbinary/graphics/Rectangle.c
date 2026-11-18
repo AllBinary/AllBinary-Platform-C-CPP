@@ -1,52 +1,59 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/graphics/Rectangle.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/string/CommonLabels.h"
 #include "org/allbinary/string/CommonSeps.h"
+#include "org/allbinary/graphics/GPoint.h"
+#if __has_include("org/allbinary/string/CommonSeps.h")
+#include "org/allbinary/string/CommonSeps.h"
+#endif
+#if __has_include("org/allbinary/string/CommonLabels.h")
+#include "org/allbinary/string/CommonLabels.h"
+#endif
+#if __has_include("org/allbinary/string/CommonSeps.h")
+#include "org/allbinary/string/CommonSeps.h"
+#endif
+#if __has_include("org/allbinary/string/CommonLabels.h")
+#include "org/allbinary/string/CommonLabels.h"
+#endif
 
-typedef struct Rectangle Rectangle;
-struct Rectangle {
-    GPoint* point;
-    int32_t width;
-    int32_t height;
-};
 
 
-Rectangle* Rectangle_new(GPoint* point, int32_t width, int32_t height);
 
-void Rectangle_init(Rectangle* this, GPoint* point, int32_t width, int32_t height);
-GPoint* Rectangle_getPoint(Rectangle* this);
-void Rectangle_setPoint(Rectangle* this, GPoint* point);
-int32_t Rectangle_getMaxX(Rectangle* this);
-int32_t Rectangle_getMaxY(Rectangle* this);
-int32_t Rectangle_getWidth(Rectangle* this);
-void Rectangle_setWidth(Rectangle* this, int32_t width);
-int32_t Rectangle_getHeight(Rectangle* this);
-void Rectangle_setHeight(Rectangle* this, int32_t height);
-const char* Rectangle_toString(Rectangle* this);
+
+
+
+
+
+
+
+
+
+void Rectangle_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void Rectangle_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("Rectangle", nullptr);
+    java_register_method("Rectangle", "getPoint", (void*) Rectangle_getPoint);
+    java_register_method("Rectangle", "setPoint", (void*) Rectangle_setPoint);
+    java_register_method("Rectangle", "getMaxX", (void*) Rectangle_getMaxX);
+    java_register_method("Rectangle", "getMaxY", (void*) Rectangle_getMaxY);
+    java_register_method("Rectangle", "getWidth", (void*) Rectangle_getWidth);
+    java_register_method("Rectangle", "setWidth", (void*) Rectangle_setWidth);
+    java_register_method("Rectangle", "getHeight", (void*) Rectangle_getHeight);
+    java_register_method("Rectangle", "setHeight", (void*) Rectangle_setHeight);
+    java_register_method("Rectangle", "toString", (void*) Rectangle_toString);
+}
 
 static void Rectangle_initFields(Rectangle* this) {
     
@@ -56,6 +63,7 @@ static void Rectangle_initFields(Rectangle* this) {
 
 
 void Rectangle_init(Rectangle* this, GPoint* point, int32_t width, int32_t height) {
+    Rectangle_register();
     Rectangle_initFields(this);
         this->point = point;
         this->width = width;
@@ -63,7 +71,7 @@ void Rectangle_init(Rectangle* this, GPoint* point, int32_t width, int32_t heigh
 }
 
 Rectangle* Rectangle_new(GPoint* point, int32_t width, int32_t height) {
-    Rectangle* this = calloc(1, sizeof(Rectangle));
+    Rectangle* this = java_object_alloc(sizeof(Rectangle), "Rectangle");
     Rectangle_init(this, point, width, height);
     return this;
 }
@@ -111,7 +119,7 @@ void Rectangle_setHeight(Rectangle* this, int32_t height) {
 
 const char* Rectangle_toString(Rectangle* this) {
         StringMaker* stringBuffer = StringMaker_new();
-        StringMaker_append(stringBuffer, JAVA_CALL(Rectangle_getPoint(this), toString));
+        StringMaker_append(stringBuffer, java_string_of(Rectangle_getPoint(this)));
         StringMaker_append(stringBuffer, CommonSeps_getInstance()->SPACE);
         StringMaker_append(stringBuffer, CommonLabels_getInstance()->WIDTH_LABEL);
         StringMaker_appendint(stringBuffer, Rectangle_getWidth(this));
@@ -122,6 +130,6 @@ const char* Rectangle_toString(Rectangle* this) {
         StringMaker_appendint(stringBuffer, Rectangle_getMaxX(this));
         StringMaker_append(stringBuffer, " MaxY: ");
         StringMaker_appendint(stringBuffer, Rectangle_getMaxY(this));
-        return StringMaker_toString(stringBuffer);
+        return java_string_of(stringBuffer);
 }
 

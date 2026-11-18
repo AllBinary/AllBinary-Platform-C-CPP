@@ -1,57 +1,46 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.init
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/init/Init.h"
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/init/InitInterface.h"
 
-typedef struct Init Init;
-struct Init {
-    InitInterface InitInterface_interface;
-    CommonStrings* commonStrings;
-};
 
 
-Init* Init_new(void);
-void Init_init(Init* this);
+
+void Init_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void Init_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("Init", nullptr);
+    java_register_method("Init", "init", (void*) Init_initMethod);
+}
 
 static void Init_initFields(Init* this) {
     this->commonStrings = CommonStrings_getInstance();
 }
 
 void Init_init(Init* this) {
+    Init_register();
     Init_initFields(this);
 }
 
 Init* Init_new(void) {
-    Init* this = calloc(1, sizeof(Init));
+    Init* this = java_object_alloc(sizeof(Init), "Init");
     Init_init(this);
     return this;
 }
 
 
 // throws Exception
-void Init_init(Init* this) {
+void Init_initMethod(Init* this) {
 }
 

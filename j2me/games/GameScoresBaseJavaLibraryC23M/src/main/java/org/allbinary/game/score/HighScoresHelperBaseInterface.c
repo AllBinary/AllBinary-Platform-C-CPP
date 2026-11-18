@@ -1,35 +1,15 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2022 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.score
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/score/HighScoresHelperBaseInterface.h"
 #include "org/allbinary/game/score/HighScoresResultsListener.h"
+#include "org/allbinary/game/score/HighScores.h"
 
-typedef struct HighScoresHelperBaseInterface HighScoresHelperBaseInterface;
-struct HighScoresHelperBaseInterface {
-    void (*setSelectedHighScores)(void* this, HighScores* selectedHighScores);
-    HighScores** (*getHighScoresArray)(void* this);
-    HighScores* (*getSelectedHighScores)(void* this);
-};
 
+
+void HighScoresHelperBaseInterface_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
 

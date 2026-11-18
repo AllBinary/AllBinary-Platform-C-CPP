@@ -1,49 +1,44 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct Line Line;
-struct Line {
-    GPoint* p1;
-    GPoint* p2;
-    double deltaX;
-    double deltaY;
-};
+#include "org/allbinary/graphics/Line.h"
+#include "org/allbinary/graphics/GPoint.h"
+#include "org/allbinary/graphics/PointFactory.h"
 
 
-Line* Line_new(GPoint* p1, GPoint* p2);
 
-void Line_init(Line* this, GPoint* p1, GPoint* p2);
-double Line_getGradient(Line* this);
+
+
 static void Line_update(Line* this);
-double Line_getDeltaX(Line* this);
-double Line_getDeltaY(Line* this);
-GPoint* Line_getP1(Line* this);
-GPoint* Line_getP2(Line* this);
-void Line_setP1(Line* this, GPoint* p1);
-void Line_setP2(Line* this, GPoint* p2);
+
+
+
+
+
+
+
+void Line_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void Line_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("Line", nullptr);
+    java_register_method("Line", "getGradient", (void*) Line_getGradient);
+    java_register_method("Line", "update", (void*) Line_update);
+    java_register_method("Line", "getDeltaX", (void*) Line_getDeltaX);
+    java_register_method("Line", "getDeltaY", (void*) Line_getDeltaY);
+    java_register_method("Line", "getP1", (void*) Line_getP1);
+    java_register_method("Line", "getP2", (void*) Line_getP2);
+    java_register_method("Line", "setP1", (void*) Line_setP1);
+    java_register_method("Line", "setP2", (void*) Line_setP2);
+}
 
 static void Line_initFields(Line* this) {
     
@@ -54,6 +49,7 @@ static void Line_initFields(Line* this) {
 
 
 void Line_init(Line* this, GPoint* p1, GPoint* p2) {
+    Line_register();
     Line_initFields(this);
         this->p1 = PointFactory_getInstance()->ZERO_ZERO;
         this->p2 = this->p1;
@@ -62,7 +58,7 @@ void Line_init(Line* this, GPoint* p1, GPoint* p2) {
 }
 
 Line* Line_new(GPoint* p1, GPoint* p2) {
-    Line* this = calloc(1, sizeof(Line));
+    Line* this = java_object_alloc(sizeof(Line), "Line");
     Line_init(this, p1, p2);
     return this;
 }
@@ -74,8 +70,8 @@ double Line_getGradient(Line* this) {
 
 
 static void Line_update(Line* this) {
-        this->deltaX = ((double) JAVA_CALL(Line_getP1(this), getX)) - JAVA_CALL(Line_getP2(this), getX);
-        this->deltaY = ((double) JAVA_CALL(Line_getP1(this), getY)) - JAVA_CALL(Line_getP2(this), getY);
+        this->deltaX = ((double) GPoint_getX(Line_getP1(this))) - ((double) GPoint_getX(Line_getP2(this)));
+        this->deltaY = ((double) GPoint_getY(Line_getP1(this))) - ((double) GPoint_getY(Line_getP2(this)));
 }
 
 

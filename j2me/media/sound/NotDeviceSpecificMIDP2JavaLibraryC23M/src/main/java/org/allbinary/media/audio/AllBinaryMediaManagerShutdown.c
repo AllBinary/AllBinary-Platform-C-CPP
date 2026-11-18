@@ -1,51 +1,38 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.media.audio
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/media/audio/AllBinaryMediaManagerShutdown.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/string/CommonStrings.h"
+#include "org/allbinary/media/audio/AllBinaryMediaManager.h"
+#include "org/allbinary/media/audio/SoundsFactoryInterface.h"
 
-typedef struct AllBinaryMediaManagerShutdown AllBinaryMediaManagerShutdown;
-struct AllBinaryMediaManagerShutdown {
-    char unused;
-};
 
 static AllBinaryMediaManagerShutdown* AllBinaryMediaManagerShutdown_instance;
 
-AllBinaryMediaManagerShutdown* AllBinaryMediaManagerShutdown_new(void);
-void AllBinaryMediaManagerShutdown_shutdown(SoundsFactoryInterface* soundsFactoryInterface);
 
-// Static fields with runtime initializers: call this once at startup
 void AllBinaryMediaManagerShutdown_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     AllBinaryMediaManagerShutdown_instance = AllBinaryMediaManagerShutdown_new();
 }
 
+void AllBinaryMediaManagerShutdown_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("AllBinaryMediaManagerShutdown", nullptr);
+}
+
 void AllBinaryMediaManagerShutdown_init(AllBinaryMediaManagerShutdown* this) {
+    AllBinaryMediaManagerShutdown_register();
 }
 
 AllBinaryMediaManagerShutdown* AllBinaryMediaManagerShutdown_new(void) {
-    AllBinaryMediaManagerShutdown* this = calloc(1, sizeof(AllBinaryMediaManagerShutdown));
+    AllBinaryMediaManagerShutdown* this = java_object_alloc(sizeof(AllBinaryMediaManagerShutdown), "AllBinaryMediaManagerShutdown");
     AllBinaryMediaManagerShutdown_init(this);
     return this;
 }
@@ -55,7 +42,7 @@ AllBinaryMediaManagerShutdown* AllBinaryMediaManagerShutdown_new(void) {
 void AllBinaryMediaManagerShutdown_shutdown(SoundsFactoryInterface* soundsFactoryInterface) {
         LogUtil* logUtil = LogUtil_getInstance();
         CommonStrings* commonStrings = CommonStrings_getInstance();
-        LogUtil_putF(logUtil, commonStrings->START, AllBinaryMediaManagerShutdown_instance, "shutdown");
+        LogUtil_putF(logUtil, commonStrings->START, (AllBinaryMediaManagerShutdown_staticInit(), AllBinaryMediaManagerShutdown_instance), "shutdown");
         AllBinaryMediaManager_shutdown(soundsFactoryInterface);
 }
 

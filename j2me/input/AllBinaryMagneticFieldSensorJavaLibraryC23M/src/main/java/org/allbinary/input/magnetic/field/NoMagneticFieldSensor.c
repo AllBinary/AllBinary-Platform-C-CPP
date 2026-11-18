@@ -1,49 +1,38 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input.magnetic.field
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-#include "org/allbinary/input/AllBinarySensorListener.h"
+#include "org/allbinary/input/magnetic/field/NoMagneticFieldSensor.h"
 #include "org/allbinary/logic/math/Orientation.h"
 #include "org/allbinary/input/magnetic/field/AllBinaryMagneticFieldSensor.h"
 
-typedef struct NoMagneticFieldSensor NoMagneticFieldSensor;
-struct NoMagneticFieldSensor {
-    AllBinaryMagneticFieldSensor base;
-    AllBinarySensorListener AllBinarySensorListener_interface;
-};
 
 
-NoMagneticFieldSensor* NoMagneticFieldSensor_new(void);
-Orientation* NoMagneticFieldSensor_getOrientation(NoMagneticFieldSensor* this);
-void NoMagneticFieldSensor_onSensorChange(NoMagneticFieldSensor* this);
+
+
+void NoMagneticFieldSensor_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void NoMagneticFieldSensor_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("NoMagneticFieldSensor", "AllBinaryMagneticFieldSensor");
+    java_register_method("NoMagneticFieldSensor", "getOrientation", (void*) NoMagneticFieldSensor_getOrientation);
+    java_register_method("NoMagneticFieldSensor", "onSensorChange", (void*) NoMagneticFieldSensor_onSensorChange);
+}
 
 void NoMagneticFieldSensor_init(NoMagneticFieldSensor* this) {
+    NoMagneticFieldSensor_register();
     AllBinaryMagneticFieldSensor_init(&this->base);
 }
 
 NoMagneticFieldSensor* NoMagneticFieldSensor_new(void) {
-    NoMagneticFieldSensor* this = calloc(1, sizeof(NoMagneticFieldSensor));
+    NoMagneticFieldSensor* this = java_object_alloc(sizeof(NoMagneticFieldSensor), "NoMagneticFieldSensor");
     NoMagneticFieldSensor_init(this);
     return this;
 }
@@ -51,7 +40,7 @@ NoMagneticFieldSensor* NoMagneticFieldSensor_new(void) {
 
 // throws Exception
 Orientation* NoMagneticFieldSensor_getOrientation(NoMagneticFieldSensor* this) {
-        return Orientation_NONE;
+        return (Orientation_staticInit(), Orientation_NONE);
 }
 
 

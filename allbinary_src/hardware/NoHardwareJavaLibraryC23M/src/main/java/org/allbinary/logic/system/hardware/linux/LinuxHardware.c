@@ -15,6 +15,12 @@
 #include "org/allbinary/logic/system/hardware/components/interfaces/UsbInterface.h"
 #include "org/allbinary/logic/system/hardware/components/interfaces/VideoInterface.h"
 #include "org/allbinary/util/ABHashtable.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/StdUtil.h")
+#include "org/allbinary/logic/StdUtil.h"
+#endif
 
 
 

@@ -1,59 +1,47 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.system.security.licensing
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/logic/system/security/licensing/LockedUtil.h"
 #include "org/allbinary/logic/system/security/licensing/LockedUtilInterface.h"
+#include "org/allbinary/logic/system/security/licensing/LockableFeature.h"
 
-typedef struct LockedUtil LockedUtil;
-struct LockedUtil {
-    LockedUtilInterface LockedUtilInterface_interface;
-};
 
 static LockedUtil* LockedUtil_instance;
 
-LockedUtil* LockedUtil_new(void);
-LockedUtil* LockedUtil_getInstance(void);
-bool LockedUtil_isLocked(LockedUtil* this);
-bool LockedUtil_isLockedFeature(LockedUtil* this, LockableFeature* lockableFeatrue);
 
-// Static fields with runtime initializers: call this once at startup
+
+
 void LockedUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     LockedUtil_instance = LockedUtil_new();
 }
 
+void LockedUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("LockedUtil", nullptr);
+    java_register_method("LockedUtil", "isLocked", (void*) LockedUtil_isLocked);
+    java_register_method("LockedUtil", "isLockedFeature", (void*) LockedUtil_isLockedFeature);
+}
+
 void LockedUtil_init(LockedUtil* this) {
+    LockedUtil_register();
 }
 
 LockedUtil* LockedUtil_new(void) {
-    LockedUtil* this = calloc(1, sizeof(LockedUtil));
+    LockedUtil* this = java_object_alloc(sizeof(LockedUtil), "LockedUtil");
     LockedUtil_init(this);
     return this;
 }
 
 
 LockedUtil* LockedUtil_getInstance(void) {
-        return LockedUtil_instance;
+        return (LockedUtil_staticInit(), LockedUtil_instance);
 }
 
 

@@ -1,46 +1,48 @@
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.opengles
+#include "org/allbinary/graphics/opengles/OpenGLUtil.h"
+#include "javax/microedition/lcdui/Image.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Image.h"
-
-typedef struct OpenGLUtil OpenGLUtil;
-struct OpenGLUtil {
-    char unused;
-};
 
 static OpenGLUtil* OpenGLUtil_instance;
 
-OpenGLUtil* OpenGLUtil_new(void);
-OpenGLUtil* OpenGLUtil_getInstance(void);
-Image* OpenGLUtil_addImage(OpenGLUtil* this, Image* image);
-void OpenGLUtil_clear(OpenGLUtil* this);
-void OpenGLUtil_addRunnable(OpenGLUtil* this, Runnable* runnable);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
 void OpenGLUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     OpenGLUtil_instance = OpenGLUtil_new();
 }
 
+void OpenGLUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("OpenGLUtil", nullptr);
+    java_register_method("OpenGLUtil", "addImage", (void*) OpenGLUtil_addImage);
+    java_register_method("OpenGLUtil", "clear", (void*) OpenGLUtil_clear);
+    java_register_method("OpenGLUtil", "addRunnable", (void*) OpenGLUtil_addRunnable);
+}
+
 void OpenGLUtil_init(OpenGLUtil* this) {
+    OpenGLUtil_register();
 }
 
 OpenGLUtil* OpenGLUtil_new(void) {
-    OpenGLUtil* this = calloc(1, sizeof(OpenGLUtil));
+    OpenGLUtil* this = java_object_alloc(sizeof(OpenGLUtil), "OpenGLUtil");
     OpenGLUtil_init(this);
     return this;
 }
 
 
 OpenGLUtil* OpenGLUtil_getInstance(void) {
-        return OpenGLUtil_instance;
+        return (OpenGLUtil_staticInit(), OpenGLUtil_instance);
 }
 
 

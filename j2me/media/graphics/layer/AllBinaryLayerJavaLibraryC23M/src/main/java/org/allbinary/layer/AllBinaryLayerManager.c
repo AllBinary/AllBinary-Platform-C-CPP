@@ -1,54 +1,50 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2011 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.layer
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/layer/AllBinaryLayerManager.h"
 #include "org/allbinary/layer/event/LayerManagerEvent.h"
 #include "org/allbinary/layer/event/LayerManagerEventHandler.h"
 #include "org/allbinary/layer/LayerManager.h"
-
-typedef struct AllBinaryLayerManager AllBinaryLayerManager;
-struct AllBinaryLayerManager {
-    LayerManager base;
-    LayerManagerEventHandler* layerManagerEventHandler;
-    LayerManagerEvent* createLayerManagerEvent;
-    LayerManagerEvent* deleteLayerManagerEvent;
-    LayerProcessor** basicLayerProcessorArray;
-};
+#include "org/allbinary/layer/LayerProcessor.h"
+#include "org/allbinary/layer/LayerManagerNoDebug.h"
+#include "org/allbinary/layer/AllBinaryLayer.h"
 
 
-AllBinaryLayerManager* AllBinaryLayerManager_new(void);
 
-void AllBinaryLayerManager_init(AllBinaryLayerManager* this);
-LayerProcessor** AllBinaryLayerManager_getLayerProcessorArray(AllBinaryLayerManager* this);
-void AllBinaryLayerManager_setLayerProcessorArray(AllBinaryLayerManager* this, LayerProcessor** layerProcessorArray);
-void AllBinaryLayerManager_log(AllBinaryLayerManager* this);
-void AllBinaryLayerManager_append(AllBinaryLayerManager* this, AllBinaryLayer* layerInterface);
-void AllBinaryLayerManager_appendAt(AllBinaryLayerManager* this, AllBinaryLayer* layerInterface, int32_t index);
+
+
+
+
+
+
 static void AllBinaryLayerManager_appendProcessors(AllBinaryLayerManager* this, AllBinaryLayer* layerInterface);
-void AllBinaryLayerManager_remove(AllBinaryLayerManager* this, AllBinaryLayer* layerInterface);
-void AllBinaryLayerManager_process(AllBinaryLayerManager* this);
-void AllBinaryLayerManager_cleanup(AllBinaryLayerManager* this);
+
+
+
+
+void AllBinaryLayerManager_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void AllBinaryLayerManager_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("AllBinaryLayerManager", "LayerManager");
+    java_register_method("AllBinaryLayerManager", "getLayerProcessorArray", (void*) AllBinaryLayerManager_getLayerProcessorArray);
+    java_register_method("AllBinaryLayerManager", "setLayerProcessorArray", (void*) AllBinaryLayerManager_setLayerProcessorArray);
+    java_register_method("AllBinaryLayerManager", "log", (void*) AllBinaryLayerManager_log);
+    java_register_method("AllBinaryLayerManager", "append", (void*) AllBinaryLayerManager_append);
+    java_register_method("AllBinaryLayerManager", "appendAt", (void*) AllBinaryLayerManager_appendAt);
+    java_register_method("AllBinaryLayerManager", "appendProcessors", (void*) AllBinaryLayerManager_appendProcessors);
+    java_register_method("AllBinaryLayerManager", "remove", (void*) AllBinaryLayerManager_remove);
+    java_register_method("AllBinaryLayerManager", "process", (void*) AllBinaryLayerManager_process);
+    java_register_method("AllBinaryLayerManager", "cleanup", (void*) AllBinaryLayerManager_cleanup);
+}
 
 static void AllBinaryLayerManager_initFields(AllBinaryLayerManager* this) {
     this->layerManagerEventHandler = LayerManagerEventHandler_getInstance();
@@ -59,12 +55,13 @@ static void AllBinaryLayerManager_initFields(AllBinaryLayerManager* this) {
 
 
 void AllBinaryLayerManager_init(AllBinaryLayerManager* this) {
+    AllBinaryLayerManager_register();
         LayerManager_init(&this->base, LayerManagerNoDebug_getInstance());
         AllBinaryLayerManager_initFields(this);
 }
 
 AllBinaryLayerManager* AllBinaryLayerManager_new(void) {
-    AllBinaryLayerManager* this = calloc(1, sizeof(AllBinaryLayerManager));
+    AllBinaryLayerManager* this = java_object_alloc(sizeof(AllBinaryLayerManager), "AllBinaryLayerManager");
     AllBinaryLayerManager_init(this);
     return this;
 }
@@ -90,7 +87,7 @@ void AllBinaryLayerManager_log(AllBinaryLayerManager* this) {
 
 // throws Exception
 void AllBinaryLayerManager_append(AllBinaryLayerManager* this, AllBinaryLayer* layerInterface) {
-        if (!AllBinaryLayerManager_contains(this, layerInterface)) {
+        if (!LayerManager_contains(this, layerInterface)) {
             AllBinaryLayerManager_appendProcessors(this, layerInterface);
             LayerManager_append((&this->base), layerInterface);
         }
@@ -99,7 +96,7 @@ void AllBinaryLayerManager_append(AllBinaryLayerManager* this, AllBinaryLayer* l
 
 // throws Exception
 void AllBinaryLayerManager_appendAt(AllBinaryLayerManager* this, AllBinaryLayer* layerInterface, int32_t index) {
-        if (!AllBinaryLayerManager_contains(this, layerInterface)) {
+        if (!LayerManager_contains(this, layerInterface)) {
             AllBinaryLayerManager_appendProcessors(this, layerInterface);
             LayerManager_appendAt((&this->base), layerInterface, index);
         }
@@ -114,7 +111,7 @@ static void AllBinaryLayerManager_appendProcessors(AllBinaryLayerManager* this, 
         for (int32_t index = java_array_length(this->basicLayerProcessorArray); --index >= 0; ) {
             layerProcessorInterface = this->basicLayerProcessorArray[index];
             if (LayerProcessor_isProcessorLayer(layerProcessorInterface, layerInterface)) {
-                JAVA_CALL(LayerProcessor_getLayerManager(layerProcessorInterface), append, layerInterface);
+                LayerManager_append(LayerProcessor_getLayerManager(layerProcessorInterface), layerInterface);
             }
         }
 }
@@ -128,7 +125,7 @@ void AllBinaryLayerManager_remove(AllBinaryLayerManager* this, AllBinaryLayer* l
         LayerProcessor* layerProcessorInterface = nullptr;
         for (int32_t index = java_array_length(this->basicLayerProcessorArray); --index >= 0; ) {
             layerProcessorInterface = this->basicLayerProcessorArray[index];
-            JAVA_CALL(LayerProcessor_getLayerManager(layerProcessorInterface), remove, layerInterface);
+            LayerManager_remove(LayerProcessor_getLayerManager(layerProcessorInterface), layerInterface);
         }
         LayerManager_remove((&this->base), layerInterface);
 }
@@ -151,7 +148,7 @@ void AllBinaryLayerManager_cleanup(AllBinaryLayerManager* this) {
         int32_t size = java_array_length(this->basicLayerProcessorArray);
         for (int32_t index = 0; index < size; index++) {
             layerProcessorInterface = this->basicLayerProcessorArray[index];
-            JAVA_CALL(LayerProcessor_getLayerManager(layerProcessorInterface), cleanup);
+            LayerManager_cleanup(LayerProcessor_getLayerManager(layerProcessorInterface));
         }
         LayerManager_cleanup((&this->base));
 }

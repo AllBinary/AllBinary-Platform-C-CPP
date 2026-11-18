@@ -40,6 +40,8 @@ void PrimitiveIntUtil_init(PrimitiveIntUtil* this);
 int32_t* PrimitiveIntUtil_getArrayInstance(void);
 
 int32_t** PrimitiveIntUtil_getTwoDimensionalArrayInstance(void);
+#define PrimitiveIntUtil_new0 PrimitiveIntUtil_new
+#define PrimitiveIntUtil_init0 PrimitiveIntUtil_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void PrimitiveIntUtil_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

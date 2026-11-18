@@ -1,28 +1,5 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input.motion.gesture.observer
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/input/motion/gesture/observer/MotionGestureEvent.h"
 #include "org/allbinary/graphics/GPoint.h"
 #include "org/allbinary/graphics/PointFactory.h"
 #include "org/allbinary/input/motion/gesture/MotionGestureInput.h"
@@ -30,33 +7,57 @@
 #include "org/allbinary/TsUtil.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/logic/string/StringUtil.h"
-#include "org/allbinary/logic/util/event/AllBinaryEventObject.h"
 #include "org/allbinary/string/CommonLabels.h"
+#if __has_include("org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h")
+#include "org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h"
+#endif
+#if __has_include("org/allbinary/graphics/PointFactory.h")
+#include "org/allbinary/graphics/PointFactory.h"
+#endif
+#if __has_include("org/allbinary/graphics/PointFactory.h")
+#include "org/allbinary/graphics/PointFactory.h"
+#endif
+#if __has_include("org/allbinary/TsUtil.h")
+#include "org/allbinary/TsUtil.h"
+#endif
 
-typedef struct MotionGestureEvent MotionGestureEvent;
-struct MotionGestureEvent {
-    AllBinaryEventObject base;
-    MotionGestureInput* motionGesture;
-    int32_t id;
-    GPoint* previousPoint;
-    GPoint* currentPoint;
-    CommonLabels* commonLabels;
-};
 
 static const char* MotionGestureEvent_PREVIOUS = " Previous: ";
 static const char* MotionGestureEvent_HASHCODE = " hashcode: ";
 
-MotionGestureEvent* MotionGestureEvent_new(Any* source, int32_t id, MotionGestureInput* motionGesture);
 
-void MotionGestureEvent_init(MotionGestureEvent* this, Any* source, int32_t id, MotionGestureInput* motionGesture);
-MotionGestureInput* MotionGestureEvent_getMotionGesture(MotionGestureEvent* this);
-void MotionGestureEvent_setMotionGesture(MotionGestureEvent* this, MotionGestureInput* motionGesture);
-GPoint* MotionGestureEvent_getPreviousPoint(MotionGestureEvent* this);
-void MotionGestureEvent_setPreviousPoint(MotionGestureEvent* this, GPoint* previousPoint);
-GPoint* MotionGestureEvent_getCurrentPoint(MotionGestureEvent* this);
-void MotionGestureEvent_setCurrentPoint(MotionGestureEvent* this, GPoint* currentPoint);
-const char* MotionGestureEvent_toString(MotionGestureEvent* this);
-int32_t MotionGestureEvent_getId(MotionGestureEvent* this);
+
+
+
+
+
+
+
+
+void MotionGestureEvent_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void MotionGestureEvent_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("MotionGestureEvent", "AllBinaryEventObject");
+    java_register_method("MotionGestureEvent", "getMotionGesture", (void*) MotionGestureEvent_getMotionGesture);
+    java_register_method("MotionGestureEvent", "setMotionGesture", (void*) MotionGestureEvent_setMotionGesture);
+    java_register_method("MotionGestureEvent", "getPreviousPoint", (void*) MotionGestureEvent_getPreviousPoint);
+    java_register_method("MotionGestureEvent", "setPreviousPoint", (void*) MotionGestureEvent_setPreviousPoint);
+    java_register_method("MotionGestureEvent", "getCurrentPoint", (void*) MotionGestureEvent_getCurrentPoint);
+    java_register_method("MotionGestureEvent", "setCurrentPoint", (void*) MotionGestureEvent_setCurrentPoint);
+    java_register_method("MotionGestureEvent", "toString", (void*) MotionGestureEvent_toString);
+    java_register_method("MotionGestureEvent", "getId", (void*) MotionGestureEvent_getId);
+}
 
 static void MotionGestureEvent_initFields(MotionGestureEvent* this) {
     this->motionGesture = TouchMotionGestureFactory_getInstance()->NO_MOTION;
@@ -67,15 +68,16 @@ static void MotionGestureEvent_initFields(MotionGestureEvent* this) {
 }
 
 
-void MotionGestureEvent_init(MotionGestureEvent* this, Any* source, int32_t id, MotionGestureInput* motionGesture) {
+void MotionGestureEvent_init(MotionGestureEvent* this, void* source, int32_t id, MotionGestureInput* motionGesture) {
+    MotionGestureEvent_register();
         AllBinaryEventObject_init(&this->base, source);
         MotionGestureEvent_initFields(this);
         this->id = id;
         MotionGestureEvent_setMotionGesture(this, motionGesture);
 }
 
-MotionGestureEvent* MotionGestureEvent_new(Any* source, int32_t id, MotionGestureInput* motionGesture) {
-    MotionGestureEvent* this = calloc(1, sizeof(MotionGestureEvent));
+MotionGestureEvent* MotionGestureEvent_new(void* source, int32_t id, MotionGestureInput* motionGesture) {
+    MotionGestureEvent* this = java_object_alloc(sizeof(MotionGestureEvent), "MotionGestureEvent");
     MotionGestureEvent_init(this, source, id, motionGesture);
     return this;
 }
@@ -120,8 +122,8 @@ const char* MotionGestureEvent_toString(MotionGestureEvent* this) {
         StringMaker_append(stringBuffer, MotionGestureEvent_PREVIOUS);
         StringMaker_append(stringBuffer, StringUtil_toString(stringUtil, this->previousPoint));
         StringMaker_append(stringBuffer, MotionGestureEvent_HASHCODE);
-        StringMaker_appendint(stringBuffer, ((int32_t) TsUtil_hashCode(TsUtil_getInstance(), this)));
-        return StringMaker_toString(stringBuffer);
+        StringMaker_appendint(stringBuffer, TsUtil_hashCode(TsUtil_getInstance(), this));
+        return java_string_of(stringBuffer);
 }
 
 

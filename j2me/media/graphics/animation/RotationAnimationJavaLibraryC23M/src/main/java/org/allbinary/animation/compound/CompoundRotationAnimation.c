@@ -1,33 +1,9 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation.compound
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/khronos/opengles/GL.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/animation/compound/CompoundRotationAnimation.h"
+#include "javax/microedition/khronos/opengles/GL.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/animation/AnimationBehavior.h"
 #include "org/allbinary/animation/IndexedAnimation.h"
-#include "org/allbinary/animation/RotationAnimation.h"
 #include "org/allbinary/direction/Direction.h"
 #include "org/allbinary/logic/math/PrimitiveIntUtil.h"
 #include "org/allbinary/math/Angle.h"
@@ -35,42 +11,122 @@
 #include "org/allbinary/math/AngleInfo.h"
 #include "org/allbinary/util/CircularIndexUtil.h"
 #include "org/allbinary/animation/compound/CompoundAnimationInterface.h"
+#if __has_include("org/allbinary/math/AngleFactory.h")
+#include "org/allbinary/math/AngleFactory.h"
+#endif
+#if __has_include("org/allbinary/animation/RotationAnimation.h")
+#include "org/allbinary/animation/RotationAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/RotationAnimation.h")
+#include "org/allbinary/animation/RotationAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/RotationAnimation.h")
+#include "org/allbinary/animation/RotationAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/RotationAnimation.h")
+#include "org/allbinary/animation/RotationAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/RotationAnimation.h")
+#include "org/allbinary/animation/RotationAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/RotationAnimation.h")
+#include "org/allbinary/animation/RotationAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/RotationAnimation.h")
+#include "org/allbinary/animation/RotationAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/RotationAnimation.h")
+#include "org/allbinary/animation/RotationAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/RotationAnimation.h")
+#include "org/allbinary/animation/RotationAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/RotationAnimation.h")
+#include "org/allbinary/animation/RotationAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/RotationAnimation.h")
+#include "org/allbinary/animation/RotationAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/RotationAnimation.h")
+#include "org/allbinary/animation/RotationAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/RotationAnimation.h")
+#include "org/allbinary/animation/RotationAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/RotationAnimation.h")
+#include "org/allbinary/animation/RotationAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/RotationAnimation.h")
+#include "org/allbinary/animation/RotationAnimation.h"
+#endif
 
-typedef struct CompoundRotationAnimation CompoundRotationAnimation;
-struct CompoundRotationAnimation {
-    RotationAnimation base;
-    CompoundAnimationInterface CompoundAnimationInterface_interface;
-    RotationAnimation** animationInterfaceArray;
-};
 
 
-CompoundRotationAnimation* CompoundRotationAnimation_new(RotationAnimation** animationInterfaceArray, AnimationBehavior* animationBehavior);
 
-void CompoundRotationAnimation_init(CompoundRotationAnimation* this, RotationAnimation** animationInterfaceArray, AnimationBehavior* animationBehavior);
-void CompoundRotationAnimation_setFrame(CompoundRotationAnimation* this, int32_t index);
-int32_t CompoundRotationAnimation_getFrame(CompoundRotationAnimation* this);
-int32_t CompoundRotationAnimation_getAnimationSize(CompoundRotationAnimation* this);
-int32_t CompoundRotationAnimation_getSize(CompoundRotationAnimation* this);
-void CompoundRotationAnimation_previousFrame(CompoundRotationAnimation* this);
-void CompoundRotationAnimation_nextFrame(CompoundRotationAnimation* this);
-void CompoundRotationAnimation_previousRotation(CompoundRotationAnimation* this);
-void CompoundRotationAnimation_nextRotation(CompoundRotationAnimation* this);
-void CompoundRotationAnimation_setSequence(CompoundRotationAnimation* this, int32_t* sequence);
-int32_t* CompoundRotationAnimation_getSequence(CompoundRotationAnimation* this);
-void CompoundRotationAnimation_paintXY(CompoundRotationAnimation* this, Graphics* graphics, int32_t x, int32_t y);
-void CompoundRotationAnimation_paintThreedXYZ(CompoundRotationAnimation* this, Graphics* graphics, int32_t x, int32_t y, int32_t z);
-IndexedAnimation* CompoundRotationAnimation_getCurrentAnimation(CompoundRotationAnimation* this);
-void CompoundRotationAnimation_nextAnimation(CompoundRotationAnimation* this);
-void CompoundRotationAnimation_previousAnimation(CompoundRotationAnimation* this);
-void CompoundRotationAnimation_setAnimation(CompoundRotationAnimation* this, int32_t index);
-void CompoundRotationAnimation_setFrameByDirection(CompoundRotationAnimation* this, Direction* direction);
-void CompoundRotationAnimation_setFrameToAngle(CompoundRotationAnimation* this, Angle* angle);
-void CompoundRotationAnimation_adjustFrameToAngle(CompoundRotationAnimation* this, Angle* newAngle);
-void CompoundRotationAnimation_adjustFrame(CompoundRotationAnimation* this, int16_t angle);
-AngleInfo* CompoundRotationAnimation_getAngleInfoP(CompoundRotationAnimation* this);
-RotationAnimation** CompoundRotationAnimation_getAnimationInterfaceArray(CompoundRotationAnimation* this);
-void CompoundRotationAnimation_setAnimationInterfaceArray(CompoundRotationAnimation* this, RotationAnimation** animationInterfaceArray);
-void CompoundRotationAnimation_set(CompoundRotationAnimation* this, GL* gl);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void CompoundRotationAnimation_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void CompoundRotationAnimation_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("CompoundRotationAnimation", "RotationAnimation");
+    java_register_method("CompoundRotationAnimation", "setFrame", (void*) CompoundRotationAnimation_setFrame);
+    java_register_method("CompoundRotationAnimation", "getFrame", (void*) CompoundRotationAnimation_getFrame);
+    java_register_method("CompoundRotationAnimation", "getAnimationSize", (void*) CompoundRotationAnimation_getAnimationSize);
+    java_register_method("CompoundRotationAnimation", "getSize", (void*) CompoundRotationAnimation_getSize);
+    java_register_method("CompoundRotationAnimation", "previousFrame", (void*) CompoundRotationAnimation_previousFrame);
+    java_register_method("CompoundRotationAnimation", "nextFrame", (void*) CompoundRotationAnimation_nextFrame);
+    java_register_method("CompoundRotationAnimation", "previousRotation", (void*) CompoundRotationAnimation_previousRotation);
+    java_register_method("CompoundRotationAnimation", "nextRotation", (void*) CompoundRotationAnimation_nextRotation);
+    java_register_method("CompoundRotationAnimation", "setSequence", (void*) CompoundRotationAnimation_setSequence);
+    java_register_method("CompoundRotationAnimation", "getSequence", (void*) CompoundRotationAnimation_getSequence);
+    java_register_method("CompoundRotationAnimation", "paintXY", (void*) CompoundRotationAnimation_paintXY);
+    java_register_method("CompoundRotationAnimation", "paintThreedXYZ", (void*) CompoundRotationAnimation_paintThreedXYZ);
+    java_register_method("CompoundRotationAnimation", "getCurrentAnimation", (void*) CompoundRotationAnimation_getCurrentAnimation);
+    java_register_method("CompoundRotationAnimation", "nextAnimation", (void*) CompoundRotationAnimation_nextAnimation);
+    java_register_method("CompoundRotationAnimation", "previousAnimation", (void*) CompoundRotationAnimation_previousAnimation);
+    java_register_method("CompoundRotationAnimation", "setAnimation", (void*) CompoundRotationAnimation_setAnimation);
+    java_register_method("CompoundRotationAnimation", "setFrameByDirection", (void*) CompoundRotationAnimation_setFrameByDirection);
+    java_register_method("CompoundRotationAnimation", "setFrameToAngle", (void*) CompoundRotationAnimation_setFrameToAngle);
+    java_register_method("CompoundRotationAnimation", "adjustFrameToAngle", (void*) CompoundRotationAnimation_adjustFrameToAngle);
+    java_register_method("CompoundRotationAnimation", "adjustFrame", (void*) CompoundRotationAnimation_adjustFrame);
+    java_register_method("CompoundRotationAnimation", "getAngleInfoP", (void*) CompoundRotationAnimation_getAngleInfoP);
+    java_register_method("CompoundRotationAnimation", "getAnimationInterfaceArray", (void*) CompoundRotationAnimation_getAnimationInterfaceArray);
+    java_register_method("CompoundRotationAnimation", "setAnimationInterfaceArray", (void*) CompoundRotationAnimation_setAnimationInterfaceArray);
+    java_register_method("CompoundRotationAnimation", "set", (void*) CompoundRotationAnimation_set);
+}
 
 static void CompoundRotationAnimation_initFields(CompoundRotationAnimation* this) {
     
@@ -78,58 +134,59 @@ static void CompoundRotationAnimation_initFields(CompoundRotationAnimation* this
 
 
 void CompoundRotationAnimation_init(CompoundRotationAnimation* this, RotationAnimation** animationInterfaceArray, AnimationBehavior* animationBehavior) {
+    CompoundRotationAnimation_register();
         RotationAnimation_init(&this->base, AngleInfo_getInstance(AngleFactory_getInstance()->QUARTER_TOTAL_ANGLE), CircularIndexUtil_createInstance(4), animationBehavior);
         CompoundRotationAnimation_initFields(this);
         this->animationInterfaceArray = animationInterfaceArray;
-        this->circularIndexUtil = CircularIndexUtil_createInstance(java_array_length(this->animationInterfaceArray));
+        this->base.circularIndexUtil = CircularIndexUtil_createInstance(java_array_length(this->animationInterfaceArray));
 }
 
 CompoundRotationAnimation* CompoundRotationAnimation_new(RotationAnimation** animationInterfaceArray, AnimationBehavior* animationBehavior) {
-    CompoundRotationAnimation* this = calloc(1, sizeof(CompoundRotationAnimation));
+    CompoundRotationAnimation* this = java_object_alloc(sizeof(CompoundRotationAnimation), "CompoundRotationAnimation");
     CompoundRotationAnimation_init(this, animationInterfaceArray, animationBehavior);
     return this;
 }
 
 
 void CompoundRotationAnimation_setFrame(CompoundRotationAnimation* this, int32_t index) {
-        JAVA_CALL(this->animationInterfaceArray[JAVA_CALL(this->circularIndexUtil, getIndex)], setFrame, index);
+        RotationAnimation_setFrame(this->animationInterfaceArray[CircularIndexUtil_getIndex(this->base.circularIndexUtil)], index);
 }
 
 
 int32_t CompoundRotationAnimation_getFrame(CompoundRotationAnimation* this) {
-        return JAVA_CALL(this->animationInterfaceArray[JAVA_CALL(this->circularIndexUtil, getIndex)], getFrame);
+        return RotationAnimation_getFrame(this->animationInterfaceArray[CircularIndexUtil_getIndex(this->base.circularIndexUtil)]);
 }
 
 
 // throws Exception
 int32_t CompoundRotationAnimation_getAnimationSize(CompoundRotationAnimation* this) {
-        return JAVA_CALL(this->animationInterfaceArray[JAVA_CALL(this->circularIndexUtil, getIndex)], getAnimationSize);
+        return IndexedAnimation_getAnimationSize(this->animationInterfaceArray[CircularIndexUtil_getIndex(this->base.circularIndexUtil)]);
 }
 
 
 int32_t CompoundRotationAnimation_getSize(CompoundRotationAnimation* this) {
-        return JAVA_CALL(this->animationInterfaceArray[JAVA_CALL(this->circularIndexUtil, getIndex)], getSize);
+        return RotationAnimation_getSize(this->animationInterfaceArray[CircularIndexUtil_getIndex(this->base.circularIndexUtil)]);
 }
 
 
 void CompoundRotationAnimation_previousFrame(CompoundRotationAnimation* this) {
-        JAVA_CALL(this->animationInterfaceArray[JAVA_CALL(this->circularIndexUtil, getIndex)], previousFrame);
+        IndexedAnimation_previousFrame(this->animationInterfaceArray[CircularIndexUtil_getIndex(this->base.circularIndexUtil)]);
 }
 
 
 // throws Exception
 void CompoundRotationAnimation_nextFrame(CompoundRotationAnimation* this) {
-        JAVA_CALL(this->animationInterfaceArray[JAVA_CALL(this->circularIndexUtil, getIndex)], nextFrame);
+        Animation_nextFrame(this->animationInterfaceArray[CircularIndexUtil_getIndex(this->base.circularIndexUtil)]);
 }
 
 
 void CompoundRotationAnimation_previousRotation(CompoundRotationAnimation* this) {
-        JAVA_CALL(this->animationInterfaceArray[JAVA_CALL(this->circularIndexUtil, getIndex)], previousRotation);
+        RotationAnimation_previousRotation(this->animationInterfaceArray[CircularIndexUtil_getIndex(this->base.circularIndexUtil)]);
 }
 
 
 void CompoundRotationAnimation_nextRotation(CompoundRotationAnimation* this) {
-        JAVA_CALL(this->animationInterfaceArray[JAVA_CALL(this->circularIndexUtil, getIndex)], nextRotation);
+        RotationAnimation_nextRotation(this->animationInterfaceArray[CircularIndexUtil_getIndex(this->base.circularIndexUtil)]);
 }
 
 
@@ -143,48 +200,48 @@ int32_t* CompoundRotationAnimation_getSequence(CompoundRotationAnimation* this) 
 
 
 void CompoundRotationAnimation_paintXY(CompoundRotationAnimation* this, Graphics* graphics, int32_t x, int32_t y) {
-        JAVA_CALL(this->animationInterfaceArray[JAVA_CALL(this->circularIndexUtil, getIndex)], paintXY, graphics, x, y);
+        Animation_paintXY(this->animationInterfaceArray[CircularIndexUtil_getIndex(this->base.circularIndexUtil)], graphics, x, y);
 }
 
 
 void CompoundRotationAnimation_paintThreedXYZ(CompoundRotationAnimation* this, Graphics* graphics, int32_t x, int32_t y, int32_t z) {
-        JAVA_CALL(this->animationInterfaceArray[JAVA_CALL(this->circularIndexUtil, getIndex)], paintThreedXYZ, graphics, x, y, z);
+        Animation_paintThreedXYZ(this->animationInterfaceArray[CircularIndexUtil_getIndex(this->base.circularIndexUtil)], graphics, x, y, z);
 }
 
 
 IndexedAnimation* CompoundRotationAnimation_getCurrentAnimation(CompoundRotationAnimation* this) {
-        return this->animationInterfaceArray[JAVA_CALL(this->circularIndexUtil, getIndex)];
+        return this->animationInterfaceArray[CircularIndexUtil_getIndex(this->base.circularIndexUtil)];
 }
 
 
 void CompoundRotationAnimation_nextAnimation(CompoundRotationAnimation* this) {
         int32_t frame = CompoundRotationAnimation_getFrame(this);
-        JAVA_CALL(this->circularIndexUtil, next);
+        CircularIndexUtil_next(this->base.circularIndexUtil);
         CompoundRotationAnimation_setFrame(this, frame);
 }
 
 
 void CompoundRotationAnimation_previousAnimation(CompoundRotationAnimation* this) {
         int32_t frame = CompoundRotationAnimation_getFrame(this);
-        JAVA_CALL(this->circularIndexUtil, previous);
+        CircularIndexUtil_previous(this->base.circularIndexUtil);
         CompoundRotationAnimation_setFrame(this, frame);
 }
 
 
 void CompoundRotationAnimation_setAnimation(CompoundRotationAnimation* this, int32_t index) {
         int32_t frame = CompoundRotationAnimation_getFrame(this);
-        JAVA_CALL(this->circularIndexUtil, setIndex, index);
+        CircularIndexUtil_setIndex(this->base.circularIndexUtil, index);
         CompoundRotationAnimation_setFrame(this, frame);
 }
 
 
 void CompoundRotationAnimation_setFrameByDirection(CompoundRotationAnimation* this, Direction* direction) {
-        JAVA_CALL(this->animationInterfaceArray[JAVA_CALL(this->circularIndexUtil, getIndex)], setFrameByDirection, direction);
+        RotationAnimation_setFrameByDirection(this->animationInterfaceArray[CircularIndexUtil_getIndex(this->base.circularIndexUtil)], direction);
 }
 
 
 void CompoundRotationAnimation_setFrameToAngle(CompoundRotationAnimation* this, Angle* angle) {
-        JAVA_CALL(this->animationInterfaceArray[JAVA_CALL(this->circularIndexUtil, getIndex)], setFrameToAngle, angle);
+        RotationAnimation_setFrameToAngle(this->animationInterfaceArray[CircularIndexUtil_getIndex(this->base.circularIndexUtil)], angle);
 }
 
 
@@ -194,12 +251,12 @@ void CompoundRotationAnimation_adjustFrameToAngle(CompoundRotationAnimation* thi
 
 
 void CompoundRotationAnimation_adjustFrame(CompoundRotationAnimation* this, int16_t angle) {
-        JAVA_CALL(this->animationInterfaceArray[JAVA_CALL(this->circularIndexUtil, getIndex)], adjustFrame, angle);
+        RotationAnimation_adjustFrame(this->animationInterfaceArray[CircularIndexUtil_getIndex(this->base.circularIndexUtil)], angle);
 }
 
 
 AngleInfo* CompoundRotationAnimation_getAngleInfoP(CompoundRotationAnimation* this) {
-        return JAVA_CALL(this->animationInterfaceArray[JAVA_CALL(this->circularIndexUtil, getIndex)], getAngleInfoP);
+        return RotationAnimation_getAngleInfoP(this->animationInterfaceArray[CircularIndexUtil_getIndex(this->base.circularIndexUtil)]);
 }
 
 
@@ -216,7 +273,7 @@ void CompoundRotationAnimation_setAnimationInterfaceArray(CompoundRotationAnimat
 // throws Exception
 void CompoundRotationAnimation_set(CompoundRotationAnimation* this, GL* gl) {
         for (int32_t index = java_array_length(this->animationInterfaceArray); --index >= 0; ) {
-            JAVA_CALL(this->animationInterfaceArray[index], set, gl);
+            Animation_set(this->animationInterfaceArray[index], gl);
         }
 }
 

@@ -1,40 +1,36 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- *
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- *
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- *
- * Created By: Travis Berthelot
- * 
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input.motion.button
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/input/motion/button/ReleaseHelper.h"
 #include "org/allbinary/game/input/event/GameKeyEvent.h"
+#include "org/allbinary/input/motion/button/TouchButtonRecognizer.h"
+#include "org/allbinary/input/motion/button/TouchButtonInput.h"
+#if __has_include("org/allbinary/input/motion/button/UpGameKeyEventHandlerBase.h")
+#include "org/allbinary/input/motion/button/UpGameKeyEventHandlerBase.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/UpGameKeyEventHandlerBase.h")
+#include "org/allbinary/game/input/event/UpGameKeyEventHandlerBase.h"
+#endif
 
-typedef struct ReleaseHelper ReleaseHelper;
-struct ReleaseHelper {
-    TouchButtonRecognizer* touchButtonRecognizer;
-};
 
 
-ReleaseHelper* ReleaseHelper_new(TouchButtonRecognizer* touchButtonRecognizer);
 
-void ReleaseHelper_init(ReleaseHelper* this, TouchButtonRecognizer* touchButtonRecognizer);
-void ReleaseHelper_release(ReleaseHelper* this, TouchButtonInput* touchButtonInput, int32_t deviceId);
+
+void ReleaseHelper_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void ReleaseHelper_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ReleaseHelper", nullptr);
+    java_register_method("ReleaseHelper", "release", (void*) ReleaseHelper_release);
+}
 
 static void ReleaseHelper_initFields(ReleaseHelper* this) {
     
@@ -42,12 +38,13 @@ static void ReleaseHelper_initFields(ReleaseHelper* this) {
 
 
 void ReleaseHelper_init(ReleaseHelper* this, TouchButtonRecognizer* touchButtonRecognizer) {
+    ReleaseHelper_register();
     ReleaseHelper_initFields(this);
         this->touchButtonRecognizer = touchButtonRecognizer;
 }
 
 ReleaseHelper* ReleaseHelper_new(TouchButtonRecognizer* touchButtonRecognizer) {
-    ReleaseHelper* this = calloc(1, sizeof(ReleaseHelper));
+    ReleaseHelper* this = java_object_alloc(sizeof(ReleaseHelper), "ReleaseHelper");
     ReleaseHelper_init(this, touchButtonRecognizer);
     return this;
 }
@@ -57,12 +54,12 @@ ReleaseHelper* ReleaseHelper_new(TouchButtonRecognizer* touchButtonRecognizer) {
 void ReleaseHelper_release(ReleaseHelper* this, TouchButtonInput* touchButtonInput, int32_t deviceId) {
         TouchButtonInput* nextTouchButtonInput = nullptr;
         GameKeyEvent* gameKeyEvent = nullptr;
-        for (int32_t index = JAVA_CALL(this->touchButtonRecognizer->currentlyPressedTouchButtonSingleton, size) - 1; index >= 0; index--) {
-            nextTouchButtonInput = JAVA_CALL(this->touchButtonRecognizer->currentlyPressedTouchButtonSingleton, get, index);
+        for (int32_t index = CurrentlyPressedTouchButtonSingleton_size(this->touchButtonRecognizer->currentlyPressedTouchButtonSingleton) - 1; index >= 0; index--) {
+            nextTouchButtonInput = CurrentlyPressedTouchButtonSingleton_get(this->touchButtonRecognizer->currentlyPressedTouchButtonSingleton, index);
             gameKeyEvent = TouchButtonInput_getGameKeyEvent(nextTouchButtonInput);
-            JAVA_CALL(this->touchButtonRecognizer->upGameKeyEventHandler, fireEvent, gameKeyEvent);
-            JAVA_CALL(JAVA_CALL(this->touchButtonRecognizer->upGameKeyEventHandler, getInstanceForDevice, deviceId), fireEvent, gameKeyEvent);
-            JAVA_CALL(this->touchButtonRecognizer->currentlyPressedTouchButtonSingleton, removeAt, index);
+            UpGameKeyEventHandlerBase_fireEvent(this->touchButtonRecognizer->upGameKeyEventHandler, gameKeyEvent);
+            UpGameKeyEventHandlerBase_fireEvent(UpGameKeyEventHandler_getInstanceForDevice(this->touchButtonRecognizer->upGameKeyEventHandler, deviceId), gameKeyEvent);
+            CurrentlyPressedTouchButtonSingleton_removeAt(this->touchButtonRecognizer->currentlyPressedTouchButtonSingleton, index);
         }
 }
 

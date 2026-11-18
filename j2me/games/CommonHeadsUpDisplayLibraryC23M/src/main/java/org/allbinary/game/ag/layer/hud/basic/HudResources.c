@@ -1,45 +1,27 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.ag.layer.hud.basic
+#include "org/allbinary/game/ag/layer/hud/basic/HudResources.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct HudResources HudResources;
-struct HudResources {
-    const char* RESOURCE_LIFE;
-    const char* RESOURCE_HEALTH;
-};
 
 static HudResources* HudResources_instance;
 
-HudResources* HudResources_new(void);
-HudResources* HudResources_getInstance(void);
 
-void HudResources_init(HudResources* this);
 
-// Static fields with runtime initializers: call this once at startup
 void HudResources_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     HudResources_instance = HudResources_new();
+}
+
+void HudResources_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("HudResources", nullptr);
 }
 
 static void HudResources_initFields(HudResources* this) {
@@ -49,16 +31,17 @@ static void HudResources_initFields(HudResources* this) {
 
 
 HudResources* HudResources_getInstance(void) {
-        return HudResources_instance;
+        return (HudResources_staticInit(), HudResources_instance);
 }
 
 
 void HudResources_init(HudResources* this) {
+    HudResources_register();
     HudResources_initFields(this);
 }
 
 HudResources* HudResources_new(void) {
-    HudResources* this = calloc(1, sizeof(HudResources));
+    HudResources* this = java_object_alloc(sizeof(HudResources), "HudResources");
     HudResources_init(this);
     return this;
 }

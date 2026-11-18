@@ -1,40 +1,43 @@
 // Generated Code Do Not Modify
-// package org.allbinary.game.score
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/score/BasicHighScoresFactory.h"
 #include "org/allbinary/game/GameInfo.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/logic/system/SoftwareInformation.h"
 #include "org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h"
 #include "org/allbinary/game/score/HighScoresBase.h"
-
-typedef struct BasicHighScoresFactory BasicHighScoresFactory;
-struct BasicHighScoresFactory {
-    HighScoresBase base;
-    LogUtil* logUtil;
-    AbeClientInformationInterface* abeClientInformation;
-    HighScores** highScoresArray;
-    const char* TOP;
-    const char* SCORES;
-    const char* PERSONAL_HIGH_SCORES;
-    const char* FETCH;
-};
+#include "org/allbinary/game/score/HighScores.h"
+#include "org/allbinary/game/score/HighScoresResultsListener.h"
+#include "org/allbinary/game/score/RecordStoreHighScores.h"
+#include "org/allbinary/game/score/ScoreComparator.h"
+#include "org/allbinary/game/score/HighScoresHelper2.h"
+#include "org/allbinary/game/score/HighScoresHelperBaseInterface.h"
 
 
-BasicHighScoresFactory* BasicHighScoresFactory_new(AbeClientInformationInterface* abeClientInformation, SoftwareInformation* softwareInformation);
 
-void BasicHighScoresFactory_init(BasicHighScoresFactory* this, AbeClientInformationInterface* abeClientInformation, SoftwareInformation* softwareInformation);
-void BasicHighScoresFactory_fetchHighScores(BasicHighScoresFactory* this, GameInfo* gameInfo, HighScoresResultsListener* highScoresResultsListener);
-void BasicHighScoresFactory_fetchHighScoresPreload(BasicHighScoresFactory* this, GameInfo* gameInfo, HighScoresResultsListener* highScoresResultsListener, bool preload);
-HighScoresHelperBaseInterface* BasicHighScoresFactory_createHighScoresHelper(BasicHighScoresFactory* this);
-bool BasicHighScoresFactory_loaded(int32_t index2);
+
+
+
+
+
+void BasicHighScoresFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void BasicHighScoresFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("BasicHighScoresFactory", "HighScoresBase");
+    java_register_method("BasicHighScoresFactory", "fetchHighScores", (void*) BasicHighScoresFactory_fetchHighScores);
+    java_register_method("BasicHighScoresFactory", "fetchHighScoresPreload", (void*) BasicHighScoresFactory_fetchHighScoresPreload);
+    java_register_method("BasicHighScoresFactory", "createHighScoresHelper", (void*) BasicHighScoresFactory_createHighScoresHelper);
+}
 
 static void BasicHighScoresFactory_initFields(BasicHighScoresFactory* this) {
     this->logUtil = LogUtil_getInstance();
@@ -48,13 +51,14 @@ static void BasicHighScoresFactory_initFields(BasicHighScoresFactory* this) {
 
 
 void BasicHighScoresFactory_init(BasicHighScoresFactory* this, AbeClientInformationInterface* abeClientInformation, SoftwareInformation* softwareInformation) {
+    BasicHighScoresFactory_register();
     HighScoresBase_init(&this->base);
     BasicHighScoresFactory_initFields(this);
         this->abeClientInformation = abeClientInformation;
 }
 
 BasicHighScoresFactory* BasicHighScoresFactory_new(AbeClientInformationInterface* abeClientInformation, SoftwareInformation* softwareInformation) {
-    BasicHighScoresFactory* this = calloc(1, sizeof(BasicHighScoresFactory));
+    BasicHighScoresFactory* this = java_object_alloc(sizeof(BasicHighScoresFactory), "BasicHighScoresFactory");
     BasicHighScoresFactory_init(this, abeClientInformation, softwareInformation);
     return this;
 }
@@ -71,7 +75,7 @@ void BasicHighScoresFactory_fetchHighScoresPreload(BasicHighScoresFactory* this,
             this->highScoresArray[0] = RecordStoreHighScores_getInstance(this->abeClientInformation, gameInfo, this->TOP, this->PERSONAL_HIGH_SCORES, this->SCORES, ScoreComparator_new(true));
             HighScoresResultsListener_setHighScoresArray(highScoresResultsListener, this->highScoresArray);
         } JAVA_CATCH(Exception, e) {
-            LogUtil_put(this->logUtil, this->commonStrings->EXCEPTION, this, this->FETCH, e);
+            LogUtil_put(this->logUtil, this->base.commonStrings->EXCEPTION, this, this->FETCH, e);
         } JAVA_END_TRY;
 }
 

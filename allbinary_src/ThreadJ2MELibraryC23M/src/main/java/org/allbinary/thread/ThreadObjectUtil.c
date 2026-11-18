@@ -3,6 +3,9 @@
 #include "org/allbinary/TsUtil.h"
 #include "org/allbinary/thread/NullPriorityRunnable.h"
 #include "org/allbinary/thread/PriorityRunnable.h"
+#if __has_include("org/allbinary/TsUtil.h")
+#include "org/allbinary/TsUtil.h"
+#endif
 
 
 static ThreadObjectUtil* ThreadObjectUtil_instance;

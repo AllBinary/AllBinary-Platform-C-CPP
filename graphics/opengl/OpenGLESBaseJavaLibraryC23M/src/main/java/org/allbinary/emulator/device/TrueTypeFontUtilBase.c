@@ -1,59 +1,37 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2025 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.emulator.device
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Font.h"
+#include "org/allbinary/emulator/device/TrueTypeFontUtilBase.h"
+#include "javax/microedition/lcdui/Font.h"
 #include "org/allbinary/AvianUtil.h"
 #include "org/allbinary/logic/string/StringUtil.h"
-
-typedef struct TrueTypeFontUtilBase TrueTypeFontUtilBase;
-struct TrueTypeFontUtilBase {
-    const char* shortPattern;
-    int8_t* patternAsBytes;
-    const char* pattern;
-    int16_t* charArray;
-    int32_t* _characterWidth;
-    uint16_t* characterArray;
-    int32_t size;
-    int32_t lastCapIndex;
-    Font* currentFont;
-    int32_t scale;
-    int32_t CELLS_PER_ROW;
-    int32_t fontSize;
-    int32_t baseCharWidth;
-    int32_t cellSize;
-    int32_t textureSize;
-    int32_t actualCellsPerRow;
-};
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
 
-TrueTypeFontUtilBase* TrueTypeFontUtilBase_new(int32_t scale);
 
-void TrueTypeFontUtilBase_init(TrueTypeFontUtilBase* this, int32_t scale);
-int32_t TrueTypeFontUtilBase_getAsTextureSize(TrueTypeFontUtilBase* this, int32_t textureSize);
-int32_t TrueTypeFontUtilBase_getCellSize(TrueTypeFontUtilBase* this, int32_t cellSize);
-int32_t TrueTypeFontUtilBase_getYOffset(TrueTypeFontUtilBase* this);
+
+
+
+
+void TrueTypeFontUtilBase_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void TrueTypeFontUtilBase_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("TrueTypeFontUtilBase", nullptr);
+    java_register_method("TrueTypeFontUtilBase", "getAsTextureSize", (void*) TrueTypeFontUtilBase_getAsTextureSize);
+    java_register_method("TrueTypeFontUtilBase", "getCellSize", (void*) TrueTypeFontUtilBase_getCellSize);
+    java_register_method("TrueTypeFontUtilBase", "getYOffset", (void*) TrueTypeFontUtilBase_getYOffset);
+}
 
 static void TrueTypeFontUtilBase_initFields(TrueTypeFontUtilBase* this) {
     
@@ -76,6 +54,7 @@ static void TrueTypeFontUtilBase_initFields(TrueTypeFontUtilBase* this) {
 
 
 void TrueTypeFontUtilBase_init(TrueTypeFontUtilBase* this, int32_t scale) {
+    TrueTypeFontUtilBase_register();
     TrueTypeFontUtilBase_initFields(this);
         const char* shortPattern = StringUtil_getInstance()->EMPTY_STRING;
         if (AvianUtil_isAvian()) {
@@ -96,7 +75,7 @@ void TrueTypeFontUtilBase_init(TrueTypeFontUtilBase* this, int32_t scale) {
 }
 
 TrueTypeFontUtilBase* TrueTypeFontUtilBase_new(int32_t scale) {
-    TrueTypeFontUtilBase* this = calloc(1, sizeof(TrueTypeFontUtilBase));
+    TrueTypeFontUtilBase* this = java_object_alloc(sizeof(TrueTypeFontUtilBase), "TrueTypeFontUtilBase");
     TrueTypeFontUtilBase_init(this, scale);
     return this;
 }

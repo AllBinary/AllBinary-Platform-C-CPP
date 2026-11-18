@@ -1,58 +1,32 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2022 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package javax.microedition.lcdui
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "javax/microedition/lcdui/ChoiceGroupImageFactory.h"
 #include "org/allbinary/MIDPUtil.h"
+#include "javax/microedition/lcdui/Image.h"
 
-typedef struct ChoiceGroupImageFactory ChoiceGroupImageFactory;
-struct ChoiceGroupImageFactory {
-    int8_t* multiOff;
-    int8_t* multiOn;
-    int8_t* radioOff;
-    int8_t* radioOn;
-    MIDPUtil* midpUtil;
-    Image* imgMultiOffO;
-    Image* imgMultiOnO;
-    Image* imgRadioOffO;
-    Image* imgRadioOnO;
-    Image* imgMultiOff;
-    Image* imgMultiOn;
-    Image* imgRadioOff;
-    Image* imgRadioOn;
-    Image** imageArray;
-};
 
 static ChoiceGroupImageFactory* ChoiceGroupImageFactory_instance;
 
-ChoiceGroupImageFactory* ChoiceGroupImageFactory_new(void);
-ChoiceGroupImageFactory* ChoiceGroupImageFactory_getInstance(void);
-Image** ChoiceGroupImageFactory_getImageArray(ChoiceGroupImageFactory* this);
-void ChoiceGroupImageFactory_init(ChoiceGroupImageFactory* this, Image** imageArray);
 
-// Static fields with runtime initializers: call this once at startup
+
+
 void ChoiceGroupImageFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     ChoiceGroupImageFactory_instance = ChoiceGroupImageFactory_new();
+}
+
+void ChoiceGroupImageFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ChoiceGroupImageFactory", nullptr);
+    java_register_method("ChoiceGroupImageFactory", "getImageArray", (void*) ChoiceGroupImageFactory_getImageArray);
+    java_register_method("ChoiceGroupImageFactory", "init", (void*) ChoiceGroupImageFactory_initMethod);
 }
 
 static void ChoiceGroupImageFactory_initFields(ChoiceGroupImageFactory* this) {
@@ -73,18 +47,19 @@ static void ChoiceGroupImageFactory_initFields(ChoiceGroupImageFactory* this) {
 }
 
 void ChoiceGroupImageFactory_init(ChoiceGroupImageFactory* this) {
+    ChoiceGroupImageFactory_register();
     ChoiceGroupImageFactory_initFields(this);
 }
 
 ChoiceGroupImageFactory* ChoiceGroupImageFactory_new(void) {
-    ChoiceGroupImageFactory* this = calloc(1, sizeof(ChoiceGroupImageFactory));
+    ChoiceGroupImageFactory* this = java_object_alloc(sizeof(ChoiceGroupImageFactory), "ChoiceGroupImageFactory");
     ChoiceGroupImageFactory_init(this);
     return this;
 }
 
 
 ChoiceGroupImageFactory* ChoiceGroupImageFactory_getInstance(void) {
-        return ChoiceGroupImageFactory_instance;
+        return (ChoiceGroupImageFactory_staticInit(), ChoiceGroupImageFactory_instance);
 }
 
 
@@ -93,7 +68,7 @@ Image** ChoiceGroupImageFactory_getImageArray(ChoiceGroupImageFactory* this) {
 }
 
 
-void ChoiceGroupImageFactory_init(ChoiceGroupImageFactory* this, Image** imageArray) {
+void ChoiceGroupImageFactory_initMethod(ChoiceGroupImageFactory* this, Image** imageArray) {
         this->imgMultiOff = imageArray[0];
         this->imageArray[0] = this->imgMultiOff;
         this->imgMultiOn = imageArray[1];

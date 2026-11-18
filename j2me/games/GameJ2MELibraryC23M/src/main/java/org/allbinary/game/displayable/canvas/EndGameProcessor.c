@@ -1,48 +1,75 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.displayable.canvas
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-#include "org/allbinary/canvas/Processor.h"
+#include "org/allbinary/game/displayable/canvas/EndGameProcessor.h"
 #include "org/allbinary/game/score/HighScores.h"
 #include "org/allbinary/game/score/HighScoresHelperBase.h"
 #include "org/allbinary/game/score/NullHighScoresSingletonFactory.h"
 #include "org/allbinary/game/state/GameStateFactory.h"
 #include "org/allbinary/graphics/paint/NullPaintable.h"
+#include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
+#if __has_include("org/allbinary/game/displayable/canvas/TimeDelayHelper.h")
+#include "org/allbinary/game/displayable/canvas/TimeDelayHelper.h"
+#endif
+#if __has_include("org/allbinary/canvas/TimeDelayHelper.h")
+#include "org/allbinary/canvas/TimeDelayHelper.h"
+#endif
+#if __has_include("org/allbinary/game/score/TimeDelayHelper.h")
+#include "org/allbinary/game/score/TimeDelayHelper.h"
+#endif
+#if __has_include("org/allbinary/game/score/TimeDelayHelper.h")
+#include "org/allbinary/game/score/TimeDelayHelper.h"
+#endif
+#if __has_include("org/allbinary/game/score/TimeDelayHelper.h")
+#include "org/allbinary/game/score/TimeDelayHelper.h"
+#endif
+#if __has_include("org/allbinary/game/state/TimeDelayHelper.h")
+#include "org/allbinary/game/state/TimeDelayHelper.h"
+#endif
+#if __has_include("org/allbinary/graphics/paint/TimeDelayHelper.h")
+#include "org/allbinary/graphics/paint/TimeDelayHelper.h"
+#endif
+#if __has_include("org/allbinary/game/displayable/canvas/HighScoresPaintable.h")
+#include "org/allbinary/game/displayable/canvas/HighScoresPaintable.h"
+#endif
+#if __has_include("org/allbinary/canvas/HighScoresPaintable.h")
+#include "org/allbinary/canvas/HighScoresPaintable.h"
+#endif
+#if __has_include("org/allbinary/game/score/HighScoresPaintable.h")
+#include "org/allbinary/game/score/HighScoresPaintable.h"
+#endif
+#if __has_include("org/allbinary/game/score/HighScoresPaintable.h")
+#include "org/allbinary/game/score/HighScoresPaintable.h"
+#endif
+#if __has_include("org/allbinary/game/score/HighScoresPaintable.h")
+#include "org/allbinary/game/score/HighScoresPaintable.h"
+#endif
+#if __has_include("org/allbinary/game/state/HighScoresPaintable.h")
+#include "org/allbinary/game/state/HighScoresPaintable.h"
+#endif
+#if __has_include("org/allbinary/graphics/paint/HighScoresPaintable.h")
+#include "org/allbinary/graphics/paint/HighScoresPaintable.h"
+#endif
 
-typedef struct EndGameProcessor EndGameProcessor;
-struct EndGameProcessor {
-    Processor base;
-    GameStateFactory* gameStateFactory;
-    AllBinaryGameCanvas* gameCanvas;
-    int64_t WAIT;
-};
 
 
-EndGameProcessor* EndGameProcessor_new(AllBinaryGameCanvas* gameCanvas);
 
-void EndGameProcessor_init(EndGameProcessor* this, AllBinaryGameCanvas* gameCanvas);
-void EndGameProcessor_process(EndGameProcessor* this);
+
+void EndGameProcessor_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void EndGameProcessor_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("EndGameProcessor", "Processor");
+    java_register_method("EndGameProcessor", "process", (void*) EndGameProcessor_process);
+}
 
 static void EndGameProcessor_initFields(EndGameProcessor* this) {
     this->gameStateFactory = GameStateFactory_getInstance();
@@ -52,13 +79,14 @@ static void EndGameProcessor_initFields(EndGameProcessor* this) {
 
 
 void EndGameProcessor_init(EndGameProcessor* this, AllBinaryGameCanvas* gameCanvas) {
+    EndGameProcessor_register();
     Processor_init(&this->base);
     EndGameProcessor_initFields(this);
         this->gameCanvas = gameCanvas;
 }
 
 EndGameProcessor* EndGameProcessor_new(AllBinaryGameCanvas* gameCanvas) {
-    EndGameProcessor* this = calloc(1, sizeof(EndGameProcessor));
+    EndGameProcessor* this = java_object_alloc(sizeof(EndGameProcessor), "EndGameProcessor");
     EndGameProcessor_init(this, gameCanvas);
     return this;
 }
@@ -67,13 +95,13 @@ EndGameProcessor* EndGameProcessor_new(AllBinaryGameCanvas* gameCanvas) {
 // throws Exception
 void EndGameProcessor_process(EndGameProcessor* this) {
         if (AllBinaryGameCanvas_isHighScoreSubmitted(this->gameCanvas)) {
-            if (JAVA_CALL(AllBinaryGameCanvas_getGameStateTimeHelper(this->gameCanvas), isElapsedTNT, this->WAIT)) {
+            if (TimeDelayHelper_isElapsedTNT(AllBinaryGameCanvas_getGameStateTimeHelper(this->gameCanvas), this->WAIT)) {
                 if (AllBinaryGameCanvas_getGameState(this->gameCanvas) == this->gameStateFactory->SHOW_END_RESULT_GAME_STATE) {
                     HighScoresHelperBase* highScoresBase = ((HighScoresHelperBase*) this->gameCanvas->highScoresHelper);
                     HighScores* highScores = HighScoresHelperBase_getSelectedHighScores(highScoresBase);
                     if (highScores != NullHighScoresSingletonFactory_getInstance()) {
                         HighScoresHelperBase_selectHighScores(highScoresBase);
-                        JAVA_CALL(AllBinaryGameCanvas_getRealHighScoresPaintable(this->gameCanvas), setHighScores, highScores);
+                        HighScoresPaintable_setHighScores(AllBinaryGameCanvas_getRealHighScoresPaintable(this->gameCanvas), highScores);
                         AllBinaryGameCanvas_setGameState(this->gameCanvas, this->gameStateFactory->SHOW_HIGH_SCORE_GAME_STATE);
                         AllBinaryGameCanvas_setHighScoresPaintable(this->gameCanvas, AllBinaryGameCanvas_getRealHighScoresPaintable(this->gameCanvas));
                     }

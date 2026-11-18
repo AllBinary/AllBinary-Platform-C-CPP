@@ -1,49 +1,35 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2026 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.canvas.transition.progress
+#include "org/allbinary/graphics/canvas/transition/progress/ProgressEndListener.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct ProgressEndListener ProgressEndListener;
-struct ProgressEndListener {
-    char unused;
-};
 
 ProgressEndListener* ProgressEndListener_instance;
 
-ProgressEndListener* ProgressEndListener_new(void);
-void ProgressEndListener_onEndEvent(ProgressEndListener* this);
 
-// Static fields with runtime initializers: call this once at startup
 void ProgressEndListener_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     ProgressEndListener_instance = ProgressEndListener_new();
 }
 
+void ProgressEndListener_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ProgressEndListener", nullptr);
+    java_register_method("ProgressEndListener", "onEndEvent", (void*) ProgressEndListener_onEndEvent);
+}
+
 void ProgressEndListener_init(ProgressEndListener* this) {
+    ProgressEndListener_register();
 }
 
 ProgressEndListener* ProgressEndListener_new(void) {
-    ProgressEndListener* this = calloc(1, sizeof(ProgressEndListener));
+    ProgressEndListener* this = java_object_alloc(sizeof(ProgressEndListener), "ProgressEndListener");
     ProgressEndListener_init(this);
     return this;
 }

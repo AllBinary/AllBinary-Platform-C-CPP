@@ -1,28 +1,5 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/animation/VectorRotationGenerator.h"
 #include "org/allbinary/graphics/PointFactory.h"
 #include "org/allbinary/graphics/pipeline/BasicGraphicsPipeline.h"
 #include "org/allbinary/logic/NullUtil.h"
@@ -33,27 +10,38 @@
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListS.h"
 #include "org/allbinary/vector/VectorInfo.h"
+#include "org/allbinary/animation/VectorAnimationUtil.h"
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
 
-typedef struct VectorRotationGenerator VectorRotationGenerator;
-struct VectorRotationGenerator {
-    LogUtil* logUtil;
-    VectorAnimationUtil* vectorAnimationUtil;
-    AngleFactory* angleFactory;
-};
 
 static VectorRotationGenerator* VectorRotationGenerator_instance;
 
-VectorRotationGenerator* VectorRotationGenerator_new(void);
-VectorRotationGenerator* VectorRotationGenerator_getInstance(void);
 
-void VectorRotationGenerator_init(VectorRotationGenerator* this);
-int32_t*** VectorRotationGenerator_getInstance(VectorRotationGenerator* this, VectorInfo* vectorRotationInfo);
-int32_t*** VectorRotationGenerator_getInstanceFrames(VectorRotationGenerator* this, int32_t width, int32_t height, int32_t** points, int32_t frames);
-BasicArrayList* VectorRotationGenerator_getListAtAngle(VectorRotationGenerator* this, int32_t width, int32_t height, BasicArrayList* pointBasicArrayList, Angle* angle);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
 void VectorRotationGenerator_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     VectorRotationGenerator_instance = VectorRotationGenerator_new();
+}
+
+void VectorRotationGenerator_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("VectorRotationGenerator", nullptr);
+    java_register_method("VectorRotationGenerator", "getInstance@2", (void*) VectorRotationGenerator_getInstance2);
+    java_register_method("VectorRotationGenerator", "getInstanceFrames", (void*) VectorRotationGenerator_getInstanceFrames);
+    java_register_method("VectorRotationGenerator", "getListAtAngle", (void*) VectorRotationGenerator_getListAtAngle);
 }
 
 static void VectorRotationGenerator_initFields(VectorRotationGenerator* this) {
@@ -63,24 +51,25 @@ static void VectorRotationGenerator_initFields(VectorRotationGenerator* this) {
 }
 
 
-VectorRotationGenerator* VectorRotationGenerator_getInstance(void) {
-        return VectorRotationGenerator_instance;
+VectorRotationGenerator* VectorRotationGenerator_getInstance0(void) {
+        return (VectorRotationGenerator_staticInit(), VectorRotationGenerator_instance);
 }
 
 
 void VectorRotationGenerator_init(VectorRotationGenerator* this) {
+    VectorRotationGenerator_register();
     VectorRotationGenerator_initFields(this);
 }
 
 VectorRotationGenerator* VectorRotationGenerator_new(void) {
-    VectorRotationGenerator* this = calloc(1, sizeof(VectorRotationGenerator));
+    VectorRotationGenerator* this = java_object_alloc(sizeof(VectorRotationGenerator), "VectorRotationGenerator");
     VectorRotationGenerator_init(this);
     return this;
 }
 
 
 // Java overloaded method: C needs a different name
-int32_t*** VectorRotationGenerator_getInstance(VectorRotationGenerator* this, VectorInfo* vectorRotationInfo) {
+int32_t*** VectorRotationGenerator_getInstance2(VectorRotationGenerator* this, VectorInfo* vectorRotationInfo) {
         return VectorRotationGenerator_getInstanceFrames(this, VectorInfo_getWidth(vectorRotationInfo), VectorInfo_getHeight(vectorRotationInfo), VectorInfo_getPoints(vectorRotationInfo), VectorInfo_getTotalFrames(vectorRotationInfo));
 }
 

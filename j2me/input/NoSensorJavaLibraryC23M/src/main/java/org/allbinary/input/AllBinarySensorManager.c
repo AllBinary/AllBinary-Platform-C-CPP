@@ -1,28 +1,5 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/input/AllBinarySensorManager.h"
 #include "org/allbinary/input/accelerometer/AccelerometerSensorFactory.h"
 #include "org/allbinary/input/gyro/GyroSensorFactory.h"
 #include "org/allbinary/logic/NullUtil.h"
@@ -30,29 +7,40 @@
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
 
-typedef struct AllBinarySensorManager AllBinarySensorManager;
-struct AllBinarySensorManager {
-    LogUtil* logUtil;
-    CommonStrings* commonStrings;
-    const char* ORIENTATION_SENSOR_INPUT;
-    const char* ORIENTATION_TYPE;
-    BasicArrayList* list;
-};
 
-static Any* AllBinarySensorManager_instance;
+static void* AllBinarySensorManager_instance;
 
-AllBinarySensorManager* AllBinarySensorManager_new(void);
-AllBinarySensorManager* AllBinarySensorManager_getInstance(void);
 
-void AllBinarySensorManager_init(AllBinarySensorManager* this);
-void AllBinarySensorManager_init(AllBinarySensorManager* this);
-BasicArrayList* AllBinarySensorManager_getSensorNamesList(AllBinarySensorManager* this);
-void AllBinarySensorManager_shutdown(AllBinarySensorManager* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
 void AllBinarySensorManager_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     AllBinarySensorManager_instance = NullUtil_getInstance()->NULL_OBJECT;
+}
+
+void AllBinarySensorManager_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("AllBinarySensorManager", nullptr);
+    java_register_method("AllBinarySensorManager", "init", (void*) AllBinarySensorManager_initMethod);
+    java_register_method("AllBinarySensorManager", "getSensorNamesList", (void*) AllBinarySensorManager_getSensorNamesList);
+    java_register_method("AllBinarySensorManager", "shutdown", (void*) AllBinarySensorManager_shutdown);
 }
 
 static void AllBinarySensorManager_initFields(AllBinarySensorManager* this) {
@@ -65,31 +53,32 @@ static void AllBinarySensorManager_initFields(AllBinarySensorManager* this) {
 
 
 AllBinarySensorManager* AllBinarySensorManager_getInstance(void) {
-        if (AllBinarySensorManager_instance == NullUtil_getInstance()->NULL_OBJECT) {
+        if ((AllBinarySensorManager_staticInit(), AllBinarySensorManager_instance) == NullUtil_getInstance()->NULL_OBJECT) {
             AllBinarySensorManager_instance = AllBinarySensorManager_new();
         }
-        return ((AllBinarySensorManager*) AllBinarySensorManager_instance);
+        return ((AllBinarySensorManager*) (AllBinarySensorManager_staticInit(), AllBinarySensorManager_instance));
 }
 
 
 void AllBinarySensorManager_init(AllBinarySensorManager* this) {
+    AllBinarySensorManager_register();
     AllBinarySensorManager_initFields(this);
         JAVA_TRY {
-            GyroSensorFactory_init();
-            AccelerometerSensorFactory_init();
+            GyroSensorFactory_initMethod();
+            AccelerometerSensorFactory_initMethod();
         } JAVA_CATCH(Exception, e) {
             LogUtil_put(this->logUtil, this->commonStrings->EXCEPTION, this, this->commonStrings->CONSTRUCTOR, e);
         } JAVA_END_TRY;
 }
 
 AllBinarySensorManager* AllBinarySensorManager_new(void) {
-    AllBinarySensorManager* this = calloc(1, sizeof(AllBinarySensorManager));
+    AllBinarySensorManager* this = java_object_alloc(sizeof(AllBinarySensorManager), "AllBinarySensorManager");
     AllBinarySensorManager_init(this);
     return this;
 }
 
 
-void AllBinarySensorManager_init(AllBinarySensorManager* this) {
+void AllBinarySensorManager_initMethod(AllBinarySensorManager* this) {
 }
 
 

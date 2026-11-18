@@ -1,28 +1,5 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/animation/VectorMirrorGenerator.h"
 #include "org/allbinary/graphics/PointFactory.h"
 #include "org/allbinary/graphics/pipeline/BasicGraphicsPipeline.h"
 #include "org/allbinary/logic/NullUtil.h"
@@ -30,25 +7,36 @@
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListS.h"
+#include "org/allbinary/animation/VectorAnimationUtil.h"
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
 
-typedef struct VectorMirrorGenerator VectorMirrorGenerator;
-struct VectorMirrorGenerator {
-    LogUtil* logUtil;
-    VectorAnimationUtil* vectorAnimationUtil;
-};
 
 static VectorMirrorGenerator* VectorMirrorGenerator_instance;
 
-VectorMirrorGenerator* VectorMirrorGenerator_new(void);
-VectorMirrorGenerator* VectorMirrorGenerator_getInstance(void);
 
-void VectorMirrorGenerator_init(VectorMirrorGenerator* this);
-int32_t*** VectorMirrorGenerator_getInstance(VectorMirrorGenerator* this, int32_t*** points, int32_t width);
-BasicArrayList* VectorMirrorGenerator_getInstance(VectorMirrorGenerator* this, BasicArrayList* pointBasicArrayList, int32_t width);
 
-// Static fields with runtime initializers: call this once at startup
+
+
 void VectorMirrorGenerator_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     VectorMirrorGenerator_instance = VectorMirrorGenerator_new();
+}
+
+void VectorMirrorGenerator_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("VectorMirrorGenerator", nullptr);
+    java_register_method("VectorMirrorGenerator", "getInstance@3_1", (void*) VectorMirrorGenerator_getInstance3_1);
+    java_register_method("VectorMirrorGenerator", "getInstance@3_2", (void*) VectorMirrorGenerator_getInstance3_2);
 }
 
 static void VectorMirrorGenerator_initFields(VectorMirrorGenerator* this) {
@@ -57,24 +45,25 @@ static void VectorMirrorGenerator_initFields(VectorMirrorGenerator* this) {
 }
 
 
-VectorMirrorGenerator* VectorMirrorGenerator_getInstance(void) {
-        return VectorMirrorGenerator_instance;
+VectorMirrorGenerator* VectorMirrorGenerator_getInstance0(void) {
+        return (VectorMirrorGenerator_staticInit(), VectorMirrorGenerator_instance);
 }
 
 
 void VectorMirrorGenerator_init(VectorMirrorGenerator* this) {
+    VectorMirrorGenerator_register();
     VectorMirrorGenerator_initFields(this);
 }
 
 VectorMirrorGenerator* VectorMirrorGenerator_new(void) {
-    VectorMirrorGenerator* this = calloc(1, sizeof(VectorMirrorGenerator));
+    VectorMirrorGenerator* this = java_object_alloc(sizeof(VectorMirrorGenerator), "VectorMirrorGenerator");
     VectorMirrorGenerator_init(this);
     return this;
 }
 
 
 // Java overloaded method: C needs a different name
-int32_t*** VectorMirrorGenerator_getInstance(VectorMirrorGenerator* this, int32_t*** points, int32_t width) {
+int32_t*** VectorMirrorGenerator_getInstance3_1(VectorMirrorGenerator* this, int32_t*** points, int32_t width) {
         JAVA_TRY {
             PointFactory* pointFactory = PointFactory_getInstance();
             BasicArrayList* pointBasicArrayList = nullptr;
@@ -106,7 +95,7 @@ int32_t*** VectorMirrorGenerator_getInstance(VectorMirrorGenerator* this, int32_
 
 // throws Exception
 // Java overloaded method: C needs a different name
-BasicArrayList* VectorMirrorGenerator_getInstance(VectorMirrorGenerator* this, BasicArrayList* pointBasicArrayList, int32_t width) {
+BasicArrayList* VectorMirrorGenerator_getInstance3_2(VectorMirrorGenerator* this, BasicArrayList* pointBasicArrayList, int32_t width) {
         BasicGraphicsPipeline* graphicsPipe = BasicGraphicsPipeline_new(pointBasicArrayList);
         BasicGraphicsPipeline_createMatrix(graphicsPipe);
         BasicGraphicsPipeline_mirror(graphicsPipe, width);

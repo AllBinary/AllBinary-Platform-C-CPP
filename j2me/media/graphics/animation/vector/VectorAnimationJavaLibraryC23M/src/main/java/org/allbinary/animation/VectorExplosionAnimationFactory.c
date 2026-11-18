@@ -1,47 +1,44 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/animation/VectorExplosionAnimationFactory.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
 #include "org/allbinary/graphics/color/BasicColorFactory.h"
 #include "org/allbinary/animation/ProceduralAnimationInterfaceFactoryInterface.h"
+#include "org/allbinary/animation/VectorExplosionGenerator.h"
+#include "org/allbinary/animation/AnimationBehaviorFactory.h"
+#include "org/allbinary/animation/VectorAnimationInterface.h"
+#include "org/allbinary/animation/VectorRotationAnimation.h"
+#include "org/allbinary/animation/Animation.h"
+#if __has_include("org/allbinary/graphics/color/BasicColorFactory.h")
+#include "org/allbinary/graphics/color/BasicColorFactory.h"
+#endif
 
-typedef struct VectorExplosionAnimationFactory VectorExplosionAnimationFactory;
-struct VectorExplosionAnimationFactory {
-    ProceduralAnimationInterfaceFactoryInterface ProceduralAnimationInterfaceFactoryInterface_interface;
-    VectorExplosionGenerator* vectorExplosionGenerator;
-    BasicColor* basicColor;
-    AnimationBehaviorFactory* animationBehaviorFactory;
-};
 
 
-VectorExplosionAnimationFactory* VectorExplosionAnimationFactory_new(BasicColor* basicColor, AnimationBehaviorFactory* animationBehaviorFactory);
 
-void VectorExplosionAnimationFactory_init(VectorExplosionAnimationFactory* this, BasicColor* basicColor, AnimationBehaviorFactory* animationBehaviorFactory);
-Animation* VectorExplosionAnimationFactory_getInstanceAnimation(VectorExplosionAnimationFactory* this, Animation* animationInterface);
+
 static void VectorExplosionAnimationFactory_setBasicColorP(VectorExplosionAnimationFactory* this, BasicColor* basicColor);
+
 static BasicColor* VectorExplosionAnimationFactory_getBasicColorP(VectorExplosionAnimationFactory* this);
+
+void VectorExplosionAnimationFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void VectorExplosionAnimationFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("VectorExplosionAnimationFactory", nullptr);
+    java_register_method("VectorExplosionAnimationFactory", "getInstanceAnimation", (void*) VectorExplosionAnimationFactory_getInstanceAnimation);
+    java_register_method("VectorExplosionAnimationFactory", "setBasicColorP", (void*) VectorExplosionAnimationFactory_setBasicColorP);
+    java_register_method("VectorExplosionAnimationFactory", "getBasicColorP", (void*) VectorExplosionAnimationFactory_getBasicColorP);
+}
 
 static void VectorExplosionAnimationFactory_initFields(VectorExplosionAnimationFactory* this) {
     this->vectorExplosionGenerator = VectorExplosionGenerator_getInstance();
@@ -51,13 +48,14 @@ static void VectorExplosionAnimationFactory_initFields(VectorExplosionAnimationF
 
 
 void VectorExplosionAnimationFactory_init(VectorExplosionAnimationFactory* this, BasicColor* basicColor, AnimationBehaviorFactory* animationBehaviorFactory) {
+    VectorExplosionAnimationFactory_register();
     VectorExplosionAnimationFactory_initFields(this);
         this->animationBehaviorFactory = animationBehaviorFactory;
         VectorExplosionAnimationFactory_setBasicColorP(this, basicColor);
 }
 
 VectorExplosionAnimationFactory* VectorExplosionAnimationFactory_new(BasicColor* basicColor, AnimationBehaviorFactory* animationBehaviorFactory) {
-    VectorExplosionAnimationFactory* this = calloc(1, sizeof(VectorExplosionAnimationFactory));
+    VectorExplosionAnimationFactory* this = java_object_alloc(sizeof(VectorExplosionAnimationFactory), "VectorExplosionAnimationFactory");
     VectorExplosionAnimationFactory_init(this, basicColor, animationBehaviorFactory);
     return this;
 }
@@ -66,7 +64,7 @@ VectorExplosionAnimationFactory* VectorExplosionAnimationFactory_new(BasicColor*
 // throws Exception
 Animation* VectorExplosionAnimationFactory_getInstanceAnimation(VectorExplosionAnimationFactory* this, Animation* animationInterface) {
         VectorAnimationInterface* vectorRotationAnimationInterface = ((VectorAnimationInterface*) animationInterface);
-        int32_t frame = VectorAnimationInterface_getFrame(vectorRotationAnimationInterface);
+        int32_t frame = IndexedAnimationInterface_getFrame(vectorRotationAnimationInterface);
         int32_t** framePoints = VectorAnimationInterface_getPoints(vectorRotationAnimationInterface, frame);
         int32_t*** points = VectorExplosionGenerator_getInstance(this->vectorExplosionGenerator, framePoints, 6, this->vectorExplosionGenerator->ROTATION);
         return VectorRotationAnimation_new(points, VectorExplosionAnimationFactory_getBasicColorP(this), AnimationBehaviorFactory_getOrCreateInstance(this->animationBehaviorFactory));

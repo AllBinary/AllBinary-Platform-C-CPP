@@ -1,52 +1,34 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.identification
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/identification/BasicGroupFactory.h"
 #include "org/allbinary/logic/NullUtil.h"
+#include "org/allbinary/game/identification/Group.h"
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
 
-typedef struct BasicGroupFactory BasicGroupFactory;
-struct BasicGroupFactory {
-    const char* NAME;
-    const char* NO_SUCH_GROUP;
-    Group* GOOD;
-    Group* ENEMY;
-    Group* ENEMY_ON_LEVEL;
-    Group* NONE;
-    Group** GOOD_ARRAY;
-    Group** ENEMY_ARRAY;
-    Group** ENEMY_ON_LEVEL_ARRAY;
-    Group** NONE_ARRAY;
-};
 
-static Any* BasicGroupFactory_instance;
+static void* BasicGroupFactory_instance;
 
-BasicGroupFactory* BasicGroupFactory_new(void);
-BasicGroupFactory* BasicGroupFactory_getInstance(void);
 
-// Static fields with runtime initializers: call this once at startup
 void BasicGroupFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     BasicGroupFactory_instance = NullUtil_getInstance()->NULL_OBJECT;
+}
+
+void BasicGroupFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("BasicGroupFactory", nullptr);
 }
 
 static void BasicGroupFactory_initFields(BasicGroupFactory* this) {
@@ -63,20 +45,21 @@ static void BasicGroupFactory_initFields(BasicGroupFactory* this) {
 }
 
 void BasicGroupFactory_init(BasicGroupFactory* this) {
+    BasicGroupFactory_register();
     BasicGroupFactory_initFields(this);
 }
 
 BasicGroupFactory* BasicGroupFactory_new(void) {
-    BasicGroupFactory* this = calloc(1, sizeof(BasicGroupFactory));
+    BasicGroupFactory* this = java_object_alloc(sizeof(BasicGroupFactory), "BasicGroupFactory");
     BasicGroupFactory_init(this);
     return this;
 }
 
 
 BasicGroupFactory* BasicGroupFactory_getInstance(void) {
-        if (BasicGroupFactory_instance == NullUtil_getInstance()->NULL_OBJECT) {
+        if ((BasicGroupFactory_staticInit(), BasicGroupFactory_instance) == NullUtil_getInstance()->NULL_OBJECT) {
             BasicGroupFactory_instance = BasicGroupFactory_new();
         }
-        return ((BasicGroupFactory*) BasicGroupFactory_instance);
+        return ((BasicGroupFactory*) (BasicGroupFactory_staticInit(), BasicGroupFactory_instance));
 }
 

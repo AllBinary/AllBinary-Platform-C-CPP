@@ -1,28 +1,5 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.pipeline
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/graphics/pipeline/BasicGraphicsPipeline.h"
 #include "org/allbinary/graphics/GPoint.h"
 #include "org/allbinary/graphics/PointFactory.h"
 #include "org/allbinary/math/Angle.h"
@@ -30,23 +7,40 @@
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
 
-typedef struct BasicGraphicsPipeline BasicGraphicsPipeline;
-struct BasicGraphicsPipeline {
-    BasicArrayList* pointBasicArrayList;
-    NoDecimalTrigTable* noDecimalTrigTable;
-};
 
 
-BasicGraphicsPipeline* BasicGraphicsPipeline_new(BasicArrayList* points);
 
-void BasicGraphicsPipeline_init(BasicGraphicsPipeline* this, BasicArrayList* points);
-void BasicGraphicsPipeline_setInitMatrix(BasicGraphicsPipeline* this, BasicArrayList* points);
-void BasicGraphicsPipeline_createMatrix(BasicGraphicsPipeline* this);
-void BasicGraphicsPipeline_translate(BasicGraphicsPipeline* this, int32_t x, int32_t y);
-void BasicGraphicsPipeline_rotateToAngle(BasicGraphicsPipeline* this, Angle* angle);
+
+
+
+
 static void BasicGraphicsPipeline_rotate(BasicGraphicsPipeline* this, int32_t angle);
-void BasicGraphicsPipeline_mirror(BasicGraphicsPipeline* this, int32_t width);
-BasicArrayList* BasicGraphicsPipeline_getMatrix(BasicGraphicsPipeline* this);
+
+
+
+void BasicGraphicsPipeline_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void BasicGraphicsPipeline_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("BasicGraphicsPipeline", nullptr);
+    java_register_method("BasicGraphicsPipeline", "setInitMatrix", (void*) BasicGraphicsPipeline_setInitMatrix);
+    java_register_method("BasicGraphicsPipeline", "createMatrix", (void*) BasicGraphicsPipeline_createMatrix);
+    java_register_method("BasicGraphicsPipeline", "translate", (void*) BasicGraphicsPipeline_translate);
+    java_register_method("BasicGraphicsPipeline", "rotateToAngle", (void*) BasicGraphicsPipeline_rotateToAngle);
+    java_register_method("BasicGraphicsPipeline", "rotate", (void*) BasicGraphicsPipeline_rotate);
+    java_register_method("BasicGraphicsPipeline", "mirror", (void*) BasicGraphicsPipeline_mirror);
+    java_register_method("BasicGraphicsPipeline", "getMatrix", (void*) BasicGraphicsPipeline_getMatrix);
+}
 
 static void BasicGraphicsPipeline_initFields(BasicGraphicsPipeline* this) {
     
@@ -55,12 +49,13 @@ static void BasicGraphicsPipeline_initFields(BasicGraphicsPipeline* this) {
 
 
 void BasicGraphicsPipeline_init(BasicGraphicsPipeline* this, BasicArrayList* points) {
+    BasicGraphicsPipeline_register();
     BasicGraphicsPipeline_initFields(this);
         this->pointBasicArrayList = points;
 }
 
 BasicGraphicsPipeline* BasicGraphicsPipeline_new(BasicArrayList* points) {
-    BasicGraphicsPipeline* this = calloc(1, sizeof(BasicGraphicsPipeline));
+    BasicGraphicsPipeline* this = java_object_alloc(sizeof(BasicGraphicsPipeline), "BasicGraphicsPipeline");
     BasicGraphicsPipeline_init(this, points);
     return this;
 }
@@ -116,9 +111,9 @@ static void BasicGraphicsPipeline_rotate(BasicGraphicsPipeline* this, int32_t an
             if (GPoint_getX(secondPoint) != 1000) {
                 sin = NoDecimalTrigTable_sin(this->noDecimalTrigTable, angle);
                 cos = NoDecimalTrigTable_cos(this->noDecimalTrigTable, angle);
-                y = GPoint_getY(secondPoint) * sin;
-                secondX = (GPoint_getX(secondPoint) * cos) - y;
-                secondY = (GPoint_getX(secondPoint) * sin) + (GPoint_getY(secondPoint) * cos);
+                y = ((int64_t) GPoint_getY(secondPoint)) * sin;
+                secondX = (((int64_t) GPoint_getX(secondPoint)) * cos) - y;
+                secondY = (((int64_t) GPoint_getX(secondPoint)) * sin) + (((int64_t) GPoint_getY(secondPoint)) * cos);
                 point = PointFactory_createXY(pointFactory, ((int32_t) secondX) / 10000, ((int32_t) secondY) / 10000);
                 BasicArrayList_add(newBasicArrayList, point);
             } else {

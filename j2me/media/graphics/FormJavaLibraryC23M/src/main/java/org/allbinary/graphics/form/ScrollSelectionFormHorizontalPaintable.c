@@ -1,43 +1,31 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.form
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/graphics/form/ScrollSelectionFormHorizontalPaintable.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/graphics/form/item/ABCustomItem.h"
 #include "org/allbinary/graphics/form/ItemIndexPaintable.h"
-
-typedef struct ScrollSelectionFormHorizontalPaintable ScrollSelectionFormHorizontalPaintable;
-struct ScrollSelectionFormHorizontalPaintable {
-    ItemIndexPaintable base;
-    ScrollSelectionForm* scrollSelectionForm;
-};
+#include "org/allbinary/graphics/form/ScrollSelectionForm.h"
 
 
-ScrollSelectionFormHorizontalPaintable* ScrollSelectionFormHorizontalPaintable_new(ScrollSelectionForm* scrollSelectionForm);
 
-void ScrollSelectionFormHorizontalPaintable_init(ScrollSelectionFormHorizontalPaintable* this, ScrollSelectionForm* scrollSelectionForm);
-int32_t ScrollSelectionFormHorizontalPaintable_paint(ScrollSelectionFormHorizontalPaintable* this, Graphics* graphics, int32_t index, ABCustomItem* item, int32_t dx, int32_t dy);
+
+
+void ScrollSelectionFormHorizontalPaintable_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void ScrollSelectionFormHorizontalPaintable_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ScrollSelectionFormHorizontalPaintable", "ItemIndexPaintable");
+    java_register_method("ScrollSelectionFormHorizontalPaintable", "paint", (void*) ScrollSelectionFormHorizontalPaintable_paint);
+}
 
 static void ScrollSelectionFormHorizontalPaintable_initFields(ScrollSelectionFormHorizontalPaintable* this) {
     
@@ -45,13 +33,14 @@ static void ScrollSelectionFormHorizontalPaintable_initFields(ScrollSelectionFor
 
 
 void ScrollSelectionFormHorizontalPaintable_init(ScrollSelectionFormHorizontalPaintable* this, ScrollSelectionForm* scrollSelectionForm) {
+    ScrollSelectionFormHorizontalPaintable_register();
     ItemIndexPaintable_init(&this->base);
     ScrollSelectionFormHorizontalPaintable_initFields(this);
         this->scrollSelectionForm = scrollSelectionForm;
 }
 
 ScrollSelectionFormHorizontalPaintable* ScrollSelectionFormHorizontalPaintable_new(ScrollSelectionForm* scrollSelectionForm) {
-    ScrollSelectionFormHorizontalPaintable* this = calloc(1, sizeof(ScrollSelectionFormHorizontalPaintable));
+    ScrollSelectionFormHorizontalPaintable* this = java_object_alloc(sizeof(ScrollSelectionFormHorizontalPaintable), "ScrollSelectionFormHorizontalPaintable");
     ScrollSelectionFormHorizontalPaintable_init(this, scrollSelectionForm);
     return this;
 }

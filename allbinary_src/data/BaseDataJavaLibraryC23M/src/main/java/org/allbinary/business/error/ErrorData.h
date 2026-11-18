@@ -38,6 +38,8 @@ ErrorData* ErrorData_new(void);
 ErrorData* ErrorData_getInstance(void);
 
 void ErrorData_init(ErrorData* this);
+#define ErrorData_new0 ErrorData_new
+#define ErrorData_init0 ErrorData_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void ErrorData_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

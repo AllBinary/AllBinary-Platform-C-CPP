@@ -68,6 +68,11 @@ void IndexedBasicArrayListCache_add(IndexedBasicArrayListCache* this, CacheableI
 void IndexedBasicArrayListCache_addArray(IndexedBasicArrayListCache* this, CacheableInterface** cacheableInterfaces);
 
 void IndexedBasicArrayListCache_clear(IndexedBasicArrayListCache* this);
+#define IndexedBasicArrayListCache_new0 IndexedBasicArrayListCache_new
+#define IndexedBasicArrayListCache_init0 IndexedBasicArrayListCache_init
+#ifndef IndexedBasicArrayListCache_log
+#define IndexedBasicArrayListCache_log BaseBasicArrayListCache_log
+#endif
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void IndexedBasicArrayListCache_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

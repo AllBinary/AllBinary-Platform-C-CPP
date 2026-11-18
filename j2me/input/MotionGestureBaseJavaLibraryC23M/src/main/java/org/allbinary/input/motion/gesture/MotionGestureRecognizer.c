@@ -1,28 +1,5 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input.motion.gesture
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/input/motion/gesture/MotionGestureRecognizer.h"
 #include "org/allbinary/graphics/GPoint.h"
 #include "org/allbinary/graphics/Line.h"
 #include "org/allbinary/graphics/PointFactory.h"
@@ -37,31 +14,46 @@
 #include "org/allbinary/logic/math/J2SEMath.h"
 #include "org/allbinary/logic/util/event/handler/BasicEventHandler.h"
 #include "org/allbinary/string/CommonStrings.h"
-
-typedef struct MotionGestureRecognizer MotionGestureRecognizer;
-struct MotionGestureRecognizer {
-    LogUtil* logUtil;
-    J2SEMath* j2seMath;
-    GPoint* origin;
-    GPoint* previous;
-    GPoint* intermediate;
-    Line* line;
-    BasicMotionGesturesHandler* motionGesturesHandler;
-    BasicEventHandler* movedMotionGesturesHandler;
-    BasicEventHandler* scrolledMotionGesturesHandler;
-    MotionEventCircularPool* motionEventCircularPool;
-};
+#include "org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h"
+#include "org/allbinary/input/motion/gesture/MotionGestureInput.h"
+#if __has_include("org/allbinary/graphics/PointFactory.h")
+#include "org/allbinary/graphics/PointFactory.h"
+#endif
+#if __has_include("org/allbinary/input/motion/gesture/configuration/MotionGestureConfiguration.h")
+#include "org/allbinary/input/motion/gesture/configuration/MotionGestureConfiguration.h"
+#endif
 
 
-MotionGestureRecognizer* MotionGestureRecognizer_new(int32_t id);
 
-void MotionGestureRecognizer_init(MotionGestureRecognizer* this, int32_t id);
-bool MotionGestureRecognizer_processPressedMotionEvent(MotionGestureRecognizer* this, GPoint* current, int32_t deviceId, int32_t button);
-bool MotionGestureRecognizer_processReleasedMotionEvent(MotionGestureRecognizer* this, GPoint* current, int32_t deviceId, int32_t button);
-void MotionGestureRecognizer_processDraggedMotionEvent(MotionGestureRecognizer* this, GPoint* current, int32_t deviceId, int32_t buttonMask);
-bool MotionGestureRecognizer_processMovedMotionEvent(MotionGestureRecognizer* this, GPoint* current, int32_t deviceId, int32_t button);
-bool MotionGestureRecognizer_processScrolledMotionEvent(MotionGestureRecognizer* this, GPoint* current, int32_t deviceId, int32_t button);
-BasicMotionGesturesHandler* MotionGestureRecognizer_getMotionGesturesHandler(MotionGestureRecognizer* this);
+
+
+
+
+
+
+
+void MotionGestureRecognizer_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void MotionGestureRecognizer_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("MotionGestureRecognizer", nullptr);
+    java_register_method("MotionGestureRecognizer", "processPressedMotionEvent", (void*) MotionGestureRecognizer_processPressedMotionEvent);
+    java_register_method("MotionGestureRecognizer", "processReleasedMotionEvent", (void*) MotionGestureRecognizer_processReleasedMotionEvent);
+    java_register_method("MotionGestureRecognizer", "processDraggedMotionEvent", (void*) MotionGestureRecognizer_processDraggedMotionEvent);
+    java_register_method("MotionGestureRecognizer", "processMovedMotionEvent", (void*) MotionGestureRecognizer_processMovedMotionEvent);
+    java_register_method("MotionGestureRecognizer", "processScrolledMotionEvent", (void*) MotionGestureRecognizer_processScrolledMotionEvent);
+    java_register_method("MotionGestureRecognizer", "getMotionGesturesHandler", (void*) MotionGestureRecognizer_getMotionGesturesHandler);
+}
 
 static void MotionGestureRecognizer_initFields(MotionGestureRecognizer* this) {
     this->logUtil = LogUtil_getInstance();
@@ -78,6 +70,7 @@ static void MotionGestureRecognizer_initFields(MotionGestureRecognizer* this) {
 
 
 void MotionGestureRecognizer_init(MotionGestureRecognizer* this, int32_t id) {
+    MotionGestureRecognizer_register();
     MotionGestureRecognizer_initFields(this);
         this->motionEventCircularPool = MotionEventCircularPool_createPool(id);
         BasicEventHandler* motionGesturesHandler = BasicEventHandler_new();
@@ -97,7 +90,7 @@ void MotionGestureRecognizer_init(MotionGestureRecognizer* this, int32_t id) {
 }
 
 MotionGestureRecognizer* MotionGestureRecognizer_new(int32_t id) {
-    MotionGestureRecognizer* this = calloc(1, sizeof(MotionGestureRecognizer));
+    MotionGestureRecognizer* this = java_object_alloc(sizeof(MotionGestureRecognizer), "MotionGestureRecognizer");
     MotionGestureRecognizer_init(this, id);
     return this;
 }
@@ -110,7 +103,7 @@ bool MotionGestureRecognizer_processPressedMotionEvent(MotionGestureRecognizer* 
         MotionGestureEvent* event = MotionEventCircularPool_getInstance(this->motionEventCircularPool, TouchMotionGestureFactory_getInstance()->PRESSED);
         MotionGestureEvent_setPreviousPoint(event, this->previous);
         MotionGestureEvent_setCurrentPoint(event, current);
-        BasicMotionGesturesHandler_fireEvent(this->motionGesturesHandler, event);
+        BasicEventHandler_fireEvent(this->motionGesturesHandler, event);
         return true;
 }
 
@@ -120,7 +113,7 @@ bool MotionGestureRecognizer_processReleasedMotionEvent(MotionGestureRecognizer*
         MotionGestureEvent* event = MotionEventCircularPool_getInstance(this->motionEventCircularPool, TouchMotionGestureFactory_getInstance()->RELEASED);
         MotionGestureEvent_setPreviousPoint(event, this->previous);
         MotionGestureEvent_setCurrentPoint(event, current);
-        BasicMotionGesturesHandler_fireEvent(this->motionGesturesHandler, event);
+        BasicEventHandler_fireEvent(this->motionGesturesHandler, event);
         return true;
 }
 
@@ -134,8 +127,8 @@ void MotionGestureRecognizer_processDraggedMotionEvent(MotionGestureRecognizer* 
         }
         Line_setP1(this->line, this->previous);
         Line_setP2(this->line, current);
-        int32_t minimumMotionGesture = MotionGestureConfigurationFactory_getMinimumMotionGesture(MotionGestureConfigurationFactory_getInstance());
-        if (J2SEMath_abs(this->j2seMath, ((float) Line_getDeltaX(this->line))) < minimumMotionGesture && J2SEMath_abs(this->j2seMath, ((float) Line_getDeltaY(this->line))) < minimumMotionGesture) {
+        int32_t minimumMotionGesture = MotionGestureConfiguration_getMinimumMotionGesture(MotionGestureConfigurationFactory_getInstance());
+        if (J2SEMath_abs(this->j2seMath, ((float) Line_getDeltaX(this->line))) < ((float) minimumMotionGesture) && J2SEMath_abs(this->j2seMath, ((float) Line_getDeltaY(this->line))) < ((float) minimumMotionGesture)) {
             this->intermediate = current;
             return;
         }
@@ -151,27 +144,27 @@ void MotionGestureRecognizer_processDraggedMotionEvent(MotionGestureRecognizer* 
             diagonalToleranceLower = ((double) MotionGestureConfiguration_getDiagonalTolerance(conf));
         }
         if (absGradient > tan(((diagonalToleranceHigher) * 3.14159265358979323846 / 180.0))) {
-            if (Line_getDeltaY(this->line) > 0) {
+            if (Line_getDeltaY(this->line) > 0.0) {
                 newMotionGesture = touchMotionGestureFactory->UP;
             } else {
                 newMotionGesture = touchMotionGestureFactory->DOWN;
             }
         } else {
             if (absGradient < tan(((diagonalToleranceLower) * 3.14159265358979323846 / 180.0))) {
-                if (Line_getDeltaX(this->line) > 0) {
+                if (Line_getDeltaX(this->line) > 0.0) {
                     newMotionGesture = touchMotionGestureFactory->LEFT;
                 } else {
                     newMotionGesture = touchMotionGestureFactory->RIGHT;
                 }
             } else {
                 if (gradient > 0.0) {
-                    if (Line_getDeltaX(this->line) > 0) {
+                    if (Line_getDeltaX(this->line) > 0.0) {
                         newMotionGesture = touchMotionGestureFactory->DIAGONAL_UP_LEFT;
                     } else {
                         newMotionGesture = touchMotionGestureFactory->DIAGONAL_DOWN_RIGHT;
                     }
                 } else {
-                    if (Line_getDeltaX(this->line) > 0) {
+                    if (Line_getDeltaX(this->line) > 0.0) {
                         newMotionGesture = touchMotionGestureFactory->DIAGONAL_DOWN_LEFT;
                     } else {
                         newMotionGesture = touchMotionGestureFactory->DIAGONAL_UP_RIGHT;
@@ -184,7 +177,7 @@ void MotionGestureRecognizer_processDraggedMotionEvent(MotionGestureRecognizer* 
         MotionGestureEvent* event = MotionEventCircularPool_getInstance(this->motionEventCircularPool, newMotionGesture);
         MotionGestureEvent_setPreviousPoint(event, this->previous);
         MotionGestureEvent_setCurrentPoint(event, current);
-        BasicMotionGesturesHandler_fireEvent(this->motionGesturesHandler, event);
+        BasicEventHandler_fireEvent(this->motionGesturesHandler, event);
         return;
 }
 

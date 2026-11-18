@@ -1,34 +1,10 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation.image.sprite
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Image.h"
-// #include "javax/microedition/lcdui/game/Sprite.h"
-// #include "javax/microedition/media/Player.h"
+#include "org/allbinary/animation/image/sprite/ImageCaptionIndexedAnimationFactory.h"
+#include "javax/microedition/lcdui/Image.h"
+#include "javax/microedition/lcdui/game/Sprite.h"
+#include "javax/microedition/media/Player.h"
 #include "org/allbinary/animation/Animation.h"
 #include "org/allbinary/animation/AnimationBehaviorFactory.h"
-#include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
 #include "org/allbinary/animation/IndexedAnimation.h"
 #include "org/allbinary/animation/caption/CaptionIndexedAnimation.h"
 #include "org/allbinary/animation/image/ImageAnimation.h"
@@ -38,32 +14,34 @@
 #include "org/allbinary/logic/communication/log/ForcedLogUtil.h"
 #include "org/allbinary/media/ScaleProperties.h"
 #include "org/allbinary/media/audio/Sound.h"
-
-typedef struct ImageCaptionIndexedAnimationFactory ImageCaptionIndexedAnimationFactory;
-struct ImageCaptionIndexedAnimationFactory {
-    AnimationInterfaceFactoryInterface AnimationInterfaceFactoryInterface_interface;
-    AnimationFactoryImageScaleUtil* animationFactoryImageScaleUtil;
-    AnimationFactorySpriteScaleUtil* animationFactorySpriteScaleUtil;
-    Image* captionImage;
-    Image* spriteMovieImage;
-    int32_t frameWidth;
-    int32_t frameHeight;
-    int32_t captionDx;
-    int32_t captionDy;
-    int32_t dx;
-    int32_t dy;
-    int32_t time;
-    Sound* soundInterface;
-    ScaleProperties* scaleProperties;
-    AnimationBehaviorFactory* animationBehaviorFactory;
-};
+#include "org/allbinary/animation/image/sprite/SpriteIndexedAnimation.h"
+#if __has_include("org/allbinary/graphics/color/BasicColorUtil.h")
+#include "org/allbinary/graphics/color/BasicColorUtil.h"
+#endif
 
 
-ImageCaptionIndexedAnimationFactory* ImageCaptionIndexedAnimationFactory_new(Image* captionImage, Image* spriteMovieImage, Sound* soundInterface, int32_t frameWidth, int32_t frameHeight, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy, int32_t time, AnimationBehaviorFactory* animationBehaviorFactory);
 
-void ImageCaptionIndexedAnimationFactory_init(ImageCaptionIndexedAnimationFactory* this, Image* captionImage, Image* spriteMovieImage, Sound* soundInterface, int32_t frameWidth, int32_t frameHeight, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy, int32_t time, AnimationBehaviorFactory* animationBehaviorFactory);
-Animation* ImageCaptionIndexedAnimationFactory_getInstance(ImageCaptionIndexedAnimationFactory* this, int32_t instanceId);
-void ImageCaptionIndexedAnimationFactory_setInitialScale(ImageCaptionIndexedAnimationFactory* this, ScaleProperties* scaleProperties);
+
+
+
+void ImageCaptionIndexedAnimationFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void ImageCaptionIndexedAnimationFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ImageCaptionIndexedAnimationFactory", nullptr);
+    java_register_method("ImageCaptionIndexedAnimationFactory", "getInstance", (void*) ImageCaptionIndexedAnimationFactory_getInstance);
+    java_register_method("ImageCaptionIndexedAnimationFactory", "setInitialScale", (void*) ImageCaptionIndexedAnimationFactory_setInitialScale);
+}
 
 static void ImageCaptionIndexedAnimationFactory_initFields(ImageCaptionIndexedAnimationFactory* this) {
     this->animationFactoryImageScaleUtil = AnimationFactoryImageScaleUtil_getInstance();
@@ -78,12 +56,13 @@ static void ImageCaptionIndexedAnimationFactory_initFields(ImageCaptionIndexedAn
     
     
     
-    this->scaleProperties = ScaleProperties_instance;
+    this->scaleProperties = (ScaleProperties_staticInit(), ScaleProperties_instance);
     
 }
 
 
 void ImageCaptionIndexedAnimationFactory_init(ImageCaptionIndexedAnimationFactory* this, Image* captionImage, Image* spriteMovieImage, Sound* soundInterface, int32_t frameWidth, int32_t frameHeight, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy, int32_t time, AnimationBehaviorFactory* animationBehaviorFactory) {
+    ImageCaptionIndexedAnimationFactory_register();
     ImageCaptionIndexedAnimationFactory_initFields(this);
         if (animationBehaviorFactory == AnimationBehaviorFactory_getInstance()) {
             ForcedLogUtil_log("Using default AnimationBehaviorFactory with IndexedAnimationFactory", this);
@@ -102,7 +81,7 @@ void ImageCaptionIndexedAnimationFactory_init(ImageCaptionIndexedAnimationFactor
 }
 
 ImageCaptionIndexedAnimationFactory* ImageCaptionIndexedAnimationFactory_new(Image* captionImage, Image* spriteMovieImage, Sound* soundInterface, int32_t frameWidth, int32_t frameHeight, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy, int32_t time, AnimationBehaviorFactory* animationBehaviorFactory) {
-    ImageCaptionIndexedAnimationFactory* this = calloc(1, sizeof(ImageCaptionIndexedAnimationFactory));
+    ImageCaptionIndexedAnimationFactory* this = java_object_alloc(sizeof(ImageCaptionIndexedAnimationFactory), "ImageCaptionIndexedAnimationFactory");
     ImageCaptionIndexedAnimationFactory_init(this, captionImage, spriteMovieImage, soundInterface, frameWidth, frameHeight, captionDx, captionDy, dx, dy, time, animationBehaviorFactory);
     return this;
 }

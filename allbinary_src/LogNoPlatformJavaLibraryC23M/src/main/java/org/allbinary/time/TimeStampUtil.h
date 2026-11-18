@@ -42,6 +42,8 @@ TimeStampUtil* TimeStampUtil_getInstance(void);
 void TimeStampUtil_init(TimeStampUtil* this);
 
 const char* TimeStampUtil_getAsString(TimeStampUtil* this);
+#define TimeStampUtil_new0 TimeStampUtil_new
+#define TimeStampUtil_init0 TimeStampUtil_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void TimeStampUtil_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

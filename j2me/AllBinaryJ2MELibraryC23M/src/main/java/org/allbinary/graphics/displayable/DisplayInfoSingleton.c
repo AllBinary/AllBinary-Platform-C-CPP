@@ -1,29 +1,6 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2011 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.displayable
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Displayable.h"
+#include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
+#include "javax/microedition/lcdui/Displayable.h"
 #include "org/allbinary/AndroidUtil.h"
 #include "org/allbinary/game/configuration/feature/Features.h"
 #include "org/allbinary/graphics/displayable/event/DisplayChangeEvent.h"
@@ -41,92 +18,226 @@
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
+#include "org/allbinary/graphics/displayable/BaseScalable.h"
+#include "org/allbinary/graphics/displayable/ScalableListener.h"
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/string/CommonLabels.h")
+#include "org/allbinary/string/CommonLabels.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/system/os/OperatingSystemFactory.h")
+#include "org/allbinary/logic/system/os/OperatingSystemFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/graphics/threed/SWTJOGLProcessor.h")
+#include "org/allbinary/graphics/threed/SWTJOGLProcessor.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/graphics/displayable/event/DisplayChangeEventHandler.h")
+#include "org/allbinary/graphics/displayable/event/DisplayChangeEventHandler.h"
+#endif
+#if __has_include("org/allbinary/graphics/displayable/event/LastDisplayChangeEventHandler.h")
+#include "org/allbinary/graphics/displayable/event/LastDisplayChangeEventHandler.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/string/CommonLabels.h")
+#include "org/allbinary/string/CommonLabels.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/system/os/OperatingSystemFactory.h")
+#include "org/allbinary/logic/system/os/OperatingSystemFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/graphics/threed/SWTJOGLProcessor.h")
+#include "org/allbinary/graphics/threed/SWTJOGLProcessor.h"
+#endif
 
-typedef struct DisplayInfoSingleton DisplayInfoSingleton;
-struct DisplayInfoSingleton {
-    LogUtil* logUtil;
-    CommonLabels* commonLabels;
-    CommonSeps* commonSeps;
-    CommonStrings* commonStrings;
-    const char* ORIENTATION;
-    const char* ADJUSTING_FOR_SCALING_IN_PORTRAIT;
-    const char* ADJUSTING_FOR_SCALING_IN_LANDSCAPE;
-    int32_t* last;
-    int32_t* lastHalf;
-    int32_t* full;
-    int32_t top;
-    int32_t left;
-    int32_t xOffset;
-    int32_t yOffset;
-    float scaleLargestTo;
-    int32_t WIDTH;
-    int32_t HEIGHT;
-    int32_t CUSTOM_WIDTH;
-    int32_t CUSTOM_HEIGHT;
-    BaseScalable* scalableListener;
-    float displayRatio;
-    float ratio;
-    const char* SET_LAST_SIZE_METHOD_NAME;
-    const char* FULL_WIDTH;
-    const char* FULL_HEIGHT;
-    const char* LAST_WIDTH;
-    const char* LAST_HEIGHT;
-    const char* PORTRAIT;
-    const char* LANDSCAPE;
-    DisplayChangeEvent* displayChangeEvent;
-    const char* FIRE_METHOD_NAME;
-    const char* REASON;
-    const char* UPDATE_FROM_ORIENTATION_CHANGE;
-    BasicArrayList* list;
-    const char* DISPLAY_INFO;
-    const char* FULL;
-    const char* LAST;
-    const char* LAST_HALF;
-};
 
 static DisplayInfoSingleton* DisplayInfoSingleton_SINGLETON;
 
-DisplayInfoSingleton* DisplayInfoSingleton_new(void);
-DisplayInfoSingleton* DisplayInfoSingleton_getInstance(void);
 
-void DisplayInfoSingleton_init(DisplayInfoSingleton* this);
-int32_t* DisplayInfoSingleton_getLastHalf(DisplayInfoSingleton* this);
-int32_t* DisplayInfoSingleton_getLast(DisplayInfoSingleton* this);
-int32_t* DisplayInfoSingleton_getFull(DisplayInfoSingleton* this);
-float DisplayInfoSingleton_getScaleLargestTo(DisplayInfoSingleton* this);
-void DisplayInfoSingleton_setScaleLargestTo(DisplayInfoSingleton* this, int32_t scaleLargestTo);
-void DisplayInfoSingleton_setLastSize(DisplayInfoSingleton* this, int32_t aLastWidth, int32_t aLastHeight, const char* reason);
+
+
+
+
+
+
+
 static void DisplayInfoSingleton_setLastSizeForce(DisplayInfoSingleton* this, int32_t aLastWidth, int32_t aLastHeight, const char* reason);
-bool DisplayInfoSingleton_isPortraitWH(DisplayInfoSingleton* this, int32_t lastWidth, int32_t lastHeight);
-bool DisplayInfoSingleton_isPortrait(DisplayInfoSingleton* this);
-void DisplayInfoSingleton_add(DisplayInfoSingleton* this, const char* reason);
-void DisplayInfoSingleton_process(DisplayInfoSingleton* this);
-void DisplayInfoSingleton_processForced(DisplayInfoSingleton* this);
-void DisplayInfoSingleton_update(DisplayInfoSingleton* this, Displayable* displayable, const char* reason);
-const char* DisplayInfoSingleton_toString(DisplayInfoSingleton* this);
-const char* DisplayInfoSingleton_toStringAppend(DisplayInfoSingleton* this, StringMaker* stringBuffer);
-int32_t DisplayInfoSingleton_getTop(DisplayInfoSingleton* this);
-int32_t DisplayInfoSingleton_getLeft(DisplayInfoSingleton* this);
-int32_t DisplayInfoSingleton_getLastWidth(DisplayInfoSingleton* this);
-int32_t DisplayInfoSingleton_getLastHeight(DisplayInfoSingleton* this);
-int32_t DisplayInfoSingleton_getLastHalfWidth(DisplayInfoSingleton* this);
-int32_t DisplayInfoSingleton_getLastHalfHeight(DisplayInfoSingleton* this);
-int32_t DisplayInfoSingleton_getCustomLastWidth(DisplayInfoSingleton* this);
-int32_t DisplayInfoSingleton_getCustomLastHeight(DisplayInfoSingleton* this);
-int32_t DisplayInfoSingleton_getRawLastWidth(DisplayInfoSingleton* this);
-int32_t DisplayInfoSingleton_getRawLastHeight(DisplayInfoSingleton* this);
-void DisplayInfoSingleton_setCustom(DisplayInfoSingleton* this, int32_t width, int32_t height);
-void DisplayInfoSingleton_setScalableListener(DisplayInfoSingleton* this, BaseScalable* scalableListener);
-ScalableListener* DisplayInfoSingleton_getScalableListener(DisplayInfoSingleton* this);
-float DisplayInfoSingleton_getRatio(DisplayInfoSingleton* this);
-float DisplayInfoSingleton_getDisplayRatio(DisplayInfoSingleton* this);
-void DisplayInfoSingleton_setOffset(DisplayInfoSingleton* this, int32_t left, int32_t top);
-int32_t DisplayInfoSingleton_getxOffset(DisplayInfoSingleton* this);
-int32_t DisplayInfoSingleton_getyOffset(DisplayInfoSingleton* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 void DisplayInfoSingleton_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     DisplayInfoSingleton_SINGLETON = DisplayInfoSingleton_new();
+}
+
+void DisplayInfoSingleton_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("DisplayInfoSingleton", nullptr);
+    java_register_method("DisplayInfoSingleton", "getLastHalf", (void*) DisplayInfoSingleton_getLastHalf);
+    java_register_method("DisplayInfoSingleton", "getLast", (void*) DisplayInfoSingleton_getLast);
+    java_register_method("DisplayInfoSingleton", "getFull", (void*) DisplayInfoSingleton_getFull);
+    java_register_method("DisplayInfoSingleton", "getScaleLargestTo", (void*) DisplayInfoSingleton_getScaleLargestTo);
+    java_register_method("DisplayInfoSingleton", "setScaleLargestTo", (void*) DisplayInfoSingleton_setScaleLargestTo);
+    java_register_method("DisplayInfoSingleton", "setLastSize", (void*) DisplayInfoSingleton_setLastSize);
+    java_register_method("DisplayInfoSingleton", "setLastSizeForce", (void*) DisplayInfoSingleton_setLastSizeForce);
+    java_register_method("DisplayInfoSingleton", "isPortraitWH", (void*) DisplayInfoSingleton_isPortraitWH);
+    java_register_method("DisplayInfoSingleton", "isPortrait", (void*) DisplayInfoSingleton_isPortrait);
+    java_register_method("DisplayInfoSingleton", "add", (void*) DisplayInfoSingleton_add);
+    java_register_method("DisplayInfoSingleton", "process", (void*) DisplayInfoSingleton_process);
+    java_register_method("DisplayInfoSingleton", "processForced", (void*) DisplayInfoSingleton_processForced);
+    java_register_method("DisplayInfoSingleton", "update", (void*) DisplayInfoSingleton_update);
+    java_register_method("DisplayInfoSingleton", "toString", (void*) DisplayInfoSingleton_toString);
+    java_register_method("DisplayInfoSingleton", "toStringAppend", (void*) DisplayInfoSingleton_toStringAppend);
+    java_register_method("DisplayInfoSingleton", "getTop", (void*) DisplayInfoSingleton_getTop);
+    java_register_method("DisplayInfoSingleton", "getLeft", (void*) DisplayInfoSingleton_getLeft);
+    java_register_method("DisplayInfoSingleton", "getLastWidth", (void*) DisplayInfoSingleton_getLastWidth);
+    java_register_method("DisplayInfoSingleton", "getLastHeight", (void*) DisplayInfoSingleton_getLastHeight);
+    java_register_method("DisplayInfoSingleton", "getLastHalfWidth", (void*) DisplayInfoSingleton_getLastHalfWidth);
+    java_register_method("DisplayInfoSingleton", "getLastHalfHeight", (void*) DisplayInfoSingleton_getLastHalfHeight);
+    java_register_method("DisplayInfoSingleton", "getCustomLastWidth", (void*) DisplayInfoSingleton_getCustomLastWidth);
+    java_register_method("DisplayInfoSingleton", "getCustomLastHeight", (void*) DisplayInfoSingleton_getCustomLastHeight);
+    java_register_method("DisplayInfoSingleton", "getRawLastWidth", (void*) DisplayInfoSingleton_getRawLastWidth);
+    java_register_method("DisplayInfoSingleton", "getRawLastHeight", (void*) DisplayInfoSingleton_getRawLastHeight);
+    java_register_method("DisplayInfoSingleton", "setCustom", (void*) DisplayInfoSingleton_setCustom);
+    java_register_method("DisplayInfoSingleton", "setScalableListener", (void*) DisplayInfoSingleton_setScalableListener);
+    java_register_method("DisplayInfoSingleton", "getScalableListener", (void*) DisplayInfoSingleton_getScalableListener);
+    java_register_method("DisplayInfoSingleton", "getRatio", (void*) DisplayInfoSingleton_getRatio);
+    java_register_method("DisplayInfoSingleton", "getDisplayRatio", (void*) DisplayInfoSingleton_getDisplayRatio);
+    java_register_method("DisplayInfoSingleton", "setOffset", (void*) DisplayInfoSingleton_setOffset);
+    java_register_method("DisplayInfoSingleton", "getxOffset", (void*) DisplayInfoSingleton_getxOffset);
+    java_register_method("DisplayInfoSingleton", "getyOffset", (void*) DisplayInfoSingleton_getyOffset);
 }
 
 static void DisplayInfoSingleton_initFields(DisplayInfoSingleton* this) {
@@ -172,11 +283,12 @@ static void DisplayInfoSingleton_initFields(DisplayInfoSingleton* this) {
 
 
 DisplayInfoSingleton* DisplayInfoSingleton_getInstance(void) {
-        return DisplayInfoSingleton_SINGLETON;
+        return (DisplayInfoSingleton_staticInit(), DisplayInfoSingleton_SINGLETON);
 }
 
 
 void DisplayInfoSingleton_init(DisplayInfoSingleton* this) {
+    DisplayInfoSingleton_register();
     DisplayInfoSingleton_initFields(this);
         int32_t size = java_array_length(this->last);
         for (int32_t index = 0; index < size; index++) {
@@ -192,7 +304,7 @@ void DisplayInfoSingleton_init(DisplayInfoSingleton* this) {
 }
 
 DisplayInfoSingleton* DisplayInfoSingleton_new(void) {
-    DisplayInfoSingleton* this = calloc(1, sizeof(DisplayInfoSingleton));
+    DisplayInfoSingleton* this = java_object_alloc(sizeof(DisplayInfoSingleton), "DisplayInfoSingleton");
     DisplayInfoSingleton_init(this);
     return this;
 }
@@ -232,11 +344,11 @@ void DisplayInfoSingleton_setLastSize(DisplayInfoSingleton* this, int32_t aLastW
 
 static void DisplayInfoSingleton_setLastSizeForce(DisplayInfoSingleton* this, int32_t aLastWidth, int32_t aLastHeight, const char* reason) {
         StringMaker* stringMaker = StringMaker_new();
-        LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(StringMaker_append(stringMaker, CommonLabels_getInstance()->START_LABEL), append, reason), toString), this, this->SET_LAST_SIZE_METHOD_NAME);
+        LogUtil_putF(this->logUtil, java_string_of(StringMaker_append(StringMaker_append(stringMaker, CommonLabels_getInstance()->START_LABEL), reason)), this, this->SET_LAST_SIZE_METHOD_NAME);
         int32_t aFullWidth = aLastWidth;
         int32_t aFullHeight = aLastHeight;
         StringMaker_delete(stringMaker, 0, StringMaker_length(stringMaker));
-        LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_append(stringMaker, this->FULL_WIDTH), appendint, aFullWidth), append, this->FULL_HEIGHT), appendint, aFullHeight), append, DisplayInfoSingleton_toString(this)), toString), this, this->SET_LAST_SIZE_METHOD_NAME);
+        LogUtil_putF(this->logUtil, java_string_of(StringMaker_append(StringMaker_appendint(StringMaker_append(StringMaker_appendint(StringMaker_append(stringMaker, this->FULL_WIDTH), aFullWidth), this->FULL_HEIGHT), aFullHeight), DisplayInfoSingleton_toString(this))), this, this->SET_LAST_SIZE_METHOD_NAME);
         GenericOperatingSystem* operatingSystemInterface = OperatingSystemFactory_getOperatingSystemInstance(OperatingSystemFactory_getInstance());
         if (GenericOperatingSystem_isOverScan(operatingSystemInterface)) {
             aLastWidth = aLastWidth * GenericOperatingSystem_getOverScanXPercent(operatingSystemInterface) / 100;
@@ -248,7 +360,7 @@ static void DisplayInfoSingleton_setLastSizeForce(DisplayInfoSingleton* this, in
                     this->displayRatio = this->scaleLargestTo / ((float) aLastHeight);
                     this->ratio = ((float) aLastHeight) / this->scaleLargestTo;
                     StringMaker_delete(stringMaker, 0, StringMaker_length(stringMaker));
-                    LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(StringMaker_append(stringMaker, this->ADJUSTING_FOR_SCALING_IN_PORTRAIT), appendfloat, this->displayRatio), toString), this, this->SET_LAST_SIZE_METHOD_NAME);
+                    LogUtil_putF(this->logUtil, java_string_of(StringMaker_appendfloat(StringMaker_append(stringMaker, this->ADJUSTING_FOR_SCALING_IN_PORTRAIT), this->displayRatio)), this, this->SET_LAST_SIZE_METHOD_NAME);
                     aLastWidth = ((int32_t) (((float) aLastWidth) * this->displayRatio));
                     aLastHeight = ((int32_t) (((float) aLastHeight) * this->displayRatio));
                     BaseScalable_scale(this->scalableListener, this->ratio);
@@ -261,7 +373,7 @@ static void DisplayInfoSingleton_setLastSizeForce(DisplayInfoSingleton* this, in
                     this->displayRatio = this->scaleLargestTo / ((float) aLastWidth);
                     this->ratio = ((float) aLastWidth) / this->scaleLargestTo;
                     StringMaker_delete(stringMaker, 0, StringMaker_length(stringMaker));
-                    LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(StringMaker_append(stringMaker, this->ADJUSTING_FOR_SCALING_IN_LANDSCAPE), appendfloat, this->displayRatio), toString), this, this->SET_LAST_SIZE_METHOD_NAME);
+                    LogUtil_putF(this->logUtil, java_string_of(StringMaker_appendfloat(StringMaker_append(stringMaker, this->ADJUSTING_FOR_SCALING_IN_LANDSCAPE), this->displayRatio)), this, this->SET_LAST_SIZE_METHOD_NAME);
                     aLastWidth = ((int32_t) (((float) aLastWidth) * this->displayRatio));
                     aLastHeight = ((int32_t) (((float) aLastHeight) * this->displayRatio));
                     BaseScalable_scale(this->scalableListener, this->ratio);
@@ -272,7 +384,7 @@ static void DisplayInfoSingleton_setLastSizeForce(DisplayInfoSingleton* this, in
             }
         }
         StringMaker_delete(stringMaker, 0, StringMaker_length(stringMaker));
-        LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_append(stringMaker, this->LAST_WIDTH), appendint, aLastWidth), append, this->LAST_HEIGHT), appendint, aLastHeight), toString), this, this->SET_LAST_SIZE_METHOD_NAME);
+        LogUtil_putF(this->logUtil, java_string_of(StringMaker_appendint(StringMaker_append(StringMaker_appendint(StringMaker_append(stringMaker, this->LAST_WIDTH), aLastWidth), this->LAST_HEIGHT), aLastHeight)), this, this->SET_LAST_SIZE_METHOD_NAME);
         this->xOffset = aFullWidth - aLastWidth;
         this->yOffset = aFullHeight - aLastHeight;
         this->left = BaseScalable_getLeft(this->scalableListener, this->xOffset);
@@ -304,7 +416,7 @@ bool DisplayInfoSingleton_isPortrait(DisplayInfoSingleton* this) {
 
 void DisplayInfoSingleton_add(DisplayInfoSingleton* this, const char* reason) {
         StringMaker* stringMaker = StringMaker_new();
-        LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(StringMaker_append(stringMaker, this->REASON), append, reason), toString), this, this->FIRE_METHOD_NAME);
+        LogUtil_putF(this->logUtil, java_string_of(StringMaker_append(StringMaker_append(stringMaker, this->REASON), reason)), this, this->FIRE_METHOD_NAME);
         StringMaker_delete(stringMaker, 0, StringMaker_length(stringMaker));
         LogUtil_putF(this->logUtil, DisplayInfoSingleton_toStringAppend(this, stringMaker), this, this->FIRE_METHOD_NAME);
         BasicArrayList_add(this->list, reason);
@@ -327,8 +439,8 @@ void DisplayInfoSingleton_processForced(DisplayInfoSingleton* this) {
         JAVA_TRY {
             SWTJOGLProcessor* swtJOGLProcessor = SWTJOGLProcessor_getInstance();
             SWTJOGLProcessor_clear(swtJOGLProcessor);
-            DisplayChangeEventHandler_fireEvent(DisplayChangeEventHandler_getInstance(), this->displayChangeEvent);
-            LastDisplayChangeEventHandler_fireEvent(LastDisplayChangeEventHandler_getInstance(), this->displayChangeEvent);
+            BasicEventHandler_fireEvent(DisplayChangeEventHandler_getInstance(), this->displayChangeEvent);
+            BasicEventHandler_fireEvent(LastDisplayChangeEventHandler_getInstance(), this->displayChangeEvent);
             SWTJOGLProcessor_onSurfaceChanged(swtJOGLProcessor);
         } JAVA_CATCH(Exception, e) {
             PreLogUtil_putOE(this->commonStrings->EXCEPTION, this, this->FIRE_METHOD_NAME, e);
@@ -342,13 +454,13 @@ void DisplayInfoSingleton_update(DisplayInfoSingleton* this, Displayable* displa
         int32_t aFullWidth = aLastWidth;
         int32_t aFullHeight = aLastHeight;
         StringMaker* stringMaker = StringMaker_new();
-        LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_append(stringMaker, CommonLabels_getInstance()->START_LABEL), append, reason), append, this->LAST_WIDTH), appendint, aLastWidth), append, this->LAST_HEIGHT), appendint, aLastHeight), append, this->commonSeps->SPACE), append, DisplayInfoSingleton_toString(this)), toString), this, this->commonStrings->UPDATE);
+        LogUtil_putF(this->logUtil, java_string_of(StringMaker_append(StringMaker_append(StringMaker_appendint(StringMaker_append(StringMaker_appendint(StringMaker_append(StringMaker_append(StringMaker_append(stringMaker, CommonLabels_getInstance()->START_LABEL), reason), this->LAST_WIDTH), aLastWidth), this->LAST_HEIGHT), aLastHeight), this->commonSeps->SPACE), DisplayInfoSingleton_toString(this))), this, this->commonStrings->UPDATE);
         if (aLastWidth > 0 && aLastHeight > 0) {
             Features* features = Features_getInstance();
             OpenGLFeatureFactory* openGLFeatureFactory = OpenGLFeatureFactory_getInstance();
             if (!Features_isDefault(features, openGLFeatureFactory->OPENGL) || this->last[this->WIDTH] != aLastWidth || this->last[this->HEIGHT] != aLastHeight) {
                 StringMaker_delete(stringMaker, 0, StringMaker_length(stringMaker));
-                LogUtil_putF(this->logUtil, JAVA_CALL(StringMaker_append(stringMaker, this->UPDATE_FROM_ORIENTATION_CHANGE), toString), this, this->commonStrings->UPDATE);
+                LogUtil_putF(this->logUtil, java_string_of(StringMaker_append(stringMaker, this->UPDATE_FROM_ORIENTATION_CHANGE)), this, this->commonStrings->UPDATE);
                 GenericOperatingSystem* operatingSystemInterface = OperatingSystemFactory_getOperatingSystemInstance(OperatingSystemFactory_getInstance());
                 if (GenericOperatingSystem_isOverScan(operatingSystemInterface)) {
                     aLastWidth = aLastWidth * GenericOperatingSystem_getOverScanXPercent(operatingSystemInterface) / 100;
@@ -360,7 +472,7 @@ void DisplayInfoSingleton_update(DisplayInfoSingleton* this, Displayable* displa
                             this->displayRatio = this->scaleLargestTo / ((float) aLastHeight);
                             this->ratio = ((float) aLastHeight) / this->scaleLargestTo;
                             StringMaker_delete(stringMaker, 0, StringMaker_length(stringMaker));
-                            LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(StringMaker_append(stringMaker, this->ADJUSTING_FOR_SCALING_IN_PORTRAIT), appendfloat, this->displayRatio), toString), this, this->commonStrings->UPDATE);
+                            LogUtil_putF(this->logUtil, java_string_of(StringMaker_appendfloat(StringMaker_append(stringMaker, this->ADJUSTING_FOR_SCALING_IN_PORTRAIT), this->displayRatio)), this, this->commonStrings->UPDATE);
                             aLastWidth = ((int32_t) (((float) aLastWidth) * this->displayRatio));
                             aLastHeight = ((int32_t) (((float) aLastHeight) * this->displayRatio));
                             BaseScalable_scale(this->scalableListener, this->ratio);
@@ -373,7 +485,7 @@ void DisplayInfoSingleton_update(DisplayInfoSingleton* this, Displayable* displa
                             this->displayRatio = this->scaleLargestTo / ((float) aLastWidth);
                             this->ratio = ((float) aLastWidth) / this->scaleLargestTo;
                             StringMaker_delete(stringMaker, 0, StringMaker_length(stringMaker));
-                            LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(StringMaker_append(stringMaker, this->ADJUSTING_FOR_SCALING_IN_LANDSCAPE), appendfloat, this->displayRatio), toString), this, this->commonStrings->UPDATE);
+                            LogUtil_putF(this->logUtil, java_string_of(StringMaker_appendfloat(StringMaker_append(stringMaker, this->ADJUSTING_FOR_SCALING_IN_LANDSCAPE), this->displayRatio)), this, this->commonStrings->UPDATE);
                             aLastWidth = ((int32_t) (((float) aLastWidth) * this->displayRatio));
                             aLastHeight = ((int32_t) (((float) aLastHeight) * this->displayRatio));
                             BaseScalable_scale(this->scalableListener, this->ratio);
@@ -384,7 +496,7 @@ void DisplayInfoSingleton_update(DisplayInfoSingleton* this, Displayable* displa
                     }
                 }
                 StringMaker_delete(stringMaker, 0, StringMaker_length(stringMaker));
-                LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_append(stringMaker, this->UPDATE_FROM_ORIENTATION_CHANGE), append, this->LAST_WIDTH), appendint, aLastWidth), append, this->LAST_HEIGHT), appendint, aLastHeight), toString), this, this->commonStrings->UPDATE);
+                LogUtil_putF(this->logUtil, java_string_of(StringMaker_appendint(StringMaker_append(StringMaker_appendint(StringMaker_append(StringMaker_append(stringMaker, this->UPDATE_FROM_ORIENTATION_CHANGE), this->LAST_WIDTH), aLastWidth), this->LAST_HEIGHT), aLastHeight)), this, this->commonStrings->UPDATE);
                 this->xOffset = aFullWidth - aLastWidth;
                 this->yOffset = aFullHeight - aLastHeight;
                 this->left = BaseScalable_getLeft(this->scalableListener, this->xOffset);
@@ -435,7 +547,7 @@ const char* DisplayInfoSingleton_toStringAppend(DisplayInfoSingleton* this, Stri
         StringMaker_appendint(stringBuffer, this->lastHalf[this->HEIGHT]);
         StringMaker_append(stringBuffer, this->commonSeps->SPACE);
         StringMaker_append(stringBuffer, (DisplayInfoSingleton_isPortrait(this) ? this->PORTRAIT : this->LANDSCAPE));
-        return StringMaker_toString(stringBuffer);
+        return java_string_of(stringBuffer);
 }
 
 

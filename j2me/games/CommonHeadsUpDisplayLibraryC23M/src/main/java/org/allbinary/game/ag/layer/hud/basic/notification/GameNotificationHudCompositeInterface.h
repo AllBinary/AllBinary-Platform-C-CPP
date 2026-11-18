@@ -1,0 +1,43 @@
+#ifndef ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_NOTIFICATION_GAMENOTIFICATIONHUDCOMPOSITEINTERFACE_H
+#define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_NOTIFICATION_GAMENOTIFICATIONHUDCOMPOSITEINTERFACE_H
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.ag.layer.hud.basic.notification
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+typedef struct GameNotificationHud GameNotificationHud;
+
+typedef struct GameNotificationHudCompositeInterface GameNotificationHudCompositeInterface;
+struct GameNotificationHudCompositeInterface {
+    GameNotificationHud* (*getGameNotificationHud)(void* this);
+};
+
+// Runs the Java static initialization of the class once. Reads of its static fields call it first.
+void GameNotificationHudCompositeInterface_staticInit(void);
+
+static inline GameNotificationHud* GameNotificationHudCompositeInterface_getGameNotificationHud(void* this) {
+    return ((__typeof__(((GameNotificationHudCompositeInterface*) nullptr)->getGameNotificationHud)) java_method_of(this, "getGameNotificationHud"))(this);
+}
+
+
+#endif // ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_NOTIFICATION_GAMENOTIFICATIONHUDCOMPOSITEINTERFACE_H

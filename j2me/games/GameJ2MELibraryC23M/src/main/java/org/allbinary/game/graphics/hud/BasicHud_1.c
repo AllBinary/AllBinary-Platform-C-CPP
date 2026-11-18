@@ -1,29 +1,6 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.graphics.hud
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/game/graphics/hud/BasicHud_1.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/graphics/Anchor.h"
 #include "org/allbinary/graphics/GPoint.h"
 #include "org/allbinary/graphics/PointFactory.h"
@@ -34,67 +11,102 @@
 #include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
 #include "org/allbinary/graphics/displayable/event/DisplayChangeEvent.h"
 #include "org/allbinary/graphics/font/MyFontProcessor.h"
-#include "org/allbinary/graphics/font/UpdateMyFontInterface.h"
 #include "org/allbinary/graphics/font/UpdateMyFontProcessor.h"
 #include "org/allbinary/logic/communication/log/ForcedLogUtil.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
-#include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/logic/util/event/AllBinaryEventObject.h"
 #include "org/allbinary/logic/util/event/EventStrings.h"
 #include "org/allbinary/string/CommonStrings.h"
-
-typedef struct BasicHud_1 BasicHud_1;
-struct BasicHud_1 {
-    UpdateMyFontInterface UpdateMyFontInterface_interface;
-    LogUtil* logUtil;
-    CommonStrings* commonStrings;
-    CanvasStrings* canvasStrings;
-    BasicColorSetUtil* basicSetColorUtil;
-    DisplayInfoSingleton* displayInfo;
-    MyFontProcessor* updateMyFontProcessor;
-    MyFontProcessor* myFontProcessor;
-    int32_t location;
-    int32_t direction;
-    int32_t bufferZone;
-    HudGraphicsPosition* hudGraphicsPosition;
-    int32_t x;
-    int32_t y;
-    BasicColor* basicColor;
-    int32_t color;
-    int32_t updateMaxWidth;
-    int32_t updateMaxHeight;
-    int32_t offsetY;
-};
+#include "org/allbinary/game/graphics/hud/HudGraphicsPosition.h"
+#include "org/allbinary/game/graphics/hud/BasicHudFactory.h"
+#if __has_include("org/allbinary/graphics/color/BasicColorFactory.h")
+#include "org/allbinary/graphics/color/BasicColorFactory.h"
+#endif
+#if __has_include("org/allbinary/graphics/displayable/DisplayInfoSingleton.h")
+#include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
+#endif
+#if __has_include("org/allbinary/graphics/GPoint.h")
+#include "org/allbinary/graphics/GPoint.h"
+#endif
+#if __has_include("org/allbinary/graphics/GPoint.h")
+#include "org/allbinary/graphics/GPoint.h"
+#endif
+#if __has_include("org/allbinary/logic/util/event/EventStrings.h")
+#include "org/allbinary/logic/util/event/EventStrings.h"
+#endif
+#if __has_include("org/allbinary/graphics/PointFactory.h")
+#include "org/allbinary/graphics/PointFactory.h"
+#endif
 
 
-BasicHud_1* BasicHud_1_new(int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor);
 
-void BasicHud_1_init(BasicHud_1* this, int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor);
-void BasicHud_1_updateMeasurement(BasicHud_1* this, Graphics* graphics);
-int32_t BasicHud_1_getLocation(BasicHud_1* this);
-int32_t BasicHud_1_getDirection(BasicHud_1* this);
-HudGraphicsPosition* BasicHud_1_getHudGraphicsPositionWH(BasicHud_1* this, int32_t width, int32_t height, int32_t maxWidth, int32_t maxHeight);
-void BasicHud_1_onEvent(BasicHud_1* this, AllBinaryEventObject* eventObject);
-void BasicHud_1_onDisplayChangeEvent(BasicHud_1* this, DisplayChangeEvent* displayChangeEvent);
-GPoint* BasicHud_1_getPoint(BasicHud_1* this, int32_t x, int32_t y);
-int32_t BasicHud_1_getBufferZone(BasicHud_1* this);
-void BasicHud_1_setBufferZone(BasicHud_1* this, int32_t bufferZone);
-void BasicHud_1_setLocation(BasicHud_1* this, int32_t location);
-void BasicHud_1_setDirection(BasicHud_1* this, int32_t direction);
-HudGraphicsPosition* BasicHud_1_getHudGraphicsPosition(BasicHud_1* this);
-int32_t BasicHud_1_getColor(BasicHud_1* this);
-int32_t BasicHud_1_getX(BasicHud_1* this);
-void BasicHud_1_setX(BasicHud_1* this, int32_t x);
-void BasicHud_1_setBasicColorP(BasicHud_1* this, BasicColor* basicColor);
-BasicColor* BasicHud_1_getBasicColorP(BasicHud_1* this);
-void BasicHud_1_setY(BasicHud_1* this, int32_t y);
-int32_t BasicHud_1_getY(BasicHud_1* this);
-void BasicHud_1_paintSSO(BasicHud_1* this, Graphics* graphics, const char* string, const char* string2, int32_t offset);
-void BasicHud_1_paintSSOO(BasicHud_1* this, Graphics* graphics, const char* string, const char* string2, int32_t offset, int32_t offset2);
-void BasicHud_1_paintDXY(BasicHud_1* this, Graphics* graphics, uint16_t* charArray, int32_t offset, int32_t len, uint16_t* charArray2, int32_t offset2, int32_t len2, int32_t xOffset, int32_t xOffset2);
-void BasicHud_1_paintDX(BasicHud_1* this, Graphics* graphics, uint16_t* charArray, int32_t offset, int32_t len, uint16_t* charArray2, int32_t offset2, int32_t len2, int32_t xOffset);
-void BasicHud_1_paintOffsetAndLength(BasicHud_1* this, Graphics* graphics, uint16_t* charArray, int32_t offset, int32_t len);
-void BasicHud_1_paintString(BasicHud_1* this, Graphics* graphics, const char* string);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void BasicHud_1_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void BasicHud_1_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("BasicHud_1", nullptr);
+    java_register_method("BasicHud_1", "updateMeasurement", (void*) BasicHud_1_updateMeasurement);
+    java_register_method("BasicHud_1", "getLocation", (void*) BasicHud_1_getLocation);
+    java_register_method("BasicHud_1", "getDirection", (void*) BasicHud_1_getDirection);
+    java_register_method("BasicHud_1", "getHudGraphicsPositionWH", (void*) BasicHud_1_getHudGraphicsPositionWH);
+    java_register_method("BasicHud_1", "onEvent", (void*) BasicHud_1_onEvent);
+    java_register_method("BasicHud_1", "onDisplayChangeEvent", (void*) BasicHud_1_onDisplayChangeEvent);
+    java_register_method("BasicHud_1", "getPoint", (void*) BasicHud_1_getPoint);
+    java_register_method("BasicHud_1", "getBufferZone", (void*) BasicHud_1_getBufferZone);
+    java_register_method("BasicHud_1", "setBufferZone", (void*) BasicHud_1_setBufferZone);
+    java_register_method("BasicHud_1", "setLocation", (void*) BasicHud_1_setLocation);
+    java_register_method("BasicHud_1", "setDirection", (void*) BasicHud_1_setDirection);
+    java_register_method("BasicHud_1", "getHudGraphicsPosition", (void*) BasicHud_1_getHudGraphicsPosition);
+    java_register_method("BasicHud_1", "getColor", (void*) BasicHud_1_getColor);
+    java_register_method("BasicHud_1", "getX", (void*) BasicHud_1_getX);
+    java_register_method("BasicHud_1", "setX", (void*) BasicHud_1_setX);
+    java_register_method("BasicHud_1", "setBasicColorP", (void*) BasicHud_1_setBasicColorP);
+    java_register_method("BasicHud_1", "getBasicColorP", (void*) BasicHud_1_getBasicColorP);
+    java_register_method("BasicHud_1", "setY", (void*) BasicHud_1_setY);
+    java_register_method("BasicHud_1", "getY", (void*) BasicHud_1_getY);
+    java_register_method("BasicHud_1", "paintSSO", (void*) BasicHud_1_paintSSO);
+    java_register_method("BasicHud_1", "paintSSOO", (void*) BasicHud_1_paintSSOO);
+    java_register_method("BasicHud_1", "paintDXY", (void*) BasicHud_1_paintDXY);
+    java_register_method("BasicHud_1", "paintDX", (void*) BasicHud_1_paintDX);
+    java_register_method("BasicHud_1", "paintOffsetAndLength", (void*) BasicHud_1_paintOffsetAndLength);
+    java_register_method("BasicHud_1", "paintString", (void*) BasicHud_1_paintString);
+}
 
 static void BasicHud_1_initFields(BasicHud_1* this) {
     this->logUtil = LogUtil_getInstance();
@@ -107,7 +119,7 @@ static void BasicHud_1_initFields(BasicHud_1* this) {
     this->location = 0;
     this->direction = 0;
     this->bufferZone = 0;
-    this->hudGraphicsPosition = HudGraphicsPosition_NULL_HUD_GRAPHICS_POSITION;
+    this->hudGraphicsPosition = (HudGraphicsPosition_staticInit(), HudGraphicsPosition_NULL_HUD_GRAPHICS_POSITION);
     this->x = 0;
     this->y = 0;
     this->basicColor = BasicColorFactory_getInstance()->BLACK;
@@ -119,6 +131,7 @@ static void BasicHud_1_initFields(BasicHud_1* this) {
 
 
 void BasicHud_1_init(BasicHud_1* this, int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor) {
+    BasicHud_1_register();
     BasicHud_1_initFields(this);
         BasicHud_1_setLocation(this, location);
         BasicHud_1_setDirection(this, direction);
@@ -129,7 +142,7 @@ void BasicHud_1_init(BasicHud_1* this, int32_t location, int32_t direction, int3
 }
 
 BasicHud_1* BasicHud_1_new(int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor) {
-    BasicHud_1* this = calloc(1, sizeof(BasicHud_1));
+    BasicHud_1* this = java_object_alloc(sizeof(BasicHud_1), "BasicHud_1");
     BasicHud_1_init(this, location, direction, bufferZone, basicColor);
     return this;
 }
@@ -138,8 +151,8 @@ BasicHud_1* BasicHud_1_new(int32_t location, int32_t direction, int32_t bufferZo
 void BasicHud_1_updateMeasurement(BasicHud_1* this, Graphics* graphics) {
         JAVA_TRY {
             this->hudGraphicsPosition = BasicHud_1_getHudGraphicsPositionWH(this, DisplayInfoSingleton_getLastWidth(this->displayInfo), DisplayInfoSingleton_getLastHeight(this->displayInfo), this->updateMaxWidth, this->updateMaxHeight);
-            this->x = JAVA_CALL(HudGraphicsPosition_getPoint(this->hudGraphicsPosition), getX);
-            BasicHud_1_setY(this, JAVA_CALL(HudGraphicsPosition_getPoint(this->hudGraphicsPosition), getY));
+            this->x = GPoint_getX(HudGraphicsPosition_getPoint(this->hudGraphicsPosition));
+            BasicHud_1_setY(this, GPoint_getY(HudGraphicsPosition_getPoint(this->hudGraphicsPosition)));
         } JAVA_CATCH(Exception, e) {
             CommonStrings* commonStrings = CommonStrings_getInstance();
             LogUtil_put(this->logUtil, commonStrings->EXCEPTION, this, this->canvasStrings->ON_DISPLAY_CHANGE_EVENT, e);
@@ -167,27 +180,27 @@ HudGraphicsPosition* BasicHud_1_getHudGraphicsPositionWH(BasicHud_1* this, int32
         if (basicHudFactory->BOTTOMLEFT == BasicHud_1_getLocation(this)) {
             x = this->bufferZone + 2;
             y = height - maxHeight - this->bufferZone;
-            anchor = Graphics_BOTTOM & Graphics_LEFT;
+            anchor = (Graphics_staticInit(), Graphics_BOTTOM) & (Graphics_staticInit(), Graphics_LEFT);
         } else if (basicHudFactory->BOTTOMRIGHT == BasicHud_1_getLocation(this)) {
             x = width - maxWidth;
             y = height - maxHeight - this->bufferZone;
-            anchor = Graphics_BOTTOM & Graphics_RIGHT;
+            anchor = (Graphics_staticInit(), Graphics_BOTTOM) & (Graphics_staticInit(), Graphics_RIGHT);
         } else if (basicHudFactory->TOPLEFT == BasicHud_1_getLocation(this)) {
             x = this->bufferZone + 2;
             y = this->bufferZone + 5;
-            anchor = Anchor_TOP_LEFT;
+            anchor = (Anchor_staticInit(), Anchor_TOP_LEFT);
         } else if (basicHudFactory->TOPRIGHT == BasicHud_1_getLocation(this)) {
             x = width - maxWidth;
             y = this->bufferZone + 5;
-            anchor = Graphics_TOP & Graphics_RIGHT;
+            anchor = (Graphics_staticInit(), Graphics_TOP) & (Graphics_staticInit(), Graphics_RIGHT);
         } else if (basicHudFactory->TOPCENTER == BasicHud_1_getLocation(this)) {
             x = ((width - maxWidth) / 2);
             y = this->bufferZone + 5;
-            anchor = Graphics_TOP & Graphics_HCENTER;
+            anchor = (Graphics_staticInit(), Graphics_TOP) & (Graphics_staticInit(), Graphics_HCENTER);
         } else if (basicHudFactory->BOTTOMCENTER == BasicHud_1_getLocation(this)) {
             x = ((width - maxWidth) / 2);
             y = height - maxHeight - this->bufferZone;
-            anchor = Graphics_BOTTOM & Graphics_HCENTER;
+            anchor = (Graphics_staticInit(), Graphics_BOTTOM) & (Graphics_staticInit(), Graphics_HCENTER);
         } else if (basicHudFactory->ABSOLUTE == BasicHud_1_getLocation(this)) {
             x = maxHeight;
             y = maxWidth;

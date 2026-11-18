@@ -47,6 +47,8 @@ void LogUtil_putF(LogUtil* this, const char* specialMessage, void* anyType, cons
 void LogUtil_putFS(LogUtil* this, const char* specialMessage, const char* className, const char* functionName);
 
 void LogUtil_put(LogUtil* this, const char* specialMessage, void* anyType, const char* functionName, void* exception);
+#define LogUtil_new0 LogUtil_new
+#define LogUtil_init0 LogUtil_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void LogUtil_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

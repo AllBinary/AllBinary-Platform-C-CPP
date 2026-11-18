@@ -1,47 +1,43 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- * 
- */
 // Generated Code Do Not Modify
-// package org.allbinary.layer
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct LayerManagerLoggingBase LayerManagerLoggingBase;
-struct LayerManagerLoggingBase {
-    char unused;
-};
+#include "org/allbinary/layer/LayerManagerLoggingBase.h"
+#include "org/allbinary/layer/AllBinaryLayer.h"
+#include "org/allbinary/layer/LayerManager.h"
 
 
-LayerManagerLoggingBase* LayerManagerLoggingBase_new(void);
-void LayerManagerLoggingBase_append(LayerManagerLoggingBase* this, AllBinaryLayer* layerInterface);
-void LayerManagerLoggingBase_appendAt(LayerManagerLoggingBase* this, AllBinaryLayer* layerInterface, int32_t index);
-void LayerManagerLoggingBase_remove(LayerManagerLoggingBase* this, AllBinaryLayer* layerInterface);
-void LayerManagerLoggingBase_removeResult(LayerManagerLoggingBase* this, LayerManager* layerManager, AllBinaryLayer* layerInterface, bool result);
-void LayerManagerLoggingBase_clear(LayerManagerLoggingBase* this);
+
+
+
+
+
+
+void LayerManagerLoggingBase_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void LayerManagerLoggingBase_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("LayerManagerLoggingBase", nullptr);
+    java_register_method("LayerManagerLoggingBase", "append", (void*) LayerManagerLoggingBase_append);
+    java_register_method("LayerManagerLoggingBase", "appendAt", (void*) LayerManagerLoggingBase_appendAt);
+    java_register_method("LayerManagerLoggingBase", "remove", (void*) LayerManagerLoggingBase_remove);
+    java_register_method("LayerManagerLoggingBase", "removeResult", (void*) LayerManagerLoggingBase_removeResult);
+    java_register_method("LayerManagerLoggingBase", "clear", (void*) LayerManagerLoggingBase_clear);
+}
 
 void LayerManagerLoggingBase_init(LayerManagerLoggingBase* this) {
+    LayerManagerLoggingBase_register();
 }
 
 LayerManagerLoggingBase* LayerManagerLoggingBase_new(void) {
-    LayerManagerLoggingBase* this = calloc(1, sizeof(LayerManagerLoggingBase));
+    LayerManagerLoggingBase* this = java_object_alloc(sizeof(LayerManagerLoggingBase), "LayerManagerLoggingBase");
     LayerManagerLoggingBase_init(this);
     return this;
 }

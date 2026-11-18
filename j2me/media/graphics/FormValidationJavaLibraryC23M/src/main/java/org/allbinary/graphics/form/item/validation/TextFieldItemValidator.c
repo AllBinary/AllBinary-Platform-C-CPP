@@ -1,50 +1,46 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.form.item.validation
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/graphics/form/item/validation/TextFieldItemValidator.h"
 #include "org/allbinary/graphics/form/item/ABTextFieldItem.h"
-#include "org/allbinary/logic/control/validate/ValidatorBase.h"
 #include "org/allbinary/logic/java/bool/BooleanFactory.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
 
-typedef struct TextFieldItemValidator TextFieldItemValidator;
-struct TextFieldItemValidator {
-    ValidatorBase base;
-    ABTextFieldItem* textFieldItem;
-    int32_t min;
-    int32_t max;
-    bool allowOnEmpty;
-};
 
 
-TextFieldItemValidator* TextFieldItemValidator_new(ABTextFieldItem* textFieldItem, int32_t min, int32_t max, bool allowOnEmpty);
 
-void TextFieldItemValidator_init(TextFieldItemValidator* this, ABTextFieldItem* textFieldItem, int32_t min, int32_t max, bool allowOnEmpty);
-bool TextFieldItemValidator_isValid(TextFieldItemValidator* this);
-BasicArrayList* TextFieldItemValidator_toList(TextFieldItemValidator* this);
+
+
+void TextFieldItemValidator_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void TextFieldItemValidator_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("TextFieldItemValidator", "ValidatorBase");
+    java_register_method("TextFieldItemValidator", "isValid", (void*) TextFieldItemValidator_isValid);
+    java_register_method("TextFieldItemValidator", "toList", (void*) TextFieldItemValidator_toList);
+}
 
 static void TextFieldItemValidator_initFields(TextFieldItemValidator* this) {
     
@@ -55,6 +51,7 @@ static void TextFieldItemValidator_initFields(TextFieldItemValidator* this) {
 
 
 void TextFieldItemValidator_init(TextFieldItemValidator* this, ABTextFieldItem* textFieldItem, int32_t min, int32_t max, bool allowOnEmpty) {
+    TextFieldItemValidator_register();
     ValidatorBase_init(&this->base);
     TextFieldItemValidator_initFields(this);
         this->textFieldItem = textFieldItem;
@@ -64,7 +61,7 @@ void TextFieldItemValidator_init(TextFieldItemValidator* this, ABTextFieldItem* 
 }
 
 TextFieldItemValidator* TextFieldItemValidator_new(ABTextFieldItem* textFieldItem, int32_t min, int32_t max, bool allowOnEmpty) {
-    TextFieldItemValidator* this = calloc(1, sizeof(TextFieldItemValidator));
+    TextFieldItemValidator* this = java_object_alloc(sizeof(TextFieldItemValidator), "TextFieldItemValidator");
     TextFieldItemValidator_init(this, textFieldItem, min, max, allowOnEmpty);
     return this;
 }
@@ -96,9 +93,9 @@ BasicArrayList* TextFieldItemValidator_toList(TextFieldItemValidator* this) {
             const char* label = ABTextFieldItem_getLabel(this->textFieldItem);
             const char* name = java_substring(label, 0, ((int32_t) strlen(label)) - 2);
             if (textLength < this->min) {
-                BasicArrayList_add(list, JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), name), append, " is to short"), toString));
+                BasicArrayList_add(list, java_string_of(StringMaker_append(StringMaker_append(StringMaker_new(), name), " is to short")));
             } else if (textLength > this->max) {
-                BasicArrayList_add(list, JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), name), append, " is to long"), toString));
+                BasicArrayList_add(list, java_string_of(StringMaker_append(StringMaker_append(StringMaker_new(), name), " is to long")));
             }
         }
         return list;

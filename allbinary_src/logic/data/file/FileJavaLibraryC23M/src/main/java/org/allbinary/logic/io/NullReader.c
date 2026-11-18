@@ -1,70 +1,59 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2025 AllBinary 
- * 
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- * 
- * Created By: Travis Berthelot 
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.io
+#include "org/allbinary/logic/io/NullReader.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "java/io/IOException.h"
-// #include "java/io/Reader.h"
-
-typedef struct NullReader NullReader;
-struct NullReader {
-    Reader base;
-};
 
 NullReader* NullReader_NULL_READER;
 
-NullReader* NullReader_new(void);
-int32_t NullReader_read(NullReader* this);
-int32_t NullReader_read(NullReader* this, uint16_t* cbuf, int32_t off, int32_t len);
-bool NullReader_ready(NullReader* this);
-int64_t NullReader_skip(NullReader* this, int64_t n);
-void NullReader_close(NullReader* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
 void NullReader_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     NullReader_NULL_READER = NullReader_new();
 }
 
+void NullReader_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("NullReader", "Reader");
+    java_register_method("NullReader", "read", (void*) NullReader_read1);
+    java_register_method("NullReader", "read@1", (void*) NullReader_read1);
+    java_register_method("NullReader", "read@4", (void*) NullReader_read4);
+    java_register_method("NullReader", "ready", (void*) NullReader_ready);
+    java_register_method("NullReader", "skip", (void*) NullReader_skip);
+    java_register_method("NullReader", "close", (void*) NullReader_close);
+}
+
 void NullReader_init(NullReader* this) {
+    NullReader_register();
     Reader_init(&this->base);
 }
 
 NullReader* NullReader_new(void) {
-    NullReader* this = calloc(1, sizeof(NullReader));
+    NullReader* this = java_object_alloc(sizeof(NullReader), "NullReader");
     NullReader_init(this);
     return this;
 }
 
 
 // throws IOException
-int32_t NullReader_read(NullReader* this) {
+int32_t NullReader_read1(NullReader* this) {
         return -1;
 }
 
 
 // throws IOException
 // Java overloaded method: C needs a different name
-int32_t NullReader_read(NullReader* this, uint16_t* cbuf, int32_t off, int32_t len) {
+int32_t NullReader_read4(NullReader* this, uint16_t* cbuf, int32_t off, int32_t len) {
         return -1;
 }
 

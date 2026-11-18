@@ -1,47 +1,42 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.input
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/input/GameKeyMappingFactory.h"
 #include "org/allbinary/logic/NullUtil.h"
+#include "org/allbinary/game/input/GameKey.h"
+#include "org/allbinary/game/input/InputFactory.h"
+#include "org/allbinary/game/input/GameKeyFactory.h"
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
 
-typedef struct GameKeyMappingFactory GameKeyMappingFactory;
-struct GameKeyMappingFactory {
-    GameKey** intKeyToGameKey;
-};
 
-static Any* GameKeyMappingFactory_instance;
+static void* GameKeyMappingFactory_instance;
 
-GameKeyMappingFactory* GameKeyMappingFactory_new(void);
-GameKeyMappingFactory* GameKeyMappingFactory_getInstance(void);
 
-void GameKeyMappingFactory_init(GameKeyMappingFactory* this);
-GameKey* GameKeyMappingFactory_getGameKey(GameKeyMappingFactory* this, int32_t key);
+
+
 static void GameKeyMappingFactory_setGameKey(GameKeyMappingFactory* this, GameKey* gameKey);
 
-// Static fields with runtime initializers: call this once at startup
 void GameKeyMappingFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     GameKeyMappingFactory_instance = NullUtil_getInstance()->NULL_OBJECT;
+}
+
+void GameKeyMappingFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GameKeyMappingFactory", nullptr);
+    java_register_method("GameKeyMappingFactory", "getGameKey", (void*) GameKeyMappingFactory_getGameKey);
+    java_register_method("GameKeyMappingFactory", "setGameKey", (void*) GameKeyMappingFactory_setGameKey);
 }
 
 static void GameKeyMappingFactory_initFields(GameKeyMappingFactory* this) {
@@ -50,14 +45,15 @@ static void GameKeyMappingFactory_initFields(GameKeyMappingFactory* this) {
 
 
 GameKeyMappingFactory* GameKeyMappingFactory_getInstance(void) {
-        if (GameKeyMappingFactory_instance == NullUtil_getInstance()->NULL_OBJECT) {
+        if ((GameKeyMappingFactory_staticInit(), GameKeyMappingFactory_instance) == NullUtil_getInstance()->NULL_OBJECT) {
             GameKeyMappingFactory_instance = GameKeyMappingFactory_new();
         }
-        return ((GameKeyMappingFactory*) GameKeyMappingFactory_instance);
+        return ((GameKeyMappingFactory*) (GameKeyMappingFactory_staticInit(), GameKeyMappingFactory_instance));
 }
 
 
 void GameKeyMappingFactory_init(GameKeyMappingFactory* this) {
+    GameKeyMappingFactory_register();
     GameKeyMappingFactory_initFields(this);
         GameKeyFactory* gameKeyFactory = GameKeyFactory_getInstance();
         GameKeyMappingFactory_setGameKey(this, gameKeyFactory->NONE);
@@ -87,7 +83,7 @@ void GameKeyMappingFactory_init(GameKeyMappingFactory* this) {
 }
 
 GameKeyMappingFactory* GameKeyMappingFactory_new(void) {
-    GameKeyMappingFactory* this = calloc(1, sizeof(GameKeyMappingFactory));
+    GameKeyMappingFactory* this = java_object_alloc(sizeof(GameKeyMappingFactory), "GameKeyMappingFactory");
     GameKeyMappingFactory_init(this);
     return this;
 }
@@ -99,6 +95,6 @@ GameKey* GameKeyMappingFactory_getGameKey(GameKeyMappingFactory* this, int32_t k
 
 
 static void GameKeyMappingFactory_setGameKey(GameKeyMappingFactory* this, GameKey* gameKey) {
-        this->intKeyToGameKey[GameKey_getId(gameKey)] = gameKey;
+        this->intKeyToGameKey[Input_getId(gameKey)] = gameKey;
 }
 

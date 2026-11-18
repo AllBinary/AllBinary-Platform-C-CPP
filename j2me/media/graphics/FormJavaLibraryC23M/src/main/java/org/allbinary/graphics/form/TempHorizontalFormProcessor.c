@@ -1,41 +1,28 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.form
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-#include "org/allbinary/canvas/Processor.h"
-
-typedef struct TempHorizontalFormProcessor TempHorizontalFormProcessor;
-struct TempHorizontalFormProcessor {
-    Processor base;
-    ScrollCurrentSelectionForm* scrollCurrentSelectionForm;
-};
+#include "org/allbinary/graphics/form/TempHorizontalFormProcessor.h"
+#include "org/allbinary/graphics/form/ScrollCurrentSelectionForm.h"
 
 
-TempHorizontalFormProcessor* TempHorizontalFormProcessor_new(ScrollCurrentSelectionForm* scrollCurrentSelectionForm);
 
-void TempHorizontalFormProcessor_init(TempHorizontalFormProcessor* this, ScrollCurrentSelectionForm* scrollCurrentSelectionForm);
-void TempHorizontalFormProcessor_process(TempHorizontalFormProcessor* this);
+
+
+void TempHorizontalFormProcessor_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void TempHorizontalFormProcessor_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("TempHorizontalFormProcessor", "Processor");
+    java_register_method("TempHorizontalFormProcessor", "process", (void*) TempHorizontalFormProcessor_process);
+}
 
 static void TempHorizontalFormProcessor_initFields(TempHorizontalFormProcessor* this) {
     
@@ -43,13 +30,14 @@ static void TempHorizontalFormProcessor_initFields(TempHorizontalFormProcessor* 
 
 
 void TempHorizontalFormProcessor_init(TempHorizontalFormProcessor* this, ScrollCurrentSelectionForm* scrollCurrentSelectionForm) {
+    TempHorizontalFormProcessor_register();
     Processor_init(&this->base);
     TempHorizontalFormProcessor_initFields(this);
         this->scrollCurrentSelectionForm = scrollCurrentSelectionForm;
 }
 
 TempHorizontalFormProcessor* TempHorizontalFormProcessor_new(ScrollCurrentSelectionForm* scrollCurrentSelectionForm) {
-    TempHorizontalFormProcessor* this = calloc(1, sizeof(TempHorizontalFormProcessor));
+    TempHorizontalFormProcessor* this = java_object_alloc(sizeof(TempHorizontalFormProcessor), "TempHorizontalFormProcessor");
     TempHorizontalFormProcessor_init(this, scrollCurrentSelectionForm);
     return this;
 }

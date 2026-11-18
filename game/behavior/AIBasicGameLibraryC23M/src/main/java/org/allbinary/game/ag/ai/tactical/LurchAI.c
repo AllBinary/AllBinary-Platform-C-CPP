@@ -1,50 +1,46 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.ag.ai.tactical
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Canvas.h"
-#include "org/allbinary/game/ai/BasicAI.h"
+#include "org/allbinary/game/ag/ai/tactical/LurchAI.h"
+#include "javax/microedition/lcdui/Canvas.h"
 #include "org/allbinary/game/input/GameInput.h"
 #include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
 #include "org/allbinary/layer/AllBinaryLayer.h"
 #include "org/allbinary/layer/AllBinaryLayerManager.h"
+#if __has_include("org/allbinary/graphics/displayable/DisplayInfoSingleton.h")
+#include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
+#endif
+#if __has_include("org/allbinary/graphics/displayable/DisplayInfoSingleton.h")
+#include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
+#endif
 
-typedef struct LurchAI LurchAI;
-struct LurchAI {
-    BasicAI base;
-    int32_t currentRelativeAngle;
-    int32_t currentSpeed;
-};
 
 
-LurchAI* LurchAI_new(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
 
-void LurchAI_init(LurchAI* this, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
-void LurchAI_processAI(LurchAI* this, AllBinaryLayerManager* allBinaryLayerManager);
-void LurchAI_reverse(LurchAI* this);
+
+
 static void LurchAI_accelerate(LurchAI* this);
+
 static void LurchAI_drop(LurchAI* this);
+
+void LurchAI_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void LurchAI_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("LurchAI", "BasicAI");
+    java_register_method("LurchAI", "processAI", (void*) LurchAI_processAI);
+    java_register_method("LurchAI", "reverse", (void*) LurchAI_reverse);
+    java_register_method("LurchAI", "accelerate", (void*) LurchAI_accelerate);
+    java_register_method("LurchAI", "drop", (void*) LurchAI_drop);
+}
 
 static void LurchAI_initFields(LurchAI* this) {
     this->currentRelativeAngle = 0;
@@ -53,12 +49,13 @@ static void LurchAI_initFields(LurchAI* this) {
 
 
 void LurchAI_init(LurchAI* this, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) {
+    LurchAI_register();
         BasicAI_init(&this->base, ownerLayerInterface, gameInput);
         LurchAI_initFields(this);
 }
 
 LurchAI* LurchAI_new(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) {
-    LurchAI* this = calloc(1, sizeof(LurchAI));
+    LurchAI* this = java_object_alloc(sizeof(LurchAI), "LurchAI");
     LurchAI_init(this, ownerLayerInterface, gameInput);
     return this;
 }
@@ -71,7 +68,7 @@ void LurchAI_processAI(LurchAI* this, AllBinaryLayerManager* allBinaryLayerManag
         } else {
             this->currentSpeed = -1;
         }
-        AllBinaryLayer* ownerLayerInterface = LurchAI_getOwnerLayerInterface(this);
+        AllBinaryLayer* ownerLayerInterface = BasicAI_getOwnerLayerInterface(this);
         int32_t x = AllBinaryLayer_getXP(ownerLayerInterface);
         if (AllBinaryLayer_getXP(ownerLayerInterface) - this->currentSpeed <= 0) {
             LurchAI_reverse(this);
@@ -89,9 +86,9 @@ void LurchAI_processAI(LurchAI* this, AllBinaryLayerManager* allBinaryLayerManag
         }
         AllBinaryLayer_setPosition(ownerLayerInterface, x, AllBinaryLayer_getYP(ownerLayerInterface), AllBinaryLayer_getZP(ownerLayerInterface));
         if (this->currentRelativeAngle == 0) {
-            BasicAI_processKeyAI((&this->base), Canvas_KEY_NUM0);
+            BasicAI_processKeyAI((&this->base), (Canvas_staticInit(), Canvas_KEY_NUM0));
         } else if (this->currentRelativeAngle == 180) {
-            BasicAI_processKeyAI((&this->base), Canvas_KEY_POUND);
+            BasicAI_processKeyAI((&this->base), (Canvas_staticInit(), Canvas_KEY_POUND));
         }
 }
 
@@ -113,7 +110,7 @@ static void LurchAI_accelerate(LurchAI* this) {
 
 
 static void LurchAI_drop(LurchAI* this) {
-        AllBinaryLayer* ownerLayerInterface = LurchAI_getOwnerLayerInterface(this);
+        AllBinaryLayer* ownerLayerInterface = BasicAI_getOwnerLayerInterface(this);
         int32_t y = AllBinaryLayer_getYP(ownerLayerInterface);
         if (AllBinaryLayer_getY2(ownerLayerInterface) + AllBinaryLayer_getHeight(ownerLayerInterface) > DisplayInfoSingleton_getLastHeight(DisplayInfoSingleton_getInstance())) {
             y = 0;

@@ -1,28 +1,5 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input.motion.gesture.configuration
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/input/motion/gesture/configuration/MotionGestureConfiguration.h"
 #include "org/allbinary/game/input/CompleteMotionGestureInputEvent.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
 #include "org/allbinary/graphics/color/BasicColorFactory.h"
@@ -30,40 +7,66 @@
 #include "org/allbinary/logic/string/StringUtil.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
-
-typedef struct MotionGestureConfiguration MotionGestureConfiguration;
-struct MotionGestureConfiguration {
-    bool diagonalMotionGestureAllowed;
-    int32_t diagonalTolerance;
-    int32_t minimumMotionGesture;
-    const char* button;
-    BasicColor* color;
-    bool executingActions;
-    int32_t mouseButtonMask;
-    BasicArrayList* activeCommands;
-};
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/graphics/color/BasicColorFactory.h")
+#include "org/allbinary/graphics/color/BasicColorFactory.h"
+#endif
 
 
-MotionGestureConfiguration* MotionGestureConfiguration_new(void);
 
-void MotionGestureConfiguration_init(MotionGestureConfiguration* this);
-void MotionGestureConfiguration_addMotionGestureAction(MotionGestureConfiguration* this, BasicArrayList* list, CompleteMotionGestureInputEvent* commandAction);
-void MotionGestureConfiguration_clearMotionGestureAction(MotionGestureConfiguration* this);
-BasicArrayList* MotionGestureConfiguration_getAssociateCommandActionsList(MotionGestureConfiguration* this);
-bool MotionGestureConfiguration_isDiagonalMotionGestureAllowed(MotionGestureConfiguration* this);
-bool MotionGestureConfiguration_isExecutingActionsAllowed(MotionGestureConfiguration* this);
-void MotionGestureConfiguration_setExecutingActionsAllowed(MotionGestureConfiguration* this, bool executingActionAllowed);
-void MotionGestureConfiguration_setDiagonalMotionGestureAllowed(MotionGestureConfiguration* this, bool diagonalMotionGestureAllowed);
-int32_t MotionGestureConfiguration_getDiagonalTolerance(MotionGestureConfiguration* this);
-void MotionGestureConfiguration_setDiagonalTolerance(MotionGestureConfiguration* this, int32_t diagonalTolerance);
-int32_t MotionGestureConfiguration_getMinimumMotionGesture(MotionGestureConfiguration* this);
-void MotionGestureConfiguration_setMinimumMotionGesture(MotionGestureConfiguration* this, int32_t minimumMotionGesture);
-const char* MotionGestureConfiguration_getButton(MotionGestureConfiguration* this);
-void MotionGestureConfiguration_setButton(MotionGestureConfiguration* this, const char* button);
-BasicColor* MotionGestureConfiguration_getColor(MotionGestureConfiguration* this);
-void MotionGestureConfiguration_setColor(MotionGestureConfiguration* this, BasicColor* color);
-int32_t MotionGestureConfiguration_getMouseButtonMask(MotionGestureConfiguration* this);
-void MotionGestureConfiguration_setMouseButtonMask(MotionGestureConfiguration* this, int32_t mouseButtonMask);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void MotionGestureConfiguration_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void MotionGestureConfiguration_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("MotionGestureConfiguration", nullptr);
+    java_register_method("MotionGestureConfiguration", "addMotionGestureAction", (void*) MotionGestureConfiguration_addMotionGestureAction);
+    java_register_method("MotionGestureConfiguration", "clearMotionGestureAction", (void*) MotionGestureConfiguration_clearMotionGestureAction);
+    java_register_method("MotionGestureConfiguration", "getAssociateCommandActionsList", (void*) MotionGestureConfiguration_getAssociateCommandActionsList);
+    java_register_method("MotionGestureConfiguration", "isDiagonalMotionGestureAllowed", (void*) MotionGestureConfiguration_isDiagonalMotionGestureAllowed);
+    java_register_method("MotionGestureConfiguration", "isExecutingActionsAllowed", (void*) MotionGestureConfiguration_isExecutingActionsAllowed);
+    java_register_method("MotionGestureConfiguration", "setExecutingActionsAllowed", (void*) MotionGestureConfiguration_setExecutingActionsAllowed);
+    java_register_method("MotionGestureConfiguration", "setDiagonalMotionGestureAllowed", (void*) MotionGestureConfiguration_setDiagonalMotionGestureAllowed);
+    java_register_method("MotionGestureConfiguration", "getDiagonalTolerance", (void*) MotionGestureConfiguration_getDiagonalTolerance);
+    java_register_method("MotionGestureConfiguration", "setDiagonalTolerance", (void*) MotionGestureConfiguration_setDiagonalTolerance);
+    java_register_method("MotionGestureConfiguration", "getMinimumMotionGesture", (void*) MotionGestureConfiguration_getMinimumMotionGesture);
+    java_register_method("MotionGestureConfiguration", "setMinimumMotionGesture", (void*) MotionGestureConfiguration_setMinimumMotionGesture);
+    java_register_method("MotionGestureConfiguration", "getButton", (void*) MotionGestureConfiguration_getButton);
+    java_register_method("MotionGestureConfiguration", "setButton", (void*) MotionGestureConfiguration_setButton);
+    java_register_method("MotionGestureConfiguration", "getColor", (void*) MotionGestureConfiguration_getColor);
+    java_register_method("MotionGestureConfiguration", "setColor", (void*) MotionGestureConfiguration_setColor);
+    java_register_method("MotionGestureConfiguration", "getMouseButtonMask", (void*) MotionGestureConfiguration_getMouseButtonMask);
+    java_register_method("MotionGestureConfiguration", "setMouseButtonMask", (void*) MotionGestureConfiguration_setMouseButtonMask);
+}
 
 static void MotionGestureConfiguration_initFields(MotionGestureConfiguration* this) {
     this->diagonalMotionGestureAllowed = true;
@@ -78,11 +81,12 @@ static void MotionGestureConfiguration_initFields(MotionGestureConfiguration* th
 
 
 void MotionGestureConfiguration_init(MotionGestureConfiguration* this) {
+    MotionGestureConfiguration_register();
     MotionGestureConfiguration_initFields(this);
 }
 
 MotionGestureConfiguration* MotionGestureConfiguration_new(void) {
-    MotionGestureConfiguration* this = calloc(1, sizeof(MotionGestureConfiguration));
+    MotionGestureConfiguration* this = java_object_alloc(sizeof(MotionGestureConfiguration), "MotionGestureConfiguration");
     MotionGestureConfiguration_init(this);
     return this;
 }

@@ -1,49 +1,51 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2022 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.score
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/score/HighScoresHelperBase.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/game/score/HighScoresHelperBaseInterface.h"
+#include "org/allbinary/game/score/LastFetchHighScoresFactory.h"
+#include "org/allbinary/game/score/HighScores.h"
+#include "org/allbinary/game/score/NullHighScoresSingletonFactory.h"
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
 
-typedef struct HighScoresHelperBase HighScoresHelperBase;
-struct HighScoresHelperBase {
-    HighScoresHelperBaseInterface HighScoresHelperBaseInterface_interface;
-    LogUtil* logUtil;
-    HighScores** highScoresArrayP;
-};
 
 
-HighScoresHelperBase* HighScoresHelperBase_new(void);
-void HighScoresHelperBase_setHighScoresArray(HighScoresHelperBase* this, HighScores** highScoresArrayP);
-HighScores* HighScoresHelperBase_getNextHighScores(HighScoresHelperBase* this);
-bool HighScoresHelperBase_isAnyHighScores(HighScoresHelperBase* this);
-void HighScoresHelperBase_setSelectedHighScores(HighScoresHelperBase* this, HighScores* selectedHighScores);
-HighScores* HighScoresHelperBase_getSelectedHighScores(HighScoresHelperBase* this);
-HighScores** HighScoresHelperBase_getHighScoresArray(HighScoresHelperBase* this);
-void HighScoresHelperBase_selectHighScores(HighScoresHelperBase* this);
+
+
+
+
+
+
+
+void HighScoresHelperBase_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void HighScoresHelperBase_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("HighScoresHelperBase", nullptr);
+    java_register_method("HighScoresHelperBase", "setHighScoresArray", (void*) HighScoresHelperBase_setHighScoresArray);
+    java_register_method("HighScoresHelperBase", "getNextHighScores", (void*) HighScoresHelperBase_getNextHighScores);
+    java_register_method("HighScoresHelperBase", "isAnyHighScores", (void*) HighScoresHelperBase_isAnyHighScores);
+    java_register_method("HighScoresHelperBase", "setSelectedHighScores", (void*) HighScoresHelperBase_setSelectedHighScores);
+    java_register_method("HighScoresHelperBase", "getSelectedHighScores", (void*) HighScoresHelperBase_getSelectedHighScores);
+    java_register_method("HighScoresHelperBase", "getHighScoresArray", (void*) HighScoresHelperBase_getHighScoresArray);
+    java_register_method("HighScoresHelperBase", "selectHighScores", (void*) HighScoresHelperBase_selectHighScores);
+}
 
 static void HighScoresHelperBase_initFields(HighScoresHelperBase* this) {
     this->logUtil = LogUtil_getInstance();
@@ -51,11 +53,12 @@ static void HighScoresHelperBase_initFields(HighScoresHelperBase* this) {
 }
 
 void HighScoresHelperBase_init(HighScoresHelperBase* this) {
+    HighScoresHelperBase_register();
     HighScoresHelperBase_initFields(this);
 }
 
 HighScoresHelperBase* HighScoresHelperBase_new(void) {
-    HighScoresHelperBase* this = calloc(1, sizeof(HighScoresHelperBase));
+    HighScoresHelperBase* this = java_object_alloc(sizeof(HighScoresHelperBase), "HighScoresHelperBase");
     HighScoresHelperBase_init(this);
     return this;
 }
@@ -64,7 +67,7 @@ HighScoresHelperBase* HighScoresHelperBase_new(void) {
 void HighScoresHelperBase_setHighScoresArray(HighScoresHelperBase* this, HighScores** highScoresArrayP) {
         if (highScoresArrayP != nullptr) {
             CommonStrings* commonStrings = CommonStrings_getInstance();
-            LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), commonStrings->START), appendint, java_array_length(highScoresArrayP)), toString), this, "setHighScoresArray");
+            LogUtil_putF(this->logUtil, java_string_of(StringMaker_appendint(StringMaker_append(StringMaker_new(), commonStrings->START), java_array_length(highScoresArrayP))), this, "setHighScoresArray");
         } else {
             CommonStrings* commonStrings = CommonStrings_getInstance();
             LogUtil_putF(this->logUtil, commonStrings->START, this, "setHighScoresArray");

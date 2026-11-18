@@ -9,6 +9,12 @@
 #include "org/allbinary/logic/system/os/SystemProperties.h"
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/logic/system/os/windows/WindowsOS.h"
+#if __has_include("org/allbinary/logic/system/os/SystemProperties.h")
+#include "org/allbinary/logic/system/os/SystemProperties.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h")
+#include "org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h"
+#endif
 
 
 static WindowsOperatingSystemFactory* WindowsOperatingSystemFactory_instance;
@@ -83,7 +89,7 @@ GenericOperatingSystem* WindowsOperatingSystemFactory_getOperatingSystemInstance
             }
             return operatingSystemInterface;
         } JAVA_CATCH(Exception, e) {
-            if (JAVA_CALL((LogConfigTypes_staticInit(), LogConfigTypes_LOGGING), contains, LogConfigTypeFactory_getInstance()->FACTORYERROR)) {
+            if (BasicArrayList_contains((LogConfigTypes_staticInit(), LogConfigTypes_LOGGING), LogConfigTypeFactory_getInstance()->FACTORYERROR)) {
                 CommonStrings* commonStrings = CommonStrings_getInstance();
                 LogUtil_put(this->logUtil, commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, e);
             }

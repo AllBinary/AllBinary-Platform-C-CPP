@@ -1,57 +1,52 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.input
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/input/InputFactory.h"
 #include "org/allbinary/logic/NullUtil.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/logic/math/SmallIntegerSingletonFactory.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/string/CommonStrings.h"
+#include "org/allbinary/game/input/Input.h"
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/math/SmallIntegerSingletonFactory.h")
+#include "org/allbinary/logic/math/SmallIntegerSingletonFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
 
-typedef struct InputFactory InputFactory;
-struct InputFactory {
-    LogUtil* logUtil;
-    CommonStrings* commonStrings;
-    const char* KEY_CODE_LABEL;
-    const char* DEVICE_ID_LABEL;
-    int32_t MAX;
-    Input** inputIntegerArray;
-    Input* NO_INPUT;
-};
 
-static Any* InputFactory_instance;
+static void* InputFactory_instance;
 
-InputFactory* InputFactory_new(void);
-InputFactory* InputFactory_getInstance(void);
 
-void InputFactory_init(InputFactory* this);
-void InputFactory_add(InputFactory* this, int32_t id, Input* input);
-Input* InputFactory_getInstanceById(InputFactory* this, int32_t id);
 
-// Static fields with runtime initializers: call this once at startup
+
+
 void InputFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     InputFactory_instance = NullUtil_getInstance()->NULL_OBJECT;
+}
+
+void InputFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("InputFactory", nullptr);
+    java_register_method("InputFactory", "add", (void*) InputFactory_add);
+    java_register_method("InputFactory", "getInstanceById", (void*) InputFactory_getInstanceById);
 }
 
 static void InputFactory_initFields(InputFactory* this) {
@@ -66,14 +61,15 @@ static void InputFactory_initFields(InputFactory* this) {
 
 
 InputFactory* InputFactory_getInstance(void) {
-        if (InputFactory_instance == NullUtil_getInstance()->NULL_OBJECT) {
+        if ((InputFactory_staticInit(), InputFactory_instance) == NullUtil_getInstance()->NULL_OBJECT) {
             InputFactory_instance = InputFactory_new();
         }
-        return ((InputFactory*) InputFactory_instance);
+        return ((InputFactory*) (InputFactory_staticInit(), InputFactory_instance));
 }
 
 
 void InputFactory_init(InputFactory* this) {
+    InputFactory_register();
     InputFactory_initFields(this);
         int32_t size = java_array_length(this->inputIntegerArray);
         for (int32_t index = 0; index < size; index++) {
@@ -82,7 +78,7 @@ void InputFactory_init(InputFactory* this) {
 }
 
 InputFactory* InputFactory_new(void) {
-    InputFactory* this = calloc(1, sizeof(InputFactory));
+    InputFactory* this = java_object_alloc(sizeof(InputFactory), "InputFactory");
     InputFactory_init(this);
     return this;
 }
@@ -98,7 +94,7 @@ Input* InputFactory_getInstanceById(InputFactory* this, int32_t id) {
             id = -id;
         }
         if (id > java_array_length(this->inputIntegerArray)) {
-            LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), "Warning id: "), appendint, id), toString), this, this->commonStrings->GET_INSTANCE);
+            LogUtil_putF(this->logUtil, java_string_of(StringMaker_appendint(StringMaker_append(StringMaker_new(), "Warning id: "), id)), this, this->commonStrings->GET_INSTANCE);
             return this->NO_INPUT;
         }
         return this->inputIntegerArray[id];

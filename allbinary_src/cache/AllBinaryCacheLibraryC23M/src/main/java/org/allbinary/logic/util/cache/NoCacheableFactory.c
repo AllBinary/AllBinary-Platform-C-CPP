@@ -1,54 +1,44 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.util.cache
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/logic/util/cache/NoCacheableFactory.h"
 #include "org/allbinary/logic/util/cache/CacheableInterfaceFactoryInterface.h"
-
-typedef struct NoCacheableFactory NoCacheableFactory;
-struct NoCacheableFactory {
-    CacheableInterfaceFactoryInterface CacheableInterfaceFactoryInterface_interface;
-};
+#include "org/allbinary/logic/util/cache/CacheableInterface.h"
 
 
-NoCacheableFactory* NoCacheableFactory_new(void);
 
-void NoCacheableFactory_init(NoCacheableFactory* this);
-CacheableInterface* NoCacheableFactory_getInstance(NoCacheableFactory* this, Any* key);
+
+
+void NoCacheableFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void NoCacheableFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("NoCacheableFactory", nullptr);
+    java_register_method("NoCacheableFactory", "getInstance", (void*) NoCacheableFactory_getInstance);
+}
 
 
 void NoCacheableFactory_init(NoCacheableFactory* this) {
+    NoCacheableFactory_register();
 }
 
 NoCacheableFactory* NoCacheableFactory_new(void) {
-    NoCacheableFactory* this = calloc(1, sizeof(NoCacheableFactory));
+    NoCacheableFactory* this = java_object_alloc(sizeof(NoCacheableFactory), "NoCacheableFactory");
     NoCacheableFactory_init(this);
     return this;
 }
 
 
 // throws Exception
-CacheableInterface* NoCacheableFactory_getInstance(NoCacheableFactory* this, Any* key) {
+CacheableInterface* NoCacheableFactory_getInstance(NoCacheableFactory* this, void* key) {
         java_throw(java_exception_new("Exception", "This Factory Does Not"));
 }
 

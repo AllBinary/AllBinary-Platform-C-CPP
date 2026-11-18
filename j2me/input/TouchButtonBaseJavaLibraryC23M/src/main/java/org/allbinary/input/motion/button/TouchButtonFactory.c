@@ -1,53 +1,43 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input.motion.button
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/input/motion/button/TouchButtonFactory.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListUtil.h"
+#if __has_include("org/allbinary/util/BasicArrayListUtil.h")
+#include "org/allbinary/util/BasicArrayListUtil.h"
+#endif
+#if __has_include("org/allbinary/util/BasicArrayListUtil.h")
+#include "org/allbinary/util/BasicArrayListUtil.h"
+#endif
 
-typedef struct TouchButtonFactory TouchButtonFactory;
-struct TouchButtonFactory {
-    BasicArrayList* LIST;
-    BasicArrayList* list;
-    BasicArrayList* savedList;
-    bool saved;
-};
 
 static TouchButtonFactory* TouchButtonFactory_SINGLETON;
 
-TouchButtonFactory* TouchButtonFactory_new(void);
-TouchButtonFactory* TouchButtonFactory_getInstance(void);
 
-void TouchButtonFactory_init(TouchButtonFactory* this);
-void TouchButtonFactory_defaultList(TouchButtonFactory* this);
-void TouchButtonFactory_toggle(TouchButtonFactory* this, bool save, BasicArrayList* list);
-void TouchButtonFactory_setList(TouchButtonFactory* this, BasicArrayList* list);
-BasicArrayList* TouchButtonFactory_getList(TouchButtonFactory* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
 void TouchButtonFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     TouchButtonFactory_SINGLETON = TouchButtonFactory_new();
+}
+
+void TouchButtonFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("TouchButtonFactory", nullptr);
+    java_register_method("TouchButtonFactory", "defaultList", (void*) TouchButtonFactory_defaultList);
+    java_register_method("TouchButtonFactory", "toggle", (void*) TouchButtonFactory_toggle);
+    java_register_method("TouchButtonFactory", "setList", (void*) TouchButtonFactory_setList);
+    java_register_method("TouchButtonFactory", "getList", (void*) TouchButtonFactory_getList);
 }
 
 static void TouchButtonFactory_initFields(TouchButtonFactory* this) {
@@ -59,16 +49,17 @@ static void TouchButtonFactory_initFields(TouchButtonFactory* this) {
 
 
 TouchButtonFactory* TouchButtonFactory_getInstance(void) {
-        return TouchButtonFactory_SINGLETON;
+        return (TouchButtonFactory_staticInit(), TouchButtonFactory_SINGLETON);
 }
 
 
 void TouchButtonFactory_init(TouchButtonFactory* this) {
+    TouchButtonFactory_register();
     TouchButtonFactory_initFields(this);
 }
 
 TouchButtonFactory* TouchButtonFactory_new(void) {
-    TouchButtonFactory* this = calloc(1, sizeof(TouchButtonFactory));
+    TouchButtonFactory* this = java_object_alloc(sizeof(TouchButtonFactory), "TouchButtonFactory");
     TouchButtonFactory_init(this);
     return this;
 }

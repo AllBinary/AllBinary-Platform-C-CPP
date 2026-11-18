@@ -1,42 +1,30 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.form
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/graphics/form/TempHorizontalItemIndexDx.h"
 #include "org/allbinary/graphics/form/item/ABCustomItem.h"
 #include "org/allbinary/graphics/form/ItemIndexDx.h"
-
-typedef struct TempHorizontalItemIndexDx TempHorizontalItemIndexDx;
-struct TempHorizontalItemIndexDx {
-    ItemIndexDx base;
-    ScrollCurrentSelectionForm* scrollCurrentSelectionForm;
-};
+#include "org/allbinary/graphics/form/ScrollCurrentSelectionForm.h"
 
 
-TempHorizontalItemIndexDx* TempHorizontalItemIndexDx_new(ScrollCurrentSelectionForm* scrollCurrentSelectionForm);
 
-void TempHorizontalItemIndexDx_init(TempHorizontalItemIndexDx* this, ScrollCurrentSelectionForm* scrollCurrentSelectionForm);
-int32_t TempHorizontalItemIndexDx_getDx(TempHorizontalItemIndexDx* this, int32_t index, ABCustomItem* item, int32_t dx, int32_t dy);
+
+
+void TempHorizontalItemIndexDx_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void TempHorizontalItemIndexDx_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("TempHorizontalItemIndexDx", "ItemIndexDx");
+    java_register_method("TempHorizontalItemIndexDx", "getDx", (void*) TempHorizontalItemIndexDx_getDx);
+}
 
 static void TempHorizontalItemIndexDx_initFields(TempHorizontalItemIndexDx* this) {
     
@@ -44,13 +32,14 @@ static void TempHorizontalItemIndexDx_initFields(TempHorizontalItemIndexDx* this
 
 
 void TempHorizontalItemIndexDx_init(TempHorizontalItemIndexDx* this, ScrollCurrentSelectionForm* scrollCurrentSelectionForm) {
+    TempHorizontalItemIndexDx_register();
     ItemIndexDx_init(&this->base);
     TempHorizontalItemIndexDx_initFields(this);
         this->scrollCurrentSelectionForm = scrollCurrentSelectionForm;
 }
 
 TempHorizontalItemIndexDx* TempHorizontalItemIndexDx_new(ScrollCurrentSelectionForm* scrollCurrentSelectionForm) {
-    TempHorizontalItemIndexDx* this = calloc(1, sizeof(TempHorizontalItemIndexDx));
+    TempHorizontalItemIndexDx* this = java_object_alloc(sizeof(TempHorizontalItemIndexDx), "TempHorizontalItemIndexDx");
     TempHorizontalItemIndexDx_init(this, scrollCurrentSelectionForm);
     return this;
 }

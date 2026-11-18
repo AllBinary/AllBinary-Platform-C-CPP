@@ -1,352 +1,251 @@
 // Generated Code Do Not Modify
-// package javax.microedition.khronos.opengles
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "java/nio/Buffer.h"
-// #include "java/nio/FloatBuffer.h"
-// #include "java/nio/IntBuffer.h"
+#include "javax/microedition/khronos/opengles/GL10.h"
 #include "javax/microedition/khronos/opengles/GL.h"
 
-typedef struct GL10 GL10;
-struct GL10 {
-    void (*glActiveTexture)(void* this, int32_t texture);
-    void (*glAlphaFunc)(void* this, int32_t func, float ref);
-    void (*glBindTexture)(void* this, int32_t target, int32_t texture);
-    void (*glBlendFunc)(void* this, int32_t sfactor, int32_t dfactor);
-    void (*glClear)(void* this, int32_t mask);
-    void (*glClearColor)(void* this, float red, float green, float blue, float alpha);
-    void (*glClearDepthf)(void* this, float depth);
-    void (*glClearStencil)(void* this, int32_t s);
-    void (*glClientActiveTexture)(void* this, int32_t texture);
-    void (*glColor4f)(void* this, float red, float green, float blue, float alpha);
-    void (*glColorMask)(void* this, bool red, bool green, bool blue, bool alpha);
-    void (*glColorPointer)(void* this, int32_t size, int32_t type, int32_t stride, Buffer* pointer);
-    void (*glCompressedTexImage2D)(void* this, int32_t target, int32_t level, int32_t internalformat, int32_t width, int32_t height, int32_t border, int32_t imageSize, Buffer* data);
-    void (*glCompressedTexSubImage2D)(void* this, int32_t target, int32_t level, int32_t xoffset, int32_t yoffset, int32_t width, int32_t height, int32_t format, int32_t imageSize, Buffer* data);
-    void (*glCopyTexImage2D)(void* this, int32_t target, int32_t level, int32_t internalformat, int32_t x, int32_t y, int32_t width, int32_t height, int32_t border);
-    void (*glCopyTexSubImage2D)(void* this, int32_t target, int32_t level, int32_t xoffset, int32_t yoffset, int32_t x, int32_t y, int32_t width, int32_t height);
-    void (*glCullFace)(void* this, int32_t mode);
-    void (*glDeleteTextures)(void* this, int32_t n, int32_t* textures, int32_t offset);
-    void (*glDeleteTextures)(void* this, int32_t n, IntBuffer* textures);
-    void (*glDepthFunc)(void* this, int32_t func);
-    void (*glDepthMask)(void* this, bool flag);
-    void (*glDepthRangef)(void* this, float zNear, float zFar);
-    void (*glDisable)(void* this, int32_t cap);
-    void (*glDisableClientState)(void* this, int32_t array);
-    void (*glDrawArrays)(void* this, int32_t mode, int32_t first, int32_t count);
-    void (*glDrawElements)(void* this, int32_t mode, int32_t count, int32_t type, Buffer* indices);
-    void (*glEnable)(void* this, int32_t cap);
-    void (*glEnableClientState)(void* this, int32_t array);
-    void (*glFinish)(void* this);
-    void (*glFlush)(void* this);
-    void (*glFogf)(void* this, int32_t pname, float param);
-    void (*glFogfv)(void* this, int32_t pname, float* params, int32_t offset);
-    void (*glFogfv)(void* this, int32_t pname, FloatBuffer* params);
-    void (*glFrontFace)(void* this, int32_t mode);
-    void (*glFrustumf)(void* this, float left, float right, float bottom, float top, float zNear, float zFar);
-    void (*glGenTextures)(void* this, int32_t n, int32_t* textures, int32_t offset);
-    void (*glGenTextures)(void* this, int32_t n, IntBuffer* textures);
-    int32_t (*glGetError)(void* this);
-    void (*glGetIntegerv)(void* this, int32_t pname, int32_t* params, int32_t offset);
-    void (*glGetIntegerv)(void* this, int32_t pname, IntBuffer* params);
-    const char* (*glGetString)(void* this, int32_t name);
-    void (*glHint)(void* this, int32_t target, int32_t mode);
-    void (*glLightModelf)(void* this, int32_t pname, float param);
-    void (*glLightModelfv)(void* this, int32_t pname, float* params, int32_t offset);
-    void (*glLightModelfv)(void* this, int32_t pname, FloatBuffer* params);
-    void (*glLightf)(void* this, int32_t light, int32_t pname, float param);
-    void (*glLightfv)(void* this, int32_t light, int32_t pname, float* params, int32_t offset);
-    void (*glLightfv)(void* this, int32_t light, int32_t pname, FloatBuffer* params);
-    void (*glLineWidth)(void* this, float width);
-    void (*glLoadIdentity)(void* this);
-    void (*glLoadMatrixf)(void* this, float* m, int32_t offset);
-    void (*glLoadMatrixf)(void* this, FloatBuffer* m);
-    void (*glLogicOp)(void* this, int32_t opcode);
-    void (*glMaterialf)(void* this, int32_t face, int32_t pname, float param);
-    void (*glMaterialfv)(void* this, int32_t face, int32_t pname, float* params, int32_t offset);
-    void (*glMaterialfv)(void* this, int32_t face, int32_t pname, FloatBuffer* params);
-    void (*glMatrixMode)(void* this, int32_t mode);
-    void (*glMultMatrixf)(void* this, float* m, int32_t offset);
-    void (*glMultMatrixf)(void* this, FloatBuffer* m);
-    void (*glMultiTexCoord4f)(void* this, int32_t target, float s, float t, float r, float q);
-    void (*glNormal3f)(void* this, float nx, float ny, float nz);
-    void (*glNormalPointer)(void* this, int32_t type, int32_t stride, Buffer* pointer);
-    void (*glOrthof)(void* this, float left, float right, float bottom, float top, float zNear, float zFar);
-    void (*glPixelStorei)(void* this, int32_t pname, int32_t param);
-    void (*glPointSize)(void* this, float size);
-    void (*glPolygonOffset)(void* this, float factor, float units);
-    void (*glPopMatrix)(void* this);
-    void (*glPushMatrix)(void* this);
-    void (*glReadPixels)(void* this, int32_t x, int32_t y, int32_t width, int32_t height, int32_t format, int32_t type, Buffer* pixels);
-    void (*glRotatef)(void* this, float angle, float x, float y, float z);
-    void (*glRotatex)(void* this, int32_t angle, int32_t x, int32_t y, int32_t z);
-    void (*glSampleCoverage)(void* this, float value, bool invert);
-    void (*glScalef)(void* this, float x, float y, float z);
-    void (*glScalex)(void* this, int32_t x, int32_t y, int32_t z);
-    void (*glScissor)(void* this, int32_t x, int32_t y, int32_t width, int32_t height);
-    void (*glShadeModel)(void* this, int32_t mode);
-    void (*glStencilFunc)(void* this, int32_t func, int32_t ref, int32_t mask);
-    void (*glStencilMask)(void* this, int32_t mask);
-    void (*glStencilOp)(void* this, int32_t fail, int32_t zfail, int32_t zpass);
-    void (*glTexCoordPointer)(void* this, int32_t size, int32_t type, int32_t stride, Buffer* pointer);
-    void (*glTexEnvf)(void* this, int32_t target, int32_t pname, float param);
-    void (*glTexEnvfv)(void* this, int32_t target, int32_t pname, float* params, int32_t offset);
-    void (*glTexEnvfv)(void* this, int32_t target, int32_t pname, FloatBuffer* params);
-    void (*glTexImage2D)(void* this, int32_t target, int32_t level, int32_t internalformat, int32_t width, int32_t height, int32_t border, int32_t format, int32_t type, Buffer* pixels);
-    void (*glTexParameterf)(void* this, int32_t target, int32_t pname, float param);
-    void (*glTexParameteri)(void* this, int32_t target, int32_t pname, int32_t param);
-    void (*glTexSubImage2D)(void* this, int32_t target, int32_t level, int32_t xoffset, int32_t yoffset, int32_t width, int32_t height, int32_t format, int32_t type, Buffer* pixels);
-    void (*glTranslatef)(void* this, float x, float y, float z);
-    void (*glVertexPointer)(void* this, int32_t size, int32_t type, int32_t stride, Buffer* pointer);
-    void (*glViewport)(void* this, int32_t x, int32_t y, int32_t width, int32_t height);
-    void (*glBegin)(void* this, int32_t i);
-    void (*glEnd)(void* this);
-    void (*glVertex3f)(void* this, float f, float f2, float f3);
-    void (*glPolygonMode)(void* this, int32_t i, int32_t i1);
-};
 
-constexpr int32_t GL10_GL_ADD = 260;
-constexpr int32_t GL10_GL_ALIASED_LINE_WIDTH_RANGE = 33902;
-constexpr int32_t GL10_GL_ALIASED_POINT_SIZE_RANGE = 33901;
-constexpr int32_t GL10_GL_ALPHA = 6406;
-constexpr int32_t GL10_GL_ALPHA_BITS = 3413;
-constexpr int32_t GL10_GL_ALPHA_TEST = 3008;
-constexpr int32_t GL10_GL_ALWAYS = 519;
-constexpr int32_t GL10_GL_AMBIENT = 4608;
-constexpr int32_t GL10_GL_AMBIENT_AND_DIFFUSE = 5634;
-constexpr int32_t GL10_GL_AND = 5377;
-constexpr int32_t GL10_GL_AND_INVERTED = 5380;
-constexpr int32_t GL10_GL_AND_REVERSE = 5378;
-constexpr int32_t GL10_GL_BACK = 1029;
-constexpr int32_t GL10_GL_BLEND = 3042;
-constexpr int32_t GL10_GL_BLUE_BITS = 3412;
-constexpr int32_t GL10_GL_BYTE = 5120;
-constexpr int32_t GL10_GL_CCW = 2305;
-constexpr int32_t GL10_GL_CLAMP_TO_EDGE = 33071;
-constexpr int32_t GL10_GL_CLEAR = 5376;
-constexpr int32_t GL10_GL_COLOR_ARRAY = 32886;
-constexpr int32_t GL10_GL_COLOR_BUFFER_BIT = 16384;
-constexpr int32_t GL10_GL_COLOR_LOGIC_OP = 3058;
-constexpr int32_t GL10_GL_COLOR_MATERIAL = 2903;
-constexpr int32_t GL10_GL_COMPRESSED_TEXTURE_FORMATS = 34467;
-constexpr int32_t GL10_GL_CONSTANT_ATTENUATION = 4615;
-constexpr int32_t GL10_GL_COPY = 5379;
-constexpr int32_t GL10_GL_COPY_INVERTED = 5388;
-constexpr int32_t GL10_GL_CULL_FACE = 2884;
-constexpr int32_t GL10_GL_CW = 2304;
-constexpr int32_t GL10_GL_DECAL = 8449;
-constexpr int32_t GL10_GL_DECR = 7683;
-constexpr int32_t GL10_GL_DEPTH_BITS = 3414;
-constexpr int32_t GL10_GL_DEPTH_BUFFER_BIT = 256;
-constexpr int32_t GL10_GL_DEPTH_TEST = 2929;
-constexpr int32_t GL10_GL_DIFFUSE = 4609;
-constexpr int32_t GL10_GL_DITHER = 3024;
-constexpr int32_t GL10_GL_DONT_CARE = 4352;
-constexpr int32_t GL10_GL_DST_ALPHA = 772;
-constexpr int32_t GL10_GL_DST_COLOR = 774;
-constexpr int32_t GL10_GL_EMISSION = 5632;
-constexpr int32_t GL10_GL_EQUAL = 514;
-constexpr int32_t GL10_GL_EQUIV = 5385;
-constexpr int32_t GL10_GL_EXP = 2048;
-constexpr int32_t GL10_GL_EXP2 = 2049;
-constexpr int32_t GL10_GL_EXTENSIONS = 7939;
-constexpr int32_t GL10_GL_FALSE = 0;
-constexpr int32_t GL10_GL_FASTEST = 4353;
-constexpr int32_t GL10_GL_FIXED = 5132;
-constexpr int32_t GL10_GL_FLAT = 7424;
-constexpr int32_t GL10_GL_FLOAT = 5126;
-constexpr int32_t GL10_GL_FOG = 2912;
-constexpr int32_t GL10_GL_FOG_COLOR = 2918;
-constexpr int32_t GL10_GL_FOG_DENSITY = 2914;
-constexpr int32_t GL10_GL_FOG_END = 2916;
-constexpr int32_t GL10_GL_FOG_HINT = 3156;
-constexpr int32_t GL10_GL_FOG_MODE = 2917;
-constexpr int32_t GL10_GL_FOG_START = 2915;
-constexpr int32_t GL10_GL_FRONT = 1028;
-constexpr int32_t GL10_GL_FRONT_AND_BACK = 1032;
-constexpr int32_t GL10_GL_GEQUAL = 518;
-constexpr int32_t GL10_GL_GREATER = 516;
-constexpr int32_t GL10_GL_GREEN_BITS = 3411;
-constexpr int32_t GL10_GL_IMPLEMENTATION_COLOR_READ_FORMAT_OES = 35739;
-constexpr int32_t GL10_GL_IMPLEMENTATION_COLOR_READ_TYPE_OES = 35738;
-constexpr int32_t GL10_GL_INCR = 7682;
-constexpr int32_t GL10_GL_INVALID_ENUM = 1280;
-constexpr int32_t GL10_GL_INVALID_OPERATION = 1282;
-constexpr int32_t GL10_GL_INVALID_VALUE = 1281;
-constexpr int32_t GL10_GL_INVERT = 5386;
-constexpr int32_t GL10_GL_KEEP = 7680;
-constexpr int32_t GL10_GL_LEQUAL = 515;
-constexpr int32_t GL10_GL_LESS = 513;
-constexpr int32_t GL10_GL_LIGHT_MODEL_AMBIENT = 2899;
-constexpr int32_t GL10_GL_LIGHT_MODEL_TWO_SIDE = 2898;
-constexpr int32_t GL10_GL_LIGHT0 = 16384;
-constexpr int32_t GL10_GL_LIGHT1 = 16385;
-constexpr int32_t GL10_GL_LIGHT2 = 16386;
-constexpr int32_t GL10_GL_LIGHT3 = 16387;
-constexpr int32_t GL10_GL_LIGHT4 = 16388;
-constexpr int32_t GL10_GL_LIGHT5 = 16389;
-constexpr int32_t GL10_GL_LIGHT6 = 16390;
-constexpr int32_t GL10_GL_LIGHT7 = 16391;
-constexpr int32_t GL10_GL_LIGHTING = 2896;
-constexpr int32_t GL10_GL_LINE_LOOP = 2;
-constexpr int32_t GL10_GL_LINE_SMOOTH = 2848;
-constexpr int32_t GL10_GL_LINE_SMOOTH_HINT = 3154;
-constexpr int32_t GL10_GL_LINE_STRIP = 3;
-constexpr int32_t GL10_GL_LINEAR = 9729;
-constexpr int32_t GL10_GL_LINEAR_ATTENUATION = 4616;
-constexpr int32_t GL10_GL_LINEAR_MIPMAP_LINEAR = 9987;
-constexpr int32_t GL10_GL_LINEAR_MIPMAP_NEAREST = 9985;
-constexpr int32_t GL10_GL_LINES = 1;
-constexpr int32_t GL10_GL_LUMINANCE = 6409;
-constexpr int32_t GL10_GL_LUMINANCE_ALPHA = 6410;
-constexpr int32_t GL10_GL_MAX_ELEMENTS_INDICES = 33001;
-constexpr int32_t GL10_GL_MAX_ELEMENTS_VERTICES = 33000;
-constexpr int32_t GL10_GL_MAX_LIGHTS = 3377;
-constexpr int32_t GL10_GL_MAX_MODELVIEW_STACK_DEPTH = 3382;
-constexpr int32_t GL10_GL_MAX_PROJECTION_STACK_DEPTH = 3384;
-constexpr int32_t GL10_GL_MAX_TEXTURE_SIZE = 3379;
-constexpr int32_t GL10_GL_MAX_TEXTURE_STACK_DEPTH = 3385;
-constexpr int32_t GL10_GL_MAX_TEXTURE_UNITS = 34018;
-constexpr int32_t GL10_GL_MAX_VIEWPORT_DIMS = 3386;
-constexpr int32_t GL10_GL_MODELVIEW = 5888;
-constexpr int32_t GL10_GL_MODULATE = 8448;
-constexpr int32_t GL10_GL_MULTISAMPLE = 32925;
-constexpr int32_t GL10_GL_NAND = 5390;
-constexpr int32_t GL10_GL_NEAREST = 9728;
-constexpr int32_t GL10_GL_NEAREST_MIPMAP_LINEAR = 9986;
-constexpr int32_t GL10_GL_NEAREST_MIPMAP_NEAREST = 9984;
-constexpr int32_t GL10_GL_NEVER = 512;
-constexpr int32_t GL10_GL_NICEST = 4354;
-constexpr int32_t GL10_GL_NO_ERROR = 0;
-constexpr int32_t GL10_GL_NOOP = 5381;
-constexpr int32_t GL10_GL_NOR = 5384;
-constexpr int32_t GL10_GL_NORMAL_ARRAY = 32885;
-constexpr int32_t GL10_GL_NORMALIZE = 2977;
-constexpr int32_t GL10_GL_NOTEQUAL = 517;
-constexpr int32_t GL10_GL_NUM_COMPRESSED_TEXTURE_FORMATS = 34466;
-constexpr int32_t GL10_GL_ONE = 1;
-constexpr int32_t GL10_GL_ONE_MINUS_DST_ALPHA = 773;
-constexpr int32_t GL10_GL_ONE_MINUS_DST_COLOR = 775;
-constexpr int32_t GL10_GL_ONE_MINUS_SRC_ALPHA = 771;
-constexpr int32_t GL10_GL_ONE_MINUS_SRC_COLOR = 769;
-constexpr int32_t GL10_GL_OR = 5383;
-constexpr int32_t GL10_GL_OR_INVERTED = 5389;
-constexpr int32_t GL10_GL_OR_REVERSE = 5387;
-constexpr int32_t GL10_GL_OUT_OF_MEMORY = 1285;
-constexpr int32_t GL10_GL_PACK_ALIGNMENT = 3333;
-constexpr int32_t GL10_GL_PALETTE4_R5_G6_B5_OES = 35730;
-constexpr int32_t GL10_GL_PALETTE4_RGB5_A1_OES = 35732;
-constexpr int32_t GL10_GL_PALETTE4_RGB8_OES = 35728;
-constexpr int32_t GL10_GL_PALETTE4_RGBA4_OES = 35731;
-constexpr int32_t GL10_GL_PALETTE4_RGBA8_OES = 35729;
-constexpr int32_t GL10_GL_PALETTE8_R5_G6_B5_OES = 35735;
-constexpr int32_t GL10_GL_PALETTE8_RGB5_A1_OES = 35737;
-constexpr int32_t GL10_GL_PALETTE8_RGB8_OES = 35733;
-constexpr int32_t GL10_GL_PALETTE8_RGBA4_OES = 35736;
-constexpr int32_t GL10_GL_PALETTE8_RGBA8_OES = 35734;
-constexpr int32_t GL10_GL_PERSPECTIVE_CORRECTION_HINT = 3152;
-constexpr int32_t GL10_GL_POINT_SMOOTH = 2832;
-constexpr int32_t GL10_GL_POINT_SMOOTH_HINT = 3153;
-constexpr int32_t GL10_GL_POINTS = 0;
-constexpr int32_t GL10_GL_POINT_FADE_THRESHOLD_SIZE = 33064;
-constexpr int32_t GL10_GL_POINT_SIZE = 2833;
-constexpr int32_t GL10_GL_POLYGON_OFFSET_FILL = 32823;
-constexpr int32_t GL10_GL_POLYGON_SMOOTH_HINT = 3155;
-constexpr int32_t GL10_GL_POSITION = 4611;
-constexpr int32_t GL10_GL_PROJECTION = 5889;
-constexpr int32_t GL10_GL_QUADRATIC_ATTENUATION = 4617;
-constexpr int32_t GL10_GL_RED_BITS = 3410;
-constexpr int32_t GL10_GL_RENDERER = 7937;
-constexpr int32_t GL10_GL_REPEAT = 10497;
-constexpr int32_t GL10_GL_REPLACE = 7681;
-constexpr int32_t GL10_GL_RESCALE_NORMAL = 32826;
-constexpr int32_t GL10_GL_RGB = 6407;
-constexpr int32_t GL10_GL_RGBA = 6408;
-constexpr int32_t GL10_GL_SAMPLE_ALPHA_TO_COVERAGE = 32926;
-constexpr int32_t GL10_GL_SAMPLE_ALPHA_TO_ONE = 32927;
-constexpr int32_t GL10_GL_SAMPLE_COVERAGE = 32928;
-constexpr int32_t GL10_GL_SCISSOR_TEST = 3089;
-constexpr int32_t GL10_GL_SET = 5391;
-constexpr int32_t GL10_GL_SHININESS = 5633;
-constexpr int32_t GL10_GL_SHORT = 5122;
-constexpr int32_t GL10_GL_SMOOTH = 7425;
-constexpr int32_t GL10_GL_SMOOTH_LINE_WIDTH_RANGE = 2850;
-constexpr int32_t GL10_GL_SMOOTH_POINT_SIZE_RANGE = 2834;
-constexpr int32_t GL10_GL_SPECULAR = 4610;
-constexpr int32_t GL10_GL_SPOT_CUTOFF = 4614;
-constexpr int32_t GL10_GL_SPOT_DIRECTION = 4612;
-constexpr int32_t GL10_GL_SPOT_EXPONENT = 4613;
-constexpr int32_t GL10_GL_SRC_ALPHA = 770;
-constexpr int32_t GL10_GL_SRC_ALPHA_SATURATE = 776;
-constexpr int32_t GL10_GL_SRC_COLOR = 768;
-constexpr int32_t GL10_GL_STACK_OVERFLOW = 1283;
-constexpr int32_t GL10_GL_STACK_UNDERFLOW = 1284;
-constexpr int32_t GL10_GL_STENCIL_BITS = 3415;
-constexpr int32_t GL10_GL_STENCIL_BUFFER_BIT = 1024;
-constexpr int32_t GL10_GL_STENCIL_TEST = 2960;
-constexpr int32_t GL10_GL_SUBPIXEL_BITS = 3408;
-constexpr int32_t GL10_GL_TEXTURE = 5890;
-constexpr int32_t GL10_GL_TEXTURE_2D = 3553;
-constexpr int32_t GL10_GL_TEXTURE_COORD_ARRAY = 32888;
-constexpr int32_t GL10_GL_TEXTURE_ENV = 8960;
-constexpr int32_t GL10_GL_TEXTURE_ENV_COLOR = 8705;
-constexpr int32_t GL10_GL_TEXTURE_ENV_MODE = 8704;
-constexpr int32_t GL10_GL_TEXTURE_MAG_FILTER = 10240;
-constexpr int32_t GL10_GL_TEXTURE_MIN_FILTER = 10241;
-constexpr int32_t GL10_GL_TEXTURE_WRAP_S = 10242;
-constexpr int32_t GL10_GL_TEXTURE_WRAP_T = 10243;
-constexpr int32_t GL10_GL_TEXTURE0 = 33984;
-constexpr int32_t GL10_GL_TEXTURE1 = 33985;
-constexpr int32_t GL10_GL_TEXTURE2 = 33986;
-constexpr int32_t GL10_GL_TEXTURE3 = 33987;
-constexpr int32_t GL10_GL_TEXTURE4 = 33988;
-constexpr int32_t GL10_GL_TEXTURE5 = 33989;
-constexpr int32_t GL10_GL_TEXTURE6 = 33990;
-constexpr int32_t GL10_GL_TEXTURE7 = 33991;
-constexpr int32_t GL10_GL_TEXTURE8 = 33992;
-constexpr int32_t GL10_GL_TEXTURE9 = 33993;
-constexpr int32_t GL10_GL_TEXTURE10 = 33994;
-constexpr int32_t GL10_GL_TEXTURE11 = 33995;
-constexpr int32_t GL10_GL_TEXTURE12 = 33996;
-constexpr int32_t GL10_GL_TEXTURE13 = 33997;
-constexpr int32_t GL10_GL_TEXTURE14 = 33998;
-constexpr int32_t GL10_GL_TEXTURE15 = 33999;
-constexpr int32_t GL10_GL_TEXTURE16 = 34000;
-constexpr int32_t GL10_GL_TEXTURE17 = 34001;
-constexpr int32_t GL10_GL_TEXTURE18 = 34002;
-constexpr int32_t GL10_GL_TEXTURE19 = 34003;
-constexpr int32_t GL10_GL_TEXTURE20 = 34004;
-constexpr int32_t GL10_GL_TEXTURE21 = 34005;
-constexpr int32_t GL10_GL_TEXTURE22 = 34006;
-constexpr int32_t GL10_GL_TEXTURE23 = 34007;
-constexpr int32_t GL10_GL_TEXTURE24 = 34008;
-constexpr int32_t GL10_GL_TEXTURE25 = 34009;
-constexpr int32_t GL10_GL_TEXTURE26 = 34010;
-constexpr int32_t GL10_GL_TEXTURE27 = 34011;
-constexpr int32_t GL10_GL_TEXTURE28 = 34012;
-constexpr int32_t GL10_GL_TEXTURE29 = 34013;
-constexpr int32_t GL10_GL_TEXTURE30 = 34014;
-constexpr int32_t GL10_GL_TEXTURE31 = 34015;
-constexpr int32_t GL10_GL_TRIANGLE_FAN = 6;
-constexpr int32_t GL10_GL_TRIANGLE_STRIP = 5;
-constexpr int32_t GL10_GL_TRIANGLES = 4;
-constexpr int32_t GL10_GL_TRUE = 1;
-constexpr int32_t GL10_GL_UNPACK_ALIGNMENT = 3317;
-constexpr int32_t GL10_GL_UNSIGNED_BYTE = 5121;
-constexpr int32_t GL10_GL_UNSIGNED_SHORT = 5123;
-constexpr int32_t GL10_GL_UNSIGNED_SHORT_4_4_4_4 = 32819;
-constexpr int32_t GL10_GL_UNSIGNED_SHORT_5_5_5_1 = 32820;
-constexpr int32_t GL10_GL_UNSIGNED_SHORT_5_6_5 = 33635;
-constexpr int32_t GL10_GL_VENDOR = 7936;
-constexpr int32_t GL10_GL_VERSION = 7938;
-constexpr int32_t GL10_GL_VERTEX_ARRAY = 32884;
-constexpr int32_t GL10_GL_XOR = 5382;
-constexpr int32_t GL10_GL_ZERO = 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void GL10_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
 

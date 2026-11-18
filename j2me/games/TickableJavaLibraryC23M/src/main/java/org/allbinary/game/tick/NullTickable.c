@@ -1,47 +1,32 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.tick
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/tick/NullTickable.h"
 #include "org/allbinary/layer/AllBinaryLayerManager.h"
 #include "org/allbinary/game/tick/TickableInterface.h"
 
-typedef struct NullTickable NullTickable;
-struct NullTickable {
-    TickableInterface TickableInterface_interface;
-    const char* NAME;
-};
 
 static NullTickable* NullTickable_SINGLETON;
 
-NullTickable* NullTickable_new(void);
-NullTickable* NullTickable_getInstance(void);
-void NullTickable_processTick(NullTickable* this, AllBinaryLayerManager* allBinaryLayerManager);
-const char* NullTickable_getName(NullTickable* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
 void NullTickable_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     NullTickable_SINGLETON = NullTickable_new();
+}
+
+void NullTickable_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("NullTickable", nullptr);
+    java_register_method("NullTickable", "processTick", (void*) NullTickable_processTick);
+    java_register_method("NullTickable", "getName", (void*) NullTickable_getName);
 }
 
 static void NullTickable_initFields(NullTickable* this) {
@@ -49,18 +34,19 @@ static void NullTickable_initFields(NullTickable* this) {
 }
 
 void NullTickable_init(NullTickable* this) {
+    NullTickable_register();
     NullTickable_initFields(this);
 }
 
 NullTickable* NullTickable_new(void) {
-    NullTickable* this = calloc(1, sizeof(NullTickable));
+    NullTickable* this = java_object_alloc(sizeof(NullTickable), "NullTickable");
     NullTickable_init(this);
     return this;
 }
 
 
 NullTickable* NullTickable_getInstance(void) {
-        return NullTickable_SINGLETON;
+        return (NullTickable_staticInit(), NullTickable_SINGLETON);
 }
 
 

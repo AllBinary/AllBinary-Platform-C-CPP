@@ -40,6 +40,18 @@ void NullABRunnable_init(NullABRunnable* this);
 NullABRunnable* NullABRunnable_getInstance(void);
 
 bool NullABRunnable_isRunning(NullABRunnable* this);
+#ifndef NullABRunnable_setThread
+#define NullABRunnable_setThread ABRunnable_setThread
+#endif
+#ifndef NullABRunnable_setRunning
+#define NullABRunnable_setRunning ABRunnable_setRunning
+#endif
+#ifndef NullABRunnable_run
+#define NullABRunnable_run ABRunnable_run
+#endif
+#ifndef NullABRunnable_getType
+#define NullABRunnable_getType ABRunnable_getType
+#endif
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void NullABRunnable_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

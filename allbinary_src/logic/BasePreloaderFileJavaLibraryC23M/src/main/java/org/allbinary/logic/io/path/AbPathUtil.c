@@ -1,42 +1,27 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2025 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.io.path
+#include "org/allbinary/logic/io/path/AbPathUtil.h"
+#include "org/allbinary/logic/io/path/AbPath.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct AbPathUtil AbPathUtil;
-struct AbPathUtil {
-    AbPath* NO_ABPATH;
-};
 
 static AbPathUtil* AbPathUtil_instance;
 
-AbPathUtil* AbPathUtil_new(void);
-AbPathUtil* AbPathUtil_getInstance(void);
 
-// Static fields with runtime initializers: call this once at startup
 void AbPathUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     AbPathUtil_instance = AbPathUtil_new();
+}
+
+void AbPathUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("AbPathUtil", nullptr);
 }
 
 static void AbPathUtil_initFields(AbPathUtil* this) {
@@ -44,17 +29,18 @@ static void AbPathUtil_initFields(AbPathUtil* this) {
 }
 
 void AbPathUtil_init(AbPathUtil* this) {
+    AbPathUtil_register();
     AbPathUtil_initFields(this);
 }
 
 AbPathUtil* AbPathUtil_new(void) {
-    AbPathUtil* this = calloc(1, sizeof(AbPathUtil));
+    AbPathUtil* this = java_object_alloc(sizeof(AbPathUtil), "AbPathUtil");
     AbPathUtil_init(this);
     return this;
 }
 
 
 AbPathUtil* AbPathUtil_getInstance(void) {
-        return AbPathUtil_instance;
+        return (AbPathUtil_staticInit(), AbPathUtil_instance);
 }
 

@@ -1,48 +1,40 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.displayable.canvas
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/CommandListener.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/game/displayable/canvas/BasicPaintablesCanvas.h"
+#include "javax/microedition/lcdui/CommandListener.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/game/layer/AllBinaryGameLayerManager.h"
 #include "org/allbinary/game/paint/ColorFillBasePaintable.h"
 #include "org/allbinary/game/paint/ColorFillPaintableFactory.h"
 #include "org/allbinary/graphics/paint/Paintable.h"
 #include "org/allbinary/game/displayable/canvas/GameCommandCanvas.h"
+#if __has_include("org/allbinary/game/paint/ColorFillPaintableFactory.h")
+#include "org/allbinary/game/paint/ColorFillPaintableFactory.h"
+#endif
+#if __has_include("org/allbinary/graphics/paint/Paintable.h")
+#include "org/allbinary/graphics/paint/Paintable.h"
+#endif
 
-typedef struct BasicPaintablesCanvas BasicPaintablesCanvas;
-struct BasicPaintablesCanvas {
-    GameCommandCanvas base;
-    Paintable** paintableArray;
-    ColorFillBasePaintable* colorFillPaintable;
-};
 
 
-BasicPaintablesCanvas* BasicPaintablesCanvas_new(CommandListener* cmdListener, const char* name, AllBinaryGameLayerManager* allBinaryGameLayerManager, Paintable** paintableArray);
 
-void BasicPaintablesCanvas_init(BasicPaintablesCanvas* this, CommandListener* cmdListener, const char* name, AllBinaryGameLayerManager* allBinaryGameLayerManager, Paintable** paintableArray);
-void BasicPaintablesCanvas_paint(BasicPaintablesCanvas* this, Graphics* graphics);
+
+void BasicPaintablesCanvas_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void BasicPaintablesCanvas_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("BasicPaintablesCanvas", "GameCommandCanvas");
+    java_register_method("BasicPaintablesCanvas", "paint", (void*) BasicPaintablesCanvas_paint);
+}
 
 static void BasicPaintablesCanvas_initFields(BasicPaintablesCanvas* this) {
     
@@ -51,6 +43,7 @@ static void BasicPaintablesCanvas_initFields(BasicPaintablesCanvas* this) {
 
 
 void BasicPaintablesCanvas_init(BasicPaintablesCanvas* this, CommandListener* cmdListener, const char* name, AllBinaryGameLayerManager* allBinaryGameLayerManager, Paintable** paintableArray) {
+    BasicPaintablesCanvas_register();
         GameCommandCanvas_init(&this->base, cmdListener, name, AllBinaryGameLayerManager_getBackgroundBasicColor(allBinaryGameLayerManager), AllBinaryGameLayerManager_getForegroundBasicColor(allBinaryGameLayerManager));
         BasicPaintablesCanvas_initFields(this);
         this->paintableArray = paintableArray;
@@ -58,7 +51,7 @@ void BasicPaintablesCanvas_init(BasicPaintablesCanvas* this, CommandListener* cm
 }
 
 BasicPaintablesCanvas* BasicPaintablesCanvas_new(CommandListener* cmdListener, const char* name, AllBinaryGameLayerManager* allBinaryGameLayerManager, Paintable** paintableArray) {
-    BasicPaintablesCanvas* this = calloc(1, sizeof(BasicPaintablesCanvas));
+    BasicPaintablesCanvas* this = java_object_alloc(sizeof(BasicPaintablesCanvas), "BasicPaintablesCanvas");
     BasicPaintablesCanvas_init(this, cmdListener, name, allBinaryGameLayerManager, paintableArray);
     return this;
 }
@@ -66,9 +59,9 @@ BasicPaintablesCanvas* BasicPaintablesCanvas_new(CommandListener* cmdListener, c
 
 void BasicPaintablesCanvas_paint(BasicPaintablesCanvas* this, Graphics* graphics) {
         ColorFillBasePaintable_paint(this->colorFillPaintable, graphics);
-        Graphics_setColor(graphics, this->foregroundColor);
+        Graphics_setColor(graphics, this->base.foregroundColor);
         for (int32_t index = java_array_length(this->paintableArray) - 1; index >= 0; index--) {
-            JAVA_CALL(this->paintableArray[index], paint, graphics);
+            Paintable_paint(this->paintableArray[index], graphics);
         }
         GameCommandCanvas_paint((&this->base), graphics);
 }

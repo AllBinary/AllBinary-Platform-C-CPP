@@ -46,6 +46,8 @@ void HardwareFactory_init(HardwareFactory* this);
 
 HardwareInterface* HardwareFactory_getInstance2(HardwareFactory* this, OperatingSystemInterface* os);
 #define HardwareFactory_getInstance(...) JAVA_OVERLOADED(HardwareFactory_getInstance, __VA_ARGS__)
+#define HardwareFactory_new0 HardwareFactory_new
+#define HardwareFactory_init0 HardwareFactory_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void HardwareFactory_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

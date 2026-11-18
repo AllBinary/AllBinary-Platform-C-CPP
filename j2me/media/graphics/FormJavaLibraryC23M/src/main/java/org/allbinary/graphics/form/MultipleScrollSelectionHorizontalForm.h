@@ -1,0 +1,196 @@
+#ifndef ORG_ALLBINARY_GRAPHICS_FORM_MULTIPLESCROLLSELECTIONHORIZONTALFORM_H
+#define ORG_ALLBINARY_GRAPHICS_FORM_MULTIPLESCROLLSELECTIONHORIZONTALFORM_H
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.form
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+typedef struct ScrollSelectionForm ScrollSelectionForm;
+typedef struct ItemPaintableFactory ItemPaintableFactory;
+typedef struct FormType FormType;
+typedef struct ItemIndexPaintable ItemIndexPaintable;
+typedef struct MultipleScrollSelectionFormRectPaintable MultipleScrollSelectionFormRectPaintable;
+typedef struct FormTypeFactory FormTypeFactory;
+typedef struct MultipleScrollSelectionFormVerticalPaintable MultipleScrollSelectionFormVerticalPaintable;
+typedef struct MultipleScrollSelectionFormHorizontalPaintable MultipleScrollSelectionFormHorizontalPaintable;
+typedef struct Font Font;
+typedef struct Graphics Graphics;
+typedef struct J2MEUtil J2MEUtil;
+typedef struct Rectangle Rectangle;
+typedef struct BasicColor BasicColor;
+typedef struct BasicColorFactory BasicColorFactory;
+typedef struct MyFontProcessor MyFontProcessor;
+typedef struct UpdateMyFontInterface UpdateMyFontInterface;
+typedef struct UpdateMyFontProcessor UpdateMyFontProcessor;
+typedef struct ABCustomItem ABCustomItem;
+typedef struct NullPaintable NullPaintable;
+typedef struct Paintable Paintable;
+typedef struct PreLogUtil PreLogUtil;
+typedef struct StringMaker StringMaker;
+#if __has_include("org/allbinary/graphics/font/MyFontProcessor.h")
+#include "org/allbinary/graphics/font/MyFontProcessor.h"
+#endif
+#include "org/allbinary/graphics/font/UpdateMyFontInterface.h"
+#if __has_include("org/allbinary/graphics/paint/Paintable.h")
+#include "org/allbinary/graphics/paint/Paintable.h"
+#endif
+#include "org/allbinary/graphics/form/ScrollSelectionForm.h"
+#if __has_include("org/allbinary/graphics/form/ItemIndexPaintable.h")
+#include "org/allbinary/graphics/form/ItemIndexPaintable.h"
+#endif
+
+typedef struct MultipleScrollSelectionHorizontalForm MultipleScrollSelectionHorizontalForm;
+struct MultipleScrollSelectionHorizontalForm {
+    ScrollSelectionForm base;
+    UpdateMyFontInterface UpdateMyFontInterface_interface;
+    Paintable* rectPaintable;
+    ItemIndexPaintable* multipleScrollSelectionHorizontalFormTypeItemIndexPaintable;
+    int32_t backgroundColor;
+    MyFontProcessor* myFontProcessor;
+    bool logged;
+    int32_t fontHeight;
+};
+
+
+MultipleScrollSelectionHorizontalForm* MultipleScrollSelectionHorizontalForm_new(const char* title, ABCustomItem** items, ItemPaintableFactory* formPaintableFactory, int32_t border, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
+
+ScrollSelectionForm* MultipleScrollSelectionHorizontalForm_createForm(const char* title, ABCustomItem** items, Rectangle* rectangle, FormType* formType, int32_t border, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
+
+void MultipleScrollSelectionHorizontalForm_init(MultipleScrollSelectionHorizontalForm* this, const char* title, ABCustomItem** items, ItemPaintableFactory* formPaintableFactory, int32_t border, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
+
+void MultipleScrollSelectionHorizontalForm_fillRect(MultipleScrollSelectionHorizontalForm* this, Graphics* graphics);
+
+void MultipleScrollSelectionHorizontalForm_initMethod(MultipleScrollSelectionHorizontalForm* this, Rectangle* rectangle, FormType* formType);
+
+void MultipleScrollSelectionHorizontalForm_updateMeasurement(MultipleScrollSelectionHorizontalForm* this, Graphics* graphics);
+
+int32_t MultipleScrollSelectionHorizontalForm_paintHorizontal(MultipleScrollSelectionHorizontalForm* this, Graphics* graphics, int32_t index, ABCustomItem* item, int32_t dx, int32_t dy);
+
+int32_t MultipleScrollSelectionHorizontalForm_paintVertical(MultipleScrollSelectionHorizontalForm* this, Graphics* graphics, int32_t index, ABCustomItem* item, int32_t dx, int32_t dy);
+
+int32_t MultipleScrollSelectionHorizontalForm_getStartIndex(MultipleScrollSelectionHorizontalForm* this);
+
+void MultipleScrollSelectionHorizontalForm_paint(MultipleScrollSelectionHorizontalForm* this, Graphics* graphics);
+#define MultipleScrollSelectionHorizontalForm_new6 MultipleScrollSelectionHorizontalForm_new
+#define MultipleScrollSelectionHorizontalForm_init6 MultipleScrollSelectionHorizontalForm_init
+#ifndef MultipleScrollSelectionHorizontalForm_getNullScrollSelectionForm
+#define MultipleScrollSelectionHorizontalForm_getNullScrollSelectionForm ScrollSelectionForm_getNullScrollSelectionForm
+#endif
+#ifndef MultipleScrollSelectionHorizontalForm_getNullScrollSelectionFormHorizontal
+#define MultipleScrollSelectionHorizontalForm_getNullScrollSelectionFormHorizontal ScrollSelectionForm_getNullScrollSelectionFormHorizontal
+#endif
+#ifndef MultipleScrollSelectionHorizontalForm_paintItemHorizontal
+#define MultipleScrollSelectionHorizontalForm_paintItemHorizontal ScrollSelectionForm_paintItemHorizontal
+#endif
+#ifndef MultipleScrollSelectionHorizontalForm_paintItemVertical
+#define MultipleScrollSelectionHorizontalForm_paintItemVertical ScrollSelectionForm_paintItemVertical
+#endif
+#ifndef MultipleScrollSelectionHorizontalForm_paintItemTempHorizontal
+#define MultipleScrollSelectionHorizontalForm_paintItemTempHorizontal ScrollSelectionForm_paintItemTempHorizontal
+#endif
+#ifndef MultipleScrollSelectionHorizontalForm_getSelectedIndexForPointHorizontalDx
+#define MultipleScrollSelectionHorizontalForm_getSelectedIndexForPointHorizontalDx ScrollSelectionForm_getSelectedIndexForPointHorizontalDx
+#endif
+#ifndef MultipleScrollSelectionHorizontalForm_getSelectedIndexForPointVerticalDx
+#define MultipleScrollSelectionHorizontalForm_getSelectedIndexForPointVerticalDx ScrollSelectionForm_getSelectedIndexForPointVerticalDx
+#endif
+#ifndef MultipleScrollSelectionHorizontalForm_getSelectedIndexForPointTempHorizontalDx
+#define MultipleScrollSelectionHorizontalForm_getSelectedIndexForPointTempHorizontalDx ScrollSelectionForm_getSelectedIndexForPointTempHorizontalDx
+#endif
+#ifndef MultipleScrollSelectionHorizontalForm_append
+#define MultipleScrollSelectionHorizontalForm_append ScrollSelectionForm_append
+#endif
+#ifndef MultipleScrollSelectionHorizontalForm_getSelectedItem
+#define MultipleScrollSelectionHorizontalForm_getSelectedItem ScrollSelectionForm_getSelectedItem
+#endif
+#ifndef MultipleScrollSelectionHorizontalForm_getItemIndex
+#define MultipleScrollSelectionHorizontalForm_getItemIndex ScrollSelectionForm_getItemIndex
+#endif
+#ifndef MultipleScrollSelectionHorizontalForm_getSelectedIndexForPoint
+#define MultipleScrollSelectionHorizontalForm_getSelectedIndexForPoint ScrollSelectionForm_getSelectedIndexForPoint
+#endif
+#ifndef MultipleScrollSelectionHorizontalForm_processInputKey
+#define MultipleScrollSelectionHorizontalForm_processInputKey ScrollSelectionForm_processInputKey
+#endif
+#ifndef MultipleScrollSelectionHorizontalForm_isInForm
+#define MultipleScrollSelectionHorizontalForm_isInForm ScrollSelectionForm_isInForm
+#endif
+#ifndef MultipleScrollSelectionHorizontalForm_paintItem
+#define MultipleScrollSelectionHorizontalForm_paintItem ScrollSelectionForm_paintItem
+#endif
+#ifndef MultipleScrollSelectionHorizontalForm_paintUnselectedItem
+#define MultipleScrollSelectionHorizontalForm_paintUnselectedItem ScrollSelectionForm_paintUnselectedItem
+#endif
+#ifndef MultipleScrollSelectionHorizontalForm_getDiffX
+#define MultipleScrollSelectionHorizontalForm_getDiffX ScrollSelectionForm_getDiffX
+#endif
+#ifndef MultipleScrollSelectionHorizontalForm_getDx
+#define MultipleScrollSelectionHorizontalForm_getDx ScrollSelectionForm_getDx
+#endif
+#ifndef MultipleScrollSelectionHorizontalForm_getDy
+#define MultipleScrollSelectionHorizontalForm_getDy ScrollSelectionForm_getDy
+#endif
+#ifndef MultipleScrollSelectionHorizontalForm_setButtonBasicColor
+#define MultipleScrollSelectionHorizontalForm_setButtonBasicColor ScrollSelectionForm_setButtonBasicColor
+#endif
+#ifndef MultipleScrollSelectionHorizontalForm_getButtonBasicColor
+#define MultipleScrollSelectionHorizontalForm_getButtonBasicColor ScrollSelectionForm_getButtonBasicColor
+#endif
+#ifndef MultipleScrollSelectionHorizontalForm_getNullPaintableForm
+#define MultipleScrollSelectionHorizontalForm_getNullPaintableForm PaintableForm_getNullPaintableForm
+#endif
+#ifndef MultipleScrollSelectionHorizontalForm_getWidth
+#define MultipleScrollSelectionHorizontalForm_getWidth PaintableForm_getWidth
+#endif
+#ifndef MultipleScrollSelectionHorizontalForm_getAllitems
+#define MultipleScrollSelectionHorizontalForm_getAllitems ABCustomForm_getAllitems
+#endif
+#ifndef MultipleScrollSelectionHorizontalForm_size
+#define MultipleScrollSelectionHorizontalForm_size ABCustomForm_size
+#endif
+#ifndef MultipleScrollSelectionHorizontalForm_setSelectedIndex
+#define MultipleScrollSelectionHorizontalForm_setSelectedIndex ABCustomForm_setSelectedIndex
+#endif
+#ifndef MultipleScrollSelectionHorizontalForm_getSelectedIndex
+#define MultipleScrollSelectionHorizontalForm_getSelectedIndex ABCustomForm_getSelectedIndex
+#endif
+#ifndef MultipleScrollSelectionHorizontalForm_deleteAll
+#define MultipleScrollSelectionHorizontalForm_deleteAll ABCustomForm_deleteAll
+#endif
+#ifndef MultipleScrollSelectionHorizontalForm_delete
+#define MultipleScrollSelectionHorizontalForm_delete ABCustomForm_delete
+#endif
+#ifndef MultipleScrollSelectionHorizontalForm_append
+#define MultipleScrollSelectionHorizontalForm_append ABCustomForm_append
+#endif
+#ifndef MultipleScrollSelectionHorizontalForm_insert
+#define MultipleScrollSelectionHorizontalForm_insert ABCustomForm_insert
+#endif
+#ifndef MultipleScrollSelectionHorizontalForm_set
+#define MultipleScrollSelectionHorizontalForm_set ABCustomForm_set
+#endif
+#ifndef MultipleScrollSelectionHorizontalForm_get
+#define MultipleScrollSelectionHorizontalForm_get ABCustomForm_get
+#endif
+#ifndef MultipleScrollSelectionHorizontalForm_getWidth
+#define MultipleScrollSelectionHorizontalForm_getWidth ABCustomForm_getWidth
+#endif
+#ifndef MultipleScrollSelectionHorizontalForm_getTitle
+#define MultipleScrollSelectionHorizontalForm_getTitle ABCustomForm_getTitle
+#endif
+#ifndef MultipleScrollSelectionHorizontalForm_setTitle
+#define MultipleScrollSelectionHorizontalForm_setTitle CustomDisplayable_setTitle
+#endif
+// Runs the Java static initialization of the class once. Reads of its static fields call it first.
+void MultipleScrollSelectionHorizontalForm_staticInit(void);
+// Registers the class, its superclass, and its methods for the interface calls (java_register_method)
+void MultipleScrollSelectionHorizontalForm_register(void);
+
+
+#endif // ORG_ALLBINARY_GRAPHICS_FORM_MULTIPLESCROLLSELECTIONHORIZONTALFORM_H

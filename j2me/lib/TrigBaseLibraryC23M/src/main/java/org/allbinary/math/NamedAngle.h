@@ -41,6 +41,11 @@ struct NamedAngle {
 NamedAngle* NamedAngle_new(int16_t angle, const char* name);
 
 void NamedAngle_init(NamedAngle* this, int16_t angle, const char* name);
+#define NamedAngle_new2 NamedAngle_new
+#define NamedAngle_init2 NamedAngle_init
+#ifndef NamedAngle_getValue
+#define NamedAngle_getValue Angle_getValue
+#endif
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void NamedAngle_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

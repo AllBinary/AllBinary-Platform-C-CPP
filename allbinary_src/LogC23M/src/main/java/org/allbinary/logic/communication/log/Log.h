@@ -54,6 +54,8 @@ const char* Log_getFunctionName(Log* this);
 void* Log_getThrowable(Log* this);
 
 const char* Log_toString(Log* this);
+#define Log_new4 Log_new
+#define Log_init4 Log_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void Log_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

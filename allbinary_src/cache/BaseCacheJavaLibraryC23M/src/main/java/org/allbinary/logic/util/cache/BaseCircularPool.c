@@ -3,6 +3,9 @@
 #include "org/allbinary/logic/NullUtil.h"
 #include "org/allbinary/util/CircularIndexUtil.h"
 #include "org/allbinary/logic/util/cache/AllBinaryObjectFactoryInterface.h"
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
 
 
 

@@ -51,6 +51,38 @@ void SecondaryThreadPool_runTask(SecondaryThreadPool* this, Runnable* task);
 void SecondaryThreadPool_startTask(SecondaryThreadPool* this, Runnable* task);
 
 void SecondaryThreadPool_completedTask(SecondaryThreadPool* this, Runnable* task);
+#define SecondaryThreadPool_new3 SecondaryThreadPool_new
+#define SecondaryThreadPool_init3 SecondaryThreadPool_init
+#ifndef SecondaryThreadPool_runAPriorityTask
+#define SecondaryThreadPool_runAPriorityTask ThreadPool_runAPriorityTask
+#endif
+#ifndef SecondaryThreadPool_runTaskWithPriority
+#define SecondaryThreadPool_runTaskWithPriority ThreadPool_runTaskWithPriority
+#endif
+#ifndef SecondaryThreadPool_getTask
+#define SecondaryThreadPool_getTask ThreadPool_getTask
+#endif
+#ifndef SecondaryThreadPool_clear
+#define SecondaryThreadPool_clear ThreadPool_clear
+#endif
+#ifndef SecondaryThreadPool_close
+#define SecondaryThreadPool_close ThreadPool_close
+#endif
+#ifndef SecondaryThreadPool_join
+#define SecondaryThreadPool_join ThreadPool_join
+#endif
+#ifndef SecondaryThreadPool_isBusy
+#define SecondaryThreadPool_isBusy ThreadPool_isBusy
+#endif
+#ifndef SecondaryThreadPool_threadStarted
+#define SecondaryThreadPool_threadStarted ThreadPool_threadStarted
+#endif
+#ifndef SecondaryThreadPool_threadStopped
+#define SecondaryThreadPool_threadStopped ThreadPool_threadStopped
+#endif
+#ifndef SecondaryThreadPool_createName
+#define SecondaryThreadPool_createName ThreadPool_createName
+#endif
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void SecondaryThreadPool_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

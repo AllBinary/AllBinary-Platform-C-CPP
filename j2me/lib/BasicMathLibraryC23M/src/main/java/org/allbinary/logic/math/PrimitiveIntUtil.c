@@ -1,6 +1,12 @@
 // Generated Code Do Not Modify
 #include "org/allbinary/logic/math/PrimitiveIntUtil.h"
 #include "org/allbinary/logic/NullUtil.h"
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
 
 
 

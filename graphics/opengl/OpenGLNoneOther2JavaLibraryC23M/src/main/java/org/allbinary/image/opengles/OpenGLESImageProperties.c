@@ -1,45 +1,24 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2025 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.image.opengles
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct OpenGLESImageProperties OpenGLESImageProperties;
-struct OpenGLESImageProperties {
-    int32_t textureID;
-    float scaleX;
-    float scaleY;
-    float scaleX2;
-    float scaleY2;
-    int32_t angle;
-    float redf;
-    float greenf;
-    float bluef;
-    float alphaf;
-};
+#include "org/allbinary/image/opengles/OpenGLESImageProperties.h"
 
 
-OpenGLESImageProperties* OpenGLESImageProperties_new(void);
+
+void OpenGLESImageProperties_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void OpenGLESImageProperties_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("OpenGLESImageProperties", nullptr);
+}
 
 static void OpenGLESImageProperties_initFields(OpenGLESImageProperties* this) {
     this->textureID = -1;
@@ -55,11 +34,12 @@ static void OpenGLESImageProperties_initFields(OpenGLESImageProperties* this) {
 }
 
 void OpenGLESImageProperties_init(OpenGLESImageProperties* this) {
+    OpenGLESImageProperties_register();
     OpenGLESImageProperties_initFields(this);
 }
 
 OpenGLESImageProperties* OpenGLESImageProperties_new(void) {
-    OpenGLESImageProperties* this = calloc(1, sizeof(OpenGLESImageProperties));
+    OpenGLESImageProperties* this = java_object_alloc(sizeof(OpenGLESImageProperties), "OpenGLESImageProperties");
     OpenGLESImageProperties_init(this);
     return this;
 }

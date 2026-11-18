@@ -1,32 +1,14 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.identification
+#include "org/allbinary/game/identification/GroupInterfaceCompositeInterface.h"
+#include "org/allbinary/game/identification/Group.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
 
-typedef struct GroupInterfaceCompositeInterface GroupInterfaceCompositeInterface;
-struct GroupInterfaceCompositeInterface {
-    Group** (*getGroupInterface)(void* this);
-};
 
+void GroupInterfaceCompositeInterface_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
 

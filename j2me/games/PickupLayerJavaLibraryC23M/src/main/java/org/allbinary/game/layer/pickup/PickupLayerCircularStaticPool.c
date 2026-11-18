@@ -1,70 +1,57 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.layer.pickup
+#include "org/allbinary/game/layer/pickup/PickupLayerCircularStaticPool.h"
+#include "org/allbinary/game/layer/pickup/PickupLayer.h"
+#include "org/allbinary/game/layer/pickup/PickedUpLayerInterface.h"
+#include "org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactoryInterface.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-#include "org/allbinary/layer/AllBinaryLayerCircularPool.h"
-
-typedef struct PickupLayerCircularStaticPool PickupLayerCircularStaticPool;
-struct PickupLayerCircularStaticPool {
-    AllBinaryLayerCircularPool base;
-};
 
 static PickupLayerCircularStaticPool* PickupLayerCircularStaticPool_SINGLETON;
 
-PickupLayerCircularStaticPool* PickupLayerCircularStaticPool_new(void);
 
-void PickupLayerCircularStaticPool_init(PickupLayerCircularStaticPool* this);
-PickupLayerCircularStaticPool* PickupLayerCircularStaticPool_getInstance(void);
-PickedUpLayerInterface* PickupLayerCircularStaticPool_getInstanceXYZ(PickupLayerCircularStaticPool* this, PickedUpLayerInterfaceFactoryInterface* pickedUpLayerInterfaceFactoryInterface, int32_t x, int32_t y, int32_t z);
 
-// Static fields with runtime initializers: call this once at startup
+
 void PickupLayerCircularStaticPool_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     PickupLayerCircularStaticPool_SINGLETON = PickupLayerCircularStaticPool_new();
+}
+
+void PickupLayerCircularStaticPool_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("PickupLayerCircularStaticPool", "AllBinaryLayerCircularPool");
+    java_register_method("PickupLayerCircularStaticPool", "getInstanceXYZ", (void*) PickupLayerCircularStaticPool_getInstanceXYZ);
 }
 
 
 void PickupLayerCircularStaticPool_init(PickupLayerCircularStaticPool* this) {
+    PickupLayerCircularStaticPool_register();
     AllBinaryLayerCircularPool_init(&this->base);
 }
 
 PickupLayerCircularStaticPool* PickupLayerCircularStaticPool_new(void) {
-    PickupLayerCircularStaticPool* this = calloc(1, sizeof(PickupLayerCircularStaticPool));
+    PickupLayerCircularStaticPool* this = java_object_alloc(sizeof(PickupLayerCircularStaticPool), "PickupLayerCircularStaticPool");
     PickupLayerCircularStaticPool_init(this);
     return this;
 }
 
 
 PickupLayerCircularStaticPool* PickupLayerCircularStaticPool_getInstance(void) {
-        return PickupLayerCircularStaticPool_SINGLETON;
+        return (PickupLayerCircularStaticPool_staticInit(), PickupLayerCircularStaticPool_SINGLETON);
 }
 
 
 // throws Exception
 PickedUpLayerInterface* PickupLayerCircularStaticPool_getInstanceXYZ(PickupLayerCircularStaticPool* this, PickedUpLayerInterfaceFactoryInterface* pickedUpLayerInterfaceFactoryInterface, int32_t x, int32_t y, int32_t z) {
-        PickupLayer* pickupLayer = ((PickupLayer*) PickupLayerCircularStaticPool_getNextInstance(this));
+        PickupLayer* pickupLayer = ((PickupLayer*) BaseCircularPool_getNextInstance(this));
         PickupLayer_initXYZ(pickupLayer, x, y, z);
-        PickupLayer_init(pickupLayer, pickedUpLayerInterfaceFactoryInterface, PickedUpLayerInterfaceFactoryInterface_getAnimationInterface(pickedUpLayerInterfaceFactoryInterface));
+        PickupLayer_initMethod(pickupLayer, pickedUpLayerInterfaceFactoryInterface, PickedUpLayerInterfaceFactoryInterface_getAnimationInterface(pickedUpLayerInterfaceFactoryInterface));
         return pickupLayer;
 }
 

@@ -1,50 +1,31 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.init.crypt.jcehelper
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "java/io/ByteArrayInputStream.h"
-// #include "java/io/ByteArrayOutputStream.h"
-// #include "java/io/InputStream.h"
+#include "org/allbinary/init/crypt/jcehelper/BasicCryptUtil.h"
 #include "org/allbinary/TsUtil.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
+#include "org/allbinary/init/crypt/jcehelper/CryptInterface.h"
 
-typedef struct BasicCryptUtil BasicCryptUtil;
-struct BasicCryptUtil {
-    LogUtil* logUtil;
-    TsUtil* tsUtil;
-    const char* XML_START;
-};
 
 static BasicCryptUtil* BasicCryptUtil_instance;
 
-BasicCryptUtil* BasicCryptUtil_new(void);
-BasicCryptUtil* BasicCryptUtil_getInstance(void);
-InputStream* BasicCryptUtil_getDecryptedInputStream(BasicCryptUtil* this, InputStream* inputStream, CryptInterface* cryptInterface);
 
-// Static fields with runtime initializers: call this once at startup
+
 void BasicCryptUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     BasicCryptUtil_instance = BasicCryptUtil_new();
+}
+
+void BasicCryptUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("BasicCryptUtil", nullptr);
+    java_register_method("BasicCryptUtil", "getDecryptedInputStream", (void*) BasicCryptUtil_getDecryptedInputStream);
 }
 
 static void BasicCryptUtil_initFields(BasicCryptUtil* this) {
@@ -54,18 +35,19 @@ static void BasicCryptUtil_initFields(BasicCryptUtil* this) {
 }
 
 void BasicCryptUtil_init(BasicCryptUtil* this) {
+    BasicCryptUtil_register();
     BasicCryptUtil_initFields(this);
 }
 
 BasicCryptUtil* BasicCryptUtil_new(void) {
-    BasicCryptUtil* this = calloc(1, sizeof(BasicCryptUtil));
+    BasicCryptUtil* this = java_object_alloc(sizeof(BasicCryptUtil), "BasicCryptUtil");
     BasicCryptUtil_init(this);
     return this;
 }
 
 
 BasicCryptUtil* BasicCryptUtil_getInstance(void) {
-        return BasicCryptUtil_instance;
+        return (BasicCryptUtil_staticInit(), BasicCryptUtil_instance);
 }
 
 

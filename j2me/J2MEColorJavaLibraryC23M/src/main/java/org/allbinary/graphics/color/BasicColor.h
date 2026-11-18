@@ -66,6 +66,8 @@ float BasicColor_getGreenComponent(BasicColor* this);
 float BasicColor_getBlueComponent(BasicColor* this);
 
 float BasicColor_getAlphaComponent(BasicColor* this);
+#define BasicColor_new3 BasicColor_new
+#define BasicColor_init3 BasicColor_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void BasicColor_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

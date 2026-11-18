@@ -1,36 +1,47 @@
 // Generated Code Do Not Modify
-// package org.allbinary.physics.movement
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/physics/movement/PreciseConstantVelocityMovement.h"
 #include "org/allbinary/game/layer/AllBinaryGameLayer.h"
 #include "org/allbinary/game/physics/velocity/BasicVelocityProperties.h"
 #include "org/allbinary/logic/math/BasicDecimal.h"
 #include "org/allbinary/logic/math/MathUtil.h"
 #include "org/allbinary/logic/math/ScaleFactorFactory.h"
 #include "org/allbinary/physics/movement/BasicConstantVelocityMovement.h"
+#if __has_include("org/allbinary/logic/math/ScaleFactorFactory.h")
+#include "org/allbinary/logic/math/ScaleFactorFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/math/BasicDecimal.h")
+#include "org/allbinary/logic/math/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/logic/math/BasicDecimal.h")
+#include "org/allbinary/logic/math/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/logic/math/BasicDecimal.h")
+#include "org/allbinary/logic/math/BasicDecimal.h"
+#endif
 
-typedef struct PreciseConstantVelocityMovement PreciseConstantVelocityMovement;
-struct PreciseConstantVelocityMovement {
-    BasicConstantVelocityMovement base;
-    int32_t accumulatedX;
-    int32_t accumulatedY;
-    int32_t accumulatedZ;
-    int32_t factorValue;
-};
 
 
-PreciseConstantVelocityMovement* PreciseConstantVelocityMovement_new(BasicDecimal* basicDecimal, BasicVelocityProperties* velocityProperties);
 
-void PreciseConstantVelocityMovement_init(PreciseConstantVelocityMovement* this, BasicDecimal* basicDecimal, BasicVelocityProperties* velocityProperties);
-void PreciseConstantVelocityMovement_init(PreciseConstantVelocityMovement* this, BasicDecimal* speedBasicDecimal, int32_t angle, int32_t otherAngle);
-void PreciseConstantVelocityMovement_process(PreciseConstantVelocityMovement* this, AllBinaryGameLayer* layer);
+
+
+void PreciseConstantVelocityMovement_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void PreciseConstantVelocityMovement_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("PreciseConstantVelocityMovement", "BasicConstantVelocityMovement");
+    java_register_method("PreciseConstantVelocityMovement", "init", (void*) PreciseConstantVelocityMovement_initMethod);
+    java_register_method("PreciseConstantVelocityMovement", "process", (void*) PreciseConstantVelocityMovement_process);
+}
 
 static void PreciseConstantVelocityMovement_initFields(PreciseConstantVelocityMovement* this) {
     this->accumulatedX = 0;
@@ -41,29 +52,30 @@ static void PreciseConstantVelocityMovement_initFields(PreciseConstantVelocityMo
 
 
 void PreciseConstantVelocityMovement_init(PreciseConstantVelocityMovement* this, BasicDecimal* basicDecimal, BasicVelocityProperties* velocityProperties) {
+    PreciseConstantVelocityMovement_register();
         BasicConstantVelocityMovement_init(&this->base, basicDecimal, velocityProperties);
         PreciseConstantVelocityMovement_initFields(this);
 }
 
 PreciseConstantVelocityMovement* PreciseConstantVelocityMovement_new(BasicDecimal* basicDecimal, BasicVelocityProperties* velocityProperties) {
-    PreciseConstantVelocityMovement* this = calloc(1, sizeof(PreciseConstantVelocityMovement));
+    PreciseConstantVelocityMovement* this = java_object_alloc(sizeof(PreciseConstantVelocityMovement), "PreciseConstantVelocityMovement");
     PreciseConstantVelocityMovement_init(this, basicDecimal, velocityProperties);
     return this;
 }
 
 
-void PreciseConstantVelocityMovement_init(PreciseConstantVelocityMovement* this, BasicDecimal* speedBasicDecimal, int32_t angle, int32_t otherAngle) {
+void PreciseConstantVelocityMovement_initMethod(PreciseConstantVelocityMovement* this, BasicDecimal* speedBasicDecimal, int32_t angle, int32_t otherAngle) {
 }
 
 
 // throws Exception
 void PreciseConstantVelocityMovement_process(PreciseConstantVelocityMovement* this, AllBinaryGameLayer* layer) {
         MathUtil* mathUtil = MathUtil_getInstance();
-        BasicVelocityProperties* velocityProperties = PreciseConstantVelocityMovement_getVelocityProperties(this);
-        this->accumulatedX = ((int32_t) (this->accumulatedX + JAVA_CALL(BasicVelocityProperties_getVelocityXBasicDecimalP(velocityProperties), getUnscaled)));
-        this->accumulatedY = ((int32_t) (this->accumulatedY + JAVA_CALL(BasicVelocityProperties_getVelocityYBasicDecimalP(velocityProperties), getUnscaled)));
-        this->accumulatedZ = ((int32_t) (this->accumulatedZ + JAVA_CALL(BasicVelocityProperties_getVelocityZBasicDecimalP(velocityProperties), getUnscaled)));
-        AllBinaryGameLayer_moveDXYZ(layer, this->accumulatedX / this->factorValue, this->accumulatedY / this->factorValue, this->accumulatedZ / this->factorValue);
+        BasicVelocityProperties* velocityProperties = BasicConstantVelocityMovement_getVelocityProperties(this);
+        this->accumulatedX = ((int32_t) (((int64_t) this->accumulatedX) + BasicDecimal_getUnscaled(BasicVelocityProperties_getVelocityXBasicDecimalP(velocityProperties))));
+        this->accumulatedY = ((int32_t) (((int64_t) this->accumulatedY) + BasicDecimal_getUnscaled(BasicVelocityProperties_getVelocityYBasicDecimalP(velocityProperties))));
+        this->accumulatedZ = ((int32_t) (((int64_t) this->accumulatedZ) + BasicDecimal_getUnscaled(BasicVelocityProperties_getVelocityZBasicDecimalP(velocityProperties))));
+        AllBinaryLayer_moveDXYZ(layer, this->accumulatedX / this->factorValue, this->accumulatedY / this->factorValue, this->accumulatedZ / this->factorValue);
         if (MathUtil_abs(mathUtil, this->accumulatedX) > this->factorValue) {
             this->accumulatedX = 0;
         }

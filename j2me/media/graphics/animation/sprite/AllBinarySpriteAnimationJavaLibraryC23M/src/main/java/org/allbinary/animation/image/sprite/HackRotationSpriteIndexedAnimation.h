@@ -1,0 +1,190 @@
+#ifndef ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_HACKROTATIONSPRITEINDEXEDANIMATION_H
+#define ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_HACKROTATIONSPRITEINDEXEDANIMATION_H
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation.image.sprite
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+typedef struct Graphics Graphics;
+typedef struct Image Image;
+typedef struct Sprite Sprite;
+typedef struct AnimationBehavior AnimationBehavior;
+typedef struct RotationAnimation RotationAnimation;
+typedef struct PrimitiveIntUtil PrimitiveIntUtil;
+typedef struct AngleInfo AngleInfo;
+typedef struct CircularIndexUtil CircularIndexUtil;
+#if __has_include("javax/microedition/lcdui/Image.h")
+#include "javax/microedition/lcdui/Image.h"
+#endif
+#if __has_include("javax/microedition/lcdui/game/Sprite.h")
+#include "javax/microedition/lcdui/game/Sprite.h"
+#endif
+#include "org/allbinary/animation/RotationAnimation.h"
+
+typedef struct HackRotationSpriteIndexedAnimation HackRotationSpriteIndexedAnimation;
+struct HackRotationSpriteIndexedAnimation {
+    RotationAnimation base;
+    Sprite* sprite;
+    Image* image;
+};
+
+
+HackRotationSpriteIndexedAnimation* HackRotationSpriteIndexedAnimation_new(Sprite* sprite, Image* image, AngleInfo* angleInfo, AnimationBehavior* animationBehavior);
+
+void HackRotationSpriteIndexedAnimation_init(HackRotationSpriteIndexedAnimation* this, Sprite* sprite, Image* image, AngleInfo* angleInfo, AnimationBehavior* animationBehavior);
+
+int32_t HackRotationSpriteIndexedAnimation_getAnimationSize(HackRotationSpriteIndexedAnimation* this);
+
+void HackRotationSpriteIndexedAnimation_paintFrame(HackRotationSpriteIndexedAnimation* this, Graphics* g, int32_t frame, int32_t x, int32_t y);
+
+void HackRotationSpriteIndexedAnimation_paintXY(HackRotationSpriteIndexedAnimation* this, Graphics* g, int32_t x, int32_t y);
+
+void HackRotationSpriteIndexedAnimation_paint(HackRotationSpriteIndexedAnimation* this, Graphics* g);
+
+void HackRotationSpriteIndexedAnimation_nextRotation(HackRotationSpriteIndexedAnimation* this);
+
+void HackRotationSpriteIndexedAnimation_previousRotation(HackRotationSpriteIndexedAnimation* this);
+
+int32_t HackRotationSpriteIndexedAnimation_getSize(HackRotationSpriteIndexedAnimation* this);
+
+void HackRotationSpriteIndexedAnimation_setFrame(HackRotationSpriteIndexedAnimation* this, int32_t frame);
+
+int32_t HackRotationSpriteIndexedAnimation_getFrame(HackRotationSpriteIndexedAnimation* this);
+
+void HackRotationSpriteIndexedAnimation_setSequence(HackRotationSpriteIndexedAnimation* this, int32_t* sequence);
+
+int32_t* HackRotationSpriteIndexedAnimation_getSequence(HackRotationSpriteIndexedAnimation* this);
+#define HackRotationSpriteIndexedAnimation_new4 HackRotationSpriteIndexedAnimation_new
+#define HackRotationSpriteIndexedAnimation_init4 HackRotationSpriteIndexedAnimation_init
+#ifndef HackRotationSpriteIndexedAnimation_nextRotationX
+#define HackRotationSpriteIndexedAnimation_nextRotationX RotationAnimation_nextRotationX
+#endif
+#ifndef HackRotationSpriteIndexedAnimation_previousRotationX
+#define HackRotationSpriteIndexedAnimation_previousRotationX RotationAnimation_previousRotationX
+#endif
+#ifndef HackRotationSpriteIndexedAnimation_nextRotationZ
+#define HackRotationSpriteIndexedAnimation_nextRotationZ RotationAnimation_nextRotationZ
+#endif
+#ifndef HackRotationSpriteIndexedAnimation_previousRotationZ
+#define HackRotationSpriteIndexedAnimation_previousRotationZ RotationAnimation_previousRotationZ
+#endif
+#ifndef HackRotationSpriteIndexedAnimation_setFrameByDirection
+#define HackRotationSpriteIndexedAnimation_setFrameByDirection RotationAnimation_setFrameByDirection
+#endif
+#ifndef HackRotationSpriteIndexedAnimation_setFrameToAngle
+#define HackRotationSpriteIndexedAnimation_setFrameToAngle RotationAnimation_setFrameToAngle
+#endif
+#ifndef HackRotationSpriteIndexedAnimation_adjustFrameToAngle
+#define HackRotationSpriteIndexedAnimation_adjustFrameToAngle RotationAnimation_adjustFrameToAngle
+#endif
+#ifndef HackRotationSpriteIndexedAnimation_adjustFrame
+#define HackRotationSpriteIndexedAnimation_adjustFrame RotationAnimation_adjustFrame
+#endif
+#ifndef HackRotationSpriteIndexedAnimation_getAngleInfoP
+#define HackRotationSpriteIndexedAnimation_getAngleInfoP RotationAnimation_getAngleInfoP
+#endif
+#ifndef HackRotationSpriteIndexedAnimation_toString
+#define HackRotationSpriteIndexedAnimation_toString RotationAnimation_toString
+#endif
+#ifndef HackRotationSpriteIndexedAnimation_getAnimationBehavior
+#define HackRotationSpriteIndexedAnimation_getAnimationBehavior IndexedAnimation_getAnimationBehavior
+#endif
+#ifndef HackRotationSpriteIndexedAnimation_reset
+#define HackRotationSpriteIndexedAnimation_reset IndexedAnimation_reset
+#endif
+#ifndef HackRotationSpriteIndexedAnimation_previousFrame
+#define HackRotationSpriteIndexedAnimation_previousFrame IndexedAnimation_previousFrame
+#endif
+#ifndef HackRotationSpriteIndexedAnimation_isLastFrame
+#define HackRotationSpriteIndexedAnimation_isLastFrame IndexedAnimation_isLastFrame
+#endif
+#ifndef HackRotationSpriteIndexedAnimation_setState
+#define HackRotationSpriteIndexedAnimation_setState IndexedAnimation_setState
+#endif
+#ifndef HackRotationSpriteIndexedAnimation_getWidth
+#define HackRotationSpriteIndexedAnimation_getWidth IndexedAnimation_getWidth
+#endif
+#ifndef HackRotationSpriteIndexedAnimation_getHeight
+#define HackRotationSpriteIndexedAnimation_getHeight IndexedAnimation_getHeight
+#endif
+#ifndef HackRotationSpriteIndexedAnimation_setAlpha
+#define HackRotationSpriteIndexedAnimation_setAlpha Animation_setAlpha
+#endif
+#ifndef HackRotationSpriteIndexedAnimation_nextFrame
+#define HackRotationSpriteIndexedAnimation_nextFrame Animation_nextFrame
+#endif
+#ifndef HackRotationSpriteIndexedAnimation_paintThreedXYZ
+#define HackRotationSpriteIndexedAnimation_paintThreedXYZ Animation_paintThreedXYZ
+#endif
+#ifndef HackRotationSpriteIndexedAnimation_isThreed
+#define HackRotationSpriteIndexedAnimation_isThreed Animation_isThreed
+#endif
+#ifndef HackRotationSpriteIndexedAnimation_getBasicColorP
+#define HackRotationSpriteIndexedAnimation_getBasicColorP Animation_getBasicColorP
+#endif
+#ifndef HackRotationSpriteIndexedAnimation_setBasicColorP
+#define HackRotationSpriteIndexedAnimation_setBasicColorP Animation_setBasicColorP
+#endif
+#ifndef HackRotationSpriteIndexedAnimation_setBackgroundBasicColorP
+#define HackRotationSpriteIndexedAnimation_setBackgroundBasicColorP Animation_setBackgroundBasicColorP
+#endif
+#ifndef HackRotationSpriteIndexedAnimation_getChangeBasicColor
+#define HackRotationSpriteIndexedAnimation_getChangeBasicColor Animation_getChangeBasicColor
+#endif
+#ifndef HackRotationSpriteIndexedAnimation_changeBasicColor
+#define HackRotationSpriteIndexedAnimation_changeBasicColor Animation_changeBasicColor
+#endif
+#ifndef HackRotationSpriteIndexedAnimation_getChangeColor
+#define HackRotationSpriteIndexedAnimation_getChangeColor Animation_getChangeColor
+#endif
+#ifndef HackRotationSpriteIndexedAnimation_getColor
+#define HackRotationSpriteIndexedAnimation_getColor Animation_getColor
+#endif
+#ifndef HackRotationSpriteIndexedAnimation_setScale
+#define HackRotationSpriteIndexedAnimation_setScale Animation_setScale
+#endif
+#ifndef HackRotationSpriteIndexedAnimation_setMaxScale
+#define HackRotationSpriteIndexedAnimation_setMaxScale Animation_setMaxScale
+#endif
+#ifndef HackRotationSpriteIndexedAnimation_set
+#define HackRotationSpriteIndexedAnimation_set Animation_set
+#endif
+#ifndef HackRotationSpriteIndexedAnimation_setDx
+#define HackRotationSpriteIndexedAnimation_setDx Animation_setDx
+#endif
+#ifndef HackRotationSpriteIndexedAnimation_getDx
+#define HackRotationSpriteIndexedAnimation_getDx Animation_getDx
+#endif
+#ifndef HackRotationSpriteIndexedAnimation_setDy
+#define HackRotationSpriteIndexedAnimation_setDy Animation_setDy
+#endif
+#ifndef HackRotationSpriteIndexedAnimation_getDy
+#define HackRotationSpriteIndexedAnimation_getDy Animation_getDy
+#endif
+// Runs the Java static initialization of the class once. Reads of its static fields call it first.
+void HackRotationSpriteIndexedAnimation_staticInit(void);
+// Registers the class, its superclass, and its methods for the interface calls (java_register_method)
+void HackRotationSpriteIndexedAnimation_register(void);
+
+
+#endif // ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_HACKROTATIONSPRITEINDEXEDANIMATION_H

@@ -1,51 +1,39 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation.vector
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
-#include "org/allbinary/animation/Animation.h"
+#include "org/allbinary/animation/vector/CircleAnimation.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
-#include "org/allbinary/graphics/color/ColorCompositeInterface.h"
 #include "org/allbinary/math/AngleFactory.h"
-
-typedef struct CircleAnimation CircleAnimation;
-struct CircleAnimation {
-    Animation base;
-    ColorCompositeInterface ColorCompositeInterface_interface;
-    int32_t TOTAL_ANGLE;
-    int32_t width;
-    int32_t height;
-};
+#if __has_include("org/allbinary/math/AngleFactory.h")
+#include "org/allbinary/math/AngleFactory.h"
+#endif
 
 
-CircleAnimation* CircleAnimation_new(int32_t width, int32_t height, BasicColor* basicColor);
 
-void CircleAnimation_init(CircleAnimation* this, int32_t width, int32_t height, BasicColor* basicColor);
-void CircleAnimation_nextFrame(CircleAnimation* this);
-void CircleAnimation_paintXY(CircleAnimation* this, Graphics* graphics, int32_t x, int32_t y);
-BasicColor* CircleAnimation_getBasicColorP(CircleAnimation* this);
-void CircleAnimation_setBasicColorP(CircleAnimation* this, BasicColor* basicColor);
+
+
+
+
+
+void CircleAnimation_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void CircleAnimation_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("CircleAnimation", "Animation");
+    java_register_method("CircleAnimation", "nextFrame", (void*) CircleAnimation_nextFrame);
+    java_register_method("CircleAnimation", "paintXY", (void*) CircleAnimation_paintXY);
+    java_register_method("CircleAnimation", "getBasicColorP", (void*) CircleAnimation_getBasicColorP);
+    java_register_method("CircleAnimation", "setBasicColorP", (void*) CircleAnimation_setBasicColorP);
+}
 
 static void CircleAnimation_initFields(CircleAnimation* this) {
     this->TOTAL_ANGLE = ((int32_t) AngleFactory_getInstance()->TOTAL_ANGLE);
@@ -55,6 +43,7 @@ static void CircleAnimation_initFields(CircleAnimation* this) {
 
 
 void CircleAnimation_init(CircleAnimation* this, int32_t width, int32_t height, BasicColor* basicColor) {
+    CircleAnimation_register();
     Animation_init(&this->base);
     CircleAnimation_initFields(this);
         this->width = width;
@@ -63,7 +52,7 @@ void CircleAnimation_init(CircleAnimation* this, int32_t width, int32_t height, 
 }
 
 CircleAnimation* CircleAnimation_new(int32_t width, int32_t height, BasicColor* basicColor) {
-    CircleAnimation* this = calloc(1, sizeof(CircleAnimation));
+    CircleAnimation* this = java_object_alloc(sizeof(CircleAnimation), "CircleAnimation");
     CircleAnimation_init(this, width, height, basicColor);
     return this;
 }
@@ -74,7 +63,7 @@ void CircleAnimation_nextFrame(CircleAnimation* this) {
 
 
 void CircleAnimation_paintXY(CircleAnimation* this, Graphics* graphics, int32_t x, int32_t y) {
-        JAVA_CALL(this->basicSetColorUtil, setBasicColorP3, graphics, CircleAnimation_getBasicColorP(this), CircleAnimation_getColor(this));
+        BasicColorSetUtil_setBasicColorP3(this->base.basicSetColorUtil, graphics, CircleAnimation_getBasicColorP(this), Animation_getColor(this));
         Graphics_drawArc(graphics, x, y, this->width, this->height, 0, this->TOTAL_ANGLE);
 }
 

@@ -1,50 +1,43 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.globals
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/globals/AppUrlGlobals.h"
 #include "org/allbinary/logic/string/StringUtil.h"
 #include "org/allbinary/globals/UrlGlobalsInterface.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
-//implements
-typedef struct AppUrlGlobals AppUrlGlobals;
-struct AppUrlGlobals {
-    UrlGlobalsInterface base;
-    const char* path;
-};
 
 AppUrlGlobals* AppUrlGlobals_NULL_APP_URL_GLOBALS;
 
-AppUrlGlobals* AppUrlGlobals_new(void);
-bool AppUrlGlobals_isTestingMode(AppUrlGlobals* this);
-const char* AppUrlGlobals_getWebappPath(AppUrlGlobals* this);
-void AppUrlGlobals_setWebappPath(AppUrlGlobals* this, const char* path);
-const char* AppUrlGlobals_getTestHtmlPath(AppUrlGlobals* this);
-const char* AppUrlGlobals_getMainPath(AppUrlGlobals* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
 void AppUrlGlobals_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     AppUrlGlobals_NULL_APP_URL_GLOBALS = AppUrlGlobals_new();
+}
+
+void AppUrlGlobals_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("AppUrlGlobals", "UrlGlobalsInterface");
+    java_register_method("AppUrlGlobals", "isTestingMode", (void*) AppUrlGlobals_isTestingMode);
+    java_register_method("AppUrlGlobals", "getWebappPath", (void*) AppUrlGlobals_getWebappPath);
+    java_register_method("AppUrlGlobals", "setWebappPath", (void*) AppUrlGlobals_setWebappPath);
+    java_register_method("AppUrlGlobals", "getTestHtmlPath", (void*) AppUrlGlobals_getTestHtmlPath);
+    java_register_method("AppUrlGlobals", "getMainPath", (void*) AppUrlGlobals_getMainPath);
 }
 
 static void AppUrlGlobals_initFields(AppUrlGlobals* this) {
@@ -52,12 +45,13 @@ static void AppUrlGlobals_initFields(AppUrlGlobals* this) {
 }
 
 void AppUrlGlobals_init(AppUrlGlobals* this) {
+    AppUrlGlobals_register();
     UrlGlobalsInterface_init(&this->base);
     AppUrlGlobals_initFields(this);
 }
 
 AppUrlGlobals* AppUrlGlobals_new(void) {
-    AppUrlGlobals* this = calloc(1, sizeof(AppUrlGlobals));
+    AppUrlGlobals* this = java_object_alloc(sizeof(AppUrlGlobals), "AppUrlGlobals");
     AppUrlGlobals_init(this);
     return this;
 }

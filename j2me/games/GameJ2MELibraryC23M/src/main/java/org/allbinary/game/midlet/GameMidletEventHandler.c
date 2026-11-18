@@ -1,64 +1,49 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.midlet
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/midlet/GameMidletEventHandler.h"
 #include "org/allbinary/logic/util/event/AllBinaryEventObject.h"
 #include "org/allbinary/logic/util/event/EventListenerInterface.h"
-#include "org/allbinary/logic/util/event/handler/BasicEventHandler.h"
+#include "org/allbinary/game/midlet/GameMidletEventListener.h"
 
-typedef struct GameMidletEventHandler GameMidletEventHandler;
-struct GameMidletEventHandler {
-    BasicEventHandler base;
-};
 
 static GameMidletEventHandler* GameMidletEventHandler_gameKeyEventHandler;
 
-GameMidletEventHandler* GameMidletEventHandler_new(void);
 
-void GameMidletEventHandler_init(GameMidletEventHandler* this);
-GameMidletEventHandler* GameMidletEventHandler_getInstance(void);
-void GameMidletEventHandler_process(GameMidletEventHandler* this, AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
 
-// Static fields with runtime initializers: call this once at startup
+
 void GameMidletEventHandler_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     GameMidletEventHandler_gameKeyEventHandler = GameMidletEventHandler_new();
+}
+
+void GameMidletEventHandler_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GameMidletEventHandler", "BasicEventHandler");
+    java_register_method("GameMidletEventHandler", "process", (void*) GameMidletEventHandler_process);
 }
 
 
 void GameMidletEventHandler_init(GameMidletEventHandler* this) {
+    GameMidletEventHandler_register();
     BasicEventHandler_init(&this->base);
 }
 
 GameMidletEventHandler* GameMidletEventHandler_new(void) {
-    GameMidletEventHandler* this = calloc(1, sizeof(GameMidletEventHandler));
+    GameMidletEventHandler* this = java_object_alloc(sizeof(GameMidletEventHandler), "GameMidletEventHandler");
     GameMidletEventHandler_init(this);
     return this;
 }
 
 
 GameMidletEventHandler* GameMidletEventHandler_getInstance(void) {
-        return GameMidletEventHandler_gameKeyEventHandler;
+        return (GameMidletEventHandler_staticInit(), GameMidletEventHandler_gameKeyEventHandler);
 }
 
 

@@ -42,6 +42,8 @@ AbPathData* AbPathData_new(void);
 AbPathData* AbPathData_getInstance(void);
 
 void AbPathData_init(AbPathData* this);
+#define AbPathData_new0 AbPathData_new
+#define AbPathData_init0 AbPathData_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void AbPathData_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

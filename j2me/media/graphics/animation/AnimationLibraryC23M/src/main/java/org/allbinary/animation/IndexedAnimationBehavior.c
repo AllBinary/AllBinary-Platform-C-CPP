@@ -1,44 +1,28 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2022 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/animation/IndexedAnimationBehavior.h"
 #include "org/allbinary/animation/AnimationBehavior.h"
 
-typedef struct IndexedAnimationBehavior IndexedAnimationBehavior;
-struct IndexedAnimationBehavior {
-    AnimationBehavior base;
-    int64_t frameDelayTime;
-    int32_t loopTotal;
-    int64_t elapsedTime;
-    int32_t loopIndex;
-};
 
 
-IndexedAnimationBehavior* IndexedAnimationBehavior_new(int32_t loopTotal, int64_t frameDelayTime);
 
-void IndexedAnimationBehavior_init(IndexedAnimationBehavior* this, int32_t loopTotal, int64_t frameDelayTime);
-void IndexedAnimationBehavior_reset(IndexedAnimationBehavior* this);
+
+void IndexedAnimationBehavior_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void IndexedAnimationBehavior_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("IndexedAnimationBehavior", "AnimationBehavior");
+    java_register_method("IndexedAnimationBehavior", "reset", (void*) IndexedAnimationBehavior_reset);
+}
 
 static void IndexedAnimationBehavior_initFields(IndexedAnimationBehavior* this) {
     
@@ -49,6 +33,7 @@ static void IndexedAnimationBehavior_initFields(IndexedAnimationBehavior* this) 
 
 
 void IndexedAnimationBehavior_init(IndexedAnimationBehavior* this, int32_t loopTotal, int64_t frameDelayTime) {
+    IndexedAnimationBehavior_register();
     AnimationBehavior_init(&this->base);
     IndexedAnimationBehavior_initFields(this);
         this->loopTotal = loopTotal;
@@ -56,7 +41,7 @@ void IndexedAnimationBehavior_init(IndexedAnimationBehavior* this, int32_t loopT
 }
 
 IndexedAnimationBehavior* IndexedAnimationBehavior_new(int32_t loopTotal, int64_t frameDelayTime) {
-    IndexedAnimationBehavior* this = calloc(1, sizeof(IndexedAnimationBehavior));
+    IndexedAnimationBehavior* this = java_object_alloc(sizeof(IndexedAnimationBehavior), "IndexedAnimationBehavior");
     IndexedAnimationBehavior_init(this, loopTotal, frameDelayTime);
     return this;
 }

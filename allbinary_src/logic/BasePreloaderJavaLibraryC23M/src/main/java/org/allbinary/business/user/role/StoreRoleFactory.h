@@ -51,10 +51,15 @@ BasicArrayList* StoreRoleFactory_getRoles(StoreRoleFactory* this);
 BasicArrayList* StoreRoleFactory_getSubscriberRoles(StoreRoleFactory* this);
 
 BasicArrayList* StoreRoleFactory_getWholesaleRoles(StoreRoleFactory* this);
+#define StoreRoleFactory_new0 StoreRoleFactory_new
+#define StoreRoleFactory_init0 StoreRoleFactory_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void StoreRoleFactory_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)
 void StoreRoleFactory_register(void);
 
+#if __has_include("org/allbinary/util/BasicArrayList.h")
+#include "org/allbinary/util/BasicArrayList.h"
+#endif
 
 #endif // ORG_ALLBINARY_BUSINESS_USER_ROLE_STOREROLEFACTORY_H

@@ -1,32 +1,49 @@
 // Generated Code Do Not Modify
-// package org.allbinary.logic.util.cache
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/logic/util/cache/CacheTypeFactory.h"
 #include "org/allbinary/logic/string/StringUtil.h"
+#include "org/allbinary/logic/util/cache/CacheType.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
-typedef struct CacheTypeFactory CacheTypeFactory;
-struct CacheTypeFactory {
-    CacheType* NO_CACHE;
-    CacheType* CACHE;
-    CacheType* SET;
-    CacheType* CACHE_VECTOR;
-};
 
 static CacheTypeFactory* CacheTypeFactory_instance;
 
-CacheTypeFactory* CacheTypeFactory_new(void);
-CacheTypeFactory* CacheTypeFactory_getInstance(void);
 
-// Static fields with runtime initializers: call this once at startup
 void CacheTypeFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     CacheTypeFactory_instance = CacheTypeFactory_new();
+}
+
+void CacheTypeFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("CacheTypeFactory", nullptr);
 }
 
 static void CacheTypeFactory_initFields(CacheTypeFactory* this) {
@@ -37,17 +54,18 @@ static void CacheTypeFactory_initFields(CacheTypeFactory* this) {
 }
 
 void CacheTypeFactory_init(CacheTypeFactory* this) {
+    CacheTypeFactory_register();
     CacheTypeFactory_initFields(this);
 }
 
 CacheTypeFactory* CacheTypeFactory_new(void) {
-    CacheTypeFactory* this = calloc(1, sizeof(CacheTypeFactory));
+    CacheTypeFactory* this = java_object_alloc(sizeof(CacheTypeFactory), "CacheTypeFactory");
     CacheTypeFactory_init(this);
     return this;
 }
 
 
 CacheTypeFactory* CacheTypeFactory_getInstance(void) {
-        return CacheTypeFactory_instance;
+        return (CacheTypeFactory_staticInit(), CacheTypeFactory_instance);
 }
 

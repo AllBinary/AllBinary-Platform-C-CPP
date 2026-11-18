@@ -1,53 +1,43 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation.image
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/animation/image/ImageArrayRotationAnimationCacheableInterfaceFactory.h"
 #include "org/allbinary/animation/AnimationBehavior.h"
 #include "org/allbinary/logic/util/cache/CacheableInterface.h"
-#include "org/allbinary/logic/util/cache/CacheableInterfaceFactoryInterface.h"
-
-typedef struct ImageArrayRotationAnimationCacheableInterfaceFactory ImageArrayRotationAnimationCacheableInterfaceFactory;
-struct ImageArrayRotationAnimationCacheableInterfaceFactory {
-    CacheableInterfaceFactoryInterface CacheableInterfaceFactoryInterface_interface;
-};
+#include "org/allbinary/animation/image/ImageArrayRotationAnimationCacheable.h"
 
 
-ImageArrayRotationAnimationCacheableInterfaceFactory* ImageArrayRotationAnimationCacheableInterfaceFactory_new(void);
-CacheableInterface* ImageArrayRotationAnimationCacheableInterfaceFactory_getInstance(ImageArrayRotationAnimationCacheableInterfaceFactory* this, Any* key);
+
+
+void ImageArrayRotationAnimationCacheableInterfaceFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void ImageArrayRotationAnimationCacheableInterfaceFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ImageArrayRotationAnimationCacheableInterfaceFactory", nullptr);
+    java_register_method("ImageArrayRotationAnimationCacheableInterfaceFactory", "getInstance", (void*) ImageArrayRotationAnimationCacheableInterfaceFactory_getInstance);
+}
 
 void ImageArrayRotationAnimationCacheableInterfaceFactory_init(ImageArrayRotationAnimationCacheableInterfaceFactory* this) {
+    ImageArrayRotationAnimationCacheableInterfaceFactory_register();
 }
 
 ImageArrayRotationAnimationCacheableInterfaceFactory* ImageArrayRotationAnimationCacheableInterfaceFactory_new(void) {
-    ImageArrayRotationAnimationCacheableInterfaceFactory* this = calloc(1, sizeof(ImageArrayRotationAnimationCacheableInterfaceFactory));
+    ImageArrayRotationAnimationCacheableInterfaceFactory* this = java_object_alloc(sizeof(ImageArrayRotationAnimationCacheableInterfaceFactory), "ImageArrayRotationAnimationCacheableInterfaceFactory");
     ImageArrayRotationAnimationCacheableInterfaceFactory_init(this);
     return this;
 }
 
 
 // throws Exception
-CacheableInterface* ImageArrayRotationAnimationCacheableInterfaceFactory_getInstance(ImageArrayRotationAnimationCacheableInterfaceFactory* this, Any* key) {
+CacheableInterface* ImageArrayRotationAnimationCacheableInterfaceFactory_getInstance(ImageArrayRotationAnimationCacheableInterfaceFactory* this, void* key) {
         return ImageArrayRotationAnimationCacheable_new(key, AnimationBehavior_getInstance());
 }
 

@@ -1,0 +1,264 @@
+#ifndef ORG_ALLBINARY_GAME_LAYER_PLAYERGAMEINPUTGAMELAYER_H
+#define ORG_ALLBINARY_GAME_LAYER_PLAYERGAMEINPUTGAMELAYER_H
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.layer
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+typedef struct AllBinaryGameLayer AllBinaryGameLayer;
+typedef struct Graphics Graphics;
+typedef struct PlayerGameInput PlayerGameInput;
+typedef struct PlayerGameInputCompositeInterface PlayerGameInputCompositeInterface;
+typedef struct PointFactory PointFactory;
+typedef struct Rectangle Rectangle;
+typedef struct CanvasStrings CanvasStrings;
+typedef struct AllBinaryLayerManager AllBinaryLayerManager;
+typedef struct StringUtil StringUtil;
+typedef struct BasicArrayListD BasicArrayListD;
+typedef struct StaticViewPosition StaticViewPosition;
+#if __has_include("org/allbinary/game/input/PlayerGameInput.h")
+#include "org/allbinary/game/input/PlayerGameInput.h"
+#endif
+#include "org/allbinary/game/input/PlayerGameInputCompositeInterface.h"
+#include "org/allbinary/game/layer/AllBinaryGameLayer.h"
+
+typedef struct PlayerGameInputGameLayer PlayerGameInputGameLayer;
+struct PlayerGameInputGameLayer {
+    AllBinaryGameLayer base;
+    PlayerGameInputCompositeInterface PlayerGameInputCompositeInterface_interface;
+    PlayerGameInput* playerGameInput;
+};
+
+
+PlayerGameInputGameLayer* PlayerGameInputGameLayer_new(int32_t playerInputId);
+
+void PlayerGameInputGameLayer_init(PlayerGameInputGameLayer* this, int32_t playerInputId);
+
+PlayerGameInput* PlayerGameInputGameLayer_getPlayerGameInput(PlayerGameInputGameLayer* this);
+
+void PlayerGameInputGameLayer_initInputProcessors(PlayerGameInputGameLayer* this);
+
+void PlayerGameInputGameLayer_processInput(PlayerGameInputGameLayer* this, AllBinaryLayerManager* myManager);
+
+void PlayerGameInputGameLayer_paint(PlayerGameInputGameLayer* this, Graphics* graphics);
+#define PlayerGameInputGameLayer_new1 PlayerGameInputGameLayer_new
+#define PlayerGameInputGameLayer_init1 PlayerGameInputGameLayer_init
+#ifndef PlayerGameInputGameLayer_createPaintable
+#define PlayerGameInputGameLayer_createPaintable AllBinaryGameLayer_createPaintable
+#endif
+#ifndef PlayerGameInputGameLayer_set
+#define PlayerGameInputGameLayer_set AllBinaryGameLayer_set
+#endif
+#ifndef PlayerGameInputGameLayer_move
+#define PlayerGameInputGameLayer_move AllBinaryGameLayer_move
+#endif
+#ifndef PlayerGameInputGameLayer_getGameKeyEventList
+#define PlayerGameInputGameLayer_getGameKeyEventList AllBinaryGameLayer_getGameKeyEventList
+#endif
+#ifndef PlayerGameInputGameLayer_processTick
+#define PlayerGameInputGameLayer_processTick AllBinaryGameLayer_processTick
+#endif
+#ifndef PlayerGameInputGameLayer_onEvent
+#define PlayerGameInputGameLayer_onEvent AllBinaryGameLayer_onEvent
+#endif
+#ifndef PlayerGameInputGameLayer_onViewPositionChangeEvent
+#define PlayerGameInputGameLayer_onViewPositionChangeEvent AllBinaryGameLayer_onViewPositionChangeEvent
+#endif
+#ifndef PlayerGameInputGameLayer_onChangeEvent
+#define PlayerGameInputGameLayer_onChangeEvent AllBinaryGameLayer_onChangeEvent
+#endif
+#ifndef PlayerGameInputGameLayer_paintFirst
+#define PlayerGameInputGameLayer_paintFirst AllBinaryGameLayer_paintFirst
+#endif
+#ifndef PlayerGameInputGameLayer_paintDebug
+#define PlayerGameInputGameLayer_paintDebug AllBinaryGameLayer_paintDebug
+#endif
+#ifndef PlayerGameInputGameLayer_setWidth
+#define PlayerGameInputGameLayer_setWidth AllBinaryGameLayer_setWidth
+#endif
+#ifndef PlayerGameInputGameLayer_setHeight
+#define PlayerGameInputGameLayer_setHeight AllBinaryGameLayer_setHeight
+#endif
+#ifndef PlayerGameInputGameLayer_setPosition
+#define PlayerGameInputGameLayer_setPosition AllBinaryLayer_setPosition
+#endif
+#ifndef PlayerGameInputGameLayer_moveDXYZ
+#define PlayerGameInputGameLayer_moveDXYZ AllBinaryLayer_moveDXYZ
+#endif
+#ifndef PlayerGameInputGameLayer_getXP
+#define PlayerGameInputGameLayer_getXP AllBinaryLayer_getXP
+#endif
+#ifndef PlayerGameInputGameLayer_getYP
+#define PlayerGameInputGameLayer_getYP AllBinaryLayer_getYP
+#endif
+#ifndef PlayerGameInputGameLayer_getZP
+#define PlayerGameInputGameLayer_getZP AllBinaryLayer_getZP
+#endif
+#ifndef PlayerGameInputGameLayer_getWidth
+#define PlayerGameInputGameLayer_getWidth AllBinaryLayer_getWidth
+#endif
+#ifndef PlayerGameInputGameLayer_getHeight
+#define PlayerGameInputGameLayer_getHeight AllBinaryLayer_getHeight
+#endif
+#ifndef PlayerGameInputGameLayer_setVisible
+#define PlayerGameInputGameLayer_setVisible AllBinaryLayer_setVisible
+#endif
+#ifndef PlayerGameInputGameLayer_isVisible
+#define PlayerGameInputGameLayer_isVisible AllBinaryLayer_isVisible
+#endif
+#ifndef PlayerGameInputGameLayer_onChangeEvent
+#define PlayerGameInputGameLayer_onChangeEvent AllBinaryLayer_onChangeEvent
+#endif
+#ifndef PlayerGameInputGameLayer_paintThreed
+#define PlayerGameInputGameLayer_paintThreed AllBinaryLayer_paintThreed
+#endif
+#ifndef PlayerGameInputGameLayer_getX2
+#define PlayerGameInputGameLayer_getX2 AllBinaryLayer_getX2
+#endif
+#ifndef PlayerGameInputGameLayer_getY2
+#define PlayerGameInputGameLayer_getY2 AllBinaryLayer_getY2
+#endif
+#ifndef PlayerGameInputGameLayer_getZ2
+#define PlayerGameInputGameLayer_getZ2 AllBinaryLayer_getZ2
+#endif
+#ifndef PlayerGameInputGameLayer_getName
+#define PlayerGameInputGameLayer_getName AllBinaryLayer_getName
+#endif
+#ifndef PlayerGameInputGameLayer_setHalfWidth
+#define PlayerGameInputGameLayer_setHalfWidth AllBinaryLayer_setHalfWidth
+#endif
+#ifndef PlayerGameInputGameLayer_getHalfWidth
+#define PlayerGameInputGameLayer_getHalfWidth AllBinaryLayer_getHalfWidth
+#endif
+#ifndef PlayerGameInputGameLayer_setHalfHeight
+#define PlayerGameInputGameLayer_setHalfHeight AllBinaryLayer_setHalfHeight
+#endif
+#ifndef PlayerGameInputGameLayer_getHalfHeight
+#define PlayerGameInputGameLayer_getHalfHeight AllBinaryLayer_getHalfHeight
+#endif
+#ifndef PlayerGameInputGameLayer_getHalfDepth
+#define PlayerGameInputGameLayer_getHalfDepth AllBinaryLayer_getHalfDepth
+#endif
+#ifndef PlayerGameInputGameLayer_getViewPosition
+#define PlayerGameInputGameLayer_getViewPosition AllBinaryLayer_getViewPosition
+#endif
+#ifndef PlayerGameInputGameLayer_setViewPosition
+#define PlayerGameInputGameLayer_setViewPosition AllBinaryLayer_setViewPosition
+#endif
+#ifndef PlayerGameInputGameLayer_getGroupInterface
+#define PlayerGameInputGameLayer_getGroupInterface AllBinaryLayer_getGroupInterface
+#endif
+#ifndef PlayerGameInputGameLayer_implmentsTickableInterface
+#define PlayerGameInputGameLayer_implmentsTickableInterface AllBinaryLayer_implmentsTickableInterface
+#endif
+#ifndef PlayerGameInputGameLayer_implmentsGameInputInterface
+#define PlayerGameInputGameLayer_implmentsGameInputInterface AllBinaryLayer_implmentsGameInputInterface
+#endif
+#ifndef PlayerGameInputGameLayer_implmentsArtificialIntelligenceCompositeInterface
+#define PlayerGameInputGameLayer_implmentsArtificialIntelligenceCompositeInterface AllBinaryLayer_implmentsArtificialIntelligenceCompositeInterface
+#endif
+#ifndef PlayerGameInputGameLayer_implmentsCollidableInterface
+#define PlayerGameInputGameLayer_implmentsCollidableInterface AllBinaryLayer_implmentsCollidableInterface
+#endif
+#ifndef PlayerGameInputGameLayer_implementsThreedInterface
+#define PlayerGameInputGameLayer_implementsThreedInterface AllBinaryLayer_implementsThreedInterface
+#endif
+#ifndef PlayerGameInputGameLayer_getType
+#define PlayerGameInputGameLayer_getType AllBinaryLayer_getType
+#endif
+#ifndef PlayerGameInputGameLayer_getMultiPlayerType
+#define PlayerGameInputGameLayer_getMultiPlayerType AllBinaryLayer_getMultiPlayerType
+#endif
+#ifndef PlayerGameInputGameLayer_toStringAppend
+#define PlayerGameInputGameLayer_toStringAppend AllBinaryLayer_toStringAppend
+#endif
+#ifndef PlayerGameInputGameLayer_toString
+#define PlayerGameInputGameLayer_toString AllBinaryLayer_toString
+#endif
+#ifndef PlayerGameInputGameLayer_setPosition
+#define PlayerGameInputGameLayer_setPosition Layer_setPosition
+#endif
+#ifndef PlayerGameInputGameLayer_moveDXY
+#define PlayerGameInputGameLayer_moveDXY Layer_moveDXY
+#endif
+#ifndef PlayerGameInputGameLayer_moveDXYZ
+#define PlayerGameInputGameLayer_moveDXYZ Layer_moveDXYZ
+#endif
+#ifndef PlayerGameInputGameLayer_getXP
+#define PlayerGameInputGameLayer_getXP Layer_getXP
+#endif
+#ifndef PlayerGameInputGameLayer_getYP
+#define PlayerGameInputGameLayer_getYP Layer_getYP
+#endif
+#ifndef PlayerGameInputGameLayer_getZP
+#define PlayerGameInputGameLayer_getZP Layer_getZP
+#endif
+#ifndef PlayerGameInputGameLayer_getWidth
+#define PlayerGameInputGameLayer_getWidth Layer_getWidth
+#endif
+#ifndef PlayerGameInputGameLayer_getHeight
+#define PlayerGameInputGameLayer_getHeight Layer_getHeight
+#endif
+#ifndef PlayerGameInputGameLayer_getDepth
+#define PlayerGameInputGameLayer_getDepth Layer_getDepth
+#endif
+#ifndef PlayerGameInputGameLayer_setVisible
+#define PlayerGameInputGameLayer_setVisible Layer_setVisible
+#endif
+#ifndef PlayerGameInputGameLayer_isVisible
+#define PlayerGameInputGameLayer_isVisible Layer_isVisible
+#endif
+#ifndef PlayerGameInputGameLayer_setLayerWidth
+#define PlayerGameInputGameLayer_setLayerWidth Layer_setLayerWidth
+#endif
+#ifndef PlayerGameInputGameLayer_setLayerHeight
+#define PlayerGameInputGameLayer_setLayerHeight Layer_setLayerHeight
+#endif
+#ifndef PlayerGameInputGameLayer_toStringAppend
+#define PlayerGameInputGameLayer_toStringAppend Layer_toStringAppend
+#endif
+#ifndef PlayerGameInputGameLayer_setSize
+#define PlayerGameInputGameLayer_setSize Layer_setSize
+#endif
+#ifndef PlayerGameInputGameLayer_getX
+#define PlayerGameInputGameLayer_getX Layer_getX
+#endif
+#ifndef PlayerGameInputGameLayer_getY
+#define PlayerGameInputGameLayer_getY Layer_getY
+#endif
+#ifndef PlayerGameInputGameLayer_move
+#define PlayerGameInputGameLayer_move Layer_move
+#endif
+#ifndef PlayerGameInputGameLayer_setPosition
+#define PlayerGameInputGameLayer_setPosition Layer_setPosition
+#endif
+// Runs the Java static initialization of the class once. Reads of its static fields call it first.
+void PlayerGameInputGameLayer_staticInit(void);
+// Registers the class, its superclass, and its methods for the interface calls (java_register_method)
+void PlayerGameInputGameLayer_register(void);
+
+#if __has_include("org/allbinary/game/input/PlayerGameInput.h")
+#include "org/allbinary/game/input/PlayerGameInput.h"
+#endif
+
+#endif // ORG_ALLBINARY_GAME_LAYER_PLAYERGAMEINPUTGAMELAYER_H

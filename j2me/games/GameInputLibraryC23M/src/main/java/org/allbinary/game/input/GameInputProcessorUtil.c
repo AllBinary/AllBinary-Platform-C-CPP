@@ -1,49 +1,40 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.input
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct GameInputProcessorUtil GameInputProcessorUtil;
-struct GameInputProcessorUtil {
-    char unused;
-};
+#include "org/allbinary/game/input/GameInputProcessorUtil.h"
+#include "org/allbinary/game/input/GameInputProcessor.h"
+#include "org/allbinary/game/input/InputFactory.h"
 
 
-GameInputProcessorUtil* GameInputProcessorUtil_new(void);
-void GameInputProcessorUtil_init(GameInputProcessor** inputProcessorArray);
+
+
+void GameInputProcessorUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void GameInputProcessorUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GameInputProcessorUtil", nullptr);
+}
 
 void GameInputProcessorUtil_init(GameInputProcessorUtil* this) {
+    GameInputProcessorUtil_register();
 }
 
 GameInputProcessorUtil* GameInputProcessorUtil_new(void) {
-    GameInputProcessorUtil* this = calloc(1, sizeof(GameInputProcessorUtil));
+    GameInputProcessorUtil* this = java_object_alloc(sizeof(GameInputProcessorUtil), "GameInputProcessorUtil");
     GameInputProcessorUtil_init(this);
     return this;
 }
 
 
-void GameInputProcessorUtil_init(GameInputProcessor** inputProcessorArray) {
+void GameInputProcessorUtil_initMethod(GameInputProcessor** inputProcessorArray) {
         GameInputProcessor* noInputProcessor = GameInputProcessor_getInstance();
         int32_t total = InputFactory_getInstance()->MAX;
         for (int32_t index = 0; index < total; index++) {

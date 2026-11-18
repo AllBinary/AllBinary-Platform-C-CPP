@@ -1,69 +1,60 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation.image
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
-// #include "javax/microedition/lcdui/Image.h"
-// #include "javax/microedition/lcdui/game/Sprite.h"
+#include "org/allbinary/animation/image/RightToLeftImageAnimation.h"
+#include "javax/microedition/lcdui/Graphics.h"
+#include "javax/microedition/lcdui/Image.h"
+#include "javax/microedition/lcdui/game/Sprite.h"
 #include "org/allbinary/animation/AnimationBehavior.h"
 #include "org/allbinary/graphics/Anchor.h"
 #include "org/allbinary/logic/math/PrimitiveIntUtil.h"
 #include "org/allbinary/animation/image/ImageSegmentAnimation.h"
 
-typedef struct RightToLeftImageAnimation RightToLeftImageAnimation;
-struct RightToLeftImageAnimation {
-    ImageSegmentAnimation base;
-    int32_t startWidth;
-    int32_t currentWidth;
-    int32_t anchor;
-};
 
 
-RightToLeftImageAnimation* RightToLeftImageAnimation_new(Image* image, AnimationBehavior* animationBehavior);
 
-void RightToLeftImageAnimation_init(RightToLeftImageAnimation* this, Image* image, AnimationBehavior* animationBehavior);
-void RightToLeftImageAnimation_nextFrame(RightToLeftImageAnimation* this);
-void RightToLeftImageAnimation_previousFrame(RightToLeftImageAnimation* this);
-void RightToLeftImageAnimation_setFrame(RightToLeftImageAnimation* this, int32_t index);
+
+
+
 static void RightToLeftImageAnimation_update(RightToLeftImageAnimation* this);
-void RightToLeftImageAnimation_paintXY(RightToLeftImageAnimation* this, Graphics* graphics, int32_t x, int32_t y);
+
+
+void RightToLeftImageAnimation_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void RightToLeftImageAnimation_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("RightToLeftImageAnimation", "ImageSegmentAnimation");
+    java_register_method("RightToLeftImageAnimation", "nextFrame", (void*) RightToLeftImageAnimation_nextFrame);
+    java_register_method("RightToLeftImageAnimation", "previousFrame", (void*) RightToLeftImageAnimation_previousFrame);
+    java_register_method("RightToLeftImageAnimation", "setFrame", (void*) RightToLeftImageAnimation_setFrame);
+    java_register_method("RightToLeftImageAnimation", "update", (void*) RightToLeftImageAnimation_update);
+    java_register_method("RightToLeftImageAnimation", "paintXY", (void*) RightToLeftImageAnimation_paintXY);
+}
 
 static void RightToLeftImageAnimation_initFields(RightToLeftImageAnimation* this) {
     this->startWidth = 0;
     this->currentWidth = 0;
-    this->anchor = Anchor_TOP_LEFT;
+    this->anchor = (Anchor_staticInit(), Anchor_TOP_LEFT);
 }
 
 
 void RightToLeftImageAnimation_init(RightToLeftImageAnimation* this, Image* image, AnimationBehavior* animationBehavior) {
+    RightToLeftImageAnimation_register();
         ImageSegmentAnimation_init(&this->base, image, PrimitiveIntUtil_getArrayInstance(), animationBehavior);
         RightToLeftImageAnimation_initFields(this);
-        RightToLeftImageAnimation_setFrame(this, RightToLeftImageAnimation_getSize(this) - 1);
+        RightToLeftImageAnimation_setFrame(this, ImageSegmentAnimation_getSize(this) - 1);
 }
 
 RightToLeftImageAnimation* RightToLeftImageAnimation_new(Image* image, AnimationBehavior* animationBehavior) {
-    RightToLeftImageAnimation* this = calloc(1, sizeof(RightToLeftImageAnimation));
+    RightToLeftImageAnimation* this = java_object_alloc(sizeof(RightToLeftImageAnimation), "RightToLeftImageAnimation");
     RightToLeftImageAnimation_init(this, image, animationBehavior);
     return this;
 }
@@ -88,12 +79,12 @@ void RightToLeftImageAnimation_setFrame(RightToLeftImageAnimation* this, int32_t
 
 
 static void RightToLeftImageAnimation_update(RightToLeftImageAnimation* this) {
-        this->startWidth = RightToLeftImageAnimation_getDrawWidth(this) * RightToLeftImageAnimation_getFrame(this) / RightToLeftImageAnimation_getSize(this);
-        this->currentWidth = RightToLeftImageAnimation_getDrawWidth(this) - this->startWidth;
+        this->startWidth = ImageSegmentAnimation_getDrawWidth(this) * ImageSegmentAnimation_getFrame(this) / ImageSegmentAnimation_getSize(this);
+        this->currentWidth = ImageSegmentAnimation_getDrawWidth(this) - this->startWidth;
 }
 
 
 void RightToLeftImageAnimation_paintXY(RightToLeftImageAnimation* this, Graphics* graphics, int32_t x, int32_t y) {
-        Graphics_drawRegion(graphics, RightToLeftImageAnimation_getImage(this), this->startWidth, RightToLeftImageAnimation_getStartY(this), this->currentWidth, RightToLeftImageAnimation_getDrawHeight(this), Sprite_TRANS_NONE, x + this->startWidth, y, this->anchor);
+        Graphics_drawRegion(graphics, ImageAnimation_getImage(this), this->startWidth, ImageSegmentAnimation_getStartY(this), this->currentWidth, ImageSegmentAnimation_getDrawHeight(this), (Sprite_staticInit(), Sprite_TRANS_NONE), x + this->startWidth, y, this->anchor);
 }
 

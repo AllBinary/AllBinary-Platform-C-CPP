@@ -1,71 +1,75 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/khronos/opengles/GL.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/animation/Animation.h"
+#include "javax/microedition/khronos/opengles/GL.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
 #include "org/allbinary/graphics/color/BasicColorFactory.h"
 #include "org/allbinary/graphics/color/BasicColorSetUtil.h"
-#include "org/allbinary/image/opengles/OpenGLSurfaceChangedInterface.h"
 #include "org/allbinary/animation/AnimationInterface.h"
-
-typedef struct Animation Animation;
-struct Animation {
-    AnimationInterface AnimationInterface_interface;
-    OpenGLSurfaceChangedInterface OpenGLSurfaceChangedInterface_interface;
-    BasicColorSetUtil* basicSetColorUtil;
-    BasicColor* basicColor;
-    int32_t colorP;
-    BasicColor* changeBasicColorP;
-    int32_t changeColorP;
-    int32_t alphaP;
-};
+#if __has_include("org/allbinary/graphics/color/BasicColorFactory.h")
+#include "org/allbinary/graphics/color/BasicColorFactory.h"
+#endif
+#if __has_include("org/allbinary/graphics/color/BasicColorFactory.h")
+#include "org/allbinary/graphics/color/BasicColorFactory.h"
+#endif
 
 
-Animation* Animation_new(void);
 
-void Animation_init(Animation* this);
-void Animation_setAlpha(Animation* this, int32_t alpha);
-void Animation_nextFrame(Animation* this);
-void Animation_paintXY(Animation* this, Graphics* graphics, int32_t x, int32_t y);
-void Animation_paintThreedXYZ(Animation* this, Graphics* graphics, int32_t x, int32_t y, int32_t z);
-bool Animation_isThreed(Animation* this);
-BasicColor* Animation_getBasicColorP(Animation* this);
-void Animation_setBasicColorP(Animation* this, BasicColor* basicColor);
-void Animation_setBackgroundBasicColorP(Animation* this, BasicColor* basicColor);
-BasicColor* Animation_getChangeBasicColor(Animation* this);
-void Animation_changeBasicColor(Animation* this, BasicColor* basicColor);
-int32_t Animation_getChangeColor(Animation* this);
-int32_t Animation_getColor(Animation* this);
-void Animation_setScale(Animation* this, float scaleX, float scaleY);
-void Animation_setMaxScale(Animation* this, float maxScaleX, float maxScaleY);
-void Animation_set(Animation* this, GL* gl);
-void Animation_setDx(Animation* this, int32_t dx);
-int32_t Animation_getDx(Animation* this);
-void Animation_setDy(Animation* this, int32_t dy);
-int32_t Animation_getDy(Animation* this);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void Animation_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void Animation_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("Animation", nullptr);
+    java_register_method("Animation", "setAlpha", (void*) Animation_setAlpha);
+    java_register_method("Animation", "nextFrame", (void*) Animation_nextFrame);
+    java_register_method("Animation", "paintXY", (void*) Animation_paintXY);
+    java_register_method("Animation", "paintThreedXYZ", (void*) Animation_paintThreedXYZ);
+    java_register_method("Animation", "isThreed", (void*) Animation_isThreed);
+    java_register_method("Animation", "getBasicColorP", (void*) Animation_getBasicColorP);
+    java_register_method("Animation", "setBasicColorP", (void*) Animation_setBasicColorP);
+    java_register_method("Animation", "setBackgroundBasicColorP", (void*) Animation_setBackgroundBasicColorP);
+    java_register_method("Animation", "getChangeBasicColor", (void*) Animation_getChangeBasicColor);
+    java_register_method("Animation", "changeBasicColor", (void*) Animation_changeBasicColor);
+    java_register_method("Animation", "getChangeColor", (void*) Animation_getChangeColor);
+    java_register_method("Animation", "getColor", (void*) Animation_getColor);
+    java_register_method("Animation", "setScale", (void*) Animation_setScale);
+    java_register_method("Animation", "setMaxScale", (void*) Animation_setMaxScale);
+    java_register_method("Animation", "set", (void*) Animation_set);
+    java_register_method("Animation", "setDx", (void*) Animation_setDx);
+    java_register_method("Animation", "getDx", (void*) Animation_getDx);
+    java_register_method("Animation", "setDy", (void*) Animation_setDy);
+    java_register_method("Animation", "getDy", (void*) Animation_getDy);
+}
 
 static void Animation_initFields(Animation* this) {
     this->basicSetColorUtil = BasicColorSetUtil_getInstance();
@@ -78,11 +82,12 @@ static void Animation_initFields(Animation* this) {
 
 
 void Animation_init(Animation* this) {
+    Animation_register();
     Animation_initFields(this);
 }
 
 Animation* Animation_new(void) {
-    Animation* this = calloc(1, sizeof(Animation));
+    Animation* this = java_object_alloc(sizeof(Animation), "Animation");
     Animation_init(this);
     return this;
 }

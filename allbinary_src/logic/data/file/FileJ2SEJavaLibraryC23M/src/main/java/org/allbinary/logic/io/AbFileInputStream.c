@@ -1,53 +1,38 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.io
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "java/io/File.h"
-// #include "java/io/FileInputStream.h"
-// #include "java/io/FileNotFoundException.h"
+#include "org/allbinary/logic/io/AbFileInputStream.h"
 #include "org/allbinary/logic/io/file/AbFile.h"
 #include "org/allbinary/logic/io/file/AbFileNativeUtil.h"
 
-typedef struct AbFileInputStream AbFileInputStream;
-struct AbFileInputStream {
-    FileInputStream base;
-};
 
 
-AbFileInputStream* AbFileInputStream_new(const char* name);
 
-void AbFileInputStream_init(AbFileInputStream* this, const char* name);
-AbFileInputStream* AbFileInputStream_createFromAbFile(AbFile* file);
-AbFileInputStream* AbFileInputStream_createFromFile(File* file);
+
+
+void AbFileInputStream_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void AbFileInputStream_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("AbFileInputStream", "FileInputStream");
+}
 
 
 void AbFileInputStream_init(AbFileInputStream* this, const char* name) {
+    AbFileInputStream_register();
         FileInputStream_init(&this->base, name);
 }
 
 AbFileInputStream* AbFileInputStream_new(const char* name) {
-    AbFileInputStream* this = calloc(1, sizeof(AbFileInputStream));
+    AbFileInputStream* this = java_object_alloc(sizeof(AbFileInputStream), "AbFileInputStream");
     AbFileInputStream_init(this, name);
     return this;
 }
@@ -55,12 +40,12 @@ AbFileInputStream* AbFileInputStream_new(const char* name) {
 
 // throws FileNotFoundException
 AbFileInputStream* AbFileInputStream_createFromAbFile(AbFile* file) {
-        return AbFileInputStream_new(JAVA_CALL(AbFileNativeUtil_get(file), getPath));
+        return AbFileInputStream_new(File_getPath(AbFileNativeUtil_get(file)));
 }
 
 
 // throws FileNotFoundException
 AbFileInputStream* AbFileInputStream_createFromFile(File* file) {
-        return AbFileInputStream_new(AbFile_getPath(file));
+        return AbFileInputStream_new(File_getPath(file));
 }
 

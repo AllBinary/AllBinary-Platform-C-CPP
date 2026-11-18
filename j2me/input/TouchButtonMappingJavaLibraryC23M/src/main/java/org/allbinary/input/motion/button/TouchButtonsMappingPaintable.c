@@ -1,51 +1,43 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input.motion.button
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/input/motion/button/TouchButtonsMappingPaintable.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/graphics/CellPositionFactory.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
-#include "org/allbinary/graphics/paint/Paintable.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/string/CommonStrings.h"
-
-typedef struct TouchButtonsMappingPaintable TouchButtonsMappingPaintable;
-struct TouchButtonsMappingPaintable {
-    Paintable base;
-    LogUtil* logUtil;
-    int32_t foregroundColor;
-    Paintable*** paintableTable;
-    TouchButtonLocationHelper* touchButtonLocationHelper;
-};
+#include "org/allbinary/input/motion/button/TouchButtonLocationHelper.h"
+#include "org/allbinary/input/motion/button/CommonButtons.h"
+#include "org/allbinary/input/motion/button/TouchButton.h"
+#include "org/allbinary/input/motion/button/BasicTouchInputFactory.h"
+#include "org/allbinary/input/motion/button/TouchButtonBlankResource.h"
 
 
-TouchButtonsMappingPaintable* TouchButtonsMappingPaintable_new(BasicColor* basicColor);
 
-void TouchButtonsMappingPaintable_init(TouchButtonsMappingPaintable* this, BasicColor* basicColor);
-static void TouchButtonsMappingPaintable_init(TouchButtonsMappingPaintable* this);
+
+static void TouchButtonsMappingPaintable_initMethod(TouchButtonsMappingPaintable* this);
+
 static Paintable*** TouchButtonsMappingPaintable_createPaintableTable(TouchButtonsMappingPaintable* this);
-void TouchButtonsMappingPaintable_paint(TouchButtonsMappingPaintable* this, Graphics* graphics);
+
+
+void TouchButtonsMappingPaintable_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void TouchButtonsMappingPaintable_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("TouchButtonsMappingPaintable", "Paintable");
+    java_register_method("TouchButtonsMappingPaintable", "init", (void*) TouchButtonsMappingPaintable_initMethod);
+    java_register_method("TouchButtonsMappingPaintable", "createPaintableTable", (void*) TouchButtonsMappingPaintable_createPaintableTable);
+    java_register_method("TouchButtonsMappingPaintable", "paint", (void*) TouchButtonsMappingPaintable_paint);
+}
 
 static void TouchButtonsMappingPaintable_initFields(TouchButtonsMappingPaintable* this) {
     this->logUtil = LogUtil_getInstance();
@@ -56,20 +48,21 @@ static void TouchButtonsMappingPaintable_initFields(TouchButtonsMappingPaintable
 
 
 void TouchButtonsMappingPaintable_init(TouchButtonsMappingPaintable* this, BasicColor* basicColor) {
+    TouchButtonsMappingPaintable_register();
     Paintable_init(&this->base);
     TouchButtonsMappingPaintable_initFields(this);
         this->foregroundColor = BasicColor_intValue(basicColor);
-        TouchButtonsMappingPaintable_init(this);
+        TouchButtonsMappingPaintable_initMethod(this);
 }
 
 TouchButtonsMappingPaintable* TouchButtonsMappingPaintable_new(BasicColor* basicColor) {
-    TouchButtonsMappingPaintable* this = calloc(1, sizeof(TouchButtonsMappingPaintable));
+    TouchButtonsMappingPaintable* this = java_object_alloc(sizeof(TouchButtonsMappingPaintable), "TouchButtonsMappingPaintable");
     TouchButtonsMappingPaintable_init(this, basicColor);
     return this;
 }
 
 
-static void TouchButtonsMappingPaintable_init(TouchButtonsMappingPaintable* this) {
+static void TouchButtonsMappingPaintable_initMethod(TouchButtonsMappingPaintable* this) {
         JAVA_TRY {
             this->paintableTable = TouchButtonsMappingPaintable_createPaintableTable(this);
         } JAVA_CATCH(Exception, e) {

@@ -1,0 +1,139 @@
+#ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_IMMEDIATECOMMANDFORMINPUTPROCESSOR_H
+#define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_IMMEDIATECOMMANDFORMINPUTPROCESSOR_H
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.displayable.canvas
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+typedef struct CommandFormInputProcessor CommandFormInputProcessor;
+typedef struct GameCommandCanvas GameCommandCanvas;
+typedef struct GameKeyEvent GameKeyEvent;
+typedef struct ScrollSelectionForm ScrollSelectionForm;
+typedef struct MotionGestureEvent MotionGestureEvent;
+typedef struct TimeDelayHelper TimeDelayHelper;
+typedef struct BasicArrayList BasicArrayList;
+#if __has_include("org/allbinary/time/TimeDelayHelper.h")
+#include "org/allbinary/time/TimeDelayHelper.h"
+#endif
+#include "org/allbinary/game/displayable/canvas/CommandFormInputProcessor.h"
+#if __has_include("org/allbinary/game/displayable/canvas/GameCommandCanvas.h")
+#include "org/allbinary/game/displayable/canvas/GameCommandCanvas.h"
+#endif
+
+typedef struct ImmediateCommandFormInputProcessor ImmediateCommandFormInputProcessor;
+struct ImmediateCommandFormInputProcessor {
+    CommandFormInputProcessor base;
+    TimeDelayHelper* timeHelper;
+    GameCommandCanvas* gameCommandCanvas;
+};
+
+
+ImmediateCommandFormInputProcessor* ImmediateCommandFormInputProcessor_new(BasicArrayList* gameKeyEventList, int32_t playerInputId, GameCommandCanvas* gameCommandCanvas, ScrollSelectionForm* form);
+
+void ImmediateCommandFormInputProcessor_init(ImmediateCommandFormInputProcessor* this, BasicArrayList* gameKeyEventList, int32_t playerInputId, GameCommandCanvas* gameCommandCanvas, ScrollSelectionForm* form);
+
+void ImmediateCommandFormInputProcessor_onPressGameKeyEvent(ImmediateCommandFormInputProcessor* this, GameKeyEvent* gameKeyEvent);
+
+void ImmediateCommandFormInputProcessor_onDownGameKeyEvent(ImmediateCommandFormInputProcessor* this, GameKeyEvent* gameKeyEvent);
+
+void ImmediateCommandFormInputProcessor_onUpGameKeyEvent(ImmediateCommandFormInputProcessor* this, GameKeyEvent* gameKeyEvent);
+
+void ImmediateCommandFormInputProcessor_onMotionGestureEvent(ImmediateCommandFormInputProcessor* this, MotionGestureEvent* motionGestureEvent);
+#define ImmediateCommandFormInputProcessor_new4 ImmediateCommandFormInputProcessor_new
+#define ImmediateCommandFormInputProcessor_init4 ImmediateCommandFormInputProcessor_init
+#ifndef ImmediateCommandFormInputProcessor_processInput
+#define ImmediateCommandFormInputProcessor_processInput CommandFormInputProcessor_processInput
+#endif
+#ifndef ImmediateCommandFormInputProcessor_processCommand
+#define ImmediateCommandFormInputProcessor_processCommand CommandFormInputProcessor_processCommand
+#endif
+#ifndef ImmediateCommandFormInputProcessor_processInputList
+#define ImmediateCommandFormInputProcessor_processInputList CommandFormInputProcessor_processInputList
+#endif
+#ifndef ImmediateCommandFormInputProcessor_processMotionInputs
+#define ImmediateCommandFormInputProcessor_processMotionInputs CommandFormInputProcessor_processMotionInputs
+#endif
+#ifndef ImmediateCommandFormInputProcessor_processMotionInput
+#define ImmediateCommandFormInputProcessor_processMotionInput CommandFormInputProcessor_processMotionInput
+#endif
+#ifndef ImmediateCommandFormInputProcessor_toString
+#define ImmediateCommandFormInputProcessor_toString CommandFormInputProcessor_toString
+#endif
+#ifndef ImmediateCommandFormInputProcessor_onScrolledMotionGestureEvent
+#define ImmediateCommandFormInputProcessor_onScrolledMotionGestureEvent BasicMenuInputProcessor_onScrolledMotionGestureEvent
+#endif
+#ifndef ImmediateCommandFormInputProcessor_setCanvas
+#define ImmediateCommandFormInputProcessor_setCanvas BasicMenuInputProcessor_setCanvas
+#endif
+#ifndef ImmediateCommandFormInputProcessor_getCanvas
+#define ImmediateCommandFormInputProcessor_getCanvas BasicMenuInputProcessor_getCanvas
+#endif
+#ifndef ImmediateCommandFormInputProcessor_processInputList
+#define ImmediateCommandFormInputProcessor_processInputList BasicMenuInputProcessor_processInputList
+#endif
+#ifndef ImmediateCommandFormInputProcessor_onDownKeyEvent
+#define ImmediateCommandFormInputProcessor_onDownKeyEvent PlayerGameInput_onDownKeyEvent
+#endif
+#ifndef ImmediateCommandFormInputProcessor_onDownKey
+#define ImmediateCommandFormInputProcessor_onDownKey PlayerGameInput_onDownKey
+#endif
+#ifndef ImmediateCommandFormInputProcessor_onUpKeyEvent
+#define ImmediateCommandFormInputProcessor_onUpKeyEvent PlayerGameInput_onUpKeyEvent
+#endif
+#ifndef ImmediateCommandFormInputProcessor_onEvent
+#define ImmediateCommandFormInputProcessor_onEvent PlayerGameInput_onEvent
+#endif
+#ifndef ImmediateCommandFormInputProcessor_getPlayerInputId
+#define ImmediateCommandFormInputProcessor_getPlayerInputId PlayerGameInput_getPlayerInputId
+#endif
+#ifndef ImmediateCommandFormInputProcessor_add
+#define ImmediateCommandFormInputProcessor_add GameInput_add
+#endif
+#ifndef ImmediateCommandFormInputProcessor_addForRemoval
+#define ImmediateCommandFormInputProcessor_addForRemoval GameInput_addForRemoval
+#endif
+#ifndef ImmediateCommandFormInputProcessor_isForRemoval
+#define ImmediateCommandFormInputProcessor_isForRemoval GameInput_isForRemoval
+#endif
+#ifndef ImmediateCommandFormInputProcessor_clear
+#define ImmediateCommandFormInputProcessor_clear GameInput_clear
+#endif
+#ifndef ImmediateCommandFormInputProcessor_removeNonAIInputGameKeyEvents
+#define ImmediateCommandFormInputProcessor_removeNonAIInputGameKeyEvents GameInput_removeNonAIInputGameKeyEvents
+#endif
+#ifndef ImmediateCommandFormInputProcessor_update
+#define ImmediateCommandFormInputProcessor_update GameInput_update
+#endif
+#ifndef ImmediateCommandFormInputProcessor_getRemovalGameKeyEventList
+#define ImmediateCommandFormInputProcessor_getRemovalGameKeyEventList GameInput_getRemovalGameKeyEventList
+#endif
+#ifndef ImmediateCommandFormInputProcessor_getGameKeyEventList
+#define ImmediateCommandFormInputProcessor_getGameKeyEventList GameInput_getGameKeyEventList
+#endif
+// Runs the Java static initialization of the class once. Reads of its static fields call it first.
+void ImmediateCommandFormInputProcessor_staticInit(void);
+// Registers the class, its superclass, and its methods for the interface calls (java_register_method)
+void ImmediateCommandFormInputProcessor_register(void);
+
+
+#endif // ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_IMMEDIATECOMMANDFORMINPUTPROCESSOR_H

@@ -1,28 +1,5 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2022 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.displayable.canvas
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/displayable/canvas/BaseGameBehavior.h"
 #include "org/allbinary/business/advertisement/GameAdStateFactory.h"
 #include "org/allbinary/game/GameAdState.h"
 #include "org/allbinary/game/configuration/feature/Features.h"
@@ -30,53 +7,85 @@
 #include "org/allbinary/graphics/opengles/OpenGLFeatureFactory.h"
 #include "org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h"
 #include "org/allbinary/game/displayable/canvas/DemoGameBehavior.h"
+#include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
+#if __has_include("org/allbinary/business/advertisement/GameAdStateFactory.h")
+#include "org/allbinary/business/advertisement/GameAdStateFactory.h"
+#endif
+#if __has_include("org/allbinary/graphics/opengles/OpenGLFeatureFactory.h")
+#include "org/allbinary/graphics/opengles/OpenGLFeatureFactory.h"
+#endif
+#if __has_include("org/allbinary/game/configuration/feature/Features.h")
+#include "org/allbinary/game/configuration/feature/Features.h"
+#endif
+#if __has_include("org/allbinary/graphics/opengles/OpenGLFeatureFactory.h")
+#include "org/allbinary/graphics/opengles/OpenGLFeatureFactory.h"
+#endif
 
-typedef struct BaseGameBehavior BaseGameBehavior;
-struct BaseGameBehavior {
-    DemoGameBehavior base;
-};
 
 static BaseGameBehavior* BaseGameBehavior_instanceC;
 
-BaseGameBehavior* BaseGameBehavior_new(void);
-DemoGameBehavior* BaseGameBehavior_getInstance(void);
-void BaseGameBehavior_init(BaseGameBehavior* this);
-void BaseGameBehavior_pause(BaseGameBehavior* this, AllBinaryGameCanvas* allBinaryGameCanvas);
-void BaseGameBehavior_unPause(BaseGameBehavior* this, AllBinaryGameCanvas* allBinaryGameCanvas);
-void BaseGameBehavior_updateTouch(BaseGameBehavior* this, AllBinaryGameCanvas* allBinaryGameCanvas);
-void BaseGameBehavior_updateScreenButtonPaintable(BaseGameBehavior* this, AllBinaryGameCanvas* allBinaryGameCanvas);
-void BaseGameBehavior_setGameState(BaseGameBehavior* this, AllBinaryGameCanvas* allBinaryGameCanvas);
-void BaseGameBehavior_removeAllGameKeyInputListeners(BaseGameBehavior* this, AllBinaryGameCanvas* allBinaryGameCanvas);
-void BaseGameBehavior_updateEndGameProcessor(BaseGameBehavior* this, AllBinaryGameCanvas* allBinaryGameCanvas);
-void BaseGameBehavior_buildGame(BaseGameBehavior* this, AllBinaryGameCanvas* allBinaryGameCanvas);
-void BaseGameBehavior_run(BaseGameBehavior* this, AllBinaryGameCanvas* allBinaryGameCanvas);
-void BaseGameBehavior_setHighScore(BaseGameBehavior* this, AbeClientInformationInterface* abeClientInformation, AllBinaryGameCanvas* allBinaryGameCanvas, const char* name, int64_t score, bool autoSubmit, bool isLast);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+
+
+
+
+
+
+
 void BaseGameBehavior_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     BaseGameBehavior_instanceC = BaseGameBehavior_new();
 }
 
+void BaseGameBehavior_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("BaseGameBehavior", "DemoGameBehavior");
+    java_register_method("BaseGameBehavior", "init", (void*) BaseGameBehavior_initMethod);
+    java_register_method("BaseGameBehavior", "pause", (void*) BaseGameBehavior_pause);
+    java_register_method("BaseGameBehavior", "unPause", (void*) BaseGameBehavior_unPause);
+    java_register_method("BaseGameBehavior", "updateTouch", (void*) BaseGameBehavior_updateTouch);
+    java_register_method("BaseGameBehavior", "updateScreenButtonPaintable", (void*) BaseGameBehavior_updateScreenButtonPaintable);
+    java_register_method("BaseGameBehavior", "setGameState", (void*) BaseGameBehavior_setGameState);
+    java_register_method("BaseGameBehavior", "removeAllGameKeyInputListeners", (void*) BaseGameBehavior_removeAllGameKeyInputListeners);
+    java_register_method("BaseGameBehavior", "updateEndGameProcessor", (void*) BaseGameBehavior_updateEndGameProcessor);
+    java_register_method("BaseGameBehavior", "buildGame", (void*) BaseGameBehavior_buildGame);
+    java_register_method("BaseGameBehavior", "run", (void*) BaseGameBehavior_run);
+    java_register_method("BaseGameBehavior", "setHighScore", (void*) BaseGameBehavior_setHighScore);
+}
+
 void BaseGameBehavior_init(BaseGameBehavior* this) {
+    BaseGameBehavior_register();
     DemoGameBehavior_init(&this->base);
 }
 
 BaseGameBehavior* BaseGameBehavior_new(void) {
-    BaseGameBehavior* this = calloc(1, sizeof(BaseGameBehavior));
+    BaseGameBehavior* this = java_object_alloc(sizeof(BaseGameBehavior), "BaseGameBehavior");
     BaseGameBehavior_init(this);
     return this;
 }
 
 
 DemoGameBehavior* BaseGameBehavior_getInstance(void) {
-        return BaseGameBehavior_instanceC;
+        return (BaseGameBehavior_staticInit(), BaseGameBehavior_instanceC);
 }
 
 
 // throws Exception
-void BaseGameBehavior_init(BaseGameBehavior* this) {
+void BaseGameBehavior_initMethod(BaseGameBehavior* this) {
         GameAdState* gameAdState = GameAdStateFactory_getCurrentInstance(GameAdStateFactory_getInstance());
-        GameAdState_playingAdState(gameAdState);
+        GameAdStateBase_playingAdState(gameAdState);
 }
 
 

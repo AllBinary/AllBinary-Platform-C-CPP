@@ -1,28 +1,5 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.layer
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/layer/LayerInterfaceFactory.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/logic/string/StringUtil.h"
@@ -31,25 +8,48 @@
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
 #include "org/allbinary/util/BasicArrayListUtil.h"
+#include "org/allbinary/layer/Layer.h"
+#include "org/allbinary/layer/LayerInterfaceFactoryInterface.h"
+#include "org/allbinary/layer/AllBinaryLayer.h"
+#if __has_include("org/allbinary/util/BasicArrayListUtil.h")
+#include "org/allbinary/util/BasicArrayListUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
-typedef struct LayerInterfaceFactory LayerInterfaceFactory;
-struct LayerInterfaceFactory {
-    LogUtil* logUtil;
-    BasicArrayList* list;
-    const char* HASHTABLE_LABEL;
-};
 
 static LayerInterfaceFactory* LayerInterfaceFactory_SINGLETON;
 
-LayerInterfaceFactory* LayerInterfaceFactory_new(void);
-LayerInterfaceFactory* LayerInterfaceFactory_getInstance(void);
-void LayerInterfaceFactory_init(LayerInterfaceFactory* this);
-AllBinaryLayer* LayerInterfaceFactory_getNexInstance(LayerInterfaceFactory* this, ABHashtable* hashtable, int32_t x, int32_t y, int32_t z);
-void LayerInterfaceFactory_add(LayerInterfaceFactory* this, LayerInterfaceFactoryInterface* layerInterfaceFactoryInterface);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
 void LayerInterfaceFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     LayerInterfaceFactory_SINGLETON = LayerInterfaceFactory_new();
+}
+
+void LayerInterfaceFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("LayerInterfaceFactory", nullptr);
+    java_register_method("LayerInterfaceFactory", "init", (void*) LayerInterfaceFactory_initMethod);
+    java_register_method("LayerInterfaceFactory", "getNexInstance", (void*) LayerInterfaceFactory_getNexInstance);
+    java_register_method("LayerInterfaceFactory", "add", (void*) LayerInterfaceFactory_add);
 }
 
 static void LayerInterfaceFactory_initFields(LayerInterfaceFactory* this) {
@@ -59,22 +59,23 @@ static void LayerInterfaceFactory_initFields(LayerInterfaceFactory* this) {
 }
 
 void LayerInterfaceFactory_init(LayerInterfaceFactory* this) {
+    LayerInterfaceFactory_register();
     LayerInterfaceFactory_initFields(this);
 }
 
 LayerInterfaceFactory* LayerInterfaceFactory_new(void) {
-    LayerInterfaceFactory* this = calloc(1, sizeof(LayerInterfaceFactory));
+    LayerInterfaceFactory* this = java_object_alloc(sizeof(LayerInterfaceFactory), "LayerInterfaceFactory");
     LayerInterfaceFactory_init(this);
     return this;
 }
 
 
 LayerInterfaceFactory* LayerInterfaceFactory_getInstance(void) {
-        return LayerInterfaceFactory_SINGLETON;
+        return (LayerInterfaceFactory_staticInit(), LayerInterfaceFactory_SINGLETON);
 }
 
 
-void LayerInterfaceFactory_init(LayerInterfaceFactory* this) {
+void LayerInterfaceFactory_initMethod(LayerInterfaceFactory* this) {
         this->list = BasicArrayListD_new();
 }
 
@@ -82,8 +83,8 @@ void LayerInterfaceFactory_init(LayerInterfaceFactory* this) {
 // throws Exception
 AllBinaryLayer* LayerInterfaceFactory_getNexInstance(LayerInterfaceFactory* this, ABHashtable* hashtable, int32_t x, int32_t y, int32_t z) {
         CommonStrings* commonStrings = CommonStrings_getInstance();
-        LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), this->HASHTABLE_LABEL), append, StringUtil_toString(StringUtil_getInstance(), hashtable)), toString), this, commonStrings->GET_INSTANCE);
-        int32_t typeInteger = ((int32_t) ABHashtable_get(hashtable, ((Any*) Layer_ID)));
+        LogUtil_putF(this->logUtil, java_string_of(StringMaker_append(StringMaker_append(StringMaker_new(), this->HASHTABLE_LABEL), StringUtil_toString(StringUtil_getInstance(), hashtable))), this, commonStrings->GET_INSTANCE);
+        int32_t typeInteger = ((int32_t) Hashtable_get(hashtable, ((void*) (Layer_staticInit(), Layer_ID))));
         LayerInterfaceFactoryInterface* layerInterfaceFactoryInterface = ((LayerInterfaceFactoryInterface*) this->list->objectArray[Integer_intValue(typeInteger) - 1]);
         return LayerInterfaceFactoryInterface_getNextInstance(layerInterfaceFactoryInterface, hashtable, x, y, z);
 }

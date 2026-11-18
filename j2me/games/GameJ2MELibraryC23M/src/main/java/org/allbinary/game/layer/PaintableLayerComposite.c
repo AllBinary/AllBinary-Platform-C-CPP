@@ -1,45 +1,35 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.layer
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
-#include "org/allbinary/graphics/paint/Paintable.h"
+#include "org/allbinary/game/layer/PaintableLayerComposite.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/graphics/paint/PaintableInterface.h"
 #include "org/allbinary/layer/Layer.h"
-
-typedef struct PaintableLayerComposite PaintableLayerComposite;
-struct PaintableLayerComposite {
-    Paintable base;
-    Layer** paintableArray;
-};
+#if __has_include("org/allbinary/layer/Layer.h")
+#include "org/allbinary/layer/Layer.h"
+#endif
 
 
-PaintableLayerComposite* PaintableLayerComposite_new(Layer** paintableArray);
 
-void PaintableLayerComposite_init(PaintableLayerComposite* this, Layer** paintableArray);
-void PaintableLayerComposite_paint(PaintableLayerComposite* this, Graphics* graphics);
-void PaintableLayerComposite_paintThreed(PaintableLayerComposite* this, Graphics* graphics);
+
+
+
+void PaintableLayerComposite_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void PaintableLayerComposite_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("PaintableLayerComposite", "Paintable");
+    java_register_method("PaintableLayerComposite", "paint", (void*) PaintableLayerComposite_paint);
+    java_register_method("PaintableLayerComposite", "paintThreed", (void*) PaintableLayerComposite_paintThreed);
+}
 
 static void PaintableLayerComposite_initFields(PaintableLayerComposite* this) {
     
@@ -47,13 +37,14 @@ static void PaintableLayerComposite_initFields(PaintableLayerComposite* this) {
 
 
 void PaintableLayerComposite_init(PaintableLayerComposite* this, Layer** paintableArray) {
+    PaintableLayerComposite_register();
     Paintable_init(&this->base);
     PaintableLayerComposite_initFields(this);
         this->paintableArray = paintableArray;
 }
 
 PaintableLayerComposite* PaintableLayerComposite_new(Layer** paintableArray) {
-    PaintableLayerComposite* this = calloc(1, sizeof(PaintableLayerComposite));
+    PaintableLayerComposite* this = java_object_alloc(sizeof(PaintableLayerComposite), "PaintableLayerComposite");
     PaintableLayerComposite_init(this, paintableArray);
     return this;
 }
@@ -61,7 +52,7 @@ PaintableLayerComposite* PaintableLayerComposite_new(Layer** paintableArray) {
 
 void PaintableLayerComposite_paint(PaintableLayerComposite* this, Graphics* graphics) {
         for (int32_t index = java_array_length(this->paintableArray); --index >= 0; ) {
-            JAVA_CALL(this->paintableArray[index], paint, graphics);
+            Layer_paint(this->paintableArray[index], graphics);
         }
 }
 

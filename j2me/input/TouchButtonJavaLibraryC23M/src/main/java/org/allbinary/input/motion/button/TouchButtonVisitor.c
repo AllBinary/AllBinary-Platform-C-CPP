@@ -1,43 +1,34 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input.motion.button
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct TouchButtonVisitor TouchButtonVisitor;
-struct TouchButtonVisitor {
-    char unused;
-};
+#include "org/allbinary/input/motion/button/TouchButtonVisitor.h"
+#include "org/allbinary/input/motion/button/TouchButtonInput.h"
 
 
-TouchButtonVisitor* TouchButtonVisitor_new(void);
-void TouchButtonVisitor_process(TouchButtonVisitor* this, TouchButtonInput* touchButtonInput, const char* string);
+
+
+void TouchButtonVisitor_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void TouchButtonVisitor_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("TouchButtonVisitor", nullptr);
+    java_register_method("TouchButtonVisitor", "process", (void*) TouchButtonVisitor_process);
+}
 
 void TouchButtonVisitor_init(TouchButtonVisitor* this) {
+    TouchButtonVisitor_register();
 }
 
 TouchButtonVisitor* TouchButtonVisitor_new(void) {
-    TouchButtonVisitor* this = calloc(1, sizeof(TouchButtonVisitor));
+    TouchButtonVisitor* this = java_object_alloc(sizeof(TouchButtonVisitor), "TouchButtonVisitor");
     TouchButtonVisitor_init(this);
     return this;
 }

@@ -1,74 +1,61 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation.image
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-#include "org/allbinary/logic/util/cache/BasicArrayListResetablePool.h"
+#include "org/allbinary/animation/image/ImageArrayRotationAnimationPool.h"
 #include "org/allbinary/logic/util/cache/CacheableInterface.h"
 #include "org/allbinary/logic/util/cache/CacheableInterfaceFactoryInterface.h"
 #include "org/allbinary/logic/util/cache/PoolInterface.h"
+#include "org/allbinary/animation/image/ImageArrayRotationAnimationCacheableInterfaceFactory.h"
+#include "org/allbinary/animation/image/ImageArrayRotationAnimationInfo.h"
+#include "org/allbinary/animation/image/ImageArrayRotationAnimationCacheable.h"
 
-typedef struct ImageArrayRotationAnimationPool ImageArrayRotationAnimationPool;
-struct ImageArrayRotationAnimationPool {
-    BasicArrayListResetablePool base;
-};
 
 static PoolInterface* ImageArrayRotationAnimationPool_IMAGE_ROTATION_ANIMATION_POOL;
 
-ImageArrayRotationAnimationPool* ImageArrayRotationAnimationPool_new(CacheableInterfaceFactoryInterface* cacheableInterfaceFactoryInterface);
 
-void ImageArrayRotationAnimationPool_init(ImageArrayRotationAnimationPool* this, CacheableInterfaceFactoryInterface* cacheableInterfaceFactoryInterface);
-PoolInterface* ImageArrayRotationAnimationPool_getInstance(void);
-CacheableInterface* ImageArrayRotationAnimationPool_remove(ImageArrayRotationAnimationPool* this, Any* key);
 
-// Static fields with runtime initializers: call this once at startup
+
 void ImageArrayRotationAnimationPool_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     ImageArrayRotationAnimationPool_IMAGE_ROTATION_ANIMATION_POOL = ImageArrayRotationAnimationPool_new(ImageArrayRotationAnimationCacheableInterfaceFactory_new());
+}
+
+void ImageArrayRotationAnimationPool_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ImageArrayRotationAnimationPool", "BasicArrayListResetablePool");
+    java_register_method("ImageArrayRotationAnimationPool", "remove", (void*) ImageArrayRotationAnimationPool_remove);
 }
 
 
 void ImageArrayRotationAnimationPool_init(ImageArrayRotationAnimationPool* this, CacheableInterfaceFactoryInterface* cacheableInterfaceFactoryInterface) {
+    ImageArrayRotationAnimationPool_register();
         BasicArrayListResetablePool_init(&this->base, cacheableInterfaceFactoryInterface);
 }
 
 ImageArrayRotationAnimationPool* ImageArrayRotationAnimationPool_new(CacheableInterfaceFactoryInterface* cacheableInterfaceFactoryInterface) {
-    ImageArrayRotationAnimationPool* this = calloc(1, sizeof(ImageArrayRotationAnimationPool));
+    ImageArrayRotationAnimationPool* this = java_object_alloc(sizeof(ImageArrayRotationAnimationPool), "ImageArrayRotationAnimationPool");
     ImageArrayRotationAnimationPool_init(this, cacheableInterfaceFactoryInterface);
     return this;
 }
 
 
 PoolInterface* ImageArrayRotationAnimationPool_getInstance(void) {
-        return ImageArrayRotationAnimationPool_IMAGE_ROTATION_ANIMATION_POOL;
+        return (ImageArrayRotationAnimationPool_staticInit(), ImageArrayRotationAnimationPool_IMAGE_ROTATION_ANIMATION_POOL);
 }
 
 
 // throws Exception
-CacheableInterface* ImageArrayRotationAnimationPool_remove(ImageArrayRotationAnimationPool* this, Any* key) {
+CacheableInterface* ImageArrayRotationAnimationPool_remove(ImageArrayRotationAnimationPool* this, void* key) {
         CacheableInterface* cacheableInterface = BasicArrayListResetablePool_remove((&this->base), key);
         ImageArrayRotationAnimationInfo* allBinaryImageRotationAnimationInfo = ((ImageArrayRotationAnimationInfo*) key);
         ImageArrayRotationAnimationCacheable* imageArrayRotationAnimationCacheable = (((ImageArrayRotationAnimationCacheable*) cacheableInterface));
-        ImageArrayRotationAnimationCacheable_setImageArray(imageArrayRotationAnimationCacheable, ImageArrayRotationAnimationInfo_getImageArray(allBinaryImageRotationAnimationInfo));
+        ImageArrayRotationAnimation_setImageArray(imageArrayRotationAnimationCacheable, ImageArrayRotationAnimationInfo_getImageArray(allBinaryImageRotationAnimationInfo));
         return cacheableInterface;
 }
 

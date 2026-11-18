@@ -62,6 +62,8 @@ void CircularIndexUtil_setSize(CircularIndexUtil* this, int32_t size);
 int32_t CircularIndexUtil_getSize(CircularIndexUtil* this);
 
 const char* CircularIndexUtil_toString(CircularIndexUtil* this);
+#define CircularIndexUtil_new2 CircularIndexUtil_new
+#define CircularIndexUtil_init2 CircularIndexUtil_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void CircularIndexUtil_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

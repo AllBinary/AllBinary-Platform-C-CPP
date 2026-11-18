@@ -1,0 +1,132 @@
+#ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_POPUPCOMMANDFORMINPUTPROCESSOR_H
+#define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_POPUPCOMMANDFORMINPUTPROCESSOR_H
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.displayable.canvas
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+typedef struct CommandFormInputProcessor CommandFormInputProcessor;
+typedef struct PopupMenuInputProcessor PopupMenuInputProcessor;
+typedef struct MyCanvas MyCanvas;
+typedef struct ScrollSelectionForm ScrollSelectionForm;
+typedef struct MotionGestureEvent MotionGestureEvent;
+typedef struct BasicArrayList BasicArrayList;
+#include "org/allbinary/game/displayable/canvas/CommandFormInputProcessor.h"
+
+typedef struct PopupCommandFormInputProcessor PopupCommandFormInputProcessor;
+struct PopupCommandFormInputProcessor {
+    CommandFormInputProcessor base;
+};
+
+
+PopupCommandFormInputProcessor* PopupCommandFormInputProcessor_new(BasicArrayList* gameKeyEventList, int32_t playerInputId, MyCanvas* gameCanvas, ScrollSelectionForm* form, PopupMenuInputProcessor* popupMenuInputProcessor);
+
+void PopupCommandFormInputProcessor_init(PopupCommandFormInputProcessor* this, BasicArrayList* gameKeyEventList, int32_t playerInputId, MyCanvas* gameCanvas, ScrollSelectionForm* form, PopupMenuInputProcessor* popupMenuInputProcessor);
+
+int32_t PopupCommandFormInputProcessor_processInput(PopupCommandFormInputProcessor* this, int32_t key);
+
+void PopupCommandFormInputProcessor_processMotionInput(PopupCommandFormInputProcessor* this, MotionGestureEvent* motionGestureEvent);
+#define PopupCommandFormInputProcessor_new5 PopupCommandFormInputProcessor_new
+#define PopupCommandFormInputProcessor_init5 PopupCommandFormInputProcessor_init
+#ifndef PopupCommandFormInputProcessor_processCommand
+#define PopupCommandFormInputProcessor_processCommand CommandFormInputProcessor_processCommand
+#endif
+#ifndef PopupCommandFormInputProcessor_processInputList
+#define PopupCommandFormInputProcessor_processInputList CommandFormInputProcessor_processInputList
+#endif
+#ifndef PopupCommandFormInputProcessor_processMotionInputs
+#define PopupCommandFormInputProcessor_processMotionInputs CommandFormInputProcessor_processMotionInputs
+#endif
+#ifndef PopupCommandFormInputProcessor_toString
+#define PopupCommandFormInputProcessor_toString CommandFormInputProcessor_toString
+#endif
+#ifndef PopupCommandFormInputProcessor_onMotionGestureEvent
+#define PopupCommandFormInputProcessor_onMotionGestureEvent BasicMenuInputProcessor_onMotionGestureEvent
+#endif
+#ifndef PopupCommandFormInputProcessor_onScrolledMotionGestureEvent
+#define PopupCommandFormInputProcessor_onScrolledMotionGestureEvent BasicMenuInputProcessor_onScrolledMotionGestureEvent
+#endif
+#ifndef PopupCommandFormInputProcessor_setCanvas
+#define PopupCommandFormInputProcessor_setCanvas BasicMenuInputProcessor_setCanvas
+#endif
+#ifndef PopupCommandFormInputProcessor_getCanvas
+#define PopupCommandFormInputProcessor_getCanvas BasicMenuInputProcessor_getCanvas
+#endif
+#ifndef PopupCommandFormInputProcessor_processInputList
+#define PopupCommandFormInputProcessor_processInputList BasicMenuInputProcessor_processInputList
+#endif
+#ifndef PopupCommandFormInputProcessor_onPressGameKeyEvent
+#define PopupCommandFormInputProcessor_onPressGameKeyEvent PlayerGameInput_onPressGameKeyEvent
+#endif
+#ifndef PopupCommandFormInputProcessor_onDownGameKeyEvent
+#define PopupCommandFormInputProcessor_onDownGameKeyEvent PlayerGameInput_onDownGameKeyEvent
+#endif
+#ifndef PopupCommandFormInputProcessor_onDownKeyEvent
+#define PopupCommandFormInputProcessor_onDownKeyEvent PlayerGameInput_onDownKeyEvent
+#endif
+#ifndef PopupCommandFormInputProcessor_onDownKey
+#define PopupCommandFormInputProcessor_onDownKey PlayerGameInput_onDownKey
+#endif
+#ifndef PopupCommandFormInputProcessor_onUpGameKeyEvent
+#define PopupCommandFormInputProcessor_onUpGameKeyEvent PlayerGameInput_onUpGameKeyEvent
+#endif
+#ifndef PopupCommandFormInputProcessor_onUpKeyEvent
+#define PopupCommandFormInputProcessor_onUpKeyEvent PlayerGameInput_onUpKeyEvent
+#endif
+#ifndef PopupCommandFormInputProcessor_onEvent
+#define PopupCommandFormInputProcessor_onEvent PlayerGameInput_onEvent
+#endif
+#ifndef PopupCommandFormInputProcessor_getPlayerInputId
+#define PopupCommandFormInputProcessor_getPlayerInputId PlayerGameInput_getPlayerInputId
+#endif
+#ifndef PopupCommandFormInputProcessor_add
+#define PopupCommandFormInputProcessor_add GameInput_add
+#endif
+#ifndef PopupCommandFormInputProcessor_addForRemoval
+#define PopupCommandFormInputProcessor_addForRemoval GameInput_addForRemoval
+#endif
+#ifndef PopupCommandFormInputProcessor_isForRemoval
+#define PopupCommandFormInputProcessor_isForRemoval GameInput_isForRemoval
+#endif
+#ifndef PopupCommandFormInputProcessor_clear
+#define PopupCommandFormInputProcessor_clear GameInput_clear
+#endif
+#ifndef PopupCommandFormInputProcessor_removeNonAIInputGameKeyEvents
+#define PopupCommandFormInputProcessor_removeNonAIInputGameKeyEvents GameInput_removeNonAIInputGameKeyEvents
+#endif
+#ifndef PopupCommandFormInputProcessor_update
+#define PopupCommandFormInputProcessor_update GameInput_update
+#endif
+#ifndef PopupCommandFormInputProcessor_getRemovalGameKeyEventList
+#define PopupCommandFormInputProcessor_getRemovalGameKeyEventList GameInput_getRemovalGameKeyEventList
+#endif
+#ifndef PopupCommandFormInputProcessor_getGameKeyEventList
+#define PopupCommandFormInputProcessor_getGameKeyEventList GameInput_getGameKeyEventList
+#endif
+// Runs the Java static initialization of the class once. Reads of its static fields call it first.
+void PopupCommandFormInputProcessor_staticInit(void);
+// Registers the class, its superclass, and its methods for the interface calls (java_register_method)
+void PopupCommandFormInputProcessor_register(void);
+
+
+#endif // ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_POPUPCOMMANDFORMINPUTPROCESSOR_H

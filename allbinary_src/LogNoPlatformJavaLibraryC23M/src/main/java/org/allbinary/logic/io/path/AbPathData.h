@@ -52,6 +52,8 @@ const char* AbPathData_getExtension(AbPathData* this, const char* filePath);
 const char* AbPathData_getNameFromPath(AbPathData* this, const char* path);
 
 const char* AbPathData_removeNameFromPath(AbPathData* this, const char* path);
+#define AbPathData_new0 AbPathData_new
+#define AbPathData_init0 AbPathData_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void AbPathData_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

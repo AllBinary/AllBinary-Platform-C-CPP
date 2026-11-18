@@ -1,39 +1,27 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.system.security.licensing
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct LockableFeature LockableFeature;
-struct LockableFeature {
-    const char* name;
-};
+#include "org/allbinary/logic/system/security/licensing/LockableFeature.h"
 
 
-LockableFeature* LockableFeature_new(const char* name);
 
-void LockableFeature_init(LockableFeature* this, const char* name);
-const char* LockableFeature_getName(LockableFeature* this);
+
+
+void LockableFeature_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void LockableFeature_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("LockableFeature", nullptr);
+    java_register_method("LockableFeature", "getName", (void*) LockableFeature_getName);
+}
 
 static void LockableFeature_initFields(LockableFeature* this) {
     
@@ -41,12 +29,13 @@ static void LockableFeature_initFields(LockableFeature* this) {
 
 
 void LockableFeature_init(LockableFeature* this, const char* name) {
+    LockableFeature_register();
     LockableFeature_initFields(this);
         this->name = name;
 }
 
 LockableFeature* LockableFeature_new(const char* name) {
-    LockableFeature* this = calloc(1, sizeof(LockableFeature));
+    LockableFeature* this = java_object_alloc(sizeof(LockableFeature), "LockableFeature");
     LockableFeature_init(this, name);
     return this;
 }

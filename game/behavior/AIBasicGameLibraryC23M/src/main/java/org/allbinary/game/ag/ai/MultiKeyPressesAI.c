@@ -1,28 +1,5 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.ag.ai
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/ag/ai/MultiKeyPressesAI.h"
 #include "org/allbinary/game/input/GameInput.h"
 #include "org/allbinary/layer/AllBinaryLayer.h"
 #include "org/allbinary/layer/AllBinaryLayerManager.h"
@@ -32,22 +9,36 @@
 #include "org/allbinary/util/ABHashtable.h"
 #include "org/allbinary/game/ag/ai/KeyPressesAI.h"
 
-typedef struct MultiKeyPressesAI MultiKeyPressesAI;
-struct MultiKeyPressesAI {
-    KeyPressesAI base;
-    TimeDelayHelper* toggleTimeHelper;
-    GameTickTimeDelayHelper* gameTickTimeDelayHelper;
-};
 
 
-MultiKeyPressesAI* MultiKeyPressesAI_new(ABHashtable* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
 
-void MultiKeyPressesAI_init(MultiKeyPressesAI* this, ABHashtable* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
-void MultiKeyPressesAI_processAI(MultiKeyPressesAI* this, AllBinaryLayerManager* allBinaryLayerManager);
+
 static void MultiKeyPressesAI_update(MultiKeyPressesAI* this);
-void MultiKeyPressesAI_toggle(MultiKeyPressesAI* this);
-void MultiKeyPressesAI_disable(MultiKeyPressesAI* this);
-void MultiKeyPressesAI_enable(MultiKeyPressesAI* this);
+
+
+
+
+void MultiKeyPressesAI_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void MultiKeyPressesAI_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("MultiKeyPressesAI", "KeyPressesAI");
+    java_register_method("MultiKeyPressesAI", "processAI", (void*) MultiKeyPressesAI_processAI);
+    java_register_method("MultiKeyPressesAI", "update", (void*) MultiKeyPressesAI_update);
+    java_register_method("MultiKeyPressesAI", "toggle", (void*) MultiKeyPressesAI_toggle);
+    java_register_method("MultiKeyPressesAI", "disable", (void*) MultiKeyPressesAI_disable);
+    java_register_method("MultiKeyPressesAI", "enable", (void*) MultiKeyPressesAI_enable);
+}
 
 static void MultiKeyPressesAI_initFields(MultiKeyPressesAI* this) {
     this->toggleTimeHelper = TimeDelayHelper_new(600);
@@ -56,13 +47,14 @@ static void MultiKeyPressesAI_initFields(MultiKeyPressesAI* this) {
 
 
 void MultiKeyPressesAI_init(MultiKeyPressesAI* this, ABHashtable* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) {
+    MultiKeyPressesAI_register();
         KeyPressesAI_init(&this->base, hashtable, ownerLayerInterface, gameInput);
         MultiKeyPressesAI_initFields(this);
         MultiKeyPressesAI_update(this);
 }
 
 MultiKeyPressesAI* MultiKeyPressesAI_new(ABHashtable* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) {
-    MultiKeyPressesAI* this = calloc(1, sizeof(MultiKeyPressesAI));
+    MultiKeyPressesAI* this = java_object_alloc(sizeof(MultiKeyPressesAI), "MultiKeyPressesAI");
     MultiKeyPressesAI_init(this, hashtable, ownerLayerInterface, gameInput);
     return this;
 }
@@ -75,21 +67,21 @@ void MultiKeyPressesAI_processAI(MultiKeyPressesAI* this, AllBinaryLayerManager*
 
 // throws Exception
 static void MultiKeyPressesAI_update(MultiKeyPressesAI* this) {
-        GameInput* gameInput = MultiKeyPressesAI_getGameInput(this);
-        int32_t* keys = this->keys;
+        GameInput* gameInput = BasicAI_getGameInput(this);
+        int32_t* keys = this->base.keys;
         int32_t size = java_array_length(keys);
-        if (MultiKeyPressesAI_isOn(this)) {
+        if (KeyPressesAI_isOn(this)) {
             for (int32_t index = 0; index < size; index++) {
-                int32_t key = JAVA_CALL(keys[index], intValue);
+                int32_t key = Integer_intValue(keys[index]);
                 if (key != -1) {
-                    GameInput_add(gameInput, JAVA_CALL(this->gameKeyEventFactory, getInstanceForKey, this, key));
+                    GameInput_add(gameInput, GameKeyEventFactory_getInstanceForKey(this->base.base.gameKeyEventFactory, this, key));
                 }
             }
         } else {
             for (int32_t index = 0; index < size; index++) {
-                int32_t key = JAVA_CALL(keys[index], intValue);
+                int32_t key = Integer_intValue(keys[index]);
                 if (key != -1) {
-                    GameInput_addForRemoval(gameInput, JAVA_CALL(this->gameKeyEventFactory, getInstanceForKey, this, key));
+                    GameInput_addForRemoval(gameInput, GameKeyEventFactory_getInstanceForKey(this->base.base.gameKeyEventFactory, this, key));
                 }
             }
         }

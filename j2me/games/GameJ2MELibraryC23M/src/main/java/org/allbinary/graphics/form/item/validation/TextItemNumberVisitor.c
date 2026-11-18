@@ -1,46 +1,44 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.form.item.validation
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/graphics/form/item/validation/TextItemNumberVisitor.h"
 #include "org/allbinary/game/input/TextNotificationUtil.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/logic/java/bool/BooleanFactory.h"
 #include "org/allbinary/logic/string/StringValidationUtil.h"
-#include "org/allbinary/logic/util/visitor/Visitor.h"
 #include "org/allbinary/string/CommonStrings.h"
+#if __has_include("org/allbinary/logic/java/bool/BooleanFactory.h")
+#include "org/allbinary/logic/java/bool/BooleanFactory.h"
+#endif
+#if __has_include("org/allbinary/game/input/TextNotificationUtil.h")
+#include "org/allbinary/game/input/TextNotificationUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/java/bool/BooleanFactory.h")
+#include "org/allbinary/logic/java/bool/BooleanFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/java/bool/BooleanFactory.h")
+#include "org/allbinary/logic/java/bool/BooleanFactory.h"
+#endif
 
-typedef struct TextItemNumberVisitor TextItemNumberVisitor;
-struct TextItemNumberVisitor {
-    Visitor base;
-    LogUtil* logUtil;
-};
 
 
-TextItemNumberVisitor* TextItemNumberVisitor_new(void);
 
-void TextItemNumberVisitor_init(TextItemNumberVisitor* this);
-Any* TextItemNumberVisitor_visit(TextItemNumberVisitor* this, Any* anyType);
+
+void TextItemNumberVisitor_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void TextItemNumberVisitor_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("TextItemNumberVisitor", "Visitor");
+    java_register_method("TextItemNumberVisitor", "visit", (void*) TextItemNumberVisitor_visit);
+}
 
 static void TextItemNumberVisitor_initFields(TextItemNumberVisitor* this) {
     this->logUtil = LogUtil_getInstance();
@@ -48,23 +46,24 @@ static void TextItemNumberVisitor_initFields(TextItemNumberVisitor* this) {
 
 
 void TextItemNumberVisitor_init(TextItemNumberVisitor* this) {
+    TextItemNumberVisitor_register();
     Visitor_init(&this->base);
     TextItemNumberVisitor_initFields(this);
 }
 
 TextItemNumberVisitor* TextItemNumberVisitor_new(void) {
-    TextItemNumberVisitor* this = calloc(1, sizeof(TextItemNumberVisitor));
+    TextItemNumberVisitor* this = java_object_alloc(sizeof(TextItemNumberVisitor), "TextItemNumberVisitor");
     TextItemNumberVisitor_init(this);
     return this;
 }
 
 
-Any* TextItemNumberVisitor_visit(TextItemNumberVisitor* this, Any* anyType) {
+void* TextItemNumberVisitor_visit(TextItemNumberVisitor* this, void* anyType) {
         const char* value = ((const char*) anyType);
         if (((int32_t) strlen(value)) < 2) {
             StringValidationUtil* stringValidationUtil = StringValidationUtil_getInstance();
             if (StringValidationUtil_isNumber(stringValidationUtil, value)) {
-                return BooleanFactory_getInstance()->TRUE;
+                return JAVA_BOX(BooleanFactory_getInstance()->TRUE);
             } else {
                 JAVA_TRY {
                     TextNotificationUtil_fireError(TextNotificationUtil_getInstance(), "Numbers Only");
@@ -72,10 +71,10 @@ Any* TextItemNumberVisitor_visit(TextItemNumberVisitor* this, Any* anyType) {
                     CommonStrings* commonStrings = CommonStrings_getInstance();
                     LogUtil_put(this->logUtil, commonStrings->EXCEPTION, this, commonStrings->VISIT, e);
                 } JAVA_END_TRY;
-                return BooleanFactory_getInstance()->FALSE;
+                return JAVA_BOX(BooleanFactory_getInstance()->FALSE);
             }
         } else {
-            return BooleanFactory_getInstance()->FALSE;
+            return JAVA_BOX(BooleanFactory_getInstance()->FALSE);
         }
 }
 

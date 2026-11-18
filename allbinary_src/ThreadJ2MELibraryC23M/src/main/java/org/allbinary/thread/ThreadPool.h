@@ -106,6 +106,8 @@ void ThreadPool_startTask(ThreadPool* this, Runnable* task);
 void ThreadPool_completedTask(ThreadPool* this, Runnable* task);
 
 const char* ThreadPool_createName(ThreadPool* this);
+#define ThreadPool_new3 ThreadPool_new
+#define ThreadPool_init3 ThreadPool_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void ThreadPool_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

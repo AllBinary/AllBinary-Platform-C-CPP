@@ -1,0 +1,817 @@
+#ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLGAMECANVAS_H
+#define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLGAMECANVAS_H
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.displayable.canvas
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+typedef struct AllBinaryGameCanvas AllBinaryGameCanvas;
+typedef struct CommandListener CommandListener;
+typedef struct Graphics Graphics;
+typedef struct NullCommandListener NullCommandListener;
+typedef struct BasicBuildGameInitializerFactory BasicBuildGameInitializerFactory;
+typedef struct AllBinaryGameLayerManager AllBinaryGameLayerManager;
+typedef struct NoHighScoresFactory NoHighScoresFactory;
+typedef struct NullUtil NullUtil;
+typedef struct LogUtil LogUtil;
+typedef struct CommonStrings CommonStrings;
+#include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
+
+typedef struct NullGameCanvas NullGameCanvas;
+struct NullGameCanvas {
+    AllBinaryGameCanvas base;
+    bool runningNull;
+};
+
+extern const char* NullGameCanvas_NO_GAME;
+static constexpr int32_t NullGameCanvas_TYPE = 1;
+
+NullGameCanvas* NullGameCanvas_new(AllBinaryGameLayerManager* gameLayerManager);
+
+
+NullGameCanvas* NullGameCanvas_getInstance(void);
+
+NullGameCanvas* NullGameCanvas_createCanvas(AllBinaryGameLayerManager* gameLayerManager);
+
+void NullGameCanvas_init(NullGameCanvas* this, AllBinaryGameLayerManager* gameLayerManager);
+
+bool NullGameCanvas_isGameOver(NullGameCanvas* this);
+
+void NullGameCanvas_setRunning(NullGameCanvas* this, bool running);
+
+bool NullGameCanvas_isRunning(NullGameCanvas* this);
+
+void NullGameCanvas_pause(NullGameCanvas* this);
+
+void NullGameCanvas_unPause(NullGameCanvas* this);
+
+void NullGameCanvas_initCommands(NullGameCanvas* this, CommandListener* cmdListener);
+
+void NullGameCanvas_buildGameInit(NullGameCanvas* this, bool isProgress);
+
+void NullGameCanvas_draw(NullGameCanvas* this, Graphics* graphics);
+
+void NullGameCanvas_run(NullGameCanvas* this);
+
+int32_t NullGameCanvas_getType(NullGameCanvas* this);
+#define NullGameCanvas_new1 NullGameCanvas_new
+#define NullGameCanvas_init1 NullGameCanvas_init
+#ifndef NullGameCanvas_updateMeasurement
+#define NullGameCanvas_updateMeasurement AllBinaryGameCanvas_updateMeasurement
+#endif
+#ifndef NullGameCanvas_getInGameMenuBehavior
+#define NullGameCanvas_getInGameMenuBehavior AllBinaryGameCanvas_getInGameMenuBehavior
+#endif
+#ifndef NullGameCanvas_setCurrentThread
+#define NullGameCanvas_setCurrentThread AllBinaryGameCanvas_setCurrentThread
+#endif
+#ifndef NullGameCanvas_onEvent
+#define NullGameCanvas_onEvent AllBinaryGameCanvas_onEvent
+#endif
+#ifndef NullGameCanvas_onDisplayChangeEvent
+#define NullGameCanvas_onDisplayChangeEvent AllBinaryGameCanvas_onDisplayChangeEvent
+#endif
+#ifndef NullGameCanvas_updateMenuFromEvent
+#define NullGameCanvas_updateMenuFromEvent AllBinaryGameCanvas_updateMenuFromEvent
+#endif
+#ifndef NullGameCanvas_processSleep
+#define NullGameCanvas_processSleep AllBinaryGameCanvas_processSleep
+#endif
+#ifndef NullGameCanvas_initPopupMenu
+#define NullGameCanvas_initPopupMenu AllBinaryGameCanvas_initPopupMenu
+#endif
+#ifndef NullGameCanvas_initMenu
+#define NullGameCanvas_initMenu AllBinaryGameCanvas_initMenu
+#endif
+#ifndef NullGameCanvas_initMenu2
+#define NullGameCanvas_initMenu2 AllBinaryGameCanvas_initMenu2
+#endif
+#ifndef NullGameCanvas_updateMenu
+#define NullGameCanvas_updateMenu AllBinaryGameCanvas_updateMenu
+#endif
+#ifndef NullGameCanvas_updateMenu2
+#define NullGameCanvas_updateMenu2 AllBinaryGameCanvas_updateMenu2
+#endif
+#ifndef NullGameCanvas_isPausable
+#define NullGameCanvas_isPausable AllBinaryGameCanvas_isPausable
+#endif
+#ifndef NullGameCanvas_popupMenu
+#define NullGameCanvas_popupMenu AllBinaryGameCanvas_popupMenu
+#endif
+#ifndef NullGameCanvas_popupMenu2
+#define NullGameCanvas_popupMenu2 AllBinaryGameCanvas_popupMenu2
+#endif
+#ifndef NullGameCanvas_toggleMenu
+#define NullGameCanvas_toggleMenu AllBinaryGameCanvas_toggleMenu
+#endif
+#ifndef NullGameCanvas_closeMenu
+#define NullGameCanvas_closeMenu AllBinaryGameCanvas_closeMenu
+#endif
+#ifndef NullGameCanvas_closeMenu2
+#define NullGameCanvas_closeMenu2 AllBinaryGameCanvas_closeMenu2
+#endif
+#ifndef NullGameCanvas_open
+#define NullGameCanvas_open AllBinaryGameCanvas_open
+#endif
+#ifndef NullGameCanvas_close
+#define NullGameCanvas_close AllBinaryGameCanvas_close
+#endif
+#ifndef NullGameCanvas_processorInit
+#define NullGameCanvas_processorInit AllBinaryGameCanvas_processorInit
+#endif
+#ifndef NullGameCanvas_setProcessGameProcessorInit
+#define NullGameCanvas_setProcessGameProcessorInit AllBinaryGameCanvas_setProcessGameProcessorInit
+#endif
+#ifndef NullGameCanvas_initSpecialPaint
+#define NullGameCanvas_initSpecialPaint AllBinaryGameCanvas_initSpecialPaint
+#endif
+#ifndef NullGameCanvas_notifyIntermission
+#define NullGameCanvas_notifyIntermission AllBinaryGameCanvas_notifyIntermission
+#endif
+#ifndef NullGameCanvas_mediaInit
+#define NullGameCanvas_mediaInit AllBinaryGameCanvas_mediaInit
+#endif
+#ifndef NullGameCanvas_initConfigurable
+#define NullGameCanvas_initConfigurable AllBinaryGameCanvas_initConfigurable
+#endif
+#ifndef NullGameCanvas_initApp
+#define NullGameCanvas_initApp AllBinaryGameCanvas_initApp
+#endif
+#ifndef NullGameCanvas_initTouch
+#define NullGameCanvas_initTouch AllBinaryGameCanvas_initTouch
+#endif
+#ifndef NullGameCanvas_updateCurrentTouchInputFactory
+#define NullGameCanvas_updateCurrentTouchInputFactory AllBinaryGameCanvas_updateCurrentTouchInputFactory
+#endif
+#ifndef NullGameCanvas_updateTouch
+#define NullGameCanvas_updateTouch AllBinaryGameCanvas_updateTouch
+#endif
+#ifndef NullGameCanvas_updateTouch2
+#define NullGameCanvas_updateTouch2 AllBinaryGameCanvas_updateTouch2
+#endif
+#ifndef NullGameCanvas_postInitTouch
+#define NullGameCanvas_postInitTouch AllBinaryGameCanvas_postInitTouch
+#endif
+#ifndef NullGameCanvas_addCommands
+#define NullGameCanvas_addCommands AllBinaryGameCanvas_addCommands
+#endif
+#ifndef NullGameCanvas_itemStateChanged
+#define NullGameCanvas_itemStateChanged AllBinaryGameCanvas_itemStateChanged
+#endif
+#ifndef NullGameCanvas_updateScreenButtonPaintable
+#define NullGameCanvas_updateScreenButtonPaintable AllBinaryGameCanvas_updateScreenButtonPaintable
+#endif
+#ifndef NullGameCanvas_updateScreenButtonPaintable2
+#define NullGameCanvas_updateScreenButtonPaintable2 AllBinaryGameCanvas_updateScreenButtonPaintable2
+#endif
+#ifndef NullGameCanvas_getLayerManager
+#define NullGameCanvas_getLayerManager AllBinaryGameCanvas_getLayerManager
+#endif
+#ifndef NullGameCanvas_setLayerManager
+#define NullGameCanvas_setLayerManager AllBinaryGameCanvas_setLayerManager
+#endif
+#ifndef NullGameCanvas_setGameOver
+#define NullGameCanvas_setGameOver AllBinaryGameCanvas_setGameOver
+#endif
+#ifndef NullGameCanvas_processGameOver
+#define NullGameCanvas_processGameOver AllBinaryGameCanvas_processGameOver
+#endif
+#ifndef NullGameCanvas_isHighScoreSubmitted
+#define NullGameCanvas_isHighScoreSubmitted AllBinaryGameCanvas_isHighScoreSubmitted
+#endif
+#ifndef NullGameCanvas_setHighScoreSubmitted
+#define NullGameCanvas_setHighScoreSubmitted AllBinaryGameCanvas_setHighScoreSubmitted
+#endif
+#ifndef NullGameCanvas_getGameState
+#define NullGameCanvas_getGameState AllBinaryGameCanvas_getGameState
+#endif
+#ifndef NullGameCanvas_setGameState
+#define NullGameCanvas_setGameState AllBinaryGameCanvas_setGameState
+#endif
+#ifndef NullGameCanvas_updateGameState
+#define NullGameCanvas_updateGameState AllBinaryGameCanvas_updateGameState
+#endif
+#ifndef NullGameCanvas_updateGameKeyEventProcessor
+#define NullGameCanvas_updateGameKeyEventProcessor AllBinaryGameCanvas_updateGameKeyEventProcessor
+#endif
+#ifndef NullGameCanvas_removeAllGameKeyInputListenersOnBuild
+#define NullGameCanvas_removeAllGameKeyInputListenersOnBuild AllBinaryGameCanvas_removeAllGameKeyInputListenersOnBuild
+#endif
+#ifndef NullGameCanvas_removeAllGameKeyInputListeners
+#define NullGameCanvas_removeAllGameKeyInputListeners AllBinaryGameCanvas_removeAllGameKeyInputListeners
+#endif
+#ifndef NullGameCanvas_removeAllGameKeyInputListeners2
+#define NullGameCanvas_removeAllGameKeyInputListeners2 AllBinaryGameCanvas_removeAllGameKeyInputListeners2
+#endif
+#ifndef NullGameCanvas_removeKeyInputListener
+#define NullGameCanvas_removeKeyInputListener AllBinaryGameCanvas_removeKeyInputListener
+#endif
+#ifndef NullGameCanvas_updateEndGameProcessor
+#define NullGameCanvas_updateEndGameProcessor AllBinaryGameCanvas_updateEndGameProcessor
+#endif
+#ifndef NullGameCanvas_updateEndGameProcessor2
+#define NullGameCanvas_updateEndGameProcessor2 AllBinaryGameCanvas_updateEndGameProcessor2
+#endif
+#ifndef NullGameCanvas_cleanupGame
+#define NullGameCanvas_cleanupGame AllBinaryGameCanvas_cleanupGame
+#endif
+#ifndef NullGameCanvas_loadResourceLoadingLevel
+#define NullGameCanvas_loadResourceLoadingLevel AllBinaryGameCanvas_loadResourceLoadingLevel
+#endif
+#ifndef NullGameCanvas_loadResources
+#define NullGameCanvas_loadResources AllBinaryGameCanvas_loadResources
+#endif
+#ifndef NullGameCanvas_updateColor
+#define NullGameCanvas_updateColor AllBinaryGameCanvas_updateColor
+#endif
+#ifndef NullGameCanvas_buildGame
+#define NullGameCanvas_buildGame AllBinaryGameCanvas_buildGame
+#endif
+#ifndef NullGameCanvas_buildGame2
+#define NullGameCanvas_buildGame2 AllBinaryGameCanvas_buildGame2
+#endif
+#ifndef NullGameCanvas_addKeyInputListener
+#define NullGameCanvas_addKeyInputListener AllBinaryGameCanvas_addKeyInputListener
+#endif
+#ifndef NullGameCanvas_setGameCanvasStartListener
+#define NullGameCanvas_setGameCanvasStartListener AllBinaryGameCanvas_setGameCanvasStartListener
+#endif
+#ifndef NullGameCanvas_loadState
+#define NullGameCanvas_loadState AllBinaryGameCanvas_loadState
+#endif
+#ifndef NullGameCanvas_getLoadStateHashtable
+#define NullGameCanvas_getLoadStateHashtable AllBinaryGameCanvas_getLoadStateHashtable
+#endif
+#ifndef NullGameCanvas_setLoadStateHashtable
+#define NullGameCanvas_setLoadStateHashtable AllBinaryGameCanvas_setLoadStateHashtable
+#endif
+#ifndef NullGameCanvas_getCurrentStateHashtable
+#define NullGameCanvas_getCurrentStateHashtable AllBinaryGameCanvas_getCurrentStateHashtable
+#endif
+#ifndef NullGameCanvas_paintGameOver
+#define NullGameCanvas_paintGameOver AllBinaryGameCanvas_paintGameOver
+#endif
+#ifndef NullGameCanvas_clear
+#define NullGameCanvas_clear AllBinaryGameCanvas_clear
+#endif
+#ifndef NullGameCanvas_paint
+#define NullGameCanvas_paint AllBinaryGameCanvas_paint
+#endif
+#ifndef NullGameCanvas_paintThreed
+#define NullGameCanvas_paintThreed AllBinaryGameCanvas_paintThreed
+#endif
+#ifndef NullGameCanvas_processEndLevelIntermissionGameState
+#define NullGameCanvas_processEndLevelIntermissionGameState AllBinaryGameCanvas_processEndLevelIntermissionGameState
+#endif
+#ifndef NullGameCanvas_nonBotPaint
+#define NullGameCanvas_nonBotPaint AllBinaryGameCanvas_nonBotPaint
+#endif
+#ifndef NullGameCanvas_paintIntermission
+#define NullGameCanvas_paintIntermission AllBinaryGameCanvas_paintIntermission
+#endif
+#ifndef NullGameCanvas_keyPressed
+#define NullGameCanvas_keyPressed AllBinaryGameCanvas_keyPressed
+#endif
+#ifndef NullGameCanvas_keyReleased
+#define NullGameCanvas_keyReleased AllBinaryGameCanvas_keyReleased
+#endif
+#ifndef NullGameCanvas_keyRepeated
+#define NullGameCanvas_keyRepeated AllBinaryGameCanvas_keyRepeated
+#endif
+#ifndef NullGameCanvas_keyPressedByDevice
+#define NullGameCanvas_keyPressedByDevice AllBinaryGameCanvas_keyPressedByDevice
+#endif
+#ifndef NullGameCanvas_keyRepeatedByDevice
+#define NullGameCanvas_keyRepeatedByDevice AllBinaryGameCanvas_keyRepeatedByDevice
+#endif
+#ifndef NullGameCanvas_keyReleasedByDevice
+#define NullGameCanvas_keyReleasedByDevice AllBinaryGameCanvas_keyReleasedByDevice
+#endif
+#ifndef NullGameCanvas_handleRawKey
+#define NullGameCanvas_handleRawKey AllBinaryGameCanvas_handleRawKey
+#endif
+#ifndef NullGameCanvas_endProgress
+#define NullGameCanvas_endProgress AllBinaryGameCanvas_endProgress
+#endif
+#ifndef NullGameCanvas_processPlayingGame
+#define NullGameCanvas_processPlayingGame AllBinaryGameCanvas_processPlayingGame
+#endif
+#ifndef NullGameCanvas_threadInit
+#define NullGameCanvas_threadInit AllBinaryGameCanvas_threadInit
+#endif
+#ifndef NullGameCanvas_processGame
+#define NullGameCanvas_processGame AllBinaryGameCanvas_processGame
+#endif
+#ifndef NullGameCanvas_notifyDonePainting
+#define NullGameCanvas_notifyDonePainting AllBinaryGameCanvas_notifyDonePainting
+#endif
+#ifndef NullGameCanvas_shouldWait
+#define NullGameCanvas_shouldWait AllBinaryGameCanvas_shouldWait
+#endif
+#ifndef NullGameCanvas_run2
+#define NullGameCanvas_run2 AllBinaryGameCanvas_run2
+#endif
+#ifndef NullGameCanvas_run3
+#define NullGameCanvas_run3 AllBinaryGameCanvas_run3
+#endif
+#ifndef NullGameCanvas_end
+#define NullGameCanvas_end AllBinaryGameCanvas_end
+#endif
+#ifndef NullGameCanvas_endGameThread
+#define NullGameCanvas_endGameThread AllBinaryGameCanvas_endGameThread
+#endif
+#ifndef NullGameCanvas_createHighScore
+#define NullGameCanvas_createHighScore AllBinaryGameCanvas_createHighScore
+#endif
+#ifndef NullGameCanvas_setHighScore
+#define NullGameCanvas_setHighScore AllBinaryGameCanvas_setHighScore
+#endif
+#ifndef NullGameCanvas_setHighScore2
+#define NullGameCanvas_setHighScore2 AllBinaryGameCanvas_setHighScore2
+#endif
+#ifndef NullGameCanvas_getGameStateTimeHelper
+#define NullGameCanvas_getGameStateTimeHelper AllBinaryGameCanvas_getGameStateTimeHelper
+#endif
+#ifndef NullGameCanvas_setInitialized
+#define NullGameCanvas_setInitialized AllBinaryGameCanvas_setInitialized
+#endif
+#ifndef NullGameCanvas_isInitialized
+#define NullGameCanvas_isInitialized AllBinaryGameCanvas_isInitialized
+#endif
+#ifndef NullGameCanvas_getSourceId
+#define NullGameCanvas_getSourceId AllBinaryGameCanvas_getSourceId
+#endif
+#ifndef NullGameCanvas_setProgressPaintable
+#define NullGameCanvas_setProgressPaintable AllBinaryGameCanvas_setProgressPaintable
+#endif
+#ifndef NullGameCanvas_getStartIntermissionInterface
+#define NullGameCanvas_getStartIntermissionInterface AllBinaryGameCanvas_getStartIntermissionInterface
+#endif
+#ifndef NullGameCanvas_getEndLevelIntermissionInterface
+#define NullGameCanvas_getEndLevelIntermissionInterface AllBinaryGameCanvas_getEndLevelIntermissionInterface
+#endif
+#ifndef NullGameCanvas_setTouchPaintableP
+#define NullGameCanvas_setTouchPaintableP AllBinaryGameCanvas_setTouchPaintableP
+#endif
+#ifndef NullGameCanvas_getTouchPaintableP
+#define NullGameCanvas_getTouchPaintableP AllBinaryGameCanvas_getTouchPaintableP
+#endif
+#ifndef NullGameCanvas_setEndGamePaintable
+#define NullGameCanvas_setEndGamePaintable AllBinaryGameCanvas_setEndGamePaintable
+#endif
+#ifndef NullGameCanvas_getEndGamePaintable
+#define NullGameCanvas_getEndGamePaintable AllBinaryGameCanvas_getEndGamePaintable
+#endif
+#ifndef NullGameCanvas_setIntermissionPaintable
+#define NullGameCanvas_setIntermissionPaintable AllBinaryGameCanvas_setIntermissionPaintable
+#endif
+#ifndef NullGameCanvas_getIntermissionPaintable
+#define NullGameCanvas_getIntermissionPaintable AllBinaryGameCanvas_getIntermissionPaintable
+#endif
+#ifndef NullGameCanvas_getEndGameInfoP
+#define NullGameCanvas_getEndGameInfoP AllBinaryGameCanvas_getEndGameInfoP
+#endif
+#ifndef NullGameCanvas_setHighScoresPaintable
+#define NullGameCanvas_setHighScoresPaintable AllBinaryGameCanvas_setHighScoresPaintable
+#endif
+#ifndef NullGameCanvas_getHighScoresPaintable
+#define NullGameCanvas_getHighScoresPaintable AllBinaryGameCanvas_getHighScoresPaintable
+#endif
+#ifndef NullGameCanvas_getRealHighScoresPaintable
+#define NullGameCanvas_getRealHighScoresPaintable AllBinaryGameCanvas_getRealHighScoresPaintable
+#endif
+#ifndef NullGameCanvas_clearPlayerGameInputList
+#define NullGameCanvas_clearPlayerGameInputList AllBinaryGameCanvas_clearPlayerGameInputList
+#endif
+#ifndef NullGameCanvas_addPlayerGameInput
+#define NullGameCanvas_addPlayerGameInput AllBinaryGameCanvas_addPlayerGameInput
+#endif
+#ifndef NullGameCanvas_setMenuInputProcessor
+#define NullGameCanvas_setMenuInputProcessor AllBinaryGameCanvas_setMenuInputProcessor
+#endif
+#ifndef NullGameCanvas_getMenuInputProcessor
+#define NullGameCanvas_getMenuInputProcessor AllBinaryGameCanvas_getMenuInputProcessor
+#endif
+#ifndef NullGameCanvas_getMenuForm
+#define NullGameCanvas_getMenuForm AllBinaryGameCanvas_getMenuForm
+#endif
+#ifndef NullGameCanvas_setMenuForm
+#define NullGameCanvas_setMenuForm AllBinaryGameCanvas_setMenuForm
+#endif
+#ifndef NullGameCanvas_getStartLevel
+#define NullGameCanvas_getStartLevel AllBinaryGameCanvas_getStartLevel
+#endif
+#ifndef NullGameCanvas_setStartLevel
+#define NullGameCanvas_setStartLevel AllBinaryGameCanvas_setStartLevel
+#endif
+#ifndef NullGameCanvas_setTouchButtonsPaintable
+#define NullGameCanvas_setTouchButtonsPaintable AllBinaryGameCanvas_setTouchButtonsPaintable
+#endif
+#ifndef NullGameCanvas_getTouchButtonsPaintable
+#define NullGameCanvas_getTouchButtonsPaintable AllBinaryGameCanvas_getTouchButtonsPaintable
+#endif
+#ifndef NullGameCanvas_setGameInputProcessor
+#define NullGameCanvas_setGameInputProcessor AllBinaryGameCanvas_setGameInputProcessor
+#endif
+#ifndef NullGameCanvas_getGameInputProcessor
+#define NullGameCanvas_getGameInputProcessor AllBinaryGameCanvas_getGameInputProcessor
+#endif
+#ifndef NullGameCanvas_setEndGameProcessor
+#define NullGameCanvas_setEndGameProcessor AllBinaryGameCanvas_setEndGameProcessor
+#endif
+#ifndef NullGameCanvas_getEndGameProcessor
+#define NullGameCanvas_getEndGameProcessor AllBinaryGameCanvas_getEndGameProcessor
+#endif
+#ifndef NullGameCanvas_setEndGameStatePaintable
+#define NullGameCanvas_setEndGameStatePaintable AllBinaryGameCanvas_setEndGameStatePaintable
+#endif
+#ifndef NullGameCanvas_getEndGameStatePaintable
+#define NullGameCanvas_getEndGameStatePaintable AllBinaryGameCanvas_getEndGameStatePaintable
+#endif
+#ifndef NullGameCanvas_setNonBotPaintableP
+#define NullGameCanvas_setNonBotPaintableP AllBinaryGameCanvas_setNonBotPaintableP
+#endif
+#ifndef NullGameCanvas_getNonBotPaintableP
+#define NullGameCanvas_getNonBotPaintableP AllBinaryGameCanvas_getNonBotPaintableP
+#endif
+#ifndef NullGameCanvas_setStartIntermissionPaintable
+#define NullGameCanvas_setStartIntermissionPaintable AllBinaryGameCanvas_setStartIntermissionPaintable
+#endif
+#ifndef NullGameCanvas_getStartIntermissionPaintable
+#define NullGameCanvas_getStartIntermissionPaintable AllBinaryGameCanvas_getStartIntermissionPaintable
+#endif
+#ifndef NullGameCanvas_setMainStateProcessor
+#define NullGameCanvas_setMainStateProcessor AllBinaryGameCanvas_setMainStateProcessor
+#endif
+#ifndef NullGameCanvas_getMainStateProcessor
+#define NullGameCanvas_getMainStateProcessor AllBinaryGameCanvas_getMainStateProcessor
+#endif
+#ifndef NullGameCanvas_setProcessGameProcessor
+#define NullGameCanvas_setProcessGameProcessor AllBinaryGameCanvas_setProcessGameProcessor
+#endif
+#ifndef NullGameCanvas_getProcessGameProcessor
+#define NullGameCanvas_getProcessGameProcessor AllBinaryGameCanvas_getProcessGameProcessor
+#endif
+#ifndef NullGameCanvas_setOpenMenuPaintable
+#define NullGameCanvas_setOpenMenuPaintable AllBinaryGameCanvas_setOpenMenuPaintable
+#endif
+#ifndef NullGameCanvas_getOpenMenuPaintable
+#define NullGameCanvas_getOpenMenuPaintable AllBinaryGameCanvas_getOpenMenuPaintable
+#endif
+#ifndef NullGameCanvas_setPopupMenuInputProcessor
+#define NullGameCanvas_setPopupMenuInputProcessor AllBinaryGameCanvas_setPopupMenuInputProcessor
+#endif
+#ifndef NullGameCanvas_getPopupMenuInputProcessor
+#define NullGameCanvas_getPopupMenuInputProcessor AllBinaryGameCanvas_getPopupMenuInputProcessor
+#endif
+#ifndef NullGameCanvas_getSensorGameUpdateProcessor
+#define NullGameCanvas_getSensorGameUpdateProcessor AllBinaryGameCanvas_getSensorGameUpdateProcessor
+#endif
+#ifndef NullGameCanvas_getRawGameInputProcessor
+#define NullGameCanvas_getRawGameInputProcessor AllBinaryGameCanvas_getRawGameInputProcessor
+#endif
+#ifndef NullGameCanvas_getRawInputProcessor
+#define NullGameCanvas_getRawInputProcessor AllBinaryGameCanvas_getRawInputProcessor
+#endif
+#ifndef NullGameCanvas_setInputProcessor
+#define NullGameCanvas_setInputProcessor AllBinaryGameCanvas_setInputProcessor
+#endif
+#ifndef NullGameCanvas_getInputProcessor
+#define NullGameCanvas_getInputProcessor AllBinaryGameCanvas_getInputProcessor
+#endif
+#ifndef NullGameCanvas_setMenuPaintable
+#define NullGameCanvas_setMenuPaintable AllBinaryGameCanvas_setMenuPaintable
+#endif
+#ifndef NullGameCanvas_getMenuPaintable
+#define NullGameCanvas_getMenuPaintable AllBinaryGameCanvas_getMenuPaintable
+#endif
+#ifndef NullGameCanvas_setFormPaintable
+#define NullGameCanvas_setFormPaintable AllBinaryGameCanvas_setFormPaintable
+#endif
+#ifndef NullGameCanvas_getFormPaintable
+#define NullGameCanvas_getFormPaintable AllBinaryGameCanvas_getFormPaintable
+#endif
+#ifndef NullGameCanvas_setGameSpecificPaintableP
+#define NullGameCanvas_setGameSpecificPaintableP AllBinaryGameCanvas_setGameSpecificPaintableP
+#endif
+#ifndef NullGameCanvas_getGameSpecificPaintableP
+#define NullGameCanvas_getGameSpecificPaintableP AllBinaryGameCanvas_getGameSpecificPaintableP
+#endif
+#ifndef NullGameCanvas_isSingleThread
+#define NullGameCanvas_isSingleThread AllBinaryGameCanvas_isSingleThread
+#endif
+#ifndef NullGameCanvas_isRunningInAnotherThread
+#define NullGameCanvas_isRunningInAnotherThread AllBinaryGameCanvas_isRunningInAnotherThread
+#endif
+#ifndef NullGameCanvas_getTitle
+#define NullGameCanvas_getTitle AllBinaryGameCanvas_getTitle
+#endif
+#ifndef NullGameCanvas_isPaused
+#define NullGameCanvas_isPaused AllBinaryGameCanvas_isPaused
+#endif
+#ifndef NullGameCanvas_isMainCanvas
+#define NullGameCanvas_isMainCanvas RunnableCanvas_isMainCanvas
+#endif
+#ifndef NullGameCanvas_setThread
+#define NullGameCanvas_setThread RunnableCanvas_setThread
+#endif
+#ifndef NullGameCanvas_getLoopTimeHelperP
+#define NullGameCanvas_getLoopTimeHelperP RunnableCanvas_getLoopTimeHelperP
+#endif
+#ifndef NullGameCanvas_setWait
+#define NullGameCanvas_setWait RunnableCanvas_setWait
+#endif
+#ifndef NullGameCanvas_getWait
+#define NullGameCanvas_getWait RunnableCanvas_getWait
+#endif
+#ifndef NullGameCanvas_setCurrentThread
+#define NullGameCanvas_setCurrentThread RunnableCanvas_setCurrentThread
+#endif
+#ifndef NullGameCanvas_setCurrentThreadFake
+#define NullGameCanvas_setCurrentThreadFake RunnableCanvas_setCurrentThreadFake
+#endif
+#ifndef NullGameCanvas_showNotify
+#define NullGameCanvas_showNotify RunnableCanvas_showNotify
+#endif
+#ifndef NullGameCanvas_stopWaiting
+#define NullGameCanvas_stopWaiting RunnableCanvas_stopWaiting
+#endif
+#ifndef NullGameCanvas_waitOnNotify
+#define NullGameCanvas_waitOnNotify RunnableCanvas_waitOnNotify
+#endif
+#ifndef NullGameCanvas_processSleep
+#define NullGameCanvas_processSleep RunnableCanvas_processSleep
+#endif
+#ifndef NullGameCanvas_isPausable
+#define NullGameCanvas_isPausable RunnableCanvas_isPausable
+#endif
+#ifndef NullGameCanvas_processGameSleep
+#define NullGameCanvas_processGameSleep RunnableCanvas_processGameSleep
+#endif
+#ifndef NullGameCanvas_processLoopSleep
+#define NullGameCanvas_processLoopSleep RunnableCanvas_processLoopSleep
+#endif
+#ifndef NullGameCanvas_isSingleThread
+#define NullGameCanvas_isSingleThread RunnableCanvas_isSingleThread
+#endif
+#ifndef NullGameCanvas_end2
+#define NullGameCanvas_end2 RunnableCanvas_end2
+#endif
+#ifndef NullGameCanvas_getWidth
+#define NullGameCanvas_getWidth MyCanvas_getWidth
+#endif
+#ifndef NullGameCanvas_getHeight
+#define NullGameCanvas_getHeight MyCanvas_getHeight
+#endif
+#ifndef NullGameCanvas_setFullScreenMode
+#define NullGameCanvas_setFullScreenMode MyCanvas_setFullScreenMode
+#endif
+#ifndef NullGameCanvas_sizeChanged
+#define NullGameCanvas_sizeChanged MyCanvas_sizeChanged
+#endif
+#ifndef NullGameCanvas_getCommandStack
+#define NullGameCanvas_getCommandStack MyCanvas_getCommandStack
+#endif
+#ifndef NullGameCanvas_isCommand
+#define NullGameCanvas_isCommand MyCanvas_isCommand
+#endif
+#ifndef NullGameCanvas_addCommand
+#define NullGameCanvas_addCommand MyCanvas_addCommand
+#endif
+#ifndef NullGameCanvas_removeCommand
+#define NullGameCanvas_removeCommand MyCanvas_removeCommand
+#endif
+#ifndef NullGameCanvas_removeAllCommands
+#define NullGameCanvas_removeAllCommands MyCanvas_removeAllCommands
+#endif
+#ifndef NullGameCanvas_setCommandListener
+#define NullGameCanvas_setCommandListener MyCanvas_setCommandListener
+#endif
+#ifndef NullGameCanvas_getCustomCommandListener
+#define NullGameCanvas_getCustomCommandListener MyCanvas_getCustomCommandListener
+#endif
+#ifndef NullGameCanvas_isPaused
+#define NullGameCanvas_isPaused MyCanvas_isPaused
+#endif
+#ifndef NullGameCanvas_removePauseCommand
+#define NullGameCanvas_removePauseCommand MyCanvas_removePauseCommand
+#endif
+#ifndef NullGameCanvas_process
+#define NullGameCanvas_process MyCanvas_process
+#endif
+#ifndef NullGameCanvas_paint
+#define NullGameCanvas_paint MyCanvas_paint
+#endif
+#ifndef NullGameCanvas_hasChild
+#define NullGameCanvas_hasChild MyCanvas_hasChild
+#endif
+#ifndef NullGameCanvas_destroy
+#define NullGameCanvas_destroy MyCanvas_destroy
+#endif
+#ifndef NullGameCanvas_setPaused
+#define NullGameCanvas_setPaused MyCanvas_setPaused
+#endif
+#ifndef NullGameCanvas_keyPressedByDevice
+#define NullGameCanvas_keyPressedByDevice MyCanvas_keyPressedByDevice
+#endif
+#ifndef NullGameCanvas_keyRepeatedByDevice
+#define NullGameCanvas_keyRepeatedByDevice MyCanvas_keyRepeatedByDevice
+#endif
+#ifndef NullGameCanvas_keyReleasedByDevice
+#define NullGameCanvas_keyReleasedByDevice MyCanvas_keyReleasedByDevice
+#endif
+#ifndef NullGameCanvas_pointerDragged
+#define NullGameCanvas_pointerDragged MyCanvas_pointerDragged
+#endif
+#ifndef NullGameCanvas_pointerPressed
+#define NullGameCanvas_pointerPressed MyCanvas_pointerPressed
+#endif
+#ifndef NullGameCanvas_pointerReleased
+#define NullGameCanvas_pointerReleased MyCanvas_pointerReleased
+#endif
+#ifndef NullGameCanvas_nextSong
+#define NullGameCanvas_nextSong MyCanvas_nextSong
+#endif
+#ifndef NullGameCanvas_getGameAction
+#define NullGameCanvas_getGameAction Canvas_getGameAction
+#endif
+#ifndef NullGameCanvas_getKeyCode
+#define NullGameCanvas_getKeyCode Canvas_getKeyCode
+#endif
+#ifndef NullGameCanvas_getKeyName
+#define NullGameCanvas_getKeyName Canvas_getKeyName
+#endif
+#ifndef NullGameCanvas_hasPointerEvents
+#define NullGameCanvas_hasPointerEvents Canvas_hasPointerEvents
+#endif
+#ifndef NullGameCanvas_hasPointerMotionEvents
+#define NullGameCanvas_hasPointerMotionEvents Canvas_hasPointerMotionEvents
+#endif
+#ifndef NullGameCanvas_hasRepeatEvents
+#define NullGameCanvas_hasRepeatEvents Canvas_hasRepeatEvents
+#endif
+#ifndef NullGameCanvas_hideNotify
+#define NullGameCanvas_hideNotify Canvas_hideNotify
+#endif
+#ifndef NullGameCanvas_isDoubleBuffered
+#define NullGameCanvas_isDoubleBuffered Canvas_isDoubleBuffered
+#endif
+#ifndef NullGameCanvas_keyPressed
+#define NullGameCanvas_keyPressed Canvas_keyPressed
+#endif
+#ifndef NullGameCanvas_keyRepeated
+#define NullGameCanvas_keyRepeated Canvas_keyRepeated
+#endif
+#ifndef NullGameCanvas_keyReleased
+#define NullGameCanvas_keyReleased Canvas_keyReleased
+#endif
+#ifndef NullGameCanvas_paint
+#define NullGameCanvas_paint Canvas_paint
+#endif
+#ifndef NullGameCanvas_pointerPressed
+#define NullGameCanvas_pointerPressed Canvas_pointerPressed
+#endif
+#ifndef NullGameCanvas_pointerReleased
+#define NullGameCanvas_pointerReleased Canvas_pointerReleased
+#endif
+#ifndef NullGameCanvas_pointerDragged
+#define NullGameCanvas_pointerDragged Canvas_pointerDragged
+#endif
+#ifndef NullGameCanvas_repaint
+#define NullGameCanvas_repaint Canvas_repaint
+#endif
+#ifndef NullGameCanvas_repaintXYWH
+#define NullGameCanvas_repaintXYWH Canvas_repaintXYWH
+#endif
+#ifndef NullGameCanvas_serviceRepaints
+#define NullGameCanvas_serviceRepaints Canvas_serviceRepaints
+#endif
+#ifndef NullGameCanvas_setFullScreenMode
+#define NullGameCanvas_setFullScreenMode Canvas_setFullScreenMode
+#endif
+#ifndef NullGameCanvas_sizeChanged
+#define NullGameCanvas_sizeChanged Canvas_sizeChanged
+#endif
+#ifndef NullGameCanvas_showNotify
+#define NullGameCanvas_showNotify Canvas_showNotify
+#endif
+#ifndef NullGameCanvas_setUI
+#define NullGameCanvas_setUI Displayable_setUI
+#endif
+#ifndef NullGameCanvas_getUI
+#define NullGameCanvas_getUI Displayable_getUI
+#endif
+#ifndef NullGameCanvas_addCommand
+#define NullGameCanvas_addCommand Displayable_addCommand
+#endif
+#ifndef NullGameCanvas_removeCommand
+#define NullGameCanvas_removeCommand Displayable_removeCommand
+#endif
+#ifndef NullGameCanvas_getWidth
+#define NullGameCanvas_getWidth Displayable_getWidth
+#endif
+#ifndef NullGameCanvas_getHeight
+#define NullGameCanvas_getHeight Displayable_getHeight
+#endif
+#ifndef NullGameCanvas_isShown
+#define NullGameCanvas_isShown Displayable_isShown
+#endif
+#ifndef NullGameCanvas_getTicker
+#define NullGameCanvas_getTicker Displayable_getTicker
+#endif
+#ifndef NullGameCanvas_setTicker
+#define NullGameCanvas_setTicker Displayable_setTicker
+#endif
+#ifndef NullGameCanvas_getTitle
+#define NullGameCanvas_getTitle Displayable_getTitle
+#endif
+#ifndef NullGameCanvas_setTitle
+#define NullGameCanvas_setTitle Displayable_setTitle
+#endif
+#ifndef NullGameCanvas_setCommandListener
+#define NullGameCanvas_setCommandListener Displayable_setCommandListener
+#endif
+#ifndef NullGameCanvas_getCommandListener
+#define NullGameCanvas_getCommandListener Displayable_getCommandListener
+#endif
+#ifndef NullGameCanvas_getCommands
+#define NullGameCanvas_getCommands Displayable_getCommands
+#endif
+#ifndef NullGameCanvas_setFullScreenMode
+#define NullGameCanvas_setFullScreenMode Displayable_setFullScreenMode
+#endif
+#ifndef NullGameCanvas_isFullScreenMode
+#define NullGameCanvas_isFullScreenMode Displayable_isFullScreenMode
+#endif
+#ifndef NullGameCanvas_hideNotify
+#define NullGameCanvas_hideNotify Displayable_hideNotify
+#endif
+#ifndef NullGameCanvas_hideNotifyForDisplay
+#define NullGameCanvas_hideNotifyForDisplay Displayable_hideNotifyForDisplay
+#endif
+#ifndef NullGameCanvas_keyPressed
+#define NullGameCanvas_keyPressed Displayable_keyPressed
+#endif
+#ifndef NullGameCanvas_keyRepeated
+#define NullGameCanvas_keyRepeated Displayable_keyRepeated
+#endif
+#ifndef NullGameCanvas_keyReleased
+#define NullGameCanvas_keyReleased Displayable_keyReleased
+#endif
+#ifndef NullGameCanvas_pointerPressed
+#define NullGameCanvas_pointerPressed Displayable_pointerPressed
+#endif
+#ifndef NullGameCanvas_pointerReleased
+#define NullGameCanvas_pointerReleased Displayable_pointerReleased
+#endif
+#ifndef NullGameCanvas_pointerDragged
+#define NullGameCanvas_pointerDragged Displayable_pointerDragged
+#endif
+#ifndef NullGameCanvas_paint
+#define NullGameCanvas_paint Displayable_paint
+#endif
+#ifndef NullGameCanvas_repaint
+#define NullGameCanvas_repaint Displayable_repaint
+#endif
+#ifndef NullGameCanvas_repaintXYWH
+#define NullGameCanvas_repaintXYWH Displayable_repaintXYWH
+#endif
+#ifndef NullGameCanvas_sizeChanged
+#define NullGameCanvas_sizeChanged Displayable_sizeChanged
+#endif
+#ifndef NullGameCanvas_sizeChangedForDisplay
+#define NullGameCanvas_sizeChangedForDisplay Displayable_sizeChangedForDisplay
+#endif
+#ifndef NullGameCanvas_showNotify
+#define NullGameCanvas_showNotify Displayable_showNotify
+#endif
+#ifndef NullGameCanvas_showNotifyForDisplay
+#define NullGameCanvas_showNotifyForDisplay Displayable_showNotifyForDisplay
+#endif
+// Runs the Java static initialization of the class once. Reads of its static fields call it first.
+void NullGameCanvas_staticInit(void);
+// Registers the class, its superclass, and its methods for the interface calls (java_register_method)
+void NullGameCanvas_register(void);
+
+
+#endif // ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLGAMECANVAS_H

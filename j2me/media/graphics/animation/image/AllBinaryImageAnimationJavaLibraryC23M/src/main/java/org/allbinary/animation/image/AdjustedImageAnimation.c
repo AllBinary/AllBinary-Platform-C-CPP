@@ -1,50 +1,41 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2022 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation.image
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
-// #include "javax/microedition/lcdui/Image.h"
+#include "org/allbinary/animation/image/AdjustedImageAnimation.h"
+#include "javax/microedition/lcdui/Graphics.h"
+#include "javax/microedition/lcdui/Image.h"
 #include "org/allbinary/animation/AnimationBehavior.h"
 #include "org/allbinary/animation/image/ImageAnimation.h"
 
-typedef struct AdjustedImageAnimation AdjustedImageAnimation;
-struct AdjustedImageAnimation {
-    ImageAnimation base;
-    int32_t dx;
-    int32_t dy;
-};
 
 
-AdjustedImageAnimation* AdjustedImageAnimation_new(Image* image, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior);
 
-void AdjustedImageAnimation_init(AdjustedImageAnimation* this, Image* image, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior);
-void AdjustedImageAnimation_init(AdjustedImageAnimation* this, int32_t dx, int32_t dy);
-void AdjustedImageAnimation_paintXY(AdjustedImageAnimation* this, Graphics* graphics, int32_t x, int32_t y);
-void AdjustedImageAnimation_setDx(AdjustedImageAnimation* this, int32_t dx);
-int32_t AdjustedImageAnimation_getDx(AdjustedImageAnimation* this);
-void AdjustedImageAnimation_setDy(AdjustedImageAnimation* this, int32_t dy);
-int32_t AdjustedImageAnimation_getDy(AdjustedImageAnimation* this);
+
+
+
+
+
+
+void AdjustedImageAnimation_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void AdjustedImageAnimation_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("AdjustedImageAnimation", "ImageAnimation");
+    java_register_method("AdjustedImageAnimation", "init", (void*) AdjustedImageAnimation_initMethod);
+    java_register_method("AdjustedImageAnimation", "paintXY", (void*) AdjustedImageAnimation_paintXY);
+    java_register_method("AdjustedImageAnimation", "setDx", (void*) AdjustedImageAnimation_setDx);
+    java_register_method("AdjustedImageAnimation", "getDx", (void*) AdjustedImageAnimation_getDx);
+    java_register_method("AdjustedImageAnimation", "setDy", (void*) AdjustedImageAnimation_setDy);
+    java_register_method("AdjustedImageAnimation", "getDy", (void*) AdjustedImageAnimation_getDy);
+}
 
 static void AdjustedImageAnimation_initFields(AdjustedImageAnimation* this) {
     this->dx = 0;
@@ -53,20 +44,21 @@ static void AdjustedImageAnimation_initFields(AdjustedImageAnimation* this) {
 
 
 void AdjustedImageAnimation_init(AdjustedImageAnimation* this, Image* image, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior) {
+    AdjustedImageAnimation_register();
         ImageAnimation_init(&this->base, image, animationBehavior);
         AdjustedImageAnimation_initFields(this);
-        AdjustedImageAnimation_init(this, dx, dy);
+        AdjustedImageAnimation_initMethod(this, dx, dy);
 }
 
 AdjustedImageAnimation* AdjustedImageAnimation_new(Image* image, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior) {
-    AdjustedImageAnimation* this = calloc(1, sizeof(AdjustedImageAnimation));
+    AdjustedImageAnimation* this = java_object_alloc(sizeof(AdjustedImageAnimation), "AdjustedImageAnimation");
     AdjustedImageAnimation_init(this, image, dx, dy, animationBehavior);
     return this;
 }
 
 
 // throws Exception
-void AdjustedImageAnimation_init(AdjustedImageAnimation* this, int32_t dx, int32_t dy) {
+void AdjustedImageAnimation_initMethod(AdjustedImageAnimation* this, int32_t dx, int32_t dy) {
         AdjustedImageAnimation_setDx(this, dx);
         AdjustedImageAnimation_setDy(this, dy);
 }

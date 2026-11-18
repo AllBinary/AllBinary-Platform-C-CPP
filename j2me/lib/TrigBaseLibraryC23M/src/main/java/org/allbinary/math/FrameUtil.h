@@ -47,6 +47,8 @@ int32_t FrameUtil_getFrameForAngle(FrameUtil* this, int16_t angle, int32_t angle
 int32_t FrameUtil_getFrameAngle(FrameUtil* this, int32_t frame, int32_t angleIncrement);
 
 int32_t FrameUtil_adjustAngleToFrameAngle(FrameUtil* this, int32_t currentAngle);
+#define FrameUtil_new0 FrameUtil_new
+#define FrameUtil_init0 FrameUtil_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void FrameUtil_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

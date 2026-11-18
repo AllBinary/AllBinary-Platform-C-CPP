@@ -51,6 +51,8 @@ void PointFactory_init(PointFactory* this);
 GPoint* PointFactory_createXY(PointFactory* this, int32_t x, int32_t y);
 
 GPoint* PointFactory_createXYZ(PointFactory* this, int32_t x, int32_t y, int32_t z);
+#define PointFactory_new0 PointFactory_new
+#define PointFactory_init0 PointFactory_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void PointFactory_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

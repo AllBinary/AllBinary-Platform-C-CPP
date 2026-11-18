@@ -42,6 +42,8 @@ CharacterSetData* CharacterSetData_new(void);
 CharacterSetData* CharacterSetData_getInstance(void);
 
 void CharacterSetData_init(CharacterSetData* this);
+#define CharacterSetData_new0 CharacterSetData_new
+#define CharacterSetData_init0 CharacterSetData_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void CharacterSetData_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

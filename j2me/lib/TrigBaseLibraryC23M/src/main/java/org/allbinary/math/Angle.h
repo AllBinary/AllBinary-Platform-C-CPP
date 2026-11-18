@@ -40,6 +40,8 @@ Angle* Angle_new(int16_t angle);
 void Angle_init(Angle* this, int16_t angle);
 
 int16_t Angle_getValue(Angle* this);
+#define Angle_new1 Angle_new
+#define Angle_init1 Angle_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void Angle_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

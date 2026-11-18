@@ -1,41 +1,14 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.layer.special
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/game/layer/special/CollidableDestroyableDamageableLayer.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/game/collision/CollidableNeverCollideBehaviorFactory.h"
-#include "org/allbinary/game/combat/damage/DamageableInterface.h"
-#include "org/allbinary/game/combat/destroy/DestroyableInterface.h"
 #include "org/allbinary/game/combat/destroy/event/DestroyedEvent.h"
 #include "org/allbinary/game/identification/BasicGroupFactory.h"
 #include "org/allbinary/game/identification/Group.h"
 #include "org/allbinary/game/input/event/GameKeyEvent.h"
 #include "org/allbinary/game/layer/AllBinaryGameLayerManager.h"
-#include "org/allbinary/game/layer/CollidableCompositeLayer.h"
 #include "org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactoryInterface.h"
 #include "org/allbinary/game/layer/pickup/PickupBehavior.h"
-#include "org/allbinary/game/layer/pickup/PickupCompositeInterface.h"
 #include "org/allbinary/game/part/PartInterface.h"
 #include "org/allbinary/game/part/PartInterfaceUtil.h"
 #include "org/allbinary/graphics/Rectangle.h"
@@ -48,81 +21,126 @@
 #include "org/allbinary/string/CommonSeps.h"
 #include "org/allbinary/view/ViewPositionBase.h"
 #include "org/allbinary/game/layer/special/SpecialGameInputInterface.h"
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/game/identification/BasicGroupFactory.h")
+#include "org/allbinary/game/identification/BasicGroupFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/game/identification/Group.h")
+#include "org/allbinary/game/identification/Group.h"
+#endif
 
-typedef struct CollidableDestroyableDamageableLayer CollidableDestroyableDamageableLayer;
-struct CollidableDestroyableDamageableLayer {
-    CollidableCompositeLayer base;
-    DestroyableInterface DestroyableInterface_interface;
-    DamageableInterface DamageableInterface_interface;
-    PickupCompositeInterface PickupCompositeInterface_interface;
-    SpecialGameInputInterface SpecialGameInputInterface_interface;
-    Group** groupInterface;
-    bool readyForExplosion;
-    int32_t initWidth;
-    int32_t initHeight;
-    int32_t initX;
-    int32_t initY;
-    int32_t initZ;
-    PartInterface** partInterfaceArrayP;
-    PickupBehavior* pickupBehavior;
-    AllBinaryGameLayerManager* allBinaryGameLayerManagerP;
-    bool isDraggable;
-    bool isDragged;
-    bool isDropped;
-};
 
-static Any* CollidableDestroyableDamageableLayer_NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER;
+static void* CollidableDestroyableDamageableLayer_NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER;
 static const char* CollidableDestroyableDamageableLayer_READYFOREXPLOSION = "ReadyForExplosion: ";
 
-CollidableDestroyableDamageableLayer* CollidableDestroyableDamageableLayer_new(Group** groupInterface, const char* name, Rectangle* layerInfo, ViewPositionBase* viewPosition);
-CollidableDestroyableDamageableLayer* CollidableDestroyableDamageableLayer_getNullInstance(void);
 
-void CollidableDestroyableDamageableLayer_init(CollidableDestroyableDamageableLayer* this, Group** groupInterface, const char* name, Rectangle* layerInfo, ViewPositionBase* viewPosition);
-void CollidableDestroyableDamageableLayer_initPosition(CollidableDestroyableDamageableLayer* this);
-void CollidableDestroyableDamageableLayer_initPositionXYZ(CollidableDestroyableDamageableLayer* this, int32_t x, int32_t y, int32_t z);
-void CollidableDestroyableDamageableLayer_paint(CollidableDestroyableDamageableLayer* this, Graphics* graphics);
-void CollidableDestroyableDamageableLayer_damage(CollidableDestroyableDamageableLayer* this, int32_t damage, int32_t damageType);
-int32_t CollidableDestroyableDamageableLayer_getDamage(CollidableDestroyableDamageableLayer* this, int32_t damageType);
-bool CollidableDestroyableDamageableLayer_isDestroyed(CollidableDestroyableDamageableLayer* this);
-Group** CollidableDestroyableDamageableLayer_getGroupInterface(CollidableDestroyableDamageableLayer* this);
-void CollidableDestroyableDamageableLayer_setGroupInterface(CollidableDestroyableDamageableLayer* this, Group** teamInterface);
-void CollidableDestroyableDamageableLayer_setAllBinaryGameLayerManager(CollidableDestroyableDamageableLayer* this, AllBinaryGameLayerManager* allBinaryGameLayerManager);
-bool CollidableDestroyableDamageableLayer_isReadyForExplosion(CollidableDestroyableDamageableLayer* this);
-void CollidableDestroyableDamageableLayer_setReadyForExplosion(CollidableDestroyableDamageableLayer* this, bool isReadyForExplosion);
-int32_t CollidableDestroyableDamageableLayer_getInitWidth(CollidableDestroyableDamageableLayer* this);
-int32_t CollidableDestroyableDamageableLayer_getInitHeight(CollidableDestroyableDamageableLayer* this);
-int32_t CollidableDestroyableDamageableLayer_getInitX(CollidableDestroyableDamageableLayer* this);
-int32_t CollidableDestroyableDamageableLayer_getInitY(CollidableDestroyableDamageableLayer* this);
-void CollidableDestroyableDamageableLayer_up(CollidableDestroyableDamageableLayer* this);
-void CollidableDestroyableDamageableLayer_down(CollidableDestroyableDamageableLayer* this);
-void CollidableDestroyableDamageableLayer_right(CollidableDestroyableDamageableLayer* this);
-void CollidableDestroyableDamageableLayer_left(CollidableDestroyableDamageableLayer* this);
-void CollidableDestroyableDamageableLayer_strafeLeft(CollidableDestroyableDamageableLayer* this);
-void CollidableDestroyableDamageableLayer_strafeRight(CollidableDestroyableDamageableLayer* this);
-void CollidableDestroyableDamageableLayer_fire(CollidableDestroyableDamageableLayer* this, AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent);
-void CollidableDestroyableDamageableLayer_special1(CollidableDestroyableDamageableLayer* this, AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent);
-void CollidableDestroyableDamageableLayer_special2(CollidableDestroyableDamageableLayer* this, AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent);
-void CollidableDestroyableDamageableLayer_special3(CollidableDestroyableDamageableLayer* this, AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent);
-void CollidableDestroyableDamageableLayer_special4(CollidableDestroyableDamageableLayer* this, AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent);
-void CollidableDestroyableDamageableLayer_special5(CollidableDestroyableDamageableLayer* this, AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent);
-void CollidableDestroyableDamageableLayer_upAnalog(CollidableDestroyableDamageableLayer* this, int32_t yAnalogValue);
-void CollidableDestroyableDamageableLayer_downAnalog(CollidableDestroyableDamageableLayer* this, int32_t yAnalogValue);
-void CollidableDestroyableDamageableLayer_rightAnalog(CollidableDestroyableDamageableLayer* this, int32_t xAnalogValue);
-void CollidableDestroyableDamageableLayer_leftAnalog(CollidableDestroyableDamageableLayer* this, int32_t xAnalogValue);
-void CollidableDestroyableDamageableLayer_rightTrigger(CollidableDestroyableDamageableLayer* this, AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent, int32_t xAnalogValue);
-void CollidableDestroyableDamageableLayer_leftTrigger(CollidableDestroyableDamageableLayer* this, AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent, int32_t xAnalogValue);
-void CollidableDestroyableDamageableLayer_onDestroyed(CollidableDestroyableDamageableLayer* this, DestroyedEvent* destroyedEvent);
-PickupBehavior* CollidableDestroyableDamageableLayer_getPickupBehavior(CollidableDestroyableDamageableLayer* this);
-void CollidableDestroyableDamageableLayer_setPickupBehavior(CollidableDestroyableDamageableLayer* this, PickupBehavior* pickupBehavior);
-void CollidableDestroyableDamageableLayer_addPart(CollidableDestroyableDamageableLayer* this, PickedUpLayerInterfaceFactoryInterface* pickedUpLayerInterfaceFactoryInterface);
-void CollidableDestroyableDamageableLayer_setPartInterfaceArray(CollidableDestroyableDamageableLayer* this, PartInterface** partInterfaceArray);
-PartInterface** CollidableDestroyableDamageableLayer_getPartInterfaceArray(CollidableDestroyableDamageableLayer* this);
-void CollidableDestroyableDamageableLayer_toStringAppend(CollidableDestroyableDamageableLayer* this, StringMaker* stringBuffer);
-const char* CollidableDestroyableDamageableLayer_toString(CollidableDestroyableDamageableLayer* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 void CollidableDestroyableDamageableLayer_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     CollidableDestroyableDamageableLayer_NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER = NullUtil_getInstance()->NULL_OBJECT;
+}
+
+void CollidableDestroyableDamageableLayer_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("CollidableDestroyableDamageableLayer", "CollidableCompositeLayer");
+    java_register_method("CollidableDestroyableDamageableLayer", "initPosition", (void*) CollidableDestroyableDamageableLayer_initPosition);
+    java_register_method("CollidableDestroyableDamageableLayer", "initPositionXYZ", (void*) CollidableDestroyableDamageableLayer_initPositionXYZ);
+    java_register_method("CollidableDestroyableDamageableLayer", "paint", (void*) CollidableDestroyableDamageableLayer_paint);
+    java_register_method("CollidableDestroyableDamageableLayer", "damage", (void*) CollidableDestroyableDamageableLayer_damage);
+    java_register_method("CollidableDestroyableDamageableLayer", "getDamage", (void*) CollidableDestroyableDamageableLayer_getDamage);
+    java_register_method("CollidableDestroyableDamageableLayer", "isDestroyed", (void*) CollidableDestroyableDamageableLayer_isDestroyed);
+    java_register_method("CollidableDestroyableDamageableLayer", "getGroupInterface", (void*) CollidableDestroyableDamageableLayer_getGroupInterface);
+    java_register_method("CollidableDestroyableDamageableLayer", "setGroupInterface", (void*) CollidableDestroyableDamageableLayer_setGroupInterface);
+    java_register_method("CollidableDestroyableDamageableLayer", "setAllBinaryGameLayerManager", (void*) CollidableDestroyableDamageableLayer_setAllBinaryGameLayerManager);
+    java_register_method("CollidableDestroyableDamageableLayer", "isReadyForExplosion", (void*) CollidableDestroyableDamageableLayer_isReadyForExplosion);
+    java_register_method("CollidableDestroyableDamageableLayer", "setReadyForExplosion", (void*) CollidableDestroyableDamageableLayer_setReadyForExplosion);
+    java_register_method("CollidableDestroyableDamageableLayer", "getInitWidth", (void*) CollidableDestroyableDamageableLayer_getInitWidth);
+    java_register_method("CollidableDestroyableDamageableLayer", "getInitHeight", (void*) CollidableDestroyableDamageableLayer_getInitHeight);
+    java_register_method("CollidableDestroyableDamageableLayer", "getInitX", (void*) CollidableDestroyableDamageableLayer_getInitX);
+    java_register_method("CollidableDestroyableDamageableLayer", "getInitY", (void*) CollidableDestroyableDamageableLayer_getInitY);
+    java_register_method("CollidableDestroyableDamageableLayer", "up", (void*) CollidableDestroyableDamageableLayer_up);
+    java_register_method("CollidableDestroyableDamageableLayer", "down", (void*) CollidableDestroyableDamageableLayer_down);
+    java_register_method("CollidableDestroyableDamageableLayer", "right", (void*) CollidableDestroyableDamageableLayer_right);
+    java_register_method("CollidableDestroyableDamageableLayer", "left", (void*) CollidableDestroyableDamageableLayer_left);
+    java_register_method("CollidableDestroyableDamageableLayer", "strafeLeft", (void*) CollidableDestroyableDamageableLayer_strafeLeft);
+    java_register_method("CollidableDestroyableDamageableLayer", "strafeRight", (void*) CollidableDestroyableDamageableLayer_strafeRight);
+    java_register_method("CollidableDestroyableDamageableLayer", "fire", (void*) CollidableDestroyableDamageableLayer_fire);
+    java_register_method("CollidableDestroyableDamageableLayer", "special1", (void*) CollidableDestroyableDamageableLayer_special1);
+    java_register_method("CollidableDestroyableDamageableLayer", "special2", (void*) CollidableDestroyableDamageableLayer_special2);
+    java_register_method("CollidableDestroyableDamageableLayer", "special3", (void*) CollidableDestroyableDamageableLayer_special3);
+    java_register_method("CollidableDestroyableDamageableLayer", "special4", (void*) CollidableDestroyableDamageableLayer_special4);
+    java_register_method("CollidableDestroyableDamageableLayer", "special5", (void*) CollidableDestroyableDamageableLayer_special5);
+    java_register_method("CollidableDestroyableDamageableLayer", "upAnalog", (void*) CollidableDestroyableDamageableLayer_upAnalog);
+    java_register_method("CollidableDestroyableDamageableLayer", "downAnalog", (void*) CollidableDestroyableDamageableLayer_downAnalog);
+    java_register_method("CollidableDestroyableDamageableLayer", "rightAnalog", (void*) CollidableDestroyableDamageableLayer_rightAnalog);
+    java_register_method("CollidableDestroyableDamageableLayer", "leftAnalog", (void*) CollidableDestroyableDamageableLayer_leftAnalog);
+    java_register_method("CollidableDestroyableDamageableLayer", "rightTrigger", (void*) CollidableDestroyableDamageableLayer_rightTrigger);
+    java_register_method("CollidableDestroyableDamageableLayer", "leftTrigger", (void*) CollidableDestroyableDamageableLayer_leftTrigger);
+    java_register_method("CollidableDestroyableDamageableLayer", "onDestroyed", (void*) CollidableDestroyableDamageableLayer_onDestroyed);
+    java_register_method("CollidableDestroyableDamageableLayer", "getPickupBehavior", (void*) CollidableDestroyableDamageableLayer_getPickupBehavior);
+    java_register_method("CollidableDestroyableDamageableLayer", "setPickupBehavior", (void*) CollidableDestroyableDamageableLayer_setPickupBehavior);
+    java_register_method("CollidableDestroyableDamageableLayer", "addPart", (void*) CollidableDestroyableDamageableLayer_addPart);
+    java_register_method("CollidableDestroyableDamageableLayer", "setPartInterfaceArray", (void*) CollidableDestroyableDamageableLayer_setPartInterfaceArray);
+    java_register_method("CollidableDestroyableDamageableLayer", "getPartInterfaceArray", (void*) CollidableDestroyableDamageableLayer_getPartInterfaceArray);
+    java_register_method("CollidableDestroyableDamageableLayer", "toStringAppend", (void*) CollidableDestroyableDamageableLayer_toStringAppend);
+    java_register_method("CollidableDestroyableDamageableLayer", "toString", (void*) CollidableDestroyableDamageableLayer_toString);
 }
 
 static void CollidableDestroyableDamageableLayer_initFields(CollidableDestroyableDamageableLayer* this) {
@@ -143,14 +161,15 @@ static void CollidableDestroyableDamageableLayer_initFields(CollidableDestroyabl
 
 
 CollidableDestroyableDamageableLayer* CollidableDestroyableDamageableLayer_getNullInstance(void) {
-        if (CollidableDestroyableDamageableLayer_NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER == NullUtil_getInstance()->NULL_OBJECT) {
-            CollidableDestroyableDamageableLayer_NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER = CollidableDestroyableDamageableLayer_new(BasicGroupFactory_getInstance()->NONE_ARRAY, StringUtil_getInstance()->EMPTY_STRING, RectangleFactory_SINGLETON, ViewPositionBase_NULL_VIEW_POSITION);
+        if ((CollidableDestroyableDamageableLayer_staticInit(), CollidableDestroyableDamageableLayer_NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER) == NullUtil_getInstance()->NULL_OBJECT) {
+            CollidableDestroyableDamageableLayer_NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER = CollidableDestroyableDamageableLayer_new(BasicGroupFactory_getInstance()->NONE_ARRAY, StringUtil_getInstance()->EMPTY_STRING, (RectangleFactory_staticInit(), RectangleFactory_SINGLETON), (ViewPositionBase_staticInit(), ViewPositionBase_NULL_VIEW_POSITION));
         }
-        return ((CollidableDestroyableDamageableLayer*) CollidableDestroyableDamageableLayer_NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER);
+        return ((CollidableDestroyableDamageableLayer*) (CollidableDestroyableDamageableLayer_staticInit(), CollidableDestroyableDamageableLayer_NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER));
 }
 
 
 void CollidableDestroyableDamageableLayer_init(CollidableDestroyableDamageableLayer* this, Group** groupInterface, const char* name, Rectangle* layerInfo, ViewPositionBase* viewPosition) {
+    CollidableDestroyableDamageableLayer_register();
         CollidableCompositeLayer_init(&this->base, name, layerInfo, viewPosition, CollidableNeverCollideBehaviorFactory_getInstance());
         CollidableDestroyableDamageableLayer_initFields(this);
         this->initWidth = Rectangle_getWidth(layerInfo);
@@ -160,7 +179,7 @@ void CollidableDestroyableDamageableLayer_init(CollidableDestroyableDamageableLa
 }
 
 CollidableDestroyableDamageableLayer* CollidableDestroyableDamageableLayer_new(Group** groupInterface, const char* name, Rectangle* layerInfo, ViewPositionBase* viewPosition) {
-    CollidableDestroyableDamageableLayer* this = calloc(1, sizeof(CollidableDestroyableDamageableLayer));
+    CollidableDestroyableDamageableLayer* this = java_object_alloc(sizeof(CollidableDestroyableDamageableLayer), "CollidableDestroyableDamageableLayer");
     CollidableDestroyableDamageableLayer_init(this, groupInterface, name, layerInfo, viewPosition);
     return this;
 }
@@ -168,7 +187,7 @@ CollidableDestroyableDamageableLayer* CollidableDestroyableDamageableLayer_new(G
 
 // throws Exception
 void CollidableDestroyableDamageableLayer_initPosition(CollidableDestroyableDamageableLayer* this) {
-        CollidableDestroyableDamageableLayer_setPosition(this, this->initX, this->initY, this->initZ);
+        AllBinaryLayer_setPosition(this, this->initX, this->initY, this->initZ);
 }
 
 
@@ -181,25 +200,25 @@ void CollidableDestroyableDamageableLayer_initPositionXYZ(CollidableDestroyableD
 
 
 void CollidableDestroyableDamageableLayer_paint(CollidableDestroyableDamageableLayer* this, Graphics* graphics) {
-        CollidableCompositeLayer_paint((&this->base), graphics);
+        AllBinaryLayer_paint((&this->base), graphics);
 }
 
 
 // throws Exception
 void CollidableDestroyableDamageableLayer_damage(CollidableDestroyableDamageableLayer* this, int32_t damage, int32_t damageType) {
-        java_throw(java_exception_new("Exception", this->commonStrings->NOT_IMPLEMENTED));
+        java_throw(java_exception_new("Exception", this->base.base.commonStrings->NOT_IMPLEMENTED));
 }
 
 
 // throws Exception
 int32_t CollidableDestroyableDamageableLayer_getDamage(CollidableDestroyableDamageableLayer* this, int32_t damageType) {
-        java_throw(java_exception_new("Exception", this->commonStrings->NOT_IMPLEMENTED));
+        java_throw(java_exception_new("Exception", this->base.base.commonStrings->NOT_IMPLEMENTED));
 }
 
 
 // throws Exception
 bool CollidableDestroyableDamageableLayer_isDestroyed(CollidableDestroyableDamageableLayer* this) {
-        java_throw(java_exception_new("Exception", this->commonStrings->NOT_IMPLEMENTED));
+        java_throw(java_exception_new("Exception", this->base.base.commonStrings->NOT_IMPLEMENTED));
 }
 
 
@@ -379,19 +398,19 @@ void CollidableDestroyableDamageableLayer_toStringAppend(CollidableDestroyableDa
         Group** groupInterfaceArray = CollidableDestroyableDamageableLayer_getGroupInterface(this);
         int32_t size = java_array_length(groupInterfaceArray);
         for (int32_t index = 0; index < size; index++) {
-            StringMaker_append(stringBuffer, JAVA_CALL(groupInterfaceArray[index], toString));
+            StringMaker_append(stringBuffer, java_string_of(groupInterfaceArray[index]));
             StringMaker_append(stringBuffer, commonSeps->COMMA);
         }
         PickupBehavior* pickupBehavior = CollidableDestroyableDamageableLayer_getPickupBehavior(this);
         if (pickupBehavior != nullptr) {
             StringMaker_append(stringBuffer, commonSeps->NEW_LINE);
-            StringMaker_append(stringBuffer, PickupBehavior_toString(pickupBehavior));
+            StringMaker_append(stringBuffer, java_string_of(pickupBehavior));
         }
         StringMaker_append(stringBuffer, commonSeps->NEW_LINE);
         StringMaker_append(stringBuffer, CollidableDestroyableDamageableLayer_READYFOREXPLOSION);
         StringMaker_appendboolean(stringBuffer, this->readyForExplosion);
         StringMaker_append(stringBuffer, commonSeps->NEW_LINE);
-        StringMaker_append(stringBuffer, this->commonStrings->INIT);
+        StringMaker_append(stringBuffer, this->base.base.commonStrings->INIT);
         StringMaker_append(stringBuffer, commonSeps->SPACE);
         StringMaker_append(stringBuffer, positionStrings->X_LABEL);
         StringMaker_appendint(stringBuffer, this->initX);
@@ -405,6 +424,6 @@ void CollidableDestroyableDamageableLayer_toStringAppend(CollidableDestroyableDa
 const char* CollidableDestroyableDamageableLayer_toString(CollidableDestroyableDamageableLayer* this) {
         StringMaker* stringBuffer = StringMaker_new();
         CollidableDestroyableDamageableLayer_toStringAppend(this, stringBuffer);
-        return StringMaker_toString(stringBuffer);
+        return java_string_of(stringBuffer);
 }
 

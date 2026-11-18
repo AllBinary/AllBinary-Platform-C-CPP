@@ -1,28 +1,5 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input.motion.gesture.observer
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/input/motion/gesture/observer/ResolveCompleteMotionGestureListener.h"
 #include "org/allbinary/game/input/CompleteMotionGestureInputEventHandler.h"
 #include "org/allbinary/game/input/motion/action/GameKeyCompleteMotionGestureInputEvent.h"
 #include "org/allbinary/game/input/motion/action/GameKeyFromMotionGestureEventListener.h"
@@ -33,18 +10,34 @@
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/input/motion/gesture/observer/CompleteMotionGestureListenerInterface.h"
+#if __has_include("org/allbinary/game/input/CompleteMotionGestureInputEventHandler.h")
+#include "org/allbinary/game/input/CompleteMotionGestureInputEventHandler.h"
+#endif
+#if __has_include("org/allbinary/game/input/CompleteMotionGestureInputEventHandler.h")
+#include "org/allbinary/game/input/CompleteMotionGestureInputEventHandler.h"
+#endif
 
-typedef struct ResolveCompleteMotionGestureListener ResolveCompleteMotionGestureListener;
-struct ResolveCompleteMotionGestureListener {
-    CompleteMotionGestureListenerInterface CompleteMotionGestureListenerInterface_interface;
-    LogUtil* logUtil;
-};
 
 
-ResolveCompleteMotionGestureListener* ResolveCompleteMotionGestureListener_new(void);
 
-void ResolveCompleteMotionGestureListener_init(ResolveCompleteMotionGestureListener* this);
-void ResolveCompleteMotionGestureListener_onMotionGestureCompleted(ResolveCompleteMotionGestureListener* this, BasicArrayList* list);
+
+void ResolveCompleteMotionGestureListener_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void ResolveCompleteMotionGestureListener_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ResolveCompleteMotionGestureListener", nullptr);
+    java_register_method("ResolveCompleteMotionGestureListener", "onMotionGestureCompleted", (void*) ResolveCompleteMotionGestureListener_onMotionGestureCompleted);
+}
 
 static void ResolveCompleteMotionGestureListener_initFields(ResolveCompleteMotionGestureListener* this) {
     this->logUtil = LogUtil_getInstance();
@@ -52,6 +45,7 @@ static void ResolveCompleteMotionGestureListener_initFields(ResolveCompleteMotio
 
 
 void ResolveCompleteMotionGestureListener_init(ResolveCompleteMotionGestureListener* this) {
+    ResolveCompleteMotionGestureListener_register();
     ResolveCompleteMotionGestureListener_initFields(this);
         CommonStrings* commonStrings = CommonStrings_getInstance();
         LogUtil_putF(this->logUtil, "MotionGesture to CompleteMotionGesture Reciever", this, commonStrings->CONSTRUCTOR);
@@ -59,7 +53,7 @@ void ResolveCompleteMotionGestureListener_init(ResolveCompleteMotionGestureListe
 }
 
 ResolveCompleteMotionGestureListener* ResolveCompleteMotionGestureListener_new(void) {
-    ResolveCompleteMotionGestureListener* this = calloc(1, sizeof(ResolveCompleteMotionGestureListener));
+    ResolveCompleteMotionGestureListener* this = java_object_alloc(sizeof(ResolveCompleteMotionGestureListener), "ResolveCompleteMotionGestureListener");
     ResolveCompleteMotionGestureListener_init(this);
     return this;
 }

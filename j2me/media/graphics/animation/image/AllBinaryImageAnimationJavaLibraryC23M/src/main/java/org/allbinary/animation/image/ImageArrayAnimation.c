@@ -1,79 +1,74 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation.image
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
-// #include "javax/microedition/lcdui/Image.h"
-// #include "javax/microedition/lcdui/NullImage.h"
+#include "org/allbinary/animation/image/ImageArrayAnimation.h"
+#include "javax/microedition/lcdui/Graphics.h"
+#include "javax/microedition/lcdui/Image.h"
+#include "javax/microedition/lcdui/NullImage.h"
 #include "org/allbinary/animation/AnimationBehavior.h"
-#include "org/allbinary/animation/IndexedAnimation.h"
 #include "org/allbinary/graphics/Anchor.h"
 #include "org/allbinary/logic/math/PrimitiveIntUtil.h"
 #include "org/allbinary/util/CircularIndexUtil.h"
 
-typedef struct ImageArrayAnimation ImageArrayAnimation;
-struct ImageArrayAnimation {
-    IndexedAnimation base;
-    Image** imageArray;
-    int32_t totalFrames;
-    CircularIndexUtil* circularIndexUtil;
-    int32_t anchor;
-};
 
 
-ImageArrayAnimation* ImageArrayAnimation_new(Image** imageArray, AnimationBehavior* animationBehavior);
 
-void ImageArrayAnimation_init(ImageArrayAnimation* this, Image** imageArray, AnimationBehavior* animationBehavior);
-int32_t ImageArrayAnimation_getAnimationSize(ImageArrayAnimation* this);
-void ImageArrayAnimation_nextFrame(ImageArrayAnimation* this);
-void ImageArrayAnimation_previousFrame(ImageArrayAnimation* this);
-void ImageArrayAnimation_setFrame(ImageArrayAnimation* this, int32_t index);
-int32_t ImageArrayAnimation_getFrame(ImageArrayAnimation* this);
-int32_t ImageArrayAnimation_getSize(ImageArrayAnimation* this);
-void ImageArrayAnimation_setSequence(ImageArrayAnimation* this, int32_t* sequence);
-int32_t* ImageArrayAnimation_getSequence(ImageArrayAnimation* this);
-Image* ImageArrayAnimation_getImage(ImageArrayAnimation* this, int32_t index);
-Image** ImageArrayAnimation_getImageArray(ImageArrayAnimation* this);
-void ImageArrayAnimation_setImageArray(ImageArrayAnimation* this, Image** imageArray);
-void ImageArrayAnimation_paintXY(ImageArrayAnimation* this, Graphics* graphics, int32_t x, int32_t y);
+
+
+
+
+
+
+
+
+
+
+
+
+void ImageArrayAnimation_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void ImageArrayAnimation_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ImageArrayAnimation", "IndexedAnimation");
+    java_register_method("ImageArrayAnimation", "getAnimationSize", (void*) ImageArrayAnimation_getAnimationSize);
+    java_register_method("ImageArrayAnimation", "nextFrame", (void*) ImageArrayAnimation_nextFrame);
+    java_register_method("ImageArrayAnimation", "previousFrame", (void*) ImageArrayAnimation_previousFrame);
+    java_register_method("ImageArrayAnimation", "setFrame", (void*) ImageArrayAnimation_setFrame);
+    java_register_method("ImageArrayAnimation", "getFrame", (void*) ImageArrayAnimation_getFrame);
+    java_register_method("ImageArrayAnimation", "getSize", (void*) ImageArrayAnimation_getSize);
+    java_register_method("ImageArrayAnimation", "setSequence", (void*) ImageArrayAnimation_setSequence);
+    java_register_method("ImageArrayAnimation", "getSequence", (void*) ImageArrayAnimation_getSequence);
+    java_register_method("ImageArrayAnimation", "getImage", (void*) ImageArrayAnimation_getImage);
+    java_register_method("ImageArrayAnimation", "getImageArray", (void*) ImageArrayAnimation_getImageArray);
+    java_register_method("ImageArrayAnimation", "setImageArray", (void*) ImageArrayAnimation_setImageArray);
+    java_register_method("ImageArrayAnimation", "paintXY", (void*) ImageArrayAnimation_paintXY);
+}
 
 static void ImageArrayAnimation_initFields(ImageArrayAnimation* this) {
-    this->imageArray = NullImage_NULL_IMAGE_ARRAY;
+    this->imageArray = (NullImage_staticInit(), NullImage_NULL_IMAGE_ARRAY);
     this->totalFrames = 0;
-    this->circularIndexUtil = CircularIndexUtil_NULL_CIRCULAR_INDEX_UTIL;
-    this->anchor = Anchor_TOP_LEFT;
+    this->circularIndexUtil = (CircularIndexUtil_staticInit(), CircularIndexUtil_NULL_CIRCULAR_INDEX_UTIL);
+    this->anchor = (Anchor_staticInit(), Anchor_TOP_LEFT);
 }
 
 
 void ImageArrayAnimation_init(ImageArrayAnimation* this, Image** imageArray, AnimationBehavior* animationBehavior) {
+    ImageArrayAnimation_register();
         IndexedAnimation_init(&this->base, animationBehavior);
         ImageArrayAnimation_initFields(this);
         ImageArrayAnimation_setImageArray(this, imageArray);
 }
 
 ImageArrayAnimation* ImageArrayAnimation_new(Image** imageArray, AnimationBehavior* animationBehavior) {
-    ImageArrayAnimation* this = calloc(1, sizeof(ImageArrayAnimation));
+    ImageArrayAnimation* this = java_object_alloc(sizeof(ImageArrayAnimation), "ImageArrayAnimation");
     ImageArrayAnimation_init(this, imageArray, animationBehavior);
     return this;
 }

@@ -62,6 +62,8 @@ bool StringValidationUtil_isValidNotRequired(StringValidationUtil* this, const c
 bool StringValidationUtil_isValidNotRequiredNumber(StringValidationUtil* this, const char* value, int32_t min, int32_t max);
 
 bool StringValidationUtil_isEmpty(StringValidationUtil* this, const char* string);
+#define StringValidationUtil_new0 StringValidationUtil_new
+#define StringValidationUtil_init0 StringValidationUtil_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void StringValidationUtil_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

@@ -1,18 +1,13 @@
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.form.item
+#include "org/allbinary/graphics/form/item/ABCustomItemCommandListener.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
 
-typedef struct ABCustomItemCommandListener ABCustomItemCommandListener;
-struct ABCustomItemCommandListener {
-    char unused;
-};
 
+void ABCustomItemCommandListener_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
 

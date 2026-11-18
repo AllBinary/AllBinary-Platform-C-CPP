@@ -1,28 +1,5 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.ag.layer.hud.basic.notification
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/ag/layer/hud/basic/notification/GameNotification.h"
 #include "org/allbinary/game/layer/hud/event/GameNotificationEvent.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
 #include "org/allbinary/graphics/color/BasicColorFactory.h"
@@ -31,24 +8,44 @@
 #include "org/allbinary/logic/string/StringUtil.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/graphics/color/BasicColorFactory.h")
+#include "org/allbinary/graphics/color/BasicColorFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/java/bool/BooleanFactory.h")
+#include "org/allbinary/logic/java/bool/BooleanFactory.h"
+#endif
 
-typedef struct GameNotification GameNotification;
-struct GameNotification {
-    BasicArrayList* stringList;
-    BasicArrayList* timeList;
-    BasicArrayList* colorList;
-};
 
 GameNotificationEvent* GameNotification_NULL_GAME_NOTIFICATION_EVENT;
 
-GameNotification* GameNotification_new(void);
-void GameNotification_add(GameNotification* this, const char* string, int32_t seconds, BasicColor* basicColor);
-void GameNotification_clear(GameNotification* this);
-int32_t GameNotification_getSize(GameNotification* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
 void GameNotification_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     GameNotification_NULL_GAME_NOTIFICATION_EVENT = GameNotificationEvent_new(NullUtil_getInstance()->NULL_OBJECT, StringUtil_getInstance()->EMPTY_STRING, 0, BasicColorFactory_getInstance()->RED, BooleanFactory_getInstance()->FALSE);
+}
+
+void GameNotification_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GameNotification", nullptr);
+    java_register_method("GameNotification", "add", (void*) GameNotification_add);
+    java_register_method("GameNotification", "clear", (void*) GameNotification_clear);
+    java_register_method("GameNotification", "getSize", (void*) GameNotification_getSize);
 }
 
 static void GameNotification_initFields(GameNotification* this) {
@@ -58,11 +55,12 @@ static void GameNotification_initFields(GameNotification* this) {
 }
 
 void GameNotification_init(GameNotification* this) {
+    GameNotification_register();
     GameNotification_initFields(this);
 }
 
 GameNotification* GameNotification_new(void) {
-    GameNotification* this = calloc(1, sizeof(GameNotification));
+    GameNotification* this = java_object_alloc(sizeof(GameNotification), "GameNotification");
     GameNotification_init(this);
     return this;
 }
@@ -71,7 +69,7 @@ GameNotification* GameNotification_new(void) {
 void GameNotification_add(GameNotification* this, const char* string, int32_t seconds, BasicColor* basicColor) {
         if (!BasicArrayList_contains(this->stringList, string)) {
             BasicArrayList_add(this->stringList, string);
-            BasicArrayList_add(this->timeList, seconds);
+            BasicArrayList_add(this->timeList, JAVA_BOX(seconds));
             BasicArrayList_add(this->colorList, basicColor);
         }
 }

@@ -4,6 +4,9 @@
 #include "org/allbinary/logic/communication/log/LogFormatUtil.h"
 #include "org/allbinary/logic/communication/log/LogFactory.h"
 #include "org/allbinary/logic/communication/log/Log.h"
+#if __has_include("org/allbinary/string/CommonStrings.h")
+#include "org/allbinary/string/CommonStrings.h"
+#endif
 
 
 static LogUtil* LogUtil_instance;

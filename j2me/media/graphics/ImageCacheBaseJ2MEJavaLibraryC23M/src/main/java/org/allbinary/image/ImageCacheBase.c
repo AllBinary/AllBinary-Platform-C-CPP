@@ -1,31 +1,7 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.image
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "java/io/InputStream.h"
-// #include "javax/microedition/lcdui/Image.h"
-// #include "javax/microedition/lcdui/NullImage.h"
+#include "org/allbinary/image/ImageCacheBase.h"
+#include "javax/microedition/lcdui/Image.h"
+#include "javax/microedition/lcdui/NullImage.h"
 #include "org/allbinary/logic/StdUtil.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/logic/string/StringMaker.h"
@@ -34,37 +10,81 @@
 #include "org/allbinary/util/ABHashtable.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
+#include "org/allbinary/image/ImageFactory.h"
+#if __has_include("org/allbinary/logic/StdUtil.h")
+#include "org/allbinary/logic/StdUtil.h"
+#endif
+#if __has_include("org/allbinary/util/BasicArrayList.h")
+#include "org/allbinary/util/BasicArrayList.h"
+#endif
+#if __has_include("org/allbinary/util/BasicArrayList.h")
+#include "org/allbinary/util/BasicArrayList.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/util/BasicArrayList.h")
+#include "org/allbinary/util/BasicArrayList.h"
+#endif
+#if __has_include("org/allbinary/util/BasicArrayList.h")
+#include "org/allbinary/util/BasicArrayList.h"
+#endif
+#if __has_include("org/allbinary/util/BasicArrayList.h")
+#include "org/allbinary/util/BasicArrayList.h"
+#endif
+#if __has_include("org/allbinary/string/CommonSeps.h")
+#include "org/allbinary/string/CommonSeps.h"
+#endif
+#if __has_include("org/allbinary/string/CommonLabels.h")
+#include "org/allbinary/string/CommonLabels.h"
+#endif
 
-typedef struct ImageCacheBase ImageCacheBase;
-struct ImageCacheBase {
-    LogUtil* logUtil;
-    ImageFactory* imageFactory;
-    ABHashtable* hashtable;
-    int32_t SIZE;
-    int32_t* widths;
-    int32_t* heights;
-    BasicArrayList** listOfList;
-    BasicArrayList** availableListOfList;
-    int32_t volume;
-    int32_t nextIndex;
-};
 
 
-ImageCacheBase* ImageCacheBase_new(void);
 
-void ImageCacheBase_init(ImageCacheBase* this);
-Image* ImageCacheBase_getImage(ImageCacheBase* this, Any* resourceId);
-void ImageCacheBase_releaseAll(ImageCacheBase* this);
-int32_t ImageCacheBase_getIndexWH(ImageCacheBase* this, int32_t width, int32_t height);
-Image* ImageCacheBase_getFromAvailable(ImageCacheBase* this, int32_t foundIndex, int32_t width, int32_t height);
-Image* ImageCacheBase_get(ImageCacheBase* this, const char* caller, int32_t width, int32_t height);
-Image* ImageCacheBase_getWithKey(ImageCacheBase* this, Any* key);
-Image* ImageCacheBase_createImage(ImageCacheBase* this, const char* caller, int32_t width, int32_t height);
-Image* ImageCacheBase_createImageFromInputStream(ImageCacheBase* this, Any* key, InputStream* inputStream);
-const char* ImageCacheBase_toString(ImageCacheBase* this);
-ABHashtable* ImageCacheBase_getHashtableP(ImageCacheBase* this);
-void ImageCacheBase_init(ImageCacheBase* this, Image* image);
-void ImageCacheBase_initProgress(ImageCacheBase* this);
+
+
+
+
+
+
+
+
+
+
+
+
+void ImageCacheBase_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void ImageCacheBase_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ImageCacheBase", nullptr);
+    java_register_method("ImageCacheBase", "getImage", (void*) ImageCacheBase_getImage);
+    java_register_method("ImageCacheBase", "releaseAll", (void*) ImageCacheBase_releaseAll);
+    java_register_method("ImageCacheBase", "getIndexWH", (void*) ImageCacheBase_getIndexWH);
+    java_register_method("ImageCacheBase", "getFromAvailable", (void*) ImageCacheBase_getFromAvailable);
+    java_register_method("ImageCacheBase", "get", (void*) ImageCacheBase_get);
+    java_register_method("ImageCacheBase", "getWithKey", (void*) ImageCacheBase_getWithKey);
+    java_register_method("ImageCacheBase", "createImage", (void*) ImageCacheBase_createImage);
+    java_register_method("ImageCacheBase", "createImageFromInputStream", (void*) ImageCacheBase_createImageFromInputStream);
+    java_register_method("ImageCacheBase", "toString", (void*) ImageCacheBase_toString);
+    java_register_method("ImageCacheBase", "getHashtableP", (void*) ImageCacheBase_getHashtableP);
+    java_register_method("ImageCacheBase", "init", (void*) ImageCacheBase_initMethod);
+    java_register_method("ImageCacheBase", "initProgress", (void*) ImageCacheBase_initProgress);
+}
 
 static void ImageCacheBase_initFields(ImageCacheBase* this) {
     this->logUtil = LogUtil_getInstance();
@@ -81,6 +101,7 @@ static void ImageCacheBase_initFields(ImageCacheBase* this) {
 
 
 void ImageCacheBase_init(ImageCacheBase* this) {
+    ImageCacheBase_register();
     ImageCacheBase_initFields(this);
         for (int32_t index = java_array_length(this->listOfList) - 1; index >= 0; index--) {
             this->listOfList[index] = BasicArrayListD_new();
@@ -91,16 +112,16 @@ void ImageCacheBase_init(ImageCacheBase* this) {
 }
 
 ImageCacheBase* ImageCacheBase_new(void) {
-    ImageCacheBase* this = calloc(1, sizeof(ImageCacheBase));
+    ImageCacheBase* this = java_object_alloc(sizeof(ImageCacheBase), "ImageCacheBase");
     ImageCacheBase_init(this);
     return this;
 }
 
 
-Image* ImageCacheBase_getImage(ImageCacheBase* this, Any* resourceId) {
-        Any* imageCanBeNull = ABHashtable_get(this->hashtable, resourceId);
+Image* ImageCacheBase_getImage(ImageCacheBase* this, void* resourceId) {
+        void* imageCanBeNull = Hashtable_get(this->hashtable, resourceId);
         if (imageCanBeNull == nullptr) {
-            return NullImage_NULL_IMAGE;
+            return (NullImage_staticInit(), NullImage_NULL_IMAGE);
         }
         return ((Image*) imageCanBeNull);
 }
@@ -108,10 +129,10 @@ Image* ImageCacheBase_getImage(ImageCacheBase* this, Any* resourceId) {
 
 void ImageCacheBase_releaseAll(ImageCacheBase* this) {
         for (int32_t index = java_array_length(this->listOfList) - 1; index >= 0; index--) {
-            JAVA_CALL(this->availableListOfList[index], clear);
-            JAVA_CALL(this->availableListOfList[index], addAllList, this->listOfList[index]);
+            BasicArrayList_clear(this->availableListOfList[index]);
+            BasicArrayList_addAllList(this->availableListOfList[index], this->listOfList[index]);
         }
-        LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), "ImageCache: "), append, ImageCacheBase_toString(this)), toString), this, "releaseAll");
+        LogUtil_putF(this->logUtil, java_string_of(StringMaker_append(StringMaker_append(StringMaker_new(), "ImageCache: "), ImageCacheBase_toString(this))), this, "releaseAll");
 }
 
 
@@ -130,12 +151,12 @@ int32_t ImageCacheBase_getIndexWH(ImageCacheBase* this, int32_t width, int32_t h
 
 Image* ImageCacheBase_getFromAvailable(ImageCacheBase* this, int32_t foundIndex, int32_t width, int32_t height) {
         if (foundIndex != -1) {
-            if (JAVA_CALL(this->availableListOfList[foundIndex], size) > 0) {
+            if (BasicArrayList_size(this->availableListOfList[foundIndex]) > 0) {
                 BasicArrayList* list = this->availableListOfList[foundIndex];
                 return ((Image*) BasicArrayList_removeAt(list, BasicArrayList_size(list) - 1));
             }
         }
-        return NullImage_NULL_IMAGE;
+        return (NullImage_staticInit(), NullImage_NULL_IMAGE);
 }
 
 
@@ -146,7 +167,7 @@ Image* ImageCacheBase_get(ImageCacheBase* this, const char* caller, int32_t widt
 
 
 // throws Exception
-Image* ImageCacheBase_getWithKey(ImageCacheBase* this, Any* key) {
+Image* ImageCacheBase_getWithKey(ImageCacheBase* this, void* key) {
         java_throw(java_exception_new("RuntimeException", ""));
 }
 
@@ -158,7 +179,7 @@ Image* ImageCacheBase_createImage(ImageCacheBase* this, const char* caller, int3
 
 
 // throws Exception
-Image* ImageCacheBase_createImageFromInputStream(ImageCacheBase* this, Any* key, InputStream* inputStream) {
+Image* ImageCacheBase_createImageFromInputStream(ImageCacheBase* this, void* key, InputStream* inputStream) {
         return ImageFactory_createImageFromInputStream(this->imageFactory, key, inputStream);
 }
 
@@ -168,8 +189,8 @@ const char* ImageCacheBase_toString(ImageCacheBase* this) {
         for (int32_t index = this->nextIndex - 1; index >= 0; index--) {
             int32_t width = this->widths[index];
             int32_t height = this->heights[index];
-            int32_t total = JAVA_CALL(this->listOfList[index], size);
-            int32_t totalAvailable = JAVA_CALL(this->availableListOfList[index], size);
+            int32_t total = BasicArrayList_size(this->listOfList[index]);
+            int32_t totalAvailable = BasicArrayList_size(this->availableListOfList[index]);
             StringMaker_append(stringBuffer, " w: ");
             StringMaker_appendint(stringBuffer, width);
             StringMaker_append(stringBuffer, " h: ");
@@ -180,7 +201,7 @@ const char* ImageCacheBase_toString(ImageCacheBase* this) {
             StringMaker_append(stringBuffer, " available: ");
             StringMaker_appendint(stringBuffer, totalAvailable);
         }
-        return StringMaker_toString(stringBuffer);
+        return java_string_of(stringBuffer);
 }
 
 
@@ -189,7 +210,7 @@ ABHashtable* ImageCacheBase_getHashtableP(ImageCacheBase* this) {
 }
 
 
-void ImageCacheBase_init(ImageCacheBase* this, Image* image) {
+void ImageCacheBase_initMethod(ImageCacheBase* this, Image* image) {
 }
 
 

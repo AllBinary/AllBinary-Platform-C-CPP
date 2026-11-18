@@ -1,41 +1,29 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.resource
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct ResourceLoadingLevel ResourceLoadingLevel;
-struct ResourceLoadingLevel {
-    const char* name;
-    int32_t level;
-};
+#include "org/allbinary/game/resource/ResourceLoadingLevel.h"
 
 
-ResourceLoadingLevel* ResourceLoadingLevel_new(const char* name, int32_t level);
 
-void ResourceLoadingLevel_init(ResourceLoadingLevel* this, const char* name, int32_t level);
-int32_t ResourceLoadingLevel_getLevel(ResourceLoadingLevel* this);
-const char* ResourceLoadingLevel_getName(ResourceLoadingLevel* this);
+
+
+
+void ResourceLoadingLevel_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void ResourceLoadingLevel_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ResourceLoadingLevel", nullptr);
+    java_register_method("ResourceLoadingLevel", "getLevel", (void*) ResourceLoadingLevel_getLevel);
+    java_register_method("ResourceLoadingLevel", "getName", (void*) ResourceLoadingLevel_getName);
+}
 
 static void ResourceLoadingLevel_initFields(ResourceLoadingLevel* this) {
     
@@ -44,13 +32,14 @@ static void ResourceLoadingLevel_initFields(ResourceLoadingLevel* this) {
 
 
 void ResourceLoadingLevel_init(ResourceLoadingLevel* this, const char* name, int32_t level) {
+    ResourceLoadingLevel_register();
     ResourceLoadingLevel_initFields(this);
         this->name = name;
         this->level = level;
 }
 
 ResourceLoadingLevel* ResourceLoadingLevel_new(const char* name, int32_t level) {
-    ResourceLoadingLevel* this = calloc(1, sizeof(ResourceLoadingLevel));
+    ResourceLoadingLevel* this = java_object_alloc(sizeof(ResourceLoadingLevel), "ResourceLoadingLevel");
     ResourceLoadingLevel_init(this, name, level);
     return this;
 }

@@ -1,32 +1,14 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2025 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.collision
+#include "org/allbinary/game/collision/CollidableBaseBehaviorFactoryInterface.h"
+#include "org/allbinary/game/collision/CollidableBaseBehavior.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
 
-typedef struct CollidableBaseBehaviorFactoryInterface CollidableBaseBehaviorFactoryInterface;
-struct CollidableBaseBehaviorFactoryInterface {
-    CollidableBaseBehavior* (*createBehavior)(void* this);
-};
 
+void CollidableBaseBehaviorFactoryInterface_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
 

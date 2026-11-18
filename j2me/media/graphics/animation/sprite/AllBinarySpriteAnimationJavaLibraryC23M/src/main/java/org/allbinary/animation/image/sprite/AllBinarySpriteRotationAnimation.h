@@ -1,0 +1,210 @@
+#ifndef ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_ALLBINARYSPRITEROTATIONANIMATION_H
+#define ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_ALLBINARYSPRITEROTATIONANIMATION_H
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation.image.sprite
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+typedef struct HackRotationSpriteIndexedAnimation HackRotationSpriteIndexedAnimation;
+typedef struct Image Image;
+typedef struct Sprite Sprite;
+typedef struct AnimationBehavior AnimationBehavior;
+typedef struct Direction Direction;
+typedef struct Angle Angle;
+typedef struct AngleFactory AngleFactory;
+typedef struct AngleInfo AngleInfo;
+#include "org/allbinary/animation/image/sprite/HackRotationSpriteIndexedAnimation.h"
+
+typedef struct AllBinarySpriteRotationAnimation AllBinarySpriteRotationAnimation;
+struct AllBinarySpriteRotationAnimation {
+    HackRotationSpriteIndexedAnimation base;
+};
+
+
+AllBinarySpriteRotationAnimation* AllBinarySpriteRotationAnimation_new(Sprite* sprite, Image* image, AnimationBehavior* animationBehavior);
+
+void AllBinarySpriteRotationAnimation_init(AllBinarySpriteRotationAnimation* this, Sprite* sprite, Image* image, AnimationBehavior* animationBehavior);
+
+void AllBinarySpriteRotationAnimation_nextRotation(AllBinarySpriteRotationAnimation* this);
+
+void AllBinarySpriteRotationAnimation_previousRotation(AllBinarySpriteRotationAnimation* this);
+
+void AllBinarySpriteRotationAnimation_setFrameByDirection(AllBinarySpriteRotationAnimation* this, Direction* direction);
+
+void AllBinarySpriteRotationAnimation_setFrameToAngle(AllBinarySpriteRotationAnimation* this, Angle* angle);
+
+void AllBinarySpriteRotationAnimation_setFrame(AllBinarySpriteRotationAnimation* this, int32_t index);
+
+void AllBinarySpriteRotationAnimation_adjustFrameToAngle(AllBinarySpriteRotationAnimation* this, Angle* angle);
+
+void AllBinarySpriteRotationAnimation_adjustFrame(AllBinarySpriteRotationAnimation* this, int16_t angle);
+#define AllBinarySpriteRotationAnimation_new3 AllBinarySpriteRotationAnimation_new
+#define AllBinarySpriteRotationAnimation_init3 AllBinarySpriteRotationAnimation_init
+#ifndef AllBinarySpriteRotationAnimation_getAnimationSize
+#define AllBinarySpriteRotationAnimation_getAnimationSize HackRotationSpriteIndexedAnimation_getAnimationSize
+#endif
+#ifndef AllBinarySpriteRotationAnimation_paintFrame
+#define AllBinarySpriteRotationAnimation_paintFrame HackRotationSpriteIndexedAnimation_paintFrame
+#endif
+#ifndef AllBinarySpriteRotationAnimation_paintXY
+#define AllBinarySpriteRotationAnimation_paintXY HackRotationSpriteIndexedAnimation_paintXY
+#endif
+#ifndef AllBinarySpriteRotationAnimation_paint
+#define AllBinarySpriteRotationAnimation_paint HackRotationSpriteIndexedAnimation_paint
+#endif
+#ifndef AllBinarySpriteRotationAnimation_getSize
+#define AllBinarySpriteRotationAnimation_getSize HackRotationSpriteIndexedAnimation_getSize
+#endif
+#ifndef AllBinarySpriteRotationAnimation_getFrame
+#define AllBinarySpriteRotationAnimation_getFrame HackRotationSpriteIndexedAnimation_getFrame
+#endif
+#ifndef AllBinarySpriteRotationAnimation_setSequence
+#define AllBinarySpriteRotationAnimation_setSequence HackRotationSpriteIndexedAnimation_setSequence
+#endif
+#ifndef AllBinarySpriteRotationAnimation_getSequence
+#define AllBinarySpriteRotationAnimation_getSequence HackRotationSpriteIndexedAnimation_getSequence
+#endif
+#ifndef AllBinarySpriteRotationAnimation_nextRotationX
+#define AllBinarySpriteRotationAnimation_nextRotationX RotationAnimation_nextRotationX
+#endif
+#ifndef AllBinarySpriteRotationAnimation_previousRotationX
+#define AllBinarySpriteRotationAnimation_previousRotationX RotationAnimation_previousRotationX
+#endif
+#ifndef AllBinarySpriteRotationAnimation_nextRotationZ
+#define AllBinarySpriteRotationAnimation_nextRotationZ RotationAnimation_nextRotationZ
+#endif
+#ifndef AllBinarySpriteRotationAnimation_previousRotationZ
+#define AllBinarySpriteRotationAnimation_previousRotationZ RotationAnimation_previousRotationZ
+#endif
+#ifndef AllBinarySpriteRotationAnimation_getFrame
+#define AllBinarySpriteRotationAnimation_getFrame RotationAnimation_getFrame
+#endif
+#ifndef AllBinarySpriteRotationAnimation_getSize
+#define AllBinarySpriteRotationAnimation_getSize RotationAnimation_getSize
+#endif
+#ifndef AllBinarySpriteRotationAnimation_getAngleInfoP
+#define AllBinarySpriteRotationAnimation_getAngleInfoP RotationAnimation_getAngleInfoP
+#endif
+#ifndef AllBinarySpriteRotationAnimation_toString
+#define AllBinarySpriteRotationAnimation_toString RotationAnimation_toString
+#endif
+#ifndef AllBinarySpriteRotationAnimation_getAnimationBehavior
+#define AllBinarySpriteRotationAnimation_getAnimationBehavior IndexedAnimation_getAnimationBehavior
+#endif
+#ifndef AllBinarySpriteRotationAnimation_reset
+#define AllBinarySpriteRotationAnimation_reset IndexedAnimation_reset
+#endif
+#ifndef AllBinarySpriteRotationAnimation_getFrame
+#define AllBinarySpriteRotationAnimation_getFrame IndexedAnimation_getFrame
+#endif
+#ifndef AllBinarySpriteRotationAnimation_getAnimationSize
+#define AllBinarySpriteRotationAnimation_getAnimationSize IndexedAnimation_getAnimationSize
+#endif
+#ifndef AllBinarySpriteRotationAnimation_getSize
+#define AllBinarySpriteRotationAnimation_getSize IndexedAnimation_getSize
+#endif
+#ifndef AllBinarySpriteRotationAnimation_previousFrame
+#define AllBinarySpriteRotationAnimation_previousFrame IndexedAnimation_previousFrame
+#endif
+#ifndef AllBinarySpriteRotationAnimation_isLastFrame
+#define AllBinarySpriteRotationAnimation_isLastFrame IndexedAnimation_isLastFrame
+#endif
+#ifndef AllBinarySpriteRotationAnimation_setSequence
+#define AllBinarySpriteRotationAnimation_setSequence IndexedAnimation_setSequence
+#endif
+#ifndef AllBinarySpriteRotationAnimation_getSequence
+#define AllBinarySpriteRotationAnimation_getSequence IndexedAnimation_getSequence
+#endif
+#ifndef AllBinarySpriteRotationAnimation_setState
+#define AllBinarySpriteRotationAnimation_setState IndexedAnimation_setState
+#endif
+#ifndef AllBinarySpriteRotationAnimation_getWidth
+#define AllBinarySpriteRotationAnimation_getWidth IndexedAnimation_getWidth
+#endif
+#ifndef AllBinarySpriteRotationAnimation_getHeight
+#define AllBinarySpriteRotationAnimation_getHeight IndexedAnimation_getHeight
+#endif
+#ifndef AllBinarySpriteRotationAnimation_setAlpha
+#define AllBinarySpriteRotationAnimation_setAlpha Animation_setAlpha
+#endif
+#ifndef AllBinarySpriteRotationAnimation_nextFrame
+#define AllBinarySpriteRotationAnimation_nextFrame Animation_nextFrame
+#endif
+#ifndef AllBinarySpriteRotationAnimation_paintXY
+#define AllBinarySpriteRotationAnimation_paintXY Animation_paintXY
+#endif
+#ifndef AllBinarySpriteRotationAnimation_paintThreedXYZ
+#define AllBinarySpriteRotationAnimation_paintThreedXYZ Animation_paintThreedXYZ
+#endif
+#ifndef AllBinarySpriteRotationAnimation_isThreed
+#define AllBinarySpriteRotationAnimation_isThreed Animation_isThreed
+#endif
+#ifndef AllBinarySpriteRotationAnimation_getBasicColorP
+#define AllBinarySpriteRotationAnimation_getBasicColorP Animation_getBasicColorP
+#endif
+#ifndef AllBinarySpriteRotationAnimation_setBasicColorP
+#define AllBinarySpriteRotationAnimation_setBasicColorP Animation_setBasicColorP
+#endif
+#ifndef AllBinarySpriteRotationAnimation_setBackgroundBasicColorP
+#define AllBinarySpriteRotationAnimation_setBackgroundBasicColorP Animation_setBackgroundBasicColorP
+#endif
+#ifndef AllBinarySpriteRotationAnimation_getChangeBasicColor
+#define AllBinarySpriteRotationAnimation_getChangeBasicColor Animation_getChangeBasicColor
+#endif
+#ifndef AllBinarySpriteRotationAnimation_changeBasicColor
+#define AllBinarySpriteRotationAnimation_changeBasicColor Animation_changeBasicColor
+#endif
+#ifndef AllBinarySpriteRotationAnimation_getChangeColor
+#define AllBinarySpriteRotationAnimation_getChangeColor Animation_getChangeColor
+#endif
+#ifndef AllBinarySpriteRotationAnimation_getColor
+#define AllBinarySpriteRotationAnimation_getColor Animation_getColor
+#endif
+#ifndef AllBinarySpriteRotationAnimation_setScale
+#define AllBinarySpriteRotationAnimation_setScale Animation_setScale
+#endif
+#ifndef AllBinarySpriteRotationAnimation_setMaxScale
+#define AllBinarySpriteRotationAnimation_setMaxScale Animation_setMaxScale
+#endif
+#ifndef AllBinarySpriteRotationAnimation_set
+#define AllBinarySpriteRotationAnimation_set Animation_set
+#endif
+#ifndef AllBinarySpriteRotationAnimation_setDx
+#define AllBinarySpriteRotationAnimation_setDx Animation_setDx
+#endif
+#ifndef AllBinarySpriteRotationAnimation_getDx
+#define AllBinarySpriteRotationAnimation_getDx Animation_getDx
+#endif
+#ifndef AllBinarySpriteRotationAnimation_setDy
+#define AllBinarySpriteRotationAnimation_setDy Animation_setDy
+#endif
+#ifndef AllBinarySpriteRotationAnimation_getDy
+#define AllBinarySpriteRotationAnimation_getDy Animation_getDy
+#endif
+// Runs the Java static initialization of the class once. Reads of its static fields call it first.
+void AllBinarySpriteRotationAnimation_staticInit(void);
+// Registers the class, its superclass, and its methods for the interface calls (java_register_method)
+void AllBinarySpriteRotationAnimation_register(void);
+
+
+#endif // ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_ALLBINARYSPRITEROTATIONANIMATION_H

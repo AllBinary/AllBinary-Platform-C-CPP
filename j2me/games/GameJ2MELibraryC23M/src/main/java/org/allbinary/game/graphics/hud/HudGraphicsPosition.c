@@ -1,50 +1,43 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.graphics.hud
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/graphics/hud/HudGraphicsPosition.h"
 #include "org/allbinary/graphics/GPoint.h"
 #include "org/allbinary/graphics/PointFactory.h"
+#if __has_include("org/allbinary/graphics/PointFactory.h")
+#include "org/allbinary/graphics/PointFactory.h"
+#endif
+#if __has_include("org/allbinary/graphics/PointFactory.h")
+#include "org/allbinary/graphics/PointFactory.h"
+#endif
 
-typedef struct HudGraphicsPosition HudGraphicsPosition;
-struct HudGraphicsPosition {
-    int32_t anchor;
-    GPoint* point;
-};
 
 HudGraphicsPosition* HudGraphicsPosition_NULL_HUD_GRAPHICS_POSITION;
 
-HudGraphicsPosition* HudGraphicsPosition_new(GPoint* point, int32_t anchor);
 
-void HudGraphicsPosition_init(HudGraphicsPosition* this, GPoint* point, int32_t anchor);
-int32_t HudGraphicsPosition_getAnchor(HudGraphicsPosition* this);
+
 static void HudGraphicsPosition_setAnchor(HudGraphicsPosition* this, int32_t anchor);
-GPoint* HudGraphicsPosition_getPoint(HudGraphicsPosition* this);
-void HudGraphicsPosition_setPoint(HudGraphicsPosition* this, GPoint* point);
 
-// Static fields with runtime initializers: call this once at startup
+
+
 void HudGraphicsPosition_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     HudGraphicsPosition_NULL_HUD_GRAPHICS_POSITION = HudGraphicsPosition_new(PointFactory_getInstance()->ZERO_ZERO, 9);
+}
+
+void HudGraphicsPosition_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("HudGraphicsPosition", nullptr);
+    java_register_method("HudGraphicsPosition", "getAnchor", (void*) HudGraphicsPosition_getAnchor);
+    java_register_method("HudGraphicsPosition", "setAnchor", (void*) HudGraphicsPosition_setAnchor);
+    java_register_method("HudGraphicsPosition", "getPoint", (void*) HudGraphicsPosition_getPoint);
+    java_register_method("HudGraphicsPosition", "setPoint", (void*) HudGraphicsPosition_setPoint);
 }
 
 static void HudGraphicsPosition_initFields(HudGraphicsPosition* this) {
@@ -54,13 +47,14 @@ static void HudGraphicsPosition_initFields(HudGraphicsPosition* this) {
 
 
 void HudGraphicsPosition_init(HudGraphicsPosition* this, GPoint* point, int32_t anchor) {
+    HudGraphicsPosition_register();
     HudGraphicsPosition_initFields(this);
         HudGraphicsPosition_setAnchor(this, anchor);
         HudGraphicsPosition_setPoint(this, point);
 }
 
 HudGraphicsPosition* HudGraphicsPosition_new(GPoint* point, int32_t anchor) {
-    HudGraphicsPosition* this = calloc(1, sizeof(HudGraphicsPosition));
+    HudGraphicsPosition* this = java_object_alloc(sizeof(HudGraphicsPosition), "HudGraphicsPosition");
     HudGraphicsPosition_init(this, point, anchor);
     return this;
 }

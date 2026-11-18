@@ -1,61 +1,52 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.combat.destroy
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/combat/destroy/DestroyableBaseBehavior.h"
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/game/combat/destroy/DestroyableInterface.h"
+#if __has_include("org/allbinary/string/CommonStrings.h")
+#include "org/allbinary/string/CommonStrings.h"
+#endif
 
-typedef struct DestroyableBaseBehavior DestroyableBaseBehavior;
-struct DestroyableBaseBehavior {
-    DestroyableInterface DestroyableInterface_interface;
-};
 
 static DestroyableBaseBehavior* DestroyableBaseBehavior_instance;
 
-DestroyableBaseBehavior* DestroyableBaseBehavior_new(void);
-DestroyableBaseBehavior* DestroyableBaseBehavior_getInstance(void);
-const char* DestroyableBaseBehavior_getName(DestroyableBaseBehavior* this);
-bool DestroyableBaseBehavior_isDestroyed(DestroyableBaseBehavior* this);
-void DestroyableBaseBehavior_setDestroyed(DestroyableBaseBehavior* this, bool destroyed);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
 void DestroyableBaseBehavior_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     DestroyableBaseBehavior_instance = DestroyableBaseBehavior_new();
 }
 
+void DestroyableBaseBehavior_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("DestroyableBaseBehavior", nullptr);
+    java_register_method("DestroyableBaseBehavior", "getName", (void*) DestroyableBaseBehavior_getName);
+    java_register_method("DestroyableBaseBehavior", "isDestroyed", (void*) DestroyableBaseBehavior_isDestroyed);
+    java_register_method("DestroyableBaseBehavior", "setDestroyed", (void*) DestroyableBaseBehavior_setDestroyed);
+}
+
 void DestroyableBaseBehavior_init(DestroyableBaseBehavior* this) {
+    DestroyableBaseBehavior_register();
 }
 
 DestroyableBaseBehavior* DestroyableBaseBehavior_new(void) {
-    DestroyableBaseBehavior* this = calloc(1, sizeof(DestroyableBaseBehavior));
+    DestroyableBaseBehavior* this = java_object_alloc(sizeof(DestroyableBaseBehavior), "DestroyableBaseBehavior");
     DestroyableBaseBehavior_init(this);
     return this;
 }
 
 
 DestroyableBaseBehavior* DestroyableBaseBehavior_getInstance(void) {
-        return DestroyableBaseBehavior_instance;
+        return (DestroyableBaseBehavior_staticInit(), DestroyableBaseBehavior_instance);
 }
 
 

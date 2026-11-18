@@ -1,45 +1,36 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2025 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.midlet
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/midlet/LicenseCheckRunnableFactory.h"
 #include "org/allbinary/thread/ABRunnable.h"
 #include "org/allbinary/thread/NullABRunnable.h"
-
-typedef struct LicenseCheckRunnableFactory LicenseCheckRunnableFactory;
-struct LicenseCheckRunnableFactory {
-    char unused;
-};
+#include "org/allbinary/game/midlet/SpecialDemoGameMidlet.h"
 
 
-LicenseCheckRunnableFactory* LicenseCheckRunnableFactory_new(void);
-ABRunnable* LicenseCheckRunnableFactory_getInstance(LicenseCheckRunnableFactory* this, SpecialDemoGameMidlet* specialDemoGameMidlet);
+
+
+void LicenseCheckRunnableFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void LicenseCheckRunnableFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("LicenseCheckRunnableFactory", nullptr);
+    java_register_method("LicenseCheckRunnableFactory", "getInstance", (void*) LicenseCheckRunnableFactory_getInstance);
+}
 
 void LicenseCheckRunnableFactory_init(LicenseCheckRunnableFactory* this) {
+    LicenseCheckRunnableFactory_register();
 }
 
 LicenseCheckRunnableFactory* LicenseCheckRunnableFactory_new(void) {
-    LicenseCheckRunnableFactory* this = calloc(1, sizeof(LicenseCheckRunnableFactory));
+    LicenseCheckRunnableFactory* this = java_object_alloc(sizeof(LicenseCheckRunnableFactory), "LicenseCheckRunnableFactory");
     LicenseCheckRunnableFactory_init(this);
     return this;
 }

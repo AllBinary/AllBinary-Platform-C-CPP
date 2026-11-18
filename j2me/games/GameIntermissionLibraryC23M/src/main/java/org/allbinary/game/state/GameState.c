@@ -1,39 +1,27 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.state
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct GameState GameState;
-struct GameState {
-    const char* name;
-};
+#include "org/allbinary/game/state/GameState.h"
 
 
-GameState* GameState_new(const char* name, int32_t state);
 
-void GameState_init(GameState* this, const char* name, int32_t state);
-const char* GameState_toString(GameState* this);
+
+
+void GameState_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void GameState_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GameState", nullptr);
+    java_register_method("GameState", "toString", (void*) GameState_toString);
+}
 
 static void GameState_initFields(GameState* this) {
     
@@ -41,12 +29,13 @@ static void GameState_initFields(GameState* this) {
 
 
 void GameState_init(GameState* this, const char* name, int32_t state) {
+    GameState_register();
     GameState_initFields(this);
         this->name = name;
 }
 
 GameState* GameState_new(const char* name, int32_t state) {
-    GameState* this = calloc(1, sizeof(GameState));
+    GameState* this = java_object_alloc(sizeof(GameState), "GameState");
     GameState_init(this, name, state);
     return this;
 }

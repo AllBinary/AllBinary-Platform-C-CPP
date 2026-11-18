@@ -1,60 +1,86 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.input
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/input/LocalPlayerInputIdFactory.h"
 #include "org/allbinary/game/input/analog/AnalogLocationInputFactory.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/logic/string/StringMaker.h"
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/game/input/analog/AnalogLocationInputFactory.h")
+#include "org/allbinary/game/input/analog/AnalogLocationInputFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
 
-typedef struct LocalPlayerInputIdFactory LocalPlayerInputIdFactory;
-struct LocalPlayerInputIdFactory {
-    LogUtil* logUtil;
-    int32_t MAX_NUMBER_OF_PLAYERS;
-    int32_t MAX_FAST_DEVICEID;
-    int32_t* deviceIdToplayerId;
-    int32_t* playerIdToDeviceId;
-    bool* playersInPlay;
-    int32_t totalDevicesMapped;
-};
 
 static LocalPlayerInputIdFactory* LocalPlayerInputIdFactory_instance;
 
-LocalPlayerInputIdFactory* LocalPlayerInputIdFactory_new(void);
 
-void LocalPlayerInputIdFactory_init(LocalPlayerInputIdFactory* this);
-LocalPlayerInputIdFactory* LocalPlayerInputIdFactory_getInstance(void);
-int32_t LocalPlayerInputIdFactory_getDeviceId(LocalPlayerInputIdFactory* this, int32_t playerInputId);
-int32_t LocalPlayerInputIdFactory_getPlayerForDevice(LocalPlayerInputIdFactory* this, int32_t deviceId);
-int32_t LocalPlayerInputIdFactory_getTotalDevicesInPlay(LocalPlayerInputIdFactory* this);
-bool LocalPlayerInputIdFactory_isPlayerInPlay(LocalPlayerInputIdFactory* this, int32_t playerInputId);
-void LocalPlayerInputIdFactory_setPlayerInPlay(LocalPlayerInputIdFactory* this, int32_t playerInputId);
-void LocalPlayerInputIdFactory_setPlayerOutOfPlay(LocalPlayerInputIdFactory* this, int32_t playerInputId);
-bool* LocalPlayerInputIdFactory_getPlayersInPlay(LocalPlayerInputIdFactory* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+
+
+
 void LocalPlayerInputIdFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     LocalPlayerInputIdFactory_instance = LocalPlayerInputIdFactory_new();
+}
+
+void LocalPlayerInputIdFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("LocalPlayerInputIdFactory", nullptr);
+    java_register_method("LocalPlayerInputIdFactory", "getDeviceId", (void*) LocalPlayerInputIdFactory_getDeviceId);
+    java_register_method("LocalPlayerInputIdFactory", "getPlayerForDevice", (void*) LocalPlayerInputIdFactory_getPlayerForDevice);
+    java_register_method("LocalPlayerInputIdFactory", "getTotalDevicesInPlay", (void*) LocalPlayerInputIdFactory_getTotalDevicesInPlay);
+    java_register_method("LocalPlayerInputIdFactory", "isPlayerInPlay", (void*) LocalPlayerInputIdFactory_isPlayerInPlay);
+    java_register_method("LocalPlayerInputIdFactory", "setPlayerInPlay", (void*) LocalPlayerInputIdFactory_setPlayerInPlay);
+    java_register_method("LocalPlayerInputIdFactory", "setPlayerOutOfPlay", (void*) LocalPlayerInputIdFactory_setPlayerOutOfPlay);
+    java_register_method("LocalPlayerInputIdFactory", "getPlayersInPlay", (void*) LocalPlayerInputIdFactory_getPlayersInPlay);
 }
 
 static void LocalPlayerInputIdFactory_initFields(LocalPlayerInputIdFactory* this) {
@@ -69,6 +95,7 @@ static void LocalPlayerInputIdFactory_initFields(LocalPlayerInputIdFactory* this
 
 
 void LocalPlayerInputIdFactory_init(LocalPlayerInputIdFactory* this) {
+    LocalPlayerInputIdFactory_register();
     LocalPlayerInputIdFactory_initFields(this);
         for (int32_t index = java_array_length(this->deviceIdToplayerId) - 1; index >= 0; index--) {
             this->deviceIdToplayerId[index] = -1;
@@ -76,14 +103,14 @@ void LocalPlayerInputIdFactory_init(LocalPlayerInputIdFactory* this) {
 }
 
 LocalPlayerInputIdFactory* LocalPlayerInputIdFactory_new(void) {
-    LocalPlayerInputIdFactory* this = calloc(1, sizeof(LocalPlayerInputIdFactory));
+    LocalPlayerInputIdFactory* this = java_object_alloc(sizeof(LocalPlayerInputIdFactory), "LocalPlayerInputIdFactory");
     LocalPlayerInputIdFactory_init(this);
     return this;
 }
 
 
 LocalPlayerInputIdFactory* LocalPlayerInputIdFactory_getInstance(void) {
-        return LocalPlayerInputIdFactory_instance;
+        return (LocalPlayerInputIdFactory_staticInit(), LocalPlayerInputIdFactory_instance);
 }
 
 
@@ -110,12 +137,12 @@ int32_t LocalPlayerInputIdFactory_getPlayerForDevice(LocalPlayerInputIdFactory* 
         if (deviceId < this->MAX_FAST_DEVICEID) {
             this->deviceIdToplayerId[deviceId] = index;
         } else {
-            LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), "Added DeviceId: "), appendint, deviceId), append, " beyond fast Id list"), toString), this, "getPlayerForDevice");
+            LogUtil_putF(this->logUtil, java_string_of(StringMaker_append(StringMaker_appendint(StringMaker_append(StringMaker_new(), "Added DeviceId: "), deviceId), " beyond fast Id list")), this, "getPlayerForDevice");
         }
         this->playerIdToDeviceId[index] = deviceId;
         AnalogLocationInputFactory_addPlayer(AnalogLocationInputFactory_getInstance(), this->totalDevicesMapped);
         this->totalDevicesMapped++;
-        LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), "Added DeviceId: "), appendint, deviceId), append, " at: "), appendint, index), append, " Total: "), appendint, this->totalDevicesMapped), toString), this, "getPlayerForDevice");
+        LogUtil_putF(this->logUtil, java_string_of(StringMaker_appendint(StringMaker_append(StringMaker_appendint(StringMaker_append(StringMaker_appendint(StringMaker_append(StringMaker_new(), "Added DeviceId: "), deviceId), " at: "), index), " Total: "), this->totalDevicesMapped)), this, "getPlayerForDevice");
         return index;
 }
 
@@ -137,13 +164,13 @@ bool LocalPlayerInputIdFactory_isPlayerInPlay(LocalPlayerInputIdFactory* this, i
 
 
 void LocalPlayerInputIdFactory_setPlayerInPlay(LocalPlayerInputIdFactory* this, int32_t playerInputId) {
-        LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), "Setting PlayerInPlay with playerInputId: "), appendint, playerInputId), toString), this, "setPlayerInPlay");
+        LogUtil_putF(this->logUtil, java_string_of(StringMaker_appendint(StringMaker_append(StringMaker_new(), "Setting PlayerInPlay with playerInputId: "), playerInputId)), this, "setPlayerInPlay");
         this->playersInPlay[playerInputId] = true;
 }
 
 
 void LocalPlayerInputIdFactory_setPlayerOutOfPlay(LocalPlayerInputIdFactory* this, int32_t playerInputId) {
-        LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), "Setting PlayerOutOfPlay with playerInputId: "), appendint, playerInputId), toString), this, "setPlayerOutOfPlay");
+        LogUtil_putF(this->logUtil, java_string_of(StringMaker_appendint(StringMaker_append(StringMaker_new(), "Setting PlayerOutOfPlay with playerInputId: "), playerInputId)), this, "setPlayerOutOfPlay");
         this->playersInPlay[playerInputId] = false;
 }
 

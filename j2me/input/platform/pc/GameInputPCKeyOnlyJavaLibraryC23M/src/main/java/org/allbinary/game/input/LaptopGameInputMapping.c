@@ -1,52 +1,43 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.input
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/input/LaptopGameInputMapping.h"
 #include "org/allbinary/game/input/mapping/InputToGameKeyMapping.h"
 #include "org/allbinary/game/input/PCGameInputMapping.h"
-
-typedef struct LaptopGameInputMapping LaptopGameInputMapping;
-struct LaptopGameInputMapping {
-    PCGameInputMapping base;
-};
+#include "org/allbinary/game/input/LaptopDefaultGameInputMapping.h"
 
 
-LaptopGameInputMapping* LaptopGameInputMapping_new(void);
-InputToGameKeyMapping* LaptopGameInputMapping_getDefault(LaptopGameInputMapping* this);
+
+
+void LaptopGameInputMapping_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void LaptopGameInputMapping_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("LaptopGameInputMapping", "PCGameInputMapping");
+    java_register_method("LaptopGameInputMapping", "getDefault", (void*) LaptopGameInputMapping_getDefault);
+}
 
 void LaptopGameInputMapping_init(LaptopGameInputMapping* this) {
+    LaptopGameInputMapping_register();
     PCGameInputMapping_init(&this->base);
 }
 
 LaptopGameInputMapping* LaptopGameInputMapping_new(void) {
-    LaptopGameInputMapping* this = calloc(1, sizeof(LaptopGameInputMapping));
+    LaptopGameInputMapping* this = java_object_alloc(sizeof(LaptopGameInputMapping), "LaptopGameInputMapping");
     LaptopGameInputMapping_init(this);
     return this;
 }
 
 
 InputToGameKeyMapping* LaptopGameInputMapping_getDefault(LaptopGameInputMapping* this) {
-        return LaptopDefaultGameInputMapping_getInputMapping(LaptopDefaultGameInputMapping_new());
+        return PersistentInputMapping_getInputMapping(LaptopDefaultGameInputMapping_new());
 }
 

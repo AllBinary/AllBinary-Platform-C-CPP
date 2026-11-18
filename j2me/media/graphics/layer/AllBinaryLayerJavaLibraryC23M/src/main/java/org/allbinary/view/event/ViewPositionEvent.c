@@ -1,47 +1,34 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.view.event
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-#include "org/allbinary/logic/util/event/AllBinaryEventObject.h"
-
-typedef struct ViewPositionEvent ViewPositionEvent;
-struct ViewPositionEvent {
-    AllBinaryEventObject base;
-};
+#include "org/allbinary/view/event/ViewPositionEvent.h"
 
 
-ViewPositionEvent* ViewPositionEvent_new(Any* anyType);
-
-void ViewPositionEvent_init(ViewPositionEvent* this, Any* anyType);
 
 
-void ViewPositionEvent_init(ViewPositionEvent* this, Any* anyType) {
+void ViewPositionEvent_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void ViewPositionEvent_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ViewPositionEvent", "AllBinaryEventObject");
+}
+
+
+void ViewPositionEvent_init(ViewPositionEvent* this, void* anyType) {
+    ViewPositionEvent_register();
         AllBinaryEventObject_init(&this->base, anyType);
 }
 
-ViewPositionEvent* ViewPositionEvent_new(Any* anyType) {
-    ViewPositionEvent* this = calloc(1, sizeof(ViewPositionEvent));
+ViewPositionEvent* ViewPositionEvent_new(void* anyType) {
+    ViewPositionEvent* this = java_object_alloc(sizeof(ViewPositionEvent), "ViewPositionEvent");
     ViewPositionEvent_init(this, anyType);
     return this;
 }

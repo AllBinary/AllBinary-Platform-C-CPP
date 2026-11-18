@@ -1,47 +1,28 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.midlet
+#include "org/allbinary/game/midlet/DemoGameMidletStateFactory.h"
+#include "org/allbinary/game/midlet/DemoGameMidletState.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct DemoGameMidletStateFactory DemoGameMidletStateFactory;
-struct DemoGameMidletStateFactory {
-    DemoGameMidletState* NONE;
-    DemoGameMidletState* START_DEMO;
-    DemoGameMidletState* START_GAME;
-    DemoGameMidletState* START_INPUT_MAPPING;
-};
 
 static DemoGameMidletStateFactory* DemoGameMidletStateFactory_STATE;
 
-DemoGameMidletStateFactory* DemoGameMidletStateFactory_new(void);
 
-void DemoGameMidletStateFactory_init(DemoGameMidletStateFactory* this);
-DemoGameMidletStateFactory* DemoGameMidletStateFactory_getInstance(void);
 
-// Static fields with runtime initializers: call this once at startup
 void DemoGameMidletStateFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     DemoGameMidletStateFactory_STATE = DemoGameMidletStateFactory_new();
+}
+
+void DemoGameMidletStateFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("DemoGameMidletStateFactory", nullptr);
 }
 
 static void DemoGameMidletStateFactory_initFields(DemoGameMidletStateFactory* this) {
@@ -53,17 +34,18 @@ static void DemoGameMidletStateFactory_initFields(DemoGameMidletStateFactory* th
 
 
 void DemoGameMidletStateFactory_init(DemoGameMidletStateFactory* this) {
+    DemoGameMidletStateFactory_register();
     DemoGameMidletStateFactory_initFields(this);
 }
 
 DemoGameMidletStateFactory* DemoGameMidletStateFactory_new(void) {
-    DemoGameMidletStateFactory* this = calloc(1, sizeof(DemoGameMidletStateFactory));
+    DemoGameMidletStateFactory* this = java_object_alloc(sizeof(DemoGameMidletStateFactory), "DemoGameMidletStateFactory");
     DemoGameMidletStateFactory_init(this);
     return this;
 }
 
 
 DemoGameMidletStateFactory* DemoGameMidletStateFactory_getInstance(void) {
-        return DemoGameMidletStateFactory_STATE;
+        return (DemoGameMidletStateFactory_staticInit(), DemoGameMidletStateFactory_STATE);
 }
 

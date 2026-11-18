@@ -1,59 +1,49 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.io
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/logic/io/DataOutputStreamFactory.h"
 #include "org/allbinary/logic/io/file/AbFile.h"
+#include "org/allbinary/logic/io/AbFileOutputStream.h"
+#include "org/allbinary/logic/io/AbDataOutputStream.h"
+#include "org/allbinary/logic/io/FileStreamFactory.h"
 
-typedef struct DataOutputStreamFactory DataOutputStreamFactory;
-struct DataOutputStreamFactory {
-    char unused;
-};
 
 static DataOutputStreamFactory* DataOutputStreamFactory_instance;
 
-DataOutputStreamFactory* DataOutputStreamFactory_new(void);
-DataOutputStreamFactory* DataOutputStreamFactory_getInstance(void);
-AbDataOutputStream* DataOutputStreamFactory_getInstanceForAbFile(DataOutputStreamFactory* this, AbFile* file);
-AbDataOutputStream* DataOutputStreamFactory_getInstance(DataOutputStreamFactory* this, const char* filePath, const char* fileName);
 
-// Static fields with runtime initializers: call this once at startup
+
+
 void DataOutputStreamFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     DataOutputStreamFactory_instance = DataOutputStreamFactory_new();
 }
 
+void DataOutputStreamFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("DataOutputStreamFactory", nullptr);
+    java_register_method("DataOutputStreamFactory", "getInstanceForAbFile", (void*) DataOutputStreamFactory_getInstanceForAbFile);
+    java_register_method("DataOutputStreamFactory", "getInstance@3", (void*) DataOutputStreamFactory_getInstance3);
+}
+
 void DataOutputStreamFactory_init(DataOutputStreamFactory* this) {
+    DataOutputStreamFactory_register();
 }
 
 DataOutputStreamFactory* DataOutputStreamFactory_new(void) {
-    DataOutputStreamFactory* this = calloc(1, sizeof(DataOutputStreamFactory));
+    DataOutputStreamFactory* this = java_object_alloc(sizeof(DataOutputStreamFactory), "DataOutputStreamFactory");
     DataOutputStreamFactory_init(this);
     return this;
 }
 
 
-DataOutputStreamFactory* DataOutputStreamFactory_getInstance(void) {
-        return DataOutputStreamFactory_instance;
+DataOutputStreamFactory* DataOutputStreamFactory_getInstance0(void) {
+        return (DataOutputStreamFactory_staticInit(), DataOutputStreamFactory_instance);
 }
 
 
@@ -67,7 +57,7 @@ AbDataOutputStream* DataOutputStreamFactory_getInstanceForAbFile(DataOutputStrea
 
 // throws Exception
 // Java overloaded method: C needs a different name
-AbDataOutputStream* DataOutputStreamFactory_getInstance(DataOutputStreamFactory* this, const char* filePath, const char* fileName) {
+AbDataOutputStream* DataOutputStreamFactory_getInstance3(DataOutputStreamFactory* this, const char* filePath, const char* fileName) {
         FileStreamFactory* fileStreamFactory = FileStreamFactory_getInstance();
         AbFileOutputStream* fileOutputStream = FileStreamFactory_getFileOutputStreamInstance(fileStreamFactory, filePath, fileName);
         AbDataOutputStream* idOutData = AbDataOutputStream_new(fileOutputStream);

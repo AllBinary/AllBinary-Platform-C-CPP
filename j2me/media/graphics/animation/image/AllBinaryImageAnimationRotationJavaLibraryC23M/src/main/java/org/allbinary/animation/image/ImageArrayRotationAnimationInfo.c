@@ -1,53 +1,45 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation.image
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Image.h"
+#include "org/allbinary/animation/image/ImageArrayRotationAnimationInfo.h"
+#include "javax/microedition/lcdui/Image.h"
 #include "org/allbinary/math/AngleInfo.h"
 
-typedef struct ImageArrayRotationAnimationInfo ImageArrayRotationAnimationInfo;
-struct ImageArrayRotationAnimationInfo {
-    Image** imageArray;
-    int32_t angleIncrement;
-    int32_t totalAngle;
-    int32_t dx;
-    int32_t dy;
-};
 
 
-ImageArrayRotationAnimationInfo* ImageArrayRotationAnimationInfo_new(Image** imageArray, int32_t angleIncrement, int32_t totalAngle, int32_t dx, int32_t dy);
 
-void ImageArrayRotationAnimationInfo_init(ImageArrayRotationAnimationInfo* this, Image** imageArray, int32_t angleIncrement, int32_t totalAngle, int32_t dx, int32_t dy);
-void ImageArrayRotationAnimationInfo_setImageArray(ImageArrayRotationAnimationInfo* this, Image** imageArray);
-Image** ImageArrayRotationAnimationInfo_getImageArray(ImageArrayRotationAnimationInfo* this);
-AngleInfo* ImageArrayRotationAnimationInfo_getAngleInfoP(ImageArrayRotationAnimationInfo* this);
-void ImageArrayRotationAnimationInfo_setTotalAngle(ImageArrayRotationAnimationInfo* this, int32_t totalAngle);
-int32_t ImageArrayRotationAnimationInfo_getTotalAngle(ImageArrayRotationAnimationInfo* this);
-void ImageArrayRotationAnimationInfo_setDx(ImageArrayRotationAnimationInfo* this, int32_t dx);
-int32_t ImageArrayRotationAnimationInfo_getDx(ImageArrayRotationAnimationInfo* this);
-void ImageArrayRotationAnimationInfo_setDy(ImageArrayRotationAnimationInfo* this, int32_t dy);
-int32_t ImageArrayRotationAnimationInfo_getDy(ImageArrayRotationAnimationInfo* this);
+
+
+
+
+
+
+
+
+
+void ImageArrayRotationAnimationInfo_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void ImageArrayRotationAnimationInfo_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ImageArrayRotationAnimationInfo", nullptr);
+    java_register_method("ImageArrayRotationAnimationInfo", "setImageArray", (void*) ImageArrayRotationAnimationInfo_setImageArray);
+    java_register_method("ImageArrayRotationAnimationInfo", "getImageArray", (void*) ImageArrayRotationAnimationInfo_getImageArray);
+    java_register_method("ImageArrayRotationAnimationInfo", "getAngleInfoP", (void*) ImageArrayRotationAnimationInfo_getAngleInfoP);
+    java_register_method("ImageArrayRotationAnimationInfo", "setTotalAngle", (void*) ImageArrayRotationAnimationInfo_setTotalAngle);
+    java_register_method("ImageArrayRotationAnimationInfo", "getTotalAngle", (void*) ImageArrayRotationAnimationInfo_getTotalAngle);
+    java_register_method("ImageArrayRotationAnimationInfo", "setDx", (void*) ImageArrayRotationAnimationInfo_setDx);
+    java_register_method("ImageArrayRotationAnimationInfo", "getDx", (void*) ImageArrayRotationAnimationInfo_getDx);
+    java_register_method("ImageArrayRotationAnimationInfo", "setDy", (void*) ImageArrayRotationAnimationInfo_setDy);
+    java_register_method("ImageArrayRotationAnimationInfo", "getDy", (void*) ImageArrayRotationAnimationInfo_getDy);
+}
 
 static void ImageArrayRotationAnimationInfo_initFields(ImageArrayRotationAnimationInfo* this) {
     
@@ -59,6 +51,7 @@ static void ImageArrayRotationAnimationInfo_initFields(ImageArrayRotationAnimati
 
 
 void ImageArrayRotationAnimationInfo_init(ImageArrayRotationAnimationInfo* this, Image** imageArray, int32_t angleIncrement, int32_t totalAngle, int32_t dx, int32_t dy) {
+    ImageArrayRotationAnimationInfo_register();
     ImageArrayRotationAnimationInfo_initFields(this);
         this->imageArray = imageArray;
         this->angleIncrement = angleIncrement;
@@ -68,7 +61,7 @@ void ImageArrayRotationAnimationInfo_init(ImageArrayRotationAnimationInfo* this,
 }
 
 ImageArrayRotationAnimationInfo* ImageArrayRotationAnimationInfo_new(Image** imageArray, int32_t angleIncrement, int32_t totalAngle, int32_t dx, int32_t dy) {
-    ImageArrayRotationAnimationInfo* this = calloc(1, sizeof(ImageArrayRotationAnimationInfo));
+    ImageArrayRotationAnimationInfo* this = java_object_alloc(sizeof(ImageArrayRotationAnimationInfo), "ImageArrayRotationAnimationInfo");
     ImageArrayRotationAnimationInfo_init(this, imageArray, angleIncrement, totalAngle, dx, dy);
     return this;
 }

@@ -1,66 +1,64 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.physics.velocity
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/physics/velocity/DragVelocityBehavior.h"
 #include "org/allbinary/logic/math/BasicDecimal.h"
 #include "org/allbinary/game/physics/velocity/VelocityBehaviorBase.h"
+#include "org/allbinary/game/physics/velocity/BasicVelocityProperties.h"
+#if __has_include("org/allbinary/logic/math/BasicDecimal.h")
+#include "org/allbinary/logic/math/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/logic/math/BasicDecimal.h")
+#include "org/allbinary/logic/math/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/logic/math/BasicDecimal.h")
+#include "org/allbinary/logic/math/BasicDecimal.h"
+#endif
 
-typedef struct DragVelocityBehavior DragVelocityBehavior;
-struct DragVelocityBehavior {
-    VelocityBehaviorBase base;
-};
 
 DragVelocityBehavior* DragVelocityBehavior_instance;
 
-DragVelocityBehavior* DragVelocityBehavior_new(void);
-void DragVelocityBehavior_reduce(DragVelocityBehavior* this, BasicVelocityProperties* velocityProperties, int32_t nominator, int32_t denominator);
-void DragVelocityBehavior_reduceX(DragVelocityBehavior* this, BasicVelocityProperties* velocityProperties, int32_t nominator, int32_t denominator);
-void DragVelocityBehavior_reduceY(DragVelocityBehavior* this, BasicVelocityProperties* velocityProperties, int32_t nominator, int32_t denominator);
 
-// Static fields with runtime initializers: call this once at startup
+
+
 void DragVelocityBehavior_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     DragVelocityBehavior_instance = DragVelocityBehavior_new();
 }
 
+void DragVelocityBehavior_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("DragVelocityBehavior", "VelocityBehaviorBase");
+    java_register_method("DragVelocityBehavior", "reduce", (void*) DragVelocityBehavior_reduce);
+    java_register_method("DragVelocityBehavior", "reduceX", (void*) DragVelocityBehavior_reduceX);
+    java_register_method("DragVelocityBehavior", "reduceY", (void*) DragVelocityBehavior_reduceY);
+}
+
 void DragVelocityBehavior_init(DragVelocityBehavior* this) {
+    DragVelocityBehavior_register();
     VelocityBehaviorBase_init(&this->base);
 }
 
 DragVelocityBehavior* DragVelocityBehavior_new(void) {
-    DragVelocityBehavior* this = calloc(1, sizeof(DragVelocityBehavior));
+    DragVelocityBehavior* this = java_object_alloc(sizeof(DragVelocityBehavior), "DragVelocityBehavior");
     DragVelocityBehavior_init(this);
     return this;
 }
 
 
 void DragVelocityBehavior_reduce(DragVelocityBehavior* this, BasicVelocityProperties* velocityProperties, int32_t nominator, int32_t denominator) {
-        if (JAVA_CALL(BasicVelocityProperties_getVelocityXBasicDecimalP(velocityProperties), getUnscaled) != 0LL) {
+        if (BasicDecimal_getUnscaled(BasicVelocityProperties_getVelocityXBasicDecimalP(velocityProperties)) != 0LL) {
             BasicDecimal* basicDecimal = BasicVelocityProperties_getVelocityXBasicDecimalP(velocityProperties);
             BasicDecimal_multiplyint(basicDecimal, nominator);
             BasicDecimal_divideint(basicDecimal, denominator);
         }
-        if (JAVA_CALL(BasicVelocityProperties_getVelocityYBasicDecimalP(velocityProperties), getUnscaled) != 0LL) {
+        if (BasicDecimal_getUnscaled(BasicVelocityProperties_getVelocityYBasicDecimalP(velocityProperties)) != 0LL) {
             BasicDecimal* basicDecimal = BasicVelocityProperties_getVelocityYBasicDecimalP(velocityProperties);
             BasicDecimal_multiplyint(basicDecimal, nominator);
             BasicDecimal_divideint(basicDecimal, denominator);
@@ -78,7 +76,7 @@ void DragVelocityBehavior_reduceX(DragVelocityBehavior* this, BasicVelocityPrope
 
 
 void DragVelocityBehavior_reduceY(DragVelocityBehavior* this, BasicVelocityProperties* velocityProperties, int32_t nominator, int32_t denominator) {
-        if (JAVA_CALL(BasicVelocityProperties_getVelocityYBasicDecimalP(velocityProperties), getUnscaled) != 0LL) {
+        if (BasicDecimal_getUnscaled(BasicVelocityProperties_getVelocityYBasicDecimalP(velocityProperties)) != 0LL) {
             BasicDecimal* basicDecimal = BasicVelocityProperties_getVelocityYBasicDecimalP(velocityProperties);
             BasicDecimal_multiplyint(basicDecimal, nominator);
             BasicDecimal_divideint(basicDecimal, denominator);

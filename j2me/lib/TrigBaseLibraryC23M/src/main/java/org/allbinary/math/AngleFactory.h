@@ -79,6 +79,8 @@ Angle* AngleFactory_getClosestDirection(AngleFactory* this, int32_t angle);
 Angle* AngleFactory_getGeneralDirection(AngleFactory* this);
 
 void AngleFactory_main(const char** args);
+#define AngleFactory_new0 AngleFactory_new
+#define AngleFactory_init0 AngleFactory_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void AngleFactory_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

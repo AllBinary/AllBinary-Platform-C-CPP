@@ -37,6 +37,8 @@ PrimitiveFloatUtil* PrimitiveFloatUtil_new(void);
 void PrimitiveFloatUtil_init(PrimitiveFloatUtil* this);
 
 float* PrimitiveFloatUtil_getArrayInstance(void);
+#define PrimitiveFloatUtil_new0 PrimitiveFloatUtil_new
+#define PrimitiveFloatUtil_init0 PrimitiveFloatUtil_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void PrimitiveFloatUtil_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

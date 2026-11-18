@@ -1,57 +1,50 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.ag.layer.pickup.life
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/game/ag/layer/pickup/life/LifeLayer.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/game/ag/life/Life.h"
-#include "org/allbinary/game/ag/life/LifeVisitorInterface.h"
 #include "org/allbinary/graphics/PointFactory.h"
 #include "org/allbinary/graphics/Rectangle.h"
-#include "org/allbinary/layer/AllBinaryLayer.h"
 #include "org/allbinary/logic/string/StringUtil.h"
 #include "org/allbinary/view/ViewPosition.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/graphics/PointFactory.h")
+#include "org/allbinary/graphics/PointFactory.h"
+#endif
 
-typedef struct LifeLayer LifeLayer;
-struct LifeLayer {
-    AllBinaryLayer base;
-    LifeVisitorInterface LifeVisitorInterface_interface;
-};
 
 
-LifeLayer* LifeLayer_new(void);
 
-void LifeLayer_init(LifeLayer* this);
-void LifeLayer_paint(LifeLayer* this, Graphics* graphics);
-void LifeLayer_visit(LifeLayer* this, Life* lifeInterface);
+
+
+void LifeLayer_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void LifeLayer_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("LifeLayer", "AllBinaryLayer");
+    java_register_method("LifeLayer", "paint", (void*) LifeLayer_paint);
+    java_register_method("LifeLayer", "visit", (void*) LifeLayer_visit);
+}
 
 
 void LifeLayer_init(LifeLayer* this) {
+    LifeLayer_register();
         AllBinaryLayer_init(&this->base, StringUtil_getInstance()->EMPTY_STRING, Rectangle_new(PointFactory_getInstance()->ZERO_ZERO, 0, 0), ViewPosition_getInstanceD());
 }
 
 LifeLayer* LifeLayer_new(void) {
-    LifeLayer* this = calloc(1, sizeof(LifeLayer));
+    LifeLayer* this = java_object_alloc(sizeof(LifeLayer), "LifeLayer");
     LifeLayer_init(this);
     return this;
 }

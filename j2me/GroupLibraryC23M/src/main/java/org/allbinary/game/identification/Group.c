@@ -1,48 +1,43 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.identification
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/identification/Group.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/logic/string/StringUtil.h"
 #include "org/allbinary/game/identification/GroupInterface.h"
+#include "org/allbinary/game/identification/GroupCommonFactory.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
-typedef struct Group Group;
-struct Group {
-    GroupInterface GroupInterface_interface;
-    const char* name;
-    int16_t teamId;
-    const char* string;
-};
 
 
-Group* Group_new(const char* teamName, int16_t teamId);
 
-void Group_init(Group* this, const char* teamName, int16_t teamId);
-const char* Group_getGroupName(Group* this);
-void Group_setName(Group* this, const char* name);
-int16_t Group_getGroupId(Group* this);
-const char* Group_toString(Group* this);
+
+
+
+
+void Group_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void Group_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("Group", nullptr);
+    java_register_method("Group", "getGroupName", (void*) Group_getGroupName);
+    java_register_method("Group", "setName", (void*) Group_setName);
+    java_register_method("Group", "getGroupId", (void*) Group_getGroupId);
+    java_register_method("Group", "toString", (void*) Group_toString);
+}
 
 static void Group_initFields(Group* this) {
     this->name = StringUtil_getInstance()->EMPTY_STRING;
@@ -52,13 +47,14 @@ static void Group_initFields(Group* this) {
 
 
 void Group_init(Group* this, const char* teamName, int16_t teamId) {
+    Group_register();
     Group_initFields(this);
         this->teamId = teamId;
         Group_setName(this, teamName);
 }
 
 Group* Group_new(const char* teamName, int16_t teamId) {
-    Group* this = calloc(1, sizeof(Group));
+    Group* this = java_object_alloc(sizeof(Group), "Group");
     Group_init(this, teamName, teamId);
     return this;
 }
@@ -77,7 +73,7 @@ void Group_setName(Group* this, const char* name) {
         StringMaker_append(stringBuffer, this->name);
         StringMaker_append(stringBuffer, groupCommonFactory->ID_LABEL);
         StringMaker_appendshort(stringBuffer, this->teamId);
-        this->string = StringMaker_toString(stringBuffer);
+        this->string = java_string_of(stringBuffer);
 }
 
 

@@ -36,6 +36,7 @@ struct ColorChangeListener {
 
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void ColorChangeListener_staticInit(void);
+#define ColorChangeListener_onEvent EventListenerInterface_onEvent
 
 
 #endif // ORG_ALLBINARY_GRAPHICS_COLOR_COLORCHANGELISTENER_H

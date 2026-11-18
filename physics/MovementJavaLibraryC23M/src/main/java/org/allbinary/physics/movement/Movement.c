@@ -1,57 +1,48 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.physics.movement
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/physics/movement/Movement.h"
 #include "org/allbinary/game/layer/AllBinaryGameLayer.h"
 #include "org/allbinary/logic/math/BasicDecimal.h"
 #include "org/allbinary/physics/movement/MovementInterface.h"
 
-typedef struct Movement Movement;
-struct Movement {
-    MovementInterface MovementInterface_interface;
-};
 
 
-Movement* Movement_new(void);
 
-void Movement_init(Movement* this);
-void Movement_init(Movement* this, BasicDecimal* speedBasicDecimal, int32_t angle, int32_t otherAngle);
-void Movement_process(Movement* this, AllBinaryGameLayer* layer);
-void Movement_stop(Movement* this);
+
+
+
+void Movement_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void Movement_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("Movement", nullptr);
+    java_register_method("Movement", "init", (void*) Movement_initMethod);
+    java_register_method("Movement", "process", (void*) Movement_process);
+    java_register_method("Movement", "stop", (void*) Movement_stop);
+}
 
 
 void Movement_init(Movement* this) {
+    Movement_register();
 }
 
 Movement* Movement_new(void) {
-    Movement* this = calloc(1, sizeof(Movement));
+    Movement* this = java_object_alloc(sizeof(Movement), "Movement");
     Movement_init(this);
     return this;
 }
 
 
-void Movement_init(Movement* this, BasicDecimal* speedBasicDecimal, int32_t angle, int32_t otherAngle) {
+void Movement_initMethod(Movement* this, BasicDecimal* speedBasicDecimal, int32_t angle, int32_t otherAngle) {
 }
 
 

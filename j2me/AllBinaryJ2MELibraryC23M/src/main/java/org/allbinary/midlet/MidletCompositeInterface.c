@@ -1,36 +1,16 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.midlet
+#include "org/allbinary/midlet/MidletCompositeInterface.h"
+#include "javax/microedition/lcdui/Displayable.h"
+#include "javax/microedition/midlet/MIDlet.h"
+#include "org/allbinary/midlet/AllBinaryMidlet.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Displayable.h"
-// #include "javax/microedition/midlet/MIDlet.h"
 
-typedef struct MidletCompositeInterface MidletCompositeInterface;
-struct MidletCompositeInterface {
-    void (*setMidlet)(void* this, MIDlet* midlet);
-    AllBinaryMidlet* (*getMidlet)(void* this);
-    Displayable* (*getDisplayable)(void* this);
-};
 
+void MidletCompositeInterface_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
 

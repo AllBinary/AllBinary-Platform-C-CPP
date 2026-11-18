@@ -1,57 +1,43 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.thirdparty.store
+#include "org/allbinary/thirdparty/store/ThirdPartyStoreFactory.h"
+#include "org/allbinary/thirdparty/store/NoThirdPartyStore.h"
+#include "org/allbinary/thirdparty/store/ThirdPartyStore.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct ThirdPartyStoreFactory ThirdPartyStoreFactory;
-struct ThirdPartyStoreFactory {
-    char unused;
-};
 
 static NoThirdPartyStore* ThirdPartyStoreFactory_instance;
 
-ThirdPartyStoreFactory* ThirdPartyStoreFactory_new(void);
-ThirdPartyStore* ThirdPartyStoreFactory_getInstance(void);
 
-void ThirdPartyStoreFactory_init(ThirdPartyStoreFactory* this);
 
-// Static fields with runtime initializers: call this once at startup
 void ThirdPartyStoreFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     ThirdPartyStoreFactory_instance = NoThirdPartyStore_new();
+}
+
+void ThirdPartyStoreFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ThirdPartyStoreFactory", nullptr);
 }
 
 
 ThirdPartyStore* ThirdPartyStoreFactory_getInstance(void) {
-        return ThirdPartyStoreFactory_instance;
+        return (ThirdPartyStoreFactory_staticInit(), ThirdPartyStoreFactory_instance);
 }
 
 
 void ThirdPartyStoreFactory_init(ThirdPartyStoreFactory* this) {
+    ThirdPartyStoreFactory_register();
 }
 
 ThirdPartyStoreFactory* ThirdPartyStoreFactory_new(void) {
-    ThirdPartyStoreFactory* this = calloc(1, sizeof(ThirdPartyStoreFactory));
+    ThirdPartyStoreFactory* this = java_object_alloc(sizeof(ThirdPartyStoreFactory), "ThirdPartyStoreFactory");
     ThirdPartyStoreFactory_init(this);
     return this;
 }

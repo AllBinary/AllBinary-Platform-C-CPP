@@ -1,66 +1,208 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2022 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation.text
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Font.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/animation/text/CustomTextBoxIndexedAnimation.h"
+#include "javax/microedition/lcdui/Font.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/animation/AnimationBehavior.h"
-#include "org/allbinary/animation/IndexedAnimation.h"
-#include "org/allbinary/game/input/event/RawKeyEventListener.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
-#include "org/allbinary/graphics/font/UpdateMyFontInterface.h"
 #include "org/allbinary/graphics/form/item/CustomTextBox.h"
 #include "org/allbinary/logic/string/StringUtil.h"
 #include "org/allbinary/animation/text/TextInterface.h"
+#include "org/allbinary/animation/text/TextChangeListener.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/animation/text/ABTextFieldItem.h")
+#include "org/allbinary/animation/text/ABTextFieldItem.h"
+#endif
+#if __has_include("javax/microedition/lcdui/ABTextFieldItem.h")
+#include "javax/microedition/lcdui/ABTextFieldItem.h"
+#endif
+#if __has_include("javax/microedition/lcdui/ABTextFieldItem.h")
+#include "javax/microedition/lcdui/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/animation/ABTextFieldItem.h")
+#include "org/allbinary/animation/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/animation/ABTextFieldItem.h")
+#include "org/allbinary/animation/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/ABTextFieldItem.h")
+#include "org/allbinary/game/input/event/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/graphics/color/ABTextFieldItem.h")
+#include "org/allbinary/graphics/color/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/graphics/font/ABTextFieldItem.h")
+#include "org/allbinary/graphics/font/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/graphics/form/item/ABTextFieldItem.h")
+#include "org/allbinary/graphics/form/item/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/logic/string/ABTextFieldItem.h")
+#include "org/allbinary/logic/string/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/animation/text/ABTextFieldItem.h")
+#include "org/allbinary/animation/text/ABTextFieldItem.h"
+#endif
+#if __has_include("javax/microedition/lcdui/ABTextFieldItem.h")
+#include "javax/microedition/lcdui/ABTextFieldItem.h"
+#endif
+#if __has_include("javax/microedition/lcdui/ABTextFieldItem.h")
+#include "javax/microedition/lcdui/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/animation/ABTextFieldItem.h")
+#include "org/allbinary/animation/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/animation/ABTextFieldItem.h")
+#include "org/allbinary/animation/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/ABTextFieldItem.h")
+#include "org/allbinary/game/input/event/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/graphics/color/ABTextFieldItem.h")
+#include "org/allbinary/graphics/color/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/graphics/font/ABTextFieldItem.h")
+#include "org/allbinary/graphics/font/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/graphics/form/item/ABTextFieldItem.h")
+#include "org/allbinary/graphics/form/item/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/logic/string/ABTextFieldItem.h")
+#include "org/allbinary/logic/string/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/animation/text/ABTextFieldItem.h")
+#include "org/allbinary/animation/text/ABTextFieldItem.h"
+#endif
+#if __has_include("javax/microedition/lcdui/ABTextFieldItem.h")
+#include "javax/microedition/lcdui/ABTextFieldItem.h"
+#endif
+#if __has_include("javax/microedition/lcdui/ABTextFieldItem.h")
+#include "javax/microedition/lcdui/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/animation/ABTextFieldItem.h")
+#include "org/allbinary/animation/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/animation/ABTextFieldItem.h")
+#include "org/allbinary/animation/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/ABTextFieldItem.h")
+#include "org/allbinary/game/input/event/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/graphics/color/ABTextFieldItem.h")
+#include "org/allbinary/graphics/color/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/graphics/font/ABTextFieldItem.h")
+#include "org/allbinary/graphics/font/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/graphics/form/item/ABTextFieldItem.h")
+#include "org/allbinary/graphics/form/item/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/logic/string/ABTextFieldItem.h")
+#include "org/allbinary/logic/string/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/animation/text/ABTextFieldItem.h")
+#include "org/allbinary/animation/text/ABTextFieldItem.h"
+#endif
+#if __has_include("javax/microedition/lcdui/ABTextFieldItem.h")
+#include "javax/microedition/lcdui/ABTextFieldItem.h"
+#endif
+#if __has_include("javax/microedition/lcdui/ABTextFieldItem.h")
+#include "javax/microedition/lcdui/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/animation/ABTextFieldItem.h")
+#include "org/allbinary/animation/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/animation/ABTextFieldItem.h")
+#include "org/allbinary/animation/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/ABTextFieldItem.h")
+#include "org/allbinary/game/input/event/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/graphics/color/ABTextFieldItem.h")
+#include "org/allbinary/graphics/color/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/graphics/font/ABTextFieldItem.h")
+#include "org/allbinary/graphics/font/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/graphics/form/item/ABTextFieldItem.h")
+#include "org/allbinary/graphics/form/item/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/logic/string/ABTextFieldItem.h")
+#include "org/allbinary/logic/string/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/animation/text/ABTextFieldItem.h")
+#include "org/allbinary/animation/text/ABTextFieldItem.h"
+#endif
+#if __has_include("javax/microedition/lcdui/ABTextFieldItem.h")
+#include "javax/microedition/lcdui/ABTextFieldItem.h"
+#endif
+#if __has_include("javax/microedition/lcdui/ABTextFieldItem.h")
+#include "javax/microedition/lcdui/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/animation/ABTextFieldItem.h")
+#include "org/allbinary/animation/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/animation/ABTextFieldItem.h")
+#include "org/allbinary/animation/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/ABTextFieldItem.h")
+#include "org/allbinary/game/input/event/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/graphics/color/ABTextFieldItem.h")
+#include "org/allbinary/graphics/color/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/graphics/font/ABTextFieldItem.h")
+#include "org/allbinary/graphics/font/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/graphics/form/item/ABTextFieldItem.h")
+#include "org/allbinary/graphics/form/item/ABTextFieldItem.h"
+#endif
+#if __has_include("org/allbinary/logic/string/ABTextFieldItem.h")
+#include "org/allbinary/logic/string/ABTextFieldItem.h"
+#endif
 
-typedef struct CustomTextBoxIndexedAnimation CustomTextBoxIndexedAnimation;
-struct CustomTextBoxIndexedAnimation {
-    IndexedAnimation base;
-    RawKeyEventListener RawKeyEventListener_interface;
-    UpdateMyFontInterface UpdateMyFontInterface_interface;
-    TextInterface TextInterface_interface;
-    CustomTextBox* customTextBox;
-    const char* lastText;
-    bool hasChanged;
-    TextChangeListener* textChangeListener;
-};
 
 
-CustomTextBoxIndexedAnimation* CustomTextBoxIndexedAnimation_new(CustomTextBox* customTextBox);
 
-void CustomTextBoxIndexedAnimation_init(CustomTextBoxIndexedAnimation* this, CustomTextBox* customTextBox);
-void CustomTextBoxIndexedAnimation_setBasicColorP(CustomTextBoxIndexedAnimation* this, BasicColor* basicColor);
-void CustomTextBoxIndexedAnimation_setBackgroundBasicColorP(CustomTextBoxIndexedAnimation* this, BasicColor* basicColor);
-void CustomTextBoxIndexedAnimation_setTextWithOnMeasure(CustomTextBoxIndexedAnimation* this, const char* text, TextChangeListener* textChangeListener);
-void CustomTextBoxIndexedAnimation_updateMeasurement(CustomTextBoxIndexedAnimation* this, Graphics* graphics);
-void CustomTextBoxIndexedAnimation_setText(CustomTextBoxIndexedAnimation* this, const char* text);
-const char* CustomTextBoxIndexedAnimation_getText(CustomTextBoxIndexedAnimation* this);
-void CustomTextBoxIndexedAnimation_onEventRaw(CustomTextBoxIndexedAnimation* this, int32_t keyCode, int32_t deviceId, bool repeated);
-int32_t CustomTextBoxIndexedAnimation_getFontHeight(CustomTextBoxIndexedAnimation* this);
-void CustomTextBoxIndexedAnimation_paintXY(CustomTextBoxIndexedAnimation* this, Graphics* graphics, int32_t x, int32_t y);
-void CustomTextBoxIndexedAnimation_paintThreedXYZ(CustomTextBoxIndexedAnimation* this, Graphics* graphics, int32_t x, int32_t y, int32_t z);
-int32_t CustomTextBoxIndexedAnimation_getWidth(CustomTextBoxIndexedAnimation* this);
+
+
+
+
+
+
+
+
+
+
+
+void CustomTextBoxIndexedAnimation_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void CustomTextBoxIndexedAnimation_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("CustomTextBoxIndexedAnimation", "IndexedAnimation");
+    java_register_method("CustomTextBoxIndexedAnimation", "setBasicColorP", (void*) CustomTextBoxIndexedAnimation_setBasicColorP);
+    java_register_method("CustomTextBoxIndexedAnimation", "setBackgroundBasicColorP", (void*) CustomTextBoxIndexedAnimation_setBackgroundBasicColorP);
+    java_register_method("CustomTextBoxIndexedAnimation", "setTextWithOnMeasure", (void*) CustomTextBoxIndexedAnimation_setTextWithOnMeasure);
+    java_register_method("CustomTextBoxIndexedAnimation", "updateMeasurement", (void*) CustomTextBoxIndexedAnimation_updateMeasurement);
+    java_register_method("CustomTextBoxIndexedAnimation", "setText", (void*) CustomTextBoxIndexedAnimation_setText);
+    java_register_method("CustomTextBoxIndexedAnimation", "getText", (void*) CustomTextBoxIndexedAnimation_getText);
+    java_register_method("CustomTextBoxIndexedAnimation", "onEventRaw", (void*) CustomTextBoxIndexedAnimation_onEventRaw);
+    java_register_method("CustomTextBoxIndexedAnimation", "getFontHeight", (void*) CustomTextBoxIndexedAnimation_getFontHeight);
+    java_register_method("CustomTextBoxIndexedAnimation", "paintXY", (void*) CustomTextBoxIndexedAnimation_paintXY);
+    java_register_method("CustomTextBoxIndexedAnimation", "paintThreedXYZ", (void*) CustomTextBoxIndexedAnimation_paintThreedXYZ);
+    java_register_method("CustomTextBoxIndexedAnimation", "getWidth", (void*) CustomTextBoxIndexedAnimation_getWidth);
+}
 
 static void CustomTextBoxIndexedAnimation_initFields(CustomTextBoxIndexedAnimation* this) {
     
@@ -71,25 +213,26 @@ static void CustomTextBoxIndexedAnimation_initFields(CustomTextBoxIndexedAnimati
 
 
 void CustomTextBoxIndexedAnimation_init(CustomTextBoxIndexedAnimation* this, CustomTextBox* customTextBox) {
+    CustomTextBoxIndexedAnimation_register();
         IndexedAnimation_init(&this->base, AnimationBehavior_getInstance());
         CustomTextBoxIndexedAnimation_initFields(this);
         this->customTextBox = customTextBox;
 }
 
 CustomTextBoxIndexedAnimation* CustomTextBoxIndexedAnimation_new(CustomTextBox* customTextBox) {
-    CustomTextBoxIndexedAnimation* this = calloc(1, sizeof(CustomTextBoxIndexedAnimation));
+    CustomTextBoxIndexedAnimation* this = java_object_alloc(sizeof(CustomTextBoxIndexedAnimation), "CustomTextBoxIndexedAnimation");
     CustomTextBoxIndexedAnimation_init(this, customTextBox);
     return this;
 }
 
 
 void CustomTextBoxIndexedAnimation_setBasicColorP(CustomTextBoxIndexedAnimation* this, BasicColor* basicColor) {
-        JAVA_CALL(CustomTextBox_getTextFieldItem(this->customTextBox), setForegroundBasicColorP, basicColor);
+        ABTextFieldItem_setForegroundBasicColorP(CustomTextBox_getTextFieldItem(this->customTextBox), basicColor);
 }
 
 
 void CustomTextBoxIndexedAnimation_setBackgroundBasicColorP(CustomTextBoxIndexedAnimation* this, BasicColor* basicColor) {
-        JAVA_CALL(CustomTextBox_getTextFieldItem(this->customTextBox), setBackgroundBasicColorP, basicColor);
+        ABTextFieldItem_setBackgroundBasicColorP(CustomTextBox_getTextFieldItem(this->customTextBox), basicColor);
 }
 
 
@@ -110,13 +253,13 @@ void CustomTextBoxIndexedAnimation_setText(CustomTextBoxIndexedAnimation* this, 
         if (this->lastText != text) {
             this->hasChanged = true;
             this->lastText = text;
-            JAVA_CALL(CustomTextBox_getTextFieldItem(this->customTextBox), setString, text);
+            ABTextFieldItem_setString(CustomTextBox_getTextFieldItem(this->customTextBox), text);
         }
 }
 
 
 const char* CustomTextBoxIndexedAnimation_getText(CustomTextBoxIndexedAnimation* this) {
-        return JAVA_CALL(CustomTextBox_getTextFieldItem(this->customTextBox), getString);
+        return ABTextFieldItem_getString(CustomTextBox_getTextFieldItem(this->customTextBox));
 }
 
 
@@ -126,7 +269,7 @@ void CustomTextBoxIndexedAnimation_onEventRaw(CustomTextBoxIndexedAnimation* thi
 
 
 int32_t CustomTextBoxIndexedAnimation_getFontHeight(CustomTextBoxIndexedAnimation* this) {
-        return JAVA_CALL(CustomTextBox_getTextFieldItem(this->customTextBox), getFontHeight);
+        return ABTextFieldItem_getFontHeight(CustomTextBox_getTextFieldItem(this->customTextBox));
 }
 
 

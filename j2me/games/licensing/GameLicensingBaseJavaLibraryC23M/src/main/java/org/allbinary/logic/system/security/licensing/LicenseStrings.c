@@ -1,42 +1,26 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.system.security.licensing
+#include "org/allbinary/logic/system/security/licensing/LicenseStrings.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct LicenseStrings LicenseStrings;
-struct LicenseStrings {
-    const char* LOCKED;
-};
 
 static LicenseStrings* LicenseStrings_instance;
 
-LicenseStrings* LicenseStrings_new(void);
-LicenseStrings* LicenseStrings_getInstance(void);
 
-// Static fields with runtime initializers: call this once at startup
 void LicenseStrings_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     LicenseStrings_instance = LicenseStrings_new();
+}
+
+void LicenseStrings_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("LicenseStrings", nullptr);
 }
 
 static void LicenseStrings_initFields(LicenseStrings* this) {
@@ -44,17 +28,18 @@ static void LicenseStrings_initFields(LicenseStrings* this) {
 }
 
 void LicenseStrings_init(LicenseStrings* this) {
+    LicenseStrings_register();
     LicenseStrings_initFields(this);
 }
 
 LicenseStrings* LicenseStrings_new(void) {
-    LicenseStrings* this = calloc(1, sizeof(LicenseStrings));
+    LicenseStrings* this = java_object_alloc(sizeof(LicenseStrings), "LicenseStrings");
     LicenseStrings_init(this);
     return this;
 }
 
 
 LicenseStrings* LicenseStrings_getInstance(void) {
-        return LicenseStrings_instance;
+        return (LicenseStrings_staticInit(), LicenseStrings_instance);
 }
 

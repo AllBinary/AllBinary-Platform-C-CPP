@@ -1,51 +1,51 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation.compound
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/animation/compound/CompoundAnimationInterfaceFactory.h"
 #include "org/allbinary/animation/Animation.h"
 #include "org/allbinary/animation/AnimationBehaviorFactory.h"
-#include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
 #include "org/allbinary/animation/NullAnimationFactory.h"
-#include "org/allbinary/logic/communication/log/ForcedLogUtil.h"
 #include "org/allbinary/media/ScaleProperties.h"
+#if __has_include("org/allbinary/animation/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/animation/NullAnimationFactory.h")
+#include "org/allbinary/animation/NullAnimationFactory.h"
+#endif
+#if __has_include("org/allbinary/animation/NullAnimationFactory.h")
+#include "org/allbinary/animation/NullAnimationFactory.h"
+#endif
+#if __has_include("org/allbinary/animation/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
+#endif
 
-typedef struct CompoundAnimationInterfaceFactory CompoundAnimationInterfaceFactory;
-struct CompoundAnimationInterfaceFactory {
-    AnimationInterfaceFactoryInterface AnimationInterfaceFactoryInterface_interface;
-    AnimationInterfaceFactoryInterface** basicAnimationInterfaceFactoryInterfaceArrayP;
-    AnimationBehaviorFactory* animationBehaviorFactory;
-};
 
 
-CompoundAnimationInterfaceFactory* CompoundAnimationInterfaceFactory_new(AnimationInterfaceFactoryInterface** basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory* animationBehaviorFactory);
 
-void CompoundAnimationInterfaceFactory_init(CompoundAnimationInterfaceFactory* this, AnimationInterfaceFactoryInterface** basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory* animationBehaviorFactory);
-Animation* CompoundAnimationInterfaceFactory_getInstance(CompoundAnimationInterfaceFactory* this, int32_t instanceId);
-Animation** CompoundAnimationInterfaceFactory_createArray(CompoundAnimationInterfaceFactory* this, int32_t size);
-Animation* CompoundAnimationInterfaceFactory_createAnimation(CompoundAnimationInterfaceFactory* this, Animation** animationInterfaceArray);
-AnimationInterfaceFactoryInterface** CompoundAnimationInterfaceFactory_getBasicAnimationInterfaceFactoryInterfaceArray(CompoundAnimationInterfaceFactory* this);
-void CompoundAnimationInterfaceFactory_setInitialScale(CompoundAnimationInterfaceFactory* this, ScaleProperties* scaleProperties);
+
+
+
+
+
+void CompoundAnimationInterfaceFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void CompoundAnimationInterfaceFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("CompoundAnimationInterfaceFactory", nullptr);
+    java_register_method("CompoundAnimationInterfaceFactory", "getInstance", (void*) CompoundAnimationInterfaceFactory_getInstance);
+    java_register_method("CompoundAnimationInterfaceFactory", "createArray", (void*) CompoundAnimationInterfaceFactory_createArray);
+    java_register_method("CompoundAnimationInterfaceFactory", "createAnimation", (void*) CompoundAnimationInterfaceFactory_createAnimation);
+    java_register_method("CompoundAnimationInterfaceFactory", "getBasicAnimationInterfaceFactoryInterfaceArray", (void*) CompoundAnimationInterfaceFactory_getBasicAnimationInterfaceFactoryInterfaceArray);
+    java_register_method("CompoundAnimationInterfaceFactory", "setInitialScale", (void*) CompoundAnimationInterfaceFactory_setInitialScale);
+}
 
 static void CompoundAnimationInterfaceFactory_initFields(CompoundAnimationInterfaceFactory* this) {
     
@@ -54,13 +54,14 @@ static void CompoundAnimationInterfaceFactory_initFields(CompoundAnimationInterf
 
 
 void CompoundAnimationInterfaceFactory_init(CompoundAnimationInterfaceFactory* this, AnimationInterfaceFactoryInterface** basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory* animationBehaviorFactory) {
+    CompoundAnimationInterfaceFactory_register();
     CompoundAnimationInterfaceFactory_initFields(this);
         this->basicAnimationInterfaceFactoryInterfaceArrayP = basicAnimationInterfaceFactoryInterfaceArray;
         this->animationBehaviorFactory = animationBehaviorFactory;
 }
 
 CompoundAnimationInterfaceFactory* CompoundAnimationInterfaceFactory_new(AnimationInterfaceFactoryInterface** basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory* animationBehaviorFactory) {
-    CompoundAnimationInterfaceFactory* this = calloc(1, sizeof(CompoundAnimationInterfaceFactory));
+    CompoundAnimationInterfaceFactory* this = java_object_alloc(sizeof(CompoundAnimationInterfaceFactory), "CompoundAnimationInterfaceFactory");
     CompoundAnimationInterfaceFactory_init(this, basicAnimationInterfaceFactoryInterfaceArray, animationBehaviorFactory);
     return this;
 }
@@ -71,7 +72,7 @@ Animation* CompoundAnimationInterfaceFactory_getInstance(CompoundAnimationInterf
         int32_t size = java_array_length(this->basicAnimationInterfaceFactoryInterfaceArrayP);
         Animation** animationInterfaceArray = CompoundAnimationInterfaceFactory_createArray(this, size);
         for (int32_t index = 0; index < size; index++) {
-            animationInterfaceArray[index] = JAVA_CALL(this->basicAnimationInterfaceFactoryInterfaceArrayP[index], getInstance, instanceId);
+            animationInterfaceArray[index] = AnimationInterfaceFactoryInterface_getInstance(this->basicAnimationInterfaceFactoryInterfaceArrayP[index], instanceId);
         }
         return CompoundAnimationInterfaceFactory_createAnimation(this, animationInterfaceArray);
 }
@@ -83,7 +84,7 @@ Animation** CompoundAnimationInterfaceFactory_createArray(CompoundAnimationInter
 
 
 Animation* CompoundAnimationInterfaceFactory_createAnimation(CompoundAnimationInterfaceFactory* this, Animation** animationInterfaceArray) {
-        return JAVA_CALL(NullAnimationFactory_getFactoryInstance(), getInstance, 0);
+        return NullAnimationFactory_getInstance(NullAnimationFactory_getFactoryInstance(), 0);
 }
 
 
@@ -95,7 +96,7 @@ AnimationInterfaceFactoryInterface** CompoundAnimationInterfaceFactory_getBasicA
 void CompoundAnimationInterfaceFactory_setInitialScale(CompoundAnimationInterfaceFactory* this, ScaleProperties* scaleProperties) {
         int32_t size = java_array_length(this->basicAnimationInterfaceFactoryInterfaceArrayP);
         for (int32_t index = 0; index < size; index++) {
-            JAVA_CALL(this->basicAnimationInterfaceFactoryInterfaceArrayP[index], setInitialScale, scaleProperties);
+            AnimationInterfaceFactoryInterface_setInitialScale(this->basicAnimationInterfaceFactoryInterfaceArrayP[index], scaleProperties);
         }
 }
 

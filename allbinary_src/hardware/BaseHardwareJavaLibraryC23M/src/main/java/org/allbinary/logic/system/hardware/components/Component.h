@@ -37,6 +37,8 @@ Component* Component_new(const char* componentName);
 void Component_init(Component* this, const char* componentName);
 
 const char* Component_toString(Component* this);
+#define Component_new1 Component_new
+#define Component_init1 Component_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void Component_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

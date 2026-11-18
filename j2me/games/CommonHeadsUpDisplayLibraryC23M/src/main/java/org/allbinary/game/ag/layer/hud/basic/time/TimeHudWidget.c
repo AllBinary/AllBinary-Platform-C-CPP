@@ -1,56 +1,46 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.ag.layer.hud.basic.time
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Font.h"
-// #include "javax/microedition/lcdui/Graphics.h"
-#include "org/allbinary/game/graphics/hud/BasicHud.h"
+#include "org/allbinary/game/ag/layer/hud/basic/time/TimeHudWidget.h"
+#include "javax/microedition/lcdui/Font.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
 #include "org/allbinary/graphics/font/MyFontProcessor.h"
 #include "org/allbinary/logic/math/PrimitiveLongSingleton.h"
-
-typedef struct TimeHudWidget TimeHudWidget;
-struct TimeHudWidget {
-    BasicHud base;
-    const char* TIME_STRING;
-    uint16_t* TIME_CHAR_ARRAY;
-    int32_t offset;
-    uint16_t* string;
-    int32_t totalDigits;
-    HudTimer* timer;
-};
+#include "org/allbinary/game/ag/layer/hud/basic/time/HudTimer.h"
+#if __has_include("org/allbinary/logic/math/PrimitiveLongSingleton.h")
+#include "org/allbinary/logic/math/PrimitiveLongSingleton.h"
+#endif
 
 
-TimeHudWidget* TimeHudWidget_new(int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor, HudTimer* timer);
-TimeHudWidget* TimeHudWidget_getInstance(int32_t location, int32_t direction, BasicColor* basicColor, HudTimer* timer);
 
-void TimeHudWidget_init(TimeHudWidget* this, int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor, HudTimer* timer);
-void TimeHudWidget_updateMeasurement(TimeHudWidget* this, Graphics* graphics);
-void TimeHudWidget_update(TimeHudWidget* this);
+
+
+
+
 static void TimeHudWidget_set(TimeHudWidget* this);
-HudTimer* TimeHudWidget_getTimer(TimeHudWidget* this);
-void TimeHudWidget_paint(TimeHudWidget* this, Graphics* graphics);
+
+
+
+void TimeHudWidget_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void TimeHudWidget_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("TimeHudWidget", "BasicHud");
+    java_register_method("TimeHudWidget", "updateMeasurement", (void*) TimeHudWidget_updateMeasurement);
+    java_register_method("TimeHudWidget", "update", (void*) TimeHudWidget_update);
+    java_register_method("TimeHudWidget", "set", (void*) TimeHudWidget_set);
+    java_register_method("TimeHudWidget", "getTimer", (void*) TimeHudWidget_getTimer);
+    java_register_method("TimeHudWidget", "paint", (void*) TimeHudWidget_paint);
+}
 
 static void TimeHudWidget_initFields(TimeHudWidget* this) {
     this->TIME_STRING = "Time ";
@@ -69,15 +59,16 @@ TimeHudWidget* TimeHudWidget_getInstance(int32_t location, int32_t direction, Ba
 
 
 void TimeHudWidget_init(TimeHudWidget* this, int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor, HudTimer* timer) {
+    TimeHudWidget_register();
         BasicHud_init(&this->base, location, direction, bufferZone, basicColor);
         TimeHudWidget_initFields(this);
         this->timer = timer;
         TimeHudWidget_set(this);
-        this->updateMaxHeight = 14;
+        this->base.updateMaxHeight = 14;
 }
 
 TimeHudWidget* TimeHudWidget_new(int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor, HudTimer* timer) {
-    TimeHudWidget* this = calloc(1, sizeof(TimeHudWidget));
+    TimeHudWidget* this = java_object_alloc(sizeof(TimeHudWidget), "TimeHudWidget");
     TimeHudWidget_init(this, location, direction, bufferZone, basicColor, timer);
     return this;
 }
@@ -85,7 +76,7 @@ TimeHudWidget* TimeHudWidget_new(int32_t location, int32_t direction, int32_t bu
 
 void TimeHudWidget_updateMeasurement(TimeHudWidget* this, Graphics* graphics) {
         Font* font = Graphics_getFont(graphics);
-        this->updateMaxWidth = Font_getSize(font) * 5;
+        this->base.updateMaxWidth = Font_getSize(font) * 5;
         this->offset = Font_stringWidth(font, this->TIME_STRING) + MyFontProcessor_defaultStringWidth(font, 3);
         BasicHud_updateMeasurement((&this->base), graphics);
 }

@@ -48,6 +48,8 @@ const char* SoftwareInformation_getVersion(SoftwareInformation* this);
 const char* SoftwareInformation_toShortString(SoftwareInformation* this);
 
 const char* SoftwareInformation_toString(SoftwareInformation* this);
+#define SoftwareInformation_new3 SoftwareInformation_new
+#define SoftwareInformation_init3 SoftwareInformation_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void SoftwareInformation_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

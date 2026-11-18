@@ -1,29 +1,31 @@
 // Generated Code Do Not Modify
-// package java.lang
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-//J2SE to J2ME compatibility
-typedef struct Deprecated Deprecated;
-struct Deprecated {
-    char unused;
-};
+#include "java/lang/Deprecated.h"
 
 
-Deprecated* Deprecated_new(void);
+
+void Deprecated_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void Deprecated_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("Deprecated", nullptr);
+}
 
 void Deprecated_init(Deprecated* this) {
+    Deprecated_register();
 }
 
 Deprecated* Deprecated_new(void) {
-    Deprecated* this = calloc(1, sizeof(Deprecated));
+    Deprecated* this = java_object_alloc(sizeof(Deprecated), "Deprecated");
     Deprecated_init(this);
     return this;
 }

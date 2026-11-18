@@ -1,0 +1,179 @@
+#ifndef ORG_ALLBINARY_ANIMATION_COMPOUND_SIMULTANEOUSCOMPOUNDROTATIONANIMATION_H
+#define ORG_ALLBINARY_ANIMATION_COMPOUND_SIMULTANEOUSCOMPOUNDROTATIONANIMATION_H
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation.compound
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+typedef struct GL GL;
+typedef struct Graphics Graphics;
+typedef struct AnimationBehavior AnimationBehavior;
+typedef struct RotationAnimation RotationAnimation;
+typedef struct Direction Direction;
+typedef struct PrimitiveIntUtil PrimitiveIntUtil;
+typedef struct Angle Angle;
+typedef struct AngleFactory AngleFactory;
+typedef struct AngleInfo AngleInfo;
+typedef struct CircularIndexUtil CircularIndexUtil;
+#include "org/allbinary/animation/RotationAnimation.h"
+
+typedef struct SimultaneousCompoundRotationAnimation SimultaneousCompoundRotationAnimation;
+struct SimultaneousCompoundRotationAnimation {
+    RotationAnimation base;
+    RotationAnimation** animationInterfaceArray;
+};
+
+
+SimultaneousCompoundRotationAnimation* SimultaneousCompoundRotationAnimation_new(RotationAnimation** animationInterfaceArray, AnimationBehavior* animationBehavior);
+
+void SimultaneousCompoundRotationAnimation_init(SimultaneousCompoundRotationAnimation* this, RotationAnimation** animationInterfaceArray, AnimationBehavior* animationBehavior);
+
+void SimultaneousCompoundRotationAnimation_setFrame(SimultaneousCompoundRotationAnimation* this, int32_t frameIndex);
+
+int32_t SimultaneousCompoundRotationAnimation_getFrame(SimultaneousCompoundRotationAnimation* this);
+
+int32_t SimultaneousCompoundRotationAnimation_getAnimationSize(SimultaneousCompoundRotationAnimation* this);
+
+int32_t SimultaneousCompoundRotationAnimation_getSize(SimultaneousCompoundRotationAnimation* this);
+
+void SimultaneousCompoundRotationAnimation_previousFrame(SimultaneousCompoundRotationAnimation* this);
+
+void SimultaneousCompoundRotationAnimation_nextFrame(SimultaneousCompoundRotationAnimation* this);
+
+void SimultaneousCompoundRotationAnimation_previousRotation(SimultaneousCompoundRotationAnimation* this);
+
+void SimultaneousCompoundRotationAnimation_nextRotation(SimultaneousCompoundRotationAnimation* this);
+
+void SimultaneousCompoundRotationAnimation_setSequence(SimultaneousCompoundRotationAnimation* this, int32_t* sequence);
+
+int32_t* SimultaneousCompoundRotationAnimation_getSequence(SimultaneousCompoundRotationAnimation* this);
+
+void SimultaneousCompoundRotationAnimation_paintXY(SimultaneousCompoundRotationAnimation* this, Graphics* graphics, int32_t x, int32_t y);
+
+void SimultaneousCompoundRotationAnimation_paintThreedXYZ(SimultaneousCompoundRotationAnimation* this, Graphics* graphics, int32_t x, int32_t y, int32_t z);
+
+void SimultaneousCompoundRotationAnimation_setFrameByDirection(SimultaneousCompoundRotationAnimation* this, Direction* direction);
+
+void SimultaneousCompoundRotationAnimation_setFrameToAngle(SimultaneousCompoundRotationAnimation* this, Angle* angle);
+
+void SimultaneousCompoundRotationAnimation_adjustFrameToAngle(SimultaneousCompoundRotationAnimation* this, Angle* newAngle);
+
+void SimultaneousCompoundRotationAnimation_adjustFrame(SimultaneousCompoundRotationAnimation* this, int16_t angle);
+
+AngleInfo* SimultaneousCompoundRotationAnimation_getAngleInfoP(SimultaneousCompoundRotationAnimation* this);
+
+RotationAnimation** SimultaneousCompoundRotationAnimation_getAnimationInterfaceArray(SimultaneousCompoundRotationAnimation* this);
+
+void SimultaneousCompoundRotationAnimation_setAnimationInterfaceArray(SimultaneousCompoundRotationAnimation* this, RotationAnimation** animationInterfaceArray);
+
+void SimultaneousCompoundRotationAnimation_set(SimultaneousCompoundRotationAnimation* this, GL* gl);
+#define SimultaneousCompoundRotationAnimation_new2 SimultaneousCompoundRotationAnimation_new
+#define SimultaneousCompoundRotationAnimation_init2 SimultaneousCompoundRotationAnimation_init
+#ifndef SimultaneousCompoundRotationAnimation_nextRotationX
+#define SimultaneousCompoundRotationAnimation_nextRotationX RotationAnimation_nextRotationX
+#endif
+#ifndef SimultaneousCompoundRotationAnimation_previousRotationX
+#define SimultaneousCompoundRotationAnimation_previousRotationX RotationAnimation_previousRotationX
+#endif
+#ifndef SimultaneousCompoundRotationAnimation_nextRotationZ
+#define SimultaneousCompoundRotationAnimation_nextRotationZ RotationAnimation_nextRotationZ
+#endif
+#ifndef SimultaneousCompoundRotationAnimation_previousRotationZ
+#define SimultaneousCompoundRotationAnimation_previousRotationZ RotationAnimation_previousRotationZ
+#endif
+#ifndef SimultaneousCompoundRotationAnimation_toString
+#define SimultaneousCompoundRotationAnimation_toString RotationAnimation_toString
+#endif
+#ifndef SimultaneousCompoundRotationAnimation_getAnimationBehavior
+#define SimultaneousCompoundRotationAnimation_getAnimationBehavior IndexedAnimation_getAnimationBehavior
+#endif
+#ifndef SimultaneousCompoundRotationAnimation_reset
+#define SimultaneousCompoundRotationAnimation_reset IndexedAnimation_reset
+#endif
+#ifndef SimultaneousCompoundRotationAnimation_isLastFrame
+#define SimultaneousCompoundRotationAnimation_isLastFrame IndexedAnimation_isLastFrame
+#endif
+#ifndef SimultaneousCompoundRotationAnimation_setState
+#define SimultaneousCompoundRotationAnimation_setState IndexedAnimation_setState
+#endif
+#ifndef SimultaneousCompoundRotationAnimation_getWidth
+#define SimultaneousCompoundRotationAnimation_getWidth IndexedAnimation_getWidth
+#endif
+#ifndef SimultaneousCompoundRotationAnimation_getHeight
+#define SimultaneousCompoundRotationAnimation_getHeight IndexedAnimation_getHeight
+#endif
+#ifndef SimultaneousCompoundRotationAnimation_setAlpha
+#define SimultaneousCompoundRotationAnimation_setAlpha Animation_setAlpha
+#endif
+#ifndef SimultaneousCompoundRotationAnimation_isThreed
+#define SimultaneousCompoundRotationAnimation_isThreed Animation_isThreed
+#endif
+#ifndef SimultaneousCompoundRotationAnimation_getBasicColorP
+#define SimultaneousCompoundRotationAnimation_getBasicColorP Animation_getBasicColorP
+#endif
+#ifndef SimultaneousCompoundRotationAnimation_setBasicColorP
+#define SimultaneousCompoundRotationAnimation_setBasicColorP Animation_setBasicColorP
+#endif
+#ifndef SimultaneousCompoundRotationAnimation_setBackgroundBasicColorP
+#define SimultaneousCompoundRotationAnimation_setBackgroundBasicColorP Animation_setBackgroundBasicColorP
+#endif
+#ifndef SimultaneousCompoundRotationAnimation_getChangeBasicColor
+#define SimultaneousCompoundRotationAnimation_getChangeBasicColor Animation_getChangeBasicColor
+#endif
+#ifndef SimultaneousCompoundRotationAnimation_changeBasicColor
+#define SimultaneousCompoundRotationAnimation_changeBasicColor Animation_changeBasicColor
+#endif
+#ifndef SimultaneousCompoundRotationAnimation_getChangeColor
+#define SimultaneousCompoundRotationAnimation_getChangeColor Animation_getChangeColor
+#endif
+#ifndef SimultaneousCompoundRotationAnimation_getColor
+#define SimultaneousCompoundRotationAnimation_getColor Animation_getColor
+#endif
+#ifndef SimultaneousCompoundRotationAnimation_setScale
+#define SimultaneousCompoundRotationAnimation_setScale Animation_setScale
+#endif
+#ifndef SimultaneousCompoundRotationAnimation_setMaxScale
+#define SimultaneousCompoundRotationAnimation_setMaxScale Animation_setMaxScale
+#endif
+#ifndef SimultaneousCompoundRotationAnimation_setDx
+#define SimultaneousCompoundRotationAnimation_setDx Animation_setDx
+#endif
+#ifndef SimultaneousCompoundRotationAnimation_getDx
+#define SimultaneousCompoundRotationAnimation_getDx Animation_getDx
+#endif
+#ifndef SimultaneousCompoundRotationAnimation_setDy
+#define SimultaneousCompoundRotationAnimation_setDy Animation_setDy
+#endif
+#ifndef SimultaneousCompoundRotationAnimation_getDy
+#define SimultaneousCompoundRotationAnimation_getDy Animation_getDy
+#endif
+// Runs the Java static initialization of the class once. Reads of its static fields call it first.
+void SimultaneousCompoundRotationAnimation_staticInit(void);
+// Registers the class, its superclass, and its methods for the interface calls (java_register_method)
+void SimultaneousCompoundRotationAnimation_register(void);
+
+#if __has_include("org/allbinary/math/AngleInfo.h")
+#include "org/allbinary/math/AngleInfo.h"
+#endif
+
+#endif // ORG_ALLBINARY_ANIMATION_COMPOUND_SIMULTANEOUSCOMPOUNDROTATIONANIMATION_H

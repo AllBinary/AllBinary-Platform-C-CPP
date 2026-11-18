@@ -1,51 +1,42 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.tick
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/tick/TickableLayerProcessor.h"
 #include "org/allbinary/layer/AllBinaryLayer.h"
 #include "org/allbinary/layer/AllBinaryLayerManager.h"
-#include "org/allbinary/layer/LayerProcessor.h"
-
-typedef struct TickableLayerProcessor TickableLayerProcessor;
-struct TickableLayerProcessor {
-    LayerProcessor base;
-};
+#include "org/allbinary/game/tick/TickableLayerManager.h"
+#include "org/allbinary/game/tick/TickableInterface.h"
 
 
-TickableLayerProcessor* TickableLayerProcessor_new(void);
 
-void TickableLayerProcessor_init(TickableLayerProcessor* this);
-void TickableLayerProcessor_processAt(TickableLayerProcessor* this, AllBinaryLayerManager* allBinaryLayerManager, AllBinaryLayer* layerInterface, int32_t index);
-bool TickableLayerProcessor_isProcessorLayer(TickableLayerProcessor* this, AllBinaryLayer* layerInterface);
+
+
+
+void TickableLayerProcessor_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void TickableLayerProcessor_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("TickableLayerProcessor", "LayerProcessor");
+    java_register_method("TickableLayerProcessor", "processAt", (void*) TickableLayerProcessor_processAt);
+    java_register_method("TickableLayerProcessor", "isProcessorLayer", (void*) TickableLayerProcessor_isProcessorLayer);
+}
 
 
 void TickableLayerProcessor_init(TickableLayerProcessor* this) {
+    TickableLayerProcessor_register();
         LayerProcessor_init(&this->base, TickableLayerManager_new());
 }
 
 TickableLayerProcessor* TickableLayerProcessor_new(void) {
-    TickableLayerProcessor* this = calloc(1, sizeof(TickableLayerProcessor));
+    TickableLayerProcessor* this = java_object_alloc(sizeof(TickableLayerProcessor), "TickableLayerProcessor");
     TickableLayerProcessor_init(this);
     return this;
 }

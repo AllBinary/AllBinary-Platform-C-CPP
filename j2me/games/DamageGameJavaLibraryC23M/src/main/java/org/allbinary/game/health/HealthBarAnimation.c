@@ -1,49 +1,62 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.health
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-#include "org/allbinary/animation/Animation.h"
+#include "org/allbinary/game/health/HealthBarAnimation.h"
 #include "org/allbinary/game/graphics/hud/BasicHudFactory.h"
 #include "org/allbinary/graphics/color/BasicColorFactory.h"
 #include "org/allbinary/layer/AllBinaryLayer.h"
+#if __has_include("org/allbinary/game/health/ViewPositionBase.h")
+#include "org/allbinary/game/health/ViewPositionBase.h"
+#endif
+#if __has_include("org/allbinary/animation/ViewPositionBase.h")
+#include "org/allbinary/animation/ViewPositionBase.h"
+#endif
+#if __has_include("org/allbinary/game/graphics/hud/ViewPositionBase.h")
+#include "org/allbinary/game/graphics/hud/ViewPositionBase.h"
+#endif
+#if __has_include("org/allbinary/graphics/color/ViewPositionBase.h")
+#include "org/allbinary/graphics/color/ViewPositionBase.h"
+#endif
+#if __has_include("org/allbinary/layer/ViewPositionBase.h")
+#include "org/allbinary/layer/ViewPositionBase.h"
+#endif
+#if __has_include("org/allbinary/game/health/ViewPositionBase.h")
+#include "org/allbinary/game/health/ViewPositionBase.h"
+#endif
+#if __has_include("org/allbinary/animation/ViewPositionBase.h")
+#include "org/allbinary/animation/ViewPositionBase.h"
+#endif
+#if __has_include("org/allbinary/game/graphics/hud/ViewPositionBase.h")
+#include "org/allbinary/game/graphics/hud/ViewPositionBase.h"
+#endif
+#if __has_include("org/allbinary/graphics/color/ViewPositionBase.h")
+#include "org/allbinary/graphics/color/ViewPositionBase.h"
+#endif
+#if __has_include("org/allbinary/layer/ViewPositionBase.h")
+#include "org/allbinary/layer/ViewPositionBase.h"
+#endif
 
-typedef struct HealthBarAnimation HealthBarAnimation;
-struct HealthBarAnimation {
-    Animation base;
-    BasicColorFactory* basicColorFactory;
-    int32_t x2;
-    int32_t thickness;
-    int32_t location;
-    AllBinaryLayer* allbinaryLayer;
-};
 
 
-HealthBarAnimation* HealthBarAnimation_new(AllBinaryLayer* layerInterface, int32_t location);
 
-void HealthBarAnimation_init(HealthBarAnimation* this, AllBinaryLayer* layerInterface, int32_t location);
-void HealthBarAnimation_onHealthChange(HealthBarAnimation* this, int32_t newX2);
-int32_t HealthBarAnimation_getY(HealthBarAnimation* this);
+
+
+void HealthBarAnimation_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void HealthBarAnimation_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("HealthBarAnimation", "Animation");
+    java_register_method("HealthBarAnimation", "onHealthChange", (void*) HealthBarAnimation_onHealthChange);
+    java_register_method("HealthBarAnimation", "getY", (void*) HealthBarAnimation_getY);
+}
 
 static void HealthBarAnimation_initFields(HealthBarAnimation* this) {
     this->basicColorFactory = BasicColorFactory_getInstance();
@@ -55,6 +68,7 @@ static void HealthBarAnimation_initFields(HealthBarAnimation* this) {
 
 
 void HealthBarAnimation_init(HealthBarAnimation* this, AllBinaryLayer* layerInterface, int32_t location) {
+    HealthBarAnimation_register();
     Animation_init(&this->base);
     HealthBarAnimation_initFields(this);
         this->allbinaryLayer = layerInterface;
@@ -73,7 +87,7 @@ void HealthBarAnimation_init(HealthBarAnimation* this, AllBinaryLayer* layerInte
 }
 
 HealthBarAnimation* HealthBarAnimation_new(AllBinaryLayer* layerInterface, int32_t location) {
-    HealthBarAnimation* this = calloc(1, sizeof(HealthBarAnimation));
+    HealthBarAnimation* this = java_object_alloc(sizeof(HealthBarAnimation), "HealthBarAnimation");
     HealthBarAnimation_init(this, layerInterface, location);
     return this;
 }
@@ -83,17 +97,17 @@ void HealthBarAnimation_onHealthChange(HealthBarAnimation* this, int32_t newX2) 
         this->x2 = newX2;
         int32_t quarter = (AllBinaryLayer_getWidth(this->allbinaryLayer) >> 2);
         if (this->x2 > quarter * 3) {
-            this->basicColor = this->basicColorFactory->GREEN;
-            this->colorP = JAVA_CALL(this->basicColor, intValue);
+            this->base.basicColor = this->basicColorFactory->GREEN;
+            this->base.colorP = BasicColor_intValue(this->base.basicColor);
         } else if (this->x2 > quarter * 2) {
-            this->basicColor = this->basicColorFactory->YELLOW;
-            this->colorP = JAVA_CALL(this->basicColor, intValue);
+            this->base.basicColor = this->basicColorFactory->YELLOW;
+            this->base.colorP = BasicColor_intValue(this->base.basicColor);
         } else if (this->x2 > quarter) {
-            this->basicColor = this->basicColorFactory->ORANGE;
-            this->colorP = JAVA_CALL(this->basicColor, intValue);
+            this->base.basicColor = this->basicColorFactory->ORANGE;
+            this->base.colorP = BasicColor_intValue(this->base.basicColor);
         } else {
-            this->basicColor = this->basicColorFactory->RED;
-            this->colorP = JAVA_CALL(this->basicColor, intValue);
+            this->base.basicColor = this->basicColorFactory->RED;
+            this->base.colorP = BasicColor_intValue(this->base.basicColor);
         }
 }
 
@@ -101,9 +115,9 @@ void HealthBarAnimation_onHealthChange(HealthBarAnimation* this, int32_t newX2) 
 int32_t HealthBarAnimation_getY(HealthBarAnimation* this) {
         BasicHudFactory* basicHudFactory = BasicHudFactory_getInstance();
         if (this->location == basicHudFactory->TOPLEFT) {
-            return JAVA_CALL(AllBinaryLayer_getViewPosition(this->allbinaryLayer), getY) - 4;
+            return GPoint_getY(AllBinaryLayer_getViewPosition(this->allbinaryLayer)) - 4;
         } else if (this->location == basicHudFactory->BOTTOMLEFT) {
-            return JAVA_CALL(AllBinaryLayer_getViewPosition(this->allbinaryLayer), getY2) + 4;
+            return ViewPositionBase_getY2(AllBinaryLayer_getViewPosition(this->allbinaryLayer)) + 4;
         }
         return -1;
 }

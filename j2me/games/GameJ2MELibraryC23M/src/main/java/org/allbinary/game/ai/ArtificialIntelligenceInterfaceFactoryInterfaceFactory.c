@@ -1,49 +1,41 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.ai
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/ai/ArtificialIntelligenceInterfaceFactoryInterfaceFactory.h"
 #include "org/allbinary/util/ABHashtable.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
 #include "org/allbinary/util/BasicArrayListUtil.h"
+#include "org/allbinary/game/ai/BasicAI.h"
+#include "org/allbinary/game/ai/ArtificialIntelligenceInterfaceFactoryInterface.h"
+#if __has_include("org/allbinary/util/BasicArrayListUtil.h")
+#include "org/allbinary/util/BasicArrayListUtil.h"
+#endif
 
-typedef struct ArtificialIntelligenceInterfaceFactoryInterfaceFactory ArtificialIntelligenceInterfaceFactoryInterfaceFactory;
-struct ArtificialIntelligenceInterfaceFactoryInterfaceFactory {
-    BasicArrayList* list;
-};
 
 static ArtificialIntelligenceInterfaceFactoryInterfaceFactory* ArtificialIntelligenceInterfaceFactoryInterfaceFactory_SINGLETON;
 
-ArtificialIntelligenceInterfaceFactoryInterfaceFactory* ArtificialIntelligenceInterfaceFactoryInterfaceFactory_new(void);
-void ArtificialIntelligenceInterfaceFactoryInterfaceFactory_clear(ArtificialIntelligenceInterfaceFactoryInterfaceFactory* this);
-ArtificialIntelligenceInterfaceFactoryInterfaceFactory* ArtificialIntelligenceInterfaceFactoryInterfaceFactory_getInstance(void);
-ArtificialIntelligenceInterfaceFactoryInterface* ArtificialIntelligenceInterfaceFactoryInterfaceFactory_getInstanceFromCollection(ArtificialIntelligenceInterfaceFactoryInterfaceFactory* this, ABHashtable* hashtable);
-void ArtificialIntelligenceInterfaceFactoryInterfaceFactory_add(ArtificialIntelligenceInterfaceFactoryInterfaceFactory* this, ArtificialIntelligenceInterfaceFactoryInterface* artificialIntelligenceInterfaceFactoryInterface);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
 void ArtificialIntelligenceInterfaceFactoryInterfaceFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     ArtificialIntelligenceInterfaceFactoryInterfaceFactory_SINGLETON = ArtificialIntelligenceInterfaceFactoryInterfaceFactory_new();
+}
+
+void ArtificialIntelligenceInterfaceFactoryInterfaceFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ArtificialIntelligenceInterfaceFactoryInterfaceFactory", nullptr);
+    java_register_method("ArtificialIntelligenceInterfaceFactoryInterfaceFactory", "clear", (void*) ArtificialIntelligenceInterfaceFactoryInterfaceFactory_clear);
+    java_register_method("ArtificialIntelligenceInterfaceFactoryInterfaceFactory", "getInstanceFromCollection", (void*) ArtificialIntelligenceInterfaceFactoryInterfaceFactory_getInstanceFromCollection);
+    java_register_method("ArtificialIntelligenceInterfaceFactoryInterfaceFactory", "add", (void*) ArtificialIntelligenceInterfaceFactoryInterfaceFactory_add);
 }
 
 static void ArtificialIntelligenceInterfaceFactoryInterfaceFactory_initFields(ArtificialIntelligenceInterfaceFactoryInterfaceFactory* this) {
@@ -51,11 +43,12 @@ static void ArtificialIntelligenceInterfaceFactoryInterfaceFactory_initFields(Ar
 }
 
 void ArtificialIntelligenceInterfaceFactoryInterfaceFactory_init(ArtificialIntelligenceInterfaceFactoryInterfaceFactory* this) {
+    ArtificialIntelligenceInterfaceFactoryInterfaceFactory_register();
     ArtificialIntelligenceInterfaceFactoryInterfaceFactory_initFields(this);
 }
 
 ArtificialIntelligenceInterfaceFactoryInterfaceFactory* ArtificialIntelligenceInterfaceFactoryInterfaceFactory_new(void) {
-    ArtificialIntelligenceInterfaceFactoryInterfaceFactory* this = calloc(1, sizeof(ArtificialIntelligenceInterfaceFactoryInterfaceFactory));
+    ArtificialIntelligenceInterfaceFactoryInterfaceFactory* this = java_object_alloc(sizeof(ArtificialIntelligenceInterfaceFactoryInterfaceFactory), "ArtificialIntelligenceInterfaceFactoryInterfaceFactory");
     ArtificialIntelligenceInterfaceFactoryInterfaceFactory_init(this);
     return this;
 }
@@ -67,12 +60,12 @@ void ArtificialIntelligenceInterfaceFactoryInterfaceFactory_clear(ArtificialInte
 
 
 ArtificialIntelligenceInterfaceFactoryInterfaceFactory* ArtificialIntelligenceInterfaceFactoryInterfaceFactory_getInstance(void) {
-        return ArtificialIntelligenceInterfaceFactoryInterfaceFactory_SINGLETON;
+        return (ArtificialIntelligenceInterfaceFactoryInterfaceFactory_staticInit(), ArtificialIntelligenceInterfaceFactoryInterfaceFactory_SINGLETON);
 }
 
 
 ArtificialIntelligenceInterfaceFactoryInterface* ArtificialIntelligenceInterfaceFactoryInterfaceFactory_getInstanceFromCollection(ArtificialIntelligenceInterfaceFactoryInterfaceFactory* this, ABHashtable* hashtable) {
-        int32_t typeInteger = ((int32_t) ABHashtable_get(hashtable, ((Any*) BasicAI_ID)));
+        int32_t typeInteger = ((int32_t) Hashtable_get(hashtable, ((void*) (BasicAI_staticInit(), BasicAI_ID))));
         int32_t type = Integer_intValue(typeInteger);
         ArtificialIntelligenceInterfaceFactoryInterface* artificialIntelligenceInterfaceFactoryInterface = ((ArtificialIntelligenceInterfaceFactoryInterface*) this->list->objectArray[type - 1]);
         return artificialIntelligenceInterfaceFactoryInterface;

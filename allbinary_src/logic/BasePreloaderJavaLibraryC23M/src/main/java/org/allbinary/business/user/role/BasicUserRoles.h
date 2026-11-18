@@ -51,5 +51,8 @@ void BasicUserRoles_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)
 void BasicUserRoles_register(void);
 
+#if __has_include("org/allbinary/util/BasicArrayList.h")
+#include "org/allbinary/util/BasicArrayList.h"
+#endif
 
 #endif // ORG_ALLBINARY_BUSINESS_USER_ROLE_BASICUSERROLES_H

@@ -2,6 +2,9 @@
 #include "org/allbinary/logic/system/hardware/components/ComponentFactory.h"
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/logic/system/hardware/components/Component.h"
+#if __has_include("org/allbinary/string/CommonStrings.h")
+#include "org/allbinary/string/CommonStrings.h"
+#endif
 
 
 static ComponentFactory* ComponentFactory_instance;

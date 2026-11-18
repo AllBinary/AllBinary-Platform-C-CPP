@@ -3,6 +3,15 @@
 #include "org/allbinary/logic/NullUtil.h"
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/logic/communication/log/LogFormatUtil.h"
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/string/CommonStrings.h")
+#include "org/allbinary/string/CommonStrings.h"
+#endif
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
 
 
 static const char* PreLogUtil_LOG_SUCCESS = "org.allbinary: ";

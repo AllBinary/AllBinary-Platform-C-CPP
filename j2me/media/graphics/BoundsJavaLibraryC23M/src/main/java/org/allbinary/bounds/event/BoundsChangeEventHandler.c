@@ -1,64 +1,50 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.bounds.event
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/bounds/event/BoundsChangeEventHandler.h"
 #include "org/allbinary/logic/util/event/AllBinaryEventObject.h"
 #include "org/allbinary/logic/util/event/EventListenerInterface.h"
-#include "org/allbinary/logic/util/event/handler/BasicEventHandler.h"
+#include "org/allbinary/bounds/event/BoundsChangeEventListener.h"
+#include "org/allbinary/bounds/event/BoundsChangeEvent.h"
 
-typedef struct BoundsChangeEventHandler BoundsChangeEventHandler;
-struct BoundsChangeEventHandler {
-    BasicEventHandler base;
-};
 
 static BasicEventHandler* BoundsChangeEventHandler_SINGLETON;
 
-BoundsChangeEventHandler* BoundsChangeEventHandler_new(void);
 
-void BoundsChangeEventHandler_init(BoundsChangeEventHandler* this);
-BasicEventHandler* BoundsChangeEventHandler_getInstance(void);
-void BoundsChangeEventHandler_process(BoundsChangeEventHandler* this, AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
 
-// Static fields with runtime initializers: call this once at startup
+
 void BoundsChangeEventHandler_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     BoundsChangeEventHandler_SINGLETON = BoundsChangeEventHandler_new();
+}
+
+void BoundsChangeEventHandler_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("BoundsChangeEventHandler", "BasicEventHandler");
+    java_register_method("BoundsChangeEventHandler", "process", (void*) BoundsChangeEventHandler_process);
 }
 
 
 void BoundsChangeEventHandler_init(BoundsChangeEventHandler* this) {
+    BoundsChangeEventHandler_register();
     BasicEventHandler_init(&this->base);
 }
 
 BoundsChangeEventHandler* BoundsChangeEventHandler_new(void) {
-    BoundsChangeEventHandler* this = calloc(1, sizeof(BoundsChangeEventHandler));
+    BoundsChangeEventHandler* this = java_object_alloc(sizeof(BoundsChangeEventHandler), "BoundsChangeEventHandler");
     BoundsChangeEventHandler_init(this);
     return this;
 }
 
 
 BasicEventHandler* BoundsChangeEventHandler_getInstance(void) {
-        return BoundsChangeEventHandler_SINGLETON;
+        return (BoundsChangeEventHandler_staticInit(), BoundsChangeEventHandler_SINGLETON);
 }
 
 

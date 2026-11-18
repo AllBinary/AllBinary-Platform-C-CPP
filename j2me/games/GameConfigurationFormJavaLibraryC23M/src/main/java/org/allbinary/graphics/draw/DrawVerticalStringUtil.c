@@ -1,30 +1,7 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.draw
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Font.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/graphics/draw/DrawVerticalStringUtil.h"
+#include "javax/microedition/lcdui/Font.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/AndroidUtil.h"
 #include "org/allbinary/J2MEUtil.h"
 #include "org/allbinary/graphics/Anchor.h"
@@ -33,51 +10,89 @@
 #include "org/allbinary/logic/communication/log/PreLogUtil.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/logic/string/StringUtil.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("javax/microedition/lcdui/Font.h")
+#include "javax/microedition/lcdui/Font.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("javax/microedition/lcdui/Font.h")
+#include "javax/microedition/lcdui/Font.h"
+#endif
 
-typedef struct DrawVerticalStringUtil DrawVerticalStringUtil;
-struct DrawVerticalStringUtil {
-    const char* EMPTY_STRING;
-    int32_t anchor;
-    int32_t charHeight;
-    int32_t offsetY;
-    int32_t* offsetXArray;
-};
 
 static DrawVerticalStringUtil* DrawVerticalStringUtil_instance;
 
-DrawVerticalStringUtil* DrawVerticalStringUtil_new(void);
-DrawVerticalStringUtil* DrawVerticalStringUtil_getInstance(void);
-void DrawVerticalStringUtil_updateMeasurement(DrawVerticalStringUtil* this, Graphics* graphics, const char* string);
-void DrawVerticalStringUtil_paintVerticle(DrawVerticalStringUtil* this, Graphics* graphics, const char* string, int32_t x, int32_t y, int32_t anchor);
-void DrawVerticalStringUtil_drawCenterString(DrawVerticalStringUtil* this, Graphics* graphics, const char* string, int32_t offset, int32_t length, int32_t x, int32_t y);
-void DrawVerticalStringUtil_drawCenterStrings(DrawVerticalStringUtil* this, Graphics* graphics, const char** stringArray, int32_t maxWidth, int32_t x, int32_t y);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
 void DrawVerticalStringUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     DrawVerticalStringUtil_instance = DrawVerticalStringUtil_new();
+}
+
+void DrawVerticalStringUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("DrawVerticalStringUtil", nullptr);
+    java_register_method("DrawVerticalStringUtil", "updateMeasurement", (void*) DrawVerticalStringUtil_updateMeasurement);
+    java_register_method("DrawVerticalStringUtil", "paintVerticle", (void*) DrawVerticalStringUtil_paintVerticle);
+    java_register_method("DrawVerticalStringUtil", "drawCenterString", (void*) DrawVerticalStringUtil_drawCenterString);
+    java_register_method("DrawVerticalStringUtil", "drawCenterStrings", (void*) DrawVerticalStringUtil_drawCenterStrings);
 }
 
 static void DrawVerticalStringUtil_initFields(DrawVerticalStringUtil* this) {
     this->EMPTY_STRING = StringUtil_getInstance()->EMPTY_STRING;
-    this->anchor = Anchor_TOP_LEFT;
+    this->anchor = (Anchor_staticInit(), Anchor_TOP_LEFT);
     this->charHeight = 0;
     this->offsetY = 0;
     this->offsetXArray = NullUtil_getInstance()->NULL_INT_ARRAY;
 }
 
 void DrawVerticalStringUtil_init(DrawVerticalStringUtil* this) {
+    DrawVerticalStringUtil_register();
     DrawVerticalStringUtil_initFields(this);
 }
 
 DrawVerticalStringUtil* DrawVerticalStringUtil_new(void) {
-    DrawVerticalStringUtil* this = calloc(1, sizeof(DrawVerticalStringUtil));
+    DrawVerticalStringUtil* this = java_object_alloc(sizeof(DrawVerticalStringUtil), "DrawVerticalStringUtil");
     DrawVerticalStringUtil_init(this);
     return this;
 }
 
 
 DrawVerticalStringUtil* DrawVerticalStringUtil_getInstance(void) {
-        return DrawVerticalStringUtil_instance;
+        return (DrawVerticalStringUtil_staticInit(), DrawVerticalStringUtil_instance);
 }
 
 
@@ -119,11 +134,11 @@ void DrawVerticalStringUtil_paintVerticle(DrawVerticalStringUtil* this, Graphics
 
 
 void DrawVerticalStringUtil_drawCenterString(DrawVerticalStringUtil* this, Graphics* graphics, const char* string, int32_t offset, int32_t length, int32_t x, int32_t y) {
-        int32_t width = (JAVA_CALL(Graphics_getFont(graphics), substringWidth, string, offset, length) >> 1);
+        int32_t width = (Font_substringWidth(Graphics_getFont(graphics), string, offset, length) >> 1);
         JAVA_TRY {
             Graphics_drawSubstring(graphics, string, offset, length, x - width, y, this->anchor);
         } JAVA_CATCH(Exception, e) {
-            PreLogUtil_put(JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), "Exception: stringLength: "), appendint, ((int32_t) strlen(string))), append, " offset: "), appendint, offset), append, " currentLength: "), appendint, length), toString), this, "drawCenterString");
+            PreLogUtil_put(java_string_of(StringMaker_appendint(StringMaker_append(StringMaker_appendint(StringMaker_append(StringMaker_appendint(StringMaker_append(StringMaker_new(), "Exception: stringLength: "), ((int32_t) strlen(string))), " offset: "), offset), " currentLength: "), length)), this, "drawCenterString");
         } JAVA_END_TRY;
 }
 
@@ -133,7 +148,7 @@ void DrawVerticalStringUtil_drawCenterStrings(DrawVerticalStringUtil* this, Grap
         for (int32_t index = 0; index < java_array_length(stringArray); index++) {
             const char* string = stringArray[index];
             if (string != this->EMPTY_STRING) {
-                int32_t width = JAVA_CALL(Graphics_getFont(graphics), stringWidth, string);
+                int32_t width = Font_stringWidth(Graphics_getFont(graphics), string);
                 int32_t minTotalLines = 1;
                 if (width > maxWidth) {
                     minTotalLines = (width / maxWidth) + 1;

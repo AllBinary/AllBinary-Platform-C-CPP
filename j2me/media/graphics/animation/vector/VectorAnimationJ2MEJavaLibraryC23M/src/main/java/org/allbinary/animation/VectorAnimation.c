@@ -1,69 +1,82 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
-// #include "javax/microedition/lcdui/NullImage.h"
+#include "org/allbinary/animation/VectorAnimation.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
 #include "org/allbinary/logic/NullUtil.h"
 #include "org/allbinary/logic/math/PrimitiveIntUtil.h"
 #include "org/allbinary/util/CircularIndexUtil.h"
 #include "org/allbinary/animation/IndexedAnimation.h"
 #include "org/allbinary/animation/VectorAnimationInterface.h"
+#include "org/allbinary/animation/AnimationBehavior.h"
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/graphics/color/BasicColor.h")
+#include "org/allbinary/graphics/color/BasicColor.h"
+#endif
+#if __has_include("org/allbinary/graphics/color/BasicColor.h")
+#include "org/allbinary/graphics/color/BasicColor.h"
+#endif
 
-typedef struct VectorAnimation VectorAnimation;
-struct VectorAnimation {
-    IndexedAnimation base;
-    VectorAnimationInterface VectorAnimationInterface_interface;
-    int32_t*** currentPoints;
-    CircularIndexUtil* circularIndexUtil;
-};
 
 
-VectorAnimation* VectorAnimation_new(int32_t*** currentPoints, BasicColor* basicColor, AnimationBehavior* animationBehavior);
-VectorAnimation* VectorAnimation_createVectorAnimation(int32_t** currentPoints2, BasicColor* basicColor, AnimationBehavior* animationBehavior);
 
-void VectorAnimation_init(VectorAnimation* this, int32_t*** currentPoints, BasicColor* basicColor, AnimationBehavior* animationBehavior);
-void VectorAnimation_setBasicColorP(VectorAnimation* this, BasicColor* basicColor);
-void VectorAnimation_changeBasicColor(VectorAnimation* this, BasicColor* basicColor);
-void VectorAnimation_setAlpha(VectorAnimation* this, int32_t alpha);
-void VectorAnimation_setScale(VectorAnimation* this, float scaleX, float scaleY);
-void VectorAnimation_setMaxScale(VectorAnimation* this, float maxScaleX, float maxScaleY);
+
+
+
+
+
+
 static void VectorAnimation_updateModifiers(VectorAnimation* this);
-int32_t VectorAnimation_getAnimationSize(VectorAnimation* this);
-int32_t VectorAnimation_getSize(VectorAnimation* this);
-void VectorAnimation_setSequence(VectorAnimation* this, int32_t* sequence);
-int32_t* VectorAnimation_getSequence(VectorAnimation* this);
-void VectorAnimation_nextFrame(VectorAnimation* this);
-void VectorAnimation_previousFrame(VectorAnimation* this);
-void VectorAnimation_paintVectors(VectorAnimation* this, Graphics* graphics, int32_t x, int32_t y);
-void VectorAnimation_paintXY(VectorAnimation* this, Graphics* graphics, int32_t x, int32_t y);
-int32_t VectorAnimation_getFrame(VectorAnimation* this);
-void VectorAnimation_setFrame(VectorAnimation* this, int32_t index);
-int32_t** VectorAnimation_getPoints(VectorAnimation* this, int32_t frame);
-void VectorAnimation_setPoints(VectorAnimation* this, int32_t*** currentPoints);
-BasicColor* VectorAnimation_getBasicColorP(VectorAnimation* this);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void VectorAnimation_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void VectorAnimation_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("VectorAnimation", "IndexedAnimation");
+    java_register_method("VectorAnimation", "setBasicColorP", (void*) VectorAnimation_setBasicColorP);
+    java_register_method("VectorAnimation", "changeBasicColor", (void*) VectorAnimation_changeBasicColor);
+    java_register_method("VectorAnimation", "setAlpha", (void*) VectorAnimation_setAlpha);
+    java_register_method("VectorAnimation", "setScale", (void*) VectorAnimation_setScale);
+    java_register_method("VectorAnimation", "setMaxScale", (void*) VectorAnimation_setMaxScale);
+    java_register_method("VectorAnimation", "updateModifiers", (void*) VectorAnimation_updateModifiers);
+    java_register_method("VectorAnimation", "getAnimationSize", (void*) VectorAnimation_getAnimationSize);
+    java_register_method("VectorAnimation", "getSize", (void*) VectorAnimation_getSize);
+    java_register_method("VectorAnimation", "setSequence", (void*) VectorAnimation_setSequence);
+    java_register_method("VectorAnimation", "getSequence", (void*) VectorAnimation_getSequence);
+    java_register_method("VectorAnimation", "nextFrame", (void*) VectorAnimation_nextFrame);
+    java_register_method("VectorAnimation", "previousFrame", (void*) VectorAnimation_previousFrame);
+    java_register_method("VectorAnimation", "paintVectors", (void*) VectorAnimation_paintVectors);
+    java_register_method("VectorAnimation", "paintXY", (void*) VectorAnimation_paintXY);
+    java_register_method("VectorAnimation", "getFrame", (void*) VectorAnimation_getFrame);
+    java_register_method("VectorAnimation", "setFrame", (void*) VectorAnimation_setFrame);
+    java_register_method("VectorAnimation", "getPoints", (void*) VectorAnimation_getPoints);
+    java_register_method("VectorAnimation", "setPoints", (void*) VectorAnimation_setPoints);
+    java_register_method("VectorAnimation", "getBasicColorP", (void*) VectorAnimation_getBasicColorP);
+}
 
 static void VectorAnimation_initFields(VectorAnimation* this) {
     this->currentPoints = NullUtil_getInstance()->NULL_INT_ARRAY_ARRAY_ARRAY;
@@ -83,6 +96,7 @@ VectorAnimation* VectorAnimation_createVectorAnimation(int32_t** currentPoints2,
 
 
 void VectorAnimation_init(VectorAnimation* this, int32_t*** currentPoints, BasicColor* basicColor, AnimationBehavior* animationBehavior) {
+    VectorAnimation_register();
         IndexedAnimation_init(&this->base, animationBehavior);
         VectorAnimation_initFields(this);
         VectorAnimation_setPoints(this, currentPoints);
@@ -90,7 +104,7 @@ void VectorAnimation_init(VectorAnimation* this, int32_t*** currentPoints, Basic
 }
 
 VectorAnimation* VectorAnimation_new(int32_t*** currentPoints, BasicColor* basicColor, AnimationBehavior* animationBehavior) {
-    VectorAnimation* this = calloc(1, sizeof(VectorAnimation));
+    VectorAnimation* this = java_object_alloc(sizeof(VectorAnimation), "VectorAnimation");
     VectorAnimation_init(this, currentPoints, basicColor, animationBehavior);
     return this;
 }
@@ -98,10 +112,10 @@ VectorAnimation* VectorAnimation_new(int32_t*** currentPoints, BasicColor* basic
 
 void VectorAnimation_setBasicColorP(VectorAnimation* this, BasicColor* basicColor) {
         bool changed = false;
-        if (VectorAnimation_getBasicColorP(this) == nullptr || JAVA_CALL(VectorAnimation_getBasicColorP(this), intValue) != BasicColor_intValue(basicColor)) {
+        if (VectorAnimation_getBasicColorP(this) == nullptr || BasicColor_intValue(VectorAnimation_getBasicColorP(this)) != BasicColor_intValue(basicColor)) {
             changed = true;
         }
-        IndexedAnimation_setBasicColorP((&this->base), basicColor);
+        Animation_setBasicColorP((&this->base), basicColor);
         if (changed) {
             VectorAnimation_updateModifiers(this);
         }
@@ -110,10 +124,10 @@ void VectorAnimation_setBasicColorP(VectorAnimation* this, BasicColor* basicColo
 
 void VectorAnimation_changeBasicColor(VectorAnimation* this, BasicColor* basicColor) {
         bool changed = false;
-        if (VectorAnimation_getChangeBasicColor(this) == nullptr || JAVA_CALL(VectorAnimation_getChangeBasicColor(this), intValue) != BasicColor_intValue(basicColor)) {
+        if (Animation_getChangeBasicColor(this) == nullptr || BasicColor_intValue(Animation_getChangeBasicColor(this)) != BasicColor_intValue(basicColor)) {
             changed = true;
         }
-        IndexedAnimation_changeBasicColor((&this->base), basicColor);
+        Animation_changeBasicColor((&this->base), basicColor);
         if (changed) {
             VectorAnimation_updateModifiers(this);
         }
@@ -122,10 +136,10 @@ void VectorAnimation_changeBasicColor(VectorAnimation* this, BasicColor* basicCo
 
 void VectorAnimation_setAlpha(VectorAnimation* this, int32_t alpha) {
         bool changed = false;
-        if (this->alphaP != alpha) {
+        if (this->base.base.alphaP != alpha) {
             changed = true;
         }
-        IndexedAnimation_setAlpha((&this->base), alpha);
+        Animation_setAlpha((&this->base), alpha);
         if (changed) {
             VectorAnimation_updateModifiers(this);
         }
@@ -195,13 +209,13 @@ void VectorAnimation_paintVectors(VectorAnimation* this, Graphics* graphics, int
                 }
             }
         } JAVA_CATCH(Exception, e) {
-            JAVA_CALL(this->logUtil, put, this->commonStrings->EXCEPTION, this, "paintVectors", e);
+            LogUtil_put(this->base.logUtil, this->base.commonStrings->EXCEPTION, this, "paintVectors", e);
         } JAVA_END_TRY;
 }
 
 
 void VectorAnimation_paintXY(VectorAnimation* this, Graphics* graphics, int32_t x, int32_t y) {
-        JAVA_CALL(this->basicSetColorUtil, setBasicColorP, graphics, this->basicColor);
+        BasicColorSetUtil_setBasicColorP(this->base.base.basicSetColorUtil, graphics, this->base.base.basicColor);
         VectorAnimation_paintVectors(this, graphics, x, y);
 }
 
@@ -228,6 +242,6 @@ void VectorAnimation_setPoints(VectorAnimation* this, int32_t*** currentPoints) 
 
 
 BasicColor* VectorAnimation_getBasicColorP(VectorAnimation* this) {
-        return IndexedAnimation_getBasicColorP((&this->base));
+        return Animation_getBasicColorP((&this->base));
 }
 

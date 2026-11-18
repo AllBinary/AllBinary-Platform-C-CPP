@@ -1,59 +1,44 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/NullIntermissionEnableListener.h"
 #include "org/allbinary/game/IntermissionEnableListenerInterface.h"
 
-typedef struct NullIntermissionEnableListener NullIntermissionEnableListener;
-struct NullIntermissionEnableListener {
-    IntermissionEnableListenerInterface IntermissionEnableListenerInterface_interface;
-};
 
 static IntermissionEnableListenerInterface* NullIntermissionEnableListener_SINGLETON;
 
-NullIntermissionEnableListener* NullIntermissionEnableListener_new(void);
-IntermissionEnableListenerInterface* NullIntermissionEnableListener_getInstance(void);
 
-void NullIntermissionEnableListener_init(NullIntermissionEnableListener* this);
-void NullIntermissionEnableListener_notifyIntermission(NullIntermissionEnableListener* this, bool enable);
 
-// Static fields with runtime initializers: call this once at startup
+
 void NullIntermissionEnableListener_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     NullIntermissionEnableListener_SINGLETON = NullIntermissionEnableListener_new();
+}
+
+void NullIntermissionEnableListener_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("NullIntermissionEnableListener", nullptr);
+    java_register_method("NullIntermissionEnableListener", "notifyIntermission", (void*) NullIntermissionEnableListener_notifyIntermission);
 }
 
 
 IntermissionEnableListenerInterface* NullIntermissionEnableListener_getInstance(void) {
-        return NullIntermissionEnableListener_SINGLETON;
+        return (NullIntermissionEnableListener_staticInit(), NullIntermissionEnableListener_SINGLETON);
 }
 
 
 void NullIntermissionEnableListener_init(NullIntermissionEnableListener* this) {
+    NullIntermissionEnableListener_register();
 }
 
 NullIntermissionEnableListener* NullIntermissionEnableListener_new(void) {
-    NullIntermissionEnableListener* this = calloc(1, sizeof(NullIntermissionEnableListener));
+    NullIntermissionEnableListener* this = java_object_alloc(sizeof(NullIntermissionEnableListener), "NullIntermissionEnableListener");
     NullIntermissionEnableListener_init(this);
     return this;
 }

@@ -1,43 +1,33 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.physics.acceleration
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct BasicAccelerationProperties BasicAccelerationProperties;
-struct BasicAccelerationProperties {
-    int32_t forward;
-    int32_t reverse;
-};
+#include "org/allbinary/game/physics/acceleration/BasicAccelerationProperties.h"
 
 
-BasicAccelerationProperties* BasicAccelerationProperties_new(int32_t forward, int32_t reverse);
 
-void BasicAccelerationProperties_init(BasicAccelerationProperties* this, int32_t forward, int32_t reverse);
-void BasicAccelerationProperties_setReverse(BasicAccelerationProperties* this, int32_t reverse);
-int32_t BasicAccelerationProperties_getReverse(BasicAccelerationProperties* this);
-void BasicAccelerationProperties_setForward(BasicAccelerationProperties* this, int32_t forward);
-int32_t BasicAccelerationProperties_getForward(BasicAccelerationProperties* this);
+
+
+
+
+
+void BasicAccelerationProperties_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void BasicAccelerationProperties_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("BasicAccelerationProperties", nullptr);
+    java_register_method("BasicAccelerationProperties", "setReverse", (void*) BasicAccelerationProperties_setReverse);
+    java_register_method("BasicAccelerationProperties", "getReverse", (void*) BasicAccelerationProperties_getReverse);
+    java_register_method("BasicAccelerationProperties", "setForward", (void*) BasicAccelerationProperties_setForward);
+    java_register_method("BasicAccelerationProperties", "getForward", (void*) BasicAccelerationProperties_getForward);
+}
 
 static void BasicAccelerationProperties_initFields(BasicAccelerationProperties* this) {
     this->forward = 0;
@@ -46,13 +36,14 @@ static void BasicAccelerationProperties_initFields(BasicAccelerationProperties* 
 
 
 void BasicAccelerationProperties_init(BasicAccelerationProperties* this, int32_t forward, int32_t reverse) {
+    BasicAccelerationProperties_register();
     BasicAccelerationProperties_initFields(this);
         BasicAccelerationProperties_setForward(this, forward);
         BasicAccelerationProperties_setReverse(this, reverse);
 }
 
 BasicAccelerationProperties* BasicAccelerationProperties_new(int32_t forward, int32_t reverse) {
-    BasicAccelerationProperties* this = calloc(1, sizeof(BasicAccelerationProperties));
+    BasicAccelerationProperties* this = java_object_alloc(sizeof(BasicAccelerationProperties), "BasicAccelerationProperties");
     BasicAccelerationProperties_init(this, forward, reverse);
     return this;
 }

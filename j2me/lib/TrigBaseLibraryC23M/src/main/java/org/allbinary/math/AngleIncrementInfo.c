@@ -4,6 +4,15 @@
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/math/AngleFactory.h"
 #include "org/allbinary/math/FrameUtil.h"
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/math/SmallIntegerSingletonFactory.h")
+#include "org/allbinary/logic/math/SmallIntegerSingletonFactory.h"
+#endif
 
 
 static const char* AngleIncrementInfo_INCREMENT = "Inc: ";

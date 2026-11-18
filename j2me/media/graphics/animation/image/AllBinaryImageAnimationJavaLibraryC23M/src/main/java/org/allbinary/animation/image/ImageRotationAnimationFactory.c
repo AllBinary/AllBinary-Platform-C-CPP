@@ -1,49 +1,44 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation.image
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Image.h"
+#include "org/allbinary/animation/image/ImageRotationAnimationFactory.h"
+#include "javax/microedition/lcdui/Image.h"
 #include "org/allbinary/animation/Animation.h"
 #include "org/allbinary/animation/AnimationBehaviorFactory.h"
-#include "org/allbinary/game/configuration/GameConfigurationCentral.h"
 #include "org/allbinary/logic/math/PrimitiveIntUtil.h"
 #include "org/allbinary/math/AngleFactory.h"
 #include "org/allbinary/math/AngleInfo.h"
 #include "org/allbinary/animation/image/BaseImageAnimationFactory.h"
+#include "org/allbinary/animation/image/ImageBaseRotationAnimation.h"
+#include "org/allbinary/animation/image/AdjustedImageBaseRotationAnimation.h"
+#if __has_include("org/allbinary/math/AngleFactory.h")
+#include "org/allbinary/math/AngleFactory.h"
+#endif
+#if __has_include("org/allbinary/math/AngleFactory.h")
+#include "org/allbinary/math/AngleFactory.h"
+#endif
 
-typedef struct ImageRotationAnimationFactory ImageRotationAnimationFactory;
-struct ImageRotationAnimationFactory {
-    BaseImageAnimationFactory base;
-    int16_t angleIncrement;
-};
 
 
-ImageRotationAnimationFactory* ImageRotationAnimationFactory_new(Image* image, int32_t width, int32_t height, int32_t dx, int32_t dy, int16_t angleIncrement, AnimationBehaviorFactory* animationBehaviorFactory);
 
-void ImageRotationAnimationFactory_init(ImageRotationAnimationFactory* this, Image* image, int32_t width, int32_t height, int32_t dx, int32_t dy, int16_t angleIncrement, AnimationBehaviorFactory* animationBehaviorFactory);
-Animation* ImageRotationAnimationFactory_getInstance(ImageRotationAnimationFactory* this, int32_t instanceId);
-int16_t ImageRotationAnimationFactory_getAngleIncrementP(ImageRotationAnimationFactory* this);
+
+
+void ImageRotationAnimationFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void ImageRotationAnimationFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ImageRotationAnimationFactory", "BaseImageAnimationFactory");
+    java_register_method("ImageRotationAnimationFactory", "getInstance", (void*) ImageRotationAnimationFactory_getInstance);
+    java_register_method("ImageRotationAnimationFactory", "getAngleIncrementP", (void*) ImageRotationAnimationFactory_getAngleIncrementP);
+}
 
 static void ImageRotationAnimationFactory_initFields(ImageRotationAnimationFactory* this) {
     
@@ -51,15 +46,16 @@ static void ImageRotationAnimationFactory_initFields(ImageRotationAnimationFacto
 
 
 void ImageRotationAnimationFactory_init(ImageRotationAnimationFactory* this, Image* image, int32_t width, int32_t height, int32_t dx, int32_t dy, int16_t angleIncrement, AnimationBehaviorFactory* animationBehaviorFactory) {
+    ImageRotationAnimationFactory_register();
         BaseImageAnimationFactory_init(&this->base, image, PrimitiveIntUtil_getArrayInstance(), width, height, 0, 0, animationBehaviorFactory);
         ImageRotationAnimationFactory_initFields(this);
         this->angleIncrement = angleIncrement;
-        this->animationFactoryInitializationVisitor->dx = dx;
-        this->animationFactoryInitializationVisitor->dy = dy;
+        this->base.animationFactoryInitializationVisitor->dx = dx;
+        this->base.animationFactoryInitializationVisitor->dy = dy;
 }
 
 ImageRotationAnimationFactory* ImageRotationAnimationFactory_new(Image* image, int32_t width, int32_t height, int32_t dx, int32_t dy, int16_t angleIncrement, AnimationBehaviorFactory* animationBehaviorFactory) {
-    ImageRotationAnimationFactory* this = calloc(1, sizeof(ImageRotationAnimationFactory));
+    ImageRotationAnimationFactory* this = java_object_alloc(sizeof(ImageRotationAnimationFactory), "ImageRotationAnimationFactory");
     ImageRotationAnimationFactory_init(this, image, width, height, dx, dy, angleIncrement, animationBehaviorFactory);
     return this;
 }
@@ -67,11 +63,11 @@ ImageRotationAnimationFactory* ImageRotationAnimationFactory_new(Image* image, i
 
 // throws Exception
 Animation* ImageRotationAnimationFactory_getInstance(ImageRotationAnimationFactory* this, int32_t instanceId) {
-        if (this->animationFactoryInitializationVisitor->dx != 0 || this->animationFactoryInitializationVisitor->dy != 0) {
-            JAVA_CALL(this->animationFactoryImageScaleUtil, processAdjust, this);
-            return AdjustedImageBaseRotationAnimation_new(ImageRotationAnimationFactory_getImage(this), AngleInfo_getInstance(this->angleIncrement), AngleFactory_getInstance()->TOTAL_ANGLE, this->animationFactoryInitializationVisitor->dx, this->animationFactoryInitializationVisitor->dy, AnimationBehaviorFactory_getOrCreateInstance(this->animationBehaviorFactory));
+        if (this->base.animationFactoryInitializationVisitor->dx != 0 || this->base.animationFactoryInitializationVisitor->dy != 0) {
+            AnimationFactoryImageScaleUtil_processAdjust(this->base.animationFactoryImageScaleUtil, this);
+            return AdjustedImageBaseRotationAnimation_new(BaseImageAnimationFactory_getImage(this), AngleInfo_getInstance(this->angleIncrement), AngleFactory_getInstance()->TOTAL_ANGLE, this->base.animationFactoryInitializationVisitor->dx, this->base.animationFactoryInitializationVisitor->dy, AnimationBehaviorFactory_getOrCreateInstance(this->base.animationBehaviorFactory));
         } else {
-            return ImageBaseRotationAnimation_new(ImageRotationAnimationFactory_getImage(this), AngleInfo_getInstance(this->angleIncrement), AngleFactory_getInstance()->TOTAL_ANGLE, AnimationBehaviorFactory_getOrCreateInstance(this->animationBehaviorFactory));
+            return ImageBaseRotationAnimation_new(BaseImageAnimationFactory_getImage(this), AngleInfo_getInstance(this->angleIncrement), AngleFactory_getInstance()->TOTAL_ANGLE, AnimationBehaviorFactory_getOrCreateInstance(this->base.animationBehaviorFactory));
         }
 }
 

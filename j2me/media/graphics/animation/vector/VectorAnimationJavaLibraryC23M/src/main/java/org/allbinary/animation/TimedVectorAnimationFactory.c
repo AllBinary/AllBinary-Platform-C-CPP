@@ -1,45 +1,38 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/animation/TimedVectorAnimationFactory.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
 #include "org/allbinary/animation/VectorAnimationFactoryInterface.h"
-
-typedef struct TimedVectorAnimationFactory TimedVectorAnimationFactory;
-struct TimedVectorAnimationFactory {
-    VectorAnimationFactoryInterface VectorAnimationFactoryInterface_interface;
-};
+#include "org/allbinary/animation/TimedVectorAnimation.h"
+#include "org/allbinary/animation/AnimationBehavior.h"
+#include "org/allbinary/animation/VectorAnimation.h"
 
 
-TimedVectorAnimationFactory* TimedVectorAnimationFactory_new(void);
-VectorAnimation* TimedVectorAnimationFactory_getInstance(TimedVectorAnimationFactory* this, int32_t*** points, BasicColor* basicColor);
+
+
+void TimedVectorAnimationFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void TimedVectorAnimationFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("TimedVectorAnimationFactory", nullptr);
+    java_register_method("TimedVectorAnimationFactory", "getInstance", (void*) TimedVectorAnimationFactory_getInstance);
+}
 
 void TimedVectorAnimationFactory_init(TimedVectorAnimationFactory* this) {
+    TimedVectorAnimationFactory_register();
 }
 
 TimedVectorAnimationFactory* TimedVectorAnimationFactory_new(void) {
-    TimedVectorAnimationFactory* this = calloc(1, sizeof(TimedVectorAnimationFactory));
+    TimedVectorAnimationFactory* this = java_object_alloc(sizeof(TimedVectorAnimationFactory), "TimedVectorAnimationFactory");
     TimedVectorAnimationFactory_init(this);
     return this;
 }

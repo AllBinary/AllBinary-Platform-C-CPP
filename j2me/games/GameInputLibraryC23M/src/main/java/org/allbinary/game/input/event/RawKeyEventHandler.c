@@ -1,63 +1,59 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2022 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.input.event
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/input/event/RawKeyEventHandler.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/logic/util/event/EventStrings.h"
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
+#include "org/allbinary/game/input/event/RawKeyEventListener.h"
+#if __has_include("org/allbinary/logic/util/event/EventStrings.h")
+#include "org/allbinary/logic/util/event/EventStrings.h"
+#endif
 
-typedef struct RawKeyEventHandler RawKeyEventHandler;
-struct RawKeyEventHandler {
-    LogUtil* logUtil;
-    BasicArrayList* eventListenerInterfaceList;
-};
 
 static RawKeyEventHandler* RawKeyEventHandler_instance;
 static const char* RawKeyEventHandler_TOTAL_LISTENERS = "Total Listeners: ";
 static const char* RawKeyEventHandler_LISTENER_LABEL = " Listener: ";
 
-RawKeyEventHandler* RawKeyEventHandler_new(void);
-RawKeyEventHandler* RawKeyEventHandler_getInstance(void);
 
-void RawKeyEventHandler_init(RawKeyEventHandler* this);
-void RawKeyEventHandler_removeAllListeners(RawKeyEventHandler* this);
-void RawKeyEventHandler_addListeners(RawKeyEventHandler* this, BasicArrayList* vector);
-void RawKeyEventHandler_addListenerSingleThreaded(RawKeyEventHandler* this, RawKeyEventListener* eventListenerInterface);
-void RawKeyEventHandler_addListener(RawKeyEventHandler* this, RawKeyEventListener* eventListenerInterface);
-void RawKeyEventHandler_removeListenerSingleThreaded(RawKeyEventHandler* this, RawKeyEventListener* eventListenerInterface);
-void RawKeyEventHandler_removeListener(RawKeyEventHandler* this, RawKeyEventListener* eventListenerInterface);
-void RawKeyEventHandler_fireEvent(RawKeyEventHandler* this, int32_t keyCode, int32_t deviceId, bool repeated);
-void RawKeyEventHandler_process(RawKeyEventHandler* this, int32_t keyCode, int32_t deviceId, bool repeated, RawKeyEventListener* eventListenerInterface);
-BasicArrayList* RawKeyEventHandler_getEventListenerInterfaceListP(RawKeyEventHandler* this);
-const char* RawKeyEventHandler_toString(RawKeyEventHandler* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+
+
+
+
+
+
 void RawKeyEventHandler_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     RawKeyEventHandler_instance = RawKeyEventHandler_new();
+}
+
+void RawKeyEventHandler_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("RawKeyEventHandler", nullptr);
+    java_register_method("RawKeyEventHandler", "removeAllListeners", (void*) RawKeyEventHandler_removeAllListeners);
+    java_register_method("RawKeyEventHandler", "addListeners", (void*) RawKeyEventHandler_addListeners);
+    java_register_method("RawKeyEventHandler", "addListenerSingleThreaded", (void*) RawKeyEventHandler_addListenerSingleThreaded);
+    java_register_method("RawKeyEventHandler", "addListener", (void*) RawKeyEventHandler_addListener);
+    java_register_method("RawKeyEventHandler", "removeListenerSingleThreaded", (void*) RawKeyEventHandler_removeListenerSingleThreaded);
+    java_register_method("RawKeyEventHandler", "removeListener", (void*) RawKeyEventHandler_removeListener);
+    java_register_method("RawKeyEventHandler", "fireEvent", (void*) RawKeyEventHandler_fireEvent);
+    java_register_method("RawKeyEventHandler", "process", (void*) RawKeyEventHandler_process);
+    java_register_method("RawKeyEventHandler", "getEventListenerInterfaceListP", (void*) RawKeyEventHandler_getEventListenerInterfaceListP);
+    java_register_method("RawKeyEventHandler", "toString", (void*) RawKeyEventHandler_toString);
 }
 
 static void RawKeyEventHandler_initFields(RawKeyEventHandler* this) {
@@ -67,17 +63,18 @@ static void RawKeyEventHandler_initFields(RawKeyEventHandler* this) {
 
 
 RawKeyEventHandler* RawKeyEventHandler_getInstance(void) {
-        return RawKeyEventHandler_instance;
+        return (RawKeyEventHandler_staticInit(), RawKeyEventHandler_instance);
 }
 
 
 void RawKeyEventHandler_init(RawKeyEventHandler* this) {
+    RawKeyEventHandler_register();
     RawKeyEventHandler_initFields(this);
         this->eventListenerInterfaceList = BasicArrayListD_new();
 }
 
 RawKeyEventHandler* RawKeyEventHandler_new(void) {
-    RawKeyEventHandler* this = calloc(1, sizeof(RawKeyEventHandler));
+    RawKeyEventHandler* this = java_object_alloc(sizeof(RawKeyEventHandler), "RawKeyEventHandler");
     RawKeyEventHandler_init(this);
     return this;
 }
@@ -160,13 +157,13 @@ const char* RawKeyEventHandler_toString(RawKeyEventHandler* this) {
             JAVA_TRY {
                 eventListenerInterface = ((RawKeyEventListener*) BasicArrayList_get(this->eventListenerInterfaceList, index));
                 StringMaker_append(stringBuffer, RawKeyEventHandler_LISTENER_LABEL);
-                StringMaker_append(stringBuffer, RawKeyEventListener_toString(eventListenerInterface));
+                StringMaker_append(stringBuffer, java_string_of(eventListenerInterface));
             } JAVA_CATCH(Exception, e) {
                 CommonStrings* commonStrings = CommonStrings_getInstance();
                 LogUtil_put(this->logUtil, commonStrings->EXCEPTION, this, commonStrings->TOSTRING, e);
             } JAVA_END_TRY;
             index++;
         }
-        return StringMaker_toString(stringBuffer);
+        return java_string_of(stringBuffer);
 }
 

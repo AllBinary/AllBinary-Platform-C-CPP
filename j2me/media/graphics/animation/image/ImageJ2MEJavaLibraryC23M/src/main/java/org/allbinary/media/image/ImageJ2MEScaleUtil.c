@@ -1,60 +1,46 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2023 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.media.image
+#include "org/allbinary/media/image/ImageJ2MEScaleUtil.h"
+#include "javax/microedition/lcdui/Image.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Image.h"
-
-typedef struct ImageJ2MEScaleUtil ImageJ2MEScaleUtil;
-struct ImageJ2MEScaleUtil {
-    char unused;
-};
 
 static ImageJ2MEScaleUtil* ImageJ2MEScaleUtil_instance;
 
-ImageJ2MEScaleUtil* ImageJ2MEScaleUtil_new(void);
-ImageJ2MEScaleUtil* ImageJ2MEScaleUtil_getInstance(void);
 
-void ImageJ2MEScaleUtil_init(ImageJ2MEScaleUtil* this);
-Image** ImageJ2MEScaleUtil_scaleArray(ImageJ2MEScaleUtil* this, Image** images, int32_t width, int32_t height);
-Image* ImageJ2MEScaleUtil_scale(ImageJ2MEScaleUtil* this, Image* image, int32_t width, int32_t height);
 
-// Static fields with runtime initializers: call this once at startup
+
+
 void ImageJ2MEScaleUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     ImageJ2MEScaleUtil_instance = ImageJ2MEScaleUtil_new();
+}
+
+void ImageJ2MEScaleUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ImageJ2MEScaleUtil", nullptr);
+    java_register_method("ImageJ2MEScaleUtil", "scaleArray", (void*) ImageJ2MEScaleUtil_scaleArray);
+    java_register_method("ImageJ2MEScaleUtil", "scale", (void*) ImageJ2MEScaleUtil_scale);
 }
 
 
 ImageJ2MEScaleUtil* ImageJ2MEScaleUtil_getInstance(void) {
-        return ImageJ2MEScaleUtil_instance;
+        return (ImageJ2MEScaleUtil_staticInit(), ImageJ2MEScaleUtil_instance);
 }
 
 
 void ImageJ2MEScaleUtil_init(ImageJ2MEScaleUtil* this) {
+    ImageJ2MEScaleUtil_register();
 }
 
 ImageJ2MEScaleUtil* ImageJ2MEScaleUtil_new(void) {
-    ImageJ2MEScaleUtil* this = calloc(1, sizeof(ImageJ2MEScaleUtil));
+    ImageJ2MEScaleUtil* this = java_object_alloc(sizeof(ImageJ2MEScaleUtil), "ImageJ2MEScaleUtil");
     ImageJ2MEScaleUtil_init(this);
     return this;
 }

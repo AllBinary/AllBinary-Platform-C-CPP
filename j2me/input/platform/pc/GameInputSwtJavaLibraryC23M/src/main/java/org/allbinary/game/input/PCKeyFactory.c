@@ -1,163 +1,132 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.input
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/input/PCKeyFactory.h"
 #include "org/allbinary/math/PositionStrings.h"
 #include "org/allbinary/string/CommonPhoneStrings.h"
 #include "org/allbinary/string/CommonSeps.h"
+#include "org/allbinary/game/input/PCGameKey.h"
+#include "org/allbinary/game/input/Input.h"
+#if __has_include("org/allbinary/math/PositionStrings.h")
+#include "org/allbinary/math/PositionStrings.h"
+#endif
+#if __has_include("org/allbinary/math/PositionStrings.h")
+#include "org/allbinary/math/PositionStrings.h"
+#endif
+#if __has_include("org/allbinary/string/CommonPhoneStrings.h")
+#include "org/allbinary/string/CommonPhoneStrings.h"
+#endif
+#if __has_include("org/allbinary/string/CommonPhoneStrings.h")
+#include "org/allbinary/string/CommonPhoneStrings.h"
+#endif
+#if __has_include("org/allbinary/string/CommonPhoneStrings.h")
+#include "org/allbinary/string/CommonPhoneStrings.h"
+#endif
+#if __has_include("org/allbinary/string/CommonPhoneStrings.h")
+#include "org/allbinary/string/CommonPhoneStrings.h"
+#endif
+#if __has_include("org/allbinary/string/CommonPhoneStrings.h")
+#include "org/allbinary/string/CommonPhoneStrings.h"
+#endif
+#if __has_include("org/allbinary/string/CommonPhoneStrings.h")
+#include "org/allbinary/string/CommonPhoneStrings.h"
+#endif
+#if __has_include("org/allbinary/string/CommonPhoneStrings.h")
+#include "org/allbinary/string/CommonPhoneStrings.h"
+#endif
+#if __has_include("org/allbinary/string/CommonPhoneStrings.h")
+#include "org/allbinary/string/CommonPhoneStrings.h"
+#endif
+#if __has_include("org/allbinary/string/CommonPhoneStrings.h")
+#include "org/allbinary/string/CommonPhoneStrings.h"
+#endif
+#if __has_include("org/allbinary/string/CommonPhoneStrings.h")
+#include "org/allbinary/string/CommonPhoneStrings.h"
+#endif
+#if __has_include("org/allbinary/string/CommonPhoneStrings.h")
+#include "org/allbinary/string/CommonPhoneStrings.h"
+#endif
+#if __has_include("org/allbinary/string/CommonPhoneStrings.h")
+#include "org/allbinary/string/CommonPhoneStrings.h"
+#endif
+#if __has_include("org/allbinary/string/CommonPhoneStrings.h")
+#include "org/allbinary/string/CommonPhoneStrings.h"
+#endif
+#if __has_include("org/allbinary/string/CommonPhoneStrings.h")
+#include "org/allbinary/string/CommonPhoneStrings.h"
+#endif
+#if __has_include("org/allbinary/string/CommonPhoneStrings.h")
+#include "org/allbinary/string/CommonPhoneStrings.h"
+#endif
+#if __has_include("org/allbinary/string/CommonSeps.h")
+#include "org/allbinary/string/CommonSeps.h"
+#endif
 
-typedef struct PCKeyFactory PCKeyFactory;
-struct PCKeyFactory {
-    PCGameKey* UNKNOWN;
-    PCGameKey* ENTER;
-    PCGameKey* _A;
-    PCGameKey* _B;
-    PCGameKey* _C;
-    PCGameKey* _D;
-    PCGameKey* _E;
-    PCGameKey* _F;
-    PCGameKey* _G;
-    PCGameKey* _H;
-    PCGameKey* _I;
-    PCGameKey* _J;
-    PCGameKey* _K;
-    PCGameKey* _L;
-    PCGameKey* _M;
-    PCGameKey* _N;
-    PCGameKey* _O;
-    PCGameKey* _P;
-    PCGameKey* _Q;
-    PCGameKey* _R;
-    PCGameKey* _S;
-    PCGameKey* _T;
-    PCGameKey* _U;
-    PCGameKey* _V;
-    PCGameKey* _W;
-    PCGameKey* _X;
-    PCGameKey* _Y;
-    PCGameKey* _Z;
-    PCGameKey* a;
-    PCGameKey* b;
-    PCGameKey* c;
-    PCGameKey* d;
-    PCGameKey* e;
-    PCGameKey* f;
-    PCGameKey* g;
-    PCGameKey* h;
-    PCGameKey* i;
-    PCGameKey* j;
-    PCGameKey* k;
-    PCGameKey* l;
-    PCGameKey* m;
-    PCGameKey* n;
-    PCGameKey* o;
-    PCGameKey* p;
-    PCGameKey* q;
-    PCGameKey* r;
-    PCGameKey* s;
-    PCGameKey* t;
-    PCGameKey* u;
-    PCGameKey* v;
-    PCGameKey* w;
-    PCGameKey* x;
-    PCGameKey* y;
-    PCGameKey* z;
-    PCGameKey* ZERO;
-    PCGameKey* ONE;
-    PCGameKey* TWO;
-    PCGameKey* THREE;
-    PCGameKey* FOUR;
-    PCGameKey* FIVE;
-    PCGameKey* SIX;
-    PCGameKey* SEVEN;
-    PCGameKey* EIGHT;
-    PCGameKey* NINE;
-    PCGameKey* DPAD_UP;
-    PCGameKey* DPAD_DOWN;
-    PCGameKey* DPAD_LEFT;
-    PCGameKey* DPAD_RIGHT;
-    PCGameKey* DPAD_UP2;
-    PCGameKey* DPAD_DOWN2;
-    PCGameKey* DPAD_LEFT2;
-    PCGameKey* DPAD_RIGHT2;
-    PCGameKey* COMMA;
-    PCGameKey* SPACE;
-    PCGameKey* DEL;
-    PCGameKey* STAR;
-    PCGameKey* QUESTION;
-    PCGameKey* PERIOD;
-    PCGameKey* ESCAPE;
-    PCGameKey* BACK_SPACE;
-};
 
 static PCKeyFactory* PCKeyFactory_SINGLETON;
 
-PCKeyFactory* PCKeyFactory_new(void);
-PCKeyFactory* PCKeyFactory_getInstance(void);
-bool PCKeyFactory_isSubmission(PCKeyFactory* this, Input* input);
-bool PCKeyFactory_isDelete(PCKeyFactory* this, Input* input);
-bool PCKeyFactory_isBackSpace(PCKeyFactory* this, Input* input);
-bool PCKeyFactory_isUp(PCKeyFactory* this, Input* input);
-bool PCKeyFactory_isDown(PCKeyFactory* this, Input* input);
-bool PCKeyFactory_isLeft(PCKeyFactory* this, Input* input);
-bool PCKeyFactory_isRight(PCKeyFactory* this, Input* input);
-bool PCKeyFactory_isEnter(PCKeyFactory* this, Input* input);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+
+
+
+
 void PCKeyFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     PCKeyFactory_SINGLETON = PCKeyFactory_new();
+}
+
+void PCKeyFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("PCKeyFactory", nullptr);
+    java_register_method("PCKeyFactory", "isSubmission", (void*) PCKeyFactory_isSubmission);
+    java_register_method("PCKeyFactory", "isDelete", (void*) PCKeyFactory_isDelete);
+    java_register_method("PCKeyFactory", "isBackSpace", (void*) PCKeyFactory_isBackSpace);
+    java_register_method("PCKeyFactory", "isUp", (void*) PCKeyFactory_isUp);
+    java_register_method("PCKeyFactory", "isDown", (void*) PCKeyFactory_isDown);
+    java_register_method("PCKeyFactory", "isLeft", (void*) PCKeyFactory_isLeft);
+    java_register_method("PCKeyFactory", "isRight", (void*) PCKeyFactory_isRight);
+    java_register_method("PCKeyFactory", "isEnter", (void*) PCKeyFactory_isEnter);
 }
 
 static void PCKeyFactory_initFields(PCKeyFactory* this) {
     this->UNKNOWN = PCGameKey_new(254, "UNKNOWN");
     this->ENTER = PCGameKey_new(13, "Enter");
-    this->_A = PCGameKey_new(65, "A");
-    this->_B = PCGameKey_new(66, "B");
-    this->_C = PCGameKey_new(67, "C");
-    this->_D = PCGameKey_new(68, "D");
-    this->_E = PCGameKey_new(69, "E");
-    this->_F = PCGameKey_new(70, "F");
-    this->_G = PCGameKey_new(71, "G");
-    this->_H = PCGameKey_new(72, "H");
-    this->_I = PCGameKey_new(73, "I");
-    this->_J = PCGameKey_new(74, "J");
-    this->_K = PCGameKey_new(75, "K");
-    this->_L = PCGameKey_new(76, "L");
-    this->_M = PCGameKey_new(77, "M");
-    this->_N = PCGameKey_new(78, "N");
-    this->_O = PCGameKey_new(79, "O");
-    this->_P = PCGameKey_new(80, "P");
-    this->_Q = PCGameKey_new(81, "Q");
-    this->_R = PCGameKey_new(82, "R");
-    this->_S = PCGameKey_new(83, "S");
-    this->_T = PCGameKey_new(84, "T");
-    this->_U = PCGameKey_new(85, "U");
-    this->_V = PCGameKey_new(86, "V");
-    this->_W = PCGameKey_new(87, "W");
-    this->_X = PCGameKey_new(88, "X");
-    this->_Y = PCGameKey_new(89, "Y");
-    this->_Z = PCGameKey_new(90, "Z");
+    this->_A_ = PCGameKey_new(65, "A");
+    this->_B_ = PCGameKey_new(66, "B");
+    this->_C_ = PCGameKey_new(67, "C");
+    this->_D_ = PCGameKey_new(68, "D");
+    this->_E_ = PCGameKey_new(69, "E");
+    this->_F_ = PCGameKey_new(70, "F");
+    this->_G_ = PCGameKey_new(71, "G");
+    this->_H_ = PCGameKey_new(72, "H");
+    this->_I_ = PCGameKey_new(73, "I");
+    this->_J_ = PCGameKey_new(74, "J");
+    this->_K_ = PCGameKey_new(75, "K");
+    this->_L_ = PCGameKey_new(76, "L");
+    this->_M_ = PCGameKey_new(77, "M");
+    this->_N_ = PCGameKey_new(78, "N");
+    this->_O_ = PCGameKey_new(79, "O");
+    this->_P_ = PCGameKey_new(80, "P");
+    this->_Q_ = PCGameKey_new(81, "Q");
+    this->_R_ = PCGameKey_new(82, "R");
+    this->_S_ = PCGameKey_new(83, "S");
+    this->_T_ = PCGameKey_new(84, "T");
+    this->_U_ = PCGameKey_new(85, "U");
+    this->_V_ = PCGameKey_new(86, "V");
+    this->_W_ = PCGameKey_new(87, "W");
+    this->_X_ = PCGameKey_new(88, "X");
+    this->_Y_ = PCGameKey_new(89, "Y");
+    this->_Z_ = PCGameKey_new(90, "Z");
     this->a = PCGameKey_new(97, "a");
     this->b = PCGameKey_new(98, "b");
     this->c = PCGameKey_new(99, "c");
@@ -213,18 +182,19 @@ static void PCKeyFactory_initFields(PCKeyFactory* this) {
 }
 
 void PCKeyFactory_init(PCKeyFactory* this) {
+    PCKeyFactory_register();
     PCKeyFactory_initFields(this);
 }
 
 PCKeyFactory* PCKeyFactory_new(void) {
-    PCKeyFactory* this = calloc(1, sizeof(PCKeyFactory));
+    PCKeyFactory* this = java_object_alloc(sizeof(PCKeyFactory), "PCKeyFactory");
     PCKeyFactory_init(this);
     return this;
 }
 
 
 PCKeyFactory* PCKeyFactory_getInstance(void) {
-        return PCKeyFactory_SINGLETON;
+        return (PCKeyFactory_staticInit(), PCKeyFactory_SINGLETON);
 }
 
 

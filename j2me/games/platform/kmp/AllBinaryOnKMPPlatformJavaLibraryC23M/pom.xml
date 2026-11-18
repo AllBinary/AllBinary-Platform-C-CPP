@@ -1,0 +1,310 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.allbinary</groupId>
+    <artifactId>AllBinaryOnKMPPlatformJavaLibraryC23</artifactId>
+    <packaging>jar</packaging>
+    <!-- AllBinary Platform Version Start -->
+    <version>1.0.0-SNAPSHOT</version>
+    <!-- AllBinary Platform Version End -->
+    <name>AllBinaryOnKMPPlatformJavaLibraryC23</name>
+    <url>http://www.allbinary.com/</url>
+    
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>AllBinary Snapshots Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus-releases</id>
+            <name>AllBinary Releases Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/releases/</url>
+        </repository>
+    </distributionManagement>
+
+
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>AllBinaryOnKMPBasePlatformJavaLibraryC23</artifactId>
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+        </dependency>        
+
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>CombatGameJavaLibraryC23</artifactId>
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+        </dependency>
+
+
+<!--        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>OpenGLAndroidJavaLibraryC23</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>-->
+<!--        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>ImageCacheAndroidJavaLibraryC23</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>-->
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>ImageCacheOpenGLESJavaLibraryC23</artifactId>
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+        </dependency>
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>NoSWTJavaLibraryC23</artifactId>
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+        </dependency>
+                
+<!--        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>AndroidTransitionAnimationJavaLibraryC23</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>-->
+
+<!--        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>AndroidMediaMIDPLibraryC23</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>-->
+
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>MicroEmulatorCustomUIJavaLibraryC23</artifactId>
+            <!--
+            <artifactId>MicroEmulatorCustomUIJavaLibraryC23</artifactId>
+            <artifactId>NullCustomUIJavaLibraryC23</artifactId>
+            -->
+                <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+        </dependency>
+
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>FileLicenseInitInfoJavaLibraryC23</artifactId>
+            <!--
+            <artifactId>HardCodedLicenseInitInfoJavaLibraryC23</artifactId>
+            <artifactId>FileLicenseInitInfoJavaLibraryC23</artifactId>
+
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>YourSecurityJavaLibraryC23</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>FileJ2SEJavaLibraryC23</artifactId>
+        </dependency>
+            -->
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+
+        </dependency>
+
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>NoGameLicensingJavaLibraryC23</artifactId>
+            <!--
+                <artifactId>NoGameLicensingJavaLibraryC23</artifactId>
+                <artifactId>LicensedGameDemoJavaLibraryC23</artifactId>
+            -->
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+
+        </dependency>
+
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>ClientInfoLicensingJavaLibraryC23</artifactId>
+                <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+        </dependency>
+
+<!--        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>MusicAndroidJavaLibraryC23</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>-->
+
+<!--        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>FileAndroidJavaLibraryC23</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>-->
+
+<!--        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>J2MEGameMidletAsActivityJavaLibraryC23</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>-->
+
+<!--        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>MotionInputAndroidResourcesJavaLibraryC23</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>-->
+
+        <!--
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>GameInputAndroidBaseJavaLibraryC23</artifactId>
+        -->
+            <!-- 
+            <artifactId>TouchScreenJ2MEJavaLibraryC23</artifactId>
+            <artifactId>TouchScreenJ2MENoneJavaLibraryC23</artifactId>
+            GameInputAndroidBaseJavaLibrary
+            -->
+
+<!--
+2 duplicates
+    FileAndroidJavaLibrary
+    FileLicenseInitInfoJavaLibrary
+
+4 already in prior dependencies
+            <groupId>org.allbinary</groupId>
+            <artifactId>BasePreloaderFileJavaLibraryC23</artifactId>
+            <groupId>org.allbinary</groupId>
+            <artifactId>BasePreloaderJavaLibraryC23</artifactId>
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>LogJ2MEJavaLibraryC23</artifactId>
+        </dependency>
+        <dependency>
+    <groupId>org.allbinary</groupId>
+    <artifactId>J2SEExceptionLibraryC23</artifactId>
+        </dependency>
+-->
+<!-- Android specific non optional libraries 
+
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>J2MEMidletAsViewJavaLibraryC23</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>J2MEMidletAsActivityJavaLibraryC23</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>J2MEGameMidletAsActivityJavaLibraryC23</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>OpenGLESAndroidJavaLibraryC23</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>AndroidToJ2MELibraryC23</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>MotionInputAndroidResourcesJavaLibraryC23</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>MotionInputAndroidJavaLibraryC23</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>GameInputAndroidMotionJavaLibraryC23</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>GameInputAndroidBaseJavaLibraryC23</artifactId>
+        </dependency>
+
+android\AndroidAPI3AndUpJavaLibrary
+android\AndroidAPI5AndUpJavaLibrary
+input\android\MotionInputAPI5AndUpAndroidJavaLibrary
+android\AndroidThroughAPI2JavaLibrary
+android\AndroidThroughAPI4JavaLibrary
+input\android\MotionInputThroughAPI4AndroidJavaLibrary
+
+        -->
+
+        <!-- -->
+
+    </dependencies>
+
+    <build>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-pluginC23</artifactId>
+                <version>3.8.1</version>
+                <!-- 
+                <version>2.5.1</version>
+                <version>2.3.2</version>
+                -->
+                <configuration> 
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <compilerArgument>-Xlint:all</compilerArgument>
+                    <showWarnings>true</showWarnings>
+                    <showDeprecation>true</showDeprecation>
+                </configuration>
+            </plugin>
+
+
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.3.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-assembly-pluginC23</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <attach>true</attach>
+                    <descriptors>
+                        <descriptor>assembly.xml</descriptor>
+                    </descriptors>
+                </configuration>
+            </plugin>
+   
+        </plugins>
+
+    </build>
+
+</project>
+

@@ -1,47 +1,31 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/GameTypeFactory.h"
 #include "org/allbinary/logic/string/StringUtil.h"
+#include "org/allbinary/game/GameType.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
-typedef struct GameTypeFactory GameTypeFactory;
-struct GameTypeFactory {
-    GameType** NULL_GAME_TYPE_ARRAY;
-    GameType* NONE;
-    GameType* SINGLE_PLAYER;
-    GameType* MULTI_PLAYER;
-    GameType* BOT;
-};
 
 static GameTypeFactory* GameTypeFactory_instance;
 
-GameTypeFactory* GameTypeFactory_new(void);
-GameTypeFactory* GameTypeFactory_getInstance(void);
 
-// Static fields with runtime initializers: call this once at startup
 void GameTypeFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     GameTypeFactory_instance = GameTypeFactory_new();
+}
+
+void GameTypeFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GameTypeFactory", nullptr);
 }
 
 static void GameTypeFactory_initFields(GameTypeFactory* this) {
@@ -53,17 +37,18 @@ static void GameTypeFactory_initFields(GameTypeFactory* this) {
 }
 
 void GameTypeFactory_init(GameTypeFactory* this) {
+    GameTypeFactory_register();
     GameTypeFactory_initFields(this);
 }
 
 GameTypeFactory* GameTypeFactory_new(void) {
-    GameTypeFactory* this = calloc(1, sizeof(GameTypeFactory));
+    GameTypeFactory* this = java_object_alloc(sizeof(GameTypeFactory), "GameTypeFactory");
     GameTypeFactory_init(this);
     return this;
 }
 
 
 GameTypeFactory* GameTypeFactory_getInstance(void) {
-        return GameTypeFactory_instance;
+        return (GameTypeFactory_staticInit(), GameTypeFactory_instance);
 }
 

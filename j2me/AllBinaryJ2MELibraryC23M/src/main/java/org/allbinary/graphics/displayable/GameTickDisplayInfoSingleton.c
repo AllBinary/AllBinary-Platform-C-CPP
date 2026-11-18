@@ -1,51 +1,37 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2022 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.displayable
+#include "org/allbinary/graphics/displayable/GameTickDisplayInfoSingleton.h"
+#include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct GameTickDisplayInfoSingleton GameTickDisplayInfoSingleton;
-struct GameTickDisplayInfoSingleton {
-    DisplayInfoSingleton* displayInfoSingleton;
-    int32_t lastWidth;
-    int32_t lastHeight;
-    int32_t lastHalfWidth;
-    int32_t lastHalfHeight;
-};
 
 static GameTickDisplayInfoSingleton* GameTickDisplayInfoSingleton_instance;
 
-GameTickDisplayInfoSingleton* GameTickDisplayInfoSingleton_new(void);
-GameTickDisplayInfoSingleton* GameTickDisplayInfoSingleton_getInstance(void);
-void GameTickDisplayInfoSingleton_update(GameTickDisplayInfoSingleton* this);
-int32_t GameTickDisplayInfoSingleton_getLastWidth(GameTickDisplayInfoSingleton* this);
-int32_t GameTickDisplayInfoSingleton_getLastHeight(GameTickDisplayInfoSingleton* this);
-int32_t GameTickDisplayInfoSingleton_getLastHalfWidth(GameTickDisplayInfoSingleton* this);
-int32_t GameTickDisplayInfoSingleton_getLastHalfHeight(GameTickDisplayInfoSingleton* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+
 void GameTickDisplayInfoSingleton_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     GameTickDisplayInfoSingleton_instance = GameTickDisplayInfoSingleton_new();
+}
+
+void GameTickDisplayInfoSingleton_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GameTickDisplayInfoSingleton", nullptr);
+    java_register_method("GameTickDisplayInfoSingleton", "update", (void*) GameTickDisplayInfoSingleton_update);
+    java_register_method("GameTickDisplayInfoSingleton", "getLastWidth", (void*) GameTickDisplayInfoSingleton_getLastWidth);
+    java_register_method("GameTickDisplayInfoSingleton", "getLastHeight", (void*) GameTickDisplayInfoSingleton_getLastHeight);
+    java_register_method("GameTickDisplayInfoSingleton", "getLastHalfWidth", (void*) GameTickDisplayInfoSingleton_getLastHalfWidth);
+    java_register_method("GameTickDisplayInfoSingleton", "getLastHalfHeight", (void*) GameTickDisplayInfoSingleton_getLastHalfHeight);
 }
 
 static void GameTickDisplayInfoSingleton_initFields(GameTickDisplayInfoSingleton* this) {
@@ -57,18 +43,19 @@ static void GameTickDisplayInfoSingleton_initFields(GameTickDisplayInfoSingleton
 }
 
 void GameTickDisplayInfoSingleton_init(GameTickDisplayInfoSingleton* this) {
+    GameTickDisplayInfoSingleton_register();
     GameTickDisplayInfoSingleton_initFields(this);
 }
 
 GameTickDisplayInfoSingleton* GameTickDisplayInfoSingleton_new(void) {
-    GameTickDisplayInfoSingleton* this = calloc(1, sizeof(GameTickDisplayInfoSingleton));
+    GameTickDisplayInfoSingleton* this = java_object_alloc(sizeof(GameTickDisplayInfoSingleton), "GameTickDisplayInfoSingleton");
     GameTickDisplayInfoSingleton_init(this);
     return this;
 }
 
 
 GameTickDisplayInfoSingleton* GameTickDisplayInfoSingleton_getInstance(void) {
-        return GameTickDisplayInfoSingleton_instance;
+        return (GameTickDisplayInfoSingleton_staticInit(), GameTickDisplayInfoSingleton_instance);
 }
 
 

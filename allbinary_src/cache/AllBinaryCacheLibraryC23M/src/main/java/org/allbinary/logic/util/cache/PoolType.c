@@ -1,40 +1,30 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2007 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.util.cache
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct PoolType PoolType;
-struct PoolType {
-    CacheType* cacheType;
-};
+#include "org/allbinary/logic/util/cache/PoolType.h"
+#include "org/allbinary/logic/util/cache/CacheType.h"
 
 
-PoolType* PoolType_new(CacheType* cacheType);
 
-void PoolType_init(PoolType* this, CacheType* cacheType);
-CacheType* PoolType_getCacheType(PoolType* this);
-const char* PoolType_toString(PoolType* this);
+
+
+
+void PoolType_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void PoolType_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("PoolType", nullptr);
+    java_register_method("PoolType", "getCacheType", (void*) PoolType_getCacheType);
+    java_register_method("PoolType", "toString", (void*) PoolType_toString);
+}
 
 static void PoolType_initFields(PoolType* this) {
     
@@ -42,12 +32,13 @@ static void PoolType_initFields(PoolType* this) {
 
 
 void PoolType_init(PoolType* this, CacheType* cacheType) {
+    PoolType_register();
     PoolType_initFields(this);
         this->cacheType = cacheType;
 }
 
 PoolType* PoolType_new(CacheType* cacheType) {
-    PoolType* this = calloc(1, sizeof(PoolType));
+    PoolType* this = java_object_alloc(sizeof(PoolType), "PoolType");
     PoolType_init(this, cacheType);
     return this;
 }
@@ -60,6 +51,6 @@ CacheType* PoolType_getCacheType(PoolType* this) {
 
 const char* PoolType_toString(PoolType* this) {
         const char* POOL_TYPE = "PoolType: ";
-        return java_concat(POOL_TYPE, JAVA_CALL(PoolType_getCacheType(this), toString));
+        return java_concat(POOL_TYPE, java_string_of(PoolType_getCacheType(this)));
 }
 

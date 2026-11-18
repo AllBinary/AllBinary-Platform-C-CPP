@@ -1,29 +1,6 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.init
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/CommandListener.h"
+#include "org/allbinary/game/init/CommonGameInitialization.h"
+#include "javax/microedition/lcdui/CommandListener.h"
 #include "org/allbinary/game/resource/ResourceInitialization.h"
 #include "org/allbinary/game/resource/ResourceLoadingLevelFactory.h"
 #include "org/allbinary/graphics/PointFactory.h"
@@ -34,19 +11,36 @@
 #include "org/allbinary/math/AngleFactory.h"
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/game/init/BaseGameInitialization.h"
+#if __has_include("org/allbinary/logic/math/SmallIntegerSingletonFactory.h")
+#include "org/allbinary/logic/math/SmallIntegerSingletonFactory.h"
+#endif
+#if __has_include("org/allbinary/graphics/PointFactory.h")
+#include "org/allbinary/graphics/PointFactory.h"
+#endif
 
-typedef struct CommonGameInitialization CommonGameInitialization;
-struct CommonGameInitialization {
-    BaseGameInitialization base;
-    CommonStrings* commonStrings;
-};
 
 
-CommonGameInitialization* CommonGameInitialization_new(ResourceInitialization** resourceInitializationArray, int32_t portion);
 
-void CommonGameInitialization_init(CommonGameInitialization* this, ResourceInitialization** resourceInitializationArray, int32_t portion);
-void CommonGameInitialization_init(CommonGameInitialization* this, AbeClientInformationInterface* abeClientInformation, CommandListener* commandListener, int32_t level);
-void CommonGameInitialization_initGame(CommonGameInitialization* this);
+
+
+void CommonGameInitialization_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void CommonGameInitialization_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("CommonGameInitialization", "BaseGameInitialization");
+    java_register_method("CommonGameInitialization", "init", (void*) CommonGameInitialization_initMethod);
+    java_register_method("CommonGameInitialization", "initGame", (void*) CommonGameInitialization_initGame);
+}
 
 static void CommonGameInitialization_initFields(CommonGameInitialization* this) {
     this->commonStrings = CommonStrings_getInstance();
@@ -54,32 +48,33 @@ static void CommonGameInitialization_initFields(CommonGameInitialization* this) 
 
 
 void CommonGameInitialization_init(CommonGameInitialization* this, ResourceInitialization** resourceInitializationArray, int32_t portion) {
+    CommonGameInitialization_register();
         BaseGameInitialization_init(&this->base, resourceInitializationArray, portion);
         CommonGameInitialization_initFields(this);
 }
 
 CommonGameInitialization* CommonGameInitialization_new(ResourceInitialization** resourceInitializationArray, int32_t portion) {
-    CommonGameInitialization* this = calloc(1, sizeof(CommonGameInitialization));
+    CommonGameInitialization* this = java_object_alloc(sizeof(CommonGameInitialization), "CommonGameInitialization");
     CommonGameInitialization_init(this, resourceInitializationArray, portion);
     return this;
 }
 
 
 // throws Exception
-void CommonGameInitialization_init(CommonGameInitialization* this, AbeClientInformationInterface* abeClientInformation, CommandListener* commandListener, int32_t level) {
-        BaseGameInitialization_init((&this->base), abeClientInformation, commandListener, level);
+void CommonGameInitialization_initMethod(CommonGameInitialization* this, AbeClientInformationInterface* abeClientInformation, CommandListener* commandListener, int32_t level) {
+        BaseGameInitialization_initMethod((&this->base), abeClientInformation, commandListener, level);
         ResourceLoadingLevelFactory* resourceLoadingLevelFactory = ResourceLoadingLevelFactory_getInstance();
-        if (!CommonGameInitialization_isGameInitialized(this) && level == JAVA_CALL(resourceLoadingLevelFactory->LOAD_ALL, getLevel)) {
-            CommonGameInitialization_setGameInitialized(this, true);
+        if (!BaseGameInitialization_isGameInitialized(this) && level == ResourceLoadingLevel_getLevel(resourceLoadingLevelFactory->LOAD_ALL)) {
+            BaseGameInitialization_setGameInitialized(this, true);
             ProgressCanvas* progressCanvas = ProgressCanvasFactory_getInstance();
-            SmallIntegerSingletonFactory_init(SmallIntegerSingletonFactory_getInstance());
+            SmallIntegerSingletonFactory_initMethod(SmallIntegerSingletonFactory_getInstance());
             ProgressCanvas_addNormalPortion(progressCanvas, 50, "Integers");
-            PointFactory_init(PointFactory_getInstance());
+            PointFactory_initMethod(PointFactory_getInstance());
             ProgressCanvas_addNormalPortion(progressCanvas, 50, "Points");
             AngleFactory_getInstance();
             ProgressCanvas_addNormalPortion(progressCanvas, 50, "Angles");
             CommonGameInitialization_initGame(this);
-            JAVA_CALL(this->resourceInitializationArray[this->GAME_RESOURCES], init);
+            JAVA_CALL(this->base.resourceInitializationArray[this->base.GAME_RESOURCES], init);
         }
         BaseGameInitialization_resourceInitialization((&this->base), level);
 }

@@ -1,29 +1,5 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.layer
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "java/util/Enumeration.h"
+#include "org/allbinary/game/layer/LayerPlacer.h"
 #include "org/allbinary/graphics/GPoint.h"
 #include "org/allbinary/graphics/PointFactory.h"
 #include "org/allbinary/layer/AllBinaryLayer.h"
@@ -32,21 +8,35 @@
 #include "org/allbinary/util/ABHashtable.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/EnumerationUtil.h"
-
-typedef struct LayerPlacer LayerPlacer;
-struct LayerPlacer {
-    EnumerationUtil* enumerationUtil;
-    LayerInterfaceVisitor* layerInterfaceVisitor;
-    GPoint* dimension;
-};
+#include "org/allbinary/game/layer/LayerPlacementInterface.h"
+#include "org/allbinary/game/layer/LayerPlacementType.h"
+#include "org/allbinary/game/layer/LayerPlacementTypeFactory.h"
 
 
-LayerPlacer* LayerPlacer_new(LayerInterfaceVisitor* layerInterfaceVisitor, GPoint* dimension);
 
-void LayerPlacer_init(LayerPlacer* this, LayerInterfaceVisitor* layerInterfaceVisitor, GPoint* dimension);
-void LayerPlacer_processList(LayerPlacer* this, BasicArrayList* list);
-void LayerPlacer_process(LayerPlacer* this, LayerPlacementInterface* layerPlacementInterface);
-GPoint* LayerPlacer_getPoint(LayerPlacer* this, LayerPlacementInterface* layerPlacementInterface);
+
+
+
+
+void LayerPlacer_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void LayerPlacer_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("LayerPlacer", nullptr);
+    java_register_method("LayerPlacer", "processList", (void*) LayerPlacer_processList);
+    java_register_method("LayerPlacer", "process", (void*) LayerPlacer_process);
+    java_register_method("LayerPlacer", "getPoint", (void*) LayerPlacer_getPoint);
+}
 
 static void LayerPlacer_initFields(LayerPlacer* this) {
     this->enumerationUtil = EnumerationUtil_getInstance();
@@ -56,13 +46,14 @@ static void LayerPlacer_initFields(LayerPlacer* this) {
 
 
 void LayerPlacer_init(LayerPlacer* this, LayerInterfaceVisitor* layerInterfaceVisitor, GPoint* dimension) {
+    LayerPlacer_register();
     LayerPlacer_initFields(this);
         this->layerInterfaceVisitor = layerInterfaceVisitor;
         this->dimension = dimension;
 }
 
 LayerPlacer* LayerPlacer_new(LayerInterfaceVisitor* layerInterfaceVisitor, GPoint* dimension) {
-    LayerPlacer* this = calloc(1, sizeof(LayerPlacer));
+    LayerPlacer* this = java_object_alloc(sizeof(LayerPlacer), "LayerPlacer");
     LayerPlacer_init(this, layerInterfaceVisitor, dimension);
     return this;
 }
@@ -84,7 +75,7 @@ void LayerPlacer_process(LayerPlacer* this, LayerPlacementInterface* layerPlacem
         GPoint* relativePoint = LayerPlacer_getPoint(this, layerPlacementInterface);
         LayerInterfaceFactory* layerInterfaceFactory = LayerInterfaceFactory_getInstance();
         ABHashtable* hashtable = LayerPlacementInterface_getInstance(layerPlacementInterface);
-        Enumeration* enumeration = ABHashtable_keys(hashtable);
+        Enumeration* enumeration = Hashtable_keys(hashtable);
         GPoint* point = nullptr;
         ABHashtable* layerHashtable = nullptr;
         int32_t x = 0;
@@ -93,7 +84,7 @@ void LayerPlacer_process(LayerPlacer* this, LayerPlacementInterface* layerPlacem
         AllBinaryLayer* layerInterface = nullptr;
         while (EnumerationUtil_hasMoreElements(this->enumerationUtil, enumeration)) {
             point = ((GPoint*) EnumerationUtil_nextElement(this->enumerationUtil, enumeration));
-            layerHashtable = ((ABHashtable*) ABHashtable_get(hashtable, point));
+            layerHashtable = ((ABHashtable*) Hashtable_get(hashtable, point));
             x = GPoint_getX(point) + GPoint_getX(relativePoint);
             y = GPoint_getY(point) + GPoint_getY(relativePoint);
             z = GPoint_getZ(point) + GPoint_getZ(relativePoint);

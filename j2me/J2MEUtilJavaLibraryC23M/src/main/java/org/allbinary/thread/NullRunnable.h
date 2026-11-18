@@ -42,6 +42,11 @@ NullRunnable* NullRunnable_new(void);
 NullRunnable* NullRunnable_getInstance(void);
 
 void NullRunnable_init(NullRunnable* this);
+#define NullRunnable_new0 NullRunnable_new
+#define NullRunnable_init0 NullRunnable_init
+#ifndef NullRunnable_run
+#define NullRunnable_run ARunnable_run
+#endif
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void NullRunnable_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

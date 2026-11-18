@@ -1,28 +1,5 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.layer.resources
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/layer/resources/GameGraphicsResourceUtil.h"
 #include "org/allbinary/game/configuration/feature/Features.h"
 #include "org/allbinary/game/configuration/feature/GraphicsFeature.h"
 #include "org/allbinary/game/configuration/feature/GraphicsFeatureFactory.h"
@@ -33,28 +10,50 @@
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/logic/string/StringUtil.h"
 #include "org/allbinary/string/CommonStrings.h"
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/graphics/opengles/OpenGLFeatureUtil.h")
+#include "org/allbinary/graphics/opengles/OpenGLFeatureUtil.h"
+#endif
+#if __has_include("org/allbinary/graphics/displayable/CanvasStrings.h")
+#include "org/allbinary/graphics/displayable/CanvasStrings.h"
+#endif
 
-typedef struct GameGraphicsResourceUtil GameGraphicsResourceUtil;
-struct GameGraphicsResourceUtil {
-    LogUtil* logUtil;
-    const char* SPRITE;
-    const char* QUARTER;
-    const char* name;
-};
 
-static Any* GameGraphicsResourceUtil_instance;
+static void* GameGraphicsResourceUtil_instance;
 
-GameGraphicsResourceUtil* GameGraphicsResourceUtil_new(void);
-GameGraphicsResourceUtil* GameGraphicsResourceUtil_getInstance(void);
 
-void GameGraphicsResourceUtil_init(GameGraphicsResourceUtil* this);
+
 static const char* GameGraphicsResourceUtil_getString(GameGraphicsResourceUtil* this);
-const char* GameGraphicsResourceUtil_getStringForFeature(GameGraphicsResourceUtil* this, GraphicsFeature* graphicsFeature);
-const char* GameGraphicsResourceUtil_getName(GameGraphicsResourceUtil* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
 void GameGraphicsResourceUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     GameGraphicsResourceUtil_instance = NullUtil_getInstance()->NULL_OBJECT;
+}
+
+void GameGraphicsResourceUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GameGraphicsResourceUtil", nullptr);
+    java_register_method("GameGraphicsResourceUtil", "getString", (void*) GameGraphicsResourceUtil_getString);
+    java_register_method("GameGraphicsResourceUtil", "getStringForFeature", (void*) GameGraphicsResourceUtil_getStringForFeature);
+    java_register_method("GameGraphicsResourceUtil", "getName", (void*) GameGraphicsResourceUtil_getName);
 }
 
 static void GameGraphicsResourceUtil_initFields(GameGraphicsResourceUtil* this) {
@@ -66,14 +65,15 @@ static void GameGraphicsResourceUtil_initFields(GameGraphicsResourceUtil* this) 
 
 
 GameGraphicsResourceUtil* GameGraphicsResourceUtil_getInstance(void) {
-        if (GameGraphicsResourceUtil_instance == NullUtil_getInstance()->NULL_OBJECT) {
+        if ((GameGraphicsResourceUtil_staticInit(), GameGraphicsResourceUtil_instance) == NullUtil_getInstance()->NULL_OBJECT) {
             GameGraphicsResourceUtil_instance = GameGraphicsResourceUtil_new();
         }
-        return ((GameGraphicsResourceUtil*) GameGraphicsResourceUtil_instance);
+        return ((GameGraphicsResourceUtil*) (GameGraphicsResourceUtil_staticInit(), GameGraphicsResourceUtil_instance));
 }
 
 
 void GameGraphicsResourceUtil_init(GameGraphicsResourceUtil* this) {
+    GameGraphicsResourceUtil_register();
     GameGraphicsResourceUtil_initFields(this);
         JAVA_TRY {
             this->name = GameGraphicsResourceUtil_getString(this);
@@ -84,7 +84,7 @@ void GameGraphicsResourceUtil_init(GameGraphicsResourceUtil* this) {
 }
 
 GameGraphicsResourceUtil* GameGraphicsResourceUtil_new(void) {
-    GameGraphicsResourceUtil* this = calloc(1, sizeof(GameGraphicsResourceUtil));
+    GameGraphicsResourceUtil* this = java_object_alloc(sizeof(GameGraphicsResourceUtil), "GameGraphicsResourceUtil");
     GameGraphicsResourceUtil_init(this);
     return this;
 }
@@ -130,7 +130,7 @@ const char* GameGraphicsResourceUtil_getStringForFeature(GameGraphicsResourceUti
         } else {
             java_throw(java_exception_new("Exception", "None/Unknown Main Image Resource Type Specified"));
         }
-        return StringMaker_toString(stringBuffer);
+        return java_string_of(stringBuffer);
 }
 
 

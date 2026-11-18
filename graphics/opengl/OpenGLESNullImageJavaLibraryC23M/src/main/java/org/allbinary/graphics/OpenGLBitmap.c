@@ -1,43 +1,46 @@
 // Generated Code Do Not Modify
-// package org.allbinary.graphics
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-#include "org/allbinary/platform/graphics/PlatformBitmapBase.h"
-
-typedef struct OpenGLBitmap OpenGLBitmap;
-struct OpenGLBitmap {
-    PlatformBitmapBase base;
-    Any* bitmap;
-};
+#include "org/allbinary/graphics/OpenGLBitmap.h"
 
 
-OpenGLBitmap* OpenGLBitmap_new(Any* bitmap);
 
-void OpenGLBitmap_init(OpenGLBitmap* this, Any* bitmap);
-void OpenGLBitmap_getPixels(OpenGLBitmap* this, int32_t* pixels, int32_t offset, int32_t stride, int32_t x, int32_t y, int32_t width, int32_t height);
-void OpenGLBitmap_setPixels(OpenGLBitmap* this, int32_t* pixels, int32_t offset, int32_t stride, int32_t x, int32_t y, int32_t width, int32_t height);
-void OpenGLBitmap_recycle(OpenGLBitmap* this);
+
+
+
+
+void OpenGLBitmap_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void OpenGLBitmap_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("OpenGLBitmap", "PlatformBitmapBase");
+    java_register_method("OpenGLBitmap", "getPixels", (void*) OpenGLBitmap_getPixels);
+    java_register_method("OpenGLBitmap", "setPixels", (void*) OpenGLBitmap_setPixels);
+    java_register_method("OpenGLBitmap", "recycle", (void*) OpenGLBitmap_recycle);
+}
 
 static void OpenGLBitmap_initFields(OpenGLBitmap* this) {
     
 }
 
 
-void OpenGLBitmap_init(OpenGLBitmap* this, Any* bitmap) {
+void OpenGLBitmap_init(OpenGLBitmap* this, void* bitmap) {
+    OpenGLBitmap_register();
     PlatformBitmapBase_init(&this->base);
     OpenGLBitmap_initFields(this);
         this->bitmap = bitmap;
 }
 
-OpenGLBitmap* OpenGLBitmap_new(Any* bitmap) {
-    OpenGLBitmap* this = calloc(1, sizeof(OpenGLBitmap));
+OpenGLBitmap* OpenGLBitmap_new(void* bitmap) {
+    OpenGLBitmap* this = java_object_alloc(sizeof(OpenGLBitmap), "OpenGLBitmap");
     OpenGLBitmap_init(this, bitmap);
     return this;
 }

@@ -1,41 +1,28 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.displayable.canvas
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-#include "org/allbinary/canvas/Processor.h"
-
-typedef struct EndLevelIntermissionProcessor EndLevelIntermissionProcessor;
-struct EndLevelIntermissionProcessor {
-    Processor base;
-    AllBinaryGameCanvas* gameCanvas;
-};
+#include "org/allbinary/game/displayable/canvas/EndLevelIntermissionProcessor.h"
+#include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
 
-EndLevelIntermissionProcessor* EndLevelIntermissionProcessor_new(AllBinaryGameCanvas* gameCanvas);
 
-void EndLevelIntermissionProcessor_init(EndLevelIntermissionProcessor* this, AllBinaryGameCanvas* gameCanvas);
-void EndLevelIntermissionProcessor_process(EndLevelIntermissionProcessor* this);
+
+
+void EndLevelIntermissionProcessor_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void EndLevelIntermissionProcessor_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("EndLevelIntermissionProcessor", "Processor");
+    java_register_method("EndLevelIntermissionProcessor", "process", (void*) EndLevelIntermissionProcessor_process);
+}
 
 static void EndLevelIntermissionProcessor_initFields(EndLevelIntermissionProcessor* this) {
     
@@ -43,13 +30,14 @@ static void EndLevelIntermissionProcessor_initFields(EndLevelIntermissionProcess
 
 
 void EndLevelIntermissionProcessor_init(EndLevelIntermissionProcessor* this, AllBinaryGameCanvas* gameCanvas) {
+    EndLevelIntermissionProcessor_register();
     Processor_init(&this->base);
     EndLevelIntermissionProcessor_initFields(this);
         this->gameCanvas = gameCanvas;
 }
 
 EndLevelIntermissionProcessor* EndLevelIntermissionProcessor_new(AllBinaryGameCanvas* gameCanvas) {
-    EndLevelIntermissionProcessor* this = calloc(1, sizeof(EndLevelIntermissionProcessor));
+    EndLevelIntermissionProcessor* this = java_object_alloc(sizeof(EndLevelIntermissionProcessor), "EndLevelIntermissionProcessor");
     EndLevelIntermissionProcessor_init(this, gameCanvas);
     return this;
 }

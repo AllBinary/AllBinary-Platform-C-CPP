@@ -1,69 +1,70 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.physics.velocity
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/physics/velocity/VelocityProperties.h"
 #include "org/allbinary/game/physics/velocity/BasicVelocityProperties.h"
 #include "org/allbinary/game/physics/velocity/VelocityInterface.h"
 
-typedef struct VelocityProperties VelocityProperties;
-struct VelocityProperties {
-    BasicVelocityProperties base;
-    VelocityInterface VelocityInterface_interface;
-    int32_t maxForwardVelocity;
-    int32_t maxReverseVelocity;
-};
 
 VelocityProperties* VelocityProperties_NULL_VELOCITY_PROPERTIES;
 
-VelocityProperties* VelocityProperties_new(int32_t maxForwardVelocity, int32_t maxReverseVelocity);
 
-void VelocityProperties_init(VelocityProperties* this, int32_t maxForwardVelocity, int32_t maxReverseVelocity);
-int32_t VelocityProperties_getMaxForwardVelocity(VelocityProperties* this);
-void VelocityProperties_setMaxForwardVelocity(VelocityProperties* this, int32_t maxForwardVelocity);
-int32_t VelocityProperties_getMaxReverseVelocity(VelocityProperties* this);
-void VelocityProperties_setMaxReverseVelocity(VelocityProperties* this, int32_t maxReverseVelocity);
-void VelocityProperties_limitMaxXYForwardVelocity(VelocityProperties* this);
-void VelocityProperties_limitMaxXYReverseVelocity(VelocityProperties* this);
-void VelocityProperties_limitMaxYForwardVelocity(VelocityProperties* this);
-void VelocityProperties_limitMaxYReverseVelocity(VelocityProperties* this);
-void VelocityProperties_limitMaxXForwardVelocity(VelocityProperties* this);
-void VelocityProperties_limitMaxXReverseVelocity(VelocityProperties* this);
-bool VelocityProperties_isOverXYMaxForwardVelocity(VelocityProperties* this);
-bool VelocityProperties_isOverXYMaxReverseVelocity(VelocityProperties* this);
-void VelocityProperties_limitXYToForwardAndReverseMaxVelocity(VelocityProperties* this);
-void VelocityProperties_limitMaxXYVelocity(VelocityProperties* this, int32_t maxVelocity);
-void VelocityProperties_limitMaxPositiveYVelocity(VelocityProperties* this, int32_t maxVelocity);
-void VelocityProperties_limitMaxNegativeYVelocity(VelocityProperties* this, int32_t maxVelocity);
-void VelocityProperties_limitMaxYVelocity(VelocityProperties* this, int32_t maxVelocity);
-void VelocityProperties_limitMaxXVelocity(VelocityProperties* this, int32_t maxVelocity);
-bool VelocityProperties_isOverXYMaxVelocity(VelocityProperties* this, int32_t maxVelocity);
-void VelocityProperties_setVelocityi(VelocityProperties* this, int64_t magnitude, int32_t angle, int32_t otherAngle);
-void VelocityProperties_addVelocityi(VelocityProperties* this, int64_t magnitude, int32_t angle, int32_t otherAngle);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 void VelocityProperties_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     VelocityProperties_NULL_VELOCITY_PROPERTIES = VelocityProperties_new(0, 0);
+}
+
+void VelocityProperties_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("VelocityProperties", "BasicVelocityProperties");
+    java_register_method("VelocityProperties", "getMaxForwardVelocity", (void*) VelocityProperties_getMaxForwardVelocity);
+    java_register_method("VelocityProperties", "setMaxForwardVelocity", (void*) VelocityProperties_setMaxForwardVelocity);
+    java_register_method("VelocityProperties", "getMaxReverseVelocity", (void*) VelocityProperties_getMaxReverseVelocity);
+    java_register_method("VelocityProperties", "setMaxReverseVelocity", (void*) VelocityProperties_setMaxReverseVelocity);
+    java_register_method("VelocityProperties", "limitMaxXYForwardVelocity", (void*) VelocityProperties_limitMaxXYForwardVelocity);
+    java_register_method("VelocityProperties", "limitMaxXYReverseVelocity", (void*) VelocityProperties_limitMaxXYReverseVelocity);
+    java_register_method("VelocityProperties", "limitMaxYForwardVelocity", (void*) VelocityProperties_limitMaxYForwardVelocity);
+    java_register_method("VelocityProperties", "limitMaxYReverseVelocity", (void*) VelocityProperties_limitMaxYReverseVelocity);
+    java_register_method("VelocityProperties", "limitMaxXForwardVelocity", (void*) VelocityProperties_limitMaxXForwardVelocity);
+    java_register_method("VelocityProperties", "limitMaxXReverseVelocity", (void*) VelocityProperties_limitMaxXReverseVelocity);
+    java_register_method("VelocityProperties", "isOverXYMaxForwardVelocity", (void*) VelocityProperties_isOverXYMaxForwardVelocity);
+    java_register_method("VelocityProperties", "isOverXYMaxReverseVelocity", (void*) VelocityProperties_isOverXYMaxReverseVelocity);
+    java_register_method("VelocityProperties", "limitXYToForwardAndReverseMaxVelocity", (void*) VelocityProperties_limitXYToForwardAndReverseMaxVelocity);
+    java_register_method("VelocityProperties", "limitMaxXYVelocity", (void*) VelocityProperties_limitMaxXYVelocity);
+    java_register_method("VelocityProperties", "limitMaxPositiveYVelocity", (void*) VelocityProperties_limitMaxPositiveYVelocity);
+    java_register_method("VelocityProperties", "limitMaxNegativeYVelocity", (void*) VelocityProperties_limitMaxNegativeYVelocity);
+    java_register_method("VelocityProperties", "limitMaxYVelocity", (void*) VelocityProperties_limitMaxYVelocity);
+    java_register_method("VelocityProperties", "limitMaxXVelocity", (void*) VelocityProperties_limitMaxXVelocity);
+    java_register_method("VelocityProperties", "isOverXYMaxVelocity", (void*) VelocityProperties_isOverXYMaxVelocity);
+    java_register_method("VelocityProperties", "setVelocityi", (void*) VelocityProperties_setVelocityi);
+    java_register_method("VelocityProperties", "addVelocityi", (void*) VelocityProperties_addVelocityi);
 }
 
 static void VelocityProperties_initFields(VelocityProperties* this) {
@@ -73,6 +74,7 @@ static void VelocityProperties_initFields(VelocityProperties* this) {
 
 
 void VelocityProperties_init(VelocityProperties* this, int32_t maxForwardVelocity, int32_t maxReverseVelocity) {
+    VelocityProperties_register();
     BasicVelocityProperties_init(&this->base);
     VelocityProperties_initFields(this);
         VelocityProperties_setMaxForwardVelocity(this, maxForwardVelocity);
@@ -80,7 +82,7 @@ void VelocityProperties_init(VelocityProperties* this, int32_t maxForwardVelocit
 }
 
 VelocityProperties* VelocityProperties_new(int32_t maxForwardVelocity, int32_t maxReverseVelocity) {
-    VelocityProperties* this = calloc(1, sizeof(VelocityProperties));
+    VelocityProperties* this = java_object_alloc(sizeof(VelocityProperties), "VelocityProperties");
     VelocityProperties_init(this, maxForwardVelocity, maxReverseVelocity);
     return this;
 }
@@ -159,15 +161,15 @@ void VelocityProperties_limitMaxXYVelocity(VelocityProperties* this, int32_t max
 
 
 void VelocityProperties_limitMaxPositiveYVelocity(VelocityProperties* this, int32_t maxVelocity) {
-        if (JAVA_CALL(this->velocityYBasicDecimal, getUnscaled) > maxVelocity) {
-            JAVA_CALL(this->velocityYBasicDecimal, setint, maxVelocity);
+        if (BasicDecimal_getUnscaled(this->base.velocityYBasicDecimal) > ((int64_t) maxVelocity)) {
+            BasicDecimal_setint(this->base.velocityYBasicDecimal, maxVelocity);
         }
 }
 
 
 void VelocityProperties_limitMaxNegativeYVelocity(VelocityProperties* this, int32_t maxVelocity) {
-        if (JAVA_CALL(this->velocityYBasicDecimal, getUnscaled) < -maxVelocity) {
-            JAVA_CALL(this->velocityYBasicDecimal, setint, -maxVelocity);
+        if (BasicDecimal_getUnscaled(this->base.velocityYBasicDecimal) < ((int64_t) (-maxVelocity))) {
+            BasicDecimal_setint(this->base.velocityYBasicDecimal, -maxVelocity);
         }
 }
 
@@ -179,26 +181,26 @@ void VelocityProperties_limitMaxYVelocity(VelocityProperties* this, int32_t maxV
 
 
 void VelocityProperties_limitMaxXVelocity(VelocityProperties* this, int32_t maxVelocity) {
-        if (JAVA_CALL(this->velocityXBasicDecimal, getUnscaled) > maxVelocity) {
-            JAVA_CALL(this->velocityXBasicDecimal, setint, maxVelocity);
+        if (BasicDecimal_getUnscaled(this->base.velocityXBasicDecimal) > ((int64_t) maxVelocity)) {
+            BasicDecimal_setint(this->base.velocityXBasicDecimal, maxVelocity);
         }
-        if (JAVA_CALL(this->velocityXBasicDecimal, getUnscaled) < -maxVelocity) {
-            JAVA_CALL(this->velocityXBasicDecimal, setint, -maxVelocity);
+        if (BasicDecimal_getUnscaled(this->base.velocityXBasicDecimal) < ((int64_t) (-maxVelocity))) {
+            BasicDecimal_setint(this->base.velocityXBasicDecimal, -maxVelocity);
         }
 }
 
 
 bool VelocityProperties_isOverXYMaxVelocity(VelocityProperties* this, int32_t maxVelocity) {
-        if (JAVA_CALL(this->velocityXBasicDecimal, getUnscaled) > maxVelocity) {
+        if (BasicDecimal_getUnscaled(this->base.velocityXBasicDecimal) > ((int64_t) maxVelocity)) {
             return true;
         }
-        if (JAVA_CALL(this->velocityXBasicDecimal, getUnscaled) < -maxVelocity) {
+        if (BasicDecimal_getUnscaled(this->base.velocityXBasicDecimal) < ((int64_t) (-maxVelocity))) {
             return true;
         }
-        if (JAVA_CALL(this->velocityYBasicDecimal, getUnscaled) > maxVelocity) {
+        if (BasicDecimal_getUnscaled(this->base.velocityYBasicDecimal) > ((int64_t) maxVelocity)) {
             return true;
         }
-        if (JAVA_CALL(this->velocityYBasicDecimal, getUnscaled) < -maxVelocity) {
+        if (BasicDecimal_getUnscaled(this->base.velocityYBasicDecimal) < ((int64_t) (-maxVelocity))) {
             return true;
         }
         return false;

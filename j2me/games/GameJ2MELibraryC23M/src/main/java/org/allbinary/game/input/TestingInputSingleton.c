@@ -1,32 +1,8 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.input
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Canvas.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/game/input/TestingInputSingleton.h"
+#include "javax/microedition/lcdui/Canvas.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/game/input/event/GameKeyEvent.h"
-#include "org/allbinary/game/layer/AllBinaryGameLayer.h"
 #include "org/allbinary/graphics/RectangleFactory.h"
 #include "org/allbinary/graphics/paint/NullPaintable.h"
 #include "org/allbinary/graphics/paint/PaintableInterface.h"
@@ -35,31 +11,50 @@
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/view/ViewPosition.h"
 #include "org/allbinary/game/input/GameInputInterface.h"
+#include "org/allbinary/game/input/GameInputProcessor.h"
+#include "org/allbinary/game/input/InputFactory.h"
+#include "org/allbinary/game/input/GameInputProcessorUtil.h"
+#include "org/allbinary/game/input/TestInputInterface.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/util/BasicArrayList.h")
+#include "org/allbinary/util/BasicArrayList.h"
+#endif
 
-typedef struct TestingInputSingleton TestingInputSingleton;
-struct TestingInputSingleton {
-    AllBinaryGameLayer base;
-    GameInputInterface GameInputInterface_interface;
-    GameInputProcessor** inputProcessorArray;
-    PaintableInterface* testInputPaintable;
-};
 
 static TestingInputSingleton* TestingInputSingleton_instance;
 
-TestingInputSingleton* TestingInputSingleton_new(void);
-TestingInputSingleton* TestingInputSingleton_getInstance(void);
 
-void TestingInputSingleton_init(TestingInputSingleton* this);
-void TestingInputSingleton_initInputProcessors(TestingInputSingleton* this);
-void TestingInputSingleton_initInputProcessorsForTestInput(TestingInputSingleton* this, TestInputInterface* aTestInputInterface);
-void TestingInputSingleton_processInputList(TestingInputSingleton* this, AllBinaryLayerManager* allbinaryLayerManager, BasicArrayList* list);
-void TestingInputSingleton_processInput(TestingInputSingleton* this, AllBinaryLayerManager* allbinaryLayerManager);
-void TestingInputSingleton_paint(TestingInputSingleton* this, Graphics* graphics);
-bool TestingInputSingleton_implmentsGameInputInterface(TestingInputSingleton* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+
+
 void TestingInputSingleton_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     TestingInputSingleton_instance = TestingInputSingleton_new();
+}
+
+void TestingInputSingleton_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("TestingInputSingleton", "AllBinaryGameLayer");
+    java_register_method("TestingInputSingleton", "initInputProcessors", (void*) TestingInputSingleton_initInputProcessors);
+    java_register_method("TestingInputSingleton", "initInputProcessorsForTestInput", (void*) TestingInputSingleton_initInputProcessorsForTestInput);
+    java_register_method("TestingInputSingleton", "processInputList", (void*) TestingInputSingleton_processInputList);
+    java_register_method("TestingInputSingleton", "processInput", (void*) TestingInputSingleton_processInput);
+    java_register_method("TestingInputSingleton", "paint", (void*) TestingInputSingleton_paint);
+    java_register_method("TestingInputSingleton", "implmentsGameInputInterface", (void*) TestingInputSingleton_implmentsGameInputInterface);
 }
 
 static void TestingInputSingleton_initFields(TestingInputSingleton* this) {
@@ -69,18 +64,19 @@ static void TestingInputSingleton_initFields(TestingInputSingleton* this) {
 
 
 TestingInputSingleton* TestingInputSingleton_getInstance(void) {
-        return TestingInputSingleton_instance;
+        return (TestingInputSingleton_staticInit(), TestingInputSingleton_instance);
 }
 
 
 void TestingInputSingleton_init(TestingInputSingleton* this) {
-        AllBinaryGameLayer_init(&this->base, StringUtil_getInstance()->EMPTY_STRING, RectangleFactory_SINGLETON, ViewPosition_getInstanceD());
+    TestingInputSingleton_register();
+        AllBinaryGameLayer_init(&this->base, StringUtil_getInstance()->EMPTY_STRING, (RectangleFactory_staticInit(), RectangleFactory_SINGLETON), ViewPosition_getInstanceD());
         TestingInputSingleton_initFields(this);
-        GameInputProcessorUtil_init(this->inputProcessorArray);
+        GameInputProcessorUtil_initMethod(this->inputProcessorArray);
 }
 
 TestingInputSingleton* TestingInputSingleton_new(void) {
-    TestingInputSingleton* this = calloc(1, sizeof(TestingInputSingleton));
+    TestingInputSingleton* this = java_object_alloc(sizeof(TestingInputSingleton), "TestingInputSingleton");
     TestingInputSingleton_init(this);
     return this;
 }
@@ -93,7 +89,7 @@ void TestingInputSingleton_initInputProcessors(TestingInputSingleton* this) {
 void TestingInputSingleton_initInputProcessorsForTestInput(TestingInputSingleton* this, TestInputInterface* aTestInputInterface) {
         TestInputInterface* testInputInterface = aTestInputInterface;
         this->testInputPaintable = testInputInterface;
-        this->inputProcessorArray[Canvas_UP] = GameInputProcessor_new()
+        this->inputProcessorArray[(Canvas_staticInit(), Canvas_UP)] = GameInputProcessor_new()
 #if 0 /* Java anonymous class body: implement it as a named struct */
             
 
@@ -103,7 +99,7 @@ void TestingInputSingleton_initInputProcessorsForTestInput(TestingInputSingleton
         }
 #endif
 ;
-        this->inputProcessorArray[Canvas_DOWN] = GameInputProcessor_new()
+        this->inputProcessorArray[(Canvas_staticInit(), Canvas_DOWN)] = GameInputProcessor_new()
 #if 0 /* Java anonymous class body: implement it as a named struct */
             
 
@@ -113,7 +109,7 @@ void TestingInputSingleton_initInputProcessorsForTestInput(TestingInputSingleton
         }
 #endif
 ;
-        this->inputProcessorArray[Canvas_LEFT] = GameInputProcessor_new()
+        this->inputProcessorArray[(Canvas_staticInit(), Canvas_LEFT)] = GameInputProcessor_new()
 #if 0 /* Java anonymous class body: implement it as a named struct */
             
 
@@ -123,7 +119,7 @@ void TestingInputSingleton_initInputProcessorsForTestInput(TestingInputSingleton
         }
 #endif
 ;
-        this->inputProcessorArray[Canvas_RIGHT] = GameInputProcessor_new()
+        this->inputProcessorArray[(Canvas_staticInit(), Canvas_RIGHT)] = GameInputProcessor_new()
 #if 0 /* Java anonymous class body: implement it as a named struct */
             
 
@@ -133,7 +129,7 @@ void TestingInputSingleton_initInputProcessorsForTestInput(TestingInputSingleton
         }
 #endif
 ;
-        this->inputProcessorArray[Canvas_KEY_NUM7] = GameInputProcessor_new()
+        this->inputProcessorArray[(Canvas_staticInit(), Canvas_KEY_NUM7)] = GameInputProcessor_new()
 #if 0 /* Java anonymous class body: implement it as a named struct */
             
 
@@ -143,7 +139,7 @@ void TestingInputSingleton_initInputProcessorsForTestInput(TestingInputSingleton
         }
 #endif
 ;
-        this->inputProcessorArray[Canvas_KEY_NUM9] = GameInputProcessor_new()
+        this->inputProcessorArray[(Canvas_staticInit(), Canvas_KEY_NUM9)] = GameInputProcessor_new()
 #if 0 /* Java anonymous class body: implement it as a named struct */
             
 
@@ -153,7 +149,7 @@ void TestingInputSingleton_initInputProcessorsForTestInput(TestingInputSingleton
         }
 #endif
 ;
-        GameInputProcessorUtil_init(this->inputProcessorArray);
+        GameInputProcessorUtil_initMethod(this->inputProcessorArray);
 }
 
 
@@ -166,7 +162,7 @@ void TestingInputSingleton_processInputList(TestingInputSingleton* this, AllBina
         for (int32_t index = 0; index < size; index++) {
             gameKeyEvent = (((GameKeyEvent*) list->objectArray[index]));
             key = GameKeyEvent_getKey(gameKeyEvent);
-            JAVA_CALL(this->inputProcessorArray[key], processEvent, allbinaryLayerManager, GameKeyEvent_NONE);
+            GameInputProcessor_processEvent(this->inputProcessorArray[key], allbinaryLayerManager, (GameKeyEvent_staticInit(), GameKeyEvent_NONE));
         }
 }
 
@@ -174,8 +170,8 @@ void TestingInputSingleton_processInputList(TestingInputSingleton* this, AllBina
 // throws Exception
 // synchronized
 void TestingInputSingleton_processInput(TestingInputSingleton* this, AllBinaryLayerManager* allbinaryLayerManager) {
-        TestingInputSingleton_processInputList(this, allbinaryLayerManager, TestingInputSingleton_getGameKeyEventList(this));
-        JAVA_CALL(TestingInputSingleton_getGameKeyEventList(this), clear);
+        TestingInputSingleton_processInputList(this, allbinaryLayerManager, AllBinaryGameLayer_getGameKeyEventList(this));
+        BasicArrayList_clear(AllBinaryGameLayer_getGameKeyEventList(this));
 }
 
 

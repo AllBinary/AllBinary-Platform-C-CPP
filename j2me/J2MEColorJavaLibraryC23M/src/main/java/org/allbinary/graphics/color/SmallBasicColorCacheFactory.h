@@ -50,6 +50,8 @@ void SmallBasicColorCacheFactory_init(SmallBasicColorCacheFactory* this);
 void SmallBasicColorCacheFactory_add(SmallBasicColorCacheFactory* this, BasicColor* basicDefaultColor);
 
 BasicColor* SmallBasicColorCacheFactory_getAndOrCreate(SmallBasicColorCacheFactory* this, int32_t colorAsInt);
+#define SmallBasicColorCacheFactory_new0 SmallBasicColorCacheFactory_new
+#define SmallBasicColorCacheFactory_init0 SmallBasicColorCacheFactory_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void SmallBasicColorCacheFactory_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

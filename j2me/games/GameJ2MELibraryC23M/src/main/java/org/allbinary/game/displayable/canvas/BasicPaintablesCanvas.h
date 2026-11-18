@@ -1,0 +1,358 @@
+#ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASICPAINTABLESCANVAS_H
+#define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASICPAINTABLESCANVAS_H
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.displayable.canvas
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+typedef struct GameCommandCanvas GameCommandCanvas;
+typedef struct CommandListener CommandListener;
+typedef struct Graphics Graphics;
+typedef struct AllBinaryGameLayerManager AllBinaryGameLayerManager;
+typedef struct ColorFillBasePaintable ColorFillBasePaintable;
+typedef struct ColorFillPaintableFactory ColorFillPaintableFactory;
+typedef struct Paintable Paintable;
+#if __has_include("org/allbinary/game/paint/ColorFillBasePaintable.h")
+#include "org/allbinary/game/paint/ColorFillBasePaintable.h"
+#endif
+#if __has_include("org/allbinary/graphics/paint/Paintable.h")
+#include "org/allbinary/graphics/paint/Paintable.h"
+#endif
+#include "org/allbinary/game/displayable/canvas/GameCommandCanvas.h"
+
+typedef struct BasicPaintablesCanvas BasicPaintablesCanvas;
+struct BasicPaintablesCanvas {
+    GameCommandCanvas base;
+    Paintable** paintableArray;
+    ColorFillBasePaintable* colorFillPaintable;
+};
+
+
+BasicPaintablesCanvas* BasicPaintablesCanvas_new(CommandListener* cmdListener, const char* name, AllBinaryGameLayerManager* allBinaryGameLayerManager, Paintable** paintableArray);
+
+void BasicPaintablesCanvas_init(BasicPaintablesCanvas* this, CommandListener* cmdListener, const char* name, AllBinaryGameLayerManager* allBinaryGameLayerManager, Paintable** paintableArray);
+
+void BasicPaintablesCanvas_paint(BasicPaintablesCanvas* this, Graphics* graphics);
+#define BasicPaintablesCanvas_new4 BasicPaintablesCanvas_new
+#define BasicPaintablesCanvas_init4 BasicPaintablesCanvas_init
+#ifndef BasicPaintablesCanvas_updateMeasurement
+#define BasicPaintablesCanvas_updateMeasurement GameCommandCanvas_updateMeasurement
+#endif
+#ifndef BasicPaintablesCanvas_onEvent
+#define BasicPaintablesCanvas_onEvent GameCommandCanvas_onEvent
+#endif
+#ifndef BasicPaintablesCanvas_onDisplayChangeEvent
+#define BasicPaintablesCanvas_onDisplayChangeEvent GameCommandCanvas_onDisplayChangeEvent
+#endif
+#ifndef BasicPaintablesCanvas_initCommands
+#define BasicPaintablesCanvas_initCommands GameCommandCanvas_initCommands
+#endif
+#ifndef BasicPaintablesCanvas_initMenu
+#define BasicPaintablesCanvas_initMenu GameCommandCanvas_initMenu
+#endif
+#ifndef BasicPaintablesCanvas_createForm
+#define BasicPaintablesCanvas_createForm GameCommandCanvas_createForm
+#endif
+#ifndef BasicPaintablesCanvas_createRectangle
+#define BasicPaintablesCanvas_createRectangle GameCommandCanvas_createRectangle
+#endif
+#ifndef BasicPaintablesCanvas_open
+#define BasicPaintablesCanvas_open GameCommandCanvas_open
+#endif
+#ifndef BasicPaintablesCanvas_close
+#define BasicPaintablesCanvas_close GameCommandCanvas_close
+#endif
+#ifndef BasicPaintablesCanvas_update
+#define BasicPaintablesCanvas_update GameCommandCanvas_update
+#endif
+#ifndef BasicPaintablesCanvas_getSourceId
+#define BasicPaintablesCanvas_getSourceId GameCommandCanvas_getSourceId
+#endif
+#ifndef BasicPaintablesCanvas_keyPressed
+#define BasicPaintablesCanvas_keyPressed GameCommandCanvas_keyPressed
+#endif
+#ifndef BasicPaintablesCanvas_keyReleased
+#define BasicPaintablesCanvas_keyReleased GameCommandCanvas_keyReleased
+#endif
+#ifndef BasicPaintablesCanvas_keyRepeated
+#define BasicPaintablesCanvas_keyRepeated GameCommandCanvas_keyRepeated
+#endif
+#ifndef BasicPaintablesCanvas_keyPressedByDevice
+#define BasicPaintablesCanvas_keyPressedByDevice GameCommandCanvas_keyPressedByDevice
+#endif
+#ifndef BasicPaintablesCanvas_keyReleasedByDevice
+#define BasicPaintablesCanvas_keyReleasedByDevice GameCommandCanvas_keyReleasedByDevice
+#endif
+#ifndef BasicPaintablesCanvas_keyRepeatedByDevice
+#define BasicPaintablesCanvas_keyRepeatedByDevice GameCommandCanvas_keyRepeatedByDevice
+#endif
+#ifndef BasicPaintablesCanvas_addGameKeyEvent
+#define BasicPaintablesCanvas_addGameKeyEvent GameCommandCanvas_addGameKeyEvent
+#endif
+#ifndef BasicPaintablesCanvas_removeGameKeyEvent
+#define BasicPaintablesCanvas_removeGameKeyEvent GameCommandCanvas_removeGameKeyEvent
+#endif
+#ifndef BasicPaintablesCanvas_setMenuInputProcessor
+#define BasicPaintablesCanvas_setMenuInputProcessor GameCommandCanvas_setMenuInputProcessor
+#endif
+#ifndef BasicPaintablesCanvas_getMenuInputProcessor
+#define BasicPaintablesCanvas_getMenuInputProcessor GameCommandCanvas_getMenuInputProcessor
+#endif
+#ifndef BasicPaintablesCanvas_getWidth
+#define BasicPaintablesCanvas_getWidth MyCanvas_getWidth
+#endif
+#ifndef BasicPaintablesCanvas_getHeight
+#define BasicPaintablesCanvas_getHeight MyCanvas_getHeight
+#endif
+#ifndef BasicPaintablesCanvas_setFullScreenMode
+#define BasicPaintablesCanvas_setFullScreenMode MyCanvas_setFullScreenMode
+#endif
+#ifndef BasicPaintablesCanvas_sizeChanged
+#define BasicPaintablesCanvas_sizeChanged MyCanvas_sizeChanged
+#endif
+#ifndef BasicPaintablesCanvas_getCommandStack
+#define BasicPaintablesCanvas_getCommandStack MyCanvas_getCommandStack
+#endif
+#ifndef BasicPaintablesCanvas_isCommand
+#define BasicPaintablesCanvas_isCommand MyCanvas_isCommand
+#endif
+#ifndef BasicPaintablesCanvas_addCommand
+#define BasicPaintablesCanvas_addCommand MyCanvas_addCommand
+#endif
+#ifndef BasicPaintablesCanvas_removeCommand
+#define BasicPaintablesCanvas_removeCommand MyCanvas_removeCommand
+#endif
+#ifndef BasicPaintablesCanvas_removeAllCommands
+#define BasicPaintablesCanvas_removeAllCommands MyCanvas_removeAllCommands
+#endif
+#ifndef BasicPaintablesCanvas_setCommandListener
+#define BasicPaintablesCanvas_setCommandListener MyCanvas_setCommandListener
+#endif
+#ifndef BasicPaintablesCanvas_getCustomCommandListener
+#define BasicPaintablesCanvas_getCustomCommandListener MyCanvas_getCustomCommandListener
+#endif
+#ifndef BasicPaintablesCanvas_isPaused
+#define BasicPaintablesCanvas_isPaused MyCanvas_isPaused
+#endif
+#ifndef BasicPaintablesCanvas_removePauseCommand
+#define BasicPaintablesCanvas_removePauseCommand MyCanvas_removePauseCommand
+#endif
+#ifndef BasicPaintablesCanvas_pause
+#define BasicPaintablesCanvas_pause MyCanvas_pause
+#endif
+#ifndef BasicPaintablesCanvas_unPause
+#define BasicPaintablesCanvas_unPause MyCanvas_unPause
+#endif
+#ifndef BasicPaintablesCanvas_process
+#define BasicPaintablesCanvas_process MyCanvas_process
+#endif
+#ifndef BasicPaintablesCanvas_draw
+#define BasicPaintablesCanvas_draw MyCanvas_draw
+#endif
+#ifndef BasicPaintablesCanvas_hasChild
+#define BasicPaintablesCanvas_hasChild MyCanvas_hasChild
+#endif
+#ifndef BasicPaintablesCanvas_destroy
+#define BasicPaintablesCanvas_destroy MyCanvas_destroy
+#endif
+#ifndef BasicPaintablesCanvas_setPaused
+#define BasicPaintablesCanvas_setPaused MyCanvas_setPaused
+#endif
+#ifndef BasicPaintablesCanvas_keyPressedByDevice
+#define BasicPaintablesCanvas_keyPressedByDevice MyCanvas_keyPressedByDevice
+#endif
+#ifndef BasicPaintablesCanvas_keyRepeatedByDevice
+#define BasicPaintablesCanvas_keyRepeatedByDevice MyCanvas_keyRepeatedByDevice
+#endif
+#ifndef BasicPaintablesCanvas_keyReleasedByDevice
+#define BasicPaintablesCanvas_keyReleasedByDevice MyCanvas_keyReleasedByDevice
+#endif
+#ifndef BasicPaintablesCanvas_pointerDragged
+#define BasicPaintablesCanvas_pointerDragged MyCanvas_pointerDragged
+#endif
+#ifndef BasicPaintablesCanvas_pointerPressed
+#define BasicPaintablesCanvas_pointerPressed MyCanvas_pointerPressed
+#endif
+#ifndef BasicPaintablesCanvas_pointerReleased
+#define BasicPaintablesCanvas_pointerReleased MyCanvas_pointerReleased
+#endif
+#ifndef BasicPaintablesCanvas_nextSong
+#define BasicPaintablesCanvas_nextSong MyCanvas_nextSong
+#endif
+#ifndef BasicPaintablesCanvas_getGameAction
+#define BasicPaintablesCanvas_getGameAction Canvas_getGameAction
+#endif
+#ifndef BasicPaintablesCanvas_getKeyCode
+#define BasicPaintablesCanvas_getKeyCode Canvas_getKeyCode
+#endif
+#ifndef BasicPaintablesCanvas_getKeyName
+#define BasicPaintablesCanvas_getKeyName Canvas_getKeyName
+#endif
+#ifndef BasicPaintablesCanvas_hasPointerEvents
+#define BasicPaintablesCanvas_hasPointerEvents Canvas_hasPointerEvents
+#endif
+#ifndef BasicPaintablesCanvas_hasPointerMotionEvents
+#define BasicPaintablesCanvas_hasPointerMotionEvents Canvas_hasPointerMotionEvents
+#endif
+#ifndef BasicPaintablesCanvas_hasRepeatEvents
+#define BasicPaintablesCanvas_hasRepeatEvents Canvas_hasRepeatEvents
+#endif
+#ifndef BasicPaintablesCanvas_hideNotify
+#define BasicPaintablesCanvas_hideNotify Canvas_hideNotify
+#endif
+#ifndef BasicPaintablesCanvas_isDoubleBuffered
+#define BasicPaintablesCanvas_isDoubleBuffered Canvas_isDoubleBuffered
+#endif
+#ifndef BasicPaintablesCanvas_keyPressed
+#define BasicPaintablesCanvas_keyPressed Canvas_keyPressed
+#endif
+#ifndef BasicPaintablesCanvas_keyRepeated
+#define BasicPaintablesCanvas_keyRepeated Canvas_keyRepeated
+#endif
+#ifndef BasicPaintablesCanvas_keyReleased
+#define BasicPaintablesCanvas_keyReleased Canvas_keyReleased
+#endif
+#ifndef BasicPaintablesCanvas_pointerPressed
+#define BasicPaintablesCanvas_pointerPressed Canvas_pointerPressed
+#endif
+#ifndef BasicPaintablesCanvas_pointerReleased
+#define BasicPaintablesCanvas_pointerReleased Canvas_pointerReleased
+#endif
+#ifndef BasicPaintablesCanvas_pointerDragged
+#define BasicPaintablesCanvas_pointerDragged Canvas_pointerDragged
+#endif
+#ifndef BasicPaintablesCanvas_repaint
+#define BasicPaintablesCanvas_repaint Canvas_repaint
+#endif
+#ifndef BasicPaintablesCanvas_repaintXYWH
+#define BasicPaintablesCanvas_repaintXYWH Canvas_repaintXYWH
+#endif
+#ifndef BasicPaintablesCanvas_serviceRepaints
+#define BasicPaintablesCanvas_serviceRepaints Canvas_serviceRepaints
+#endif
+#ifndef BasicPaintablesCanvas_setFullScreenMode
+#define BasicPaintablesCanvas_setFullScreenMode Canvas_setFullScreenMode
+#endif
+#ifndef BasicPaintablesCanvas_sizeChanged
+#define BasicPaintablesCanvas_sizeChanged Canvas_sizeChanged
+#endif
+#ifndef BasicPaintablesCanvas_showNotify
+#define BasicPaintablesCanvas_showNotify Canvas_showNotify
+#endif
+#ifndef BasicPaintablesCanvas_setUI
+#define BasicPaintablesCanvas_setUI Displayable_setUI
+#endif
+#ifndef BasicPaintablesCanvas_getUI
+#define BasicPaintablesCanvas_getUI Displayable_getUI
+#endif
+#ifndef BasicPaintablesCanvas_addCommand
+#define BasicPaintablesCanvas_addCommand Displayable_addCommand
+#endif
+#ifndef BasicPaintablesCanvas_removeCommand
+#define BasicPaintablesCanvas_removeCommand Displayable_removeCommand
+#endif
+#ifndef BasicPaintablesCanvas_getWidth
+#define BasicPaintablesCanvas_getWidth Displayable_getWidth
+#endif
+#ifndef BasicPaintablesCanvas_getHeight
+#define BasicPaintablesCanvas_getHeight Displayable_getHeight
+#endif
+#ifndef BasicPaintablesCanvas_isShown
+#define BasicPaintablesCanvas_isShown Displayable_isShown
+#endif
+#ifndef BasicPaintablesCanvas_getTicker
+#define BasicPaintablesCanvas_getTicker Displayable_getTicker
+#endif
+#ifndef BasicPaintablesCanvas_setTicker
+#define BasicPaintablesCanvas_setTicker Displayable_setTicker
+#endif
+#ifndef BasicPaintablesCanvas_getTitle
+#define BasicPaintablesCanvas_getTitle Displayable_getTitle
+#endif
+#ifndef BasicPaintablesCanvas_setTitle
+#define BasicPaintablesCanvas_setTitle Displayable_setTitle
+#endif
+#ifndef BasicPaintablesCanvas_setCommandListener
+#define BasicPaintablesCanvas_setCommandListener Displayable_setCommandListener
+#endif
+#ifndef BasicPaintablesCanvas_getCommandListener
+#define BasicPaintablesCanvas_getCommandListener Displayable_getCommandListener
+#endif
+#ifndef BasicPaintablesCanvas_getCommands
+#define BasicPaintablesCanvas_getCommands Displayable_getCommands
+#endif
+#ifndef BasicPaintablesCanvas_setFullScreenMode
+#define BasicPaintablesCanvas_setFullScreenMode Displayable_setFullScreenMode
+#endif
+#ifndef BasicPaintablesCanvas_isFullScreenMode
+#define BasicPaintablesCanvas_isFullScreenMode Displayable_isFullScreenMode
+#endif
+#ifndef BasicPaintablesCanvas_hideNotify
+#define BasicPaintablesCanvas_hideNotify Displayable_hideNotify
+#endif
+#ifndef BasicPaintablesCanvas_hideNotifyForDisplay
+#define BasicPaintablesCanvas_hideNotifyForDisplay Displayable_hideNotifyForDisplay
+#endif
+#ifndef BasicPaintablesCanvas_keyPressed
+#define BasicPaintablesCanvas_keyPressed Displayable_keyPressed
+#endif
+#ifndef BasicPaintablesCanvas_keyRepeated
+#define BasicPaintablesCanvas_keyRepeated Displayable_keyRepeated
+#endif
+#ifndef BasicPaintablesCanvas_keyReleased
+#define BasicPaintablesCanvas_keyReleased Displayable_keyReleased
+#endif
+#ifndef BasicPaintablesCanvas_pointerPressed
+#define BasicPaintablesCanvas_pointerPressed Displayable_pointerPressed
+#endif
+#ifndef BasicPaintablesCanvas_pointerReleased
+#define BasicPaintablesCanvas_pointerReleased Displayable_pointerReleased
+#endif
+#ifndef BasicPaintablesCanvas_pointerDragged
+#define BasicPaintablesCanvas_pointerDragged Displayable_pointerDragged
+#endif
+#ifndef BasicPaintablesCanvas_repaint
+#define BasicPaintablesCanvas_repaint Displayable_repaint
+#endif
+#ifndef BasicPaintablesCanvas_repaintXYWH
+#define BasicPaintablesCanvas_repaintXYWH Displayable_repaintXYWH
+#endif
+#ifndef BasicPaintablesCanvas_sizeChanged
+#define BasicPaintablesCanvas_sizeChanged Displayable_sizeChanged
+#endif
+#ifndef BasicPaintablesCanvas_sizeChangedForDisplay
+#define BasicPaintablesCanvas_sizeChangedForDisplay Displayable_sizeChangedForDisplay
+#endif
+#ifndef BasicPaintablesCanvas_showNotify
+#define BasicPaintablesCanvas_showNotify Displayable_showNotify
+#endif
+#ifndef BasicPaintablesCanvas_showNotifyForDisplay
+#define BasicPaintablesCanvas_showNotifyForDisplay Displayable_showNotifyForDisplay
+#endif
+// Runs the Java static initialization of the class once. Reads of its static fields call it first.
+void BasicPaintablesCanvas_staticInit(void);
+// Registers the class, its superclass, and its methods for the interface calls (java_register_method)
+void BasicPaintablesCanvas_register(void);
+
+
+#endif // ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASICPAINTABLESCANVAS_H

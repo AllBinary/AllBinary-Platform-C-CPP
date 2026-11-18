@@ -1,69 +1,59 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.input.motion.action
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-#include "org/allbinary/game/input/CompleteMotionGestureInputEvent.h"
+#include "org/allbinary/game/input/motion/action/GameKeyCompleteMotionGestureInputEvent.h"
 #include "org/allbinary/game/input/GameKey.h"
-#include "org/allbinary/game/input/GameKeyEventSourceInterface.h"
 #include "org/allbinary/game/input/event/GameKeyEvent.h"
 #include "org/allbinary/game/input/event/GameKeyEventFactory.h"
 #include "org/allbinary/game/input/mapping/InputToGameKeyMapping.h"
 #include "org/allbinary/input/motion/gesture/MotionGestureInput.h"
 #include "org/allbinary/string/CommonStrings.h"
-
-typedef struct GameKeyCompleteMotionGestureInputEvent GameKeyCompleteMotionGestureInputEvent;
-struct GameKeyCompleteMotionGestureInputEvent {
-    CompleteMotionGestureInputEvent base;
-    GameKeyEventSourceInterface GameKeyEventSourceInterface_interface;
-    GameKeyEventFactory* gameKeyEventFactory;
-    int32_t SOURCE_ID;
-    GameKey* gameKey;
-    GameKeyEvent* gameKeyEvent;
-    InputToGameKeyMapping* inputToGameKeyMapping;
-};
+#include "org/allbinary/game/input/motion/action/GameKeyCompleteMotionGestureInputEventFactory.h"
+#if __has_include("org/allbinary/input/motion/gesture/MotionGestureInput.h")
+#include "org/allbinary/input/motion/gesture/MotionGestureInput.h"
+#endif
 
 
-GameKeyCompleteMotionGestureInputEvent* GameKeyCompleteMotionGestureInputEvent_new(const char* name, MotionGestureInput* motionGestureInput, InputToGameKeyMapping* inputToGameKeyMapping);
 
-void GameKeyCompleteMotionGestureInputEvent_init(GameKeyCompleteMotionGestureInputEvent* this, const char* name, MotionGestureInput* motionGestureInput, InputToGameKeyMapping* inputToGameKeyMapping);
-int32_t GameKeyCompleteMotionGestureInputEvent_getSourceId(GameKeyCompleteMotionGestureInputEvent* this);
-void GameKeyCompleteMotionGestureInputEvent_update(GameKeyCompleteMotionGestureInputEvent* this);
-void GameKeyCompleteMotionGestureInputEvent_setGameKeyEvent(GameKeyCompleteMotionGestureInputEvent* this, GameKeyEvent* gameKeyEvent);
-GameKeyEvent* GameKeyCompleteMotionGestureInputEvent_getGameKeyEvent(GameKeyCompleteMotionGestureInputEvent* this);
-void GameKeyCompleteMotionGestureInputEvent_setGameKey(GameKeyCompleteMotionGestureInputEvent* this, GameKey* gameKey);
-GameKey* GameKeyCompleteMotionGestureInputEvent_getGameKey(GameKeyCompleteMotionGestureInputEvent* this);
+
+
+
+
+
+
+
+void GameKeyCompleteMotionGestureInputEvent_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void GameKeyCompleteMotionGestureInputEvent_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GameKeyCompleteMotionGestureInputEvent", "CompleteMotionGestureInputEvent");
+    java_register_method("GameKeyCompleteMotionGestureInputEvent", "getSourceId", (void*) GameKeyCompleteMotionGestureInputEvent_getSourceId);
+    java_register_method("GameKeyCompleteMotionGestureInputEvent", "update", (void*) GameKeyCompleteMotionGestureInputEvent_update);
+    java_register_method("GameKeyCompleteMotionGestureInputEvent", "setGameKeyEvent", (void*) GameKeyCompleteMotionGestureInputEvent_setGameKeyEvent);
+    java_register_method("GameKeyCompleteMotionGestureInputEvent", "getGameKeyEvent", (void*) GameKeyCompleteMotionGestureInputEvent_getGameKeyEvent);
+    java_register_method("GameKeyCompleteMotionGestureInputEvent", "setGameKey", (void*) GameKeyCompleteMotionGestureInputEvent_setGameKey);
+    java_register_method("GameKeyCompleteMotionGestureInputEvent", "getGameKey", (void*) GameKeyCompleteMotionGestureInputEvent_getGameKey);
+}
 
 static void GameKeyCompleteMotionGestureInputEvent_initFields(GameKeyCompleteMotionGestureInputEvent* this) {
     this->gameKeyEventFactory = GameKeyEventFactory_getInstance();
     this->SOURCE_ID = this->gameKeyEventFactory->MOTION_GESTURE_SOURCE_ID;
-    this->gameKey = GameKey_NULL_GAME_KEY;
-    this->gameKeyEvent = GameKeyEvent_NONE;
+    this->gameKey = (GameKey_staticInit(), GameKey_NULL_GAME_KEY);
+    this->gameKeyEvent = (GameKeyEvent_staticInit(), GameKeyEvent_NONE);
     
 }
 
 
 void GameKeyCompleteMotionGestureInputEvent_init(GameKeyCompleteMotionGestureInputEvent* this, const char* name, MotionGestureInput* motionGestureInput, InputToGameKeyMapping* inputToGameKeyMapping) {
+    GameKeyCompleteMotionGestureInputEvent_register();
         CompleteMotionGestureInputEvent_init(&this->base, name, motionGestureInput);
         GameKeyCompleteMotionGestureInputEvent_initFields(this);
         this->inputToGameKeyMapping = inputToGameKeyMapping;
@@ -72,7 +62,7 @@ void GameKeyCompleteMotionGestureInputEvent_init(GameKeyCompleteMotionGestureInp
 }
 
 GameKeyCompleteMotionGestureInputEvent* GameKeyCompleteMotionGestureInputEvent_new(const char* name, MotionGestureInput* motionGestureInput, InputToGameKeyMapping* inputToGameKeyMapping) {
-    GameKeyCompleteMotionGestureInputEvent* this = calloc(1, sizeof(GameKeyCompleteMotionGestureInputEvent));
+    GameKeyCompleteMotionGestureInputEvent* this = java_object_alloc(sizeof(GameKeyCompleteMotionGestureInputEvent), "GameKeyCompleteMotionGestureInputEvent");
     GameKeyCompleteMotionGestureInputEvent_init(this, name, motionGestureInput, inputToGameKeyMapping);
     return this;
 }
@@ -85,11 +75,11 @@ int32_t GameKeyCompleteMotionGestureInputEvent_getSourceId(GameKeyCompleteMotion
 
 void GameKeyCompleteMotionGestureInputEvent_update(GameKeyCompleteMotionGestureInputEvent* this) {
         JAVA_TRY {
-            GameKeyCompleteMotionGestureInputEvent_setGameKey(this, InputToGameKeyMapping_getInstance(this->inputToGameKeyMapping, JAVA_CALL(GameKeyCompleteMotionGestureInputEvent_getMotionGestureInput(this), getId)));
+            GameKeyCompleteMotionGestureInputEvent_setGameKey(this, InputToGameKeyMapping_getInstance(this->inputToGameKeyMapping, Input_getId(CompleteMotionGestureInputEvent_getMotionGestureInput(this))));
             GameKeyCompleteMotionGestureInputEvent_setGameKeyEvent(this, GameKeyEventFactory_getInstanceForInput(this->gameKeyEventFactory, this, GameKeyCompleteMotionGestureInputEvent_getGameKey(this)));
         } JAVA_CATCH(Exception, e) {
             CommonStrings* commonStrings = CommonStrings_getInstance();
-            JAVA_CALL(this->logUtil, put, commonStrings->EXCEPTION, this, commonStrings->UPDATE, e);
+            LogUtil_put(this->base.logUtil, commonStrings->EXCEPTION, this, commonStrings->UPDATE, e);
         } JAVA_END_TRY;
 }
 

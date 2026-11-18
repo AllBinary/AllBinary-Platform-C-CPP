@@ -55,5 +55,11 @@ static inline ABHashtable* HardwareInterface_difference(void* this, HardwareInte
     return ((__typeof__(((HardwareInterface*) nullptr)->difference)) java_method_of(this, "difference"))(this, hardwareInterface);
 }
 
+#if __has_include("org/allbinary/logic/system/hardware/components/interfaces/HardwareComponentInterface.h")
+#include "org/allbinary/logic/system/hardware/components/interfaces/HardwareComponentInterface.h"
+#endif
+#if __has_include("org/allbinary/util/ABHashtable.h")
+#include "org/allbinary/util/ABHashtable.h"
+#endif
 
 #endif // ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_HARDWAREINTERFACE_H

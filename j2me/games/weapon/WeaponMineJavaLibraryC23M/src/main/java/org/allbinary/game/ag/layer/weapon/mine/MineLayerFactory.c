@@ -1,43 +1,30 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.ag.layer.weapon.mine
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/ag/layer/weapon/mine/MineLayerFactory.h"
 #include "org/allbinary/layer/AllBinaryLayer.h"
-#include "org/allbinary/layer/AllBinaryLayerFactoryInterface.h"
 #include "org/allbinary/view/ViewPositionFactoryInterface.h"
-
-typedef struct MineLayerFactory MineLayerFactory;
-struct MineLayerFactory {
-    AllBinaryLayerFactoryInterface AllBinaryLayerFactoryInterface_interface;
-    ViewPositionFactoryInterface* viewPositionFactoryInterface;
-};
+#include "org/allbinary/game/ag/layer/weapon/mine/MineLayer.h"
 
 
-MineLayerFactory* MineLayerFactory_new(ViewPositionFactoryInterface* viewPositionFactoryInterface);
 
-void MineLayerFactory_init(MineLayerFactory* this, ViewPositionFactoryInterface* viewPositionFactoryInterface);
-AllBinaryLayer* MineLayerFactory_getInstance(MineLayerFactory* this);
+
+
+void MineLayerFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void MineLayerFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("MineLayerFactory", nullptr);
+    java_register_method("MineLayerFactory", "getInstance", (void*) MineLayerFactory_getInstance);
+}
 
 static void MineLayerFactory_initFields(MineLayerFactory* this) {
     
@@ -45,12 +32,13 @@ static void MineLayerFactory_initFields(MineLayerFactory* this) {
 
 
 void MineLayerFactory_init(MineLayerFactory* this, ViewPositionFactoryInterface* viewPositionFactoryInterface) {
+    MineLayerFactory_register();
     MineLayerFactory_initFields(this);
         this->viewPositionFactoryInterface = viewPositionFactoryInterface;
 }
 
 MineLayerFactory* MineLayerFactory_new(ViewPositionFactoryInterface* viewPositionFactoryInterface) {
-    MineLayerFactory* this = calloc(1, sizeof(MineLayerFactory));
+    MineLayerFactory* this = java_object_alloc(sizeof(MineLayerFactory), "MineLayerFactory");
     MineLayerFactory_init(this, viewPositionFactoryInterface);
     return this;
 }

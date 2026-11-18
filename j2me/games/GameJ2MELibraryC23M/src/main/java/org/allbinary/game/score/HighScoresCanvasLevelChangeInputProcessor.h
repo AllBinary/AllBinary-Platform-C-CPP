@@ -1,0 +1,140 @@
+#ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORESCANVASLEVELCHANGEINPUTPROCESSOR_H
+#define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESCANVASLEVELCHANGEINPUTPROCESSOR_H
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.score
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+typedef struct HighScoresCanvasInputProcessor HighScoresCanvasInputProcessor;
+typedef struct Canvas Canvas;
+typedef struct Font Font;
+typedef struct Graphics Graphics;
+typedef struct GameKeyEventHandler GameKeyEventHandler;
+typedef struct GameKeyEventUtil GameKeyEventUtil;
+typedef struct HighScoresCanvas HighScoresCanvas;
+typedef struct Anchor Anchor;
+typedef struct DisplayInfoSingleton DisplayInfoSingleton;
+typedef struct MyFontProcessor MyFontProcessor;
+typedef struct UpdateMyFontInterface UpdateMyFontInterface;
+typedef struct UpdateMyFontProcessor UpdateMyFontProcessor;
+typedef struct BasicArrayList BasicArrayList;
+#if __has_include("org/allbinary/graphics/displayable/DisplayInfoSingleton.h")
+#include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
+#endif
+#if __has_include("org/allbinary/graphics/font/MyFontProcessor.h")
+#include "org/allbinary/graphics/font/MyFontProcessor.h"
+#endif
+#include "org/allbinary/graphics/font/UpdateMyFontInterface.h"
+#include "org/allbinary/game/score/HighScoresCanvasInputProcessor.h"
+
+typedef struct HighScoresCanvasLevelChangeInputProcessor HighScoresCanvasLevelChangeInputProcessor;
+struct HighScoresCanvasLevelChangeInputProcessor {
+    HighScoresCanvasInputProcessor base;
+    UpdateMyFontInterface UpdateMyFontInterface_interface;
+    DisplayInfoSingleton* displayInfoSingleton;
+    const char* INSTRUCTIONS;
+    MyFontProcessor* myFontProcessor;
+    int32_t anchor;
+    int32_t fontHeight;
+};
+
+
+HighScoresCanvasLevelChangeInputProcessor* HighScoresCanvasLevelChangeInputProcessor_new(HighScoresCanvas* highScoresCanvas);
+
+void HighScoresCanvasLevelChangeInputProcessor_init(HighScoresCanvasLevelChangeInputProcessor* this, HighScoresCanvas* highScoresCanvas);
+
+void HighScoresCanvasLevelChangeInputProcessor_updateMeasurement(HighScoresCanvasLevelChangeInputProcessor* this, Graphics* graphics);
+
+void HighScoresCanvasLevelChangeInputProcessor_open(HighScoresCanvasLevelChangeInputProcessor* this);
+
+void HighScoresCanvasLevelChangeInputProcessor_close(HighScoresCanvasLevelChangeInputProcessor* this);
+
+void HighScoresCanvasLevelChangeInputProcessor_update(HighScoresCanvasLevelChangeInputProcessor* this);
+
+void HighScoresCanvasLevelChangeInputProcessor_paint(HighScoresCanvasLevelChangeInputProcessor* this, Graphics* graphics);
+#define HighScoresCanvasLevelChangeInputProcessor_new1 HighScoresCanvasLevelChangeInputProcessor_new
+#define HighScoresCanvasLevelChangeInputProcessor_init1 HighScoresCanvasLevelChangeInputProcessor_init
+#ifndef HighScoresCanvasLevelChangeInputProcessor_onPressGameKeyEvent
+#define HighScoresCanvasLevelChangeInputProcessor_onPressGameKeyEvent HighScoresCanvasInputProcessor_onPressGameKeyEvent
+#endif
+#ifndef HighScoresCanvasLevelChangeInputProcessor_onDownGameKeyEvent
+#define HighScoresCanvasLevelChangeInputProcessor_onDownGameKeyEvent HighScoresCanvasInputProcessor_onDownGameKeyEvent
+#endif
+#ifndef HighScoresCanvasLevelChangeInputProcessor_onUpGameKeyEvent
+#define HighScoresCanvasLevelChangeInputProcessor_onUpGameKeyEvent HighScoresCanvasInputProcessor_onUpGameKeyEvent
+#endif
+#ifndef HighScoresCanvasLevelChangeInputProcessor_getHighScoresCanvas
+#define HighScoresCanvasLevelChangeInputProcessor_getHighScoresCanvas HighScoresCanvasInputProcessor_getHighScoresCanvas
+#endif
+#ifndef HighScoresCanvasLevelChangeInputProcessor_onPressGameKeyEvent
+#define HighScoresCanvasLevelChangeInputProcessor_onPressGameKeyEvent PlayerGameInput_onPressGameKeyEvent
+#endif
+#ifndef HighScoresCanvasLevelChangeInputProcessor_onDownGameKeyEvent
+#define HighScoresCanvasLevelChangeInputProcessor_onDownGameKeyEvent PlayerGameInput_onDownGameKeyEvent
+#endif
+#ifndef HighScoresCanvasLevelChangeInputProcessor_onDownKeyEvent
+#define HighScoresCanvasLevelChangeInputProcessor_onDownKeyEvent PlayerGameInput_onDownKeyEvent
+#endif
+#ifndef HighScoresCanvasLevelChangeInputProcessor_onDownKey
+#define HighScoresCanvasLevelChangeInputProcessor_onDownKey PlayerGameInput_onDownKey
+#endif
+#ifndef HighScoresCanvasLevelChangeInputProcessor_onUpGameKeyEvent
+#define HighScoresCanvasLevelChangeInputProcessor_onUpGameKeyEvent PlayerGameInput_onUpGameKeyEvent
+#endif
+#ifndef HighScoresCanvasLevelChangeInputProcessor_onUpKeyEvent
+#define HighScoresCanvasLevelChangeInputProcessor_onUpKeyEvent PlayerGameInput_onUpKeyEvent
+#endif
+#ifndef HighScoresCanvasLevelChangeInputProcessor_onEvent
+#define HighScoresCanvasLevelChangeInputProcessor_onEvent PlayerGameInput_onEvent
+#endif
+#ifndef HighScoresCanvasLevelChangeInputProcessor_getPlayerInputId
+#define HighScoresCanvasLevelChangeInputProcessor_getPlayerInputId PlayerGameInput_getPlayerInputId
+#endif
+#ifndef HighScoresCanvasLevelChangeInputProcessor_add
+#define HighScoresCanvasLevelChangeInputProcessor_add GameInput_add
+#endif
+#ifndef HighScoresCanvasLevelChangeInputProcessor_addForRemoval
+#define HighScoresCanvasLevelChangeInputProcessor_addForRemoval GameInput_addForRemoval
+#endif
+#ifndef HighScoresCanvasLevelChangeInputProcessor_isForRemoval
+#define HighScoresCanvasLevelChangeInputProcessor_isForRemoval GameInput_isForRemoval
+#endif
+#ifndef HighScoresCanvasLevelChangeInputProcessor_clear
+#define HighScoresCanvasLevelChangeInputProcessor_clear GameInput_clear
+#endif
+#ifndef HighScoresCanvasLevelChangeInputProcessor_removeNonAIInputGameKeyEvents
+#define HighScoresCanvasLevelChangeInputProcessor_removeNonAIInputGameKeyEvents GameInput_removeNonAIInputGameKeyEvents
+#endif
+#ifndef HighScoresCanvasLevelChangeInputProcessor_getRemovalGameKeyEventList
+#define HighScoresCanvasLevelChangeInputProcessor_getRemovalGameKeyEventList GameInput_getRemovalGameKeyEventList
+#endif
+#ifndef HighScoresCanvasLevelChangeInputProcessor_getGameKeyEventList
+#define HighScoresCanvasLevelChangeInputProcessor_getGameKeyEventList GameInput_getGameKeyEventList
+#endif
+// Runs the Java static initialization of the class once. Reads of its static fields call it first.
+void HighScoresCanvasLevelChangeInputProcessor_staticInit(void);
+// Registers the class, its superclass, and its methods for the interface calls (java_register_method)
+void HighScoresCanvasLevelChangeInputProcessor_register(void);
+
+
+#endif // ORG_ALLBINARY_GAME_SCORE_HIGHSCORESCANVASLEVELCHANGEINPUTPROCESSOR_H

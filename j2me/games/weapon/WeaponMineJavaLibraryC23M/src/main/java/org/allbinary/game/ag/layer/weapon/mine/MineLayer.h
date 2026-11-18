@@ -1,0 +1,500 @@
+#ifndef ORG_ALLBINARY_GAME_AG_LAYER_WEAPON_MINE_MINELAYER_H
+#define ORG_ALLBINARY_GAME_AG_LAYER_WEAPON_MINE_MINELAYER_H
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.ag.layer.weapon.mine
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+typedef struct MineWeaponResources MineWeaponResources;
+typedef struct DropWeaponSound DropWeaponSound;
+typedef struct FeaturedAnimationInterfaceFactoryInterfaceFactory FeaturedAnimationInterfaceFactoryInterfaceFactory;
+typedef struct SimpleWeaponLayer SimpleWeaponLayer;
+typedef struct RemoteInfo RemoteInfo;
+typedef struct PointFactory PointFactory;
+typedef struct Rectangle Rectangle;
+typedef struct AllBinaryLayer AllBinaryLayer;
+typedef struct SecondaryPlayerQueueFactory SecondaryPlayerQueueFactory;
+typedef struct NoMovementFactory NoMovementFactory;
+typedef struct ViewPositionBase ViewPositionBase;
+typedef struct ViewPositionEventHandler ViewPositionEventHandler;
+#include "org/allbinary/game/layer/weapon/SimpleWeaponLayer.h"
+#if __has_include("org/allbinary/view/event/ViewPositionEventHandler.h")
+#include "org/allbinary/view/event/ViewPositionEventHandler.h"
+#endif
+
+typedef struct MineLayer MineLayer;
+struct MineLayer {
+    SimpleWeaponLayer base;
+    ViewPositionEventHandler* viewPositionEventHandler;
+};
+
+
+MineLayer* MineLayer_new(ViewPositionBase* viewPosition);
+
+void MineLayer_init(MineLayer* this, ViewPositionBase* viewPosition);
+
+void MineLayer_initXYZ(MineLayer* this, int32_t x, int32_t y, int32_t z);
+
+void MineLayer_damage(MineLayer* this, int32_t damage, int32_t damageType);
+
+int32_t MineLayer_getDamage(MineLayer* this, int32_t damageType);
+
+void MineLayer_setDestroyed(MineLayer* this, bool destroyed);
+#define MineLayer_new1 MineLayer_new
+#define MineLayer_init1 MineLayer_init
+#ifndef MineLayer_createDestroyed
+#define MineLayer_createDestroyed SimpleWeaponLayer_createDestroyed
+#endif
+#ifndef MineLayer_setCollidableInferface
+#define MineLayer_setCollidableInferface WeaponLayer_setCollidableInferface
+#endif
+#ifndef MineLayer_setGroupInterfaces
+#define MineLayer_setGroupInterfaces WeaponLayer_setGroupInterfaces
+#endif
+#ifndef MineLayer_processTick
+#define MineLayer_processTick WeaponLayer_processTick
+#endif
+#ifndef MineLayer_isDestroyed
+#define MineLayer_isDestroyed WeaponLayer_isDestroyed
+#endif
+#ifndef MineLayer_givePoints
+#define MineLayer_givePoints WeaponLayer_givePoints
+#endif
+#ifndef MineLayer_isExhausted
+#define MineLayer_isExhausted WeaponLayer_isExhausted
+#endif
+#ifndef MineLayer_getInitDamage
+#define MineLayer_getInitDamage WeaponLayer_getInitDamage
+#endif
+#ifndef MineLayer_setAnimationInterface
+#define MineLayer_setAnimationInterface WeaponLayer_setAnimationInterface
+#endif
+#ifndef MineLayer_getAnimationInterface
+#define MineLayer_getAnimationInterface WeaponLayer_getAnimationInterface
+#endif
+#ifndef MineLayer_getInitAnimationInterfaceP
+#define MineLayer_getInitAnimationInterfaceP WeaponLayer_getInitAnimationInterfaceP
+#endif
+#ifndef MineLayer_setInitAnimationInterfaceP
+#define MineLayer_setInitAnimationInterfaceP WeaponLayer_setInitAnimationInterfaceP
+#endif
+#ifndef MineLayer_getDestroyedAnimationInterface
+#define MineLayer_getDestroyedAnimationInterface WeaponLayer_getDestroyedAnimationInterface
+#endif
+#ifndef MineLayer_getOwnerLayerInterface
+#define MineLayer_getOwnerLayerInterface WeaponLayer_getOwnerLayerInterface
+#endif
+#ifndef MineLayer_setOwnerLayerInterface
+#define MineLayer_setOwnerLayerInterface WeaponLayer_setOwnerLayerInterface
+#endif
+#ifndef MineLayer_paint
+#define MineLayer_paint WeaponLayer_paint
+#endif
+#ifndef MineLayer_paintThreed
+#define MineLayer_paintThreed WeaponLayer_paintThreed
+#endif
+#ifndef MineLayer_getMovement
+#define MineLayer_getMovement WeaponLayer_getMovement
+#endif
+#ifndef MineLayer_setMovement
+#define MineLayer_setMovement WeaponLayer_setMovement
+#endif
+#ifndef MineLayer_getType
+#define MineLayer_getType WeaponLayer_getType
+#endif
+#ifndef MineLayer_getStaticType
+#define MineLayer_getStaticType WeaponLayer_getStaticType
+#endif
+#ifndef MineLayer_getMultiPlayerType
+#define MineLayer_getMultiPlayerType WeaponLayer_getMultiPlayerType
+#endif
+#ifndef MineLayer_setWeaponPropertiesP
+#define MineLayer_setWeaponPropertiesP WeaponLayer_setWeaponPropertiesP
+#endif
+#ifndef MineLayer_getWeaponPropertiesP
+#define MineLayer_getWeaponPropertiesP WeaponLayer_getWeaponPropertiesP
+#endif
+#ifndef MineLayer_implmentsTickableInterface
+#define MineLayer_implmentsTickableInterface WeaponLayer_implmentsTickableInterface
+#endif
+#ifndef MineLayer_set
+#define MineLayer_set WeaponLayer_set
+#endif
+#ifndef MineLayer_getMultiplayerBehavior
+#define MineLayer_getMultiplayerBehavior MultiPlayerGameLayer_getMultiplayerBehavior
+#endif
+#ifndef MineLayer_setPingInfo
+#define MineLayer_setPingInfo MultiPlayerGameLayer_setPingInfo
+#endif
+#ifndef MineLayer_setFiring
+#define MineLayer_setFiring MultiPlayerGameLayer_setFiring
+#endif
+#ifndef MineLayer_getFiring
+#define MineLayer_getFiring MultiPlayerGameLayer_getFiring
+#endif
+#ifndef MineLayer_getNullInstance
+#define MineLayer_getNullInstance CollidableDestroyableDamageableLayer_getNullInstance
+#endif
+#ifndef MineLayer_initPosition
+#define MineLayer_initPosition CollidableDestroyableDamageableLayer_initPosition
+#endif
+#ifndef MineLayer_initPositionXYZ
+#define MineLayer_initPositionXYZ CollidableDestroyableDamageableLayer_initPositionXYZ
+#endif
+#ifndef MineLayer_paint
+#define MineLayer_paint CollidableDestroyableDamageableLayer_paint
+#endif
+#ifndef MineLayer_isDestroyed
+#define MineLayer_isDestroyed CollidableDestroyableDamageableLayer_isDestroyed
+#endif
+#ifndef MineLayer_getGroupInterface
+#define MineLayer_getGroupInterface CollidableDestroyableDamageableLayer_getGroupInterface
+#endif
+#ifndef MineLayer_setGroupInterface
+#define MineLayer_setGroupInterface CollidableDestroyableDamageableLayer_setGroupInterface
+#endif
+#ifndef MineLayer_setAllBinaryGameLayerManager
+#define MineLayer_setAllBinaryGameLayerManager CollidableDestroyableDamageableLayer_setAllBinaryGameLayerManager
+#endif
+#ifndef MineLayer_isReadyForExplosion
+#define MineLayer_isReadyForExplosion CollidableDestroyableDamageableLayer_isReadyForExplosion
+#endif
+#ifndef MineLayer_setReadyForExplosion
+#define MineLayer_setReadyForExplosion CollidableDestroyableDamageableLayer_setReadyForExplosion
+#endif
+#ifndef MineLayer_getInitWidth
+#define MineLayer_getInitWidth CollidableDestroyableDamageableLayer_getInitWidth
+#endif
+#ifndef MineLayer_getInitHeight
+#define MineLayer_getInitHeight CollidableDestroyableDamageableLayer_getInitHeight
+#endif
+#ifndef MineLayer_getInitX
+#define MineLayer_getInitX CollidableDestroyableDamageableLayer_getInitX
+#endif
+#ifndef MineLayer_getInitY
+#define MineLayer_getInitY CollidableDestroyableDamageableLayer_getInitY
+#endif
+#ifndef MineLayer_up
+#define MineLayer_up CollidableDestroyableDamageableLayer_up
+#endif
+#ifndef MineLayer_down
+#define MineLayer_down CollidableDestroyableDamageableLayer_down
+#endif
+#ifndef MineLayer_right
+#define MineLayer_right CollidableDestroyableDamageableLayer_right
+#endif
+#ifndef MineLayer_left
+#define MineLayer_left CollidableDestroyableDamageableLayer_left
+#endif
+#ifndef MineLayer_strafeLeft
+#define MineLayer_strafeLeft CollidableDestroyableDamageableLayer_strafeLeft
+#endif
+#ifndef MineLayer_strafeRight
+#define MineLayer_strafeRight CollidableDestroyableDamageableLayer_strafeRight
+#endif
+#ifndef MineLayer_fire
+#define MineLayer_fire CollidableDestroyableDamageableLayer_fire
+#endif
+#ifndef MineLayer_special1
+#define MineLayer_special1 CollidableDestroyableDamageableLayer_special1
+#endif
+#ifndef MineLayer_special2
+#define MineLayer_special2 CollidableDestroyableDamageableLayer_special2
+#endif
+#ifndef MineLayer_special3
+#define MineLayer_special3 CollidableDestroyableDamageableLayer_special3
+#endif
+#ifndef MineLayer_special4
+#define MineLayer_special4 CollidableDestroyableDamageableLayer_special4
+#endif
+#ifndef MineLayer_special5
+#define MineLayer_special5 CollidableDestroyableDamageableLayer_special5
+#endif
+#ifndef MineLayer_upAnalog
+#define MineLayer_upAnalog CollidableDestroyableDamageableLayer_upAnalog
+#endif
+#ifndef MineLayer_downAnalog
+#define MineLayer_downAnalog CollidableDestroyableDamageableLayer_downAnalog
+#endif
+#ifndef MineLayer_rightAnalog
+#define MineLayer_rightAnalog CollidableDestroyableDamageableLayer_rightAnalog
+#endif
+#ifndef MineLayer_leftAnalog
+#define MineLayer_leftAnalog CollidableDestroyableDamageableLayer_leftAnalog
+#endif
+#ifndef MineLayer_rightTrigger
+#define MineLayer_rightTrigger CollidableDestroyableDamageableLayer_rightTrigger
+#endif
+#ifndef MineLayer_leftTrigger
+#define MineLayer_leftTrigger CollidableDestroyableDamageableLayer_leftTrigger
+#endif
+#ifndef MineLayer_onDestroyed
+#define MineLayer_onDestroyed CollidableDestroyableDamageableLayer_onDestroyed
+#endif
+#ifndef MineLayer_getPickupBehavior
+#define MineLayer_getPickupBehavior CollidableDestroyableDamageableLayer_getPickupBehavior
+#endif
+#ifndef MineLayer_setPickupBehavior
+#define MineLayer_setPickupBehavior CollidableDestroyableDamageableLayer_setPickupBehavior
+#endif
+#ifndef MineLayer_addPart
+#define MineLayer_addPart CollidableDestroyableDamageableLayer_addPart
+#endif
+#ifndef MineLayer_setPartInterfaceArray
+#define MineLayer_setPartInterfaceArray CollidableDestroyableDamageableLayer_setPartInterfaceArray
+#endif
+#ifndef MineLayer_getPartInterfaceArray
+#define MineLayer_getPartInterfaceArray CollidableDestroyableDamageableLayer_getPartInterfaceArray
+#endif
+#ifndef MineLayer_toStringAppend
+#define MineLayer_toStringAppend CollidableDestroyableDamageableLayer_toStringAppend
+#endif
+#ifndef MineLayer_toString
+#define MineLayer_toString CollidableDestroyableDamageableLayer_toString
+#endif
+#ifndef MineLayer_getNullInstance
+#define MineLayer_getNullInstance CollidableCompositeLayer_getNullInstance
+#endif
+#ifndef MineLayer_getArtificialIntelligenceInterface
+#define MineLayer_getArtificialIntelligenceInterface CollidableCompositeLayer_getArtificialIntelligenceInterface
+#endif
+#ifndef MineLayer_getCollidableInferface
+#define MineLayer_getCollidableInferface CollidableCompositeLayer_getCollidableInferface
+#endif
+#ifndef MineLayer_setCollidableInferface
+#define MineLayer_setCollidableInferface CollidableCompositeLayer_setCollidableInferface
+#endif
+#ifndef MineLayer_implmentsCollidableInterface
+#define MineLayer_implmentsCollidableInterface CollidableCompositeLayer_implmentsCollidableInterface
+#endif
+#ifndef MineLayer_toStringAppend
+#define MineLayer_toStringAppend CollidableCompositeLayer_toStringAppend
+#endif
+#ifndef MineLayer_toString
+#define MineLayer_toString CollidableCompositeLayer_toString
+#endif
+#ifndef MineLayer_createPaintable
+#define MineLayer_createPaintable AllBinaryGameLayer_createPaintable
+#endif
+#ifndef MineLayer_set
+#define MineLayer_set AllBinaryGameLayer_set
+#endif
+#ifndef MineLayer_move
+#define MineLayer_move AllBinaryGameLayer_move
+#endif
+#ifndef MineLayer_getGameKeyEventList
+#define MineLayer_getGameKeyEventList AllBinaryGameLayer_getGameKeyEventList
+#endif
+#ifndef MineLayer_processInput
+#define MineLayer_processInput AllBinaryGameLayer_processInput
+#endif
+#ifndef MineLayer_processTick
+#define MineLayer_processTick AllBinaryGameLayer_processTick
+#endif
+#ifndef MineLayer_onEvent
+#define MineLayer_onEvent AllBinaryGameLayer_onEvent
+#endif
+#ifndef MineLayer_onViewPositionChangeEvent
+#define MineLayer_onViewPositionChangeEvent AllBinaryGameLayer_onViewPositionChangeEvent
+#endif
+#ifndef MineLayer_onChangeEvent
+#define MineLayer_onChangeEvent AllBinaryGameLayer_onChangeEvent
+#endif
+#ifndef MineLayer_paintFirst
+#define MineLayer_paintFirst AllBinaryGameLayer_paintFirst
+#endif
+#ifndef MineLayer_paintDebug
+#define MineLayer_paintDebug AllBinaryGameLayer_paintDebug
+#endif
+#ifndef MineLayer_setWidth
+#define MineLayer_setWidth AllBinaryGameLayer_setWidth
+#endif
+#ifndef MineLayer_setHeight
+#define MineLayer_setHeight AllBinaryGameLayer_setHeight
+#endif
+#ifndef MineLayer_setPosition
+#define MineLayer_setPosition AllBinaryLayer_setPosition
+#endif
+#ifndef MineLayer_moveDXYZ
+#define MineLayer_moveDXYZ AllBinaryLayer_moveDXYZ
+#endif
+#ifndef MineLayer_getXP
+#define MineLayer_getXP AllBinaryLayer_getXP
+#endif
+#ifndef MineLayer_getYP
+#define MineLayer_getYP AllBinaryLayer_getYP
+#endif
+#ifndef MineLayer_getZP
+#define MineLayer_getZP AllBinaryLayer_getZP
+#endif
+#ifndef MineLayer_getWidth
+#define MineLayer_getWidth AllBinaryLayer_getWidth
+#endif
+#ifndef MineLayer_getHeight
+#define MineLayer_getHeight AllBinaryLayer_getHeight
+#endif
+#ifndef MineLayer_setVisible
+#define MineLayer_setVisible AllBinaryLayer_setVisible
+#endif
+#ifndef MineLayer_isVisible
+#define MineLayer_isVisible AllBinaryLayer_isVisible
+#endif
+#ifndef MineLayer_paint
+#define MineLayer_paint AllBinaryLayer_paint
+#endif
+#ifndef MineLayer_onChangeEvent
+#define MineLayer_onChangeEvent AllBinaryLayer_onChangeEvent
+#endif
+#ifndef MineLayer_paintThreed
+#define MineLayer_paintThreed AllBinaryLayer_paintThreed
+#endif
+#ifndef MineLayer_getX2
+#define MineLayer_getX2 AllBinaryLayer_getX2
+#endif
+#ifndef MineLayer_getY2
+#define MineLayer_getY2 AllBinaryLayer_getY2
+#endif
+#ifndef MineLayer_getZ2
+#define MineLayer_getZ2 AllBinaryLayer_getZ2
+#endif
+#ifndef MineLayer_getName
+#define MineLayer_getName AllBinaryLayer_getName
+#endif
+#ifndef MineLayer_setHalfWidth
+#define MineLayer_setHalfWidth AllBinaryLayer_setHalfWidth
+#endif
+#ifndef MineLayer_getHalfWidth
+#define MineLayer_getHalfWidth AllBinaryLayer_getHalfWidth
+#endif
+#ifndef MineLayer_setHalfHeight
+#define MineLayer_setHalfHeight AllBinaryLayer_setHalfHeight
+#endif
+#ifndef MineLayer_getHalfHeight
+#define MineLayer_getHalfHeight AllBinaryLayer_getHalfHeight
+#endif
+#ifndef MineLayer_getHalfDepth
+#define MineLayer_getHalfDepth AllBinaryLayer_getHalfDepth
+#endif
+#ifndef MineLayer_getViewPosition
+#define MineLayer_getViewPosition AllBinaryLayer_getViewPosition
+#endif
+#ifndef MineLayer_setViewPosition
+#define MineLayer_setViewPosition AllBinaryLayer_setViewPosition
+#endif
+#ifndef MineLayer_getGroupInterface
+#define MineLayer_getGroupInterface AllBinaryLayer_getGroupInterface
+#endif
+#ifndef MineLayer_implmentsTickableInterface
+#define MineLayer_implmentsTickableInterface AllBinaryLayer_implmentsTickableInterface
+#endif
+#ifndef MineLayer_implmentsGameInputInterface
+#define MineLayer_implmentsGameInputInterface AllBinaryLayer_implmentsGameInputInterface
+#endif
+#ifndef MineLayer_implmentsArtificialIntelligenceCompositeInterface
+#define MineLayer_implmentsArtificialIntelligenceCompositeInterface AllBinaryLayer_implmentsArtificialIntelligenceCompositeInterface
+#endif
+#ifndef MineLayer_implmentsCollidableInterface
+#define MineLayer_implmentsCollidableInterface AllBinaryLayer_implmentsCollidableInterface
+#endif
+#ifndef MineLayer_implementsThreedInterface
+#define MineLayer_implementsThreedInterface AllBinaryLayer_implementsThreedInterface
+#endif
+#ifndef MineLayer_getType
+#define MineLayer_getType AllBinaryLayer_getType
+#endif
+#ifndef MineLayer_getMultiPlayerType
+#define MineLayer_getMultiPlayerType AllBinaryLayer_getMultiPlayerType
+#endif
+#ifndef MineLayer_toStringAppend
+#define MineLayer_toStringAppend AllBinaryLayer_toStringAppend
+#endif
+#ifndef MineLayer_toString
+#define MineLayer_toString AllBinaryLayer_toString
+#endif
+#ifndef MineLayer_setPosition
+#define MineLayer_setPosition Layer_setPosition
+#endif
+#ifndef MineLayer_moveDXY
+#define MineLayer_moveDXY Layer_moveDXY
+#endif
+#ifndef MineLayer_moveDXYZ
+#define MineLayer_moveDXYZ Layer_moveDXYZ
+#endif
+#ifndef MineLayer_getXP
+#define MineLayer_getXP Layer_getXP
+#endif
+#ifndef MineLayer_getYP
+#define MineLayer_getYP Layer_getYP
+#endif
+#ifndef MineLayer_getZP
+#define MineLayer_getZP Layer_getZP
+#endif
+#ifndef MineLayer_getWidth
+#define MineLayer_getWidth Layer_getWidth
+#endif
+#ifndef MineLayer_getHeight
+#define MineLayer_getHeight Layer_getHeight
+#endif
+#ifndef MineLayer_getDepth
+#define MineLayer_getDepth Layer_getDepth
+#endif
+#ifndef MineLayer_setVisible
+#define MineLayer_setVisible Layer_setVisible
+#endif
+#ifndef MineLayer_isVisible
+#define MineLayer_isVisible Layer_isVisible
+#endif
+#ifndef MineLayer_paint
+#define MineLayer_paint Layer_paint
+#endif
+#ifndef MineLayer_setLayerWidth
+#define MineLayer_setLayerWidth Layer_setLayerWidth
+#endif
+#ifndef MineLayer_setLayerHeight
+#define MineLayer_setLayerHeight Layer_setLayerHeight
+#endif
+#ifndef MineLayer_toStringAppend
+#define MineLayer_toStringAppend Layer_toStringAppend
+#endif
+#ifndef MineLayer_setSize
+#define MineLayer_setSize Layer_setSize
+#endif
+#ifndef MineLayer_getX
+#define MineLayer_getX Layer_getX
+#endif
+#ifndef MineLayer_getY
+#define MineLayer_getY Layer_getY
+#endif
+#ifndef MineLayer_move
+#define MineLayer_move Layer_move
+#endif
+#ifndef MineLayer_setPosition
+#define MineLayer_setPosition Layer_setPosition
+#endif
+// Runs the Java static initialization of the class once. Reads of its static fields call it first.
+void MineLayer_staticInit(void);
+// Registers the class, its superclass, and its methods for the interface calls (java_register_method)
+void MineLayer_register(void);
+
+
+#endif // ORG_ALLBINARY_GAME_AG_LAYER_WEAPON_MINE_MINELAYER_H

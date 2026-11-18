@@ -1,65 +1,58 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2022 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.displayable.canvas
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/displayable/canvas/InGameMenuBehavior.h"
 #include "org/allbinary/graphics/displayable/event/DisplayChangeEvent.h"
 #include "org/allbinary/game/displayable/canvas/BaseMenuBehavior.h"
+#include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
+#include "org/allbinary/game/displayable/canvas/GameCanvasNonBotPaintable.h"
 
-typedef struct InGameMenuBehavior InGameMenuBehavior;
-struct InGameMenuBehavior {
-    BaseMenuBehavior base;
-};
 
 static InGameMenuBehavior* InGameMenuBehavior_instanceC;
 
-InGameMenuBehavior* InGameMenuBehavior_new(void);
-InGameMenuBehavior* InGameMenuBehavior_getInstance(void);
-void InGameMenuBehavior_onDisplayChangeEvent(InGameMenuBehavior* this, AllBinaryGameCanvas* allBinaryGameCanvas, DisplayChangeEvent* displayChangeEvent);
-void InGameMenuBehavior_initSpecialPaint(InGameMenuBehavior* this, AllBinaryGameCanvas* allBinaryGameCanvas);
-void InGameMenuBehavior_initMenu(InGameMenuBehavior* this, AllBinaryGameCanvas* allBinaryGameCanvas);
-void InGameMenuBehavior_updateMenu(InGameMenuBehavior* this, AllBinaryGameCanvas* allBinaryGameCanvas);
-void InGameMenuBehavior_popupMenu(InGameMenuBehavior* this, AllBinaryGameCanvas* allBinaryGameCanvas);
-void InGameMenuBehavior_closeMenu(InGameMenuBehavior* this, AllBinaryGameCanvas* allBinaryGameCanvas);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+
+
 void InGameMenuBehavior_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     InGameMenuBehavior_instanceC = InGameMenuBehavior_new();
 }
 
+void InGameMenuBehavior_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("InGameMenuBehavior", "BaseMenuBehavior");
+    java_register_method("InGameMenuBehavior", "onDisplayChangeEvent", (void*) InGameMenuBehavior_onDisplayChangeEvent);
+    java_register_method("InGameMenuBehavior", "initSpecialPaint", (void*) InGameMenuBehavior_initSpecialPaint);
+    java_register_method("InGameMenuBehavior", "initMenu", (void*) InGameMenuBehavior_initMenu);
+    java_register_method("InGameMenuBehavior", "updateMenu", (void*) InGameMenuBehavior_updateMenu);
+    java_register_method("InGameMenuBehavior", "popupMenu", (void*) InGameMenuBehavior_popupMenu);
+    java_register_method("InGameMenuBehavior", "closeMenu", (void*) InGameMenuBehavior_closeMenu);
+}
+
 void InGameMenuBehavior_init(InGameMenuBehavior* this) {
+    InGameMenuBehavior_register();
     BaseMenuBehavior_init(&this->base);
 }
 
 InGameMenuBehavior* InGameMenuBehavior_new(void) {
-    InGameMenuBehavior* this = calloc(1, sizeof(InGameMenuBehavior));
+    InGameMenuBehavior* this = java_object_alloc(sizeof(InGameMenuBehavior), "InGameMenuBehavior");
     InGameMenuBehavior_init(this);
     return this;
 }
 
 
 InGameMenuBehavior* InGameMenuBehavior_getInstance(void) {
-        return InGameMenuBehavior_instanceC;
+        return (InGameMenuBehavior_staticInit(), InGameMenuBehavior_instanceC);
 }
 
 

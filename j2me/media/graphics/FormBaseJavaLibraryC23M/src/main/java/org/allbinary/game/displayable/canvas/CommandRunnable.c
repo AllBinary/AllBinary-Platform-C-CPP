@@ -1,49 +1,33 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.displayable.canvas
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Command.h"
-// #include "javax/microedition/lcdui/CommandListener.h"
+#include "org/allbinary/game/displayable/canvas/CommandRunnable.h"
+#include "javax/microedition/lcdui/Command.h"
+#include "javax/microedition/lcdui/CommandListener.h"
 #include "org/allbinary/graphics/displayable/MyCanvas.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/string/CommonStrings.h"
-#include "org/allbinary/game/displayable/canvas/Runnable.h"
-
-typedef struct CommandRunnable CommandRunnable;
-struct CommandRunnable {
-    Runnable Runnable_interface;
-    LogUtil* logUtil;
-    CommonStrings* commonStrings;
-    CommandFormInputProcessor* commandFormInputProcessor;
-    Command* command;
-};
+#include "org/allbinary/game/displayable/canvas/CommandFormInputProcessor.h"
 
 
-CommandRunnable* CommandRunnable_new(CommandFormInputProcessor* commandFormInputProcessor, Command* command);
 
-void CommandRunnable_init(CommandRunnable* this, CommandFormInputProcessor* commandFormInputProcessor, Command* command);
-void CommandRunnable_run(CommandRunnable* this);
+
+
+void CommandRunnable_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void CommandRunnable_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("CommandRunnable", nullptr);
+    java_register_method("CommandRunnable", "run", (void*) CommandRunnable_run);
+}
 
 static void CommandRunnable_initFields(CommandRunnable* this) {
     this->logUtil = LogUtil_getInstance();
@@ -54,13 +38,14 @@ static void CommandRunnable_initFields(CommandRunnable* this) {
 
 
 void CommandRunnable_init(CommandRunnable* this, CommandFormInputProcessor* commandFormInputProcessor, Command* command) {
+    CommandRunnable_register();
     CommandRunnable_initFields(this);
         this->commandFormInputProcessor = commandFormInputProcessor;
         this->command = command;
 }
 
 CommandRunnable* CommandRunnable_new(CommandFormInputProcessor* commandFormInputProcessor, Command* command) {
-    CommandRunnable* this = calloc(1, sizeof(CommandRunnable));
+    CommandRunnable* this = java_object_alloc(sizeof(CommandRunnable), "CommandRunnable");
     CommandRunnable_init(this, commandFormInputProcessor, command);
     return this;
 }
@@ -69,7 +54,7 @@ CommandRunnable* CommandRunnable_new(CommandFormInputProcessor* commandFormInput
 void CommandRunnable_run(CommandRunnable* this) {
         JAVA_TRY {
             LogUtil_putF(this->logUtil, this->commonStrings->START_RUNNABLE, this, this->commonStrings->RUN);
-            MyCanvas* canvas = CommandFormInputProcessor_getCanvas(this->commandFormInputProcessor);
+            MyCanvas* canvas = BasicMenuInputProcessor_getCanvas(this->commandFormInputProcessor);
             CommandListener* commandListener = MyCanvas_getCustomCommandListener(canvas);
             CommandListener_commandAction(commandListener, this->command, canvas);
             LogUtil_putF(this->logUtil, this->commonStrings->END_RUNNABLE, this, this->commonStrings->RUN);

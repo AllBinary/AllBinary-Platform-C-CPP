@@ -1,60 +1,44 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.paint
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/graphics/paint/NullInitUpdatePaintable.h"
 #include "org/allbinary/graphics/paint/InitUpdatePaintable.h"
 
-typedef struct NullInitUpdatePaintable NullInitUpdatePaintable;
-struct NullInitUpdatePaintable {
-    InitUpdatePaintable base;
-};
 
 static NullInitUpdatePaintable* NullInitUpdatePaintable_SINGLETON;
 
-NullInitUpdatePaintable* NullInitUpdatePaintable_new(void);
 
-void NullInitUpdatePaintable_init(NullInitUpdatePaintable* this);
-InitUpdatePaintable* NullInitUpdatePaintable_getInstance(void);
 
-// Static fields with runtime initializers: call this once at startup
 void NullInitUpdatePaintable_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     NullInitUpdatePaintable_SINGLETON = NullInitUpdatePaintable_new();
+}
+
+void NullInitUpdatePaintable_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("NullInitUpdatePaintable", "InitUpdatePaintable");
 }
 
 
 void NullInitUpdatePaintable_init(NullInitUpdatePaintable* this) {
+    NullInitUpdatePaintable_register();
     InitUpdatePaintable_init(&this->base);
 }
 
 NullInitUpdatePaintable* NullInitUpdatePaintable_new(void) {
-    NullInitUpdatePaintable* this = calloc(1, sizeof(NullInitUpdatePaintable));
+    NullInitUpdatePaintable* this = java_object_alloc(sizeof(NullInitUpdatePaintable), "NullInitUpdatePaintable");
     NullInitUpdatePaintable_init(this);
     return this;
 }
 
 
 InitUpdatePaintable* NullInitUpdatePaintable_getInstance(void) {
-        return NullInitUpdatePaintable_SINGLETON;
+        return (NullInitUpdatePaintable_staticInit(), NullInitUpdatePaintable_SINGLETON);
 }
 

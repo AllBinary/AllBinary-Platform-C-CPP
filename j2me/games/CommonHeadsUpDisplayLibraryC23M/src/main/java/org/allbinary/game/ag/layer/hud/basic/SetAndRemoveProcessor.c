@@ -1,41 +1,28 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- *
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- *
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- *
- * Created By: Travis Berthelot
- * 
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.ag.layer.hud.basic
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-#include "org/allbinary/canvas/Processor.h"
-
-typedef struct SetAndRemoveProcessor SetAndRemoveProcessor;
-struct SetAndRemoveProcessor {
-    Processor base;
-    PlayerGameNotificationHud* updateMeasurementProcessor;
-};
+#include "org/allbinary/game/ag/layer/hud/basic/SetAndRemoveProcessor.h"
+#include "org/allbinary/game/ag/layer/hud/basic/PlayerGameNotificationHud.h"
 
 
-SetAndRemoveProcessor* SetAndRemoveProcessor_new(PlayerGameNotificationHud* updateMeasurementProcessor);
 
-void SetAndRemoveProcessor_init(SetAndRemoveProcessor* this, PlayerGameNotificationHud* updateMeasurementProcessor);
-void SetAndRemoveProcessor_process(SetAndRemoveProcessor* this);
+
+
+void SetAndRemoveProcessor_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void SetAndRemoveProcessor_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("SetAndRemoveProcessor", "Processor");
+    java_register_method("SetAndRemoveProcessor", "process", (void*) SetAndRemoveProcessor_process);
+}
 
 static void SetAndRemoveProcessor_initFields(SetAndRemoveProcessor* this) {
     
@@ -43,13 +30,14 @@ static void SetAndRemoveProcessor_initFields(SetAndRemoveProcessor* this) {
 
 
 void SetAndRemoveProcessor_init(SetAndRemoveProcessor* this, PlayerGameNotificationHud* updateMeasurementProcessor) {
+    SetAndRemoveProcessor_register();
     Processor_init(&this->base);
     SetAndRemoveProcessor_initFields(this);
         this->updateMeasurementProcessor = updateMeasurementProcessor;
 }
 
 SetAndRemoveProcessor* SetAndRemoveProcessor_new(PlayerGameNotificationHud* updateMeasurementProcessor) {
-    SetAndRemoveProcessor* this = calloc(1, sizeof(SetAndRemoveProcessor));
+    SetAndRemoveProcessor* this = java_object_alloc(sizeof(SetAndRemoveProcessor), "SetAndRemoveProcessor");
     SetAndRemoveProcessor_init(this, updateMeasurementProcessor);
     return this;
 }

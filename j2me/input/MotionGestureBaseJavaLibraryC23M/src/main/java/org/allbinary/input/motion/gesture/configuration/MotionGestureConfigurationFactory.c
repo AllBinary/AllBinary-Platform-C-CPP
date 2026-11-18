@@ -1,58 +1,43 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input.motion.gesture.configuration
+#include "org/allbinary/input/motion/gesture/configuration/MotionGestureConfigurationFactory.h"
+#include "org/allbinary/input/motion/gesture/configuration/MotionGestureConfiguration.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct MotionGestureConfigurationFactory MotionGestureConfigurationFactory;
-struct MotionGestureConfigurationFactory {
-    char unused;
-};
 
 static MotionGestureConfiguration* MotionGestureConfigurationFactory_config;
 
-MotionGestureConfigurationFactory* MotionGestureConfigurationFactory_new(void);
 
-void MotionGestureConfigurationFactory_init(MotionGestureConfigurationFactory* this);
-MotionGestureConfiguration* MotionGestureConfigurationFactory_getInstance(void);
 
-// Static fields with runtime initializers: call this once at startup
 void MotionGestureConfigurationFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     MotionGestureConfigurationFactory_config = MotionGestureConfiguration_new();
+}
+
+void MotionGestureConfigurationFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("MotionGestureConfigurationFactory", nullptr);
 }
 
 
 void MotionGestureConfigurationFactory_init(MotionGestureConfigurationFactory* this) {
+    MotionGestureConfigurationFactory_register();
 }
 
 MotionGestureConfigurationFactory* MotionGestureConfigurationFactory_new(void) {
-    MotionGestureConfigurationFactory* this = calloc(1, sizeof(MotionGestureConfigurationFactory));
+    MotionGestureConfigurationFactory* this = java_object_alloc(sizeof(MotionGestureConfigurationFactory), "MotionGestureConfigurationFactory");
     MotionGestureConfigurationFactory_init(this);
     return this;
 }
 
 
 MotionGestureConfiguration* MotionGestureConfigurationFactory_getInstance(void) {
-        return MotionGestureConfigurationFactory_config;
+        return (MotionGestureConfigurationFactory_staticInit(), MotionGestureConfigurationFactory_config);
 }
 

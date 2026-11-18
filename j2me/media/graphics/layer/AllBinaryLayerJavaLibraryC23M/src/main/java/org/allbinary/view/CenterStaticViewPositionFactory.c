@@ -1,47 +1,38 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.view
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/view/CenterStaticViewPositionFactory.h"
 #include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
-
-typedef struct CenterStaticViewPositionFactory CenterStaticViewPositionFactory;
-struct CenterStaticViewPositionFactory {
-    char unused;
-};
+#include "org/allbinary/view/StaticViewPosition.h"
+#include "org/allbinary/view/ViewPositionBase.h"
 
 
-CenterStaticViewPositionFactory* CenterStaticViewPositionFactory_new(void);
 
-void CenterStaticViewPositionFactory_init(CenterStaticViewPositionFactory* this);
-ViewPositionBase* CenterStaticViewPositionFactory_getInstance(CenterStaticViewPositionFactory* this, int32_t z);
+
+
+void CenterStaticViewPositionFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void CenterStaticViewPositionFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("CenterStaticViewPositionFactory", nullptr);
+    java_register_method("CenterStaticViewPositionFactory", "getInstance", (void*) CenterStaticViewPositionFactory_getInstance);
+}
 
 
 void CenterStaticViewPositionFactory_init(CenterStaticViewPositionFactory* this) {
+    CenterStaticViewPositionFactory_register();
 }
 
 CenterStaticViewPositionFactory* CenterStaticViewPositionFactory_new(void) {
-    CenterStaticViewPositionFactory* this = calloc(1, sizeof(CenterStaticViewPositionFactory));
+    CenterStaticViewPositionFactory* this = java_object_alloc(sizeof(CenterStaticViewPositionFactory), "CenterStaticViewPositionFactory");
     CenterStaticViewPositionFactory_init(this);
     return this;
 }

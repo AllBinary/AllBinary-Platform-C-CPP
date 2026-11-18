@@ -1,50 +1,37 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-#include "org/allbinary/graph/V.h"
+#include "org/allbinary/graphics/CellPosition.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/string/CommonSeps.h"
 
-typedef struct CellPosition CellPosition;
-struct CellPosition {
-    V base;
-    int32_t id;
-    int32_t column;
-    int32_t row;
-};
 
 
-CellPosition* CellPosition_new(int32_t column, int32_t row, int32_t columns, int32_t rows);
 
-void CellPosition_init(CellPosition* this, int32_t column, int32_t row, int32_t columns, int32_t rows);
-int32_t CellPosition_getColumn(CellPosition* this);
-int32_t CellPosition_getRow(CellPosition* this);
-const char* CellPosition_toString(CellPosition* this);
-const char* CellPosition_toStringCellPosition(CellPosition* basicGeographicMapCellPosition);
-const char* CellPosition_toStringColRow(int32_t i_column, int32_t i_row);
-int32_t CellPosition_getId(CellPosition* this);
+
+
+
+
+
+
+void CellPosition_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void CellPosition_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("CellPosition", "V");
+    java_register_method("CellPosition", "getColumn", (void*) CellPosition_getColumn);
+    java_register_method("CellPosition", "getRow", (void*) CellPosition_getRow);
+    java_register_method("CellPosition", "toString", (void*) CellPosition_toString);
+    java_register_method("CellPosition", "getId", (void*) CellPosition_getId);
+}
 
 static void CellPosition_initFields(CellPosition* this) {
     
@@ -54,6 +41,7 @@ static void CellPosition_initFields(CellPosition* this) {
 
 
 void CellPosition_init(CellPosition* this, int32_t column, int32_t row, int32_t columns, int32_t rows) {
+    CellPosition_register();
     V_init(&this->base);
     CellPosition_initFields(this);
         this->column = column;
@@ -62,7 +50,7 @@ void CellPosition_init(CellPosition* this, int32_t column, int32_t row, int32_t 
 }
 
 CellPosition* CellPosition_new(int32_t column, int32_t row, int32_t columns, int32_t rows) {
-    CellPosition* this = calloc(1, sizeof(CellPosition));
+    CellPosition* this = java_object_alloc(sizeof(CellPosition), "CellPosition");
     CellPosition_init(this, column, row, columns, rows);
     return this;
 }
@@ -96,7 +84,7 @@ const char* CellPosition_toStringColRow(int32_t i_column, int32_t i_row) {
         StringMaker_append(stringBuffer, commonSeps->COMMA);
         StringMaker_appendint(stringBuffer, i_row);
         StringMaker_append(stringBuffer, commonSeps->PARENTHESIS_CLOSE);
-        return StringMaker_toString(stringBuffer);
+        return java_string_of(stringBuffer);
 }
 
 

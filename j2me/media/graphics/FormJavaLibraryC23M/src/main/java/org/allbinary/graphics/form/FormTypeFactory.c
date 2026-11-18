@@ -1,49 +1,34 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.form
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/graphics/form/FormTypeFactory.h"
 #include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
 #include "org/allbinary/logic/string/StringUtil.h"
+#include "org/allbinary/graphics/form/FormType.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
-typedef struct FormTypeFactory FormTypeFactory;
-struct FormTypeFactory {
-    const char* UNK;
-    FormType* NULL_FORM_TYPE;
-    FormType* TEMP_HORIZONTAL_FORM;
-    FormType* HORIZONTAL_FORM;
-    FormType* VERTICAL_CENTER_FORM;
-};
 
 static FormTypeFactory* FormTypeFactory_instance;
 
-FormTypeFactory* FormTypeFactory_new(void);
-FormTypeFactory* FormTypeFactory_getInstance(void);
-FormType* FormTypeFactory_getFormType(FormTypeFactory* this);
 
-// Static fields with runtime initializers: call this once at startup
+
 void FormTypeFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     FormTypeFactory_instance = FormTypeFactory_new();
+}
+
+void FormTypeFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("FormTypeFactory", nullptr);
+    java_register_method("FormTypeFactory", "getFormType", (void*) FormTypeFactory_getFormType);
 }
 
 static void FormTypeFactory_initFields(FormTypeFactory* this) {
@@ -55,18 +40,19 @@ static void FormTypeFactory_initFields(FormTypeFactory* this) {
 }
 
 void FormTypeFactory_init(FormTypeFactory* this) {
+    FormTypeFactory_register();
     FormTypeFactory_initFields(this);
 }
 
 FormTypeFactory* FormTypeFactory_new(void) {
-    FormTypeFactory* this = calloc(1, sizeof(FormTypeFactory));
+    FormTypeFactory* this = java_object_alloc(sizeof(FormTypeFactory), "FormTypeFactory");
     FormTypeFactory_init(this);
     return this;
 }
 
 
 FormTypeFactory* FormTypeFactory_getInstance(void) {
-        return FormTypeFactory_instance;
+        return (FormTypeFactory_staticInit(), FormTypeFactory_instance);
 }
 
 

@@ -1,0 +1,240 @@
+#ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ADJUSTEDLEFTTORIGHTIMAGEANIMATION_H
+#define ORG_ALLBINARY_ANIMATION_IMAGE_ADJUSTEDLEFTTORIGHTIMAGEANIMATION_H
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation.image
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+typedef struct LeftToRightImageAnimation LeftToRightImageAnimation;
+typedef struct Graphics Graphics;
+typedef struct Image Image;
+typedef struct AnimationBehavior AnimationBehavior;
+#include "org/allbinary/animation/image/LeftToRightImageAnimation.h"
+
+typedef struct AdjustedLeftToRightImageAnimation AdjustedLeftToRightImageAnimation;
+struct AdjustedLeftToRightImageAnimation {
+    LeftToRightImageAnimation base;
+    int32_t dx;
+    int32_t dy;
+};
+
+
+AdjustedLeftToRightImageAnimation* AdjustedLeftToRightImageAnimation_new(Image* image, int32_t* sequenceArray, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior);
+
+void AdjustedLeftToRightImageAnimation_init(AdjustedLeftToRightImageAnimation* this, Image* image, int32_t* sequenceArray, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior);
+
+void AdjustedLeftToRightImageAnimation_initMethod(AdjustedLeftToRightImageAnimation* this, int32_t dx, int32_t dy);
+
+void AdjustedLeftToRightImageAnimation_paintXY(AdjustedLeftToRightImageAnimation* this, Graphics* graphics, int32_t x, int32_t y);
+#define AdjustedLeftToRightImageAnimation_new5 AdjustedLeftToRightImageAnimation_new
+#define AdjustedLeftToRightImageAnimation_init5 AdjustedLeftToRightImageAnimation_init
+#ifndef AdjustedLeftToRightImageAnimation_nextFrame
+#define AdjustedLeftToRightImageAnimation_nextFrame LeftToRightImageAnimation_nextFrame
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_previousFrame
+#define AdjustedLeftToRightImageAnimation_previousFrame LeftToRightImageAnimation_previousFrame
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_setFrame
+#define AdjustedLeftToRightImageAnimation_setFrame LeftToRightImageAnimation_setFrame
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_update
+#define AdjustedLeftToRightImageAnimation_update LeftToRightImageAnimation_update
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_nextFrame
+#define AdjustedLeftToRightImageAnimation_nextFrame ImageSegmentAnimation_nextFrame
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_previousFrame
+#define AdjustedLeftToRightImageAnimation_previousFrame ImageSegmentAnimation_previousFrame
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_setFrame
+#define AdjustedLeftToRightImageAnimation_setFrame ImageSegmentAnimation_setFrame
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_getFrame
+#define AdjustedLeftToRightImageAnimation_getFrame ImageSegmentAnimation_getFrame
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_getSize
+#define AdjustedLeftToRightImageAnimation_getSize ImageSegmentAnimation_getSize
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_setSequence
+#define AdjustedLeftToRightImageAnimation_setSequence ImageSegmentAnimation_setSequence
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_getSequence
+#define AdjustedLeftToRightImageAnimation_getSequence ImageSegmentAnimation_getSequence
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_getStartX
+#define AdjustedLeftToRightImageAnimation_getStartX ImageSegmentAnimation_getStartX
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_setStartX
+#define AdjustedLeftToRightImageAnimation_setStartX ImageSegmentAnimation_setStartX
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_getStartY
+#define AdjustedLeftToRightImageAnimation_getStartY ImageSegmentAnimation_getStartY
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_setStartY
+#define AdjustedLeftToRightImageAnimation_setStartY ImageSegmentAnimation_setStartY
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_getDrawWidth
+#define AdjustedLeftToRightImageAnimation_getDrawWidth ImageSegmentAnimation_getDrawWidth
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_setDrawWidth
+#define AdjustedLeftToRightImageAnimation_setDrawWidth ImageSegmentAnimation_setDrawWidth
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_getDrawHeight
+#define AdjustedLeftToRightImageAnimation_getDrawHeight ImageSegmentAnimation_getDrawHeight
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_setDrawHeight
+#define AdjustedLeftToRightImageAnimation_setDrawHeight ImageSegmentAnimation_setDrawHeight
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_getAnimationSize
+#define AdjustedLeftToRightImageAnimation_getAnimationSize ImageAnimation_getAnimationSize
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_nextFrame
+#define AdjustedLeftToRightImageAnimation_nextFrame ImageAnimation_nextFrame
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_previousFrame
+#define AdjustedLeftToRightImageAnimation_previousFrame ImageAnimation_previousFrame
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_setFrame
+#define AdjustedLeftToRightImageAnimation_setFrame ImageAnimation_setFrame
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_getFrame
+#define AdjustedLeftToRightImageAnimation_getFrame ImageAnimation_getFrame
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_getSize
+#define AdjustedLeftToRightImageAnimation_getSize ImageAnimation_getSize
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_setSequence
+#define AdjustedLeftToRightImageAnimation_setSequence ImageAnimation_setSequence
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_getSequence
+#define AdjustedLeftToRightImageAnimation_getSequence ImageAnimation_getSequence
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_getImage
+#define AdjustedLeftToRightImageAnimation_getImage ImageAnimation_getImage
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_close
+#define AdjustedLeftToRightImageAnimation_close ImageAnimation_close
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_finalize
+#define AdjustedLeftToRightImageAnimation_finalize ImageAnimation_finalize
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_getAnimationBehavior
+#define AdjustedLeftToRightImageAnimation_getAnimationBehavior IndexedAnimation_getAnimationBehavior
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_reset
+#define AdjustedLeftToRightImageAnimation_reset IndexedAnimation_reset
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_setFrame
+#define AdjustedLeftToRightImageAnimation_setFrame IndexedAnimation_setFrame
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_getFrame
+#define AdjustedLeftToRightImageAnimation_getFrame IndexedAnimation_getFrame
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_getAnimationSize
+#define AdjustedLeftToRightImageAnimation_getAnimationSize IndexedAnimation_getAnimationSize
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_getSize
+#define AdjustedLeftToRightImageAnimation_getSize IndexedAnimation_getSize
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_previousFrame
+#define AdjustedLeftToRightImageAnimation_previousFrame IndexedAnimation_previousFrame
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_isLastFrame
+#define AdjustedLeftToRightImageAnimation_isLastFrame IndexedAnimation_isLastFrame
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_setSequence
+#define AdjustedLeftToRightImageAnimation_setSequence IndexedAnimation_setSequence
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_getSequence
+#define AdjustedLeftToRightImageAnimation_getSequence IndexedAnimation_getSequence
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_setState
+#define AdjustedLeftToRightImageAnimation_setState IndexedAnimation_setState
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_getWidth
+#define AdjustedLeftToRightImageAnimation_getWidth IndexedAnimation_getWidth
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_getHeight
+#define AdjustedLeftToRightImageAnimation_getHeight IndexedAnimation_getHeight
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_setAlpha
+#define AdjustedLeftToRightImageAnimation_setAlpha Animation_setAlpha
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_nextFrame
+#define AdjustedLeftToRightImageAnimation_nextFrame Animation_nextFrame
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_paintThreedXYZ
+#define AdjustedLeftToRightImageAnimation_paintThreedXYZ Animation_paintThreedXYZ
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_isThreed
+#define AdjustedLeftToRightImageAnimation_isThreed Animation_isThreed
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_getBasicColorP
+#define AdjustedLeftToRightImageAnimation_getBasicColorP Animation_getBasicColorP
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_setBasicColorP
+#define AdjustedLeftToRightImageAnimation_setBasicColorP Animation_setBasicColorP
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_setBackgroundBasicColorP
+#define AdjustedLeftToRightImageAnimation_setBackgroundBasicColorP Animation_setBackgroundBasicColorP
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_getChangeBasicColor
+#define AdjustedLeftToRightImageAnimation_getChangeBasicColor Animation_getChangeBasicColor
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_changeBasicColor
+#define AdjustedLeftToRightImageAnimation_changeBasicColor Animation_changeBasicColor
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_getChangeColor
+#define AdjustedLeftToRightImageAnimation_getChangeColor Animation_getChangeColor
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_getColor
+#define AdjustedLeftToRightImageAnimation_getColor Animation_getColor
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_setScale
+#define AdjustedLeftToRightImageAnimation_setScale Animation_setScale
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_setMaxScale
+#define AdjustedLeftToRightImageAnimation_setMaxScale Animation_setMaxScale
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_set
+#define AdjustedLeftToRightImageAnimation_set Animation_set
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_setDx
+#define AdjustedLeftToRightImageAnimation_setDx Animation_setDx
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_getDx
+#define AdjustedLeftToRightImageAnimation_getDx Animation_getDx
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_setDy
+#define AdjustedLeftToRightImageAnimation_setDy Animation_setDy
+#endif
+#ifndef AdjustedLeftToRightImageAnimation_getDy
+#define AdjustedLeftToRightImageAnimation_getDy Animation_getDy
+#endif
+// Runs the Java static initialization of the class once. Reads of its static fields call it first.
+void AdjustedLeftToRightImageAnimation_staticInit(void);
+// Registers the class, its superclass, and its methods for the interface calls (java_register_method)
+void AdjustedLeftToRightImageAnimation_register(void);
+
+
+#endif // ORG_ALLBINARY_ANIMATION_IMAGE_ADJUSTEDLEFTTORIGHTIMAGEANIMATION_H

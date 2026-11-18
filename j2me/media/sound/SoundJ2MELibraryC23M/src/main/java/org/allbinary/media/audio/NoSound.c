@@ -1,61 +1,49 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2022 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.media.audio
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/media/audio/NoSound.h"
 #include "org/allbinary/logic/string/StringUtil.h"
 #include "org/allbinary/media/audio/Sound.h"
+#include "org/allbinary/media/audio/NoPlayer.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
-typedef struct NoSound NoSound;
-struct NoSound {
-    Sound base;
-};
 
 static NoSound* NoSound_instance;
 
-NoSound* NoSound_new(void);
-NoSound* NoSound_getInstance(void);
 
-void NoSound_init(NoSound* this);
 
-// Static fields with runtime initializers: call this once at startup
 void NoSound_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     NoSound_instance = NoSound_new();
+}
+
+void NoSound_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("NoSound", "Sound");
 }
 
 
 NoSound* NoSound_getInstance(void) {
-        return NoSound_instance;
+        return (NoSound_staticInit(), NoSound_instance);
 }
 
 
 void NoSound_init(NoSound* this) {
+    NoSound_register();
         Sound_init(&this->base, StringUtil_getInstance()->EMPTY_STRING);
-        NoSound_setPlayerP(this, NoPlayer_NO_PLAYER);
+        Sound_setPlayerP(this, (NoPlayer_staticInit(), NoPlayer_NO_PLAYER));
 }
 
 NoSound* NoSound_new(void) {
-    NoSound* this = calloc(1, sizeof(NoSound));
+    NoSound* this = java_object_alloc(sizeof(NoSound), "NoSound");
     NoSound_init(this);
     return this;
 }

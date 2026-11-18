@@ -1,45 +1,32 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.physics.movement
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/physics/movement/SimpleGravityVelocityMovement.h"
 #include "org/allbinary/game/layer/AllBinaryGameLayer.h"
 #include "org/allbinary/game/physics/acceleration/GravityUtil.h"
 #include "org/allbinary/game/physics/velocity/VelocityProperties.h"
 #include "org/allbinary/logic/math/BasicDecimal.h"
 #include "org/allbinary/physics/movement/BasicConstantVelocityMovement.h"
 
-typedef struct SimpleGravityVelocityMovement SimpleGravityVelocityMovement;
-struct SimpleGravityVelocityMovement {
-    BasicConstantVelocityMovement base;
-    GravityUtil* gravityUtil;
-};
 
 
-SimpleGravityVelocityMovement* SimpleGravityVelocityMovement_new(BasicDecimal* speedBasicDecimal);
 
-void SimpleGravityVelocityMovement_init(SimpleGravityVelocityMovement* this, BasicDecimal* speedBasicDecimal);
-void SimpleGravityVelocityMovement_process(SimpleGravityVelocityMovement* this, AllBinaryGameLayer* layer);
+
+void SimpleGravityVelocityMovement_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void SimpleGravityVelocityMovement_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("SimpleGravityVelocityMovement", "BasicConstantVelocityMovement");
+    java_register_method("SimpleGravityVelocityMovement", "process", (void*) SimpleGravityVelocityMovement_process);
+}
 
 static void SimpleGravityVelocityMovement_initFields(SimpleGravityVelocityMovement* this) {
     this->gravityUtil = GravityUtil_getInstance();
@@ -47,12 +34,13 @@ static void SimpleGravityVelocityMovement_initFields(SimpleGravityVelocityMoveme
 
 
 void SimpleGravityVelocityMovement_init(SimpleGravityVelocityMovement* this, BasicDecimal* speedBasicDecimal) {
+    SimpleGravityVelocityMovement_register();
         BasicConstantVelocityMovement_init(&this->base, speedBasicDecimal, VelocityProperties_new(((int32_t) BasicDecimal_getUnscaled(speedBasicDecimal)), ((int32_t) BasicDecimal_getUnscaled(speedBasicDecimal))));
         SimpleGravityVelocityMovement_initFields(this);
 }
 
 SimpleGravityVelocityMovement* SimpleGravityVelocityMovement_new(BasicDecimal* speedBasicDecimal) {
-    SimpleGravityVelocityMovement* this = calloc(1, sizeof(SimpleGravityVelocityMovement));
+    SimpleGravityVelocityMovement* this = java_object_alloc(sizeof(SimpleGravityVelocityMovement), "SimpleGravityVelocityMovement");
     SimpleGravityVelocityMovement_init(this, speedBasicDecimal);
     return this;
 }
@@ -60,7 +48,7 @@ SimpleGravityVelocityMovement* SimpleGravityVelocityMovement_new(BasicDecimal* s
 
 // throws Exception
 void SimpleGravityVelocityMovement_process(SimpleGravityVelocityMovement* this, AllBinaryGameLayer* layer) {
-        GravityUtil_process(this->gravityUtil, SimpleGravityVelocityMovement_getVelocityProperties(this), this->gravityUtil->GAME_GRAVITY_VELOCITY);
+        GravityUtil_process(this->gravityUtil, BasicConstantVelocityMovement_getVelocityProperties(this), this->gravityUtil->GAME_GRAVITY_VELOCITY);
         BasicConstantVelocityMovement_process((&this->base), layer);
 }
 

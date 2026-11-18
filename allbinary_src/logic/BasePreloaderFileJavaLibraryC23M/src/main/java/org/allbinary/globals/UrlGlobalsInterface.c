@@ -1,47 +1,49 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.globals
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/globals/UrlGlobalsInterface.h"
 #include "org/allbinary/logic/string/StringUtil.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
-typedef struct UrlGlobalsInterface UrlGlobalsInterface;
-struct UrlGlobalsInterface {
-    char unused;
-};
 
 
-UrlGlobalsInterface* UrlGlobalsInterface_new(void);
-const char* UrlGlobalsInterface_getMainPath(UrlGlobalsInterface* this);
-const char* UrlGlobalsInterface_getTestHtmlPath(UrlGlobalsInterface* this);
-const char* UrlGlobalsInterface_getWebappPath(UrlGlobalsInterface* this);
-bool UrlGlobalsInterface_isTestingMode(UrlGlobalsInterface* this);
+
+
+
+
+void UrlGlobalsInterface_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void UrlGlobalsInterface_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("UrlGlobalsInterface", nullptr);
+    java_register_method("UrlGlobalsInterface", "getMainPath", (void*) UrlGlobalsInterface_getMainPath);
+    java_register_method("UrlGlobalsInterface", "getTestHtmlPath", (void*) UrlGlobalsInterface_getTestHtmlPath);
+    java_register_method("UrlGlobalsInterface", "getWebappPath", (void*) UrlGlobalsInterface_getWebappPath);
+    java_register_method("UrlGlobalsInterface", "isTestingMode", (void*) UrlGlobalsInterface_isTestingMode);
+}
 
 void UrlGlobalsInterface_init(UrlGlobalsInterface* this) {
+    UrlGlobalsInterface_register();
 }
 
 UrlGlobalsInterface* UrlGlobalsInterface_new(void) {
-    UrlGlobalsInterface* this = calloc(1, sizeof(UrlGlobalsInterface));
+    UrlGlobalsInterface* this = java_object_alloc(sizeof(UrlGlobalsInterface), "UrlGlobalsInterface");
     UrlGlobalsInterface_init(this);
     return this;
 }

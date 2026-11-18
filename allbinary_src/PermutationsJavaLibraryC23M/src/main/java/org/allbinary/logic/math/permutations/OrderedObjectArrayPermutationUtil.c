@@ -1,53 +1,40 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2011 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.math.permutations
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "java/util/Arrays.h"
+#include "org/allbinary/logic/math/permutations/OrderedObjectArrayPermutationUtil.h"
 #include "org/allbinary/TsUtil.h"
 #include "org/allbinary/logic/util/visitor/Visitor.h"
+#include "org/allbinary/logic/math/permutations/ComparableObject.h"
+#include "org/allbinary/logic/math/permutations/ObjectPermutationVisitor.h"
 
-typedef struct OrderedObjectArrayPermutationUtil OrderedObjectArrayPermutationUtil;
-struct OrderedObjectArrayPermutationUtil {
-    const char* TOTAL_ITERATIONS_TABLE;
-    const char* FINISHED;
-};
 
 static OrderedObjectArrayPermutationUtil* OrderedObjectArrayPermutationUtil_instance;
 
-OrderedObjectArrayPermutationUtil* OrderedObjectArrayPermutationUtil_new(void);
-OrderedObjectArrayPermutationUtil* OrderedObjectArrayPermutationUtil_getInstance(void);
 
-void OrderedObjectArrayPermutationUtil_init(OrderedObjectArrayPermutationUtil* this);
-void OrderedObjectArrayPermutationUtil_getNext(OrderedObjectArrayPermutationUtil* this, Any** data);
-void OrderedObjectArrayPermutationUtil_swap(OrderedObjectArrayPermutationUtil* this, Any** data, int32_t a, int32_t b);
-int64_t OrderedObjectArrayPermutationUtil_factorial(OrderedObjectArrayPermutationUtil* this, int32_t dataLength);
-void OrderedObjectArrayPermutationUtil_generate(OrderedObjectArrayPermutationUtil* this, Any** data, Visitor* visitor);
-void OrderedObjectArrayPermutationUtil_main(const char** args);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+
 void OrderedObjectArrayPermutationUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     OrderedObjectArrayPermutationUtil_instance = OrderedObjectArrayPermutationUtil_new();
+}
+
+void OrderedObjectArrayPermutationUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("OrderedObjectArrayPermutationUtil", nullptr);
+    java_register_method("OrderedObjectArrayPermutationUtil", "getNext", (void*) OrderedObjectArrayPermutationUtil_getNext);
+    java_register_method("OrderedObjectArrayPermutationUtil", "swap", (void*) OrderedObjectArrayPermutationUtil_swap);
+    java_register_method("OrderedObjectArrayPermutationUtil", "factorial", (void*) OrderedObjectArrayPermutationUtil_factorial);
+    java_register_method("OrderedObjectArrayPermutationUtil", "generate", (void*) OrderedObjectArrayPermutationUtil_generate);
 }
 
 static void OrderedObjectArrayPermutationUtil_initFields(OrderedObjectArrayPermutationUtil* this) {
@@ -57,22 +44,23 @@ static void OrderedObjectArrayPermutationUtil_initFields(OrderedObjectArrayPermu
 
 
 OrderedObjectArrayPermutationUtil* OrderedObjectArrayPermutationUtil_getInstance(void) {
-        return OrderedObjectArrayPermutationUtil_instance;
+        return (OrderedObjectArrayPermutationUtil_staticInit(), OrderedObjectArrayPermutationUtil_instance);
 }
 
 
 void OrderedObjectArrayPermutationUtil_init(OrderedObjectArrayPermutationUtil* this) {
+    OrderedObjectArrayPermutationUtil_register();
     OrderedObjectArrayPermutationUtil_initFields(this);
 }
 
 OrderedObjectArrayPermutationUtil* OrderedObjectArrayPermutationUtil_new(void) {
-    OrderedObjectArrayPermutationUtil* this = calloc(1, sizeof(OrderedObjectArrayPermutationUtil));
+    OrderedObjectArrayPermutationUtil* this = java_object_alloc(sizeof(OrderedObjectArrayPermutationUtil), "OrderedObjectArrayPermutationUtil");
     OrderedObjectArrayPermutationUtil_init(this);
     return this;
 }
 
 
-void OrderedObjectArrayPermutationUtil_getNext(OrderedObjectArrayPermutationUtil* this, Any** data) {
+void OrderedObjectArrayPermutationUtil_getNext(OrderedObjectArrayPermutationUtil* this, void** data) {
         int32_t length = java_array_length(data);
         int32_t i = length - 1;
         TsUtil* tsUtil = TsUtil_getInstance();
@@ -94,8 +82,8 @@ void OrderedObjectArrayPermutationUtil_getNext(OrderedObjectArrayPermutationUtil
 }
 
 
-void OrderedObjectArrayPermutationUtil_swap(OrderedObjectArrayPermutationUtil* this, Any** data, int32_t a, int32_t b) {
-        Any* temp = data[a];
+void OrderedObjectArrayPermutationUtil_swap(OrderedObjectArrayPermutationUtil* this, void** data, int32_t a, int32_t b) {
+        void* temp = data[a];
         data[a] = data[b];
         data[b] = temp;
 }
@@ -112,7 +100,7 @@ int64_t OrderedObjectArrayPermutationUtil_factorial(OrderedObjectArrayPermutatio
 }
 
 
-void OrderedObjectArrayPermutationUtil_generate(OrderedObjectArrayPermutationUtil* this, Any** data, Visitor* visitor) {
+void OrderedObjectArrayPermutationUtil_generate(OrderedObjectArrayPermutationUtil* this, void** data, Visitor* visitor) {
         int64_t iterations = OrderedObjectArrayPermutationUtil_factorial(this, java_array_length(data));
         fputs(java_string_of(this->TOTAL_ITERATIONS_TABLE), stdout);
         puts(java_string_of(iterations));
@@ -126,7 +114,7 @@ void OrderedObjectArrayPermutationUtil_generate(OrderedObjectArrayPermutationUti
 
 void OrderedObjectArrayPermutationUtil_main(const char** args) {
         int32_t TOTAL = 7;
-        Any** data = ((Any**) java_array_new(sizeof(Any*), TOTAL));
+        void** data = ((void**) java_array_new(sizeof(void*), TOTAL));
         for (int32_t i = 0; i < TOTAL; i++) {
             data[i] = ComparableObject_new();
         }

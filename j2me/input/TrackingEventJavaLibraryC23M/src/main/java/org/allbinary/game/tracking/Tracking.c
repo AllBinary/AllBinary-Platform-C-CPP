@@ -1,47 +1,36 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.tracking
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
-
-typedef struct Tracking Tracking;
-struct Tracking {
-    char unused;
-};
+#include "org/allbinary/game/tracking/Tracking.h"
+#include "javax/microedition/lcdui/Graphics.h"
 
 
-Tracking* Tracking_new(void);
 
-void Tracking_init(Tracking* this);
-void Tracking_paint(Tracking* this, Graphics* graphics);
+
+
+void Tracking_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void Tracking_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("Tracking", nullptr);
+    java_register_method("Tracking", "paint", (void*) Tracking_paint);
+}
 
 
 void Tracking_init(Tracking* this) {
+    Tracking_register();
 }
 
 Tracking* Tracking_new(void) {
-    Tracking* this = calloc(1, sizeof(Tracking));
+    Tracking* this = java_object_alloc(sizeof(Tracking), "Tracking");
     Tracking_init(this);
     return this;
 }

@@ -1,59 +1,56 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.layer.event
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/layer/event/LayerManagerEventHandler.h"
 #include "org/allbinary/logic/util/event/AllBinaryEventObject.h"
 #include "org/allbinary/logic/util/event/EventListenerInterface.h"
 #include "org/allbinary/logic/util/event/EventStrings.h"
-#include "org/allbinary/logic/util/event/handler/BasicEventHandler.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
+#include "org/allbinary/layer/event/LayerManagerEventListener.h"
+#include "org/allbinary/layer/event/LayerManagerEvent.h"
+#include "org/allbinary/layer/event/LayerManagerEventListenerInterface.h"
+#if __has_include("org/allbinary/logic/util/event/EventStrings.h")
+#include "org/allbinary/logic/util/event/EventStrings.h"
+#endif
+#if __has_include("org/allbinary/logic/util/event/EventStrings.h")
+#include "org/allbinary/logic/util/event/EventStrings.h"
+#endif
+#if __has_include("org/allbinary/logic/util/event/EventStrings.h")
+#include "org/allbinary/logic/util/event/EventStrings.h"
+#endif
 
-typedef struct LayerManagerEventHandler LayerManagerEventHandler;
-struct LayerManagerEventHandler {
-    BasicEventHandler base;
-    BasicArrayList* list;
-    const char* CREATE;
-    const char* DELETE;
-};
 
 static LayerManagerEventHandler* LayerManagerEventHandler_instance;
 
-LayerManagerEventHandler* LayerManagerEventHandler_new(void);
-LayerManagerEventHandler* LayerManagerEventHandler_getInstance(void);
 
-void LayerManagerEventHandler_init(LayerManagerEventHandler* this);
-void LayerManagerEventHandler_addListener(LayerManagerEventHandler* this, LayerManagerEventListener* layerManagerEventListener);
-void LayerManagerEventHandler_removeAllListeners(LayerManagerEventHandler* this);
-void LayerManagerEventHandler_removeListener(LayerManagerEventHandler* this, EventListenerInterface* eventListenerInterface);
-void LayerManagerEventHandler_fireEvent(LayerManagerEventHandler* this, AllBinaryEventObject* eventObject);
-void LayerManagerEventHandler_fireDeleteEvent(LayerManagerEventHandler* this, AllBinaryEventObject* eventObject);
-void LayerManagerEventHandler_process(LayerManagerEventHandler* this, AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+
+
 void LayerManagerEventHandler_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     LayerManagerEventHandler_instance = LayerManagerEventHandler_new();
+}
+
+void LayerManagerEventHandler_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("LayerManagerEventHandler", "BasicEventHandler");
+    java_register_method("LayerManagerEventHandler", "addListener", (void*) LayerManagerEventHandler_addListener);
+    java_register_method("LayerManagerEventHandler", "removeAllListeners", (void*) LayerManagerEventHandler_removeAllListeners);
+    java_register_method("LayerManagerEventHandler", "removeListener", (void*) LayerManagerEventHandler_removeListener);
+    java_register_method("LayerManagerEventHandler", "fireEvent", (void*) LayerManagerEventHandler_fireEvent);
+    java_register_method("LayerManagerEventHandler", "fireDeleteEvent", (void*) LayerManagerEventHandler_fireDeleteEvent);
+    java_register_method("LayerManagerEventHandler", "process", (void*) LayerManagerEventHandler_process);
 }
 
 static void LayerManagerEventHandler_initFields(LayerManagerEventHandler* this) {
@@ -64,17 +61,18 @@ static void LayerManagerEventHandler_initFields(LayerManagerEventHandler* this) 
 
 
 LayerManagerEventHandler* LayerManagerEventHandler_getInstance(void) {
-        return LayerManagerEventHandler_instance;
+        return (LayerManagerEventHandler_staticInit(), LayerManagerEventHandler_instance);
 }
 
 
 void LayerManagerEventHandler_init(LayerManagerEventHandler* this) {
+    LayerManagerEventHandler_register();
     BasicEventHandler_init(&this->base);
     LayerManagerEventHandler_initFields(this);
 }
 
 LayerManagerEventHandler* LayerManagerEventHandler_new(void) {
-    LayerManagerEventHandler* this = calloc(1, sizeof(LayerManagerEventHandler));
+    LayerManagerEventHandler* this = java_object_alloc(sizeof(LayerManagerEventHandler), "LayerManagerEventHandler");
     LayerManagerEventHandler_init(this);
     return this;
 }
@@ -106,7 +104,7 @@ void LayerManagerEventHandler_fireEvent(LayerManagerEventHandler* this, AllBinar
                 LayerManagerEventListener* layerManagerEventListener = ((LayerManagerEventListener*) this->list->objectArray[index]);
                 LayerManagerEventListener_onCreateLayerManagerEvent(layerManagerEventListener, ((LayerManagerEvent*) eventObject));
             } JAVA_CATCH(Exception, e) {
-                JAVA_CALL(this->logUtil, put, this->commonStrings->EXCEPTION, this, EventStrings_getInstance()->FIRE_EVENT, e);
+                LogUtil_put(this->base.logUtil, this->base.commonStrings->EXCEPTION, this, EventStrings_getInstance()->FIRE_EVENT, e);
             } JAVA_END_TRY;
         }
         BasicEventHandler_fireEvent((&this->base), eventObject);
@@ -121,10 +119,10 @@ void LayerManagerEventHandler_fireDeleteEvent(LayerManagerEventHandler* this, Al
                 LayerManagerEventListener* layerManagerEventListener = ((LayerManagerEventListener*) this->list->objectArray[index]);
                 LayerManagerEventListener_onDeleteLayerManagerEvent(layerManagerEventListener, ((LayerManagerEvent*) eventObject));
             } JAVA_CATCH(Exception, e) {
-                JAVA_CALL(this->logUtil, put, this->commonStrings->EXCEPTION, this, EventStrings_getInstance()->FIRE_EVENT, e);
+                LogUtil_put(this->base.logUtil, this->base.commonStrings->EXCEPTION, this, EventStrings_getInstance()->FIRE_EVENT, e);
             } JAVA_END_TRY;
         }
-        BasicArrayList* eventListenerInterfaceList = this->eventListenerInterfaceList;
+        BasicArrayList* eventListenerInterfaceList = this->base.eventListenerInterfaceList;
         EventListenerInterface* eventListenerInterface = nullptr;
         LayerManagerEventListenerInterface* layerManagerEventListenerInterface = nullptr;
         int32_t listenerIndex = 0;
@@ -134,7 +132,7 @@ void LayerManagerEventHandler_fireDeleteEvent(LayerManagerEventHandler* this, Al
                 layerManagerEventListenerInterface = (((LayerManagerEventListenerInterface*) eventListenerInterface));
                 LayerManagerEventListenerInterface_onDeleteLayerManagerEvent(layerManagerEventListenerInterface, ((LayerManagerEvent*) eventObject));
             } JAVA_CATCH(Exception, e) {
-                JAVA_CALL(this->logUtil, put, this->commonStrings->EXCEPTION, this, EventStrings_getInstance()->FIRE_EVENT, e);
+                LogUtil_put(this->base.logUtil, this->base.commonStrings->EXCEPTION, this, EventStrings_getInstance()->FIRE_EVENT, e);
             } JAVA_END_TRY;
             listenerIndex++;
         }

@@ -1,41 +1,31 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.form
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/graphics/form/LockableFormPaintableFactory.h"
 #include "org/allbinary/graphics/form/ItemPaintableFactory.h"
-
-typedef struct LockableFormPaintableFactory LockableFormPaintableFactory;
-struct LockableFormPaintableFactory {
-    ItemPaintableFactory base;
-    int32_t lockedIndex;
-};
+#include "org/allbinary/graphics/form/LockablePaintable.h"
+#include "org/allbinary/graphics/form/ItemPaintable.h"
+#include "org/allbinary/graphics/form/PaintableForm.h"
 
 
-LockableFormPaintableFactory* LockableFormPaintableFactory_new(int32_t lockedIndex);
 
-void LockableFormPaintableFactory_init(LockableFormPaintableFactory* this, int32_t lockedIndex);
-ItemPaintable* LockableFormPaintableFactory_getInstanceItemPaintable(LockableFormPaintableFactory* this, PaintableForm* paintableForm);
+
+
+void LockableFormPaintableFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void LockableFormPaintableFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("LockableFormPaintableFactory", "ItemPaintableFactory");
+    java_register_method("LockableFormPaintableFactory", "getInstanceItemPaintable", (void*) LockableFormPaintableFactory_getInstanceItemPaintable);
+}
 
 static void LockableFormPaintableFactory_initFields(LockableFormPaintableFactory* this) {
     
@@ -43,13 +33,14 @@ static void LockableFormPaintableFactory_initFields(LockableFormPaintableFactory
 
 
 void LockableFormPaintableFactory_init(LockableFormPaintableFactory* this, int32_t lockedIndex) {
+    LockableFormPaintableFactory_register();
     ItemPaintableFactory_init(&this->base);
     LockableFormPaintableFactory_initFields(this);
         this->lockedIndex = lockedIndex;
 }
 
 LockableFormPaintableFactory* LockableFormPaintableFactory_new(int32_t lockedIndex) {
-    LockableFormPaintableFactory* this = calloc(1, sizeof(LockableFormPaintableFactory));
+    LockableFormPaintableFactory* this = java_object_alloc(sizeof(LockableFormPaintableFactory), "LockableFormPaintableFactory");
     LockableFormPaintableFactory_init(this, lockedIndex);
     return this;
 }

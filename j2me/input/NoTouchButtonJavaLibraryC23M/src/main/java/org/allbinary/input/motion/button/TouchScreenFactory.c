@@ -1,50 +1,37 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input.motion.button
+#include "org/allbinary/input/motion/button/TouchScreenFactory.h"
+#include "org/allbinary/input/motion/button/TouchScreenTypesFactory.h"
+#include "org/allbinary/input/motion/button/TouchScreenType.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct TouchScreenFactory TouchScreenFactory;
-struct TouchScreenFactory {
-    bool multiTouch;
-    bool touch;
-    TouchScreenType* touchScreenType;
-};
 
 static TouchScreenFactory* TouchScreenFactory_SINGLETON;
 
-TouchScreenFactory* TouchScreenFactory_new(void);
 
-void TouchScreenFactory_init(TouchScreenFactory* this);
-TouchScreenFactory* TouchScreenFactory_getInstance(void);
-bool TouchScreenFactory_isMultiTouch(TouchScreenFactory* this);
-void TouchScreenFactory_setTouch(TouchScreenFactory* this, bool touch);
-bool TouchScreenFactory_isTouch(TouchScreenFactory* this);
-TouchScreenType* TouchScreenFactory_getTouchScreenType(TouchScreenFactory* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
 void TouchScreenFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     TouchScreenFactory_SINGLETON = TouchScreenFactory_new();
+}
+
+void TouchScreenFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("TouchScreenFactory", nullptr);
+    java_register_method("TouchScreenFactory", "isMultiTouch", (void*) TouchScreenFactory_isMultiTouch);
+    java_register_method("TouchScreenFactory", "setTouch", (void*) TouchScreenFactory_setTouch);
+    java_register_method("TouchScreenFactory", "isTouch", (void*) TouchScreenFactory_isTouch);
+    java_register_method("TouchScreenFactory", "getTouchScreenType", (void*) TouchScreenFactory_getTouchScreenType);
 }
 
 static void TouchScreenFactory_initFields(TouchScreenFactory* this) {
@@ -55,18 +42,19 @@ static void TouchScreenFactory_initFields(TouchScreenFactory* this) {
 
 
 void TouchScreenFactory_init(TouchScreenFactory* this) {
+    TouchScreenFactory_register();
     TouchScreenFactory_initFields(this);
 }
 
 TouchScreenFactory* TouchScreenFactory_new(void) {
-    TouchScreenFactory* this = calloc(1, sizeof(TouchScreenFactory));
+    TouchScreenFactory* this = java_object_alloc(sizeof(TouchScreenFactory), "TouchScreenFactory");
     TouchScreenFactory_init(this);
     return this;
 }
 
 
 TouchScreenFactory* TouchScreenFactory_getInstance(void) {
-        return TouchScreenFactory_SINGLETON;
+        return (TouchScreenFactory_staticInit(), TouchScreenFactory_SINGLETON);
 }
 
 

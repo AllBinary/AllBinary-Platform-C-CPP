@@ -1,46 +1,37 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input.motion.gesture
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/input/motion/gesture/MotionGestureToMotionGestureActionAssociation.h"
 #include "org/allbinary/game/input/CompleteMotionGestureInputEvent.h"
 #include "org/allbinary/util/BasicArrayList.h"
 
-typedef struct MotionGestureToMotionGestureActionAssociation MotionGestureToMotionGestureActionAssociation;
-struct MotionGestureToMotionGestureActionAssociation {
-    BasicArrayList* list;
-    CompleteMotionGestureInputEvent* motionGestureAction;
-};
 
 
-MotionGestureToMotionGestureActionAssociation* MotionGestureToMotionGestureActionAssociation_new(BasicArrayList* list, CompleteMotionGestureInputEvent* commandAction);
 
-void MotionGestureToMotionGestureActionAssociation_init(MotionGestureToMotionGestureActionAssociation* this, BasicArrayList* list, CompleteMotionGestureInputEvent* commandAction);
-BasicArrayList* MotionGestureToMotionGestureActionAssociation_getMotionGesture(MotionGestureToMotionGestureActionAssociation* this);
-void MotionGestureToMotionGestureActionAssociation_setMotionGestures(MotionGestureToMotionGestureActionAssociation* this, BasicArrayList* list);
-CompleteMotionGestureInputEvent* MotionGestureToMotionGestureActionAssociation_getCommandAction(MotionGestureToMotionGestureActionAssociation* this);
-void MotionGestureToMotionGestureActionAssociation_setMotionGestureAction(MotionGestureToMotionGestureActionAssociation* this, CompleteMotionGestureInputEvent* commandAction);
-bool MotionGestureToMotionGestureActionAssociation_isMotionGestureArrayEquals(MotionGestureToMotionGestureActionAssociation* this, BasicArrayList* aList);
+
+
+
+
+
+void MotionGestureToMotionGestureActionAssociation_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void MotionGestureToMotionGestureActionAssociation_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("MotionGestureToMotionGestureActionAssociation", nullptr);
+    java_register_method("MotionGestureToMotionGestureActionAssociation", "getMotionGesture", (void*) MotionGestureToMotionGestureActionAssociation_getMotionGesture);
+    java_register_method("MotionGestureToMotionGestureActionAssociation", "setMotionGestures", (void*) MotionGestureToMotionGestureActionAssociation_setMotionGestures);
+    java_register_method("MotionGestureToMotionGestureActionAssociation", "getCommandAction", (void*) MotionGestureToMotionGestureActionAssociation_getCommandAction);
+    java_register_method("MotionGestureToMotionGestureActionAssociation", "setMotionGestureAction", (void*) MotionGestureToMotionGestureActionAssociation_setMotionGestureAction);
+    java_register_method("MotionGestureToMotionGestureActionAssociation", "isMotionGestureArrayEquals", (void*) MotionGestureToMotionGestureActionAssociation_isMotionGestureArrayEquals);
+}
 
 static void MotionGestureToMotionGestureActionAssociation_initFields(MotionGestureToMotionGestureActionAssociation* this) {
     
@@ -49,13 +40,14 @@ static void MotionGestureToMotionGestureActionAssociation_initFields(MotionGestu
 
 
 void MotionGestureToMotionGestureActionAssociation_init(MotionGestureToMotionGestureActionAssociation* this, BasicArrayList* list, CompleteMotionGestureInputEvent* commandAction) {
+    MotionGestureToMotionGestureActionAssociation_register();
     MotionGestureToMotionGestureActionAssociation_initFields(this);
         this->list = list;
         this->motionGestureAction = commandAction;
 }
 
 MotionGestureToMotionGestureActionAssociation* MotionGestureToMotionGestureActionAssociation_new(BasicArrayList* list, CompleteMotionGestureInputEvent* commandAction) {
-    MotionGestureToMotionGestureActionAssociation* this = calloc(1, sizeof(MotionGestureToMotionGestureActionAssociation));
+    MotionGestureToMotionGestureActionAssociation* this = java_object_alloc(sizeof(MotionGestureToMotionGestureActionAssociation), "MotionGestureToMotionGestureActionAssociation");
     MotionGestureToMotionGestureActionAssociation_init(this, list, commandAction);
     return this;
 }

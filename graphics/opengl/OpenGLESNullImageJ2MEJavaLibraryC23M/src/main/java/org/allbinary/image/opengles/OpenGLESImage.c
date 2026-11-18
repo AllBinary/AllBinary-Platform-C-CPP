@@ -1,32 +1,9 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.image.opengles
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/khronos/opengles/GL.h"
-// #include "javax/microedition/khronos/opengles/GL10.h"
-// #include "javax/microedition/lcdui/Image.h"
-// #include "javax/microedition/lcdui/NullImage.h"
+#include "org/allbinary/image/opengles/OpenGLESImage.h"
+#include "javax/microedition/khronos/opengles/GL.h"
+#include "javax/microedition/khronos/opengles/GL10.h"
+#include "javax/microedition/lcdui/Image.h"
+#include "javax/microedition/lcdui/NullImage.h"
 #include "org/allbinary/platform/graphics/PlatformBitmapBase.h"
 #include "org/allbinary/platform/graphics/PlatformBitmapBaseFactory.h"
 #include "org/allbinary/platform/opengles/PlatformTextureBaseFactory.h"
@@ -34,34 +11,41 @@
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
 #include "org/allbinary/image/opengles/OpenGLSurfaceChangedInterface.h"
+#include "org/allbinary/image/opengles/OpenGLESImageProperties.h"
 
-//OpenGLESNullImageJ2MEJavaLibrary
-typedef struct OpenGLESImage OpenGLESImage;
-struct OpenGLESImage {
-    OpenGLSurfaceChangedInterface OpenGLSurfaceChangedInterface_interface;
-    CommonStrings* commonStrings;
-    PlatformTextureBaseFactory* textureFactory;
-    PlatformBitmapBase* openGLBitmap;
-    OpenGLESImageProperties* openGLESImageProperties;
-};
 
 OpenGLESImage* OpenGLESImage_NULL_OPENGL_IMAGE;
 BasicArrayList* OpenGLESImage_texture2dList;
-constexpr int32_t OpenGLESImage_TYPE = 4;
 
-OpenGLESImage* OpenGLESImage_new(Image* image, PlatformBitmapBaseFactory* bitmapFactory, PlatformTextureBaseFactory* textureFactory);
 
-void OpenGLESImage_init(OpenGLESImage* this, Image* image, PlatformBitmapBaseFactory* bitmapFactory, PlatformTextureBaseFactory* textureFactory);
-void OpenGLESImage_set(OpenGLESImage* this, GL* gl);
-bool OpenGLESImage_initTexture(OpenGLESImage* this, GL10* gl);
-void OpenGLESImage_drawRegion(OpenGLESImage* this, GL10* gl, int32_t viewHeight, float x_src, float y_src, float width, float height, int32_t x, int32_t y, int32_t z);
-void OpenGLESImage_draw(OpenGLESImage* this, GL10* gl, int32_t x, int32_t y, int32_t z);
-int32_t OpenGLESImage_getType(OpenGLESImage* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+
 void OpenGLESImage_staticInit(void) {
-    OpenGLESImage_NULL_OPENGL_IMAGE = OpenGLESImage_new(NullImage_NULL_IMAGE, PlatformBitmapBaseFactory_NULL_PLATFORM_BITMAP_BASE_FACTORY, PlatformTextureBaseFactory_NULL_PLATFORM_TEXTURE_BASE_FACTORY);
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+    OpenGLESImage_NULL_OPENGL_IMAGE = OpenGLESImage_new((NullImage_staticInit(), NullImage_NULL_IMAGE), (PlatformBitmapBaseFactory_staticInit(), PlatformBitmapBaseFactory_NULL_PLATFORM_BITMAP_BASE_FACTORY), (PlatformTextureBaseFactory_staticInit(), PlatformTextureBaseFactory_NULL_PLATFORM_TEXTURE_BASE_FACTORY));
     OpenGLESImage_texture2dList = BasicArrayListD_new();
+}
+
+void OpenGLESImage_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("OpenGLESImage", nullptr);
+    java_register_method("OpenGLESImage", "set", (void*) OpenGLESImage_set);
+    java_register_method("OpenGLESImage", "initTexture", (void*) OpenGLESImage_initTexture);
+    java_register_method("OpenGLESImage", "drawRegion", (void*) OpenGLESImage_drawRegion);
+    java_register_method("OpenGLESImage", "draw", (void*) OpenGLESImage_draw);
+    java_register_method("OpenGLESImage", "getType", (void*) OpenGLESImage_getType);
 }
 
 static void OpenGLESImage_initFields(OpenGLESImage* this) {
@@ -73,13 +57,14 @@ static void OpenGLESImage_initFields(OpenGLESImage* this) {
 
 
 void OpenGLESImage_init(OpenGLESImage* this, Image* image, PlatformBitmapBaseFactory* bitmapFactory, PlatformTextureBaseFactory* textureFactory) {
+    OpenGLESImage_register();
     OpenGLESImage_initFields(this);
         this->openGLBitmap = PlatformBitmapBaseFactory_createBitmap(bitmapFactory, image);
         this->textureFactory = textureFactory;
 }
 
 OpenGLESImage* OpenGLESImage_new(Image* image, PlatformBitmapBaseFactory* bitmapFactory, PlatformTextureBaseFactory* textureFactory) {
-    OpenGLESImage* this = calloc(1, sizeof(OpenGLESImage));
+    OpenGLESImage* this = java_object_alloc(sizeof(OpenGLESImage), "OpenGLESImage");
     OpenGLESImage_init(this, image, bitmapFactory, textureFactory);
     return this;
 }

@@ -69,6 +69,8 @@ void MyRandomFactory_shuffle2(MyRandomFactory* this, int32_t* intArray, int32_t*
 void MyRandomFactory_shuffle2Total(MyRandomFactory* this, int32_t* intArray, int32_t* intArray2, int32_t shuffleTotal);
 
 void MyRandomFactory_main(const char** args);
+#define MyRandomFactory_new0 MyRandomFactory_new
+#define MyRandomFactory_init0 MyRandomFactory_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void MyRandomFactory_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

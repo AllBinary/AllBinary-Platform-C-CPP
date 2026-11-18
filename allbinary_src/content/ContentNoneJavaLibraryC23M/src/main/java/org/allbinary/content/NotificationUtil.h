@@ -1,0 +1,48 @@
+#ifndef ORG_ALLBINARY_CONTENT_NOTIFICATIONUTIL_H
+#define ORG_ALLBINARY_CONTENT_NOTIFICATIONUTIL_H
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.content
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+typedef struct Command Command;
+
+typedef struct NotificationUtil NotificationUtil;
+struct NotificationUtil {
+    char unused;
+};
+
+
+NotificationUtil* NotificationUtil_new(void);
+void NotificationUtil_init(NotificationUtil* this);
+
+NotificationUtil* NotificationUtil_getInstance(void);
+
+void NotificationUtil_notify(NotificationUtil* this, Command* command, const char* resource, const char* message);
+// Runs the Java static initialization of the class once. Reads of its static fields call it first.
+void NotificationUtil_staticInit(void);
+// Registers the class, its superclass, and its methods for the interface calls (java_register_method)
+void NotificationUtil_register(void);
+
+
+#endif // ORG_ALLBINARY_CONTENT_NOTIFICATIONUTIL_H

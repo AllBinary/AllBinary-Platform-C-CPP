@@ -1,60 +1,49 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.layer.relationship
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/layer/relationship/RelativeLayerRelationship.h"
 #include "org/allbinary/graphics/GPoint.h"
-#include "org/allbinary/graphics/RelativeRelationship.h"
 #include "org/allbinary/layer/AllBinaryLayer.h"
 #include "org/allbinary/util/BasicArrayList.h"
 
-typedef struct RelativeLayerRelationship RelativeLayerRelationship;
-struct RelativeLayerRelationship {
-    RelativeRelationship base;
-    AllBinaryLayer* layer;
-};
 
 
-RelativeLayerRelationship* RelativeLayerRelationship_new(AllBinaryLayer* layer, GPoint* point, BasicArrayList* typesAllowedList);
 
-void RelativeLayerRelationship_init(RelativeLayerRelationship* this, AllBinaryLayer* layer, GPoint* point, BasicArrayList* typesAllowedList);
-int32_t RelativeLayerRelationship_getX(RelativeLayerRelationship* this);
-int32_t RelativeLayerRelationship_getY(RelativeLayerRelationship* this);
-int32_t RelativeLayerRelationship_getZ(RelativeLayerRelationship* this);
+
+
+
+void RelativeLayerRelationship_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void RelativeLayerRelationship_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("RelativeLayerRelationship", "RelativeRelationship");
+    java_register_method("RelativeLayerRelationship", "getX", (void*) RelativeLayerRelationship_getX);
+    java_register_method("RelativeLayerRelationship", "getY", (void*) RelativeLayerRelationship_getY);
+    java_register_method("RelativeLayerRelationship", "getZ", (void*) RelativeLayerRelationship_getZ);
+}
 
 static void RelativeLayerRelationship_initFields(RelativeLayerRelationship* this) {
-    this->layer = AllBinaryLayer_NULL_ALLBINARY_LAYER;
+    this->layer = (AllBinaryLayer_staticInit(), AllBinaryLayer_NULL_ALLBINARY_LAYER);
 }
 
 
 void RelativeLayerRelationship_init(RelativeLayerRelationship* this, AllBinaryLayer* layer, GPoint* point, BasicArrayList* typesAllowedList) {
+    RelativeLayerRelationship_register();
         RelativeRelationship_init(&this->base, point, typesAllowedList);
         RelativeLayerRelationship_initFields(this);
         this->layer = layer;
 }
 
 RelativeLayerRelationship* RelativeLayerRelationship_new(AllBinaryLayer* layer, GPoint* point, BasicArrayList* typesAllowedList) {
-    RelativeLayerRelationship* this = calloc(1, sizeof(RelativeLayerRelationship));
+    RelativeLayerRelationship* this = java_object_alloc(sizeof(RelativeLayerRelationship), "RelativeLayerRelationship");
     RelativeLayerRelationship_init(this, layer, point, typesAllowedList);
     return this;
 }

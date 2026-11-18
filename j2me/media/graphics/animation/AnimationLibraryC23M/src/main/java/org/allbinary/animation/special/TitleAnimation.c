@@ -1,29 +1,6 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation.special
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/animation/special/TitleAnimation.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/animation/AnimationBehavior.h"
 #include "org/allbinary/animation/IndexedAnimation.h"
 #include "org/allbinary/animation/IndexedAnimationBehavior.h"
@@ -33,43 +10,72 @@
 #include "org/allbinary/logic/ABSystemWrapper.h"
 #include "org/allbinary/logic/math/PrimitiveIntUtil.h"
 #include "org/allbinary/animation/special/SpecialAnimation.h"
+#if __has_include("org/allbinary/animation/IndexedAnimation.h")
+#include "org/allbinary/animation/IndexedAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/IndexedAnimation.h")
+#include "org/allbinary/animation/IndexedAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/IndexedAnimation.h")
+#include "org/allbinary/animation/IndexedAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/IndexedAnimation.h")
+#include "org/allbinary/animation/IndexedAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/IndexedAnimation.h")
+#include "org/allbinary/animation/IndexedAnimation.h"
+#endif
+#if __has_include("org/allbinary/graphics/color/BasicColorFactory.h")
+#include "org/allbinary/graphics/color/BasicColorFactory.h"
+#endif
+#if __has_include("org/allbinary/animation/IndexedAnimation.h")
+#include "org/allbinary/animation/IndexedAnimation.h"
+#endif
 
-typedef struct TitleAnimation TitleAnimation;
-struct TitleAnimation {
-    SpecialAnimation base;
-    ABSystemWrapper* systemWrapper;
-    float deltaX;
-    float deltaY;
-    float deltaZ;
-    BasicColor** basicColorArray;
-    int32_t* dxArray;
-    int32_t* dyArray;
-    int32_t widthP;
-    IndexedAnimation** animationInterfaceArray;
-    int32_t sizeP;
-    int32_t y;
-    int64_t lastFrameStartTime;
-    DisplayInfoSingleton* displayInfoSingleton;
-    BasicColor* CLEAR_COLOR;
-};
 
 
-TitleAnimation* TitleAnimation_new(IndexedAnimation** animationInterfaceArray, BasicColor** basicColorArray, int32_t* dxArray, int32_t* dyArray, int32_t y, int32_t width, AnimationBehavior* animationBehavior);
-TitleAnimation* TitleAnimation_createAnimation(IndexedAnimation** animationInterfaceArray, BasicColor** basicColorArray, int32_t* dxArray, int32_t* dyArray, int32_t y, int32_t width);
 
-void TitleAnimation_init(TitleAnimation* this, IndexedAnimation** animationInterfaceArray, BasicColor** basicColorArray, int32_t* dxArray, int32_t* dyArray, int32_t y, int32_t width, AnimationBehavior* animationBehavior);
-void TitleAnimation_nextFrame(TitleAnimation* this);
-bool TitleAnimation_isComplete(TitleAnimation* this);
-void TitleAnimation_setSequence(TitleAnimation* this, int32_t* sequence);
-int32_t* TitleAnimation_getSequence(TitleAnimation* this);
-int32_t TitleAnimation_getSize(TitleAnimation* this);
-int32_t TitleAnimation_getFrame(TitleAnimation* this);
-void TitleAnimation_setFrame(TitleAnimation* this, int32_t frame);
-void TitleAnimation_setLastFrame(TitleAnimation* this);
-void TitleAnimation_reset(TitleAnimation* this);
-void TitleAnimation_previousFrame(TitleAnimation* this);
-void TitleAnimation_paintFrameXY(TitleAnimation* this, Graphics* graphics, int32_t frame, int32_t x, int32_t y);
-void TitleAnimation_paintXY(TitleAnimation* this, Graphics* graphics, int32_t ax, int32_t ay);
+
+
+
+
+
+
+
+
+
+
+
+
+
+void TitleAnimation_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void TitleAnimation_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("TitleAnimation", "SpecialAnimation");
+    java_register_method("TitleAnimation", "nextFrame", (void*) TitleAnimation_nextFrame);
+    java_register_method("TitleAnimation", "isComplete", (void*) TitleAnimation_isComplete);
+    java_register_method("TitleAnimation", "setSequence", (void*) TitleAnimation_setSequence);
+    java_register_method("TitleAnimation", "getSequence", (void*) TitleAnimation_getSequence);
+    java_register_method("TitleAnimation", "getSize", (void*) TitleAnimation_getSize);
+    java_register_method("TitleAnimation", "getFrame", (void*) TitleAnimation_getFrame);
+    java_register_method("TitleAnimation", "setFrame", (void*) TitleAnimation_setFrame);
+    java_register_method("TitleAnimation", "setLastFrame", (void*) TitleAnimation_setLastFrame);
+    java_register_method("TitleAnimation", "reset", (void*) TitleAnimation_reset);
+    java_register_method("TitleAnimation", "previousFrame", (void*) TitleAnimation_previousFrame);
+    java_register_method("TitleAnimation", "paintFrameXY", (void*) TitleAnimation_paintFrameXY);
+    java_register_method("TitleAnimation", "paintXY", (void*) TitleAnimation_paintXY);
+}
 
 static void TitleAnimation_initFields(TitleAnimation* this) {
     this->systemWrapper = ABSystemWrapper_getInstance();
@@ -95,6 +101,7 @@ TitleAnimation* TitleAnimation_createAnimation(IndexedAnimation** animationInter
 
 
 void TitleAnimation_init(TitleAnimation* this, IndexedAnimation** animationInterfaceArray, BasicColor** basicColorArray, int32_t* dxArray, int32_t* dyArray, int32_t y, int32_t width, AnimationBehavior* animationBehavior) {
+    TitleAnimation_register();
         SpecialAnimation_init(&this->base, animationBehavior);
         TitleAnimation_initFields(this);
         this->lastFrameStartTime = ABSystemWrapper_currentTimeMillis(this->systemWrapper);
@@ -109,7 +116,7 @@ void TitleAnimation_init(TitleAnimation* this, IndexedAnimation** animationInter
 }
 
 TitleAnimation* TitleAnimation_new(IndexedAnimation** animationInterfaceArray, BasicColor** basicColorArray, int32_t* dxArray, int32_t* dyArray, int32_t y, int32_t width, AnimationBehavior* animationBehavior) {
-    TitleAnimation* this = calloc(1, sizeof(TitleAnimation));
+    TitleAnimation* this = java_object_alloc(sizeof(TitleAnimation), "TitleAnimation");
     TitleAnimation_init(this, animationInterfaceArray, basicColorArray, dxArray, dyArray, y, width, animationBehavior);
     return this;
 }
@@ -118,19 +125,19 @@ TitleAnimation* TitleAnimation_new(IndexedAnimation** animationInterfaceArray, B
 void TitleAnimation_nextFrame(TitleAnimation* this) {
         int64_t currentTime = ABSystemWrapper_currentTimeMillis(this->systemWrapper);
         int64_t totalTimeElapsed = currentTime - this->lastFrameStartTime;
-        IndexedAnimationBehavior* indexedAnimationBehavior = ((IndexedAnimationBehavior*) TitleAnimation_getAnimationBehavior(this));
+        IndexedAnimationBehavior* indexedAnimationBehavior = ((IndexedAnimationBehavior*) IndexedAnimation_getAnimationBehavior(this));
         if (totalTimeElapsed > indexedAnimationBehavior->frameDelayTime) {
             TitleAnimation_previousFrame(this);
             this->lastFrameStartTime = currentTime;
         }
-        if (JAVA_CALL(this->animationInterfaceArray[0], getFrame) == 0) {
+        if (IndexedAnimation_getFrame(this->animationInterfaceArray[0]) == 0) {
             indexedAnimationBehavior->loopIndex++;
         }
 }
 
 
 bool TitleAnimation_isComplete(TitleAnimation* this) {
-        IndexedAnimationBehavior* indexedAnimationBehavior = ((IndexedAnimationBehavior*) TitleAnimation_getAnimationBehavior(this));
+        IndexedAnimationBehavior* indexedAnimationBehavior = ((IndexedAnimationBehavior*) IndexedAnimation_getAnimationBehavior(this));
         if (indexedAnimationBehavior->loopTotal == -1 || indexedAnimationBehavior->loopIndex < indexedAnimationBehavior->loopTotal || TitleAnimation_getFrame(this) != 0) {
             return false;
         } else {
@@ -149,18 +156,18 @@ int32_t* TitleAnimation_getSequence(TitleAnimation* this) {
 
 
 int32_t TitleAnimation_getSize(TitleAnimation* this) {
-        return JAVA_CALL(this->animationInterfaceArray[0], getSize);
+        return IndexedAnimation_getSize(this->animationInterfaceArray[0]);
 }
 
 
 int32_t TitleAnimation_getFrame(TitleAnimation* this) {
-        return JAVA_CALL(this->animationInterfaceArray[0], getFrame);
+        return IndexedAnimation_getFrame(this->animationInterfaceArray[0]);
 }
 
 
 void TitleAnimation_setFrame(TitleAnimation* this, int32_t frame) {
         for (int32_t index = 0; index < this->sizeP; index++) {
-            JAVA_CALL(this->animationInterfaceArray[index], setFrame, frame);
+            IndexedAnimation_setFrame(this->animationInterfaceArray[index], frame);
         }
 }
 
@@ -172,14 +179,14 @@ void TitleAnimation_setLastFrame(TitleAnimation* this) {
 
 void TitleAnimation_reset(TitleAnimation* this) {
         TitleAnimation_setLastFrame(this);
-        IndexedAnimationBehavior* indexedAnimationBehavior = (((IndexedAnimationBehavior*) TitleAnimation_getAnimationBehavior(this)));
+        IndexedAnimationBehavior* indexedAnimationBehavior = (((IndexedAnimationBehavior*) IndexedAnimation_getAnimationBehavior(this)));
         IndexedAnimationBehavior_reset(indexedAnimationBehavior);
 }
 
 
 void TitleAnimation_previousFrame(TitleAnimation* this) {
         for (int32_t index = 0; index < this->sizeP; index++) {
-            JAVA_CALL(this->animationInterfaceArray[index], previousFrame);
+            IndexedAnimation_previousFrame(this->animationInterfaceArray[index]);
         }
 }
 
@@ -192,7 +199,7 @@ void TitleAnimation_paintFrameXY(TitleAnimation* this, Graphics* graphics, int32
 
 void TitleAnimation_paintXY(TitleAnimation* this, Graphics* graphics, int32_t ax, int32_t ay) {
         int32_t x = 0;
-        if (this->widthP != Integer_MIN_VALUE) {
+        if (this->widthP != (Integer_staticInit(), Integer_MIN_VALUE)) {
             x = ((DisplayInfoSingleton_getLastWidth(this->displayInfoSingleton) - this->widthP) / 2);
         }
         int32_t deltaX = 0;
@@ -201,9 +208,9 @@ void TitleAnimation_paintXY(TitleAnimation* this, Graphics* graphics, int32_t ax
             deltaX = this->dxArray[index] + x;
             deltaY = this->dyArray[index] + this->y;
             if (this->basicColorArray[index] != this->CLEAR_COLOR) {
-                JAVA_CALL(this->basicSetColorUtil, setBasicColorP, graphics, this->basicColorArray[index]);
+                BasicColorSetUtil_setBasicColorP(this->base.base.base.basicSetColorUtil, graphics, this->basicColorArray[index]);
             }
-            JAVA_CALL(this->animationInterfaceArray[index], paintXY, graphics, deltaX, deltaY);
+            Animation_paintXY(this->animationInterfaceArray[index], graphics, deltaX, deltaY);
         }
 }
 

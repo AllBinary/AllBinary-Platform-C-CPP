@@ -1,0 +1,229 @@
+#ifndef ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYROTATIONANIMATION_H
+#define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYROTATIONANIMATION_H
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation.image
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+typedef struct ImageArrayBaseRotationAnimation ImageArrayBaseRotationAnimation;
+typedef struct ImageArrayRotationAnimationInfo ImageArrayRotationAnimationInfo;
+typedef struct Image Image;
+typedef struct AnimationBehavior AnimationBehavior;
+typedef struct AngleInfo AngleInfo;
+#include "org/allbinary/animation/image/ImageArrayBaseRotationAnimation.h"
+
+typedef struct ImageArrayRotationAnimation ImageArrayRotationAnimation;
+struct ImageArrayRotationAnimation {
+    ImageArrayBaseRotationAnimation base;
+    int32_t expectedTotalFrames;
+};
+
+
+ImageArrayRotationAnimation* ImageArrayRotationAnimation_new(Image** imageArray, AngleInfo* angleInfo, int32_t totalAngle, AnimationBehavior* animationBehavior);
+
+ImageArrayRotationAnimation* ImageArrayRotationAnimation_createAnimation(void* anyType, AnimationBehavior* animationBehavior);
+
+void ImageArrayRotationAnimation_init(ImageArrayRotationAnimation* this, Image** imageArray, AngleInfo* angleInfo, int32_t totalAngle, AnimationBehavior* animationBehavior);
+
+
+void ImageArrayRotationAnimation_setImageArray(ImageArrayRotationAnimation* this, Image** imageArray);
+#define ImageArrayRotationAnimation_new4 ImageArrayRotationAnimation_new
+#define ImageArrayRotationAnimation_init4 ImageArrayRotationAnimation_init
+#ifndef ImageArrayRotationAnimation_getAnimationSize
+#define ImageArrayRotationAnimation_getAnimationSize ImageArrayBaseRotationAnimation_getAnimationSize
+#endif
+#ifndef ImageArrayRotationAnimation_setAlpha
+#define ImageArrayRotationAnimation_setAlpha ImageArrayBaseRotationAnimation_setAlpha
+#endif
+#ifndef ImageArrayRotationAnimation_nextRotation
+#define ImageArrayRotationAnimation_nextRotation ImageArrayBaseRotationAnimation_nextRotation
+#endif
+#ifndef ImageArrayRotationAnimation_previousRotation
+#define ImageArrayRotationAnimation_previousRotation ImageArrayBaseRotationAnimation_previousRotation
+#endif
+#ifndef ImageArrayRotationAnimation_setFrame
+#define ImageArrayRotationAnimation_setFrame ImageArrayBaseRotationAnimation_setFrame
+#endif
+#ifndef ImageArrayRotationAnimation_setSequence
+#define ImageArrayRotationAnimation_setSequence ImageArrayBaseRotationAnimation_setSequence
+#endif
+#ifndef ImageArrayRotationAnimation_getSequence
+#define ImageArrayRotationAnimation_getSequence ImageArrayBaseRotationAnimation_getSequence
+#endif
+#ifndef ImageArrayRotationAnimation_paintXY
+#define ImageArrayRotationAnimation_paintXY ImageArrayBaseRotationAnimation_paintXY
+#endif
+#ifndef ImageArrayRotationAnimation_close
+#define ImageArrayRotationAnimation_close ImageArrayBaseRotationAnimation_close
+#endif
+#ifndef ImageArrayRotationAnimation_finalize
+#define ImageArrayRotationAnimation_finalize ImageArrayBaseRotationAnimation_finalize
+#endif
+#ifndef ImageArrayRotationAnimation_nextRotationX
+#define ImageArrayRotationAnimation_nextRotationX RotationAnimation_nextRotationX
+#endif
+#ifndef ImageArrayRotationAnimation_previousRotationX
+#define ImageArrayRotationAnimation_previousRotationX RotationAnimation_previousRotationX
+#endif
+#ifndef ImageArrayRotationAnimation_nextRotation
+#define ImageArrayRotationAnimation_nextRotation RotationAnimation_nextRotation
+#endif
+#ifndef ImageArrayRotationAnimation_previousRotation
+#define ImageArrayRotationAnimation_previousRotation RotationAnimation_previousRotation
+#endif
+#ifndef ImageArrayRotationAnimation_nextRotationZ
+#define ImageArrayRotationAnimation_nextRotationZ RotationAnimation_nextRotationZ
+#endif
+#ifndef ImageArrayRotationAnimation_previousRotationZ
+#define ImageArrayRotationAnimation_previousRotationZ RotationAnimation_previousRotationZ
+#endif
+#ifndef ImageArrayRotationAnimation_setFrame
+#define ImageArrayRotationAnimation_setFrame RotationAnimation_setFrame
+#endif
+#ifndef ImageArrayRotationAnimation_setFrameByDirection
+#define ImageArrayRotationAnimation_setFrameByDirection RotationAnimation_setFrameByDirection
+#endif
+#ifndef ImageArrayRotationAnimation_setFrameToAngle
+#define ImageArrayRotationAnimation_setFrameToAngle RotationAnimation_setFrameToAngle
+#endif
+#ifndef ImageArrayRotationAnimation_adjustFrameToAngle
+#define ImageArrayRotationAnimation_adjustFrameToAngle RotationAnimation_adjustFrameToAngle
+#endif
+#ifndef ImageArrayRotationAnimation_adjustFrame
+#define ImageArrayRotationAnimation_adjustFrame RotationAnimation_adjustFrame
+#endif
+#ifndef ImageArrayRotationAnimation_getFrame
+#define ImageArrayRotationAnimation_getFrame RotationAnimation_getFrame
+#endif
+#ifndef ImageArrayRotationAnimation_getSize
+#define ImageArrayRotationAnimation_getSize RotationAnimation_getSize
+#endif
+#ifndef ImageArrayRotationAnimation_getAngleInfoP
+#define ImageArrayRotationAnimation_getAngleInfoP RotationAnimation_getAngleInfoP
+#endif
+#ifndef ImageArrayRotationAnimation_toString
+#define ImageArrayRotationAnimation_toString RotationAnimation_toString
+#endif
+#ifndef ImageArrayRotationAnimation_getAnimationBehavior
+#define ImageArrayRotationAnimation_getAnimationBehavior IndexedAnimation_getAnimationBehavior
+#endif
+#ifndef ImageArrayRotationAnimation_reset
+#define ImageArrayRotationAnimation_reset IndexedAnimation_reset
+#endif
+#ifndef ImageArrayRotationAnimation_setFrame
+#define ImageArrayRotationAnimation_setFrame IndexedAnimation_setFrame
+#endif
+#ifndef ImageArrayRotationAnimation_getFrame
+#define ImageArrayRotationAnimation_getFrame IndexedAnimation_getFrame
+#endif
+#ifndef ImageArrayRotationAnimation_getAnimationSize
+#define ImageArrayRotationAnimation_getAnimationSize IndexedAnimation_getAnimationSize
+#endif
+#ifndef ImageArrayRotationAnimation_getSize
+#define ImageArrayRotationAnimation_getSize IndexedAnimation_getSize
+#endif
+#ifndef ImageArrayRotationAnimation_previousFrame
+#define ImageArrayRotationAnimation_previousFrame IndexedAnimation_previousFrame
+#endif
+#ifndef ImageArrayRotationAnimation_isLastFrame
+#define ImageArrayRotationAnimation_isLastFrame IndexedAnimation_isLastFrame
+#endif
+#ifndef ImageArrayRotationAnimation_setSequence
+#define ImageArrayRotationAnimation_setSequence IndexedAnimation_setSequence
+#endif
+#ifndef ImageArrayRotationAnimation_getSequence
+#define ImageArrayRotationAnimation_getSequence IndexedAnimation_getSequence
+#endif
+#ifndef ImageArrayRotationAnimation_setState
+#define ImageArrayRotationAnimation_setState IndexedAnimation_setState
+#endif
+#ifndef ImageArrayRotationAnimation_getWidth
+#define ImageArrayRotationAnimation_getWidth IndexedAnimation_getWidth
+#endif
+#ifndef ImageArrayRotationAnimation_getHeight
+#define ImageArrayRotationAnimation_getHeight IndexedAnimation_getHeight
+#endif
+#ifndef ImageArrayRotationAnimation_setAlpha
+#define ImageArrayRotationAnimation_setAlpha Animation_setAlpha
+#endif
+#ifndef ImageArrayRotationAnimation_nextFrame
+#define ImageArrayRotationAnimation_nextFrame Animation_nextFrame
+#endif
+#ifndef ImageArrayRotationAnimation_paintXY
+#define ImageArrayRotationAnimation_paintXY Animation_paintXY
+#endif
+#ifndef ImageArrayRotationAnimation_paintThreedXYZ
+#define ImageArrayRotationAnimation_paintThreedXYZ Animation_paintThreedXYZ
+#endif
+#ifndef ImageArrayRotationAnimation_isThreed
+#define ImageArrayRotationAnimation_isThreed Animation_isThreed
+#endif
+#ifndef ImageArrayRotationAnimation_getBasicColorP
+#define ImageArrayRotationAnimation_getBasicColorP Animation_getBasicColorP
+#endif
+#ifndef ImageArrayRotationAnimation_setBasicColorP
+#define ImageArrayRotationAnimation_setBasicColorP Animation_setBasicColorP
+#endif
+#ifndef ImageArrayRotationAnimation_setBackgroundBasicColorP
+#define ImageArrayRotationAnimation_setBackgroundBasicColorP Animation_setBackgroundBasicColorP
+#endif
+#ifndef ImageArrayRotationAnimation_getChangeBasicColor
+#define ImageArrayRotationAnimation_getChangeBasicColor Animation_getChangeBasicColor
+#endif
+#ifndef ImageArrayRotationAnimation_changeBasicColor
+#define ImageArrayRotationAnimation_changeBasicColor Animation_changeBasicColor
+#endif
+#ifndef ImageArrayRotationAnimation_getChangeColor
+#define ImageArrayRotationAnimation_getChangeColor Animation_getChangeColor
+#endif
+#ifndef ImageArrayRotationAnimation_getColor
+#define ImageArrayRotationAnimation_getColor Animation_getColor
+#endif
+#ifndef ImageArrayRotationAnimation_setScale
+#define ImageArrayRotationAnimation_setScale Animation_setScale
+#endif
+#ifndef ImageArrayRotationAnimation_setMaxScale
+#define ImageArrayRotationAnimation_setMaxScale Animation_setMaxScale
+#endif
+#ifndef ImageArrayRotationAnimation_set
+#define ImageArrayRotationAnimation_set Animation_set
+#endif
+#ifndef ImageArrayRotationAnimation_setDx
+#define ImageArrayRotationAnimation_setDx Animation_setDx
+#endif
+#ifndef ImageArrayRotationAnimation_getDx
+#define ImageArrayRotationAnimation_getDx Animation_getDx
+#endif
+#ifndef ImageArrayRotationAnimation_setDy
+#define ImageArrayRotationAnimation_setDy Animation_setDy
+#endif
+#ifndef ImageArrayRotationAnimation_getDy
+#define ImageArrayRotationAnimation_getDy Animation_getDy
+#endif
+// Runs the Java static initialization of the class once. Reads of its static fields call it first.
+void ImageArrayRotationAnimation_staticInit(void);
+// Registers the class, its superclass, and its methods for the interface calls (java_register_method)
+void ImageArrayRotationAnimation_register(void);
+
+
+#endif // ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYROTATIONANIMATION_H

@@ -38,6 +38,8 @@ CharacterSet* CharacterSet_new(void);
 void CharacterSet_init(CharacterSet* this);
 
 const char* CharacterSet_toString(CharacterSet* this);
+#define CharacterSet_new0 CharacterSet_new
+#define CharacterSet_init0 CharacterSet_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void CharacterSet_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

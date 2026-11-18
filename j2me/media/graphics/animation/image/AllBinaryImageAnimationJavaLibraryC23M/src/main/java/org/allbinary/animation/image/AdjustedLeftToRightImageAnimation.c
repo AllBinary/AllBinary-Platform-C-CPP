@@ -1,46 +1,33 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation.image
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
-// #include "javax/microedition/lcdui/Image.h"
+#include "org/allbinary/animation/image/AdjustedLeftToRightImageAnimation.h"
+#include "javax/microedition/lcdui/Graphics.h"
+#include "javax/microedition/lcdui/Image.h"
 #include "org/allbinary/animation/AnimationBehavior.h"
 #include "org/allbinary/animation/image/LeftToRightImageAnimation.h"
 
-typedef struct AdjustedLeftToRightImageAnimation AdjustedLeftToRightImageAnimation;
-struct AdjustedLeftToRightImageAnimation {
-    LeftToRightImageAnimation base;
-    int32_t dx;
-    int32_t dy;
-};
 
 
-AdjustedLeftToRightImageAnimation* AdjustedLeftToRightImageAnimation_new(Image* image, int32_t* sequenceArray, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior);
 
-void AdjustedLeftToRightImageAnimation_init(AdjustedLeftToRightImageAnimation* this, Image* image, int32_t* sequenceArray, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior);
-void AdjustedLeftToRightImageAnimation_init(AdjustedLeftToRightImageAnimation* this, int32_t dx, int32_t dy);
-void AdjustedLeftToRightImageAnimation_paintXY(AdjustedLeftToRightImageAnimation* this, Graphics* graphics, int32_t x, int32_t y);
+
+
+void AdjustedLeftToRightImageAnimation_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void AdjustedLeftToRightImageAnimation_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("AdjustedLeftToRightImageAnimation", "LeftToRightImageAnimation");
+    java_register_method("AdjustedLeftToRightImageAnimation", "init", (void*) AdjustedLeftToRightImageAnimation_initMethod);
+    java_register_method("AdjustedLeftToRightImageAnimation", "paintXY", (void*) AdjustedLeftToRightImageAnimation_paintXY);
+}
 
 static void AdjustedLeftToRightImageAnimation_initFields(AdjustedLeftToRightImageAnimation* this) {
     this->dx = 0;
@@ -49,20 +36,21 @@ static void AdjustedLeftToRightImageAnimation_initFields(AdjustedLeftToRightImag
 
 
 void AdjustedLeftToRightImageAnimation_init(AdjustedLeftToRightImageAnimation* this, Image* image, int32_t* sequenceArray, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior) {
+    AdjustedLeftToRightImageAnimation_register();
         LeftToRightImageAnimation_init(&this->base, image, sequenceArray, animationBehavior);
         AdjustedLeftToRightImageAnimation_initFields(this);
-        AdjustedLeftToRightImageAnimation_init(this, dx, dy);
+        AdjustedLeftToRightImageAnimation_initMethod(this, dx, dy);
 }
 
 AdjustedLeftToRightImageAnimation* AdjustedLeftToRightImageAnimation_new(Image* image, int32_t* sequenceArray, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior) {
-    AdjustedLeftToRightImageAnimation* this = calloc(1, sizeof(AdjustedLeftToRightImageAnimation));
+    AdjustedLeftToRightImageAnimation* this = java_object_alloc(sizeof(AdjustedLeftToRightImageAnimation), "AdjustedLeftToRightImageAnimation");
     AdjustedLeftToRightImageAnimation_init(this, image, sequenceArray, dx, dy, animationBehavior);
     return this;
 }
 
 
 // throws Exception
-void AdjustedLeftToRightImageAnimation_init(AdjustedLeftToRightImageAnimation* this, int32_t dx, int32_t dy) {
+void AdjustedLeftToRightImageAnimation_initMethod(AdjustedLeftToRightImageAnimation* this, int32_t dx, int32_t dy) {
         this->dx = dx;
         this->dy = dy;
 }

@@ -1,60 +1,41 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.part
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Font.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/game/part/CountedLayersHudPaintable.h"
+#include "javax/microedition/lcdui/Font.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactoryInterface.h"
 #include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
 #include "org/allbinary/graphics/font/MyFontProcessor.h"
-#include "org/allbinary/graphics/font/UpdateMyFontInterface.h"
 #include "org/allbinary/graphics/font/UpdateMyFontProcessor.h"
-#include "org/allbinary/graphics/paint/PaintableInterface.h"
 #include "org/allbinary/layer/AllBinaryLayer.h"
+#include "org/allbinary/game/part/PartInterface.h"
+#include "org/allbinary/game/part/CountedLayerInterfaceFactoryPart.h"
 
-typedef struct CountedLayersHudPaintable CountedLayersHudPaintable;
-struct CountedLayersHudPaintable {
-    PaintableInterface PaintableInterface_interface;
-    UpdateMyFontInterface UpdateMyFontInterface_interface;
-    DisplayInfoSingleton* displayInfoSingleton;
-    PartInterface** partInterfaceArray;
-    int32_t countedTotalStringColor;
-    int32_t countedPartsBorder;
-    int32_t startIndex;
-    int32_t dropSize;
-    MyFontProcessor* myFontProcessor;
-    int32_t height;
-};
 
 static int32_t CountedLayersHudPaintable_XXStringWidth = 0;
 
-CountedLayersHudPaintable* CountedLayersHudPaintable_new(PartInterface** partInterfaceArray, int32_t dropSize, int32_t startIndex, int32_t countedTotalStringColor, int32_t countedPartsBorder);
 
-void CountedLayersHudPaintable_init(CountedLayersHudPaintable* this, PartInterface** partInterfaceArray, int32_t dropSize, int32_t startIndex, int32_t countedTotalStringColor, int32_t countedPartsBorder);
-void CountedLayersHudPaintable_updateMeasurement(CountedLayersHudPaintable* this, Graphics* graphics);
-void CountedLayersHudPaintable_paint(CountedLayersHudPaintable* this, Graphics* graphics);
-void CountedLayersHudPaintable_paintThreed(CountedLayersHudPaintable* this, Graphics* graphics);
+
+
+
+void CountedLayersHudPaintable_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void CountedLayersHudPaintable_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("CountedLayersHudPaintable", nullptr);
+    java_register_method("CountedLayersHudPaintable", "updateMeasurement", (void*) CountedLayersHudPaintable_updateMeasurement);
+    java_register_method("CountedLayersHudPaintable", "paint", (void*) CountedLayersHudPaintable_paint);
+    java_register_method("CountedLayersHudPaintable", "paintThreed", (void*) CountedLayersHudPaintable_paintThreed);
+}
 
 static void CountedLayersHudPaintable_initFields(CountedLayersHudPaintable* this) {
     this->displayInfoSingleton = DisplayInfoSingleton_getInstance();
@@ -69,6 +50,7 @@ static void CountedLayersHudPaintable_initFields(CountedLayersHudPaintable* this
 
 
 void CountedLayersHudPaintable_init(CountedLayersHudPaintable* this, PartInterface** partInterfaceArray, int32_t dropSize, int32_t startIndex, int32_t countedTotalStringColor, int32_t countedPartsBorder) {
+    CountedLayersHudPaintable_register();
     CountedLayersHudPaintable_initFields(this);
         this->partInterfaceArray = partInterfaceArray;
         this->startIndex = startIndex;
@@ -78,7 +60,7 @@ void CountedLayersHudPaintable_init(CountedLayersHudPaintable* this, PartInterfa
 }
 
 CountedLayersHudPaintable* CountedLayersHudPaintable_new(PartInterface** partInterfaceArray, int32_t dropSize, int32_t startIndex, int32_t countedTotalStringColor, int32_t countedPartsBorder) {
-    CountedLayersHudPaintable* this = calloc(1, sizeof(CountedLayersHudPaintable));
+    CountedLayersHudPaintable* this = java_object_alloc(sizeof(CountedLayersHudPaintable), "CountedLayersHudPaintable");
     CountedLayersHudPaintable_init(this, partInterfaceArray, dropSize, startIndex, countedTotalStringColor, countedPartsBorder);
     return this;
 }

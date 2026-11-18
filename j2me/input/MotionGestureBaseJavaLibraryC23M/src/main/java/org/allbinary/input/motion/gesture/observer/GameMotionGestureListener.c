@@ -1,28 +1,5 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input.motion.gesture.observer
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/input/motion/gesture/observer/GameMotionGestureListener.h"
 #include "org/allbinary/input/motion/gesture/MotionGestureInput.h"
 #include "org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h"
 #include "org/allbinary/logic/communication/log/ForcedLogUtil.h"
@@ -34,34 +11,66 @@
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
 #include "org/allbinary/input/motion/gesture/observer/MotionGestureEventListener.h"
+#include "org/allbinary/input/motion/gesture/observer/CompleteMotionGestureListenerInterface.h"
+#include "org/allbinary/input/motion/gesture/observer/MotionGestureEvent.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h")
+#include "org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h"
+#endif
+#if __has_include("org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h")
+#include "org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
-typedef struct GameMotionGestureListener GameMotionGestureListener;
-struct GameMotionGestureListener {
-    MotionGestureEventListener MotionGestureEventListener_interface;
-    LogUtil* logUtil;
-    CommonStrings* commonStrings;
-    BasicArrayList* motionGestureCollection;
-    BasicArrayList* touchGestureCollection;
-    CompleteMotionGestureListenerInterface* signed_;
-};
 
 
-GameMotionGestureListener* GameMotionGestureListener_new(CompleteMotionGestureListenerInterface* signed_);
 
-void GameMotionGestureListener_init(GameMotionGestureListener* this, CompleteMotionGestureListenerInterface* signed_);
-void GameMotionGestureListener_onEvent(GameMotionGestureListener* this, AllBinaryEventObject* eventObject);
-void GameMotionGestureListener_onUpMotionGestureEvent(GameMotionGestureListener* this, MotionGestureEvent* ev);
-void GameMotionGestureListener_onDownMotionGestureEvent(GameMotionGestureListener* this, MotionGestureEvent* ev);
-void GameMotionGestureListener_onLeftMotionGestureEvent(GameMotionGestureListener* this, MotionGestureEvent* ev);
-void GameMotionGestureListener_onRightMotionGestureEvent(GameMotionGestureListener* this, MotionGestureEvent* ev);
-void GameMotionGestureListener_onDiagonalDownRightMotionGestureEvent(GameMotionGestureListener* this, MotionGestureEvent* ev);
-void GameMotionGestureListener_onDiagonalDownLeftMotionGestureEvent(GameMotionGestureListener* this, MotionGestureEvent* ev);
-void GameMotionGestureListener_onDiagonalUpRightMotionGestureEvent(GameMotionGestureListener* this, MotionGestureEvent* ev);
-void GameMotionGestureListener_onDiagonalUpLeftMotionGestureEvent(GameMotionGestureListener* this, MotionGestureEvent* ev);
-void GameMotionGestureListener_onPressedMotionGestureEvent(GameMotionGestureListener* this, MotionGestureEvent* ev);
-void GameMotionGestureListener_released(GameMotionGestureListener* this, MotionGestureEvent* ev);
-void GameMotionGestureListener_onScrolledMotionGestureEvent(GameMotionGestureListener* this, MotionGestureEvent* motionGestureEvent);
-void GameMotionGestureListener_onMotionGestureEvent(GameMotionGestureListener* this, MotionGestureEvent* ev);
+
+
+
+
+
+
+
+
+
+
+
+
+
+void GameMotionGestureListener_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void GameMotionGestureListener_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GameMotionGestureListener", nullptr);
+    java_register_method("GameMotionGestureListener", "onEvent", (void*) GameMotionGestureListener_onEvent);
+    java_register_method("GameMotionGestureListener", "onUpMotionGestureEvent", (void*) GameMotionGestureListener_onUpMotionGestureEvent);
+    java_register_method("GameMotionGestureListener", "onDownMotionGestureEvent", (void*) GameMotionGestureListener_onDownMotionGestureEvent);
+    java_register_method("GameMotionGestureListener", "onLeftMotionGestureEvent", (void*) GameMotionGestureListener_onLeftMotionGestureEvent);
+    java_register_method("GameMotionGestureListener", "onRightMotionGestureEvent", (void*) GameMotionGestureListener_onRightMotionGestureEvent);
+    java_register_method("GameMotionGestureListener", "onDiagonalDownRightMotionGestureEvent", (void*) GameMotionGestureListener_onDiagonalDownRightMotionGestureEvent);
+    java_register_method("GameMotionGestureListener", "onDiagonalDownLeftMotionGestureEvent", (void*) GameMotionGestureListener_onDiagonalDownLeftMotionGestureEvent);
+    java_register_method("GameMotionGestureListener", "onDiagonalUpRightMotionGestureEvent", (void*) GameMotionGestureListener_onDiagonalUpRightMotionGestureEvent);
+    java_register_method("GameMotionGestureListener", "onDiagonalUpLeftMotionGestureEvent", (void*) GameMotionGestureListener_onDiagonalUpLeftMotionGestureEvent);
+    java_register_method("GameMotionGestureListener", "onPressedMotionGestureEvent", (void*) GameMotionGestureListener_onPressedMotionGestureEvent);
+    java_register_method("GameMotionGestureListener", "released", (void*) GameMotionGestureListener_released);
+    java_register_method("GameMotionGestureListener", "onScrolledMotionGestureEvent", (void*) GameMotionGestureListener_onScrolledMotionGestureEvent);
+    java_register_method("GameMotionGestureListener", "onMotionGestureEvent", (void*) GameMotionGestureListener_onMotionGestureEvent);
+}
 
 static void GameMotionGestureListener_initFields(GameMotionGestureListener* this) {
     this->logUtil = LogUtil_getInstance();
@@ -73,13 +82,14 @@ static void GameMotionGestureListener_initFields(GameMotionGestureListener* this
 
 
 void GameMotionGestureListener_init(GameMotionGestureListener* this, CompleteMotionGestureListenerInterface* signed_) {
+    GameMotionGestureListener_register();
     GameMotionGestureListener_initFields(this);
         LogUtil_putF(this->logUtil, this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
         this->signed_ = signed_;
 }
 
 GameMotionGestureListener* GameMotionGestureListener_new(CompleteMotionGestureListenerInterface* signed_) {
-    GameMotionGestureListener* this = calloc(1, sizeof(GameMotionGestureListener));
+    GameMotionGestureListener* this = java_object_alloc(sizeof(GameMotionGestureListener), "GameMotionGestureListener");
     GameMotionGestureListener_init(this, signed_);
     return this;
 }
@@ -144,7 +154,7 @@ void GameMotionGestureListener_released(GameMotionGestureListener* this, MotionG
             StringMaker* stringBuffer = StringMaker_new();
             StringMaker_append(stringBuffer, this->commonStrings->EXCEPTION_LABEL);
             StringMaker_append(stringBuffer, StringUtil_toString(StringUtil_getInstance(), MotionGestureEvent_getMotionGesture(ev)));
-            LogUtil_put(this->logUtil, StringMaker_toString(stringBuffer), this, "release", e);
+            LogUtil_put(this->logUtil, java_string_of(stringBuffer), this, "release", e);
         } JAVA_END_TRY;
 }
 
@@ -170,7 +180,7 @@ void GameMotionGestureListener_onMotionGestureEvent(GameMotionGestureListener* t
             StringMaker* stringBuffer = StringMaker_new();
             StringMaker_append(stringBuffer, this->commonStrings->EXCEPTION_LABEL);
             StringMaker_append(stringBuffer, StringUtil_toString(StringUtil_getInstance(), MotionGestureEvent_getMotionGesture(ev)));
-            LogUtil_put(this->logUtil, StringMaker_toString(stringBuffer), this, "onMotionGestureEvent", e);
+            LogUtil_put(this->logUtil, java_string_of(stringBuffer), this, "onMotionGestureEvent", e);
         } JAVA_END_TRY;
 }
 

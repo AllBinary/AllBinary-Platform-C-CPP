@@ -1,31 +1,26 @@
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.form
+#include "org/allbinary/graphics/form/ScreenInfo.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct ScreenInfo ScreenInfo;
-struct ScreenInfo {
-    int32_t SMALL_WIDTH;
-    int32_t SMALL_HEIGHT;
-    int32_t MEDIUM_WIDTH;
-    int32_t MEDIUM_HEIGHT;
-};
 
 static ScreenInfo* ScreenInfo_instance;
 
-ScreenInfo* ScreenInfo_new(void);
-ScreenInfo* ScreenInfo_getInstance(void);
 
-// Static fields with runtime initializers: call this once at startup
 void ScreenInfo_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     ScreenInfo_instance = ScreenInfo_new();
+}
+
+void ScreenInfo_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ScreenInfo", nullptr);
 }
 
 static void ScreenInfo_initFields(ScreenInfo* this) {
@@ -36,17 +31,18 @@ static void ScreenInfo_initFields(ScreenInfo* this) {
 }
 
 void ScreenInfo_init(ScreenInfo* this) {
+    ScreenInfo_register();
     ScreenInfo_initFields(this);
 }
 
 ScreenInfo* ScreenInfo_new(void) {
-    ScreenInfo* this = calloc(1, sizeof(ScreenInfo));
+    ScreenInfo* this = java_object_alloc(sizeof(ScreenInfo), "ScreenInfo");
     ScreenInfo_init(this);
     return this;
 }
 
 
 ScreenInfo* ScreenInfo_getInstance(void) {
-        return ScreenInfo_instance;
+        return (ScreenInfo_staticInit(), ScreenInfo_instance);
 }
 

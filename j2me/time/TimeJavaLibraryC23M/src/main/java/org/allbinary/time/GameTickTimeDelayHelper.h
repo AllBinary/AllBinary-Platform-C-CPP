@@ -45,6 +45,8 @@ int64_t GameTickTimeDelayHelper_setStartTime(GameTickTimeDelayHelper* this);
 void GameTickTimeDelayHelper_loop(GameTickTimeDelayHelper* this);
 
 int64_t GameTickTimeDelayHelper_getTimeFromStart(GameTickTimeDelayHelper* this);
+#define GameTickTimeDelayHelper_new1 GameTickTimeDelayHelper_new
+#define GameTickTimeDelayHelper_init1 GameTickTimeDelayHelper_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void GameTickTimeDelayHelper_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

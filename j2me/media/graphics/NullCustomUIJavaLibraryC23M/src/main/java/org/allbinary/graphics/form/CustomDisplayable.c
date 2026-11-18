@@ -1,29 +1,33 @@
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.form
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct CustomDisplayable CustomDisplayable;
-struct CustomDisplayable {
-    char unused;
-};
+#include "org/allbinary/graphics/form/CustomDisplayable.h"
 
 
-CustomDisplayable* CustomDisplayable_new(void);
-void CustomDisplayable_setTitle(CustomDisplayable* this, const char* title);
+
+
+void CustomDisplayable_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void CustomDisplayable_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("CustomDisplayable", nullptr);
+    java_register_method("CustomDisplayable", "setTitle", (void*) CustomDisplayable_setTitle);
+}
 
 void CustomDisplayable_init(CustomDisplayable* this) {
+    CustomDisplayable_register();
 }
 
 CustomDisplayable* CustomDisplayable_new(void) {
-    CustomDisplayable* this = calloc(1, sizeof(CustomDisplayable));
+    CustomDisplayable* this = java_object_alloc(sizeof(CustomDisplayable), "CustomDisplayable");
     CustomDisplayable_init(this);
     return this;
 }

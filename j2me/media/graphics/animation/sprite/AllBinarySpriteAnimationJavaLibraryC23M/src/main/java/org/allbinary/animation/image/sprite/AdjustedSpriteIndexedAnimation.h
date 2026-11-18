@@ -1,0 +1,197 @@
+#ifndef ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_ADJUSTEDSPRITEINDEXEDANIMATION_H
+#define ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_ADJUSTEDSPRITEINDEXEDANIMATION_H
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.animation.image.sprite
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+typedef struct SpriteIndexedAnimation SpriteIndexedAnimation;
+typedef struct Graphics Graphics;
+typedef struct Image Image;
+typedef struct Sprite Sprite;
+typedef struct AnimationBehavior AnimationBehavior;
+typedef struct BasicColor BasicColor;
+// #include "org/allbinary/graphics/color/BasicColorUtil.h"
+#include "org/allbinary/animation/image/sprite/SpriteIndexedAnimation.h"
+
+typedef struct AdjustedSpriteIndexedAnimation AdjustedSpriteIndexedAnimation;
+struct AdjustedSpriteIndexedAnimation {
+    SpriteIndexedAnimation base;
+    int32_t dx;
+    int32_t dy;
+};
+
+
+AdjustedSpriteIndexedAnimation* AdjustedSpriteIndexedAnimation_new(Sprite* sprite, Image* image, BasicColor** basicColorArray, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior);
+
+void AdjustedSpriteIndexedAnimation_init(AdjustedSpriteIndexedAnimation* this, Sprite* sprite, Image* image, BasicColor** basicColorArray, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior);
+
+void AdjustedSpriteIndexedAnimation_paintFrame(AdjustedSpriteIndexedAnimation* this, Graphics* graphics, int32_t frame, int32_t x, int32_t y);
+
+void AdjustedSpriteIndexedAnimation_paintXY(AdjustedSpriteIndexedAnimation* this, Graphics* g, int32_t x, int32_t y);
+
+void AdjustedSpriteIndexedAnimation_paint(AdjustedSpriteIndexedAnimation* this, Graphics* g);
+#define AdjustedSpriteIndexedAnimation_new6 AdjustedSpriteIndexedAnimation_new
+#define AdjustedSpriteIndexedAnimation_init6 AdjustedSpriteIndexedAnimation_init
+#ifndef AdjustedSpriteIndexedAnimation_getAnimationSize
+#define AdjustedSpriteIndexedAnimation_getAnimationSize SpriteIndexedAnimation_getAnimationSize
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_setBasicColorP
+#define AdjustedSpriteIndexedAnimation_setBasicColorP SpriteIndexedAnimation_setBasicColorP
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_getBasicColorP
+#define AdjustedSpriteIndexedAnimation_getBasicColorP SpriteIndexedAnimation_getBasicColorP
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_nextFrame
+#define AdjustedSpriteIndexedAnimation_nextFrame SpriteIndexedAnimation_nextFrame
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_previousFrame
+#define AdjustedSpriteIndexedAnimation_previousFrame SpriteIndexedAnimation_previousFrame
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_getSize
+#define AdjustedSpriteIndexedAnimation_getSize SpriteIndexedAnimation_getSize
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_setFrame
+#define AdjustedSpriteIndexedAnimation_setFrame SpriteIndexedAnimation_setFrame
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_getFrame
+#define AdjustedSpriteIndexedAnimation_getFrame SpriteIndexedAnimation_getFrame
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_isLastFrame
+#define AdjustedSpriteIndexedAnimation_isLastFrame SpriteIndexedAnimation_isLastFrame
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_getLastFrame
+#define AdjustedSpriteIndexedAnimation_getLastFrame SpriteIndexedAnimation_getLastFrame
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_setSequence
+#define AdjustedSpriteIndexedAnimation_setSequence SpriteIndexedAnimation_setSequence
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_getSequence
+#define AdjustedSpriteIndexedAnimation_getSequence SpriteIndexedAnimation_getSequence
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_close
+#define AdjustedSpriteIndexedAnimation_close SpriteIndexedAnimation_close
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_finalize
+#define AdjustedSpriteIndexedAnimation_finalize SpriteIndexedAnimation_finalize
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_getAnimationBehavior
+#define AdjustedSpriteIndexedAnimation_getAnimationBehavior IndexedAnimation_getAnimationBehavior
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_reset
+#define AdjustedSpriteIndexedAnimation_reset IndexedAnimation_reset
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_setFrame
+#define AdjustedSpriteIndexedAnimation_setFrame IndexedAnimation_setFrame
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_getFrame
+#define AdjustedSpriteIndexedAnimation_getFrame IndexedAnimation_getFrame
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_getAnimationSize
+#define AdjustedSpriteIndexedAnimation_getAnimationSize IndexedAnimation_getAnimationSize
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_getSize
+#define AdjustedSpriteIndexedAnimation_getSize IndexedAnimation_getSize
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_previousFrame
+#define AdjustedSpriteIndexedAnimation_previousFrame IndexedAnimation_previousFrame
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_isLastFrame
+#define AdjustedSpriteIndexedAnimation_isLastFrame IndexedAnimation_isLastFrame
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_setSequence
+#define AdjustedSpriteIndexedAnimation_setSequence IndexedAnimation_setSequence
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_getSequence
+#define AdjustedSpriteIndexedAnimation_getSequence IndexedAnimation_getSequence
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_setState
+#define AdjustedSpriteIndexedAnimation_setState IndexedAnimation_setState
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_getWidth
+#define AdjustedSpriteIndexedAnimation_getWidth IndexedAnimation_getWidth
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_getHeight
+#define AdjustedSpriteIndexedAnimation_getHeight IndexedAnimation_getHeight
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_setAlpha
+#define AdjustedSpriteIndexedAnimation_setAlpha Animation_setAlpha
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_nextFrame
+#define AdjustedSpriteIndexedAnimation_nextFrame Animation_nextFrame
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_paintThreedXYZ
+#define AdjustedSpriteIndexedAnimation_paintThreedXYZ Animation_paintThreedXYZ
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_isThreed
+#define AdjustedSpriteIndexedAnimation_isThreed Animation_isThreed
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_getBasicColorP
+#define AdjustedSpriteIndexedAnimation_getBasicColorP Animation_getBasicColorP
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_setBasicColorP
+#define AdjustedSpriteIndexedAnimation_setBasicColorP Animation_setBasicColorP
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_setBackgroundBasicColorP
+#define AdjustedSpriteIndexedAnimation_setBackgroundBasicColorP Animation_setBackgroundBasicColorP
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_getChangeBasicColor
+#define AdjustedSpriteIndexedAnimation_getChangeBasicColor Animation_getChangeBasicColor
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_changeBasicColor
+#define AdjustedSpriteIndexedAnimation_changeBasicColor Animation_changeBasicColor
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_getChangeColor
+#define AdjustedSpriteIndexedAnimation_getChangeColor Animation_getChangeColor
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_getColor
+#define AdjustedSpriteIndexedAnimation_getColor Animation_getColor
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_setScale
+#define AdjustedSpriteIndexedAnimation_setScale Animation_setScale
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_setMaxScale
+#define AdjustedSpriteIndexedAnimation_setMaxScale Animation_setMaxScale
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_set
+#define AdjustedSpriteIndexedAnimation_set Animation_set
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_setDx
+#define AdjustedSpriteIndexedAnimation_setDx Animation_setDx
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_getDx
+#define AdjustedSpriteIndexedAnimation_getDx Animation_getDx
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_setDy
+#define AdjustedSpriteIndexedAnimation_setDy Animation_setDy
+#endif
+#ifndef AdjustedSpriteIndexedAnimation_getDy
+#define AdjustedSpriteIndexedAnimation_getDy Animation_getDy
+#endif
+// Runs the Java static initialization of the class once. Reads of its static fields call it first.
+void AdjustedSpriteIndexedAnimation_staticInit(void);
+// Registers the class, its superclass, and its methods for the interface calls (java_register_method)
+void AdjustedSpriteIndexedAnimation_register(void);
+
+
+#endif // ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_ADJUSTEDSPRITEINDEXEDANIMATION_H

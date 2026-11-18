@@ -1,47 +1,27 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.combat.damage
+#include "org/allbinary/game/combat/damage/ExplosionResources.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct ExplosionResources ExplosionResources;
-struct ExplosionResources {
-    const char* EXPLOSION_90_RESOURCE;
-    const char* EXPLOSION_60_RESOURCE;
-    const char* HALF_EXPLOSION_RESOURCE;
-    const char* THIRD_EXPLOSION_RESOURCE;
-};
 
 static ExplosionResources* ExplosionResources_instance;
 
-ExplosionResources* ExplosionResources_new(void);
-ExplosionResources* ExplosionResources_getInstance(void);
 
-void ExplosionResources_init(ExplosionResources* this);
 
-// Static fields with runtime initializers: call this once at startup
 void ExplosionResources_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     ExplosionResources_instance = ExplosionResources_new();
+}
+
+void ExplosionResources_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ExplosionResources", nullptr);
 }
 
 static void ExplosionResources_initFields(ExplosionResources* this) {
@@ -53,16 +33,17 @@ static void ExplosionResources_initFields(ExplosionResources* this) {
 
 
 ExplosionResources* ExplosionResources_getInstance(void) {
-        return ExplosionResources_instance;
+        return (ExplosionResources_staticInit(), ExplosionResources_instance);
 }
 
 
 void ExplosionResources_init(ExplosionResources* this) {
+    ExplosionResources_register();
     ExplosionResources_initFields(this);
 }
 
 ExplosionResources* ExplosionResources_new(void) {
-    ExplosionResources* this = calloc(1, sizeof(ExplosionResources));
+    ExplosionResources* this = java_object_alloc(sizeof(ExplosionResources), "ExplosionResources");
     ExplosionResources_init(this);
     return this;
 }

@@ -44,6 +44,8 @@ MathData* MathData_new(void);
 MathData* MathData_getInstance(void);
 
 void MathData_init(MathData* this);
+#define MathData_new0 MathData_new
+#define MathData_init0 MathData_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void MathData_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

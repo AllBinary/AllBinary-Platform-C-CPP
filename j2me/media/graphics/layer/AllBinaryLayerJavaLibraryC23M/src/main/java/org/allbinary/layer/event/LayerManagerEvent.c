@@ -1,62 +1,53 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.layer.event
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/layer/event/LayerManagerEvent.h"
 #include "org/allbinary/layer/AllBinaryLayer.h"
 #include "org/allbinary/layer/LayerManager.h"
 #include "org/allbinary/logic/string/StringMaker.h"
-#include "org/allbinary/logic/util/event/AllBinaryEventObject.h"
-
-typedef struct LayerManagerEvent LayerManagerEvent;
-struct LayerManagerEvent {
-    AllBinaryEventObject base;
-    AllBinaryLayer* layerInterface;
-    const char* crud;
-};
+#if __has_include("org/allbinary/layer/AllBinaryLayer.h")
+#include "org/allbinary/layer/AllBinaryLayer.h"
+#endif
 
 
-LayerManagerEvent* LayerManagerEvent_new(LayerManager* layerManager, const char* crud);
 
-void LayerManagerEvent_init(LayerManagerEvent* this, LayerManager* layerManager, const char* crud);
-AllBinaryLayer* LayerManagerEvent_getLayerInterface(LayerManagerEvent* this);
-void LayerManagerEvent_setLayerInterface(LayerManagerEvent* this, AllBinaryLayer* layerInterface);
-const char* LayerManagerEvent_toString(LayerManagerEvent* this);
+
+
+
+
+void LayerManagerEvent_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void LayerManagerEvent_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("LayerManagerEvent", "AllBinaryEventObject");
+    java_register_method("LayerManagerEvent", "getLayerInterface", (void*) LayerManagerEvent_getLayerInterface);
+    java_register_method("LayerManagerEvent", "setLayerInterface", (void*) LayerManagerEvent_setLayerInterface);
+    java_register_method("LayerManagerEvent", "toString", (void*) LayerManagerEvent_toString);
+}
 
 static void LayerManagerEvent_initFields(LayerManagerEvent* this) {
-    this->layerInterface = AllBinaryLayer_NULL_ALLBINARY_LAYER;
+    this->layerInterface = (AllBinaryLayer_staticInit(), AllBinaryLayer_NULL_ALLBINARY_LAYER);
     
 }
 
 
 void LayerManagerEvent_init(LayerManagerEvent* this, LayerManager* layerManager, const char* crud) {
+    LayerManagerEvent_register();
         AllBinaryEventObject_init(&this->base, layerManager);
         LayerManagerEvent_initFields(this);
         this->crud = crud;
 }
 
 LayerManagerEvent* LayerManagerEvent_new(LayerManager* layerManager, const char* crud) {
-    LayerManagerEvent* this = calloc(1, sizeof(LayerManagerEvent));
+    LayerManagerEvent* this = java_object_alloc(sizeof(LayerManagerEvent), "LayerManagerEvent");
     LayerManagerEvent_init(this, layerManager, crud);
     return this;
 }
@@ -76,9 +67,9 @@ const char* LayerManagerEvent_toString(LayerManagerEvent* this) {
         StringMaker* stringBuffer = StringMaker_new();
         StringMaker_append(stringBuffer, "LayerManagerEvent: \n");
         StringMaker_append(stringBuffer, "LayerInterface: ");
-        StringMaker_append(stringBuffer, JAVA_CALL(LayerManagerEvent_getLayerInterface(this), toString));
+        StringMaker_append(stringBuffer, java_string_of(LayerManagerEvent_getLayerInterface(this)));
         StringMaker_append(stringBuffer, "\nCRUD: ");
         StringMaker_append(stringBuffer, this->crud);
-        return StringMaker_toString(stringBuffer);
+        return java_string_of(stringBuffer);
 }
 

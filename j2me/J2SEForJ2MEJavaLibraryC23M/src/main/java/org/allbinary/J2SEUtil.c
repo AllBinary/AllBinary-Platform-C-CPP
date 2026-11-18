@@ -1,80 +1,64 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2025 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary
+#include "org/allbinary/J2SEUtil.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "java/util/HashMap.h"
-// #include "java/util/Map.h"
-// #include "java/util/Set.h"
-
-//J2SEForJ2ME
-typedef struct J2SEUtil J2SEUtil;
-struct J2SEUtil {
-    char unused;
-};
 
 static J2SEUtil* J2SEUtil_instance;
 
-J2SEUtil* J2SEUtil_new(void);
-J2SEUtil* J2SEUtil_getInstance(void);
-Any** J2SEUtil_getHashMapAsArray(J2SEUtil* this, HashMap* hashMap);
-Any** J2SEUtil_getMapAsArray(J2SEUtil* this, Map* map);
-Any** J2SEUtil_getSetAsArray(J2SEUtil* this, Set* set);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
 void J2SEUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     J2SEUtil_instance = J2SEUtil_new();
 }
 
+void J2SEUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("J2SEUtil", nullptr);
+    java_register_method("J2SEUtil", "getHashMapAsArray", (void*) J2SEUtil_getHashMapAsArray);
+    java_register_method("J2SEUtil", "getMapAsArray", (void*) J2SEUtil_getMapAsArray);
+    java_register_method("J2SEUtil", "getSetAsArray", (void*) J2SEUtil_getSetAsArray);
+}
+
 void J2SEUtil_init(J2SEUtil* this) {
+    J2SEUtil_register();
 }
 
 J2SEUtil* J2SEUtil_new(void) {
-    J2SEUtil* this = calloc(1, sizeof(J2SEUtil));
+    J2SEUtil* this = java_object_alloc(sizeof(J2SEUtil), "J2SEUtil");
     J2SEUtil_init(this);
     return this;
 }
 
 
 J2SEUtil* J2SEUtil_getInstance(void) {
-        return J2SEUtil_instance;
+        return (J2SEUtil_staticInit(), J2SEUtil_instance);
 }
 
 
-Any** J2SEUtil_getHashMapAsArray(J2SEUtil* this, HashMap* hashMap) {
-        Any** objectArray = JAVA_CALL(HashMap_keySet(hashMap), toArray);
+void** J2SEUtil_getHashMapAsArray(J2SEUtil* this, HashMap* hashMap) {
+        void** objectArray = JAVA_CALL(HashMap_keySet(hashMap), toArray);
         return objectArray;
 }
 
 
-Any** J2SEUtil_getMapAsArray(J2SEUtil* this, Map* map) {
-        Any** objectArray = JAVA_CALL(Map_keySet(map), toArray);
+void** J2SEUtil_getMapAsArray(J2SEUtil* this, Map* map) {
+        void** objectArray = JAVA_CALL(Map_keySet(map), toArray);
         return objectArray;
 }
 
 
-Any** J2SEUtil_getSetAsArray(J2SEUtil* this, Set* set) {
-        Any** objectArray = Set_toArray(set);
+void** J2SEUtil_getSetAsArray(J2SEUtil* this, Set* set) {
+        void** objectArray = Set_toArray(set);
         return objectArray;
 }
 

@@ -1,36 +1,11 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input.motion.button
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/input/motion/button/TouchButtonsPaintableComposite.h"
 #include "org/allbinary/game/input/CompleteMotionGestureInputEvent.h"
 #include "org/allbinary/game/input/CompleteMotionGestureInputEventHandler.h"
-#include "org/allbinary/game/input/CompleteMotionGestureInputEventListenerInterface.h"
 #include "org/allbinary/game/input/GameKey.h"
 #include "org/allbinary/game/input/mapping/InputMappingInterface.h"
 #include "org/allbinary/game/input/motion/action/GameKeyCompleteMotionGestureInputEvent.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
-#include "org/allbinary/graphics/paint/ProcessPaintable.h"
 #include "org/allbinary/input/motion/gesture/MotionGestureInput.h"
 #include "org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h"
 #include "org/allbinary/logic/communication/log/ForcedLogUtil.h"
@@ -41,30 +16,63 @@
 #include "org/allbinary/logic/util/event/EventStrings.h"
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/time/TimeDelayHelper.h"
+#include "org/allbinary/input/motion/button/TouchButtonsMappingPaintable.h"
+#if __has_include("org/allbinary/game/input/CompleteMotionGestureInputEventHandler.h")
+#include "org/allbinary/game/input/CompleteMotionGestureInputEventHandler.h"
+#endif
+#if __has_include("org/allbinary/logic/util/event/EventStrings.h")
+#include "org/allbinary/logic/util/event/EventStrings.h"
+#endif
+#if __has_include("org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h")
+#include "org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/game/input/CompleteMotionGestureInputEventHandler.h")
+#include "org/allbinary/game/input/CompleteMotionGestureInputEventHandler.h"
+#endif
 
-typedef struct TouchButtonsPaintableComposite TouchButtonsPaintableComposite;
-struct TouchButtonsPaintableComposite {
-    ProcessPaintable base;
-    CompleteMotionGestureInputEventListenerInterface CompleteMotionGestureInputEventListenerInterface_interface;
-    LogUtil* logUtil;
-    CommonStrings* commonStrings;
-    InputMappingInterface* inputMappingInterface;
-    TouchButtonsMappingPaintable* touchButtonsPaintable;
-    TimeDelayHelper* timeHelper;
-    bool released;
-    const char* METHOD_NAME;
-    const char* RELEASE;
-    const char* FAST_REPEAT;
-    const char* IGNORE;
-};
 
 
-TouchButtonsPaintableComposite* TouchButtonsPaintableComposite_new(InputMappingInterface* inputMappingInterface, BasicColor* basicColor);
 
-void TouchButtonsPaintableComposite_init(TouchButtonsPaintableComposite* this, InputMappingInterface* inputMappingInterface, BasicColor* basicColor);
-void TouchButtonsPaintableComposite_onEvent(TouchButtonsPaintableComposite* this, AllBinaryEventObject* eventObject);
-void TouchButtonsPaintableComposite_onCompleteMotionGestureInputEvent(TouchButtonsPaintableComposite* this, CompleteMotionGestureInputEvent* completeMotionGestureInputEvent);
-void TouchButtonsPaintableComposite_process(TouchButtonsPaintableComposite* this);
+
+
+
+void TouchButtonsPaintableComposite_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void TouchButtonsPaintableComposite_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("TouchButtonsPaintableComposite", "ProcessPaintable");
+    java_register_method("TouchButtonsPaintableComposite", "onEvent", (void*) TouchButtonsPaintableComposite_onEvent);
+    java_register_method("TouchButtonsPaintableComposite", "onCompleteMotionGestureInputEvent", (void*) TouchButtonsPaintableComposite_onCompleteMotionGestureInputEvent);
+    java_register_method("TouchButtonsPaintableComposite", "process", (void*) TouchButtonsPaintableComposite_process);
+}
 
 static void TouchButtonsPaintableComposite_initFields(TouchButtonsPaintableComposite* this) {
     this->logUtil = LogUtil_getInstance();
@@ -81,15 +89,16 @@ static void TouchButtonsPaintableComposite_initFields(TouchButtonsPaintableCompo
 
 
 void TouchButtonsPaintableComposite_init(TouchButtonsPaintableComposite* this, InputMappingInterface* inputMappingInterface, BasicColor* basicColor) {
+    TouchButtonsPaintableComposite_register();
     ProcessPaintable_init(&this->base);
     TouchButtonsPaintableComposite_initFields(this);
         this->inputMappingInterface = inputMappingInterface;
-        CompleteMotionGestureInputEventHandler_addListenerInterface(CompleteMotionGestureInputEventHandler_getInstance(), this);
+        BasicEventHandler_addListenerInterface(CompleteMotionGestureInputEventHandler_getInstance(), this);
         this->touchButtonsPaintable = TouchButtonsMappingPaintable_new(basicColor);
 }
 
 TouchButtonsPaintableComposite* TouchButtonsPaintableComposite_new(InputMappingInterface* inputMappingInterface, BasicColor* basicColor) {
-    TouchButtonsPaintableComposite* this = calloc(1, sizeof(TouchButtonsPaintableComposite));
+    TouchButtonsPaintableComposite* this = java_object_alloc(sizeof(TouchButtonsPaintableComposite), "TouchButtonsPaintableComposite");
     TouchButtonsPaintableComposite_init(this, inputMappingInterface, basicColor);
     return this;
 }
@@ -121,7 +130,7 @@ void TouchButtonsPaintableComposite_onCompleteMotionGestureInputEvent(TouchButto
                 return;
             }
             this->released = false;
-            LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), "GameKey: "), append, StringUtil_toString(StringUtil_getInstance(), gameKey)), append, " MotionGestureInput: "), append, StringUtil_toString(StringUtil_getInstance(), motionGestureInput)), toString), this, this->METHOD_NAME);
+            LogUtil_putF(this->logUtil, java_string_of(StringMaker_append(StringMaker_append(StringMaker_append(StringMaker_append(StringMaker_new(), "GameKey: "), StringUtil_toString(StringUtil_getInstance(), gameKey)), " MotionGestureInput: "), StringUtil_toString(StringUtil_getInstance(), motionGestureInput))), this, this->METHOD_NAME);
             InputMappingInterface_processInputMapping(this->inputMappingInterface, gameKey, motionGestureInput);
         } JAVA_CATCH(Exception, e) {
             LogUtil_put(this->logUtil, this->commonStrings->EXCEPTION, this, this->METHOD_NAME, e);

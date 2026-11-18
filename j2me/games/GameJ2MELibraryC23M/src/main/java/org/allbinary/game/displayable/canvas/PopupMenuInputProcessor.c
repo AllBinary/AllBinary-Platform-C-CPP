@@ -1,29 +1,6 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.displayable.canvas
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Canvas.h"
+#include "org/allbinary/game/displayable/canvas/PopupMenuInputProcessor.h"
+#include "javax/microedition/lcdui/Canvas.h"
 #include "org/allbinary/game/input/GameInputStrings.h"
 #include "org/allbinary/game/input/event/GameKeyEvent.h"
 #include "org/allbinary/graphics/GPoint.h"
@@ -32,32 +9,44 @@
 #include "org/allbinary/input/motion/gesture/MotionGestureInput.h"
 #include "org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h"
 #include "org/allbinary/input/motion/gesture/observer/MotionGestureEvent.h"
-#include "org/allbinary/logic/communication/log/PreLogUtil.h"
-#include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/math/RectangleCollisionUtil.h"
-#include "org/allbinary/string/CommonSeps.h"
 #include "org/allbinary/time/TimeDelayHelper.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/game/displayable/canvas/BasicMenuInputProcessor.h"
-
-typedef struct PopupMenuInputProcessor PopupMenuInputProcessor;
-struct PopupMenuInputProcessor {
-    BasicMenuInputProcessor base;
-    RectangleCollisionUtil* rectangleCollisionUtil;
-    int32_t CLICK_DELAY;
-    TimeDelayHelper* clickTimeHelper;
-    Rectangle* rectangle;
-};
+#include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
+#if __has_include("org/allbinary/game/input/GameInputStrings.h")
+#include "org/allbinary/game/input/GameInputStrings.h"
+#endif
 
 
-PopupMenuInputProcessor* PopupMenuInputProcessor_new(BasicArrayList* gameKeyEventList, int32_t playerInputId, MyCanvas* gameCanvas, Rectangle* rectangle);
 
-void PopupMenuInputProcessor_init(PopupMenuInputProcessor* this, BasicArrayList* gameKeyEventList, int32_t playerInputId, MyCanvas* gameCanvas, Rectangle* rectangle);
-void PopupMenuInputProcessor_init(PopupMenuInputProcessor* this, Rectangle* rectangle);
-int32_t PopupMenuInputProcessor_processInput(PopupMenuInputProcessor* this, int32_t key);
-int32_t PopupMenuInputProcessor_processInputList(PopupMenuInputProcessor* this);
-int32_t PopupMenuInputProcessor_processMotionInputs(PopupMenuInputProcessor* this);
-void PopupMenuInputProcessor_processMotionInput(PopupMenuInputProcessor* this, MotionGestureEvent* motionGestureEvent);
+
+
+
+
+
+
+void PopupMenuInputProcessor_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void PopupMenuInputProcessor_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("PopupMenuInputProcessor", "BasicMenuInputProcessor");
+    java_register_method("PopupMenuInputProcessor", "init", (void*) PopupMenuInputProcessor_initMethod);
+    java_register_method("PopupMenuInputProcessor", "processInput", (void*) PopupMenuInputProcessor_processInput);
+    java_register_method("PopupMenuInputProcessor", "processInputList", (void*) PopupMenuInputProcessor_processInputList);
+    java_register_method("PopupMenuInputProcessor", "processMotionInputs", (void*) PopupMenuInputProcessor_processMotionInputs);
+    java_register_method("PopupMenuInputProcessor", "processMotionInput", (void*) PopupMenuInputProcessor_processMotionInput);
+}
 
 static void PopupMenuInputProcessor_initFields(PopupMenuInputProcessor* this) {
     this->rectangleCollisionUtil = RectangleCollisionUtil_getInstance();
@@ -68,28 +57,29 @@ static void PopupMenuInputProcessor_initFields(PopupMenuInputProcessor* this) {
 
 
 void PopupMenuInputProcessor_init(PopupMenuInputProcessor* this, BasicArrayList* gameKeyEventList, int32_t playerInputId, MyCanvas* gameCanvas, Rectangle* rectangle) {
+    PopupMenuInputProcessor_register();
         BasicMenuInputProcessor_init(&this->base, gameKeyEventList, playerInputId, gameCanvas);
         PopupMenuInputProcessor_initFields(this);
         this->rectangle = rectangle;
 }
 
 PopupMenuInputProcessor* PopupMenuInputProcessor_new(BasicArrayList* gameKeyEventList, int32_t playerInputId, MyCanvas* gameCanvas, Rectangle* rectangle) {
-    PopupMenuInputProcessor* this = calloc(1, sizeof(PopupMenuInputProcessor));
+    PopupMenuInputProcessor* this = java_object_alloc(sizeof(PopupMenuInputProcessor), "PopupMenuInputProcessor");
     PopupMenuInputProcessor_init(this, gameKeyEventList, playerInputId, gameCanvas, rectangle);
     return this;
 }
 
 
-void PopupMenuInputProcessor_init(PopupMenuInputProcessor* this, Rectangle* rectangle) {
+void PopupMenuInputProcessor_initMethod(PopupMenuInputProcessor* this, Rectangle* rectangle) {
         this->rectangle = rectangle;
 }
 
 
 // throws Exception
 int32_t PopupMenuInputProcessor_processInput(PopupMenuInputProcessor* this, int32_t key) {
-        if (key == Canvas_KEY_STAR) {
-            AllBinaryGameCanvas* gameCanvas = ((AllBinaryGameCanvas*) PopupMenuInputProcessor_getCanvas(this));
-            MyCanvas_toggleMenu(gameCanvas);
+        if (key == (Canvas_staticInit(), Canvas_KEY_STAR)) {
+            AllBinaryGameCanvas* gameCanvas = ((AllBinaryGameCanvas*) BasicMenuInputProcessor_getCanvas(this));
+            AllBinaryGameCanvas_toggleMenu(gameCanvas);
             return 1;
         }
         return 0;
@@ -100,7 +90,7 @@ int32_t PopupMenuInputProcessor_processInput(PopupMenuInputProcessor* this, int3
 int32_t PopupMenuInputProcessor_processInputList(PopupMenuInputProcessor* this) {
         JAVA_TRY {
             int32_t motionInputsIndex = PopupMenuInputProcessor_processMotionInputs(this);
-            BasicArrayList* list = PopupMenuInputProcessor_getGameKeyEventList(this);
+            BasicArrayList* list = GameInput_getGameKeyEventList(this);
             int32_t size = BasicArrayList_size(list);
             int32_t key = 0;
             GameKeyEvent* gameKeyEvent = nullptr;
@@ -113,14 +103,14 @@ int32_t PopupMenuInputProcessor_processInputList(PopupMenuInputProcessor* this) 
                     }
                 }
             }
-            PopupMenuInputProcessor_clear(this);
+            GameInput_clear(this);
             if (size > 0 || motionInputsIndex >= 0) {
                 return 1;
             } else {
                 return -1;
             }
         } JAVA_CATCH(Exception, e) {
-            JAVA_CALL(this->logUtil, put, this->commonStrings->EXCEPTION, this, GameInputStrings_getInstance()->PROCESS_INPUT, e);
+            LogUtil_put(this->base.base.base.logUtil, this->base.base.base.commonStrings->EXCEPTION, this, GameInputStrings_getInstance()->PROCESS_INPUT, e);
             return -1;
         } JAVA_END_TRY;
 }
@@ -128,12 +118,12 @@ int32_t PopupMenuInputProcessor_processInputList(PopupMenuInputProcessor* this) 
 
 // throws Exception
 int32_t PopupMenuInputProcessor_processMotionInputs(PopupMenuInputProcessor* this) {
-        int32_t lastIndex = JAVA_CALL(this->motionGestureEventList, size) - 1;
+        int32_t lastIndex = BasicArrayList_size(this->base.motionGestureEventList) - 1;
         if (lastIndex >= 0) {
-            MotionGestureEvent* motionGestureEvent = ((MotionGestureEvent*) this->motionGestureEventList->objectArray[lastIndex]);
+            MotionGestureEvent* motionGestureEvent = ((MotionGestureEvent*) this->base.motionGestureEventList->objectArray[lastIndex]);
             PopupMenuInputProcessor_processMotionInput(this, motionGestureEvent);
         }
-        JAVA_CALL(this->motionGestureEventList, clear);
+        BasicArrayList_clear(this->base.motionGestureEventList);
         return lastIndex;
 }
 
@@ -141,7 +131,7 @@ int32_t PopupMenuInputProcessor_processMotionInputs(PopupMenuInputProcessor* thi
 // throws Exception
 void PopupMenuInputProcessor_processMotionInput(PopupMenuInputProcessor* this, MotionGestureEvent* motionGestureEvent) {
         if (motionGestureEvent == nullptr) {
-            JAVA_CALL(this->logUtil, putF, "Exception: Bug", this, this->gameInputStrings->PROCESS_MOTION_INPUT);
+            LogUtil_putF(this->base.base.base.logUtil, "Exception: Bug", this, this->base.base.gameInputStrings->PROCESS_MOTION_INPUT);
             return;
         }
         TouchMotionGestureFactory* touchMotionGestureFactory = TouchMotionGestureFactory_getInstance();
@@ -151,8 +141,8 @@ void PopupMenuInputProcessor_processMotionInput(PopupMenuInputProcessor* this, M
             GPoint* rectPoint = Rectangle_getPoint(this->rectangle);
             if (RectangleCollisionUtil_isInside(this->rectangleCollisionUtil, GPoint_getX(rectPoint), GPoint_getY(rectPoint), Rectangle_getMaxX(this->rectangle) + 20, Rectangle_getMaxY(this->rectangle), GPoint_getX(point), GPoint_getY(point))) {
                 if (TimeDelayHelper_isTimeTNT(this->clickTimeHelper)) {
-                    AllBinaryGameCanvas* gameCanvas = ((AllBinaryGameCanvas*) PopupMenuInputProcessor_getCanvas(this));
-                    MyCanvas_toggleMenu(gameCanvas);
+                    AllBinaryGameCanvas* gameCanvas = ((AllBinaryGameCanvas*) BasicMenuInputProcessor_getCanvas(this));
+                    AllBinaryGameCanvas_toggleMenu(gameCanvas);
                 }
             }
         }

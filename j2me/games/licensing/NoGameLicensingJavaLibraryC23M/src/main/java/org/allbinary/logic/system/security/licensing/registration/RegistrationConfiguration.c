@@ -1,51 +1,45 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.system.security.licensing.registration
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/logic/system/security/licensing/registration/RegistrationConfiguration.h"
 #include "org/allbinary/logic/string/StringMaker.h"
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
 
-typedef struct RegistrationConfiguration RegistrationConfiguration;
-struct RegistrationConfiguration {
-    const char* registrationCode;
-    const char* NAME;
-};
 
 static RegistrationConfiguration* RegistrationConfiguration_SINGLETON;
 
-RegistrationConfiguration* RegistrationConfiguration_new(void);
 
-void RegistrationConfiguration_init(RegistrationConfiguration* this);
-RegistrationConfiguration* RegistrationConfiguration_getInstance(void);
+
 static void RegistrationConfiguration_read(RegistrationConfiguration* this);
-void RegistrationConfiguration_write(RegistrationConfiguration* this);
-const char* RegistrationConfiguration_toString(RegistrationConfiguration* this);
-void RegistrationConfiguration_setRegistrationCode(RegistrationConfiguration* this, const char* registrationCode);
-const char* RegistrationConfiguration_getRegistrationCode(RegistrationConfiguration* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
 void RegistrationConfiguration_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     RegistrationConfiguration_SINGLETON = RegistrationConfiguration_new();
+}
+
+void RegistrationConfiguration_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("RegistrationConfiguration", nullptr);
+    java_register_method("RegistrationConfiguration", "read", (void*) RegistrationConfiguration_read);
+    java_register_method("RegistrationConfiguration", "write", (void*) RegistrationConfiguration_write);
+    java_register_method("RegistrationConfiguration", "toString", (void*) RegistrationConfiguration_toString);
+    java_register_method("RegistrationConfiguration", "setRegistrationCode", (void*) RegistrationConfiguration_setRegistrationCode);
+    java_register_method("RegistrationConfiguration", "getRegistrationCode", (void*) RegistrationConfiguration_getRegistrationCode);
 }
 
 static void RegistrationConfiguration_initFields(RegistrationConfiguration* this) {
@@ -55,18 +49,19 @@ static void RegistrationConfiguration_initFields(RegistrationConfiguration* this
 
 
 void RegistrationConfiguration_init(RegistrationConfiguration* this) {
+    RegistrationConfiguration_register();
     RegistrationConfiguration_initFields(this);
 }
 
 RegistrationConfiguration* RegistrationConfiguration_new(void) {
-    RegistrationConfiguration* this = calloc(1, sizeof(RegistrationConfiguration));
+    RegistrationConfiguration* this = java_object_alloc(sizeof(RegistrationConfiguration), "RegistrationConfiguration");
     RegistrationConfiguration_init(this);
     return this;
 }
 
 
 RegistrationConfiguration* RegistrationConfiguration_getInstance(void) {
-        return RegistrationConfiguration_SINGLETON;
+        return (RegistrationConfiguration_staticInit(), RegistrationConfiguration_SINGLETON);
 }
 
 
@@ -81,7 +76,7 @@ void RegistrationConfiguration_write(RegistrationConfiguration* this) {
 
 
 const char* RegistrationConfiguration_toString(RegistrationConfiguration* this) {
-        return JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), "Registration Code: "), append, RegistrationConfiguration_getRegistrationCode(this)), toString);
+        return java_string_of(StringMaker_append(StringMaker_append(StringMaker_new(), "Registration Code: "), RegistrationConfiguration_getRegistrationCode(this)));
 }
 
 

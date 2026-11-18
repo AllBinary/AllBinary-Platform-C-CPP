@@ -1,64 +1,53 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.input
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/input/GameInputProcessor.h"
 #include "org/allbinary/game/input/event/GameKeyEvent.h"
 #include "org/allbinary/layer/AllBinaryLayerManager.h"
 
-typedef struct GameInputProcessor GameInputProcessor;
-struct GameInputProcessor {
-    char unused;
-};
 
 static GameInputProcessor* GameInputProcessor_instance;
 
-GameInputProcessor* GameInputProcessor_new(void);
-GameInputProcessor* GameInputProcessor_getInstance(void);
 
-void GameInputProcessor_init(GameInputProcessor* this);
-void GameInputProcessor_processEvent(GameInputProcessor* this, AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent);
-void GameInputProcessor_processReleasedEvent(GameInputProcessor* this, AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent);
-void GameInputProcessor_processAnalog(GameInputProcessor* this, AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent, int32_t analogValue);
-void GameInputProcessor_process(GameInputProcessor* this, AllBinaryLayerManager* allbinaryLayerManager, int32_t keyAsInteger);
-void GameInputProcessor_processReleased(GameInputProcessor* this, AllBinaryLayerManager* allbinaryLayerManager, int32_t keyAsInteger);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+
 void GameInputProcessor_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     GameInputProcessor_instance = GameInputProcessor_new();
+}
+
+void GameInputProcessor_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GameInputProcessor", nullptr);
+    java_register_method("GameInputProcessor", "processEvent", (void*) GameInputProcessor_processEvent);
+    java_register_method("GameInputProcessor", "processReleasedEvent", (void*) GameInputProcessor_processReleasedEvent);
+    java_register_method("GameInputProcessor", "processAnalog", (void*) GameInputProcessor_processAnalog);
+    java_register_method("GameInputProcessor", "process", (void*) GameInputProcessor_process);
+    java_register_method("GameInputProcessor", "processReleased", (void*) GameInputProcessor_processReleased);
 }
 
 
 GameInputProcessor* GameInputProcessor_getInstance(void) {
-        return GameInputProcessor_instance;
+        return (GameInputProcessor_staticInit(), GameInputProcessor_instance);
 }
 
 
 void GameInputProcessor_init(GameInputProcessor* this) {
+    GameInputProcessor_register();
 }
 
 GameInputProcessor* GameInputProcessor_new(void) {
-    GameInputProcessor* this = calloc(1, sizeof(GameInputProcessor));
+    GameInputProcessor* this = java_object_alloc(sizeof(GameInputProcessor), "GameInputProcessor");
     GameInputProcessor_init(this);
     return this;
 }

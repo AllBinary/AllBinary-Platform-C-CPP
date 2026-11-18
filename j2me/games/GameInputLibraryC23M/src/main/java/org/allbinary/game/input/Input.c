@@ -1,46 +1,42 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.input
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/input/Input.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/logic/string/StringUtil.h"
-
-typedef struct Input Input;
-struct Input {
-    int32_t id;
-    const char* name;
-};
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
 
-Input* Input_new(int32_t id, const char* name);
 
-void Input_init(Input* this, int32_t id, const char* name);
-int32_t Input_getId(Input* this);
+
+
 static void Input_setId(Input* this, int32_t key);
-const char* Input_getName(Input* this);
+
+
 static void Input_setName(Input* this, const char* keyName);
-const char* Input_toString(Input* this);
+
+
+void Input_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void Input_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("Input", nullptr);
+    java_register_method("Input", "getId", (void*) Input_getId);
+    java_register_method("Input", "setId", (void*) Input_setId);
+    java_register_method("Input", "getName", (void*) Input_getName);
+    java_register_method("Input", "setName", (void*) Input_setName);
+    java_register_method("Input", "toString", (void*) Input_toString);
+}
 
 static void Input_initFields(Input* this) {
     this->id = 0;
@@ -49,13 +45,14 @@ static void Input_initFields(Input* this) {
 
 
 void Input_init(Input* this, int32_t id, const char* name) {
+    Input_register();
     Input_initFields(this);
         Input_setId(this, id);
         Input_setName(this, name);
 }
 
 Input* Input_new(int32_t id, const char* name) {
-    Input* this = calloc(1, sizeof(Input));
+    Input* this = java_object_alloc(sizeof(Input), "Input");
     Input_init(this, id, name);
     return this;
 }
@@ -87,6 +84,6 @@ const char* Input_toString(Input* this) {
         StringMaker_append(stringBuffer, Input_getName(this));
         StringMaker_append(stringBuffer, " Id: ");
         StringMaker_appendint(stringBuffer, Input_getId(this));
-        return StringMaker_toString(stringBuffer);
+        return java_string_of(stringBuffer);
 }
 

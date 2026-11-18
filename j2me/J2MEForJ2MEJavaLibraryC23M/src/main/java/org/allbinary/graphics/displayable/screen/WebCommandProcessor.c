@@ -1,52 +1,36 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2022 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- * 
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.displayable.screen
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Canvas.h"
-// #include "javax/microedition/lcdui/Command.h"
-// #include "javax/microedition/lcdui/CommandListener.h"
+#include "org/allbinary/graphics/displayable/screen/WebCommandProcessor.h"
+#include "javax/microedition/lcdui/Canvas.h"
+#include "javax/microedition/lcdui/Command.h"
+#include "javax/microedition/lcdui/CommandListener.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
+#include "org/allbinary/graphics/displayable/screen/AboutCommandProcessor.h"
 
-typedef struct WebCommandProcessor WebCommandProcessor;
-struct WebCommandProcessor {
-    LogUtil* logUtil;
-    AboutCommandProcessor* aboutCommandProcessor;
-    BasicArrayList* list;
-};
 
 static WebCommandProcessor* WebCommandProcessor_instance;
 
-WebCommandProcessor* WebCommandProcessor_new(void);
-WebCommandProcessor* WebCommandProcessor_getInstance(void);
-void WebCommandProcessor_process(WebCommandProcessor* this, CommandListener* midletCommandListener, Command* command, Canvas* canvas);
 
-// Static fields with runtime initializers: call this once at startup
+
 void WebCommandProcessor_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     WebCommandProcessor_instance = WebCommandProcessor_new();
+}
+
+void WebCommandProcessor_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("WebCommandProcessor", nullptr);
+    java_register_method("WebCommandProcessor", "process", (void*) WebCommandProcessor_process);
 }
 
 static void WebCommandProcessor_initFields(WebCommandProcessor* this) {
@@ -56,18 +40,19 @@ static void WebCommandProcessor_initFields(WebCommandProcessor* this) {
 }
 
 void WebCommandProcessor_init(WebCommandProcessor* this) {
+    WebCommandProcessor_register();
     WebCommandProcessor_initFields(this);
 }
 
 WebCommandProcessor* WebCommandProcessor_new(void) {
-    WebCommandProcessor* this = calloc(1, sizeof(WebCommandProcessor));
+    WebCommandProcessor* this = java_object_alloc(sizeof(WebCommandProcessor), "WebCommandProcessor");
     WebCommandProcessor_init(this);
     return this;
 }
 
 
 WebCommandProcessor* WebCommandProcessor_getInstance(void) {
-        return WebCommandProcessor_instance;
+        return (WebCommandProcessor_staticInit(), WebCommandProcessor_instance);
 }
 
 

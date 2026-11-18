@@ -1,30 +1,6 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.ag.ai.scroller
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Canvas.h"
-#include "org/allbinary/game/ai/BasicAI.h"
+#include "org/allbinary/game/ag/ai/scroller/HorizontalScreenPatrolAI.h"
+#include "javax/microedition/lcdui/Canvas.h"
 #include "org/allbinary/game/input/GameInput.h"
 #include "org/allbinary/game/layer/AllBinaryGameLayerManager.h"
 #include "org/allbinary/game/rand/MyRandomFactory.h"
@@ -37,35 +13,89 @@
 #include "org/allbinary/media/audio/Sound.h"
 #include "org/allbinary/time/TimeDelayHelper.h"
 #include "org/allbinary/util/ABHashtable.h"
+#if __has_include("org/allbinary/logic/math/SmallIntegerSingletonFactory.h")
+#include "org/allbinary/logic/math/SmallIntegerSingletonFactory.h"
+#endif
+#if __has_include("org/allbinary/game/rand/MyRandomFactory.h")
+#include "org/allbinary/game/rand/MyRandomFactory.h"
+#endif
+#if __has_include("org/allbinary/game/rand/MyRandomFactory.h")
+#include "org/allbinary/game/rand/MyRandomFactory.h"
+#endif
+#if __has_include("org/allbinary/game/ag/ai/scroller/GameInfo.h")
+#include "org/allbinary/game/ag/ai/scroller/GameInfo.h"
+#endif
+#if __has_include("javax/microedition/lcdui/GameInfo.h")
+#include "javax/microedition/lcdui/GameInfo.h"
+#endif
+#if __has_include("org/allbinary/game/ai/GameInfo.h")
+#include "org/allbinary/game/ai/GameInfo.h"
+#endif
+#if __has_include("org/allbinary/game/input/GameInfo.h")
+#include "org/allbinary/game/input/GameInfo.h"
+#endif
+#if __has_include("org/allbinary/game/layer/GameInfo.h")
+#include "org/allbinary/game/layer/GameInfo.h"
+#endif
+#if __has_include("org/allbinary/game/rand/GameInfo.h")
+#include "org/allbinary/game/rand/GameInfo.h"
+#endif
+#if __has_include("org/allbinary/graphics/displayable/GameInfo.h")
+#include "org/allbinary/graphics/displayable/GameInfo.h"
+#endif
+#if __has_include("org/allbinary/layer/GameInfo.h")
+#include "org/allbinary/layer/GameInfo.h"
+#endif
+#if __has_include("org/allbinary/layer/GameInfo.h")
+#include "org/allbinary/layer/GameInfo.h"
+#endif
+#if __has_include("org/allbinary/logic/math/GameInfo.h")
+#include "org/allbinary/logic/math/GameInfo.h"
+#endif
+#if __has_include("org/allbinary/media/audio/GameInfo.h")
+#include "org/allbinary/media/audio/GameInfo.h"
+#endif
+#if __has_include("org/allbinary/media/audio/GameInfo.h")
+#include "org/allbinary/media/audio/GameInfo.h"
+#endif
+#if __has_include("org/allbinary/media/audio/GameInfo.h")
+#include "org/allbinary/media/audio/GameInfo.h"
+#endif
+#if __has_include("org/allbinary/time/GameInfo.h")
+#include "org/allbinary/time/GameInfo.h"
+#endif
+#if __has_include("org/allbinary/util/GameInfo.h")
+#include "org/allbinary/util/GameInfo.h"
+#endif
 
-typedef struct HorizontalScreenPatrolAI HorizontalScreenPatrolAI;
-struct HorizontalScreenPatrolAI {
-    BasicAI base;
-    int32_t keyDirection;
-    DisplayInfoSingleton* displayInfoSingleton;
-    int32_t firingX;
-    int32_t firedIndex;
-    int32_t MAX_FIRE;
-    TimeDelayHelper* timeDelayHelper;
-    PlayerQueue* secondaryPlayerQueue;
-    Sound* sound;
-};
 
 int32_t HorizontalScreenPatrolAI_SOUND;
 
-HorizontalScreenPatrolAI* HorizontalScreenPatrolAI_new(ABHashtable* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
 
-void HorizontalScreenPatrolAI_init(HorizontalScreenPatrolAI* this, ABHashtable* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
-void HorizontalScreenPatrolAI_processAI(HorizontalScreenPatrolAI* this, AllBinaryLayerManager* allBinaryLayerManager);
-void HorizontalScreenPatrolAI_nextDirection(HorizontalScreenPatrolAI* this);
 
-// Static fields with runtime initializers: call this once at startup
+
 void HorizontalScreenPatrolAI_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     HorizontalScreenPatrolAI_SOUND = SmallIntegerSingletonFactory_getAt(SmallIntegerSingletonFactory_getInstance(), 433);
 }
 
+void HorizontalScreenPatrolAI_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("HorizontalScreenPatrolAI", "BasicAI");
+    java_register_method("HorizontalScreenPatrolAI", "processAI", (void*) HorizontalScreenPatrolAI_processAI);
+    java_register_method("HorizontalScreenPatrolAI", "nextDirection", (void*) HorizontalScreenPatrolAI_nextDirection);
+}
+
 static void HorizontalScreenPatrolAI_initFields(HorizontalScreenPatrolAI* this) {
-    this->keyDirection = Canvas_LEFT;
+    this->keyDirection = (Canvas_staticInit(), Canvas_LEFT);
     this->displayInfoSingleton = DisplayInfoSingleton_getInstance();
     this->firingX = DisplayInfoSingleton_getLastHalfWidth(this->displayInfoSingleton);
     this->firedIndex = 0;
@@ -77,16 +107,17 @@ static void HorizontalScreenPatrolAI_initFields(HorizontalScreenPatrolAI* this) 
 
 
 void HorizontalScreenPatrolAI_init(HorizontalScreenPatrolAI* this, ABHashtable* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) {
+    HorizontalScreenPatrolAI_register();
         BasicAI_init(&this->base, ownerLayerInterface, gameInput);
         HorizontalScreenPatrolAI_initFields(this);
-        this->sound = ((Sound*) ABHashtable_get(hashtable, HorizontalScreenPatrolAI_SOUND));
+        this->sound = ((Sound*) Hashtable_get(hashtable, (HorizontalScreenPatrolAI_staticInit(), HorizontalScreenPatrolAI_SOUND)));
         if (this->sound == nullptr) {
             java_throw(java_exception_new("Exception", "No Sound Provided!!"));
         }
 }
 
 HorizontalScreenPatrolAI* HorizontalScreenPatrolAI_new(ABHashtable* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) {
-    HorizontalScreenPatrolAI* this = calloc(1, sizeof(HorizontalScreenPatrolAI));
+    HorizontalScreenPatrolAI* this = java_object_alloc(sizeof(HorizontalScreenPatrolAI), "HorizontalScreenPatrolAI");
     HorizontalScreenPatrolAI_init(this, hashtable, ownerLayerInterface, gameInput);
     return this;
 }
@@ -96,7 +127,7 @@ HorizontalScreenPatrolAI* HorizontalScreenPatrolAI_new(ABHashtable* hashtable, A
 void HorizontalScreenPatrolAI_processAI(HorizontalScreenPatrolAI* this, AllBinaryLayerManager* allBinaryLayerManager) {
         BasicAI_processKeyAI((&this->base), this->keyDirection);
         if (TimeDelayHelper_isTimeTNT(this->timeDelayHelper)) {
-            AllBinaryLayer* layerInterface = HorizontalScreenPatrolAI_getOwnerLayerInterface(this);
+            AllBinaryLayer* layerInterface = BasicAI_getOwnerLayerInterface(this);
             int32_t currentOwnerLayerX = AllBinaryLayer_getXP(layerInterface);
             if (currentOwnerLayerX < -AllBinaryLayer_getWidth(layerInterface)) {
                 int32_t y = MyRandomFactory_getAbsoluteNextIntAllowZero(MyRandomFactory_getInstance(), 50);
@@ -106,15 +137,15 @@ void HorizontalScreenPatrolAI_processAI(HorizontalScreenPatrolAI* this, AllBinar
                 PlayerQueue_add(this->secondaryPlayerQueue, this->sound);
             }
             if (currentOwnerLayerX < this->firingX && currentOwnerLayerX > -AllBinaryLayer_getWidth(layerInterface)) {
-                BasicAI_processKeyAI((&this->base), Canvas_KEY_NUM1);
+                BasicAI_processKeyAI((&this->base), (Canvas_staticInit(), Canvas_KEY_NUM1));
                 AllBinaryGameLayerManager* gameLayerManager = ((AllBinaryGameLayerManager*) allBinaryLayerManager);
-                int32_t FIRE = (JAVA_CALL(AllBinaryGameLayerManager_getGameInfo(gameLayerManager), getCurrentLevel) + 12) >> 2;
+                int32_t FIRE = (GameInfo_getCurrentLevel(AllBinaryGameLayerManager_getGameInfo(gameLayerManager)) + 12) >> 2;
                 if (FIRE > this->MAX_FIRE) {
                     FIRE = this->MAX_FIRE;
                 }
                 if (this->firedIndex > FIRE) {
                     this->firedIndex = 0;
-                    this->firingX = Integer_MIN_VALUE;
+                    this->firingX = (Integer_staticInit(), Integer_MIN_VALUE);
                 }
                 this->firedIndex++;
             }

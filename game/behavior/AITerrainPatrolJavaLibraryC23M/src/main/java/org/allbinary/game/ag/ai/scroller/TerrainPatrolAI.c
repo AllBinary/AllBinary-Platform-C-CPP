@@ -1,28 +1,5 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.ag.ai.scroller
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/ag/ai/scroller/TerrainPatrolAI.h"
 #include "org/allbinary/game/input/GameInput.h"
 #include "org/allbinary/game/terrain/BasicTerrainInfo.h"
 #include "org/allbinary/game/terrain/TerrainEvent.h"
@@ -35,21 +12,40 @@
 #include "org/allbinary/util/ABHashtable.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/game/ag/ai/scroller/PacePatrolAI.h"
+#if __has_include("org/allbinary/math/AngleFactory.h")
+#include "org/allbinary/math/AngleFactory.h"
+#endif
+#if __has_include("org/allbinary/game/terrain/TerrainEventHandler.h")
+#include "org/allbinary/game/terrain/TerrainEventHandler.h"
+#endif
+#if __has_include("org/allbinary/game/terrain/TerrainEventCircularStaticPool.h")
+#include "org/allbinary/game/terrain/TerrainEventCircularStaticPool.h"
+#endif
 
-typedef struct TerrainPatrolAI TerrainPatrolAI;
-struct TerrainPatrolAI {
-    PacePatrolAI base;
-    TerrainEventListener* terrainEventListener;
-    Angle* DOWN;
-    BasicTerrainInfo* CLIFF;
-};
 
 
-TerrainPatrolAI* TerrainPatrolAI_new(ABHashtable* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
 
-void TerrainPatrolAI_init(TerrainPatrolAI* this, ABHashtable* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
-void TerrainPatrolAI_update(TerrainPatrolAI* this);
+
 static void TerrainPatrolAI_changeDirectionIfCliffReached(TerrainPatrolAI* this);
+
+void TerrainPatrolAI_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void TerrainPatrolAI_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("TerrainPatrolAI", "PacePatrolAI");
+    java_register_method("TerrainPatrolAI", "update", (void*) TerrainPatrolAI_update);
+    java_register_method("TerrainPatrolAI", "changeDirectionIfCliffReached", (void*) TerrainPatrolAI_changeDirectionIfCliffReached);
+}
 
 static void TerrainPatrolAI_initFields(TerrainPatrolAI* this) {
     this->terrainEventListener = TerrainEventListener_new();
@@ -59,6 +55,7 @@ static void TerrainPatrolAI_initFields(TerrainPatrolAI* this) {
 
 
 void TerrainPatrolAI_init(TerrainPatrolAI* this, ABHashtable* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) {
+    TerrainPatrolAI_register();
         PacePatrolAI_init(&this->base, hashtable, ownerLayerInterface, gameInput);
         TerrainPatrolAI_initFields(this);
         TerrainEventHandler_addListener(TerrainEventHandler_getInstance(ownerLayerInterface), this->terrainEventListener);
@@ -66,14 +63,14 @@ void TerrainPatrolAI_init(TerrainPatrolAI* this, ABHashtable* hashtable, AllBina
 }
 
 TerrainPatrolAI* TerrainPatrolAI_new(ABHashtable* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) {
-    TerrainPatrolAI* this = calloc(1, sizeof(TerrainPatrolAI));
+    TerrainPatrolAI* this = java_object_alloc(sizeof(TerrainPatrolAI), "TerrainPatrolAI");
     TerrainPatrolAI_init(this, hashtable, ownerLayerInterface, gameInput);
     return this;
 }
 
 
 void TerrainPatrolAI_update(TerrainPatrolAI* this) {
-        PacePatrolAI_update((&this->base));
+        BasePatrolAI_update((&this->base));
         TerrainPatrolAI_changeDirectionIfCliffReached(this);
 }
 
@@ -86,10 +83,10 @@ static void TerrainPatrolAI_changeDirectionIfCliffReached(TerrainPatrolAI* this)
             BasicTerrainInfo* basicTerrainInfo = TerrainEvent_getBasicTerrainInfo(terrainEvent);
             Angle* angle = BasicTerrainInfo_getAngle(basicTerrainInfo);
             if (angle == this->DOWN) {
-                TerrainPatrolAI_nextDirection(this);
-                if (!this->isFollowLimitedByTerrain) {
-                    JAVA_CALL(this->logUtil, putF, "Following Limited", this, "onTerrainEvent");
-                    this->isFollowLimitedByTerrain = true;
+                BasePatrolAI_nextDirection(this);
+                if (!this->base.isFollowLimitedByTerrain) {
+                    LogUtil_putF(this->base.base.base.logUtil, "Following Limited", this, "onTerrainEvent");
+                    this->base.isFollowLimitedByTerrain = true;
                 }
             }
         }

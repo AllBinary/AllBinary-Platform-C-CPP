@@ -1,63 +1,53 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation.image
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Image.h"
+#include "org/allbinary/animation/image/BaseImageAnimationFactory.h"
+#include "javax/microedition/lcdui/Image.h"
 #include "org/allbinary/animation/Animation.h"
 #include "org/allbinary/animation/AnimationBehaviorFactory.h"
-#include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
 #include "org/allbinary/animation/NullAnimationFactory.h"
 #include "org/allbinary/image/AnimationFactoryImageScaleUtil.h"
-#include "org/allbinary/logic/communication/log/ForcedLogUtil.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/media/ScaleProperties.h"
 #include "org/allbinary/string/CommonLabels.h"
 #include "org/allbinary/string/CommonSeps.h"
-
-typedef struct BaseImageAnimationFactory BaseImageAnimationFactory;
-struct BaseImageAnimationFactory {
-    AnimationInterfaceFactoryInterface AnimationInterfaceFactoryInterface_interface;
-    AnimationFactoryImageScaleUtil* animationFactoryImageScaleUtil;
-    Image* image;
-    AnimationBehaviorFactory* animationBehaviorFactory;
-    int32_t* sequenceArray;
-    AnimationFactoryInitializationVisitor* animationFactoryInitializationVisitor;
-    ScaleProperties* scaleProperties;
-};
+#include "org/allbinary/animation/image/AnimationFactoryInitializationVisitor.h"
+#if __has_include("org/allbinary/animation/NullAnimationFactory.h")
+#include "org/allbinary/animation/NullAnimationFactory.h"
+#endif
 
 
-BaseImageAnimationFactory* BaseImageAnimationFactory_new(Image* image, int32_t* sequenceArray, int32_t width, int32_t height, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory);
-BaseImageAnimationFactory* BaseImageAnimationFactory_createFactoryBase(Image* image, int32_t* sequenceArray, int32_t width, int32_t height, AnimationBehaviorFactory* animationBehaviorFactory);
 
-void BaseImageAnimationFactory_init(BaseImageAnimationFactory* this, Image* image, int32_t* sequenceArray, int32_t width, int32_t height, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory);
-Animation* BaseImageAnimationFactory_getInstance(BaseImageAnimationFactory* this, int32_t instanceId);
-Image* BaseImageAnimationFactory_getImage(BaseImageAnimationFactory* this);
-int32_t* BaseImageAnimationFactory_getSequenceArray(BaseImageAnimationFactory* this);
-void BaseImageAnimationFactory_setInitialScale(BaseImageAnimationFactory* this, ScaleProperties* scaleProperties);
-AnimationFactoryInitializationVisitor* BaseImageAnimationFactory_getAnimationFactoryInitializationVisitorP(BaseImageAnimationFactory* this);
-ScaleProperties* BaseImageAnimationFactory_getScalePropertiesP(BaseImageAnimationFactory* this);
-const char* BaseImageAnimationFactory_toString(BaseImageAnimationFactory* this);
+
+
+
+
+
+
+
+
+
+void BaseImageAnimationFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void BaseImageAnimationFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("BaseImageAnimationFactory", nullptr);
+    java_register_method("BaseImageAnimationFactory", "getInstance", (void*) BaseImageAnimationFactory_getInstance);
+    java_register_method("BaseImageAnimationFactory", "getImage", (void*) BaseImageAnimationFactory_getImage);
+    java_register_method("BaseImageAnimationFactory", "getSequenceArray", (void*) BaseImageAnimationFactory_getSequenceArray);
+    java_register_method("BaseImageAnimationFactory", "setInitialScale", (void*) BaseImageAnimationFactory_setInitialScale);
+    java_register_method("BaseImageAnimationFactory", "getAnimationFactoryInitializationVisitorP", (void*) BaseImageAnimationFactory_getAnimationFactoryInitializationVisitorP);
+    java_register_method("BaseImageAnimationFactory", "getScalePropertiesP", (void*) BaseImageAnimationFactory_getScalePropertiesP);
+    java_register_method("BaseImageAnimationFactory", "toString", (void*) BaseImageAnimationFactory_toString);
+}
 
 static void BaseImageAnimationFactory_initFields(BaseImageAnimationFactory* this) {
     this->animationFactoryImageScaleUtil = AnimationFactoryImageScaleUtil_getInstance();
@@ -65,7 +55,7 @@ static void BaseImageAnimationFactory_initFields(BaseImageAnimationFactory* this
     
     
     
-    this->scaleProperties = ScaleProperties_instance;
+    this->scaleProperties = (ScaleProperties_staticInit(), ScaleProperties_instance);
 }
 
 
@@ -76,6 +66,7 @@ BaseImageAnimationFactory* BaseImageAnimationFactory_createFactoryBase(Image* im
 
 
 void BaseImageAnimationFactory_init(BaseImageAnimationFactory* this, Image* image, int32_t* sequenceArray, int32_t width, int32_t height, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory) {
+    BaseImageAnimationFactory_register();
     BaseImageAnimationFactory_initFields(this);
         this->animationFactoryInitializationVisitor = AnimationFactoryInitializationVisitor_new();
         this->image = image;
@@ -88,7 +79,7 @@ void BaseImageAnimationFactory_init(BaseImageAnimationFactory* this, Image* imag
 }
 
 BaseImageAnimationFactory* BaseImageAnimationFactory_new(Image* image, int32_t* sequenceArray, int32_t width, int32_t height, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory) {
-    BaseImageAnimationFactory* this = calloc(1, sizeof(BaseImageAnimationFactory));
+    BaseImageAnimationFactory* this = java_object_alloc(sizeof(BaseImageAnimationFactory), "BaseImageAnimationFactory");
     BaseImageAnimationFactory_init(this, image, sequenceArray, width, height, dx, dy, animationBehaviorFactory);
     return this;
 }
@@ -96,7 +87,7 @@ BaseImageAnimationFactory* BaseImageAnimationFactory_new(Image* image, int32_t* 
 
 // throws Exception
 Animation* BaseImageAnimationFactory_getInstance(BaseImageAnimationFactory* this, int32_t instanceId) {
-        return JAVA_CALL(NullAnimationFactory_getFactoryInstance(), getInstance, instanceId);
+        return NullAnimationFactory_getInstance(NullAnimationFactory_getFactoryInstance(), instanceId);
 }
 
 
@@ -113,8 +104,8 @@ int32_t* BaseImageAnimationFactory_getSequenceArray(BaseImageAnimationFactory* t
 void BaseImageAnimationFactory_setInitialScale(BaseImageAnimationFactory* this, ScaleProperties* scaleProperties) {
         this->scaleProperties = scaleProperties;
         if (this->scaleProperties->shouldScale) {
-            this->scaleProperties->scaleWidth = ((int32_t) (this->animationFactoryInitializationVisitor->width * this->scaleProperties->scaleX));
-            this->scaleProperties->scaleHeight = ((int32_t) (this->animationFactoryInitializationVisitor->height * this->scaleProperties->scaleY));
+            this->scaleProperties->scaleWidth = ((int32_t) (((float) this->animationFactoryInitializationVisitor->width) * this->scaleProperties->scaleX));
+            this->scaleProperties->scaleHeight = ((int32_t) (((float) this->animationFactoryInitializationVisitor->height) * this->scaleProperties->scaleY));
         } else {
         }
 }
@@ -134,11 +125,11 @@ const char* BaseImageAnimationFactory_toString(BaseImageAnimationFactory* this) 
         CommonSeps* commonSeps = CommonSeps_getInstance();
         CommonLabels* commonLabels = CommonLabels_getInstance();
         StringMaker* stringBuffer = StringMaker_new();
-        StringMaker_append(stringBuffer, _toString((&this->base)));
+        StringMaker_append(stringBuffer, java_object_toString(this));
         StringMaker_append(stringBuffer, commonLabels->HEIGHT_LABEL);
-        StringMaker_appendint(stringBuffer, ((int32_t) Image_getHeight(this->image)));
+        StringMaker_appendint(stringBuffer, Image_getHeight(this->image));
         StringMaker_append(stringBuffer, commonSeps->SPACE);
-        StringMaker_append(stringBuffer, AnimationFactoryInitializationVisitor_toString(this->animationFactoryInitializationVisitor));
-        return StringMaker_toString(stringBuffer);
+        StringMaker_append(stringBuffer, java_string_of(this->animationFactoryInitializationVisitor));
+        return java_string_of(stringBuffer);
 }
 

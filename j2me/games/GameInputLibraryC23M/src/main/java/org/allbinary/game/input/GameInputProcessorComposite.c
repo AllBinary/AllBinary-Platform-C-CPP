@@ -1,48 +1,43 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.input
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-#include "org/allbinary/logic/communication/log/LogUtil.h"
+#include "org/allbinary/game/input/GameInputProcessorComposite.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
 #include "org/allbinary/game/input/PlayerGameInput.h"
+#include "org/allbinary/game/input/GameInputProcessorInterface.h"
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
 
-typedef struct GameInputProcessorComposite GameInputProcessorComposite;
-struct GameInputProcessorComposite {
-    PlayerGameInput base;
-    const char* name;
-    GameInputProcessorInterface* gameInputProcessorInterface;
-    const char* NAME_LABEL;
-};
 
 
-GameInputProcessorComposite* GameInputProcessorComposite_new(const char* name, GameInputProcessorInterface* gameInputProcessorInterface);
 
-void GameInputProcessorComposite_init(GameInputProcessorComposite* this, const char* name, GameInputProcessorInterface* gameInputProcessorInterface);
-void GameInputProcessorComposite_update(GameInputProcessorComposite* this);
-const char* GameInputProcessorComposite_toString(GameInputProcessorComposite* this);
+
+
+void GameInputProcessorComposite_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void GameInputProcessorComposite_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GameInputProcessorComposite", "PlayerGameInput");
+    java_register_method("GameInputProcessorComposite", "update", (void*) GameInputProcessorComposite_update);
+    java_register_method("GameInputProcessorComposite", "toString", (void*) GameInputProcessorComposite_toString);
+}
 
 static void GameInputProcessorComposite_initFields(GameInputProcessorComposite* this) {
     
@@ -52,6 +47,7 @@ static void GameInputProcessorComposite_initFields(GameInputProcessorComposite* 
 
 
 void GameInputProcessorComposite_init(GameInputProcessorComposite* this, const char* name, GameInputProcessorInterface* gameInputProcessorInterface) {
+    GameInputProcessorComposite_register();
         PlayerGameInput_init(&this->base, BasicArrayListD_new(), BasicArrayListD_new(), -1);
         GameInputProcessorComposite_initFields(this);
         this->name = name;
@@ -59,7 +55,7 @@ void GameInputProcessorComposite_init(GameInputProcessorComposite* this, const c
 }
 
 GameInputProcessorComposite* GameInputProcessorComposite_new(const char* name, GameInputProcessorInterface* gameInputProcessorInterface) {
-    GameInputProcessorComposite* this = calloc(1, sizeof(GameInputProcessorComposite));
+    GameInputProcessorComposite* this = java_object_alloc(sizeof(GameInputProcessorComposite), "GameInputProcessorComposite");
     GameInputProcessorComposite_init(this, name, gameInputProcessorInterface);
     return this;
 }
@@ -68,15 +64,15 @@ GameInputProcessorComposite* GameInputProcessorComposite_new(const char* name, G
 // synchronized
 void GameInputProcessorComposite_update(GameInputProcessorComposite* this) {
         JAVA_TRY {
-            BasicArrayList* list = GameInputProcessorComposite_getGameKeyEventList(this);
+            BasicArrayList* list = GameInput_getGameKeyEventList(this);
             GameInputProcessorInterface_onInput(this->gameInputProcessorInterface, list);
         } JAVA_CATCH(Exception, e) {
-            JAVA_CALL(this->logUtil, put, this->commonStrings->EXCEPTION, this, this->commonStrings->UPDATE, e);
+            LogUtil_put(this->base.base.logUtil, this->base.base.commonStrings->EXCEPTION, this, this->base.base.commonStrings->UPDATE, e);
         } JAVA_END_TRY;
 }
 
 
 const char* GameInputProcessorComposite_toString(GameInputProcessorComposite* this) {
-        return JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), PlayerGameInput_toString((&this->base))), append, this->NAME_LABEL), append, this->name), toString);
+        return java_string_of(StringMaker_append(StringMaker_append(StringMaker_append(StringMaker_new(), java_object_toString((&this->base))), this->NAME_LABEL), this->name));
 }
 

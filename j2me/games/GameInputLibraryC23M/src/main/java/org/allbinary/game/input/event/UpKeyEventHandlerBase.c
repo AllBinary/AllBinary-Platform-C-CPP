@@ -1,55 +1,54 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.input.event
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/input/event/UpKeyEventHandlerBase.h"
 #include "org/allbinary/game/input/PlayerGameInput.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/logic/util/event/EventListenerInterface.h"
 #include "org/allbinary/logic/util/event/EventStrings.h"
-#include "org/allbinary/logic/util/event/handler/BasicEventHandler.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
+#include "org/allbinary/game/input/event/UpKeyEventListenerInterface.h"
+#if __has_include("org/allbinary/logic/util/event/EventStrings.h")
+#include "org/allbinary/logic/util/event/EventStrings.h"
+#endif
+#if __has_include("org/allbinary/logic/util/event/EventStrings.h")
+#include "org/allbinary/logic/util/event/EventStrings.h"
+#endif
 
-typedef struct UpKeyEventHandlerBase UpKeyEventHandlerBase;
-struct UpKeyEventHandlerBase {
-    BasicEventHandler base;
-    BasicArrayList* list;
-};
 
 static const char* UpKeyEventHandlerBase_TOTAL_LISTENERS = " Total PlayerGameInput Listeners: ";
 static const char* UpKeyEventHandlerBase_LISTENER_LABEL = " PlayerGameInput Listener: ";
 
-UpKeyEventHandlerBase* UpKeyEventHandlerBase_new(void);
 
-void UpKeyEventHandlerBase_init(UpKeyEventHandlerBase* this);
-void UpKeyEventHandlerBase_addListener(UpKeyEventHandlerBase* this, PlayerGameInput* playerGameInput);
-void UpKeyEventHandlerBase_removeAllListeners(UpKeyEventHandlerBase* this);
-void UpKeyEventHandlerBase_removeListenerSingleThreaded(UpKeyEventHandlerBase* this, EventListenerInterface* eventListenerInterface);
-void UpKeyEventHandlerBase_removeListener(UpKeyEventHandlerBase* this, EventListenerInterface* eventListenerInterface);
-void UpKeyEventHandlerBase_fireEventForInteger(UpKeyEventHandlerBase* this, int32_t eventObject);
-void UpKeyEventHandlerBase_processForInteger(UpKeyEventHandlerBase* this, int32_t eventObject, EventListenerInterface* eventListenerInterface);
-const char* UpKeyEventHandlerBase_toString(UpKeyEventHandlerBase* this);
+
+
+
+
+
+
+
+void UpKeyEventHandlerBase_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void UpKeyEventHandlerBase_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("UpKeyEventHandlerBase", "BasicEventHandler");
+    java_register_method("UpKeyEventHandlerBase", "addListener", (void*) UpKeyEventHandlerBase_addListener);
+    java_register_method("UpKeyEventHandlerBase", "removeAllListeners", (void*) UpKeyEventHandlerBase_removeAllListeners);
+    java_register_method("UpKeyEventHandlerBase", "removeListenerSingleThreaded", (void*) UpKeyEventHandlerBase_removeListenerSingleThreaded);
+    java_register_method("UpKeyEventHandlerBase", "removeListener", (void*) UpKeyEventHandlerBase_removeListener);
+    java_register_method("UpKeyEventHandlerBase", "fireEventForInteger", (void*) UpKeyEventHandlerBase_fireEventForInteger);
+    java_register_method("UpKeyEventHandlerBase", "processForInteger", (void*) UpKeyEventHandlerBase_processForInteger);
+    java_register_method("UpKeyEventHandlerBase", "toString", (void*) UpKeyEventHandlerBase_toString);
+}
 
 static void UpKeyEventHandlerBase_initFields(UpKeyEventHandlerBase* this) {
     this->list = BasicArrayListD_new();
@@ -57,12 +56,13 @@ static void UpKeyEventHandlerBase_initFields(UpKeyEventHandlerBase* this) {
 
 
 void UpKeyEventHandlerBase_init(UpKeyEventHandlerBase* this) {
+    UpKeyEventHandlerBase_register();
     BasicEventHandler_init(&this->base);
     UpKeyEventHandlerBase_initFields(this);
 }
 
 UpKeyEventHandlerBase* UpKeyEventHandlerBase_new(void) {
-    UpKeyEventHandlerBase* this = calloc(1, sizeof(UpKeyEventHandlerBase));
+    UpKeyEventHandlerBase* this = java_object_alloc(sizeof(UpKeyEventHandlerBase), "UpKeyEventHandlerBase");
     UpKeyEventHandlerBase_init(this);
     return this;
 }
@@ -101,17 +101,17 @@ void UpKeyEventHandlerBase_fireEventForInteger(UpKeyEventHandlerBase* this, int3
                 PlayerGameInput* playerGameInput = ((PlayerGameInput*) this->list->objectArray[index]);
                 PlayerGameInput_onUpKeyEvent(playerGameInput, eventObject);
             } JAVA_CATCH(Exception, e) {
-                JAVA_CALL(this->logUtil, put, this->commonStrings->EXCEPTION, this, EventStrings_getInstance()->FIRE_EVENT, e);
+                LogUtil_put(this->base.logUtil, this->base.commonStrings->EXCEPTION, this, EventStrings_getInstance()->FIRE_EVENT, e);
             } JAVA_END_TRY;
         }
         int32_t index = 0;
         EventListenerInterface* eventListenerInterface = nullptr;
-        while (index < JAVA_CALL(this->eventListenerInterfaceList, size)) {
+        while (index < BasicArrayList_size(this->base.eventListenerInterfaceList)) {
             JAVA_TRY {
-                eventListenerInterface = ((EventListenerInterface*) JAVA_CALL(this->eventListenerInterfaceList, get, index));
+                eventListenerInterface = ((EventListenerInterface*) BasicArrayList_get(this->base.eventListenerInterfaceList, index));
                 UpKeyEventHandlerBase_processForInteger(this, eventObject, eventListenerInterface);
             } JAVA_CATCH(Exception, e) {
-                JAVA_CALL(this->logUtil, put, this->commonStrings->EXCEPTION, this, EventStrings_getInstance()->FIRE_EVENT, e);
+                LogUtil_put(this->base.logUtil, this->base.commonStrings->EXCEPTION, this, EventStrings_getInstance()->FIRE_EVENT, e);
             } JAVA_END_TRY;
             index++;
         }
@@ -134,11 +134,11 @@ const char* UpKeyEventHandlerBase_toString(UpKeyEventHandlerBase* this) {
             JAVA_TRY {
                 EventListenerInterface* eventListenerInterface = ((EventListenerInterface*) BasicArrayList_get(this->list, index));
                 StringMaker_append(stringBuffer, UpKeyEventHandlerBase_LISTENER_LABEL);
-                StringMaker_append(stringBuffer, EventListenerInterface_toString(eventListenerInterface));
+                StringMaker_append(stringBuffer, java_string_of(eventListenerInterface));
             } JAVA_CATCH(Exception, e) {
-                JAVA_CALL(this->logUtil, put, this->commonStrings->EXCEPTION, this, this->commonStrings->TOSTRING, e);
+                LogUtil_put(this->base.logUtil, this->base.commonStrings->EXCEPTION, this, this->base.commonStrings->TOSTRING, e);
             } JAVA_END_TRY;
         }
-        return StringMaker_toString(stringBuffer);
+        return java_string_of(stringBuffer);
 }
 

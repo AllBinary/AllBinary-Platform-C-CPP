@@ -1,60 +1,79 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.direction
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/direction/DirectionFactory.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/string/CommonPhoneStrings.h"
 #include "org/allbinary/string/CommonSeps.h"
+#include "org/allbinary/direction/Direction.h"
+#if __has_include("org/allbinary/string/CommonPhoneStrings.h")
+#include "org/allbinary/string/CommonPhoneStrings.h"
+#endif
+#if __has_include("org/allbinary/string/CommonPhoneStrings.h")
+#include "org/allbinary/string/CommonPhoneStrings.h"
+#endif
+#if __has_include("org/allbinary/string/CommonPhoneStrings.h")
+#include "org/allbinary/string/CommonPhoneStrings.h"
+#endif
+#if __has_include("org/allbinary/string/CommonPhoneStrings.h")
+#include "org/allbinary/string/CommonPhoneStrings.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
 
-typedef struct DirectionFactory DirectionFactory;
-struct DirectionFactory {
-    const char* NAME;
-    Direction* LEFT;
-    Direction* RIGHT;
-    Direction* DOWN;
-    Direction* UP;
-    Direction* UP_LEFT;
-    Direction* UP_RIGHT;
-    Direction* DOWN_LEFT;
-    Direction* DOWN_RIGHT;
-    Direction* NOT_BORDERED_WITH;
-    Direction* NO_DIRECTION;
-    Direction* TOP;
-    Direction* BOTTOM;
-    Direction* ALL_DIRECTION;
-};
 
 static DirectionFactory* DirectionFactory_instance;
 
-DirectionFactory* DirectionFactory_new(void);
-DirectionFactory* DirectionFactory_getInstance(void);
 
-void DirectionFactory_init(DirectionFactory* this);
 
-// Static fields with runtime initializers: call this once at startup
 void DirectionFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     DirectionFactory_instance = DirectionFactory_new();
+}
+
+void DirectionFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("DirectionFactory", nullptr);
 }
 
 static void DirectionFactory_initFields(DirectionFactory* this) {
@@ -76,25 +95,26 @@ static void DirectionFactory_initFields(DirectionFactory* this) {
 
 
 DirectionFactory* DirectionFactory_getInstance(void) {
-        return DirectionFactory_instance;
+        return (DirectionFactory_staticInit(), DirectionFactory_instance);
 }
 
 
 void DirectionFactory_init(DirectionFactory* this) {
+    DirectionFactory_register();
     DirectionFactory_initFields(this);
         StringMaker* stringBuffer = StringMaker_new();
         CommonSeps* commonSeps = CommonSeps_getInstance();
-        this->UP_LEFT = Direction_new("UP LEFT", JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_append(stringBuffer, Direction_getOtherName(this->UP)), append, commonSeps->SPACE), append, Direction_getOtherName(this->LEFT)), toString), 4, 0);
+        this->UP_LEFT = Direction_new("UP LEFT", java_string_of(StringMaker_append(StringMaker_append(StringMaker_append(stringBuffer, Direction_getOtherName(this->UP)), commonSeps->SPACE), Direction_getOtherName(this->LEFT))), 4, 0);
         StringMaker_delete(stringBuffer, 0, StringMaker_length(stringBuffer));
-        this->UP_RIGHT = Direction_new("UP RIGHT", JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_append(stringBuffer, Direction_getOtherName(this->UP)), append, commonSeps->SPACE), append, Direction_getOtherName(this->RIGHT)), toString), 5, 0);
+        this->UP_RIGHT = Direction_new("UP RIGHT", java_string_of(StringMaker_append(StringMaker_append(StringMaker_append(stringBuffer, Direction_getOtherName(this->UP)), commonSeps->SPACE), Direction_getOtherName(this->RIGHT))), 5, 0);
         StringMaker_delete(stringBuffer, 0, StringMaker_length(stringBuffer));
-        this->DOWN_LEFT = Direction_new("DOWN LEFT", JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_append(stringBuffer, Direction_getOtherName(this->DOWN)), append, commonSeps->SPACE), append, Direction_getOtherName(this->LEFT)), toString), 6, 0);
+        this->DOWN_LEFT = Direction_new("DOWN LEFT", java_string_of(StringMaker_append(StringMaker_append(StringMaker_append(stringBuffer, Direction_getOtherName(this->DOWN)), commonSeps->SPACE), Direction_getOtherName(this->LEFT))), 6, 0);
         StringMaker_delete(stringBuffer, 0, StringMaker_length(stringBuffer));
-        this->DOWN_RIGHT = Direction_new("DOWN RIGHT", JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_append(stringBuffer, Direction_getOtherName(this->DOWN)), append, commonSeps->SPACE), append, Direction_getOtherName(this->RIGHT)), toString), 7, 0);
+        this->DOWN_RIGHT = Direction_new("DOWN RIGHT", java_string_of(StringMaker_append(StringMaker_append(StringMaker_append(stringBuffer, Direction_getOtherName(this->DOWN)), commonSeps->SPACE), Direction_getOtherName(this->RIGHT))), 7, 0);
 }
 
 DirectionFactory* DirectionFactory_new(void) {
-    DirectionFactory* this = calloc(1, sizeof(DirectionFactory));
+    DirectionFactory* this = java_object_alloc(sizeof(DirectionFactory), "DirectionFactory");
     DirectionFactory_init(this);
     return this;
 }

@@ -1,51 +1,54 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.ai
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/ai/ArtificialIntelligenceLayerProcessor.h"
 #include "org/allbinary/layer/AllBinaryLayer.h"
 #include "org/allbinary/layer/AllBinaryLayerManager.h"
-#include "org/allbinary/layer/LayerProcessor.h"
+#include "org/allbinary/ai/ArtificialIntelligenceLayerManager.h"
+#include "org/allbinary/ai/ArtificialIntelligenceCompositeInterface.h"
+#if __has_include("org/allbinary/ai/ArtificialIntelligenceInterface.h")
+#include "org/allbinary/ai/ArtificialIntelligenceInterface.h"
+#endif
+#if __has_include("org/allbinary/layer/ArtificialIntelligenceInterface.h")
+#include "org/allbinary/layer/ArtificialIntelligenceInterface.h"
+#endif
+#if __has_include("org/allbinary/layer/ArtificialIntelligenceInterface.h")
+#include "org/allbinary/layer/ArtificialIntelligenceInterface.h"
+#endif
+#if __has_include("org/allbinary/layer/ArtificialIntelligenceInterface.h")
+#include "org/allbinary/layer/ArtificialIntelligenceInterface.h"
+#endif
 
-typedef struct ArtificialIntelligenceLayerProcessor ArtificialIntelligenceLayerProcessor;
-struct ArtificialIntelligenceLayerProcessor {
-    LayerProcessor base;
-};
 
 
-ArtificialIntelligenceLayerProcessor* ArtificialIntelligenceLayerProcessor_new(void);
 
-void ArtificialIntelligenceLayerProcessor_init(ArtificialIntelligenceLayerProcessor* this);
-void ArtificialIntelligenceLayerProcessor_processAt(ArtificialIntelligenceLayerProcessor* this, AllBinaryLayerManager* allBinaryLayerManager, AllBinaryLayer* layerInterface, int32_t index);
-bool ArtificialIntelligenceLayerProcessor_isProcessorLayer(ArtificialIntelligenceLayerProcessor* this, AllBinaryLayer* layerInterface);
+
+
+void ArtificialIntelligenceLayerProcessor_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void ArtificialIntelligenceLayerProcessor_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ArtificialIntelligenceLayerProcessor", "LayerProcessor");
+    java_register_method("ArtificialIntelligenceLayerProcessor", "processAt", (void*) ArtificialIntelligenceLayerProcessor_processAt);
+    java_register_method("ArtificialIntelligenceLayerProcessor", "isProcessorLayer", (void*) ArtificialIntelligenceLayerProcessor_isProcessorLayer);
+}
 
 
 void ArtificialIntelligenceLayerProcessor_init(ArtificialIntelligenceLayerProcessor* this) {
+    ArtificialIntelligenceLayerProcessor_register();
         LayerProcessor_init(&this->base, ArtificialIntelligenceLayerManager_new());
 }
 
 ArtificialIntelligenceLayerProcessor* ArtificialIntelligenceLayerProcessor_new(void) {
-    ArtificialIntelligenceLayerProcessor* this = calloc(1, sizeof(ArtificialIntelligenceLayerProcessor));
+    ArtificialIntelligenceLayerProcessor* this = java_object_alloc(sizeof(ArtificialIntelligenceLayerProcessor), "ArtificialIntelligenceLayerProcessor");
     ArtificialIntelligenceLayerProcessor_init(this);
     return this;
 }
@@ -54,7 +57,7 @@ ArtificialIntelligenceLayerProcessor* ArtificialIntelligenceLayerProcessor_new(v
 // throws Exception
 void ArtificialIntelligenceLayerProcessor_processAt(ArtificialIntelligenceLayerProcessor* this, AllBinaryLayerManager* allBinaryLayerManager, AllBinaryLayer* layerInterface, int32_t index) {
         ArtificialIntelligenceCompositeInterface* artificialIntelligenceCompositeInterface = ((ArtificialIntelligenceCompositeInterface*) layerInterface);
-        JAVA_CALL(ArtificialIntelligenceCompositeInterface_getArtificialIntelligenceInterface(artificialIntelligenceCompositeInterface), processAI, allBinaryLayerManager);
+        ArtificialIntelligenceInterface_processAI(ArtificialIntelligenceCompositeInterface_getArtificialIntelligenceInterface(artificialIntelligenceCompositeInterface), allBinaryLayerManager);
 }
 
 

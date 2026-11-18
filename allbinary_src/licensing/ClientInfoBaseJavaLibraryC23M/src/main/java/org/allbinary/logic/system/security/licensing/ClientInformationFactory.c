@@ -1,46 +1,37 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2022 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.system.security.licensing
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/logic/system/security/licensing/ClientInformationFactory.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/logic/string/StringUtil.h"
 #include "org/allbinary/string/CommonStrings.h"
-
-typedef struct ClientInformationFactory ClientInformationFactory;
-struct ClientInformationFactory {
-    char unused;
-};
+#include "org/allbinary/logic/system/security/licensing/ClientInformation.h"
 
 
-ClientInformationFactory* ClientInformationFactory_new(void);
-ClientInformation* ClientInformationFactory_getInstance(ClientInformationFactory* this);
+
+
+void ClientInformationFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void ClientInformationFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ClientInformationFactory", nullptr);
+    java_register_method("ClientInformationFactory", "getInstance", (void*) ClientInformationFactory_getInstance);
+}
 
 void ClientInformationFactory_init(ClientInformationFactory* this) {
+    ClientInformationFactory_register();
 }
 
 ClientInformationFactory* ClientInformationFactory_new(void) {
-    ClientInformationFactory* this = calloc(1, sizeof(ClientInformationFactory));
+    ClientInformationFactory* this = java_object_alloc(sizeof(ClientInformationFactory), "ClientInformationFactory");
     ClientInformationFactory_init(this);
     return this;
 }

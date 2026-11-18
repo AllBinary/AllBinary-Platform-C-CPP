@@ -1,73 +1,76 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.media.audio
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/media/Control.h"
-// #include "javax/microedition/media/MediaException.h"
-// #include "javax/microedition/media/Player.h"
-// #include "javax/microedition/media/PlayerListener.h"
+#include "org/allbinary/media/audio/BasicPlayer.h"
+#include "javax/microedition/media/Control.h"
+#include "javax/microedition/media/MediaException.h"
+#include "javax/microedition/media/PlayerListener.h"
 #include "org/allbinary/logic/string/StringUtil.h"
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
 #include "org/allbinary/media/audio/Controllable2.h"
+#include "org/allbinary/media/audio/NullControl.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
-//BasicPlayerJavaLibrary
-typedef struct BasicPlayer BasicPlayer;
-struct BasicPlayer {
-    Player Player_interface;
-    Controllable2 Controllable2_interface;
-    CommonStrings* commonStrings;
-    BasicArrayList* listenersList;
-    int32_t stateP;
-    int32_t loopCountP;
-};
 
 const char* BasicPlayer_CONTROL_TYPE = "ToneControl";
 
-BasicPlayer* BasicPlayer_new(void);
 
-void BasicPlayer_init(BasicPlayer* this);
-const char* BasicPlayer_getContentType(BasicPlayer* this);
-Control* BasicPlayer_getControl(BasicPlayer* this, const char* controlType);
-Control** BasicPlayer_getControls(BasicPlayer* this);
-void BasicPlayer_close(BasicPlayer* this);
-void BasicPlayer_addPlayerListener(BasicPlayer* this, PlayerListener* playerListener);
-void BasicPlayer_removePlayerListener(BasicPlayer* this, PlayerListener* playerListener);
-int32_t BasicPlayer_getState(BasicPlayer* this);
-void BasicPlayer_setState(BasicPlayer* this, int32_t state);
-int64_t BasicPlayer_getDuration(BasicPlayer* this);
-int64_t BasicPlayer_getMediaTime(BasicPlayer* this);
-void BasicPlayer_deallocate(BasicPlayer* this);
-void BasicPlayer_prefetch(BasicPlayer* this);
-void BasicPlayer_realize(BasicPlayer* this);
-void BasicPlayer_setLoopCount(BasicPlayer* this, int32_t count);
-int32_t BasicPlayer_getLoopCount(BasicPlayer* this);
-int64_t BasicPlayer_setMediaTime(BasicPlayer* this, int64_t now);
-void BasicPlayer_start(BasicPlayer* this);
-void BasicPlayer_stop(BasicPlayer* this);
-void BasicPlayer_setVolume(BasicPlayer* this, int32_t leftVolume, int32_t rightVolume);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void BasicPlayer_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void BasicPlayer_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("BasicPlayer", nullptr);
+    java_register_method("BasicPlayer", "getContentType", (void*) BasicPlayer_getContentType);
+    java_register_method("BasicPlayer", "getControl", (void*) BasicPlayer_getControl);
+    java_register_method("BasicPlayer", "getControls", (void*) BasicPlayer_getControls);
+    java_register_method("BasicPlayer", "close", (void*) BasicPlayer_close);
+    java_register_method("BasicPlayer", "addPlayerListener", (void*) BasicPlayer_addPlayerListener);
+    java_register_method("BasicPlayer", "removePlayerListener", (void*) BasicPlayer_removePlayerListener);
+    java_register_method("BasicPlayer", "getState", (void*) BasicPlayer_getState);
+    java_register_method("BasicPlayer", "setState", (void*) BasicPlayer_setState);
+    java_register_method("BasicPlayer", "getDuration", (void*) BasicPlayer_getDuration);
+    java_register_method("BasicPlayer", "getMediaTime", (void*) BasicPlayer_getMediaTime);
+    java_register_method("BasicPlayer", "deallocate", (void*) BasicPlayer_deallocate);
+    java_register_method("BasicPlayer", "prefetch", (void*) BasicPlayer_prefetch);
+    java_register_method("BasicPlayer", "realize", (void*) BasicPlayer_realize);
+    java_register_method("BasicPlayer", "setLoopCount", (void*) BasicPlayer_setLoopCount);
+    java_register_method("BasicPlayer", "getLoopCount", (void*) BasicPlayer_getLoopCount);
+    java_register_method("BasicPlayer", "setMediaTime", (void*) BasicPlayer_setMediaTime);
+    java_register_method("BasicPlayer", "start", (void*) BasicPlayer_start);
+    java_register_method("BasicPlayer", "stop", (void*) BasicPlayer_stop);
+    java_register_method("BasicPlayer", "setVolume", (void*) BasicPlayer_setVolume);
+}
 
 static void BasicPlayer_initFields(BasicPlayer* this) {
     this->commonStrings = CommonStrings_getInstance();
@@ -78,13 +81,14 @@ static void BasicPlayer_initFields(BasicPlayer* this) {
 
 
 void BasicPlayer_init(BasicPlayer* this) {
+    BasicPlayer_register();
     BasicPlayer_initFields(this);
         BasicPlayer_setLoopCount(this, 0);
-        BasicPlayer_setState(this, Player_UNREALIZED);
+        BasicPlayer_setState(this, (Player_staticInit(), Player_UNREALIZED));
 }
 
 BasicPlayer* BasicPlayer_new(void) {
-    BasicPlayer* this = calloc(1, sizeof(BasicPlayer));
+    BasicPlayer* this = java_object_alloc(sizeof(BasicPlayer), "BasicPlayer");
     BasicPlayer_init(this);
     return this;
 }
@@ -178,14 +182,14 @@ int64_t BasicPlayer_setMediaTime(BasicPlayer* this, int64_t now) {
 // throws MediaException
 // synchronized
 void BasicPlayer_start(BasicPlayer* this) {
-        BasicPlayer_setState(this, Player_STARTED);
+        BasicPlayer_setState(this, (Player_staticInit(), Player_STARTED));
 }
 
 
 // throws MediaException
 // synchronized
 void BasicPlayer_stop(BasicPlayer* this) {
-        BasicPlayer_setState(this, Player_PREFETCHED);
+        BasicPlayer_setState(this, (Player_staticInit(), Player_PREFETCHED));
 }
 
 

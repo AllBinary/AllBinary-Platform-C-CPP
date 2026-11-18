@@ -1,57 +1,48 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input.gyro
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/input/gyro/SingleSensorGameUpdateProcessor.h"
 #include "org/allbinary/input/gyro/SensorGameUpdateProcessor.h"
 
-typedef struct SingleSensorGameUpdateProcessor SingleSensorGameUpdateProcessor;
-struct SingleSensorGameUpdateProcessor {
-    SensorGameUpdateProcessor base;
-};
 
 
-SingleSensorGameUpdateProcessor* SingleSensorGameUpdateProcessor_new(void);
-void SingleSensorGameUpdateProcessor_process(SingleSensorGameUpdateProcessor* this, Any* anyType);
-void SingleSensorGameUpdateProcessor_sendNotifications(SingleSensorGameUpdateProcessor* this, Any* anyType);
+
+
+void SingleSensorGameUpdateProcessor_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void SingleSensorGameUpdateProcessor_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("SingleSensorGameUpdateProcessor", "SensorGameUpdateProcessor");
+    java_register_method("SingleSensorGameUpdateProcessor", "process", (void*) SingleSensorGameUpdateProcessor_process);
+    java_register_method("SingleSensorGameUpdateProcessor", "sendNotifications", (void*) SingleSensorGameUpdateProcessor_sendNotifications);
+}
 
 void SingleSensorGameUpdateProcessor_init(SingleSensorGameUpdateProcessor* this) {
+    SingleSensorGameUpdateProcessor_register();
     SensorGameUpdateProcessor_init(&this->base);
 }
 
 SingleSensorGameUpdateProcessor* SingleSensorGameUpdateProcessor_new(void) {
-    SingleSensorGameUpdateProcessor* this = calloc(1, sizeof(SingleSensorGameUpdateProcessor));
+    SingleSensorGameUpdateProcessor* this = java_object_alloc(sizeof(SingleSensorGameUpdateProcessor), "SingleSensorGameUpdateProcessor");
     SingleSensorGameUpdateProcessor_init(this);
     return this;
 }
 
 
 // throws Exception
-void SingleSensorGameUpdateProcessor_process(SingleSensorGameUpdateProcessor* this, Any* anyType) {
+void SingleSensorGameUpdateProcessor_process(SingleSensorGameUpdateProcessor* this, void* anyType) {
 }
 
 
 // throws Exception
-void SingleSensorGameUpdateProcessor_sendNotifications(SingleSensorGameUpdateProcessor* this, Any* anyType) {
+void SingleSensorGameUpdateProcessor_sendNotifications(SingleSensorGameUpdateProcessor* this, void* anyType) {
 }
 

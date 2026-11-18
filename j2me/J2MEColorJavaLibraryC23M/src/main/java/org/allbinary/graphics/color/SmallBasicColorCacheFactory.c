@@ -3,6 +3,9 @@
 #include "org/allbinary/logic/string/StringUtil.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
 #include "org/allbinary/graphics/color/BasicColorFactory.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
 
 static SmallBasicColorCacheFactory* SmallBasicColorCacheFactory_instance;

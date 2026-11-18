@@ -1,52 +1,43 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.input
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/input/NormalJ2MEGameInputMapping.h"
 #include "org/allbinary/game/input/mapping/InputToGameKeyMapping.h"
 #include "org/allbinary/game/input/J2MEGameInputMapping.h"
-
-typedef struct NormalJ2MEGameInputMapping NormalJ2MEGameInputMapping;
-struct NormalJ2MEGameInputMapping {
-    J2MEGameInputMapping base;
-};
+#include "org/allbinary/game/input/NormalJ2MEDefaultGameInputMapping.h"
 
 
-NormalJ2MEGameInputMapping* NormalJ2MEGameInputMapping_new(void);
-InputToGameKeyMapping* NormalJ2MEGameInputMapping_getDefault(NormalJ2MEGameInputMapping* this);
+
+
+void NormalJ2MEGameInputMapping_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void NormalJ2MEGameInputMapping_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("NormalJ2MEGameInputMapping", "J2MEGameInputMapping");
+    java_register_method("NormalJ2MEGameInputMapping", "getDefault", (void*) NormalJ2MEGameInputMapping_getDefault);
+}
 
 void NormalJ2MEGameInputMapping_init(NormalJ2MEGameInputMapping* this) {
+    NormalJ2MEGameInputMapping_register();
     J2MEGameInputMapping_init(&this->base);
 }
 
 NormalJ2MEGameInputMapping* NormalJ2MEGameInputMapping_new(void) {
-    NormalJ2MEGameInputMapping* this = calloc(1, sizeof(NormalJ2MEGameInputMapping));
+    NormalJ2MEGameInputMapping* this = java_object_alloc(sizeof(NormalJ2MEGameInputMapping), "NormalJ2MEGameInputMapping");
     NormalJ2MEGameInputMapping_init(this);
     return this;
 }
 
 
 InputToGameKeyMapping* NormalJ2MEGameInputMapping_getDefault(NormalJ2MEGameInputMapping* this) {
-        return NormalJ2MEDefaultGameInputMapping_getInputMapping(NormalJ2MEDefaultGameInputMapping_new());
+        return PersistentInputMapping_getInputMapping(NormalJ2MEDefaultGameInputMapping_new());
 }
 

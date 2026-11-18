@@ -84,6 +84,8 @@ const char* BasicDecimal_toString(BasicDecimal* this);
 int32_t BasicDecimal_getScaledFactor(BasicDecimal* this);
 
 int32_t BasicDecimal_getScaledFactorValue(BasicDecimal* this);
+#define BasicDecimal_new1 BasicDecimal_new
+#define BasicDecimal_init1 BasicDecimal_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void BasicDecimal_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

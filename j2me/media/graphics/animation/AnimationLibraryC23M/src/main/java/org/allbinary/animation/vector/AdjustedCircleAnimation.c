@@ -1,49 +1,39 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation.vector
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/animation/vector/AdjustedCircleAnimation.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/AndroidUtil.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
 #include "org/allbinary/animation/vector/CircleAnimation.h"
 
-typedef struct AdjustedCircleAnimation AdjustedCircleAnimation;
-struct AdjustedCircleAnimation {
-    CircleAnimation base;
-    int32_t xAdjustment;
-    int32_t yAdjustment;
-};
 
 
-AdjustedCircleAnimation* AdjustedCircleAnimation_new(int32_t width, int32_t height, BasicColor* basicColor);
-AdjustedCircleAnimation* AdjustedCircleAnimation_createAnimation(int32_t width, int32_t height, int32_t xAdjustment, int32_t yAdjustment, BasicColor* basicColor);
-AdjustedCircleAnimation* AdjustedCircleAnimation_createW(int32_t width, int32_t height, int32_t innerWidth, BasicColor* basicColor);
 
-void AdjustedCircleAnimation_init(AdjustedCircleAnimation* this, int32_t width, int32_t height, BasicColor* basicColor);
+
+
 static void AdjustedCircleAnimation_initXY(AdjustedCircleAnimation* this, int32_t xAdjustment, int32_t yAdjustment);
-static void AdjustedCircleAnimation_init(AdjustedCircleAnimation* this, int32_t innerWidth);
-void AdjustedCircleAnimation_paintXY(AdjustedCircleAnimation* this, Graphics* graphics, int32_t x, int32_t y);
+
+static void AdjustedCircleAnimation_initMethod(AdjustedCircleAnimation* this, int32_t innerWidth);
+
+
+void AdjustedCircleAnimation_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void AdjustedCircleAnimation_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("AdjustedCircleAnimation", "CircleAnimation");
+    java_register_method("AdjustedCircleAnimation", "initXY", (void*) AdjustedCircleAnimation_initXY);
+    java_register_method("AdjustedCircleAnimation", "init", (void*) AdjustedCircleAnimation_initMethod);
+    java_register_method("AdjustedCircleAnimation", "paintXY", (void*) AdjustedCircleAnimation_paintXY);
+}
 
 static void AdjustedCircleAnimation_initFields(AdjustedCircleAnimation* this) {
     this->xAdjustment = 0;
@@ -60,18 +50,19 @@ AdjustedCircleAnimation* AdjustedCircleAnimation_createAnimation(int32_t width, 
 
 AdjustedCircleAnimation* AdjustedCircleAnimation_createW(int32_t width, int32_t height, int32_t innerWidth, BasicColor* basicColor) {
         AdjustedCircleAnimation* adjustedCircleAnimation = AdjustedCircleAnimation_new(width, height, basicColor);
-        AdjustedCircleAnimation_init(adjustedCircleAnimation, innerWidth);
+        AdjustedCircleAnimation_initMethod(adjustedCircleAnimation, innerWidth);
         return adjustedCircleAnimation;
 }
 
 
 void AdjustedCircleAnimation_init(AdjustedCircleAnimation* this, int32_t width, int32_t height, BasicColor* basicColor) {
+    AdjustedCircleAnimation_register();
         CircleAnimation_init(&this->base, width, height, basicColor);
         AdjustedCircleAnimation_initFields(this);
 }
 
 AdjustedCircleAnimation* AdjustedCircleAnimation_new(int32_t width, int32_t height, BasicColor* basicColor) {
-    AdjustedCircleAnimation* this = calloc(1, sizeof(AdjustedCircleAnimation));
+    AdjustedCircleAnimation* this = java_object_alloc(sizeof(AdjustedCircleAnimation), "AdjustedCircleAnimation");
     AdjustedCircleAnimation_init(this, width, height, basicColor);
     return this;
 }
@@ -83,20 +74,20 @@ static void AdjustedCircleAnimation_initXY(AdjustedCircleAnimation* this, int32_
 }
 
 
-static void AdjustedCircleAnimation_init(AdjustedCircleAnimation* this, int32_t innerWidth) {
+static void AdjustedCircleAnimation_initMethod(AdjustedCircleAnimation* this, int32_t innerWidth) {
         if (AndroidUtil_isAndroid()) {
             int32_t widthPortion = (((innerWidth / 3) * 10) / 7);
-            this->xAdjustment = -((this->width >> 1) - widthPortion);
+            this->xAdjustment = -((this->base.width >> 1) - widthPortion);
             this->yAdjustment = this->xAdjustment;
         } else {
-            this->xAdjustment = -((this->width >> 1) - innerWidth);
+            this->xAdjustment = -((this->base.width >> 1) - innerWidth);
             this->yAdjustment = this->xAdjustment;
         }
 }
 
 
 void AdjustedCircleAnimation_paintXY(AdjustedCircleAnimation* this, Graphics* graphics, int32_t x, int32_t y) {
-        JAVA_CALL(this->basicSetColorUtil, setBasicColorP3, graphics, AdjustedCircleAnimation_getBasicColorP(this), AdjustedCircleAnimation_getColor(this));
-        Graphics_drawArc(graphics, x + this->xAdjustment, y + this->yAdjustment, this->width, this->height, 0, this->TOTAL_ANGLE);
+        BasicColorSetUtil_setBasicColorP3(this->base.base.basicSetColorUtil, graphics, CircleAnimation_getBasicColorP(this), Animation_getColor(this));
+        Graphics_drawArc(graphics, x + this->xAdjustment, y + this->yAdjustment, this->base.width, this->base.height, 0, this->base.TOTAL_ANGLE);
 }
 

@@ -1,0 +1,213 @@
+#ifndef ORG_ALLBINARY_GRAPHICS_FORM_COMMANDCURRENTSELECTIONFORM_H
+#define ORG_ALLBINARY_GRAPHICS_FORM_COMMANDCURRENTSELECTIONFORM_H
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.graphics.form
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+typedef struct ScrollCurrentSelectionForm ScrollCurrentSelectionForm;
+typedef struct ItemPaintableFactory ItemPaintableFactory;
+typedef struct Command Command;
+typedef struct Graphics Graphics;
+typedef struct J2MEUtil J2MEUtil;
+typedef struct Animation Animation;
+typedef struct NullAnimationFactory NullAnimationFactory;
+typedef struct RectangleAdjustedAnimation RectangleAdjustedAnimation;
+typedef struct RectangleFilledAdjustedAnimation RectangleFilledAdjustedAnimation;
+typedef struct BasicColor BasicColor;
+typedef struct BasicColorFactory BasicColorFactory;
+typedef struct UpdateMyFontInterface UpdateMyFontInterface;
+typedef struct CommandTextItem CommandTextItem;
+typedef struct ABCustomItem ABCustomItem;
+#if __has_include("org/allbinary/animation/Animation.h")
+#include "org/allbinary/animation/Animation.h"
+#endif
+#include "org/allbinary/graphics/font/UpdateMyFontInterface.h"
+#include "org/allbinary/graphics/form/ScrollCurrentSelectionForm.h"
+
+typedef struct CommandCurrentSelectionForm CommandCurrentSelectionForm;
+struct CommandCurrentSelectionForm {
+    ScrollCurrentSelectionForm base;
+    UpdateMyFontInterface UpdateMyFontInterface_interface;
+    Animation** selectedAnimationArray;
+    Animation** unSelectedAnimationArray;
+};
+
+
+CommandCurrentSelectionForm* CommandCurrentSelectionForm_new(const char* title, ABCustomItem** items, int32_t border, bool moveForSmallScreen, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
+
+void CommandCurrentSelectionForm_init(CommandCurrentSelectionForm* this, const char* title, ABCustomItem** items, int32_t border, bool moveForSmallScreen, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
+
+void CommandCurrentSelectionForm_updateMeasurement(CommandCurrentSelectionForm* this, Graphics* graphics);
+
+
+
+
+
+
+Command* CommandCurrentSelectionForm_getSelectedCommand(CommandCurrentSelectionForm* this);
+
+int32_t CommandCurrentSelectionForm_append(CommandCurrentSelectionForm* this, ABCustomItem* item);
+
+void CommandCurrentSelectionForm_delete(CommandCurrentSelectionForm* this, int32_t itemNum);
+
+void CommandCurrentSelectionForm_deleteAll(CommandCurrentSelectionForm* this);
+
+void CommandCurrentSelectionForm_insert(CommandCurrentSelectionForm* this, int32_t itemNum, ABCustomItem* item);
+
+void CommandCurrentSelectionForm_set(CommandCurrentSelectionForm* this, int32_t itemNum, ABCustomItem* item);
+
+void CommandCurrentSelectionForm_paint(CommandCurrentSelectionForm* this, Graphics* graphics);
+
+int32_t CommandCurrentSelectionForm_paintItem(CommandCurrentSelectionForm* this, Graphics* graphics, int32_t index, ABCustomItem* item, int32_t x, int32_t y);
+
+int32_t CommandCurrentSelectionForm_paintUnselectedItem(CommandCurrentSelectionForm* this, Graphics* graphics, int32_t index, ABCustomItem* item, int32_t x, int32_t y);
+#define CommandCurrentSelectionForm_new6 CommandCurrentSelectionForm_new
+#define CommandCurrentSelectionForm_init6 CommandCurrentSelectionForm_init
+#ifndef CommandCurrentSelectionForm_processTempHorizontalForm
+#define CommandCurrentSelectionForm_processTempHorizontalForm ScrollCurrentSelectionForm_processTempHorizontalForm
+#endif
+#ifndef CommandCurrentSelectionForm_processHorizontalForm
+#define CommandCurrentSelectionForm_processHorizontalForm ScrollCurrentSelectionForm_processHorizontalForm
+#endif
+#ifndef CommandCurrentSelectionForm_processVerticalForm
+#define CommandCurrentSelectionForm_processVerticalForm ScrollCurrentSelectionForm_processVerticalForm
+#endif
+#ifndef CommandCurrentSelectionForm_getXTempHorizontalForm
+#define CommandCurrentSelectionForm_getXTempHorizontalForm ScrollCurrentSelectionForm_getXTempHorizontalForm
+#endif
+#ifndef CommandCurrentSelectionForm_getXHorizontalForm
+#define CommandCurrentSelectionForm_getXHorizontalForm ScrollCurrentSelectionForm_getXHorizontalForm
+#endif
+#ifndef CommandCurrentSelectionForm_getXVerticalForm
+#define CommandCurrentSelectionForm_getXVerticalForm ScrollCurrentSelectionForm_getXVerticalForm
+#endif
+#ifndef CommandCurrentSelectionForm_getDiffX
+#define CommandCurrentSelectionForm_getDiffX ScrollCurrentSelectionForm_getDiffX
+#endif
+#ifndef CommandCurrentSelectionForm_getDx
+#define CommandCurrentSelectionForm_getDx ScrollCurrentSelectionForm_getDx
+#endif
+#ifndef CommandCurrentSelectionForm_getDy
+#define CommandCurrentSelectionForm_getDy ScrollCurrentSelectionForm_getDy
+#endif
+#ifndef CommandCurrentSelectionForm_createForm
+#define CommandCurrentSelectionForm_createForm ScrollSelectionForm_createForm
+#endif
+#ifndef CommandCurrentSelectionForm_getNullScrollSelectionForm
+#define CommandCurrentSelectionForm_getNullScrollSelectionForm ScrollSelectionForm_getNullScrollSelectionForm
+#endif
+#ifndef CommandCurrentSelectionForm_getNullScrollSelectionFormHorizontal
+#define CommandCurrentSelectionForm_getNullScrollSelectionFormHorizontal ScrollSelectionForm_getNullScrollSelectionFormHorizontal
+#endif
+#ifndef CommandCurrentSelectionForm_paintItemHorizontal
+#define CommandCurrentSelectionForm_paintItemHorizontal ScrollSelectionForm_paintItemHorizontal
+#endif
+#ifndef CommandCurrentSelectionForm_paintItemVertical
+#define CommandCurrentSelectionForm_paintItemVertical ScrollSelectionForm_paintItemVertical
+#endif
+#ifndef CommandCurrentSelectionForm_paintItemTempHorizontal
+#define CommandCurrentSelectionForm_paintItemTempHorizontal ScrollSelectionForm_paintItemTempHorizontal
+#endif
+#ifndef CommandCurrentSelectionForm_getSelectedIndexForPointHorizontalDx
+#define CommandCurrentSelectionForm_getSelectedIndexForPointHorizontalDx ScrollSelectionForm_getSelectedIndexForPointHorizontalDx
+#endif
+#ifndef CommandCurrentSelectionForm_getSelectedIndexForPointVerticalDx
+#define CommandCurrentSelectionForm_getSelectedIndexForPointVerticalDx ScrollSelectionForm_getSelectedIndexForPointVerticalDx
+#endif
+#ifndef CommandCurrentSelectionForm_getSelectedIndexForPointTempHorizontalDx
+#define CommandCurrentSelectionForm_getSelectedIndexForPointTempHorizontalDx ScrollSelectionForm_getSelectedIndexForPointTempHorizontalDx
+#endif
+#ifndef CommandCurrentSelectionForm_getSelectedItem
+#define CommandCurrentSelectionForm_getSelectedItem ScrollSelectionForm_getSelectedItem
+#endif
+#ifndef CommandCurrentSelectionForm_getItemIndex
+#define CommandCurrentSelectionForm_getItemIndex ScrollSelectionForm_getItemIndex
+#endif
+#ifndef CommandCurrentSelectionForm_getStartIndex
+#define CommandCurrentSelectionForm_getStartIndex ScrollSelectionForm_getStartIndex
+#endif
+#ifndef CommandCurrentSelectionForm_getSelectedIndexForPoint
+#define CommandCurrentSelectionForm_getSelectedIndexForPoint ScrollSelectionForm_getSelectedIndexForPoint
+#endif
+#ifndef CommandCurrentSelectionForm_processInputKey
+#define CommandCurrentSelectionForm_processInputKey ScrollSelectionForm_processInputKey
+#endif
+#ifndef CommandCurrentSelectionForm_isInForm
+#define CommandCurrentSelectionForm_isInForm ScrollSelectionForm_isInForm
+#endif
+#ifndef CommandCurrentSelectionForm_getDiffX
+#define CommandCurrentSelectionForm_getDiffX ScrollSelectionForm_getDiffX
+#endif
+#ifndef CommandCurrentSelectionForm_getDx
+#define CommandCurrentSelectionForm_getDx ScrollSelectionForm_getDx
+#endif
+#ifndef CommandCurrentSelectionForm_getDy
+#define CommandCurrentSelectionForm_getDy ScrollSelectionForm_getDy
+#endif
+#ifndef CommandCurrentSelectionForm_setButtonBasicColor
+#define CommandCurrentSelectionForm_setButtonBasicColor ScrollSelectionForm_setButtonBasicColor
+#endif
+#ifndef CommandCurrentSelectionForm_getButtonBasicColor
+#define CommandCurrentSelectionForm_getButtonBasicColor ScrollSelectionForm_getButtonBasicColor
+#endif
+#ifndef CommandCurrentSelectionForm_getNullPaintableForm
+#define CommandCurrentSelectionForm_getNullPaintableForm PaintableForm_getNullPaintableForm
+#endif
+#ifndef CommandCurrentSelectionForm_getWidth
+#define CommandCurrentSelectionForm_getWidth PaintableForm_getWidth
+#endif
+#ifndef CommandCurrentSelectionForm_getAllitems
+#define CommandCurrentSelectionForm_getAllitems ABCustomForm_getAllitems
+#endif
+#ifndef CommandCurrentSelectionForm_size
+#define CommandCurrentSelectionForm_size ABCustomForm_size
+#endif
+#ifndef CommandCurrentSelectionForm_setSelectedIndex
+#define CommandCurrentSelectionForm_setSelectedIndex ABCustomForm_setSelectedIndex
+#endif
+#ifndef CommandCurrentSelectionForm_getSelectedIndex
+#define CommandCurrentSelectionForm_getSelectedIndex ABCustomForm_getSelectedIndex
+#endif
+#ifndef CommandCurrentSelectionForm_get
+#define CommandCurrentSelectionForm_get ABCustomForm_get
+#endif
+#ifndef CommandCurrentSelectionForm_getWidth
+#define CommandCurrentSelectionForm_getWidth ABCustomForm_getWidth
+#endif
+#ifndef CommandCurrentSelectionForm_getTitle
+#define CommandCurrentSelectionForm_getTitle ABCustomForm_getTitle
+#endif
+#ifndef CommandCurrentSelectionForm_setTitle
+#define CommandCurrentSelectionForm_setTitle CustomDisplayable_setTitle
+#endif
+// Runs the Java static initialization of the class once. Reads of its static fields call it first.
+void CommandCurrentSelectionForm_staticInit(void);
+// Registers the class, its superclass, and its methods for the interface calls (java_register_method)
+void CommandCurrentSelectionForm_register(void);
+
+#if __has_include("javax/microedition/lcdui/Command.h")
+#include "javax/microedition/lcdui/Command.h"
+#endif
+
+#endif // ORG_ALLBINARY_GRAPHICS_FORM_COMMANDCURRENTSELECTIONFORM_H

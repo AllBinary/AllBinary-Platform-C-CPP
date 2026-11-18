@@ -1,58 +1,48 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.input.event
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/input/event/PressGameKeyEventHandler.h"
 #include "org/allbinary/game/input/PlayerGameInput.h"
-#include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/logic/util/event/AllBinaryEventObject.h"
 #include "org/allbinary/logic/util/event/EventListenerInterface.h"
 #include "org/allbinary/logic/util/event/EventStrings.h"
-#include "org/allbinary/logic/util/event/handler/BasicEventHandler.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
+#include "org/allbinary/game/input/event/GameKeyEvent.h"
+#include "org/allbinary/game/input/event/PressGameKeyEventListenerInterface.h"
+#if __has_include("org/allbinary/logic/util/event/EventStrings.h")
+#include "org/allbinary/logic/util/event/EventStrings.h"
+#endif
 
-typedef struct PressGameKeyEventHandler PressGameKeyEventHandler;
-struct PressGameKeyEventHandler {
-    BasicEventHandler base;
-    BasicArrayList* list;
-};
 
 static PressGameKeyEventHandler* PressGameKeyEventHandler_instance;
 
-PressGameKeyEventHandler* PressGameKeyEventHandler_new(void);
-PressGameKeyEventHandler* PressGameKeyEventHandler_getInstance(void);
 
-void PressGameKeyEventHandler_init(PressGameKeyEventHandler* this);
-void PressGameKeyEventHandler_addListener(PressGameKeyEventHandler* this, PlayerGameInput* playerGameInput);
-void PressGameKeyEventHandler_removeAllListeners(PressGameKeyEventHandler* this);
-void PressGameKeyEventHandler_removeListener(PressGameKeyEventHandler* this, EventListenerInterface* eventListenerInterface);
-void PressGameKeyEventHandler_fireEvent(PressGameKeyEventHandler* this, AllBinaryEventObject* eventObject);
-void PressGameKeyEventHandler_process(PressGameKeyEventHandler* this, AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+
 void PressGameKeyEventHandler_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     PressGameKeyEventHandler_instance = PressGameKeyEventHandler_new();
+}
+
+void PressGameKeyEventHandler_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("PressGameKeyEventHandler", "BasicEventHandler");
+    java_register_method("PressGameKeyEventHandler", "addListener", (void*) PressGameKeyEventHandler_addListener);
+    java_register_method("PressGameKeyEventHandler", "removeAllListeners", (void*) PressGameKeyEventHandler_removeAllListeners);
+    java_register_method("PressGameKeyEventHandler", "removeListener", (void*) PressGameKeyEventHandler_removeListener);
+    java_register_method("PressGameKeyEventHandler", "fireEvent", (void*) PressGameKeyEventHandler_fireEvent);
+    java_register_method("PressGameKeyEventHandler", "process", (void*) PressGameKeyEventHandler_process);
 }
 
 static void PressGameKeyEventHandler_initFields(PressGameKeyEventHandler* this) {
@@ -61,17 +51,18 @@ static void PressGameKeyEventHandler_initFields(PressGameKeyEventHandler* this) 
 
 
 PressGameKeyEventHandler* PressGameKeyEventHandler_getInstance(void) {
-        return PressGameKeyEventHandler_instance;
+        return (PressGameKeyEventHandler_staticInit(), PressGameKeyEventHandler_instance);
 }
 
 
 void PressGameKeyEventHandler_init(PressGameKeyEventHandler* this) {
+    PressGameKeyEventHandler_register();
     BasicEventHandler_init(&this->base);
     PressGameKeyEventHandler_initFields(this);
 }
 
 PressGameKeyEventHandler* PressGameKeyEventHandler_new(void) {
-    PressGameKeyEventHandler* this = calloc(1, sizeof(PressGameKeyEventHandler));
+    PressGameKeyEventHandler* this = java_object_alloc(sizeof(PressGameKeyEventHandler), "PressGameKeyEventHandler");
     PressGameKeyEventHandler_init(this);
     return this;
 }
@@ -103,7 +94,7 @@ void PressGameKeyEventHandler_fireEvent(PressGameKeyEventHandler* this, AllBinar
                 PlayerGameInput* playerGameInput = ((PlayerGameInput*) this->list->objectArray[index]);
                 PlayerGameInput_onPressGameKeyEvent(playerGameInput, ((GameKeyEvent*) eventObject));
             } JAVA_CATCH(Exception, e) {
-                JAVA_CALL(this->logUtil, put, this->commonStrings->EXCEPTION, this, EventStrings_getInstance()->FIRE_EVENT, e);
+                LogUtil_put(this->base.logUtil, this->base.commonStrings->EXCEPTION, this, EventStrings_getInstance()->FIRE_EVENT, e);
             } JAVA_END_TRY;
         }
         BasicEventHandler_fireEvent((&this->base), eventObject);

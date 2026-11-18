@@ -1,31 +1,7 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.init
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/init/DefaultGameInitializationListener.h"
 #include "org/allbinary/game/configuration/event/GameInitializedEvent.h"
 #include "org/allbinary/game/configuration/event/GameInitializedEventHandler.h"
-#include "org/allbinary/game/configuration/event/GameInitializedListenerInterface.h"
 #include "org/allbinary/game/resource/FeatureResourceInitializationUtil.h"
 #include "org/allbinary/graphics/threed/SWTJOGLProcessor.h"
 #include "org/allbinary/logic/communication/log/ForcedLogUtil.h"
@@ -33,21 +9,36 @@
 #include "org/allbinary/logic/util/event/AllBinaryEventObject.h"
 #include "org/allbinary/logic/util/event/EventStrings.h"
 #include "org/allbinary/string/CommonStrings.h"
-
-typedef struct DefaultGameInitializationListener DefaultGameInitializationListener;
-struct DefaultGameInitializationListener {
-    GameInitializedListenerInterface GameInitializedListenerInterface_interface;
-    LogUtil* logUtil;
-    SWTJOGLProcessor* swtJOGLProcessor;
-    bool firstTime;
-};
+#if __has_include("org/allbinary/logic/util/event/EventStrings.h")
+#include "org/allbinary/logic/util/event/EventStrings.h"
+#endif
+#if __has_include("org/allbinary/game/resource/FeatureResourceInitializationUtil.h")
+#include "org/allbinary/game/resource/FeatureResourceInitializationUtil.h"
+#endif
 
 
-DefaultGameInitializationListener* DefaultGameInitializationListener_new(void);
 
-void DefaultGameInitializationListener_init(DefaultGameInitializationListener* this);
-void DefaultGameInitializationListener_onEvent(DefaultGameInitializationListener* this, AllBinaryEventObject* eventObject);
-void DefaultGameInitializationListener_onGameInitialized(DefaultGameInitializationListener* this, GameInitializedEvent* gameInitializedEvent);
+
+
+
+void DefaultGameInitializationListener_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void DefaultGameInitializationListener_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("DefaultGameInitializationListener", nullptr);
+    java_register_method("DefaultGameInitializationListener", "onEvent", (void*) DefaultGameInitializationListener_onEvent);
+    java_register_method("DefaultGameInitializationListener", "onGameInitialized", (void*) DefaultGameInitializationListener_onGameInitialized);
+}
 
 static void DefaultGameInitializationListener_initFields(DefaultGameInitializationListener* this) {
     this->logUtil = LogUtil_getInstance();
@@ -57,14 +48,15 @@ static void DefaultGameInitializationListener_initFields(DefaultGameInitializati
 
 
 void DefaultGameInitializationListener_init(DefaultGameInitializationListener* this) {
+    DefaultGameInitializationListener_register();
     DefaultGameInitializationListener_initFields(this);
         GameInitializedEventHandler* gameInitializedEventHandler = GameInitializedEventHandler_getInstance();
-        GameInitializedEventHandler_removeAllListeners(gameInitializedEventHandler);
-        GameInitializedEventHandler_addListenerInterface(gameInitializedEventHandler, ((GameInitializedListenerInterface*) this));
+        BasicEventHandler_removeAllListeners(gameInitializedEventHandler);
+        BasicEventHandler_addListenerInterface(gameInitializedEventHandler, ((GameInitializedListenerInterface*) this));
 }
 
 DefaultGameInitializationListener* DefaultGameInitializationListener_new(void) {
-    DefaultGameInitializationListener* this = calloc(1, sizeof(DefaultGameInitializationListener));
+    DefaultGameInitializationListener* this = java_object_alloc(sizeof(DefaultGameInitializationListener), "DefaultGameInitializationListener");
     DefaultGameInitializationListener_init(this);
     return this;
 }
@@ -84,7 +76,7 @@ void DefaultGameInitializationListener_onGameInitialized(DefaultGameInitializati
                 LogUtil_putF(this->logUtil, commonStrings->UPDATE, this, ON_GAME_INITIALIZED);
                 java_sleep(20);
             }
-            FeatureResourceInitializationUtil_init(FeatureResourceInitializationUtil_getInstance(), GameInitializedEvent_getLevel(gameInitializedEvent));
+            FeatureResourceInitializationUtil_initMethod(FeatureResourceInitializationUtil_getInstance(), GameInitializedEvent_getLevel(gameInitializedEvent));
             if (this->firstTime) {
                 this->firstTime = false;
             } else {

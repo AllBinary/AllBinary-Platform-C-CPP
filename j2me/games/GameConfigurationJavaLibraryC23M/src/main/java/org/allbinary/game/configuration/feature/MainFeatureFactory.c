@@ -1,46 +1,27 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.configuration.feature
+#include "org/allbinary/game/configuration/feature/MainFeatureFactory.h"
+#include "org/allbinary/game/configuration/feature/Feature.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct MainFeatureFactory MainFeatureFactory;
-struct MainFeatureFactory {
-    Feature* FULL_SCREEN;
-    Feature* TITLE_BAR;
-    Feature* STATIC;
-    Feature* LOAD_ONDEMAND;
-    Feature* LOAD_ALL;
-};
 
 static MainFeatureFactory* MainFeatureFactory_instance;
 
-MainFeatureFactory* MainFeatureFactory_new(void);
-MainFeatureFactory* MainFeatureFactory_getInstance(void);
 
-// Static fields with runtime initializers: call this once at startup
 void MainFeatureFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     MainFeatureFactory_instance = MainFeatureFactory_new();
+}
+
+void MainFeatureFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("MainFeatureFactory", nullptr);
 }
 
 static void MainFeatureFactory_initFields(MainFeatureFactory* this) {
@@ -52,17 +33,18 @@ static void MainFeatureFactory_initFields(MainFeatureFactory* this) {
 }
 
 void MainFeatureFactory_init(MainFeatureFactory* this) {
+    MainFeatureFactory_register();
     MainFeatureFactory_initFields(this);
 }
 
 MainFeatureFactory* MainFeatureFactory_new(void) {
-    MainFeatureFactory* this = calloc(1, sizeof(MainFeatureFactory));
+    MainFeatureFactory* this = java_object_alloc(sizeof(MainFeatureFactory), "MainFeatureFactory");
     MainFeatureFactory_init(this);
     return this;
 }
 
 
 MainFeatureFactory* MainFeatureFactory_getInstance(void) {
-        return MainFeatureFactory_instance;
+        return (MainFeatureFactory_staticInit(), MainFeatureFactory_instance);
 }
 

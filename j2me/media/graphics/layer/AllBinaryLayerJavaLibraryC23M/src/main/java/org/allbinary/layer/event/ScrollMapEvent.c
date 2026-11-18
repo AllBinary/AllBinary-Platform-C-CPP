@@ -1,46 +1,35 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.layer.event
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-#include "org/allbinary/logic/util/event/AllBinaryEventObject.h"
-
-typedef struct ScrollMapEvent ScrollMapEvent;
-struct ScrollMapEvent {
-    AllBinaryEventObject base;
-    int32_t dx;
-    int32_t dy;
-};
+#include "org/allbinary/layer/event/ScrollMapEvent.h"
 
 
-ScrollMapEvent* ScrollMapEvent_new(Any* anyType);
 
-void ScrollMapEvent_init(ScrollMapEvent* this, Any* anyType);
-void ScrollMapEvent_setDx(ScrollMapEvent* this, int32_t dx);
-int32_t ScrollMapEvent_getDx(ScrollMapEvent* this);
-void ScrollMapEvent_setDy(ScrollMapEvent* this, int32_t dy);
-int32_t ScrollMapEvent_getDy(ScrollMapEvent* this);
-void ScrollMapEvent_setDxDy(ScrollMapEvent* this, int32_t dx, int32_t dy);
+
+
+
+
+
+
+void ScrollMapEvent_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void ScrollMapEvent_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ScrollMapEvent", "AllBinaryEventObject");
+    java_register_method("ScrollMapEvent", "setDx", (void*) ScrollMapEvent_setDx);
+    java_register_method("ScrollMapEvent", "getDx", (void*) ScrollMapEvent_getDx);
+    java_register_method("ScrollMapEvent", "setDy", (void*) ScrollMapEvent_setDy);
+    java_register_method("ScrollMapEvent", "getDy", (void*) ScrollMapEvent_getDy);
+    java_register_method("ScrollMapEvent", "setDxDy", (void*) ScrollMapEvent_setDxDy);
+}
 
 static void ScrollMapEvent_initFields(ScrollMapEvent* this) {
     this->dx = 0;
@@ -48,13 +37,14 @@ static void ScrollMapEvent_initFields(ScrollMapEvent* this) {
 }
 
 
-void ScrollMapEvent_init(ScrollMapEvent* this, Any* anyType) {
+void ScrollMapEvent_init(ScrollMapEvent* this, void* anyType) {
+    ScrollMapEvent_register();
         AllBinaryEventObject_init(&this->base, anyType);
         ScrollMapEvent_initFields(this);
 }
 
-ScrollMapEvent* ScrollMapEvent_new(Any* anyType) {
-    ScrollMapEvent* this = calloc(1, sizeof(ScrollMapEvent));
+ScrollMapEvent* ScrollMapEvent_new(void* anyType) {
+    ScrollMapEvent* this = java_object_alloc(sizeof(ScrollMapEvent), "ScrollMapEvent");
     ScrollMapEvent_init(this, anyType);
     return this;
 }

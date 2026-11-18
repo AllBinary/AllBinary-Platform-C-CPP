@@ -41,6 +41,8 @@ extern BasicArrayList* LogConfigTypes_LOGGING;
 LogConfigTypes* LogConfigTypes_new(void);
 
 void LogConfigTypes_init(LogConfigTypes* this);
+#define LogConfigTypes_new0 LogConfigTypes_new
+#define LogConfigTypes_init0 LogConfigTypes_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void LogConfigTypes_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

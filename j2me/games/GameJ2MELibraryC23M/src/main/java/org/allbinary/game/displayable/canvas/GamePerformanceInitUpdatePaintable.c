@@ -1,56 +1,48 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.displayable.canvas
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Font.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/game/displayable/canvas/GamePerformanceInitUpdatePaintable.h"
+#include "javax/microedition/lcdui/Font.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/canvas/GameStatisticsFactory.h"
 #include "org/allbinary/graphics/color/BasicColorFactory.h"
 #include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
 #include "org/allbinary/graphics/font/MyFontProcessor.h"
-#include "org/allbinary/graphics/font/UpdateMyFontInterface.h"
 #include "org/allbinary/graphics/font/UpdateMyFontProcessor.h"
-#include "org/allbinary/graphics/paint/InitUpdatePaintable.h"
-
-typedef struct GamePerformanceInitUpdatePaintable GamePerformanceInitUpdatePaintable;
-struct GamePerformanceInitUpdatePaintable {
-    InitUpdatePaintable base;
-    UpdateMyFontInterface UpdateMyFontInterface_interface;
-    int32_t halfHeight;
-    int32_t* yArray;
-    MyFontProcessor* myFontProcessor;
-    uint16_t** baseRefreshHelperCharArray;
-    int32_t defaultStringWidth;
-    int32_t RED;
-};
+#if __has_include("org/allbinary/graphics/displayable/DisplayInfoSingleton.h")
+#include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
+#endif
+#if __has_include("org/allbinary/canvas/GameStatisticsFactory.h")
+#include "org/allbinary/canvas/GameStatisticsFactory.h"
+#endif
+#if __has_include("org/allbinary/graphics/color/BasicColorFactory.h")
+#include "org/allbinary/graphics/color/BasicColorFactory.h"
+#endif
 
 
-GamePerformanceInitUpdatePaintable* GamePerformanceInitUpdatePaintable_new(void);
-void GamePerformanceInitUpdatePaintable_updateMeasurement(GamePerformanceInitUpdatePaintable* this, Graphics* graphics);
-void GamePerformanceInitUpdatePaintable_init(GamePerformanceInitUpdatePaintable* this);
-void GamePerformanceInitUpdatePaintable_update(GamePerformanceInitUpdatePaintable* this);
-void GamePerformanceInitUpdatePaintable_paint(GamePerformanceInitUpdatePaintable* this, Graphics* graphics);
+
+
+
+
+
+void GamePerformanceInitUpdatePaintable_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void GamePerformanceInitUpdatePaintable_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GamePerformanceInitUpdatePaintable", "InitUpdatePaintable");
+    java_register_method("GamePerformanceInitUpdatePaintable", "updateMeasurement", (void*) GamePerformanceInitUpdatePaintable_updateMeasurement);
+    java_register_method("GamePerformanceInitUpdatePaintable", "init", (void*) GamePerformanceInitUpdatePaintable_initMethod);
+    java_register_method("GamePerformanceInitUpdatePaintable", "update", (void*) GamePerformanceInitUpdatePaintable_update);
+    java_register_method("GamePerformanceInitUpdatePaintable", "paint", (void*) GamePerformanceInitUpdatePaintable_paint);
+}
 
 static void GamePerformanceInitUpdatePaintable_initFields(GamePerformanceInitUpdatePaintable* this) {
     this->halfHeight = DisplayInfoSingleton_getLastHalfHeight(DisplayInfoSingleton_getInstance());
@@ -58,16 +50,17 @@ static void GamePerformanceInitUpdatePaintable_initFields(GamePerformanceInitUpd
     this->myFontProcessor = UpdateMyFontProcessor_new(this);
     this->baseRefreshHelperCharArray = ((uint16_t**) java_array_new2(sizeof(uint16_t), 0, 0));
     this->defaultStringWidth = 0;
-    this->RED = JAVA_CALL(BasicColorFactory_getInstance()->RED, intValue);
+    this->RED = BasicColor_intValue(BasicColorFactory_getInstance()->RED);
 }
 
 void GamePerformanceInitUpdatePaintable_init(GamePerformanceInitUpdatePaintable* this) {
+    GamePerformanceInitUpdatePaintable_register();
     InitUpdatePaintable_init(&this->base);
     GamePerformanceInitUpdatePaintable_initFields(this);
 }
 
 GamePerformanceInitUpdatePaintable* GamePerformanceInitUpdatePaintable_new(void) {
-    GamePerformanceInitUpdatePaintable* this = calloc(1, sizeof(GamePerformanceInitUpdatePaintable));
+    GamePerformanceInitUpdatePaintable* this = java_object_alloc(sizeof(GamePerformanceInitUpdatePaintable), "GamePerformanceInitUpdatePaintable");
     GamePerformanceInitUpdatePaintable_init(this);
     return this;
 }
@@ -80,12 +73,12 @@ void GamePerformanceInitUpdatePaintable_updateMeasurement(GamePerformanceInitUpd
 }
 
 
-void GamePerformanceInitUpdatePaintable_init(GamePerformanceInitUpdatePaintable* this) {
+void GamePerformanceInitUpdatePaintable_initMethod(GamePerformanceInitUpdatePaintable* this) {
 }
 
 
 void GamePerformanceInitUpdatePaintable_update(GamePerformanceInitUpdatePaintable* this) {
-        this->baseRefreshHelperCharArray = GameStatisticsFactory_to2DCharArray(GameStatisticsFactory_getInstance());
+        this->baseRefreshHelperCharArray = BaseGameStatistics_to2DCharArray(GameStatisticsFactory_getInstance());
 }
 
 

@@ -1,28 +1,5 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input.motion.button
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/input/motion/button/BasicTouchInputFactory.h"
 #include "org/allbinary/game/input/InputFactory.h"
 #include "org/allbinary/game/input/mapping/InputToGameKeyMapping.h"
 #include "org/allbinary/logic/NullUtil.h"
@@ -31,37 +8,84 @@
 #include "org/allbinary/string/CommonLabels.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
+#include "org/allbinary/input/motion/button/TouchButtonInput.h"
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/game/input/InputFactory.h")
+#include "org/allbinary/game/input/InputFactory.h"
+#endif
+#if __has_include("org/allbinary/game/input/InputFactory.h")
+#include "org/allbinary/game/input/InputFactory.h"
+#endif
+#if __has_include("org/allbinary/game/input/InputFactory.h")
+#include "org/allbinary/game/input/InputFactory.h"
+#endif
+#if __has_include("org/allbinary/game/input/InputFactory.h")
+#include "org/allbinary/game/input/InputFactory.h"
+#endif
+#if __has_include("org/allbinary/game/input/InputFactory.h")
+#include "org/allbinary/game/input/InputFactory.h"
+#endif
+#if __has_include("org/allbinary/game/input/InputFactory.h")
+#include "org/allbinary/game/input/InputFactory.h"
+#endif
+#if __has_include("org/allbinary/game/input/InputFactory.h")
+#include "org/allbinary/game/input/InputFactory.h"
+#endif
+#if __has_include("org/allbinary/game/input/InputFactory.h")
+#include "org/allbinary/game/input/InputFactory.h"
+#endif
+#if __has_include("org/allbinary/game/input/InputFactory.h")
+#include "org/allbinary/game/input/InputFactory.h"
+#endif
+#if __has_include("org/allbinary/game/input/InputFactory.h")
+#include "org/allbinary/game/input/InputFactory.h"
+#endif
+#if __has_include("org/allbinary/game/input/InputFactory.h")
+#include "org/allbinary/game/input/InputFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/string/CommonLabels.h")
+#include "org/allbinary/string/CommonLabels.h"
+#endif
 
-typedef struct BasicTouchInputFactory BasicTouchInputFactory;
-struct BasicTouchInputFactory {
-    LogUtil* logUtil;
-    TouchButtonInput* SPECIAL_BUTTON_SIX;
-    TouchButtonInput* SPECIAL_BUTTON_FIVE;
-    TouchButtonInput* SPECIAL_BUTTON_FOUR;
-    TouchButtonInput* SPECIAL_BUTTON_THREE;
-    TouchButtonInput* SPECIAL_BUTTON_TWO;
-    TouchButtonInput* SPECIAL_BUTTON_ONE;
-    TouchButtonInput* UP;
-    TouchButtonInput* LEFT;
-    TouchButtonInput* RIGHT;
-    TouchButtonInput* DOWN;
-    TouchButtonInput* NONE;
-    bool initialized;
-    BasicArrayList* list;
-};
 
-static Any* BasicTouchInputFactory_instance;
+static void* BasicTouchInputFactory_instance;
 
-BasicTouchInputFactory* BasicTouchInputFactory_new(void);
-BasicTouchInputFactory* BasicTouchInputFactory_getInstance(void);
-void BasicTouchInputFactory_init(BasicTouchInputFactory* this, InputToGameKeyMapping* inputToGameKeyMapping);
-void BasicTouchInputFactory_updateAll(BasicTouchInputFactory* this, InputToGameKeyMapping* inputToGameKeyMapping);
-void BasicTouchInputFactory_updateAllList(BasicTouchInputFactory* this, BasicArrayList* list, InputToGameKeyMapping* inputToGameKeyMapping);
-BasicArrayList* BasicTouchInputFactory_getList(BasicTouchInputFactory* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
 void BasicTouchInputFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     BasicTouchInputFactory_instance = NullUtil_getInstance()->NULL_OBJECT;
+}
+
+void BasicTouchInputFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("BasicTouchInputFactory", nullptr);
+    java_register_method("BasicTouchInputFactory", "init", (void*) BasicTouchInputFactory_initMethod);
+    java_register_method("BasicTouchInputFactory", "updateAll", (void*) BasicTouchInputFactory_updateAll);
+    java_register_method("BasicTouchInputFactory", "updateAllList", (void*) BasicTouchInputFactory_updateAllList);
+    java_register_method("BasicTouchInputFactory", "getList", (void*) BasicTouchInputFactory_getList);
 }
 
 static void BasicTouchInputFactory_initFields(BasicTouchInputFactory* this) {
@@ -82,26 +106,27 @@ static void BasicTouchInputFactory_initFields(BasicTouchInputFactory* this) {
 }
 
 void BasicTouchInputFactory_init(BasicTouchInputFactory* this) {
+    BasicTouchInputFactory_register();
     BasicTouchInputFactory_initFields(this);
 }
 
 BasicTouchInputFactory* BasicTouchInputFactory_new(void) {
-    BasicTouchInputFactory* this = calloc(1, sizeof(BasicTouchInputFactory));
+    BasicTouchInputFactory* this = java_object_alloc(sizeof(BasicTouchInputFactory), "BasicTouchInputFactory");
     BasicTouchInputFactory_init(this);
     return this;
 }
 
 
 BasicTouchInputFactory* BasicTouchInputFactory_getInstance(void) {
-        if (BasicTouchInputFactory_instance == NullUtil_getInstance()->NULL_OBJECT) {
+        if ((BasicTouchInputFactory_staticInit(), BasicTouchInputFactory_instance) == NullUtil_getInstance()->NULL_OBJECT) {
             BasicTouchInputFactory_instance = BasicTouchInputFactory_new();
         }
-        return ((BasicTouchInputFactory*) BasicTouchInputFactory_instance);
+        return ((BasicTouchInputFactory*) (BasicTouchInputFactory_staticInit(), BasicTouchInputFactory_instance));
 }
 
 
 // synchronized
-void BasicTouchInputFactory_init(BasicTouchInputFactory* this, InputToGameKeyMapping* inputToGameKeyMapping) {
+void BasicTouchInputFactory_initMethod(BasicTouchInputFactory* this, InputToGameKeyMapping* inputToGameKeyMapping) {
         if (!this->initialized) {
             this->initialized = true;
             BasicArrayList_add(this->list, this->UP);
@@ -125,7 +150,7 @@ void BasicTouchInputFactory_updateAll(BasicTouchInputFactory* this, InputToGameK
 
 
 void BasicTouchInputFactory_updateAllList(BasicTouchInputFactory* this, BasicArrayList* list, InputToGameKeyMapping* inputToGameKeyMapping) {
-        LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), CommonLabels_getInstance()->START), appendint, BasicArrayList_size(list)), toString), this, "updateAll");
+        LogUtil_putF(this->logUtil, java_string_of(StringMaker_appendint(StringMaker_append(StringMaker_new(), CommonLabels_getInstance()->START), BasicArrayList_size(list))), this, "updateAll");
         for (int32_t index = BasicArrayList_size(list) - 1; index >= 0; index--) {
             TouchButtonInput* touchButtonInput = ((TouchButtonInput*) BasicArrayList_get(list, index));
             TouchButtonInput_update(touchButtonInput, inputToGameKeyMapping);

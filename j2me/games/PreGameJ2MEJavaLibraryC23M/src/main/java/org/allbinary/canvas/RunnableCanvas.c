@@ -1,32 +1,8 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.canvas
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/CommandListener.h"
+#include "org/allbinary/canvas/RunnableCanvas.h"
+#include "javax/microedition/lcdui/CommandListener.h"
 #include "org/allbinary/TsUtil.h"
 #include "org/allbinary/game/displayable/canvas/NullWaitGameRunnable.h"
-#include "org/allbinary/graphics/displayable/MyCanvas.h"
 #include "org/allbinary/logic/ABSystemWrapper.h"
 #include "org/allbinary/logic/NullUtil.h"
 #include "org/allbinary/logic/StdUtil.h"
@@ -35,71 +11,175 @@
 #include "org/allbinary/string/CommonLabels.h"
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/thread/NullThread.h"
-#include "org/allbinary/thread/RunnableInterface.h"
 #include "org/allbinary/thread/ThreadObjectUtil.h"
 #include "org/allbinary/time/TimeDelayHelper.h"
 #include "org/allbinary/util/BasicArrayList.h"
+#include "org/allbinary/canvas/Processor.h"
+#include "org/allbinary/canvas/RunnableCanvasRefreshHelper.h"
+#if __has_include("org/allbinary/canvas/GameRunnable.h")
+#include "org/allbinary/canvas/GameRunnable.h"
+#endif
+#if __has_include("javax/microedition/lcdui/GameRunnable.h")
+#include "javax/microedition/lcdui/GameRunnable.h"
+#endif
+#if __has_include("org/allbinary/GameRunnable.h")
+#include "org/allbinary/GameRunnable.h"
+#endif
+#if __has_include("org/allbinary/game/displayable/canvas/GameRunnable.h")
+#include "org/allbinary/game/displayable/canvas/GameRunnable.h"
+#endif
+#if __has_include("org/allbinary/graphics/displayable/GameRunnable.h")
+#include "org/allbinary/graphics/displayable/GameRunnable.h"
+#endif
+#if __has_include("org/allbinary/logic/GameRunnable.h")
+#include "org/allbinary/logic/GameRunnable.h"
+#endif
+#if __has_include("org/allbinary/logic/GameRunnable.h")
+#include "org/allbinary/logic/GameRunnable.h"
+#endif
+#if __has_include("org/allbinary/logic/GameRunnable.h")
+#include "org/allbinary/logic/GameRunnable.h"
+#endif
+#if __has_include("org/allbinary/logic/string/GameRunnable.h")
+#include "org/allbinary/logic/string/GameRunnable.h"
+#endif
+#if __has_include("org/allbinary/logic/string/GameRunnable.h")
+#include "org/allbinary/logic/string/GameRunnable.h"
+#endif
+#if __has_include("org/allbinary/string/GameRunnable.h")
+#include "org/allbinary/string/GameRunnable.h"
+#endif
+#if __has_include("org/allbinary/string/GameRunnable.h")
+#include "org/allbinary/string/GameRunnable.h"
+#endif
+#if __has_include("org/allbinary/thread/GameRunnable.h")
+#include "org/allbinary/thread/GameRunnable.h"
+#endif
+#if __has_include("org/allbinary/thread/GameRunnable.h")
+#include "org/allbinary/thread/GameRunnable.h"
+#endif
+#if __has_include("org/allbinary/thread/GameRunnable.h")
+#include "org/allbinary/thread/GameRunnable.h"
+#endif
+#if __has_include("org/allbinary/time/GameRunnable.h")
+#include "org/allbinary/time/GameRunnable.h"
+#endif
+#if __has_include("org/allbinary/util/GameRunnable.h")
+#include "org/allbinary/util/GameRunnable.h"
+#endif
+#if __has_include("org/allbinary/string/CommonStrings.h")
+#include "org/allbinary/string/CommonStrings.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
 
-typedef struct RunnableCanvas RunnableCanvas;
-struct RunnableCanvas {
-    MyCanvas base;
-    RunnableInterface RunnableInterface_interface;
-    NullUtil* nullUtil;
-    StdUtil* stdUtil;
-    ABSystemWrapper* systemWrapper;
-    TsUtil* tsUtil;
-    Thread* thread;
-    Thread* currentThread;
-    bool running;
-    TimeDelayHelper* loopTimeHelper;
-    Processor* runnableCanvasRefreshHelper;
-    CommonLabels* commonLabels;
-    ThreadObjectUtil* threadObjectUtil;
-    const char* SET_RUNNING;
-    const char* IS_RUNNING;
-    const char* THREAD;
-    const char* NOT_EQUAL;
-    const char* PAUSE_SLEEP;
-    const char* START_PAUSE;
-    const char* END_PAUSE;
-    const char* PROCESS_LOOP_SLEEP;
-    int64_t pauseWait;
-    bool notified;
-};
 
 
-RunnableCanvas* RunnableCanvas_new(CommandListener* commandListener, BasicArrayList* childNameList, bool hasParam);
 
-void RunnableCanvas_init(RunnableCanvas* this, CommandListener* commandListener, BasicArrayList* childNameList, bool hasParam);
-void RunnableCanvas_initCommands(RunnableCanvas* this, CommandListener* cmdListener);
-bool RunnableCanvas_isMainCanvas(RunnableCanvas* this);
-void RunnableCanvas_setThread(RunnableCanvas* this, Thread* thread);
-void RunnableCanvas_setRunning(RunnableCanvas* this, bool running);
-bool RunnableCanvas_isRunning(RunnableCanvas* this);
-TimeDelayHelper* RunnableCanvas_getLoopTimeHelperP(RunnableCanvas* this);
-void RunnableCanvas_setWait(RunnableCanvas* this, int32_t wait);
-int32_t RunnableCanvas_getWait(RunnableCanvas* this);
-void RunnableCanvas_setCurrentThread(RunnableCanvas* this);
-void RunnableCanvas_setCurrentThreadFake(RunnableCanvas* this);
-void RunnableCanvas_showNotify(RunnableCanvas* this);
+
+
+
+
+
+
+
+
+
+
+
 static void RunnableCanvas_stopWaiting(RunnableCanvas* this);
-void RunnableCanvas_waitOnNotify(RunnableCanvas* this, int64_t wait);
-void RunnableCanvas_processSleep(RunnableCanvas* this);
-bool RunnableCanvas_isPausable(RunnableCanvas* this);
-void RunnableCanvas_processGameSleep(RunnableCanvas* this, int64_t sleep);
-void RunnableCanvas_processLoopSleep(RunnableCanvas* this);
-bool RunnableCanvas_isSingleThread(RunnableCanvas* this);
-void RunnableCanvas_run(RunnableCanvas* this);
-void RunnableCanvas_end2(RunnableCanvas* this);
-int32_t RunnableCanvas_getType(RunnableCanvas* this);
+
+
+
+
+
+
+
+
+
+
+void RunnableCanvas_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void RunnableCanvas_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("RunnableCanvas", "MyCanvas");
+    java_register_method("RunnableCanvas", "initCommands", (void*) RunnableCanvas_initCommands);
+    java_register_method("RunnableCanvas", "isMainCanvas", (void*) RunnableCanvas_isMainCanvas);
+    java_register_method("RunnableCanvas", "setThread", (void*) RunnableCanvas_setThread);
+    java_register_method("RunnableCanvas", "setRunning", (void*) RunnableCanvas_setRunning);
+    java_register_method("RunnableCanvas", "isRunning", (void*) RunnableCanvas_isRunning);
+    java_register_method("RunnableCanvas", "getLoopTimeHelperP", (void*) RunnableCanvas_getLoopTimeHelperP);
+    java_register_method("RunnableCanvas", "setWait", (void*) RunnableCanvas_setWait);
+    java_register_method("RunnableCanvas", "getWait", (void*) RunnableCanvas_getWait);
+    java_register_method("RunnableCanvas", "setCurrentThread", (void*) RunnableCanvas_setCurrentThread);
+    java_register_method("RunnableCanvas", "setCurrentThreadFake", (void*) RunnableCanvas_setCurrentThreadFake);
+    java_register_method("RunnableCanvas", "showNotify", (void*) RunnableCanvas_showNotify);
+    java_register_method("RunnableCanvas", "stopWaiting", (void*) RunnableCanvas_stopWaiting);
+    java_register_method("RunnableCanvas", "waitOnNotify", (void*) RunnableCanvas_waitOnNotify);
+    java_register_method("RunnableCanvas", "processSleep", (void*) RunnableCanvas_processSleep);
+    java_register_method("RunnableCanvas", "isPausable", (void*) RunnableCanvas_isPausable);
+    java_register_method("RunnableCanvas", "processGameSleep", (void*) RunnableCanvas_processGameSleep);
+    java_register_method("RunnableCanvas", "processLoopSleep", (void*) RunnableCanvas_processLoopSleep);
+    java_register_method("RunnableCanvas", "isSingleThread", (void*) RunnableCanvas_isSingleThread);
+    java_register_method("RunnableCanvas", "run", (void*) RunnableCanvas_run);
+    java_register_method("RunnableCanvas", "end2", (void*) RunnableCanvas_end2);
+    java_register_method("RunnableCanvas", "getType", (void*) RunnableCanvas_getType);
+}
 
 static void RunnableCanvas_initFields(RunnableCanvas* this) {
     this->nullUtil = NullUtil_getInstance();
     this->stdUtil = StdUtil_getInstance();
     this->systemWrapper = ABSystemWrapper_getInstance();
     this->tsUtil = TsUtil_getInstance();
-    this->thread = NullThread_NULL_THREAD;
-    this->currentThread = NullThread_NULL_THREAD;
+    this->thread = (NullThread_staticInit(), NullThread_NULL_THREAD);
+    this->currentThread = (NullThread_staticInit(), NullThread_NULL_THREAD);
     this->running = false;
     this->loopTimeHelper = TimeDelayHelper_new(NullWaitGameRunnable_getInstance()->WAIT);
     this->runnableCanvasRefreshHelper = Processor_getInstance();
@@ -119,31 +199,32 @@ static void RunnableCanvas_initFields(RunnableCanvas* this) {
 
 
 void RunnableCanvas_init(RunnableCanvas* this, CommandListener* commandListener, BasicArrayList* childNameList, bool hasParam) {
+    RunnableCanvas_register();
         MyCanvas_init(&this->base, CommonStrings_getInstance()->UNKNOWN, childNameList);
         RunnableCanvas_initFields(this);
-        JAVA_CALL(this->logUtil, putF, JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), "RunnableCanvas delay: "), appendint, ((int32_t) this->loopTimeHelper->delay)), toString), this, this->commonStrings->CONSTRUCTOR);
+        LogUtil_putF(this->base.logUtil, java_string_of(StringMaker_appendint(StringMaker_append(StringMaker_new(), "RunnableCanvas delay: "), this->loopTimeHelper->delay)), this, this->base.commonStrings->CONSTRUCTOR);
         this->runnableCanvasRefreshHelper = RunnableCanvasRefreshHelper_new(this);
         if (commandListener != nullptr) {
             RunnableCanvas_initCommands(this, commandListener);
         } else if (hasParam) {
-            JAVA_CALL(this->logUtil, putF, "commandListener was null", this, "initCommands");
+            LogUtil_putF(this->base.logUtil, "commandListener was null", this, "initCommands");
         }
 }
 
 RunnableCanvas* RunnableCanvas_new(CommandListener* commandListener, BasicArrayList* childNameList, bool hasParam) {
-    RunnableCanvas* this = calloc(1, sizeof(RunnableCanvas));
+    RunnableCanvas* this = java_object_alloc(sizeof(RunnableCanvas), "RunnableCanvas");
     RunnableCanvas_init(this, commandListener, childNameList, hasParam);
     return this;
 }
 
 
 void RunnableCanvas_initCommands(RunnableCanvas* this, CommandListener* cmdListener) {
-        JAVA_CALL(this->logUtil, putF, this->commonStrings->NOT_IMPLEMENTED, this, "initCommands");
+        LogUtil_putF(this->base.logUtil, this->base.commonStrings->NOT_IMPLEMENTED, this, "initCommands");
 }
 
 
 bool RunnableCanvas_isMainCanvas(RunnableCanvas* this) {
-        if (RunnableCanvas_getCustomCommandListener(this) != nullptr) {
+        if (MyCanvas_getCustomCommandListener(this) != nullptr) {
             return true;
         } else {
             return false;
@@ -159,14 +240,14 @@ void RunnableCanvas_setThread(RunnableCanvas* this, Thread* thread) {
 void RunnableCanvas_setRunning(RunnableCanvas* this, bool running) {
         this->running = running;
         if (!this->running) {
-            this->thread = NullThread_NULL_THREAD;
+            this->thread = (NullThread_staticInit(), NullThread_NULL_THREAD);
             java_monitor_enter(this);
             {
                 ThreadObjectUtil_notifyObject(this->threadObjectUtil, this);
             }
             java_monitor_exit(this);
         }
-        JAVA_CALL(this->logUtil, putF, JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), this->IS_RUNNING), appendboolean, this->running), toString), this, this->SET_RUNNING);
+        LogUtil_putF(this->base.logUtil, java_string_of(StringMaker_appendboolean(StringMaker_append(StringMaker_new(), this->IS_RUNNING), this->running)), this, this->SET_RUNNING);
 }
 
 
@@ -178,13 +259,13 @@ bool RunnableCanvas_isRunning(RunnableCanvas* this) {
             StringMaker* stringBuffer = StringMaker_new();
             StringMaker_append(stringBuffer, this->THREAD);
             if (this->thread != nullptr) {
-                StringMaker_append(stringBuffer, Thread_toString(this->thread));
+                StringMaker_append(stringBuffer, java_string_of(this->thread));
             }
             StringMaker_append(stringBuffer, this->NOT_EQUAL);
             if (this->currentThread != nullptr) {
                 StringMaker_append(stringBuffer, StringUtil_toString(StringUtil_getInstance(), this->currentThread));
             }
-            JAVA_CALL(this->logUtil, putF, StringMaker_toString(stringBuffer), this, this->IS_RUNNING);
+            LogUtil_putF(this->base.logUtil, java_string_of(stringBuffer), this, this->IS_RUNNING);
             return false;
         }
 }
@@ -198,7 +279,7 @@ TimeDelayHelper* RunnableCanvas_getLoopTimeHelperP(RunnableCanvas* this) {
 void RunnableCanvas_setWait(RunnableCanvas* this, int32_t wait) {
         this->loopTimeHelper->delay = wait;
         this->pauseWait = ((int64_t) wait) * 3LL;
-        JAVA_CALL(this->logUtil, putF, JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), "setWait - delay: "), appendint, ((int32_t) this->loopTimeHelper->delay)), toString), this, this->commonStrings->CONSTRUCTOR);
+        LogUtil_putF(this->base.logUtil, java_string_of(StringMaker_appendint(StringMaker_append(StringMaker_new(), "setWait - delay: "), this->loopTimeHelper->delay)), this, this->base.commonStrings->CONSTRUCTOR);
 }
 
 
@@ -221,7 +302,7 @@ void RunnableCanvas_showNotify(RunnableCanvas* this) {
         JAVA_TRY {
             RunnableCanvas_stopWaiting(this);
         } JAVA_CATCH(Exception, e) {
-            JAVA_CALL(this->logUtil, put, this->commonStrings->EXCEPTION, this, "showNotify", e);
+            LogUtil_put(this->base.logUtil, this->base.commonStrings->EXCEPTION, this, "showNotify", e);
         } JAVA_END_TRY;
 }
 
@@ -234,7 +315,7 @@ static void RunnableCanvas_stopWaiting(RunnableCanvas* this) {
             ThreadObjectUtil_notifyObject(this->threadObjectUtil, this);
         }
         java_monitor_exit(this);
-        RunnableCanvas_repaint(this);
+        Canvas_repaint(this);
 }
 
 
@@ -271,17 +352,17 @@ void RunnableCanvas_processGameSleep(RunnableCanvas* this, int64_t sleep) {
 // throws Exception
 void RunnableCanvas_processLoopSleep(RunnableCanvas* this) {
         Processor_process(this->runnableCanvasRefreshHelper);
-        if (RunnableCanvas_isPaused(this)) {
+        if (MyCanvas_isPaused(this)) {
             StringMaker* stringMaker = StringMaker_new();
             if (RunnableCanvas_isRunning(this) && !RunnableCanvas_isSingleThread(this)) {
                 StringMaker_delete(stringMaker, 0, StringMaker_length(stringMaker));
                 int64_t currentTimeMillis = ABSystemWrapper_currentTimeMillis(this->systemWrapper);
-                JAVA_CALL(this->logUtil, putF, JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_append(stringMaker, this->START_PAUSE), appendlong, currentTimeMillis), append, this->PAUSE_SLEEP), appendlong, this->pauseWait), toString), this, this->PROCESS_LOOP_SLEEP);
-                while (RunnableCanvas_isPaused(this) && RunnableCanvas_isRunning(this) && !RunnableCanvas_isSingleThread(this)) {
+                LogUtil_putF(this->base.logUtil, java_string_of(StringMaker_appendlong(StringMaker_append(StringMaker_appendlong(StringMaker_append(stringMaker, this->START_PAUSE), currentTimeMillis), this->PAUSE_SLEEP), this->pauseWait)), this, this->PROCESS_LOOP_SLEEP);
+                while (MyCanvas_isPaused(this) && RunnableCanvas_isRunning(this) && !RunnableCanvas_isSingleThread(this)) {
                     RunnableCanvas_processSleep(this);
                     if (!RunnableCanvas_isPausable(this)) {
                         StringMaker_delete(stringMaker, 0, StringMaker_length(stringMaker));
-                        JAVA_CALL(this->logUtil, putF, JAVA_CALL(JAVA_CALL(StringMaker_append(stringMaker, this->END_PAUSE), appendlong, currentTimeMillis), toString), this, this->PROCESS_LOOP_SLEEP);
+                        LogUtil_putF(this->base.logUtil, java_string_of(StringMaker_appendlong(StringMaker_append(stringMaker, this->END_PAUSE), currentTimeMillis)), this, this->PROCESS_LOOP_SLEEP);
                         return;
                     }
                 }

@@ -1,0 +1,72 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.allbinary</groupId>
+  <artifactId>AllBinaryOnAllPlatformsJavaLibraryPOMC23</artifactId>
+  <packaging>pom</packaging>
+  <!-- AllBinary Platform Version Start -->
+  <version>1.0.0-SNAPSHOT</version>
+  <!-- AllBinary Platform Version End -->
+
+  <name>AllBinaryOnAllPlatformsJavaLibraryPOMC23</name>
+  <url>http://www.allbinary.com/</url>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>AllBinary Snapshots Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus-releases</id>
+            <name>AllBinary Releases Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/releases/</url>
+        </repository>
+    </distributionManagement>
+
+
+
+    <modules>
+
+        <!--
+        <module>../j2me/HTMLForJ2MEJavaLibraryC23M</module>
+        -->
+        
+        <module>../../../games/PreGameJ2MEJavaLibraryC23P</module>
+        <module>../../GameJ2MELibraryC23P</module>
+        <module>../../CombatGameJavaLibraryPOC23M</module>
+        <module>../../AdvancedCombatGameJavaLibraryC23P</module>
+        
+        <module>../j2me/AllBinaryOnJ2MEBasePlatformJavaLibraryC23M</module>
+        
+        <!--<module>../j2me/AllBinaryOnJ2MEPlatformJavaLibraryC23M</module>-->
+        
+        <module>../j2se/AllBinaryOnJ2SEBasePlatformJavaLibraryC23M</module>
+        
+        <!--
+        <module>../j2se/AllBinaryOnJ2SEPlatformJavaLibraryC23M</module>
+        
+        <module>../html/AllBinaryOnHTMLBasePlatformJavaLibraryC23M</module>
+        <module>../html/AllBinaryOnHTMLPlatformJavaLibraryC23M</module>
+
+        <module>../android/AllBinaryOnAndroidBasePlatformJavaLibraryC23M</module>
+        <module>../android/AllBinaryOnAndroidBasePlatformDependenciesJavaLibraryC23M</module>
+        <module>../android/AllBinaryOnAndroidPlatformJavaLibraryC23M</module>
+        <module>../android/AllBinaryOnAndroidPlatformDependenciesJavaLibraryC23M</module>
+        
+        -->
+        
+        <module>../AllBinaryOptionalBasePlatformJavaLibraryC23M</module>
+
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+</project>
+

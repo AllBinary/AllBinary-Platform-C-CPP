@@ -1,45 +1,30 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.displayable.canvas
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/displayable/canvas/DemoLimitedCommandTextItemArrayFactory.h"
 #include "org/allbinary/graphics/form/item/CommandTextItemArrayFactory.h"
 #include "org/allbinary/graphics/form/item/LimitCommandsVisitor.h"
 
-typedef struct DemoLimitedCommandTextItemArrayFactory DemoLimitedCommandTextItemArrayFactory;
-struct DemoLimitedCommandTextItemArrayFactory {
-    CommandTextItemArrayFactory* commandTextItemArrayFactory;
-};
 
 static DemoLimitedCommandTextItemArrayFactory* DemoLimitedCommandTextItemArrayFactory_instance;
 
-DemoLimitedCommandTextItemArrayFactory* DemoLimitedCommandTextItemArrayFactory_new(void);
-DemoLimitedCommandTextItemArrayFactory* DemoLimitedCommandTextItemArrayFactory_getInstance(void);
-CommandTextItemArrayFactory* DemoLimitedCommandTextItemArrayFactory_getCommandTextItemArrayFactory(DemoLimitedCommandTextItemArrayFactory* this);
 
-// Static fields with runtime initializers: call this once at startup
+
 void DemoLimitedCommandTextItemArrayFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     DemoLimitedCommandTextItemArrayFactory_instance = DemoLimitedCommandTextItemArrayFactory_new();
+}
+
+void DemoLimitedCommandTextItemArrayFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("DemoLimitedCommandTextItemArrayFactory", nullptr);
+    java_register_method("DemoLimitedCommandTextItemArrayFactory", "getCommandTextItemArrayFactory", (void*) DemoLimitedCommandTextItemArrayFactory_getCommandTextItemArrayFactory);
 }
 
 static void DemoLimitedCommandTextItemArrayFactory_initFields(DemoLimitedCommandTextItemArrayFactory* this) {
@@ -47,18 +32,19 @@ static void DemoLimitedCommandTextItemArrayFactory_initFields(DemoLimitedCommand
 }
 
 void DemoLimitedCommandTextItemArrayFactory_init(DemoLimitedCommandTextItemArrayFactory* this) {
+    DemoLimitedCommandTextItemArrayFactory_register();
     DemoLimitedCommandTextItemArrayFactory_initFields(this);
 }
 
 DemoLimitedCommandTextItemArrayFactory* DemoLimitedCommandTextItemArrayFactory_new(void) {
-    DemoLimitedCommandTextItemArrayFactory* this = calloc(1, sizeof(DemoLimitedCommandTextItemArrayFactory));
+    DemoLimitedCommandTextItemArrayFactory* this = java_object_alloc(sizeof(DemoLimitedCommandTextItemArrayFactory), "DemoLimitedCommandTextItemArrayFactory");
     DemoLimitedCommandTextItemArrayFactory_init(this);
     return this;
 }
 
 
 DemoLimitedCommandTextItemArrayFactory* DemoLimitedCommandTextItemArrayFactory_getInstance(void) {
-        return DemoLimitedCommandTextItemArrayFactory_instance;
+        return (DemoLimitedCommandTextItemArrayFactory_staticInit(), DemoLimitedCommandTextItemArrayFactory_instance);
 }
 
 

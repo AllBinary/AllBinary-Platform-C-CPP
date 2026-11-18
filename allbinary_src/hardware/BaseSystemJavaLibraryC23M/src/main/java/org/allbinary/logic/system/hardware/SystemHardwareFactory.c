@@ -8,6 +8,9 @@
 #include "org/allbinary/logic/system/hardware/NoHardware.h"
 #include "org/allbinary/logic/system/hardware/HardwareInterface.h"
 #include "org/allbinary/logic/system/hardware/HardwareFactory.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
 
 static SystemHardwareFactory* SystemHardwareFactory_instance;
@@ -32,6 +35,7 @@ void SystemHardwareFactory_register(void) {
     }
     registered = true;
     java_register_class("SystemHardwareFactory", nullptr);
+    java_register_method("SystemHardwareFactory", "getInstance@2", (void*) SystemHardwareFactory_getInstance2);
 }
 
 static void SystemHardwareFactory_initFields(SystemHardwareFactory* this) {

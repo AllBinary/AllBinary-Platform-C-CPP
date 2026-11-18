@@ -1,65 +1,75 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input.motion.touch.action
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/input/motion/touch/action/DiagonalDownRightTouchInputToGameKeyEventAction.h"
 #include "org/allbinary/game/input/PlatformInputMappingFactory.h"
-#include "org/allbinary/game/input/motion/action/GameKeyCompleteMotionGestureInputEvent.h"
 #include "org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h"
 #include "org/allbinary/logic/NullUtil.h"
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h")
+#include "org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h"
+#endif
+#if __has_include("org/allbinary/input/motion/touch/action/PersistentInputMapping.h")
+#include "org/allbinary/input/motion/touch/action/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/input/PersistentInputMapping.h")
+#include "org/allbinary/game/input/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/input/motion/action/PersistentInputMapping.h")
+#include "org/allbinary/game/input/motion/action/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/input/motion/gesture/PersistentInputMapping.h")
+#include "org/allbinary/input/motion/gesture/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/logic/PersistentInputMapping.h")
+#include "org/allbinary/logic/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/input/PlatformInputMappingFactory.h")
+#include "org/allbinary/game/input/PlatformInputMappingFactory.h"
+#endif
 
-typedef struct DiagonalDownRightTouchInputToGameKeyEventAction DiagonalDownRightTouchInputToGameKeyEventAction;
-struct DiagonalDownRightTouchInputToGameKeyEventAction {
-    GameKeyCompleteMotionGestureInputEvent base;
-};
 
-static Any* DiagonalDownRightTouchInputToGameKeyEventAction_instance;
+static void* DiagonalDownRightTouchInputToGameKeyEventAction_instance;
 
-DiagonalDownRightTouchInputToGameKeyEventAction* DiagonalDownRightTouchInputToGameKeyEventAction_new(void);
-GameKeyCompleteMotionGestureInputEvent* DiagonalDownRightTouchInputToGameKeyEventAction_getInstance(void);
 
-void DiagonalDownRightTouchInputToGameKeyEventAction_init(DiagonalDownRightTouchInputToGameKeyEventAction* this);
 
-// Static fields with runtime initializers: call this once at startup
 void DiagonalDownRightTouchInputToGameKeyEventAction_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     DiagonalDownRightTouchInputToGameKeyEventAction_instance = NullUtil_getInstance()->NULL_OBJECT;
+}
+
+void DiagonalDownRightTouchInputToGameKeyEventAction_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("DiagonalDownRightTouchInputToGameKeyEventAction", "GameKeyCompleteMotionGestureInputEvent");
 }
 
 
 GameKeyCompleteMotionGestureInputEvent* DiagonalDownRightTouchInputToGameKeyEventAction_getInstance(void) {
-        if (DiagonalDownRightTouchInputToGameKeyEventAction_instance == NullUtil_getInstance()->NULL_OBJECT) {
+        if ((DiagonalDownRightTouchInputToGameKeyEventAction_staticInit(), DiagonalDownRightTouchInputToGameKeyEventAction_instance) == NullUtil_getInstance()->NULL_OBJECT) {
             DiagonalDownRightTouchInputToGameKeyEventAction_instance = DiagonalDownRightTouchInputToGameKeyEventAction_new();
         }
-        return ((GameKeyCompleteMotionGestureInputEvent*) DiagonalDownRightTouchInputToGameKeyEventAction_instance);
+        return ((GameKeyCompleteMotionGestureInputEvent*) (DiagonalDownRightTouchInputToGameKeyEventAction_staticInit(), DiagonalDownRightTouchInputToGameKeyEventAction_instance));
 }
 
 
 void DiagonalDownRightTouchInputToGameKeyEventAction_init(DiagonalDownRightTouchInputToGameKeyEventAction* this) {
-        GameKeyCompleteMotionGestureInputEvent_init(&this->base, "Diagonal Down Right Action", TouchMotionGestureFactory_getInstance()->DIAGONAL_DOWN_RIGHT, JAVA_CALL(PlatformInputMappingFactory_getPersistentInputMappingInstance(PlatformInputMappingFactory_getInstance()), getInputMapping));
+    DiagonalDownRightTouchInputToGameKeyEventAction_register();
+        GameKeyCompleteMotionGestureInputEvent_init(&this->base, "Diagonal Down Right Action", TouchMotionGestureFactory_getInstance()->DIAGONAL_DOWN_RIGHT, PersistentInputMapping_getInputMapping(PlatformInputMappingFactory_getPersistentInputMappingInstance(PlatformInputMappingFactory_getInstance())));
 }
 
 DiagonalDownRightTouchInputToGameKeyEventAction* DiagonalDownRightTouchInputToGameKeyEventAction_new(void) {
-    DiagonalDownRightTouchInputToGameKeyEventAction* this = calloc(1, sizeof(DiagonalDownRightTouchInputToGameKeyEventAction));
+    DiagonalDownRightTouchInputToGameKeyEventAction* this = java_object_alloc(sizeof(DiagonalDownRightTouchInputToGameKeyEventAction), "DiagonalDownRightTouchInputToGameKeyEventAction");
     DiagonalDownRightTouchInputToGameKeyEventAction_init(this);
     return this;
 }

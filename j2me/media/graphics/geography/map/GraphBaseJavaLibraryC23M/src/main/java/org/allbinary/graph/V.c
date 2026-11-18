@@ -1,29 +1,33 @@
 // Generated Code Do Not Modify
-// package org.allbinary.graph
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct V V;
-struct V {
-    char unused;
-};
+#include "org/allbinary/graph/V.h"
 
 
-V* V_new(void);
-int32_t V_getId(V* this);
+
+
+void V_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void V_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("V", nullptr);
+    java_register_method("V", "getId", (void*) V_getId);
+}
 
 void V_init(V* this) {
+    V_register();
 }
 
 V* V_new(void) {
-    V* this = calloc(1, sizeof(V));
+    V* this = java_object_alloc(sizeof(V), "V");
     V_init(this);
     return this;
 }

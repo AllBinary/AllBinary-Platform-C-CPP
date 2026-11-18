@@ -1,52 +1,43 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation.image
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Image.h"
+#include "org/allbinary/animation/image/RightToLeftImageAnimationFactory.h"
+#include "javax/microedition/lcdui/Image.h"
 #include "org/allbinary/animation/Animation.h"
 #include "org/allbinary/animation/AnimationBehaviorFactory.h"
 #include "org/allbinary/logic/math/PrimitiveIntUtil.h"
 #include "org/allbinary/animation/image/BaseImageAnimationFactory.h"
-
-typedef struct RightToLeftImageAnimationFactory RightToLeftImageAnimationFactory;
-struct RightToLeftImageAnimationFactory {
-    BaseImageAnimationFactory base;
-};
+#include "org/allbinary/animation/image/RightToLeftImageAnimation.h"
+#include "org/allbinary/animation/image/AdjustedRightToLeftImageAnimation.h"
 
 
-RightToLeftImageAnimationFactory* RightToLeftImageAnimationFactory_new(Image* image, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory);
 
-void RightToLeftImageAnimationFactory_init(RightToLeftImageAnimationFactory* this, Image* image, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory);
-Animation* RightToLeftImageAnimationFactory_getInstance(RightToLeftImageAnimationFactory* this, int32_t instanceId);
+
+
+void RightToLeftImageAnimationFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void RightToLeftImageAnimationFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("RightToLeftImageAnimationFactory", "BaseImageAnimationFactory");
+    java_register_method("RightToLeftImageAnimationFactory", "getInstance", (void*) RightToLeftImageAnimationFactory_getInstance);
+}
 
 
 void RightToLeftImageAnimationFactory_init(RightToLeftImageAnimationFactory* this, Image* image, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory) {
+    RightToLeftImageAnimationFactory_register();
         BaseImageAnimationFactory_init(&this->base, image, PrimitiveIntUtil_getArrayInstance(), Image_getWidth(image), Image_getHeight(image), dx, dy, animationBehaviorFactory);
 }
 
 RightToLeftImageAnimationFactory* RightToLeftImageAnimationFactory_new(Image* image, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory) {
-    RightToLeftImageAnimationFactory* this = calloc(1, sizeof(RightToLeftImageAnimationFactory));
+    RightToLeftImageAnimationFactory* this = java_object_alloc(sizeof(RightToLeftImageAnimationFactory), "RightToLeftImageAnimationFactory");
     RightToLeftImageAnimationFactory_init(this, image, dx, dy, animationBehaviorFactory);
     return this;
 }
@@ -54,12 +45,12 @@ RightToLeftImageAnimationFactory* RightToLeftImageAnimationFactory_new(Image* im
 
 // throws Exception
 Animation* RightToLeftImageAnimationFactory_getInstance(RightToLeftImageAnimationFactory* this, int32_t instanceId) {
-        Image* scaledImage = JAVA_CALL(this->animationFactoryImageScaleUtil, createImage, RightToLeftImageAnimationFactory_getImage(this), this->animationFactoryInitializationVisitor->width, this->animationFactoryInitializationVisitor->height, this->scaleProperties->scaleWidth, this->scaleProperties->scaleHeight);
-        if (this->animationFactoryInitializationVisitor->dx != 0 || this->animationFactoryInitializationVisitor->dy != 0) {
-            JAVA_CALL(this->animationFactoryImageScaleUtil, processAdjust, this);
-            return AdjustedRightToLeftImageAnimation_new(scaledImage, this->animationFactoryInitializationVisitor->dx, this->animationFactoryInitializationVisitor->dy, AnimationBehaviorFactory_getOrCreateInstance(this->animationBehaviorFactory));
+        Image* scaledImage = AnimationFactoryImageScaleUtil_createImage(this->base.animationFactoryImageScaleUtil, BaseImageAnimationFactory_getImage(this), this->base.animationFactoryInitializationVisitor->width, this->base.animationFactoryInitializationVisitor->height, this->base.scaleProperties->scaleWidth, this->base.scaleProperties->scaleHeight);
+        if (this->base.animationFactoryInitializationVisitor->dx != 0 || this->base.animationFactoryInitializationVisitor->dy != 0) {
+            AnimationFactoryImageScaleUtil_processAdjust(this->base.animationFactoryImageScaleUtil, this);
+            return AdjustedRightToLeftImageAnimation_new(scaledImage, this->base.animationFactoryInitializationVisitor->dx, this->base.animationFactoryInitializationVisitor->dy, AnimationBehaviorFactory_getOrCreateInstance(this->base.animationBehaviorFactory));
         } else {
-            return RightToLeftImageAnimation_new(scaledImage, AnimationBehaviorFactory_getOrCreateInstance(this->animationBehaviorFactory));
+            return RightToLeftImageAnimation_new(scaledImage, AnimationBehaviorFactory_getOrCreateInstance(this->base.animationBehaviorFactory));
         }
 }
 

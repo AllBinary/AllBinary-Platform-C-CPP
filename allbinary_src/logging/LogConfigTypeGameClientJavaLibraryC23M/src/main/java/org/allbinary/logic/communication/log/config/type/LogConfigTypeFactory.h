@@ -44,6 +44,8 @@ LogConfigTypeFactory* LogConfigTypeFactory_new(void);
 LogConfigTypeFactory* LogConfigTypeFactory_getInstance(void);
 
 void LogConfigTypeFactory_init(LogConfigTypeFactory* this);
+#define LogConfigTypeFactory_new0 LogConfigTypeFactory_new
+#define LogConfigTypeFactory_init0 LogConfigTypeFactory_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void LogConfigTypeFactory_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

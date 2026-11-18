@@ -1,52 +1,40 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct AppletUtil AppletUtil;
-struct AppletUtil {
-    char unused;
-};
+#include "org/allbinary/AppletUtil.h"
 
 
-AppletUtil* AppletUtil_new(void);
 
-void AppletUtil_init(AppletUtil* this);
-bool AppletUtil_isAppletLoader(Any* anyType);
+
+
+void AppletUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void AppletUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("AppletUtil", nullptr);
+}
 
 
 void AppletUtil_init(AppletUtil* this) {
+    AppletUtil_register();
 }
 
 AppletUtil* AppletUtil_new(void) {
-    AppletUtil* this = calloc(1, sizeof(AppletUtil));
+    AppletUtil* this = java_object_alloc(sizeof(AppletUtil), "AppletUtil");
     AppletUtil_init(this);
     return this;
 }
 
 
-bool AppletUtil_isAppletLoader(Any* anyType) {
+bool AppletUtil_isAppletLoader(void* anyType) {
         return false;
 }
 

@@ -1,56 +1,53 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.input
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/input/GameInput.h"
 #include "org/allbinary/game/configuration/feature/Features.h"
 #include "org/allbinary/game/configuration/feature/InputFeatureFactory.h"
 #include "org/allbinary/game/input/event/GameKeyEvent.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/util/BasicArrayList.h"
-
-typedef struct GameInput GameInput;
-struct GameInput {
-    LogUtil* logUtil;
-    CommonStrings* commonStrings;
-    BasicArrayList* gameKeyEventList;
-    BasicArrayList* removalGameKeyEventList;
-    bool isRemoveDuplicateKeyPresses;
-};
+#if __has_include("org/allbinary/game/configuration/feature/Features.h")
+#include "org/allbinary/game/configuration/feature/Features.h"
+#endif
+#if __has_include("org/allbinary/game/configuration/feature/InputFeatureFactory.h")
+#include "org/allbinary/game/configuration/feature/InputFeatureFactory.h"
+#endif
 
 
-GameInput* GameInput_new(BasicArrayList* gameKeyEventList, BasicArrayList* removalGameKeyEventList);
 
-void GameInput_init(GameInput* this, BasicArrayList* gameKeyEventList, BasicArrayList* removalGameKeyEventList);
-void GameInput_add(GameInput* this, GameKeyEvent* gameKeyEvent);
-void GameInput_addForRemoval(GameInput* this, GameKeyEvent* gameKeyEvent);
-bool GameInput_isForRemoval(GameInput* this, GameKeyEvent* gameKeyEvent);
-void GameInput_clear(GameInput* this);
-void GameInput_removeNonAIInputGameKeyEvents(GameInput* this);
-void GameInput_update(GameInput* this);
-BasicArrayList* GameInput_getRemovalGameKeyEventList(GameInput* this);
-BasicArrayList* GameInput_getGameKeyEventList(GameInput* this);
+
+
+
+
+
+
+
+
+
+void GameInput_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void GameInput_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GameInput", nullptr);
+    java_register_method("GameInput", "add", (void*) GameInput_add);
+    java_register_method("GameInput", "addForRemoval", (void*) GameInput_addForRemoval);
+    java_register_method("GameInput", "isForRemoval", (void*) GameInput_isForRemoval);
+    java_register_method("GameInput", "clear", (void*) GameInput_clear);
+    java_register_method("GameInput", "removeNonAIInputGameKeyEvents", (void*) GameInput_removeNonAIInputGameKeyEvents);
+    java_register_method("GameInput", "update", (void*) GameInput_update);
+    java_register_method("GameInput", "getRemovalGameKeyEventList", (void*) GameInput_getRemovalGameKeyEventList);
+    java_register_method("GameInput", "getGameKeyEventList", (void*) GameInput_getGameKeyEventList);
+}
 
 static void GameInput_initFields(GameInput* this) {
     this->logUtil = LogUtil_getInstance();
@@ -62,6 +59,7 @@ static void GameInput_initFields(GameInput* this) {
 
 
 void GameInput_init(GameInput* this, BasicArrayList* gameKeyEventList, BasicArrayList* removalGameKeyEventList) {
+    GameInput_register();
     GameInput_initFields(this);
         this->gameKeyEventList = gameKeyEventList;
         this->removalGameKeyEventList = removalGameKeyEventList;
@@ -69,7 +67,7 @@ void GameInput_init(GameInput* this, BasicArrayList* gameKeyEventList, BasicArra
 }
 
 GameInput* GameInput_new(BasicArrayList* gameKeyEventList, BasicArrayList* removalGameKeyEventList) {
-    GameInput* this = calloc(1, sizeof(GameInput));
+    GameInput* this = java_object_alloc(sizeof(GameInput), "GameInput");
     GameInput_init(this, gameKeyEventList, removalGameKeyEventList);
     return this;
 }
@@ -125,7 +123,7 @@ void GameInput_update(GameInput* this) {
         BasicArrayList* list = this->gameKeyEventList;
         int32_t size = BasicArrayList_size(removeList);
         for (int32_t index = 0; index < size; index++) {
-            Any* anyType = removeList->objectArray[index];
+            void* anyType = removeList->objectArray[index];
             for (int32_t index2 = BasicArrayList_size(list); --index2 >= 0; ) {
                 if (list->objectArray[index2] == anyType) {
                     BasicArrayList_removeAt(list, index2);

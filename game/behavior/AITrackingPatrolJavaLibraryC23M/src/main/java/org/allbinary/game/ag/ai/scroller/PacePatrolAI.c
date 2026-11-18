@@ -1,36 +1,12 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.ag.ai.scroller
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Canvas.h"
+#include "org/allbinary/game/ag/ai/scroller/PacePatrolAI.h"
+#include "javax/microedition/lcdui/Canvas.h"
 #include "org/allbinary/direction/Direction.h"
 #include "org/allbinary/direction/DirectionCompositeInterface.h"
 #include "org/allbinary/direction/DirectionFactory.h"
 #include "org/allbinary/game/input/GameInput.h"
 #include "org/allbinary/game/tracking/TrackingEvent.h"
 #include "org/allbinary/game/tracking/TrackingEventHandler.h"
-#include "org/allbinary/game/tracking/TrackingEventListenerInterface.h"
 #include "org/allbinary/layer/AllBinaryLayer.h"
 #include "org/allbinary/layer/AllBinaryLayerManager.h"
 #include "org/allbinary/layer/LayerInterface.h"
@@ -41,27 +17,47 @@
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
 #include "org/allbinary/game/ag/ai/scroller/BasePatrolAI.h"
-
-typedef struct PacePatrolAI PacePatrolAI;
-struct PacePatrolAI {
-    BasePatrolAI base;
-    TrackingEventListenerInterface TrackingEventListenerInterface_interface;
-    BasicArrayList* trackingList;
-    int32_t firingDistance;
-    bool isFollowLimitedByTerrain;
-};
+#if __has_include("org/allbinary/game/tracking/TrackingEventHandler.h")
+#include "org/allbinary/game/tracking/TrackingEventHandler.h"
+#endif
+#if __has_include("org/allbinary/logic/util/event/EventStrings.h")
+#include "org/allbinary/logic/util/event/EventStrings.h"
+#endif
 
 
-PacePatrolAI* PacePatrolAI_new(ABHashtable* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
 
-void PacePatrolAI_init(PacePatrolAI* this, ABHashtable* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
-void PacePatrolAI_processAI(PacePatrolAI* this, AllBinaryLayerManager* allBinaryLayerManager);
+
+
 static Direction* PacePatrolAI_setFiringDirectionForTargetIfInRange(PacePatrolAI* this);
-void PacePatrolAI_disable(PacePatrolAI* this);
-void PacePatrolAI_onEvent(PacePatrolAI* this, AllBinaryEventObject* eventObject);
-void PacePatrolAI_onMovement(PacePatrolAI* this, TrackingEvent* trackingEvent);
-int32_t PacePatrolAI_getFiringDistance(PacePatrolAI* this);
-void PacePatrolAI_setFiringDistance(PacePatrolAI* this, int32_t firingDistance);
+
+
+
+
+
+
+void PacePatrolAI_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void PacePatrolAI_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("PacePatrolAI", "BasePatrolAI");
+    java_register_method("PacePatrolAI", "processAI", (void*) PacePatrolAI_processAI);
+    java_register_method("PacePatrolAI", "setFiringDirectionForTargetIfInRange", (void*) PacePatrolAI_setFiringDirectionForTargetIfInRange);
+    java_register_method("PacePatrolAI", "disable", (void*) PacePatrolAI_disable);
+    java_register_method("PacePatrolAI", "onEvent", (void*) PacePatrolAI_onEvent);
+    java_register_method("PacePatrolAI", "onMovement", (void*) PacePatrolAI_onMovement);
+    java_register_method("PacePatrolAI", "getFiringDistance", (void*) PacePatrolAI_getFiringDistance);
+    java_register_method("PacePatrolAI", "setFiringDistance", (void*) PacePatrolAI_setFiringDistance);
+}
 
 static void PacePatrolAI_initFields(PacePatrolAI* this) {
     
@@ -71,14 +67,15 @@ static void PacePatrolAI_initFields(PacePatrolAI* this) {
 
 
 void PacePatrolAI_init(PacePatrolAI* this, ABHashtable* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) {
+    PacePatrolAI_register();
         BasePatrolAI_init(&this->base, hashtable, ownerLayerInterface, gameInput);
         PacePatrolAI_initFields(this);
-        TrackingEventHandler_addListenerInterface(TrackingEventHandler_getInstance(), this);
+        BasicEventHandler_addListenerInterface(TrackingEventHandler_getInstance(), this);
         this->trackingList = BasicArrayListD_new();
 }
 
 PacePatrolAI* PacePatrolAI_new(ABHashtable* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) {
-    PacePatrolAI* this = calloc(1, sizeof(PacePatrolAI));
+    PacePatrolAI* this = java_object_alloc(sizeof(PacePatrolAI), "PacePatrolAI");
     PacePatrolAI_init(this, hashtable, ownerLayerInterface, gameInput);
     return this;
 }
@@ -86,34 +83,34 @@ PacePatrolAI* PacePatrolAI_new(ABHashtable* hashtable, AllBinaryLayer* ownerLaye
 
 // throws Exception
 void PacePatrolAI_processAI(PacePatrolAI* this, AllBinaryLayerManager* allBinaryLayerManager) {
-        PacePatrolAI_update(this);
+        BasePatrolAI_update(this);
         Direction* direction = PacePatrolAI_setFiringDirectionForTargetIfInRange(this);
         DirectionFactory* directionFactory = DirectionFactory_getInstance();
         if (direction == directionFactory->LEFT) {
-            if (this->lastKeyDirection != this->base.keyDirection || !this->isFollowLimitedByTerrain) {
-                BasePatrolAI_processKeyAI((&this->base), Canvas_LEFT);
+            if (this->base.lastKeyDirection != this->base.keyDirection || !this->isFollowLimitedByTerrain) {
+                BasicAI_processKeyAI((&this->base), (Canvas_staticInit(), Canvas_LEFT));
             }
-            this->base.keyDirection = Canvas_LEFT;
-            this->lastKeyDirection = this->base.keyDirection;
+            this->base.keyDirection = (Canvas_staticInit(), Canvas_LEFT);
+            this->base.lastKeyDirection = this->base.keyDirection;
             this->base.xTotalDistance = 0;
-            BasePatrolAI_processKeyAI((&this->base), Canvas_KEY_NUM1);
+            BasicAI_processKeyAI((&this->base), (Canvas_staticInit(), Canvas_KEY_NUM1));
         } else if (direction == directionFactory->RIGHT) {
-            if (this->lastKeyDirection != this->base.keyDirection || !this->isFollowLimitedByTerrain) {
-                BasePatrolAI_processKeyAI((&this->base), Canvas_RIGHT);
+            if (this->base.lastKeyDirection != this->base.keyDirection || !this->isFollowLimitedByTerrain) {
+                BasicAI_processKeyAI((&this->base), (Canvas_staticInit(), Canvas_RIGHT));
             }
-            this->base.keyDirection = Canvas_RIGHT;
-            this->lastKeyDirection = this->base.keyDirection;
+            this->base.keyDirection = (Canvas_staticInit(), Canvas_RIGHT);
+            this->base.lastKeyDirection = this->base.keyDirection;
             this->base.xTotalDistance = 0;
-            BasePatrolAI_processKeyAI((&this->base), Canvas_KEY_NUM1);
+            BasicAI_processKeyAI((&this->base), (Canvas_staticInit(), Canvas_KEY_NUM1));
         } else {
-            BasePatrolAI_processKeyAI((&this->base), this->keyDirection);
+            BasicAI_processKeyAI((&this->base), this->base.keyDirection);
         }
 }
 
 
 static Direction* PacePatrolAI_setFiringDirectionForTargetIfInRange(PacePatrolAI* this) {
         DirectionFactory* directionFactory = DirectionFactory_getInstance();
-        AllBinaryLayer* ownerLayerInterface = PacePatrolAI_getOwnerLayerInterface(this);
+        AllBinaryLayer* ownerLayerInterface = BasicAI_getOwnerLayerInterface(this);
         Direction* direction = directionFactory->NOT_BORDERED_WITH;
         TrackingEvent* lastTrackingEvent = nullptr;
         LayerInterface* lastTrackingLayerInterface = nullptr;
@@ -130,7 +127,7 @@ static Direction* PacePatrolAI_setFiringDirectionForTargetIfInRange(PacePatrolAI
             int32_t absYDistance = ((yDistance) < 0 ? -(yDistance) : (yDistance));
             if (absYDistance <= 100) {
                 if (absXDistance < PacePatrolAI_getFiringDistance(this) / 2) {
-                    directionCompositeInterface = ((DirectionCompositeInterface*) PacePatrolAI_getOwnerLayerInterface(this));
+                    directionCompositeInterface = ((DirectionCompositeInterface*) BasicAI_getOwnerLayerInterface(this));
                     if (xDistance < 0 && DirectionCompositeInterface_getDirection(directionCompositeInterface) == directionFactory->RIGHT) {
                         direction = directionFactory->RIGHT;
                     } else if (xDistance > 0 && DirectionCompositeInterface_getDirection(directionCompositeInterface) == directionFactory->LEFT) {

@@ -1,59 +1,45 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.media.image
+#include "org/allbinary/media/image/ImageToRotationImageArrayUtil.h"
+#include "javax/microedition/lcdui/Image.h"
+#include "org/allbinary/media/image/ImageRotationUtil.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Image.h"
-
-typedef struct ImageToRotationImageArrayUtil ImageToRotationImageArrayUtil;
-struct ImageToRotationImageArrayUtil {
-    char unused;
-};
 
 static ImageToRotationImageArrayUtil* ImageToRotationImageArrayUtil_instance;
 
-ImageToRotationImageArrayUtil* ImageToRotationImageArrayUtil_new(void);
-ImageToRotationImageArrayUtil* ImageToRotationImageArrayUtil_getInstance(void);
 
-void ImageToRotationImageArrayUtil_init(ImageToRotationImageArrayUtil* this);
-Image** ImageToRotationImageArrayUtil_generate(ImageToRotationImageArrayUtil* this, Image* image, int32_t angleIncrement, int32_t totalAngle);
 
-// Static fields with runtime initializers: call this once at startup
+
 void ImageToRotationImageArrayUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     ImageToRotationImageArrayUtil_instance = ImageToRotationImageArrayUtil_new();
+}
+
+void ImageToRotationImageArrayUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ImageToRotationImageArrayUtil", nullptr);
+    java_register_method("ImageToRotationImageArrayUtil", "generate", (void*) ImageToRotationImageArrayUtil_generate);
 }
 
 
 ImageToRotationImageArrayUtil* ImageToRotationImageArrayUtil_getInstance(void) {
-        return ImageToRotationImageArrayUtil_instance;
+        return (ImageToRotationImageArrayUtil_staticInit(), ImageToRotationImageArrayUtil_instance);
 }
 
 
 void ImageToRotationImageArrayUtil_init(ImageToRotationImageArrayUtil* this) {
+    ImageToRotationImageArrayUtil_register();
 }
 
 ImageToRotationImageArrayUtil* ImageToRotationImageArrayUtil_new(void) {
-    ImageToRotationImageArrayUtil* this = calloc(1, sizeof(ImageToRotationImageArrayUtil));
+    ImageToRotationImageArrayUtil* this = java_object_alloc(sizeof(ImageToRotationImageArrayUtil), "ImageToRotationImageArrayUtil");
     ImageToRotationImageArrayUtil_init(this);
     return this;
 }

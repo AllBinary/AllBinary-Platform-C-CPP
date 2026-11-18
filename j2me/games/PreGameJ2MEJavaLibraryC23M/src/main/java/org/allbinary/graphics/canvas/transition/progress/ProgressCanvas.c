@@ -1,45 +1,19 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.canvas.transition.progress
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/CommandListener.h"
-// #include "javax/microedition/lcdui/Font.h"
-// #include "javax/microedition/lcdui/Graphics.h"
-// #include "javax/microedition/lcdui/NullCanvas.h"
-// #include "javax/microedition/lcdui/NullCommandListener.h"
+#include "org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h"
+#include "javax/microedition/lcdui/CommandListener.h"
+#include "javax/microedition/lcdui/Font.h"
+#include "javax/microedition/lcdui/Graphics.h"
+#include "javax/microedition/lcdui/NullCanvas.h"
+#include "javax/microedition/lcdui/NullCommandListener.h"
 #include "org/allbinary/canvas/Processor.h"
-#include "org/allbinary/canvas/RunnableCanvas.h"
 #include "org/allbinary/game/commands/GameCommandsFactory.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
 #include "org/allbinary/graphics/displayable/CanvasStrings.h"
 #include "org/allbinary/graphics/font/MyFontProcessor.h"
-#include "org/allbinary/graphics/font/UpdateMyFontInterface.h"
 #include "org/allbinary/graphics/font/UpdateMyFontProcessor.h"
 #include "org/allbinary/graphics/form/item/ABCustomGaugeItem.h"
 #include "org/allbinary/graphics/paint/NullPaintable.h"
 #include "org/allbinary/graphics/paint/Paintable.h"
-#include "org/allbinary/graphics/paint/PaintableInterface.h"
 #include "org/allbinary/logic/communication/log/PreLogUtil.h"
 #include "org/allbinary/logic/math/SmallIntegerSingletonFactory.h"
 #include "org/allbinary/logic/string/StringMaker.h"
@@ -47,64 +21,105 @@
 #include "org/allbinary/midlet/AllBinaryMidlet.h"
 #include "org/allbinary/thread/PathFindingThreadPool.h"
 #include "org/allbinary/thread/ThreadPool.h"
+#include "org/allbinary/graphics/canvas/transition/progress/ProgressPaintable.h"
+#include "org/allbinary/graphics/canvas/transition/progress/ProgressEndListener.h"
+#if __has_include("org/allbinary/graphics/displayable/CanvasStrings.h")
+#include "org/allbinary/graphics/displayable/CanvasStrings.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/game/commands/GameCommandsFactory.h")
+#include "org/allbinary/game/commands/GameCommandsFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/math/SmallIntegerSingletonFactory.h")
+#include "org/allbinary/logic/math/SmallIntegerSingletonFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/math/SmallIntegerSingletonFactory.h")
+#include "org/allbinary/logic/math/SmallIntegerSingletonFactory.h"
+#endif
 
-typedef struct ProgressCanvas ProgressCanvas;
-struct ProgressCanvas {
-    RunnableCanvas base;
-    PaintableInterface PaintableInterface_interface;
-    UpdateMyFontInterface UpdateMyFontInterface_interface;
-    bool hasPainted;
-    BasicColor* backgroundBasicColor;
-    Paintable* GAUGE_PAINTABLE;
-    float maxValue;
-    ABCustomGaugeItem* gauge;
-    const char* TEXT;
-    MyFontProcessor* updateMyFontProcessor;
-    MyFontProcessor* myFontProcessor;
-    AllBinaryMidlet* allbinaryMidlet;
-    float value;
-    const char* text;
-    bool background;
-    PaintableInterface* paintable;
-    bool inProgress;
-    Processor* IN_GAME_PROCESSOR;
-    Processor* inGameProcessor;
-    ProgressEndListener* progressEndListener;
-    const char* backgroundLabel;
-    const char* START_BACKGROUND;
-    const char* ADD_PORTION;
-    const char* ADD_EARLY_PORTION;
-};
 
 
-ProgressCanvas* ProgressCanvas_new(const char* title, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
 
-void ProgressCanvas_init(ProgressCanvas* this, const char* title, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
-void ProgressCanvas_updateMeasurement(ProgressCanvas* this, Graphics* graphics);
-void ProgressCanvas_init(ProgressCanvas* this, AllBinaryMidlet* gameMidlet);
-void ProgressCanvas_update(ProgressCanvas* this, Graphics* graphics);
-void ProgressCanvas_initCommands(ProgressCanvas* this, CommandListener* cmdListener);
-float ProgressCanvas_getMaxValue(ProgressCanvas* this);
-void ProgressCanvas_start(ProgressCanvas* this);
-void ProgressCanvas_startBackground(ProgressCanvas* this, bool background);
-void ProgressCanvas_endActual(ProgressCanvas* this);
-void ProgressCanvas_inGame(ProgressCanvas* this);
-void ProgressCanvas_end(ProgressCanvas* this);
-void ProgressCanvas_endFromInitialLazyLoadingComplete(ProgressCanvas* this);
-bool ProgressCanvas_isInGame(ProgressCanvas* this);
-void ProgressCanvas_endIfPaintedSinceStart(ProgressCanvas* this);
-void ProgressCanvas_addEarlyPortion(ProgressCanvas* this, int32_t value, const char* text, int32_t index);
-void ProgressCanvas_addPortion(ProgressCanvas* this, int32_t value, const char* text, int32_t index);
-void ProgressCanvas_addNormalPortion(ProgressCanvas* this, int32_t value, const char* text);
-void ProgressCanvas_setValue(ProgressCanvas* this, int32_t value);
-void ProgressCanvas_paint(ProgressCanvas* this, Graphics* graphics);
-void ProgressCanvas_paint2(ProgressCanvas* this, Graphics* graphics);
-void ProgressCanvas_paintThreed(ProgressCanvas* this, Graphics* graphics);
-float ProgressCanvas_getValue(ProgressCanvas* this);
-void ProgressCanvas_setText(ProgressCanvas* this, const char* text);
-const char* ProgressCanvas_getText(ProgressCanvas* this);
-void ProgressCanvas_setBackground(ProgressCanvas* this, bool background);
-bool ProgressCanvas_isBackground(ProgressCanvas* this);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void ProgressCanvas_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void ProgressCanvas_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ProgressCanvas", "RunnableCanvas");
+    java_register_method("ProgressCanvas", "updateMeasurement", (void*) ProgressCanvas_updateMeasurement);
+    java_register_method("ProgressCanvas", "init", (void*) ProgressCanvas_initMethod);
+    java_register_method("ProgressCanvas", "update", (void*) ProgressCanvas_update);
+    java_register_method("ProgressCanvas", "initCommands", (void*) ProgressCanvas_initCommands);
+    java_register_method("ProgressCanvas", "getMaxValue", (void*) ProgressCanvas_getMaxValue);
+    java_register_method("ProgressCanvas", "start", (void*) ProgressCanvas_start);
+    java_register_method("ProgressCanvas", "startBackground", (void*) ProgressCanvas_startBackground);
+    java_register_method("ProgressCanvas", "endActual", (void*) ProgressCanvas_endActual);
+    java_register_method("ProgressCanvas", "inGame", (void*) ProgressCanvas_inGame);
+    java_register_method("ProgressCanvas", "end", (void*) ProgressCanvas_end);
+    java_register_method("ProgressCanvas", "endFromInitialLazyLoadingComplete", (void*) ProgressCanvas_endFromInitialLazyLoadingComplete);
+    java_register_method("ProgressCanvas", "isInGame", (void*) ProgressCanvas_isInGame);
+    java_register_method("ProgressCanvas", "endIfPaintedSinceStart", (void*) ProgressCanvas_endIfPaintedSinceStart);
+    java_register_method("ProgressCanvas", "addEarlyPortion", (void*) ProgressCanvas_addEarlyPortion);
+    java_register_method("ProgressCanvas", "addPortion", (void*) ProgressCanvas_addPortion);
+    java_register_method("ProgressCanvas", "addNormalPortion", (void*) ProgressCanvas_addNormalPortion);
+    java_register_method("ProgressCanvas", "setValue", (void*) ProgressCanvas_setValue);
+    java_register_method("ProgressCanvas", "paint", (void*) ProgressCanvas_paint);
+    java_register_method("ProgressCanvas", "paint2", (void*) ProgressCanvas_paint2);
+    java_register_method("ProgressCanvas", "paintThreed", (void*) ProgressCanvas_paintThreed);
+    java_register_method("ProgressCanvas", "getValue", (void*) ProgressCanvas_getValue);
+    java_register_method("ProgressCanvas", "setText", (void*) ProgressCanvas_setText);
+    java_register_method("ProgressCanvas", "getText", (void*) ProgressCanvas_getText);
+    java_register_method("ProgressCanvas", "setBackground", (void*) ProgressCanvas_setBackground);
+    java_register_method("ProgressCanvas", "isBackground", (void*) ProgressCanvas_isBackground);
+}
 
 static void ProgressCanvas_initFields(ProgressCanvas* this) {
     this->hasPainted = false;
@@ -112,7 +127,7 @@ static void ProgressCanvas_initFields(ProgressCanvas* this) {
     this->GAUGE_PAINTABLE = ProgressPaintable_new(this);
     this->maxValue = 100.0f;
     
-    this->TEXT = this->commonStrings->LOADING;
+    this->TEXT = this->base.base.commonStrings->LOADING;
     this->updateMyFontProcessor = UpdateMyFontProcessor_new(this);
     this->myFontProcessor = this->updateMyFontProcessor;
     this->allbinaryMidlet = AllBinaryMidlet_getNullInstance();
@@ -128,12 +143,12 @@ static void ProgressCanvas_initFields(ProgressCanvas* this) {
 
     // throws Exception
     void ProgressCanvas_process(ProgressCanvas* this) {
-            ThreadPool_runAPriorityTask(this->pathFindingThreadPool);
+            ThreadPool_runAPriorityTask(this->base.base.base.base.pathFindingThreadPool);
     }
 #endif
 ;
     this->inGameProcessor = Processor_getInstance();
-    this->progressEndListener = ProgressEndListener_instance;
+    this->progressEndListener = (ProgressEndListener_staticInit(), ProgressEndListener_instance);
     this->backgroundLabel = "Background AI Game Loading...";
     this->START_BACKGROUND = "startBackground";
     this->ADD_PORTION = "addPortion";
@@ -142,14 +157,15 @@ static void ProgressCanvas_initFields(ProgressCanvas* this) {
 
 
 void ProgressCanvas_init(ProgressCanvas* this, const char* title, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) {
-        RunnableCanvas_init(&this->base, NullCommandListener_NULL_COMMAND_LISTENER, CanvasStrings_getInstance()->EMPTY_CHILD_NAME_LIST, false);
+    ProgressCanvas_register();
+        RunnableCanvas_init(&this->base, (NullCommandListener_staticInit(), NullCommandListener_NULL_COMMAND_LISTENER), CanvasStrings_getInstance()->EMPTY_CHILD_NAME_LIST, false);
         ProgressCanvas_initFields(this);
         this->backgroundBasicColor = backgroundBasicColor;
         this->gauge = ABCustomGaugeItem_new(StringUtil_getInstance()->EMPTY_STRING, ((int32_t) this->maxValue), 0, backgroundBasicColor, foregroundBasicColor);
 }
 
 ProgressCanvas* ProgressCanvas_new(const char* title, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) {
-    ProgressCanvas* this = calloc(1, sizeof(ProgressCanvas));
+    ProgressCanvas* this = java_object_alloc(sizeof(ProgressCanvas), "ProgressCanvas");
     ProgressCanvas_init(this, title, backgroundBasicColor, foregroundBasicColor);
     return this;
 }
@@ -157,12 +173,12 @@ ProgressCanvas* ProgressCanvas_new(const char* title, BasicColor* backgroundBasi
 
 void ProgressCanvas_updateMeasurement(ProgressCanvas* this, Graphics* graphics) {
         Font* font = Graphics_getFont(graphics);
-        ABCustomGaugeItem_setHeight(this->gauge, Font_getHeight(font) + 2);
+        ABCustomItem_setHeight(this->gauge, Font_getHeight(font) + 2);
         this->myFontProcessor = MyFontProcessor_getInstance();
 }
 
 
-void ProgressCanvas_init(ProgressCanvas* this, AllBinaryMidlet* gameMidlet) {
+void ProgressCanvas_initMethod(ProgressCanvas* this, AllBinaryMidlet* gameMidlet) {
         this->allbinaryMidlet = gameMidlet;
 }
 
@@ -182,10 +198,10 @@ float ProgressCanvas_getMaxValue(ProgressCanvas* this) {
 
 
 void ProgressCanvas_start(ProgressCanvas* this) {
-        JAVA_CALL(this->logUtil, putF, this->commonStrings->START, this, this->commonStrings->START_METHOD_NAME);
+        LogUtil_putF(this->base.base.logUtil, this->base.base.commonStrings->START, this, this->base.base.commonStrings->START_METHOD_NAME);
         ProgressCanvas_setBackground(this, true);
-        ABCustomGaugeItem_setHeight(this->gauge, 30);
-        ABCustomGaugeItem_setLabel(this->gauge, this->commonStrings->PLEASE_WAIT);
+        ABCustomItem_setHeight(this->gauge, 30);
+        ABCustomItem_setLabel(this->gauge, this->base.base.commonStrings->PLEASE_WAIT);
         ProgressCanvas_setText(this, this->TEXT);
         ProgressCanvas_setValue(this, 0);
         this->inGameProcessor = Processor_getInstance();
@@ -195,10 +211,10 @@ void ProgressCanvas_start(ProgressCanvas* this) {
 
 
 void ProgressCanvas_startBackground(ProgressCanvas* this, bool background) {
-        JAVA_CALL(this->logUtil, putF, this->commonStrings->START, this, this->START_BACKGROUND);
+        LogUtil_putF(this->base.base.logUtil, this->base.base.commonStrings->START, this, this->START_BACKGROUND);
         ProgressCanvas_setBackground(this, background);
         this->myFontProcessor = this->updateMyFontProcessor;
-        ABCustomGaugeItem_setLabel(this->gauge, this->backgroundLabel);
+        ABCustomItem_setLabel(this->gauge, this->backgroundLabel);
         ProgressCanvas_setText(this, this->TEXT);
         ProgressCanvas_setValue(this, 0);
         this->inGameProcessor = Processor_getInstance();
@@ -207,7 +223,7 @@ void ProgressCanvas_startBackground(ProgressCanvas* this, bool background) {
 
 
 void ProgressCanvas_endActual(ProgressCanvas* this) {
-        AllBinaryMidlet_commandAction(this->allbinaryMidlet, GameCommandsFactory_getInstance()->SHOW_GAME_CANVAS, NullCanvas_NULL_CANVAS);
+        AllBinaryMidlet_commandAction(this->allbinaryMidlet, GameCommandsFactory_getInstance()->SHOW_GAME_CANVAS, (NullCanvas_staticInit(), NullCanvas_NULL_CANVAS));
         this->inProgress = false;
         ProgressCanvas_inGame(this);
 }
@@ -220,8 +236,8 @@ void ProgressCanvas_inGame(ProgressCanvas* this) {
 
 
 void ProgressCanvas_end(ProgressCanvas* this) {
-        JAVA_CALL(this->logUtil, putF, this->commonStrings->START, this, this->commonStrings->END_METHOD_NAME);
-        ABCustomGaugeItem_setValue(this->gauge, ProgressCanvas_getMaxValue(this));
+        LogUtil_putF(this->base.base.logUtil, this->base.base.commonStrings->START, this, this->base.base.commonStrings->END_METHOD_NAME);
+        ABCustomItem_setValue(this->gauge, ProgressCanvas_getMaxValue(this));
         ProgressCanvas_endActual(this);
         this->paintable = NullPaintable_getInstance();
 }
@@ -229,7 +245,7 @@ void ProgressCanvas_end(ProgressCanvas* this) {
 
 void ProgressCanvas_endFromInitialLazyLoadingComplete(ProgressCanvas* this) {
         ProgressEndListener_onEndEvent(this->progressEndListener);
-        ABCustomGaugeItem_setValue(this->gauge, ProgressCanvas_getMaxValue(this));
+        ABCustomItem_setValue(this->gauge, ProgressCanvas_getMaxValue(this));
         this->inGameProcessor = this->IN_GAME_PROCESSOR;
 }
 
@@ -247,15 +263,15 @@ void ProgressCanvas_endIfPaintedSinceStart(ProgressCanvas* this) {
 
 
 void ProgressCanvas_addEarlyPortion(ProgressCanvas* this, int32_t value, const char* text, int32_t index) {
-        ProgressCanvas_setText(this, JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), text), append, JAVA_CALL(SmallIntegerSingletonFactory_getAt(SmallIntegerSingletonFactory_getInstance(), index), toString)), toString));
-        ABCustomGaugeItem_setValue(this->gauge, ABCustomGaugeItem_getValue(this->gauge) + ProgressCanvas_getMaxValue(this) / ((float) value));
+        ProgressCanvas_setText(this, java_string_of(StringMaker_append(StringMaker_append(StringMaker_new(), text), java_string_of(SmallIntegerSingletonFactory_getAt(SmallIntegerSingletonFactory_getInstance(), index)))));
+        ABCustomItem_setValue(this->gauge, ABCustomItem_getValue(this->gauge) + ProgressCanvas_getMaxValue(this) / ((float) value));
 }
 
 
 void ProgressCanvas_addPortion(ProgressCanvas* this, int32_t value, const char* text, int32_t index) {
-        ProgressCanvas_setText(this, JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), text), append, JAVA_CALL(SmallIntegerSingletonFactory_getAt(SmallIntegerSingletonFactory_getInstance(), index), toString)), toString));
+        ProgressCanvas_setText(this, java_string_of(StringMaker_append(StringMaker_append(StringMaker_new(), text), java_string_of(SmallIntegerSingletonFactory_getAt(SmallIntegerSingletonFactory_getInstance(), index)))));
         PreLogUtil_put(this->text, this, this->ADD_PORTION);
-        ABCustomGaugeItem_setValue(this->gauge, ABCustomGaugeItem_getValue(this->gauge) + ProgressCanvas_getMaxValue(this) / ((float) value));
+        ABCustomItem_setValue(this->gauge, ABCustomItem_getValue(this->gauge) + ProgressCanvas_getMaxValue(this) / ((float) value));
 }
 
 
@@ -264,13 +280,13 @@ void ProgressCanvas_addNormalPortion(ProgressCanvas* this, int32_t value, const 
             PreLogUtil_put(text, this, this->ADD_PORTION);
         }
         ProgressCanvas_setText(this, text);
-        ABCustomGaugeItem_setValue(this->gauge, ABCustomGaugeItem_getValue(this->gauge) + ProgressCanvas_getMaxValue(this) / ((float) value));
+        ABCustomItem_setValue(this->gauge, ABCustomItem_getValue(this->gauge) + ProgressCanvas_getMaxValue(this) / ((float) value));
 }
 
 
 void ProgressCanvas_setValue(ProgressCanvas* this, int32_t value) {
         this->value = ((float) value);
-        ABCustomGaugeItem_setValue(this->gauge, ((float) value));
+        ABCustomItem_setValue(this->gauge, ((float) value));
 }
 
 
@@ -282,8 +298,8 @@ void ProgressCanvas_paint(ProgressCanvas* this, Graphics* graphics) {
 void ProgressCanvas_paint2(ProgressCanvas* this, Graphics* graphics) {
         MyFontProcessor_process(this->myFontProcessor, graphics);
         Graphics_setColor(graphics, BasicColor_intValue(this->backgroundBasicColor));
-        Graphics_fillRect(graphics, 0, 0, JAVA_CALL(this->displayInfo, getLastWidth), JAVA_CALL(this->displayInfo, getLastHeight));
-        ABCustomGaugeItem_paintXY(this->gauge, graphics, 0, 0);
+        Graphics_fillRect(graphics, 0, 0, DisplayInfoSingleton_getLastWidth(this->base.base.displayInfo), DisplayInfoSingleton_getLastHeight(this->base.base.displayInfo));
+        ABCustomItem_paintXY(this->gauge, graphics, 0, 0);
         this->hasPainted = true;
 }
 

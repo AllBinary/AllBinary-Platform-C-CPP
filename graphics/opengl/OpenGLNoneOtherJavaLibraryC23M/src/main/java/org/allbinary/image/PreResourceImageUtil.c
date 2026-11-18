@@ -1,62 +1,50 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.image
+#include "org/allbinary/image/PreResourceImageUtil.h"
+#include "javax/microedition/khronos/opengles/GL.h"
+#include "javax/microedition/lcdui/Graphics.h"
+#include "javax/microedition/lcdui/Image.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/khronos/opengles/GL.h"
-// #include "javax/microedition/lcdui/Graphics.h"
-// #include "javax/microedition/lcdui/Image.h"
-
-typedef struct PreResourceImageUtil PreResourceImageUtil;
-struct PreResourceImageUtil {
-    char unused;
-};
 
 static PreResourceImageUtil* PreResourceImageUtil_instance;
 
-PreResourceImageUtil* PreResourceImageUtil_new(void);
-PreResourceImageUtil* PreResourceImageUtil_getInstance(void);
-Image* PreResourceImageUtil_encapsulate(PreResourceImageUtil* this, Image* image);
-void PreResourceImageUtil_updateGL(PreResourceImageUtil* this, GL* gl, Image* image);
-void PreResourceImageUtil_update(PreResourceImageUtil* this, Graphics* graphics, Image* image);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
 void PreResourceImageUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     PreResourceImageUtil_instance = PreResourceImageUtil_new();
 }
 
+void PreResourceImageUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("PreResourceImageUtil", nullptr);
+    java_register_method("PreResourceImageUtil", "encapsulate", (void*) PreResourceImageUtil_encapsulate);
+    java_register_method("PreResourceImageUtil", "updateGL", (void*) PreResourceImageUtil_updateGL);
+    java_register_method("PreResourceImageUtil", "update", (void*) PreResourceImageUtil_update);
+}
+
 void PreResourceImageUtil_init(PreResourceImageUtil* this) {
+    PreResourceImageUtil_register();
 }
 
 PreResourceImageUtil* PreResourceImageUtil_new(void) {
-    PreResourceImageUtil* this = calloc(1, sizeof(PreResourceImageUtil));
+    PreResourceImageUtil* this = java_object_alloc(sizeof(PreResourceImageUtil), "PreResourceImageUtil");
     PreResourceImageUtil_init(this);
     return this;
 }
 
 
 PreResourceImageUtil* PreResourceImageUtil_getInstance(void) {
-        return PreResourceImageUtil_instance;
+        return (PreResourceImageUtil_staticInit(), PreResourceImageUtil_instance);
 }
 
 

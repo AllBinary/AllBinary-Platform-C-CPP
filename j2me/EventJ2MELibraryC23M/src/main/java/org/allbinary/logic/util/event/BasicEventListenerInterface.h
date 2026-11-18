@@ -35,6 +35,7 @@ struct BasicEventListenerInterface {
 
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void BasicEventListenerInterface_staticInit(void);
+#define BasicEventListenerInterface_onEvent EventListenerInterface_onEvent
 
 
 #endif // ORG_ALLBINARY_LOGIC_UTIL_EVENT_BASICEVENTLISTENERINTERFACE_H

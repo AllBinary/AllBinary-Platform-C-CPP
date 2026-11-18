@@ -1,51 +1,44 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/GameMode.h"
 #include "org/allbinary/logic/string/StringUtil.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
-typedef struct GameMode GameMode;
-struct GameMode {
-    const char* name;
-};
 
 GameMode* GameMode_NONE;
 GameMode* GameMode_SERVER;
 GameMode* GameMode_CLIENT;
 
-GameMode* GameMode_new(const char* name);
 
-void GameMode_init(GameMode* this, const char* name);
 static void GameMode_setName(GameMode* this, const char* name);
-const char* GameMode_getName(GameMode* this);
-const char* GameMode_toString(GameMode* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
 void GameMode_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     GameMode_NONE = GameMode_new(StringUtil_getInstance()->NULL_STRING);
     GameMode_SERVER = GameMode_new("Server");
     GameMode_CLIENT = GameMode_new("Client");
+}
+
+void GameMode_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GameMode", nullptr);
+    java_register_method("GameMode", "setName", (void*) GameMode_setName);
+    java_register_method("GameMode", "getName", (void*) GameMode_getName);
+    java_register_method("GameMode", "toString", (void*) GameMode_toString);
 }
 
 static void GameMode_initFields(GameMode* this) {
@@ -54,12 +47,13 @@ static void GameMode_initFields(GameMode* this) {
 
 
 void GameMode_init(GameMode* this, const char* name) {
+    GameMode_register();
     GameMode_initFields(this);
         GameMode_setName(this, name);
 }
 
 GameMode* GameMode_new(const char* name) {
-    GameMode* this = calloc(1, sizeof(GameMode));
+    GameMode* this = java_object_alloc(sizeof(GameMode), "GameMode");
     GameMode_init(this, name);
     return this;
 }

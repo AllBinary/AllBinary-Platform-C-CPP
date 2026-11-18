@@ -1,18 +1,13 @@
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.form.item
+#include "org/allbinary/graphics/form/item/ABChoiceItemInterface.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
 
-typedef struct ABChoiceItemInterface ABChoiceItemInterface;
-struct ABChoiceItemInterface {
-    char unused;
-};
 
+void ABChoiceItemInterface_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
 

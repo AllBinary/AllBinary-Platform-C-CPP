@@ -1,0 +1,92 @@
+#ifndef ORG_ALLBINARY_INPUT_MOTION_GYRO_ACTION_ROLLRIGHTORIENTATIONINPUTTOGAMEKEYEVENTACTION_H
+#define ORG_ALLBINARY_INPUT_MOTION_GYRO_ACTION_ROLLRIGHTORIENTATIONINPUTTOGAMEKEYEVENTACTION_H
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.input.motion.gyro.action
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+typedef struct PlatformInputMappingFactory PlatformInputMappingFactory;
+typedef struct GameKeyCompleteMotionGestureInputEvent GameKeyCompleteMotionGestureInputEvent;
+typedef struct OrientationMotionGestureFactory OrientationMotionGestureFactory;
+typedef struct NullUtil NullUtil;
+#include "org/allbinary/game/input/motion/action/GameKeyCompleteMotionGestureInputEvent.h"
+
+typedef struct RollRightOrientationInputToGameKeyEventAction RollRightOrientationInputToGameKeyEventAction;
+struct RollRightOrientationInputToGameKeyEventAction {
+    GameKeyCompleteMotionGestureInputEvent base;
+};
+
+
+RollRightOrientationInputToGameKeyEventAction* RollRightOrientationInputToGameKeyEventAction_new(void);
+
+GameKeyCompleteMotionGestureInputEvent* RollRightOrientationInputToGameKeyEventAction_getInstance(void);
+
+void RollRightOrientationInputToGameKeyEventAction_init(RollRightOrientationInputToGameKeyEventAction* this);
+#define RollRightOrientationInputToGameKeyEventAction_new0 RollRightOrientationInputToGameKeyEventAction_new
+#define RollRightOrientationInputToGameKeyEventAction_init0 RollRightOrientationInputToGameKeyEventAction_init
+#ifndef RollRightOrientationInputToGameKeyEventAction_getSourceId
+#define RollRightOrientationInputToGameKeyEventAction_getSourceId GameKeyCompleteMotionGestureInputEvent_getSourceId
+#endif
+#ifndef RollRightOrientationInputToGameKeyEventAction_update
+#define RollRightOrientationInputToGameKeyEventAction_update GameKeyCompleteMotionGestureInputEvent_update
+#endif
+#ifndef RollRightOrientationInputToGameKeyEventAction_setGameKeyEvent
+#define RollRightOrientationInputToGameKeyEventAction_setGameKeyEvent GameKeyCompleteMotionGestureInputEvent_setGameKeyEvent
+#endif
+#ifndef RollRightOrientationInputToGameKeyEventAction_getGameKeyEvent
+#define RollRightOrientationInputToGameKeyEventAction_getGameKeyEvent GameKeyCompleteMotionGestureInputEvent_getGameKeyEvent
+#endif
+#ifndef RollRightOrientationInputToGameKeyEventAction_setGameKey
+#define RollRightOrientationInputToGameKeyEventAction_setGameKey GameKeyCompleteMotionGestureInputEvent_setGameKey
+#endif
+#ifndef RollRightOrientationInputToGameKeyEventAction_getGameKey
+#define RollRightOrientationInputToGameKeyEventAction_getGameKey GameKeyCompleteMotionGestureInputEvent_getGameKey
+#endif
+#ifndef RollRightOrientationInputToGameKeyEventAction_setName
+#define RollRightOrientationInputToGameKeyEventAction_setName CompleteMotionGestureInputEvent_setName
+#endif
+#ifndef RollRightOrientationInputToGameKeyEventAction_getName
+#define RollRightOrientationInputToGameKeyEventAction_getName CompleteMotionGestureInputEvent_getName
+#endif
+#ifndef RollRightOrientationInputToGameKeyEventAction_setMotionGestureInput
+#define RollRightOrientationInputToGameKeyEventAction_setMotionGestureInput CompleteMotionGestureInputEvent_setMotionGestureInput
+#endif
+#ifndef RollRightOrientationInputToGameKeyEventAction_getMotionGestureInput
+#define RollRightOrientationInputToGameKeyEventAction_getMotionGestureInput CompleteMotionGestureInputEvent_getMotionGestureInput
+#endif
+#ifndef RollRightOrientationInputToGameKeyEventAction_getSource
+#define RollRightOrientationInputToGameKeyEventAction_getSource AllBinaryEventObject_getSource
+#endif
+#ifndef RollRightOrientationInputToGameKeyEventAction_setSource
+#define RollRightOrientationInputToGameKeyEventAction_setSource AllBinaryEventObject_setSource
+#endif
+// Runs the Java static initialization of the class once. Reads of its static fields call it first.
+void RollRightOrientationInputToGameKeyEventAction_staticInit(void);
+// Registers the class, its superclass, and its methods for the interface calls (java_register_method)
+void RollRightOrientationInputToGameKeyEventAction_register(void);
+
+#if __has_include("org/allbinary/game/input/motion/action/GameKeyCompleteMotionGestureInputEvent.h")
+#include "org/allbinary/game/input/motion/action/GameKeyCompleteMotionGestureInputEvent.h"
+#endif
+
+#endif // ORG_ALLBINARY_INPUT_MOTION_GYRO_ACTION_ROLLRIGHTORIENTATIONINPUTTOGAMEKEYEVENTACTION_H

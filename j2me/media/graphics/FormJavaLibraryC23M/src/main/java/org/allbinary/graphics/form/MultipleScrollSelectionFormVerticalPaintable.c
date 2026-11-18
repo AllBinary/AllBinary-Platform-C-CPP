@@ -1,43 +1,31 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.form
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/graphics/form/MultipleScrollSelectionFormVerticalPaintable.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/graphics/form/item/ABCustomItem.h"
 #include "org/allbinary/graphics/form/ItemIndexPaintable.h"
-
-typedef struct MultipleScrollSelectionFormVerticalPaintable MultipleScrollSelectionFormVerticalPaintable;
-struct MultipleScrollSelectionFormVerticalPaintable {
-    ItemIndexPaintable base;
-    MultipleScrollSelectionHorizontalForm* multipleScrollSelectionForm;
-};
+#include "org/allbinary/graphics/form/MultipleScrollSelectionHorizontalForm.h"
 
 
-MultipleScrollSelectionFormVerticalPaintable* MultipleScrollSelectionFormVerticalPaintable_new(MultipleScrollSelectionHorizontalForm* multipleScrollSelectionForm);
 
-void MultipleScrollSelectionFormVerticalPaintable_init(MultipleScrollSelectionFormVerticalPaintable* this, MultipleScrollSelectionHorizontalForm* multipleScrollSelectionForm);
-int32_t MultipleScrollSelectionFormVerticalPaintable_paint(MultipleScrollSelectionFormVerticalPaintable* this, Graphics* graphics, int32_t index, ABCustomItem* item, int32_t dx, int32_t dy);
+
+
+void MultipleScrollSelectionFormVerticalPaintable_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void MultipleScrollSelectionFormVerticalPaintable_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("MultipleScrollSelectionFormVerticalPaintable", "ItemIndexPaintable");
+    java_register_method("MultipleScrollSelectionFormVerticalPaintable", "paint", (void*) MultipleScrollSelectionFormVerticalPaintable_paint);
+}
 
 static void MultipleScrollSelectionFormVerticalPaintable_initFields(MultipleScrollSelectionFormVerticalPaintable* this) {
     
@@ -45,13 +33,14 @@ static void MultipleScrollSelectionFormVerticalPaintable_initFields(MultipleScro
 
 
 void MultipleScrollSelectionFormVerticalPaintable_init(MultipleScrollSelectionFormVerticalPaintable* this, MultipleScrollSelectionHorizontalForm* multipleScrollSelectionForm) {
+    MultipleScrollSelectionFormVerticalPaintable_register();
     ItemIndexPaintable_init(&this->base);
     MultipleScrollSelectionFormVerticalPaintable_initFields(this);
         this->multipleScrollSelectionForm = multipleScrollSelectionForm;
 }
 
 MultipleScrollSelectionFormVerticalPaintable* MultipleScrollSelectionFormVerticalPaintable_new(MultipleScrollSelectionHorizontalForm* multipleScrollSelectionForm) {
-    MultipleScrollSelectionFormVerticalPaintable* this = calloc(1, sizeof(MultipleScrollSelectionFormVerticalPaintable));
+    MultipleScrollSelectionFormVerticalPaintable* this = java_object_alloc(sizeof(MultipleScrollSelectionFormVerticalPaintable), "MultipleScrollSelectionFormVerticalPaintable");
     MultipleScrollSelectionFormVerticalPaintable_init(this, multipleScrollSelectionForm);
     return this;
 }

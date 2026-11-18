@@ -1,0 +1,443 @@
+#ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_FALLINGPICKUPLAYER_H
+#define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_FALLINGPICKUPLAYER_H
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.ag.layer.pickup
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+typedef struct NullAnimationFactory NullAnimationFactory;
+typedef struct CountedPickedUpLayerInterfaceFactory CountedPickedUpLayerInterfaceFactory;
+typedef struct PickupLayer PickupLayer;
+typedef struct RemoteInfo RemoteInfo;
+typedef struct TickableInterface TickableInterface;
+typedef struct PointFactory PointFactory;
+typedef struct Rectangle Rectangle;
+typedef struct AllBinaryLayerManager AllBinaryLayerManager;
+typedef struct ViewPosition ViewPosition;
+#include "org/allbinary/game/layer/pickup/PickupLayer.h"
+#include "org/allbinary/game/tick/TickableInterface.h"
+
+typedef struct FallingPickupLayer FallingPickupLayer;
+struct FallingPickupLayer {
+    PickupLayer base;
+    TickableInterface TickableInterface_interface;
+};
+
+
+FallingPickupLayer* FallingPickupLayer_new(RemoteInfo* remoteInfo);
+
+void FallingPickupLayer_init(FallingPickupLayer* this, RemoteInfo* remoteInfo);
+
+void FallingPickupLayer_processTick(FallingPickupLayer* this, AllBinaryLayerManager* allBinaryLayerManager);
+
+bool FallingPickupLayer_implmentsTickableInterface(FallingPickupLayer* this);
+#define FallingPickupLayer_new1 FallingPickupLayer_new
+#define FallingPickupLayer_init1 FallingPickupLayer_init
+#ifndef FallingPickupLayer_initXYZ
+#define FallingPickupLayer_initXYZ PickupLayer_initXYZ
+#endif
+#ifndef FallingPickupLayer_paint
+#define FallingPickupLayer_paint PickupLayer_paint
+#endif
+#ifndef FallingPickupLayer_paintThreed
+#define FallingPickupLayer_paintThreed PickupLayer_paintThreed
+#endif
+#ifndef FallingPickupLayer_getPickedUpLayerInterfaceFactoryInterface
+#define FallingPickupLayer_getPickedUpLayerInterfaceFactoryInterface PickupLayer_getPickedUpLayerInterfaceFactoryInterface
+#endif
+#ifndef FallingPickupLayer_setPickedUp
+#define FallingPickupLayer_setPickedUp PickupLayer_setPickedUp
+#endif
+#ifndef FallingPickupLayer_isDestroyed
+#define FallingPickupLayer_isDestroyed PickupLayer_isDestroyed
+#endif
+#ifndef FallingPickupLayer_setDestroyed
+#define FallingPickupLayer_setDestroyed PickupLayer_setDestroyed
+#endif
+#ifndef FallingPickupLayer_damage
+#define FallingPickupLayer_damage PickupLayer_damage
+#endif
+#ifndef FallingPickupLayer_getDamage
+#define FallingPickupLayer_getDamage PickupLayer_getDamage
+#endif
+#ifndef FallingPickupLayer_set
+#define FallingPickupLayer_set PickupLayer_set
+#endif
+#ifndef FallingPickupLayer_getMultiplayerBehavior
+#define FallingPickupLayer_getMultiplayerBehavior MultiPlayerGameLayer_getMultiplayerBehavior
+#endif
+#ifndef FallingPickupLayer_setPingInfo
+#define FallingPickupLayer_setPingInfo MultiPlayerGameLayer_setPingInfo
+#endif
+#ifndef FallingPickupLayer_setFiring
+#define FallingPickupLayer_setFiring MultiPlayerGameLayer_setFiring
+#endif
+#ifndef FallingPickupLayer_getFiring
+#define FallingPickupLayer_getFiring MultiPlayerGameLayer_getFiring
+#endif
+#ifndef FallingPickupLayer_getNullInstance
+#define FallingPickupLayer_getNullInstance CollidableDestroyableDamageableLayer_getNullInstance
+#endif
+#ifndef FallingPickupLayer_initPosition
+#define FallingPickupLayer_initPosition CollidableDestroyableDamageableLayer_initPosition
+#endif
+#ifndef FallingPickupLayer_initPositionXYZ
+#define FallingPickupLayer_initPositionXYZ CollidableDestroyableDamageableLayer_initPositionXYZ
+#endif
+#ifndef FallingPickupLayer_paint
+#define FallingPickupLayer_paint CollidableDestroyableDamageableLayer_paint
+#endif
+#ifndef FallingPickupLayer_damage
+#define FallingPickupLayer_damage CollidableDestroyableDamageableLayer_damage
+#endif
+#ifndef FallingPickupLayer_getDamage
+#define FallingPickupLayer_getDamage CollidableDestroyableDamageableLayer_getDamage
+#endif
+#ifndef FallingPickupLayer_isDestroyed
+#define FallingPickupLayer_isDestroyed CollidableDestroyableDamageableLayer_isDestroyed
+#endif
+#ifndef FallingPickupLayer_getGroupInterface
+#define FallingPickupLayer_getGroupInterface CollidableDestroyableDamageableLayer_getGroupInterface
+#endif
+#ifndef FallingPickupLayer_setGroupInterface
+#define FallingPickupLayer_setGroupInterface CollidableDestroyableDamageableLayer_setGroupInterface
+#endif
+#ifndef FallingPickupLayer_setAllBinaryGameLayerManager
+#define FallingPickupLayer_setAllBinaryGameLayerManager CollidableDestroyableDamageableLayer_setAllBinaryGameLayerManager
+#endif
+#ifndef FallingPickupLayer_isReadyForExplosion
+#define FallingPickupLayer_isReadyForExplosion CollidableDestroyableDamageableLayer_isReadyForExplosion
+#endif
+#ifndef FallingPickupLayer_setReadyForExplosion
+#define FallingPickupLayer_setReadyForExplosion CollidableDestroyableDamageableLayer_setReadyForExplosion
+#endif
+#ifndef FallingPickupLayer_getInitWidth
+#define FallingPickupLayer_getInitWidth CollidableDestroyableDamageableLayer_getInitWidth
+#endif
+#ifndef FallingPickupLayer_getInitHeight
+#define FallingPickupLayer_getInitHeight CollidableDestroyableDamageableLayer_getInitHeight
+#endif
+#ifndef FallingPickupLayer_getInitX
+#define FallingPickupLayer_getInitX CollidableDestroyableDamageableLayer_getInitX
+#endif
+#ifndef FallingPickupLayer_getInitY
+#define FallingPickupLayer_getInitY CollidableDestroyableDamageableLayer_getInitY
+#endif
+#ifndef FallingPickupLayer_up
+#define FallingPickupLayer_up CollidableDestroyableDamageableLayer_up
+#endif
+#ifndef FallingPickupLayer_down
+#define FallingPickupLayer_down CollidableDestroyableDamageableLayer_down
+#endif
+#ifndef FallingPickupLayer_right
+#define FallingPickupLayer_right CollidableDestroyableDamageableLayer_right
+#endif
+#ifndef FallingPickupLayer_left
+#define FallingPickupLayer_left CollidableDestroyableDamageableLayer_left
+#endif
+#ifndef FallingPickupLayer_strafeLeft
+#define FallingPickupLayer_strafeLeft CollidableDestroyableDamageableLayer_strafeLeft
+#endif
+#ifndef FallingPickupLayer_strafeRight
+#define FallingPickupLayer_strafeRight CollidableDestroyableDamageableLayer_strafeRight
+#endif
+#ifndef FallingPickupLayer_fire
+#define FallingPickupLayer_fire CollidableDestroyableDamageableLayer_fire
+#endif
+#ifndef FallingPickupLayer_special1
+#define FallingPickupLayer_special1 CollidableDestroyableDamageableLayer_special1
+#endif
+#ifndef FallingPickupLayer_special2
+#define FallingPickupLayer_special2 CollidableDestroyableDamageableLayer_special2
+#endif
+#ifndef FallingPickupLayer_special3
+#define FallingPickupLayer_special3 CollidableDestroyableDamageableLayer_special3
+#endif
+#ifndef FallingPickupLayer_special4
+#define FallingPickupLayer_special4 CollidableDestroyableDamageableLayer_special4
+#endif
+#ifndef FallingPickupLayer_special5
+#define FallingPickupLayer_special5 CollidableDestroyableDamageableLayer_special5
+#endif
+#ifndef FallingPickupLayer_upAnalog
+#define FallingPickupLayer_upAnalog CollidableDestroyableDamageableLayer_upAnalog
+#endif
+#ifndef FallingPickupLayer_downAnalog
+#define FallingPickupLayer_downAnalog CollidableDestroyableDamageableLayer_downAnalog
+#endif
+#ifndef FallingPickupLayer_rightAnalog
+#define FallingPickupLayer_rightAnalog CollidableDestroyableDamageableLayer_rightAnalog
+#endif
+#ifndef FallingPickupLayer_leftAnalog
+#define FallingPickupLayer_leftAnalog CollidableDestroyableDamageableLayer_leftAnalog
+#endif
+#ifndef FallingPickupLayer_rightTrigger
+#define FallingPickupLayer_rightTrigger CollidableDestroyableDamageableLayer_rightTrigger
+#endif
+#ifndef FallingPickupLayer_leftTrigger
+#define FallingPickupLayer_leftTrigger CollidableDestroyableDamageableLayer_leftTrigger
+#endif
+#ifndef FallingPickupLayer_onDestroyed
+#define FallingPickupLayer_onDestroyed CollidableDestroyableDamageableLayer_onDestroyed
+#endif
+#ifndef FallingPickupLayer_getPickupBehavior
+#define FallingPickupLayer_getPickupBehavior CollidableDestroyableDamageableLayer_getPickupBehavior
+#endif
+#ifndef FallingPickupLayer_setPickupBehavior
+#define FallingPickupLayer_setPickupBehavior CollidableDestroyableDamageableLayer_setPickupBehavior
+#endif
+#ifndef FallingPickupLayer_addPart
+#define FallingPickupLayer_addPart CollidableDestroyableDamageableLayer_addPart
+#endif
+#ifndef FallingPickupLayer_setPartInterfaceArray
+#define FallingPickupLayer_setPartInterfaceArray CollidableDestroyableDamageableLayer_setPartInterfaceArray
+#endif
+#ifndef FallingPickupLayer_getPartInterfaceArray
+#define FallingPickupLayer_getPartInterfaceArray CollidableDestroyableDamageableLayer_getPartInterfaceArray
+#endif
+#ifndef FallingPickupLayer_toStringAppend
+#define FallingPickupLayer_toStringAppend CollidableDestroyableDamageableLayer_toStringAppend
+#endif
+#ifndef FallingPickupLayer_toString
+#define FallingPickupLayer_toString CollidableDestroyableDamageableLayer_toString
+#endif
+#ifndef FallingPickupLayer_getNullInstance
+#define FallingPickupLayer_getNullInstance CollidableCompositeLayer_getNullInstance
+#endif
+#ifndef FallingPickupLayer_getArtificialIntelligenceInterface
+#define FallingPickupLayer_getArtificialIntelligenceInterface CollidableCompositeLayer_getArtificialIntelligenceInterface
+#endif
+#ifndef FallingPickupLayer_getCollidableInferface
+#define FallingPickupLayer_getCollidableInferface CollidableCompositeLayer_getCollidableInferface
+#endif
+#ifndef FallingPickupLayer_setCollidableInferface
+#define FallingPickupLayer_setCollidableInferface CollidableCompositeLayer_setCollidableInferface
+#endif
+#ifndef FallingPickupLayer_implmentsCollidableInterface
+#define FallingPickupLayer_implmentsCollidableInterface CollidableCompositeLayer_implmentsCollidableInterface
+#endif
+#ifndef FallingPickupLayer_toStringAppend
+#define FallingPickupLayer_toStringAppend CollidableCompositeLayer_toStringAppend
+#endif
+#ifndef FallingPickupLayer_toString
+#define FallingPickupLayer_toString CollidableCompositeLayer_toString
+#endif
+#ifndef FallingPickupLayer_createPaintable
+#define FallingPickupLayer_createPaintable AllBinaryGameLayer_createPaintable
+#endif
+#ifndef FallingPickupLayer_set
+#define FallingPickupLayer_set AllBinaryGameLayer_set
+#endif
+#ifndef FallingPickupLayer_move
+#define FallingPickupLayer_move AllBinaryGameLayer_move
+#endif
+#ifndef FallingPickupLayer_getGameKeyEventList
+#define FallingPickupLayer_getGameKeyEventList AllBinaryGameLayer_getGameKeyEventList
+#endif
+#ifndef FallingPickupLayer_processInput
+#define FallingPickupLayer_processInput AllBinaryGameLayer_processInput
+#endif
+#ifndef FallingPickupLayer_onEvent
+#define FallingPickupLayer_onEvent AllBinaryGameLayer_onEvent
+#endif
+#ifndef FallingPickupLayer_onViewPositionChangeEvent
+#define FallingPickupLayer_onViewPositionChangeEvent AllBinaryGameLayer_onViewPositionChangeEvent
+#endif
+#ifndef FallingPickupLayer_onChangeEvent
+#define FallingPickupLayer_onChangeEvent AllBinaryGameLayer_onChangeEvent
+#endif
+#ifndef FallingPickupLayer_paintFirst
+#define FallingPickupLayer_paintFirst AllBinaryGameLayer_paintFirst
+#endif
+#ifndef FallingPickupLayer_paintDebug
+#define FallingPickupLayer_paintDebug AllBinaryGameLayer_paintDebug
+#endif
+#ifndef FallingPickupLayer_setWidth
+#define FallingPickupLayer_setWidth AllBinaryGameLayer_setWidth
+#endif
+#ifndef FallingPickupLayer_setHeight
+#define FallingPickupLayer_setHeight AllBinaryGameLayer_setHeight
+#endif
+#ifndef FallingPickupLayer_setPosition
+#define FallingPickupLayer_setPosition AllBinaryLayer_setPosition
+#endif
+#ifndef FallingPickupLayer_moveDXYZ
+#define FallingPickupLayer_moveDXYZ AllBinaryLayer_moveDXYZ
+#endif
+#ifndef FallingPickupLayer_getXP
+#define FallingPickupLayer_getXP AllBinaryLayer_getXP
+#endif
+#ifndef FallingPickupLayer_getYP
+#define FallingPickupLayer_getYP AllBinaryLayer_getYP
+#endif
+#ifndef FallingPickupLayer_getZP
+#define FallingPickupLayer_getZP AllBinaryLayer_getZP
+#endif
+#ifndef FallingPickupLayer_getWidth
+#define FallingPickupLayer_getWidth AllBinaryLayer_getWidth
+#endif
+#ifndef FallingPickupLayer_getHeight
+#define FallingPickupLayer_getHeight AllBinaryLayer_getHeight
+#endif
+#ifndef FallingPickupLayer_setVisible
+#define FallingPickupLayer_setVisible AllBinaryLayer_setVisible
+#endif
+#ifndef FallingPickupLayer_isVisible
+#define FallingPickupLayer_isVisible AllBinaryLayer_isVisible
+#endif
+#ifndef FallingPickupLayer_paint
+#define FallingPickupLayer_paint AllBinaryLayer_paint
+#endif
+#ifndef FallingPickupLayer_onChangeEvent
+#define FallingPickupLayer_onChangeEvent AllBinaryLayer_onChangeEvent
+#endif
+#ifndef FallingPickupLayer_paintThreed
+#define FallingPickupLayer_paintThreed AllBinaryLayer_paintThreed
+#endif
+#ifndef FallingPickupLayer_getX2
+#define FallingPickupLayer_getX2 AllBinaryLayer_getX2
+#endif
+#ifndef FallingPickupLayer_getY2
+#define FallingPickupLayer_getY2 AllBinaryLayer_getY2
+#endif
+#ifndef FallingPickupLayer_getZ2
+#define FallingPickupLayer_getZ2 AllBinaryLayer_getZ2
+#endif
+#ifndef FallingPickupLayer_getName
+#define FallingPickupLayer_getName AllBinaryLayer_getName
+#endif
+#ifndef FallingPickupLayer_setHalfWidth
+#define FallingPickupLayer_setHalfWidth AllBinaryLayer_setHalfWidth
+#endif
+#ifndef FallingPickupLayer_getHalfWidth
+#define FallingPickupLayer_getHalfWidth AllBinaryLayer_getHalfWidth
+#endif
+#ifndef FallingPickupLayer_setHalfHeight
+#define FallingPickupLayer_setHalfHeight AllBinaryLayer_setHalfHeight
+#endif
+#ifndef FallingPickupLayer_getHalfHeight
+#define FallingPickupLayer_getHalfHeight AllBinaryLayer_getHalfHeight
+#endif
+#ifndef FallingPickupLayer_getHalfDepth
+#define FallingPickupLayer_getHalfDepth AllBinaryLayer_getHalfDepth
+#endif
+#ifndef FallingPickupLayer_getViewPosition
+#define FallingPickupLayer_getViewPosition AllBinaryLayer_getViewPosition
+#endif
+#ifndef FallingPickupLayer_setViewPosition
+#define FallingPickupLayer_setViewPosition AllBinaryLayer_setViewPosition
+#endif
+#ifndef FallingPickupLayer_getGroupInterface
+#define FallingPickupLayer_getGroupInterface AllBinaryLayer_getGroupInterface
+#endif
+#ifndef FallingPickupLayer_implmentsGameInputInterface
+#define FallingPickupLayer_implmentsGameInputInterface AllBinaryLayer_implmentsGameInputInterface
+#endif
+#ifndef FallingPickupLayer_implmentsArtificialIntelligenceCompositeInterface
+#define FallingPickupLayer_implmentsArtificialIntelligenceCompositeInterface AllBinaryLayer_implmentsArtificialIntelligenceCompositeInterface
+#endif
+#ifndef FallingPickupLayer_implmentsCollidableInterface
+#define FallingPickupLayer_implmentsCollidableInterface AllBinaryLayer_implmentsCollidableInterface
+#endif
+#ifndef FallingPickupLayer_implementsThreedInterface
+#define FallingPickupLayer_implementsThreedInterface AllBinaryLayer_implementsThreedInterface
+#endif
+#ifndef FallingPickupLayer_getType
+#define FallingPickupLayer_getType AllBinaryLayer_getType
+#endif
+#ifndef FallingPickupLayer_getMultiPlayerType
+#define FallingPickupLayer_getMultiPlayerType AllBinaryLayer_getMultiPlayerType
+#endif
+#ifndef FallingPickupLayer_toStringAppend
+#define FallingPickupLayer_toStringAppend AllBinaryLayer_toStringAppend
+#endif
+#ifndef FallingPickupLayer_toString
+#define FallingPickupLayer_toString AllBinaryLayer_toString
+#endif
+#ifndef FallingPickupLayer_setPosition
+#define FallingPickupLayer_setPosition Layer_setPosition
+#endif
+#ifndef FallingPickupLayer_moveDXY
+#define FallingPickupLayer_moveDXY Layer_moveDXY
+#endif
+#ifndef FallingPickupLayer_moveDXYZ
+#define FallingPickupLayer_moveDXYZ Layer_moveDXYZ
+#endif
+#ifndef FallingPickupLayer_getXP
+#define FallingPickupLayer_getXP Layer_getXP
+#endif
+#ifndef FallingPickupLayer_getYP
+#define FallingPickupLayer_getYP Layer_getYP
+#endif
+#ifndef FallingPickupLayer_getZP
+#define FallingPickupLayer_getZP Layer_getZP
+#endif
+#ifndef FallingPickupLayer_getWidth
+#define FallingPickupLayer_getWidth Layer_getWidth
+#endif
+#ifndef FallingPickupLayer_getHeight
+#define FallingPickupLayer_getHeight Layer_getHeight
+#endif
+#ifndef FallingPickupLayer_getDepth
+#define FallingPickupLayer_getDepth Layer_getDepth
+#endif
+#ifndef FallingPickupLayer_setVisible
+#define FallingPickupLayer_setVisible Layer_setVisible
+#endif
+#ifndef FallingPickupLayer_isVisible
+#define FallingPickupLayer_isVisible Layer_isVisible
+#endif
+#ifndef FallingPickupLayer_paint
+#define FallingPickupLayer_paint Layer_paint
+#endif
+#ifndef FallingPickupLayer_setLayerWidth
+#define FallingPickupLayer_setLayerWidth Layer_setLayerWidth
+#endif
+#ifndef FallingPickupLayer_setLayerHeight
+#define FallingPickupLayer_setLayerHeight Layer_setLayerHeight
+#endif
+#ifndef FallingPickupLayer_toStringAppend
+#define FallingPickupLayer_toStringAppend Layer_toStringAppend
+#endif
+#ifndef FallingPickupLayer_setSize
+#define FallingPickupLayer_setSize Layer_setSize
+#endif
+#ifndef FallingPickupLayer_getX
+#define FallingPickupLayer_getX Layer_getX
+#endif
+#ifndef FallingPickupLayer_getY
+#define FallingPickupLayer_getY Layer_getY
+#endif
+#ifndef FallingPickupLayer_move
+#define FallingPickupLayer_move Layer_move
+#endif
+#ifndef FallingPickupLayer_setPosition
+#define FallingPickupLayer_setPosition Layer_setPosition
+#endif
+// Runs the Java static initialization of the class once. Reads of its static fields call it first.
+void FallingPickupLayer_staticInit(void);
+// Registers the class, its superclass, and its methods for the interface calls (java_register_method)
+void FallingPickupLayer_register(void);
+
+
+#endif // ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_FALLINGPICKUPLAYER_H

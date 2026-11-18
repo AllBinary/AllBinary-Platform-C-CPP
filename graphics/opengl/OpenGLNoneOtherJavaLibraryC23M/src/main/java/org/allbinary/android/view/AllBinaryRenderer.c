@@ -1,58 +1,45 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.android.view
+#include "org/allbinary/android/view/AllBinaryRenderer.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct AllBinaryRenderer AllBinaryRenderer;
-struct AllBinaryRenderer {
-    char unused;
-};
 
 static AllBinaryRenderer* AllBinaryRenderer_instance;
 
-AllBinaryRenderer* AllBinaryRenderer_new(void);
-AllBinaryRenderer* AllBinaryRenderer_getInstance(void);
-void AllBinaryRenderer_setRunnable(AllBinaryRenderer* this, Runnable* runnable);
-void AllBinaryRenderer_clearRunnable(AllBinaryRenderer* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
 void AllBinaryRenderer_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     AllBinaryRenderer_instance = AllBinaryRenderer_new();
 }
 
+void AllBinaryRenderer_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("AllBinaryRenderer", nullptr);
+    java_register_method("AllBinaryRenderer", "setRunnable", (void*) AllBinaryRenderer_setRunnable);
+    java_register_method("AllBinaryRenderer", "clearRunnable", (void*) AllBinaryRenderer_clearRunnable);
+}
+
 void AllBinaryRenderer_init(AllBinaryRenderer* this) {
+    AllBinaryRenderer_register();
 }
 
 AllBinaryRenderer* AllBinaryRenderer_new(void) {
-    AllBinaryRenderer* this = calloc(1, sizeof(AllBinaryRenderer));
+    AllBinaryRenderer* this = java_object_alloc(sizeof(AllBinaryRenderer), "AllBinaryRenderer");
     AllBinaryRenderer_init(this);
     return this;
 }
 
 
 AllBinaryRenderer* AllBinaryRenderer_getInstance(void) {
-        return AllBinaryRenderer_instance;
+        return (AllBinaryRenderer_staticInit(), AllBinaryRenderer_instance);
 }
 
 

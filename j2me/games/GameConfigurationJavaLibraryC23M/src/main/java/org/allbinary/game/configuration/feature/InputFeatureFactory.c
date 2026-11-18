@@ -1,49 +1,31 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.configuration.feature
+#include "org/allbinary/game/configuration/feature/InputFeatureFactory.h"
+#include "org/allbinary/game/configuration/feature/InputFeature.h"
+#include "org/allbinary/game/configuration/feature/Features.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct InputFeatureFactory InputFeatureFactory;
-struct InputFeatureFactory {
-    InputFeature* REMOVE_DUPLICATE_KEY_PRESSES;
-    InputFeature* INPUT_MAPPING;
-    InputFeature* MULTI_KEY_PRESS;
-    InputFeature* SINGLE_KEY_REPEAT_PRESS;
-    InputFeature* SINGLE_KEY_PRESS;
-};
 
 static InputFeatureFactory* InputFeatureFactory_instance;
 
-InputFeatureFactory* InputFeatureFactory_new(void);
-InputFeatureFactory* InputFeatureFactory_getInstance(void);
 
-void InputFeatureFactory_init(InputFeatureFactory* this);
-bool InputFeatureFactory_isSingleKeyProcessing(InputFeatureFactory* this);
 
-// Static fields with runtime initializers: call this once at startup
+
 void InputFeatureFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     InputFeatureFactory_instance = InputFeatureFactory_new();
+}
+
+void InputFeatureFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("InputFeatureFactory", nullptr);
+    java_register_method("InputFeatureFactory", "isSingleKeyProcessing", (void*) InputFeatureFactory_isSingleKeyProcessing);
 }
 
 static void InputFeatureFactory_initFields(InputFeatureFactory* this) {
@@ -56,16 +38,17 @@ static void InputFeatureFactory_initFields(InputFeatureFactory* this) {
 
 
 InputFeatureFactory* InputFeatureFactory_getInstance(void) {
-        return InputFeatureFactory_instance;
+        return (InputFeatureFactory_staticInit(), InputFeatureFactory_instance);
 }
 
 
 void InputFeatureFactory_init(InputFeatureFactory* this) {
+    InputFeatureFactory_register();
     InputFeatureFactory_initFields(this);
 }
 
 InputFeatureFactory* InputFeatureFactory_new(void) {
-    InputFeatureFactory* this = calloc(1, sizeof(InputFeatureFactory));
+    InputFeatureFactory* this = java_object_alloc(sizeof(InputFeatureFactory), "InputFeatureFactory");
     InputFeatureFactory_init(this);
     return this;
 }

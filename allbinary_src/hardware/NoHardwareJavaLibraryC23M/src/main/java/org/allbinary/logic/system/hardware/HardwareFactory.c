@@ -26,6 +26,7 @@ void HardwareFactory_register(void) {
     }
     registered = true;
     java_register_class("HardwareFactory", nullptr);
+    java_register_method("HardwareFactory", "getInstance@2", (void*) HardwareFactory_getInstance2);
 }
 
 static void HardwareFactory_initFields(HardwareFactory* this) {

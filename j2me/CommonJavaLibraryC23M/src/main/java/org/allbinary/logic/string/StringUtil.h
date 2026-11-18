@@ -54,6 +54,8 @@ const char** StringUtil_getArrayInstance(StringUtil* this);
 int32_t StringUtil_count(StringUtil* this, const char* string, uint16_t aChar);
 
 const char* StringUtil_toString(StringUtil* this, void* anyType);
+#define StringUtil_new0 StringUtil_new
+#define StringUtil_init0 StringUtil_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void StringUtil_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

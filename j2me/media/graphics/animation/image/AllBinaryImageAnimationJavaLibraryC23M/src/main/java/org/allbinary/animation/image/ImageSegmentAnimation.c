@@ -1,65 +1,68 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation.image
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
-// #include "javax/microedition/lcdui/Image.h"
+#include "org/allbinary/animation/image/ImageSegmentAnimation.h"
+#include "javax/microedition/lcdui/Graphics.h"
+#include "javax/microedition/lcdui/Image.h"
 #include "org/allbinary/animation/AnimationBehavior.h"
 #include "org/allbinary/util/CircularIndexUtil.h"
 #include "org/allbinary/animation/image/ImageAnimation.h"
-
-typedef struct ImageSegmentAnimation ImageSegmentAnimation;
-struct ImageSegmentAnimation {
-    ImageAnimation base;
-    int32_t startX;
-    int32_t startY;
-    int32_t drawWidth;
-    int32_t drawHeight;
-    CircularIndexUtil* circularIndexUtil;
-    int32_t* sequenceArray;
-};
+#if __has_include("javax/microedition/lcdui/Image.h")
+#include "javax/microedition/lcdui/Image.h"
+#endif
+#if __has_include("javax/microedition/lcdui/Image.h")
+#include "javax/microedition/lcdui/Image.h"
+#endif
 
 
-ImageSegmentAnimation* ImageSegmentAnimation_new(Image* image, int32_t* sequenceArray, AnimationBehavior* animationBehavior);
 
-void ImageSegmentAnimation_init(ImageSegmentAnimation* this, Image* image, int32_t* sequenceArray, AnimationBehavior* animationBehavior);
-void ImageSegmentAnimation_nextFrame(ImageSegmentAnimation* this);
-void ImageSegmentAnimation_previousFrame(ImageSegmentAnimation* this);
-void ImageSegmentAnimation_setFrame(ImageSegmentAnimation* this, int32_t index);
-int32_t ImageSegmentAnimation_getFrame(ImageSegmentAnimation* this);
-int32_t ImageSegmentAnimation_getSize(ImageSegmentAnimation* this);
-void ImageSegmentAnimation_setSequence(ImageSegmentAnimation* this, int32_t* sequenceArray);
-int32_t* ImageSegmentAnimation_getSequence(ImageSegmentAnimation* this);
-void ImageSegmentAnimation_paintXY(ImageSegmentAnimation* this, Graphics* graphics, int32_t x, int32_t y);
-int32_t ImageSegmentAnimation_getStartX(ImageSegmentAnimation* this);
-void ImageSegmentAnimation_setStartX(ImageSegmentAnimation* this, int32_t startX);
-int32_t ImageSegmentAnimation_getStartY(ImageSegmentAnimation* this);
-void ImageSegmentAnimation_setStartY(ImageSegmentAnimation* this, int32_t startY);
-int32_t ImageSegmentAnimation_getDrawWidth(ImageSegmentAnimation* this);
-void ImageSegmentAnimation_setDrawWidth(ImageSegmentAnimation* this, int32_t drawWidth);
-int32_t ImageSegmentAnimation_getDrawHeight(ImageSegmentAnimation* this);
-void ImageSegmentAnimation_setDrawHeight(ImageSegmentAnimation* this, int32_t drawHeight);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void ImageSegmentAnimation_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void ImageSegmentAnimation_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ImageSegmentAnimation", "ImageAnimation");
+    java_register_method("ImageSegmentAnimation", "nextFrame", (void*) ImageSegmentAnimation_nextFrame);
+    java_register_method("ImageSegmentAnimation", "previousFrame", (void*) ImageSegmentAnimation_previousFrame);
+    java_register_method("ImageSegmentAnimation", "setFrame", (void*) ImageSegmentAnimation_setFrame);
+    java_register_method("ImageSegmentAnimation", "getFrame", (void*) ImageSegmentAnimation_getFrame);
+    java_register_method("ImageSegmentAnimation", "getSize", (void*) ImageSegmentAnimation_getSize);
+    java_register_method("ImageSegmentAnimation", "setSequence", (void*) ImageSegmentAnimation_setSequence);
+    java_register_method("ImageSegmentAnimation", "getSequence", (void*) ImageSegmentAnimation_getSequence);
+    java_register_method("ImageSegmentAnimation", "paintXY", (void*) ImageSegmentAnimation_paintXY);
+    java_register_method("ImageSegmentAnimation", "getStartX", (void*) ImageSegmentAnimation_getStartX);
+    java_register_method("ImageSegmentAnimation", "setStartX", (void*) ImageSegmentAnimation_setStartX);
+    java_register_method("ImageSegmentAnimation", "getStartY", (void*) ImageSegmentAnimation_getStartY);
+    java_register_method("ImageSegmentAnimation", "setStartY", (void*) ImageSegmentAnimation_setStartY);
+    java_register_method("ImageSegmentAnimation", "getDrawWidth", (void*) ImageSegmentAnimation_getDrawWidth);
+    java_register_method("ImageSegmentAnimation", "setDrawWidth", (void*) ImageSegmentAnimation_setDrawWidth);
+    java_register_method("ImageSegmentAnimation", "getDrawHeight", (void*) ImageSegmentAnimation_getDrawHeight);
+    java_register_method("ImageSegmentAnimation", "setDrawHeight", (void*) ImageSegmentAnimation_setDrawHeight);
+}
 
 static void ImageSegmentAnimation_initFields(ImageSegmentAnimation* this) {
     
@@ -72,18 +75,19 @@ static void ImageSegmentAnimation_initFields(ImageSegmentAnimation* this) {
 
 
 void ImageSegmentAnimation_init(ImageSegmentAnimation* this, Image* image, int32_t* sequenceArray, AnimationBehavior* animationBehavior) {
+    ImageSegmentAnimation_register();
         ImageAnimation_init(&this->base, image, animationBehavior);
         ImageSegmentAnimation_initFields(this);
         this->startX = 0;
         this->startY = 0;
-        this->drawWidth = JAVA_CALL(ImageSegmentAnimation_getImage(this), getWidth);
-        this->drawHeight = JAVA_CALL(ImageSegmentAnimation_getImage(this), getHeight);
+        this->drawWidth = Image_getWidth(ImageAnimation_getImage(this));
+        this->drawHeight = Image_getHeight(ImageAnimation_getImage(this));
         this->circularIndexUtil = CircularIndexUtil_createInstance(this->drawHeight);
         this->sequenceArray = sequenceArray;
 }
 
 ImageSegmentAnimation* ImageSegmentAnimation_new(Image* image, int32_t* sequenceArray, AnimationBehavior* animationBehavior) {
-    ImageSegmentAnimation* this = calloc(1, sizeof(ImageSegmentAnimation));
+    ImageSegmentAnimation* this = java_object_alloc(sizeof(ImageSegmentAnimation), "ImageSegmentAnimation");
     ImageSegmentAnimation_init(this, image, sequenceArray, animationBehavior);
     return this;
 }

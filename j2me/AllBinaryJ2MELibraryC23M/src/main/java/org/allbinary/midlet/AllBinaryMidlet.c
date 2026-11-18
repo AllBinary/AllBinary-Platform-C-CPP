@@ -1,35 +1,10 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.midlet
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Command.h"
-// #include "javax/microedition/lcdui/CommandListener.h"
-// #include "javax/microedition/lcdui/Display.h"
-// #include "javax/microedition/lcdui/Displayable.h"
-// #include "javax/microedition/lcdui/NullCanvas.h"
-// #include "javax/microedition/midlet/MIDlet.h"
-// #include "javax/microedition/midlet/MIDletStateChangeException.h"
+#include "org/allbinary/midlet/AllBinaryMidlet.h"
+#include "javax/microedition/lcdui/Command.h"
+#include "javax/microedition/lcdui/Display.h"
+#include "javax/microedition/lcdui/Displayable.h"
+#include "javax/microedition/lcdui/NullCanvas.h"
+#include "javax/microedition/midlet/MIDletStateChangeException.h"
 #include "org/allbinary/logic/StdUtil.h"
 #include "org/allbinary/logic/communication/log/ForcedLogUtil.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
@@ -42,44 +17,117 @@
 #include "org/allbinary/system/Memory.h"
 #include "org/allbinary/logic/NullUtil.h"
 #include "org/allbinary/util/ABHashtable.h"
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/StdUtil.h")
+#include "org/allbinary/logic/StdUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("javax/microedition/lcdui/Display.h")
+#include "javax/microedition/lcdui/Display.h"
+#endif
+#if __has_include("org/allbinary/logic/util/event/EventStrings.h")
+#include "org/allbinary/logic/util/event/EventStrings.h"
+#endif
+#if __has_include("org/allbinary/logic/util/event/EventStrings.h")
+#include "org/allbinary/logic/util/event/EventStrings.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/string/CommonLabels.h")
+#include "org/allbinary/string/CommonLabels.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/string/CommonLabels.h")
+#include "org/allbinary/string/CommonLabels.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/StdUtil.h")
+#include "org/allbinary/logic/StdUtil.h"
+#endif
 
-typedef struct AllBinaryMidlet AllBinaryMidlet;
-struct AllBinaryMidlet {
-    MIDlet base;
-    CommandListener CommandListener_interface;
-    LogUtil* logUtil;
-    CommonStrings* commonStrings;
-    const char* SET_DISPLAY;
-    const char* SETTING_;
-    const char* _DISPLAY_;
-    const char* SETTING_NO_TITLE;
-    ABHashtable* hashtable;
-    bool midletDestroyed;
-};
 
-static Any* AllBinaryMidlet_NULL_ALLBINARY_MIDLET;
+static void* AllBinaryMidlet_NULL_ALLBINARY_MIDLET;
 
-AllBinaryMidlet* AllBinaryMidlet_new(void);
-AllBinaryMidlet* AllBinaryMidlet_getNullInstance(void);
 
-void AllBinaryMidlet_init(AllBinaryMidlet* this);
-void AllBinaryMidlet_setDisplay(AllBinaryMidlet* this, Displayable* newDisplay);
-Display* AllBinaryMidlet_getDisplay(AllBinaryMidlet* this);
-Displayable* AllBinaryMidlet_getCurrentDisplayable(AllBinaryMidlet* this);
-void AllBinaryMidlet_setDestroyed(AllBinaryMidlet* this, bool destroyed);
-bool AllBinaryMidlet_isDestroyed(AllBinaryMidlet* this);
-void AllBinaryMidlet_startApp(AllBinaryMidlet* this);
-void AllBinaryMidlet_pauseApp(AllBinaryMidlet* this);
-void AllBinaryMidlet_destroyAppInRunnable(AllBinaryMidlet* this, bool unconditional, bool isProgress);
-void AllBinaryMidlet_destroyApp(AllBinaryMidlet* this, bool unconditional);
-void AllBinaryMidlet_setStartStateHashtable(AllBinaryMidlet* this, ABHashtable* hashtable);
-ABHashtable* AllBinaryMidlet_getStartStateHashtable(AllBinaryMidlet* this);
-ABHashtable* AllBinaryMidlet_getCurrentStateHashtable(AllBinaryMidlet* this);
-void AllBinaryMidlet_commandAction(AllBinaryMidlet* this, Command* command, Displayable* displayable);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+
+
+
+
+
+
+
+
+
 void AllBinaryMidlet_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     AllBinaryMidlet_NULL_ALLBINARY_MIDLET = NullUtil_getInstance()->NULL_OBJECT;
+}
+
+void AllBinaryMidlet_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("AllBinaryMidlet", "MIDlet");
+    java_register_method("AllBinaryMidlet", "setDisplay", (void*) AllBinaryMidlet_setDisplay);
+    java_register_method("AllBinaryMidlet", "getDisplay", (void*) AllBinaryMidlet_getDisplay);
+    java_register_method("AllBinaryMidlet", "getCurrentDisplayable", (void*) AllBinaryMidlet_getCurrentDisplayable);
+    java_register_method("AllBinaryMidlet", "setDestroyed", (void*) AllBinaryMidlet_setDestroyed);
+    java_register_method("AllBinaryMidlet", "isDestroyed", (void*) AllBinaryMidlet_isDestroyed);
+    java_register_method("AllBinaryMidlet", "startApp", (void*) AllBinaryMidlet_startApp);
+    java_register_method("AllBinaryMidlet", "pauseApp", (void*) AllBinaryMidlet_pauseApp);
+    java_register_method("AllBinaryMidlet", "destroyAppInRunnable", (void*) AllBinaryMidlet_destroyAppInRunnable);
+    java_register_method("AllBinaryMidlet", "destroyApp", (void*) AllBinaryMidlet_destroyApp);
+    java_register_method("AllBinaryMidlet", "setStartStateHashtable", (void*) AllBinaryMidlet_setStartStateHashtable);
+    java_register_method("AllBinaryMidlet", "getStartStateHashtable", (void*) AllBinaryMidlet_getStartStateHashtable);
+    java_register_method("AllBinaryMidlet", "getCurrentStateHashtable", (void*) AllBinaryMidlet_getCurrentStateHashtable);
+    java_register_method("AllBinaryMidlet", "commandAction", (void*) AllBinaryMidlet_commandAction);
 }
 
 static void AllBinaryMidlet_initFields(AllBinaryMidlet* this) {
@@ -87,7 +135,7 @@ static void AllBinaryMidlet_initFields(AllBinaryMidlet* this) {
     this->commonStrings = CommonStrings_getInstance();
     this->SET_DISPLAY = "setDisplay";
     this->SETTING_ = "Setting: ";
-    this->_DISPLAY_ = " Display: ";
+    this->_DISPLAY__ = " Display: ";
     this->SETTING_NO_TITLE = "Setting: No Title, Display: ";
     this->hashtable = StdUtil_createHashtable(StdUtil_getInstance());
     this->midletDestroyed = false;
@@ -95,21 +143,22 @@ static void AllBinaryMidlet_initFields(AllBinaryMidlet* this) {
 
 
 AllBinaryMidlet* AllBinaryMidlet_getNullInstance(void) {
-        if (AllBinaryMidlet_NULL_ALLBINARY_MIDLET == NullUtil_getInstance()->NULL_OBJECT) {
+        if ((AllBinaryMidlet_staticInit(), AllBinaryMidlet_NULL_ALLBINARY_MIDLET) == NullUtil_getInstance()->NULL_OBJECT) {
             AllBinaryMidlet_NULL_ALLBINARY_MIDLET = AllBinaryMidlet_new();
         }
-        return ((AllBinaryMidlet*) AllBinaryMidlet_NULL_ALLBINARY_MIDLET);
+        return ((AllBinaryMidlet*) (AllBinaryMidlet_staticInit(), AllBinaryMidlet_NULL_ALLBINARY_MIDLET));
 }
 
 
 void AllBinaryMidlet_init(AllBinaryMidlet* this) {
+    AllBinaryMidlet_register();
     MIDlet_init(&this->base);
     AllBinaryMidlet_initFields(this);
         LogUtil_putF(this->logUtil, this->commonStrings->CONSTRUCTOR, this, "AllBinaryMidlet::AllBinaryMidlet");
 }
 
 AllBinaryMidlet* AllBinaryMidlet_new(void) {
-    AllBinaryMidlet* this = calloc(1, sizeof(AllBinaryMidlet));
+    AllBinaryMidlet* this = java_object_alloc(sizeof(AllBinaryMidlet), "AllBinaryMidlet");
     AllBinaryMidlet_init(this);
     return this;
 }
@@ -117,9 +166,9 @@ AllBinaryMidlet* AllBinaryMidlet_new(void) {
 
 void AllBinaryMidlet_setDisplay(AllBinaryMidlet* this, Displayable* newDisplay) {
         const char* title = StringUtil_getInstance()->EMPTY_STRING;
-        if (newDisplay != NullCanvas_NULL_CANVAS) {
+        if (newDisplay != (NullCanvas_staticInit(), NullCanvas_NULL_CANVAS)) {
             title = Displayable_getTitle(newDisplay);
-            LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), this->SETTING_), append, title), append, this->_DISPLAY_), append, StringUtil_toString(StringUtil_getInstance(), newDisplay)), toString), this, this->SET_DISPLAY);
+            LogUtil_putF(this->logUtil, java_string_of(StringMaker_append(StringMaker_append(StringMaker_append(StringMaker_append(StringMaker_new(), this->SETTING_), title), this->_DISPLAY__), StringUtil_toString(StringUtil_getInstance(), newDisplay))), this, this->SET_DISPLAY);
         }
         Display* display = AllBinaryMidlet_getDisplay(this);
         Display_setCurrent(display, newDisplay);
@@ -132,7 +181,7 @@ Display* AllBinaryMidlet_getDisplay(AllBinaryMidlet* this) {
 
 
 Displayable* AllBinaryMidlet_getCurrentDisplayable(AllBinaryMidlet* this) {
-        return JAVA_CALL(Display_getDisplay(this), getCurrent);
+        return Display_getCurrent(Display_getDisplay(this));
 }
 
 
@@ -175,14 +224,14 @@ void AllBinaryMidlet_destroyApp(AllBinaryMidlet* this, bool unconditional) {
 
 // throws Exception
 void AllBinaryMidlet_setStartStateHashtable(AllBinaryMidlet* this, ABHashtable* hashtable) {
-        LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), CommonLabels_getInstance()->START_LABEL), append, StringUtil_toString(StringUtil_getInstance(), hashtable)), toString), this, "setStartStateHashtable");
+        LogUtil_putF(this->logUtil, java_string_of(StringMaker_append(StringMaker_append(StringMaker_new(), CommonLabels_getInstance()->START_LABEL), StringUtil_toString(StringUtil_getInstance(), hashtable))), this, "setStartStateHashtable");
         this->hashtable = hashtable;
 }
 
 
 // throws Exception
 ABHashtable* AllBinaryMidlet_getStartStateHashtable(AllBinaryMidlet* this) {
-        LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), CommonLabels_getInstance()->START_LABEL), append, StringUtil_toString(StringUtil_getInstance(), this->hashtable)), toString), this, "getStartStateHashtable");
+        LogUtil_putF(this->logUtil, java_string_of(StringMaker_append(StringMaker_append(StringMaker_new(), CommonLabels_getInstance()->START_LABEL), StringUtil_toString(StringUtil_getInstance(), this->hashtable))), this, "getStartStateHashtable");
         return this->hashtable;
 }
 

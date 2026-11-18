@@ -1,28 +1,5 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.paint.help
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/paint/help/BasicInputMappingHelpPaintable.h"
 #include "org/allbinary/game/input/GameKey.h"
 #include "org/allbinary/game/input/GameKeyFactory.h"
 #include "org/allbinary/game/input/Input.h"
@@ -35,20 +12,88 @@
 #include "org/allbinary/string/CommonSeps.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/game/paint/help/HelpPaintable.h"
+#if __has_include("org/allbinary/game/input/GameKeyFactory.h")
+#include "org/allbinary/game/input/GameKeyFactory.h"
+#endif
+#if __has_include("org/allbinary/graphics/color/BasicColorFactory.h")
+#include "org/allbinary/graphics/color/BasicColorFactory.h"
+#endif
+#if __has_include("org/allbinary/game/input/PlatformInputMappingFactory.h")
+#include "org/allbinary/game/input/PlatformInputMappingFactory.h"
+#endif
+#if __has_include("org/allbinary/game/paint/help/InputToGameKeyMapping.h")
+#include "org/allbinary/game/paint/help/InputToGameKeyMapping.h"
+#endif
+#if __has_include("org/allbinary/game/input/InputToGameKeyMapping.h")
+#include "org/allbinary/game/input/InputToGameKeyMapping.h"
+#endif
+#if __has_include("org/allbinary/game/input/InputToGameKeyMapping.h")
+#include "org/allbinary/game/input/InputToGameKeyMapping.h"
+#endif
+#if __has_include("org/allbinary/game/input/InputToGameKeyMapping.h")
+#include "org/allbinary/game/input/InputToGameKeyMapping.h"
+#endif
+#if __has_include("org/allbinary/game/input/InputToGameKeyMapping.h")
+#include "org/allbinary/game/input/InputToGameKeyMapping.h"
+#endif
+#if __has_include("org/allbinary/game/input/mapping/InputToGameKeyMapping.h")
+#include "org/allbinary/game/input/mapping/InputToGameKeyMapping.h"
+#endif
+#if __has_include("org/allbinary/game/input/mapping/InputToGameKeyMapping.h")
+#include "org/allbinary/game/input/mapping/InputToGameKeyMapping.h"
+#endif
+#if __has_include("org/allbinary/graphics/color/InputToGameKeyMapping.h")
+#include "org/allbinary/graphics/color/InputToGameKeyMapping.h"
+#endif
+#if __has_include("org/allbinary/graphics/color/InputToGameKeyMapping.h")
+#include "org/allbinary/graphics/color/InputToGameKeyMapping.h"
+#endif
+#if __has_include("org/allbinary/logic/string/InputToGameKeyMapping.h")
+#include "org/allbinary/logic/string/InputToGameKeyMapping.h"
+#endif
+#if __has_include("org/allbinary/string/InputToGameKeyMapping.h")
+#include "org/allbinary/string/InputToGameKeyMapping.h"
+#endif
+#if __has_include("org/allbinary/util/InputToGameKeyMapping.h")
+#include "org/allbinary/util/InputToGameKeyMapping.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
 
-typedef struct BasicInputMappingHelpPaintable BasicInputMappingHelpPaintable;
-struct BasicInputMappingHelpPaintable {
-    HelpPaintable base;
-    GameInputMapping** gameInputMappingArray;
-    GameKey* NONE;
-};
 
 
-BasicInputMappingHelpPaintable* BasicInputMappingHelpPaintable_new(GameInputMapping** gameInputMappingArray, BasicColor* basicColor);
 
-void BasicInputMappingHelpPaintable_init(BasicInputMappingHelpPaintable* this, GameInputMapping** gameInputMappingArray, BasicColor* basicColor);
-void BasicInputMappingHelpPaintable_update(BasicInputMappingHelpPaintable* this, GameKey* selectedGameKey, Input* selectedInput);
+
 static const char* BasicInputMappingHelpPaintable_get(BasicInputMappingHelpPaintable* this, BasicArrayList* keyList);
+
+void BasicInputMappingHelpPaintable_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void BasicInputMappingHelpPaintable_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("BasicInputMappingHelpPaintable", "HelpPaintable");
+    java_register_method("BasicInputMappingHelpPaintable", "update", (void*) BasicInputMappingHelpPaintable_update);
+    java_register_method("BasicInputMappingHelpPaintable", "get", (void*) BasicInputMappingHelpPaintable_get);
+}
 
 static void BasicInputMappingHelpPaintable_initFields(BasicInputMappingHelpPaintable* this) {
     
@@ -57,6 +102,7 @@ static void BasicInputMappingHelpPaintable_initFields(BasicInputMappingHelpPaint
 
 
 void BasicInputMappingHelpPaintable_init(BasicInputMappingHelpPaintable* this, GameInputMapping** gameInputMappingArray, BasicColor* basicColor) {
+    BasicInputMappingHelpPaintable_register();
         HelpPaintable_init(&this->base, "Help Screen", BasicColorFactory_getInstance()->BLACK, basicColor);
         BasicInputMappingHelpPaintable_initFields(this);
         this->gameInputMappingArray = gameInputMappingArray;
@@ -64,7 +110,7 @@ void BasicInputMappingHelpPaintable_init(BasicInputMappingHelpPaintable* this, G
 }
 
 BasicInputMappingHelpPaintable* BasicInputMappingHelpPaintable_new(GameInputMapping** gameInputMappingArray, BasicColor* basicColor) {
-    BasicInputMappingHelpPaintable* this = calloc(1, sizeof(BasicInputMappingHelpPaintable));
+    BasicInputMappingHelpPaintable* this = java_object_alloc(sizeof(BasicInputMappingHelpPaintable), "BasicInputMappingHelpPaintable");
     BasicInputMappingHelpPaintable_init(this, gameInputMappingArray, basicColor);
     return this;
 }
@@ -82,9 +128,9 @@ void BasicInputMappingHelpPaintable_update(BasicInputMappingHelpPaintable* this,
         for (int32_t index = 0; index < size; index++) {
             gameInputMapping = this->gameInputMappingArray[index];
             gameKey = GameInputMapping_getGameKey(gameInputMapping);
-            list = JAVA_CALL(PersistentInputMapping_getInputMapping(gameKeyMapping), getMappedInput, gameKey);
+            list = InputMapping_getMappedInput(PersistentInputMapping_getInputMapping(gameKeyMapping), gameKey);
             StringMaker_delete(stringMaker, 0, StringMaker_length(stringMaker));
-            keyInfo[index] = JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_append(stringMaker, GameInputMapping_getName(gameInputMapping)), append, EQUAL), append, BasicInputMappingHelpPaintable_get(this, list)), toString);
+            keyInfo[index] = java_string_of(StringMaker_append(StringMaker_append(StringMaker_append(stringMaker, GameInputMapping_getName(gameInputMapping)), EQUAL), BasicInputMappingHelpPaintable_get(this, list)));
         }
         HelpPaintable_setInputInfoP((&this->base), keyInfo);
 }
@@ -101,7 +147,7 @@ static const char* BasicInputMappingHelpPaintable_get(BasicInputMappingHelpPaint
             StringMaker_append(stringBuffer, Input_getName(key));
             if (index + 1 < BasicArrayList_size(keyList)) {
                 if (BasicArrayList_size(keyList) == 2) {
-                    JAVA_CALL(StringMaker_append(stringBuffer, commonSeps->SPACE), append, AND);
+                    StringMaker_append(StringMaker_append(stringBuffer, commonSeps->SPACE), AND);
                 } else {
                     if (index + 2 == BasicArrayList_size(keyList)) {
                         StringMaker_append(stringBuffer, commonSeps->COMMA_SEP);
@@ -112,6 +158,6 @@ static const char* BasicInputMappingHelpPaintable_get(BasicInputMappingHelpPaint
                 }
             }
         }
-        return StringMaker_toString(stringBuffer);
+        return java_string_of(stringBuffer);
 }
 

@@ -48,6 +48,8 @@ void PreLogUtil_putOE(const char* specialMessage, void* anyType, const char* fun
 void PreLogUtil_putS(const char* specialMessage, const char* className, const char* functionName);
 
 void PreLogUtil_putSE(const char* specialMessage, const char* className, const char* functionName, void* exception);
+#define PreLogUtil_new0 PreLogUtil_new
+#define PreLogUtil_init0 PreLogUtil_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void PreLogUtil_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

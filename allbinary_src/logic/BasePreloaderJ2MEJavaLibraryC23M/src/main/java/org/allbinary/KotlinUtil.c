@@ -1,6 +1,9 @@
 // Generated Code Do Not Modify
 #include "org/allbinary/KotlinUtil.h"
 #include "org/allbinary/logic/string/StringUtil.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
 
 

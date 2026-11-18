@@ -1,62 +1,46 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.opengles
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/graphics/opengles/OpenGLCapabilities.h"
 #include "org/allbinary/logic/string/StringUtil.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
-typedef struct OpenGLCapabilities OpenGLCapabilities;
-struct OpenGLCapabilities {
-    bool CUSTOM_GL_SURFACE_VIEW;
-    const char* VERSION_1_0;
-    const char* VERSION_1_1;
-    const char* VERSION_2_0;
-    const char* VERSION_3_0;
-    const char* VERSION_3_1;
-    const char* VERSION_3_2;
-    const char* VERSION_HIGHER_THAN_EXISTS;
-    const char* glVersion;
-    int32_t shaderVersion;
-    const char* glInstanceVersion;
-    int32_t maxTextureSize;
-};
 
 static OpenGLCapabilities* OpenGLCapabilities_instance;
 
-OpenGLCapabilities* OpenGLCapabilities_new(void);
-OpenGLCapabilities* OpenGLCapabilities_getInstance(void);
 
-void OpenGLCapabilities_init(OpenGLCapabilities* this);
-bool OpenGLCapabilities_isInitialized(OpenGLCapabilities* this);
-void OpenGLCapabilities_initCapabilities(OpenGLCapabilities* this, Any* gl);
-bool OpenGLCapabilities_isGlExtensionDrawTexture(OpenGLCapabilities* this);
-const char* OpenGLCapabilities_getGlVersion(OpenGLCapabilities* this);
-bool OpenGLCapabilities_isVertexBufferObjectSupport(OpenGLCapabilities* this);
-bool OpenGLCapabilities_isTextureSizeValid(OpenGLCapabilities* this, int32_t widthAndHeight);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+
+
 void OpenGLCapabilities_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     OpenGLCapabilities_instance = OpenGLCapabilities_new();
+}
+
+void OpenGLCapabilities_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("OpenGLCapabilities", nullptr);
+    java_register_method("OpenGLCapabilities", "isInitialized", (void*) OpenGLCapabilities_isInitialized);
+    java_register_method("OpenGLCapabilities", "initCapabilities", (void*) OpenGLCapabilities_initCapabilities);
+    java_register_method("OpenGLCapabilities", "isGlExtensionDrawTexture", (void*) OpenGLCapabilities_isGlExtensionDrawTexture);
+    java_register_method("OpenGLCapabilities", "getGlVersion", (void*) OpenGLCapabilities_getGlVersion);
+    java_register_method("OpenGLCapabilities", "isVertexBufferObjectSupport", (void*) OpenGLCapabilities_isVertexBufferObjectSupport);
+    java_register_method("OpenGLCapabilities", "isTextureSizeValid", (void*) OpenGLCapabilities_isTextureSizeValid);
 }
 
 static void OpenGLCapabilities_initFields(OpenGLCapabilities* this) {
@@ -76,16 +60,17 @@ static void OpenGLCapabilities_initFields(OpenGLCapabilities* this) {
 
 
 OpenGLCapabilities* OpenGLCapabilities_getInstance(void) {
-        return OpenGLCapabilities_instance;
+        return (OpenGLCapabilities_staticInit(), OpenGLCapabilities_instance);
 }
 
 
 void OpenGLCapabilities_init(OpenGLCapabilities* this) {
+    OpenGLCapabilities_register();
     OpenGLCapabilities_initFields(this);
 }
 
 OpenGLCapabilities* OpenGLCapabilities_new(void) {
-    OpenGLCapabilities* this = calloc(1, sizeof(OpenGLCapabilities));
+    OpenGLCapabilities* this = java_object_alloc(sizeof(OpenGLCapabilities), "OpenGLCapabilities");
     OpenGLCapabilities_init(this);
     return this;
 }
@@ -96,7 +81,7 @@ bool OpenGLCapabilities_isInitialized(OpenGLCapabilities* this) {
 }
 
 
-void OpenGLCapabilities_initCapabilities(OpenGLCapabilities* this, Any* gl) {
+void OpenGLCapabilities_initCapabilities(OpenGLCapabilities* this, void* gl) {
 }
 
 

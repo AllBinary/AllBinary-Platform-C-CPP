@@ -1,59 +1,27 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2011 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.system.security.licensing
+#include "org/allbinary/logic/system/security/licensing/AbeClientInformationData.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct AbeClientInformationData AbeClientInformationData;
-struct AbeClientInformationData {
-    const char* KEY;
-    const char* NAME;
-    const char* VERSION;
-    const char* SPECIALNAME;
-    const char* LICENSEID;
-    const char* LICENSE_TYPE;
-    const char* PREVIOUSLICENSEID;
-    const char* OSNAME;
-    const char* OSARCH;
-    const char* OSVERSION;
-    const char* OS;
-    const char* HARDWARE;
-    const char* LICENSESERVERS;
-    const char* NEWLICENSE;
-    const char* ISNEW;
-    const char* SPECIAL;
-};
 
 static AbeClientInformationData* AbeClientInformationData_instance;
 
-AbeClientInformationData* AbeClientInformationData_new(void);
-AbeClientInformationData* AbeClientInformationData_getInstance(void);
 
-void AbeClientInformationData_init(AbeClientInformationData* this);
 
-// Static fields with runtime initializers: call this once at startup
 void AbeClientInformationData_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     AbeClientInformationData_instance = AbeClientInformationData_new();
+}
+
+void AbeClientInformationData_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("AbeClientInformationData", nullptr);
 }
 
 static void AbeClientInformationData_initFields(AbeClientInformationData* this) {
@@ -77,16 +45,17 @@ static void AbeClientInformationData_initFields(AbeClientInformationData* this) 
 
 
 AbeClientInformationData* AbeClientInformationData_getInstance(void) {
-        return AbeClientInformationData_instance;
+        return (AbeClientInformationData_staticInit(), AbeClientInformationData_instance);
 }
 
 
 void AbeClientInformationData_init(AbeClientInformationData* this) {
+    AbeClientInformationData_register();
     AbeClientInformationData_initFields(this);
 }
 
 AbeClientInformationData* AbeClientInformationData_new(void) {
-    AbeClientInformationData* this = calloc(1, sizeof(AbeClientInformationData));
+    AbeClientInformationData* this = java_object_alloc(sizeof(AbeClientInformationData), "AbeClientInformationData");
     AbeClientInformationData_init(this);
     return this;
 }

@@ -1,49 +1,36 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input.motion.button
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/input/motion/button/CommonButtons.h"
 #include "org/allbinary/graphics/PointFactory.h"
 #include "org/allbinary/graphics/Rectangle.h"
 #include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
+#if __has_include("org/allbinary/graphics/PointFactory.h")
+#include "org/allbinary/graphics/PointFactory.h"
+#endif
+#if __has_include("org/allbinary/graphics/PointFactory.h")
+#include "org/allbinary/graphics/PointFactory.h"
+#endif
 
-typedef struct CommonButtons CommonButtons;
-struct CommonButtons {
-    int32_t STANDARD_BUTTON_SIZE;
-    Rectangle* NORMAL_BUTTON;
-    Rectangle* LARGE_BUTTON;
-};
 
 static CommonButtons* CommonButtons_instance;
 
-CommonButtons* CommonButtons_new(void);
-CommonButtons* CommonButtons_getInstance(void);
 
-void CommonButtons_init(CommonButtons* this);
 
-// Static fields with runtime initializers: call this once at startup
 void CommonButtons_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     CommonButtons_instance = CommonButtons_new();
+}
+
+void CommonButtons_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("CommonButtons", nullptr);
 }
 
 static void CommonButtons_initFields(CommonButtons* this) {
@@ -54,11 +41,12 @@ static void CommonButtons_initFields(CommonButtons* this) {
 
 
 CommonButtons* CommonButtons_getInstance(void) {
-        return CommonButtons_instance;
+        return (CommonButtons_staticInit(), CommonButtons_instance);
 }
 
 
 void CommonButtons_init(CommonButtons* this) {
+    CommonButtons_register();
     CommonButtons_initFields(this);
         DisplayInfoSingleton* displayInfo = DisplayInfoSingleton_getInstance();
         int32_t commonButtonSize = 128;
@@ -80,7 +68,7 @@ void CommonButtons_init(CommonButtons* this) {
 }
 
 CommonButtons* CommonButtons_new(void) {
-    CommonButtons* this = calloc(1, sizeof(CommonButtons));
+    CommonButtons* this = java_object_alloc(sizeof(CommonButtons), "CommonButtons");
     CommonButtons_init(this);
     return this;
 }

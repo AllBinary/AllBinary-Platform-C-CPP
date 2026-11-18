@@ -1,59 +1,48 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.vector
+#include "org/allbinary/vector/PointsUtil.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct PointsUtil PointsUtil;
-struct PointsUtil {
-    char unused;
-};
 
 static PointsUtil* PointsUtil_instance;
 
-PointsUtil* PointsUtil_new(void);
-PointsUtil* PointsUtil_getInstance(void);
-int32_t*** PointsUtil_adjustXY(PointsUtil* this, int32_t*** points, int32_t x, int32_t y);
-int32_t** PointsUtil_adjust(PointsUtil* this, int32_t** points, int32_t both);
-int32_t** PointsUtil_adjust(PointsUtil* this, int32_t** points, int32_t x, int32_t y);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
 void PointsUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     PointsUtil_instance = PointsUtil_new();
 }
 
+void PointsUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("PointsUtil", nullptr);
+    java_register_method("PointsUtil", "adjustXY", (void*) PointsUtil_adjustXY);
+    java_register_method("PointsUtil", "adjust", (void*) PointsUtil_adjust3);
+    java_register_method("PointsUtil", "adjust@3", (void*) PointsUtil_adjust3);
+    java_register_method("PointsUtil", "adjust@4", (void*) PointsUtil_adjust4);
+}
+
 void PointsUtil_init(PointsUtil* this) {
+    PointsUtil_register();
 }
 
 PointsUtil* PointsUtil_new(void) {
-    PointsUtil* this = calloc(1, sizeof(PointsUtil));
+    PointsUtil* this = java_object_alloc(sizeof(PointsUtil), "PointsUtil");
     PointsUtil_init(this);
     return this;
 }
 
 
 PointsUtil* PointsUtil_getInstance(void) {
-        return PointsUtil_instance;
+        return (PointsUtil_staticInit(), PointsUtil_instance);
 }
 
 
@@ -77,13 +66,13 @@ int32_t*** PointsUtil_adjustXY(PointsUtil* this, int32_t*** points, int32_t x, i
 }
 
 
-int32_t** PointsUtil_adjust(PointsUtil* this, int32_t** points, int32_t both) {
+int32_t** PointsUtil_adjust3(PointsUtil* this, int32_t** points, int32_t both) {
         return PointsUtil_adjust(this, points, both, both);
 }
 
 
 // Java overloaded method: C needs a different name
-int32_t** PointsUtil_adjust(PointsUtil* this, int32_t** points, int32_t x, int32_t y) {
+int32_t** PointsUtil_adjust4(PointsUtil* this, int32_t** points, int32_t x, int32_t y) {
         int32_t** newPoints = ((int32_t**) java_array_new2(sizeof(int32_t), java_array_length(points), 2));
         for (int32_t index2 = 0; index2 < java_array_length(points); index2++) {
             if (points[index2][0] != 1000) {

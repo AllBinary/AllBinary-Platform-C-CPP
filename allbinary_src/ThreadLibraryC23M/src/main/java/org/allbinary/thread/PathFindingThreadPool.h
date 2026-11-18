@@ -50,6 +50,35 @@ void PathFindingThreadPool_runTask(PathFindingThreadPool* this, Runnable* task);
 void PathFindingThreadPool_startTask(PathFindingThreadPool* this, Runnable* task);
 
 void PathFindingThreadPool_completedTask(PathFindingThreadPool* this, Runnable* task);
+#define PathFindingThreadPool_new3 PathFindingThreadPool_new
+#define PathFindingThreadPool_init3 PathFindingThreadPool_init
+#ifndef PathFindingThreadPool_runAPriorityTask
+#define PathFindingThreadPool_runAPriorityTask ThreadPool_runAPriorityTask
+#endif
+#ifndef PathFindingThreadPool_getTask
+#define PathFindingThreadPool_getTask ThreadPool_getTask
+#endif
+#ifndef PathFindingThreadPool_clear
+#define PathFindingThreadPool_clear ThreadPool_clear
+#endif
+#ifndef PathFindingThreadPool_close
+#define PathFindingThreadPool_close ThreadPool_close
+#endif
+#ifndef PathFindingThreadPool_join
+#define PathFindingThreadPool_join ThreadPool_join
+#endif
+#ifndef PathFindingThreadPool_isBusy
+#define PathFindingThreadPool_isBusy ThreadPool_isBusy
+#endif
+#ifndef PathFindingThreadPool_threadStarted
+#define PathFindingThreadPool_threadStarted ThreadPool_threadStarted
+#endif
+#ifndef PathFindingThreadPool_threadStopped
+#define PathFindingThreadPool_threadStopped ThreadPool_threadStopped
+#endif
+#ifndef PathFindingThreadPool_createName
+#define PathFindingThreadPool_createName ThreadPool_createName
+#endif
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void PathFindingThreadPool_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

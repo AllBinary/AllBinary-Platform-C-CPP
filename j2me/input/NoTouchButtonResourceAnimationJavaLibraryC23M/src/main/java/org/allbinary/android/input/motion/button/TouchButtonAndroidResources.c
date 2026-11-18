@@ -1,50 +1,39 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.android.input.motion.button
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-#include "org/allbinary/init/Init.h"
-
-typedef struct TouchButtonAndroidResources TouchButtonAndroidResources;
-struct TouchButtonAndroidResources {
-    Init base;
-};
+#include "org/allbinary/android/input/motion/button/TouchButtonAndroidResources.h"
 
 
-TouchButtonAndroidResources* TouchButtonAndroidResources_new(void);
-void TouchButtonAndroidResources_init(TouchButtonAndroidResources* this);
+
+
+void TouchButtonAndroidResources_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void TouchButtonAndroidResources_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("TouchButtonAndroidResources", "Init");
+    java_register_method("TouchButtonAndroidResources", "init", (void*) TouchButtonAndroidResources_initMethod);
+}
 
 void TouchButtonAndroidResources_init(TouchButtonAndroidResources* this) {
+    TouchButtonAndroidResources_register();
     Init_init(&this->base);
 }
 
 TouchButtonAndroidResources* TouchButtonAndroidResources_new(void) {
-    TouchButtonAndroidResources* this = calloc(1, sizeof(TouchButtonAndroidResources));
+    TouchButtonAndroidResources* this = java_object_alloc(sizeof(TouchButtonAndroidResources), "TouchButtonAndroidResources");
     TouchButtonAndroidResources_init(this);
     return this;
 }
 
 
-void TouchButtonAndroidResources_init(TouchButtonAndroidResources* this) {
+void TouchButtonAndroidResources_initMethod(TouchButtonAndroidResources* this) {
 }
 

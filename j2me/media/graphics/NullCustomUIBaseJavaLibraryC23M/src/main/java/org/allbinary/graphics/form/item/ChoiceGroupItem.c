@@ -1,28 +1,31 @@
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.form.item
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct ChoiceGroupItem ChoiceGroupItem;
-struct ChoiceGroupItem {
-    char unused;
-};
+#include "org/allbinary/graphics/form/item/ChoiceGroupItem.h"
 
 
-ChoiceGroupItem* ChoiceGroupItem_new(void);
+
+void ChoiceGroupItem_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void ChoiceGroupItem_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ChoiceGroupItem", nullptr);
+}
 
 void ChoiceGroupItem_init(ChoiceGroupItem* this) {
+    ChoiceGroupItem_register();
 }
 
 ChoiceGroupItem* ChoiceGroupItem_new(void) {
-    ChoiceGroupItem* this = calloc(1, sizeof(ChoiceGroupItem));
+    ChoiceGroupItem* this = java_object_alloc(sizeof(ChoiceGroupItem), "ChoiceGroupItem");
     ChoiceGroupItem_init(this);
     return this;
 }

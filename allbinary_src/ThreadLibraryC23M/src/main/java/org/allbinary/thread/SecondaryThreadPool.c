@@ -3,6 +3,39 @@
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/logic/string/StringUtil.h"
 #include "org/allbinary/thread/ThreadPool.h"
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
 
 static ThreadPool* SecondaryThreadPool_instance;
@@ -52,17 +85,17 @@ SecondaryThreadPool* SecondaryThreadPool_new(const char* poolName, int32_t numTh
 
 
 void SecondaryThreadPool_runTask(SecondaryThreadPool* this, Runnable* task) {
-        LogUtil_putF(this->base.logUtil, java_string_of(StringMaker_appendlong(StringMaker_append(StringMaker_new(), StringUtil_toString(StringUtil_getInstance(), task)), ((int64_t) java_current_time_millis()))), this, this->base.threadPoolStrings->ADD_TASK);
+        LogUtil_putF(this->base.logUtil, java_string_of(StringMaker_appendlong(StringMaker_append(StringMaker_new(), StringUtil_toString(StringUtil_getInstance(), task)), java_current_time_millis())), this, this->base.threadPoolStrings->ADD_TASK);
         ThreadPool_runTask((&this->base), task);
 }
 
 
 void SecondaryThreadPool_startTask(SecondaryThreadPool* this, Runnable* task) {
-        LogUtil_putF(this->base.logUtil, java_string_of(StringMaker_appendlong(StringMaker_append(StringMaker_append(StringMaker_new(), this->base.threadPoolStrings->START_TASK), StringUtil_toString(StringUtil_getInstance(), task)), ((int64_t) java_current_time_millis()))), this, this->base.commonStrings->RUN);
+        LogUtil_putF(this->base.logUtil, java_string_of(StringMaker_appendlong(StringMaker_append(StringMaker_append(StringMaker_new(), this->base.threadPoolStrings->START_TASK), StringUtil_toString(StringUtil_getInstance(), task)), java_current_time_millis())), this, this->base.commonStrings->RUN);
 }
 
 
 void SecondaryThreadPool_completedTask(SecondaryThreadPool* this, Runnable* task) {
-        LogUtil_putF(this->base.logUtil, java_string_of(StringMaker_appendlong(StringMaker_append(StringMaker_append(StringMaker_new(), this->base.threadPoolStrings->COMPLETE_TASK), StringUtil_toString(StringUtil_getInstance(), task)), ((int64_t) java_current_time_millis()))), this, this->base.commonStrings->RUN);
+        LogUtil_putF(this->base.logUtil, java_string_of(StringMaker_appendlong(StringMaker_append(StringMaker_append(StringMaker_new(), this->base.threadPoolStrings->COMPLETE_TASK), StringUtil_toString(StringUtil_getInstance(), task)), java_current_time_millis())), this, this->base.commonStrings->RUN);
 }
 

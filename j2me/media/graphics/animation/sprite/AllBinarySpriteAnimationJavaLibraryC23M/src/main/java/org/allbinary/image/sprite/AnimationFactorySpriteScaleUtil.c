@@ -1,60 +1,37 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2022 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.image.sprite
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Image.h"
-// #include "javax/microedition/lcdui/game/Sprite.h"
+#include "org/allbinary/image/sprite/AnimationFactorySpriteScaleUtil.h"
+#include "javax/microedition/lcdui/Image.h"
+#include "javax/microedition/lcdui/game/Sprite.h"
 #include "org/allbinary/game/layer/SpriteFactory.h"
 #include "org/allbinary/graphics/opengles/OpenGLUtil.h"
 #include "org/allbinary/image/ImageCache.h"
 #include "org/allbinary/image/ImageCacheFactory.h"
 #include "org/allbinary/image/opengles/OpenGLESImageExclusionUtil.h"
-#include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/logic/math/J2SEMath.h"
-#include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/media/image/ImageScaleUtil.h"
-#include "org/allbinary/string/CommonLabels.h"
-#include "org/allbinary/string/CommonStrings.h"
 
-typedef struct AnimationFactorySpriteScaleUtil AnimationFactorySpriteScaleUtil;
-struct AnimationFactorySpriteScaleUtil {
-    ImageCache* imageCache;
-    ImageScaleUtil* imageScaleUtil;
-    OpenGLUtil* openGLUtil;
-    J2SEMath* j2seMath;
-    OpenGLESImageExclusionUtil* openGLESImageExclusionUtil;
-};
 
 static AnimationFactorySpriteScaleUtil* AnimationFactorySpriteScaleUtil_instance;
 
-AnimationFactorySpriteScaleUtil* AnimationFactorySpriteScaleUtil_new(void);
-AnimationFactorySpriteScaleUtil* AnimationFactorySpriteScaleUtil_getInstance(void);
-Sprite* AnimationFactorySpriteScaleUtil_createImage(AnimationFactorySpriteScaleUtil* this, Image* image, int32_t width, int32_t height, int32_t scaleWidth, int32_t scaleHeight);
 
-// Static fields with runtime initializers: call this once at startup
+
 void AnimationFactorySpriteScaleUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     AnimationFactorySpriteScaleUtil_instance = AnimationFactorySpriteScaleUtil_new();
+}
+
+void AnimationFactorySpriteScaleUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("AnimationFactorySpriteScaleUtil", nullptr);
+    java_register_method("AnimationFactorySpriteScaleUtil", "createImage", (void*) AnimationFactorySpriteScaleUtil_createImage);
 }
 
 static void AnimationFactorySpriteScaleUtil_initFields(AnimationFactorySpriteScaleUtil* this) {
@@ -66,18 +43,19 @@ static void AnimationFactorySpriteScaleUtil_initFields(AnimationFactorySpriteSca
 }
 
 void AnimationFactorySpriteScaleUtil_init(AnimationFactorySpriteScaleUtil* this) {
+    AnimationFactorySpriteScaleUtil_register();
     AnimationFactorySpriteScaleUtil_initFields(this);
 }
 
 AnimationFactorySpriteScaleUtil* AnimationFactorySpriteScaleUtil_new(void) {
-    AnimationFactorySpriteScaleUtil* this = calloc(1, sizeof(AnimationFactorySpriteScaleUtil));
+    AnimationFactorySpriteScaleUtil* this = java_object_alloc(sizeof(AnimationFactorySpriteScaleUtil), "AnimationFactorySpriteScaleUtil");
     AnimationFactorySpriteScaleUtil_init(this);
     return this;
 }
 
 
 AnimationFactorySpriteScaleUtil* AnimationFactorySpriteScaleUtil_getInstance(void) {
-        return AnimationFactorySpriteScaleUtil_instance;
+        return (AnimationFactorySpriteScaleUtil_staticInit(), AnimationFactorySpriteScaleUtil_instance);
 }
 
 

@@ -1,51 +1,40 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation.vector
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/animation/vector/RectangleFilledAdjustedAnimation.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
-#include "org/allbinary/graphics/color/ColorCompositeInterface.h"
 #include "org/allbinary/animation/vector/RectangleFilledAnimation.h"
 
-typedef struct RectangleFilledAdjustedAnimation RectangleFilledAdjustedAnimation;
-struct RectangleFilledAdjustedAnimation {
-    RectangleFilledAnimation base;
-    ColorCompositeInterface ColorCompositeInterface_interface;
-    int32_t offsetX;
-    int32_t offsetY;
-};
 
 
-RectangleFilledAdjustedAnimation* RectangleFilledAdjustedAnimation_new(int32_t width, int32_t height, int32_t offsetX, int32_t offsetY, BasicColor* basicColor);
 
-void RectangleFilledAdjustedAnimation_init(RectangleFilledAdjustedAnimation* this, int32_t width, int32_t height, int32_t offsetX, int32_t offsetY, BasicColor* basicColor);
-void RectangleFilledAdjustedAnimation_nextFrame(RectangleFilledAdjustedAnimation* this);
-void RectangleFilledAdjustedAnimation_paintXY(RectangleFilledAdjustedAnimation* this, Graphics* graphics, int32_t x, int32_t y);
-void RectangleFilledAdjustedAnimation_setOffsetX(RectangleFilledAdjustedAnimation* this, int32_t offsetX);
-void RectangleFilledAdjustedAnimation_setOffsetY(RectangleFilledAdjustedAnimation* this, int32_t offsetY);
-BasicColor* RectangleFilledAdjustedAnimation_getBasicColorP(RectangleFilledAdjustedAnimation* this);
-void RectangleFilledAdjustedAnimation_setBasicColorP(RectangleFilledAdjustedAnimation* this, BasicColor* basicColor);
+
+
+
+
+
+
+void RectangleFilledAdjustedAnimation_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void RectangleFilledAdjustedAnimation_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("RectangleFilledAdjustedAnimation", "RectangleFilledAnimation");
+    java_register_method("RectangleFilledAdjustedAnimation", "nextFrame", (void*) RectangleFilledAdjustedAnimation_nextFrame);
+    java_register_method("RectangleFilledAdjustedAnimation", "paintXY", (void*) RectangleFilledAdjustedAnimation_paintXY);
+    java_register_method("RectangleFilledAdjustedAnimation", "setOffsetX", (void*) RectangleFilledAdjustedAnimation_setOffsetX);
+    java_register_method("RectangleFilledAdjustedAnimation", "setOffsetY", (void*) RectangleFilledAdjustedAnimation_setOffsetY);
+    java_register_method("RectangleFilledAdjustedAnimation", "getBasicColorP", (void*) RectangleFilledAdjustedAnimation_getBasicColorP);
+    java_register_method("RectangleFilledAdjustedAnimation", "setBasicColorP", (void*) RectangleFilledAdjustedAnimation_setBasicColorP);
+}
 
 static void RectangleFilledAdjustedAnimation_initFields(RectangleFilledAdjustedAnimation* this) {
     
@@ -54,6 +43,7 @@ static void RectangleFilledAdjustedAnimation_initFields(RectangleFilledAdjustedA
 
 
 void RectangleFilledAdjustedAnimation_init(RectangleFilledAdjustedAnimation* this, int32_t width, int32_t height, int32_t offsetX, int32_t offsetY, BasicColor* basicColor) {
+    RectangleFilledAdjustedAnimation_register();
         RectangleFilledAnimation_init(&this->base, width, height, basicColor);
         RectangleFilledAdjustedAnimation_initFields(this);
         this->offsetX = offsetX;
@@ -62,7 +52,7 @@ void RectangleFilledAdjustedAnimation_init(RectangleFilledAdjustedAnimation* thi
 }
 
 RectangleFilledAdjustedAnimation* RectangleFilledAdjustedAnimation_new(int32_t width, int32_t height, int32_t offsetX, int32_t offsetY, BasicColor* basicColor) {
-    RectangleFilledAdjustedAnimation* this = calloc(1, sizeof(RectangleFilledAdjustedAnimation));
+    RectangleFilledAdjustedAnimation* this = java_object_alloc(sizeof(RectangleFilledAdjustedAnimation), "RectangleFilledAdjustedAnimation");
     RectangleFilledAdjustedAnimation_init(this, width, height, offsetX, offsetY, basicColor);
     return this;
 }
@@ -73,7 +63,7 @@ void RectangleFilledAdjustedAnimation_nextFrame(RectangleFilledAdjustedAnimation
 
 
 void RectangleFilledAdjustedAnimation_paintXY(RectangleFilledAdjustedAnimation* this, Graphics* graphics, int32_t x, int32_t y) {
-        JAVA_CALL(this->basicSetColorUtil, setBasicColorP3, graphics, RectangleFilledAdjustedAnimation_getBasicColorP(this), RectangleFilledAdjustedAnimation_getColor(this));
+        BasicColorSetUtil_setBasicColorP3(this->base.base.basicSetColorUtil, graphics, RectangleFilledAdjustedAnimation_getBasicColorP(this), Animation_getColor(this));
         RectangleFilledAnimation_paintXY((&this->base), graphics, x + this->offsetX, y + this->offsetY);
 }
 

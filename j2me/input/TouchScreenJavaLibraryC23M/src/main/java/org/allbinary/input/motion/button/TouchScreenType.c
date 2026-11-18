@@ -1,40 +1,29 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input.motion.button
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct TouchScreenType TouchScreenType;
-struct TouchScreenType {
-    const char* name;
-};
+#include "org/allbinary/input/motion/button/TouchScreenType.h"
 
 
-TouchScreenType* TouchScreenType_new(const char* name);
 
-void TouchScreenType_init(TouchScreenType* this, const char* name);
-const char* TouchScreenType_getName(TouchScreenType* this);
-const char* TouchScreenType_toString(TouchScreenType* this);
+
+
+
+void TouchScreenType_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void TouchScreenType_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("TouchScreenType", nullptr);
+    java_register_method("TouchScreenType", "getName", (void*) TouchScreenType_getName);
+    java_register_method("TouchScreenType", "toString", (void*) TouchScreenType_toString);
+}
 
 static void TouchScreenType_initFields(TouchScreenType* this) {
     
@@ -42,12 +31,13 @@ static void TouchScreenType_initFields(TouchScreenType* this) {
 
 
 void TouchScreenType_init(TouchScreenType* this, const char* name) {
+    TouchScreenType_register();
     TouchScreenType_initFields(this);
         this->name = name;
 }
 
 TouchScreenType* TouchScreenType_new(const char* name) {
-    TouchScreenType* this = calloc(1, sizeof(TouchScreenType));
+    TouchScreenType* this = java_object_alloc(sizeof(TouchScreenType), "TouchScreenType");
     TouchScreenType_init(this, name);
     return this;
 }

@@ -1,43 +1,34 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2025 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.midlet
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct LicensedDemoSetupFactory LicensedDemoSetupFactory;
-struct LicensedDemoSetupFactory {
-    char unused;
-};
+#include "org/allbinary/game/midlet/LicensedDemoSetupFactory.h"
+#include "org/allbinary/game/midlet/DemoSetup.h"
 
 
-LicensedDemoSetupFactory* LicensedDemoSetupFactory_new(void);
-DemoSetup* LicensedDemoSetupFactory_getInstance(LicensedDemoSetupFactory* this);
+
+
+void LicensedDemoSetupFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void LicensedDemoSetupFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("LicensedDemoSetupFactory", nullptr);
+    java_register_method("LicensedDemoSetupFactory", "getInstance", (void*) LicensedDemoSetupFactory_getInstance);
+}
 
 void LicensedDemoSetupFactory_init(LicensedDemoSetupFactory* this) {
+    LicensedDemoSetupFactory_register();
 }
 
 LicensedDemoSetupFactory* LicensedDemoSetupFactory_new(void) {
-    LicensedDemoSetupFactory* this = calloc(1, sizeof(LicensedDemoSetupFactory));
+    LicensedDemoSetupFactory* this = java_object_alloc(sizeof(LicensedDemoSetupFactory), "LicensedDemoSetupFactory");
     LicensedDemoSetupFactory_init(this);
     return this;
 }

@@ -1,53 +1,35 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.io
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "java/io/ByteArrayOutputStream.h"
-// #include "java/io/Closeable.h"
-// #include "java/io/InputStream.h"
-// #include "java/io/OutputStream.h"
+#include "org/allbinary/logic/io/StreamUtil.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/string/CommonStrings.h"
 
-typedef struct StreamUtil StreamUtil;
-struct StreamUtil {
-    LogUtil* logUtil;
-};
 
 static StreamUtil* StreamUtil_instance;
 
-StreamUtil* StreamUtil_new(void);
-StreamUtil* StreamUtil_getInstance(void);
 
-void StreamUtil_init(StreamUtil* this);
-OutputStream* StreamUtil_get(StreamUtil* this, InputStream* inputStream, OutputStream* outputStream, int8_t* buffer);
-int8_t* StreamUtil_getByteArray(StreamUtil* this, InputStream* inputStream, ByteArrayOutputStream* outputStream2, int8_t* byteArray);
-bool StreamUtil_close(StreamUtil* this, Closeable* closeable);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
 void StreamUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     StreamUtil_instance = StreamUtil_new();
+}
+
+void StreamUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("StreamUtil", nullptr);
+    java_register_method("StreamUtil", "get", (void*) StreamUtil_get);
+    java_register_method("StreamUtil", "getByteArray", (void*) StreamUtil_getByteArray);
+    java_register_method("StreamUtil", "close", (void*) StreamUtil_close);
 }
 
 static void StreamUtil_initFields(StreamUtil* this) {
@@ -56,16 +38,17 @@ static void StreamUtil_initFields(StreamUtil* this) {
 
 
 StreamUtil* StreamUtil_getInstance(void) {
-        return StreamUtil_instance;
+        return (StreamUtil_staticInit(), StreamUtil_instance);
 }
 
 
 void StreamUtil_init(StreamUtil* this) {
+    StreamUtil_register();
     StreamUtil_initFields(this);
 }
 
 StreamUtil* StreamUtil_new(void) {
-    StreamUtil* this = calloc(1, sizeof(StreamUtil));
+    StreamUtil* this = java_object_alloc(sizeof(StreamUtil), "StreamUtil");
     StreamUtil_init(this);
     return this;
 }
@@ -91,7 +74,7 @@ int8_t* StreamUtil_getByteArray(StreamUtil* this, InputStream* inputStream, Byte
         ByteArrayOutputStream* outputStream = outputStream2;
         JAVA_TRY {
             StreamUtil_get(this, inputStream, outputStream, byteArray);
-            return OutputStream_toByteArray(outputStream);
+            return ByteArrayOutputStream_toByteArray(outputStream);
         } JAVA_CATCH(Exception, e) {
             java_throw(e);
         } JAVA_FINALLY {

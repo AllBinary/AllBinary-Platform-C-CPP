@@ -1,6 +1,12 @@
 // Generated Code Do Not Modify
 #include "org/allbinary/logic/math/PrimitiveLongSingleton.h"
 #include "org/allbinary/logic/string/StringMaker.h"
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
 
 
 static PrimitiveLongSingleton* PrimitiveLongSingleton_instance;

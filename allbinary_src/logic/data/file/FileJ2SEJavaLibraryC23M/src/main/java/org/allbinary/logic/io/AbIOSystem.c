@@ -1,44 +1,30 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.io
+#include "org/allbinary/logic/io/AbIOSystem.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct AbIOSystem AbIOSystem;
-struct AbIOSystem {
-    const char* type;
-};
 
 static AbIOSystem* AbIOSystem_instance;
 
-AbIOSystem* AbIOSystem_new(void);
-AbIOSystem* AbIOSystem_getInstance(void);
-const char* AbIOSystem_getType(AbIOSystem* this);
-bool AbIOSystem_isType(AbIOSystem* this, const char* type);
 
-// Static fields with runtime initializers: call this once at startup
+
+
 void AbIOSystem_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     AbIOSystem_instance = AbIOSystem_new();
+}
+
+void AbIOSystem_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("AbIOSystem", nullptr);
+    java_register_method("AbIOSystem", "getType", (void*) AbIOSystem_getType);
+    java_register_method("AbIOSystem", "isType", (void*) AbIOSystem_isType);
 }
 
 static void AbIOSystem_initFields(AbIOSystem* this) {
@@ -46,18 +32,19 @@ static void AbIOSystem_initFields(AbIOSystem* this) {
 }
 
 void AbIOSystem_init(AbIOSystem* this) {
+    AbIOSystem_register();
     AbIOSystem_initFields(this);
 }
 
 AbIOSystem* AbIOSystem_new(void) {
-    AbIOSystem* this = calloc(1, sizeof(AbIOSystem));
+    AbIOSystem* this = java_object_alloc(sizeof(AbIOSystem), "AbIOSystem");
     AbIOSystem_init(this);
     return this;
 }
 
 
 AbIOSystem* AbIOSystem_getInstance(void) {
-        return AbIOSystem_instance;
+        return (AbIOSystem_staticInit(), AbIOSystem_instance);
 }
 
 

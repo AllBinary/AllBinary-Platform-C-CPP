@@ -1,61 +1,46 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.displayable.canvas
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/displayable/canvas/FormUtil.h"
 #include "org/allbinary/graphics/PointFactory.h"
 #include "org/allbinary/graphics/Rectangle.h"
 #include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
-#include "org/allbinary/logic/communication/log/LogUtil.h"
 
-typedef struct FormUtil FormUtil;
-struct FormUtil {
-    char unused;
-};
 
 static FormUtil* FormUtil_instance;
 
-FormUtil* FormUtil_new(void);
-FormUtil* FormUtil_getInstance(void);
-Rectangle* FormUtil_createFormRectangle(FormUtil* this);
 
-// Static fields with runtime initializers: call this once at startup
+
 void FormUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     FormUtil_instance = FormUtil_new();
 }
 
+void FormUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("FormUtil", nullptr);
+    java_register_method("FormUtil", "createFormRectangle", (void*) FormUtil_createFormRectangle);
+}
+
 void FormUtil_init(FormUtil* this) {
+    FormUtil_register();
 }
 
 FormUtil* FormUtil_new(void) {
-    FormUtil* this = calloc(1, sizeof(FormUtil));
+    FormUtil* this = java_object_alloc(sizeof(FormUtil), "FormUtil");
     FormUtil_init(this);
     return this;
 }
 
 
 FormUtil* FormUtil_getInstance(void) {
-        return FormUtil_instance;
+        return (FormUtil_staticInit(), FormUtil_instance);
 }
 
 

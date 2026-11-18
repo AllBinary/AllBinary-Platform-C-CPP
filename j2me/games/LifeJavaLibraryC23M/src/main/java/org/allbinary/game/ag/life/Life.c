@@ -1,58 +1,49 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.ag.life
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/ag/life/Life.h"
 #include "org/allbinary/game/ag/life/LifeInterface.h"
 
-typedef struct Life Life;
-struct Life {
-    LifeInterface LifeInterface_interface;
-    int16_t lives;
-    int16_t startLives;
-    int16_t maxlives;
-};
 
 Life* Life_NO_LIFE;
 
-Life* Life_new(int16_t lives, int16_t maxlives);
-Life* Life_createLife(void);
 
-void Life_init(Life* this, int16_t lives, int16_t maxlives);
-int16_t Life_get(Life* this);
-void Life_set(Life* this, int16_t lives);
-void Life_reset(Life* this);
-void Life_add(Life* this, int16_t lives);
-bool Life_isAlive(Life* this);
-int16_t Life_getMaxlives(Life* this);
+
+
+
+
+
+
+
 static bool Life_reachedLimit(Life* this);
-void Life_deaths(Life* this, int16_t lives);
-int16_t Life_getStartLives(Life* this);
-void Life_setStartLives(Life* this, int16_t startLives);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
 void Life_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     Life_NO_LIFE = Life_createLife();
+}
+
+void Life_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("Life", nullptr);
+    java_register_method("Life", "get", (void*) Life_get);
+    java_register_method("Life", "set", (void*) Life_set);
+    java_register_method("Life", "reset", (void*) Life_reset);
+    java_register_method("Life", "add", (void*) Life_add);
+    java_register_method("Life", "isAlive", (void*) Life_isAlive);
+    java_register_method("Life", "getMaxlives", (void*) Life_getMaxlives);
+    java_register_method("Life", "reachedLimit", (void*) Life_reachedLimit);
+    java_register_method("Life", "deaths", (void*) Life_deaths);
+    java_register_method("Life", "getStartLives", (void*) Life_getStartLives);
+    java_register_method("Life", "setStartLives", (void*) Life_setStartLives);
 }
 
 static void Life_initFields(Life* this) {
@@ -72,6 +63,7 @@ Life* Life_createLife(void) {
 
 
 void Life_init(Life* this, int16_t lives, int16_t maxlives) {
+    Life_register();
     Life_initFields(this);
         this->maxlives = maxlives;
         if (lives > this->maxlives) {
@@ -82,7 +74,7 @@ void Life_init(Life* this, int16_t lives, int16_t maxlives) {
 }
 
 Life* Life_new(int16_t lives, int16_t maxlives) {
-    Life* this = calloc(1, sizeof(Life));
+    Life* this = java_object_alloc(sizeof(Life), "Life");
     Life_init(this, lives, maxlives);
     return this;
 }

@@ -1,69 +1,52 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.paint.help
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Font.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/game/paint/help/HelpPaintable.h"
+#include "javax/microedition/lcdui/Font.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/graphics/Anchor.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
 #include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
 #include "org/allbinary/graphics/font/MyFontProcessor.h"
-#include "org/allbinary/graphics/font/UpdateMyFontInterface.h"
 #include "org/allbinary/graphics/font/UpdateMyFontProcessor.h"
-#include "org/allbinary/graphics/paint/Paintable.h"
 #include "org/allbinary/logic/NullUtil.h"
 #include "org/allbinary/logic/string/StringUtil.h"
-
-typedef struct HelpPaintable HelpPaintable;
-struct HelpPaintable {
-    Paintable base;
-    UpdateMyFontInterface UpdateMyFontInterface_interface;
-    DisplayInfoSingleton* displayInfo;
-    MyFontProcessor* updateMyFontProcessor;
-    MyFontProcessor* myFontProcessor;
-    int32_t anchor;
-    const char* title;
-    const char** inputInfo;
-    BasicColor* basicColor;
-    int32_t titleBeginWidth;
-    int32_t* beginWidthArray;
-    int32_t charHeight;
-};
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
 
 
-HelpPaintable* HelpPaintable_new(const char* title, BasicColor* backgroundBasicColor, BasicColor* basicColor);
 
-void HelpPaintable_init(HelpPaintable* this, const char* title, BasicColor* backgroundBasicColor, BasicColor* basicColor);
-void HelpPaintable_updateMeasurement(HelpPaintable* this, Graphics* graphics);
-void HelpPaintable_setInputInfoP(HelpPaintable* this, const char** inputInfo);
-void HelpPaintable_paint(HelpPaintable* this, Graphics* graphics);
+
+
+
+
+void HelpPaintable_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void HelpPaintable_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("HelpPaintable", "Paintable");
+    java_register_method("HelpPaintable", "updateMeasurement", (void*) HelpPaintable_updateMeasurement);
+    java_register_method("HelpPaintable", "setInputInfoP", (void*) HelpPaintable_setInputInfoP);
+    java_register_method("HelpPaintable", "paint", (void*) HelpPaintable_paint);
+}
 
 static void HelpPaintable_initFields(HelpPaintable* this) {
     this->displayInfo = DisplayInfoSingleton_getInstance();
     this->updateMyFontProcessor = UpdateMyFontProcessor_new(this);
     this->myFontProcessor = this->updateMyFontProcessor;
-    this->anchor = Anchor_TOP_LEFT;
+    this->anchor = (Anchor_staticInit(), Anchor_TOP_LEFT);
     
     this->inputInfo = StringUtil_getArrayInstance(StringUtil_getInstance());
     
@@ -74,6 +57,7 @@ static void HelpPaintable_initFields(HelpPaintable* this) {
 
 
 void HelpPaintable_init(HelpPaintable* this, const char* title, BasicColor* backgroundBasicColor, BasicColor* basicColor) {
+    HelpPaintable_register();
     Paintable_init(&this->base);
     HelpPaintable_initFields(this);
         this->title = title;
@@ -81,7 +65,7 @@ void HelpPaintable_init(HelpPaintable* this, const char* title, BasicColor* back
 }
 
 HelpPaintable* HelpPaintable_new(const char* title, BasicColor* backgroundBasicColor, BasicColor* basicColor) {
-    HelpPaintable* this = calloc(1, sizeof(HelpPaintable));
+    HelpPaintable* this = java_object_alloc(sizeof(HelpPaintable), "HelpPaintable");
     HelpPaintable_init(this, title, backgroundBasicColor, basicColor);
     return this;
 }

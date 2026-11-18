@@ -1,49 +1,39 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.util.cache
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/logic/util/cache/AbstractArrayListPool.h"
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
 #include "org/allbinary/logic/util/cache/PoolInterface.h"
-
-typedef struct AbstractArrayListPool AbstractArrayListPool;
-struct AbstractArrayListPool {
-    PoolInterface PoolInterface_interface;
-    CommonStrings* commonStrings;
-    BasicArrayList* buffers;
-    CacheableInterfaceFactoryInterface* cacheableInterfaceFactoryInterface;
-};
+#include "org/allbinary/logic/util/cache/CacheableInterfaceFactoryInterface.h"
+#include "org/allbinary/logic/util/cache/CacheableInterface.h"
 
 
-AbstractArrayListPool* AbstractArrayListPool_new(CacheableInterfaceFactoryInterface* cacheableInterfaceFactoryInterface);
 
-void AbstractArrayListPool_init(AbstractArrayListPool* this, CacheableInterfaceFactoryInterface* cacheableInterfaceFactoryInterface);
-void AbstractArrayListPool_clear(AbstractArrayListPool* this);
-CacheableInterface* AbstractArrayListPool_remove(AbstractArrayListPool* this, Any* key);
-void AbstractArrayListPool_add(AbstractArrayListPool* this, CacheableInterface* cacheableInterface);
-void AbstractArrayListPool_addArray(AbstractArrayListPool* this, CacheableInterface** cacheableInterfaces);
+
+
+
+
+
+void AbstractArrayListPool_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void AbstractArrayListPool_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("AbstractArrayListPool", nullptr);
+    java_register_method("AbstractArrayListPool", "clear", (void*) AbstractArrayListPool_clear);
+    java_register_method("AbstractArrayListPool", "remove", (void*) AbstractArrayListPool_remove);
+    java_register_method("AbstractArrayListPool", "add", (void*) AbstractArrayListPool_add);
+    java_register_method("AbstractArrayListPool", "addArray", (void*) AbstractArrayListPool_addArray);
+}
 
 static void AbstractArrayListPool_initFields(AbstractArrayListPool* this) {
     this->commonStrings = CommonStrings_getInstance();
@@ -53,12 +43,13 @@ static void AbstractArrayListPool_initFields(AbstractArrayListPool* this) {
 
 
 void AbstractArrayListPool_init(AbstractArrayListPool* this, CacheableInterfaceFactoryInterface* cacheableInterfaceFactoryInterface) {
+    AbstractArrayListPool_register();
     AbstractArrayListPool_initFields(this);
         this->cacheableInterfaceFactoryInterface = cacheableInterfaceFactoryInterface;
 }
 
 AbstractArrayListPool* AbstractArrayListPool_new(CacheableInterfaceFactoryInterface* cacheableInterfaceFactoryInterface) {
-    AbstractArrayListPool* this = calloc(1, sizeof(AbstractArrayListPool));
+    AbstractArrayListPool* this = java_object_alloc(sizeof(AbstractArrayListPool), "AbstractArrayListPool");
     AbstractArrayListPool_init(this, cacheableInterfaceFactoryInterface);
     return this;
 }
@@ -71,7 +62,7 @@ void AbstractArrayListPool_clear(AbstractArrayListPool* this) {
 
 
 // throws Exception
-CacheableInterface* AbstractArrayListPool_remove(AbstractArrayListPool* this, Any* key) {
+CacheableInterface* AbstractArrayListPool_remove(AbstractArrayListPool* this, void* key) {
         java_throw(java_exception_new("Exception", this->commonStrings->NOT_IMPLEMENTED));
 }
 

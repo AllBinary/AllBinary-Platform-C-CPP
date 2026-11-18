@@ -41,6 +41,14 @@ AllBinaryEventCircularPool* AllBinaryEventCircularPool_new(int32_t max);
 void AllBinaryEventCircularPool_init(AllBinaryEventCircularPool* this, int32_t max);
 
 void AllBinaryEventCircularPool_initAllBinaryEventCircularPool(AllBinaryEventCircularPool* this, AllBinaryEventObjectFactoryInterface* allBinaryEventObjectFactoryInterface);
+#define AllBinaryEventCircularPool_new1 AllBinaryEventCircularPool_new
+#define AllBinaryEventCircularPool_init1 AllBinaryEventCircularPool_init
+#ifndef AllBinaryEventCircularPool_getNextInstance
+#define AllBinaryEventCircularPool_getNextInstance BaseCircularPool_getNextInstance
+#endif
+#ifndef AllBinaryEventCircularPool_getInstance
+#define AllBinaryEventCircularPool_getInstance BaseCircularPool_getInstance
+#endif
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void AllBinaryEventCircularPool_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

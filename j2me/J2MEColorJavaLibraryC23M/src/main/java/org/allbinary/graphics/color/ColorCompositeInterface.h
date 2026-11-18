@@ -42,6 +42,7 @@ void ColorCompositeInterface_staticInit(void);
 static inline BasicColor* ColorCompositeInterface_getBasicColorP(void* this) {
     return ((__typeof__(((ColorCompositeInterface*) nullptr)->getBasicColorP)) java_method_of(this, "getBasicColorP"))(this);
 }
+#define ColorCompositeInterface_setBasicColorP BasicColorCompositeSetterInterface_setBasicColorP
 
 
 #endif // ORG_ALLBINARY_GRAPHICS_COLOR_COLORCOMPOSITEINTERFACE_H

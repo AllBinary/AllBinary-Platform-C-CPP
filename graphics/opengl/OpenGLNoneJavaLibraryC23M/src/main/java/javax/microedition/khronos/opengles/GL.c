@@ -1,18 +1,13 @@
 // Generated Code Do Not Modify
-// package javax.microedition.khronos.opengles
+#include "javax/microedition/khronos/opengles/GL.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
 
-typedef struct GL GL;
-struct GL {
-    char unused;
-};
 
+void GL_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
 

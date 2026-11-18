@@ -3,6 +3,9 @@
 #include "org/allbinary/logic/NullUtil.h"
 #include "org/allbinary/logic/string/StringUtil.h"
 #include "org/allbinary/logic/communication/log/Log.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
 
 

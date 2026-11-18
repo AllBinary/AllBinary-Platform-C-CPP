@@ -1,59 +1,39 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input.motion.gesture
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h"
 #include "org/allbinary/game/input/InputFactory.h"
 #include "org/allbinary/logic/NullUtil.h"
+#include "org/allbinary/input/motion/gesture/MotionGestureInput.h"
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/game/input/InputFactory.h")
+#include "org/allbinary/game/input/InputFactory.h"
+#endif
 
-typedef struct TouchMotionGestureFactory TouchMotionGestureFactory;
-struct TouchMotionGestureFactory {
-    MotionGestureInput* LEFT;
-    MotionGestureInput* RIGHT;
-    MotionGestureInput* UP;
-    MotionGestureInput* DOWN;
-    MotionGestureInput* PRESSED;
-    MotionGestureInput* RELEASED;
-    MotionGestureInput* DIAGONAL_DOWN_RIGHT;
-    MotionGestureInput* DIAGONAL_DOWN_LEFT;
-    MotionGestureInput* DIAGONAL_UP_RIGHT;
-    MotionGestureInput* DIAGONAL_UP_LEFT;
-    MotionGestureInput* SCROLL_UP;
-    MotionGestureInput* SCROLL_DOWN;
-    MotionGestureInput* NO_MOTION;
-    MotionGestureInput* LAST_MOTION;
-};
 
-static Any* TouchMotionGestureFactory_instance;
+static void* TouchMotionGestureFactory_instance;
 
-TouchMotionGestureFactory* TouchMotionGestureFactory_new(void);
-TouchMotionGestureFactory* TouchMotionGestureFactory_getInstance(void);
 
-void TouchMotionGestureFactory_init(TouchMotionGestureFactory* this);
 
-// Static fields with runtime initializers: call this once at startup
 void TouchMotionGestureFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     TouchMotionGestureFactory_instance = NullUtil_getInstance()->NULL_OBJECT;
+}
+
+void TouchMotionGestureFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("TouchMotionGestureFactory", nullptr);
 }
 
 static void TouchMotionGestureFactory_initFields(TouchMotionGestureFactory* this) {
@@ -75,14 +55,15 @@ static void TouchMotionGestureFactory_initFields(TouchMotionGestureFactory* this
 
 
 TouchMotionGestureFactory* TouchMotionGestureFactory_getInstance(void) {
-        if (TouchMotionGestureFactory_instance == NullUtil_getInstance()->NULL_OBJECT) {
+        if ((TouchMotionGestureFactory_staticInit(), TouchMotionGestureFactory_instance) == NullUtil_getInstance()->NULL_OBJECT) {
             TouchMotionGestureFactory_instance = TouchMotionGestureFactory_new();
         }
-        return ((TouchMotionGestureFactory*) TouchMotionGestureFactory_instance);
+        return ((TouchMotionGestureFactory*) (TouchMotionGestureFactory_staticInit(), TouchMotionGestureFactory_instance));
 }
 
 
 void TouchMotionGestureFactory_init(TouchMotionGestureFactory* this) {
+    TouchMotionGestureFactory_register();
     TouchMotionGestureFactory_initFields(this);
         int32_t MAX = InputFactory_getInstance()->MAX;
         this->LEFT = MotionGestureInput_new(MAX - 3, "Left Touch");
@@ -102,7 +83,7 @@ void TouchMotionGestureFactory_init(TouchMotionGestureFactory* this) {
 }
 
 TouchMotionGestureFactory* TouchMotionGestureFactory_new(void) {
-    TouchMotionGestureFactory* this = calloc(1, sizeof(TouchMotionGestureFactory));
+    TouchMotionGestureFactory* this = java_object_alloc(sizeof(TouchMotionGestureFactory), "TouchMotionGestureFactory");
     TouchMotionGestureFactory_init(this);
     return this;
 }

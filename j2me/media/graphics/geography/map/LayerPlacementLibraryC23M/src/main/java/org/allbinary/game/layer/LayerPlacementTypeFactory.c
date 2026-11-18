@@ -1,69 +1,63 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.layer
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/layer/LayerPlacementTypeFactory.h"
 #include "org/allbinary/direction/DirectionFactory.h"
+#include "org/allbinary/game/layer/LayerPlacementType.h"
+#if __has_include("org/allbinary/direction/DirectionFactory.h")
+#include "org/allbinary/direction/DirectionFactory.h"
+#endif
+#if __has_include("org/allbinary/direction/DirectionFactory.h")
+#include "org/allbinary/direction/DirectionFactory.h"
+#endif
+#if __has_include("org/allbinary/direction/DirectionFactory.h")
+#include "org/allbinary/direction/DirectionFactory.h"
+#endif
+#if __has_include("org/allbinary/direction/DirectionFactory.h")
+#include "org/allbinary/direction/DirectionFactory.h"
+#endif
 
-typedef struct LayerPlacementTypeFactory LayerPlacementTypeFactory;
-struct LayerPlacementTypeFactory {
-    LayerPlacementType* MAP;
-    LayerPlacementType* LEFT;
-    LayerPlacementType* DOWN;
-    LayerPlacementType* UP;
-    LayerPlacementType* RIGHT;
-};
 
 static LayerPlacementTypeFactory* LayerPlacementTypeFactory_instance;
 
-LayerPlacementTypeFactory* LayerPlacementTypeFactory_new(void);
-LayerPlacementTypeFactory* LayerPlacementTypeFactory_getInstance(void);
 
-// Static fields with runtime initializers: call this once at startup
 void LayerPlacementTypeFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     LayerPlacementTypeFactory_instance = LayerPlacementTypeFactory_new();
 }
 
+void LayerPlacementTypeFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("LayerPlacementTypeFactory", nullptr);
+}
+
 static void LayerPlacementTypeFactory_initFields(LayerPlacementTypeFactory* this) {
-    this->MAP = LayerPlacementType_new(Integer_MAX_VALUE);
-    this->LEFT = LayerPlacementType_new(JAVA_CALL(DirectionFactory_getInstance()->LEFT, getValue));
-    this->DOWN = LayerPlacementType_new(JAVA_CALL(DirectionFactory_getInstance()->DOWN, getValue));
-    this->UP = LayerPlacementType_new(JAVA_CALL(DirectionFactory_getInstance()->UP, getValue));
-    this->RIGHT = LayerPlacementType_new(JAVA_CALL(DirectionFactory_getInstance()->RIGHT, getValue));
+    this->MAP = LayerPlacementType_new((Integer_staticInit(), Integer_MAX_VALUE));
+    this->LEFT = LayerPlacementType_new(Direction_getValue(DirectionFactory_getInstance()->LEFT));
+    this->DOWN = LayerPlacementType_new(Direction_getValue(DirectionFactory_getInstance()->DOWN));
+    this->UP = LayerPlacementType_new(Direction_getValue(DirectionFactory_getInstance()->UP));
+    this->RIGHT = LayerPlacementType_new(Direction_getValue(DirectionFactory_getInstance()->RIGHT));
 }
 
 void LayerPlacementTypeFactory_init(LayerPlacementTypeFactory* this) {
+    LayerPlacementTypeFactory_register();
     LayerPlacementTypeFactory_initFields(this);
 }
 
 LayerPlacementTypeFactory* LayerPlacementTypeFactory_new(void) {
-    LayerPlacementTypeFactory* this = calloc(1, sizeof(LayerPlacementTypeFactory));
+    LayerPlacementTypeFactory* this = java_object_alloc(sizeof(LayerPlacementTypeFactory), "LayerPlacementTypeFactory");
     LayerPlacementTypeFactory_init(this);
     return this;
 }
 
 
 LayerPlacementTypeFactory* LayerPlacementTypeFactory_getInstance(void) {
-        return LayerPlacementTypeFactory_instance;
+        return (LayerPlacementTypeFactory_staticInit(), LayerPlacementTypeFactory_instance);
 }
 

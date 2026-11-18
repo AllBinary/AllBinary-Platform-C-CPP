@@ -1,52 +1,39 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2011 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.math.permutations
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/logic/math/permutations/OrderedIntArrayPermutationUtil.h"
 #include "org/allbinary/logic/util/visitor/Visitor.h"
 #include "org/allbinary/logic/string/StringMaker.h"
+#include "org/allbinary/logic/math/permutations/IntPermutationVisitor.h"
 
-typedef struct OrderedIntArrayPermutationUtil OrderedIntArrayPermutationUtil;
-struct OrderedIntArrayPermutationUtil {
-    const char* TOTAL_ITERATIONS_TABLE;
-    const char* FINISHED;
-};
 
 static OrderedIntArrayPermutationUtil* OrderedIntArrayPermutationUtil_instance;
 
-OrderedIntArrayPermutationUtil* OrderedIntArrayPermutationUtil_new(void);
-OrderedIntArrayPermutationUtil* OrderedIntArrayPermutationUtil_getInstance(void);
 
-void OrderedIntArrayPermutationUtil_init(OrderedIntArrayPermutationUtil* this);
-void OrderedIntArrayPermutationUtil_getNext(OrderedIntArrayPermutationUtil* this, int32_t* data);
-void OrderedIntArrayPermutationUtil_swap(OrderedIntArrayPermutationUtil* this, int32_t* data, int32_t a, int32_t b);
-int64_t OrderedIntArrayPermutationUtil_factorial(OrderedIntArrayPermutationUtil* this, int32_t dataLength);
-void OrderedIntArrayPermutationUtil_generate(OrderedIntArrayPermutationUtil* this, int32_t* data, Visitor* visitor);
-void OrderedIntArrayPermutationUtil_main(const char** args);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+
 void OrderedIntArrayPermutationUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     OrderedIntArrayPermutationUtil_instance = OrderedIntArrayPermutationUtil_new();
+}
+
+void OrderedIntArrayPermutationUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("OrderedIntArrayPermutationUtil", nullptr);
+    java_register_method("OrderedIntArrayPermutationUtil", "getNext", (void*) OrderedIntArrayPermutationUtil_getNext);
+    java_register_method("OrderedIntArrayPermutationUtil", "swap", (void*) OrderedIntArrayPermutationUtil_swap);
+    java_register_method("OrderedIntArrayPermutationUtil", "factorial", (void*) OrderedIntArrayPermutationUtil_factorial);
+    java_register_method("OrderedIntArrayPermutationUtil", "generate", (void*) OrderedIntArrayPermutationUtil_generate);
 }
 
 static void OrderedIntArrayPermutationUtil_initFields(OrderedIntArrayPermutationUtil* this) {
@@ -56,16 +43,17 @@ static void OrderedIntArrayPermutationUtil_initFields(OrderedIntArrayPermutation
 
 
 OrderedIntArrayPermutationUtil* OrderedIntArrayPermutationUtil_getInstance(void) {
-        return OrderedIntArrayPermutationUtil_instance;
+        return (OrderedIntArrayPermutationUtil_staticInit(), OrderedIntArrayPermutationUtil_instance);
 }
 
 
 void OrderedIntArrayPermutationUtil_init(OrderedIntArrayPermutationUtil* this) {
+    OrderedIntArrayPermutationUtil_register();
     OrderedIntArrayPermutationUtil_initFields(this);
 }
 
 OrderedIntArrayPermutationUtil* OrderedIntArrayPermutationUtil_new(void) {
-    OrderedIntArrayPermutationUtil* this = calloc(1, sizeof(OrderedIntArrayPermutationUtil));
+    OrderedIntArrayPermutationUtil* this = java_object_alloc(sizeof(OrderedIntArrayPermutationUtil), "OrderedIntArrayPermutationUtil");
     OrderedIntArrayPermutationUtil_init(this);
     return this;
 }

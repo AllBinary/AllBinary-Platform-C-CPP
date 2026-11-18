@@ -1,58 +1,44 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.input
+#include "org/allbinary/game/input/GameKeyUtil.h"
+#include "javax/microedition/lcdui/Canvas.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Canvas.h"
-
-typedef struct GameKeyUtil GameKeyUtil;
-struct GameKeyUtil {
-    char unused;
-};
 
 static GameKeyUtil* GameKeyUtil_instance;
 
-GameKeyUtil* GameKeyUtil_new(void);
-bool GameKeyUtil_isDirectionKey(GameKeyUtil* this, int32_t key);
-GameKeyUtil* GameKeyUtil_getInstance(void);
 
-// Static fields with runtime initializers: call this once at startup
+
 void GameKeyUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     GameKeyUtil_instance = GameKeyUtil_new();
 }
 
+void GameKeyUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GameKeyUtil", nullptr);
+    java_register_method("GameKeyUtil", "isDirectionKey", (void*) GameKeyUtil_isDirectionKey);
+}
+
 void GameKeyUtil_init(GameKeyUtil* this) {
+    GameKeyUtil_register();
 }
 
 GameKeyUtil* GameKeyUtil_new(void) {
-    GameKeyUtil* this = calloc(1, sizeof(GameKeyUtil));
+    GameKeyUtil* this = java_object_alloc(sizeof(GameKeyUtil), "GameKeyUtil");
     GameKeyUtil_init(this);
     return this;
 }
 
 
 bool GameKeyUtil_isDirectionKey(GameKeyUtil* this, int32_t key) {
-        if (key == Canvas_UP || key == Canvas_DOWN || key == Canvas_LEFT || key == Canvas_RIGHT) {
+        if (key == (Canvas_staticInit(), Canvas_UP) || key == (Canvas_staticInit(), Canvas_DOWN) || key == (Canvas_staticInit(), Canvas_LEFT) || key == (Canvas_staticInit(), Canvas_RIGHT)) {
             return true;
         } else {
             return false;
@@ -61,6 +47,6 @@ bool GameKeyUtil_isDirectionKey(GameKeyUtil* this, int32_t key) {
 
 
 GameKeyUtil* GameKeyUtil_getInstance(void) {
-        return GameKeyUtil_instance;
+        return (GameKeyUtil_staticInit(), GameKeyUtil_instance);
 }
 

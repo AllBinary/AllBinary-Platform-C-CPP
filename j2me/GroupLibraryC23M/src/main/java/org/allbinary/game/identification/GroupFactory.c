@@ -1,53 +1,44 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.identification
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/identification/GroupFactory.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/logic/string/StringUtil.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
+#include "org/allbinary/game/identification/Group.h"
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
 
-typedef struct GroupFactory GroupFactory;
-struct GroupFactory {
-    LogUtil* logUtil;
-    Group** NULL_GROUP_ARRAY;
-    BasicArrayList* list;
-    int32_t index;
-};
 
 static GroupFactory* GroupFactory_instance;
 
-GroupFactory* GroupFactory_new(void);
-GroupFactory* GroupFactory_getInstance(void);
-Group* GroupFactory_getNextGroup(GroupFactory* this);
-Group* GroupFactory_getNextGroupByName(GroupFactory* this, const char* name);
-void GroupFactory_init(GroupFactory* this, int16_t groups, const char** nameArray);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
 void GroupFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     GroupFactory_instance = GroupFactory_new();
+}
+
+void GroupFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GroupFactory", nullptr);
+    java_register_method("GroupFactory", "getNextGroup", (void*) GroupFactory_getNextGroup);
+    java_register_method("GroupFactory", "getNextGroupByName", (void*) GroupFactory_getNextGroupByName);
+    java_register_method("GroupFactory", "init", (void*) GroupFactory_initMethod);
 }
 
 static void GroupFactory_initFields(GroupFactory* this) {
@@ -58,18 +49,19 @@ static void GroupFactory_initFields(GroupFactory* this) {
 }
 
 void GroupFactory_init(GroupFactory* this) {
+    GroupFactory_register();
     GroupFactory_initFields(this);
 }
 
 GroupFactory* GroupFactory_new(void) {
-    GroupFactory* this = calloc(1, sizeof(GroupFactory));
+    GroupFactory* this = java_object_alloc(sizeof(GroupFactory), "GroupFactory");
     GroupFactory_init(this);
     return this;
 }
 
 
 GroupFactory* GroupFactory_getInstance(void) {
-        return GroupFactory_instance;
+        return (GroupFactory_staticInit(), GroupFactory_instance);
 }
 
 
@@ -87,7 +79,7 @@ Group* GroupFactory_getNextGroupByName(GroupFactory* this, const char* name) {
 }
 
 
-void GroupFactory_init(GroupFactory* this, int16_t groups, const char** nameArray) {
+void GroupFactory_initMethod(GroupFactory* this, int16_t groups, const char** nameArray) {
         StringMaker* stringMaker = StringMaker_new();
         StringUtil* stringUtil = StringUtil_getInstance();
         const char* TEAM = "Team ";
@@ -101,7 +93,7 @@ void GroupFactory_init(GroupFactory* this, int16_t groups, const char** nameArra
                 name = nameArray[size];
             } else {
                 StringMaker_delete(stringMaker, 0, StringMaker_length(stringMaker));
-                name = JAVA_CALL(JAVA_CALL(StringMaker_append(stringMaker, TEAM), appendint, size), toString);
+                name = java_string_of(StringMaker_appendint(StringMaker_append(stringMaker, TEAM), size));
             }
             BasicArrayList_add(this->list, Group_new(name, ((int16_t) (size + 3))));
             size++;

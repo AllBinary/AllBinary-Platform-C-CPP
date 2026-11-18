@@ -1,48 +1,34 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.io
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "java/io/DataInputStream.h"
-// #include "java/io/InputStream.h"
-
-typedef struct AbDataInputStream AbDataInputStream;
-struct AbDataInputStream {
-    DataInputStream base;
-};
+#include "org/allbinary/logic/io/AbDataInputStream.h"
 
 
-AbDataInputStream* AbDataInputStream_new(InputStream* out);
 
-void AbDataInputStream_init(AbDataInputStream* this, InputStream* out);
+
+void AbDataInputStream_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void AbDataInputStream_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("AbDataInputStream", "DataInputStream");
+}
 
 
 void AbDataInputStream_init(AbDataInputStream* this, InputStream* out) {
+    AbDataInputStream_register();
         DataInputStream_init(&this->base, out);
 }
 
 AbDataInputStream* AbDataInputStream_new(InputStream* out) {
-    AbDataInputStream* this = calloc(1, sizeof(AbDataInputStream));
+    AbDataInputStream* this = java_object_alloc(sizeof(AbDataInputStream), "AbDataInputStream");
     AbDataInputStream_init(this, out);
     return this;
 }

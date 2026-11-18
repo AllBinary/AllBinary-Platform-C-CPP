@@ -1,47 +1,41 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.configuration.event
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/configuration/event/GameInitializedEvent.h"
 #include "org/allbinary/game/resource/ResourceLoadingLevel.h"
 #include "org/allbinary/game/resource/ResourceLoadingLevelFactory.h"
-#include "org/allbinary/logic/util/event/AllBinaryEventObject.h"
-
-typedef struct GameInitializedEvent GameInitializedEvent;
-struct GameInitializedEvent {
-    AllBinaryEventObject base;
-    ResourceLoadingLevel* resourceLoadingLevel;
-    int32_t level;
-};
+#if __has_include("org/allbinary/game/resource/ResourceLoadingLevelFactory.h")
+#include "org/allbinary/game/resource/ResourceLoadingLevelFactory.h"
+#endif
+#if __has_include("org/allbinary/game/resource/ResourceLoadingLevelFactory.h")
+#include "org/allbinary/game/resource/ResourceLoadingLevelFactory.h"
+#endif
 
 
-GameInitializedEvent* GameInitializedEvent_new(Any* anyType);
 
-void GameInitializedEvent_init(GameInitializedEvent* this, Any* anyType);
-void GameInitializedEvent_setLevel(GameInitializedEvent* this, int32_t level);
-int32_t GameInitializedEvent_getLevel(GameInitializedEvent* this);
-void GameInitializedEvent_setResourceLoadingLevel(GameInitializedEvent* this, ResourceLoadingLevel* resourceLoadingLevel);
-ResourceLoadingLevel* GameInitializedEvent_getResourceLoadingLevel(GameInitializedEvent* this);
+
+
+
+
+
+void GameInitializedEvent_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void GameInitializedEvent_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GameInitializedEvent", "AllBinaryEventObject");
+    java_register_method("GameInitializedEvent", "setLevel", (void*) GameInitializedEvent_setLevel);
+    java_register_method("GameInitializedEvent", "getLevel", (void*) GameInitializedEvent_getLevel);
+    java_register_method("GameInitializedEvent", "setResourceLoadingLevel", (void*) GameInitializedEvent_setResourceLoadingLevel);
+    java_register_method("GameInitializedEvent", "getResourceLoadingLevel", (void*) GameInitializedEvent_getResourceLoadingLevel);
+}
 
 static void GameInitializedEvent_initFields(GameInitializedEvent* this) {
     this->resourceLoadingLevel = ResourceLoadingLevelFactory_getInstance()->LEVEL;
@@ -49,13 +43,14 @@ static void GameInitializedEvent_initFields(GameInitializedEvent* this) {
 }
 
 
-void GameInitializedEvent_init(GameInitializedEvent* this, Any* anyType) {
+void GameInitializedEvent_init(GameInitializedEvent* this, void* anyType) {
+    GameInitializedEvent_register();
         AllBinaryEventObject_init(&this->base, anyType);
         GameInitializedEvent_initFields(this);
 }
 
-GameInitializedEvent* GameInitializedEvent_new(Any* anyType) {
-    GameInitializedEvent* this = calloc(1, sizeof(GameInitializedEvent));
+GameInitializedEvent* GameInitializedEvent_new(void* anyType) {
+    GameInitializedEvent* this = java_object_alloc(sizeof(GameInitializedEvent), "GameInitializedEvent");
     GameInitializedEvent_init(this, anyType);
     return this;
 }

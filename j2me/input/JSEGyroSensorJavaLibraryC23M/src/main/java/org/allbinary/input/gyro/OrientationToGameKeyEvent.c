@@ -1,46 +1,45 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input.gyro
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/input/gyro/OrientationToGameKeyEvent.h"
 #include "org/allbinary/game/configuration/feature/Features.h"
 #include "org/allbinary/game/configuration/feature/SensorFeatureFactory.h"
 #include "org/allbinary/logic/math/Orientation.h"
+#include "org/allbinary/input/gyro/AllBinaryOrientationSensor.h"
+#include "org/allbinary/input/gyro/NoGyroSensor.h"
+#if __has_include("org/allbinary/game/configuration/feature/Features.h")
+#include "org/allbinary/game/configuration/feature/Features.h"
+#endif
+#if __has_include("org/allbinary/game/configuration/feature/SensorFeatureFactory.h")
+#include "org/allbinary/game/configuration/feature/SensorFeatureFactory.h"
+#endif
 
-typedef struct OrientationToGameKeyEvent OrientationToGameKeyEvent;
-struct OrientationToGameKeyEvent {
-    AllBinaryOrientationSensor* allBinaryGyroSensor;
-    int32_t MIN;
-};
 
 
-OrientationToGameKeyEvent* OrientationToGameKeyEvent_new(void);
 
-void OrientationToGameKeyEvent_init(OrientationToGameKeyEvent* this);
-void OrientationToGameKeyEvent_setAllBinaryGyroSensor(OrientationToGameKeyEvent* this, AllBinaryOrientationSensor* allBinaryGyroSensor);
-AllBinaryOrientationSensor* OrientationToGameKeyEvent_getAllBinaryGyroSensor(OrientationToGameKeyEvent* this);
-void OrientationToGameKeyEvent_process(OrientationToGameKeyEvent* this);
+
+
+
 static void OrientationToGameKeyEvent_updateGameKeyEvents(OrientationToGameKeyEvent* this, Orientation* orientation, int32_t yaw, int32_t pitch, int32_t roll);
+
+void OrientationToGameKeyEvent_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void OrientationToGameKeyEvent_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("OrientationToGameKeyEvent", nullptr);
+    java_register_method("OrientationToGameKeyEvent", "setAllBinaryGyroSensor", (void*) OrientationToGameKeyEvent_setAllBinaryGyroSensor);
+    java_register_method("OrientationToGameKeyEvent", "getAllBinaryGyroSensor", (void*) OrientationToGameKeyEvent_getAllBinaryGyroSensor);
+    java_register_method("OrientationToGameKeyEvent", "process", (void*) OrientationToGameKeyEvent_process);
+    java_register_method("OrientationToGameKeyEvent", "updateGameKeyEvents", (void*) OrientationToGameKeyEvent_updateGameKeyEvents);
+}
 
 static void OrientationToGameKeyEvent_initFields(OrientationToGameKeyEvent* this) {
     this->allBinaryGyroSensor = nullptr;
@@ -49,6 +48,7 @@ static void OrientationToGameKeyEvent_initFields(OrientationToGameKeyEvent* this
 
 
 void OrientationToGameKeyEvent_init(OrientationToGameKeyEvent* this) {
+    OrientationToGameKeyEvent_register();
     OrientationToGameKeyEvent_initFields(this);
         if (Features_isFeature(Features_getInstance(), SensorFeatureFactory_getInstance()->NO_ORIENTATION)) {
             this->allBinaryGyroSensor = NoGyroSensor_new();
@@ -58,7 +58,7 @@ void OrientationToGameKeyEvent_init(OrientationToGameKeyEvent* this) {
 }
 
 OrientationToGameKeyEvent* OrientationToGameKeyEvent_new(void) {
-    OrientationToGameKeyEvent* this = calloc(1, sizeof(OrientationToGameKeyEvent));
+    OrientationToGameKeyEvent* this = java_object_alloc(sizeof(OrientationToGameKeyEvent), "OrientationToGameKeyEvent");
     OrientationToGameKeyEvent_init(this);
     return this;
 }

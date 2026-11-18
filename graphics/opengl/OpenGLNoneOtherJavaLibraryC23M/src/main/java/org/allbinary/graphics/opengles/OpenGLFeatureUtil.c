@@ -1,58 +1,43 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.opengles
+#include "org/allbinary/graphics/opengles/OpenGLFeatureUtil.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct OpenGLFeatureUtil OpenGLFeatureUtil;
-struct OpenGLFeatureUtil {
-    char unused;
-};
 
 static OpenGLFeatureUtil* OpenGLFeatureUtil_instance;
 
-OpenGLFeatureUtil* OpenGLFeatureUtil_new(void);
-OpenGLFeatureUtil* OpenGLFeatureUtil_getInstance(void);
 
-void OpenGLFeatureUtil_init(OpenGLFeatureUtil* this);
-bool OpenGLFeatureUtil_isAnyThreed(OpenGLFeatureUtil* this);
 
-// Static fields with runtime initializers: call this once at startup
+
 void OpenGLFeatureUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     OpenGLFeatureUtil_instance = OpenGLFeatureUtil_new();
+}
+
+void OpenGLFeatureUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("OpenGLFeatureUtil", nullptr);
+    java_register_method("OpenGLFeatureUtil", "isAnyThreed", (void*) OpenGLFeatureUtil_isAnyThreed);
 }
 
 
 OpenGLFeatureUtil* OpenGLFeatureUtil_getInstance(void) {
-        return OpenGLFeatureUtil_instance;
+        return (OpenGLFeatureUtil_staticInit(), OpenGLFeatureUtil_instance);
 }
 
 
 void OpenGLFeatureUtil_init(OpenGLFeatureUtil* this) {
+    OpenGLFeatureUtil_register();
 }
 
 OpenGLFeatureUtil* OpenGLFeatureUtil_new(void) {
-    OpenGLFeatureUtil* this = calloc(1, sizeof(OpenGLFeatureUtil));
+    OpenGLFeatureUtil* this = java_object_alloc(sizeof(OpenGLFeatureUtil), "OpenGLFeatureUtil");
     OpenGLFeatureUtil_init(this);
     return this;
 }

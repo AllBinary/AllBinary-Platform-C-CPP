@@ -60,6 +60,8 @@ int16_t AngleIncrementInfo_getAngleIncrement(AngleIncrementInfo* this);
 const char* AngleIncrementInfo_toString(AngleIncrementInfo* this);
 
 int32_t AngleIncrementInfo_getClosestGeneralDirection(AngleIncrementInfo* this, int16_t angle);
+#define AngleIncrementInfo_new1 AngleIncrementInfo_new
+#define AngleIncrementInfo_init1 AngleIncrementInfo_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void AngleIncrementInfo_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

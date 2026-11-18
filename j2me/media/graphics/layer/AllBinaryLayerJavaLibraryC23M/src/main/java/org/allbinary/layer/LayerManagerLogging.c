@@ -1,65 +1,165 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- * 
- */
 // Generated Code Do Not Modify
-// package org.allbinary.layer
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/layer/LayerManagerLogging.h"
 #include "org/allbinary/TsUtil.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/logic/string/StringUtil.h"
 #include "org/allbinary/string/CommonSeps.h"
 #include "org/allbinary/layer/LayerManagerLoggingBase.h"
+#include "org/allbinary/layer/AllBinaryLayer.h"
+#include "org/allbinary/layer/LayerManager.h"
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/TsUtil.h")
+#include "org/allbinary/TsUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/TsUtil.h")
+#include "org/allbinary/TsUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/TsUtil.h")
+#include "org/allbinary/TsUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/TsUtil.h")
+#include "org/allbinary/TsUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/TsUtil.h")
+#include "org/allbinary/TsUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/TsUtil.h")
+#include "org/allbinary/TsUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/TsUtil.h")
+#include "org/allbinary/TsUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/TsUtil.h")
+#include "org/allbinary/TsUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/TsUtil.h")
+#include "org/allbinary/TsUtil.h"
+#endif
 
-typedef struct LayerManagerLogging LayerManagerLogging;
-struct LayerManagerLogging {
-    LayerManagerLoggingBase base;
-    LogUtil* logUtil;
-    StringMaker* stringBuilder;
-    const char* APPEND;
-    const char* APPEND_;
-    const char* _AT_;
-    const char* ATTEMPT_REMOVE_;
-    const char* REMOVE_;
-    const char* REMOVE;
-    const char* DID_NOT_REMOVE;
-    const char* CLEAR;
-};
 
 static LayerManagerLogging* LayerManagerLogging_instance;
 static bool LayerManagerLogging_removeFailed = false;
 
-LayerManagerLogging* LayerManagerLogging_new(void);
-LayerManagerLogging* LayerManagerLogging_getInstance(void);
-void LayerManagerLogging_append(LayerManagerLogging* this, AllBinaryLayer* layerInterface);
-void LayerManagerLogging_appendAt(LayerManagerLogging* this, AllBinaryLayer* layerInterface, int32_t index);
-void LayerManagerLogging_remove(LayerManagerLogging* this, AllBinaryLayer* layerInterface);
-void LayerManagerLogging_removeResult(LayerManagerLogging* this, LayerManager* layerManager, AllBinaryLayer* layerInterface, bool result);
-static void LayerManagerLogging_log(LayerManagerLogging* this, LayerManager* layerManager);
-void LayerManagerLogging_clear(LayerManagerLogging* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+static void LayerManagerLogging_log(LayerManagerLogging* this, LayerManager* layerManager);
+
+
 void LayerManagerLogging_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     LayerManagerLogging_instance = LayerManagerLogging_new();
+}
+
+void LayerManagerLogging_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("LayerManagerLogging", "LayerManagerLoggingBase");
+    java_register_method("LayerManagerLogging", "append", (void*) LayerManagerLogging_append);
+    java_register_method("LayerManagerLogging", "appendAt", (void*) LayerManagerLogging_appendAt);
+    java_register_method("LayerManagerLogging", "remove", (void*) LayerManagerLogging_remove);
+    java_register_method("LayerManagerLogging", "removeResult", (void*) LayerManagerLogging_removeResult);
+    java_register_method("LayerManagerLogging", "log", (void*) LayerManagerLogging_log);
+    java_register_method("LayerManagerLogging", "clear", (void*) LayerManagerLogging_clear);
 }
 
 static void LayerManagerLogging_initFields(LayerManagerLogging* this) {
@@ -67,7 +167,7 @@ static void LayerManagerLogging_initFields(LayerManagerLogging* this) {
     this->stringBuilder = StringMaker_new();
     this->APPEND = "append";
     this->APPEND_ = " append: ";
-    this->_AT_ = " at: ";
+    this->_AT__ = " at: ";
     this->ATTEMPT_REMOVE_ = " Remove Attempt: ";
     this->REMOVE_ = " Remove: ";
     this->REMOVE = "remove";
@@ -76,42 +176,43 @@ static void LayerManagerLogging_initFields(LayerManagerLogging* this) {
 }
 
 void LayerManagerLogging_init(LayerManagerLogging* this) {
+    LayerManagerLogging_register();
     LayerManagerLoggingBase_init(&this->base);
     LayerManagerLogging_initFields(this);
 }
 
 LayerManagerLogging* LayerManagerLogging_new(void) {
-    LayerManagerLogging* this = calloc(1, sizeof(LayerManagerLogging));
+    LayerManagerLogging* this = java_object_alloc(sizeof(LayerManagerLogging), "LayerManagerLogging");
     LayerManagerLogging_init(this);
     return this;
 }
 
 
 LayerManagerLogging* LayerManagerLogging_getInstance(void) {
-        return LayerManagerLogging_instance;
+        return (LayerManagerLogging_staticInit(), LayerManagerLogging_instance);
 }
 
 
 // throws Exception
 void LayerManagerLogging_append(LayerManagerLogging* this, AllBinaryLayer* layerInterface) {
         StringMaker_delete(this->stringBuilder, 0, StringMaker_length(this->stringBuilder));
-        LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_appendint(this->stringBuilder, ((int32_t) TsUtil_hashCode(TsUtil_getInstance(), this))), append, this->APPEND_), append, AllBinaryLayer_getName(layerInterface)), toString), this, this->APPEND);
+        LogUtil_putF(this->logUtil, java_string_of(StringMaker_append(StringMaker_append(StringMaker_appendint(this->stringBuilder, TsUtil_hashCode(TsUtil_getInstance(), this)), this->APPEND_), AllBinaryLayer_getName(layerInterface))), this, this->APPEND);
 }
 
 
 void LayerManagerLogging_appendAt(LayerManagerLogging* this, AllBinaryLayer* layerInterface, int32_t index) {
         StringMaker_delete(this->stringBuilder, 0, StringMaker_length(this->stringBuilder));
-        LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_appendint(this->stringBuilder, ((int32_t) TsUtil_hashCode(TsUtil_getInstance(), this))), append, this->APPEND_), append, AllBinaryLayer_getName(layerInterface)), append, this->_AT_), appendint, index), toString), this, this->APPEND);
+        LogUtil_putF(this->logUtil, java_string_of(StringMaker_appendint(StringMaker_append(StringMaker_append(StringMaker_append(StringMaker_appendint(this->stringBuilder, TsUtil_hashCode(TsUtil_getInstance(), this)), this->APPEND_), AllBinaryLayer_getName(layerInterface)), this->_AT__), index)), this, this->APPEND);
 }
 
 
 void LayerManagerLogging_remove(LayerManagerLogging* this, AllBinaryLayer* layerInterface) {
         if (layerInterface == nullptr) {
             StringMaker_delete(this->stringBuilder, 0, StringMaker_length(this->stringBuilder));
-            LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_appendint(this->stringBuilder, ((int32_t) TsUtil_hashCode(TsUtil_getInstance(), this))), append, this->ATTEMPT_REMOVE_), append, StringUtil_toString(StringUtil_getInstance(), layerInterface)), toString), this, this->REMOVE);
+            LogUtil_putF(this->logUtil, java_string_of(StringMaker_append(StringMaker_append(StringMaker_appendint(this->stringBuilder, TsUtil_hashCode(TsUtil_getInstance(), this)), this->ATTEMPT_REMOVE_), StringUtil_toString(StringUtil_getInstance(), layerInterface))), this, this->REMOVE);
         } else {
             StringMaker_delete(this->stringBuilder, 0, StringMaker_length(this->stringBuilder));
-            LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_appendint(this->stringBuilder, ((int32_t) TsUtil_hashCode(TsUtil_getInstance(), this))), append, this->ATTEMPT_REMOVE_), append, AllBinaryLayer_getName(layerInterface)), toString), this, this->REMOVE);
+            LogUtil_putF(this->logUtil, java_string_of(StringMaker_append(StringMaker_append(StringMaker_appendint(this->stringBuilder, TsUtil_hashCode(TsUtil_getInstance(), this)), this->ATTEMPT_REMOVE_), AllBinaryLayer_getName(layerInterface))), this, this->REMOVE);
         }
 }
 
@@ -119,15 +220,15 @@ void LayerManagerLogging_remove(LayerManagerLogging* this, AllBinaryLayer* layer
 void LayerManagerLogging_removeResult(LayerManagerLogging* this, LayerManager* layerManager, AllBinaryLayer* layerInterface, bool result) {
         if (layerInterface == nullptr) {
             StringMaker_delete(this->stringBuilder, 0, StringMaker_length(this->stringBuilder));
-            LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_appendint(this->stringBuilder, ((int32_t) TsUtil_hashCode(TsUtil_getInstance(), this))), append, this->REMOVE_), append, StringUtil_toString(StringUtil_getInstance(), layerInterface)), toString), this, this->REMOVE);
+            LogUtil_putF(this->logUtil, java_string_of(StringMaker_append(StringMaker_append(StringMaker_appendint(this->stringBuilder, TsUtil_hashCode(TsUtil_getInstance(), this)), this->REMOVE_), StringUtil_toString(StringUtil_getInstance(), layerInterface))), this, this->REMOVE);
         } else if (result) {
             if (LayerManagerLogging_removeFailed) {
                 StringMaker_delete(this->stringBuilder, 0, StringMaker_length(this->stringBuilder));
-                LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_appendint(this->stringBuilder, ((int32_t) TsUtil_hashCode(TsUtil_getInstance(), this))), append, this->REMOVE_), append, AllBinaryLayer_getName(layerInterface)), toString), this, this->REMOVE);
+                LogUtil_putF(this->logUtil, java_string_of(StringMaker_append(StringMaker_append(StringMaker_appendint(this->stringBuilder, TsUtil_hashCode(TsUtil_getInstance(), this)), this->REMOVE_), AllBinaryLayer_getName(layerInterface))), this, this->REMOVE);
             }
         } else {
             StringMaker_delete(this->stringBuilder, 0, StringMaker_length(this->stringBuilder));
-            LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_appendint(this->stringBuilder, ((int32_t) TsUtil_hashCode(TsUtil_getInstance(), this))), append, this->DID_NOT_REMOVE), append, AllBinaryLayer_getName(layerInterface)), toString), this, this->REMOVE);
+            LogUtil_putF(this->logUtil, java_string_of(StringMaker_append(StringMaker_append(StringMaker_appendint(this->stringBuilder, TsUtil_hashCode(TsUtil_getInstance(), this)), this->DID_NOT_REMOVE), AllBinaryLayer_getName(layerInterface))), this, this->REMOVE);
             LayerManagerLogging_removeFailed = true;
         }
 }
@@ -137,19 +238,19 @@ static void LayerManagerLogging_log(LayerManagerLogging* this, LayerManager* lay
         StringMaker_delete(this->stringBuilder, 0, StringMaker_length(this->stringBuilder));
         int32_t size = LayerManager_getSize(layerManager);
         CommonSeps* commonSeps = CommonSeps_getInstance();
-        JAVA_CALL(StringMaker_append(this->stringBuilder, Integer_toHexString(TsUtil_hashCode(TsUtil_getInstance(), layerManager))), append, commonSeps->COLON_SEP);
-        JAVA_CALL(StringMaker_appendint(this->stringBuilder, size), append, commonSeps->COLON_SEP);
+        StringMaker_append(StringMaker_append(this->stringBuilder, Integer_toHexString(TsUtil_hashCode(TsUtil_getInstance(), layerManager))), commonSeps->COLON_SEP);
+        StringMaker_append(StringMaker_appendint(this->stringBuilder, size), commonSeps->COLON_SEP);
         AllBinaryLayer* allBinaryLayer = nullptr;
         for (int32_t index = 0; index < size; index++) {
             allBinaryLayer = (((AllBinaryLayer*) LayerManager_getLayerAt(layerManager, index)));
-            JAVA_CALL(StringMaker_append(this->stringBuilder, AllBinaryLayer_getName(allBinaryLayer)), append, commonSeps->COMMA);
+            StringMaker_append(StringMaker_append(this->stringBuilder, AllBinaryLayer_getName(allBinaryLayer)), commonSeps->COMMA);
         }
-        LogUtil_putF(this->logUtil, StringMaker_toString(this->stringBuilder), this, this->REMOVE);
+        LogUtil_putF(this->logUtil, java_string_of(this->stringBuilder), this, this->REMOVE);
 }
 
 
 void LayerManagerLogging_clear(LayerManagerLogging* this) {
         StringMaker_delete(this->stringBuilder, 0, StringMaker_length(this->stringBuilder));
-        LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(StringMaker_appendint(this->stringBuilder, ((int32_t) TsUtil_hashCode(TsUtil_getInstance(), this))), append, this->CLEAR), toString), this, this->CLEAR);
+        LogUtil_putF(this->logUtil, java_string_of(StringMaker_append(StringMaker_appendint(this->stringBuilder, TsUtil_hashCode(TsUtil_getInstance(), this)), this->CLEAR)), this, this->CLEAR);
 }
 

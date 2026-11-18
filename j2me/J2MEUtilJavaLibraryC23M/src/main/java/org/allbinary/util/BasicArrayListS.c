@@ -3,6 +3,15 @@
 #include "org/allbinary/logic/NullUtil.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/util/BasicArrayList.h"
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
 
 
 

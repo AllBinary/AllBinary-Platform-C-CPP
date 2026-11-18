@@ -1,59 +1,47 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2025 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.math
+#include "org/allbinary/logic/math/J2SEMath.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct J2SEMath J2SEMath;
-struct J2SEMath {
-    char unused;
-};
 
 static J2SEMath* J2SEMath_instance;
 
-J2SEMath* J2SEMath_new(void);
-J2SEMath* J2SEMath_getInstance(void);
-int32_t J2SEMath_round(J2SEMath* this, float value);
-float J2SEMath_abs(J2SEMath* this, float value);
-double J2SEMath_absdouble(J2SEMath* this, double value);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
 void J2SEMath_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     J2SEMath_instance = J2SEMath_new();
 }
 
+void J2SEMath_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("J2SEMath", nullptr);
+    java_register_method("J2SEMath", "round", (void*) J2SEMath_round);
+    java_register_method("J2SEMath", "abs", (void*) J2SEMath_abs);
+    java_register_method("J2SEMath", "absdouble", (void*) J2SEMath_absdouble);
+}
+
 void J2SEMath_init(J2SEMath* this) {
+    J2SEMath_register();
 }
 
 J2SEMath* J2SEMath_new(void) {
-    J2SEMath* this = calloc(1, sizeof(J2SEMath));
+    J2SEMath* this = java_object_alloc(sizeof(J2SEMath), "J2SEMath");
     J2SEMath_init(this);
     return this;
 }
 
 
 J2SEMath* J2SEMath_getInstance(void) {
-        return J2SEMath_instance;
+        return (J2SEMath_staticInit(), J2SEMath_instance);
 }
 
 

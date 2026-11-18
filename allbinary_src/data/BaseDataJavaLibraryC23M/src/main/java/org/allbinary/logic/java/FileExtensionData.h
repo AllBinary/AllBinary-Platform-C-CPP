@@ -38,6 +38,8 @@ FileExtensionData* FileExtensionData_new(void);
 FileExtensionData* FileExtensionData_getInstance(void);
 
 void FileExtensionData_init(FileExtensionData* this);
+#define FileExtensionData_new0 FileExtensionData_new
+#define FileExtensionData_init0 FileExtensionData_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void FileExtensionData_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

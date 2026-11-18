@@ -1,32 +1,36 @@
 // Generated Code Do Not Modify
-// package org.allbinary.game.collision
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/collision/CollisionThreedProcessor.h"
 #include "org/allbinary/layer/AllBinaryLayer.h"
 #include "org/allbinary/game/collision/CollisionProcessor.h"
 
-typedef struct CollisionThreedProcessor CollisionThreedProcessor;
-struct CollisionThreedProcessor {
-    CollisionProcessor base;
-};
 
 
-CollisionThreedProcessor* CollisionThreedProcessor_new(void);
-bool CollisionThreedProcessor_isCollision(CollisionThreedProcessor* this, AllBinaryLayer* myLayer, AllBinaryLayer* myLayer2);
+
+void CollisionThreedProcessor_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void CollisionThreedProcessor_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("CollisionThreedProcessor", "CollisionProcessor");
+    java_register_method("CollisionThreedProcessor", "isCollision", (void*) CollisionThreedProcessor_isCollision);
+}
 
 void CollisionThreedProcessor_init(CollisionThreedProcessor* this) {
+    CollisionThreedProcessor_register();
     CollisionProcessor_init(&this->base);
 }
 
 CollisionThreedProcessor* CollisionThreedProcessor_new(void) {
-    CollisionThreedProcessor* this = calloc(1, sizeof(CollisionThreedProcessor));
+    CollisionThreedProcessor* this = java_object_alloc(sizeof(CollisionThreedProcessor), "CollisionThreedProcessor");
     CollisionThreedProcessor_init(this);
     return this;
 }

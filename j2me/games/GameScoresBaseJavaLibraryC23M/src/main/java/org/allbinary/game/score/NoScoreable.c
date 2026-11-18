@@ -1,61 +1,47 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.score
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/score/NoScoreable.h"
 #include "org/allbinary/game/score/Scoreable.h"
 
-typedef struct NoScoreable NoScoreable;
-struct NoScoreable {
-    Scoreable base;
-};
 
 static NoScoreable* NoScoreable_SINGLETON;
 
-NoScoreable* NoScoreable_new(void);
-NoScoreable* NoScoreable_getInstance(void);
 
-void NoScoreable_init(NoScoreable* this);
-void NoScoreable_addPoints(NoScoreable* this, int32_t points);
-void NoScoreable_removePoints(NoScoreable* this, int32_t points);
 
-// Static fields with runtime initializers: call this once at startup
+
+
 void NoScoreable_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     NoScoreable_SINGLETON = NoScoreable_new();
+}
+
+void NoScoreable_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("NoScoreable", "Scoreable");
+    java_register_method("NoScoreable", "addPoints", (void*) NoScoreable_addPoints);
+    java_register_method("NoScoreable", "removePoints", (void*) NoScoreable_removePoints);
 }
 
 
 NoScoreable* NoScoreable_getInstance(void) {
-        return NoScoreable_SINGLETON;
+        return (NoScoreable_staticInit(), NoScoreable_SINGLETON);
 }
 
 
 void NoScoreable_init(NoScoreable* this) {
+    NoScoreable_register();
         Scoreable_init(&this->base, 0);
 }
 
 NoScoreable* NoScoreable_new(void) {
-    NoScoreable* this = calloc(1, sizeof(NoScoreable));
+    NoScoreable* this = java_object_alloc(sizeof(NoScoreable), "NoScoreable");
     NoScoreable_init(this);
     return this;
 }

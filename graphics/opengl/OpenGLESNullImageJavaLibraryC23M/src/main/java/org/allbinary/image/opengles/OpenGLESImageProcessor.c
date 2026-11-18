@@ -1,61 +1,50 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2022 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.image.opengles
+#include "org/allbinary/image/opengles/OpenGLESImageProcessor.h"
+#include "javax/microedition/khronos/opengles/GL10.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/khronos/opengles/GL10.h"
-
-typedef struct OpenGLESImageProcessor OpenGLESImageProcessor;
-struct OpenGLESImageProcessor {
-    char unused;
-};
 
 static OpenGLESImageProcessor* OpenGLESImageProcessor_instance;
 
-OpenGLESImageProcessor* OpenGLESImageProcessor_new(void);
-OpenGLESImageProcessor* OpenGLESImageProcessor_getInstance(void);
-void OpenGLESImageProcessor_translate(OpenGLESImageProcessor* this, GL10* gl, float translateX, float translateY);
-void OpenGLESImageProcessor_rotate(OpenGLESImageProcessor* this, GL10* gl, float angle);
-void OpenGLESImageProcessor_scale(OpenGLESImageProcessor* this, GL10* gl, float scaleX, float scaleY);
-void OpenGLESImageProcessor_colorMask(OpenGLESImageProcessor* this, GL10* gl, float red, float green, float blue, float alpha);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
 void OpenGLESImageProcessor_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     OpenGLESImageProcessor_instance = OpenGLESImageProcessor_new();
 }
 
+void OpenGLESImageProcessor_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("OpenGLESImageProcessor", nullptr);
+    java_register_method("OpenGLESImageProcessor", "translate", (void*) OpenGLESImageProcessor_translate);
+    java_register_method("OpenGLESImageProcessor", "rotate", (void*) OpenGLESImageProcessor_rotate);
+    java_register_method("OpenGLESImageProcessor", "scale", (void*) OpenGLESImageProcessor_scale);
+    java_register_method("OpenGLESImageProcessor", "colorMask", (void*) OpenGLESImageProcessor_colorMask);
+}
+
 void OpenGLESImageProcessor_init(OpenGLESImageProcessor* this) {
+    OpenGLESImageProcessor_register();
 }
 
 OpenGLESImageProcessor* OpenGLESImageProcessor_new(void) {
-    OpenGLESImageProcessor* this = calloc(1, sizeof(OpenGLESImageProcessor));
+    OpenGLESImageProcessor* this = java_object_alloc(sizeof(OpenGLESImageProcessor), "OpenGLESImageProcessor");
     OpenGLESImageProcessor_init(this);
     return this;
 }
 
 
 OpenGLESImageProcessor* OpenGLESImageProcessor_getInstance(void) {
-        return OpenGLESImageProcessor_instance;
+        return (OpenGLESImageProcessor_staticInit(), OpenGLESImageProcessor_instance);
 }
 
 

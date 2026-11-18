@@ -1,30 +1,5 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.io
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "java/io/BufferedWriter.h"
-// #include "java/io/FileWriter.h"
+#include "org/allbinary/logic/io/BufferedWriterUtil.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/logic/io/file/AbFile.h"
 #include "org/allbinary/logic/io/file/AbFileNativeUtil.h"
@@ -32,26 +7,70 @@
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/string/CommonLabels.h"
 #include "org/allbinary/string/CommonStrings.h"
+#if __has_include("org/allbinary/logic/io/path/AbPathData.h")
+#include "org/allbinary/logic/io/path/AbPathData.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/io/path/AbPathData.h")
+#include "org/allbinary/logic/io/path/AbPathData.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
 
-typedef struct BufferedWriterUtil BufferedWriterUtil;
-struct BufferedWriterUtil {
-    LogUtil* logUtil;
-    CommonStrings* commonStrings;
-    CommonLabels* commonLabels;
-    const char* REMOVING_OLD;
-};
 
 static BufferedWriterUtil* BufferedWriterUtil_instance;
 
-BufferedWriterUtil* BufferedWriterUtil_new(void);
-BufferedWriterUtil* BufferedWriterUtil_getInstance(void);
-void BufferedWriterUtil_overwrite(BufferedWriterUtil* this, const char* path, const char* data);
-void BufferedWriterUtil_overwrite(BufferedWriterUtil* this, AbFile* abFile, const char* data);
-void BufferedWriterUtil_write(BufferedWriterUtil* this, AbFile* abFile, const char* data);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
 void BufferedWriterUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     BufferedWriterUtil_instance = BufferedWriterUtil_new();
+}
+
+void BufferedWriterUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("BufferedWriterUtil", nullptr);
+    java_register_method("BufferedWriterUtil", "overwrite", (void*) BufferedWriterUtil_overwrite3_1);
+    java_register_method("BufferedWriterUtil", "overwrite@3_1", (void*) BufferedWriterUtil_overwrite3_1);
+    java_register_method("BufferedWriterUtil", "overwrite@3_2", (void*) BufferedWriterUtil_overwrite3_2);
+    java_register_method("BufferedWriterUtil", "write", (void*) BufferedWriterUtil_write);
 }
 
 static void BufferedWriterUtil_initFields(BufferedWriterUtil* this) {
@@ -62,23 +81,24 @@ static void BufferedWriterUtil_initFields(BufferedWriterUtil* this) {
 }
 
 void BufferedWriterUtil_init(BufferedWriterUtil* this) {
+    BufferedWriterUtil_register();
     BufferedWriterUtil_initFields(this);
 }
 
 BufferedWriterUtil* BufferedWriterUtil_new(void) {
-    BufferedWriterUtil* this = calloc(1, sizeof(BufferedWriterUtil));
+    BufferedWriterUtil* this = java_object_alloc(sizeof(BufferedWriterUtil), "BufferedWriterUtil");
     BufferedWriterUtil_init(this);
     return this;
 }
 
 
 BufferedWriterUtil* BufferedWriterUtil_getInstance(void) {
-        return BufferedWriterUtil_instance;
+        return (BufferedWriterUtil_staticInit(), BufferedWriterUtil_instance);
 }
 
 
 // throws Exception
-void BufferedWriterUtil_overwrite(BufferedWriterUtil* this, const char* path, const char* data) {
+void BufferedWriterUtil_overwrite3_1(BufferedWriterUtil* this, const char* path, const char* data) {
         AbFile* abFile = AbFile_createAbFile(path);
         if (AbFile_exists(abFile)) {
             LogUtil_putF(this->logUtil, java_concat(this->REMOVING_OLD, path), this, this->commonStrings->CREATE);
@@ -89,10 +109,10 @@ void BufferedWriterUtil_overwrite(BufferedWriterUtil* this, const char* path, co
             if (AbFile_exists(abFileDirectory)) {
             } else {
                 StringMaker* stringBuilder = StringMaker_new();
-                LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_append(stringBuilder, this->commonStrings->CREATE), append, this->commonLabels->COLON_SEP), append, name), toString), this, this->commonStrings->CREATE);
+                LogUtil_putF(this->logUtil, java_string_of(StringMaker_append(StringMaker_append(StringMaker_append(stringBuilder, this->commonStrings->CREATE), this->commonLabels->COLON_SEP), name)), this, this->commonStrings->CREATE);
                 bool result = AbFile_mkdirs(abFileDirectory);
                 StringMaker_delete(stringBuilder, 0, StringMaker_length(stringBuilder));
-                LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(StringMaker_append(stringBuilder, this->commonLabels->RESULT_), appendboolean, result), toString), this, this->commonStrings->CREATE);
+                LogUtil_putF(this->logUtil, java_string_of(StringMaker_appendboolean(StringMaker_append(stringBuilder, this->commonLabels->RESULT_), result)), this, this->commonStrings->CREATE);
             }
         }
         BufferedWriterUtil_write(this, abFile, data);
@@ -101,9 +121,9 @@ void BufferedWriterUtil_overwrite(BufferedWriterUtil* this, const char* path, co
 
 // throws Exception
 // Java overloaded method: C needs a different name
-void BufferedWriterUtil_overwrite(BufferedWriterUtil* this, AbFile* abFile, const char* data) {
+void BufferedWriterUtil_overwrite3_2(BufferedWriterUtil* this, AbFile* abFile, const char* data) {
         if (AbFile_exists(abFile)) {
-            LogUtil_putF(this->logUtil, java_concat(this->REMOVING_OLD, java_string_of(AbFile_getPath(abFile))), this, this->commonStrings->CREATE);
+            LogUtil_putF(this->logUtil, java_concat(this->REMOVING_OLD, AbFile_getPath(abFile)), this, this->commonStrings->CREATE);
             AbFile_delete(abFile);
         } else {
             const char* name = AbPathData_removeNameFromPath(AbPathData_getInstance(), AbFile_getAbsolutePath(abFile));
@@ -111,10 +131,10 @@ void BufferedWriterUtil_overwrite(BufferedWriterUtil* this, AbFile* abFile, cons
             if (AbFile_exists(abFileDirectory)) {
             } else {
                 StringMaker* stringBuilder = StringMaker_new();
-                LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_append(stringBuilder, this->commonStrings->CREATE), append, this->commonLabels->COLON_SEP), append, name), toString), this, this->commonStrings->CREATE);
+                LogUtil_putF(this->logUtil, java_string_of(StringMaker_append(StringMaker_append(StringMaker_append(stringBuilder, this->commonStrings->CREATE), this->commonLabels->COLON_SEP), name)), this, this->commonStrings->CREATE);
                 bool result = AbFile_mkdirs(abFileDirectory);
                 StringMaker_delete(stringBuilder, 0, StringMaker_length(stringBuilder));
-                LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(StringMaker_append(stringBuilder, this->commonLabels->RESULT_), appendboolean, result), toString), this, this->commonStrings->CREATE);
+                LogUtil_putF(this->logUtil, java_string_of(StringMaker_appendboolean(StringMaker_append(stringBuilder, this->commonLabels->RESULT_), result)), this, this->commonStrings->CREATE);
             }
         }
         BufferedWriterUtil_write(this, abFile, data);

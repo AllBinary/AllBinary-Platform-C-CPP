@@ -1,53 +1,84 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.form.item.validation
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/graphics/form/item/validation/NumberTextFieldItemValidator.h"
 #include "org/allbinary/graphics/form/item/ABTextFieldItem.h"
-#include "org/allbinary/logic/control/validate/ValidatorBase.h"
 #include "org/allbinary/logic/java/bool/BooleanFactory.h"
 #include "org/allbinary/logic/math/SmallIntegerSingletonFactory.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
+#if __has_include("org/allbinary/logic/java/bool/BooleanFactory.h")
+#include "org/allbinary/logic/java/bool/BooleanFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/java/bool/BooleanFactory.h")
+#include "org/allbinary/logic/java/bool/BooleanFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/java/bool/BooleanFactory.h")
+#include "org/allbinary/logic/java/bool/BooleanFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/java/bool/BooleanFactory.h")
+#include "org/allbinary/logic/java/bool/BooleanFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/java/bool/BooleanFactory.h")
+#include "org/allbinary/logic/java/bool/BooleanFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
 
-typedef struct NumberTextFieldItemValidator NumberTextFieldItemValidator;
-struct NumberTextFieldItemValidator {
-    ValidatorBase base;
-    ABTextFieldItem* textFieldItem;
-    int32_t min;
-    int32_t max;
-    int32_t maxChars;
-};
 
 
-NumberTextFieldItemValidator* NumberTextFieldItemValidator_new(ABTextFieldItem* textFieldItem, int32_t maxChars, int32_t min, int32_t max);
 
-void NumberTextFieldItemValidator_init(NumberTextFieldItemValidator* this, ABTextFieldItem* textFieldItem, int32_t maxChars, int32_t min, int32_t max);
-bool NumberTextFieldItemValidator_isNumberValid(NumberTextFieldItemValidator* this, int32_t value);
-BasicArrayList* NumberTextFieldItemValidator_toNumberVector(NumberTextFieldItemValidator* this, int32_t value);
-bool NumberTextFieldItemValidator_isValid(NumberTextFieldItemValidator* this);
-BasicArrayList* NumberTextFieldItemValidator_toList(NumberTextFieldItemValidator* this);
+
+
+
+
+void NumberTextFieldItemValidator_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void NumberTextFieldItemValidator_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("NumberTextFieldItemValidator", "ValidatorBase");
+    java_register_method("NumberTextFieldItemValidator", "isNumberValid", (void*) NumberTextFieldItemValidator_isNumberValid);
+    java_register_method("NumberTextFieldItemValidator", "toNumberVector", (void*) NumberTextFieldItemValidator_toNumberVector);
+    java_register_method("NumberTextFieldItemValidator", "isValid", (void*) NumberTextFieldItemValidator_isValid);
+    java_register_method("NumberTextFieldItemValidator", "toList", (void*) NumberTextFieldItemValidator_toList);
+}
 
 static void NumberTextFieldItemValidator_initFields(NumberTextFieldItemValidator* this) {
     
@@ -58,6 +89,7 @@ static void NumberTextFieldItemValidator_initFields(NumberTextFieldItemValidator
 
 
 void NumberTextFieldItemValidator_init(NumberTextFieldItemValidator* this, ABTextFieldItem* textFieldItem, int32_t maxChars, int32_t min, int32_t max) {
+    NumberTextFieldItemValidator_register();
     ValidatorBase_init(&this->base);
     NumberTextFieldItemValidator_initFields(this);
         this->textFieldItem = textFieldItem;
@@ -67,7 +99,7 @@ void NumberTextFieldItemValidator_init(NumberTextFieldItemValidator* this, ABTex
 }
 
 NumberTextFieldItemValidator* NumberTextFieldItemValidator_new(ABTextFieldItem* textFieldItem, int32_t maxChars, int32_t min, int32_t max) {
-    NumberTextFieldItemValidator* this = calloc(1, sizeof(NumberTextFieldItemValidator));
+    NumberTextFieldItemValidator* this = java_object_alloc(sizeof(NumberTextFieldItemValidator), "NumberTextFieldItemValidator");
     NumberTextFieldItemValidator_init(this, textFieldItem, maxChars, min, max);
     return this;
 }
@@ -117,22 +149,22 @@ BasicArrayList* NumberTextFieldItemValidator_toList(NumberTextFieldItemValidator
                 int32_t number = SmallIntegerSingletonFactory_createInstance(smallIntegerSingletonFactory, ((int32_t) strtol(ABTextFieldItem_getString(this->textFieldItem), nullptr, 10)));
                 if (Integer_intValue(number) > this->min) {
                     StringMaker_delete(stringMaker, 0, StringMaker_length(stringMaker));
-                    BasicArrayList_add(list, JAVA_CALL(JAVA_CALL(StringMaker_append(stringMaker, name), append, " is to small"), toString));
+                    BasicArrayList_add(list, java_string_of(StringMaker_append(StringMaker_append(stringMaker, name), " is to small")));
                 } else if (Integer_intValue(number) > this->max) {
                     StringMaker_delete(stringMaker, 0, StringMaker_length(stringMaker));
-                    BasicArrayList_add(list, JAVA_CALL(JAVA_CALL(StringMaker_append(stringMaker, name), append, " is to large"), toString));
+                    BasicArrayList_add(list, java_string_of(StringMaker_append(StringMaker_append(stringMaker, name), " is to large")));
                 }
             } JAVA_CATCH(NumberFormatException, e) {
                 StringMaker_delete(stringMaker, 0, StringMaker_length(stringMaker));
-                BasicArrayList_add(list, JAVA_CALL(JAVA_CALL(StringMaker_append(stringMaker, name), append, " is not a number"), toString));
+                BasicArrayList_add(list, java_string_of(StringMaker_append(StringMaker_append(stringMaker, name), " is not a number")));
             } JAVA_END_TRY;
         } else {
             if (textLength < 1) {
                 StringMaker_delete(stringMaker, 0, StringMaker_length(stringMaker));
-                BasicArrayList_add(list, JAVA_CALL(JAVA_CALL(StringMaker_append(stringMaker, name), append, " is to short"), toString));
+                BasicArrayList_add(list, java_string_of(StringMaker_append(StringMaker_append(stringMaker, name), " is to short")));
             } else if (textLength > this->maxChars) {
                 StringMaker_delete(stringMaker, 0, StringMaker_length(stringMaker));
-                BasicArrayList_add(list, JAVA_CALL(JAVA_CALL(StringMaker_append(stringMaker, name), append, " is to long"), toString));
+                BasicArrayList_add(list, java_string_of(StringMaker_append(StringMaker_append(stringMaker, name), " is to long")));
             }
         }
         return list;

@@ -1,60 +1,63 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2025 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.layer.special
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/game/layer/special/SpecialGameInput.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/game/input/event/GameKeyEvent.h"
 #include "org/allbinary/layer/AllBinaryLayerManager.h"
 #include "org/allbinary/game/layer/special/SpecialGameInputInterface.h"
 
-typedef struct SpecialGameInput SpecialGameInput;
-struct SpecialGameInput {
-    SpecialGameInputInterface SpecialGameInputInterface_interface;
-};
 
 
-SpecialGameInput* SpecialGameInput_new(void);
-void SpecialGameInput_up(SpecialGameInput* this);
-void SpecialGameInput_down(SpecialGameInput* this);
-void SpecialGameInput_right(SpecialGameInput* this);
-void SpecialGameInput_left(SpecialGameInput* this);
-void SpecialGameInput_strafeLeft(SpecialGameInput* this);
-void SpecialGameInput_strafeRight(SpecialGameInput* this);
-void SpecialGameInput_fire(SpecialGameInput* this, AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent);
-void SpecialGameInput_special1(SpecialGameInput* this, AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent);
-void SpecialGameInput_special2(SpecialGameInput* this, AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent);
-void SpecialGameInput_special3(SpecialGameInput* this, AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent);
-void SpecialGameInput_special4(SpecialGameInput* this, AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent);
-void SpecialGameInput_special5(SpecialGameInput* this, AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent);
-void SpecialGameInput_paint(SpecialGameInput* this, Graphics* graphics);
-void SpecialGameInput_paintThreed(SpecialGameInput* this, Graphics* graphics);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void SpecialGameInput_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void SpecialGameInput_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("SpecialGameInput", nullptr);
+    java_register_method("SpecialGameInput", "up", (void*) SpecialGameInput_up);
+    java_register_method("SpecialGameInput", "down", (void*) SpecialGameInput_down);
+    java_register_method("SpecialGameInput", "right", (void*) SpecialGameInput_right);
+    java_register_method("SpecialGameInput", "left", (void*) SpecialGameInput_left);
+    java_register_method("SpecialGameInput", "strafeLeft", (void*) SpecialGameInput_strafeLeft);
+    java_register_method("SpecialGameInput", "strafeRight", (void*) SpecialGameInput_strafeRight);
+    java_register_method("SpecialGameInput", "fire", (void*) SpecialGameInput_fire);
+    java_register_method("SpecialGameInput", "special1", (void*) SpecialGameInput_special1);
+    java_register_method("SpecialGameInput", "special2", (void*) SpecialGameInput_special2);
+    java_register_method("SpecialGameInput", "special3", (void*) SpecialGameInput_special3);
+    java_register_method("SpecialGameInput", "special4", (void*) SpecialGameInput_special4);
+    java_register_method("SpecialGameInput", "special5", (void*) SpecialGameInput_special5);
+    java_register_method("SpecialGameInput", "paint", (void*) SpecialGameInput_paint);
+    java_register_method("SpecialGameInput", "paintThreed", (void*) SpecialGameInput_paintThreed);
+}
 
 void SpecialGameInput_init(SpecialGameInput* this) {
+    SpecialGameInput_register();
 }
 
 SpecialGameInput* SpecialGameInput_new(void) {
-    SpecialGameInput* this = calloc(1, sizeof(SpecialGameInput));
+    SpecialGameInput* this = java_object_alloc(sizeof(SpecialGameInput), "SpecialGameInput");
     SpecialGameInput_init(this);
     return this;
 }

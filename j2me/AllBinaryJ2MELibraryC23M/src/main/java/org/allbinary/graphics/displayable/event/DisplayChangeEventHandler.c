@@ -1,62 +1,48 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.displayable.event
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/graphics/displayable/event/DisplayChangeEventHandler.h"
 #include "org/allbinary/logic/util/event/AllBinaryEventObject.h"
 #include "org/allbinary/logic/util/event/EventListenerInterface.h"
-#include "org/allbinary/logic/util/event/handler/BasicEventHandler.h"
+#include "org/allbinary/graphics/displayable/event/DisplayChangeEventListener.h"
+#include "org/allbinary/graphics/displayable/event/DisplayChangeEvent.h"
 
-typedef struct DisplayChangeEventHandler DisplayChangeEventHandler;
-struct DisplayChangeEventHandler {
-    BasicEventHandler base;
-};
 
 static DisplayChangeEventHandler* DisplayChangeEventHandler_SINGLETON;
 
-DisplayChangeEventHandler* DisplayChangeEventHandler_new(void);
-DisplayChangeEventHandler* DisplayChangeEventHandler_getInstance(void);
 
-void DisplayChangeEventHandler_init(DisplayChangeEventHandler* this);
-void DisplayChangeEventHandler_process(DisplayChangeEventHandler* this, AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
 
-// Static fields with runtime initializers: call this once at startup
+
 void DisplayChangeEventHandler_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     DisplayChangeEventHandler_SINGLETON = DisplayChangeEventHandler_new();
+}
+
+void DisplayChangeEventHandler_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("DisplayChangeEventHandler", "BasicEventHandler");
+    java_register_method("DisplayChangeEventHandler", "process", (void*) DisplayChangeEventHandler_process);
 }
 
 
 DisplayChangeEventHandler* DisplayChangeEventHandler_getInstance(void) {
-        return DisplayChangeEventHandler_SINGLETON;
+        return (DisplayChangeEventHandler_staticInit(), DisplayChangeEventHandler_SINGLETON);
 }
 
 
 void DisplayChangeEventHandler_init(DisplayChangeEventHandler* this) {
+    DisplayChangeEventHandler_register();
     BasicEventHandler_init(&this->base);
 }
 
 DisplayChangeEventHandler* DisplayChangeEventHandler_new(void) {
-    DisplayChangeEventHandler* this = calloc(1, sizeof(DisplayChangeEventHandler));
+    DisplayChangeEventHandler* this = java_object_alloc(sizeof(DisplayChangeEventHandler), "DisplayChangeEventHandler");
     DisplayChangeEventHandler_init(this);
     return this;
 }

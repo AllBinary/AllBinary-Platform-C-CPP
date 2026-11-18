@@ -1,56 +1,74 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation.image
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
-// #include "javax/microedition/lcdui/Image.h"
+#include "org/allbinary/animation/image/ImageArraySpecialAnimation.h"
+#include "javax/microedition/lcdui/Graphics.h"
+#include "javax/microedition/lcdui/Image.h"
 #include "org/allbinary/animation/AnimationBehavior.h"
-#include "org/allbinary/animation/special/SpecialAnimationInterface.h"
 #include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
 #include "org/allbinary/time/GameTickTimeDelayHelperFactory.h"
 #include "org/allbinary/time/TimeDelayHelper.h"
 #include "org/allbinary/animation/image/ImageArrayAnimation.h"
+#if __has_include("org/allbinary/animation/image/GameTickTimeDelayHelper.h")
+#include "org/allbinary/animation/image/GameTickTimeDelayHelper.h"
+#endif
+#if __has_include("javax/microedition/lcdui/GameTickTimeDelayHelper.h")
+#include "javax/microedition/lcdui/GameTickTimeDelayHelper.h"
+#endif
+#if __has_include("javax/microedition/lcdui/GameTickTimeDelayHelper.h")
+#include "javax/microedition/lcdui/GameTickTimeDelayHelper.h"
+#endif
+#if __has_include("org/allbinary/animation/GameTickTimeDelayHelper.h")
+#include "org/allbinary/animation/GameTickTimeDelayHelper.h"
+#endif
+#if __has_include("org/allbinary/animation/special/GameTickTimeDelayHelper.h")
+#include "org/allbinary/animation/special/GameTickTimeDelayHelper.h"
+#endif
+#if __has_include("org/allbinary/graphics/displayable/GameTickTimeDelayHelper.h")
+#include "org/allbinary/graphics/displayable/GameTickTimeDelayHelper.h"
+#endif
+#if __has_include("org/allbinary/time/GameTickTimeDelayHelper.h")
+#include "org/allbinary/time/GameTickTimeDelayHelper.h"
+#endif
+#if __has_include("org/allbinary/time/GameTickTimeDelayHelper.h")
+#include "org/allbinary/time/GameTickTimeDelayHelper.h"
+#endif
+#if __has_include("org/allbinary/graphics/displayable/DisplayInfoSingleton.h")
+#include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
+#endif
+#if __has_include("javax/microedition/lcdui/Image.h")
+#include "javax/microedition/lcdui/Image.h"
+#endif
 
-typedef struct ImageArraySpecialAnimation ImageArraySpecialAnimation;
-struct ImageArraySpecialAnimation {
-    ImageArrayAnimation base;
-    SpecialAnimationInterface SpecialAnimationInterface_interface;
-    TimeDelayHelper* timeDelayHelper;
-    int32_t loopCount;
-    int32_t loopCountTotal;
-};
 
 
-ImageArraySpecialAnimation* ImageArraySpecialAnimation_new(Image** imageArray, AnimationBehavior* animationBehavior);
 
-void ImageArraySpecialAnimation_init(ImageArraySpecialAnimation* this, Image** imageArray, AnimationBehavior* animationBehavior);
-int32_t ImageArraySpecialAnimation_getLoopCount(ImageArraySpecialAnimation* this);
-void ImageArraySpecialAnimation_setLastFrame(ImageArraySpecialAnimation* this);
-void ImageArraySpecialAnimation_reset(ImageArraySpecialAnimation* this);
-void ImageArraySpecialAnimation_nextFrame(ImageArraySpecialAnimation* this);
-bool ImageArraySpecialAnimation_isComplete(ImageArraySpecialAnimation* this);
-void ImageArraySpecialAnimation_paintXY(ImageArraySpecialAnimation* this, Graphics* graphics, int32_t x, int32_t y);
+
+
+
+
+
+
+void ImageArraySpecialAnimation_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void ImageArraySpecialAnimation_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ImageArraySpecialAnimation", "ImageArrayAnimation");
+    java_register_method("ImageArraySpecialAnimation", "getLoopCount", (void*) ImageArraySpecialAnimation_getLoopCount);
+    java_register_method("ImageArraySpecialAnimation", "setLastFrame", (void*) ImageArraySpecialAnimation_setLastFrame);
+    java_register_method("ImageArraySpecialAnimation", "reset", (void*) ImageArraySpecialAnimation_reset);
+    java_register_method("ImageArraySpecialAnimation", "nextFrame", (void*) ImageArraySpecialAnimation_nextFrame);
+    java_register_method("ImageArraySpecialAnimation", "isComplete", (void*) ImageArraySpecialAnimation_isComplete);
+    java_register_method("ImageArraySpecialAnimation", "paintXY", (void*) ImageArraySpecialAnimation_paintXY);
+}
 
 static void ImageArraySpecialAnimation_initFields(ImageArraySpecialAnimation* this) {
     this->timeDelayHelper = TimeDelayHelper_new(270);
@@ -60,13 +78,14 @@ static void ImageArraySpecialAnimation_initFields(ImageArraySpecialAnimation* th
 
 
 void ImageArraySpecialAnimation_init(ImageArraySpecialAnimation* this, Image** imageArray, AnimationBehavior* animationBehavior) {
+    ImageArraySpecialAnimation_register();
         ImageArrayAnimation_init(&this->base, imageArray, animationBehavior);
         ImageArraySpecialAnimation_initFields(this);
         ImageArraySpecialAnimation_reset(this);
 }
 
 ImageArraySpecialAnimation* ImageArraySpecialAnimation_new(Image** imageArray, AnimationBehavior* animationBehavior) {
-    ImageArraySpecialAnimation* this = calloc(1, sizeof(ImageArraySpecialAnimation));
+    ImageArraySpecialAnimation* this = java_object_alloc(sizeof(ImageArraySpecialAnimation), "ImageArraySpecialAnimation");
     ImageArraySpecialAnimation_init(this, imageArray, animationBehavior);
     return this;
 }
@@ -78,21 +97,21 @@ int32_t ImageArraySpecialAnimation_getLoopCount(ImageArraySpecialAnimation* this
 
 
 void ImageArraySpecialAnimation_setLastFrame(ImageArraySpecialAnimation* this) {
-        JAVA_CALL(this->circularIndexUtil, setIndex, JAVA_CALL(this->circularIndexUtil, getSize) - 1);
+        CircularIndexUtil_setIndex(this->base.circularIndexUtil, CircularIndexUtil_getSize(this->base.circularIndexUtil) - 1);
 }
 
 
 void ImageArraySpecialAnimation_reset(ImageArraySpecialAnimation* this) {
-        ImageArraySpecialAnimation_setFrame(this, ImageArraySpecialAnimation_getSize(this) - 1);
+        ImageArrayAnimation_setFrame(this, ImageArrayAnimation_getSize(this) - 1);
         this->loopCount = 0;
 }
 
 
 void ImageArraySpecialAnimation_nextFrame(ImageArraySpecialAnimation* this) {
-        if (ImageArraySpecialAnimation_getFrame(this) > 0) {
+        if (ImageArrayAnimation_getFrame(this) > 0) {
             if (TimeDelayHelper_isTime(this->timeDelayHelper, GameTickTimeDelayHelperFactory_getInstance()->startTime)) {
-                ImageArraySpecialAnimation_previousFrame(this);
-                if (ImageArraySpecialAnimation_getFrame(this) == 0) {
+                ImageArrayAnimation_previousFrame(this);
+                if (ImageArrayAnimation_getFrame(this) == 0) {
                     this->loopCount++;
                 }
             }
@@ -101,7 +120,7 @@ void ImageArraySpecialAnimation_nextFrame(ImageArraySpecialAnimation* this) {
 
 
 bool ImageArraySpecialAnimation_isComplete(ImageArraySpecialAnimation* this) {
-        if (this->loopCount < this->loopCountTotal || ImageArraySpecialAnimation_getFrame(this) != 0) {
+        if (this->loopCount < this->loopCountTotal || ImageArrayAnimation_getFrame(this) != 0) {
             return false;
         } else {
             return true;
@@ -110,7 +129,7 @@ bool ImageArraySpecialAnimation_isComplete(ImageArraySpecialAnimation* this) {
 
 
 void ImageArraySpecialAnimation_paintXY(ImageArraySpecialAnimation* this, Graphics* graphics, int32_t x, int32_t y) {
-        x = DisplayInfoSingleton_getLastHalfWidth(DisplayInfoSingleton_getInstance()) - (JAVA_CALL(ImageArraySpecialAnimation_getImage(this, JAVA_CALL(this->circularIndexUtil, getIndex)), getWidth) >> 1);
+        x = DisplayInfoSingleton_getLastHalfWidth(DisplayInfoSingleton_getInstance()) - (Image_getWidth(ImageArrayAnimation_getImage(this, CircularIndexUtil_getIndex(this->base.circularIndexUtil))) >> 1);
         y = 5;
         ImageArrayAnimation_paintXY((&this->base), graphics, x, y);
 }

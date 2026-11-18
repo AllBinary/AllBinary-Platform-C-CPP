@@ -1,0 +1,274 @@
+#ifndef ORG_ALLBINARY_GAME_LAYER_COLLIDABLECOMPOSITELAYER_H
+#define ORG_ALLBINARY_GAME_LAYER_COLLIDABLECOMPOSITELAYER_H
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.layer
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+typedef struct AllBinaryGameLayer AllBinaryGameLayer;
+typedef struct ArtificialIntelligence ArtificialIntelligence;
+typedef struct ArtificialIntelligenceInterface ArtificialIntelligenceInterface;
+typedef struct CollidableBaseBehavior CollidableBaseBehavior;
+typedef struct CollidableBaseBehaviorFactory CollidableBaseBehaviorFactory;
+typedef struct CollidableInterfaceCompositeInterface CollidableInterfaceCompositeInterface;
+typedef struct CollidableNeverCollideBehaviorFactory CollidableNeverCollideBehaviorFactory;
+typedef struct Rectangle Rectangle;
+typedef struct RectangleFactory RectangleFactory;
+typedef struct ForcedLogUtil ForcedLogUtil;
+typedef struct StringMaker StringMaker;
+typedef struct StringUtil StringUtil;
+typedef struct CommonSeps CommonSeps;
+typedef struct ViewPositionBase ViewPositionBase;
+typedef struct NullUtil NullUtil;
+#if __has_include("org/allbinary/game/collision/CollidableBaseBehavior.h")
+#include "org/allbinary/game/collision/CollidableBaseBehavior.h"
+#endif
+#include "org/allbinary/game/collision/CollidableInterfaceCompositeInterface.h"
+#include "org/allbinary/game/layer/AllBinaryGameLayer.h"
+
+typedef struct CollidableCompositeLayer CollidableCompositeLayer;
+struct CollidableCompositeLayer {
+    AllBinaryGameLayer base;
+    CollidableInterfaceCompositeInterface CollidableInterfaceCompositeInterface_interface;
+    CollidableBaseBehavior* collidableInferface;
+};
+
+
+CollidableCompositeLayer* CollidableCompositeLayer_new(const char* name, Rectangle* layerInfo, ViewPositionBase* viewPosition, CollidableBaseBehaviorFactory* collidableBaseBehaviorFactory);
+
+CollidableCompositeLayer* CollidableCompositeLayer_getNullInstance(void);
+
+void CollidableCompositeLayer_init(CollidableCompositeLayer* this, const char* name, Rectangle* layerInfo, ViewPositionBase* viewPosition, CollidableBaseBehaviorFactory* collidableBaseBehaviorFactory);
+
+ArtificialIntelligenceInterface* CollidableCompositeLayer_getArtificialIntelligenceInterface(CollidableCompositeLayer* this);
+
+CollidableBaseBehavior* CollidableCompositeLayer_getCollidableInferface(CollidableCompositeLayer* this);
+
+void CollidableCompositeLayer_setCollidableInferface(CollidableCompositeLayer* this, CollidableBaseBehavior* collidableInferface);
+
+bool CollidableCompositeLayer_implmentsCollidableInterface(CollidableCompositeLayer* this);
+
+void CollidableCompositeLayer_toStringAppend(CollidableCompositeLayer* this, StringMaker* stringBuffer);
+
+const char* CollidableCompositeLayer_toString(CollidableCompositeLayer* this);
+#define CollidableCompositeLayer_new4 CollidableCompositeLayer_new
+#define CollidableCompositeLayer_init4 CollidableCompositeLayer_init
+#ifndef CollidableCompositeLayer_createPaintable
+#define CollidableCompositeLayer_createPaintable AllBinaryGameLayer_createPaintable
+#endif
+#ifndef CollidableCompositeLayer_set
+#define CollidableCompositeLayer_set AllBinaryGameLayer_set
+#endif
+#ifndef CollidableCompositeLayer_move
+#define CollidableCompositeLayer_move AllBinaryGameLayer_move
+#endif
+#ifndef CollidableCompositeLayer_getGameKeyEventList
+#define CollidableCompositeLayer_getGameKeyEventList AllBinaryGameLayer_getGameKeyEventList
+#endif
+#ifndef CollidableCompositeLayer_processInput
+#define CollidableCompositeLayer_processInput AllBinaryGameLayer_processInput
+#endif
+#ifndef CollidableCompositeLayer_processTick
+#define CollidableCompositeLayer_processTick AllBinaryGameLayer_processTick
+#endif
+#ifndef CollidableCompositeLayer_onEvent
+#define CollidableCompositeLayer_onEvent AllBinaryGameLayer_onEvent
+#endif
+#ifndef CollidableCompositeLayer_onViewPositionChangeEvent
+#define CollidableCompositeLayer_onViewPositionChangeEvent AllBinaryGameLayer_onViewPositionChangeEvent
+#endif
+#ifndef CollidableCompositeLayer_onChangeEvent
+#define CollidableCompositeLayer_onChangeEvent AllBinaryGameLayer_onChangeEvent
+#endif
+#ifndef CollidableCompositeLayer_paintFirst
+#define CollidableCompositeLayer_paintFirst AllBinaryGameLayer_paintFirst
+#endif
+#ifndef CollidableCompositeLayer_paintDebug
+#define CollidableCompositeLayer_paintDebug AllBinaryGameLayer_paintDebug
+#endif
+#ifndef CollidableCompositeLayer_setWidth
+#define CollidableCompositeLayer_setWidth AllBinaryGameLayer_setWidth
+#endif
+#ifndef CollidableCompositeLayer_setHeight
+#define CollidableCompositeLayer_setHeight AllBinaryGameLayer_setHeight
+#endif
+#ifndef CollidableCompositeLayer_setPosition
+#define CollidableCompositeLayer_setPosition AllBinaryLayer_setPosition
+#endif
+#ifndef CollidableCompositeLayer_moveDXYZ
+#define CollidableCompositeLayer_moveDXYZ AllBinaryLayer_moveDXYZ
+#endif
+#ifndef CollidableCompositeLayer_getXP
+#define CollidableCompositeLayer_getXP AllBinaryLayer_getXP
+#endif
+#ifndef CollidableCompositeLayer_getYP
+#define CollidableCompositeLayer_getYP AllBinaryLayer_getYP
+#endif
+#ifndef CollidableCompositeLayer_getZP
+#define CollidableCompositeLayer_getZP AllBinaryLayer_getZP
+#endif
+#ifndef CollidableCompositeLayer_getWidth
+#define CollidableCompositeLayer_getWidth AllBinaryLayer_getWidth
+#endif
+#ifndef CollidableCompositeLayer_getHeight
+#define CollidableCompositeLayer_getHeight AllBinaryLayer_getHeight
+#endif
+#ifndef CollidableCompositeLayer_setVisible
+#define CollidableCompositeLayer_setVisible AllBinaryLayer_setVisible
+#endif
+#ifndef CollidableCompositeLayer_isVisible
+#define CollidableCompositeLayer_isVisible AllBinaryLayer_isVisible
+#endif
+#ifndef CollidableCompositeLayer_paint
+#define CollidableCompositeLayer_paint AllBinaryLayer_paint
+#endif
+#ifndef CollidableCompositeLayer_onChangeEvent
+#define CollidableCompositeLayer_onChangeEvent AllBinaryLayer_onChangeEvent
+#endif
+#ifndef CollidableCompositeLayer_paintThreed
+#define CollidableCompositeLayer_paintThreed AllBinaryLayer_paintThreed
+#endif
+#ifndef CollidableCompositeLayer_getX2
+#define CollidableCompositeLayer_getX2 AllBinaryLayer_getX2
+#endif
+#ifndef CollidableCompositeLayer_getY2
+#define CollidableCompositeLayer_getY2 AllBinaryLayer_getY2
+#endif
+#ifndef CollidableCompositeLayer_getZ2
+#define CollidableCompositeLayer_getZ2 AllBinaryLayer_getZ2
+#endif
+#ifndef CollidableCompositeLayer_getName
+#define CollidableCompositeLayer_getName AllBinaryLayer_getName
+#endif
+#ifndef CollidableCompositeLayer_setHalfWidth
+#define CollidableCompositeLayer_setHalfWidth AllBinaryLayer_setHalfWidth
+#endif
+#ifndef CollidableCompositeLayer_getHalfWidth
+#define CollidableCompositeLayer_getHalfWidth AllBinaryLayer_getHalfWidth
+#endif
+#ifndef CollidableCompositeLayer_setHalfHeight
+#define CollidableCompositeLayer_setHalfHeight AllBinaryLayer_setHalfHeight
+#endif
+#ifndef CollidableCompositeLayer_getHalfHeight
+#define CollidableCompositeLayer_getHalfHeight AllBinaryLayer_getHalfHeight
+#endif
+#ifndef CollidableCompositeLayer_getHalfDepth
+#define CollidableCompositeLayer_getHalfDepth AllBinaryLayer_getHalfDepth
+#endif
+#ifndef CollidableCompositeLayer_getViewPosition
+#define CollidableCompositeLayer_getViewPosition AllBinaryLayer_getViewPosition
+#endif
+#ifndef CollidableCompositeLayer_setViewPosition
+#define CollidableCompositeLayer_setViewPosition AllBinaryLayer_setViewPosition
+#endif
+#ifndef CollidableCompositeLayer_getGroupInterface
+#define CollidableCompositeLayer_getGroupInterface AllBinaryLayer_getGroupInterface
+#endif
+#ifndef CollidableCompositeLayer_implmentsTickableInterface
+#define CollidableCompositeLayer_implmentsTickableInterface AllBinaryLayer_implmentsTickableInterface
+#endif
+#ifndef CollidableCompositeLayer_implmentsGameInputInterface
+#define CollidableCompositeLayer_implmentsGameInputInterface AllBinaryLayer_implmentsGameInputInterface
+#endif
+#ifndef CollidableCompositeLayer_implmentsArtificialIntelligenceCompositeInterface
+#define CollidableCompositeLayer_implmentsArtificialIntelligenceCompositeInterface AllBinaryLayer_implmentsArtificialIntelligenceCompositeInterface
+#endif
+#ifndef CollidableCompositeLayer_implementsThreedInterface
+#define CollidableCompositeLayer_implementsThreedInterface AllBinaryLayer_implementsThreedInterface
+#endif
+#ifndef CollidableCompositeLayer_getType
+#define CollidableCompositeLayer_getType AllBinaryLayer_getType
+#endif
+#ifndef CollidableCompositeLayer_getMultiPlayerType
+#define CollidableCompositeLayer_getMultiPlayerType AllBinaryLayer_getMultiPlayerType
+#endif
+#ifndef CollidableCompositeLayer_setPosition
+#define CollidableCompositeLayer_setPosition Layer_setPosition
+#endif
+#ifndef CollidableCompositeLayer_moveDXY
+#define CollidableCompositeLayer_moveDXY Layer_moveDXY
+#endif
+#ifndef CollidableCompositeLayer_moveDXYZ
+#define CollidableCompositeLayer_moveDXYZ Layer_moveDXYZ
+#endif
+#ifndef CollidableCompositeLayer_getXP
+#define CollidableCompositeLayer_getXP Layer_getXP
+#endif
+#ifndef CollidableCompositeLayer_getYP
+#define CollidableCompositeLayer_getYP Layer_getYP
+#endif
+#ifndef CollidableCompositeLayer_getZP
+#define CollidableCompositeLayer_getZP Layer_getZP
+#endif
+#ifndef CollidableCompositeLayer_getWidth
+#define CollidableCompositeLayer_getWidth Layer_getWidth
+#endif
+#ifndef CollidableCompositeLayer_getHeight
+#define CollidableCompositeLayer_getHeight Layer_getHeight
+#endif
+#ifndef CollidableCompositeLayer_getDepth
+#define CollidableCompositeLayer_getDepth Layer_getDepth
+#endif
+#ifndef CollidableCompositeLayer_setVisible
+#define CollidableCompositeLayer_setVisible Layer_setVisible
+#endif
+#ifndef CollidableCompositeLayer_isVisible
+#define CollidableCompositeLayer_isVisible Layer_isVisible
+#endif
+#ifndef CollidableCompositeLayer_paint
+#define CollidableCompositeLayer_paint Layer_paint
+#endif
+#ifndef CollidableCompositeLayer_setLayerWidth
+#define CollidableCompositeLayer_setLayerWidth Layer_setLayerWidth
+#endif
+#ifndef CollidableCompositeLayer_setLayerHeight
+#define CollidableCompositeLayer_setLayerHeight Layer_setLayerHeight
+#endif
+#ifndef CollidableCompositeLayer_setSize
+#define CollidableCompositeLayer_setSize Layer_setSize
+#endif
+#ifndef CollidableCompositeLayer_getX
+#define CollidableCompositeLayer_getX Layer_getX
+#endif
+#ifndef CollidableCompositeLayer_getY
+#define CollidableCompositeLayer_getY Layer_getY
+#endif
+#ifndef CollidableCompositeLayer_move
+#define CollidableCompositeLayer_move Layer_move
+#endif
+#ifndef CollidableCompositeLayer_setPosition
+#define CollidableCompositeLayer_setPosition Layer_setPosition
+#endif
+// Runs the Java static initialization of the class once. Reads of its static fields call it first.
+void CollidableCompositeLayer_staticInit(void);
+// Registers the class, its superclass, and its methods for the interface calls (java_register_method)
+void CollidableCompositeLayer_register(void);
+
+#if __has_include("org/allbinary/ai/ArtificialIntelligenceInterface.h")
+#include "org/allbinary/ai/ArtificialIntelligenceInterface.h"
+#endif
+#if __has_include("org/allbinary/game/collision/CollidableBaseBehavior.h")
+#include "org/allbinary/game/collision/CollidableBaseBehavior.h"
+#endif
+
+#endif // ORG_ALLBINARY_GAME_LAYER_COLLIDABLECOMPOSITELAYER_H

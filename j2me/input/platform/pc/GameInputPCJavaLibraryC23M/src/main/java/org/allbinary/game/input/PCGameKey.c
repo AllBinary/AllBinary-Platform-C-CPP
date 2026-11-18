@@ -1,54 +1,47 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.input
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/input/PCGameKey.h"
 #include "org/allbinary/logic/string/StringUtil.h"
 #include "org/allbinary/game/input/Input.h"
+#include "org/allbinary/game/input/InputFactory.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
-typedef struct PCGameKey PCGameKey;
-struct PCGameKey {
-    Input base;
-};
 
 
-PCGameKey* PCGameKey_new(int32_t keyCode, const char* name);
 
-void PCGameKey_init(PCGameKey* this, int32_t keyCode, const char* name);
-const char* PCGameKey_toString(PCGameKey* this);
-const char* PCGameKey_getString(int32_t keyCode);
+
+
+void PCGameKey_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void PCGameKey_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("PCGameKey", "Input");
+    java_register_method("PCGameKey", "toString", (void*) PCGameKey_toString);
+}
 
 
 void PCGameKey_init(PCGameKey* this, int32_t keyCode, const char* name) {
+    PCGameKey_register();
         Input_init(&this->base, keyCode, name);
-        int32_t id = PCGameKey_getId(this);
+        int32_t id = Input_getId(this);
         if (id >= 0) {
             InputFactory_add(InputFactory_getInstance(), id, this);
         }
 }
 
 PCGameKey* PCGameKey_new(int32_t keyCode, const char* name) {
-    PCGameKey* this = calloc(1, sizeof(PCGameKey));
+    PCGameKey* this = java_object_alloc(sizeof(PCGameKey), "PCGameKey");
     PCGameKey_init(this, keyCode, name);
     return this;
 }

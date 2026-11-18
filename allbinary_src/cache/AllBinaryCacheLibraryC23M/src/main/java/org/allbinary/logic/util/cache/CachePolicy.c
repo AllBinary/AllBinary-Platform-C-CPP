@@ -1,45 +1,35 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.util.cache
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct CachePolicy CachePolicy;
-struct CachePolicy {
-    const char* name;
-    int64_t maxTime;
-    int64_t maxSize;
-};
+#include "org/allbinary/logic/util/cache/CachePolicy.h"
 
 
-CachePolicy* CachePolicy_new(const char* name, int64_t maxTime, int64_t maxSize);
 
-void CachePolicy_init(CachePolicy* this, const char* name, int64_t maxTime, int64_t maxSize);
-int64_t CachePolicy_getMaxTime(CachePolicy* this);
-void CachePolicy_setMaxTime(CachePolicy* this, int64_t maxTime);
-int64_t CachePolicy_getMaxSize(CachePolicy* this);
-void CachePolicy_setMaxSize(CachePolicy* this, int64_t maxSize);
-const char* CachePolicy_getName(CachePolicy* this);
+
+
+
+
+
+
+void CachePolicy_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void CachePolicy_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("CachePolicy", nullptr);
+    java_register_method("CachePolicy", "getMaxTime", (void*) CachePolicy_getMaxTime);
+    java_register_method("CachePolicy", "setMaxTime", (void*) CachePolicy_setMaxTime);
+    java_register_method("CachePolicy", "getMaxSize", (void*) CachePolicy_getMaxSize);
+    java_register_method("CachePolicy", "setMaxSize", (void*) CachePolicy_setMaxSize);
+    java_register_method("CachePolicy", "getName", (void*) CachePolicy_getName);
+}
 
 static void CachePolicy_initFields(CachePolicy* this) {
     
@@ -49,6 +39,7 @@ static void CachePolicy_initFields(CachePolicy* this) {
 
 
 void CachePolicy_init(CachePolicy* this, const char* name, int64_t maxTime, int64_t maxSize) {
+    CachePolicy_register();
     CachePolicy_initFields(this);
         this->name = name;
         CachePolicy_setMaxTime(this, maxTime);
@@ -56,7 +47,7 @@ void CachePolicy_init(CachePolicy* this, const char* name, int64_t maxTime, int6
 }
 
 CachePolicy* CachePolicy_new(const char* name, int64_t maxTime, int64_t maxSize) {
-    CachePolicy* this = calloc(1, sizeof(CachePolicy));
+    CachePolicy* this = java_object_alloc(sizeof(CachePolicy), "CachePolicy");
     CachePolicy_init(this, name, maxTime, maxSize);
     return this;
 }

@@ -1,34 +1,10 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.layer.identification
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/layer/identification/GroupLayerManagerListener.h"
 #include "org/allbinary/game/identification/Group.h"
 #include "org/allbinary/game/identification/GroupInterfaceCompositeInterface.h"
 #include "org/allbinary/layer/AllBinaryLayer.h"
 #include "org/allbinary/layer/event/LayerManagerEvent.h"
 #include "org/allbinary/layer/event/LayerManagerEventHandler.h"
-#include "org/allbinary/layer/event/LayerManagerEventListener.h"
 #include "org/allbinary/logic/communication/log/ForcedLogUtil.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/logic/string/StringMaker.h"
@@ -38,38 +14,89 @@
 #include "org/allbinary/string/CommonSeps.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
+#if __has_include("org/allbinary/layer/event/LayerManagerEventHandler.h")
+#include "org/allbinary/layer/event/LayerManagerEventHandler.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/util/event/EventStrings.h")
+#include "org/allbinary/logic/util/event/EventStrings.h"
+#endif
+#if __has_include("org/allbinary/game/identification/Group.h")
+#include "org/allbinary/game/identification/Group.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/game/identification/Group.h")
+#include "org/allbinary/game/identification/Group.h"
+#endif
+#if __has_include("org/allbinary/string/CommonSeps.h")
+#include "org/allbinary/string/CommonSeps.h"
+#endif
+#if __has_include("org/allbinary/string/CommonLabels.h")
+#include "org/allbinary/string/CommonLabels.h"
+#endif
 
-typedef struct GroupLayerManagerListener GroupLayerManagerListener;
-struct GroupLayerManagerListener {
-    LayerManagerEventListener base;
-    LogUtil* logUtil;
-    BasicArrayList* list;
-};
 
 static GroupLayerManagerListener* GroupLayerManagerListener_SINGLETON;
 
-GroupLayerManagerListener* GroupLayerManagerListener_new(void);
-GroupLayerManagerListener* GroupLayerManagerListener_getInstance(void);
 
-void GroupLayerManagerListener_init(GroupLayerManagerListener* this);
-void GroupLayerManagerListener_clear(GroupLayerManagerListener* this);
-int32_t GroupLayerManagerListener_getGroupSizeFromInterface(GroupLayerManagerListener* this, GroupInterfaceCompositeInterface* groupInterfaceCompositeInterface);
-int32_t GroupLayerManagerListener_getGroupSize(GroupLayerManagerListener* this, Group* groupInterface);
-BasicArrayList* GroupLayerManagerListener_getList(GroupLayerManagerListener* this, Group* groupInterface);
+
+
+
+
+
 static BasicArrayList* GroupLayerManagerListener_getListById(GroupLayerManagerListener* this, int32_t groupId);
-static int32_t GroupLayerManagerListener_getGroupSizeById(GroupLayerManagerListener* this, int32_t groupId);
-bool GroupLayerManagerListener_areAllOtherGroupsEmpty(GroupLayerManagerListener* this, Group* groupInterface);
-static bool GroupLayerManagerListener_isIdInList(GroupLayerManagerListener* this, int32_t id, BasicArrayList* excludeGroupList);
-bool GroupLayerManagerListener_areAllOtherGroupsLessThan(GroupLayerManagerListener* this, BasicArrayList* excludeGroupList, int32_t maxSize);
-void GroupLayerManagerListener_init(GroupLayerManagerListener* this, int32_t total);
-void GroupLayerManagerListener_onEvent(GroupLayerManagerListener* this, AllBinaryEventObject* eventObject);
-void GroupLayerManagerListener_onCreateLayerManagerEvent(GroupLayerManagerListener* this, LayerManagerEvent* layerManagerEvent);
-void GroupLayerManagerListener_onDeleteLayerManagerEvent(GroupLayerManagerListener* this, LayerManagerEvent* layerManagerEvent);
-void GroupLayerManagerListener_log(GroupLayerManagerListener* this);
 
-// Static fields with runtime initializers: call this once at startup
+static int32_t GroupLayerManagerListener_getGroupSizeById(GroupLayerManagerListener* this, int32_t groupId);
+
+
+static bool GroupLayerManagerListener_isIdInList(GroupLayerManagerListener* this, int32_t id, BasicArrayList* excludeGroupList);
+
+
+
+
+
+
+
 void GroupLayerManagerListener_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     GroupLayerManagerListener_SINGLETON = GroupLayerManagerListener_new();
+}
+
+void GroupLayerManagerListener_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GroupLayerManagerListener", "LayerManagerEventListener");
+    java_register_method("GroupLayerManagerListener", "clear", (void*) GroupLayerManagerListener_clear);
+    java_register_method("GroupLayerManagerListener", "getGroupSizeFromInterface", (void*) GroupLayerManagerListener_getGroupSizeFromInterface);
+    java_register_method("GroupLayerManagerListener", "getGroupSize", (void*) GroupLayerManagerListener_getGroupSize);
+    java_register_method("GroupLayerManagerListener", "getList", (void*) GroupLayerManagerListener_getList);
+    java_register_method("GroupLayerManagerListener", "getListById", (void*) GroupLayerManagerListener_getListById);
+    java_register_method("GroupLayerManagerListener", "getGroupSizeById", (void*) GroupLayerManagerListener_getGroupSizeById);
+    java_register_method("GroupLayerManagerListener", "areAllOtherGroupsEmpty", (void*) GroupLayerManagerListener_areAllOtherGroupsEmpty);
+    java_register_method("GroupLayerManagerListener", "isIdInList", (void*) GroupLayerManagerListener_isIdInList);
+    java_register_method("GroupLayerManagerListener", "areAllOtherGroupsLessThan", (void*) GroupLayerManagerListener_areAllOtherGroupsLessThan);
+    java_register_method("GroupLayerManagerListener", "init", (void*) GroupLayerManagerListener_initMethod);
+    java_register_method("GroupLayerManagerListener", "onEvent", (void*) GroupLayerManagerListener_onEvent);
+    java_register_method("GroupLayerManagerListener", "onCreateLayerManagerEvent", (void*) GroupLayerManagerListener_onCreateLayerManagerEvent);
+    java_register_method("GroupLayerManagerListener", "onDeleteLayerManagerEvent", (void*) GroupLayerManagerListener_onDeleteLayerManagerEvent);
+    java_register_method("GroupLayerManagerListener", "log", (void*) GroupLayerManagerListener_log);
 }
 
 static void GroupLayerManagerListener_initFields(GroupLayerManagerListener* this) {
@@ -79,18 +106,19 @@ static void GroupLayerManagerListener_initFields(GroupLayerManagerListener* this
 
 
 GroupLayerManagerListener* GroupLayerManagerListener_getInstance(void) {
-        return GroupLayerManagerListener_SINGLETON;
+        return (GroupLayerManagerListener_staticInit(), GroupLayerManagerListener_SINGLETON);
 }
 
 
 void GroupLayerManagerListener_init(GroupLayerManagerListener* this) {
+    GroupLayerManagerListener_register();
     LayerManagerEventListener_init(&this->base);
     GroupLayerManagerListener_initFields(this);
         LayerManagerEventHandler_addListener(LayerManagerEventHandler_getInstance(), this);
 }
 
 GroupLayerManagerListener* GroupLayerManagerListener_new(void) {
-    GroupLayerManagerListener* this = calloc(1, sizeof(GroupLayerManagerListener));
+    GroupLayerManagerListener* this = java_object_alloc(sizeof(GroupLayerManagerListener), "GroupLayerManagerListener");
     GroupLayerManagerListener_init(this);
     return this;
 }
@@ -144,7 +172,7 @@ bool GroupLayerManagerListener_areAllOtherGroupsEmpty(GroupLayerManagerListener*
             if (id != index) {
                 int32_t groupSize = GroupLayerManagerListener_getGroupSizeById(this, index);
                 if (groupSize != 0) {
-                    LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), "Group Size: "), appendint, groupSize), toString), this, "areAllOtherGroupsEmpty");
+                    LogUtil_putF(this->logUtil, java_string_of(StringMaker_appendint(StringMaker_append(StringMaker_new(), "Group Size: "), groupSize)), this, "areAllOtherGroupsEmpty");
                     return false;
                 }
             }
@@ -187,7 +215,7 @@ bool GroupLayerManagerListener_areAllOtherGroupsLessThan(GroupLayerManagerListen
 }
 
 
-void GroupLayerManagerListener_init(GroupLayerManagerListener* this, int32_t total) {
+void GroupLayerManagerListener_initMethod(GroupLayerManagerListener* this, int32_t total) {
         while (BasicArrayList_size(this->list) <= total + 1) {
             BasicArrayList_add(this->list, BasicArrayListD_new());
         }
@@ -207,10 +235,10 @@ void GroupLayerManagerListener_onCreateLayerManagerEvent(GroupLayerManagerListen
         int32_t id = 0;
         BasicArrayList* groupList = nullptr;
         for (int32_t index = 0; index < size; index++) {
-            id = ((int32_t) JAVA_CALL(groupInterfaceArray[index], getGroupId));
+            id = ((int32_t) Group_getGroupId(groupInterfaceArray[index]));
             groupList = ((BasicArrayList*) this->list->objectArray[id]);
             if (groupList == nullptr) {
-                LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), "id: "), appendint, id), toString), this, "onCreateLayerManagerEvent");
+                LogUtil_putF(this->logUtil, java_string_of(StringMaker_appendint(StringMaker_append(StringMaker_new(), "id: "), id)), this, "onCreateLayerManagerEvent");
             }
             if (!BasicArrayList_contains(groupList, layerInterface)) {
                 BasicArrayList_add(groupList, layerInterface);
@@ -228,7 +256,7 @@ void GroupLayerManagerListener_onDeleteLayerManagerEvent(GroupLayerManagerListen
         int32_t id = 0;
         BasicArrayList* groupList = nullptr;
         for (int32_t index = 0; index < size; index++) {
-            id = ((int32_t) JAVA_CALL(groupInterfaceArray[index], getGroupId));
+            id = ((int32_t) Group_getGroupId(groupInterfaceArray[index]));
             groupList = ((BasicArrayList*) this->list->objectArray[id]);
             BasicArrayList_remove(groupList, layerInterface);
         }
@@ -250,6 +278,6 @@ void GroupLayerManagerListener_log(GroupLayerManagerListener* this) {
             StringMaker_appendint(stringBuffer, BasicArrayList_size(groupList));
             StringMaker_append(stringBuffer, SPACE);
         }
-        LogUtil_putF(this->logUtil, StringMaker_toString(stringBuffer), this, "log");
+        LogUtil_putF(this->logUtil, java_string_of(stringBuffer), this, "log");
 }
 

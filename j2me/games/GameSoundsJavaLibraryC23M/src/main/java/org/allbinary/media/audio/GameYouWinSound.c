@@ -1,61 +1,45 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.media.audio
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/media/audio/GameYouWinSound.h"
 #include "org/allbinary/media/audio/CompositeSound.h"
+#include "org/allbinary/media/audio/Sound.h"
 
-//Use 8hz16bitmono for most J2ME
-typedef struct GameYouWinSound GameYouWinSound;
-struct GameYouWinSound {
-    CompositeSound base;
-};
 
 static Sound* GameYouWinSound_soundInterface;
 
-GameYouWinSound* GameYouWinSound_new(void);
 
-void GameYouWinSound_init(GameYouWinSound* this);
-Sound* GameYouWinSound_getInstance(void);
 
-// Static fields with runtime initializers: call this once at startup
 void GameYouWinSound_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     GameYouWinSound_soundInterface = GameYouWinSound_new();
+}
+
+void GameYouWinSound_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GameYouWinSound", "CompositeSound");
 }
 
 
 void GameYouWinSound_init(GameYouWinSound* this) {
+    GameYouWinSound_register();
         CompositeSound_init(&this->base, "resource:/wav/youwin.wav");
 }
 
 GameYouWinSound* GameYouWinSound_new(void) {
-    GameYouWinSound* this = calloc(1, sizeof(GameYouWinSound));
+    GameYouWinSound* this = java_object_alloc(sizeof(GameYouWinSound), "GameYouWinSound");
     GameYouWinSound_init(this);
     return this;
 }
 
 
 Sound* GameYouWinSound_getInstance(void) {
-        return GameYouWinSound_soundInterface;
+        return (GameYouWinSound_staticInit(), GameYouWinSound_soundInterface);
 }
 

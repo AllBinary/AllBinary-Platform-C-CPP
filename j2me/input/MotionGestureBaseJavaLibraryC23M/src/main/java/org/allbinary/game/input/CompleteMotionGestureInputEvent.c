@@ -1,53 +1,45 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.input
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/input/CompleteMotionGestureInputEvent.h"
 #include "org/allbinary/input/motion/gesture/MotionGestureInput.h"
 #include "org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/logic/string/StringUtil.h"
-#include "org/allbinary/logic/util/event/AllBinaryEventObject.h"
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/game/input/CompleteMotionGestureInputInterface.h"
-
-typedef struct CompleteMotionGestureInputEvent CompleteMotionGestureInputEvent;
-struct CompleteMotionGestureInputEvent {
-    AllBinaryEventObject base;
-    CompleteMotionGestureInputInterface CompleteMotionGestureInputInterface_interface;
-    LogUtil* logUtil;
-    const char* name;
-    MotionGestureInput* motionGestureInput;
-};
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h")
+#include "org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h"
+#endif
 
 
-CompleteMotionGestureInputEvent* CompleteMotionGestureInputEvent_new(const char* name, MotionGestureInput* motionGestureInput);
 
-void CompleteMotionGestureInputEvent_init(CompleteMotionGestureInputEvent* this, const char* name, MotionGestureInput* motionGestureInput);
-void CompleteMotionGestureInputEvent_setName(CompleteMotionGestureInputEvent* this, const char* name);
-const char* CompleteMotionGestureInputEvent_getName(CompleteMotionGestureInputEvent* this);
-void CompleteMotionGestureInputEvent_setMotionGestureInput(CompleteMotionGestureInputEvent* this, MotionGestureInput* motionGestureInput);
-MotionGestureInput* CompleteMotionGestureInputEvent_getMotionGestureInput(CompleteMotionGestureInputEvent* this);
+
+
+
+
+
+void CompleteMotionGestureInputEvent_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void CompleteMotionGestureInputEvent_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("CompleteMotionGestureInputEvent", "AllBinaryEventObject");
+    java_register_method("CompleteMotionGestureInputEvent", "setName", (void*) CompleteMotionGestureInputEvent_setName);
+    java_register_method("CompleteMotionGestureInputEvent", "getName", (void*) CompleteMotionGestureInputEvent_getName);
+    java_register_method("CompleteMotionGestureInputEvent", "setMotionGestureInput", (void*) CompleteMotionGestureInputEvent_setMotionGestureInput);
+    java_register_method("CompleteMotionGestureInputEvent", "getMotionGestureInput", (void*) CompleteMotionGestureInputEvent_getMotionGestureInput);
+}
 
 static void CompleteMotionGestureInputEvent_initFields(CompleteMotionGestureInputEvent* this) {
     this->logUtil = LogUtil_getInstance();
@@ -57,6 +49,7 @@ static void CompleteMotionGestureInputEvent_initFields(CompleteMotionGestureInpu
 
 
 void CompleteMotionGestureInputEvent_init(CompleteMotionGestureInputEvent* this, const char* name, MotionGestureInput* motionGestureInput) {
+    CompleteMotionGestureInputEvent_register();
         AllBinaryEventObject_init(&this->base, motionGestureInput);
         CompleteMotionGestureInputEvent_initFields(this);
         CompleteMotionGestureInputEvent_setName(this, name);
@@ -69,7 +62,7 @@ void CompleteMotionGestureInputEvent_init(CompleteMotionGestureInputEvent* this,
 }
 
 CompleteMotionGestureInputEvent* CompleteMotionGestureInputEvent_new(const char* name, MotionGestureInput* motionGestureInput) {
-    CompleteMotionGestureInputEvent* this = calloc(1, sizeof(CompleteMotionGestureInputEvent));
+    CompleteMotionGestureInputEvent* this = java_object_alloc(sizeof(CompleteMotionGestureInputEvent), "CompleteMotionGestureInputEvent");
     CompleteMotionGestureInputEvent_init(this, name, motionGestureInput);
     return this;
 }

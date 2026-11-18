@@ -1,30 +1,7 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.form.item
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Command.h"
-// #include "javax/microedition/lcdui/ImageItem.h"
+#include "org/allbinary/graphics/form/item/CommandTextItemArrayFactory.h"
+#include "javax/microedition/lcdui/Command.h"
+#include "javax/microedition/lcdui/ImageItem.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
 #include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
 #include "org/allbinary/graphics/form/ScreenInfo.h"
@@ -33,18 +10,39 @@
 #include "org/allbinary/logic/util/visitor/Visitor.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
+#include "org/allbinary/graphics/form/item/CommandTextItem.h"
+#include "org/allbinary/graphics/form/item/ABCustomItem.h"
+#if __has_include("org/allbinary/graphics/form/ScreenInfo.h")
+#include "org/allbinary/graphics/form/ScreenInfo.h"
+#endif
+#if __has_include("org/allbinary/graphics/form/ScreenInfo.h")
+#include "org/allbinary/graphics/form/ScreenInfo.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
-typedef struct CommandTextItemArrayFactory CommandTextItemArrayFactory;
-struct CommandTextItemArrayFactory {
-    BasicArrayList* list;
-    Visitor* visitorInterface;
-};
 
 
-CommandTextItemArrayFactory* CommandTextItemArrayFactory_new(Visitor* visitorInterface);
 
-void CommandTextItemArrayFactory_init(CommandTextItemArrayFactory* this, Visitor* visitorInterface);
-ABCustomItem** CommandTextItemArrayFactory_getInstance(CommandTextItemArrayFactory* this, Any* vector, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
+
+void CommandTextItemArrayFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void CommandTextItemArrayFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("CommandTextItemArrayFactory", nullptr);
+    java_register_method("CommandTextItemArrayFactory", "getInstance", (void*) CommandTextItemArrayFactory_getInstance);
+}
 
 static void CommandTextItemArrayFactory_initFields(CommandTextItemArrayFactory* this) {
     this->list = BasicArrayListD_new();
@@ -53,18 +51,19 @@ static void CommandTextItemArrayFactory_initFields(CommandTextItemArrayFactory* 
 
 
 void CommandTextItemArrayFactory_init(CommandTextItemArrayFactory* this, Visitor* visitorInterface) {
+    CommandTextItemArrayFactory_register();
     CommandTextItemArrayFactory_initFields(this);
         this->visitorInterface = visitorInterface;
 }
 
 CommandTextItemArrayFactory* CommandTextItemArrayFactory_new(Visitor* visitorInterface) {
-    CommandTextItemArrayFactory* this = calloc(1, sizeof(CommandTextItemArrayFactory));
+    CommandTextItemArrayFactory* this = java_object_alloc(sizeof(CommandTextItemArrayFactory), "CommandTextItemArrayFactory");
     CommandTextItemArrayFactory_init(this, visitorInterface);
     return this;
 }
 
 
-ABCustomItem** CommandTextItemArrayFactory_getInstance(CommandTextItemArrayFactory* this, Any* vector, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) {
+ABCustomItem** CommandTextItemArrayFactory_getInstance(CommandTextItemArrayFactory* this, void* vector, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) {
         VectorUtil* vectorUtil = VectorUtil_getInstance();
         int32_t size = VectorUtil_getSize(vectorUtil, vector);
         BasicArrayList_clear(this->list);
@@ -81,7 +80,7 @@ ABCustomItem** CommandTextItemArrayFactory_getInstance(CommandTextItemArrayFacto
             if (Command_getPriority(command) < priorityLimit) {
                 bool aBoolean = ((bool) Visitor_visit(this->visitorInterface, command));
                 if (Boolean_booleanValue(aBoolean)) {
-                    textItem = CommandTextItem_new(command, ImageItem_LAYOUT_DEFAULT, StringUtil_getInstance()->EMPTY_STRING, backgroundBasicColor, foregroundBasicColor);
+                    textItem = CommandTextItem_new(command, (ImageItem_staticInit(), ImageItem_LAYOUT_DEFAULT), StringUtil_getInstance()->EMPTY_STRING, backgroundBasicColor, foregroundBasicColor);
                     BasicArrayList_add(this->list, textItem);
                 }
             }

@@ -1,19 +1,14 @@
 // Generated Code Do Not Modify
-// package javax.microedition.khronos.opengles
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "javax/microedition/khronos/opengles/GL11Ext.h"
 #include "javax/microedition/khronos/opengles/GL.h"
 
-typedef struct GL11Ext GL11Ext;
-struct GL11Ext {
-    char unused;
-};
 
+
+void GL11Ext_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
 

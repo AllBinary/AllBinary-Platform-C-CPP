@@ -1,52 +1,46 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.layer.hud.event
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/layer/hud/event/GameNotificationEvent.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
 #include "org/allbinary/graphics/color/BasicColorFactory.h"
 #include "org/allbinary/logic/string/StringUtil.h"
-#include "org/allbinary/logic/util/event/AllBinaryEventObject.h"
-
-typedef struct GameNotificationEvent GameNotificationEvent;
-struct GameNotificationEvent {
-    AllBinaryEventObject base;
-    const char* string;
-    int32_t seconds;
-    BasicColor* basicColor;
-    bool removeable;
-};
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/graphics/color/BasicColorFactory.h")
+#include "org/allbinary/graphics/color/BasicColorFactory.h"
+#endif
 
 
-GameNotificationEvent* GameNotificationEvent_new(Any* anyType, const char* string, int32_t seconds, BasicColor* basicColor, bool permanent);
 
-void GameNotificationEvent_init(GameNotificationEvent* this, Any* anyType, const char* string, int32_t seconds, BasicColor* basicColor, bool permanent);
-const char* GameNotificationEvent_getString(GameNotificationEvent* this);
-int32_t GameNotificationEvent_getSeconds(GameNotificationEvent* this);
-BasicColor* GameNotificationEvent_getBasicColorP(GameNotificationEvent* this);
-bool GameNotificationEvent_getPermanent(GameNotificationEvent* this);
-void GameNotificationEvent_setString(GameNotificationEvent* this, const char* string);
-void GameNotificationEvent_setBasicColorP(GameNotificationEvent* this, BasicColor* basicColor);
+
+
+
+
+
+
+
+void GameNotificationEvent_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void GameNotificationEvent_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GameNotificationEvent", "AllBinaryEventObject");
+    java_register_method("GameNotificationEvent", "getString", (void*) GameNotificationEvent_getString);
+    java_register_method("GameNotificationEvent", "getSeconds", (void*) GameNotificationEvent_getSeconds);
+    java_register_method("GameNotificationEvent", "getBasicColorP", (void*) GameNotificationEvent_getBasicColorP);
+    java_register_method("GameNotificationEvent", "getPermanent", (void*) GameNotificationEvent_getPermanent);
+    java_register_method("GameNotificationEvent", "setString", (void*) GameNotificationEvent_setString);
+    java_register_method("GameNotificationEvent", "setBasicColorP", (void*) GameNotificationEvent_setBasicColorP);
+}
 
 static void GameNotificationEvent_initFields(GameNotificationEvent* this) {
     this->string = StringUtil_getInstance()->EMPTY_STRING;
@@ -56,7 +50,8 @@ static void GameNotificationEvent_initFields(GameNotificationEvent* this) {
 }
 
 
-void GameNotificationEvent_init(GameNotificationEvent* this, Any* anyType, const char* string, int32_t seconds, BasicColor* basicColor, bool permanent) {
+void GameNotificationEvent_init(GameNotificationEvent* this, void* anyType, const char* string, int32_t seconds, BasicColor* basicColor, bool permanent) {
+    GameNotificationEvent_register();
         AllBinaryEventObject_init(&this->base, anyType);
         GameNotificationEvent_initFields(this);
         GameNotificationEvent_setString(this, string);
@@ -65,8 +60,8 @@ void GameNotificationEvent_init(GameNotificationEvent* this, Any* anyType, const
         this->removeable = permanent;
 }
 
-GameNotificationEvent* GameNotificationEvent_new(Any* anyType, const char* string, int32_t seconds, BasicColor* basicColor, bool permanent) {
-    GameNotificationEvent* this = calloc(1, sizeof(GameNotificationEvent));
+GameNotificationEvent* GameNotificationEvent_new(void* anyType, const char* string, int32_t seconds, BasicColor* basicColor, bool permanent) {
+    GameNotificationEvent* this = java_object_alloc(sizeof(GameNotificationEvent), "GameNotificationEvent");
     GameNotificationEvent_init(this, anyType, string, seconds, basicColor, permanent);
     return this;
 }

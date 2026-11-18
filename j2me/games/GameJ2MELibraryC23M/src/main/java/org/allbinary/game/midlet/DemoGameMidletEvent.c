@@ -1,64 +1,54 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.midlet
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-#include "org/allbinary/logic/util/event/AllBinaryEventObject.h"
-
-typedef struct DemoGameMidletEvent DemoGameMidletEvent;
-struct DemoGameMidletEvent {
-    AllBinaryEventObject base;
-    DemoGameMidletState* demoGameMidletState;
-};
+#include "org/allbinary/game/midlet/DemoGameMidletEvent.h"
+#include "org/allbinary/game/midlet/DemoGameMidletState.h"
 
 
-DemoGameMidletEvent* DemoGameMidletEvent_new(Any* anyType, DemoGameMidletState* demoGameMidletState);
 
-void DemoGameMidletEvent_init(DemoGameMidletEvent* this, Any* anyType, DemoGameMidletState* demoGameMidletState);
-void DemoGameMidletEvent_init(DemoGameMidletEvent* this, Any* anyType);
-void DemoGameMidletEvent_setDemoGameMidletState(DemoGameMidletEvent* this, DemoGameMidletState* demoGameMidletState);
-DemoGameMidletState* DemoGameMidletEvent_getDemoGameMidletState(DemoGameMidletEvent* this);
+
+
+
+
+void DemoGameMidletEvent_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void DemoGameMidletEvent_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("DemoGameMidletEvent", "AllBinaryEventObject");
+    java_register_method("DemoGameMidletEvent", "init", (void*) DemoGameMidletEvent_initMethod);
+    java_register_method("DemoGameMidletEvent", "setDemoGameMidletState", (void*) DemoGameMidletEvent_setDemoGameMidletState);
+    java_register_method("DemoGameMidletEvent", "getDemoGameMidletState", (void*) DemoGameMidletEvent_getDemoGameMidletState);
+}
 
 static void DemoGameMidletEvent_initFields(DemoGameMidletEvent* this) {
     
 }
 
 
-void DemoGameMidletEvent_init(DemoGameMidletEvent* this, Any* anyType, DemoGameMidletState* demoGameMidletState) {
+void DemoGameMidletEvent_init(DemoGameMidletEvent* this, void* anyType, DemoGameMidletState* demoGameMidletState) {
+    DemoGameMidletEvent_register();
         AllBinaryEventObject_init(&this->base, anyType);
         DemoGameMidletEvent_initFields(this);
         this->demoGameMidletState = demoGameMidletState;
 }
 
-DemoGameMidletEvent* DemoGameMidletEvent_new(Any* anyType, DemoGameMidletState* demoGameMidletState) {
-    DemoGameMidletEvent* this = calloc(1, sizeof(DemoGameMidletEvent));
+DemoGameMidletEvent* DemoGameMidletEvent_new(void* anyType, DemoGameMidletState* demoGameMidletState) {
+    DemoGameMidletEvent* this = java_object_alloc(sizeof(DemoGameMidletEvent), "DemoGameMidletEvent");
     DemoGameMidletEvent_init(this, anyType, demoGameMidletState);
     return this;
 }
 
 
-void DemoGameMidletEvent_init(DemoGameMidletEvent* this, Any* anyType) {
-        DemoGameMidletEvent_setSource(this, anyType);
+void DemoGameMidletEvent_initMethod(DemoGameMidletEvent* this, void* anyType) {
+        AllBinaryEventObject_setSource(this, anyType);
 }
 
 

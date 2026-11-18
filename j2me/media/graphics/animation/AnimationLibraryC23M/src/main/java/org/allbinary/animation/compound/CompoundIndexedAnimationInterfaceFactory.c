@@ -1,53 +1,43 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation.compound
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/animation/compound/CompoundIndexedAnimationInterfaceFactory.h"
 #include "org/allbinary/animation/Animation.h"
 #include "org/allbinary/animation/AnimationBehaviorFactory.h"
 #include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
-#include "org/allbinary/logic/communication/log/ForcedLogUtil.h"
 #include "org/allbinary/animation/compound/CompoundAnimationInterfaceFactory.h"
-
-typedef struct CompoundIndexedAnimationInterfaceFactory CompoundIndexedAnimationInterfaceFactory;
-struct CompoundIndexedAnimationInterfaceFactory {
-    CompoundAnimationInterfaceFactory base;
-};
+#include "org/allbinary/animation/compound/CompoundIndexedAnimation.h"
 
 
-CompoundIndexedAnimationInterfaceFactory* CompoundIndexedAnimationInterfaceFactory_new(AnimationInterfaceFactoryInterface** basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory* animationBehaviorFactory);
 
-void CompoundIndexedAnimationInterfaceFactory_init(CompoundIndexedAnimationInterfaceFactory* this, AnimationInterfaceFactoryInterface** basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory* animationBehaviorFactory);
-Animation** CompoundIndexedAnimationInterfaceFactory_createArray(CompoundIndexedAnimationInterfaceFactory* this, int32_t size);
-Animation* CompoundIndexedAnimationInterfaceFactory_createAnimation(CompoundIndexedAnimationInterfaceFactory* this, Animation** animationArray);
+
+
+
+void CompoundIndexedAnimationInterfaceFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void CompoundIndexedAnimationInterfaceFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("CompoundIndexedAnimationInterfaceFactory", "CompoundAnimationInterfaceFactory");
+    java_register_method("CompoundIndexedAnimationInterfaceFactory", "createArray", (void*) CompoundIndexedAnimationInterfaceFactory_createArray);
+    java_register_method("CompoundIndexedAnimationInterfaceFactory", "createAnimation", (void*) CompoundIndexedAnimationInterfaceFactory_createAnimation);
+}
 
 
 void CompoundIndexedAnimationInterfaceFactory_init(CompoundIndexedAnimationInterfaceFactory* this, AnimationInterfaceFactoryInterface** basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory* animationBehaviorFactory) {
+    CompoundIndexedAnimationInterfaceFactory_register();
         CompoundAnimationInterfaceFactory_init(&this->base, basicAnimationInterfaceFactoryInterfaceArray, animationBehaviorFactory);
 }
 
 CompoundIndexedAnimationInterfaceFactory* CompoundIndexedAnimationInterfaceFactory_new(AnimationInterfaceFactoryInterface** basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory* animationBehaviorFactory) {
-    CompoundIndexedAnimationInterfaceFactory* this = calloc(1, sizeof(CompoundIndexedAnimationInterfaceFactory));
+    CompoundIndexedAnimationInterfaceFactory* this = java_object_alloc(sizeof(CompoundIndexedAnimationInterfaceFactory), "CompoundIndexedAnimationInterfaceFactory");
     CompoundIndexedAnimationInterfaceFactory_init(this, basicAnimationInterfaceFactoryInterfaceArray, animationBehaviorFactory);
     return this;
 }
@@ -59,6 +49,6 @@ Animation** CompoundIndexedAnimationInterfaceFactory_createArray(CompoundIndexed
 
 
 Animation* CompoundIndexedAnimationInterfaceFactory_createAnimation(CompoundIndexedAnimationInterfaceFactory* this, Animation** animationArray) {
-        return CompoundIndexedAnimation_new(animationArray, AnimationBehaviorFactory_getOrCreateInstance(this->animationBehaviorFactory));
+        return CompoundIndexedAnimation_new(animationArray, AnimationBehaviorFactory_getOrCreateInstance(this->base.animationBehaviorFactory));
 }
 

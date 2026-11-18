@@ -1,45 +1,33 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.displayable.canvas
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/displayable/canvas/GameRunnable.h"
 #include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
-#include "org/allbinary/game/displayable/canvas/Runnable.h"
-
-typedef struct GameRunnable GameRunnable;
-struct GameRunnable {
-    Runnable Runnable_interface;
-    int32_t WAIT;
-    int32_t FAST;
-    int64_t waitInMillis;
-};
+#if __has_include("org/allbinary/graphics/displayable/DisplayInfoSingleton.h")
+#include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
+#endif
 
 
-GameRunnable* GameRunnable_new(void);
 
-void GameRunnable_init(GameRunnable* this);
-void GameRunnable_run(GameRunnable* this);
-void GameRunnable_processLoopSleep(GameRunnable* this);
+
+
+
+void GameRunnable_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void GameRunnable_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GameRunnable", nullptr);
+    java_register_method("GameRunnable", "run", (void*) GameRunnable_run);
+    java_register_method("GameRunnable", "processLoopSleep", (void*) GameRunnable_processLoopSleep);
+}
 
 static void GameRunnable_initFields(GameRunnable* this) {
     this->WAIT = 240;
@@ -49,11 +37,12 @@ static void GameRunnable_initFields(GameRunnable* this) {
 
 
 void GameRunnable_init(GameRunnable* this) {
+    GameRunnable_register();
     GameRunnable_initFields(this);
 }
 
 GameRunnable* GameRunnable_new(void) {
-    GameRunnable* this = calloc(1, sizeof(GameRunnable));
+    GameRunnable* this = java_object_alloc(sizeof(GameRunnable), "GameRunnable");
     GameRunnable_init(this);
     return this;
 }

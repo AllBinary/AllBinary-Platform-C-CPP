@@ -1,51 +1,39 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation.vector
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
-#include "org/allbinary/animation/Animation.h"
+#include "org/allbinary/animation/vector/RectangleAnimation.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
-#include "org/allbinary/graphics/color/ColorCompositeInterface.h"
-
-typedef struct RectangleAnimation RectangleAnimation;
-struct RectangleAnimation {
-    Animation base;
-    ColorCompositeInterface ColorCompositeInterface_interface;
-    int32_t width;
-    int32_t height;
-};
 
 
-RectangleAnimation* RectangleAnimation_new(int32_t width, int32_t height, BasicColor* basicColor);
 
-void RectangleAnimation_init(RectangleAnimation* this, int32_t width, int32_t height, BasicColor* basicColor);
-void RectangleAnimation_nextFrame(RectangleAnimation* this);
-void RectangleAnimation_paintXY(RectangleAnimation* this, Graphics* graphics, int32_t x, int32_t y);
-void RectangleAnimation_setWidth(RectangleAnimation* this, int32_t width);
-void RectangleAnimation_setHeight(RectangleAnimation* this, int32_t height);
-BasicColor* RectangleAnimation_getBasicColorP(RectangleAnimation* this);
-void RectangleAnimation_setBasicColorP(RectangleAnimation* this, BasicColor* basicColor);
+
+
+
+
+
+
+
+void RectangleAnimation_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void RectangleAnimation_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("RectangleAnimation", "Animation");
+    java_register_method("RectangleAnimation", "nextFrame", (void*) RectangleAnimation_nextFrame);
+    java_register_method("RectangleAnimation", "paintXY", (void*) RectangleAnimation_paintXY);
+    java_register_method("RectangleAnimation", "setWidth", (void*) RectangleAnimation_setWidth);
+    java_register_method("RectangleAnimation", "setHeight", (void*) RectangleAnimation_setHeight);
+    java_register_method("RectangleAnimation", "getBasicColorP", (void*) RectangleAnimation_getBasicColorP);
+    java_register_method("RectangleAnimation", "setBasicColorP", (void*) RectangleAnimation_setBasicColorP);
+}
 
 static void RectangleAnimation_initFields(RectangleAnimation* this) {
     
@@ -54,6 +42,7 @@ static void RectangleAnimation_initFields(RectangleAnimation* this) {
 
 
 void RectangleAnimation_init(RectangleAnimation* this, int32_t width, int32_t height, BasicColor* basicColor) {
+    RectangleAnimation_register();
     Animation_init(&this->base);
     RectangleAnimation_initFields(this);
         this->width = width;
@@ -62,7 +51,7 @@ void RectangleAnimation_init(RectangleAnimation* this, int32_t width, int32_t he
 }
 
 RectangleAnimation* RectangleAnimation_new(int32_t width, int32_t height, BasicColor* basicColor) {
-    RectangleAnimation* this = calloc(1, sizeof(RectangleAnimation));
+    RectangleAnimation* this = java_object_alloc(sizeof(RectangleAnimation), "RectangleAnimation");
     RectangleAnimation_init(this, width, height, basicColor);
     return this;
 }
@@ -73,7 +62,7 @@ void RectangleAnimation_nextFrame(RectangleAnimation* this) {
 
 
 void RectangleAnimation_paintXY(RectangleAnimation* this, Graphics* graphics, int32_t x, int32_t y) {
-        JAVA_CALL(this->basicSetColorUtil, setBasicColorP3, graphics, RectangleAnimation_getBasicColorP(this), RectangleAnimation_getColor(this));
+        BasicColorSetUtil_setBasicColorP3(this->base.basicSetColorUtil, graphics, RectangleAnimation_getBasicColorP(this), Animation_getColor(this));
         Graphics_drawRect(graphics, x, y, this->width, this->height);
 }
 

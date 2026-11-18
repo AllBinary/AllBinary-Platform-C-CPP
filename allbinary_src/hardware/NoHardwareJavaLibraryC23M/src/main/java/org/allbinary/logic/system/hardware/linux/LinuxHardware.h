@@ -84,10 +84,51 @@ bool LinuxHardware_compareTo(LinuxHardware* this, HardwareInterface* hardwareInt
 ABHashtable* LinuxHardware_difference(LinuxHardware* this, HardwareInterface* hardwareInterface);
 
 bool LinuxHardware_isNextHardware(LinuxHardware* this, const char* nextLine);
+#define LinuxHardware_new0 LinuxHardware_new
+#define LinuxHardware_init0 LinuxHardware_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void LinuxHardware_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)
 void LinuxHardware_register(void);
 
+#if __has_include("org/allbinary/logic/system/hardware/components/interfaces/BridgeInterface.h")
+#include "org/allbinary/logic/system/hardware/components/interfaces/BridgeInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/system/hardware/components/interfaces/CpuInterface.h")
+#include "org/allbinary/logic/system/hardware/components/interfaces/CpuInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/system/hardware/components/interfaces/EthernetInterface.h")
+#include "org/allbinary/logic/system/hardware/components/interfaces/EthernetInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/system/hardware/components/interfaces/FireWireInterface.h")
+#include "org/allbinary/logic/system/hardware/components/interfaces/FireWireInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/system/hardware/components/interfaces/HardDriveControllerInterface.h")
+#include "org/allbinary/logic/system/hardware/components/interfaces/HardDriveControllerInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/system/hardware/components/interfaces/HardDriveInterface.h")
+#include "org/allbinary/logic/system/hardware/components/interfaces/HardDriveInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/system/hardware/components/interfaces/HardwareComponentInterface.h")
+#include "org/allbinary/logic/system/hardware/components/interfaces/HardwareComponentInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/system/hardware/components/interfaces/MachineAccessControlAddressInterface.h")
+#include "org/allbinary/logic/system/hardware/components/interfaces/MachineAccessControlAddressInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/system/hardware/components/interfaces/MediaInterface.h")
+#include "org/allbinary/logic/system/hardware/components/interfaces/MediaInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/system/hardware/components/interfaces/MonitorInterface.h")
+#include "org/allbinary/logic/system/hardware/components/interfaces/MonitorInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/system/hardware/components/interfaces/UsbInterface.h")
+#include "org/allbinary/logic/system/hardware/components/interfaces/UsbInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/system/hardware/components/interfaces/VideoInterface.h")
+#include "org/allbinary/logic/system/hardware/components/interfaces/VideoInterface.h"
+#endif
+#if __has_include("org/allbinary/util/ABHashtable.h")
+#include "org/allbinary/util/ABHashtable.h"
+#endif
 
 #endif // ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_LINUX_LINUXHARDWARE_H

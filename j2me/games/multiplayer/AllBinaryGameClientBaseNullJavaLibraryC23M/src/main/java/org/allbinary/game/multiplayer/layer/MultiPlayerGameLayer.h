@@ -1,0 +1,409 @@
+#ifndef ORG_ALLBINARY_GAME_MULTIPLAYER_LAYER_MULTIPLAYERGAMELAYER_H
+#define ORG_ALLBINARY_GAME_MULTIPLAYER_LAYER_MULTIPLAYERGAMELAYER_H
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.multiplayer.layer
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+typedef struct MultiPlayerGameLayerInterface MultiPlayerGameLayerInterface;
+typedef struct RemoteInfo RemoteInfo;
+typedef struct MultiplayerBehavior MultiplayerBehavior;
+typedef struct Group Group;
+typedef struct CollidableDestroyableDamageableLayer CollidableDestroyableDamageableLayer;
+typedef struct Rectangle Rectangle;
+typedef struct ViewPositionBase ViewPositionBase;
+#include "org/allbinary/game/layer/special/CollidableDestroyableDamageableLayer.h"
+#include "org/allbinary/game/multiplayer/layer/MultiPlayerGameLayerInterface.h"
+
+typedef struct MultiPlayerGameLayer MultiPlayerGameLayer;
+struct MultiPlayerGameLayer {
+    CollidableDestroyableDamageableLayer base;
+    MultiPlayerGameLayerInterface MultiPlayerGameLayerInterface_interface;
+};
+
+
+MultiPlayerGameLayer* MultiPlayerGameLayer_new(RemoteInfo* remoteInfo, Group** groupInterface, const char* name, Rectangle* layerInfo, ViewPositionBase* viewPosition);
+
+void MultiPlayerGameLayer_init(MultiPlayerGameLayer* this, RemoteInfo* remoteInfo, Group** groupInterface, const char* name, Rectangle* layerInfo, ViewPositionBase* viewPosition);
+
+MultiplayerBehavior* MultiPlayerGameLayer_getMultiplayerBehavior(MultiPlayerGameLayer* this);
+
+void MultiPlayerGameLayer_setPingInfo(MultiPlayerGameLayer* this, bool show);
+
+void MultiPlayerGameLayer_setFiring(MultiPlayerGameLayer* this, int16_t firing);
+
+int16_t MultiPlayerGameLayer_getFiring(MultiPlayerGameLayer* this);
+#define MultiPlayerGameLayer_new5 MultiPlayerGameLayer_new
+#define MultiPlayerGameLayer_init5 MultiPlayerGameLayer_init
+#ifndef MultiPlayerGameLayer_getNullInstance
+#define MultiPlayerGameLayer_getNullInstance CollidableDestroyableDamageableLayer_getNullInstance
+#endif
+#ifndef MultiPlayerGameLayer_initPosition
+#define MultiPlayerGameLayer_initPosition CollidableDestroyableDamageableLayer_initPosition
+#endif
+#ifndef MultiPlayerGameLayer_initPositionXYZ
+#define MultiPlayerGameLayer_initPositionXYZ CollidableDestroyableDamageableLayer_initPositionXYZ
+#endif
+#ifndef MultiPlayerGameLayer_paint
+#define MultiPlayerGameLayer_paint CollidableDestroyableDamageableLayer_paint
+#endif
+#ifndef MultiPlayerGameLayer_damage
+#define MultiPlayerGameLayer_damage CollidableDestroyableDamageableLayer_damage
+#endif
+#ifndef MultiPlayerGameLayer_getDamage
+#define MultiPlayerGameLayer_getDamage CollidableDestroyableDamageableLayer_getDamage
+#endif
+#ifndef MultiPlayerGameLayer_isDestroyed
+#define MultiPlayerGameLayer_isDestroyed CollidableDestroyableDamageableLayer_isDestroyed
+#endif
+#ifndef MultiPlayerGameLayer_getGroupInterface
+#define MultiPlayerGameLayer_getGroupInterface CollidableDestroyableDamageableLayer_getGroupInterface
+#endif
+#ifndef MultiPlayerGameLayer_setGroupInterface
+#define MultiPlayerGameLayer_setGroupInterface CollidableDestroyableDamageableLayer_setGroupInterface
+#endif
+#ifndef MultiPlayerGameLayer_setAllBinaryGameLayerManager
+#define MultiPlayerGameLayer_setAllBinaryGameLayerManager CollidableDestroyableDamageableLayer_setAllBinaryGameLayerManager
+#endif
+#ifndef MultiPlayerGameLayer_isReadyForExplosion
+#define MultiPlayerGameLayer_isReadyForExplosion CollidableDestroyableDamageableLayer_isReadyForExplosion
+#endif
+#ifndef MultiPlayerGameLayer_setReadyForExplosion
+#define MultiPlayerGameLayer_setReadyForExplosion CollidableDestroyableDamageableLayer_setReadyForExplosion
+#endif
+#ifndef MultiPlayerGameLayer_getInitWidth
+#define MultiPlayerGameLayer_getInitWidth CollidableDestroyableDamageableLayer_getInitWidth
+#endif
+#ifndef MultiPlayerGameLayer_getInitHeight
+#define MultiPlayerGameLayer_getInitHeight CollidableDestroyableDamageableLayer_getInitHeight
+#endif
+#ifndef MultiPlayerGameLayer_getInitX
+#define MultiPlayerGameLayer_getInitX CollidableDestroyableDamageableLayer_getInitX
+#endif
+#ifndef MultiPlayerGameLayer_getInitY
+#define MultiPlayerGameLayer_getInitY CollidableDestroyableDamageableLayer_getInitY
+#endif
+#ifndef MultiPlayerGameLayer_up
+#define MultiPlayerGameLayer_up CollidableDestroyableDamageableLayer_up
+#endif
+#ifndef MultiPlayerGameLayer_down
+#define MultiPlayerGameLayer_down CollidableDestroyableDamageableLayer_down
+#endif
+#ifndef MultiPlayerGameLayer_right
+#define MultiPlayerGameLayer_right CollidableDestroyableDamageableLayer_right
+#endif
+#ifndef MultiPlayerGameLayer_left
+#define MultiPlayerGameLayer_left CollidableDestroyableDamageableLayer_left
+#endif
+#ifndef MultiPlayerGameLayer_strafeLeft
+#define MultiPlayerGameLayer_strafeLeft CollidableDestroyableDamageableLayer_strafeLeft
+#endif
+#ifndef MultiPlayerGameLayer_strafeRight
+#define MultiPlayerGameLayer_strafeRight CollidableDestroyableDamageableLayer_strafeRight
+#endif
+#ifndef MultiPlayerGameLayer_fire
+#define MultiPlayerGameLayer_fire CollidableDestroyableDamageableLayer_fire
+#endif
+#ifndef MultiPlayerGameLayer_special1
+#define MultiPlayerGameLayer_special1 CollidableDestroyableDamageableLayer_special1
+#endif
+#ifndef MultiPlayerGameLayer_special2
+#define MultiPlayerGameLayer_special2 CollidableDestroyableDamageableLayer_special2
+#endif
+#ifndef MultiPlayerGameLayer_special3
+#define MultiPlayerGameLayer_special3 CollidableDestroyableDamageableLayer_special3
+#endif
+#ifndef MultiPlayerGameLayer_special4
+#define MultiPlayerGameLayer_special4 CollidableDestroyableDamageableLayer_special4
+#endif
+#ifndef MultiPlayerGameLayer_special5
+#define MultiPlayerGameLayer_special5 CollidableDestroyableDamageableLayer_special5
+#endif
+#ifndef MultiPlayerGameLayer_upAnalog
+#define MultiPlayerGameLayer_upAnalog CollidableDestroyableDamageableLayer_upAnalog
+#endif
+#ifndef MultiPlayerGameLayer_downAnalog
+#define MultiPlayerGameLayer_downAnalog CollidableDestroyableDamageableLayer_downAnalog
+#endif
+#ifndef MultiPlayerGameLayer_rightAnalog
+#define MultiPlayerGameLayer_rightAnalog CollidableDestroyableDamageableLayer_rightAnalog
+#endif
+#ifndef MultiPlayerGameLayer_leftAnalog
+#define MultiPlayerGameLayer_leftAnalog CollidableDestroyableDamageableLayer_leftAnalog
+#endif
+#ifndef MultiPlayerGameLayer_rightTrigger
+#define MultiPlayerGameLayer_rightTrigger CollidableDestroyableDamageableLayer_rightTrigger
+#endif
+#ifndef MultiPlayerGameLayer_leftTrigger
+#define MultiPlayerGameLayer_leftTrigger CollidableDestroyableDamageableLayer_leftTrigger
+#endif
+#ifndef MultiPlayerGameLayer_onDestroyed
+#define MultiPlayerGameLayer_onDestroyed CollidableDestroyableDamageableLayer_onDestroyed
+#endif
+#ifndef MultiPlayerGameLayer_getPickupBehavior
+#define MultiPlayerGameLayer_getPickupBehavior CollidableDestroyableDamageableLayer_getPickupBehavior
+#endif
+#ifndef MultiPlayerGameLayer_setPickupBehavior
+#define MultiPlayerGameLayer_setPickupBehavior CollidableDestroyableDamageableLayer_setPickupBehavior
+#endif
+#ifndef MultiPlayerGameLayer_addPart
+#define MultiPlayerGameLayer_addPart CollidableDestroyableDamageableLayer_addPart
+#endif
+#ifndef MultiPlayerGameLayer_setPartInterfaceArray
+#define MultiPlayerGameLayer_setPartInterfaceArray CollidableDestroyableDamageableLayer_setPartInterfaceArray
+#endif
+#ifndef MultiPlayerGameLayer_getPartInterfaceArray
+#define MultiPlayerGameLayer_getPartInterfaceArray CollidableDestroyableDamageableLayer_getPartInterfaceArray
+#endif
+#ifndef MultiPlayerGameLayer_toStringAppend
+#define MultiPlayerGameLayer_toStringAppend CollidableDestroyableDamageableLayer_toStringAppend
+#endif
+#ifndef MultiPlayerGameLayer_toString
+#define MultiPlayerGameLayer_toString CollidableDestroyableDamageableLayer_toString
+#endif
+#ifndef MultiPlayerGameLayer_getNullInstance
+#define MultiPlayerGameLayer_getNullInstance CollidableCompositeLayer_getNullInstance
+#endif
+#ifndef MultiPlayerGameLayer_getArtificialIntelligenceInterface
+#define MultiPlayerGameLayer_getArtificialIntelligenceInterface CollidableCompositeLayer_getArtificialIntelligenceInterface
+#endif
+#ifndef MultiPlayerGameLayer_getCollidableInferface
+#define MultiPlayerGameLayer_getCollidableInferface CollidableCompositeLayer_getCollidableInferface
+#endif
+#ifndef MultiPlayerGameLayer_setCollidableInferface
+#define MultiPlayerGameLayer_setCollidableInferface CollidableCompositeLayer_setCollidableInferface
+#endif
+#ifndef MultiPlayerGameLayer_implmentsCollidableInterface
+#define MultiPlayerGameLayer_implmentsCollidableInterface CollidableCompositeLayer_implmentsCollidableInterface
+#endif
+#ifndef MultiPlayerGameLayer_toStringAppend
+#define MultiPlayerGameLayer_toStringAppend CollidableCompositeLayer_toStringAppend
+#endif
+#ifndef MultiPlayerGameLayer_toString
+#define MultiPlayerGameLayer_toString CollidableCompositeLayer_toString
+#endif
+#ifndef MultiPlayerGameLayer_createPaintable
+#define MultiPlayerGameLayer_createPaintable AllBinaryGameLayer_createPaintable
+#endif
+#ifndef MultiPlayerGameLayer_set
+#define MultiPlayerGameLayer_set AllBinaryGameLayer_set
+#endif
+#ifndef MultiPlayerGameLayer_move
+#define MultiPlayerGameLayer_move AllBinaryGameLayer_move
+#endif
+#ifndef MultiPlayerGameLayer_getGameKeyEventList
+#define MultiPlayerGameLayer_getGameKeyEventList AllBinaryGameLayer_getGameKeyEventList
+#endif
+#ifndef MultiPlayerGameLayer_processInput
+#define MultiPlayerGameLayer_processInput AllBinaryGameLayer_processInput
+#endif
+#ifndef MultiPlayerGameLayer_processTick
+#define MultiPlayerGameLayer_processTick AllBinaryGameLayer_processTick
+#endif
+#ifndef MultiPlayerGameLayer_onEvent
+#define MultiPlayerGameLayer_onEvent AllBinaryGameLayer_onEvent
+#endif
+#ifndef MultiPlayerGameLayer_onViewPositionChangeEvent
+#define MultiPlayerGameLayer_onViewPositionChangeEvent AllBinaryGameLayer_onViewPositionChangeEvent
+#endif
+#ifndef MultiPlayerGameLayer_onChangeEvent
+#define MultiPlayerGameLayer_onChangeEvent AllBinaryGameLayer_onChangeEvent
+#endif
+#ifndef MultiPlayerGameLayer_paintFirst
+#define MultiPlayerGameLayer_paintFirst AllBinaryGameLayer_paintFirst
+#endif
+#ifndef MultiPlayerGameLayer_paintDebug
+#define MultiPlayerGameLayer_paintDebug AllBinaryGameLayer_paintDebug
+#endif
+#ifndef MultiPlayerGameLayer_setWidth
+#define MultiPlayerGameLayer_setWidth AllBinaryGameLayer_setWidth
+#endif
+#ifndef MultiPlayerGameLayer_setHeight
+#define MultiPlayerGameLayer_setHeight AllBinaryGameLayer_setHeight
+#endif
+#ifndef MultiPlayerGameLayer_setPosition
+#define MultiPlayerGameLayer_setPosition AllBinaryLayer_setPosition
+#endif
+#ifndef MultiPlayerGameLayer_moveDXYZ
+#define MultiPlayerGameLayer_moveDXYZ AllBinaryLayer_moveDXYZ
+#endif
+#ifndef MultiPlayerGameLayer_getXP
+#define MultiPlayerGameLayer_getXP AllBinaryLayer_getXP
+#endif
+#ifndef MultiPlayerGameLayer_getYP
+#define MultiPlayerGameLayer_getYP AllBinaryLayer_getYP
+#endif
+#ifndef MultiPlayerGameLayer_getZP
+#define MultiPlayerGameLayer_getZP AllBinaryLayer_getZP
+#endif
+#ifndef MultiPlayerGameLayer_getWidth
+#define MultiPlayerGameLayer_getWidth AllBinaryLayer_getWidth
+#endif
+#ifndef MultiPlayerGameLayer_getHeight
+#define MultiPlayerGameLayer_getHeight AllBinaryLayer_getHeight
+#endif
+#ifndef MultiPlayerGameLayer_setVisible
+#define MultiPlayerGameLayer_setVisible AllBinaryLayer_setVisible
+#endif
+#ifndef MultiPlayerGameLayer_isVisible
+#define MultiPlayerGameLayer_isVisible AllBinaryLayer_isVisible
+#endif
+#ifndef MultiPlayerGameLayer_paint
+#define MultiPlayerGameLayer_paint AllBinaryLayer_paint
+#endif
+#ifndef MultiPlayerGameLayer_onChangeEvent
+#define MultiPlayerGameLayer_onChangeEvent AllBinaryLayer_onChangeEvent
+#endif
+#ifndef MultiPlayerGameLayer_paintThreed
+#define MultiPlayerGameLayer_paintThreed AllBinaryLayer_paintThreed
+#endif
+#ifndef MultiPlayerGameLayer_getX2
+#define MultiPlayerGameLayer_getX2 AllBinaryLayer_getX2
+#endif
+#ifndef MultiPlayerGameLayer_getY2
+#define MultiPlayerGameLayer_getY2 AllBinaryLayer_getY2
+#endif
+#ifndef MultiPlayerGameLayer_getZ2
+#define MultiPlayerGameLayer_getZ2 AllBinaryLayer_getZ2
+#endif
+#ifndef MultiPlayerGameLayer_getName
+#define MultiPlayerGameLayer_getName AllBinaryLayer_getName
+#endif
+#ifndef MultiPlayerGameLayer_setHalfWidth
+#define MultiPlayerGameLayer_setHalfWidth AllBinaryLayer_setHalfWidth
+#endif
+#ifndef MultiPlayerGameLayer_getHalfWidth
+#define MultiPlayerGameLayer_getHalfWidth AllBinaryLayer_getHalfWidth
+#endif
+#ifndef MultiPlayerGameLayer_setHalfHeight
+#define MultiPlayerGameLayer_setHalfHeight AllBinaryLayer_setHalfHeight
+#endif
+#ifndef MultiPlayerGameLayer_getHalfHeight
+#define MultiPlayerGameLayer_getHalfHeight AllBinaryLayer_getHalfHeight
+#endif
+#ifndef MultiPlayerGameLayer_getHalfDepth
+#define MultiPlayerGameLayer_getHalfDepth AllBinaryLayer_getHalfDepth
+#endif
+#ifndef MultiPlayerGameLayer_getViewPosition
+#define MultiPlayerGameLayer_getViewPosition AllBinaryLayer_getViewPosition
+#endif
+#ifndef MultiPlayerGameLayer_setViewPosition
+#define MultiPlayerGameLayer_setViewPosition AllBinaryLayer_setViewPosition
+#endif
+#ifndef MultiPlayerGameLayer_getGroupInterface
+#define MultiPlayerGameLayer_getGroupInterface AllBinaryLayer_getGroupInterface
+#endif
+#ifndef MultiPlayerGameLayer_implmentsTickableInterface
+#define MultiPlayerGameLayer_implmentsTickableInterface AllBinaryLayer_implmentsTickableInterface
+#endif
+#ifndef MultiPlayerGameLayer_implmentsGameInputInterface
+#define MultiPlayerGameLayer_implmentsGameInputInterface AllBinaryLayer_implmentsGameInputInterface
+#endif
+#ifndef MultiPlayerGameLayer_implmentsArtificialIntelligenceCompositeInterface
+#define MultiPlayerGameLayer_implmentsArtificialIntelligenceCompositeInterface AllBinaryLayer_implmentsArtificialIntelligenceCompositeInterface
+#endif
+#ifndef MultiPlayerGameLayer_implmentsCollidableInterface
+#define MultiPlayerGameLayer_implmentsCollidableInterface AllBinaryLayer_implmentsCollidableInterface
+#endif
+#ifndef MultiPlayerGameLayer_implementsThreedInterface
+#define MultiPlayerGameLayer_implementsThreedInterface AllBinaryLayer_implementsThreedInterface
+#endif
+#ifndef MultiPlayerGameLayer_getType
+#define MultiPlayerGameLayer_getType AllBinaryLayer_getType
+#endif
+#ifndef MultiPlayerGameLayer_getMultiPlayerType
+#define MultiPlayerGameLayer_getMultiPlayerType AllBinaryLayer_getMultiPlayerType
+#endif
+#ifndef MultiPlayerGameLayer_toStringAppend
+#define MultiPlayerGameLayer_toStringAppend AllBinaryLayer_toStringAppend
+#endif
+#ifndef MultiPlayerGameLayer_toString
+#define MultiPlayerGameLayer_toString AllBinaryLayer_toString
+#endif
+#ifndef MultiPlayerGameLayer_setPosition
+#define MultiPlayerGameLayer_setPosition Layer_setPosition
+#endif
+#ifndef MultiPlayerGameLayer_moveDXY
+#define MultiPlayerGameLayer_moveDXY Layer_moveDXY
+#endif
+#ifndef MultiPlayerGameLayer_moveDXYZ
+#define MultiPlayerGameLayer_moveDXYZ Layer_moveDXYZ
+#endif
+#ifndef MultiPlayerGameLayer_getXP
+#define MultiPlayerGameLayer_getXP Layer_getXP
+#endif
+#ifndef MultiPlayerGameLayer_getYP
+#define MultiPlayerGameLayer_getYP Layer_getYP
+#endif
+#ifndef MultiPlayerGameLayer_getZP
+#define MultiPlayerGameLayer_getZP Layer_getZP
+#endif
+#ifndef MultiPlayerGameLayer_getWidth
+#define MultiPlayerGameLayer_getWidth Layer_getWidth
+#endif
+#ifndef MultiPlayerGameLayer_getHeight
+#define MultiPlayerGameLayer_getHeight Layer_getHeight
+#endif
+#ifndef MultiPlayerGameLayer_getDepth
+#define MultiPlayerGameLayer_getDepth Layer_getDepth
+#endif
+#ifndef MultiPlayerGameLayer_setVisible
+#define MultiPlayerGameLayer_setVisible Layer_setVisible
+#endif
+#ifndef MultiPlayerGameLayer_isVisible
+#define MultiPlayerGameLayer_isVisible Layer_isVisible
+#endif
+#ifndef MultiPlayerGameLayer_paint
+#define MultiPlayerGameLayer_paint Layer_paint
+#endif
+#ifndef MultiPlayerGameLayer_setLayerWidth
+#define MultiPlayerGameLayer_setLayerWidth Layer_setLayerWidth
+#endif
+#ifndef MultiPlayerGameLayer_setLayerHeight
+#define MultiPlayerGameLayer_setLayerHeight Layer_setLayerHeight
+#endif
+#ifndef MultiPlayerGameLayer_toStringAppend
+#define MultiPlayerGameLayer_toStringAppend Layer_toStringAppend
+#endif
+#ifndef MultiPlayerGameLayer_setSize
+#define MultiPlayerGameLayer_setSize Layer_setSize
+#endif
+#ifndef MultiPlayerGameLayer_getX
+#define MultiPlayerGameLayer_getX Layer_getX
+#endif
+#ifndef MultiPlayerGameLayer_getY
+#define MultiPlayerGameLayer_getY Layer_getY
+#endif
+#ifndef MultiPlayerGameLayer_move
+#define MultiPlayerGameLayer_move Layer_move
+#endif
+#ifndef MultiPlayerGameLayer_setPosition
+#define MultiPlayerGameLayer_setPosition Layer_setPosition
+#endif
+// Runs the Java static initialization of the class once. Reads of its static fields call it first.
+void MultiPlayerGameLayer_staticInit(void);
+// Registers the class, its superclass, and its methods for the interface calls (java_register_method)
+void MultiPlayerGameLayer_register(void);
+
+
+#endif // ORG_ALLBINARY_GAME_MULTIPLAYER_LAYER_MULTIPLAYERGAMELAYER_H

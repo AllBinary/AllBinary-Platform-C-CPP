@@ -1,48 +1,37 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2022 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- * 
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.displayable.screen
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/graphics/displayable/screen/AboutPaintableFactory.h"
 #include "org/allbinary/game/paint/AboutPaintable.h"
 #include "org/allbinary/graphics/paint/NullPaintable.h"
 #include "org/allbinary/graphics/paint/Paintable.h"
 #include "org/allbinary/logic/string/StringUtil.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/game/paint/AboutPaintable.h")
+#include "org/allbinary/game/paint/AboutPaintable.h"
+#endif
 
-typedef struct AboutPaintableFactory AboutPaintableFactory;
-struct AboutPaintableFactory {
-    Paintable** paintableArray;
-};
 
 static AboutPaintableFactory* AboutPaintableFactory_instance;
 
-AboutPaintableFactory* AboutPaintableFactory_new(void);
-AboutPaintableFactory* AboutPaintableFactory_getInstance(void);
 
-void AboutPaintableFactory_init(AboutPaintableFactory* this);
 
-// Static fields with runtime initializers: call this once at startup
 void AboutPaintableFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     AboutPaintableFactory_instance = AboutPaintableFactory_new();
+}
+
+void AboutPaintableFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("AboutPaintableFactory", nullptr);
 }
 
 static void AboutPaintableFactory_initFields(AboutPaintableFactory* this) {
@@ -51,11 +40,12 @@ static void AboutPaintableFactory_initFields(AboutPaintableFactory* this) {
 
 
 AboutPaintableFactory* AboutPaintableFactory_getInstance(void) {
-        return AboutPaintableFactory_instance;
+        return (AboutPaintableFactory_staticInit(), AboutPaintableFactory_instance);
 }
 
 
 void AboutPaintableFactory_init(AboutPaintableFactory* this) {
+    AboutPaintableFactory_register();
     AboutPaintableFactory_initFields(this);
         const char** INFO = ((const char**) java_array_from(sizeof(const char*), sizeof((const char*[]){ "Built with the", "AllBinary Platform", StringUtil_getInstance()->EMPTY_STRING, "Comments or Questions:", "support@allbinary.com" }) / sizeof(const char*), (const char*[]){ "Built with the", "AllBinary Platform", StringUtil_getInstance()->EMPTY_STRING, "Comments or Questions:", "support@allbinary.com" }));
         const char** DEVELOPERS = ((const char**) java_array_from(sizeof(const char*), sizeof((const char*[]){ "Developed By:", "Travis Berthelot" }) / sizeof(const char*), (const char*[]){ "Developed By:", "Travis Berthelot" }));
@@ -63,7 +53,7 @@ void AboutPaintableFactory_init(AboutPaintableFactory* this) {
 }
 
 AboutPaintableFactory* AboutPaintableFactory_new(void) {
-    AboutPaintableFactory* this = calloc(1, sizeof(AboutPaintableFactory));
+    AboutPaintableFactory* this = java_object_alloc(sizeof(AboutPaintableFactory), "AboutPaintableFactory");
     AboutPaintableFactory_init(this);
     return this;
 }

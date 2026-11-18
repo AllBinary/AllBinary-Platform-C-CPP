@@ -1,52 +1,42 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input.motion.button
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/input/motion/button/CurrentlyPressedTouchButtonSingleton.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
+#include "org/allbinary/input/motion/button/TouchButtonInput.h"
 
-typedef struct CurrentlyPressedTouchButtonSingleton CurrentlyPressedTouchButtonSingleton;
-struct CurrentlyPressedTouchButtonSingleton {
-    BasicArrayList* list;
-};
 
 static CurrentlyPressedTouchButtonSingleton* CurrentlyPressedTouchButtonSingleton_instance;
 
-CurrentlyPressedTouchButtonSingleton* CurrentlyPressedTouchButtonSingleton_new(void);
-CurrentlyPressedTouchButtonSingleton* CurrentlyPressedTouchButtonSingleton_getInstance(void);
 
-void CurrentlyPressedTouchButtonSingleton_init(CurrentlyPressedTouchButtonSingleton* this);
-int32_t CurrentlyPressedTouchButtonSingleton_size(CurrentlyPressedTouchButtonSingleton* this);
-TouchButtonInput* CurrentlyPressedTouchButtonSingleton_removeAt(CurrentlyPressedTouchButtonSingleton* this, int32_t index);
-bool CurrentlyPressedTouchButtonSingleton_remove(CurrentlyPressedTouchButtonSingleton* this, TouchButtonInput* touchButtonInput);
-TouchButtonInput* CurrentlyPressedTouchButtonSingleton_get(CurrentlyPressedTouchButtonSingleton* this, int32_t index);
-bool CurrentlyPressedTouchButtonSingleton_contains(CurrentlyPressedTouchButtonSingleton* this, TouchButtonInput* touchButtonInput);
-void CurrentlyPressedTouchButtonSingleton_add(CurrentlyPressedTouchButtonSingleton* this, TouchButtonInput* touchButtonInput);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+
+
 void CurrentlyPressedTouchButtonSingleton_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     CurrentlyPressedTouchButtonSingleton_instance = CurrentlyPressedTouchButtonSingleton_new();
+}
+
+void CurrentlyPressedTouchButtonSingleton_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("CurrentlyPressedTouchButtonSingleton", nullptr);
+    java_register_method("CurrentlyPressedTouchButtonSingleton", "size", (void*) CurrentlyPressedTouchButtonSingleton_size);
+    java_register_method("CurrentlyPressedTouchButtonSingleton", "removeAt", (void*) CurrentlyPressedTouchButtonSingleton_removeAt);
+    java_register_method("CurrentlyPressedTouchButtonSingleton", "remove", (void*) CurrentlyPressedTouchButtonSingleton_remove);
+    java_register_method("CurrentlyPressedTouchButtonSingleton", "get", (void*) CurrentlyPressedTouchButtonSingleton_get);
+    java_register_method("CurrentlyPressedTouchButtonSingleton", "contains", (void*) CurrentlyPressedTouchButtonSingleton_contains);
+    java_register_method("CurrentlyPressedTouchButtonSingleton", "add", (void*) CurrentlyPressedTouchButtonSingleton_add);
 }
 
 static void CurrentlyPressedTouchButtonSingleton_initFields(CurrentlyPressedTouchButtonSingleton* this) {
@@ -55,16 +45,17 @@ static void CurrentlyPressedTouchButtonSingleton_initFields(CurrentlyPressedTouc
 
 
 CurrentlyPressedTouchButtonSingleton* CurrentlyPressedTouchButtonSingleton_getInstance(void) {
-        return CurrentlyPressedTouchButtonSingleton_instance;
+        return (CurrentlyPressedTouchButtonSingleton_staticInit(), CurrentlyPressedTouchButtonSingleton_instance);
 }
 
 
 void CurrentlyPressedTouchButtonSingleton_init(CurrentlyPressedTouchButtonSingleton* this) {
+    CurrentlyPressedTouchButtonSingleton_register();
     CurrentlyPressedTouchButtonSingleton_initFields(this);
 }
 
 CurrentlyPressedTouchButtonSingleton* CurrentlyPressedTouchButtonSingleton_new(void) {
-    CurrentlyPressedTouchButtonSingleton* this = calloc(1, sizeof(CurrentlyPressedTouchButtonSingleton));
+    CurrentlyPressedTouchButtonSingleton* this = java_object_alloc(sizeof(CurrentlyPressedTouchButtonSingleton), "CurrentlyPressedTouchButtonSingleton");
     CurrentlyPressedTouchButtonSingleton_init(this);
     return this;
 }

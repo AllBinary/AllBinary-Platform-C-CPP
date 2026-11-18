@@ -52,6 +52,8 @@ bool OperatingSystems_isUnknownSpecificOSAllowed(OperatingSystems* this);
 void OperatingSystems_setUnknownSpecificOSAllowed(OperatingSystems* this, bool aUnknownSpecificOSAllowed);
 
 OperatingSystems* OperatingSystems_getInstance(void);
+#define OperatingSystems_new0 OperatingSystems_new
+#define OperatingSystems_init0 OperatingSystems_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void OperatingSystems_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

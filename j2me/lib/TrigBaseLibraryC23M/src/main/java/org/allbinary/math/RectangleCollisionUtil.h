@@ -44,6 +44,8 @@ void RectangleCollisionUtil_init(RectangleCollisionUtil* this);
 bool RectangleCollisionUtil_isCollision(RectangleCollisionUtil* this, int32_t rectX1, int32_t rectY1, int32_t rectX2, int32_t rectY2, int32_t rect2X1, int32_t rect2Y1, int32_t rect2X2, int32_t rect2Y2);
 
 bool RectangleCollisionUtil_isInside(RectangleCollisionUtil* this, int32_t rectX1, int32_t rectY1, int32_t rectX2, int32_t rectY2, int32_t x, int32_t y);
+#define RectangleCollisionUtil_new0 RectangleCollisionUtil_new
+#define RectangleCollisionUtil_init0 RectangleCollisionUtil_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void RectangleCollisionUtil_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

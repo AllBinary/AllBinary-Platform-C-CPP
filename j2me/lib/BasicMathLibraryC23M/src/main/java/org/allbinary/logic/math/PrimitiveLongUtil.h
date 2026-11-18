@@ -61,6 +61,8 @@ uint16_t* PrimitiveLongUtil_getCharArray(PrimitiveLongUtil* this, int32_t value)
 int32_t PrimitiveLongUtil_getCurrentTotalDigits(PrimitiveLongUtil* this);
 
 int32_t PrimitiveLongUtil_getMaxDigits(PrimitiveLongUtil* this);
+#define PrimitiveLongUtil_new2 PrimitiveLongUtil_new
+#define PrimitiveLongUtil_init2 PrimitiveLongUtil_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void PrimitiveLongUtil_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

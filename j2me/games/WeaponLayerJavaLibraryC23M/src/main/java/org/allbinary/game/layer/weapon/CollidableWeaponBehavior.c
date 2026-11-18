@@ -1,28 +1,5 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.layer.weapon
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/layer/weapon/CollidableWeaponBehavior.h"
 #include "org/allbinary/game/collision/CollidableHelperFactory.h"
 #include "org/allbinary/game/collision/CollidableInterfaceCompositeInterface.h"
 #include "org/allbinary/game/collision/CollisionHelper.h"
@@ -30,35 +7,56 @@
 #include "org/allbinary/game/collision/CollisionTypeFactory.h"
 #include "org/allbinary/game/combat/damage/DamageableInterface.h"
 #include "org/allbinary/game/layer/CollidableCompositeLayer.h"
-#include "org/allbinary/game/layer/special/CollidableDestroyableDamageableBehavior.h"
 #include "org/allbinary/layer/AllBinaryLayer.h"
 #include "org/allbinary/logic/NullUtil.h"
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/game/collision/CollisionTypeFactory.h")
+#include "org/allbinary/game/collision/CollisionTypeFactory.h"
+#endif
 
-typedef struct CollidableWeaponBehavior CollidableWeaponBehavior;
-struct CollidableWeaponBehavior {
-    CollidableDestroyableDamageableBehavior base;
-    bool collided;
-    CollisionHelper* collisionHelper;
-};
 
-static Any* CollidableWeaponBehavior_NULL_COLLIDABLE_WEAPON_BEHAVIOR;
+static void* CollidableWeaponBehavior_NULL_COLLIDABLE_WEAPON_BEHAVIOR;
 
-CollidableWeaponBehavior* CollidableWeaponBehavior_new(bool collidable);
-CollidableWeaponBehavior* CollidableWeaponBehavior_getNullInstance(void);
 
-void CollidableWeaponBehavior_init(CollidableWeaponBehavior* this, bool collidable);
-void CollidableWeaponBehavior_init(CollidableWeaponBehavior* this, AllBinaryLayer* sourceLayerInterface);
-bool CollidableWeaponBehavior_isCollision(CollidableWeaponBehavior* this, CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collisionLayer);
-void CollidableWeaponBehavior_collide(CollidableWeaponBehavior* this, CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collisionLayer);
-bool CollidableWeaponBehavior_isCollisionInterface(CollidableWeaponBehavior* this, CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface);
-void CollidableWeaponBehavior_collideInterface(CollidableWeaponBehavior* this, CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface);
-CollisionType* CollidableWeaponBehavior_getCollisionTypeWith(CollidableWeaponBehavior* this, AllBinaryLayer* layerInterface);
-bool CollidableWeaponBehavior_isCollided(CollidableWeaponBehavior* this);
+
+
+
+
+
+
+
+
 static void CollidableWeaponBehavior_setCollided(CollidableWeaponBehavior* this, bool collided);
 
-// Static fields with runtime initializers: call this once at startup
 void CollidableWeaponBehavior_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     CollidableWeaponBehavior_NULL_COLLIDABLE_WEAPON_BEHAVIOR = NullUtil_getInstance()->NULL_OBJECT;
+}
+
+void CollidableWeaponBehavior_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("CollidableWeaponBehavior", "CollidableDestroyableDamageableBehavior");
+    java_register_method("CollidableWeaponBehavior", "init", (void*) CollidableWeaponBehavior_initMethod);
+    java_register_method("CollidableWeaponBehavior", "isCollision", (void*) CollidableWeaponBehavior_isCollision);
+    java_register_method("CollidableWeaponBehavior", "collide", (void*) CollidableWeaponBehavior_collide);
+    java_register_method("CollidableWeaponBehavior", "isCollisionInterface", (void*) CollidableWeaponBehavior_isCollisionInterface);
+    java_register_method("CollidableWeaponBehavior", "collideInterface", (void*) CollidableWeaponBehavior_collideInterface);
+    java_register_method("CollidableWeaponBehavior", "getCollisionTypeWith", (void*) CollidableWeaponBehavior_getCollisionTypeWith);
+    java_register_method("CollidableWeaponBehavior", "isCollided", (void*) CollidableWeaponBehavior_isCollided);
+    java_register_method("CollidableWeaponBehavior", "setCollided", (void*) CollidableWeaponBehavior_setCollided);
 }
 
 static void CollidableWeaponBehavior_initFields(CollidableWeaponBehavior* this) {
@@ -68,29 +66,30 @@ static void CollidableWeaponBehavior_initFields(CollidableWeaponBehavior* this) 
 
 
 CollidableWeaponBehavior* CollidableWeaponBehavior_getNullInstance(void) {
-        if (CollidableWeaponBehavior_NULL_COLLIDABLE_WEAPON_BEHAVIOR == NullUtil_getInstance()->NULL_OBJECT) {
+        if ((CollidableWeaponBehavior_staticInit(), CollidableWeaponBehavior_NULL_COLLIDABLE_WEAPON_BEHAVIOR) == NullUtil_getInstance()->NULL_OBJECT) {
             CollidableWeaponBehavior_NULL_COLLIDABLE_WEAPON_BEHAVIOR = CollidableWeaponBehavior_new(false);
         }
-        return ((CollidableWeaponBehavior*) CollidableWeaponBehavior_NULL_COLLIDABLE_WEAPON_BEHAVIOR);
+        return ((CollidableWeaponBehavior*) (CollidableWeaponBehavior_staticInit(), CollidableWeaponBehavior_NULL_COLLIDABLE_WEAPON_BEHAVIOR));
 }
 
 
 void CollidableWeaponBehavior_init(CollidableWeaponBehavior* this, bool collidable) {
+    CollidableWeaponBehavior_register();
         CollidableDestroyableDamageableBehavior_init(&this->base, collidable);
         CollidableWeaponBehavior_initFields(this);
         CollidableWeaponBehavior_setCollided(this, false);
-        CollidableWeaponBehavior_setCollidable(this, true);
+        CollidableBaseBehavior_setCollidable(this, true);
         this->collisionHelper = CollidableHelperFactory_getInstance();
 }
 
 CollidableWeaponBehavior* CollidableWeaponBehavior_new(bool collidable) {
-    CollidableWeaponBehavior* this = calloc(1, sizeof(CollidableWeaponBehavior));
+    CollidableWeaponBehavior* this = java_object_alloc(sizeof(CollidableWeaponBehavior), "CollidableWeaponBehavior");
     CollidableWeaponBehavior_init(this, collidable);
     return this;
 }
 
 
-void CollidableWeaponBehavior_init(CollidableWeaponBehavior* this, AllBinaryLayer* sourceLayerInterface) {
+void CollidableWeaponBehavior_initMethod(CollidableWeaponBehavior* this, AllBinaryLayer* sourceLayerInterface) {
         CollidableWeaponBehavior_setCollided(this, false);
         CollisionHelper_setOwnerLayerInterface(this->collisionHelper, sourceLayerInterface);
 }
@@ -98,7 +97,7 @@ void CollidableWeaponBehavior_init(CollidableWeaponBehavior* this, AllBinaryLaye
 
 bool CollidableWeaponBehavior_isCollision(CollidableWeaponBehavior* this, CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collisionLayer) {
         if (CollisionHelper_isCollidable(this->collisionHelper, collisionLayer)) {
-            if (CollidableCompositeLayer_getGroupInterface(ownerLayer)[0] != CollidableCompositeLayer_getGroupInterface(collisionLayer)[0]) {
+            if (AllBinaryLayer_getGroupInterface(ownerLayer)[0] != AllBinaryLayer_getGroupInterface(collisionLayer)[0]) {
                 return CollidableDestroyableDamageableBehavior_isCollision((&this->base), ownerLayer, collisionLayer);
             }
         }
@@ -116,8 +115,8 @@ void CollidableWeaponBehavior_collide(CollidableWeaponBehavior* this, Collidable
 bool CollidableWeaponBehavior_isCollisionInterface(CollidableWeaponBehavior* this, CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface) {
         if (CollisionHelper_isCollidable(this->collisionHelper, ((CollidableCompositeLayer*) collidableInterfaceCompositeInterface))) {
             AllBinaryLayer* layerInterface = ((AllBinaryLayer*) collidableInterfaceCompositeInterface);
-            if (CollidableCompositeLayer_getGroupInterface(ownerLayer)[0] != AllBinaryLayer_getGroupInterface(layerInterface)[0]) {
-                if (JAVA_CALL(this->layerCollisionUtil, isCollision, ownerLayer, layerInterface)) {
+            if (AllBinaryLayer_getGroupInterface(ownerLayer)[0] != AllBinaryLayer_getGroupInterface(layerInterface)[0]) {
+                if (LayerCollisionUtil_isCollision(this->base.base.layerCollisionUtil, ownerLayer, layerInterface)) {
                     return true;
                 }
             }
@@ -130,7 +129,7 @@ bool CollidableWeaponBehavior_isCollisionInterface(CollidableWeaponBehavior* thi
 void CollidableWeaponBehavior_collideInterface(CollidableWeaponBehavior* this, CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface) {
         DamageableInterface* ownerDamageableInterface = ((DamageableInterface*) ownerLayer);
         DamageableInterface* damageableInterface = ((DamageableInterface*) collidableInterfaceCompositeInterface);
-        JAVA_CALL(this->damageUtil, process, ownerDamageableInterface, damageableInterface);
+        DamageUtil_process(this->base.damageUtil, ownerDamageableInterface, damageableInterface);
         this->collided = true;
 }
 

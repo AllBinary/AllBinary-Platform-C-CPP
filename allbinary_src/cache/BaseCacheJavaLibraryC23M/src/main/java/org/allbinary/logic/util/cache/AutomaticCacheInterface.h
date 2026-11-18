@@ -40,6 +40,9 @@ void AutomaticCacheInterface_staticInit(void);
 static inline CacheableInterface* AutomaticCacheInterface_get(void* this, void* key) {
     return ((__typeof__(((AutomaticCacheInterface*) nullptr)->get)) java_method_of(this, "get"))(this, key);
 }
+#define AutomaticCacheInterface_add CacheInterface_add
+#define AutomaticCacheInterface_addArray CacheInterface_addArray
+#define AutomaticCacheInterface_clear CacheInterface_clear
 
 
 #endif // ORG_ALLBINARY_LOGIC_UTIL_CACHE_AUTOMATICCACHEINTERFACE_H

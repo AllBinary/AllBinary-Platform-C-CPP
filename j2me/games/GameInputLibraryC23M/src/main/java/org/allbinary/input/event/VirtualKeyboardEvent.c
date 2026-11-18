@@ -1,47 +1,34 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input.event
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-#include "org/allbinary/logic/util/event/AllBinaryEventObject.h"
-
-typedef struct VirtualKeyboardEvent VirtualKeyboardEvent;
-struct VirtualKeyboardEvent {
-    AllBinaryEventObject base;
-};
+#include "org/allbinary/input/event/VirtualKeyboardEvent.h"
 
 
-VirtualKeyboardEvent* VirtualKeyboardEvent_new(Any* anyType);
-
-void VirtualKeyboardEvent_init(VirtualKeyboardEvent* this, Any* anyType);
 
 
-void VirtualKeyboardEvent_init(VirtualKeyboardEvent* this, Any* anyType) {
+void VirtualKeyboardEvent_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void VirtualKeyboardEvent_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("VirtualKeyboardEvent", "AllBinaryEventObject");
+}
+
+
+void VirtualKeyboardEvent_init(VirtualKeyboardEvent* this, void* anyType) {
+    VirtualKeyboardEvent_register();
         AllBinaryEventObject_init(&this->base, anyType);
 }
 
-VirtualKeyboardEvent* VirtualKeyboardEvent_new(Any* anyType) {
-    VirtualKeyboardEvent* this = calloc(1, sizeof(VirtualKeyboardEvent));
+VirtualKeyboardEvent* VirtualKeyboardEvent_new(void* anyType) {
+    VirtualKeyboardEvent* this = java_object_alloc(sizeof(VirtualKeyboardEvent), "VirtualKeyboardEvent");
     VirtualKeyboardEvent_init(this, anyType);
     return this;
 }

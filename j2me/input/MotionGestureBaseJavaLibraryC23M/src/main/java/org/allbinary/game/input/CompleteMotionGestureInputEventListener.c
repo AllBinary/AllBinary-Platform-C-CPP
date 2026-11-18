@@ -1,32 +1,38 @@
 // Generated Code Do Not Modify
-// package org.allbinary.game.input
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/input/CompleteMotionGestureInputEventListener.h"
 #include "org/allbinary/logic/util/event/AllBinaryEventObject.h"
 #include "org/allbinary/game/input/CompleteMotionGestureInputEventListenerInterface.h"
-
-typedef struct CompleteMotionGestureInputEventListener CompleteMotionGestureInputEventListener;
-struct CompleteMotionGestureInputEventListener {
-    CompleteMotionGestureInputEventListenerInterface CompleteMotionGestureInputEventListenerInterface_interface;
-};
+#include "org/allbinary/game/input/CompleteMotionGestureInputEvent.h"
 
 
-CompleteMotionGestureInputEventListener* CompleteMotionGestureInputEventListener_new(void);
-void CompleteMotionGestureInputEventListener_onEvent(CompleteMotionGestureInputEventListener* this, AllBinaryEventObject* eventObject);
-void CompleteMotionGestureInputEventListener_onCompleteMotionGestureInputEvent(CompleteMotionGestureInputEventListener* this, CompleteMotionGestureInputEvent* completeMotionGestureInputEvent);
+
+
+
+void CompleteMotionGestureInputEventListener_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void CompleteMotionGestureInputEventListener_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("CompleteMotionGestureInputEventListener", nullptr);
+    java_register_method("CompleteMotionGestureInputEventListener", "onEvent", (void*) CompleteMotionGestureInputEventListener_onEvent);
+    java_register_method("CompleteMotionGestureInputEventListener", "onCompleteMotionGestureInputEvent", (void*) CompleteMotionGestureInputEventListener_onCompleteMotionGestureInputEvent);
+}
 
 void CompleteMotionGestureInputEventListener_init(CompleteMotionGestureInputEventListener* this) {
+    CompleteMotionGestureInputEventListener_register();
 }
 
 CompleteMotionGestureInputEventListener* CompleteMotionGestureInputEventListener_new(void) {
-    CompleteMotionGestureInputEventListener* this = calloc(1, sizeof(CompleteMotionGestureInputEventListener));
+    CompleteMotionGestureInputEventListener* this = java_object_alloc(sizeof(CompleteMotionGestureInputEventListener), "CompleteMotionGestureInputEventListener");
     CompleteMotionGestureInputEventListener_init(this);
     return this;
 }

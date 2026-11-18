@@ -1,50 +1,41 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation.compound
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/animation/compound/SimultaneousCompoundIndexAnimationInterfaceFactory.h"
 #include "org/allbinary/animation/Animation.h"
 #include "org/allbinary/animation/AnimationBehaviorFactory.h"
-#include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
 #include "org/allbinary/animation/IndexedAnimation.h"
-#include "org/allbinary/logic/communication/log/ForcedLogUtil.h"
 #include "org/allbinary/media/ScaleProperties.h"
-
-typedef struct SimultaneousCompoundIndexAnimationInterfaceFactory SimultaneousCompoundIndexAnimationInterfaceFactory;
-struct SimultaneousCompoundIndexAnimationInterfaceFactory {
-    AnimationInterfaceFactoryInterface AnimationInterfaceFactoryInterface_interface;
-    AnimationInterfaceFactoryInterface** basicAnimationInterfaceFactoryInterfaceArray;
-    AnimationBehaviorFactory* animationBehaviorFactory;
-};
+#include "org/allbinary/animation/compound/SimultaneousCompoundIndexAnimation.h"
+#if __has_include("org/allbinary/animation/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
+#endif
 
 
-SimultaneousCompoundIndexAnimationInterfaceFactory* SimultaneousCompoundIndexAnimationInterfaceFactory_new(AnimationInterfaceFactoryInterface** basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory* animationBehaviorFactory);
 
-void SimultaneousCompoundIndexAnimationInterfaceFactory_init(SimultaneousCompoundIndexAnimationInterfaceFactory* this, AnimationInterfaceFactoryInterface** basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory* animationBehaviorFactory);
-Animation* SimultaneousCompoundIndexAnimationInterfaceFactory_getInstance(SimultaneousCompoundIndexAnimationInterfaceFactory* this, int32_t instanceId);
-Animation* SimultaneousCompoundIndexAnimationInterfaceFactory_getOrCreate(SimultaneousCompoundIndexAnimationInterfaceFactory* this, IndexedAnimation** animationInterfaceArray);
-AnimationInterfaceFactoryInterface** SimultaneousCompoundIndexAnimationInterfaceFactory_getBasicAnimationInterfaceFactoryInterfaceArray(SimultaneousCompoundIndexAnimationInterfaceFactory* this);
-void SimultaneousCompoundIndexAnimationInterfaceFactory_setInitialScale(SimultaneousCompoundIndexAnimationInterfaceFactory* this, ScaleProperties* scaleProperties);
+
+
+
+
+
+void SimultaneousCompoundIndexAnimationInterfaceFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void SimultaneousCompoundIndexAnimationInterfaceFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("SimultaneousCompoundIndexAnimationInterfaceFactory", nullptr);
+    java_register_method("SimultaneousCompoundIndexAnimationInterfaceFactory", "getInstance", (void*) SimultaneousCompoundIndexAnimationInterfaceFactory_getInstance);
+    java_register_method("SimultaneousCompoundIndexAnimationInterfaceFactory", "getOrCreate", (void*) SimultaneousCompoundIndexAnimationInterfaceFactory_getOrCreate);
+    java_register_method("SimultaneousCompoundIndexAnimationInterfaceFactory", "getBasicAnimationInterfaceFactoryInterfaceArray", (void*) SimultaneousCompoundIndexAnimationInterfaceFactory_getBasicAnimationInterfaceFactoryInterfaceArray);
+    java_register_method("SimultaneousCompoundIndexAnimationInterfaceFactory", "setInitialScale", (void*) SimultaneousCompoundIndexAnimationInterfaceFactory_setInitialScale);
+}
 
 static void SimultaneousCompoundIndexAnimationInterfaceFactory_initFields(SimultaneousCompoundIndexAnimationInterfaceFactory* this) {
     
@@ -53,13 +44,14 @@ static void SimultaneousCompoundIndexAnimationInterfaceFactory_initFields(Simult
 
 
 void SimultaneousCompoundIndexAnimationInterfaceFactory_init(SimultaneousCompoundIndexAnimationInterfaceFactory* this, AnimationInterfaceFactoryInterface** basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory* animationBehaviorFactory) {
+    SimultaneousCompoundIndexAnimationInterfaceFactory_register();
     SimultaneousCompoundIndexAnimationInterfaceFactory_initFields(this);
         this->basicAnimationInterfaceFactoryInterfaceArray = basicAnimationInterfaceFactoryInterfaceArray;
         this->animationBehaviorFactory = animationBehaviorFactory;
 }
 
 SimultaneousCompoundIndexAnimationInterfaceFactory* SimultaneousCompoundIndexAnimationInterfaceFactory_new(AnimationInterfaceFactoryInterface** basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory* animationBehaviorFactory) {
-    SimultaneousCompoundIndexAnimationInterfaceFactory* this = calloc(1, sizeof(SimultaneousCompoundIndexAnimationInterfaceFactory));
+    SimultaneousCompoundIndexAnimationInterfaceFactory* this = java_object_alloc(sizeof(SimultaneousCompoundIndexAnimationInterfaceFactory), "SimultaneousCompoundIndexAnimationInterfaceFactory");
     SimultaneousCompoundIndexAnimationInterfaceFactory_init(this, basicAnimationInterfaceFactoryInterfaceArray, animationBehaviorFactory);
     return this;
 }
@@ -70,7 +62,7 @@ Animation* SimultaneousCompoundIndexAnimationInterfaceFactory_getInstance(Simult
         int32_t size = java_array_length(this->basicAnimationInterfaceFactoryInterfaceArray);
         IndexedAnimation** animationInterfaceArray = ((IndexedAnimation**) java_array_new(sizeof(IndexedAnimation*), size));
         for (int32_t index = 0; index < size; index++) {
-            animationInterfaceArray[index] = ((IndexedAnimation*) JAVA_CALL(this->basicAnimationInterfaceFactoryInterfaceArray[index], getInstance, instanceId));
+            animationInterfaceArray[index] = ((IndexedAnimation*) AnimationInterfaceFactoryInterface_getInstance(this->basicAnimationInterfaceFactoryInterfaceArray[index], instanceId));
         }
         return SimultaneousCompoundIndexAnimationInterfaceFactory_getOrCreate(this, animationInterfaceArray);
 }

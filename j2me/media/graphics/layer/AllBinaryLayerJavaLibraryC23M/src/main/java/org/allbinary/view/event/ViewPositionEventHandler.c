@@ -1,57 +1,48 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.view.event
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/view/event/ViewPositionEventHandler.h"
 #include "org/allbinary/layer/AllBinaryLayer.h"
 #include "org/allbinary/logic/util/event/AllBinaryEventObject.h"
 #include "org/allbinary/logic/util/event/EventListenerInterface.h"
 #include "org/allbinary/logic/util/event/EventStrings.h"
-#include "org/allbinary/logic/util/event/handler/BasicEventHandler.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
+#include "org/allbinary/view/event/ViewPositionEvent.h"
+#include "org/allbinary/view/event/ViewPositionEventListenerInterface.h"
+#if __has_include("org/allbinary/logic/util/event/EventStrings.h")
+#include "org/allbinary/logic/util/event/EventStrings.h"
+#endif
 
-typedef struct ViewPositionEventHandler ViewPositionEventHandler;
-struct ViewPositionEventHandler {
-    BasicEventHandler base;
-    BasicArrayList* list;
-};
 
 static ViewPositionEventHandler* ViewPositionEventHandler_SINGLETON;
 
-ViewPositionEventHandler* ViewPositionEventHandler_new(void);
-ViewPositionEventHandler* ViewPositionEventHandler_getInstance(void);
 
-void ViewPositionEventHandler_init(ViewPositionEventHandler* this);
-void ViewPositionEventHandler_addListener(ViewPositionEventHandler* this, AllBinaryLayer* layerInterface);
-void ViewPositionEventHandler_removeAllListeners(ViewPositionEventHandler* this);
-void ViewPositionEventHandler_removeListener(ViewPositionEventHandler* this, EventListenerInterface* eventListenerInterface);
-void ViewPositionEventHandler_fireEvent(ViewPositionEventHandler* this, AllBinaryEventObject* eventObject);
-void ViewPositionEventHandler_process(ViewPositionEventHandler* this, AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+
 void ViewPositionEventHandler_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     ViewPositionEventHandler_SINGLETON = ViewPositionEventHandler_new();
+}
+
+void ViewPositionEventHandler_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ViewPositionEventHandler", "BasicEventHandler");
+    java_register_method("ViewPositionEventHandler", "addListener", (void*) ViewPositionEventHandler_addListener);
+    java_register_method("ViewPositionEventHandler", "removeAllListeners", (void*) ViewPositionEventHandler_removeAllListeners);
+    java_register_method("ViewPositionEventHandler", "removeListener", (void*) ViewPositionEventHandler_removeListener);
+    java_register_method("ViewPositionEventHandler", "fireEvent", (void*) ViewPositionEventHandler_fireEvent);
+    java_register_method("ViewPositionEventHandler", "process", (void*) ViewPositionEventHandler_process);
 }
 
 static void ViewPositionEventHandler_initFields(ViewPositionEventHandler* this) {
@@ -60,17 +51,18 @@ static void ViewPositionEventHandler_initFields(ViewPositionEventHandler* this) 
 
 
 ViewPositionEventHandler* ViewPositionEventHandler_getInstance(void) {
-        return ViewPositionEventHandler_SINGLETON;
+        return (ViewPositionEventHandler_staticInit(), ViewPositionEventHandler_SINGLETON);
 }
 
 
 void ViewPositionEventHandler_init(ViewPositionEventHandler* this) {
+    ViewPositionEventHandler_register();
     BasicEventHandler_init(&this->base);
     ViewPositionEventHandler_initFields(this);
 }
 
 ViewPositionEventHandler* ViewPositionEventHandler_new(void) {
-    ViewPositionEventHandler* this = calloc(1, sizeof(ViewPositionEventHandler));
+    ViewPositionEventHandler* this = java_object_alloc(sizeof(ViewPositionEventHandler), "ViewPositionEventHandler");
     ViewPositionEventHandler_init(this);
     return this;
 }
@@ -102,7 +94,7 @@ void ViewPositionEventHandler_fireEvent(ViewPositionEventHandler* this, AllBinar
                 AllBinaryLayer* layerInterface = ((AllBinaryLayer*) this->list->objectArray[index]);
                 AllBinaryLayer_onChangeEvent(layerInterface, ((ViewPositionEvent*) eventObject));
             } JAVA_CATCH(Exception, e) {
-                JAVA_CALL(this->logUtil, put, this->commonStrings->EXCEPTION, this, EventStrings_getInstance()->FIRE_EVENT, e);
+                LogUtil_put(this->base.logUtil, this->base.commonStrings->EXCEPTION, this, EventStrings_getInstance()->FIRE_EVENT, e);
             } JAVA_END_TRY;
         }
         BasicEventHandler_fireEvent((&this->base), eventObject);

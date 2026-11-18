@@ -1,58 +1,44 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.content
+#include "org/allbinary/content/NotificationUtil.h"
+#include "javax/microedition/lcdui/Command.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Command.h"
-
-typedef struct NotificationUtil NotificationUtil;
-struct NotificationUtil {
-    char unused;
-};
 
 static NotificationUtil* NotificationUtil_SINGLETON;
 
-NotificationUtil* NotificationUtil_new(void);
-NotificationUtil* NotificationUtil_getInstance(void);
-void NotificationUtil_notify(NotificationUtil* this, Command* command, const char* resource, const char* message);
 
-// Static fields with runtime initializers: call this once at startup
+
 void NotificationUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     NotificationUtil_SINGLETON = NotificationUtil_new();
 }
 
+void NotificationUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("NotificationUtil", nullptr);
+    java_register_method("NotificationUtil", "notify", (void*) NotificationUtil_notify);
+}
+
 void NotificationUtil_init(NotificationUtil* this) {
+    NotificationUtil_register();
 }
 
 NotificationUtil* NotificationUtil_new(void) {
-    NotificationUtil* this = calloc(1, sizeof(NotificationUtil));
+    NotificationUtil* this = java_object_alloc(sizeof(NotificationUtil), "NotificationUtil");
     NotificationUtil_init(this);
     return this;
 }
 
 
 NotificationUtil* NotificationUtil_getInstance(void) {
-        return NotificationUtil_SINGLETON;
+        return (NotificationUtil_staticInit(), NotificationUtil_SINGLETON);
 }
 
 

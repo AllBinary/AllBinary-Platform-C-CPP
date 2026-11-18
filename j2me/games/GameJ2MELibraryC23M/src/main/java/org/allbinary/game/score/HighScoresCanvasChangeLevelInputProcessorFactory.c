@@ -1,45 +1,37 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.score
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/score/HighScoresCanvasChangeLevelInputProcessorFactory.h"
 #include "org/allbinary/game/score/displayable/HighScoresCanvas.h"
 #include "org/allbinary/game/score/HighScoresCanvasInputProcessorFactoryInterface.h"
-
-typedef struct HighScoresCanvasChangeLevelInputProcessorFactory HighScoresCanvasChangeLevelInputProcessorFactory;
-struct HighScoresCanvasChangeLevelInputProcessorFactory {
-    HighScoresCanvasInputProcessorFactoryInterface HighScoresCanvasInputProcessorFactoryInterface_interface;
-};
+#include "org/allbinary/game/score/HighScoresCanvasLevelChangeInputProcessor.h"
+#include "org/allbinary/game/score/HighScoresCanvasInputProcessor.h"
 
 
-HighScoresCanvasChangeLevelInputProcessorFactory* HighScoresCanvasChangeLevelInputProcessorFactory_new(void);
-HighScoresCanvasInputProcessor* HighScoresCanvasChangeLevelInputProcessorFactory_getInstance(HighScoresCanvasChangeLevelInputProcessorFactory* this, HighScoresCanvas* highScoresCanvas);
+
+
+void HighScoresCanvasChangeLevelInputProcessorFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void HighScoresCanvasChangeLevelInputProcessorFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("HighScoresCanvasChangeLevelInputProcessorFactory", nullptr);
+    java_register_method("HighScoresCanvasChangeLevelInputProcessorFactory", "getInstance", (void*) HighScoresCanvasChangeLevelInputProcessorFactory_getInstance);
+}
 
 void HighScoresCanvasChangeLevelInputProcessorFactory_init(HighScoresCanvasChangeLevelInputProcessorFactory* this) {
+    HighScoresCanvasChangeLevelInputProcessorFactory_register();
 }
 
 HighScoresCanvasChangeLevelInputProcessorFactory* HighScoresCanvasChangeLevelInputProcessorFactory_new(void) {
-    HighScoresCanvasChangeLevelInputProcessorFactory* this = calloc(1, sizeof(HighScoresCanvasChangeLevelInputProcessorFactory));
+    HighScoresCanvasChangeLevelInputProcessorFactory* this = java_object_alloc(sizeof(HighScoresCanvasChangeLevelInputProcessorFactory), "HighScoresCanvasChangeLevelInputProcessorFactory");
     HighScoresCanvasChangeLevelInputProcessorFactory_init(this);
     return this;
 }

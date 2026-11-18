@@ -1,45 +1,37 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct ScreenCapture ScreenCapture;
-struct ScreenCapture {
-    char unused;
-};
+#include "org/allbinary/graphics/ScreenCapture.h"
 
 
-ScreenCapture* ScreenCapture_new(void);
-void ScreenCapture_saveFrame(ScreenCapture* this);
-void ScreenCapture_startRecording(ScreenCapture* this);
-void ScreenCapture_endRecording(ScreenCapture* this);
+
+
+
+
+void ScreenCapture_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void ScreenCapture_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ScreenCapture", nullptr);
+    java_register_method("ScreenCapture", "saveFrame", (void*) ScreenCapture_saveFrame);
+    java_register_method("ScreenCapture", "startRecording", (void*) ScreenCapture_startRecording);
+    java_register_method("ScreenCapture", "endRecording", (void*) ScreenCapture_endRecording);
+}
 
 void ScreenCapture_init(ScreenCapture* this) {
+    ScreenCapture_register();
 }
 
 ScreenCapture* ScreenCapture_new(void) {
-    ScreenCapture* this = calloc(1, sizeof(ScreenCapture));
+    ScreenCapture* this = java_object_alloc(sizeof(ScreenCapture), "ScreenCapture");
     ScreenCapture_init(this);
     return this;
 }

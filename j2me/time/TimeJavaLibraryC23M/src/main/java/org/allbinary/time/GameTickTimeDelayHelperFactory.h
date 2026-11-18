@@ -41,6 +41,8 @@ GameTickTimeDelayHelperFactory* GameTickTimeDelayHelperFactory_new(void);
 GameTickTimeDelayHelper* GameTickTimeDelayHelperFactory_getInstance(void);
 
 void GameTickTimeDelayHelperFactory_init(GameTickTimeDelayHelperFactory* this);
+#define GameTickTimeDelayHelperFactory_new0 GameTickTimeDelayHelperFactory_new
+#define GameTickTimeDelayHelperFactory_init0 GameTickTimeDelayHelperFactory_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void GameTickTimeDelayHelperFactory_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

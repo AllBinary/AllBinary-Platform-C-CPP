@@ -1,51 +1,56 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.draw
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/graphics/draw/KeyValueDrawString.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/graphics/font/MyFontProcessor.h"
-#include "org/allbinary/graphics/font/UpdateMyFontInterface.h"
 #include "org/allbinary/graphics/font/UpdateMyFontProcessor.h"
 #include "org/allbinary/logic/string/StringUtil.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/graphics/draw/Font.h")
+#include "org/allbinary/graphics/draw/Font.h"
+#endif
+#if __has_include("javax/microedition/lcdui/Font.h")
+#include "javax/microedition/lcdui/Font.h"
+#endif
+#if __has_include("org/allbinary/graphics/font/Font.h")
+#include "org/allbinary/graphics/font/Font.h"
+#endif
+#if __has_include("org/allbinary/graphics/font/Font.h")
+#include "org/allbinary/graphics/font/Font.h"
+#endif
+#if __has_include("org/allbinary/graphics/font/Font.h")
+#include "org/allbinary/graphics/font/Font.h"
+#endif
+#if __has_include("org/allbinary/logic/string/Font.h")
+#include "org/allbinary/logic/string/Font.h"
+#endif
 
-typedef struct KeyValueDrawString KeyValueDrawString;
-struct KeyValueDrawString {
-    UpdateMyFontInterface UpdateMyFontInterface_interface;
-    MyFontProcessor* myFontProcessor;
-    const char* LABEL;
-    int32_t labelX;
-    int32_t valueX;
-    const char* value;
-};
 
 
-KeyValueDrawString* KeyValueDrawString_new(const char* label, int32_t x);
 
-void KeyValueDrawString_init(KeyValueDrawString* this, const char* label, int32_t x);
-void KeyValueDrawString_updateMeasurement(KeyValueDrawString* this, Graphics* graphics);
-void KeyValueDrawString_paint(KeyValueDrawString* this, Graphics* graphics, int32_t y);
-void KeyValueDrawString_update(KeyValueDrawString* this, const char* value);
+
+
+
+void KeyValueDrawString_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void KeyValueDrawString_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("KeyValueDrawString", nullptr);
+    java_register_method("KeyValueDrawString", "updateMeasurement", (void*) KeyValueDrawString_updateMeasurement);
+    java_register_method("KeyValueDrawString", "paint", (void*) KeyValueDrawString_paint);
+    java_register_method("KeyValueDrawString", "update", (void*) KeyValueDrawString_update);
+}
 
 static void KeyValueDrawString_initFields(KeyValueDrawString* this) {
     this->myFontProcessor = UpdateMyFontProcessor_new(this);
@@ -57,20 +62,21 @@ static void KeyValueDrawString_initFields(KeyValueDrawString* this) {
 
 
 void KeyValueDrawString_init(KeyValueDrawString* this, const char* label, int32_t x) {
+    KeyValueDrawString_register();
     KeyValueDrawString_initFields(this);
         this->LABEL = label;
         this->labelX = x;
 }
 
 KeyValueDrawString* KeyValueDrawString_new(const char* label, int32_t x) {
-    KeyValueDrawString* this = calloc(1, sizeof(KeyValueDrawString));
+    KeyValueDrawString* this = java_object_alloc(sizeof(KeyValueDrawString), "KeyValueDrawString");
     KeyValueDrawString_init(this, label, x);
     return this;
 }
 
 
 void KeyValueDrawString_updateMeasurement(KeyValueDrawString* this, Graphics* graphics) {
-        int32_t labelWidth = JAVA_CALL(Graphics_getFont(graphics), stringWidth, this->LABEL) - ((int32_t) strlen(this->LABEL));
+        int32_t labelWidth = Font_stringWidth(Graphics_getFont(graphics), this->LABEL) - ((int32_t) strlen(this->LABEL));
         this->valueX = labelWidth + this->labelX;
         this->myFontProcessor = MyFontProcessor_getInstance();
 }

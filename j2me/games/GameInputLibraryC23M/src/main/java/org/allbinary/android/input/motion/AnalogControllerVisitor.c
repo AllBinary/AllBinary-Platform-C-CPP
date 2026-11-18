@@ -1,44 +1,35 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.android.input.motion
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/android/input/motion/AnalogControllerVisitor.h"
 #include "org/allbinary/layer/AllBinaryLayerManager.h"
-
-typedef struct AnalogControllerVisitor AnalogControllerVisitor;
-struct AnalogControllerVisitor {
-    char unused;
-};
+#include "org/allbinary/android/input/motion/AnalogLocationInputProcessor.h"
 
 
-AnalogControllerVisitor* AnalogControllerVisitor_new(void);
-void AnalogControllerVisitor_process(AnalogControllerVisitor* this, AllBinaryLayerManager* allbinaryLayerManager, AnalogLocationInputProcessor* analogLocationInputProcessor);
+
+
+void AnalogControllerVisitor_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void AnalogControllerVisitor_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("AnalogControllerVisitor", nullptr);
+    java_register_method("AnalogControllerVisitor", "process", (void*) AnalogControllerVisitor_process);
+}
 
 void AnalogControllerVisitor_init(AnalogControllerVisitor* this) {
+    AnalogControllerVisitor_register();
 }
 
 AnalogControllerVisitor* AnalogControllerVisitor_new(void) {
-    AnalogControllerVisitor* this = calloc(1, sizeof(AnalogControllerVisitor));
+    AnalogControllerVisitor* this = java_object_alloc(sizeof(AnalogControllerVisitor), "AnalogControllerVisitor");
     AnalogControllerVisitor_init(this);
     return this;
 }

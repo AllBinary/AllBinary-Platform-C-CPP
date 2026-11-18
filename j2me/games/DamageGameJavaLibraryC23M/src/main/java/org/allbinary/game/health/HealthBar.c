@@ -1,49 +1,37 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.health
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
-#include "org/allbinary/graphics/paint/Paintable.h"
+#include "org/allbinary/game/health/HealthBar.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/layer/AllBinaryLayer.h"
 #include "org/allbinary/game/health/HealthListenerInterface.h"
-
-typedef struct HealthBar HealthBar;
-struct HealthBar {
-    Paintable base;
-    HealthListenerInterface HealthListenerInterface_interface;
-    HealthBarAnimation* animationInterface;
-    HealthInterface* healthInterface;
-    AllBinaryLayer* allbinaryLayer;
-};
+#include "org/allbinary/game/health/HealthBarAnimation.h"
+#include "org/allbinary/game/health/HealthInterface.h"
+#include "org/allbinary/game/health/Health.h"
 
 
-HealthBar* HealthBar_new(AllBinaryLayer* layerInterface, Health* healthInterface, HealthBarAnimation* animationInterface, int32_t direction);
 
-void HealthBar_init(HealthBar* this, AllBinaryLayer* layerInterface, Health* healthInterface, HealthBarAnimation* animationInterface, int32_t direction);
-void HealthBar_onHealthChange(HealthBar* this);
-void HealthBar_paint(HealthBar* this, Graphics* graphics);
-void HealthBar_paintThreed(HealthBar* this, Graphics* graphics);
+
+
+
+
+void HealthBar_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void HealthBar_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("HealthBar", "Paintable");
+    java_register_method("HealthBar", "onHealthChange", (void*) HealthBar_onHealthChange);
+    java_register_method("HealthBar", "paint", (void*) HealthBar_paint);
+    java_register_method("HealthBar", "paintThreed", (void*) HealthBar_paintThreed);
+}
 
 static void HealthBar_initFields(HealthBar* this) {
     
@@ -53,6 +41,7 @@ static void HealthBar_initFields(HealthBar* this) {
 
 
 void HealthBar_init(HealthBar* this, AllBinaryLayer* layerInterface, Health* healthInterface, HealthBarAnimation* animationInterface, int32_t direction) {
+    HealthBar_register();
     Paintable_init(&this->base);
     HealthBar_initFields(this);
         this->allbinaryLayer = layerInterface;
@@ -63,7 +52,7 @@ void HealthBar_init(HealthBar* this, AllBinaryLayer* layerInterface, Health* hea
 }
 
 HealthBar* HealthBar_new(AllBinaryLayer* layerInterface, Health* healthInterface, HealthBarAnimation* animationInterface, int32_t direction) {
-    HealthBar* this = calloc(1, sizeof(HealthBar));
+    HealthBar* this = java_object_alloc(sizeof(HealthBar), "HealthBar");
     HealthBar_init(this, layerInterface, healthInterface, animationInterface, direction);
     return this;
 }
@@ -75,11 +64,11 @@ void HealthBar_onHealthChange(HealthBar* this) {
 
 
 void HealthBar_paint(HealthBar* this, Graphics* graphics) {
-        HealthBarAnimation_paintXY(this->animationInterface, graphics, 0, 0);
+        Animation_paintXY(this->animationInterface, graphics, 0, 0);
 }
 
 
 void HealthBar_paintThreed(HealthBar* this, Graphics* graphics) {
-        HealthBarAnimation_paintThreedXYZ(this->animationInterface, graphics, 0, 0, 0);
+        Animation_paintThreedXYZ(this->animationInterface, graphics, 0, 0, 0);
 }
 

@@ -1,62 +1,52 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.debug
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/debug/NoDebug.h"
 #include "org/allbinary/debug/DebugInterface.h"
 
-typedef struct NoDebug NoDebug;
-struct NoDebug {
-    DebugInterface DebugInterface_interface;
-};
 
 static DebugInterface* NoDebug_SINGLETON;
 
-NoDebug* NoDebug_new(void);
-DebugInterface* NoDebug_getInstance(void);
-void NoDebug_start(NoDebug* this);
-void NoDebug_stop(NoDebug* this);
-int64_t NoDebug_getMaxTime(NoDebug* this);
-int64_t NoDebug_getStartTime(NoDebug* this);
-bool NoDebug_isRunning(NoDebug* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+
 void NoDebug_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     NoDebug_SINGLETON = NoDebug_new();
 }
 
+void NoDebug_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("NoDebug", nullptr);
+    java_register_method("NoDebug", "start", (void*) NoDebug_start);
+    java_register_method("NoDebug", "stop", (void*) NoDebug_stop);
+    java_register_method("NoDebug", "getMaxTime", (void*) NoDebug_getMaxTime);
+    java_register_method("NoDebug", "getStartTime", (void*) NoDebug_getStartTime);
+    java_register_method("NoDebug", "isRunning", (void*) NoDebug_isRunning);
+}
+
 void NoDebug_init(NoDebug* this) {
+    NoDebug_register();
 }
 
 NoDebug* NoDebug_new(void) {
-    NoDebug* this = calloc(1, sizeof(NoDebug));
+    NoDebug* this = java_object_alloc(sizeof(NoDebug), "NoDebug");
     NoDebug_init(this);
     return this;
 }
 
 
 DebugInterface* NoDebug_getInstance(void) {
-        return NoDebug_SINGLETON;
+        return (NoDebug_staticInit(), NoDebug_SINGLETON);
 }
 
 

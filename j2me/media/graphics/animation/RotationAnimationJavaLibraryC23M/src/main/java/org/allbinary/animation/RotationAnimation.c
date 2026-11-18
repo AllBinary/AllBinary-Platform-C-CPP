@@ -1,28 +1,5 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/animation/RotationAnimation.h"
 #include "org/allbinary/direction/Direction.h"
 #include "org/allbinary/direction/DirectionUtil.h"
 #include "org/allbinary/logic/string/StringMaker.h"
@@ -32,36 +9,96 @@
 #include "org/allbinary/util/CircularIndexUtil.h"
 #include "org/allbinary/animation/IndexedAnimation.h"
 #include "org/allbinary/animation/RotationAnimationInterface.h"
+#include "org/allbinary/animation/AnimationBehavior.h"
+#if __has_include("org/allbinary/animation/AngleIncrementInfo.h")
+#include "org/allbinary/animation/AngleIncrementInfo.h"
+#endif
+#if __has_include("org/allbinary/direction/AngleIncrementInfo.h")
+#include "org/allbinary/direction/AngleIncrementInfo.h"
+#endif
+#if __has_include("org/allbinary/direction/AngleIncrementInfo.h")
+#include "org/allbinary/direction/AngleIncrementInfo.h"
+#endif
+#if __has_include("org/allbinary/logic/string/AngleIncrementInfo.h")
+#include "org/allbinary/logic/string/AngleIncrementInfo.h"
+#endif
+#if __has_include("org/allbinary/math/AngleIncrementInfo.h")
+#include "org/allbinary/math/AngleIncrementInfo.h"
+#endif
+#if __has_include("org/allbinary/math/AngleIncrementInfo.h")
+#include "org/allbinary/math/AngleIncrementInfo.h"
+#endif
+#if __has_include("org/allbinary/math/AngleIncrementInfo.h")
+#include "org/allbinary/math/AngleIncrementInfo.h"
+#endif
+#if __has_include("org/allbinary/util/AngleIncrementInfo.h")
+#include "org/allbinary/util/AngleIncrementInfo.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
 
-typedef struct RotationAnimation RotationAnimation;
-struct RotationAnimation {
-    IndexedAnimation base;
-    RotationAnimationInterface RotationAnimationInterface_interface;
-    FrameUtil* frameUtil;
-    DirectionUtil* directionUtil;
-    AngleInfo* angleInfo;
-    CircularIndexUtil* circularIndexUtil;
-};
 
 
-RotationAnimation* RotationAnimation_new(AngleInfo* angleInfo, CircularIndexUtil* circularIndexUtil, AnimationBehavior* animationBehavior);
 
-void RotationAnimation_init(RotationAnimation* this, AngleInfo* angleInfo, CircularIndexUtil* circularIndexUtil, AnimationBehavior* animationBehavior);
-void RotationAnimation_nextRotationX(RotationAnimation* this);
-void RotationAnimation_previousRotationX(RotationAnimation* this);
-void RotationAnimation_nextRotation(RotationAnimation* this);
-void RotationAnimation_previousRotation(RotationAnimation* this);
-void RotationAnimation_nextRotationZ(RotationAnimation* this);
-void RotationAnimation_previousRotationZ(RotationAnimation* this);
-void RotationAnimation_setFrame(RotationAnimation* this, int32_t index);
-void RotationAnimation_setFrameByDirection(RotationAnimation* this, Direction* direction);
-void RotationAnimation_setFrameToAngle(RotationAnimation* this, Angle* angle);
-void RotationAnimation_adjustFrameToAngle(RotationAnimation* this, Angle* angle);
-void RotationAnimation_adjustFrame(RotationAnimation* this, int16_t angle);
-int32_t RotationAnimation_getFrame(RotationAnimation* this);
-int32_t RotationAnimation_getSize(RotationAnimation* this);
-AngleInfo* RotationAnimation_getAngleInfoP(RotationAnimation* this);
-const char* RotationAnimation_toString(RotationAnimation* this);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void RotationAnimation_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void RotationAnimation_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("RotationAnimation", "IndexedAnimation");
+    java_register_method("RotationAnimation", "nextRotationX", (void*) RotationAnimation_nextRotationX);
+    java_register_method("RotationAnimation", "previousRotationX", (void*) RotationAnimation_previousRotationX);
+    java_register_method("RotationAnimation", "nextRotation", (void*) RotationAnimation_nextRotation);
+    java_register_method("RotationAnimation", "previousRotation", (void*) RotationAnimation_previousRotation);
+    java_register_method("RotationAnimation", "nextRotationZ", (void*) RotationAnimation_nextRotationZ);
+    java_register_method("RotationAnimation", "previousRotationZ", (void*) RotationAnimation_previousRotationZ);
+    java_register_method("RotationAnimation", "setFrame", (void*) RotationAnimation_setFrame);
+    java_register_method("RotationAnimation", "setFrameByDirection", (void*) RotationAnimation_setFrameByDirection);
+    java_register_method("RotationAnimation", "setFrameToAngle", (void*) RotationAnimation_setFrameToAngle);
+    java_register_method("RotationAnimation", "adjustFrameToAngle", (void*) RotationAnimation_adjustFrameToAngle);
+    java_register_method("RotationAnimation", "adjustFrame", (void*) RotationAnimation_adjustFrame);
+    java_register_method("RotationAnimation", "getFrame", (void*) RotationAnimation_getFrame);
+    java_register_method("RotationAnimation", "getSize", (void*) RotationAnimation_getSize);
+    java_register_method("RotationAnimation", "getAngleInfoP", (void*) RotationAnimation_getAngleInfoP);
+    java_register_method("RotationAnimation", "toString", (void*) RotationAnimation_toString);
+}
 
 static void RotationAnimation_initFields(RotationAnimation* this) {
     this->frameUtil = FrameUtil_getInstance();
@@ -72,6 +109,7 @@ static void RotationAnimation_initFields(RotationAnimation* this) {
 
 
 void RotationAnimation_init(RotationAnimation* this, AngleInfo* angleInfo, CircularIndexUtil* circularIndexUtil, AnimationBehavior* animationBehavior) {
+    RotationAnimation_register();
         IndexedAnimation_init(&this->base, animationBehavior);
         RotationAnimation_initFields(this);
         this->angleInfo = angleInfo;
@@ -79,7 +117,7 @@ void RotationAnimation_init(RotationAnimation* this, AngleInfo* angleInfo, Circu
 }
 
 RotationAnimation* RotationAnimation_new(AngleInfo* angleInfo, CircularIndexUtil* circularIndexUtil, AnimationBehavior* animationBehavior) {
-    RotationAnimation* this = calloc(1, sizeof(RotationAnimation));
+    RotationAnimation* this = java_object_alloc(sizeof(RotationAnimation), "RotationAnimation");
     RotationAnimation_init(this, angleInfo, circularIndexUtil, animationBehavior);
     return this;
 }
@@ -135,7 +173,7 @@ void RotationAnimation_adjustFrameToAngle(RotationAnimation* this, Angle* angle)
 
 
 void RotationAnimation_adjustFrame(RotationAnimation* this, int16_t angle) {
-        RotationAnimation_setFrame(this, FrameUtil_getFrameForAngle(this->frameUtil, angle, ((int32_t) JAVA_CALL(AngleInfo_getAngleIncrementInfo(this->angleInfo), getAngleIncrement))));
+        RotationAnimation_setFrame(this, FrameUtil_getFrameForAngle(this->frameUtil, angle, ((int32_t) AngleIncrementInfo_getAngleIncrement(AngleInfo_getAngleIncrementInfo(this->angleInfo)))));
 }
 
 
@@ -155,6 +193,6 @@ AngleInfo* RotationAnimation_getAngleInfoP(RotationAnimation* this) {
 
 
 const char* RotationAnimation_toString(RotationAnimation* this) {
-        return JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), IndexedAnimation_toString((&this->base))), append, "circularIndexUtil: "), append, CircularIndexUtil_toString(this->circularIndexUtil)), append, "angleInfo: "), append, AngleInfo_toString(this->angleInfo)), toString);
+        return java_string_of(StringMaker_append(StringMaker_append(StringMaker_append(StringMaker_append(StringMaker_append(StringMaker_new(), java_object_toString((&this->base))), "circularIndexUtil: "), java_string_of(this->circularIndexUtil)), "angleInfo: "), java_string_of(this->angleInfo)));
 }
 

@@ -1,46 +1,33 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.displayable.canvas
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/displayable/canvas/RunnableCanvasSingleThreadStartRunnable.h"
 #include "org/allbinary/canvas/RunnableCanvas.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/game/displayable/canvas/GameRunnable.h"
 
-typedef struct RunnableCanvasSingleThreadStartRunnable RunnableCanvasSingleThreadStartRunnable;
-struct RunnableCanvasSingleThreadStartRunnable {
-    GameRunnable base;
-    LogUtil* logUtil;
-    RunnableCanvas* runnableCanvas;
-};
 
 
-RunnableCanvasSingleThreadStartRunnable* RunnableCanvasSingleThreadStartRunnable_new(RunnableCanvas* demoCanvas);
 
-void RunnableCanvasSingleThreadStartRunnable_init(RunnableCanvasSingleThreadStartRunnable* this, RunnableCanvas* demoCanvas);
-void RunnableCanvasSingleThreadStartRunnable_run(RunnableCanvasSingleThreadStartRunnable* this);
-void RunnableCanvasSingleThreadStartRunnable_processLoopSleep(RunnableCanvasSingleThreadStartRunnable* this);
+
+
+void RunnableCanvasSingleThreadStartRunnable_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void RunnableCanvasSingleThreadStartRunnable_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("RunnableCanvasSingleThreadStartRunnable", "GameRunnable");
+    java_register_method("RunnableCanvasSingleThreadStartRunnable", "run", (void*) RunnableCanvasSingleThreadStartRunnable_run);
+    java_register_method("RunnableCanvasSingleThreadStartRunnable", "processLoopSleep", (void*) RunnableCanvasSingleThreadStartRunnable_processLoopSleep);
+}
 
 static void RunnableCanvasSingleThreadStartRunnable_initFields(RunnableCanvasSingleThreadStartRunnable* this) {
     this->logUtil = LogUtil_getInstance();
@@ -49,13 +36,14 @@ static void RunnableCanvasSingleThreadStartRunnable_initFields(RunnableCanvasSin
 
 
 void RunnableCanvasSingleThreadStartRunnable_init(RunnableCanvasSingleThreadStartRunnable* this, RunnableCanvas* demoCanvas) {
+    RunnableCanvasSingleThreadStartRunnable_register();
     GameRunnable_init(&this->base);
     RunnableCanvasSingleThreadStartRunnable_initFields(this);
         this->runnableCanvas = demoCanvas;
 }
 
 RunnableCanvasSingleThreadStartRunnable* RunnableCanvasSingleThreadStartRunnable_new(RunnableCanvas* demoCanvas) {
-    RunnableCanvasSingleThreadStartRunnable* this = calloc(1, sizeof(RunnableCanvasSingleThreadStartRunnable));
+    RunnableCanvasSingleThreadStartRunnable* this = java_object_alloc(sizeof(RunnableCanvasSingleThreadStartRunnable), "RunnableCanvasSingleThreadStartRunnable");
     RunnableCanvasSingleThreadStartRunnable_init(this, demoCanvas);
     return this;
 }

@@ -45,6 +45,8 @@ void AllBinaryEventObject_init(AllBinaryEventObject* this, void* anyType);
 void* AllBinaryEventObject_getSource(AllBinaryEventObject* this);
 
 void AllBinaryEventObject_setSource(AllBinaryEventObject* this, void* source);
+#define AllBinaryEventObject_new1 AllBinaryEventObject_new
+#define AllBinaryEventObject_init1 AllBinaryEventObject_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void AllBinaryEventObject_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

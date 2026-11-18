@@ -1,33 +1,9 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.part.weapon
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/game/part/weapon/BasicWeaponPart.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/animation/Animation.h"
 #include "org/allbinary/animation/NullAnimationFactory.h"
 #include "org/allbinary/game/combat/weapon/WeaponProperties.h"
-#include "org/allbinary/game/part/PartInterface.h"
 #include "org/allbinary/game/score/NoScoreable.h"
 #include "org/allbinary/game/score/ScoreableInterface.h"
 #include "org/allbinary/graphics/RelativeRelationship.h"
@@ -36,69 +12,93 @@
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/view/ViewPositionBase.h"
 #include "org/allbinary/game/part/weapon/SalvoInterface.h"
+#if __has_include("org/allbinary/animation/NullAnimationFactory.h")
+#include "org/allbinary/animation/NullAnimationFactory.h"
+#endif
+#if __has_include("org/allbinary/animation/NullAnimationFactory.h")
+#include "org/allbinary/animation/NullAnimationFactory.h"
+#endif
+#if __has_include("org/allbinary/string/CommonStrings.h")
+#include "org/allbinary/string/CommonStrings.h"
+#endif
+#if __has_include("org/allbinary/layer/AllBinaryLayer.h")
+#include "org/allbinary/layer/AllBinaryLayer.h"
+#endif
 
-typedef struct BasicWeaponPart BasicWeaponPart;
-struct BasicWeaponPart {
-    PartInterface PartInterface_interface;
-    SalvoInterface SalvoInterface_interface;
-    Animation* animationInterface;
-    AllBinaryLayer* ownerLayerInterface;
-    WeaponProperties* weaponProperties;
-    ScoreableInterface* scoreableInterface;
-    RelativeRelationship* relativeRelationship;
-};
 
 BasicWeaponPart* BasicWeaponPart_NULL_BASIC_WEAPON_PART;
 
-BasicWeaponPart* BasicWeaponPart_new(Animation* animationInterface, AllBinaryLayer* sourceLayerInterface, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface, RelativeRelationship* relativeRelationship);
-BasicWeaponPart* BasicWeaponPart_createBasicWeaponPart(Animation* animationInterface);
 
-void BasicWeaponPart_init(BasicWeaponPart* this, Animation* animationInterface, AllBinaryLayer* sourceLayerInterface, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface, RelativeRelationship* relativeRelationship);
-void BasicWeaponPart_init(BasicWeaponPart* this, AllBinaryLayer* sourceLayerInterface, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface, RelativeRelationship* relativeRelationship);
-void BasicWeaponPart_process(BasicWeaponPart* this, AllBinaryLayerManager* allbinaryLayerManager, int16_t angle, int16_t otherAngle);
-void BasicWeaponPart_processScore(BasicWeaponPart* this, AllBinaryLayerManager* allbinaryLayerManager, int16_t angle, int16_t otherAngle, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface);
-AllBinaryLayer* BasicWeaponPart_getOwnerLayerInterface(BasicWeaponPart* this);
-void BasicWeaponPart_setOwnerLayerInterface(BasicWeaponPart* this, AllBinaryLayer* ownerLayerInterface);
-Animation* BasicWeaponPart_getAnimationInterface(BasicWeaponPart* this);
-void BasicWeaponPart_setAnimationInterface(BasicWeaponPart* this, Animation* animationInterface);
-void BasicWeaponPart_paint(BasicWeaponPart* this, Graphics* graphics);
-void BasicWeaponPart_paintThreed(BasicWeaponPart* this, Graphics* graphics);
-WeaponProperties* BasicWeaponPart_getWeaponProperties(BasicWeaponPart* this);
-void BasicWeaponPart_setWeaponProperties(BasicWeaponPart* this, WeaponProperties* weaponProperties);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+
+
+
+
+
+
+
 void BasicWeaponPart_staticInit(void) {
-    BasicWeaponPart_NULL_BASIC_WEAPON_PART = BasicWeaponPart_createBasicWeaponPart(JAVA_CALL(NullAnimationFactory_getFactoryInstance(), getInstance, 0));
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+    BasicWeaponPart_NULL_BASIC_WEAPON_PART = BasicWeaponPart_createBasicWeaponPart(NullAnimationFactory_getInstance(NullAnimationFactory_getFactoryInstance(), 0));
+}
+
+void BasicWeaponPart_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("BasicWeaponPart", nullptr);
+    java_register_method("BasicWeaponPart", "init", (void*) BasicWeaponPart_initMethod);
+    java_register_method("BasicWeaponPart", "process", (void*) BasicWeaponPart_process);
+    java_register_method("BasicWeaponPart", "processScore", (void*) BasicWeaponPart_processScore);
+    java_register_method("BasicWeaponPart", "getOwnerLayerInterface", (void*) BasicWeaponPart_getOwnerLayerInterface);
+    java_register_method("BasicWeaponPart", "setOwnerLayerInterface", (void*) BasicWeaponPart_setOwnerLayerInterface);
+    java_register_method("BasicWeaponPart", "getAnimationInterface", (void*) BasicWeaponPart_getAnimationInterface);
+    java_register_method("BasicWeaponPart", "setAnimationInterface", (void*) BasicWeaponPart_setAnimationInterface);
+    java_register_method("BasicWeaponPart", "paint", (void*) BasicWeaponPart_paint);
+    java_register_method("BasicWeaponPart", "paintThreed", (void*) BasicWeaponPart_paintThreed);
+    java_register_method("BasicWeaponPart", "getWeaponProperties", (void*) BasicWeaponPart_getWeaponProperties);
+    java_register_method("BasicWeaponPart", "setWeaponProperties", (void*) BasicWeaponPart_setWeaponProperties);
 }
 
 static void BasicWeaponPart_initFields(BasicWeaponPart* this) {
-    this->animationInterface = JAVA_CALL(NullAnimationFactory_getFactoryInstance(), getInstance, 0);
-    this->ownerLayerInterface = AllBinaryLayer_NULL_ALLBINARY_LAYER;
-    this->weaponProperties = WeaponProperties_NULL_WEAPON_PROPERTIES;
+    this->animationInterface = NullAnimationFactory_getInstance(NullAnimationFactory_getFactoryInstance(), 0);
+    this->ownerLayerInterface = (AllBinaryLayer_staticInit(), AllBinaryLayer_NULL_ALLBINARY_LAYER);
+    this->weaponProperties = (WeaponProperties_staticInit(), WeaponProperties_NULL_WEAPON_PROPERTIES);
     this->scoreableInterface = NoScoreable_getInstance();
-    this->relativeRelationship = RelativeRelationship_NULL_RELATIVE_RELATIONSHIP;
+    this->relativeRelationship = (RelativeRelationship_staticInit(), RelativeRelationship_NULL_RELATIVE_RELATIONSHIP);
 }
 
 
 BasicWeaponPart* BasicWeaponPart_createBasicWeaponPart(Animation* animationInterface) {
-        return BasicWeaponPart_new(animationInterface, AllBinaryLayer_NULL_ALLBINARY_LAYER, WeaponProperties_NULL_WEAPON_PROPERTIES, NoScoreable_getInstance(), RelativeRelationship_NULL_RELATIVE_RELATIONSHIP);
+        return BasicWeaponPart_new(animationInterface, (AllBinaryLayer_staticInit(), AllBinaryLayer_NULL_ALLBINARY_LAYER), (WeaponProperties_staticInit(), WeaponProperties_NULL_WEAPON_PROPERTIES), NoScoreable_getInstance(), (RelativeRelationship_staticInit(), RelativeRelationship_NULL_RELATIVE_RELATIONSHIP));
 }
 
 
 void BasicWeaponPart_init(BasicWeaponPart* this, Animation* animationInterface, AllBinaryLayer* sourceLayerInterface, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface, RelativeRelationship* relativeRelationship) {
+    BasicWeaponPart_register();
     BasicWeaponPart_initFields(this);
-        BasicWeaponPart_init(this, sourceLayerInterface, weaponProperties, scoreableInterface, relativeRelationship);
+        BasicWeaponPart_initMethod(this, sourceLayerInterface, weaponProperties, scoreableInterface, relativeRelationship);
         BasicWeaponPart_setAnimationInterface(this, animationInterface);
 }
 
 BasicWeaponPart* BasicWeaponPart_new(Animation* animationInterface, AllBinaryLayer* sourceLayerInterface, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface, RelativeRelationship* relativeRelationship) {
-    BasicWeaponPart* this = calloc(1, sizeof(BasicWeaponPart));
+    BasicWeaponPart* this = java_object_alloc(sizeof(BasicWeaponPart), "BasicWeaponPart");
     BasicWeaponPart_init(this, animationInterface, sourceLayerInterface, weaponProperties, scoreableInterface, relativeRelationship);
     return this;
 }
 
 
-void BasicWeaponPart_init(BasicWeaponPart* this, AllBinaryLayer* sourceLayerInterface, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface, RelativeRelationship* relativeRelationship) {
+void BasicWeaponPart_initMethod(BasicWeaponPart* this, AllBinaryLayer* sourceLayerInterface, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface, RelativeRelationship* relativeRelationship) {
         BasicWeaponPart_setOwnerLayerInterface(this, sourceLayerInterface);
         BasicWeaponPart_setWeaponProperties(this, weaponProperties);
         this->scoreableInterface = scoreableInterface;
@@ -139,9 +139,9 @@ void BasicWeaponPart_setAnimationInterface(BasicWeaponPart* this, Animation* ani
 
 
 void BasicWeaponPart_paint(BasicWeaponPart* this, Graphics* graphics) {
-        ViewPositionBase* viewPosition = JAVA_CALL(BasicWeaponPart_getOwnerLayerInterface(this), getViewPosition);
-        int32_t viewX = ViewPositionBase_getX(viewPosition);
-        int32_t viewY = ViewPositionBase_getY(viewPosition);
+        ViewPositionBase* viewPosition = AllBinaryLayer_getViewPosition(BasicWeaponPart_getOwnerLayerInterface(this));
+        int32_t viewX = GPoint_getX(viewPosition);
+        int32_t viewY = GPoint_getY(viewPosition);
         Animation_paintXY(this->animationInterface, graphics, viewX, viewY);
 }
 

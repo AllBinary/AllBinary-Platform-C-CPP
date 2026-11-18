@@ -1,45 +1,35 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.ag.layer.hud.basic.score
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Font.h"
-// #include "javax/microedition/lcdui/Graphics.h"
-#include "org/allbinary/game/ag/layer/hud/basic/NumberStringHud.h"
+#include "org/allbinary/game/ag/layer/hud/basic/score/ScoreHudWidget.h"
+#include "javax/microedition/lcdui/Font.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
 #include "org/allbinary/graphics/color/BasicColorFactory.h"
-
-typedef struct ScoreHudWidget ScoreHudWidget;
-struct ScoreHudWidget {
-    NumberStringHud base;
-};
+#if __has_include("org/allbinary/graphics/color/BasicColorFactory.h")
+#include "org/allbinary/graphics/color/BasicColorFactory.h"
+#endif
 
 
-ScoreHudWidget* ScoreHudWidget_new(int32_t maxscore, int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor);
-ScoreHudWidget* ScoreHudWidget_getInstance(int32_t maxscore, int32_t location, int32_t direction);
 
-void ScoreHudWidget_init(ScoreHudWidget* this, int32_t maxscore, int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor);
-void ScoreHudWidget_updateMeasurement(ScoreHudWidget* this, Graphics* graphics);
+
+
+
+void ScoreHudWidget_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void ScoreHudWidget_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ScoreHudWidget", "NumberStringHud");
+    java_register_method("ScoreHudWidget", "updateMeasurement", (void*) ScoreHudWidget_updateMeasurement);
+}
 
 
 // throws Exception
@@ -49,12 +39,13 @@ ScoreHudWidget* ScoreHudWidget_getInstance(int32_t maxscore, int32_t location, i
 
 
 void ScoreHudWidget_init(ScoreHudWidget* this, int32_t maxscore, int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor) {
+    ScoreHudWidget_register();
         NumberStringHud_init(&this->base, "Pts ", maxscore, location, direction, bufferZone, basicColor);
-        this->updateMaxHeight = 14;
+        this->base.base.updateMaxHeight = 14;
 }
 
 ScoreHudWidget* ScoreHudWidget_new(int32_t maxscore, int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor) {
-    ScoreHudWidget* this = calloc(1, sizeof(ScoreHudWidget));
+    ScoreHudWidget* this = java_object_alloc(sizeof(ScoreHudWidget), "ScoreHudWidget");
     ScoreHudWidget_init(this, maxscore, location, direction, bufferZone, basicColor);
     return this;
 }
@@ -62,7 +53,7 @@ ScoreHudWidget* ScoreHudWidget_new(int32_t maxscore, int32_t location, int32_t d
 
 void ScoreHudWidget_updateMeasurement(ScoreHudWidget* this, Graphics* graphics) {
         Font* font = Graphics_getFont(graphics);
-        this->updateMaxWidth = Font_getSize(font) * 5;
+        this->base.base.updateMaxWidth = Font_getSize(font) * 5;
         NumberStringHud_updateMeasurement((&this->base), graphics);
 }
 

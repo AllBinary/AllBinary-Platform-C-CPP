@@ -1,59 +1,55 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input.motion.button
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/input/motion/button/TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory.h"
 #include "org/allbinary/game/configuration/feature/Features.h"
 #include "org/allbinary/graphics/opengles/OpenGLFeatureFactory.h"
 #include "org/allbinary/image/opengles/OpenGLImageCacheFactory.h"
 #include "org/allbinary/input/motion/button/TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory.h"
+#if __has_include("org/allbinary/game/configuration/feature/Features.h")
+#include "org/allbinary/game/configuration/feature/Features.h"
+#endif
+#if __has_include("org/allbinary/graphics/opengles/OpenGLFeatureFactory.h")
+#include "org/allbinary/graphics/opengles/OpenGLFeatureFactory.h"
+#endif
 
-typedef struct TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory;
-struct TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory {
-    TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory base;
-};
 
 
-TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory* TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory_new(void);
 
-void TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory_init(TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory* this);
-void TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory_init(TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory* this, int32_t level);
-bool TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory_isFeature(TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory* this);
+
+
+void TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory", "TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory");
+    java_register_method("TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory", "init", (void*) TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory_initMethod);
+    java_register_method("TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory", "isFeature", (void*) TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory_isFeature);
+}
 
 
 void TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory_init(TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory* this) {
+    TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory_register();
         TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory_init(&this->base, "OpenGL TouchButton Animations");
 }
 
 TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory* TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory_new(void) {
-    TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory* this = calloc(1, sizeof(TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory));
+    TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory* this = java_object_alloc(sizeof(TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory), "TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory");
     TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory_init(this);
     return this;
 }
 
 
 // throws Exception
-void TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory_init(TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory* this, int32_t level) {
+void TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory_initMethod(TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory* this, int32_t level) {
         TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory_initImageCache((&this->base), OpenGLImageCacheFactory_getInstance(), level);
 }
 

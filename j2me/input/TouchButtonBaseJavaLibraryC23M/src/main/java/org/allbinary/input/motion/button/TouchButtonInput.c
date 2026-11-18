@@ -1,31 +1,6 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input.motion.button
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/input/motion/button/TouchButtonInput.h"
 #include "org/allbinary/game/input/GameKey.h"
-#include "org/allbinary/game/input/GameKeyEventSourceInterface.h"
-#include "org/allbinary/game/input/Input.h"
 #include "org/allbinary/game/input/InputFactory.h"
 #include "org/allbinary/game/input/event/GameKeyEvent.h"
 #include "org/allbinary/game/input/event/GameKeyEventFactory.h"
@@ -33,41 +8,50 @@
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/string/CommonStrings.h"
 
-typedef struct TouchButtonInput TouchButtonInput;
-struct TouchButtonInput {
-    Input base;
-    GameKeyEventSourceInterface GameKeyEventSourceInterface_interface;
-    LogUtil* logUtil;
-    GameKeyEventFactory* gameKeyEventFactory;
-    int32_t TOUCH_BUTTON_SOURCE_ID;
-    GameKeyEvent* gameKeyEvent;
-};
 
 
-TouchButtonInput* TouchButtonInput_new(int32_t id, const char* name);
 
-void TouchButtonInput_init(TouchButtonInput* this, int32_t id, const char* name);
-void TouchButtonInput_update(TouchButtonInput* this, InputToGameKeyMapping* inputToGameKeyMapping);
-int32_t TouchButtonInput_getSourceId(TouchButtonInput* this);
-GameKeyEvent* TouchButtonInput_getGameKeyEvent(TouchButtonInput* this);
+
+
+
+void TouchButtonInput_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void TouchButtonInput_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("TouchButtonInput", "Input");
+    java_register_method("TouchButtonInput", "update", (void*) TouchButtonInput_update);
+    java_register_method("TouchButtonInput", "getSourceId", (void*) TouchButtonInput_getSourceId);
+    java_register_method("TouchButtonInput", "getGameKeyEvent", (void*) TouchButtonInput_getGameKeyEvent);
+}
 
 static void TouchButtonInput_initFields(TouchButtonInput* this) {
     this->logUtil = LogUtil_getInstance();
     this->gameKeyEventFactory = GameKeyEventFactory_getInstance();
     this->TOUCH_BUTTON_SOURCE_ID = this->gameKeyEventFactory->TOUCH_BUTTON_SOURCE_ID;
-    this->gameKeyEvent = GameKeyEvent_NONE;
+    this->gameKeyEvent = (GameKeyEvent_staticInit(), GameKeyEvent_NONE);
 }
 
 
 void TouchButtonInput_init(TouchButtonInput* this, int32_t id, const char* name) {
+    TouchButtonInput_register();
         Input_init(&this->base, id, name);
         TouchButtonInput_initFields(this);
         InputFactory* inputFactory = InputFactory_getInstance();
-        InputFactory_add(inputFactory, TouchButtonInput_getId(this), this);
+        InputFactory_add(inputFactory, Input_getId(this), this);
 }
 
 TouchButtonInput* TouchButtonInput_new(int32_t id, const char* name) {
-    TouchButtonInput* this = calloc(1, sizeof(TouchButtonInput));
+    TouchButtonInput* this = java_object_alloc(sizeof(TouchButtonInput), "TouchButtonInput");
     TouchButtonInput_init(this, id, name);
     return this;
 }
@@ -75,7 +59,7 @@ TouchButtonInput* TouchButtonInput_new(int32_t id, const char* name) {
 
 void TouchButtonInput_update(TouchButtonInput* this, InputToGameKeyMapping* inputToGameKeyMapping) {
         JAVA_TRY {
-            GameKey* gameKey = InputToGameKeyMapping_getInstance(inputToGameKeyMapping, TouchButtonInput_getId(this));
+            GameKey* gameKey = InputToGameKeyMapping_getInstance(inputToGameKeyMapping, Input_getId(this));
             this->gameKeyEvent = GameKeyEventFactory_getInstanceForInput(this->gameKeyEventFactory, this, gameKey);
         } JAVA_CATCH(Exception, e) {
             CommonStrings* commonStrings = CommonStrings_getInstance();

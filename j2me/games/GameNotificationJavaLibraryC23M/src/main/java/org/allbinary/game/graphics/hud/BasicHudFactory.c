@@ -1,53 +1,27 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.graphics.hud
+#include "org/allbinary/game/graphics/hud/BasicHudFactory.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct BasicHudFactory BasicHudFactory;
-struct BasicHudFactory {
-    const char* DIRECTION_EXCEPTION;
-    int32_t VERTICAL;
-    int32_t HORIZONTAL;
-    int32_t BOTTOMLEFT;
-    int32_t BOTTOMRIGHT;
-    int32_t TOPLEFT;
-    int32_t TOPRIGHT;
-    int32_t BOTTOMCENTER;
-    int32_t TOPCENTER;
-    int32_t ABSOLUTE;
-};
 
 static BasicHudFactory* BasicHudFactory_instance;
 
-BasicHudFactory* BasicHudFactory_new(void);
-BasicHudFactory* BasicHudFactory_getInstance(void);
 
-void BasicHudFactory_init(BasicHudFactory* this);
 
-// Static fields with runtime initializers: call this once at startup
 void BasicHudFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     BasicHudFactory_instance = BasicHudFactory_new();
+}
+
+void BasicHudFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("BasicHudFactory", nullptr);
 }
 
 static void BasicHudFactory_initFields(BasicHudFactory* this) {
@@ -65,16 +39,17 @@ static void BasicHudFactory_initFields(BasicHudFactory* this) {
 
 
 BasicHudFactory* BasicHudFactory_getInstance(void) {
-        return BasicHudFactory_instance;
+        return (BasicHudFactory_staticInit(), BasicHudFactory_instance);
 }
 
 
 void BasicHudFactory_init(BasicHudFactory* this) {
+    BasicHudFactory_register();
     BasicHudFactory_initFields(this);
 }
 
 BasicHudFactory* BasicHudFactory_new(void) {
-    BasicHudFactory* this = calloc(1, sizeof(BasicHudFactory));
+    BasicHudFactory* this = java_object_alloc(sizeof(BasicHudFactory), "BasicHudFactory");
     BasicHudFactory_init(this);
     return this;
 }

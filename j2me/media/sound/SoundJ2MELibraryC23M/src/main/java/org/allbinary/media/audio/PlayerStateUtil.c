@@ -1,50 +1,30 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2022 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.media.audio
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/media/Player.h"
+#include "org/allbinary/media/audio/PlayerStateUtil.h"
+#include "javax/microedition/media/Player.h"
 #include "org/allbinary/string/CommonStrings.h"
 
-typedef struct PlayerStateUtil PlayerStateUtil;
-struct PlayerStateUtil {
-    CommonStrings* commonStrings;
-    const char* UNREALIZED;
-    const char* REALIZED;
-    const char* PREFETCHED;
-    const char* STARTED;
-    const char* CLOSED;
-};
 
 static PlayerStateUtil* PlayerStateUtil_instance;
 
-PlayerStateUtil* PlayerStateUtil_new(void);
-PlayerStateUtil* PlayerStateUtil_getInstance(void);
-const char* PlayerStateUtil_convert(PlayerStateUtil* this, int32_t state);
 
-// Static fields with runtime initializers: call this once at startup
+
 void PlayerStateUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     PlayerStateUtil_instance = PlayerStateUtil_new();
+}
+
+void PlayerStateUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("PlayerStateUtil", nullptr);
+    java_register_method("PlayerStateUtil", "convert", (void*) PlayerStateUtil_convert);
 }
 
 static void PlayerStateUtil_initFields(PlayerStateUtil* this) {
@@ -57,31 +37,32 @@ static void PlayerStateUtil_initFields(PlayerStateUtil* this) {
 }
 
 void PlayerStateUtil_init(PlayerStateUtil* this) {
+    PlayerStateUtil_register();
     PlayerStateUtil_initFields(this);
 }
 
 PlayerStateUtil* PlayerStateUtil_new(void) {
-    PlayerStateUtil* this = calloc(1, sizeof(PlayerStateUtil));
+    PlayerStateUtil* this = java_object_alloc(sizeof(PlayerStateUtil), "PlayerStateUtil");
     PlayerStateUtil_init(this);
     return this;
 }
 
 
 PlayerStateUtil* PlayerStateUtil_getInstance(void) {
-        return PlayerStateUtil_instance;
+        return (PlayerStateUtil_staticInit(), PlayerStateUtil_instance);
 }
 
 
 const char* PlayerStateUtil_convert(PlayerStateUtil* this, int32_t state) {
-        if (state == Player_UNREALIZED) {
+        if (state == (Player_staticInit(), Player_UNREALIZED)) {
             return this->UNREALIZED;
-        } else if (state == Player_REALIZED) {
+        } else if (state == (Player_staticInit(), Player_REALIZED)) {
             return this->REALIZED;
-        } else if (state == Player_PREFETCHED) {
+        } else if (state == (Player_staticInit(), Player_PREFETCHED)) {
             return this->PREFETCHED;
-        } else if (state == Player_STARTED) {
+        } else if (state == (Player_staticInit(), Player_STARTED)) {
             return this->STARTED;
-        } else if (state == Player_CLOSED) {
+        } else if (state == (Player_staticInit(), Player_CLOSED)) {
             return this->CLOSED;
         }
         return this->commonStrings->UNKNOWN;

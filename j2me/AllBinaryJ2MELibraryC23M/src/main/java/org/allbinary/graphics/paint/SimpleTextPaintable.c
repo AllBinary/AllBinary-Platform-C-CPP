@@ -1,62 +1,49 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.paint
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Font.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/graphics/paint/SimpleTextPaintable.h"
+#include "javax/microedition/lcdui/Font.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/graphics/Anchor.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
 #include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
 #include "org/allbinary/graphics/font/MyFontProcessor.h"
-#include "org/allbinary/graphics/font/UpdateMyFontInterface.h"
 #include "org/allbinary/graphics/font/UpdateMyFontProcessor.h"
 #include "org/allbinary/graphics/paint/Paintable.h"
-
-typedef struct SimpleTextPaintable SimpleTextPaintable;
-struct SimpleTextPaintable {
-    Paintable base;
-    UpdateMyFontInterface UpdateMyFontInterface_interface;
-    DisplayInfoSingleton* displayInfoSingleton;
-    MyFontProcessor* updateMyFontProcessor;
-    MyFontProcessor* myFontProcessor;
-    const char* text;
-    BasicColor* basicColor;
-    int32_t topScoresWidth;
-    int32_t fontHeight;
-    int32_t anchor;
-};
+#if __has_include("org/allbinary/graphics/color/BasicColor.h")
+#include "org/allbinary/graphics/color/BasicColor.h"
+#endif
 
 
-SimpleTextPaintable* SimpleTextPaintable_new(const char* text, BasicColor* basicColor);
 
-void SimpleTextPaintable_init(SimpleTextPaintable* this, const char* text, BasicColor* basicColor);
-void SimpleTextPaintable_updateMeasurement(SimpleTextPaintable* this, Graphics* graphics);
-void SimpleTextPaintable_paint(SimpleTextPaintable* this, Graphics* graphics);
-void SimpleTextPaintable_setBasicColorP(SimpleTextPaintable* this, BasicColor* basicColor);
+
+
+
+
 static BasicColor* SimpleTextPaintable_getBasicColorP(SimpleTextPaintable* this);
-void SimpleTextPaintable_setText(SimpleTextPaintable* this, const char* text);
-const char* SimpleTextPaintable_getText(SimpleTextPaintable* this);
+
+
+
+void SimpleTextPaintable_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void SimpleTextPaintable_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("SimpleTextPaintable", "Paintable");
+    java_register_method("SimpleTextPaintable", "updateMeasurement", (void*) SimpleTextPaintable_updateMeasurement);
+    java_register_method("SimpleTextPaintable", "paint", (void*) SimpleTextPaintable_paint);
+    java_register_method("SimpleTextPaintable", "setBasicColorP", (void*) SimpleTextPaintable_setBasicColorP);
+    java_register_method("SimpleTextPaintable", "getBasicColorP", (void*) SimpleTextPaintable_getBasicColorP);
+    java_register_method("SimpleTextPaintable", "setText", (void*) SimpleTextPaintable_setText);
+    java_register_method("SimpleTextPaintable", "getText", (void*) SimpleTextPaintable_getText);
+}
 
 static void SimpleTextPaintable_initFields(SimpleTextPaintable* this) {
     this->displayInfoSingleton = DisplayInfoSingleton_getInstance();
@@ -66,11 +53,12 @@ static void SimpleTextPaintable_initFields(SimpleTextPaintable* this) {
     
     this->topScoresWidth = 0;
     this->fontHeight = 0;
-    this->anchor = Anchor_TOP_LEFT;
+    this->anchor = (Anchor_staticInit(), Anchor_TOP_LEFT);
 }
 
 
 void SimpleTextPaintable_init(SimpleTextPaintable* this, const char* text, BasicColor* basicColor) {
+    SimpleTextPaintable_register();
     Paintable_init(&this->base);
     SimpleTextPaintable_initFields(this);
         this->text = text;
@@ -78,7 +66,7 @@ void SimpleTextPaintable_init(SimpleTextPaintable* this, const char* text, Basic
 }
 
 SimpleTextPaintable* SimpleTextPaintable_new(const char* text, BasicColor* basicColor) {
-    SimpleTextPaintable* this = calloc(1, sizeof(SimpleTextPaintable));
+    SimpleTextPaintable* this = java_object_alloc(sizeof(SimpleTextPaintable), "SimpleTextPaintable");
     SimpleTextPaintable_init(this, text, basicColor);
     return this;
 }
@@ -95,7 +83,7 @@ void SimpleTextPaintable_updateMeasurement(SimpleTextPaintable* this, Graphics* 
 void SimpleTextPaintable_paint(SimpleTextPaintable* this, Graphics* graphics) {
         MyFontProcessor_process(this->myFontProcessor, graphics);
         int32_t width = DisplayInfoSingleton_getLast(this->displayInfoSingleton)[this->displayInfoSingleton->WIDTH];
-        Graphics_setColor(graphics, JAVA_CALL(SimpleTextPaintable_getBasicColorP(this), intValue));
+        Graphics_setColor(graphics, BasicColor_intValue(SimpleTextPaintable_getBasicColorP(this)));
         Graphics_drawString(graphics, this->text, (width >> 1) - this->topScoresWidth, this->fontHeight, this->anchor);
 }
 

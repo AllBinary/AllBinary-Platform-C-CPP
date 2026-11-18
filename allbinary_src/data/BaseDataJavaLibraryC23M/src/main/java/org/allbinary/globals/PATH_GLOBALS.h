@@ -44,6 +44,8 @@ PATH_GLOBALS* PATH_GLOBALS_new(void);
 PATH_GLOBALS* PATH_GLOBALS_getInstance(void);
 
 void PATH_GLOBALS_init(PATH_GLOBALS* this);
+#define PATH_GLOBALS_new0 PATH_GLOBALS_new
+#define PATH_GLOBALS_init0 PATH_GLOBALS_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void PATH_GLOBALS_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

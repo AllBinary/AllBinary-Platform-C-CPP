@@ -1,46 +1,66 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.displayable.canvas
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-#include "org/allbinary/canvas/Processor.h"
+#include "org/allbinary/game/displayable/canvas/StartIntermissionProcessor.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/string/CommonStrings.h"
+#include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
+#if __has_include("org/allbinary/game/displayable/canvas/TimeDelayHelper.h")
+#include "org/allbinary/game/displayable/canvas/TimeDelayHelper.h"
+#endif
+#if __has_include("org/allbinary/canvas/TimeDelayHelper.h")
+#include "org/allbinary/canvas/TimeDelayHelper.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/log/TimeDelayHelper.h")
+#include "org/allbinary/logic/communication/log/TimeDelayHelper.h"
+#endif
+#if __has_include("org/allbinary/string/TimeDelayHelper.h")
+#include "org/allbinary/string/TimeDelayHelper.h"
+#endif
+#if __has_include("org/allbinary/game/displayable/canvas/IntermissionInterface.h")
+#include "org/allbinary/game/displayable/canvas/IntermissionInterface.h"
+#endif
+#if __has_include("org/allbinary/canvas/IntermissionInterface.h")
+#include "org/allbinary/canvas/IntermissionInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/log/IntermissionInterface.h")
+#include "org/allbinary/logic/communication/log/IntermissionInterface.h"
+#endif
+#if __has_include("org/allbinary/string/IntermissionInterface.h")
+#include "org/allbinary/string/IntermissionInterface.h"
+#endif
+#if __has_include("org/allbinary/game/displayable/canvas/IntermissionInterface.h")
+#include "org/allbinary/game/displayable/canvas/IntermissionInterface.h"
+#endif
+#if __has_include("org/allbinary/canvas/IntermissionInterface.h")
+#include "org/allbinary/canvas/IntermissionInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/log/IntermissionInterface.h")
+#include "org/allbinary/logic/communication/log/IntermissionInterface.h"
+#endif
+#if __has_include("org/allbinary/string/IntermissionInterface.h")
+#include "org/allbinary/string/IntermissionInterface.h"
+#endif
 
-typedef struct StartIntermissionProcessor StartIntermissionProcessor;
-struct StartIntermissionProcessor {
-    Processor base;
-    LogUtil* logUtil;
-    CommonStrings* commonStrings;
-    AllBinaryGameCanvas* gameCanvas;
-    int64_t WAIT;
-};
 
 
-StartIntermissionProcessor* StartIntermissionProcessor_new(AllBinaryGameCanvas* gameCanvas);
 
-void StartIntermissionProcessor_init(StartIntermissionProcessor* this, AllBinaryGameCanvas* gameCanvas);
-void StartIntermissionProcessor_process(StartIntermissionProcessor* this);
+
+void StartIntermissionProcessor_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void StartIntermissionProcessor_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("StartIntermissionProcessor", "Processor");
+    java_register_method("StartIntermissionProcessor", "process", (void*) StartIntermissionProcessor_process);
+}
 
 static void StartIntermissionProcessor_initFields(StartIntermissionProcessor* this) {
     this->logUtil = LogUtil_getInstance();
@@ -51,13 +71,14 @@ static void StartIntermissionProcessor_initFields(StartIntermissionProcessor* th
 
 
 void StartIntermissionProcessor_init(StartIntermissionProcessor* this, AllBinaryGameCanvas* gameCanvas) {
+    StartIntermissionProcessor_register();
     Processor_init(&this->base);
     StartIntermissionProcessor_initFields(this);
         this->gameCanvas = gameCanvas;
 }
 
 StartIntermissionProcessor* StartIntermissionProcessor_new(AllBinaryGameCanvas* gameCanvas) {
-    StartIntermissionProcessor* this = calloc(1, sizeof(StartIntermissionProcessor));
+    StartIntermissionProcessor* this = java_object_alloc(sizeof(StartIntermissionProcessor), "StartIntermissionProcessor");
     StartIntermissionProcessor_init(this, gameCanvas);
     return this;
 }
@@ -65,9 +86,9 @@ StartIntermissionProcessor* StartIntermissionProcessor_new(AllBinaryGameCanvas* 
 
 // throws Exception
 void StartIntermissionProcessor_process(StartIntermissionProcessor* this) {
-        if (JAVA_CALL(JAVA_CALL(AllBinaryGameCanvas_getStartIntermissionInterface(this->gameCanvas), getTimeDelayHelper), isElapsedTNT, this->WAIT)) {
+        if (TimeDelayHelper_isElapsedTNT(IntermissionInterface_getTimeDelayHelper(AllBinaryGameCanvas_getStartIntermissionInterface(this->gameCanvas)), this->WAIT)) {
             LogUtil_putF(this->logUtil, "Intermission End", this, this->commonStrings->PROCESS);
-            JAVA_CALL(AllBinaryGameCanvas_getStartIntermissionInterface(this->gameCanvas), setEnabled, false);
+            IntermissionInterface_setEnabled(AllBinaryGameCanvas_getStartIntermissionInterface(this->gameCanvas), false);
         }
 }
 

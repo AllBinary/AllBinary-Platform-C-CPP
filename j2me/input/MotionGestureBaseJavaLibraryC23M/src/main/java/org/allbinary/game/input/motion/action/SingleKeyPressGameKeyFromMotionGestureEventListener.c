@@ -1,30 +1,6 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.input.motion.action
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/input/motion/action/SingleKeyPressGameKeyFromMotionGestureEventListener.h"
 #include "org/allbinary/game/input/CompleteMotionGestureInputEvent.h"
-#include "org/allbinary/game/input/CompleteMotionGestureInputEventListener.h"
 #include "org/allbinary/game/input/event/GameKeyEvent.h"
 #include "org/allbinary/game/input/event/PressGameKeyEventHandler.h"
 #include "org/allbinary/logic/communication/log/ForcedLogUtil.h"
@@ -32,29 +8,49 @@
 #include "org/allbinary/logic/util/event/AllBinaryEventObject.h"
 #include "org/allbinary/logic/util/event/EventStrings.h"
 #include "org/allbinary/string/CommonStrings.h"
+#include "org/allbinary/game/input/motion/action/GameKeyCompleteMotionGestureInputEvent.h"
+#if __has_include("org/allbinary/logic/util/event/EventStrings.h")
+#include "org/allbinary/logic/util/event/EventStrings.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/PressGameKeyEventHandler.h")
+#include "org/allbinary/game/input/event/PressGameKeyEventHandler.h"
+#endif
 
-typedef struct SingleKeyPressGameKeyFromMotionGestureEventListener SingleKeyPressGameKeyFromMotionGestureEventListener;
-struct SingleKeyPressGameKeyFromMotionGestureEventListener {
-    CompleteMotionGestureInputEventListener base;
-    LogUtil* logUtil;
-};
 
 
-SingleKeyPressGameKeyFromMotionGestureEventListener* SingleKeyPressGameKeyFromMotionGestureEventListener_new(void);
-void SingleKeyPressGameKeyFromMotionGestureEventListener_onEvent(SingleKeyPressGameKeyFromMotionGestureEventListener* this, AllBinaryEventObject* eventObject);
-void SingleKeyPressGameKeyFromMotionGestureEventListener_onCompleteMotionGestureInputEvent(SingleKeyPressGameKeyFromMotionGestureEventListener* this, CompleteMotionGestureInputEvent* completeMotionGestureInputEvent);
+
+
+void SingleKeyPressGameKeyFromMotionGestureEventListener_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void SingleKeyPressGameKeyFromMotionGestureEventListener_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("SingleKeyPressGameKeyFromMotionGestureEventListener", "CompleteMotionGestureInputEventListener");
+    java_register_method("SingleKeyPressGameKeyFromMotionGestureEventListener", "onEvent", (void*) SingleKeyPressGameKeyFromMotionGestureEventListener_onEvent);
+    java_register_method("SingleKeyPressGameKeyFromMotionGestureEventListener", "onCompleteMotionGestureInputEvent", (void*) SingleKeyPressGameKeyFromMotionGestureEventListener_onCompleteMotionGestureInputEvent);
+}
 
 static void SingleKeyPressGameKeyFromMotionGestureEventListener_initFields(SingleKeyPressGameKeyFromMotionGestureEventListener* this) {
     this->logUtil = LogUtil_getInstance();
 }
 
 void SingleKeyPressGameKeyFromMotionGestureEventListener_init(SingleKeyPressGameKeyFromMotionGestureEventListener* this) {
+    SingleKeyPressGameKeyFromMotionGestureEventListener_register();
     CompleteMotionGestureInputEventListener_init(&this->base);
     SingleKeyPressGameKeyFromMotionGestureEventListener_initFields(this);
 }
 
 SingleKeyPressGameKeyFromMotionGestureEventListener* SingleKeyPressGameKeyFromMotionGestureEventListener_new(void) {
-    SingleKeyPressGameKeyFromMotionGestureEventListener* this = calloc(1, sizeof(SingleKeyPressGameKeyFromMotionGestureEventListener));
+    SingleKeyPressGameKeyFromMotionGestureEventListener* this = java_object_alloc(sizeof(SingleKeyPressGameKeyFromMotionGestureEventListener), "SingleKeyPressGameKeyFromMotionGestureEventListener");
     SingleKeyPressGameKeyFromMotionGestureEventListener_init(this);
     return this;
 }

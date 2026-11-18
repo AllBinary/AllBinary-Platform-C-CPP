@@ -1,29 +1,6 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.opengles
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Displayable.h"
+#include "org/allbinary/graphics/opengles/CurrentDisplayableFactory.h"
+#include "javax/microedition/lcdui/Displayable.h"
 #include "org/allbinary/J2MEUtil.h"
 #include "org/allbinary/game/configuration/feature/Features.h"
 #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
@@ -46,45 +23,143 @@
 #include "org/allbinary/thread/NullRunnable.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
+#include "org/allbinary/graphics/opengles/OpenGLFeatureFactory.h"
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/graphics/GraphicsStrings.h")
+#include "org/allbinary/graphics/GraphicsStrings.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/string/CommonSeps.h")
+#include "org/allbinary/string/CommonSeps.h"
+#endif
 
-typedef struct CurrentDisplayableFactory CurrentDisplayableFactory;
-struct CurrentDisplayableFactory {
-    CommonStrings* commonStrings;
-    CanvasStrings* canvasStrings;
-    StringUtil* stringUtil;
-    const char* SET_DISPLAYABLE;
-    const char* SET_RUNNABLE;
-    const char* CLEAR_RUNNABLE;
-    const char* SET_USED_RUNNABLE;
-    const char* RUNNABLE;
-    const char* RUNNABLE_WAS_ALREADY_IN_USE;
-    BasicArrayList* DEFAULT_CHILD_NAME_LIST;
-    Displayable* displayable;
-    Displayable* openGlReadydisplayable;
-    GameRunnable* runnable;
-    GameRunnable* usedRunnable;
-};
 
 static CurrentDisplayableFactory* CurrentDisplayableFactory_instance;
 
-CurrentDisplayableFactory* CurrentDisplayableFactory_new(void);
-CurrentDisplayableFactory* CurrentDisplayableFactory_getInstance(void);
 
-void CurrentDisplayableFactory_init(CurrentDisplayableFactory* this);
-void CurrentDisplayableFactory_setMyCanvas(CurrentDisplayableFactory* this, MyCanvas* displayable);
-void CurrentDisplayableFactory_setDisplayable(CurrentDisplayableFactory* this, Displayable* displayable);
-void CurrentDisplayableFactory_setOpenGlReadydisplayable(CurrentDisplayableFactory* this, Displayable* openGlReadydisplayable);
-Displayable* CurrentDisplayableFactory_getOpenGlReadydisplayable(CurrentDisplayableFactory* this);
-void CurrentDisplayableFactory_setRunnable(CurrentDisplayableFactory* this, GameRunnable* runnable);
-void CurrentDisplayableFactory_clearRunnable(CurrentDisplayableFactory* this);
+
+
+
+
+
+
+
 static void CurrentDisplayableFactory_update(CurrentDisplayableFactory* this);
-Displayable* CurrentDisplayableFactory_getDisplayable(CurrentDisplayableFactory* this);
-GameRunnable* CurrentDisplayableFactory_getUsedRunnable(CurrentDisplayableFactory* this);
-void CurrentDisplayableFactory_setUsedRunnable(CurrentDisplayableFactory* this, GameRunnable* usedRunnable);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
 void CurrentDisplayableFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     CurrentDisplayableFactory_instance = CurrentDisplayableFactory_new();
+}
+
+void CurrentDisplayableFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("CurrentDisplayableFactory", nullptr);
+    java_register_method("CurrentDisplayableFactory", "setMyCanvas", (void*) CurrentDisplayableFactory_setMyCanvas);
+    java_register_method("CurrentDisplayableFactory", "setDisplayable", (void*) CurrentDisplayableFactory_setDisplayable);
+    java_register_method("CurrentDisplayableFactory", "setOpenGlReadydisplayable", (void*) CurrentDisplayableFactory_setOpenGlReadydisplayable);
+    java_register_method("CurrentDisplayableFactory", "getOpenGlReadydisplayable", (void*) CurrentDisplayableFactory_getOpenGlReadydisplayable);
+    java_register_method("CurrentDisplayableFactory", "setRunnable", (void*) CurrentDisplayableFactory_setRunnable);
+    java_register_method("CurrentDisplayableFactory", "clearRunnable", (void*) CurrentDisplayableFactory_clearRunnable);
+    java_register_method("CurrentDisplayableFactory", "update", (void*) CurrentDisplayableFactory_update);
+    java_register_method("CurrentDisplayableFactory", "getDisplayable", (void*) CurrentDisplayableFactory_getDisplayable);
+    java_register_method("CurrentDisplayableFactory", "getUsedRunnable", (void*) CurrentDisplayableFactory_getUsedRunnable);
+    java_register_method("CurrentDisplayableFactory", "setUsedRunnable", (void*) CurrentDisplayableFactory_setUsedRunnable);
 }
 
 static void CurrentDisplayableFactory_initFields(CurrentDisplayableFactory* this) {
@@ -106,21 +181,22 @@ static void CurrentDisplayableFactory_initFields(CurrentDisplayableFactory* this
 
 
 CurrentDisplayableFactory* CurrentDisplayableFactory_getInstance(void) {
-        return CurrentDisplayableFactory_instance;
+        return (CurrentDisplayableFactory_staticInit(), CurrentDisplayableFactory_instance);
 }
 
 
 void CurrentDisplayableFactory_init(CurrentDisplayableFactory* this) {
+    CurrentDisplayableFactory_register();
     CurrentDisplayableFactory_initFields(this);
         BasicArrayList_add(this->DEFAULT_CHILD_NAME_LIST, this->canvasStrings->ABOUT);
         BasicArrayList_add(this->DEFAULT_CHILD_NAME_LIST, this->canvasStrings->OPTIONS);
-        BasicArrayList_add(this->DEFAULT_CHILD_NAME_LIST, GameInputMappingCanvas_NAME);
-        BasicArrayList_add(this->DEFAULT_CHILD_NAME_LIST, GameInputMappingInstructionsCanvas_NAME);
-        BasicArrayList_add(this->DEFAULT_CHILD_NAME_LIST, HighScoresCanvas_NAME);
+        BasicArrayList_add(this->DEFAULT_CHILD_NAME_LIST, (GameInputMappingCanvas_staticInit(), GameInputMappingCanvas_NAME));
+        BasicArrayList_add(this->DEFAULT_CHILD_NAME_LIST, (GameInputMappingInstructionsCanvas_staticInit(), GameInputMappingInstructionsCanvas_NAME));
+        BasicArrayList_add(this->DEFAULT_CHILD_NAME_LIST, (HighScoresCanvas_staticInit(), HighScoresCanvas_NAME));
 }
 
 CurrentDisplayableFactory* CurrentDisplayableFactory_new(void) {
-    CurrentDisplayableFactory* this = calloc(1, sizeof(CurrentDisplayableFactory));
+    CurrentDisplayableFactory* this = java_object_alloc(sizeof(CurrentDisplayableFactory), "CurrentDisplayableFactory");
     CurrentDisplayableFactory_init(this);
     return this;
 }
@@ -128,8 +204,8 @@ CurrentDisplayableFactory* CurrentDisplayableFactory_new(void) {
 
 void CurrentDisplayableFactory_setMyCanvas(CurrentDisplayableFactory* this, MyCanvas* displayable) {
         if (java_instanceof(this->displayable, "MyCanvas")) {
-            if (Displayable_hasChild(displayable, ((MyCanvas*) this->displayable))) {
-                PreLogUtil_put(JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), "Child Displayable is already set for: "), append, StringUtil_toString(this->stringUtil, displayable)), toString), this, this->SET_DISPLAYABLE);
+            if (MyCanvas_hasChild(displayable, ((MyCanvas*) this->displayable))) {
+                PreLogUtil_put(java_string_of(StringMaker_append(StringMaker_append(StringMaker_new(), "Child Displayable is already set for: "), StringUtil_toString(this->stringUtil, displayable))), this, this->SET_DISPLAYABLE);
                 return;
             }
         }
@@ -155,18 +231,18 @@ Displayable* CurrentDisplayableFactory_getOpenGlReadydisplayable(CurrentDisplaya
 
 
 void CurrentDisplayableFactory_setRunnable(CurrentDisplayableFactory* this, GameRunnable* runnable) {
-        PreLogUtil_put(JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), this->RUNNABLE), append, StringUtil_toString(this->stringUtil, runnable)), toString), this, this->SET_RUNNABLE);
+        PreLogUtil_put(java_string_of(StringMaker_append(StringMaker_append(StringMaker_new(), this->RUNNABLE), StringUtil_toString(this->stringUtil, runnable))), this, this->SET_RUNNABLE);
         this->runnable = runnable;
         if (this->usedRunnable != this->runnable) {
             CurrentDisplayableFactory_update(this);
         } else {
-            PreLogUtil_put(JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), this->RUNNABLE_WAS_ALREADY_IN_USE), append, StringUtil_toString(this->stringUtil, runnable)), toString), this, this->SET_RUNNABLE);
+            PreLogUtil_put(java_string_of(StringMaker_append(StringMaker_append(StringMaker_new(), this->RUNNABLE_WAS_ALREADY_IN_USE), StringUtil_toString(this->stringUtil, runnable))), this, this->SET_RUNNABLE);
         }
 }
 
 
 void CurrentDisplayableFactory_clearRunnable(CurrentDisplayableFactory* this) {
-        PreLogUtil_put(JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), this->RUNNABLE), append, StringUtil_toString(this->stringUtil, NullRunnable_getInstance())), toString), this, this->CLEAR_RUNNABLE);
+        PreLogUtil_put(java_string_of(StringMaker_append(StringMaker_append(StringMaker_new(), this->RUNNABLE), StringUtil_toString(this->stringUtil, NullRunnable_getInstance()))), this, this->CLEAR_RUNNABLE);
         CurrentDisplayableFactory_setUsedRunnable(this, NullWaitGameRunnable_getInstance());
 }
 
@@ -178,17 +254,17 @@ static void CurrentDisplayableFactory_update(CurrentDisplayableFactory* this) {
             Features* features = Features_getInstance();
             StringMaker* stringMaker = StringMaker_new();
             StringMaker_append(stringMaker, StringUtil_toString(this->stringUtil, this->openGlReadydisplayable));
-            if (SWTUtil_isSWT && !Features_isDefault(features, OpenGLFeatureFactory_getInstance()->OPENGL)) {
-                PreLogUtil_put(JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_append(stringMaker, commonSeps->SPACE), append, SWTUtil_SWT), append, commonSeps->SPACE), append, this->RUNNABLE), append, StringUtil_toString(this->stringUtil, NullRunnable_getInstance())), toString), this, this->commonStrings->UPDATE);
+            if ((SWTUtil_staticInit(), SWTUtil_isSWT) && !Features_isDefault(features, OpenGLFeatureFactory_getInstance()->OPENGL)) {
+                PreLogUtil_put(java_string_of(StringMaker_append(StringMaker_append(StringMaker_append(StringMaker_append(StringMaker_append(stringMaker, commonSeps->SPACE), (SWTUtil_staticInit(), SWTUtil_SWT)), commonSeps->SPACE), this->RUNNABLE), StringUtil_toString(this->stringUtil, NullRunnable_getInstance()))), this, this->commonStrings->UPDATE);
                 CurrentDisplayableFactory_setUsedRunnable(this, NullWaitGameRunnable_getInstance());
             } else if (J2MEUtil_isHTML()) {
-                PreLogUtil_put(JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_append(stringMaker, commonSeps->SPACE), append, GraphicsStrings_getInstance()->HTML), append, commonSeps->SPACE), append, this->RUNNABLE), append, StringUtil_toString(this->stringUtil, this->runnable)), toString), this, this->commonStrings->UPDATE);
+                PreLogUtil_put(java_string_of(StringMaker_append(StringMaker_append(StringMaker_append(StringMaker_append(StringMaker_append(stringMaker, commonSeps->SPACE), GraphicsStrings_getInstance()->HTML), commonSeps->SPACE), this->RUNNABLE), StringUtil_toString(this->stringUtil, this->runnable))), this, this->commonStrings->UPDATE);
                 CurrentDisplayableFactory_setUsedRunnable(this, this->runnable);
             } else if (java_instanceof(this->openGlReadydisplayable, "DemoCanvas") || java_instanceof(this->openGlReadydisplayable, "AllBinaryGameCanvas") || Features_isDefault(features, OpenGLFeatureFactory_getInstance()->OPENGL)) {
-                PreLogUtil_put(JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_append(stringMaker, commonSeps->SPACE), append, JAVA_CALL(OpenGLFeatureFactory_getInstance()->OPENGL, toString)), append, commonSeps->SPACE), append, this->RUNNABLE), append, StringUtil_toString(this->stringUtil, this->runnable)), toString), this, this->commonStrings->UPDATE);
+                PreLogUtil_put(java_string_of(StringMaker_append(StringMaker_append(StringMaker_append(StringMaker_append(StringMaker_append(stringMaker, commonSeps->SPACE), java_string_of(OpenGLFeatureFactory_getInstance()->OPENGL)), commonSeps->SPACE), this->RUNNABLE), StringUtil_toString(this->stringUtil, this->runnable))), this, this->commonStrings->UPDATE);
                 CurrentDisplayableFactory_setUsedRunnable(this, this->runnable);
             } else {
-                PreLogUtil_put(JAVA_CALL(JAVA_CALL(StringMaker_append(stringMaker, this->RUNNABLE), append, StringUtil_toString(this->stringUtil, NullRunnable_getInstance())), toString), this, this->commonStrings->UPDATE);
+                PreLogUtil_put(java_string_of(StringMaker_append(StringMaker_append(stringMaker, this->RUNNABLE), StringUtil_toString(this->stringUtil, NullRunnable_getInstance()))), this, this->commonStrings->UPDATE);
                 CurrentDisplayableFactory_setUsedRunnable(this, NullWaitGameRunnable_getInstance());
             }
         }
@@ -207,7 +283,7 @@ GameRunnable* CurrentDisplayableFactory_getUsedRunnable(CurrentDisplayableFactor
 
 
 void CurrentDisplayableFactory_setUsedRunnable(CurrentDisplayableFactory* this, GameRunnable* usedRunnable) {
-        PreLogUtil_put(JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), this->RUNNABLE), append, StringUtil_toString(this->stringUtil, this->runnable)), append, CommonSeps_getInstance()->COLON_SEP), append, StringUtil_toString(this->stringUtil, usedRunnable)), toString), this, this->SET_USED_RUNNABLE);
+        PreLogUtil_put(java_string_of(StringMaker_append(StringMaker_append(StringMaker_append(StringMaker_append(StringMaker_new(), this->RUNNABLE), StringUtil_toString(this->stringUtil, this->runnable)), CommonSeps_getInstance()->COLON_SEP), StringUtil_toString(this->stringUtil, usedRunnable))), this, this->SET_USED_RUNNABLE);
         this->usedRunnable = usedRunnable;
 }
 

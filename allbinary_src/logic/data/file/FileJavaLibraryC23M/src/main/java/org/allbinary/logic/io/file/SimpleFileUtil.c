@@ -1,33 +1,5 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2025 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.io.file
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "java/io/ByteArrayOutputStream.h"
-// #include "java/io/InputStream.h"
-// #include "java/io/OutputStream.h"
-// #include "java/io/Reader.h"
-// #include "java/io/Writer.h"
+#include "org/allbinary/logic/io/file/SimpleFileUtil.h"
 #include "org/allbinary/logic/NullUtil.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/logic/io/NullOutputStream.h"
@@ -39,30 +11,35 @@
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
 
-typedef struct SimpleFileUtil SimpleFileUtil;
-struct SimpleFileUtil {
-    LogUtil* logUtil;
-    Writer* NULL_WRITER;
-    Reader* NULL_READER;
-    CommonStrings* commonStrings;
-    NullUtil* nullUtil;
-    StreamUtil* streamUtil;
-};
 
 static SimpleFileUtil* SimpleFileUtil_instance;
 
-SimpleFileUtil* SimpleFileUtil_new(void);
-SimpleFileUtil* SimpleFileUtil_getInstance(void);
-OutputStream* SimpleFileUtil_nullOutputStream(void);
-Writer* SimpleFileUtil_nullWriter(void);
-Reader* SimpleFileUtil_nullReader(void);
-BasicArrayList* SimpleFileUtil_loadFileAsList(SimpleFileUtil* this, InputStream* inputStream, int32_t max, int8_t* byteArray1);
-BasicArrayList* SimpleFileUtil_loadFileAsListReturnLine(SimpleFileUtil* this, InputStream* inputStream, int32_t max, int8_t* byteArray1, int32_t includeReturnLine);
-const char* SimpleFileUtil_createStringFromArrayOfStrings(SimpleFileUtil* this, const char** stringArray);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+
+
 void SimpleFileUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     SimpleFileUtil_instance = SimpleFileUtil_new();
+}
+
+void SimpleFileUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("SimpleFileUtil", nullptr);
+    java_register_method("SimpleFileUtil", "loadFileAsList", (void*) SimpleFileUtil_loadFileAsList);
+    java_register_method("SimpleFileUtil", "loadFileAsListReturnLine", (void*) SimpleFileUtil_loadFileAsListReturnLine);
+    java_register_method("SimpleFileUtil", "createStringFromArrayOfStrings", (void*) SimpleFileUtil_createStringFromArrayOfStrings);
 }
 
 static void SimpleFileUtil_initFields(SimpleFileUtil* this) {
@@ -75,33 +52,34 @@ static void SimpleFileUtil_initFields(SimpleFileUtil* this) {
 }
 
 void SimpleFileUtil_init(SimpleFileUtil* this) {
+    SimpleFileUtil_register();
     SimpleFileUtil_initFields(this);
 }
 
 SimpleFileUtil* SimpleFileUtil_new(void) {
-    SimpleFileUtil* this = calloc(1, sizeof(SimpleFileUtil));
+    SimpleFileUtil* this = java_object_alloc(sizeof(SimpleFileUtil), "SimpleFileUtil");
     SimpleFileUtil_init(this);
     return this;
 }
 
 
 SimpleFileUtil* SimpleFileUtil_getInstance(void) {
-        return SimpleFileUtil_instance;
+        return (SimpleFileUtil_staticInit(), SimpleFileUtil_instance);
 }
 
 
 OutputStream* SimpleFileUtil_nullOutputStream(void) {
-        return NullOutputStream_NULL_OUTPUT_STREAM;
+        return (NullOutputStream_staticInit(), NullOutputStream_NULL_OUTPUT_STREAM);
 }
 
 
 Writer* SimpleFileUtil_nullWriter(void) {
-        return NullWriter_NULL_WRITER;
+        return (NullWriter_staticInit(), NullWriter_NULL_WRITER);
 }
 
 
 Reader* SimpleFileUtil_nullReader(void) {
-        return NullReader_NULL_READER;
+        return (NullReader_staticInit(), NullReader_NULL_READER);
 }
 
 
@@ -157,6 +135,6 @@ const char* SimpleFileUtil_createStringFromArrayOfStrings(SimpleFileUtil* this, 
         for (int32_t index = 0; index < size; index++) {
             StringMaker_append(stringMaker, stringArray[index]);
         }
-        return StringMaker_toString(stringMaker);
+        return java_string_of(stringMaker);
 }
 

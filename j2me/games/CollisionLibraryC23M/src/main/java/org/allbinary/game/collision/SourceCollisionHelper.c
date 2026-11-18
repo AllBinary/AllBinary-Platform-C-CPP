@@ -1,57 +1,46 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.collision
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/collision/SourceCollisionHelper.h"
 #include "org/allbinary/game/layer/CollidableCompositeLayer.h"
 #include "org/allbinary/layer/AllBinaryLayer.h"
 #include "org/allbinary/game/collision/CollisionHelper.h"
 
-typedef struct SourceCollisionHelper SourceCollisionHelper;
-struct SourceCollisionHelper {
-    CollisionHelper base;
-};
 
 
-SourceCollisionHelper* SourceCollisionHelper_new(AllBinaryLayer* layerInterface);
 
-void SourceCollisionHelper_init(SourceCollisionHelper* this, AllBinaryLayer* layerInterface);
-bool SourceCollisionHelper_isCollidable(SourceCollisionHelper* this, CollidableCompositeLayer* layerInterface);
+
+void SourceCollisionHelper_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void SourceCollisionHelper_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("SourceCollisionHelper", "CollisionHelper");
+    java_register_method("SourceCollisionHelper", "isCollidable", (void*) SourceCollisionHelper_isCollidable);
+}
 
 
 void SourceCollisionHelper_init(SourceCollisionHelper* this, AllBinaryLayer* layerInterface) {
+    SourceCollisionHelper_register();
         CollisionHelper_init(&this->base, layerInterface);
 }
 
 SourceCollisionHelper* SourceCollisionHelper_new(AllBinaryLayer* layerInterface) {
-    SourceCollisionHelper* this = calloc(1, sizeof(SourceCollisionHelper));
+    SourceCollisionHelper* this = java_object_alloc(sizeof(SourceCollisionHelper), "SourceCollisionHelper");
     SourceCollisionHelper_init(this, layerInterface);
     return this;
 }
 
 
 bool SourceCollisionHelper_isCollidable(SourceCollisionHelper* this, CollidableCompositeLayer* layerInterface) {
-        if (this->sourceLayerInterface != layerInterface) {
+        if (this->base.sourceLayerInterface != layerInterface) {
             return true;
         }
         return false;

@@ -1,41 +1,28 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.form
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-#include "org/allbinary/canvas/Processor.h"
-
-typedef struct VerticalFormProcessor VerticalFormProcessor;
-struct VerticalFormProcessor {
-    Processor base;
-    ScrollCurrentSelectionForm* scrollCurrentSelectionForm;
-};
+#include "org/allbinary/graphics/form/VerticalFormProcessor.h"
+#include "org/allbinary/graphics/form/ScrollCurrentSelectionForm.h"
 
 
-VerticalFormProcessor* VerticalFormProcessor_new(ScrollCurrentSelectionForm* scrollCurrentSelectionForm);
 
-void VerticalFormProcessor_init(VerticalFormProcessor* this, ScrollCurrentSelectionForm* scrollCurrentSelectionForm);
-void VerticalFormProcessor_process(VerticalFormProcessor* this);
+
+
+void VerticalFormProcessor_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void VerticalFormProcessor_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("VerticalFormProcessor", "Processor");
+    java_register_method("VerticalFormProcessor", "process", (void*) VerticalFormProcessor_process);
+}
 
 static void VerticalFormProcessor_initFields(VerticalFormProcessor* this) {
     
@@ -43,13 +30,14 @@ static void VerticalFormProcessor_initFields(VerticalFormProcessor* this) {
 
 
 void VerticalFormProcessor_init(VerticalFormProcessor* this, ScrollCurrentSelectionForm* scrollCurrentSelectionForm) {
+    VerticalFormProcessor_register();
     Processor_init(&this->base);
     VerticalFormProcessor_initFields(this);
         this->scrollCurrentSelectionForm = scrollCurrentSelectionForm;
 }
 
 VerticalFormProcessor* VerticalFormProcessor_new(ScrollCurrentSelectionForm* scrollCurrentSelectionForm) {
-    VerticalFormProcessor* this = calloc(1, sizeof(VerticalFormProcessor));
+    VerticalFormProcessor* this = java_object_alloc(sizeof(VerticalFormProcessor), "VerticalFormProcessor");
     VerticalFormProcessor_init(this, scrollCurrentSelectionForm);
     return this;
 }

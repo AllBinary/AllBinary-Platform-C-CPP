@@ -1,0 +1,384 @@
+#ifndef ORG_ALLBINARY_GAME_LAYER_SPECIAL_COLLIDABLEDESTROYABLEDAMAGEABLELAYER_H
+#define ORG_ALLBINARY_GAME_LAYER_SPECIAL_COLLIDABLEDESTROYABLEDAMAGEABLELAYER_H
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.layer.special
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+typedef struct SpecialGameInputInterface SpecialGameInputInterface;
+typedef struct Graphics Graphics;
+typedef struct CollidableNeverCollideBehaviorFactory CollidableNeverCollideBehaviorFactory;
+typedef struct DamageableInterface DamageableInterface;
+typedef struct DestroyableInterface DestroyableInterface;
+typedef struct DestroyedEvent DestroyedEvent;
+typedef struct BasicGroupFactory BasicGroupFactory;
+typedef struct Group Group;
+typedef struct GameKeyEvent GameKeyEvent;
+typedef struct AllBinaryGameLayerManager AllBinaryGameLayerManager;
+typedef struct CollidableCompositeLayer CollidableCompositeLayer;
+typedef struct PickedUpLayerInterfaceFactoryInterface PickedUpLayerInterfaceFactoryInterface;
+typedef struct PickupBehavior PickupBehavior;
+typedef struct PickupCompositeInterface PickupCompositeInterface;
+typedef struct PartInterface PartInterface;
+typedef struct PartInterfaceUtil PartInterfaceUtil;
+typedef struct Rectangle Rectangle;
+typedef struct RectangleFactory RectangleFactory;
+typedef struct AllBinaryLayerManager AllBinaryLayerManager;
+typedef struct NullUtil NullUtil;
+typedef struct StringMaker StringMaker;
+typedef struct StringUtil StringUtil;
+typedef struct PositionStrings PositionStrings;
+typedef struct CommonSeps CommonSeps;
+typedef struct ViewPositionBase ViewPositionBase;
+#include "org/allbinary/game/combat/damage/DamageableInterface.h"
+#include "org/allbinary/game/combat/destroy/DestroyableInterface.h"
+#if __has_include("org/allbinary/game/identification/Group.h")
+#include "org/allbinary/game/identification/Group.h"
+#endif
+#if __has_include("org/allbinary/game/layer/AllBinaryGameLayerManager.h")
+#include "org/allbinary/game/layer/AllBinaryGameLayerManager.h"
+#endif
+#include "org/allbinary/game/layer/CollidableCompositeLayer.h"
+#if __has_include("org/allbinary/game/layer/pickup/PickupBehavior.h")
+#include "org/allbinary/game/layer/pickup/PickupBehavior.h"
+#endif
+#include "org/allbinary/game/layer/pickup/PickupCompositeInterface.h"
+#if __has_include("org/allbinary/game/part/PartInterface.h")
+#include "org/allbinary/game/part/PartInterface.h"
+#endif
+#include "org/allbinary/game/layer/special/SpecialGameInputInterface.h"
+
+typedef struct CollidableDestroyableDamageableLayer CollidableDestroyableDamageableLayer;
+struct CollidableDestroyableDamageableLayer {
+    CollidableCompositeLayer base;
+    DestroyableInterface DestroyableInterface_interface;
+    DamageableInterface DamageableInterface_interface;
+    PickupCompositeInterface PickupCompositeInterface_interface;
+    SpecialGameInputInterface SpecialGameInputInterface_interface;
+    Group** groupInterface;
+    bool readyForExplosion;
+    int32_t initWidth;
+    int32_t initHeight;
+    int32_t initX;
+    int32_t initY;
+    int32_t initZ;
+    PartInterface** partInterfaceArrayP;
+    PickupBehavior* pickupBehavior;
+    AllBinaryGameLayerManager* allBinaryGameLayerManagerP;
+    bool isDraggable;
+    bool isDragged;
+    bool isDropped;
+};
+
+
+CollidableDestroyableDamageableLayer* CollidableDestroyableDamageableLayer_new(Group** groupInterface, const char* name, Rectangle* layerInfo, ViewPositionBase* viewPosition);
+
+CollidableDestroyableDamageableLayer* CollidableDestroyableDamageableLayer_getNullInstance(void);
+
+void CollidableDestroyableDamageableLayer_init(CollidableDestroyableDamageableLayer* this, Group** groupInterface, const char* name, Rectangle* layerInfo, ViewPositionBase* viewPosition);
+
+void CollidableDestroyableDamageableLayer_initPosition(CollidableDestroyableDamageableLayer* this);
+
+void CollidableDestroyableDamageableLayer_initPositionXYZ(CollidableDestroyableDamageableLayer* this, int32_t x, int32_t y, int32_t z);
+
+void CollidableDestroyableDamageableLayer_paint(CollidableDestroyableDamageableLayer* this, Graphics* graphics);
+
+void CollidableDestroyableDamageableLayer_damage(CollidableDestroyableDamageableLayer* this, int32_t damage, int32_t damageType);
+
+int32_t CollidableDestroyableDamageableLayer_getDamage(CollidableDestroyableDamageableLayer* this, int32_t damageType);
+
+bool CollidableDestroyableDamageableLayer_isDestroyed(CollidableDestroyableDamageableLayer* this);
+
+Group** CollidableDestroyableDamageableLayer_getGroupInterface(CollidableDestroyableDamageableLayer* this);
+
+void CollidableDestroyableDamageableLayer_setGroupInterface(CollidableDestroyableDamageableLayer* this, Group** teamInterface);
+
+void CollidableDestroyableDamageableLayer_setAllBinaryGameLayerManager(CollidableDestroyableDamageableLayer* this, AllBinaryGameLayerManager* allBinaryGameLayerManager);
+
+bool CollidableDestroyableDamageableLayer_isReadyForExplosion(CollidableDestroyableDamageableLayer* this);
+
+void CollidableDestroyableDamageableLayer_setReadyForExplosion(CollidableDestroyableDamageableLayer* this, bool isReadyForExplosion);
+
+int32_t CollidableDestroyableDamageableLayer_getInitWidth(CollidableDestroyableDamageableLayer* this);
+
+int32_t CollidableDestroyableDamageableLayer_getInitHeight(CollidableDestroyableDamageableLayer* this);
+
+int32_t CollidableDestroyableDamageableLayer_getInitX(CollidableDestroyableDamageableLayer* this);
+
+int32_t CollidableDestroyableDamageableLayer_getInitY(CollidableDestroyableDamageableLayer* this);
+
+void CollidableDestroyableDamageableLayer_up(CollidableDestroyableDamageableLayer* this);
+
+void CollidableDestroyableDamageableLayer_down(CollidableDestroyableDamageableLayer* this);
+
+void CollidableDestroyableDamageableLayer_right(CollidableDestroyableDamageableLayer* this);
+
+void CollidableDestroyableDamageableLayer_left(CollidableDestroyableDamageableLayer* this);
+
+void CollidableDestroyableDamageableLayer_strafeLeft(CollidableDestroyableDamageableLayer* this);
+
+void CollidableDestroyableDamageableLayer_strafeRight(CollidableDestroyableDamageableLayer* this);
+
+void CollidableDestroyableDamageableLayer_fire(CollidableDestroyableDamageableLayer* this, AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent);
+
+void CollidableDestroyableDamageableLayer_special1(CollidableDestroyableDamageableLayer* this, AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent);
+
+void CollidableDestroyableDamageableLayer_special2(CollidableDestroyableDamageableLayer* this, AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent);
+
+void CollidableDestroyableDamageableLayer_special3(CollidableDestroyableDamageableLayer* this, AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent);
+
+void CollidableDestroyableDamageableLayer_special4(CollidableDestroyableDamageableLayer* this, AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent);
+
+void CollidableDestroyableDamageableLayer_special5(CollidableDestroyableDamageableLayer* this, AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent);
+
+void CollidableDestroyableDamageableLayer_upAnalog(CollidableDestroyableDamageableLayer* this, int32_t yAnalogValue);
+
+void CollidableDestroyableDamageableLayer_downAnalog(CollidableDestroyableDamageableLayer* this, int32_t yAnalogValue);
+
+void CollidableDestroyableDamageableLayer_rightAnalog(CollidableDestroyableDamageableLayer* this, int32_t xAnalogValue);
+
+void CollidableDestroyableDamageableLayer_leftAnalog(CollidableDestroyableDamageableLayer* this, int32_t xAnalogValue);
+
+void CollidableDestroyableDamageableLayer_rightTrigger(CollidableDestroyableDamageableLayer* this, AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent, int32_t xAnalogValue);
+
+void CollidableDestroyableDamageableLayer_leftTrigger(CollidableDestroyableDamageableLayer* this, AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent, int32_t xAnalogValue);
+
+void CollidableDestroyableDamageableLayer_onDestroyed(CollidableDestroyableDamageableLayer* this, DestroyedEvent* destroyedEvent);
+
+PickupBehavior* CollidableDestroyableDamageableLayer_getPickupBehavior(CollidableDestroyableDamageableLayer* this);
+
+void CollidableDestroyableDamageableLayer_setPickupBehavior(CollidableDestroyableDamageableLayer* this, PickupBehavior* pickupBehavior);
+
+void CollidableDestroyableDamageableLayer_addPart(CollidableDestroyableDamageableLayer* this, PickedUpLayerInterfaceFactoryInterface* pickedUpLayerInterfaceFactoryInterface);
+
+void CollidableDestroyableDamageableLayer_setPartInterfaceArray(CollidableDestroyableDamageableLayer* this, PartInterface** partInterfaceArray);
+
+PartInterface** CollidableDestroyableDamageableLayer_getPartInterfaceArray(CollidableDestroyableDamageableLayer* this);
+
+void CollidableDestroyableDamageableLayer_toStringAppend(CollidableDestroyableDamageableLayer* this, StringMaker* stringBuffer);
+
+const char* CollidableDestroyableDamageableLayer_toString(CollidableDestroyableDamageableLayer* this);
+#define CollidableDestroyableDamageableLayer_new4 CollidableDestroyableDamageableLayer_new
+#define CollidableDestroyableDamageableLayer_init4 CollidableDestroyableDamageableLayer_init
+#ifndef CollidableDestroyableDamageableLayer_getArtificialIntelligenceInterface
+#define CollidableDestroyableDamageableLayer_getArtificialIntelligenceInterface CollidableCompositeLayer_getArtificialIntelligenceInterface
+#endif
+#ifndef CollidableDestroyableDamageableLayer_getCollidableInferface
+#define CollidableDestroyableDamageableLayer_getCollidableInferface CollidableCompositeLayer_getCollidableInferface
+#endif
+#ifndef CollidableDestroyableDamageableLayer_setCollidableInferface
+#define CollidableDestroyableDamageableLayer_setCollidableInferface CollidableCompositeLayer_setCollidableInferface
+#endif
+#ifndef CollidableDestroyableDamageableLayer_implmentsCollidableInterface
+#define CollidableDestroyableDamageableLayer_implmentsCollidableInterface CollidableCompositeLayer_implmentsCollidableInterface
+#endif
+#ifndef CollidableDestroyableDamageableLayer_createPaintable
+#define CollidableDestroyableDamageableLayer_createPaintable AllBinaryGameLayer_createPaintable
+#endif
+#ifndef CollidableDestroyableDamageableLayer_set
+#define CollidableDestroyableDamageableLayer_set AllBinaryGameLayer_set
+#endif
+#ifndef CollidableDestroyableDamageableLayer_move
+#define CollidableDestroyableDamageableLayer_move AllBinaryGameLayer_move
+#endif
+#ifndef CollidableDestroyableDamageableLayer_getGameKeyEventList
+#define CollidableDestroyableDamageableLayer_getGameKeyEventList AllBinaryGameLayer_getGameKeyEventList
+#endif
+#ifndef CollidableDestroyableDamageableLayer_processInput
+#define CollidableDestroyableDamageableLayer_processInput AllBinaryGameLayer_processInput
+#endif
+#ifndef CollidableDestroyableDamageableLayer_processTick
+#define CollidableDestroyableDamageableLayer_processTick AllBinaryGameLayer_processTick
+#endif
+#ifndef CollidableDestroyableDamageableLayer_onEvent
+#define CollidableDestroyableDamageableLayer_onEvent AllBinaryGameLayer_onEvent
+#endif
+#ifndef CollidableDestroyableDamageableLayer_onViewPositionChangeEvent
+#define CollidableDestroyableDamageableLayer_onViewPositionChangeEvent AllBinaryGameLayer_onViewPositionChangeEvent
+#endif
+#ifndef CollidableDestroyableDamageableLayer_onChangeEvent
+#define CollidableDestroyableDamageableLayer_onChangeEvent AllBinaryGameLayer_onChangeEvent
+#endif
+#ifndef CollidableDestroyableDamageableLayer_paintFirst
+#define CollidableDestroyableDamageableLayer_paintFirst AllBinaryGameLayer_paintFirst
+#endif
+#ifndef CollidableDestroyableDamageableLayer_paintDebug
+#define CollidableDestroyableDamageableLayer_paintDebug AllBinaryGameLayer_paintDebug
+#endif
+#ifndef CollidableDestroyableDamageableLayer_setWidth
+#define CollidableDestroyableDamageableLayer_setWidth AllBinaryGameLayer_setWidth
+#endif
+#ifndef CollidableDestroyableDamageableLayer_setHeight
+#define CollidableDestroyableDamageableLayer_setHeight AllBinaryGameLayer_setHeight
+#endif
+#ifndef CollidableDestroyableDamageableLayer_setPosition
+#define CollidableDestroyableDamageableLayer_setPosition AllBinaryLayer_setPosition
+#endif
+#ifndef CollidableDestroyableDamageableLayer_moveDXYZ
+#define CollidableDestroyableDamageableLayer_moveDXYZ AllBinaryLayer_moveDXYZ
+#endif
+#ifndef CollidableDestroyableDamageableLayer_getXP
+#define CollidableDestroyableDamageableLayer_getXP AllBinaryLayer_getXP
+#endif
+#ifndef CollidableDestroyableDamageableLayer_getYP
+#define CollidableDestroyableDamageableLayer_getYP AllBinaryLayer_getYP
+#endif
+#ifndef CollidableDestroyableDamageableLayer_getZP
+#define CollidableDestroyableDamageableLayer_getZP AllBinaryLayer_getZP
+#endif
+#ifndef CollidableDestroyableDamageableLayer_getWidth
+#define CollidableDestroyableDamageableLayer_getWidth AllBinaryLayer_getWidth
+#endif
+#ifndef CollidableDestroyableDamageableLayer_getHeight
+#define CollidableDestroyableDamageableLayer_getHeight AllBinaryLayer_getHeight
+#endif
+#ifndef CollidableDestroyableDamageableLayer_setVisible
+#define CollidableDestroyableDamageableLayer_setVisible AllBinaryLayer_setVisible
+#endif
+#ifndef CollidableDestroyableDamageableLayer_isVisible
+#define CollidableDestroyableDamageableLayer_isVisible AllBinaryLayer_isVisible
+#endif
+#ifndef CollidableDestroyableDamageableLayer_onChangeEvent
+#define CollidableDestroyableDamageableLayer_onChangeEvent AllBinaryLayer_onChangeEvent
+#endif
+#ifndef CollidableDestroyableDamageableLayer_paintThreed
+#define CollidableDestroyableDamageableLayer_paintThreed AllBinaryLayer_paintThreed
+#endif
+#ifndef CollidableDestroyableDamageableLayer_getX2
+#define CollidableDestroyableDamageableLayer_getX2 AllBinaryLayer_getX2
+#endif
+#ifndef CollidableDestroyableDamageableLayer_getY2
+#define CollidableDestroyableDamageableLayer_getY2 AllBinaryLayer_getY2
+#endif
+#ifndef CollidableDestroyableDamageableLayer_getZ2
+#define CollidableDestroyableDamageableLayer_getZ2 AllBinaryLayer_getZ2
+#endif
+#ifndef CollidableDestroyableDamageableLayer_getName
+#define CollidableDestroyableDamageableLayer_getName AllBinaryLayer_getName
+#endif
+#ifndef CollidableDestroyableDamageableLayer_setHalfWidth
+#define CollidableDestroyableDamageableLayer_setHalfWidth AllBinaryLayer_setHalfWidth
+#endif
+#ifndef CollidableDestroyableDamageableLayer_getHalfWidth
+#define CollidableDestroyableDamageableLayer_getHalfWidth AllBinaryLayer_getHalfWidth
+#endif
+#ifndef CollidableDestroyableDamageableLayer_setHalfHeight
+#define CollidableDestroyableDamageableLayer_setHalfHeight AllBinaryLayer_setHalfHeight
+#endif
+#ifndef CollidableDestroyableDamageableLayer_getHalfHeight
+#define CollidableDestroyableDamageableLayer_getHalfHeight AllBinaryLayer_getHalfHeight
+#endif
+#ifndef CollidableDestroyableDamageableLayer_getHalfDepth
+#define CollidableDestroyableDamageableLayer_getHalfDepth AllBinaryLayer_getHalfDepth
+#endif
+#ifndef CollidableDestroyableDamageableLayer_getViewPosition
+#define CollidableDestroyableDamageableLayer_getViewPosition AllBinaryLayer_getViewPosition
+#endif
+#ifndef CollidableDestroyableDamageableLayer_setViewPosition
+#define CollidableDestroyableDamageableLayer_setViewPosition AllBinaryLayer_setViewPosition
+#endif
+#ifndef CollidableDestroyableDamageableLayer_implmentsTickableInterface
+#define CollidableDestroyableDamageableLayer_implmentsTickableInterface AllBinaryLayer_implmentsTickableInterface
+#endif
+#ifndef CollidableDestroyableDamageableLayer_implmentsGameInputInterface
+#define CollidableDestroyableDamageableLayer_implmentsGameInputInterface AllBinaryLayer_implmentsGameInputInterface
+#endif
+#ifndef CollidableDestroyableDamageableLayer_implmentsArtificialIntelligenceCompositeInterface
+#define CollidableDestroyableDamageableLayer_implmentsArtificialIntelligenceCompositeInterface AllBinaryLayer_implmentsArtificialIntelligenceCompositeInterface
+#endif
+#ifndef CollidableDestroyableDamageableLayer_implmentsCollidableInterface
+#define CollidableDestroyableDamageableLayer_implmentsCollidableInterface AllBinaryLayer_implmentsCollidableInterface
+#endif
+#ifndef CollidableDestroyableDamageableLayer_implementsThreedInterface
+#define CollidableDestroyableDamageableLayer_implementsThreedInterface AllBinaryLayer_implementsThreedInterface
+#endif
+#ifndef CollidableDestroyableDamageableLayer_getType
+#define CollidableDestroyableDamageableLayer_getType AllBinaryLayer_getType
+#endif
+#ifndef CollidableDestroyableDamageableLayer_getMultiPlayerType
+#define CollidableDestroyableDamageableLayer_getMultiPlayerType AllBinaryLayer_getMultiPlayerType
+#endif
+#ifndef CollidableDestroyableDamageableLayer_setPosition
+#define CollidableDestroyableDamageableLayer_setPosition Layer_setPosition
+#endif
+#ifndef CollidableDestroyableDamageableLayer_moveDXY
+#define CollidableDestroyableDamageableLayer_moveDXY Layer_moveDXY
+#endif
+#ifndef CollidableDestroyableDamageableLayer_moveDXYZ
+#define CollidableDestroyableDamageableLayer_moveDXYZ Layer_moveDXYZ
+#endif
+#ifndef CollidableDestroyableDamageableLayer_getXP
+#define CollidableDestroyableDamageableLayer_getXP Layer_getXP
+#endif
+#ifndef CollidableDestroyableDamageableLayer_getYP
+#define CollidableDestroyableDamageableLayer_getYP Layer_getYP
+#endif
+#ifndef CollidableDestroyableDamageableLayer_getZP
+#define CollidableDestroyableDamageableLayer_getZP Layer_getZP
+#endif
+#ifndef CollidableDestroyableDamageableLayer_getWidth
+#define CollidableDestroyableDamageableLayer_getWidth Layer_getWidth
+#endif
+#ifndef CollidableDestroyableDamageableLayer_getHeight
+#define CollidableDestroyableDamageableLayer_getHeight Layer_getHeight
+#endif
+#ifndef CollidableDestroyableDamageableLayer_getDepth
+#define CollidableDestroyableDamageableLayer_getDepth Layer_getDepth
+#endif
+#ifndef CollidableDestroyableDamageableLayer_setVisible
+#define CollidableDestroyableDamageableLayer_setVisible Layer_setVisible
+#endif
+#ifndef CollidableDestroyableDamageableLayer_isVisible
+#define CollidableDestroyableDamageableLayer_isVisible Layer_isVisible
+#endif
+#ifndef CollidableDestroyableDamageableLayer_setLayerWidth
+#define CollidableDestroyableDamageableLayer_setLayerWidth Layer_setLayerWidth
+#endif
+#ifndef CollidableDestroyableDamageableLayer_setLayerHeight
+#define CollidableDestroyableDamageableLayer_setLayerHeight Layer_setLayerHeight
+#endif
+#ifndef CollidableDestroyableDamageableLayer_setSize
+#define CollidableDestroyableDamageableLayer_setSize Layer_setSize
+#endif
+#ifndef CollidableDestroyableDamageableLayer_getX
+#define CollidableDestroyableDamageableLayer_getX Layer_getX
+#endif
+#ifndef CollidableDestroyableDamageableLayer_getY
+#define CollidableDestroyableDamageableLayer_getY Layer_getY
+#endif
+#ifndef CollidableDestroyableDamageableLayer_move
+#define CollidableDestroyableDamageableLayer_move Layer_move
+#endif
+#ifndef CollidableDestroyableDamageableLayer_setPosition
+#define CollidableDestroyableDamageableLayer_setPosition Layer_setPosition
+#endif
+// Runs the Java static initialization of the class once. Reads of its static fields call it first.
+void CollidableDestroyableDamageableLayer_staticInit(void);
+// Registers the class, its superclass, and its methods for the interface calls (java_register_method)
+void CollidableDestroyableDamageableLayer_register(void);
+
+#if __has_include("org/allbinary/game/layer/pickup/PickupBehavior.h")
+#include "org/allbinary/game/layer/pickup/PickupBehavior.h"
+#endif
+
+#endif // ORG_ALLBINARY_GAME_LAYER_SPECIAL_COLLIDABLEDESTROYABLEDAMAGEABLELAYER_H

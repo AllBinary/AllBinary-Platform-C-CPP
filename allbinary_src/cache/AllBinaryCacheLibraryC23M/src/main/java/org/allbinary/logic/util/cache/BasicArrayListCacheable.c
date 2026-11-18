@@ -1,54 +1,45 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.util.cache
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/logic/util/cache/BasicArrayListCacheable.h"
 #include "org/allbinary/logic/string/StringUtil.h"
-#include "org/allbinary/util/BasicArrayListD.h"
 #include "org/allbinary/logic/util/cache/CacheableInterface.h"
-
-typedef struct BasicArrayListCacheable BasicArrayListCacheable;
-struct BasicArrayListCacheable {
-    BasicArrayListD base;
-    CacheableInterface CacheableInterface_interface;
-};
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
 
-BasicArrayListCacheable* BasicArrayListCacheable_new(void);
-Any* BasicArrayListCacheable_getKey(BasicArrayListCacheable* this);
+
+
+void BasicArrayListCacheable_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void BasicArrayListCacheable_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("BasicArrayListCacheable", "BasicArrayListD");
+    java_register_method("BasicArrayListCacheable", "getKey", (void*) BasicArrayListCacheable_getKey);
+}
 
 void BasicArrayListCacheable_init(BasicArrayListCacheable* this) {
+    BasicArrayListCacheable_register();
     BasicArrayListD_init(&this->base);
 }
 
 BasicArrayListCacheable* BasicArrayListCacheable_new(void) {
-    BasicArrayListCacheable* this = calloc(1, sizeof(BasicArrayListCacheable));
+    BasicArrayListCacheable* this = java_object_alloc(sizeof(BasicArrayListCacheable), "BasicArrayListCacheable");
     BasicArrayListCacheable_init(this);
     return this;
 }
 
 
-Any* BasicArrayListCacheable_getKey(BasicArrayListCacheable* this) {
+void* BasicArrayListCacheable_getKey(BasicArrayListCacheable* this) {
         return StringUtil_getInstance()->EMPTY_STRING;
 }
 

@@ -1,57 +1,43 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/input/AllBinarySensor.h"
 #include "org/allbinary/logic/communication/log/ForcedLogUtil.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/input/AllBinarySensorListener.h"
 
-typedef struct AllBinarySensor AllBinarySensor;
-struct AllBinarySensor {
-    AllBinarySensorListener AllBinarySensorListener_interface;
-    LogUtil* logUtil;
-    CommonStrings* commonStrings;
-};
 
 AllBinarySensor* AllBinarySensor_NULL_ALLBINARY_SENSOR;
 static int32_t AllBinarySensor_max = 100;
 
-AllBinarySensor* AllBinarySensor_new(void);
 
-void AllBinarySensor_init(AllBinarySensor* this);
-void AllBinarySensor_init(AllBinarySensor* this);
-void AllBinarySensor_update(AllBinarySensor* this);
-void AllBinarySensor_setMax(int32_t max);
-int32_t AllBinarySensor_getMax(void);
-int32_t AllBinarySensor_getId(AllBinarySensor* this);
-void AllBinarySensor_shutdown(AllBinarySensor* this);
-void AllBinarySensor_onSensorChange(AllBinarySensor* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+
+
 void AllBinarySensor_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     AllBinarySensor_NULL_ALLBINARY_SENSOR = AllBinarySensor_new();
+}
+
+void AllBinarySensor_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("AllBinarySensor", nullptr);
+    java_register_method("AllBinarySensor", "init", (void*) AllBinarySensor_initMethod);
+    java_register_method("AllBinarySensor", "update", (void*) AllBinarySensor_update);
+    java_register_method("AllBinarySensor", "getId", (void*) AllBinarySensor_getId);
+    java_register_method("AllBinarySensor", "shutdown", (void*) AllBinarySensor_shutdown);
+    java_register_method("AllBinarySensor", "onSensorChange", (void*) AllBinarySensor_onSensorChange);
 }
 
 static void AllBinarySensor_initFields(AllBinarySensor* this) {
@@ -61,17 +47,18 @@ static void AllBinarySensor_initFields(AllBinarySensor* this) {
 
 
 void AllBinarySensor_init(AllBinarySensor* this) {
+    AllBinarySensor_register();
     AllBinarySensor_initFields(this);
 }
 
 AllBinarySensor* AllBinarySensor_new(void) {
-    AllBinarySensor* this = calloc(1, sizeof(AllBinarySensor));
+    AllBinarySensor* this = java_object_alloc(sizeof(AllBinarySensor), "AllBinarySensor");
     AllBinarySensor_init(this);
     return this;
 }
 
 
-void AllBinarySensor_init(AllBinarySensor* this) {
+void AllBinarySensor_initMethod(AllBinarySensor* this) {
 }
 
 

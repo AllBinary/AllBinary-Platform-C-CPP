@@ -36,11 +36,11 @@ Memory* Memory_new(void) {
 const char* Memory_getInfo(void) {
         StringMaker* stringBuffer = StringMaker_new();
         StringMaker_append(stringBuffer, "Memory: Free: ");
-        StringMaker_appendlong(stringBuffer, ((int64_t) JAVA_CALL(Runtime_getRuntime(), freeMemory)));
+        StringMaker_appendlong(stringBuffer, Runtime_freeMemory(Runtime_getRuntime()));
         StringMaker_append(stringBuffer, " Max: ");
-        StringMaker_appendlong(stringBuffer, ((int64_t) JAVA_CALL(Runtime_getRuntime(), maxMemory)));
+        StringMaker_appendlong(stringBuffer, Runtime_maxMemory(Runtime_getRuntime()));
         StringMaker_append(stringBuffer, " Total: ");
-        StringMaker_appendlong(stringBuffer, ((int64_t) JAVA_CALL(Runtime_getRuntime(), totalMemory)));
+        StringMaker_appendlong(stringBuffer, Runtime_totalMemory(Runtime_getRuntime()));
         return java_string_of(stringBuffer);
 }
 

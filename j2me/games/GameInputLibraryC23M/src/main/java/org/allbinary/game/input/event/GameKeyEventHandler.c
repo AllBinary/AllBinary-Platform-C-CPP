@@ -1,53 +1,64 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.input.event
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/input/event/GameKeyEventHandler.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/logic/util/event/EventListenerInterface.h"
 #include "org/allbinary/string/CommonStrings.h"
+#include "org/allbinary/game/input/event/PressGameKeyEventHandler.h"
+#include "org/allbinary/game/input/event/UpGameKeyEventHandler.h"
+#include "org/allbinary/game/input/event/DownGameKeyEventHandler.h"
+#if __has_include("org/allbinary/game/input/event/UpGameKeyEventHandlerBase.h")
+#include "org/allbinary/game/input/event/UpGameKeyEventHandlerBase.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/log/UpGameKeyEventHandlerBase.h")
+#include "org/allbinary/logic/communication/log/UpGameKeyEventHandlerBase.h"
+#endif
+#if __has_include("org/allbinary/logic/util/event/UpGameKeyEventHandlerBase.h")
+#include "org/allbinary/logic/util/event/UpGameKeyEventHandlerBase.h"
+#endif
+#if __has_include("org/allbinary/string/UpGameKeyEventHandlerBase.h")
+#include "org/allbinary/string/UpGameKeyEventHandlerBase.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/DownGameKeyEventHandlerBase.h")
+#include "org/allbinary/game/input/event/DownGameKeyEventHandlerBase.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/log/DownGameKeyEventHandlerBase.h")
+#include "org/allbinary/logic/communication/log/DownGameKeyEventHandlerBase.h"
+#endif
+#if __has_include("org/allbinary/logic/util/event/DownGameKeyEventHandlerBase.h")
+#include "org/allbinary/logic/util/event/DownGameKeyEventHandlerBase.h"
+#endif
+#if __has_include("org/allbinary/string/DownGameKeyEventHandlerBase.h")
+#include "org/allbinary/string/DownGameKeyEventHandlerBase.h"
+#endif
 
-typedef struct GameKeyEventHandler GameKeyEventHandler;
-struct GameKeyEventHandler {
-    LogUtil* logUtil;
-    CommonStrings* commonStrings;
-    PressGameKeyEventHandler* pressGameKeyEventHandler;
-    UpGameKeyEventHandler* upGameKeyEventHandler;
-    DownGameKeyEventHandler* downGameKeyEventHandler;
-};
 
 static GameKeyEventHandler* GameKeyEventHandler_instance;
 
-GameKeyEventHandler* GameKeyEventHandler_new(void);
-GameKeyEventHandler* GameKeyEventHandler_getInstance(void);
-void GameKeyEventHandler_removeAllListeners(GameKeyEventHandler* this);
-void GameKeyEventHandler_addListenerForPlayer(GameKeyEventHandler* this, EventListenerInterface* eventListenerInterface, int32_t playerInputId);
-void GameKeyEventHandler_addListener(GameKeyEventHandler* this, EventListenerInterface* eventListenerInterface);
-void GameKeyEventHandler_removeListener(GameKeyEventHandler* this, EventListenerInterface* eventListenerInterface);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
 void GameKeyEventHandler_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     GameKeyEventHandler_instance = GameKeyEventHandler_new();
+}
+
+void GameKeyEventHandler_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GameKeyEventHandler", nullptr);
+    java_register_method("GameKeyEventHandler", "removeAllListeners", (void*) GameKeyEventHandler_removeAllListeners);
+    java_register_method("GameKeyEventHandler", "addListenerForPlayer", (void*) GameKeyEventHandler_addListenerForPlayer);
+    java_register_method("GameKeyEventHandler", "addListener", (void*) GameKeyEventHandler_addListener);
+    java_register_method("GameKeyEventHandler", "removeListener", (void*) GameKeyEventHandler_removeListener);
 }
 
 static void GameKeyEventHandler_initFields(GameKeyEventHandler* this) {
@@ -59,18 +70,19 @@ static void GameKeyEventHandler_initFields(GameKeyEventHandler* this) {
 }
 
 void GameKeyEventHandler_init(GameKeyEventHandler* this) {
+    GameKeyEventHandler_register();
     GameKeyEventHandler_initFields(this);
 }
 
 GameKeyEventHandler* GameKeyEventHandler_new(void) {
-    GameKeyEventHandler* this = calloc(1, sizeof(GameKeyEventHandler));
+    GameKeyEventHandler* this = java_object_alloc(sizeof(GameKeyEventHandler), "GameKeyEventHandler");
     GameKeyEventHandler_init(this);
     return this;
 }
 
 
 GameKeyEventHandler* GameKeyEventHandler_getInstance(void) {
-        return GameKeyEventHandler_instance;
+        return (GameKeyEventHandler_staticInit(), GameKeyEventHandler_instance);
 }
 
 
@@ -83,24 +95,24 @@ void GameKeyEventHandler_removeAllListeners(GameKeyEventHandler* this) {
 
 
 void GameKeyEventHandler_addListenerForPlayer(GameKeyEventHandler* this, EventListenerInterface* eventListenerInterface, int32_t playerInputId) {
-        LogUtil_putF(this->logUtil, EventListenerInterface_toString(eventListenerInterface), this, this->commonStrings->ADD_LISTENER);
-        PressGameKeyEventHandler_addListenerSingleThreaded(this->pressGameKeyEventHandler, eventListenerInterface);
-        JAVA_CALL(UpGameKeyEventHandler_getInstanceForPlayer(this->upGameKeyEventHandler, playerInputId), addListenerSingleThreaded, eventListenerInterface);
-        JAVA_CALL(DownGameKeyEventHandler_getInstanceForPlayer(this->downGameKeyEventHandler, playerInputId), addListenerSingleThreaded, eventListenerInterface);
+        LogUtil_putF(this->logUtil, java_string_of(eventListenerInterface), this, this->commonStrings->ADD_LISTENER);
+        BasicEventHandler_addListenerSingleThreaded(this->pressGameKeyEventHandler, eventListenerInterface);
+        BasicEventHandler_addListenerSingleThreaded(UpGameKeyEventHandler_getInstanceForPlayer(this->upGameKeyEventHandler, playerInputId), eventListenerInterface);
+        BasicEventHandler_addListenerSingleThreaded(DownGameKeyEventHandler_getInstanceForPlayer(this->downGameKeyEventHandler, playerInputId), eventListenerInterface);
 }
 
 
 void GameKeyEventHandler_addListener(GameKeyEventHandler* this, EventListenerInterface* eventListenerInterface) {
-        LogUtil_putF(this->logUtil, EventListenerInterface_toString(eventListenerInterface), this, this->commonStrings->ADD_LISTENER);
-        PressGameKeyEventHandler_addListenerSingleThreaded(this->pressGameKeyEventHandler, eventListenerInterface);
-        UpGameKeyEventHandler_addListenerSingleThreaded(this->upGameKeyEventHandler, eventListenerInterface);
-        DownGameKeyEventHandler_addListenerSingleThreaded(this->downGameKeyEventHandler, eventListenerInterface);
+        LogUtil_putF(this->logUtil, java_string_of(eventListenerInterface), this, this->commonStrings->ADD_LISTENER);
+        BasicEventHandler_addListenerSingleThreaded(this->pressGameKeyEventHandler, eventListenerInterface);
+        BasicEventHandler_addListenerSingleThreaded(this->upGameKeyEventHandler, eventListenerInterface);
+        BasicEventHandler_addListenerSingleThreaded(this->downGameKeyEventHandler, eventListenerInterface);
 }
 
 
 void GameKeyEventHandler_removeListener(GameKeyEventHandler* this, EventListenerInterface* eventListenerInterface) {
-        LogUtil_putF(this->logUtil, EventListenerInterface_toString(eventListenerInterface), this, this->commonStrings->REMOVE_LISTENER);
-        PressGameKeyEventHandler_removeListenerSingleThreaded(this->pressGameKeyEventHandler, eventListenerInterface);
+        LogUtil_putF(this->logUtil, java_string_of(eventListenerInterface), this, this->commonStrings->REMOVE_LISTENER);
+        BasicEventHandler_removeListenerSingleThreaded(this->pressGameKeyEventHandler, eventListenerInterface);
         UpGameKeyEventHandler_removeListenerSingleThreaded(this->upGameKeyEventHandler, eventListenerInterface);
         DownGameKeyEventHandler_removeListenerSingleThreaded(this->downGameKeyEventHandler, eventListenerInterface);
 }

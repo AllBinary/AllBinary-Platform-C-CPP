@@ -1,65 +1,75 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input.motion.trackball.action
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/input/motion/trackball/action/DownTrackballInputToGameKeyEventAction.h"
 #include "org/allbinary/game/input/PlatformInputMappingFactory.h"
-#include "org/allbinary/game/input/motion/action/GameKeyCompleteMotionGestureInputEvent.h"
 #include "org/allbinary/input/motion/gesture/TrackballMotionGestureFactory.h"
 #include "org/allbinary/logic/NullUtil.h"
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/input/motion/gesture/TrackballMotionGestureFactory.h")
+#include "org/allbinary/input/motion/gesture/TrackballMotionGestureFactory.h"
+#endif
+#if __has_include("org/allbinary/input/motion/trackball/action/PersistentInputMapping.h")
+#include "org/allbinary/input/motion/trackball/action/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/input/PersistentInputMapping.h")
+#include "org/allbinary/game/input/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/input/motion/action/PersistentInputMapping.h")
+#include "org/allbinary/game/input/motion/action/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/input/motion/gesture/PersistentInputMapping.h")
+#include "org/allbinary/input/motion/gesture/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/logic/PersistentInputMapping.h")
+#include "org/allbinary/logic/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/input/PlatformInputMappingFactory.h")
+#include "org/allbinary/game/input/PlatformInputMappingFactory.h"
+#endif
 
-typedef struct DownTrackballInputToGameKeyEventAction DownTrackballInputToGameKeyEventAction;
-struct DownTrackballInputToGameKeyEventAction {
-    GameKeyCompleteMotionGestureInputEvent base;
-};
 
-static Any* DownTrackballInputToGameKeyEventAction_instance;
+static void* DownTrackballInputToGameKeyEventAction_instance;
 
-DownTrackballInputToGameKeyEventAction* DownTrackballInputToGameKeyEventAction_new(void);
-GameKeyCompleteMotionGestureInputEvent* DownTrackballInputToGameKeyEventAction_getInstance(void);
 
-void DownTrackballInputToGameKeyEventAction_init(DownTrackballInputToGameKeyEventAction* this);
 
-// Static fields with runtime initializers: call this once at startup
 void DownTrackballInputToGameKeyEventAction_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     DownTrackballInputToGameKeyEventAction_instance = NullUtil_getInstance()->NULL_OBJECT;
+}
+
+void DownTrackballInputToGameKeyEventAction_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("DownTrackballInputToGameKeyEventAction", "GameKeyCompleteMotionGestureInputEvent");
 }
 
 
 GameKeyCompleteMotionGestureInputEvent* DownTrackballInputToGameKeyEventAction_getInstance(void) {
-        if (DownTrackballInputToGameKeyEventAction_instance == NullUtil_getInstance()->NULL_OBJECT) {
+        if ((DownTrackballInputToGameKeyEventAction_staticInit(), DownTrackballInputToGameKeyEventAction_instance) == NullUtil_getInstance()->NULL_OBJECT) {
             DownTrackballInputToGameKeyEventAction_instance = DownTrackballInputToGameKeyEventAction_new();
         }
-        return ((GameKeyCompleteMotionGestureInputEvent*) DownTrackballInputToGameKeyEventAction_instance);
+        return ((GameKeyCompleteMotionGestureInputEvent*) (DownTrackballInputToGameKeyEventAction_staticInit(), DownTrackballInputToGameKeyEventAction_instance));
 }
 
 
 void DownTrackballInputToGameKeyEventAction_init(DownTrackballInputToGameKeyEventAction* this) {
-        GameKeyCompleteMotionGestureInputEvent_init(&this->base, "Down Action", TrackballMotionGestureFactory_getInstance()->DOWN, JAVA_CALL(PlatformInputMappingFactory_getPersistentInputMappingInstance(PlatformInputMappingFactory_getInstance()), getInputMapping));
+    DownTrackballInputToGameKeyEventAction_register();
+        GameKeyCompleteMotionGestureInputEvent_init(&this->base, "Down Action", TrackballMotionGestureFactory_getInstance()->DOWN, PersistentInputMapping_getInputMapping(PlatformInputMappingFactory_getPersistentInputMappingInstance(PlatformInputMappingFactory_getInstance())));
 }
 
 DownTrackballInputToGameKeyEventAction* DownTrackballInputToGameKeyEventAction_new(void) {
-    DownTrackballInputToGameKeyEventAction* this = calloc(1, sizeof(DownTrackballInputToGameKeyEventAction));
+    DownTrackballInputToGameKeyEventAction* this = java_object_alloc(sizeof(DownTrackballInputToGameKeyEventAction), "DownTrackballInputToGameKeyEventAction");
     DownTrackballInputToGameKeyEventAction_init(this);
     return this;
 }

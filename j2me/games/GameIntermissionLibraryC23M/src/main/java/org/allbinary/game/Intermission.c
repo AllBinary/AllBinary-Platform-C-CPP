@@ -1,47 +1,40 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/Intermission.h"
 #include "org/allbinary/time/TimeDelayHelper.h"
 #include "org/allbinary/game/IntermissionInterface.h"
-
-typedef struct Intermission Intermission;
-struct Intermission {
-    IntermissionInterface IntermissionInterface_interface;
-    bool enabled;
-    TimeDelayHelper* timeElapsedHelper;
-    IntermissionEnableListenerInterface* intermissionEnableListener;
-};
+#include "org/allbinary/game/NullIntermissionEnableListener.h"
+#include "org/allbinary/game/IntermissionEnableListenerInterface.h"
+#if __has_include("org/allbinary/time/TimeDelayHelper.h")
+#include "org/allbinary/time/TimeDelayHelper.h"
+#endif
 
 
-Intermission* Intermission_new(void);
 
-void Intermission_init(Intermission* this);
-void Intermission_setListener(Intermission* this, IntermissionEnableListenerInterface* enableListener);
-TimeDelayHelper* Intermission_getTimeDelayHelper(Intermission* this);
-void Intermission_setEnabled(Intermission* this, bool enabled);
-bool Intermission_isEnabled(Intermission* this);
+
+
+
+
+
+void Intermission_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void Intermission_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("Intermission", nullptr);
+    java_register_method("Intermission", "setListener", (void*) Intermission_setListener);
+    java_register_method("Intermission", "getTimeDelayHelper", (void*) Intermission_getTimeDelayHelper);
+    java_register_method("Intermission", "setEnabled", (void*) Intermission_setEnabled);
+    java_register_method("Intermission", "isEnabled", (void*) Intermission_isEnabled);
+}
 
 static void Intermission_initFields(Intermission* this) {
     this->enabled = false;
@@ -51,11 +44,12 @@ static void Intermission_initFields(Intermission* this) {
 
 
 void Intermission_init(Intermission* this) {
+    Intermission_register();
     Intermission_initFields(this);
 }
 
 Intermission* Intermission_new(void) {
-    Intermission* this = calloc(1, sizeof(Intermission));
+    Intermission* this = java_object_alloc(sizeof(Intermission), "Intermission");
     Intermission_init(this);
     return this;
 }
@@ -74,7 +68,7 @@ TimeDelayHelper* Intermission_getTimeDelayHelper(Intermission* this) {
 void Intermission_setEnabled(Intermission* this, bool enabled) {
         this->enabled = enabled;
         if (Intermission_isEnabled(this)) {
-            JAVA_CALL(Intermission_getTimeDelayHelper(this), setStartTimeTNT);
+            TimeDelayHelper_setStartTimeTNT(Intermission_getTimeDelayHelper(this));
         }
         IntermissionEnableListenerInterface_notifyIntermission(this->intermissionEnableListener, enabled);
 }

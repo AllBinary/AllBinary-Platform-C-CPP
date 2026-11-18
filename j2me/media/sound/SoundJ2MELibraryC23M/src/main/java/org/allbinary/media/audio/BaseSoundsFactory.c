@@ -1,59 +1,52 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.media.audio
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/media/audio/BaseSoundsFactory.h"
 #include "org/allbinary/media/audio/SoundsFactoryInterface.h"
-
-typedef struct BaseSoundsFactory BaseSoundsFactory;
-struct BaseSoundsFactory {
-    SoundsFactoryInterface SoundsFactoryInterface_interface;
-    bool initialized;
-};
+#include "org/allbinary/media/audio/Sound.h"
 
 
-BaseSoundsFactory* BaseSoundsFactory_new(void);
-void BaseSoundsFactory_init(BaseSoundsFactory* this);
-Sound** BaseSoundsFactory_getSoundInterfaceArray(BaseSoundsFactory* this);
-void BaseSoundsFactory_setInitialized(BaseSoundsFactory* this, bool initialized);
-bool BaseSoundsFactory_isInitialized(BaseSoundsFactory* this);
+
+
+
+
+
+void BaseSoundsFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void BaseSoundsFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("BaseSoundsFactory", nullptr);
+    java_register_method("BaseSoundsFactory", "init", (void*) BaseSoundsFactory_initMethod);
+    java_register_method("BaseSoundsFactory", "getSoundInterfaceArray", (void*) BaseSoundsFactory_getSoundInterfaceArray);
+    java_register_method("BaseSoundsFactory", "setInitialized", (void*) BaseSoundsFactory_setInitialized);
+    java_register_method("BaseSoundsFactory", "isInitialized", (void*) BaseSoundsFactory_isInitialized);
+}
 
 static void BaseSoundsFactory_initFields(BaseSoundsFactory* this) {
     this->initialized = false;
 }
 
 void BaseSoundsFactory_init(BaseSoundsFactory* this) {
+    BaseSoundsFactory_register();
     BaseSoundsFactory_initFields(this);
 }
 
 BaseSoundsFactory* BaseSoundsFactory_new(void) {
-    BaseSoundsFactory* this = calloc(1, sizeof(BaseSoundsFactory));
+    BaseSoundsFactory* this = java_object_alloc(sizeof(BaseSoundsFactory), "BaseSoundsFactory");
     BaseSoundsFactory_init(this);
     return this;
 }
 
 
-void BaseSoundsFactory_init(BaseSoundsFactory* this) {
+void BaseSoundsFactory_initMethod(BaseSoundsFactory* this) {
 }
 
 

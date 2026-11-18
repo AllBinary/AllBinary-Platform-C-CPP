@@ -1,32 +1,9 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.displayable.canvas
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Command.h"
-// #include "javax/microedition/lcdui/CommandListener.h"
-// #include "javax/microedition/lcdui/Graphics.h"
-// #include "javax/microedition/lcdui/Item.h"
+#include "org/allbinary/game/displayable/canvas/StartCanvas.h"
+#include "javax/microedition/lcdui/Command.h"
+#include "javax/microedition/lcdui/CommandListener.h"
+#include "javax/microedition/lcdui/Graphics.h"
+#include "javax/microedition/lcdui/Item.h"
 #include "org/allbinary/J2MEUtil.h"
 #include "org/allbinary/animation/Animation.h"
 #include "org/allbinary/animation/IndexedAnimationBehavior.h"
@@ -36,7 +13,6 @@
 #include "org/allbinary/canvas/CustomGameMenuUtil.h"
 #include "org/allbinary/canvas/FullScreenUtil.h"
 #include "org/allbinary/canvas/GameStatisticsFactory.h"
-#include "org/allbinary/canvas/RunnableCanvas.h"
 #include "org/allbinary/game/GameAdState.h"
 #include "org/allbinary/game/commands/GameCommandsFactory.h"
 #include "org/allbinary/game/configuration/event/ChangedGameFeatureListener.h"
@@ -75,7 +51,6 @@
 #include "org/allbinary/graphics/displayable/command/MyCommandsFactory.h"
 #include "org/allbinary/graphics/displayable/event/DisplayChangeEvent.h"
 #include "org/allbinary/graphics/displayable/event/DisplayChangeEventHandler.h"
-#include "org/allbinary/graphics/displayable/event/DisplayChangeEventListener.h"
 #include "org/allbinary/graphics/form/FormType.h"
 #include "org/allbinary/graphics/form/FormTypeFactory.h"
 #include "org/allbinary/graphics/form/ScrollSelectionForm.h"
@@ -110,128 +85,830 @@
 #include "org/allbinary/util/BasicArrayListD.h"
 #include "org/allbinary/game/displayable/canvas/GameCanvasRunnableInterface.h"
 #include "org/allbinary/game/displayable/canvas/MenuListener.h"
+#include "org/allbinary/game/displayable/canvas/FormUtil.h"
+#include "org/allbinary/game/displayable/canvas/NoMenuInputProcessor.h"
+#include "org/allbinary/game/displayable/canvas/BasicMenuInputProcessor.h"
+#include "org/allbinary/game/displayable/canvas/NullWaitGameRunnable.h"
+#include "org/allbinary/game/displayable/canvas/GameRunnable.h"
+#include "org/allbinary/game/displayable/canvas/GameInputMappingCanvas.h"
+#if __has_include("org/allbinary/game/displayable/canvas/PersistentInputMapping.h")
+#include "org/allbinary/game/displayable/canvas/PersistentInputMapping.h"
+#endif
+#if __has_include("javax/microedition/lcdui/PersistentInputMapping.h")
+#include "javax/microedition/lcdui/PersistentInputMapping.h"
+#endif
+#if __has_include("javax/microedition/lcdui/PersistentInputMapping.h")
+#include "javax/microedition/lcdui/PersistentInputMapping.h"
+#endif
+#if __has_include("javax/microedition/lcdui/PersistentInputMapping.h")
+#include "javax/microedition/lcdui/PersistentInputMapping.h"
+#endif
+#if __has_include("javax/microedition/lcdui/PersistentInputMapping.h")
+#include "javax/microedition/lcdui/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/PersistentInputMapping.h")
+#include "org/allbinary/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/animation/PersistentInputMapping.h")
+#include "org/allbinary/animation/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/animation/PersistentInputMapping.h")
+#include "org/allbinary/animation/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/animation/special/PersistentInputMapping.h")
+#include "org/allbinary/animation/special/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/business/advertisement/PersistentInputMapping.h")
+#include "org/allbinary/business/advertisement/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/canvas/PersistentInputMapping.h")
+#include "org/allbinary/canvas/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/canvas/PersistentInputMapping.h")
+#include "org/allbinary/canvas/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/canvas/PersistentInputMapping.h")
+#include "org/allbinary/canvas/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/canvas/PersistentInputMapping.h")
+#include "org/allbinary/canvas/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/canvas/PersistentInputMapping.h")
+#include "org/allbinary/canvas/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/PersistentInputMapping.h")
+#include "org/allbinary/game/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/commands/PersistentInputMapping.h")
+#include "org/allbinary/game/commands/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/configuration/event/PersistentInputMapping.h")
+#include "org/allbinary/game/configuration/event/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/configuration/feature/PersistentInputMapping.h")
+#include "org/allbinary/game/configuration/feature/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/configuration/feature/PersistentInputMapping.h")
+#include "org/allbinary/game/configuration/feature/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/configuration/feature/PersistentInputMapping.h")
+#include "org/allbinary/game/configuration/feature/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/configuration/feature/PersistentInputMapping.h")
+#include "org/allbinary/game/configuration/feature/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/init/PersistentInputMapping.h")
+#include "org/allbinary/game/init/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/init/PersistentInputMapping.h")
+#include "org/allbinary/game/init/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/input/PersistentInputMapping.h")
+#include "org/allbinary/game/input/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/input/PersistentInputMapping.h")
+#include "org/allbinary/game/input/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/input/PersistentInputMapping.h")
+#include "org/allbinary/game/input/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/input/PersistentInputMapping.h")
+#include "org/allbinary/game/input/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/PersistentInputMapping.h")
+#include "org/allbinary/game/input/event/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/PersistentInputMapping.h")
+#include "org/allbinary/game/input/event/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/PersistentInputMapping.h")
+#include "org/allbinary/game/input/event/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/PersistentInputMapping.h")
+#include "org/allbinary/game/input/event/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/PersistentInputMapping.h")
+#include "org/allbinary/game/input/event/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/input/mapping/PersistentInputMapping.h")
+#include "org/allbinary/game/input/mapping/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/layer/PersistentInputMapping.h")
+#include "org/allbinary/game/layer/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/layer/PersistentInputMapping.h")
+#include "org/allbinary/game/layer/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/midlet/PersistentInputMapping.h")
+#include "org/allbinary/game/midlet/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/score/PersistentInputMapping.h")
+#include "org/allbinary/game/score/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/score/PersistentInputMapping.h")
+#include "org/allbinary/game/score/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/score/PersistentInputMapping.h")
+#include "org/allbinary/game/score/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/score/PersistentInputMapping.h")
+#include "org/allbinary/game/score/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/score/PersistentInputMapping.h")
+#include "org/allbinary/game/score/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/score/PersistentInputMapping.h")
+#include "org/allbinary/game/score/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/state/PersistentInputMapping.h")
+#include "org/allbinary/game/state/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/state/PersistentInputMapping.h")
+#include "org/allbinary/game/state/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/graphics/PersistentInputMapping.h")
+#include "org/allbinary/graphics/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/graphics/PersistentInputMapping.h")
+#include "org/allbinary/graphics/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/graphics/canvas/transition/progress/PersistentInputMapping.h")
+#include "org/allbinary/graphics/canvas/transition/progress/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/graphics/canvas/transition/progress/PersistentInputMapping.h")
+#include "org/allbinary/graphics/canvas/transition/progress/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/graphics/color/PersistentInputMapping.h")
+#include "org/allbinary/graphics/color/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/graphics/displayable/command/PersistentInputMapping.h")
+#include "org/allbinary/graphics/displayable/command/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/graphics/displayable/event/PersistentInputMapping.h")
+#include "org/allbinary/graphics/displayable/event/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/graphics/displayable/event/PersistentInputMapping.h")
+#include "org/allbinary/graphics/displayable/event/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/graphics/displayable/event/PersistentInputMapping.h")
+#include "org/allbinary/graphics/displayable/event/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/graphics/form/PersistentInputMapping.h")
+#include "org/allbinary/graphics/form/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/graphics/form/PersistentInputMapping.h")
+#include "org/allbinary/graphics/form/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/graphics/form/PersistentInputMapping.h")
+#include "org/allbinary/graphics/form/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/graphics/opengles/PersistentInputMapping.h")
+#include "org/allbinary/graphics/opengles/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/graphics/opengles/PersistentInputMapping.h")
+#include "org/allbinary/graphics/opengles/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/graphics/opengles/PersistentInputMapping.h")
+#include "org/allbinary/graphics/opengles/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/graphics/opengles/PersistentInputMapping.h")
+#include "org/allbinary/graphics/opengles/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/graphics/paint/PersistentInputMapping.h")
+#include "org/allbinary/graphics/paint/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/graphics/paint/PersistentInputMapping.h")
+#include "org/allbinary/graphics/paint/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/graphics/paint/PersistentInputMapping.h")
+#include "org/allbinary/graphics/paint/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/graphics/paint/PersistentInputMapping.h")
+#include "org/allbinary/graphics/paint/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/graphics/paint/PersistentInputMapping.h")
+#include "org/allbinary/graphics/paint/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/graphics/paint/PersistentInputMapping.h")
+#include "org/allbinary/graphics/paint/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/input/motion/gesture/observer/PersistentInputMapping.h")
+#include "org/allbinary/input/motion/gesture/observer/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/log/PersistentInputMapping.h")
+#include "org/allbinary/logic/communication/log/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/log/PersistentInputMapping.h")
+#include "org/allbinary/logic/communication/log/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/logic/math/PersistentInputMapping.h")
+#include "org/allbinary/logic/math/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/logic/string/PersistentInputMapping.h")
+#include "org/allbinary/logic/string/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/logic/system/os/PersistentInputMapping.h")
+#include "org/allbinary/logic/system/os/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/logic/system/security/licensing/PersistentInputMapping.h")
+#include "org/allbinary/logic/system/security/licensing/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/logic/system/security/licensing/PersistentInputMapping.h")
+#include "org/allbinary/logic/system/security/licensing/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/logic/system/security/licensing/PersistentInputMapping.h")
+#include "org/allbinary/logic/system/security/licensing/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/logic/system/security/licensing/PersistentInputMapping.h")
+#include "org/allbinary/logic/system/security/licensing/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/logic/util/event/PersistentInputMapping.h")
+#include "org/allbinary/logic/util/event/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/logic/util/event/PersistentInputMapping.h")
+#include "org/allbinary/logic/util/event/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/media/audio/PersistentInputMapping.h")
+#include "org/allbinary/media/audio/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/media/audio/PersistentInputMapping.h")
+#include "org/allbinary/media/audio/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/string/PersistentInputMapping.h")
+#include "org/allbinary/string/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/time/PersistentInputMapping.h")
+#include "org/allbinary/time/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/util/PersistentInputMapping.h")
+#include "org/allbinary/util/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/util/PersistentInputMapping.h")
+#include "org/allbinary/util/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/util/PersistentInputMapping.h")
+#include "org/allbinary/util/PersistentInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/input/PlatformInputMappingFactory.h")
+#include "org/allbinary/game/input/PlatformInputMappingFactory.h"
+#endif
+#if __has_include("org/allbinary/graphics/opengles/CurrentDisplayableFactory.h")
+#include "org/allbinary/graphics/opengles/CurrentDisplayableFactory.h"
+#endif
+#if __has_include("org/allbinary/game/init/GameInitializationUtil.h")
+#include "org/allbinary/game/init/GameInitializationUtil.h"
+#endif
+#if __has_include("org/allbinary/graphics/ResizableListenerHandler.h")
+#include "org/allbinary/graphics/ResizableListenerHandler.h"
+#endif
+#if __has_include("org/allbinary/game/commands/GameCommandsFactory.h")
+#include "org/allbinary/game/commands/GameCommandsFactory.h"
+#endif
+#if __has_include("org/allbinary/game/configuration/event/ChangedGameFeatureListener.h")
+#include "org/allbinary/game/configuration/event/ChangedGameFeatureListener.h"
+#endif
+#if __has_include("org/allbinary/game/configuration/feature/GameFeatureFactory.h")
+#include "org/allbinary/game/configuration/feature/GameFeatureFactory.h"
+#endif
+#if __has_include("org/allbinary/graphics/displayable/event/DisplayChangeEventHandler.h")
+#include "org/allbinary/graphics/displayable/event/DisplayChangeEventHandler.h"
+#endif
+#if __has_include("org/allbinary/logic/util/event/EventStrings.h")
+#include "org/allbinary/logic/util/event/EventStrings.h"
+#endif
+#if __has_include("org/allbinary/graphics/form/FormTypeFactory.h")
+#include "org/allbinary/graphics/form/FormTypeFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/system/security/licensing/LockableFeatureFactory.h")
+#include "org/allbinary/logic/system/security/licensing/LockableFeatureFactory.h"
+#endif
+#if __has_include("org/allbinary/game/score/HighScoreCommands.h")
+#include "org/allbinary/game/score/HighScoreCommands.h"
+#endif
+#if __has_include("org/allbinary/game/displayable/canvas/GenericOperatingSystem.h")
+#include "org/allbinary/game/displayable/canvas/GenericOperatingSystem.h"
+#endif
+#if __has_include("javax/microedition/lcdui/GenericOperatingSystem.h")
+#include "javax/microedition/lcdui/GenericOperatingSystem.h"
+#endif
+#if __has_include("javax/microedition/lcdui/GenericOperatingSystem.h")
+#include "javax/microedition/lcdui/GenericOperatingSystem.h"
+#endif
+#if __has_include("javax/microedition/lcdui/GenericOperatingSystem.h")
+#include "javax/microedition/lcdui/GenericOperatingSystem.h"
+#endif
+#if __has_include("javax/microedition/lcdui/GenericOperatingSystem.h")
+#include "javax/microedition/lcdui/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/GenericOperatingSystem.h")
+#include "org/allbinary/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/animation/GenericOperatingSystem.h")
+#include "org/allbinary/animation/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/animation/GenericOperatingSystem.h")
+#include "org/allbinary/animation/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/animation/special/GenericOperatingSystem.h")
+#include "org/allbinary/animation/special/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/business/advertisement/GenericOperatingSystem.h")
+#include "org/allbinary/business/advertisement/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/canvas/GenericOperatingSystem.h")
+#include "org/allbinary/canvas/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/canvas/GenericOperatingSystem.h")
+#include "org/allbinary/canvas/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/canvas/GenericOperatingSystem.h")
+#include "org/allbinary/canvas/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/canvas/GenericOperatingSystem.h")
+#include "org/allbinary/canvas/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/canvas/GenericOperatingSystem.h")
+#include "org/allbinary/canvas/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/game/GenericOperatingSystem.h")
+#include "org/allbinary/game/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/game/commands/GenericOperatingSystem.h")
+#include "org/allbinary/game/commands/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/game/configuration/event/GenericOperatingSystem.h")
+#include "org/allbinary/game/configuration/event/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/game/configuration/feature/GenericOperatingSystem.h")
+#include "org/allbinary/game/configuration/feature/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/game/configuration/feature/GenericOperatingSystem.h")
+#include "org/allbinary/game/configuration/feature/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/game/configuration/feature/GenericOperatingSystem.h")
+#include "org/allbinary/game/configuration/feature/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/game/configuration/feature/GenericOperatingSystem.h")
+#include "org/allbinary/game/configuration/feature/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/game/init/GenericOperatingSystem.h")
+#include "org/allbinary/game/init/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/game/init/GenericOperatingSystem.h")
+#include "org/allbinary/game/init/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/game/input/GenericOperatingSystem.h")
+#include "org/allbinary/game/input/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/game/input/GenericOperatingSystem.h")
+#include "org/allbinary/game/input/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/game/input/GenericOperatingSystem.h")
+#include "org/allbinary/game/input/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/game/input/GenericOperatingSystem.h")
+#include "org/allbinary/game/input/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/GenericOperatingSystem.h")
+#include "org/allbinary/game/input/event/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/GenericOperatingSystem.h")
+#include "org/allbinary/game/input/event/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/GenericOperatingSystem.h")
+#include "org/allbinary/game/input/event/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/GenericOperatingSystem.h")
+#include "org/allbinary/game/input/event/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/GenericOperatingSystem.h")
+#include "org/allbinary/game/input/event/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/game/input/mapping/GenericOperatingSystem.h")
+#include "org/allbinary/game/input/mapping/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/game/layer/GenericOperatingSystem.h")
+#include "org/allbinary/game/layer/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/game/layer/GenericOperatingSystem.h")
+#include "org/allbinary/game/layer/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/game/midlet/GenericOperatingSystem.h")
+#include "org/allbinary/game/midlet/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/game/score/GenericOperatingSystem.h")
+#include "org/allbinary/game/score/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/game/score/GenericOperatingSystem.h")
+#include "org/allbinary/game/score/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/game/score/GenericOperatingSystem.h")
+#include "org/allbinary/game/score/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/game/score/GenericOperatingSystem.h")
+#include "org/allbinary/game/score/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/game/score/GenericOperatingSystem.h")
+#include "org/allbinary/game/score/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/game/score/GenericOperatingSystem.h")
+#include "org/allbinary/game/score/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/game/state/GenericOperatingSystem.h")
+#include "org/allbinary/game/state/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/game/state/GenericOperatingSystem.h")
+#include "org/allbinary/game/state/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/graphics/GenericOperatingSystem.h")
+#include "org/allbinary/graphics/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/graphics/GenericOperatingSystem.h")
+#include "org/allbinary/graphics/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/graphics/canvas/transition/progress/GenericOperatingSystem.h")
+#include "org/allbinary/graphics/canvas/transition/progress/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/graphics/canvas/transition/progress/GenericOperatingSystem.h")
+#include "org/allbinary/graphics/canvas/transition/progress/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/graphics/color/GenericOperatingSystem.h")
+#include "org/allbinary/graphics/color/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/graphics/displayable/command/GenericOperatingSystem.h")
+#include "org/allbinary/graphics/displayable/command/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/graphics/displayable/event/GenericOperatingSystem.h")
+#include "org/allbinary/graphics/displayable/event/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/graphics/displayable/event/GenericOperatingSystem.h")
+#include "org/allbinary/graphics/displayable/event/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/graphics/displayable/event/GenericOperatingSystem.h")
+#include "org/allbinary/graphics/displayable/event/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/graphics/form/GenericOperatingSystem.h")
+#include "org/allbinary/graphics/form/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/graphics/form/GenericOperatingSystem.h")
+#include "org/allbinary/graphics/form/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/graphics/form/GenericOperatingSystem.h")
+#include "org/allbinary/graphics/form/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/graphics/opengles/GenericOperatingSystem.h")
+#include "org/allbinary/graphics/opengles/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/graphics/opengles/GenericOperatingSystem.h")
+#include "org/allbinary/graphics/opengles/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/graphics/opengles/GenericOperatingSystem.h")
+#include "org/allbinary/graphics/opengles/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/graphics/opengles/GenericOperatingSystem.h")
+#include "org/allbinary/graphics/opengles/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/graphics/paint/GenericOperatingSystem.h")
+#include "org/allbinary/graphics/paint/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/graphics/paint/GenericOperatingSystem.h")
+#include "org/allbinary/graphics/paint/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/graphics/paint/GenericOperatingSystem.h")
+#include "org/allbinary/graphics/paint/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/graphics/paint/GenericOperatingSystem.h")
+#include "org/allbinary/graphics/paint/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/graphics/paint/GenericOperatingSystem.h")
+#include "org/allbinary/graphics/paint/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/graphics/paint/GenericOperatingSystem.h")
+#include "org/allbinary/graphics/paint/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/input/motion/gesture/observer/GenericOperatingSystem.h")
+#include "org/allbinary/input/motion/gesture/observer/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/log/GenericOperatingSystem.h")
+#include "org/allbinary/logic/communication/log/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/log/GenericOperatingSystem.h")
+#include "org/allbinary/logic/communication/log/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/logic/math/GenericOperatingSystem.h")
+#include "org/allbinary/logic/math/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/logic/string/GenericOperatingSystem.h")
+#include "org/allbinary/logic/string/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/logic/system/os/GenericOperatingSystem.h")
+#include "org/allbinary/logic/system/os/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/logic/system/security/licensing/GenericOperatingSystem.h")
+#include "org/allbinary/logic/system/security/licensing/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/logic/system/security/licensing/GenericOperatingSystem.h")
+#include "org/allbinary/logic/system/security/licensing/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/logic/system/security/licensing/GenericOperatingSystem.h")
+#include "org/allbinary/logic/system/security/licensing/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/logic/system/security/licensing/GenericOperatingSystem.h")
+#include "org/allbinary/logic/system/security/licensing/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/logic/util/event/GenericOperatingSystem.h")
+#include "org/allbinary/logic/util/event/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/logic/util/event/GenericOperatingSystem.h")
+#include "org/allbinary/logic/util/event/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/media/audio/GenericOperatingSystem.h")
+#include "org/allbinary/media/audio/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/media/audio/GenericOperatingSystem.h")
+#include "org/allbinary/media/audio/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/string/GenericOperatingSystem.h")
+#include "org/allbinary/string/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/time/GenericOperatingSystem.h")
+#include "org/allbinary/time/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/util/GenericOperatingSystem.h")
+#include "org/allbinary/util/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/util/GenericOperatingSystem.h")
+#include "org/allbinary/util/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/util/GenericOperatingSystem.h")
+#include "org/allbinary/util/GenericOperatingSystem.h"
+#endif
+#if __has_include("org/allbinary/logic/system/os/OperatingSystemFactory.h")
+#include "org/allbinary/logic/system/os/OperatingSystemFactory.h"
+#endif
+#if __has_include("org/allbinary/game/score/HighScoreCommands.h")
+#include "org/allbinary/game/score/HighScoreCommands.h"
+#endif
+#if __has_include("org/allbinary/input/motion/gesture/observer/BasicMotionGesturesHandler.h")
+#include "org/allbinary/input/motion/gesture/observer/BasicMotionGesturesHandler.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/GameKeyEventHandler.h")
+#include "org/allbinary/game/input/event/GameKeyEventHandler.h"
+#endif
+#if __has_include("org/allbinary/input/motion/gesture/observer/BasicMotionGesturesHandler.h")
+#include "org/allbinary/input/motion/gesture/observer/BasicMotionGesturesHandler.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/GameKeyEventHandler.h")
+#include "org/allbinary/game/input/event/GameKeyEventHandler.h"
+#endif
+#if __has_include("org/allbinary/game/configuration/feature/InputFeatureFactory.h")
+#include "org/allbinary/game/configuration/feature/InputFeatureFactory.h"
+#endif
+#if __has_include("org/allbinary/game/input/GameKeyFactory.h")
+#include "org/allbinary/game/input/GameKeyFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/DownGameKeyEventHandler.h")
+#include "org/allbinary/game/input/event/DownGameKeyEventHandler.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/UpGameKeyEventHandler.h")
+#include "org/allbinary/game/input/event/UpGameKeyEventHandler.h"
+#endif
+#if __has_include("org/allbinary/graphics/opengles/CurrentDisplayableFactory.h")
+#include "org/allbinary/graphics/opengles/CurrentDisplayableFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/graphics/paint/StatePaintable.h")
+#include "org/allbinary/graphics/paint/StatePaintable.h"
+#endif
+#if __has_include("org/allbinary/game/score/HighScoresPaintable.h")
+#include "org/allbinary/game/score/HighScoresPaintable.h"
+#endif
+#if __has_include("org/allbinary/logic/math/SmallIntegerSingletonFactory.h")
+#include "org/allbinary/logic/math/SmallIntegerSingletonFactory.h"
+#endif
+#if __has_include("org/allbinary/graphics/paint/StatePaintable.h")
+#include "org/allbinary/graphics/paint/StatePaintable.h"
+#endif
+#if __has_include("org/allbinary/animation/special/SpecialAnimation.h")
+#include "org/allbinary/animation/special/SpecialAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/special/SpecialAnimation.h")
+#include "org/allbinary/animation/special/SpecialAnimation.h"
+#endif
+#if __has_include("org/allbinary/game/configuration/feature/MainFeatureFactory.h")
+#include "org/allbinary/game/configuration/feature/MainFeatureFactory.h"
+#endif
+#if __has_include("org/allbinary/graphics/opengles/OpenGLThreadUtil.h")
+#include "org/allbinary/graphics/opengles/OpenGLThreadUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/string/CommonSeps.h")
+#include "org/allbinary/string/CommonSeps.h"
+#endif
+#if __has_include("org/allbinary/game/configuration/feature/MainFeatureFactory.h")
+#include "org/allbinary/game/configuration/feature/MainFeatureFactory.h"
+#endif
+#if __has_include("org/allbinary/graphics/displayable/event/DisplayChangeEventHandler.h")
+#include "org/allbinary/graphics/displayable/event/DisplayChangeEventHandler.h"
+#endif
+#if __has_include("org/allbinary/graphics/opengles/OpenGLFeatureUtil.h")
+#include "org/allbinary/graphics/opengles/OpenGLFeatureUtil.h"
+#endif
 
-typedef struct StartCanvas StartCanvas;
-struct StartCanvas {
-    RunnableCanvas base;
-    GameCanvasRunnableInterface GameCanvasRunnableInterface_interface;
-    MenuListener MenuListener_interface;
-    DisplayChangeEventListener DisplayChangeEventListener_interface;
-    BasicColorFactory* basicColorFactory;
-    Features* features;
-    OpenGLFeatureFactory* openGLFeatureFactory;
-    MyCommandsFactory* myCommandsFactory;
-    GameAdStateFactory* gameAdStateFactory;
-    GameStateFactory* gameStateFactory;
-    GameInputStrings* gameInputStrings;
-    FormUtil* formUtil;
-    StatePaintable* basicGameDemoPaintable;
-    SpecialAnimation* specialAnimationInterface;
-    Animation* paintedSpecialAnimationInterface;
-    FullScreenUtil* fullScreenUtil;
-    HighScoresHelper* highScoresHelper;
-    HighScoresPaintable* realHighScoresPaintable;
-    Paintable* highScoresPaintable;
-    int32_t state;
-    TimeDelayHelper* timeDelayHelper;
-    HighScoresFactoryInterface* highScoresFactoryInterface;
-    BasicMenuInputProcessor* menuInputProcessor;
-    ScrollSelectionForm* menuForm;
-    BasicBuildGameInitializerFactory* gameInitializationInterfaceFactoryInterface;
-    bool initialized;
-    Paintable* defaultPaintableInterface;
-    PaintableInterface* paintableInterface;
-    InitUpdatePaintable* overlayPaintable;
-    int32_t tempWait;
-    InputToGameKeyMapping* inputToGameKeyMapping;
-    GameRunnable* gameRunnable;
-    PaintableInterface* progressPaintable;
-    bool isSingleKeyRepeatableProcessing;
-    GameKey* NONE;
-    GameKeyEventFactory* gameKeyEventFactory;
-    const char* SET_STATE;
-    BaseGameStatistics* baseGameStatistics;
-};
 
 static constexpr int32_t StartCanvas_id = 0;
 static const char* StartCanvas_BOT_GAME_STATS = "Bot Game Statistics: ";
 
-StartCanvas* StartCanvas_new(AbeClientInformationInterface* abeClientInformation, CommandListener* commandListener, HighScoresFactoryInterface* highScoresFactoryInterface, Paintable* paintable, InitUpdatePaintable* overlayPaintable, BasicBuildGameInitializerFactory* gameInitializationInterfaceFactoryInterface, bool isContinue);
 
-void StartCanvas_init(StartCanvas* this, AbeClientInformationInterface* abeClientInformation, CommandListener* commandListener, HighScoresFactoryInterface* highScoresFactoryInterface, Paintable* paintable, InitUpdatePaintable* overlayPaintable, BasicBuildGameInitializerFactory* gameInitializationInterfaceFactoryInterface, bool isContinue);
-void StartCanvas_onEvent(StartCanvas* this, AllBinaryEventObject* eventObject);
-void StartCanvas_onDisplayChangeEvent(StartCanvas* this, DisplayChangeEvent* displayChangeEvent);
-Any** StartCanvas_getCustomCommands(StartCanvas* this);
-void StartCanvas_initCommands(StartCanvas* this, CommandListener* cmdListener);
-void StartCanvas_initPostPaint(StartCanvas* this);
-void StartCanvas_mediaInit(StartCanvas* this);
-void StartCanvas_itemStateChanged(StartCanvas* this, Item* item);
-void StartCanvas_initMenu(StartCanvas* this);
-void StartCanvas_open(StartCanvas* this);
-void StartCanvas_close(StartCanvas* this);
-int32_t StartCanvas_getSourceId(StartCanvas* this);
-void StartCanvas_keyPressed(StartCanvas* this, int32_t keyCode);
-void StartCanvas_keyReleased(StartCanvas* this, int32_t keyCode);
-void StartCanvas_keyRepeated(StartCanvas* this, int32_t keyCode);
-void StartCanvas_keyPressedByDevice(StartCanvas* this, int32_t keyCode, int32_t deviceId);
-void StartCanvas_keyReleasedByDevice(StartCanvas* this, int32_t keyCode, int32_t deviceId);
-void StartCanvas_keyRepeatedByDevice(StartCanvas* this, int32_t keyCode, int32_t deviceId);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 static void StartCanvas_addGameKeyEvent(StartCanvas* this, int32_t keyCode, bool repeated);
+
 static void StartCanvas_removeGameKeyEvent(StartCanvas* this, int32_t keyCode, bool repeated);
-void StartCanvas_pause(StartCanvas* this);
-void StartCanvas_unPause(StartCanvas* this);
-bool StartCanvas_isPausable(StartCanvas* this);
-bool StartCanvas_isGameOver(StartCanvas* this);
-void StartCanvas_setLoadStateHashtable(StartCanvas* this, ABHashtable* hashtable);
-ABHashtable* StartCanvas_getLoadStateHashtable(StartCanvas* this);
-ABHashtable* StartCanvas_getCurrentStateHashtable(StartCanvas* this);
-void StartCanvas_setHighScoreSubmitted(StartCanvas* this, bool isNotUsed);
-void StartCanvas_paint(StartCanvas* this, Graphics* graphics);
-void StartCanvas_paintThreed(StartCanvas* this, Graphics* graphics);
-void StartCanvas_processGameOver(StartCanvas* this);
-void StartCanvas_demoStateChange(StartCanvas* this);
-void StartCanvas_updateDemoState(StartCanvas* this);
-int32_t StartCanvas_getNextRandom(StartCanvas* this);
-AllBinaryGameLayerManager* StartCanvas_createGameLayerManager(StartCanvas* this, int32_t randomValue);
-GameCanvasRunnableInterface* StartCanvas_createRunnable(StartCanvas* this, int32_t randomLevel);
-void StartCanvas_createCanvas(StartCanvas* this);
-void StartCanvas_start(StartCanvas* this);
-void StartCanvas_preDemoProcess(StartCanvas* this);
-void StartCanvas_process(StartCanvas* this);
-void StartCanvas_startDemoGame(StartCanvas* this);
-void StartCanvas_processGame(StartCanvas* this);
-void StartCanvas_run(StartCanvas* this);
-void StartCanvas_setRunning(StartCanvas* this, bool running);
-void StartCanvas_end(StartCanvas* this);
-void StartCanvas_setGameState(StartCanvas* this, GameState* gameState);
-GameState* StartCanvas_getGameState(StartCanvas* this);
-int32_t StartCanvas_getState(StartCanvas* this);
-void StartCanvas_setState(StartCanvas* this, int32_t state);
-bool StartCanvas_isHighScoreSubmitted(StartCanvas* this);
-HighScoresPaintable* StartCanvas_getRealHighScoresPaintable(StartCanvas* this);
-void StartCanvas_setSpecialAnimationInterface(StartCanvas* this, SpecialAnimation* specialAnimationInterface);
-SpecialAnimation* StartCanvas_getSpecialAnimationInterface(StartCanvas* this);
-void StartCanvas_setPaintableInterface(StartCanvas* this, PaintableInterface* paintableInterface);
-PaintableInterface* StartCanvas_getPaintableInterface(StartCanvas* this);
-void StartCanvas_setDefaultPaintableInterface(StartCanvas* this, Paintable* defaultPaintableInterface);
-Paintable* StartCanvas_getDefaultPaintableInterface(StartCanvas* this);
-HighScoresFactoryInterface* StartCanvas_getHighScoresFactoryInterface(StartCanvas* this);
-void StartCanvas_setMenuInputProcessor(StartCanvas* this, BasicMenuInputProcessor* menuInputProcessor);
-BasicMenuInputProcessor* StartCanvas_getMenuInputProcessor(StartCanvas* this);
-ScrollSelectionForm* StartCanvas_getMenuForm(StartCanvas* this);
-void StartCanvas_setMenuForm(StartCanvas* this, ScrollSelectionForm* menuForm);
-bool StartCanvas_isInitialized(StartCanvas* this);
-Paintable* StartCanvas_getOverlayPaintable(StartCanvas* this);
-void StartCanvas_setBasicGameDemoPaintable(StartCanvas* this, StatePaintable* basicGameDemoPaintable);
-StatePaintable* StartCanvas_getBasicGameDemoPaintable(StartCanvas* this);
-void StartCanvas_setTempWait(StartCanvas* this, int32_t tempWait);
-int32_t StartCanvas_getTempWait(StartCanvas* this);
-bool StartCanvas_isSingleThread(StartCanvas* this);
-bool StartCanvas_isRunningInAnotherThread(StartCanvas* this);
-BasicBuildGameInitializerFactory* StartCanvas_getGameInitializationInterfaceFactoryInterface(StartCanvas* this);
-const char* StartCanvas_getTitle(StartCanvas* this);
-bool StartCanvas_isPaused(StartCanvas* this);
-int32_t StartCanvas_getType(StartCanvas* this);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void StartCanvas_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void StartCanvas_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("StartCanvas", "RunnableCanvas");
+    java_register_method("StartCanvas", "onEvent", (void*) StartCanvas_onEvent);
+    java_register_method("StartCanvas", "onDisplayChangeEvent", (void*) StartCanvas_onDisplayChangeEvent);
+    java_register_method("StartCanvas", "getCustomCommands", (void*) StartCanvas_getCustomCommands);
+    java_register_method("StartCanvas", "initCommands", (void*) StartCanvas_initCommands);
+    java_register_method("StartCanvas", "initPostPaint", (void*) StartCanvas_initPostPaint);
+    java_register_method("StartCanvas", "mediaInit", (void*) StartCanvas_mediaInit);
+    java_register_method("StartCanvas", "itemStateChanged", (void*) StartCanvas_itemStateChanged);
+    java_register_method("StartCanvas", "initMenu", (void*) StartCanvas_initMenu);
+    java_register_method("StartCanvas", "open", (void*) StartCanvas_open);
+    java_register_method("StartCanvas", "close", (void*) StartCanvas_close);
+    java_register_method("StartCanvas", "getSourceId", (void*) StartCanvas_getSourceId);
+    java_register_method("StartCanvas", "keyPressed", (void*) StartCanvas_keyPressed);
+    java_register_method("StartCanvas", "keyReleased", (void*) StartCanvas_keyReleased);
+    java_register_method("StartCanvas", "keyRepeated", (void*) StartCanvas_keyRepeated);
+    java_register_method("StartCanvas", "keyPressedByDevice", (void*) StartCanvas_keyPressedByDevice);
+    java_register_method("StartCanvas", "keyReleasedByDevice", (void*) StartCanvas_keyReleasedByDevice);
+    java_register_method("StartCanvas", "keyRepeatedByDevice", (void*) StartCanvas_keyRepeatedByDevice);
+    java_register_method("StartCanvas", "addGameKeyEvent", (void*) StartCanvas_addGameKeyEvent);
+    java_register_method("StartCanvas", "removeGameKeyEvent", (void*) StartCanvas_removeGameKeyEvent);
+    java_register_method("StartCanvas", "pause", (void*) StartCanvas_pause);
+    java_register_method("StartCanvas", "unPause", (void*) StartCanvas_unPause);
+    java_register_method("StartCanvas", "isPausable", (void*) StartCanvas_isPausable);
+    java_register_method("StartCanvas", "isGameOver", (void*) StartCanvas_isGameOver);
+    java_register_method("StartCanvas", "setLoadStateHashtable", (void*) StartCanvas_setLoadStateHashtable);
+    java_register_method("StartCanvas", "getLoadStateHashtable", (void*) StartCanvas_getLoadStateHashtable);
+    java_register_method("StartCanvas", "getCurrentStateHashtable", (void*) StartCanvas_getCurrentStateHashtable);
+    java_register_method("StartCanvas", "setHighScoreSubmitted", (void*) StartCanvas_setHighScoreSubmitted);
+    java_register_method("StartCanvas", "paint", (void*) StartCanvas_paint);
+    java_register_method("StartCanvas", "paintThreed", (void*) StartCanvas_paintThreed);
+    java_register_method("StartCanvas", "processGameOver", (void*) StartCanvas_processGameOver);
+    java_register_method("StartCanvas", "demoStateChange", (void*) StartCanvas_demoStateChange);
+    java_register_method("StartCanvas", "updateDemoState", (void*) StartCanvas_updateDemoState);
+    java_register_method("StartCanvas", "getNextRandom", (void*) StartCanvas_getNextRandom);
+    java_register_method("StartCanvas", "createGameLayerManager", (void*) StartCanvas_createGameLayerManager);
+    java_register_method("StartCanvas", "createRunnable", (void*) StartCanvas_createRunnable);
+    java_register_method("StartCanvas", "createCanvas", (void*) StartCanvas_createCanvas);
+    java_register_method("StartCanvas", "start", (void*) StartCanvas_start);
+    java_register_method("StartCanvas", "preDemoProcess", (void*) StartCanvas_preDemoProcess);
+    java_register_method("StartCanvas", "process", (void*) StartCanvas_process);
+    java_register_method("StartCanvas", "startDemoGame", (void*) StartCanvas_startDemoGame);
+    java_register_method("StartCanvas", "processGame", (void*) StartCanvas_processGame);
+    java_register_method("StartCanvas", "run", (void*) StartCanvas_run);
+    java_register_method("StartCanvas", "setRunning", (void*) StartCanvas_setRunning);
+    java_register_method("StartCanvas", "end", (void*) StartCanvas_end);
+    java_register_method("StartCanvas", "setGameState", (void*) StartCanvas_setGameState);
+    java_register_method("StartCanvas", "getGameState", (void*) StartCanvas_getGameState);
+    java_register_method("StartCanvas", "getState", (void*) StartCanvas_getState);
+    java_register_method("StartCanvas", "setState", (void*) StartCanvas_setState);
+    java_register_method("StartCanvas", "isHighScoreSubmitted", (void*) StartCanvas_isHighScoreSubmitted);
+    java_register_method("StartCanvas", "getRealHighScoresPaintable", (void*) StartCanvas_getRealHighScoresPaintable);
+    java_register_method("StartCanvas", "setSpecialAnimationInterface", (void*) StartCanvas_setSpecialAnimationInterface);
+    java_register_method("StartCanvas", "getSpecialAnimationInterface", (void*) StartCanvas_getSpecialAnimationInterface);
+    java_register_method("StartCanvas", "setPaintableInterface", (void*) StartCanvas_setPaintableInterface);
+    java_register_method("StartCanvas", "getPaintableInterface", (void*) StartCanvas_getPaintableInterface);
+    java_register_method("StartCanvas", "setDefaultPaintableInterface", (void*) StartCanvas_setDefaultPaintableInterface);
+    java_register_method("StartCanvas", "getDefaultPaintableInterface", (void*) StartCanvas_getDefaultPaintableInterface);
+    java_register_method("StartCanvas", "getHighScoresFactoryInterface", (void*) StartCanvas_getHighScoresFactoryInterface);
+    java_register_method("StartCanvas", "setMenuInputProcessor", (void*) StartCanvas_setMenuInputProcessor);
+    java_register_method("StartCanvas", "getMenuInputProcessor", (void*) StartCanvas_getMenuInputProcessor);
+    java_register_method("StartCanvas", "getMenuForm", (void*) StartCanvas_getMenuForm);
+    java_register_method("StartCanvas", "setMenuForm", (void*) StartCanvas_setMenuForm);
+    java_register_method("StartCanvas", "isInitialized", (void*) StartCanvas_isInitialized);
+    java_register_method("StartCanvas", "getOverlayPaintable", (void*) StartCanvas_getOverlayPaintable);
+    java_register_method("StartCanvas", "setBasicGameDemoPaintable", (void*) StartCanvas_setBasicGameDemoPaintable);
+    java_register_method("StartCanvas", "getBasicGameDemoPaintable", (void*) StartCanvas_getBasicGameDemoPaintable);
+    java_register_method("StartCanvas", "setTempWait", (void*) StartCanvas_setTempWait);
+    java_register_method("StartCanvas", "getTempWait", (void*) StartCanvas_getTempWait);
+    java_register_method("StartCanvas", "isSingleThread", (void*) StartCanvas_isSingleThread);
+    java_register_method("StartCanvas", "isRunningInAnotherThread", (void*) StartCanvas_isRunningInAnotherThread);
+    java_register_method("StartCanvas", "getGameInitializationInterfaceFactoryInterface", (void*) StartCanvas_getGameInitializationInterfaceFactoryInterface);
+    java_register_method("StartCanvas", "getTitle", (void*) StartCanvas_getTitle);
+    java_register_method("StartCanvas", "isPaused", (void*) StartCanvas_isPaused);
+    java_register_method("StartCanvas", "getType", (void*) StartCanvas_getType);
+}
 
 static void StartCanvas_initFields(StartCanvas* this) {
     this->basicColorFactory = BasicColorFactory_getInstance();
@@ -260,7 +937,7 @@ static void StartCanvas_initFields(StartCanvas* this) {
     this->paintableInterface = NullPaintable_getInstance();
     
     this->tempWait = NullWaitGameRunnable_getInstance()->WAIT;
-    this->inputToGameKeyMapping = JAVA_CALL(PlatformInputMappingFactory_getPersistentInputMappingInstance(PlatformInputMappingFactory_getInstance()), getInputMapping);
+    this->inputToGameKeyMapping = PersistentInputMapping_getInputMapping(PlatformInputMappingFactory_getPersistentInputMappingInstance(PlatformInputMappingFactory_getInstance()));
     this->gameRunnable = NullWaitGameRunnable_getInstance();
     this->progressPaintable = ProgressCanvasFactory_getLazyInstance();
     this->isSingleKeyRepeatableProcessing = Features_isFeature(this->features, InputFeatureFactory_getInstance()->SINGLE_KEY_REPEAT_PRESS);
@@ -272,9 +949,10 @@ static void StartCanvas_initFields(StartCanvas* this) {
 
 
 void StartCanvas_init(StartCanvas* this, AbeClientInformationInterface* abeClientInformation, CommandListener* commandListener, HighScoresFactoryInterface* highScoresFactoryInterface, Paintable* paintable, InitUpdatePaintable* overlayPaintable, BasicBuildGameInitializerFactory* gameInitializationInterfaceFactoryInterface, bool isContinue) {
+    StartCanvas_register();
         RunnableCanvas_init(&this->base, commandListener, CurrentDisplayableFactory_getInstance()->DEFAULT_CHILD_NAME_LIST, true);
         StartCanvas_initFields(this);
-        StartCanvas_setWait(this, NullWaitGameRunnable_getInstance()->WAIT);
+        RunnableCanvas_setWait(this, NullWaitGameRunnable_getInstance()->WAIT);
         this->gameInitializationInterfaceFactoryInterface = gameInitializationInterfaceFactoryInterface;
         GameInitializationUtil_initDemo(GameInitializationUtil_getInstance(), abeClientInformation, this, gameInitializationInterfaceFactoryInterface);
         ResizableListenerHandler_fireEvent(ResizableListenerHandler_getInstance(), false);
@@ -283,16 +961,16 @@ void StartCanvas_init(StartCanvas* this, AbeClientInformationInterface* abeClien
         StartCanvas_setDefaultPaintableInterface(this, paintable);
         StartCanvas_setPaintableInterface(this, StartCanvas_getDefaultPaintableInterface(this));
         if (isContinue) {
-            StartCanvas_addCommand(this, GameCommandsFactory_getInstance()->CONTINUE_COMMAND);
+            MyCanvas_addCommand(this, GameCommandsFactory_getInstance()->CONTINUE_COMMAND);
         }
-        if (ChangedGameFeatureListener_isChangedFeature(ChangedGameFeatureListener_getInstance(), GameFeatureFactory_getInstance()->SOUND)) {
+        if (BaseChangedGameFeatureListener_isChangedFeature(ChangedGameFeatureListener_getInstance(), GameFeatureFactory_getInstance()->SOUND)) {
             StartCanvas_mediaInit(this);
         }
-        DisplayChangeEventHandler_addListenerInterface(DisplayChangeEventHandler_getInstance(), this);
+        BasicEventHandler_addListenerInterface(DisplayChangeEventHandler_getInstance(), this);
 }
 
 StartCanvas* StartCanvas_new(AbeClientInformationInterface* abeClientInformation, CommandListener* commandListener, HighScoresFactoryInterface* highScoresFactoryInterface, Paintable* paintable, InitUpdatePaintable* overlayPaintable, BasicBuildGameInitializerFactory* gameInitializationInterfaceFactoryInterface, bool isContinue) {
-    StartCanvas* this = calloc(1, sizeof(StartCanvas));
+    StartCanvas* this = java_object_alloc(sizeof(StartCanvas), "StartCanvas");
     StartCanvas_init(this, abeClientInformation, commandListener, highScoresFactoryInterface, paintable, overlayPaintable, gameInitializationInterfaceFactoryInterface, isContinue);
     return this;
 }
@@ -309,19 +987,19 @@ void StartCanvas_onDisplayChangeEvent(StartCanvas* this, DisplayChangeEvent* dis
             if (scrollSelectionForm != nullptr) {
                 FormType* formType = FormTypeFactory_getFormType(FormTypeFactory_getInstance());
                 Rectangle* rectangle = FormUtil_createFormRectangle(this->formUtil);
-                ScrollSelectionForm_init(scrollSelectionForm, rectangle, formType);
+                ScrollSelectionForm_initMethod(scrollSelectionForm, rectangle, formType);
             }
-            InitUpdatePaintable_init(this->overlayPaintable);
+            InitUpdatePaintable_initMethod(this->overlayPaintable);
         } JAVA_CATCH(Exception, e) {
-            JAVA_CALL(this->logUtil, put, this->commonStrings->EXCEPTION, this, this->canvasStrings->ON_DISPLAY_CHANGE_EVENT, e);
+            LogUtil_put(this->base.base.logUtil, this->base.base.commonStrings->EXCEPTION, this, this->base.base.canvasStrings->ON_DISPLAY_CHANGE_EVENT, e);
         } JAVA_END_TRY;
 }
 
 
-Any** StartCanvas_getCustomCommands(StartCanvas* this) {
+void** StartCanvas_getCustomCommands(StartCanvas* this) {
         GameCommandsFactory* gameCommandsFactory = GameCommandsFactory_getInstance();
         if (J2MEUtil_isHTML()) {
-            Any** commandArray = ((Any**) java_array_from(sizeof(Any*), sizeof((Any*[]){ gameCommandsFactory->START_COMMAND, HighScoreCommands_getInstance()->DISPLAY, GameInputMappingCanvas_DISPLAY, gameCommandsFactory->DISPLAY_ABOUT }) / sizeof(Any*), (Any*[]){ gameCommandsFactory->START_COMMAND, HighScoreCommands_getInstance()->DISPLAY, GameInputMappingCanvas_DISPLAY, gameCommandsFactory->DISPLAY_ABOUT }));
+            void** commandArray = ((void**) java_array_from(sizeof(void*), sizeof((void*[]){ gameCommandsFactory->START_COMMAND, HighScoreCommands_getInstance()->DISPLAY, (GameInputMappingCanvas_staticInit(), GameInputMappingCanvas_DISPLAY), gameCommandsFactory->DISPLAY_ABOUT }) / sizeof(void*), (void*[]){ gameCommandsFactory->START_COMMAND, HighScoreCommands_getInstance()->DISPLAY, (GameInputMappingCanvas_staticInit(), GameInputMappingCanvas_DISPLAY), gameCommandsFactory->DISPLAY_ABOUT }));
             return commandArray;
         } else {
             BasicArrayList* commandList = BasicArrayListD_new();
@@ -335,32 +1013,32 @@ Any** StartCanvas_getCustomCommands(StartCanvas* this) {
             }
             BasicArrayList_add(commandList, HighScoreCommands_getInstance()->DISPLAY);
             JAVA_TRY {
-                bool isOverScan = JAVA_CALL(OperatingSystemFactory_getOperatingSystemInstance(OperatingSystemFactory_getInstance()), isOverScan);
-                if (SWTUtil_isSWT) {
-                    BasicArrayList_add(commandList, GameInputMappingCanvas_DISPLAY);
+                bool isOverScan = GenericOperatingSystem_isOverScan(OperatingSystemFactory_getOperatingSystemInstance(OperatingSystemFactory_getInstance()));
+                if ((SWTUtil_staticInit(), SWTUtil_isSWT)) {
+                    BasicArrayList_add(commandList, (GameInputMappingCanvas_staticInit(), GameInputMappingCanvas_DISPLAY));
                 } else if (!isOverScan) {
                     BasicArrayList_add(commandList, gameCommandsFactory->DISPLAY_OPTIONS);
                     BasicArrayList_add(commandList, gameCommandsFactory->DISPLAY_LOAD_FORM);
-                    BasicArrayList_add(commandList, GameInputMappingCanvas_DISPLAY);
+                    BasicArrayList_add(commandList, (GameInputMappingCanvas_staticInit(), GameInputMappingCanvas_DISPLAY));
                 }
             } JAVA_CATCH(Exception, e) {
             } JAVA_END_TRY;
             BasicArrayList_add(commandList, gameCommandsFactory->DISPLAY_ABOUT);
-            Any** commandArray = BasicArrayList_toArray(commandList);
+            void** commandArray = BasicArrayList_toArray(commandList);
             return commandArray;
         }
 }
 
 
 void StartCanvas_initCommands(StartCanvas* this, CommandListener* cmdListener) {
-        StartCanvas_removeAllCommands(this);
-        Any** commandArray = StartCanvas_getCustomCommands(this);
+        MyCanvas_removeAllCommands(this);
+        void** commandArray = StartCanvas_getCustomCommands(this);
         int32_t size = java_array_length(commandArray);
         for (int32_t index = 0; index < size; index++) {
-            StartCanvas_addCommand(this, ((Command*) commandArray[index]));
+            MyCanvas_addCommand(this, ((Command*) commandArray[index]));
         }
         CustomGameMenuUtil_add(this);
-        StartCanvas_setCommandListener(this, cmdListener);
+        MyCanvas_setCommandListener(this, cmdListener);
 }
 
 
@@ -371,12 +1049,12 @@ void StartCanvas_initPostPaint(StartCanvas* this) {
 
 // throws Exception
 void StartCanvas_mediaInit(StartCanvas* this) {
-        AllBinaryMediaManager_init(EarlySoundsFactory_getInstance());
+        AllBinaryMediaManager_initMethod(EarlySoundsFactory_getInstance());
 }
 
 
 void StartCanvas_itemStateChanged(StartCanvas* this, Item* item) {
-        ForcedLogUtil_log(this->commonStrings->NOT_IMPLEMENTED, this);
+        ForcedLogUtil_log(this->base.base.commonStrings->NOT_IMPLEMENTED, this);
 }
 
 
@@ -388,13 +1066,13 @@ void StartCanvas_initMenu(StartCanvas* this) {
 
 
 void StartCanvas_open(StartCanvas* this) {
-        BasicMotionGesturesHandler_addListenerInterface(BasicMotionGesturesHandler_getInstance(), StartCanvas_getMenuInputProcessor(this));
+        BasicEventHandler_addListenerInterface(BasicMotionGesturesHandler_getInstance(), StartCanvas_getMenuInputProcessor(this));
         GameKeyEventHandler_addListener(GameKeyEventHandler_getInstance(), StartCanvas_getMenuInputProcessor(this));
 }
 
 
 void StartCanvas_close(StartCanvas* this) {
-        BasicMotionGesturesHandler_removeListener(BasicMotionGesturesHandler_getInstance(), StartCanvas_getMenuInputProcessor(this));
+        BasicEventHandler_removeListener(BasicMotionGesturesHandler_getInstance(), StartCanvas_getMenuInputProcessor(this));
         GameKeyEventHandler_removeListener(GameKeyEventHandler_getInstance(), StartCanvas_getMenuInputProcessor(this));
 }
 
@@ -441,12 +1119,12 @@ static void StartCanvas_addGameKeyEvent(StartCanvas* this, int32_t keyCode, bool
             GameKey* gameKey = InputToGameKeyMapping_getInstanceForCanvas(this->inputToGameKeyMapping, this, keyCode);
             if (gameKey != this->NONE) {
                 GameKeyEvent* gameKeyEvent = GameKeyEventFactory_getInstanceForInput(this->gameKeyEventFactory, this, gameKey);
-                DownGameKeyEventHandler_fireEvent(DownGameKeyEventHandler_getInstance(), gameKeyEvent);
+                DownGameKeyEventHandlerBase_fireEvent(DownGameKeyEventHandler_getInstance(), gameKeyEvent);
             } else {
-                JAVA_CALL(this->logUtil, putF, JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), this->gameInputStrings->NO_KEY), appendint, keyCode), toString), this, this->gameInputStrings->ADD_KEY_EVENT);
+                LogUtil_putF(this->base.base.logUtil, java_string_of(StringMaker_appendint(StringMaker_append(StringMaker_new(), this->gameInputStrings->NO_KEY), keyCode)), this, this->gameInputStrings->ADD_KEY_EVENT);
             }
         } JAVA_CATCH(Exception, e) {
-            JAVA_CALL(this->logUtil, put, "Key Event Error", this, this->gameInputStrings->ADD_KEY_EVENT, e);
+            LogUtil_put(this->base.base.logUtil, "Key Event Error", this, this->gameInputStrings->ADD_KEY_EVENT, e);
         } JAVA_END_TRY;
 }
 
@@ -456,12 +1134,12 @@ static void StartCanvas_removeGameKeyEvent(StartCanvas* this, int32_t keyCode, b
             GameKey* gameKey = InputToGameKeyMapping_getInstanceForCanvas(this->inputToGameKeyMapping, this, keyCode);
             if (gameKey != this->NONE) {
                 GameKeyEvent* gameKeyEvent = GameKeyEventFactory_getInstanceForInput(this->gameKeyEventFactory, this, gameKey);
-                UpGameKeyEventHandler_fireEvent(UpGameKeyEventHandler_getInstance(), gameKeyEvent);
+                UpGameKeyEventHandlerBase_fireEvent(UpGameKeyEventHandler_getInstance(), gameKeyEvent);
             } else {
-                JAVA_CALL(this->logUtil, putF, JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), this->gameInputStrings->NO_KEY), appendint, keyCode), toString), this, this->gameInputStrings->REMOVE_KEY_EVENT);
+                LogUtil_putF(this->base.base.logUtil, java_string_of(StringMaker_appendint(StringMaker_append(StringMaker_new(), this->gameInputStrings->NO_KEY), keyCode)), this, this->gameInputStrings->REMOVE_KEY_EVENT);
             }
         } JAVA_CATCH(Exception, e) {
-            JAVA_CALL(this->logUtil, put, "Key Event Error", this, this->gameInputStrings->REMOVE_KEY_EVENT, e);
+            LogUtil_put(this->base.base.logUtil, "Key Event Error", this, this->gameInputStrings->REMOVE_KEY_EVENT, e);
         } JAVA_END_TRY;
 }
 
@@ -469,14 +1147,14 @@ static void StartCanvas_removeGameKeyEvent(StartCanvas* this, int32_t keyCode, b
 // synchronized
 void StartCanvas_pause(StartCanvas* this) {
         StartCanvas_close(this);
-        StartCanvas_setPaused(this, true);
+        MyCanvas_setPaused(this, true);
 }
 
 
 // synchronized
 void StartCanvas_unPause(StartCanvas* this) {
         StartCanvas_open(this);
-        StartCanvas_setPaused(this, false);
+        MyCanvas_setPaused(this, false);
 }
 
 
@@ -490,28 +1168,28 @@ bool StartCanvas_isPausable(StartCanvas* this) {
 
 
 bool StartCanvas_isGameOver(StartCanvas* this) {
-        JAVA_CALL(this->logUtil, putF, JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), this->commonStrings->NOT_IMPLEMENTED), append, " since not a game"), toString), this, "isGameOver");
+        LogUtil_putF(this->base.base.logUtil, java_string_of(StringMaker_append(StringMaker_append(StringMaker_new(), this->base.base.commonStrings->NOT_IMPLEMENTED), " since not a game")), this, "isGameOver");
         return false;
 }
 
 
 // throws Exception
 void StartCanvas_setLoadStateHashtable(StartCanvas* this, ABHashtable* hashtable) {
-        JAVA_CALL(this->logUtil, putF, "Trying to continue a demo lol - only continue a game canvas not the demo", this, "setLoadStateHashtable");
+        LogUtil_putF(this->base.base.logUtil, "Trying to continue a demo lol - only continue a game canvas not the demo", this, "setLoadStateHashtable");
 }
 
 
 // throws Exception
 ABHashtable* StartCanvas_getLoadStateHashtable(StartCanvas* this) {
-        JAVA_CALL(this->logUtil, putF, "Trying to continue a demo lol - only continue a game canvas not the demo", this, "getLoadStateHashtable");
-        return this->stdUtil->NULL_TABLE;
+        LogUtil_putF(this->base.base.logUtil, "Trying to continue a demo lol - only continue a game canvas not the demo", this, "getLoadStateHashtable");
+        return this->base.stdUtil->NULL_TABLE;
 }
 
 
 // throws Exception
 ABHashtable* StartCanvas_getCurrentStateHashtable(StartCanvas* this) {
-        JAVA_CALL(this->logUtil, putF, "Trying to save the AI lol", this, "getCurrentStateHashtable");
-        return this->stdUtil->NULL_TABLE;
+        LogUtil_putF(this->base.base.logUtil, "Trying to save the AI lol", this, "getCurrentStateHashtable");
+        return this->base.stdUtil->NULL_TABLE;
 }
 
 
@@ -523,8 +1201,8 @@ void StartCanvas_paint(StartCanvas* this, Graphics* graphics) {
         PaintableInterface_paint(this->paintableInterface, graphics);
         Animation_paintXY(this->paintedSpecialAnimationInterface, graphics, 0, 0);
         Paintable_paint(this->highScoresPaintable, graphics);
-        JAVA_CALL(StartCanvas_getBasicGameDemoPaintable(this), paint, graphics);
-        InitUpdatePaintable_paint(this->overlayPaintable, graphics);
+        Paintable_paint(StartCanvas_getBasicGameDemoPaintable(this), graphics);
+        Paintable_paint(this->overlayPaintable, graphics);
         PaintableInterface_paint(this->progressPaintable, graphics);
 }
 
@@ -537,7 +1215,7 @@ void StartCanvas_paintThreed(StartCanvas* this, Graphics* graphics) {
 
 // synchronized
 void StartCanvas_processGameOver(StartCanvas* this) {
-        JAVA_CALL(this->logUtil, putF, "Not Implemented since not a game", this, "setGameOver");
+        LogUtil_putF(this->base.base.logUtil, "Not Implemented since not a game", this, "setGameOver");
 }
 
 
@@ -553,7 +1231,7 @@ void StartCanvas_demoStateChange(StartCanvas* this) {
                 if (highScores == NullHighScoresSingletonFactory_getInstance()) {
                     newState = 0;
                 } else {
-                    JAVA_CALL(StartCanvas_getRealHighScoresPaintable(this), setHighScores, highScores);
+                    HighScoresPaintable_setHighScores(StartCanvas_getRealHighScoresPaintable(this), highScores);
                 }
             }
         }
@@ -563,37 +1241,37 @@ void StartCanvas_demoStateChange(StartCanvas* this) {
 
 
 void StartCanvas_updateDemoState(StartCanvas* this) {
-        PreLogUtil_put(JAVA_CALL(SmallIntegerSingletonFactory_createInstance(SmallIntegerSingletonFactory_getInstance(), this->state), toString), this, this->SET_STATE);
-        JAVA_CALL(StartCanvas_getBasicGameDemoPaintable(this), setState, this->state);
+        PreLogUtil_put(java_string_of(SmallIntegerSingletonFactory_createInstance(SmallIntegerSingletonFactory_getInstance(), this->state)), this, this->SET_STATE);
+        StatePaintable_setState(StartCanvas_getBasicGameDemoPaintable(this), this->state);
         if (this->state == 0) {
             this->highScoresPaintable = NullPaintable_getInstance();
             this->paintedSpecialAnimationInterface = StartCanvas_getSpecialAnimationInterface(this);
-            JAVA_CALL(StartCanvas_getSpecialAnimationInterface(this), reset);
+            IndexedAnimation_reset(StartCanvas_getSpecialAnimationInterface(this));
         } else if (this->state == 1) {
             this->paintedSpecialAnimationInterface = SpecialAnimation_getInstance();
         } else if (this->state == 2) {
             this->highScoresPaintable = StartCanvas_getRealHighScoresPaintable(this);
         }
         GameAdState* gameAdState = GameAdStateFactory_getCurrentInstance(this->gameAdStateFactory);
-        GameAdState_processPageAdState(gameAdState);
+        GameAdStateBase_processPageAdState(gameAdState);
 }
 
 
 // throws Exception
 int32_t StartCanvas_getNextRandom(StartCanvas* this) {
-        java_throw(java_exception_new("Exception", this->commonStrings->NOT_IMPLEMENTED));
+        java_throw(java_exception_new("Exception", this->base.base.commonStrings->NOT_IMPLEMENTED));
 }
 
 
 // throws Exception
 AllBinaryGameLayerManager* StartCanvas_createGameLayerManager(StartCanvas* this, int32_t randomValue) {
-        java_throw(java_exception_new("Exception", this->commonStrings->NOT_IMPLEMENTED));
+        java_throw(java_exception_new("Exception", this->base.base.commonStrings->NOT_IMPLEMENTED));
 }
 
 
 // throws Exception
 GameCanvasRunnableInterface* StartCanvas_createRunnable(StartCanvas* this, int32_t randomLevel) {
-        java_throw(java_exception_new("Exception", this->commonStrings->NOT_IMPLEMENTED));
+        java_throw(java_exception_new("Exception", this->base.base.commonStrings->NOT_IMPLEMENTED));
 }
 
 
@@ -616,14 +1294,14 @@ void StartCanvas_preDemoProcess(StartCanvas* this) {
 
 // throws Exception
 void StartCanvas_process(StartCanvas* this) {
-        JAVA_CALL(StartCanvas_getMenuInputProcessor(this), processInputList);
+        BasicMenuInputProcessor_processInputList(StartCanvas_getMenuInputProcessor(this));
         StartCanvas_preDemoProcess(this);
         if (this->state == 0) {
-            IndexedAnimationBehavior* indexedAnimationBehavior = ((IndexedAnimationBehavior*) JAVA_CALL(StartCanvas_getSpecialAnimationInterface(this), getAnimationBehavior));
+            IndexedAnimationBehavior* indexedAnimationBehavior = ((IndexedAnimationBehavior*) IndexedAnimation_getAnimationBehavior(StartCanvas_getSpecialAnimationInterface(this)));
             if (indexedAnimationBehavior->loopIndex < 1) {
                 TimeDelayHelper_setStartTimeTNT(this->timeDelayHelper);
             }
-            DemoGameMidlet* demoGameMidlet = ((DemoGameMidlet*) StartCanvas_getCustomCommandListener(this));
+            DemoGameMidlet* demoGameMidlet = ((DemoGameMidlet*) MyCanvas_getCustomCommandListener(this));
         }
 }
 
@@ -642,18 +1320,18 @@ void StartCanvas_processGame(StartCanvas* this) {
 
 
 void StartCanvas_run(StartCanvas* this) {
-        JAVA_CALL(this->logUtil, putF, this->commonStrings->START_RUNNABLE, this, this->commonStrings->RUN);
+        LogUtil_putF(this->base.base.logUtil, this->base.base.commonStrings->START_RUNNABLE, this, this->base.base.commonStrings->RUN);
         JAVA_TRY {
             ProgressCanvas* progressCanvas = ProgressCanvasFactory_getInstance();
             ProgressCanvas_addNormalPortion(progressCanvas, 50, "Demo Thread");
-            StartCanvas_setCurrentThread(this);
+            RunnableCanvas_setCurrentThread(this);
             StartCanvas_setRunning(this, true);
             if (Features_isFeature(this->features, MainFeatureFactory_getInstance()->LOAD_ONDEMAND)) {
                 ProgressCanvas_end(progressCanvas);
             } else {
                 ProgressCanvas_addNormalPortion(progressCanvas, 50, "Demo Thread Running");
             }
-            FullScreenUtil_initOnRun(this->fullScreenUtil, this, StartCanvas_getCustomCommandListener(this));
+            FullScreenUtil_initOnRun(this->fullScreenUtil, this, MyCanvas_getCustomCommandListener(this));
             StartCanvas_initMenu(this);
             StartCanvas_initPostPaint(this);
             StartCanvas_updateDemoState(this);
@@ -662,17 +1340,17 @@ void StartCanvas_run(StartCanvas* this) {
             }
             if (Features_isDefault(this->features, this->openGLFeatureFactory->OPENGL_AS_GAME_THREAD) || J2MEUtil_isHTML()) {
             } else {
-                while (StartCanvas_isRunning(this)) {
-                    JAVA_CALL(this->loopTimeHelper, setStartTimeTNT);
+                while (RunnableCanvas_isRunning(this)) {
+                    TimeDelayHelper_setStartTimeTNT(this->base.loopTimeHelper);
                     StartCanvas_processGame(this);
-                    StartCanvas_processLoopSleep(this);
+                    RunnableCanvas_processLoopSleep(this);
                 }
                 StartCanvas_end(this);
             }
         } JAVA_CATCH(Exception, e) {
-            JAVA_CALL(this->logUtil, put, this->commonStrings->EXCEPTION, this, this->commonStrings->RUN, e);
+            LogUtil_put(this->base.base.logUtil, this->base.base.commonStrings->EXCEPTION, this, this->base.base.commonStrings->RUN, e);
         } JAVA_END_TRY;
-        JAVA_CALL(this->logUtil, putF, this->commonStrings->END_RUNNABLE, this, this->commonStrings->RUN);
+        LogUtil_putF(this->base.base.logUtil, this->base.base.commonStrings->END_RUNNABLE, this, this->base.base.commonStrings->RUN);
 }
 
 
@@ -685,7 +1363,7 @@ void StartCanvas_setRunning(StartCanvas* this, bool running) {
                 StartCanvas_end(this);
             }
         } JAVA_CATCH(Exception, e) {
-            JAVA_CALL(this->logUtil, put, this->commonStrings->EXCEPTION, this, this->SET_RUNNING, e);
+            LogUtil_put(this->base.base.logUtil, this->base.base.commonStrings->EXCEPTION, this, this->base.SET_RUNNING, e);
         } JAVA_END_TRY;
 }
 
@@ -693,14 +1371,14 @@ void StartCanvas_setRunning(StartCanvas* this, bool running) {
 // throws Exception
 void StartCanvas_end(StartCanvas* this) {
         ProgressCanvas* progressCanvas = ProgressCanvasFactory_getInstance();
-        BaseGameStatistics_add(this->baseGameStatistics, JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), StartCanvas_BOT_GAME_STATS), append, BaseGameStatistics_toString(this->baseGameStatistics)), append, CommonSeps_getInstance()->NEW_LINE), toString));
-        BaseGameStatistics_init(this->baseGameStatistics);
+        BaseGameStatistics_add(this->baseGameStatistics, java_string_of(StringMaker_append(StringMaker_append(StringMaker_append(StringMaker_new(), StartCanvas_BOT_GAME_STATS), java_string_of(this->baseGameStatistics)), CommonSeps_getInstance()->NEW_LINE)));
+        BaseGameStatistics_initMethod(this->baseGameStatistics);
         if (Features_isFeature(this->features, MainFeatureFactory_getInstance()->LOAD_ONDEMAND)) {
             ProgressCanvas_start(progressCanvas);
         }
-        JAVA_CALL(this->logUtil, putF, "Demo End", this, this->commonStrings->RUN);
+        LogUtil_putF(this->base.base.logUtil, "Demo End", this, this->base.base.commonStrings->RUN);
         StartCanvas_close(this);
-        DisplayChangeEventHandler_removeListener(DisplayChangeEventHandler_getInstance(), this);
+        BasicEventHandler_removeListener(DisplayChangeEventHandler_getInstance(), this);
 }
 
 
@@ -724,7 +1402,7 @@ void StartCanvas_setState(StartCanvas* this, int32_t state) {
 
 
 bool StartCanvas_isHighScoreSubmitted(StartCanvas* this) {
-        JAVA_CALL(this->logUtil, putF, "Wow the AI got a high score!", this, "isHighScoreSubmitted");
+        LogUtil_putF(this->base.base.logUtil, "Wow the AI got a high score!", this, "isHighScoreSubmitted");
         return false;
 }
 
@@ -735,7 +1413,7 @@ HighScoresPaintable* StartCanvas_getRealHighScoresPaintable(StartCanvas* this) {
 
 
 void StartCanvas_setSpecialAnimationInterface(StartCanvas* this, SpecialAnimation* specialAnimationInterface) {
-        SpecialAnimation_setFrame(specialAnimationInterface, 0);
+        IndexedAnimation_setFrame(specialAnimationInterface, 0);
         this->specialAnimationInterface = specialAnimationInterface;
 }
 
@@ -821,7 +1499,7 @@ int32_t StartCanvas_getTempWait(StartCanvas* this) {
 
 
 bool StartCanvas_isSingleThread(StartCanvas* this) {
-        return OpenGLFeatureUtil_isAnyThreed(OpenGLFeatureUtil_getInstance()) || SWTUtil_isSWT;
+        return OpenGLFeatureUtil_isAnyThreed(OpenGLFeatureUtil_getInstance()) || (SWTUtil_staticInit(), SWTUtil_isSWT);
 }
 
 
@@ -831,7 +1509,7 @@ bool StartCanvas_isRunningInAnotherThread(StartCanvas* this) {
         if (Features_isDefault(features, openGLFeatureFactory->OPENGL_AS_GAME_THREAD)) {
             return true;
         } else {
-            return StartCanvas_isRunning(this);
+            return RunnableCanvas_isRunning(this);
         }
 }
 
@@ -842,12 +1520,12 @@ BasicBuildGameInitializerFactory* StartCanvas_getGameInitializationInterfaceFact
 
 
 const char* StartCanvas_getTitle(StartCanvas* this) {
-        return RunnableCanvas_getTitle((&this->base));
+        return Displayable_getTitle((&this->base));
 }
 
 
 bool StartCanvas_isPaused(StartCanvas* this) {
-        return RunnableCanvas_isPaused((&this->base));
+        return MyCanvas_isPaused((&this->base));
 }
 
 

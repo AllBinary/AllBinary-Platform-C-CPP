@@ -1,46 +1,37 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.input
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/input/NormalJ2MEDefaultGameInputMapping.h"
 #include "org/allbinary/game/configuration/persistance/GamePersistanceStrings.h"
 #include "org/allbinary/game/input/mapping/InputToGameKeyMapping.h"
-#include "org/allbinary/game/input/mapping/PersistentInputMapping.h"
-
-typedef struct NormalJ2MEDefaultGameInputMapping NormalJ2MEDefaultGameInputMapping;
-struct NormalJ2MEDefaultGameInputMapping {
-    PersistentInputMapping base;
-};
+#include "org/allbinary/game/input/GameKeyFactory.h"
+#if __has_include("org/allbinary/game/configuration/persistance/GamePersistanceStrings.h")
+#include "org/allbinary/game/configuration/persistance/GamePersistanceStrings.h"
+#endif
 
 
-NormalJ2MEDefaultGameInputMapping* NormalJ2MEDefaultGameInputMapping_new(void);
 
-void NormalJ2MEDefaultGameInputMapping_init(NormalJ2MEDefaultGameInputMapping* this);
+
+void NormalJ2MEDefaultGameInputMapping_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void NormalJ2MEDefaultGameInputMapping_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("NormalJ2MEDefaultGameInputMapping", "PersistentInputMapping");
+}
 
 
 void NormalJ2MEDefaultGameInputMapping_init(NormalJ2MEDefaultGameInputMapping* this) {
+    NormalJ2MEDefaultGameInputMapping_register();
         PersistentInputMapping_init(&this->base, GamePersistanceStrings_getInstance()->DEFAULT_INPUT_MAPPING_RECORD_ID);
-        InputToGameKeyMapping* inputToGameKeyMapping = NormalJ2MEDefaultGameInputMapping_getInputMapping(this);
+        InputToGameKeyMapping* inputToGameKeyMapping = PersistentInputMapping_getInputMapping(this);
         GameKeyFactory* gameKeyFactory = GameKeyFactory_getInstance();
         InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->UP, gameKeyFactory->KEY_NUM2);
         InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->LEFT, gameKeyFactory->KEY_NUM4);
@@ -68,7 +59,7 @@ void NormalJ2MEDefaultGameInputMapping_init(NormalJ2MEDefaultGameInputMapping* t
 }
 
 NormalJ2MEDefaultGameInputMapping* NormalJ2MEDefaultGameInputMapping_new(void) {
-    NormalJ2MEDefaultGameInputMapping* this = calloc(1, sizeof(NormalJ2MEDefaultGameInputMapping));
+    NormalJ2MEDefaultGameInputMapping* this = java_object_alloc(sizeof(NormalJ2MEDefaultGameInputMapping), "NormalJ2MEDefaultGameInputMapping");
     NormalJ2MEDefaultGameInputMapping_init(this);
     return this;
 }

@@ -1,38 +1,50 @@
 // Generated Code Do Not Modify
-// package org.allbinary.graphics
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "java/io/IOException.h"
-// #include "java/io/InputStream.h"
-// #include "javax/microedition/lcdui/Image.h"
+#include "org/allbinary/graphics/OpenGLBitmapFactory.h"
+#include "javax/microedition/lcdui/Image.h"
 #include "org/allbinary/logic/NullUtil.h"
 #include "org/allbinary/platform/graphics/PlatformBitmapBase.h"
-#include "org/allbinary/platform/graphics/PlatformBitmapBaseFactory.h"
+#include "org/allbinary/graphics/OpenGLBitmapConfig.h"
+#include "org/allbinary/graphics/OpenGLBitmap.h"
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
 
-typedef struct OpenGLBitmapFactory OpenGLBitmapFactory;
-struct OpenGLBitmapFactory {
-    PlatformBitmapBaseFactory base;
-    OpenGLBitmapConfig* ARGB_8888;
-};
 
 static OpenGLBitmapFactory* OpenGLBitmapFactory_instance;
 
-OpenGLBitmapFactory* OpenGLBitmapFactory_new(void);
-OpenGLBitmapFactory* OpenGLBitmapFactory_getInstance(void);
-OpenGLBitmap* OpenGLBitmapFactory_createBitmap(OpenGLBitmapFactory* this, int32_t width, int32_t height, OpenGLBitmapConfig* config);
-OpenGLBitmap* OpenGLBitmapFactory_decodeStream(OpenGLBitmapFactory* this, InputStream* inputStream);
-PlatformBitmapBase* OpenGLBitmapFactory_createBitmap(OpenGLBitmapFactory* this, Image* image);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
 void OpenGLBitmapFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     OpenGLBitmapFactory_instance = OpenGLBitmapFactory_new();
+}
+
+void OpenGLBitmapFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("OpenGLBitmapFactory", "PlatformBitmapBaseFactory");
+    java_register_method("OpenGLBitmapFactory", "createBitmap", (void*) OpenGLBitmapFactory_createBitmap4);
+    java_register_method("OpenGLBitmapFactory", "createBitmap@4", (void*) OpenGLBitmapFactory_createBitmap4);
+    java_register_method("OpenGLBitmapFactory", "decodeStream", (void*) OpenGLBitmapFactory_decodeStream);
+    java_register_method("OpenGLBitmapFactory", "createBitmap@2", (void*) OpenGLBitmapFactory_createBitmap2);
 }
 
 static void OpenGLBitmapFactory_initFields(OpenGLBitmapFactory* this) {
@@ -40,23 +52,24 @@ static void OpenGLBitmapFactory_initFields(OpenGLBitmapFactory* this) {
 }
 
 void OpenGLBitmapFactory_init(OpenGLBitmapFactory* this) {
+    OpenGLBitmapFactory_register();
     PlatformBitmapBaseFactory_init(&this->base);
     OpenGLBitmapFactory_initFields(this);
 }
 
 OpenGLBitmapFactory* OpenGLBitmapFactory_new(void) {
-    OpenGLBitmapFactory* this = calloc(1, sizeof(OpenGLBitmapFactory));
+    OpenGLBitmapFactory* this = java_object_alloc(sizeof(OpenGLBitmapFactory), "OpenGLBitmapFactory");
     OpenGLBitmapFactory_init(this);
     return this;
 }
 
 
 OpenGLBitmapFactory* OpenGLBitmapFactory_getInstance(void) {
-        return OpenGLBitmapFactory_instance;
+        return (OpenGLBitmapFactory_staticInit(), OpenGLBitmapFactory_instance);
 }
 
 
-OpenGLBitmap* OpenGLBitmapFactory_createBitmap(OpenGLBitmapFactory* this, int32_t width, int32_t height, OpenGLBitmapConfig* config) {
+OpenGLBitmap* OpenGLBitmapFactory_createBitmap4(OpenGLBitmapFactory* this, int32_t width, int32_t height, OpenGLBitmapConfig* config) {
         return OpenGLBitmap_new(NullUtil_getInstance()->NULL_OBJECT);
 }
 
@@ -68,7 +81,7 @@ OpenGLBitmap* OpenGLBitmapFactory_decodeStream(OpenGLBitmapFactory* this, InputS
 
 
 // Java overloaded method: C needs a different name
-PlatformBitmapBase* OpenGLBitmapFactory_createBitmap(OpenGLBitmapFactory* this, Image* image) {
+PlatformBitmapBase* OpenGLBitmapFactory_createBitmap2(OpenGLBitmapFactory* this, Image* image) {
         return OpenGLBitmap_new(NullUtil_getInstance()->NULL_OBJECT);
 }
 

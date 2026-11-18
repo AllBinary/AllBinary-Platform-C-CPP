@@ -61,6 +61,8 @@ HardwareInterface* SystemHardwareFactory_getInstance2(SystemHardwareFactory* thi
 
 const char* SystemHardwareFactory_static_toString(void);
 #define SystemHardwareFactory_getInstance(...) JAVA_OVERLOADED(SystemHardwareFactory_getInstance, __VA_ARGS__)
+#define SystemHardwareFactory_new0 SystemHardwareFactory_new
+#define SystemHardwareFactory_init0 SystemHardwareFactory_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void SystemHardwareFactory_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

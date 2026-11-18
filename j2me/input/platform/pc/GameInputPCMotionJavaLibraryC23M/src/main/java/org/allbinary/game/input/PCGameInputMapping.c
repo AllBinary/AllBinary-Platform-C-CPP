@@ -1,71 +1,87 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.input
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/input/PCGameInputMapping.h"
 #include "org/allbinary/game/configuration/persistance/GamePersistanceStrings.h"
-#include "org/allbinary/game/input/mapping/PersistentInputMapping.h"
 #include "org/allbinary/input/motion/button/BasicTouchInputFactory.h"
 #include "org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h"
 #include "org/allbinary/input/motion/gesture/TrackballMotionGestureFactory.h"
 #include "org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h"
+#include "org/allbinary/game/input/PCKeyFactory.h"
+#include "org/allbinary/game/input/Input.h"
+#if __has_include("org/allbinary/game/configuration/persistance/GamePersistanceStrings.h")
+#include "org/allbinary/game/configuration/persistance/GamePersistanceStrings.h"
+#endif
+#if __has_include("org/allbinary/game/input/InputToGameKeyMapping.h")
+#include "org/allbinary/game/input/InputToGameKeyMapping.h"
+#endif
+#if __has_include("org/allbinary/game/configuration/persistance/InputToGameKeyMapping.h")
+#include "org/allbinary/game/configuration/persistance/InputToGameKeyMapping.h"
+#endif
+#if __has_include("org/allbinary/game/input/mapping/InputToGameKeyMapping.h")
+#include "org/allbinary/game/input/mapping/InputToGameKeyMapping.h"
+#endif
+#if __has_include("org/allbinary/input/motion/button/InputToGameKeyMapping.h")
+#include "org/allbinary/input/motion/button/InputToGameKeyMapping.h"
+#endif
+#if __has_include("org/allbinary/input/motion/gesture/InputToGameKeyMapping.h")
+#include "org/allbinary/input/motion/gesture/InputToGameKeyMapping.h"
+#endif
+#if __has_include("org/allbinary/input/motion/gesture/InputToGameKeyMapping.h")
+#include "org/allbinary/input/motion/gesture/InputToGameKeyMapping.h"
+#endif
+#if __has_include("org/allbinary/logic/system/security/licensing/InputToGameKeyMapping.h")
+#include "org/allbinary/logic/system/security/licensing/InputToGameKeyMapping.h"
+#endif
 
-typedef struct PCGameInputMapping PCGameInputMapping;
-struct PCGameInputMapping {
-    PersistentInputMapping base;
-};
 
 
-PCGameInputMapping* PCGameInputMapping_new(void);
 
-void PCGameInputMapping_init(PCGameInputMapping* this);
-void PCGameInputMapping_init(PCGameInputMapping* this, AbeClientInformationInterface* abeClientInformation);
-bool PCGameInputMapping_isDelete(PCGameInputMapping* this, Input* input);
-bool PCGameInputMapping_isSystemInput(PCGameInputMapping* this, Input* input);
+
+
+
+void PCGameInputMapping_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void PCGameInputMapping_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("PCGameInputMapping", "PersistentInputMapping");
+    java_register_method("PCGameInputMapping", "init", (void*) PCGameInputMapping_initMethod);
+    java_register_method("PCGameInputMapping", "isDelete", (void*) PCGameInputMapping_isDelete);
+    java_register_method("PCGameInputMapping", "isSystemInput", (void*) PCGameInputMapping_isSystemInput);
+}
 
 
 void PCGameInputMapping_init(PCGameInputMapping* this) {
+    PCGameInputMapping_register();
         PersistentInputMapping_init(&this->base, GamePersistanceStrings_getInstance()->SAVED_INPUT_CONFIGURATION_RECORD_ID);
 }
 
 PCGameInputMapping* PCGameInputMapping_new(void) {
-    PCGameInputMapping* this = calloc(1, sizeof(PCGameInputMapping));
+    PCGameInputMapping* this = java_object_alloc(sizeof(PCGameInputMapping), "PCGameInputMapping");
     PCGameInputMapping_init(this);
     return this;
 }
 
 
 // throws Exception
-void PCGameInputMapping_init(PCGameInputMapping* this, AbeClientInformationInterface* abeClientInformation) {
-        JAVA_CALL(this->logUtil, putF, this->commonStrings->START, this, this->commonStrings->INIT);
+void PCGameInputMapping_initMethod(PCGameInputMapping* this, AbeClientInformationInterface* abeClientInformation) {
+        LogUtil_putF(this->base.logUtil, this->base.commonStrings->START, this, this->base.commonStrings->INIT);
         PCKeyFactory_getInstance();
         TouchMotionGestureFactory_getInstance();
         TrackballMotionGestureFactory_getInstance();
         BasicTouchInputFactory_getInstance();
-        PersistentInputMapping_init((&this->base), abeClientInformation);
-        if (PCGameInputMapping_getTotalMapped(this) == 0 || PCGameInputMapping_isDefaultNew(this)) {
-            JAVA_CALL(PCGameInputMapping_getInputMapping(this), addMapping, PCGameInputMapping_getDefault(this));
-            PCGameInputMapping_save(this, abeClientInformation);
+        PersistentInputMapping_initMethod((&this->base), abeClientInformation);
+        if (PersistentInputMapping_getTotalMapped(this) == 0 || PersistentInputMapping_isDefaultNew(this)) {
+            InputToGameKeyMapping_addMapping(PersistentInputMapping_getInputMapping(this), PersistentInputMapping_getDefault(this));
+            PersistentInputMapping_save(this, abeClientInformation);
         }
 }
 

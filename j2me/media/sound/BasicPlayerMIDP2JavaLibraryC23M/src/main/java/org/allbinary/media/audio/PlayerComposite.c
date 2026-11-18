@@ -1,76 +1,76 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.media.audio
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/media/Control.h"
-// #include "javax/microedition/media/Controllable.h"
-// #include "javax/microedition/media/MediaException.h"
-// #include "javax/microedition/media/Player.h"
-// #include "javax/microedition/media/PlayerListener.h"
-// #include "javax/microedition/media/TimeBase.h"
+#include "org/allbinary/media/audio/PlayerComposite.h"
+#include "javax/microedition/media/Control.h"
+#include "javax/microedition/media/MediaException.h"
+#include "javax/microedition/media/PlayerListener.h"
+#include "javax/microedition/media/TimeBase.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/time/GameTickTimeDelayHelper.h"
 #include "org/allbinary/time/GameTickTimeDelayHelperFactory.h"
 #include "org/allbinary/time/TimeDelayHelper.h"
-
-//BasicPlayerMIDP2
-typedef struct PlayerComposite PlayerComposite;
-struct PlayerComposite {
-    Controllable Controllable_interface;
-    Player Player_interface;
-    LogUtil* logUtil;
-    CommonStrings* commonStrings;
-    Player* player;
-    TimeDelayHelper* timeElapsedHelper;
-    GameTickTimeDelayHelper* gameTickTimeDelayHelper;
-};
+#include "org/allbinary/media/audio/TimeBaseInterface.h"
+#include "org/allbinary/media/audio/Controllable2.h"
 
 
-PlayerComposite* PlayerComposite_new(Player* player, int32_t repeatTime);
 
-void PlayerComposite_init(PlayerComposite* this, Player* player, int32_t repeatTime);
-void PlayerComposite_addPlayerListener(PlayerComposite* this, PlayerListener* playerListener);
-void PlayerComposite_removePlayerListener(PlayerComposite* this, PlayerListener* playerListener);
-void PlayerComposite_close(PlayerComposite* this);
-void PlayerComposite_deallocate(PlayerComposite* this);
-const char* PlayerComposite_getContentType(PlayerComposite* this);
-int64_t PlayerComposite_getDuration(PlayerComposite* this);
-int64_t PlayerComposite_getMediaTime(PlayerComposite* this);
-TimeBase* PlayerComposite_getTimeBase(PlayerComposite* this);
-void PlayerComposite_setTimeBase(PlayerComposite* this, TimeBase* timeBase);
-void PlayerComposite_prefetch(PlayerComposite* this);
-void PlayerComposite_realize(PlayerComposite* this);
-int32_t PlayerComposite_getState(PlayerComposite* this);
-void PlayerComposite_setLoopCount(PlayerComposite* this, int32_t count);
-int64_t PlayerComposite_setMediaTime(PlayerComposite* this, int64_t now);
-void PlayerComposite_start(PlayerComposite* this);
-void PlayerComposite_stop(PlayerComposite* this);
-Control* PlayerComposite_getControl(PlayerComposite* this, const char* controlType);
-Control** PlayerComposite_getControls(PlayerComposite* this);
-void PlayerComposite_setVolume(PlayerComposite* this, int32_t leftVolume, int32_t rightVolume);
-Player* PlayerComposite_getPlayerP(PlayerComposite* this);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void PlayerComposite_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void PlayerComposite_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("PlayerComposite", nullptr);
+    java_register_method("PlayerComposite", "addPlayerListener", (void*) PlayerComposite_addPlayerListener);
+    java_register_method("PlayerComposite", "removePlayerListener", (void*) PlayerComposite_removePlayerListener);
+    java_register_method("PlayerComposite", "close", (void*) PlayerComposite_close);
+    java_register_method("PlayerComposite", "deallocate", (void*) PlayerComposite_deallocate);
+    java_register_method("PlayerComposite", "getContentType", (void*) PlayerComposite_getContentType);
+    java_register_method("PlayerComposite", "getDuration", (void*) PlayerComposite_getDuration);
+    java_register_method("PlayerComposite", "getMediaTime", (void*) PlayerComposite_getMediaTime);
+    java_register_method("PlayerComposite", "getTimeBase", (void*) PlayerComposite_getTimeBase);
+    java_register_method("PlayerComposite", "setTimeBase", (void*) PlayerComposite_setTimeBase);
+    java_register_method("PlayerComposite", "prefetch", (void*) PlayerComposite_prefetch);
+    java_register_method("PlayerComposite", "realize", (void*) PlayerComposite_realize);
+    java_register_method("PlayerComposite", "getState", (void*) PlayerComposite_getState);
+    java_register_method("PlayerComposite", "setLoopCount", (void*) PlayerComposite_setLoopCount);
+    java_register_method("PlayerComposite", "setMediaTime", (void*) PlayerComposite_setMediaTime);
+    java_register_method("PlayerComposite", "start", (void*) PlayerComposite_start);
+    java_register_method("PlayerComposite", "stop", (void*) PlayerComposite_stop);
+    java_register_method("PlayerComposite", "getControl", (void*) PlayerComposite_getControl);
+    java_register_method("PlayerComposite", "getControls", (void*) PlayerComposite_getControls);
+    java_register_method("PlayerComposite", "setVolume", (void*) PlayerComposite_setVolume);
+    java_register_method("PlayerComposite", "getPlayerP", (void*) PlayerComposite_getPlayerP);
+}
 
 static void PlayerComposite_initFields(PlayerComposite* this) {
     this->logUtil = LogUtil_getInstance();
@@ -82,13 +82,14 @@ static void PlayerComposite_initFields(PlayerComposite* this) {
 
 
 void PlayerComposite_init(PlayerComposite* this, Player* player, int32_t repeatTime) {
+    PlayerComposite_register();
     PlayerComposite_initFields(this);
         this->player = player;
         this->timeElapsedHelper->delay = repeatTime;
 }
 
 PlayerComposite* PlayerComposite_new(Player* player, int32_t repeatTime) {
-    PlayerComposite* this = calloc(1, sizeof(PlayerComposite));
+    PlayerComposite* this = java_object_alloc(sizeof(PlayerComposite), "PlayerComposite");
     PlayerComposite_init(this, player, repeatTime);
     return this;
 }
@@ -201,7 +202,7 @@ void PlayerComposite_stop(PlayerComposite* this) {
 
 
 Control* PlayerComposite_getControl(PlayerComposite* this, const char* controlType) {
-        return Player_getControl(this->player, controlType);
+        return Controllable_getControl(this->player, controlType);
 }
 
 

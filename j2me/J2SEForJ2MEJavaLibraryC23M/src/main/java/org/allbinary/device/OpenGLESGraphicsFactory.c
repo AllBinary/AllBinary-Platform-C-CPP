@@ -1,29 +1,35 @@
 // Generated Code Do Not Modify
-// package org.allbinary.device
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct OpenGLESGraphicsFactory OpenGLESGraphicsFactory;
-struct OpenGLESGraphicsFactory {
-    char unused;
-};
+#include "org/allbinary/device/OpenGLESGraphicsFactory.h"
+#include "org/allbinary/device/OpenGLESNullGraphicsFactory.h"
+#include "org/allbinary/device/OpenGLESGraphics.h"
 
 
-OpenGLESGraphicsFactory* OpenGLESGraphicsFactory_new(void);
-OpenGLESGraphics* OpenGLESGraphicsFactory_getOpenGLESGraphicsInstance(OpenGLESGraphicsFactory* this);
+
+
+void OpenGLESGraphicsFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void OpenGLESGraphicsFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("OpenGLESGraphicsFactory", nullptr);
+    java_register_method("OpenGLESGraphicsFactory", "getOpenGLESGraphicsInstance", (void*) OpenGLESGraphicsFactory_getOpenGLESGraphicsInstance);
+}
 
 void OpenGLESGraphicsFactory_init(OpenGLESGraphicsFactory* this) {
+    OpenGLESGraphicsFactory_register();
 }
 
 OpenGLESGraphicsFactory* OpenGLESGraphicsFactory_new(void) {
-    OpenGLESGraphicsFactory* this = calloc(1, sizeof(OpenGLESGraphicsFactory));
+    OpenGLESGraphicsFactory* this = java_object_alloc(sizeof(OpenGLESGraphicsFactory), "OpenGLESGraphicsFactory");
     OpenGLESGraphicsFactory_init(this);
     return this;
 }

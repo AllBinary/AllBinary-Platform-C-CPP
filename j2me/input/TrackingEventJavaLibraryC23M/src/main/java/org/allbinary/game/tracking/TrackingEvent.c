@@ -1,54 +1,47 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.tracking
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/tracking/TrackingEvent.h"
 #include "org/allbinary/layer/AllBinaryLayer.h"
 #include "org/allbinary/logic/string/StringMaker.h"
-#include "org/allbinary/logic/util/event/AllBinaryEventObject.h"
-
-typedef struct TrackingEvent TrackingEvent;
-struct TrackingEvent {
-    AllBinaryEventObject base;
-    AllBinaryLayer* layerInterface;
-};
+#include "org/allbinary/game/tracking/TrackingEventHandler.h"
 
 
-TrackingEvent* TrackingEvent_new(Any* allBinaryLayerInterface);
 
-void TrackingEvent_init(TrackingEvent* this, Any* allBinaryLayerInterface);
-void TrackingEvent_init(TrackingEvent* this, Any* anyType);
-AllBinaryLayer* TrackingEvent_getLayerInterface(TrackingEvent* this);
+
+
+
 static void TrackingEvent_setLayerInterface(TrackingEvent* this, AllBinaryLayer* layerInterface);
-void TrackingEvent_setLayerInterfaceForCircularStaticPool(TrackingEvent* this, AllBinaryLayer* layerInterface);
-const char* TrackingEvent_toString(TrackingEvent* this);
+
+
+
+void TrackingEvent_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void TrackingEvent_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("TrackingEvent", "AllBinaryEventObject");
+    java_register_method("TrackingEvent", "init", (void*) TrackingEvent_initMethod);
+    java_register_method("TrackingEvent", "getLayerInterface", (void*) TrackingEvent_getLayerInterface);
+    java_register_method("TrackingEvent", "setLayerInterface", (void*) TrackingEvent_setLayerInterface);
+    java_register_method("TrackingEvent", "setLayerInterfaceForCircularStaticPool", (void*) TrackingEvent_setLayerInterfaceForCircularStaticPool);
+    java_register_method("TrackingEvent", "toString", (void*) TrackingEvent_toString);
+}
 
 static void TrackingEvent_initFields(TrackingEvent* this) {
-    this->layerInterface = AllBinaryLayer_NULL_ALLBINARY_LAYER;
+    this->layerInterface = (AllBinaryLayer_staticInit(), AllBinaryLayer_NULL_ALLBINARY_LAYER);
 }
 
 
-void TrackingEvent_init(TrackingEvent* this, Any* allBinaryLayerInterface) {
+void TrackingEvent_init(TrackingEvent* this, void* allBinaryLayerInterface) {
+    TrackingEvent_register();
         AllBinaryEventObject_init(&this->base, allBinaryLayerInterface);
         TrackingEvent_initFields(this);
         if (allBinaryLayerInterface != TrackingEventHandler_getInstance()) {
@@ -56,15 +49,15 @@ void TrackingEvent_init(TrackingEvent* this, Any* allBinaryLayerInterface) {
         }
 }
 
-TrackingEvent* TrackingEvent_new(Any* allBinaryLayerInterface) {
-    TrackingEvent* this = calloc(1, sizeof(TrackingEvent));
+TrackingEvent* TrackingEvent_new(void* allBinaryLayerInterface) {
+    TrackingEvent* this = java_object_alloc(sizeof(TrackingEvent), "TrackingEvent");
     TrackingEvent_init(this, allBinaryLayerInterface);
     return this;
 }
 
 
-void TrackingEvent_init(TrackingEvent* this, Any* anyType) {
-        TrackingEvent_setSource(this, anyType);
+void TrackingEvent_initMethod(TrackingEvent* this, void* anyType) {
+        AllBinaryEventObject_setSource(this, anyType);
 }
 
 
@@ -87,7 +80,7 @@ const char* TrackingEvent_toString(TrackingEvent* this) {
         StringMaker* stringBuffer = StringMaker_new();
         StringMaker_append(stringBuffer, "TrackingEvent: \n");
         StringMaker_append(stringBuffer, "LayerInterface: ");
-        StringMaker_append(stringBuffer, AllBinaryLayer_toString(this->layerInterface));
-        return StringMaker_toString(stringBuffer);
+        StringMaker_append(stringBuffer, java_string_of(this->layerInterface));
+        return java_string_of(stringBuffer);
 }
 

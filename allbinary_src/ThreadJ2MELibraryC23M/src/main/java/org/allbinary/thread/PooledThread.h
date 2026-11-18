@@ -62,6 +62,8 @@ PooledThread* PooledThread_new(ThreadPool* threadPool);
 void PooledThread_init(PooledThread* this, ThreadPool* threadPool);
 
 void PooledThread_run(PooledThread* this);
+#define PooledThread_new1 PooledThread_new
+#define PooledThread_init1 PooledThread_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void PooledThread_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

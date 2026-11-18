@@ -1,49 +1,38 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2022 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.platform.graphics
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Image.h"
-// #include "javax/microedition/lcdui/NullImage.h"
+#include "org/allbinary/platform/graphics/PlatformBitmapBase.h"
+#include "javax/microedition/lcdui/Image.h"
+#include "javax/microedition/lcdui/NullImage.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
 #include "org/allbinary/graphics/color/BasicColorFactory.h"
+#if __has_include("org/allbinary/graphics/color/BasicColorFactory.h")
+#include "org/allbinary/graphics/color/BasicColorFactory.h"
+#endif
 
-typedef struct PlatformBitmapBase PlatformBitmapBase;
-struct PlatformBitmapBase {
-    int32_t alpha;
-    BasicColor* basicColor;
-};
 
 PlatformBitmapBase* PlatformBitmapBase_NULL_PLATFORM_BITMAP_BASE;
 
-PlatformBitmapBase* PlatformBitmapBase_new(void);
-int32_t PlatformBitmapBase_getWidth(PlatformBitmapBase* this);
-int32_t PlatformBitmapBase_getHeight(PlatformBitmapBase* this);
-Image* PlatformBitmapBase_getImage(PlatformBitmapBase* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
 void PlatformBitmapBase_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     PlatformBitmapBase_NULL_PLATFORM_BITMAP_BASE = PlatformBitmapBase_new();
+}
+
+void PlatformBitmapBase_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("PlatformBitmapBase", nullptr);
+    java_register_method("PlatformBitmapBase", "getWidth", (void*) PlatformBitmapBase_getWidth);
+    java_register_method("PlatformBitmapBase", "getHeight", (void*) PlatformBitmapBase_getHeight);
+    java_register_method("PlatformBitmapBase", "getImage", (void*) PlatformBitmapBase_getImage);
 }
 
 static void PlatformBitmapBase_initFields(PlatformBitmapBase* this) {
@@ -52,11 +41,12 @@ static void PlatformBitmapBase_initFields(PlatformBitmapBase* this) {
 }
 
 void PlatformBitmapBase_init(PlatformBitmapBase* this) {
+    PlatformBitmapBase_register();
     PlatformBitmapBase_initFields(this);
 }
 
 PlatformBitmapBase* PlatformBitmapBase_new(void) {
-    PlatformBitmapBase* this = calloc(1, sizeof(PlatformBitmapBase));
+    PlatformBitmapBase* this = java_object_alloc(sizeof(PlatformBitmapBase), "PlatformBitmapBase");
     PlatformBitmapBase_init(this);
     return this;
 }
@@ -73,6 +63,6 @@ int32_t PlatformBitmapBase_getHeight(PlatformBitmapBase* this) {
 
 
 Image* PlatformBitmapBase_getImage(PlatformBitmapBase* this) {
-        return NullImage_NULL_IMAGE;
+        return (NullImage_staticInit(), NullImage_NULL_IMAGE);
 }
 

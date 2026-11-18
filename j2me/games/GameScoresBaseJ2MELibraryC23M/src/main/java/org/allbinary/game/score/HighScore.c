@@ -1,55 +1,59 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.score
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "java/io/ByteArrayOutputStream.h"
-// #include "java/io/DataOutputStream.h"
+#include "org/allbinary/game/score/HighScore.h"
 #include "org/allbinary/game/GameInfo.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/string/CommonSeps.h"
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
 
-typedef struct HighScore HighScore;
-struct HighScore {
-    int32_t id;
-    const char* name;
-    GameInfo* gameInfo;
-    int64_t score;
-    const char* scoreString;
-};
 
 
-HighScore* HighScore_new(int32_t id, const char* name, GameInfo* gameInfo, int64_t score);
 
-void HighScore_init(HighScore* this, int32_t id, const char* name, GameInfo* gameInfo, int64_t score);
-int32_t HighScore_getId(HighScore* this);
-const char* HighScore_getName(HighScore* this);
-int64_t HighScore_getScore(HighScore* this);
-int8_t* HighScore_getAsBytes(HighScore* this);
-GameInfo* HighScore_getGameInfo(HighScore* this);
-const char* HighScore_getScoreString(HighScore* this);
-void HighScore_setName(HighScore* this, const char* name);
-const char* HighScore_toString(HighScore* this);
+
+
+
+
+
+
+
+
+void HighScore_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void HighScore_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("HighScore", nullptr);
+    java_register_method("HighScore", "getId", (void*) HighScore_getId);
+    java_register_method("HighScore", "getName", (void*) HighScore_getName);
+    java_register_method("HighScore", "getScore", (void*) HighScore_getScore);
+    java_register_method("HighScore", "getAsBytes", (void*) HighScore_getAsBytes);
+    java_register_method("HighScore", "getGameInfo", (void*) HighScore_getGameInfo);
+    java_register_method("HighScore", "getScoreString", (void*) HighScore_getScoreString);
+    java_register_method("HighScore", "setName", (void*) HighScore_setName);
+    java_register_method("HighScore", "toString", (void*) HighScore_toString);
+}
 
 static void HighScore_initFields(HighScore* this) {
     
@@ -61,6 +65,7 @@ static void HighScore_initFields(HighScore* this) {
 
 
 void HighScore_init(HighScore* this, int32_t id, const char* name, GameInfo* gameInfo, int64_t score) {
+    HighScore_register();
     HighScore_initFields(this);
         this->id = id;
         this->name = name;
@@ -70,7 +75,7 @@ void HighScore_init(HighScore* this, int32_t id, const char* name, GameInfo* gam
 }
 
 HighScore* HighScore_new(int32_t id, const char* name, GameInfo* gameInfo, int64_t score) {
-    HighScore* this = calloc(1, sizeof(HighScore));
+    HighScore* this = java_object_alloc(sizeof(HighScore), "HighScore");
     HighScore_init(this, id, name, gameInfo, score);
     return this;
 }
@@ -118,6 +123,6 @@ void HighScore_setName(HighScore* this, const char* name) {
 
 const char* HighScore_toString(HighScore* this) {
         CommonSeps* commonSeps = CommonSeps_getInstance();
-        return JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), this->name), append, commonSeps->COLON), appendlong, this->score), append, commonSeps->FORWARD_SLASH), append, this->scoreString), toString);
+        return java_string_of(StringMaker_append(StringMaker_append(StringMaker_appendlong(StringMaker_append(StringMaker_append(StringMaker_new(), this->name), commonSeps->COLON), this->score), commonSeps->FORWARD_SLASH), this->scoreString));
 }
 

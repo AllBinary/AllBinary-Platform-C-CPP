@@ -1,104 +1,142 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.io.file
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "java/io/File.h"
-// #include "java/io/FileFilter.h"
-// #include "java/io/FilenameFilter.h"
-// #include "java/io/IOException.h"
-// #include "java/net/URI.h"
+#include "org/allbinary/logic/io/file/AbFile.h"
 #include "org/allbinary/TsUtil.h"
 #include "org/allbinary/logic/io/path/AbPath.h"
 #include "org/allbinary/logic/string/StringUtil.h"
 #include "org/allbinary/logic/io/file/AbFileInterface.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/TsUtil.h")
+#include "org/allbinary/TsUtil.h"
+#endif
 
-typedef struct AbFile AbFile;
-struct AbFile {
-    AbFileInterface AbFileInterface_interface;
-    File* file;
-};
 
 AbFile* AbFile_NULL_FILE;
 
-AbFile* AbFile_new(File* file);
-AbFile* AbFile_createAbFileWithChild(AbFile* file, const char* childPathName);
-AbFile* AbFile_createAbFile(const char* filePath);
-AbFile* AbFile_createAbFilePathAndName(const char* filePath, const char* fileName);
-AbFile* AbFile_createAbFileFromAbPath(AbPath* abPath);
-AbFile* AbFile_createAbFileFromRawPath(const char* filePath);
 
-void AbFile_init(AbFile* this, File* file);
-File* AbFile_getFile(AbFile* this);
-const char* AbFile_getName(AbFile* this);
-const char* AbFile_getParent(AbFile* this);
-Any* AbFile_getParentFile(AbFile* this);
-const char* AbFile_getPath(AbFile* this);
-bool AbFile_isAbsolute(AbFile* this);
-const char* AbFile_getAbsolutePath(AbFile* this);
-Any* AbFile_getAbsoluteFile(AbFile* this);
-const char* AbFile_getCanonicalPath(AbFile* this);
-Any* AbFile_getCanonicalFile(AbFile* this);
-URI* AbFile_toURI(AbFile* this);
-bool AbFile_canRead(AbFile* this);
-bool AbFile_canWrite(AbFile* this);
-bool AbFile_exists(AbFile* this);
-bool AbFile_isDirectory(AbFile* this);
-bool AbFile_isFile(AbFile* this);
-bool AbFile_isHidden(AbFile* this);
-int64_t AbFile_lastModified(AbFile* this);
-int64_t AbFile_length(AbFile* this);
-bool AbFile_createNewFile(AbFile* this);
-bool AbFile_delete(AbFile* this);
-void AbFile_deleteOnExit(AbFile* this);
-const char** AbFile_list(AbFile* this);
-const char** AbFile_listWithFilter(AbFile* this, FilenameFilter* filter);
-Any** AbFile_listFiles(AbFile* this);
-Any** AbFile_listFilesFileNameFilter(AbFile* this, FilenameFilter* filter);
-Any** AbFile_listFilesFileFilter(AbFile* this, FileFilter* filter);
-bool AbFile_mkdir(AbFile* this);
-bool AbFile_mkdirs(AbFile* this);
-bool AbFile_renameTo(AbFile* this, AbFile* dest);
-bool AbFile_setLastModified(AbFile* this, int64_t time);
-bool AbFile_setReadOnly(AbFile* this);
-bool AbFile_setWritable(AbFile* this, bool writable, bool ownerOnly);
-bool AbFile_setWritable(AbFile* this, bool writable);
-bool AbFile_setReadable(AbFile* this, bool readable, bool ownerOnly);
-bool AbFile_setReadable(AbFile* this, bool readable);
-bool AbFile_setExecutable(AbFile* this, bool executable, bool ownerOnly);
-bool AbFile_setExecutable(AbFile* this, bool executable);
-bool AbFile_canExecute(AbFile* this);
-int64_t AbFile_getTotalSpace(AbFile* this);
-int64_t AbFile_getFreeSpace(AbFile* this);
-int64_t AbFile_getUsableSpace(AbFile* this);
-int32_t AbFile_compareTo(AbFile* this, File* pathname);
-bool AbFile_equals(AbFile* this, Any* obj);
-int32_t AbFile_hashCode(AbFile* this);
-const char* AbFile_toString(AbFile* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 void AbFile_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     AbFile_NULL_FILE = AbFile_createAbFileFromRawPath(StringUtil_getInstance()->EMPTY_STRING);
+}
+
+void AbFile_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("AbFile", nullptr);
+    java_register_method("AbFile", "getFile", (void*) AbFile_getFile);
+    java_register_method("AbFile", "getName", (void*) AbFile_getName);
+    java_register_method("AbFile", "getParent", (void*) AbFile_getParent);
+    java_register_method("AbFile", "getParentFile", (void*) AbFile_getParentFile);
+    java_register_method("AbFile", "getPath", (void*) AbFile_getPath);
+    java_register_method("AbFile", "isAbsolute", (void*) AbFile_isAbsolute);
+    java_register_method("AbFile", "getAbsolutePath", (void*) AbFile_getAbsolutePath);
+    java_register_method("AbFile", "getAbsoluteFile", (void*) AbFile_getAbsoluteFile);
+    java_register_method("AbFile", "getCanonicalPath", (void*) AbFile_getCanonicalPath);
+    java_register_method("AbFile", "getCanonicalFile", (void*) AbFile_getCanonicalFile);
+    java_register_method("AbFile", "toURI", (void*) AbFile_toURI);
+    java_register_method("AbFile", "canRead", (void*) AbFile_canRead);
+    java_register_method("AbFile", "canWrite", (void*) AbFile_canWrite);
+    java_register_method("AbFile", "exists", (void*) AbFile_exists);
+    java_register_method("AbFile", "isDirectory", (void*) AbFile_isDirectory);
+    java_register_method("AbFile", "isFile", (void*) AbFile_isFile);
+    java_register_method("AbFile", "isHidden", (void*) AbFile_isHidden);
+    java_register_method("AbFile", "lastModified", (void*) AbFile_lastModified);
+    java_register_method("AbFile", "length", (void*) AbFile_length);
+    java_register_method("AbFile", "createNewFile", (void*) AbFile_createNewFile);
+    java_register_method("AbFile", "delete", (void*) AbFile_delete);
+    java_register_method("AbFile", "deleteOnExit", (void*) AbFile_deleteOnExit);
+    java_register_method("AbFile", "list", (void*) AbFile_list);
+    java_register_method("AbFile", "listWithFilter", (void*) AbFile_listWithFilter);
+    java_register_method("AbFile", "listFiles", (void*) AbFile_listFiles);
+    java_register_method("AbFile", "listFilesFileNameFilter", (void*) AbFile_listFilesFileNameFilter);
+    java_register_method("AbFile", "listFilesFileFilter", (void*) AbFile_listFilesFileFilter);
+    java_register_method("AbFile", "mkdir", (void*) AbFile_mkdir);
+    java_register_method("AbFile", "mkdirs", (void*) AbFile_mkdirs);
+    java_register_method("AbFile", "renameTo", (void*) AbFile_renameTo);
+    java_register_method("AbFile", "setLastModified", (void*) AbFile_setLastModified);
+    java_register_method("AbFile", "setReadOnly", (void*) AbFile_setReadOnly);
+    java_register_method("AbFile", "setWritable", (void*) AbFile_setWritable3);
+    java_register_method("AbFile", "setWritable@3", (void*) AbFile_setWritable3);
+    java_register_method("AbFile", "setWritable@2", (void*) AbFile_setWritable2);
+    java_register_method("AbFile", "setReadable", (void*) AbFile_setReadable3);
+    java_register_method("AbFile", "setReadable@3", (void*) AbFile_setReadable3);
+    java_register_method("AbFile", "setReadable@2", (void*) AbFile_setReadable2);
+    java_register_method("AbFile", "setExecutable", (void*) AbFile_setExecutable3);
+    java_register_method("AbFile", "setExecutable@3", (void*) AbFile_setExecutable3);
+    java_register_method("AbFile", "setExecutable@2", (void*) AbFile_setExecutable2);
+    java_register_method("AbFile", "canExecute", (void*) AbFile_canExecute);
+    java_register_method("AbFile", "getTotalSpace", (void*) AbFile_getTotalSpace);
+    java_register_method("AbFile", "getFreeSpace", (void*) AbFile_getFreeSpace);
+    java_register_method("AbFile", "getUsableSpace", (void*) AbFile_getUsableSpace);
+    java_register_method("AbFile", "compareTo", (void*) AbFile_compareTo);
+    java_register_method("AbFile", "equals", (void*) AbFile_equals);
+    java_register_method("AbFile", "hashCode", (void*) AbFile_hashCode);
+    java_register_method("AbFile", "toString", (void*) AbFile_toString);
 }
 
 static void AbFile_initFields(AbFile* this) {
@@ -135,12 +173,13 @@ AbFile* AbFile_createAbFileFromRawPath(const char* filePath) {
 
 
 void AbFile_init(AbFile* this, File* file) {
+    AbFile_register();
     AbFile_initFields(this);
         this->file = file;
 }
 
 AbFile* AbFile_new(File* file) {
-    AbFile* this = calloc(1, sizeof(AbFile));
+    AbFile* this = java_object_alloc(sizeof(AbFile), "AbFile");
     AbFile_init(this, file);
     return this;
 }
@@ -152,233 +191,233 @@ File* AbFile_getFile(AbFile* this) {
 
 
 const char* AbFile_getName(AbFile* this) {
-        return AbFile_getName(this->file);
+        return File_getName(this->file);
 }
 
 
 const char* AbFile_getParent(AbFile* this) {
-        return AbFile_getParent(this->file);
+        return File_getParent(this->file);
 }
 
 
-Any* AbFile_getParentFile(AbFile* this) {
-        return AbFile_getParentFile(this->file);
+void* AbFile_getParentFile(AbFile* this) {
+        return File_getParentFile(this->file);
 }
 
 
 const char* AbFile_getPath(AbFile* this) {
-        return AbFile_getPath(this->file);
+        return File_getPath(this->file);
 }
 
 
 bool AbFile_isAbsolute(AbFile* this) {
-        return AbFile_isAbsolute(this->file);
+        return File_isAbsolute(this->file);
 }
 
 
 const char* AbFile_getAbsolutePath(AbFile* this) {
-        return AbFile_getAbsolutePath(this->file);
+        return File_getAbsolutePath(this->file);
 }
 
 
-Any* AbFile_getAbsoluteFile(AbFile* this) {
-        return AbFile_getAbsoluteFile(this->file);
+void* AbFile_getAbsoluteFile(AbFile* this) {
+        return File_getAbsoluteFile(this->file);
 }
 
 
 // throws IOException
 const char* AbFile_getCanonicalPath(AbFile* this) {
-        return AbFile_getCanonicalPath(this->file);
+        return File_getCanonicalPath(this->file);
 }
 
 
 // throws IOException
-Any* AbFile_getCanonicalFile(AbFile* this) {
-        return AbFile_getCanonicalFile(this->file);
+void* AbFile_getCanonicalFile(AbFile* this) {
+        return File_getCanonicalFile(this->file);
 }
 
 
 URI* AbFile_toURI(AbFile* this) {
-        return AbFile_toURI(this->file);
+        return File_toURI(this->file);
 }
 
 
 bool AbFile_canRead(AbFile* this) {
-        return AbFile_canRead(this->file);
+        return File_canRead(this->file);
 }
 
 
 bool AbFile_canWrite(AbFile* this) {
-        return AbFile_canWrite(this->file);
+        return File_canWrite(this->file);
 }
 
 
 bool AbFile_exists(AbFile* this) {
-        return AbFile_exists(this->file);
+        return File_exists(this->file);
 }
 
 
 bool AbFile_isDirectory(AbFile* this) {
-        return AbFile_isDirectory(this->file);
+        return File_isDirectory(this->file);
 }
 
 
 bool AbFile_isFile(AbFile* this) {
-        return AbFile_isFile(this->file);
+        return File_isFile(this->file);
 }
 
 
 bool AbFile_isHidden(AbFile* this) {
-        return AbFile_isHidden(this->file);
+        return File_isHidden(this->file);
 }
 
 
 int64_t AbFile_lastModified(AbFile* this) {
-        return AbFile_lastModified(this->file);
+        return File_lastModified(this->file);
 }
 
 
 int64_t AbFile_length(AbFile* this) {
-        return ((int64_t) AbFile_length(this->file));
+        return ((int64_t) File_length(this->file));
 }
 
 
 // throws IOException
 bool AbFile_createNewFile(AbFile* this) {
-        return AbFile_createNewFile(this->file);
+        return File_createNewFile(this->file);
 }
 
 
 // throws IOException
 bool AbFile_delete(AbFile* this) {
-        return AbFile_delete(this->file);
+        return File_delete(this->file);
 }
 
 
 void AbFile_deleteOnExit(AbFile* this) {
-        AbFile_deleteOnExit(this->file);
+        File_deleteOnExit(this->file);
 }
 
 
 const char** AbFile_list(AbFile* this) {
-        return AbFile_list(this->file);
+        return File_list(this->file);
 }
 
 
 const char** AbFile_listWithFilter(AbFile* this, FilenameFilter* filter) {
-        return AbFile_list(this->file, filter);
+        return File_list(this->file, filter);
 }
 
 
-Any** AbFile_listFiles(AbFile* this) {
-        return ((Any**) AbFile_listFiles(this->file));
+void** AbFile_listFiles(AbFile* this) {
+        return ((void**) File_listFiles(this->file));
 }
 
 
-Any** AbFile_listFilesFileNameFilter(AbFile* this, FilenameFilter* filter) {
-        return ((Any**) AbFile_listFiles(this->file, filter));
+void** AbFile_listFilesFileNameFilter(AbFile* this, FilenameFilter* filter) {
+        return ((void**) File_listFiles(this->file, filter));
 }
 
 
-Any** AbFile_listFilesFileFilter(AbFile* this, FileFilter* filter) {
-        return ((Any**) AbFile_listFiles(this->file, filter));
+void** AbFile_listFilesFileFilter(AbFile* this, FileFilter* filter) {
+        return ((void**) File_listFiles(this->file, filter));
 }
 
 
 bool AbFile_mkdir(AbFile* this) {
-        return AbFile_mkdir(this->file);
+        return File_mkdir(this->file);
 }
 
 
 bool AbFile_mkdirs(AbFile* this) {
-        return AbFile_mkdirs(this->file);
+        return File_mkdirs(this->file);
 }
 
 
 bool AbFile_renameTo(AbFile* this, AbFile* dest) {
-        return AbFile_renameTo(this->file, AbFile_getFile(dest));
+        return File_renameTo(this->file, AbFile_getFile(dest));
 }
 
 
 bool AbFile_setLastModified(AbFile* this, int64_t time) {
-        return AbFile_setLastModified(this->file, time);
+        return File_setLastModified(this->file, time);
 }
 
 
 bool AbFile_setReadOnly(AbFile* this) {
-        return AbFile_setReadOnly(this->file);
+        return File_setReadOnly(this->file);
 }
 
 
-bool AbFile_setWritable(AbFile* this, bool writable, bool ownerOnly) {
-        return AbFile_setExecutable(this->file, writable, ownerOnly);
-}
-
-
-// Java overloaded method: C needs a different name
-bool AbFile_setWritable(AbFile* this, bool writable) {
-        return AbFile_setWritable(this->file, writable);
-}
-
-
-bool AbFile_setReadable(AbFile* this, bool readable, bool ownerOnly) {
-        return AbFile_setReadable(this->file, readable, ownerOnly);
+bool AbFile_setWritable3(AbFile* this, bool writable, bool ownerOnly) {
+        return File_setExecutable(this->file, writable, ownerOnly);
 }
 
 
 // Java overloaded method: C needs a different name
-bool AbFile_setReadable(AbFile* this, bool readable) {
-        return AbFile_setReadable(this->file, readable);
+bool AbFile_setWritable2(AbFile* this, bool writable) {
+        return File_setWritable(this->file, writable);
 }
 
 
-bool AbFile_setExecutable(AbFile* this, bool executable, bool ownerOnly) {
-        return AbFile_setExecutable(this->file, executable, ownerOnly);
+bool AbFile_setReadable3(AbFile* this, bool readable, bool ownerOnly) {
+        return File_setReadable(this->file, readable, ownerOnly);
 }
 
 
 // Java overloaded method: C needs a different name
-bool AbFile_setExecutable(AbFile* this, bool executable) {
-        return AbFile_setExecutable(this->file, executable);
+bool AbFile_setReadable2(AbFile* this, bool readable) {
+        return File_setReadable(this->file, readable);
+}
+
+
+bool AbFile_setExecutable3(AbFile* this, bool executable, bool ownerOnly) {
+        return File_setExecutable(this->file, executable, ownerOnly);
+}
+
+
+// Java overloaded method: C needs a different name
+bool AbFile_setExecutable2(AbFile* this, bool executable) {
+        return File_setExecutable(this->file, executable);
 }
 
 
 bool AbFile_canExecute(AbFile* this) {
-        return AbFile_canExecute(this->file);
+        return File_canExecute(this->file);
 }
 
 
 int64_t AbFile_getTotalSpace(AbFile* this) {
-        return AbFile_getTotalSpace(this->file);
+        return File_getTotalSpace(this->file);
 }
 
 
 int64_t AbFile_getFreeSpace(AbFile* this) {
-        return AbFile_getFreeSpace(this->file);
+        return File_getFreeSpace(this->file);
 }
 
 
 int64_t AbFile_getUsableSpace(AbFile* this) {
-        return AbFile_getUsableSpace(this->file);
+        return File_getUsableSpace(this->file);
 }
 
 
 int32_t AbFile_compareTo(AbFile* this, File* pathname) {
-        return AbFile_compareTo(this->file, pathname);
+        return File_compareTo(this->file, pathname);
 }
 
 
-bool AbFile_equals(AbFile* this, Any* obj) {
+bool AbFile_equals(AbFile* this, void* obj) {
         return TsUtil_equalsNotstring(TsUtil_getInstance(), this->file, obj);
 }
 
 
 int32_t AbFile_hashCode(AbFile* this) {
-        return AbFile_hashCode(this->file);
+        return File_hashCode(this->file);
 }
 
 
 const char* AbFile_toString(AbFile* this) {
-        return AbFile_toString(this->file);
+        return java_string_of(this->file);
 }
 

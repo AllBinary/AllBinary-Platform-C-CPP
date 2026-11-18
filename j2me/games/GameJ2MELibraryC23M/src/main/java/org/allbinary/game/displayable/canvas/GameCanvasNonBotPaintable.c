@@ -1,42 +1,29 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.displayable.canvas
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
-#include "org/allbinary/graphics/paint/Paintable.h"
-
-typedef struct GameCanvasNonBotPaintable GameCanvasNonBotPaintable;
-struct GameCanvasNonBotPaintable {
-    Paintable base;
-    AllBinaryGameCanvas* gameCanvas;
-};
+#include "org/allbinary/game/displayable/canvas/GameCanvasNonBotPaintable.h"
+#include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
 
-GameCanvasNonBotPaintable* GameCanvasNonBotPaintable_new(AllBinaryGameCanvas* gameCanvas);
 
-void GameCanvasNonBotPaintable_init(GameCanvasNonBotPaintable* this, AllBinaryGameCanvas* gameCanvas);
-void GameCanvasNonBotPaintable_paint(GameCanvasNonBotPaintable* this, Graphics* graphics);
+
+
+void GameCanvasNonBotPaintable_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void GameCanvasNonBotPaintable_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GameCanvasNonBotPaintable", "Paintable");
+    java_register_method("GameCanvasNonBotPaintable", "paint", (void*) GameCanvasNonBotPaintable_paint);
+}
 
 static void GameCanvasNonBotPaintable_initFields(GameCanvasNonBotPaintable* this) {
     
@@ -44,13 +31,14 @@ static void GameCanvasNonBotPaintable_initFields(GameCanvasNonBotPaintable* this
 
 
 void GameCanvasNonBotPaintable_init(GameCanvasNonBotPaintable* this, AllBinaryGameCanvas* gameCanvas) {
+    GameCanvasNonBotPaintable_register();
     Paintable_init(&this->base);
     GameCanvasNonBotPaintable_initFields(this);
         this->gameCanvas = gameCanvas;
 }
 
 GameCanvasNonBotPaintable* GameCanvasNonBotPaintable_new(AllBinaryGameCanvas* gameCanvas) {
-    GameCanvasNonBotPaintable* this = calloc(1, sizeof(GameCanvasNonBotPaintable));
+    GameCanvasNonBotPaintable* this = java_object_alloc(sizeof(GameCanvasNonBotPaintable), "GameCanvasNonBotPaintable");
     GameCanvasNonBotPaintable_init(this, gameCanvas);
     return this;
 }

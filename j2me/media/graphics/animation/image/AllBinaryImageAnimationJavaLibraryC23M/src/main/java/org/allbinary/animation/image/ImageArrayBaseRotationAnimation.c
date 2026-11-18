@@ -1,87 +1,115 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation.image
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
-// #include "javax/microedition/lcdui/Image.h"
-// #include "javax/microedition/lcdui/NullImage.h"
+#include "org/allbinary/animation/image/ImageArrayBaseRotationAnimation.h"
+#include "javax/microedition/lcdui/Graphics.h"
+#include "javax/microedition/lcdui/Image.h"
+#include "javax/microedition/lcdui/NullImage.h"
 #include "org/allbinary/DisposalUtil.h"
 #include "org/allbinary/animation/AnimationBehavior.h"
-#include "org/allbinary/animation/RotationAnimation.h"
 #include "org/allbinary/graphics/Anchor.h"
 #include "org/allbinary/logic/math/PrimitiveIntUtil.h"
 #include "org/allbinary/math/AngleInfo.h"
 #include "org/allbinary/media/image/ImageModifierUtil.h"
 #include "org/allbinary/util/CircularIndexUtil.h"
+#if __has_include("org/allbinary/animation/image/AngleIncrementInfo.h")
+#include "org/allbinary/animation/image/AngleIncrementInfo.h"
+#endif
+#if __has_include("javax/microedition/lcdui/AngleIncrementInfo.h")
+#include "javax/microedition/lcdui/AngleIncrementInfo.h"
+#endif
+#if __has_include("javax/microedition/lcdui/AngleIncrementInfo.h")
+#include "javax/microedition/lcdui/AngleIncrementInfo.h"
+#endif
+#if __has_include("javax/microedition/lcdui/AngleIncrementInfo.h")
+#include "javax/microedition/lcdui/AngleIncrementInfo.h"
+#endif
+#if __has_include("org/allbinary/AngleIncrementInfo.h")
+#include "org/allbinary/AngleIncrementInfo.h"
+#endif
+#if __has_include("org/allbinary/animation/AngleIncrementInfo.h")
+#include "org/allbinary/animation/AngleIncrementInfo.h"
+#endif
+#if __has_include("org/allbinary/animation/AngleIncrementInfo.h")
+#include "org/allbinary/animation/AngleIncrementInfo.h"
+#endif
+#if __has_include("org/allbinary/graphics/AngleIncrementInfo.h")
+#include "org/allbinary/graphics/AngleIncrementInfo.h"
+#endif
+#if __has_include("org/allbinary/logic/math/AngleIncrementInfo.h")
+#include "org/allbinary/logic/math/AngleIncrementInfo.h"
+#endif
+#if __has_include("org/allbinary/math/AngleIncrementInfo.h")
+#include "org/allbinary/math/AngleIncrementInfo.h"
+#endif
+#if __has_include("org/allbinary/media/image/AngleIncrementInfo.h")
+#include "org/allbinary/media/image/AngleIncrementInfo.h"
+#endif
+#if __has_include("org/allbinary/util/AngleIncrementInfo.h")
+#include "org/allbinary/util/AngleIncrementInfo.h"
+#endif
 
-typedef struct ImageArrayBaseRotationAnimation ImageArrayBaseRotationAnimation;
-struct ImageArrayBaseRotationAnimation {
-    RotationAnimation base;
-    ImageModifierUtil* imageModifierUtil;
-    Image** originalImageArray;
-    Image** imageArray;
-    Image* currentImage;
-    int32_t totalFrames;
-    int32_t anchor;
-};
 
 
-ImageArrayBaseRotationAnimation* ImageArrayBaseRotationAnimation_new(Image** originalImageArray, AngleInfo* angleInfo, AnimationBehavior* animationBehavior);
 
-void ImageArrayBaseRotationAnimation_init(ImageArrayBaseRotationAnimation* this, Image** originalImageArray, AngleInfo* angleInfo, AnimationBehavior* animationBehavior);
-int32_t ImageArrayBaseRotationAnimation_getAnimationSize(ImageArrayBaseRotationAnimation* this);
-void ImageArrayBaseRotationAnimation_setAlpha(ImageArrayBaseRotationAnimation* this, int32_t alpha);
-void ImageArrayBaseRotationAnimation_nextRotation(ImageArrayBaseRotationAnimation* this);
-void ImageArrayBaseRotationAnimation_previousRotation(ImageArrayBaseRotationAnimation* this);
-void ImageArrayBaseRotationAnimation_setFrame(ImageArrayBaseRotationAnimation* this, int32_t index2);
-void ImageArrayBaseRotationAnimation_setSequence(ImageArrayBaseRotationAnimation* this, int32_t* sequence);
-int32_t* ImageArrayBaseRotationAnimation_getSequence(ImageArrayBaseRotationAnimation* this);
-void ImageArrayBaseRotationAnimation_setImageArray(ImageArrayBaseRotationAnimation* this, Image** imageArray);
-void ImageArrayBaseRotationAnimation_paintXY(ImageArrayBaseRotationAnimation* this, Graphics* graphics, int32_t x, int32_t y);
-void ImageArrayBaseRotationAnimation_close(ImageArrayBaseRotationAnimation* this);
-void ImageArrayBaseRotationAnimation_finalize(ImageArrayBaseRotationAnimation* this);
+
+
+
+
+
+
+
+
+
+
+
+void ImageArrayBaseRotationAnimation_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void ImageArrayBaseRotationAnimation_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ImageArrayBaseRotationAnimation", "RotationAnimation");
+    java_register_method("ImageArrayBaseRotationAnimation", "getAnimationSize", (void*) ImageArrayBaseRotationAnimation_getAnimationSize);
+    java_register_method("ImageArrayBaseRotationAnimation", "setAlpha", (void*) ImageArrayBaseRotationAnimation_setAlpha);
+    java_register_method("ImageArrayBaseRotationAnimation", "nextRotation", (void*) ImageArrayBaseRotationAnimation_nextRotation);
+    java_register_method("ImageArrayBaseRotationAnimation", "previousRotation", (void*) ImageArrayBaseRotationAnimation_previousRotation);
+    java_register_method("ImageArrayBaseRotationAnimation", "setFrame", (void*) ImageArrayBaseRotationAnimation_setFrame);
+    java_register_method("ImageArrayBaseRotationAnimation", "setSequence", (void*) ImageArrayBaseRotationAnimation_setSequence);
+    java_register_method("ImageArrayBaseRotationAnimation", "getSequence", (void*) ImageArrayBaseRotationAnimation_getSequence);
+    java_register_method("ImageArrayBaseRotationAnimation", "setImageArray", (void*) ImageArrayBaseRotationAnimation_setImageArray);
+    java_register_method("ImageArrayBaseRotationAnimation", "paintXY", (void*) ImageArrayBaseRotationAnimation_paintXY);
+    java_register_method("ImageArrayBaseRotationAnimation", "close", (void*) ImageArrayBaseRotationAnimation_close);
+    java_register_method("ImageArrayBaseRotationAnimation", "finalize", (void*) ImageArrayBaseRotationAnimation_finalize);
+}
 
 static void ImageArrayBaseRotationAnimation_initFields(ImageArrayBaseRotationAnimation* this) {
     this->imageModifierUtil = ImageModifierUtil_getInstanceOrCreate();
     
-    this->imageArray = NullImage_NULL_IMAGE_ARRAY;
+    this->imageArray = (NullImage_staticInit(), NullImage_NULL_IMAGE_ARRAY);
     
     this->totalFrames = 0;
-    this->anchor = Anchor_TOP_LEFT;
+    this->anchor = (Anchor_staticInit(), Anchor_TOP_LEFT);
 }
 
 
 void ImageArrayBaseRotationAnimation_init(ImageArrayBaseRotationAnimation* this, Image** originalImageArray, AngleInfo* angleInfo, AnimationBehavior* animationBehavior) {
-        RotationAnimation_init(&this->base, angleInfo, CircularIndexUtil_createInstance(360 / JAVA_CALL(AngleInfo_getAngleIncrementInfo(angleInfo), getAngleIncrement)), animationBehavior);
+    ImageArrayBaseRotationAnimation_register();
+        RotationAnimation_init(&this->base, angleInfo, CircularIndexUtil_createInstance(360 / ((int32_t) AngleIncrementInfo_getAngleIncrement(AngleInfo_getAngleIncrementInfo(angleInfo)))), animationBehavior);
         ImageArrayBaseRotationAnimation_initFields(this);
         this->originalImageArray = originalImageArray;
         ImageArrayBaseRotationAnimation_setImageArray(this, ImageModifierUtil_getImageArray(this->imageModifierUtil, originalImageArray));
-        this->currentImage = this->imageArray[JAVA_CALL(this->circularIndexUtil, getIndex)];
+        this->currentImage = this->imageArray[CircularIndexUtil_getIndex(this->base.circularIndexUtil)];
 }
 
 ImageArrayBaseRotationAnimation* ImageArrayBaseRotationAnimation_new(Image** originalImageArray, AngleInfo* angleInfo, AnimationBehavior* animationBehavior) {
-    ImageArrayBaseRotationAnimation* this = calloc(1, sizeof(ImageArrayBaseRotationAnimation));
+    ImageArrayBaseRotationAnimation* this = java_object_alloc(sizeof(ImageArrayBaseRotationAnimation), "ImageArrayBaseRotationAnimation");
     ImageArrayBaseRotationAnimation_init(this, originalImageArray, angleInfo, animationBehavior);
     return this;
 }
@@ -89,40 +117,40 @@ ImageArrayBaseRotationAnimation* ImageArrayBaseRotationAnimation_new(Image** ori
 
 // throws Exception
 int32_t ImageArrayBaseRotationAnimation_getAnimationSize(ImageArrayBaseRotationAnimation* this) {
-        return ImageArrayBaseRotationAnimation_getSize(this);
+        return RotationAnimation_getSize(this);
 }
 
 
 void ImageArrayBaseRotationAnimation_setAlpha(ImageArrayBaseRotationAnimation* this, int32_t alpha) {
-        if (this->alphaP != alpha) {
-            RotationAnimation_setAlpha((&this->base), alpha);
+        if (this->base.base.base.alphaP != alpha) {
+            Animation_setAlpha((&this->base), alpha);
             ImageModifierUtil_reset(this->imageModifierUtil);
-            int32_t index = JAVA_CALL(this->circularIndexUtil, getIndex);
-            ImageModifierUtil_setAlpha(this->imageModifierUtil, this->originalImageArray[index], this->imageArray[index], index, this->alphaP);
+            int32_t index = CircularIndexUtil_getIndex(this->base.circularIndexUtil);
+            ImageModifierUtil_setAlpha(this->imageModifierUtil, this->originalImageArray[index], this->imageArray[index], index, this->base.base.base.alphaP);
         }
 }
 
 
 void ImageArrayBaseRotationAnimation_nextRotation(ImageArrayBaseRotationAnimation* this) {
         RotationAnimation_nextRotation((&this->base));
-        int32_t index = JAVA_CALL(this->circularIndexUtil, getIndex);
-        ImageModifierUtil_setAlpha(this->imageModifierUtil, this->originalImageArray[index], this->imageArray[index], index, this->alphaP);
+        int32_t index = CircularIndexUtil_getIndex(this->base.circularIndexUtil);
+        ImageModifierUtil_setAlpha(this->imageModifierUtil, this->originalImageArray[index], this->imageArray[index], index, this->base.base.base.alphaP);
         this->currentImage = this->imageArray[index];
 }
 
 
 void ImageArrayBaseRotationAnimation_previousRotation(ImageArrayBaseRotationAnimation* this) {
         RotationAnimation_previousRotation((&this->base));
-        int32_t index = JAVA_CALL(this->circularIndexUtil, getIndex);
-        ImageModifierUtil_setAlpha(this->imageModifierUtil, this->originalImageArray[index], this->imageArray[index], index, this->alphaP);
+        int32_t index = CircularIndexUtil_getIndex(this->base.circularIndexUtil);
+        ImageModifierUtil_setAlpha(this->imageModifierUtil, this->originalImageArray[index], this->imageArray[index], index, this->base.base.base.alphaP);
         this->currentImage = this->imageArray[index];
 }
 
 
 void ImageArrayBaseRotationAnimation_setFrame(ImageArrayBaseRotationAnimation* this, int32_t index2) {
         RotationAnimation_setFrame((&this->base), index2);
-        int32_t index = JAVA_CALL(this->circularIndexUtil, getIndex);
-        ImageModifierUtil_setAlpha(this->imageModifierUtil, this->originalImageArray[index], this->imageArray[index], index, this->alphaP);
+        int32_t index = CircularIndexUtil_getIndex(this->base.circularIndexUtil);
+        ImageModifierUtil_setAlpha(this->imageModifierUtil, this->originalImageArray[index], this->imageArray[index], index, this->base.base.base.alphaP);
         this->currentImage = this->imageArray[index];
 }
 
@@ -139,7 +167,7 @@ int32_t* ImageArrayBaseRotationAnimation_getSequence(ImageArrayBaseRotationAnima
 void ImageArrayBaseRotationAnimation_setImageArray(ImageArrayBaseRotationAnimation* this, Image** imageArray) {
         this->imageArray = imageArray;
         this->totalFrames = java_array_length(imageArray);
-        this->circularIndexUtil = CircularIndexUtil_createInstance(this->totalFrames);
+        this->base.circularIndexUtil = CircularIndexUtil_createInstance(this->totalFrames);
 }
 
 

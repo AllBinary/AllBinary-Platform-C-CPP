@@ -75,10 +75,15 @@ BasicArrayList* AdminRoleFactory_getShippingManagementRoles(AdminRoleFactory* th
 BasicArrayList* AdminRoleFactory_getAdjusterManagementRoles(AdminRoleFactory* this);
 
 BasicArrayList* AdminRoleFactory_getOrderManagementRoles(AdminRoleFactory* this);
+#define AdminRoleFactory_new0 AdminRoleFactory_new
+#define AdminRoleFactory_init0 AdminRoleFactory_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void AdminRoleFactory_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)
 void AdminRoleFactory_register(void);
 
+#if __has_include("org/allbinary/util/BasicArrayList.h")
+#include "org/allbinary/util/BasicArrayList.h"
+#endif
 
 #endif // ORG_ALLBINARY_BUSINESS_USER_ROLE_ADMINROLEFACTORY_H

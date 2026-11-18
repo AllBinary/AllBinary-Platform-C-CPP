@@ -124,7 +124,7 @@
 
         <module>../../../allbinary_src/licensing/ApplicationConfigurationJavaLibraryC23M</module>
         <module>../../../allbinary_src/licensing/ApplicationConfigurationNoFSJavaLibraryC23M</module>
-        <module>../../input/AllBinaryMagneticFieldSensorJavaLibraryC23M</module>
+        <!-- Android (com.google.android:android) is not a C23 dependency: <module>../../input/AllBinaryMagneticFieldSensorJavaLibraryC23M</module> -->
         <!--<module>../../android/VirtualKeyboardJavaLibraryC23M</module>-->
 
     </modules>

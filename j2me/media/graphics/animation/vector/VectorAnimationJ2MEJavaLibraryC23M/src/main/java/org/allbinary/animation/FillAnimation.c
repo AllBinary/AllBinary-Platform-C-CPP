@@ -1,37 +1,50 @@
 // Generated Code Do Not Modify
-// package org.allbinary.animation
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/animation/FillAnimation.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
 #include "org/allbinary/animation/IndexedAnimation.h"
+#include "org/allbinary/animation/AnimationBehavior.h"
+#if __has_include("org/allbinary/graphics/color/BasicColor.h")
+#include "org/allbinary/graphics/color/BasicColor.h"
+#endif
+#if __has_include("org/allbinary/graphics/color/BasicColor.h")
+#include "org/allbinary/graphics/color/BasicColor.h"
+#endif
 
-typedef struct FillAnimation FillAnimation;
-struct FillAnimation {
-    IndexedAnimation base;
-    int32_t* pixelBuffer;
-    int32_t width;
-    int32_t height;
-};
 
 
-FillAnimation* FillAnimation_new(int32_t* pixelBuffer, int32_t width, int32_t height, AnimationBehavior* animationBehavior);
 
-void FillAnimation_init(FillAnimation* this, int32_t* pixelBuffer, int32_t width, int32_t height, AnimationBehavior* animationBehavior);
-void FillAnimation_setBasicColorP(FillAnimation* this, BasicColor* basicColor);
-void FillAnimation_changeBasicColor(FillAnimation* this, BasicColor* basicColor);
-void FillAnimation_setAlpha(FillAnimation* this, int32_t alpha);
-void FillAnimation_setScale(FillAnimation* this, float scaleX, float scaleY);
-void FillAnimation_setMaxScale(FillAnimation* this, float maxScaleX, float maxScaleY);
+
+
+
+
+
 static void FillAnimation_updateModifiers(FillAnimation* this);
-void FillAnimation_paint(FillAnimation* this, Graphics* g);
+
+
+void FillAnimation_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void FillAnimation_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("FillAnimation", "IndexedAnimation");
+    java_register_method("FillAnimation", "setBasicColorP", (void*) FillAnimation_setBasicColorP);
+    java_register_method("FillAnimation", "changeBasicColor", (void*) FillAnimation_changeBasicColor);
+    java_register_method("FillAnimation", "setAlpha", (void*) FillAnimation_setAlpha);
+    java_register_method("FillAnimation", "setScale", (void*) FillAnimation_setScale);
+    java_register_method("FillAnimation", "setMaxScale", (void*) FillAnimation_setMaxScale);
+    java_register_method("FillAnimation", "updateModifiers", (void*) FillAnimation_updateModifiers);
+    java_register_method("FillAnimation", "paint", (void*) FillAnimation_paint);
+}
 
 static void FillAnimation_initFields(FillAnimation* this) {
     
@@ -41,6 +54,7 @@ static void FillAnimation_initFields(FillAnimation* this) {
 
 
 void FillAnimation_init(FillAnimation* this, int32_t* pixelBuffer, int32_t width, int32_t height, AnimationBehavior* animationBehavior) {
+    FillAnimation_register();
         IndexedAnimation_init(&this->base, animationBehavior);
         FillAnimation_initFields(this);
         this->width = 100;
@@ -49,7 +63,7 @@ void FillAnimation_init(FillAnimation* this, int32_t* pixelBuffer, int32_t width
 }
 
 FillAnimation* FillAnimation_new(int32_t* pixelBuffer, int32_t width, int32_t height, AnimationBehavior* animationBehavior) {
-    FillAnimation* this = calloc(1, sizeof(FillAnimation));
+    FillAnimation* this = java_object_alloc(sizeof(FillAnimation), "FillAnimation");
     FillAnimation_init(this, pixelBuffer, width, height, animationBehavior);
     return this;
 }
@@ -57,10 +71,10 @@ FillAnimation* FillAnimation_new(int32_t* pixelBuffer, int32_t width, int32_t he
 
 void FillAnimation_setBasicColorP(FillAnimation* this, BasicColor* basicColor) {
         bool changed = false;
-        if (FillAnimation_getBasicColorP(this) == nullptr || JAVA_CALL(FillAnimation_getBasicColorP(this), intValue) != BasicColor_intValue(basicColor)) {
+        if (Animation_getBasicColorP(this) == nullptr || BasicColor_intValue(Animation_getBasicColorP(this)) != BasicColor_intValue(basicColor)) {
             changed = true;
         }
-        IndexedAnimation_setBasicColorP((&this->base), basicColor);
+        Animation_setBasicColorP((&this->base), basicColor);
         if (changed) {
             FillAnimation_updateModifiers(this);
         }
@@ -69,10 +83,10 @@ void FillAnimation_setBasicColorP(FillAnimation* this, BasicColor* basicColor) {
 
 void FillAnimation_changeBasicColor(FillAnimation* this, BasicColor* basicColor) {
         bool changed = false;
-        if (FillAnimation_getChangeBasicColor(this) == nullptr || JAVA_CALL(FillAnimation_getChangeBasicColor(this), intValue) != BasicColor_intValue(basicColor)) {
+        if (Animation_getChangeBasicColor(this) == nullptr || BasicColor_intValue(Animation_getChangeBasicColor(this)) != BasicColor_intValue(basicColor)) {
             changed = true;
         }
-        IndexedAnimation_changeBasicColor((&this->base), basicColor);
+        Animation_changeBasicColor((&this->base), basicColor);
         if (changed) {
             FillAnimation_updateModifiers(this);
         }
@@ -81,10 +95,10 @@ void FillAnimation_changeBasicColor(FillAnimation* this, BasicColor* basicColor)
 
 void FillAnimation_setAlpha(FillAnimation* this, int32_t alpha) {
         bool changed = false;
-        if (this->alphaP != alpha) {
+        if (this->base.base.alphaP != alpha) {
             changed = true;
         }
-        IndexedAnimation_setAlpha((&this->base), alpha);
+        Animation_setAlpha((&this->base), alpha);
         if (changed) {
             FillAnimation_updateModifiers(this);
         }

@@ -48,6 +48,30 @@ GameStatisticsFactory* GameStatisticsFactory_getInstance(void);
 void GameStatisticsFactory_add(GameStatisticsFactory* this, const char* string);
 
 const char* GameStatisticsFactory_toString(GameStatisticsFactory* this);
+#ifndef GameStatisticsFactory_process
+#define GameStatisticsFactory_process BaseGameStatistics_process
+#endif
+#ifndef GameStatisticsFactory_nextFrame
+#define GameStatisticsFactory_nextFrame BaseGameStatistics_nextFrame
+#endif
+#ifndef GameStatisticsFactory_nextRefresh
+#define GameStatisticsFactory_nextRefresh BaseGameStatistics_nextRefresh
+#endif
+#ifndef GameStatisticsFactory_getRefreshRate
+#define GameStatisticsFactory_getRefreshRate BaseGameStatistics_getRefreshRate
+#endif
+#ifndef GameStatisticsFactory_getTimeDelayHelper
+#define GameStatisticsFactory_getTimeDelayHelper BaseGameStatistics_getTimeDelayHelper
+#endif
+#ifndef GameStatisticsFactory_to2DCharArray
+#define GameStatisticsFactory_to2DCharArray BaseGameStatistics_to2DCharArray
+#endif
+#ifndef GameStatisticsFactory_toStringArray
+#define GameStatisticsFactory_toStringArray BaseGameStatistics_toStringArray
+#endif
+#ifndef GameStatisticsFactory_toStringAt
+#define GameStatisticsFactory_toStringAt BaseGameStatistics_toStringAt
+#endif
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void GameStatisticsFactory_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

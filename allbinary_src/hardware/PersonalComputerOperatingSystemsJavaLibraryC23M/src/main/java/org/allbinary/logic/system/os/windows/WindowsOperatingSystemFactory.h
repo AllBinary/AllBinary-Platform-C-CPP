@@ -51,10 +51,15 @@ WindowsOperatingSystemFactory* WindowsOperatingSystemFactory_getInstance(void);
 void WindowsOperatingSystemFactory_init(WindowsOperatingSystemFactory* this);
 
 GenericOperatingSystem* WindowsOperatingSystemFactory_getOperatingSystemInstance(WindowsOperatingSystemFactory* this);
+#define WindowsOperatingSystemFactory_new0 WindowsOperatingSystemFactory_new
+#define WindowsOperatingSystemFactory_init0 WindowsOperatingSystemFactory_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void WindowsOperatingSystemFactory_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)
 void WindowsOperatingSystemFactory_register(void);
 
+#if __has_include("org/allbinary/logic/system/os/GenericOperatingSystem.h")
+#include "org/allbinary/logic/system/os/GenericOperatingSystem.h"
+#endif
 
 #endif // ORG_ALLBINARY_LOGIC_SYSTEM_OS_WINDOWS_WINDOWSOPERATINGSYSTEMFACTORY_H

@@ -1,48 +1,40 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input.motion.gesture.observer
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/input/motion/gesture/observer/MotionEventFactory.h"
 #include "org/allbinary/game/input/Input.h"
 #include "org/allbinary/game/input/InputFactory.h"
 #include "org/allbinary/input/motion/gesture/MotionGestureInput.h"
 #include "org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h"
 #include "org/allbinary/logic/util/event/AllBinaryEventObject.h"
-#include "org/allbinary/logic/util/event/AllBinaryEventObjectFactoryInterface.h"
+#include "org/allbinary/input/motion/gesture/observer/MotionGestureEvent.h"
+#if __has_include("org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h")
+#include "org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h"
+#endif
+#if __has_include("org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h")
+#include "org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h"
+#endif
 
-typedef struct MotionEventFactory MotionEventFactory;
-struct MotionEventFactory {
-    AllBinaryEventObjectFactoryInterface AllBinaryEventObjectFactoryInterface_interface;
-    Any* source;
-    int32_t id;
-};
 
 static int32_t MotionEventFactory_index = 0;
 
-MotionEventFactory* MotionEventFactory_new(Any* source, int32_t id);
 
-void MotionEventFactory_init(MotionEventFactory* this, Any* source, int32_t id);
-AllBinaryEventObject* MotionEventFactory_getInstance(MotionEventFactory* this);
+
+void MotionEventFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void MotionEventFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("MotionEventFactory", nullptr);
+    java_register_method("MotionEventFactory", "getInstance", (void*) MotionEventFactory_getInstance);
+}
 
 static void MotionEventFactory_initFields(MotionEventFactory* this) {
     
@@ -50,15 +42,16 @@ static void MotionEventFactory_initFields(MotionEventFactory* this) {
 }
 
 
-void MotionEventFactory_init(MotionEventFactory* this, Any* source, int32_t id) {
+void MotionEventFactory_init(MotionEventFactory* this, void* source, int32_t id) {
+    MotionEventFactory_register();
     MotionEventFactory_initFields(this);
         this->source = source;
         this->id = id;
-        MotionEventFactory_index = JAVA_CALL(TouchMotionGestureFactory_getInstance()->LAST_MOTION, getId);
+        MotionEventFactory_index = Input_getId(TouchMotionGestureFactory_getInstance()->LAST_MOTION);
 }
 
-MotionEventFactory* MotionEventFactory_new(Any* source, int32_t id) {
-    MotionEventFactory* this = calloc(1, sizeof(MotionEventFactory));
+MotionEventFactory* MotionEventFactory_new(void* source, int32_t id) {
+    MotionEventFactory* this = java_object_alloc(sizeof(MotionEventFactory), "MotionEventFactory");
     MotionEventFactory_init(this, source, id);
     return this;
 }

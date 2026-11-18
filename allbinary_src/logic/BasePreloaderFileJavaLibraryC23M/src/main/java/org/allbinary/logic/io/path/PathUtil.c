@@ -1,61 +1,62 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.io.path
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/logic/io/path/PathUtil.h"
 #include "org/allbinary/logic/io/file/FilePathData.h"
 #include "org/allbinary/logic/string/StringUtil.h"
 #include "org/allbinary/logic/string/StringValidationUtil.h"
+#include "org/allbinary/logic/io/path/AbPathData.h"
+#include "org/allbinary/logic/io/path/AbFilePath.h"
+#include "org/allbinary/logic/io/path/AbPath.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
-//Used to correct user input for paths
-typedef struct PathUtil PathUtil;
-struct PathUtil {
-    AbPathData* abPathData;
-    FilePathData* filePathData;
-};
 
 static PathUtil* PathUtil_instance;
 
-PathUtil* PathUtil_new(void);
-PathUtil* PathUtil_getInstance(void);
 
-void PathUtil_init(PathUtil* this);
-const char* PathUtil_getExtensionWithAbFilePath(PathUtil* this, AbFilePath* abFilePath);
-const char* PathUtil_getExtensionWithAbPath(PathUtil* this, AbPath* abPath);
-const char* PathUtil_getWithoutExtensionWithAbFilePath(PathUtil* this, AbFilePath* abFilePath);
-const char* PathUtil_getWithoutExtensionWithAbPath(PathUtil* this, AbPath* abPath);
-const char* PathUtil_getWithoutExtension(PathUtil* this, const char* filePath);
-bool PathUtil_isValid(PathUtil* this, const char* path);
+
+
+
+
+
+
+
 static bool PathUtil_isValidStart(PathUtil* this, const char* path);
-static bool PathUtil_isValidEnd(PathUtil* this, const char* path);
-const char* PathUtil_adjustStart(PathUtil* this, const char* path);
-const char* PathUtil_adjustEnd(PathUtil* this, const char* path);
-const char* PathUtil_adjust(PathUtil* this, const char* path);
-AbPath* PathUtil_removeNameFromPath(PathUtil* this, const char* path);
 
-// Static fields with runtime initializers: call this once at startup
+static bool PathUtil_isValidEnd(PathUtil* this, const char* path);
+
+
+
+
+
 void PathUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     PathUtil_instance = PathUtil_new();
+}
+
+void PathUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("PathUtil", nullptr);
+    java_register_method("PathUtil", "getExtensionWithAbFilePath", (void*) PathUtil_getExtensionWithAbFilePath);
+    java_register_method("PathUtil", "getExtensionWithAbPath", (void*) PathUtil_getExtensionWithAbPath);
+    java_register_method("PathUtil", "getWithoutExtensionWithAbFilePath", (void*) PathUtil_getWithoutExtensionWithAbFilePath);
+    java_register_method("PathUtil", "getWithoutExtensionWithAbPath", (void*) PathUtil_getWithoutExtensionWithAbPath);
+    java_register_method("PathUtil", "getWithoutExtension", (void*) PathUtil_getWithoutExtension);
+    java_register_method("PathUtil", "isValid", (void*) PathUtil_isValid);
+    java_register_method("PathUtil", "isValidStart", (void*) PathUtil_isValidStart);
+    java_register_method("PathUtil", "isValidEnd", (void*) PathUtil_isValidEnd);
+    java_register_method("PathUtil", "adjustStart", (void*) PathUtil_adjustStart);
+    java_register_method("PathUtil", "adjustEnd", (void*) PathUtil_adjustEnd);
+    java_register_method("PathUtil", "adjust", (void*) PathUtil_adjust);
+    java_register_method("PathUtil", "removeNameFromPath", (void*) PathUtil_removeNameFromPath);
 }
 
 static void PathUtil_initFields(PathUtil* this) {
@@ -65,40 +66,41 @@ static void PathUtil_initFields(PathUtil* this) {
 
 
 PathUtil* PathUtil_getInstance(void) {
-        return PathUtil_instance;
+        return (PathUtil_staticInit(), PathUtil_instance);
 }
 
 
 void PathUtil_init(PathUtil* this) {
+    PathUtil_register();
     PathUtil_initFields(this);
 }
 
 PathUtil* PathUtil_new(void) {
-    PathUtil* this = calloc(1, sizeof(PathUtil));
+    PathUtil* this = java_object_alloc(sizeof(PathUtil), "PathUtil");
     PathUtil_init(this);
     return this;
 }
 
 
 const char* PathUtil_getExtensionWithAbFilePath(PathUtil* this, AbFilePath* abFilePath) {
-        return AbPathData_getExtension(this->abPathData, AbFilePath_toString(abFilePath));
+        return AbPathData_getExtension(this->abPathData, java_string_of(abFilePath));
 }
 
 
 const char* PathUtil_getExtensionWithAbPath(PathUtil* this, AbPath* abPath) {
-        return AbPathData_getExtension(this->abPathData, AbPath_toString(abPath));
+        return AbPathData_getExtension(this->abPathData, java_string_of(abPath));
 }
 
 
 // throws Exception
 const char* PathUtil_getWithoutExtensionWithAbFilePath(PathUtil* this, AbFilePath* abFilePath) {
-        return PathUtil_getWithoutExtension(this, AbFilePath_toString(abFilePath));
+        return PathUtil_getWithoutExtension(this, java_string_of(abFilePath));
 }
 
 
 // throws Exception
 const char* PathUtil_getWithoutExtensionWithAbPath(PathUtil* this, AbPath* abPath) {
-        return PathUtil_getWithoutExtension(this, AbPath_toString(abPath));
+        return PathUtil_getWithoutExtension(this, java_string_of(abPath));
 }
 
 
@@ -147,7 +149,7 @@ static bool PathUtil_isValidEnd(PathUtil* this, const char* path) {
 
 const char* PathUtil_adjustStart(PathUtil* this, const char* path) {
         if (!PathUtil_isValidStart(this, path)) {
-            path = java_concat(java_string_of(this->abPathData->SEPARATOR), path);
+            path = java_concat(this->abPathData->SEPARATOR, path);
         }
         return path;
 }
@@ -155,7 +157,7 @@ const char* PathUtil_adjustStart(PathUtil* this, const char* path) {
 
 const char* PathUtil_adjustEnd(PathUtil* this, const char* path) {
         if (!PathUtil_isValidEnd(this, path)) {
-            path = java_concat(path, java_string_of(this->abPathData->SEPARATOR));
+            path = java_concat(path, this->abPathData->SEPARATOR);
         }
         return path;
 }

@@ -1,49 +1,43 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.android.input.motion
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/android/input/motion/AllAnalogControllerVisitor.h"
 #include "org/allbinary/game/input/analog/AnalogLocationInput.h"
 #include "org/allbinary/game/input/analog/AnalogLocationInputFactory.h"
 #include "org/allbinary/layer/AllBinaryLayerManager.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/android/input/motion/AnalogControllerVisitor.h"
+#include "org/allbinary/android/input/motion/AnalogLocationInputProcessor.h"
+#if __has_include("org/allbinary/game/input/analog/AnalogLocationInputFactory.h")
+#include "org/allbinary/game/input/analog/AnalogLocationInputFactory.h"
+#endif
 
-typedef struct AllAnalogControllerVisitor AllAnalogControllerVisitor;
-struct AllAnalogControllerVisitor {
-    AnalogControllerVisitor base;
-};
 
 
-AllAnalogControllerVisitor* AllAnalogControllerVisitor_new(void);
-void AllAnalogControllerVisitor_process(AllAnalogControllerVisitor* this, AllBinaryLayerManager* allbinaryLayerManager, AnalogLocationInputProcessor* analogLocationInputProcessor);
+
+void AllAnalogControllerVisitor_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void AllAnalogControllerVisitor_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("AllAnalogControllerVisitor", "AnalogControllerVisitor");
+    java_register_method("AllAnalogControllerVisitor", "process", (void*) AllAnalogControllerVisitor_process);
+}
 
 void AllAnalogControllerVisitor_init(AllAnalogControllerVisitor* this) {
+    AllAnalogControllerVisitor_register();
     AnalogControllerVisitor_init(&this->base);
 }
 
 AllAnalogControllerVisitor* AllAnalogControllerVisitor_new(void) {
-    AllAnalogControllerVisitor* this = calloc(1, sizeof(AllAnalogControllerVisitor));
+    AllAnalogControllerVisitor* this = java_object_alloc(sizeof(AllAnalogControllerVisitor), "AllAnalogControllerVisitor");
     AllAnalogControllerVisitor_init(this);
     return this;
 }

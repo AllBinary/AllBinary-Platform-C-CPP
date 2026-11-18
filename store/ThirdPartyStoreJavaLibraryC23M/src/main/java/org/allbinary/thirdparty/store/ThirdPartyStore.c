@@ -1,44 +1,34 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.thirdparty.store
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/thirdparty/store/ThirdPartyStore.h"
 #include "org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h"
 
-typedef struct ThirdPartyStore ThirdPartyStore;
-struct ThirdPartyStore {
-    bool authorized;
-    const char* name;
-};
 
 
-ThirdPartyStore* ThirdPartyStore_new(const char* name);
 
-void ThirdPartyStore_init(ThirdPartyStore* this, const char* name);
-void ThirdPartyStore_authorize(ThirdPartyStore* this, AbeClientInformationInterface* clientInformationInterface);
-bool ThirdPartyStore_isAuthorized(ThirdPartyStore* this);
-void ThirdPartyStore_setAuthorized(ThirdPartyStore* this, bool authorized);
-const char* ThirdPartyStore_getName(ThirdPartyStore* this);
+
+
+
+
+void ThirdPartyStore_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void ThirdPartyStore_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ThirdPartyStore", nullptr);
+    java_register_method("ThirdPartyStore", "authorize", (void*) ThirdPartyStore_authorize);
+    java_register_method("ThirdPartyStore", "isAuthorized", (void*) ThirdPartyStore_isAuthorized);
+    java_register_method("ThirdPartyStore", "setAuthorized", (void*) ThirdPartyStore_setAuthorized);
+    java_register_method("ThirdPartyStore", "getName", (void*) ThirdPartyStore_getName);
+}
 
 static void ThirdPartyStore_initFields(ThirdPartyStore* this) {
     this->authorized = false;
@@ -47,12 +37,13 @@ static void ThirdPartyStore_initFields(ThirdPartyStore* this) {
 
 
 void ThirdPartyStore_init(ThirdPartyStore* this, const char* name) {
+    ThirdPartyStore_register();
     ThirdPartyStore_initFields(this);
         this->name = name;
 }
 
 ThirdPartyStore* ThirdPartyStore_new(const char* name) {
-    ThirdPartyStore* this = calloc(1, sizeof(ThirdPartyStore));
+    ThirdPartyStore* this = java_object_alloc(sizeof(ThirdPartyStore), "ThirdPartyStore");
     ThirdPartyStore_init(this, name);
     return this;
 }

@@ -1,48 +1,38 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.canvas
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/canvas/GameStatisticsFactory.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/canvas/BaseGameStatistics.h"
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
 
-//ActualPlatform
-typedef struct GameStatisticsFactory GameStatisticsFactory;
-struct GameStatisticsFactory {
-    BaseGameStatistics base;
-    StringMaker* stringBuffer;
-};
 
 static GameStatisticsFactory* GameStatisticsFactory_instance;
 
-GameStatisticsFactory* GameStatisticsFactory_new(void);
-GameStatisticsFactory* GameStatisticsFactory_getInstance(void);
-void GameStatisticsFactory_add(GameStatisticsFactory* this, const char* string);
-const char* GameStatisticsFactory_toString(GameStatisticsFactory* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
 void GameStatisticsFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     GameStatisticsFactory_instance = GameStatisticsFactory_new();
+}
+
+void GameStatisticsFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GameStatisticsFactory", "BaseGameStatistics");
+    java_register_method("GameStatisticsFactory", "add", (void*) GameStatisticsFactory_add);
+    java_register_method("GameStatisticsFactory", "toString", (void*) GameStatisticsFactory_toString);
 }
 
 static void GameStatisticsFactory_initFields(GameStatisticsFactory* this) {
@@ -50,19 +40,20 @@ static void GameStatisticsFactory_initFields(GameStatisticsFactory* this) {
 }
 
 void GameStatisticsFactory_init(GameStatisticsFactory* this) {
+    GameStatisticsFactory_register();
     BaseGameStatistics_init(&this->base);
     GameStatisticsFactory_initFields(this);
 }
 
 GameStatisticsFactory* GameStatisticsFactory_new(void) {
-    GameStatisticsFactory* this = calloc(1, sizeof(GameStatisticsFactory));
+    GameStatisticsFactory* this = java_object_alloc(sizeof(GameStatisticsFactory), "GameStatisticsFactory");
     GameStatisticsFactory_init(this);
     return this;
 }
 
 
 GameStatisticsFactory* GameStatisticsFactory_getInstance(void) {
-        return GameStatisticsFactory_instance;
+        return (GameStatisticsFactory_staticInit(), GameStatisticsFactory_instance);
 }
 
 
@@ -76,6 +67,6 @@ void GameStatisticsFactory_add(GameStatisticsFactory* this, const char* string) 
 
 
 const char* GameStatisticsFactory_toString(GameStatisticsFactory* this) {
-        return JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), BaseGameStatistics_toString((&this->base))), append, StringMaker_toString(this->stringBuffer)), toString);
+        return java_string_of(StringMaker_append(StringMaker_append(StringMaker_new(), BaseGameStatistics_toString((&this->base))), java_string_of(this->stringBuffer)));
 }
 

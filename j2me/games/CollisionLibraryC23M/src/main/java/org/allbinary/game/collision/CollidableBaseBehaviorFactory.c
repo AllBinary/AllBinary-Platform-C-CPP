@@ -1,44 +1,35 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2025 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.collision
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/collision/CollidableBaseBehaviorFactory.h"
 #include "org/allbinary/game/collision/CollidableBaseBehaviorFactoryInterface.h"
-
-typedef struct CollidableBaseBehaviorFactory CollidableBaseBehaviorFactory;
-struct CollidableBaseBehaviorFactory {
-    CollidableBaseBehaviorFactoryInterface CollidableBaseBehaviorFactoryInterface_interface;
-};
+#include "org/allbinary/game/collision/CollidableBaseBehavior.h"
 
 
-CollidableBaseBehaviorFactory* CollidableBaseBehaviorFactory_new(void);
-CollidableBaseBehavior* CollidableBaseBehaviorFactory_createBehavior(CollidableBaseBehaviorFactory* this);
+
+
+void CollidableBaseBehaviorFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void CollidableBaseBehaviorFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("CollidableBaseBehaviorFactory", nullptr);
+    java_register_method("CollidableBaseBehaviorFactory", "createBehavior", (void*) CollidableBaseBehaviorFactory_createBehavior);
+}
 
 void CollidableBaseBehaviorFactory_init(CollidableBaseBehaviorFactory* this) {
+    CollidableBaseBehaviorFactory_register();
 }
 
 CollidableBaseBehaviorFactory* CollidableBaseBehaviorFactory_new(void) {
-    CollidableBaseBehaviorFactory* this = calloc(1, sizeof(CollidableBaseBehaviorFactory));
+    CollidableBaseBehaviorFactory* this = java_object_alloc(sizeof(CollidableBaseBehaviorFactory), "CollidableBaseBehaviorFactory");
     CollidableBaseBehaviorFactory_init(this);
     return this;
 }

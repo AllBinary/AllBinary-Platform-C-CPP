@@ -1,53 +1,51 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.business.init
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/business/init/LicenseInitInfo.h"
 #include "org/allbinary/debug/DebugFactory.h"
 #include "org/allbinary/debug/NoDebug.h"
 #include "org/allbinary/logic/string/StringUtil.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
-
-typedef struct LicenseInitInfo LicenseInitInfo;
-struct LicenseInitInfo {
-    const char* id;
-    BasicArrayList* serverList;
-};
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
 
-LicenseInitInfo* LicenseInitInfo_new(void);
 
-void LicenseInitInfo_init(LicenseInitInfo* this);
-const char* LicenseInitInfo_getLicenseId(LicenseInitInfo* this);
-const char* LicenseInitInfo_getServer(LicenseInitInfo* this, int32_t index);
-int32_t LicenseInitInfo_getNumberOfServers(LicenseInitInfo* this);
-void LicenseInitInfo_setLicenseId(LicenseInitInfo* this, const char* value);
-void LicenseInitInfo_clearServers(LicenseInitInfo* this);
-void LicenseInitInfo_setServer(LicenseInitInfo* this, const char* value, int32_t index);
-void LicenseInitInfo_addServer(LicenseInitInfo* this, const char* value);
-BasicArrayList* LicenseInitInfo_getServerList(LicenseInitInfo* this);
-void LicenseInitInfo_setServerList(LicenseInitInfo* this, BasicArrayList* servers);
+
+
+
+
+
+
+
+
+
+
+void LicenseInitInfo_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void LicenseInitInfo_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("LicenseInitInfo", nullptr);
+    java_register_method("LicenseInitInfo", "getLicenseId", (void*) LicenseInitInfo_getLicenseId);
+    java_register_method("LicenseInitInfo", "getServer", (void*) LicenseInitInfo_getServer);
+    java_register_method("LicenseInitInfo", "getNumberOfServers", (void*) LicenseInitInfo_getNumberOfServers);
+    java_register_method("LicenseInitInfo", "setLicenseId", (void*) LicenseInitInfo_setLicenseId);
+    java_register_method("LicenseInitInfo", "clearServers", (void*) LicenseInitInfo_clearServers);
+    java_register_method("LicenseInitInfo", "setServer", (void*) LicenseInitInfo_setServer);
+    java_register_method("LicenseInitInfo", "addServer", (void*) LicenseInitInfo_addServer);
+    java_register_method("LicenseInitInfo", "getServerList", (void*) LicenseInitInfo_getServerList);
+    java_register_method("LicenseInitInfo", "setServerList", (void*) LicenseInitInfo_setServerList);
+}
 
 static void LicenseInitInfo_initFields(LicenseInitInfo* this) {
     this->id = StringUtil_getInstance()->EMPTY_STRING;
@@ -56,11 +54,12 @@ static void LicenseInitInfo_initFields(LicenseInitInfo* this) {
 
 
 void LicenseInitInfo_init(LicenseInitInfo* this) {
+    LicenseInitInfo_register();
     LicenseInitInfo_initFields(this);
 }
 
 LicenseInitInfo* LicenseInitInfo_new(void) {
-    LicenseInitInfo* this = calloc(1, sizeof(LicenseInitInfo));
+    LicenseInitInfo* this = java_object_alloc(sizeof(LicenseInitInfo), "LicenseInitInfo");
     LicenseInitInfo_init(this);
     return this;
 }

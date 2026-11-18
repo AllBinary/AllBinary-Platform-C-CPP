@@ -1,65 +1,73 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.input
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/input/J2MEGameInputMapping.h"
 #include "org/allbinary/game/configuration/persistance/GamePersistanceStrings.h"
-#include "org/allbinary/game/input/mapping/PersistentInputMapping.h"
 #include "org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h"
+#include "org/allbinary/game/input/J2MEKeyFactory.h"
+#include "org/allbinary/game/input/GameKeyFactory.h"
+#include "org/allbinary/game/input/Input.h"
+#if __has_include("org/allbinary/game/configuration/persistance/GamePersistanceStrings.h")
+#include "org/allbinary/game/configuration/persistance/GamePersistanceStrings.h"
+#endif
+#if __has_include("org/allbinary/game/input/InputToGameKeyMapping.h")
+#include "org/allbinary/game/input/InputToGameKeyMapping.h"
+#endif
+#if __has_include("org/allbinary/game/configuration/persistance/InputToGameKeyMapping.h")
+#include "org/allbinary/game/configuration/persistance/InputToGameKeyMapping.h"
+#endif
+#if __has_include("org/allbinary/game/input/mapping/InputToGameKeyMapping.h")
+#include "org/allbinary/game/input/mapping/InputToGameKeyMapping.h"
+#endif
+#if __has_include("org/allbinary/logic/system/security/licensing/InputToGameKeyMapping.h")
+#include "org/allbinary/logic/system/security/licensing/InputToGameKeyMapping.h"
+#endif
 
-typedef struct J2MEGameInputMapping J2MEGameInputMapping;
-struct J2MEGameInputMapping {
-    PersistentInputMapping base;
-};
 
 
-J2MEGameInputMapping* J2MEGameInputMapping_new(void);
 
-void J2MEGameInputMapping_init(J2MEGameInputMapping* this);
-void J2MEGameInputMapping_init(J2MEGameInputMapping* this, AbeClientInformationInterface* abeClientInformation);
-bool J2MEGameInputMapping_isDelete(J2MEGameInputMapping* this, Input* input);
-bool J2MEGameInputMapping_isSystemInput(J2MEGameInputMapping* this, Input* input);
+
+
+
+void J2MEGameInputMapping_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void J2MEGameInputMapping_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("J2MEGameInputMapping", "PersistentInputMapping");
+    java_register_method("J2MEGameInputMapping", "init", (void*) J2MEGameInputMapping_initMethod);
+    java_register_method("J2MEGameInputMapping", "isDelete", (void*) J2MEGameInputMapping_isDelete);
+    java_register_method("J2MEGameInputMapping", "isSystemInput", (void*) J2MEGameInputMapping_isSystemInput);
+}
 
 
 void J2MEGameInputMapping_init(J2MEGameInputMapping* this) {
+    J2MEGameInputMapping_register();
         PersistentInputMapping_init(&this->base, GamePersistanceStrings_getInstance()->SAVED_INPUT_CONFIGURATION_RECORD_ID);
 }
 
 J2MEGameInputMapping* J2MEGameInputMapping_new(void) {
-    J2MEGameInputMapping* this = calloc(1, sizeof(J2MEGameInputMapping));
+    J2MEGameInputMapping* this = java_object_alloc(sizeof(J2MEGameInputMapping), "J2MEGameInputMapping");
     J2MEGameInputMapping_init(this);
     return this;
 }
 
 
 // throws Exception
-void J2MEGameInputMapping_init(J2MEGameInputMapping* this, AbeClientInformationInterface* abeClientInformation) {
-        JAVA_CALL(this->logUtil, putF, this->commonStrings->START, this, this->commonStrings->INIT);
-        J2MEKeyFactory_init(J2MEKeyFactory_getInstance());
-        PersistentInputMapping_init((&this->base), abeClientInformation);
-        if (J2MEGameInputMapping_getTotalMapped(this) == 0 || J2MEGameInputMapping_isDefaultNew(this)) {
-            JAVA_CALL(J2MEGameInputMapping_getInputMapping(this), addMapping, J2MEGameInputMapping_getDefault(this));
-            J2MEGameInputMapping_save(this, abeClientInformation);
+void J2MEGameInputMapping_initMethod(J2MEGameInputMapping* this, AbeClientInformationInterface* abeClientInformation) {
+        LogUtil_putF(this->base.logUtil, this->base.commonStrings->START, this, this->base.commonStrings->INIT);
+        J2MEKeyFactory_initMethod(J2MEKeyFactory_getInstance());
+        PersistentInputMapping_initMethod((&this->base), abeClientInformation);
+        if (PersistentInputMapping_getTotalMapped(this) == 0 || PersistentInputMapping_isDefaultNew(this)) {
+            InputToGameKeyMapping_addMapping(PersistentInputMapping_getInputMapping(this), PersistentInputMapping_getDefault(this));
+            PersistentInputMapping_save(this, abeClientInformation);
         }
 }
 

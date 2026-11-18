@@ -1,66 +1,61 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.io
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/logic/io/FileStreamFactory.h"
 #include "org/allbinary/logic/NullUtil.h"
 #include "org/allbinary/logic/io/file/AbFile.h"
 #include "org/allbinary/logic/io/path/AbPath.h"
+#include "org/allbinary/logic/io/AbFileInputStream.h"
+#include "org/allbinary/logic/io/AbFileOutputStream.h"
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
 
-typedef struct FileStreamFactory FileStreamFactory;
-struct FileStreamFactory {
-    char unused;
-};
 
-static Any* FileStreamFactory_SINGLETON;
+static void* FileStreamFactory_SINGLETON;
 
-FileStreamFactory* FileStreamFactory_new(void);
-FileStreamFactory* FileStreamFactory_getInstance(void);
 
-void FileStreamFactory_init(FileStreamFactory* this);
-AbFileInputStream* FileStreamFactory_getFileInputStreamInstance(FileStreamFactory* this, const char* path, const char* fileName);
-AbFileOutputStream* FileStreamFactory_getFileOutputStreamInstance(FileStreamFactory* this, const char* path, const char* fileName);
-void FileStreamFactory_delete(FileStreamFactory* this, const char* path, const char* fileName);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
 void FileStreamFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     FileStreamFactory_SINGLETON = NullUtil_getInstance()->NULL_OBJECT;
+}
+
+void FileStreamFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("FileStreamFactory", nullptr);
+    java_register_method("FileStreamFactory", "getFileInputStreamInstance", (void*) FileStreamFactory_getFileInputStreamInstance);
+    java_register_method("FileStreamFactory", "getFileOutputStreamInstance", (void*) FileStreamFactory_getFileOutputStreamInstance);
+    java_register_method("FileStreamFactory", "delete", (void*) FileStreamFactory_delete);
 }
 
 
 FileStreamFactory* FileStreamFactory_getInstance(void) {
-        if (FileStreamFactory_SINGLETON == NullUtil_getInstance()->NULL_OBJECT) {
+        if ((FileStreamFactory_staticInit(), FileStreamFactory_SINGLETON) == NullUtil_getInstance()->NULL_OBJECT) {
             FileStreamFactory_SINGLETON = FileStreamFactory_new();
         }
-        return ((FileStreamFactory*) FileStreamFactory_SINGLETON);
+        return ((FileStreamFactory*) (FileStreamFactory_staticInit(), FileStreamFactory_SINGLETON));
 }
 
 
 void FileStreamFactory_init(FileStreamFactory* this) {
+    FileStreamFactory_register();
 }
 
 FileStreamFactory* FileStreamFactory_new(void) {
-    FileStreamFactory* this = calloc(1, sizeof(FileStreamFactory));
+    FileStreamFactory* this = java_object_alloc(sizeof(FileStreamFactory), "FileStreamFactory");
     FileStreamFactory_init(this);
     return this;
 }

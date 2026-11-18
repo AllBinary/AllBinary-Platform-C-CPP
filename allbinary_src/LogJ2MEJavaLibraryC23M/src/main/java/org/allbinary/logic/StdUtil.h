@@ -58,5 +58,14 @@ void StdUtil_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)
 void StdUtil_register(void);
 
+#if __has_include("org/allbinary/util/ABHashtable.h")
+#include "org/allbinary/util/ABHashtable.h"
+#endif
+#if __has_include("org/allbinary/util/ABStack.h")
+#include "org/allbinary/util/ABStack.h"
+#endif
+#if __has_include("org/allbinary/util/ABVector.h")
+#include "org/allbinary/util/ABVector.h"
+#endif
 
 #endif // ORG_ALLBINARY_LOGIC_STDUTIL_H

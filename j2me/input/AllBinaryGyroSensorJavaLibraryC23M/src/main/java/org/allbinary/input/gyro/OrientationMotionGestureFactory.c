@@ -1,52 +1,39 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input.gyro
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/input/gyro/OrientationMotionGestureFactory.h"
 #include "org/allbinary/game/input/InputFactory.h"
 #include "org/allbinary/input/motion/gesture/MotionGestureInput.h"
 #include "org/allbinary/logic/NullUtil.h"
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/game/input/InputFactory.h")
+#include "org/allbinary/game/input/InputFactory.h"
+#endif
 
-typedef struct OrientationMotionGestureFactory OrientationMotionGestureFactory;
-struct OrientationMotionGestureFactory {
-    MotionGestureInput* LEFT;
-    MotionGestureInput* RIGHT;
-    MotionGestureInput* UP;
-    MotionGestureInput* DOWN;
-    MotionGestureInput* ROLL_LEFT;
-    MotionGestureInput* ROLL_RIGHT;
-};
 
-static Any* OrientationMotionGestureFactory_instance;
+static void* OrientationMotionGestureFactory_instance;
 
-OrientationMotionGestureFactory* OrientationMotionGestureFactory_new(void);
-OrientationMotionGestureFactory* OrientationMotionGestureFactory_getInstance(void);
 
-void OrientationMotionGestureFactory_init(OrientationMotionGestureFactory* this);
 
-// Static fields with runtime initializers: call this once at startup
 void OrientationMotionGestureFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     OrientationMotionGestureFactory_instance = NullUtil_getInstance()->NULL_OBJECT;
+}
+
+void OrientationMotionGestureFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("OrientationMotionGestureFactory", nullptr);
 }
 
 static void OrientationMotionGestureFactory_initFields(OrientationMotionGestureFactory* this) {
@@ -60,14 +47,15 @@ static void OrientationMotionGestureFactory_initFields(OrientationMotionGestureF
 
 
 OrientationMotionGestureFactory* OrientationMotionGestureFactory_getInstance(void) {
-        if (OrientationMotionGestureFactory_instance == NullUtil_getInstance()->NULL_OBJECT) {
+        if ((OrientationMotionGestureFactory_staticInit(), OrientationMotionGestureFactory_instance) == NullUtil_getInstance()->NULL_OBJECT) {
             OrientationMotionGestureFactory_instance = OrientationMotionGestureFactory_new();
         }
-        return ((OrientationMotionGestureFactory*) OrientationMotionGestureFactory_instance);
+        return ((OrientationMotionGestureFactory*) (OrientationMotionGestureFactory_staticInit(), OrientationMotionGestureFactory_instance));
 }
 
 
 void OrientationMotionGestureFactory_init(OrientationMotionGestureFactory* this) {
+    OrientationMotionGestureFactory_register();
     OrientationMotionGestureFactory_initFields(this);
         int32_t MAX = InputFactory_getInstance()->MAX;
         this->LEFT = MotionGestureInput_new(MAX - 20, "Left Orient");
@@ -79,7 +67,7 @@ void OrientationMotionGestureFactory_init(OrientationMotionGestureFactory* this)
 }
 
 OrientationMotionGestureFactory* OrientationMotionGestureFactory_new(void) {
-    OrientationMotionGestureFactory* this = calloc(1, sizeof(OrientationMotionGestureFactory));
+    OrientationMotionGestureFactory* this = java_object_alloc(sizeof(OrientationMotionGestureFactory), "OrientationMotionGestureFactory");
     OrientationMotionGestureFactory_init(this);
     return this;
 }

@@ -1,51 +1,50 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.business.advertisement
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/business/advertisement/Advertisements.h"
 #include "org/allbinary/game/rand/MyRandomFactory.h"
 #include "org/allbinary/logic/system/security/licensing/LockedUtil.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
-
-typedef struct Advertisements Advertisements;
-struct Advertisements {
-    BasicArrayList* bannerList;
-    BasicArrayList* pageList;
-    MyRandomFactory* myRandomFactory;
-};
+#include "org/allbinary/business/advertisement/AdvertisementProcessorInterface.h"
+#if __has_include("org/allbinary/logic/system/security/licensing/LockedUtil.h")
+#include "org/allbinary/logic/system/security/licensing/LockedUtil.h"
+#endif
 
 
-Advertisements* Advertisements_new(void);
-void Advertisements_addPage(Advertisements* this, AdvertisementProcessorInterface* advertisementProcessorInterface);
-void Advertisements_startRandomPage(Advertisements* this);
-void Advertisements_processRandomPage(Advertisements* this);
-void Advertisements_stopAllPage(Advertisements* this);
-void Advertisements_addBanner(Advertisements* this, AdvertisementProcessorInterface* advertisementProcessorInterface);
-void Advertisements_startAll(Advertisements* this);
-void Advertisements_stopAllBanner(Advertisements* this);
-AdvertisementProcessorInterface* Advertisements_getBanner(Advertisements* this, int32_t index);
-void Advertisements_stopAll(Advertisements* this);
+
+
+
+
+
+
+
+
+
+
+void Advertisements_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void Advertisements_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("Advertisements", nullptr);
+    java_register_method("Advertisements", "addPage", (void*) Advertisements_addPage);
+    java_register_method("Advertisements", "startRandomPage", (void*) Advertisements_startRandomPage);
+    java_register_method("Advertisements", "processRandomPage", (void*) Advertisements_processRandomPage);
+    java_register_method("Advertisements", "stopAllPage", (void*) Advertisements_stopAllPage);
+    java_register_method("Advertisements", "addBanner", (void*) Advertisements_addBanner);
+    java_register_method("Advertisements", "startAll", (void*) Advertisements_startAll);
+    java_register_method("Advertisements", "stopAllBanner", (void*) Advertisements_stopAllBanner);
+    java_register_method("Advertisements", "getBanner", (void*) Advertisements_getBanner);
+    java_register_method("Advertisements", "stopAll", (void*) Advertisements_stopAll);
+}
 
 static void Advertisements_initFields(Advertisements* this) {
     this->bannerList = BasicArrayListD_new();
@@ -54,11 +53,12 @@ static void Advertisements_initFields(Advertisements* this) {
 }
 
 void Advertisements_init(Advertisements* this) {
+    Advertisements_register();
     Advertisements_initFields(this);
 }
 
 Advertisements* Advertisements_new(void) {
-    Advertisements* this = calloc(1, sizeof(Advertisements));
+    Advertisements* this = java_object_alloc(sizeof(Advertisements), "Advertisements");
     Advertisements_init(this);
     return this;
 }

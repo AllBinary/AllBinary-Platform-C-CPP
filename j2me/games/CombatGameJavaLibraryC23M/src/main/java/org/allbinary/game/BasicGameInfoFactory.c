@@ -1,35 +1,33 @@
 // Generated Code Do Not Modify
-// package org.allbinary.game
+#include "org/allbinary/game/BasicGameInfoFactory.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct BasicGameInfoFactory BasicGameInfoFactory;
-struct BasicGameInfoFactory {
-    int32_t currentReleaseIndex;
-    int32_t currentDestroyIndex;
-    int32_t total;
-};
 
 static BasicGameInfoFactory* BasicGameInfoFactory_SINGLETON;
 
-BasicGameInfoFactory* BasicGameInfoFactory_new(void);
-BasicGameInfoFactory* BasicGameInfoFactory_getInstance(void);
 
-void BasicGameInfoFactory_init(BasicGameInfoFactory* this);
-void BasicGameInfoFactory_init(BasicGameInfoFactory* this, int32_t total);
-bool BasicGameInfoFactory_isPeaked(BasicGameInfoFactory* this);
-int32_t BasicGameInfoFactory_howManyLeft(BasicGameInfoFactory* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
 void BasicGameInfoFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     BasicGameInfoFactory_SINGLETON = BasicGameInfoFactory_new();
+}
+
+void BasicGameInfoFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("BasicGameInfoFactory", nullptr);
+    java_register_method("BasicGameInfoFactory", "init", (void*) BasicGameInfoFactory_initMethod);
+    java_register_method("BasicGameInfoFactory", "isPeaked", (void*) BasicGameInfoFactory_isPeaked);
+    java_register_method("BasicGameInfoFactory", "howManyLeft", (void*) BasicGameInfoFactory_howManyLeft);
 }
 
 static void BasicGameInfoFactory_initFields(BasicGameInfoFactory* this) {
@@ -40,22 +38,23 @@ static void BasicGameInfoFactory_initFields(BasicGameInfoFactory* this) {
 
 
 BasicGameInfoFactory* BasicGameInfoFactory_getInstance(void) {
-        return BasicGameInfoFactory_SINGLETON;
+        return (BasicGameInfoFactory_staticInit(), BasicGameInfoFactory_SINGLETON);
 }
 
 
 void BasicGameInfoFactory_init(BasicGameInfoFactory* this) {
+    BasicGameInfoFactory_register();
     BasicGameInfoFactory_initFields(this);
 }
 
 BasicGameInfoFactory* BasicGameInfoFactory_new(void) {
-    BasicGameInfoFactory* this = calloc(1, sizeof(BasicGameInfoFactory));
+    BasicGameInfoFactory* this = java_object_alloc(sizeof(BasicGameInfoFactory), "BasicGameInfoFactory");
     BasicGameInfoFactory_init(this);
     return this;
 }
 
 
-void BasicGameInfoFactory_init(BasicGameInfoFactory* this, int32_t total) {
+void BasicGameInfoFactory_initMethod(BasicGameInfoFactory* this, int32_t total) {
         this->currentReleaseIndex = 0;
         this->currentDestroyIndex = 0;
         this->total = total;

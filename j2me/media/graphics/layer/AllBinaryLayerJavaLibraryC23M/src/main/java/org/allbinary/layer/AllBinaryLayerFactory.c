@@ -1,44 +1,35 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2011 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.layer
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/layer/AllBinaryLayerFactory.h"
 #include "org/allbinary/graphics/Rectangle.h"
 #include "org/allbinary/logic/string/StringUtil.h"
 #include "org/allbinary/view/ViewPosition.h"
 #include "org/allbinary/layer/AllBinaryLayerFactoryInterface.h"
-
-typedef struct AllBinaryLayerFactory AllBinaryLayerFactory;
-struct AllBinaryLayerFactory {
-    AllBinaryLayerFactoryInterface AllBinaryLayerFactoryInterface_interface;
-    Rectangle* rectangle;
-};
+#include "org/allbinary/layer/AllBinaryLayer.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
 
-AllBinaryLayerFactory* AllBinaryLayerFactory_new(Rectangle* rectangle);
 
-void AllBinaryLayerFactory_init(AllBinaryLayerFactory* this, Rectangle* rectangle);
-AllBinaryLayer* AllBinaryLayerFactory_getInstance(AllBinaryLayerFactory* this);
+
+
+void AllBinaryLayerFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void AllBinaryLayerFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("AllBinaryLayerFactory", nullptr);
+    java_register_method("AllBinaryLayerFactory", "getInstance", (void*) AllBinaryLayerFactory_getInstance);
+}
 
 static void AllBinaryLayerFactory_initFields(AllBinaryLayerFactory* this) {
     
@@ -46,12 +37,13 @@ static void AllBinaryLayerFactory_initFields(AllBinaryLayerFactory* this) {
 
 
 void AllBinaryLayerFactory_init(AllBinaryLayerFactory* this, Rectangle* rectangle) {
+    AllBinaryLayerFactory_register();
     AllBinaryLayerFactory_initFields(this);
         this->rectangle = rectangle;
 }
 
 AllBinaryLayerFactory* AllBinaryLayerFactory_new(Rectangle* rectangle) {
-    AllBinaryLayerFactory* this = calloc(1, sizeof(AllBinaryLayerFactory));
+    AllBinaryLayerFactory* this = java_object_alloc(sizeof(AllBinaryLayerFactory), "AllBinaryLayerFactory");
     AllBinaryLayerFactory_init(this, rectangle);
     return this;
 }

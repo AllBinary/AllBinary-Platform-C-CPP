@@ -1,62 +1,49 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/animation/VectorAnimationUtil.h"
 #include "org/allbinary/graphics/GPoint.h"
 #include "org/allbinary/util/BasicArrayList.h"
 
-typedef struct VectorAnimationUtil VectorAnimationUtil;
-struct VectorAnimationUtil {
-    char unused;
-};
 
 static VectorAnimationUtil* VectorAnimationUtil_instance;
 
-VectorAnimationUtil* VectorAnimationUtil_new(void);
-VectorAnimationUtil* VectorAnimationUtil_getInstance(void);
 
-void VectorAnimationUtil_init(VectorAnimationUtil* this);
-int32_t*** VectorAnimationUtil_toAnimationArrayFromListOfPointListWithPointsPerFrame(VectorAnimationUtil* this, BasicArrayList* vector, int32_t pointsPerFrame);
-int32_t*** VectorAnimationUtil_toAnimationArrayFromListOfPointList(VectorAnimationUtil* this, BasicArrayList* vector);
-int32_t** VectorAnimationUtil_toFrameArrayFromPointBasicArrayList(VectorAnimationUtil* this, BasicArrayList* list);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
 void VectorAnimationUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     VectorAnimationUtil_instance = VectorAnimationUtil_new();
+}
+
+void VectorAnimationUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("VectorAnimationUtil", nullptr);
+    java_register_method("VectorAnimationUtil", "toAnimationArrayFromListOfPointListWithPointsPerFrame", (void*) VectorAnimationUtil_toAnimationArrayFromListOfPointListWithPointsPerFrame);
+    java_register_method("VectorAnimationUtil", "toAnimationArrayFromListOfPointList", (void*) VectorAnimationUtil_toAnimationArrayFromListOfPointList);
+    java_register_method("VectorAnimationUtil", "toFrameArrayFromPointBasicArrayList", (void*) VectorAnimationUtil_toFrameArrayFromPointBasicArrayList);
 }
 
 
 VectorAnimationUtil* VectorAnimationUtil_getInstance(void) {
-        return VectorAnimationUtil_instance;
+        return (VectorAnimationUtil_staticInit(), VectorAnimationUtil_instance);
 }
 
 
 void VectorAnimationUtil_init(VectorAnimationUtil* this) {
+    VectorAnimationUtil_register();
 }
 
 VectorAnimationUtil* VectorAnimationUtil_new(void) {
-    VectorAnimationUtil* this = calloc(1, sizeof(VectorAnimationUtil));
+    VectorAnimationUtil* this = java_object_alloc(sizeof(VectorAnimationUtil), "VectorAnimationUtil");
     VectorAnimationUtil_init(this);
     return this;
 }

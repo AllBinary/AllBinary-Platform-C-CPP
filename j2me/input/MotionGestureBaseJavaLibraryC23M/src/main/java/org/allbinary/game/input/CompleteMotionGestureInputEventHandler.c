@@ -1,56 +1,48 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.input
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/input/CompleteMotionGestureInputEventHandler.h"
 #include "org/allbinary/logic/util/event/AllBinaryEventObject.h"
 #include "org/allbinary/logic/util/event/EventListenerInterface.h"
 #include "org/allbinary/logic/util/event/EventStrings.h"
-#include "org/allbinary/logic/util/event/handler/BasicEventHandler.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
+#include "org/allbinary/game/input/CompleteMotionGestureInputEventListener.h"
+#include "org/allbinary/game/input/CompleteMotionGestureInputEvent.h"
+#include "org/allbinary/game/input/CompleteMotionGestureInputEventListenerInterface.h"
+#if __has_include("org/allbinary/logic/util/event/EventStrings.h")
+#include "org/allbinary/logic/util/event/EventStrings.h"
+#endif
 
-typedef struct CompleteMotionGestureInputEventHandler CompleteMotionGestureInputEventHandler;
-struct CompleteMotionGestureInputEventHandler {
-    BasicEventHandler base;
-    BasicArrayList* list;
-};
 
 static CompleteMotionGestureInputEventHandler* CompleteMotionGestureInputEventHandler_SINGLETON;
 
-CompleteMotionGestureInputEventHandler* CompleteMotionGestureInputEventHandler_new(void);
-CompleteMotionGestureInputEventHandler* CompleteMotionGestureInputEventHandler_getInstance(void);
 
-void CompleteMotionGestureInputEventHandler_init(CompleteMotionGestureInputEventHandler* this);
-void CompleteMotionGestureInputEventHandler_addListener(CompleteMotionGestureInputEventHandler* this, CompleteMotionGestureInputEventListener* completeMotionGestureInputEventListener);
-void CompleteMotionGestureInputEventHandler_removeAllListeners(CompleteMotionGestureInputEventHandler* this);
-void CompleteMotionGestureInputEventHandler_removeListener(CompleteMotionGestureInputEventHandler* this, EventListenerInterface* eventListenerInterface);
-void CompleteMotionGestureInputEventHandler_fireEvent(CompleteMotionGestureInputEventHandler* this, AllBinaryEventObject* eventObject);
-void CompleteMotionGestureInputEventHandler_process(CompleteMotionGestureInputEventHandler* this, AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+
 void CompleteMotionGestureInputEventHandler_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     CompleteMotionGestureInputEventHandler_SINGLETON = CompleteMotionGestureInputEventHandler_new();
+}
+
+void CompleteMotionGestureInputEventHandler_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("CompleteMotionGestureInputEventHandler", "BasicEventHandler");
+    java_register_method("CompleteMotionGestureInputEventHandler", "addListener", (void*) CompleteMotionGestureInputEventHandler_addListener);
+    java_register_method("CompleteMotionGestureInputEventHandler", "removeAllListeners", (void*) CompleteMotionGestureInputEventHandler_removeAllListeners);
+    java_register_method("CompleteMotionGestureInputEventHandler", "removeListener", (void*) CompleteMotionGestureInputEventHandler_removeListener);
+    java_register_method("CompleteMotionGestureInputEventHandler", "fireEvent", (void*) CompleteMotionGestureInputEventHandler_fireEvent);
+    java_register_method("CompleteMotionGestureInputEventHandler", "process", (void*) CompleteMotionGestureInputEventHandler_process);
 }
 
 static void CompleteMotionGestureInputEventHandler_initFields(CompleteMotionGestureInputEventHandler* this) {
@@ -59,17 +51,18 @@ static void CompleteMotionGestureInputEventHandler_initFields(CompleteMotionGest
 
 
 CompleteMotionGestureInputEventHandler* CompleteMotionGestureInputEventHandler_getInstance(void) {
-        return CompleteMotionGestureInputEventHandler_SINGLETON;
+        return (CompleteMotionGestureInputEventHandler_staticInit(), CompleteMotionGestureInputEventHandler_SINGLETON);
 }
 
 
 void CompleteMotionGestureInputEventHandler_init(CompleteMotionGestureInputEventHandler* this) {
+    CompleteMotionGestureInputEventHandler_register();
     BasicEventHandler_init(&this->base);
     CompleteMotionGestureInputEventHandler_initFields(this);
 }
 
 CompleteMotionGestureInputEventHandler* CompleteMotionGestureInputEventHandler_new(void) {
-    CompleteMotionGestureInputEventHandler* this = calloc(1, sizeof(CompleteMotionGestureInputEventHandler));
+    CompleteMotionGestureInputEventHandler* this = java_object_alloc(sizeof(CompleteMotionGestureInputEventHandler), "CompleteMotionGestureInputEventHandler");
     CompleteMotionGestureInputEventHandler_init(this);
     return this;
 }
@@ -101,7 +94,7 @@ void CompleteMotionGestureInputEventHandler_fireEvent(CompleteMotionGestureInput
                 CompleteMotionGestureInputEventListener* completeMotionGestureInputEventListener = ((CompleteMotionGestureInputEventListener*) this->list->objectArray[index]);
                 CompleteMotionGestureInputEventListener_onCompleteMotionGestureInputEvent(completeMotionGestureInputEventListener, ((CompleteMotionGestureInputEvent*) eventObject));
             } JAVA_CATCH(Exception, e) {
-                JAVA_CALL(this->logUtil, put, this->commonStrings->EXCEPTION, this, EventStrings_getInstance()->FIRE_EVENT, e);
+                LogUtil_put(this->base.logUtil, this->base.commonStrings->EXCEPTION, this, EventStrings_getInstance()->FIRE_EVENT, e);
             } JAVA_END_TRY;
         }
         BasicEventHandler_fireEvent((&this->base), eventObject);

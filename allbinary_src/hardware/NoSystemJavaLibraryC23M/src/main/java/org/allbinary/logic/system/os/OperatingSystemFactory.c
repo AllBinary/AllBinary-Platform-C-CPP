@@ -5,6 +5,12 @@
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/logic/system/os/NoOperatingSystem.h"
 #include "org/allbinary/logic/system/os/GenericOperatingSystem.h"
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
 
 
 static OperatingSystemFactory* OperatingSystemFactory_instance;

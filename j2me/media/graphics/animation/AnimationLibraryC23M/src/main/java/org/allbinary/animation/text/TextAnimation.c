@@ -1,73 +1,67 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation.text
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Font.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/animation/text/TextAnimation.h"
+#include "javax/microedition/lcdui/Font.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/animation/AnimationBehavior.h"
-#include "org/allbinary/animation/IndexedAnimation.h"
 #include "org/allbinary/graphics/Anchor.h"
 #include "org/allbinary/graphics/font/MyFontProcessor.h"
-#include "org/allbinary/graphics/font/UpdateMyFontInterface.h"
 #include "org/allbinary/graphics/font/UpdateMyFontProcessor.h"
 #include "org/allbinary/graphics/threed/SWTJOGLProcessor.h"
-#include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/logic/string/StringUtil.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
-
-typedef struct TextAnimation TextAnimation;
-struct TextAnimation {
-    IndexedAnimation base;
-    UpdateMyFontInterface UpdateMyFontInterface_interface;
-    MyFontProcessor* updateMyFontProcessor;
-    MyFontProcessor* myFontProcessor;
-    const char** textArrayP;
-    int32_t anchor;
-    int32_t fontHeight;
-    int32_t offsetY;
-    TextChangeListener* textChangeListener;
-};
+#include "org/allbinary/animation/text/TextChangeListener.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/graphics/threed/SWTJOGLProcessor.h")
+#include "org/allbinary/graphics/threed/SWTJOGLProcessor.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
 
-TextAnimation* TextAnimation_new(const char* text, AnimationBehavior* animationBehavior);
 
-void TextAnimation_init(TextAnimation* this, const char* text, AnimationBehavior* animationBehavior);
-void TextAnimation_updateMeasurement(TextAnimation* this, Graphics* graphics);
-void TextAnimation_nextFrame(TextAnimation* this);
-void TextAnimation_paintXY(TextAnimation* this, Graphics* graphics, int32_t x, int32_t y);
-void TextAnimation_paintXYNoUpdate(TextAnimation* this, Graphics* graphics, int32_t x, int32_t y);
-void TextAnimation_setTextWithOnMeasure(TextAnimation* this, const char* text, TextChangeListener* textChangeListener);
-void TextAnimation_setText(TextAnimation* this, const char* text);
-const char** TextAnimation_getTextArray(TextAnimation* this);
-int32_t TextAnimation_getFontHeight(TextAnimation* this);
+
+
+
+
+
+
+
+
+
+void TextAnimation_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void TextAnimation_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("TextAnimation", "IndexedAnimation");
+    java_register_method("TextAnimation", "updateMeasurement", (void*) TextAnimation_updateMeasurement);
+    java_register_method("TextAnimation", "nextFrame", (void*) TextAnimation_nextFrame);
+    java_register_method("TextAnimation", "paintXY", (void*) TextAnimation_paintXY);
+    java_register_method("TextAnimation", "paintXYNoUpdate", (void*) TextAnimation_paintXYNoUpdate);
+    java_register_method("TextAnimation", "setTextWithOnMeasure", (void*) TextAnimation_setTextWithOnMeasure);
+    java_register_method("TextAnimation", "setText", (void*) TextAnimation_setText);
+    java_register_method("TextAnimation", "getTextArray", (void*) TextAnimation_getTextArray);
+    java_register_method("TextAnimation", "getFontHeight", (void*) TextAnimation_getFontHeight);
+}
 
 static void TextAnimation_initFields(TextAnimation* this) {
     this->updateMyFontProcessor = UpdateMyFontProcessor_new(this);
     this->myFontProcessor = this->updateMyFontProcessor;
     this->textArrayP = StringUtil_getInstance()->ONE_EMPTY_STRING_ARRAY;
-    this->anchor = Anchor_TOP_LEFT;
+    this->anchor = (Anchor_staticInit(), Anchor_TOP_LEFT);
     this->fontHeight = 0;
     this->offsetY = 0;
     this->textChangeListener = TextChangeListener_getInstance();
@@ -75,13 +69,14 @@ static void TextAnimation_initFields(TextAnimation* this) {
 
 
 void TextAnimation_init(TextAnimation* this, const char* text, AnimationBehavior* animationBehavior) {
+    TextAnimation_register();
         IndexedAnimation_init(&this->base, animationBehavior);
         TextAnimation_initFields(this);
         TextAnimation_setText(this, text);
 }
 
 TextAnimation* TextAnimation_new(const char* text, AnimationBehavior* animationBehavior) {
-    TextAnimation* this = calloc(1, sizeof(TextAnimation));
+    TextAnimation* this = java_object_alloc(sizeof(TextAnimation), "TextAnimation");
     TextAnimation_init(this, text, animationBehavior);
     return this;
 }
@@ -110,7 +105,7 @@ void TextAnimation_paintXY(TextAnimation* this, Graphics* graphics, int32_t x, i
 
 
 void TextAnimation_paintXYNoUpdate(TextAnimation* this, Graphics* graphics, int32_t x, int32_t y) {
-        JAVA_CALL(this->basicSetColorUtil, setBasicColorP3, graphics, TextAnimation_getBasicColorP(this), TextAnimation_getColor(this));
+        BasicColorSetUtil_setBasicColorP3(this->base.base.basicSetColorUtil, graphics, Animation_getBasicColorP(this), Animation_getColor(this));
         int32_t size = java_array_length(this->textArrayP);
         for (int32_t index = 0; index < size; index++) {
             Graphics_drawString(graphics, this->textArrayP[index], x, y + this->offsetY + (index * this->fontHeight), this->anchor);

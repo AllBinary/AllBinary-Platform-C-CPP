@@ -47,6 +47,14 @@ void ColorChangeEvent_init(ColorChangeEvent* this, void* anyType);
 void ColorChangeEvent_setBasicColorP(ColorChangeEvent* this, BasicColor* basicColor);
 
 BasicColor* ColorChangeEvent_getBasicColorP(ColorChangeEvent* this);
+#define ColorChangeEvent_new1 ColorChangeEvent_new
+#define ColorChangeEvent_init1 ColorChangeEvent_init
+#ifndef ColorChangeEvent_getSource
+#define ColorChangeEvent_getSource AllBinaryEventObject_getSource
+#endif
+#ifndef ColorChangeEvent_setSource
+#define ColorChangeEvent_setSource AllBinaryEventObject_setSource
+#endif
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void ColorChangeEvent_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

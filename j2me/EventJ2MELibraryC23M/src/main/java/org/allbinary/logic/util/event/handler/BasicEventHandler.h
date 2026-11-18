@@ -87,10 +87,15 @@ void BasicEventHandler_process(BasicEventHandler* this, AllBinaryEventObject* ev
 BasicArrayList* BasicEventHandler_getEventListenerInterfaceListP(BasicEventHandler* this);
 
 const char* BasicEventHandler_toString(BasicEventHandler* this);
+#define BasicEventHandler_new0 BasicEventHandler_new
+#define BasicEventHandler_init0 BasicEventHandler_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void BasicEventHandler_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)
 void BasicEventHandler_register(void);
 
+#if __has_include("org/allbinary/util/BasicArrayList.h")
+#include "org/allbinary/util/BasicArrayList.h"
+#endif
 
 #endif // ORG_ALLBINARY_LOGIC_UTIL_EVENT_HANDLER_BASICEVENTHANDLER_H

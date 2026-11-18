@@ -1,60 +1,47 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.color
+#include "org/allbinary/graphics/color/BasicColorSetUtil.h"
+#include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/graphics/color/BasicColor.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
-
-typedef struct BasicColorSetUtil BasicColorSetUtil;
-struct BasicColorSetUtil {
-    char unused;
-};
 
 static BasicColorSetUtil* BasicColorSetUtil_instance;
 
-BasicColorSetUtil* BasicColorSetUtil_new(void);
-BasicColorSetUtil* BasicColorSetUtil_getInstance(void);
 
-void BasicColorSetUtil_init(BasicColorSetUtil* this);
-void BasicColorSetUtil_setBasicColorP(BasicColorSetUtil* this, Graphics* graphics, BasicColor* basicColor);
-void BasicColorSetUtil_setBasicColorP3(BasicColorSetUtil* this, Graphics* graphics, BasicColor* basicColor, int32_t value);
 
-// Static fields with runtime initializers: call this once at startup
+
+
 void BasicColorSetUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     BasicColorSetUtil_instance = BasicColorSetUtil_new();
+}
+
+void BasicColorSetUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("BasicColorSetUtil", nullptr);
+    java_register_method("BasicColorSetUtil", "setBasicColorP", (void*) BasicColorSetUtil_setBasicColorP);
+    java_register_method("BasicColorSetUtil", "setBasicColorP3", (void*) BasicColorSetUtil_setBasicColorP3);
 }
 
 
 BasicColorSetUtil* BasicColorSetUtil_getInstance(void) {
-        return BasicColorSetUtil_instance;
+        return (BasicColorSetUtil_staticInit(), BasicColorSetUtil_instance);
 }
 
 
 void BasicColorSetUtil_init(BasicColorSetUtil* this) {
+    BasicColorSetUtil_register();
 }
 
 BasicColorSetUtil* BasicColorSetUtil_new(void) {
-    BasicColorSetUtil* this = calloc(1, sizeof(BasicColorSetUtil));
+    BasicColorSetUtil* this = java_object_alloc(sizeof(BasicColorSetUtil), "BasicColorSetUtil");
     BasicColorSetUtil_init(this);
     return this;
 }

@@ -1,45 +1,19 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.ag.ai
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Canvas.h"
+#include "org/allbinary/game/ag/ai/DiveAndDirectionalTrackingAI.h"
+#include "javax/microedition/lcdui/Canvas.h"
 #include "org/allbinary/ai/ArtificialIntelligenceInterface.h"
 #include "org/allbinary/direction/Direction.h"
 #include "org/allbinary/direction/DirectionFactory.h"
 #include "org/allbinary/direction/DirectionalCompositeInterface.h"
 #include "org/allbinary/direction/DirectionalInterface.h"
-#include "org/allbinary/game/ai/BasicAI.h"
 #include "org/allbinary/game/combat/destroy/event/DestroyedEvent.h"
 #include "org/allbinary/game/combat/destroy/event/DestroyedEventHandler.h"
-#include "org/allbinary/game/combat/destroy/event/DestroyedEventListenerInterface.h"
 #include "org/allbinary/game/identification/Group.h"
 #include "org/allbinary/game/input/GameInput.h"
 #include "org/allbinary/game/physics/velocity/BasicVelocityProperties.h"
 #include "org/allbinary/game/physics/velocity/VelocityInterfaceCompositeInterface.h"
 #include "org/allbinary/game/tracking/TrackingEvent.h"
 #include "org/allbinary/game/tracking/TrackingEventHandler.h"
-#include "org/allbinary/game/tracking/TrackingEventListenerInterface.h"
 #include "org/allbinary/layer/AllBinaryLayer.h"
 #include "org/allbinary/layer/AllBinaryLayerManager.h"
 #include "org/allbinary/logic/communication/log/ForcedLogUtil.h"
@@ -54,55 +28,135 @@
 #include "org/allbinary/time/TimeDelayHelper.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
+#if __has_include("org/allbinary/direction/DirectionFactory.h")
+#include "org/allbinary/direction/DirectionFactory.h"
+#endif
+#if __has_include("org/allbinary/game/combat/destroy/event/DestroyedEventHandler.h")
+#include "org/allbinary/game/combat/destroy/event/DestroyedEventHandler.h"
+#endif
+#if __has_include("org/allbinary/direction/DirectionFactory.h")
+#include "org/allbinary/direction/DirectionFactory.h"
+#endif
+#if __has_include("org/allbinary/game/tracking/TrackingEventHandler.h")
+#include "org/allbinary/game/tracking/TrackingEventHandler.h"
+#endif
+#if __has_include("org/allbinary/game/tracking/TrackingEventHandler.h")
+#include "org/allbinary/game/tracking/TrackingEventHandler.h"
+#endif
+#if __has_include("org/allbinary/layer/AllBinaryLayer.h")
+#include "org/allbinary/layer/AllBinaryLayer.h"
+#endif
+#if __has_include("org/allbinary/layer/AllBinaryLayer.h")
+#include "org/allbinary/layer/AllBinaryLayer.h"
+#endif
+#if __has_include("org/allbinary/layer/AllBinaryLayer.h")
+#include "org/allbinary/layer/AllBinaryLayer.h"
+#endif
+#if __has_include("org/allbinary/layer/AllBinaryLayer.h")
+#include "org/allbinary/layer/AllBinaryLayer.h"
+#endif
+#if __has_include("org/allbinary/logic/util/event/EventStrings.h")
+#include "org/allbinary/logic/util/event/EventStrings.h"
+#endif
+#if __has_include("org/allbinary/game/tracking/TrackingEventHandler.h")
+#include "org/allbinary/game/tracking/TrackingEventHandler.h"
+#endif
+#if __has_include("org/allbinary/game/combat/destroy/event/DestroyedEventHandler.h")
+#include "org/allbinary/game/combat/destroy/event/DestroyedEventHandler.h"
+#endif
+#if __has_include("org/allbinary/direction/Direction.h")
+#include "org/allbinary/direction/Direction.h"
+#endif
+#if __has_include("org/allbinary/direction/DirectionFactory.h")
+#include "org/allbinary/direction/DirectionFactory.h"
+#endif
+#if __has_include("org/allbinary/direction/DirectionFactory.h")
+#include "org/allbinary/direction/DirectionFactory.h"
+#endif
+#if __has_include("org/allbinary/direction/DirectionFactory.h")
+#include "org/allbinary/direction/DirectionFactory.h"
+#endif
+#if __has_include("org/allbinary/direction/DirectionFactory.h")
+#include "org/allbinary/direction/DirectionFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
-typedef struct DiveAndDirectionalTrackingAI DiveAndDirectionalTrackingAI;
-struct DiveAndDirectionalTrackingAI {
-    BasicAI base;
-    TrackingEventListenerInterface TrackingEventListenerInterface_interface;
-    DestroyedEventListenerInterface DestroyedEventListenerInterface_interface;
-    MathUtil* mathUtil;
-    DirectionFactory* directionFactory;
-    GameTickTimeDelayHelper* gameTickTimeDelayHelper;
-    TimeDelayHelper* timeDelayHelper;
-    BasicArrayList* list;
-    DirectionalInterface* directionalInterface;
-    BasicVelocityProperties* velocityInterface;
-    int32_t* directionToKeyMap;
-    bool initialDropped;
-    bool diveP;
-    Direction* directionOfTarget;
-    int32_t MIN_DISTANCE;
-    AllBinaryLayer* lastTrackingLayerInterface;
-    ArtificialIntelligenceInterface* artificialIntelligenceInterface;
-    Visitor* aiVistor;
-    Direction* lastDirection;
-};
 
 
-DiveAndDirectionalTrackingAI* DiveAndDirectionalTrackingAI_new(AllBinaryLayer* ownerLayerInterface, ArtificialIntelligenceInterface* artificialIntelligenceInterface, GameInput* gameInput, Visitor* visitor);
 
-void DiveAndDirectionalTrackingAI_init(DiveAndDirectionalTrackingAI* this, AllBinaryLayer* ownerLayerInterface, ArtificialIntelligenceInterface* artificialIntelligenceInterface, GameInput* gameInput, Visitor* visitor);
-void DiveAndDirectionalTrackingAI_processAI(DiveAndDirectionalTrackingAI* this, AllBinaryLayerManager* allBinaryLayerManager);
-static void DiveAndDirectionalTrackingAI_init(DiveAndDirectionalTrackingAI* this);
+
+static void DiveAndDirectionalTrackingAI_initMethod(DiveAndDirectionalTrackingAI* this);
+
 static void DiveAndDirectionalTrackingAI_target(DiveAndDirectionalTrackingAI* this, AllBinaryLayerManager* allBinaryLayerManager);
+
 static void DiveAndDirectionalTrackingAI_verticalTargeting(DiveAndDirectionalTrackingAI* this, int32_t x);
+
 static void DiveAndDirectionalTrackingAI_horizontalTargeting(DiveAndDirectionalTrackingAI* this, int32_t y);
+
 static void DiveAndDirectionalTrackingAI_setDive(DiveAndDirectionalTrackingAI* this);
+
 static void DiveAndDirectionalTrackingAI_moveRight(DiveAndDirectionalTrackingAI* this);
+
 static void DiveAndDirectionalTrackingAI_moveLeft(DiveAndDirectionalTrackingAI* this);
+
 static void DiveAndDirectionalTrackingAI_moveDown(DiveAndDirectionalTrackingAI* this);
+
 static void DiveAndDirectionalTrackingAI_moveUp(DiveAndDirectionalTrackingAI* this);
+
 static void DiveAndDirectionalTrackingAI_dive(DiveAndDirectionalTrackingAI* this);
+
 static void DiveAndDirectionalTrackingAI_attack(DiveAndDirectionalTrackingAI* this);
+
 static void DiveAndDirectionalTrackingAI_drop(DiveAndDirectionalTrackingAI* this);
+
 static bool DiveAndDirectionalTrackingAI_isBeyondTarget(DiveAndDirectionalTrackingAI* this);
-void DiveAndDirectionalTrackingAI_onEvent(DiveAndDirectionalTrackingAI* this, AllBinaryEventObject* eventObject);
-void DiveAndDirectionalTrackingAI_onMovement(DiveAndDirectionalTrackingAI* this, TrackingEvent* trackingEvent);
-void DiveAndDirectionalTrackingAI_onDestroyed(DiveAndDirectionalTrackingAI* this, DestroyedEvent* destroyedEvent);
-void DiveAndDirectionalTrackingAI_setLastDirection(DiveAndDirectionalTrackingAI* this, Direction* lastDirection);
-void DiveAndDirectionalTrackingAI_setLastKey(DiveAndDirectionalTrackingAI* this, int32_t lastKey);
-Direction* DiveAndDirectionalTrackingAI_getLastDirection(DiveAndDirectionalTrackingAI* this);
-const char* DiveAndDirectionalTrackingAI_toString(DiveAndDirectionalTrackingAI* this);
+
+
+
+
+
+
+
+
+void DiveAndDirectionalTrackingAI_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void DiveAndDirectionalTrackingAI_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("DiveAndDirectionalTrackingAI", "BasicAI");
+    java_register_method("DiveAndDirectionalTrackingAI", "processAI", (void*) DiveAndDirectionalTrackingAI_processAI);
+    java_register_method("DiveAndDirectionalTrackingAI", "init", (void*) DiveAndDirectionalTrackingAI_initMethod);
+    java_register_method("DiveAndDirectionalTrackingAI", "target", (void*) DiveAndDirectionalTrackingAI_target);
+    java_register_method("DiveAndDirectionalTrackingAI", "verticalTargeting", (void*) DiveAndDirectionalTrackingAI_verticalTargeting);
+    java_register_method("DiveAndDirectionalTrackingAI", "horizontalTargeting", (void*) DiveAndDirectionalTrackingAI_horizontalTargeting);
+    java_register_method("DiveAndDirectionalTrackingAI", "setDive", (void*) DiveAndDirectionalTrackingAI_setDive);
+    java_register_method("DiveAndDirectionalTrackingAI", "moveRight", (void*) DiveAndDirectionalTrackingAI_moveRight);
+    java_register_method("DiveAndDirectionalTrackingAI", "moveLeft", (void*) DiveAndDirectionalTrackingAI_moveLeft);
+    java_register_method("DiveAndDirectionalTrackingAI", "moveDown", (void*) DiveAndDirectionalTrackingAI_moveDown);
+    java_register_method("DiveAndDirectionalTrackingAI", "moveUp", (void*) DiveAndDirectionalTrackingAI_moveUp);
+    java_register_method("DiveAndDirectionalTrackingAI", "dive", (void*) DiveAndDirectionalTrackingAI_dive);
+    java_register_method("DiveAndDirectionalTrackingAI", "attack", (void*) DiveAndDirectionalTrackingAI_attack);
+    java_register_method("DiveAndDirectionalTrackingAI", "drop", (void*) DiveAndDirectionalTrackingAI_drop);
+    java_register_method("DiveAndDirectionalTrackingAI", "isBeyondTarget", (void*) DiveAndDirectionalTrackingAI_isBeyondTarget);
+    java_register_method("DiveAndDirectionalTrackingAI", "onEvent", (void*) DiveAndDirectionalTrackingAI_onEvent);
+    java_register_method("DiveAndDirectionalTrackingAI", "onMovement", (void*) DiveAndDirectionalTrackingAI_onMovement);
+    java_register_method("DiveAndDirectionalTrackingAI", "onDestroyed", (void*) DiveAndDirectionalTrackingAI_onDestroyed);
+    java_register_method("DiveAndDirectionalTrackingAI", "setLastDirection", (void*) DiveAndDirectionalTrackingAI_setLastDirection);
+    java_register_method("DiveAndDirectionalTrackingAI", "setLastKey", (void*) DiveAndDirectionalTrackingAI_setLastKey);
+    java_register_method("DiveAndDirectionalTrackingAI", "getLastDirection", (void*) DiveAndDirectionalTrackingAI_getLastDirection);
+    java_register_method("DiveAndDirectionalTrackingAI", "toString", (void*) DiveAndDirectionalTrackingAI_toString);
+}
 
 static void DiveAndDirectionalTrackingAI_initFields(DiveAndDirectionalTrackingAI* this) {
     this->mathUtil = MathUtil_getInstance();
@@ -112,12 +166,12 @@ static void DiveAndDirectionalTrackingAI_initFields(DiveAndDirectionalTrackingAI
     this->list = BasicArrayListD_new();
     
     
-    this->directionToKeyMap = ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ Canvas_LEFT, Canvas_DOWN, Canvas_UP, Canvas_RIGHT }) / sizeof(int32_t), (int32_t[]){ Canvas_LEFT, Canvas_DOWN, Canvas_UP, Canvas_RIGHT }));
+    this->directionToKeyMap = ((int32_t*) java_array_from(sizeof(int32_t), sizeof((int32_t[]){ (Canvas_staticInit(), Canvas_LEFT), (Canvas_staticInit(), Canvas_DOWN), (Canvas_staticInit(), Canvas_UP), (Canvas_staticInit(), Canvas_RIGHT) }) / sizeof(int32_t), (int32_t[]){ (Canvas_staticInit(), Canvas_LEFT), (Canvas_staticInit(), Canvas_DOWN), (Canvas_staticInit(), Canvas_UP), (Canvas_staticInit(), Canvas_RIGHT) }));
     this->initialDropped = false;
     this->diveP = false;
     this->directionOfTarget = Direction_getInstance(0);
     this->MIN_DISTANCE = 40;
-    this->lastTrackingLayerInterface = AllBinaryLayer_NULL_ALLBINARY_LAYER;
+    this->lastTrackingLayerInterface = (AllBinaryLayer_staticInit(), AllBinaryLayer_NULL_ALLBINARY_LAYER);
     
     
     this->lastDirection = DirectionFactory_getInstance()->NO_DIRECTION;
@@ -125,20 +179,21 @@ static void DiveAndDirectionalTrackingAI_initFields(DiveAndDirectionalTrackingAI
 
 
 void DiveAndDirectionalTrackingAI_init(DiveAndDirectionalTrackingAI* this, AllBinaryLayer* ownerLayerInterface, ArtificialIntelligenceInterface* artificialIntelligenceInterface, GameInput* gameInput, Visitor* visitor) {
+    DiveAndDirectionalTrackingAI_register();
         BasicAI_init(&this->base, ownerLayerInterface, gameInput);
         DiveAndDirectionalTrackingAI_initFields(this);
         this->aiVistor = visitor;
         this->artificialIntelligenceInterface = artificialIntelligenceInterface;
-        DirectionalCompositeInterface* directionalCompositeInterface = ((DirectionalCompositeInterface*) DiveAndDirectionalTrackingAI_getOwnerLayerInterface(this));
+        DirectionalCompositeInterface* directionalCompositeInterface = ((DirectionalCompositeInterface*) BasicAI_getOwnerLayerInterface(this));
         this->directionalInterface = DirectionalCompositeInterface_getDirectionalInterface(directionalCompositeInterface);
-        VelocityInterfaceCompositeInterface* velocityInterfaceCompositeInterface = ((VelocityInterfaceCompositeInterface*) DiveAndDirectionalTrackingAI_getOwnerLayerInterface(this));
+        VelocityInterfaceCompositeInterface* velocityInterfaceCompositeInterface = ((VelocityInterfaceCompositeInterface*) BasicAI_getOwnerLayerInterface(this));
         this->velocityInterface = VelocityInterfaceCompositeInterface_getVelocityProperties(velocityInterfaceCompositeInterface);
-        DestroyedEventHandler_addListenerInterface(DestroyedEventHandler_getInstance(), this);
-        DiveAndDirectionalTrackingAI_init(this);
+        BasicEventHandler_addListenerInterface(DestroyedEventHandler_getInstance(), this);
+        DiveAndDirectionalTrackingAI_initMethod(this);
 }
 
 DiveAndDirectionalTrackingAI* DiveAndDirectionalTrackingAI_new(AllBinaryLayer* ownerLayerInterface, ArtificialIntelligenceInterface* artificialIntelligenceInterface, GameInput* gameInput, Visitor* visitor) {
-    DiveAndDirectionalTrackingAI* this = calloc(1, sizeof(DiveAndDirectionalTrackingAI));
+    DiveAndDirectionalTrackingAI* this = java_object_alloc(sizeof(DiveAndDirectionalTrackingAI), "DiveAndDirectionalTrackingAI");
     DiveAndDirectionalTrackingAI_init(this, ownerLayerInterface, artificialIntelligenceInterface, gameInput, visitor);
     return this;
 }
@@ -147,7 +202,7 @@ DiveAndDirectionalTrackingAI* DiveAndDirectionalTrackingAI_new(AllBinaryLayer* o
 // throws Exception
 void DiveAndDirectionalTrackingAI_processAI(DiveAndDirectionalTrackingAI* this, AllBinaryLayerManager* allBinaryLayerManager) {
         if (DiveAndDirectionalTrackingAI_isBeyondTarget(this)) {
-            DiveAndDirectionalTrackingAI_init(this);
+            DiveAndDirectionalTrackingAI_initMethod(this);
             BasicVelocityProperties_zero(this->velocityInterface);
         }
         if (!this->diveP) {
@@ -160,10 +215,10 @@ void DiveAndDirectionalTrackingAI_processAI(DiveAndDirectionalTrackingAI* this, 
 }
 
 
-static void DiveAndDirectionalTrackingAI_init(DiveAndDirectionalTrackingAI* this) {
+static void DiveAndDirectionalTrackingAI_initMethod(DiveAndDirectionalTrackingAI* this) {
         this->diveP = false;
         this->directionOfTarget = DirectionFactory_getInstance()->NOT_BORDERED_WITH;
-        TrackingEventHandler_addListenerInterface(TrackingEventHandler_getInstance(), this);
+        BasicEventHandler_addListenerInterface(TrackingEventHandler_getInstance(), this);
 }
 
 
@@ -175,7 +230,7 @@ static void DiveAndDirectionalTrackingAI_target(DiveAndDirectionalTrackingAI* th
         TrackingEvent* lastTrackingEvent = ((TrackingEvent*) BasicArrayList_removeAt(this->list, 0));
         this->lastTrackingLayerInterface = TrackingEvent_getLayerInterface(lastTrackingEvent);
         AllBinaryLayer* layerInterface = this->lastTrackingLayerInterface;
-        AllBinaryLayer* ownerLayerInterface = DiveAndDirectionalTrackingAI_getOwnerLayerInterface(this);
+        AllBinaryLayer* ownerLayerInterface = BasicAI_getOwnerLayerInterface(this);
         Group** groupArray = AllBinaryLayer_getGroupInterface(layerInterface);
         Group** ownerGroupArray = AllBinaryLayer_getGroupInterface(ownerLayerInterface);
         if (groupArray == ownerGroupArray) {
@@ -216,7 +271,7 @@ static void DiveAndDirectionalTrackingAI_target(DiveAndDirectionalTrackingAI* th
 
 // throws Exception
 static void DiveAndDirectionalTrackingAI_verticalTargeting(DiveAndDirectionalTrackingAI* this, int32_t x) {
-        AllBinaryLayer* ownerLayerInterface = DiveAndDirectionalTrackingAI_getOwnerLayerInterface(this);
+        AllBinaryLayer* ownerLayerInterface = BasicAI_getOwnerLayerInterface(this);
         if (AllBinaryLayer_getXP(ownerLayerInterface) < x) {
             DiveAndDirectionalTrackingAI_moveRight(this);
         }
@@ -231,7 +286,7 @@ static void DiveAndDirectionalTrackingAI_verticalTargeting(DiveAndDirectionalTra
 
 // throws Exception
 static void DiveAndDirectionalTrackingAI_horizontalTargeting(DiveAndDirectionalTrackingAI* this, int32_t y) {
-        AllBinaryLayer* ownerLayerInterface = DiveAndDirectionalTrackingAI_getOwnerLayerInterface(this);
+        AllBinaryLayer* ownerLayerInterface = BasicAI_getOwnerLayerInterface(this);
         if (AllBinaryLayer_getYP(ownerLayerInterface) < y) {
             DiveAndDirectionalTrackingAI_moveDown(this);
         }
@@ -247,7 +302,7 @@ static void DiveAndDirectionalTrackingAI_horizontalTargeting(DiveAndDirectionalT
 static void DiveAndDirectionalTrackingAI_setDive(DiveAndDirectionalTrackingAI* this) {
         this->diveP = true;
         BasicVelocityProperties_zero(this->velocityInterface);
-        TrackingEventHandler_removeListener(TrackingEventHandler_getInstance(), this);
+        BasicEventHandler_removeListener(TrackingEventHandler_getInstance(), this);
 }
 
 
@@ -292,7 +347,7 @@ static void DiveAndDirectionalTrackingAI_dive(DiveAndDirectionalTrackingAI* this
 
 // throws Exception
 static void DiveAndDirectionalTrackingAI_attack(DiveAndDirectionalTrackingAI* this) {
-        BasicAI_processKeyAI((&this->base), Canvas_KEY_NUM1);
+        BasicAI_processKeyAI((&this->base), (Canvas_staticInit(), Canvas_KEY_NUM1));
 }
 
 
@@ -307,25 +362,25 @@ static void DiveAndDirectionalTrackingAI_drop(DiveAndDirectionalTrackingAI* this
 
 static bool DiveAndDirectionalTrackingAI_isBeyondTarget(DiveAndDirectionalTrackingAI* this) {
         if (this->directionOfTarget == this->directionFactory->DOWN) {
-            if (JAVA_CALL(DiveAndDirectionalTrackingAI_getOwnerLayerInterface(this), getYP) > AllBinaryLayer_getYP(this->lastTrackingLayerInterface) + this->MIN_DISTANCE) {
+            if (AllBinaryLayer_getYP(BasicAI_getOwnerLayerInterface(this)) > AllBinaryLayer_getYP(this->lastTrackingLayerInterface) + this->MIN_DISTANCE) {
                 return true;
             } else {
                 return false;
             }
         } else if (this->directionOfTarget == this->directionFactory->UP) {
-            if (JAVA_CALL(DiveAndDirectionalTrackingAI_getOwnerLayerInterface(this), getYP) < AllBinaryLayer_getYP(this->lastTrackingLayerInterface) + this->MIN_DISTANCE) {
+            if (AllBinaryLayer_getYP(BasicAI_getOwnerLayerInterface(this)) < AllBinaryLayer_getYP(this->lastTrackingLayerInterface) + this->MIN_DISTANCE) {
                 return true;
             } else {
                 return false;
             }
         } else if (this->directionOfTarget == this->directionFactory->RIGHT) {
-            if (JAVA_CALL(DiveAndDirectionalTrackingAI_getOwnerLayerInterface(this), getXP) > AllBinaryLayer_getXP(this->lastTrackingLayerInterface) + this->MIN_DISTANCE) {
+            if (AllBinaryLayer_getXP(BasicAI_getOwnerLayerInterface(this)) > AllBinaryLayer_getXP(this->lastTrackingLayerInterface) + this->MIN_DISTANCE) {
                 return true;
             } else {
                 return false;
             }
         } else if (this->directionOfTarget == this->directionFactory->LEFT) {
-            if (JAVA_CALL(DiveAndDirectionalTrackingAI_getOwnerLayerInterface(this), getXP) < AllBinaryLayer_getXP(this->lastTrackingLayerInterface) + this->MIN_DISTANCE) {
+            if (AllBinaryLayer_getXP(BasicAI_getOwnerLayerInterface(this)) < AllBinaryLayer_getXP(this->lastTrackingLayerInterface) + this->MIN_DISTANCE) {
                 return true;
             } else {
                 return false;
@@ -347,8 +402,8 @@ void DiveAndDirectionalTrackingAI_onMovement(DiveAndDirectionalTrackingAI* this,
 
 
 void DiveAndDirectionalTrackingAI_onDestroyed(DiveAndDirectionalTrackingAI* this, DestroyedEvent* destroyedEvent) {
-        if (DiveAndDirectionalTrackingAI_getOwnerLayerInterface(this) == DestroyedEvent_getLayerInterface(destroyedEvent)) {
-            TrackingEventHandler_removeListener(TrackingEventHandler_getInstance(), this);
+        if (BasicAI_getOwnerLayerInterface(this) == DestroyedEvent_getLayerInterface(destroyedEvent)) {
+            BasicEventHandler_removeListener(TrackingEventHandler_getInstance(), this);
             DestroyedEventHandler_removeListener(DestroyedEventHandler_getInstance(), this);
         }
 }
@@ -356,7 +411,7 @@ void DiveAndDirectionalTrackingAI_onDestroyed(DiveAndDirectionalTrackingAI* this
 
 void DiveAndDirectionalTrackingAI_setLastDirection(DiveAndDirectionalTrackingAI* this, Direction* lastDirection) {
         this->lastDirection = lastDirection;
-        int32_t value = JAVA_CALL(DiveAndDirectionalTrackingAI_getLastDirection(this), getValue);
+        int32_t value = Direction_getValue(DiveAndDirectionalTrackingAI_getLastDirection(this));
         if (value < 4) {
             BasicAI_setLastKey((&this->base), this->directionToKeyMap[value]);
         }
@@ -365,13 +420,13 @@ void DiveAndDirectionalTrackingAI_setLastDirection(DiveAndDirectionalTrackingAI*
 
 void DiveAndDirectionalTrackingAI_setLastKey(DiveAndDirectionalTrackingAI* this, int32_t lastKey) {
         BasicAI_setLastKey((&this->base), lastKey);
-        if (DiveAndDirectionalTrackingAI_getLastKey(this) == Canvas_LEFT) {
+        if (BasicAI_getLastKey(this) == (Canvas_staticInit(), Canvas_LEFT)) {
             this->lastDirection = DirectionFactory_getInstance()->LEFT;
-        } else if (DiveAndDirectionalTrackingAI_getLastKey(this) == Canvas_DOWN) {
+        } else if (BasicAI_getLastKey(this) == (Canvas_staticInit(), Canvas_DOWN)) {
             this->lastDirection = DirectionFactory_getInstance()->DOWN;
-        } else if (DiveAndDirectionalTrackingAI_getLastKey(this) == Canvas_UP) {
+        } else if (BasicAI_getLastKey(this) == (Canvas_staticInit(), Canvas_UP)) {
             this->lastDirection = DirectionFactory_getInstance()->UP;
-        } else if (DiveAndDirectionalTrackingAI_getLastKey(this) == Canvas_RIGHT) {
+        } else if (BasicAI_getLastKey(this) == (Canvas_staticInit(), Canvas_RIGHT)) {
             this->lastDirection = DirectionFactory_getInstance()->RIGHT;
         }
 }
@@ -387,6 +442,6 @@ const char* DiveAndDirectionalTrackingAI_toString(DiveAndDirectionalTrackingAI* 
         StringMaker_append(stringBuffer, BasicAI_toString((&this->base)));
         StringMaker_append(stringBuffer, " LastDirection: ");
         StringMaker_append(stringBuffer, StringUtil_toString(StringUtil_getInstance(), DiveAndDirectionalTrackingAI_getLastDirection(this)));
-        return StringMaker_toString(stringBuffer);
+        return java_string_of(stringBuffer);
 }
 

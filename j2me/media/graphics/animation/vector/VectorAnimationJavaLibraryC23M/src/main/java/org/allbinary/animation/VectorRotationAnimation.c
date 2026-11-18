@@ -1,65 +1,80 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/animation/VectorRotationAnimation.h"
 #include "org/allbinary/direction/Direction.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
 #include "org/allbinary/math/Angle.h"
 #include "org/allbinary/math/AngleFactory.h"
 #include "org/allbinary/math/AngleInfo.h"
 #include "org/allbinary/animation/VectorBaseRotationAnimation.h"
+#include "org/allbinary/animation/AnimationBehavior.h"
+#if __has_include("org/allbinary/math/AngleFactory.h")
+#include "org/allbinary/math/AngleFactory.h"
+#endif
+#if __has_include("org/allbinary/animation/AngleIncrementInfo.h")
+#include "org/allbinary/animation/AngleIncrementInfo.h"
+#endif
+#if __has_include("org/allbinary/direction/AngleIncrementInfo.h")
+#include "org/allbinary/direction/AngleIncrementInfo.h"
+#endif
+#if __has_include("org/allbinary/graphics/color/AngleIncrementInfo.h")
+#include "org/allbinary/graphics/color/AngleIncrementInfo.h"
+#endif
+#if __has_include("org/allbinary/math/AngleIncrementInfo.h")
+#include "org/allbinary/math/AngleIncrementInfo.h"
+#endif
+#if __has_include("org/allbinary/math/AngleIncrementInfo.h")
+#include "org/allbinary/math/AngleIncrementInfo.h"
+#endif
+#if __has_include("org/allbinary/math/AngleIncrementInfo.h")
+#include "org/allbinary/math/AngleIncrementInfo.h"
+#endif
 
-typedef struct VectorRotationAnimation VectorRotationAnimation;
-struct VectorRotationAnimation {
-    VectorBaseRotationAnimation base;
-};
 
 
-VectorRotationAnimation* VectorRotationAnimation_new(int32_t*** currentPoints, BasicColor* basicColor, AnimationBehavior* animationBehavior);
 
-void VectorRotationAnimation_init(VectorRotationAnimation* this, int32_t*** currentPoints, BasicColor* basicColor, AnimationBehavior* animationBehavior);
-void VectorRotationAnimation_setFrameByDirection(VectorRotationAnimation* this, Direction* direction);
-void VectorRotationAnimation_setFrameToAngle(VectorRotationAnimation* this, Angle* angle);
-void VectorRotationAnimation_setFrame(VectorRotationAnimation* this, int32_t index);
-void VectorRotationAnimation_adjustFrame(VectorRotationAnimation* this, int16_t newAngle);
-void VectorRotationAnimation_adjustFrameToAngle(VectorRotationAnimation* this, Angle* newAngle);
+
+
+
+
+
+void VectorRotationAnimation_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void VectorRotationAnimation_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("VectorRotationAnimation", "VectorBaseRotationAnimation");
+    java_register_method("VectorRotationAnimation", "setFrameByDirection", (void*) VectorRotationAnimation_setFrameByDirection);
+    java_register_method("VectorRotationAnimation", "setFrameToAngle", (void*) VectorRotationAnimation_setFrameToAngle);
+    java_register_method("VectorRotationAnimation", "setFrame", (void*) VectorRotationAnimation_setFrame);
+    java_register_method("VectorRotationAnimation", "adjustFrame", (void*) VectorRotationAnimation_adjustFrame);
+    java_register_method("VectorRotationAnimation", "adjustFrameToAngle", (void*) VectorRotationAnimation_adjustFrameToAngle);
+}
 
 
 void VectorRotationAnimation_init(VectorRotationAnimation* this, int32_t*** currentPoints, BasicColor* basicColor, AnimationBehavior* animationBehavior) {
-        VectorBaseRotationAnimation_init(&this->base, AngleInfo_getInstance(((int16_t) (AngleFactory_getInstance()->TOTAL_ANGLE / java_array_length(currentPoints)))), currentPoints, basicColor, animationBehavior);
-        JAVA_CALL(this->angleInfo, adjustAngle, VectorRotationAnimation_getFrame(this));
+    VectorRotationAnimation_register();
+        VectorBaseRotationAnimation_init(&this->base, AngleInfo_getInstance(((int16_t) (((int32_t) AngleFactory_getInstance()->TOTAL_ANGLE) / java_array_length(currentPoints)))), currentPoints, basicColor, animationBehavior);
+        AngleInfo_adjustAngle(this->base.base.angleInfo, VectorBaseRotationAnimation_getFrame(this));
 }
 
 VectorRotationAnimation* VectorRotationAnimation_new(int32_t*** currentPoints, BasicColor* basicColor, AnimationBehavior* animationBehavior) {
-    VectorRotationAnimation* this = calloc(1, sizeof(VectorRotationAnimation));
+    VectorRotationAnimation* this = java_object_alloc(sizeof(VectorRotationAnimation), "VectorRotationAnimation");
     VectorRotationAnimation_init(this, currentPoints, basicColor, animationBehavior);
     return this;
 }
 
 
 void VectorRotationAnimation_setFrameByDirection(VectorRotationAnimation* this, Direction* direction) {
-        Angle* angle = JAVA_CALL(this->directionUtil, getFrameAngle, direction);
+        Angle* angle = DirectionUtil_getFrameAngle(this->base.base.directionUtil, direction);
         VectorRotationAnimation_adjustFrameToAngle(this, angle);
 }
 
@@ -71,16 +86,16 @@ void VectorRotationAnimation_setFrameToAngle(VectorRotationAnimation* this, Angl
 
 void VectorRotationAnimation_setFrame(VectorRotationAnimation* this, int32_t index) {
         VectorBaseRotationAnimation_setFrame((&this->base), index);
-        JAVA_CALL(this->angleInfo, adjustAngle, VectorRotationAnimation_getFrame(this));
+        AngleInfo_adjustAngle(this->base.base.angleInfo, VectorBaseRotationAnimation_getFrame(this));
 }
 
 
 void VectorRotationAnimation_adjustFrame(VectorRotationAnimation* this, int16_t newAngle) {
-        VectorRotationAnimation_setFrame(this, JAVA_CALL(this->frameUtil, getFrameForAngle, newAngle, ((int32_t) JAVA_CALL(JAVA_CALL(this->angleInfo, getAngleIncrementInfo), getAngleIncrement))));
+        VectorRotationAnimation_setFrame(this, FrameUtil_getFrameForAngle(this->base.base.frameUtil, newAngle, ((int32_t) AngleIncrementInfo_getAngleIncrement(AngleInfo_getAngleIncrementInfo(this->base.base.angleInfo)))));
 }
 
 
 void VectorRotationAnimation_adjustFrameToAngle(VectorRotationAnimation* this, Angle* newAngle) {
-        VectorRotationAnimation_adjustFrame(this, SHORT_getValue(newAngle));
+        VectorRotationAnimation_adjustFrame(this, Angle_getValue(newAngle));
 }
 

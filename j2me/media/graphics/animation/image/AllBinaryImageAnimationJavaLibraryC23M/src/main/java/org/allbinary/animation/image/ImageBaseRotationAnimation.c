@@ -1,73 +1,103 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation.image
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
-// #include "javax/microedition/lcdui/Image.h"
+#include "org/allbinary/animation/image/ImageBaseRotationAnimation.h"
+#include "javax/microedition/lcdui/Graphics.h"
+#include "javax/microedition/lcdui/Image.h"
 #include "org/allbinary/DisposalUtil.h"
 #include "org/allbinary/animation/AnimationBehavior.h"
-#include "org/allbinary/animation/RotationAnimation.h"
 #include "org/allbinary/graphics/Anchor.h"
 #include "org/allbinary/logic/math/PrimitiveIntUtil.h"
 #include "org/allbinary/math/AngleInfo.h"
 #include "org/allbinary/util/CircularIndexUtil.h"
+#if __has_include("org/allbinary/animation/image/AngleIncrementInfo.h")
+#include "org/allbinary/animation/image/AngleIncrementInfo.h"
+#endif
+#if __has_include("javax/microedition/lcdui/AngleIncrementInfo.h")
+#include "javax/microedition/lcdui/AngleIncrementInfo.h"
+#endif
+#if __has_include("javax/microedition/lcdui/AngleIncrementInfo.h")
+#include "javax/microedition/lcdui/AngleIncrementInfo.h"
+#endif
+#if __has_include("org/allbinary/AngleIncrementInfo.h")
+#include "org/allbinary/AngleIncrementInfo.h"
+#endif
+#if __has_include("org/allbinary/animation/AngleIncrementInfo.h")
+#include "org/allbinary/animation/AngleIncrementInfo.h"
+#endif
+#if __has_include("org/allbinary/animation/AngleIncrementInfo.h")
+#include "org/allbinary/animation/AngleIncrementInfo.h"
+#endif
+#if __has_include("org/allbinary/graphics/AngleIncrementInfo.h")
+#include "org/allbinary/graphics/AngleIncrementInfo.h"
+#endif
+#if __has_include("org/allbinary/logic/math/AngleIncrementInfo.h")
+#include "org/allbinary/logic/math/AngleIncrementInfo.h"
+#endif
+#if __has_include("org/allbinary/math/AngleIncrementInfo.h")
+#include "org/allbinary/math/AngleIncrementInfo.h"
+#endif
+#if __has_include("org/allbinary/util/AngleIncrementInfo.h")
+#include "org/allbinary/util/AngleIncrementInfo.h"
+#endif
+#if __has_include("org/allbinary/DisposalUtil.h")
+#include "org/allbinary/DisposalUtil.h"
+#endif
+#if __has_include("org/allbinary/DisposalUtil.h")
+#include "org/allbinary/DisposalUtil.h"
+#endif
 
-typedef struct ImageBaseRotationAnimation ImageBaseRotationAnimation;
-struct ImageBaseRotationAnimation {
-    RotationAnimation base;
-    Image* image;
-    int32_t anchor;
-};
 
 
-ImageBaseRotationAnimation* ImageBaseRotationAnimation_new(Image* image, AngleInfo* angleInfo, int16_t totalAngle, AnimationBehavior* animationBehavior);
 
-void ImageBaseRotationAnimation_init(ImageBaseRotationAnimation* this, Image* image, AngleInfo* angleInfo, int16_t totalAngle, AnimationBehavior* animationBehavior);
-int32_t ImageBaseRotationAnimation_getAnimationSize(ImageBaseRotationAnimation* this);
-void ImageBaseRotationAnimation_setSequence(ImageBaseRotationAnimation* this, int32_t* sequence);
-int32_t* ImageBaseRotationAnimation_getSequence(ImageBaseRotationAnimation* this);
-void ImageBaseRotationAnimation_paintXY(ImageBaseRotationAnimation* this, Graphics* graphics, int32_t x, int32_t y);
-Image* ImageBaseRotationAnimation_getImage(ImageBaseRotationAnimation* this);
-int32_t ImageBaseRotationAnimation_getWidth(ImageBaseRotationAnimation* this);
-int32_t ImageBaseRotationAnimation_getHeight(ImageBaseRotationAnimation* this);
-void ImageBaseRotationAnimation_close(ImageBaseRotationAnimation* this);
-void ImageBaseRotationAnimation_finalize(ImageBaseRotationAnimation* this);
+
+
+
+
+
+
+
+
+
+void ImageBaseRotationAnimation_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void ImageBaseRotationAnimation_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ImageBaseRotationAnimation", "RotationAnimation");
+    java_register_method("ImageBaseRotationAnimation", "getAnimationSize", (void*) ImageBaseRotationAnimation_getAnimationSize);
+    java_register_method("ImageBaseRotationAnimation", "setSequence", (void*) ImageBaseRotationAnimation_setSequence);
+    java_register_method("ImageBaseRotationAnimation", "getSequence", (void*) ImageBaseRotationAnimation_getSequence);
+    java_register_method("ImageBaseRotationAnimation", "paintXY", (void*) ImageBaseRotationAnimation_paintXY);
+    java_register_method("ImageBaseRotationAnimation", "getImage", (void*) ImageBaseRotationAnimation_getImage);
+    java_register_method("ImageBaseRotationAnimation", "getWidth", (void*) ImageBaseRotationAnimation_getWidth);
+    java_register_method("ImageBaseRotationAnimation", "getHeight", (void*) ImageBaseRotationAnimation_getHeight);
+    java_register_method("ImageBaseRotationAnimation", "close", (void*) ImageBaseRotationAnimation_close);
+    java_register_method("ImageBaseRotationAnimation", "finalize", (void*) ImageBaseRotationAnimation_finalize);
+}
 
 static void ImageBaseRotationAnimation_initFields(ImageBaseRotationAnimation* this) {
     
-    this->anchor = Anchor_TOP_LEFT;
+    this->anchor = (Anchor_staticInit(), Anchor_TOP_LEFT);
 }
 
 
 void ImageBaseRotationAnimation_init(ImageBaseRotationAnimation* this, Image* image, AngleInfo* angleInfo, int16_t totalAngle, AnimationBehavior* animationBehavior) {
-        RotationAnimation_init(&this->base, angleInfo, CircularIndexUtil_createInstance(totalAngle / JAVA_CALL(AngleInfo_getAngleIncrementInfo(angleInfo), getAngleIncrement)), animationBehavior);
+    ImageBaseRotationAnimation_register();
+        RotationAnimation_init(&this->base, angleInfo, CircularIndexUtil_createInstance(totalAngle / AngleIncrementInfo_getAngleIncrement(AngleInfo_getAngleIncrementInfo(angleInfo))), animationBehavior);
         ImageBaseRotationAnimation_initFields(this);
         this->image = image;
 }
 
 ImageBaseRotationAnimation* ImageBaseRotationAnimation_new(Image* image, AngleInfo* angleInfo, int16_t totalAngle, AnimationBehavior* animationBehavior) {
-    ImageBaseRotationAnimation* this = calloc(1, sizeof(ImageBaseRotationAnimation));
+    ImageBaseRotationAnimation* this = java_object_alloc(sizeof(ImageBaseRotationAnimation), "ImageBaseRotationAnimation");
     ImageBaseRotationAnimation_init(this, image, angleInfo, totalAngle, animationBehavior);
     return this;
 }
@@ -75,7 +105,7 @@ ImageBaseRotationAnimation* ImageBaseRotationAnimation_new(Image* image, AngleIn
 
 // throws Exception
 int32_t ImageBaseRotationAnimation_getAnimationSize(ImageBaseRotationAnimation* this) {
-        return ImageBaseRotationAnimation_getSize(this);
+        return RotationAnimation_getSize(this);
 }
 
 

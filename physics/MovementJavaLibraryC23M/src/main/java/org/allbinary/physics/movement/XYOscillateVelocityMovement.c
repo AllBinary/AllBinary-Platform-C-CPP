@@ -1,47 +1,91 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.physics.movement
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/physics/movement/XYOscillateVelocityMovement.h"
 #include "org/allbinary/game/layer/AllBinaryGameLayer.h"
 #include "org/allbinary/game/physics/velocity/VelocityProperties.h"
 #include "org/allbinary/logic/math/BasicDecimal.h"
 #include "org/allbinary/physics/movement/BasicConstantVelocityMovement.h"
+#if __has_include("org/allbinary/logic/math/BasicDecimal.h")
+#include "org/allbinary/logic/math/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/physics/movement/BasicVelocityProperties.h")
+#include "org/allbinary/physics/movement/BasicVelocityProperties.h"
+#endif
+#if __has_include("org/allbinary/game/layer/BasicVelocityProperties.h")
+#include "org/allbinary/game/layer/BasicVelocityProperties.h"
+#endif
+#if __has_include("org/allbinary/game/physics/velocity/BasicVelocityProperties.h")
+#include "org/allbinary/game/physics/velocity/BasicVelocityProperties.h"
+#endif
+#if __has_include("org/allbinary/logic/math/BasicVelocityProperties.h")
+#include "org/allbinary/logic/math/BasicVelocityProperties.h"
+#endif
+#if __has_include("org/allbinary/logic/math/BasicDecimal.h")
+#include "org/allbinary/logic/math/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/physics/movement/BasicVelocityProperties.h")
+#include "org/allbinary/physics/movement/BasicVelocityProperties.h"
+#endif
+#if __has_include("org/allbinary/game/layer/BasicVelocityProperties.h")
+#include "org/allbinary/game/layer/BasicVelocityProperties.h"
+#endif
+#if __has_include("org/allbinary/game/physics/velocity/BasicVelocityProperties.h")
+#include "org/allbinary/game/physics/velocity/BasicVelocityProperties.h"
+#endif
+#if __has_include("org/allbinary/logic/math/BasicVelocityProperties.h")
+#include "org/allbinary/logic/math/BasicVelocityProperties.h"
+#endif
+#if __has_include("org/allbinary/logic/math/BasicDecimal.h")
+#include "org/allbinary/logic/math/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/physics/movement/BasicVelocityProperties.h")
+#include "org/allbinary/physics/movement/BasicVelocityProperties.h"
+#endif
+#if __has_include("org/allbinary/game/layer/BasicVelocityProperties.h")
+#include "org/allbinary/game/layer/BasicVelocityProperties.h"
+#endif
+#if __has_include("org/allbinary/game/physics/velocity/BasicVelocityProperties.h")
+#include "org/allbinary/game/physics/velocity/BasicVelocityProperties.h"
+#endif
+#if __has_include("org/allbinary/logic/math/BasicVelocityProperties.h")
+#include "org/allbinary/logic/math/BasicVelocityProperties.h"
+#endif
+#if __has_include("org/allbinary/logic/math/BasicDecimal.h")
+#include "org/allbinary/logic/math/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/physics/movement/BasicVelocityProperties.h")
+#include "org/allbinary/physics/movement/BasicVelocityProperties.h"
+#endif
+#if __has_include("org/allbinary/game/layer/BasicVelocityProperties.h")
+#include "org/allbinary/game/layer/BasicVelocityProperties.h"
+#endif
+#if __has_include("org/allbinary/game/physics/velocity/BasicVelocityProperties.h")
+#include "org/allbinary/game/physics/velocity/BasicVelocityProperties.h"
+#endif
+#if __has_include("org/allbinary/logic/math/BasicVelocityProperties.h")
+#include "org/allbinary/logic/math/BasicVelocityProperties.h"
+#endif
 
-typedef struct XYOscillateVelocityMovement XYOscillateVelocityMovement;
-struct XYOscillateVelocityMovement {
-    BasicConstantVelocityMovement base;
-    int32_t oscillateMin;
-    int32_t oscillateMax;
-    int32_t oscillate;
-    bool oscillatePositive;
-};
 
 
-XYOscillateVelocityMovement* XYOscillateVelocityMovement_new(BasicDecimal* speedBasicDecimal, int32_t oscillateMin, int32_t oscillateMax);
 
-void XYOscillateVelocityMovement_init(XYOscillateVelocityMovement* this, BasicDecimal* speedBasicDecimal, int32_t oscillateMin, int32_t oscillateMax);
-void XYOscillateVelocityMovement_process(XYOscillateVelocityMovement* this, AllBinaryGameLayer* layer);
+
+void XYOscillateVelocityMovement_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void XYOscillateVelocityMovement_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("XYOscillateVelocityMovement", "BasicConstantVelocityMovement");
+    java_register_method("XYOscillateVelocityMovement", "process", (void*) XYOscillateVelocityMovement_process);
+}
 
 static void XYOscillateVelocityMovement_initFields(XYOscillateVelocityMovement* this) {
     
@@ -52,6 +96,7 @@ static void XYOscillateVelocityMovement_initFields(XYOscillateVelocityMovement* 
 
 
 void XYOscillateVelocityMovement_init(XYOscillateVelocityMovement* this, BasicDecimal* speedBasicDecimal, int32_t oscillateMin, int32_t oscillateMax) {
+    XYOscillateVelocityMovement_register();
         BasicConstantVelocityMovement_init(&this->base, speedBasicDecimal, VelocityProperties_new(((int32_t) BasicDecimal_getUnscaled(speedBasicDecimal)), ((int32_t) BasicDecimal_getUnscaled(speedBasicDecimal))));
         XYOscillateVelocityMovement_initFields(this);
         this->oscillateMin = oscillateMin;
@@ -59,7 +104,7 @@ void XYOscillateVelocityMovement_init(XYOscillateVelocityMovement* this, BasicDe
 }
 
 XYOscillateVelocityMovement* XYOscillateVelocityMovement_new(BasicDecimal* speedBasicDecimal, int32_t oscillateMin, int32_t oscillateMax) {
-    XYOscillateVelocityMovement* this = calloc(1, sizeof(XYOscillateVelocityMovement));
+    XYOscillateVelocityMovement* this = java_object_alloc(sizeof(XYOscillateVelocityMovement), "XYOscillateVelocityMovement");
     XYOscillateVelocityMovement_init(this, speedBasicDecimal, oscillateMin, oscillateMax);
     return this;
 }
@@ -70,17 +115,17 @@ void XYOscillateVelocityMovement_process(XYOscillateVelocityMovement* this, AllB
         BasicConstantVelocityMovement_process((&this->base), layer);
         if (this->oscillate < this->oscillateMin) {
             this->oscillatePositive = true;
-            JAVA_CALL(JAVA_CALL(XYOscillateVelocityMovement_getVelocityProperties(this), getVelocityYBasicDecimalP), addint, 3000);
+            BasicDecimal_addint(BasicVelocityProperties_getVelocityYBasicDecimalP(BasicConstantVelocityMovement_getVelocityProperties(this)), 3000);
         } else if (this->oscillate > this->oscillateMax) {
             this->oscillatePositive = false;
-            JAVA_CALL(JAVA_CALL(XYOscillateVelocityMovement_getVelocityProperties(this), getVelocityYBasicDecimalP), subtractint, 3000);
+            BasicDecimal_subtractint(BasicVelocityProperties_getVelocityYBasicDecimalP(BasicConstantVelocityMovement_getVelocityProperties(this)), 3000);
         }
         if (this->oscillatePositive) {
             this->oscillate++;
-            JAVA_CALL(JAVA_CALL(XYOscillateVelocityMovement_getVelocityProperties(this), getVelocityXBasicDecimalP), addint, 5000);
+            BasicDecimal_addint(BasicVelocityProperties_getVelocityXBasicDecimalP(BasicConstantVelocityMovement_getVelocityProperties(this)), 5000);
         } else {
             this->oscillate--;
-            JAVA_CALL(JAVA_CALL(XYOscillateVelocityMovement_getVelocityProperties(this), getVelocityXBasicDecimalP), subtractint, 5000);
+            BasicDecimal_subtractint(BasicVelocityProperties_getVelocityXBasicDecimalP(BasicConstantVelocityMovement_getVelocityProperties(this)), 5000);
         }
 }
 

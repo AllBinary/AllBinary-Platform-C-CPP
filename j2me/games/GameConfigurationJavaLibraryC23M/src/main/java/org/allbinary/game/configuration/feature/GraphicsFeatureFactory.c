@@ -1,53 +1,32 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.configuration.feature
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/configuration/feature/GraphicsFeatureFactory.h"
 #include "org/allbinary/logic/string/StringUtil.h"
+#include "org/allbinary/game/configuration/feature/GraphicsFeature.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
-typedef struct GraphicsFeatureFactory GraphicsFeatureFactory;
-struct GraphicsFeatureFactory {
-    GraphicsFeature* NONE;
-    GraphicsFeature* TRANSPARENT_IMAGE_CREATION;
-    GraphicsFeature* IMAGE_GRAPHICS;
-    GraphicsFeature* IMAGE_ROTATION_ON_THE_FLY;
-    GraphicsFeature* IMAGE_TO_ARRAY_GRAPHICS;
-    GraphicsFeature* SPRITE_QUARTER_ROTATION_GRAPHICS;
-    GraphicsFeature* SPRITE_FULL_GRAPHICS;
-    GraphicsFeature* VECTOR_GRAPHICS;
-    GraphicsFeature* VECTOR_TO_IMAGE_GRAPHICS;
-};
 
 static GraphicsFeatureFactory* GraphicsFeatureFactory_instance;
 
-GraphicsFeatureFactory* GraphicsFeatureFactory_new(void);
-GraphicsFeatureFactory* GraphicsFeatureFactory_getInstance(void);
 
-void GraphicsFeatureFactory_init(GraphicsFeatureFactory* this);
 
-// Static fields with runtime initializers: call this once at startup
 void GraphicsFeatureFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     GraphicsFeatureFactory_instance = GraphicsFeatureFactory_new();
+}
+
+void GraphicsFeatureFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GraphicsFeatureFactory", nullptr);
 }
 
 static void GraphicsFeatureFactory_initFields(GraphicsFeatureFactory* this) {
@@ -64,16 +43,17 @@ static void GraphicsFeatureFactory_initFields(GraphicsFeatureFactory* this) {
 
 
 GraphicsFeatureFactory* GraphicsFeatureFactory_getInstance(void) {
-        return GraphicsFeatureFactory_instance;
+        return (GraphicsFeatureFactory_staticInit(), GraphicsFeatureFactory_instance);
 }
 
 
 void GraphicsFeatureFactory_init(GraphicsFeatureFactory* this) {
+    GraphicsFeatureFactory_register();
     GraphicsFeatureFactory_initFields(this);
 }
 
 GraphicsFeatureFactory* GraphicsFeatureFactory_new(void) {
-    GraphicsFeatureFactory* this = calloc(1, sizeof(GraphicsFeatureFactory));
+    GraphicsFeatureFactory* this = java_object_alloc(sizeof(GraphicsFeatureFactory), "GraphicsFeatureFactory");
     GraphicsFeatureFactory_init(this);
     return this;
 }

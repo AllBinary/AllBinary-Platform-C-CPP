@@ -2,6 +2,12 @@
 #include "org/allbinary/canvas/GameStatisticsFactory.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/canvas/BaseGameStatistics.h"
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
 
 
 static GameStatisticsFactory* GameStatisticsFactory_instance;

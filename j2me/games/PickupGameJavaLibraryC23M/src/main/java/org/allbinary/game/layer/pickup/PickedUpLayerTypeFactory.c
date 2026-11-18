@@ -1,52 +1,31 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.layer.pickup
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/layer/pickup/PickedUpLayerTypeFactory.h"
 #include "org/allbinary/logic/string/StringUtil.h"
+#include "org/allbinary/game/layer/pickup/PickedUpLayerType.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
-typedef struct PickedUpLayerTypeFactory PickedUpLayerTypeFactory;
-struct PickedUpLayerTypeFactory {
-    PickedUpLayerType* NONE;
-    PickedUpLayerType* BEAM;
-    PickedUpLayerType* MINE;
-    PickedUpLayerType* PROJECTILE;
-    PickedUpLayerType* ENHANCEMENT;
-    PickedUpLayerType* MORPH;
-    PickedUpLayerType* PART;
-    PickedUpLayerType* HEAL;
-    PickedUpLayerType* LIFE;
-    PickedUpLayerType* POINTS;
-};
 
 static PickedUpLayerTypeFactory* PickedUpLayerTypeFactory_instance;
 
-PickedUpLayerTypeFactory* PickedUpLayerTypeFactory_new(void);
-PickedUpLayerTypeFactory* PickedUpLayerTypeFactory_getInstance(void);
 
-// Static fields with runtime initializers: call this once at startup
 void PickedUpLayerTypeFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     PickedUpLayerTypeFactory_instance = PickedUpLayerTypeFactory_new();
+}
+
+void PickedUpLayerTypeFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("PickedUpLayerTypeFactory", nullptr);
 }
 
 static void PickedUpLayerTypeFactory_initFields(PickedUpLayerTypeFactory* this) {
@@ -63,17 +42,18 @@ static void PickedUpLayerTypeFactory_initFields(PickedUpLayerTypeFactory* this) 
 }
 
 void PickedUpLayerTypeFactory_init(PickedUpLayerTypeFactory* this) {
+    PickedUpLayerTypeFactory_register();
     PickedUpLayerTypeFactory_initFields(this);
 }
 
 PickedUpLayerTypeFactory* PickedUpLayerTypeFactory_new(void) {
-    PickedUpLayerTypeFactory* this = calloc(1, sizeof(PickedUpLayerTypeFactory));
+    PickedUpLayerTypeFactory* this = java_object_alloc(sizeof(PickedUpLayerTypeFactory), "PickedUpLayerTypeFactory");
     PickedUpLayerTypeFactory_init(this);
     return this;
 }
 
 
 PickedUpLayerTypeFactory* PickedUpLayerTypeFactory_getInstance(void) {
-        return PickedUpLayerTypeFactory_instance;
+        return (PickedUpLayerTypeFactory_staticInit(), PickedUpLayerTypeFactory_instance);
 }
 

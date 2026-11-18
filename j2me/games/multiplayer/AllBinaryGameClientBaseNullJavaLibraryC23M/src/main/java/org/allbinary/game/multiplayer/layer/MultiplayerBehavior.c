@@ -1,55 +1,45 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.multiplayer.layer
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/multiplayer/layer/MultiplayerBehavior.h"
 #include "org/allbinary/logic/string/StringUtil.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
-typedef struct MultiplayerBehavior MultiplayerBehavior;
-struct MultiplayerBehavior {
-    char unused;
-};
 
 MultiplayerBehavior* MultiplayerBehavior_NULL_MULTIPLAYER_BEHAVIOR;
 
-MultiplayerBehavior* MultiplayerBehavior_new(const char* username);
 
-void MultiplayerBehavior_init(MultiplayerBehavior* this, const char* username);
-void MultiplayerBehavior_startTick(MultiplayerBehavior* this);
-void MultiplayerBehavior_endTick(MultiplayerBehavior* this);
-int64_t MultiplayerBehavior_getApproximateElapsed(MultiplayerBehavior* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
 void MultiplayerBehavior_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     MultiplayerBehavior_NULL_MULTIPLAYER_BEHAVIOR = MultiplayerBehavior_new(StringUtil_getInstance()->EMPTY_STRING);
+}
+
+void MultiplayerBehavior_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("MultiplayerBehavior", nullptr);
+    java_register_method("MultiplayerBehavior", "startTick", (void*) MultiplayerBehavior_startTick);
+    java_register_method("MultiplayerBehavior", "endTick", (void*) MultiplayerBehavior_endTick);
+    java_register_method("MultiplayerBehavior", "getApproximateElapsed", (void*) MultiplayerBehavior_getApproximateElapsed);
 }
 
 
 void MultiplayerBehavior_init(MultiplayerBehavior* this, const char* username) {
+    MultiplayerBehavior_register();
 }
 
 MultiplayerBehavior* MultiplayerBehavior_new(const char* username) {
-    MultiplayerBehavior* this = calloc(1, sizeof(MultiplayerBehavior));
+    MultiplayerBehavior* this = java_object_alloc(sizeof(MultiplayerBehavior), "MultiplayerBehavior");
     MultiplayerBehavior_init(this, username);
     return this;
 }

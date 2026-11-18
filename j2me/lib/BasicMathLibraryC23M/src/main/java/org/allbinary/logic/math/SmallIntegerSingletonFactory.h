@@ -63,6 +63,8 @@ int32_t SmallIntegerSingletonFactory_getAtNoThrow(SmallIntegerSingletonFactory* 
 int32_t SmallIntegerSingletonFactory_createInstance(SmallIntegerSingletonFactory* this, int32_t index);
 
 const char* SmallIntegerSingletonFactory_getString(SmallIntegerSingletonFactory* this, int32_t index);
+#define SmallIntegerSingletonFactory_new0 SmallIntegerSingletonFactory_new
+#define SmallIntegerSingletonFactory_init0 SmallIntegerSingletonFactory_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void SmallIntegerSingletonFactory_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

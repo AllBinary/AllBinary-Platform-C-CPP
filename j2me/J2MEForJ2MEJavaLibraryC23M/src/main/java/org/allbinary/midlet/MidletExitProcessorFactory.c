@@ -1,61 +1,48 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.midlet
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/midlet/MIDlet.h"
+#include "org/allbinary/midlet/MidletExitProcessorFactory.h"
+#include "javax/microedition/midlet/MIDlet.h"
 #include "org/allbinary/AppletUtil.h"
 #include "org/allbinary/J2MEUtil.h"
 #include "org/allbinary/canvas/Processor.h"
+#include "org/allbinary/midlet/MidletExitProcessor.h"
 
-typedef struct MidletExitProcessorFactory MidletExitProcessorFactory;
-struct MidletExitProcessorFactory {
-    char unused;
-};
 
 static MidletExitProcessorFactory* MidletExitProcessorFactory_instance;
 
-MidletExitProcessorFactory* MidletExitProcessorFactory_new(void);
-MidletExitProcessorFactory* MidletExitProcessorFactory_getInstance(void);
-Processor* MidletExitProcessorFactory_getExitInstance(MidletExitProcessorFactory* this, MIDlet* midlet);
 
-// Static fields with runtime initializers: call this once at startup
+
 void MidletExitProcessorFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     MidletExitProcessorFactory_instance = MidletExitProcessorFactory_new();
 }
 
+void MidletExitProcessorFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("MidletExitProcessorFactory", nullptr);
+    java_register_method("MidletExitProcessorFactory", "getExitInstance", (void*) MidletExitProcessorFactory_getExitInstance);
+}
+
 void MidletExitProcessorFactory_init(MidletExitProcessorFactory* this) {
+    MidletExitProcessorFactory_register();
 }
 
 MidletExitProcessorFactory* MidletExitProcessorFactory_new(void) {
-    MidletExitProcessorFactory* this = calloc(1, sizeof(MidletExitProcessorFactory));
+    MidletExitProcessorFactory* this = java_object_alloc(sizeof(MidletExitProcessorFactory), "MidletExitProcessorFactory");
     MidletExitProcessorFactory_init(this);
     return this;
 }
 
 
 MidletExitProcessorFactory* MidletExitProcessorFactory_getInstance(void) {
-        return MidletExitProcessorFactory_instance;
+        return (MidletExitProcessorFactory_staticInit(), MidletExitProcessorFactory_instance);
 }
 
 

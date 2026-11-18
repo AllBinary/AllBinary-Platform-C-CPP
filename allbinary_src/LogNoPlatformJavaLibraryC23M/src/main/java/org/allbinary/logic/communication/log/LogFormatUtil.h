@@ -51,6 +51,8 @@ const char* LogFormatUtil_get(LogFormatUtil* this, const char* className, const 
 const char* LogFormatUtil_getS(LogFormatUtil* this, const char* className, const char* functionName, const char* specialMessage);
 
 const char* LogFormatUtil_getO(LogFormatUtil* this, void* exception);
+#define LogFormatUtil_new0 LogFormatUtil_new
+#define LogFormatUtil_init0 LogFormatUtil_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void LogFormatUtil_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

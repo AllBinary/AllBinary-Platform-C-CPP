@@ -1,81 +1,78 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.health
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/health/Health.h"
 #include "org/allbinary/logic/communication/log/ForcedLogUtil.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/string/CommonSeps.h"
 #include "org/allbinary/game/health/HealthInterface.h"
+#include "org/allbinary/game/health/NullHealthListener.h"
+#include "org/allbinary/game/health/HealthListenerInterface.h"
+#if __has_include("org/allbinary/string/CommonSeps.h")
+#include "org/allbinary/string/CommonSeps.h"
+#endif
 
-typedef struct Health Health;
-struct Health {
-    HealthInterface HealthInterface_interface;
-    int32_t health;
-    int32_t maxHealth;
-    HealthListenerInterface* healthListenerInterface;
-};
 
 Health* Health_NULL_HEALTH;
 const char* Health_NAME = "Health Resource";
 static const char* Health_HEALTH_LABEL = "Health: ";
 static const char* Health_MAX_HEALTH_LABEL = " Max: ";
 
-Health* Health_new(int32_t maxHealth);
 
-void Health_init(Health* this, int32_t maxHealth);
-void Health_heal(Health* this, int32_t ahealth);
-void Health_healMax(Health* this);
-bool Health_isDamaged(Health* this);
-void Health_damage(Health* this, int32_t ahealth);
-bool Health_isAlive(Health* this);
-int32_t Health_getMaxHealth(Health* this);
-void Health_setMaxHealth(Health* this, int32_t maxHealth);
-void Health_setHealth(Health* this, int32_t health);
-int32_t Health_getHealth(Health* this);
-void Health_addListener(Health* this, HealthListenerInterface* healthGraphic);
-const char* Health_toString(Health* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+
+
+
+
+
+
 void Health_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     Health_NULL_HEALTH = Health_new(0);
+}
+
+void Health_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("Health", nullptr);
+    java_register_method("Health", "heal", (void*) Health_heal);
+    java_register_method("Health", "healMax", (void*) Health_healMax);
+    java_register_method("Health", "isDamaged", (void*) Health_isDamaged);
+    java_register_method("Health", "damage", (void*) Health_damage);
+    java_register_method("Health", "isAlive", (void*) Health_isAlive);
+    java_register_method("Health", "getMaxHealth", (void*) Health_getMaxHealth);
+    java_register_method("Health", "setMaxHealth", (void*) Health_setMaxHealth);
+    java_register_method("Health", "setHealth", (void*) Health_setHealth);
+    java_register_method("Health", "getHealth", (void*) Health_getHealth);
+    java_register_method("Health", "addListener", (void*) Health_addListener);
+    java_register_method("Health", "toString", (void*) Health_toString);
 }
 
 static void Health_initFields(Health* this) {
     this->health = 0;
     this->maxHealth = 0;
-    this->healthListenerInterface = NullHealthListener_NULL_HEALTH_LISTENER;
+    this->healthListenerInterface = (NullHealthListener_staticInit(), NullHealthListener_NULL_HEALTH_LISTENER);
 }
 
 
 void Health_init(Health* this, int32_t maxHealth) {
+    Health_register();
     Health_initFields(this);
         Health_setMaxHealth(this, maxHealth);
         Health_setHealth(this, maxHealth);
 }
 
 Health* Health_new(int32_t maxHealth) {
-    Health* this = calloc(1, sizeof(Health));
+    Health* this = java_object_alloc(sizeof(Health), "Health");
     Health_init(this, maxHealth);
     return this;
 }
@@ -112,7 +109,7 @@ void Health_damage(Health* this, int32_t ahealth) {
             StringMaker_appendint(stringBuffer, ahealth);
             StringMaker_append(stringBuffer, CommonSeps_getInstance()->SPACE);
             StringMaker_append(stringBuffer, Health_toString(this));
-            ForcedLogUtil_log(StringMaker_toString(stringBuffer), this);
+            ForcedLogUtil_log(java_string_of(stringBuffer), this);
             return;
         }
         int32_t health = Health_getHealth(this) - ahealth;
@@ -169,6 +166,6 @@ const char* Health_toString(Health* this) {
         StringMaker_appendint(stringBuffer, this->health);
         StringMaker_append(stringBuffer, Health_MAX_HEALTH_LABEL);
         StringMaker_appendint(stringBuffer, this->maxHealth);
-        return StringMaker_toString(stringBuffer);
+        return java_string_of(stringBuffer);
 }
 

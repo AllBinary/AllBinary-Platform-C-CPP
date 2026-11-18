@@ -55,10 +55,33 @@ BasicArrayList* KeylessBasicArrayListCache_get(KeylessBasicArrayListCache* this)
 void KeylessBasicArrayListCache_clear(KeylessBasicArrayListCache* this);
 
 const char* KeylessBasicArrayListCache_log(KeylessBasicArrayListCache* this);
+#define KeylessBasicArrayListCache_new0 KeylessBasicArrayListCache_new
+#define KeylessBasicArrayListCache_init0 KeylessBasicArrayListCache_init
+#ifndef KeylessBasicArrayListCache_createCache
+#define KeylessBasicArrayListCache_createCache IndexedBasicArrayListCache_createCache
+#endif
+#ifndef KeylessBasicArrayListCache_getAt
+#define KeylessBasicArrayListCache_getAt IndexedBasicArrayListCache_getAt
+#endif
+#ifndef KeylessBasicArrayListCache_addDefault
+#define KeylessBasicArrayListCache_addDefault IndexedBasicArrayListCache_addDefault
+#endif
+#ifndef KeylessBasicArrayListCache_addObject
+#define KeylessBasicArrayListCache_addObject IndexedBasicArrayListCache_addObject
+#endif
+#ifndef KeylessBasicArrayListCache_add
+#define KeylessBasicArrayListCache_add IndexedBasicArrayListCache_add
+#endif
+#ifndef KeylessBasicArrayListCache_addArray
+#define KeylessBasicArrayListCache_addArray IndexedBasicArrayListCache_addArray
+#endif
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void KeylessBasicArrayListCache_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)
 void KeylessBasicArrayListCache_register(void);
 
+#if __has_include("org/allbinary/util/BasicArrayList.h")
+#include "org/allbinary/util/BasicArrayList.h"
+#endif
 
 #endif // ORG_ALLBINARY_LOGIC_UTIL_CACHE_KEYLESSBASICARRAYLISTCACHE_H

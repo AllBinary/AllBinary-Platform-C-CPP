@@ -1,65 +1,67 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.bounds
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/bounds/RectangleLayerBounds.h"
 #include "org/allbinary/graphics/Rectangle.h"
 #include "org/allbinary/bounds/LayerBounds.h"
+#include "org/allbinary/bounds/BoundsVisitorInterface.h"
+#if __has_include("org/allbinary/bounds/GPoint.h")
+#include "org/allbinary/bounds/GPoint.h"
+#endif
+#if __has_include("org/allbinary/graphics/GPoint.h")
+#include "org/allbinary/graphics/GPoint.h"
+#endif
+#if __has_include("org/allbinary/bounds/GPoint.h")
+#include "org/allbinary/bounds/GPoint.h"
+#endif
+#if __has_include("org/allbinary/graphics/GPoint.h")
+#include "org/allbinary/graphics/GPoint.h"
+#endif
 
-typedef struct RectangleLayerBounds RectangleLayerBounds;
-struct RectangleLayerBounds {
-    LayerBounds base;
-};
 
 
-RectangleLayerBounds* RectangleLayerBounds_new(Rectangle* rectangle);
 
-void RectangleLayerBounds_init(RectangleLayerBounds* this, Rectangle* rectangle);
-void RectangleLayerBounds_visit(RectangleLayerBounds* this, BoundsVisitorInterface* boundsVisitorInterface);
+
+void RectangleLayerBounds_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void RectangleLayerBounds_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("RectangleLayerBounds", "LayerBounds");
+    java_register_method("RectangleLayerBounds", "visit", (void*) RectangleLayerBounds_visit);
+}
 
 
 void RectangleLayerBounds_init(RectangleLayerBounds* this, Rectangle* rectangle) {
+    RectangleLayerBounds_register();
         LayerBounds_init(&this->base, rectangle);
 }
 
 RectangleLayerBounds* RectangleLayerBounds_new(Rectangle* rectangle) {
-    RectangleLayerBounds* this = calloc(1, sizeof(RectangleLayerBounds));
+    RectangleLayerBounds* this = java_object_alloc(sizeof(RectangleLayerBounds), "RectangleLayerBounds");
     RectangleLayerBounds_init(this, rectangle);
     return this;
 }
 
 
 void RectangleLayerBounds_visit(RectangleLayerBounds* this, BoundsVisitorInterface* boundsVisitorInterface) {
-        if (BoundsVisitorInterface_getX(boundsVisitorInterface) > Rectangle_getMaxX(this->rectangle)) {
+        if (BoundsVisitorInterface_getX(boundsVisitorInterface) > Rectangle_getMaxX(this->base.rectangle)) {
             BoundsVisitorInterface_maxX(boundsVisitorInterface);
         }
-        if (BoundsVisitorInterface_getY(boundsVisitorInterface) > Rectangle_getMaxY(this->rectangle)) {
+        if (BoundsVisitorInterface_getY(boundsVisitorInterface) > Rectangle_getMaxY(this->base.rectangle)) {
             BoundsVisitorInterface_maxY(boundsVisitorInterface);
         }
-        if (BoundsVisitorInterface_getX(boundsVisitorInterface) < JAVA_CALL(Rectangle_getPoint(this->rectangle), getX)) {
+        if (BoundsVisitorInterface_getX(boundsVisitorInterface) < GPoint_getX(Rectangle_getPoint(this->base.rectangle))) {
             BoundsVisitorInterface_minX(boundsVisitorInterface);
         }
-        if (BoundsVisitorInterface_getY(boundsVisitorInterface) < JAVA_CALL(Rectangle_getPoint(this->rectangle), getY)) {
+        if (BoundsVisitorInterface_getY(boundsVisitorInterface) < GPoint_getY(Rectangle_getPoint(this->base.rectangle))) {
             BoundsVisitorInterface_minY(boundsVisitorInterface);
         }
 }

@@ -1,50 +1,35 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.layer.weapon
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/layer/weapon/WeaponLayerArrayLayerCircularStaticPool.h"
 #include "org/allbinary/util/CircularIndexUtil.h"
+#include "org/allbinary/game/layer/weapon/WeaponLayer.h"
 
-typedef struct WeaponLayerArrayLayerCircularStaticPool WeaponLayerArrayLayerCircularStaticPool;
-struct WeaponLayerArrayLayerCircularStaticPool {
-    int32_t MAX;
-    CircularIndexUtil* circularIndexUtil;
-    WeaponLayer*** WEAPONLAYER_ARRAY;
-    WeaponLayer*** TWO_WEAPONLAYER_ARRAY;
-    WeaponLayer*** THREE_WEAPONLAYER_ARRAY;
-};
 
 static WeaponLayerArrayLayerCircularStaticPool* WeaponLayerArrayLayerCircularStaticPool_instance;
 
-WeaponLayerArrayLayerCircularStaticPool* WeaponLayerArrayLayerCircularStaticPool_new(void);
-WeaponLayerArrayLayerCircularStaticPool* WeaponLayerArrayLayerCircularStaticPool_getInstance(void);
-void WeaponLayerArrayLayerCircularStaticPool_init(WeaponLayerArrayLayerCircularStaticPool* this);
-static WeaponLayer*** WeaponLayerArrayLayerCircularStaticPool_getWeaponLayerArrays(WeaponLayerArrayLayerCircularStaticPool* this, int32_t size);
-WeaponLayer** WeaponLayerArrayLayerCircularStaticPool_getInstanceArray(WeaponLayerArrayLayerCircularStaticPool* this, int32_t size);
 
-// Static fields with runtime initializers: call this once at startup
+
+static WeaponLayer*** WeaponLayerArrayLayerCircularStaticPool_getWeaponLayerArrays(WeaponLayerArrayLayerCircularStaticPool* this, int32_t size);
+
+
 void WeaponLayerArrayLayerCircularStaticPool_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     WeaponLayerArrayLayerCircularStaticPool_instance = WeaponLayerArrayLayerCircularStaticPool_new();
+}
+
+void WeaponLayerArrayLayerCircularStaticPool_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("WeaponLayerArrayLayerCircularStaticPool", nullptr);
+    java_register_method("WeaponLayerArrayLayerCircularStaticPool", "init", (void*) WeaponLayerArrayLayerCircularStaticPool_initMethod);
+    java_register_method("WeaponLayerArrayLayerCircularStaticPool", "getWeaponLayerArrays", (void*) WeaponLayerArrayLayerCircularStaticPool_getWeaponLayerArrays);
+    java_register_method("WeaponLayerArrayLayerCircularStaticPool", "getInstanceArray", (void*) WeaponLayerArrayLayerCircularStaticPool_getInstanceArray);
 }
 
 static void WeaponLayerArrayLayerCircularStaticPool_initFields(WeaponLayerArrayLayerCircularStaticPool* this) {
@@ -56,22 +41,23 @@ static void WeaponLayerArrayLayerCircularStaticPool_initFields(WeaponLayerArrayL
 }
 
 void WeaponLayerArrayLayerCircularStaticPool_init(WeaponLayerArrayLayerCircularStaticPool* this) {
+    WeaponLayerArrayLayerCircularStaticPool_register();
     WeaponLayerArrayLayerCircularStaticPool_initFields(this);
 }
 
 WeaponLayerArrayLayerCircularStaticPool* WeaponLayerArrayLayerCircularStaticPool_new(void) {
-    WeaponLayerArrayLayerCircularStaticPool* this = calloc(1, sizeof(WeaponLayerArrayLayerCircularStaticPool));
+    WeaponLayerArrayLayerCircularStaticPool* this = java_object_alloc(sizeof(WeaponLayerArrayLayerCircularStaticPool), "WeaponLayerArrayLayerCircularStaticPool");
     WeaponLayerArrayLayerCircularStaticPool_init(this);
     return this;
 }
 
 
 WeaponLayerArrayLayerCircularStaticPool* WeaponLayerArrayLayerCircularStaticPool_getInstance(void) {
-        return WeaponLayerArrayLayerCircularStaticPool_instance;
+        return (WeaponLayerArrayLayerCircularStaticPool_staticInit(), WeaponLayerArrayLayerCircularStaticPool_instance);
 }
 
 
-void WeaponLayerArrayLayerCircularStaticPool_init(WeaponLayerArrayLayerCircularStaticPool* this) {
+void WeaponLayerArrayLayerCircularStaticPool_initMethod(WeaponLayerArrayLayerCircularStaticPool* this) {
         WeaponLayer*** WEAPONLAYER_ARRAY = ((WeaponLayer***) java_array_new(sizeof(WeaponLayer**), this->MAX * 2));
         WeaponLayer*** TWO_WEAPONLAYER_ARRAY = ((WeaponLayer***) java_array_new(sizeof(WeaponLayer**), this->MAX));
         WeaponLayer*** THREE_WEAPONLAYER_ARRAY = ((WeaponLayer***) java_array_new(sizeof(WeaponLayer**), this->MAX));

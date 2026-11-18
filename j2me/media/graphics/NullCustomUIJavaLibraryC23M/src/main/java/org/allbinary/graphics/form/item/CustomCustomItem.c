@@ -1,34 +1,32 @@
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.form.item
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/graphics/form/item/CustomCustomItem.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
 #include "org/allbinary/graphics/font/MyFontProcessor.h"
-#include "org/allbinary/graphics/font/UpdateMyFontInterface.h"
 #include "org/allbinary/graphics/font/UpdateMyFontProcessor.h"
 #include "org/allbinary/graphics/form/item/ABCustomItem.h"
 
-typedef struct CustomCustomItem CustomCustomItem;
-struct CustomCustomItem {
-    ABCustomItem base;
-    UpdateMyFontInterface UpdateMyFontInterface_interface;
-    MyFontProcessor* updateMyFontProcessor;
-    MyFontProcessor* myFontProcessor;
-};
 
 
-CustomCustomItem* CustomCustomItem_new(const char* label, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
 
-void CustomCustomItem_init(CustomCustomItem* this, const char* label, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
-void CustomCustomItem_updateMeasurement(CustomCustomItem* this, Graphics* graphics);
+
+void CustomCustomItem_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void CustomCustomItem_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("CustomCustomItem", "ABCustomItem");
+    java_register_method("CustomCustomItem", "updateMeasurement", (void*) CustomCustomItem_updateMeasurement);
+}
 
 static void CustomCustomItem_initFields(CustomCustomItem* this) {
     this->updateMyFontProcessor = UpdateMyFontProcessor_new(this);
@@ -37,12 +35,13 @@ static void CustomCustomItem_initFields(CustomCustomItem* this) {
 
 
 void CustomCustomItem_init(CustomCustomItem* this, const char* label, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) {
+    CustomCustomItem_register();
         ABCustomItem_init(&this->base, label, backgroundBasicColor, foregroundBasicColor);
         CustomCustomItem_initFields(this);
 }
 
 CustomCustomItem* CustomCustomItem_new(const char* label, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) {
-    CustomCustomItem* this = calloc(1, sizeof(CustomCustomItem));
+    CustomCustomItem* this = java_object_alloc(sizeof(CustomCustomItem), "CustomCustomItem");
     CustomCustomItem_init(this, label, backgroundBasicColor, foregroundBasicColor);
     return this;
 }

@@ -1,29 +1,6 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.displayable.canvas
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/NullCanvas.h"
+#include "org/allbinary/game/displayable/canvas/DemoCanvasBasicStartInputProcessor.h"
+#include "javax/microedition/lcdui/NullCanvas.h"
 #include "org/allbinary/canvas/RunnableCanvas.h"
 #include "org/allbinary/game/commands/GameCommandsFactory.h"
 #include "org/allbinary/game/input/GameInputStrings.h"
@@ -32,25 +9,106 @@
 #include "org/allbinary/logic/string/StringUtil.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/game/displayable/canvas/BasicMenuInputProcessor.h"
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/game/input/GameInputStrings.h")
+#include "org/allbinary/game/input/GameInputStrings.h"
+#endif
+#if __has_include("org/allbinary/game/displayable/canvas/CommandListener.h")
+#include "org/allbinary/game/displayable/canvas/CommandListener.h"
+#endif
+#if __has_include("javax/microedition/lcdui/CommandListener.h")
+#include "javax/microedition/lcdui/CommandListener.h"
+#endif
+#if __has_include("org/allbinary/canvas/CommandListener.h")
+#include "org/allbinary/canvas/CommandListener.h"
+#endif
+#if __has_include("org/allbinary/game/commands/CommandListener.h")
+#include "org/allbinary/game/commands/CommandListener.h"
+#endif
+#if __has_include("org/allbinary/game/input/CommandListener.h")
+#include "org/allbinary/game/input/CommandListener.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/CommandListener.h")
+#include "org/allbinary/game/input/event/CommandListener.h"
+#endif
+#if __has_include("org/allbinary/logic/string/CommandListener.h")
+#include "org/allbinary/logic/string/CommandListener.h"
+#endif
+#if __has_include("org/allbinary/logic/string/CommandListener.h")
+#include "org/allbinary/logic/string/CommandListener.h"
+#endif
+#if __has_include("org/allbinary/util/CommandListener.h")
+#include "org/allbinary/util/CommandListener.h"
+#endif
+#if __has_include("org/allbinary/game/displayable/canvas/MyCanvas.h")
+#include "org/allbinary/game/displayable/canvas/MyCanvas.h"
+#endif
+#if __has_include("javax/microedition/lcdui/MyCanvas.h")
+#include "javax/microedition/lcdui/MyCanvas.h"
+#endif
+#if __has_include("org/allbinary/canvas/MyCanvas.h")
+#include "org/allbinary/canvas/MyCanvas.h"
+#endif
+#if __has_include("org/allbinary/game/commands/MyCanvas.h")
+#include "org/allbinary/game/commands/MyCanvas.h"
+#endif
+#if __has_include("org/allbinary/game/input/MyCanvas.h")
+#include "org/allbinary/game/input/MyCanvas.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/MyCanvas.h")
+#include "org/allbinary/game/input/event/MyCanvas.h"
+#endif
+#if __has_include("org/allbinary/logic/string/MyCanvas.h")
+#include "org/allbinary/logic/string/MyCanvas.h"
+#endif
+#if __has_include("org/allbinary/logic/string/MyCanvas.h")
+#include "org/allbinary/logic/string/MyCanvas.h"
+#endif
+#if __has_include("org/allbinary/util/MyCanvas.h")
+#include "org/allbinary/util/MyCanvas.h"
+#endif
+#if __has_include("org/allbinary/game/commands/GameCommandsFactory.h")
+#include "org/allbinary/game/commands/GameCommandsFactory.h"
+#endif
 
-typedef struct DemoCanvasBasicStartInputProcessor DemoCanvasBasicStartInputProcessor;
-struct DemoCanvasBasicStartInputProcessor {
-    BasicMenuInputProcessor base;
-};
 
 
-DemoCanvasBasicStartInputProcessor* DemoCanvasBasicStartInputProcessor_new(BasicArrayList* gameKeyEventList, RunnableCanvas* gameCanvas);
 
-void DemoCanvasBasicStartInputProcessor_init(DemoCanvasBasicStartInputProcessor* this, BasicArrayList* gameKeyEventList, RunnableCanvas* gameCanvas);
-int32_t DemoCanvasBasicStartInputProcessor_processInputList(DemoCanvasBasicStartInputProcessor* this);
+
+void DemoCanvasBasicStartInputProcessor_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void DemoCanvasBasicStartInputProcessor_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("DemoCanvasBasicStartInputProcessor", "BasicMenuInputProcessor");
+    java_register_method("DemoCanvasBasicStartInputProcessor", "processInputList", (void*) DemoCanvasBasicStartInputProcessor_processInputList);
+}
 
 
 void DemoCanvasBasicStartInputProcessor_init(DemoCanvasBasicStartInputProcessor* this, BasicArrayList* gameKeyEventList, RunnableCanvas* gameCanvas) {
+    DemoCanvasBasicStartInputProcessor_register();
         BasicMenuInputProcessor_init(&this->base, gameKeyEventList, -1, gameCanvas);
 }
 
 DemoCanvasBasicStartInputProcessor* DemoCanvasBasicStartInputProcessor_new(BasicArrayList* gameKeyEventList, RunnableCanvas* gameCanvas) {
-    DemoCanvasBasicStartInputProcessor* this = calloc(1, sizeof(DemoCanvasBasicStartInputProcessor));
+    DemoCanvasBasicStartInputProcessor* this = java_object_alloc(sizeof(DemoCanvasBasicStartInputProcessor), "DemoCanvasBasicStartInputProcessor");
     DemoCanvasBasicStartInputProcessor_init(this, gameKeyEventList, gameCanvas);
     return this;
 }
@@ -58,14 +116,14 @@ DemoCanvasBasicStartInputProcessor* DemoCanvasBasicStartInputProcessor_new(Basic
 
 // throws Exception
 int32_t DemoCanvasBasicStartInputProcessor_processInputList(DemoCanvasBasicStartInputProcessor* this) {
-        BasicArrayList* list = DemoCanvasBasicStartInputProcessor_getGameKeyEventList(this);
+        BasicArrayList* list = GameInput_getGameKeyEventList(this);
         int32_t size = BasicArrayList_size(list);
         GameKeyEvent* gameKeyEvent = nullptr;
         for (int32_t index = 0; index < size; index++) {
             gameKeyEvent = ((GameKeyEvent*) list->objectArray[index]);
-            JAVA_CALL(this->logUtil, putF, JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), "Start GameKey: "), append, StringUtil_toString(StringUtil_getInstance(), gameKeyEvent)), toString), this, GameInputStrings_getInstance()->PROCESS_INPUT);
+            LogUtil_putF(this->base.base.base.logUtil, java_string_of(StringMaker_append(StringMaker_append(StringMaker_new(), "Start GameKey: "), StringUtil_toString(StringUtil_getInstance(), gameKeyEvent))), this, GameInputStrings_getInstance()->PROCESS_INPUT);
         }
-        JAVA_CALL(JAVA_CALL(DemoCanvasBasicStartInputProcessor_getCanvas(this), getCustomCommandListener), commandAction, GameCommandsFactory_getInstance()->START_COMMAND, NullCanvas_NULL_CANVAS);
+        CommandListener_commandAction(MyCanvas_getCustomCommandListener(BasicMenuInputProcessor_getCanvas(this)), GameCommandsFactory_getInstance()->START_COMMAND, (NullCanvas_staticInit(), NullCanvas_NULL_CANVAS));
         return size;
 }
 

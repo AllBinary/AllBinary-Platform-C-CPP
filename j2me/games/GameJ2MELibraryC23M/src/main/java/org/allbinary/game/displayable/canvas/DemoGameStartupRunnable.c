@@ -1,46 +1,33 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.displayable.canvas
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/displayable/canvas/DemoGameStartupRunnable.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/string/CommonStrings.h"
-#include "org/allbinary/thread/ABRunnable.h"
+#include "org/allbinary/game/displayable/canvas/DemoCanvas.h"
 
-typedef struct DemoGameStartupRunnable DemoGameStartupRunnable;
-struct DemoGameStartupRunnable {
-    ABRunnable base;
-    LogUtil* logUtil;
-    DemoCanvas* demoCanvas;
-};
 
-constexpr int32_t DemoGameStartupRunnable_TYPE = 4;
 
-DemoGameStartupRunnable* DemoGameStartupRunnable_new(DemoCanvas* demoCanvas);
 
-void DemoGameStartupRunnable_init(DemoGameStartupRunnable* this, DemoCanvas* demoCanvas);
-void DemoGameStartupRunnable_run(DemoGameStartupRunnable* this);
-int32_t DemoGameStartupRunnable_getType(DemoGameStartupRunnable* this);
+
+
+
+void DemoGameStartupRunnable_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void DemoGameStartupRunnable_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("DemoGameStartupRunnable", "ABRunnable");
+    java_register_method("DemoGameStartupRunnable", "run", (void*) DemoGameStartupRunnable_run);
+    java_register_method("DemoGameStartupRunnable", "getType", (void*) DemoGameStartupRunnable_getType);
+}
 
 static void DemoGameStartupRunnable_initFields(DemoGameStartupRunnable* this) {
     this->logUtil = LogUtil_getInstance();
@@ -49,13 +36,14 @@ static void DemoGameStartupRunnable_initFields(DemoGameStartupRunnable* this) {
 
 
 void DemoGameStartupRunnable_init(DemoGameStartupRunnable* this, DemoCanvas* demoCanvas) {
+    DemoGameStartupRunnable_register();
     ABRunnable_init(&this->base);
     DemoGameStartupRunnable_initFields(this);
         this->demoCanvas = demoCanvas;
 }
 
 DemoGameStartupRunnable* DemoGameStartupRunnable_new(DemoCanvas* demoCanvas) {
-    DemoGameStartupRunnable* this = calloc(1, sizeof(DemoGameStartupRunnable));
+    DemoGameStartupRunnable* this = java_object_alloc(sizeof(DemoGameStartupRunnable), "DemoGameStartupRunnable");
     DemoGameStartupRunnable_init(this, demoCanvas);
     return this;
 }
@@ -63,13 +51,13 @@ DemoGameStartupRunnable* DemoGameStartupRunnable_new(DemoCanvas* demoCanvas) {
 
 void DemoGameStartupRunnable_run(DemoGameStartupRunnable* this) {
         JAVA_TRY {
-            DemoGameStartupRunnable_setRunning(this, true);
+            ABRunnable_setRunning(this, true);
             DemoCanvas_stopGameDemo(this->demoCanvas);
             DemoCanvas_create(this->demoCanvas);
             DemoCanvas_start(this->demoCanvas);
-            DemoGameStartupRunnable_setRunning(this, false);
+            ABRunnable_setRunning(this, false);
         } JAVA_CATCH(Exception, e) {
-            DemoGameStartupRunnable_setRunning(this, false);
+            ABRunnable_setRunning(this, false);
             CommonStrings* commonStrings = CommonStrings_getInstance();
             LogUtil_put(this->logUtil, commonStrings->EXCEPTION, this, commonStrings->RUN, e);
         } JAVA_END_TRY;

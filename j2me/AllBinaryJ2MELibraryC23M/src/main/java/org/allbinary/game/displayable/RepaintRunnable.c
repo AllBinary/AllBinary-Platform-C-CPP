@@ -1,45 +1,34 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2022 AllBinary 
- * 
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- * 
- * Created By: Travis Berthelot 
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.displayable
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Canvas.h"
+#include "org/allbinary/game/displayable/RepaintRunnable.h"
+#include "javax/microedition/lcdui/Canvas.h"
 #include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/string/CommonStrings.h"
-#include "org/allbinary/thread/ARunnable.h"
-
-typedef struct RepaintRunnable RepaintRunnable;
-struct RepaintRunnable {
-    ARunnable base;
-    Canvas* canvas;
-};
+#if __has_include("org/allbinary/graphics/displayable/DisplayInfoSingleton.h")
+#include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
+#endif
 
 
-RepaintRunnable* RepaintRunnable_new(Canvas* canvas);
 
-void RepaintRunnable_init(RepaintRunnable* this, Canvas* canvas);
-void RepaintRunnable_run(RepaintRunnable* this);
+
+
+void RepaintRunnable_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void RepaintRunnable_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("RepaintRunnable", "ARunnable");
+    java_register_method("RepaintRunnable", "run", (void*) RepaintRunnable_run);
+}
 
 static void RepaintRunnable_initFields(RepaintRunnable* this) {
     
@@ -47,13 +36,14 @@ static void RepaintRunnable_initFields(RepaintRunnable* this) {
 
 
 void RepaintRunnable_init(RepaintRunnable* this, Canvas* canvas) {
+    RepaintRunnable_register();
     ARunnable_init(&this->base);
     RepaintRunnable_initFields(this);
         this->canvas = canvas;
 }
 
 RepaintRunnable* RepaintRunnable_new(Canvas* canvas) {
-    RepaintRunnable* this = calloc(1, sizeof(RepaintRunnable));
+    RepaintRunnable* this = java_object_alloc(sizeof(RepaintRunnable), "RepaintRunnable");
     RepaintRunnable_init(this, canvas);
     return this;
 }

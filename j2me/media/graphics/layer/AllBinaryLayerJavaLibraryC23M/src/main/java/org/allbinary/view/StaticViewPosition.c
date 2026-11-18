@@ -1,66 +1,57 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.view
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/view/StaticViewPosition.h"
 #include "org/allbinary/view/ViewPosition.h"
 
-typedef struct StaticViewPosition StaticViewPosition;
-struct StaticViewPosition {
-    ViewPosition base;
-};
 
 
-StaticViewPosition* StaticViewPosition_new(int32_t x, int32_t y, int32_t z);
 
-void StaticViewPosition_init(StaticViewPosition* this, int32_t x, int32_t y, int32_t z);
-int32_t StaticViewPosition_getX(StaticViewPosition* this);
-int32_t StaticViewPosition_getY(StaticViewPosition* this);
-int32_t StaticViewPosition_getZ(StaticViewPosition* this);
+
+
+
+void StaticViewPosition_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void StaticViewPosition_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("StaticViewPosition", "ViewPosition");
+    java_register_method("StaticViewPosition", "getX", (void*) StaticViewPosition_getX);
+    java_register_method("StaticViewPosition", "getY", (void*) StaticViewPosition_getY);
+    java_register_method("StaticViewPosition", "getZ", (void*) StaticViewPosition_getZ);
+}
 
 
 void StaticViewPosition_init(StaticViewPosition* this, int32_t x, int32_t y, int32_t z) {
+    StaticViewPosition_register();
         ViewPosition_init(&this->base, x, y, z);
 }
 
 StaticViewPosition* StaticViewPosition_new(int32_t x, int32_t y, int32_t z) {
-    StaticViewPosition* this = calloc(1, sizeof(StaticViewPosition));
+    StaticViewPosition* this = java_object_alloc(sizeof(StaticViewPosition), "StaticViewPosition");
     StaticViewPosition_init(this, x, y, z);
     return this;
 }
 
 
 int32_t StaticViewPosition_getX(StaticViewPosition* this) {
-        return StaticViewPosition_getRawX(this);
+        return GPoint_getRawX(this);
 }
 
 
 int32_t StaticViewPosition_getY(StaticViewPosition* this) {
-        return StaticViewPosition_getRawY(this);
+        return GPoint_getRawY(this);
 }
 
 
 int32_t StaticViewPosition_getZ(StaticViewPosition* this) {
-        return StaticViewPosition_getRawZ(this);
+        return GPoint_getRawZ(this);
 }
 

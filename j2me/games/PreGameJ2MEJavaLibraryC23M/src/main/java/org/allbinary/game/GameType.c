@@ -1,39 +1,27 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct GameType GameType;
-struct GameType {
-    const char* name;
-};
+#include "org/allbinary/game/GameType.h"
 
 
-GameType* GameType_new(const char* name);
 
-void GameType_init(GameType* this, const char* name);
-const char* GameType_toString(GameType* this);
+
+
+void GameType_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void GameType_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GameType", nullptr);
+    java_register_method("GameType", "toString", (void*) GameType_toString);
+}
 
 static void GameType_initFields(GameType* this) {
     
@@ -41,12 +29,13 @@ static void GameType_initFields(GameType* this) {
 
 
 void GameType_init(GameType* this, const char* name) {
+    GameType_register();
     GameType_initFields(this);
         this->name = name;
 }
 
 GameType* GameType_new(const char* name) {
-    GameType* this = calloc(1, sizeof(GameType));
+    GameType* this = java_object_alloc(sizeof(GameType), "GameType");
     GameType_init(this, name);
     return this;
 }

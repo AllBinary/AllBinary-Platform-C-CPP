@@ -1,48 +1,38 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.tracking
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/tracking/TrackingEventFactory.h"
 #include "org/allbinary/logic/util/event/AllBinaryEventObject.h"
-#include "org/allbinary/logic/util/event/AllBinaryEventObjectFactoryInterface.h"
-
-typedef struct TrackingEventFactory TrackingEventFactory;
-struct TrackingEventFactory {
-    AllBinaryEventObjectFactoryInterface AllBinaryEventObjectFactoryInterface_interface;
-};
+#include "org/allbinary/game/tracking/TrackingEvent.h"
+#include "org/allbinary/game/tracking/TrackingEventHandler.h"
 
 
-TrackingEventFactory* TrackingEventFactory_new(void);
 
-void TrackingEventFactory_init(TrackingEventFactory* this);
-AllBinaryEventObject* TrackingEventFactory_getInstance(TrackingEventFactory* this);
+
+
+void TrackingEventFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void TrackingEventFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("TrackingEventFactory", nullptr);
+    java_register_method("TrackingEventFactory", "getInstance", (void*) TrackingEventFactory_getInstance);
+}
 
 
 void TrackingEventFactory_init(TrackingEventFactory* this) {
+    TrackingEventFactory_register();
 }
 
 TrackingEventFactory* TrackingEventFactory_new(void) {
-    TrackingEventFactory* this = calloc(1, sizeof(TrackingEventFactory));
+    TrackingEventFactory* this = java_object_alloc(sizeof(TrackingEventFactory), "TrackingEventFactory");
     TrackingEventFactory_init(this);
     return this;
 }

@@ -6,6 +6,15 @@
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/thread/ThreadObjectUtil.h"
 #include "org/allbinary/thread/ThreadPool.h"
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
 
 

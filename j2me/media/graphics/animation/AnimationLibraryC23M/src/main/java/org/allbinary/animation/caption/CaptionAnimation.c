@@ -1,49 +1,32 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation.caption
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
-#include "org/allbinary/animation/Animation.h"
-
-typedef struct CaptionAnimation CaptionAnimation;
-struct CaptionAnimation {
-    Animation base;
-    Animation* animationInterface;
-    Animation* overlayAnimationInterface;
-    int32_t captionDx;
-    int32_t captionDy;
-    int32_t dx;
-    int32_t dy;
-};
+#include "org/allbinary/animation/caption/CaptionAnimation.h"
+#include "javax/microedition/lcdui/Graphics.h"
 
 
-CaptionAnimation* CaptionAnimation_new(Animation* animationInterface, Animation* overlayAnimationInterface, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy);
 
-void CaptionAnimation_init(CaptionAnimation* this, Animation* animationInterface, Animation* overlayAnimationInterface, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy);
-void CaptionAnimation_nextFrame(CaptionAnimation* this);
-void CaptionAnimation_paintXY(CaptionAnimation* this, Graphics* graphics, int32_t x, int32_t y);
-void CaptionAnimation_paintThreedXYZ(CaptionAnimation* this, Graphics* graphics, int32_t x, int32_t y, int32_t z);
+
+
+
+
+void CaptionAnimation_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void CaptionAnimation_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("CaptionAnimation", "Animation");
+    java_register_method("CaptionAnimation", "nextFrame", (void*) CaptionAnimation_nextFrame);
+    java_register_method("CaptionAnimation", "paintXY", (void*) CaptionAnimation_paintXY);
+    java_register_method("CaptionAnimation", "paintThreedXYZ", (void*) CaptionAnimation_paintThreedXYZ);
+}
 
 static void CaptionAnimation_initFields(CaptionAnimation* this) {
     
@@ -56,6 +39,7 @@ static void CaptionAnimation_initFields(CaptionAnimation* this) {
 
 
 void CaptionAnimation_init(CaptionAnimation* this, Animation* animationInterface, Animation* overlayAnimationInterface, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy) {
+    CaptionAnimation_register();
     Animation_init(&this->base);
     CaptionAnimation_initFields(this);
         this->animationInterface = animationInterface;
@@ -67,7 +51,7 @@ void CaptionAnimation_init(CaptionAnimation* this, Animation* animationInterface
 }
 
 CaptionAnimation* CaptionAnimation_new(Animation* animationInterface, Animation* overlayAnimationInterface, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy) {
-    CaptionAnimation* this = calloc(1, sizeof(CaptionAnimation));
+    CaptionAnimation* this = java_object_alloc(sizeof(CaptionAnimation), "CaptionAnimation");
     CaptionAnimation_init(this, animationInterface, overlayAnimationInterface, captionDx, captionDy, dx, dy);
     return this;
 }

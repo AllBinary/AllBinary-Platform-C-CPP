@@ -1,31 +1,6 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-#include "org/allbinary/android/input/motion/AnalogLocationInputProcessor.h"
+#include "org/allbinary/input/DirectionalAnalogLocationInputProcessor.h"
 #include "org/allbinary/game/input/GameInputProcessor.h"
-#include "org/allbinary/game/input/GameKeyEventSourceInterface.h"
 #include "org/allbinary/game/input/GameKeyFactory.h"
 #include "org/allbinary/game/input/analog/AnalogLocationInput.h"
 #include "org/allbinary/game/input/event/GameKeyEvent.h"
@@ -34,43 +9,82 @@
 #include "org/allbinary/layer/AllBinaryLayerManager.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/string/CommonStrings.h"
+#if __has_include("org/allbinary/game/input/event/GameKeyEventFactory.h")
+#include "org/allbinary/game/input/event/GameKeyEventFactory.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/GameKeyEventFactory.h")
+#include "org/allbinary/game/input/event/GameKeyEventFactory.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/GameKeyEventFactory.h")
+#include "org/allbinary/game/input/event/GameKeyEventFactory.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/GameKeyEventFactory.h")
+#include "org/allbinary/game/input/event/GameKeyEventFactory.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/GameKeyEventFactory.h")
+#include "org/allbinary/game/input/event/GameKeyEventFactory.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/GameKeyEventFactory.h")
+#include "org/allbinary/game/input/event/GameKeyEventFactory.h"
+#endif
+#if __has_include("org/allbinary/game/input/GameInputProcessor.h")
+#include "org/allbinary/game/input/GameInputProcessor.h"
+#endif
+#if __has_include("org/allbinary/game/input/GameInputProcessor.h")
+#include "org/allbinary/game/input/GameInputProcessor.h"
+#endif
+#if __has_include("org/allbinary/game/input/GameInputProcessor.h")
+#include "org/allbinary/game/input/GameInputProcessor.h"
+#endif
+#if __has_include("org/allbinary/game/input/GameInputProcessor.h")
+#include "org/allbinary/game/input/GameInputProcessor.h"
+#endif
+#if __has_include("org/allbinary/game/input/GameInputProcessor.h")
+#include "org/allbinary/game/input/GameInputProcessor.h"
+#endif
+#if __has_include("org/allbinary/game/input/GameInputProcessor.h")
+#include "org/allbinary/game/input/GameInputProcessor.h"
+#endif
 
-typedef struct DirectionalAnalogLocationInputProcessor DirectionalAnalogLocationInputProcessor;
-struct DirectionalAnalogLocationInputProcessor {
-    AnalogLocationInputProcessor base;
-    GameKeyEventSourceInterface GameKeyEventSourceInterface_interface;
-    LogUtil* logUtil;
-    GameInputProcessor** inputProcessorArray;
-    GameKeyFactory* gameKeyFactory;
-    GameKeyEvent* leftGameKeyEvent;
-    GameKeyEvent* rightGameKeyEvent;
-    GameKeyEvent* upGameKeyEvent;
-    GameKeyEvent* downGameKeyEvent;
-    GameKeyEvent* leftTriggerGameKeyEvent;
-    GameKeyEvent* rightTriggerGameKeyEvent;
-};
 
 
-DirectionalAnalogLocationInputProcessor* DirectionalAnalogLocationInputProcessor_new(GameInputProcessor** inputProcessorArray);
 
-void DirectionalAnalogLocationInputProcessor_init(DirectionalAnalogLocationInputProcessor* this, GameInputProcessor** inputProcessorArray);
-void DirectionalAnalogLocationInputProcessor_process(DirectionalAnalogLocationInputProcessor* this, AllBinaryLayerManager* allbinaryLayerManager, AnalogLocationInput* analogLocationInput);
-int32_t DirectionalAnalogLocationInputProcessor_getSourceId(DirectionalAnalogLocationInputProcessor* this);
+
+
+void DirectionalAnalogLocationInputProcessor_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void DirectionalAnalogLocationInputProcessor_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("DirectionalAnalogLocationInputProcessor", "AnalogLocationInputProcessor");
+    java_register_method("DirectionalAnalogLocationInputProcessor", "process", (void*) DirectionalAnalogLocationInputProcessor_process);
+    java_register_method("DirectionalAnalogLocationInputProcessor", "getSourceId", (void*) DirectionalAnalogLocationInputProcessor_getSourceId);
+}
 
 static void DirectionalAnalogLocationInputProcessor_initFields(DirectionalAnalogLocationInputProcessor* this) {
     this->logUtil = LogUtil_getInstance();
     
     this->gameKeyFactory = GameKeyFactory_getInstance();
-    this->leftGameKeyEvent = GameKeyEvent_NONE;
-    this->rightGameKeyEvent = GameKeyEvent_NONE;
-    this->upGameKeyEvent = GameKeyEvent_NONE;
-    this->downGameKeyEvent = GameKeyEvent_NONE;
-    this->leftTriggerGameKeyEvent = GameKeyEvent_NONE;
-    this->rightTriggerGameKeyEvent = GameKeyEvent_NONE;
+    this->leftGameKeyEvent = (GameKeyEvent_staticInit(), GameKeyEvent_NONE);
+    this->rightGameKeyEvent = (GameKeyEvent_staticInit(), GameKeyEvent_NONE);
+    this->upGameKeyEvent = (GameKeyEvent_staticInit(), GameKeyEvent_NONE);
+    this->downGameKeyEvent = (GameKeyEvent_staticInit(), GameKeyEvent_NONE);
+    this->leftTriggerGameKeyEvent = (GameKeyEvent_staticInit(), GameKeyEvent_NONE);
+    this->rightTriggerGameKeyEvent = (GameKeyEvent_staticInit(), GameKeyEvent_NONE);
 }
 
 
 void DirectionalAnalogLocationInputProcessor_init(DirectionalAnalogLocationInputProcessor* this, GameInputProcessor** inputProcessorArray) {
+    DirectionalAnalogLocationInputProcessor_register();
     AnalogLocationInputProcessor_init(&this->base);
     DirectionalAnalogLocationInputProcessor_initFields(this);
         this->inputProcessorArray = inputProcessorArray;
@@ -88,7 +102,7 @@ void DirectionalAnalogLocationInputProcessor_init(DirectionalAnalogLocationInput
 }
 
 DirectionalAnalogLocationInputProcessor* DirectionalAnalogLocationInputProcessor_new(GameInputProcessor** inputProcessorArray) {
-    DirectionalAnalogLocationInputProcessor* this = calloc(1, sizeof(DirectionalAnalogLocationInputProcessor));
+    DirectionalAnalogLocationInputProcessor* this = java_object_alloc(sizeof(DirectionalAnalogLocationInputProcessor), "DirectionalAnalogLocationInputProcessor");
     DirectionalAnalogLocationInputProcessor_init(this, inputProcessorArray);
     return this;
 }
@@ -103,20 +117,20 @@ void DirectionalAnalogLocationInputProcessor_process(DirectionalAnalogLocationIn
             int32_t leftTrigger = AnalogLocationInput_getLeftTrigger(analogLocationInput);
             int32_t rightTrigger = AnalogLocationInput_getRightTrigger(analogLocationInput);
             if (x < 0) {
-                JAVA_CALL(this->inputProcessorArray[GameKeyEvent_getKey(this->leftGameKeyEvent)], processAnalog, allbinaryLayerManager, this->leftGameKeyEvent, x);
+                GameInputProcessor_processAnalog(this->inputProcessorArray[GameKeyEvent_getKey(this->leftGameKeyEvent)], allbinaryLayerManager, this->leftGameKeyEvent, x);
             } else if (x > 0) {
-                JAVA_CALL(this->inputProcessorArray[GameKeyEvent_getKey(this->rightGameKeyEvent)], processAnalog, allbinaryLayerManager, this->rightGameKeyEvent, x);
+                GameInputProcessor_processAnalog(this->inputProcessorArray[GameKeyEvent_getKey(this->rightGameKeyEvent)], allbinaryLayerManager, this->rightGameKeyEvent, x);
             }
             if (y < 0) {
-                JAVA_CALL(this->inputProcessorArray[GameKeyEvent_getKey(this->downGameKeyEvent)], processAnalog, allbinaryLayerManager, this->downGameKeyEvent, y);
+                GameInputProcessor_processAnalog(this->inputProcessorArray[GameKeyEvent_getKey(this->downGameKeyEvent)], allbinaryLayerManager, this->downGameKeyEvent, y);
             } else if (y > 0) {
-                JAVA_CALL(this->inputProcessorArray[GameKeyEvent_getKey(this->upGameKeyEvent)], processAnalog, allbinaryLayerManager, this->upGameKeyEvent, y);
+                GameInputProcessor_processAnalog(this->inputProcessorArray[GameKeyEvent_getKey(this->upGameKeyEvent)], allbinaryLayerManager, this->upGameKeyEvent, y);
             }
             if (leftTrigger > 0) {
-                JAVA_CALL(this->inputProcessorArray[GameKeyEvent_getKey(this->leftTriggerGameKeyEvent)], processAnalog, allbinaryLayerManager, this->leftTriggerGameKeyEvent, leftTrigger);
+                GameInputProcessor_processAnalog(this->inputProcessorArray[GameKeyEvent_getKey(this->leftTriggerGameKeyEvent)], allbinaryLayerManager, this->leftTriggerGameKeyEvent, leftTrigger);
             }
             if (rightTrigger > 0) {
-                JAVA_CALL(this->inputProcessorArray[GameKeyEvent_getKey(this->rightTriggerGameKeyEvent)], processAnalog, allbinaryLayerManager, this->rightTriggerGameKeyEvent, rightTrigger);
+                GameInputProcessor_processAnalog(this->inputProcessorArray[GameKeyEvent_getKey(this->rightTriggerGameKeyEvent)], allbinaryLayerManager, this->rightTriggerGameKeyEvent, rightTrigger);
             }
         } JAVA_CATCH(Exception, e) {
             CommonStrings* commonStrings = CommonStrings_getInstance();

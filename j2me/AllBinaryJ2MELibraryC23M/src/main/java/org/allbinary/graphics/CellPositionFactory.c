@@ -1,56 +1,65 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/graphics/CellPositionFactory.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/string/CommonStrings.h"
+#include "org/allbinary/graphics/CellPosition.h"
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
 
-typedef struct CellPositionFactory CellPositionFactory;
-struct CellPositionFactory {
-    LogUtil* logUtil;
-    CellPosition* NONE;
-    CellPosition*** cellPositionArray;
-    int32_t columns;
-    int32_t rows;
-};
 
 static CellPositionFactory* CellPositionFactory_SINGLETON;
 
-CellPositionFactory* CellPositionFactory_new(void);
-CellPositionFactory* CellPositionFactory_getInstance(void);
 
-void CellPositionFactory_init(CellPositionFactory* this);
-void CellPositionFactory_init(CellPositionFactory* this, int32_t columns, int32_t rows);
-CellPosition* CellPositionFactory_getInstanceColRow(CellPositionFactory* this, int32_t i_column, int32_t i_row);
-CellPosition* CellPositionFactory_createInstance(CellPositionFactory* this, int32_t i_column, int32_t i_row);
-int32_t CellPositionFactory_getColumns(CellPositionFactory* this);
-int32_t CellPositionFactory_getRows(CellPositionFactory* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+
 void CellPositionFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     CellPositionFactory_SINGLETON = CellPositionFactory_new();
+}
+
+void CellPositionFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("CellPositionFactory", nullptr);
+    java_register_method("CellPositionFactory", "init", (void*) CellPositionFactory_initMethod);
+    java_register_method("CellPositionFactory", "getInstanceColRow", (void*) CellPositionFactory_getInstanceColRow);
+    java_register_method("CellPositionFactory", "createInstance", (void*) CellPositionFactory_createInstance);
+    java_register_method("CellPositionFactory", "getColumns", (void*) CellPositionFactory_getColumns);
+    java_register_method("CellPositionFactory", "getRows", (void*) CellPositionFactory_getRows);
 }
 
 static void CellPositionFactory_initFields(CellPositionFactory* this) {
@@ -63,29 +72,30 @@ static void CellPositionFactory_initFields(CellPositionFactory* this) {
 
 
 CellPositionFactory* CellPositionFactory_getInstance(void) {
-        return CellPositionFactory_SINGLETON;
+        return (CellPositionFactory_staticInit(), CellPositionFactory_SINGLETON);
 }
 
 
 void CellPositionFactory_init(CellPositionFactory* this) {
+    CellPositionFactory_register();
     CellPositionFactory_initFields(this);
 }
 
 CellPositionFactory* CellPositionFactory_new(void) {
-    CellPositionFactory* this = calloc(1, sizeof(CellPositionFactory));
+    CellPositionFactory* this = java_object_alloc(sizeof(CellPositionFactory), "CellPositionFactory");
     CellPositionFactory_init(this);
     return this;
 }
 
 
-void CellPositionFactory_init(CellPositionFactory* this, int32_t columns, int32_t rows) {
+void CellPositionFactory_initMethod(CellPositionFactory* this, int32_t columns, int32_t rows) {
         CommonStrings* commonStrings = CommonStrings_getInstance();
         StringMaker* stringBuffer = StringMaker_new();
         StringMaker_append(stringBuffer, "Init: columns: ");
         StringMaker_appendint(stringBuffer, columns);
         StringMaker_append(stringBuffer, " rows: ");
         StringMaker_appendint(stringBuffer, rows);
-        LogUtil_putF(this->logUtil, StringMaker_toString(stringBuffer), this, commonStrings->INIT);
+        LogUtil_putF(this->logUtil, java_string_of(stringBuffer), this, commonStrings->INIT);
         this->cellPositionArray = ((CellPosition***) java_array_new2(sizeof(CellPosition*), columns, rows));
         this->columns = columns;
         this->rows = rows;
@@ -102,7 +112,7 @@ CellPosition* CellPositionFactory_getInstanceColRow(CellPositionFactory* this, i
             return this->cellPositionArray[i_column][i_row];
         } JAVA_CATCH(Exception, e) {
             CommonStrings* commonStrings = CommonStrings_getInstance();
-            LogUtil_put(this->logUtil, JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), "columns: "), appendint, CellPositionFactory_getColumns(this)), append, " rows: "), appendint, CellPositionFactory_getRows(this)), append, " col: "), appendint, i_column), append, " row: "), appendint, i_row), toString), this, commonStrings->GET_INSTANCE, e);
+            LogUtil_put(this->logUtil, java_string_of(StringMaker_appendint(StringMaker_append(StringMaker_appendint(StringMaker_append(StringMaker_appendint(StringMaker_append(StringMaker_appendint(StringMaker_append(StringMaker_new(), "columns: "), CellPositionFactory_getColumns(this)), " rows: "), CellPositionFactory_getRows(this)), " col: "), i_column), " row: "), i_row)), this, commonStrings->GET_INSTANCE, e);
             return this->NONE;
         } JAVA_END_TRY;
 }

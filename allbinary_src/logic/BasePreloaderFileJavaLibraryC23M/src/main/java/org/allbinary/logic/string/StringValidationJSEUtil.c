@@ -1,46 +1,34 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.string
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct StringValidationJSEUtil StringValidationJSEUtil;
-struct StringValidationJSEUtil {
-    char unused;
-};
+#include "org/allbinary/logic/string/StringValidationJSEUtil.h"
 
 
-StringValidationJSEUtil* StringValidationJSEUtil_new(void);
 
-void StringValidationJSEUtil_init(StringValidationJSEUtil* this);
-bool StringValidationJSEUtil_isBlank(const char* string);
+
+
+void StringValidationJSEUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void StringValidationJSEUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("StringValidationJSEUtil", nullptr);
+}
 
 
 void StringValidationJSEUtil_init(StringValidationJSEUtil* this) {
+    StringValidationJSEUtil_register();
 }
 
 StringValidationJSEUtil* StringValidationJSEUtil_new(void) {
-    StringValidationJSEUtil* this = calloc(1, sizeof(StringValidationJSEUtil));
+    StringValidationJSEUtil* this = java_object_alloc(sizeof(StringValidationJSEUtil), "StringValidationJSEUtil");
     StringValidationJSEUtil_init(this);
     return this;
 }

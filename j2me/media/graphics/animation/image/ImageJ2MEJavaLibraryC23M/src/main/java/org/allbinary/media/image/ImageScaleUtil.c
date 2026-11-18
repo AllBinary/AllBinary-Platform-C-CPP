@@ -1,61 +1,47 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.media.image
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Image.h"
+#include "org/allbinary/media/image/ImageScaleUtil.h"
+#include "javax/microedition/lcdui/Image.h"
 #include "org/allbinary/image/ImageCache.h"
 
-typedef struct ImageScaleUtil ImageScaleUtil;
-struct ImageScaleUtil {
-    char unused;
-};
 
 static ImageScaleUtil* ImageScaleUtil_instance;
 
-ImageScaleUtil* ImageScaleUtil_new(void);
-ImageScaleUtil* ImageScaleUtil_getInstance(void);
 
-void ImageScaleUtil_init(ImageScaleUtil* this);
-Image* ImageScaleUtil_createImage2(ImageScaleUtil* this, ImageCache* imageCache, Image* originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached);
-Image* ImageScaleUtil_createImage3(ImageScaleUtil* this, ImageCache* imageCache, Image* originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached, bool mutable);
 
-// Static fields with runtime initializers: call this once at startup
+
+
 void ImageScaleUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     ImageScaleUtil_instance = ImageScaleUtil_new();
+}
+
+void ImageScaleUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ImageScaleUtil", nullptr);
+    java_register_method("ImageScaleUtil", "createImage2", (void*) ImageScaleUtil_createImage2);
+    java_register_method("ImageScaleUtil", "createImage3", (void*) ImageScaleUtil_createImage3);
 }
 
 
 ImageScaleUtil* ImageScaleUtil_getInstance(void) {
-        return ImageScaleUtil_instance;
+        return (ImageScaleUtil_staticInit(), ImageScaleUtil_instance);
 }
 
 
 void ImageScaleUtil_init(ImageScaleUtil* this) {
+    ImageScaleUtil_register();
 }
 
 ImageScaleUtil* ImageScaleUtil_new(void) {
-    ImageScaleUtil* this = calloc(1, sizeof(ImageScaleUtil));
+    ImageScaleUtil* this = java_object_alloc(sizeof(ImageScaleUtil), "ImageScaleUtil");
     ImageScaleUtil_init(this);
     return this;
 }

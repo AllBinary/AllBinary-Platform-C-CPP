@@ -1,55 +1,48 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.layer.pickup
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/game/layer/pickup/IconLayer.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/animation/Animation.h"
 #include "org/allbinary/animation/NullAnimationFactory.h"
 #include "org/allbinary/graphics/PointFactory.h"
 #include "org/allbinary/graphics/Rectangle.h"
-#include "org/allbinary/layer/AllBinaryLayer.h"
 #include "org/allbinary/logic/string/StringUtil.h"
 #include "org/allbinary/view/ViewPosition.h"
+#if __has_include("org/allbinary/animation/NullAnimationFactory.h")
+#include "org/allbinary/animation/NullAnimationFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/graphics/PointFactory.h")
+#include "org/allbinary/graphics/PointFactory.h"
+#endif
 
-typedef struct IconLayer IconLayer;
-struct IconLayer {
-    AllBinaryLayer base;
-    Animation* animationInterface;
-};
 
 IconLayer* IconLayer_NULL_ICON_LAYER;
 
-IconLayer* IconLayer_new(Animation* animationInterface, int32_t width, int32_t height);
 
-void IconLayer_init(IconLayer* this, Animation* animationInterface, int32_t width, int32_t height);
-void IconLayer_paint(IconLayer* this, Graphics* graphics);
-void IconLayer_paintThreed(IconLayer* this, Graphics* graphics);
-Animation* IconLayer_getAnimationInterface(IconLayer* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
 void IconLayer_staticInit(void) {
-    IconLayer_NULL_ICON_LAYER = IconLayer_new(JAVA_CALL(NullAnimationFactory_getFactoryInstance(), getInstance, 0), 0, 0);
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+    IconLayer_NULL_ICON_LAYER = IconLayer_new(NullAnimationFactory_getInstance(NullAnimationFactory_getFactoryInstance(), 0), 0, 0);
+}
+
+void IconLayer_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("IconLayer", "AllBinaryLayer");
+    java_register_method("IconLayer", "paint", (void*) IconLayer_paint);
+    java_register_method("IconLayer", "paintThreed", (void*) IconLayer_paintThreed);
+    java_register_method("IconLayer", "getAnimationInterface", (void*) IconLayer_getAnimationInterface);
 }
 
 static void IconLayer_initFields(IconLayer* this) {
@@ -58,25 +51,26 @@ static void IconLayer_initFields(IconLayer* this) {
 
 
 void IconLayer_init(IconLayer* this, Animation* animationInterface, int32_t width, int32_t height) {
+    IconLayer_register();
         AllBinaryLayer_init(&this->base, StringUtil_getInstance()->EMPTY_STRING, Rectangle_new(PointFactory_getInstance()->ZERO_ZERO, width, height), ViewPosition_getInstanceD());
         IconLayer_initFields(this);
         this->animationInterface = animationInterface;
 }
 
 IconLayer* IconLayer_new(Animation* animationInterface, int32_t width, int32_t height) {
-    IconLayer* this = calloc(1, sizeof(IconLayer));
+    IconLayer* this = java_object_alloc(sizeof(IconLayer), "IconLayer");
     IconLayer_init(this, animationInterface, width, height);
     return this;
 }
 
 
 void IconLayer_paint(IconLayer* this, Graphics* graphics) {
-        Animation_paintXY(this->animationInterface, graphics, this->x, this->y);
+        Animation_paintXY(this->animationInterface, graphics, this->base.base.x, this->base.base.y);
 }
 
 
 void IconLayer_paintThreed(IconLayer* this, Graphics* graphics) {
-        Animation_paintThreedXYZ(this->animationInterface, graphics, this->x, this->y, this->z);
+        Animation_paintThreedXYZ(this->animationInterface, graphics, this->base.base.x, this->base.base.y, this->base.base.z);
 }
 
 

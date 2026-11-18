@@ -1,47 +1,34 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.opengles
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-#include "org/allbinary/game/configuration/feature/Feature.h"
-
-typedef struct OpenGLFeature OpenGLFeature;
-struct OpenGLFeature {
-    Feature base;
-};
+#include "org/allbinary/graphics/opengles/OpenGLFeature.h"
 
 
-OpenGLFeature* OpenGLFeature_new(const char* name);
 
-void OpenGLFeature_init(OpenGLFeature* this, const char* name);
+
+void OpenGLFeature_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void OpenGLFeature_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("OpenGLFeature", "Feature");
+}
 
 
 void OpenGLFeature_init(OpenGLFeature* this, const char* name) {
+    OpenGLFeature_register();
         Feature_init(&this->base, name);
 }
 
 OpenGLFeature* OpenGLFeature_new(const char* name) {
-    OpenGLFeature* this = calloc(1, sizeof(OpenGLFeature));
+    OpenGLFeature* this = java_object_alloc(sizeof(OpenGLFeature), "OpenGLFeature");
     OpenGLFeature_init(this, name);
     return this;
 }

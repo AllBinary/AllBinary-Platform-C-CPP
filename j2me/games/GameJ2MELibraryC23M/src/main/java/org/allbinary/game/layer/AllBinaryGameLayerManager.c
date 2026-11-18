@@ -1,91 +1,102 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.layer
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/layer/AllBinaryGameLayerManager.h"
 #include "org/allbinary/game/GameInfo.h"
 #include "org/allbinary/game/input/NullPlayerGameInputComposite.h"
 #include "org/allbinary/game/input/PlayerGameInputCompositeInterface.h"
 #include "org/allbinary/graphics/ItemColorFactory.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
 #include "org/allbinary/graphics/color/BasicColorFactory.h"
-#include "org/allbinary/layer/AllBinaryLayerManager.h"
 #include "org/allbinary/layer/LayerProcessor.h"
 #include "org/allbinary/logic/NullUtil.h"
 #include "org/allbinary/logic/math/SmallIntegerSingletonFactory.h"
 #include "org/allbinary/util/BasicArrayList.h"
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/graphics/color/BasicColorFactory.h")
+#include "org/allbinary/graphics/color/BasicColorFactory.h"
+#endif
+#if __has_include("org/allbinary/graphics/color/BasicColorFactory.h")
+#include "org/allbinary/graphics/color/BasicColorFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/math/SmallIntegerSingletonFactory.h")
+#include "org/allbinary/logic/math/SmallIntegerSingletonFactory.h"
+#endif
+#if __has_include("org/allbinary/graphics/ItemColorFactory.h")
+#include "org/allbinary/graphics/ItemColorFactory.h"
+#endif
+#if __has_include("org/allbinary/graphics/ItemColorFactory.h")
+#include "org/allbinary/graphics/ItemColorFactory.h"
+#endif
 
-typedef struct AllBinaryGameLayerManager AllBinaryGameLayerManager;
-struct AllBinaryGameLayerManager {
-    AllBinaryLayerManager base;
-    BasicColor* backgroundBasicColor;
-    BasicColor* foregroundBasicColor;
-    GameInfo* gameInfo;
-    PlayerGameInputCompositeInterface* playerGameInputCompositeInterface;
-};
 
-static Any* AllBinaryGameLayerManager_NULL_ALLBINARY_LAYER_MANAGER;
+static void* AllBinaryGameLayerManager_NULL_ALLBINARY_LAYER_MANAGER;
 int32_t AllBinaryGameLayerManager_ID;
 
-AllBinaryGameLayerManager* AllBinaryGameLayerManager_new(BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor, GameInfo* gameInfo);
-AllBinaryGameLayerManager* AllBinaryGameLayerManager_getNullInstance(void);
 
-void AllBinaryGameLayerManager_init(AllBinaryGameLayerManager* this, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor, GameInfo* gameInfo);
-AllBinaryLayerManager* AllBinaryGameLayerManager_getLayerManager(AllBinaryGameLayerManager* this);
-void AllBinaryGameLayerManager_init(AllBinaryGameLayerManager* this);
-BasicColor* AllBinaryGameLayerManager_getBackgroundBasicColor(AllBinaryGameLayerManager* this);
-void AllBinaryGameLayerManager_setBackgroundBasicColor(AllBinaryGameLayerManager* this, BasicColor* backgroundBasicColor);
-BasicColor* AllBinaryGameLayerManager_getForegroundBasicColor(AllBinaryGameLayerManager* this);
-void AllBinaryGameLayerManager_setForegroundBasicColor(AllBinaryGameLayerManager* this, BasicColor* foregroundBasicColor);
-GameInfo* AllBinaryGameLayerManager_getGameInfo(AllBinaryGameLayerManager* this);
-void AllBinaryGameLayerManager_setGameInfo(AllBinaryGameLayerManager* this, GameInfo* gameInfo);
-void AllBinaryGameLayerManager_setLayerProcessorList(AllBinaryGameLayerManager* this, BasicArrayList* list);
-void AllBinaryGameLayerManager_setPlayerGameInputCompositeInterface(AllBinaryGameLayerManager* this, PlayerGameInputCompositeInterface* playerGameInputCompositeInterface);
-PlayerGameInputCompositeInterface* AllBinaryGameLayerManager_getPlayerGameInputCompositeInterface(AllBinaryGameLayerManager* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+
+
+
+
+
+
+
 void AllBinaryGameLayerManager_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     AllBinaryGameLayerManager_NULL_ALLBINARY_LAYER_MANAGER = NullUtil_getInstance()->NULL_OBJECT;
     AllBinaryGameLayerManager_ID = SmallIntegerSingletonFactory_getAt(SmallIntegerSingletonFactory_getInstance(), 22);
+}
+
+void AllBinaryGameLayerManager_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("AllBinaryGameLayerManager", "AllBinaryLayerManager");
+    java_register_method("AllBinaryGameLayerManager", "getLayerManager", (void*) AllBinaryGameLayerManager_getLayerManager);
+    java_register_method("AllBinaryGameLayerManager", "init", (void*) AllBinaryGameLayerManager_initMethod);
+    java_register_method("AllBinaryGameLayerManager", "getBackgroundBasicColor", (void*) AllBinaryGameLayerManager_getBackgroundBasicColor);
+    java_register_method("AllBinaryGameLayerManager", "setBackgroundBasicColor", (void*) AllBinaryGameLayerManager_setBackgroundBasicColor);
+    java_register_method("AllBinaryGameLayerManager", "getForegroundBasicColor", (void*) AllBinaryGameLayerManager_getForegroundBasicColor);
+    java_register_method("AllBinaryGameLayerManager", "setForegroundBasicColor", (void*) AllBinaryGameLayerManager_setForegroundBasicColor);
+    java_register_method("AllBinaryGameLayerManager", "getGameInfo", (void*) AllBinaryGameLayerManager_getGameInfo);
+    java_register_method("AllBinaryGameLayerManager", "setGameInfo", (void*) AllBinaryGameLayerManager_setGameInfo);
+    java_register_method("AllBinaryGameLayerManager", "setLayerProcessorList", (void*) AllBinaryGameLayerManager_setLayerProcessorList);
+    java_register_method("AllBinaryGameLayerManager", "setPlayerGameInputCompositeInterface", (void*) AllBinaryGameLayerManager_setPlayerGameInputCompositeInterface);
+    java_register_method("AllBinaryGameLayerManager", "getPlayerGameInputCompositeInterface", (void*) AllBinaryGameLayerManager_getPlayerGameInputCompositeInterface);
 }
 
 static void AllBinaryGameLayerManager_initFields(AllBinaryGameLayerManager* this) {
     
     
     
-    this->playerGameInputCompositeInterface = NullPlayerGameInputComposite_NULL_PLAYER_GAME_INPUT_COMPOSITE;
+    this->playerGameInputCompositeInterface = (NullPlayerGameInputComposite_staticInit(), NullPlayerGameInputComposite_NULL_PLAYER_GAME_INPUT_COMPOSITE);
 }
 
 
 AllBinaryGameLayerManager* AllBinaryGameLayerManager_getNullInstance(void) {
-        if (AllBinaryGameLayerManager_NULL_ALLBINARY_LAYER_MANAGER == NullUtil_getInstance()->NULL_OBJECT) {
-            AllBinaryGameLayerManager_NULL_ALLBINARY_LAYER_MANAGER = AllBinaryGameLayerManager_new(BasicColorFactory_getInstance()->BLACK, BasicColorFactory_getInstance()->WHITE, GameInfo_NONE);
+        if ((AllBinaryGameLayerManager_staticInit(), AllBinaryGameLayerManager_NULL_ALLBINARY_LAYER_MANAGER) == NullUtil_getInstance()->NULL_OBJECT) {
+            AllBinaryGameLayerManager_NULL_ALLBINARY_LAYER_MANAGER = AllBinaryGameLayerManager_new(BasicColorFactory_getInstance()->BLACK, BasicColorFactory_getInstance()->WHITE, (GameInfo_staticInit(), GameInfo_NONE));
         }
-        return ((AllBinaryGameLayerManager*) AllBinaryGameLayerManager_NULL_ALLBINARY_LAYER_MANAGER);
+        return ((AllBinaryGameLayerManager*) (AllBinaryGameLayerManager_staticInit(), AllBinaryGameLayerManager_NULL_ALLBINARY_LAYER_MANAGER));
 }
 
 
 void AllBinaryGameLayerManager_init(AllBinaryGameLayerManager* this, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor, GameInfo* gameInfo) {
+    AllBinaryGameLayerManager_register();
     AllBinaryLayerManager_init(&this->base);
     AllBinaryGameLayerManager_initFields(this);
         this->backgroundBasicColor = backgroundBasicColor;
@@ -97,7 +108,7 @@ void AllBinaryGameLayerManager_init(AllBinaryGameLayerManager* this, BasicColor*
 }
 
 AllBinaryGameLayerManager* AllBinaryGameLayerManager_new(BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor, GameInfo* gameInfo) {
-    AllBinaryGameLayerManager* this = calloc(1, sizeof(AllBinaryGameLayerManager));
+    AllBinaryGameLayerManager* this = java_object_alloc(sizeof(AllBinaryGameLayerManager), "AllBinaryGameLayerManager");
     AllBinaryGameLayerManager_init(this, backgroundBasicColor, foregroundBasicColor, gameInfo);
     return this;
 }
@@ -108,7 +119,7 @@ AllBinaryLayerManager* AllBinaryGameLayerManager_getLayerManager(AllBinaryGameLa
 }
 
 
-void AllBinaryGameLayerManager_init(AllBinaryGameLayerManager* this) {
+void AllBinaryGameLayerManager_initMethod(AllBinaryGameLayerManager* this) {
 }
 
 
@@ -150,7 +161,7 @@ void AllBinaryGameLayerManager_setLayerProcessorList(AllBinaryGameLayerManager* 
         for (int32_t index = 0; index < size; index++) {
             layerProcessorInterfaceArray[index] = ((LayerProcessor*) list->objectArray[index]);
         }
-        AllBinaryGameLayerManager_setLayerProcessorArray(this, layerProcessorInterfaceArray);
+        AllBinaryLayerManager_setLayerProcessorArray(this, layerProcessorInterfaceArray);
 }
 
 

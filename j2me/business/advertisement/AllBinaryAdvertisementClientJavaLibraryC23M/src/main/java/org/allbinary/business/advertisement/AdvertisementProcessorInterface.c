@@ -1,45 +1,37 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.business.advertisement
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct AdvertisementProcessorInterface AdvertisementProcessorInterface;
-struct AdvertisementProcessorInterface {
-    char unused;
-};
+#include "org/allbinary/business/advertisement/AdvertisementProcessorInterface.h"
 
 
-AdvertisementProcessorInterface* AdvertisementProcessorInterface_new(void);
-void AdvertisementProcessorInterface_process(AdvertisementProcessorInterface* this);
-void AdvertisementProcessorInterface_start(AdvertisementProcessorInterface* this);
-void AdvertisementProcessorInterface_stop(AdvertisementProcessorInterface* this);
+
+
+
+
+void AdvertisementProcessorInterface_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void AdvertisementProcessorInterface_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("AdvertisementProcessorInterface", nullptr);
+    java_register_method("AdvertisementProcessorInterface", "process", (void*) AdvertisementProcessorInterface_process);
+    java_register_method("AdvertisementProcessorInterface", "start", (void*) AdvertisementProcessorInterface_start);
+    java_register_method("AdvertisementProcessorInterface", "stop", (void*) AdvertisementProcessorInterface_stop);
+}
 
 void AdvertisementProcessorInterface_init(AdvertisementProcessorInterface* this) {
+    AdvertisementProcessorInterface_register();
 }
 
 AdvertisementProcessorInterface* AdvertisementProcessorInterface_new(void) {
-    AdvertisementProcessorInterface* this = calloc(1, sizeof(AdvertisementProcessorInterface));
+    AdvertisementProcessorInterface* this = java_object_alloc(sizeof(AdvertisementProcessorInterface), "AdvertisementProcessorInterface");
     AdvertisementProcessorInterface_init(this);
     return this;
 }

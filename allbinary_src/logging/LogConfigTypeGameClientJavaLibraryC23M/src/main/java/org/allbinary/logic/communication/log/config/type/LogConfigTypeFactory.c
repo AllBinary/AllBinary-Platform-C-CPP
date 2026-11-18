@@ -41,8 +41,8 @@ LogConfigTypeFactory* LogConfigTypeFactory_getInstance(void) {
 void LogConfigTypeFactory_init(LogConfigTypeFactory* this) {
     LogConfigTypeFactory_register();
     LogConfigTypeFactory_initFields(this);
-        JAVA_CALL((LogConfigTypes_staticInit(), LogConfigTypes_LOGGING), add, this->OS);
-        JAVA_CALL((LogConfigTypes_staticInit(), LogConfigTypes_LOGGING), add, this->FACTORYERROR);
+        BasicArrayList_add((LogConfigTypes_staticInit(), LogConfigTypes_LOGGING), this->OS);
+        BasicArrayList_add((LogConfigTypes_staticInit(), LogConfigTypes_LOGGING), this->FACTORYERROR);
 }
 
 LogConfigTypeFactory* LogConfigTypeFactory_new(void) {

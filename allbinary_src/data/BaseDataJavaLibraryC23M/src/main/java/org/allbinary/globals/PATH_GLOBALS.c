@@ -3,6 +3,9 @@
 #include "org/allbinary/logic/io/path/AbPathData.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/string/CommonStrings.h"
+#if __has_include("org/allbinary/string/CommonStrings.h")
+#include "org/allbinary/string/CommonStrings.h"
+#endif
 
 
 static PATH_GLOBALS* PATH_GLOBALS_instance;

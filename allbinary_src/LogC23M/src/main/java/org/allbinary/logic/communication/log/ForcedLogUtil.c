@@ -2,6 +2,9 @@
 #include "org/allbinary/logic/communication/log/ForcedLogUtil.h"
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/logic/communication/log/PreLogUtil.h"
+#if __has_include("org/allbinary/string/CommonStrings.h")
+#include "org/allbinary/string/CommonStrings.h"
+#endif
 
 
 

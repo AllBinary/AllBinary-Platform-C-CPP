@@ -1,45 +1,33 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input.motion
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/input/motion/OnlyTouchButtonRecognizer.h"
 #include "org/allbinary/input/motion/button/TouchButtonRecognizer.h"
 #include "org/allbinary/input/motion/MotionRecognizer.h"
 
-typedef struct OnlyTouchButtonRecognizer OnlyTouchButtonRecognizer;
-struct OnlyTouchButtonRecognizer {
-    MotionRecognizer base;
-    TouchButtonRecognizer* touchButtonRecognizer;
-    bool touchButtonProcessing;
-};
 
 
-OnlyTouchButtonRecognizer* OnlyTouchButtonRecognizer_new(void);
 
-void OnlyTouchButtonRecognizer_init(OnlyTouchButtonRecognizer* this);
-void OnlyTouchButtonRecognizer_processStartMotionEvent(OnlyTouchButtonRecognizer* this, int32_t x, int32_t y, int32_t deviceId, int32_t modifiers);
-void OnlyTouchButtonRecognizer_processEndMotionEvent(OnlyTouchButtonRecognizer* this, int32_t x, int32_t y, int32_t deviceId, int32_t modifiers);
-void OnlyTouchButtonRecognizer_processDraggedMotionEvent(OnlyTouchButtonRecognizer* this, int32_t x, int32_t y, int32_t deviceId, int32_t modifiers);
+
+
+
+void OnlyTouchButtonRecognizer_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void OnlyTouchButtonRecognizer_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("OnlyTouchButtonRecognizer", "MotionRecognizer");
+    java_register_method("OnlyTouchButtonRecognizer", "processStartMotionEvent", (void*) OnlyTouchButtonRecognizer_processStartMotionEvent);
+    java_register_method("OnlyTouchButtonRecognizer", "processEndMotionEvent", (void*) OnlyTouchButtonRecognizer_processEndMotionEvent);
+    java_register_method("OnlyTouchButtonRecognizer", "processDraggedMotionEvent", (void*) OnlyTouchButtonRecognizer_processDraggedMotionEvent);
+}
 
 static void OnlyTouchButtonRecognizer_initFields(OnlyTouchButtonRecognizer* this) {
     
@@ -48,13 +36,14 @@ static void OnlyTouchButtonRecognizer_initFields(OnlyTouchButtonRecognizer* this
 
 
 void OnlyTouchButtonRecognizer_init(OnlyTouchButtonRecognizer* this) {
+    OnlyTouchButtonRecognizer_register();
     MotionRecognizer_init(&this->base);
     OnlyTouchButtonRecognizer_initFields(this);
         this->touchButtonRecognizer = TouchButtonRecognizer_new();
 }
 
 OnlyTouchButtonRecognizer* OnlyTouchButtonRecognizer_new(void) {
-    OnlyTouchButtonRecognizer* this = calloc(1, sizeof(OnlyTouchButtonRecognizer));
+    OnlyTouchButtonRecognizer* this = java_object_alloc(sizeof(OnlyTouchButtonRecognizer), "OnlyTouchButtonRecognizer");
     OnlyTouchButtonRecognizer_init(this);
     return this;
 }

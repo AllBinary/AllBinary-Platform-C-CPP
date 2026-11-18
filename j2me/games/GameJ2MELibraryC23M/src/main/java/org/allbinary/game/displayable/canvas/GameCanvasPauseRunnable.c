@@ -1,48 +1,38 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.displayable.canvas
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-#include "org/allbinary/AndroidUtil.h"
+#include "org/allbinary/game/displayable/canvas/GameCanvasPauseRunnable.h"
 #include "org/allbinary/game/configuration/feature/Features.h"
 #include "org/allbinary/graphics/opengles/OpenGLFeatureFactory.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/game/displayable/canvas/GameRunnable.h"
-
-typedef struct GameCanvasPauseRunnable GameCanvasPauseRunnable;
-struct GameCanvasPauseRunnable {
-    GameRunnable base;
-    LogUtil* logUtil;
-    AllBinaryGameCanvas* allBinaryGameCanvas;
-};
+#include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
+#if __has_include("org/allbinary/graphics/opengles/OpenGLFeatureFactory.h")
+#include "org/allbinary/graphics/opengles/OpenGLFeatureFactory.h"
+#endif
 
 
-GameCanvasPauseRunnable* GameCanvasPauseRunnable_new(AllBinaryGameCanvas* allBinaryGameCanvas);
 
-void GameCanvasPauseRunnable_init(GameCanvasPauseRunnable* this, AllBinaryGameCanvas* allBinaryGameCanvas);
-void GameCanvasPauseRunnable_run(GameCanvasPauseRunnable* this);
-void GameCanvasPauseRunnable_processLoopSleep(GameCanvasPauseRunnable* this);
+
+
+
+void GameCanvasPauseRunnable_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void GameCanvasPauseRunnable_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GameCanvasPauseRunnable", "GameRunnable");
+    java_register_method("GameCanvasPauseRunnable", "run", (void*) GameCanvasPauseRunnable_run);
+    java_register_method("GameCanvasPauseRunnable", "processLoopSleep", (void*) GameCanvasPauseRunnable_processLoopSleep);
+}
 
 static void GameCanvasPauseRunnable_initFields(GameCanvasPauseRunnable* this) {
     this->logUtil = LogUtil_getInstance();
@@ -51,13 +41,14 @@ static void GameCanvasPauseRunnable_initFields(GameCanvasPauseRunnable* this) {
 
 
 void GameCanvasPauseRunnable_init(GameCanvasPauseRunnable* this, AllBinaryGameCanvas* allBinaryGameCanvas) {
+    GameCanvasPauseRunnable_register();
     GameRunnable_init(&this->base);
     GameCanvasPauseRunnable_initFields(this);
         this->allBinaryGameCanvas = allBinaryGameCanvas;
 }
 
 GameCanvasPauseRunnable* GameCanvasPauseRunnable_new(AllBinaryGameCanvas* allBinaryGameCanvas) {
-    GameCanvasPauseRunnable* this = calloc(1, sizeof(GameCanvasPauseRunnable));
+    GameCanvasPauseRunnable* this = java_object_alloc(sizeof(GameCanvasPauseRunnable), "GameCanvasPauseRunnable");
     GameCanvasPauseRunnable_init(this, allBinaryGameCanvas);
     return this;
 }

@@ -1,48 +1,37 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.midlet
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/midlet/ProgressMidlet.h"
 #include "org/allbinary/canvas/Processor.h"
 #include "org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h"
 #include "org/allbinary/logic/system/security/licensing/ClientInformationFactory.h"
 #include "org/allbinary/thread/PrimaryThreadPool.h"
 #include "org/allbinary/thread/ThreadPool.h"
 #include "org/allbinary/midlet/AllBinaryMidlet.h"
-
-//J2SEForJ2ME
-typedef struct ProgressMidlet ProgressMidlet;
-struct ProgressMidlet {
-    AllBinaryMidlet base;
-    AbeClientInformationInterface* abeClientInformation;
-};
+#include "org/allbinary/midlet/MidletExitProcessorFactory.h"
+#include "org/allbinary/midlet/ExitRunnable.h"
 
 
-ProgressMidlet* ProgressMidlet_new(ClientInformationFactory* clientInformationFactory);
 
-void ProgressMidlet_init(ProgressMidlet* this, ClientInformationFactory* clientInformationFactory);
-void ProgressMidlet_preInit(ProgressMidlet* this);
-void ProgressMidlet_exitProgress(ProgressMidlet* this, bool isProgress);
+
+
+
+void ProgressMidlet_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void ProgressMidlet_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ProgressMidlet", "AllBinaryMidlet");
+    java_register_method("ProgressMidlet", "preInit", (void*) ProgressMidlet_preInit);
+    java_register_method("ProgressMidlet", "exitProgress", (void*) ProgressMidlet_exitProgress);
+}
 
 static void ProgressMidlet_initFields(ProgressMidlet* this) {
     
@@ -50,6 +39,7 @@ static void ProgressMidlet_initFields(ProgressMidlet* this) {
 
 
 void ProgressMidlet_init(ProgressMidlet* this, ClientInformationFactory* clientInformationFactory) {
+    ProgressMidlet_register();
     AllBinaryMidlet_init(&this->base);
     ProgressMidlet_initFields(this);
         ProgressMidlet_preInit(this);
@@ -57,7 +47,7 @@ void ProgressMidlet_init(ProgressMidlet* this, ClientInformationFactory* clientI
 }
 
 ProgressMidlet* ProgressMidlet_new(ClientInformationFactory* clientInformationFactory) {
-    ProgressMidlet* this = calloc(1, sizeof(ProgressMidlet));
+    ProgressMidlet* this = java_object_alloc(sizeof(ProgressMidlet), "ProgressMidlet");
     ProgressMidlet_init(this, clientInformationFactory);
     return this;
 }
@@ -74,11 +64,11 @@ void ProgressMidlet_exitProgress(ProgressMidlet* this, bool isProgress) {
             Runnable* runnable = ExitRunnable_new(this, processor, isProgress);
             ThreadPool_runTask(primaryThreadPool, runnable);
         } JAVA_CATCH(Exception, e) {
-            JAVA_CALL(this->logUtil, put, this->commonStrings->EXCEPTION, this, "exit", e);
+            LogUtil_put(this->base.logUtil, this->base.commonStrings->EXCEPTION, this, "exit", e);
             JAVA_TRY {
                 Processor_process(processor);
             } JAVA_CATCH(Exception, e2) {
-                JAVA_CALL(this->logUtil, put, this->commonStrings->EXCEPTION, this, "exit", e);
+                LogUtil_put(this->base.logUtil, this->base.commonStrings->EXCEPTION, this, "exit", e);
             } JAVA_END_TRY;
         } JAVA_END_TRY;
 }

@@ -1,30 +1,5 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.system.security.licensing
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "java/io/InputStream.h"
-// #include "java/io/OutputStream.h"
+#include "org/allbinary/logic/system/security/licensing/LicenseServerInitFileUtil.h"
 #include "org/allbinary/business/init/LicenseInitInfoUtil.h"
 #include "org/allbinary/data/resource/ResourceUtil.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
@@ -34,18 +9,51 @@
 #include "org/allbinary/logic/io/file/SimpleFileUtil.h"
 #include "org/allbinary/logic/string/StringUtil.h"
 #include "org/allbinary/string/CommonStrings.h"
+#if __has_include("org/allbinary/business/init/LicenseInitInfoUtil.h")
+#include "org/allbinary/business/init/LicenseInitInfoUtil.h"
+#endif
+#if __has_include("org/allbinary/business/init/LicenseInitInfoUtil.h")
+#include "org/allbinary/business/init/LicenseInitInfoUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/io/file/FileFactory.h")
+#include "org/allbinary/logic/io/file/FileFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/io/StreamUtil.h")
+#include "org/allbinary/logic/io/StreamUtil.h"
+#endif
+#if __has_include("org/allbinary/business/init/LicenseInitInfoUtil.h")
+#include "org/allbinary/business/init/LicenseInitInfoUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
-typedef struct LicenseServerInitFileUtil LicenseServerInitFileUtil;
-struct LicenseServerInitFileUtil {
-    LogUtil* logUtil;
-    CommonStrings* commonStrings;
-    OutputStream* NULL_OUTPUT_STREAM;
-};
 
 
-LicenseServerInitFileUtil* LicenseServerInitFileUtil_new(void);
-void LicenseServerInitFileUtil_init(LicenseServerInitFileUtil* this);
+
 static void LicenseServerInitFileUtil_write(LicenseServerInitFileUtil* this);
+
+void LicenseServerInitFileUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void LicenseServerInitFileUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("LicenseServerInitFileUtil", nullptr);
+    java_register_method("LicenseServerInitFileUtil", "init", (void*) LicenseServerInitFileUtil_initMethod);
+    java_register_method("LicenseServerInitFileUtil", "write", (void*) LicenseServerInitFileUtil_write);
+}
 
 static void LicenseServerInitFileUtil_initFields(LicenseServerInitFileUtil* this) {
     this->logUtil = LogUtil_getInstance();
@@ -54,17 +62,18 @@ static void LicenseServerInitFileUtil_initFields(LicenseServerInitFileUtil* this
 }
 
 void LicenseServerInitFileUtil_init(LicenseServerInitFileUtil* this) {
+    LicenseServerInitFileUtil_register();
     LicenseServerInitFileUtil_initFields(this);
 }
 
 LicenseServerInitFileUtil* LicenseServerInitFileUtil_new(void) {
-    LicenseServerInitFileUtil* this = calloc(1, sizeof(LicenseServerInitFileUtil));
+    LicenseServerInitFileUtil* this = java_object_alloc(sizeof(LicenseServerInitFileUtil), "LicenseServerInitFileUtil");
     LicenseServerInitFileUtil_init(this);
     return this;
 }
 
 
-void LicenseServerInitFileUtil_init(LicenseServerInitFileUtil* this) {
+void LicenseServerInitFileUtil_initMethod(LicenseServerInitFileUtil* this) {
         JAVA_TRY {
             const char* filePath = LicenseInitInfoUtil_getInstance()->INITFILENAME;
             LicenseInitInfoUtil_setFilePath(LicenseInitInfoUtil_getInstance(), StringUtil_getInstance()->EMPTY_STRING);

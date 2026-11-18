@@ -1,44 +1,36 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.layer.resources
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct OnDemandResourcesFactory OnDemandResourcesFactory;
-struct OnDemandResourcesFactory {
-    char unused;
-};
+#include "org/allbinary/game/layer/resources/OnDemandResourcesFactory.h"
+#include "org/allbinary/game/layer/resources/OnDemandResources.h"
 
 
-OnDemandResourcesFactory* OnDemandResourcesFactory_new(void);
-int32_t OnDemandResourcesFactory_size(OnDemandResourcesFactory* this);
-OnDemandResources* OnDemandResourcesFactory_remove(OnDemandResourcesFactory* this, int32_t layerId);
+
+
+
+void OnDemandResourcesFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void OnDemandResourcesFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("OnDemandResourcesFactory", nullptr);
+    java_register_method("OnDemandResourcesFactory", "size", (void*) OnDemandResourcesFactory_size);
+    java_register_method("OnDemandResourcesFactory", "remove", (void*) OnDemandResourcesFactory_remove);
+}
 
 void OnDemandResourcesFactory_init(OnDemandResourcesFactory* this) {
+    OnDemandResourcesFactory_register();
 }
 
 OnDemandResourcesFactory* OnDemandResourcesFactory_new(void) {
-    OnDemandResourcesFactory* this = calloc(1, sizeof(OnDemandResourcesFactory));
+    OnDemandResourcesFactory* this = java_object_alloc(sizeof(OnDemandResourcesFactory), "OnDemandResourcesFactory");
     OnDemandResourcesFactory_init(this);
     return this;
 }
@@ -50,6 +42,6 @@ int32_t OnDemandResourcesFactory_size(OnDemandResourcesFactory* this) {
 
 
 OnDemandResources* OnDemandResourcesFactory_remove(OnDemandResourcesFactory* this, int32_t layerId) {
-        return OnDemandResources_NULL_ON_DEMAND_RESOURCES;
+        return (OnDemandResources_staticInit(), OnDemandResources_NULL_ON_DEMAND_RESOURCES);
 }
 

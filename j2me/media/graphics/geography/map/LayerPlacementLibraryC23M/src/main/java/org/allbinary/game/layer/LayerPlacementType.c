@@ -1,40 +1,29 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.layer
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct LayerPlacementType LayerPlacementType;
-struct LayerPlacementType {
-    int32_t type;
-};
+#include "org/allbinary/game/layer/LayerPlacementType.h"
 
 
-LayerPlacementType* LayerPlacementType_new(int32_t type);
 
-void LayerPlacementType_init(LayerPlacementType* this, int32_t type);
-int32_t LayerPlacementType_getType(LayerPlacementType* this);
-void LayerPlacementType_setType(LayerPlacementType* this, int32_t type);
+
+
+
+void LayerPlacementType_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void LayerPlacementType_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("LayerPlacementType", nullptr);
+    java_register_method("LayerPlacementType", "getType", (void*) LayerPlacementType_getType);
+    java_register_method("LayerPlacementType", "setType", (void*) LayerPlacementType_setType);
+}
 
 static void LayerPlacementType_initFields(LayerPlacementType* this) {
     
@@ -42,12 +31,13 @@ static void LayerPlacementType_initFields(LayerPlacementType* this) {
 
 
 void LayerPlacementType_init(LayerPlacementType* this, int32_t type) {
+    LayerPlacementType_register();
     LayerPlacementType_initFields(this);
         this->type = type;
 }
 
 LayerPlacementType* LayerPlacementType_new(int32_t type) {
-    LayerPlacementType* this = calloc(1, sizeof(LayerPlacementType));
+    LayerPlacementType* this = java_object_alloc(sizeof(LayerPlacementType), "LayerPlacementType");
     LayerPlacementType_init(this, type);
     return this;
 }

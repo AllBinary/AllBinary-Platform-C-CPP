@@ -1,19 +1,14 @@
 // Generated Code Do Not Modify
-// package org.allbinary.image.opengles
+#include "org/allbinary/image/opengles/OpenGLSurfaceChangedInterface.h"
+#include "javax/microedition/khronos/opengles/GL.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/khronos/opengles/GL.h"
 
-typedef struct OpenGLSurfaceChangedInterface OpenGLSurfaceChangedInterface;
-struct OpenGLSurfaceChangedInterface {
-    void (*set)(void* this, GL* gl);
-};
 
+void OpenGLSurfaceChangedInterface_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
 

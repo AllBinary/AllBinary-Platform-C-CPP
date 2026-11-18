@@ -89,10 +89,15 @@ const char** BaseGameStatistics_toStringArray(BaseGameStatistics* this);
 const char* BaseGameStatistics_toStringAt(BaseGameStatistics* this, int64_t totalTime);
 
 const char* BaseGameStatistics_toString(BaseGameStatistics* this);
+#define BaseGameStatistics_new0 BaseGameStatistics_new
+#define BaseGameStatistics_init0 BaseGameStatistics_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void BaseGameStatistics_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)
 void BaseGameStatistics_register(void);
 
+#if __has_include("org/allbinary/time/TimeDelayHelper.h")
+#include "org/allbinary/time/TimeDelayHelper.h"
+#endif
 
 #endif // ORG_ALLBINARY_CANVAS_BASEGAMESTATISTICS_H

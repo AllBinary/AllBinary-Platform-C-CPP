@@ -1,48 +1,45 @@
 // Generated Code Do Not Modify
-// package org.allbinary.game.displayable.canvas
+#include "org/allbinary/game/displayable/canvas/NullDisplayable.h"
+#include "javax/microedition/lcdui/Graphics.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Canvas.h"
-// #include "javax/microedition/lcdui/Graphics.h"
-
-//Temp should not be in any build
-typedef struct NullDisplayable NullDisplayable;
-struct NullDisplayable {
-    Canvas base;
-};
 
 static NullDisplayable* NullDisplayable_SINGLETON;
 
-NullDisplayable* NullDisplayable_new(void);
-NullDisplayable* NullDisplayable_getInstance(void);
 
-void NullDisplayable_init(NullDisplayable* this);
-void NullDisplayable_paint(NullDisplayable* this, Graphics* graphics);
 
-// Static fields with runtime initializers: call this once at startup
+
 void NullDisplayable_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     NullDisplayable_SINGLETON = NullDisplayable_new();
+}
+
+void NullDisplayable_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("NullDisplayable", "Canvas");
+    java_register_method("NullDisplayable", "paint", (void*) NullDisplayable_paint);
 }
 
 
 NullDisplayable* NullDisplayable_getInstance(void) {
-        return NullDisplayable_SINGLETON;
+        return (NullDisplayable_staticInit(), NullDisplayable_SINGLETON);
 }
 
 
 void NullDisplayable_init(NullDisplayable* this) {
+    NullDisplayable_register();
     Canvas_init(&this->base);
 }
 
 NullDisplayable* NullDisplayable_new(void) {
-    NullDisplayable* this = calloc(1, sizeof(NullDisplayable));
+    NullDisplayable* this = java_object_alloc(sizeof(NullDisplayable), "NullDisplayable");
     NullDisplayable_init(this);
     return this;
 }

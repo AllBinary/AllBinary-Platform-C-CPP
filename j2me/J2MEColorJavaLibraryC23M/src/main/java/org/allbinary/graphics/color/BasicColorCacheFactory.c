@@ -4,6 +4,9 @@
 #include "org/allbinary/util/ABHashtable.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
 #include "org/allbinary/graphics/color/BasicColorFactory.h"
+#if __has_include("org/allbinary/logic/StdUtil.h")
+#include "org/allbinary/logic/StdUtil.h"
+#endif
 
 
 static BasicColorCacheFactory* BasicColorCacheFactory_instance;

@@ -1,28 +1,28 @@
 // Generated Code Do Not Modify
-// package org.allbinary.logic.util.cache
+#include "org/allbinary/logic/util/cache/PoolTypeFactory.h"
+#include "org/allbinary/logic/util/cache/PoolType.h"
+#include "org/allbinary/logic/util/cache/CacheTypeFactory.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct PoolTypeFactory PoolTypeFactory;
-struct PoolTypeFactory {
-    PoolType* VECTOR_POOL;
-};
 
 static PoolTypeFactory* PoolTypeFactory_instance;
 
-PoolTypeFactory* PoolTypeFactory_new(void);
-PoolTypeFactory* PoolTypeFactory_getInstance(void);
 
-// Static fields with runtime initializers: call this once at startup
 void PoolTypeFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     PoolTypeFactory_instance = PoolTypeFactory_new();
+}
+
+void PoolTypeFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("PoolTypeFactory", nullptr);
 }
 
 static void PoolTypeFactory_initFields(PoolTypeFactory* this) {
@@ -30,17 +30,18 @@ static void PoolTypeFactory_initFields(PoolTypeFactory* this) {
 }
 
 void PoolTypeFactory_init(PoolTypeFactory* this) {
+    PoolTypeFactory_register();
     PoolTypeFactory_initFields(this);
 }
 
 PoolTypeFactory* PoolTypeFactory_new(void) {
-    PoolTypeFactory* this = calloc(1, sizeof(PoolTypeFactory));
+    PoolTypeFactory* this = java_object_alloc(sizeof(PoolTypeFactory), "PoolTypeFactory");
     PoolTypeFactory_init(this);
     return this;
 }
 
 
 PoolTypeFactory* PoolTypeFactory_getInstance(void) {
-        return PoolTypeFactory_instance;
+        return (PoolTypeFactory_staticInit(), PoolTypeFactory_instance);
 }
 

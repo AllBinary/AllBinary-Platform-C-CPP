@@ -1,55 +1,35 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.draw
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Font.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/graphics/draw/CanvasDrawLineString.h"
+#include "javax/microedition/lcdui/Font.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/graphics/font/MyFontProcessor.h"
-#include "org/allbinary/graphics/font/UpdateMyFontInterface.h"
 #include "org/allbinary/graphics/font/UpdateMyFontProcessor.h"
+#include "org/allbinary/graphics/draw/DrawStringUtil.h"
 
-typedef struct CanvasDrawLineString CanvasDrawLineString;
-struct CanvasDrawLineString {
-    UpdateMyFontInterface UpdateMyFontInterface_interface;
-    DrawStringUtil* drawStringUtil;
-    MyFontProcessor* myFontProcessor;
-    int32_t x;
-    int32_t y;
-    int32_t fontHeight;
-};
 
 CanvasDrawLineString* CanvasDrawLineString_NULL_CANVAS_DRAW_LINE_STRING;
 
-CanvasDrawLineString* CanvasDrawLineString_new(int32_t x, int32_t y);
 
-void CanvasDrawLineString_init(CanvasDrawLineString* this, int32_t x, int32_t y);
-void CanvasDrawLineString_updateMeasurement(CanvasDrawLineString* this, Graphics* graphics);
-void CanvasDrawLineString_paint(CanvasDrawLineString* this, Graphics* graphics, const char* string, int32_t line);
 
-// Static fields with runtime initializers: call this once at startup
+
 void CanvasDrawLineString_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     CanvasDrawLineString_NULL_CANVAS_DRAW_LINE_STRING = CanvasDrawLineString_new(0, 0);
+}
+
+void CanvasDrawLineString_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("CanvasDrawLineString", nullptr);
+    java_register_method("CanvasDrawLineString", "updateMeasurement", (void*) CanvasDrawLineString_updateMeasurement);
+    java_register_method("CanvasDrawLineString", "paint", (void*) CanvasDrawLineString_paint);
 }
 
 static void CanvasDrawLineString_initFields(CanvasDrawLineString* this) {
@@ -62,13 +42,14 @@ static void CanvasDrawLineString_initFields(CanvasDrawLineString* this) {
 
 
 void CanvasDrawLineString_init(CanvasDrawLineString* this, int32_t x, int32_t y) {
+    CanvasDrawLineString_register();
     CanvasDrawLineString_initFields(this);
         this->x = x;
         this->y = y;
 }
 
 CanvasDrawLineString* CanvasDrawLineString_new(int32_t x, int32_t y) {
-    CanvasDrawLineString* this = calloc(1, sizeof(CanvasDrawLineString));
+    CanvasDrawLineString* this = java_object_alloc(sizeof(CanvasDrawLineString), "CanvasDrawLineString");
     CanvasDrawLineString_init(this, x, y);
     return this;
 }

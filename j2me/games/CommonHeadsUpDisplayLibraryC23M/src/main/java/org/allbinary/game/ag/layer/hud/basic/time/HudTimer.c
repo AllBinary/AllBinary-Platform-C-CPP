@@ -1,57 +1,46 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.ag.layer.hud.basic.time
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/ag/layer/hud/basic/time/HudTimer.h"
 #include "org/allbinary/logic/math/PrimitiveLongSingleton.h"
 #include "org/allbinary/logic/math/PrimitiveLongUtil.h"
 #include "org/allbinary/time/GameTickTimeDelayHelper.h"
 #include "org/allbinary/time/GameTickTimeDelayHelperFactory.h"
-
-typedef struct HudTimer HudTimer;
-struct HudTimer {
-    int64_t startTime;
-    int64_t hundredthTime;
-    int64_t maxTime;
-    int64_t modifier;
-    uint16_t* hundrethsString;
-    int32_t totalDigits;
-    PrimitiveLongUtil* primitiveLongUtil;
-    uint16_t* MAX;
-    GameTickTimeDelayHelper* gameTickTimeDelayHelper;
-};
+#if __has_include("org/allbinary/logic/math/PrimitiveLongSingleton.h")
+#include "org/allbinary/logic/math/PrimitiveLongSingleton.h"
+#endif
 
 
-HudTimer* HudTimer_new(int32_t maxTime);
 
-void HudTimer_init(HudTimer* this, int32_t maxTime);
-void HudTimer_start(HudTimer* this);
-int64_t HudTimer_get(HudTimer* this);
-void HudTimer_update(HudTimer* this);
-void HudTimer_reduce(HudTimer* this, int32_t value);
-void HudTimer_add(HudTimer* this, int32_t value);
-uint16_t* HudTimer_getTimeChars(HudTimer* this);
-int32_t HudTimer_getCurrentTotalDigits(HudTimer* this);
+
+
+
+
+
+
+
+
+void HudTimer_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void HudTimer_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("HudTimer", nullptr);
+    java_register_method("HudTimer", "start", (void*) HudTimer_start);
+    java_register_method("HudTimer", "get", (void*) HudTimer_get);
+    java_register_method("HudTimer", "update", (void*) HudTimer_update);
+    java_register_method("HudTimer", "reduce", (void*) HudTimer_reduce);
+    java_register_method("HudTimer", "add", (void*) HudTimer_add);
+    java_register_method("HudTimer", "getTimeChars", (void*) HudTimer_getTimeChars);
+    java_register_method("HudTimer", "getCurrentTotalDigits", (void*) HudTimer_getCurrentTotalDigits);
+}
 
 static void HudTimer_initFields(HudTimer* this) {
     this->startTime = ((int64_t) (-1));
@@ -67,13 +56,14 @@ static void HudTimer_initFields(HudTimer* this) {
 
 
 void HudTimer_init(HudTimer* this, int32_t maxTime) {
+    HudTimer_register();
     HudTimer_initFields(this);
         this->primitiveLongUtil = PrimitiveLongUtil_createPowerOfTen(maxTime);
         this->maxTime = ((int64_t) maxTime);
 }
 
 HudTimer* HudTimer_new(int32_t maxTime) {
-    HudTimer* this = calloc(1, sizeof(HudTimer));
+    HudTimer* this = java_object_alloc(sizeof(HudTimer), "HudTimer");
     HudTimer_init(this, maxTime);
     return this;
 }

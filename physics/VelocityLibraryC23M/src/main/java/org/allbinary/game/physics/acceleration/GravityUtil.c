@@ -1,45 +1,35 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.physics.acceleration
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/physics/acceleration/GravityUtil.h"
 #include "org/allbinary/game/physics/velocity/BasicVelocityProperties.h"
+#if __has_include("org/allbinary/game/physics/acceleration/BasicDecimal.h")
+#include "org/allbinary/game/physics/acceleration/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/game/physics/velocity/BasicDecimal.h")
+#include "org/allbinary/game/physics/velocity/BasicDecimal.h"
+#endif
 
-typedef struct GravityUtil GravityUtil;
-struct GravityUtil {
-    int32_t GAME_GRAVITY_VELOCITY;
-    int32_t MAX_GAME_VELOCITY;
-};
 
 static GravityUtil* GravityUtil_instance;
 
-GravityUtil* GravityUtil_new(void);
-GravityUtil* GravityUtil_getInstance(void);
-void GravityUtil_process(GravityUtil* this, BasicVelocityProperties* velocityProperties, int32_t customGravity);
 
-// Static fields with runtime initializers: call this once at startup
+
 void GravityUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     GravityUtil_instance = GravityUtil_new();
+}
+
+void GravityUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GravityUtil", nullptr);
+    java_register_method("GravityUtil", "process", (void*) GravityUtil_process);
 }
 
 static void GravityUtil_initFields(GravityUtil* this) {
@@ -48,22 +38,23 @@ static void GravityUtil_initFields(GravityUtil* this) {
 }
 
 void GravityUtil_init(GravityUtil* this) {
+    GravityUtil_register();
     GravityUtil_initFields(this);
 }
 
 GravityUtil* GravityUtil_new(void) {
-    GravityUtil* this = calloc(1, sizeof(GravityUtil));
+    GravityUtil* this = java_object_alloc(sizeof(GravityUtil), "GravityUtil");
     GravityUtil_init(this);
     return this;
 }
 
 
 GravityUtil* GravityUtil_getInstance(void) {
-        return GravityUtil_instance;
+        return (GravityUtil_staticInit(), GravityUtil_instance);
 }
 
 
 void GravityUtil_process(GravityUtil* this, BasicVelocityProperties* velocityProperties, int32_t customGravity) {
-        JAVA_CALL(BasicVelocityProperties_getVelocityYBasicDecimalP(velocityProperties), addint, customGravity);
+        BasicDecimal_addint(BasicVelocityProperties_getVelocityYBasicDecimalP(velocityProperties), customGravity);
 }
 

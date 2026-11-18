@@ -1,28 +1,5 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/animation/VectorExplosionGenerator.h"
 #include "org/allbinary/graphics/GPoint.h"
 #include "org/allbinary/graphics/PointFactory.h"
 #include "org/allbinary/graphics/pipeline/RandomRotationFactory.h"
@@ -30,30 +7,42 @@
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
 #include "org/allbinary/util/BasicArrayListS.h"
+#include "org/allbinary/animation/VectorExplosionType.h"
+#include "org/allbinary/animation/VectorAnimationUtil.h"
 
-typedef struct VectorExplosionGenerator VectorExplosionGenerator;
-struct VectorExplosionGenerator {
-    VectorExplosionType* RANDOM;
-    VectorExplosionType* ROTATION;
-    VectorAnimationUtil* vectorAnimationUtil;
-    RandomRotationFactory* randomRotationFactory;
-};
 
 static VectorExplosionGenerator* VectorExplosionGenerator_instance;
 
-VectorExplosionGenerator* VectorExplosionGenerator_new(void);
-VectorExplosionGenerator* VectorExplosionGenerator_getInstance(void);
 
-void VectorExplosionGenerator_init(VectorExplosionGenerator* this);
-BasicArrayList* VectorExplosionGenerator_createList(VectorExplosionGenerator* this, BasicArrayList* list, int32_t howMuch, VectorExplosionType* type);
-int32_t*** VectorExplosionGenerator_getInstance(VectorExplosionGenerator* this, int32_t** points, int32_t howMuch, VectorExplosionType* type);
-BasicArrayList* VectorExplosionGenerator_getInstanceStartFrame(VectorExplosionGenerator* this, int32_t** points, int32_t howMuch, VectorExplosionType* type, bool startFrame);
+
+
+
+
 static BasicArrayList* VectorExplosionGenerator_createListFromPoints(VectorExplosionGenerator* this, BasicArrayList* tempBasicArrayList, int32_t** points, int32_t howMuch, VectorExplosionType* type);
+
 static BasicArrayList* VectorExplosionGenerator_createPointsBasicArrayList(VectorExplosionGenerator* this, int32_t** points);
 
-// Static fields with runtime initializers: call this once at startup
 void VectorExplosionGenerator_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     VectorExplosionGenerator_instance = VectorExplosionGenerator_new();
+}
+
+void VectorExplosionGenerator_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("VectorExplosionGenerator", nullptr);
+    java_register_method("VectorExplosionGenerator", "createList", (void*) VectorExplosionGenerator_createList);
+    java_register_method("VectorExplosionGenerator", "getInstance@4", (void*) VectorExplosionGenerator_getInstance4);
+    java_register_method("VectorExplosionGenerator", "getInstanceStartFrame", (void*) VectorExplosionGenerator_getInstanceStartFrame);
+    java_register_method("VectorExplosionGenerator", "createListFromPoints", (void*) VectorExplosionGenerator_createListFromPoints);
+    java_register_method("VectorExplosionGenerator", "createPointsBasicArrayList", (void*) VectorExplosionGenerator_createPointsBasicArrayList);
 }
 
 static void VectorExplosionGenerator_initFields(VectorExplosionGenerator* this) {
@@ -64,17 +53,18 @@ static void VectorExplosionGenerator_initFields(VectorExplosionGenerator* this) 
 }
 
 
-VectorExplosionGenerator* VectorExplosionGenerator_getInstance(void) {
-        return VectorExplosionGenerator_instance;
+VectorExplosionGenerator* VectorExplosionGenerator_getInstance0(void) {
+        return (VectorExplosionGenerator_staticInit(), VectorExplosionGenerator_instance);
 }
 
 
 void VectorExplosionGenerator_init(VectorExplosionGenerator* this) {
+    VectorExplosionGenerator_register();
     VectorExplosionGenerator_initFields(this);
 }
 
 VectorExplosionGenerator* VectorExplosionGenerator_new(void) {
-    VectorExplosionGenerator* this = calloc(1, sizeof(VectorExplosionGenerator));
+    VectorExplosionGenerator* this = java_object_alloc(sizeof(VectorExplosionGenerator), "VectorExplosionGenerator");
     VectorExplosionGenerator_init(this);
     return this;
 }
@@ -96,7 +86,7 @@ BasicArrayList* VectorExplosionGenerator_createList(VectorExplosionGenerator* th
 
 // throws Exception
 // Java overloaded method: C needs a different name
-int32_t*** VectorExplosionGenerator_getInstance(VectorExplosionGenerator* this, int32_t** points, int32_t howMuch, VectorExplosionType* type) {
+int32_t*** VectorExplosionGenerator_getInstance4(VectorExplosionGenerator* this, int32_t** points, int32_t howMuch, VectorExplosionType* type) {
         BasicArrayList* pointsBasicArrayList = VectorExplosionGenerator_getInstanceStartFrame(this, points, howMuch, type, true);
         BasicArrayList* tempBasicArrayList = ((BasicArrayList*) pointsBasicArrayList->objectArray[0]);
         int32_t*** newPoints = VectorAnimationUtil_toAnimationArrayFromListOfPointListWithPointsPerFrame(this->vectorAnimationUtil, pointsBasicArrayList, BasicArrayList_size(tempBasicArrayList));

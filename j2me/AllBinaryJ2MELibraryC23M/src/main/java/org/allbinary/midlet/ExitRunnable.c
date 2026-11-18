@@ -1,49 +1,32 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.midlet
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/NullCanvas.h"
+#include "org/allbinary/midlet/ExitRunnable.h"
+#include "javax/microedition/lcdui/NullCanvas.h"
 #include "org/allbinary/canvas/Processor.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/string/CommonStrings.h"
-#include "org/allbinary/midlet/Runnable.h"
-
-typedef struct ExitRunnable ExitRunnable;
-struct ExitRunnable {
-    Runnable Runnable_interface;
-    LogUtil* logUtil;
-    CommonStrings* commonStrings;
-    AllBinaryMidlet* midlet;
-    Processor* processor;
-    bool isProgress;
-};
+#include "org/allbinary/midlet/AllBinaryMidlet.h"
 
 
-ExitRunnable* ExitRunnable_new(AllBinaryMidlet* midlet, Processor* processor, bool isProgress);
 
-void ExitRunnable_init(ExitRunnable* this, AllBinaryMidlet* midlet, Processor* processor, bool isProgress);
-void ExitRunnable_run(ExitRunnable* this);
+
+
+void ExitRunnable_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void ExitRunnable_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ExitRunnable", nullptr);
+    java_register_method("ExitRunnable", "run", (void*) ExitRunnable_run);
+}
 
 static void ExitRunnable_initFields(ExitRunnable* this) {
     this->logUtil = LogUtil_getInstance();
@@ -55,6 +38,7 @@ static void ExitRunnable_initFields(ExitRunnable* this) {
 
 
 void ExitRunnable_init(ExitRunnable* this, AllBinaryMidlet* midlet, Processor* processor, bool isProgress) {
+    ExitRunnable_register();
     ExitRunnable_initFields(this);
         this->midlet = midlet;
         this->isProgress = isProgress;
@@ -62,7 +46,7 @@ void ExitRunnable_init(ExitRunnable* this, AllBinaryMidlet* midlet, Processor* p
 }
 
 ExitRunnable* ExitRunnable_new(AllBinaryMidlet* midlet, Processor* processor, bool isProgress) {
-    ExitRunnable* this = calloc(1, sizeof(ExitRunnable));
+    ExitRunnable* this = java_object_alloc(sizeof(ExitRunnable), "ExitRunnable");
     ExitRunnable_init(this, midlet, processor, isProgress);
     return this;
 }
@@ -72,8 +56,8 @@ void ExitRunnable_run(ExitRunnable* this) {
         JAVA_TRY {
             LogUtil_putF(this->logUtil, this->commonStrings->START_RUNNABLE, this, this->commonStrings->RUN);
             AllBinaryMidlet_destroyAppInRunnable(this->midlet, false, this->isProgress);
-            AllBinaryMidlet_setDisplay(this->midlet, NullCanvas_NULL_CANVAS);
-            AllBinaryMidlet_notifyDestroyed(this->midlet);
+            AllBinaryMidlet_setDisplay(this->midlet, (NullCanvas_staticInit(), NullCanvas_NULL_CANVAS));
+            MIDlet_notifyDestroyed(this->midlet);
             LogUtil_putF(this->logUtil, this->commonStrings->END_RUNNABLE, this, this->commonStrings->RUN);
             Processor_process(this->processor);
         } JAVA_CATCH(Exception, e) {

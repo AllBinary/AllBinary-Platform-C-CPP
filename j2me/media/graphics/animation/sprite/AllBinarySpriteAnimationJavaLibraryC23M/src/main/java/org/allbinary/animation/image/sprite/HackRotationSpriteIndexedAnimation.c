@@ -1,59 +1,81 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation.image.sprite
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
-// #include "javax/microedition/lcdui/Image.h"
-// #include "javax/microedition/lcdui/game/Sprite.h"
+#include "org/allbinary/animation/image/sprite/HackRotationSpriteIndexedAnimation.h"
+#include "javax/microedition/lcdui/Graphics.h"
+#include "javax/microedition/lcdui/Image.h"
+#include "javax/microedition/lcdui/game/Sprite.h"
 #include "org/allbinary/animation/AnimationBehavior.h"
-#include "org/allbinary/animation/RotationAnimation.h"
 #include "org/allbinary/logic/math/PrimitiveIntUtil.h"
 #include "org/allbinary/math/AngleInfo.h"
 #include "org/allbinary/util/CircularIndexUtil.h"
+#if __has_include("org/allbinary/animation/image/sprite/AngleIncrementInfo.h")
+#include "org/allbinary/animation/image/sprite/AngleIncrementInfo.h"
+#endif
+#if __has_include("javax/microedition/lcdui/AngleIncrementInfo.h")
+#include "javax/microedition/lcdui/AngleIncrementInfo.h"
+#endif
+#if __has_include("javax/microedition/lcdui/AngleIncrementInfo.h")
+#include "javax/microedition/lcdui/AngleIncrementInfo.h"
+#endif
+#if __has_include("javax/microedition/lcdui/game/AngleIncrementInfo.h")
+#include "javax/microedition/lcdui/game/AngleIncrementInfo.h"
+#endif
+#if __has_include("org/allbinary/animation/AngleIncrementInfo.h")
+#include "org/allbinary/animation/AngleIncrementInfo.h"
+#endif
+#if __has_include("org/allbinary/animation/AngleIncrementInfo.h")
+#include "org/allbinary/animation/AngleIncrementInfo.h"
+#endif
+#if __has_include("org/allbinary/logic/math/AngleIncrementInfo.h")
+#include "org/allbinary/logic/math/AngleIncrementInfo.h"
+#endif
+#if __has_include("org/allbinary/math/AngleIncrementInfo.h")
+#include "org/allbinary/math/AngleIncrementInfo.h"
+#endif
+#if __has_include("org/allbinary/util/AngleIncrementInfo.h")
+#include "org/allbinary/util/AngleIncrementInfo.h"
+#endif
 
-typedef struct HackRotationSpriteIndexedAnimation HackRotationSpriteIndexedAnimation;
-struct HackRotationSpriteIndexedAnimation {
-    RotationAnimation base;
-    Sprite* sprite;
-    Image* image;
-};
 
 
-HackRotationSpriteIndexedAnimation* HackRotationSpriteIndexedAnimation_new(Sprite* sprite, Image* image, AngleInfo* angleInfo, AnimationBehavior* animationBehavior);
 
-void HackRotationSpriteIndexedAnimation_init(HackRotationSpriteIndexedAnimation* this, Sprite* sprite, Image* image, AngleInfo* angleInfo, AnimationBehavior* animationBehavior);
-int32_t HackRotationSpriteIndexedAnimation_getAnimationSize(HackRotationSpriteIndexedAnimation* this);
-void HackRotationSpriteIndexedAnimation_paintFrame(HackRotationSpriteIndexedAnimation* this, Graphics* g, int32_t frame, int32_t x, int32_t y);
-void HackRotationSpriteIndexedAnimation_paintXY(HackRotationSpriteIndexedAnimation* this, Graphics* g, int32_t x, int32_t y);
-void HackRotationSpriteIndexedAnimation_paint(HackRotationSpriteIndexedAnimation* this, Graphics* g);
-void HackRotationSpriteIndexedAnimation_nextRotation(HackRotationSpriteIndexedAnimation* this);
-void HackRotationSpriteIndexedAnimation_previousRotation(HackRotationSpriteIndexedAnimation* this);
-int32_t HackRotationSpriteIndexedAnimation_getSize(HackRotationSpriteIndexedAnimation* this);
-void HackRotationSpriteIndexedAnimation_setFrame(HackRotationSpriteIndexedAnimation* this, int32_t frame);
-int32_t HackRotationSpriteIndexedAnimation_getFrame(HackRotationSpriteIndexedAnimation* this);
-void HackRotationSpriteIndexedAnimation_setSequence(HackRotationSpriteIndexedAnimation* this, int32_t* sequence);
-int32_t* HackRotationSpriteIndexedAnimation_getSequence(HackRotationSpriteIndexedAnimation* this);
+
+
+
+
+
+
+
+
+
+
+
+void HackRotationSpriteIndexedAnimation_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void HackRotationSpriteIndexedAnimation_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("HackRotationSpriteIndexedAnimation", "RotationAnimation");
+    java_register_method("HackRotationSpriteIndexedAnimation", "getAnimationSize", (void*) HackRotationSpriteIndexedAnimation_getAnimationSize);
+    java_register_method("HackRotationSpriteIndexedAnimation", "paintFrame", (void*) HackRotationSpriteIndexedAnimation_paintFrame);
+    java_register_method("HackRotationSpriteIndexedAnimation", "paintXY", (void*) HackRotationSpriteIndexedAnimation_paintXY);
+    java_register_method("HackRotationSpriteIndexedAnimation", "paint", (void*) HackRotationSpriteIndexedAnimation_paint);
+    java_register_method("HackRotationSpriteIndexedAnimation", "nextRotation", (void*) HackRotationSpriteIndexedAnimation_nextRotation);
+    java_register_method("HackRotationSpriteIndexedAnimation", "previousRotation", (void*) HackRotationSpriteIndexedAnimation_previousRotation);
+    java_register_method("HackRotationSpriteIndexedAnimation", "getSize", (void*) HackRotationSpriteIndexedAnimation_getSize);
+    java_register_method("HackRotationSpriteIndexedAnimation", "setFrame", (void*) HackRotationSpriteIndexedAnimation_setFrame);
+    java_register_method("HackRotationSpriteIndexedAnimation", "getFrame", (void*) HackRotationSpriteIndexedAnimation_getFrame);
+    java_register_method("HackRotationSpriteIndexedAnimation", "setSequence", (void*) HackRotationSpriteIndexedAnimation_setSequence);
+    java_register_method("HackRotationSpriteIndexedAnimation", "getSequence", (void*) HackRotationSpriteIndexedAnimation_getSequence);
+}
 
 static void HackRotationSpriteIndexedAnimation_initFields(HackRotationSpriteIndexedAnimation* this) {
     
@@ -62,14 +84,15 @@ static void HackRotationSpriteIndexedAnimation_initFields(HackRotationSpriteInde
 
 
 void HackRotationSpriteIndexedAnimation_init(HackRotationSpriteIndexedAnimation* this, Sprite* sprite, Image* image, AngleInfo* angleInfo, AnimationBehavior* animationBehavior) {
-        RotationAnimation_init(&this->base, angleInfo, CircularIndexUtil_createInstance(360 / JAVA_CALL(AngleInfo_getAngleIncrementInfo(angleInfo), getAngleIncrement)), animationBehavior);
+    HackRotationSpriteIndexedAnimation_register();
+        RotationAnimation_init(&this->base, angleInfo, CircularIndexUtil_createInstance(360 / ((int32_t) AngleIncrementInfo_getAngleIncrement(AngleInfo_getAngleIncrementInfo(angleInfo)))), animationBehavior);
         HackRotationSpriteIndexedAnimation_initFields(this);
         this->sprite = sprite;
         this->image = image;
 }
 
 HackRotationSpriteIndexedAnimation* HackRotationSpriteIndexedAnimation_new(Sprite* sprite, Image* image, AngleInfo* angleInfo, AnimationBehavior* animationBehavior) {
-    HackRotationSpriteIndexedAnimation* this = calloc(1, sizeof(HackRotationSpriteIndexedAnimation));
+    HackRotationSpriteIndexedAnimation* this = java_object_alloc(sizeof(HackRotationSpriteIndexedAnimation), "HackRotationSpriteIndexedAnimation");
     HackRotationSpriteIndexedAnimation_init(this, sprite, image, angleInfo, animationBehavior);
     return this;
 }
@@ -88,7 +111,7 @@ void HackRotationSpriteIndexedAnimation_paintFrame(HackRotationSpriteIndexedAnim
 
 
 void HackRotationSpriteIndexedAnimation_paintXY(HackRotationSpriteIndexedAnimation* this, Graphics* g, int32_t x, int32_t y) {
-        Sprite_setPosition(this->sprite, x, y);
+        Layer_setPosition(this->sprite, x, y);
         HackRotationSpriteIndexedAnimation_paint(this, g);
 }
 

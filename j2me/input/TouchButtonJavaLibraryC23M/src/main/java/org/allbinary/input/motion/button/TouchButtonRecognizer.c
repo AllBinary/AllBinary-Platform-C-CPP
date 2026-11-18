@@ -1,28 +1,5 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input.motion.button
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/input/motion/button/TouchButtonRecognizer.h"
 #include "org/allbinary/game/input/event/DownGameKeyEventHandler.h"
 #include "org/allbinary/game/input/event/GameKeyEvent.h"
 #include "org/allbinary/game/input/event/UpGameKeyEventHandler.h"
@@ -31,25 +8,95 @@
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/math/RectangleCollisionUtil.h"
 #include "org/allbinary/util/BasicArrayList.h"
+#include "org/allbinary/input/motion/button/BasicTouchInputFactory.h"
+#include "org/allbinary/input/motion/button/TouchButtonInput.h"
+#include "org/allbinary/input/motion/button/CurrentlyPressedTouchButtonSingleton.h"
+#include "org/allbinary/input/motion/button/ReleaseHelper.h"
+#include "org/allbinary/input/motion/button/TouchScreenFactory.h"
+#include "org/allbinary/input/motion/button/MultitouchReleaseHelper.h"
+#include "org/allbinary/input/motion/button/TouchButtonFactory.h"
+#include "org/allbinary/input/motion/button/TouchButton.h"
+#if __has_include("org/allbinary/input/motion/button/UpGameKeyEventHandlerBase.h")
+#include "org/allbinary/input/motion/button/UpGameKeyEventHandlerBase.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/UpGameKeyEventHandlerBase.h")
+#include "org/allbinary/game/input/event/UpGameKeyEventHandlerBase.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/UpGameKeyEventHandlerBase.h")
+#include "org/allbinary/game/input/event/UpGameKeyEventHandlerBase.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/UpGameKeyEventHandlerBase.h")
+#include "org/allbinary/game/input/event/UpGameKeyEventHandlerBase.h"
+#endif
+#if __has_include("org/allbinary/graphics/UpGameKeyEventHandlerBase.h")
+#include "org/allbinary/graphics/UpGameKeyEventHandlerBase.h"
+#endif
+#if __has_include("org/allbinary/graphics/UpGameKeyEventHandlerBase.h")
+#include "org/allbinary/graphics/UpGameKeyEventHandlerBase.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/log/UpGameKeyEventHandlerBase.h")
+#include "org/allbinary/logic/communication/log/UpGameKeyEventHandlerBase.h"
+#endif
+#if __has_include("org/allbinary/math/UpGameKeyEventHandlerBase.h")
+#include "org/allbinary/math/UpGameKeyEventHandlerBase.h"
+#endif
+#if __has_include("org/allbinary/util/UpGameKeyEventHandlerBase.h")
+#include "org/allbinary/util/UpGameKeyEventHandlerBase.h"
+#endif
+#if __has_include("org/allbinary/input/motion/button/DownGameKeyEventHandlerBase.h")
+#include "org/allbinary/input/motion/button/DownGameKeyEventHandlerBase.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/DownGameKeyEventHandlerBase.h")
+#include "org/allbinary/game/input/event/DownGameKeyEventHandlerBase.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/DownGameKeyEventHandlerBase.h")
+#include "org/allbinary/game/input/event/DownGameKeyEventHandlerBase.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/DownGameKeyEventHandlerBase.h")
+#include "org/allbinary/game/input/event/DownGameKeyEventHandlerBase.h"
+#endif
+#if __has_include("org/allbinary/graphics/DownGameKeyEventHandlerBase.h")
+#include "org/allbinary/graphics/DownGameKeyEventHandlerBase.h"
+#endif
+#if __has_include("org/allbinary/graphics/DownGameKeyEventHandlerBase.h")
+#include "org/allbinary/graphics/DownGameKeyEventHandlerBase.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/log/DownGameKeyEventHandlerBase.h")
+#include "org/allbinary/logic/communication/log/DownGameKeyEventHandlerBase.h"
+#endif
+#if __has_include("org/allbinary/math/DownGameKeyEventHandlerBase.h")
+#include "org/allbinary/math/DownGameKeyEventHandlerBase.h"
+#endif
+#if __has_include("org/allbinary/util/DownGameKeyEventHandlerBase.h")
+#include "org/allbinary/util/DownGameKeyEventHandlerBase.h"
+#endif
 
-typedef struct TouchButtonRecognizer TouchButtonRecognizer;
-struct TouchButtonRecognizer {
-    LogUtil* logUtil;
-    RectangleCollisionUtil* rectangleCollisionUtil;
-    UpGameKeyEventHandler* upGameKeyEventHandler;
-    DownGameKeyEventHandler* downGameKeyEventHandler;
-    TouchButtonInput* lastPressedTouchButtonInput;
-    CurrentlyPressedTouchButtonSingleton* currentlyPressedTouchButtonSingleton;
-    ReleaseHelper* releaseHelper;
-};
 
 
-TouchButtonRecognizer* TouchButtonRecognizer_new(void);
 
-void TouchButtonRecognizer_init(TouchButtonRecognizer* this);
 static void TouchButtonRecognizer_processRelease(TouchButtonRecognizer* this, TouchButtonInput* touchButtonInput, int32_t deviceId);
-bool TouchButtonRecognizer_releaseTouchButtonInput(TouchButtonRecognizer* this, int32_t x, int32_t y, int32_t deviceId);
-bool TouchButtonRecognizer_pressTouchButtonInput(TouchButtonRecognizer* this, int32_t x, int32_t y, int32_t deviceId);
+
+
+
+void TouchButtonRecognizer_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void TouchButtonRecognizer_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("TouchButtonRecognizer", nullptr);
+    java_register_method("TouchButtonRecognizer", "processRelease", (void*) TouchButtonRecognizer_processRelease);
+    java_register_method("TouchButtonRecognizer", "releaseTouchButtonInput", (void*) TouchButtonRecognizer_releaseTouchButtonInput);
+    java_register_method("TouchButtonRecognizer", "pressTouchButtonInput", (void*) TouchButtonRecognizer_pressTouchButtonInput);
+}
 
 static void TouchButtonRecognizer_initFields(TouchButtonRecognizer* this) {
     this->logUtil = LogUtil_getInstance();
@@ -63,6 +110,7 @@ static void TouchButtonRecognizer_initFields(TouchButtonRecognizer* this) {
 
 
 void TouchButtonRecognizer_init(TouchButtonRecognizer* this) {
+    TouchButtonRecognizer_register();
     TouchButtonRecognizer_initFields(this);
         if (TouchScreenFactory_isMultiTouch(TouchScreenFactory_getInstance())) {
             this->releaseHelper = MultitouchReleaseHelper_new(this);
@@ -72,7 +120,7 @@ void TouchButtonRecognizer_init(TouchButtonRecognizer* this) {
 }
 
 TouchButtonRecognizer* TouchButtonRecognizer_new(void) {
-    TouchButtonRecognizer* this = calloc(1, sizeof(TouchButtonRecognizer));
+    TouchButtonRecognizer* this = java_object_alloc(sizeof(TouchButtonRecognizer), "TouchButtonRecognizer");
     TouchButtonRecognizer_init(this);
     return this;
 }
@@ -82,8 +130,8 @@ TouchButtonRecognizer* TouchButtonRecognizer_new(void) {
 static void TouchButtonRecognizer_processRelease(TouchButtonRecognizer* this, TouchButtonInput* touchButtonInput, int32_t deviceId) {
         ReleaseHelper_release(this->releaseHelper, touchButtonInput, deviceId);
         GameKeyEvent* gameKeyEvent = TouchButtonInput_getGameKeyEvent(touchButtonInput);
-        UpGameKeyEventHandler_fireEvent(this->upGameKeyEventHandler, gameKeyEvent);
-        JAVA_CALL(UpGameKeyEventHandler_getInstanceForDevice(this->upGameKeyEventHandler, deviceId), fireEvent, gameKeyEvent);
+        UpGameKeyEventHandlerBase_fireEvent(this->upGameKeyEventHandler, gameKeyEvent);
+        UpGameKeyEventHandlerBase_fireEvent(UpGameKeyEventHandler_getInstanceForDevice(this->upGameKeyEventHandler, deviceId), gameKeyEvent);
         CurrentlyPressedTouchButtonSingleton_remove(this->currentlyPressedTouchButtonSingleton, touchButtonInput);
 }
 
@@ -136,8 +184,8 @@ bool TouchButtonRecognizer_pressTouchButtonInput(TouchButtonRecognizer* this, in
                     this->lastPressedTouchButtonInput = touchButtonInput;
                     CurrentlyPressedTouchButtonSingleton_add(this->currentlyPressedTouchButtonSingleton, touchButtonInput);
                     gameKeyEvent = TouchButtonInput_getGameKeyEvent(touchButtonInput);
-                    DownGameKeyEventHandler_fireEvent(this->downGameKeyEventHandler, gameKeyEvent);
-                    JAVA_CALL(DownGameKeyEventHandler_getInstanceForDevice(this->downGameKeyEventHandler, deviceId), fireEvent, gameKeyEvent);
+                    DownGameKeyEventHandlerBase_fireEvent(this->downGameKeyEventHandler, gameKeyEvent);
+                    DownGameKeyEventHandlerBase_fireEvent(DownGameKeyEventHandler_getInstanceForDevice(this->downGameKeyEventHandler, deviceId), gameKeyEvent);
                 }
                 return true;
             }

@@ -1,47 +1,32 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.input
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/input/PlatformInputMappingFactory.h"
 #include "org/allbinary/game/input/mapping/PersistentInputMapping.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/string/CommonStrings.h"
+#include "org/allbinary/game/input/NormalJ2MEGameInputMapping.h"
 
-typedef struct PlatformInputMappingFactory PlatformInputMappingFactory;
-struct PlatformInputMappingFactory {
-    LogUtil* logUtil;
-    PersistentInputMapping* inputToGameKeyMapping;
-};
 
 static PlatformInputMappingFactory* PlatformInputMappingFactory_instance;
 
-PlatformInputMappingFactory* PlatformInputMappingFactory_new(void);
-PlatformInputMappingFactory* PlatformInputMappingFactory_getInstance(void);
-PersistentInputMapping* PlatformInputMappingFactory_getPersistentInputMappingInstance(PlatformInputMappingFactory* this);
 
-// Static fields with runtime initializers: call this once at startup
+
 void PlatformInputMappingFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     PlatformInputMappingFactory_instance = PlatformInputMappingFactory_new();
+}
+
+void PlatformInputMappingFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("PlatformInputMappingFactory", nullptr);
+    java_register_method("PlatformInputMappingFactory", "getPersistentInputMappingInstance", (void*) PlatformInputMappingFactory_getPersistentInputMappingInstance);
 }
 
 static void PlatformInputMappingFactory_initFields(PlatformInputMappingFactory* this) {
@@ -50,18 +35,19 @@ static void PlatformInputMappingFactory_initFields(PlatformInputMappingFactory* 
 }
 
 void PlatformInputMappingFactory_init(PlatformInputMappingFactory* this) {
+    PlatformInputMappingFactory_register();
     PlatformInputMappingFactory_initFields(this);
 }
 
 PlatformInputMappingFactory* PlatformInputMappingFactory_new(void) {
-    PlatformInputMappingFactory* this = calloc(1, sizeof(PlatformInputMappingFactory));
+    PlatformInputMappingFactory* this = java_object_alloc(sizeof(PlatformInputMappingFactory), "PlatformInputMappingFactory");
     PlatformInputMappingFactory_init(this);
     return this;
 }
 
 
 PlatformInputMappingFactory* PlatformInputMappingFactory_getInstance(void) {
-        return PlatformInputMappingFactory_instance;
+        return (PlatformInputMappingFactory_staticInit(), PlatformInputMappingFactory_instance);
 }
 
 

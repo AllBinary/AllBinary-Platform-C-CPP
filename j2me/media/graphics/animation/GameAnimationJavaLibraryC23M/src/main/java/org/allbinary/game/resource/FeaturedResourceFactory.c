@@ -1,28 +1,5 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.resource
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/resource/FeaturedResourceFactory.h"
 #include "org/allbinary/game/configuration/feature/Features.h"
 #include "org/allbinary/game/configuration/feature/GameFeatureControlledInterface.h"
 #include "org/allbinary/game/configuration/feature/GraphicsFeatureFactory.h"
@@ -34,31 +11,74 @@
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
+#include "org/allbinary/game/resource/ResourceLoadingLevelFactory.h"
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/string/CommonSeps.h")
+#include "org/allbinary/string/CommonSeps.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/string/CommonLabels.h")
+#include "org/allbinary/string/CommonLabels.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
-typedef struct FeaturedResourceFactory FeaturedResourceFactory;
-struct FeaturedResourceFactory {
-    LogUtil* logUtil;
-    BasicArrayList* list;
-    CommonStrings* commonStrings;
-    const char* ANIMATION_FEATURES;
-    const char* IMAGE_LABEL;
-    const char* IMAGE_GRAPHICS_ARRAY;
-    const char* IMAGE_GRAPHICS_ROTATION;
-    const char* SPRITE_QUARTER;
-    const char* SPRITE_FULL;
-    const char* IS_LOADING_LEVEL_LABEL;
-    const char* IS_FEATURE;
-    const char* GAME_FEATURE_CONTROLLED;
-};
 
 
-FeaturedResourceFactory* FeaturedResourceFactory_new(void);
 
-void FeaturedResourceFactory_init(FeaturedResourceFactory* this);
-void FeaturedResourceFactory_init(FeaturedResourceFactory* this, int32_t level);
-void FeaturedResourceFactory_clear(FeaturedResourceFactory* this);
-void FeaturedResourceFactory_add(FeaturedResourceFactory* this, GameFeatureControlledInterface* featureInterface);
-BasicArrayList* FeaturedResourceFactory_getList(FeaturedResourceFactory* this);
+
+
+
+
+void FeaturedResourceFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void FeaturedResourceFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("FeaturedResourceFactory", nullptr);
+    java_register_method("FeaturedResourceFactory", "init", (void*) FeaturedResourceFactory_initMethod);
+    java_register_method("FeaturedResourceFactory", "clear", (void*) FeaturedResourceFactory_clear);
+    java_register_method("FeaturedResourceFactory", "add", (void*) FeaturedResourceFactory_add);
+    java_register_method("FeaturedResourceFactory", "getList", (void*) FeaturedResourceFactory_getList);
+}
 
 static void FeaturedResourceFactory_initFields(FeaturedResourceFactory* this) {
     this->logUtil = LogUtil_getInstance();
@@ -77,26 +97,27 @@ static void FeaturedResourceFactory_initFields(FeaturedResourceFactory* this) {
 
 
 void FeaturedResourceFactory_init(FeaturedResourceFactory* this) {
+    FeaturedResourceFactory_register();
     FeaturedResourceFactory_initFields(this);
 }
 
 FeaturedResourceFactory* FeaturedResourceFactory_new(void) {
-    FeaturedResourceFactory* this = calloc(1, sizeof(FeaturedResourceFactory));
+    FeaturedResourceFactory* this = java_object_alloc(sizeof(FeaturedResourceFactory), "FeaturedResourceFactory");
     FeaturedResourceFactory_init(this);
     return this;
 }
 
 
 // throws Exception
-void FeaturedResourceFactory_init(FeaturedResourceFactory* this, int32_t level) {
+void FeaturedResourceFactory_initMethod(FeaturedResourceFactory* this, int32_t level) {
         int32_t size = BasicArrayList_size(this->list);
         for (int32_t index = 0; index < size; index++) {
             GameFeatureControlledInterface* featureInterface = ((GameFeatureControlledInterface*) this->list->objectArray[index]);
             bool isLoadingLevel = GameFeatureControlledInterface_isLoadingLevel(featureInterface, level);
             bool isFeature = GameFeatureControlledInterface_isFeature(featureInterface);
-            LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), this->GAME_FEATURE_CONTROLLED), append, GameFeatureControlledInterface_toString(featureInterface)), append, this->IS_LOADING_LEVEL_LABEL), append, ResourceLoadingLevelFactory_getLevelString(ResourceLoadingLevelFactory_getInstance(), level)), append, CommonSeps_getInstance()->COLON_SEP), appendboolean, isLoadingLevel), append, this->IS_FEATURE), appendboolean, isFeature), toString), this, this->commonStrings->INIT);
+            LogUtil_putF(this->logUtil, java_string_of(StringMaker_appendboolean(StringMaker_append(StringMaker_appendboolean(StringMaker_append(StringMaker_append(StringMaker_append(StringMaker_append(StringMaker_append(StringMaker_new(), this->GAME_FEATURE_CONTROLLED), java_string_of(featureInterface)), this->IS_LOADING_LEVEL_LABEL), ResourceLoadingLevelFactory_getLevelString(ResourceLoadingLevelFactory_getInstance(), level)), CommonSeps_getInstance()->COLON_SEP), isLoadingLevel), this->IS_FEATURE), isFeature)), this, this->commonStrings->INIT);
             if (isLoadingLevel && isFeature) {
-                GameFeatureControlledInterface_init(featureInterface, level);
+                GameFeatureControlledInterface_initMethod(featureInterface, level);
             }
         }
         Features* features = Features_getInstance();
@@ -106,7 +127,7 @@ void FeaturedResourceFactory_init(FeaturedResourceFactory* this, int32_t level) 
         StringMaker_appendboolean(stringBuffer, Features_isFeature(features, graphicsFeatureFactory->VECTOR_GRAPHICS));
         StringMaker_append(stringBuffer, this->IMAGE_LABEL);
         StringMaker_appendboolean(stringBuffer, Features_isFeature(features, graphicsFeatureFactory->IMAGE_GRAPHICS));
-        LogUtil_putF(this->logUtil, StringMaker_toString(stringBuffer), this, this->commonStrings->INIT);
+        LogUtil_putF(this->logUtil, java_string_of(stringBuffer), this, this->commonStrings->INIT);
         if (Features_isFeature(features, graphicsFeatureFactory->IMAGE_GRAPHICS)) {
             StringMaker_delete(stringBuffer, 0, StringMaker_length(stringBuffer));
             StringMaker_append(stringBuffer, this->IMAGE_GRAPHICS_ARRAY);
@@ -117,7 +138,7 @@ void FeaturedResourceFactory_init(FeaturedResourceFactory* this, int32_t level) 
             StringMaker_appendboolean(stringBuffer, Features_isFeature(features, graphicsFeatureFactory->SPRITE_QUARTER_ROTATION_GRAPHICS));
             StringMaker_append(stringBuffer, this->SPRITE_FULL);
             StringMaker_appendboolean(stringBuffer, Features_isFeature(features, graphicsFeatureFactory->SPRITE_FULL_GRAPHICS));
-            LogUtil_putF(this->logUtil, StringMaker_toString(stringBuffer), this, this->commonStrings->INIT);
+            LogUtil_putF(this->logUtil, java_string_of(stringBuffer), this, this->commonStrings->INIT);
         }
 }
 
@@ -128,7 +149,7 @@ void FeaturedResourceFactory_clear(FeaturedResourceFactory* this) {
 
 
 void FeaturedResourceFactory_add(FeaturedResourceFactory* this, GameFeatureControlledInterface* featureInterface) {
-        LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), CommonLabels_getInstance()->START_LABEL), append, StringUtil_toString(StringUtil_getInstance(), featureInterface)), toString), this, this->commonStrings->ADD);
+        LogUtil_putF(this->logUtil, java_string_of(StringMaker_append(StringMaker_append(StringMaker_new(), CommonLabels_getInstance()->START_LABEL), StringUtil_toString(StringUtil_getInstance(), featureInterface))), this, this->commonStrings->ADD);
         BasicArrayList_add(this->list, featureInterface);
 }
 

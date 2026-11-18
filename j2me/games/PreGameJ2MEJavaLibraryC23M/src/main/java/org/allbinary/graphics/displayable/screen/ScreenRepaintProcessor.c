@@ -1,42 +1,29 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.displayable.screen
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Displayable.h"
-#include "org/allbinary/canvas/Processor.h"
-
-typedef struct ScreenRepaintProcessor ScreenRepaintProcessor;
-struct ScreenRepaintProcessor {
-    Processor base;
-    Displayable* displayable;
-};
+#include "org/allbinary/graphics/displayable/screen/ScreenRepaintProcessor.h"
+#include "javax/microedition/lcdui/Displayable.h"
+#include "org/allbinary/graphics/displayable/screen/ScreenRepaintUtil.h"
 
 
-ScreenRepaintProcessor* ScreenRepaintProcessor_new(Displayable* displayable);
 
-void ScreenRepaintProcessor_init(ScreenRepaintProcessor* this, Displayable* displayable);
-void ScreenRepaintProcessor_process(ScreenRepaintProcessor* this);
+
+
+void ScreenRepaintProcessor_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void ScreenRepaintProcessor_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ScreenRepaintProcessor", "Processor");
+    java_register_method("ScreenRepaintProcessor", "process", (void*) ScreenRepaintProcessor_process);
+}
 
 static void ScreenRepaintProcessor_initFields(ScreenRepaintProcessor* this) {
     
@@ -44,13 +31,14 @@ static void ScreenRepaintProcessor_initFields(ScreenRepaintProcessor* this) {
 
 
 void ScreenRepaintProcessor_init(ScreenRepaintProcessor* this, Displayable* displayable) {
+    ScreenRepaintProcessor_register();
     Processor_init(&this->base);
     ScreenRepaintProcessor_initFields(this);
         this->displayable = displayable;
 }
 
 ScreenRepaintProcessor* ScreenRepaintProcessor_new(Displayable* displayable) {
-    ScreenRepaintProcessor* this = calloc(1, sizeof(ScreenRepaintProcessor));
+    ScreenRepaintProcessor* this = java_object_alloc(sizeof(ScreenRepaintProcessor), "ScreenRepaintProcessor");
     ScreenRepaintProcessor_init(this, displayable);
     return this;
 }

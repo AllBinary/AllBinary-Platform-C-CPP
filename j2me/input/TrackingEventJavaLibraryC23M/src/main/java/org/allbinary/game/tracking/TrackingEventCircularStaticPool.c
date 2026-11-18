@@ -1,46 +1,34 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.tracking
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/tracking/TrackingEventCircularStaticPool.h"
 #include "org/allbinary/layer/AllBinaryLayer.h"
 #include "org/allbinary/logic/util/event/AllBinaryEventCircularPool.h"
+#include "org/allbinary/game/tracking/TrackingEventFactory.h"
+#include "org/allbinary/game/tracking/TrackingEvent.h"
 
-typedef struct TrackingEventCircularStaticPool TrackingEventCircularStaticPool;
-struct TrackingEventCircularStaticPool {
-    AllBinaryEventCircularPool* EVENT_POOL;
-};
 
 static TrackingEventCircularStaticPool* TrackingEventCircularStaticPool_instance;
 
-TrackingEventCircularStaticPool* TrackingEventCircularStaticPool_new(void);
-TrackingEventCircularStaticPool* TrackingEventCircularStaticPool_getInstance(void);
-void TrackingEventCircularStaticPool_init(TrackingEventCircularStaticPool* this);
-TrackingEvent* TrackingEventCircularStaticPool_getNextInstance(TrackingEventCircularStaticPool* this, AllBinaryLayer* layerInterface);
 
-// Static fields with runtime initializers: call this once at startup
+
+
 void TrackingEventCircularStaticPool_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     TrackingEventCircularStaticPool_instance = TrackingEventCircularStaticPool_new();
+}
+
+void TrackingEventCircularStaticPool_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("TrackingEventCircularStaticPool", nullptr);
+    java_register_method("TrackingEventCircularStaticPool", "init", (void*) TrackingEventCircularStaticPool_initMethod);
+    java_register_method("TrackingEventCircularStaticPool", "getNextInstance", (void*) TrackingEventCircularStaticPool_getNextInstance);
 }
 
 static void TrackingEventCircularStaticPool_initFields(TrackingEventCircularStaticPool* this) {
@@ -48,22 +36,23 @@ static void TrackingEventCircularStaticPool_initFields(TrackingEventCircularStat
 }
 
 void TrackingEventCircularStaticPool_init(TrackingEventCircularStaticPool* this) {
+    TrackingEventCircularStaticPool_register();
     TrackingEventCircularStaticPool_initFields(this);
 }
 
 TrackingEventCircularStaticPool* TrackingEventCircularStaticPool_new(void) {
-    TrackingEventCircularStaticPool* this = calloc(1, sizeof(TrackingEventCircularStaticPool));
+    TrackingEventCircularStaticPool* this = java_object_alloc(sizeof(TrackingEventCircularStaticPool), "TrackingEventCircularStaticPool");
     TrackingEventCircularStaticPool_init(this);
     return this;
 }
 
 
 TrackingEventCircularStaticPool* TrackingEventCircularStaticPool_getInstance(void) {
-        return TrackingEventCircularStaticPool_instance;
+        return (TrackingEventCircularStaticPool_staticInit(), TrackingEventCircularStaticPool_instance);
 }
 
 
-void TrackingEventCircularStaticPool_init(TrackingEventCircularStaticPool* this) {
+void TrackingEventCircularStaticPool_initMethod(TrackingEventCircularStaticPool* this) {
         AllBinaryEventCircularPool_initAllBinaryEventCircularPool(this->EVENT_POOL, TrackingEventFactory_new());
 }
 
@@ -71,7 +60,7 @@ void TrackingEventCircularStaticPool_init(TrackingEventCircularStaticPool* this)
 // throws Exception
 // synchronized
 TrackingEvent* TrackingEventCircularStaticPool_getNextInstance(TrackingEventCircularStaticPool* this, AllBinaryLayer* layerInterface) {
-        TrackingEvent* trackingEvent = ((TrackingEvent*) AllBinaryEventCircularPool_getNextInstance(this->EVENT_POOL));
+        TrackingEvent* trackingEvent = ((TrackingEvent*) BaseCircularPool_getNextInstance(this->EVENT_POOL));
         TrackingEvent_setLayerInterfaceForCircularStaticPool(trackingEvent, layerInterface);
         return trackingEvent;
 }

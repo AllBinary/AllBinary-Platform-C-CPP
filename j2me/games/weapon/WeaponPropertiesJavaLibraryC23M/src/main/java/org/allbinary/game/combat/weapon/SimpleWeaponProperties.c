@@ -1,45 +1,38 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.combat.weapon
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct SimpleWeaponProperties SimpleWeaponProperties;
-struct SimpleWeaponProperties {
-    int32_t damage;
-    int16_t dissipation;
-    int32_t range;
-};
+#include "org/allbinary/game/combat/weapon/SimpleWeaponProperties.h"
 
 
-SimpleWeaponProperties* SimpleWeaponProperties_new(void);
-void SimpleWeaponProperties_set(SimpleWeaponProperties* this, SimpleWeaponProperties* simpleWeaponProperties);
-void SimpleWeaponProperties_setDamage(SimpleWeaponProperties* this, int32_t damage);
-int32_t SimpleWeaponProperties_getDamage(SimpleWeaponProperties* this);
-void SimpleWeaponProperties_setDissipation(SimpleWeaponProperties* this, int16_t dissipation);
-int16_t SimpleWeaponProperties_getDissipation(SimpleWeaponProperties* this);
-int32_t SimpleWeaponProperties_getRange(SimpleWeaponProperties* this);
-void SimpleWeaponProperties_setRange(SimpleWeaponProperties* this, int32_t range);
+
+
+
+
+
+
+
+
+void SimpleWeaponProperties_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void SimpleWeaponProperties_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("SimpleWeaponProperties", nullptr);
+    java_register_method("SimpleWeaponProperties", "set", (void*) SimpleWeaponProperties_set);
+    java_register_method("SimpleWeaponProperties", "setDamage", (void*) SimpleWeaponProperties_setDamage);
+    java_register_method("SimpleWeaponProperties", "getDamage", (void*) SimpleWeaponProperties_getDamage);
+    java_register_method("SimpleWeaponProperties", "setDissipation", (void*) SimpleWeaponProperties_setDissipation);
+    java_register_method("SimpleWeaponProperties", "getDissipation", (void*) SimpleWeaponProperties_getDissipation);
+    java_register_method("SimpleWeaponProperties", "getRange", (void*) SimpleWeaponProperties_getRange);
+    java_register_method("SimpleWeaponProperties", "setRange", (void*) SimpleWeaponProperties_setRange);
+}
 
 static void SimpleWeaponProperties_initFields(SimpleWeaponProperties* this) {
     this->damage = 0;
@@ -48,11 +41,12 @@ static void SimpleWeaponProperties_initFields(SimpleWeaponProperties* this) {
 }
 
 void SimpleWeaponProperties_init(SimpleWeaponProperties* this) {
+    SimpleWeaponProperties_register();
     SimpleWeaponProperties_initFields(this);
 }
 
 SimpleWeaponProperties* SimpleWeaponProperties_new(void) {
-    SimpleWeaponProperties* this = calloc(1, sizeof(SimpleWeaponProperties));
+    SimpleWeaponProperties* this = java_object_alloc(sizeof(SimpleWeaponProperties), "SimpleWeaponProperties");
     SimpleWeaponProperties_init(this);
     return this;
 }

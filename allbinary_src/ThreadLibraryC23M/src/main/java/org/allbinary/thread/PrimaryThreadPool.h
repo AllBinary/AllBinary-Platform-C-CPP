@@ -49,6 +49,38 @@ void PrimaryThreadPool_runTask(PrimaryThreadPool* this, Runnable* task);
 void PrimaryThreadPool_startTask(PrimaryThreadPool* this, Runnable* task);
 
 void PrimaryThreadPool_completedTask(PrimaryThreadPool* this, Runnable* task);
+#define PrimaryThreadPool_new3 PrimaryThreadPool_new
+#define PrimaryThreadPool_init3 PrimaryThreadPool_init
+#ifndef PrimaryThreadPool_runAPriorityTask
+#define PrimaryThreadPool_runAPriorityTask ThreadPool_runAPriorityTask
+#endif
+#ifndef PrimaryThreadPool_runTaskWithPriority
+#define PrimaryThreadPool_runTaskWithPriority ThreadPool_runTaskWithPriority
+#endif
+#ifndef PrimaryThreadPool_getTask
+#define PrimaryThreadPool_getTask ThreadPool_getTask
+#endif
+#ifndef PrimaryThreadPool_clear
+#define PrimaryThreadPool_clear ThreadPool_clear
+#endif
+#ifndef PrimaryThreadPool_close
+#define PrimaryThreadPool_close ThreadPool_close
+#endif
+#ifndef PrimaryThreadPool_join
+#define PrimaryThreadPool_join ThreadPool_join
+#endif
+#ifndef PrimaryThreadPool_isBusy
+#define PrimaryThreadPool_isBusy ThreadPool_isBusy
+#endif
+#ifndef PrimaryThreadPool_threadStarted
+#define PrimaryThreadPool_threadStarted ThreadPool_threadStarted
+#endif
+#ifndef PrimaryThreadPool_threadStopped
+#define PrimaryThreadPool_threadStopped ThreadPool_threadStopped
+#endif
+#ifndef PrimaryThreadPool_createName
+#define PrimaryThreadPool_createName ThreadPool_createName
+#endif
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void PrimaryThreadPool_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

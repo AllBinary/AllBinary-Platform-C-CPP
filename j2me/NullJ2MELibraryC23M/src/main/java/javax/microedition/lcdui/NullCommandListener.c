@@ -1,36 +1,38 @@
 // Generated Code Do Not Modify
-// package javax.microedition.lcdui
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "javax/microedition/lcdui/NullCommandListener.h"
 #include "javax/microedition/lcdui/CommandListener.h"
+#include "javax/microedition/lcdui/Command.h"
+#include "javax/microedition/lcdui/Displayable.h"
 
-typedef struct NullCommandListener NullCommandListener;
-struct NullCommandListener {
-    CommandListener CommandListener_interface;
-};
 
 NullCommandListener* NullCommandListener_NULL_COMMAND_LISTENER;
 
-NullCommandListener* NullCommandListener_new(void);
-void NullCommandListener_commandAction(NullCommandListener* this, Command* c, Displayable* d);
 
-// Static fields with runtime initializers: call this once at startup
 void NullCommandListener_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     NullCommandListener_NULL_COMMAND_LISTENER = NullCommandListener_new();
 }
 
+void NullCommandListener_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("NullCommandListener", nullptr);
+    java_register_method("NullCommandListener", "commandAction", (void*) NullCommandListener_commandAction);
+}
+
 void NullCommandListener_init(NullCommandListener* this) {
+    NullCommandListener_register();
 }
 
 NullCommandListener* NullCommandListener_new(void) {
-    NullCommandListener* this = calloc(1, sizeof(NullCommandListener));
+    NullCommandListener* this = java_object_alloc(sizeof(NullCommandListener), "NullCommandListener");
     NullCommandListener_init(this);
     return this;
 }

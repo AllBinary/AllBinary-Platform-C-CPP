@@ -1,44 +1,44 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.paint.help
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/paint/help/UpdateMyFontProperties.h"
 #include "org/allbinary/logic/NullUtil.h"
 #include "org/allbinary/logic/string/StringUtil.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
 
-typedef struct UpdateMyFontProperties UpdateMyFontProperties;
-struct UpdateMyFontProperties {
-    const char** actionStringArray;
-    int32_t* keymappingBeginWidthArray;
-    int32_t* actionStringDeltaXArray;
-    int32_t** inputDeltaXArray;
-    const char*** sepArray;
-    int32_t** sepWidthArray;
-    int32_t charHeight;
-};
 
 
-UpdateMyFontProperties* UpdateMyFontProperties_new(void);
+void UpdateMyFontProperties_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void UpdateMyFontProperties_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("UpdateMyFontProperties", nullptr);
+}
 
 static void UpdateMyFontProperties_initFields(UpdateMyFontProperties* this) {
     this->actionStringArray = StringUtil_getArrayInstance(StringUtil_getInstance());
@@ -51,11 +51,12 @@ static void UpdateMyFontProperties_initFields(UpdateMyFontProperties* this) {
 }
 
 void UpdateMyFontProperties_init(UpdateMyFontProperties* this) {
+    UpdateMyFontProperties_register();
     UpdateMyFontProperties_initFields(this);
 }
 
 UpdateMyFontProperties* UpdateMyFontProperties_new(void) {
-    UpdateMyFontProperties* this = calloc(1, sizeof(UpdateMyFontProperties));
+    UpdateMyFontProperties* this = java_object_alloc(sizeof(UpdateMyFontProperties), "UpdateMyFontProperties");
     UpdateMyFontProperties_init(this);
     return this;
 }

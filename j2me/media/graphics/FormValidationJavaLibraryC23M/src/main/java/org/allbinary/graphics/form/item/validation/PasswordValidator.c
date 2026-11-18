@@ -1,48 +1,36 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.form.item.validation
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/graphics/form/item/validation/PasswordValidator.h"
 #include "org/allbinary/graphics/form/item/ABTextFieldItem.h"
 #include "org/allbinary/graphics/form/item/validation/TextFieldItemValidator.h"
 
-typedef struct PasswordValidator PasswordValidator;
-struct PasswordValidator {
-    TextFieldItemValidator base;
-};
 
 
-PasswordValidator* PasswordValidator_new(ABTextFieldItem* textFieldItem, int32_t min, int32_t max, bool allowOnEmpty);
 
-void PasswordValidator_init(PasswordValidator* this, ABTextFieldItem* textFieldItem, int32_t min, int32_t max, bool allowOnEmpty);
+void PasswordValidator_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void PasswordValidator_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("PasswordValidator", "TextFieldItemValidator");
+}
 
 
 void PasswordValidator_init(PasswordValidator* this, ABTextFieldItem* textFieldItem, int32_t min, int32_t max, bool allowOnEmpty) {
+    PasswordValidator_register();
         TextFieldItemValidator_init(&this->base, textFieldItem, min, max, allowOnEmpty);
 }
 
 PasswordValidator* PasswordValidator_new(ABTextFieldItem* textFieldItem, int32_t min, int32_t max, bool allowOnEmpty) {
-    PasswordValidator* this = calloc(1, sizeof(PasswordValidator));
+    PasswordValidator* this = java_object_alloc(sizeof(PasswordValidator), "PasswordValidator");
     PasswordValidator_init(this, textFieldItem, min, max, allowOnEmpty);
     return this;
 }

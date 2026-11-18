@@ -1,45 +1,35 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.ag.layer.pickup.health
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/ag/layer/pickup/health/HealLayerFactory.h"
 #include "org/allbinary/layer/AllBinaryLayer.h"
-#include "org/allbinary/layer/AllBinaryLayerFactoryInterface.h"
-
-typedef struct HealLayerFactory HealLayerFactory;
-struct HealLayerFactory {
-    AllBinaryLayerFactoryInterface AllBinaryLayerFactoryInterface_interface;
-};
+#include "org/allbinary/game/ag/layer/pickup/health/HealLayer.h"
 
 
-HealLayerFactory* HealLayerFactory_new(void);
-AllBinaryLayer* HealLayerFactory_getInstance(HealLayerFactory* this);
+
+
+void HealLayerFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void HealLayerFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("HealLayerFactory", nullptr);
+    java_register_method("HealLayerFactory", "getInstance", (void*) HealLayerFactory_getInstance);
+}
 
 void HealLayerFactory_init(HealLayerFactory* this) {
+    HealLayerFactory_register();
 }
 
 HealLayerFactory* HealLayerFactory_new(void) {
-    HealLayerFactory* this = calloc(1, sizeof(HealLayerFactory));
+    HealLayerFactory* this = java_object_alloc(sizeof(HealLayerFactory), "HealLayerFactory");
     HealLayerFactory_init(this);
     return this;
 }

@@ -1,57 +1,26 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.input
+#include "org/allbinary/game/input/GameInputStrings.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct GameInputStrings GameInputStrings;
-struct GameInputStrings {
-    const char* PROCESS_INPUT;
-    const char* KEY_PRESSED;
-    const char* KEY_RELEASED;
-    const char* KEY_REPEATED;
-    const char* ON_PRESS_GAME_KEY;
-    const char* ON_DOWN_GAME_KEY;
-    const char* ON_UP_GAME_KEY;
-    const char* NO_KEY;
-    const char* ADD_KEY_EVENT;
-    const char* REMOVE_KEY_EVENT;
-    const char* STRAFE_LEFT;
-    const char* STRAFE_RIGHT;
-    const char* PROCESS_MOTION_INPUT;
-    const char* UDPATE_CURRENT_TOUCH_INPUT_FACTORY;
-    const char* ENABLE_PLAYER_GAME_INPUTS;
-    const char* ENABLE_PLAYER_GAME_INPUT;
-};
 
 static GameInputStrings* GameInputStrings_instance;
 
-GameInputStrings* GameInputStrings_new(void);
-GameInputStrings* GameInputStrings_getInstance(void);
 
-// Static fields with runtime initializers: call this once at startup
 void GameInputStrings_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     GameInputStrings_instance = GameInputStrings_new();
+}
+
+void GameInputStrings_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GameInputStrings", nullptr);
 }
 
 static void GameInputStrings_initFields(GameInputStrings* this) {
@@ -74,17 +43,18 @@ static void GameInputStrings_initFields(GameInputStrings* this) {
 }
 
 void GameInputStrings_init(GameInputStrings* this) {
+    GameInputStrings_register();
     GameInputStrings_initFields(this);
 }
 
 GameInputStrings* GameInputStrings_new(void) {
-    GameInputStrings* this = calloc(1, sizeof(GameInputStrings));
+    GameInputStrings* this = java_object_alloc(sizeof(GameInputStrings), "GameInputStrings");
     GameInputStrings_init(this);
     return this;
 }
 
 
 GameInputStrings* GameInputStrings_getInstance(void) {
-        return GameInputStrings_instance;
+        return (GameInputStrings_staticInit(), GameInputStrings_instance);
 }
 

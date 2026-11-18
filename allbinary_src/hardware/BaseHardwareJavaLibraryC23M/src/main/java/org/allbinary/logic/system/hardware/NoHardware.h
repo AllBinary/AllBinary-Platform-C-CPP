@@ -55,5 +55,11 @@ void NoHardware_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)
 void NoHardware_register(void);
 
+#if __has_include("org/allbinary/logic/system/hardware/components/interfaces/HardwareComponentInterface.h")
+#include "org/allbinary/logic/system/hardware/components/interfaces/HardwareComponentInterface.h"
+#endif
+#if __has_include("org/allbinary/util/ABHashtable.h")
+#include "org/allbinary/util/ABHashtable.h"
+#endif
 
 #endif // ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_NOHARDWARE_H

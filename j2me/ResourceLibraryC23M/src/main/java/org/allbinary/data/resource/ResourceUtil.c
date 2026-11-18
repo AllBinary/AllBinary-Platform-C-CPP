@@ -1,58 +1,63 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.data.resource
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "java/io/InputStream.h"
+#include "org/allbinary/data/resource/ResourceUtil.h"
 #include "org/allbinary/logic/NullUtil.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/string/CommonSeps.h"
 #include "org/allbinary/string/CommonStrings.h"
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/string/CommonStrings.h")
+#include "org/allbinary/string/CommonStrings.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
 
-//J2SE - J2ME
-typedef struct ResourceUtil ResourceUtil;
-struct ResourceUtil {
-    LogUtil* logUtil;
-};
 
-static Any* ResourceUtil_classLoader;
+static void* ResourceUtil_classLoader;
 static ResourceUtil* ResourceUtil_instance;
 
-ResourceUtil* ResourceUtil_new(void);
-ResourceUtil* ResourceUtil_getInstance(void);
 
-void ResourceUtil_init(ResourceUtil* this);
-void ResourceUtil_setLoadingPaths(ResourceUtil* this, const char* path, const char* ext);
-void ResourceUtil_setClassLoader(ResourceUtil* this, ClassLoader* classLoader);
-InputStream* ResourceUtil_getResourceAsStream(ResourceUtil* this, const char* resource);
+
+
+
+
 static InputStream* ResourceUtil_getResourceAsStreamAtStart(ResourceUtil* this, const char* resource, int32_t startIndex);
-void ResourceUtil_addResource(ResourceUtil* this, const char* resource, int32_t value);
 
-// Static fields with runtime initializers: call this once at startup
+
 void ResourceUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     ResourceUtil_classLoader = NullUtil_getInstance()->NULL_OBJECT;
     ResourceUtil_instance = ResourceUtil_new();
+}
+
+void ResourceUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ResourceUtil", nullptr);
+    java_register_method("ResourceUtil", "setLoadingPaths", (void*) ResourceUtil_setLoadingPaths);
+    java_register_method("ResourceUtil", "setClassLoader", (void*) ResourceUtil_setClassLoader);
+    java_register_method("ResourceUtil", "getResourceAsStream", (void*) ResourceUtil_getResourceAsStream);
+    java_register_method("ResourceUtil", "getResourceAsStreamAtStart", (void*) ResourceUtil_getResourceAsStreamAtStart);
+    java_register_method("ResourceUtil", "addResource", (void*) ResourceUtil_addResource);
 }
 
 static void ResourceUtil_initFields(ResourceUtil* this) {
@@ -61,16 +66,17 @@ static void ResourceUtil_initFields(ResourceUtil* this) {
 
 
 ResourceUtil* ResourceUtil_getInstance(void) {
-        return ResourceUtil_instance;
+        return (ResourceUtil_staticInit(), ResourceUtil_instance);
 }
 
 
 void ResourceUtil_init(ResourceUtil* this) {
+    ResourceUtil_register();
     ResourceUtil_initFields(this);
 }
 
 ResourceUtil* ResourceUtil_new(void) {
-    ResourceUtil* this = calloc(1, sizeof(ResourceUtil));
+    ResourceUtil* this = java_object_alloc(sizeof(ResourceUtil), "ResourceUtil");
     ResourceUtil_init(this);
     return this;
 }
@@ -82,7 +88,7 @@ void ResourceUtil_setLoadingPaths(ResourceUtil* this, const char* path, const ch
 
 
 void ResourceUtil_setClassLoader(ResourceUtil* this, ClassLoader* classLoader) {
-        LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), "Resource Loader: "), append, java_class_of(classLoader)), toString), this, "setClassLoader");
+        LogUtil_putF(this->logUtil, java_string_of(StringMaker_append(StringMaker_append(StringMaker_new(), "Resource Loader: "), java_class_of(classLoader))), this, "setClassLoader");
         ResourceUtil_classLoader = classLoader;
 }
 
@@ -93,7 +99,7 @@ InputStream* ResourceUtil_getResourceAsStream(ResourceUtil* this, const char* re
         if (inputStream == nullptr) {
             inputStream = ResourceUtil_getResourceAsStreamAtStart(this, resource, 1);
             if (inputStream == nullptr) {
-                java_throw(java_exception_new("Exception", JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), "Unable to obtain: "), append, resource), toString)));
+                java_throw(java_exception_new("Exception", java_string_of(StringMaker_append(StringMaker_append(StringMaker_new(), "Unable to obtain: "), resource))));
             }
         }
         return inputStream;
@@ -109,12 +115,12 @@ static InputStream* ResourceUtil_getResourceAsStreamAtStart(ResourceUtil* this, 
         if (inputStream != nullptr) {
             return inputStream;
         }
-        ClassLoader* classLoader = ((ClassLoader*) ResourceUtil_classLoader);
-        inputStream = Any_getResourceAsStream(classLoader, resourcePath);
+        ClassLoader* classLoader = ((ClassLoader*) (ResourceUtil_staticInit(), ResourceUtil_classLoader));
+        inputStream = ClassLoader_getResourceAsStream(classLoader, resourcePath);
         if (inputStream != nullptr) {
             return inputStream;
         }
-        inputStream = JAVA_CALL(JAVA_CALL(Thread_currentThread(), getContextClassLoader), getResourceAsStream, resourcePath);
+        inputStream = JAVA_CALL(Thread_getContextClassLoader(Thread_currentThread()), getResourceAsStream, resourcePath);
         if (inputStream != nullptr) {
             return inputStream;
         }

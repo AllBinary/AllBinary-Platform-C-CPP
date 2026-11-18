@@ -1,48 +1,39 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.input
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/input/PlatformFormInputMappingFactory.h"
 #include "org/allbinary/game/input/mapping/InputToGameKeyMapping.h"
 #include "org/allbinary/logic/NullUtil.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/string/CommonStrings.h"
+#include "org/allbinary/game/input/GameKeyFactory.h"
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
 
-typedef struct PlatformFormInputMappingFactory PlatformFormInputMappingFactory;
-struct PlatformFormInputMappingFactory {
-    LogUtil* logUtil;
-    InputToGameKeyMapping* inputToGameKeyMapping;
-};
 
-static Any* PlatformFormInputMappingFactory_instance;
+static void* PlatformFormInputMappingFactory_instance;
 
-PlatformFormInputMappingFactory* PlatformFormInputMappingFactory_new(void);
-PlatformFormInputMappingFactory* PlatformFormInputMappingFactory_getInstance(void);
-InputToGameKeyMapping* PlatformFormInputMappingFactory_getOrCreate(PlatformFormInputMappingFactory* this);
 
-// Static fields with runtime initializers: call this once at startup
+
 void PlatformFormInputMappingFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     PlatformFormInputMappingFactory_instance = NullUtil_getInstance()->NULL_OBJECT;
+}
+
+void PlatformFormInputMappingFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("PlatformFormInputMappingFactory", nullptr);
+    java_register_method("PlatformFormInputMappingFactory", "getOrCreate", (void*) PlatformFormInputMappingFactory_getOrCreate);
 }
 
 static void PlatformFormInputMappingFactory_initFields(PlatformFormInputMappingFactory* this) {
@@ -51,21 +42,22 @@ static void PlatformFormInputMappingFactory_initFields(PlatformFormInputMappingF
 }
 
 void PlatformFormInputMappingFactory_init(PlatformFormInputMappingFactory* this) {
+    PlatformFormInputMappingFactory_register();
     PlatformFormInputMappingFactory_initFields(this);
 }
 
 PlatformFormInputMappingFactory* PlatformFormInputMappingFactory_new(void) {
-    PlatformFormInputMappingFactory* this = calloc(1, sizeof(PlatformFormInputMappingFactory));
+    PlatformFormInputMappingFactory* this = java_object_alloc(sizeof(PlatformFormInputMappingFactory), "PlatformFormInputMappingFactory");
     PlatformFormInputMappingFactory_init(this);
     return this;
 }
 
 
 PlatformFormInputMappingFactory* PlatformFormInputMappingFactory_getInstance(void) {
-        if (PlatformFormInputMappingFactory_instance == NullUtil_getInstance()->NULL_OBJECT) {
+        if ((PlatformFormInputMappingFactory_staticInit(), PlatformFormInputMappingFactory_instance) == NullUtil_getInstance()->NULL_OBJECT) {
             PlatformFormInputMappingFactory_instance = PlatformFormInputMappingFactory_new();
         }
-        return ((PlatformFormInputMappingFactory*) PlatformFormInputMappingFactory_instance);
+        return ((PlatformFormInputMappingFactory*) (PlatformFormInputMappingFactory_staticInit(), PlatformFormInputMappingFactory_instance));
 }
 
 

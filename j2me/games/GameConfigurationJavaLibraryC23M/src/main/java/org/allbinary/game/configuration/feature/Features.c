@@ -1,28 +1,5 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.configuration.feature
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/configuration/feature/Features.h"
 #include "org/allbinary/game/configuration/event/GameFeatureEvent.h"
 #include "org/allbinary/game/configuration/event/GameFeatureEventHandler.h"
 #include "org/allbinary/logic/NullUtil.h"
@@ -35,33 +12,84 @@
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
+#include "org/allbinary/game/configuration/feature/Feature.h"
+#include "org/allbinary/game/configuration/feature/GameFeatureFactory.h"
+#include "org/allbinary/game/configuration/feature/InputFeatureFactory.h"
+#include "org/allbinary/game/configuration/feature/SensorFeatureFactory.h"
+#include "org/allbinary/game/configuration/feature/TouchFeatureFactory.h"
+#include "org/allbinary/game/configuration/feature/MainFeatureFactory.h"
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/NullUtil.h")
+#include "org/allbinary/logic/NullUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/string/CommonLabels.h")
+#include "org/allbinary/string/CommonLabels.h"
+#endif
+#if __has_include("org/allbinary/game/configuration/event/GameFeatureEventHandler.h")
+#include "org/allbinary/game/configuration/event/GameFeatureEventHandler.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/string/CommonLabels.h")
+#include "org/allbinary/string/CommonLabels.h"
+#endif
+#if __has_include("org/allbinary/game/configuration/event/GameFeatureEventHandler.h")
+#include "org/allbinary/game/configuration/event/GameFeatureEventHandler.h"
+#endif
+#if __has_include("org/allbinary/logic/system/os/OperatingSystemFactory.h")
+#include "org/allbinary/logic/system/os/OperatingSystemFactory.h"
+#endif
 
-typedef struct Features Features;
-struct Features {
-    LogUtil* logUtil;
-    CommonStrings* commonStrings;
-    BasicArrayList* list;
-    BasicArrayList* defaultList;
-};
 
-static Any* Features_SINGLETON;
+static void* Features_SINGLETON;
 
-Features* Features_new(void);
-Features* Features_getInstance(void);
 
-void Features_init(Features* this);
-void Features_addDefault(Features* this, Feature* gameFeature);
-void Features_add(Features* this, Feature* gameFeature);
-void Features_removeDefault(Features* this, Feature* gameFeature);
-void Features_remove(Features* this, Feature* gameFeature);
-static void Features_init(Features* this);
-bool Features_isDefault(Features* this, Feature* gameFeature);
-bool Features_isFeature(Features* this, Feature* gameFeature);
-void Features_toggle(Features* this, Feature* gameFeature);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+static void Features_initMethod(Features* this);
+
+
+
+
 void Features_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     Features_SINGLETON = NullUtil_getInstance()->NULL_OBJECT;
+}
+
+void Features_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("Features", nullptr);
+    java_register_method("Features", "addDefault", (void*) Features_addDefault);
+    java_register_method("Features", "add", (void*) Features_add);
+    java_register_method("Features", "removeDefault", (void*) Features_removeDefault);
+    java_register_method("Features", "remove", (void*) Features_remove);
+    java_register_method("Features", "init", (void*) Features_initMethod);
+    java_register_method("Features", "isDefault", (void*) Features_isDefault);
+    java_register_method("Features", "isFeature", (void*) Features_isFeature);
+    java_register_method("Features", "toggle", (void*) Features_toggle);
 }
 
 static void Features_initFields(Features* this) {
@@ -73,22 +101,23 @@ static void Features_initFields(Features* this) {
 
 
 Features* Features_getInstance(void) {
-        if (Features_SINGLETON == NullUtil_getInstance()->NULL_OBJECT) {
+        if ((Features_staticInit(), Features_SINGLETON) == NullUtil_getInstance()->NULL_OBJECT) {
             Features_SINGLETON = Features_new();
         }
-        return ((Features*) Features_SINGLETON);
+        return ((Features*) (Features_staticInit(), Features_SINGLETON));
 }
 
 
 void Features_init(Features* this) {
+    Features_register();
     Features_initFields(this);
         this->list = BasicArrayListD_new();
         this->defaultList = BasicArrayListD_new();
-        Features_init(this);
+        Features_initMethod(this);
 }
 
 Features* Features_new(void) {
-    Features* this = calloc(1, sizeof(Features));
+    Features* this = java_object_alloc(sizeof(Features), "Features");
     Features_init(this);
     return this;
 }
@@ -106,16 +135,16 @@ void Features_addDefault(Features* this, Feature* gameFeature) {
 // throws Exception
 void Features_add(Features* this, Feature* gameFeature) {
         if (!BasicArrayList_contains(this->list, gameFeature)) {
-            LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), CommonLabels_getInstance()->START_LABEL), append, Feature_toString(gameFeature)), toString), this, this->commonStrings->ADD);
+            LogUtil_putF(this->logUtil, java_string_of(StringMaker_append(StringMaker_append(StringMaker_new(), CommonLabels_getInstance()->START_LABEL), java_string_of(gameFeature))), this, this->commonStrings->ADD);
             BasicArrayList_add(this->list, gameFeature);
-            GameFeatureEventHandler_fireEvent(GameFeatureEventHandler_getInstance(), GameFeatureEvent_new(gameFeature, Feature_toString(gameFeature)));
+            BasicEventHandler_fireEvent(GameFeatureEventHandler_getInstance(), GameFeatureEvent_new(gameFeature, java_string_of(gameFeature)));
         }
 }
 
 
 // throws Exception
 void Features_removeDefault(Features* this, Feature* gameFeature) {
-        LogUtil_putF(this->logUtil, JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), CommonLabels_getInstance()->START_LABEL), append, Feature_toString(gameFeature)), toString), this, "removeDefault");
+        LogUtil_putF(this->logUtil, java_string_of(StringMaker_append(StringMaker_append(StringMaker_new(), CommonLabels_getInstance()->START_LABEL), java_string_of(gameFeature))), this, "removeDefault");
         Features_remove(this, gameFeature);
         BasicArrayList_remove(this->defaultList, gameFeature);
 }
@@ -126,12 +155,12 @@ void Features_remove(Features* this, Feature* gameFeature) {
         if (BasicArrayList_contains(this->list, gameFeature)) {
             LogUtil_putF(this->logUtil, this->commonStrings->START, this, this->commonStrings->REMOVE);
             BasicArrayList_remove(this->list, gameFeature);
-            GameFeatureEventHandler_fireEvent(GameFeatureEventHandler_getInstance(), GameFeatureEvent_new(gameFeature, Feature_toString(gameFeature)));
+            BasicEventHandler_fireEvent(GameFeatureEventHandler_getInstance(), GameFeatureEvent_new(gameFeature, java_string_of(gameFeature)));
         }
 }
 
 
-static void Features_init(Features* this) {
+static void Features_initMethod(Features* this) {
         JAVA_TRY {
             GameFeatureFactory* gameFeatureFactory = GameFeatureFactory_getInstance();
             InputFeatureFactory* inputFeatureFactory = InputFeatureFactory_getInstance();

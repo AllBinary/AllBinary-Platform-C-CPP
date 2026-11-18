@@ -1,55 +1,62 @@
 // Generated Code Do Not Modify
-// package org.allbinary.device
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/khronos/opengles/GL.h"
-// #include "javax/microedition/khronos/opengles/GL10.h"
-// #include "javax/microedition/lcdui/Font.h"
+#include "org/allbinary/device/OpenGLESGraphics.h"
+#include "javax/microedition/khronos/opengles/GL.h"
+#include "javax/microedition/khronos/opengles/GL10.h"
+#include "javax/microedition/lcdui/Font.h"
 #include "org/allbinary/graphics/font/FontDebugBase.h"
-#include "org/allbinary/image/opengles/OpenGLSurfaceChangedInterface.h"
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/device/GraphicsInterface.h"
-
-typedef struct OpenGLESGraphics OpenGLESGraphics;
-struct OpenGLESGraphics {
-    OpenGLSurfaceChangedInterface OpenGLSurfaceChangedInterface_interface;
-    GraphicsInterface GraphicsInterface_interface;
-    CommonStrings* commonStrings;
-    GL10* gl;
-};
+#include "org/allbinary/device/NullGL10.h"
 
 
-OpenGLESGraphics* OpenGLESGraphics_new(void);
 
-void OpenGLESGraphics_init(OpenGLESGraphics* this);
-void OpenGLESGraphics_updateGL(OpenGLESGraphics* this, GL* gl);
-void OpenGLESGraphics_set(OpenGLESGraphics* this, GL* gl);
-void OpenGLESGraphics_init(OpenGLESGraphics* this);
-void OpenGLESGraphics_update(OpenGLESGraphics* this);
-void OpenGLESGraphics_setOrthoginalMode(OpenGLESGraphics* this);
-void OpenGLESGraphics_setCameraMode(OpenGLESGraphics* this);
-GL10* OpenGLESGraphics_getGlP(OpenGLESGraphics* this);
-void OpenGLESGraphics_setFontDebug(OpenGLESGraphics* this, Font* font, FontDebugBase* fontDebug);
+
+
+
+
+
+
+
+
+
+void OpenGLESGraphics_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void OpenGLESGraphics_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("OpenGLESGraphics", nullptr);
+    java_register_method("OpenGLESGraphics", "updateGL", (void*) OpenGLESGraphics_updateGL);
+    java_register_method("OpenGLESGraphics", "set", (void*) OpenGLESGraphics_set);
+    java_register_method("OpenGLESGraphics", "init", (void*) OpenGLESGraphics_initMethod);
+    java_register_method("OpenGLESGraphics", "update", (void*) OpenGLESGraphics_update);
+    java_register_method("OpenGLESGraphics", "setOrthoginalMode", (void*) OpenGLESGraphics_setOrthoginalMode);
+    java_register_method("OpenGLESGraphics", "setCameraMode", (void*) OpenGLESGraphics_setCameraMode);
+    java_register_method("OpenGLESGraphics", "getGlP", (void*) OpenGLESGraphics_getGlP);
+    java_register_method("OpenGLESGraphics", "setFontDebug", (void*) OpenGLESGraphics_setFontDebug);
+}
 
 static void OpenGLESGraphics_initFields(OpenGLESGraphics* this) {
     this->commonStrings = CommonStrings_getInstance();
-    this->gl = NullGL10_NULL_GL10;
+    this->gl = (NullGL10_staticInit(), NullGL10_NULL_GL10);
 }
 
 
 void OpenGLESGraphics_init(OpenGLESGraphics* this) {
+    OpenGLESGraphics_register();
     OpenGLESGraphics_initFields(this);
 }
 
 OpenGLESGraphics* OpenGLESGraphics_new(void) {
-    OpenGLESGraphics* this = calloc(1, sizeof(OpenGLESGraphics));
+    OpenGLESGraphics* this = java_object_alloc(sizeof(OpenGLESGraphics), "OpenGLESGraphics");
     OpenGLESGraphics_init(this);
     return this;
 }
@@ -64,7 +71,7 @@ void OpenGLESGraphics_set(OpenGLESGraphics* this, GL* gl) {
 
 
 // throws Exception
-void OpenGLESGraphics_init(OpenGLESGraphics* this) {
+void OpenGLESGraphics_initMethod(OpenGLESGraphics* this) {
 }
 
 

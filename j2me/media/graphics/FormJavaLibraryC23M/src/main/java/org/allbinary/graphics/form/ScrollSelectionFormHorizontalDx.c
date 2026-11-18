@@ -1,42 +1,30 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.form
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/graphics/form/ScrollSelectionFormHorizontalDx.h"
 #include "org/allbinary/graphics/form/item/ABCustomItem.h"
 #include "org/allbinary/graphics/form/ItemIndexDx.h"
-
-typedef struct ScrollSelectionFormHorizontalDx ScrollSelectionFormHorizontalDx;
-struct ScrollSelectionFormHorizontalDx {
-    ItemIndexDx base;
-    ScrollSelectionForm* scrollSelectionForm;
-};
+#include "org/allbinary/graphics/form/ScrollSelectionForm.h"
 
 
-ScrollSelectionFormHorizontalDx* ScrollSelectionFormHorizontalDx_new(ScrollSelectionForm* scrollSelectionForm);
 
-void ScrollSelectionFormHorizontalDx_init(ScrollSelectionFormHorizontalDx* this, ScrollSelectionForm* scrollSelectionForm);
-int32_t ScrollSelectionFormHorizontalDx_getDx(ScrollSelectionFormHorizontalDx* this, int32_t index, ABCustomItem* item, int32_t dx, int32_t dy);
+
+
+void ScrollSelectionFormHorizontalDx_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void ScrollSelectionFormHorizontalDx_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ScrollSelectionFormHorizontalDx", "ItemIndexDx");
+    java_register_method("ScrollSelectionFormHorizontalDx", "getDx", (void*) ScrollSelectionFormHorizontalDx_getDx);
+}
 
 static void ScrollSelectionFormHorizontalDx_initFields(ScrollSelectionFormHorizontalDx* this) {
     
@@ -44,13 +32,14 @@ static void ScrollSelectionFormHorizontalDx_initFields(ScrollSelectionFormHorizo
 
 
 void ScrollSelectionFormHorizontalDx_init(ScrollSelectionFormHorizontalDx* this, ScrollSelectionForm* scrollSelectionForm) {
+    ScrollSelectionFormHorizontalDx_register();
     ItemIndexDx_init(&this->base);
     ScrollSelectionFormHorizontalDx_initFields(this);
         this->scrollSelectionForm = scrollSelectionForm;
 }
 
 ScrollSelectionFormHorizontalDx* ScrollSelectionFormHorizontalDx_new(ScrollSelectionForm* scrollSelectionForm) {
-    ScrollSelectionFormHorizontalDx* this = calloc(1, sizeof(ScrollSelectionFormHorizontalDx));
+    ScrollSelectionFormHorizontalDx* this = java_object_alloc(sizeof(ScrollSelectionFormHorizontalDx), "ScrollSelectionFormHorizontalDx");
     ScrollSelectionFormHorizontalDx_init(this, scrollSelectionForm);
     return this;
 }

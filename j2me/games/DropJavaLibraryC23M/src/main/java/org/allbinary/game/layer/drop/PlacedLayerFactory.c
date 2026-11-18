@@ -1,39 +1,39 @@
 // Generated Code Do Not Modify
-// package org.allbinary.game.layer.drop
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/layer/drop/PlacedLayerFactory.h"
 #include "org/allbinary/layer/AllBinaryLayerFactoryInterface.h"
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
 #include "org/allbinary/util/BasicArrayListUtil.h"
 
-typedef struct PlacedLayerFactory PlacedLayerFactory;
-struct PlacedLayerFactory {
-    BasicArrayList* list;
-    BasicArrayListUtil* basicArrayListUtil;
-};
 
 static PlacedLayerFactory* PlacedLayerFactory_instance;
 
-PlacedLayerFactory* PlacedLayerFactory_new(void);
 
-void PlacedLayerFactory_init(PlacedLayerFactory* this);
-void PlacedLayerFactory_clear(PlacedLayerFactory* this);
-PlacedLayerFactory* PlacedLayerFactory_getInstance(void);
-int32_t PlacedLayerFactory_getSize(PlacedLayerFactory* this);
-AllBinaryLayerFactoryInterface* PlacedLayerFactory_getRandomInstance(PlacedLayerFactory* this);
-void PlacedLayerFactory_add(PlacedLayerFactory* this, AllBinaryLayerFactoryInterface* layerInterfaceFactoryInterface);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
 void PlacedLayerFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     PlacedLayerFactory_instance = PlacedLayerFactory_new();
+}
+
+void PlacedLayerFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("PlacedLayerFactory", nullptr);
+    java_register_method("PlacedLayerFactory", "clear", (void*) PlacedLayerFactory_clear);
+    java_register_method("PlacedLayerFactory", "getSize", (void*) PlacedLayerFactory_getSize);
+    java_register_method("PlacedLayerFactory", "getRandomInstance", (void*) PlacedLayerFactory_getRandomInstance);
+    java_register_method("PlacedLayerFactory", "add", (void*) PlacedLayerFactory_add);
 }
 
 static void PlacedLayerFactory_initFields(PlacedLayerFactory* this) {
@@ -43,11 +43,12 @@ static void PlacedLayerFactory_initFields(PlacedLayerFactory* this) {
 
 
 void PlacedLayerFactory_init(PlacedLayerFactory* this) {
+    PlacedLayerFactory_register();
     PlacedLayerFactory_initFields(this);
 }
 
 PlacedLayerFactory* PlacedLayerFactory_new(void) {
-    PlacedLayerFactory* this = calloc(1, sizeof(PlacedLayerFactory));
+    PlacedLayerFactory* this = java_object_alloc(sizeof(PlacedLayerFactory), "PlacedLayerFactory");
     PlacedLayerFactory_init(this);
     return this;
 }
@@ -59,7 +60,7 @@ void PlacedLayerFactory_clear(PlacedLayerFactory* this) {
 
 
 PlacedLayerFactory* PlacedLayerFactory_getInstance(void) {
-        return PlacedLayerFactory_instance;
+        return (PlacedLayerFactory_staticInit(), PlacedLayerFactory_instance);
 }
 
 

@@ -1,48 +1,50 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.displayable.canvas
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/displayable/canvas/DemoGameRunnable.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/string/CommonStrings.h"
 #include "org/allbinary/time/GameTickTimeDelayHelper.h"
 #include "org/allbinary/time/GameTickTimeDelayHelperFactory.h"
 #include "org/allbinary/game/displayable/canvas/GameRunnable.h"
+#include "org/allbinary/game/displayable/canvas/DemoCanvas.h"
+#if __has_include("org/allbinary/game/displayable/canvas/TimeDelayHelper.h")
+#include "org/allbinary/game/displayable/canvas/TimeDelayHelper.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/log/TimeDelayHelper.h")
+#include "org/allbinary/logic/communication/log/TimeDelayHelper.h"
+#endif
+#if __has_include("org/allbinary/string/TimeDelayHelper.h")
+#include "org/allbinary/string/TimeDelayHelper.h"
+#endif
+#if __has_include("org/allbinary/time/TimeDelayHelper.h")
+#include "org/allbinary/time/TimeDelayHelper.h"
+#endif
+#if __has_include("org/allbinary/time/TimeDelayHelper.h")
+#include "org/allbinary/time/TimeDelayHelper.h"
+#endif
 
-typedef struct DemoGameRunnable DemoGameRunnable;
-struct DemoGameRunnable {
-    GameRunnable base;
-    LogUtil* logUtil;
-    DemoCanvas* demoCanvas;
-    GameTickTimeDelayHelper* gameTickTimeDelayHelper;
-};
 
 
-DemoGameRunnable* DemoGameRunnable_new(DemoCanvas* demoCanvas);
 
-void DemoGameRunnable_init(DemoGameRunnable* this, DemoCanvas* demoCanvas);
-void DemoGameRunnable_run(DemoGameRunnable* this);
-void DemoGameRunnable_processLoopSleep(DemoGameRunnable* this);
+
+
+void DemoGameRunnable_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void DemoGameRunnable_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("DemoGameRunnable", "GameRunnable");
+    java_register_method("DemoGameRunnable", "run", (void*) DemoGameRunnable_run);
+    java_register_method("DemoGameRunnable", "processLoopSleep", (void*) DemoGameRunnable_processLoopSleep);
+}
 
 static void DemoGameRunnable_initFields(DemoGameRunnable* this) {
     this->logUtil = LogUtil_getInstance();
@@ -52,13 +54,14 @@ static void DemoGameRunnable_initFields(DemoGameRunnable* this) {
 
 
 void DemoGameRunnable_init(DemoGameRunnable* this, DemoCanvas* demoCanvas) {
+    DemoGameRunnable_register();
     GameRunnable_init(&this->base);
     DemoGameRunnable_initFields(this);
         this->demoCanvas = demoCanvas;
 }
 
 DemoGameRunnable* DemoGameRunnable_new(DemoCanvas* demoCanvas) {
-    DemoGameRunnable* this = calloc(1, sizeof(DemoGameRunnable));
+    DemoGameRunnable* this = java_object_alloc(sizeof(DemoGameRunnable), "DemoGameRunnable");
     DemoGameRunnable_init(this, demoCanvas);
     return this;
 }
@@ -66,7 +69,7 @@ DemoGameRunnable* DemoGameRunnable_new(DemoCanvas* demoCanvas) {
 
 void DemoGameRunnable_run(DemoGameRunnable* this) {
         JAVA_TRY {
-            JAVA_CALL(DemoCanvas_getLoopTimeHelperP(this->demoCanvas), setStartTime, GameTickTimeDelayHelper_setStartTime(this->gameTickTimeDelayHelper));
+            TimeDelayHelper_setStartTime(RunnableCanvas_getLoopTimeHelperP(this->demoCanvas), GameTickTimeDelayHelper_setStartTime(this->gameTickTimeDelayHelper));
             DemoCanvas_processGame(this->demoCanvas);
         } JAVA_CATCH(Exception, e) {
             CommonStrings* commonStrings = CommonStrings_getInstance();
@@ -77,6 +80,6 @@ void DemoGameRunnable_run(DemoGameRunnable* this) {
 
 // throws Exception
 void DemoGameRunnable_processLoopSleep(DemoGameRunnable* this) {
-        DemoCanvas_processLoopSleep(this->demoCanvas);
+        RunnableCanvas_processLoopSleep(this->demoCanvas);
 }
 

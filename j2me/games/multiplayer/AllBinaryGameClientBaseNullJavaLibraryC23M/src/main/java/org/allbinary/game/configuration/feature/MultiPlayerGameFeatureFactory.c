@@ -1,54 +1,53 @@
 // Generated Code Do Not Modify
-// package org.allbinary.game.configuration.feature
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Canvas.h"
+#include "org/allbinary/game/configuration/feature/MultiPlayerGameFeatureFactory.h"
+#include "javax/microedition/lcdui/Canvas.h"
 #include "org/allbinary/game/commands/GameCommandsFactory.h"
 
-typedef struct MultiPlayerGameFeatureFactory MultiPlayerGameFeatureFactory;
-struct MultiPlayerGameFeatureFactory {
-    char unused;
-};
 
 static MultiPlayerGameFeatureFactory* MultiPlayerGameFeatureFactory_instance;
 
-MultiPlayerGameFeatureFactory* MultiPlayerGameFeatureFactory_new(void);
-MultiPlayerGameFeatureFactory* MultiPlayerGameFeatureFactory_getInstance(void);
 
-void MultiPlayerGameFeatureFactory_init(MultiPlayerGameFeatureFactory* this);
-void MultiPlayerGameFeatureFactory_addCommands(MultiPlayerGameFeatureFactory* this, Any* anyType);
 
-// Static fields with runtime initializers: call this once at startup
+
 void MultiPlayerGameFeatureFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     MultiPlayerGameFeatureFactory_instance = MultiPlayerGameFeatureFactory_new();
+}
+
+void MultiPlayerGameFeatureFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("MultiPlayerGameFeatureFactory", nullptr);
+    java_register_method("MultiPlayerGameFeatureFactory", "addCommands", (void*) MultiPlayerGameFeatureFactory_addCommands);
 }
 
 
 MultiPlayerGameFeatureFactory* MultiPlayerGameFeatureFactory_getInstance(void) {
-        return MultiPlayerGameFeatureFactory_instance;
+        return (MultiPlayerGameFeatureFactory_staticInit(), MultiPlayerGameFeatureFactory_instance);
 }
 
 
 void MultiPlayerGameFeatureFactory_init(MultiPlayerGameFeatureFactory* this) {
+    MultiPlayerGameFeatureFactory_register();
 }
 
 MultiPlayerGameFeatureFactory* MultiPlayerGameFeatureFactory_new(void) {
-    MultiPlayerGameFeatureFactory* this = calloc(1, sizeof(MultiPlayerGameFeatureFactory));
+    MultiPlayerGameFeatureFactory* this = java_object_alloc(sizeof(MultiPlayerGameFeatureFactory), "MultiPlayerGameFeatureFactory");
     MultiPlayerGameFeatureFactory_init(this);
     return this;
 }
 
 
-void MultiPlayerGameFeatureFactory_addCommands(MultiPlayerGameFeatureFactory* this, Any* anyType) {
+void MultiPlayerGameFeatureFactory_addCommands(MultiPlayerGameFeatureFactory* this, void* anyType) {
         GameCommandsFactory* gameCommandsFactory = GameCommandsFactory_getInstance();
         Canvas* canvas = ((Canvas*) anyType);
-        Canvas_addCommand(canvas, gameCommandsFactory->QUIT_COMMAND);
+        Displayable_addCommand(canvas, gameCommandsFactory->QUIT_COMMAND);
 }
 

@@ -1,28 +1,5 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.part
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/part/MakeCountedPartsSingletonArrayFactory.h"
 #include "org/allbinary/game/layer/pickup/CountedPickedUpLayerInterfaceFactory.h"
 #include "org/allbinary/game/layer/pickup/CountedPickedUpLayerInterfaceFactoryPool.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
@@ -31,22 +8,37 @@
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
 #include "org/allbinary/util/BasicArrayListUtil.h"
+#include "org/allbinary/game/part/CountedLayerInterfaceFactoryPart.h"
+#include "org/allbinary/game/part/PartInterface.h"
+#if __has_include("org/allbinary/util/BasicArrayListUtil.h")
+#include "org/allbinary/util/BasicArrayListUtil.h"
+#endif
+#if __has_include("org/allbinary/game/layer/pickup/CountedPickedUpLayerInterfaceFactoryPool.h")
+#include "org/allbinary/game/layer/pickup/CountedPickedUpLayerInterfaceFactoryPool.h"
+#endif
 
-typedef struct MakeCountedPartsSingletonArrayFactory MakeCountedPartsSingletonArrayFactory;
-struct MakeCountedPartsSingletonArrayFactory {
-    LogUtil* logUtil;
-    BasicArrayList* list;
-};
 
 static MakeCountedPartsSingletonArrayFactory* MakeCountedPartsSingletonArrayFactory_instance;
 
-MakeCountedPartsSingletonArrayFactory* MakeCountedPartsSingletonArrayFactory_new(void);
-MakeCountedPartsSingletonArrayFactory* MakeCountedPartsSingletonArrayFactory_getInstance(void);
-PartInterface** MakeCountedPartsSingletonArrayFactory_getUpdated(MakeCountedPartsSingletonArrayFactory* this, PartInterface** partInterfaceArray);
 
-// Static fields with runtime initializers: call this once at startup
+
 void MakeCountedPartsSingletonArrayFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     MakeCountedPartsSingletonArrayFactory_instance = MakeCountedPartsSingletonArrayFactory_new();
+}
+
+void MakeCountedPartsSingletonArrayFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("MakeCountedPartsSingletonArrayFactory", nullptr);
+    java_register_method("MakeCountedPartsSingletonArrayFactory", "getUpdated", (void*) MakeCountedPartsSingletonArrayFactory_getUpdated);
 }
 
 static void MakeCountedPartsSingletonArrayFactory_initFields(MakeCountedPartsSingletonArrayFactory* this) {
@@ -55,18 +47,19 @@ static void MakeCountedPartsSingletonArrayFactory_initFields(MakeCountedPartsSin
 }
 
 void MakeCountedPartsSingletonArrayFactory_init(MakeCountedPartsSingletonArrayFactory* this) {
+    MakeCountedPartsSingletonArrayFactory_register();
     MakeCountedPartsSingletonArrayFactory_initFields(this);
 }
 
 MakeCountedPartsSingletonArrayFactory* MakeCountedPartsSingletonArrayFactory_new(void) {
-    MakeCountedPartsSingletonArrayFactory* this = calloc(1, sizeof(MakeCountedPartsSingletonArrayFactory));
+    MakeCountedPartsSingletonArrayFactory* this = java_object_alloc(sizeof(MakeCountedPartsSingletonArrayFactory), "MakeCountedPartsSingletonArrayFactory");
     MakeCountedPartsSingletonArrayFactory_init(this);
     return this;
 }
 
 
 MakeCountedPartsSingletonArrayFactory* MakeCountedPartsSingletonArrayFactory_getInstance(void) {
-        return MakeCountedPartsSingletonArrayFactory_instance;
+        return (MakeCountedPartsSingletonArrayFactory_staticInit(), MakeCountedPartsSingletonArrayFactory_instance);
 }
 
 
@@ -89,7 +82,7 @@ PartInterface** MakeCountedPartsSingletonArrayFactory_getUpdated(MakeCountedPart
         StringMaker_append(stringBuffer, " Counted: ");
         StringMaker_appendint(stringBuffer, BasicArrayList_size(countedBasicArrayList));
         CommonStrings* commonStrings = CommonStrings_getInstance();
-        LogUtil_putF(this->logUtil, StringMaker_toString(stringBuffer), this, commonStrings->GET_INSTANCE);
+        LogUtil_putF(this->logUtil, java_string_of(stringBuffer), this, commonStrings->GET_INSTANCE);
         PartInterface** newPartInterfaceArray = ((PartInterface**) java_array_new(sizeof(PartInterface*), BasicArrayList_size(this->list)));
         int32_t newSize = java_array_length(newPartInterfaceArray);
         for (int32_t index = 0; index < newSize; index++) {

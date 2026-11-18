@@ -1,0 +1,851 @@
+#ifndef ORG_ALLBINARY_GAME_COMBAT_CANVAS_COMBATGAMECANVAS_H
+#define ORG_ALLBINARY_GAME_COMBAT_CANVAS_COMBATGAMECANVAS_H
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.combat.canvas
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+typedef struct CommandListener CommandListener;
+typedef struct DestroyedLayerProcessor DestroyedLayerProcessor;
+typedef struct DestroyEventCircularStaticPool DestroyEventCircularStaticPool;
+typedef struct DestroyedEventHandler DestroyedEventHandler;
+typedef struct Features Features;
+typedef struct GameFeatureFactory GameFeatureFactory;
+typedef struct AllBinaryGameCanvas AllBinaryGameCanvas;
+typedef struct BasicBuildGameInitializerFactory BasicBuildGameInitializerFactory;
+typedef struct AllBinaryGameLayerManager AllBinaryGameLayerManager;
+typedef struct DropLayerProcessor DropLayerProcessor;
+typedef struct GroupLayerManagerListener GroupLayerManagerListener;
+typedef struct HighScoresFactoryInterface HighScoresFactoryInterface;
+typedef struct ProgressCanvasFactory ProgressCanvasFactory;
+typedef struct BasicLayerProcessor BasicLayerProcessor;
+typedef struct AbeClientInformationInterface AbeClientInformationInterface;
+#include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
+#if __has_include("org/allbinary/layer/BasicLayerProcessor.h")
+#include "org/allbinary/layer/BasicLayerProcessor.h"
+#endif
+
+typedef struct CombatGameCanvas CombatGameCanvas;
+struct CombatGameCanvas {
+    AllBinaryGameCanvas base;
+};
+
+extern BasicLayerProcessor** CombatGameCanvas_basicLayerProcessor;
+
+CombatGameCanvas* CombatGameCanvas_new(CommandListener* cmdListener, AllBinaryGameLayerManager* gameLayerManager, HighScoresFactoryInterface* highScoresFactoryInterface, BasicBuildGameInitializerFactory* gameInitializationInterfaceFactoryInterface, bool buffered);
+
+void CombatGameCanvas_init(CombatGameCanvas* this, CommandListener* cmdListener, AllBinaryGameLayerManager* gameLayerManager, HighScoresFactoryInterface* highScoresFactoryInterface, BasicBuildGameInitializerFactory* gameInitializationInterfaceFactoryInterface, bool buffered);
+
+
+void CombatGameCanvas_initApp(CombatGameCanvas* this, AbeClientInformationInterface* abeClientInformation);
+
+void CombatGameCanvas_initConfigurablePortion(CombatGameCanvas* this, int32_t portion);
+
+void CombatGameCanvas_processPlayingGame(CombatGameCanvas* this);
+
+void CombatGameCanvas_cleanupGame(CombatGameCanvas* this);
+
+void CombatGameCanvas_cleanupManager(CombatGameCanvas* this);
+#define CombatGameCanvas_new5 CombatGameCanvas_new
+#define CombatGameCanvas_init5 CombatGameCanvas_init
+#ifndef CombatGameCanvas_updateMeasurement
+#define CombatGameCanvas_updateMeasurement AllBinaryGameCanvas_updateMeasurement
+#endif
+#ifndef CombatGameCanvas_getInGameMenuBehavior
+#define CombatGameCanvas_getInGameMenuBehavior AllBinaryGameCanvas_getInGameMenuBehavior
+#endif
+#ifndef CombatGameCanvas_setCurrentThread
+#define CombatGameCanvas_setCurrentThread AllBinaryGameCanvas_setCurrentThread
+#endif
+#ifndef CombatGameCanvas_onEvent
+#define CombatGameCanvas_onEvent AllBinaryGameCanvas_onEvent
+#endif
+#ifndef CombatGameCanvas_onDisplayChangeEvent
+#define CombatGameCanvas_onDisplayChangeEvent AllBinaryGameCanvas_onDisplayChangeEvent
+#endif
+#ifndef CombatGameCanvas_updateMenuFromEvent
+#define CombatGameCanvas_updateMenuFromEvent AllBinaryGameCanvas_updateMenuFromEvent
+#endif
+#ifndef CombatGameCanvas_processSleep
+#define CombatGameCanvas_processSleep AllBinaryGameCanvas_processSleep
+#endif
+#ifndef CombatGameCanvas_initPopupMenu
+#define CombatGameCanvas_initPopupMenu AllBinaryGameCanvas_initPopupMenu
+#endif
+#ifndef CombatGameCanvas_initMenu
+#define CombatGameCanvas_initMenu AllBinaryGameCanvas_initMenu
+#endif
+#ifndef CombatGameCanvas_initMenu2
+#define CombatGameCanvas_initMenu2 AllBinaryGameCanvas_initMenu2
+#endif
+#ifndef CombatGameCanvas_updateMenu
+#define CombatGameCanvas_updateMenu AllBinaryGameCanvas_updateMenu
+#endif
+#ifndef CombatGameCanvas_updateMenu2
+#define CombatGameCanvas_updateMenu2 AllBinaryGameCanvas_updateMenu2
+#endif
+#ifndef CombatGameCanvas_pause
+#define CombatGameCanvas_pause AllBinaryGameCanvas_pause
+#endif
+#ifndef CombatGameCanvas_unPause
+#define CombatGameCanvas_unPause AllBinaryGameCanvas_unPause
+#endif
+#ifndef CombatGameCanvas_isPausable
+#define CombatGameCanvas_isPausable AllBinaryGameCanvas_isPausable
+#endif
+#ifndef CombatGameCanvas_popupMenu
+#define CombatGameCanvas_popupMenu AllBinaryGameCanvas_popupMenu
+#endif
+#ifndef CombatGameCanvas_popupMenu2
+#define CombatGameCanvas_popupMenu2 AllBinaryGameCanvas_popupMenu2
+#endif
+#ifndef CombatGameCanvas_toggleMenu
+#define CombatGameCanvas_toggleMenu AllBinaryGameCanvas_toggleMenu
+#endif
+#ifndef CombatGameCanvas_closeMenu
+#define CombatGameCanvas_closeMenu AllBinaryGameCanvas_closeMenu
+#endif
+#ifndef CombatGameCanvas_closeMenu2
+#define CombatGameCanvas_closeMenu2 AllBinaryGameCanvas_closeMenu2
+#endif
+#ifndef CombatGameCanvas_open
+#define CombatGameCanvas_open AllBinaryGameCanvas_open
+#endif
+#ifndef CombatGameCanvas_close
+#define CombatGameCanvas_close AllBinaryGameCanvas_close
+#endif
+#ifndef CombatGameCanvas_processorInit
+#define CombatGameCanvas_processorInit AllBinaryGameCanvas_processorInit
+#endif
+#ifndef CombatGameCanvas_setProcessGameProcessorInit
+#define CombatGameCanvas_setProcessGameProcessorInit AllBinaryGameCanvas_setProcessGameProcessorInit
+#endif
+#ifndef CombatGameCanvas_initSpecialPaint
+#define CombatGameCanvas_initSpecialPaint AllBinaryGameCanvas_initSpecialPaint
+#endif
+#ifndef CombatGameCanvas_notifyIntermission
+#define CombatGameCanvas_notifyIntermission AllBinaryGameCanvas_notifyIntermission
+#endif
+#ifndef CombatGameCanvas_mediaInit
+#define CombatGameCanvas_mediaInit AllBinaryGameCanvas_mediaInit
+#endif
+#ifndef CombatGameCanvas_initConfigurable
+#define CombatGameCanvas_initConfigurable AllBinaryGameCanvas_initConfigurable
+#endif
+#ifndef CombatGameCanvas_initTouch
+#define CombatGameCanvas_initTouch AllBinaryGameCanvas_initTouch
+#endif
+#ifndef CombatGameCanvas_updateCurrentTouchInputFactory
+#define CombatGameCanvas_updateCurrentTouchInputFactory AllBinaryGameCanvas_updateCurrentTouchInputFactory
+#endif
+#ifndef CombatGameCanvas_updateTouch
+#define CombatGameCanvas_updateTouch AllBinaryGameCanvas_updateTouch
+#endif
+#ifndef CombatGameCanvas_updateTouch2
+#define CombatGameCanvas_updateTouch2 AllBinaryGameCanvas_updateTouch2
+#endif
+#ifndef CombatGameCanvas_postInitTouch
+#define CombatGameCanvas_postInitTouch AllBinaryGameCanvas_postInitTouch
+#endif
+#ifndef CombatGameCanvas_initCommands
+#define CombatGameCanvas_initCommands AllBinaryGameCanvas_initCommands
+#endif
+#ifndef CombatGameCanvas_addCommands
+#define CombatGameCanvas_addCommands AllBinaryGameCanvas_addCommands
+#endif
+#ifndef CombatGameCanvas_itemStateChanged
+#define CombatGameCanvas_itemStateChanged AllBinaryGameCanvas_itemStateChanged
+#endif
+#ifndef CombatGameCanvas_updateScreenButtonPaintable
+#define CombatGameCanvas_updateScreenButtonPaintable AllBinaryGameCanvas_updateScreenButtonPaintable
+#endif
+#ifndef CombatGameCanvas_updateScreenButtonPaintable2
+#define CombatGameCanvas_updateScreenButtonPaintable2 AllBinaryGameCanvas_updateScreenButtonPaintable2
+#endif
+#ifndef CombatGameCanvas_getLayerManager
+#define CombatGameCanvas_getLayerManager AllBinaryGameCanvas_getLayerManager
+#endif
+#ifndef CombatGameCanvas_setLayerManager
+#define CombatGameCanvas_setLayerManager AllBinaryGameCanvas_setLayerManager
+#endif
+#ifndef CombatGameCanvas_isGameOver
+#define CombatGameCanvas_isGameOver AllBinaryGameCanvas_isGameOver
+#endif
+#ifndef CombatGameCanvas_setGameOver
+#define CombatGameCanvas_setGameOver AllBinaryGameCanvas_setGameOver
+#endif
+#ifndef CombatGameCanvas_processGameOver
+#define CombatGameCanvas_processGameOver AllBinaryGameCanvas_processGameOver
+#endif
+#ifndef CombatGameCanvas_isHighScoreSubmitted
+#define CombatGameCanvas_isHighScoreSubmitted AllBinaryGameCanvas_isHighScoreSubmitted
+#endif
+#ifndef CombatGameCanvas_setHighScoreSubmitted
+#define CombatGameCanvas_setHighScoreSubmitted AllBinaryGameCanvas_setHighScoreSubmitted
+#endif
+#ifndef CombatGameCanvas_getGameState
+#define CombatGameCanvas_getGameState AllBinaryGameCanvas_getGameState
+#endif
+#ifndef CombatGameCanvas_setGameState
+#define CombatGameCanvas_setGameState AllBinaryGameCanvas_setGameState
+#endif
+#ifndef CombatGameCanvas_updateGameState
+#define CombatGameCanvas_updateGameState AllBinaryGameCanvas_updateGameState
+#endif
+#ifndef CombatGameCanvas_updateGameKeyEventProcessor
+#define CombatGameCanvas_updateGameKeyEventProcessor AllBinaryGameCanvas_updateGameKeyEventProcessor
+#endif
+#ifndef CombatGameCanvas_removeAllGameKeyInputListenersOnBuild
+#define CombatGameCanvas_removeAllGameKeyInputListenersOnBuild AllBinaryGameCanvas_removeAllGameKeyInputListenersOnBuild
+#endif
+#ifndef CombatGameCanvas_removeAllGameKeyInputListeners
+#define CombatGameCanvas_removeAllGameKeyInputListeners AllBinaryGameCanvas_removeAllGameKeyInputListeners
+#endif
+#ifndef CombatGameCanvas_removeAllGameKeyInputListeners2
+#define CombatGameCanvas_removeAllGameKeyInputListeners2 AllBinaryGameCanvas_removeAllGameKeyInputListeners2
+#endif
+#ifndef CombatGameCanvas_removeKeyInputListener
+#define CombatGameCanvas_removeKeyInputListener AllBinaryGameCanvas_removeKeyInputListener
+#endif
+#ifndef CombatGameCanvas_updateEndGameProcessor
+#define CombatGameCanvas_updateEndGameProcessor AllBinaryGameCanvas_updateEndGameProcessor
+#endif
+#ifndef CombatGameCanvas_updateEndGameProcessor2
+#define CombatGameCanvas_updateEndGameProcessor2 AllBinaryGameCanvas_updateEndGameProcessor2
+#endif
+#ifndef CombatGameCanvas_buildGameInit
+#define CombatGameCanvas_buildGameInit AllBinaryGameCanvas_buildGameInit
+#endif
+#ifndef CombatGameCanvas_loadResourceLoadingLevel
+#define CombatGameCanvas_loadResourceLoadingLevel AllBinaryGameCanvas_loadResourceLoadingLevel
+#endif
+#ifndef CombatGameCanvas_loadResources
+#define CombatGameCanvas_loadResources AllBinaryGameCanvas_loadResources
+#endif
+#ifndef CombatGameCanvas_updateColor
+#define CombatGameCanvas_updateColor AllBinaryGameCanvas_updateColor
+#endif
+#ifndef CombatGameCanvas_buildGame
+#define CombatGameCanvas_buildGame AllBinaryGameCanvas_buildGame
+#endif
+#ifndef CombatGameCanvas_buildGame2
+#define CombatGameCanvas_buildGame2 AllBinaryGameCanvas_buildGame2
+#endif
+#ifndef CombatGameCanvas_addKeyInputListener
+#define CombatGameCanvas_addKeyInputListener AllBinaryGameCanvas_addKeyInputListener
+#endif
+#ifndef CombatGameCanvas_setGameCanvasStartListener
+#define CombatGameCanvas_setGameCanvasStartListener AllBinaryGameCanvas_setGameCanvasStartListener
+#endif
+#ifndef CombatGameCanvas_loadState
+#define CombatGameCanvas_loadState AllBinaryGameCanvas_loadState
+#endif
+#ifndef CombatGameCanvas_getLoadStateHashtable
+#define CombatGameCanvas_getLoadStateHashtable AllBinaryGameCanvas_getLoadStateHashtable
+#endif
+#ifndef CombatGameCanvas_setLoadStateHashtable
+#define CombatGameCanvas_setLoadStateHashtable AllBinaryGameCanvas_setLoadStateHashtable
+#endif
+#ifndef CombatGameCanvas_getCurrentStateHashtable
+#define CombatGameCanvas_getCurrentStateHashtable AllBinaryGameCanvas_getCurrentStateHashtable
+#endif
+#ifndef CombatGameCanvas_paintGameOver
+#define CombatGameCanvas_paintGameOver AllBinaryGameCanvas_paintGameOver
+#endif
+#ifndef CombatGameCanvas_draw
+#define CombatGameCanvas_draw AllBinaryGameCanvas_draw
+#endif
+#ifndef CombatGameCanvas_clear
+#define CombatGameCanvas_clear AllBinaryGameCanvas_clear
+#endif
+#ifndef CombatGameCanvas_paint
+#define CombatGameCanvas_paint AllBinaryGameCanvas_paint
+#endif
+#ifndef CombatGameCanvas_paintThreed
+#define CombatGameCanvas_paintThreed AllBinaryGameCanvas_paintThreed
+#endif
+#ifndef CombatGameCanvas_processEndLevelIntermissionGameState
+#define CombatGameCanvas_processEndLevelIntermissionGameState AllBinaryGameCanvas_processEndLevelIntermissionGameState
+#endif
+#ifndef CombatGameCanvas_nonBotPaint
+#define CombatGameCanvas_nonBotPaint AllBinaryGameCanvas_nonBotPaint
+#endif
+#ifndef CombatGameCanvas_paintIntermission
+#define CombatGameCanvas_paintIntermission AllBinaryGameCanvas_paintIntermission
+#endif
+#ifndef CombatGameCanvas_keyPressed
+#define CombatGameCanvas_keyPressed AllBinaryGameCanvas_keyPressed
+#endif
+#ifndef CombatGameCanvas_keyReleased
+#define CombatGameCanvas_keyReleased AllBinaryGameCanvas_keyReleased
+#endif
+#ifndef CombatGameCanvas_keyRepeated
+#define CombatGameCanvas_keyRepeated AllBinaryGameCanvas_keyRepeated
+#endif
+#ifndef CombatGameCanvas_keyPressedByDevice
+#define CombatGameCanvas_keyPressedByDevice AllBinaryGameCanvas_keyPressedByDevice
+#endif
+#ifndef CombatGameCanvas_keyRepeatedByDevice
+#define CombatGameCanvas_keyRepeatedByDevice AllBinaryGameCanvas_keyRepeatedByDevice
+#endif
+#ifndef CombatGameCanvas_keyReleasedByDevice
+#define CombatGameCanvas_keyReleasedByDevice AllBinaryGameCanvas_keyReleasedByDevice
+#endif
+#ifndef CombatGameCanvas_handleRawKey
+#define CombatGameCanvas_handleRawKey AllBinaryGameCanvas_handleRawKey
+#endif
+#ifndef CombatGameCanvas_endProgress
+#define CombatGameCanvas_endProgress AllBinaryGameCanvas_endProgress
+#endif
+#ifndef CombatGameCanvas_threadInit
+#define CombatGameCanvas_threadInit AllBinaryGameCanvas_threadInit
+#endif
+#ifndef CombatGameCanvas_processGame
+#define CombatGameCanvas_processGame AllBinaryGameCanvas_processGame
+#endif
+#ifndef CombatGameCanvas_notifyDonePainting
+#define CombatGameCanvas_notifyDonePainting AllBinaryGameCanvas_notifyDonePainting
+#endif
+#ifndef CombatGameCanvas_shouldWait
+#define CombatGameCanvas_shouldWait AllBinaryGameCanvas_shouldWait
+#endif
+#ifndef CombatGameCanvas_run
+#define CombatGameCanvas_run AllBinaryGameCanvas_run
+#endif
+#ifndef CombatGameCanvas_run2
+#define CombatGameCanvas_run2 AllBinaryGameCanvas_run2
+#endif
+#ifndef CombatGameCanvas_run3
+#define CombatGameCanvas_run3 AllBinaryGameCanvas_run3
+#endif
+#ifndef CombatGameCanvas_setRunning
+#define CombatGameCanvas_setRunning AllBinaryGameCanvas_setRunning
+#endif
+#ifndef CombatGameCanvas_end
+#define CombatGameCanvas_end AllBinaryGameCanvas_end
+#endif
+#ifndef CombatGameCanvas_endGameThread
+#define CombatGameCanvas_endGameThread AllBinaryGameCanvas_endGameThread
+#endif
+#ifndef CombatGameCanvas_createHighScore
+#define CombatGameCanvas_createHighScore AllBinaryGameCanvas_createHighScore
+#endif
+#ifndef CombatGameCanvas_setHighScore
+#define CombatGameCanvas_setHighScore AllBinaryGameCanvas_setHighScore
+#endif
+#ifndef CombatGameCanvas_setHighScore2
+#define CombatGameCanvas_setHighScore2 AllBinaryGameCanvas_setHighScore2
+#endif
+#ifndef CombatGameCanvas_getGameStateTimeHelper
+#define CombatGameCanvas_getGameStateTimeHelper AllBinaryGameCanvas_getGameStateTimeHelper
+#endif
+#ifndef CombatGameCanvas_setInitialized
+#define CombatGameCanvas_setInitialized AllBinaryGameCanvas_setInitialized
+#endif
+#ifndef CombatGameCanvas_isInitialized
+#define CombatGameCanvas_isInitialized AllBinaryGameCanvas_isInitialized
+#endif
+#ifndef CombatGameCanvas_getSourceId
+#define CombatGameCanvas_getSourceId AllBinaryGameCanvas_getSourceId
+#endif
+#ifndef CombatGameCanvas_setProgressPaintable
+#define CombatGameCanvas_setProgressPaintable AllBinaryGameCanvas_setProgressPaintable
+#endif
+#ifndef CombatGameCanvas_getStartIntermissionInterface
+#define CombatGameCanvas_getStartIntermissionInterface AllBinaryGameCanvas_getStartIntermissionInterface
+#endif
+#ifndef CombatGameCanvas_getEndLevelIntermissionInterface
+#define CombatGameCanvas_getEndLevelIntermissionInterface AllBinaryGameCanvas_getEndLevelIntermissionInterface
+#endif
+#ifndef CombatGameCanvas_setTouchPaintableP
+#define CombatGameCanvas_setTouchPaintableP AllBinaryGameCanvas_setTouchPaintableP
+#endif
+#ifndef CombatGameCanvas_getTouchPaintableP
+#define CombatGameCanvas_getTouchPaintableP AllBinaryGameCanvas_getTouchPaintableP
+#endif
+#ifndef CombatGameCanvas_setEndGamePaintable
+#define CombatGameCanvas_setEndGamePaintable AllBinaryGameCanvas_setEndGamePaintable
+#endif
+#ifndef CombatGameCanvas_getEndGamePaintable
+#define CombatGameCanvas_getEndGamePaintable AllBinaryGameCanvas_getEndGamePaintable
+#endif
+#ifndef CombatGameCanvas_setIntermissionPaintable
+#define CombatGameCanvas_setIntermissionPaintable AllBinaryGameCanvas_setIntermissionPaintable
+#endif
+#ifndef CombatGameCanvas_getIntermissionPaintable
+#define CombatGameCanvas_getIntermissionPaintable AllBinaryGameCanvas_getIntermissionPaintable
+#endif
+#ifndef CombatGameCanvas_getEndGameInfoP
+#define CombatGameCanvas_getEndGameInfoP AllBinaryGameCanvas_getEndGameInfoP
+#endif
+#ifndef CombatGameCanvas_setHighScoresPaintable
+#define CombatGameCanvas_setHighScoresPaintable AllBinaryGameCanvas_setHighScoresPaintable
+#endif
+#ifndef CombatGameCanvas_getHighScoresPaintable
+#define CombatGameCanvas_getHighScoresPaintable AllBinaryGameCanvas_getHighScoresPaintable
+#endif
+#ifndef CombatGameCanvas_getRealHighScoresPaintable
+#define CombatGameCanvas_getRealHighScoresPaintable AllBinaryGameCanvas_getRealHighScoresPaintable
+#endif
+#ifndef CombatGameCanvas_clearPlayerGameInputList
+#define CombatGameCanvas_clearPlayerGameInputList AllBinaryGameCanvas_clearPlayerGameInputList
+#endif
+#ifndef CombatGameCanvas_addPlayerGameInput
+#define CombatGameCanvas_addPlayerGameInput AllBinaryGameCanvas_addPlayerGameInput
+#endif
+#ifndef CombatGameCanvas_setMenuInputProcessor
+#define CombatGameCanvas_setMenuInputProcessor AllBinaryGameCanvas_setMenuInputProcessor
+#endif
+#ifndef CombatGameCanvas_getMenuInputProcessor
+#define CombatGameCanvas_getMenuInputProcessor AllBinaryGameCanvas_getMenuInputProcessor
+#endif
+#ifndef CombatGameCanvas_getMenuForm
+#define CombatGameCanvas_getMenuForm AllBinaryGameCanvas_getMenuForm
+#endif
+#ifndef CombatGameCanvas_setMenuForm
+#define CombatGameCanvas_setMenuForm AllBinaryGameCanvas_setMenuForm
+#endif
+#ifndef CombatGameCanvas_getStartLevel
+#define CombatGameCanvas_getStartLevel AllBinaryGameCanvas_getStartLevel
+#endif
+#ifndef CombatGameCanvas_setStartLevel
+#define CombatGameCanvas_setStartLevel AllBinaryGameCanvas_setStartLevel
+#endif
+#ifndef CombatGameCanvas_setTouchButtonsPaintable
+#define CombatGameCanvas_setTouchButtonsPaintable AllBinaryGameCanvas_setTouchButtonsPaintable
+#endif
+#ifndef CombatGameCanvas_getTouchButtonsPaintable
+#define CombatGameCanvas_getTouchButtonsPaintable AllBinaryGameCanvas_getTouchButtonsPaintable
+#endif
+#ifndef CombatGameCanvas_setGameInputProcessor
+#define CombatGameCanvas_setGameInputProcessor AllBinaryGameCanvas_setGameInputProcessor
+#endif
+#ifndef CombatGameCanvas_getGameInputProcessor
+#define CombatGameCanvas_getGameInputProcessor AllBinaryGameCanvas_getGameInputProcessor
+#endif
+#ifndef CombatGameCanvas_setEndGameProcessor
+#define CombatGameCanvas_setEndGameProcessor AllBinaryGameCanvas_setEndGameProcessor
+#endif
+#ifndef CombatGameCanvas_getEndGameProcessor
+#define CombatGameCanvas_getEndGameProcessor AllBinaryGameCanvas_getEndGameProcessor
+#endif
+#ifndef CombatGameCanvas_setEndGameStatePaintable
+#define CombatGameCanvas_setEndGameStatePaintable AllBinaryGameCanvas_setEndGameStatePaintable
+#endif
+#ifndef CombatGameCanvas_getEndGameStatePaintable
+#define CombatGameCanvas_getEndGameStatePaintable AllBinaryGameCanvas_getEndGameStatePaintable
+#endif
+#ifndef CombatGameCanvas_setNonBotPaintableP
+#define CombatGameCanvas_setNonBotPaintableP AllBinaryGameCanvas_setNonBotPaintableP
+#endif
+#ifndef CombatGameCanvas_getNonBotPaintableP
+#define CombatGameCanvas_getNonBotPaintableP AllBinaryGameCanvas_getNonBotPaintableP
+#endif
+#ifndef CombatGameCanvas_setStartIntermissionPaintable
+#define CombatGameCanvas_setStartIntermissionPaintable AllBinaryGameCanvas_setStartIntermissionPaintable
+#endif
+#ifndef CombatGameCanvas_getStartIntermissionPaintable
+#define CombatGameCanvas_getStartIntermissionPaintable AllBinaryGameCanvas_getStartIntermissionPaintable
+#endif
+#ifndef CombatGameCanvas_setMainStateProcessor
+#define CombatGameCanvas_setMainStateProcessor AllBinaryGameCanvas_setMainStateProcessor
+#endif
+#ifndef CombatGameCanvas_getMainStateProcessor
+#define CombatGameCanvas_getMainStateProcessor AllBinaryGameCanvas_getMainStateProcessor
+#endif
+#ifndef CombatGameCanvas_setProcessGameProcessor
+#define CombatGameCanvas_setProcessGameProcessor AllBinaryGameCanvas_setProcessGameProcessor
+#endif
+#ifndef CombatGameCanvas_getProcessGameProcessor
+#define CombatGameCanvas_getProcessGameProcessor AllBinaryGameCanvas_getProcessGameProcessor
+#endif
+#ifndef CombatGameCanvas_setOpenMenuPaintable
+#define CombatGameCanvas_setOpenMenuPaintable AllBinaryGameCanvas_setOpenMenuPaintable
+#endif
+#ifndef CombatGameCanvas_getOpenMenuPaintable
+#define CombatGameCanvas_getOpenMenuPaintable AllBinaryGameCanvas_getOpenMenuPaintable
+#endif
+#ifndef CombatGameCanvas_setPopupMenuInputProcessor
+#define CombatGameCanvas_setPopupMenuInputProcessor AllBinaryGameCanvas_setPopupMenuInputProcessor
+#endif
+#ifndef CombatGameCanvas_getPopupMenuInputProcessor
+#define CombatGameCanvas_getPopupMenuInputProcessor AllBinaryGameCanvas_getPopupMenuInputProcessor
+#endif
+#ifndef CombatGameCanvas_getSensorGameUpdateProcessor
+#define CombatGameCanvas_getSensorGameUpdateProcessor AllBinaryGameCanvas_getSensorGameUpdateProcessor
+#endif
+#ifndef CombatGameCanvas_getRawGameInputProcessor
+#define CombatGameCanvas_getRawGameInputProcessor AllBinaryGameCanvas_getRawGameInputProcessor
+#endif
+#ifndef CombatGameCanvas_getRawInputProcessor
+#define CombatGameCanvas_getRawInputProcessor AllBinaryGameCanvas_getRawInputProcessor
+#endif
+#ifndef CombatGameCanvas_setInputProcessor
+#define CombatGameCanvas_setInputProcessor AllBinaryGameCanvas_setInputProcessor
+#endif
+#ifndef CombatGameCanvas_getInputProcessor
+#define CombatGameCanvas_getInputProcessor AllBinaryGameCanvas_getInputProcessor
+#endif
+#ifndef CombatGameCanvas_setMenuPaintable
+#define CombatGameCanvas_setMenuPaintable AllBinaryGameCanvas_setMenuPaintable
+#endif
+#ifndef CombatGameCanvas_getMenuPaintable
+#define CombatGameCanvas_getMenuPaintable AllBinaryGameCanvas_getMenuPaintable
+#endif
+#ifndef CombatGameCanvas_setFormPaintable
+#define CombatGameCanvas_setFormPaintable AllBinaryGameCanvas_setFormPaintable
+#endif
+#ifndef CombatGameCanvas_getFormPaintable
+#define CombatGameCanvas_getFormPaintable AllBinaryGameCanvas_getFormPaintable
+#endif
+#ifndef CombatGameCanvas_setGameSpecificPaintableP
+#define CombatGameCanvas_setGameSpecificPaintableP AllBinaryGameCanvas_setGameSpecificPaintableP
+#endif
+#ifndef CombatGameCanvas_getGameSpecificPaintableP
+#define CombatGameCanvas_getGameSpecificPaintableP AllBinaryGameCanvas_getGameSpecificPaintableP
+#endif
+#ifndef CombatGameCanvas_isSingleThread
+#define CombatGameCanvas_isSingleThread AllBinaryGameCanvas_isSingleThread
+#endif
+#ifndef CombatGameCanvas_isRunningInAnotherThread
+#define CombatGameCanvas_isRunningInAnotherThread AllBinaryGameCanvas_isRunningInAnotherThread
+#endif
+#ifndef CombatGameCanvas_getType
+#define CombatGameCanvas_getType AllBinaryGameCanvas_getType
+#endif
+#ifndef CombatGameCanvas_getTitle
+#define CombatGameCanvas_getTitle AllBinaryGameCanvas_getTitle
+#endif
+#ifndef CombatGameCanvas_isPaused
+#define CombatGameCanvas_isPaused AllBinaryGameCanvas_isPaused
+#endif
+#ifndef CombatGameCanvas_initCommands
+#define CombatGameCanvas_initCommands RunnableCanvas_initCommands
+#endif
+#ifndef CombatGameCanvas_isMainCanvas
+#define CombatGameCanvas_isMainCanvas RunnableCanvas_isMainCanvas
+#endif
+#ifndef CombatGameCanvas_setThread
+#define CombatGameCanvas_setThread RunnableCanvas_setThread
+#endif
+#ifndef CombatGameCanvas_setRunning
+#define CombatGameCanvas_setRunning RunnableCanvas_setRunning
+#endif
+#ifndef CombatGameCanvas_isRunning
+#define CombatGameCanvas_isRunning RunnableCanvas_isRunning
+#endif
+#ifndef CombatGameCanvas_getLoopTimeHelperP
+#define CombatGameCanvas_getLoopTimeHelperP RunnableCanvas_getLoopTimeHelperP
+#endif
+#ifndef CombatGameCanvas_setWait
+#define CombatGameCanvas_setWait RunnableCanvas_setWait
+#endif
+#ifndef CombatGameCanvas_getWait
+#define CombatGameCanvas_getWait RunnableCanvas_getWait
+#endif
+#ifndef CombatGameCanvas_setCurrentThread
+#define CombatGameCanvas_setCurrentThread RunnableCanvas_setCurrentThread
+#endif
+#ifndef CombatGameCanvas_setCurrentThreadFake
+#define CombatGameCanvas_setCurrentThreadFake RunnableCanvas_setCurrentThreadFake
+#endif
+#ifndef CombatGameCanvas_showNotify
+#define CombatGameCanvas_showNotify RunnableCanvas_showNotify
+#endif
+#ifndef CombatGameCanvas_stopWaiting
+#define CombatGameCanvas_stopWaiting RunnableCanvas_stopWaiting
+#endif
+#ifndef CombatGameCanvas_waitOnNotify
+#define CombatGameCanvas_waitOnNotify RunnableCanvas_waitOnNotify
+#endif
+#ifndef CombatGameCanvas_processSleep
+#define CombatGameCanvas_processSleep RunnableCanvas_processSleep
+#endif
+#ifndef CombatGameCanvas_isPausable
+#define CombatGameCanvas_isPausable RunnableCanvas_isPausable
+#endif
+#ifndef CombatGameCanvas_processGameSleep
+#define CombatGameCanvas_processGameSleep RunnableCanvas_processGameSleep
+#endif
+#ifndef CombatGameCanvas_processLoopSleep
+#define CombatGameCanvas_processLoopSleep RunnableCanvas_processLoopSleep
+#endif
+#ifndef CombatGameCanvas_isSingleThread
+#define CombatGameCanvas_isSingleThread RunnableCanvas_isSingleThread
+#endif
+#ifndef CombatGameCanvas_run
+#define CombatGameCanvas_run RunnableCanvas_run
+#endif
+#ifndef CombatGameCanvas_end2
+#define CombatGameCanvas_end2 RunnableCanvas_end2
+#endif
+#ifndef CombatGameCanvas_getType
+#define CombatGameCanvas_getType RunnableCanvas_getType
+#endif
+#ifndef CombatGameCanvas_getWidth
+#define CombatGameCanvas_getWidth MyCanvas_getWidth
+#endif
+#ifndef CombatGameCanvas_getHeight
+#define CombatGameCanvas_getHeight MyCanvas_getHeight
+#endif
+#ifndef CombatGameCanvas_setFullScreenMode
+#define CombatGameCanvas_setFullScreenMode MyCanvas_setFullScreenMode
+#endif
+#ifndef CombatGameCanvas_sizeChanged
+#define CombatGameCanvas_sizeChanged MyCanvas_sizeChanged
+#endif
+#ifndef CombatGameCanvas_getCommandStack
+#define CombatGameCanvas_getCommandStack MyCanvas_getCommandStack
+#endif
+#ifndef CombatGameCanvas_isCommand
+#define CombatGameCanvas_isCommand MyCanvas_isCommand
+#endif
+#ifndef CombatGameCanvas_addCommand
+#define CombatGameCanvas_addCommand MyCanvas_addCommand
+#endif
+#ifndef CombatGameCanvas_removeCommand
+#define CombatGameCanvas_removeCommand MyCanvas_removeCommand
+#endif
+#ifndef CombatGameCanvas_removeAllCommands
+#define CombatGameCanvas_removeAllCommands MyCanvas_removeAllCommands
+#endif
+#ifndef CombatGameCanvas_setCommandListener
+#define CombatGameCanvas_setCommandListener MyCanvas_setCommandListener
+#endif
+#ifndef CombatGameCanvas_getCustomCommandListener
+#define CombatGameCanvas_getCustomCommandListener MyCanvas_getCustomCommandListener
+#endif
+#ifndef CombatGameCanvas_isPaused
+#define CombatGameCanvas_isPaused MyCanvas_isPaused
+#endif
+#ifndef CombatGameCanvas_removePauseCommand
+#define CombatGameCanvas_removePauseCommand MyCanvas_removePauseCommand
+#endif
+#ifndef CombatGameCanvas_pause
+#define CombatGameCanvas_pause MyCanvas_pause
+#endif
+#ifndef CombatGameCanvas_unPause
+#define CombatGameCanvas_unPause MyCanvas_unPause
+#endif
+#ifndef CombatGameCanvas_process
+#define CombatGameCanvas_process MyCanvas_process
+#endif
+#ifndef CombatGameCanvas_paint
+#define CombatGameCanvas_paint MyCanvas_paint
+#endif
+#ifndef CombatGameCanvas_draw
+#define CombatGameCanvas_draw MyCanvas_draw
+#endif
+#ifndef CombatGameCanvas_hasChild
+#define CombatGameCanvas_hasChild MyCanvas_hasChild
+#endif
+#ifndef CombatGameCanvas_destroy
+#define CombatGameCanvas_destroy MyCanvas_destroy
+#endif
+#ifndef CombatGameCanvas_setPaused
+#define CombatGameCanvas_setPaused MyCanvas_setPaused
+#endif
+#ifndef CombatGameCanvas_keyPressedByDevice
+#define CombatGameCanvas_keyPressedByDevice MyCanvas_keyPressedByDevice
+#endif
+#ifndef CombatGameCanvas_keyRepeatedByDevice
+#define CombatGameCanvas_keyRepeatedByDevice MyCanvas_keyRepeatedByDevice
+#endif
+#ifndef CombatGameCanvas_keyReleasedByDevice
+#define CombatGameCanvas_keyReleasedByDevice MyCanvas_keyReleasedByDevice
+#endif
+#ifndef CombatGameCanvas_pointerDragged
+#define CombatGameCanvas_pointerDragged MyCanvas_pointerDragged
+#endif
+#ifndef CombatGameCanvas_pointerPressed
+#define CombatGameCanvas_pointerPressed MyCanvas_pointerPressed
+#endif
+#ifndef CombatGameCanvas_pointerReleased
+#define CombatGameCanvas_pointerReleased MyCanvas_pointerReleased
+#endif
+#ifndef CombatGameCanvas_nextSong
+#define CombatGameCanvas_nextSong MyCanvas_nextSong
+#endif
+#ifndef CombatGameCanvas_getGameAction
+#define CombatGameCanvas_getGameAction Canvas_getGameAction
+#endif
+#ifndef CombatGameCanvas_getKeyCode
+#define CombatGameCanvas_getKeyCode Canvas_getKeyCode
+#endif
+#ifndef CombatGameCanvas_getKeyName
+#define CombatGameCanvas_getKeyName Canvas_getKeyName
+#endif
+#ifndef CombatGameCanvas_hasPointerEvents
+#define CombatGameCanvas_hasPointerEvents Canvas_hasPointerEvents
+#endif
+#ifndef CombatGameCanvas_hasPointerMotionEvents
+#define CombatGameCanvas_hasPointerMotionEvents Canvas_hasPointerMotionEvents
+#endif
+#ifndef CombatGameCanvas_hasRepeatEvents
+#define CombatGameCanvas_hasRepeatEvents Canvas_hasRepeatEvents
+#endif
+#ifndef CombatGameCanvas_hideNotify
+#define CombatGameCanvas_hideNotify Canvas_hideNotify
+#endif
+#ifndef CombatGameCanvas_isDoubleBuffered
+#define CombatGameCanvas_isDoubleBuffered Canvas_isDoubleBuffered
+#endif
+#ifndef CombatGameCanvas_keyPressed
+#define CombatGameCanvas_keyPressed Canvas_keyPressed
+#endif
+#ifndef CombatGameCanvas_keyRepeated
+#define CombatGameCanvas_keyRepeated Canvas_keyRepeated
+#endif
+#ifndef CombatGameCanvas_keyReleased
+#define CombatGameCanvas_keyReleased Canvas_keyReleased
+#endif
+#ifndef CombatGameCanvas_paint
+#define CombatGameCanvas_paint Canvas_paint
+#endif
+#ifndef CombatGameCanvas_pointerPressed
+#define CombatGameCanvas_pointerPressed Canvas_pointerPressed
+#endif
+#ifndef CombatGameCanvas_pointerReleased
+#define CombatGameCanvas_pointerReleased Canvas_pointerReleased
+#endif
+#ifndef CombatGameCanvas_pointerDragged
+#define CombatGameCanvas_pointerDragged Canvas_pointerDragged
+#endif
+#ifndef CombatGameCanvas_repaint
+#define CombatGameCanvas_repaint Canvas_repaint
+#endif
+#ifndef CombatGameCanvas_repaintXYWH
+#define CombatGameCanvas_repaintXYWH Canvas_repaintXYWH
+#endif
+#ifndef CombatGameCanvas_serviceRepaints
+#define CombatGameCanvas_serviceRepaints Canvas_serviceRepaints
+#endif
+#ifndef CombatGameCanvas_setFullScreenMode
+#define CombatGameCanvas_setFullScreenMode Canvas_setFullScreenMode
+#endif
+#ifndef CombatGameCanvas_sizeChanged
+#define CombatGameCanvas_sizeChanged Canvas_sizeChanged
+#endif
+#ifndef CombatGameCanvas_showNotify
+#define CombatGameCanvas_showNotify Canvas_showNotify
+#endif
+#ifndef CombatGameCanvas_setUI
+#define CombatGameCanvas_setUI Displayable_setUI
+#endif
+#ifndef CombatGameCanvas_getUI
+#define CombatGameCanvas_getUI Displayable_getUI
+#endif
+#ifndef CombatGameCanvas_addCommand
+#define CombatGameCanvas_addCommand Displayable_addCommand
+#endif
+#ifndef CombatGameCanvas_removeCommand
+#define CombatGameCanvas_removeCommand Displayable_removeCommand
+#endif
+#ifndef CombatGameCanvas_getWidth
+#define CombatGameCanvas_getWidth Displayable_getWidth
+#endif
+#ifndef CombatGameCanvas_getHeight
+#define CombatGameCanvas_getHeight Displayable_getHeight
+#endif
+#ifndef CombatGameCanvas_isShown
+#define CombatGameCanvas_isShown Displayable_isShown
+#endif
+#ifndef CombatGameCanvas_getTicker
+#define CombatGameCanvas_getTicker Displayable_getTicker
+#endif
+#ifndef CombatGameCanvas_setTicker
+#define CombatGameCanvas_setTicker Displayable_setTicker
+#endif
+#ifndef CombatGameCanvas_getTitle
+#define CombatGameCanvas_getTitle Displayable_getTitle
+#endif
+#ifndef CombatGameCanvas_setTitle
+#define CombatGameCanvas_setTitle Displayable_setTitle
+#endif
+#ifndef CombatGameCanvas_setCommandListener
+#define CombatGameCanvas_setCommandListener Displayable_setCommandListener
+#endif
+#ifndef CombatGameCanvas_getCommandListener
+#define CombatGameCanvas_getCommandListener Displayable_getCommandListener
+#endif
+#ifndef CombatGameCanvas_getCommands
+#define CombatGameCanvas_getCommands Displayable_getCommands
+#endif
+#ifndef CombatGameCanvas_setFullScreenMode
+#define CombatGameCanvas_setFullScreenMode Displayable_setFullScreenMode
+#endif
+#ifndef CombatGameCanvas_isFullScreenMode
+#define CombatGameCanvas_isFullScreenMode Displayable_isFullScreenMode
+#endif
+#ifndef CombatGameCanvas_hideNotify
+#define CombatGameCanvas_hideNotify Displayable_hideNotify
+#endif
+#ifndef CombatGameCanvas_hideNotifyForDisplay
+#define CombatGameCanvas_hideNotifyForDisplay Displayable_hideNotifyForDisplay
+#endif
+#ifndef CombatGameCanvas_keyPressed
+#define CombatGameCanvas_keyPressed Displayable_keyPressed
+#endif
+#ifndef CombatGameCanvas_keyRepeated
+#define CombatGameCanvas_keyRepeated Displayable_keyRepeated
+#endif
+#ifndef CombatGameCanvas_keyReleased
+#define CombatGameCanvas_keyReleased Displayable_keyReleased
+#endif
+#ifndef CombatGameCanvas_pointerPressed
+#define CombatGameCanvas_pointerPressed Displayable_pointerPressed
+#endif
+#ifndef CombatGameCanvas_pointerReleased
+#define CombatGameCanvas_pointerReleased Displayable_pointerReleased
+#endif
+#ifndef CombatGameCanvas_pointerDragged
+#define CombatGameCanvas_pointerDragged Displayable_pointerDragged
+#endif
+#ifndef CombatGameCanvas_paint
+#define CombatGameCanvas_paint Displayable_paint
+#endif
+#ifndef CombatGameCanvas_repaint
+#define CombatGameCanvas_repaint Displayable_repaint
+#endif
+#ifndef CombatGameCanvas_repaintXYWH
+#define CombatGameCanvas_repaintXYWH Displayable_repaintXYWH
+#endif
+#ifndef CombatGameCanvas_sizeChanged
+#define CombatGameCanvas_sizeChanged Displayable_sizeChanged
+#endif
+#ifndef CombatGameCanvas_sizeChangedForDisplay
+#define CombatGameCanvas_sizeChangedForDisplay Displayable_sizeChangedForDisplay
+#endif
+#ifndef CombatGameCanvas_showNotify
+#define CombatGameCanvas_showNotify Displayable_showNotify
+#endif
+#ifndef CombatGameCanvas_showNotifyForDisplay
+#define CombatGameCanvas_showNotifyForDisplay Displayable_showNotifyForDisplay
+#endif
+// Runs the Java static initialization of the class once. Reads of its static fields call it first.
+void CombatGameCanvas_staticInit(void);
+// Registers the class, its superclass, and its methods for the interface calls (java_register_method)
+void CombatGameCanvas_register(void);
+
+
+#endif // ORG_ALLBINARY_GAME_COMBAT_CANVAS_COMBATGAMECANVAS_H

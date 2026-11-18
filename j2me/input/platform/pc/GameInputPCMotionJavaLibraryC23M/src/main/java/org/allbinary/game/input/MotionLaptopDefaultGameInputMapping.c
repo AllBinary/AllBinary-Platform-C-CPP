@@ -1,67 +1,59 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.input
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/input/MotionLaptopDefaultGameInputMapping.h"
 #include "org/allbinary/game/configuration/persistance/GamePersistanceStrings.h"
 #include "org/allbinary/game/input/mapping/InputToGameKeyMapping.h"
-#include "org/allbinary/game/input/mapping/PersistentInputMapping.h"
 #include "org/allbinary/input/motion/button/BasicTouchInputFactory.h"
 #include "org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h"
+#include "org/allbinary/game/input/PCKeyFactory.h"
+#include "org/allbinary/game/input/GameKeyFactory.h"
+#if __has_include("org/allbinary/game/configuration/persistance/GamePersistanceStrings.h")
+#include "org/allbinary/game/configuration/persistance/GamePersistanceStrings.h"
+#endif
 
-typedef struct MotionLaptopDefaultGameInputMapping MotionLaptopDefaultGameInputMapping;
-struct MotionLaptopDefaultGameInputMapping {
-    PersistentInputMapping base;
-};
 
 
-MotionLaptopDefaultGameInputMapping* MotionLaptopDefaultGameInputMapping_new(void);
 
-void MotionLaptopDefaultGameInputMapping_init(MotionLaptopDefaultGameInputMapping* this);
+void MotionLaptopDefaultGameInputMapping_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void MotionLaptopDefaultGameInputMapping_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("MotionLaptopDefaultGameInputMapping", "PersistentInputMapping");
+}
 
 
 void MotionLaptopDefaultGameInputMapping_init(MotionLaptopDefaultGameInputMapping* this) {
+    MotionLaptopDefaultGameInputMapping_register();
         PersistentInputMapping_init(&this->base, GamePersistanceStrings_getInstance()->DEFAULT_INPUT_MAPPING_RECORD_ID);
         PCKeyFactory* pcKeyFactory = PCKeyFactory_getInstance();
-        InputToGameKeyMapping* inputToGameKeyMapping = MotionLaptopDefaultGameInputMapping_getInputMapping(this);
+        InputToGameKeyMapping* inputToGameKeyMapping = PersistentInputMapping_getInputMapping(this);
         GameKeyFactory* gameKeyFactory = GameKeyFactory_getInstance();
         TouchMotionGestureFactory* touchMotionGestureFactory = TouchMotionGestureFactory_getInstance();
         BasicTouchInputFactory* basicTouchInputFactory = BasicTouchInputFactory_getInstance();
         InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->FIRE, pcKeyFactory->ENTER);
         InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->KEY_NUM1, pcKeyFactory->FOUR);
-        InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->KEY_NUM1, pcKeyFactory->_P);
+        InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->KEY_NUM1, pcKeyFactory->_P_);
         InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->KEY_NUM1, pcKeyFactory->p);
         InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->UP, pcKeyFactory->DPAD_UP);
         InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->DOWN, pcKeyFactory->DPAD_DOWN);
         InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->LEFT, pcKeyFactory->DPAD_LEFT);
         InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->RIGHT, pcKeyFactory->DPAD_RIGHT);
-        InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->KEY_NUM7, pcKeyFactory->_Y);
-        InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->KEY_NUM9, pcKeyFactory->_I);
-        InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->UP, pcKeyFactory->_U);
-        InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->LEFT, pcKeyFactory->_H);
-        InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->RIGHT, pcKeyFactory->_J);
-        InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->DOWN, pcKeyFactory->_N);
-        InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->KEY_NUM5, pcKeyFactory->_M);
+        InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->KEY_NUM7, pcKeyFactory->_Y_);
+        InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->KEY_NUM9, pcKeyFactory->_I_);
+        InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->UP, pcKeyFactory->_U_);
+        InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->LEFT, pcKeyFactory->_H_);
+        InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->RIGHT, pcKeyFactory->_J_);
+        InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->DOWN, pcKeyFactory->_N_);
+        InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->KEY_NUM5, pcKeyFactory->_M_);
         InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->KEY_NUM7, pcKeyFactory->y);
         InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->KEY_NUM9, pcKeyFactory->i);
         InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->UP, pcKeyFactory->u);
@@ -69,13 +61,13 @@ void MotionLaptopDefaultGameInputMapping_init(MotionLaptopDefaultGameInputMappin
         InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->RIGHT, pcKeyFactory->j);
         InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->DOWN, pcKeyFactory->n);
         InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->KEY_NUM5, pcKeyFactory->m);
-        InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->KEY_NUM7, pcKeyFactory->_Q);
-        InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->KEY_NUM9, pcKeyFactory->_E);
-        InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->UP, pcKeyFactory->_W);
-        InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->LEFT, pcKeyFactory->_A);
-        InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->RIGHT, pcKeyFactory->_D);
-        InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->DOWN, pcKeyFactory->_S);
-        InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->KEY_NUM5, pcKeyFactory->_X);
+        InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->KEY_NUM7, pcKeyFactory->_Q_);
+        InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->KEY_NUM9, pcKeyFactory->_E_);
+        InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->UP, pcKeyFactory->_W_);
+        InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->LEFT, pcKeyFactory->_A_);
+        InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->RIGHT, pcKeyFactory->_D_);
+        InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->DOWN, pcKeyFactory->_S_);
+        InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->KEY_NUM5, pcKeyFactory->_X_);
         InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->KEY_NUM7, pcKeyFactory->q);
         InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->KEY_NUM9, pcKeyFactory->e);
         InputToGameKeyMapping_add(inputToGameKeyMapping, gameKeyFactory->UP, pcKeyFactory->w);
@@ -110,7 +102,7 @@ void MotionLaptopDefaultGameInputMapping_init(MotionLaptopDefaultGameInputMappin
 }
 
 MotionLaptopDefaultGameInputMapping* MotionLaptopDefaultGameInputMapping_new(void) {
-    MotionLaptopDefaultGameInputMapping* this = calloc(1, sizeof(MotionLaptopDefaultGameInputMapping));
+    MotionLaptopDefaultGameInputMapping* this = java_object_alloc(sizeof(MotionLaptopDefaultGameInputMapping), "MotionLaptopDefaultGameInputMapping");
     MotionLaptopDefaultGameInputMapping_init(this);
     return this;
 }

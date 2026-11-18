@@ -57,6 +57,8 @@ StringMaker* StringMaker_delete(StringMaker* this, int32_t start, int32_t end);
 int32_t StringMaker_length(StringMaker* this);
 
 const char* StringMaker_toString(StringMaker* this);
+#define StringMaker_new0 StringMaker_new
+#define StringMaker_init0 StringMaker_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void StringMaker_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

@@ -1,45 +1,40 @@
-/*
- * 
- * To change this license header, choose License Headers in Project Properties. 
- * To change this template file, choose Tools | Templates 
- * and open the template in the editor.  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.multiplayer.layer
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/multiplayer/layer/RemoteInfo.h"
 #include "org/allbinary/logic/string/StringUtil.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
-typedef struct RemoteInfo RemoteInfo;
-struct RemoteInfo {
-    char unused;
-};
 
-constexpr int32_t RemoteInfo_NEW_PLAYER_ID = 0;
+
 RemoteInfo* RemoteInfo_REMOTE_INFO;
 
-RemoteInfo* RemoteInfo_new(const char* username, int32_t actorSessionId, int32_t playerInputId, int32_t id);
 
-void RemoteInfo_init(RemoteInfo* this, const char* username, int32_t actorSessionId, int32_t playerInputId, int32_t id);
-
-// Static fields with runtime initializers: call this once at startup
 void RemoteInfo_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     RemoteInfo_REMOTE_INFO = RemoteInfo_new(StringUtil_getInstance()->EMPTY_STRING, -1, -1, RemoteInfo_NEW_PLAYER_ID);
+}
+
+void RemoteInfo_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("RemoteInfo", nullptr);
 }
 
 
 void RemoteInfo_init(RemoteInfo* this, const char* username, int32_t actorSessionId, int32_t playerInputId, int32_t id) {
+    RemoteInfo_register();
 }
 
 RemoteInfo* RemoteInfo_new(const char* username, int32_t actorSessionId, int32_t playerInputId, int32_t id) {
-    RemoteInfo* this = calloc(1, sizeof(RemoteInfo));
+    RemoteInfo* this = java_object_alloc(sizeof(RemoteInfo), "RemoteInfo");
     RemoteInfo_init(this, username, actorSessionId, playerInputId, id);
     return this;
 }

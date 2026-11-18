@@ -1,52 +1,43 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2026 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/logic/PropertyInitUtil.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/logic/string/StringMaker.h"
 #include "org/allbinary/string/CommonStrings.h"
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
 
-typedef struct PropertyInitUtil PropertyInitUtil;
-struct PropertyInitUtil {
-    char unused;
-};
 
 static PropertyInitUtil* PropertyInitUtil_instance;
 
-PropertyInitUtil* PropertyInitUtil_new(void);
-PropertyInitUtil* PropertyInitUtil_getInstance(int32_t value);
 
-// Static fields with runtime initializers: call this once at startup
 void PropertyInitUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     PropertyInitUtil_instance = PropertyInitUtil_new();
 }
 
+void PropertyInitUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("PropertyInitUtil", nullptr);
+}
+
 void PropertyInitUtil_init(PropertyInitUtil* this) {
+    PropertyInitUtil_register();
 }
 
 PropertyInitUtil* PropertyInitUtil_new(void) {
-    PropertyInitUtil* this = calloc(1, sizeof(PropertyInitUtil));
+    PropertyInitUtil* this = java_object_alloc(sizeof(PropertyInitUtil), "PropertyInitUtil");
     PropertyInitUtil_init(this);
     return this;
 }
@@ -55,7 +46,7 @@ PropertyInitUtil* PropertyInitUtil_new(void) {
 PropertyInitUtil* PropertyInitUtil_getInstance(int32_t value) {
         CommonStrings* commonStrings = CommonStrings_getInstance();
         LogUtil* logUtil = LogUtil_getInstance();
-        LogUtil_putF(logUtil, JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), "PropertyInitUtil: "), appendint, value), toString), logUtil, commonStrings->CONSTRUCTOR);
-        return PropertyInitUtil_instance;
+        LogUtil_putF(logUtil, java_string_of(StringMaker_appendint(StringMaker_append(StringMaker_new(), "PropertyInitUtil: "), value)), logUtil, commonStrings->CONSTRUCTOR);
+        return (PropertyInitUtil_staticInit(), PropertyInitUtil_instance);
 }
 

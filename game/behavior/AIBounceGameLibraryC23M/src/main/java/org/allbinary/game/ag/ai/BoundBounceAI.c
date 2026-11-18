@@ -1,51 +1,90 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.ag.ai
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/game/ag/ai/BoundBounceAI.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/bounds/BoundsVisitorInterface.h"
 #include "org/allbinary/bounds/LayerBounds.h"
-#include "org/allbinary/game/ai/BasicAI.h"
 #include "org/allbinary/game/input/GameInput.h"
 #include "org/allbinary/graphics/Rectangle.h"
 #include "org/allbinary/layer/AllBinaryLayer.h"
 #include "org/allbinary/layer/AllBinaryLayerManager.h"
+#if __has_include("org/allbinary/game/ag/ai/GPoint.h")
+#include "org/allbinary/game/ag/ai/GPoint.h"
+#endif
+#if __has_include("javax/microedition/lcdui/GPoint.h")
+#include "javax/microedition/lcdui/GPoint.h"
+#endif
+#if __has_include("org/allbinary/bounds/GPoint.h")
+#include "org/allbinary/bounds/GPoint.h"
+#endif
+#if __has_include("org/allbinary/bounds/GPoint.h")
+#include "org/allbinary/bounds/GPoint.h"
+#endif
+#if __has_include("org/allbinary/game/ai/GPoint.h")
+#include "org/allbinary/game/ai/GPoint.h"
+#endif
+#if __has_include("org/allbinary/game/input/GPoint.h")
+#include "org/allbinary/game/input/GPoint.h"
+#endif
+#if __has_include("org/allbinary/graphics/GPoint.h")
+#include "org/allbinary/graphics/GPoint.h"
+#endif
+#if __has_include("org/allbinary/layer/GPoint.h")
+#include "org/allbinary/layer/GPoint.h"
+#endif
+#if __has_include("org/allbinary/layer/GPoint.h")
+#include "org/allbinary/layer/GPoint.h"
+#endif
+#if __has_include("org/allbinary/game/ag/ai/GPoint.h")
+#include "org/allbinary/game/ag/ai/GPoint.h"
+#endif
+#if __has_include("javax/microedition/lcdui/GPoint.h")
+#include "javax/microedition/lcdui/GPoint.h"
+#endif
+#if __has_include("org/allbinary/bounds/GPoint.h")
+#include "org/allbinary/bounds/GPoint.h"
+#endif
+#if __has_include("org/allbinary/bounds/GPoint.h")
+#include "org/allbinary/bounds/GPoint.h"
+#endif
+#if __has_include("org/allbinary/game/ai/GPoint.h")
+#include "org/allbinary/game/ai/GPoint.h"
+#endif
+#if __has_include("org/allbinary/game/input/GPoint.h")
+#include "org/allbinary/game/input/GPoint.h"
+#endif
+#if __has_include("org/allbinary/graphics/GPoint.h")
+#include "org/allbinary/graphics/GPoint.h"
+#endif
+#if __has_include("org/allbinary/layer/GPoint.h")
+#include "org/allbinary/layer/GPoint.h"
+#endif
+#if __has_include("org/allbinary/layer/GPoint.h")
+#include "org/allbinary/layer/GPoint.h"
+#endif
 
-typedef struct BoundBounceAI BoundBounceAI;
-struct BoundBounceAI {
-    BasicAI base;
-    int32_t currentRelativeAngle;
-    LayerBounds* layerBounds;
-    BoundsVisitorInterface* boundsVisitorInterface;
-};
 
 
-BoundBounceAI* BoundBounceAI_new(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput, LayerBounds* layerBounds, BoundsVisitorInterface* boundsVisitorInterface);
 
-void BoundBounceAI_init(BoundBounceAI* this, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput, LayerBounds* layerBounds, BoundsVisitorInterface* boundsVisitorInterface);
-void BoundBounceAI_paint(BoundBounceAI* this, Graphics* graphics);
-void BoundBounceAI_processAI(BoundBounceAI* this, AllBinaryLayerManager* allBinaryLayerManager);
+
+
+void BoundBounceAI_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void BoundBounceAI_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("BoundBounceAI", "BasicAI");
+    java_register_method("BoundBounceAI", "paint", (void*) BoundBounceAI_paint);
+    java_register_method("BoundBounceAI", "processAI", (void*) BoundBounceAI_processAI);
+}
 
 static void BoundBounceAI_initFields(BoundBounceAI* this) {
     this->currentRelativeAngle = 0;
@@ -55,6 +94,7 @@ static void BoundBounceAI_initFields(BoundBounceAI* this) {
 
 
 void BoundBounceAI_init(BoundBounceAI* this, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput, LayerBounds* layerBounds, BoundsVisitorInterface* boundsVisitorInterface) {
+    BoundBounceAI_register();
         BasicAI_init(&this->base, ownerLayerInterface, gameInput);
         BoundBounceAI_initFields(this);
         this->layerBounds = layerBounds;
@@ -62,7 +102,7 @@ void BoundBounceAI_init(BoundBounceAI* this, AllBinaryLayer* ownerLayerInterface
 }
 
 BoundBounceAI* BoundBounceAI_new(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput, LayerBounds* layerBounds, BoundsVisitorInterface* boundsVisitorInterface) {
-    BoundBounceAI* this = calloc(1, sizeof(BoundBounceAI));
+    BoundBounceAI* this = java_object_alloc(sizeof(BoundBounceAI), "BoundBounceAI");
     BoundBounceAI_init(this, ownerLayerInterface, gameInput, layerBounds, boundsVisitorInterface);
     return this;
 }
@@ -70,7 +110,7 @@ BoundBounceAI* BoundBounceAI_new(AllBinaryLayer* ownerLayerInterface, GameInput*
 
 void BoundBounceAI_paint(BoundBounceAI* this, Graphics* graphics) {
         Rectangle* rectange = LayerBounds_getRectangleP(this->layerBounds);
-        Graphics_drawRect(graphics, JAVA_CALL(Rectangle_getPoint(rectange), getX), JAVA_CALL(Rectangle_getPoint(rectange), getY), Rectangle_getWidth(rectange), Rectangle_getHeight(rectange));
+        Graphics_drawRect(graphics, GPoint_getX(Rectangle_getPoint(rectange)), GPoint_getY(Rectangle_getPoint(rectange)), Rectangle_getWidth(rectange), Rectangle_getHeight(rectange));
 }
 
 

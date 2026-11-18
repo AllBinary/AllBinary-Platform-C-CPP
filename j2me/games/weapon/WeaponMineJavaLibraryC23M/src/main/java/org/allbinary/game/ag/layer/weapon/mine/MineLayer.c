@@ -1,31 +1,7 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.ag.layer.weapon.mine
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/ag/layer/weapon/mine/MineLayer.h"
 #include "org/allbinary/ag/weapon/media/audio/DropWeaponSound.h"
 #include "org/allbinary/animation/FeaturedAnimationInterfaceFactoryInterfaceFactory.h"
-#include "org/allbinary/game/layer/weapon/SimpleWeaponLayer.h"
 #include "org/allbinary/game/multiplayer/layer/RemoteInfo.h"
 #include "org/allbinary/graphics/PointFactory.h"
 #include "org/allbinary/graphics/Rectangle.h"
@@ -34,22 +10,117 @@
 #include "org/allbinary/physics/movement/NoMovementFactory.h"
 #include "org/allbinary/view/ViewPositionBase.h"
 #include "org/allbinary/view/event/ViewPositionEventHandler.h"
+#include "org/allbinary/game/ag/layer/weapon/mine/MineWeaponResources.h"
+#if __has_include("org/allbinary/physics/movement/NoMovementFactory.h")
+#include "org/allbinary/physics/movement/NoMovementFactory.h"
+#endif
+#if __has_include("org/allbinary/game/ag/layer/weapon/mine/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/game/ag/layer/weapon/mine/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/ag/weapon/media/audio/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/ag/weapon/media/audio/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/animation/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/game/layer/weapon/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/game/layer/weapon/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/game/multiplayer/layer/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/game/multiplayer/layer/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/graphics/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/graphics/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/graphics/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/graphics/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/layer/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/layer/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/media/audio/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/media/audio/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/physics/movement/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/physics/movement/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/view/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/view/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/view/event/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/view/event/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/animation/FeaturedAnimationInterfaceFactoryInterfaceFactory.h")
+#include "org/allbinary/animation/FeaturedAnimationInterfaceFactoryInterfaceFactory.h"
+#endif
+#if __has_include("org/allbinary/graphics/PointFactory.h")
+#include "org/allbinary/graphics/PointFactory.h"
+#endif
+#if __has_include("org/allbinary/game/ag/layer/weapon/mine/PlayerQueue.h")
+#include "org/allbinary/game/ag/layer/weapon/mine/PlayerQueue.h"
+#endif
+#if __has_include("org/allbinary/ag/weapon/media/audio/PlayerQueue.h")
+#include "org/allbinary/ag/weapon/media/audio/PlayerQueue.h"
+#endif
+#if __has_include("org/allbinary/animation/PlayerQueue.h")
+#include "org/allbinary/animation/PlayerQueue.h"
+#endif
+#if __has_include("org/allbinary/game/layer/weapon/PlayerQueue.h")
+#include "org/allbinary/game/layer/weapon/PlayerQueue.h"
+#endif
+#if __has_include("org/allbinary/game/multiplayer/layer/PlayerQueue.h")
+#include "org/allbinary/game/multiplayer/layer/PlayerQueue.h"
+#endif
+#if __has_include("org/allbinary/graphics/PlayerQueue.h")
+#include "org/allbinary/graphics/PlayerQueue.h"
+#endif
+#if __has_include("org/allbinary/graphics/PlayerQueue.h")
+#include "org/allbinary/graphics/PlayerQueue.h"
+#endif
+#if __has_include("org/allbinary/layer/PlayerQueue.h")
+#include "org/allbinary/layer/PlayerQueue.h"
+#endif
+#if __has_include("org/allbinary/media/audio/PlayerQueue.h")
+#include "org/allbinary/media/audio/PlayerQueue.h"
+#endif
+#if __has_include("org/allbinary/physics/movement/PlayerQueue.h")
+#include "org/allbinary/physics/movement/PlayerQueue.h"
+#endif
+#if __has_include("org/allbinary/view/PlayerQueue.h")
+#include "org/allbinary/view/PlayerQueue.h"
+#endif
+#if __has_include("org/allbinary/view/event/PlayerQueue.h")
+#include "org/allbinary/view/event/PlayerQueue.h"
+#endif
 
-typedef struct MineLayer MineLayer;
-struct MineLayer {
-    SimpleWeaponLayer base;
-    ViewPositionEventHandler* viewPositionEventHandler;
-};
 
 static const char* MineLayer_NAME = "MineLayer";
 
-MineLayer* MineLayer_new(ViewPositionBase* viewPosition);
 
-void MineLayer_init(MineLayer* this, ViewPositionBase* viewPosition);
-void MineLayer_initXYZ(MineLayer* this, int32_t x, int32_t y, int32_t z);
-void MineLayer_damage(MineLayer* this, int32_t damage, int32_t damageType);
-int32_t MineLayer_getDamage(MineLayer* this, int32_t damageType);
-void MineLayer_setDestroyed(MineLayer* this, bool destroyed);
+
+
+
+
+void MineLayer_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void MineLayer_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("MineLayer", "SimpleWeaponLayer");
+    java_register_method("MineLayer", "initXYZ", (void*) MineLayer_initXYZ);
+    java_register_method("MineLayer", "damage", (void*) MineLayer_damage);
+    java_register_method("MineLayer", "getDamage", (void*) MineLayer_getDamage);
+    java_register_method("MineLayer", "setDestroyed", (void*) MineLayer_setDestroyed);
+}
 
 static void MineLayer_initFields(MineLayer* this) {
     this->viewPositionEventHandler = ViewPositionEventHandler_getInstance();
@@ -57,38 +128,39 @@ static void MineLayer_initFields(MineLayer* this) {
 
 
 void MineLayer_init(MineLayer* this, ViewPositionBase* viewPosition) {
-        SimpleWeaponLayer_init(&this->base, MineLayer_NAME, RemoteInfo_REMOTE_INFO, -1, NoMovementFactory_getMovmentInstance(NoMovementFactory_getInstance()), JAVA_CALL(FeaturedAnimationInterfaceFactoryInterfaceFactory_get(FeaturedAnimationInterfaceFactoryInterfaceFactory_getInstance(), MineWeaponResources_getInstance()->RESOURCE), getInstance, 0), SimpleWeaponLayer_createDestroyed(), Rectangle_new(PointFactory_getInstance()->ZERO_ZERO, 10, 10), viewPosition);
+    MineLayer_register();
+        SimpleWeaponLayer_init(&this->base, MineLayer_NAME, (RemoteInfo_staticInit(), RemoteInfo_REMOTE_INFO), -1, NoMovementFactory_getMovmentInstance(NoMovementFactory_getInstance()), AnimationInterfaceFactoryInterface_getInstance(FeaturedAnimationInterfaceFactoryInterfaceFactory_get(FeaturedAnimationInterfaceFactoryInterfaceFactory_getInstance(), MineWeaponResources_getInstance()->base.RESOURCE), 0), SimpleWeaponLayer_createDestroyed(), Rectangle_new(PointFactory_getInstance()->ZERO_ZERO, 10, 10), viewPosition);
         MineLayer_initFields(this);
 }
 
 MineLayer* MineLayer_new(ViewPositionBase* viewPosition) {
-    MineLayer* this = calloc(1, sizeof(MineLayer));
+    MineLayer* this = java_object_alloc(sizeof(MineLayer), "MineLayer");
     MineLayer_init(this, viewPosition);
     return this;
 }
 
 
 void MineLayer_initXYZ(MineLayer* this, int32_t x, int32_t y, int32_t z) {
-        MineLayer_setPosition(this, x + 5, y + 5, z);
+        AllBinaryLayer_setPosition(this, x + 5, y + 5, z);
         ViewPositionEventHandler_addListener(this->viewPositionEventHandler, ((AllBinaryLayer*) this));
-        SecondaryPlayerQueueFactory_add(SecondaryPlayerQueueFactory_getInstance(), DropWeaponSound_getInstance());
+        PlayerQueue_add(SecondaryPlayerQueueFactory_getInstance(), DropWeaponSound_getInstance());
 }
 
 
 void MineLayer_damage(MineLayer* this, int32_t damage, int32_t damageType) {
-        this->totalDamage = MineLayer_getInitDamage(this) + 1;
+        this->base.base.totalDamage = WeaponLayer_getInitDamage(this) + 1;
 }
 
 
 int32_t MineLayer_getDamage(MineLayer* this, int32_t damageType) {
-        SimpleWeaponLayer_getDamage((&this->base), damageType);
-        return MineLayer_getInitDamage(this);
+        WeaponLayer_getDamage((&this->base), damageType);
+        return WeaponLayer_getInitDamage(this);
 }
 
 
 void MineLayer_setDestroyed(MineLayer* this, bool destroyed) {
-        SimpleWeaponLayer_setDestroyed((&this->base), destroyed);
-        if (MineLayer_isDestroyed(this)) {
+        WeaponLayer_setDestroyed((&this->base), destroyed);
+        if (WeaponLayer_isDestroyed(this)) {
             ViewPositionEventHandler_removeListener(this->viewPositionEventHandler, this);
         }
 }

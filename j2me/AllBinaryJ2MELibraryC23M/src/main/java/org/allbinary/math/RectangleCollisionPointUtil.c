@@ -1,49 +1,38 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.math
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/math/RectangleCollisionPointUtil.h"
 #include "org/allbinary/graphics/GPoint.h"
 #include "org/allbinary/util/BasicArrayList.h"
-
-typedef struct RectangleCollisionPointUtil RectangleCollisionPointUtil;
-struct RectangleCollisionPointUtil {
-    char unused;
-};
+#include "org/allbinary/math/RectangleCollisionUtil.h"
 
 
-RectangleCollisionPointUtil* RectangleCollisionPointUtil_new(void);
 
-void RectangleCollisionPointUtil_init(RectangleCollisionPointUtil* this);
-bool RectangleCollisionPointUtil_allPointsInside(int32_t rectX1, int32_t rectY1, int32_t rectX2, int32_t rectY2, BasicArrayList* list);
-bool RectangleCollisionPointUtil_allPointsInsideCell(int32_t rectX1, int32_t rectY1, int32_t rectX2, int32_t rectY2, BasicArrayList* list, int32_t xCellSize, int32_t yCellSize);
+
+
+
+void RectangleCollisionPointUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void RectangleCollisionPointUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("RectangleCollisionPointUtil", nullptr);
+}
 
 
 void RectangleCollisionPointUtil_init(RectangleCollisionPointUtil* this) {
+    RectangleCollisionPointUtil_register();
 }
 
 RectangleCollisionPointUtil* RectangleCollisionPointUtil_new(void) {
-    RectangleCollisionPointUtil* this = calloc(1, sizeof(RectangleCollisionPointUtil));
+    RectangleCollisionPointUtil* this = java_object_alloc(sizeof(RectangleCollisionPointUtil), "RectangleCollisionPointUtil");
     RectangleCollisionPointUtil_init(this);
     return this;
 }

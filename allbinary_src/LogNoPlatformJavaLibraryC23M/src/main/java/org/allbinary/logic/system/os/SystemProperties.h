@@ -46,6 +46,8 @@ const char* SystemProperties_getArch(SystemProperties* this);
 const char* SystemProperties_getVersion(SystemProperties* this);
 
 const char* SystemProperties_getUserHomePath(SystemProperties* this);
+#define SystemProperties_new0 SystemProperties_new
+#define SystemProperties_init0 SystemProperties_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void SystemProperties_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

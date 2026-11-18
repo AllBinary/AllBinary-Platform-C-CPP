@@ -1,29 +1,6 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2011 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.layer
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/layer/AllBinaryLayer.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/game/identification/BasicGroupFactory.h"
 #include "org/allbinary/game/identification/Group.h"
 #include "org/allbinary/graphics/GPoint.h"
@@ -40,61 +17,118 @@
 #include "org/allbinary/view/event/ViewPositionEvent.h"
 #include "org/allbinary/layer/Layer.h"
 #include "org/allbinary/layer/LayerInterface.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/string/CommonSeps.h")
+#include "org/allbinary/string/CommonSeps.h"
+#endif
+#if __has_include("org/allbinary/TsUtil.h")
+#include "org/allbinary/TsUtil.h"
+#endif
+#if __has_include("org/allbinary/game/identification/BasicGroupFactory.h")
+#include "org/allbinary/game/identification/BasicGroupFactory.h"
+#endif
+#if __has_include("org/allbinary/graphics/opengles/OpenGLFeatureUtil.h")
+#include "org/allbinary/graphics/opengles/OpenGLFeatureUtil.h"
+#endif
 
-typedef struct AllBinaryLayer AllBinaryLayer;
-struct AllBinaryLayer {
-    Layer base;
-    LayerInterface LayerInterface_interface;
-    ViewPositionEvent* viewPositionEvent;
-    int32_t halfWidth;
-    int32_t halfHeight;
-    const char* name;
-    ViewPositionBase* viewPosition;
-};
 
 AllBinaryLayer* AllBinaryLayer_NULL_ALLBINARY_LAYER;
 static const char* AllBinaryLayer_TYPE = "Type: ";
 
-AllBinaryLayer* AllBinaryLayer_new(const char* name, Rectangle* rectangle, ViewPositionBase* viewPosition);
 
-void AllBinaryLayer_init(AllBinaryLayer* this, const char* name, Rectangle* rectangle, ViewPositionBase* viewPosition);
-void AllBinaryLayer_setPosition(AllBinaryLayer* this, int32_t x, int32_t y, int32_t z);
-void AllBinaryLayer_moveDXYZ(AllBinaryLayer* this, int32_t dx, int32_t dy, int32_t dz);
-int32_t AllBinaryLayer_getXP(AllBinaryLayer* this);
-int32_t AllBinaryLayer_getYP(AllBinaryLayer* this);
-int32_t AllBinaryLayer_getZP(AllBinaryLayer* this);
-int32_t AllBinaryLayer_getWidth(AllBinaryLayer* this);
-int32_t AllBinaryLayer_getHeight(AllBinaryLayer* this);
-void AllBinaryLayer_setVisible(AllBinaryLayer* this, bool visible);
-bool AllBinaryLayer_isVisible(AllBinaryLayer* this);
-void AllBinaryLayer_paint(AllBinaryLayer* this, Graphics* graphics);
-void AllBinaryLayer_onChangeEvent(AllBinaryLayer* this, ViewPositionEvent* layerManagerEvent);
-void AllBinaryLayer_paintThreed(AllBinaryLayer* this, Graphics* graphics);
-int32_t AllBinaryLayer_getX2(AllBinaryLayer* this);
-int32_t AllBinaryLayer_getY2(AllBinaryLayer* this);
-int32_t AllBinaryLayer_getZ2(AllBinaryLayer* this);
-const char* AllBinaryLayer_getName(AllBinaryLayer* this);
-void AllBinaryLayer_setHalfWidth(AllBinaryLayer* this, int32_t halfWidth);
-int32_t AllBinaryLayer_getHalfWidth(AllBinaryLayer* this);
-void AllBinaryLayer_setHalfHeight(AllBinaryLayer* this, int32_t halfHeight);
-int32_t AllBinaryLayer_getHalfHeight(AllBinaryLayer* this);
-int32_t AllBinaryLayer_getHalfDepth(AllBinaryLayer* this);
-ViewPositionBase* AllBinaryLayer_getViewPosition(AllBinaryLayer* this);
-void AllBinaryLayer_setViewPosition(AllBinaryLayer* this, ViewPositionBase* viewPosition);
-Group** AllBinaryLayer_getGroupInterface(AllBinaryLayer* this);
-bool AllBinaryLayer_implmentsTickableInterface(AllBinaryLayer* this);
-bool AllBinaryLayer_implmentsGameInputInterface(AllBinaryLayer* this);
-bool AllBinaryLayer_implmentsArtificialIntelligenceCompositeInterface(AllBinaryLayer* this);
-bool AllBinaryLayer_implmentsCollidableInterface(AllBinaryLayer* this);
-bool AllBinaryLayer_implementsThreedInterface(AllBinaryLayer* this);
-int32_t AllBinaryLayer_getType(AllBinaryLayer* this);
-int32_t AllBinaryLayer_getMultiPlayerType(AllBinaryLayer* this);
-void AllBinaryLayer_toStringAppend(AllBinaryLayer* this, StringMaker* stringBuffer);
-const char* AllBinaryLayer_toString(AllBinaryLayer* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 void AllBinaryLayer_staticInit(void) {
-    AllBinaryLayer_NULL_ALLBINARY_LAYER = AllBinaryLayer_new(StringUtil_getInstance()->EMPTY_STRING, RectangleFactory_SINGLETON, ViewPositionBase_NULL_VIEW_POSITION);
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+    AllBinaryLayer_NULL_ALLBINARY_LAYER = AllBinaryLayer_new(StringUtil_getInstance()->EMPTY_STRING, (RectangleFactory_staticInit(), RectangleFactory_SINGLETON), (ViewPositionBase_staticInit(), ViewPositionBase_NULL_VIEW_POSITION));
+}
+
+void AllBinaryLayer_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("AllBinaryLayer", "Layer");
+    java_register_method("AllBinaryLayer", "setPosition", (void*) AllBinaryLayer_setPosition);
+    java_register_method("AllBinaryLayer", "moveDXYZ", (void*) AllBinaryLayer_moveDXYZ);
+    java_register_method("AllBinaryLayer", "getXP", (void*) AllBinaryLayer_getXP);
+    java_register_method("AllBinaryLayer", "getYP", (void*) AllBinaryLayer_getYP);
+    java_register_method("AllBinaryLayer", "getZP", (void*) AllBinaryLayer_getZP);
+    java_register_method("AllBinaryLayer", "getWidth", (void*) AllBinaryLayer_getWidth);
+    java_register_method("AllBinaryLayer", "getHeight", (void*) AllBinaryLayer_getHeight);
+    java_register_method("AllBinaryLayer", "setVisible", (void*) AllBinaryLayer_setVisible);
+    java_register_method("AllBinaryLayer", "isVisible", (void*) AllBinaryLayer_isVisible);
+    java_register_method("AllBinaryLayer", "paint", (void*) AllBinaryLayer_paint);
+    java_register_method("AllBinaryLayer", "onChangeEvent", (void*) AllBinaryLayer_onChangeEvent);
+    java_register_method("AllBinaryLayer", "paintThreed", (void*) AllBinaryLayer_paintThreed);
+    java_register_method("AllBinaryLayer", "getX2", (void*) AllBinaryLayer_getX2);
+    java_register_method("AllBinaryLayer", "getY2", (void*) AllBinaryLayer_getY2);
+    java_register_method("AllBinaryLayer", "getZ2", (void*) AllBinaryLayer_getZ2);
+    java_register_method("AllBinaryLayer", "getName", (void*) AllBinaryLayer_getName);
+    java_register_method("AllBinaryLayer", "setHalfWidth", (void*) AllBinaryLayer_setHalfWidth);
+    java_register_method("AllBinaryLayer", "getHalfWidth", (void*) AllBinaryLayer_getHalfWidth);
+    java_register_method("AllBinaryLayer", "setHalfHeight", (void*) AllBinaryLayer_setHalfHeight);
+    java_register_method("AllBinaryLayer", "getHalfHeight", (void*) AllBinaryLayer_getHalfHeight);
+    java_register_method("AllBinaryLayer", "getHalfDepth", (void*) AllBinaryLayer_getHalfDepth);
+    java_register_method("AllBinaryLayer", "getViewPosition", (void*) AllBinaryLayer_getViewPosition);
+    java_register_method("AllBinaryLayer", "setViewPosition", (void*) AllBinaryLayer_setViewPosition);
+    java_register_method("AllBinaryLayer", "getGroupInterface", (void*) AllBinaryLayer_getGroupInterface);
+    java_register_method("AllBinaryLayer", "implmentsTickableInterface", (void*) AllBinaryLayer_implmentsTickableInterface);
+    java_register_method("AllBinaryLayer", "implmentsGameInputInterface", (void*) AllBinaryLayer_implmentsGameInputInterface);
+    java_register_method("AllBinaryLayer", "implmentsArtificialIntelligenceCompositeInterface", (void*) AllBinaryLayer_implmentsArtificialIntelligenceCompositeInterface);
+    java_register_method("AllBinaryLayer", "implmentsCollidableInterface", (void*) AllBinaryLayer_implmentsCollidableInterface);
+    java_register_method("AllBinaryLayer", "implementsThreedInterface", (void*) AllBinaryLayer_implementsThreedInterface);
+    java_register_method("AllBinaryLayer", "getType", (void*) AllBinaryLayer_getType);
+    java_register_method("AllBinaryLayer", "getMultiPlayerType", (void*) AllBinaryLayer_getMultiPlayerType);
+    java_register_method("AllBinaryLayer", "toStringAppend", (void*) AllBinaryLayer_toStringAppend);
+    java_register_method("AllBinaryLayer", "toString", (void*) AllBinaryLayer_toString);
 }
 
 static void AllBinaryLayer_initFields(AllBinaryLayer* this) {
@@ -102,15 +136,16 @@ static void AllBinaryLayer_initFields(AllBinaryLayer* this) {
     this->halfWidth = 0;
     this->halfHeight = 0;
     
-    this->viewPosition = ViewPositionBase_NULL_VIEW_POSITION;
+    this->viewPosition = (ViewPositionBase_staticInit(), ViewPositionBase_NULL_VIEW_POSITION);
 }
 
 
 void AllBinaryLayer_init(AllBinaryLayer* this, const char* name, Rectangle* rectangle, ViewPositionBase* viewPosition) {
+    AllBinaryLayer_register();
         Layer_init(&this->base, Rectangle_getWidth(rectangle), Rectangle_getHeight(rectangle));
         AllBinaryLayer_initFields(this);
         const char* localName = nullptr;
-        localName = JAVA_CALL(JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), name), append, CommonSeps_getInstance()->COLON), append, Integer_toHexString(TsUtil_hashCode(TsUtil_getInstance(), this))), toString);
+        localName = java_string_of(StringMaker_append(StringMaker_append(StringMaker_append(StringMaker_new(), name), CommonSeps_getInstance()->COLON), Integer_toHexString(TsUtil_hashCode(TsUtil_getInstance(), this))));
         this->name = localName;
         GPoint* point = Rectangle_getPoint(rectangle);
         AllBinaryLayer_setPosition(this, GPoint_getX(point), GPoint_getY(point), GPoint_getZ(point));
@@ -121,7 +156,7 @@ void AllBinaryLayer_init(AllBinaryLayer* this, const char* name, Rectangle* rect
 }
 
 AllBinaryLayer* AllBinaryLayer_new(const char* name, Rectangle* rectangle, ViewPositionBase* viewPosition) {
-    AllBinaryLayer* this = calloc(1, sizeof(AllBinaryLayer));
+    AllBinaryLayer* this = java_object_alloc(sizeof(AllBinaryLayer), "AllBinaryLayer");
     AllBinaryLayer_init(this, name, rectangle, viewPosition);
     return this;
 }
@@ -197,7 +232,7 @@ int32_t AllBinaryLayer_getY2(AllBinaryLayer* this) {
 
 
 int32_t AllBinaryLayer_getZ2(AllBinaryLayer* this) {
-        return ((int32_t) (AllBinaryLayer_getZP(this) + AllBinaryLayer_getDepth(this)));
+        return ((int32_t) (((int64_t) AllBinaryLayer_getZP(this)) + Layer_getDepth(this)));
 }
 
 
@@ -227,7 +262,7 @@ int32_t AllBinaryLayer_getHalfHeight(AllBinaryLayer* this) {
 
 
 int32_t AllBinaryLayer_getHalfDepth(AllBinaryLayer* this) {
-        return ((int32_t) AllBinaryLayer_getDepth(this)) / 2;
+        return ((int32_t) Layer_getDepth(this)) / 2;
 }
 
 
@@ -310,6 +345,6 @@ void AllBinaryLayer_toStringAppend(AllBinaryLayer* this, StringMaker* stringBuff
 const char* AllBinaryLayer_toString(AllBinaryLayer* this) {
         StringMaker* stringBuffer = StringMaker_new();
         AllBinaryLayer_toStringAppend(this, stringBuffer);
-        return StringMaker_toString(stringBuffer);
+        return java_string_of(stringBuffer);
 }
 

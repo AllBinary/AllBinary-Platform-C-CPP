@@ -1,44 +1,33 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.io.file
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "java/io/File.h"
-
-typedef struct AbFileNativeUtil AbFileNativeUtil;
-struct AbFileNativeUtil {
-    char unused;
-};
+#include "org/allbinary/logic/io/file/AbFileNativeUtil.h"
+#include "org/allbinary/logic/io/file/AbFile.h"
 
 
-AbFileNativeUtil* AbFileNativeUtil_new(void);
-File* AbFileNativeUtil_get(AbFile* file);
+
+
+void AbFileNativeUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void AbFileNativeUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("AbFileNativeUtil", nullptr);
+}
 
 void AbFileNativeUtil_init(AbFileNativeUtil* this) {
+    AbFileNativeUtil_register();
 }
 
 AbFileNativeUtil* AbFileNativeUtil_new(void) {
-    AbFileNativeUtil* this = calloc(1, sizeof(AbFileNativeUtil));
+    AbFileNativeUtil* this = java_object_alloc(sizeof(AbFileNativeUtil), "AbFileNativeUtil");
     AbFileNativeUtil_init(this);
     return this;
 }

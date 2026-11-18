@@ -1,65 +1,40 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2025 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.opengles.shader
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/khronos/opengles/GL10.h"
+#include "org/allbinary/graphics/opengles/shader/ShaderComposite.h"
+#include "javax/microedition/khronos/opengles/GL10.h"
 #include "org/allbinary/graphics/opengles/NullOpenGLProcessorFactory.h"
 #include "org/allbinary/graphics/opengles/OpenGLProcessor.h"
 #include "org/allbinary/logic/string/StringUtil.h"
-
-typedef struct ShaderComposite ShaderComposite;
-struct ShaderComposite {
-    OpenGLProcessor* disableProgramShaderOpenGLProcessor;
-    const char* requiresOpenGLVersion;
-    Shader** shaderArray;
-    ShaderInitializer* shaderInitializer;
-    CompositeShaderUpdater* compositeShaderUpdater;
-    ModelViewProjection* modelViewProjection;
-    OpenGLProcessor* colorOpenGLProcessor;
-    OpenGLProcessor* vertexOpenGLProcessor;
-    OpenGLProcessor* useProgramShaderOpenGLProcessor;
-    OpenGLProcessor* shaderMatrixOpenGLProcessor;
-    OpenGLProcessor* colorEnableVertexAttribArrayOpenGLProcessor;
-    OpenGLProcessor* normalEnableVertexAttribArrayOpenGLProcessor;
-    OpenGLProcessor* vertexEnableVertexAttribArrayOpenGLProcessor;
-    OpenGLProcessor* textureEnableVertexAttribArrayOpenGLProcessor;
-    OpenGLProcessor* colorDisableVertexAttribArrayOpenGLProcessor;
-    OpenGLProcessor* normalDisableVertexAttribArrayOpenGLProcessor;
-    OpenGLProcessor* vertexDisableVertexAttribArrayOpenGLProcessor;
-    OpenGLProcessor* textureDisableVertexAttribArrayOpenGLProcessor;
-    OpenGLObject3dProcessor* uniformLightPositionOpenGLProcessor;
-    OpenGLObject3dProcessor* uniformLightColorOpenGLProcessor;
-    OpenGLObject3dProcessor* uniformCameraPositionOpenGLProcessor;
-    OpenGLObject3dProcessor* uniformTextureUnitOpenGLProcessor;
-    int32_t programHandle;
-};
+#include "org/allbinary/graphics/opengles/shader/Shader.h"
+#include "org/allbinary/graphics/opengles/shader/ShaderInitializer.h"
+#include "org/allbinary/graphics/opengles/shader/CompositeShaderUpdater.h"
+#include "org/allbinary/graphics/opengles/shader/ModelViewProjection.h"
+#include "org/allbinary/graphics/opengles/shader/NullOpenGLTextureProcessor.h"
+#include "org/allbinary/graphics/opengles/shader/OpenGLObject3dProcessor.h"
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
 
-ShaderComposite* ShaderComposite_new(const char* requiresOpenGLVersion, Shader** shaderArray, CompositeShaderUpdater* compositeShaderUpdater, ShaderInitializer* shaderInitializer, ModelViewProjection* modelViewProjection, OpenGLProcessor* colorOpenGLProcessor, OpenGLProcessor* vertexOpenGLProcessor, OpenGLProcessor* disableProgramShaderOpenGLProcessor);
 
-void ShaderComposite_init(ShaderComposite* this, const char* requiresOpenGLVersion, Shader** shaderArray, CompositeShaderUpdater* compositeShaderUpdater, ShaderInitializer* shaderInitializer, ModelViewProjection* modelViewProjection, OpenGLProcessor* colorOpenGLProcessor, OpenGLProcessor* vertexOpenGLProcessor, OpenGLProcessor* disableProgramShaderOpenGLProcessor);
-void ShaderComposite_init(ShaderComposite* this, GL10* gl);
+
+
+void ShaderComposite_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void ShaderComposite_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ShaderComposite", nullptr);
+    java_register_method("ShaderComposite", "init", (void*) ShaderComposite_initMethod);
+}
 
 static void ShaderComposite_initFields(ShaderComposite* this) {
     
@@ -89,6 +64,7 @@ static void ShaderComposite_initFields(ShaderComposite* this) {
 
 
 void ShaderComposite_init(ShaderComposite* this, const char* requiresOpenGLVersion, Shader** shaderArray, CompositeShaderUpdater* compositeShaderUpdater, ShaderInitializer* shaderInitializer, ModelViewProjection* modelViewProjection, OpenGLProcessor* colorOpenGLProcessor, OpenGLProcessor* vertexOpenGLProcessor, OpenGLProcessor* disableProgramShaderOpenGLProcessor) {
+    ShaderComposite_register();
     ShaderComposite_initFields(this);
         this->requiresOpenGLVersion = requiresOpenGLVersion;
         this->shaderArray = shaderArray;
@@ -101,13 +77,13 @@ void ShaderComposite_init(ShaderComposite* this, const char* requiresOpenGLVersi
 }
 
 ShaderComposite* ShaderComposite_new(const char* requiresOpenGLVersion, Shader** shaderArray, CompositeShaderUpdater* compositeShaderUpdater, ShaderInitializer* shaderInitializer, ModelViewProjection* modelViewProjection, OpenGLProcessor* colorOpenGLProcessor, OpenGLProcessor* vertexOpenGLProcessor, OpenGLProcessor* disableProgramShaderOpenGLProcessor) {
-    ShaderComposite* this = calloc(1, sizeof(ShaderComposite));
+    ShaderComposite* this = java_object_alloc(sizeof(ShaderComposite), "ShaderComposite");
     ShaderComposite_init(this, requiresOpenGLVersion, shaderArray, compositeShaderUpdater, shaderInitializer, modelViewProjection, colorOpenGLProcessor, vertexOpenGLProcessor, disableProgramShaderOpenGLProcessor);
     return this;
 }
 
 
-void ShaderComposite_init(ShaderComposite* this, GL10* gl) {
-        this->programHandle = ShaderInitializer_init(this->shaderInitializer, gl, this->shaderArray, StringUtil_getArrayInstance(StringUtil_getInstance()));
+void ShaderComposite_initMethod(ShaderComposite* this, GL10* gl) {
+        this->programHandle = ShaderInitializer_initMethod(this->shaderInitializer, gl, this->shaderArray, StringUtil_getArrayInstance(StringUtil_getInstance()));
 }
 

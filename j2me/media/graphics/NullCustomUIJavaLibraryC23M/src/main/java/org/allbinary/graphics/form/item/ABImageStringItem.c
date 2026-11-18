@@ -1,28 +1,31 @@
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.form.item
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct ABImageStringItem ABImageStringItem;
-struct ABImageStringItem {
-    char unused;
-};
+#include "org/allbinary/graphics/form/item/ABImageStringItem.h"
 
 
-ABImageStringItem* ABImageStringItem_new(void);
+
+void ABImageStringItem_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void ABImageStringItem_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ABImageStringItem", nullptr);
+}
 
 void ABImageStringItem_init(ABImageStringItem* this) {
+    ABImageStringItem_register();
 }
 
 ABImageStringItem* ABImageStringItem_new(void) {
-    ABImageStringItem* this = calloc(1, sizeof(ABImageStringItem));
+    ABImageStringItem* this = java_object_alloc(sizeof(ABImageStringItem), "ABImageStringItem");
     ABImageStringItem_init(this);
     return this;
 }

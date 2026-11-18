@@ -1,47 +1,27 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.ag.layer.pickup.points
+#include "org/allbinary/game/ag/layer/pickup/points/PointsResources.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct PointsResources PointsResources;
-struct PointsResources {
-    const char* RESOURCE;
-    const char* RESOURCE_2;
-    const char* RESOURCE_3;
-    const char* RESOURCE_4;
-};
 
 static PointsResources* PointsResources_SINGLETON;
 
-PointsResources* PointsResources_new(void);
 
-void PointsResources_init(PointsResources* this);
-PointsResources* PointsResources_getInstance(void);
 
-// Static fields with runtime initializers: call this once at startup
 void PointsResources_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     PointsResources_SINGLETON = PointsResources_new();
+}
+
+void PointsResources_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("PointsResources", nullptr);
 }
 
 static void PointsResources_initFields(PointsResources* this) {
@@ -53,17 +33,18 @@ static void PointsResources_initFields(PointsResources* this) {
 
 
 void PointsResources_init(PointsResources* this) {
+    PointsResources_register();
     PointsResources_initFields(this);
 }
 
 PointsResources* PointsResources_new(void) {
-    PointsResources* this = calloc(1, sizeof(PointsResources));
+    PointsResources* this = java_object_alloc(sizeof(PointsResources), "PointsResources");
     PointsResources_init(this);
     return this;
 }
 
 
 PointsResources* PointsResources_getInstance(void) {
-        return PointsResources_SINGLETON;
+        return (PointsResources_staticInit(), PointsResources_SINGLETON);
 }
 

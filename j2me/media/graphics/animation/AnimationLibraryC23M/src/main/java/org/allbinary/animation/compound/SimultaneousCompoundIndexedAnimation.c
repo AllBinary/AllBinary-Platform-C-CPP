@@ -1,55 +1,60 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.animation.compound
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Graphics.h"
+#include "org/allbinary/animation/compound/SimultaneousCompoundIndexedAnimation.h"
+#include "javax/microedition/lcdui/Graphics.h"
 #include "org/allbinary/animation/Animation.h"
 #include "org/allbinary/animation/AnimationBehavior.h"
-#include "org/allbinary/animation/IndexedAnimation.h"
 #include "org/allbinary/logic/math/PrimitiveIntUtil.h"
+#if __has_include("org/allbinary/animation/Animation.h")
+#include "org/allbinary/animation/Animation.h"
+#endif
+#if __has_include("org/allbinary/animation/Animation.h")
+#include "org/allbinary/animation/Animation.h"
+#endif
+#if __has_include("org/allbinary/animation/Animation.h")
+#include "org/allbinary/animation/Animation.h"
+#endif
 
-typedef struct SimultaneousCompoundIndexedAnimation SimultaneousCompoundIndexedAnimation;
-struct SimultaneousCompoundIndexedAnimation {
-    IndexedAnimation base;
-    Animation** animationInterfaceArray;
-};
 
 
-SimultaneousCompoundIndexedAnimation* SimultaneousCompoundIndexedAnimation_new(Animation** animationInterfaceArray, AnimationBehavior* animationBehavior);
 
-void SimultaneousCompoundIndexedAnimation_init(SimultaneousCompoundIndexedAnimation* this, Animation** animationInterfaceArray, AnimationBehavior* animationBehavior);
-void SimultaneousCompoundIndexedAnimation_setFrame(SimultaneousCompoundIndexedAnimation* this, int32_t frameIndex);
-int32_t SimultaneousCompoundIndexedAnimation_getFrame(SimultaneousCompoundIndexedAnimation* this);
-int32_t SimultaneousCompoundIndexedAnimation_getSize(SimultaneousCompoundIndexedAnimation* this);
-void SimultaneousCompoundIndexedAnimation_previousFrame(SimultaneousCompoundIndexedAnimation* this);
-void SimultaneousCompoundIndexedAnimation_setSequence(SimultaneousCompoundIndexedAnimation* this, int32_t* sequence);
-int32_t* SimultaneousCompoundIndexedAnimation_getSequence(SimultaneousCompoundIndexedAnimation* this);
-void SimultaneousCompoundIndexedAnimation_nextFrame(SimultaneousCompoundIndexedAnimation* this);
-void SimultaneousCompoundIndexedAnimation_paintXY(SimultaneousCompoundIndexedAnimation* this, Graphics* graphics, int32_t x, int32_t y);
-void SimultaneousCompoundIndexedAnimation_paintThreedXYZ(SimultaneousCompoundIndexedAnimation* this, Graphics* graphics, int32_t x, int32_t y, int32_t z);
-Animation** SimultaneousCompoundIndexedAnimation_getAnimationInterfaceArray(SimultaneousCompoundIndexedAnimation* this);
-void SimultaneousCompoundIndexedAnimation_setAnimationInterfaceArray(SimultaneousCompoundIndexedAnimation* this, Animation** animationInterfaceArray);
+
+
+
+
+
+
+
+
+
+
+
+void SimultaneousCompoundIndexedAnimation_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void SimultaneousCompoundIndexedAnimation_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("SimultaneousCompoundIndexedAnimation", "IndexedAnimation");
+    java_register_method("SimultaneousCompoundIndexedAnimation", "setFrame", (void*) SimultaneousCompoundIndexedAnimation_setFrame);
+    java_register_method("SimultaneousCompoundIndexedAnimation", "getFrame", (void*) SimultaneousCompoundIndexedAnimation_getFrame);
+    java_register_method("SimultaneousCompoundIndexedAnimation", "getSize", (void*) SimultaneousCompoundIndexedAnimation_getSize);
+    java_register_method("SimultaneousCompoundIndexedAnimation", "previousFrame", (void*) SimultaneousCompoundIndexedAnimation_previousFrame);
+    java_register_method("SimultaneousCompoundIndexedAnimation", "setSequence", (void*) SimultaneousCompoundIndexedAnimation_setSequence);
+    java_register_method("SimultaneousCompoundIndexedAnimation", "getSequence", (void*) SimultaneousCompoundIndexedAnimation_getSequence);
+    java_register_method("SimultaneousCompoundIndexedAnimation", "nextFrame", (void*) SimultaneousCompoundIndexedAnimation_nextFrame);
+    java_register_method("SimultaneousCompoundIndexedAnimation", "paintXY", (void*) SimultaneousCompoundIndexedAnimation_paintXY);
+    java_register_method("SimultaneousCompoundIndexedAnimation", "paintThreedXYZ", (void*) SimultaneousCompoundIndexedAnimation_paintThreedXYZ);
+    java_register_method("SimultaneousCompoundIndexedAnimation", "getAnimationInterfaceArray", (void*) SimultaneousCompoundIndexedAnimation_getAnimationInterfaceArray);
+    java_register_method("SimultaneousCompoundIndexedAnimation", "setAnimationInterfaceArray", (void*) SimultaneousCompoundIndexedAnimation_setAnimationInterfaceArray);
+}
 
 static void SimultaneousCompoundIndexedAnimation_initFields(SimultaneousCompoundIndexedAnimation* this) {
     
@@ -57,13 +62,14 @@ static void SimultaneousCompoundIndexedAnimation_initFields(SimultaneousCompound
 
 
 void SimultaneousCompoundIndexedAnimation_init(SimultaneousCompoundIndexedAnimation* this, Animation** animationInterfaceArray, AnimationBehavior* animationBehavior) {
+    SimultaneousCompoundIndexedAnimation_register();
         IndexedAnimation_init(&this->base, animationBehavior);
         SimultaneousCompoundIndexedAnimation_initFields(this);
         this->animationInterfaceArray = animationInterfaceArray;
 }
 
 SimultaneousCompoundIndexedAnimation* SimultaneousCompoundIndexedAnimation_new(Animation** animationInterfaceArray, AnimationBehavior* animationBehavior) {
-    SimultaneousCompoundIndexedAnimation* this = calloc(1, sizeof(SimultaneousCompoundIndexedAnimation));
+    SimultaneousCompoundIndexedAnimation* this = java_object_alloc(sizeof(SimultaneousCompoundIndexedAnimation), "SimultaneousCompoundIndexedAnimation");
     SimultaneousCompoundIndexedAnimation_init(this, animationInterfaceArray, animationBehavior);
     return this;
 }
@@ -111,7 +117,7 @@ int32_t* SimultaneousCompoundIndexedAnimation_getSequence(SimultaneousCompoundIn
 // throws Exception
 void SimultaneousCompoundIndexedAnimation_nextFrame(SimultaneousCompoundIndexedAnimation* this) {
         for (int32_t index = java_array_length(this->animationInterfaceArray); --index >= 0; ) {
-            JAVA_CALL(this->animationInterfaceArray[index], nextFrame);
+            Animation_nextFrame(this->animationInterfaceArray[index]);
         }
 }
 
@@ -119,7 +125,7 @@ void SimultaneousCompoundIndexedAnimation_nextFrame(SimultaneousCompoundIndexedA
 void SimultaneousCompoundIndexedAnimation_paintXY(SimultaneousCompoundIndexedAnimation* this, Graphics* graphics, int32_t x, int32_t y) {
         int32_t size = java_array_length(this->animationInterfaceArray);
         for (int32_t index = 0; index < size; index++) {
-            JAVA_CALL(this->animationInterfaceArray[index], paintXY, graphics, x, y);
+            Animation_paintXY(this->animationInterfaceArray[index], graphics, x, y);
         }
 }
 
@@ -127,7 +133,7 @@ void SimultaneousCompoundIndexedAnimation_paintXY(SimultaneousCompoundIndexedAni
 void SimultaneousCompoundIndexedAnimation_paintThreedXYZ(SimultaneousCompoundIndexedAnimation* this, Graphics* graphics, int32_t x, int32_t y, int32_t z) {
         int32_t size = java_array_length(this->animationInterfaceArray);
         for (int32_t index = 0; index < size; index++) {
-            JAVA_CALL(this->animationInterfaceArray[index], paintThreedXYZ, graphics, x, y, z);
+            Animation_paintThreedXYZ(this->animationInterfaceArray[index], graphics, x, y, z);
         }
 }
 

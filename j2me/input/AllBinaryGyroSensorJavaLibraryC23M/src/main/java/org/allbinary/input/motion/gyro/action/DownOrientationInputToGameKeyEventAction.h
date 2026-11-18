@@ -1,0 +1,92 @@
+#ifndef ORG_ALLBINARY_INPUT_MOTION_GYRO_ACTION_DOWNORIENTATIONINPUTTOGAMEKEYEVENTACTION_H
+#define ORG_ALLBINARY_INPUT_MOTION_GYRO_ACTION_DOWNORIENTATIONINPUTTOGAMEKEYEVENTACTION_H
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.input.motion.gyro.action
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+typedef struct PlatformInputMappingFactory PlatformInputMappingFactory;
+typedef struct GameKeyCompleteMotionGestureInputEvent GameKeyCompleteMotionGestureInputEvent;
+typedef struct OrientationMotionGestureFactory OrientationMotionGestureFactory;
+typedef struct NullUtil NullUtil;
+#include "org/allbinary/game/input/motion/action/GameKeyCompleteMotionGestureInputEvent.h"
+
+typedef struct DownOrientationInputToGameKeyEventAction DownOrientationInputToGameKeyEventAction;
+struct DownOrientationInputToGameKeyEventAction {
+    GameKeyCompleteMotionGestureInputEvent base;
+};
+
+
+DownOrientationInputToGameKeyEventAction* DownOrientationInputToGameKeyEventAction_new(void);
+
+GameKeyCompleteMotionGestureInputEvent* DownOrientationInputToGameKeyEventAction_getInstance(void);
+
+void DownOrientationInputToGameKeyEventAction_init(DownOrientationInputToGameKeyEventAction* this);
+#define DownOrientationInputToGameKeyEventAction_new0 DownOrientationInputToGameKeyEventAction_new
+#define DownOrientationInputToGameKeyEventAction_init0 DownOrientationInputToGameKeyEventAction_init
+#ifndef DownOrientationInputToGameKeyEventAction_getSourceId
+#define DownOrientationInputToGameKeyEventAction_getSourceId GameKeyCompleteMotionGestureInputEvent_getSourceId
+#endif
+#ifndef DownOrientationInputToGameKeyEventAction_update
+#define DownOrientationInputToGameKeyEventAction_update GameKeyCompleteMotionGestureInputEvent_update
+#endif
+#ifndef DownOrientationInputToGameKeyEventAction_setGameKeyEvent
+#define DownOrientationInputToGameKeyEventAction_setGameKeyEvent GameKeyCompleteMotionGestureInputEvent_setGameKeyEvent
+#endif
+#ifndef DownOrientationInputToGameKeyEventAction_getGameKeyEvent
+#define DownOrientationInputToGameKeyEventAction_getGameKeyEvent GameKeyCompleteMotionGestureInputEvent_getGameKeyEvent
+#endif
+#ifndef DownOrientationInputToGameKeyEventAction_setGameKey
+#define DownOrientationInputToGameKeyEventAction_setGameKey GameKeyCompleteMotionGestureInputEvent_setGameKey
+#endif
+#ifndef DownOrientationInputToGameKeyEventAction_getGameKey
+#define DownOrientationInputToGameKeyEventAction_getGameKey GameKeyCompleteMotionGestureInputEvent_getGameKey
+#endif
+#ifndef DownOrientationInputToGameKeyEventAction_setName
+#define DownOrientationInputToGameKeyEventAction_setName CompleteMotionGestureInputEvent_setName
+#endif
+#ifndef DownOrientationInputToGameKeyEventAction_getName
+#define DownOrientationInputToGameKeyEventAction_getName CompleteMotionGestureInputEvent_getName
+#endif
+#ifndef DownOrientationInputToGameKeyEventAction_setMotionGestureInput
+#define DownOrientationInputToGameKeyEventAction_setMotionGestureInput CompleteMotionGestureInputEvent_setMotionGestureInput
+#endif
+#ifndef DownOrientationInputToGameKeyEventAction_getMotionGestureInput
+#define DownOrientationInputToGameKeyEventAction_getMotionGestureInput CompleteMotionGestureInputEvent_getMotionGestureInput
+#endif
+#ifndef DownOrientationInputToGameKeyEventAction_getSource
+#define DownOrientationInputToGameKeyEventAction_getSource AllBinaryEventObject_getSource
+#endif
+#ifndef DownOrientationInputToGameKeyEventAction_setSource
+#define DownOrientationInputToGameKeyEventAction_setSource AllBinaryEventObject_setSource
+#endif
+// Runs the Java static initialization of the class once. Reads of its static fields call it first.
+void DownOrientationInputToGameKeyEventAction_staticInit(void);
+// Registers the class, its superclass, and its methods for the interface calls (java_register_method)
+void DownOrientationInputToGameKeyEventAction_register(void);
+
+#if __has_include("org/allbinary/game/input/motion/action/GameKeyCompleteMotionGestureInputEvent.h")
+#include "org/allbinary/game/input/motion/action/GameKeyCompleteMotionGestureInputEvent.h"
+#endif
+
+#endif // ORG_ALLBINARY_INPUT_MOTION_GYRO_ACTION_DOWNORIENTATIONINPUTTOGAMEKEYEVENTACTION_H

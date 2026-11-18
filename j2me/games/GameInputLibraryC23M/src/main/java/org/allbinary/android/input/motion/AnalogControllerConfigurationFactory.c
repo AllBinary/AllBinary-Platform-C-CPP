@@ -1,52 +1,43 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.android.input.motion
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/android/input/motion/AnalogControllerConfigurationFactory.h"
 #include "org/allbinary/android/input/motion/event/AnalogControllerConfigurationEvent.h"
 #include "org/allbinary/android/input/motion/event/AnalogControllerConfigurationEventHandler.h"
 #include "org/allbinary/logic/math/ScaleFactorFactory.h"
+#if __has_include("org/allbinary/logic/math/ScaleFactorFactory.h")
+#include "org/allbinary/logic/math/ScaleFactorFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/math/ScaleFactorFactory.h")
+#include "org/allbinary/logic/math/ScaleFactorFactory.h"
+#endif
+#if __has_include("org/allbinary/android/input/motion/event/AnalogControllerConfigurationEventHandler.h")
+#include "org/allbinary/android/input/motion/event/AnalogControllerConfigurationEventHandler.h"
+#endif
 
-typedef struct AnalogControllerConfigurationFactory AnalogControllerConfigurationFactory;
-struct AnalogControllerConfigurationFactory {
-    int32_t SCALE_FACTOR;
-    int32_t SCALE_VALUE;
-    bool available;
-    AnalogControllerConfigurationEvent* analogControllerConfigurationEvent;
-};
 
 static AnalogControllerConfigurationFactory* AnalogControllerConfigurationFactory_instance;
 
-AnalogControllerConfigurationFactory* AnalogControllerConfigurationFactory_new(void);
-AnalogControllerConfigurationFactory* AnalogControllerConfigurationFactory_getInstance(void);
 
-void AnalogControllerConfigurationFactory_init(AnalogControllerConfigurationFactory* this);
-bool AnalogControllerConfigurationFactory_isAvailable(AnalogControllerConfigurationFactory* this);
-void AnalogControllerConfigurationFactory_setAvailable(AnalogControllerConfigurationFactory* this, bool available);
 
-// Static fields with runtime initializers: call this once at startup
+
+
 void AnalogControllerConfigurationFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     AnalogControllerConfigurationFactory_instance = AnalogControllerConfigurationFactory_new();
+}
+
+void AnalogControllerConfigurationFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("AnalogControllerConfigurationFactory", nullptr);
+    java_register_method("AnalogControllerConfigurationFactory", "isAvailable", (void*) AnalogControllerConfigurationFactory_isAvailable);
+    java_register_method("AnalogControllerConfigurationFactory", "setAvailable", (void*) AnalogControllerConfigurationFactory_setAvailable);
 }
 
 static void AnalogControllerConfigurationFactory_initFields(AnalogControllerConfigurationFactory* this) {
@@ -58,16 +49,17 @@ static void AnalogControllerConfigurationFactory_initFields(AnalogControllerConf
 
 
 AnalogControllerConfigurationFactory* AnalogControllerConfigurationFactory_getInstance(void) {
-        return AnalogControllerConfigurationFactory_instance;
+        return (AnalogControllerConfigurationFactory_staticInit(), AnalogControllerConfigurationFactory_instance);
 }
 
 
 void AnalogControllerConfigurationFactory_init(AnalogControllerConfigurationFactory* this) {
+    AnalogControllerConfigurationFactory_register();
     AnalogControllerConfigurationFactory_initFields(this);
 }
 
 AnalogControllerConfigurationFactory* AnalogControllerConfigurationFactory_new(void) {
-    AnalogControllerConfigurationFactory* this = calloc(1, sizeof(AnalogControllerConfigurationFactory));
+    AnalogControllerConfigurationFactory* this = java_object_alloc(sizeof(AnalogControllerConfigurationFactory), "AnalogControllerConfigurationFactory");
     AnalogControllerConfigurationFactory_init(this);
     return this;
 }

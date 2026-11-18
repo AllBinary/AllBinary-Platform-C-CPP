@@ -7,6 +7,9 @@
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/ImmutableBasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
+#if __has_include("org/allbinary/string/CommonLabels.h")
+#include "org/allbinary/string/CommonLabels.h"
+#endif
 
 
 static BasicArrayListUtil* BasicArrayListUtil_instance;

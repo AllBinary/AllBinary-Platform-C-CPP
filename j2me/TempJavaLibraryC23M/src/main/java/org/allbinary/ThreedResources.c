@@ -1,57 +1,43 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2022 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary
+#include "org/allbinary/ThreedResources.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct ThreedResources ThreedResources;
-struct ThreedResources {
-    char unused;
-};
 
 static ThreedResources* ThreedResources_threedResources;
 
-ThreedResources* ThreedResources_new(void);
-ThreedResources* ThreedResources_getThreedResources(void);
-void ThreedResources_add(ThreedResources* this);
 
-// Static fields with runtime initializers: call this once at startup
+
 void ThreedResources_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     ThreedResources_threedResources = ThreedResources_new();
 }
 
+void ThreedResources_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ThreedResources", nullptr);
+    java_register_method("ThreedResources", "add", (void*) ThreedResources_add);
+}
+
 void ThreedResources_init(ThreedResources* this) {
+    ThreedResources_register();
 }
 
 ThreedResources* ThreedResources_new(void) {
-    ThreedResources* this = calloc(1, sizeof(ThreedResources));
+    ThreedResources* this = java_object_alloc(sizeof(ThreedResources), "ThreedResources");
     ThreedResources_init(this);
     return this;
 }
 
 
 ThreedResources* ThreedResources_getThreedResources(void) {
-        return ThreedResources_threedResources;
+        return (ThreedResources_staticInit(), ThreedResources_threedResources);
 }
 
 

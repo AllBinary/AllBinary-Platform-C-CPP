@@ -1,56 +1,43 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2022 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.platform.graphics
+#include "org/allbinary/platform/graphics/PlatformBitmapBaseFactory.h"
+#include "javax/microedition/lcdui/Image.h"
+#include "org/allbinary/platform/graphics/PlatformBitmapBase.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Image.h"
-
-typedef struct PlatformBitmapBaseFactory PlatformBitmapBaseFactory;
-struct PlatformBitmapBaseFactory {
-    char unused;
-};
 
 PlatformBitmapBaseFactory* PlatformBitmapBaseFactory_NULL_PLATFORM_BITMAP_BASE_FACTORY;
 
-PlatformBitmapBaseFactory* PlatformBitmapBaseFactory_new(void);
-PlatformBitmapBase* PlatformBitmapBaseFactory_createBitmap(PlatformBitmapBaseFactory* this, Image* image);
 
-// Static fields with runtime initializers: call this once at startup
 void PlatformBitmapBaseFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     PlatformBitmapBaseFactory_NULL_PLATFORM_BITMAP_BASE_FACTORY = PlatformBitmapBaseFactory_new();
 }
 
+void PlatformBitmapBaseFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("PlatformBitmapBaseFactory", nullptr);
+    java_register_method("PlatformBitmapBaseFactory", "createBitmap", (void*) PlatformBitmapBaseFactory_createBitmap);
+}
+
 void PlatformBitmapBaseFactory_init(PlatformBitmapBaseFactory* this) {
+    PlatformBitmapBaseFactory_register();
 }
 
 PlatformBitmapBaseFactory* PlatformBitmapBaseFactory_new(void) {
-    PlatformBitmapBaseFactory* this = calloc(1, sizeof(PlatformBitmapBaseFactory));
+    PlatformBitmapBaseFactory* this = java_object_alloc(sizeof(PlatformBitmapBaseFactory), "PlatformBitmapBaseFactory");
     PlatformBitmapBaseFactory_init(this);
     return this;
 }
 
 
 PlatformBitmapBase* PlatformBitmapBaseFactory_createBitmap(PlatformBitmapBaseFactory* this, Image* image) {
-        return PlatformBitmapBase_NULL_PLATFORM_BITMAP_BASE;
+        return (PlatformBitmapBase_staticInit(), PlatformBitmapBase_NULL_PLATFORM_BITMAP_BASE);
 }
 

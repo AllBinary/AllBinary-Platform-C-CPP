@@ -1,60 +1,46 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2022 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- * 
- */
 // Generated Code Do Not Modify
-// package org.allbinary.graphics.displayable.screen
+#include "org/allbinary/graphics/displayable/screen/AboutCommandProcessor.h"
+#include "javax/microedition/lcdui/Canvas.h"
+#include "javax/microedition/lcdui/Command.h"
+#include "javax/microedition/lcdui/CommandListener.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Canvas.h"
-// #include "javax/microedition/lcdui/Command.h"
-// #include "javax/microedition/lcdui/CommandListener.h"
-
-typedef struct AboutCommandProcessor AboutCommandProcessor;
-struct AboutCommandProcessor {
-    char unused;
-};
 
 static AboutCommandProcessor* AboutCommandProcessor_instance;
 
-AboutCommandProcessor* AboutCommandProcessor_new(void);
-AboutCommandProcessor* AboutCommandProcessor_getInstance(void);
-void AboutCommandProcessor_process(AboutCommandProcessor* this, CommandListener* midletCommandListener, Command* command, Canvas* canvas);
 
-// Static fields with runtime initializers: call this once at startup
+
 void AboutCommandProcessor_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     AboutCommandProcessor_instance = AboutCommandProcessor_new();
 }
 
+void AboutCommandProcessor_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("AboutCommandProcessor", nullptr);
+    java_register_method("AboutCommandProcessor", "process", (void*) AboutCommandProcessor_process);
+}
+
 void AboutCommandProcessor_init(AboutCommandProcessor* this) {
+    AboutCommandProcessor_register();
 }
 
 AboutCommandProcessor* AboutCommandProcessor_new(void) {
-    AboutCommandProcessor* this = calloc(1, sizeof(AboutCommandProcessor));
+    AboutCommandProcessor* this = java_object_alloc(sizeof(AboutCommandProcessor), "AboutCommandProcessor");
     AboutCommandProcessor_init(this);
     return this;
 }
 
 
 AboutCommandProcessor* AboutCommandProcessor_getInstance(void) {
-        return AboutCommandProcessor_instance;
+        return (AboutCommandProcessor_staticInit(), AboutCommandProcessor_instance);
 }
 
 

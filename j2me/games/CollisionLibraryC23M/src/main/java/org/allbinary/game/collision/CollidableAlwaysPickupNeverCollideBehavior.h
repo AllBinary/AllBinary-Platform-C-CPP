@@ -1,0 +1,92 @@
+#ifndef ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEALWAYSPICKUPNEVERCOLLIDEBEHAVIOR_H
+#define ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEALWAYSPICKUPNEVERCOLLIDEBEHAVIOR_H
+/*
+ *
+ * AllBinary Open License Version 1
+ * Copyright (c) 2011 AllBinary
+ * 
+ * By agreeing to this license you and any business entity you represent are
+ * legally bound to the AllBinary Open License Version 1 legal agreement.
+ * 
+ * You may obtain the AllBinary Open License Version 1 legal agreement from
+ * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+ * 
+ * Created By: Travis Berthelot
+ *  
+ */
+// Generated Code Do Not Modify
+// package org.allbinary.game.collision
+
+#include <ctype.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include "allbinary_java.h"
+typedef struct CollidableNeverCollideBehavior CollidableNeverCollideBehavior;
+typedef struct CollisionTypeFactory CollisionTypeFactory;
+typedef struct CollisionType CollisionType;
+typedef struct AllBinaryLayer AllBinaryLayer;
+#include "org/allbinary/game/collision/CollidableNeverCollideBehavior.h"
+
+typedef struct CollidableAlwaysPickupNeverCollideBehavior CollidableAlwaysPickupNeverCollideBehavior;
+struct CollidableAlwaysPickupNeverCollideBehavior {
+    CollidableNeverCollideBehavior base;
+};
+
+
+CollidableAlwaysPickupNeverCollideBehavior* CollidableAlwaysPickupNeverCollideBehavior_new(void);
+
+void CollidableAlwaysPickupNeverCollideBehavior_init(CollidableAlwaysPickupNeverCollideBehavior* this);
+
+CollisionType* CollidableAlwaysPickupNeverCollideBehavior_getCollisionTypeWith(CollidableAlwaysPickupNeverCollideBehavior* this, AllBinaryLayer* layerInterface);
+#define CollidableAlwaysPickupNeverCollideBehavior_new0 CollidableAlwaysPickupNeverCollideBehavior_new
+#define CollidableAlwaysPickupNeverCollideBehavior_init0 CollidableAlwaysPickupNeverCollideBehavior_init
+#ifndef CollidableAlwaysPickupNeverCollideBehavior_isCollision
+#define CollidableAlwaysPickupNeverCollideBehavior_isCollision CollidableNeverCollideBehavior_isCollision
+#endif
+#ifndef CollidableAlwaysPickupNeverCollideBehavior_collide
+#define CollidableAlwaysPickupNeverCollideBehavior_collide CollidableNeverCollideBehavior_collide
+#endif
+#ifndef CollidableAlwaysPickupNeverCollideBehavior_collideInterface
+#define CollidableAlwaysPickupNeverCollideBehavior_collideInterface CollidableNeverCollideBehavior_collideInterface
+#endif
+#ifndef CollidableAlwaysPickupNeverCollideBehavior_isCollisionInterface
+#define CollidableAlwaysPickupNeverCollideBehavior_isCollisionInterface CollidableNeverCollideBehavior_isCollisionInterface
+#endif
+#ifndef CollidableAlwaysPickupNeverCollideBehavior_update
+#define CollidableAlwaysPickupNeverCollideBehavior_update CollidableBaseBehavior_update
+#endif
+#ifndef CollidableAlwaysPickupNeverCollideBehavior_getName
+#define CollidableAlwaysPickupNeverCollideBehavior_getName CollidableBaseBehavior_getName
+#endif
+#ifndef CollidableAlwaysPickupNeverCollideBehavior_setCollidable
+#define CollidableAlwaysPickupNeverCollideBehavior_setCollidable CollidableBaseBehavior_setCollidable
+#endif
+#ifndef CollidableAlwaysPickupNeverCollideBehavior_isCollidable
+#define CollidableAlwaysPickupNeverCollideBehavior_isCollidable CollidableBaseBehavior_isCollidable
+#endif
+#ifndef CollidableAlwaysPickupNeverCollideBehavior_collide
+#define CollidableAlwaysPickupNeverCollideBehavior_collide CollidableBaseBehavior_collide
+#endif
+#ifndef CollidableAlwaysPickupNeverCollideBehavior_isCollision
+#define CollidableAlwaysPickupNeverCollideBehavior_isCollision CollidableBaseBehavior_isCollision
+#endif
+#ifndef CollidableAlwaysPickupNeverCollideBehavior_isCollisionInterface
+#define CollidableAlwaysPickupNeverCollideBehavior_isCollisionInterface CollidableBaseBehavior_isCollisionInterface
+#endif
+#ifndef CollidableAlwaysPickupNeverCollideBehavior_collideInterface
+#define CollidableAlwaysPickupNeverCollideBehavior_collideInterface CollidableBaseBehavior_collideInterface
+#endif
+#ifndef CollidableAlwaysPickupNeverCollideBehavior_paint
+#define CollidableAlwaysPickupNeverCollideBehavior_paint CollidableBaseBehavior_paint
+#endif
+// Runs the Java static initialization of the class once. Reads of its static fields call it first.
+void CollidableAlwaysPickupNeverCollideBehavior_staticInit(void);
+// Registers the class, its superclass, and its methods for the interface calls (java_register_method)
+void CollidableAlwaysPickupNeverCollideBehavior_register(void);
+
+
+#endif // ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEALWAYSPICKUPNEVERCOLLIDEBEHAVIOR_H

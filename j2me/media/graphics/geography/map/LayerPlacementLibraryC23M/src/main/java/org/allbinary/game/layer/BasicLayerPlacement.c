@@ -1,44 +1,34 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.layer
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct BasicLayerPlacement BasicLayerPlacement;
-struct BasicLayerPlacement {
-    LayerPlacementType* layerType;
-    int32_t width;
-    int32_t height;
-};
+#include "org/allbinary/game/layer/BasicLayerPlacement.h"
+#include "org/allbinary/game/layer/LayerPlacementType.h"
 
 
-BasicLayerPlacement* BasicLayerPlacement_new(LayerPlacementType* layerType, int32_t width, int32_t height);
 
-void BasicLayerPlacement_init(BasicLayerPlacement* this, LayerPlacementType* layerType, int32_t width, int32_t height);
-int32_t BasicLayerPlacement_getWidth(BasicLayerPlacement* this);
-int32_t BasicLayerPlacement_getHeight(BasicLayerPlacement* this);
-LayerPlacementType* BasicLayerPlacement_getLayerType(BasicLayerPlacement* this);
-void BasicLayerPlacement_setLayerType(BasicLayerPlacement* this, LayerPlacementType* layerType);
+
+
+
+
+
+void BasicLayerPlacement_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void BasicLayerPlacement_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("BasicLayerPlacement", nullptr);
+    java_register_method("BasicLayerPlacement", "getWidth", (void*) BasicLayerPlacement_getWidth);
+    java_register_method("BasicLayerPlacement", "getHeight", (void*) BasicLayerPlacement_getHeight);
+    java_register_method("BasicLayerPlacement", "getLayerType", (void*) BasicLayerPlacement_getLayerType);
+    java_register_method("BasicLayerPlacement", "setLayerType", (void*) BasicLayerPlacement_setLayerType);
+}
 
 static void BasicLayerPlacement_initFields(BasicLayerPlacement* this) {
     
@@ -48,6 +38,7 @@ static void BasicLayerPlacement_initFields(BasicLayerPlacement* this) {
 
 
 void BasicLayerPlacement_init(BasicLayerPlacement* this, LayerPlacementType* layerType, int32_t width, int32_t height) {
+    BasicLayerPlacement_register();
     BasicLayerPlacement_initFields(this);
         this->layerType = layerType;
         this->width = width;
@@ -55,7 +46,7 @@ void BasicLayerPlacement_init(BasicLayerPlacement* this, LayerPlacementType* lay
 }
 
 BasicLayerPlacement* BasicLayerPlacement_new(LayerPlacementType* layerType, int32_t width, int32_t height) {
-    BasicLayerPlacement* this = calloc(1, sizeof(BasicLayerPlacement));
+    BasicLayerPlacement* this = java_object_alloc(sizeof(BasicLayerPlacement), "BasicLayerPlacement");
     BasicLayerPlacement_init(this, layerType, width, height);
     return this;
 }

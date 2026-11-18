@@ -1,343 +1,139 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2026 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.io.file
+#include "org/allbinary/logic/io/file/CommonDataFileStrings.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct CommonDataFileStrings CommonDataFileStrings;
-struct CommonDataFileStrings {
-    const char* XML;
-    const char* _XML;
-    const char* JSON;
-    const char* _JSON;
-    const char* XSL;
-    const char* _XSL;
-    const char* JAVA;
-    const char* _JAVA;
-    const char* KT;
-    const char* _KT;
-    const char* TS;
-    const char* _TS;
-    const char* JS;
-    const char* _JS;
-    const char* CPP;
-    const char* _CPP;
-    const char* H;
-    const char* _H;
-    const char* PY;
-    const char* _PY;
-    const char* GO;
-    const char* _GO;
-    const char* CS;
-    const char* _CS;
-    const char* ADB;
-    const char* _ADB;
-    const char* ADS;
-    const char* _ADS;
-    const char* ADA;
-    const char* _ADA;
-    const char* RUST;
-    const char* _RUST;
-    const char* C;
-    const char* _C;
-    const char* CSHARP;
-    const char* _CSHARP;
-    const char* ERL;
-    const char* _ERL;
-    const char* HS;
-    const char* _HS;
-    const char* HX;
-    const char* _HX;
-    const char* LUA;
-    const char* _LUA;
-    const char* PAS;
-    const char* _PAS;
-    const char* ML;
-    const char* _ML;
-    const char* PL;
-    const char* _PL;
-    const char* RB;
-    const char* _RB;
-    const char* ZIG;
-    const char* _ZIG;
-    const char* PM;
-    const char* _PM;
-    const char* KTS;
-    const char* _KTS;
-    const char* CBL;
-    const char* _CBL;
-    const char* COB;
-    const char* _COB;
-    const char* F90;
-    const char* _F90;
-    const char* F;
-    const char* _F;
-    const char* DART;
-    const char* _DART;
-    const char* EX;
-    const char* _EX;
-    const char* EXS;
-    const char* _EXS;
-    const char* M;
-    const char* _M;
-    const char* SWIFT;
-    const char* _SWIFT;
-    const char* ASM;
-    const char* _ASM;
-    const char* S;
-    const char* _S;
-    const char* NIM;
-    const char* _NIM;
-    const char* VALA;
-    const char* _VALA;
-    const char* LISP;
-    const char* _LISP;
-    const char* RKT;
-    const char* _RKT;
-    const char* SCM;
-    const char* _SCM;
-    const char* AS;
-    const char* _AS;
-    const char* OBX;
-    const char* _OBX;
-    const char* SCALA;
-    const char* _SCALA;
-    const char* GROOVY;
-    const char* _GROOVY;
-    const char* JL;
-    const char* _JL;
-    const char* TCL;
-    const char* _TCL;
-    const char* WREN;
-    const char* _WREN;
-    const char* JANET;
-    const char* _JANET;
-    const char* GR;
-    const char* _GR;
-    const char* ELM;
-    const char* _ELM;
-    const char* KOTLIN;
-    const char* TYPESCRIPT;
-    const char* JAVASCRIPT;
-    const char* C_PLUS_PLUS;
-    const char* PYTHON;
-    const char* C_SHARP;
-    const char* RUST_NAME;
-    const char* RUBY;
-    const char* PERL;
-    const char* OBJECT_PASCAL;
-    const char* OCAML;
-    const char* HASKELL;
-    const char* HAXE;
-    const char* ERLANG;
-    const char* COBOL;
-    const char* FORTRAN;
-    const char* ELIXIR;
-    const char* OBJECTIVE_C;
-    const char* RACKET;
-    const char* SCHEME;
-    const char* ACTIONSCRIPT;
-    const char* OBERON_PLUS;
-    const char* JULIA;
-    const char* GRAIN;
-    const char* CPLUSPLUS;
-    const char* GOLANG;
-    const char* CSHARP_ALIAS;
-    const char* C23;
-    const char* PASCAL;
-    const char* OBJECT_PASCAL_ALIAS;
-    const char* OBJC;
-    const char* OBJECTIVE_C_ALIAS;
-    const char* ASSEMBLY;
-    const char* COMMON_LISP;
-    const char* OBERON;
-    const char* OBERON_PLUS_ALIAS;
-    const char* KT_SHORT_NAME;
-    const char* TS_SHORT_NAME;
-    const char* JS_SHORT_NAME;
-    const char* CPP_SHORT_NAME;
-    const char* PY_SHORT_NAME;
-    const char* GO_SHORT_NAME;
-    const char* CS_SHORT_NAME;
-    const char* ADA_SHORT_NAME;
-    const char* RUST_SHORT_NAME;
-    const char* LUA_SHORT_NAME;
-    const char* C_SHORT_NAME;
-    const char* ZIG_SHORT_NAME;
-    const char* RB_SHORT_NAME;
-    const char* PL_SHORT_NAME;
-    const char* PAS_SHORT_NAME;
-    const char* ML_SHORT_NAME;
-    const char* HS_SHORT_NAME;
-    const char* HX_SHORT_NAME;
-    const char* ERL_SHORT_NAME;
-    const char* CBL_SHORT_NAME;
-    const char* F90_SHORT_NAME;
-    const char* DART_SHORT_NAME;
-    const char* EX_SHORT_NAME;
-    const char* OBJC_SHORT_NAME;
-    const char* SWIFT_SHORT_NAME;
-    const char* ASM_SHORT_NAME;
-    const char* NIM_SHORT_NAME;
-    const char* VALA_SHORT_NAME;
-    const char* LISP_SHORT_NAME;
-    const char* RKT_SHORT_NAME;
-    const char* SCM_SHORT_NAME;
-    const char* AS_SHORT_NAME;
-    const char* OBX_SHORT_NAME;
-    const char* SCALA_SHORT_NAME;
-    const char* GROOVY_SHORT_NAME;
-    const char* JL_SHORT_NAME;
-    const char* TCL_SHORT_NAME;
-    const char* WREN_SHORT_NAME;
-    const char* JANET_SHORT_NAME;
-    const char* GR_SHORT_NAME;
-    const char* ELM_SHORT_NAME;
-    const char* UNCRYPTED_EXTENSION;
-    const char* ENCRYPTED_EXTENSION;
-};
 
 static CommonDataFileStrings* CommonDataFileStrings_instance;
 
-CommonDataFileStrings* CommonDataFileStrings_new(void);
-CommonDataFileStrings* CommonDataFileStrings_getInstance(void);
 
-// Static fields with runtime initializers: call this once at startup
 void CommonDataFileStrings_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     CommonDataFileStrings_instance = CommonDataFileStrings_new();
+}
+
+void CommonDataFileStrings_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("CommonDataFileStrings", nullptr);
 }
 
 static void CommonDataFileStrings_initFields(CommonDataFileStrings* this) {
     this->XML = "xml";
-    this->_XML = ".xml";
+    this->_XML_ = ".xml";
     this->JSON = "json";
-    this->_JSON = ".json";
+    this->_JSON_ = ".json";
     this->XSL = "xsl";
-    this->_XSL = ".xsl";
+    this->_XSL_ = ".xsl";
     this->JAVA = "java";
-    this->_JAVA = ".java";
+    this->_JAVA_ = ".java";
     this->KT = "kt";
-    this->_KT = ".kt";
+    this->_KT_ = ".kt";
     this->TS = "ts";
-    this->_TS = ".ts";
+    this->_TS_ = ".ts";
     this->JS = "js";
-    this->_JS = ".js";
+    this->_JS_ = ".js";
     this->CPP = "cpp";
-    this->_CPP = ".cpp";
+    this->_CPP_ = ".cpp";
     this->H = "h";
-    this->_H = ".h";
+    this->_H_ = ".h";
     this->PY = "py";
-    this->_PY = ".py";
+    this->_PY_ = ".py";
     this->GO = "go";
-    this->_GO = ".go";
+    this->_GO_ = ".go";
     this->CS = "cs";
-    this->_CS = ".cs";
+    this->_CS_ = ".cs";
     this->ADB = "adb";
-    this->_ADB = ".adb";
+    this->_ADB_ = ".adb";
     this->ADS = "ads";
-    this->_ADS = ".ads";
+    this->_ADS_ = ".ads";
     this->ADA = "ada";
-    this->_ADA = ".ada";
+    this->_ADA_ = ".ada";
     this->RUST = "rs";
-    this->_RUST = ".rs";
+    this->_RUST_ = ".rs";
     this->C = "c";
-    this->_C = ".c";
+    this->_C_ = ".c";
     this->CSHARP = "cs";
-    this->_CSHARP = ".cs";
+    this->_CSHARP_ = ".cs";
     this->ERL = "erl";
-    this->_ERL = ".erl";
+    this->_ERL_ = ".erl";
     this->HS = "hs";
-    this->_HS = ".hs";
+    this->_HS_ = ".hs";
     this->HX = "hx";
-    this->_HX = ".hx";
+    this->_HX_ = ".hx";
     this->LUA = "lua";
-    this->_LUA = ".lua";
+    this->_LUA_ = ".lua";
     this->PAS = "pas";
-    this->_PAS = ".pas";
+    this->_PAS_ = ".pas";
     this->ML = "ml";
-    this->_ML = ".ml";
+    this->_ML_ = ".ml";
     this->PL = "pl";
-    this->_PL = ".pl";
+    this->_PL_ = ".pl";
     this->RB = "rb";
-    this->_RB = ".rb";
+    this->_RB_ = ".rb";
     this->ZIG = "zig";
-    this->_ZIG = ".zig";
+    this->_ZIG_ = ".zig";
     this->PM = "pm";
-    this->_PM = ".pm";
+    this->_PM_ = ".pm";
     this->KTS = "kts";
-    this->_KTS = ".kts";
+    this->_KTS_ = ".kts";
     this->CBL = "cbl";
-    this->_CBL = ".cbl";
+    this->_CBL_ = ".cbl";
     this->COB = "cob";
-    this->_COB = ".cob";
+    this->_COB_ = ".cob";
     this->F90 = "f90";
-    this->_F90 = ".f90";
+    this->_F90_ = ".f90";
     this->F = "f";
-    this->_F = ".f";
+    this->_F_ = ".f";
     this->DART = "dart";
-    this->_DART = ".dart";
+    this->_DART_ = ".dart";
     this->EX = "ex";
-    this->_EX = ".ex";
+    this->_EX_ = ".ex";
     this->EXS = "exs";
-    this->_EXS = ".exs";
+    this->_EXS_ = ".exs";
     this->M = "m";
-    this->_M = ".m";
+    this->_M_ = ".m";
     this->SWIFT = "swift";
-    this->_SWIFT = ".swift";
+    this->_SWIFT_ = ".swift";
     this->ASM = "asm";
-    this->_ASM = ".asm";
+    this->_ASM_ = ".asm";
     this->S = "s";
-    this->_S = ".s";
+    this->_S_ = ".s";
     this->NIM = "nim";
-    this->_NIM = ".nim";
+    this->_NIM_ = ".nim";
     this->VALA = "vala";
-    this->_VALA = ".vala";
+    this->_VALA_ = ".vala";
     this->LISP = "lisp";
-    this->_LISP = ".lisp";
+    this->_LISP_ = ".lisp";
     this->RKT = "rkt";
-    this->_RKT = ".rkt";
+    this->_RKT_ = ".rkt";
     this->SCM = "scm";
-    this->_SCM = ".scm";
+    this->_SCM_ = ".scm";
     this->AS = "as";
-    this->_AS = ".as";
+    this->_AS_ = ".as";
     this->OBX = "obx";
-    this->_OBX = ".obx";
+    this->_OBX_ = ".obx";
     this->SCALA = "scala";
-    this->_SCALA = ".scala";
+    this->_SCALA_ = ".scala";
     this->GROOVY = "groovy";
-    this->_GROOVY = ".groovy";
+    this->_GROOVY_ = ".groovy";
     this->JL = "jl";
-    this->_JL = ".jl";
+    this->_JL_ = ".jl";
     this->TCL = "tcl";
-    this->_TCL = ".tcl";
+    this->_TCL_ = ".tcl";
     this->WREN = "wren";
-    this->_WREN = ".wren";
+    this->_WREN_ = ".wren";
     this->JANET = "janet";
-    this->_JANET = ".janet";
+    this->_JANET_ = ".janet";
     this->GR = "gr";
-    this->_GR = ".gr";
+    this->_GR_ = ".gr";
     this->ELM = "elm";
-    this->_ELM = ".elm";
+    this->_ELM_ = ".elm";
     this->KOTLIN = "kotlin";
     this->TYPESCRIPT = "typescript";
     this->JAVASCRIPT = "javascript";
@@ -420,17 +216,18 @@ static void CommonDataFileStrings_initFields(CommonDataFileStrings* this) {
 }
 
 void CommonDataFileStrings_init(CommonDataFileStrings* this) {
+    CommonDataFileStrings_register();
     CommonDataFileStrings_initFields(this);
 }
 
 CommonDataFileStrings* CommonDataFileStrings_new(void) {
-    CommonDataFileStrings* this = calloc(1, sizeof(CommonDataFileStrings));
+    CommonDataFileStrings* this = java_object_alloc(sizeof(CommonDataFileStrings), "CommonDataFileStrings");
     CommonDataFileStrings_init(this);
     return this;
 }
 
 
 CommonDataFileStrings* CommonDataFileStrings_getInstance(void) {
-        return CommonDataFileStrings_instance;
+        return (CommonDataFileStrings_staticInit(), CommonDataFileStrings_instance);
 }
 

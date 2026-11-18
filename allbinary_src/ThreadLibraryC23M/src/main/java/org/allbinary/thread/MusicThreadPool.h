@@ -50,6 +50,38 @@ void MusicThreadPool_runTask(MusicThreadPool* this, Runnable* task);
 void MusicThreadPool_startTask(MusicThreadPool* this, Runnable* task);
 
 void MusicThreadPool_completedTask(MusicThreadPool* this, Runnable* task);
+#define MusicThreadPool_new3 MusicThreadPool_new
+#define MusicThreadPool_init3 MusicThreadPool_init
+#ifndef MusicThreadPool_runAPriorityTask
+#define MusicThreadPool_runAPriorityTask ThreadPool_runAPriorityTask
+#endif
+#ifndef MusicThreadPool_runTaskWithPriority
+#define MusicThreadPool_runTaskWithPriority ThreadPool_runTaskWithPriority
+#endif
+#ifndef MusicThreadPool_getTask
+#define MusicThreadPool_getTask ThreadPool_getTask
+#endif
+#ifndef MusicThreadPool_clear
+#define MusicThreadPool_clear ThreadPool_clear
+#endif
+#ifndef MusicThreadPool_close
+#define MusicThreadPool_close ThreadPool_close
+#endif
+#ifndef MusicThreadPool_join
+#define MusicThreadPool_join ThreadPool_join
+#endif
+#ifndef MusicThreadPool_isBusy
+#define MusicThreadPool_isBusy ThreadPool_isBusy
+#endif
+#ifndef MusicThreadPool_threadStarted
+#define MusicThreadPool_threadStarted ThreadPool_threadStarted
+#endif
+#ifndef MusicThreadPool_threadStopped
+#define MusicThreadPool_threadStopped ThreadPool_threadStopped
+#endif
+#ifndef MusicThreadPool_createName
+#define MusicThreadPool_createName ThreadPool_createName
+#endif
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void MusicThreadPool_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

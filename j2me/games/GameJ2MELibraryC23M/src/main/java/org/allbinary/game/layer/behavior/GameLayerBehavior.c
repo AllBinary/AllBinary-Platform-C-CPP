@@ -1,42 +1,31 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2022 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.layer.behavior
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-
-typedef struct GameLayerBehavior GameLayerBehavior;
-struct GameLayerBehavior {
-    char unused;
-};
+#include "org/allbinary/game/layer/behavior/GameLayerBehavior.h"
 
 
-GameLayerBehavior* GameLayerBehavior_new(void);
+
+void GameLayerBehavior_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void GameLayerBehavior_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GameLayerBehavior", nullptr);
+}
 
 void GameLayerBehavior_init(GameLayerBehavior* this) {
+    GameLayerBehavior_register();
 }
 
 GameLayerBehavior* GameLayerBehavior_new(void) {
-    GameLayerBehavior* this = calloc(1, sizeof(GameLayerBehavior));
+    GameLayerBehavior* this = java_object_alloc(sizeof(GameLayerBehavior), "GameLayerBehavior");
     GameLayerBehavior_init(this);
     return this;
 }

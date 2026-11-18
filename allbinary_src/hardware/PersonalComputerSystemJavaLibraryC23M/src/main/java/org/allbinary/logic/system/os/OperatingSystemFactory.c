@@ -15,6 +15,42 @@
 #include "org/allbinary/logic/system/os/GenericOperatingSystem.h"
 #include "org/allbinary/logic/system/os/OperatingSystems.h"
 #include "org/allbinary/logic/system/os/SystemProperties.h"
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h")
+#include "org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/system/os/solaris/SolarisOperatingSystemFactory.h")
+#include "org/allbinary/logic/system/os/solaris/SolarisOperatingSystemFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h")
+#include "org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/system/os/windows/WindowsOperatingSystemFactory.h")
+#include "org/allbinary/logic/system/os/windows/WindowsOperatingSystemFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h")
+#include "org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/system/os/linux/LinuxOperatingSystemFactory.h")
+#include "org/allbinary/logic/system/os/linux/LinuxOperatingSystemFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h")
+#include "org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h"
+#endif
 
 
 static OperatingSystemFactory* OperatingSystemFactory_instance;
@@ -78,17 +114,17 @@ GenericOperatingSystem* OperatingSystemFactory_getOperatingSystemInstance(Operat
                 LogUtil_putF(this->logUtil, java_concat("osName: ", osName), this, this->commonStrings->GET_INSTANCE);
                 this->hasDetected = true;
                 if (java_string_indexOf(osName, operatingSystems->LINUX) >= 0) {
-                    if (JAVA_CALL((LogConfigTypes_staticInit(), LogConfigTypes_LOGGING), contains, LogConfigTypeFactory_getInstance()->FACTORYERROR)) {
+                    if (BasicArrayList_contains((LogConfigTypes_staticInit(), LogConfigTypes_LOGGING), LogConfigTypeFactory_getInstance()->FACTORYERROR)) {
                         LogUtil_putF(this->logUtil, "Found a Linux OS", this, this->commonStrings->GET_INSTANCE);
                     }
                     this->genericOperatingSystem = LinuxOperatingSystemFactory_getOperatingSystemInstance(LinuxOperatingSystemFactory_getInstance());
                 } else if (java_string_indexOf(osName, operatingSystems->WINDOWS) >= 0) {
-                    if (JAVA_CALL((LogConfigTypes_staticInit(), LogConfigTypes_LOGGING), contains, LogConfigTypeFactory_getInstance()->FACTORYERROR)) {
+                    if (BasicArrayList_contains((LogConfigTypes_staticInit(), LogConfigTypes_LOGGING), LogConfigTypeFactory_getInstance()->FACTORYERROR)) {
                         LogUtil_putF(this->logUtil, "Found a Windows OS", this, this->commonStrings->GET_INSTANCE);
                     }
                     this->genericOperatingSystem = WindowsOperatingSystemFactory_getOperatingSystemInstance(WindowsOperatingSystemFactory_getInstance());
                 } else if (java_string_indexOf(osName, operatingSystems->SOLARIS) >= 0) {
-                    if (JAVA_CALL((LogConfigTypes_staticInit(), LogConfigTypes_LOGGING), contains, LogConfigTypeFactory_getInstance()->FACTORYERROR)) {
+                    if (BasicArrayList_contains((LogConfigTypes_staticInit(), LogConfigTypes_LOGGING), LogConfigTypeFactory_getInstance()->FACTORYERROR)) {
                         LogUtil_putF(this->logUtil, "Found a Solaris OS", this, this->commonStrings->GET_INSTANCE);
                     }
                     this->genericOperatingSystem = SolarisOperatingSystemFactory_getOperatingSystemInstance(SolarisOperatingSystemFactory_getInstance());
@@ -101,7 +137,7 @@ GenericOperatingSystem* OperatingSystemFactory_getOperatingSystemInstance(Operat
             }
             return this->genericOperatingSystem;
         } JAVA_CATCH(Exception, e) {
-            if (JAVA_CALL((LogConfigTypes_staticInit(), LogConfigTypes_LOGGING), contains, LogConfigTypeFactory_getInstance()->FACTORYERROR)) {
+            if (BasicArrayList_contains((LogConfigTypes_staticInit(), LogConfigTypes_LOGGING), LogConfigTypeFactory_getInstance()->FACTORYERROR)) {
                 LogUtil_put(this->logUtil, this->commonStrings->EXCEPTION, this, this->commonStrings->GET_INSTANCE, e);
             }
             return (NoOperatingSystem_staticInit(), NoOperatingSystem_NO_OPERATING_SYSTEM);

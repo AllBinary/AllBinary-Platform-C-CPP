@@ -1,59 +1,44 @@
-/*
- * 
- * AllBinary Open License Version 1 
- * Copyright (c) 2022 AllBinary 
- *  
- * By agreeing to this license you and any business entity you represent are 
- * legally bound to the AllBinary Open License Version 1 legal agreement. 
- *  
- * You may obtain the AllBinary Open License Version 1 legal agreement from 
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
- *  
- * Created By: Travis Berthelot 
- *   
- */
 // Generated Code Do Not Modify
-// package org.allbinary.logic.system
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "java/io/InputStream.h"
+#include "org/allbinary/logic/system/PlatformAssetManager.h"
 #include "org/allbinary/data/resource/ResourceUtil.h"
 
-typedef struct PlatformAssetManager PlatformAssetManager;
-struct PlatformAssetManager {
-    char unused;
-};
 
 static PlatformAssetManager* PlatformAssetManager_instance;
 
-PlatformAssetManager* PlatformAssetManager_new(void);
-PlatformAssetManager* PlatformAssetManager_getInstance(void);
-InputStream* PlatformAssetManager_getResourceAsStream(PlatformAssetManager* this, const char* resource);
 
-// Static fields with runtime initializers: call this once at startup
+
 void PlatformAssetManager_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     PlatformAssetManager_instance = PlatformAssetManager_new();
 }
 
+void PlatformAssetManager_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("PlatformAssetManager", nullptr);
+    java_register_method("PlatformAssetManager", "getResourceAsStream", (void*) PlatformAssetManager_getResourceAsStream);
+}
+
 void PlatformAssetManager_init(PlatformAssetManager* this) {
+    PlatformAssetManager_register();
 }
 
 PlatformAssetManager* PlatformAssetManager_new(void) {
-    PlatformAssetManager* this = calloc(1, sizeof(PlatformAssetManager));
+    PlatformAssetManager* this = java_object_alloc(sizeof(PlatformAssetManager), "PlatformAssetManager");
     PlatformAssetManager_init(this);
     return this;
 }
 
 
 PlatformAssetManager* PlatformAssetManager_getInstance(void) {
-        return PlatformAssetManager_instance;
+        return (PlatformAssetManager_staticInit(), PlatformAssetManager_instance);
 }
 
 

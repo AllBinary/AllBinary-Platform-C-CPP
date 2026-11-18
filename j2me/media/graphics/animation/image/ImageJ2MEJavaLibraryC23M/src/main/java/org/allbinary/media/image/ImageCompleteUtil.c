@@ -1,58 +1,44 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.media.image
+#include "org/allbinary/media/image/ImageCompleteUtil.h"
+#include "javax/microedition/lcdui/Image.h"
 
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/Image.h"
-
-typedef struct ImageCompleteUtil ImageCompleteUtil;
-struct ImageCompleteUtil {
-    char unused;
-};
 
 static ImageCompleteUtil* ImageCompleteUtil_instance;
 
-ImageCompleteUtil* ImageCompleteUtil_new(void);
-ImageCompleteUtil* ImageCompleteUtil_getInstance(void);
-void ImageCompleteUtil_waitForImage(ImageCompleteUtil* this, Image* image, const char* name);
 
-// Static fields with runtime initializers: call this once at startup
+
 void ImageCompleteUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     ImageCompleteUtil_instance = ImageCompleteUtil_new();
 }
 
+void ImageCompleteUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ImageCompleteUtil", nullptr);
+    java_register_method("ImageCompleteUtil", "waitForImage", (void*) ImageCompleteUtil_waitForImage);
+}
+
 void ImageCompleteUtil_init(ImageCompleteUtil* this) {
+    ImageCompleteUtil_register();
 }
 
 ImageCompleteUtil* ImageCompleteUtil_new(void) {
-    ImageCompleteUtil* this = calloc(1, sizeof(ImageCompleteUtil));
+    ImageCompleteUtil* this = java_object_alloc(sizeof(ImageCompleteUtil), "ImageCompleteUtil");
     ImageCompleteUtil_init(this);
     return this;
 }
 
 
 ImageCompleteUtil* ImageCompleteUtil_getInstance(void) {
-        return ImageCompleteUtil_instance;
+        return (ImageCompleteUtil_staticInit(), ImageCompleteUtil_instance);
 }
 
 

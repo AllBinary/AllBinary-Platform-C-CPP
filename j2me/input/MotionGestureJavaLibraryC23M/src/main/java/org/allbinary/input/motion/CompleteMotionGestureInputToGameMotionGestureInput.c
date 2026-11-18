@@ -1,28 +1,5 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.input.motion
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/input/motion/CompleteMotionGestureInputToGameMotionGestureInput.h"
 #include "org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h"
 #include "org/allbinary/input/motion/gesture/configuration/MotionGestureConfiguration.h"
 #include "org/allbinary/input/motion/gesture/configuration/MotionGestureConfigurationFactory.h"
@@ -41,20 +18,28 @@
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
 
-typedef struct CompleteMotionGestureInputToGameMotionGestureInput CompleteMotionGestureInputToGameMotionGestureInput;
-struct CompleteMotionGestureInputToGameMotionGestureInput {
-    LogUtil* logUtil;
-};
 
 static CompleteMotionGestureInputToGameMotionGestureInput* CompleteMotionGestureInputToGameMotionGestureInput_instance;
 
-CompleteMotionGestureInputToGameMotionGestureInput* CompleteMotionGestureInputToGameMotionGestureInput_new(void);
-CompleteMotionGestureInputToGameMotionGestureInput* CompleteMotionGestureInputToGameMotionGestureInput_getInstance(void);
-void CompleteMotionGestureInputToGameMotionGestureInput_init(CompleteMotionGestureInputToGameMotionGestureInput* this);
 
-// Static fields with runtime initializers: call this once at startup
+
 void CompleteMotionGestureInputToGameMotionGestureInput_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     CompleteMotionGestureInputToGameMotionGestureInput_instance = CompleteMotionGestureInputToGameMotionGestureInput_new();
+}
+
+void CompleteMotionGestureInputToGameMotionGestureInput_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("CompleteMotionGestureInputToGameMotionGestureInput", nullptr);
+    java_register_method("CompleteMotionGestureInputToGameMotionGestureInput", "init", (void*) CompleteMotionGestureInputToGameMotionGestureInput_initMethod);
 }
 
 static void CompleteMotionGestureInputToGameMotionGestureInput_initFields(CompleteMotionGestureInputToGameMotionGestureInput* this) {
@@ -62,22 +47,23 @@ static void CompleteMotionGestureInputToGameMotionGestureInput_initFields(Comple
 }
 
 void CompleteMotionGestureInputToGameMotionGestureInput_init(CompleteMotionGestureInputToGameMotionGestureInput* this) {
+    CompleteMotionGestureInputToGameMotionGestureInput_register();
     CompleteMotionGestureInputToGameMotionGestureInput_initFields(this);
 }
 
 CompleteMotionGestureInputToGameMotionGestureInput* CompleteMotionGestureInputToGameMotionGestureInput_new(void) {
-    CompleteMotionGestureInputToGameMotionGestureInput* this = calloc(1, sizeof(CompleteMotionGestureInputToGameMotionGestureInput));
+    CompleteMotionGestureInputToGameMotionGestureInput* this = java_object_alloc(sizeof(CompleteMotionGestureInputToGameMotionGestureInput), "CompleteMotionGestureInputToGameMotionGestureInput");
     CompleteMotionGestureInputToGameMotionGestureInput_init(this);
     return this;
 }
 
 
 CompleteMotionGestureInputToGameMotionGestureInput* CompleteMotionGestureInputToGameMotionGestureInput_getInstance(void) {
-        return CompleteMotionGestureInputToGameMotionGestureInput_instance;
+        return (CompleteMotionGestureInputToGameMotionGestureInput_staticInit(), CompleteMotionGestureInputToGameMotionGestureInput_instance);
 }
 
 
-void CompleteMotionGestureInputToGameMotionGestureInput_init(CompleteMotionGestureInputToGameMotionGestureInput* this) {
+void CompleteMotionGestureInputToGameMotionGestureInput_initMethod(CompleteMotionGestureInputToGameMotionGestureInput* this) {
         CommonStrings* commonStrings = CommonStrings_getInstance();
         JAVA_TRY {
             PreLogUtil_put("Compound Motion Gestures", this, commonStrings->INIT);

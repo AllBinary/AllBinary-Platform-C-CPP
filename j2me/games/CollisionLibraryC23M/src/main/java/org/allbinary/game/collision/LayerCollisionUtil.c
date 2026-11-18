@@ -1,49 +1,39 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.collision
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/collision/LayerCollisionUtil.h"
 #include "org/allbinary/game/configuration/feature/Features.h"
 #include "org/allbinary/game/configuration/feature/GameFeatureFactory.h"
 #include "org/allbinary/graphics/opengles/OpenGLFeatureUtil.h"
 #include "org/allbinary/layer/AllBinaryLayer.h"
+#include "org/allbinary/game/collision/CollisionProcessor.h"
+#include "org/allbinary/game/collision/Collision2DProcessor.h"
+#include "org/allbinary/game/collision/CollisionThreedProcessor.h"
+#if __has_include("org/allbinary/graphics/opengles/OpenGLFeatureUtil.h")
+#include "org/allbinary/graphics/opengles/OpenGLFeatureUtil.h"
+#endif
 
-typedef struct LayerCollisionUtil LayerCollisionUtil;
-struct LayerCollisionUtil {
-    CollisionProcessor* collisionProcessor;
-};
 
 static LayerCollisionUtil* LayerCollisionUtil_instance;
 
-LayerCollisionUtil* LayerCollisionUtil_new(void);
-LayerCollisionUtil* LayerCollisionUtil_getInstance(void);
 
-void LayerCollisionUtil_init(LayerCollisionUtil* this);
-bool LayerCollisionUtil_isCollision(LayerCollisionUtil* this, AllBinaryLayer* myLayer, AllBinaryLayer* myLayer2);
 
-// Static fields with runtime initializers: call this once at startup
+
 void LayerCollisionUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     LayerCollisionUtil_instance = LayerCollisionUtil_new();
+}
+
+void LayerCollisionUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("LayerCollisionUtil", nullptr);
+    java_register_method("LayerCollisionUtil", "isCollision", (void*) LayerCollisionUtil_isCollision);
 }
 
 static void LayerCollisionUtil_initFields(LayerCollisionUtil* this) {
@@ -52,11 +42,12 @@ static void LayerCollisionUtil_initFields(LayerCollisionUtil* this) {
 
 
 LayerCollisionUtil* LayerCollisionUtil_getInstance(void) {
-        return LayerCollisionUtil_instance;
+        return (LayerCollisionUtil_staticInit(), LayerCollisionUtil_instance);
 }
 
 
 void LayerCollisionUtil_init(LayerCollisionUtil* this) {
+    LayerCollisionUtil_register();
     LayerCollisionUtil_initFields(this);
         Features* features = Features_getInstance();
         GameFeatureFactory* gameFeatureFactory = GameFeatureFactory_getInstance();
@@ -68,7 +59,7 @@ void LayerCollisionUtil_init(LayerCollisionUtil* this) {
 }
 
 LayerCollisionUtil* LayerCollisionUtil_new(void) {
-    LayerCollisionUtil* this = calloc(1, sizeof(LayerCollisionUtil));
+    LayerCollisionUtil* this = java_object_alloc(sizeof(LayerCollisionUtil), "LayerCollisionUtil");
     LayerCollisionUtil_init(this);
     return this;
 }

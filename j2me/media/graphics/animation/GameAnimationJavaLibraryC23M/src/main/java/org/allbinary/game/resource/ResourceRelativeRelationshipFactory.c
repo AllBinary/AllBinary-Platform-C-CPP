@@ -1,28 +1,5 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.resource
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/resource/ResourceRelativeRelationshipFactory.h"
 #include "org/allbinary/graphics/RelativeRelationship.h"
 #include "org/allbinary/logic/StdUtil.h"
 #include "org/allbinary/util/ABHashtable.h"
@@ -30,24 +7,42 @@
 #include "org/allbinary/util/BasicArrayListD.h"
 #include "org/allbinary/util/BasicArrayListUtil.h"
 #include "org/allbinary/game/resource/ResourceRelativeRelationshipFactoryInterface.h"
-
-typedef struct ResourceRelativeRelationshipFactory ResourceRelativeRelationshipFactory;
-struct ResourceRelativeRelationshipFactory {
-    ResourceRelativeRelationshipFactoryInterface ResourceRelativeRelationshipFactoryInterface_interface;
-    BasicArrayListUtil* basicArrayListUtil;
-    ABHashtable* hashtable;
-    bool initialized;
-};
+#if __has_include("org/allbinary/logic/StdUtil.h")
+#include "org/allbinary/logic/StdUtil.h"
+#endif
 
 
-ResourceRelativeRelationshipFactory* ResourceRelativeRelationshipFactory_new(void);
-void ResourceRelativeRelationshipFactory_init(ResourceRelativeRelationshipFactory* this, int32_t level);
-BasicArrayList* ResourceRelativeRelationshipFactory_getResourceRelativeRelationshipList(ResourceRelativeRelationshipFactory* this, const char* resource);
-void ResourceRelativeRelationshipFactory_addResourceRelativeRelationship(ResourceRelativeRelationshipFactory* this, const char* resource, RelativeRelationship* hardPoint);
-bool ResourceRelativeRelationshipFactory_isLoadingLevel(ResourceRelativeRelationshipFactory* this, int32_t level);
-bool ResourceRelativeRelationshipFactory_isFeature(ResourceRelativeRelationshipFactory* this);
-void ResourceRelativeRelationshipFactory_setInitialized(ResourceRelativeRelationshipFactory* this, bool initialized);
-bool ResourceRelativeRelationshipFactory_isInitialized(ResourceRelativeRelationshipFactory* this);
+
+
+
+
+
+
+
+
+void ResourceRelativeRelationshipFactory_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void ResourceRelativeRelationshipFactory_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("ResourceRelativeRelationshipFactory", nullptr);
+    java_register_method("ResourceRelativeRelationshipFactory", "init", (void*) ResourceRelativeRelationshipFactory_initMethod);
+    java_register_method("ResourceRelativeRelationshipFactory", "getResourceRelativeRelationshipList", (void*) ResourceRelativeRelationshipFactory_getResourceRelativeRelationshipList);
+    java_register_method("ResourceRelativeRelationshipFactory", "addResourceRelativeRelationship", (void*) ResourceRelativeRelationshipFactory_addResourceRelativeRelationship);
+    java_register_method("ResourceRelativeRelationshipFactory", "isLoadingLevel", (void*) ResourceRelativeRelationshipFactory_isLoadingLevel);
+    java_register_method("ResourceRelativeRelationshipFactory", "isFeature", (void*) ResourceRelativeRelationshipFactory_isFeature);
+    java_register_method("ResourceRelativeRelationshipFactory", "setInitialized", (void*) ResourceRelativeRelationshipFactory_setInitialized);
+    java_register_method("ResourceRelativeRelationshipFactory", "isInitialized", (void*) ResourceRelativeRelationshipFactory_isInitialized);
+}
 
 static void ResourceRelativeRelationshipFactory_initFields(ResourceRelativeRelationshipFactory* this) {
     this->basicArrayListUtil = BasicArrayListUtil_getInstance();
@@ -56,25 +51,26 @@ static void ResourceRelativeRelationshipFactory_initFields(ResourceRelativeRelat
 }
 
 void ResourceRelativeRelationshipFactory_init(ResourceRelativeRelationshipFactory* this) {
+    ResourceRelativeRelationshipFactory_register();
     ResourceRelativeRelationshipFactory_initFields(this);
 }
 
 ResourceRelativeRelationshipFactory* ResourceRelativeRelationshipFactory_new(void) {
-    ResourceRelativeRelationshipFactory* this = calloc(1, sizeof(ResourceRelativeRelationshipFactory));
+    ResourceRelativeRelationshipFactory* this = java_object_alloc(sizeof(ResourceRelativeRelationshipFactory), "ResourceRelativeRelationshipFactory");
     ResourceRelativeRelationshipFactory_init(this);
     return this;
 }
 
 
 // throws Exception
-void ResourceRelativeRelationshipFactory_init(ResourceRelativeRelationshipFactory* this, int32_t level) {
+void ResourceRelativeRelationshipFactory_initMethod(ResourceRelativeRelationshipFactory* this, int32_t level) {
         ResourceRelativeRelationshipFactory_setInitialized(this, true);
 }
 
 
 // throws Exception
 BasicArrayList* ResourceRelativeRelationshipFactory_getResourceRelativeRelationshipList(ResourceRelativeRelationshipFactory* this, const char* resource) {
-        Any* listCanBeNull = ABHashtable_get(this->hashtable, resource);
+        void* listCanBeNull = Hashtable_get(this->hashtable, resource);
         if (listCanBeNull == nullptr) {
             return BasicArrayListUtil_getImmutableInstance(this->basicArrayListUtil);
         }
@@ -89,7 +85,7 @@ void ResourceRelativeRelationshipFactory_addResourceRelativeRelationship(Resourc
             list = BasicArrayListD_new();
         }
         BasicArrayList_add(list, hardPoint);
-        ABHashtable_put(this->hashtable, resource, list);
+        Hashtable_put(this->hashtable, resource, list);
 }
 
 

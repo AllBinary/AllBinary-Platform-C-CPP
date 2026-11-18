@@ -1,32 +1,36 @@
 // Generated Code Do Not Modify
-// package org.allbinary.game.collision
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/game/collision/Collision2DProcessor.h"
 #include "org/allbinary/layer/AllBinaryLayer.h"
 #include "org/allbinary/game/collision/CollisionProcessor.h"
 
-typedef struct Collision2DProcessor Collision2DProcessor;
-struct Collision2DProcessor {
-    CollisionProcessor base;
-};
 
 
-Collision2DProcessor* Collision2DProcessor_new(void);
-bool Collision2DProcessor_isCollision(Collision2DProcessor* this, AllBinaryLayer* myLayer, AllBinaryLayer* myLayer2);
+
+void Collision2DProcessor_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
+}
+
+void Collision2DProcessor_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("Collision2DProcessor", "CollisionProcessor");
+    java_register_method("Collision2DProcessor", "isCollision", (void*) Collision2DProcessor_isCollision);
+}
 
 void Collision2DProcessor_init(Collision2DProcessor* this) {
+    Collision2DProcessor_register();
     CollisionProcessor_init(&this->base);
 }
 
 Collision2DProcessor* Collision2DProcessor_new(void) {
-    Collision2DProcessor* this = calloc(1, sizeof(Collision2DProcessor));
+    Collision2DProcessor* this = java_object_alloc(sizeof(Collision2DProcessor), "Collision2DProcessor");
     Collision2DProcessor_init(this);
     return this;
 }

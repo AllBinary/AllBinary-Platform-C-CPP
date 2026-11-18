@@ -40,6 +40,8 @@ extern const char* DomData_INDEX;
 DomData* DomData_new(void);
 
 void DomData_init(DomData* this);
+#define DomData_new0 DomData_new
+#define DomData_init0 DomData_init
 // Runs the Java static initialization of the class once. Reads of its static fields call it first.
 void DomData_staticInit(void);
 // Registers the class, its superclass, and its methods for the interface calls (java_register_method)

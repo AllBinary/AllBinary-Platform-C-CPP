@@ -1,28 +1,5 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.business.init
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
+#include "org/allbinary/business/init/LicenseInitInfoUtil.h"
 #include "org/allbinary/TsUtil.h"
 #include "org/allbinary/globals/PATH_GLOBALS.h"
 #include "org/allbinary/globals/URLGLOBALS.h"
@@ -37,30 +14,59 @@
 #include "org/allbinary/logic/system/security/crypt/DatabaseEncoder.h"
 #include "org/allbinary/logic/system/security/crypt/WeakCrypt.h"
 #include "org/allbinary/string/CommonLabels.h"
+#include "org/allbinary/business/init/LicenseInitInfo.h"
+#if __has_include("org/allbinary/globals/PATH_GLOBALS.h")
+#include "org/allbinary/globals/PATH_GLOBALS.h"
+#endif
+#if __has_include("org/allbinary/logic/io/DataOutputStreamFactory.h")
+#include "org/allbinary/logic/io/DataOutputStreamFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/io/FileStreamFactory.h")
+#include "org/allbinary/logic/io/FileStreamFactory.h"
+#endif
+#if __has_include("org/allbinary/globals/PATH_GLOBALS.h")
+#include "org/allbinary/globals/PATH_GLOBALS.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringMaker.h")
+#include "org/allbinary/logic/string/StringMaker.h"
+#endif
+#if __has_include("org/allbinary/string/CommonLabels.h")
+#include "org/allbinary/string/CommonLabels.h"
+#endif
 
-typedef struct LicenseInitInfoUtil LicenseInitInfoUtil;
-struct LicenseInitInfoUtil {
-    LogUtil* logUtil;
-    StringUtil* stringUtil;
-    const char* INITFILENAME;
-    const char* ABOUT;
-    const char* PRIVACY_POLICY;
-    const char* filePath;
-};
 
 static LicenseInitInfoUtil* LicenseInitInfoUtil_instance;
 
-LicenseInitInfoUtil* LicenseInitInfoUtil_new(void);
-LicenseInitInfoUtil* LicenseInitInfoUtil_getInstance(void);
-void LicenseInitInfoUtil_setFilePath(LicenseInitInfoUtil* this, const char* filePath);
-void LicenseInitInfoUtil_write(LicenseInitInfoUtil* this, LicenseInitInfo* initData);
-LicenseInitInfo* LicenseInitInfoUtil_read(LicenseInitInfoUtil* this);
-LicenseInitInfo* LicenseInitInfoUtil_readAgain(LicenseInitInfoUtil* this, int32_t initializeCounter);
-const char* LicenseInitInfoUtil_getFilePath(LicenseInitInfoUtil* this);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+
 void LicenseInitInfoUtil_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     LicenseInitInfoUtil_instance = LicenseInitInfoUtil_new();
+}
+
+void LicenseInitInfoUtil_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("LicenseInitInfoUtil", nullptr);
+    java_register_method("LicenseInitInfoUtil", "setFilePath", (void*) LicenseInitInfoUtil_setFilePath);
+    java_register_method("LicenseInitInfoUtil", "write", (void*) LicenseInitInfoUtil_write);
+    java_register_method("LicenseInitInfoUtil", "read", (void*) LicenseInitInfoUtil_read);
+    java_register_method("LicenseInitInfoUtil", "readAgain", (void*) LicenseInitInfoUtil_readAgain);
+    java_register_method("LicenseInitInfoUtil", "getFilePath", (void*) LicenseInitInfoUtil_getFilePath);
 }
 
 static void LicenseInitInfoUtil_initFields(LicenseInitInfoUtil* this) {
@@ -73,18 +79,19 @@ static void LicenseInitInfoUtil_initFields(LicenseInitInfoUtil* this) {
 }
 
 void LicenseInitInfoUtil_init(LicenseInitInfoUtil* this) {
+    LicenseInitInfoUtil_register();
     LicenseInitInfoUtil_initFields(this);
 }
 
 LicenseInitInfoUtil* LicenseInitInfoUtil_new(void) {
-    LicenseInitInfoUtil* this = calloc(1, sizeof(LicenseInitInfoUtil));
+    LicenseInitInfoUtil* this = java_object_alloc(sizeof(LicenseInitInfoUtil), "LicenseInitInfoUtil");
     LicenseInitInfoUtil_init(this);
     return this;
 }
 
 
 LicenseInitInfoUtil* LicenseInitInfoUtil_getInstance(void) {
-        return LicenseInitInfoUtil_instance;
+        return (LicenseInitInfoUtil_staticInit(), LicenseInitInfoUtil_instance);
 }
 
 
@@ -98,19 +105,19 @@ void LicenseInitInfoUtil_setFilePath(LicenseInitInfoUtil* this, const char* file
 // synchronized
 void LicenseInitInfoUtil_write(LicenseInitInfoUtil* this, LicenseInitInfo* initData) {
         if (this->filePath == this->stringUtil->EMPTY_STRING) {
-            this->filePath = JAVA_CALL(_URLGLOBALS, getMainPath) + JAVA_CALL(_PATH_GLOBALS, getInstance)->INIT_PATH;
+            this->filePath = java_concat(URLGLOBALS_getMainPath(), PATH_GLOBALS_getInstance()->INIT_PATH);
         }
         JAVA_TRY {
             TsUtil* tsUtil = TsUtil_getInstance();
             AbDataOutputStream* dataOutputStream = DataOutputStreamFactory_getInstance(DataOutputStreamFactory_getInstance(), this->filePath, this->INITFILENAME);
             int8_t* licenseIdCrypted = TsUtil_getByteArray(tsUtil, WeakCrypt_encrypt(WeakCrypt_new(1), LicenseInitInfo_getLicenseId(initData)));
-            AbDataOutputStream_writeUTF(dataOutputStream, DatabaseEncoder_encode(licenseIdCrypted));
+            DataOutputStream_writeUTF(dataOutputStream, DatabaseEncoder_encode(licenseIdCrypted));
             int32_t numberOfLicenseServers = LicenseInitInfo_getNumberOfServers(initData);
-            AbDataOutputStream_writeInt(dataOutputStream, numberOfLicenseServers);
+            DataOutputStream_writeInt(dataOutputStream, numberOfLicenseServers);
             int8_t* licenseServerCrypted = nullptr;
             for (int32_t index = 0; index < numberOfLicenseServers; index++) {
                 licenseServerCrypted = TsUtil_getByteArray(tsUtil, WeakCrypt_encrypt(WeakCrypt_new(3), LicenseInitInfo_getServer(initData, index)));
-                AbDataOutputStream_writeUTF(dataOutputStream, DatabaseEncoder_encode(licenseServerCrypted));
+                DataOutputStream_writeUTF(dataOutputStream, DatabaseEncoder_encode(licenseServerCrypted));
             }
         } JAVA_CATCH(Exception, e) {
             LogUtil_put(this->logUtil, java_concat("Command Failed: ", this->INITFILENAME), this, "write", e);
@@ -132,7 +139,7 @@ LicenseInitInfo* LicenseInitInfoUtil_read(LicenseInitInfoUtil* this) {
 LicenseInitInfo* LicenseInitInfoUtil_readAgain(LicenseInitInfoUtil* this, int32_t initializeCounter) {
         const char* METHOD_NAME = "readAgain";
         if (this->filePath == this->stringUtil->EMPTY_STRING) {
-            this->filePath = JAVA_CALL(_URLGLOBALS, getMainPath) + JAVA_CALL(_PATH_GLOBALS, getInstance)->INIT_PATH;
+            this->filePath = java_concat(URLGLOBALS_getMainPath(), PATH_GLOBALS_getInstance()->INIT_PATH);
         }
         JAVA_TRY {
             LogUtil_putF(this->logUtil, java_concat("LicenseInitInfo File: ", this->INITFILENAME), this, METHOD_NAME);
@@ -141,17 +148,17 @@ LicenseInitInfo* LicenseInitInfoUtil_readAgain(LicenseInitInfoUtil* this, int32_
             if (iFile != nullptr) {
                 AbDataInputStream* iData = AbDataInputStream_new(iFile);
                 LicenseInitInfo* initInfo = LicenseInitInfo_new();
-                int8_t* decodedByteArray = DatabaseEncoder_decode(AbDataInputStream_readUTF(iData));
+                int8_t* decodedByteArray = DatabaseEncoder_decode(DataInputStream_readUTF(iData));
                 const char* licenseIdDecoded = java_string_new(decodedByteArray);
                 LicenseInitInfo_setLicenseId(initInfo, WeakCrypt_decrypt(WeakCrypt_new(1), licenseIdDecoded));
-                int32_t numberOfLicenseServers = AbDataInputStream_readInt(iData);
-                const char* NEXT_FILE = JAVA_CALL(JAVA_CALL(StringMaker_append(StringMaker_new(), CommonLabels_getInstance()->NEXT), append, " License Server From File: "), toString);
+                int32_t numberOfLicenseServers = DataInputStream_readInt(iData);
+                const char* NEXT_FILE = java_string_of(StringMaker_append(StringMaker_append(StringMaker_new(), CommonLabels_getInstance()->NEXT), " License Server From File: "));
                 const char* licenseServerDecoded = nullptr;
                 for (int32_t index = 0; index < numberOfLicenseServers; index++) {
-                    decodedByteArray = DatabaseEncoder_decode(AbDataInputStream_readUTF(iData));
+                    decodedByteArray = DatabaseEncoder_decode(DataInputStream_readUTF(iData));
                     licenseServerDecoded = java_string_new(decodedByteArray);
                     LicenseInitInfo_setServer(initInfo, WeakCrypt_decrypt(WeakCrypt_new(3), licenseServerDecoded), index);
-                    LogUtil_putF(this->logUtil, java_concat(NEXT_FILE, java_string_of(LicenseInitInfo_getServer(initInfo, index))), this, METHOD_NAME);
+                    LogUtil_putF(this->logUtil, java_concat(NEXT_FILE, LicenseInitInfo_getServer(initInfo, index)), this, METHOD_NAME);
                 }
                 return initInfo;
             } else {

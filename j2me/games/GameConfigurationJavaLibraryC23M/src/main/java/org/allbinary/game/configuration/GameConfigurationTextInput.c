@@ -1,58 +1,53 @@
-/*
- *
- * AllBinary Open License Version 1
- * Copyright (c) 2011 AllBinary
- * 
- * By agreeing to this license you and any business entity you represent are
- * legally bound to the AllBinary Open License Version 1 legal agreement.
- * 
- * You may obtain the AllBinary Open License Version 1 legal agreement from
- * AllBinary or the root directory of AllBinary's AllBinary Platform repository.
- * 
- * Created By: Travis Berthelot
- *  
- */
 // Generated Code Do Not Modify
-// package org.allbinary.game.configuration
-
-#include <ctype.h>
-#include <math.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include "allbinary_java.h"
-// #include "javax/microedition/lcdui/TextField.h"
+#include "org/allbinary/game/configuration/GameConfigurationTextInput.h"
+#include "javax/microedition/lcdui/TextField.h"
 #include "org/allbinary/logic/StdUtil.h"
 #include "org/allbinary/logic/string/StringUtil.h"
 #include "org/allbinary/util/ABHashtable.h"
+#if __has_include("org/allbinary/logic/StdUtil.h")
+#include "org/allbinary/logic/StdUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
 
-typedef struct GameConfigurationTextInput GameConfigurationTextInput;
-struct GameConfigurationTextInput {
-    const char* label;
-    const char* text;
-};
 
 static ABHashtable* GameConfigurationTextInput_hashtable;
 GameConfigurationTextInput* GameConfigurationTextInput_SIMULATOR_IP;
 GameConfigurationTextInput* GameConfigurationTextInput_SIMULATOR_PORT;
 
-GameConfigurationTextInput* GameConfigurationTextInput_new(const char* label, const char* text);
 
-void GameConfigurationTextInput_init(GameConfigurationTextInput* this, const char* label, const char* text);
-void GameConfigurationTextInput_update(TextField* textField);
-void GameConfigurationTextInput_setText(GameConfigurationTextInput* this, const char* text);
-const char* GameConfigurationTextInput_getText(GameConfigurationTextInput* this);
-void GameConfigurationTextInput_setLabel(GameConfigurationTextInput* this, const char* label);
-const char* GameConfigurationTextInput_getLabel(GameConfigurationTextInput* this);
-ABHashtable* GameConfigurationTextInput_getHashtable(void);
 
-// Static fields with runtime initializers: call this once at startup
+
+
+
+
+
 void GameConfigurationTextInput_staticInit(void) {
+    static bool initialized = false;
+    if (initialized) {
+        return;
+    }
+    initialized = true;
     GameConfigurationTextInput_hashtable = StdUtil_createHashtable(StdUtil_getInstance());
     GameConfigurationTextInput_SIMULATOR_IP = GameConfigurationTextInput_new("IP: ", "192.168.1.3");
     GameConfigurationTextInput_SIMULATOR_PORT = GameConfigurationTextInput_new("Port: ", "8010");
+}
+
+void GameConfigurationTextInput_register(void) {
+    static bool registered = false;
+    if (registered) {
+        return;
+    }
+    registered = true;
+    java_register_class("GameConfigurationTextInput", nullptr);
+    java_register_method("GameConfigurationTextInput", "setText", (void*) GameConfigurationTextInput_setText);
+    java_register_method("GameConfigurationTextInput", "getText", (void*) GameConfigurationTextInput_getText);
+    java_register_method("GameConfigurationTextInput", "setLabel", (void*) GameConfigurationTextInput_setLabel);
+    java_register_method("GameConfigurationTextInput", "getLabel", (void*) GameConfigurationTextInput_getLabel);
 }
 
 static void GameConfigurationTextInput_initFields(GameConfigurationTextInput* this) {
@@ -62,22 +57,23 @@ static void GameConfigurationTextInput_initFields(GameConfigurationTextInput* th
 
 
 void GameConfigurationTextInput_init(GameConfigurationTextInput* this, const char* label, const char* text) {
+    GameConfigurationTextInput_register();
     GameConfigurationTextInput_initFields(this);
         GameConfigurationTextInput_setText(this, text);
         GameConfigurationTextInput_setLabel(this, label);
-        JAVA_CALL(GameConfigurationTextInput_hashtable, put, GameConfigurationTextInput_getLabel(this), this);
+        Hashtable_put((GameConfigurationTextInput_staticInit(), GameConfigurationTextInput_hashtable), GameConfigurationTextInput_getLabel(this), this);
 }
 
 GameConfigurationTextInput* GameConfigurationTextInput_new(const char* label, const char* text) {
-    GameConfigurationTextInput* this = calloc(1, sizeof(GameConfigurationTextInput));
+    GameConfigurationTextInput* this = java_object_alloc(sizeof(GameConfigurationTextInput), "GameConfigurationTextInput");
     GameConfigurationTextInput_init(this, label, text);
     return this;
 }
 
 
 void GameConfigurationTextInput_update(TextField* textField) {
-        Any* anyType = ((Any*) TextField_getLabel(textField));
-        GameConfigurationTextInput* gameConfigurationTextInput = ((GameConfigurationTextInput*) JAVA_CALL(GameConfigurationTextInput_hashtable, get, anyType));
+        void* anyType = ((void*) Item_getLabel(textField));
+        GameConfigurationTextInput* gameConfigurationTextInput = ((GameConfigurationTextInput*) Hashtable_get((GameConfigurationTextInput_staticInit(), GameConfigurationTextInput_hashtable), anyType));
         GameConfigurationTextInput_setText(gameConfigurationTextInput, TextField_getString(textField));
 }
 
@@ -103,6 +99,6 @@ const char* GameConfigurationTextInput_getLabel(GameConfigurationTextInput* this
 
 
 ABHashtable* GameConfigurationTextInput_getHashtable(void) {
-        return GameConfigurationTextInput_hashtable;
+        return (GameConfigurationTextInput_staticInit(), GameConfigurationTextInput_hashtable);
 }
 
