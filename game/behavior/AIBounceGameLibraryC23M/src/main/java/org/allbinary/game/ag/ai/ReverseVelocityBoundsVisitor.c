@@ -4,6 +4,150 @@
 #include "org/allbinary/game/physics/velocity/VelocityInterfaceCompositeInterface.h"
 #include "org/allbinary/layer/LayerInterface.h"
 #include "org/allbinary/logic/communication/log/LogUtil.h"
+#if __has_include("org/allbinary/game/ag/ai/BasicDecimal.h")
+#include "org/allbinary/game/ag/ai/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/bounds/BasicDecimal.h")
+#include "org/allbinary/bounds/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/game/physics/velocity/BasicDecimal.h")
+#include "org/allbinary/game/physics/velocity/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/game/physics/velocity/BasicDecimal.h")
+#include "org/allbinary/game/physics/velocity/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/layer/BasicDecimal.h")
+#include "org/allbinary/layer/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/log/BasicDecimal.h")
+#include "org/allbinary/logic/communication/log/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/game/ag/ai/BasicDecimal.h")
+#include "org/allbinary/game/ag/ai/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/bounds/BasicDecimal.h")
+#include "org/allbinary/bounds/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/game/physics/velocity/BasicDecimal.h")
+#include "org/allbinary/game/physics/velocity/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/game/physics/velocity/BasicDecimal.h")
+#include "org/allbinary/game/physics/velocity/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/layer/BasicDecimal.h")
+#include "org/allbinary/layer/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/log/BasicDecimal.h")
+#include "org/allbinary/logic/communication/log/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/game/ag/ai/BasicDecimal.h")
+#include "org/allbinary/game/ag/ai/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/bounds/BasicDecimal.h")
+#include "org/allbinary/bounds/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/game/physics/velocity/BasicDecimal.h")
+#include "org/allbinary/game/physics/velocity/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/game/physics/velocity/BasicDecimal.h")
+#include "org/allbinary/game/physics/velocity/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/layer/BasicDecimal.h")
+#include "org/allbinary/layer/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/log/BasicDecimal.h")
+#include "org/allbinary/logic/communication/log/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/game/ag/ai/BasicDecimal.h")
+#include "org/allbinary/game/ag/ai/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/bounds/BasicDecimal.h")
+#include "org/allbinary/bounds/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/game/physics/velocity/BasicDecimal.h")
+#include "org/allbinary/game/physics/velocity/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/game/physics/velocity/BasicDecimal.h")
+#include "org/allbinary/game/physics/velocity/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/layer/BasicDecimal.h")
+#include "org/allbinary/layer/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/log/BasicDecimal.h")
+#include "org/allbinary/logic/communication/log/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/game/ag/ai/BasicDecimal.h")
+#include "org/allbinary/game/ag/ai/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/bounds/BasicDecimal.h")
+#include "org/allbinary/bounds/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/game/physics/velocity/BasicDecimal.h")
+#include "org/allbinary/game/physics/velocity/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/game/physics/velocity/BasicDecimal.h")
+#include "org/allbinary/game/physics/velocity/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/layer/BasicDecimal.h")
+#include "org/allbinary/layer/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/log/BasicDecimal.h")
+#include "org/allbinary/logic/communication/log/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/game/ag/ai/BasicDecimal.h")
+#include "org/allbinary/game/ag/ai/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/bounds/BasicDecimal.h")
+#include "org/allbinary/bounds/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/game/physics/velocity/BasicDecimal.h")
+#include "org/allbinary/game/physics/velocity/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/game/physics/velocity/BasicDecimal.h")
+#include "org/allbinary/game/physics/velocity/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/layer/BasicDecimal.h")
+#include "org/allbinary/layer/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/log/BasicDecimal.h")
+#include "org/allbinary/logic/communication/log/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/game/ag/ai/BasicDecimal.h")
+#include "org/allbinary/game/ag/ai/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/bounds/BasicDecimal.h")
+#include "org/allbinary/bounds/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/game/physics/velocity/BasicDecimal.h")
+#include "org/allbinary/game/physics/velocity/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/game/physics/velocity/BasicDecimal.h")
+#include "org/allbinary/game/physics/velocity/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/layer/BasicDecimal.h")
+#include "org/allbinary/layer/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/log/BasicDecimal.h")
+#include "org/allbinary/logic/communication/log/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/game/ag/ai/BasicDecimal.h")
+#include "org/allbinary/game/ag/ai/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/bounds/BasicDecimal.h")
+#include "org/allbinary/bounds/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/game/physics/velocity/BasicDecimal.h")
+#include "org/allbinary/game/physics/velocity/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/game/physics/velocity/BasicDecimal.h")
+#include "org/allbinary/game/physics/velocity/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/layer/BasicDecimal.h")
+#include "org/allbinary/layer/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/log/BasicDecimal.h")
+#include "org/allbinary/logic/communication/log/BasicDecimal.h"
+#endif
 
 
 
@@ -70,29 +214,29 @@ int32_t ReverseVelocityBoundsVisitor_getY(ReverseVelocityBoundsVisitor* this) {
 
 
 void ReverseVelocityBoundsVisitor_minX(ReverseVelocityBoundsVisitor* this) {
-        if (JAVA_CALL(BasicVelocityInterface_getVelocityXBasicDecimalP(this->velocityInterface), getUnscaled) < 0LL) {
-            JAVA_CALL(BasicVelocityInterface_getVelocityXBasicDecimalP(this->velocityInterface), multiplyint, -1);
+        if (BasicDecimal_getUnscaled(BasicVelocityInterface_getVelocityXBasicDecimalP(this->velocityInterface)) < 0LL) {
+            BasicDecimal_multiplyint(BasicVelocityInterface_getVelocityXBasicDecimalP(this->velocityInterface), -1);
         }
 }
 
 
 void ReverseVelocityBoundsVisitor_maxX(ReverseVelocityBoundsVisitor* this) {
-        if (JAVA_CALL(BasicVelocityInterface_getVelocityXBasicDecimalP(this->velocityInterface), getUnscaled) > 0LL) {
-            JAVA_CALL(BasicVelocityInterface_getVelocityXBasicDecimalP(this->velocityInterface), multiplyint, -1);
+        if (BasicDecimal_getUnscaled(BasicVelocityInterface_getVelocityXBasicDecimalP(this->velocityInterface)) > 0LL) {
+            BasicDecimal_multiplyint(BasicVelocityInterface_getVelocityXBasicDecimalP(this->velocityInterface), -1);
         }
 }
 
 
 void ReverseVelocityBoundsVisitor_minY(ReverseVelocityBoundsVisitor* this) {
-        if (JAVA_CALL(BasicVelocityInterface_getVelocityYBasicDecimalP(this->velocityInterface), getUnscaled) < 0LL) {
-            JAVA_CALL(BasicVelocityInterface_getVelocityYBasicDecimalP(this->velocityInterface), multiplyint, -1);
+        if (BasicDecimal_getUnscaled(BasicVelocityInterface_getVelocityYBasicDecimalP(this->velocityInterface)) < 0LL) {
+            BasicDecimal_multiplyint(BasicVelocityInterface_getVelocityYBasicDecimalP(this->velocityInterface), -1);
         }
 }
 
 
 void ReverseVelocityBoundsVisitor_maxY(ReverseVelocityBoundsVisitor* this) {
-        if (JAVA_CALL(BasicVelocityInterface_getVelocityYBasicDecimalP(this->velocityInterface), getUnscaled) > 0LL) {
-            JAVA_CALL(BasicVelocityInterface_getVelocityYBasicDecimalP(this->velocityInterface), multiplyint, -1);
+        if (BasicDecimal_getUnscaled(BasicVelocityInterface_getVelocityYBasicDecimalP(this->velocityInterface)) > 0LL) {
+            BasicDecimal_multiplyint(BasicVelocityInterface_getVelocityYBasicDecimalP(this->velocityInterface), -1);
         }
 }
 

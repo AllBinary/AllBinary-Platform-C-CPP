@@ -13,6 +13,45 @@
 #include "org/allbinary/util/ABHashtable.h"
 #include "org/allbinary/game/ag/ai/BoundBounceAI.h"
 #include "org/allbinary/game/ag/ai/ReverseVelocityBoundsVisitor.h"
+#if __has_include("org/allbinary/game/ag/ai/BasicDecimal.h")
+#include "org/allbinary/game/ag/ai/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/ai/BasicDecimal.h")
+#include "org/allbinary/ai/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/bounds/BasicDecimal.h")
+#include "org/allbinary/bounds/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/game/ai/BasicDecimal.h")
+#include "org/allbinary/game/ai/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/game/input/BasicDecimal.h")
+#include "org/allbinary/game/input/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/game/physics/velocity/BasicDecimal.h")
+#include "org/allbinary/game/physics/velocity/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/game/physics/velocity/BasicDecimal.h")
+#include "org/allbinary/game/physics/velocity/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/graphics/BasicDecimal.h")
+#include "org/allbinary/graphics/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/graphics/BasicDecimal.h")
+#include "org/allbinary/graphics/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/graphics/BasicDecimal.h")
+#include "org/allbinary/graphics/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/graphics/displayable/BasicDecimal.h")
+#include "org/allbinary/graphics/displayable/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/layer/BasicDecimal.h")
+#include "org/allbinary/layer/BasicDecimal.h"
+#endif
+#if __has_include("org/allbinary/util/BasicDecimal.h")
+#include "org/allbinary/util/BasicDecimal.h"
+#endif
 #if __has_include("org/allbinary/graphics/PointFactory.h")
 #include "org/allbinary/graphics/PointFactory.h"
 #endif
@@ -53,7 +92,7 @@ TopUBoundBounceAIFactory* TopUBoundBounceAIFactory_new(void) {
 ArtificialIntelligenceInterface* TopUBoundBounceAIFactory_getInstance(TopUBoundBounceAIFactory* this, ABHashtable* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) {
         VelocityInterfaceCompositeInterface* velocityInterfaceCompositeInterface = ((VelocityInterfaceCompositeInterface*) ownerLayerInterface);
         VelocityInterface* velocityInterface = ((VelocityInterface*) VelocityInterfaceCompositeInterface_getVelocityProperties(velocityInterfaceCompositeInterface));
-        int32_t maxDistancePerTick = (VelocityInterface_getMaxForwardVelocity(velocityInterface) >> JAVA_CALL(BasicVelocityInterface_getVelocityXBasicDecimalP(velocityInterface), getScaledFactor));
+        int32_t maxDistancePerTick = (VelocityInterface_getMaxForwardVelocity(velocityInterface) >> BasicDecimal_getScaledFactor(BasicVelocityInterface_getVelocityXBasicDecimalP(velocityInterface)));
         int32_t halfWidth = AllBinaryLayer_getWidth(ownerLayerInterface) * 2 + maxDistancePerTick + 1;
         int32_t halfHeight = AllBinaryLayer_getHeight(ownerLayerInterface) * 2 + maxDistancePerTick + 1;
         GPoint* point = PointFactory_createXY(PointFactory_getInstance(), halfWidth, halfHeight + 60);

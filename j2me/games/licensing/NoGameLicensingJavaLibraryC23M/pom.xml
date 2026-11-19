@@ -35,6 +35,23 @@
 
 
     <dependencies>
+        <!-- C23: PaintableForm.h embeds ABCustomForm of this optional, so not transitive, dependency -->
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>NullCustomUIJavaLibraryC23</artifactId>
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+        </dependency>
+        <!-- C23: BasicMenuInputProcessor.h (FormBase) embeds BaseMotionGestureEventListener of this optional, so not transitive, dependency -->
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>MotionGestureBaseJavaLibraryC23</artifactId>
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+        </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

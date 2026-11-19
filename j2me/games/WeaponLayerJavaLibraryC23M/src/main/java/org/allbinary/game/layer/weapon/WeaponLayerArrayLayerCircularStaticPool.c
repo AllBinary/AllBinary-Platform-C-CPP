@@ -35,9 +35,9 @@ void WeaponLayerArrayLayerCircularStaticPool_register(void) {
 static void WeaponLayerArrayLayerCircularStaticPool_initFields(WeaponLayerArrayLayerCircularStaticPool* this) {
     this->MAX = 5;
     this->circularIndexUtil = CircularIndexUtil_createInstance(this->MAX);
-    this->WEAPONLAYER_ARRAY = nullptr;
-    this->TWO_WEAPONLAYER_ARRAY = nullptr;
-    this->THREE_WEAPONLAYER_ARRAY = nullptr;
+    this->WEAPONLAYER_ARRAY = ((WeaponLayer***) java_array_new(sizeof(WeaponLayer**), this->MAX * 2));
+    this->TWO_WEAPONLAYER_ARRAY = ((WeaponLayer***) java_array_new(sizeof(WeaponLayer**), this->MAX));
+    this->THREE_WEAPONLAYER_ARRAY = ((WeaponLayer***) java_array_new(sizeof(WeaponLayer**), this->MAX));
 }
 
 void WeaponLayerArrayLayerCircularStaticPool_init(WeaponLayerArrayLayerCircularStaticPool* this) {
@@ -58,17 +58,14 @@ WeaponLayerArrayLayerCircularStaticPool* WeaponLayerArrayLayerCircularStaticPool
 
 
 void WeaponLayerArrayLayerCircularStaticPool_initMethod(WeaponLayerArrayLayerCircularStaticPool* this) {
-        WeaponLayer*** WEAPONLAYER_ARRAY = ((WeaponLayer***) java_array_new(sizeof(WeaponLayer**), this->MAX * 2));
-        WeaponLayer*** TWO_WEAPONLAYER_ARRAY = ((WeaponLayer***) java_array_new(sizeof(WeaponLayer**), this->MAX));
-        WeaponLayer*** THREE_WEAPONLAYER_ARRAY = ((WeaponLayer***) java_array_new(sizeof(WeaponLayer**), this->MAX));
         for (int32_t index = 0; index < this->MAX; index++) {
-            WEAPONLAYER_ARRAY[index] = ((WeaponLayer**) java_array_new(sizeof(WeaponLayer*), 1));
-            TWO_WEAPONLAYER_ARRAY[index] = ((WeaponLayer**) java_array_new(sizeof(WeaponLayer*), 2));
-            THREE_WEAPONLAYER_ARRAY[index] = ((WeaponLayer**) java_array_new(sizeof(WeaponLayer*), 3));
+            this->WEAPONLAYER_ARRAY[index] = ((WeaponLayer**) java_array_new(sizeof(WeaponLayer*), 1));
+            this->TWO_WEAPONLAYER_ARRAY[index] = ((WeaponLayer**) java_array_new(sizeof(WeaponLayer*), 2));
+            this->THREE_WEAPONLAYER_ARRAY[index] = ((WeaponLayer**) java_array_new(sizeof(WeaponLayer*), 3));
         }
-        this->WEAPONLAYER_ARRAY = WEAPONLAYER_ARRAY;
-        this->TWO_WEAPONLAYER_ARRAY = TWO_WEAPONLAYER_ARRAY;
-        this->THREE_WEAPONLAYER_ARRAY = THREE_WEAPONLAYER_ARRAY;
+        this->WEAPONLAYER_ARRAY = this->WEAPONLAYER_ARRAY;
+        this->TWO_WEAPONLAYER_ARRAY = this->TWO_WEAPONLAYER_ARRAY;
+        this->THREE_WEAPONLAYER_ARRAY = this->THREE_WEAPONLAYER_ARRAY;
 }
 
 
